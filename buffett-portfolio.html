@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Warren Buffett / Berkshire Hathaway — Live Portfolio, Style & Prediction Engine</title>
+<style>
+  :root{
+    --bg:#0b0f17; --panel:#121826; --panel2:#0f1521; --line:#1f2937;
+    --txt:#e6edf6; --muted:#93a1b5; --accent:#f5b301; --accent2:#3ba2ff;
+    --green:#34d399; --red:#f87171; --blue:#60a5fa; --purple:#a78bfa;
+    --chip:#1a2435;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:radial-gradient(1200px 600px at 70% -10%, #16203200, #0b0f17), var(--bg);
+    color:var(--txt);font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;}
+  a{color:var(--accent2);text-decoration:none}
+  .wrap{max-width:1180px;margin:0 auto;padding:22px 18px 80px}
+  header.hero{display:flex;flex-wrap:wrap;gap:14px;align-items:flex-end;justify-content:space-between;
+    border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:20px}
+  .title h1{margin:0;font-size:24px;letter-spacing:.2px}
+  .title .sub{color:var(--muted);margin-top:4px;font-size:13px}
+  .badge{display:inline-flex;align-items:center;gap:6px;background:var(--chip);border:1px solid var(--line);
+    padding:5px 10px;border-radius:999px;font-size:12px;color:var(--muted)}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--muted);display:inline-block}
+  .dot.live{background:var(--green);box-shadow:0 0 0 3px #34d39922;animation:pulse 1.6s infinite}
+  .dot.cached{background:var(--accent)}
+  .dot.err{background:var(--red)}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 #34d39955}70%{box-shadow:0 0 0 6px #34d39900}100%{box-shadow:0 0 0 0 #34d39900}}
+  .ctrls{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  button{cursor:pointer;background:var(--chip);color:var(--txt);border:1px solid var(--line);
+    padding:8px 12px;border-radius:9px;font-size:13px;transition:.15s}
+  button:hover{border-color:var(--accent2);color:#fff}
+  button.primary{background:linear-gradient(180deg,#f5b301,#e0a000);color:#1a1300;border:none;font-weight:600}
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-bottom:22px}
+  .kpi{background:linear-gradient(180deg,var(--panel),var(--panel2));border:1px solid var(--line);
+    border-radius:14px;padding:14px 16px}
+  .kpi .l{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.6px}
+  .kpi .v{font-size:22px;font-weight:700;margin-top:6px}
+  .kpi .d{font-size:12px;margin-top:3px;color:var(--muted)}
+  .tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+  .tab{padding:9px 14px;border-radius:10px;border:1px solid var(--line);background:var(--panel2);color:var(--muted)}
+  .tab.active{background:var(--accent);color:#1a1300;border-color:var(--accent);font-weight:600}
+  section.view{display:none;animation:fade .25s}
+  section.view.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1}}
+  .grid2{display:grid;grid-template-columns:1.3fr .9fr;gap:16px}
+  @media(max-width:880px){.grid2{grid-template-columns:1fr}.tabs{overflow:auto}}
+  .card{background:linear-gradient(180deg,var(--panel),var(--panel2));border:1px solid var(--line);
+    border-radius:14px;padding:16px}
+  .card h3{margin:0 0 12px;font-size:15px;display:flex;justify-content:space-between;align-items:center}
+  .card h3 .h{color:var(--muted);font-size:12px;font-weight:500}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th,td{text-align:right;padding:9px 8px;border-bottom:1px solid var(--line);white-space:nowrap}
+  th:first-child,td:first-child{text-align:left}
+  th{color:var(--muted);font-weight:600;cursor:pointer;user-select:none;font-size:11.5px;text-transform:uppercase;letter-spacing:.4px}
+  th:hover{color:#fff}
+  tbody tr{cursor:pointer;transition:.12s}
+  tbody tr:hover{background:#172033}
+  .tk{font-weight:700}
+  .nm{color:var(--muted);font-size:11.5px}
+  .pos{color:var(--green)} .neg{color:var(--red)}
+  .pill{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:600}
+  .pill.buy{background:#0f2e22;color:var(--green)} .pill.new{background:#10233f;color:var(--blue)}
+  .pill.trim{background:#3a1414;color:var(--red)} .pill.hold{background:#222a38;color:var(--muted)}
+  canvas{max-width:100%}
+  .legend{display:flex;flex-direction:column;gap:7px;font-size:12.5px}
+  .legend .li{display:flex;align-items:center;gap:8px;justify-content:space-between}
+  .legend .lft{display:flex;align-items:center;gap:8px}
+  .sw{width:11px;height:11px;border-radius:3px}
+  .insight{display:flex;gap:11px;padding:11px 0;border-bottom:1px solid var(--line)}
+  .insight:last-child{border:none}
+  .insight .ic{font-size:18px;flex:0 0 24px;text-align:center}
+  .insight .tt{font-weight:600;margin-bottom:2px}
+  .insight .ds{color:var(--muted);font-size:12.5px}
+  .bar{height:8px;background:var(--chip);border-radius:6px;overflow:hidden;margin-top:5px}
+  .bar > i{display:block;height:100%;border-radius:6px;background:linear-gradient(90deg,var(--accent2),var(--purple))}
+  .sliders{display:grid;gap:12px}
+  .slrow label{display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:4px}
+  .slrow .wv{color:var(--accent)}
+  input[type=range]{width:100%;accent-color:var(--accent)}
+  .pred{display:flex;flex-direction:column;gap:10px}
+  .pcard{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+  .pcard .top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+  .pcard .score{font-size:20px;font-weight:800;color:var(--accent)}
+  .pcard .why{color:var(--muted);font-size:12.5px;margin-top:6px}
+  .rank{display:inline-flex;width:24px;height:24px;border-radius:7px;background:var(--chip);
+    align-items:center;justify-content:center;font-weight:700;font-size:12px;margin-right:8px}
+  .rank.g1{background:#3a2f06;color:var(--accent)}
+  .note{color:var(--muted);font-size:11.5px;margin-top:10px;line-height:1.6}
+  .modal{position:fixed;inset:0;background:#000a;display:none;align-items:center;justify-content:center;padding:18px;z-index:50}
+  .modal.open{display:flex}
+  .modal .inner{background:var(--panel);border:1px solid var(--line);border-radius:16px;max-width:460px;width:100%;padding:20px}
+  .closex{float:right;cursor:pointer;color:var(--muted);font-size:20px;line-height:1}
+  .kv{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--line);font-size:13px}
+  .kv .k{color:var(--muted)}
+  .actrow{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--line);font-size:13px;align-items:center}
+  .disc{margin-top:26px;color:#6b7890;font-size:11px;border-top:1px solid var(--line);padding-top:14px;line-height:1.7}
+  .seg{display:flex;gap:6px;margin-bottom:10px}
+  .seg button{font-size:12px;padding:6px 10px}
+  .seg button.on{background:var(--accent2);border-color:var(--accent2);color:#021326}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <div class="title">
+      <h1>🏰 Berkshire Hathaway — Buffett Portfolio Lab</h1>
+      <div class="sub">Holdings from the latest SEC 13F · Live prices · Investment-style analysis · "What would he buy next?" engine</div>
+    </div>
+    <div class="ctrls">
+      <span class="badge"><span id="liveDot" class="dot cached"></span><span id="liveTxt">Filing values</span></span>
+      <button id="refreshBtn" class="primary">⟳ Fetch live prices</button>
+    </div>
+  </header>
+
+  <div class="kpis" id="kpis"></div>
+
+  <div class="tabs">
+    <div class="tab active" data-v="holdings">📊 Holdings</div>
+    <div class="tab" data-v="style">🧠 Investment Style</div>
+    <div class="tab" data-v="predict">🔮 Prediction Engine</div>
+    <div class="tab" data-v="activity">🔁 Q1 2026 Activity</div>
+  </div>
+
+  <!-- HOLDINGS -->
+  <section class="view active" id="view-holdings">
+    <div class="grid2">
+      <div class="card">
+        <h3>All Reported Equity Holdings <span class="h" id="holdCount"></span></h3>
+        <div style="overflow:auto;max-height:560px">
+          <table id="holdTable">
+            <thead><tr>
+              <th data-k="t">Ticker</th>
+              <th data-k="sector">Sector</th>
+              <th data-k="shares">Shares</th>
+              <th data-k="price">Price</th>
+              <th data-k="value">Value</th>
+              <th data-k="pct">% Port</th>
+              <th data-k="activity">Q1'26</th>
+            </tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Sector Allocation <span class="h">by market value</span></h3>
+        <canvas id="donut" width="340" height="240"></canvas>
+        <div class="legend" id="donutLegend" style="margin-top:10px"></div>
+      </div>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <h3>Top 12 Positions <span class="h">share of portfolio</span></h3>
+      <canvas id="bars" width="1100" height="300"></canvas>
+    </div>
+  </section>
+
+  <!-- STYLE -->
+  <section class="view" id="view-style">
+    <div class="grid2">
+      <div class="card">
+        <h3>What the numbers say about his style</h3>
+        <div id="styleInsights"></div>
+      </div>
+      <div class="card">
+        <h3>Portfolio fingerprint</h3>
+        <div id="fingerprint"></div>
+      </div>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <h3>The Buffett checklist <span class="h">how this portfolio scores on his stated principles</span></h3>
+      <div id="checklist"></div>
+    </div>
+  </section>
+
+  <!-- PREDICT -->
+  <section class="view" id="view-predict">
+    <div class="grid2">
+      <div class="card">
+        <h3>Tune the Buffett lens <span class="h">weight his criteria</span></h3>
+        <div class="sliders" id="sliders"></div>
+        <div class="note">The engine scores a watchlist of candidate companies against Buffett's stated criteria, then ranks the most likely future buys. Move the sliders to emphasize what <em>you</em> think Berkshire (now under CEO Greg Abel) prioritizes. This is an educational model, not investment advice.</div>
+        <button id="resetW" style="margin-top:10px">Reset to Buffett defaults</button>
+      </div>
+      <div class="card">
+        <h3>Most likely next buys <span class="h">ranked fit</span></h3>
+        <div class="pred" id="predList"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACTIVITY -->
+  <section class="view" id="view-activity">
+    <div class="grid2">
+      <div class="card">
+        <h3>Bought / Added <span class="h">Q1 2026 (first quarter under Greg Abel)</span></h3>
+        <div id="actBuys"></div>
+      </div>
+      <div class="card">
+        <h3>Trimmed / Exited <span class="h">a 40 → 26 position cleanup</span></h3>
+        <div id="actSells"></div>
+      </div>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <h3>The signal</h3>
+      <div id="actNarrative"></div>
+    </div>
+  </section>
+
+  <div class="disc" id="disc"></div>
+</div>
+
+<div class="modal" id="modal"><div class="inner">
+  <span class="closex" onclick="closeModal()">×</span>
+  <div id="modalBody"></div>
+</div></div>
+
+<script>
+/* ============================================================
+   DATA — Berkshire Hathaway 13F, quarter ended 2026-03-31
+   (filed with the SEC on 2026-05-15; first filing under CEO Greg Abel)
+   Top-10 values & portfolio % are from the filing as reported by
+   13F trackers. Share counts for the top 10 are the well-known
+   long-standing position sizes; smaller positions are best-available
+   public estimates and are flagged below. Live prices (when fetched)
+   recompute every position's value as shares × current price.
+   ============================================================ */
+const AS_OF = "Mar 31, 2026 (13F filed May 15, 2026)";
+const CASH_PILE = 397e9;
+
+const HOLDINGS = [
+  {t:'AAPL', name:'Apple',                sector:'Technology',        shares:300000000, prevClose:192.66, pct:21.99, activity:'hold', est:false},
+  {t:'AXP',  name:'American Express',     sector:'Financials',        shares:151610700, prevClose:302.75, pct:17.43, activity:'hold', est:false},
+  {t:'KO',   name:'Coca-Cola',           sector:'Consumer Staples',  shares:400000000, prevClose:76.00,  pct:11.56, activity:'hold', est:false},
+  {t:'BAC',  name:'Bank of America',     sector:'Financials',        shares:600000000, prevClose:41.67,  pct:9.52,  activity:'trim', est:false},
+  {t:'CVX',  name:'Chevron',             sector:'Energy',            shares:113000000, prevClose:154.87, pct:6.64,  activity:'trim', est:false},
+  {t:'OXY',  name:'Occidental Petroleum',sector:'Energy',            shares:264900000, prevClose:64.93,  pct:6.55,  activity:'hold', est:false},
+  {t:'GOOGL',name:'Alphabet',            sector:'Communication Svcs',shares:57800000,  prevClose:269.90, pct:5.93,  activity:'buy',  est:false},
+  {t:'CB',   name:'Chubb',               sector:'Financials',        shares:37000000,  prevClose:302.70, pct:4.24,  activity:'buy',  est:false},
+  {t:'MCO',  name:"Moody's",             sector:'Financials',        shares:24669778,  prevClose:437.78, pct:4.09,  activity:'hold', est:false},
+  {t:'KHC',  name:'Kraft Heinz',         sector:'Consumer Staples',  shares:325634818, prevClose:22.42,  pct:2.78,  activity:'hold', est:false},
+  {t:'DVA',  name:'DaVita',              sector:'Health Care',       shares:36000000,  prevClose:144.40, pct:1.98,  activity:'hold', est:true},
+  {t:'VRSN', name:'VeriSign',            sector:'Technology',        shares:13000000,  prevClose:253.84, pct:1.25,  activity:'hold', est:true},
+  {t:'KR',   name:'Kroger',              sector:'Consumer Staples',  shares:50000000,  prevClose:68.10,  pct:1.29,  activity:'hold', est:true},
+  {t:'SIRI', name:'Sirius XM',           sector:'Communication Svcs',shares:119000000, prevClose:23.50,  pct:1.06,  activity:'hold', est:true},
+  {t:'DAL',  name:'Delta Air Lines',     sector:'Industrials',       shares:39800000,  prevClose:66.58,  pct:1.01,  activity:'new',  est:false},
+  {t:'AON',  name:'Aon',                 sector:'Financials',        shares:4300000,   prevClose:372.10, pct:0.61,  activity:'hold', est:true},
+  {t:'COF',  name:'Capital One',         sector:'Financials',        shares:7150000,   prevClose:210.20, pct:0.57,  activity:'hold', est:true},
+  {t:'C',    name:'Citigroup',           sector:'Financials',        shares:14600000,  prevClose:82.10,  pct:0.46,  activity:'trim', est:true},
+  {t:'TMUS', name:'T-Mobile US',         sector:'Communication Svcs',shares:4400000,   prevClose:227.00, pct:0.38,  activity:'hold', est:true},
+  {t:'LEN',  name:'Lennar',              sector:'Consumer Disc.',    shares:7000000,   prevClose:114.30, pct:0.30,  activity:'hold', est:true},
+  {t:'NU',   name:'Nu Holdings',         sector:'Financials',        shares:40000000,  prevClose:13.80,  pct:0.21, activity:'hold', est:true},
+  {t:'POOL', name:'Pool Corp',           sector:'Consumer Disc.',    shares:1100000,   prevClose:327.40, pct:0.14, activity:'hold', est:true},
+  {t:'M',    name:"Macy's",              sector:'Consumer Disc.',    shares:10000000,  prevClose:15.10,  pct:0.06, activity:'new',  est:true},
+  {t:'STZ',  name:'Constellation Brands',sector:'Consumer Staples',  shares:600000,    prevClose:166.20, pct:0.04, activity:'trim', est:true},
+];
+// give every holding a live "price" field (starts at prevClose)
+HOLDINGS.forEach(h=>{h.price=h.prevClose; h.live=false;});
+
+const ACTIVITY = {
+  buys:[
+    {t:'GOOGL', label:'Alphabet', detail:'Roughly tripled the stake (+~225%) to ~57.8M shares — now a top-7 position and Berkshire\'s biggest tech bet outside Apple. A clear nod toward AI/cloud durability.'},
+    {t:'CB',    label:'Chubb',    detail:'Continued building the P&C insurance position — squarely in Berkshire\'s circle of competence.'},
+    {t:'DAL',   label:'Delta Air Lines', detail:'NEW. ~39.8M shares (~$2.65B) — Berkshire\'s first airline position since the 2020 pandemic exit. A notable Abel-era departure.'},
+    {t:'M',     label:"Macy's",   detail:'NEW small position — a deep-value, asset-rich retailer play.'},
+  ],
+  sells:[
+    {t:'AMZN', label:'Amazon',          detail:'Fully exited.'},
+    {t:'UNH',  label:'UnitedHealth',    detail:'Fully exited amid sector turmoil.'},
+    {t:'V',    label:'Visa',            detail:'Fully exited the payment network.'},
+    {t:'MA',   label:'Mastercard',      detail:'Fully exited the payment network.'},
+    {t:'DPZ',  label:"Domino's Pizza",  detail:'Fully exited.'},
+    {t:'CVX',  label:'Chevron',         detail:'Trimmed ~35% — still a top-5 holding.'},
+    {t:'STZ',  label:'Constellation Brands', detail:'Slashed ~95% — near-complete exit.'},
+    {t:'C',    label:'Citigroup',       detail:'Reduced.'},
+    {t:'BAC',  label:'Bank of America', detail:'Continued trimming the long-held bank stake.'},
+  ]
+};
+
+/* Prediction candidates — illustrative scores (0-100) on Buffett's criteria */
+const CRITERIA = [
+  {k:'moat',  label:'Economic moat',            w:25},
+  {k:'prof',  label:'Profitability (ROE/margins)', w:20},
+  {k:'val',   label:'Valuation / margin of safety', w:20},
+  {k:'fin',   label:'Financial strength',        w:15},
+  {k:'pred',  label:'Predictability & simplicity', w:12},
+  {k:'ret',   label:'Capital returns (buybacks/div)', w:8},
+];
+const CANDIDATES = [
+  {t:'PFE', name:'Pfizer',          moat:70, prof:62, val:90, fin:72, pred:64, ret:80, why:'Beaten-down, cheap, fat dividend. Reportedly on Abel\'s radar — a value-driven healthcare re-entry after the UNH exit.'},
+  {t:'PEP', name:'PepsiCo',         moat:88, prof:82, val:72, fin:75, pred:90, ret:82, why:'A Coca-Cola-grade consumer-staples moat at a more reasonable price; snacks + drinks duopoly economics.'},
+  {t:'V',   name:'Visa (re-entry)', moat:95, prof:95, val:46, fin:88, pred:88, ret:78, why:'Toll-booth on global payments — exactly the economics Buffett loves. Just exited, so a cheaper re-entry is plausible.'},
+  {t:'COST',name:'Costco',          moat:92, prof:78, val:30, fin:85, pred:90, ret:60, why:'Munger\'s favorite; membership moat and fanatical customer loyalty. Only flaw: rarely cheap.'},
+  {t:'MCD', name:"McDonald's",      moat:90, prof:86, val:56, fin:60, pred:88, ret:80, why:'Royalty-like franchise + real-estate moat, decades of buybacks. Classic Buffett brand.'},
+  {t:'NKE', name:'Nike',            moat:85, prof:70, val:82, fin:78, pred:74, ret:72, why:'Dominant brand temporarily out of favor — the kind of "wonderful company at a fair price" dislocation he hunts.'},
+  {t:'PGR', name:'Progressive',     moat:80, prof:90, val:50, fin:84, pred:78, ret:55, why:'Best-in-class auto insurer; insurance is the heart of Berkshire\'s circle of competence.'},
+  {t:'TXN', name:'Texas Instruments',moat:82,prof:86, val:55, fin:80, pred:80, ret:84, why:'Analog-chip moat, huge buybacks, predictable cash machine — tech he can actually understand.'},
+  {t:'HD',  name:'Home Depot',      moat:84, prof:88, val:58, fin:70, pred:82, ret:80, why:'Category-killer retail, high returns on capital, aggressive buybacks.'},
+  {t:'UPS', name:'UPS',             moat:72, prof:66, val:84, fin:68, pred:70, ret:84, why:'Logistics network with a high dividend, trading cheaply — a yield-and-value setup.'},
+  {t:'DE',  name:'Deere',           moat:80, prof:78, val:62, fin:72, pred:70, ret:74, why:'Dominant ag-equipment franchise with a precision-tech moat.'},
+  {t:'LMT', name:'Lockheed Martin', moat:85, prof:78, val:66, fin:66, pred:84, ret:80, why:'Defense oligopoly with multi-decade visibility and steady buybacks.'},
+  {t:'SBUX',name:'Starbucks',       moat:80, prof:72, val:70, fin:60, pred:72, ret:72, why:'Global brand moat in a turnaround — potential value entry point.'},
+  {t:'DG',  name:'Dollar General',  moat:70, prof:72, val:82, fin:60, pred:74, ret:60, why:'Defensive, rural retail footprint trading at a depressed multiple.'},
+];
+
+/* ===================== HELPERS ===================== */
+const $ = s=>document.querySelector(s);
+const fmtB = v => '$'+(v/1e9).toFixed(2)+'B';
+const fmtUSD = v => '$'+v.toLocaleString(undefined,{maximumFractionDigits:2});
+const fmtShares = v => v>=1e6 ? (v/1e6).toFixed(1)+'M' : v.toLocaleString();
+const SECTOR_COLORS = {
+  'Technology':'#3ba2ff','Financials':'#34d399','Consumer Staples':'#f5b301',
+  'Energy':'#f87171','Communication Svcs':'#a78bfa','Health Care':'#22d3ee',
+  'Industrials':'#fb923c','Consumer Disc.':'#f472b6'
+};
+function value(h){ return h.shares * h.price; }
+function totalValue(){ return HOLDINGS.reduce((s,h)=>s+value(h),0); }
+function livePct(h){ return value(h)/totalValue()*100; }
+
+/* ===================== KPIs ===================== */
+function renderKPIs(){
+  const tv = totalValue();
+  const top5 = [...HOLDINGS].sort((a,b)=>value(b)-value(a)).slice(0,5)
+                 .reduce((s,h)=>s+livePct(h),0);
+  const anyLive = HOLDINGS.some(h=>h.live);
+  const kpis = [
+    {l:'Equity portfolio', v:fmtB(tv), d:anyLive?'live market value':'13F filing value'},
+    {l:'Reported holdings', v:HOLDINGS.length, d:'down from 40 last quarter'},
+    {l:'Top-5 concentration', v:top5.toFixed(0)+'%', d:'classic high-conviction Buffett'},
+    {l:'Cash & T-bills', v:fmtB(CASH_PILE), d:'record war chest'},
+    {l:'CEO', v:'Greg Abel', d:'succeeded Buffett Jan 1, 2026'},
+  ];
+  $('#kpis').innerHTML = kpis.map(k=>`<div class="kpi"><div class="l">${k.l}</div>
+    <div class="v">${k.v}</div><div class="d">${k.d}</div></div>`).join('');
+}
+
+/* ===================== HOLDINGS TABLE ===================== */
+let sortK='value', sortDir=-1;
+function renderTable(){
+  const tv = totalValue();
+  const rows = [...HOLDINGS].sort((a,b)=>{
+    let av,bv;
+    if(sortK==='value'){av=value(a);bv=value(b);}
+    else if(sortK==='pct'){av=value(a);bv=value(b);}
+    else if(sortK==='price'){av=a.price;bv=b.price;}
+    else {av=a[sortK];bv=b[sortK];}
+    if(typeof av==='string') return sortDir*av.localeCompare(bv);
+    return sortDir*(av-bv);
+  });
+  const pillTxt={hold:'Hold',buy:'Bought',new:'NEW',trim:'Trimmed'};
+  $('#holdTable tbody').innerHTML = rows.map(h=>{
+    const chg = (h.price-h.prevClose)/h.prevClose*100;
+    const chgHtml = h.live ? `<span class="${chg>=0?'pos':'neg'}">${chg>=0?'+':''}${chg.toFixed(2)}%</span>` : '';
+    return `<tr onclick="openHolding('${h.t}')">
+      <td><span class="tk">${h.t}</span>${h.est?' <span class="nm">*</span>':''}<div class="nm">${h.name}</div></td>
+      <td><span class="pill" style="background:${SECTOR_COLORS[h.sector]}22;color:${SECTOR_COLORS[h.sector]}">${h.sector}</span></td>
+      <td>${fmtShares(h.shares)}</td>
+      <td>${fmtUSD(h.price)} ${chgHtml}</td>
+      <td>${fmtB(value(h))}</td>
+      <td>${(value(h)/tv*100).toFixed(2)}%</td>
+      <td><span class="pill ${h.activity}">${pillTxt[h.activity]}</span></td>
+    </tr>`;
+  }).join('');
+  $('#holdCount').textContent = HOLDINGS.length + ' positions · sorted by '+sortK;
+}
+document.querySelectorAll('#holdTable th').forEach(th=>{
+  th.onclick=()=>{const k=th.dataset.k; if(sortK===k)sortDir*=-1;else{sortK=k;sortDir=-1;} renderTable();};
+});
+
+function openHolding(t){
+  const h=HOLDINGS.find(x=>x.t===t); const tv=totalValue();
+  const chg=(h.price-h.prevClose)/h.prevClose*100;
+  $('#modalBody').innerHTML=`
+    <h2 style="margin:0 0 2px">${h.t} <span style="color:var(--muted);font-size:15px;font-weight:400">${h.name}</span></h2>
+    <div class="nm" style="margin-bottom:12px">${h.sector}</div>
+    <div class="kv"><span class="k">Shares held</span><span>${h.shares.toLocaleString()}</span></div>
+    <div class="kv"><span class="k">${h.live?'Live price':'Reference price'}</span><span>${fmtUSD(h.price)} ${h.live?`<span class="${chg>=0?'pos':'neg'}">(${chg>=0?'+':''}${chg.toFixed(2)}%)</span>`:''}</span></div>
+    <div class="kv"><span class="k">Position value</span><span>${fmtB(value(h))}</span></div>
+    <div class="kv"><span class="k">% of equity portfolio</span><span>${(value(h)/tv*100).toFixed(2)}%</span></div>
+    <div class="kv"><span class="k">Q1 2026 action</span><span>${h.activity.toUpperCase()}</span></div>
+    ${h.est?'<div class="note">* Share count is a best-available public estimate for this smaller position; the live value recomputes from it.</div>':''}`;
+  $('#modal').classList.add('open');
+}
+function closeModal(){$('#modal').classList.remove('open');}
+$('#modal').onclick=e=>{if(e.target.id==='modal')closeModal();};
+
+/* ===================== DONUT (sectors) ===================== */
+function sectorTotals(){
+  const m={};HOLDINGS.forEach(h=>{m[h.sector]=(m[h.sector]||0)+value(h);});
+  return Object.entries(m).sort((a,b)=>b[1]-a[1]);
+}
+function drawDonut(){
+  const c=$('#donut'),x=c.getContext('2d');x.clearRect(0,0,c.width,c.height);
+  const data=sectorTotals(),tot=data.reduce((s,d)=>s+d[1],0);
+  const cx=120,cy=120,r=95,ir=58;let a=-Math.PI/2;
+  data.forEach(([s,v])=>{
+    const ang=v/tot*Math.PI*2;
+    x.beginPath();x.moveTo(cx,cy);x.arc(cx,cy,r,a,a+ang);x.closePath();
+    x.fillStyle=SECTOR_COLORS[s]||'#888';x.fill();a+=ang;
+  });
+  x.globalCompositeOperation='destination-out';
+  x.beginPath();x.arc(cx,cy,ir,0,Math.PI*2);x.fill();
+  x.globalCompositeOperation='source-over';
+  x.fillStyle='#e6edf6';x.textAlign='center';x.font='600 13px sans-serif';
+  x.fillText(fmtB(tot).replace('$',''),cx,cy-2);x.fillStyle='#93a1b5';x.font='10px sans-serif';
+  x.fillText('USD bn',cx,cy+13);
+  $('#donutLegend').innerHTML=data.map(([s,v])=>`<div class="li">
+    <span class="lft"><span class="sw" style="background:${SECTOR_COLORS[s]||'#888'}"></span>${s}</span>
+    <b>${(v/tot*100).toFixed(1)}%</b></div>`).join('');
+}
+
+/* ===================== BARS (top 12) ===================== */
+function drawBars(){
+  const c=$('#bars');const W=c.clientWidth||1100;c.width=W;const H=300;c.height=H;
+  const x=c.getContext('2d');x.clearRect(0,0,W,H);
+  const tv=totalValue();
+  const data=[...HOLDINGS].sort((a,b)=>value(b)-value(a)).slice(0,12);
+  const max=Math.max(...data.map(h=>value(h)/tv*100));
+  const pad=30,bw=(W-pad*2)/data.length*0.62,gap=(W-pad*2)/data.length;
+  data.forEach((h,i)=>{
+    const p=value(h)/tv*100,bh=(p/max)*(H-70);
+    const bx=pad+i*gap+(gap-bw)/2,by=H-40-bh;
+    const g=x.createLinearGradient(0,by,0,H-40);
+    g.addColorStop(0,SECTOR_COLORS[h.sector]||'#888');g.addColorStop(1,(SECTOR_COLORS[h.sector]||'#888')+'55');
+    x.fillStyle=g;roundRect(x,bx,by,bw,bh,5);x.fill();
+    x.fillStyle='#e6edf6';x.font='600 11px sans-serif';x.textAlign='center';
+    x.fillText(p.toFixed(1)+'%',bx+bw/2,by-6);
+    x.fillStyle='#93a1b5';x.font='11px sans-serif';
+    x.fillText(h.t,bx+bw/2,H-22);
+  });
+}
+function roundRect(x,a,b,w,h,r){x.beginPath();x.moveTo(a+r,b);x.arcTo(a+w,b,a+w,b+h,r);
+  x.arcTo(a+w,b+h,a,b+h,r);x.arcTo(a,b+h,a,b,r);x.arcTo(a,b,a+w,b,r);x.closePath();}
+
+/* ===================== STYLE VIEW ===================== */
+function renderStyle(){
+  const tv=totalValue();
+  const sorted=[...HOLDINGS].sort((a,b)=>value(b)-value(a));
+  const top5=sorted.slice(0,5).reduce((s,h)=>s+value(h)/tv*100,0);
+  const fin=sectorTotals().find(s=>s[0]==='Financials');
+  const finPct=fin?fin[1]/tv*100:0;
+  const insights=[
+    ['🎯','Extreme concentration','The top 5 positions are '+top5.toFixed(0)+'% of the equity book. Buffett: "Diversification is protection against ignorance. It makes little sense if you know what you are doing."'],
+    ['🏦','A bet on financials & brands','Financials are ~'+finPct.toFixed(0)+'% of the book (Amex, BofA, Chubb, Moody\'s). Add Coca-Cola and Apple and you have toll-booth brands + balance-sheet compounders.'],
+    ['🍎','Apple is the anchor','A single ~22% position. He calls it less a tech stock than a consumer-products company with an unbreakable ecosystem moat.'],
+    ['💵','Cash is a position','A record ~$397B in cash/T-bills signals discipline: he\'d rather hold dry powder than overpay. Selling outpaced buying again this quarter.'],
+    ['⏳','Decades, not quarters','Coca-Cola (since 1988) and Amex (since the 1990s) are still core. Low turnover, owner mindset: "Our favorite holding period is forever."'],
+    ['🤖','A measured tech tilt','Tripling Alphabet — only after the business looked understandable and reasonably priced. He buys tech as a late, value-minded adopter, not a momentum chaser.'],
+  ];
+  $('#styleInsights').innerHTML=insights.map(i=>`<div class="insight">
+    <div class="ic">${i[0]}</div><div><div class="tt">${i[1]}</div><div class="ds">${i[2]}</div></div></div>`).join('');
+
+  const fp=[
+    ['Concentration (top 5)',top5,100],
+    ['Brand / consumer franchises', (sumSectors(['Consumer Staples','Technology'])/tv*100),60],
+    ['Financials & insurance', finPct,40],
+    ['Energy (cyclical value)', (sumSectors(['Energy'])/tv*100),30],
+    ['Cash vs equities', CASH_PILE/(CASH_PILE+tv)*100,80],
+  ];
+  $('#fingerprint').innerHTML=fp.map(f=>{
+    const pct=Math.min(100,f[1]/f[2]*100);
+    return `<div style="margin-bottom:13px"><div style="display:flex;justify-content:space-between;font-size:12.5px">
+      <span>${f[0]}</span><b>${f[1].toFixed(1)}%</b></div><div class="bar"><i style="width:${pct}%"></i></div></div>`;
+  }).join('');
+
+  const checks=[
+    ['Within his circle of competence','High','Insurance, banks, consumer brands, energy — businesses he has owned and understood for decades.'],
+    ['Durable economic moat','High','Network effects (Amex, Visa-style), brand (KO, AAPL), ratings duopoly (Moody\'s).'],
+    ['Consistent earning power','High','Heavily weighted to profitable, cash-generative compounders.'],
+    ['Bought at a sensible price','Medium','Record cash and net selling suggest he finds today\'s market expensive — patience over action.'],
+    ['Able, honest management','High','Stated reason for core holds: trust in leadership that compounds over decades.'],
+    ['Simple, predictable business','Medium','Mostly yes — though Alphabet and the Delta airline re-entry add some complexity/cyclicality.'],
+  ];
+  const score={High:100,Medium:60,Low:25};
+  $('#checklist').innerHTML=checks.map(c=>`<div style="margin-bottom:13px">
+    <div style="display:flex;justify-content:space-between;font-size:13px">
+      <span><b>${c[0]}</b> — <span class="nm">${c[2]}</span></span>
+      <b style="color:${c[1]==='High'?'var(--green)':c[1]==='Medium'?'var(--accent)':'var(--red)'};margin-left:10px">${c[1]}</b></div>
+    <div class="bar"><i style="width:${score[c[1]]}%"></i></div></div>`).join('');
+}
+function sumSectors(arr){return HOLDINGS.filter(h=>arr.includes(h.sector)).reduce((s,h)=>s+value(h),0);}
+
+/* ===================== PREDICTION ENGINE ===================== */
+let weights={};CRITERIA.forEach(c=>weights[c.k]=c.w);
+function renderSliders(){
+  $('#sliders').innerHTML=CRITERIA.map(c=>`<div class="slrow">
+    <label>${c.label}<span class="wv" id="wv-${c.k}">${weights[c.k]}</span></label>
+    <input type="range" min="0" max="40" value="${weights[c.k]}" data-k="${c.k}">
+  </div>`).join('');
+  document.querySelectorAll('#sliders input').forEach(inp=>{
+    inp.oninput=()=>{weights[inp.dataset.k]=+inp.value;$('#wv-'+inp.dataset.k).textContent=inp.value;renderPred();};
+  });
+}
+function fitScore(c){
+  const wsum=Object.values(weights).reduce((a,b)=>a+b,0)||1;
+  return CRITERIA.reduce((s,cr)=>s+weights[cr.k]*c[cr.k],0)/wsum;
+}
+function renderPred(){
+  const ranked=[...CANDIDATES].map(c=>({...c,score:fitScore(c)})).sort((a,b)=>b.score-a.score);
+  $('#predList').innerHTML=ranked.map((c,i)=>`<div class="pcard">
+    <div class="top">
+      <div><span class="rank ${i===0?'g1':''}">${i+1}</span><b>${c.t}</b>
+        <span class="nm">${c.name}</span></div>
+      <div class="score">${c.score.toFixed(0)}<span style="font-size:11px;color:var(--muted)">/100</span></div>
+    </div>
+    <div class="bar" style="margin-top:8px"><i style="width:${c.score}%"></i></div>
+    <div class="why">${c.why}</div>
+  </div>`).join('');
+}
+$('#resetW').onclick=()=>{CRITERIA.forEach(c=>weights[c.k]=c.w);renderSliders();renderPred();};
+
+/* ===================== ACTIVITY ===================== */
+function renderActivity(){
+  const row=(a,cls)=>`<div class="actrow"><div><b>${a.t}</b> <span class="nm">${a.label}</span><div class="ds nm" style="margin-top:2px">${a.detail}</div></div></div>`;
+  $('#actBuys').innerHTML=ACTIVITY.buys.map(a=>row(a)).join('');
+  $('#actSells').innerHTML=ACTIVITY.sells.map(a=>row(a)).join('');
+  $('#actNarrative').innerHTML=`<div class="ds" style="font-size:13.5px;line-height:1.7">
+    Q1 2026 was the <b>first full quarter under CEO Greg Abel</b>, and the 13F reads like a spring cleaning: the
+    equity book was cut from <b>40 positions to 26</b>, with full exits from Amazon, UnitedHealth, Visa, Mastercard and
+    Domino's. Yet the moves stayed recognizably Buffett — <b>Alphabet was tripled</b> (a value-priced bet on durable
+    AI/cloud economics), insurance (<b>Chubb</b>) kept growing, and the cash pile swelled to a record
+    <b>~$397B</b>. The eyebrow-raiser was a fresh <b>Delta Air Lines</b> stake — Berkshire's first airline since 2020.
+    Net-net: more discipline, more cash, a tighter book, and a willingness to act decisively now that the baton has passed.</div>`;
+}
+
+/* ===================== LIVE PRICES (Stooq, CORS-friendly CSV) ===================== */
+async function fetchLive(){
+  const dot=$('#liveDot'),txt=$('#liveTxt'),btn=$('#refreshBtn');
+  dot.className='dot';txt.textContent='Fetching…';btn.disabled=true;
+  const syms=HOLDINGS.map(h=>h.t.toLowerCase()+'.us').join(',');
+  const url='https://stooq.com/q/l/?s='+syms+'&f=sc&h&e=csv';
+  try{
+    const res=await fetch(url);
+    if(!res.ok) throw new Error('HTTP '+res.status);
+    const text=await res.text();
+    const lines=text.trim().split(/\r?\n/);
+    let hit=0;
+    lines.slice(1).forEach(line=>{
+      const [sym,close]=line.split(',');
+      if(!sym)return;
+      const t=sym.replace('.US','').replace('.us','').toUpperCase();
+      const h=HOLDINGS.find(x=>x.t===t);
+      const px=parseFloat(close);
+      if(h&&!isNaN(px)&&px>0){h.price=px;h.live=true;hit++;}
+    });
+    if(hit===0) throw new Error('no quotes parsed');
+    dot.className='dot live';txt.textContent='LIVE · '+hit+'/'+HOLDINGS.length+' quotes @ '+new Date().toLocaleTimeString();
+    renderAll();
+  }catch(err){
+    dot.className='dot err';
+    txt.textContent='Live unavailable — showing filing values';
+    console.warn('Live price fetch failed:',err);
+    renderAll();
+  }finally{btn.disabled=false;}
+}
+$('#refreshBtn').onclick=fetchLive;
+
+/* ===================== TABS / INIT ===================== */
+document.querySelectorAll('.tab').forEach(tb=>{
+  tb.onclick=()=>{
+    document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+    document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+    tb.classList.add('active');$('#view-'+tb.dataset.v).classList.add('active');
+    if(tb.dataset.v==='holdings'){drawDonut();drawBars();}
+  };
+});
+function renderAll(){renderKPIs();renderTable();drawDonut();drawBars();renderStyle();}
+window.addEventListener('resize',()=>{drawBars();});
+
+$('#disc').innerHTML=`<b>Data & method.</b> Holdings reflect Berkshire Hathaway's SEC Form 13F-HR for the quarter ended
+  ${AS_OF}. 13F reports are filed quarterly with a ~45-day lag, so this is the most recent holdings snapshot that
+  legally exists — it excludes non-13F assets (private subsidiaries, cash, bonds, foreign-listed and non-reportable
+  stakes). Top-10 values and portfolio percentages are as reported; positions marked <b>*</b> use best-available public
+  estimates for share counts. Clicking <b>"Fetch live prices"</b> pulls real-time quotes from Stooq and recomputes every
+  position as shares × current price (it may be blocked by your browser's CORS policy or when opened directly from disk,
+  in which case filing values are shown). The Prediction Engine is an <b>educational scoring model</b> of Buffett's
+  stated principles, <b>not investment advice</b>. Built ${new Date().toISOString().slice(0,10)}.`;
+
+renderSliders();renderPred();renderActivity();renderAll();
+</script>
+</body>
+</html>
