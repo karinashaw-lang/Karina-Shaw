@@ -67,6 +67,58 @@ Two things unblock it, and they are independent:
 
 Neither reaches `primary-verified`, which requires a named human reviewer by design.
 
+## The detectors were tested properly, and half of them failed
+
+The first detector score — 88% precision, 88% recall — was measured against the same nine
+findings the detectors were written after seeing. That is fit, not accuracy, and it was
+labelled as such. So eight predictions were written to
+`verification/holdout/pre-registration.json` and **committed before any search was run on
+them**, then checked.
+
+| | |
+|---|---|
+| Predicted defective | 8 |
+| Actually defective | 8 — **100% precision** |
+| Predicted defect type matched | 75% |
+
+Then the part that mattered: **three clauses the detectors predicted *clean*** were checked
+the same way. All three were defective.
+
+- `msa_ca_prop65` omits that Proposition 65 does not apply to a business with fewer than ten
+  employees — the most consequential qualifier in the statute for a product built for small
+  companies, and the clause tells the reader most likely to be exempt that they are covered.
+- `msa_ca_release` states a drafting convention as a rule of law: §1542 does not require a
+  release to quote the statute, and quoting it is neither necessary nor sufficient.
+- `msa_ca_indemnity_construction` omits the 2013 effective date of §2782.05 and its third
+  protective branch, for work outside the subcontractor's scope.
+
+**The detectors rank; they do not screen.** A flagged clause is worth reading first. An
+unflagged clause is not thereby safe, and nothing in the pipeline may treat it as such.
+`npm run holdout` reproduces all of this.
+
+## The defect rate, on a sample twice the size
+
+| | Before | Now |
+|---|---|---|
+| Clauses checked | 9 | 20 |
+| Demonstrably defective | 8 | 19 |
+| 95% lower bound | 57% | **78%** |
+| Implied defective clauses in the 360 | ≥206 | **≥280** |
+
+Nothing about the corpus changed. What changed is how much of it has been looked at.
+
+Two predicates are kept deliberately distinct: *demonstrably defective* (a contradiction or
+a gap) drives the rate, while *withheld by the gate* (anything short of corroborated) drives
+releases and fails closed. `hb_ca_sick` separates them — two of its assertions found no
+source either way, which is absence of evidence and is not counted as a defect.
+
+Newly confirmed, among others: `emp_finalpay` states the final-pay rule as absolute and
+omits the 72-hour, 24-hour and next-payday industry exceptions; `msa_ca_auto_renew` describes
+the automatic-renewal regime as it stood before AB 2863, in force since July 2025;
+`msa_ca_925` repeats the *same* "primarily works" defect already confirmed in `ea_ca_925`,
+so that error has propagated across clauses; `can_heat` asserts the indoor heat duty while
+citing only the outdoor section.
+
 ## Two ladders, because a term is not a statute
 
 The release gate was one number applied to all 360 clauses: reach `corroborated` on the

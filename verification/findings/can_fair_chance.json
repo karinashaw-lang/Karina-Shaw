@@ -1,0 +1,64 @@
+{
+  "clauseId": "can_fair_chance",
+  "checkedAt": "2026-08-15",
+  "method": "web search only — no source document was opened",
+  "heldOut": true,
+  "queries": [
+    "California Fair Chance Act Government Code 12952 employer 5 or more employees conditional offer individualized assessment 5 business days response 2023 regulations",
+    "California Fair Chance Act 2023 regulations effective October 1 2023 \"5 business days\" preliminary notice additional 5 business days dispute evidence rehabilitation"
+  ],
+  "assertions": [
+    {
+      "text": "no conviction-history inquiry until after a conditional offer",
+      "status": "corroborated"
+    },
+    {
+      "text": "a written individualized assessment considering nature and gravity, time elapsed, and nature of the job",
+      "status": "corroborated"
+    },
+    {
+      "text": "preliminary notice with a copy of the report and at least five (5) business days to respond",
+      "status": "corroborated"
+    },
+    {
+      "text": "an additional five (5) days if the applicant disputes accuracy",
+      "status": "contradicted",
+      "note": "sources give five additional BUSINESS days. The clause says \"business days\" for the first period and drops the word for the second, so a user counting calendar days shortens the period the applicant is owed."
+    },
+    {
+      "text": "final written decision with the right to appeal",
+      "status": "corroborated"
+    },
+    {
+      "text": "advertisements must not exclude people with criminal histories",
+      "status": "corroborated"
+    }
+  ],
+  "gaps": [
+    "The Act applies to employers with five or more employees. The clause states the whole procedure unconditionally, so a four-person company following it believes it is bound when it is not, and a company crossing five has no signal that it now is.",
+    "The 2023 regulations set when the five days start running where receipt cannot be confirmed — two business days for email, five calendar days for mail to a California address, ten elsewhere in the United States, twenty abroad. The clause gives the duration without the trigger.",
+    "The statutory test is whether the conviction history has a direct and adverse relationship with the specific duties of the job. The clause lists the three factors that feed that test but never states the test itself, so an assessment can recite the factors and reach no finding."
+  ],
+  "defectTypes": [
+    "omitted-qualifier",
+    "omitted-requirement"
+  ],
+  "sources": [
+    {
+      "title": "Epstein Becker Green — Amended ban-the-box regulations effective October 1, 2023",
+      "url": "https://www.ebglaw.com/insights/publications/california-employers-amended-ban-the-box-regulations-effective-october-1-2023"
+    },
+    {
+      "title": "CalChamber HRWatchdog — Revised California criminal history regulations start October 1",
+      "url": "https://hrwatchdog.calchamber.com/2023/09/revised-california-criminal-history-regulations-start-october-1/"
+    },
+    {
+      "title": "FindLaw — Cal. Gov. Code § 12952",
+      "url": "https://codes.findlaw.com/ca/government-code/gov-sect-12952/"
+    },
+    {
+      "title": "Greenberg Traurig — Understanding California’s new Fair Chance Act regulations",
+      "url": "https://www.gtlaw-laborandemployment.com/2023/09/background-check-it-out-understanding-californias-new-fair-chance-act-regulations-on-criminal-records-and-background-checks-when-making-employment-decisions/"
+    }
+  ]
+}

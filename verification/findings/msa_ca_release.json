@@ -1,0 +1,43 @@
+{
+  "clauseId": "msa_ca_release",
+  "checkedAt": "2026-08-15",
+  "method": "web search only — no source document was opened",
+  "heldOut": true,
+  "control": "the detectors predicted this clause CLEAN — it was checked to test whether a clean prediction screens out defects",
+  "queries": [
+    "California Civil Code 1542 release waiver must expressly quote section in full unknown claims requirement case law effect of omitting"
+  ],
+  "assertions": [
+    {
+      "text": "a release must expressly waive §1542, quoting it in full",
+      "status": "contradicted",
+      "note": "sources are explicit that section 1542 does not require a release to quote the statutory language — quoting it verbatim is best practice, not a condition of validity. The clause states a drafting convention as a rule of law."
+    },
+    {
+      "text": "otherwise the release will not extend to unknown claims",
+      "status": "partial",
+      "note": "the consequence is not automatic either way. Winet v. Price holds that a mere recital of waiver is NOT controlling, and that releasing unknown claims needs evidence of intent beyond the words — so quoting the statute is neither necessary nor by itself sufficient. The clause states a binary that the case law does not."
+    }
+  ],
+  "gaps": [
+    "Section 1542 was amended effective 1 January 2019 (adding \"or releasing party\", changing \"must\" to \"would\"). A clause that instructs the drafter to quote the section in full without saying which version is being quoted invites a stale quotation, which is the failure mode the instruction was meant to prevent."
+  ],
+  "defectTypes": [
+    "overstated-consequence",
+    "omitted-qualifier"
+  ],
+  "sources": [
+    {
+      "title": "Cooley — California legislature amends required Civil Code section 1542 language",
+      "url": "https://www.cooley.com/news/insight/2019/2019-02-05-california-legislature-amends-required-ccp-1542-language"
+    },
+    {
+      "title": "Justia — Winet v. Price (1992) 4 Cal.App.4th 1159",
+      "url": "https://law.justia.com/cases/california/court-of-appeal/4th/4/1159.html"
+    },
+    {
+      "title": "Stimmel Law — California releases and Civil Code section 1542",
+      "url": "https://stimmel-law.com/articles/california-releases-and-civil-code-section-1542/"
+    }
+  ]
+}

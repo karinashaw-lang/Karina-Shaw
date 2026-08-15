@@ -1,0 +1,48 @@
+{
+  "clauseId": "msa_ca_prop65",
+  "checkedAt": "2026-08-15",
+  "method": "web search only — no source document was opened",
+  "heldOut": true,
+  "control": "the detectors predicted this clause CLEAN — it was checked to test whether a clean prediction screens out defects",
+  "queries": [
+    "California Proposition 65 warning Health Safety Code 25249.6 exemption employers fewer than 10 employees safe harbor warning requirements internet purchase"
+  ],
+  "assertions": [
+    {
+      "text": "goods sold into California may require a warning where they expose a person to a listed chemical",
+      "status": "corroborated"
+    },
+    {
+      "text": "enforcement is primarily by private plaintiffs who recover attorney’s fees",
+      "status": "corroborated"
+    },
+    {
+      "text": "a warning that is present but non-conforming is treated as no warning at all",
+      "status": "partial",
+      "note": "the safe-harbor regulations define warnings deemed clear and reasonable; a non-conforming warning loses the safe harbor rather than being void as such"
+    }
+  ],
+  "gaps": [
+    "Proposition 65 does not apply to a business employing fewer than 10 employees. For a product built for small companies this is the single most consequential qualifier in the statute, and the clause states the duty with no threshold at all — so the reader most likely to be exempt is told they are covered.",
+    "The exemption does not travel upstream: a manufacturer or distributor selling through an exempt small vendor still owes the consumer a warning. A clause that allocates responsibility between the parties without this cannot allocate it correctly.",
+    "The safe-harbor warning content and methods were amended effective 30 August 2018. The clause tells the reader to allocate responsibility for \"the warning’s content and placement\" without pointing at the regulations that define what content is safe."
+  ],
+  "defectTypes": [
+    "omitted-qualifier",
+    "omitted-requirement"
+  ],
+  "sources": [
+    {
+      "title": "California OEHHA — Are any businesses exempt from Proposition 65?",
+      "url": "https://www.p65warnings.ca.gov/faq/businesses/are-any-businesses-exempt-proposition-65"
+    },
+    {
+      "title": "Jones Day — California simplifies Proposition 65 obligations",
+      "url": "https://www.jonesday.com/en/insights/2020/07/2020-regulatory-amendment-proposition-65"
+    },
+    {
+      "title": "OEHHA — Businesses and Proposition 65",
+      "url": "https://oehha.ca.gov/proposition-65/businesses-and-proposition-65"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "clauseId": "msa_ca_925",
+  "checkedAt": "2026-08-15",
+  "method": "web search only — no source document was opened",
+  "heldOut": true,
+  "queries": [
+    "California Labor Code 925 employee choice of law forum voidable \"primarily resides and works\" exception represented by legal counsel negotiating"
+  ],
+  "assertions": [
+    {
+      "text": "a non-California forum or choice of law is voidable at the employee’s election",
+      "status": "corroborated",
+      "note": "sources add that only the offending provision is voidable, not the whole agreement"
+    },
+    {
+      "text": "the protection reaches an employee \"who primarily works in California\"",
+      "status": "contradicted",
+      "note": "the statutory test is an employee who primarily RESIDES AND WORKS in California. Dropping the residence conjunct widens the rule to anyone working here, which is the same defect already confirmed in ea_ca_925 — it has propagated across clauses."
+    },
+    {
+      "text": "parties to a contract of at least $250,000 may choose California law regardless of connection",
+      "status": "corroborated",
+      "note": "Civ. Code 1646.5"
+    }
+  ],
+  "gaps": [
+    "Section 925 does not apply where the employee was in fact individually represented by a lawyer who was involved in negotiating the forum or choice-of-law term. That is the one lawful route to a non-California forum, and the clause omits it entirely — so it tells the reader the door is shut when the statute leaves it open."
+  ],
+  "defectTypes": [
+    "overstated-scope",
+    "omitted-qualifier"
+  ],
+  "sources": [
+    {
+      "title": "Ogletree — Labor Code 925: answers to 10 key questions",
+      "url": "https://ogletree.com/insights-resources/blog-posts/labor-code-section-925-answers-to-10-key-questions-about-californias-new-limits-on-out-of-state-choice-of-law-and-forum-selection-clauses/"
+    },
+    {
+      "title": "SHRM — 10 key questions about California choice of law and forum selection clauses",
+      "url": "https://www.shrm.org/topics-tools/employment-law-compliance/10-key-questions-california-choice-law-forum-selection-clauses"
+    },
+    {
+      "title": "FindLaw — Cal. Lab. Code § 925",
+      "url": "https://codes.findlaw.com/ca/labor-code/lab-sect-925/"
+    }
+  ]
+}

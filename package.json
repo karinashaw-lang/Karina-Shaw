@@ -12,7 +12,7 @@
     "probe": "node templates/tools/probe-sources.mjs",
     "verify": "node templates/tools/verify.mjs",
     "queue": "node templates/tools/queue.mjs",
-    "audit": "npm run test && npm run check && npm run probe && npm run verify && npm run queue && npm run packet && npm run classify && npm run egress && npm run texts && npm run texts:audit && npm run pins && npm run lint && npm run cost && npm run provenance",
+    "audit": "npm run test && npm run check && npm run probe && npm run verify && npm run queue && npm run packet && npm run classify && npm run egress && npm run texts && npm run texts:audit && npm run pins && npm run lint && npm run holdout && npm run cost && npm run provenance",
     "egress": "node templates/tools/egress-request.mjs",
     "plan": "node templates/tools/assertions.mjs",
     "findings": "node templates/tools/findings.mjs",
@@ -27,6 +27,7 @@
     "inspect": "node templates/tools/ingest.mjs --inspect",
     "texts:audit": "node templates/tools/ingest.mjs --audit",
     "packet": "node templates/tools/drafting-packet.mjs",
-    "classify": "node templates/tools/classification-packet.mjs"
+    "classify": "node templates/tools/classification-packet.mjs",
+    "holdout": "node templates/tools/holdout.mjs"
   }
 }

@@ -1,0 +1,46 @@
+{
+  "clauseId": "msa_ca_indemnity_construction",
+  "checkedAt": "2026-08-15",
+  "method": "web search only — no source document was opened",
+  "heldOut": true,
+  "control": "the detectors predicted this clause CLEAN — it was checked to test whether a clean prediction screens out defects",
+  "queries": [
+    "California Civil Code 2782 construction contract indemnity void sole negligence willful misconduct 2782.05 subcontractor active negligence exceptions residential"
+  ],
+  "assertions": [
+    {
+      "text": "California voids indemnity against the promisee’s own sole negligence or willful misconduct in a construction contract",
+      "status": "corroborated"
+    },
+    {
+      "text": "a subcontractor’s indemnity of a general contractor is limited as to the general contractor’s active negligence",
+      "status": "corroborated"
+    },
+    {
+      "text": "additional insured endorsements are subject to parallel restrictions",
+      "status": "corroborated"
+    }
+  ],
+  "gaps": [
+    "Section 2782.05 applies to contracts entered into on or after 1 January 2013. The clause states the limit with no temporal boundary, so it is asserted of contracts it does not reach.",
+    "Section 2782.05 also voids the subcontractor’s indemnity to the extent claims arise from work outside the subcontractor’s contractual scope. That is a third protection, independent of active negligence, and the clause omits it — a subcontractor relying on this clause would not know to raise it."
+  ],
+  "defectTypes": [
+    "omitted-qualifier",
+    "omitted-requirement"
+  ],
+  "sources": [
+    {
+      "title": "FindLaw — Cal. Civ. Code § 2782.05",
+      "url": "https://codes.findlaw.com/ca/civil-code/civ-sect-2782-05/"
+    },
+    {
+      "title": "Jones Day — Navigating California’s expanded anti-indemnity laws for construction projects",
+      "url": "https://www.jonesday.com/en/insights/2013/04/navigating-the-treacherous-waters-of-californias-expanded-antiindemnity-laws-for-construction-projects"
+    },
+    {
+      "title": "Justia — Cal. Civ. Code § 2782 (2024)",
+      "url": "https://law.justia.com/codes/california/code-civ/division-3/part-4/title-12/section-2782"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "clauseId": "emp_finalpay",
+  "checkedAt": "2026-08-15",
+  "method": "web search only — no source document was opened",
+  "heldOut": true,
+  "queries": [
+    "California final paycheck Labor Code 201 202 203 waiting time penalty 30 days seasonal exceptions oil drilling motion picture"
+  ],
+  "assertions": [
+    {
+      "text": "a terminated employee must be paid all wages at the time of termination",
+      "status": "partial",
+      "note": "true as the general rule, but stated as absolute; several industries have their own deadlines"
+    },
+    {
+      "text": "accrued vacation is payable as wages",
+      "status": "corroborated"
+    },
+    {
+      "text": "resignation with 72 hours notice is payable on the last day",
+      "status": "corroborated"
+    },
+    {
+      "text": "resignation without notice is payable within 72 hours",
+      "status": "corroborated"
+    },
+    {
+      "text": "waiting time penalty of one day of wages per day late, capped at thirty days",
+      "status": "corroborated"
+    }
+  ],
+  "gaps": [
+    "Labor Code 201 carries industry exceptions the clause states nothing about: seasonal agricultural layoffs in curing, canning or drying perishable produce are payable within 72 hours; oil drilling layoffs within 24 hours excluding weekends and holidays; motion picture production employees whose pay requires special computation by the next regular payday. The clause reads as a flat rule, so an employer in one of those industries following it pays on the wrong schedule."
+  ],
+  "defectTypes": [
+    "omitted-qualifier"
+  ],
+  "sources": [
+    {
+      "title": "Shouse Law — Labor Code 203 waiting time penalty",
+      "url": "https://www.shouselaw.com/ca/labor/labor-code-203/"
+    },
+    {
+      "title": "California DIR/DLSE — Paydays, pay periods, and final wages",
+      "url": "https://www.dir.ca.gov/dlse/faq_paydays.htm"
+    },
+    {
+      "title": "Recording Law — California final paycheck laws: Labor Code 201, 202, 203",
+      "url": "https://www.recordinglaw.com/us-laws/final-paycheck-laws/california-final-paycheck-laws/"
+    }
+  ]
+}
