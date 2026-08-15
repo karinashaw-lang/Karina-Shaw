@@ -14,6 +14,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {loadCorpus, ROOT} from './corpus.mjs';
 import {defectAnalysis} from './findings.mjs';
+import {lintClause, DETECTORS} from './lint.mjs';
 
 const TOP = process.argv.includes('--top') ? +process.argv[process.argv.indexOf('--top')+1] : Infinity;
 const C = loadCorpus();
@@ -31,6 +32,7 @@ function priority(c){
   p += /§|C\.F\.R\.|U\.S\.C\./.test(c.body) ? 3 : 0;               // asserts a specific provision in the text
   p += (gateRank - LEVELS[c.verification].rank);                   // distance from the gate
   p += (c.defects?.length || 0) * 25;                              // known-wrong outranks merely-unverified
+  p += Math.min(9, lintClause(c).length * 3);                      // suspected by a validated detector
   return p;
 }
 
@@ -48,6 +50,7 @@ const queue = C.clauses
     defects: (c.defects||[]).length,
     defectDetail: (c.defects||[]).join(' || '),
     lastChecked: c.lastChecked || '',
+    lintHits: lintClause(c).map(h=>h.id).join(' '),
     note: c.verificationNote || '',
     title: c.title,
     file: C.sources[c.id]
@@ -59,7 +62,7 @@ const outDir = path.join(ROOT,'..','verification');
 fs.mkdirSync(outDir,{recursive:true});
 
 /* CSV — for whoever is actually working the list */
-const cols = ['priority','id','title','defects','verification','severity','insertion','document','jurisdictions','citations','lastChecked','defectDetail','file','note'];
+const cols = ['priority','id','title','defects','lintHits','verification','severity','insertion','document','jurisdictions','citations','lastChecked','defectDetail','file','note'];
 const esc = v => `"${String(v).replace(/"/g,'""')}"`;
 fs.writeFileSync(path.join(outDir,'review-queue.csv'),
   [cols.join(','), ...shown.map(r => cols.map(k => esc(r[k])).join(','))].join('\n') + '\n');
@@ -103,6 +106,21 @@ const md = [
    'The dominant failure is omission, not invention. The clauses generally get the headline number right and',
    'leave out the qualifier that decides whether the number applies — which is the failure mode least likely to',
    'be caught by reading the clause on its own.',
+   '',
+   '## Corpus-wide triage',
+   '',
+   `Those patterns are structural, so they can be looked for without checking each clause against a source.`,
+   `\`tools/lint.mjs\` implements one detector per taxonomy entry and flags **${C.clauses.filter(c=>lintClause(c).length).length} of ${C.clauses.length} clauses**.`,
+   '',
+   '| Detector | Flagged | Predicts |',
+   '|---|---:|---|',
+   ...DETECTORS.map(d=>`| \`${d.id}\` | ${C.clauses.filter(c=>lintClause(c).some(h=>h.id===d.id)).length} | ${d.predicts} |`),
+   '',
+   '**Read this with the caveat it deserves.** The detectors were written after seeing the nine sampled clauses,',
+   'so scoring them against those same nine measures fit, not predictive accuracy. The 88% recall and 88% precision',
+   'that scoring reports are optimistic and rest on n=9. What the exercise does establish is that the taxonomy is',
+   'mechanically expressible — the patterns are real and detectable rather than a narrative imposed on the sample.',
+   'Treat a flag as "look here first", never as a verdict. A held-out sample is needed for an honest error rate.',
    ''] : []),
   `${queue.length} of ${C.clauses.length} clauses are below the release gate \`${C.taxonomy.releaseGate.minimum}\` and cannot be drafted.`,
   '',
