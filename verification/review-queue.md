@@ -41,12 +41,12 @@ whether it is in the jurisdiction being led with, whether it asserts a specific 
 
 | # | Clause | Doc | Sev | Level | Citations |
 |---:|---|---|---|---|---|
-| 1 | `can_calwarn` — Cal-WARN Notice | ca-notices | critical | `single-source` | Cal. Lab. Code §§1400–1408 |
-| 2 | `ic_ca_freelance` — Freelance Worker Protection Act | contractor-agreement | critical | `single-source` | Cal. Bus. & Prof. Code §18100 (SB 988) |
-| 3 | `can_harassment_training` — Harassment Prevention Training | ca-notices | critical | `multi-cited` | Cal. Gov. Code §12950.1 | California Civil Rights Department — Sexual harassment prevention training FAQ for employers | FindLaw — Cal. Gov. Code §12950.1 | Traliant — California sexual harassment training requirements |
-| 4 | `can_wtpa` — Wage Theft Prevention Act Notice | ca-notices | critical | `multi-cited` | Cal. Lab. Code §2810.5 | Ogletree Deakins — California publishes new wage theft notice | CalChamber HRWatchdog — Updated wage theft notice released | California Workplace Law Blog — Labor Commissioner publishes updated wage theft notice |
-| 5 | `ea_ca_925` — California Forum and Choice of Law | employment-agreement | critical | `single-source` | Cal. Lab. Code §925 |
-| 6 | `ipa_state_carveout` — Statutory Invention Carve-Out | ip-assignment | critical | `single-source` | Cal. Lab. Code §2870 |
+| 1 | `ea_ca_925` — California Forum and Choice of Law | employment-agreement | critical | `single-source` | Cal. Lab. Code §925 |
+| 2 | `ipa_state_carveout` — Statutory Invention Carve-Out | ip-assignment | critical | `single-source` | Cal. Lab. Code §2870 |
+| 3 | `can_calwarn` — Cal-WARN Notice | ca-notices | critical | `single-source` | Cal. Lab. Code §§1400–1408 |
+| 4 | `ic_ca_freelance` — Freelance Worker Protection Act | contractor-agreement | critical | `single-source` | Cal. Bus. & Prof. Code §18100 (SB 988) |
+| 5 | `can_harassment_training` — Harassment Prevention Training | ca-notices | critical | `multi-cited` | Cal. Gov. Code §12950.1 | California Civil Rights Department — Sexual harassment prevention training FAQ for employers | FindLaw — Cal. Gov. Code §12950.1 | Traliant — California sexual harassment training requirements |
+| 6 | `can_wtpa` — Wage Theft Prevention Act Notice | ca-notices | critical | `multi-cited` | Cal. Lab. Code §2810.5 | Ogletree Deakins — California publishes new wage theft notice | CalChamber HRWatchdog — Updated wage theft notice released | California Workplace Law Blog — Labor Commissioner publishes updated wage theft notice |
 | 7 | `msa_ca_925` — California Choice of Law Limits | msa | critical | `multi-cited` | Cal. Lab. Code §925 | Cal. Civ. Code §1646.5 |
 | 8 | `cal_ca_annual_tax` — California Annual Tax and Fee | compliance-calendar | critical | `single-source` | Cal. Rev. & Tax. Code §§17941, 17942, 23153 |
 | 9 | `cal_ca_seller_permit` — Seller's Permit and Sales Tax | compliance-calendar | critical | `single-source` | Cal. Rev. & Tax. Code §6066 |
@@ -69,9 +69,25 @@ whether it is in the jurisdiction being led with, whether it asserts a specific 
 
 ## Clauses checked and found defective
 
-4 clause(s) have been checked against sources and found to omit or misstate a requirement.
+6 clause(s) have been checked against sources and found to omit or misstate a requirement.
 These sit at the top of the queue: a clause known to be wrong is more dangerous than one merely unverified,
 because it reads as complete.
+
+### `ea_ca_925` — California Forum and Choice of Law
+
+Checked 2026-08-15. 3 defect(s).
+
+- The prohibition attaches to requiring the provision as a condition of employment. The clause omits that qualifier and reads as though any such provision is voidable however it arose.
+- Injunctive relief is available alongside fees. The clause mentions only fees.
+- contradicted: applies to an employee who primarily works in California
+
+### `ipa_state_carveout` — Statutory Invention Carve-Out
+
+Checked 2026-08-15. 3 defect(s).
+
+- A provision purporting to require assignment of a §2870-protected invention is against the public policy of California and unenforceable. The clause states the carve-out but not that an overbroad assignment is void, which is the consequence that matters.
+- §§2870–2872 govern employees. The clause is drafted for founders and sits in the founder IP assignment; a founder who is not an employee may not be covered, and the clause does not flag that.
+- contradicted: the written notice is given under §2870
 
 ### `can_calwarn` — Cal-WARN Notice
 
