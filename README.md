@@ -67,6 +67,43 @@ Two things unblock it, and they are independent:
 
 Neither reaches `primary-verified`, which requires a named human reviewer by design.
 
+## Nothing from memory
+
+The 360 clauses were written from model memory. Sampling put the defect rate at 89%, and
+the dominant failure is omission — the qualifier that decides whether a rule applies is
+exactly what memory drops. No review fixes that at the source, because the next clause
+written the same way fails the same way.
+
+`npm run provenance` makes the rule structural. Every clause body is hashed into
+`templates/sources/authored.json`. A body that is new or changed may only enter the corpus
+if it is **pinned to an attested source text** — otherwise the build fails:
+
+```
+2 clause(s) authored without a source:
+  charter_name      modified   — body changed with no pin, the change can only have come from memory
+  charter_invented  unrecorded — new clause with no pin, it can only have come from memory
+```
+
+The existing 360 are sealed as `memory-legacy`: grandfathered so the repo builds,
+permanently marked so nobody mistakes them for sourced, and blocked from shipping by the
+release gate regardless. Re-seeding is refused — relabelling modified clauses as legacy is
+precisely the bypass the file exists to prevent.
+
+## Can the source texts be obtained here?
+
+No, and this was tested rather than assumed:
+
+| Route | Result |
+|---|---|
+| leginfo, Cornell, eCFR, Justia, FindLaw, govinfo, Congress, Caselaw Access Project + 6 more | HTTP 403 at the egress proxy |
+| GitHub repository search | blocked — this session is scoped to one repository |
+| `raw.githubusercontent.com` | reachable, but the legal repos are *parsers* that download from the blocked hosts |
+| npm and PyPI | reachable, but every legal package is a *client* for a blocked API |
+
+The tooling exists in abundance; the text lives on exactly the hosts that are denied.
+`npm run egress` generates the allowlist request. Failing that, supply a text directly and
+`npm run ingest` will store, hash, and attest it.
+
 ## The honest summary
 
 The clause text is illustrative content written by a model and is **not legal advice, not
