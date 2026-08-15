@@ -2,20 +2,49 @@
   "clauseId": "ic_ca_freelance",
   "checkedAt": "2026-08-15",
   "method": "web search only — no source document was opened",
-  "queries": ["California freelance worker protection act SB 988 written contract $250 retain four years pay within 30 days"],
+  "queries": [
+    "California freelance worker protection act SB 988 written contract $250 retain four years pay within 30 days"
+  ],
   "assertions": [
-    {"text": "$250 threshold", "status": "corroborated", "note": "sources state $250 or greater"},
-    {"text": "written contract required", "status": "corroborated"},
-    {"text": "retain for at least four (4) years", "status": "corroborated", "note": "sources state no less than four years"},
-    {"text": "pay by stated date, or within thirty (30) days of completion", "status": "corroborated"}
+    {
+      "text": "$250 threshold",
+      "status": "corroborated",
+      "note": "sources state $250 or greater"
+    },
+    {
+      "text": "written contract required",
+      "status": "corroborated"
+    },
+    {
+      "text": "retain for at least four (4) years",
+      "status": "corroborated",
+      "note": "sources state no less than four years"
+    },
+    {
+      "text": "pay by stated date, or within thirty (30) days of completion",
+      "status": "corroborated"
+    }
   ],
   "gaps": [
     "The $250 threshold aggregates across all contracts between the same hiring party and contractor in the preceding 120 days. The clause states a flat $250 and would let a user split engagements below the threshold and believe they were outside the Act.",
     "The hiring party must furnish a signed copy of the contract to the freelance worker. The clause requires a written contract but not that a signed copy be provided."
   ],
   "sources": [
-    {"title": "Fisher Phillips — New California law expands protections for freelance workers", "url": "https://www.fisherphillips.com/en/news-insights/new-california-law-expands-protections-freelance-workers-what-employers-must-know-5-steps-to-comply.html"},
-    {"title": "California Workplace Law Blog — Understanding the Freelance Worker Protection Act", "url": "https://www.californiaworkplacelawblog.com/2024/09/articles/wage-and-hour/senate-bill-988-understanding-the-freelance-worker-protection-act-what-employers-need-to-know/"},
-    {"title": "MyHRConcierge — Understanding SB 988", "url": "https://myhrconcierge.com/2024/11/12/understanding-the-freelance-worker-protection-act-sb-988-in-california/"}
+    {
+      "title": "Fisher Phillips — New California law expands protections for freelance workers",
+      "url": "https://www.fisherphillips.com/en/news-insights/new-california-law-expands-protections-freelance-workers-what-employers-must-know-5-steps-to-comply.html"
+    },
+    {
+      "title": "California Workplace Law Blog — Understanding the Freelance Worker Protection Act",
+      "url": "https://www.californiaworkplacelawblog.com/2024/09/articles/wage-and-hour/senate-bill-988-understanding-the-freelance-worker-protection-act-what-employers-need-to-know/"
+    },
+    {
+      "title": "MyHRConcierge — Understanding SB 988",
+      "url": "https://myhrconcierge.com/2024/11/12/understanding-the-freelance-worker-protection-act-sb-988-in-california/"
+    }
+  ],
+  "defectTypes": [
+    "omitted-qualifier",
+    "omitted-requirement"
   ]
 }

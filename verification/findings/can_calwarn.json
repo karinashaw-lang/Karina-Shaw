@@ -2,13 +2,31 @@
   "clauseId": "can_calwarn",
   "checkedAt": "2026-08-15",
   "method": "web search only — no source document was opened",
-  "queries": ["Cal-WARN Act California Labor Code 1400 75 employees 60 days notice mass layoff relocation part-time counted"],
+  "queries": [
+    "Cal-WARN Act California Labor Code 1400 75 employees 60 days notice mass layoff relocation part-time counted"
+  ],
   "assertions": [
-    {"text": "75 or more employees", "status": "corroborated"},
-    {"text": "sixty (60) days written notice", "status": "corroborated"},
-    {"text": "covers mass layoff, relocation, and termination", "status": "corroborated"},
-    {"text": "part-time employees count toward the threshold", "status": "corroborated"},
-    {"text": "relocation of more than one hundred (100) miles", "status": "unsupported", "note": "no source found stated a distance; the clause may be right but nothing checked supports it"}
+    {
+      "text": "75 or more employees",
+      "status": "corroborated"
+    },
+    {
+      "text": "sixty (60) days written notice",
+      "status": "corroborated"
+    },
+    {
+      "text": "covers mass layoff, relocation, and termination",
+      "status": "corroborated"
+    },
+    {
+      "text": "part-time employees count toward the threshold",
+      "status": "corroborated"
+    },
+    {
+      "text": "relocation of more than one hundred (100) miles",
+      "status": "unsupported",
+      "note": "no source found stated a distance; the clause may be right but nothing checked supports it"
+    }
   ],
   "gaps": [
     "The 75-employee threshold looks back twelve months — an establishment that hit 75 at any point in the preceding year is covered. The clause implies a current headcount test, which would let a shrinking employer conclude it is exempt when it is not.",
@@ -16,8 +34,22 @@
     "Damages are capped at 60 days of back pay, or half the days the employee worked, whichever is smaller. The clause states back pay for each day of shortfall with no cap, overstating the exposure."
   ],
   "sources": [
-    {"title": "California DIR — Cal-WARN Act", "url": "https://www.dir.ca.gov/dlse/cal-warnact.html"},
-    {"title": "LegalClarity — California WARN Act requirements, notice and penalties", "url": "https://legalclarity.org/what-is-the-california-warn-act-and-its-requirements/"},
-    {"title": "Stimmel Law — The WARN Act: federal and California law", "url": "https://www.stimmel-law.com/en/articles/warn-act-warning-layoffs-employees-federal-and-california-law"}
+    {
+      "title": "California DIR — Cal-WARN Act",
+      "url": "https://www.dir.ca.gov/dlse/cal-warnact.html"
+    },
+    {
+      "title": "LegalClarity — California WARN Act requirements, notice and penalties",
+      "url": "https://legalclarity.org/what-is-the-california-warn-act-and-its-requirements/"
+    },
+    {
+      "title": "Stimmel Law — The WARN Act: federal and California law",
+      "url": "https://www.stimmel-law.com/en/articles/warn-act-warning-layoffs-employees-federal-and-california-law"
+    }
+  ],
+  "defectTypes": [
+    "omitted-qualifier",
+    "omitted-qualifier",
+    "overstated-consequence"
   ]
 }

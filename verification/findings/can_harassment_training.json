@@ -2,22 +2,57 @@
   "clauseId": "can_harassment_training",
   "checkedAt": "2026-08-15",
   "method": "web search only — no source document was opened",
-  "queries": ["California Government Code 12950.1 harassment prevention training 5 employees two hours supervisors one hour nonsupervisory every two years"],
+  "queries": [
+    "California Government Code 12950.1 harassment prevention training 5 employees two hours supervisors one hour nonsupervisory every two years"
+  ],
   "assertions": [
-    {"text": "five (5) or more employees", "status": "corroborated"},
-    {"text": "two (2) hours for supervisors", "status": "corroborated"},
-    {"text": "one (1) hour for non-supervisory employees", "status": "corroborated"},
-    {"text": "every two (2) years", "status": "corroborated"},
-    {"text": "within six (6) months of hire or promotion", "status": "unsupported"},
-    {"text": "seasonal and temporary within thirty (30) days or one hundred hours", "status": "unsupported"},
-    {"text": "retain records for two (2) years", "status": "unsupported"}
+    {
+      "text": "five (5) or more employees",
+      "status": "corroborated"
+    },
+    {
+      "text": "two (2) hours for supervisors",
+      "status": "corroborated"
+    },
+    {
+      "text": "one (1) hour for non-supervisory employees",
+      "status": "corroborated"
+    },
+    {
+      "text": "every two (2) years",
+      "status": "corroborated"
+    },
+    {
+      "text": "within six (6) months of hire or promotion",
+      "status": "unsupported"
+    },
+    {
+      "text": "seasonal and temporary within thirty (30) days or one hundred hours",
+      "status": "unsupported"
+    },
+    {
+      "text": "retain records for two (2) years",
+      "status": "unsupported"
+    }
   ],
   "gaps": [
     "Sources describe prevention of abusive conduct as a required component of the training. The clause does not mention it."
   ],
   "sources": [
-    {"title": "California Civil Rights Department — Training FAQ for employers", "url": "https://calcivilrights.ca.gov/wp-content/uploads/sites/32/2022/11/Sexual-Harassment-Prevention-Training-For-Employers-FAQ_ENG.pdf"},
-    {"title": "FindLaw — Cal. Gov. Code §12950.1", "url": "https://codes.findlaw.com/ca/government-code/gov-sect-12950-1/"},
-    {"title": "Traliant — California sexual harassment training requirements", "url": "https://www.traliant.com/resources/california-law-now-requires-sexual-harassment-training-for-all-employees/"}
+    {
+      "title": "California Civil Rights Department — Training FAQ for employers",
+      "url": "https://calcivilrights.ca.gov/wp-content/uploads/sites/32/2022/11/Sexual-Harassment-Prevention-Training-For-Employers-FAQ_ENG.pdf"
+    },
+    {
+      "title": "FindLaw — Cal. Gov. Code §12950.1",
+      "url": "https://codes.findlaw.com/ca/government-code/gov-sect-12950-1/"
+    },
+    {
+      "title": "Traliant — California sexual harassment training requirements",
+      "url": "https://www.traliant.com/resources/california-law-now-requires-sexual-harassment-training-for-all-employees/"
+    }
+  ],
+  "defectTypes": [
+    "omitted-requirement"
   ]
 }

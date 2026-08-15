@@ -111,3 +111,28 @@ if(INVOKED){
   fs.writeFileSync(out, JSON.stringify({scoredAt:new Date().toISOString(), tally, rows},null,2)+'\n');
   console.log(`summary written to verification/findings-summary.json`);
 }
+
+/* ---- defect rate and taxonomy ----
+   Exported so findings.test.mjs can check the arithmetic rather than trusting it. */
+export function cloppperPearsonLower(k, n, alpha=0.05){
+  /* largest p such that P(X >= k | n, p) <= alpha, by bisection on the binomial tail */
+  if(k===0) return 0;
+  const tail = p => { let s=0; for(let i=k;i<=n;i++) s += binom(n,i)*Math.pow(p,i)*Math.pow(1-p,n-i); return s; };
+  let lo=0, hi=1;
+  for(let i=0;i<200;i++){ const mid=(lo+hi)/2; if(tail(mid) < alpha) lo=mid; else hi=mid; }
+  return lo;
+}
+function binom(n,k){ let r=1; for(let i=1;i<=k;i++) r = r*(n-k+i)/i; return r; }
+
+export function defectAnalysis(findings){
+  const checked = findings.length;
+  const defective = findings.filter(f=>(f.gaps||[]).length || (f.assertions||[]).some(a=>a.status==='contradicted')).length;
+  const types = {};
+  findings.forEach(f=>(f.defectTypes||[]).forEach(t=>types[t]=(types[t]||0)+1));
+  const assertions = findings.reduce((s,f)=>s+(f.assertions||[]).length,0);
+  const unsupported = findings.reduce((s,f)=>s+(f.assertions||[]).filter(a=>a.status==='unsupported').length,0);
+  const contradicted = findings.reduce((s,f)=>s+(f.assertions||[]).filter(a=>a.status==='contradicted').length,0);
+  return {checked, defective, rate: checked?defective/checked:0,
+          lower95: cloppperPearsonLower(defective, checked),
+          types, assertions, unsupported, contradicted};
+}

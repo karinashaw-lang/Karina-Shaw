@@ -45,3 +45,25 @@ t('malformed urls are dropped', hostsOf([{url:'not-a-url'},{url:'https://a.com/p
 
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail?1:0);
+
+/* appended: defect rate arithmetic */
+import {defectAnalysis, cloppperPearsonLower} from './findings.mjs';
+{
+  let p2=0,f2=0; const t2=(n,c)=>{ if(c) p2++; else {f2++; console.log('  FAIL  '+n);} };
+  console.log('\ndefect rate arithmetic');
+  t2('0 of 10 gives a lower bound of 0', cloppperPearsonLower(0,10)===0);
+  t2('10 of 10 gives a high but sub-1 lower bound', (()=>{const l=cloppperPearsonLower(10,10); return l>0.6&&l<1;})());
+  t2('8 of 9 lower bound sits between 0.5 and 0.9', (()=>{const l=cloppperPearsonLower(8,9); return l>0.5&&l<0.9;})());
+  t2('more samples at the same rate tighten the bound',
+     cloppperPearsonLower(40,45) > cloppperPearsonLower(8,9));
+  t2('a clause with gaps counts as defective',
+     defectAnalysis([{gaps:['g'],assertions:[]}]).defective===1);
+  t2('a clause with a contradiction counts as defective',
+     defectAnalysis([{gaps:[],assertions:[{status:'contradicted'}]}]).defective===1);
+  t2('a clause with only unsupported assertions is not counted defective',
+     defectAnalysis([{gaps:[],assertions:[{status:'unsupported'}]}]).defective===0);
+  t2('taxonomy tallies across findings',
+     defectAnalysis([{defectTypes:['a','b']},{defectTypes:['a']}]).types.a===2);
+  console.log(`${p2} passed, ${f2} failed`);
+  if(f2) process.exit(1);
+}

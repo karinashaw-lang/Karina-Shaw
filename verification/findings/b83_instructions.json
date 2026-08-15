@@ -1,0 +1,21 @@
+{
+  "clauseId": "b83_instructions",
+  "checkedAt": "2026-08-15",
+  "method": "web search only — no source document was opened",
+  "queries": ["83(b) election filing 30 days IRS where to file copy to employer requirement no longer required tax return"],
+  "assertions": [
+    {"text": "within thirty (30) days of grant", "status": "corroborated", "note": "sources confirm calendar days including weekends and holidays"},
+    {"text": "file with the IRS office where the taxpayer files their federal return", "status": "corroborated"},
+    {"text": "provide a copy to the Company", "status": "corroborated"},
+    {"text": "no procedure to cure a late filing", "status": "corroborated"}
+  ],
+  "gaps": [
+    "The IRS now provides Form 15620 as a standardised way to make the election. The clause describes only a written statement and does not mention the form, so a user following it would hand-draft something the IRS has since published a form for."
+  ],
+  "defectTypes": ["omitted-requirement"],
+  "sources": [
+    {"title": "KPMG — Section 83(b) elections, from near and far", "url": "https://kpmg.com/kpmg-us/content/dam/kpmg/taxnewsflash/pdf/2025/06/061625-S83b-CAB.pdf"},
+    {"title": "Accountably — Form 15620 and the 30-day deadline", "url": "https://accountably.com/irs-forms/f15620/"},
+    {"title": "VestingStrategy — How to file a Section 83(b) election within 30 days", "url": "https://www.vestingstrategy.com/guides/how-to-file-section-83b-election-30-days"}
+  ]
+}

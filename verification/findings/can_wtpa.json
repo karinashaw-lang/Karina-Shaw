@@ -2,20 +2,50 @@
   "clauseId": "can_wtpa",
   "checkedAt": "2026-08-15",
   "method": "web search only — no source document was opened",
-  "queries": ["California Labor Code 2810.5 wage theft prevention notice required content"],
+  "queries": [
+    "California Labor Code 2810.5 wage theft prevention notice required content"
+  ],
   "assertions": [
-    {"text": "written notice at hire to non-exempt employees", "status": "corroborated"},
-    {"text": "rate and basis of pay, allowances, regular payday, employer name and dba, workers' compensation carrier", "status": "corroborated"},
-    {"text": "reissue within seven (7) days of a change not shown on the next wage statement", "status": "corroborated"},
-    {"text": "in the language the employer normally uses", "status": "corroborated"},
-    {"text": "physical and mailing address of the main office and telephone number", "status": "unsupported", "note": "not mentioned in any source found"}
+    {
+      "text": "written notice at hire to non-exempt employees",
+      "status": "corroborated"
+    },
+    {
+      "text": "rate and basis of pay, allowances, regular payday, employer name and dba, workers' compensation carrier",
+      "status": "corroborated"
+    },
+    {
+      "text": "reissue within seven (7) days of a change not shown on the next wage statement",
+      "status": "corroborated"
+    },
+    {
+      "text": "in the language the employer normally uses",
+      "status": "corroborated"
+    },
+    {
+      "text": "physical and mailing address of the main office and telephone number",
+      "status": "unsupported",
+      "note": "not mentioned in any source found"
+    }
   ],
   "gaps": [
     "The notice must state whether a federal or state disaster declaration applies to the county of employment. The clause omits this requirement entirely."
   ],
   "sources": [
-    {"title": "Ogletree Deakins — California publishes new wage theft notice", "url": "https://ogletree.com/insights-resources/blog-posts/california-publishes-new-wage-theft-notice-reflecting-requirement-to-notify-employees-of-disaster-declarations/"},
-    {"title": "CalChamber HRWatchdog — Updated wage theft notice released", "url": "https://hrwatchdog.calchamber.com/2023/12/updated-wage-theft-notice-released/"},
-    {"title": "California Workplace Law Blog — Labor Commissioner publishes updated wage theft notice", "url": "https://www.californiaworkplacelawblog.com/2023/12/articles/california/californias-labor-commissioner-publishes-updated-wage-theft-notice/"}
+    {
+      "title": "Ogletree Deakins — California publishes new wage theft notice",
+      "url": "https://ogletree.com/insights-resources/blog-posts/california-publishes-new-wage-theft-notice-reflecting-requirement-to-notify-employees-of-disaster-declarations/"
+    },
+    {
+      "title": "CalChamber HRWatchdog — Updated wage theft notice released",
+      "url": "https://hrwatchdog.calchamber.com/2023/12/updated-wage-theft-notice-released/"
+    },
+    {
+      "title": "California Workplace Law Blog — Labor Commissioner publishes updated wage theft notice",
+      "url": "https://www.californiaworkplacelawblog.com/2023/12/articles/california/californias-labor-commissioner-publishes-updated-wage-theft-notice/"
+    }
+  ],
+  "defectTypes": [
+    "omitted-requirement"
   ]
 }

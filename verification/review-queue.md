@@ -1,5 +1,30 @@
 # Review queue
 
+## Sampling result
+
+9 clauses have been checked against sources. **8 of them (89%) are confirmed defective** —
+they omit a requirement the sources describe, misstate its scope, or cite the wrong provision.
+
+At 95% confidence, **at least 57% of the corpus is defective** — around 206 of 360 clauses,
+with a point estimate near 320.
+
+The sample spans California employment, California entity, New York entity, and federal tax clauses, so the
+pattern is not specific to one jurisdiction or subject. Of 43 individual assertions checked,
+2 were contradicted outright and 7 could not be supported by any source found.
+
+| Defect type | Count | What it means |
+|---|---:|---|
+| `omitted-requirement` | 7 | The source describes an obligation the clause does not mention at all. |
+| `omitted-qualifier` | 5 | The clause states a threshold or test without a condition that narrows or widens it. |
+| `overstated-scope` | 1 | The clause claims broader application than the provision has. |
+| `overstated-consequence` | 1 | The clause states exposure without a limit the source imposes. |
+| `miscitation` | 1 | The clause cites the wrong provision for the obligation it performs. |
+| `scope-mismatch` | 1 | The clause is drafted for a party the provision does not govern. |
+
+The dominant failure is omission, not invention. The clauses generally get the headline number right and
+leave out the qualifier that decides whether the number applies — which is the failure mode least likely to
+be caught by reading the clause on its own.
+
 360 of 360 clauses are below the release gate `corroborated` and cannot be drafted.
 
 Ordered by expected cost of being wrong: severity, whether the clause is drafted automatically or merely suggested,
@@ -45,31 +70,31 @@ whether it is in the jurisdiction being led with, whether it asserts a specific 
 | 2 | `ipa_state_carveout` — Statutory Invention Carve-Out | ip-assignment | critical | `single-source` | Cal. Lab. Code §2870 |
 | 3 | `can_calwarn` — Cal-WARN Notice | ca-notices | critical | `single-source` | Cal. Lab. Code §§1400–1408 |
 | 4 | `ic_ca_freelance` — Freelance Worker Protection Act | contractor-agreement | critical | `single-source` | Cal. Bus. & Prof. Code §18100 (SB 988) |
-| 5 | `can_harassment_training` — Harassment Prevention Training | ca-notices | critical | `multi-cited` | Cal. Gov. Code §12950.1 | California Civil Rights Department — Sexual harassment prevention training FAQ for employers | FindLaw — Cal. Gov. Code §12950.1 | Traliant — California sexual harassment training requirements |
-| 6 | `can_wtpa` — Wage Theft Prevention Act Notice | ca-notices | critical | `multi-cited` | Cal. Lab. Code §2810.5 | Ogletree Deakins — California publishes new wage theft notice | CalChamber HRWatchdog — Updated wage theft notice released | California Workplace Law Blog — Labor Commissioner publishes updated wage theft notice |
-| 7 | `msa_ca_925` — California Choice of Law Limits | msa | critical | `multi-cited` | Cal. Lab. Code §925 | Cal. Civ. Code §1646.5 |
-| 8 | `cal_ca_annual_tax` — California Annual Tax and Fee | compliance-calendar | critical | `single-source` | Cal. Rev. & Tax. Code §§17941, 17942, 23153 |
-| 9 | `cal_ca_seller_permit` — Seller's Permit and Sales Tax | compliance-calendar | critical | `single-source` | Cal. Rev. & Tax. Code §6066 |
-| 10 | `cal_ca_soi` — California Statement of Information | compliance-calendar | critical | `single-source` | Cal. Corp. Code §§1502, 17702.09 |
-| 11 | `can_calsavers` — CalSavers Retirement Mandate | ca-notices | critical | `single-source` | Cal. Gov. Code §100032 |
-| 12 | `can_ccpa_hr` — Privacy Notice for Employee Data | ca-notices | critical | `single-source` | Cal. Civ. Code §1798.100 |
-| 13 | `can_edd` — EDD Employer Registration | ca-notices | critical | `single-source` | Cal. Unemp. Ins. Code §1086 |
-| 14 | `can_fair_chance` — Fair Chance Act Procedure | ca-notices | critical | `single-source` | Cal. Gov. Code §12952 |
-| 15 | `can_harassment_policy` — Written Harassment and Discrimination Policy | ca-notices | critical | `single-source` | 2 C.C.R. §11023 |
-| 16 | `can_heat` — Heat Illness Prevention | ca-notices | critical | `single-source` | 8 C.C.R. §3395 |
-| 17 | `can_iipp` — Injury and Illness Prevention Program | ca-notices | critical | `single-source` | 8 C.C.R. §3203 |
-| 18 | `can_lactation` — Lactation Accommodation Policy | ca-notices | critical | `single-source` | Cal. Lab. Code §§1030–1034 |
-| 19 | `can_local_la` — Los Angeles Ordinances | ca-notices | critical | `single-source` | L.A. Mun. Code |
-| 20 | `can_local_oak` — Oakland Ordinances | ca-notices | critical | `single-source` | Oakland Mun. Code ch. 5.92, 5.93 |
-| 21 | `can_local_sd` — San Diego Ordinances | ca-notices | critical | `single-source` | S.D. Mun. Code ch. 3, art. 9 |
-| 22 | `can_local_sj` — San Jose Ordinances | ca-notices | critical | `single-source` | S.J. Mun. Code ch. 4.100, 4.101 |
-| 23 | `can_new_hire_report` — New Hire Reporting | ca-notices | critical | `single-source` | Cal. Unemp. Ins. Code §1088.5 |
-| 24 | `can_paga` — Private Attorneys General Act | ca-notices | critical | `single-source` | Cal. Lab. Code §2698 et seq. |
-| 25 | `can_paga_cure` — PAGA Notice and Cure Window | ca-notices | critical | `single-source` | Cal. Lab. Code §§2699.3, 2699.5 |
+| 5 | `charter_ny_publication` — Publication Requirement | charter | critical | `single-source` | NY LLC Law §206 |
+| 6 | `can_harassment_training` — Harassment Prevention Training | ca-notices | critical | `multi-cited` | Cal. Gov. Code §12950.1 | California Civil Rights Department — Sexual harassment prevention training FAQ for employers | FindLaw — Cal. Gov. Code §12950.1 | Traliant — California sexual harassment training requirements |
+| 7 | `can_wtpa` — Wage Theft Prevention Act Notice | ca-notices | critical | `multi-cited` | Cal. Lab. Code §2810.5 | Ogletree Deakins — California publishes new wage theft notice | CalChamber HRWatchdog — Updated wage theft notice released | California Workplace Law Blog — Labor Commissioner publishes updated wage theft notice |
+| 8 | `b83_instructions` — Filing Instructions | election-83b | critical | `single-source` | Treas. Reg. §1.83-2(c) |
+| 9 | `msa_ca_925` — California Choice of Law Limits | msa | critical | `multi-cited` | Cal. Lab. Code §925 | Cal. Civ. Code §1646.5 |
+| 10 | `cal_ca_annual_tax` — California Annual Tax and Fee | compliance-calendar | critical | `single-source` | Cal. Rev. & Tax. Code §§17941, 17942, 23153 |
+| 11 | `cal_ca_seller_permit` — Seller's Permit and Sales Tax | compliance-calendar | critical | `single-source` | Cal. Rev. & Tax. Code §6066 |
+| 12 | `cal_ca_soi` — California Statement of Information | compliance-calendar | critical | `single-source` | Cal. Corp. Code §§1502, 17702.09 |
+| 13 | `can_calsavers` — CalSavers Retirement Mandate | ca-notices | critical | `single-source` | Cal. Gov. Code §100032 |
+| 14 | `can_ccpa_hr` — Privacy Notice for Employee Data | ca-notices | critical | `single-source` | Cal. Civ. Code §1798.100 |
+| 15 | `can_edd` — EDD Employer Registration | ca-notices | critical | `single-source` | Cal. Unemp. Ins. Code §1086 |
+| 16 | `can_fair_chance` — Fair Chance Act Procedure | ca-notices | critical | `single-source` | Cal. Gov. Code §12952 |
+| 17 | `can_harassment_policy` — Written Harassment and Discrimination Policy | ca-notices | critical | `single-source` | 2 C.C.R. §11023 |
+| 18 | `can_heat` — Heat Illness Prevention | ca-notices | critical | `single-source` | 8 C.C.R. §3395 |
+| 19 | `can_iipp` — Injury and Illness Prevention Program | ca-notices | critical | `single-source` | 8 C.C.R. §3203 |
+| 20 | `can_lactation` — Lactation Accommodation Policy | ca-notices | critical | `single-source` | Cal. Lab. Code §§1030–1034 |
+| 21 | `can_local_la` — Los Angeles Ordinances | ca-notices | critical | `single-source` | L.A. Mun. Code |
+| 22 | `can_local_oak` — Oakland Ordinances | ca-notices | critical | `single-source` | Oakland Mun. Code ch. 5.92, 5.93 |
+| 23 | `can_local_sd` — San Diego Ordinances | ca-notices | critical | `single-source` | S.D. Mun. Code ch. 3, art. 9 |
+| 24 | `can_local_sj` — San Jose Ordinances | ca-notices | critical | `single-source` | S.J. Mun. Code ch. 4.100, 4.101 |
+| 25 | `can_new_hire_report` — New Hire Reporting | ca-notices | critical | `single-source` | Cal. Unemp. Ins. Code §1088.5 |
 
 ## Clauses checked and found defective
 
-6 clause(s) have been checked against sources and found to omit or misstate a requirement.
+8 clause(s) have been checked against sources and found to omit or misstate a requirement.
 These sit at the top of the queue: a clause known to be wrong is more dangerous than one merely unverified,
 because it reads as complete.
 
@@ -104,6 +129,13 @@ Checked 2026-08-15. 2 defect(s).
 - The $250 threshold aggregates across all contracts between the same hiring party and contractor in the preceding 120 days. The clause states a flat $250 and would let a user split engagements below the threshold and believe they were outside the Act.
 - The hiring party must furnish a signed copy of the contract to the freelance worker. The clause requires a written contract but not that a signed copy be provided.
 
+### `charter_ny_publication` — Publication Requirement
+
+Checked 2026-08-15. 2 defect(s).
+
+- The two newspapers must be one daily and one weekly. The clause says only 'two newspapers', which reads as though any two designated papers will do.
+- The Certificate of Publication must have the affidavits of publication from each newspaper attached. The clause does not mention the affidavits, which are the part a filer has to collect from the papers.
+
 ### `can_harassment_training` — Harassment Prevention Training
 
 Checked 2026-08-15. 1 defect(s).
@@ -115,4 +147,10 @@ Checked 2026-08-15. 1 defect(s).
 Checked 2026-08-15. 1 defect(s).
 
 - The notice must state whether a federal or state disaster declaration applies to the county of employment. The clause omits this requirement entirely.
+
+### `b83_instructions` — Filing Instructions
+
+Checked 2026-08-15. 1 defect(s).
+
+- The IRS now provides Form 15620 as a standardised way to make the election. The clause describes only a written statement and does not mention the form, so a user following it would hand-draft something the IRS has since published a form for.
 

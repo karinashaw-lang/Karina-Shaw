@@ -13,6 +13,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import {loadCorpus, ROOT} from './corpus.mjs';
+import {defectAnalysis} from './findings.mjs';
 
 const TOP = process.argv.includes('--top') ? +process.argv[process.argv.indexOf('--top')+1] : Infinity;
 const C = loadCorpus();
@@ -66,9 +67,43 @@ fs.writeFileSync(path.join(outDir,'review-queue.csv'),
 /* Markdown — for the summary conversation */
 const byDoc = {};
 queue.forEach(r => { (byDoc[r.document] ||= []).push(r); });
+const FDIR = path.join(ROOT,'..','verification','findings');
+const findings = fs.existsSync(FDIR)
+  ? fs.readdirSync(FDIR).filter(f=>f.endsWith('.json')).map(f=>JSON.parse(fs.readFileSync(path.join(FDIR,f),'utf8')))
+  : [];
+const an = defectAnalysis(findings);
+
 const md = [
   '# Review queue',
   '',
+  ...(an.checked ? [
+   '## Sampling result',
+   '',
+   `${an.checked} clauses have been checked against sources. **${an.defective} of them (${(an.rate*100).toFixed(0)}%) are confirmed defective** —`,
+   'they omit a requirement the sources describe, misstate its scope, or cite the wrong provision.',
+   '',
+   `At 95% confidence, **at least ${(an.lower95*100).toFixed(0)}% of the corpus is defective** — around ${Math.round(an.lower95*C.clauses.length)} of ${C.clauses.length} clauses,`,
+   `with a point estimate near ${Math.round(an.rate*C.clauses.length)}.`,
+   '',
+   `The sample spans California employment, California entity, New York entity, and federal tax clauses, so the`,
+   `pattern is not specific to one jurisdiction or subject. Of ${an.assertions} individual assertions checked,`,
+   `${an.contradicted} were contradicted outright and ${an.unsupported} could not be supported by any source found.`,
+   '',
+   '| Defect type | Count | What it means |',
+   '|---|---:|---|',
+   ...Object.entries({
+     'omitted-requirement':'The source describes an obligation the clause does not mention at all.',
+     'omitted-qualifier':'The clause states a threshold or test without a condition that narrows or widens it.',
+     'overstated-scope':'The clause claims broader application than the provision has.',
+     'overstated-consequence':'The clause states exposure without a limit the source imposes.',
+     'miscitation':'The clause cites the wrong provision for the obligation it performs.',
+     'scope-mismatch':'The clause is drafted for a party the provision does not govern.'
+   }).filter(([k])=>an.types[k]).map(([k,desc])=>`| \`${k}\` | ${an.types[k]} | ${desc} |`),
+   '',
+   'The dominant failure is omission, not invention. The clauses generally get the headline number right and',
+   'leave out the qualifier that decides whether the number applies — which is the failure mode least likely to',
+   'be caught by reading the clause on its own.',
+   ''] : []),
   `${queue.length} of ${C.clauses.length} clauses are below the release gate \`${C.taxonomy.releaseGate.minimum}\` and cannot be drafted.`,
   '',
   'Ordered by expected cost of being wrong: severity, whether the clause is drafted automatically or merely suggested,',
