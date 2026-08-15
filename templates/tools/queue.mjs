@@ -29,6 +29,7 @@ function priority(c){
   p += c.sources.some(s => s.citation) ? 4 : 0;                    // a citation is a checkable claim
   p += /§|C\.F\.R\.|U\.S\.C\./.test(c.body) ? 3 : 0;               // asserts a specific provision in the text
   p += (gateRank - LEVELS[c.verification].rank);                   // distance from the gate
+  p += (c.defects?.length || 0) * 25;                              // known-wrong outranks merely-unverified
   return p;
 }
 
@@ -43,6 +44,9 @@ const queue = C.clauses
     document: c.doc,
     jurisdictions: c.jurisdictions.join('|'),
     citations: c.sources.map(s => s.citation).filter(Boolean).join(' | ') || '(none)',
+    defects: (c.defects||[]).length,
+    defectDetail: (c.defects||[]).join(' || '),
+    lastChecked: c.lastChecked || '',
     note: c.verificationNote || '',
     title: c.title,
     file: C.sources[c.id]
@@ -54,7 +58,7 @@ const outDir = path.join(ROOT,'..','verification');
 fs.mkdirSync(outDir,{recursive:true});
 
 /* CSV — for whoever is actually working the list */
-const cols = ['priority','id','title','verification','severity','insertion','document','jurisdictions','citations','file','note'];
+const cols = ['priority','id','title','defects','verification','severity','insertion','document','jurisdictions','citations','lastChecked','defectDetail','file','note'];
 const esc = v => `"${String(v).replace(/"/g,'""')}"`;
 fs.writeFileSync(path.join(outDir,'review-queue.csv'),
   [cols.join(','), ...shown.map(r => cols.map(k => esc(r[k])).join(','))].join('\n') + '\n');
@@ -90,10 +94,16 @@ const md = [
   '|---:|---|---|---|---|---|',
   ...shown.slice(0,25).map((r,i) => `| ${i+1} | \`${r.id}\` — ${r.title} | ${r.document} | ${r.severity} | \`${r.verification}\` | ${r.citations} |`),
   '',
-  '## Clauses with a recorded gap',
+  '## Clauses checked and found defective',
   '',
-  ...(queue.filter(r=>r.note).length
-      ? queue.filter(r=>r.note).flatMap(r => [`**\`${r.id}\`** — ${r.title}`, '', r.note, ''])
+  `${queue.filter(r=>r.defects).length} clause(s) have been checked against sources and found to omit or misstate a requirement.`,
+  'These sit at the top of the queue: a clause known to be wrong is more dangerous than one merely unverified,',
+  'because it reads as complete.',
+  '',
+  ...(queue.filter(r=>r.defects).length
+      ? queue.filter(r=>r.defects).flatMap(r => [`### \`${r.id}\` — ${r.title}`, '',
+          `Checked ${r.lastChecked}. ${r.defects} defect(s).`, '',
+          ...(r.defectDetail.split(' || ').map(d=>`- ${d}`)), ''])
       : ['None recorded.']),
   ''
 ].join('\n');

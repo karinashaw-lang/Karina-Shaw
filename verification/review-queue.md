@@ -11,8 +11,8 @@ whether it is in the jurisdiction being led with, whether it asserts a specific 
 |---|---:|---|
 | `unsourced` | 249 | Drafted from model knowledge with no citation attached. No independent basis exists for anything it asserts. |
 | `single-source` | 89 | One citation is asserted, and nothing has checked that the cited provision says what the clause says it says. |
-| `multi-cited` | 19 | More than one citation is asserted. Still self-asserted — several citations written by one author are not corroboration. |
-| `search-corroborated` | 3 | The assertion matched a web search summary drawing on two or more independent sources, with URLs and a check date recorded. No source document was opened and no primary text was read. This is a lead for a reviewer, not a verification. |
+| `multi-cited` | 22 | More than one citation is asserted. Still self-asserted — several citations written by one author are not corroboration. |
+| `search-corroborated` | 0 | The assertion matched a web search summary drawing on two or more independent sources, with URLs and a check date recorded. No source document was opened and no primary text was read. This is a lead for a reviewer, not a verification. |
 
 ## By document
 
@@ -41,43 +41,62 @@ whether it is in the jurisdiction being led with, whether it asserts a specific 
 
 | # | Clause | Doc | Sev | Level | Citations |
 |---:|---|---|---|---|---|
-| 1 | `ea_ca_925` — California Forum and Choice of Law | employment-agreement | critical | `single-source` | Cal. Lab. Code §925 |
-| 2 | `ipa_state_carveout` — Statutory Invention Carve-Out | ip-assignment | critical | `single-source` | Cal. Lab. Code §2870 |
-| 3 | `msa_ca_925` — California Choice of Law Limits | msa | critical | `multi-cited` | Cal. Lab. Code §925 | Cal. Civ. Code §1646.5 |
-| 4 | `cal_ca_annual_tax` — California Annual Tax and Fee | compliance-calendar | critical | `single-source` | Cal. Rev. & Tax. Code §§17941, 17942, 23153 |
-| 5 | `cal_ca_seller_permit` — Seller's Permit and Sales Tax | compliance-calendar | critical | `single-source` | Cal. Rev. & Tax. Code §6066 |
-| 6 | `cal_ca_soi` — California Statement of Information | compliance-calendar | critical | `single-source` | Cal. Corp. Code §§1502, 17702.09 |
-| 7 | `can_calsavers` — CalSavers Retirement Mandate | ca-notices | critical | `single-source` | Cal. Gov. Code §100032 |
-| 8 | `can_calwarn` — Cal-WARN Notice | ca-notices | critical | `single-source` | Cal. Lab. Code §§1400–1408 |
-| 9 | `can_ccpa_hr` — Privacy Notice for Employee Data | ca-notices | critical | `single-source` | Cal. Civ. Code §1798.100 |
-| 10 | `can_edd` — EDD Employer Registration | ca-notices | critical | `single-source` | Cal. Unemp. Ins. Code §1086 |
-| 11 | `can_fair_chance` — Fair Chance Act Procedure | ca-notices | critical | `single-source` | Cal. Gov. Code §12952 |
-| 12 | `can_harassment_policy` — Written Harassment and Discrimination Policy | ca-notices | critical | `single-source` | 2 C.C.R. §11023 |
-| 13 | `can_heat` — Heat Illness Prevention | ca-notices | critical | `single-source` | 8 C.C.R. §3395 |
-| 14 | `can_iipp` — Injury and Illness Prevention Program | ca-notices | critical | `single-source` | 8 C.C.R. §3203 |
-| 15 | `can_lactation` — Lactation Accommodation Policy | ca-notices | critical | `single-source` | Cal. Lab. Code §§1030–1034 |
-| 16 | `can_local_la` — Los Angeles Ordinances | ca-notices | critical | `single-source` | L.A. Mun. Code |
-| 17 | `can_local_oak` — Oakland Ordinances | ca-notices | critical | `single-source` | Oakland Mun. Code ch. 5.92, 5.93 |
-| 18 | `can_local_sd` — San Diego Ordinances | ca-notices | critical | `single-source` | S.D. Mun. Code ch. 3, art. 9 |
-| 19 | `can_local_sj` — San Jose Ordinances | ca-notices | critical | `single-source` | S.J. Mun. Code ch. 4.100, 4.101 |
-| 20 | `can_new_hire_report` — New Hire Reporting | ca-notices | critical | `single-source` | Cal. Unemp. Ins. Code §1088.5 |
-| 21 | `can_paga` — Private Attorneys General Act | ca-notices | critical | `single-source` | Cal. Lab. Code §2698 et seq. |
-| 22 | `can_paga_cure` — PAGA Notice and Cure Window | ca-notices | critical | `single-source` | Cal. Lab. Code §§2699.3, 2699.5 |
-| 23 | `can_pay_equity` — Pay Equity and Records | ca-notices | critical | `single-source` | Cal. Lab. Code §1197.5 |
-| 24 | `can_paydata` — Annual Pay Data Reporting | ca-notices | critical | `single-source` | Cal. Gov. Code §12999 |
-| 25 | `can_payscale_posting` — Pay Scale in Job Postings | ca-notices | critical | `single-source` | Cal. Lab. Code §432.3(c) |
+| 1 | `can_calwarn` — Cal-WARN Notice | ca-notices | critical | `single-source` | Cal. Lab. Code §§1400–1408 |
+| 2 | `ic_ca_freelance` — Freelance Worker Protection Act | contractor-agreement | critical | `single-source` | Cal. Bus. & Prof. Code §18100 (SB 988) |
+| 3 | `can_harassment_training` — Harassment Prevention Training | ca-notices | critical | `multi-cited` | Cal. Gov. Code §12950.1 | California Civil Rights Department — Sexual harassment prevention training FAQ for employers | FindLaw — Cal. Gov. Code §12950.1 | Traliant — California sexual harassment training requirements |
+| 4 | `can_wtpa` — Wage Theft Prevention Act Notice | ca-notices | critical | `multi-cited` | Cal. Lab. Code §2810.5 | Ogletree Deakins — California publishes new wage theft notice | CalChamber HRWatchdog — Updated wage theft notice released | California Workplace Law Blog — Labor Commissioner publishes updated wage theft notice |
+| 5 | `ea_ca_925` — California Forum and Choice of Law | employment-agreement | critical | `single-source` | Cal. Lab. Code §925 |
+| 6 | `ipa_state_carveout` — Statutory Invention Carve-Out | ip-assignment | critical | `single-source` | Cal. Lab. Code §2870 |
+| 7 | `msa_ca_925` — California Choice of Law Limits | msa | critical | `multi-cited` | Cal. Lab. Code §925 | Cal. Civ. Code §1646.5 |
+| 8 | `cal_ca_annual_tax` — California Annual Tax and Fee | compliance-calendar | critical | `single-source` | Cal. Rev. & Tax. Code §§17941, 17942, 23153 |
+| 9 | `cal_ca_seller_permit` — Seller's Permit and Sales Tax | compliance-calendar | critical | `single-source` | Cal. Rev. & Tax. Code §6066 |
+| 10 | `cal_ca_soi` — California Statement of Information | compliance-calendar | critical | `single-source` | Cal. Corp. Code §§1502, 17702.09 |
+| 11 | `can_calsavers` — CalSavers Retirement Mandate | ca-notices | critical | `single-source` | Cal. Gov. Code §100032 |
+| 12 | `can_ccpa_hr` — Privacy Notice for Employee Data | ca-notices | critical | `single-source` | Cal. Civ. Code §1798.100 |
+| 13 | `can_edd` — EDD Employer Registration | ca-notices | critical | `single-source` | Cal. Unemp. Ins. Code §1086 |
+| 14 | `can_fair_chance` — Fair Chance Act Procedure | ca-notices | critical | `single-source` | Cal. Gov. Code §12952 |
+| 15 | `can_harassment_policy` — Written Harassment and Discrimination Policy | ca-notices | critical | `single-source` | 2 C.C.R. §11023 |
+| 16 | `can_heat` — Heat Illness Prevention | ca-notices | critical | `single-source` | 8 C.C.R. §3395 |
+| 17 | `can_iipp` — Injury and Illness Prevention Program | ca-notices | critical | `single-source` | 8 C.C.R. §3203 |
+| 18 | `can_lactation` — Lactation Accommodation Policy | ca-notices | critical | `single-source` | Cal. Lab. Code §§1030–1034 |
+| 19 | `can_local_la` — Los Angeles Ordinances | ca-notices | critical | `single-source` | L.A. Mun. Code |
+| 20 | `can_local_oak` — Oakland Ordinances | ca-notices | critical | `single-source` | Oakland Mun. Code ch. 5.92, 5.93 |
+| 21 | `can_local_sd` — San Diego Ordinances | ca-notices | critical | `single-source` | S.D. Mun. Code ch. 3, art. 9 |
+| 22 | `can_local_sj` — San Jose Ordinances | ca-notices | critical | `single-source` | S.J. Mun. Code ch. 4.100, 4.101 |
+| 23 | `can_new_hire_report` — New Hire Reporting | ca-notices | critical | `single-source` | Cal. Unemp. Ins. Code §1088.5 |
+| 24 | `can_paga` — Private Attorneys General Act | ca-notices | critical | `single-source` | Cal. Lab. Code §2698 et seq. |
+| 25 | `can_paga_cure` — PAGA Notice and Cure Window | ca-notices | critical | `single-source` | Cal. Lab. Code §§2699.3, 2699.5 |
 
-## Clauses with a recorded gap
+## Clauses checked and found defective
 
-**`can_harassment_training`** — Harassment Prevention Training
+4 clause(s) have been checked against sources and found to omit or misstate a requirement.
+These sit at the top of the queue: a clause known to be wrong is more dangerous than one merely unverified,
+because it reads as complete.
 
-Search summary supports: five-or-more-employee threshold; two hours for supervisory and one hour for non-supervisory employees; repeat every two years; abusive conduct prevention as a required component. NOT confirmed by the search: the six-month deadline after hire or promotion, the thirty-day / one-hundred-hour rule for seasonal and temporary employees, and the two-year record retention period. Those three assertions remain unsupported.
+### `can_calwarn` — Cal-WARN Notice
 
-**`can_wtpa`** — Wage Theft Prevention Act Notice
+Checked 2026-08-15. 3 defect(s).
 
-Search summary supports: written notice at hire; rate and basis of pay; allowances claimed; regular payday; employer legal name and dba; workers' compensation carrier; reissue within seven days of a change not shown on the next wage statement; notice in the language the employer normally uses. NOT confirmed by the search: the requirement to state the physical and mailing address of the main office and the telephone number. GAP FOUND — sources describe a requirement this clause omits entirely: information about a federal or state disaster declaration applicable to the county of employment. The clause is incomplete as drafted.
+- The 75-employee threshold looks back twelve months — an establishment that hit 75 at any point in the preceding year is covered. The clause implies a current headcount test, which would let a shrinking employer conclude it is exempt when it is not.
+- A mass layoff means 50 or more job losses in any 30-day period. The clause uses the term without the trigger, so a user cannot tell whether a given reduction is covered.
+- Damages are capped at 60 days of back pay, or half the days the employee worked, whichever is smaller. The clause states back pay for each day of shortfall with no cap, overstating the exposure.
 
-**`hb_ca_sick`** — California Paid Sick Leave
+### `ic_ca_freelance` — Freelance Worker Protection Act
 
-Search summary supports: accrual of one hour per thirty hours worked from commencement of employment; minimum entitlement of forty hours or five days; accrual and carryover cap of eighty hours; annual use may be limited to forty hours or five days; local ordinances may require more. NOT confirmed by the search: use available from the ninetieth day of employment, and the requirement that the accrued balance appear on the wage statement or a separate written notice each pay period.
+Checked 2026-08-15. 2 defect(s).
+
+- The $250 threshold aggregates across all contracts between the same hiring party and contractor in the preceding 120 days. The clause states a flat $250 and would let a user split engagements below the threshold and believe they were outside the Act.
+- The hiring party must furnish a signed copy of the contract to the freelance worker. The clause requires a written contract but not that a signed copy be provided.
+
+### `can_harassment_training` — Harassment Prevention Training
+
+Checked 2026-08-15. 1 defect(s).
+
+- Sources describe prevention of abusive conduct as a required component of the training. The clause does not mention it.
+
+### `can_wtpa` — Wage Theft Prevention Act Notice
+
+Checked 2026-08-15. 1 defect(s).
+
+- The notice must state whether a federal or state disaster declaration applies to the county of employment. The clause omits this requirement entirely.
 

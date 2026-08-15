@@ -1,0 +1,20 @@
+{
+  "clauseId": "hb_ca_sick",
+  "checkedAt": "2026-08-15",
+  "method": "web search only — no source document was opened",
+  "queries": ["California paid sick leave SB 616 2024 40 hours 5 days accrual one hour per 30 hours cap 80 hours"],
+  "assertions": [
+    {"text": "accrual of one hour per thirty hours worked", "status": "corroborated"},
+    {"text": "forty hours or five days minimum", "status": "corroborated"},
+    {"text": "carryover cap of eighty hours or ten days", "status": "corroborated"},
+    {"text": "local ordinances may require more", "status": "corroborated"},
+    {"text": "use available from the ninetieth day of employment", "status": "unsupported", "note": "sources describe a 30-day employment eligibility test; nothing found addressed the 90-day use rule"},
+    {"text": "balance must appear on the wage statement each pay period", "status": "unsupported"}
+  ],
+  "gaps": [],
+  "sources": [
+    {"title": "Legal Aid at Work — SB 616 increases paid sick leave", "url": "https://legalaidatwork.org/factsheet/new-california-law-sb-616-increases-paid-sick-leave-from-3-to-5-days/"},
+    {"title": "CDF Labor Law — New California paid sick leave requirements", "url": "https://www.cdflaborlaw.com/blog/new-california-paid-sick-leave-requirements-go-into-effect-january-1"},
+    {"title": "California Payroll — Understanding SB 616", "url": "https://californiapayroll.com/blog/california-paid-sick-leave-expansion-sb-616/"}
+  ]
+}

@@ -78,8 +78,12 @@
      "checked": "2026-08-15"
     }
    ],
-   "verification": "search-corroborated",
-   "verificationNote": "Search summary supports: written notice at hire; rate and basis of pay; allowances claimed; regular payday; employer legal name and dba; workers' compensation carrier; reissue within seven days of a change not shown on the next wage statement; notice in the language the employer normally uses. NOT confirmed by the search: the requirement to state the physical and mailing address of the main office and the telephone number. GAP FOUND — sources describe a requirement this clause omits entirely: information about a federal or state disaster declaration applicable to the county of employment. The clause is incomplete as drafted."
+   "verification": "multi-cited",
+   "verificationNote": "Search summary supports: written notice at hire; rate and basis of pay; allowances claimed; regular payday; employer legal name and dba; workers' compensation carrier; reissue within seven days of a change not shown on the next wage statement; notice in the language the employer normally uses. NOT confirmed by the search: the requirement to state the physical and mailing address of the main office and the telephone number. GAP FOUND — sources describe a requirement this clause omits entirely: information about a federal or state disaster declaration applicable to the county of employment. The clause is incomplete as drafted.",
+   "defects": [
+    "The notice must state whether a federal or state disaster declaration applies to the county of employment. The clause omits this requirement entirely."
+   ],
+   "lastChecked": "2026-08-15"
   },
   {
    "id": "can_payscale_request",
@@ -406,8 +410,12 @@
      "checked": "2026-08-15"
     }
    ],
-   "verification": "search-corroborated",
-   "verificationNote": "Search summary supports: five-or-more-employee threshold; two hours for supervisory and one hour for non-supervisory employees; repeat every two years; abusive conduct prevention as a required component. NOT confirmed by the search: the six-month deadline after hire or promotion, the thirty-day / one-hundred-hour rule for seasonal and temporary employees, and the two-year record retention period. Those three assertions remain unsupported."
+   "verification": "multi-cited",
+   "verificationNote": "Search summary supports: five-or-more-employee threshold; two hours for supervisory and one hour for non-supervisory employees; repeat every two years; abusive conduct prevention as a required component. NOT confirmed by the search: the six-month deadline after hire or promotion, the thirty-day / one-hundred-hour rule for seasonal and temporary employees, and the two-year record retention period. Those three assertions remain unsupported.",
+   "defects": [
+    "Sources describe prevention of abusive conduct as a required component of the training. The clause does not mention it."
+   ],
+   "lastChecked": "2026-08-15"
   },
   {
    "id": "can_harassment_policy",
@@ -1085,8 +1093,9 @@
      "checked": "2026-08-15"
     }
    ],
-   "verification": "search-corroborated",
-   "verificationNote": "Search summary supports: accrual of one hour per thirty hours worked from commencement of employment; minimum entitlement of forty hours or five days; accrual and carryover cap of eighty hours; annual use may be limited to forty hours or five days; local ordinances may require more. NOT confirmed by the search: use available from the ninetieth day of employment, and the requirement that the accrued balance appear on the wage statement or a separate written notice each pay period."
+   "verification": "multi-cited",
+   "verificationNote": "Search summary supports: accrual of one hour per thirty hours worked from commencement of employment; minimum entitlement of forty hours or five days; accrual and carryover cap of eighty hours; annual use may be limited to forty hours or five days; local ordinances may require more. NOT confirmed by the search: use available from the ninetieth day of employment, and the requirement that the accrued balance appear on the wage statement or a separate written notice each pay period.",
+   "lastChecked": "2026-08-15"
   },
   {
    "id": "hb_ca_cfra",
@@ -1349,7 +1358,12 @@
      "checked": null
     }
    ],
-   "verification": "single-source"
+   "verification": "single-source",
+   "defects": [
+    "The $250 threshold aggregates across all contracts between the same hiring party and contractor in the preceding 120 days. The clause states a flat $250 and would let a user split engagements below the threshold and believe they were outside the Act.",
+    "The hiring party must furnish a signed copy of the contract to the freelance worker. The clause requires a written contract but not that a signed copy be provided."
+   ],
+   "lastChecked": "2026-08-15"
   },
   {
    "id": "ic_ca_expenses",
