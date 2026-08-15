@@ -108,6 +108,7 @@ npm run check       # validate, then assert the prototype is in sync with templa
 npm run probe       # measure which source hosts this environment can reach
 npm run verify      # attempt verification; fails closed
 npm run queue       # export the review backlog as CSV and Markdown
+npm run egress      # generate the allowlist request from measured data
 npm run audit       # all of the above, in order
 ```
 
@@ -340,9 +341,21 @@ Measured, not asserted — see `sources/registry.json` for the timestamped resul
 URLs; fetching any of those URLs does not. That is why three clauses sit at
 `search-corroborated` and none at `corroborated`: the sources were listed, not read.
 
-Restoring egress to primary-source hosts is the prerequisite for moving the corpus up
-the ladder mechanically, and even then `primary-verified` requires a named reviewer by
-design.
+The proxy is explicit about the cause. `curl http://127.0.0.1:36695/__agentproxy/status`
+records `connect_rejected` — *"gateway answered 403 to CONNECT (policy denial or upstream
+failure)"* — for every host. The CA bundle, trust store, and proxy settings are all
+correct, and `github.com` reaches through the same path. This is an organization egress
+policy decision, and the proxy README is explicit that it must be reported rather than
+retried or routed around.
+
+`npm run egress` generates the allowlist request from the registry and the last probe:
+13 hosts, ranked by how many citations depend on each. `law.justia.com` (91),
+`codes.findlaw.com` (85), and `leginfo.legislature.ca.gov` (78) carry most of it — one
+primary plus one mirror is enough to start moving clauses to `corroborated`.
+
+Granting egress relaxes nothing else. `primary-verified` still requires a named human
+reviewer, the gate still refuses to draft below `corroborated`, and `verify.mjs` still
+fails closed on a timeout, redirect, short body, or 403.
 
 ### Benchmarks were deleted rather than quarantined
 
