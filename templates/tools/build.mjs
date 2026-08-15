@@ -15,9 +15,11 @@ const START = '/* BUILD:CORPUS-START';
 const END   = '/* BUILD:CORPUS-END */';
 
 const C = loadCorpus();
-const evaluator = fs.readFileSync(path.join(ROOT,'tools','evaluator.mjs'),'utf8')
+const strip = f => fs.readFileSync(path.join(ROOT,'tools',f),'utf8')
   .replace(/^export /gm,'')
-  .replace(/^\/\* Shared evaluation core[\s\S]*?\*\/\n/,'');
+  .replace(/^\/\*[\s\S]*?\*\/\n/,'');            /* drop the file's own header comment */
+const evaluator = strip('evaluator.mjs');
+const review    = strip('review.mjs');
 
 const meta = {
   builtFrom: 'templates/',
@@ -43,6 +45,9 @@ const CORPUS = ${JSON.stringify(blob)};
 
 /* ---- shared evaluation core, inlined verbatim from templates/tools/evaluator.mjs ---- */
 ${evaluator.trim()}
+
+/* ---- release gate, inlined verbatim from templates/tools/review.mjs ---- */
+${review.trim()}
 ${END}`;
 
 const html = fs.readFileSync(HTML,'utf8');

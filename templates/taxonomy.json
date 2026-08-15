@@ -322,9 +322,11 @@
     }
   },
   "releaseGate": {
-    "$note": "Minimum verification level a clause must reach before the engine will draft it into a document. Clauses below the gate are withheld and counted, not silently dropped. Search-corroborated deliberately sits BELOW the gate: a search summary is a lead for a reviewer, not a substitute for reading the source. A clause must additionally clear the review track its assertsLaw classification puts it on. The classification itself is currently heuristic and unreviewed, which is its own gate: an unreviewed classification cannot be relied on to route a clause to the right kind of vetting.",
+    "$note": "Minimum verification level a clause must reach before the engine will draft it into a document. Clauses below the gate are withheld and counted, not silently dropped. Search-corroborated deliberately sits BELOW the gate: a search summary is a lead for a reviewer, not a substitute for reading the source. A clause must additionally clear the review track its assertsLaw classification puts it on. The classification itself is currently heuristic and unreviewed, which is its own gate: an unreviewed classification cannot be relied on to route a clause to the right kind of vetting. Drafting clauses are gated separately on draftingReviewLevels, because the source ladder cannot grade a clause that cites nothing; applying it to all 360 clauses made the 191 drafting clauses permanently unreleasable for a reason that does not apply to them.",
     "minimum": "corroborated",
-    "requireTrackSignoff": true
+    "requireTrackSignoff": true,
+    "draftingMinimum": "counsel-reviewed",
+    "$draftingNote": "Minimum drafting-review level before the engine will draft a non-law-asserting clause. Self-reviewed sits below the gate on purpose. A clause whose assertsLaw classification is still heuristic and unreviewed cannot clear either gate, because nothing yet establishes which ladder it belongs on."
   },
   "reviewTracks": {
     "$note": "A clause that states what the law requires and a clause that states a negotiated term fail in different ways and are vetted by different people. Collapsing them is what makes a 360-clause review look impossible; separating them is what makes 'no mistake' reachable.",
@@ -337,17 +339,44 @@
         "a named legal reviewer"
       ],
       "failureMode": "omission — the headline number is right and the qualifier that decides whether it applies is missing",
-      "cannotBeSatisfiedBy": "drafting review, reading the clause on its own, or a model re-reading its own output"
+      "cannotBeSatisfiedBy": "drafting review, reading the clause on its own, or a model re-reading its own output",
+      "gradedOn": "verificationLevels"
     },
     "drafting": {
       "appliesWhen": "assertsLaw is false",
       "question": "Is this the term we want, drafted so it does what we intend?",
       "requires": [
-        "a named drafting reviewer",
-        "the clause makes no claim about what the law requires"
+        "a named drafting reviewer who is not the author",
+        "a recorded review date and the scope that was reviewed",
+        "the clause makes no claim about what the law requires",
+        "the assertsLaw classification itself reviewed, not heuristic"
       ],
       "failureMode": "a term that is unfavourable, ambiguous, or unenforceable as written",
-      "cannotBeSatisfiedBy": "statutory verification, because the clause asserts no statute"
+      "cannotBeSatisfiedBy": "statutory verification, because the clause asserts no statute",
+      "gradedOn": "draftingReviewLevels"
+    }
+  },
+  "draftingReviewLevels": {
+    "$comment": "A drafting clause asserts no law, so the source ladder cannot grade it — no number of citations makes a negotiated term the right term. This is the ladder it is graded on instead. The two are not interchangeable and neither can borrow the other's evidence: a statute does not tell you whether an indemnity cap is the one you want, and a lawyer's approval does not tell you what a statute says.",
+    "unreviewed": {
+      "rank": 0,
+      "name": "Unreviewed",
+      "meaning": "Nobody has read this as a negotiated term. It was drafted from model knowledge, and whether it is the term anyone would want is unknown."
+    },
+    "self-reviewed": {
+      "rank": 1,
+      "name": "Self-reviewed",
+      "meaning": "Read by whoever produced it. Deliberately below the gate: an author checking their own work is not review, for the same reason a second citation by the same author is not corroboration."
+    },
+    "counsel-reviewed": {
+      "rank": 2,
+      "name": "Counsel-reviewed",
+      "meaning": "Read by a named lawyer other than the author, on a recorded date, against a stated scope. The finding is that the clause does what it says and is enforceable as written — not that it is the deal you want."
+    },
+    "counsel-approved": {
+      "rank": 3,
+      "name": "Counsel-approved",
+      "meaning": "A named lawyer approves this as the term to use for the stated package and posture. A commercial judgement on top of the review, not a substitute for it."
     }
   }
 }

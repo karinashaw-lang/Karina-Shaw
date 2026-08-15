@@ -8,6 +8,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import {loadCorpus, ROOT} from './corpus.mjs';
+import {gateFor, validateSignoff, validateClassification, lawTalk, summarise} from './review.mjs';
 import {evalExpr, fireRules, resolveFields, clauseEligible, docIncluded, allConfigs, resolveXref, ANSWER_FIELDS} from './evaluator.mjs';
 
 const C = loadCorpus();
@@ -26,6 +27,7 @@ const fieldIds   = new Set(C.fields.map(f=>f.id));
    `primary-verified` additionally requires a primary source and a named reviewer.
    Without this check the gate is trivially defeated by padding the sources array. */
 const VLEVELS=C.taxonomy.verificationLevels;
+const DLEVELS=C.taxonomy.draftingReviewLevels;
 const PINS = (()=>{ try{ return JSON.parse(fs.readFileSync(path.join(ROOT,'sources','pins.json'),'utf8')); }catch{ return {pins:[]}; } })();
 function host(u){ try{ return new URL(u).host.replace(/^www\./,''); }catch{ return null; } }
 function checkVerification(o,where){
@@ -67,6 +69,24 @@ function checkTrack(c){
     warn('CLASSIFICATION_TENSION',`clause "${c.id}" is classified as drafting but carries a statutory citation — one of the two is wrong`);
   if(c.assertsLaw === true && c.trackSignoff && !c.trackSignoff.authorityReviewer)
     err('WRONG_TRACK_SIGNOFF',`clause "${c.id}" asserts law but was signed off on the drafting track`);
+
+  /* A drafting review recorded on a clause that asserts law is the category error the two
+     ladders exist to prevent: a lawyer's view of the term says nothing about the statute. */
+  if(c.assertsLaw === true && c.draftingReview && (c.draftingReview.level||'unreviewed')!=='unreviewed')
+    err('WRONG_LADDER',`clause "${c.id}" asserts law but carries a drafting review — a signoff on the term does not verify the statute`);
+
+  if(c.draftingReview){
+    for(const p of validateSignoff(c.draftingReview, C.taxonomy))
+      err('BAD_DRAFTING_REVIEW',`clause "${c.id}" drafting review: ${p}`);
+  }
+  for(const p of validateClassification(c))
+    err('UNEARNED_CLASSIFICATION',`clause "${c.id}": ${p}`);
+
+  /* A drafting clause earns a citation-free ladder by making no claim about the law.
+     A body that talks like a statute means the classification needs a second look. */
+  const talk = lawTalk(c);
+  if(talk.length)
+    warn('LAW_TALK_IN_DRAFTING',`clause "${c.id}" is classified as drafting but its body ${talk.join(', ')}`);
 }
 
 /* ---- 1. structural ---- */
@@ -318,14 +338,18 @@ for(const d of C.documents) if(!reachableDoc.has(d.id))
 
 function report(){
   const byVerification=C.clauses.reduce((m,c)=>(m[c.verification]=(m[c.verification]||0)+1,m),{});
-  const gate=C.taxonomy.releaseGate.minimum, gateRank=C.taxonomy.verificationLevels[gate].rank;
-  const usable=C.clauses.filter(c=>C.taxonomy.verificationLevels[c.verification].rank>=gateRank).length;
+  const gate=C.taxonomy.releaseGate.minimum;
+  const gateSummary=summarise(C.clauses, C.taxonomy);
+  const usable=gateSummary.authority.passing + gateSummary.drafting.passing;
   const bySeverity=C.clauses.reduce((m,c)=>(m[c.severity]=(m[c.severity]||0)+1,m),{});
   const byInsertion=C.clauses.reduce((m,c)=>(m[c.insertion]=(m[c.insertion]||0)+1,m),{});
   console.log(`corpus: ${C.clauses.length} clauses · ${C.documents.length} documents · ${C.rules.length} rules · ${C.risks.length} risks · ${C.benchmarks.length} benchmarks · ${C.fields.length} fields · ${Object.keys(C.glossary).length} glossary terms`);
   console.log(`        severity ${JSON.stringify(bySeverity)} · insertion ${JSON.stringify(byInsertion)}`);
   console.log(`        verification ${JSON.stringify(byVerification)}`);
-  console.log(`        release gate "${gate}" → ${usable} of ${C.clauses.length} clauses usable, ${C.clauses.length-usable} withheld`);
+  console.log(`        release gate: authority "${gate}" → ${gateSummary.authority.passing}/${gateSummary.authority.total} · drafting "${C.taxonomy.releaseGate.draftingMinimum}" → ${gateSummary.drafting.passing}/${gateSummary.drafting.total}`);
+  console.log(`        ${usable} of ${C.clauses.length} clauses usable, ${C.clauses.length-usable} withheld`);
+  for(const [why,n] of Object.entries(gateSummary.byBlocker).sort((a,b)=>b[1]-a[1]))
+    console.log(`          ${String(n).padStart(4)}  ${why}`);
   if(typeof configs!=='undefined'&&configs) console.log(`checked ${configs.length} configurations`);
   notes.forEach(n=>console.log('  note  '+n));
   warnings.forEach(w=>console.log('  WARN  '+w));

@@ -67,6 +67,41 @@ Two things unblock it, and they are independent:
 
 Neither reaches `primary-verified`, which requires a named human reviewer by design.
 
+## Two ladders, because a term is not a statute
+
+The release gate was one number applied to all 360 clauses: reach `corroborated` on the
+source ladder or the engine withholds you. That is right for a clause that says what the
+law requires and a category error for a clause that says what the parties agree. A
+payment-terms clause cites nothing because there is nothing to cite — grading it on
+citations left all 191 drafting clauses permanently unreleasable for a reason that does
+not apply to them. That is not a strict standard, it is a broken one.
+
+| Track | Clauses | Ladder | Gate | Cleared by |
+|---|---|---|---|---|
+| authority (`assertsLaw: true`) | 169 | `verificationLevels` | `corroborated` | sources opened and read, assertions pinned to attested text |
+| drafting (`assertsLaw: false`) | 191 | `draftingReviewLevels` | `counsel-reviewed` | a named lawyer who is not the author, on a recorded date, against a stated scope |
+
+The ladders are blind to each other, and the tests assert it both ways: an authority clause
+with a lawyer's signoff and no sources still fails, and a drafting clause with a full
+citation stack and no review still fails. A statute does not tell you whether an indemnity
+cap is the one you want; a lawyer's approval does not tell you what a statute says.
+
+`self-reviewed` sits below the drafting gate on purpose — an author checking their own work
+is not review, for the same reason two citations by one author are not corroboration. A
+reviewer must be a named human with a role, a date and a stated scope; "the team", a tool
+name, and a model name are all refused.
+
+**Today both gates report 0 passing, for one root reason:** every clause's `assertsLaw`
+classification is still `heuristic-unreviewed`, so which ladder it belongs on is not yet
+established. `classifiedBy: "reviewed"` is not a magic string either — claiming it requires
+naming who decided and when. That single review is now the cheapest unblocking step in the
+repo: a binary judgement per clause, no statutes needed.
+
+`npm run packet` writes `verification/drafting-review.md` — the 191 drafting clauses grouped
+by document, ordered by cost of being wrong, each with its text, the fields it interpolates,
+when it applies, how much of the 12,120-configuration space it actually reaches, and the
+JSON to paste back once it has been read.
+
 ## Nothing from memory
 
 The 360 clauses were written from model memory. Sampling put the defect rate at 89%, and
