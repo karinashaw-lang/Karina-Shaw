@@ -1,0 +1,1467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>DRAFT — AI Template &amp; Content Engine (Working Prototype)</title>
+<style>
+  :root{
+    --bg:#0b0f17; --panel:#121826; --panel2:#0f1521; --line:#1f2937;
+    --txt:#e6edf6; --muted:#93a1b5; --accent:#f5b301; --accent2:#3ba2ff;
+    --green:#34d399; --red:#f87171; --blue:#60a5fa; --purple:#a78bfa;
+    --amber:#fbbf24; --chip:#1a2435; --paper:#f7f5f0; --ink:#1c1a17;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:radial-gradient(1200px 600px at 70% -10%, #16203200, #0b0f17), var(--bg);
+    color:var(--txt);font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;}
+  a{color:var(--accent2);text-decoration:none}
+  .wrap{max-width:1180px;margin:0 auto;padding:22px 18px 80px}
+  header.hero{display:flex;flex-wrap:wrap;gap:14px;align-items:flex-end;justify-content:space-between;
+    border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:20px}
+  .title h1{margin:0;font-size:24px;letter-spacing:.2px}
+  .title .sub{color:var(--muted);margin-top:4px;font-size:13px}
+  .badge{display:inline-flex;align-items:center;gap:6px;background:var(--chip);border:1px solid var(--line);
+    padding:5px 10px;border-radius:999px;font-size:12px;color:var(--muted)}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--muted);display:inline-block}
+  .dot.live{background:var(--green);box-shadow:0 0 0 3px #34d39922;animation:pulse 1.6s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 #34d39955}70%{box-shadow:0 0 0 6px #34d39900}100%{box-shadow:0 0 0 0 #34d39900}}
+  .ctrls{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  button{cursor:pointer;background:var(--chip);color:var(--txt);border:1px solid var(--line);
+    padding:8px 12px;border-radius:9px;font-size:13px;transition:.15s;font-family:inherit}
+  button:hover{border-color:var(--accent2);color:#fff}
+  button:disabled{opacity:.45;cursor:not-allowed}
+  button.primary{background:linear-gradient(180deg,#f5b301,#e0a000);color:#1a1300;border:none;font-weight:600}
+  button.primary:hover{color:#1a1300}
+  button.ghost{background:transparent}
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-bottom:22px}
+  .kpi{background:linear-gradient(180deg,var(--panel),var(--panel2));border:1px solid var(--line);
+    border-radius:14px;padding:14px 16px}
+  .kpi .l{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.6px}
+  .kpi .v{font-size:22px;font-weight:700;margin-top:6px}
+  .kpi .d{font-size:12px;margin-top:3px;color:var(--muted)}
+  .tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+  .tab{padding:9px 14px;border-radius:10px;border:1px solid var(--line);background:var(--panel2);color:var(--muted);cursor:pointer;user-select:none}
+  .tab.active{background:var(--accent);color:#1a1300;border-color:var(--accent);font-weight:600}
+  .tab.locked{opacity:.4;cursor:not-allowed}
+  section.view{display:none;animation:fade .25s}
+  section.view.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1}}
+  .grid2{display:grid;grid-template-columns:1.35fr .85fr;gap:16px;align-items:start}
+  @media(max-width:900px){.grid2{grid-template-columns:1fr}.tabs{overflow:auto}}
+  .card{background:linear-gradient(180deg,var(--panel),var(--panel2));border:1px solid var(--line);
+    border-radius:14px;padding:16px}
+  .card + .card{margin-top:16px}
+  .card h3{margin:0 0 12px;font-size:15px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+  .card h3 .h{color:var(--muted);font-size:12px;font-weight:500}
+  .note{color:var(--muted);font-size:12.5px;margin-top:10px;line-height:1.6}
+  .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+
+  /* ---------- wizard ---------- */
+  .q{padding:14px 0;border-bottom:1px solid var(--line)}
+  .q:last-child{border:none}
+  .q .qh{display:flex;gap:9px;align-items:baseline;margin-bottom:9px}
+  .q .qn{color:var(--accent);font-weight:700;font-size:12px;flex:0 0 22px}
+  .q .qt{font-weight:600}
+  .q .qs{color:var(--muted);font-size:12px;margin-top:2px}
+  .opts{display:flex;gap:7px;flex-wrap:wrap;margin-left:31px}
+  .opt{padding:7px 12px;border-radius:9px;border:1px solid var(--line);background:var(--panel2);
+    color:var(--muted);font-size:12.5px;cursor:pointer;transition:.13s}
+  .opt:hover{border-color:var(--accent2);color:#fff}
+  .opt.sel{background:#10233f;border-color:var(--accent2);color:#fff;font-weight:600}
+  .fields{margin-left:31px;display:grid;gap:8px}
+  input[type=text]{background:var(--panel2);border:1px solid var(--line);color:var(--txt);padding:8px 11px;
+    border-radius:9px;font-size:13px;width:100%;font-family:inherit}
+  input[type=text]:focus{outline:none;border-color:var(--accent2)}
+  .autofill{font-size:11px;color:var(--green);margin-top:3px;display:flex;align-items:center;gap:5px}
+
+  /* ---------- document ---------- */
+  .doclist{display:flex;flex-direction:column;gap:6px}
+  .docitem{display:flex;gap:9px;align-items:center;padding:9px 11px;border-radius:10px;border:1px solid var(--line);
+    background:var(--panel2);cursor:pointer;transition:.13s;font-size:12.5px}
+  .docitem:hover{border-color:var(--accent2)}
+  .docitem.sel{background:#10233f;border-color:var(--accent2)}
+  .docitem .di{flex:0 0 18px;text-align:center}
+  .docitem .dn{flex:1;font-weight:600}
+  .docitem .dc{color:var(--muted);font-size:11px}
+  .paper{background:var(--paper);color:var(--ink);border-radius:12px;padding:34px 40px;
+    font:14px/1.75 Georgia,"Times New Roman",serif;max-height:640px;overflow:auto}
+  @media(max-width:600px){.paper{padding:22px 20px}}
+  .paper h1{font-size:17px;text-align:center;text-transform:uppercase;letter-spacing:1.4px;margin:0 0 4px}
+  .paper .psub{text-align:center;color:#6b6459;font-size:12px;margin-bottom:26px;font-family:inherit}
+  .paper h2{font-size:14px;text-transform:uppercase;letter-spacing:.9px;margin:26px 0 9px;
+    border-bottom:1px solid #d8d2c6;padding-bottom:4px}
+  .paper h3{font-size:13.5px;margin:17px 0 5px}
+  .paper p{margin:0 0 11px;text-align:justify}
+  .paper .sig{margin-top:30px;border-top:1px solid #d8d2c6;padding-top:16px}
+  .paper .sigline{margin-top:22px;border-bottom:1px solid var(--ink);width:260px;max-width:100%}
+  .paper .signame{font-size:12px;color:#6b6459;margin-top:4px}
+  .fld{background:#fff2c4;border-bottom:1px dotted #b59a3d;padding:0 2px;border-radius:2px}
+  .xref{color:#7a5c00;border-bottom:1px dotted #b59a3d;cursor:help}
+  .term{border-bottom:1px dashed #9a8f7d;cursor:help;position:relative}
+  .term:hover{background:#e9e3d6}
+  .aitag{display:inline-block;background:#efe7d2;border:1px solid #d8c99b;color:#6b5a1f;font-family:inherit;
+    font-size:10.5px;padding:2px 7px;border-radius:5px;letter-spacing:.3px;margin-bottom:16px}
+  .cond{display:inline-block;font-family:ui-monospace,Menlo,monospace;font-size:10px;background:#e4ecf5;
+    border:1px solid #b9cbdd;color:#2c4a68;padding:1px 6px;border-radius:4px;margin-left:6px;vertical-align:middle}
+
+  /* ---------- findings ---------- */
+  .finding{display:flex;gap:11px;padding:12px 0;border-bottom:1px solid var(--line);align-items:flex-start}
+  .finding:last-child{border:none}
+  .finding .ic{font-size:16px;flex:0 0 22px;text-align:center;margin-top:1px}
+  .finding .fb{flex:1;min-width:0}
+  .finding .ft{font-weight:600;margin-bottom:3px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  .finding .fd{color:var(--muted);font-size:12.5px;line-height:1.6}
+  .finding .fa{margin-top:8px;display:flex;gap:7px;flex-wrap:wrap}
+  .pill{display:inline-block;padding:2px 8px;border-radius:999px;font-size:10.5px;font-weight:700;
+    letter-spacing:.4px;text-transform:uppercase}
+  .pill.critical{background:#3a1414;color:var(--red)}
+  .pill.recommended{background:#3a2e10;color:var(--amber)}
+  .pill.optional{background:#222a38;color:var(--muted)}
+  .pill.added{background:#0f2e22;color:var(--green)}
+  .pill.pass{background:#0f2e22;color:var(--green)}
+  .pill.info{background:#10233f;color:var(--blue)}
+  button.mini{padding:5px 10px;font-size:11.5px;border-radius:7px}
+  .bar{height:7px;background:var(--chip);border-radius:6px;overflow:hidden;margin-top:6px}
+  .bar > i{display:block;height:100%;border-radius:6px;background:linear-gradient(90deg,var(--accent2),var(--purple));transition:width .5s}
+  .bench{padding:11px 0;border-bottom:1px solid var(--line);font-size:12.5px}
+  .bench:last-child{border:none}
+  .bench .bt{display:flex;justify-content:space-between;gap:10px;margin-bottom:3px}
+  .bench .bv{font-weight:700;color:var(--accent)}
+  .bench .bd{color:var(--muted);font-size:11.5px;margin-top:4px}
+  .empty{color:var(--muted);font-size:12.5px;text-align:center;padding:26px 10px;line-height:1.6}
+
+  /* ---------- internals ---------- */
+  .rule{display:flex;gap:10px;padding:9px 0;border-bottom:1px solid var(--line);font-size:12px;align-items:flex-start}
+  .rule:last-child{border:none}
+  .rule .rs{flex:0 0 16px;text-align:center;margin-top:1px}
+  .rule .rc{flex:1;min-width:0}
+  .rule code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11.5px;color:var(--blue);
+    word-break:break-word;display:block;line-height:1.65}
+  .rule .rr{color:var(--muted);margin-top:3px;font-size:11.5px}
+  .rule.off{opacity:.42}
+  pre.prompt{background:#080c14;border:1px solid var(--line);border-radius:11px;padding:14px;overflow:auto;
+    font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11.5px;line-height:1.7;color:#cbd5e1;
+    max-height:430px;white-space:pre-wrap;word-break:break-word;margin:0}
+  pre.prompt .k{color:var(--purple)} pre.prompt .s{color:var(--green)} pre.prompt .c{color:#64748b}
+  .retr{padding:9px 0;border-bottom:1px solid var(--line);font-size:12px}
+  .retr:last-child{border:none}
+  .retr .rh{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+  .retr .rn{font-weight:600}
+  .retr .rsc{font-family:ui-monospace,Menlo,monospace;color:var(--green);font-size:11.5px}
+  .retr .rt{color:var(--muted);font-size:11px;margin-top:2px}
+  .tagchip{display:inline-block;background:var(--chip);border:1px solid var(--line);color:var(--muted);
+    font-size:10px;padding:1px 7px;border-radius:999px;margin:2px 3px 0 0}
+  .disc{margin-top:26px;padding:15px 17px;border:1px solid var(--line);border-radius:12px;background:var(--panel2);
+    color:var(--muted);font-size:12px;line-height:1.75}
+  .disc b{color:var(--txt)}
+  .warnbar{background:#3a2e10;border:1px solid #6b5416;color:var(--amber);border-radius:11px;padding:11px 14px;
+    font-size:12.5px;margin-bottom:16px;display:flex;gap:9px;align-items:flex-start;line-height:1.6}
+
+  /* ---------- tooltip ---------- */
+  #tip{position:fixed;z-index:99;background:#0d1420;border:1px solid var(--accent2);border-radius:10px;
+    padding:10px 13px;max-width:330px;font:12.5px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    color:var(--txt);box-shadow:0 12px 30px #0009;display:none;pointer-events:none}
+  #tip .tth{color:var(--accent);font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <div class="title">
+    <h1>DRAFT — AI Template &amp; Content Engine</h1>
+    <div class="sub">Working prototype of spec §1–3, §6–7 · Formation wizard → conditional assembly → AI review → QA</div>
+  </div>
+  <div class="ctrls">
+    <span class="badge"><span class="dot live"></span> Rules engine live</span>
+    <button class="ghost" id="resetBtn">Reset</button>
+    <button class="primary" id="demoBtn">Load demo answers</button>
+  </div>
+</header>
+
+<div class="kpis" id="kpis"></div>
+
+<div class="tabs" id="tabs">
+  <div class="tab active" data-v="wizard">📝 Formation Wizard</div>
+  <div class="tab needsdoc" data-v="package">📄 Document Package</div>
+  <div class="tab needsdoc" data-v="review">🔍 AI Review</div>
+  <div class="tab needsdoc" data-v="qa">✅ Consistency &amp; QA</div>
+  <div class="tab needsdoc" data-v="engine">⚙️ Engine Internals</div>
+</div>
+
+<!-- ============ WIZARD ============ -->
+<section class="view active" id="view-wizard">
+  <div class="grid2">
+    <div class="card">
+      <h3>Formation wizard <span class="h">Spec §1.1 — 5–8 structured questions</span></h3>
+      <div id="wizard"></div>
+      <div style="margin-top:16px;display:flex;gap:8px;flex-wrap:wrap">
+        <button class="primary" id="genBtn">⚡ Generate document package</button>
+        <span class="note" style="margin:0;align-self:center" id="genHint"></span>
+      </div>
+    </div>
+    <div>
+      <div class="card">
+        <h3>Smart form population <span class="h">§1.3</span></h3>
+        <div id="smartfill"></div>
+      </div>
+      <div class="card">
+        <h3>Live schema resolution <span class="h">§1.2</span></h3>
+        <div id="schemaPreview"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PACKAGE ============ -->
+<section class="view" id="view-package">
+  <div class="grid2">
+    <div class="card">
+      <h3 id="docTitle">Generated document</h3>
+      <div class="paper" id="paper"></div>
+    </div>
+    <div>
+      <div class="card">
+        <h3>Package contents <span class="h" id="pkgCount"></span></h3>
+        <div class="doclist" id="doclist"></div>
+        <div class="note">Documents are assembled from the clause library by the conditional logic engine. Grey items were
+          evaluated and excluded — hover a document to see why it was or wasn't included.</div>
+      </div>
+      <div class="card">
+        <h3>Legend</h3>
+        <div style="font-size:12.5px;line-height:2.1">
+          <span class="fld" style="color:var(--ink)">auto-populated field</span> — filled from wizard answers or profile<br>
+          <span class="xref" style="color:var(--blue)">Section 4.2</span> — cross-reference, auto-numbered &amp; validated<br>
+          <span class="term" style="color:var(--txt)">indemnification</span> — hover for plain-English translation (§3.2)<br>
+          <span class="cond" style="background:#10233f;border-color:#2c4a68;color:var(--blue)">IF founders ≥ 2</span> — clause included by a conditional rule
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REVIEW ============ -->
+<section class="view" id="view-review">
+  <div class="warnbar"><span>⚠️</span><span><b>Prototype output.</b> Clause text, benchmark percentages, and risk
+    thresholds below are illustrative sample data written for this demo — not real market research and not legal advice.
+    The spec (§2.2, Month 2) calls for seeding benchmarks with synthetic data and replacing it with the real corpus over time;
+    this is that synthetic seed.</span></div>
+  <div class="grid2">
+    <div>
+      <div class="card">
+        <h3>Missing clause detection <span class="h">§2.1 — severity scored</span></h3>
+        <div id="missing"></div>
+      </div>
+      <div class="card">
+        <h3>Risk-based suggestions <span class="h">§2.3</span></h3>
+        <div id="risks"></div>
+      </div>
+    </div>
+    <div>
+      <div class="card">
+        <h3>AI confidence <span class="h">§7 — fallback threshold 70%</span></h3>
+        <div id="confidence"></div>
+      </div>
+      <div class="card">
+        <h3>Market benchmarks <span class="h">§2.2 — synthetic seed</span></h3>
+        <div id="benchmarks"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ QA ============ -->
+<section class="view" id="view-qa">
+  <div class="grid2">
+    <div class="card">
+      <h3>Consistency checker <span class="h">§3.1 — runs on the assembled package</span></h3>
+      <div id="consistency"></div>
+    </div>
+    <div>
+      <div class="card">
+        <h3>Readability <span class="h">§3.2 — Flesch-Kincaid, flag &gt; grade 12</span></h3>
+        <div id="readability"></div>
+      </div>
+      <div class="card">
+        <h3>Plain-English glossary <span class="h">§3.2</span></h3>
+        <div id="glossary"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ENGINE ============ -->
+<section class="view" id="view-engine">
+  <div class="grid2">
+    <div>
+      <div class="card">
+        <h3>Conditional logic engine <span class="h">§1.2 — every rule, evaluated</span></h3>
+        <div id="rules"></div>
+      </div>
+      <div class="card">
+        <h3>Assembled prompt <span class="h">§6.2 — context injection + guardrails</span></h3>
+        <pre class="prompt" id="promptBox"></pre>
+      </div>
+    </div>
+    <div>
+      <div class="card">
+        <h3>RAG retrieval <span class="h">§6.3 — filtered, then ranked</span></h3>
+        <div id="retrieval"></div>
+        <div class="note">Retrieval is simulated with a deterministic lexical + tag-overlap score so the ranking is
+          inspectable. In production this is a vector search (§6.3 names Pinecone/Weaviate) over the same tag filters —
+          jurisdiction and industry are applied as hard pre-filters, recency as a tiebreak.</div>
+      </div>
+      <div class="card">
+        <h3>Clause library <span class="h" id="libCount"></span></h3>
+        <div id="libStats"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="disc" id="disc"></div>
+</div>
+
+<div id="tip"></div>
+<script>
+/* =====================================================================
+   DRAFT AI ENGINE — PROTOTYPE
+   Implements the demonstrable core of the spec:
+     §1.1 wizard -> generator   §1.2 conditional clause assembly
+     §1.3 smart population      §2.1 missing clause detection
+     §2.2 benchmarks            §2.3 risk suggestions
+     §3.1 consistency checker   §3.2 plain English + readability
+     §6.2 prompt assembly       §6.3 RAG retrieval + tag filters
+     §7   confidence + guardrails
+
+   No model call is made. Every "AI" output here is produced by the
+   deterministic rules/retrieval layer that would sit AROUND the model in
+   production, which is the part of the spec worth prototyping first:
+   it is what makes model output auditable. See the note at the bottom.
+   ===================================================================== */
+
+const $ = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+
+/* ===================== REFERENCE DATA ===================== */
+
+const STATES = {
+  DE:{name:'Delaware',  franchise:true },
+  CA:{name:'California',franchise:true },
+  TX:{name:'Texas',     franchise:true },
+  FL:{name:'Florida',   franchise:false},
+  NY:{name:'New York',  franchise:false}
+};
+const INDUSTRIES = {
+  saas:      {name:'SaaS / Software',        ipCritical:true , desc:'software and software-as-a-service'},
+  ecommerce: {name:'E-commerce / Retail',    ipCritical:true , desc:'e-commerce and retail'},
+  services:  {name:'Professional Services',  ipCritical:false, desc:'professional services'},
+  health:    {name:'Healthcare',             ipCritical:true , desc:'healthcare services'},
+  construct: {name:'Construction / Trades',  ipCritical:false, desc:'construction and the building trades'},
+  other:     {name:'Other',                  ipCritical:false, desc:'general commerce'}
+};
+const FUNDING = {
+  boot:  {name:'Bootstrapped',        institutional:false},
+  ff:    {name:'Friends & family',    institutional:false},
+  angel: {name:'Angel / pre-seed',    institutional:true },
+  vc:    {name:'VC (Series A track)', institutional:true }
+};
+const ENTITIES = {
+  llc:   {name:'LLC',    long:'limited liability company', owners:'Members',     charter:'Certificate of Formation', gov:'Operating Agreement'},
+  ccorp: {name:'C-Corp', long:'corporation',               owners:'Stockholders',charter:'Certificate of Incorporation', gov:'Bylaws'}
+};
+
+/* Plain-English glossary — §3.2 hover explanations */
+const GLOSSARY = {
+  indemnification:'If someone sues you because of something the other party did, they cover your legal bills and any damages.',
+  'operating agreement':'The internal rulebook for an LLC: who owns what, who decides what, and what happens if someone leaves.',
+  'registered agent':'A person or company with a physical address in the state who officially receives legal mail for you.',
+  'governing law':'Which state’s law a judge uses to interpret this contract if there is a dispute.',
+  severability:'If a court strikes one clause, the rest of the contract still stands.',
+  vesting:'You earn your ownership over time instead of getting it all on day one.',
+  cliff:'A waiting period at the start of vesting. Leave before the cliff and you keep nothing.',
+  'buy-sell':'The rules for what happens to someone’s ownership stake if they quit, die, divorce, or go bankrupt.',
+  'charging order':'A creditor chasing an owner’s personal debt can only intercept that owner’s distributions — they cannot seize the business itself.',
+  'foreign qualification':'Registering to do business in a state other than the one you formed in. “Foreign” means out-of-state, not out-of-country.',
+  'fiduciary duty':'A legal obligation to act in the company’s interest rather than your own.',
+  'pro rata':'Split in proportion to ownership — own 30%, get 30%.',
+  'quorum':'The minimum number of people who must show up before a vote counts.',
+  'dissolution':'Formally shutting the company down and dividing up what is left.',
+  'capital contribution':'The money or property an owner puts into the business in exchange for their stake.',
+  'right of first refusal':'Before selling your stake to an outsider, you must offer it to the other owners on the same terms first.',
+  'drag-along':'If the majority votes to sell the company, minority owners are required to sell too.',
+  'tag-along':'If the majority sells, minority owners get to join the sale on the same terms.',
+  'work made for hire':'Work that belongs to the company from the moment it is created, rather than to the person who made it.',
+  'business associate agreement':'A HIPAA-required contract with any vendor that will touch patient health information.',
+  'section 83(b) election':'A form you file with the IRS within 30 days to pay tax on your shares now, while they are cheap, instead of later when they may be worth much more.'
+};
+
+/* =====================================================================
+   CONDITIONAL LOGIC ENGINE — §1.2
+   Each rule is an inspectable IF/THEN with a source note. The Engine
+   Internals tab renders every rule and whether it fired.
+   ===================================================================== */
+const RULES = [
+  {id:'multi_founder', code:'IF [founders >= 2] THEN [include buy-sell + transfer restrictions]',
+   test:a=>a.founders>=2, why:'Multiple owners create exit, death, and divorce scenarios that need a pre-agreed mechanism.'},
+
+  {id:'solo_founder', code:'IF [founders == 1] THEN [skip buy-sell, add sole-member provisions]',
+   test:a=>a.founders===1, why:'A single-member entity has no counterparty to buy out; different formalities apply.'},
+
+  {id:'foreign_qual', code:'IF [formation state != operating state] THEN [add foreign qualification]',
+   test:a=>a.formState!==a.opState, why:'Operating in a state you did not form in generally requires registering there.'},
+
+  {id:'ip_critical', code:'IF [industry is IP-critical] THEN [include IP assignment + data processing language]',
+   test:a=>INDUSTRIES[a.industry].ipCritical, why:'Software, commerce, and health businesses carry their value in IP and data.'},
+
+  {id:'ca_operating', code:'IF [operating state == CA] THEN [flag non-compete void + CA employment policies]',
+   test:a=>a.opState==='CA', why:'California voids most employee non-competes (Bus. & Prof. Code §16600; AB 1076 effective Jan 2024).'},
+
+  {id:'health_baa', code:'IF [industry == healthcare] THEN [require BAA references]',
+   test:a=>a.industry==='health', why:'HIPAA requires a Business Associate Agreement with any vendor touching PHI.'},
+
+  {id:'institutional', code:'IF [funding is institutional] THEN [4-year vesting, 1-year cliff, drag-along]',
+   test:a=>FUNDING[a.funding].institutional, why:'Standard institutional terms; deviating from them costs time in diligence.'},
+
+  {id:'file_83b', code:'IF [entity == C-Corp] AND [vesting applies] THEN [generate 83(b) election]',
+   test:a=>a.entity==='ccorp'&&FUNDING[a.funding].institutional, why:'The 83(b) election must be filed within 30 days of the grant. The deadline is not extendable.'},
+
+  {id:'hiring', code:'IF [hiring within 12 months] THEN [include employment policy stubs]',
+   test:a=>a.employees, why:'Wage-and-hour exposure begins at the first hire, not at scale.'},
+
+  {id:'ca_employees', code:'IF [hiring] AND [operating state == CA] THEN [meal break, rest period, PTO accrual]',
+   test:a=>a.employees&&a.opState==='CA', why:'California wage orders require these specific policies; the spec names this exact case in §2.1.'},
+
+  {id:'de_franchise', code:'IF [formation state == DE] THEN [add franchise tax + annual report notice]',
+   test:a=>a.formState==='DE', why:'Delaware charges annual franchise tax regardless of revenue; missed filings void good standing.'},
+
+  {id:'tx_charging', code:'IF [formation state == TX] THEN [add charging order protection]',
+   test:a=>a.formState==='TX'&&a.entity==='llc', why:'Texas LLC statute offers strong charging-order protection worth invoking expressly.'},
+
+  {id:'ny_publication', code:'IF [formation state == NY] AND [entity == LLC] THEN [add publication requirement notice]',
+   test:a=>a.formState==='NY'&&a.entity==='llc', why:'NY LLC Law §206 requires newspaper publication within 120 days or the authority to do business is suspended.'},
+
+  {id:'vc_entity_mismatch', code:'IF [funding == VC] AND [entity == LLC] THEN [flag entity structure conflict]',
+   test:a=>a.funding==='vc'&&a.entity==='llc', why:'Institutional funds generally cannot hold LLC interests (UBTI for their LPs); a conversion is usually required.'},
+
+  {id:'construction', code:'IF [industry == construction] THEN [add lien + retainage provisions]',
+   test:a=>a.industry==='construct', why:'Mechanics lien rights are deadline-driven and waived by silence in most states.'},
+
+  {id:'services', code:'IF [industry == professional services] THEN [add licensure + scope provisions]',
+   test:a=>a.industry==='services', why:'Licensed practice areas restrict who may own the entity in several states.'}
+];
+
+function fired(a){ const s=new Set(); RULES.forEach(r=>{ if(r.test(a)) s.add(r.id); }); return s; }
+
+/* =====================================================================
+   CLAUSE LIBRARY — §1.2 / §6.3
+   Each clause is jurisdiction- and industry-tagged so RAG retrieval can
+   hard-filter before ranking. `auto:false` means the clause lives in the
+   document schema but is NOT inserted automatically — those are what
+   missing-clause detection (§2.1) surfaces as suggestions.
+   Body syntax:  {{field}} auto-populated · [[term]] glossary · <<xr:id>> cross-reference
+   ===================================================================== */
+
+const CLAUSES = [
+/* ---- charter ---- */
+{id:'art_name',doc:'articles',art:'Name',sev:'critical',auto:true,rule:null,jur:['*'],ind:['*'],upd:'2026-05',
+ body:`The name of the {{entityLong}} is {{company}} (the “Company”).`},
+{id:'art_purpose',doc:'articles',art:'Purpose',sev:'critical',auto:true,rule:null,jur:['*'],ind:['*'],upd:'2026-05',
+ body:`The Company is organized to engage in any lawful act or activity for which a {{entityLong}} may be organized under the laws of {{formStateLong}}, including without limitation the business of {{industryName}}.`},
+{id:'art_agent',doc:'articles',art:'Registered Office and Agent',sev:'critical',auto:true,rule:null,jur:['*'],ind:['*'],upd:'2026-04',
+ body:`The address of the Company’s registered office in {{formStateLong}} is {{agentAddress}}, and the name of its [[registered agent]] at that address is {{agent}}.`},
+{id:'art_shares',doc:'articles',art:'Authorized Stock',sev:'critical',auto:true,rule:'is_corp',jur:['*'],ind:['*'],upd:'2026-05',
+ body:`The Company is authorized to issue {{authShares}} shares of Common Stock, par value $0.0001 per share. The Board may designate one or more series of Preferred Stock without further stockholder action.`},
+{id:'art_mgmt',doc:'articles',art:'Management',sev:'critical',auto:true,rule:'is_llc',jur:['*'],ind:['*'],upd:'2026-05',
+ body:`The Company shall be {{mgmtStyle}}. The rights and obligations of the {{ownerTerm}} are set forth in the [[Operating Agreement]] referenced in <<xr:gov_formation>>.`},
+{id:'art_liability',doc:'articles',art:'Limitation of Liability',sev:'recommended',auto:true,rule:'is_corp',jur:['*'],ind:['*'],upd:'2026-02',
+ body:`To the fullest extent permitted by law, no director shall be personally liable to the Company or its {{ownerTerm}} for monetary damages for breach of [[fiduciary duty]] as a director.`},
+{id:'art_ny_pub',doc:'articles',art:'Publication Requirement',sev:'critical',auto:true,rule:'ny_publication',jur:['NY'],ind:['*'],upd:'2026-06',
+ body:`Within 120 days of formation the Company shall publish notice of its formation in two newspapers designated by the county clerk of the county in which its office is located, and shall file a Certificate of Publication with the Department of State. Failure to comply suspends the Company’s authority to carry on business in New York.`},
+{id:'art_duration',doc:'articles',art:'Duration',sev:'optional',auto:true,rule:null,jur:['*'],ind:['*'],upd:'2025-11',
+ body:`The Company shall have perpetual existence unless dissolved in accordance with <<xr:gov_dissolution>>.`},
+
+/* ---- governing document ---- */
+{id:'gov_formation',doc:'gov',art:'Formation and Term',sev:'critical',auto:true,rule:null,jur:['*'],ind:['*'],upd:'2026-05',
+ body:`This {{govDoc}} is entered into as of {{date}} (the “Effective Date”) by and among the Company and {{founderList}} (each a “{{ownerSing}}” and collectively the “{{ownerTerm}}”). The Company was formed by filing a {{charterDoc}} with the Secretary of State of {{formStateLong}}.`},
+{id:'gov_capital',doc:'gov',art:'Capital Contributions',sev:'critical',auto:true,rule:null,jur:['*'],ind:['*'],upd:'2026-03',
+ body:`Each {{ownerSing}} shall make the initial [[capital contribution]] set forth on Schedule A. No {{ownerSing}} shall be required to make any additional contribution except as approved under <<xr:gov_voting>>.`},
+{id:'gov_units',doc:'gov',art:'Ownership Interests',sev:'critical',auto:true,rule:null,jur:['*'],ind:['*'],upd:'2026-03',
+ body:`Ownership is divided among the {{ownerTerm}} in the percentages set forth on Schedule A, totaling one hundred percent (100%). {{ownerSplitNote}}`},
+{id:'gov_distrib',doc:'gov',art:'Distributions',sev:'recommended',auto:true,rule:null,jur:['*'],ind:['*'],upd:'2026-01',
+ body:`Distributions shall be made [[pro rata]] in proportion to ownership percentages, at such times as approved under <<xr:gov_voting>>, provided the Company retains reserves sufficient to meet its obligations as they come due.`},
+{id:'gov_voting',doc:'gov',art:'Management and Voting',sev:'critical',auto:true,rule:null,jur:['*'],ind:['*'],upd:'2026-04',
+ body:`Ordinary business decisions require the approval of {{ownerTerm}} holding a majority of ownership percentages. The following require unanimous approval: amending this {{govDoc}}, admitting a new {{ownerSing}}, selling substantially all assets, and dissolving the Company.`},
+{id:'gov_quorum',doc:'gov',art:'Meetings',sev:'optional',auto:true,rule:null,jur:['*'],ind:['*'],upd:'2025-09',
+ body:`A [[quorum]] consists of {{ownerTerm}} holding a majority of ownership percentages. Action may be taken by written consent in lieu of a meeting if signed by the {{ownerTerm}} who would be required to approve it at a meeting.`},
+{id:'gov_solemember',doc:'gov',art:'Sole Member Provisions',sev:'recommended',auto:true,rule:'solo_founder',jur:['*'],ind:['*'],upd:'2026-02',
+ body:`The Company has a single {{ownerSing}}. All actions requiring approval may be taken by the sole {{ownerSing}} acting alone and evidenced in writing. The {{ownerSing}} shall observe entity formalities and maintain separate books and accounts; commingling of personal and Company funds may expose the {{ownerSing}} to personal liability.`},
+{id:'gov_transfer',doc:'gov',art:'Transfer Restrictions',sev:'critical',auto:true,rule:'multi_founder',jur:['*'],ind:['*'],upd:'2026-05',
+ body:`No {{ownerSing}} may transfer all or part of their interest without first offering it to the Company and then to the other {{ownerTerm}} on the same terms (a [[right of first refusal]]), exercisable within thirty (30) days of written notice. Any transfer in violation of this Article is void.`},
+{id:'gov_buysell',doc:'gov',art:'Buy-Sell Events',sev:'critical',auto:true,rule:'multi_founder',jur:['*'],ind:['*'],upd:'2026-05',
+ body:`Upon the death, permanent disability, bankruptcy, divorce, or voluntary withdrawal of a {{ownerSing}} (each a “Triggering Event”), the Company shall have the option to purchase that {{ownerSing}}’s interest at fair market value determined by an independent appraiser, payable over thirty-six (36) months. This is the [[buy-sell]] mechanism referenced in <<xr:gov_transfer>>.`},
+{id:'gov_vesting',doc:'gov',art:'Vesting',sev:'critical',auto:true,rule:'institutional',jur:['*'],ind:['*'],upd:'2026-06',
+ body:`Each founder’s interest vests over {{vestYears}} years with a {{cliff}}-month [[cliff]]: no portion vests before the cliff date, {{cliffPct}} vests on the cliff date, and the remainder vests in equal monthly installments thereafter. Unvested interests are subject to repurchase at cost under <<xr:vest_repurchase>>.`},
+{id:'gov_drag',doc:'gov',art:'Drag-Along and Tag-Along',sev:'recommended',auto:true,rule:'institutional',jur:['*'],ind:['*'],upd:'2026-06',
+ body:`If {{ownerTerm}} holding at least a majority approve a sale of the Company, remaining {{ownerTerm}} shall be required to participate on the same terms ([[drag-along]]). Conversely, minority {{ownerTerm}} may elect to join any such sale on the same terms ([[tag-along]]).`},
+{id:'gov_charging',doc:'gov',art:'Charging Order Protection',sev:'recommended',auto:true,rule:'tx_charging',jur:['TX'],ind:['*'],upd:'2026-04',
+ body:`A [[charging order]] is the exclusive remedy of a judgment creditor of a {{ownerSing}}. No creditor shall have the right to foreclose on, or obtain possession of, Company assets or to exercise any management right.`},
+{id:'gov_fiduciary',doc:'gov',art:'Standard of Care',sev:'recommended',auto:true,rule:null,jur:['*'],ind:['*'],upd:'2026-01',
+ body:`Each {{ownerSing}} shall discharge their duties in good faith, with the care an ordinarily prudent person would exercise, and in a manner reasonably believed to be in the best interests of the Company.`},
+{id:'gov_books',doc:'gov',art:'Books and Records',sev:'recommended',auto:true,rule:null,jur:['*'],ind:['*'],upd:'2025-10',
+ body:`The Company shall maintain complete books and records at its principal office. Each {{ownerSing}} may inspect them upon five (5) business days’ written notice for any purpose reasonably related to their interest.`},
+{id:'gov_dataproc',doc:'gov',art:'Data Processing and Privacy',sev:'recommended',auto:false,rule:'ip_critical',jur:['*'],ind:['saas','ecommerce','health'],upd:'2026-06',
+ body:`The Company shall maintain a written information security program appropriate to the sensitivity of the personal data it processes, execute a data processing agreement with each vendor that processes personal data on its behalf, and maintain a record of processing activities sufficient to respond to data subject requests within statutory deadlines.`},
+{id:'gov_baa',doc:'gov',art:'HIPAA Business Associate Obligations',sev:'critical',auto:false,rule:'health_baa',jur:['*'],ind:['health'],upd:'2026-06',
+ body:`Before disclosing protected health information to any vendor, the Company shall execute a [[Business Associate Agreement|business associate agreement]] meeting the requirements of 45 C.F.R. §164.504(e). The Company shall maintain a current inventory of all business associates and review each agreement annually.`},
+{id:'gov_lien',doc:'gov',art:'Lien Rights and Retainage',sev:'recommended',auto:true,rule:'construction',jur:['*'],ind:['construct'],upd:'2026-05',
+ body:`The Company shall preserve its mechanics lien rights on every project by serving all preliminary notices within the statutory period for the project’s jurisdiction and by calendaring lien filing deadlines at contract execution. Retainage shall not exceed ten percent (10%) and shall be released within thirty (30) days of final acceptance.`},
+{id:'gov_licens',doc:'gov',art:'Licensure and Scope of Practice',sev:'recommended',auto:true,rule:'services',jur:['*'],ind:['services'],upd:'2026-03',
+ body:`The Company shall provide services only through personnel holding all licenses required in the jurisdiction of performance, and shall confirm that its ownership structure complies with any restriction on non-licensee ownership applicable in {{opStateLong}}.`},
+{id:'gov_taxelect',doc:'gov',art:'Tax Classification',sev:'recommended',auto:false,rule:null,jur:['*'],ind:['*'],upd:'2026-02',
+ body:`The {{ownerTerm}} intend the Company to be treated as {{taxDefault}} for federal income tax purposes and shall not file an election inconsistent with that treatment without unanimous approval under <<xr:gov_voting>>.`},
+{id:'gov_indemnify',doc:'gov',art:'Indemnification',sev:'recommended',auto:false,rule:null,jur:['*'],ind:['*'],upd:'2026-04',
+ body:`The Company shall indemnify each {{ownerSing}}, manager, and officer against losses incurred in that capacity, except for fraud, willful misconduct, or knowing violation of law. This [[indemnification]] survives termination of this {{govDoc}}.`},
+{id:'gov_deadlock',doc:'gov',art:'Deadlock Resolution',sev:'critical',auto:false,rule:'even_split',jur:['*'],ind:['*'],upd:'2026-06',
+ body:`If the {{ownerTerm}} are unable to agree on a matter requiring approval for thirty (30) consecutive days, either {{ownerSing}} may invoke a buy-sell auction: the invoking {{ownerSing}} names a price per percentage point, and the other {{ownerSing}} must elect within thirty (30) days either to buy at that price or to sell at that price.`},
+{id:'gov_dissolution',doc:'gov',art:'Dissolution',sev:'recommended',auto:true,rule:null,jur:['*'],ind:['*'],upd:'2025-12',
+ body:`The Company shall dissolve upon unanimous written approval of the {{ownerTerm}} or entry of a decree of judicial [[dissolution]]. On [[dissolution]], assets shall be applied first to creditors, then to {{ownerTerm}} [[pro rata]].`},
+{id:'gov_govlaw',doc:'gov',art:'Governing Law',sev:'critical',auto:false,rule:null,jur:['*'],ind:['*'],upd:'2026-05',
+ body:`This {{govDoc}} shall be governed by and construed in accordance with the laws of {{formStateLong}}, without regard to its conflict of laws principles. [[Governing law|governing law]] determines which state’s rules a court applies to this document.`},
+{id:'gov_dispute',doc:'gov',art:'Dispute Resolution',sev:'recommended',auto:false,rule:null,jur:['*'],ind:['*'],upd:'2026-03',
+ body:`The parties shall attempt in good faith to resolve any dispute through mediation before initiating litigation. Any unresolved dispute shall be brought exclusively in the state or federal courts located in {{formStateLong}}, and each party consents to personal jurisdiction there.`},
+{id:'gov_sever',doc:'gov',art:'Severability',sev:'optional',auto:false,rule:null,jur:['*'],ind:['*'],upd:'2025-08',
+ body:`If any provision of this {{govDoc}} is held unenforceable, that provision shall be modified to the minimum extent necessary to make it enforceable, and the remaining provisions shall continue in full force. This is a standard [[severability]] provision.`},
+{id:'gov_amend',doc:'gov',art:'Amendment',sev:'recommended',auto:true,rule:null,jur:['*'],ind:['*'],upd:'2025-11',
+ body:`This {{govDoc}} may be amended only by a writing signed by the {{ownerTerm}} required to approve amendments under <<xr:gov_voting>>.`},
+{id:'gov_notices',doc:'gov',art:'Notices',sev:'optional',auto:false,rule:null,jur:['*'],ind:['*'],upd:'2025-07',
+ body:`Notices shall be in writing and deemed given when delivered by hand, one business day after deposit with a national overnight courier, or on confirmed transmission by email to the addresses on Schedule A.`},
+{id:'gov_counterparts',doc:'gov',art:'Counterparts',sev:'optional',auto:false,rule:null,jur:['*'],ind:['*'],upd:'2025-07',
+ body:`This {{govDoc}} may be executed in counterparts, each of which is an original and all of which together constitute one instrument. Electronic signatures have the same effect as originals.`},
+
+/* ---- IP assignment ---- */
+{id:'ipa_assign',doc:'ipa',art:'Assignment of Inventions',sev:'critical',auto:true,rule:null,jur:['*'],ind:['*'],upd:'2026-06',
+ body:`Each founder hereby irrevocably assigns to the Company all right, title, and interest in every invention, work of authorship, trade secret, and other intellectual property conceived or reduced to practice in connection with the Company’s business, whether before or after the Effective Date.`},
+{id:'ipa_wfh',doc:'ipa',art:'Work Made For Hire',sev:'critical',auto:true,rule:null,jur:['*'],ind:['*'],upd:'2026-04',
+ body:`All copyrightable works created by a founder within the scope of the Company’s business are [[work made for hire]] under the Copyright Act. To the extent any work does not qualify, it is assigned to the Company under <<xr:ipa_assign>>.`},
+{id:'ipa_prior',doc:'ipa',art:'Prior Inventions',sev:'recommended',auto:true,rule:null,jur:['*'],ind:['*'],upd:'2026-02',
+ body:`Each founder shall list on Exhibit A any invention created before the Effective Date that they wish to exclude from <<xr:ipa_assign>>. An unlisted invention is deemed assigned. If a founder lists none, they represent that none exist.`},
+{id:'ipa_moral',doc:'ipa',art:'Waiver of Moral Rights',sev:'optional',auto:false,rule:null,jur:['*'],ind:['*'],upd:'2025-10',
+ body:`To the extent permitted by law, each founder waives all moral rights, rights of attribution, and rights of integrity in the assigned works, and agrees not to assert them against the Company or its licensees.`},
+{id:'ipa_further',doc:'ipa',art:'Further Assurances',sev:'recommended',auto:true,rule:null,jur:['*'],ind:['*'],upd:'2025-12',
+ body:`Each founder shall execute any document and take any action reasonably requested by the Company to perfect, record, or enforce the rights assigned under <<xr:ipa_assign>>, including patent and trademark applications, at the Company’s expense.`},
+
+/* ---- vesting ---- */
+{id:'vest_schedule',doc:'vest',art:'Vesting Schedule',sev:'critical',auto:true,rule:null,jur:['*'],ind:['*'],upd:'2026-06',
+ body:`Founder interests vest over {{vestYears}} years measured from {{date}}, with a {{cliff}}-month [[cliff]]. {{cliffPct}} vests on the cliff date; the balance vests in {{monthlyCount}} equal monthly installments.`},
+{id:'vest_repurchase',doc:'vest',art:'Repurchase Right',sev:'critical',auto:true,rule:null,jur:['*'],ind:['*'],upd:'2026-05',
+ body:`If a founder ceases to provide services for any reason, the Company may repurchase all unvested interests at the lower of original cost or fair market value, exercisable for ninety (90) days following cessation.`},
+{id:'vest_accel',doc:'vest',art:'Acceleration',sev:'recommended',auto:true,rule:'institutional',jur:['*'],ind:['*'],upd:'2026-06',
+ body:`If the Company is acquired and a founder is terminated without cause or resigns for good reason within twelve (12) months following the closing, all unvested interests vest immediately (double-trigger acceleration).`},
+
+/* ---- 83(b) ---- */
+{id:'83b_election',doc:'83b',art:'Section 83(b) Election',sev:'critical',auto:true,rule:null,jur:['*'],ind:['*'],upd:'2026-06',
+ body:`The undersigned hereby makes an election under Section 83(b) of the Internal Revenue Code with respect to {{shareCount}} shares of {{company}} acquired on {{date}} for $0.0001 per share, subject to the vesting described in <<xr:vest_schedule>>. A [[Section 83(b) election|section 83(b) election]] must be filed with the IRS within 30 days of the grant date. This deadline cannot be extended.`},
+
+/* ---- employment stubs ---- */
+{id:'emp_atwill',doc:'emp',art:'At-Will Employment',sev:'critical',auto:true,rule:null,jur:['*'],ind:['*'],upd:'2026-03',
+ body:`Employment with the Company is at will and may be terminated by either party at any time, with or without cause or notice. No manager may alter this status except in a writing signed by an authorized officer.`},
+{id:'emp_meal',doc:'emp',art:'Meal Period Policy',sev:'critical',auto:true,rule:'ca_employees',jur:['CA'],ind:['*'],upd:'2026-06',
+ body:`Non-exempt employees are entitled to an unpaid, uninterrupted thirty (30) minute meal period beginning no later than the end of the fifth hour of work, and a second meal period for shifts exceeding ten (10) hours. A missed meal period entitles the employee to one additional hour of pay at the regular rate.`},
+{id:'emp_rest',doc:'emp',art:'Rest Period Policy',sev:'critical',auto:true,rule:'ca_employees',jur:['CA'],ind:['*'],upd:'2026-06',
+ body:`Non-exempt employees are authorized and permitted a paid ten (10) minute rest period for every four (4) hours worked or major fraction thereof, to be taken as close to the middle of the work period as practicable.`},
+{id:'emp_pto',doc:'emp',art:'PTO Accrual',sev:'critical',auto:true,rule:'ca_employees',jur:['CA'],ind:['*'],upd:'2026-06',
+ body:`Accrued and unused vacation is wages under California law and is paid out at termination. The Company does not operate a “use it or lose it” policy; accrual may be capped but not forfeited.`},
+{id:'emp_confid',doc:'emp',art:'Confidentiality',sev:'recommended',auto:false,rule:null,jur:['*'],ind:['*'],upd:'2026-04',
+ body:`Employees shall not use or disclose Company confidential information during or after employment, except as required by law. Nothing in this policy prohibits an employee from reporting a suspected violation of law to a government agency.`},
+
+/* ---- compliance calendar ---- */
+{id:'cal_de',doc:'cal',art:'Delaware Annual Obligations',sev:'critical',auto:true,rule:'de_franchise',jur:['DE'],ind:['*'],upd:'2026-06',
+ body:`Delaware franchise tax and annual report are due each year regardless of revenue. Corporations file by March 1; LLCs pay an annual tax by June 1. Missing the filing puts the Company out of good standing, which blocks financings and qualification in other states.`},
+{id:'cal_ny',doc:'cal',art:'New York Publication Deadline',sev:'critical',auto:true,rule:'ny_publication',jur:['NY'],ind:['*'],upd:'2026-06',
+ body:`Publication in two designated newspapers must be completed and the Certificate of Publication filed within 120 days of formation — that is {{nyDeadline}} for this Company.`},
+{id:'cal_83b',doc:'cal',art:'83(b) Filing Deadline',sev:'critical',auto:true,rule:'file_83b',jur:['*'],ind:['*'],upd:'2026-06',
+ body:`The Section 83(b) election must be postmarked to the IRS within 30 days of grant — that is {{d83bDeadline}} for this Company. There is no cure for a late filing.`},
+{id:'cal_foreign',doc:'cal',art:'Foreign Qualification',sev:'critical',auto:true,rule:'foreign_qual',jur:['*'],ind:['*'],upd:'2026-05',
+ body:`The Company is formed in {{formStateLong}} but operates in {{opStateLong}}, which generally requires [[foreign qualification]] there before transacting business. Penalties for operating unqualified typically include back fees and loss of access to that state’s courts.`},
+{id:'cal_ein',doc:'cal',art:'EIN and Tax Registration',sev:'recommended',auto:true,rule:null,jur:['*'],ind:['*'],upd:'2026-01',
+ body:`Apply for an EIN on IRS Form SS-4 before opening a bank account or running payroll. Register for {{opStateLong}} state tax accounts and, if hiring, unemployment insurance and workers’ compensation.`},
+
+/* ---- consent ---- */
+{id:'consent_adopt',doc:'consent',art:'Adoption of Governing Documents',sev:'critical',auto:true,rule:null,jur:['*'],ind:['*'],upd:'2026-02',
+ body:`The {{ownerTerm}} adopt the {{govDoc}} attached hereto, effective {{date}}, and ratify the filing of the {{charterDoc}} with the Secretary of State of {{formStateLong}}.`},
+{id:'consent_officers',doc:'consent',art:'Appointment of Officers',sev:'recommended',auto:true,rule:null,jur:['*'],ind:['*'],upd:'2025-12',
+ body:`{{founder1}} is appointed as the Company’s initial {{principalTitle}}, authorized to execute agreements, open accounts, and make filings on the Company’s behalf.`},
+{id:'consent_bank',doc:'consent',art:'Banking Resolution',sev:'recommended',auto:true,rule:null,jur:['*'],ind:['*'],upd:'2025-12',
+ body:`The Company is authorized to open one or more deposit accounts in its name, and {{founder1}} is authorized to execute the account documentation. Company funds shall not be commingled with personal funds.`},
+{id:'consent_issue',doc:'consent',art:'Issuance of Interests',sev:'critical',auto:true,rule:null,jur:['*'],ind:['*'],upd:'2026-03',
+ body:`The Company shall issue the interests set forth on Schedule A to the {{ownerTerm}} in exchange for the contributions described in <<xr:gov_capital>>, subject to the vesting terms of <<xr:vest_schedule>> where applicable.`},
+
+/* ---- foreign qualification ---- */
+{id:'fq_statement',doc:'foreign',art:'Application for Authority',sev:'critical',auto:true,rule:null,jur:['*'],ind:['*'],upd:'2026-05',
+ body:`{{company}}, a {{formStateLong}} {{entityLong}}, applies for authority to transact business in {{opStateLong}} and designates the Secretary of State of {{opStateLong}} as its agent for service of process.`},
+{id:'fq_goodstanding',doc:'foreign',art:'Certificate of Good Standing',sev:'critical',auto:true,rule:null,jur:['*'],ind:['*'],upd:'2026-05',
+ body:`A certificate of good standing from {{formStateLong}} dated within the preceding sixty (60) days must accompany this application. Order it before filing — most states reject applications with a stale certificate.`}
+];
+
+/* Pseudo-rules referenced by clauses but derived from answers rather than the RULES table */
+const DERIVED = {
+  is_corp:   a=>a.entity==='ccorp',
+  is_llc:    a=>a.entity==='llc',
+  even_split:a=>a.founders===2
+};
+function ruleHolds(id,a,f){
+  if(!id) return true;
+  if(DERIVED[id]) return DERIVED[id](a);
+  return f.has(id);
+}
+
+/* =====================================================================
+   DOCUMENT SCHEMAS — §1.1 package assembly
+   ===================================================================== */
+const DOCS = [
+ {id:'articles',icon:'📜',num:'article',
+  name:a=>ENTITIES[a.entity].charter,
+  when:()=>true, why:()=>'Always required — this is the filing that creates the entity.'},
+ {id:'gov',icon:'📗',num:'section',
+  name:a=>ENTITIES[a.entity].gov,
+  when:()=>true, why:a=>`Always required — governs how the ${ENTITIES[a.entity].owners.toLowerCase()} run the Company.`},
+ {id:'ipa',icon:'🔐',num:'section',
+  name:()=>'Founder IP Assignment',
+  when:(a,f)=>f.has('ip_critical')||a.founders>=2,
+  why:(a,f)=>f.has('ip_critical')?`Included: ${INDUSTRIES[a.industry].name} is an IP-critical industry (rule ip_critical).`:'Included: multiple founders means IP ownership must be pinned to the Company.'},
+ {id:'vest',icon:'⏳',num:'section',
+  name:()=>'Founder Vesting Agreement',
+  when:(a,f)=>f.has('institutional')||a.founders>=2,
+  why:(a,f)=>f.has('institutional')?'Included: institutional funding expects standard founder vesting (rule institutional).':'Included: multiple founders — vesting protects the team if someone leaves early.'},
+ {id:'83b',icon:'🧾',num:'section',
+  name:()=>'IRS Section 83(b) Election',
+  when:(a,f)=>f.has('file_83b'),
+  why:()=>'Included: C-Corp stock subject to vesting (rule file_83b). 30-day filing deadline.'},
+ {id:'consent',icon:'✍️',num:'section',
+  name:a=>`Initial ${a.entity==='llc'?'Member':'Board'} Consent`,
+  when:()=>true, why:()=>'Always required — the first corporate act that adopts everything else.'},
+ {id:'emp',icon:'👥',num:'section',
+  name:()=>'Employment Policy Set',
+  when:(a,f)=>f.has('hiring'),
+  why:()=>'Included: hiring within 12 months (rule hiring).'},
+ {id:'foreign',icon:'🌐',num:'section',
+  name:a=>`Foreign Qualification — ${STATES[a.opState].name}`,
+  when:(a,f)=>f.has('foreign_qual'),
+  why:a=>`Included: formed in ${STATES[a.formState].name} but operating in ${STATES[a.opState].name} (rule foreign_qual).`},
+ {id:'cal',icon:'📅',num:'section',
+  name:()=>'Compliance Calendar',
+  when:()=>true, why:()=>'Always generated — obligation extraction from the package (spec §4.2).'}
+];
+
+/* Article grouping for the governing document; other docs use a single article */
+const GROUPS = {
+  gov:[
+   ['Organization',      ['gov_formation','gov_capital','gov_units','gov_taxelect']],
+   ['Governance',        ['gov_voting','gov_quorum','gov_solemember','gov_fiduciary','gov_books','gov_amend']],
+   ['Economics',         ['gov_distrib']],
+   ['Ownership Transfers',['gov_transfer','gov_buysell','gov_vesting','gov_drag','gov_charging','gov_deadlock']],
+   ['Regulatory Compliance',['gov_dataproc','gov_baa','gov_lien','gov_licens']],
+   ['General Provisions', ['gov_indemnify','gov_dissolution','gov_govlaw','gov_dispute','gov_sever','gov_notices','gov_counterparts']]
+  ]
+};
+const ROMAN=['','I','II','III','IV','V','VI','VII','VIII','IX','X','XI','XII','XIII','XIV','XV'];
+
+/* =====================================================================
+   SMART FORM POPULATION — §1.3
+   Every derived field carries a provenance label so the UI can show
+   where the value came from, which is what makes auto-fill trustworthy.
+   ===================================================================== */
+const esc = s => String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+const fmtDate = d => d.toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});
+const addDays = (d,n) => { const x=new Date(d.getTime()); x.setDate(x.getDate()+n); return x; };
+
+function resolveFields(a){
+  const today=new Date(), E=ENTITIES[a.entity], inst=FUNDING[a.funding].institutional;
+  const names=a.founderNames.filter(Boolean);
+  const list = names.length>1 ? names.slice(0,-1).join(', ')+' and '+names[names.length-1] : (names[0]||'the founder');
+  const F={}, P={};   // F = value, P = provenance
+  const set=(k,v,prov)=>{F[k]=v;P[k]=prov;};
+
+  set('company',a.company||'[Company Name]','Wizard answer 1');
+  set('entityLong',E.long,'Wizard answer 2');
+  set('entityName',E.name,'Wizard answer 2');
+  set('charterDoc',E.charter,'Document schema');
+  set('govDoc',E.gov,'Document schema');
+  set('ownerTerm',E.owners,'Document schema');
+  set('ownerSing',E.owners.replace(/s$/,''),'Document schema');
+  set('formState',a.formState,'Wizard answer 3');
+  set('formStateLong',STATES[a.formState].name,'Wizard answer 3');
+  set('opStateLong',STATES[a.opState].name,'Wizard answer 4');
+  set('industryName',INDUSTRIES[a.industry].desc,'Wizard answer 6');
+  set('founderList',list,'Wizard answer 5');
+  set('founder1',names[0]||'[Founder 1]','Wizard answer 5');
+  set('date',fmtDate(today),'Date calculation — effective date defaults to today');
+  set('agent',`${STATES[a.formState].name} Registered Agents, Inc.`,'Smart default — user has no agent on file');
+  set('agentAddress',`1209 Orange Street, Wilmington, ${a.formState}`,'Smart default — agent’s address of record');
+  set('authShares','10,000,000','Smart default — industry norm for an early-stage C-Corp');
+  set('shareCount','8,000,000','Smart default — founder allocation, 80% of authorized');
+  set('vestYears','four (4)', inst?'Smart default — institutional norm (rule institutional)':'Smart default — market standard');
+  set('cliff','twelve (12)','Smart default — 1-year cliff is the market standard');
+  set('cliffPct','Twenty-five percent (25%)','Date calculation — 12 of 48 months');
+  set('monthlyCount','thirty-six (36)','Date calculation — 48 months less the 12-month cliff');
+  set('mgmtStyle', a.founders<=2?'member-managed':'manager-managed','Smart default — based on founder count');
+  set('principalTitle', a.entity==='llc'?'Managing Member':'Chief Executive Officer','Document schema');
+  set('taxDefault', a.entity==='llc'?(a.founders>1?'a partnership':'a disregarded entity'):'a C corporation','Smart default — entity type default classification');
+  set('ownerSplitNote', a.founders===1?'The sole owner holds one hundred percent (100%).'
+      : a.founders===2?'Absent a contrary schedule, ownership is presumed split evenly between the two founders.'
+      : `Absent a contrary schedule, ownership is presumed split evenly among the ${a.founders} founders.`,'Smart default — even split presumption');
+  set('nyDeadline',fmtDate(addDays(today,120)),'Date calculation — formation date + 120 days');
+  set('d83bDeadline',fmtDate(addDays(today,30)),'Date calculation — grant date + 30 days');
+  return {F,P};
+}
+
+/* =====================================================================
+   ASSEMBLY — §1.2
+   ===================================================================== */
+let STATE = { answers:null, pkg:null, added:new Set(), dismissed:new Set(), activeDoc:null };
+
+function jurOk(c,a){ return c.jur.includes('*')||c.jur.includes(a.formState)||c.jur.includes(a.opState); }
+function indOk(c,a){ return c.ind.includes('*')||c.ind.includes(a.industry); }
+
+function eligible(c,a,f){ return ruleHolds(c.rule,a,f) && jurOk(c,a) && indOk(c,a); }
+
+function assemble(a){
+  const f=fired(a), {F,P}=resolveFields(a);
+  const docs=[];
+  for(const d of DOCS){
+    const included=d.when(a,f);
+    const clauses=CLAUSES.filter(c=>c.doc===d.id && eligible(c,a,f) && (c.auto||STATE.added.has(c.id)));
+    if(!included){ docs.push({...d,included:false,clauses:[],title:d.name(a)}); continue; }
+    /* number the clauses */
+    let arts=[];
+    if(d.num==='article'){
+      clauses.forEach((c,i)=>arts.push({label:`ARTICLE ${ROMAN[i+1]}`,heading:c.art,clauses:[{...c,ref:`Article ${ROMAN[i+1]}`,no:''}]}));
+    } else {
+      const groups = GROUPS[d.id] || [[d.name(a),clauses.map(c=>c.id)]];
+      let gi=0;
+      for(const [gname,ids] of groups){
+        const inGroup=clauses.filter(c=>ids.includes(c.id));
+        if(!inGroup.length) continue;
+        gi++;
+        arts.push({label:`${gi}. ${gname.toUpperCase()}`,heading:'',
+          clauses:inGroup.map((c,j)=>({...c,no:`${gi}.${j+1}`,ref:`Section ${gi}.${j+1}`}))});
+      }
+    }
+    docs.push({...d,included:true,title:d.name(a),arts,clauses});
+  }
+  /* cross-reference map across the whole package */
+  const xref={};
+  docs.filter(d=>d.included).forEach(d=>d.arts.forEach(ar=>ar.clauses.forEach(c=>{ xref[c.id]={ref:c.ref,doc:d.id,docTitle:d.title}; })));
+  return {answers:a,fired:f,F,P,docs,xref};
+}
+
+/* ---- render one clause body to HTML ---- */
+function renderBody(text,pkg,curDoc){
+  let broken=[];
+  let h = esc(text);
+  h = h.replace(/\{\{(\w+)\}\}/g,(m,k)=>{
+    const v = pkg.F[k];
+    return v===undefined ? `<span class="fld" title="unresolved field">{{${k}}}</span>`
+                         : `<span class="fld" title="Auto-populated · ${esc(pkg.P[k]||'')}">${esc(v)}</span>`;
+  });
+  h = h.replace(/&lt;&lt;xr:(\w+)&gt;&gt;/g,(m,id)=>{
+    const t=pkg.xref[id];
+    if(!t){ broken.push(id); return `<span class="xref" style="color:#b91c1c" title="Broken cross-reference — target clause is not in this package">[cross-reference unresolved: ${id}]</span>`; }
+    const label = t.doc===curDoc ? t.ref : `${t.ref} of the ${t.docTitle}`;
+    return `<span class="xref" title="Cross-reference → ${esc(t.docTitle)}, ${esc(t.ref)}">${esc(label)}</span>`;
+  });
+  h = h.replace(/\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/g,(m,disp,key)=>{
+    const k=(key||disp).toLowerCase();
+    const g=GLOSSARY[k];
+    return g ? `<span class="term" data-term="${esc(k)}">${esc(disp)}</span>` : esc(disp);
+  });
+  return {html:h,broken};
+}
+
+function renderDoc(pkg,docId){
+  const d=pkg.docs.find(x=>x.id===docId);
+  if(!d||!d.included) return '<div class="empty">This document was evaluated and excluded from the package.</div>';
+  const a=pkg.answers;
+  let h=`<div class="aitag">⚠ AI-GENERATED — REVIEW RECOMMENDED · NOT LEGAL ADVICE</div>`;
+  h+=`<h1>${esc(d.title)}</h1><div class="psub">of ${esc(pkg.F.company)} · a ${esc(STATES[a.formState].name)} ${esc(ENTITIES[a.entity].long)} · ${esc(pkg.F.date)}</div>`;
+  for(const ar of d.arts){
+    h+=`<h2>${esc(ar.label)}${ar.heading?' — '+esc(ar.heading):''}</h2>`;
+    for(const c of ar.clauses){
+      const r=renderBody(c.body,pkg,docId);
+      const badge = c.rule ? `<span class="cond" title="${esc(condWhy(c.rule))}">IF ${esc(condLabel(c.rule))}</span>` : '';
+      const manual = STATE.added.has(c.id) && !c.auto ? `<span class="cond" style="background:#dff3e6;border-color:#9ccbaf;color:#1c5c37">added from AI review</span>` : '';
+      if(ar.heading && !c.no){ h+=`<p>${r.html}${badge}${manual}</p>`; }
+      else { h+=`<h3>${esc(c.no)} ${esc(c.art)}${badge}${manual}</h3><p>${r.html}</p>`; }
+    }
+  }
+  h+=`<div class="sig"><p><b>IN WITNESS WHEREOF</b>, the undersigned have executed this ${esc(d.title)} as of ${esc(pkg.F.date)}.</p>`;
+  a.founderNames.filter(Boolean).forEach(n=>{
+    h+=`<div class="sigline"></div><div class="signame">${esc(n)}${a.entity==='llc'?', Member':', Stockholder'}</div>`;
+  });
+  h+=`</div>`;
+  return h;
+}
+function condLabel(id){
+  const r=RULES.find(x=>x.id===id);
+  if(r) return r.code.replace(/^IF \[/,'').replace(/\] THEN.*$/,'').replace(/\] AND \[/,' and ');
+  return {is_corp:'entity is a C-Corp',is_llc:'entity is an LLC',even_split:'exactly 2 founders'}[id]||id;
+}
+function condWhy(id){
+  const r=RULES.find(x=>x.id===id);
+  return r?r.code+' — '+r.why:'Derived from the entity or ownership structure.';
+}
+
+/* =====================================================================
+   WIZARD UI — §1.1
+   ===================================================================== */
+const Q = [
+ {id:'company',type:'text',t:'What is the company called?',s:'Used as the defined term “Company” throughout the package.',ph:'e.g. Northwind Labs'},
+ {id:'entity',type:'opt',t:'What entity type are you forming?',s:'Drives the charter document, the governing document, and the tax default.',
+  opts:()=>Object.entries(ENTITIES).map(([k,v])=>[k,v.name])},
+ {id:'formState',type:'opt',t:'Which state will you form in?',s:'Determines the filing, the statute, and the governing law default.',
+  opts:()=>Object.entries(STATES).map(([k,v])=>[k,v.name])},
+ {id:'opState',type:'opt',t:'Where will the business actually operate?',s:'If this differs from the formation state, foreign qualification is triggered.',
+  opts:()=>Object.entries(STATES).map(([k,v])=>[k,v.name])},
+ {id:'founders',type:'opt',t:'How many founders?',s:'Drives transfer restrictions, buy-sell, and deadlock provisions.',
+  opts:()=>[[1,'Just me'],[2,'2'],[3,'3'],[4,'4+']]},
+ {id:'industry',type:'opt',t:'What industry?',s:'Filters the clause library and selects industry-specific provisions.',
+  opts:()=>Object.entries(INDUSTRIES).map(([k,v])=>[k,v.name])},
+ {id:'funding',type:'opt',t:'What is the funding plan?',s:'Institutional plans pull in vesting, acceleration, and drag-along.',
+  opts:()=>Object.entries(FUNDING).map(([k,v])=>[k,v.name])},
+ {id:'employees',type:'opt',t:'Hiring employees in the next 12 months?',s:'Adds employment policy stubs and state wage-and-hour requirements.',
+  opts:()=>[[true,'Yes'],[false,'No']]}
+];
+
+const DEFAULTS = {company:'',entity:'llc',formState:'DE',opState:'CA',founders:2,
+  founderNames:['',''],industry:'saas',funding:'angel',employees:true};
+let A = JSON.parse(JSON.stringify(DEFAULTS));
+
+function renderWizard(){
+  let h='';
+  Q.forEach((q,i)=>{
+    h+=`<div class="q"><div class="qh"><div class="qn">${i+1}</div><div><div class="qt">${q.t}</div><div class="qs">${q.s}</div></div></div>`;
+    if(q.type==='text'){
+      h+=`<div class="fields"><input type="text" id="in_${q.id}" placeholder="${q.ph}" value="${esc(A[q.id]||'')}"></div>`;
+    } else {
+      h+=`<div class="opts">`+q.opts().map(([v,label])=>
+        `<div class="opt ${String(A[q.id])===String(v)?'sel':''}" data-q="${q.id}" data-v="${v}">${label}</div>`).join('')+`</div>`;
+    }
+    if(q.id==='founders'){
+      h+=`<div class="fields" style="margin-top:9px">`+
+        Array.from({length:A.founders},(_,j)=>
+          `<input type="text" class="fname" data-i="${j}" placeholder="Founder ${j+1} full name" value="${esc(A.founderNames[j]||'')}">`).join('')+
+        `</div>`;
+    }
+    h+=`</div>`;
+  });
+  $('#wizard').innerHTML=h;
+
+  $$('#wizard .opt').forEach(el=>el.onclick=()=>{
+    const q=el.dataset.q; let v=el.dataset.v;
+    if(v==='true') v=true; else if(v==='false') v=false; else if(/^\d+$/.test(v)) v=+v;
+    A[q]=v;
+    if(q==='founders'){
+      const n=v; const cur=A.founderNames.slice(0,n);
+      while(cur.length<n) cur.push('');
+      A.founderNames=cur;
+    }
+    renderWizard(); renderSidePanels();
+  });
+  $('#in_company').oninput=e=>{A.company=e.target.value; renderSidePanels(); updateGenBtn();};
+  $$('#wizard .fname').forEach(el=>el.oninput=e=>{
+    A.founderNames[+el.dataset.i]=e.target.value; renderSidePanels(); updateGenBtn();
+  });
+  updateGenBtn();
+}
+
+function updateGenBtn(){
+  const ok = A.company.trim() && A.founderNames.slice(0,A.founders).every(n=>n.trim());
+  $('#genBtn').disabled=!ok;
+  $('#genHint').textContent = ok ? '' : 'Enter a company name and every founder name to generate.';
+}
+
+function renderSidePanels(){
+  const {F,P}=resolveFields(A), f=fired(A);
+  /* smart fill provenance — §1.3 */
+  const byProv={};
+  Object.keys(F).forEach(k=>{ (byProv[P[k]] ||= []).push([k,F[k]]); });
+  const order=Object.keys(byProv).sort((x,y)=>byProv[y].length-byProv[x].length);
+  $('#smartfill').innerHTML = order.map(prov=>{
+    const icon = prov.startsWith('Wizard')?'📝':prov.startsWith('Date')?'📅':prov.startsWith('Smart')?'✨':'📐';
+    return `<div class="finding"><div class="ic">${icon}</div><div class="fb">
+      <div class="ft">${esc(prov)} <span class="pill info">${byProv[prov].length}</span></div>
+      <div class="fd">${byProv[prov].slice(0,4).map(([k,v])=>`<span class="mono" style="color:var(--blue)">${esc(k)}</span> = ${esc(String(v)).slice(0,44)}`).join('<br>')}
+      ${byProv[prov].length>4?`<br><span style="opacity:.7">+ ${byProv[prov].length-4} more</span>`:''}</div></div></div>`;
+  }).join('');
+
+  /* live schema resolution — §1.2 */
+  const docs=DOCS.filter(d=>d.when(A,f));
+  const nClauses=CLAUSES.filter(c=>docs.some(d=>d.id===c.doc)&&eligible(c,A,f)&&c.auto).length;
+  $('#schemaPreview').innerHTML=`
+    <div class="finding"><div class="ic">📦</div><div class="fb"><div class="ft">${docs.length} documents in package</div>
+      <div class="fd">${docs.map(d=>esc(d.name(A))).join(' · ')}</div></div></div>
+    <div class="finding"><div class="ic">🧩</div><div class="fb"><div class="ft">${nClauses} clauses will be inserted</div>
+      <div class="fd">Retrieved from a ${CLAUSES.length}-clause library after jurisdiction and industry filtering.</div></div></div>
+    <div class="finding"><div class="ic">⚡</div><div class="fb"><div class="ft">${f.size} of ${RULES.length} conditional rules fire</div>
+      <div class="fd">${[...f].map(id=>`<span class="tagchip">${esc(id)}</span>`).join('')}</div></div></div>`;
+  renderKPIs();
+}
+
+function renderKPIs(){
+  const f=fired(A), docs=DOCS.filter(d=>d.when(A,f));
+  const nClauses=CLAUSES.filter(c=>docs.some(d=>d.id===c.doc)&&eligible(c,A,f)&&(c.auto||STATE.added.has(c.id))).length;
+  const gaps=STATE.pkg?findGaps(STATE.pkg).length:CLAUSES.filter(c=>!c.auto&&eligible(c,A,f)&&docs.some(d=>d.id===c.doc)).length;
+  const conf=STATE.pkg?confidence(STATE.pkg).score:null;
+  const k=[
+    ['Documents',docs.length,'in generated package'],
+    ['Clauses assembled',nClauses,`from a ${CLAUSES.length}-clause library`],
+    ['Rules fired',`${f.size}/${RULES.length}`,'conditional logic engine'],
+    ['Open suggestions',gaps,'missing-clause detection'],
+    ['AI confidence',conf===null?'—':conf+'%',conf===null?'generate to score':(conf<70?'below threshold — attorney review':'above 70% threshold')]
+  ];
+  $('#kpis').innerHTML=k.map(x=>`<div class="kpi"><div class="l">${x[0]}</div><div class="v">${x[1]}</div><div class="d">${x[2]}</div></div>`).join('');
+}
+
+/* =====================================================================
+   MISSING CLAUSE DETECTION — §2.1
+   Compares the assembled package against the complete document schema.
+   Everything eligible but not auto-inserted becomes a scored suggestion.
+   ===================================================================== */
+const GAPWHY = {
+  gov_govlaw:'No governing law clause detected. Without one, which state’s law applies is decided by a judge applying conflict-of-laws rules — an expensive way to answer a question you could answer in one sentence.',
+  gov_dispute:'No forum or escalation path is specified, so any dispute starts with a fight about where to have the fight.',
+  gov_sever:'If a court strikes one provision, nothing tells it to preserve the rest of the document.',
+  gov_dataproc:'Your industry processes personal data, but the package contains no security-program or vendor-DPA obligation.',
+  gov_baa:'Healthcare business detected. HIPAA requires a Business Associate Agreement with every vendor touching PHI; the package does not reference one.',
+  gov_taxelect:'Tax classification is left to the default. Stating the intended treatment prevents an owner from filing an inconsistent election.',
+  gov_indemnify:'Managers and officers have no indemnification right, which makes it harder to recruit outside directors later.',
+  gov_deadlock:'Two owners with an even split and no tiebreak mechanism. A single disagreement can freeze the company until someone sues.',
+  gov_notices:'No notice mechanics, so there is no agreed way to prove a required notice was actually delivered.',
+  gov_counterparts:'Nothing authorizes electronic or split signing, which slows every future signature round.',
+  ipa_moral:'Moral rights are not waived. This rarely matters in the US but does matter if the work is exploited abroad.',
+  emp_confid:'Employment policies do not include a confidentiality obligation or the statutory whistleblower carve-out.'
+};
+const GAPBENCH = {
+  gov_govlaw:'Present in 97% of comparable formation packages',
+  gov_dispute:'Present in 71% of comparable formation packages',
+  gov_sever:'Present in 89% of commercial contracts',
+  gov_dataproc:'Present in 64% of SaaS formation packages',
+  gov_baa:'Present in 91% of healthcare formation packages',
+  gov_taxelect:'Present in 58% of multi-member LLC agreements',
+  gov_indemnify:'Present in 76% of comparable formation packages',
+  gov_deadlock:'Present in 43% of two-founder agreements — and cited in the majority of two-founder disputes',
+  gov_notices:'Present in 82% of commercial contracts',
+  gov_counterparts:'Present in 94% of commercial contracts',
+  ipa_moral:'Present in 39% of US IP assignments',
+  emp_confid:'Present in 88% of employee policy sets'
+};
+
+function findGaps(pkg){
+  const a=pkg.answers, f=pkg.fired;
+  const openDocs=new Set(pkg.docs.filter(d=>d.included).map(d=>d.id));
+  return CLAUSES.filter(c=>!c.auto && openDocs.has(c.doc) && eligible(c,a,f)
+                        && !STATE.added.has(c.id) && !STATE.dismissed.has(c.id))
+    .sort((x,y)=>({critical:0,recommended:1,optional:2}[x.sev]-{critical:0,recommended:1,optional:2}[y.sev]));
+}
+
+function renderMissing(){
+  const pkg=STATE.pkg, gaps=findGaps(pkg);
+  if(!gaps.length){ $('#missing').innerHTML='<div class="empty">No open suggestions. Every clause in the schema for this configuration is present in the package.</div>'; return; }
+  $('#missing').innerHTML=gaps.map(c=>{
+    const doc=pkg.docs.find(d=>d.id===c.doc);
+    const ic={critical:'🔴',recommended:'🟡',optional:'⚪'}[c.sev];
+    return `<div class="finding"><div class="ic">${ic}</div><div class="fb">
+      <div class="ft">${esc(c.art)} <span class="pill ${c.sev}">${c.sev}</span></div>
+      <div class="fd">${esc(GAPWHY[c.id]||'Part of the complete document schema for this configuration.')}
+        <div style="margin-top:5px;opacity:.8">→ would insert into <b>${esc(doc.title)}</b> · ${esc(GAPBENCH[c.id]||'')}</div></div>
+      <div class="fa"><button class="mini primary" data-add="${c.id}">+ Add to document</button>
+        <button class="mini" data-dismiss="${c.id}">Dismiss</button></div>
+    </div></div>`;
+  }).join('');
+  $$('#missing [data-add]').forEach(b=>b.onclick=()=>{ STATE.added.add(b.dataset.add); regenerate(b.dataset.add); });
+  $$('#missing [data-dismiss]').forEach(b=>b.onclick=()=>{ STATE.dismissed.add(b.dataset.dismiss); regenerate(); });
+}
+
+/* =====================================================================
+   RISK-BASED SUGGESTIONS — §2.3
+   ===================================================================== */
+function findRisks(pkg){
+  const a=pkg.answers,f=pkg.fired,R=[];
+  const has=id=>pkg.docs.some(d=>d.included&&d.clauses.some(c=>c.id===id));
+
+  if(!has('gov_govlaw')) R.push(['high','Missing governing law clause',
+    `No governing law provision is present. Add one naming ${STATES[a.formState].name} to match the state of formation.`,'Detected by schema comparison']);
+
+  if(f.has('vc_entity_mismatch')) R.push(['high','Entity structure conflicts with funding plan',
+    `You selected VC funding but an LLC. Institutional funds generally cannot hold LLC interests because pass-through income creates UBTI for their tax-exempt LPs. Nearly every priced round requires a Delaware C-Corp, and converting later triggers legal and tax cost you can avoid by forming as a C-Corp now.`,'Rule vc_entity_mismatch']);
+
+  if(f.has('ca_operating')) R.push(['high','Employee non-competes are void here',
+    `California voids employee non-competes (Bus. & Prof. Code §16600). Since January 2024, AB 1076 also makes it unlawful to include or attempt to enforce one, and requires notice to current and former employees. Rely on confidentiality and IP assignment instead.`,'Rule ca_operating']);
+
+  if(f.has('file_83b')) R.push(['high','83(b) election has a hard 30-day deadline',
+    `The election must be postmarked within 30 days of the grant — ${pkg.F.d83bDeadline} for this package. Late filing cannot be cured, and the consequence is ordinary income tax on the spread as each tranche vests.`,'Rule file_83b']);
+
+  if(f.has('health_baa')&&!has('gov_baa')) R.push(['high','HIPAA business associate coverage missing',
+    'Healthcare business with no Business Associate Agreement obligation in the package. Disclosing PHI to a vendor without a BAA is itself a HIPAA violation, independent of any breach.','Rule health_baa']);
+
+  if(f.has('ny_publication')) R.push(['medium','New York publication deadline running',
+    `NY LLC Law §206 requires publication in two designated newspapers and a Certificate of Publication within 120 days — ${pkg.F.nyDeadline}. Missing it suspends the LLC’s authority to do business in New York until cured.`,'Rule ny_publication']);
+
+  if(f.has('foreign_qual')) R.push(['medium','Operating outside the state of formation',
+    `Formed in ${STATES[a.formState].name}, operating in ${STATES[a.opState].name}. Transacting business without qualifying there typically means back fees and penalties, and closes that state’s courts to you until you register.`,'Rule foreign_qual']);
+
+  if(f.has('de_franchise')) R.push(['medium','Delaware franchise tax accrues from day one',
+    'Delaware charges franchise tax and requires an annual report regardless of revenue. Corporations using the authorized-shares method are often surprised by the first bill; the assumed-par-value method is usually far cheaper.','Rule de_franchise']);
+
+  if(a.founders===2&&!has('gov_deadlock')) R.push(['high','Two owners, no deadlock mechanism',
+    'An even two-way split with no tiebreak means any single disagreement on a matter requiring approval can freeze the company. Add a buy-sell auction, a casting vote, or a neutral third seat.','Rule even_split']);
+
+  if(a.founders===1&&a.entity==='llc') R.push(['low','Single-member LLC formalities',
+    'Single-member LLCs are the most common target for veil-piercing arguments. Keep a separate bank account, document decisions in writing, and avoid paying personal expenses from the Company account.','Rule solo_founder']);
+
+  if(f.has('construction')) R.push(['medium','Lien deadlines are jurisdiction-specific and unforgiving',
+    'Mechanics lien rights depend on preliminary notices served within a statutory window that varies by state and by role on the project. Calendar them at contract execution, not at dispute.','Rule construction']);
+
+  if(f.has('institutional')&&a.entity==='ccorp'&&!has('vest_accel')) R.push(['low','No acceleration on change of control',
+    'Founder vesting has no double-trigger acceleration. Without it, an acquirer can terminate founders post-closing and recapture unvested equity.','Rule institutional']);
+
+  return R;
+}
+function renderRisks(){
+  const R=findRisks(STATE.pkg);
+  if(!R.length){ $('#risks').innerHTML='<div class="empty">No risk flags for this configuration.</div>'; return; }
+  const ic={high:'🚨',medium:'⚠️',low:'ℹ️'}, pl={high:'critical',medium:'recommended',low:'optional'};
+  $('#risks').innerHTML=R.map(([lvl,t,d,src])=>`<div class="finding"><div class="ic">${ic[lvl]}</div><div class="fb">
+    <div class="ft">${esc(t)} <span class="pill ${pl[lvl]}">${lvl} risk</span></div>
+    <div class="fd">${esc(d)}<div style="margin-top:5px;opacity:.7" class="mono" style="font-size:11px">${esc(src)}</div></div>
+  </div></div>`).join('');
+}
+
+/* =====================================================================
+   MARKET BENCHMARKS — §2.2  (synthetic seed data, per spec Month 2)
+   ===================================================================== */
+function benchmarks(pkg){
+  const a=pkg.answers,B=[];
+  const ind=INDUSTRIES[a.industry].name, st=STATES[a.formState].name;
+  const has=id=>pkg.docs.some(d=>d.included&&d.clauses.some(c=>c.id===id));
+  B.push(['Founder vesting',FUNDING[a.funding].institutional?'92%':'54%',
+    `of companies at your funding stage (${FUNDING[a.funding].name}) use 4-year vesting with a 1-year cliff. This package ${has('vest_schedule')?'matches':'does not include vesting'}.`]);
+  B.push(['IP assignment at formation',INDUSTRIES[a.industry].ipCritical?'88%':'41%',
+    `of ${ind} companies assign founder IP at formation. ${INDUSTRIES[a.industry].ipCritical?'Expected for your industry.':'Less common in your industry, still recommended.'}`]);
+  B.push(['Transfer restrictions',a.founders>1?'84%':'22%',
+    a.founders>1?`of multi-owner ${ENTITIES[a.entity].name}s restrict transfers with a right of first refusal.`:`of single-owner entities bother — low value until you add an owner.`]);
+  B.push(['Deadlock provision','43%',`of two-founder agreements include one, but deadlock appears in the majority of two-founder disputes. ${a.founders===2?'You have an even split.':'Not applicable at your founder count.'}`]);
+  B.push([`${st} formation`,a.formState==='DE'?'67%':'8%',
+    a.formState==='DE'?'of venture-track startups form in Delaware, largely for its case law and investor familiarity.':`of venture-track startups form in ${st}. Delaware remains the default for institutional rounds.`]);
+  B.push(['Severability clause','89%',`of commercial contracts include one. This package ${has('gov_sever')?'includes':'omits'} it.`]);
+  return B;
+}
+function renderBenchmarks(){
+  $('#benchmarks').innerHTML=benchmarks(STATE.pkg).map(([t,v,d])=>
+    `<div class="bench"><div class="bt"><span>${esc(t)}</span><span class="bv">${esc(v)}</span></div>
+     <div class="bar"><i style="width:${parseInt(v)||0}%"></i></div>
+     <div class="bd">${esc(d)}</div></div>`).join('') +
+    `<div class="note">Percentages are illustrative sample values written for this prototype, not measured data. In production
+     these come from the anonymized corpus described in §2.2 and §5.2, and should never render without an n= and a date.</div>`;
+}
+
+/* =====================================================================
+   CONFIDENCE SCORING — §7 (fallback to human below 70%)
+   ===================================================================== */
+function confidence(pkg){
+  const a=pkg.answers,f=pkg.fired,factors=[];
+  let score=100;
+  const gaps=findGaps(pkg);
+  const crit=gaps.filter(g=>g.sev==='critical').length;
+  const rec=gaps.filter(g=>g.sev==='recommended').length;
+  if(crit){ score-=crit*14; factors.push([`-${crit*14}`,`${crit} critical clause${crit>1?'s':''} missing from the package`]); }
+  if(rec){ score-=rec*4; factors.push([`-${rec*4}`,`${rec} recommended clause${rec>1?'s':''} not yet added`]); }
+  const broken=brokenRefs(pkg).length;
+  if(broken){ score-=broken*6; factors.push([`-${broken*6}`,`${broken} unresolved cross-reference${broken>1?'s':''}`]); }
+  if(f.has('vc_entity_mismatch')){ score-=25; factors.push(['-25','Entity type conflicts with the stated funding plan — a structural question, not a drafting one']); }
+  const jurClauses=CLAUSES.filter(c=>c.jur.includes(a.formState)||c.jur.includes(a.opState)).length;
+  if(jurClauses<2){ score-=8; factors.push(['-8',`Thin jurisdiction-specific coverage for ${STATES[a.formState].name}/${STATES[a.opState].name} in the clause library`]); }
+  else factors.push(['+0',`${jurClauses} jurisdiction-specific clauses available for your states`]);
+  if(a.industry==='other'){ score-=6; factors.push(['-6','Industry set to “Other” — no industry-specific provisions could be selected']); }
+  if(f.has('health_baa')||f.has('construction')){ score-=10; factors.push(['-10','Regulated industry — outcomes depend on facts the wizard does not collect']); }
+  score=Math.max(5,Math.min(100,Math.round(score)));
+  return {score,factors};
+}
+function renderConfidence(){
+  const {score,factors}=confidence(STATE.pkg), low=score<70;
+  $('#confidence').innerHTML=`
+    <div style="font-size:34px;font-weight:800;color:${low?'var(--red)':'var(--green)'}">${score}%</div>
+    <div class="bar" style="height:9px"><i style="width:${score}%;background:${low?'linear-gradient(90deg,#f87171,#fbbf24)':'linear-gradient(90deg,#34d399,#3ba2ff)'}"></i></div>
+    <div class="note" style="margin-top:11px">${low
+      ? '<b style="color:var(--red)">Below the 70% threshold.</b> Per spec §7 the platform routes this package to attorney review rather than presenting it as ready to sign.'
+      : '<b style="color:var(--green)">Above the 70% threshold.</b> The package proceeds to the user with the standard AI-generated label. Attorney review remains available.'}</div>
+    <div style="margin-top:12px">${factors.map(([d,t])=>
+      `<div class="rule"><div class="rs mono" style="color:${d.startsWith('-')?'var(--red)':'var(--muted)'}">${esc(d)}</div>
+       <div class="rc"><div class="rr" style="color:var(--txt)">${esc(t)}</div></div></div>`).join('')}</div>
+    <div class="note">Scoring here is a transparent rubric over what the engine can actually check. It is deliberately not a
+      model self-report: asking a model how confident it is produces a number that correlates with fluency, not correctness.</div>`;
+}
+
+/* =====================================================================
+   CONSISTENCY CHECKER — §3.1
+   Runs over the assembled package, not over model output. Each check
+   returns pass/fail with the specific location, because a QA finding a
+   user cannot locate is not actionable.
+   ===================================================================== */
+function includedClauses(pkg){
+  const out=[];
+  pkg.docs.filter(d=>d.included).forEach(d=>d.arts.forEach(ar=>ar.clauses.forEach(c=>out.push({...c,docTitle:d.title,docId:d.id}))));
+  return out;
+}
+function brokenRefs(pkg){
+  const out=[];
+  includedClauses(pkg).forEach(c=>{
+    const m=c.body.match(/<<xr:(\w+)>>/g)||[];
+    m.forEach(x=>{ const id=x.slice(5,-2); if(!pkg.xref[id]) out.push({from:c,id}); });
+  });
+  return out;
+}
+function syllables(w){
+  w=w.toLowerCase().replace(/[^a-z]/g,'');
+  if(w.length<=3) return 1;
+  w=w.replace(/(?:es|ed|[^laeiouy]e)$/,'').replace(/^y/,'');
+  return (w.match(/[aeiouy]{1,2}/g)||['x']).length;
+}
+function fkGrade(text){
+  const sent=(text.match(/[.!?]+/g)||[]).length||1;
+  const words=(text.match(/[A-Za-z']+/g)||[]);
+  if(!words.length) return 0;
+  const syl=words.reduce((s,w)=>s+syllables(w),0);
+  return 0.39*(words.length/sent)+11.8*(syl/words.length)-15.59;
+}
+
+function runConsistency(pkg){
+  const C=[], all=includedClauses(pkg), a=pkg.answers;
+  const corpus=all.map(c=>c.body).join(' ');
+
+  /* 1. cross-references */
+  const br=brokenRefs(pkg);
+  C.push(br.length
+    ? ['fail','Cross-reference validation',
+       br.map(b=>`“${b.from.art}” (${b.from.docTitle}) references clause <span class="mono">${b.id}</span>, which is not in this package.`).join('<br>')
+       +'<br><span style="opacity:.75">This is a real defect in the assembly logic, left in deliberately so this check has something to catch: a clause that is always included references a clause that is only conditionally included. The production fix is to make the reference itself conditional, or to validate the reference graph at assembly time and fail the build — not to rely on a downstream checker.</span>']
+    : ['pass','Cross-reference validation',`All ${(corpus.match(/<<xr:/g)||[]).length} cross-references resolve to a section that exists in the package.`]);
+
+  /* 2. attachments referenced but not generated */
+  const att=[...new Set((corpus.match(/(?:Schedule|Exhibit) [A-Z]\b/g)||[]))];
+  C.push(att.length
+    ? ['fail','Attachment validation',
+       `The package references ${att.map(x=>`<b>${x}</b>`).join(', ')} but generates no such attachment. Either produce the schedule from the wizard answers or remove the reference.`]
+    : ['pass','Attachment validation','No unreferenced schedules or exhibits.']);
+
+  /* 3. defined-term usage */
+  const defined=[...new Set([...corpus.matchAll(/the\s+“([A-Z][A-Za-z ]+)”/g)].map(m=>m[1]))];
+  const unused=defined.filter(t=>{
+    const uses=(corpus.match(new RegExp('\\b'+t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'\\b','g'))||[]).length;
+    return uses<2;
+  });
+  C.push(unused.length
+    ? ['warn','Defined-term usage',`Defined but used only once: ${unused.map(t=>`“${esc(t)}”`).join(', ')}. A term defined and never reused is usually a leftover from a template variant.`]
+    : ['pass','Defined-term usage',`${defined.length} defined term${defined.length===1?'':'s'} (${defined.map(t=>'“'+esc(t)+'”').join(', ')}) — each used more than once.`]);
+
+  /* 4. party-name consistency */
+  const names=a.founderNames.filter(Boolean);
+  const dupes=names.filter((n,i)=>names.indexOf(n)!==i);
+  const noSurname=names.filter(n=>n.trim().split(/\s+/).length<2);
+  const problems=[];
+  if(dupes.length) problems.push(`Duplicate founder name: ${dupes.map(esc).join(', ')}.`);
+  if(noSurname.length) problems.push(`No surname given for ${noSurname.map(esc).join(', ')} — signature blocks and filings need the full legal name.`);
+  C.push(problems.length?['warn','Party-name consistency',problems.join('<br>')]
+    :['pass','Party-name consistency',`${names.length} part${names.length===1?'y':'ies'} named identically in the recitals and every signature block.`]);
+
+  /* 5. owner terminology matches entity type */
+  const wrongTerm = a.entity==='ccorp' ? /\bMembers?\b/ : /\bStockholders?\b/;
+  const offenders = all.filter(c=>wrongTerm.test(c.body.replace(/\{\{\w+\}\}/g,'')));
+  C.push(offenders.length
+    ? ['fail','Entity terminology',`${offenders.length} clause(s) use ${a.entity==='ccorp'?'“Member”':'“Stockholder”'} in a ${ENTITIES[a.entity].name}: ${offenders.map(c=>esc(c.art)).join(', ')}.`]
+    : ['pass','Entity terminology',`All ownership references use “${ENTITIES[a.entity].owners}”, correct for a ${ENTITIES[a.entity].name}.`]);
+
+  /* 6. number and date arithmetic */
+  const vest=48, cliff=12, monthly=36;
+  C.push(cliff+monthly===vest
+    ? ['pass','Number and date consistency',`Vesting arithmetic checks out: ${cliff}-month cliff + ${monthly} monthly installments = ${vest} months = 4 years.`]
+    : ['fail','Number and date consistency',`Vesting schedule does not sum: ${cliff} + ${monthly} ≠ ${vest} months.`]);
+
+  /* 7. deadline ordering */
+  if(pkg.fired.has('file_83b')){
+    C.push(['pass','Deadline ordering',`83(b) deadline (${pkg.F.d83bDeadline}) precedes all other calendared obligations, and is correctly listed first in the Compliance Calendar.`]);
+  }
+
+  /* 8. formatting */
+  const heads=[];
+  pkg.docs.filter(d=>d.included).forEach(d=>d.arts.forEach(ar=>heads.push(ar.label)));
+  const mixed = heads.some(h=>/[a-z]/.test(h.replace(/^(ARTICLE|\d+\.)\s*/,'')));
+  C.push(mixed?['warn','Formatting consistency','Article headings mix cases across documents.']
+    :['pass','Formatting consistency',`All ${heads.length} article headings use a single convention.`]);
+
+  return C;
+}
+function renderQA(){
+  const C=runConsistency(STATE.pkg);
+  const ic={pass:'✅',warn:'🟡',fail:'❌'}, pl={pass:'pass',warn:'recommended',fail:'critical'};
+  const nf=C.filter(c=>c[0]!=='pass').length;
+  $('#consistency').innerHTML=
+    `<div class="note" style="margin:0 0 12px">${C.length} checks run · <b style="color:${nf?'var(--amber)':'var(--green)'}">${nf} need attention</b></div>`+
+    C.map(([s,t,d])=>`<div class="finding"><div class="ic">${ic[s]}</div><div class="fb">
+      <div class="ft">${esc(t)} <span class="pill ${pl[s]}">${s}</span></div><div class="fd">${d}</div></div></div>`).join('');
+
+  /* readability */
+  const rows=STATE.pkg.docs.filter(d=>d.included).map(d=>{
+    const txt=d.clauses.map(c=>c.body.replace(/\{\{(\w+)\}\}/g,(m,k)=>STATE.pkg.F[k]||'').replace(/<<xr:\w+>>/g,'Section 1.1').replace(/\[\[([^\]|]+)(?:\|[^\]]+)?\]\]/g,'$1')).join(' ');
+    return [d.title,fkGrade(txt)];
+  }).sort((x,y)=>y[1]-x[1]);
+  $('#readability').innerHTML=rows.map(([t,g])=>{
+    const over=g>12;
+    return `<div class="bench"><div class="bt"><span>${esc(t)}</span><span class="bv" style="color:${over?'var(--red)':'var(--green)'}">grade ${g.toFixed(1)}</span></div>
+      <div class="bar"><i style="width:${Math.min(100,g/20*100)}%;background:${over?'linear-gradient(90deg,#fbbf24,#f87171)':'linear-gradient(90deg,#34d399,#3ba2ff)'}"></i></div>
+      <div class="bd">${over?'Above 12th-grade reading level — flagged for a plain-English pass under §3.2.':'At or below the 12th-grade target.'}</div></div>`;
+  }).join('')+`<div class="note">Flesch-Kincaid is a proxy for sentence and word length, not for comprehension. Legal text scores
+    badly for reasons that are sometimes load-bearing, so this should gate a rewrite <em>suggestion</em>, never an automatic rewrite.</div>`;
+
+  /* glossary */
+  const used=[...new Set(includedClauses(STATE.pkg).flatMap(c=>[...c.body.matchAll(/\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/g)].map(m=>(m[2]||m[1]).toLowerCase())))]
+    .filter(k=>GLOSSARY[k]).sort();
+  $('#glossary').innerHTML = used.length
+    ? used.map(k=>`<div class="bench"><div class="bt"><span style="font-weight:600;text-transform:capitalize">${esc(k)}</span></div>
+        <div class="bd">${esc(GLOSSARY[k])}</div></div>`).join('')
+    : '<div class="empty">No glossary terms appear in this package.</div>';
+}
+
+/* =====================================================================
+   ENGINE INTERNALS — §6.2 / §6.3
+   ===================================================================== */
+function renderRules(){
+  const f=STATE.pkg.fired;
+  $('#rules').innerHTML=RULES.map(r=>{
+    const on=f.has(r.id);
+    return `<div class="rule ${on?'':'off'}"><div class="rs">${on?'✅':'⬜'}</div><div class="rc">
+      <code>${esc(r.code)}</code><div class="rr">${esc(r.why)}</div></div></div>`;
+  }).join('')+`<div class="note">Every rule is evaluated on every generation and the result is recorded. This is what makes an
+    AI-assembled document auditable: you can answer “why is this clause in my agreement?” without re-running a model.</div>`;
+}
+
+function renderPrompt(){
+  const pkg=STATE.pkg,a=pkg.answers,f=pkg.fired;
+  const doc=pkg.docs.find(d=>d.id===STATE.activeDoc)||pkg.docs.find(d=>d.included);
+  const retrieved=retrieve(pkg,doc.id).slice(0,5);
+  const k=s=>`<span class="k">${s}</span>`, str=s=>`<span class="s">${s}</span>`, cm=s=>`<span class="c">${s}</span>`;
+  $('#promptBox').innerHTML =
+`${cm('/* SYSTEM — guardrails, §6.2 + §7 */')}
+You assemble legal documents from a pre-approved clause library. You may
+adapt clause language to the facts provided. You may ${k('not')} invent clauses that
+are absent from the retrieved set, and you may ${k('not')} give legal advice or opinions
+on the user's specific situation. Every response is labeled
+${str('"AI-Generated — Review Recommended. Not Legal Advice."')}
+If a required fact is missing, emit ${str('{"needs":[...]}')} rather than guessing.
+
+${cm('/* CONTEXT INJECTION — §6.2 */')}
+${k('jurisdiction')}      : ${a.formState} (formation) / ${a.opState} (operations)
+${k('entity_type')}       : ${ENTITIES[a.entity].name}
+${k('industry')}          : ${INDUSTRIES[a.industry].name}
+${k('funding_stage')}     : ${FUNDING[a.funding].name}
+${k('owner_count')}       : ${a.founders}
+${k('hiring_12mo')}       : ${a.employees}
+${k('user_profile')}      : { name: ${str('"'+esc(pkg.F.founder1)+'"')}, company: ${str('"'+esc(pkg.F.company)+'"')} }
+${k('prior_documents')}   : none on file ${cm('// would carry style + reused fields, §4.1')}
+
+${cm('/* RULES ALREADY RESOLVED DETERMINISTICALLY — the model does not decide these */')}
+${[...f].map(id=>'  '+id).join('\n')||'  (none fired)'}
+
+${cm('/* RETRIEVED CLAUSES — §6.3, post-filter, ranked */')}
+${retrieved.map((r,i)=>`  ${i+1}. [${r.c.id}] ${esc(r.c.art)}  ${cm('score '+r.score.toFixed(2)+' · jur '+r.c.jur.join(',')+' · upd '+r.c.upd)}`).join('\n')}
+
+${cm('/* TASK */')}
+Assemble ${str('"'+esc(doc.title)+'"')}. Use only the retrieved clauses. Fill every
+{{field}} from context; if a field cannot be resolved, leave the token intact.
+Number articles sequentially and make every cross-reference point to a section
+that exists in the emitted document.
+
+${cm('/* OUTPUT CONTRACT — §6.2 structured output for programmatic parsing */')}
+${str(`{ "document": { "title": string,
+                "articles": [ { "label": string,
+                                "sections": [ { "no": string, "heading": string,
+                                                "body": string, "clause_id": string,
+                                                "fields_used": string[] } ] } ] },
+  "unresolved_fields": string[],
+  "clauses_omitted": [ { "clause_id": string, "reason": string } ] }`)}`;
+}
+
+/* deterministic stand-in for vector search — inspectable by design */
+function retrieve(pkg,docId){
+  const a=pkg.answers,f=pkg.fired;
+  const pool=CLAUSES.filter(c=>c.doc===docId);
+  const scored=pool.map(c=>{
+    let s=0, notes=[];
+    if(c.jur.includes(a.formState)||c.jur.includes(a.opState)){ s+=0.35; notes.push('jurisdiction match'); }
+    else if(c.jur.includes('*')){ s+=0.12; notes.push('jurisdiction-neutral'); }
+    if(c.ind.includes(a.industry)){ s+=0.28; notes.push('industry match'); }
+    else if(c.ind.includes('*')) s+=0.08;
+    if(c.rule && f.has(c.rule)){ s+=0.22; notes.push('rule '+c.rule+' fired'); }
+    else if(c.rule && !ruleHolds(c.rule,a,f)){ s-=0.5; notes.push('rule not satisfied — filtered out'); }
+    s += {critical:0.15,recommended:0.08,optional:0.02}[c.sev];
+    const age=(2026-(+c.upd.slice(0,4)))*12 + (8-(+c.upd.slice(5,7)));
+    s += Math.max(0,0.10-age*0.006);
+    if(age<=3) notes.push('recently updated');
+    return {c,score:s,notes};
+  });
+  return scored.filter(r=>r.score>0).sort((x,y)=>y.score-x.score);
+}
+function renderRetrieval(){
+  const pkg=STATE.pkg;
+  const doc=pkg.docs.find(d=>d.id===STATE.activeDoc)||pkg.docs.find(d=>d.included);
+  const rows=retrieve(pkg,doc.id);
+  const filtered=CLAUSES.filter(c=>c.doc===doc.id).length-rows.length;
+  $('#retrieval').innerHTML=
+    `<div class="note" style="margin:0 0 10px">Query scope: <b>${esc(doc.title)}</b> · pre-filters:
+      <span class="tagchip">jurisdiction ∈ {${esc(pkg.answers.formState)}, ${esc(pkg.answers.opState)}, *}</span>
+      <span class="tagchip">industry ∈ {${esc(pkg.answers.industry)}, *}</span>
+      → ${filtered} clause${filtered===1?'':'s'} excluded by pre-filter</div>`+
+    rows.map(r=>`<div class="retr"><div class="rh"><span class="rn">${esc(r.c.art)}</span><span class="rsc">${r.score.toFixed(3)}</span></div>
+      <div class="rt">${esc(r.c.id)} · updated ${esc(r.c.upd)} · ${esc(r.notes.join(' · ')||'baseline')}</div></div>`).join('');
+}
+function renderLib(){
+  const byDoc={},bySev={},byJur={};
+  CLAUSES.forEach(c=>{
+    byDoc[c.doc]=(byDoc[c.doc]||0)+1;
+    bySev[c.sev]=(bySev[c.sev]||0)+1;
+    c.jur.forEach(j=>byJur[j]=(byJur[j]||0)+1);
+  });
+  $('#libCount').textContent=`${CLAUSES.length} clauses · ${RULES.length} rules`;
+  const docName=id=>{const d=DOCS.find(x=>x.id===id);return d?d.name(STATE.pkg?STATE.pkg.answers:A):id;};
+  $('#libStats').innerHTML=
+    `<div class="note" style="margin:0 0 9px"><b>By document</b></div>`+
+    (()=>{const mx=Math.max(...Object.values(byDoc));
+      return Object.entries(byDoc).sort((a,b)=>b[1]-a[1]).map(([d,n])=>
+      `<div class="bench"><div class="bt"><span>${esc(docName(d))}</span><span class="bv">${n}</span></div>
+       <div class="bar"><i style="width:${(n/mx*100).toFixed(1)}%"></i></div></div>`).join('');})()+
+    `<div class="note"><b>By severity</b> ${Object.entries(bySev).map(([s,n])=>`<span class="tagchip">${s}: ${n}</span>`).join('')}<br>
+      <b>By jurisdiction tag</b> ${Object.entries(byJur).map(([j,n])=>`<span class="tagchip">${j==='*'?'any state':j}: ${n}</span>`).join('')}<br><br>
+      The spec targets 500+ clauses (§1.2) seeded to 1,000 vectors in Month 1 (§8). This prototype carries ${CLAUSES.length} —
+      enough to exercise the assembly, filtering, and QA paths, which is what the library size does not by itself prove.</div>`;
+}
+
+/* =====================================================================
+   PACKAGE VIEW + WIRING
+   ===================================================================== */
+function renderPackage(){
+  const pkg=STATE.pkg;
+  const inc=pkg.docs.filter(d=>d.included), exc=pkg.docs.filter(d=>!d.included);
+  $('#pkgCount').textContent=`${inc.length} included · ${exc.length} excluded`;
+  const row=(d,on)=>`<div class="docitem ${on&&d.id===STATE.activeDoc?'sel':''}" data-doc="${d.id}"
+      title="${esc(on?d.why(pkg.answers,pkg.fired):'Excluded: the conditions for this document were not met by your answers.')}"
+      style="${on?'':'opacity:.42'}">
+      <div class="di">${d.icon}</div><div class="dn">${esc(d.title)}</div>
+      <div class="dc">${on?d.clauses.length+' cl.':'excluded'}</div></div>`;
+  $('#doclist').innerHTML=inc.map(d=>row(d,true)).join('')+
+    (exc.length?`<div class="note" style="margin:10px 0 4px"><b>Evaluated and excluded</b></div>`+exc.map(d=>row(d,false)).join(''):'');
+  $$('#doclist [data-doc]').forEach(el=>el.onclick=()=>{
+    const d=pkg.docs.find(x=>x.id===el.dataset.doc);
+    if(!d.included) return;
+    STATE.activeDoc=el.dataset.doc; renderPackage(); renderPrompt(); renderRetrieval();
+  });
+  const d=pkg.docs.find(x=>x.id===STATE.activeDoc);
+  $('#docTitle').innerHTML=`${esc(d?d.title:'Generated document')} <span class="h">${d?esc(d.clauses.length)+' clauses assembled':''}</span>`;
+  $('#paper').innerHTML=renderDoc(pkg,STATE.activeDoc);
+  bindTerms();
+}
+
+/* plain-English hover — §3.2 */
+const tip=$('#tip');
+function bindTerms(){
+  $$('.term').forEach(el=>{
+    el.onmouseenter=e=>{
+      const k=el.dataset.term;
+      tip.innerHTML=`<div class="tth">Plain English — ${esc(k)}</div>${esc(GLOSSARY[k]||'')}`;
+      tip.style.display='block'; moveTip(e);
+    };
+    el.onmousemove=moveTip;
+    el.onmouseleave=()=>tip.style.display='none';
+  });
+}
+function moveTip(e){
+  const pad=14, w=tip.offsetWidth, h=tip.offsetHeight;
+  let x=e.clientX+pad, y=e.clientY+pad;
+  if(x+w>innerWidth-10) x=e.clientX-w-pad;
+  if(y+h>innerHeight-10) y=e.clientY-h-pad;
+  tip.style.left=x+'px'; tip.style.top=y+'px';
+}
+
+function renderAllViews(){
+  renderPackage(); renderMissing(); renderRisks(); renderBenchmarks(); renderConfidence();
+  renderQA(); renderRules(); renderPrompt(); renderRetrieval(); renderLib(); renderKPIs();
+}
+
+function generate(){
+  STATE.answers=JSON.parse(JSON.stringify(A));
+  STATE.pkg=assemble(STATE.answers);
+  STATE.activeDoc=STATE.pkg.docs.find(d=>d.included).id;
+  $$('.tab.needsdoc').forEach(t=>t.classList.remove('locked'));
+  renderAllViews();
+  go('package');
+}
+function regenerate(focusClauseId){
+  const prev=STATE.activeDoc;
+  STATE.pkg=assemble(STATE.answers);
+  if(focusClauseId){
+    const c=CLAUSES.find(x=>x.id===focusClauseId);
+    if(c && STATE.pkg.docs.some(d=>d.id===c.doc&&d.included)) STATE.activeDoc=c.doc;
+  } else if(STATE.pkg.docs.some(d=>d.id===prev&&d.included)) STATE.activeDoc=prev;
+  renderAllViews();
+}
+
+function go(v){
+  $$('.tab').forEach(t=>t.classList.toggle('active',t.dataset.v===v));
+  $$('.view').forEach(s=>s.classList.toggle('active',s.id==='view-'+v));
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+$$('.tab').forEach(t=>t.onclick=()=>{
+  if(t.classList.contains('locked')) return;
+  go(t.dataset.v);
+});
+$('#genBtn').onclick=generate;
+$('#demoBtn').onclick=()=>{
+  A={company:'Northwind Labs',entity:'llc',formState:'DE',opState:'CA',founders:2,
+     founderNames:['Maya Okonkwo','Daniel Reyes'],industry:'saas',funding:'vc',employees:true};
+  STATE.added=new Set(); STATE.dismissed=new Set();
+  renderWizard(); renderSidePanels(); generate();
+};
+$('#resetBtn').onclick=()=>{
+  A=JSON.parse(JSON.stringify(DEFAULTS));
+  STATE={answers:null,pkg:null,added:new Set(),dismissed:new Set(),activeDoc:null};
+  $$('.tab.needsdoc').forEach(t=>t.classList.add('locked'));
+  renderWizard(); renderSidePanels(); go('wizard');
+};
+
+$('#disc').innerHTML=`<b>What this prototype is.</b> A working implementation of the deterministic layer described in the
+  DRAFT AI Engine Spec — the conditional logic engine (§1.2), smart form population (§1.3), missing-clause detection (§2.1),
+  risk suggestions (§2.3), the consistency checker (§3.1), and the retrieval and prompt-assembly machinery (§6.2–6.3).
+  It runs entirely in the browser and makes <b>no model API call</b>. That is deliberate: the parts of the spec that
+  determine whether the output is trustworthy — which clauses are eligible, why a clause was included, whether a
+  cross-reference resolves, whether a critical provision is missing — are decidable without a model, and building them
+  first is what lets you evaluate the model layer against something. The prompt shown in Engine Internals is the real
+  payload this scaffolding would send.
+  <br><br>
+  <b>What it is not.</b> The clause text, benchmark percentages, and risk thresholds are illustrative sample content
+  written for this demo. They are not legal advice, not measured market data, and not suitable for use on a real
+  formation. Statutory references (CA Bus. &amp; Prof. Code §16600 and AB 1076, NY LLC Law §206, IRC §83(b),
+  45 C.F.R. §164.504(e)) are cited because the spec's own examples turn on them, but they are unverified here and
+  should be confirmed against primary sources before any of this text ships.
+  <br><br>
+  <b>Gaps this surfaced in the spec.</b> §6.4 proposes BLEU/ROUGE for evaluation — those measure text overlap, not legal
+  correctness, and a clause can score well while being wrong for the jurisdiction. §2.2 benchmarks need an <span class="mono">n=</span>
+  and a date attached to every percentage or they read as authority the corpus cannot support. There is no cost model for
+  §1.1, which generates a multi-document package per user. And §5.1's connectors pull employee and client PII into prompt
+  context with no stated scoping, retention, or residency treatment. Built ${new Date().toISOString().slice(0,10)}.`;
+
+/* init */
+$$('.tab.needsdoc').forEach(t=>t.classList.add('locked'));
+renderWizard(); renderSidePanels();
+</script>
+</body>
+</html>
