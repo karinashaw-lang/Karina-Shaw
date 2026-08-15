@@ -8,11 +8,11 @@
     "validate": "node templates/tools/validate.mjs",
     "build": "node templates/tools/build.mjs",
     "check": "node templates/tools/validate.mjs && node templates/tools/build.mjs --check",
-    "test": "node templates/tools/review.test.mjs && node templates/tools/verify.test.mjs && node templates/tools/assertions.test.mjs && node templates/tools/findings.test.mjs && node templates/tools/docdefects.test.mjs && node templates/tools/textstore.test.mjs && node templates/tools/ingest.test.mjs && node templates/tools/pin.test.mjs && node templates/tools/lint.test.mjs && node templates/tools/provenance.test.mjs",
+    "test": "node templates/tools/review.test.mjs && node templates/tools/classification.test.mjs && node templates/tools/verify.test.mjs && node templates/tools/assertions.test.mjs && node templates/tools/findings.test.mjs && node templates/tools/docdefects.test.mjs && node templates/tools/textstore.test.mjs && node templates/tools/ingest.test.mjs && node templates/tools/pin.test.mjs && node templates/tools/lint.test.mjs && node templates/tools/provenance.test.mjs",
     "probe": "node templates/tools/probe-sources.mjs",
     "verify": "node templates/tools/verify.mjs",
     "queue": "node templates/tools/queue.mjs",
-    "audit": "npm run test && npm run check && npm run probe && npm run verify && npm run queue && npm run packet && npm run egress && npm run texts && npm run texts:audit && npm run pins && npm run lint && npm run cost && npm run provenance",
+    "audit": "npm run test && npm run check && npm run probe && npm run verify && npm run queue && npm run packet && npm run classify && npm run egress && npm run texts && npm run texts:audit && npm run pins && npm run lint && npm run cost && npm run provenance",
     "egress": "node templates/tools/egress-request.mjs",
     "plan": "node templates/tools/assertions.mjs",
     "findings": "node templates/tools/findings.mjs",
@@ -26,6 +26,7 @@
     "shopping": "node templates/tools/shopping-list.mjs",
     "inspect": "node templates/tools/ingest.mjs --inspect",
     "texts:audit": "node templates/tools/ingest.mjs --audit",
-    "packet": "node templates/tools/drafting-packet.mjs"
+    "packet": "node templates/tools/drafting-packet.mjs",
+    "classify": "node templates/tools/classification-packet.mjs"
   }
 }

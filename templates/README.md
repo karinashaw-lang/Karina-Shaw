@@ -99,6 +99,8 @@ templates/
     build.mjs                compiler
     review.mjs               the two-ladder release gate, inlined into the prototype
     drafting-packet.mjs      the drafting review packet, with measured clause reach
+    classification.mjs       textual evidence for which ladder a clause belongs on
+    classification-packet.mjs the classification packet, and --apply to record decisions
     docdefects.mjs           source-document integrity: 13 structural checks, pure functions
     textstore.mjs            content-addressed attested text store
     ingest.mjs               the two supply paths, and --inspect / --audit
@@ -107,7 +109,7 @@ templates/
 ## Commands
 
 ```
-npm run test        # verification pipeline unit tests (276 assertions)
+npm run test        # verification pipeline unit tests (312 assertions)
 npm run validate    # corpus integrity across 12,120 answer sets
 npm run check       # validate, then assert the prototype is in sync with templates/
 npm run probe       # measure which source hosts this environment can reach
@@ -115,6 +117,7 @@ npm run verify      # attempt verification; fails closed
 npm run queue       # export the review backlog as CSV and Markdown
 npm run egress      # generate the allowlist request from measured data
 npm run packet      # write the drafting review packet for the 191 non-law clauses
+npm run classify    # write the classification review packet; --apply records the verdicts
 npm run inspect     # dry-run the integrity checks on a file, storing nothing
 npm run texts:audit # re-run the current checks against every stored text
 npm run audit       # all of the above, in order

@@ -102,6 +102,38 @@ by document, ordered by cost of being wrong, each with its text, the fields it i
 when it applies, how much of the 12,120-configuration space it actually reaches, and the
 JSON to paste back once it has been read.
 
+## The classification review, and what it already found
+
+`npm run classify` writes the packet for the one field that blocks everything. It does not
+classify anything — it reads each clause body for textual evidence of what kind of clause it
+is, reports the facts it found ("the body cites a numbered provision"), and compares them
+against the label already recorded. The two directions of disagreement are not equally bad:
+
+| Recorded | Evidence says | | Count |
+|---|---|---|---|
+| drafting | authority | **Dangerous** — routed to a review that never checks for a missing legal requirement, which is this corpus's dominant defect | 7 |
+| authority | drafting | **Stuck** — waiting on the authority ladder for a statute that does not exist | 12 |
+| — | both | Ambiguous — cannot be read off the text | 10 |
+| — | neither | Unevidenced — the recorded label rests on nothing checkable | 232 |
+| — | agrees | Consistent | 99 |
+
+That 232 is the headline finding: for two thirds of the corpus, the classification that
+decides which ladder a clause is graded on rests on no evidence a reader can check.
+
+The seven dangerous ones are named in the packet and should be decided first. `can_benefit_notices`
+is the clearest: it lists the notices an employer must distribute at hire, recorded as a
+negotiated term, so a commercial reviewer would never ask whether the list is complete.
+
+Decisions go in the `decision` column of `verification/classification-review.csv`, then:
+
+```
+node templates/tools/classification-packet.mjs --apply verification/classification-review.csv \
+  --by "Full Name" --on YYYY-MM-DD
+```
+
+Blank rows are skipped rather than defaulted, a malformed decision aborts the run without
+writing anything, and a reviewer name that is a team, a tool, or a model is refused.
+
 ## Nothing from memory
 
 The 360 clauses were written from model memory. Sampling put the defect rate at 89%, and
