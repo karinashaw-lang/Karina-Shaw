@@ -89,6 +89,26 @@ permanently marked so nobody mistakes them for sourced, and blocked from shippin
 release gate regardless. Re-seeding is refused — relabelling modified clauses as legacy is
 precisely the bypass the file exists to prevent.
 
+## There should not be defects on source documents
+
+Getting a text is not the same as getting a good text. A 404 page hashes as cleanly as a
+statute; a copy truncated mid-subdivision pins perfectly and then authorises a clause
+that omits whatever was cut off. `docdefects.mjs` runs 13 structural checks over every
+document *before* it is stored — five fatal (error page, markup, damaged encoding, stub,
+empty) and eight serious (cited section absent, truncation, a skipped subdivision,
+out-of-order subdivisions, duplicated passages, a whole-chapter dump, no version marker,
+extraction junk).
+
+Fatal defects can never be stored. Serious ones require a named person to waive that
+specific finding for a stated reason, which is kept in the record forever. There is no
+`--force`. The inspection runs inside `put()` before any file is opened, and the test
+suite asserts that ordering against the function's own source.
+
+```
+npm run inspect -- lab-925.txt --citation "Cal. Lab. Code §925"   # dry run, stores nothing
+npm run texts:audit                                                # re-check what is stored
+```
+
 ## Can the source texts be obtained here?
 
 No, and this was tested rather than assumed:
@@ -109,7 +129,9 @@ The tooling exists in abundance; the text lives on exactly the hosts that are de
 No new connector is required. **Google Drive is already attached and tested** — it is the
 delivery path. Save a provision as plain text, drop it in Drive, and `npm run ingest`
 stores the bytes verbatim, hashes them, records who supplied them and from where, and
-`npm run pin` ties each clause assertion to an exact quoted span.
+`npm run pin` ties each clause assertion to an exact quoted span. Run `npm run inspect`
+on the file first — it reports what the store would refuse and why, without storing
+anything.
 
 `npm run shopping` ranks what to obtain first. 109 distinct provisions are cited by the
 169 clauses that assert law; the drafting clauses need none of them. The ranking weights

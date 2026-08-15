@@ -97,18 +97,23 @@ templates/
     corpus.mjs               loader
     validate.mjs             integrity checks
     build.mjs                compiler
+    docdefects.mjs           source-document integrity: 13 structural checks, pure functions
+    textstore.mjs            content-addressed attested text store
+    ingest.mjs               the two supply paths, and --inspect / --audit
 ```
 
 ## Commands
 
 ```
-npm run test        # verification pipeline unit tests (21 assertions)
+npm run test        # verification pipeline unit tests (224 assertions)
 npm run validate    # corpus integrity across 12,120 answer sets
 npm run check       # validate, then assert the prototype is in sync with templates/
 npm run probe       # measure which source hosts this environment can reach
 npm run verify      # attempt verification; fails closed
 npm run queue       # export the review backlog as CSV and Markdown
 npm run egress      # generate the allowlist request from measured data
+npm run inspect     # dry-run the integrity checks on a file, storing nothing
+npm run texts:audit # re-run the current checks against every stored text
 npm run audit       # all of the above, in order
 ```
 
@@ -154,6 +159,9 @@ Three properties, enforced rather than promised:
    `get()` re-hashes on read and reports tampering.
 3. **Provenance or nothing.** A text without a recorded origin, timestamp, and supplier
    is refused at the door. There is no "trust me" mode.
+4. **No defective source documents.** Provenance says where a text came from; it says
+   nothing about whether the text is any good. Every document is inspected before it is
+   stored, and a defective one is refused rather than stored with a warning.
 
 ### Two supply paths
 
@@ -170,6 +178,49 @@ from where, and when.
 npm run ingest -- --file lab-925.txt --citation "Cal. Lab. Code §925" \
   --by "K. Shaw" --from "Westlaw" --on 2026-08-15
 ```
+
+### There should not be defects on source documents
+
+A hash over a 404 page is a perfectly sound hash over a 404 page. A copy that stops
+mid-subdivision hashes fine, pins fine, and then authorises a clause that omits whatever
+was cut off — which is exactly the failure the corpus review found dominates. So
+`docdefects.mjs` asks a different question from the store: not *where did this come from*
+but *is this a whole, clean, correct copy of the provision it claims to be*.
+
+Thirteen checks, each a pure function of the document and its citation. No network, no
+model, no knowledge of what the law says — every one is a structural property anybody can
+re-derive from the same bytes.
+
+| Severity | Checks | Storable? |
+|---|---|---|
+| **fatal** — not a statutory text at all | `empty`, `too-short`, `error-page`, `markup`, `encoding` | never, under any circumstances |
+| **serious** — may be real, but the pin would be unsafe | `citation-absent`, `truncated`, `subdivision-gap`, `subdivision-disorder`, `duplicated-block`, `scope-overrun`, `no-version-marker`, `character-noise` | only on a named waiver |
+
+`citation-absent` catches the commonest silent failure: fetching a neighbouring section
+and filing it under the one you wanted. `subdivision-gap` catches a copy missing (c),
+which is how an omission defect gets *sourced*. `no-version-marker` catches a text with
+no enactment note, session law, or as-of date — statutes are amended, and a text that
+cannot be placed in time makes drift undetectable.
+
+A waiver is a person, not a flag. It names who is waiving which finding and why, it is
+refused if the reason is a token, it can never touch a fatal finding, and it is written
+into the record and travels with the text forever. There is deliberately no `--force`.
+
+```
+$ npm run inspect -- truncated.txt --citation "Test Code §4200"
+  11 check(s) passed, 0 inapplicable, 0 fatal, 2 serious
+  SERIOUS truncated            the final line ends on a function word
+                              "(b) It is long enough to clear the stub threshold, but this copy stops in the"
+  SERIOUS no-version-marker    no enactment note, session-law reference, effective date, or as-of date found
+
+this document would be REFUSED
+```
+
+The check runs inside `put()`, before any file is opened, and `textstore.test.mjs` asserts
+that ordering against the function's own source — so the inspection cannot be routed
+around by a future caller. `npm run texts:audit` re-runs the current checks against
+everything already stored, because a text admitted under an older set of checks is not
+thereby clean.
 
 Path B is the one that works today, and it is not a downgrade — a text you obtained
 from Westlaw and attested is more trustworthy than one I scraped. What the store adds is

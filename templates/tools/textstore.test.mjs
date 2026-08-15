@@ -1,4 +1,4 @@
-import {normalize, digest, validateRecord, compare, REQUIRED} from './textstore.mjs';
+import {normalize, digest, validateRecord, compare, REQUIRED, put} from './textstore.mjs';
 let pass=0, fail=0;
 const t=(n,c)=>{ if(c) pass++; else {fail++; console.log('  FAIL  '+n);} };
 const base=()=>({citation:'Cal. Lab. Code §925', origin:'https://leginfo.legislature.ca.gov/x',
@@ -31,6 +31,48 @@ console.log('compare — drift detection');
 t('same bytes report unchanged', compare(digest('law text'),'law text').status==='unchanged');
 t('amended text reports drifted', compare(digest('law text'),'law text amended').status==='drifted');
 t('drift explains that pinned assertions are stale', compare(digest('a'),'b').note.includes('stale'));
+
+console.log('put — a defective document is refused, not stored with a warning');
+/* Every case below is refused before any file is opened, so these run without touching
+   the store. The acceptance path is exercised by docdefects.test.mjs, which does not
+   need disk at all. */
+{
+  const meta = ()=>({citation:'Test Code §4200', origin:'https://example.invalid/x',
+    originKind:'primary-fetch', suppliedBy:'test', suppliedAt:'2026-08-15'});
+  const good = ['4200. Synthetic provision used to exercise the store.','',
+    '(a) This is not law; it has the shape of a provision and nothing more, which is all',
+    'the structural checks look at when they decide whether a document may be stored.','',
+    '(b) It is long enough to clear the minimum length that a stub or an error page would',
+    'fail, and it ends where a provision ends.','','(Added by Stats. 2026, Ch. 1, Sec. 1.)',''].join('\n');
+
+  const html = put('<!DOCTYPE html>\n'+good, meta());
+  t('perfect provenance does not admit an HTML page', html.ok===false);
+  t('and the refusal names the defect', html.problems.some(p=>/markup/i.test(p)||/not text/i.test(p)));
+
+  const wrongSection = put(good, {...meta(), citation:'Test Code §9999'});
+  t('a document filed under the wrong section is refused', wrongSection.ok===false);
+
+  const shortWaiver = put(good, {...meta(), citation:'Test Code §9999',
+                                 waivers:{'citation-absent':{by:'K. Shaw', because:'ok'}}});
+  t('a token waiver does not unlock it', shortWaiver.ok===false);
+
+  const fatalWaiver = put('<!DOCTYPE html>\n'+good, {...meta(),
+    waivers:{markup:{by:'K. Shaw', because:'I have looked at it and I am content'}}});
+  t('a fatal defect cannot be waived through put', fatalWaiver.ok===false);
+
+  t('the refusal carries the full report for a human to read', !!html.report && !!html.verdict);
+}
+
+console.log('the integrity check cannot be skipped');
+{
+  const src = await import('node:fs').then(fs=>fs.readFileSync('templates/tools/textstore.mjs','utf8'));
+  const body = src.slice(src.indexOf('export function put('), src.indexOf('export function get('));
+  const guard = body.indexOf('admissible(');
+  const write = body.indexOf('writeFileSync');
+  t('put inspects the document', guard>=0);
+  t('put writes the file', write>=0);
+  t('and the inspection happens before the write', guard>=0 && write>=0 && guard<write);
+}
 
 console.log('no summarisation path exists in the code itself');
 const raw = await import('node:fs').then(fs=>fs.readFileSync('templates/tools/textstore.mjs','utf8'));
