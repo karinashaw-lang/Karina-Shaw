@@ -104,6 +104,26 @@ The tooling exists in abundance; the text lives on exactly the hosts that are de
 `npm run egress` generates the allowlist request. Failing that, supply a text directly and
 `npm run ingest` will store, hash, and attest it.
 
+## Getting texts in: what is actually needed
+
+No new connector is required. **Google Drive is already attached and tested** — it is the
+delivery path. Save a provision as plain text, drop it in Drive, and `npm run ingest`
+stores the bytes verbatim, hashes them, records who supplied them and from where, and
+`npm run pin` ties each clause assertion to an exact quoted span.
+
+`npm run shopping` ranks what to obtain first. 109 distinct provisions are cited by the
+169 clauses that assert law; the drafting clauses need none of them. The ranking weights
+each provision by how many clauses depend on it, their severity, whether they are drafted
+automatically, and whether they already carry a confirmed defect — so the first few
+documents buy the most verification.
+
+The connectors were tested, not assumed:
+
+| Connector | State | Use here |
+|---|---|---|
+| Google Drive | live | **the delivery path** — read a supplied text and ingest it |
+| CourtListener | live, rate-limited | case law only; covers 1 of 130+ citations, which are overwhelmingly statutes |
+
 ## The honest summary
 
 The clause text is illustrative content written by a model and is **not legal advice, not
