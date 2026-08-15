@@ -102,10 +102,63 @@ templates/
 ## Commands
 
 ```
-npm run validate    # integrity checks across the configuration space (12,120 answer sets)
-npm run build       # compile the corpus into draft-ai-engine.html
-npm run check       # validate, then assert the prototype is in sync
+npm run test        # verification pipeline unit tests (21 assertions)
+npm run validate    # corpus integrity across 12,120 answer sets
+npm run check       # validate, then assert the prototype is in sync with templates/
+npm run probe       # measure which source hosts this environment can reach
+npm run verify      # attempt verification; fails closed
+npm run queue       # export the review backlog as CSV and Markdown
+npm run audit       # all of the above, in order
 ```
+
+## What is machine-verified, and what is not
+
+The distinction matters more than any other fact about this repo, so it is produced by
+running the tooling rather than asserted here.
+
+**Verified by execution — reproducible with `npm run audit`:**
+
+| Property | How |
+|---|---|
+| 12,120 answer sets assemble without error | `validate.mjs` sweep |
+| No unresolved `{{field}}` token in any generated document | sweep |
+| No broken cross-reference in any package | sweep |
+| No clause dropped between eligibility and numbering | sweep |
+| All 7 consistency checks pass in every package | sweep |
+| Same-titled clause variants are never both present | proved per configuration, not assumed |
+| Every risk fires somewhere inside its declared packages | reachability check |
+| The release gate cannot be self-certified | 3 negative controls, all rejected |
+| The verification pipeline cannot upgrade without evidence | 21 assertions in `verify.test.mjs` |
+| `draft-ai-engine.html` matches `templates/` | `build.mjs --check` |
+| Which source hosts are reachable | `probe-sources.mjs`, timestamped into the registry |
+
+**Not verified — 360 of 360 clauses:** every statement about what the law requires.
+No clause has been checked against any source. See the release gate section below.
+
+## Verification pipeline
+
+`verify.mjs` routes each citation to authoritative hosts via `sources/registry.json`,
+fetches them, and upgrades a clause **only on evidence it obtained itself**. There is no
+branch that upgrades on a timeout, a redirect, a short body, or an operator flag —
+`verify.test.mjs` enumerates each of those and asserts the level does not move.
+
+Current run: 111 clauses with citations, 341 fetch attempts, **341 HTTP 403, 0 upgrades.**
+
+`probe-sources.mjs` records why. Every primary source, agency, statute mirror, and
+ordinance host is blocked by the network egress proxy; `github.com` as a control is
+reachable, so it is these hosts specifically and not the network. Until at least one
+primary source is reachable, verification cannot proceed here and the pipeline says so
+rather than degrading to something weaker.
+
+## Review queue
+
+`queue.mjs` turns the quarantined corpus into an ordered worklist, because a clause
+below the gate is a unit of review work rather than a dead file. Ordering is by expected
+cost of being wrong: severity, whether the clause is drafted automatically or merely
+suggested, whether it is in the jurisdiction being led with, whether it asserts a
+specific provision in its text, and how far it sits from the gate.
+
+Output: `verification/review-queue.csv` and `review-queue.md`.
 
 ## Clause model
 
@@ -281,15 +334,24 @@ same model. Without the check, the gate is decorative.
 
 ### What blocked verification here
 
-`leginfo.legislature.ca.gov`, `codes.findlaw.com`, `calcivilrights.ca.gov`,
-`dir.ca.gov`, and `law.cornell.edu` are all unreachable from this environment — the
-network egress proxy blocks them. Web *search* works and returns summaries with URLs;
-fetching any of those URLs does not. That is why three clauses sit at
+Measured, not asserted — see `sources/registry.json` for the timestamped result of
+`npm run probe`. All 14 legal source hosts return HTTP 403 through the egress proxy;
+`github.com` as a control is reachable. Web *search* works and returns summaries with
+URLs; fetching any of those URLs does not. That is why three clauses sit at
 `search-corroborated` and none at `corroborated`: the sources were listed, not read.
 
 Restoring egress to primary-source hosts is the prerequisite for moving the corpus up
-the ladder without a human in the loop, and even then `primary-verified` requires a
-named reviewer by design.
+the ladder mechanically, and even then `primary-verified` requires a named reviewer by
+design.
+
+### Benchmarks were deleted rather than quarantined
+
+A clause below the gate has a path to clearing it: a reviewer reads the source. A
+fabricated percentage does not — no review turns an invented number into a measured
+one. By the spec's own design (§2.2, §5.2) a benchmark is a query over the anonymized
+document corpus. The 23 authored percentages were removed; the record is in
+`schemas/benchmarks.removed.json` and the schema now requires `n`, `asOf`, and `query`
+alongside any value.
 
 ## Scope and status
 

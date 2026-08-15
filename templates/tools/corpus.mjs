@@ -24,6 +24,6 @@ export function loadCorpus(){
     d.clauses.forEach(c=>{ sources[c.id]=f; clauses.push(c); });
   }
   return {taxonomy, rules:rulesFile.rules, glossary:glossary.terms,
-          documents:documents.documents, fields:fields.fields, aliases:aliases.aliases, questions:questions.questions, risks:risks.risks, benchmarks:benchmarks.benchmarks, clauses, sources, files};
+          documents:documents.documents, fields:fields.fields, aliases:aliases.aliases, questions:questions.questions, risks:risks.risks, benchmarks:benchmarks.benchmarks, benchmarkSchema:benchmarks, clauses, sources, files};
 }
 export {ROOT};

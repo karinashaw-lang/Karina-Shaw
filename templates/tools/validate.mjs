@@ -141,7 +141,7 @@ function checkVerification(o,where){
   for(const bm of C.benchmarks){
     if(seen.has(bm.id)) err('DUP_BENCHMARK_ID',`benchmark id "${bm.id}" defined twice`);
     seen.add(bm.id);
-    for(const k of ['label','value','detail','basis','packages','verification']) if(!bm[k]) err('MISSING_KEY',`benchmark "${bm.id}" is missing "${k}"`);
+    for(const k of C.benchmarkSchema.requiredFields) if(bm[k]===undefined) err('MISSING_KEY',`benchmark "${bm.id}" is missing "${k}"`);
     checkVerification(bm,`benchmark "${bm.id}"`);
     for(const pk of (bm.packages||[])) if(!C.taxonomy.packages[pk]) err('BAD_BENCHMARK_PACKAGE',`benchmark "${bm.id}" declares unknown package "${pk}"`);
     for(const txt of [bm.label,bm.value,bm.detail])

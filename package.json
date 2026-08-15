@@ -1,12 +1,17 @@
 {
   "name": "draft-ai-engine",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
-  "description": "Template corpus and working prototype for the DRAFT AI Template & Content Engine spec",
+  "description": "Template corpus, verification pipeline, and working prototype for the DRAFT AI Template & Content Engine spec",
   "type": "module",
   "scripts": {
     "validate": "node templates/tools/validate.mjs",
     "build": "node templates/tools/build.mjs",
-    "check": "node templates/tools/validate.mjs && node templates/tools/build.mjs --check"
+    "check": "node templates/tools/validate.mjs && node templates/tools/build.mjs --check",
+    "test": "node templates/tools/verify.test.mjs",
+    "probe": "node templates/tools/probe-sources.mjs",
+    "verify": "node templates/tools/verify.mjs",
+    "queue": "node templates/tools/queue.mjs",
+    "audit": "npm run test && npm run check && npm run probe && npm run verify && npm run queue"
   }
 }
