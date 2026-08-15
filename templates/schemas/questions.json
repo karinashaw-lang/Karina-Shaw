@@ -356,6 +356,43 @@
       "options": {
         "taxonomy": "headcountBands"
       }
+    },
+    {
+      "id": "caCity",
+      "type": "choice",
+      "default": "none",
+      "prompt": "Which California city do employees work in?",
+      "help": "Local ordinances follow where the employee physically works — including a remote employee's home city — and commonly exceed the state floor.",
+      "when": {
+        "all": [
+          {
+            "eq": [
+              "opState",
+              "CA"
+            ]
+          },
+          {
+            "any": [
+              {
+                "all": [
+                  {
+                    "rule": "pkg_formation"
+                  },
+                  {
+                    "truthy": "employees"
+                  }
+                ]
+              },
+              {
+                "rule": "employee_engagement"
+              }
+            ]
+          }
+        ]
+      },
+      "options": {
+        "taxonomy": "californiaLocalities"
+      }
     }
   ]
 }

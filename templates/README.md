@@ -5,19 +5,20 @@ condition, rule, field, wizard question, and glossary entry the engine uses live
 here as JSON. Nothing is authored inside `draft-ai-engine.html` — that file is
 compiled output.
 
-324 clauses across 18 document schemas in three packages:
+360 clauses across 18 document schemas in three packages:
 
 | Package | Documents |
 |---|---|
 | **Form a company** | charter filing · governing document (Operating Agreement or Bylaws) · founder IP assignment · vesting agreement · 83(b) election · initial consent · employment policy set · foreign qualification · compliance calendar · schedules and exhibits |
 | **Sell or buy services** | mutual NDA · master services agreement · statement of work · data processing addendum |
-| **Hire someone** | employment agreement · independent contractor agreement · employee handbook · California employer compliance set |
+| **Hire someone** | employment agreement · independent contractor agreement · employee handbook · California employer compliance set (notices at hire · local ordinances · postings · written policies · registration and insurance · enforcement exposure) |
 
 ### California
 
 California is built out well past the other jurisdictions, because it is where the
-obligations are densest and where they attach earliest. 52 clauses and 15 of the 25
-risk definitions are California-specific.
+obligations are densest and where they attach earliest. 98 clauses and 21 of the 31
+risk definitions are California-specific — the deepest California package produces 91
+clauses across three documents.
 
 Most California duties key off headcount rather than revenue, so the corpus models
 that directly. The `headcount` answer drives a band, and each band declares what it
@@ -28,17 +29,43 @@ turns on:
 | 1–4 | workers' comp, IIPP, wage statements, paid sick leave, daily overtime |
 | 5–9 | FEHA, CFRA, pregnancy disability leave, harassment training, Fair Chance Act, bereavement and reproductive loss leave, off-duty cannabis protections |
 | 10–14 | Workplace Violence Prevention Plan |
-| 15–49 | pay scale in job postings |
-| 50–99 | federal FMLA alongside CFRA |
+| 15–19 | pay scale in job postings, organ donor leave |
+| 20–49 | federal COBRA replaces Cal-COBRA; SF health care and family-friendly ordinances; school activity leave |
+| 50–74 | federal FMLA alongside CFRA |
+| 75–99 | Cal-WARN notice for layoffs, relocations, and terminations |
 | 100+ | annual pay data reporting |
+
+### California localities
+
+Local ordinances are modelled as a second layer, because coverage follows where the
+employee physically works — including a remote employee's home city — and a single
+remote hire can pull a company into an ordinance it has no other connection to. San
+Francisco, Los Angeles, San Diego, San Jose, and Oakland each carry their own clause
+and their own rule. Local rules stack on state law rather than replacing it: where
+they differ, the more employee-favorable provision governs.
+
+### Enforcement
+
+PAGA is modelled explicitly, because it is what makes the rest of the California
+corpus consequential — penalties run per employee per pay period and a single
+employee can pursue them for the whole workforce. The corpus covers the notice and
+cure window, the value of a documented pre-notice audit, Cal-WARN, pay equity
+records, whistleblower protection, and retention periods.
 
 Coverage includes: the §2115 pseudo-foreign corporation doctrine for Delaware
 corporations operated from California; the $800 annual tax and LLC gross receipts fee;
-Statement of Information deadlines; the bar on LLCs rendering licensed services; the
-ABC test and the Freelance Worker Protection Act; Labor Code §925 forum limits; daily
-overtime, double time, reporting time and split shift premiums; the Wage Theft
-Prevention Act notice; Fair Chance Act procedure; CCPA coverage of HR data; the
-automatic renewal law; CCPA service provider terms; and Civil Code §1542 waivers.
+Statement of Information deadlines; the bar on LLCs rendering licensed services;
+fictitious business name and seller's permit; the ABC test and the Freelance Worker
+Protection Act; Labor Code §925 forum limits; daily overtime, double time, reporting
+time and split shift premiums; day of rest; on-call, travel, and control time;
+uniforms, tools, and seating; the full leave set including CFRA, pregnancy disability,
+bereavement, reproductive loss, jury and voting, school activity, military and
+military spouse, crime victim, and organ donor; the Wage Theft Prevention Act notice;
+pay scale disclosure and the salary history ban; Fair Chance Act procedure; CCPA
+coverage of HR data; PAGA; Cal-WARN; pay equity; and on the commercial side the
+automatic renewal law, CCPA service provider terms, CIPA website tracking exposure,
+Unruh Act accessibility claims, Song-Beverly consumer warranties, dark pattern
+consent rules, CASp lease disclosure, and Civil Code §1542 waivers.
 
 Figures California recalculates each January — minimum wage, the exempt salary
 threshold — are written as formulas in `taxonomy.json` under `californiaReference`
@@ -63,7 +90,8 @@ templates/
     aliases.json             entity-dependent cross-reference targets
     questions.json           the wizard itself, with per-package visibility conditions
     risks.json               risk-based suggestions (§2.3), gated by package
-  clauses/                   the corpus itself, 324 clauses across 16 files
+    benchmarks.json          market comparisons (§2.2), gated by package
+  clauses/                   the corpus itself, 360 clauses across 21 files
   tools/
     evaluator.mjs            shared evaluation core (also inlined into the prototype)
     corpus.mjs               loader
@@ -74,7 +102,7 @@ templates/
 ## Commands
 
 ```
-npm run validate    # integrity checks across all 30,720 wizard configurations
+npm run validate    # integrity checks across the configuration space (12,120 answer sets)
 npm run build       # compile the corpus into draft-ai-engine.html
 npm run check       # validate, then assert the prototype is in sync
 ```
@@ -124,9 +152,14 @@ npm run check       # validate, then assert the prototype is in sync
 
 ## What validation guarantees
 
-`validate.mjs` walks all 30,720 wizard configurations — enumerated per package, so a
-formation answer set does not vary deal size and a commercial one does not vary
-founder count — and fails the build on:
+`validate.mjs` walks 12,120 answer sets and fails the build on the checks below.
+
+The space is enumerated in **blocks** rather than as one cross-product: a formation
+answer set does not vary deal size, a commercial one does not vary founder count, and
+headcount and the California locality overlay only change an outcome inside
+California. Crossing all of them at once multiplies the space without reaching any
+rule the blocks do not already reach. The `UNREACHABLE` checks are the guard — if a
+block under-enumerates, a clause or risk shows up as dead content.
 
 - **`DANGLING_XREF`** — a drafted clause references a clause absent from that package.
   This has caught eight real defects across two rounds of corpus work, including one
@@ -141,9 +174,9 @@ founder count — and fails the build on:
 - **`UNREACHABLE`** — a clause whose tags and condition can never both be satisfied.
 - **`DOC_PACKAGE_LEAK`** — a document that declares one package but appears in another,
   which would put a hiring document inside a commercial package.
-- **`UNREACHABLE_RISK`** — a risk that never fires inside the packages it declares,
-  usually because the clause it looks for is always auto-inserted. Three risks were
-  removed as dead content on the first run of this check.
+- **`UNREACHABLE_RISK`** / **`UNREACHABLE_BENCHMARK`** — a risk or benchmark that never
+  fires inside the packages it declares, usually because the clause it looks for is
+  always auto-inserted. Three risks were removed as dead content on the first run.
 - Structural checks: undefined `{{field}}` tokens, unknown glossary terms, tags absent
   from the taxonomy, non-semver versions, groups missing from a document's `groupOrder`,
   references to undefined rules or answer fields.
@@ -177,6 +210,17 @@ before its condition is evaluated, so conditions do not need to restate the pack
   "body": "At {{headcountBand}}, California turns on ..."
 }
 ```
+
+## Benchmarks
+
+`schemas/benchmarks.json` holds the §2.2 comparisons, gated by `packages` and
+`condition` exactly like risks. Every entry carries a required `basis` field, because
+a percentage without a stated basis reads as authority the corpus cannot support. The
+values here are all marked `illustrative`; in production they come from the anonymized
+corpus and should carry an n= and a date.
+
+`UNREACHABLE_BENCHMARK` reports any entry that never fires inside its declared
+packages, the same way `UNREACHABLE_RISK` does.
 
 ## Adding a package
 

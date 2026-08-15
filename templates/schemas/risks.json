@@ -250,12 +250,21 @@
     {
       "id": "ca_local_ordinances",
       "level": "low",
-      "title": "Local wage and leave ordinances may exceed the state floor",
+      "title": "No local ordinance selected — confirm that is right",
       "condition": {
-        "rule": "ca_employer"
+        "all": [
+          {
+            "rule": "ca_employer"
+          },
+          {
+            "not": {
+              "rule": "ca_local"
+            }
+          }
+        ]
       },
       "source": "Local ordinance",
-      "body": "Dozens of California cities and counties set minimum wage, paid sick leave, and fair scheduling rules above the state floor. The applicable rule is set by where the employee physically works — including a remote employee's home city — not by where the Company sits. Where state and local differ, the more employee-favorable provision applies.",
+      "body": "No California city ordinance layer is applied to this package. Dozens of California cities and counties set minimum wage, paid sick leave, and fair scheduling rules above the state floor, and coverage follows where the employee physically works — including a remote employee's home city. Confirm the work location against the local ordinance list rather than assuming state law is the whole picture.",
       "packages": [
         "formation",
         "hiring"
@@ -397,6 +406,117 @@
       ],
       "source": "Cal. Civ. Code §1542",
       "body": "Under California law a general release does not extend to claims the releasing party did not know or suspect to exist unless it expressly waives [[Civil Code §1542|section 1542]], quoting the statute. Unknown claims are ordinarily the principal reason a release is taken, so a settlement or termination release drafted without it buys much less than intended."
+    },
+    {
+      "id": "ca_paga",
+      "level": "high",
+      "packages": [
+        "formation",
+        "hiring"
+      ],
+      "condition": {
+        "rule": "ca_employer"
+      },
+      "title": "PAGA turns any wage violation into a workforce-wide claim",
+      "source": "Cal. Lab. Code §2698 et seq.",
+      "body": "California penalties are assessed per employee per pay period, and a single employee can pursue them on behalf of the whole workforce. A wage statement defect worth a few dollars to one person becomes a company-wide claim. Almost every California obligation in this package is PAGA-enforceable, which is why a documented wage and hour review before any notice arrives is worth far more than the same work done after."
+    },
+    {
+      "id": "ca_local_city",
+      "level": "high",
+      "packages": [
+        "formation",
+        "hiring"
+      ],
+      "condition": {
+        "rule": "ca_local"
+      },
+      "title": "Local ordinances apply on top of state law",
+      "source": "Local ordinance",
+      "body": "Employees work in {{caCityName}}. {{caCitySummary}} Local rules stack rather than replace, the more employee-favorable provision governs, and coverage follows where the employee physically works — so a single remote hire can pull the Company into an ordinance it has no other connection to."
+    },
+    {
+      "id": "ca_calwarn",
+      "level": "medium",
+      "packages": [
+        "formation",
+        "hiring"
+      ],
+      "condition": {
+        "rule": "ca_75plus"
+      },
+      "title": "Cal-WARN notice applies to any reduction in force",
+      "source": "Cal. Lab. Code §§1400–1408",
+      "body": "At {{headcountBand}}, sixty days' written notice is required before a mass layoff, relocation, or termination of operations. Cal-WARN reaches further than the federal statute in every direction: lower threshold, part-time employees counted, relocations covered, and no requirement that a whole facility close. Damages are back pay and benefits for each day of shortfall. Plan any reduction against this period from the start rather than discovering it mid-process."
+    },
+    {
+      "id": "ca_pay_equity",
+      "level": "medium",
+      "packages": [
+        "formation",
+        "hiring"
+      ],
+      "condition": {
+        "rule": "ca_employer"
+      },
+      "title": "Pay differentials need a documented, listed justification",
+      "source": "Cal. Lab. Code §1197.5",
+      "body": "California compares substantially similar work across all locations, and a differential must rest on a closed list of factors. Prior salary is not one of them, so pay set by matching a candidate's last salary is difficult to defend. Record the basis for each rate at the time it is set — reconstructing it after a comparator has been identified is much weaker."
+    },
+    {
+      "id": "ca_cipa",
+      "level": "high",
+      "packages": [
+        "commercial"
+      ],
+      "condition": {
+        "all": [
+          {
+            "rule": "ca_commercial"
+          },
+          {
+            "in": [
+              "industry",
+              [
+                "saas",
+                "ecommerce",
+                "health"
+              ]
+            ]
+          }
+        ]
+      },
+      "title": "Website tracking is generating high-volume wiretapping claims",
+      "source": "Cal. Penal Code §§630–638",
+      "body": "California's wiretapping statute is being applied to session recording, chat widgets, and third-party advertising pixels, with statutory damages per violation and no need to show actual harm. Audit what runs on the site, obtain consent through a compliant interface before any of it loads, disclose the vendors, and allocate the risk in the contract rather than leaving it to the general indemnity."
+    },
+    {
+      "id": "ca_unruh",
+      "level": "medium",
+      "packages": [
+        "commercial"
+      ],
+      "condition": {
+        "all": [
+          {
+            "rule": "ca_commercial"
+          },
+          {
+            "in": [
+              "industry",
+              [
+                "saas",
+                "ecommerce",
+                "services",
+                "health"
+              ]
+            ]
+          }
+        ]
+      },
+      "title": "Accessibility claims carry statutory damages in California",
+      "source": "Cal. Civ. Code §51",
+      "body": "The Unruh Act adds statutory damages per violation and attorney's fees on top of federal accessibility law, and an ADA violation is a per se Unruh violation. California carries a disproportionate share of website accessibility filings. Build customer-facing interfaces to a stated standard and allocate remediation responsibility in the contract."
     }
   ]
 }

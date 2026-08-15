@@ -54,6 +54,7 @@ const fieldIds   = new Set(C.fields.map(f=>f.id));
   };
   C.rules.forEach(r=>walk(r.when,`rule "${r.id}"`));
   C.risks.forEach(r=>walk(r.condition,`risk "${r.id}"`));
+  C.benchmarks.forEach(r=>walk(r.condition,`benchmark "${r.id}"`));
   C.questions.forEach(q=>walk(q.when,`question "${q.id}"`));
   C.clauses.forEach(c=>walk(c.condition,`clause "${c.id}" condition`));
   C.documents.forEach(d=>walk(d.include,`document "${d.id}" include`));
@@ -102,11 +103,25 @@ const fieldIds   = new Set(C.fields.map(f=>f.id));
   }
 }
 
+/* ---- 3c. benchmark definitions ---- */
+{
+  const seen=new Set();
+  for(const bm of C.benchmarks){
+    if(seen.has(bm.id)) err('DUP_BENCHMARK_ID',`benchmark id "${bm.id}" defined twice`);
+    seen.add(bm.id);
+    for(const k of ['label','value','detail','basis','packages']) if(!bm[k]) err('MISSING_KEY',`benchmark "${bm.id}" is missing "${k}"`);
+    for(const pk of (bm.packages||[])) if(!C.taxonomy.packages[pk]) err('BAD_BENCHMARK_PACKAGE',`benchmark "${bm.id}" declares unknown package "${pk}"`);
+    for(const txt of [bm.label,bm.value,bm.detail])
+      for(const m of String(txt).matchAll(/\{\{(\w+)\}\}/g))
+        if(!fieldIds.has(m[1])) err('BAD_FIELD_TOKEN',`benchmark "${bm.id}" uses undefined field {{${m[1]}}}`);
+  }
+}
+
 if(errors.length){ report(); process.exit(1); }   // semantic checks below assume structure is sound
 
 /* ---- 4. semantic: walk the whole configuration space ---- */
 var configs = allConfigs(C.taxonomy);
-const reachableClause=new Set(), reachableDoc=new Set(), firedRisk=new Set();
+const reachableClause=new Set(), reachableDoc=new Set(), firedRisk=new Set(), firedBench=new Set();
 const xrefViolations=new Map();   // "A->B" -> example config
 const softXrefs=new Map();        // auto clause pointing at a suggest clause
 const coPresent=new Map();        // proof that same-titled variants never both appear
@@ -137,6 +152,12 @@ for(const a of configs){
         if(!coPresent.has(key)) coPresent.set(key,a);
       } else seenTitle.set(k,id);
     }
+  }
+  /* benchmark reachability */
+  for(const bm of C.benchmarks){
+    if(!bm.packages.includes(a.package)) continue;
+    if(bm.condition && !evalExpr(bm.condition,a,C.taxonomy,ruleOf)) continue;
+    firedBench.add(bm.id);
   }
   /* risk reachability */
   for(const r of C.risks){
@@ -190,6 +211,9 @@ for(const [key,a] of coPresent)
 for(const r of C.risks) if(!firedRisk.has(r.id))
   warn('UNREACHABLE_RISK',`risk "${r.id}" never fires in any configuration within its declared packages [${r.packages.join(', ')}]`);
 
+for(const bm of C.benchmarks) if(!firedBench.has(bm.id))
+  warn('UNREACHABLE_BENCHMARK',`benchmark "${bm.id}" never fires within its declared packages [${bm.packages.join(', ')}]`);
+
 for(const c of C.clauses) if(!reachableClause.has(c.id))
   warn('UNREACHABLE',`clause "${c.id}" (${C.sources[c.id]}) never becomes eligible in any configuration — its condition and tags may conflict`);
 for(const d of C.documents){
@@ -226,7 +250,12 @@ for(const d of C.documents) if(!reachableDoc.has(d.id))
   });
   const unused=Object.keys(C.glossary).filter(k=>!C.clauses.some(c=>c.body.toLowerCase().includes('[['+k)||c.body.includes('|'+k+']]')));
   if(unused.length) warn('UNUSED_GLOSSARY',`${unused.length} glossary terms are never referenced: ${unused.join(', ')}`);
-  const usedFields=new Set(C.clauses.flatMap(c=>[...c.body.matchAll(/\{\{(\w+)\}\}/g)].map(m=>m[1])));
+  const usedFields=new Set([
+    ...C.clauses.flatMap(c=>[...c.body.matchAll(/\{\{(\w+)\}\}/g)].map(m=>m[1])),
+    ...C.risks.flatMap(r=>[...r.body.matchAll(/\{\{(\w+)\}\}/g)].map(m=>m[1])),
+    ...C.benchmarks.flatMap(b=>[b.label,b.value,b.detail].flatMap(t=>[...String(t).matchAll(/\{\{(\w+)\}\}/g)].map(m=>m[1]))),
+    ...C.documents.flatMap(d=>d.name.template?[...d.name.template.matchAll(/\{\{(\w+)\}\}/g)].map(m=>m[1]):[])
+  ]);
   C.fields.forEach(f=>{ if(f.from.template) [...f.from.template.matchAll(/\{\{(\w+)\}\}/g)].forEach(m=>usedFields.add(m[1])); });
   const unusedFields=[...fieldIds].filter(f=>!usedFields.has(f));
   if(unusedFields.length) warn('UNUSED_FIELD',`${unusedFields.length} fields are defined but never used: ${unusedFields.join(', ')}`);
@@ -235,7 +264,7 @@ for(const d of C.documents) if(!reachableDoc.has(d.id))
 function report(){
   const bySeverity=C.clauses.reduce((m,c)=>(m[c.severity]=(m[c.severity]||0)+1,m),{});
   const byInsertion=C.clauses.reduce((m,c)=>(m[c.insertion]=(m[c.insertion]||0)+1,m),{});
-  console.log(`corpus: ${C.clauses.length} clauses · ${C.documents.length} documents · ${C.rules.length} rules · ${C.risks.length} risks · ${C.fields.length} fields · ${Object.keys(C.glossary).length} glossary terms`);
+  console.log(`corpus: ${C.clauses.length} clauses · ${C.documents.length} documents · ${C.rules.length} rules · ${C.risks.length} risks · ${C.benchmarks.length} benchmarks · ${C.fields.length} fields · ${Object.keys(C.glossary).length} glossary terms`);
   console.log(`        severity ${JSON.stringify(bySeverity)} · insertion ${JSON.stringify(byInsertion)}`);
   if(typeof configs!=='undefined'&&configs) console.log(`checked ${configs.length} configurations`);
   notes.forEach(n=>console.log('  note  '+n));

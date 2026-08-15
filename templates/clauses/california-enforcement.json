@@ -1,0 +1,59 @@
+{
+  "$comment": "California enforcement exposure. Most of the obligations elsewhere in this corpus are enforced through the mechanisms here — PAGA in particular converts an individual wage claim into a workforce-wide one, which is why a technical violation that costs a few dollars per employee per pay period does not stay small.",
+  "collection": "california-enforcement",
+  "version": "1.0.0",
+  "clauses": [
+    {"id":"can_paga","doc":"ca-notices","group":"Enforcement Exposure","title":"Private Attorneys General Act","severity":"critical","insertion":"auto","condition":{"rule":"ca_employer"},
+     "jurisdictions":["CA"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"Cal. Lab. Code §2698 et seq.",
+     "rationale":"The reason California wage and hour compliance is not a rounding error. A single employee can sue on the state's behalf for violations across the entire workforce, and penalties accrue per employee per pay period rather than per claimant.",
+     "body":"[[PAGA|paga]] lets an aggrieved employee sue on the state's behalf for Labor Code violations affecting other employees, recovering civil penalties assessed per employee per pay period. A wage statement defect worth a few dollars to one person becomes a workforce-wide claim, and most of the obligations elsewhere in this package are PAGA-enforceable. A representative PAGA claim generally cannot be waived by an arbitration agreement, though the individual component may be compelled to arbitration."},
+
+    {"id":"can_paga_cure","doc":"ca-notices","group":"Enforcement Exposure","title":"PAGA Notice and Cure Window","severity":"critical","insertion":"auto","condition":{"rule":"ca_employer"},
+     "jurisdictions":["CA"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"Cal. Lab. Code §§2699.3, 2699.5",
+     "rationale":"The notice arrives before the lawsuit and opens a window that closes quickly. Employers routinely lose the cure opportunity by treating the letter as a demand to negotiate rather than as a clock.",
+     "body":"A PAGA claim begins with a written notice to the Labor and Workforce Development Agency and the employer, not with a complaint. That notice opens a limited window in which certain violations can be cured — and the reforms narrowed exposure for employers who take prompt corrective action and who had already conducted a compliance review before the notice. Treat any PAGA notice as a deadline from the day it arrives: assemble time and pay records immediately, and get the cure assessment done inside the window rather than after it."},
+
+    {"id":"can_paga_audit","doc":"ca-notices","group":"Enforcement Exposure","title":"Proactive Wage and Hour Audit","severity":"recommended","insertion":"suggest","condition":{"rule":"ca_employer"},
+     "jurisdictions":["CA"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"DRAFT standard library",
+     "benchmark":"Documented in 34% of California employers under 100 employees; near-universal above 500",
+     "rationale":"A documented pre-notice compliance review is one of the few things that reduces PAGA exposure after the fact, and it costs a fraction of defending the claim it prevents.",
+     "body":"Conduct and document a periodic wage and hour review covering exempt classification against the duties test, meal and rest period records and premium payments, regular rate calculation including bonuses, wage statement content, final pay timing, and expense reimbursement. Retain the review, the findings, and the corrective actions taken. A documented review completed before any PAGA notice arrives is materially more valuable than the same work done afterward."},
+
+    {"id":"can_calwarn","doc":"ca-notices","group":"Enforcement Exposure","title":"Cal-WARN Notice","severity":"critical","insertion":"auto","condition":{"rule":"ca_75plus"},
+     "jurisdictions":["CA"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"Cal. Lab. Code §§1400–1408",
+     "rationale":"Cal-WARN reaches further than the federal statute in every direction — lower threshold, relocations and terminations covered, part-time employees counted — and the notice period is not shortened by the layoff being unexpected.",
+     "body":"The Company has {{headcountBand}}, so [[Cal-WARN|cal-warn]] applies. Sixty (60) days' written notice to affected employees, the Employment Development Department, and local officials is required before a mass layoff, relocation, or termination of operations. Unlike the federal statute, Cal-WARN counts part-time employees toward the threshold, covers relocations of more than one hundred miles, and does not require the employer to be closing a whole facility. Damages are back pay and benefits for each day of shortfall, plus civil penalties. Plan any reduction in force against this notice period from the start."},
+
+    {"id":"can_pay_equity","doc":"ca-notices","group":"Enforcement Exposure","title":"Pay Equity and Records","severity":"critical","insertion":"auto","condition":{"rule":"ca_employer"},
+     "jurisdictions":["CA"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"Cal. Lab. Code §1197.5",
+     "rationale":"California's standard is 'substantially similar work' rather than equal work, the justification factors are a closed list, and prior salary is expressly not one of them — so pay set by matching a candidate's last salary is difficult to defend.",
+     "body":"[[Pay equity|pay equity]] in California requires equal pay for substantially similar work viewed as a composite of skill, effort, and responsibility, across sex, race, and ethnicity, and it compares across all of the Company's locations rather than within a single site. A differential must rest on a listed factor — a seniority or merit system, a system measuring production, or a bona fide factor other than the protected characteristic that is job-related and consistent with business necessity. Prior salary cannot justify a differential. Retain records of wage rates, job classifications, and the basis for each differential for at least three (3) years, and do not prohibit employees from discussing their pay."},
+
+    {"id":"can_whistleblower","doc":"ca-notices","group":"Enforcement Exposure","title":"Whistleblower Protection","severity":"critical","insertion":"auto","condition":{"rule":"ca_employer"},
+     "jurisdictions":["CA"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"Cal. Lab. Code §§1102.5, 1102.8",
+     "rationale":"California shifted the burden: once the employee shows the protected activity was a contributing factor, the employer must prove by clear and convincing evidence it would have taken the same action anyway. Internal reports are protected, not only reports to agencies.",
+     "body":"Do not adopt any rule preventing an employee from disclosing information to a government agency, to a person with authority over them, or to another employee with authority to investigate, where they have reasonable cause to believe it discloses a violation. Protection covers internal reports and applies even where the employee is mistaken, provided the belief is reasonable. Post the whistleblower rights notice with the required hotline information. Any confidentiality, severance, or settlement provision must carve out protected disclosures."},
+
+    {"id":"can_records","doc":"ca-notices","group":"Enforcement Exposure","title":"Records Retention","severity":"recommended","insertion":"auto","condition":{"rule":"ca_employer"},
+     "jurisdictions":["CA"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"Cal. Lab. Code §§226, 1174, 1197.5",
+     "rationale":"Where records are missing, California resolves the ambiguity against the employer and accepts the employee's reasonable estimate — so a retention failure converts a defensible case into an indefensible one.",
+     "body":"Retain payroll records including hours worked and meal period records for at least four (4) years, personnel records for four (4) years, pay rate and job classification records for three (3) years, and harassment training records for two (2) years. Where time records are missing or unreliable, the employee's reasonable estimate of hours worked generally governs. Retain records for the full limitation period rather than the minimum, since PAGA and unfair competition claims can reach back further than the wage claim itself."},
+
+    {"id":"ea_ca_pay_equity","doc":"employment-agreement","group":"Compensation","title":"Pay Equity Basis","severity":"recommended","insertion":"suggest","condition":{"rule":"ca_employer"},
+     "jurisdictions":["CA"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"Cal. Lab. Code §1197.5",
+     "benchmark":"Documented in 41% of California offers; the documentation matters more than the clause",
+     "rationale":"The defensible answer to a pay equity claim is a contemporaneous record of why the rate was set where it was. Reconstructing it two years later, after the comparator has been identified, is much weaker.",
+     "body":"Record at the time of hire the basis for the rate offered — the pay scale for the role, the specific experience or credentials relied on, and any seniority, merit, or production system applied. Do not rely on prior salary, which cannot justify a differential. Retain the record with the job description and pay scale for at least three (3) years."},
+
+    {"id":"ea_ca_paga_waiver","doc":"employment-agreement","group":"Obligations","title":"Representative Action Waivers","severity":"optional","insertion":"suggest","condition":{"rule":"ca_employer"},
+     "jurisdictions":["CA"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"DRAFT standard library",
+     "benchmark":"Present in 46% of California arbitration agreements; heavily litigated",
+     "rationale":"The law here has moved repeatedly and is still moving. A waiver drafted without a severability provision risks taking the whole arbitration agreement down with it if the waiver is struck.",
+     "body":"A wholesale waiver of the right to bring a representative [[PAGA|paga]] action is generally unenforceable in California, though an agreement may compel the individual component to arbitration. If the Company uses one, include a severability provision so that striking the representative waiver does not invalidate the rest of the agreement, and review the clause when the case law moves — it has moved several times and the direction is not settled."},
+
+    {"id":"hb_ca_paga_reference","doc":"handbook","group":"Time and Pay","title":"Why Timekeeping Accuracy Matters Here","severity":"recommended","insertion":"auto","condition":{"rule":"ca_employer"},
+     "jurisdictions":["CA"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"DRAFT standard library",
+     "rationale":"Managers make the decisions that create PAGA exposure — rounding a clock-out, letting someone skip a break to leave early — and they generally do not know that the cost is per employee per pay period rather than per incident.",
+     "body":"California penalties are assessed per employee per pay period, so a small recurring error across a workforce compounds quickly and can be pursued on everyone's behalf by a single employee. Managers shall not adjust recorded time, ask an employee to work before clocking in or after clocking out, or encourage skipping a meal or rest period in exchange for leaving early. An employee who misses a break is owed the premium in <<xr:hb_meal_rest>> whether or not they asked for it."}
+  ]
+}

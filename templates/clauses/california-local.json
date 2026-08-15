@@ -1,0 +1,46 @@
+{
+  "$comment": "California local ordinances. Coverage follows where the employee physically works — including a remote employee's home city — not where the company is headquartered. Where a local rule and a state rule differ, the one more favorable to the employee applies, so a local ordinance never replaces the state obligation, it stacks on top of it.",
+  "collection": "california-local",
+  "version": "1.0.0",
+  "clauses": [
+    {"id":"can_local_general","doc":"ca-notices","group":"Local Ordinances","title":"Local Ordinance Layer","severity":"critical","insertion":"auto","condition":{"rule":"ca_local"},
+     "jurisdictions":["CA"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"DRAFT standard library",
+     "rationale":"Local ordinances are the most commonly missed California obligation, because they are not administered by any state agency and no filing prompts the employer to notice them.",
+     "body":"Employees work in {{caCityName}}. {{caCitySummary}} Local rules stack on state law rather than replacing it: where they differ, the provision more favorable to the employee governs, and the Company must satisfy both notice regimes. Coverage follows the employee's physical work location, so a single remote hire can pull the Company into a city ordinance it has no other connection to. Re-check whenever an employee relocates."},
+
+    {"id":"can_local_sf","doc":"ca-notices","group":"Local Ordinances","title":"San Francisco Ordinances","severity":"critical","insertion":"auto","condition":{"rule":"ca_sf"},
+     "jurisdictions":["CA"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"S.F. Admin. Code / Police Code",
+     "rationale":"San Francisco runs the densest local employment regime in the state, and several of its ordinances carry annual reporting obligations that are separate from anything the state requires.",
+     "body":"San Francisco layers the following on state law: a local minimum wage; the Health Care Security Ordinance requiring a minimum health care expenditure per employee hour for covered employers, with an annual reporting form; the Paid Parental Leave Ordinance topping up state Paid Family Leave to full wage replacement; the Family Friendly Workplace Ordinance giving employees a right to request flexible or predictable scheduling; the Fair Chance Ordinance, which adds notice and timing steps beyond the state Fair Chance Act; the Consideration of Salary History Ordinance; and a Military Leave Pay Protection Ordinance. Several attach at their own headcount thresholds, so re-check them against <<xr:can_thresholds>> rather than assuming the state analysis carries over."},
+
+    {"id":"can_local_la","doc":"ca-notices","group":"Local Ordinances","title":"Los Angeles Ordinances","severity":"critical","insertion":"auto","condition":{"rule":"ca_la"},
+     "jurisdictions":["CA"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"L.A. Mun. Code",
+     "rationale":"The City and the County of Los Angeles run separate ordinances with different coverage, and unincorporated county areas fall under the county scheme rather than the city one.",
+     "body":"Los Angeles adds a local minimum wage above the state floor; paid sick leave with its own accrual and frontloading rules; the Fair Chance Initiative for Hiring, which requires a written assessment and a waiting period beyond the state Act; freelance worker protections requiring a written contract and prompt payment; and fair work week scheduling obligations for larger retail and grocery employers, including advance schedules and predictability pay. Confirm whether the worksite sits in the City or in unincorporated Los Angeles County — the two have separate ordinances with different thresholds."},
+
+    {"id":"can_local_sd","doc":"ca-notices","group":"Local Ordinances","title":"San Diego Ordinances","severity":"critical","insertion":"auto","condition":{"rule":"ca_sd"},
+     "jurisdictions":["CA"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"S.D. Mun. Code ch. 3, art. 9",
+     "rationale":"San Diego's sick leave accrual and carryover mechanics differ from the state scheme, so a single combined policy usually satisfies neither cleanly.",
+     "body":"San Diego adds a local minimum wage above the state floor and an Earned Sick Leave ordinance with its own accrual rate, annual use cap, and carryover rules, plus a required notice at hire and an obligation to show the available balance on or with each wage statement. Reconcile the local scheme against the state entitlement in <<xr:hb_ca_sick>>; where they differ, apply the provision more favorable to the employee rather than averaging them."},
+
+    {"id":"can_local_sj","doc":"ca-notices","group":"Local Ordinances","title":"San Jose Ordinances","severity":"critical","insertion":"auto","condition":{"rule":"ca_sj"},
+     "jurisdictions":["CA"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"S.J. Mun. Code ch. 4.100, 4.101",
+     "rationale":"The opportunity-to-work ordinance constrains hiring itself rather than pay, which makes it easy to breach without noticing — the violation is the act of hiring.",
+     "body":"San Jose adds a local minimum wage above the state floor and an Opportunity to Work ordinance requiring covered employers to offer additional hours to existing qualified part-time employees before hiring new staff or using a staffing agency. Document the offer and the response for each hiring decision; the ordinance requires records and the burden of showing compliance sits with the employer."},
+
+    {"id":"can_local_oak","doc":"ca-notices","group":"Local Ordinances","title":"Oakland Ordinances","severity":"critical","insertion":"auto","condition":{"rule":"ca_oak"},
+     "jurisdictions":["CA"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"Oakland Mun. Code ch. 5.92, 5.93",
+     "rationale":"Oakland's accrual cap differs by employer size and its service charge rules reach businesses that do not think of themselves as hospitality.",
+     "body":"Oakland adds a local minimum wage above the state floor, paid sick leave with an accrual cap that varies by employer size, a service charge ordinance requiring that charges described as service charges be paid to the workers who performed the service, and a fair chance ordinance. Where the Company adds any percentage-based charge to a customer invoice, check whether the service charge rules reach it before deciding how the money is allocated."},
+
+    {"id":"can_local_remote","doc":"ca-notices","group":"Local Ordinances","title":"Remote Employees and Local Coverage","severity":"recommended","insertion":"auto","condition":{"all":[{"rule":"ca_employer"},{"rule":"remote_worker"}]},
+     "jurisdictions":["CA"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"DRAFT standard library",
+     "rationale":"A remote hire can pull the company into an ordinance it has no other connection to, and most local schemes trigger on hours worked within the jurisdiction rather than on having an office there.",
+     "body":"For a remote employee, local coverage generally follows the city where they actually perform work, commonly on an hours-worked threshold rather than on the employer having a location there. Track work location per employee, not per office, and re-run the local analysis on any relocation. A single employee moving across a city line can trigger a minimum wage, sick leave, and notice regime the Company was not previously subject to."},
+
+    {"id":"emp_ca_local","doc":"employment","group":"Wage and Hour","title":"California Local Ordinance Check","severity":"critical","insertion":"auto","condition":{"rule":"ca_local"},
+     "jurisdictions":["CA"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"DRAFT standard library",
+     "rationale":"Surfaces the local layer in the formation package too, where a founder answering yes to hiring in California would otherwise see only the state analysis.",
+     "body":"Employees will work in {{caCityName}}, which runs its own employment ordinances. {{caCitySummary}} These stack on the state obligations elsewhere in this package rather than replacing them, and the more employee-favorable provision governs where they differ. The hiring package carries the full local checklist."}
+  ]
+}

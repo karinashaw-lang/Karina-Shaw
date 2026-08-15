@@ -768,6 +768,169 @@
         ]
       },
       "rationale": "The HR data exemption expired. Employee, applicant, and contractor data is now consumer data under the CCPA, with notice and rights obligations attached."
+    },
+    {
+      "id": "ca_local",
+      "code": "IF [California employer] AND [city has its own ordinances] THEN [apply local ordinance layer]",
+      "when": {
+        "all": [
+          {
+            "rule": "ca_employer"
+          },
+          {
+            "taxonomy": [
+              "caCity",
+              "californiaLocalities",
+              "hasOrdinance"
+            ]
+          }
+        ]
+      },
+      "rationale": "Local ordinances follow where the employee physically works, not where the company sits, and where they differ from state law the more employee-favorable rule applies."
+    },
+    {
+      "id": "ca_sf",
+      "code": "IF [California employer] AND [city == San Francisco] THEN [SF ordinance set]",
+      "when": {
+        "all": [
+          {
+            "rule": "ca_employer"
+          },
+          {
+            "eq": [
+              "caCity",
+              "sf"
+            ]
+          }
+        ]
+      },
+      "rationale": "San Francisco layers six separate employment ordinances on top of state law, several with annual reporting of their own."
+    },
+    {
+      "id": "ca_la",
+      "code": "IF [California employer] AND [city == Los Angeles] THEN [LA ordinance set]",
+      "when": {
+        "all": [
+          {
+            "rule": "ca_employer"
+          },
+          {
+            "eq": [
+              "caCity",
+              "la"
+            ]
+          }
+        ]
+      },
+      "rationale": "Los Angeles sets its own minimum wage and sick leave and adds a fair chance procedure with notice steps beyond the state Act."
+    },
+    {
+      "id": "ca_sd",
+      "code": "IF [California employer] AND [city == San Diego] THEN [SD ordinance set]",
+      "when": {
+        "all": [
+          {
+            "rule": "ca_employer"
+          },
+          {
+            "eq": [
+              "caCity",
+              "sd"
+            ]
+          }
+        ]
+      },
+      "rationale": "San Diego's earned sick leave ordinance has different accrual and carryover mechanics from the state scheme."
+    },
+    {
+      "id": "ca_sj",
+      "code": "IF [California employer] AND [city == San Jose] THEN [SJ ordinance set]",
+      "when": {
+        "all": [
+          {
+            "rule": "ca_employer"
+          },
+          {
+            "eq": [
+              "caCity",
+              "sj"
+            ]
+          }
+        ]
+      },
+      "rationale": "San Jose requires additional hours be offered to existing part-time employees before new staff are hired."
+    },
+    {
+      "id": "ca_oak",
+      "code": "IF [California employer] AND [city == Oakland] THEN [Oakland ordinance set]",
+      "when": {
+        "all": [
+          {
+            "rule": "ca_employer"
+          },
+          {
+            "eq": [
+              "caCity",
+              "oak"
+            ]
+          }
+        ]
+      },
+      "rationale": "Oakland's sick leave accrual and service charge rules differ from both the state scheme and neighbouring cities."
+    },
+    {
+      "id": "ca_20plus",
+      "code": "IF [California employer] AND [headcount >= 20] THEN [federal COBRA and SF ordinances]",
+      "when": {
+        "all": [
+          {
+            "rule": "ca_employer"
+          },
+          {
+            "gte": [
+              "headcount",
+              20
+            ]
+          }
+        ]
+      },
+      "rationale": "Federal COBRA displaces Cal-COBRA at twenty, and San Francisco's health care and family-friendly ordinances attach at the same point."
+    },
+    {
+      "id": "ca_75plus",
+      "code": "IF [California employer] AND [headcount >= 75] THEN [Cal-WARN]",
+      "when": {
+        "all": [
+          {
+            "rule": "ca_employer"
+          },
+          {
+            "gte": [
+              "headcount",
+              75
+            ]
+          }
+        ]
+      },
+      "rationale": "Cal-WARN reaches further than the federal statute: it covers relocations and terminations as well as mass layoffs, and counts part-time employees toward the threshold."
+    },
+    {
+      "id": "ca_25plus_school",
+      "code": "IF [California employer] AND [headcount >= 20] THEN [school activity leave check]",
+      "when": {
+        "all": [
+          {
+            "rule": "ca_employer"
+          },
+          {
+            "gte": [
+              "headcount",
+              20
+            ]
+          }
+        ]
+      },
+      "rationale": "School activity leave attaches at twenty-five employees at the same location. The corpus tests it from the twenty-employee band because worksite headcount is not something the wizard collects — the clause states the real threshold."
     }
   ]
 }

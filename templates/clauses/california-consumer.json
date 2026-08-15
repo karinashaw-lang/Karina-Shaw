@@ -1,0 +1,252 @@
+{
+ "$comment": "California consumer and web liability. These are the statutes that reach a company through its website and its customers rather than through its employees, and each of them carries either statutory damages or fee-shifting — which is what makes them worth pricing into a commercial agreement.",
+ "collection": "california-consumer",
+ "version": "1.0.0",
+ "clauses": [
+  {
+   "id": "msa_ca_cipa",
+   "doc": "msa",
+   "group": "Data and Security",
+   "title": "Website Tracking and CIPA Exposure",
+   "severity": "critical",
+   "insertion": "auto",
+   "condition": {
+    "all": [
+     {
+      "rule": "ca_commercial"
+     },
+     {
+      "in": [
+       "industry",
+       [
+        "saas",
+        "ecommerce",
+        "health"
+       ]
+      ]
+     }
+    ]
+   },
+   "jurisdictions": [
+    "CA"
+   ],
+   "industries": [
+    "saas",
+    "ecommerce",
+    "health"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "source": "Cal. Penal Code §§630–638",
+   "rationale": "A wiretapping statute written for telephone lines is now the basis for a large volume of demand letters about session recording, chat widgets, and advertising pixels. Statutory damages per violation mean the claim does not need actual harm to be expensive.",
+   "body": "California's [[wiretapping statute|cipa]] is being applied to website session recording, chat widgets, and third-party advertising and analytics trackers, on the theory that the vendor is an undisclosed third party to the communication. Claims carry statutory damages per violation without proof of actual harm. Where either Party deploys such technology in connection with the Services, it shall obtain prior consent through a compliant mechanism, disclose the vendors in its privacy notice, and indemnify the other Party against claims arising from its own tracking implementation. Chat transcripts, session replay, and pixel-based audience matching are the three implementations generating most current claims."
+  },
+  {
+   "id": "msa_ca_unruh",
+   "doc": "msa",
+   "group": "Warranties and Risk",
+   "title": "Accessibility and Unruh Act Exposure",
+   "severity": "critical",
+   "insertion": "auto",
+   "condition": {
+    "all": [
+     {
+      "rule": "ca_commercial"
+     },
+     {
+      "in": [
+       "industry",
+       [
+        "saas",
+        "ecommerce",
+        "services",
+        "health"
+       ]
+      ]
+     }
+    ]
+   },
+   "jurisdictions": [
+    "CA"
+   ],
+   "industries": [
+    "saas",
+    "ecommerce",
+    "services",
+    "health"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "source": "Cal. Civ. Code §51",
+   "rationale": "California layers statutory damages and fee recovery on top of federal accessibility law, which is why the state carries a disproportionate share of website accessibility filings.",
+   "body": "The [[Unruh Act|unruh act]] provides statutory damages per violation plus attorney's fees for denial of equal access, and a federal ADA violation is a per se Unruh violation in California. Website and application accessibility claims are filed at high volume in this state. Where a Deliverable is a customer-facing interface, the {{selfLabel}} shall build to WCAG 2.1 AA or the standard stated in the Statement of Work, and the Parties shall allocate responsibility for remediation and for defense of any access claim rather than leaving it to the general indemnity in <<xr:msa_indemnity_mutual>>."
+  },
+  {
+   "id": "msa_ca_dark_patterns",
+   "doc": "msa",
+   "group": "Data and Security",
+   "title": "Consent Interface Requirements",
+   "severity": "recommended",
+   "insertion": "auto",
+   "condition": {
+    "all": [
+     {
+      "rule": "ca_commercial"
+     },
+     {
+      "rule": "consumer_data"
+     }
+    ]
+   },
+   "jurisdictions": [
+    "CA"
+   ],
+   "industries": [
+    "saas",
+    "ecommerce",
+    "health"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "source": "Cal. Civ. Code §1798.140(l); 11 C.C.R. §7004",
+   "rationale": "California defines consent obtained through a manipulative interface as no consent at all, and the regulations are specific about symmetry — the path to decline must be as short as the path to accept.",
+   "body": "Consent obtained through a [[dark pattern]] is not consent under California law. A consent interface must present the choice symmetrically, so that declining takes no more steps than accepting; must avoid pre-checked boxes, double negatives, and language that shames or pressures; and must honor an opt-out preference signal. Where the {{selfLabel}} supplies a consent or preference interface used with California consumers, it shall meet these requirements, and shall not represent that consent has been obtained where the interface does not."
+  },
+  {
+   "id": "msa_ca_song_beverly",
+   "doc": "msa",
+   "group": "Warranties and Risk",
+   "title": "Consumer Warranty Obligations",
+   "severity": "recommended",
+   "insertion": "auto",
+   "condition": {
+    "all": [
+     {
+      "rule": "ca_commercial"
+     },
+     {
+      "eq": [
+       "industry",
+       "ecommerce"
+      ]
+     }
+    ]
+   },
+   "jurisdictions": [
+    "CA"
+   ],
+   "industries": [
+    "ecommerce"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "source": "Cal. Civ. Code §1790 et seq.",
+   "rationale": "The implied warranty of merchantability cannot be disclaimed on a consumer sale in California, so a warranty disclaimer copied from a business-to-business template does not do what it appears to do.",
+   "body": "[[Song-Beverly|song-beverly]] governs consumer goods sold in California. The implied warranty of merchantability cannot be disclaimed on a consumer sale, and it runs for the duration of any written warranty, with a statutory floor and ceiling. A seller offering a written warranty must maintain service and repair facilities or an equivalent arrangement, and must replace or refund after a reasonable number of failed repair attempts. A warranty disclaimer drafted for business-to-business sale does not reach consumer sales into California, so a single set of terms used for both will not disclaim what it appears to."
+  },
+  {
+   "id": "msa_ca_privacy_notice_flow",
+   "doc": "dpa",
+   "group": "Processing Terms",
+   "title": "Notice at Collection Flow-Down",
+   "severity": "recommended",
+   "insertion": "auto",
+   "condition": {
+    "eq": [
+     "opState",
+     "CA"
+    ]
+   },
+   "jurisdictions": [
+    "CA"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "source": "Cal. Civ. Code §1798.100(b)",
+   "rationale": "The business owes the notice, but the service provider usually controls the interface where it has to appear. Neither can satisfy the obligation alone.",
+   "body": "The {{counterLabel}} is responsible for providing the notice at collection to consumers, and the {{selfLabel}} shall not collect personal information in connection with the Services except as disclosed in it. Where the {{selfLabel}} controls the interface at the point of collection, it shall surface the notice supplied by the {{counterLabel}} and shall not alter it. Neither Party may use personal information for a purpose absent from the notice, including for training a model, without a separate written instruction under <<xr:dpa_instructions>>."
+  },
+  {
+   "id": "cal_ca_casp",
+   "doc": "compliance-calendar",
+   "group": "Immediate Deadlines",
+   "title": "Commercial Lease Accessibility Disclosure",
+   "severity": "recommended",
+   "insertion": "auto",
+   "condition": {
+    "rule": "ca_entity"
+   },
+   "jurisdictions": [
+    "CA"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "source": "Cal. Civ. Code §1938",
+   "rationale": "California requires the disclosure in every commercial lease, and the answer allocates accessibility risk between landlord and tenant — a tenant who signs without asking generally inherits it.",
+   "body": "Every California commercial lease must state whether the property has been inspected by a [[Certified Access Specialist|casp]] and, if so, whether it met applicable standards. If it has not been inspected, the tenant may request one, and the lease must address who pays for the inspection and for any repairs it identifies. An uninspected property leaves the tenant exposed to an access claim over a condition it did not create, so ask before signing rather than after."
+  },
+  {
+   "id": "cal_ca_prop65_ops",
+   "doc": "compliance-calendar",
+   "group": "Recurring Obligations",
+   "title": "Proposition 65 Review",
+   "severity": "recommended",
+   "insertion": "auto",
+   "condition": {
+    "all": [
+     {
+      "rule": "ca_entity"
+     },
+     {
+      "in": [
+       "industry",
+       [
+        "ecommerce",
+        "construct"
+       ]
+      ]
+     }
+    ]
+   },
+   "jurisdictions": [
+    "CA"
+   ],
+   "industries": [
+    "ecommerce",
+    "construct"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "source": "Cal. Health & Safety Code §25249.6",
+   "rationale": "Enforced almost entirely by private plaintiffs who recover fees, so the practical exposure is the demand letter volume rather than the underlying health risk.",
+   "body": "Review the product catalogue annually against the listed chemicals, since the list is updated through the year, and confirm warnings are present, correctly worded, and placed where the purchase decision is made — including on the product page for online sales, not only on the package. A warning that is present but non-conforming is treated as no warning. Enforcement is primarily by private plaintiffs who recover attorney's fees, and the sixty-day notice that precedes suit is the window in which the matter is cheapest to resolve."
+  }
+ ]
+}

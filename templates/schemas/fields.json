@@ -608,6 +608,39 @@
         }
       },
       "provenance": "California reference table, selected by entity type"
+    },
+    {
+      "id": "caCityName",
+      "from": {
+        "taxonomy": [
+          "caCity",
+          "californiaLocalities",
+          "name"
+        ]
+      },
+      "provenance": "Wizard — California work city"
+    },
+    {
+      "id": "caCitySummary",
+      "from": {
+        "taxonomy": [
+          "caCity",
+          "californiaLocalities",
+          "summary"
+        ]
+      },
+      "provenance": "Derived from the California work city"
+    },
+    {
+      "id": "fundingName",
+      "from": {
+        "taxonomy": [
+          "funding",
+          "fundingStages",
+          "name"
+        ]
+      },
+      "provenance": "Wizard — funding plan"
     }
   ]
 }

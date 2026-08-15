@@ -219,12 +219,12 @@
       "triggers": "Workplace Violence Prevention Plan (the under-10 exemption no longer applies)"
     },
     "15": {
-      "name": "15–49 employees",
+      "name": "15–19 employees",
       "min": 15,
       "triggers": "Pay scale must appear in job postings; federal Title VII and ADA attach"
     },
     "50": {
-      "name": "50–99 employees",
+      "name": "50–74 employees",
       "min": 50,
       "triggers": "Federal FMLA runs alongside CFRA"
     },
@@ -232,6 +232,16 @@
       "name": "100 or more employees",
       "min": 100,
       "triggers": "Annual California pay data reporting"
+    },
+    "20": {
+      "name": "20–49 employees",
+      "min": 20,
+      "triggers": "Federal COBRA replaces Cal-COBRA; San Francisco health care and family-friendly ordinances attach"
+    },
+    "75": {
+      "name": "75–99 employees",
+      "min": 75,
+      "triggers": "Cal-WARN mass layoff, relocation, and termination notice"
     }
   },
   "californiaReference": {
@@ -246,5 +256,37 @@
     "soiRenewalCorp": "annually thereafter",
     "sickLeaveAccrual": "one hour for every thirty hours worked, with use available from the ninetieth day of employment",
     "sickLeaveMinimum": "forty hours or five days per year, whichever is greater, with accrual carrying over subject to a cap of eighty hours or ten days"
+  },
+  "californiaLocalities": {
+    "none": {
+      "name": "No local ordinance / elsewhere in California",
+      "hasOrdinance": false,
+      "summary": "State law alone applies. Confirm this — California localities adopt ordinances frequently and coverage follows where the employee physically works."
+    },
+    "sf": {
+      "name": "San Francisco",
+      "hasOrdinance": true,
+      "summary": "The densest local employment regime in the state: health care expenditure, paid parental leave, family friendly workplace, fair chance, salary history, and a local minimum wage, several with their own headcount thresholds and annual reporting."
+    },
+    "la": {
+      "name": "Los Angeles",
+      "hasOrdinance": true,
+      "summary": "Local minimum wage and paid sick leave above the state floor, a fair chance hiring ordinance with its own notice steps, freelance worker protections, and fair work week scheduling rules for larger retail and grocery employers."
+    },
+    "sd": {
+      "name": "San Diego",
+      "hasOrdinance": true,
+      "summary": "Earned sick leave and minimum wage ordinance above the state floor, with its own accrual, carryover, and notice requirements."
+    },
+    "sj": {
+      "name": "San Jose",
+      "hasOrdinance": true,
+      "summary": "Local minimum wage plus an opportunity-to-work ordinance requiring existing part-time staff be offered additional hours before new hires are made."
+    },
+    "oak": {
+      "name": "Oakland",
+      "hasOrdinance": true,
+      "summary": "Local minimum wage, paid sick leave with no annual cap for smaller employers, service charge rules, and a fair chance ordinance."
+    }
   }
 }

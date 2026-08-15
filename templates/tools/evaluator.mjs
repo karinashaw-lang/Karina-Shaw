@@ -5,7 +5,7 @@
 
 export const ANSWER_FIELDS = ['package','company','entity','formState','opState','founders','founderNames',
   'industry','funding','employees','counterparty','role','dealSize','termMonths','autoRenew',
-  'engagement','roleTitle','comp','equityGrant','remote','headcount'];
+  'engagement','roleTitle','comp','equityGrant','remote','headcount','caCity'];
 
 /* Answers always carry every field, even the ones the current package does not ask
    about, so an expression can never dereference an undefined answer. */
@@ -14,7 +14,7 @@ export const BASE_ANSWERS = {
   founders:1, founderNames:['First Last'], industry:'saas', funding:'boot', employees:false,
   counterparty:'Acme Corporation', role:'provider', dealSize:'mid', termMonths:12, autoRenew:true,
   engagement:'employee', roleTitle:'Senior Engineer', comp:'salary', equityGrant:true, remote:false,
-  headcount:1
+  headcount:1, caCity:'none'
 };
 
 /* ---- condition expression language (see templates/rules.json) ---- */
@@ -141,43 +141,56 @@ export function clauseEligible(c, a, tax, ruleOf){
 }
 export function docIncluded(d, a, tax, ruleOf){ return evalExpr(d.include, a, tax, ruleOf); }
 
-/* ---- exhaustive configuration space, used by the validator ----
-   Enumerated per package: a formation answer set does not vary deal size, and a
-   commercial one does not vary founder count, so the space stays the product of
-   the dimensions that actually matter to each package. */
+/* ---- configuration space used by the validator ----
+   Enumerated in blocks rather than as one cross-product. A formation answer set does
+   not vary deal size; headcount and the California locality overlay only change an
+   outcome inside California; and crossing all of them at once multiplies the space
+   without exercising any rule the blocks do not already reach. The UNREACHABLE checks
+   are the guard: if a block under-enumerates, a clause or risk shows up as dead. */
 export function allConfigs(tax){
   const out=[];
   const mk=o=>({...BASE_ANSWERS,...o,
     founderNames:Array.from({length:o.founders??BASE_ANSWERS.founders},(_,i)=>`First${i} Last${i}`)});
+  const bands  = Object.values(tax.headcountBands).map(b=>b.min);
+  const cities = Object.keys(tax.californiaLocalities);
+  const J = Object.keys(tax.jurisdictions), I = Object.keys(tax.industries);
+  const E = Object.keys(tax.entities),      F = Object.keys(tax.fundingStages);
 
-  for(const entity of Object.keys(tax.entities))
-  for(const formState of Object.keys(tax.jurisdictions))
-  for(const opState of Object.keys(tax.jurisdictions))
-  for(const industry of Object.keys(tax.industries))
-  for(const funding of Object.keys(tax.fundingStages))
-  for(const founders of [1,2,4])
-  for(const employees of [true,false])
-  for(const headcount of (employees?Object.values(tax.headcountBands).map(b=>b.min):[1]))
-    out.push(mk({package:'formation',entity,formState,opState,industry,funding,founders,employees,headcount}));
+  /* 1 — formation, full cross-product */
+  for(const entity of E) for(const formState of J) for(const opState of J)
+  for(const industry of I) for(const funding of F)
+  for(const founders of [1,2,4]) for(const employees of [true,false])
+    out.push(mk({package:'formation',entity,formState,opState,industry,funding,founders,employees,
+                 headcount:5,caCity:'none'}));
 
-  for(const entity of Object.keys(tax.entities))
-  for(const opState of Object.keys(tax.jurisdictions))
-  for(const industry of Object.keys(tax.industries))
-  for(const role of Object.keys(tax.contractRoles))
-  for(const dealSize of Object.keys(tax.dealSizes))
-  for(const termMonths of [12,24,36])
-  for(const autoRenew of [true,false])
-    out.push(mk({package:'commercial',entity,opState,formState:opState,industry,role,dealSize,termMonths,autoRenew}));
+  /* 2 — California formation depth: every headcount band against every locality */
+  for(const entity of E) for(const formState of ['CA','DE']) for(const industry of I)
+  for(const headcount of bands) for(const caCity of cities)
+    out.push(mk({package:'formation',entity,formState,opState:'CA',industry,funding:'angel',
+                 founders:2,employees:true,headcount,caCity}));
 
-  for(const entity of Object.keys(tax.entities))
-  for(const opState of Object.keys(tax.jurisdictions))
-  for(const industry of Object.keys(tax.industries))
-  for(const engagement of ['employee','contractor'])
-  for(const comp of Object.keys(tax.compTypes))
-  for(const equityGrant of [true,false])
-  for(const remote of [true,false])
-  for(const headcount of (engagement==='employee'?Object.values(tax.headcountBands).map(b=>b.min):[1]))
-    out.push(mk({package:'hiring',entity,opState,formState:opState,industry,engagement,comp,equityGrant,remote,headcount}));
+  /* 3 — commercial */
+  for(const entity of E) for(const opState of J) for(const industry of I)
+  for(const role of Object.keys(tax.contractRoles)) for(const dealSize of Object.keys(tax.dealSizes))
+  for(const termMonths of [12,24,36]) for(const autoRenew of [true,false])
+    out.push(mk({package:'commercial',entity,opState,formState:opState,industry,role,dealSize,
+                 termMonths,autoRenew}));
+
+  /* 4 — hiring, full cross-product */
+  for(const entity of E) for(const opState of J) for(const industry of I)
+  for(const engagement of ['employee','contractor']) for(const comp of Object.keys(tax.compTypes))
+  for(const equityGrant of [true,false]) for(const remote of [true,false])
+    out.push(mk({package:'hiring',entity,opState,formState:opState,industry,engagement,comp,
+                 equityGrant,remote,headcount:5,caCity:'none'}));
+
+  /* 5 — California hiring depth */
+  for(const industry of I) for(const comp of Object.keys(tax.compTypes))
+  for(const headcount of bands) for(const caCity of cities)
+    out.push(mk({package:'hiring',opState:'CA',formState:'CA',industry,engagement:'employee',
+                 comp,equityGrant:true,remote:false,headcount,caCity}));
+  for(const industry of I) for(const caCity of cities) for(const remote of [true,false])
+    out.push(mk({package:'hiring',opState:'CA',formState:'CA',industry,engagement:'contractor',
+                 remote,headcount:5,caCity}));
 
   return out;
 }
