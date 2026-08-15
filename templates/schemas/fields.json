@@ -9,7 +9,8 @@
     "todayPlusDays": "current date + N days, long format",
     "template": "string with {{other_field}} tokens, resolved after its dependencies",
     "choose": "{if: expr, then: resolver, else: resolver} using the rules expression language",
-    "builtin": "named function in the engine — used only where formatting cannot be expressed declaratively"
+    "builtin": "named function in the engine — used only where formatting cannot be expressed declaratively",
+    "reference": "[collection, key] direct lookup in a flat reference table in taxonomy.json"
   },
   "fields": [
     {
@@ -483,6 +484,130 @@
         }
       },
       "provenance": "Derived from engagement type"
+    },
+    {
+      "id": "headcountBand",
+      "from": {
+        "taxonomy": [
+          "headcount",
+          "headcountBands",
+          "name"
+        ]
+      },
+      "provenance": "Wizard — employee headcount"
+    },
+    {
+      "id": "headcountTriggers",
+      "from": {
+        "taxonomy": [
+          "headcount",
+          "headcountBands",
+          "triggers"
+        ]
+      },
+      "provenance": "Derived from the headcount band"
+    },
+    {
+      "id": "caMinWage",
+      "from": {
+        "reference": [
+          "californiaReference",
+          "minimumWageBasis"
+        ]
+      },
+      "provenance": "California reference table"
+    },
+    {
+      "id": "caExemptSalary",
+      "from": {
+        "reference": [
+          "californiaReference",
+          "exemptSalaryBasis"
+        ]
+      },
+      "provenance": "California reference table"
+    },
+    {
+      "id": "caSickAccrual",
+      "from": {
+        "reference": [
+          "californiaReference",
+          "sickLeaveAccrual"
+        ]
+      },
+      "provenance": "California reference table"
+    },
+    {
+      "id": "caSickMinimum",
+      "from": {
+        "reference": [
+          "californiaReference",
+          "sickLeaveMinimum"
+        ]
+      },
+      "provenance": "California reference table"
+    },
+    {
+      "id": "caLlcFeeTiers",
+      "from": {
+        "reference": [
+          "californiaReference",
+          "llcFeeTiers"
+        ]
+      },
+      "provenance": "California reference table"
+    },
+    {
+      "id": "caAnnualTax",
+      "from": {
+        "choose": {
+          "if": {
+            "eq": [
+              "entity",
+              "llc"
+            ]
+          },
+          "then": {
+            "reference": [
+              "californiaReference",
+              "annualTaxLLC"
+            ]
+          },
+          "else": {
+            "reference": [
+              "californiaReference",
+              "annualTaxCorp"
+            ]
+          }
+        }
+      },
+      "provenance": "California reference table, selected by entity type"
+    },
+    {
+      "id": "caSoiRenewal",
+      "from": {
+        "choose": {
+          "if": {
+            "eq": [
+              "entity",
+              "llc"
+            ]
+          },
+          "then": {
+            "reference": [
+              "californiaReference",
+              "soiRenewalLLC"
+            ]
+          },
+          "else": {
+            "reference": [
+              "californiaReference",
+              "soiRenewalCorp"
+            ]
+          }
+        }
+      },
+      "provenance": "California reference table, selected by entity type"
     }
   ]
 }

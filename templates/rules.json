@@ -140,9 +140,16 @@
     },
     {
       "id": "hiring",
-      "code": "IF [hiring within 12 months] THEN [include employment policy set]",
+      "code": "IF [formation package] AND [hiring within 12 months] THEN [include employment policy set]",
       "when": {
-        "truthy": "employees"
+        "all": [
+          {
+            "rule": "pkg_formation"
+          },
+          {
+            "truthy": "employees"
+          }
+        ]
       },
       "rationale": "Wage-and-hour exposure begins at the first hire, not at scale."
     },
@@ -547,6 +554,220 @@
         ]
       },
       "rationale": "Employment agreements carry at-will language, benefits eligibility, and policy incorporation that contractor agreements must not."
+    },
+    {
+      "id": "ca_employer",
+      "code": "IF [operating state == CA] AND [has or will have employees] THEN [apply California employer obligations]",
+      "when": {
+        "all": [
+          {
+            "eq": [
+              "opState",
+              "CA"
+            ]
+          },
+          {
+            "any": [
+              {
+                "rule": "hiring"
+              },
+              {
+                "rule": "employee_engagement"
+              }
+            ]
+          }
+        ]
+      },
+      "rationale": "California employer obligations attach at the first employee, not at scale. Almost none of them have a small-employer exemption."
+    },
+    {
+      "id": "ca_5plus",
+      "code": "IF [California employer] AND [headcount >= 5] THEN [FEHA, CFRA, PDL, training, Fair Chance]",
+      "when": {
+        "all": [
+          {
+            "rule": "ca_employer"
+          },
+          {
+            "gte": [
+              "headcount",
+              5
+            ]
+          }
+        ]
+      },
+      "rationale": "Five employees is the single most consequential threshold in California employment law — it turns on FEHA, CFRA, pregnancy disability leave, mandatory harassment training, and the Fair Chance Act at once."
+    },
+    {
+      "id": "ca_10plus",
+      "code": "IF [California employer] AND [headcount >= 10] THEN [workplace violence prevention plan]",
+      "when": {
+        "all": [
+          {
+            "rule": "ca_employer"
+          },
+          {
+            "gte": [
+              "headcount",
+              10
+            ]
+          }
+        ]
+      },
+      "rationale": "The narrow exemption for very small worksites not open to the public stops applying, and a written plan plus training and a violent incident log become mandatory."
+    },
+    {
+      "id": "ca_15plus",
+      "code": "IF [California employer] AND [headcount >= 15] THEN [pay scale in job postings]",
+      "when": {
+        "all": [
+          {
+            "rule": "ca_employer"
+          },
+          {
+            "gte": [
+              "headcount",
+              15
+            ]
+          }
+        ]
+      },
+      "rationale": "At fifteen employees the pay scale must appear in the job posting itself, not merely be available on request."
+    },
+    {
+      "id": "ca_50plus",
+      "code": "IF [California employer] AND [headcount >= 50] THEN [FMLA runs alongside CFRA]",
+      "when": {
+        "all": [
+          {
+            "rule": "ca_employer"
+          },
+          {
+            "gte": [
+              "headcount",
+              50
+            ]
+          }
+        ]
+      },
+      "rationale": "Federal FMLA attaches and runs concurrently with CFRA for some but not all leave reasons, which is where most dual-coverage errors happen."
+    },
+    {
+      "id": "ca_100plus",
+      "code": "IF [California employer] AND [headcount >= 100] THEN [annual pay data reporting]",
+      "when": {
+        "all": [
+          {
+            "rule": "ca_employer"
+          },
+          {
+            "gte": [
+              "headcount",
+              100
+            ]
+          }
+        ]
+      },
+      "rationale": "Annual pay data reporting to the Civil Rights Department, covering pay bands by race, ethnicity, and sex for each job category."
+    },
+    {
+      "id": "ca_entity",
+      "code": "IF [formed in CA] OR [operating in CA] THEN [apply California entity obligations]",
+      "when": {
+        "any": [
+          {
+            "eq": [
+              "formState",
+              "CA"
+            ]
+          },
+          {
+            "eq": [
+              "opState",
+              "CA"
+            ]
+          }
+        ]
+      },
+      "rationale": "California taxes and registration reach any entity doing business in the state, whether or not it was formed there."
+    },
+    {
+      "id": "ca_pseudo_foreign",
+      "code": "IF [formed outside CA] AND [operating in CA] AND [entity == C-Corp] THEN [flag Section 2115]",
+      "when": {
+        "all": [
+          {
+            "ne": [
+              "formState",
+              "CA"
+            ]
+          },
+          {
+            "eq": [
+              "opState",
+              "CA"
+            ]
+          },
+          {
+            "eq": [
+              "entity",
+              "ccorp"
+            ]
+          }
+        ]
+      },
+      "rationale": "Corporations Code §2115 applies core provisions of California corporate law to a foreign corporation whose business and shareholders are predominantly Californian, regardless of where it was incorporated."
+    },
+    {
+      "id": "ca_commercial",
+      "code": "IF [commercial] AND [operating in CA] THEN [apply California contract statutes]",
+      "when": {
+        "all": [
+          {
+            "rule": "pkg_commercial"
+          },
+          {
+            "eq": [
+              "opState",
+              "CA"
+            ]
+          }
+        ]
+      },
+      "rationale": "California regulates automatic renewal, choice of law for employees, releases, and service provider data terms by statute, not merely by common law."
+    },
+    {
+      "id": "ca_contractor",
+      "code": "IF [contractor engagement] AND [operating in CA] THEN [apply the ABC test and the Freelance Worker Protection Act]",
+      "when": {
+        "all": [
+          {
+            "rule": "contractor_engagement"
+          },
+          {
+            "eq": [
+              "opState",
+              "CA"
+            ]
+          }
+        ]
+      },
+      "rationale": "California applies the ABC test by statute, and its prong B defeats most contractor engagements that sit inside the hiring entity's own line of business."
+    },
+    {
+      "id": "ca_privacy_employer",
+      "code": "IF [California employer] AND [industry processes personal data] THEN [apply CCPA to HR data]",
+      "when": {
+        "all": [
+          {
+            "rule": "ca_employer"
+          },
+          {
+            "rule": "consumer_data"
+          }
+        ]
+      },
+      "rationale": "The HR data exemption expired. Employee, applicant, and contractor data is now consumer data under the CCPA, with notice and rights obligations attached."
     }
   ]
 }

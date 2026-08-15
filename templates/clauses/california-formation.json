@@ -1,0 +1,308 @@
+{
+ "$comment": "California entity obligations. These attach to any company doing business in California, whether or not it was formed there — which is the case that surprises Delaware-incorporated founders operating out of California.",
+ "collection": "california-formation",
+ "version": "1.0.0",
+ "clauses": [
+  {
+   "id": "cal_ca_annual_tax",
+   "doc": "compliance-calendar",
+   "group": "Recurring Obligations",
+   "title": "California Annual Tax and Fee",
+   "severity": "critical",
+   "insertion": "auto",
+   "condition": {
+    "rule": "ca_entity"
+   },
+   "jurisdictions": [
+    "CA"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "source": "Cal. Rev. & Tax. Code §§17941, 17942, 23153",
+   "rationale": "Owed on doing business in California regardless of where the entity was formed and regardless of profit. Founders who form in Delaware and operate from California routinely budget for Delaware franchise tax and are surprised by this one.",
+   "body": "California charges a [[franchise tax]] of {{caAnnualTax}}. This is owed for doing business in California whether or not the Company was formed here and whether or not it made money. An LLC additionally owes {{caLlcFeeTiers}}, estimated on Form 3536 by the fifteenth day of the sixth month and trued up on the return. The gross receipts fee is computed on total California income, not on profit, so a low-margin business can owe it while operating at a loss."
+  },
+  {
+   "id": "cal_ca_soi",
+   "doc": "compliance-calendar",
+   "group": "Recurring Obligations",
+   "title": "California Statement of Information",
+   "severity": "critical",
+   "insertion": "auto",
+   "condition": {
+    "rule": "ca_entity"
+   },
+   "jurisdictions": [
+    "CA"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "source": "Cal. Corp. Code §§1502, 17702.09",
+   "rationale": "Separate from the formation filing and from the tax return, which is why it is the filing most often missed. Suspension is the consequence, and a suspended entity cannot enforce its own contracts.",
+   "body": "File an initial Statement of Information {{soiDeadline}} — that is {{caSoiRenewal}} thereafter for a {{entityLong}}. Late filing carries a penalty and can lead to suspension or forfeiture. A suspended entity cannot prosecute or defend a lawsuit, cannot enforce its contracts, and loses the exclusive right to its own name."
+  },
+  {
+   "id": "cal_ca_fbn",
+   "doc": "compliance-calendar",
+   "group": "Immediate Deadlines",
+   "title": "Fictitious Business Name",
+   "severity": "recommended",
+   "insertion": "auto",
+   "condition": {
+    "rule": "ca_entity"
+   },
+   "jurisdictions": [
+    "CA"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "source": "Cal. Bus. & Prof. Code §17900",
+   "rationale": "A county filing, not a state one, so it is easy to overlook after completing the Secretary of State paperwork. Without it the company cannot sue on a contract made under the trade name.",
+   "body": "If the Company operates under any name other than {{company}}, file a [[fictitious business name]] statement with the county clerk where its principal place of business sits, within forty (40) days of first transacting business under that name, and publish it once a week for four (4) successive weeks. The statement expires after five (5) years. Until it is filed, the Company cannot maintain an action on a contract made under the trade name."
+  },
+  {
+   "id": "cal_ca_seller_permit",
+   "doc": "compliance-calendar",
+   "group": "Immediate Deadlines",
+   "title": "Seller's Permit and Sales Tax",
+   "severity": "critical",
+   "insertion": "auto",
+   "condition": {
+    "all": [
+     {
+      "rule": "ca_entity"
+     },
+     {
+      "in": [
+       "industry",
+       [
+        "ecommerce",
+        "construct"
+       ]
+      ]
+     }
+    ]
+   },
+   "jurisdictions": [
+    "CA"
+   ],
+   "industries": [
+    "ecommerce",
+    "construct"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "source": "Cal. Rev. & Tax. Code §6066",
+   "rationale": "Required before the first sale, not after, and personal liability for unremitted sales tax reaches responsible individuals directly.",
+   "body": "Register with the California Department of Tax and Fee Administration for a [[seller's permit]] before making the first sale of tangible goods. Collect and remit sales tax on the schedule assigned, and track district taxes, which vary by delivery location rather than by the seller's address. Unremitted sales tax can be assessed personally against responsible individuals, and that liability survives dissolution of the entity."
+  },
+  {
+   "id": "cal_ca_local_license",
+   "doc": "compliance-calendar",
+   "group": "Recurring Obligations",
+   "title": "Local Business License",
+   "severity": "recommended",
+   "insertion": "auto",
+   "condition": {
+    "rule": "ca_entity"
+   },
+   "jurisdictions": [
+    "CA"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "source": "DRAFT standard library",
+   "rationale": "California has no statewide business licence, so the obligation is municipal and is triggered by a home office as readily as by a storefront.",
+   "body": "Obtain a business licence or tax certificate from every California city where the Company has a place of business, including a founder's or remote employee's home office. Several cities tax gross receipts rather than charging a flat fee, and a few assess based on payroll. Renew annually; unpaid municipal business taxes accrue penalties and interest and can block permits."
+  },
+  {
+   "id": "gov_ca_rullca",
+   "doc": "governance",
+   "group": "Organization",
+   "title": "California LLC Statutory Defaults",
+   "severity": "recommended",
+   "insertion": "auto",
+   "condition": {
+    "all": [
+     {
+      "eq": [
+       "formState",
+       "CA"
+      ]
+     },
+     {
+      "rule": "is_llc"
+     }
+    ]
+   },
+   "jurisdictions": [
+    "CA"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "llc"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "source": "Cal. Corp. Code §17701.10",
+   "rationale": "California's LLC act supplies defaults that differ from what founders assume — including per-capita rather than pro-rata voting on some matters — and it makes a short list of terms non-waivable.",
+   "body": "Where this {{govDoc}} is silent, the California Revised Uniform Limited Liability Company Act supplies the rule, and several of its defaults differ from common expectation. A short list of provisions cannot be varied by agreement at all, including the duty of loyalty in substance, the obligation of good faith and fair dealing, and a Member's right to information. Provisions in <<xr:gov_voting>> and <<xr:gov_fiduciary>> are written to displace the defaults where displacement is permitted."
+  },
+  {
+   "id": "gov_ca_charging",
+   "doc": "governance",
+   "group": "Ownership Transfers",
+   "title": "California Charging Order",
+   "severity": "recommended",
+   "insertion": "auto",
+   "condition": {
+    "all": [
+     {
+      "eq": [
+       "formState",
+       "CA"
+      ]
+     },
+     {
+      "rule": "is_llc"
+     }
+    ]
+   },
+   "jurisdictions": [
+    "CA"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "llc"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "source": "Cal. Corp. Code §17705.03",
+   "rationale": "California's charging order protection is weaker than Texas's — foreclosure is available on a showing that distributions will not satisfy the judgment within a reasonable time.",
+   "body": "A [[charging order]] is a judgment creditor's remedy against a Member's economic interest. California protection is narrower than in some states: a court may order foreclosure of the charged interest where it finds that distributions will not pay the judgment within a reasonable time. Foreclosure transfers economic rights only; the purchaser does not become a Member or acquire management rights."
+  },
+  {
+   "id": "gov_ca_2115",
+   "doc": "governance",
+   "group": "Governance",
+   "title": "Section 2115 Pseudo-Foreign Corporation",
+   "severity": "critical",
+   "insertion": "auto",
+   "condition": {
+    "rule": "ca_pseudo_foreign"
+   },
+   "jurisdictions": [
+    "CA"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "ccorp"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "source": "Cal. Corp. Code §2115",
+   "rationale": "The most commonly overlooked consequence of the Delaware-incorporated, California-operated structure. Incorporating in Delaware does not by itself escape California corporate law.",
+   "body": "[[Section 2115|section 2115]] applies core provisions of California corporate law to a corporation incorporated elsewhere when, for the latest fiscal year, more than half of its property, payroll, and sales are in California and more than half of its voting shares are held of record by California residents. The Company is incorporated in {{formStateLong}} and operates in {{opStateLong}}, so the test may apply. Where it does, California rules govern cumulative voting in director elections, director removal, distributions and dividends, dissenters' rights, indemnification limits, and inspection rights — regardless of what the {{charterDoc}} or <<xr:gov_board>> provide. Corporations listed on a major exchange are excluded. Test this annually rather than at formation, because the answer changes as the company grows."
+  },
+  {
+   "id": "gov_ca_professional",
+   "doc": "governance",
+   "group": "Regulatory Compliance",
+   "title": "California Professional Practice Restrictions",
+   "severity": "critical",
+   "insertion": "auto",
+   "condition": {
+    "all": [
+     {
+      "eq": [
+       "opState",
+       "CA"
+      ]
+     },
+     {
+      "in": [
+       "industry",
+       [
+        "services",
+        "health"
+       ]
+      ]
+     }
+    ]
+   },
+   "jurisdictions": [
+    "CA"
+   ],
+   "industries": [
+    "services",
+    "health"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "source": "Cal. Corp. Code §13401; Cal. Bus. & Prof. Code §2400",
+   "rationale": "An LLC cannot render licensed professional services in California at all, and the corporate practice of medicine doctrine separately restricts who may own a medical practice.",
+   "body": "California does not permit a limited liability company to render professional services requiring a licence. Licensed services must be delivered through a professional corporation or a registered limited liability partnership, with ownership restricted to licensees in the same or a statutorily permitted related profession. For medical services the corporate practice doctrine additionally bars a lay-owned entity from employing physicians or controlling clinical judgment; the usual structure is a management services organization contracting with a professional corporation. Confirm the licence status of every intended service line before filing, as required by <<xr:charter_ca_professional>>."
+  },
+  {
+   "id": "cal_ca_dissolution",
+   "doc": "compliance-calendar",
+   "group": "Recurring Obligations",
+   "title": "California Dissolution and Final Returns",
+   "severity": "recommended",
+   "insertion": "auto",
+   "condition": {
+    "rule": "ca_entity"
+   },
+   "jurisdictions": [
+    "CA"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "source": "Cal. Rev. & Tax. Code §23332",
+   "rationale": "The annual tax keeps accruing until the entity is formally dissolved, so simply stopping operations does not stop the liability.",
+   "body": "Ceasing operations does not end California tax liability. The {{caAnnualTax}} continues to accrue until the Company files a certificate of dissolution or cancellation with the Secretary of State and a final return with the Franchise Tax Board. Dissolve formally and promptly, following the process in <<xr:gov_dissolution>>, rather than allowing the entity to lapse."
+  }
+ ]
+}

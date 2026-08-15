@@ -5,7 +5,7 @@
 
 export const ANSWER_FIELDS = ['package','company','entity','formState','opState','founders','founderNames',
   'industry','funding','employees','counterparty','role','dealSize','termMonths','autoRenew',
-  'engagement','roleTitle','comp','equityGrant','remote'];
+  'engagement','roleTitle','comp','equityGrant','remote','headcount'];
 
 /* Answers always carry every field, even the ones the current package does not ask
    about, so an expression can never dereference an undefined answer. */
@@ -13,7 +13,8 @@ export const BASE_ANSWERS = {
   package:'formation', company:'Test Co', entity:'llc', formState:'DE', opState:'CA',
   founders:1, founderNames:['First Last'], industry:'saas', funding:'boot', employees:false,
   counterparty:'Acme Corporation', role:'provider', dealSize:'mid', termMonths:12, autoRenew:true,
-  engagement:'employee', roleTitle:'Senior Engineer', comp:'salary', equityGrant:true, remote:false
+  engagement:'employee', roleTitle:'Senior Engineer', comp:'salary', equityGrant:true, remote:false,
+  headcount:1
 };
 
 /* ---- condition expression language (see templates/rules.json) ---- */
@@ -91,6 +92,10 @@ export function resolveFields(fieldDefs, a, tax, now=new Date()){
     if(from.builtin!==undefined) return B[from.builtin];
     if(from.today!==undefined) return longDate(now);
     if(from.todayPlusDays!==undefined) return longDate(plusDays(now,from.todayPlusDays));
+    if(from.reference!==undefined){
+      const [coll,key]=from.reference;
+      return String((tax[coll]||{})[key]??'');
+    }
     if(from.taxonomy!==undefined){
       const [field,coll,prop]=from.taxonomy;
       const row=(tax[coll]||{})[a[field]];
@@ -150,9 +155,10 @@ export function allConfigs(tax){
   for(const opState of Object.keys(tax.jurisdictions))
   for(const industry of Object.keys(tax.industries))
   for(const funding of Object.keys(tax.fundingStages))
-  for(const founders of [1,2,3,4])
+  for(const founders of [1,2,4])
   for(const employees of [true,false])
-    out.push(mk({package:'formation',entity,formState,opState,industry,funding,founders,employees}));
+  for(const headcount of (employees?Object.values(tax.headcountBands).map(b=>b.min):[1]))
+    out.push(mk({package:'formation',entity,formState,opState,industry,funding,founders,employees,headcount}));
 
   for(const entity of Object.keys(tax.entities))
   for(const opState of Object.keys(tax.jurisdictions))
@@ -170,7 +176,8 @@ export function allConfigs(tax){
   for(const comp of Object.keys(tax.compTypes))
   for(const equityGrant of [true,false])
   for(const remote of [true,false])
-    out.push(mk({package:'hiring',entity,opState,formState:opState,industry,engagement,comp,equityGrant,remote}));
+  for(const headcount of (engagement==='employee'?Object.values(tax.headcountBands).map(b=>b.min):[1]))
+    out.push(mk({package:'hiring',entity,opState,formState:opState,industry,engagement,comp,equityGrant,remote,headcount}));
 
   return out;
 }

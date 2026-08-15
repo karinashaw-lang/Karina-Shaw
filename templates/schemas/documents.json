@@ -397,6 +397,37 @@
       ],
       "package": "hiring",
       "label": "Employee Handbook"
+    },
+    {
+      "id": "ca-notices",
+      "icon": "🐻",
+      "numbering": "section",
+      "order": 33,
+      "package": "hiring",
+      "label": "California Employer Compliance Set",
+      "name": {
+        "const": "California Employer Compliance Set"
+      },
+      "include": {
+        "all": [
+          {
+            "rule": "employee_engagement"
+          },
+          {
+            "eq": [
+              "opState",
+              "CA"
+            ]
+          }
+        ]
+      },
+      "rationale": "Generated for any California employee hire. California attaches notice, posting, policy, and registration duties at the first employee, and the penalty for most of them is assessed per employee per pay period.",
+      "groupOrder": [
+        "Notices at Hire",
+        "Required Postings",
+        "Required Written Policies",
+        "Registration and Insurance"
+      ]
     }
   ]
 }

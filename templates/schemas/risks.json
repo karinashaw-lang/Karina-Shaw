@@ -1,0 +1,402 @@
+{
+  "$comment": "Risk-based suggestions (spec §2.3), as data. A risk fires when its `condition` holds, every clause listed in `absent` is missing from the assembled package, and every clause listed in `present` is in it. Each risk declares the `packages` it applies to, so an employment risk cannot surface inside a commercial contract set. Bodies support the same {{field}} and [[glossary]] tokens as clause bodies. A risk whose `absent` clause is always auto-inserted can never fire; validate.mjs reports those as UNREACHABLE_RISK rather than letting them sit in the corpus as dead content.",
+  "version": "1.0.0",
+  "risks": [
+    {
+      "id": "missing_govlaw",
+      "level": "high",
+      "title": "Missing governing law clause",
+      "condition": {
+        "rule": "pkg_formation"
+      },
+      "absent": [
+        "gov_govlaw"
+      ],
+      "source": "Schema comparison",
+      "body": "No governing law provision is present. Add one naming {{formStateLong}} to match the state of formation. Without it, which state's law applies is decided by a judge applying conflict-of-laws rules.",
+      "packages": [
+        "formation"
+      ]
+    },
+    {
+      "id": "vc_entity_mismatch",
+      "level": "high",
+      "title": "Entity structure conflicts with funding plan",
+      "condition": {
+        "rule": "vc_entity_mismatch"
+      },
+      "source": "Rule vc_entity_mismatch",
+      "body": "You selected VC funding but an LLC. Institutional funds generally cannot hold LLC interests because pass-through income creates UBTI for their tax-exempt LPs. Nearly every priced round requires a Delaware C-Corp, and converting later triggers legal and tax cost you can avoid by forming as a C-Corp now.",
+      "packages": [
+        "formation"
+      ]
+    },
+    {
+      "id": "ca_noncompete",
+      "level": "high",
+      "title": "Employee non-competes are void in California",
+      "condition": {
+        "eq": [
+          "opState",
+          "CA"
+        ]
+      },
+      "source": "Cal. Bus. & Prof. Code §16600; AB 1076; SB 699",
+      "body": "California voids employee non-competes, and it is unlawful to include or attempt to enforce one — regardless of where the agreement was signed or which state's law it names. Employers were also required to notify current and former employees whose agreements contained one. Rely on confidentiality and invention assignment instead.",
+      "packages": [
+        "formation",
+        "hiring"
+      ]
+    },
+    {
+      "id": "ca_925_choice_of_law",
+      "level": "high",
+      "title": "Out-of-state choice of law will not hold for California employees",
+      "condition": {
+        "all": [
+          {
+            "rule": "ca_employer"
+          },
+          {
+            "ne": [
+              "formState",
+              "CA"
+            ]
+          }
+        ]
+      },
+      "source": "Cal. Lab. Code §925",
+      "body": "The Company is organized in {{formStateLong}} but employs in California. A provision requiring a California employee to litigate outside California or under another state's law is voidable at the employee's election, and an employee who voids it recovers attorney's fees. The exception is narrow: it applies only where the employee was individually represented by counsel in negotiating that term.",
+      "packages": [
+        "formation",
+        "hiring"
+      ]
+    },
+    {
+      "id": "ca_abc_test",
+      "level": "high",
+      "title": "Contractor engagement likely fails California's ABC test",
+      "condition": {
+        "rule": "ca_contractor"
+      },
+      "source": "Cal. Lab. Code §2775; Dynamex",
+      "body": "California presumes employment. Prong B requires the work to sit outside the Company's usual course of business, and the Company's business is {{industryName}} — so engaging a contractor to do that same work is unlikely to qualify no matter how the agreement is written. Exposure on reclassification includes unpaid overtime, meal and rest premiums, business expenses, payroll taxes, and penalties, and can reach individuals personally.",
+      "packages": [
+        "hiring"
+      ]
+    },
+    {
+      "id": "ca_five_employee_threshold",
+      "level": "high",
+      "title": "Five-employee threshold turns on several obligations at once",
+      "condition": {
+        "rule": "ca_5plus"
+      },
+      "source": "Cal. Gov. Code §§12945.2, 12945, 12950.1, 12952",
+      "body": "At {{headcountBand}}, California turns on FEHA discrimination and harassment law, CFRA family leave, pregnancy disability leave, mandatory harassment prevention training, the Fair Chance Act, bereavement and reproductive loss leave, and off-duty cannabis protections. These attach the moment headcount crosses five and count part-time and temporary workers.",
+      "packages": [
+        "formation",
+        "hiring"
+      ]
+    },
+    {
+      "id": "ca_wvpp",
+      "level": "medium",
+      "title": "Workplace Violence Prevention Plan required",
+      "condition": {
+        "rule": "ca_10plus"
+      },
+      "source": "Cal. Lab. Code §6401.9",
+      "body": "At {{headcountBand}} the Company needs a written workplace violence prevention plan separate from its safety program, plus annual training and a violent incident log retained for five years. This is a distinct Cal/OSHA citation from the injury and illness program.",
+      "packages": [
+        "formation",
+        "hiring"
+      ]
+    },
+    {
+      "id": "ca_llc_professional",
+      "level": "high",
+      "title": "An LLC cannot render licensed services in California",
+      "condition": {
+        "all": [
+          {
+            "eq": [
+              "opState",
+              "CA"
+            ]
+          },
+          {
+            "rule": "is_llc"
+          },
+          {
+            "in": [
+              "industry",
+              [
+                "services",
+                "health"
+              ]
+            ]
+          }
+        ]
+      },
+      "source": "Cal. Corp. Code §17701.04(b)",
+      "body": "California does not permit a limited liability company to provide professional services requiring a licence. This is a formation-blocking issue rather than a drafting preference — the correct vehicle is a professional corporation or a registered limited liability partnership, with ownership restricted to licensees. For medical services the corporate practice doctrine restricts ownership further.",
+      "packages": [
+        "formation"
+      ]
+    },
+    {
+      "id": "ca_2115",
+      "level": "high",
+      "title": "California corporate law may apply despite out-of-state incorporation",
+      "condition": {
+        "rule": "ca_pseudo_foreign"
+      },
+      "source": "Cal. Corp. Code §2115",
+      "body": "Incorporating in {{formStateLong}} does not by itself escape California corporate law. Where more than half of property, payroll, and sales are in California and more than half of voting shares are held by California residents, California rules govern cumulative voting, director removal, distributions, dissenters' rights, indemnification limits, and inspection rights. Test this annually — the answer changes as the company grows.",
+      "packages": [
+        "formation"
+      ]
+    },
+    {
+      "id": "ca_annual_tax",
+      "level": "medium",
+      "title": "California annual tax accrues on doing business here",
+      "condition": {
+        "rule": "ca_entity"
+      },
+      "source": "Cal. Rev. & Tax. Code §§17941, 23153",
+      "body": "California charges {{caAnnualTax}} for doing business in the state, whether or not the Company was formed here and whether or not it made money. An LLC additionally owes {{caLlcFeeTiers}} — computed on gross California income, so a low-margin business can owe it while operating at a loss. The liability continues until the entity is formally dissolved.",
+      "packages": [
+        "formation"
+      ]
+    },
+    {
+      "id": "ca_final_pay",
+      "level": "high",
+      "title": "California final pay timing carries a per-day penalty",
+      "condition": {
+        "rule": "ca_employer"
+      },
+      "source": "Cal. Lab. Code §§201–203",
+      "body": "A terminated employee must be paid all wages, including accrued vacation, at the time of termination. An employee who resigns with 72 hours' notice must be paid on their last day; without notice, within 72 hours. Late final pay accrues a waiting time penalty of one full day of wages per day late, up to thirty days — a payroll timing error alone can cost a month of wages per employee.",
+      "packages": [
+        "formation",
+        "hiring"
+      ]
+    },
+    {
+      "id": "ca_pto_forfeiture",
+      "level": "medium",
+      "title": "Use-it-or-lose-it vacation policies are unenforceable in California",
+      "condition": {
+        "rule": "ca_employer"
+      },
+      "source": "Cal. Lab. Code §227.3",
+      "body": "Accrued vacation is wages in California and cannot be forfeited. Accrual may be capped at a reasonable multiple of the annual rate, but a policy that zeroes a balance at year end is void and produces a wage claim at every departure. An unlimited-PTO policy avoids accrual only if administered so employees actually take leave.",
+      "packages": [
+        "formation",
+        "hiring"
+      ]
+    },
+    {
+      "id": "ca_meal_rest_premiums",
+      "level": "high",
+      "title": "Meal and rest premiums are the most common California wage claim",
+      "condition": {
+        "rule": "ca_employer"
+      },
+      "source": "Cal. Lab. Code §226.7; IWC Wage Orders",
+      "body": "Each missed, late, or interrupted meal period and each missed rest period entitles a non-exempt employee to one additional hour of pay at the regular rate — separately, so a single bad day can owe two hours. The premium is measured at the regular rate including non-discretionary bonuses, not base pay, and unpaid premiums cascade into wage statement and waiting time claims.",
+      "packages": [
+        "formation",
+        "hiring"
+      ]
+    },
+    {
+      "id": "ca_auto_renew",
+      "level": "medium",
+      "title": "California automatic renewal law applies to this contract",
+      "condition": {
+        "all": [
+          {
+            "rule": "ca_commercial"
+          },
+          {
+            "rule": "auto_renewing"
+          }
+        ]
+      },
+      "source": "Cal. Bus. & Prof. Code §§17601–17606",
+      "body": "The term auto-renews and California regulates that directly: renewal terms must be clear and conspicuous in visual proximity to acceptance, consent must be affirmative and separate, a post-transaction acknowledgment is required, and cancellation must be as easy as signup and available in the same medium. Goods delivered under a non-compliant renewal may be treated as an unconditional gift, and the statute carries a private right of action.",
+      "packages": [
+        "commercial"
+      ]
+    },
+    {
+      "id": "ca_ccpa_hr",
+      "level": "medium",
+      "title": "Employee and applicant data is now consumer data in California",
+      "condition": {
+        "rule": "ca_privacy_employer"
+      },
+      "source": "Cal. Civ. Code §1798.100",
+      "body": "The HR data exemption expired. Applicants, employees, and contractors are consumers with rights to know, delete, correct, and limit use of sensitive information about their own employment data. A notice at collection is required, and any employee monitoring — device, location, or communications — has to appear in it.",
+      "packages": [
+        "formation",
+        "hiring"
+      ]
+    },
+    {
+      "id": "ca_local_ordinances",
+      "level": "low",
+      "title": "Local wage and leave ordinances may exceed the state floor",
+      "condition": {
+        "rule": "ca_employer"
+      },
+      "source": "Local ordinance",
+      "body": "Dozens of California cities and counties set minimum wage, paid sick leave, and fair scheduling rules above the state floor. The applicable rule is set by where the employee physically works — including a remote employee's home city — not by where the Company sits. Where state and local differ, the more employee-favorable provision applies.",
+      "packages": [
+        "formation",
+        "hiring"
+      ]
+    },
+    {
+      "id": "file_83b",
+      "level": "high",
+      "title": "83(b) election has a hard 30-day deadline",
+      "condition": {
+        "rule": "file_83b"
+      },
+      "source": "Rule file_83b",
+      "body": "The election must be postmarked within 30 days of the grant — {{d83bDeadline}} for this package. Late filing cannot be cured, and the consequence is ordinary income tax on the spread as each tranche vests.",
+      "packages": [
+        "formation"
+      ]
+    },
+    {
+      "id": "health_baa",
+      "level": "high",
+      "title": "HIPAA business associate coverage missing",
+      "condition": {
+        "rule": "health_baa"
+      },
+      "absent": [
+        "gov_baa"
+      ],
+      "source": "Rule health_baa",
+      "body": "Healthcare business with no Business Associate Agreement obligation in the package. Disclosing PHI to a vendor without a BAA is itself a HIPAA violation, independent of any breach.",
+      "packages": [
+        "formation"
+      ]
+    },
+    {
+      "id": "ny_publication",
+      "level": "medium",
+      "title": "New York publication deadline running",
+      "condition": {
+        "rule": "ny_publication"
+      },
+      "source": "NY LLC Law §206",
+      "body": "Publication in two designated newspapers and a Certificate of Publication are due within 120 days — {{nyDeadline}}. The run takes six weeks, so starting late makes the deadline impossible. Missing it suspends the LLC's authority to do business in New York until cured.",
+      "packages": [
+        "formation"
+      ]
+    },
+    {
+      "id": "foreign_qual",
+      "level": "medium",
+      "title": "Operating outside the state of formation",
+      "condition": {
+        "rule": "foreign_qual"
+      },
+      "source": "Rule foreign_qual",
+      "body": "Formed in {{formStateLong}}, operating in {{opStateLong}}. Transacting business without qualifying there typically means back fees and penalties, and closes that state's courts to you until you register.",
+      "packages": [
+        "formation"
+      ]
+    },
+    {
+      "id": "de_franchise",
+      "level": "medium",
+      "title": "Delaware franchise tax accrues from day one",
+      "condition": {
+        "rule": "de_franchise"
+      },
+      "source": "Rule de_franchise",
+      "body": "Delaware charges franchise tax and requires an annual report regardless of revenue. Corporations using the authorized-shares method are often surprised by the first bill; the assumed-par-value method is usually far cheaper and is elected on the same form.",
+      "packages": [
+        "formation"
+      ]
+    },
+    {
+      "id": "deadlock",
+      "level": "high",
+      "title": "Two owners, no deadlock mechanism",
+      "condition": {
+        "rule": "even_split"
+      },
+      "absent": [
+        "gov_deadlock"
+      ],
+      "source": "Rule even_split",
+      "body": "An even two-way split with no tiebreak means any single disagreement on a matter requiring approval can freeze the company. Add a buy-sell auction, a casting vote, or a neutral third seat.",
+      "packages": [
+        "formation"
+      ]
+    },
+    {
+      "id": "solo_llc_formalities",
+      "level": "low",
+      "title": "Single-member LLC formalities",
+      "condition": {
+        "all": [
+          {
+            "rule": "solo_founder"
+          },
+          {
+            "rule": "is_llc"
+          },
+          {
+            "rule": "pkg_formation"
+          }
+        ]
+      },
+      "source": "Rule solo_founder",
+      "body": "Single-member LLCs are the most common target for veil-piercing arguments. Keep a separate bank account, document decisions in writing, and avoid paying personal expenses from the Company account.",
+      "packages": [
+        "formation"
+      ]
+    },
+    {
+      "id": "construction_liens",
+      "level": "medium",
+      "title": "Lien deadlines are jurisdiction-specific and unforgiving",
+      "condition": {
+        "rule": "construction"
+      },
+      "source": "Rule construction",
+      "body": "Mechanics lien rights depend on preliminary notices served within a statutory window that varies by state and by role on the project. Calendar them at contract execution, not at the time of a dispute.",
+      "packages": [
+        "formation",
+        "commercial"
+      ]
+    },
+    {
+      "id": "ca_release_1542",
+      "level": "medium",
+      "title": "Release will not reach unknown claims without a Section 1542 waiver",
+      "condition": {
+        "rule": "ca_commercial"
+      },
+      "absent": [
+        "msa_ca_release"
+      ],
+      "packages": [
+        "commercial"
+      ],
+      "source": "Cal. Civ. Code §1542",
+      "body": "Under California law a general release does not extend to claims the releasing party did not know or suspect to exist unless it expressly waives [[Civil Code §1542|section 1542]], quoting the statute. Unknown claims are ordinarily the principal reason a release is taken, so a settlement or termination release drafted without it buys much less than intended."
+    }
+  ]
+}

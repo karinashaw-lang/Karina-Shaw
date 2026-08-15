@@ -201,5 +201,50 @@
       "name": "Hourly",
       "exemptLikely": false
     }
+  },
+  "headcountBands": {
+    "1": {
+      "name": "1–4 employees",
+      "min": 1,
+      "triggers": "Workers' compensation, IIPP, wage statements, paid sick leave, minimum wage and overtime"
+    },
+    "5": {
+      "name": "5–9 employees",
+      "min": 5,
+      "triggers": "FEHA discrimination and harassment law, CFRA, pregnancy disability leave, harassment prevention training, Fair Chance Act, bereavement and reproductive loss leave, off-duty cannabis protections"
+    },
+    "10": {
+      "name": "10–14 employees",
+      "min": 10,
+      "triggers": "Workplace Violence Prevention Plan (the under-10 exemption no longer applies)"
+    },
+    "15": {
+      "name": "15–49 employees",
+      "min": 15,
+      "triggers": "Pay scale must appear in job postings; federal Title VII and ADA attach"
+    },
+    "50": {
+      "name": "50–99 employees",
+      "min": 50,
+      "triggers": "Federal FMLA runs alongside CFRA"
+    },
+    "100": {
+      "name": "100 or more employees",
+      "min": 100,
+      "triggers": "Annual California pay data reporting"
+    }
+  },
+  "californiaReference": {
+    "$note": "Reference values used by California clause bodies. Dollar figures that change annually are expressed as formulas rather than amounts so the corpus does not go stale between updates.",
+    "minimumWageBasis": "the state minimum wage in effect on January 1 of the current year, which is adjusted annually",
+    "exemptSalaryBasis": "twice the state minimum wage for full-time employment, recalculated each January",
+    "annualTaxLLC": "$800 annual tax, due by the fifteenth day of the fourth month of the taxable year (FTB Form 3522)",
+    "annualTaxCorp": "$800 minimum franchise tax, with a first-taxable-year exemption for corporations",
+    "llcFeeTiers": "an additional gross receipts fee once total California income reaches $250,000, stepping up at $500,000, $1,000,000, and $5,000,000 (FTB Form 3536)",
+    "soiInitial": "within 90 days of registration",
+    "soiRenewalLLC": "every two years thereafter",
+    "soiRenewalCorp": "annually thereafter",
+    "sickLeaveAccrual": "one hour for every thirty hours worked, with use available from the ninetieth day of employment",
+    "sickLeaveMinimum": "forty hours or five days per year, whichever is greater, with accrual carrying over subject to a cap of eighty hours or ten days"
   }
 }

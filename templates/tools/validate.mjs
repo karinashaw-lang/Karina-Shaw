@@ -53,6 +53,8 @@ const fieldIds   = new Set(C.fields.map(f=>f.id));
     if(expr.taxonomy && !C.taxonomy[expr.taxonomy[1]]) err('BAD_TAXONOMY_REF',`${where} references unknown collection "${expr.taxonomy[1]}"`);
   };
   C.rules.forEach(r=>walk(r.when,`rule "${r.id}"`));
+  C.risks.forEach(r=>walk(r.condition,`risk "${r.id}"`));
+  C.questions.forEach(q=>walk(q.when,`question "${q.id}"`));
   C.clauses.forEach(c=>walk(c.condition,`clause "${c.id}" condition`));
   C.documents.forEach(d=>walk(d.include,`document "${d.id}" include`));
 }
@@ -82,11 +84,29 @@ const fieldIds   = new Set(C.fields.map(f=>f.id));
       if(!fieldIds.has(m[1])) err('BAD_FIELD_TOKEN',`field "${f.id}" template uses undefined field {{${m[1]}}}`);
 }
 
+/* ---- 3b. risk definitions ---- */
+{
+  const seen=new Set();
+  for(const r of C.risks){
+    if(seen.has(r.id)) err('DUP_RISK_ID',`risk id "${r.id}" defined twice`);
+    seen.add(r.id);
+    if(!['high','medium','low'].includes(r.level)) err('BAD_RISK_LEVEL',`risk "${r.id}" has level "${r.level}"`);
+    for(const k of ['title','body','source','packages']) if(!r[k]) err('MISSING_KEY',`risk "${r.id}" is missing "${k}"`);
+    for(const pk of (r.packages||[])) if(!C.taxonomy.packages[pk]) err('BAD_RISK_PACKAGE',`risk "${r.id}" declares unknown package "${pk}"`);
+    for(const k of ['absent','present'])
+      for(const id of (r[k]||[])) if(!clauseById.has(id)) err('BAD_RISK_CLAUSE',`risk "${r.id}" ${k} references unknown clause "${id}"`);
+    for(const m of r.body.matchAll(/\{\{(\w+)\}\}/g))
+      if(!fieldIds.has(m[1])) err('BAD_FIELD_TOKEN',`risk "${r.id}" uses undefined field {{${m[1]}}}`);
+    for(const m of r.body.matchAll(/\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/g))
+      if(!C.glossary[(m[2]||m[1]).toLowerCase()]) err('BAD_GLOSSARY_TERM',`risk "${r.id}" references undefined glossary term`);
+  }
+}
+
 if(errors.length){ report(); process.exit(1); }   // semantic checks below assume structure is sound
 
 /* ---- 4. semantic: walk the whole configuration space ---- */
 var configs = allConfigs(C.taxonomy);
-const reachableClause=new Set(), reachableDoc=new Set();
+const reachableClause=new Set(), reachableDoc=new Set(), firedRisk=new Set();
 const xrefViolations=new Map();   // "A->B" -> example config
 const softXrefs=new Map();        // auto clause pointing at a suggest clause
 const coPresent=new Map();        // proof that same-titled variants never both appear
@@ -117,6 +137,14 @@ for(const a of configs){
         if(!coPresent.has(key)) coPresent.set(key,a);
       } else seenTitle.set(k,id);
     }
+  }
+  /* risk reachability */
+  for(const r of C.risks){
+    if(r.condition && !evalExpr(r.condition,a,C.taxonomy,ruleOf)) continue;
+    if((r.absent||[]).some(id=>present.has(id))) continue;
+    if((r.present||[]).some(id=>!present.has(id))) continue;
+    if(!r.packages.includes(a.package)) continue;   // packages is the gate, not the condition
+    firedRisk.add(r.id);
   }
   /* attachment integrity: a referenced Schedule/Exhibit must be provided by something present */
   {
@@ -158,6 +186,9 @@ for(const [key,a] of missingAttach)
 
 for(const [key,a] of coPresent)
   err('VARIANT_COLLISION',`${key} — clauses sharing a document, group, and title both appear in the same package (e.g. ${a.package}: ${a.entity}/${a.formState}/${a.opState}/${a.industry}/${a.funding}/${a.founders}f/role=${a.role}/${a.dealSize}/${a.engagement}); their conditions are not mutually exclusive`);
+
+for(const r of C.risks) if(!firedRisk.has(r.id))
+  warn('UNREACHABLE_RISK',`risk "${r.id}" never fires in any configuration within its declared packages [${r.packages.join(', ')}]`);
 
 for(const c of C.clauses) if(!reachableClause.has(c.id))
   warn('UNREACHABLE',`clause "${c.id}" (${C.sources[c.id]}) never becomes eligible in any configuration — its condition and tags may conflict`);
@@ -204,7 +235,7 @@ for(const d of C.documents) if(!reachableDoc.has(d.id))
 function report(){
   const bySeverity=C.clauses.reduce((m,c)=>(m[c.severity]=(m[c.severity]||0)+1,m),{});
   const byInsertion=C.clauses.reduce((m,c)=>(m[c.insertion]=(m[c.insertion]||0)+1,m),{});
-  console.log(`corpus: ${C.clauses.length} clauses · ${C.documents.length} documents · ${C.rules.length} rules · ${C.fields.length} fields · ${Object.keys(C.glossary).length} glossary terms`);
+  console.log(`corpus: ${C.clauses.length} clauses · ${C.documents.length} documents · ${C.rules.length} rules · ${C.risks.length} risks · ${C.fields.length} fields · ${Object.keys(C.glossary).length} glossary terms`);
   console.log(`        severity ${JSON.stringify(bySeverity)} · insertion ${JSON.stringify(byInsertion)}`);
   if(typeof configs!=='undefined'&&configs) console.log(`checked ${configs.length} configurations`);
   notes.forEach(n=>console.log('  note  '+n));
