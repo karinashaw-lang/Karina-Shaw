@@ -3,7 +3,18 @@
    verbatim into the prototype by the build step (the `export ` keywords are
    stripped on the way in). Keep it dependency-free and side-effect-free. */
 
-export const ANSWER_FIELDS = ['company','entity','formState','opState','founders','founderNames','industry','funding','employees'];
+export const ANSWER_FIELDS = ['package','company','entity','formState','opState','founders','founderNames',
+  'industry','funding','employees','counterparty','role','dealSize','termMonths','autoRenew',
+  'engagement','roleTitle','comp','equityGrant','remote'];
+
+/* Answers always carry every field, even the ones the current package does not ask
+   about, so an expression can never dereference an undefined answer. */
+export const BASE_ANSWERS = {
+  package:'formation', company:'Test Co', entity:'llc', formState:'DE', opState:'CA',
+  founders:1, founderNames:['First Last'], industry:'saas', funding:'boot', employees:false,
+  counterparty:'Acme Corporation', role:'provider', dealSize:'mid', termMonths:12, autoRenew:true,
+  engagement:'employee', roleTitle:'Senior Engineer', comp:'salary', equityGrant:true, remote:false
+};
 
 /* ---- condition expression language (see templates/rules.json) ---- */
 export function evalExpr(expr, a, tax, ruleOf){
@@ -125,18 +136,41 @@ export function clauseEligible(c, a, tax, ruleOf){
 }
 export function docIncluded(d, a, tax, ruleOf){ return evalExpr(d.include, a, tax, ruleOf); }
 
-/* ---- exhaustive configuration space, used by the validator ---- */
-export function allConfigs(tax, founderCounts=[1,2,3,4]){
+/* ---- exhaustive configuration space, used by the validator ----
+   Enumerated per package: a formation answer set does not vary deal size, and a
+   commercial one does not vary founder count, so the space stays the product of
+   the dimensions that actually matter to each package. */
+export function allConfigs(tax){
   const out=[];
+  const mk=o=>({...BASE_ANSWERS,...o,
+    founderNames:Array.from({length:o.founders??BASE_ANSWERS.founders},(_,i)=>`First${i} Last${i}`)});
+
   for(const entity of Object.keys(tax.entities))
   for(const formState of Object.keys(tax.jurisdictions))
   for(const opState of Object.keys(tax.jurisdictions))
   for(const industry of Object.keys(tax.industries))
   for(const funding of Object.keys(tax.fundingStages))
-  for(const founders of founderCounts)
+  for(const founders of [1,2,3,4])
   for(const employees of [true,false])
-    out.push({company:'Test Co',entity,formState,opState,founders,
-      founderNames:Array.from({length:founders},(_,i)=>`First${i} Last${i}`),
-      industry,funding,employees});
+    out.push(mk({package:'formation',entity,formState,opState,industry,funding,founders,employees}));
+
+  for(const entity of Object.keys(tax.entities))
+  for(const opState of Object.keys(tax.jurisdictions))
+  for(const industry of Object.keys(tax.industries))
+  for(const role of Object.keys(tax.contractRoles))
+  for(const dealSize of Object.keys(tax.dealSizes))
+  for(const termMonths of [12,24,36])
+  for(const autoRenew of [true,false])
+    out.push(mk({package:'commercial',entity,opState,formState:opState,industry,role,dealSize,termMonths,autoRenew}));
+
+  for(const entity of Object.keys(tax.entities))
+  for(const opState of Object.keys(tax.jurisdictions))
+  for(const industry of Object.keys(tax.industries))
+  for(const engagement of ['employee','contractor'])
+  for(const comp of Object.keys(tax.compTypes))
+  for(const equityGrant of [true,false])
+  for(const remote of [true,false])
+    out.push(mk({package:'hiring',entity,opState,formState:opState,industry,engagement,comp,equityGrant,remote}));
+
   return out;
 }

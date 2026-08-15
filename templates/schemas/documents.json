@@ -1,5 +1,5 @@
 {
-  "$comment": "Document package schema (spec §1.1). `include` decides whether the document is generated at all; `groupOrder` fixes article order within it. Every clause must declare a group that appears in its document's groupOrder — validate.mjs enforces this so a clause can never be silently dropped during numbering.",
+  "$comment": "Document package schema (spec §1.1). `include` decides whether the document is generated at all; `groupOrder` fixes article order within it. Every clause must declare a group that appears in its document's groupOrder — validate.mjs enforces this so a clause can never be silently dropped during numbering. Each document declares the `package` it belongs to, so the UI can distinguish a document excluded within the chosen package from one that belongs to a different package entirely, and `label` gives it a stable name for library views where the templated title has nothing to interpolate.",
   "version": "1.0.0",
   "documents": [
     {
@@ -15,12 +15,14 @@
         ]
       },
       "include": {
-        "always": true
+        "rule": "pkg_formation"
       },
       "rationale": "Always required — this is the filing that creates the entity.",
       "groupOrder": [
         "Charter"
-      ]
+      ],
+      "package": "formation",
+      "label": "Charter filing"
     },
     {
       "id": "governance",
@@ -35,7 +37,7 @@
         ]
       },
       "include": {
-        "always": true
+        "rule": "pkg_formation"
       },
       "rationale": "Always required — governs how the owners run the Company.",
       "groupOrder": [
@@ -45,7 +47,9 @@
         "Ownership Transfers",
         "Regulatory Compliance",
         "General Provisions"
-      ]
+      ],
+      "package": "formation",
+      "label": "Governing document"
     },
     {
       "id": "ip-assignment",
@@ -56,12 +60,19 @@
         "const": "Founder IP Assignment"
       },
       "include": {
-        "any": [
+        "all": [
           {
-            "rule": "ip_critical"
+            "rule": "pkg_formation"
           },
           {
-            "rule": "multi_founder"
+            "any": [
+              {
+                "rule": "ip_critical"
+              },
+              {
+                "rule": "multi_founder"
+              }
+            ]
           }
         ]
       },
@@ -69,7 +80,9 @@
       "groupOrder": [
         "Assignment",
         "Protections"
-      ]
+      ],
+      "package": "formation",
+      "label": "Founder IP Assignment"
     },
     {
       "id": "vesting",
@@ -80,12 +93,19 @@
         "const": "Founder Vesting Agreement"
       },
       "include": {
-        "any": [
+        "all": [
           {
-            "rule": "institutional"
+            "rule": "pkg_formation"
           },
           {
-            "rule": "multi_founder"
+            "any": [
+              {
+                "rule": "institutional"
+              },
+              {
+                "rule": "multi_founder"
+              }
+            ]
           }
         ]
       },
@@ -93,7 +113,9 @@
       "groupOrder": [
         "Schedule",
         "Company Rights"
-      ]
+      ],
+      "package": "formation",
+      "label": "Founder Vesting Agreement"
     },
     {
       "id": "election-83b",
@@ -104,12 +126,21 @@
         "const": "IRS Section 83(b) Election"
       },
       "include": {
-        "rule": "file_83b"
+        "all": [
+          {
+            "rule": "pkg_formation"
+          },
+          {
+            "rule": "file_83b"
+          }
+        ]
       },
       "rationale": "Included for C-Corp stock subject to vesting. The filing deadline is 30 days and cannot be extended.",
       "groupOrder": [
         "Election"
-      ]
+      ],
+      "package": "formation",
+      "label": "IRS Section 83(b) Election"
     },
     {
       "id": "consent",
@@ -120,13 +151,15 @@
         "builtin": "consentName"
       },
       "include": {
-        "always": true
+        "rule": "pkg_formation"
       },
       "rationale": "Always required — the first corporate act, which adopts everything else in the package.",
       "groupOrder": [
         "Organizational Actions",
         "Authorizations"
-      ]
+      ],
+      "package": "formation",
+      "label": "Initial Consent"
     },
     {
       "id": "employment",
@@ -137,14 +170,23 @@
         "const": "Employment Policy Set"
       },
       "include": {
-        "rule": "hiring"
+        "all": [
+          {
+            "rule": "pkg_formation"
+          },
+          {
+            "rule": "hiring"
+          }
+        ]
       },
       "rationale": "Included when hiring within 12 months. Wage-and-hour exposure starts at the first hire.",
       "groupOrder": [
         "Terms of Employment",
         "Wage and Hour",
         "Confidentiality and Conduct"
-      ]
+      ],
+      "package": "formation",
+      "label": "Employment Policy Set"
     },
     {
       "id": "foreign-qualification",
@@ -155,13 +197,22 @@
         "template": "Foreign Qualification — {{opStateLong}}"
       },
       "include": {
-        "rule": "foreign_qual"
+        "all": [
+          {
+            "rule": "pkg_formation"
+          },
+          {
+            "rule": "foreign_qual"
+          }
+        ]
       },
       "rationale": "Included when the operating state differs from the formation state.",
       "groupOrder": [
         "Application",
         "Supporting Filings"
-      ]
+      ],
+      "package": "formation",
+      "label": "Foreign Qualification"
     },
     {
       "id": "compliance-calendar",
@@ -172,13 +223,15 @@
         "const": "Compliance Calendar"
       },
       "include": {
-        "always": true
+        "rule": "pkg_formation"
       },
       "rationale": "Always generated — obligation extraction across the whole package (spec §4.2).",
       "groupOrder": [
         "Immediate Deadlines",
         "Recurring Obligations"
-      ]
+      ],
+      "package": "formation",
+      "label": "Compliance Calendar"
     },
     {
       "id": "schedules",
@@ -189,13 +242,161 @@
         "const": "Schedules and Exhibits"
       },
       "include": {
-        "always": true
+        "rule": "pkg_formation"
       },
       "rationale": "Always generated — the governing document and IP assignment both refer to attachments, and a reference to an attachment that does not exist is a defect the consistency checker reports.",
       "groupOrder": [
         "Schedules",
         "Exhibits"
-      ]
+      ],
+      "package": "formation",
+      "label": "Schedules and Exhibits"
+    },
+    {
+      "id": "nda",
+      "icon": "🤝",
+      "numbering": "section",
+      "order": 20,
+      "name": {
+        "template": "Mutual Nondisclosure Agreement — {{counterparty}}"
+      },
+      "include": {
+        "rule": "pkg_commercial"
+      },
+      "rationale": "Always first in a commercial engagement — it is the document that lets the parties talk about scope at all.",
+      "groupOrder": [
+        "Confidentiality",
+        "Term and Remedies"
+      ],
+      "package": "commercial",
+      "label": "Mutual NDA"
+    },
+    {
+      "id": "msa",
+      "icon": "📑",
+      "numbering": "section",
+      "order": 21,
+      "name": {
+        "template": "Master Services Agreement — {{company}} and {{counterparty}}"
+      },
+      "include": {
+        "rule": "pkg_commercial"
+      },
+      "rationale": "The framework agreement. Everything commercial and legal lives here so each statement of work can stay short.",
+      "groupOrder": [
+        "Structure",
+        "Commercial Terms",
+        "Intellectual Property",
+        "Warranties and Risk",
+        "Data and Security",
+        "Term and Termination",
+        "General Provisions"
+      ],
+      "package": "commercial",
+      "label": "Master Services Agreement"
+    },
+    {
+      "id": "sow",
+      "icon": "📐",
+      "numbering": "section",
+      "order": 22,
+      "name": {
+        "const": "Statement of Work #1"
+      },
+      "include": {
+        "rule": "pkg_commercial"
+      },
+      "rationale": "Scope, deliverables, and price. Kept separate from the MSA so a second engagement does not reopen the legal terms.",
+      "groupOrder": [
+        "Scope",
+        "Commercials",
+        "Acceptance"
+      ],
+      "package": "commercial",
+      "label": "Statement of Work"
+    },
+    {
+      "id": "dpa",
+      "icon": "🛡️",
+      "numbering": "section",
+      "order": 23,
+      "name": {
+        "const": "Data Processing Addendum"
+      },
+      "include": {
+        "rule": "processes_data"
+      },
+      "rationale": "Attached when personal data is in scope. For most buyers this is a precondition to signature, not a nice-to-have.",
+      "groupOrder": [
+        "Processing Terms",
+        "Security and Incidents",
+        "Transfers and Subprocessors"
+      ],
+      "package": "commercial",
+      "label": "Data Processing Addendum"
+    },
+    {
+      "id": "employment-agreement",
+      "icon": "📝",
+      "numbering": "section",
+      "order": 30,
+      "name": {
+        "template": "Employment Agreement — {{roleTitle}}"
+      },
+      "include": {
+        "rule": "employee_engagement"
+      },
+      "rationale": "Generated for an employee hire. Carries at-will language, classification, and the policies the handbook expands on.",
+      "groupOrder": [
+        "Position and Term",
+        "Compensation",
+        "Obligations",
+        "Separation"
+      ],
+      "package": "hiring",
+      "label": "Employment Agreement"
+    },
+    {
+      "id": "contractor-agreement",
+      "icon": "🧰",
+      "numbering": "section",
+      "order": 31,
+      "name": {
+        "template": "Independent Contractor Agreement — {{roleTitle}}"
+      },
+      "include": {
+        "rule": "contractor_engagement"
+      },
+      "rationale": "Generated for a contractor engagement. Deliberately omits the supervision and benefits language that would undercut the classification.",
+      "groupOrder": [
+        "Engagement",
+        "Payment",
+        "Ownership and Confidentiality",
+        "Term"
+      ],
+      "package": "hiring",
+      "label": "Independent Contractor Agreement"
+    },
+    {
+      "id": "handbook",
+      "icon": "📕",
+      "numbering": "section",
+      "order": 32,
+      "name": {
+        "const": "Employee Handbook — Core Policies"
+      },
+      "include": {
+        "rule": "employee_engagement"
+      },
+      "rationale": "The policies that have to exist before the first employee starts, not after.",
+      "groupOrder": [
+        "Introduction",
+        "Time and Pay",
+        "Conduct",
+        "Leave"
+      ],
+      "package": "hiring",
+      "label": "Employee Handbook"
     }
   ]
 }

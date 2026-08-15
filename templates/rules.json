@@ -2,112 +2,551 @@
   "$comment": "Conditional logic engine (spec §1.2). Rules are data, not code, so a non-engineer can read and edit them and so every generation can record which fired.",
   "version": "1.0.0",
   "expressionLanguage": {
-    "always":     "true",
-    "eq":         "[answerField, value]",
-    "ne":         "[answerField, value]",
-    "gte":        "[answerField, number]",
-    "lte":        "[answerField, number]",
-    "in":         "[answerField, [values]]",
-    "truthy":     "answerField",
-    "sameField":  "[answerFieldA, answerFieldB]",
-    "diffField":  "[answerFieldA, answerFieldB]",
-    "taxonomy":   "[answerField, taxonomyCollection, booleanProperty]",
-    "rule":       "ruleId (references another rule's result)",
-    "all":        "[expr, ...]  — logical AND",
-    "any":        "[expr, ...]  — logical OR",
-    "not":        "expr"
+    "always": "true",
+    "eq": "[answerField, value]",
+    "ne": "[answerField, value]",
+    "gte": "[answerField, number]",
+    "lte": "[answerField, number]",
+    "in": "[answerField, [values]]",
+    "truthy": "answerField",
+    "sameField": "[answerFieldA, answerFieldB]",
+    "diffField": "[answerFieldA, answerFieldB]",
+    "taxonomy": "[answerField, taxonomyCollection, booleanProperty]",
+    "rule": "ruleId (references another rule's result)",
+    "all": "[expr, ...]  — logical AND",
+    "any": "[expr, ...]  — logical OR",
+    "not": "expr"
   },
   "rules": [
-    {"id":"multi_founder","code":"IF [founders >= 2] THEN [include transfer restrictions + buy-sell]",
-     "when":{"gte":["founders",2]},
-     "rationale":"Multiple owners create exit, death, and divorce scenarios that need a pre-agreed mechanism."},
-
-    {"id":"solo_founder","code":"IF [founders == 1] THEN [skip buy-sell, add sole-owner provisions]",
-     "when":{"eq":["founders",1]},
-     "rationale":"A single-owner entity has no counterparty to buy out; different formalities apply."},
-
-    {"id":"even_split","code":"IF [founders == 2] THEN [add deadlock resolution]",
-     "when":{"eq":["founders",2]},
-     "rationale":"An even two-way split has no tiebreak by default, so any disagreement can freeze the company."},
-
-    {"id":"is_llc","code":"IF [entity == LLC] THEN [use LLC statutory forms]",
-     "when":{"eq":["entity","llc"]},
-     "rationale":"LLC and corporate governance use different instruments and different vocabulary."},
-
-    {"id":"is_corp","code":"IF [entity == C-Corp] THEN [use corporate forms]",
-     "when":{"eq":["entity","ccorp"]},
-     "rationale":"Corporations require authorized stock, a board, and bylaws rather than an operating agreement."},
-
-    {"id":"foreign_qual","code":"IF [formation state != operating state] THEN [add foreign qualification]",
-     "when":{"diffField":["formState","opState"]},
-     "rationale":"Operating in a state you did not form in generally requires registering there before transacting business."},
-
-    {"id":"ip_critical","code":"IF [industry is IP-critical] THEN [include IP assignment + data provisions]",
-     "when":{"taxonomy":["industry","industries","ipCritical"]},
-     "rationale":"Software, commerce, and health businesses carry their value in intellectual property and data."},
-
-    {"id":"regulated","code":"IF [industry is regulated] THEN [add licensure and compliance provisions]",
-     "when":{"taxonomy":["industry","industries","regulated"]},
-     "rationale":"Regulated practice areas restrict who may own the entity and how services may be delivered."},
-
-    {"id":"institutional","code":"IF [funding is institutional] THEN [4-year vesting, 1-year cliff, drag-along]",
-     "when":{"taxonomy":["funding","fundingStages","institutional"]},
-     "rationale":"Standard institutional terms. Deviating from them costs time in diligence without buying anything."},
-
-    {"id":"file_83b","code":"IF [entity == C-Corp] AND [vesting applies] THEN [generate 83(b) election]",
-     "when":{"all":[{"eq":["entity","ccorp"]},{"rule":"institutional"}]},
-     "rationale":"The Section 83(b) election must be filed within 30 days of grant. The deadline is not extendable."},
-
-    {"id":"hiring","code":"IF [hiring within 12 months] THEN [include employment policy set]",
-     "when":{"truthy":"employees"},
-     "rationale":"Wage-and-hour exposure begins at the first hire, not at scale."},
-
-    {"id":"ca_operating","code":"IF [operating state == CA] THEN [flag non-compete void + CA policies]",
-     "when":{"eq":["opState","CA"]},
-     "rationale":"California voids most employee non-competes (Bus. & Prof. Code §16600; AB 1076 effective January 2024)."},
-
-    {"id":"ca_employees","code":"IF [hiring] AND [operating state == CA] THEN [meal, rest, PTO accrual policies]",
-     "when":{"all":[{"rule":"hiring"},{"eq":["opState","CA"]}]},
-     "rationale":"California wage orders require these specific policies; the spec names this exact case in §2.1."},
-
-    {"id":"ny_publication","code":"IF [formation state == NY] AND [entity == LLC] THEN [publication requirement]",
-     "when":{"all":[{"eq":["formState","NY"]},{"eq":["entity","llc"]}]},
-     "rationale":"NY LLC Law §206 requires newspaper publication within 120 days or authority to do business is suspended."},
-
-    {"id":"de_franchise","code":"IF [formation state == DE] THEN [franchise tax + annual report notice]",
-     "when":{"eq":["formState","DE"]},
-     "rationale":"Delaware charges annual franchise tax regardless of revenue; a missed filing voids good standing."},
-
-    {"id":"tx_charging","code":"IF [formation state == TX] AND [entity == LLC] THEN [charging order protection]",
-     "when":{"all":[{"eq":["formState","TX"]},{"eq":["entity","llc"]}]},
-     "rationale":"The Texas LLC statute offers strong charging-order protection worth invoking expressly."},
-
-    {"id":"fl_annual","code":"IF [formation state == FL] THEN [annual report deadline notice]",
-     "when":{"eq":["formState","FL"]},
-     "rationale":"Florida's annual report window closes May 1 and the late fee is substantial and non-waivable."},
-
-    {"id":"ca_soi","code":"IF [formation state == CA] OR [operating state == CA] THEN [Statement of Information notice]",
-     "when":{"any":[{"eq":["formState","CA"]},{"eq":["opState","CA"]}]},
-     "rationale":"California requires an initial Statement of Information within 90 days of registration."},
-
-    {"id":"vc_entity_mismatch","code":"IF [funding == VC] AND [entity == LLC] THEN [flag entity structure conflict]",
-     "when":{"all":[{"eq":["funding","vc"]},{"eq":["entity","llc"]}]},
-     "rationale":"Institutional funds generally cannot hold LLC interests because pass-through income creates UBTI for their tax-exempt LPs."},
-
-    {"id":"health_baa","code":"IF [industry == healthcare] THEN [require BAA references]",
-     "when":{"eq":["industry","health"]},
-     "rationale":"HIPAA requires a Business Associate Agreement with any vendor that touches protected health information."},
-
-    {"id":"construction","code":"IF [industry == construction] THEN [add lien and retainage provisions]",
-     "when":{"eq":["industry","construct"]},
-     "rationale":"Mechanics lien rights are deadline-driven and waived by silence in most states."},
-
-    {"id":"professional","code":"IF [industry == professional services] THEN [add licensure and scope provisions]",
-     "when":{"eq":["industry","services"]},
-     "rationale":"Licensed practice areas restrict non-licensee ownership in several states."},
-
-    {"id":"consumer_data","code":"IF [industry in {SaaS, e-commerce, healthcare}] THEN [add privacy program obligations]",
-     "when":{"in":["industry",["saas","ecommerce","health"]]},
-     "rationale":"These businesses process personal data at volume and fall under state privacy statutes at low thresholds."}
+    {
+      "id": "multi_founder",
+      "code": "IF [founders >= 2] THEN [include transfer restrictions + buy-sell]",
+      "when": {
+        "gte": [
+          "founders",
+          2
+        ]
+      },
+      "rationale": "Multiple owners create exit, death, and divorce scenarios that need a pre-agreed mechanism."
+    },
+    {
+      "id": "solo_founder",
+      "code": "IF [founders == 1] THEN [skip buy-sell, add sole-owner provisions]",
+      "when": {
+        "eq": [
+          "founders",
+          1
+        ]
+      },
+      "rationale": "A single-owner entity has no counterparty to buy out; different formalities apply."
+    },
+    {
+      "id": "even_split",
+      "code": "IF [founders == 2] THEN [add deadlock resolution]",
+      "when": {
+        "eq": [
+          "founders",
+          2
+        ]
+      },
+      "rationale": "An even two-way split has no tiebreak by default, so any disagreement can freeze the company."
+    },
+    {
+      "id": "is_llc",
+      "code": "IF [entity == LLC] THEN [use LLC statutory forms]",
+      "when": {
+        "eq": [
+          "entity",
+          "llc"
+        ]
+      },
+      "rationale": "LLC and corporate governance use different instruments and different vocabulary."
+    },
+    {
+      "id": "is_corp",
+      "code": "IF [entity == C-Corp] THEN [use corporate forms]",
+      "when": {
+        "eq": [
+          "entity",
+          "ccorp"
+        ]
+      },
+      "rationale": "Corporations require authorized stock, a board, and bylaws rather than an operating agreement."
+    },
+    {
+      "id": "foreign_qual",
+      "code": "IF [formation state != operating state] THEN [add foreign qualification]",
+      "when": {
+        "diffField": [
+          "formState",
+          "opState"
+        ]
+      },
+      "rationale": "Operating in a state you did not form in generally requires registering there before transacting business."
+    },
+    {
+      "id": "ip_critical",
+      "code": "IF [industry is IP-critical] THEN [include IP assignment + data provisions]",
+      "when": {
+        "taxonomy": [
+          "industry",
+          "industries",
+          "ipCritical"
+        ]
+      },
+      "rationale": "Software, commerce, and health businesses carry their value in intellectual property and data."
+    },
+    {
+      "id": "regulated",
+      "code": "IF [industry is regulated] THEN [add licensure and compliance provisions]",
+      "when": {
+        "taxonomy": [
+          "industry",
+          "industries",
+          "regulated"
+        ]
+      },
+      "rationale": "Regulated practice areas restrict who may own the entity and how services may be delivered."
+    },
+    {
+      "id": "institutional",
+      "code": "IF [funding is institutional] THEN [4-year vesting, 1-year cliff, drag-along]",
+      "when": {
+        "taxonomy": [
+          "funding",
+          "fundingStages",
+          "institutional"
+        ]
+      },
+      "rationale": "Standard institutional terms. Deviating from them costs time in diligence without buying anything."
+    },
+    {
+      "id": "file_83b",
+      "code": "IF [entity == C-Corp] AND [vesting applies] THEN [generate 83(b) election]",
+      "when": {
+        "all": [
+          {
+            "eq": [
+              "entity",
+              "ccorp"
+            ]
+          },
+          {
+            "rule": "institutional"
+          }
+        ]
+      },
+      "rationale": "The Section 83(b) election must be filed within 30 days of grant. The deadline is not extendable."
+    },
+    {
+      "id": "hiring",
+      "code": "IF [hiring within 12 months] THEN [include employment policy set]",
+      "when": {
+        "truthy": "employees"
+      },
+      "rationale": "Wage-and-hour exposure begins at the first hire, not at scale."
+    },
+    {
+      "id": "ca_operating",
+      "code": "IF [operating state == CA] THEN [flag non-compete void + CA policies]",
+      "when": {
+        "eq": [
+          "opState",
+          "CA"
+        ]
+      },
+      "rationale": "California voids most employee non-competes (Bus. & Prof. Code §16600; AB 1076 effective January 2024)."
+    },
+    {
+      "id": "ca_employees",
+      "code": "IF [hiring] AND [operating state == CA] THEN [meal, rest, PTO accrual policies]",
+      "when": {
+        "all": [
+          {
+            "rule": "hiring"
+          },
+          {
+            "eq": [
+              "opState",
+              "CA"
+            ]
+          }
+        ]
+      },
+      "rationale": "California wage orders require these specific policies; the spec names this exact case in §2.1."
+    },
+    {
+      "id": "ny_publication",
+      "code": "IF [formation state == NY] AND [entity == LLC] THEN [publication requirement]",
+      "when": {
+        "all": [
+          {
+            "eq": [
+              "formState",
+              "NY"
+            ]
+          },
+          {
+            "eq": [
+              "entity",
+              "llc"
+            ]
+          }
+        ]
+      },
+      "rationale": "NY LLC Law §206 requires newspaper publication within 120 days or authority to do business is suspended."
+    },
+    {
+      "id": "de_franchise",
+      "code": "IF [formation state == DE] THEN [franchise tax + annual report notice]",
+      "when": {
+        "eq": [
+          "formState",
+          "DE"
+        ]
+      },
+      "rationale": "Delaware charges annual franchise tax regardless of revenue; a missed filing voids good standing."
+    },
+    {
+      "id": "tx_charging",
+      "code": "IF [formation state == TX] AND [entity == LLC] THEN [charging order protection]",
+      "when": {
+        "all": [
+          {
+            "eq": [
+              "formState",
+              "TX"
+            ]
+          },
+          {
+            "eq": [
+              "entity",
+              "llc"
+            ]
+          }
+        ]
+      },
+      "rationale": "The Texas LLC statute offers strong charging-order protection worth invoking expressly."
+    },
+    {
+      "id": "fl_annual",
+      "code": "IF [formation state == FL] THEN [annual report deadline notice]",
+      "when": {
+        "eq": [
+          "formState",
+          "FL"
+        ]
+      },
+      "rationale": "Florida's annual report window closes May 1 and the late fee is substantial and non-waivable."
+    },
+    {
+      "id": "ca_soi",
+      "code": "IF [formation state == CA] OR [operating state == CA] THEN [Statement of Information notice]",
+      "when": {
+        "any": [
+          {
+            "eq": [
+              "formState",
+              "CA"
+            ]
+          },
+          {
+            "eq": [
+              "opState",
+              "CA"
+            ]
+          }
+        ]
+      },
+      "rationale": "California requires an initial Statement of Information within 90 days of registration."
+    },
+    {
+      "id": "vc_entity_mismatch",
+      "code": "IF [funding == VC] AND [entity == LLC] THEN [flag entity structure conflict]",
+      "when": {
+        "all": [
+          {
+            "eq": [
+              "funding",
+              "vc"
+            ]
+          },
+          {
+            "eq": [
+              "entity",
+              "llc"
+            ]
+          }
+        ]
+      },
+      "rationale": "Institutional funds generally cannot hold LLC interests because pass-through income creates UBTI for their tax-exempt LPs."
+    },
+    {
+      "id": "health_baa",
+      "code": "IF [industry == healthcare] THEN [require BAA references]",
+      "when": {
+        "eq": [
+          "industry",
+          "health"
+        ]
+      },
+      "rationale": "HIPAA requires a Business Associate Agreement with any vendor that touches protected health information."
+    },
+    {
+      "id": "construction",
+      "code": "IF [industry == construction] THEN [add lien and retainage provisions]",
+      "when": {
+        "eq": [
+          "industry",
+          "construct"
+        ]
+      },
+      "rationale": "Mechanics lien rights are deadline-driven and waived by silence in most states."
+    },
+    {
+      "id": "professional",
+      "code": "IF [industry == professional services] THEN [add licensure and scope provisions]",
+      "when": {
+        "eq": [
+          "industry",
+          "services"
+        ]
+      },
+      "rationale": "Licensed practice areas restrict non-licensee ownership in several states."
+    },
+    {
+      "id": "consumer_data",
+      "code": "IF [industry in {SaaS, e-commerce, healthcare}] THEN [add privacy program obligations]",
+      "when": {
+        "in": [
+          "industry",
+          [
+            "saas",
+            "ecommerce",
+            "health"
+          ]
+        ]
+      },
+      "rationale": "These businesses process personal data at volume and fall under state privacy statutes at low thresholds."
+    },
+    {
+      "id": "pkg_formation",
+      "code": "IF [package == formation] THEN [generate the formation package]",
+      "when": {
+        "eq": [
+          "package",
+          "formation"
+        ]
+      },
+      "rationale": "Formation documents only apply when the user is standing up a new entity."
+    },
+    {
+      "id": "pkg_commercial",
+      "code": "IF [package == commercial] THEN [generate the commercial contract set]",
+      "when": {
+        "eq": [
+          "package",
+          "commercial"
+        ]
+      },
+      "rationale": "NDA, MSA, SOW, and DPA travel together — the spec's §4.3 prediction after a sales proposal."
+    },
+    {
+      "id": "pkg_hiring",
+      "code": "IF [package == hiring] THEN [generate the hiring package]",
+      "when": {
+        "eq": [
+          "package",
+          "hiring"
+        ]
+      },
+      "rationale": "Employment agreement, handbook, and equity documents are the §4.3 sequence after a first hire."
+    },
+    {
+      "id": "as_provider",
+      "code": "IF [role == provider] THEN [draft provider-favorable defaults]",
+      "when": {
+        "all": [
+          {
+            "rule": "pkg_commercial"
+          },
+          {
+            "eq": [
+              "role",
+              "provider"
+            ]
+          }
+        ]
+      },
+      "rationale": "The side drafting the agreement sets the defaults. Caps, warranties, and indemnities all flip with the role."
+    },
+    {
+      "id": "as_customer",
+      "code": "IF [role == customer] THEN [draft customer-favorable defaults]",
+      "when": {
+        "all": [
+          {
+            "rule": "pkg_commercial"
+          },
+          {
+            "eq": [
+              "role",
+              "customer"
+            ]
+          }
+        ]
+      },
+      "rationale": "Buying services calls for the mirror image: broader warranties, service levels, and audit rights."
+    },
+    {
+      "id": "enterprise_deal",
+      "code": "IF [deal size == enterprise] THEN [add audit, insurance, and elevated caps]",
+      "when": {
+        "eq": [
+          "dealSize",
+          "enterprise"
+        ]
+      },
+      "rationale": "Above roughly $500k a year, procurement expects security review, insurance certificates, and an audit right."
+    },
+    {
+      "id": "capped_super",
+      "code": "IF [deal size is mid or enterprise] THEN [add a supercap for data and confidentiality breach]",
+      "when": {
+        "in": [
+          "dealSize",
+          [
+            "mid",
+            "enterprise"
+          ]
+        ]
+      },
+      "rationale": "A single general cap is unacceptable to most buyers once data is in scope; a carve-out at a higher multiple is the standard compromise."
+    },
+    {
+      "id": "processes_data",
+      "code": "IF [commercial] AND [industry processes personal data] THEN [attach a DPA]",
+      "when": {
+        "all": [
+          {
+            "rule": "pkg_commercial"
+          },
+          {
+            "rule": "consumer_data"
+          }
+        ]
+      },
+      "rationale": "A data processing addendum is a precondition to signature for most buyers once personal data is in scope."
+    },
+    {
+      "id": "auto_renewing",
+      "code": "IF [auto-renew selected] THEN [add renewal and non-renewal notice mechanics]",
+      "when": {
+        "truthy": "autoRenew"
+      },
+      "rationale": "Auto-renewal is enforceable only with clear notice mechanics, and several states regulate it directly."
+    },
+    {
+      "id": "hourly_worker",
+      "code": "IF [compensation == hourly] THEN [add non-exempt wage and hour terms]",
+      "when": {
+        "all": [
+          {
+            "rule": "pkg_hiring"
+          },
+          {
+            "eq": [
+              "comp",
+              "hourly"
+            ]
+          }
+        ]
+      },
+      "rationale": "Hourly workers are almost always non-exempt, which pulls in overtime, timekeeping, and break obligations."
+    },
+    {
+      "id": "salaried_worker",
+      "code": "IF [compensation == salary] THEN [add exempt classification terms]",
+      "when": {
+        "all": [
+          {
+            "rule": "pkg_hiring"
+          },
+          {
+            "eq": [
+              "comp",
+              "salary"
+            ]
+          }
+        ]
+      },
+      "rationale": "Salary alone does not create exempt status; the duties test still has to be met and documented."
+    },
+    {
+      "id": "equity_grant",
+      "code": "IF [equity offered] THEN [add equity award terms]",
+      "when": {
+        "all": [
+          {
+            "rule": "pkg_hiring"
+          },
+          {
+            "truthy": "equityGrant"
+          }
+        ]
+      },
+      "rationale": "An offer that mentions equity without naming the plan, vesting, and approval path creates a promise the company may not be able to keep."
+    },
+    {
+      "id": "remote_worker",
+      "code": "IF [remote] THEN [add multi-state and expense reimbursement terms]",
+      "when": {
+        "all": [
+          {
+            "rule": "pkg_hiring"
+          },
+          {
+            "truthy": "remote"
+          }
+        ]
+      },
+      "rationale": "A remote hire creates tax nexus, registration duties, and expense reimbursement obligations in the state where they sit."
+    },
+    {
+      "id": "contractor_engagement",
+      "code": "IF [hiring] AND [engagement == contractor] THEN [generate a contractor agreement instead]",
+      "when": {
+        "all": [
+          {
+            "rule": "pkg_hiring"
+          },
+          {
+            "eq": [
+              "engagement",
+              "contractor"
+            ]
+          }
+        ]
+      },
+      "rationale": "Contractor and employee documents are not interchangeable, and using the wrong one is itself evidence of misclassification."
+    },
+    {
+      "id": "employee_engagement",
+      "code": "IF [hiring] AND [engagement == employee] THEN [generate an employment agreement]",
+      "when": {
+        "all": [
+          {
+            "rule": "pkg_hiring"
+          },
+          {
+            "eq": [
+              "engagement",
+              "employee"
+            ]
+          }
+        ]
+      },
+      "rationale": "Employment agreements carry at-will language, benefits eligibility, and policy incorporation that contractor agreements must not."
+    }
   ]
 }

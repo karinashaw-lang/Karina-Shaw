@@ -1,0 +1,85 @@
+{
+  "$comment": "The wizard itself, as data (spec §1.1). Questions carry a `when` condition in the same expression language as rules, so the question set changes with the package without any change to the engine. `required` gates the generate button.",
+  "version": "1.0.0",
+  "questions": [
+    {"id":"package","type":"choice","default":"formation","prompt":"What do you need to put in place?",
+     "help":"Selects the document package. Everything below adapts to this answer.",
+     "options":{"taxonomy":"packages"}},
+
+    {"id":"company","type":"text","default":"","required":true,"prompt":"What is your company called?",
+     "help":"Used as the defined term “Company” throughout the package.","placeholder":"e.g. Northwind Labs"},
+
+    {"id":"entity","type":"choice","default":"llc","prompt":"What entity type?",
+     "help":"Drives the charter document, the governing document, and the tax default.",
+     "when":{"rule":"pkg_formation"},"options":{"taxonomy":"entities"}},
+
+    {"id":"formState","type":"choice","default":"DE","prompt":"Which state will you form in?",
+     "help":"Determines the filing, the statute, and the governing law default.",
+     "when":{"rule":"pkg_formation"},"options":{"taxonomy":"jurisdictions"}},
+
+    {"id":"opState","type":"choice","default":"CA","prompt":"Where does the business actually operate?",
+     "help":"Drives state-specific provisions, and in the formation package triggers foreign qualification.",
+     "options":{"taxonomy":"jurisdictions"}},
+
+    {"id":"founders","type":"choice","default":2,"prompt":"How many founders?",
+     "help":"Drives transfer restrictions, buy-sell, and deadlock provisions.",
+     "when":{"rule":"pkg_formation"},
+     "options":{"literal":[[1,"Just me"],[2,"2"],[3,"3"],[4,"4+"]]},"namesFor":"founderNames"},
+
+    {"id":"industry","type":"choice","default":"saas","prompt":"What industry?",
+     "help":"Filters the clause library and selects industry-specific provisions.",
+     "options":{"taxonomy":"industries"}},
+
+    {"id":"funding","type":"choice","default":"angel","prompt":"What is the funding plan?",
+     "help":"Institutional plans pull in vesting, acceleration, and drag-along.",
+     "when":{"rule":"pkg_formation"},"options":{"taxonomy":"fundingStages"}},
+
+    {"id":"employees","type":"choice","default":true,"prompt":"Hiring employees in the next 12 months?",
+     "help":"Adds employment policy stubs and state wage-and-hour requirements.",
+     "when":{"rule":"pkg_formation"},"options":{"literal":[[true,"Yes"],[false,"No"]]}},
+
+    {"id":"counterparty","type":"text","default":"","required":true,"prompt":"Who is on the other side?",
+     "help":"The counterparty’s legal name, used as a defined term throughout the contract set.",
+     "when":{"rule":"pkg_commercial"},"placeholder":"e.g. Acme Corporation"},
+
+    {"id":"role","type":"choice","default":"provider","prompt":"Which side are you on?",
+     "help":"Every cap, warranty, indemnity, and termination right flips with this answer.",
+     "when":{"rule":"pkg_commercial"},"options":{"taxonomy":"contractRoles"}},
+
+    {"id":"dealSize","type":"choice","default":"mid","prompt":"Roughly how large is the deal?",
+     "help":"Sets the liability cap multiple and whether audit, insurance, and security review terms are included.",
+     "when":{"rule":"pkg_commercial"},"options":{"taxonomy":"dealSizes"}},
+
+    {"id":"termMonths","type":"choice","default":12,"prompt":"How long is the initial term?",
+     "help":"Drives the term, renewal, and termination-for-convenience mechanics.",
+     "when":{"rule":"pkg_commercial"},
+     "options":{"literal":[[12,"12 months"],[24,"24 months"],[36,"36 months"]]}},
+
+    {"id":"autoRenew","type":"choice","default":true,"prompt":"Should the term auto-renew?",
+     "help":"Auto-renewal needs express notice mechanics, and several states regulate it directly.",
+     "when":{"rule":"pkg_commercial"},"options":{"literal":[[true,"Yes"],[false,"No"]]}},
+
+    {"id":"engagement","type":"choice","default":"employee","prompt":"Employee or contractor?",
+     "help":"These are not interchangeable documents, and using the wrong one is itself evidence of misclassification.",
+     "when":{"rule":"pkg_hiring"},
+     "options":{"literal":[["employee","Employee"],["contractor","Independent contractor"]]}},
+
+    {"id":"roleTitle","type":"text","default":"","required":true,"prompt":"What is the role called?",
+     "help":"Appears in the offer, the agreement, and the classification analysis.",
+     "when":{"rule":"pkg_hiring"},"placeholder":"e.g. Senior Software Engineer"},
+
+    {"id":"comp","type":"choice","default":"salary","prompt":"How is the role paid?",
+     "help":"Hourly pulls in overtime, timekeeping, and break obligations; salary still has to pass the duties test.",
+     "when":{"all":[{"rule":"pkg_hiring"},{"eq":["engagement","employee"]}]},
+     "options":{"taxonomy":"compTypes"}},
+
+    {"id":"equityGrant","type":"choice","default":true,"prompt":"Is equity part of the offer?",
+     "help":"Adds award terms, vesting, and the approval path the grant actually depends on.",
+     "when":{"all":[{"rule":"pkg_hiring"},{"eq":["engagement","employee"]}]},
+     "options":{"literal":[[true,"Yes"],[false,"No"]]}},
+
+    {"id":"remote","type":"choice","default":false,"prompt":"Will they work remotely from another state?",
+     "help":"A remote hire creates tax nexus, registration duties, and expense obligations where they sit.",
+     "when":{"rule":"pkg_hiring"},"options":{"literal":[[true,"Yes"],[false,"No"]]}}
+  ]
+}

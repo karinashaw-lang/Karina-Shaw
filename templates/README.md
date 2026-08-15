@@ -1,8 +1,22 @@
 # DRAFT template corpus
 
 The template layer for the AI Template & Content Engine spec. Every clause, tag,
-condition, rule, field, and glossary entry the engine uses lives here as JSON.
-Nothing is authored inside `draft-ai-engine.html` — that file is compiled output.
+condition, rule, field, wizard question, and glossary entry the engine uses lives
+here as JSON. Nothing is authored inside `draft-ai-engine.html` — that file is
+compiled output.
+
+262 clauses across 17 document schemas in three packages:
+
+| Package | Documents |
+|---|---|
+| **Form a company** | charter filing · governing document (Operating Agreement or Bylaws) · founder IP assignment · vesting agreement · 83(b) election · initial consent · employment policy set · foreign qualification · compliance calendar · schedules and exhibits |
+| **Sell or buy services** | mutual NDA · master services agreement · statement of work · data processing addendum |
+| **Hire someone** | employment agreement · independent contractor agreement · employee handbook |
+
+The commercial package is written from both sides: the `role` answer (provider or
+customer) selects between paired variants of the deliverable-ownership, warranty,
+and rate-adjustment clauses, and the validator proves the pairs are mutually
+exclusive rather than assuming it.
 
 ```
 templates/
@@ -14,7 +28,8 @@ templates/
     documents.json           document definitions, inclusion conditions, article order
     fields.json              auto-population layer with provenance (§1.3)
     aliases.json             entity-dependent cross-reference targets
-  clauses/                   the corpus itself, 127 clauses across 8 files
+    questions.json           the wizard itself, with per-package visibility conditions
+  clauses/                   the corpus itself, 262 clauses across 13 files
   tools/
     evaluator.mjs            shared evaluation core (also inlined into the prototype)
     corpus.mjs               loader
@@ -25,7 +40,7 @@ templates/
 ## Commands
 
 ```
-npm run validate    # integrity checks across all 9,600 wizard configurations
+npm run validate    # integrity checks across all 12,720 wizard configurations
 npm run build       # compile the corpus into draft-ai-engine.html
 npm run check       # validate, then assert the prototype is in sync
 ```
@@ -75,11 +90,13 @@ npm run check       # validate, then assert the prototype is in sync
 
 ## What validation guarantees
 
-`validate.mjs` walks all 9,600 wizard configurations and fails the build on:
+`validate.mjs` walks all 12,720 wizard configurations — enumerated per package, so a
+formation answer set does not vary deal size and a commercial one does not vary
+founder count — and fails the build on:
 
 - **`DANGLING_XREF`** — a drafted clause references a clause absent from that package.
-  This found six real defects on the first run, including one shipped by the previous
-  version of the prototype.
+  This has caught eight real defects across two rounds of corpus work, including one
+  shipped by an earlier version of the prototype.
 - **`SOFT_XREF`** — a drafted clause references a `suggest` clause, so the reference
   would render unresolved until the user accepts a suggestion.
 - **`MISSING_ATTACHMENT`** — a "Schedule A" or "Exhibit B" reference with nothing
@@ -88,6 +105,8 @@ npm run check       # validate, then assert the prototype is in sync
   appear in one package, i.e. their conditions are not actually mutually exclusive.
   This is proved per configuration, not assumed from the shape of the conditions.
 - **`UNREACHABLE`** — a clause whose tags and condition can never both be satisfied.
+- **`DOC_PACKAGE_LEAK`** — a document that declares one package but appears in another,
+  which would put a hiring document inside a commercial package.
 - Structural checks: undefined `{{field}}` tokens, unknown glossary terms, tags absent
   from the taxonomy, non-semver versions, groups missing from a document's `groupOrder`,
   references to undefined rules or answer fields.
@@ -98,9 +117,20 @@ The checks are negative-controlled: deliberately breaking a condition makes
 ## Adding a clause
 
 1. Add the object to the right file in `clauses/`. Its `group` must already appear in
-   the target document's `groupOrder`.
+   the target document's `groupOrder`, and the document must belong to the package the
+   clause is meant for.
 2. `npm run validate` — fix anything it reports.
 3. `npm run build` — recompiles the prototype.
+
+## Adding a package
+
+1. Add it to `packages` in `taxonomy.json`.
+2. Add a `pkg_<name>` rule to `rules.json`.
+3. Add documents to `schemas/documents.json` with `package` set and `include` gated on
+   that rule.
+4. Add any package-specific questions to `schemas/questions.json` with a `when`
+   condition, and any new answer fields to `ANSWER_FIELDS` and `BASE_ANSWERS` in
+   `tools/evaluator.mjs`, along with an enumeration block in `allConfigs`.
 
 ## Scope and status
 

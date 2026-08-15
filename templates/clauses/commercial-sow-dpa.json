@@ -1,0 +1,597 @@
+{
+ "$comment": "Statement of Work and Data Processing Addendum. The SOW is deliberately short — everything legal lives in the MSA — and the DPA attaches only when the industry puts personal data in scope.",
+ "collection": "commercial-sow-dpa",
+ "version": "1.0.0",
+ "clauses": [
+  {
+   "id": "sow_reference",
+   "doc": "sow",
+   "group": "Scope",
+   "title": "Governing Agreement",
+   "severity": "critical",
+   "insertion": "auto",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "source": "DRAFT standard library",
+   "rationale": "An unlinked Statement of Work is a standalone contract with no legal terms in it. This one line is what makes the master agreement apply.",
+   "body": "This Statement of Work is issued under, and governed by, the Master Services Agreement between {{company}} and {{counterparty}} dated {{date}}. Capitalized terms not defined here have the meaning given in <<xr:msa_definitions>>."
+  },
+  {
+   "id": "sow_scope",
+   "doc": "sow",
+   "group": "Scope",
+   "title": "Scope of Services",
+   "severity": "critical",
+   "insertion": "auto",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "source": "DRAFT standard library",
+   "rationale": "Describing what is out of scope is what prevents scope creep, and it is the half most drafts omit.",
+   "body": "The {{selfLabel}} shall provide the following Services: [describe the work, the method, and the expected level of effort]. Services expressly outside this scope include: [list exclusions]. Work outside this scope requires a [[change order]] under <<xr:sow_change>>."
+  },
+  {
+   "id": "sow_deliverables",
+   "doc": "sow",
+   "group": "Scope",
+   "title": "Deliverables",
+   "severity": "critical",
+   "insertion": "auto",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "source": "DRAFT standard library",
+   "rationale": "A deliverable without a format and an acceptance test is an invitation to argue about whether it was delivered.",
+   "body": "The {{selfLabel}} shall deliver each item listed below, in the stated format, by the stated date: [item, format, due date]. Ownership of each [[Deliverable|deliverable]] is determined by the Master Services Agreement, not by this Statement of Work."
+  },
+  {
+   "id": "sow_assumptions",
+   "doc": "sow",
+   "group": "Scope",
+   "title": "Assumptions",
+   "severity": "recommended",
+   "insertion": "auto",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-05",
+   "source": "DRAFT standard library",
+   "rationale": "Estimates are built on assumptions. Writing them down is what turns a missed assumption into a change order rather than a dispute.",
+   "body": "This Statement of Work and its pricing are based on the following assumptions: [list]. If an assumption proves incorrect, the Parties shall address the impact on schedule and fees through <<xr:sow_change>>."
+  },
+  {
+   "id": "sow_dependencies",
+   "doc": "sow",
+   "group": "Scope",
+   "title": "Customer Dependencies",
+   "severity": "recommended",
+   "insertion": "auto",
+   "condition": {
+    "rule": "as_provider"
+   },
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "source": "DRAFT standard library",
+   "rationale": "Provider-side. Most schedule slips are caused by the customer, and without this clause the provider absorbs the delay and the blame.",
+   "body": "The {{counterLabel}} shall provide timely access to systems, data, personnel, and decisions as reasonably required. Where a delay is caused by the {{counterLabel}}, the schedule extends day for day and the {{selfLabel}} may charge for idle resources committed to the engagement at the rates in <<xr:sow_fees>>."
+  },
+  {
+   "id": "sow_personnel",
+   "doc": "sow",
+   "group": "Scope",
+   "title": "Key Personnel",
+   "severity": "optional",
+   "insertion": "suggest",
+   "condition": {
+    "any": [
+     {
+      "rule": "as_customer"
+     },
+     {
+      "rule": "enterprise_deal"
+     }
+    ]
+   },
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "source": "DRAFT standard library",
+   "benchmark": "Present in 41% of professional services statements of work",
+   "rationale": "The team who pitched is not always the team who delivers. Naming key personnel is the only mechanism that addresses that.",
+   "body": "The individuals listed here are key personnel and shall not be replaced without the {{counterLabel}}’s prior written consent, not to be unreasonably withheld, except where the individual leaves the {{selfLabel}}’s employ or is unable to perform. Any replacement shall have comparable qualifications."
+  },
+  {
+   "id": "sow_schedule",
+   "doc": "sow",
+   "group": "Commercials",
+   "title": "Schedule",
+   "severity": "critical",
+   "insertion": "auto",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "source": "DRAFT standard library",
+   "rationale": "Dates that depend on a start event should be written that way, so a late kickoff does not silently compress the delivery window.",
+   "body": "Services begin on {{date}} and are scheduled to complete by [date]. Milestone dates are stated relative to the start date and to the {{counterLabel}}’s timely provision of the access, data, and decisions the Services depend on."
+  },
+  {
+   "id": "sow_fees",
+   "doc": "sow",
+   "group": "Commercials",
+   "title": "Fees and Rates",
+   "severity": "critical",
+   "insertion": "auto",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "source": "DRAFT standard library",
+   "rationale": "Fixed price and time-and-materials fail in opposite directions. Whichever is used, a not-to-exceed figure with a notice trigger is what keeps the budget conversation from happening after the overrun.",
+   "body": "Fees for this Statement of Work are: [fixed fee or rate table]. Total fees are not to exceed [amount] without a signed change order. The {{selfLabel}} shall notify the {{counterLabel}} when eighty percent (80%) of that amount has been incurred. Invoicing and payment follow <<xr:msa_invoicing>>."
+  },
+  {
+   "id": "sow_expenses_sow",
+   "doc": "sow",
+   "group": "Commercials",
+   "title": "Expenses",
+   "severity": "recommended",
+   "insertion": "auto",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-04",
+   "source": "DRAFT standard library",
+   "rationale": "Setting the pre-approval threshold in the Statement of Work rather than the master agreement lets it vary with the size of the engagement.",
+   "body": "Expenses are reimbursable at cost without markup, subject to the master agreement. Individual expenses above [amount] require written pre-approval. Estimated expenses for this engagement are [amount] and are included in the not-to-exceed figure in <<xr:sow_fees>>."
+  },
+  {
+   "id": "sow_change",
+   "doc": "sow",
+   "group": "Commercials",
+   "title": "Change Control",
+   "severity": "critical",
+   "insertion": "auto",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.1.0",
+   "updated": "2026-06",
+   "source": "DRAFT standard library",
+   "rationale": "Verbal change requests are the single largest source of unbilled work in services engagements. The rule that unsigned changes are not performed is what gives the process force.",
+   "body": "Either Party may request a change to scope, schedule, or fees. A change takes effect only when described in a written [[change order]] signed by both Parties, stating the impact on scope, schedule, and fees. The {{selfLabel}} is not obligated to perform, and shall not be deemed to have agreed to, any change that is not the subject of a signed change order."
+  },
+  {
+   "id": "sow_acceptance",
+   "doc": "sow",
+   "group": "Acceptance",
+   "title": "Acceptance Criteria",
+   "severity": "critical",
+   "insertion": "auto",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "source": "DRAFT standard library",
+   "rationale": "Without objective criteria, acceptance becomes a matter of taste, and payment follows taste.",
+   "body": "Each Deliverable is subject to the [[acceptance criteria]] stated for it. The {{counterLabel}} shall review each Deliverable within {{cure}} days of delivery and either accept it or give written notice of the specific criteria it fails. The {{selfLabel}} shall correct and redeliver within a reasonable period, and the review period restarts as to the corrected items only."
+  },
+  {
+   "id": "sow_acceptance_deemed",
+   "doc": "sow",
+   "group": "Acceptance",
+   "title": "Deemed Acceptance",
+   "severity": "recommended",
+   "insertion": "auto",
+   "condition": {
+    "rule": "as_provider"
+   },
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "source": "DRAFT standard library",
+   "rationale": "Provider-side. Without a deemed-acceptance backstop, silence from the customer freezes the invoice indefinitely.",
+   "body": "A Deliverable is deemed accepted if the {{counterLabel}} does not give notice under <<xr:sow_acceptance>> within the review period, or if the {{counterLabel}} uses the Deliverable in production. Deemed acceptance does not waive the warranties in the master agreement."
+  },
+  {
+   "id": "sow_precedence",
+   "doc": "sow",
+   "group": "Acceptance",
+   "title": "Precedence and Signature",
+   "severity": "recommended",
+   "insertion": "auto",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-05",
+   "source": "DRAFT standard library",
+   "rationale": "Restates the precedence rule where the person signing the Statement of Work will actually see it — often someone who has never read the master agreement.",
+   "body": "Except where this Statement of Work expressly identifies a section of the Master Services Agreement it amends, the Master Services Agreement controls, as provided in <<xr:msa_structure>>. This Statement of Work is effective when signed by both Parties."
+  },
+  {
+   "id": "dpa_roles",
+   "doc": "dpa",
+   "group": "Processing Terms",
+   "title": "Roles of the Parties",
+   "severity": "critical",
+   "insertion": "auto",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "source": "DRAFT standard library",
+   "rationale": "Nearly every obligation in a DPA depends on which party is the controller. Getting this wrong makes the rest of the document point the wrong way.",
+   "body": "For personal data processed in connection with the Services, the {{counterLabel}} is the [[data controller]] and the {{selfLabel}} is the [[data processor]]. Where the {{selfLabel}} processes data for its own purposes, such as billing or service improvement in aggregate form, it acts as a controller for that processing and is responsible for it independently."
+  },
+  {
+   "id": "dpa_scope",
+   "doc": "dpa",
+   "group": "Processing Terms",
+   "title": "Subject Matter and Categories",
+   "severity": "critical",
+   "insertion": "auto",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "source": "DRAFT standard library",
+   "rationale": "Regulators expect the processing description in writing. It is also the artifact that makes a records-of-processing obligation satisfiable.",
+   "body": "Subject matter: provision of the Services under the Master Services Agreement. Duration: the term of that agreement plus the retention period in <<xr:dpa_deletion>>. Nature and purpose: [describe]. Categories of data subjects: [describe]. Categories of [[personal data]]: [describe]. Special categories, if any: [describe or state none]."
+  },
+  {
+   "id": "dpa_instructions",
+   "doc": "dpa",
+   "group": "Processing Terms",
+   "title": "Processing Instructions",
+   "severity": "critical",
+   "insertion": "auto",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "source": "DRAFT standard library",
+   "rationale": "Processing outside documented instructions can make the processor a controller in its own right, with the direct liability that follows.",
+   "body": "The {{selfLabel}} shall process personal data only on the {{counterLabel}}’s documented instructions, including as set out in the Master Services Agreement and this Addendum, unless required otherwise by law — in which case it shall notify the {{counterLabel}} before processing unless the law prohibits notice. The {{selfLabel}} shall inform the {{counterLabel}} if it believes an instruction infringes applicable data protection law."
+  },
+  {
+   "id": "dpa_confidentiality",
+   "doc": "dpa",
+   "group": "Processing Terms",
+   "title": "Personnel Confidentiality",
+   "severity": "recommended",
+   "insertion": "auto",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-05",
+   "source": "DRAFT standard library",
+   "rationale": "Access limited to those who need it is a control auditors specifically test for.",
+   "body": "The {{selfLabel}} shall ensure that personnel authorized to process personal data are bound by confidentiality obligations that survive the end of their engagement, and shall limit access to those who need it to perform the Services."
+  },
+  {
+   "id": "dpa_assistance",
+   "doc": "dpa",
+   "group": "Processing Terms",
+   "title": "Data Subject Requests",
+   "severity": "recommended",
+   "insertion": "auto",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "source": "DRAFT standard library",
+   "rationale": "Statutory response windows are short, and the controller usually cannot answer a request without the processor's help.",
+   "body": "The {{selfLabel}} shall promptly forward any request it receives from a data subject and shall not respond directly except to confirm the request has been forwarded. Taking into account the nature of the processing, the {{selfLabel}} shall provide reasonable assistance enabling the {{counterLabel}} to respond within the statutory period, including through self-service functionality where available."
+  },
+  {
+   "id": "dpa_deletion",
+   "doc": "dpa",
+   "group": "Processing Terms",
+   "title": "Return and Deletion",
+   "severity": "critical",
+   "insertion": "auto",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "source": "DRAFT standard library",
+   "rationale": "An unqualified deletion promise cannot be met against backup media, and making it anyway creates a breach the day it is signed.",
+   "body": "On termination, and at the {{counterLabel}}’s election, the {{selfLabel}} shall return or delete all personal data within {{cure}} days and certify deletion. Copies retained in backup media or required by law remain subject to this Addendum and shall be deleted on the {{selfLabel}}’s ordinary backup cycle."
+  },
+  {
+   "id": "dpa_security",
+   "doc": "dpa",
+   "group": "Security and Incidents",
+   "title": "Security Measures",
+   "severity": "critical",
+   "insertion": "auto",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "source": "DRAFT standard library",
+   "rationale": "Listing controls in the contract body means an architecture change requires an amendment. An annex plus a no-degradation commitment achieves the same protection and stays current.",
+   "body": "The {{selfLabel}} shall implement appropriate technical and organizational measures, including encryption in transit and at rest, access control, network segmentation, logging and monitoring, secure development practices, vulnerability management, and business continuity provisions. The specific measures are described in the security annex and shall not be materially degraded during the term. This supplements <<xr:msa_security>>."
+  },
+  {
+   "id": "dpa_incident",
+   "doc": "dpa",
+   "group": "Security and Incidents",
+   "title": "Incident Response",
+   "severity": "critical",
+   "insertion": "auto",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "source": "DRAFT standard library",
+   "rationale": "The controller carries the statutory notification duty and the clock is short. An awareness-based trigger with rolling updates is what makes it workable, since full facts are never available in the first hours.",
+   "body": "The {{selfLabel}} shall notify the {{counterLabel}} without undue delay after becoming aware of a [[security incident]] involving personal data, consistent with <<xr:msa_breach_notify>>, and shall provide the nature of the incident, categories and approximate volume of data and data subjects affected, likely consequences, and measures taken. Where full information is unavailable, it shall be provided in phases without further undue delay."
+  },
+  {
+   "id": "dpa_audit",
+   "doc": "dpa",
+   "group": "Security and Incidents",
+   "title": "Audits and Assessments",
+   "severity": "recommended",
+   "insertion": "auto",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "source": "DRAFT standard library",
+   "rationale": "Third-party reports satisfy most audit obligations at a fraction of the disruption, but the on-site right has to remain available for cause.",
+   "body": "The {{selfLabel}} shall make available the information necessary to demonstrate compliance with this Addendum and shall allow an audit not more than once in any twelve (12) month period, on reasonable notice, during business hours and at the {{counterLabel}}’s expense. A current SOC 2 Type II or equivalent independent report satisfies this obligation, except following a [[security incident]] or where the report does not cover the relevant controls."
+  },
+  {
+   "id": "dpa_subprocessors",
+   "doc": "dpa",
+   "group": "Transfers and Subprocessors",
+   "title": "Subprocessors",
+   "severity": "critical",
+   "insertion": "auto",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "source": "DRAFT standard library",
+   "rationale": "General authorization with notice and an objection right is the workable middle. Per-vendor consent is unworkable at scale; no notice at all is refused by most buyers.",
+   "body": "The {{counterLabel}} authorizes the {{selfLabel}} to engage the [[subprocessors|subprocessor]] listed in the subprocessor annex. The {{selfLabel}} shall give at least {{cure}} days’ notice before adding or replacing a subprocessor, and the {{counterLabel}} may object on reasonable data protection grounds, in which case the Parties shall work in good faith toward a resolution and, failing one, the {{counterLabel}} may terminate the affected Services without penalty. The {{selfLabel}} remains liable for its subprocessors’ acts and omissions."
+  },
+  {
+   "id": "dpa_transfers",
+   "doc": "dpa",
+   "group": "Transfers and Subprocessors",
+   "title": "International Transfers",
+   "severity": "critical",
+   "insertion": "auto",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "source": "DRAFT standard library",
+   "rationale": "Transfer mechanisms have been invalidated before and will be again. Committing to the successor mechanism in advance avoids renegotiating the whole addendum when that happens.",
+   "body": "Where processing involves transfer of personal data outside the jurisdiction in which it was collected, the {{selfLabel}} shall ensure an appropriate transfer mechanism is in place, including [[standard contractual clauses]] where required, and shall conduct a transfer impact assessment on request. If a mechanism is invalidated, the Parties shall promptly adopt a valid replacement."
+  },
+  {
+   "id": "dpa_liability",
+   "doc": "dpa",
+   "group": "Transfers and Subprocessors",
+   "title": "Liability under this Addendum",
+   "severity": "recommended",
+   "insertion": "suggest",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "source": "DRAFT standard library",
+   "benchmark": "Present in 61% of executed data processing addenda",
+   "rationale": "Whether DPA liability sits inside or outside the master cap is one of the most negotiated points in the whole document set, and silence guarantees the argument happens after an incident.",
+   "body": "Liability under this Addendum is subject to the limitations in <<xr:msa_liability_cap>>, as modified by any enhanced cap applicable to data incidents. Nothing here limits liability that cannot be limited under applicable data protection law, or either Party’s obligations to a supervisory authority or data subject."
+  }
+ ]
+}

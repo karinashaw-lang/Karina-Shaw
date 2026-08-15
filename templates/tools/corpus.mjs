@@ -13,6 +13,7 @@ export function loadCorpus(){
   const documents = read('schemas/documents.json');
   const fields    = read('schemas/fields.json');
   const aliases   = read('schemas/aliases.json');
+  const questions = read('schemas/questions.json');
   const dir = path.join(ROOT,'clauses');
   const files = fs.readdirSync(dir).filter(f=>f.endsWith('.json')).sort();
   const clauses=[], sources={};
@@ -21,6 +22,6 @@ export function loadCorpus(){
     d.clauses.forEach(c=>{ sources[c.id]=f; clauses.push(c); });
   }
   return {taxonomy, rules:rulesFile.rules, glossary:glossary.terms,
-          documents:documents.documents, fields:fields.fields, aliases:aliases.aliases, clauses, sources, files};
+          documents:documents.documents, fields:fields.fields, aliases:aliases.aliases, questions:questions.questions, clauses, sources, files};
 }
 export {ROOT};

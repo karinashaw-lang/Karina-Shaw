@@ -320,6 +320,169 @@
         "todayPlusDays": 30
       },
       "provenance": "Date calculation — grant date + 30 days"
+    },
+    {
+      "id": "counterparty",
+      "from": {
+        "answer": "counterparty"
+      },
+      "provenance": "Wizard — counterparty name"
+    },
+    {
+      "id": "selfLabel",
+      "from": {
+        "taxonomy": [
+          "role",
+          "contractRoles",
+          "self"
+        ]
+      },
+      "provenance": "Derived from which side you are on"
+    },
+    {
+      "id": "counterLabel",
+      "from": {
+        "taxonomy": [
+          "role",
+          "contractRoles",
+          "counter"
+        ]
+      },
+      "provenance": "Derived from which side you are on"
+    },
+    {
+      "id": "dealSizeName",
+      "from": {
+        "taxonomy": [
+          "dealSize",
+          "dealSizes",
+          "name"
+        ]
+      },
+      "provenance": "Wizard — deal size"
+    },
+    {
+      "id": "capMultiple",
+      "from": {
+        "taxonomy": [
+          "dealSize",
+          "dealSizes",
+          "capMultiple"
+        ]
+      },
+      "provenance": "Smart default — cap multiple scales with deal size"
+    },
+    {
+      "id": "superCapMultiple",
+      "from": {
+        "const": "three (3) times"
+      },
+      "provenance": "Smart default — supercap for data and confidentiality breach"
+    },
+    {
+      "id": "termWords",
+      "from": {
+        "choose": {
+          "if": {
+            "lte": [
+              "termMonths",
+              12
+            ]
+          },
+          "then": {
+            "const": "twelve (12)"
+          },
+          "else": {
+            "choose": {
+              "if": {
+                "lte": [
+                  "termMonths",
+                  24
+                ]
+              },
+              "then": {
+                "const": "twenty-four (24)"
+              },
+              "else": {
+                "const": "thirty-six (36)"
+              }
+            }
+          }
+        }
+      },
+      "provenance": "Wizard — initial term"
+    },
+    {
+      "id": "renewalNotice",
+      "from": {
+        "const": "sixty (60)"
+      },
+      "provenance": "Smart default — non-renewal notice window"
+    },
+    {
+      "id": "paymentDays",
+      "from": {
+        "const": "thirty (30)"
+      },
+      "provenance": "Smart default — net 30 payment terms"
+    },
+    {
+      "id": "roleTitle",
+      "from": {
+        "answer": "roleTitle"
+      },
+      "provenance": "Wizard — role title"
+    },
+    {
+      "id": "compTypeName",
+      "from": {
+        "taxonomy": [
+          "comp",
+          "compTypes",
+          "name"
+        ]
+      },
+      "provenance": "Wizard — compensation type"
+    },
+    {
+      "id": "payDescription",
+      "from": {
+        "choose": {
+          "if": {
+            "eq": [
+              "comp",
+              "hourly"
+            ]
+          },
+          "then": {
+            "const": "at the hourly rate stated in the offer, for all hours actually worked"
+          },
+          "else": {
+            "const": "as an annual salary paid in equal installments on the Company’s regular payroll schedule"
+          }
+        }
+      },
+      "provenance": "Smart default — derived from compensation type"
+    },
+    {
+      "id": "workerLabel",
+      "from": {
+        "choose": {
+          "if": {
+            "eq": [
+              "engagement",
+              "contractor"
+            ]
+          },
+          "then": {
+            "const": "Contractor"
+          },
+          "else": {
+            "const": "Employee"
+          }
+        }
+      },
+      "provenance": "Derived from engagement type"
     }
   ]
 }

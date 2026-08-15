@@ -85,7 +85,7 @@ const fieldIds   = new Set(C.fields.map(f=>f.id));
 if(errors.length){ report(); process.exit(1); }   // semantic checks below assume structure is sound
 
 /* ---- 4. semantic: walk the whole configuration space ---- */
-const configs = allConfigs(C.taxonomy);
+var configs = allConfigs(C.taxonomy);
 const reachableClause=new Set(), reachableDoc=new Set();
 const xrefViolations=new Map();   // "A->B" -> example config
 const softXrefs=new Map();        // auto clause pointing at a suggest clause
@@ -148,19 +148,36 @@ for(const a of configs){
 }
 
 for(const [key,a] of xrefViolations)
-  err('DANGLING_XREF',`${key} — reference is emitted but the target is absent (e.g. ${a.entity}/${a.formState}/${a.opState}/${a.industry}/${a.funding}/${a.founders} founders/hiring=${a.employees})`);
+  err('DANGLING_XREF',`${key} — reference is emitted but the target is absent (e.g. ${a.package}: ${a.entity}/${a.formState}/${a.opState}/${a.industry}/${a.funding}/${a.founders}f/role=${a.role}/${a.dealSize}/${a.engagement})`);
 
 for(const [key,a] of softXrefs)
-  err('SOFT_XREF',`${key} — an auto-inserted clause references a suggest-only clause, so the reference renders unresolved until the user accepts the suggestion (e.g. ${a.entity}/${a.formState}/${a.opState}/${a.industry}/${a.funding}/${a.founders} founders)`);
+  err('SOFT_XREF',`${key} — an auto-inserted clause references a suggest-only clause, so the reference renders unresolved until the user accepts the suggestion (e.g. ${a.package}: ${a.entity}/${a.formState}/${a.opState}/${a.industry}/${a.funding}/${a.founders}f/role=${a.role}/${a.dealSize}/${a.engagement})`);
 
 for(const [key,a] of missingAttach)
-  err('MISSING_ATTACHMENT',`${key} — no clause provides that attachment in this configuration (e.g. ${a.entity}/${a.formState}/${a.opState}/${a.industry}/${a.funding}/${a.founders} founders)`);
+  err('MISSING_ATTACHMENT',`${key} — no clause provides that attachment in this configuration (e.g. ${a.package}: ${a.entity}/${a.formState}/${a.opState}/${a.industry}/${a.funding}/${a.founders}f/role=${a.role}/${a.dealSize}/${a.engagement})`);
 
 for(const [key,a] of coPresent)
-  err('VARIANT_COLLISION',`${key} — clauses sharing a document, group, and title both appear in the same package (e.g. ${a.entity}/${a.formState}/${a.opState}/${a.industry}/${a.funding}/${a.founders} founders); their conditions are not mutually exclusive`);
+  err('VARIANT_COLLISION',`${key} — clauses sharing a document, group, and title both appear in the same package (e.g. ${a.package}: ${a.entity}/${a.formState}/${a.opState}/${a.industry}/${a.funding}/${a.founders}f/role=${a.role}/${a.dealSize}/${a.engagement}); their conditions are not mutually exclusive`);
 
 for(const c of C.clauses) if(!reachableClause.has(c.id))
   warn('UNREACHABLE',`clause "${c.id}" (${C.sources[c.id]}) never becomes eligible in any configuration — its condition and tags may conflict`);
+for(const d of C.documents){
+  if(!C.taxonomy.packages[d.package]) err('BAD_DOC_PACKAGE',`document "${d.id}" declares unknown package "${d.package}"`);
+  if(!d.label) err('MISSING_DOC_LABEL',`document "${d.id}" has no label`);
+}
+/* a document must only ever appear inside the package it declares */
+{
+  const seenIn={};
+  for(const a of configs){
+    const f=fireRules(C.rules,a,C.taxonomy), ruleOf=id=>f.has(id);
+    for(const d of C.documents) if(docIncluded(d,a,C.taxonomy,ruleOf)) (seenIn[d.id] ||= new Set()).add(a.package);
+  }
+  for(const d of C.documents){
+    const pk=[...(seenIn[d.id]||[])];
+    if(pk.some(x=>x!==d.package)) err('DOC_PACKAGE_LEAK',`document "${d.id}" declares package "${d.package}" but appears in ${pk.join(', ')}`);
+  }
+}
+
 for(const d of C.documents) if(!reachableDoc.has(d.id))
   err('UNREACHABLE_DOC',`document "${d.id}" is never included in any configuration`);
 
@@ -189,7 +206,7 @@ function report(){
   const byInsertion=C.clauses.reduce((m,c)=>(m[c.insertion]=(m[c.insertion]||0)+1,m),{});
   console.log(`corpus: ${C.clauses.length} clauses · ${C.documents.length} documents · ${C.rules.length} rules · ${C.fields.length} fields · ${Object.keys(C.glossary).length} glossary terms`);
   console.log(`        severity ${JSON.stringify(bySeverity)} · insertion ${JSON.stringify(byInsertion)}`);
-  if(configs) console.log(`checked ${configs.length} configurations`);
+  if(typeof configs!=='undefined'&&configs) console.log(`checked ${configs.length} configurations`);
   notes.forEach(n=>console.log('  note  '+n));
   warnings.forEach(w=>console.log('  WARN  '+w));
   errors.forEach(e=>console.log('  ERROR '+e));
