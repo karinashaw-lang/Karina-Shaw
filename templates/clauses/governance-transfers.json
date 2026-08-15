@@ -24,10 +24,11 @@
    ],
    "version": "1.3.0",
    "updated": "2026-05",
-   "source": "DRAFT standard library",
    "benchmark": "Present in 84% of multi-owner governing documents",
    "rationale": "Without a restriction, any owner can sell to anyone. The right of first refusal is what keeps the cap table from acquiring a stranger.",
-   "body": "No {{ownerSing}} may transfer all or part of their interest without first offering it to the Company and then to the other {{ownerTerm}} on the same terms (a [[right of first refusal]]), exercisable within {{noticeDays}} days of written notice. Any transfer in violation of this Article is void and shall not be recorded on the Company’s books."
+   "body": "No {{ownerSing}} may transfer all or part of their interest without first offering it to the Company and then to the other {{ownerTerm}} on the same terms (a [[right of first refusal]]), exercisable within {{noticeDays}} days of written notice. Any transfer in violation of this Article is void and shall not be recorded on the Company’s books.",
+   "sources": [],
+   "verification": "unsourced"
   },
   {
    "id": "gov_permitted_transfers",
@@ -50,9 +51,10 @@
    ],
    "version": "1.0.0",
    "updated": "2026-05",
-   "source": "DRAFT standard library",
    "rationale": "An absolute transfer ban blocks ordinary estate planning. Carving out trusts and family transfers avoids amendments later.",
-   "body": "The restrictions in <<xr:gov_transfer>> do not apply to a transfer to a revocable trust for the benefit of the transferring {{ownerSing}} or their immediate family, provided the transferee agrees in writing to be bound by this {{govDoc}} and the transferring {{ownerSing}} retains voting control of the transferred interest."
+   "body": "The restrictions in <<xr:gov_transfer>> do not apply to a transfer to a revocable trust for the benefit of the transferring {{ownerSing}} or their immediate family, provided the transferee agrees in writing to be bound by this {{govDoc}} and the transferring {{ownerSing}} retains voting control of the transferred interest.",
+   "sources": [],
+   "verification": "unsourced"
   },
   {
    "id": "gov_buysell",
@@ -75,9 +77,10 @@
    ],
    "version": "1.2.0",
    "updated": "2026-05",
-   "source": "DRAFT standard library",
    "rationale": "Death, disability, divorce, and bankruptcy transfer ownership by operation of law whether or not the document addresses them. Addressing them in advance is the only way to control the outcome.",
-   "body": "Upon the death, permanent disability, bankruptcy, divorce, or voluntary withdrawal of a {{ownerSing}} (each a “Triggering Event”), the Company shall have the option to purchase that {{ownerSing}}’s interest at fair market value determined by an independent appraiser, payable over thirty-six (36) months with interest at the applicable federal rate. This is the [[buy-sell]] mechanism referenced in <<xr:gov_transfer>>."
+   "body": "Upon the death, permanent disability, bankruptcy, divorce, or voluntary withdrawal of a {{ownerSing}} (each a “Triggering Event”), the Company shall have the option to purchase that {{ownerSing}}’s interest at fair market value determined by an independent appraiser, payable over thirty-six (36) months with interest at the applicable federal rate. This is the [[buy-sell]] mechanism referenced in <<xr:gov_transfer>>.",
+   "sources": [],
+   "verification": "unsourced"
   },
   {
    "id": "gov_spousal",
@@ -121,10 +124,11 @@
    ],
    "version": "1.0.0",
    "updated": "2026-06",
-   "source": "DRAFT standard library",
    "benchmark": "Present in 51% of multi-owner agreements in community property states",
    "rationale": "In a community property state a spouse may hold an interest in the ownership stake without ever signing anything. A consent makes the buy-sell enforceable against that interest.",
-   "body": "Each married {{ownerSing}} residing in a community property jurisdiction shall cause their spouse to execute the spousal consent attached as Exhibit B, acknowledging this {{govDoc}} and agreeing that any community property interest is bound by the transfer restrictions in <<xr:gov_transfer>> and the buy-sell provisions in <<xr:gov_buysell>>."
+   "body": "Each married {{ownerSing}} residing in a community property jurisdiction shall cause their spouse to execute the spousal consent attached as Exhibit B, acknowledging this {{govDoc}} and agreeing that any community property interest is bound by the transfer restrictions in <<xr:gov_transfer>> and the buy-sell provisions in <<xr:gov_buysell>>.",
+   "sources": [],
+   "verification": "unsourced"
   },
   {
    "id": "gov_vesting",
@@ -147,10 +151,11 @@
    ],
    "version": "1.2.0",
    "updated": "2026-06",
-   "source": "DRAFT standard library",
    "benchmark": "Present in 92% of institutionally funded companies",
    "rationale": "Cross-references the vesting agreement so the governing document and the equity document cannot drift apart.",
-   "body": "Each founder’s interest is subject to [[vesting]] over {{vestYears}} years with a {{cliff}}-month [[cliff]] on the terms set out in <<xr:vest_schedule>>. Unvested interests are subject to repurchase at cost under <<xr:vest_repurchase>> and carry no right to distributions under <<xr:gov_units>> until vested."
+   "body": "Each founder’s interest is subject to [[vesting]] over {{vestYears}} years with a {{cliff}}-month [[cliff]] on the terms set out in <<xr:vest_schedule>>. Unvested interests are subject to repurchase at cost under <<xr:vest_repurchase>> and carry no right to distributions under <<xr:gov_units>> until vested.",
+   "sources": [],
+   "verification": "unsourced"
   },
   {
    "id": "gov_drag",
@@ -180,9 +185,10 @@
    ],
    "version": "1.1.0",
    "updated": "2026-06",
-   "source": "DRAFT standard library",
    "rationale": "A single small holder can otherwise block a sale. Buyers price that risk into the deal or walk away from it.",
-   "body": "If {{ownerTerm}} holding at least a majority approve a sale of the Company, the remaining {{ownerTerm}} shall be required to participate on the same terms ([[drag-along]]), including making the same representations as to their own ownership, but shall not be required to give representations about the Company’s business or to accept liability exceeding their proceeds."
+   "body": "If {{ownerTerm}} holding at least a majority approve a sale of the Company, the remaining {{ownerTerm}} shall be required to participate on the same terms ([[drag-along]]), including making the same representations as to their own ownership, but shall not be required to give representations about the Company’s business or to accept liability exceeding their proceeds.",
+   "sources": [],
+   "verification": "unsourced"
   },
   {
    "id": "gov_tag",
@@ -212,9 +218,10 @@
    ],
    "version": "1.0.0",
    "updated": "2026-06",
-   "source": "DRAFT standard library",
    "rationale": "The counterpart to drag-along. Without it, a majority holder can sell their stake at a premium and leave the minority behind.",
-   "body": "If a {{ownerSing}} proposes to transfer an interest not otherwise permitted under <<xr:gov_permitted_transfers>>, each other {{ownerSing}} may elect to include a proportionate share of their own interest in the transfer on the same terms ([[tag-along]]), by notice within {{noticeDays}} days of the transfer notice."
+   "body": "If a {{ownerSing}} proposes to transfer an interest not otherwise permitted under <<xr:gov_permitted_transfers>>, each other {{ownerSing}} may elect to include a proportionate share of their own interest in the transfer on the same terms ([[tag-along]]), by notice within {{noticeDays}} days of the transfer notice.",
+   "sources": [],
+   "verification": "unsourced"
   },
   {
    "id": "gov_charging",
@@ -237,9 +244,17 @@
    ],
    "version": "1.1.0",
    "updated": "2026-04",
-   "source": "Tex. Bus. Orgs. Code §101.112",
    "rationale": "Texas makes the charging order the exclusive remedy by statute. Restating it puts a creditor on notice without requiring them to look it up.",
-   "body": "A [[charging order]] is the exclusive remedy of a judgment creditor of a {{ownerSing}}. No creditor shall have the right to foreclose on or obtain possession of Company assets, to compel a distribution, or to exercise any management or voting right of the debtor {{ownerSing}}."
+   "body": "A [[charging order]] is the exclusive remedy of a judgment creditor of a {{ownerSing}}. No creditor shall have the right to foreclose on or obtain possession of Company assets, to compel a distribution, or to exercise any management or voting right of the debtor {{ownerSing}}.",
+   "sources": [
+    {
+     "citation": "Tex. Bus. Orgs. Code §101.112",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    }
+   ],
+   "verification": "single-source"
   },
   {
    "id": "gov_deadlock",
@@ -262,10 +277,11 @@
    ],
    "version": "1.1.0",
    "updated": "2026-06",
-   "source": "DRAFT standard library",
    "benchmark": "Present in 43% of two-founder agreements — and cited in the majority of two-founder disputes",
    "rationale": "Two owners with an even split have no tiebreak. A single disagreement on a matter requiring approval can freeze the company until someone files suit.",
-   "body": "If the {{ownerTerm}} are unable to agree on a matter requiring approval for {{cure}} consecutive days, either {{ownerSing}} may invoke a buy-sell auction: the invoking {{ownerSing}} names a price per percentage point, and the other {{ownerSing}} must elect within {{cure}} days either to buy the invoking {{ownerSing}}’s interest at that price or to sell their own at that price. Closing occurs within sixty (60) days of the election."
+   "body": "If the {{ownerTerm}} are unable to agree on a matter requiring approval for {{cure}} consecutive days, either {{ownerSing}} may invoke a buy-sell auction: the invoking {{ownerSing}} names a price per percentage point, and the other {{ownerSing}} must elect within {{cure}} days either to buy the invoking {{ownerSing}}’s interest at that price or to sell their own at that price. Closing occurs within sixty (60) days of the election.",
+   "sources": [],
+   "verification": "unsourced"
   },
   {
    "id": "gov_dataproc",
@@ -290,10 +306,11 @@
    ],
    "version": "1.2.0",
    "updated": "2026-06",
-   "source": "DRAFT standard library",
    "benchmark": "Present in 64% of SaaS formation packages",
    "rationale": "State privacy statutes attach at low revenue and record thresholds. The program obligation is cheap to adopt at formation and expensive to retrofit.",
-   "body": "The Company shall maintain a written information security program appropriate to the sensitivity of the personal data it processes, execute a data processing agreement with each vendor that processes personal data on its behalf, and maintain a record of processing activities sufficient to respond to data subject requests within the statutory deadline applicable in {{opStateLong}}."
+   "body": "The Company shall maintain a written information security program appropriate to the sensitivity of the personal data it processes, execute a data processing agreement with each vendor that processes personal data on its behalf, and maintain a record of processing activities sufficient to respond to data subject requests within the statutory deadline applicable in {{opStateLong}}.",
+   "sources": [],
+   "verification": "unsourced"
   },
   {
    "id": "gov_privacy_notice",
@@ -318,9 +335,10 @@
    ],
    "version": "1.0.0",
    "updated": "2026-06",
-   "source": "DRAFT standard library",
    "rationale": "A published notice is a precondition to collecting personal data in several states, and it is the first thing a regulator looks for.",
-   "body": "Before collecting personal data from any individual, the Company shall publish a privacy notice describing the categories collected, the purposes of processing, any sale or sharing, and the rights available to the individual, and shall keep the notice current with the Company’s actual practices."
+   "body": "Before collecting personal data from any individual, the Company shall publish a privacy notice describing the categories collected, the purposes of processing, any sale or sharing, and the rights available to the individual, and shall keep the notice current with the Company’s actual practices.",
+   "sources": [],
+   "verification": "unsourced"
   },
   {
    "id": "gov_baa",
@@ -343,10 +361,18 @@
    ],
    "version": "1.1.0",
    "updated": "2026-06",
-   "source": "45 C.F.R. §164.504(e)",
    "benchmark": "Present in 91% of healthcare formation packages",
    "rationale": "Disclosing protected health information to a vendor without a BAA is itself a violation, independent of any breach.",
-   "body": "Before disclosing protected health information to any vendor, the Company shall execute a [[Business Associate Agreement|business associate agreement]] meeting the requirements of 45 C.F.R. §164.504(e). The Company shall maintain a current inventory of all business associates and review each agreement annually."
+   "body": "Before disclosing protected health information to any vendor, the Company shall execute a [[Business Associate Agreement|business associate agreement]] meeting the requirements of 45 C.F.R. §164.504(e). The Company shall maintain a current inventory of all business associates and review each agreement annually.",
+   "sources": [
+    {
+     "citation": "45 C.F.R. §164.504(e)",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    }
+   ],
+   "verification": "single-source"
   },
   {
    "id": "gov_lien",
@@ -369,9 +395,10 @@
    ],
    "version": "1.1.0",
    "updated": "2026-05",
-   "source": "DRAFT standard library",
    "rationale": "Mechanics lien rights are lost by inaction, not by waiver. The deadlines run from events on the job, not from non-payment.",
-   "body": "The Company shall preserve its [[mechanics lien]] rights on every project by serving all preliminary notices within the statutory period for the project’s jurisdiction and by calendaring lien filing deadlines at contract execution rather than at the time of a payment dispute. [[Retainage]] withheld from the Company shall not exceed ten percent (10%) and shall be released within {{cure}} days of final acceptance."
+   "body": "The Company shall preserve its [[mechanics lien]] rights on every project by serving all preliminary notices within the statutory period for the project’s jurisdiction and by calendaring lien filing deadlines at contract execution rather than at the time of a payment dispute. [[Retainage]] withheld from the Company shall not exceed ten percent (10%) and shall be released within {{cure}} days of final acceptance.",
+   "sources": [],
+   "verification": "unsourced"
   },
   {
    "id": "gov_licens",
@@ -395,9 +422,10 @@
    ],
    "version": "1.1.0",
    "updated": "2026-03",
-   "source": "DRAFT standard library",
    "rationale": "Ownership restrictions on licensed practice are structural. Discovering them after formation usually means dissolving and re-forming.",
-   "body": "The Company shall provide services only through personnel holding all licenses required in the jurisdiction of performance, and shall confirm that its ownership structure complies with any restriction on non-licensee ownership applicable in {{opStateLong}}. See <<xr:charter_purpose>> for the Company’s stated scope."
+   "body": "The Company shall provide services only through personnel holding all licenses required in the jurisdiction of performance, and shall confirm that its ownership structure complies with any restriction on non-licensee ownership applicable in {{opStateLong}}. See <<xr:charter_purpose>> for the Company’s stated scope.",
+   "sources": [],
+   "verification": "unsourced"
   },
   {
    "id": "gov_insurance",
@@ -418,10 +446,11 @@
    ],
    "version": "1.0.0",
    "updated": "2026-04",
-   "source": "DRAFT standard library",
    "benchmark": "Present in 55% of comparable governing documents",
    "rationale": "Indemnification is only as good as the balance sheet behind it. Insurance is what makes the indemnity in the next article worth something.",
-   "body": "The Company shall maintain commercial general liability insurance and such other coverage as is customary for a business of its size in {{industryName}}, and shall consider directors and officers coverage before appointing any director who is not a {{ownerSing}}."
+   "body": "The Company shall maintain commercial general liability insurance and such other coverage as is customary for a business of its size in {{industryName}}, and shall consider directors and officers coverage before appointing any director who is not a {{ownerSing}}.",
+   "sources": [],
+   "verification": "unsourced"
   },
   {
    "id": "gov_indemnify",
@@ -442,10 +471,11 @@
    ],
    "version": "1.1.0",
    "updated": "2026-04",
-   "source": "DRAFT standard library",
    "benchmark": "Present in 76% of comparable formation packages",
    "rationale": "Without it, no rational outside director will join the board, and an owner sued for acting on the company's behalf pays their own defense.",
-   "body": "The Company shall indemnify each {{ownerSing}}, Manager, and officer against losses incurred in that capacity, except for fraud, willful misconduct, or knowing violation of law. The Company may advance defense costs subject to an undertaking to repay if indemnification is ultimately unavailable. This [[indemnification]] survives termination of this {{govDoc}}."
+   "body": "The Company shall indemnify each {{ownerSing}}, Manager, and officer against losses incurred in that capacity, except for fraud, willful misconduct, or knowing violation of law. The Company may advance defense costs subject to an undertaking to repay if indemnification is ultimately unavailable. This [[indemnification]] survives termination of this {{govDoc}}.",
+   "sources": [],
+   "verification": "unsourced"
   },
   {
    "id": "gov_dissolution",
@@ -466,9 +496,10 @@
    ],
    "version": "1.1.0",
    "updated": "2025-12",
-   "source": "DRAFT standard library",
    "rationale": "Winding up in the statutory order is mandatory. Stating it prevents an owner from expecting a distribution ahead of creditors.",
-   "body": "The Company shall dissolve upon unanimous written approval of the {{ownerTerm}} or entry of a decree of judicial [[dissolution]]. On dissolution, assets shall be applied first to creditors, then to establish reserves for contingent liabilities, then to the {{ownerTerm}} [[pro rata]] in accordance with <<xr:gov_units>>."
+   "body": "The Company shall dissolve upon unanimous written approval of the {{ownerTerm}} or entry of a decree of judicial [[dissolution]]. On dissolution, assets shall be applied first to creditors, then to establish reserves for contingent liabilities, then to the {{ownerTerm}} [[pro rata]] in accordance with <<xr:gov_units>>.",
+   "sources": [],
+   "verification": "unsourced"
   },
   {
    "id": "gov_govlaw",
@@ -489,10 +520,11 @@
    ],
    "version": "1.2.0",
    "updated": "2026-05",
-   "source": "DRAFT standard library",
    "benchmark": "Present in 97% of comparable formation packages",
    "rationale": "Without it, which state's law applies is decided by a judge applying conflict-of-laws rules — an expensive way to answer a question you could answer in one sentence.",
-   "body": "This [[governing law|governing law]] provision states that this {{govDoc}} shall be governed by and construed in accordance with the laws of {{formStateLong}}, without regard to its [[conflict of laws]] principles. Internal affairs of the Company are governed by {{formStateLong}} law regardless of where the Company operates."
+   "body": "This [[governing law|governing law]] provision states that this {{govDoc}} shall be governed by and construed in accordance with the laws of {{formStateLong}}, without regard to its [[conflict of laws]] principles. Internal affairs of the Company are governed by {{formStateLong}} law regardless of where the Company operates.",
+   "sources": [],
+   "verification": "unsourced"
   },
   {
    "id": "gov_dispute",
@@ -513,10 +545,11 @@
    ],
    "version": "1.1.0",
    "updated": "2026-03",
-   "source": "DRAFT standard library",
    "benchmark": "Present in 71% of comparable formation packages",
    "rationale": "Without a forum clause, any dispute starts with a fight about where to have the fight.",
-   "body": "The parties shall attempt in good faith to resolve any dispute through mediation before initiating litigation. Any unresolved dispute shall be brought exclusively in the state or federal courts located in {{formStateLong}}, and each party consents to personal jurisdiction there and waives any objection based on inconvenient forum."
+   "body": "The parties shall attempt in good faith to resolve any dispute through mediation before initiating litigation. Any unresolved dispute shall be brought exclusively in the state or federal courts located in {{formStateLong}}, and each party consents to personal jurisdiction there and waives any objection based on inconvenient forum.",
+   "sources": [],
+   "verification": "unsourced"
   },
   {
    "id": "gov_sever",
@@ -537,10 +570,11 @@
    ],
    "version": "1.0.0",
    "updated": "2025-08",
-   "source": "DRAFT standard library",
    "benchmark": "Present in 89% of commercial contracts",
    "rationale": "If a court strikes one provision, nothing otherwise tells it to preserve the rest of the document.",
-   "body": "If any provision of this {{govDoc}} is held unenforceable, that provision shall be modified to the minimum extent necessary to make it enforceable, and the remaining provisions shall continue in full force. This is a standard [[severability]] provision."
+   "body": "If any provision of this {{govDoc}} is held unenforceable, that provision shall be modified to the minimum extent necessary to make it enforceable, and the remaining provisions shall continue in full force. This is a standard [[severability]] provision.",
+   "sources": [],
+   "verification": "unsourced"
   },
   {
    "id": "gov_notices",
@@ -561,10 +595,11 @@
    ],
    "version": "1.0.0",
    "updated": "2025-07",
-   "source": "DRAFT standard library",
    "benchmark": "Present in 82% of commercial contracts",
    "rationale": "Several clauses in this document run deadlines from a notice. Without delivery mechanics there is no agreed way to prove one was given.",
-   "body": "Notices shall be in writing and deemed given when delivered by hand, one business day after deposit with a national overnight courier, or on confirmed transmission by email to the addresses on Schedule A. A party may change its address by notice given under this section."
+   "body": "Notices shall be in writing and deemed given when delivered by hand, one business day after deposit with a national overnight courier, or on confirmed transmission by email to the addresses on Schedule A. A party may change its address by notice given under this section.",
+   "sources": [],
+   "verification": "unsourced"
   },
   {
    "id": "gov_counterparts",
@@ -585,10 +620,11 @@
    ],
    "version": "1.0.0",
    "updated": "2025-07",
-   "source": "DRAFT standard library",
    "benchmark": "Present in 94% of commercial contracts",
    "rationale": "Nothing otherwise authorizes split or electronic signing, which slows every future signature round.",
-   "body": "This {{govDoc}} may be executed in counterparts, each of which is an original and all of which together constitute one instrument. Electronic signatures and electronically transmitted copies have the same effect as originals."
+   "body": "This {{govDoc}} may be executed in counterparts, each of which is an original and all of which together constitute one instrument. Electronic signatures and electronically transmitted copies have the same effect as originals.",
+   "sources": [],
+   "verification": "unsourced"
   },
   {
    "id": "gov_entire",
@@ -609,10 +645,11 @@
    ],
    "version": "1.0.0",
    "updated": "2025-09",
-   "source": "DRAFT standard library",
    "benchmark": "Present in 86% of commercial contracts",
    "rationale": "Founders accumulate side conversations before formation. This clause decides whether those conversations are part of the deal.",
-   "body": "This {{govDoc}}, together with the schedules and exhibits and the other documents in the formation package, is the entire agreement among the parties on its subject matter and supersedes all prior discussions and understandings, whether oral or written."
+   "body": "This {{govDoc}}, together with the schedules and exhibits and the other documents in the formation package, is the entire agreement among the parties on its subject matter and supersedes all prior discussions and understandings, whether oral or written.",
+   "sources": [],
+   "verification": "unsourced"
   },
   {
    "id": "gov_waiver",
@@ -633,9 +670,10 @@
    ],
    "version": "1.0.0",
    "updated": "2025-09",
-   "source": "DRAFT standard library",
    "rationale": "Small companies tolerate breaches informally for years. Without this clause that tolerance can become a waiver of the right itself.",
-   "body": "No failure or delay in exercising a right under this {{govDoc}} operates as a waiver of it, and no single or partial exercise precludes any further exercise. A waiver is effective only if in writing and signed by the party granting it."
+   "body": "No failure or delay in exercising a right under this {{govDoc}} operates as a waiver of it, and no single or partial exercise precludes any further exercise. A waiver is effective only if in writing and signed by the party granting it.",
+   "sources": [],
+   "verification": "unsourced"
   }
  ]
 }

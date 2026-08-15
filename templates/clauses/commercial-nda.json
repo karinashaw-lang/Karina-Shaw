@@ -1,80 +1,357 @@
 {
-  "$comment": "Mutual NDA — the first document in any commercial engagement. Written mutual by default because a one-way NDA from a small company to a large one is almost never signed as drafted.",
-  "collection": "commercial-nda",
-  "version": "1.0.0",
-  "clauses": [
-    {"id":"nda_parties","doc":"nda","group":"Confidentiality","title":"Parties and Purpose","severity":"critical","insertion":"auto","condition":null,
-     "jurisdictions":["*"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"DRAFT standard library",
-     "rationale":"A stated purpose is what limits use later. Without one, the receiving party can argue any use was contemplated.",
-     "body":"This Agreement is entered into as of {{date}} between {{company}} and {{counterparty}} (each a “Party”). The Parties wish to evaluate a potential business relationship regarding {{industryName}} (the “Purpose”) and will each disclose information the other must protect."},
-
-    {"id":"nda_definition","doc":"nda","group":"Confidentiality","title":"Definition of Confidential Information","severity":"critical","insertion":"auto","condition":null,
-     "jurisdictions":["*"],"industries":["*"],"entities":["*"],"version":"1.1.0","updated":"2026-06","source":"DRAFT standard library",
-     "rationale":"Requiring a written CONFIDENTIAL stamp on everything sounds tidy and fails in practice, because nobody stamps a conversation.",
-     "body":"“[[Confidential Information|confidential information]]” means non-public information disclosed by one Party to the other, in any form, that is either identified as confidential or that a reasonable person would understand to be confidential from its nature or the circumstances of disclosure. It includes technical data, product plans, customer and pricing information, and the existence and terms of this Agreement."},
-
-    {"id":"nda_exclusions","doc":"nda","group":"Confidentiality","title":"Exclusions","severity":"critical","insertion":"auto","condition":null,
-     "jurisdictions":["*"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"DRAFT standard library",
-     "rationale":"Without exclusions the obligation is unbounded and unenforceable, and it exposes the receiver to a claim over something they already knew.",
-     "body":"Confidential Information does not include information that: is or becomes public through no fault of the receiving Party; was known to the receiving Party without restriction before disclosure; is received from a third party free of any obligation of confidence; or is independently developed without use of or reference to the disclosing Party’s Confidential Information."},
-
-    {"id":"nda_obligations","doc":"nda","group":"Confidentiality","title":"Obligations","severity":"critical","insertion":"auto","condition":null,
-     "jurisdictions":["*"],"industries":["*"],"entities":["*"],"version":"1.1.0","updated":"2026-06","source":"DRAFT standard library",
-     "rationale":"The use restriction matters more than the disclosure restriction. Most real harm comes from permitted recipients using the information for their own purposes.",
-     "body":"Each Party shall use the other’s Confidential Information solely for the Purpose stated in <<xr:nda_parties>>, protect it with at least the care it uses for its own confidential information and in no event less than reasonable care, and not disclose it except as permitted by <<xr:nda_permitted>>."},
-
-    {"id":"nda_permitted","doc":"nda","group":"Confidentiality","title":"Permitted Disclosures","severity":"recommended","insertion":"auto","condition":null,
-     "jurisdictions":["*"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"DRAFT standard library",
-     "rationale":"Advisors and investors have to see the information for the deal to happen. Making the discloser liable for their recipients is what keeps the chain intact.",
-     "body":"A Party may disclose Confidential Information to its employees, affiliates, and professional advisors who need it for the Purpose and are bound by obligations at least as protective as these. The disclosing Party remains responsible for any breach by those recipients."},
-
-    {"id":"nda_compelled","doc":"nda","group":"Confidentiality","title":"Compelled Disclosure","severity":"recommended","insertion":"auto","condition":null,
-     "jurisdictions":["*"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-05","source":"DRAFT standard library",
-     "rationale":"A subpoena overrides the contract regardless. The value here is the notice obligation, which is what gives the other side a chance to object.",
-     "body":"If a Party is required by law or valid legal process to disclose Confidential Information, it may do so, provided it gives prompt written notice where lawful, discloses only what is required, and reasonably cooperates with any effort by the other Party to obtain protective treatment."},
-
-    {"id":"nda_residuals","doc":"nda","group":"Confidentiality","title":"Residuals","severity":"optional","insertion":"suggest","condition":{"rule":"as_provider"},
-     "jurisdictions":["*"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"DRAFT standard library",
-     "benchmark":"Present in 23% of mutual NDAs; contested in most negotiations where it appears",
-     "rationale":"Genuinely two-sided. A [[residuals]] clause protects engineers from being tainted by a disclosure, and simultaneously guts the confidentiality obligation for anything a person can remember. Ask for it knowing the other side will push back.",
-     "body":"Either Party may use [[residuals]] — information retained in the unaided memory of individuals who had authorized access — for any purpose, provided this does not grant any license under the other Party’s patents or copyrights and does not permit use of the other Party’s Confidential Information in written or machine-readable form."},
-
-    {"id":"nda_no_license","doc":"nda","group":"Term and Remedies","title":"No License or Warranty","severity":"recommended","insertion":"auto","condition":null,
-     "jurisdictions":["*"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-04","source":"DRAFT standard library",
-     "rationale":"Disclosure alone can otherwise be argued to imply a license, and information shared during evaluation is by nature unverified.",
-     "body":"Nothing in this Agreement grants any license under any patent, copyright, trademark, or other intellectual property right. All Confidential Information is provided “as is,” and neither Party warrants its accuracy or completeness."},
-
-    {"id":"nda_term","doc":"nda","group":"Term and Remedies","title":"Term and Duration of Obligations","severity":"critical","insertion":"auto","condition":null,
-     "jurisdictions":["*"],"industries":["*"],"entities":["*"],"version":"1.1.0","updated":"2026-06","source":"DRAFT standard library",
-     "rationale":"The disclosure window and the protection period are different clocks, and conflating them is the most common drafting error in NDAs. Trade secrets need protection for as long as they stay secret.",
-     "body":"This Agreement governs disclosures made during the {{termWords}} months following the date in <<xr:nda_parties>>. The obligations in <<xr:nda_obligations>> continue for three (3) years after each disclosure, and continue indefinitely with respect to any information that qualifies as a trade secret for as long as it remains one."},
-
-    {"id":"nda_return","doc":"nda","group":"Term and Remedies","title":"Return or Destruction","severity":"recommended","insertion":"auto","condition":null,
-     "jurisdictions":["*"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-05","source":"DRAFT standard library",
-     "rationale":"An absolute deletion obligation is unperformable against backups, and promising it anyway creates a breach on day one.",
-     "body":"On written request, each Party shall return or destroy the other’s Confidential Information and confirm it has done so. A Party may retain copies required by law or held in routine backup systems, provided those copies remain subject to <<xr:nda_obligations>> for as long as they are retained."},
-
-    {"id":"nda_injunctive","doc":"nda","group":"Term and Remedies","title":"Equitable Relief","severity":"recommended","insertion":"auto","condition":null,
-     "jurisdictions":["*"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-04","source":"DRAFT standard library",
-     "rationale":"Money after the fact does not un-disclose a secret. Acknowledging that in advance shortens the argument about irreparable harm.",
-     "body":"Each Party acknowledges that a breach of this Agreement may cause irreparable harm for which damages are an inadequate remedy, and that the other Party may seek [[injunctive relief]] in addition to any other remedy, without the need to post a bond."},
-
-    {"id":"nda_no_obligation","doc":"nda","group":"Term and Remedies","title":"No Obligation to Proceed","severity":"optional","insertion":"suggest","condition":null,
-     "jurisdictions":["*"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-03","source":"DRAFT standard library",
-     "benchmark":"Present in 64% of mutual NDAs",
-     "rationale":"Prevents an argument that the evaluation itself created a commitment or an exclusive negotiation.",
-     "body":"Nothing in this Agreement obligates either Party to proceed with any transaction, to negotiate exclusively, or to refrain from pursuing a similar relationship with any third party."},
-
-    {"id":"nda_nonsolicit","doc":"nda","group":"Term and Remedies","title":"Non-Solicitation of Personnel","severity":"optional","insertion":"suggest","condition":{"ne":["opState","CA"]},
-     "jurisdictions":["DE","TX","FL","NY"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"DRAFT standard library",
-     "benchmark":"Present in 38% of mutual NDAs outside California",
-     "rationale":"Enforceability varies sharply by state, and a general-advertising carve-out is what keeps the clause from being read as a no-hire agreement — which raises antitrust exposure of its own.",
-     "body":"For {{termWords}} months, neither Party shall knowingly solicit for employment any employee introduced during the evaluation, except through general advertising not targeted at that person or where the employee initiates contact. This provision is not enforceable against employees working in California."},
-
-    {"id":"nda_govlaw","doc":"nda","group":"Term and Remedies","title":"Governing Law","severity":"critical","insertion":"suggest","condition":null,
-     "jurisdictions":["*"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"DRAFT standard library",
-     "benchmark":"Present in 96% of executed NDAs",
-     "rationale":"An NDA with no governing law is the cheapest possible way to turn a two-page document into a jurisdictional dispute.",
-     "body":"This Agreement is governed by the laws of {{opStateLong}}, without regard to its [[conflict of laws]] principles, and the Parties consent to the exclusive jurisdiction of the courts located there."}
-  ]
+ "$comment": "Mutual NDA — the first document in any commercial engagement. Written mutual by default because a one-way NDA from a small company to a large one is almost never signed as drafted.",
+ "collection": "commercial-nda",
+ "version": "1.0.0",
+ "clauses": [
+  {
+   "id": "nda_parties",
+   "doc": "nda",
+   "group": "Confidentiality",
+   "title": "Parties and Purpose",
+   "severity": "critical",
+   "insertion": "auto",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "rationale": "A stated purpose is what limits use later. Without one, the receiving party can argue any use was contemplated.",
+   "body": "This Agreement is entered into as of {{date}} between {{company}} and {{counterparty}} (each a “Party”). The Parties wish to evaluate a potential business relationship regarding {{industryName}} (the “Purpose”) and will each disclose information the other must protect.",
+   "sources": [],
+   "verification": "unsourced"
+  },
+  {
+   "id": "nda_definition",
+   "doc": "nda",
+   "group": "Confidentiality",
+   "title": "Definition of Confidential Information",
+   "severity": "critical",
+   "insertion": "auto",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.1.0",
+   "updated": "2026-06",
+   "rationale": "Requiring a written CONFIDENTIAL stamp on everything sounds tidy and fails in practice, because nobody stamps a conversation.",
+   "body": "“[[Confidential Information|confidential information]]” means non-public information disclosed by one Party to the other, in any form, that is either identified as confidential or that a reasonable person would understand to be confidential from its nature or the circumstances of disclosure. It includes technical data, product plans, customer and pricing information, and the existence and terms of this Agreement.",
+   "sources": [],
+   "verification": "unsourced"
+  },
+  {
+   "id": "nda_exclusions",
+   "doc": "nda",
+   "group": "Confidentiality",
+   "title": "Exclusions",
+   "severity": "critical",
+   "insertion": "auto",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "rationale": "Without exclusions the obligation is unbounded and unenforceable, and it exposes the receiver to a claim over something they already knew.",
+   "body": "Confidential Information does not include information that: is or becomes public through no fault of the receiving Party; was known to the receiving Party without restriction before disclosure; is received from a third party free of any obligation of confidence; or is independently developed without use of or reference to the disclosing Party’s Confidential Information.",
+   "sources": [],
+   "verification": "unsourced"
+  },
+  {
+   "id": "nda_obligations",
+   "doc": "nda",
+   "group": "Confidentiality",
+   "title": "Obligations",
+   "severity": "critical",
+   "insertion": "auto",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.1.0",
+   "updated": "2026-06",
+   "rationale": "The use restriction matters more than the disclosure restriction. Most real harm comes from permitted recipients using the information for their own purposes.",
+   "body": "Each Party shall use the other’s Confidential Information solely for the Purpose stated in <<xr:nda_parties>>, protect it with at least the care it uses for its own confidential information and in no event less than reasonable care, and not disclose it except as permitted by <<xr:nda_permitted>>.",
+   "sources": [],
+   "verification": "unsourced"
+  },
+  {
+   "id": "nda_permitted",
+   "doc": "nda",
+   "group": "Confidentiality",
+   "title": "Permitted Disclosures",
+   "severity": "recommended",
+   "insertion": "auto",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "rationale": "Advisors and investors have to see the information for the deal to happen. Making the discloser liable for their recipients is what keeps the chain intact.",
+   "body": "A Party may disclose Confidential Information to its employees, affiliates, and professional advisors who need it for the Purpose and are bound by obligations at least as protective as these. The disclosing Party remains responsible for any breach by those recipients.",
+   "sources": [],
+   "verification": "unsourced"
+  },
+  {
+   "id": "nda_compelled",
+   "doc": "nda",
+   "group": "Confidentiality",
+   "title": "Compelled Disclosure",
+   "severity": "recommended",
+   "insertion": "auto",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-05",
+   "rationale": "A subpoena overrides the contract regardless. The value here is the notice obligation, which is what gives the other side a chance to object.",
+   "body": "If a Party is required by law or valid legal process to disclose Confidential Information, it may do so, provided it gives prompt written notice where lawful, discloses only what is required, and reasonably cooperates with any effort by the other Party to obtain protective treatment.",
+   "sources": [],
+   "verification": "unsourced"
+  },
+  {
+   "id": "nda_residuals",
+   "doc": "nda",
+   "group": "Confidentiality",
+   "title": "Residuals",
+   "severity": "optional",
+   "insertion": "suggest",
+   "condition": {
+    "rule": "as_provider"
+   },
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "benchmark": "Present in 23% of mutual NDAs; contested in most negotiations where it appears",
+   "rationale": "Genuinely two-sided. A [[residuals]] clause protects engineers from being tainted by a disclosure, and simultaneously guts the confidentiality obligation for anything a person can remember. Ask for it knowing the other side will push back.",
+   "body": "Either Party may use [[residuals]] — information retained in the unaided memory of individuals who had authorized access — for any purpose, provided this does not grant any license under the other Party’s patents or copyrights and does not permit use of the other Party’s Confidential Information in written or machine-readable form.",
+   "sources": [],
+   "verification": "unsourced"
+  },
+  {
+   "id": "nda_no_license",
+   "doc": "nda",
+   "group": "Term and Remedies",
+   "title": "No License or Warranty",
+   "severity": "recommended",
+   "insertion": "auto",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-04",
+   "rationale": "Disclosure alone can otherwise be argued to imply a license, and information shared during evaluation is by nature unverified.",
+   "body": "Nothing in this Agreement grants any license under any patent, copyright, trademark, or other intellectual property right. All Confidential Information is provided “as is,” and neither Party warrants its accuracy or completeness.",
+   "sources": [],
+   "verification": "unsourced"
+  },
+  {
+   "id": "nda_term",
+   "doc": "nda",
+   "group": "Term and Remedies",
+   "title": "Term and Duration of Obligations",
+   "severity": "critical",
+   "insertion": "auto",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.1.0",
+   "updated": "2026-06",
+   "rationale": "The disclosure window and the protection period are different clocks, and conflating them is the most common drafting error in NDAs. Trade secrets need protection for as long as they stay secret.",
+   "body": "This Agreement governs disclosures made during the {{termWords}} months following the date in <<xr:nda_parties>>. The obligations in <<xr:nda_obligations>> continue for three (3) years after each disclosure, and continue indefinitely with respect to any information that qualifies as a trade secret for as long as it remains one.",
+   "sources": [],
+   "verification": "unsourced"
+  },
+  {
+   "id": "nda_return",
+   "doc": "nda",
+   "group": "Term and Remedies",
+   "title": "Return or Destruction",
+   "severity": "recommended",
+   "insertion": "auto",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-05",
+   "rationale": "An absolute deletion obligation is unperformable against backups, and promising it anyway creates a breach on day one.",
+   "body": "On written request, each Party shall return or destroy the other’s Confidential Information and confirm it has done so. A Party may retain copies required by law or held in routine backup systems, provided those copies remain subject to <<xr:nda_obligations>> for as long as they are retained.",
+   "sources": [],
+   "verification": "unsourced"
+  },
+  {
+   "id": "nda_injunctive",
+   "doc": "nda",
+   "group": "Term and Remedies",
+   "title": "Equitable Relief",
+   "severity": "recommended",
+   "insertion": "auto",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-04",
+   "rationale": "Money after the fact does not un-disclose a secret. Acknowledging that in advance shortens the argument about irreparable harm.",
+   "body": "Each Party acknowledges that a breach of this Agreement may cause irreparable harm for which damages are an inadequate remedy, and that the other Party may seek [[injunctive relief]] in addition to any other remedy, without the need to post a bond.",
+   "sources": [],
+   "verification": "unsourced"
+  },
+  {
+   "id": "nda_no_obligation",
+   "doc": "nda",
+   "group": "Term and Remedies",
+   "title": "No Obligation to Proceed",
+   "severity": "optional",
+   "insertion": "suggest",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-03",
+   "benchmark": "Present in 64% of mutual NDAs",
+   "rationale": "Prevents an argument that the evaluation itself created a commitment or an exclusive negotiation.",
+   "body": "Nothing in this Agreement obligates either Party to proceed with any transaction, to negotiate exclusively, or to refrain from pursuing a similar relationship with any third party.",
+   "sources": [],
+   "verification": "unsourced"
+  },
+  {
+   "id": "nda_nonsolicit",
+   "doc": "nda",
+   "group": "Term and Remedies",
+   "title": "Non-Solicitation of Personnel",
+   "severity": "optional",
+   "insertion": "suggest",
+   "condition": {
+    "ne": [
+     "opState",
+     "CA"
+    ]
+   },
+   "jurisdictions": [
+    "DE",
+    "TX",
+    "FL",
+    "NY"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "benchmark": "Present in 38% of mutual NDAs outside California",
+   "rationale": "Enforceability varies sharply by state, and a general-advertising carve-out is what keeps the clause from being read as a no-hire agreement — which raises antitrust exposure of its own.",
+   "body": "For {{termWords}} months, neither Party shall knowingly solicit for employment any employee introduced during the evaluation, except through general advertising not targeted at that person or where the employee initiates contact. This provision is not enforceable against employees working in California.",
+   "sources": [],
+   "verification": "unsourced"
+  },
+  {
+   "id": "nda_govlaw",
+   "doc": "nda",
+   "group": "Term and Remedies",
+   "title": "Governing Law",
+   "severity": "critical",
+   "insertion": "suggest",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "benchmark": "Present in 96% of executed NDAs",
+   "rationale": "An NDA with no governing law is the cheapest possible way to turn a two-page document into a jurisdictional dispute.",
+   "body": "This Agreement is governed by the laws of {{opStateLong}}, without regard to its [[conflict of laws]] principles, and the Parties consent to the exclusive jurisdiction of the courts located there.",
+   "sources": [],
+   "verification": "unsourced"
+  }
+ ]
 }

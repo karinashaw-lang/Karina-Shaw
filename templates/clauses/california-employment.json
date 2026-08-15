@@ -24,9 +24,10 @@
    ],
    "version": "1.0.0",
    "updated": "2026-06",
-   "source": "DRAFT standard library",
    "rationale": "California obligations switch on at headcount boundaries rather than phasing in, so crossing one turns on several duties at once — usually without any notice from the state.",
-   "body": "The Company has {{headcountBand}}. At this size the following are in scope: {{headcountTriggers}}. These thresholds count all employees, including part-time, temporary, and seasonal, and in most cases they count employees anywhere rather than only those in California. Obligations attach the moment the threshold is crossed, not at the start of the next year, so re-run this check whenever headcount changes."
+   "body": "The Company has {{headcountBand}}. At this size the following are in scope: {{headcountTriggers}}. These thresholds count all employees, including part-time, temporary, and seasonal, and in most cases they count employees anywhere rather than only those in California. Obligations attach the moment the threshold is crossed, not at the start of the next year, so re-run this check whenever headcount changes.",
+   "sources": [],
+   "verification": "unsourced"
   },
   {
    "id": "can_wtpa",
@@ -49,9 +50,36 @@
    ],
    "version": "1.0.0",
    "updated": "2026-06",
-   "source": "Cal. Lab. Code §2810.5",
    "rationale": "Required in writing at hire for every non-exempt employee, and again within seven days of any change not reflected on the wage statement. It is separate from the offer letter and is not satisfied by it.",
-   "body": "Provide each non-exempt employee a written [[wage theft notice]] at hire, in the language the employer normally uses to communicate employment terms. It must state the rate and basis of pay, allowances claimed, the regular payday, the employer's legal name and any dba, the physical and mailing address of the main office, the telephone number, and the workers' compensation carrier. Reissue within seven (7) days of any change not shown on the next wage statement."
+   "body": "Provide each non-exempt employee a written [[wage theft notice]] at hire, in the language the employer normally uses to communicate employment terms. It must state the rate and basis of pay, allowances claimed, the regular payday, the employer's legal name and any dba, the physical and mailing address of the main office, the telephone number, and the workers' compensation carrier. Reissue within seven (7) days of any change not shown on the next wage statement.",
+   "sources": [
+    {
+     "citation": "Cal. Lab. Code §2810.5",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    },
+    {
+     "citation": "Ogletree Deakins — California publishes new wage theft notice",
+     "type": "secondary",
+     "url": "https://ogletree.com/insights-resources/blog-posts/california-publishes-new-wage-theft-notice-reflecting-requirement-to-notify-employees-of-disaster-declarations/",
+     "checked": "2026-08-15"
+    },
+    {
+     "citation": "CalChamber HRWatchdog — Updated wage theft notice released",
+     "type": "secondary",
+     "url": "https://hrwatchdog.calchamber.com/2023/12/updated-wage-theft-notice-released/",
+     "checked": "2026-08-15"
+    },
+    {
+     "citation": "California Workplace Law Blog — Labor Commissioner publishes updated wage theft notice",
+     "type": "secondary",
+     "url": "https://www.californiaworkplacelawblog.com/2023/12/articles/california/californias-labor-commissioner-publishes-updated-wage-theft-notice/",
+     "checked": "2026-08-15"
+    }
+   ],
+   "verification": "search-corroborated",
+   "verificationNote": "Search summary supports: written notice at hire; rate and basis of pay; allowances claimed; regular payday; employer legal name and dba; workers' compensation carrier; reissue within seven days of a change not shown on the next wage statement; notice in the language the employer normally uses. NOT confirmed by the search: the requirement to state the physical and mailing address of the main office and the telephone number. GAP FOUND — sources describe a requirement this clause omits entirely: information about a federal or state disaster declaration applicable to the county of employment. The clause is incomplete as drafted."
   },
   {
    "id": "can_payscale_request",
@@ -74,9 +102,17 @@
    ],
    "version": "1.0.0",
    "updated": "2026-06",
-   "source": "Cal. Lab. Code §432.3",
    "rationale": "Applies to every California employer regardless of size, and separately requires the pay scale for a current employee's own position on request.",
-   "body": "Provide the pay scale for a position to any applicant who has completed an initial interview and requests it, and to any current employee who requests the scale for their own position. Pay scale means the salary or hourly range the employer reasonably expects to pay, not a placeholder range wide enough to be meaningless."
+   "body": "Provide the pay scale for a position to any applicant who has completed an initial interview and requests it, and to any current employee who requests the scale for their own position. Pay scale means the salary or hourly range the employer reasonably expects to pay, not a placeholder range wide enough to be meaningless.",
+   "sources": [
+    {
+     "citation": "Cal. Lab. Code §432.3",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    }
+   ],
+   "verification": "single-source"
   },
   {
    "id": "can_payscale_posting",
@@ -99,9 +135,17 @@
    ],
    "version": "1.0.0",
    "updated": "2026-06",
-   "source": "Cal. Lab. Code §432.3(c)",
    "rationale": "At fifteen employees the scale must appear in the posting itself. The obligation reaches third-party job boards the employer uses, which is where it is most often missed.",
-   "body": "The Company has {{headcountBand}} and must include the pay scale in every job posting, including postings placed through a third party. Retain the job description and pay scale for each position for the duration of employment plus three (3) years; those records are open to inspection by the Labor Commissioner."
+   "body": "The Company has {{headcountBand}} and must include the pay scale in every job posting, including postings placed through a third party. Retain the job description and pay scale for each position for the duration of employment plus three (3) years; those records are open to inspection by the Labor Commissioner.",
+   "sources": [
+    {
+     "citation": "Cal. Lab. Code §432.3(c)",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    }
+   ],
+   "verification": "single-source"
   },
   {
    "id": "can_salary_history",
@@ -124,9 +168,17 @@
    ],
    "version": "1.0.0",
    "updated": "2026-06",
-   "source": "Cal. Lab. Code §432.3(a)-(b)",
    "rationale": "The prohibition covers agents and recruiters too, and volunteered history cannot be used to justify a pay disparity on its own.",
-   "body": "Do not ask an applicant about salary history, and do not rely on it in deciding whether to make an offer or what to offer. This applies to anyone acting on the Company's behalf, including recruiters and background check vendors. If an applicant volunteers the information without prompting, it may be considered, but it cannot by itself justify a pay differential."
+   "body": "Do not ask an applicant about salary history, and do not rely on it in deciding whether to make an offer or what to offer. This applies to anyone acting on the Company's behalf, including recruiters and background check vendors. If an applicant volunteers the information without prompting, it may be considered, but it cannot by itself justify a pay differential.",
+   "sources": [
+    {
+     "citation": "Cal. Lab. Code §432.3(a)-(b)",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    }
+   ],
+   "verification": "single-source"
   },
   {
    "id": "can_benefit_notices",
@@ -149,9 +201,10 @@
    ],
    "version": "1.0.0",
    "updated": "2026-06",
-   "source": "DRAFT standard library",
    "rationale": "These are distributed at hire and again at the triggering event. Failure to distribute is cited routinely in agency audits because it is trivial to verify.",
-   "body": "Distribute at hire: the State Disability Insurance and Paid Family Leave pamphlets, the workers' compensation rights notice and carrier information, the Civil Rights Department sexual harassment pamphlet, the paid sick leave notice, and the Company's written policies. Redistribute the disability and paid family leave notices when an employee takes a qualifying leave."
+   "body": "Distribute at hire: the State Disability Insurance and Paid Family Leave pamphlets, the workers' compensation rights notice and carrier information, the Civil Rights Department sexual harassment pamphlet, the paid sick leave notice, and the Company's written policies. Redistribute the disability and paid family leave notices when an employee takes a qualifying leave.",
+   "sources": [],
+   "verification": "unsourced"
   },
   {
    "id": "can_new_hire_report",
@@ -174,9 +227,17 @@
    ],
    "version": "1.0.0",
    "updated": "2026-06",
-   "source": "Cal. Unemp. Ins. Code §1088.5",
    "rationale": "Twenty days from start of work, per employee, with a per-employee penalty. Payroll providers usually handle it, but the obligation stays with the employer.",
-   "body": "Report each new or rehired employee to the Employment Development Department on Form DE 34 within twenty (20) days of their first day of work. Confirm whether the payroll provider files this; the duty remains the Company's whether or not it does."
+   "body": "Report each new or rehired employee to the Employment Development Department on Form DE 34 within twenty (20) days of their first day of work. Confirm whether the payroll provider files this; the duty remains the Company's whether or not it does.",
+   "sources": [
+    {
+     "citation": "Cal. Unemp. Ins. Code §1088.5",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    }
+   ],
+   "verification": "single-source"
   },
   {
    "id": "can_postings",
@@ -199,9 +260,10 @@
    ],
    "version": "1.0.0",
    "updated": "2026-06",
-   "source": "DRAFT standard library",
    "rationale": "Remote and distributed workforces do not remove the obligation; the notices have to reach employees by the means normally used for workplace communication.",
-   "body": "Post in a conspicuous place accessible to all employees: the wage order for the Company's industry, payday notice, minimum wage notice, safety and health protection, workers' compensation rights, unemployment and disability insurance, paid sick leave, discrimination and harassment rights, whistleblower rights, family and medical leave rights, emergency contact information, and any local ordinance notice. Where employees work remotely, distribute the same notices electronically by the means normally used for workplace communications."
+   "body": "Post in a conspicuous place accessible to all employees: the wage order for the Company's industry, payday notice, minimum wage notice, safety and health protection, workers' compensation rights, unemployment and disability insurance, paid sick leave, discrimination and harassment rights, whistleblower rights, family and medical leave rights, emergency contact information, and any local ordinance notice. Where employees work remotely, distribute the same notices electronically by the means normally used for workplace communications.",
+   "sources": [],
+   "verification": "unsourced"
   },
   {
    "id": "can_local_ordinance",
@@ -224,9 +286,10 @@
    ],
    "version": "1.0.0",
    "updated": "2026-06",
-   "source": "DRAFT standard library",
    "rationale": "Dozens of California cities and counties set their own minimum wage and paid leave rules above the state floor, and the applicable one is set by where the employee works, not where the company sits.",
-   "body": "Check the minimum wage, paid sick leave, and fair scheduling ordinances of every city and county where an employee physically works, including a remote employee's home city. Local rates commonly exceed the state minimum and carry their own posting and notice requirements. Where state and local rules differ, the one more favorable to the employee applies."
+   "body": "Check the minimum wage, paid sick leave, and fair scheduling ordinances of every city and county where an employee physically works, including a remote employee's home city. Local rates commonly exceed the state minimum and carry their own posting and notice requirements. Where state and local rules differ, the one more favorable to the employee applies.",
+   "sources": [],
+   "verification": "unsourced"
   },
   {
    "id": "can_iipp",
@@ -249,9 +312,17 @@
    ],
    "version": "1.0.0",
    "updated": "2026-06",
-   "source": "8 C.C.R. §3203",
    "rationale": "Required of every California employer with any employee, including office-only and fully remote workplaces. It is the first document Cal/OSHA requests in any inspection, and not having one is a standalone citation.",
-   "body": "Establish and maintain a written [[IIPP|iipp]] identifying the person responsible, the system for ensuring compliance, how hazards are communicated to employees, the procedure for investigating injuries, how hazards are corrected, and the training program. Keep records of training and of hazard inspections. The program applies to office and remote workplaces, not only to industrial ones."
+   "body": "Establish and maintain a written [[IIPP|iipp]] identifying the person responsible, the system for ensuring compliance, how hazards are communicated to employees, the procedure for investigating injuries, how hazards are corrected, and the training program. Keep records of training and of hazard inspections. The program applies to office and remote workplaces, not only to industrial ones.",
+   "sources": [
+    {
+     "citation": "8 C.C.R. §3203",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    }
+   ],
+   "verification": "single-source"
   },
   {
    "id": "can_wvpp",
@@ -274,9 +345,17 @@
    ],
    "version": "1.0.0",
    "updated": "2026-06",
-   "source": "Cal. Lab. Code §6401.9",
    "rationale": "A separate written plan from the safety program, with its own training and its own log. The narrow exemption for very small worksites closed by the time the Company reaches this headcount.",
-   "body": "Maintain a written [[Workplace Violence Prevention Plan|workplace violence prevention plan]] covering employee involvement, hazard identification, incident response, post-incident procedures, and training. Train employees at rollout and annually. Maintain a violent incident log recording each incident, and retain the log, training records, and hazard assessments for five (5) years. This plan is separate from the IIPP required by <<xr:can_iipp>>."
+   "body": "Maintain a written [[Workplace Violence Prevention Plan|workplace violence prevention plan]] covering employee involvement, hazard identification, incident response, post-incident procedures, and training. Train employees at rollout and annually. Maintain a violent incident log recording each incident, and retain the log, training records, and hazard assessments for five (5) years. This plan is separate from the IIPP required by <<xr:can_iipp>>.",
+   "sources": [
+    {
+     "citation": "Cal. Lab. Code §6401.9",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    }
+   ],
+   "verification": "single-source"
   },
   {
    "id": "can_harassment_training",
@@ -299,9 +378,36 @@
    ],
    "version": "1.0.0",
    "updated": "2026-06",
-   "source": "Cal. Gov. Code §12950.1",
    "rationale": "Five employees is the trigger, and temporary and seasonal workers count toward it. Supervisors need double the hours and a shorter deadline after promotion.",
-   "body": "Provide two (2) hours of harassment prevention training to supervisors and one (1) hour to non-supervisory employees, within six (6) months of hire or promotion into a supervisory role, and every two (2) years thereafter. Seasonal and temporary employees must be trained within thirty (30) calendar days or one hundred hours worked, whichever is sooner. Retain records of completion for a minimum of two (2) years."
+   "body": "Provide two (2) hours of harassment prevention training to supervisors and one (1) hour to non-supervisory employees, within six (6) months of hire or promotion into a supervisory role, and every two (2) years thereafter. Seasonal and temporary employees must be trained within thirty (30) calendar days or one hundred hours worked, whichever is sooner. Retain records of completion for a minimum of two (2) years.",
+   "sources": [
+    {
+     "citation": "Cal. Gov. Code §12950.1",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    },
+    {
+     "citation": "California Civil Rights Department — Sexual harassment prevention training FAQ for employers",
+     "type": "secondary",
+     "url": "https://calcivilrights.ca.gov/wp-content/uploads/sites/32/2022/11/Sexual-Harassment-Prevention-Training-For-Employers-FAQ_ENG.pdf",
+     "checked": "2026-08-15"
+    },
+    {
+     "citation": "FindLaw — Cal. Gov. Code §12950.1",
+     "type": "statute-mirror",
+     "url": "https://codes.findlaw.com/ca/government-code/gov-sect-12950-1/",
+     "checked": "2026-08-15"
+    },
+    {
+     "citation": "Traliant — California sexual harassment training requirements",
+     "type": "secondary",
+     "url": "https://www.traliant.com/resources/california-law-now-requires-sexual-harassment-training-for-all-employees/",
+     "checked": "2026-08-15"
+    }
+   ],
+   "verification": "search-corroborated",
+   "verificationNote": "Search summary supports: five-or-more-employee threshold; two hours for supervisory and one hour for non-supervisory employees; repeat every two years; abusive conduct prevention as a required component. NOT confirmed by the search: the six-month deadline after hire or promotion, the thirty-day / one-hundred-hour rule for seasonal and temporary employees, and the two-year record retention period. Those three assertions remain unsupported."
   },
   {
    "id": "can_harassment_policy",
@@ -324,9 +430,17 @@
    ],
    "version": "1.0.0",
    "updated": "2026-06",
-   "source": "2 C.C.R. §11023",
    "rationale": "The regulation prescribes what the policy must contain and requires distribution with a tracked acknowledgment. A generic handbook paragraph does not satisfy it.",
-   "body": "Maintain a written policy that lists all protected categories, states that the prohibition covers coworkers and third parties, provides a complaint mechanism that does not require reporting to a direct supervisor, commits to a timely and impartial investigation with reasonable conclusions, prohibits retaliation, and identifies remedies. Distribute it and obtain a tracked acknowledgment. Translate it where ten percent (10%) or more of the workforce speaks another language."
+   "body": "Maintain a written policy that lists all protected categories, states that the prohibition covers coworkers and third parties, provides a complaint mechanism that does not require reporting to a direct supervisor, commits to a timely and impartial investigation with reasonable conclusions, prohibits retaliation, and identifies remedies. Distribute it and obtain a tracked acknowledgment. Translate it where ten percent (10%) or more of the workforce speaks another language.",
+   "sources": [
+    {
+     "citation": "2 C.C.R. §11023",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    }
+   ],
+   "verification": "single-source"
   },
   {
    "id": "can_fair_chance",
@@ -349,9 +463,17 @@
    ],
    "version": "1.0.0",
    "updated": "2026-06",
-   "source": "Cal. Gov. Code §12952",
    "rationale": "The violation is usually procedural rather than substantive — asking too early, or rejecting without the written assessment and the waiting period.",
-   "body": "Do not ask about conviction history, on an application or otherwise, until after a conditional offer. If conviction history would lead to withdrawal, first perform a written [[individualized assessment]] of the nature and gravity of the offense, the time elapsed, and the nature of the job. Send a preliminary notice with a copy of the report, allow at least five (5) business days to respond, and allow an additional five (5) days if the applicant disputes accuracy. Then send a final written decision with the right to appeal. Job advertisements must not state that people with criminal histories will not be considered. This is the [[Fair Chance Act|fair chance act]] procedure."
+   "body": "Do not ask about conviction history, on an application or otherwise, until after a conditional offer. If conviction history would lead to withdrawal, first perform a written [[individualized assessment]] of the nature and gravity of the offense, the time elapsed, and the nature of the job. Send a preliminary notice with a copy of the report, allow at least five (5) business days to respond, and allow an additional five (5) days if the applicant disputes accuracy. Then send a final written decision with the right to appeal. Job advertisements must not state that people with criminal histories will not be considered. This is the [[Fair Chance Act|fair chance act]] procedure.",
+   "sources": [
+    {
+     "citation": "Cal. Gov. Code §12952",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    }
+   ],
+   "verification": "single-source"
   },
   {
    "id": "can_lactation",
@@ -374,9 +496,17 @@
    ],
    "version": "1.0.0",
    "updated": "2026-06",
-   "source": "Cal. Lab. Code §§1030–1034",
    "rationale": "A written policy is required and must be distributed at hire and when an employee asks about parental leave. Denial of a break carries the same one-hour premium as a missed rest period.",
-   "body": "Maintain a written lactation accommodation policy and distribute it at hire and whenever an employee inquires about parental leave. Provide a private space that is not a bathroom, is close to the work area, and has a surface, seating, and access to electricity, plus access to a sink and refrigeration. Provide reasonable break time, running concurrently with paid rest breaks where possible. Denial of a required break entitles the employee to one additional hour of pay."
+   "body": "Maintain a written lactation accommodation policy and distribute it at hire and whenever an employee inquires about parental leave. Provide a private space that is not a bathroom, is close to the work area, and has a surface, seating, and access to electricity, plus access to a sink and refrigeration. Provide reasonable break time, running concurrently with paid rest breaks where possible. Denial of a required break entitles the employee to one additional hour of pay.",
+   "sources": [
+    {
+     "citation": "Cal. Lab. Code §§1030–1034",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    }
+   ],
+   "verification": "single-source"
   },
   {
    "id": "can_cannabis",
@@ -399,9 +529,17 @@
    ],
    "version": "1.0.0",
    "updated": "2026-06",
-   "source": "Cal. Gov. Code §12954",
    "rationale": "Standard urine and hair tests detect non-psychoactive metabolites, which is precisely what the statute now bars employers from acting on. Testing programs written before this change are non-compliant by default.",
-   "body": "Do not discriminate against an employee or applicant for cannabis use away from work and off Company premises, or on the basis of a test detecting non-psychoactive cannabis metabolites. Impairment at work may still be addressed, and testing that identifies active psychoactive compounds remains permitted. Review any existing drug testing program against this rule; construction and federally regulated safety-sensitive roles are treated differently."
+   "body": "Do not discriminate against an employee or applicant for cannabis use away from work and off Company premises, or on the basis of a test detecting non-psychoactive cannabis metabolites. Impairment at work may still be addressed, and testing that identifies active psychoactive compounds remains permitted. Review any existing drug testing program against this rule; construction and federally regulated safety-sensitive roles are treated differently.",
+   "sources": [
+    {
+     "citation": "Cal. Gov. Code §12954",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    }
+   ],
+   "verification": "single-source"
   },
   {
    "id": "can_heat",
@@ -436,9 +574,17 @@
    ],
    "version": "1.0.0",
    "updated": "2026-06",
-   "source": "8 C.C.R. §3395",
    "rationale": "A written plan, water, shade, cool-down rests, and training are all separately citable, and the high-heat procedures attach at a lower temperature than most employers assume.",
-   "body": "Maintain a written heat illness prevention plan covering provision of water, access to shade, cool-down rest periods, acclimatization for new and returning workers, emergency response, and training. High-heat procedures with additional observation and reminder requirements apply above the regulatory threshold. Indoor workplaces are covered by a parallel standard where indoor temperatures reach the applicable trigger."
+   "body": "Maintain a written heat illness prevention plan covering provision of water, access to shade, cool-down rest periods, acclimatization for new and returning workers, emergency response, and training. High-heat procedures with additional observation and reminder requirements apply above the regulatory threshold. Indoor workplaces are covered by a parallel standard where indoor temperatures reach the applicable trigger.",
+   "sources": [
+    {
+     "citation": "8 C.C.R. §3395",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    }
+   ],
+   "verification": "single-source"
   },
   {
    "id": "can_ccpa_hr",
@@ -463,9 +609,17 @@
    ],
    "version": "1.0.0",
    "updated": "2026-06",
-   "source": "Cal. Civ. Code §1798.100",
    "rationale": "The HR data exemption expired. Applicants, employees, and contractors are now consumers, with notice, deletion, correction, and limitation rights over their own employment data.",
-   "body": "Provide a notice at collection to applicants, employees, and contractors describing the categories of [[personal data]] collected, the purposes, retention periods, and any sale or sharing, and honor requests to know, delete, correct, and limit use of sensitive information. Applies where the Company meets the statutory revenue or volume thresholds. Monitoring of employees, including device and location tracking, must appear in this notice."
+   "body": "Provide a notice at collection to applicants, employees, and contractors describing the categories of [[personal data]] collected, the purposes, retention periods, and any sale or sharing, and honor requests to know, delete, correct, and limit use of sensitive information. Applies where the Company meets the statutory revenue or volume thresholds. Monitoring of employees, including device and location tracking, must appear in this notice.",
+   "sources": [
+    {
+     "citation": "Cal. Civ. Code §1798.100",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    }
+   ],
+   "verification": "single-source"
   },
   {
    "id": "can_edd",
@@ -488,9 +642,17 @@
    ],
    "version": "1.0.0",
    "updated": "2026-06",
-   "source": "Cal. Unemp. Ins. Code §1086",
    "rationale": "The registration trigger is a dollar threshold in a quarter, not the first hire, and the fifteen-day clock runs from crossing it.",
-   "body": "Register with the Employment Development Department within fifteen (15) days of paying more than one hundred dollars ($100) in wages in a calendar quarter. Thereafter file quarterly returns (DE 9 and DE 9C) and deposit withholding on the assigned schedule. Unremitted withholding can be assessed personally against responsible individuals."
+   "body": "Register with the Employment Development Department within fifteen (15) days of paying more than one hundred dollars ($100) in wages in a calendar quarter. Thereafter file quarterly returns (DE 9 and DE 9C) and deposit withholding on the assigned schedule. Unremitted withholding can be assessed personally against responsible individuals.",
+   "sources": [
+    {
+     "citation": "Cal. Unemp. Ins. Code §1086",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    }
+   ],
+   "verification": "single-source"
   },
   {
    "id": "can_workers_comp",
@@ -513,9 +675,17 @@
    ],
    "version": "1.0.0",
    "updated": "2026-06",
-   "source": "Cal. Lab. Code §3700",
    "rationale": "Required from the first employee with no small-employer exemption, and operating without it is a criminal offense that also strips the exclusive-remedy defense.",
-   "body": "Obtain workers' compensation coverage before the first employee's first day. There is no small-employer exemption. Operating without coverage is a misdemeanor, carries a stop order and per-employee penalties, and allows an injured employee to sue in civil court rather than being limited to the compensation system. Post the carrier notice and provide the claim form within one working day of learning of an injury."
+   "body": "Obtain workers' compensation coverage before the first employee's first day. There is no small-employer exemption. Operating without coverage is a misdemeanor, carries a stop order and per-employee penalties, and allows an injured employee to sue in civil court rather than being limited to the compensation system. Post the carrier notice and provide the claim form within one working day of learning of an injury.",
+   "sources": [
+    {
+     "citation": "Cal. Lab. Code §3700",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    }
+   ],
+   "verification": "single-source"
   },
   {
    "id": "can_calsavers",
@@ -538,9 +708,17 @@
    ],
    "version": "1.0.0",
    "updated": "2026-06",
-   "source": "Cal. Gov. Code §100032",
    "rationale": "Registration is mandatory even for employers that have no intention of offering a plan — the only alternative is certifying an exemption, which itself requires action.",
-   "body": "Either offer a qualifying employer-sponsored retirement plan or register for [[CalSavers|calsavers]] and facilitate employee payroll deductions. Employers with a qualifying plan must still certify their exemption. Doing nothing is not an option and carries a per-eligible-employee penalty that escalates if it remains uncured."
+   "body": "Either offer a qualifying employer-sponsored retirement plan or register for [[CalSavers|calsavers]] and facilitate employee payroll deductions. Employers with a qualifying plan must still certify their exemption. Doing nothing is not an option and carries a per-eligible-employee penalty that escalates if it remains uncured.",
+   "sources": [
+    {
+     "citation": "Cal. Gov. Code §100032",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    }
+   ],
+   "verification": "single-source"
   },
   {
    "id": "can_cobra",
@@ -573,9 +751,17 @@
    ],
    "version": "1.0.0",
    "updated": "2026-06",
-   "source": "Cal. Health & Safety Code §1366.20",
    "rationale": "Employers below the federal COBRA threshold often assume no continuation obligation exists. California fills that gap, and the notice duty sits with the carrier and the employer jointly.",
-   "body": "Employers with two to nineteen employees fall under [[Cal-COBRA|cal-cobra]] rather than federal COBRA. Confirm the carrier issues the required election notices and that the Company notifies the carrier of a qualifying event within the statutory window. Once the Company reaches twenty employees, federal COBRA applies instead and the notice obligations shift."
+   "body": "Employers with two to nineteen employees fall under [[Cal-COBRA|cal-cobra]] rather than federal COBRA. Confirm the carrier issues the required election notices and that the Company notifies the carrier of a qualifying event within the statutory window. Once the Company reaches twenty employees, federal COBRA applies instead and the notice obligations shift.",
+   "sources": [
+    {
+     "citation": "Cal. Health & Safety Code §1366.20",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    }
+   ],
+   "verification": "single-source"
   },
   {
    "id": "can_paydata",
@@ -598,9 +784,17 @@
    ],
    "version": "1.0.0",
    "updated": "2026-06",
-   "source": "Cal. Gov. Code §12999",
    "rationale": "A separate report is required for labor contractor workers, and that second report is the one most commonly missed in the first filing year.",
-   "body": "File an annual [[pay data report|pay data report]] with the Civil Rights Department covering the prior calendar year, reporting employee counts and pay bands by race, ethnicity, and sex within each job category, together with median and mean hourly rates. A separate report covers workers supplied by labor contractors. The Company has {{headcountBand}} and is within scope."
+   "body": "File an annual [[pay data report|pay data report]] with the Civil Rights Department covering the prior calendar year, reporting employee counts and pay bands by race, ethnicity, and sex within each job category, together with median and mean hourly rates. A separate report covers workers supplied by labor contractors. The Company has {{headcountBand}} and is within scope.",
+   "sources": [
+    {
+     "citation": "Cal. Gov. Code §12999",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    }
+   ],
+   "verification": "single-source"
   },
   {
    "id": "ea_ca_exempt",
@@ -630,9 +824,23 @@
    ],
    "version": "1.0.0",
    "updated": "2026-06",
-   "source": "Cal. Lab. Code §515; IWC Wage Orders",
    "rationale": "California's salary floor is higher than the federal one and moves every January, and its duties test requires that more than half the employee's time is actually spent on exempt work — a quantitative test, unlike the federal standard.",
-   "body": "To be exempt in California the {{workerLabel}} must clear an [[exempt salary threshold]] of at least {{caExemptSalary}} and must spend more than one half of their working time on exempt duties. The salary floor rises with {{caMinWage}}, so review this classification each January. Because California applies a quantitative duties test rather than a primary-duty test, a role that is exempt federally may still be non-exempt here."
+   "body": "To be exempt in California the {{workerLabel}} must clear an [[exempt salary threshold]] of at least {{caExemptSalary}} and must spend more than one half of their working time on exempt duties. The salary floor rises with {{caMinWage}}, so review this classification each January. Because California applies a quantitative duties test rather than a primary-duty test, a role that is exempt federally may still be non-exempt here.",
+   "sources": [
+    {
+     "citation": "Cal. Lab. Code §515",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    },
+    {
+     "citation": "IWC Wage Orders",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    }
+   ],
+   "verification": "multi-cited"
   },
   {
    "id": "ea_ca_commission",
@@ -655,10 +863,18 @@
    ],
    "version": "1.0.0",
    "updated": "2026-06",
-   "source": "Cal. Lab. Code §2751",
    "benchmark": "Required by statute wherever commissions are paid; frequently absent in early-stage sales hires",
    "rationale": "California requires a signed written commission plan with a receipt. Without one, disputes over when a commission is earned are resolved against the employer.",
-   "body": "Where any part of compensation is commission, provide a signed written agreement setting out the method of computation and payment, and obtain a signed receipt. State expressly when a commission is earned, whether it survives termination, and how chargebacks operate. A commission that has been earned is wages and must be paid at separation under <<xr:ea_termination>>, regardless of any active-employment condition."
+   "body": "Where any part of compensation is commission, provide a signed written agreement setting out the method of computation and payment, and obtain a signed receipt. State expressly when a commission is earned, whether it survives termination, and how chargebacks operate. A commission that has been earned is wages and must be paid at separation under <<xr:ea_termination>>, regardless of any active-employment condition.",
+   "sources": [
+    {
+     "citation": "Cal. Lab. Code §2751",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    }
+   ],
+   "verification": "single-source"
   },
   {
    "id": "ea_ca_925",
@@ -681,9 +897,17 @@
    ],
    "version": "1.0.0",
    "updated": "2026-06",
-   "source": "Cal. Lab. Code §925",
    "rationale": "A Delaware corporation instinctively names Delaware law. For a California employee that provision is voidable at the employee's election, and the fee-shifting runs one way.",
-   "body": "This agreement is governed by California law and any dispute is adjudicated in California. [[Labor Code §925|labor code 925]] makes a contrary forum or choice-of-law provision voidable at the {{workerLabel}}'s election for any employee who primarily works in California, unless they were individually represented by counsel in negotiating it. An employee who voids such a provision is entitled to recover their attorney's fees."
+   "body": "This agreement is governed by California law and any dispute is adjudicated in California. [[Labor Code §925|labor code 925]] makes a contrary forum or choice-of-law provision voidable at the {{workerLabel}}'s election for any employee who primarily works in California, unless they were individually represented by counsel in negotiating it. An employee who voids such a provision is entitled to recover their attorney's fees.",
+   "sources": [
+    {
+     "citation": "Cal. Lab. Code §925",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    }
+   ],
+   "verification": "single-source"
   },
   {
    "id": "ea_ca_arbitration",
@@ -706,10 +930,11 @@
    ],
    "version": "1.0.0",
    "updated": "2026-06",
-   "source": "DRAFT standard library",
    "benchmark": "Present in 38% of California employment agreements; among the most litigated provisions in the state",
    "rationale": "California unconscionability doctrine sets specific structural requirements, federal law carves out sexual harassment and assault claims, and an employer that misses an arbitration fee deadline waives the right outright.",
-   "body": "If the Company uses arbitration, the agreement must be a separate signed document, mutual, and must provide a neutral arbitrator, adequate discovery, a written award subject to review, all remedies otherwise available, and payment by the Company of all costs unique to arbitration. It cannot compel sexual harassment or assault claims. Missing an arbitration fee deadline is a material breach that waives the right to arbitrate and returns the case to court."
+   "body": "If the Company uses arbitration, the agreement must be a separate signed document, mutual, and must provide a neutral arbitrator, adequate discovery, a written award subject to review, all remedies otherwise available, and payment by the Company of all costs unique to arbitration. It cannot compel sexual harassment or assault claims. Missing an arbitration fee deadline is a material breach that waives the right to arbitrate and returns the case to court.",
+   "sources": [],
+   "verification": "unsourced"
   },
   {
    "id": "ea_ca_release",
@@ -732,10 +957,18 @@
    ],
    "version": "1.0.0",
    "updated": "2026-06",
-   "source": "Cal. Civ. Code §1542",
    "benchmark": "Present in 96% of California separation agreements",
    "rationale": "A general release that does not expressly waive Section 1542 does not reach unknown claims, which is the main thing the release was bought for.",
-   "body": "Any release the Company obtains must expressly waive [[Civil Code §1542|section 1542]], quoting it, or unknown claims survive. A release cannot waive wages already earned, workers' compensation claims, unemployment benefits, or the right to file with or participate in an agency investigation, and cannot prevent disclosure of unlawful conduct the employee has reasonable cause to believe occurred."
+   "body": "Any release the Company obtains must expressly waive [[Civil Code §1542|section 1542]], quoting it, or unknown claims survive. A release cannot waive wages already earned, workers' compensation claims, unemployment benefits, or the right to file with or participate in an agency investigation, and cannot prevent disclosure of unlawful conduct the employee has reasonable cause to believe occurred.",
+   "sources": [
+    {
+     "citation": "Cal. Civ. Code §1542",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    }
+   ],
+   "verification": "single-source"
   },
   {
    "id": "hb_ca_overtime",
@@ -758,9 +991,17 @@
    ],
    "version": "1.0.0",
    "updated": "2026-06",
-   "source": "Cal. Lab. Code §510",
    "rationale": "California computes overtime daily as well as weekly and adds double time. An employer paying on the federal weekly rule alone underpays every long day.",
-   "body": "Non-exempt employees receive time and one half for hours over eight (8) in a workday and over forty (40) in a workweek, and for the first eight hours on the seventh consecutive day of work in a workweek. Double time applies over twelve (12) hours in a day and beyond eight hours on the seventh consecutive day. The regular rate used for overtime includes non-discretionary bonuses and shift differentials, not base pay alone."
+   "body": "Non-exempt employees receive time and one half for hours over eight (8) in a workday and over forty (40) in a workweek, and for the first eight hours on the seventh consecutive day of work in a workweek. Double time applies over twelve (12) hours in a day and beyond eight hours on the seventh consecutive day. The regular rate used for overtime includes non-discretionary bonuses and shift differentials, not base pay alone.",
+   "sources": [
+    {
+     "citation": "Cal. Lab. Code §510",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    }
+   ],
+   "verification": "single-source"
   },
   {
    "id": "hb_ca_reporting_time",
@@ -783,9 +1024,17 @@
    ],
    "version": "1.0.0",
    "updated": "2026-06",
-   "source": "IWC Wage Orders §5, §4",
    "rationale": "Both premiums are routinely missed because payroll systems do not compute them, and they surface in aggregate in wage claims.",
-   "body": "An employee who reports for a scheduled shift and is given less than half the scheduled hours is owed [[reporting time pay]] of half the scheduled shift, a minimum of two (2) and a maximum of four (4) hours at the regular rate. An employee whose workday is interrupted by an unpaid, non-meal break is owed a [[split shift]] premium of one hour at the minimum wage. Both are owed in addition to hours actually worked."
+   "body": "An employee who reports for a scheduled shift and is given less than half the scheduled hours is owed [[reporting time pay]] of half the scheduled shift, a minimum of two (2) and a maximum of four (4) hours at the regular rate. An employee whose workday is interrupted by an unpaid, non-meal break is owed a [[split shift]] premium of one hour at the minimum wage. Both are owed in addition to hours actually worked.",
+   "sources": [
+    {
+     "citation": "IWC Wage Orders §5, §4",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    }
+   ],
+   "verification": "single-source"
   },
   {
    "id": "hb_ca_sick",
@@ -808,9 +1057,36 @@
    ],
    "version": "1.0.0",
    "updated": "2026-06",
-   "source": "Cal. Lab. Code §§245–249",
    "rationale": "Local ordinances frequently exceed the state floor, and combining sick leave into a single unlimited PTO bucket forfeits the ability to apply the statutory caps.",
-   "body": "Employees accrue paid sick leave at {{caSickAccrual}}, with a minimum entitlement of {{caSickMinimum}}. Accrued balance must appear on the wage statement or a separate written notice each pay period. Sick leave may be used for the employee or a family member, and for a designated person. The Company may not require a doctor's note for statutory sick leave, may not count its use against attendance, and may not require the employee to find a replacement. Local ordinances may require more; the more generous provision applies."
+   "body": "Employees accrue paid sick leave at {{caSickAccrual}}, with a minimum entitlement of {{caSickMinimum}}. Accrued balance must appear on the wage statement or a separate written notice each pay period. Sick leave may be used for the employee or a family member, and for a designated person. The Company may not require a doctor's note for statutory sick leave, may not count its use against attendance, and may not require the employee to find a replacement. Local ordinances may require more; the more generous provision applies.",
+   "sources": [
+    {
+     "citation": "Cal. Lab. Code §§245–249",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    },
+    {
+     "citation": "Legal Aid at Work — SB 616 increases paid sick leave from 3 to 5 days",
+     "type": "secondary",
+     "url": "https://legalaidatwork.org/factsheet/new-california-law-sb-616-increases-paid-sick-leave-from-3-to-5-days/",
+     "checked": "2026-08-15"
+    },
+    {
+     "citation": "CDF Labor Law — New California paid sick leave requirements",
+     "type": "secondary",
+     "url": "https://www.cdflaborlaw.com/blog/new-california-paid-sick-leave-requirements-go-into-effect-january-1",
+     "checked": "2026-08-15"
+    },
+    {
+     "citation": "LegiScan — CA SB616 text",
+     "type": "statute-mirror",
+     "url": "https://legiscan.com/CA/text/SB616/id/2843973",
+     "checked": "2026-08-15"
+    }
+   ],
+   "verification": "search-corroborated",
+   "verificationNote": "Search summary supports: accrual of one hour per thirty hours worked from commencement of employment; minimum entitlement of forty hours or five days; accrual and carryover cap of eighty hours; annual use may be limited to forty hours or five days; local ordinances may require more. NOT confirmed by the search: use available from the ninetieth day of employment, and the requirement that the accrued balance appear on the wage statement or a separate written notice each pay period."
   },
   {
    "id": "hb_ca_cfra",
@@ -833,9 +1109,17 @@
    ],
    "version": "1.0.0",
    "updated": "2026-06",
-   "source": "Cal. Gov. Code §12945.2",
    "rationale": "CFRA attaches at five employees, not fifty, and its definition of family is broader than the federal one — which means leave that is CFRA-protected but not FMLA-protected does not run concurrently.",
-   "body": "Employees with at least twelve (12) months of service and one thousand two hundred fifty (1,250) hours in the prior year are entitled to twelve (12) weeks of job-protected [[CFRA|cfra]] leave in a twelve-month period. Covered family members include a child, parent, parent-in-law, grandparent, grandchild, sibling, spouse, domestic partner, and one designated person per year. The Company has {{headcountBand}}, which is above the five-employee threshold. Maintain group health coverage during leave and restore the employee to the same or a comparable position."
+   "body": "Employees with at least twelve (12) months of service and one thousand two hundred fifty (1,250) hours in the prior year are entitled to twelve (12) weeks of job-protected [[CFRA|cfra]] leave in a twelve-month period. Covered family members include a child, parent, parent-in-law, grandparent, grandchild, sibling, spouse, domestic partner, and one designated person per year. The Company has {{headcountBand}}, which is above the five-employee threshold. Maintain group health coverage during leave and restore the employee to the same or a comparable position.",
+   "sources": [
+    {
+     "citation": "Cal. Gov. Code §12945.2",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    }
+   ],
+   "verification": "single-source"
   },
   {
    "id": "hb_ca_pdl",
@@ -858,9 +1142,17 @@
    ],
    "version": "1.0.0",
    "updated": "2026-06",
-   "source": "Cal. Gov. Code §12945",
    "rationale": "PDL is separate from CFRA and stacks with it, so an employee can be entitled to four months plus twelve weeks. Treating them as one bucket is a common and expensive error.",
-   "body": "[[Pregnancy disability leave]] provides up to four (4) months of job-protected leave for disability related to pregnancy, childbirth, or a related condition, with no minimum service requirement. It is separate from and additional to CFRA leave under <<xr:hb_ca_cfra>>, so an eligible employee may take both in sequence. Reasonable accommodation and transfer obligations apply independently of leave."
+   "body": "[[Pregnancy disability leave]] provides up to four (4) months of job-protected leave for disability related to pregnancy, childbirth, or a related condition, with no minimum service requirement. It is separate from and additional to CFRA leave under <<xr:hb_ca_cfra>>, so an eligible employee may take both in sequence. Reasonable accommodation and transfer obligations apply independently of leave.",
+   "sources": [
+    {
+     "citation": "Cal. Gov. Code §12945",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    }
+   ],
+   "verification": "single-source"
   },
   {
    "id": "hb_ca_bereavement",
@@ -883,9 +1175,17 @@
    ],
    "version": "1.0.0",
    "updated": "2026-06",
-   "source": "Cal. Gov. Code §§12945.7, 12945.6",
    "rationale": "Two separate entitlements, each five days, each attaching at five employees, and both frequently absent from handbooks written before they existed.",
-   "body": "Provide up to five (5) days of bereavement leave on the death of a family member, and up to five (5) days of reproductive loss leave following a failed adoption or surrogacy, miscarriage, stillbirth, or unsuccessful assisted reproduction. Days need not be consecutive. Leave may be unpaid where the Company has no paid policy, but employees may use accrued paid leave. Both entitlements require confidentiality as to the reason."
+   "body": "Provide up to five (5) days of bereavement leave on the death of a family member, and up to five (5) days of reproductive loss leave following a failed adoption or surrogacy, miscarriage, stillbirth, or unsuccessful assisted reproduction. Days need not be consecutive. Leave may be unpaid where the Company has no paid policy, but employees may use accrued paid leave. Both entitlements require confidentiality as to the reason.",
+   "sources": [
+    {
+     "citation": "Cal. Gov. Code §§12945.7, 12945.6",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    }
+   ],
+   "verification": "single-source"
   },
   {
    "id": "hb_ca_fmla_concurrent",
@@ -908,9 +1208,10 @@
    ],
    "version": "1.0.0",
    "updated": "2026-06",
-   "source": "DRAFT standard library",
    "rationale": "The two laws overlap but do not match. Designating leave as running concurrently when only one law covers it shortens the employee's entitlement unlawfully.",
-   "body": "The Company has {{headcountBand}}, so federal FMLA applies alongside CFRA under <<xr:hb_ca_cfra>>. The two run concurrently only where both cover the reason. Pregnancy disability is FMLA-covered but not CFRA-covered, so it runs against FMLA while CFRA baby-bonding leave remains available afterward. Leave for a parent-in-law, grandparent, sibling, or designated person is CFRA-only. Designate each leave against the correct statute in writing rather than assuming they overlap."
+   "body": "The Company has {{headcountBand}}, so federal FMLA applies alongside CFRA under <<xr:hb_ca_cfra>>. The two run concurrently only where both cover the reason. Pregnancy disability is FMLA-covered but not CFRA-covered, so it runs against FMLA while CFRA baby-bonding leave remains available afterward. Leave for a parent-in-law, grandparent, sibling, or designated person is CFRA-only. Designate each leave against the correct statute in writing rather than assuming they overlap.",
+   "sources": [],
+   "verification": "unsourced"
   },
   {
    "id": "hb_ca_personnel_records",
@@ -933,9 +1234,17 @@
    ],
    "version": "1.0.0",
    "updated": "2026-06",
-   "source": "Cal. Lab. Code §§1198.5, 226(b)",
    "rationale": "Two different deadlines for two different record types, each with its own penalty, and a request often arrives as the opening move in a wage claim.",
-   "body": "Respond to a request for personnel records within thirty (30) calendar days, and to a request for payroll records within twenty-one (21) calendar days. The obligation continues for one (1) year after separation. Missing either deadline carries a penalty and, in practice, signals to the requesting party that records were not maintained. Retain personnel records for at least four (4) years."
+   "body": "Respond to a request for personnel records within thirty (30) calendar days, and to a request for payroll records within twenty-one (21) calendar days. The obligation continues for one (1) year after separation. Missing either deadline carries a penalty and, in practice, signals to the requesting party that records were not maintained. Retain personnel records for at least four (4) years.",
+   "sources": [
+    {
+     "citation": "Cal. Lab. Code §§1198.5, 226(b)",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    }
+   ],
+   "verification": "single-source"
   },
   {
    "id": "ic_ca_abc",
@@ -958,9 +1267,23 @@
    ],
    "version": "1.0.0",
    "updated": "2026-06",
-   "source": "Cal. Lab. Code §2775; Dynamex Operations W. v. Superior Court",
    "rationale": "Prong B is the one that defeats most engagements, and it is not curable by contract language. A software company engaging a software developer as a contractor fails it regardless of how the agreement is drafted.",
-   "body": "California presumes a worker is an employee. To engage them as a contractor the Company must satisfy all three prongs of the [[ABC test|abc test]]: (A) the worker is free from the Company's control and direction in fact as well as under this agreement; (B) the work is outside the usual course of the Company's business; and (C) the worker is customarily engaged in an independently established trade of the same nature. Prong B cannot be satisfied by contract language. Because the Company's business is {{industryName}}, an engagement for work of that same nature is unlikely to qualify. Misclassification exposure includes unpaid wages, overtime, meal and rest premiums, business expenses, payroll taxes, and penalties, and can reach individuals personally."
+   "body": "California presumes a worker is an employee. To engage them as a contractor the Company must satisfy all three prongs of the [[ABC test|abc test]]: (A) the worker is free from the Company's control and direction in fact as well as under this agreement; (B) the work is outside the usual course of the Company's business; and (C) the worker is customarily engaged in an independently established trade of the same nature. Prong B cannot be satisfied by contract language. Because the Company's business is {{industryName}}, an engagement for work of that same nature is unlikely to qualify. Misclassification exposure includes unpaid wages, overtime, meal and rest premiums, business expenses, payroll taxes, and penalties, and can reach individuals personally.",
+   "sources": [
+    {
+     "citation": "Cal. Lab. Code §2775",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    },
+    {
+     "citation": "Dynamex Operations W. v. Superior Court",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    }
+   ],
+   "verification": "multi-cited"
   },
   {
    "id": "ic_ca_exemptions",
@@ -983,9 +1306,17 @@
    ],
    "version": "1.0.0",
    "updated": "2026-06",
-   "source": "Cal. Lab. Code §§2776–2784",
    "rationale": "The exemptions do not make someone a contractor — they only swap in the older multi-factor test, which the engagement still has to pass.",
-   "body": "Certain occupations and relationships are exempt from the ABC test and are instead evaluated under the older multi-factor common law standard, including some professional services, licensed practitioners, and genuine business-to-business contracting relationships. Each exemption carries its own conditions, commonly including a business licence, a separate business location, the ability to set rates, and contracting with other clients. Document which exemption is being relied on and which of its conditions are met; an exemption is not a conclusion that the worker is a contractor."
+   "body": "Certain occupations and relationships are exempt from the ABC test and are instead evaluated under the older multi-factor common law standard, including some professional services, licensed practitioners, and genuine business-to-business contracting relationships. Each exemption carries its own conditions, commonly including a business licence, a separate business location, the ability to set rates, and contracting with other clients. Document which exemption is being relied on and which of its conditions are met; an exemption is not a conclusion that the worker is a contractor.",
+   "sources": [
+    {
+     "citation": "Cal. Lab. Code §§2776–2784",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    }
+   ],
+   "verification": "single-source"
   },
   {
    "id": "ic_ca_freelance",
@@ -1008,9 +1339,17 @@
    ],
    "version": "1.0.0",
    "updated": "2026-06",
-   "source": "Cal. Bus. & Prof. Code §18100 (SB 988)",
    "rationale": "Applies to most small freelance engagements, requires a written contract and record retention, and prohibits conditioning payment on accepting less than the agreed amount.",
-   "body": "For an engagement of two hundred fifty dollars ($250) or more with an individual freelancer, provide a written contract stating the parties, an itemized list of services, the value, the rate and method of compensation, the payment date or the mechanism for determining it, and the date by which the freelancer must submit any information needed for timely payment. Retain the contract for at least four (4) years. Pay by the stated date, or within thirty (30) days of completion if none is stated. Do not condition payment on the freelancer accepting less than the agreed amount, and do not retaliate for asserting these rights."
+   "body": "For an engagement of two hundred fifty dollars ($250) or more with an individual freelancer, provide a written contract stating the parties, an itemized list of services, the value, the rate and method of compensation, the payment date or the mechanism for determining it, and the date by which the freelancer must submit any information needed for timely payment. Retain the contract for at least four (4) years. Pay by the stated date, or within thirty (30) days of completion if none is stated. Do not condition payment on the freelancer accepting less than the agreed amount, and do not retaliate for asserting these rights.",
+   "sources": [
+    {
+     "citation": "Cal. Bus. & Prof. Code §18100 (SB 988)",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    }
+   ],
+   "verification": "single-source"
   },
   {
    "id": "ic_ca_expenses",
@@ -1033,9 +1372,17 @@
    ],
    "version": "1.0.0",
    "updated": "2026-06",
-   "source": "Cal. Lab. Code §2802",
    "rationale": "Expense reimbursement is one of the largest components of a reclassification award, because it accrues across the whole engagement and carries interest and fees.",
-   "body": "If the engagement is later reclassified as employment, California requires reimbursement of all necessary business expenses the worker bore, including equipment, software, mileage, and the business portion of phone and internet, for the entire period, with interest and attorney's fees. This exposure accrues from day one and is not reduced by the Contractor having agreed to bear its own costs."
+   "body": "If the engagement is later reclassified as employment, California requires reimbursement of all necessary business expenses the worker bore, including equipment, software, mileage, and the business portion of phone and internet, for the entire period, with interest and attorney's fees. This exposure accrues from day one and is not reduced by the Contractor having agreed to bear its own costs.",
+   "sources": [
+    {
+     "citation": "Cal. Lab. Code §2802",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    }
+   ],
+   "verification": "single-source"
   },
   {
    "id": "emp_ca_iipp",
@@ -1058,9 +1405,23 @@
    ],
    "version": "1.0.0",
    "updated": "2026-06",
-   "source": "8 C.C.R. §3203; Cal. Lab. Code §6401.9",
    "rationale": "Included in the formation package so a company standing up its first California hire sees the two written programs it needs before day one. The hiring package carries the full California set.",
-   "body": "Before the first California employee starts, adopt a written Injury and Illness Prevention Program covering hazard identification, correction, communication, and training, and — once the Company has ten (10) or more employees — a separate written Workplace Violence Prevention Plan with its own training and violent incident log. Both apply to office and remote workplaces. These are the two programs Cal/OSHA asks for first in any inspection."
+   "body": "Before the first California employee starts, adopt a written Injury and Illness Prevention Program covering hazard identification, correction, communication, and training, and — once the Company has ten (10) or more employees — a separate written Workplace Violence Prevention Plan with its own training and violent incident log. Both apply to office and remote workplaces. These are the two programs Cal/OSHA asks for first in any inspection.",
+   "sources": [
+    {
+     "citation": "8 C.C.R. §3203",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    },
+    {
+     "citation": "Cal. Lab. Code §6401.9",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    }
+   ],
+   "verification": "multi-cited"
   },
   {
    "id": "emp_ca_registration",
@@ -1083,9 +1444,10 @@
    ],
    "version": "1.0.0",
    "updated": "2026-06",
-   "source": "DRAFT standard library",
    "rationale": "Four separate registrations, each with its own trigger and clock, and each carrying penalties assessed per employee.",
-   "body": "Before the first California employee's first day: obtain workers' compensation coverage, which has no small-employer exemption; register with the Employment Development Department within fifteen (15) days of paying more than one hundred dollars ($100) in quarterly wages; register for or certify exemption from CalSavers; and report each new hire on Form DE 34 within twenty (20) days. Provide the Wage Theft Prevention Act notice at hire to every non-exempt employee."
+   "body": "Before the first California employee's first day: obtain workers' compensation coverage, which has no small-employer exemption; register with the Employment Development Department within fifteen (15) days of paying more than one hundred dollars ($100) in quarterly wages; register for or certify exemption from CalSavers; and report each new hire on Form DE 34 within twenty (20) days. Provide the Wage Theft Prevention Act notice at hire to every non-exempt employee.",
+   "sources": [],
+   "verification": "unsourced"
   }
  ]
 }

@@ -1,24 +1,120 @@
 {
-  "$comment": "Attachments referenced by the rest of the package. The `provides` key names the attachment label a clause supplies; validate.mjs and the in-app consistency checker both use it to prove that every 'Schedule A' or 'Exhibit B' reference has something behind it.",
-  "collection": "schedules",
-  "version": "1.0.0",
-  "clauses": [
-    {"id":"sched_a_ownership","doc":"schedules","group":"Schedules","title":"Schedule A — Ownership, Contributions, and Notice Addresses","severity":"critical","insertion":"auto","condition":null,
-     "jurisdictions":["*"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"DRAFT standard library",
-     "provides":["Schedule A"],
-     "rationale":"Carries the numbers that would otherwise force an amendment every time the cap table moves, and the addresses the notice provision depends on.",
-     "body":"For each of {{founderList}}: full legal name, mailing address and email for notices, initial contribution, and ownership percentage. Percentages must total one hundred percent (100%). {{ownerSplitNote}} This schedule is referenced by <<xr:gov_units>> and supplies the notice addresses used throughout the package. Update it — rather than the body of the {{govDoc}} — on any permitted transfer or new issuance."},
-
-    {"id":"exh_a_prior","doc":"schedules","group":"Exhibits","title":"Exhibit A — Prior Inventions","severity":"critical","insertion":"auto","condition":{"any":[{"rule":"ip_critical"},{"rule":"multi_founder"}]},
-     "jurisdictions":["*"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"DRAFT standard library",
-     "provides":["Exhibit A"],
-     "rationale":"A blank exhibit is itself the representation that no prior inventions are excluded, which is why it must exist even when there is nothing to list.",
-     "body":"Each founder lists here any invention created before the Effective Date that they wish to exclude from the assignment in <<xr:ipa_assign>>, with enough detail to identify it without disclosing the substance of any trade secret. A founder with nothing to list should write “None” and sign — leaving this exhibit blank and unsigned creates ambiguity about whether it was ever completed."},
-
-    {"id":"exh_b_spousal","doc":"schedules","group":"Exhibits","title":"Exhibit B — Spousal Consent","severity":"recommended","insertion":"suggest","condition":{"all":[{"rule":"multi_founder"},{"any":[{"eq":["opState","CA"]},{"eq":["opState","TX"]}]}]},
-     "jurisdictions":["CA","TX"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"DRAFT standard library",
-     "provides":["Exhibit B"],
-     "rationale":"Supplies the attachment the spousal consent clause refers to. Without it that clause points at a document that does not exist.",
-     "body":"The spouse of each married {{ownerSing}} acknowledges having read the {{govDoc}}, consents to its terms, and agrees that any community property interest in the {{ownerSing}}’s ownership is bound by the transfer restrictions and buy-sell provisions it contains. This exhibit supports <<xr:gov_spousal>>."}
-  ]
+ "$comment": "Attachments referenced by the rest of the package. The `provides` key names the attachment label a clause supplies; validate.mjs and the in-app consistency checker both use it to prove that every 'Schedule A' or 'Exhibit B' reference has something behind it.",
+ "collection": "schedules",
+ "version": "1.0.0",
+ "clauses": [
+  {
+   "id": "sched_a_ownership",
+   "doc": "schedules",
+   "group": "Schedules",
+   "title": "Schedule A — Ownership, Contributions, and Notice Addresses",
+   "severity": "critical",
+   "insertion": "auto",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "provides": [
+    "Schedule A"
+   ],
+   "rationale": "Carries the numbers that would otherwise force an amendment every time the cap table moves, and the addresses the notice provision depends on.",
+   "body": "For each of {{founderList}}: full legal name, mailing address and email for notices, initial contribution, and ownership percentage. Percentages must total one hundred percent (100%). {{ownerSplitNote}} This schedule is referenced by <<xr:gov_units>> and supplies the notice addresses used throughout the package. Update it — rather than the body of the {{govDoc}} — on any permitted transfer or new issuance.",
+   "sources": [],
+   "verification": "unsourced"
+  },
+  {
+   "id": "exh_a_prior",
+   "doc": "schedules",
+   "group": "Exhibits",
+   "title": "Exhibit A — Prior Inventions",
+   "severity": "critical",
+   "insertion": "auto",
+   "condition": {
+    "any": [
+     {
+      "rule": "ip_critical"
+     },
+     {
+      "rule": "multi_founder"
+     }
+    ]
+   },
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "provides": [
+    "Exhibit A"
+   ],
+   "rationale": "A blank exhibit is itself the representation that no prior inventions are excluded, which is why it must exist even when there is nothing to list.",
+   "body": "Each founder lists here any invention created before the Effective Date that they wish to exclude from the assignment in <<xr:ipa_assign>>, with enough detail to identify it without disclosing the substance of any trade secret. A founder with nothing to list should write “None” and sign — leaving this exhibit blank and unsigned creates ambiguity about whether it was ever completed.",
+   "sources": [],
+   "verification": "unsourced"
+  },
+  {
+   "id": "exh_b_spousal",
+   "doc": "schedules",
+   "group": "Exhibits",
+   "title": "Exhibit B — Spousal Consent",
+   "severity": "recommended",
+   "insertion": "suggest",
+   "condition": {
+    "all": [
+     {
+      "rule": "multi_founder"
+     },
+     {
+      "any": [
+       {
+        "eq": [
+         "opState",
+         "CA"
+        ]
+       },
+       {
+        "eq": [
+         "opState",
+         "TX"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "jurisdictions": [
+    "CA",
+    "TX"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "provides": [
+    "Exhibit B"
+   ],
+   "rationale": "Supplies the attachment the spousal consent clause refers to. Without it that clause points at a document that does not exist.",
+   "body": "The spouse of each married {{ownerSing}} acknowledges having read the {{govDoc}}, consents to its terms, and agrees that any community property interest in the {{ownerSing}}’s ownership is bound by the transfer restrictions and buy-sell provisions it contains. This exhibit supports <<xr:gov_spousal>>.",
+   "sources": [],
+   "verification": "unsourced"
+  }
+ ]
 }

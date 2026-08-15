@@ -18,13 +18,43 @@ const docById    = new Map(C.documents.map(d=>[d.id,d]));
 const ruleIds    = new Set(C.rules.map(r=>r.id));
 const fieldIds   = new Set(C.fields.map(f=>f.id));
 
+/* A claim of corroboration has to be earned. Multiple citations written by one
+   author are not corroboration, so anything at or above `corroborated` must carry
+   at least two sources with recorded URLs on distinct hosts and a check date, and
+   `primary-verified` additionally requires a primary source and a named reviewer.
+   Without this check the gate is trivially defeated by padding the sources array. */
+const VLEVELS=C.taxonomy.verificationLevels;
+function host(u){ try{ return new URL(u).host.replace(/^www\./,''); }catch{ return null; } }
+function checkVerification(o,where){
+  const v=o.verification;
+  if(!VLEVELS[v]){ err('BAD_VERIFICATION',`${where} has unknown verification level "${v}"`); return; }
+  const src=o.sources||[];
+  const rank=VLEVELS[v].rank;
+  if(rank===0 && src.length) err('VERIFICATION_MISMATCH',`${where} is marked unsourced but carries ${src.length} source(s)`);
+  if(rank>=1 && !src.length) err('VERIFICATION_MISMATCH',`${where} is marked "${v}" but carries no sources`);
+  if(rank>=3){
+    const withUrl=src.filter(x=>x.url && x.checked);
+    if(withUrl.length<2)
+      err('UNEARNED_CORROBORATION',`${where} claims "${v}" but has ${withUrl.length} source(s) with a URL and a check date — corroboration requires at least two`);
+    const hosts=new Set(withUrl.map(x=>host(x.url)).filter(Boolean));
+    if(withUrl.length>=2 && hosts.size<2)
+      err('UNEARNED_CORROBORATION',`${where} claims "${v}" but all sources are on one host (${[...hosts][0]}) — independent sources required`);
+  }
+  if(rank>=4 && !o.readBy)
+    err('UNEARNED_CORROBORATION',`${where} claims "${v}" but records no readBy — corroboration at this level requires that the sources were actually opened and read, not merely listed`);
+  if(rank>=5){
+    if(!src.some(x=>x.type==='primary')) err('UNEARNED_VERIFICATION',`${where} claims "${v}" without a primary source`);
+    if(!o.reviewer) err('UNEARNED_VERIFICATION',`${where} claims "${v}" without a named reviewer`);
+  }
+}
+
 /* ---- 1. structural ---- */
 {
   const seen=new Set();
   for(const c of C.clauses){
     if(seen.has(c.id)) err('DUP_ID',`clause id "${c.id}" defined twice (${C.sources[c.id]})`);
     seen.add(c.id);
-    for(const k of ['doc','group','title','severity','insertion','jurisdictions','industries','entities','version','updated','source','rationale','body'])
+    for(const k of ['doc','group','title','severity','insertion','jurisdictions','industries','entities','version','updated','sources','verification','rationale','body'])
       if(c[k]===undefined) err('MISSING_KEY',`clause "${c.id}" is missing required key "${k}"`);
     if(!docById.has(c.doc)) err('BAD_DOC',`clause "${c.id}" targets unknown document "${c.doc}"`);
     else if(!docById.get(c.doc).groupOrder.includes(c.group))
@@ -36,6 +66,7 @@ const fieldIds   = new Set(C.fields.map(f=>f.id));
     for(const e of c.entities)      if(e!=='*'&&!C.taxonomy.entities[e])      err('BAD_TAG',`clause "${c.id}" entity "${e}"`);
     if(!/^\d+\.\d+\.\d+$/.test(c.version)) err('BAD_VERSION',`clause "${c.id}" version "${c.version}" is not semver`);
     if(!/^\d{4}-\d{2}$/.test(c.updated))   err('BAD_DATE',`clause "${c.id}" updated "${c.updated}" is not YYYY-MM`);
+    checkVerification(c,`clause "${c.id}"`);
   }
 }
 
@@ -92,7 +123,8 @@ const fieldIds   = new Set(C.fields.map(f=>f.id));
     if(seen.has(r.id)) err('DUP_RISK_ID',`risk id "${r.id}" defined twice`);
     seen.add(r.id);
     if(!['high','medium','low'].includes(r.level)) err('BAD_RISK_LEVEL',`risk "${r.id}" has level "${r.level}"`);
-    for(const k of ['title','body','source','packages']) if(!r[k]) err('MISSING_KEY',`risk "${r.id}" is missing "${k}"`);
+    for(const k of ['title','body','packages','verification']) if(!r[k]) err('MISSING_KEY',`risk "${r.id}" is missing "${k}"`);
+    checkVerification(r,`risk "${r.id}"`);
     for(const pk of (r.packages||[])) if(!C.taxonomy.packages[pk]) err('BAD_RISK_PACKAGE',`risk "${r.id}" declares unknown package "${pk}"`);
     for(const k of ['absent','present'])
       for(const id of (r[k]||[])) if(!clauseById.has(id)) err('BAD_RISK_CLAUSE',`risk "${r.id}" ${k} references unknown clause "${id}"`);
@@ -109,7 +141,8 @@ const fieldIds   = new Set(C.fields.map(f=>f.id));
   for(const bm of C.benchmarks){
     if(seen.has(bm.id)) err('DUP_BENCHMARK_ID',`benchmark id "${bm.id}" defined twice`);
     seen.add(bm.id);
-    for(const k of ['label','value','detail','basis','packages']) if(!bm[k]) err('MISSING_KEY',`benchmark "${bm.id}" is missing "${k}"`);
+    for(const k of ['label','value','detail','basis','packages','verification']) if(!bm[k]) err('MISSING_KEY',`benchmark "${bm.id}" is missing "${k}"`);
+    checkVerification(bm,`benchmark "${bm.id}"`);
     for(const pk of (bm.packages||[])) if(!C.taxonomy.packages[pk]) err('BAD_BENCHMARK_PACKAGE',`benchmark "${bm.id}" declares unknown package "${pk}"`);
     for(const txt of [bm.label,bm.value,bm.detail])
       for(const m of String(txt).matchAll(/\{\{(\w+)\}\}/g))
@@ -262,10 +295,15 @@ for(const d of C.documents) if(!reachableDoc.has(d.id))
 }
 
 function report(){
+  const byVerification=C.clauses.reduce((m,c)=>(m[c.verification]=(m[c.verification]||0)+1,m),{});
+  const gate=C.taxonomy.releaseGate.minimum, gateRank=C.taxonomy.verificationLevels[gate].rank;
+  const usable=C.clauses.filter(c=>C.taxonomy.verificationLevels[c.verification].rank>=gateRank).length;
   const bySeverity=C.clauses.reduce((m,c)=>(m[c.severity]=(m[c.severity]||0)+1,m),{});
   const byInsertion=C.clauses.reduce((m,c)=>(m[c.insertion]=(m[c.insertion]||0)+1,m),{});
   console.log(`corpus: ${C.clauses.length} clauses · ${C.documents.length} documents · ${C.rules.length} rules · ${C.risks.length} risks · ${C.benchmarks.length} benchmarks · ${C.fields.length} fields · ${Object.keys(C.glossary).length} glossary terms`);
   console.log(`        severity ${JSON.stringify(bySeverity)} · insertion ${JSON.stringify(byInsertion)}`);
+  console.log(`        verification ${JSON.stringify(byVerification)}`);
+  console.log(`        release gate "${gate}" → ${usable} of ${C.clauses.length} clauses usable, ${C.clauses.length-usable} withheld`);
   if(typeof configs!=='undefined'&&configs) console.log(`checked ${configs.length} configurations`);
   notes.forEach(n=>console.log('  note  '+n));
   warnings.forEach(w=>console.log('  WARN  '+w));

@@ -1,236 +1,1190 @@
 {
-  "$comment": "Hiring package. The employee and contractor paths are mutually exclusive by design: the clauses that make an employment agreement safe are the same ones that make a contractor agreement evidence of misclassification.",
-  "collection": "hiring",
-  "version": "1.0.0",
-  "clauses": [
-    {"id":"ea_position","doc":"employment-agreement","group":"Position and Term","title":"Position and Duties","severity":"critical","insertion":"auto","condition":null,
-     "jurisdictions":["*"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"DRAFT standard library",
-     "rationale":"The duties description is what the exempt classification analysis is later measured against, so it should describe the work honestly rather than aspirationally.",
-     "body":"{{company}} employs the {{workerLabel}} as {{roleTitle}}, reporting to the {{principalTitle}} or their designee. The {{workerLabel}} shall devote their full business time and attention to the Company and shall perform the duties customarily associated with the role together with such other duties as are reasonably assigned."},
-
-    {"id":"ea_atwill","doc":"employment-agreement","group":"Position and Term","title":"At-Will Employment","severity":"critical","insertion":"auto","condition":null,
-     "jurisdictions":["*"],"industries":["*"],"entities":["*"],"version":"1.1.0","updated":"2026-06","source":"DRAFT standard library",
-     "rationale":"An agreement that recites a term and also claims at-will status is internally inconsistent, and courts resolve that inconsistency against the drafter.",
-     "body":"Employment is [[at-will employment|at-will employment]] and may be terminated by either party at any time, with or without cause or notice. No statement in this agreement, in any policy, or by any manager creates a fixed term or a promise of continued employment, and this status may be changed only in a writing signed by the {{principalTitle}}."},
-
-    {"id":"ea_start","doc":"employment-agreement","group":"Position and Term","title":"Start Date and Contingencies","severity":"recommended","insertion":"auto","condition":null,
-     "jurisdictions":["*"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"DRAFT standard library",
-     "rationale":"Background checks and work authorization must be stated as conditions in advance. Applying them after the start date creates a different and worse problem.",
-     "body":"Employment begins on {{date}}, contingent on satisfactory completion of a background check where permitted by the law of {{opStateLong}}, verification of work authorization under <<xr:hb_i9>>, and execution of the confidentiality and invention assignment agreement referenced in <<xr:ea_ip>>."},
-
-    {"id":"ea_location","doc":"employment-agreement","group":"Position and Term","title":"Work Location","severity":"recommended","insertion":"auto","condition":{"rule":"remote_worker"},
-     "jurisdictions":["*"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"DRAFT standard library",
-     "rationale":"A remote hire creates payroll registration, withholding, and often income tax nexus in their state. An unapproved relocation creates all of that without notice.",
-     "body":"The {{workerLabel}} will work remotely. The {{workerLabel}} shall notify the Company before relocating to another state, and the Company may decline a relocation that would create registration, tax, or licensing obligations it is not prepared to assume. The terms of employment, including pay practices and leave, follow the law of the state in which the {{workerLabel}} actually performs work."},
-
-    {"id":"ea_compensation","doc":"employment-agreement","group":"Compensation","title":"Compensation","severity":"critical","insertion":"auto","condition":null,
-     "jurisdictions":["*"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"DRAFT standard library",
-     "rationale":"Several states require a written wage notice at hire stating rate, basis, and pay schedule. This clause is that notice.",
-     "body":"The {{workerLabel}} will be paid {{payDescription}}, less lawful withholdings, on the Company’s regular payroll schedule. Compensation is {{compTypeName}} and is subject to review and adjustment by the Company. Any change to the rate will be provided in writing before it takes effect."},
-
-    {"id":"ea_classification","doc":"employment-agreement","group":"Compensation","title":"Classification","severity":"critical","insertion":"auto","condition":{"rule":"salaried_worker"},
-     "jurisdictions":["*"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"DRAFT standard library",
-     "rationale":"Salary is only one half of the exempt test. The duties test is where misclassification claims are actually won and lost, and paying a salary does not settle it.",
-     "body":"The Company has classified this role as [[exempt employee|exempt employee]] based on the duties in <<xr:ea_position>> and the compensation in <<xr:ea_compensation>>. Salary alone does not establish exempt status; the duties test must also be met. The Company will review this classification if the duties change materially."},
-
-    {"id":"ea_overtime","doc":"employment-agreement","group":"Compensation","title":"Overtime and Timekeeping","severity":"critical","insertion":"auto","condition":{"rule":"hourly_worker"},
-     "jurisdictions":["*"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"DRAFT standard library",
-     "rationale":"Unauthorized overtime is still payable. Discipline for working it is permissible; refusing to pay for it is not, and the distinction is where employers most often go wrong.",
-     "body":"This role is non-exempt. The {{workerLabel}} shall record all hours worked accurately and shall be paid overtime as required by federal law and the law of {{opStateLong}}. Overtime requires advance approval, but all overtime actually worked will be paid whether or not it was approved."},
-
-    {"id":"ea_bonus","doc":"employment-agreement","group":"Compensation","title":"Bonus","severity":"recommended","insertion":"suggest","condition":null,
-     "jurisdictions":["*"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"DRAFT standard library",
-     "benchmark":"Present in 63% of employment agreements",
-     "rationale":"Whether a bonus is discretionary or earned determines whether it is owed on departure. Several states treat an earned bonus as wages, with penalties for non-payment.",
-     "body":"The {{workerLabel}} may be eligible for a discretionary annual bonus targeted at [percentage] of base compensation, based on individual and Company performance. Any bonus is discretionary, is not earned until paid, and requires active employment on the payment date, except where the law of {{opStateLong}} provides otherwise."},
-
-    {"id":"ea_equity","doc":"employment-agreement","group":"Compensation","title":"Equity Award","severity":"critical","insertion":"auto","condition":{"rule":"equity_grant"},
-     "jurisdictions":["*"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"DRAFT standard library",
-     "rationale":"An offer letter cannot grant equity — only the board can. Promising a grant without the approval language creates a commitment the company may not be able to honor on the stated terms.",
-     "body":"Subject to approval by the Board, the {{workerLabel}} will be granted an award of [number] shares under the Company’s equity incentive plan, vesting over {{vestYears}} years with a {{cliff}}-month [[cliff]] and subject to the plan and award agreement, which control in the event of conflict. The exercise price will be the fair market value on the grant date as determined by the Board. Nothing in this paragraph is a grant."},
-
-    {"id":"ea_83b_notice","doc":"employment-agreement","group":"Compensation","title":"Tax Election Notice","severity":"recommended","insertion":"auto","condition":{"rule":"equity_grant"},
-     "jurisdictions":["*"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"DRAFT standard library",
-     "rationale":"The company cannot file the election for the employee, but the deadline is short enough that failing to flag it reliably causes real harm.",
-     "body":"If the award in <<xr:ea_equity>> takes the form of restricted stock rather than an option, a [[Section 83(b) election|section 83(b) election]] must be filed with the IRS within thirty (30) days of grant. The Company cannot make this filing on the {{workerLabel}}’s behalf and recommends they consult their own tax advisor. There is no cure for a late filing."},
-
-    {"id":"ea_benefits","doc":"employment-agreement","group":"Compensation","title":"Benefits","severity":"recommended","insertion":"auto","condition":null,
-     "jurisdictions":["*"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-05","source":"DRAFT standard library",
-     "rationale":"Describing benefits as an entitlement in the agreement rather than by reference to the plan documents can create a contractual obligation that outlives the plan.",
-     "body":"The {{workerLabel}} is eligible to participate in the benefit plans the Company makes generally available to similarly situated employees, subject to the terms of those plans. The Company may modify or discontinue any plan at any time. Plan documents control over any description in this agreement."},
-
-    {"id":"ea_expenses","doc":"employment-agreement","group":"Compensation","title":"Expense Reimbursement","severity":"recommended","insertion":"auto","condition":{"any":[{"rule":"remote_worker"},{"eq":["opState","CA"]}]},
-     "jurisdictions":["*"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"Cal. Lab. Code §2802",
-     "rationale":"California requires reimbursement of necessary business expenses, and remote work makes home internet and phone use a live question rather than a theoretical one.",
-     "body":"The Company shall reimburse necessary business expenses, including the reasonable business portion of home internet and mobile phone charges where the {{workerLabel}} works remotely, on submission of documentation. This obligation is required by law in California and applies regardless of any Company policy to the contrary."},
-
-    {"id":"ea_ip","doc":"employment-agreement","group":"Obligations","title":"Confidentiality and Invention Assignment","severity":"critical","insertion":"auto","condition":null,
-     "jurisdictions":["*"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"DRAFT standard library",
-     "rationale":"An assignment signed after work begins may lack consideration in some states. Making it a condition of the start date is what avoids that question.",
-     "body":"As a condition of employment, the {{workerLabel}} shall sign the Company’s confidentiality and invention assignment agreement before their first day of work. That agreement assigns to the Company all inventions and works created within the scope of employment, subject to any statutory carve-out required in {{opStateLong}}, and survives the end of employment."},
-
-    {"id":"ea_noncompete_void","doc":"employment-agreement","group":"Obligations","title":"No Non-Compete","severity":"critical","insertion":"auto","condition":{"eq":["opState","CA"]},
-     "jurisdictions":["CA"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"Cal. Bus. & Prof. Code §16600; AB 1076",
-     "rationale":"Since AB 1076 it is unlawful to include or attempt to enforce a non-compete against a California employee, regardless of the governing law the agreement names.",
-     "body":"This agreement contains no non-compete or customer non-solicitation covenant. Such provisions are void under California law and it is unlawful to include or attempt to enforce them, regardless of where the agreement is signed or which state’s law it names. The Company relies on the confidentiality and invention assignment obligations in <<xr:ea_ip>> instead."},
-
-    {"id":"ea_nonsolicit","doc":"employment-agreement","group":"Obligations","title":"Non-Solicitation","severity":"recommended","insertion":"suggest","condition":{"ne":["opState","CA"]},
-     "jurisdictions":["DE","TX","FL","NY"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"DRAFT standard library",
-     "benchmark":"Present in 57% of employment agreements outside California",
-     "rationale":"Enforceability turns on duration and scope, and courts in several of these states will narrow rather than strike an overbroad clause — but not all of them will.",
-     "body":"For twelve (12) months after employment ends, the {{workerLabel}} shall not solicit any employee of the Company to leave, or solicit any customer they served or learned confidential information about during the final twelve (12) months of employment, for the purpose of providing competing services. This does not restrict general advertising or a customer’s own decision to follow."},
-
-    {"id":"ea_outside_activity","doc":"employment-agreement","group":"Obligations","title":"Outside Activities","severity":"recommended","insertion":"suggest","condition":null,
-     "jurisdictions":["*"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"DRAFT standard library",
-     "benchmark":"Present in 68% of employment agreements",
-     "rationale":"A blanket ban on outside work is unlawful in several states and unenforceable against lawful off-duty conduct. A conflict-of-interest standard achieves the real objective.",
-     "body":"The {{workerLabel}} may engage in outside activities that do not conflict with their duties, do not compete with the Company, and do not use Company time, equipment, or confidential information. The {{workerLabel}} shall disclose any outside activity that could reasonably be seen as a conflict. This does not restrict lawful off-duty conduct protected by the law of {{opStateLong}}."},
-
-    {"id":"ea_prior_obligations","doc":"employment-agreement","group":"Obligations","title":"No Conflicting Obligations","severity":"critical","insertion":"auto","condition":null,
-     "jurisdictions":["*"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"DRAFT standard library",
-     "rationale":"Hiring someone who brings a former employer's material with them transfers that problem to the Company. This representation is where it surfaces first.",
-     "body":"The {{workerLabel}} represents that they are not bound by any agreement that would prevent them from performing this role, that they will not use or bring any former employer’s confidential information onto Company systems, and that they will notify the Company immediately if a former employer asserts a claim relating to their employment here."},
-
-    {"id":"ea_termination","doc":"employment-agreement","group":"Separation","title":"Termination and Final Pay","severity":"critical","insertion":"auto","condition":null,
-     "jurisdictions":["*"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"DRAFT standard library",
-     "rationale":"Final pay timing is statutory and unforgiving. California in particular assesses a waiting time penalty of a full day of wages per day late.",
-     "body":"Either party may end the employment relationship at any time consistent with <<xr:ea_atwill>>. On separation, the Company shall pay all wages owed, including accrued and unused vacation where it is treated as wages in {{opStateLong}}, within the period that state requires. The {{workerLabel}} shall return all Company property and confidential material on or before their last day."},
-
-    {"id":"ea_severance","doc":"employment-agreement","group":"Separation","title":"Severance","severity":"optional","insertion":"suggest","condition":null,
-     "jurisdictions":["*"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"DRAFT standard library",
-     "benchmark":"Present in 29% of non-executive employment agreements",
-     "rationale":"Conditioning severance on a signed release is the entire point of offering it. Severance paid without a release buys nothing.",
-     "body":"If the Company terminates employment without Cause, and subject to the {{workerLabel}} signing and not revoking a general release of claims in the Company’s standard form, the Company shall pay [number] weeks of base compensation as severance on its regular payroll schedule. No severance is payable on resignation or termination for Cause."},
-
-    {"id":"ea_return_property","doc":"employment-agreement","group":"Separation","title":"Return of Property","severity":"recommended","insertion":"auto","condition":null,
-     "jurisdictions":["*"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-05","source":"DRAFT standard library",
-     "rationale":"Withholding a final paycheck until property is returned is unlawful in most states, which is why this obligation has to stand on its own.",
-     "body":"On separation or on request, the {{workerLabel}} shall return all Company equipment, credentials, records, and confidential material, and shall permanently delete Company data from personal devices and accounts. The Company may not withhold final wages to enforce this obligation."},
-
-    {"id":"ic_engagement","doc":"contractor-agreement","group":"Engagement","title":"Engagement and Independent Status","severity":"critical","insertion":"auto","condition":null,
-     "jurisdictions":["*"],"industries":["*"],"entities":["*"],"version":"1.1.0","updated":"2026-06","source":"DRAFT standard library",
-     "rationale":"Reciting independent status does not create it. Under California's ABC test in particular, work within the hiring entity's usual course of business is employment regardless of what the contract says.",
-     "body":"{{company}} engages {{roleTitle}} as an independent contractor. The Contractor controls the manner and means of performance, supplies their own equipment, may work for others, and is not eligible for Company benefits. This recital does not by itself establish independent status: the test applied in {{opStateLong}} governs, and where the work falls within the Company’s usual course of business the relationship is likely to be employment regardless of this agreement."},
-
-    {"id":"ic_scope","doc":"contractor-agreement","group":"Engagement","title":"Services","severity":"critical","insertion":"auto","condition":null,
-     "jurisdictions":["*"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"DRAFT standard library",
-     "rationale":"Describing deliverables rather than hours of availability is one of the factors that supports independent status.",
-     "body":"The Contractor shall provide the following services and deliverables: [describe by outcome rather than by hours of availability]. The Company may specify what is required and by when, but not the method, sequence, or hours of performance."},
-
-    {"id":"ic_no_control","doc":"contractor-agreement","group":"Engagement","title":"No Supervision or Integration","severity":"critical","insertion":"auto","condition":null,
-     "jurisdictions":["*"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"DRAFT standard library",
-     "rationale":"The behaviors listed here are the ones auditors treat as evidence of employment. Naming them is more useful than a status recital.",
-     "body":"The Contractor shall not be given a Company title, listed on the internal directory as an employee, required to attend employee meetings, given a fixed schedule, or asked to supervise employees. The Contractor shall not use Company email or systems except as required to deliver the services and subject to <<xr:ic_confidentiality>>."},
-
-    {"id":"ic_payment","doc":"contractor-agreement","group":"Payment","title":"Fees and Invoicing","severity":"critical","insertion":"auto","condition":null,
-     "jurisdictions":["*"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"DRAFT standard library",
-     "rationale":"Payment against invoice rather than on payroll is a factor supporting independent status, and it keeps the engagement out of the payroll system where it does not belong.",
-     "body":"The Company shall pay the Contractor [amount and basis] against invoice, within {{paymentDays}} days of receipt. The Contractor is not paid through payroll and shall submit invoices rather than timesheets. Several state statutes require prompt payment of contractors; late payment may carry a statutory penalty in {{opStateLong}}."},
-
-    {"id":"ic_taxes","doc":"contractor-agreement","group":"Payment","title":"Taxes and Insurance","severity":"critical","insertion":"auto","condition":null,
-     "jurisdictions":["*"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"DRAFT standard library",
-     "rationale":"If the classification is later challenged, unpaid employment taxes are assessed against the company regardless of what this clause says — but the insurance requirement is genuinely protective.",
-     "body":"The Contractor is responsible for all taxes on amounts paid, including self-employment tax, and shall provide a Form W-9. The Company will issue a Form 1099 where required. The Contractor shall maintain their own general liability and, where applicable, professional liability insurance, and shall provide a certificate on request."},
-
-    {"id":"ic_expenses","doc":"contractor-agreement","group":"Payment","title":"Expenses","severity":"optional","insertion":"suggest","condition":null,
-     "jurisdictions":["*"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-04","source":"DRAFT standard library",
-     "benchmark":"Present in 52% of contractor agreements",
-     "rationale":"Routinely reimbursing ordinary operating costs undercuts independent status, since bearing your own costs is one of the classification factors.",
-     "body":"The Contractor bears their own operating costs, including equipment and workspace. The Company shall reimburse only pre-approved, documented, project-specific expenses such as travel undertaken at the Company’s request."},
-
-    {"id":"ic_ip","doc":"contractor-agreement","group":"Ownership and Confidentiality","title":"Ownership of Work Product","severity":"critical","insertion":"auto","condition":null,
-     "jurisdictions":["*"],"industries":["*"],"entities":["*"],"version":"1.1.0","updated":"2026-06","source":"DRAFT standard library",
-     "rationale":"Work made for hire does not apply to most contractor output. Without an express assignment the contractor owns what the company paid for — the most common IP defect found in diligence.",
-     "body":"The Contractor assigns to the Company all right, title, and interest in the work product created under this agreement. Work by an independent contractor generally does not qualify as [[work made for hire]], so this express assignment — not the label — is what transfers ownership. The Contractor retains their pre-existing tools and methods and grants the Company a perpetual, non-exclusive licence to any of them embedded in the work product."},
-
-    {"id":"ic_confidentiality","doc":"contractor-agreement","group":"Ownership and Confidentiality","title":"Confidentiality","severity":"critical","insertion":"auto","condition":null,
-     "jurisdictions":["*"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"DRAFT standard library",
-     "rationale":"Contractors typically work for competitors too, which makes the confidentiality obligation more important here than in an employment agreement, not less.",
-     "body":"The Contractor shall hold Company confidential information in confidence during and after the engagement and shall not use it except to perform the services. Nothing in this section prohibits reporting a suspected violation of law to a government agency. The Contractor shall ensure any subcontractor is bound by equivalent obligations."},
-
-    {"id":"ic_subcontract","doc":"contractor-agreement","group":"Ownership and Confidentiality","title":"Subcontracting","severity":"recommended","insertion":"auto","condition":null,
-     "jurisdictions":["*"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-05","source":"DRAFT standard library",
-     "rationale":"The right to subcontract supports independent status, but an unflowed-down assignment breaks the IP chain at the subcontractor.",
-     "body":"The Contractor may engage subcontractors, provided each is bound in writing to obligations at least as protective as <<xr:ic_ip>> and <<xr:ic_confidentiality>>. The Contractor remains fully responsible for the work and for payment of its subcontractors."},
-
-    {"id":"ic_term","doc":"contractor-agreement","group":"Term","title":"Term and Termination","severity":"critical","insertion":"auto","condition":null,
-     "jurisdictions":["*"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"DRAFT standard library",
-     "rationale":"An indefinite engagement with no defined end is itself a classification risk factor.",
-     "body":"This agreement runs from {{date}} until the services are complete or until terminated by either party on {{cure}} days’ written notice. On termination the Company shall pay for services performed and accepted, and the Contractor shall deliver all work product, including work in progress, and return Company materials."},
-
-    {"id":"ic_no_benefits","doc":"contractor-agreement","group":"Term","title":"No Benefits or Employment Rights","severity":"recommended","insertion":"auto","condition":null,
-     "jurisdictions":["*"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"DRAFT standard library",
-     "rationale":"A waiver does not defeat a reclassification claim, but the acknowledgment is standard and the indemnity gives the company a modest position if one is brought.",
-     "body":"The Contractor is not eligible for Company benefits, paid leave, unemployment insurance, or workers’ compensation through the Company, and waives any claim to them for the period of this engagement. This waiver does not prevent a government agency from reclassifying the relationship, and the Company remains responsible for any assessment that results."},
-
-    {"id":"hb_welcome","doc":"handbook","group":"Introduction","title":"Purpose and No-Contract Statement","severity":"critical","insertion":"auto","condition":null,
-     "jurisdictions":["*"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"DRAFT standard library",
-     "rationale":"Handbook language promising process or progressive discipline is the most common way at-will status is accidentally given away.",
-     "body":"This handbook describes {{company}}’s current policies. It is not a contract and does not create any promise of continued employment or of any particular disciplinary process. Employment remains at-will as stated in <<xr:ea_atwill>>. The Company may change any policy at any time, and will communicate material changes in writing."},
-
-    {"id":"hb_ack","doc":"handbook","group":"Introduction","title":"Acknowledgment","severity":"recommended","insertion":"auto","condition":null,
-     "jurisdictions":["*"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-05","source":"DRAFT standard library",
-     "rationale":"A signed acknowledgment is what makes the policies admissible as notice, which matters in almost every employment claim.",
-     "body":"Each employee shall sign an acknowledgment confirming they received the handbook and understand that employment is at-will. The Company shall retain the signed acknowledgment and issue a new one whenever the handbook is materially revised."},
-
-    {"id":"hb_i9","doc":"handbook","group":"Introduction","title":"Work Authorization","severity":"critical","insertion":"auto","condition":null,
-     "jurisdictions":["*"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"8 U.S.C. §1324a",
-     "rationale":"The penalty attaches to the paperwork failure itself. Asking for specific documents from some employees and not others is a separate violation.",
-     "body":"The Company completes Form I-9 for every employee within three (3) business days of their first day of work, retains the forms separately from personnel files, and applies the same documentary requirements to all employees without regard to national origin or citizenship status."},
-
-    {"id":"hb_pay_schedule","doc":"handbook","group":"Time and Pay","title":"Pay Schedule and Wage Statements","severity":"critical","insertion":"auto","condition":null,
-     "jurisdictions":["*"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"DRAFT standard library",
-     "rationale":"Pay frequency is regulated by state and varies by classification. Wage statement content is separately regulated and separately actionable.",
-     "body":"Employees are paid on the Company’s regular schedule, at the frequency required by the law of {{opStateLong}}. Each payment is accompanied by an itemized wage statement showing gross wages, hours worked for non-exempt employees, all deductions, net wages, the pay period, and the Company’s legal name and address."},
-
-    {"id":"hb_timekeeping","doc":"handbook","group":"Time and Pay","title":"Timekeeping","severity":"critical","insertion":"auto","condition":null,
-     "jurisdictions":["*"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"DRAFT standard library",
-     "rationale":"Where records are missing or unreliable, the employee's estimate generally governs. Accurate records are the employer's only real defense.",
-     "body":"Non-exempt employees shall record all time worked, including time worked remotely or outside scheduled hours. Managers shall not ask or permit an employee to work off the clock. Where timekeeping records are incomplete, an employee’s reasonable estimate of hours worked will generally be accepted in a wage claim."},
-
-    {"id":"hb_meal_rest","doc":"handbook","group":"Time and Pay","title":"Meal and Rest Periods","severity":"critical","insertion":"auto","condition":{"eq":["opState","CA"]},
-     "jurisdictions":["CA"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"Cal. Lab. Code §512; IWC Wage Orders",
-     "rationale":"California meal and rest violations each carry a one-hour premium per day, and they are the most frequently litigated wage claims in the state.",
-     "body":"Non-exempt employees receive an unpaid, uninterrupted thirty (30) minute meal period beginning no later than the end of the fifth hour of work, a second meal period for shifts over ten (10) hours, and a paid ten (10) minute rest period for every four (4) hours worked or major fraction. A missed, late, or interrupted meal or rest period entitles the employee to one additional hour of pay at the regular rate."},
-
-    {"id":"hb_conduct","doc":"handbook","group":"Conduct","title":"Standards of Conduct","severity":"recommended","insertion":"auto","condition":null,
-     "jurisdictions":["*"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-05","source":"DRAFT standard library",
-     "rationale":"Listing offenses as examples rather than as an exhaustive schedule is what preserves at-will discretion.",
-     "body":"The Company expects honesty, professionalism, and respect. Conduct that may result in discipline up to and including termination includes dishonesty, harassment, violence or threats, theft, unauthorized disclosure of confidential information, and violation of safety rules. These are examples, not an exhaustive list, and the Company is not required to follow progressive discipline."},
-
-    {"id":"hb_harassment","doc":"handbook","group":"Conduct","title":"Anti-Harassment and Anti-Retaliation","severity":"critical","insertion":"auto","condition":null,
-     "jurisdictions":["*"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"DRAFT standard library",
-     "rationale":"A policy with a single reporting channel that runs through the employee's manager fails in exactly the cases it exists for.",
-     "body":"The Company prohibits harassment and discrimination based on any protected characteristic, and prohibits retaliation against anyone who reports a concern or participates in an investigation. Reports may be made to any manager, to the {{principalTitle}}, or through the alternate channel identified in the handbook — at least one channel does not run through the employee’s direct manager. The Company investigates promptly and communicates the outcome."},
-
-    {"id":"hb_training","doc":"handbook","group":"Conduct","title":"Required Training","severity":"recommended","insertion":"auto","condition":{"in":["opState",["CA","NY"]]},
-     "jurisdictions":["CA","NY"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"DRAFT standard library",
-     "rationale":"Both states mandate harassment prevention training at low headcount thresholds, with separate content and frequency requirements for supervisors.",
-     "body":"The Company provides the harassment prevention training required by {{opStateLong}} at the intervals and headcount thresholds that state specifies, including separate supervisor training where required, and retains records of completion."},
-
-    {"id":"hb_technology","doc":"handbook","group":"Conduct","title":"Technology and Monitoring","severity":"recommended","insertion":"auto","condition":null,
-     "jurisdictions":["*"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"DRAFT standard library",
-     "rationale":"Several states require advance written notice before monitoring employee electronic communications, and notice given after the fact does not cure it.",
-     "body":"Company systems are provided for business use. Employees should have no expectation of privacy in data stored on or transmitted through Company systems, and the Company may monitor them consistent with the law of {{opStateLong}}, which may require advance written notice. Employees shall not store Company confidential information in personal accounts."},
-
-    {"id":"hb_leave_sick","doc":"handbook","group":"Leave","title":"Paid Sick Leave","severity":"critical","insertion":"auto","condition":{"in":["opState",["CA","NY"]]},
-     "jurisdictions":["CA","NY"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"DRAFT standard library",
-     "rationale":"Mandatory in both states at low employee counts, with accrual and carryover mechanics that differ from vacation and cannot be merged into a single PTO bucket without care.",
-     "body":"Employees accrue paid sick leave as required by the law of {{opStateLong}}, beginning on the first day of employment and available for use as that law provides. Sick leave is tracked separately from vacation. The Company does not require a doctor’s note except where that law permits, and does not count protected sick leave use against attendance."},
-
-    {"id":"hb_leave_vacation","doc":"handbook","group":"Leave","title":"Vacation and PTO","severity":"critical","insertion":"auto","condition":null,
-     "jurisdictions":["*"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"DRAFT standard library",
-     "rationale":"In states treating accrued vacation as wages, a use-it-or-lose-it policy is unenforceable and produces a wage claim at every departure.",
-     "body":"Employees accrue vacation as described in the handbook. Where the law of {{opStateLong}} treats accrued vacation as wages, it is not forfeited and is paid out at separation as provided in <<xr:ea_termination>>; accrual may be capped but not lost. An unlimited-PTO policy avoids accrual but must be administered so that employees actually take leave, or it will be treated as an accrual policy in substance."},
-
-    {"id":"hb_leave_statutory","doc":"handbook","group":"Leave","title":"Statutory and Protected Leave","severity":"recommended","insertion":"auto","condition":null,
-     "jurisdictions":["*"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"DRAFT standard library",
-     "rationale":"Leave entitlements attach at headcount thresholds a growing company crosses without noticing, and the obligation begins the day the threshold is met.",
-     "body":"The Company provides all leave required by federal law and the law of {{opStateLong}}, including family and medical leave, pregnancy disability leave, jury duty, voting leave, and military leave, at the headcount thresholds each law specifies. Employees on protected leave retain their benefits and their position to the extent the applicable law requires."},
-
-    {"id":"hb_accommodation","doc":"handbook","group":"Leave","title":"Reasonable Accommodation","severity":"critical","insertion":"auto","condition":null,
-     "jurisdictions":["*"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"DRAFT standard library",
-     "rationale":"Failure to engage in the interactive process is itself an independent violation in several states, separate from whether an accommodation was ultimately owed.",
-     "body":"The Company provides reasonable accommodation for disability, pregnancy, and religious practice, and engages in a timely, good-faith interactive process on request. Failure to engage in that process can be a violation independent of whether an accommodation was ultimately required. Requests may be made to any manager or to the {{principalTitle}}."}
-  ]
+ "$comment": "Hiring package. The employee and contractor paths are mutually exclusive by design: the clauses that make an employment agreement safe are the same ones that make a contractor agreement evidence of misclassification.",
+ "collection": "hiring",
+ "version": "1.0.0",
+ "clauses": [
+  {
+   "id": "ea_position",
+   "doc": "employment-agreement",
+   "group": "Position and Term",
+   "title": "Position and Duties",
+   "severity": "critical",
+   "insertion": "auto",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "rationale": "The duties description is what the exempt classification analysis is later measured against, so it should describe the work honestly rather than aspirationally.",
+   "body": "{{company}} employs the {{workerLabel}} as {{roleTitle}}, reporting to the {{principalTitle}} or their designee. The {{workerLabel}} shall devote their full business time and attention to the Company and shall perform the duties customarily associated with the role together with such other duties as are reasonably assigned.",
+   "sources": [],
+   "verification": "unsourced"
+  },
+  {
+   "id": "ea_atwill",
+   "doc": "employment-agreement",
+   "group": "Position and Term",
+   "title": "At-Will Employment",
+   "severity": "critical",
+   "insertion": "auto",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.1.0",
+   "updated": "2026-06",
+   "rationale": "An agreement that recites a term and also claims at-will status is internally inconsistent, and courts resolve that inconsistency against the drafter.",
+   "body": "Employment is [[at-will employment|at-will employment]] and may be terminated by either party at any time, with or without cause or notice. No statement in this agreement, in any policy, or by any manager creates a fixed term or a promise of continued employment, and this status may be changed only in a writing signed by the {{principalTitle}}.",
+   "sources": [],
+   "verification": "unsourced"
+  },
+  {
+   "id": "ea_start",
+   "doc": "employment-agreement",
+   "group": "Position and Term",
+   "title": "Start Date and Contingencies",
+   "severity": "recommended",
+   "insertion": "auto",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "rationale": "Background checks and work authorization must be stated as conditions in advance. Applying them after the start date creates a different and worse problem.",
+   "body": "Employment begins on {{date}}, contingent on satisfactory completion of a background check where permitted by the law of {{opStateLong}}, verification of work authorization under <<xr:hb_i9>>, and execution of the confidentiality and invention assignment agreement referenced in <<xr:ea_ip>>.",
+   "sources": [],
+   "verification": "unsourced"
+  },
+  {
+   "id": "ea_location",
+   "doc": "employment-agreement",
+   "group": "Position and Term",
+   "title": "Work Location",
+   "severity": "recommended",
+   "insertion": "auto",
+   "condition": {
+    "rule": "remote_worker"
+   },
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "rationale": "A remote hire creates payroll registration, withholding, and often income tax nexus in their state. An unapproved relocation creates all of that without notice.",
+   "body": "The {{workerLabel}} will work remotely. The {{workerLabel}} shall notify the Company before relocating to another state, and the Company may decline a relocation that would create registration, tax, or licensing obligations it is not prepared to assume. The terms of employment, including pay practices and leave, follow the law of the state in which the {{workerLabel}} actually performs work.",
+   "sources": [],
+   "verification": "unsourced"
+  },
+  {
+   "id": "ea_compensation",
+   "doc": "employment-agreement",
+   "group": "Compensation",
+   "title": "Compensation",
+   "severity": "critical",
+   "insertion": "auto",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "rationale": "Several states require a written wage notice at hire stating rate, basis, and pay schedule. This clause is that notice.",
+   "body": "The {{workerLabel}} will be paid {{payDescription}}, less lawful withholdings, on the Company’s regular payroll schedule. Compensation is {{compTypeName}} and is subject to review and adjustment by the Company. Any change to the rate will be provided in writing before it takes effect.",
+   "sources": [],
+   "verification": "unsourced"
+  },
+  {
+   "id": "ea_classification",
+   "doc": "employment-agreement",
+   "group": "Compensation",
+   "title": "Classification",
+   "severity": "critical",
+   "insertion": "auto",
+   "condition": {
+    "rule": "salaried_worker"
+   },
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "rationale": "Salary is only one half of the exempt test. The duties test is where misclassification claims are actually won and lost, and paying a salary does not settle it.",
+   "body": "The Company has classified this role as [[exempt employee|exempt employee]] based on the duties in <<xr:ea_position>> and the compensation in <<xr:ea_compensation>>. Salary alone does not establish exempt status; the duties test must also be met. The Company will review this classification if the duties change materially.",
+   "sources": [],
+   "verification": "unsourced"
+  },
+  {
+   "id": "ea_overtime",
+   "doc": "employment-agreement",
+   "group": "Compensation",
+   "title": "Overtime and Timekeeping",
+   "severity": "critical",
+   "insertion": "auto",
+   "condition": {
+    "rule": "hourly_worker"
+   },
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "rationale": "Unauthorized overtime is still payable. Discipline for working it is permissible; refusing to pay for it is not, and the distinction is where employers most often go wrong.",
+   "body": "This role is non-exempt. The {{workerLabel}} shall record all hours worked accurately and shall be paid overtime as required by federal law and the law of {{opStateLong}}. Overtime requires advance approval, but all overtime actually worked will be paid whether or not it was approved.",
+   "sources": [],
+   "verification": "unsourced"
+  },
+  {
+   "id": "ea_bonus",
+   "doc": "employment-agreement",
+   "group": "Compensation",
+   "title": "Bonus",
+   "severity": "recommended",
+   "insertion": "suggest",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "benchmark": "Present in 63% of employment agreements",
+   "rationale": "Whether a bonus is discretionary or earned determines whether it is owed on departure. Several states treat an earned bonus as wages, with penalties for non-payment.",
+   "body": "The {{workerLabel}} may be eligible for a discretionary annual bonus targeted at [percentage] of base compensation, based on individual and Company performance. Any bonus is discretionary, is not earned until paid, and requires active employment on the payment date, except where the law of {{opStateLong}} provides otherwise.",
+   "sources": [],
+   "verification": "unsourced"
+  },
+  {
+   "id": "ea_equity",
+   "doc": "employment-agreement",
+   "group": "Compensation",
+   "title": "Equity Award",
+   "severity": "critical",
+   "insertion": "auto",
+   "condition": {
+    "rule": "equity_grant"
+   },
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "rationale": "An offer letter cannot grant equity — only the board can. Promising a grant without the approval language creates a commitment the company may not be able to honor on the stated terms.",
+   "body": "Subject to approval by the Board, the {{workerLabel}} will be granted an award of [number] shares under the Company’s equity incentive plan, vesting over {{vestYears}} years with a {{cliff}}-month [[cliff]] and subject to the plan and award agreement, which control in the event of conflict. The exercise price will be the fair market value on the grant date as determined by the Board. Nothing in this paragraph is a grant.",
+   "sources": [],
+   "verification": "unsourced"
+  },
+  {
+   "id": "ea_83b_notice",
+   "doc": "employment-agreement",
+   "group": "Compensation",
+   "title": "Tax Election Notice",
+   "severity": "recommended",
+   "insertion": "auto",
+   "condition": {
+    "rule": "equity_grant"
+   },
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "rationale": "The company cannot file the election for the employee, but the deadline is short enough that failing to flag it reliably causes real harm.",
+   "body": "If the award in <<xr:ea_equity>> takes the form of restricted stock rather than an option, a [[Section 83(b) election|section 83(b) election]] must be filed with the IRS within thirty (30) days of grant. The Company cannot make this filing on the {{workerLabel}}’s behalf and recommends they consult their own tax advisor. There is no cure for a late filing.",
+   "sources": [],
+   "verification": "unsourced"
+  },
+  {
+   "id": "ea_benefits",
+   "doc": "employment-agreement",
+   "group": "Compensation",
+   "title": "Benefits",
+   "severity": "recommended",
+   "insertion": "auto",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-05",
+   "rationale": "Describing benefits as an entitlement in the agreement rather than by reference to the plan documents can create a contractual obligation that outlives the plan.",
+   "body": "The {{workerLabel}} is eligible to participate in the benefit plans the Company makes generally available to similarly situated employees, subject to the terms of those plans. The Company may modify or discontinue any plan at any time. Plan documents control over any description in this agreement.",
+   "sources": [],
+   "verification": "unsourced"
+  },
+  {
+   "id": "ea_expenses",
+   "doc": "employment-agreement",
+   "group": "Compensation",
+   "title": "Expense Reimbursement",
+   "severity": "recommended",
+   "insertion": "auto",
+   "condition": {
+    "any": [
+     {
+      "rule": "remote_worker"
+     },
+     {
+      "eq": [
+       "opState",
+       "CA"
+      ]
+     }
+    ]
+   },
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "rationale": "California requires reimbursement of necessary business expenses, and remote work makes home internet and phone use a live question rather than a theoretical one.",
+   "body": "The Company shall reimburse necessary business expenses, including the reasonable business portion of home internet and mobile phone charges where the {{workerLabel}} works remotely, on submission of documentation. This obligation is required by law in California and applies regardless of any Company policy to the contrary.",
+   "sources": [
+    {
+     "citation": "Cal. Lab. Code §2802",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    }
+   ],
+   "verification": "single-source"
+  },
+  {
+   "id": "ea_ip",
+   "doc": "employment-agreement",
+   "group": "Obligations",
+   "title": "Confidentiality and Invention Assignment",
+   "severity": "critical",
+   "insertion": "auto",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "rationale": "An assignment signed after work begins may lack consideration in some states. Making it a condition of the start date is what avoids that question.",
+   "body": "As a condition of employment, the {{workerLabel}} shall sign the Company’s confidentiality and invention assignment agreement before their first day of work. That agreement assigns to the Company all inventions and works created within the scope of employment, subject to any statutory carve-out required in {{opStateLong}}, and survives the end of employment.",
+   "sources": [],
+   "verification": "unsourced"
+  },
+  {
+   "id": "ea_noncompete_void",
+   "doc": "employment-agreement",
+   "group": "Obligations",
+   "title": "No Non-Compete",
+   "severity": "critical",
+   "insertion": "auto",
+   "condition": {
+    "eq": [
+     "opState",
+     "CA"
+    ]
+   },
+   "jurisdictions": [
+    "CA"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "rationale": "Since AB 1076 it is unlawful to include or attempt to enforce a non-compete against a California employee, regardless of the governing law the agreement names.",
+   "body": "This agreement contains no non-compete or customer non-solicitation covenant. Such provisions are void under California law and it is unlawful to include or attempt to enforce them, regardless of where the agreement is signed or which state’s law it names. The Company relies on the confidentiality and invention assignment obligations in <<xr:ea_ip>> instead.",
+   "sources": [
+    {
+     "citation": "Cal. Bus. & Prof. Code §16600",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    },
+    {
+     "citation": "AB 1076",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    }
+   ],
+   "verification": "multi-cited"
+  },
+  {
+   "id": "ea_nonsolicit",
+   "doc": "employment-agreement",
+   "group": "Obligations",
+   "title": "Non-Solicitation",
+   "severity": "recommended",
+   "insertion": "suggest",
+   "condition": {
+    "ne": [
+     "opState",
+     "CA"
+    ]
+   },
+   "jurisdictions": [
+    "DE",
+    "TX",
+    "FL",
+    "NY"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "benchmark": "Present in 57% of employment agreements outside California",
+   "rationale": "Enforceability turns on duration and scope, and courts in several of these states will narrow rather than strike an overbroad clause — but not all of them will.",
+   "body": "For twelve (12) months after employment ends, the {{workerLabel}} shall not solicit any employee of the Company to leave, or solicit any customer they served or learned confidential information about during the final twelve (12) months of employment, for the purpose of providing competing services. This does not restrict general advertising or a customer’s own decision to follow.",
+   "sources": [],
+   "verification": "unsourced"
+  },
+  {
+   "id": "ea_outside_activity",
+   "doc": "employment-agreement",
+   "group": "Obligations",
+   "title": "Outside Activities",
+   "severity": "recommended",
+   "insertion": "suggest",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "benchmark": "Present in 68% of employment agreements",
+   "rationale": "A blanket ban on outside work is unlawful in several states and unenforceable against lawful off-duty conduct. A conflict-of-interest standard achieves the real objective.",
+   "body": "The {{workerLabel}} may engage in outside activities that do not conflict with their duties, do not compete with the Company, and do not use Company time, equipment, or confidential information. The {{workerLabel}} shall disclose any outside activity that could reasonably be seen as a conflict. This does not restrict lawful off-duty conduct protected by the law of {{opStateLong}}.",
+   "sources": [],
+   "verification": "unsourced"
+  },
+  {
+   "id": "ea_prior_obligations",
+   "doc": "employment-agreement",
+   "group": "Obligations",
+   "title": "No Conflicting Obligations",
+   "severity": "critical",
+   "insertion": "auto",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "rationale": "Hiring someone who brings a former employer's material with them transfers that problem to the Company. This representation is where it surfaces first.",
+   "body": "The {{workerLabel}} represents that they are not bound by any agreement that would prevent them from performing this role, that they will not use or bring any former employer’s confidential information onto Company systems, and that they will notify the Company immediately if a former employer asserts a claim relating to their employment here.",
+   "sources": [],
+   "verification": "unsourced"
+  },
+  {
+   "id": "ea_termination",
+   "doc": "employment-agreement",
+   "group": "Separation",
+   "title": "Termination and Final Pay",
+   "severity": "critical",
+   "insertion": "auto",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "rationale": "Final pay timing is statutory and unforgiving. California in particular assesses a waiting time penalty of a full day of wages per day late.",
+   "body": "Either party may end the employment relationship at any time consistent with <<xr:ea_atwill>>. On separation, the Company shall pay all wages owed, including accrued and unused vacation where it is treated as wages in {{opStateLong}}, within the period that state requires. The {{workerLabel}} shall return all Company property and confidential material on or before their last day.",
+   "sources": [],
+   "verification": "unsourced"
+  },
+  {
+   "id": "ea_severance",
+   "doc": "employment-agreement",
+   "group": "Separation",
+   "title": "Severance",
+   "severity": "optional",
+   "insertion": "suggest",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "benchmark": "Present in 29% of non-executive employment agreements",
+   "rationale": "Conditioning severance on a signed release is the entire point of offering it. Severance paid without a release buys nothing.",
+   "body": "If the Company terminates employment without Cause, and subject to the {{workerLabel}} signing and not revoking a general release of claims in the Company’s standard form, the Company shall pay [number] weeks of base compensation as severance on its regular payroll schedule. No severance is payable on resignation or termination for Cause.",
+   "sources": [],
+   "verification": "unsourced"
+  },
+  {
+   "id": "ea_return_property",
+   "doc": "employment-agreement",
+   "group": "Separation",
+   "title": "Return of Property",
+   "severity": "recommended",
+   "insertion": "auto",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-05",
+   "rationale": "Withholding a final paycheck until property is returned is unlawful in most states, which is why this obligation has to stand on its own.",
+   "body": "On separation or on request, the {{workerLabel}} shall return all Company equipment, credentials, records, and confidential material, and shall permanently delete Company data from personal devices and accounts. The Company may not withhold final wages to enforce this obligation.",
+   "sources": [],
+   "verification": "unsourced"
+  },
+  {
+   "id": "ic_engagement",
+   "doc": "contractor-agreement",
+   "group": "Engagement",
+   "title": "Engagement and Independent Status",
+   "severity": "critical",
+   "insertion": "auto",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.1.0",
+   "updated": "2026-06",
+   "rationale": "Reciting independent status does not create it. Under California's ABC test in particular, work within the hiring entity's usual course of business is employment regardless of what the contract says.",
+   "body": "{{company}} engages {{roleTitle}} as an independent contractor. The Contractor controls the manner and means of performance, supplies their own equipment, may work for others, and is not eligible for Company benefits. This recital does not by itself establish independent status: the test applied in {{opStateLong}} governs, and where the work falls within the Company’s usual course of business the relationship is likely to be employment regardless of this agreement.",
+   "sources": [],
+   "verification": "unsourced"
+  },
+  {
+   "id": "ic_scope",
+   "doc": "contractor-agreement",
+   "group": "Engagement",
+   "title": "Services",
+   "severity": "critical",
+   "insertion": "auto",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "rationale": "Describing deliverables rather than hours of availability is one of the factors that supports independent status.",
+   "body": "The Contractor shall provide the following services and deliverables: [describe by outcome rather than by hours of availability]. The Company may specify what is required and by when, but not the method, sequence, or hours of performance.",
+   "sources": [],
+   "verification": "unsourced"
+  },
+  {
+   "id": "ic_no_control",
+   "doc": "contractor-agreement",
+   "group": "Engagement",
+   "title": "No Supervision or Integration",
+   "severity": "critical",
+   "insertion": "auto",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "rationale": "The behaviors listed here are the ones auditors treat as evidence of employment. Naming them is more useful than a status recital.",
+   "body": "The Contractor shall not be given a Company title, listed on the internal directory as an employee, required to attend employee meetings, given a fixed schedule, or asked to supervise employees. The Contractor shall not use Company email or systems except as required to deliver the services and subject to <<xr:ic_confidentiality>>.",
+   "sources": [],
+   "verification": "unsourced"
+  },
+  {
+   "id": "ic_payment",
+   "doc": "contractor-agreement",
+   "group": "Payment",
+   "title": "Fees and Invoicing",
+   "severity": "critical",
+   "insertion": "auto",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "rationale": "Payment against invoice rather than on payroll is a factor supporting independent status, and it keeps the engagement out of the payroll system where it does not belong.",
+   "body": "The Company shall pay the Contractor [amount and basis] against invoice, within {{paymentDays}} days of receipt. The Contractor is not paid through payroll and shall submit invoices rather than timesheets. Several state statutes require prompt payment of contractors; late payment may carry a statutory penalty in {{opStateLong}}.",
+   "sources": [],
+   "verification": "unsourced"
+  },
+  {
+   "id": "ic_taxes",
+   "doc": "contractor-agreement",
+   "group": "Payment",
+   "title": "Taxes and Insurance",
+   "severity": "critical",
+   "insertion": "auto",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "rationale": "If the classification is later challenged, unpaid employment taxes are assessed against the company regardless of what this clause says — but the insurance requirement is genuinely protective.",
+   "body": "The Contractor is responsible for all taxes on amounts paid, including self-employment tax, and shall provide a Form W-9. The Company will issue a Form 1099 where required. The Contractor shall maintain their own general liability and, where applicable, professional liability insurance, and shall provide a certificate on request.",
+   "sources": [],
+   "verification": "unsourced"
+  },
+  {
+   "id": "ic_expenses",
+   "doc": "contractor-agreement",
+   "group": "Payment",
+   "title": "Expenses",
+   "severity": "optional",
+   "insertion": "suggest",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-04",
+   "benchmark": "Present in 52% of contractor agreements",
+   "rationale": "Routinely reimbursing ordinary operating costs undercuts independent status, since bearing your own costs is one of the classification factors.",
+   "body": "The Contractor bears their own operating costs, including equipment and workspace. The Company shall reimburse only pre-approved, documented, project-specific expenses such as travel undertaken at the Company’s request.",
+   "sources": [],
+   "verification": "unsourced"
+  },
+  {
+   "id": "ic_ip",
+   "doc": "contractor-agreement",
+   "group": "Ownership and Confidentiality",
+   "title": "Ownership of Work Product",
+   "severity": "critical",
+   "insertion": "auto",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.1.0",
+   "updated": "2026-06",
+   "rationale": "Work made for hire does not apply to most contractor output. Without an express assignment the contractor owns what the company paid for — the most common IP defect found in diligence.",
+   "body": "The Contractor assigns to the Company all right, title, and interest in the work product created under this agreement. Work by an independent contractor generally does not qualify as [[work made for hire]], so this express assignment — not the label — is what transfers ownership. The Contractor retains their pre-existing tools and methods and grants the Company a perpetual, non-exclusive licence to any of them embedded in the work product.",
+   "sources": [],
+   "verification": "unsourced"
+  },
+  {
+   "id": "ic_confidentiality",
+   "doc": "contractor-agreement",
+   "group": "Ownership and Confidentiality",
+   "title": "Confidentiality",
+   "severity": "critical",
+   "insertion": "auto",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "rationale": "Contractors typically work for competitors too, which makes the confidentiality obligation more important here than in an employment agreement, not less.",
+   "body": "The Contractor shall hold Company confidential information in confidence during and after the engagement and shall not use it except to perform the services. Nothing in this section prohibits reporting a suspected violation of law to a government agency. The Contractor shall ensure any subcontractor is bound by equivalent obligations.",
+   "sources": [],
+   "verification": "unsourced"
+  },
+  {
+   "id": "ic_subcontract",
+   "doc": "contractor-agreement",
+   "group": "Ownership and Confidentiality",
+   "title": "Subcontracting",
+   "severity": "recommended",
+   "insertion": "auto",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-05",
+   "rationale": "The right to subcontract supports independent status, but an unflowed-down assignment breaks the IP chain at the subcontractor.",
+   "body": "The Contractor may engage subcontractors, provided each is bound in writing to obligations at least as protective as <<xr:ic_ip>> and <<xr:ic_confidentiality>>. The Contractor remains fully responsible for the work and for payment of its subcontractors.",
+   "sources": [],
+   "verification": "unsourced"
+  },
+  {
+   "id": "ic_term",
+   "doc": "contractor-agreement",
+   "group": "Term",
+   "title": "Term and Termination",
+   "severity": "critical",
+   "insertion": "auto",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "rationale": "An indefinite engagement with no defined end is itself a classification risk factor.",
+   "body": "This agreement runs from {{date}} until the services are complete or until terminated by either party on {{cure}} days’ written notice. On termination the Company shall pay for services performed and accepted, and the Contractor shall deliver all work product, including work in progress, and return Company materials.",
+   "sources": [],
+   "verification": "unsourced"
+  },
+  {
+   "id": "ic_no_benefits",
+   "doc": "contractor-agreement",
+   "group": "Term",
+   "title": "No Benefits or Employment Rights",
+   "severity": "recommended",
+   "insertion": "auto",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "rationale": "A waiver does not defeat a reclassification claim, but the acknowledgment is standard and the indemnity gives the company a modest position if one is brought.",
+   "body": "The Contractor is not eligible for Company benefits, paid leave, unemployment insurance, or workers’ compensation through the Company, and waives any claim to them for the period of this engagement. This waiver does not prevent a government agency from reclassifying the relationship, and the Company remains responsible for any assessment that results.",
+   "sources": [],
+   "verification": "unsourced"
+  },
+  {
+   "id": "hb_welcome",
+   "doc": "handbook",
+   "group": "Introduction",
+   "title": "Purpose and No-Contract Statement",
+   "severity": "critical",
+   "insertion": "auto",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "rationale": "Handbook language promising process or progressive discipline is the most common way at-will status is accidentally given away.",
+   "body": "This handbook describes {{company}}’s current policies. It is not a contract and does not create any promise of continued employment or of any particular disciplinary process. Employment remains at-will as stated in <<xr:ea_atwill>>. The Company may change any policy at any time, and will communicate material changes in writing.",
+   "sources": [],
+   "verification": "unsourced"
+  },
+  {
+   "id": "hb_ack",
+   "doc": "handbook",
+   "group": "Introduction",
+   "title": "Acknowledgment",
+   "severity": "recommended",
+   "insertion": "auto",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-05",
+   "rationale": "A signed acknowledgment is what makes the policies admissible as notice, which matters in almost every employment claim.",
+   "body": "Each employee shall sign an acknowledgment confirming they received the handbook and understand that employment is at-will. The Company shall retain the signed acknowledgment and issue a new one whenever the handbook is materially revised.",
+   "sources": [],
+   "verification": "unsourced"
+  },
+  {
+   "id": "hb_i9",
+   "doc": "handbook",
+   "group": "Introduction",
+   "title": "Work Authorization",
+   "severity": "critical",
+   "insertion": "auto",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "rationale": "The penalty attaches to the paperwork failure itself. Asking for specific documents from some employees and not others is a separate violation.",
+   "body": "The Company completes Form I-9 for every employee within three (3) business days of their first day of work, retains the forms separately from personnel files, and applies the same documentary requirements to all employees without regard to national origin or citizenship status.",
+   "sources": [
+    {
+     "citation": "8 U.S.C. §1324a",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    }
+   ],
+   "verification": "single-source"
+  },
+  {
+   "id": "hb_pay_schedule",
+   "doc": "handbook",
+   "group": "Time and Pay",
+   "title": "Pay Schedule and Wage Statements",
+   "severity": "critical",
+   "insertion": "auto",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "rationale": "Pay frequency is regulated by state and varies by classification. Wage statement content is separately regulated and separately actionable.",
+   "body": "Employees are paid on the Company’s regular schedule, at the frequency required by the law of {{opStateLong}}. Each payment is accompanied by an itemized wage statement showing gross wages, hours worked for non-exempt employees, all deductions, net wages, the pay period, and the Company’s legal name and address.",
+   "sources": [],
+   "verification": "unsourced"
+  },
+  {
+   "id": "hb_timekeeping",
+   "doc": "handbook",
+   "group": "Time and Pay",
+   "title": "Timekeeping",
+   "severity": "critical",
+   "insertion": "auto",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "rationale": "Where records are missing or unreliable, the employee's estimate generally governs. Accurate records are the employer's only real defense.",
+   "body": "Non-exempt employees shall record all time worked, including time worked remotely or outside scheduled hours. Managers shall not ask or permit an employee to work off the clock. Where timekeeping records are incomplete, an employee’s reasonable estimate of hours worked will generally be accepted in a wage claim.",
+   "sources": [],
+   "verification": "unsourced"
+  },
+  {
+   "id": "hb_meal_rest",
+   "doc": "handbook",
+   "group": "Time and Pay",
+   "title": "Meal and Rest Periods",
+   "severity": "critical",
+   "insertion": "auto",
+   "condition": {
+    "eq": [
+     "opState",
+     "CA"
+    ]
+   },
+   "jurisdictions": [
+    "CA"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "rationale": "California meal and rest violations each carry a one-hour premium per day, and they are the most frequently litigated wage claims in the state.",
+   "body": "Non-exempt employees receive an unpaid, uninterrupted thirty (30) minute meal period beginning no later than the end of the fifth hour of work, a second meal period for shifts over ten (10) hours, and a paid ten (10) minute rest period for every four (4) hours worked or major fraction. A missed, late, or interrupted meal or rest period entitles the employee to one additional hour of pay at the regular rate.",
+   "sources": [
+    {
+     "citation": "Cal. Lab. Code §512",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    },
+    {
+     "citation": "IWC Wage Orders",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    }
+   ],
+   "verification": "multi-cited"
+  },
+  {
+   "id": "hb_conduct",
+   "doc": "handbook",
+   "group": "Conduct",
+   "title": "Standards of Conduct",
+   "severity": "recommended",
+   "insertion": "auto",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-05",
+   "rationale": "Listing offenses as examples rather than as an exhaustive schedule is what preserves at-will discretion.",
+   "body": "The Company expects honesty, professionalism, and respect. Conduct that may result in discipline up to and including termination includes dishonesty, harassment, violence or threats, theft, unauthorized disclosure of confidential information, and violation of safety rules. These are examples, not an exhaustive list, and the Company is not required to follow progressive discipline.",
+   "sources": [],
+   "verification": "unsourced"
+  },
+  {
+   "id": "hb_harassment",
+   "doc": "handbook",
+   "group": "Conduct",
+   "title": "Anti-Harassment and Anti-Retaliation",
+   "severity": "critical",
+   "insertion": "auto",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "rationale": "A policy with a single reporting channel that runs through the employee's manager fails in exactly the cases it exists for.",
+   "body": "The Company prohibits harassment and discrimination based on any protected characteristic, and prohibits retaliation against anyone who reports a concern or participates in an investigation. Reports may be made to any manager, to the {{principalTitle}}, or through the alternate channel identified in the handbook — at least one channel does not run through the employee’s direct manager. The Company investigates promptly and communicates the outcome.",
+   "sources": [],
+   "verification": "unsourced"
+  },
+  {
+   "id": "hb_training",
+   "doc": "handbook",
+   "group": "Conduct",
+   "title": "Required Training",
+   "severity": "recommended",
+   "insertion": "auto",
+   "condition": {
+    "in": [
+     "opState",
+     [
+      "CA",
+      "NY"
+     ]
+    ]
+   },
+   "jurisdictions": [
+    "CA",
+    "NY"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "rationale": "Both states mandate harassment prevention training at low headcount thresholds, with separate content and frequency requirements for supervisors.",
+   "body": "The Company provides the harassment prevention training required by {{opStateLong}} at the intervals and headcount thresholds that state specifies, including separate supervisor training where required, and retains records of completion.",
+   "sources": [],
+   "verification": "unsourced"
+  },
+  {
+   "id": "hb_technology",
+   "doc": "handbook",
+   "group": "Conduct",
+   "title": "Technology and Monitoring",
+   "severity": "recommended",
+   "insertion": "auto",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "rationale": "Several states require advance written notice before monitoring employee electronic communications, and notice given after the fact does not cure it.",
+   "body": "Company systems are provided for business use. Employees should have no expectation of privacy in data stored on or transmitted through Company systems, and the Company may monitor them consistent with the law of {{opStateLong}}, which may require advance written notice. Employees shall not store Company confidential information in personal accounts.",
+   "sources": [],
+   "verification": "unsourced"
+  },
+  {
+   "id": "hb_leave_sick",
+   "doc": "handbook",
+   "group": "Leave",
+   "title": "Paid Sick Leave",
+   "severity": "critical",
+   "insertion": "auto",
+   "condition": {
+    "in": [
+     "opState",
+     [
+      "CA",
+      "NY"
+     ]
+    ]
+   },
+   "jurisdictions": [
+    "CA",
+    "NY"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "rationale": "Mandatory in both states at low employee counts, with accrual and carryover mechanics that differ from vacation and cannot be merged into a single PTO bucket without care.",
+   "body": "Employees accrue paid sick leave as required by the law of {{opStateLong}}, beginning on the first day of employment and available for use as that law provides. Sick leave is tracked separately from vacation. The Company does not require a doctor’s note except where that law permits, and does not count protected sick leave use against attendance.",
+   "sources": [],
+   "verification": "unsourced"
+  },
+  {
+   "id": "hb_leave_vacation",
+   "doc": "handbook",
+   "group": "Leave",
+   "title": "Vacation and PTO",
+   "severity": "critical",
+   "insertion": "auto",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "rationale": "In states treating accrued vacation as wages, a use-it-or-lose-it policy is unenforceable and produces a wage claim at every departure.",
+   "body": "Employees accrue vacation as described in the handbook. Where the law of {{opStateLong}} treats accrued vacation as wages, it is not forfeited and is paid out at separation as provided in <<xr:ea_termination>>; accrual may be capped but not lost. An unlimited-PTO policy avoids accrual but must be administered so that employees actually take leave, or it will be treated as an accrual policy in substance.",
+   "sources": [],
+   "verification": "unsourced"
+  },
+  {
+   "id": "hb_leave_statutory",
+   "doc": "handbook",
+   "group": "Leave",
+   "title": "Statutory and Protected Leave",
+   "severity": "recommended",
+   "insertion": "auto",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "rationale": "Leave entitlements attach at headcount thresholds a growing company crosses without noticing, and the obligation begins the day the threshold is met.",
+   "body": "The Company provides all leave required by federal law and the law of {{opStateLong}}, including family and medical leave, pregnancy disability leave, jury duty, voting leave, and military leave, at the headcount thresholds each law specifies. Employees on protected leave retain their benefits and their position to the extent the applicable law requires.",
+   "sources": [],
+   "verification": "unsourced"
+  },
+  {
+   "id": "hb_accommodation",
+   "doc": "handbook",
+   "group": "Leave",
+   "title": "Reasonable Accommodation",
+   "severity": "critical",
+   "insertion": "auto",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "rationale": "Failure to engage in the interactive process is itself an independent violation in several states, separate from whether an accommodation was ultimately owed.",
+   "body": "The Company provides reasonable accommodation for disability, pregnancy, and religious practice, and engages in a timely, good-faith interactive process on request. Failure to engage in that process can be a violation independent of whether an accommodation was ultimately required. Requests may be made to any manager or to the {{principalTitle}}.",
+   "sources": [],
+   "verification": "unsourced"
+  }
+ ]
 }

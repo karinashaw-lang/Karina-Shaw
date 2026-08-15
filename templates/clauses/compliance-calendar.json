@@ -24,9 +24,17 @@
    ],
    "version": "1.1.0",
    "updated": "2026-06",
-   "source": "Treas. Reg. §1.83-2(c)",
    "rationale": "Shortest and least forgiving deadline in the package, which is why it is listed first.",
-   "body": "The [[Section 83(b) election|section 83(b) election]] must be postmarked to the IRS within 30 days of grant — that is {{d83bDeadline}} for this Company. There is no cure for a late filing. Filing instructions are in <<xr:b83_instructions>>."
+   "body": "The [[Section 83(b) election|section 83(b) election]] must be postmarked to the IRS within 30 days of grant — that is {{d83bDeadline}} for this Company. There is no cure for a late filing. Filing instructions are in <<xr:b83_instructions>>.",
+   "sources": [
+    {
+     "citation": "Treas. Reg. §1.83-2(c)",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    }
+   ],
+   "verification": "single-source"
   },
   {
    "id": "cal_soi",
@@ -49,9 +57,23 @@
    ],
    "version": "1.0.0",
    "updated": "2026-06",
-   "source": "Cal. Corp. Code §17702.09 / §1502",
    "rationale": "Due within 90 days of registration and easy to miss because it is separate from the formation filing itself.",
-   "body": "California requires an initial Statement of Information within 90 days of formation or registration — that is {{soiDeadline}} for this Company. Late filing carries a penalty and can lead to suspension of the entity’s powers."
+   "body": "California requires an initial Statement of Information within 90 days of formation or registration — that is {{soiDeadline}} for this Company. Late filing carries a penalty and can lead to suspension of the entity’s powers.",
+   "sources": [
+    {
+     "citation": "Cal. Corp. Code §17702.09",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    },
+    {
+     "citation": "§1502",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    }
+   ],
+   "verification": "multi-cited"
   },
   {
    "id": "cal_ny",
@@ -74,9 +96,17 @@
    ],
    "version": "1.1.0",
    "updated": "2026-06",
-   "source": "NY LLC Law §206",
    "rationale": "Publication runs six consecutive weeks, so waiting until day 100 makes the 120-day deadline impossible to hit.",
-   "body": "Publication in two designated newspapers must run for six successive weeks and the Certificate of Publication must be filed within 120 days of formation — that is {{nyDeadline}} for this Company. Start the process early; the six-week run cannot be compressed. The full requirement is in <<xr:charter_ny_publication>>."
+   "body": "Publication in two designated newspapers must run for six successive weeks and the Certificate of Publication must be filed within 120 days of formation — that is {{nyDeadline}} for this Company. Start the process early; the six-week run cannot be compressed. The full requirement is in <<xr:charter_ny_publication>>.",
+   "sources": [
+    {
+     "citation": "NY LLC Law §206",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    }
+   ],
+   "verification": "single-source"
   },
   {
    "id": "cal_foreign",
@@ -99,9 +129,10 @@
    ],
    "version": "1.1.0",
    "updated": "2026-05",
-   "source": "DRAFT standard library",
    "rationale": "The obligation attaches when the company begins transacting business in the state, which is usually before anyone thinks to check.",
-   "body": "The Company is formed in {{formStateLong}} but operates in {{opStateLong}}, which generally requires [[foreign qualification]] there before transacting business. Penalties typically include back fees and loss of access to that state’s courts until the Company registers. The application is in <<xr:fq_statement>>."
+   "body": "The Company is formed in {{formStateLong}} but operates in {{opStateLong}}, which generally requires [[foreign qualification]] there before transacting business. Penalties typically include back fees and loss of access to that state’s courts until the Company registers. The application is in <<xr:fq_statement>>.",
+   "sources": [],
+   "verification": "unsourced"
   },
   {
    "id": "cal_ein",
@@ -122,9 +153,10 @@
    ],
    "version": "1.1.0",
    "updated": "2026-01",
-   "source": "DRAFT standard library",
    "rationale": "Everything downstream — bank account, payroll, merchant processing — waits on the EIN.",
-   "body": "Apply for an EIN on IRS Form SS-4 before opening the bank account authorized in <<xr:consent_bank>>. Then register for {{opStateLong}} state tax accounts and, if hiring, unemployment insurance and workers’ compensation."
+   "body": "Apply for an EIN on IRS Form SS-4 before opening the bank account authorized in <<xr:consent_bank>>. Then register for {{opStateLong}} state tax accounts and, if hiring, unemployment insurance and workers’ compensation.",
+   "sources": [],
+   "verification": "unsourced"
   },
   {
    "id": "cal_annual_report",
@@ -145,9 +177,10 @@
    ],
    "version": "1.0.0",
    "updated": "2026-06",
-   "source": "DRAFT standard library",
    "rationale": "Falling out of good standing blocks financings, bank changes, and qualification in other states, and is discovered at the worst possible moment.",
-   "body": "{{formStateLong}} filing schedule: {{annualReportRule}}. Maintain the registered agent named in <<xr:charter_agent>> continuously — a lapsed agent is the most common cause of a missed filing, because that is where the state sends the notice."
+   "body": "{{formStateLong}} filing schedule: {{annualReportRule}}. Maintain the registered agent named in <<xr:charter_agent>> continuously — a lapsed agent is the most common cause of a missed filing, because that is where the state sends the notice.",
+   "sources": [],
+   "verification": "unsourced"
   },
   {
    "id": "cal_de_franchise",
@@ -170,9 +203,23 @@
    ],
    "version": "1.2.0",
    "updated": "2026-06",
-   "source": "8 Del. C. §503; 6 Del. C. §18-1107",
    "rationale": "The first bill under the authorized-shares method routinely shocks founders. The assumed-par-value method is usually far cheaper and is elected on the same form.",
-   "body": "Delaware franchise tax is due annually regardless of revenue. Corporations file an annual report and pay by March 1; LLCs pay a flat annual tax by June 1. Corporations should compare the authorized-shares method against the assumed-par-value capital method — for a company with {{authShares}} authorized shares and little capital, the second is usually far less."
+   "body": "Delaware franchise tax is due annually regardless of revenue. Corporations file an annual report and pay by March 1; LLCs pay a flat annual tax by June 1. Corporations should compare the authorized-shares method against the assumed-par-value capital method — for a company with {{authShares}} authorized shares and little capital, the second is usually far less.",
+   "sources": [
+    {
+     "citation": "8 Del. C. §503",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    },
+    {
+     "citation": "6 Del. C. §18-1107",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    }
+   ],
+   "verification": "multi-cited"
   },
   {
    "id": "cal_tx_franchise",
@@ -198,9 +245,17 @@
    ],
    "version": "1.0.0",
    "updated": "2026-06",
-   "source": "Tex. Tax Code ch. 171",
    "rationale": "Even below the no-tax-due revenue threshold the report itself must be filed, and forfeiture of charter follows non-filing.",
-   "body": "Texas franchise tax reports are due May 15 each year. A Company below the no-tax-due revenue threshold still must file the report and the Public Information Report. Failure to file can result in forfeiture of the Company’s right to transact business and of the liability protection in <<xr:charter_name>>."
+   "body": "Texas franchise tax reports are due May 15 each year. A Company below the no-tax-due revenue threshold still must file the report and the Public Information Report. Failure to file can result in forfeiture of the Company’s right to transact business and of the liability protection in <<xr:charter_name>>.",
+   "sources": [
+    {
+     "citation": "Tex. Tax Code ch. 171",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    }
+   ],
+   "verification": "single-source"
   },
   {
    "id": "cal_fl_annual",
@@ -223,9 +278,23 @@
    ],
    "version": "1.0.0",
    "updated": "2026-06",
-   "source": "Fla. Stat. §605.0212 / §607.1622",
    "rationale": "The Florida late fee is substantial, non-waivable, and larger than the filing fee itself.",
-   "body": "Florida annual reports are due between January 1 and May 1. The late fee is non-waivable and applies from May 2. Failure to file by the third Friday in September results in administrative dissolution."
+   "body": "Florida annual reports are due between January 1 and May 1. The late fee is non-waivable and applies from May 2. Failure to file by the third Friday in September results in administrative dissolution.",
+   "sources": [
+    {
+     "citation": "Fla. Stat. §605.0212",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    },
+    {
+     "citation": "§607.1622",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    }
+   ],
+   "verification": "multi-cited"
   },
   {
    "id": "cal_ny_biennial",
@@ -251,9 +320,17 @@
    ],
    "version": "1.0.0",
    "updated": "2026-06",
-   "source": "NY LLC Law §301(e)",
    "rationale": "Two-year cadence makes it easy to forget, and New York does not reliably send a reminder.",
-   "body": "New York requires a Biennial Statement every two years, due in the anniversary month of formation. Set the reminder now — the two-year gap is long enough that the obligation is routinely forgotten by the time it comes due."
+   "body": "New York requires a Biennial Statement every two years, due in the anniversary month of formation. Set the reminder now — the two-year gap is long enough that the obligation is routinely forgotten by the time it comes due.",
+   "sources": [
+    {
+     "citation": "NY LLC Law §301(e)",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    }
+   ],
+   "verification": "single-source"
   },
   {
    "id": "cal_payroll",
@@ -276,9 +353,10 @@
    ],
    "version": "1.0.0",
    "updated": "2026-06",
-   "source": "DRAFT standard library",
    "rationale": "Unremitted payroll trust fund taxes are personally recoverable from responsible individuals. This is one of the few company liabilities that pierces the entity by statute.",
-   "body": "Once the Company has employees it must deposit withheld income and FICA taxes on the schedule the IRS assigns, file Form 941 quarterly and Form 940 annually, and meet the equivalent {{opStateLong}} obligations. Unremitted trust fund taxes can be assessed personally against the officer appointed in <<xr:consent_officers>>."
+   "body": "Once the Company has employees it must deposit withheld income and FICA taxes on the schedule the IRS assigns, file Form 941 quarterly and Form 940 annually, and meet the equivalent {{opStateLong}} obligations. Unremitted trust fund taxes can be assessed personally against the officer appointed in <<xr:consent_officers>>.",
+   "sources": [],
+   "verification": "unsourced"
   },
   {
    "id": "cal_baa_review",
@@ -301,9 +379,17 @@
    ],
    "version": "1.0.0",
    "updated": "2026-06",
-   "source": "45 C.F.R. §164.308",
    "rationale": "The HIPAA Security Rule requires a periodic risk analysis, and the vendor inventory drifts as vendors are added informally.",
-   "body": "Review the business associate inventory annually, confirm each agreement is current, and conduct the security risk analysis the HIPAA Security Rule requires. Document both — the analysis is the first thing requested after any reported incident."
+   "body": "Review the business associate inventory annually, confirm each agreement is current, and conduct the security risk analysis the HIPAA Security Rule requires. Document both — the analysis is the first thing requested after any reported incident.",
+   "sources": [
+    {
+     "citation": "45 C.F.R. §164.308",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    }
+   ],
+   "verification": "single-source"
   }
  ]
 }

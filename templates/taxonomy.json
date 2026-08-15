@@ -288,5 +288,41 @@
       "hasOrdinance": true,
       "summary": "Local minimum wage, paid sick leave with no annual cap for smaller employers, service charge rules, and a fair chance ordinance."
     }
+  },
+  "verificationLevels": {
+    "unsourced": {
+      "rank": 0,
+      "name": "Unsourced",
+      "meaning": "Drafted from model knowledge with no citation attached. No independent basis exists for anything it asserts."
+    },
+    "single-source": {
+      "rank": 1,
+      "name": "Single citation",
+      "meaning": "One citation is asserted, and nothing has checked that the cited provision says what the clause says it says."
+    },
+    "multi-cited": {
+      "rank": 2,
+      "name": "Multiple citations",
+      "meaning": "More than one citation is asserted. Still self-asserted — several citations written by one author are not corroboration."
+    },
+    "search-corroborated": {
+      "rank": 3,
+      "name": "Search-corroborated",
+      "meaning": "The assertion matched a web search summary drawing on two or more independent sources, with URLs and a check date recorded. No source document was opened and no primary text was read. This is a lead for a reviewer, not a verification."
+    },
+    "corroborated": {
+      "rank": 4,
+      "name": "Corroborated",
+      "meaning": "Two or more independent secondary sources were opened and read, and each was recorded with a URL and a date. The primary text was still not checked."
+    },
+    "primary-verified": {
+      "rank": 5,
+      "name": "Primary verified",
+      "meaning": "Checked against the primary statutory or regulatory text, recorded with source and date, by a named reviewer."
+    }
+  },
+  "releaseGate": {
+    "$note": "Minimum verification level a clause must reach before the engine will draft it into a document. Clauses below the gate are withheld and counted, not silently dropped. Search-corroborated deliberately sits BELOW the gate: a search summary is a lead for a reviewer, not a substitute for reading the source.",
+    "minimum": "corroborated"
   }
 }

@@ -1,63 +1,420 @@
 {
-  "$comment": "The remaining California wage, hour, and leave obligations. Most of these are small individually and none of them are optional; they matter because each is PAGA-enforceable per employee per pay period.",
-  "collection": "california-wage-leave",
-  "version": "1.0.0",
-  "clauses": [
-    {"id":"hb_ca_day_of_rest","doc":"handbook","group":"Time and Pay","title":"Day of Rest","severity":"recommended","insertion":"auto","condition":{"rule":"ca_employer"},
-     "jurisdictions":["CA"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"Cal. Lab. Code §§551–552",
-     "rationale":"The entitlement is measured per workweek rather than on a rolling seven-day basis, and an employer may not cause an employee to forgo it — an employee may choose to work, but only if genuinely informed and uncoerced.",
-     "body":"Employees are entitled to one [[day of rest|day of rest]] in seven, measured by the workweek. The exemption for weeks in which no day exceeds six hours applies only where that is true of every day in the week. An employee may choose to work a seventh day if fully apprised of the entitlement, but the Company may not induce or pressure that choice. Seventh-day work also carries the overtime and double time premiums in <<xr:hb_ca_overtime>>."},
-
-    {"id":"hb_ca_oncall_travel","doc":"handbook","group":"Time and Pay","title":"On-Call, Travel, and Control Time","severity":"critical","insertion":"auto","condition":{"rule":"ca_employer"},
-     "jurisdictions":["CA"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"IWC Wage Orders; Cal. Lab. Code §510",
-     "rationale":"California uses a control test rather than the narrower federal standard, so time that is unpaid under federal law is frequently compensable here — including time spent under employer control before the shift formally begins.",
-     "body":"Hours worked in California means all time an employee is subject to the Company's control, which is broader than the federal standard. Compensable time includes required travel between worksites, time spent under control before a shift formally begins such as mandatory security or bag checks, and on-call time where the constraints are restrictive enough that the employee cannot use the period effectively for their own purposes. Ordinary commuting is not compensable, but travel in a required employer vehicle usually is. Sleep time cannot be excluded from a shift of under twenty-four hours."},
-
-    {"id":"hb_ca_uniforms_tools","doc":"handbook","group":"Time and Pay","title":"Uniforms, Tools, and Equipment","severity":"recommended","insertion":"auto","condition":{"rule":"ca_employer"},
-     "jurisdictions":["CA"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"IWC Wage Orders §9; Cal. Lab. Code §2802",
-     "rationale":"A deposit or deduction for equipment is unlawful even with the employee's written agreement, which is the part employers most often get wrong.",
-     "body":"Where the Company requires a uniform, it must provide and maintain it at its own expense. Required tools and equipment must be provided by the Company unless the employee earns at least twice the minimum wage and the tools are those customary in the trade. The Company may not require a deposit, take a deduction, or condition final pay on return of equipment — even with written consent. Recovering the value of unreturned property is a separate civil matter, not a payroll deduction."},
-
-    {"id":"hb_ca_seating","doc":"handbook","group":"Conduct","title":"Suitable Seating","severity":"optional","insertion":"suggest","condition":{"all":[{"rule":"ca_employer"},{"in":["industry",["ecommerce","services","health"]]}]},
-     "jurisdictions":["CA"],"industries":["ecommerce","services","health"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"IWC Wage Orders §14",
-     "benchmark":"A frequent PAGA claim in retail and customer-facing roles",
-     "rationale":"An obscure wage order provision that generates a steady volume of representative claims, because the analysis is task-by-task rather than role-by-role.",
-     "body":"Employees shall be provided suitable seating where the nature of the work reasonably permits it, assessed by the tasks performed at a given location rather than by the job title as a whole. Where work must be done standing, adequate seating shall be placed nearby for use when it does not interfere with the work. This is a wage order requirement enforceable through PAGA under <<xr:can_paga>>."},
-
-    {"id":"hb_ca_jury_voting","doc":"handbook","group":"Leave","title":"Jury, Witness, and Voting Leave","severity":"critical","insertion":"auto","condition":{"rule":"ca_employer"},
-     "jurisdictions":["CA"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"Cal. Lab. Code §§230, 14350–14353",
-     "rationale":"Small entitlements with real teeth: discipline for jury service is a misdemeanor, and the voting notice has a posting requirement most employers miss entirely.",
-     "body":"Provide unpaid leave for jury service and for appearing as a witness under subpoena, and do not discipline an employee for either. Exempt employees generally must be paid their full salary for any week in which they perform work. Provide up to two (2) hours of paid time off to vote where an employee lacks sufficient time outside working hours, taken at the start or end of the shift unless otherwise agreed, and post the required voting rights notice at least ten (10) days before a statewide election."},
-
-    {"id":"hb_ca_school_leave","doc":"handbook","group":"Leave","title":"School and Child Care Activity Leave","severity":"recommended","insertion":"auto","condition":{"rule":"ca_25plus_school"},
-     "jurisdictions":["CA"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"Cal. Lab. Code §230.8",
-     "rationale":"Attaches by worksite headcount rather than company headcount, which means a company can be covered at one location and not another.",
-     "body":"Where the Company has twenty-five (25) or more employees at the same location, a parent, guardian, or grandparent with custody may take up to forty (40) hours per year, capped at eight (8) hours per month, to find, enroll, or participate in activities of a child's school or licensed child care. Additional unpaid time is available for a school-directed appearance or a child care emergency. Employees may use accrued paid leave. Coverage is measured per worksite, not company-wide."},
-
-    {"id":"hb_ca_military_leave","doc":"handbook","group":"Leave","title":"Military and Military Spouse Leave","severity":"recommended","insertion":"auto","condition":{"rule":"ca_employer"},
-     "jurisdictions":["CA"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"Cal. Mil. & Vet. Code §§394, 395; Cal. Lab. Code §395.10",
-     "rationale":"California adds a spousal leave entitlement on top of federal USERRA reemployment rights, and it attaches at a low headcount.",
-     "body":"Provide leave and reinstatement rights for military service under federal USERRA and California law, including protection against discrimination for service obligations. Separately, where the Company has twenty-five (25) or more employees, provide up to ten (10) days of unpaid leave to the spouse or registered domestic partner of a service member on leave from deployment during a period of military conflict."},
-
-    {"id":"hb_ca_victim_leave","doc":"handbook","group":"Leave","title":"Crime Victim and Safety Leave","severity":"critical","insertion":"auto","condition":{"rule":"ca_employer"},
-     "jurisdictions":["CA"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"Cal. Lab. Code §§230, 230.1",
-     "rationale":"The confidentiality and accommodation duties are as important as the leave itself, and the entitlement now reaches family members of victims rather than only victims.",
-     "body":"Provide time off for an employee who is a victim of domestic violence, sexual assault, stalking, or another qualifying crime — and for a family member of a victim — to obtain relief, seek medical attention, or access services. Employees may use accrued paid leave. Provide reasonable safety accommodations such as a schedule or workspace change on request. Keep all related information confidential except as required by law, and do not discriminate or retaliate. Notice of these rights must be given at hire and on request."},
-
-    {"id":"hb_ca_organ_donor","doc":"handbook","group":"Leave","title":"Organ and Bone Marrow Donor Leave","severity":"optional","insertion":"auto","condition":{"rule":"ca_15plus"},
-     "jurisdictions":["CA"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"Cal. Lab. Code §1508 et seq.",
-     "rationale":"Paid leave, which is unusual among California entitlements, and it may not be run concurrently with FMLA or CFRA.",
-     "body":"Where the Company has fifteen (15) or more employees, provide up to thirty (30) business days of paid leave in a twelve-month period for organ donation and up to five (5) business days for bone marrow donation, plus an equal period of unpaid leave for organ donation. The Company may require the employee to use a limited amount of accrued leave first. This leave does not run concurrently with FMLA or CFRA and the employee must be restored to the same position."},
-
-    {"id":"hb_ca_lactation_break","doc":"handbook","group":"Leave","title":"Lactation Breaks","severity":"critical","insertion":"auto","condition":{"rule":"ca_employer"},
-     "jurisdictions":["CA"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"Cal. Lab. Code §§1030–1034",
-     "rationale":"Denial carries the same one-hour premium as a missed rest period and is separately PAGA-enforceable, so it compounds the same way.",
-     "body":"Provide reasonable break time to express milk, running concurrently with paid rest breaks where possible and otherwise unpaid, and a private space meeting the requirements in <<xr:can_lactation>>. Denial of a required break entitles the employee to one additional hour of pay at the regular rate, on the same basis as a missed rest period under <<xr:hb_meal_rest>>."},
-
-    {"id":"hb_ca_tips","doc":"handbook","group":"Time and Pay","title":"Tips and Service Charges","severity":"recommended","insertion":"suggest","condition":{"all":[{"rule":"ca_employer"},{"in":["industry",["services","ecommerce"]]}]},
-     "jurisdictions":["CA"],"industries":["services","ecommerce"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"Cal. Lab. Code §351",
-     "benchmark":"Relevant wherever any percentage-based charge appears on a customer invoice",
-     "rationale":"California allows no tip credit at all, and a mandatory service charge is not a tip — it belongs to the employer unless represented otherwise, which creates its own exposure.",
-     "body":"California permits no tip credit: employees must receive the full minimum wage regardless of tips. Tips belong to the employee and may not be taken by the Company or by any owner, manager, or supervisor, and the Company may not deduct credit card processing fees from them. Tip pooling among employees in the chain of service is permitted. A mandatory service charge is not a tip and belongs to the Company unless it has been represented otherwise to the customer — but several local ordinances require service charges to be distributed to the workers who performed the service."}
-  ]
+ "$comment": "The remaining California wage, hour, and leave obligations. Most of these are small individually and none of them are optional; they matter because each is PAGA-enforceable per employee per pay period.",
+ "collection": "california-wage-leave",
+ "version": "1.0.0",
+ "clauses": [
+  {
+   "id": "hb_ca_day_of_rest",
+   "doc": "handbook",
+   "group": "Time and Pay",
+   "title": "Day of Rest",
+   "severity": "recommended",
+   "insertion": "auto",
+   "condition": {
+    "rule": "ca_employer"
+   },
+   "jurisdictions": [
+    "CA"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "rationale": "The entitlement is measured per workweek rather than on a rolling seven-day basis, and an employer may not cause an employee to forgo it — an employee may choose to work, but only if genuinely informed and uncoerced.",
+   "body": "Employees are entitled to one [[day of rest|day of rest]] in seven, measured by the workweek. The exemption for weeks in which no day exceeds six hours applies only where that is true of every day in the week. An employee may choose to work a seventh day if fully apprised of the entitlement, but the Company may not induce or pressure that choice. Seventh-day work also carries the overtime and double time premiums in <<xr:hb_ca_overtime>>.",
+   "sources": [
+    {
+     "citation": "Cal. Lab. Code §§551–552",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    }
+   ],
+   "verification": "single-source"
+  },
+  {
+   "id": "hb_ca_oncall_travel",
+   "doc": "handbook",
+   "group": "Time and Pay",
+   "title": "On-Call, Travel, and Control Time",
+   "severity": "critical",
+   "insertion": "auto",
+   "condition": {
+    "rule": "ca_employer"
+   },
+   "jurisdictions": [
+    "CA"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "rationale": "California uses a control test rather than the narrower federal standard, so time that is unpaid under federal law is frequently compensable here — including time spent under employer control before the shift formally begins.",
+   "body": "Hours worked in California means all time an employee is subject to the Company's control, which is broader than the federal standard. Compensable time includes required travel between worksites, time spent under control before a shift formally begins such as mandatory security or bag checks, and on-call time where the constraints are restrictive enough that the employee cannot use the period effectively for their own purposes. Ordinary commuting is not compensable, but travel in a required employer vehicle usually is. Sleep time cannot be excluded from a shift of under twenty-four hours.",
+   "sources": [
+    {
+     "citation": "IWC Wage Orders",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    },
+    {
+     "citation": "Cal. Lab. Code §510",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    }
+   ],
+   "verification": "multi-cited"
+  },
+  {
+   "id": "hb_ca_uniforms_tools",
+   "doc": "handbook",
+   "group": "Time and Pay",
+   "title": "Uniforms, Tools, and Equipment",
+   "severity": "recommended",
+   "insertion": "auto",
+   "condition": {
+    "rule": "ca_employer"
+   },
+   "jurisdictions": [
+    "CA"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "rationale": "A deposit or deduction for equipment is unlawful even with the employee's written agreement, which is the part employers most often get wrong.",
+   "body": "Where the Company requires a uniform, it must provide and maintain it at its own expense. Required tools and equipment must be provided by the Company unless the employee earns at least twice the minimum wage and the tools are those customary in the trade. The Company may not require a deposit, take a deduction, or condition final pay on return of equipment — even with written consent. Recovering the value of unreturned property is a separate civil matter, not a payroll deduction.",
+   "sources": [
+    {
+     "citation": "IWC Wage Orders §9",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    },
+    {
+     "citation": "Cal. Lab. Code §2802",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    }
+   ],
+   "verification": "multi-cited"
+  },
+  {
+   "id": "hb_ca_seating",
+   "doc": "handbook",
+   "group": "Conduct",
+   "title": "Suitable Seating",
+   "severity": "optional",
+   "insertion": "suggest",
+   "condition": {
+    "all": [
+     {
+      "rule": "ca_employer"
+     },
+     {
+      "in": [
+       "industry",
+       [
+        "ecommerce",
+        "services",
+        "health"
+       ]
+      ]
+     }
+    ]
+   },
+   "jurisdictions": [
+    "CA"
+   ],
+   "industries": [
+    "ecommerce",
+    "services",
+    "health"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "benchmark": "A frequent PAGA claim in retail and customer-facing roles",
+   "rationale": "An obscure wage order provision that generates a steady volume of representative claims, because the analysis is task-by-task rather than role-by-role.",
+   "body": "Employees shall be provided suitable seating where the nature of the work reasonably permits it, assessed by the tasks performed at a given location rather than by the job title as a whole. Where work must be done standing, adequate seating shall be placed nearby for use when it does not interfere with the work. This is a wage order requirement enforceable through PAGA under <<xr:can_paga>>.",
+   "sources": [
+    {
+     "citation": "IWC Wage Orders §14",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    }
+   ],
+   "verification": "single-source"
+  },
+  {
+   "id": "hb_ca_jury_voting",
+   "doc": "handbook",
+   "group": "Leave",
+   "title": "Jury, Witness, and Voting Leave",
+   "severity": "critical",
+   "insertion": "auto",
+   "condition": {
+    "rule": "ca_employer"
+   },
+   "jurisdictions": [
+    "CA"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "rationale": "Small entitlements with real teeth: discipline for jury service is a misdemeanor, and the voting notice has a posting requirement most employers miss entirely.",
+   "body": "Provide unpaid leave for jury service and for appearing as a witness under subpoena, and do not discipline an employee for either. Exempt employees generally must be paid their full salary for any week in which they perform work. Provide up to two (2) hours of paid time off to vote where an employee lacks sufficient time outside working hours, taken at the start or end of the shift unless otherwise agreed, and post the required voting rights notice at least ten (10) days before a statewide election.",
+   "sources": [
+    {
+     "citation": "Cal. Lab. Code §§230, 14350–14353",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    }
+   ],
+   "verification": "single-source"
+  },
+  {
+   "id": "hb_ca_school_leave",
+   "doc": "handbook",
+   "group": "Leave",
+   "title": "School and Child Care Activity Leave",
+   "severity": "recommended",
+   "insertion": "auto",
+   "condition": {
+    "rule": "ca_25plus_school"
+   },
+   "jurisdictions": [
+    "CA"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "rationale": "Attaches by worksite headcount rather than company headcount, which means a company can be covered at one location and not another.",
+   "body": "Where the Company has twenty-five (25) or more employees at the same location, a parent, guardian, or grandparent with custody may take up to forty (40) hours per year, capped at eight (8) hours per month, to find, enroll, or participate in activities of a child's school or licensed child care. Additional unpaid time is available for a school-directed appearance or a child care emergency. Employees may use accrued paid leave. Coverage is measured per worksite, not company-wide.",
+   "sources": [
+    {
+     "citation": "Cal. Lab. Code §230.8",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    }
+   ],
+   "verification": "single-source"
+  },
+  {
+   "id": "hb_ca_military_leave",
+   "doc": "handbook",
+   "group": "Leave",
+   "title": "Military and Military Spouse Leave",
+   "severity": "recommended",
+   "insertion": "auto",
+   "condition": {
+    "rule": "ca_employer"
+   },
+   "jurisdictions": [
+    "CA"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "rationale": "California adds a spousal leave entitlement on top of federal USERRA reemployment rights, and it attaches at a low headcount.",
+   "body": "Provide leave and reinstatement rights for military service under federal USERRA and California law, including protection against discrimination for service obligations. Separately, where the Company has twenty-five (25) or more employees, provide up to ten (10) days of unpaid leave to the spouse or registered domestic partner of a service member on leave from deployment during a period of military conflict.",
+   "sources": [
+    {
+     "citation": "Cal. Mil. & Vet. Code §§394, 395",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    },
+    {
+     "citation": "Cal. Lab. Code §395.10",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    }
+   ],
+   "verification": "multi-cited"
+  },
+  {
+   "id": "hb_ca_victim_leave",
+   "doc": "handbook",
+   "group": "Leave",
+   "title": "Crime Victim and Safety Leave",
+   "severity": "critical",
+   "insertion": "auto",
+   "condition": {
+    "rule": "ca_employer"
+   },
+   "jurisdictions": [
+    "CA"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "rationale": "The confidentiality and accommodation duties are as important as the leave itself, and the entitlement now reaches family members of victims rather than only victims.",
+   "body": "Provide time off for an employee who is a victim of domestic violence, sexual assault, stalking, or another qualifying crime — and for a family member of a victim — to obtain relief, seek medical attention, or access services. Employees may use accrued paid leave. Provide reasonable safety accommodations such as a schedule or workspace change on request. Keep all related information confidential except as required by law, and do not discriminate or retaliate. Notice of these rights must be given at hire and on request.",
+   "sources": [
+    {
+     "citation": "Cal. Lab. Code §§230, 230.1",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    }
+   ],
+   "verification": "single-source"
+  },
+  {
+   "id": "hb_ca_organ_donor",
+   "doc": "handbook",
+   "group": "Leave",
+   "title": "Organ and Bone Marrow Donor Leave",
+   "severity": "optional",
+   "insertion": "auto",
+   "condition": {
+    "rule": "ca_15plus"
+   },
+   "jurisdictions": [
+    "CA"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "rationale": "Paid leave, which is unusual among California entitlements, and it may not be run concurrently with FMLA or CFRA.",
+   "body": "Where the Company has fifteen (15) or more employees, provide up to thirty (30) business days of paid leave in a twelve-month period for organ donation and up to five (5) business days for bone marrow donation, plus an equal period of unpaid leave for organ donation. The Company may require the employee to use a limited amount of accrued leave first. This leave does not run concurrently with FMLA or CFRA and the employee must be restored to the same position.",
+   "sources": [
+    {
+     "citation": "Cal. Lab. Code §1508 et seq.",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    }
+   ],
+   "verification": "single-source"
+  },
+  {
+   "id": "hb_ca_lactation_break",
+   "doc": "handbook",
+   "group": "Leave",
+   "title": "Lactation Breaks",
+   "severity": "critical",
+   "insertion": "auto",
+   "condition": {
+    "rule": "ca_employer"
+   },
+   "jurisdictions": [
+    "CA"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "rationale": "Denial carries the same one-hour premium as a missed rest period and is separately PAGA-enforceable, so it compounds the same way.",
+   "body": "Provide reasonable break time to express milk, running concurrently with paid rest breaks where possible and otherwise unpaid, and a private space meeting the requirements in <<xr:can_lactation>>. Denial of a required break entitles the employee to one additional hour of pay at the regular rate, on the same basis as a missed rest period under <<xr:hb_meal_rest>>.",
+   "sources": [
+    {
+     "citation": "Cal. Lab. Code §§1030–1034",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    }
+   ],
+   "verification": "single-source"
+  },
+  {
+   "id": "hb_ca_tips",
+   "doc": "handbook",
+   "group": "Time and Pay",
+   "title": "Tips and Service Charges",
+   "severity": "recommended",
+   "insertion": "suggest",
+   "condition": {
+    "all": [
+     {
+      "rule": "ca_employer"
+     },
+     {
+      "in": [
+       "industry",
+       [
+        "services",
+        "ecommerce"
+       ]
+      ]
+     }
+    ]
+   },
+   "jurisdictions": [
+    "CA"
+   ],
+   "industries": [
+    "services",
+    "ecommerce"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "benchmark": "Relevant wherever any percentage-based charge appears on a customer invoice",
+   "rationale": "California allows no tip credit at all, and a mandatory service charge is not a tip — it belongs to the employer unless represented otherwise, which creates its own exposure.",
+   "body": "California permits no tip credit: employees must receive the full minimum wage regardless of tips. Tips belong to the employee and may not be taken by the Company or by any owner, manager, or supervisor, and the Company may not deduct credit card processing fees from them. Tip pooling among employees in the chain of service is permitted. A mandatory service charge is not a tip and belongs to the Company unless it has been represented otherwise to the customer — but several local ordinances require service charges to be distributed to the workers who performed the service.",
+   "sources": [
+    {
+     "citation": "Cal. Lab. Code §351",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    }
+   ],
+   "verification": "single-source"
+  }
+ ]
 }

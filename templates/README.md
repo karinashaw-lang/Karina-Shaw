@@ -232,10 +232,70 @@ packages, the same way `UNREACHABLE_RISK` does.
    condition, and any new answer fields to `ANSWER_FIELDS` and `BASE_ANSWERS` in
    `tools/evaluator.mjs`, along with an enumeration block in `allConfigs`.
 
+## Sourcing and the release gate
+
+Every clause, risk, and benchmark carries a `sources` array and a `verification`
+level. The engine will not draft anything below the **release gate**, set in
+`taxonomy.json`. Withheld content is counted and reported, not silently dropped.
+
+| Level | Rank | What it means |
+|---|---|---|
+| `unsourced` | 0 | Drafted from model knowledge, no citation. No independent basis for anything it asserts. |
+| `single-source` | 1 | One citation asserted. Nothing has checked that the cited provision says what the clause says. |
+| `multi-cited` | 2 | More than one citation asserted. Still self-asserted — several citations by one author are not corroboration. |
+| `search-corroborated` | 3 | Matched a web search summary drawing on independent sources, URLs and date recorded. **No source document was opened.** A lead for a reviewer, not a verification. |
+| `corroborated` | 4 | Two or more independent secondary sources opened and read, each recorded with URL and date. Primary text still unchecked. |
+| `primary-verified` | 5 | Checked against the primary statutory text, recorded with source and date, by a named reviewer. |
+
+**Gate: `corroborated`. Current state: 0 of 360 clauses clear it.**
+
+```
+unsourced           249   (69%)
+single-source        89   (25%)
+multi-cited          19   (5%)
+search-corroborated   3   (1%)
+```
+
+All 31 risks and all 23 benchmarks are also below the gate. Every benchmark
+percentage in this corpus was written for the prototype and is backed by nothing.
+
+### The gate cannot be self-certified
+
+`validate.mjs` rejects an unearned claim. Anything at `search-corroborated` or above
+needs at least two sources with a recorded URL **and** a check date, on **distinct
+hosts**. `corroborated` additionally requires a `readBy` record, and
+`primary-verified` requires a primary source and a named `reviewer`. Padding the
+`sources` array with more citations does not move a clause up — that was tested:
+
+```
+UNEARNED_CORROBORATION: clause "charter_name" claims "corroborated" but has 0
+  source(s) with a URL and a check date — corroboration requires at least two
+UNEARNED_CORROBORATION: clause "charter_purpose" claims "corroborated" but all
+  sources are on one host (example.com) — independent sources required
+UNEARNED_VERIFICATION:  clause "charter_agent" claims "primary-verified" without
+  a primary source
+```
+
+This matters because the author of the content and the author of the gate are the
+same model. Without the check, the gate is decorative.
+
+### What blocked verification here
+
+`leginfo.legislature.ca.gov`, `codes.findlaw.com`, `calcivilrights.ca.gov`,
+`dir.ca.gov`, and `law.cornell.edu` are all unreachable from this environment — the
+network egress proxy blocks them. Web *search* works and returns summaries with URLs;
+fetching any of those URLs does not. That is why three clauses sit at
+`search-corroborated` and none at `corroborated`: the sources were listed, not read.
+
+Restoring egress to primary-source hosts is the prerequisite for moving the corpus up
+the ladder without a human in the loop, and even then `primary-verified` requires a
+named reviewer by design.
+
 ## Scope and status
 
 Clause text, benchmark percentages, and risk thresholds are illustrative content
 written for this prototype. They are **not legal advice, not measured market data, and
-not fit for use on a real formation.** Statutory citations are included because the
-spec's examples turn on them; they are unverified here. Every clause carries a `source`
-field for that review pass, and `version`/`updated` so a reviewed clause can be pinned.
+not fit for use on a real formation.** The release gate above enforces that: as things
+stand the engine drafts nothing at all, which is the correct output for a corpus in
+this state. Every clause carries `sources`, `verification`, `version`, and `updated` so
+a reviewed clause can be pinned and the rest can be worked through as a queue.
