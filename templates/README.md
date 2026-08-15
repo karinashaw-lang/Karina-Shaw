@@ -136,6 +136,74 @@ running the tooling rather than asserted here.
 **Not verified — 360 of 360 clauses:** every statement about what the law requires.
 No clause has been checked against any source. See the release gate section below.
 
+## Source texts: what "trusted" requires
+
+Fetching a statute is the easy half. The hard half is being able to prove later that
+what you hold is what the source said, and that nothing rewrote it in between.
+`sources/texts/` is a content-addressed store built for that.
+
+Three properties, enforced rather than promised:
+
+1. **Verbatim only.** What is stored is bytes as received. `textstore.mjs` contains no
+   model client, no network call, and no summarisation path — and `textstore.test.mjs`
+   asserts that against the file's own source with comments stripped. A model artifact
+   is not a source text, and the way to guarantee that is to make it structurally
+   impossible rather than a matter of discipline.
+2. **Content-addressed.** Every text is keyed by SHA-256 over its exact bytes. Two
+   people holding the same `textId` hold identical bytes, or one has been tampered with.
+   `get()` re-hashes on read and reports tampering.
+3. **Provenance or nothing.** A text without a recorded origin, timestamp, and supplier
+   is refused at the door. There is no "trust me" mode.
+
+### Two supply paths
+
+**A — fetch from an approved primary host.** Only hosts marked `primary` in the registry
+qualify. A mirror is fine for corroboration but is not a source text: it is somebody
+else's copy, with their transcription errors. Blocked in this environment; granting
+egress is the only change required.
+
+**B — operator-supplied.** You obtain the text (Westlaw, Lexis, a court library, the
+Secretary of State) and hand over the file with an attestation naming who obtained it,
+from where, and when.
+
+```
+npm run ingest -- --file lab-925.txt --citation "Cal. Lab. Code §925" \
+  --by "K. Shaw" --from "Westlaw" --on 2026-08-15
+```
+
+Path B is the one that works today, and it is not a downgrade — a text you obtained
+from Westlaw and attested is more trustworthy than one I scraped. What the store adds is
+that nobody afterwards has to take either of us on trust: the hash proves the bytes and
+the attestation names the human.
+
+### Pinning: from a trusted text to a verified clause
+
+Holding a trusted text is still not knowing a clause is right. `pin.mjs` links them
+assertion by assertion — this claim rests on THAT span of THAT attested text, recorded as
+an exact quote with its offset and hash.
+
+A pin must quote, and the quote must still match. Run against a real §925 text, the
+pinning step independently refused the wording this corpus uses:
+
+```
+$ npm run pin -- --clause ea_ca_925 --assertion "primarily works in California" ...
+refused: quote-absent — the quoted span does not appear in the attested text
+```
+
+The statute says *"primarily resides and works in California"*. The clause says
+*"primarily works"*. That is the same defect the search pass found, caught again
+mechanically and without anyone reading anything.
+
+`primary-verified` requires every assertion pinned, every pin matching, **and** a named
+reviewer. Pins remove the need to take anyone's word about what the source says; they do
+not remove the reviewer.
+
+### Drift
+
+Statutes are amended. Re-attestation compares the live source against the stored hash. A
+mismatch is not an error — it is a finding: the law moved, and every clause pinned to
+that text is stale until re-checked.
+
 ## Verification pipeline
 
 `verify.mjs` routes each citation to authoritative hosts via `sources/registry.json`,

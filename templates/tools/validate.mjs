@@ -5,7 +5,9 @@
    full configuration space and proves that whenever a clause is included, every
    clause it cross-references is also included. That is the defect class that
    produced a dangling "Section 4.2" in the first version of the prototype. */
-import {loadCorpus} from './corpus.mjs';
+import fs from 'node:fs';
+import path from 'node:path';
+import {loadCorpus, ROOT} from './corpus.mjs';
 import {evalExpr, fireRules, resolveFields, clauseEligible, docIncluded, allConfigs, resolveXref, ANSWER_FIELDS} from './evaluator.mjs';
 
 const C = loadCorpus();
@@ -24,6 +26,7 @@ const fieldIds   = new Set(C.fields.map(f=>f.id));
    `primary-verified` additionally requires a primary source and a named reviewer.
    Without this check the gate is trivially defeated by padding the sources array. */
 const VLEVELS=C.taxonomy.verificationLevels;
+const PINS = (()=>{ try{ return JSON.parse(fs.readFileSync(path.join(ROOT,'sources','pins.json'),'utf8')); }catch{ return {pins:[]}; } })();
 function host(u){ try{ return new URL(u).host.replace(/^www\./,''); }catch{ return null; } }
 function checkVerification(o,where){
   const v=o.verification;
@@ -45,6 +48,9 @@ function checkVerification(o,where){
   if(rank>=5){
     if(!src.some(x=>x.type==='primary')) err('UNEARNED_VERIFICATION',`${where} claims "${v}" without a primary source`);
     if(!o.reviewer) err('UNEARNED_VERIFICATION',`${where} claims "${v}" without a named reviewer`);
+    const pinned = PINS.pins.filter(p=>p.clause===o.id);
+    if(!pinned.length)
+      err('UNPINNED_VERIFICATION',`${where} claims "${v}" but no assertion is pinned to an attested source text — see tools/pin.mjs`);
   }
 }
 

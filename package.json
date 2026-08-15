@@ -8,13 +8,16 @@
     "validate": "node templates/tools/validate.mjs",
     "build": "node templates/tools/build.mjs",
     "check": "node templates/tools/validate.mjs && node templates/tools/build.mjs --check",
-    "test": "node templates/tools/verify.test.mjs && node templates/tools/assertions.test.mjs && node templates/tools/findings.test.mjs",
+    "test": "node templates/tools/verify.test.mjs && node templates/tools/assertions.test.mjs && node templates/tools/findings.test.mjs && node templates/tools/textstore.test.mjs && node templates/tools/ingest.test.mjs && node templates/tools/pin.test.mjs",
     "probe": "node templates/tools/probe-sources.mjs",
     "verify": "node templates/tools/verify.mjs",
     "queue": "node templates/tools/queue.mjs",
-    "audit": "npm run test && npm run check && npm run probe && npm run verify && npm run queue && npm run egress",
+    "audit": "npm run test && npm run check && npm run probe && npm run verify && npm run queue && npm run egress && npm run texts && npm run pins",
     "egress": "node templates/tools/egress-request.mjs",
     "plan": "node templates/tools/assertions.mjs",
-    "findings": "node templates/tools/findings.mjs"
+    "findings": "node templates/tools/findings.mjs",
+    "ingest": "node templates/tools/ingest.mjs",
+    "texts": "node templates/tools/ingest.mjs --list",
+    "pins": "node templates/tools/pin.mjs --check"
   }
 }
