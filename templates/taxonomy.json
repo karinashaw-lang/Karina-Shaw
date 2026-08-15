@@ -1,0 +1,38 @@
+{
+  "$comment": "Controlled vocabularies. Every tag used anywhere in the corpus must resolve here; tools/validate.mjs enforces it.",
+  "version": "1.0.0",
+  "entities": {
+    "llc":   {"name":"LLC","long":"limited liability company","owners":"Members","ownerSingular":"Member","charter":"Certificate of Formation","governance":"Operating Agreement","principalTitle":"Managing Member","taxDefaultMulti":"a partnership","taxDefaultSolo":"a disregarded entity"},
+    "ccorp": {"name":"C-Corp","long":"corporation","owners":"Stockholders","ownerSingular":"Stockholder","charter":"Certificate of Incorporation","governance":"Bylaws","principalTitle":"Chief Executive Officer","taxDefaultMulti":"a C corporation","taxDefaultSolo":"a C corporation"}
+  },
+  "jurisdictions": {
+    "DE": {"name":"Delaware","franchiseTax":true,"llcPublication":false,"noncompeteEnforceable":true,"agentCity":"Wilmington","annualReport":"March 1 (corporations); LLC annual tax due June 1"},
+    "CA": {"name":"California","franchiseTax":true,"llcPublication":false,"noncompeteEnforceable":false,"agentCity":"Sacramento","annualReport":"Statement of Information within 90 days of formation, then biennially (LLC) or annually (corporation)"},
+    "TX": {"name":"Texas","franchiseTax":true,"llcPublication":false,"noncompeteEnforceable":true,"agentCity":"Austin","annualReport":"Public Information Report with the franchise tax report, due May 15"},
+    "FL": {"name":"Florida","franchiseTax":false,"llcPublication":false,"noncompeteEnforceable":true,"agentCity":"Tallahassee","annualReport":"Annual report due between January 1 and May 1"},
+    "NY": {"name":"New York","franchiseTax":false,"llcPublication":true,"noncompeteEnforceable":true,"agentCity":"Albany","annualReport":"Biennial Statement due every two years in the anniversary month of formation"}
+  },
+  "industries": {
+    "saas":      {"name":"SaaS / Software",       "desc":"software and software-as-a-service","ipCritical":true, "regulated":false},
+    "ecommerce": {"name":"E-commerce / Retail",   "desc":"e-commerce and retail","ipCritical":true, "regulated":false},
+    "services":  {"name":"Professional Services", "desc":"professional services","ipCritical":false,"regulated":true},
+    "health":    {"name":"Healthcare",            "desc":"healthcare services","ipCritical":true, "regulated":true},
+    "construct": {"name":"Construction / Trades", "desc":"construction and the building trades","ipCritical":false,"regulated":true},
+    "other":     {"name":"Other",                 "desc":"general commerce","ipCritical":false,"regulated":false}
+  },
+  "fundingStages": {
+    "boot":  {"name":"Bootstrapped",       "institutional":false},
+    "ff":    {"name":"Friends & family",   "institutional":false},
+    "angel": {"name":"Angel / pre-seed",   "institutional":true},
+    "vc":    {"name":"VC (Series A track)","institutional":true}
+  },
+  "severities": {
+    "critical":    {"rank":0,"meaning":"Legally required, or its absence creates a defect that is expensive to cure later."},
+    "recommended": {"rank":1,"meaning":"Market standard. Omitting it is a deliberate choice, not an oversight."},
+    "optional":    {"rank":2,"meaning":"Useful in some fact patterns; safe to omit."}
+  },
+  "insertion": {
+    "auto":    "Inserted automatically whenever its conditions are satisfied.",
+    "suggest": "Held back from the draft and surfaced by missing-clause detection so the user makes an explicit choice."
+  }
+}

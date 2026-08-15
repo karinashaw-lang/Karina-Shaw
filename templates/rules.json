@@ -1,0 +1,113 @@
+{
+  "$comment": "Conditional logic engine (spec §1.2). Rules are data, not code, so a non-engineer can read and edit them and so every generation can record which fired.",
+  "version": "1.0.0",
+  "expressionLanguage": {
+    "always":     "true",
+    "eq":         "[answerField, value]",
+    "ne":         "[answerField, value]",
+    "gte":        "[answerField, number]",
+    "lte":        "[answerField, number]",
+    "in":         "[answerField, [values]]",
+    "truthy":     "answerField",
+    "sameField":  "[answerFieldA, answerFieldB]",
+    "diffField":  "[answerFieldA, answerFieldB]",
+    "taxonomy":   "[answerField, taxonomyCollection, booleanProperty]",
+    "rule":       "ruleId (references another rule's result)",
+    "all":        "[expr, ...]  — logical AND",
+    "any":        "[expr, ...]  — logical OR",
+    "not":        "expr"
+  },
+  "rules": [
+    {"id":"multi_founder","code":"IF [founders >= 2] THEN [include transfer restrictions + buy-sell]",
+     "when":{"gte":["founders",2]},
+     "rationale":"Multiple owners create exit, death, and divorce scenarios that need a pre-agreed mechanism."},
+
+    {"id":"solo_founder","code":"IF [founders == 1] THEN [skip buy-sell, add sole-owner provisions]",
+     "when":{"eq":["founders",1]},
+     "rationale":"A single-owner entity has no counterparty to buy out; different formalities apply."},
+
+    {"id":"even_split","code":"IF [founders == 2] THEN [add deadlock resolution]",
+     "when":{"eq":["founders",2]},
+     "rationale":"An even two-way split has no tiebreak by default, so any disagreement can freeze the company."},
+
+    {"id":"is_llc","code":"IF [entity == LLC] THEN [use LLC statutory forms]",
+     "when":{"eq":["entity","llc"]},
+     "rationale":"LLC and corporate governance use different instruments and different vocabulary."},
+
+    {"id":"is_corp","code":"IF [entity == C-Corp] THEN [use corporate forms]",
+     "when":{"eq":["entity","ccorp"]},
+     "rationale":"Corporations require authorized stock, a board, and bylaws rather than an operating agreement."},
+
+    {"id":"foreign_qual","code":"IF [formation state != operating state] THEN [add foreign qualification]",
+     "when":{"diffField":["formState","opState"]},
+     "rationale":"Operating in a state you did not form in generally requires registering there before transacting business."},
+
+    {"id":"ip_critical","code":"IF [industry is IP-critical] THEN [include IP assignment + data provisions]",
+     "when":{"taxonomy":["industry","industries","ipCritical"]},
+     "rationale":"Software, commerce, and health businesses carry their value in intellectual property and data."},
+
+    {"id":"regulated","code":"IF [industry is regulated] THEN [add licensure and compliance provisions]",
+     "when":{"taxonomy":["industry","industries","regulated"]},
+     "rationale":"Regulated practice areas restrict who may own the entity and how services may be delivered."},
+
+    {"id":"institutional","code":"IF [funding is institutional] THEN [4-year vesting, 1-year cliff, drag-along]",
+     "when":{"taxonomy":["funding","fundingStages","institutional"]},
+     "rationale":"Standard institutional terms. Deviating from them costs time in diligence without buying anything."},
+
+    {"id":"file_83b","code":"IF [entity == C-Corp] AND [vesting applies] THEN [generate 83(b) election]",
+     "when":{"all":[{"eq":["entity","ccorp"]},{"rule":"institutional"}]},
+     "rationale":"The Section 83(b) election must be filed within 30 days of grant. The deadline is not extendable."},
+
+    {"id":"hiring","code":"IF [hiring within 12 months] THEN [include employment policy set]",
+     "when":{"truthy":"employees"},
+     "rationale":"Wage-and-hour exposure begins at the first hire, not at scale."},
+
+    {"id":"ca_operating","code":"IF [operating state == CA] THEN [flag non-compete void + CA policies]",
+     "when":{"eq":["opState","CA"]},
+     "rationale":"California voids most employee non-competes (Bus. & Prof. Code §16600; AB 1076 effective January 2024)."},
+
+    {"id":"ca_employees","code":"IF [hiring] AND [operating state == CA] THEN [meal, rest, PTO accrual policies]",
+     "when":{"all":[{"rule":"hiring"},{"eq":["opState","CA"]}]},
+     "rationale":"California wage orders require these specific policies; the spec names this exact case in §2.1."},
+
+    {"id":"ny_publication","code":"IF [formation state == NY] AND [entity == LLC] THEN [publication requirement]",
+     "when":{"all":[{"eq":["formState","NY"]},{"eq":["entity","llc"]}]},
+     "rationale":"NY LLC Law §206 requires newspaper publication within 120 days or authority to do business is suspended."},
+
+    {"id":"de_franchise","code":"IF [formation state == DE] THEN [franchise tax + annual report notice]",
+     "when":{"eq":["formState","DE"]},
+     "rationale":"Delaware charges annual franchise tax regardless of revenue; a missed filing voids good standing."},
+
+    {"id":"tx_charging","code":"IF [formation state == TX] AND [entity == LLC] THEN [charging order protection]",
+     "when":{"all":[{"eq":["formState","TX"]},{"eq":["entity","llc"]}]},
+     "rationale":"The Texas LLC statute offers strong charging-order protection worth invoking expressly."},
+
+    {"id":"fl_annual","code":"IF [formation state == FL] THEN [annual report deadline notice]",
+     "when":{"eq":["formState","FL"]},
+     "rationale":"Florida's annual report window closes May 1 and the late fee is substantial and non-waivable."},
+
+    {"id":"ca_soi","code":"IF [formation state == CA] OR [operating state == CA] THEN [Statement of Information notice]",
+     "when":{"any":[{"eq":["formState","CA"]},{"eq":["opState","CA"]}]},
+     "rationale":"California requires an initial Statement of Information within 90 days of registration."},
+
+    {"id":"vc_entity_mismatch","code":"IF [funding == VC] AND [entity == LLC] THEN [flag entity structure conflict]",
+     "when":{"all":[{"eq":["funding","vc"]},{"eq":["entity","llc"]}]},
+     "rationale":"Institutional funds generally cannot hold LLC interests because pass-through income creates UBTI for their tax-exempt LPs."},
+
+    {"id":"health_baa","code":"IF [industry == healthcare] THEN [require BAA references]",
+     "when":{"eq":["industry","health"]},
+     "rationale":"HIPAA requires a Business Associate Agreement with any vendor that touches protected health information."},
+
+    {"id":"construction","code":"IF [industry == construction] THEN [add lien and retainage provisions]",
+     "when":{"eq":["industry","construct"]},
+     "rationale":"Mechanics lien rights are deadline-driven and waived by silence in most states."},
+
+    {"id":"professional","code":"IF [industry == professional services] THEN [add licensure and scope provisions]",
+     "when":{"eq":["industry","services"]},
+     "rationale":"Licensed practice areas restrict non-licensee ownership in several states."},
+
+    {"id":"consumer_data","code":"IF [industry in {SaaS, e-commerce, healthcare}] THEN [add privacy program obligations]",
+     "when":{"in":["industry",["saas","ecommerce","health"]]},
+     "rationale":"These businesses process personal data at volume and fall under state privacy statutes at low thresholds."}
+  ]
+}

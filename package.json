@@ -1,0 +1,12 @@
+{
+  "name": "draft-ai-engine",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Template corpus and working prototype for the DRAFT AI Template & Content Engine spec",
+  "type": "module",
+  "scripts": {
+    "validate": "node templates/tools/validate.mjs",
+    "build": "node templates/tools/build.mjs",
+    "check": "node templates/tools/validate.mjs && node templates/tools/build.mjs --check"
+  }
+}

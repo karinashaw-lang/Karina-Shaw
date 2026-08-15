@@ -1,0 +1,10 @@
+{
+  "$comment": "Cross-reference aliases. Some clauses apply to both entity types but need to point at whichever governance clause is actually generated — the LLC voting article or the corporate board article. Writing <<xr:@approval>> instead of a hard clause id keeps one clause serving both, and lets validate.mjs prove the reference always lands on a clause that exists.",
+  "version": "1.0.0",
+  "aliases": {
+    "approval": {"by":"entity","targets":{"llc":"gov_voting","ccorp":"gov_board"},
+                 "meaning":"the clause stating who must approve a decision"},
+    "capital":  {"by":"entity","targets":{"llc":"gov_capital","ccorp":"gov_stock_issuance"},
+                 "meaning":"the clause governing what owners contribute and what they receive"}
+  }
+}

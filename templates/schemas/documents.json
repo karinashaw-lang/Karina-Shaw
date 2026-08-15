@@ -1,0 +1,201 @@
+{
+  "$comment": "Document package schema (spec §1.1). `include` decides whether the document is generated at all; `groupOrder` fixes article order within it. Every clause must declare a group that appears in its document's groupOrder — validate.mjs enforces this so a clause can never be silently dropped during numbering.",
+  "version": "1.0.0",
+  "documents": [
+    {
+      "id": "charter",
+      "icon": "📜",
+      "numbering": "article",
+      "order": 1,
+      "name": {
+        "taxonomy": [
+          "entity",
+          "entities",
+          "charter"
+        ]
+      },
+      "include": {
+        "always": true
+      },
+      "rationale": "Always required — this is the filing that creates the entity.",
+      "groupOrder": [
+        "Charter"
+      ]
+    },
+    {
+      "id": "governance",
+      "icon": "📗",
+      "numbering": "section",
+      "order": 2,
+      "name": {
+        "taxonomy": [
+          "entity",
+          "entities",
+          "governance"
+        ]
+      },
+      "include": {
+        "always": true
+      },
+      "rationale": "Always required — governs how the owners run the Company.",
+      "groupOrder": [
+        "Organization",
+        "Governance",
+        "Economics",
+        "Ownership Transfers",
+        "Regulatory Compliance",
+        "General Provisions"
+      ]
+    },
+    {
+      "id": "ip-assignment",
+      "icon": "🔐",
+      "numbering": "section",
+      "order": 3,
+      "name": {
+        "const": "Founder IP Assignment"
+      },
+      "include": {
+        "any": [
+          {
+            "rule": "ip_critical"
+          },
+          {
+            "rule": "multi_founder"
+          }
+        ]
+      },
+      "rationale": "Included when the industry is IP-critical or there is more than one founder — either way, ownership of the work has to sit with the Company rather than with an individual.",
+      "groupOrder": [
+        "Assignment",
+        "Protections"
+      ]
+    },
+    {
+      "id": "vesting",
+      "icon": "⏳",
+      "numbering": "section",
+      "order": 4,
+      "name": {
+        "const": "Founder Vesting Agreement"
+      },
+      "include": {
+        "any": [
+          {
+            "rule": "institutional"
+          },
+          {
+            "rule": "multi_founder"
+          }
+        ]
+      },
+      "rationale": "Included for institutional funding or multiple founders — vesting is what protects the team from an early departure taking dead equity with them.",
+      "groupOrder": [
+        "Schedule",
+        "Company Rights"
+      ]
+    },
+    {
+      "id": "election-83b",
+      "icon": "🧾",
+      "numbering": "section",
+      "order": 5,
+      "name": {
+        "const": "IRS Section 83(b) Election"
+      },
+      "include": {
+        "rule": "file_83b"
+      },
+      "rationale": "Included for C-Corp stock subject to vesting. The filing deadline is 30 days and cannot be extended.",
+      "groupOrder": [
+        "Election"
+      ]
+    },
+    {
+      "id": "consent",
+      "icon": "✍️",
+      "numbering": "section",
+      "order": 6,
+      "name": {
+        "builtin": "consentName"
+      },
+      "include": {
+        "always": true
+      },
+      "rationale": "Always required — the first corporate act, which adopts everything else in the package.",
+      "groupOrder": [
+        "Organizational Actions",
+        "Authorizations"
+      ]
+    },
+    {
+      "id": "employment",
+      "icon": "👥",
+      "numbering": "section",
+      "order": 7,
+      "name": {
+        "const": "Employment Policy Set"
+      },
+      "include": {
+        "rule": "hiring"
+      },
+      "rationale": "Included when hiring within 12 months. Wage-and-hour exposure starts at the first hire.",
+      "groupOrder": [
+        "Terms of Employment",
+        "Wage and Hour",
+        "Confidentiality and Conduct"
+      ]
+    },
+    {
+      "id": "foreign-qualification",
+      "icon": "🌐",
+      "numbering": "section",
+      "order": 8,
+      "name": {
+        "template": "Foreign Qualification — {{opStateLong}}"
+      },
+      "include": {
+        "rule": "foreign_qual"
+      },
+      "rationale": "Included when the operating state differs from the formation state.",
+      "groupOrder": [
+        "Application",
+        "Supporting Filings"
+      ]
+    },
+    {
+      "id": "compliance-calendar",
+      "icon": "📅",
+      "numbering": "section",
+      "order": 9,
+      "name": {
+        "const": "Compliance Calendar"
+      },
+      "include": {
+        "always": true
+      },
+      "rationale": "Always generated — obligation extraction across the whole package (spec §4.2).",
+      "groupOrder": [
+        "Immediate Deadlines",
+        "Recurring Obligations"
+      ]
+    },
+    {
+      "id": "schedules",
+      "icon": "📎",
+      "numbering": "section",
+      "order": 10,
+      "name": {
+        "const": "Schedules and Exhibits"
+      },
+      "include": {
+        "always": true
+      },
+      "rationale": "Always generated — the governing document and IP assignment both refer to attachments, and a reference to an attachment that does not exist is a defect the consistency checker reports.",
+      "groupOrder": [
+        "Schedules",
+        "Exhibits"
+      ]
+    }
+  ]
+}

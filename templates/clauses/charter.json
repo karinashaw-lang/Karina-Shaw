@@ -1,0 +1,79 @@
+{
+  "$comment": "Charter filings: Certificate of Formation (LLC) and Certificate of Incorporation (C-Corp). These are the public documents filed with the Secretary of State, so they stay deliberately thin — everything negotiable belongs in the governance document, which is not public.",
+  "collection": "charter",
+  "version": "1.0.0",
+  "clauses": [
+    {"id":"charter_name","doc":"charter","group":"Charter","title":"Name","severity":"critical","insertion":"auto","condition":null,
+     "jurisdictions":["*"],"industries":["*"],"entities":["*"],"version":"1.1.0","updated":"2026-05","source":"DRAFT standard library",
+     "rationale":"Statutorily required in every state. The name must exactly match the availability check.",
+     "body":"The name of the {{entityLong}} is {{company}} (the “Company”)."},
+
+    {"id":"charter_purpose","doc":"charter","group":"Charter","title":"Purpose","severity":"critical","insertion":"auto","condition":null,
+     "jurisdictions":["*"],"industries":["*"],"entities":["*"],"version":"1.2.0","updated":"2026-05","source":"DRAFT standard library",
+     "rationale":"A general-purpose clause avoids having to amend the charter when the business changes direction.",
+     "body":"The Company is organized to engage in any lawful act or activity for which a {{entityLong}} may be organized under the laws of {{formStateLong}}, including without limitation the business of {{industryName}}."},
+
+    {"id":"charter_agent","doc":"charter","group":"Charter","title":"Registered Office and Agent","severity":"critical","insertion":"auto","condition":null,
+     "jurisdictions":["*"],"industries":["*"],"entities":["*"],"version":"1.1.0","updated":"2026-04","source":"DRAFT standard library",
+     "rationale":"Every state requires an in-state agent for service of process. Using a founder's home address makes that address public and permanent.",
+     "body":"The address of the Company’s registered office in {{formStateLong}} is {{agentAddress}}, and the name of its [[registered agent]] at that address is {{agent}}."},
+
+    {"id":"charter_organizer","doc":"charter","group":"Charter","title":"Organizer","severity":"critical","insertion":"auto","condition":{"rule":"is_llc"},
+     "jurisdictions":["*"],"industries":["*"],"entities":["llc"],"version":"1.0.0","updated":"2026-03","source":"DRAFT standard library",
+     "rationale":"The organizer signs the filing. They need not be a Member, and their role ends when the Company is formed.",
+     "body":"The name and address of the organizer executing this {{charterDoc}} is {{founder1}}, whose authority terminates upon the filing of this document and the admission of the initial {{ownerTerm}} under <<xr:consent_adopt>>."},
+
+    {"id":"charter_incorporator","doc":"charter","group":"Charter","title":"Incorporator","severity":"critical","insertion":"auto","condition":{"rule":"is_corp"},
+     "jurisdictions":["*"],"industries":["*"],"entities":["ccorp"],"version":"1.0.0","updated":"2026-03","source":"DRAFT standard library",
+     "rationale":"The incorporator appoints the initial board and then resigns. Skipping the resignation leaves an ambiguous authority in the record.",
+     "body":"The name and address of the incorporator is {{founder1}}. The powers of the incorporator terminate upon the appointment of the initial directors under <<xr:consent_adopt>>."},
+
+    {"id":"charter_mgmt","doc":"charter","group":"Charter","title":"Management","severity":"critical","insertion":"auto","condition":{"rule":"is_llc"},
+     "jurisdictions":["*"],"industries":["*"],"entities":["llc"],"version":"1.1.0","updated":"2026-05","source":"DRAFT standard library",
+     "rationale":"Several states require the charter to state whether the LLC is member-managed or manager-managed.",
+     "body":"The Company shall be {{mgmtStyle}}. The rights and obligations of the {{ownerTerm}} are set forth in the [[Operating Agreement|operating agreement]] referenced in <<xr:gov_formation>>."},
+
+    {"id":"charter_shares","doc":"charter","group":"Charter","title":"Authorized Stock","severity":"critical","insertion":"auto","condition":{"rule":"is_corp"},
+     "jurisdictions":["*"],"industries":["*"],"entities":["ccorp"],"version":"1.2.0","updated":"2026-05","source":"DRAFT standard library",
+     "rationale":"Authorized share count and par value drive Delaware franchise tax under the authorized-shares method, so the numbers are not cosmetic.",
+     "body":"The Company is authorized to issue {{authShares}} shares of Common Stock, [[par value]] {{parValue}} per share. The number of [[authorized shares]] may be increased only by amendment of this {{charterDoc}}."},
+
+    {"id":"charter_preferred","doc":"charter","group":"Charter","title":"Blank Check Preferred","severity":"recommended","insertion":"auto","condition":{"all":[{"rule":"is_corp"},{"rule":"institutional"}]},
+     "jurisdictions":["*"],"industries":["*"],"entities":["ccorp"],"version":"1.0.0","updated":"2026-06","source":"DRAFT standard library",
+     "benchmark":"Present in 81% of venture-track certificates of incorporation",
+     "rationale":"Lets the board designate a preferred series at closing without a separate stockholder vote, which removes a step from every financing.",
+     "body":"The Board is authorized to designate one or more series of [[Preferred Stock|preferred stock]] and to fix the rights, preferences, and limitations of each series by resolution, without further action by the {{ownerTerm}}."},
+
+    {"id":"charter_dirliability","doc":"charter","group":"Charter","title":"Limitation of Director Liability","severity":"recommended","insertion":"auto","condition":{"rule":"is_corp"},
+     "jurisdictions":["*"],"industries":["*"],"entities":["ccorp"],"version":"1.1.0","updated":"2026-02","source":"DRAFT standard library",
+     "benchmark":"Present in 94% of Delaware certificates of incorporation",
+     "rationale":"Exculpation must appear in the charter to be effective; putting it only in the bylaws does not work.",
+     "body":"To the fullest extent permitted by law, no director shall be personally liable to the Company or its {{ownerTerm}} for monetary damages for breach of [[fiduciary duty]] as a director. No amendment to this provision shall reduce the protection of a director for any act occurring before the amendment."},
+
+    {"id":"charter_charter_indemnify","doc":"charter","group":"Charter","title":"Charter-Level Indemnification","severity":"recommended","insertion":"suggest","condition":{"rule":"is_corp"},
+     "jurisdictions":["*"],"industries":["*"],"entities":["ccorp"],"version":"1.0.0","updated":"2026-04","source":"DRAFT standard library",
+     "benchmark":"Present in 68% of comparable certificates",
+     "rationale":"Bylaw indemnification can be amended by a later board. Charter-level indemnification cannot be removed without a stockholder vote, which is what an outside director actually wants to see.",
+     "body":"The Company shall indemnify its directors and officers to the fullest extent permitted by law, and this right shall not be eliminated or impaired by any amendment to this {{charterDoc}} with respect to acts occurring before the amendment."},
+
+    {"id":"charter_duration","doc":"charter","group":"Charter","title":"Duration","severity":"optional","insertion":"auto","condition":null,
+     "jurisdictions":["*"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2025-11","source":"DRAFT standard library",
+     "rationale":"Perpetual existence is the default in every state in this library. The clause is included for readers who expect to see it.",
+     "body":"The Company shall have perpetual existence unless dissolved in accordance with <<xr:gov_dissolution>>."},
+
+    {"id":"charter_ny_publication","doc":"charter","group":"Charter","title":"Publication Requirement","severity":"critical","insertion":"auto","condition":{"rule":"ny_publication"},
+     "jurisdictions":["NY"],"industries":["*"],"entities":["llc"],"version":"1.1.0","updated":"2026-06","source":"NY LLC Law §206",
+     "rationale":"New York is the only state in this library with a publication requirement, and the penalty for missing it is suspension of authority to do business.",
+     "body":"Within 120 days of formation the Company shall publish notice of its formation once each week for six successive weeks in two newspapers designated by the county clerk of the county in which its office is located, and shall file a Certificate of Publication with the Department of State. Failure to comply suspends the Company’s authority to carry on business in New York until cured."},
+
+    {"id":"charter_ca_professional","doc":"charter","group":"Charter","title":"Professional Services Restriction","severity":"critical","insertion":"auto","condition":{"all":[{"rule":"professional"},{"any":[{"eq":["formState","CA"]},{"eq":["opState","CA"]}]}]},
+     "jurisdictions":["CA"],"industries":["services","health"],"entities":["*"],"version":"1.0.0","updated":"2026-06","source":"Cal. Corp. Code §17701.04(b)",
+     "rationale":"California does not permit an LLC to render professional services requiring a license. This is a formation-blocking issue, not a drafting preference.",
+     "body":"California law does not permit a {{entityLong}} to render professional services for which a license is required. If any service the Company intends to provide in {{opStateLong}} requires a state license, the Company must be organized as a professional corporation or a registered limited liability partnership instead. Confirm the licensing status of every intended service line before filing."},
+
+    {"id":"charter_tx_purpose","doc":"charter","group":"Charter","title":"Supplemental Purpose Statement","severity":"optional","insertion":"suggest","condition":{"eq":["formState","TX"]},
+     "jurisdictions":["TX"],"industries":["*"],"entities":["*"],"version":"1.0.0","updated":"2026-04","source":"DRAFT standard library",
+     "rationale":"Texas accepts a general purpose statement, but a specific one can help with licensing applications that ask for evidence of the entity's stated business.",
+     "body":"Without limiting the general purpose stated in <<xr:charter_purpose>>, the Company’s initial line of business is {{industryName}}."}
+  ]
+}
