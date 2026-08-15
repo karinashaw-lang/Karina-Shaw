@@ -1,0 +1,77 @@
+# DRAFT — AI Template & Content Engine
+
+A working prototype of the deterministic layer described in the DRAFT AI Engine Spec,
+plus the template corpus it runs on and the tooling that decides whether any of that
+corpus is fit to use.
+
+**Current state: the engine works, and it drafts nothing.** 0 of 360 clauses clear the
+release gate, so every generated document comes out empty. That is the correct output
+for a corpus in this state, and making it visible rather than burying it in a disclaimer
+is the point of the gate.
+
+```
+npm run audit        # everything below, reproducible
+```
+
+## What is here
+
+| Path | |
+|---|---|
+| `draft-ai-engine.html` | The prototype. Self-contained, opens from `file://`, makes no model API call. Compiled output — do not edit by hand. |
+| `templates/` | The corpus and its tooling. Everything the engine knows lives here as JSON. [Full documentation](templates/README.md). |
+| `verification/` | Generated reports: review queue, findings, cost model, egress request. |
+
+## What is verified, and what is not
+
+**Verified by execution.** 12,120 answer sets assemble without error; no unresolved field
+tokens; no broken cross-references; all seven consistency checks pass in every package;
+same-titled clause variants proved mutually exclusive per configuration; the release gate
+rejects all three self-certification attempts; the verification pipeline fails closed
+across 137 test assertions in seven suites; the prototype matches `templates/`.
+
+**Not verified.** Every statement about what the law requires. 360 of 360 clauses.
+
+## What the measurements say
+
+Nine clauses were checked against sources, spanning California employment, California
+entity, New York entity, and federal tax.
+
+- **8 of 9 confirmed defective.** At 95% confidence, at least 57% of the corpus is
+  defective — roughly 206 of 360, point estimate near 320.
+- **The dominant failure is omission, not invention.** The clauses get the headline
+  number right and drop the qualifier that decides whether it applies. That is the
+  failure mode least likely to be caught by reading a clause on its own, because a
+  correct number missing its qualifier reads as complete.
+- **169 clauses assert what the law requires; 191 state a negotiated term.** They fail
+  differently and are vetted by different people. The commercial package is 14–26% legal
+  assertion and can be cleared without pulling a statute; the California compliance
+  documents are 85–88% and cannot.
+- **116 clauses carry a detector flag** from patterns derived from the sample. The
+  detectors independently rediscovered the specific defects the search pass found.
+
+`verification/cost.md` estimates ~133 hours of qualified review from those inputs, and
+labels every assumed rate rather than burying it.
+
+## Why nothing ships
+
+Verification is blocked by an organization egress policy, not by anything in this repo.
+All 14 legal source hosts return `connect_rejected` — *"gateway answered 403 to CONNECT"*
+— while `github.com` reaches through the same path. `npm run egress` generates the
+allowlist request, ranked by how many citations depend on each host.
+
+Two things unblock it, and they are independent:
+
+1. **Egress to one primary source host.** Moves clauses to `corroborated` mechanically.
+2. **A source text supplied directly.** `npm run ingest -- --file lab-925.txt --citation
+   "Cal. Lab. Code §925" --by "..." --from "Westlaw"`. Stored verbatim, hashed, attested.
+
+Neither reaches `primary-verified`, which requires a named human reviewer by design.
+
+## The honest summary
+
+The clause text is illustrative content written by a model and is **not legal advice, not
+measured data, and not fit for use.** An 89% sampled defect rate is a verdict on the
+drafting method rather than on any individual draft: text written from model memory omits
+qualifiers, and reviewing 169 such clauses costs more than composing them from attested
+sources would. The pinning workflow in `templates/tools/pin.mjs` exists to invert that —
+quote the provision, pin the assertion, and the omission failure largely cannot occur.
