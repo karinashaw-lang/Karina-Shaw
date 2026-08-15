@@ -25,7 +25,9 @@
    "rationale": "Statutorily required in every state. The name must exactly match the availability check.",
    "body": "The name of the {{entityLong}} is {{company}} (the “Company”).",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "charter_purpose",
@@ -49,7 +51,9 @@
    "rationale": "A general-purpose clause avoids having to amend the charter when the business changes direction.",
    "body": "The Company is organized to engage in any lawful act or activity for which a {{entityLong}} may be organized under the laws of {{formStateLong}}, including without limitation the business of {{industryName}}.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": true,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "charter_agent",
@@ -73,7 +77,9 @@
    "rationale": "Every state requires an in-state agent for service of process. Using a founder's home address makes that address public and permanent.",
    "body": "The address of the Company’s registered office in {{formStateLong}} is {{agentAddress}}, and the name of its [[registered agent]] at that address is {{agent}}.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "charter_organizer",
@@ -99,7 +105,9 @@
    "rationale": "The organizer signs the filing. They need not be a Member, and their role ends when the Company is formed.",
    "body": "The name and address of the organizer executing this {{charterDoc}} is {{founder1}}, whose authority terminates upon the filing of this document and the admission of the initial {{ownerTerm}} under <<xr:consent_adopt>>.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "charter_incorporator",
@@ -125,7 +133,9 @@
    "rationale": "The incorporator appoints the initial board and then resigns. Skipping the resignation leaves an ambiguous authority in the record.",
    "body": "The name and address of the incorporator is {{founder1}}. The powers of the incorporator terminate upon the appointment of the initial directors under <<xr:consent_adopt>>.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "charter_mgmt",
@@ -151,7 +161,9 @@
    "rationale": "Several states require the charter to state whether the LLC is member-managed or manager-managed.",
    "body": "The Company shall be {{mgmtStyle}}. The rights and obligations of the {{ownerTerm}} are set forth in the [[Operating Agreement|operating agreement]] referenced in <<xr:gov_formation>>.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "charter_shares",
@@ -177,7 +189,9 @@
    "rationale": "Authorized share count and par value drive Delaware franchise tax under the authorized-shares method, so the numbers are not cosmetic.",
    "body": "The Company is authorized to issue {{authShares}} shares of Common Stock, [[par value]] {{parValue}} per share. The number of [[authorized shares]] may be increased only by amendment of this {{charterDoc}}.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "charter_preferred",
@@ -211,7 +225,9 @@
    "rationale": "Lets the board designate a preferred series at closing without a separate stockholder vote, which removes a step from every financing.",
    "body": "The Board is authorized to designate one or more series of [[Preferred Stock|preferred stock]] and to fix the rights, preferences, and limitations of each series by resolution, without further action by the {{ownerTerm}}.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "charter_dirliability",
@@ -238,7 +254,9 @@
    "rationale": "Exculpation must appear in the charter to be effective; putting it only in the bylaws does not work.",
    "body": "To the fullest extent permitted by law, no director shall be personally liable to the Company or its {{ownerTerm}} for monetary damages for breach of [[fiduciary duty]] as a director. No amendment to this provision shall reduce the protection of a director for any act occurring before the amendment.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": true,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "charter_charter_indemnify",
@@ -265,7 +283,9 @@
    "rationale": "Bylaw indemnification can be amended by a later board. Charter-level indemnification cannot be removed without a stockholder vote, which is what an outside director actually wants to see.",
    "body": "The Company shall indemnify its directors and officers to the fullest extent permitted by law, and this right shall not be eliminated or impaired by any amendment to this {{charterDoc}} with respect to acts occurring before the amendment.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "charter_duration",
@@ -289,7 +309,9 @@
    "rationale": "Perpetual existence is the default in every state in this library. The clause is included for readers who expect to see it.",
    "body": "The Company shall have perpetual existence unless dissolved in accordance with <<xr:gov_dissolution>>.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "charter_ny_publication",
@@ -327,7 +349,9 @@
     "The two newspapers must be one daily and one weekly. The clause says only 'two newspapers', which reads as though any two designated papers will do.",
     "The Certificate of Publication must have the affidavits of publication from each newspaper attached. The clause does not mention the affidavits, which are the part a filer has to collect from the papers."
    ],
-   "lastChecked": "2026-08-15"
+   "lastChecked": "2026-08-15",
+   "assertsLaw": true,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "charter_ca_professional",
@@ -387,7 +411,9 @@
      "checked": null
     }
    ],
-   "verification": "single-source"
+   "verification": "single-source",
+   "assertsLaw": true,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "charter_tx_purpose",
@@ -416,7 +442,9 @@
    "rationale": "Texas accepts a general purpose statement, but a specific one can help with licensing applications that ask for evidence of the entity's stated business.",
    "body": "Without limiting the general purpose stated in <<xr:charter_purpose>>, the Company’s initial line of business is {{industryName}}.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   }
  ]
 }

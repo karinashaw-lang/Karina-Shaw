@@ -34,7 +34,9 @@
      "checked": null
     }
    ],
-   "verification": "single-source"
+   "verification": "single-source",
+   "assertsLaw": true,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "cal_soi",
@@ -73,7 +75,9 @@
      "checked": null
     }
    ],
-   "verification": "multi-cited"
+   "verification": "multi-cited",
+   "assertsLaw": true,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "cal_ny",
@@ -106,7 +110,9 @@
      "checked": null
     }
    ],
-   "verification": "single-source"
+   "verification": "single-source",
+   "assertsLaw": true,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "cal_foreign",
@@ -132,7 +138,9 @@
    "rationale": "The obligation attaches when the company begins transacting business in the state, which is usually before anyone thinks to check.",
    "body": "The Company is formed in {{formStateLong}} but operates in {{opStateLong}}, which generally requires [[foreign qualification]] there before transacting business. Penalties typically include back fees and loss of access to that state’s courts until the Company registers. The application is in <<xr:fq_statement>>.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": true,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "cal_ein",
@@ -156,7 +164,9 @@
    "rationale": "Everything downstream — bank account, payroll, merchant processing — waits on the EIN.",
    "body": "Apply for an EIN on IRS Form SS-4 before opening the bank account authorized in <<xr:consent_bank>>. Then register for {{opStateLong}} state tax accounts and, if hiring, unemployment insurance and workers’ compensation.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "cal_annual_report",
@@ -180,7 +190,9 @@
    "rationale": "Falling out of good standing blocks financings, bank changes, and qualification in other states, and is discovered at the worst possible moment.",
    "body": "{{formStateLong}} filing schedule: {{annualReportRule}}. Maintain the registered agent named in <<xr:charter_agent>> continuously — a lapsed agent is the most common cause of a missed filing, because that is where the state sends the notice.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "cal_de_franchise",
@@ -219,7 +231,9 @@
      "checked": null
     }
    ],
-   "verification": "multi-cited"
+   "verification": "multi-cited",
+   "assertsLaw": true,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "cal_tx_franchise",
@@ -255,7 +269,9 @@
      "checked": null
     }
    ],
-   "verification": "single-source"
+   "verification": "single-source",
+   "assertsLaw": true,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "cal_fl_annual",
@@ -294,7 +310,9 @@
      "checked": null
     }
    ],
-   "verification": "multi-cited"
+   "verification": "multi-cited",
+   "assertsLaw": true,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "cal_ny_biennial",
@@ -330,7 +348,9 @@
      "checked": null
     }
    ],
-   "verification": "single-source"
+   "verification": "single-source",
+   "assertsLaw": true,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "cal_payroll",
@@ -356,7 +376,9 @@
    "rationale": "Unremitted payroll trust fund taxes are personally recoverable from responsible individuals. This is one of the few company liabilities that pierces the entity by statute.",
    "body": "Once the Company has employees it must deposit withheld income and FICA taxes on the schedule the IRS assigns, file Form 941 quarterly and Form 940 annually, and meet the equivalent {{opStateLong}} obligations. Unremitted trust fund taxes can be assessed personally against the officer appointed in <<xr:consent_officers>>.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "cal_baa_review",
@@ -389,7 +411,9 @@
      "checked": null
     }
    ],
-   "verification": "single-source"
+   "verification": "single-source",
+   "assertsLaw": true,
+   "classifiedBy": "heuristic-unreviewed"
   }
  ]
 }

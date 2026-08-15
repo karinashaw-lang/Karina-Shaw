@@ -12,7 +12,7 @@
     "probe": "node templates/tools/probe-sources.mjs",
     "verify": "node templates/tools/verify.mjs",
     "queue": "node templates/tools/queue.mjs",
-    "audit": "npm run test && npm run check && npm run probe && npm run verify && npm run queue && npm run egress && npm run texts && npm run pins && npm run lint",
+    "audit": "npm run test && npm run check && npm run probe && npm run verify && npm run queue && npm run egress && npm run texts && npm run pins && npm run lint && npm run cost",
     "egress": "node templates/tools/egress-request.mjs",
     "plan": "node templates/tools/assertions.mjs",
     "findings": "node templates/tools/findings.mjs",
@@ -20,6 +20,7 @@
     "texts": "node templates/tools/ingest.mjs --list",
     "pins": "node templates/tools/pin.mjs --check",
     "lint": "node templates/tools/lint.mjs",
-    "lint:validate": "node templates/tools/lint.mjs --validate"
+    "lint:validate": "node templates/tools/lint.mjs --validate",
+    "cost": "node templates/tools/cost.mjs"
   }
 }

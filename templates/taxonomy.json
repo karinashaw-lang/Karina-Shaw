@@ -322,7 +322,32 @@
     }
   },
   "releaseGate": {
-    "$note": "Minimum verification level a clause must reach before the engine will draft it into a document. Clauses below the gate are withheld and counted, not silently dropped. Search-corroborated deliberately sits BELOW the gate: a search summary is a lead for a reviewer, not a substitute for reading the source.",
-    "minimum": "corroborated"
+    "$note": "Minimum verification level a clause must reach before the engine will draft it into a document. Clauses below the gate are withheld and counted, not silently dropped. Search-corroborated deliberately sits BELOW the gate: a search summary is a lead for a reviewer, not a substitute for reading the source. A clause must additionally clear the review track its assertsLaw classification puts it on. The classification itself is currently heuristic and unreviewed, which is its own gate: an unreviewed classification cannot be relied on to route a clause to the right kind of vetting.",
+    "minimum": "corroborated",
+    "requireTrackSignoff": true
+  },
+  "reviewTracks": {
+    "$note": "A clause that states what the law requires and a clause that states a negotiated term fail in different ways and are vetted by different people. Collapsing them is what makes a 360-clause review look impossible; separating them is what makes 'no mistake' reachable.",
+    "authority": {
+      "appliesWhen": "assertsLaw is true",
+      "question": "Does the source actually say this, and does it say all of it?",
+      "requires": [
+        "every assertion pinned to an attested source text",
+        "pins matching",
+        "a named legal reviewer"
+      ],
+      "failureMode": "omission — the headline number is right and the qualifier that decides whether it applies is missing",
+      "cannotBeSatisfiedBy": "drafting review, reading the clause on its own, or a model re-reading its own output"
+    },
+    "drafting": {
+      "appliesWhen": "assertsLaw is false",
+      "question": "Is this the term we want, drafted so it does what we intend?",
+      "requires": [
+        "a named drafting reviewer",
+        "the clause makes no claim about what the law requires"
+      ],
+      "failureMode": "a term that is unfavourable, ambiguous, or unenforceable as written",
+      "cannotBeSatisfiedBy": "statutory verification, because the clause asserts no statute"
+    }
   }
 }

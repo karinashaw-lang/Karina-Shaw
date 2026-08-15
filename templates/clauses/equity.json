@@ -26,7 +26,9 @@
    "rationale": "Work created before formation belongs to the person who made it unless assigned. This is the single most common diligence defect in early-stage companies.",
    "body": "Each founder hereby irrevocably assigns to the Company all right, title, and interest in every invention, work of authorship, trade secret, know-how, and other intellectual property conceived or reduced to practice in connection with the Company’s business, whether before or after the Effective Date, together with all rights to sue for past infringement.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "ipa_wfh",
@@ -50,7 +52,9 @@
    "rationale": "Work-made-for-hire only covers certain categories of work. The backstop assignment is what catches everything else.",
    "body": "All copyrightable works created by a founder within the scope of the Company’s business are [[work made for hire]] under the Copyright Act. To the extent any work does not qualify as a work made for hire, it is assigned to the Company under <<xr:ipa_assign>>.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": true,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "ipa_prior",
@@ -74,7 +78,9 @@
    "rationale": "A blank prior-inventions schedule is itself a representation. An unlisted prior invention is deemed assigned, which is usually what both sides want.",
    "body": "Each founder shall list on Exhibit A any invention created before the Effective Date that they wish to exclude from <<xr:ipa_assign>>. An unlisted invention is deemed assigned. If a founder lists none, they represent that none exist.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "ipa_state_carveout",
@@ -127,7 +133,9 @@
     "§§2870–2872 govern employees. The clause is drafted for founders and sits in the founder IP assignment; a founder who is not an employee may not be covered, and the clause does not flag that.",
     "contradicted: the written notice is given under §2870"
    ],
-   "lastChecked": "2026-08-15"
+   "lastChecked": "2026-08-15",
+   "assertsLaw": true,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "ipa_confidential",
@@ -151,7 +159,9 @@
    "rationale": "Trade secret protection requires reasonable measures to keep the secret. A written obligation is the cheapest such measure.",
    "body": "Each founder shall hold the Company’s confidential information in confidence during and after their involvement with the Company, and shall not use it except for the Company’s benefit. Nothing in this section prohibits disclosure of a suspected violation of law to a government agency, or disclosure protected by the Defend Trade Secrets Act whistleblower immunity.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": true,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "ipa_thirdparty",
@@ -176,7 +186,9 @@
    "rationale": "Most founders come from a prior employer with its own invention assignment. This representation is where that conflict surfaces — before an acquirer finds it.",
    "body": "Each founder represents that they are not subject to any agreement with a former employer or other party that conflicts with <<xr:ipa_assign>>, that no Company intellectual property was developed using a former employer’s time, equipment, or confidential information, and that they will not bring any third party’s confidential information onto Company systems.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "ipa_opensource",
@@ -210,7 +222,9 @@
    "rationale": "Copyleft licenses in the wrong part of a codebase can force disclosure of proprietary source. Acquirers scan for this, and remediation late in a deal is expensive.",
    "body": "The Company shall maintain an inventory of open source components incorporated into its products, together with the license governing each. Components under a reciprocal or copyleft license shall not be incorporated into proprietary code without approval recorded under <<xr:@approval>>.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "ipa_moral",
@@ -235,7 +249,9 @@
    "rationale": "Moral rights rarely matter in the US, but they do matter if the work is exploited in jurisdictions that recognize them.",
    "body": "To the extent permitted by law, each founder waives all moral rights, rights of attribution, and rights of integrity in the assigned works, and agrees not to assert them against the Company or its licensees or customers.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "ipa_further",
@@ -259,7 +275,9 @@
    "rationale": "Patent and trademark filings need the inventor's signature. The power of attorney is what lets the Company proceed if a departed founder stops responding.",
    "body": "Each founder shall execute any document and take any action reasonably requested by the Company to perfect, record, or enforce the rights assigned under <<xr:ipa_assign>>, at the Company’s expense. If a founder cannot be reached after reasonable effort, they appoint the Company as their attorney-in-fact for the limited purpose of executing such documents.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "vest_schedule",
@@ -284,7 +302,9 @@
    "rationale": "Four years with a one-year cliff is the market standard. Deviating costs diligence time without buying anything.",
    "body": "Founder interests vest over {{vestYears}} years measured from {{date}}, with a {{cliff}}-month [[cliff]]. {{cliffPct}} vests on the cliff date; the balance vests in {{monthlyCount}} equal monthly installments. No interest vests after the founder ceases to provide services, except as provided in <<xr:vest_repurchase>>.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "vest_definitions",
@@ -309,7 +329,9 @@
    "rationale": "Acceleration and repurchase both turn on these definitions. Leaving them undefined means the most consequential terms in the document are decided in hindsight.",
    "body": "“Cause” means a founder’s conviction of a felony, act of fraud or material dishonesty against the Company, material breach of this agreement not cured within {{cure}} days of written notice, or willful failure to perform assigned duties after written notice. “Good Reason” means a material reduction in duties or compensation, or a relocation of the founder’s principal workplace by more than fifty (50) miles, in each case without the founder’s consent and after {{cure}} days to cure.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": true,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "vest_leave",
@@ -333,7 +355,9 @@
    "rationale": "Silence means vesting continues through an indefinite leave. Tolling is standard, but it interacts with protected leave and should not be applied automatically.",
    "body": "Vesting continues during any leave of absence protected by law. For any other leave exceeding {{cure}} days, vesting is tolled for the period beyond {{cure}} days and the vesting dates are extended accordingly.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "vest_repurchase",
@@ -357,7 +381,9 @@
    "rationale": "Vesting without a repurchase right is decorative. The repurchase is the mechanism that actually recovers unvested equity.",
    "body": "If a founder ceases to provide services for any reason, the Company may repurchase all unvested interests at the lower of original cost or fair market value, exercisable for ninety (90) days following cessation. The repurchase price may be paid in cash or by cancellation of indebtedness.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "vest_accel",
@@ -384,7 +410,9 @@
    "rationale": "Single-trigger acceleration depresses the purchase price because the acquirer loses retention. Double-trigger is the compromise both sides accept.",
    "body": "If the Company is acquired and a founder is terminated without Cause or resigns for Good Reason within twelve (12) months following the closing, all unvested interests vest immediately. Cause and Good Reason have the meanings given in <<xr:vest_definitions>>.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "vest_transfer",
@@ -408,7 +436,9 @@
    "rationale": "Transferring unvested equity would defeat the repurchase right by putting it beyond the Company's reach.",
    "body": "Unvested interests may not be transferred, pledged, or encumbered. Any attempted transfer is void, and the Company’s repurchase right under <<xr:vest_repurchase>> continues to apply to any interest transferred in violation of this section.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": true,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "b83_election",
@@ -445,7 +475,9 @@
      "checked": null
     }
    ],
-   "verification": "multi-cited"
+   "verification": "multi-cited",
+   "assertsLaw": true,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "b83_instructions",
@@ -480,7 +512,9 @@
    "defects": [
     "The IRS now provides Form 15620 as a standardised way to make the election. The clause describes only a written statement and does not mention the form, so a user following it would hand-draft something the IRS has since published a form for."
    ],
-   "lastChecked": "2026-08-15"
+   "lastChecked": "2026-08-15",
+   "assertsLaw": true,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "b83_spouse",
@@ -520,7 +554,9 @@
    "rationale": "In a community property state the spouse may hold an interest in the shares, and the election is cleaner if they sign it too.",
    "body": "If the undersigned is married and resides in a community property jurisdiction, the undersigned’s spouse should also sign this election with respect to any community property interest in the shares.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   }
  ]
 }

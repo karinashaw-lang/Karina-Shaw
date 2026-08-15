@@ -25,7 +25,9 @@
    "rationale": "The governing document has no force until adopted. Founders routinely sign an operating agreement and never record the adoption.",
    "body": "The {{ownerTerm}} adopt the {{govDoc}} attached hereto, effective {{date}}, and ratify the filing of the {{charterDoc}} with the Secretary of State of {{formStateLong}} and all acts taken by the organizer or incorporator in connection with that filing.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "consent_directors",
@@ -51,7 +53,9 @@
    "rationale": "The incorporator's authority ends when the board is seated. Until then no one has authority to act for the corporation.",
    "body": "The following persons are elected to serve as the initial directors of the Company until their successors are elected and qualified: {{founderList}}. The incorporator’s authority terminates upon this election as provided in <<xr:charter_incorporator>>.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "consent_issue_vesting",
@@ -84,7 +88,9 @@
    "rationale": "Variant used when the package includes a vesting agreement, so the reference to the vesting terms always resolves.",
    "body": "The Company shall issue the interests set forth on Schedule A to the {{ownerTerm}} in exchange for the contributions described in <<xr:gov_units>>, subject to the vesting terms of <<xr:vest_schedule>> and the repurchase right in <<xr:vest_repurchase>>.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "consent_issue_plain",
@@ -119,7 +125,9 @@
    "rationale": "Variant used when no vesting agreement is generated. Identical to the vesting variant except that it makes no reference to a document that does not exist.",
    "body": "The Company shall issue the interests set forth on Schedule A to the {{ownerTerm}} in exchange for the contributions described in <<xr:gov_units>>.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "consent_ip",
@@ -152,7 +160,9 @@
    "rationale": "Recording the assignment in the minute book is what makes it findable in diligence three years later.",
    "body": "The Company accepts the assignment of intellectual property made under <<xr:ipa_assign>> and directs that a copy of the executed assignment, together with each founder’s Exhibit A, be maintained in the Company’s records.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "consent_officers",
@@ -176,7 +186,9 @@
    "rationale": "Counterparties and banks ask who is authorized to sign. This is the document they are asking for.",
    "body": "{{founder1}} is appointed as the Company’s initial {{principalTitle}}, authorized to execute agreements, open accounts, and make filings on the Company’s behalf, subject to any limitation in <<xr:@approval>>.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "consent_bank",
@@ -200,7 +212,9 @@
    "rationale": "Banks require a resolution before opening an account, and a separate account is the first thing a court looks at in a veil-piercing analysis.",
    "body": "The Company is authorized to open one or more deposit accounts in its name, and {{founder1}} is authorized to execute the account documentation. Company funds shall not be commingled with the personal funds of any {{ownerSing}}.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "consent_ein",
@@ -224,7 +238,9 @@
    "rationale": "The EIN gates the bank account and payroll, so it is on the critical path for almost everything else.",
    "body": "The Company is authorized to apply for an Employer Identification Number on IRS Form SS-4 and to register for the state tax accounts required in {{opStateLong}}, as calendared in <<xr:cal_ein>>.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "consent_fiscal",
@@ -248,7 +264,9 @@
    "rationale": "Set once at formation. Changing the fiscal year later generally requires IRS consent.",
    "body": "The Company adopts a fiscal year ending December 31 and the cash method of accounting, in each case subject to change by approval under <<xr:@approval>> and to any requirement of the Internal Revenue Code.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "consent_83b_ack",
@@ -274,7 +292,9 @@
    "rationale": "The Company cannot file the election for the founder, but it can document that the founder was told about the deadline.",
    "body": "Each founder acknowledges that any Section 83(b) election with respect to interests issued under this consent must be filed by that founder within thirty (30) days of {{date}}, as described in <<xr:b83_instructions>>, and that the Company cannot make the filing on their behalf.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": true,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "consent_qualify",
@@ -300,7 +320,9 @@
    "rationale": "Gives the officer express authority to make the foreign qualification filing rather than doing it on assumed authority.",
    "body": "The {{principalTitle}} is authorized to qualify the Company to transact business in {{opStateLong}} and in any other state where its activities require registration, and to appoint a registered agent in each such state, as described in <<xr:fq_statement>>.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   }
  ]
 }

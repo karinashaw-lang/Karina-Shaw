@@ -25,7 +25,9 @@
    "rationale": "Fixes which side is which, since every other clause in the agreement is written in terms of those two labels.",
    "body": "This Master Services Agreement is entered into as of {{date}} between {{company}} and {{counterparty}}. For purposes of this Agreement, {{company}} is the {{selfLabel}} and {{counterparty}} is the {{counterLabel}}.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "msa_structure",
@@ -49,7 +51,9 @@
    "rationale": "The whole point of a master agreement is that the second engagement does not reopen the legal terms. That only works if precedence is stated and the SOW cannot silently amend the MSA.",
    "body": "This Agreement governs all services the {{selfLabel}} provides under one or more [[Statements of Work|statement of work]]. Each Statement of Work is incorporated by reference. In the event of conflict, this Agreement controls over any Statement of Work except where the Statement of Work expressly identifies the section of this Agreement it is amending and is signed by both Parties. Pre-printed terms on a purchase order have no effect. This is the [[order of precedence]].",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "msa_definitions",
@@ -73,7 +77,9 @@
    "rationale": "Three terms carry most of the weight in a services agreement. Defining them once prevents each Statement of Work from redefining them differently.",
    "body": "“Services” means the work described in a Statement of Work. “[[Deliverables|deliverable]]” means the items the Statement of Work identifies as being delivered to the {{counterLabel}}. “[[Background IP|background ip]]” means intellectual property owned or licensed by a Party before the Effective Date or developed outside the Services.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "msa_affiliates",
@@ -98,7 +104,9 @@
    "rationale": "Lets a group buy or sell under one agreement, but without joint liability language it also lets an affiliate incur obligations nobody stands behind.",
    "body": "An affiliate of either Party may enter into a Statement of Work under this Agreement, in which case that affiliate is treated as the contracting Party for that Statement of Work only. The contracting Party remains responsible for its affiliate’s performance and payment.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "msa_fees",
@@ -122,7 +130,9 @@
    "rationale": "Keeping rates in the Statement of Work is what lets pricing change per engagement without amending the master agreement.",
    "body": "The {{counterLabel}} shall pay the fees stated in each Statement of Work. Fees are exclusive of taxes and, unless the Statement of Work says otherwise, are non-refundable once the corresponding Services have been performed.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "msa_invoicing",
@@ -146,7 +156,9 @@
    "rationale": "A dispute carve-out is what stops a single contested line item from being used to justify withholding an entire invoice.",
    "body": "The {{selfLabel}} shall invoice monthly in arrears unless a Statement of Work provides otherwise. Undisputed amounts are due {{paymentDays}} days from the invoice date ([[net 30]]). The {{counterLabel}} may withhold a disputed amount only if it notifies the {{selfLabel}} of the basis for the dispute before the due date and pays the undisputed remainder.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "msa_late",
@@ -170,7 +182,9 @@
    "rationale": "The suspension right is the part with teeth. Interest at a rate courts will actually enforce is a secondary deterrent.",
    "body": "Undisputed amounts more than {{cure}} days overdue accrue interest at the lesser of one and one-half percent (1.5%) per month or the maximum rate permitted by law. The {{selfLabel}} may suspend Services on ten (10) business days’ written notice if undisputed amounts remain unpaid, without prejudice to any other remedy.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "msa_taxes",
@@ -194,7 +208,9 @@
    "rationale": "Silence on tax leads to an argument about whether quoted fees were gross or net, usually after the assessment arrives.",
    "body": "Fees are exclusive of sales, use, VAT, and similar transaction taxes, which are the {{counterLabel}}’s responsibility. Each Party is responsible for taxes on its own income. The {{counterLabel}} shall provide any applicable exemption certificate before invoicing.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "msa_expenses",
@@ -219,7 +235,9 @@
    "rationale": "Pre-approval and a documentation requirement are what keep travel from becoming an unbudgeted line item.",
    "body": "The {{counterLabel}} shall reimburse reasonable, documented, pre-approved travel and out-of-pocket expenses at cost, without markup. Expenses require written pre-approval where they exceed the threshold stated in the applicable Statement of Work.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": true,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "msa_price_increase",
@@ -245,7 +263,9 @@
    "rationale": "Provider-side default. A stated ceiling is what makes an increase right acceptable — an uncapped one is usually struck in review.",
    "body": "The {{selfLabel}} may adjust rates effective on each renewal term by giving at least {{renewalNotice}} days’ written notice. Any increase is capped at five percent (5%) over the prior term’s rates. Rates within an active Statement of Work are fixed for its duration.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "msa_price_protection",
@@ -271,7 +291,9 @@
    "rationale": "Customer-side mirror of the same clause. Tying an increase to a published index rather than the provider's discretion is the usual landing point.",
    "body": "Rates are fixed for the initial term. Thereafter the {{selfLabel}} may propose an adjustment on {{renewalNotice}} days’ written notice, capped at the lesser of three percent (3%) or the twelve-month change in the Consumer Price Index. If the {{counterLabel}} rejects the adjustment, it may terminate at the end of the then-current term without penalty.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": true,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "msa_mfn",
@@ -305,7 +327,9 @@
    "rationale": "Rarely granted and hard to audit, but worth asking for at enterprise volume. Expect it to be traded away for a discount that is easier to verify.",
    "body": "If the {{selfLabel}} offers a customer of comparable volume and commitment more favorable rates for substantially the same Services, it shall offer those rates to the {{counterLabel}} prospectively. This is a [[most favored nation]] commitment and does not entitle the {{counterLabel}} to a refund of amounts already paid.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "msa_ip_background",
@@ -329,7 +353,9 @@
    "rationale": "Both sides bring pre-existing material. Saying so plainly prevents an ownership fight over tooling that predates the engagement.",
    "body": "Each Party retains all right, title, and interest in its [[Background IP|background ip]]. Nothing in this Agreement transfers Background IP, and neither Party acquires any right in the other’s Background IP except the licenses expressly granted here.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "msa_ip_deliverables_provider",
@@ -355,7 +381,9 @@
    "rationale": "Provider-side default: license the output, keep the reusable components. A services business that assigns everything cannot reuse its own methods on the next engagement.",
    "body": "On payment in full, the {{selfLabel}} grants the {{counterLabel}} a perpetual, worldwide, non-exclusive licence to use the [[Deliverables|deliverable]] for its internal business purposes. The {{selfLabel}} retains ownership of the Deliverables and of all tools, methods, templates, and components of general application, including anything developed during the Services that is not specific to the {{counterLabel}}.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "msa_ip_deliverables_customer",
@@ -381,7 +409,9 @@
    "rationale": "Customer-side mirror: take assignment of what was paid for, and accept a licence back for the provider's general tooling. Demanding assignment of the tooling too is what stalls these negotiations.",
    "body": "On creation, the {{selfLabel}} assigns to the {{counterLabel}} all right, title, and interest in the [[Deliverables|deliverable]], excluding the {{selfLabel}}’s Background IP embedded in them. The {{selfLabel}} grants a perpetual, worldwide, non-exclusive licence to that embedded Background IP to the extent needed to use the Deliverables. The {{selfLabel}} shall execute any document reasonably required to perfect the assignment.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "msa_feedback",
@@ -407,7 +437,9 @@
    "rationale": "Without this, a customer suggestion that gets built into the product can later be claimed as their contribution.",
    "body": "If the {{counterLabel}} provides suggestions or feedback about the Services, the {{selfLabel}} may use it without restriction or obligation, and the {{counterLabel}} grants a perpetual, irrevocable, royalty-free licence to do so. The {{selfLabel}} shall not identify the {{counterLabel}} as the source without consent.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "msa_opensource",
@@ -441,7 +473,9 @@
    "rationale": "A copyleft component inside a deliverable can force disclosure of the customer's own code. Disclosing the inventory up front is cheaper than discovering it in diligence.",
    "body": "The {{selfLabel}} shall identify in each Statement of Work any third-party or open source component incorporated into a Deliverable, together with its licence. The {{selfLabel}} shall not incorporate any component under a reciprocal or copyleft licence into a Deliverable without the {{counterLabel}}’s prior written consent.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "msa_marks",
@@ -466,7 +500,9 @@
    "rationale": "Logo rights are a real ask for a provider and a real concession for a customer. Handling it here avoids an awkward conversation after the first press release.",
    "body": "Neither Party may use the other’s name, logo, or marks in any public communication without prior written consent, except that the {{selfLabel}} may identify the {{counterLabel}} in a customer list on its website, and either Party may make disclosures required by law or by <<xr:nda_compelled>>.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": true,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "msa_warranty_provider",
@@ -492,7 +528,9 @@
    "rationale": "Provider-side default: warrant workmanlike performance, with re-performance as the remedy. A fitness-for-purpose warranty on a services engagement is uninsurable in practice.",
    "body": "The {{selfLabel}} warrants that the Services will be performed in a professional and workmanlike manner by qualified personnel, in accordance with the applicable Statement of Work. The {{counterLabel}}’s exclusive remedy for breach of this warranty is re-performance of the deficient Services, or, if re-performance is not commercially reasonable, refund of the fees paid for them, provided notice is given within {{cure}} days of performance.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": true,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "msa_warranty_customer",
@@ -518,7 +556,9 @@
    "rationale": "Customer-side mirror. Adding conformity to specification, non-infringement, and a malicious-code warranty is the standard buyer ask; re-performance alone is not an adequate remedy for a deliverable that never conformed.",
    "body": "The {{selfLabel}} warrants that: the Services will be performed in a professional and workmanlike manner by qualified personnel; the Deliverables will conform in all material respects to the specifications in the applicable Statement of Work for {{cure}} days after acceptance; the Deliverables will not infringe any third-party intellectual property right; and the Deliverables will not contain malicious code. Remedies for breach are re-performance, correction, or refund, at the {{counterLabel}}’s election.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "msa_disclaimer",
@@ -544,7 +584,9 @@
    "rationale": "To disclaim implied warranties under the UCC the disclaimer generally has to be conspicuous, which is why this clause is set in capitals in the executed version.",
    "body": "EXCEPT AS EXPRESSLY STATED IN <<xr:msa_warranty_provider>>, THE SERVICES AND DELIVERABLES ARE PROVIDED “AS IS” AND THE {{selfLabel}} DISCLAIMS ALL OTHER WARRANTIES, EXPRESS OR IMPLIED, INCLUDING THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT. This is a [[warranty disclaimer]] and must remain conspicuous in the executed version.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "msa_indemnity_ip",
@@ -568,7 +610,9 @@
    "rationale": "The mitigation ladder — procure, modify, refund — is what keeps this obligation bounded. Without it the provider is exposed to an injunction it cannot cure.",
    "body": "The {{selfLabel}} shall [[indemnify]] the {{counterLabel}} against third-party claims that the Deliverables infringe an intellectual property right, and shall pay damages finally awarded or agreed in settlement. If a Deliverable is or may become subject to such a claim, the {{selfLabel}} may procure the right to continue using it, modify it to be non-infringing, or terminate the affected Services and refund the fees paid for them. This indemnity does not apply to claims arising from the {{counterLabel}}’s specifications, its modifications, or use in combination with materials the {{selfLabel}} did not supply.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "msa_indemnity_mutual",
@@ -592,7 +636,9 @@
    "rationale": "The procedure paragraph is what makes any indemnity operable: without notice, control, and cooperation, the indemnifying party inherits a claim already mishandled.",
    "body": "Each Party shall indemnify the other against third-party claims for death, personal injury, or damage to tangible property caused by its negligence or willful misconduct. As a condition of any indemnity, the indemnified Party shall give prompt written notice, allow the indemnifying Party to control the defense and settlement (provided no settlement admits liability or imposes a non-monetary obligation without consent), and provide reasonable cooperation at the indemnifying Party’s expense.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "msa_liability_cap",
@@ -617,7 +663,9 @@
    "rationale": "The single most consequential clause in the agreement. Tying the cap to fees paid in the preceding twelve months, rather than to total contract value, is the usual landing point.",
    "body": "Except as stated in <<xr:msa_liability_carveouts>>, neither Party’s aggregate liability arising out of this Agreement will exceed {{capMultiple}} the fees paid or payable under the applicable Statement of Work in the twelve (12) months preceding the event giving rise to the claim. Neither Party is liable for [[consequential damages]], including lost profits, lost revenue, or loss of data, even if advised of the possibility. This is the [[limitation of liability]] for a {{dealSizeName}} engagement.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "msa_liability_supercap",
@@ -644,7 +692,9 @@
    "rationale": "A single general cap is refused by most buyers once data is in scope. A higher separate cap for breach and confidentiality is the compromise that closes deals without accepting unlimited exposure.",
    "body": "Liability for breach of <<xr:msa_confidentiality>> and for a [[security incident]] affecting [[personal data]] is subject to a separate aggregate cap of {{superCapMultiple}} the fees paid in the preceding twelve (12) months, rather than the cap in <<xr:msa_liability_cap>>.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "msa_liability_carveouts",
@@ -668,7 +718,9 @@
    "rationale": "A cap with no carve-outs is usually rejected; a cap with unbounded carve-outs is the cap being deleted by other means. This is the conventional middle.",
    "body": "The limitations in <<xr:msa_liability_cap>> do not apply to: a Party’s indemnity obligations under <<xr:msa_indemnity_ip>>; amounts owed for Services rendered; or liability arising from fraud, willful misconduct, gross negligence, or death or personal injury, in each case to the extent a limitation would be unenforceable.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "msa_insurance",
@@ -700,7 +752,9 @@
    "rationale": "An indemnity is only as good as the balance sheet or policy behind it. Above the small-deal threshold, procurement asks for certificates as a matter of course.",
    "body": "The {{selfLabel}} shall maintain, at its own expense, commercial general liability, professional liability (errors and omissions), and [[cyber liability insurance]] with limits reasonable for the scope of Services, and shall provide certificates of insurance on request. Insurance does not limit either Party’s obligations under this Agreement.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "msa_sla",
@@ -734,7 +788,9 @@
    "rationale": "A credit-only SLA is not a remedy at scale — it refunds a fraction of the fee for an outage that cost far more. The chronic-failure termination right is the part worth negotiating for.",
    "body": "Where a Statement of Work specifies a [[service level agreement]], the {{selfLabel}} shall meet the stated [[uptime]] and response targets, measured monthly. Failure entitles the {{counterLabel}} to the service credits stated there. Service credits are the exclusive financial remedy for a missed service level, except that three (3) consecutive months or any four (4) months in a rolling twelve of missed targets is a material breach permitting termination under <<xr:msa_term_cause>> without a further cure period.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "msa_confidentiality",
@@ -758,7 +814,9 @@
    "rationale": "Incorporating the NDA rather than restating it prevents two confidentiality regimes with slightly different definitions from operating at once.",
    "body": "The confidentiality obligations in the Mutual Nondisclosure Agreement between the Parties, including <<xr:nda_obligations>> and <<xr:nda_exclusions>>, apply to all information exchanged under this Agreement and survive its termination in accordance with <<xr:nda_term>>.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "msa_security",
@@ -791,7 +849,9 @@
    "rationale": "A no-degradation commitment is more enforceable than a list of controls that goes stale the moment the architecture changes.",
    "body": "The {{selfLabel}} shall maintain an information security program with administrative, physical, and technical safeguards appropriate to the sensitivity of the data it processes, including access controls, encryption in transit and at rest, logging, and at least annual security testing. The {{selfLabel}} shall not materially degrade its security posture during the term.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "msa_dpa_incorp",
@@ -817,7 +877,9 @@
    "rationale": "Points at the DPA rather than duplicating it, so there is one set of processing terms rather than two that can drift.",
    "body": "Where the Services involve processing of [[personal data]], the Data Processing Addendum applies and is incorporated into this Agreement. The roles of the Parties are as stated in <<xr:dpa_roles>>, and the security obligations in <<xr:dpa_security>> supplement <<xr:msa_security>>.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "msa_audit",
@@ -843,7 +905,9 @@
    "rationale": "An unlimited audit right is disruptive and usually refused. Bounding frequency, notice, and scope — and accepting a third-party report in place of an on-site audit — is what makes it acceptable to both sides.",
    "body": "Not more than once in any twelve (12) month period, and on at least {{cure}} days’ written notice, the {{counterLabel}} may audit the {{selfLabel}}’s compliance with this Agreement during business hours, at the {{counterLabel}}’s expense and subject to <<xr:msa_confidentiality>>. The {{selfLabel}} may satisfy an audit request by providing a current independent third-party security assessment covering the audited controls. An audit that reveals material non-compliance is at the {{selfLabel}}’s expense.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "msa_breach_notify",
@@ -869,7 +933,9 @@
    "rationale": "Statutory notification clocks run from discovery, and the customer usually carries the legal duty to notify. A vendor notice obligation measured in days rather than hours makes that duty impossible to meet.",
    "body": "The {{selfLabel}} shall notify the {{counterLabel}} without undue delay and in any event within seventy-two (72) hours of becoming aware of a [[security incident]] affecting the {{counterLabel}}’s data, provide the information reasonably needed to meet any notification obligation, and take prompt steps to contain and remediate. The {{selfLabel}} shall not make any public statement identifying the {{counterLabel}} without prior written consent unless required by law.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": true,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "msa_term",
@@ -893,7 +959,9 @@
    "rationale": "The master agreement has to outlive its Statements of Work, or terminating the master silently strips the legal terms out from under active engagements.",
    "body": "This Agreement begins on {{date}} and continues for {{termWords}} months (the “Initial Term”). Termination of this Agreement does not terminate any Statement of Work then in effect; this Agreement continues to govern each such Statement of Work until it expires or is terminated.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "msa_renewal",
@@ -919,7 +987,9 @@
    "rationale": "Auto-renewal without a clean notice mechanism is what generates the majority of renewal disputes, and several states regulate the practice directly.",
    "body": "After the Initial Term this Agreement renews automatically for successive twelve (12) month terms unless either Party gives written notice of non-renewal at least {{renewalNotice}} days before the end of the then-current term. The {{selfLabel}} shall send a renewal reminder no earlier than ninety (90) and no later than {{renewalNotice}} days before each renewal date.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "msa_term_convenience",
@@ -943,7 +1013,9 @@
    "rationale": "Symmetrical convenience termination protects the provider from being stranded mid-engagement while giving the customer the exit they will ask for anyway.",
    "body": "Either Party may terminate this Agreement or any Statement of Work for convenience on {{renewalNotice}} days’ written notice, whether during the Initial Term or any renewal term. On [[termination for convenience]] the {{counterLabel}} shall pay for Services performed and non-cancellable commitments incurred through the effective date, and the {{selfLabel}} shall refund any prepaid fees for Services not yet performed.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "msa_term_cause",
@@ -967,7 +1039,9 @@
    "rationale": "A cure period turns a termination fight into a fix. The shorter clock for non-payment is standard and rarely contested.",
    "body": "Either Party may terminate this Agreement or any Statement of Work if the other materially breaches and fails to cure within {{cure}} days of written notice describing the breach, or within ten (10) days in the case of non-payment of undisputed amounts.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": true,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "msa_term_insolvency",
@@ -991,7 +1065,9 @@
    "rationale": "Enforceability against a bankruptcy estate is limited, but the clause still supports suspension and gives a clear basis to stop performing.",
    "body": "Either Party may terminate immediately on written notice if the other becomes insolvent, makes a general assignment for the benefit of creditors, or has a bankruptcy proceeding filed against it that is not dismissed within sixty (60) days.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "msa_effect_termination",
@@ -1015,7 +1091,9 @@
    "rationale": "The work-product delivery obligation is the part customers most often discover is missing, usually at the worst possible moment.",
    "body": "On termination the {{selfLabel}} shall stop work, deliver all completed and work-in-progress Deliverables for which the {{counterLabel}} has paid, and return or destroy Confidential Information under <<xr:nda_return>>. Amounts accrued before termination remain payable.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "msa_transition",
@@ -1049,7 +1127,9 @@
    "rationale": "Switching costs are what turn a routine non-renewal into a captive renewal. A priced, guaranteed transition period is the cure.",
    "body": "On request made before or within {{cure}} days after termination, the {{selfLabel}} shall provide transition assistance for up to ninety (90) days at its then-current time and materials rates, including knowledge transfer, documentation, and export of the {{counterLabel}}’s data in a commonly readable format. The {{selfLabel}} shall provide this assistance regardless of the reason for termination, except where terminated for the {{counterLabel}}’s non-payment.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "msa_survival",
@@ -1073,7 +1153,9 @@
    "rationale": "Naming the surviving sections avoids an argument about whether the liability cap still applies to a claim brought after termination.",
    "body": "The following survive termination: <<xr:msa_ip_background>>, <<xr:msa_confidentiality>>, <<xr:msa_liability_cap>>, <<xr:msa_liability_carveouts>>, <<xr:msa_indemnity_ip>>, <<xr:msa_effect_termination>>, and any provision that by its nature should survive. This is the [[survival]] provision.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "msa_independent",
@@ -1097,7 +1179,9 @@
    "rationale": "Prevents a services relationship from being characterized as employment, partnership, or agency, each of which carries obligations neither side priced.",
    "body": "The Parties are independent contractors. Nothing in this Agreement creates a partnership, joint venture, agency, or employment relationship, and neither Party may bind the other.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "msa_assignment",
@@ -1121,7 +1205,9 @@
    "rationale": "The change-of-control carve-out is what keeps this clause from blocking the customer's own acquisition; the competitor exception is what a provider asks for in return.",
    "body": "Neither Party may assign this Agreement without the other’s written consent, not to be unreasonably withheld, except that either Party may assign it in full to a successor in a merger, reorganization, or sale of substantially all assets. The non-assigning Party may object where the assignee is a direct competitor. Any other purported [[assignment]] is void.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "msa_force_majeure",
@@ -1145,7 +1231,9 @@
    "rationale": "Excusing payment obligations too is the drafting error here. Money is almost never impossible to pay, and a broad clause invites that argument.",
    "body": "Neither Party is liable for a delay or failure caused by an event beyond its reasonable control, including natural disaster, war, terrorism, labor dispute, or failure of a utility or public network. [[Force majeure]] does not excuse a payment obligation. If the event continues beyond {{cure}} days, either Party may terminate the affected Statement of Work on written notice.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "msa_nonsolicit",
@@ -1178,7 +1266,9 @@
    "rationale": "A buy-out figure is easier to enforce than an outright bar, and it converts a dispute into a number. Void as to California employees regardless of the governing law named.",
    "body": "During the term and for twelve (12) months after, neither Party shall knowingly solicit for employment any individual who performed under this Agreement, except through general advertising or where the individual initiates contact. If a Party hires such an individual, it shall pay a fee equal to fifty percent (50%) of the individual’s first-year base compensation as liquidated damages. This [[non-solicitation]] is not enforceable against individuals working in California.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "msa_govlaw",
@@ -1203,7 +1293,9 @@
    "rationale": "The most commonly negotiated general provision, and the one whose absence is most expensive. Naming the home forum of whichever side drafted is the usual starting position.",
    "body": "This Agreement is governed by the laws of {{opStateLong}}, excluding its [[conflict of laws]] rules and the UN Convention on Contracts for the International Sale of Goods. The Parties consent to the exclusive jurisdiction and venue of the state and federal courts located in {{opStateLong}}.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "msa_dispute",
@@ -1228,7 +1320,9 @@
    "rationale": "Most commercial disputes are really unescalated operational disputes. A short executive step resolves a large share of them before counsel is involved.",
    "body": "Before filing suit, the Parties shall escalate any dispute to an executive of each Party with authority to resolve it, who shall confer within fifteen (15) business days. This does not prevent either Party from seeking [[injunctive relief]] under <<xr:nda_injunctive>> at any time.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "msa_notices",
@@ -1253,7 +1347,9 @@
    "rationale": "Several clauses in this agreement run deadlines from a notice, and email-only notice to an individual who has left the company is a common failure.",
    "body": "Notices shall be in writing and sent to the addresses on the signature page, by hand, national overnight courier, or email with confirmation of receipt. Notices of breach, termination, or indemnity claim must also be sent to the recipient’s legal department or general counsel address, where one is stated.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "msa_entire",
@@ -1278,7 +1374,9 @@
    "rationale": "Sales conversations generate expectations that do not appear in the document. This clause decides whether those expectations are part of the deal.",
    "body": "This Agreement, together with each Statement of Work and any addendum, is the entire agreement on its subject matter and supersedes all prior proposals and discussions. It may be amended only by a writing signed by both Parties, subject to <<xr:msa_structure>>.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "msa_counterparts",
@@ -1303,7 +1401,9 @@
    "rationale": "Removes any argument about whether an electronically executed copy is enforceable.",
    "body": "This Agreement may be executed in counterparts, each an original and together one instrument. Electronic signatures and electronically transmitted copies have the same effect as originals.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   },
   {
    "id": "msa_escrow",
@@ -1338,7 +1438,9 @@
    "rationale": "Often asked for and rarely useful. Escrowed source without build instructions, dependencies, and a verified build is not something a customer can actually run, which is why the verification clause matters more than the deposit.",
    "body": "The {{selfLabel}} shall deposit the source code, build scripts, dependency manifests, and documentation for the Deliverables with a recognized escrow agent, and shall update the deposit at least annually. Release is triggered by the {{selfLabel}}’s insolvency under <<xr:msa_term_insolvency>> or its material failure to support the Deliverables. The {{counterLabel}} may require verification that the deposit builds and runs. [[Source code escrow|source code escrow]] without a verified build is of little practical use, and the verification right is the substantive part of this clause.",
    "sources": [],
-   "verification": "unsourced"
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   }
  ]
 }

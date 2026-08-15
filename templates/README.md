@@ -354,6 +354,34 @@ packages, the same way `UNREACHABLE_RISK` does.
    condition, and any new answer fields to `ANSWER_FIELDS` and `BASE_ANSWERS` in
    `tools/evaluator.mjs`, along with an enumeration block in `allConfigs`.
 
+## Two review tracks
+
+A clause that states what the law requires and a clause that states a negotiated term
+fail in different ways and are vetted by different people. Collapsing them is what makes
+a 360-clause review look impossible; separating them is what makes a zero-defect standard
+reachable.
+
+*Measured:* **169 clauses assert what the law requires. 191 state a negotiated term.**
+
+| Track | Clauses | The question | Fails by | Cannot be cleared by |
+|---|---:|---|---|---|
+| `authority` | 169 | Does the source say this, and all of it? | omission — right number, missing qualifier | drafting review, or a model re-reading its own output |
+| `drafting` | 191 | Is this the term we want? | unfavourable, ambiguous, unenforceable | statutory verification — it asserts no statute |
+
+The burden is concentrated, which is the scheduling insight: `ca-notices` (86%),
+`handbook` (88%), and `compliance-calendar` (85%) are almost entirely legal assertion,
+while `nda` (14%), `sow` (14%), and `msa` (26%) are almost entirely drafting. The
+commercial package can be cleared by a commercial lawyer without a single statute being
+pulled. The California package cannot be cleared without all of them.
+
+`assertsLaw` is currently set by heuristic and marked `heuristic-unreviewed`. That is
+itself a gate: `UNREVIEWED_CLASSIFICATION` fails the build if a clause reaches the
+release gate while the classification routing it to a review track has not been checked.
+A misrouted clause gets the wrong kind of vetting and passes anyway, which is the failure
+this guards against.
+
+`npm run cost` estimates the work from measured inputs, labelling every assumed rate.
+
 ## Sourcing and the release gate
 
 Every clause, risk, and benchmark carries a `sources` array and a `verification`

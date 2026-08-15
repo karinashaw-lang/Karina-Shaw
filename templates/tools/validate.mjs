@@ -54,13 +54,28 @@ function checkVerification(o,where){
   }
 }
 
+/* Two review tracks. A clause asserting what the law requires cannot be cleared by
+   drafting review, and a negotiated term cannot be cleared by statutory verification —
+   they fail differently. Neither can be cleared while the classification that routes
+   them is itself unreviewed. */
+function checkTrack(c){
+  if(typeof c.assertsLaw !== 'boolean')
+    err('MISSING_TRACK',`clause "${c.id}" has no assertsLaw classification, so it cannot be routed to a review track`);
+  if(c.classifiedBy === 'heuristic-unreviewed' && VLEVELS[c.verification].rank >= VLEVELS[C.taxonomy.releaseGate.minimum].rank)
+    err('UNREVIEWED_CLASSIFICATION',`clause "${c.id}" is at or above the gate but its assertsLaw classification is still heuristic and unreviewed`);
+  if(c.assertsLaw === false && (c.sources||[]).some(s=>s.citation) && c.classifiedBy!=='reviewed')
+    warn('CLASSIFICATION_TENSION',`clause "${c.id}" is classified as drafting but carries a statutory citation — one of the two is wrong`);
+  if(c.assertsLaw === true && c.trackSignoff && !c.trackSignoff.authorityReviewer)
+    err('WRONG_TRACK_SIGNOFF',`clause "${c.id}" asserts law but was signed off on the drafting track`);
+}
+
 /* ---- 1. structural ---- */
 {
   const seen=new Set();
   for(const c of C.clauses){
     if(seen.has(c.id)) err('DUP_ID',`clause id "${c.id}" defined twice (${C.sources[c.id]})`);
     seen.add(c.id);
-    for(const k of ['doc','group','title','severity','insertion','jurisdictions','industries','entities','version','updated','sources','verification','rationale','body'])
+    for(const k of ['doc','group','title','severity','insertion','jurisdictions','industries','entities','version','updated','sources','verification','rationale','body','assertsLaw','classifiedBy'])
       if(c[k]===undefined) err('MISSING_KEY',`clause "${c.id}" is missing required key "${k}"`);
     if(!docById.has(c.doc)) err('BAD_DOC',`clause "${c.id}" targets unknown document "${c.doc}"`);
     else if(!docById.get(c.doc).groupOrder.includes(c.group))
@@ -73,6 +88,7 @@ function checkVerification(o,where){
     if(!/^\d+\.\d+\.\d+$/.test(c.version)) err('BAD_VERSION',`clause "${c.id}" version "${c.version}" is not semver`);
     if(!/^\d{4}-\d{2}$/.test(c.updated))   err('BAD_DATE',`clause "${c.id}" updated "${c.updated}" is not YYYY-MM`);
     checkVerification(c,`clause "${c.id}"`);
+    checkTrack(c);
   }
 }
 
