@@ -5,8 +5,8 @@
    is that it must not implicate a clause that has already been checked, because the whole
    point is to produce work nobody has done.
 */
-import {shingles, overlap, implicated, duplicateGroups, normCitation, citationsOf}
-  from './propagation.mjs';
+import {shingles, overlap, implicated, duplicateGroups, normCitation, citationsOf,
+        particulars, divergences} from './propagation.mjs';
 import {loadCorpus} from './corpus.mjs';
 
 let pass=0, fail=0;
@@ -87,6 +87,35 @@ console.log('duplicateGroups — the standing exposure');
   t('a singleton forms no group', !g.flat().includes('c'));
 }
 
+console.log('particulars and divergences');
+{
+  t('a number with a unit is a particular', particulars('file within 20 calendar days').has('20 calendar days'));
+  t('the corpus\'s "fifteen (15) days" form is caught too',
+     particulars('register within fifteen (15) days of the first payroll').has('15 days'));
+  t('a dollar figure is a particular', particulars('wages over $100 in a quarter').has('$100'));
+  t('a named form is a particular', particulars('report on Form DE 34').has('form DE'));
+  t('bare prose yields none', particulars('the parties shall act reasonably').size===0);
+  t('thousands separators normalise', particulars('a penalty of $2,500').has('$2500'));
+
+  const cs = [
+    c('full',    'register within 15 days and report each new hire on Form DE 34 within 20 days'),
+    c('partial', 'register within 15 days and file the quarterly returns on the assigned schedule'),
+  ];
+  const d = divergences(cs, ['full','partial']);
+  t('a particular in one member and not the other is asymmetric',
+     d.asymmetric.some(x=>x.particular==='20 days' && x.absentFrom.includes('partial')));
+  t('a particular both share is not a divergence',
+     !d.asymmetric.some(x=>x.particular==='15 days'));
+  t('the asymmetry names who states it and who does not',
+     d.asymmetric.find(x=>x.particular==='form DE').statedBy[0]==='full');
+  t('identical members diverge on nothing',
+     divergences([c('x','register within 15 days'), c('y','register within 15 days')], ['x','y']).asymmetric.length===0);
+  /* The removed contradiction check would have called this clause self-contradictory:
+     two different day-counts, two different obligations, no contradiction at all. */
+  t('two deadlines in one clause are not a contradiction',
+     divergences([c('multi','register within 15 days and report a hire within 20 days')], ['multi']).asymmetric.length===0);
+}
+
 console.log('no network, model, or filesystem path exists');
 {
   const raw = await import('node:fs').then(fs=>fs.readFileSync('templates/tools/propagation.mjs','utf8'));
@@ -103,6 +132,9 @@ console.log('against the real corpus');
   t('the corpus contains near-duplicate clause groups', g.length>0);
   t('no clause appears in two groups', (()=>{ const f=g.flat(); return new Set(f).size===f.length; })());
   console.log(`        ${g.length} duplicate group(s) covering ${g.flat().length} clauses`);
+  const asym = g.reduce((s,x)=>s+divergences(C.clauses,x).asymmetric.length,0);
+  t('the corpus contains asymmetric divergences within duplicate groups', asym>0);
+  console.log(`        ${asym} asymmetric divergence(s) inside duplicate groups`);
 }
 
 console.log(`\n${pass} passed, ${fail} failed`);

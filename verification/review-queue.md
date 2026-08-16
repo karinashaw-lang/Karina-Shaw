@@ -2,20 +2,20 @@
 
 ## Sampling result
 
-24 clauses have been checked against sources. **23 of them (96%) are confirmed defective** —
+28 clauses have been checked against sources. **27 of them (96%) are confirmed defective** —
 they omit a requirement the sources describe, misstate its scope, or cite the wrong provision.
 
-At 95% confidence, **at least 82% of the corpus is defective** — around 294 of 360 clauses,
-with a point estimate near 345.
+At 95% confidence, **at least 84% of the corpus is defective** — around 303 of 360 clauses,
+with a point estimate near 347.
 
 The sample spans California employment, California entity, New York entity, and federal tax clauses, so the
-pattern is not specific to one jurisdiction or subject. Of 101 individual assertions checked,
-6 were contradicted outright and 7 could not be supported by any source found.
+pattern is not specific to one jurisdiction or subject. Of 114 individual assertions checked,
+6 were contradicted outright and 8 could not be supported by any source found.
 
 | Defect type | Count | What it means |
 |---|---:|---|
-| `omitted-requirement` | 13 | The source describes an obligation the clause does not mention at all. |
-| `omitted-qualifier` | 18 | The clause states a threshold or test without a condition that narrows or widens it. |
+| `omitted-requirement` | 17 | The source describes an obligation the clause does not mention at all. |
+| `omitted-qualifier` | 19 | The clause states a threshold or test without a condition that narrows or widens it. |
 | `overstated-scope` | 2 | The clause claims broader application than the provision has. |
 | `overstated-consequence` | 4 | The clause states exposure without a limit the source imposes. |
 | `miscitation` | 2 | The clause cites the wrong provision for the obligation it performs. |
@@ -69,8 +69,8 @@ whether it is in the jurisdiction being led with, whether it asserts a specific 
 | ca-notices | 37 |
 | handbook | 34 |
 | employment-agreement | 27 |
-| employment | 20 |
 | compliance-calendar | 20 |
+| employment | 20 |
 | dpa | 16 |
 | contractor-agreement | 15 |
 | charter | 14 |
@@ -88,34 +88,34 @@ whether it is in the jurisdiction being led with, whether it asserts a specific 
 | # | Clause | Doc | Sev | Level | Citations |
 |---:|---|---|---|---|---|
 | 1 | `can_fair_chance` — Fair Chance Act Procedure | ca-notices | critical | `single-source` | Cal. Gov. Code §12952 |
-| 2 | `msa_ca_prop65` — Proposition 65 Warnings | msa | recommended | `single-source` | Cal. Health & Safety Code §25249.6 |
-| 3 | `can_calwarn` — Cal-WARN Notice | ca-notices | critical | `single-source` | Cal. Lab. Code §§1400–1408 |
-| 4 | `ea_ca_925` — California Forum and Choice of Law | employment-agreement | critical | `single-source` | Cal. Lab. Code §925 |
-| 5 | `ipa_state_carveout` — Statutory Invention Carve-Out | ip-assignment | critical | `single-source` | Cal. Lab. Code §2870 |
-| 6 | `can_heat` — Heat Illness Prevention | ca-notices | critical | `single-source` | 8 C.C.R. §3395 |
-| 7 | `can_lactation` — Lactation Accommodation Policy | ca-notices | critical | `single-source` | Cal. Lab. Code §§1030–1034 |
-| 8 | `msa_ca_release` — Section 1542 Waiver in Settlements | msa | recommended | `single-source` | Cal. Civ. Code §1542 |
-| 9 | `emp_finalpay` — Final Pay Timing | employment | critical | `single-source` | Cal. Lab. Code §§201-203 |
-| 10 | `msa_ca_925` — California Choice of Law Limits | msa | critical | `multi-cited` | Cal. Lab. Code §925 | Cal. Civ. Code §1646.5 |
-| 11 | `hb_ca_jury_voting` — Jury, Witness, and Voting Leave | handbook | critical | `single-source` | Cal. Lab. Code §§230, 14350–14353 |
-| 12 | `ic_ca_freelance` — Freelance Worker Protection Act | contractor-agreement | critical | `single-source` | Cal. Bus. & Prof. Code §18100 (SB 988) |
-| 13 | `can_harassment_policy` — Written Harassment and Discrimination Policy | ca-notices | critical | `single-source` | 2 C.C.R. §11023 |
-| 14 | `msa_ca_auto_renew` — California Automatic Renewal Requirements | msa | critical | `single-source` | Cal. Bus. & Prof. Code §§17601–17606 |
-| 15 | `charter_ny_publication` — Publication Requirement | charter | critical | `single-source` | NY LLC Law §206 |
-| 16 | `msa_ca_indemnity_construction` — California Anti-Indemnity Limits | msa | critical | `single-source` | Cal. Civ. Code §§2782, 2782.05 |
-| 17 | `cal_ca_prop65_ops` — Proposition 65 Review | compliance-calendar | recommended | `single-source` | Cal. Health & Safety Code §25249.6 |
-| 18 | `hb_ca_lactation_break` — Lactation Breaks | handbook | critical | `single-source` | Cal. Lab. Code §§1030–1034 |
-| 19 | `can_harassment_training` — Harassment Prevention Training | ca-notices | critical | `multi-cited` | Cal. Gov. Code §12950.1 | California Civil Rights Department — Sexual harassment prevention training FAQ for employers | FindLaw — Cal. Gov. Code §12950.1 | Traliant — California sexual harassment training requirements |
-| 20 | `can_wtpa` — Wage Theft Prevention Act Notice | ca-notices | critical | `multi-cited` | Cal. Lab. Code §2810.5 | Ogletree Deakins — California publishes new wage theft notice | CalChamber HRWatchdog — Updated wage theft notice released | California Workplace Law Blog — Labor Commissioner publishes updated wage theft notice |
-| 21 | `b83_instructions` — Filing Instructions | election-83b | critical | `single-source` | Treas. Reg. §1.83-2(c) |
-| 22 | `cal_ny` — New York Publication Deadline | compliance-calendar | critical | `single-source` | NY LLC Law §206 |
-| 23 | `ea_ca_release` — Release and Section 1542 Waiver | employment-agreement | recommended | `single-source` | Cal. Civ. Code §1542 |
-| 24 | `msa_ca_cipa` — Website Tracking and CIPA Exposure | msa | critical | `single-source` | Cal. Penal Code §§630–638 |
-| 25 | `msa_ca_unruh` — Accessibility and Unruh Act Exposure | msa | critical | `single-source` | Cal. Civ. Code §51 |
+| 2 | `cal_soi` — California Statement of Information | compliance-calendar | critical | `multi-cited` | Cal. Corp. Code §17702.09 | Cal. Corp. Code §1502 |
+| 3 | `msa_ca_prop65` — Proposition 65 Warnings | msa | recommended | `single-source` | Cal. Health & Safety Code §25249.6 |
+| 4 | `can_calwarn` — Cal-WARN Notice | ca-notices | critical | `single-source` | Cal. Lab. Code §§1400–1408 |
+| 5 | `ea_ca_925` — California Forum and Choice of Law | employment-agreement | critical | `single-source` | Cal. Lab. Code §925 |
+| 6 | `ipa_state_carveout` — Statutory Invention Carve-Out | ip-assignment | critical | `single-source` | Cal. Lab. Code §2870 |
+| 7 | `cal_ca_soi` — California Statement of Information | compliance-calendar | critical | `single-source` | Cal. Corp. Code §§1502, 17702.09 |
+| 8 | `can_heat` — Heat Illness Prevention | ca-notices | critical | `single-source` | 8 C.C.R. §3395 |
+| 9 | `can_lactation` — Lactation Accommodation Policy | ca-notices | critical | `single-source` | Cal. Lab. Code §§1030–1034 |
+| 10 | `msa_ca_release` — Section 1542 Waiver in Settlements | msa | recommended | `single-source` | Cal. Civ. Code §1542 |
+| 11 | `emp_finalpay` — Final Pay Timing | employment | critical | `single-source` | Cal. Lab. Code §§201-203 |
+| 12 | `msa_ca_925` — California Choice of Law Limits | msa | critical | `multi-cited` | Cal. Lab. Code §925 | Cal. Civ. Code §1646.5 |
+| 13 | `hb_ca_jury_voting` — Jury, Witness, and Voting Leave | handbook | critical | `single-source` | Cal. Lab. Code §§230, 14350–14353 |
+| 14 | `ic_ca_freelance` — Freelance Worker Protection Act | contractor-agreement | critical | `single-source` | Cal. Bus. & Prof. Code §18100 (SB 988) |
+| 15 | `can_edd` — EDD Employer Registration | ca-notices | critical | `single-source` | Cal. Unemp. Ins. Code §1086 |
+| 16 | `can_harassment_policy` — Written Harassment and Discrimination Policy | ca-notices | critical | `single-source` | 2 C.C.R. §11023 |
+| 17 | `msa_ca_auto_renew` — California Automatic Renewal Requirements | msa | critical | `single-source` | Cal. Bus. & Prof. Code §§17601–17606 |
+| 18 | `charter_ny_publication` — Publication Requirement | charter | critical | `single-source` | NY LLC Law §206 |
+| 19 | `emp_ca_registration` — California Employer Registration Checklist | employment | critical | `unsourced` | (none) |
+| 20 | `msa_ca_indemnity_construction` — California Anti-Indemnity Limits | msa | critical | `single-source` | Cal. Civ. Code §§2782, 2782.05 |
+| 21 | `cal_ca_prop65_ops` — Proposition 65 Review | compliance-calendar | recommended | `single-source` | Cal. Health & Safety Code §25249.6 |
+| 22 | `hb_ca_lactation_break` — Lactation Breaks | handbook | critical | `single-source` | Cal. Lab. Code §§1030–1034 |
+| 23 | `can_harassment_training` — Harassment Prevention Training | ca-notices | critical | `multi-cited` | Cal. Gov. Code §12950.1 | California Civil Rights Department — Sexual harassment prevention training FAQ for employers | FindLaw — Cal. Gov. Code §12950.1 | Traliant — California sexual harassment training requirements |
+| 24 | `can_wtpa` — Wage Theft Prevention Act Notice | ca-notices | critical | `multi-cited` | Cal. Lab. Code §2810.5 | Ogletree Deakins — California publishes new wage theft notice | CalChamber HRWatchdog — Updated wage theft notice released | California Workplace Law Blog — Labor Commissioner publishes updated wage theft notice |
+| 25 | `b83_instructions` — Filing Instructions | election-83b | critical | `single-source` | Treas. Reg. §1.83-2(c) |
 
 ## Clauses checked and found defective
 
-23 clause(s) have been checked against sources and found to omit or misstate a requirement.
+27 clause(s) have been checked against sources and found to omit or misstate a requirement.
 These sit at the top of the queue: a clause known to be wrong is more dangerous than one merely unverified,
 because it reads as complete.
 
@@ -127,6 +127,15 @@ Checked 2026-08-15. 4 defect(s).
 - The Act applies to employers with five or more employees. The clause states the whole procedure unconditionally, so a four-person company following it believes it is bound when it is not, and a company crossing five has no signal that it now is.
 - The 2023 regulations set when the five days start running where receipt cannot be confirmed — two business days for email, five calendar days for mail to a California address, ten elsewhere in the United States, twenty abroad. The clause gives the duration without the trigger.
 - The statutory test is whether the conviction history has a direct and adverse relationship with the specific duties of the job. The clause lists the three factors that feed that test but never states the test itself, so an assessment can recite the factors and reach no finding.
+
+### `cal_soi` — California Statement of Information
+
+Checked 2026-08-15. 4 defect(s).
+
+- The penalty is $250. The clause says "a penalty" without the figure, which is the only part of it a founder can act on.
+- A delinquent entity gets a notice and a further 60 days to file before suspension or forfeiture. The clause presents suspension as the direct consequence of lateness, so a founder who has already missed the date does not know a cure window exists or how long it runs.
+- The clause states only the initial filing. Corporations file annually and LLCs biennially thereafter, and its near-duplicate cal_ca_soi carries that recurrence in a field — so the corpus has the fact and this clause drops it.
+- A suspended entity is restored to active status by the Franchise Tax Board, not the Secretary of State. The clause names the consequence and not the cure.
 
 ### `msa_ca_prop65` — Proposition 65 Warnings
 
@@ -160,6 +169,14 @@ Checked 2026-08-15. 3 defect(s).
 - A provision purporting to require assignment of a §2870-protected invention is against the public policy of California and unenforceable. The clause states the carve-out but not that an overbroad assignment is void, which is the consequence that matters.
 - §§2870–2872 govern employees. The clause is drafted for founders and sits in the founder IP assignment; a founder who is not an employee may not be covered, and the clause does not flag that.
 - contradicted: the written notice is given under §2870
+
+### `cal_ca_soi` — California Statement of Information
+
+Checked 2026-08-15. 3 defect(s).
+
+- The penalty is $250; the clause does not say so.
+- The 60-day cure window after the notice of delinquency is omitted. This clause is the more detailed of the pair about what suspension costs, which makes the missing escape route more conspicuous, not less.
+- Restoration to active status runs through the Franchise Tax Board. The clause is unusually specific about the consequences of suspension and silent on how to undo it.
 
 ### `can_heat` — Heat Illness Prevention
 
@@ -213,6 +230,13 @@ Checked 2026-08-15. 2 defect(s).
 - The $250 threshold aggregates across all contracts between the same hiring party and contractor in the preceding 120 days. The clause states a flat $250 and would let a user split engagements below the threshold and believe they were outside the Act.
 - The hiring party must furnish a signed copy of the contract to the freelance worker. The clause requires a written contract but not that a signed copy be provided.
 
+### `can_edd` — EDD Employer Registration
+
+Checked 2026-08-15. 2 defect(s).
+
+- New hires must be reported to the EDD on Form DE 34 within 20 calendar days of the start-of-work date. This clause omits it — and its near-duplicate emp_ca_registration states it, so the corpus knows the requirement and drops it in the place a reader looking up EDD obligations would look.
+- Registration, returns and payment must go through e-Services for Business; electronic filing is mandatory unless a waiver is approved. The clause says to file and deposit "on the assigned schedule" without saying the channel is not optional.
+
 ### `can_harassment_policy` — Written Harassment and Discrimination Policy
 
 Checked 2026-08-15. 2 defect(s).
@@ -233,6 +257,13 @@ Checked 2026-08-15. 2 defect(s).
 
 - The two newspapers must be one daily and one weekly. The clause says only 'two newspapers', which reads as though any two designated papers will do.
 - The Certificate of Publication must have the affidavits of publication from each newspaper attached. The clause does not mention the affidavits, which are the part a filer has to collect from the papers.
+
+### `emp_ca_registration` — California Employer Registration Checklist
+
+Checked 2026-08-15. 2 defect(s).
+
+- Electronic filing through e-Services for Business is mandatory absent an approved waiver. Neither clause in this pair says so.
+- The clause carries no citation at all while asserting five separate legal duties. Every assertion here is unverifiable as filed, because there is nothing recorded to verify it against.
 
 ### `msa_ca_indemnity_construction` — California Anti-Indemnity Limits
 

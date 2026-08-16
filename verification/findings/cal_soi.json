@@ -1,0 +1,48 @@
+{
+  "clauseId": "cal_soi",
+  "checkedAt": "2026-08-15",
+  "method": "web search only — no source document was opened",
+  "heldOut": true,
+  "groupCheck": "one search covering a near-duplicate group; both members checked against the same evidence",
+  "sources": [
+    {
+      "title": "California Secretary of State — Business entities FAQ",
+      "url": "https://www.sos.ca.gov/business-programs/business-entities/faqs"
+    },
+    {
+      "title": "eMinutes — Waiver of penalty for a tardy Statement of Information",
+      "url": "https://eminutes.com/waiver-of-penalty-for-tardy-statement-of-information"
+    },
+    {
+      "title": "Kristina Reed — What to do if your California company is suspended or forfeited",
+      "url": "https://www.kristinareed.com/articles/what-to-do-if-your-california-company-is-suspended-or-forfeited/"
+    }
+  ],
+  "queries": [
+    "California Statement of Information Corporations Code 1502 17702.09 initial 90 days penalty $250 corporation annual LLC biennial suspension forfeiture Franchise Tax Board"
+  ],
+  "assertions": [
+    {
+      "text": "an initial Statement of Information is due within 90 days of formation or registration",
+      "status": "corroborated"
+    },
+    {
+      "text": "late filing carries a penalty",
+      "status": "corroborated"
+    },
+    {
+      "text": "late filing can lead to suspension of the entity’s powers",
+      "status": "corroborated"
+    }
+  ],
+  "gaps": [
+    "The penalty is $250. The clause says \"a penalty\" without the figure, which is the only part of it a founder can act on.",
+    "A delinquent entity gets a notice and a further 60 days to file before suspension or forfeiture. The clause presents suspension as the direct consequence of lateness, so a founder who has already missed the date does not know a cure window exists or how long it runs.",
+    "The clause states only the initial filing. Corporations file annually and LLCs biennially thereafter, and its near-duplicate cal_ca_soi carries that recurrence in a field — so the corpus has the fact and this clause drops it.",
+    "A suspended entity is restored to active status by the Franchise Tax Board, not the Secretary of State. The clause names the consequence and not the cure."
+  ],
+  "defectTypes": [
+    "omitted-requirement",
+    "omitted-qualifier"
+  ]
+}

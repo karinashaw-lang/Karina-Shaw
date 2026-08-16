@@ -10,7 +10,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import {loadCorpus, ROOT} from './corpus.mjs';
-import {implicated, duplicateGroups} from './propagation.mjs';
+import {implicated, duplicateGroups, divergences} from './propagation.mjs';
 
 const C = loadCorpus();
 const V = path.join(ROOT,'..','verification');
@@ -58,6 +58,29 @@ the *same* defect is present, and the sources establishing it are already record
 | Clause | Implicated by | Same defect present? |
 |---|---|---|
 ${confirmedPropagated.map(f=>`| \`${f.clauseId}\` | \`${f.propagatedFrom}\` | ${(f.gaps||[]).length||(f.assertions||[]).some(a=>a.status==='contradicted')?'**yes**':'no'} |`).join('\n')}
+
+## Divergence inside a group: a defect found with no source at all
+
+Where two near-duplicate clauses state the same rule and one of them carries a checkable
+particular the other does not, one of the two is incomplete — and knowing that needs no
+statute, no search, and no reviewer. Two of the findings above came from exactly this.
+
+| Group | Particular | Stated by | Absent from |
+|---|---|---|---|
+${groups.flatMap(g=>divergences(C.clauses,g).asymmetric.map(d=>
+  `| ${g.map(x=>`\`${x}\``).join(', ')} | ${d.particular} | ${d.statedBy.map(x=>`\`${x}\``).join(', ')} | ${d.absentFrom.map(x=>`\`${x}\``).join(', ')} |`)).join('\n')}
+
+A divergence is not automatically a defect — one member may be deliberately narrower than
+another. But each one is a question with a definite answer, answerable by reading two
+clauses side by side.
+
+There was a second check here and it was removed rather than shipped: flagging the same unit
+with different values as an internal contradiction. It cannot work at this level, because a
+single clause legitimately says "register within 15 days" and "report a hire within 20 days"
+and nothing in the text tells the two concepts apart. Asked properly instead — scoped by
+shared citation, where the concept is pinned down — **no two clauses citing the same
+provision state different numbers.** That is not reassurance. A corpus written from one
+memory is consistently wrong rather than inconsistently wrong.
 
 ## The standing exposure
 

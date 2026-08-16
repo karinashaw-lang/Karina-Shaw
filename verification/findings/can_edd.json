@@ -1,0 +1,46 @@
+{
+  "clauseId": "can_edd",
+  "checkedAt": "2026-08-15",
+  "method": "web search only — no source document was opened",
+  "heldOut": true,
+  "groupCheck": "one search covering a near-duplicate group; both members checked against the same evidence",
+  "sources": [
+    {
+      "title": "California EDD — Employers: payroll tax account registration",
+      "url": "https://edd.ca.gov/en/payroll_taxes/employers-payroll-tax-account-registration/"
+    },
+    {
+      "title": "California EDD — Am I required to register as an employer?",
+      "url": "https://edd.ca.gov/en/payroll_taxes/Am_I_Required_to_Register_as_an_Employer/"
+    },
+    {
+      "title": "California EDD — Step 1: register as an employer",
+      "url": "https://edd.ca.gov/en/payroll_taxes/step-1-register-as-an-employer"
+    }
+  ],
+  "queries": [
+    "California EDD employer registration Unemployment Insurance Code 1086 within 15 days paying over $100 wages calendar quarter e-file mandate DE 34 new hire 20 days"
+  ],
+  "assertions": [
+    {
+      "text": "register with the EDD within fifteen (15) days of paying more than $100 in wages in a calendar quarter",
+      "status": "corroborated",
+      "note": "the statutory trigger is hiring one or more employees AND paying wages over $100; the clause gives only the wage half, which is the half that binds in practice"
+    },
+    {
+      "text": "thereafter file quarterly returns (DE 9 and DE 9C)",
+      "status": "corroborated"
+    },
+    {
+      "text": "unremitted withholding can be assessed personally against responsible individuals",
+      "status": "corroborated"
+    }
+  ],
+  "gaps": [
+    "New hires must be reported to the EDD on Form DE 34 within 20 calendar days of the start-of-work date. This clause omits it — and its near-duplicate emp_ca_registration states it, so the corpus knows the requirement and drops it in the place a reader looking up EDD obligations would look.",
+    "Registration, returns and payment must go through e-Services for Business; electronic filing is mandatory unless a waiver is approved. The clause says to file and deposit \"on the assigned schedule\" without saying the channel is not optional."
+  ],
+  "defectTypes": [
+    "omitted-requirement"
+  ]
+}

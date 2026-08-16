@@ -95,6 +95,55 @@ export function implicated(clauses, {defective, checked, minShared=3}){
   })).sort((a,b)=>b.score-a.score);
 }
 
+/* Checkable particulars: the facts in a clause a reader could look up and disagree with —
+   a number with a unit, a named form, a dollar figure. Prose differences between two
+   near-duplicate clauses are usually style; a particular present in one and absent from the
+   other is a difference about the world. */
+export function particulars(text){
+  const out = new Set();
+  const b = String(text||'');
+  /* The corpus writes durations as "fifteen (15) days", so the numeral sits inside
+     parentheses ahead of the unit. Matching only "15 days" missed every one of them. */
+  for(const m of b.matchAll(/(?:\((\d[\d,]*)\)|\b(\d[\d,]*))\s*(calendar days|business days|days|hours|weeks|months|years|percent|employees)\b/gi))
+    out.add(`${(m[1]||m[2]).replace(/,/g,'')} ${m[3].toLowerCase()}`);
+  for(const m of b.matchAll(/\$\s?([\d,]+)/g)) out.add(`$${m[1].replace(/,/g,'')}`);
+  for(const m of b.matchAll(/\b(?:Form|Forms)\s+([A-Z][A-Z0-9-]{1,8})/g)) out.add(`form ${m[1]}`);
+  return out;
+}
+
+/* What does one member of a near-duplicate group say that another does not?
+
+   A particular stated by one member and absent from another means one of them is
+   incomplete, unless the omission is deliberate specialisation. This caught can_edd
+   omitting the DE 34 new-hire report its pair states, and cal_soi omitting the filing
+   cadence its pair carries in a field — two defects found with no source at all.
+
+   There was a second check here and it has been removed rather than shipped: flagging the
+   same UNIT carrying different VALUES across a group, as an internal contradiction needing
+   no source. It cannot work at this level. A single clause legitimately says "register
+   within 15 days" and "report a hire within 20 days"; both are days, neither contradicts
+   the other, and nothing in the text tells the two concepts apart. A check that cannot
+   distinguish two concepts will call every multi-deadline clause self-contradictory.
+
+   The underlying question was still worth asking, so it was asked properly once, scoped by
+   shared citation where the concept IS pinned down: across all 17 provisions cited by two
+   or more clauses, no two clauses state different numbers. That is not reassurance. A
+   corpus written from one memory is consistently wrong rather than inconsistently wrong, so
+   internal agreement carries no information about correctness. It only means the cheap
+   check has no yield here and the expensive one still has to be run. */
+export function divergences(clauses, group){
+  const byId = new Map(clauses.map(c=>[c.id,c]));
+  const facts = group.map(id=>({id, p: particulars(byId.get(id)?.body)}));
+  const all = new Set(facts.flatMap(f=>[...f.p]));
+  const asymmetric = [];
+  for(const v of all){
+    const statedBy = facts.filter(f=>f.p.has(v)).map(f=>f.id);
+    const absentFrom = facts.filter(f=>!f.p.has(v)).map(f=>f.id);
+    if(statedBy.length && absentFrom.length) asymmetric.push({particular:v, statedBy, absentFrom});
+  }
+  return {asymmetric};
+}
+
 /* Duplicate groups regardless of any finding — the standing exposure. Every group is a
    place where one defect would land more than once, whether or not one has been found yet. */
 export function duplicateGroups(clauses, {minShared=3}={}){

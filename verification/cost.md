@@ -40,13 +40,13 @@ statute being pulled, and the California package cannot be cleared without all o
 
 ## The estimate
 
-*Measured.* Sampled defect rate: 23 of 24 (96%), 95% lower bound 82%.
+*Measured.* Sampled defect rate: 27 of 28 (96%), 95% lower bound 84%.
 *Measured.* 116 clauses carry at least one detector flag.
 
 *Assumed.* 25 minutes per authority clause, 8 per drafting clause, 1.6× for a defective one.
 
-**≈ 136 hours of qualified review**, of which roughly 111 is California-weighted legal work.
-At the sampled rate, about 162 of the 169 authority clauses are not corrections but rewrites against the source.
+**≈ 137 hours of qualified review**, of which roughly 111 is California-weighted legal work.
+At the sampled rate, about 163 of the 169 authority clauses are not corrections but rewrites against the source.
 
 ## What this says about the approach
 

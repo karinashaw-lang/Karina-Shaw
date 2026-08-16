@@ -131,10 +131,10 @@ says what has been checked, not what is there. `npm run propagation` regenerates
 
 | | Before | Now |
 |---|---|---|
-| Clauses checked | 9 | 24 |
-| Demonstrably defective | 8 | 23 |
-| 95% lower bound | 57% | **82%** |
-| Implied defective clauses in the 360 | ≥206 | **≥295** |
+| Clauses checked | 9 | 28 |
+| Demonstrably defective | 8 | 27 |
+| 95% lower bound | 57% | **84%** |
+| Implied defective clauses in the 360 | ≥206 | **≥302** |
 
 Nothing about the corpus changed. What changed is how much of it has been looked at.
 

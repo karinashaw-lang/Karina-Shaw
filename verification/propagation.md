@@ -9,7 +9,7 @@ So a confirmed defect is not one finding. It is a lead on every clause built fro
 recollection, and there are two ways to tell which those are: clauses sharing distinctive
 runs of wording, and clauses resting on the same provision.
 
-## Leads from the 23 confirmed defects
+## Leads from the 27 confirmed defects
 
 3 unchecked clause(s) are implicated.
 
@@ -44,6 +44,35 @@ the *same* defect is present, and the sources establishing it are already record
 | `ea_ca_release` | `msa_ca_release` | **yes** |
 | `hb_ca_lactation_break` | `can_lactation` | **yes** |
 
+## Divergence inside a group: a defect found with no source at all
+
+Where two near-duplicate clauses state the same rule and one of them carries a checkable
+particular the other does not, one of the two is incomplete — and knowing that needs no
+statute, no search, and no reviewer. Two of the findings above came from exactly this.
+
+| Group | Particular | Stated by | Absent from |
+|---|---|---|---|
+| `can_edd`, `emp_ca_registration` | 20 days | `emp_ca_registration` | `can_edd` |
+| `can_edd`, `emp_ca_registration` | form DE | `emp_ca_registration` | `can_edd` |
+| `cal_ca_soi`, `cal_soi` | 90 days | `cal_soi` | `cal_ca_soi` |
+| `hb_ca_school_leave`, `hb_ca_military_leave` | 40 hours | `hb_ca_school_leave` | `hb_ca_military_leave` |
+| `hb_ca_school_leave`, `hb_ca_military_leave` | 8 hours | `hb_ca_school_leave` | `hb_ca_military_leave` |
+| `hb_ca_school_leave`, `hb_ca_military_leave` | 10 days | `hb_ca_military_leave` | `hb_ca_school_leave` |
+| `msa_term_convenience`, `msa_term_cause` | 10 days | `msa_term_cause` | `msa_term_convenience` |
+| `emp_meal`, `hb_meal_rest` | 4 hours | `hb_meal_rest` | `emp_meal` |
+
+A divergence is not automatically a defect — one member may be deliberately narrower than
+another. But each one is a question with a definite answer, answerable by reading two
+clauses side by side.
+
+There was a second check here and it was removed rather than shipped: flagging the same unit
+with different values as an internal contradiction. It cannot work at this level, because a
+single clause legitimately says "register within 15 days" and "report a hire within 20 days"
+and nothing in the text tells the two concepts apart. Asked properly instead — scoped by
+shared citation, where the concept is pinned down — **no two clauses citing the same
+provision state different numbers.** That is not reassurance. A corpus written from one
+memory is consistently wrong rather than inconsistently wrong.
+
 ## The standing exposure
 
 25 group(s) of near-duplicate clauses, covering 51 of the 360 clauses. Each is a
@@ -53,8 +82,8 @@ is a statement about what has been checked rather than about what is there.
 - `emp_harassment`, `hb_harassment`, `hb_training`
 - `msa_ca_prop65`, `cal_ca_prop65_ops`  — defect confirmed in `msa_ca_prop65`, `cal_ca_prop65_ops`
 - `can_lactation`, `hb_ca_lactation_break`  — defect confirmed in `can_lactation`, `hb_ca_lactation_break`
-- `can_edd`, `emp_ca_registration`
-- `cal_ca_soi`, `cal_soi`
+- `can_edd`, `emp_ca_registration`  — defect confirmed in `can_edd`, `emp_ca_registration`
+- `cal_ca_soi`, `cal_soi`  — defect confirmed in `cal_ca_soi`, `cal_soi`
 - `gov_ca_professional`, `charter_ca_professional`
 - `can_local_la`, `can_local_oak`
 - `can_local_sd`, `can_local_sj`

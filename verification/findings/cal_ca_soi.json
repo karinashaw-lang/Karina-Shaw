@@ -1,0 +1,46 @@
+{
+  "clauseId": "cal_ca_soi",
+  "checkedAt": "2026-08-15",
+  "method": "web search only — no source document was opened",
+  "heldOut": true,
+  "groupCheck": "one search covering a near-duplicate group; both members checked against the same evidence",
+  "sources": [
+    {
+      "title": "California Secretary of State — Business entities FAQ",
+      "url": "https://www.sos.ca.gov/business-programs/business-entities/faqs"
+    },
+    {
+      "title": "eMinutes — Waiver of penalty for a tardy Statement of Information",
+      "url": "https://eminutes.com/waiver-of-penalty-for-tardy-statement-of-information"
+    },
+    {
+      "title": "Kristina Reed — What to do if your California company is suspended or forfeited",
+      "url": "https://www.kristinareed.com/articles/what-to-do-if-your-california-company-is-suspended-or-forfeited/"
+    }
+  ],
+  "queries": [
+    "California Statement of Information Corporations Code 1502 17702.09 initial 90 days penalty $250 corporation annual LLC biennial suspension forfeiture Franchise Tax Board"
+  ],
+  "assertions": [
+    {
+      "text": "file an initial Statement of Information, with a stated renewal cadence by entity type",
+      "status": "corroborated"
+    },
+    {
+      "text": "late filing carries a penalty and can lead to suspension or forfeiture",
+      "status": "corroborated"
+    },
+    {
+      "text": "a suspended entity cannot prosecute or defend a lawsuit, cannot enforce its contracts, and loses the exclusive right to its own name",
+      "status": "corroborated"
+    }
+  ],
+  "gaps": [
+    "The penalty is $250; the clause does not say so.",
+    "The 60-day cure window after the notice of delinquency is omitted. This clause is the more detailed of the pair about what suspension costs, which makes the missing escape route more conspicuous, not less.",
+    "Restoration to active status runs through the Franchise Tax Board. The clause is unusually specific about the consequences of suspension and silent on how to undo it."
+  ],
+  "defectTypes": [
+    "omitted-requirement"
+  ]
+}

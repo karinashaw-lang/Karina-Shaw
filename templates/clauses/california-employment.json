@@ -726,7 +726,13 @@
    ],
    "verification": "single-source",
    "assertsLaw": true,
-   "classifiedBy": "heuristic-unreviewed"
+   "classifiedBy": "heuristic-unreviewed",
+   "defects": [
+    "New hires must be reported to the EDD on Form DE 34 within 20 calendar days of the start-of-work date. This clause omits it — and its near-duplicate emp_ca_registration states it, so the corpus knows the requirement and drops it in the place a reader looking up EDD obligations would look.",
+    "Registration, returns and payment must go through e-Services for Business; electronic filing is mandatory unless a waiver is approved. The clause says to file and deposit \"on the assigned schedule\" without saying the channel is not optional."
+   ],
+   "lastChecked": "2026-08-15",
+   "verificationNote": "Checked by web search against 3 independent sources as part of a near-duplicate group; no source document was opened. Defect types: omitted-requirement."
   },
   {
    "id": "can_workers_comp",
@@ -1584,7 +1590,13 @@
    "sources": [],
    "verification": "unsourced",
    "assertsLaw": true,
-   "classifiedBy": "heuristic-unreviewed"
+   "classifiedBy": "heuristic-unreviewed",
+   "defects": [
+    "Electronic filing through e-Services for Business is mandatory absent an approved waiver. Neither clause in this pair says so.",
+    "The clause carries no citation at all while asserting five separate legal duties. Every assertion here is unverifiable as filed, because there is nothing recorded to verify it against."
+   ],
+   "lastChecked": "2026-08-15",
+   "verificationNote": "Checked by web search against 3 independent sources as part of a near-duplicate group; no source document was opened. Defect types: omitted-requirement, unsourced-assertion."
   }
  ]
 }
