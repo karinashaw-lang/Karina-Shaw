@@ -29,6 +29,7 @@
    Every function here is pure. The taxonomy is passed in rather than read, so the same
    code runs in the validator, in the compiled engine, and in the tests.
 */
+import {meetsTwoPrimary} from './sources.mjs';
 
 /* Names that are not a person taking responsibility. A signoff is a human undertaking;
    these are either machines or nobody in particular. */
@@ -133,10 +134,18 @@ export function gateFor(clause, tax){
     const required = tax.releaseGate.minimum;
     const rank = authorityRank(clause, tax);
     const need = tax.verificationLevels[required].rank;
-    return {ok: rank >= need, track, ladder:'verificationLevels',
-            level: clause.verification, rank, required,
-            blocking: rank >= need ? null
-              : `asserts law at "${clause.verification}" — the gate is "${required}"`};
+    if(rank < need)
+      return {ok:false, track, ladder:'verificationLevels', level:clause.verification, rank, required,
+              blocking:`asserts law at "${clause.verification}" — the gate is "${required}"`};
+
+    /* The level is a label; the sources are the thing. Checking only the rank would let a
+       clause reach the gate by having the word "primary-verified" typed into it, which is
+       the exact failure mode every other check here exists to prevent. */
+    const v = meetsTwoPrimary(clause.sources || [], {assertionKind:'statutory', readBy:clause.readBy});
+    if(!v.ok)
+      return {ok:false, track, ladder:'verificationLevels', level:clause.verification, rank, required,
+              blocking:`labelled "${clause.verification}" but ${v.problems.join('; ')}`, problems:v.problems};
+    return {ok:true, track, ladder:'verificationLevels', level:clause.verification, rank, required, blocking:null};
   }
 
   const required = tax.releaseGate.draftingMinimum;

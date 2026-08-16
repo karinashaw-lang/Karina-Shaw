@@ -17,8 +17,16 @@ const TAX = loadCorpus().taxonomy;
 /* Every fixture carries a classification review, because "reviewed" is itself a claim that
    has to be earned — the section below tests that separately. */
 const CLASSIFIED = {classifiedBy:'reviewed', classificationReview:{reviewer:'R. Okonkwo', date:'2026-08-01'}};
+/* The gate is now two primary sources on distinct hosts, one of them the publisher of the
+   text, read by a named person. A fixture that merely says "primary-verified" must not pass,
+   so the passing fixture carries real sources and the label is checked against them. */
+const TWO_PRIMARY = [
+  {citation:'Test Code §1', url:'https://leginfo.legislature.ca.gov/a', checked:'2026-08-15', type:'primary'},
+  {citation:'Test Code §1', url:'https://edd.ca.gov/b', checked:'2026-08-15'}
+];
 const authority = (over={}) => ({id:'a1', assertsLaw:true, ...CLASSIFIED,
-  verification:'corroborated', sources:[{citation:'Test Code §1'}], body:'x', ...over});
+  verification:'primary-verified', sources:TWO_PRIMARY, readBy:'K. Shaw', reviewer:'K. Shaw',
+  body:'x', ...over});
 const drafting  = (over={}) => ({id:'d1', assertsLaw:false, ...CLASSIFIED,
   verification:'unsourced', sources:[], body:'The parties agree to the payment terms set out above.', ...over});
 const signoff   = (over={}) => ({level:'counsel-reviewed', reviewer:'K. Shaw',
@@ -47,6 +55,22 @@ console.log('the ladders are blind to each other');
      gateFor(authority({verification:'unsourced', draftingReview:signoff()}),TAX).ladder==='verificationLevels');
   t('an authority clause is graded on its own ladder',
      gateFor(authority(),TAX).ok && gateFor(authority({verification:'single-source'}),TAX).ok===false);
+  t('corroborated no longer reaches the gate — two secondary sources are not two primary ones',
+     gateFor(authority({verification:'corroborated'}),TAX).ok===false);
+  t('the label alone does not open the gate',
+     gateFor(authority({sources:[{citation:'Test Code §1'}]}),TAX).ok===false);
+  t('two pages on one publisher do not open it',
+     gateFor(authority({sources:[
+       {citation:'x', url:'https://leginfo.legislature.ca.gov/a', checked:'2026-08-15'},
+       {citation:'x', url:'https://leginfo.legislature.ca.gov/b', checked:'2026-08-15'}]}),TAX).ok===false);
+  t('two mirrors do not open it',
+     gateFor(authority({sources:[
+       {citation:'x', url:'https://law.justia.com/a', checked:'2026-08-15'},
+       {citation:'x', url:'https://codes.findlaw.com/b', checked:'2026-08-15'}]}),TAX).ok===false);
+  t('sources nobody opened do not open it',
+     gateFor(authority({readBy:undefined}),TAX).ok===false);
+  t('and the refusal quotes the standard, not just the level',
+     gateFor(authority({readBy:undefined}),TAX).blocking.includes('citation, not a source'));
 }
 
 console.log('an unreviewed classification blocks both ladders');

@@ -35,21 +35,24 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {put, get, loadIndex, digest, compare, auditStore, TEXT_DIR} from './textstore.mjs';
 import {inspect, renderReport, admissible} from './docdefects.mjs';
+import {tierOf} from './sources.mjs';
 import {ROOT} from './corpus.mjs';
 
 const reg = JSON.parse(fs.readFileSync(path.join(ROOT,'sources','registry.json'),'utf8'));
 const arg = n => { const i=process.argv.indexOf('--'+n); return i>0 ? process.argv[i+1] : null; };
 
-export function hostKindOf(url){
-  try{ return reg.hostKinds[new URL(url).host] || 'unknown'; }catch{ return 'unknown'; }
-}
-/* Only a primary host may be ingested by fetch. A mirror is fine for corroboration but
-   is not a source text — it is somebody else's copy, with their transcription errors. */
+/* sources.mjs is authoritative on who publishes what; the registry keeps a copy for
+   routing and is validated against it. Reading both would let them drift. */
+export function hostKindOf(url){ return tierOf(url); }
+/* Only the publisher of the text may be ingested by fetch. An agency site is primary about
+   the agency's own forms and procedures, but a source TEXT is the sovereign's words, and an
+   agency page paraphrasing a statute is not those words. A mirror is fine for corroboration
+   and is still somebody else's copy, with their transcription errors. */
 export function mayFetch(url){
   const kind = hostKindOf(url);
-  return {allowed: kind==='primary', kind,
-          why: kind==='primary' ? 'approved primary source'
-             : `host is "${kind}"; only primary hosts may be ingested as source text`};
+  return {allowed: kind==='publisher', kind,
+          why: kind==='publisher' ? 'the publisher of the text'
+             : `host is "${kind}"; only the publisher of the text may be ingested as source text`};
 }
 
 /* Waivers are deliberately awkward to supply: one finding at a time, each needing a

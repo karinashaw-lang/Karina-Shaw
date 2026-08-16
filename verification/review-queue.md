@@ -46,7 +46,7 @@ that scoring reports are optimistic and rest on n=9. What the exercise does esta
 mechanically expressible — the patterns are real and detectable rather than a narrative imposed on the sample.
 Treat a flag as "look here first", never as a verdict. A held-out sample is needed for an honest error rate.
 
-360 of 360 clauses are below the release gate `corroborated` and cannot be drafted.
+360 of 360 clauses are below the release gate `primary-verified` and cannot be drafted.
 
 Ordered by expected cost of being wrong: severity, whether the clause is drafted automatically or merely suggested,
 whether it is in the jurisdiction being led with, whether it asserts a specific provision, and how far it sits from the gate.
@@ -59,6 +59,7 @@ whether it is in the jurisdiction being led with, whether it asserts a specific 
 | `single-source` | 89 | One citation is asserted, and nothing has checked that the cited provision says what the clause says it says. |
 | `multi-cited` | 22 | More than one citation is asserted. Still self-asserted — several citations written by one author are not corroboration. |
 | `search-corroborated` | 0 | The assertion matched a web search summary drawing on two or more independent sources, with URLs and a check date recorded. No source document was opened and no primary text was read. This is a lead for a reviewer, not a verification. |
+| `corroborated` | 0 | Two or more independent secondary sources were opened and read, and each was recorded with a URL and a date. The primary text was still not checked. This sits BELOW the release gate: secondary sources agreeing with each other is not two primary sources. |
 
 ## By document
 

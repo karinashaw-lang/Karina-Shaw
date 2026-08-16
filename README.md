@@ -67,6 +67,50 @@ Two things unblock it, and they are independent:
 
 Neither reaches `primary-verified`, which requires a named human reviewer by design.
 
+## The standard: two primary sources, or it is not verified
+
+**Measured, not assumed: the standard cannot be met in this environment.** Every publisher
+host is denied at the egress proxy — `leginfo.legislature.ca.gov`, `uscode.house.gov`,
+`ecfr.gov`, `govt.westlaw.com`, `edd.ca.gov`, `sos.ca.gov`, `dir.ca.gov` and the rest all
+return `connect_rejected — gateway answered 403 to CONNECT`, while the `github.com` control
+tunnels through the same proxy and answers.
+
+So the bar was made structural instead of promised. `npm run sources` audits every recorded
+finding against it.
+
+| Tier | Primary? | What it is |
+|---|---|---|
+| `publisher` | **yes** | the sovereign's own text — legislature, code office, register, court |
+| `agency` | **yes** | the agency administering the rule, on its own site. Primary for its forms, procedures and deadlines; not for what a statute means |
+| `mirror` | no | a faithful republisher. Usually right, still a copy, with its own transcription errors and update schedule |
+| `secondary` | no | an expert reading — a law firm, an accounting firm, a trade body |
+
+Two primary sources means two **distinct** primary hosts: two pages on one publisher are one
+source, because a publisher that is wrong is wrong on both pages. A statutory claim needs at
+least one publisher among the two. An unclassified host is secondary — a host nobody has
+vouched for is not primary by default, which is how a standard quietly stops being one.
+
+**The result: 0 of 28 findings meet it, and zero publisher-tier sources appear anywhere in
+the 87 recorded sources.** Not few — none. Every finding rests on agency guidance, faithful
+republishers, and expert readings.
+
+Three things changed so this holds structurally:
+
+- **The gate is now `primary-verified`**, and `gateFor` checks the *sources*, not the label.
+  A clause with `"verification": "primary-verified"` typed into it and two Justia links is
+  refused, in the validator and in the compiled prototype alike — verified live in the page.
+- **The registry was wrong on its own terms.** It listed Cornell LII, casetext and Westlaw
+  as `primary` while `ingest.mjs` already refused mirrors on the principle that a copy is not
+  a source text. Reclassified.
+- **`mayFetch` was tightened** to the publisher tier only. An agency site is primary about
+  the agency's own forms and is still not the sovereign's words.
+
+**What this does not change:** the 27 defects already found remain findings. The standard
+governs what may be called *verified*; it does not un-find a gap. A clause shown by an agency
+page and three law firms to omit a statutory exemption still omits it. What nobody may now
+say is that the clause has been *checked against the law*. Those are different claims, and
+the second is the one being withheld.
+
 ## The detectors were tested properly, and half of them failed
 
 The first detector score — 88% precision, 88% recall — was measured against the same nine

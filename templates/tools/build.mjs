@@ -19,7 +19,10 @@ const strip = f => fs.readFileSync(path.join(ROOT,'tools',f),'utf8')
   .replace(/^export /gm,'')
   .replace(/^\/\*[\s\S]*?\*\/\n/,'');            /* drop the file's own header comment */
 const evaluator = strip('evaluator.mjs');
-const review    = strip('review.mjs');
+/* review.mjs imports the source standard; both are inlined so the engine's gate is the same
+   code the validator runs, not a re-implementation that can drift from it. */
+const sources   = strip('sources.mjs');
+const review    = strip('review.mjs').replace(/^import .*\n/gm,'');
 
 const meta = {
   builtFrom: 'templates/',
@@ -45,6 +48,9 @@ const CORPUS = ${JSON.stringify(blob)};
 
 /* ---- shared evaluation core, inlined verbatim from templates/tools/evaluator.mjs ---- */
 ${evaluator.trim()}
+
+/* ---- source standard, inlined verbatim from templates/tools/sources.mjs ---- */
+${sources.trim()}
 
 /* ---- release gate, inlined verbatim from templates/tools/review.mjs ---- */
 ${review.trim()}

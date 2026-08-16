@@ -313,17 +313,17 @@
     "corroborated": {
       "rank": 4,
       "name": "Corroborated",
-      "meaning": "Two or more independent secondary sources were opened and read, and each was recorded with a URL and a date. The primary text was still not checked."
+      "meaning": "Two or more independent secondary sources were opened and read, and each was recorded with a URL and a date. The primary text was still not checked. This sits BELOW the release gate: secondary sources agreeing with each other is not two primary sources."
     },
     "primary-verified": {
       "rank": 5,
       "name": "Primary verified",
-      "meaning": "Checked against the primary statutory or regulatory text, recorded with source and date, by a named reviewer."
+      "meaning": "Checked against the primary text by a named reviewer, with at least TWO primary sources on distinct hosts recorded with URLs and check dates, at least one of them the publisher of the text itself. Two pages on one publisher are one source. A mirror, however faithful, is somebody else's copy and does not count; a law firm reading, however expert, is corroboration and never verification."
     }
   },
   "releaseGate": {
-    "$note": "Minimum verification level a clause must reach before the engine will draft it into a document. Clauses below the gate are withheld and counted, not silently dropped. Search-corroborated deliberately sits BELOW the gate: a search summary is a lead for a reviewer, not a substitute for reading the source. A clause must additionally clear the review track its assertsLaw classification puts it on. The classification itself is currently heuristic and unreviewed, which is its own gate: an unreviewed classification cannot be relied on to route a clause to the right kind of vetting. Drafting clauses are gated separately on draftingReviewLevels, because the source ladder cannot grade a clause that cites nothing; applying it to all 360 clauses made the 191 drafting clauses permanently unreleasable for a reason that does not apply to them.",
-    "minimum": "corroborated",
+    "$note": "Minimum verification level a clause must reach before the engine will draft it into a document. The bar is two primary sources on distinct hosts, at least one of them the publisher of the text, read by a named person and recorded with dates. Everything below that — a single citation, several citations by one author, a search summary, two secondary sources agreeing — is withheld and counted, not silently dropped. Drafting clauses are gated separately on draftingReviewLevels, because the source ladder cannot grade a clause that cites nothing; applying it to all 360 clauses made the 191 drafting clauses permanently unreleasable for a reason that does not apply to them. A clause whose assertsLaw classification is still heuristic clears neither gate.",
+    "minimum": "primary-verified",
     "requireTrackSignoff": true,
     "draftingMinimum": "counsel-reviewed",
     "$draftingNote": "Minimum drafting-review level before the engine will draft a non-law-asserting clause. Self-reviewed sits below the gate on purpose. A clause whose assertsLaw classification is still heuristic and unreviewed cannot clear either gate, because nothing yet establishes which ladder it belongs on."
@@ -377,6 +377,29 @@
       "rank": 3,
       "name": "Counsel-approved",
       "meaning": "A named lawyer approves this as the term to use for the stated package and posture. A commercial judgement on top of the review, not a substitute for it."
+    }
+  },
+  "sourceTiers": {
+    "$comment": "Who publishes a source decides what it can prove. Authoritative classification lives in tools/sources.mjs; this is the summary. The test for a primary source: if this host and every other host disagreed, whose version would be the law?",
+    "publisher": {
+      "rank": 3,
+      "primary": true,
+      "meaning": "the sovereign's own text — the legislature, the code office, the register, the court"
+    },
+    "agency": {
+      "rank": 2,
+      "primary": true,
+      "meaning": "the agency administering the rule, on its own site. Primary for its forms, procedures and deadlines; not for what a statute means"
+    },
+    "mirror": {
+      "rank": 1,
+      "primary": false,
+      "meaning": "a faithful republisher. Usually right, still a copy, with its own transcription errors and its own update schedule"
+    },
+    "secondary": {
+      "rank": 0,
+      "primary": false,
+      "meaning": "an expert reading — a law firm, an accounting firm, a trade body. Corroboration; never verification"
     }
   }
 }

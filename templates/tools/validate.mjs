@@ -9,6 +9,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {loadCorpus, ROOT} from './corpus.mjs';
 import {gateFor, validateSignoff, validateClassification, lawTalk, summarise} from './review.mjs';
+import {meetsTwoPrimary, tierOf} from './sources.mjs';
 import {evalExpr, fireRules, resolveFields, clauseEligible, docIncluded, allConfigs, resolveXref, ANSWER_FIELDS} from './evaluator.mjs';
 
 const C = loadCorpus();
@@ -48,7 +49,12 @@ function checkVerification(o,where){
   if(rank>=4 && !o.readBy)
     err('UNEARNED_CORROBORATION',`${where} claims "${v}" but records no readBy — corroboration at this level requires that the sources were actually opened and read, not merely listed`);
   if(rank>=5){
-    if(!src.some(x=>x.type==='primary')) err('UNEARNED_VERIFICATION',`${where} claims "${v}" without a primary source`);
+    /* The standard: two primary sources on distinct hosts, one of them the publisher of the
+       text. Checked by the same function the audit uses, so the gate and the report cannot
+       disagree about what was required. */
+    const v2 = meetsTwoPrimary(src, {assertionKind:'statutory', readBy:o.readBy});
+    for(const p of v2.problems)
+      err('UNEARNED_VERIFICATION',`${where} claims "${v}" but ${p}`);
     if(!o.reviewer) err('UNEARNED_VERIFICATION',`${where} claims "${v}" without a named reviewer`);
     const pinned = PINS.pins.filter(p=>p.clause===o.id);
     if(!pinned.length)

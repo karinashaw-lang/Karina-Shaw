@@ -1,0 +1,107 @@
+/* Tests for the two-primary-source standard.
+
+   The properties that matter are the ones that stop the bar drifting downward: an unknown
+   host must never count as primary, two pages on one host must never count as two sources,
+   and a URL nobody opened must never count at all. Every one of those is a way a standard
+   gets asserted and then quietly not enforced, which is the failure this repo exists to
+   avoid repeating.
+*/
+import {tierOf, isPrimary, hostOf, meetsTwoPrimary, auditSources, HOSTS, TIERS}
+  from './sources.mjs';
+
+let pass=0, fail=0;
+const t=(n,c)=>{ if(c) pass++; else {fail++; console.log('  FAIL  '+n);} };
+const src = (url, checked='2026-08-15') => ({url, checked});
+
+console.log('host classification');
+t('the California Legislature is a publisher', tierOf('https://leginfo.legislature.ca.gov/x')==='publisher');
+t('the Office of Law Revision Counsel is a publisher', tierOf('https://uscode.house.gov/x')==='publisher');
+t('the eCFR is a publisher', tierOf('https://www.ecfr.gov/x')==='publisher');
+t('the EDD is an agency', tierOf('https://edd.ca.gov/en/payroll_taxes/')==='agency');
+t('the IRS is an agency', tierOf('https://www.irs.gov/forms')==='agency');
+t('Cornell LII is a mirror, not a publisher', tierOf('https://www.law.cornell.edu/uscode/text/26/83')==='mirror');
+t('Justia is a mirror', tierOf('https://law.justia.com/codes/x')==='mirror');
+t('casetext is a mirror', tierOf('https://casetext.com/x')==='mirror');
+t('a law firm is secondary', tierOf('https://ogletree.com/insights/x')==='secondary');
+t('an accounting firm is secondary', tierOf('https://kpmg.com/x')==='secondary');
+t('www. is stripped before matching', tierOf('https://www.sos.ca.gov/x')==='agency');
+t('a subdomain inherits its parent', tierOf('https://edd.ca.gov/en/x')==='agency');
+
+console.log('unknown hosts never count as primary');
+t('an unclassified host is secondary', tierOf('https://some-blog.example/x')==='secondary');
+t('and is not primary', !isPrimary('https://some-blog.example/x'));
+t('a malformed url is secondary', tierOf('not a url')==='secondary');
+t('an empty url is secondary', tierOf('')==='secondary');
+t('hostOf returns null on garbage', hostOf('not a url')===null);
+t('no host is classified primary by default',
+   Object.values(HOSTS).every(v=>Object.keys(TIERS).includes(v)));
+
+console.log('two primary sources means two distinct primary hosts');
+{
+  const ok = meetsTwoPrimary(
+    [src('https://leginfo.legislature.ca.gov/a'), src('https://edd.ca.gov/b')],
+    {readBy:'K. Shaw'});
+  t('a publisher plus an agency meets the standard', ok.ok);
+  t('and both hosts are recorded', ok.primaryHosts.length===2);
+
+  const onePublisherTwice = meetsTwoPrimary(
+    [src('https://leginfo.legislature.ca.gov/a'), src('https://leginfo.legislature.ca.gov/b')],
+    {readBy:'K. Shaw'});
+  t('two pages on one publisher are one source', !onePublisherTwice.ok);
+  t('and the refusal says so', onePublisherTwice.problems.some(p=>p.includes('distinct hosts')));
+
+  t('two mirrors do not meet it',
+     !meetsTwoPrimary([src('https://law.justia.com/a'), src('https://codes.findlaw.com/b')],
+       {readBy:'K. Shaw'}).ok);
+  t('two law firms do not meet it',
+     !meetsTwoPrimary([src('https://ogletree.com/a'), src('https://kpmg.com/b')],
+       {readBy:'K. Shaw'}).ok);
+  t('one primary plus four secondaries does not meet it',
+     !meetsTwoPrimary([src('https://leginfo.legislature.ca.gov/a'), src('https://ogletree.com/b'),
+                       src('https://kpmg.com/c'), src('https://shrm.org/d'), src('https://mondaq.com/e')],
+       {readBy:'K. Shaw'}).ok);
+  t('an empty source list does not meet it', !meetsTwoPrimary([], {readBy:'K. Shaw'}).ok);
+}
+
+console.log('a statutory claim needs the text, not two readings of it');
+{
+  const twoAgencies = meetsTwoPrimary([src('https://edd.ca.gov/a'), src('https://dir.ca.gov/b')],
+    {assertionKind:'statutory', readBy:'K. Shaw'});
+  t('two agencies do not verify a statutory claim', !twoAgencies.ok);
+  t('and the reason names the missing publisher',
+     twoAgencies.problems.some(p=>p.includes('publisher of the text')));
+  t('but two agencies do verify a procedural claim',
+     meetsTwoPrimary([src('https://edd.ca.gov/a'), src('https://dir.ca.gov/b')],
+       {assertionKind:'procedural', readBy:'K. Shaw'}).ok);
+}
+
+console.log('a URL nobody opened is not a source');
+{
+  t('no readBy fails', !meetsTwoPrimary(
+     [src('https://leginfo.legislature.ca.gov/a'), src('https://edd.ca.gov/b')], {}).ok);
+  t('and the reason says why', meetsTwoPrimary(
+     [src('https://leginfo.legislature.ca.gov/a'), src('https://edd.ca.gov/b')], {})
+     .problems.some(p=>p.includes('citation, not a source')));
+  t('a primary with no check date fails', !meetsTwoPrimary(
+     [{url:'https://leginfo.legislature.ca.gov/a'}, src('https://edd.ca.gov/b')],
+     {readBy:'K. Shaw'}).ok);
+  t('a source with no url is ignored rather than counted',
+     meetsTwoPrimary([{citation:'Cal. Lab. Code §925'},
+                      src('https://leginfo.legislature.ca.gov/a'), src('https://edd.ca.gov/b')],
+       {readBy:'K. Shaw'}).ok);
+}
+
+console.log('against every finding actually recorded');
+{
+  const fs = await import('node:fs');
+  const F = fs.readdirSync('verification/findings').filter(f=>f.endsWith('.json'))
+    .map(f=>JSON.parse(fs.readFileSync('verification/findings/'+f,'utf8')));
+  const a = auditSources(F);
+  t('every finding was audited', a.checked===F.length);
+  t('none of them meets the two-primary standard', a.meeting===0);
+  console.log(`        ${a.checked} finding(s), ${a.meeting} meeting the standard`);
+  console.log(`        sources by tier: ${JSON.stringify(a.byTier)}`);
+}
+
+console.log(`\n${pass} passed, ${fail} failed`);
+process.exit(fail?1:0);

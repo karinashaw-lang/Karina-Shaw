@@ -13,7 +13,7 @@ denial or upstream failure)"* — for every host in this list. That is an organi
 egress policy decision, not a misconfiguration: the CA bundle, trust store, and proxy
 settings are all correct, and `github.com` reaches through the same path without error.
 
-Measured at 2026-08-16T19:18:50.492Z by `npm run probe`. Reproduce with `npm run audit`.
+Measured at 2026-08-16T23:17:35.068Z by `npm run probe`. Reproduce with `npm run audit`.
 
 ## Impact while blocked
 
@@ -25,27 +25,25 @@ Measured at 2026-08-16T19:18:50.492Z by `npm run probe`. Reproduce with `npm run
 
 | Host | Kind | Citations needing it | Covers | Current |
 |---|---|---:|---|---|
-| `law.justia.com` | statute-mirror | 91 | statute, regulation, case | http-403 |
-| `codes.findlaw.com` | statute-mirror | 85 | statute | http-403 |
-| `leginfo.legislature.ca.gov` | primary | 78 | statute, session-law | http-403 |
-| `www.law.cornell.edu` | primary | 7 | tax, regulation, statute | http-403 |
-| `library.municode.com` | ordinance-host | 6 | ordinance | http-403 |
-| `codelibrary.amlegal.com` | ordinance-host | 6 | ordinance | http-403 |
-| `govt.westlaw.com` | primary | 5 | regulation | http-403 |
+| `law.justia.com` | mirror | 91 | statute, regulation, case | http-403 |
+| `codes.findlaw.com` | mirror | 85 | statute | http-403 |
+| `leginfo.legislature.ca.gov` | publisher | 78 | statute, session-law | http-403 |
+| `www.law.cornell.edu` | mirror | 7 | tax, regulation, statute | http-403 |
+| `library.municode.com` | mirror | 6 | ordinance | http-403 |
+| `codelibrary.amlegal.com` | mirror | 6 | ordinance | http-403 |
+| `govt.westlaw.com` | publisher | 5 | regulation | http-403 |
 | `www.dir.ca.gov` | agency | 4 | wage-order | http-403 |
 | `www.irs.gov` | agency | 3 | tax | http-403 |
-| `www.ecfr.gov` | primary | 2 | regulation | http-403 |
-| `uscode.house.gov` | primary | 2 | statute | http-403 |
-| `casetext.com` | primary | 1 | case | http-403 |
-| `legiscan.com` | statute-mirror | 1 | session-law | http-403 |
+| `www.ecfr.gov` | publisher | 2 | regulation | http-403 |
+| `uscode.house.gov` | publisher | 2 | statute | http-403 |
+| `casetext.com` | mirror | 1 | case | http-403 |
+| `legiscan.com` | mirror | 1 | session-law | http-403 |
 
 ## Minimum viable subset
 
 If the full list is not acceptable, the smallest set that unblocks meaningful progress is:
 
-- `leginfo.legislature.ca.gov` — primary, needed by 78 citations (statute, session-law)
-- `www.law.cornell.edu` — primary, needed by 7 citations (tax, regulation, statute)
-- `govt.westlaw.com` — primary, needed by 5 citations (regulation)
+- (no primary host is routable for this corpus — check the registry)
 
 One reachable primary source plus one reachable mirror is enough to move a clause to
 `corroborated`. `primary-verified` additionally requires a named human reviewer and is

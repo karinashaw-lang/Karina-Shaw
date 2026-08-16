@@ -1,5 +1,5 @@
 {
-  "$comment": "Authoritative sources a citation can be verified against, and the rule for which host counts as what. `reachability` is written by tools/probe-sources.mjs — it is measured, not asserted. Nothing in this file is a legal claim; it is a routing table.",
+  "$comment": "Authoritative sources a citation can be verified against, and the rule for which host counts as what. `reachability` is written by tools/probe-sources.mjs — it is measured, not asserted. Nothing in this file is a legal claim; it is a routing table. hostKinds is kept in step with tools/sources.mjs, which is authoritative. Cornell LII, casetext and Westlaw's non-CCR content were previously listed as `primary`; that was wrong on this repo's own terms, since ingest.mjs already refuses mirrors on the principle that a copy is not a source text.",
   "version": "1.0.0",
   "citationPatterns": [
     {
@@ -94,105 +94,135 @@
     }
   ],
   "hostKinds": {
-    "leginfo.legislature.ca.gov": "primary",
-    "uscode.house.gov": "primary",
-    "www.ecfr.gov": "primary",
-    "www.law.cornell.edu": "primary",
-    "govt.westlaw.com": "primary",
-    "www.dir.ca.gov": "agency",
-    "www.irs.gov": "agency",
     "calcivilrights.ca.gov": "agency",
-    "www.sos.ca.gov": "agency",
-    "law.justia.com": "statute-mirror",
-    "codes.findlaw.com": "statute-mirror",
-    "legiscan.com": "statute-mirror",
-    "library.municode.com": "ordinance-host",
-    "codelibrary.amlegal.com": "ordinance-host",
-    "casetext.com": "primary"
+    "casetext.com": "mirror",
+    "cdph.ca.gov": "agency",
+    "codelibrary.amlegal.com": "mirror",
+    "codes.findlaw.com": "mirror",
+    "dos.ny.gov": "agency",
+    "edd.ca.gov": "agency",
+    "govt.westlaw.com": "publisher",
+    "law.justia.com": "mirror",
+    "leginfo.legislature.ca.gov": "publisher",
+    "legiscan.com": "mirror",
+    "library.municode.com": "mirror",
+    "oehha.ca.gov": "agency",
+    "p65warnings.ca.gov": "agency",
+    "uscode.house.gov": "publisher",
+    "www.dir.ca.gov": "agency",
+    "www.ecfr.gov": "publisher",
+    "www.irs.gov": "agency",
+    "www.law.cornell.edu": "mirror",
+    "www.sos.ca.gov": "agency"
   },
   "reachability": {
     "$note": "Written by tools/probe-sources.mjs. Run it again after any network change.",
-    "probedAt": "2026-08-16T19:18:50.492Z",
+    "probedAt": "2026-08-16T23:17:35.068Z",
     "hosts": {
-      "leginfo.legislature.ca.gov": {
-        "kind": "primary",
+      "calcivilrights.ca.gov": {
+        "kind": "agency",
         "status": "http-403",
-        "ms": 218
+        "ms": 272
       },
-      "uscode.house.gov": {
-        "kind": "primary",
+      "casetext.com": {
+        "kind": "mirror",
         "status": "http-403",
-        "ms": 202
+        "ms": 873
       },
-      "www.ecfr.gov": {
-        "kind": "primary",
+      "cdph.ca.gov": {
+        "kind": "agency",
         "status": "http-403",
-        "ms": 70
+        "ms": 645
       },
-      "www.law.cornell.edu": {
-        "kind": "primary",
+      "codelibrary.amlegal.com": {
+        "kind": "mirror",
         "status": "http-403",
-        "ms": 355
+        "ms": 297
+      },
+      "codes.findlaw.com": {
+        "kind": "mirror",
+        "status": "http-403",
+        "ms": 195
+      },
+      "dos.ny.gov": {
+        "kind": "agency",
+        "status": "http-403",
+        "ms": 377
+      },
+      "edd.ca.gov": {
+        "kind": "agency",
+        "status": "http-403",
+        "ms": 89
       },
       "govt.westlaw.com": {
-        "kind": "primary",
+        "kind": "publisher",
         "status": "http-403",
-        "ms": 140
+        "ms": 247
+      },
+      "law.justia.com": {
+        "kind": "mirror",
+        "status": "http-403",
+        "ms": 298
+      },
+      "leginfo.legislature.ca.gov": {
+        "kind": "publisher",
+        "status": "http-403",
+        "ms": 161
+      },
+      "legiscan.com": {
+        "kind": "mirror",
+        "status": "http-403",
+        "ms": 168
+      },
+      "library.municode.com": {
+        "kind": "mirror",
+        "status": "http-403",
+        "ms": 451
+      },
+      "oehha.ca.gov": {
+        "kind": "agency",
+        "status": "http-403",
+        "ms": 652
+      },
+      "p65warnings.ca.gov": {
+        "kind": "agency",
+        "status": "http-403",
+        "ms": 101
+      },
+      "uscode.house.gov": {
+        "kind": "publisher",
+        "status": "http-403",
+        "ms": 314
       },
       "www.dir.ca.gov": {
         "kind": "agency",
         "status": "http-403",
-        "ms": 256
+        "ms": 620
+      },
+      "www.ecfr.gov": {
+        "kind": "publisher",
+        "status": "http-403",
+        "ms": 23
       },
       "www.irs.gov": {
         "kind": "agency",
         "status": "http-403",
-        "ms": 57
+        "ms": 56
       },
-      "calcivilrights.ca.gov": {
-        "kind": "agency",
+      "www.law.cornell.edu": {
+        "kind": "mirror",
         "status": "http-403",
-        "ms": 88
+        "ms": 14
       },
       "www.sos.ca.gov": {
         "kind": "agency",
         "status": "http-403",
-        "ms": 431
-      },
-      "law.justia.com": {
-        "kind": "statute-mirror",
-        "status": "http-403",
-        "ms": 200
-      },
-      "codes.findlaw.com": {
-        "kind": "statute-mirror",
-        "status": "http-403",
-        "ms": 482
-      },
-      "legiscan.com": {
-        "kind": "statute-mirror",
-        "status": "http-403",
-        "ms": 488
-      },
-      "library.municode.com": {
-        "kind": "ordinance-host",
-        "status": "http-403",
-        "ms": 371
-      },
-      "codelibrary.amlegal.com": {
-        "kind": "ordinance-host",
-        "status": "http-403",
-        "ms": 556
-      },
-      "casetext.com": {
-        "kind": "primary",
-        "status": "http-403",
-        "ms": 448
+        "ms": 429
       },
       "github.com": {
         "kind": "control",
         "status": "reachable",
-        "ms": 105
+        "ms": 66
       }
     }
   }
