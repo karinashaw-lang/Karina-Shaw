@@ -13,7 +13,7 @@ denial or upstream failure)"* — for every host in this list. That is an organi
 egress policy decision, not a misconfiguration: the CA bundle, trust store, and proxy
 settings are all correct, and `github.com` reaches through the same path without error.
 
-Measured at 2026-08-15T08:08:46.615Z by `npm run probe`. Reproduce with `npm run audit`.
+Measured at 2026-08-16T04:13:45.873Z by `npm run probe`. Reproduce with `npm run audit`.
 
 ## Impact while blocked
 

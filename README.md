@@ -96,14 +96,45 @@ the same way. All three were defective.
 unflagged clause is not thereby safe, and nothing in the pipeline may treat it as such.
 `npm run holdout` reproduces all of this.
 
+## Defects propagate, and now they are traced
+
+`msa_ca_925` repeated the exact "primarily works" error already confirmed in `ea_ca_925` —
+written twice, found twice, at the cost of two separate searches. Nobody reading one clause
+would have known to read the other. That is what a corpus written from memory does: the same
+wrong recollection comes out the same way every time it is needed.
+
+So a confirmed defect is treated as a lead on every clause built from the same recollection.
+`propagation.mjs` finds them two ways — clauses sharing distinctive eight-word runs of
+wording, and clauses resting on the same cited provision.
+
+The 19 confirmed defects implicated **5 unchecked clauses**. Four were checkable against
+evidence already on file — the question was whether the *same* defect is present, and the
+sources establishing it were already recorded — and **all four carried it**:
+
+| Clause | Implicated by | The defect that travelled |
+|---|---|---|
+| `cal_ca_prop65_ops` | `msa_ca_prop65` | no fewer-than-ten-employees threshold, again |
+| `ea_ca_release` | `msa_ca_release` | "quoting it, or unknown claims survive" — §1542 requires no such thing |
+| `hb_ca_lactation_break` | `can_lactation` | the under-50 undue-hardship exemption appears in neither |
+| `cal_ny` | `charter_ny_publication` | "two designated newspapers" — one must be a daily, one a weekly |
+
+`hb_ca_lactation_break` is instructive twice over: it is actually *better* than its pair on
+one point (it says the non-concurrent break is unpaid, which `can_lactation` omits) and
+carries the parent defect on another. Duplication is not cloning, and each lead still has to
+be read.
+
+**The standing exposure: 25 groups of near-duplicate clauses covering 51 of the 360.** Each
+is a place where one defect lands more than once. Most have no confirmed defect yet, which
+says what has been checked, not what is there. `npm run propagation` regenerates all of it.
+
 ## The defect rate, on a sample twice the size
 
 | | Before | Now |
 |---|---|---|
-| Clauses checked | 9 | 20 |
-| Demonstrably defective | 8 | 19 |
-| 95% lower bound | 57% | **78%** |
-| Implied defective clauses in the 360 | ≥206 | **≥280** |
+| Clauses checked | 9 | 24 |
+| Demonstrably defective | 8 | 23 |
+| 95% lower bound | 57% | **82%** |
+| Implied defective clauses in the 360 | ≥206 | **≥295** |
 
 Nothing about the corpus changed. What changed is how much of it has been looked at.
 

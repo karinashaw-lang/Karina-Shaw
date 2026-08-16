@@ -1,8 +1,8 @@
 {
-  "scoredAt": "2026-08-15T08:05:58.133Z",
+  "scoredAt": "2026-08-16T04:13:07.467Z",
   "tally": {
-    "contradicted": 5,
-    "incomplete": 14,
+    "contradicted": 6,
+    "incomplete": 17,
     "partial": 1
   },
   "rows": [
@@ -23,6 +23,16 @@
       "why": "1 assertion(s) contradicted by sources",
       "assertions": 4,
       "gaps": 2,
+      "hosts": 3,
+      "known": true
+    },
+    {
+      "id": "ea_ca_release",
+      "outcome": "contradicted",
+      "upgradeTo": null,
+      "why": "1 assertion(s) contradicted by sources",
+      "assertions": 3,
+      "gaps": 0,
       "hosts": 3,
       "known": true
     },
@@ -62,6 +72,26 @@
       "upgradeTo": null,
       "why": "1 requirement(s) described by sources are absent from the clause — a clause that is silent on a requirement reads as complete and is not",
       "assertions": 4,
+      "gaps": 1,
+      "hosts": 3,
+      "known": true
+    },
+    {
+      "id": "cal_ca_prop65_ops",
+      "outcome": "incomplete",
+      "upgradeTo": null,
+      "why": "1 requirement(s) described by sources are absent from the clause — a clause that is silent on a requirement reads as complete and is not",
+      "assertions": 3,
+      "gaps": 1,
+      "hosts": 3,
+      "known": true
+    },
+    {
+      "id": "cal_ny",
+      "outcome": "incomplete",
+      "upgradeTo": null,
+      "why": "1 requirement(s) described by sources are absent from the clause — a clause that is silent on a requirement reads as complete and is not",
+      "assertions": 3,
       "gaps": 1,
       "hosts": 3,
       "known": true
@@ -154,6 +184,16 @@
       "assertions": 5,
       "gaps": 2,
       "hosts": 3,
+      "known": true
+    },
+    {
+      "id": "hb_ca_lactation_break",
+      "outcome": "incomplete",
+      "upgradeTo": null,
+      "why": "1 requirement(s) described by sources are absent from the clause — a clause that is silent on a requirement reads as complete and is not",
+      "assertions": 2,
+      "gaps": 1,
+      "hosts": 4,
       "known": true
     },
     {

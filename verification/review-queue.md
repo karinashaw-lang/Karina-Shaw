@@ -2,22 +2,22 @@
 
 ## Sampling result
 
-20 clauses have been checked against sources. **19 of them (95%) are confirmed defective** —
+24 clauses have been checked against sources. **23 of them (96%) are confirmed defective** —
 they omit a requirement the sources describe, misstate its scope, or cite the wrong provision.
 
-At 95% confidence, **at least 78% of the corpus is defective** — around 282 of 360 clauses,
-with a point estimate near 342.
+At 95% confidence, **at least 82% of the corpus is defective** — around 294 of 360 clauses,
+with a point estimate near 345.
 
 The sample spans California employment, California entity, New York entity, and federal tax clauses, so the
-pattern is not specific to one jurisdiction or subject. Of 90 individual assertions checked,
-5 were contradicted outright and 7 could not be supported by any source found.
+pattern is not specific to one jurisdiction or subject. Of 101 individual assertions checked,
+6 were contradicted outright and 7 could not be supported by any source found.
 
 | Defect type | Count | What it means |
 |---|---:|---|
 | `omitted-requirement` | 13 | The source describes an obligation the clause does not mention at all. |
-| `omitted-qualifier` | 15 | The clause states a threshold or test without a condition that narrows or widens it. |
+| `omitted-qualifier` | 18 | The clause states a threshold or test without a condition that narrows or widens it. |
 | `overstated-scope` | 2 | The clause claims broader application than the provision has. |
-| `overstated-consequence` | 2 | The clause states exposure without a limit the source imposes. |
+| `overstated-consequence` | 4 | The clause states exposure without a limit the source imposes. |
 | `miscitation` | 2 | The clause cites the wrong provision for the obligation it performs. |
 | `scope-mismatch` | 1 | The clause is drafted for a party the provision does not govern. |
 
@@ -103,19 +103,19 @@ whether it is in the jurisdiction being led with, whether it asserts a specific 
 | 14 | `msa_ca_auto_renew` — California Automatic Renewal Requirements | msa | critical | `single-source` | Cal. Bus. & Prof. Code §§17601–17606 |
 | 15 | `charter_ny_publication` — Publication Requirement | charter | critical | `single-source` | NY LLC Law §206 |
 | 16 | `msa_ca_indemnity_construction` — California Anti-Indemnity Limits | msa | critical | `single-source` | Cal. Civ. Code §§2782, 2782.05 |
-| 17 | `can_harassment_training` — Harassment Prevention Training | ca-notices | critical | `multi-cited` | Cal. Gov. Code §12950.1 | California Civil Rights Department — Sexual harassment prevention training FAQ for employers | FindLaw — Cal. Gov. Code §12950.1 | Traliant — California sexual harassment training requirements |
-| 18 | `can_wtpa` — Wage Theft Prevention Act Notice | ca-notices | critical | `multi-cited` | Cal. Lab. Code §2810.5 | Ogletree Deakins — California publishes new wage theft notice | CalChamber HRWatchdog — Updated wage theft notice released | California Workplace Law Blog — Labor Commissioner publishes updated wage theft notice |
-| 19 | `b83_instructions` — Filing Instructions | election-83b | critical | `single-source` | Treas. Reg. §1.83-2(c) |
-| 20 | `msa_ca_cipa` — Website Tracking and CIPA Exposure | msa | critical | `single-source` | Cal. Penal Code §§630–638 |
-| 21 | `msa_ca_unruh` — Accessibility and Unruh Act Exposure | msa | critical | `single-source` | Cal. Civ. Code §51 |
-| 22 | `cal_ca_soi` — California Statement of Information | compliance-calendar | critical | `single-source` | Cal. Corp. Code §§1502, 17702.09 |
-| 23 | `can_ccpa_hr` — Privacy Notice for Employee Data | ca-notices | critical | `single-source` | Cal. Civ. Code §1798.100 |
-| 24 | `can_edd` — EDD Employer Registration | ca-notices | critical | `single-source` | Cal. Unemp. Ins. Code §1086 |
-| 25 | `can_local_sd` — San Diego Ordinances | ca-notices | critical | `single-source` | S.D. Mun. Code ch. 3, art. 9 |
+| 17 | `cal_ca_prop65_ops` — Proposition 65 Review | compliance-calendar | recommended | `single-source` | Cal. Health & Safety Code §25249.6 |
+| 18 | `hb_ca_lactation_break` — Lactation Breaks | handbook | critical | `single-source` | Cal. Lab. Code §§1030–1034 |
+| 19 | `can_harassment_training` — Harassment Prevention Training | ca-notices | critical | `multi-cited` | Cal. Gov. Code §12950.1 | California Civil Rights Department — Sexual harassment prevention training FAQ for employers | FindLaw — Cal. Gov. Code §12950.1 | Traliant — California sexual harassment training requirements |
+| 20 | `can_wtpa` — Wage Theft Prevention Act Notice | ca-notices | critical | `multi-cited` | Cal. Lab. Code §2810.5 | Ogletree Deakins — California publishes new wage theft notice | CalChamber HRWatchdog — Updated wage theft notice released | California Workplace Law Blog — Labor Commissioner publishes updated wage theft notice |
+| 21 | `b83_instructions` — Filing Instructions | election-83b | critical | `single-source` | Treas. Reg. §1.83-2(c) |
+| 22 | `cal_ny` — New York Publication Deadline | compliance-calendar | critical | `single-source` | NY LLC Law §206 |
+| 23 | `ea_ca_release` — Release and Section 1542 Waiver | employment-agreement | recommended | `single-source` | Cal. Civ. Code §1542 |
+| 24 | `msa_ca_cipa` — Website Tracking and CIPA Exposure | msa | critical | `single-source` | Cal. Penal Code §§630–638 |
+| 25 | `msa_ca_unruh` — Accessibility and Unruh Act Exposure | msa | critical | `single-source` | Cal. Civ. Code §51 |
 
 ## Clauses checked and found defective
 
-19 clause(s) have been checked against sources and found to omit or misstate a requirement.
+23 clause(s) have been checked against sources and found to omit or misstate a requirement.
 These sit at the top of the queue: a clause known to be wrong is more dangerous than one merely unverified,
 because it reads as complete.
 
@@ -241,6 +241,19 @@ Checked 2026-08-15. 2 defect(s).
 - Section 2782.05 applies to contracts entered into on or after 1 January 2013. The clause states the limit with no temporal boundary, so it is asserted of contracts it does not reach.
 - Section 2782.05 also voids the subcontractor’s indemnity to the extent claims arise from work outside the subcontractor’s contractual scope. That is a third protection, independent of active negligence, and the clause omits it — a subcontractor relying on this clause would not know to raise it.
 
+### `cal_ca_prop65_ops` — Proposition 65 Review
+
+Checked 2026-08-15. 2 defect(s).
+
+- "a warning that is present but non-conforming is treated as no warning" — the same overstatement confirmed in msa_ca_prop65 — a non-conforming warning loses the safe harbour rather than being void as such
+- The parent defect propagated: this clause states the duty with no threshold, and Proposition 65 does not apply to a business employing fewer than ten employees. Both clauses in this pair tell the reader most likely to be exempt that they are covered.
+
+### `hb_ca_lactation_break` — Lactation Breaks
+
+Checked 2026-08-15. 1 defect(s).
+
+- The parent defect propagated: no mention of the undue-hardship exemption available to an employer with fewer than 50 employees, which for a small-company product is the most relevant qualifier in the section. The clause delegates the space requirements to can_lactation, which omits it too, so the exemption appears nowhere in the pair.
+
 ### `can_harassment_training` — Harassment Prevention Training
 
 Checked 2026-08-15. 1 defect(s).
@@ -258,4 +271,16 @@ Checked 2026-08-15. 1 defect(s).
 Checked 2026-08-15. 1 defect(s).
 
 - The IRS now provides Form 15620 as a standardised way to make the election. The clause describes only a written statement and does not mention the form, so a user following it would hand-draft something the IRS has since published a form for.
+
+### `cal_ny` — New York Publication Deadline
+
+Checked 2026-08-15. 1 defect(s).
+
+- The parent defect propagated: the two papers are not interchangeable — the county clerk designates one daily and one weekly. "Two designated newspapers" reads as a free choice of any two, so a founder can publish in two dailies, satisfy this clause, and fail the statute. Confirmed in charter_ny_publication and repeated verbatim in substance here.
+
+### `ea_ca_release` — Release and Section 1542 Waiver
+
+Checked 2026-08-15. 1 defect(s).
+
+- "any release must expressly waive §1542, quoting it, or unknown claims survive" — the same error confirmed in msa_ca_release: §1542 does not require a release to quote the statute, and quoting it is neither necessary nor by itself sufficient. Written in two places, wrong in both.
 

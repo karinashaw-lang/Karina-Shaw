@@ -1,0 +1,43 @@
+{
+  "clauseId": "cal_ca_prop65_ops",
+  "checkedAt": "2026-08-15",
+  "method": "no new search — checked against the evidence already recorded for msa_ca_prop65, which propagation.mjs named as the clause this one was built from. The question was whether the same defect is present, and the sources establishing it are already on file.",
+  "heldOut": true,
+  "propagatedFrom": "msa_ca_prop65",
+  "assertions": [
+    {
+      "text": "review the catalogue annually and confirm warnings are present and correctly placed",
+      "status": "corroborated"
+    },
+    {
+      "text": "a warning that is present but non-conforming is treated as no warning",
+      "status": "partial",
+      "note": "the same overstatement confirmed in msa_ca_prop65 — a non-conforming warning loses the safe harbour rather than being void as such"
+    },
+    {
+      "text": "enforcement is primarily by private plaintiffs who recover attorney’s fees, preceded by a sixty-day notice",
+      "status": "corroborated"
+    }
+  ],
+  "gaps": [
+    "The parent defect propagated: this clause states the duty with no threshold, and Proposition 65 does not apply to a business employing fewer than ten employees. Both clauses in this pair tell the reader most likely to be exempt that they are covered."
+  ],
+  "defectTypes": [
+    "omitted-qualifier",
+    "overstated-consequence"
+  ],
+  "sources": [
+    {
+      "title": "California OEHHA — Are any businesses exempt from Proposition 65?",
+      "url": "https://www.p65warnings.ca.gov/faq/businesses/are-any-businesses-exempt-proposition-65"
+    },
+    {
+      "title": "Jones Day — California simplifies Proposition 65 obligations",
+      "url": "https://www.jonesday.com/en/insights/2020/07/2020-regulatory-amendment-proposition-65"
+    },
+    {
+      "title": "OEHHA — Businesses and Proposition 65",
+      "url": "https://oehha.ca.gov/proposition-65/businesses-and-proposition-65"
+    }
+  ]
+}

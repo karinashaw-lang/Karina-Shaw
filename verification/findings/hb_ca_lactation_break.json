@@ -1,0 +1,42 @@
+{
+  "clauseId": "hb_ca_lactation_break",
+  "checkedAt": "2026-08-15",
+  "method": "no new search — checked against the evidence already recorded for can_lactation, which propagation.mjs named as the clause this one was built from. The question was whether the same defect is present, and the sources establishing it are already on file.",
+  "heldOut": true,
+  "propagatedFrom": "can_lactation",
+  "assertions": [
+    {
+      "text": "reasonable break time running concurrently with paid rest breaks where possible and otherwise unpaid",
+      "status": "corroborated",
+      "note": "this clause is actually BETTER than its pair — can_lactation omits \"otherwise unpaid\" and this one states it"
+    },
+    {
+      "text": "denial of a required break entitles the employee to one additional hour of pay at the regular rate",
+      "status": "corroborated"
+    }
+  ],
+  "gaps": [
+    "The parent defect propagated: no mention of the undue-hardship exemption available to an employer with fewer than 50 employees, which for a small-company product is the most relevant qualifier in the section. The clause delegates the space requirements to can_lactation, which omits it too, so the exemption appears nowhere in the pair."
+  ],
+  "defectTypes": [
+    "omitted-qualifier"
+  ],
+  "sources": [
+    {
+      "title": "FindLaw — Cal. Lab. Code § 1031",
+      "url": "https://codes.findlaw.com/ca/labor-code/lab-sect-1031/"
+    },
+    {
+      "title": "Public.Law — Cal. Lab. Code § 1034 (2025)",
+      "url": "https://california.public.law/codes/labor_code_section_1034"
+    },
+    {
+      "title": "SHRM — Basics of lactation accommodation in California",
+      "url": "https://www.shrm.org/topics-tools/employment-law-compliance/basics-of-lactation-accommodation-california"
+    },
+    {
+      "title": "California Department of Public Health — Lactation accommodation laws",
+      "url": "https://www.cdph.ca.gov/Programs/CFH/DMCAH/Breastfeeding/Pages/Lactation-Accommodation-Laws.aspx"
+    }
+  ]
+}
