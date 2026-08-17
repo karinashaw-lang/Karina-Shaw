@@ -15,6 +15,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import {loadCorpus, ROOT} from './corpus.mjs';
+import {writeIfChanged, VOLATILE_FIELDS, VOLATILE_LINES} from './artifact.mjs';
 
 /* ---- what counts as a checkable assertion ---- */
 const PATTERNS = [
@@ -98,7 +99,8 @@ if(INVOKED){
   const plans = pool.map(c=>planFor(c,YEAR));
   const out = path.join(ROOT,'..','verification','query-plan.json');
   fs.mkdirSync(path.dirname(out),{recursive:true});
-  fs.writeFileSync(out, JSON.stringify({generatedAt:new Date().toISOString(), plans}, null, 2)+'\n');
+  writeIfChanged(out, JSON.stringify({generatedAt:new Date().toISOString(), plans}, null, 2)+'\n',
+    {volatile:VOLATILE_FIELDS, parse:JSON.parse, fsImpl:fs});
 
   const totalA = plans.reduce((s,p)=>s+p.assertions.length,0);
   const totalQ = plans.reduce((s,p)=>s+p.queries.length,0);

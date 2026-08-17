@@ -14,6 +14,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import {loadCorpus, ROOT} from './corpus.mjs';
+import {writeIfChanged, VOLATILE_FIELDS, VOLATILE_LINES} from './artifact.mjs';
 
 const DIR = path.join(ROOT,'..','verification','findings');
 
@@ -108,7 +109,8 @@ if(INVOKED){
   }
 
   const out = path.join(ROOT,'..','verification','findings-summary.json');
-  fs.writeFileSync(out, JSON.stringify({scoredAt:new Date().toISOString(), tally, rows},null,2)+'\n');
+  writeIfChanged(out, JSON.stringify({scoredAt:new Date().toISOString(), tally, rows},null,2)+'\n',
+    {volatile:VOLATILE_FIELDS, parse:JSON.parse, fsImpl:fs});
   console.log(`summary written to verification/findings-summary.json`);
 }
 

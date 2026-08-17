@@ -24,6 +24,7 @@ import {fireRules, clauseEligible, docIncluded, allConfigs} from './evaluator.mj
 import {signalsFor, tensionFor, reviewPriority, triage,
         AUTHORITY_SIGNALS, DRAFTING_SIGNALS} from './classification.mjs';
 import {looksLikeAPerson} from './review.mjs';
+import {writeIfChanged, VOLATILE_FIELDS, VOLATILE_LINES} from './artifact.mjs';
 
 const C = loadCorpus();
 const TAX = C.taxonomy;
@@ -206,7 +207,7 @@ for(const [kind, title, blurb] of KINDS){
 
 const outDir = path.join(ROOT,'..','verification');
 fs.mkdirSync(outDir,{recursive:true});
-fs.writeFileSync(path.join(outDir,'classification-review.md'), md);
+writeIfChanged(path.join(outDir,'classification-review.md'), md, {linePatterns:VOLATILE_LINES, fsImpl:fs});
 
 const esc = v => `"${String(v??'').replace(/"/g,'""')}"`;
 const csv = ['clause,document,title,severity,insertion,reach_pct,recorded,evidence_band,tension,evidence,decision,note']
@@ -216,7 +217,7 @@ const csv = ['clause,document,title,severity,insertion,reach_pct,recorded,eviden
             c.assertsLaw?'authority':'drafting', tn.band, tn.kind,
             [...s.authority,...s.drafting].join('; '), '', ''].map(esc).join(',');
   })).join('\n');
-fs.writeFileSync(path.join(outDir,'classification-review.csv'), csv+'\n');
+writeIfChanged(path.join(outDir,'classification-review.csv'), csv+'\n', {linePatterns:VOLATILE_LINES, fsImpl:fs});
 
 console.log(`${C.clauses.length} clauses, all classified heuristically and none reviewed`);
 for(const [kind,title] of KINDS)

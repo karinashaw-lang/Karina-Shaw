@@ -102,5 +102,33 @@ console.log('writeIfChanged');
   t('an injected fs is required rather than assumed', threw);
 }
 
+console.log('every generator that writes a committed artifact goes through this');
+{
+  /* The four generators fixed first were found by running the audit and watching the tree.
+     That works once. This finds the next one before it is committed: any tool writing into
+     verification/ or the source registry must route through writeIfChanged, or the audit
+     stops being idempotent again and nobody notices until a stop hook complains. */
+  const fs = await import('node:fs');
+  const skip = new Set([
+    'artifact.mjs',        // the helper itself
+    'build.mjs',           // writes the prototype, which is compiled output, not a measurement
+    'textstore.mjs',       // content-addressed store: every write is a new file by construction
+    'ingest.mjs',          // writes only through textstore
+    'corpus.mjs', 'evaluator.mjs', 'review.mjs', 'sources.mjs',
+    'propagation.mjs', 'classification.mjs', 'docdefects.mjs', 'lint.mjs',
+    'pin.mjs', 'provenance.mjs', 'queue.mjs', 'cost.mjs',
+  ]);
+  const offenders = [];
+  for(const f of fs.readdirSync('templates/tools').filter(n=>n.endsWith('.mjs') && !n.endsWith('.test.mjs'))){
+    if(skip.has(f)) continue;
+    const src = fs.readFileSync('templates/tools/'+f,'utf8');
+    const code = src.replace(/\/\*[\s\S]*?\*\//g,'').replace(/^\s*\/\/.*$/gm,'');
+    const writesArtifact = /writeFileSync\([^)]*(?:outDir|verification|REG|out\b)/.test(code);
+    if(writesArtifact && !/writeIfChanged/.test(code)) offenders.push(f);
+  }
+  t(`no generator writes a committed artifact directly${offenders.length?' — '+offenders.join(', '):''}`,
+     offenders.length===0);
+}
+
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail?1:0);

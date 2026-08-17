@@ -30,6 +30,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {ROOT} from './corpus.mjs';
 import {scoreFinding, defectAnalysis} from './findings.mjs';
+import {writeIfChanged, VOLATILE_FIELDS, VOLATILE_LINES} from './artifact.mjs';
 
 /* Demonstrably wrong or incomplete — the predicate defectAnalysis uses. */
 export const isDefective = f => (f.gaps||[]).length>0 ||
@@ -187,7 +188,7 @@ about what it says. It is wrong about what it leaves out.
 `;
 
   fs.mkdirSync(path.join(V,'holdout'),{recursive:true});
-  fs.writeFileSync(path.join(V,'holdout','result.md'), md);
+  writeIfChanged(path.join(V,'holdout','result.md'), md, {linePatterns:VOLATILE_LINES, fsImpl:fs});
 
   console.log(`pre-registered: ${s.n} clause(s), ${s.predDefective} predicted defective, ${s.predClean} predicted clean`);
   console.log(`  precision on flagged clauses : ${s.precision===null?'—':(100*s.precision).toFixed(0)+'%'}`);

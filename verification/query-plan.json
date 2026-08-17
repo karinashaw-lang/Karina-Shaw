@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-08-15T04:30:56.435Z",
+  "generatedAt": "2026-08-17T19:25:04.559Z",
   "plans": [
     {
       "id": "can_harassment_training",
       "title": "Harassment Prevention Training",
-      "verification": "search-corroborated",
+      "verification": "multi-cited",
       "citations": [
         "Cal. Gov. Code §12950.1",
         "California Civil Rights Department — Sexual harassment prevention training FAQ for employers",
@@ -172,6 +172,272 @@
           "query": "California pay equity and records three (3) years",
           "checking": "three (3) years",
           "expect": "3"
+        }
+      ]
+    },
+    {
+      "id": "emp_finalpay",
+      "title": "Final Pay Timing",
+      "verification": "single-source",
+      "citations": [
+        "Cal. Lab. Code §§201-203"
+      ],
+      "assertions": [
+        {
+          "kind": "duration-hours",
+          "text": "seventy-two (72) hours",
+          "value": "72"
+        },
+        {
+          "kind": "deadline-phrase",
+          "text": "at least seventy-two (72) hours’ notice must be paid on their last day",
+          "value": "seventy-two (72) hours’ notice must be paid on their last day"
+        },
+        {
+          "kind": "deadline-phrase",
+          "text": "within seventy-two (72) hours",
+          "value": "seventy-two (72) hours"
+        }
+      ],
+      "queries": [
+        {
+          "angle": "citation",
+          "query": "Cal. Lab. Code §§201-203 final pay timing"
+        },
+        {
+          "angle": "subject",
+          "query": "California final pay timing requirements 2026"
+        },
+        {
+          "angle": "value",
+          "query": "California final pay timing seventy-two (72) hours",
+          "checking": "seventy-two (72) hours",
+          "expect": "72"
+        }
+      ]
+    },
+    {
+      "id": "hb_meal_rest",
+      "title": "Meal and Rest Periods",
+      "verification": "multi-cited",
+      "citations": [
+        "Cal. Lab. Code §512",
+        "IWC Wage Order (industry-specific)"
+      ],
+      "assertions": [
+        {
+          "kind": "duration-hours",
+          "text": "ten (10) hours",
+          "value": "10"
+        },
+        {
+          "kind": "duration-hours",
+          "text": "four (4) hours",
+          "value": "4"
+        },
+        {
+          "kind": "deadline-phrase",
+          "text": "no later than the end of the fifth hour of work",
+          "value": "the end of the fifth hour of work"
+        }
+      ],
+      "queries": [
+        {
+          "angle": "citation",
+          "query": "Cal. Lab. Code §512 meal and rest periods"
+        },
+        {
+          "angle": "subject",
+          "query": "California meal and rest periods requirements 2026"
+        },
+        {
+          "angle": "value",
+          "query": "California meal and rest periods ten (10) hours",
+          "checking": "ten (10) hours",
+          "expect": "10"
+        },
+        {
+          "angle": "value",
+          "query": "California meal and rest periods four (4) hours",
+          "checking": "four (4) hours",
+          "expect": "4"
+        }
+      ]
+    },
+    {
+      "id": "can_wtpa",
+      "title": "Wage Theft Prevention Act Notice",
+      "verification": "multi-cited",
+      "citations": [
+        "Cal. Lab. Code §2810.5",
+        "Ogletree Deakins — California publishes new wage theft notice",
+        "CalChamber HRWatchdog — Updated wage theft notice released",
+        "California Workplace Law Blog — Labor Commissioner publishes updated wage theft notice"
+      ],
+      "assertions": [
+        {
+          "kind": "duration-days",
+          "text": "within seven (7) days",
+          "value": "7"
+        },
+        {
+          "kind": "deadline-phrase",
+          "text": "within seven (7) days of any change not shown on the next wage statement",
+          "value": "seven (7) days of any change not shown on the next wage statement"
+        }
+      ],
+      "queries": [
+        {
+          "angle": "citation",
+          "query": "Cal. Lab. Code §2810.5 wage theft prevention act notice"
+        },
+        {
+          "angle": "subject",
+          "query": "California wage theft prevention act notice requirements 2026"
+        },
+        {
+          "angle": "value",
+          "query": "California wage theft prevention act notice within seven (7) days",
+          "checking": "within seven (7) days",
+          "expect": "7"
+        }
+      ]
+    },
+    {
+      "id": "can_payscale_posting",
+      "title": "Pay Scale in Job Postings",
+      "verification": "single-source",
+      "citations": [
+        "Cal. Lab. Code §432.3(c)"
+      ],
+      "assertions": [
+        {
+          "kind": "duration-years",
+          "text": "three (3) years",
+          "value": "3"
+        },
+        {
+          "kind": "deadline-phrase",
+          "text": "by the Labor Commissioner",
+          "value": "Labor Commissioner"
+        }
+      ],
+      "queries": [
+        {
+          "angle": "citation",
+          "query": "Cal. Lab. Code §432.3(c) pay scale in job postings"
+        },
+        {
+          "angle": "subject",
+          "query": "California pay scale in job postings requirements 2026"
+        },
+        {
+          "angle": "value",
+          "query": "California pay scale in job postings three (3) years",
+          "checking": "three (3) years",
+          "expect": "3"
+        }
+      ]
+    },
+    {
+      "id": "can_new_hire_report",
+      "title": "New Hire Reporting",
+      "verification": "single-source",
+      "citations": [
+        "Cal. Unemp. Ins. Code §1088.5"
+      ],
+      "assertions": [
+        {
+          "kind": "duration-days",
+          "text": "within twenty (20) days",
+          "value": "20"
+        },
+        {
+          "kind": "deadline-phrase",
+          "text": "within twenty (20) days of their first day of work",
+          "value": "twenty (20) days of their first day of work"
+        }
+      ],
+      "queries": [
+        {
+          "angle": "citation",
+          "query": "Cal. Unemp. Ins. Code §1088.5 new hire reporting"
+        },
+        {
+          "angle": "subject",
+          "query": "California new hire reporting requirements 2026"
+        },
+        {
+          "angle": "value",
+          "query": "California new hire reporting within twenty (20) days",
+          "checking": "within twenty (20) days",
+          "expect": "20"
+        }
+      ]
+    },
+    {
+      "id": "can_paydata",
+      "title": "Annual Pay Data Reporting",
+      "verification": "single-source",
+      "citations": [
+        "Cal. Gov. Code §12999"
+      ],
+      "assertions": [
+        {
+          "kind": "deadline-phrase",
+          "text": "within each job category",
+          "value": "each job category"
+        },
+        {
+          "kind": "deadline-phrase",
+          "text": "within scope",
+          "value": "scope"
+        }
+      ],
+      "queries": [
+        {
+          "angle": "citation",
+          "query": "Cal. Gov. Code §12999 annual pay data reporting"
+        },
+        {
+          "angle": "subject",
+          "query": "California annual pay data reporting requirements 2026"
+        }
+      ]
+    },
+    {
+      "id": "hb_ca_cfra",
+      "title": "California Family Rights Act Leave",
+      "verification": "single-source",
+      "citations": [
+        "Cal. Gov. Code §12945.2"
+      ],
+      "assertions": [
+        {
+          "kind": "duration-months",
+          "text": "twelve (12) months",
+          "value": "12"
+        },
+        {
+          "kind": "deadline-phrase",
+          "text": "at least twelve (12) months of service and one thousand two hundred fifty (1",
+          "value": "twelve (12) months of service and one thousand two hundred fifty (1"
+        }
+      ],
+      "queries": [
+        {
+          "angle": "citation",
+          "query": "Cal. Gov. Code §12945.2 family rights act leave"
+        },
+        {
+          "angle": "subject",
+          "query": "California family rights act leave requirements 2026"
+        },
+        {
+          "angle": "value",
+          "query": "California family rights act leave twelve (12) months",
+          "checking": "twelve (12) months",
+          "expect": "12"
         }
       ]
     }

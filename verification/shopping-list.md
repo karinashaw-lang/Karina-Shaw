@@ -20,26 +20,29 @@ A screenshot or a PDF is fine too, but plain text is what gets hashed cleanly.
 
 | # | Provision | Clauses | Known defects | Flags | Where |
 |---:|---|---:|---:|---:|---|
-| 1 | `Cal. Lab. Code §925` | 2 | 3 | 3 | leginfo.legislature.ca.gov  (Codes → the code named in the citation → the section number) |
-| 2 | `IWC Wage Order (industry-specific)` | 5 | 0 | 4 | leginfo.legislature.ca.gov  (Codes → the code named in the citation → the section number) |
-| 3 | `Cal. Lab. Code §§1400–1408` | 1 | 3 | 3 | leginfo.legislature.ca.gov  (Codes → the code named in the citation → the section number) |
-| 4 | `NY LLC Law §206` | 2 | 2 | 2 | that state's legislature site |
-| 5 | `Cal. Lab. Code §2870` | 1 | 3 | 1 | leginfo.legislature.ca.gov  (Codes → the code named in the citation → the section number) |
-| 6 | `Cal. Bus. & Prof. Code §18100 (SB 988)` | 1 | 2 | 2 | leginfo.legislature.ca.gov  (Codes → the code named in the citation → the section number) |
-| 7 | `Treas. Reg. §1.83-2(c)` | 2 | 1 | 2 | ecfr.gov (26 CFR) or irs.gov |
-| 8 | `Cal. Lab. Code §§1030–1034` | 2 | 0 | 2 | leginfo.legislature.ca.gov  (Codes → the code named in the citation → the section number) |
-| 9 | `Cal. Lab. Code §2802` | 3 | 0 | 1 | leginfo.legislature.ca.gov  (Codes → the code named in the citation → the section number) |
-| 10 | `Cal. Lab. Code §512` | 2 | 0 | 2 | leginfo.legislature.ca.gov  (Codes → the code named in the citation → the section number) |
-| 11 | `Cal. Gov. Code §12950.1` | 1 | 1 | 1 | leginfo.legislature.ca.gov  (Codes → the code named in the citation → the section number) |
-| 12 | `Cal. Gov. Code §12952` | 1 | 0 | 4 | leginfo.legislature.ca.gov  (Codes → the code named in the citation → the section number) |
+| 1 | `Cal. Lab. Code §925` | 2 | 5 | 3 | leginfo.legislature.ca.gov  (Codes → the code named in the citation → the section number) |
+| 2 | `Cal. Health & Safety Code §25249.6` | 2 | 6 | 1 | leginfo.legislature.ca.gov  (Codes → the code named in the citation → the section number) |
+| 3 | `Cal. Lab. Code §§1030–1034` | 2 | 4 | 2 | leginfo.legislature.ca.gov  (Codes → the code named in the citation → the section number) |
+| 4 | `Cal. Gov. Code §12952` | 1 | 4 | 4 | leginfo.legislature.ca.gov  (Codes → the code named in the citation → the section number) |
+| 5 | `IWC Wage Order (industry-specific)` | 5 | 0 | 4 | leginfo.legislature.ca.gov  (Codes → the code named in the citation → the section number) |
+| 6 | `NY LLC Law §206` | 2 | 3 | 2 | that state's legislature site |
+| 7 | `Cal. Corp. Code §17702.09` | 1 | 4 | 1 | leginfo.legislature.ca.gov  (Codes → the code named in the citation → the section number) |
+| 8 | `Cal. Corp. Code §1502` | 1 | 4 | 1 | leginfo.legislature.ca.gov  (Codes → the code named in the citation → the section number) |
+| 9 | `Cal. Civ. Code §1542` | 2 | 4 | 1 | leginfo.legislature.ca.gov  (Codes → the code named in the citation → the section number) |
+| 10 | `Cal. Lab. Code §§1400–1408` | 1 | 3 | 3 | leginfo.legislature.ca.gov  (Codes → the code named in the citation → the section number) |
+| 11 | `8 C.C.R. §3395` | 1 | 3 | 1 | the issuing body |
+| 12 | `Cal. Corp. Code §§1502, 17702.09` | 1 | 3 | 1 | leginfo.legislature.ca.gov  (Codes → the code named in the citation → the section number) |
+| 13 | `Cal. Lab. Code §2870` | 1 | 3 | 1 | leginfo.legislature.ca.gov  (Codes → the code named in the citation → the section number) |
+| 14 | `Cal. Lab. Code §§201-203` | 1 | 2 | 3 | leginfo.legislature.ca.gov  (Codes → the code named in the citation → the section number) |
+| 15 | `Cal. Civ. Code §1646.5` | 1 | 2 | 2 | leginfo.legislature.ca.gov  (Codes → the code named in the citation → the section number) |
 
 ## What the first 5 unlock
 
 - **Cal. Lab. Code §925** — 2 clause(s): msa_ca_925, ea_ca_925
+- **Cal. Health & Safety Code §25249.6** — 2 clause(s): msa_ca_prop65, cal_ca_prop65_ops
+- **Cal. Lab. Code §§1030–1034** — 2 clause(s): can_lactation, hb_ca_lactation_break
+- **Cal. Gov. Code §12952** — 1 clause(s): can_fair_chance
 - **IWC Wage Order (industry-specific)** — 5 clause(s): ea_ca_exempt, hb_ca_oncall_travel, emp_meal, emp_rest, hb_meal_rest
-- **Cal. Lab. Code §§1400–1408** — 1 clause(s): can_calwarn
-- **NY LLC Law §206** — 2 clause(s): charter_ny_publication, cal_ny
-- **Cal. Lab. Code §2870** — 1 clause(s): ipa_state_carveout
 
 ## What this does not change
 

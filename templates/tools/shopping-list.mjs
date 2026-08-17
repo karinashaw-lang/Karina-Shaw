@@ -9,6 +9,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {loadCorpus, ROOT} from './corpus.mjs';
 import {lintClause} from './lint.mjs';
+import {writeIfChanged, VOLATILE_FIELDS, VOLATILE_LINES} from './artifact.mjs';
 
 const TOP = process.argv.includes('--top') ? +process.argv[process.argv.indexOf('--top')+1] : 15;
 const C = loadCorpus();
@@ -78,7 +79,7 @@ const lines = [
 ''];
 
 const out = path.join(ROOT,'..','verification','shopping-list.md');
-fs.writeFileSync(out, lines.join('\n'));
+writeIfChanged(out, lines.join('\n'), {linePatterns:VOLATILE_LINES, fsImpl:fs});
 console.log(`${rows.length} distinct provisions cited by ${C.clauses.filter(c=>c.assertsLaw).length} authority clauses`);
 console.log(`\ntop ${TOP}:`);
 rows.slice(0,TOP).forEach((r,i)=>console.log(`  ${String(i+1).padStart(2)}. ${r.citation.padEnd(42)} ${String(r.n).padStart(2)} clause(s)  ${r.defects?`${r.defects} known defect(s)`:''}`));

@@ -23,6 +23,7 @@ import path from 'node:path';
 import {loadCorpus, ROOT} from './corpus.mjs';
 import {fireRules, clauseEligible, docIncluded, allConfigs} from './evaluator.mjs';
 import {gateFor, lawTalk} from './review.mjs';
+import {writeIfChanged, VOLATILE_FIELDS, VOLATILE_LINES} from './artifact.mjs';
 
 const C = loadCorpus();
 const TAX = C.taxonomy;
@@ -167,7 +168,7 @@ for(const doc of docOrder){
 
 const outDir = path.join(ROOT,'..','verification');
 fs.mkdirSync(outDir,{recursive:true});
-fs.writeFileSync(path.join(outDir,'drafting-review.md'), md);
+writeIfChanged(path.join(outDir,'drafting-review.md'), md, {linePatterns:VOLATILE_LINES, fsImpl:fs});
 
 /* CSV for tracking, one row per clause */
 const esc = v => `"${String(v??'').replace(/"/g,'""')}"`;
@@ -179,7 +180,7 @@ const csv = ['clause,document,group,title,severity,insertion,reach_pct,applies,l
     c.draftingReview?.role || '', c.draftingReview?.date || '', c.draftingReview?.scope || ''
   ].map(esc).join(','))))
   .join('\n');
-fs.writeFileSync(path.join(outDir,'drafting-review.csv'), csv+'\n');
+writeIfChanged(path.join(outDir,'drafting-review.csv'), csv+'\n', {linePatterns:VOLATILE_LINES, fsImpl:fs});
 
 /* ---- what the run found ---- */
 const passing = drafting.filter(c=>gateFor(c,TAX).ok).length;
