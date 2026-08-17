@@ -878,6 +878,23 @@ const vrank = o => (VLEVELS[o.verification]||{rank:0}).rank;
    ladder alone. Clauses are graded on the ladder their track puts them on — gateFor()
    from templates/tools/review.mjs, inlined above — because a negotiated term cites
    nothing and grading it on citations withholds it for a reason that does not apply. */
+/* Every number in the prose below is computed here from the corpus that ships in this
+   file. The paragraph used to say "3 clauses reached search-corroborated" long after the
+   true figure had become 0 — a hand-maintained claim about data, gone stale, in the one
+   document that describes this project's standards. That is the same defect the corpus is
+   full of, so it is fixed the same way: derive it, do not retype it. selfaudit.test.mjs
+   fails the build if a hard-coded statistic reappears here. */
+const STATS = (() => {
+  const total = CORPUS.clauses.length;
+  const tally = CORPUS.clauses.reduce((m,c)=>(m[c.verification]=(m[c.verification]||0)+1, m), {});
+  return {
+    total,
+    count: lvl => tally[lvl] || 0,
+    pct: lvl => Math.round(100*(tally[lvl]||0)/total) + '%',
+    get usable(){ return CORPUS.clauses.filter(c => gateFor(c, TAX).ok).length; }
+  };
+})();
+
 const meetsGate  = o => vrank(o) >= GATE_RANK;
 const clauseGate = c => gateFor(c, TAX);
 const meetsClauseGate = c => clauseGate(c).ok;
@@ -1715,9 +1732,10 @@ $('#disc').innerHTML=`<b>What this is.</b> A working implementation of the deter
   were written for this prototype and are not legal advice, not measured data, and not fit for use. Rather than say that in
   a footer and draft the documents anyway, the corpus carries a <span class="mono">verification</span> level per clause and
   the engine refuses to draft anything below the release gate. At the current gate
-  (<span class="mono">${CORPUS.taxonomy.releaseGate.minimum}</span>) that means <b>0 of ${CORPUS.meta.clauses} clauses are
-  usable and every document comes out empty</b> — 69% of the corpus carries no citation at all, 25% carries a single
-  self-asserted citation, and 3 clauses reached search-corroborated. Risks and benchmarks are gated on the same basis.
+  (<span class="mono">${CORPUS.taxonomy.releaseGate.minimum}</span>) that means <b>${STATS.usable} of ${CORPUS.meta.clauses} clauses are
+  usable${STATS.usable ? '' : ' and every document comes out empty'}</b> — ${STATS.pct('unsourced')} of the corpus carries no citation at all,
+  ${STATS.pct('single-source')} carries a single self-asserted citation, and ${STATS.count('search-corroborated')} clause(s) reached
+  search-corroborated. Risks and benchmarks are gated on the same basis.
   The gate cannot be self-certified: <span class="mono">validate.mjs</span> rejects a corroboration claim without two
   sources on distinct hosts with recorded check dates, which was tested by trying to fake it three ways.
   <br><br>

@@ -67,6 +67,29 @@ Two things unblock it, and they are independent:
 
 Neither reaches `primary-verified`, which requires a named human reviewer by design.
 
+## The prototype was making a stale claim about itself
+
+Checking what the product actually does under the new standard turned up a defect in the
+artifact rather than the corpus. The prototype's own prose said **"3 clauses reached
+search-corroborated"**; the true figure is **0**, and had been for some time. A
+hand-maintained claim about data, gone stale, sitting in the one document that describes this
+project's standards — the identical failure the corpus is full of, committed by the thing
+that reports it.
+
+Correcting the number would have been the wrong fix. The numbers are now **derived from the
+corpus the page ships** — the usable count, the gate name, the clause total, and each
+verification share are computed at render time, so they cannot disagree with the data.
+`selfaudit.test.mjs` fails the build if a typed statistic reappears in the copy.
+
+That test needed the same care as the checks it enforces: its first version fired on the
+comment explaining the bug, because the comment necessarily quotes the stale claim. It now
+strips comments before scanning, and asserts that distinction explicitly — a check that fires
+on its own documentation teaches people to delete the documentation.
+
+What the product does under the standard, verified live in the page: `0 of 360 clauses are
+usable and every document comes out empty`. That is the correct behaviour. Nothing is checked
+against the law, so nothing is used.
+
 ## The standard: two primary sources, or it is not verified
 
 **Measured, not assumed: the standard cannot be met in this environment.** Every publisher
