@@ -90,6 +90,13 @@ export const HOSTS = {
   'casetext.com':'mirror',
   'legiscan.com':'mirror',
   'law.onecle.com':'mirror',
+  /* CourtListener (Free Law Project) collects opinions from the courts themselves and is
+     the most faithful republisher in this list. It is still a republisher: apply the test —
+     if CourtListener and the issuing court disagreed about the text of an opinion, the
+     court's version is the law. Mirror. Reachable from here when the publishers are not,
+     which makes it useful and does not make it primary. */
+  'courtlistener.com':'mirror',
+  'www.courtlistener.com':'mirror',
   'library.municode.com':'mirror',
   'codelibrary.amlegal.com':'mirror',
 };

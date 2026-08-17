@@ -1,7 +1,7 @@
 {
   "clauseId": "msa_ca_release",
   "checkedAt": "2026-08-15",
-  "method": "web search only — no source document was opened",
+  "method": "web search, plus the full text of Winet v. Price read on CourtListener. CourtListener is a faithful republisher of the court’s opinion, not the court — a mirror under this repo’s own test — so this finding still does not meet the two-primary standard. It is better evidenced than it was, and not verified.",
   "heldOut": true,
   "control": "the detectors predicted this clause CLEAN — it was checked to test whether a clean prediction screens out defects",
   "queries": [
@@ -10,17 +10,18 @@
   "assertions": [
     {
       "text": "a release must expressly waive §1542, quoting it in full",
-      "status": "contradicted",
-      "note": "sources are explicit that section 1542 does not require a release to quote the statutory language — quoting it verbatim is best practice, not a condition of validity. The clause states a drafting convention as a rule of law."
+      "status": "partial",
+      "note": "The clause states a drafting convention as a rule of law. Section 1542 does not by its terms require a release to quote the statute — that rests on secondary sources here, not on any primary text this repo has opened. What the case law does establish is that what matters is conscious understanding of what is being given up, not any particular form of words."
     },
     {
       "text": "otherwise the release will not extend to unknown claims",
       "status": "partial",
-      "note": "the consequence is not automatic either way. Winet v. Price holds that a mere recital of waiver is NOT controlling, and that releasing unknown claims needs evidence of intent beyond the words — so quoting the statute is neither necessary nor by itself sufficient. The clause states a binary that the case law does not."
+      "note": "The stated consequence is not automatic. Winet enforced an express §1542 waiver against a counsel-advised commercial party; Casey’s protection against inadvertent waiver by mere recital is strongest in personal-injury settings with unrepresented claimants."
     }
   ],
   "gaps": [
-    "Section 1542 was amended effective 1 January 2019 (adding \"or releasing party\", changing \"must\" to \"would\"). A clause that instructs the drafter to quote the section in full without saying which version is being quoted invites a stale quotation, which is the failure mode the instruction was meant to prevent."
+    "The clause gives no signal that the outcome turns on the releasing party’s conscious understanding and on whether they were advised — the facts Winet actually rested on. A clause that says \"quote it or unknown claims survive\" tells the drafter to get the words right and nothing about the circumstances that decide the case.",
+    "Section 1542 was amended effective 1 January 2019. A clause instructing the drafter to quote the section without saying which version invites a stale quotation, which is the failure the instruction exists to prevent."
   ],
   "defectTypes": [
     "overstated-consequence",
@@ -28,16 +29,18 @@
   ],
   "sources": [
     {
-      "title": "Cooley — California legislature amends required Civil Code section 1542 language",
-      "url": "https://www.cooley.com/news/insight/2019/2019-02-05-california-legislature-amends-required-ccp-1542-language"
+      "title": "CourtListener — Winet v. Price (1992) 4 Cal.App.4th 1159, full opinion text",
+      "url": "https://www.courtlistener.com/opinion/2299056/winet-v-price/",
+      "checked": "2026-08-17"
     },
     {
-      "title": "Justia — Winet v. Price (1992) 4 Cal.App.4th 1159",
-      "url": "https://law.justia.com/cases/california/court-of-appeal/4th/4/1159.html"
+      "title": "Cooley — California legislature amends required Civil Code section 1542 language",
+      "url": "https://www.cooley.com/news/insight/2019/2019-02-05-california-legislature-amends-required-ccp-1542-language"
     },
     {
       "title": "Stimmel Law — California releases and Civil Code section 1542",
       "url": "https://stimmel-law.com/articles/california-releases-and-civil-code-section-1542/"
     }
-  ]
+  ],
+  "correction": "CORRECTION 2026-08-17. The earlier note on this finding said Winet v. Price holds that a mere recital of waiver is not controlling and that releasing unknown claims needs evidence of intent beyond the words. Reading the opinion itself shows that is backwards. The \"mere recital\" proposition belongs to Casey v. Proctor (1963) 59 Cal.2d 97, which Winet QUOTES and then DISTINGUISHES — Casey concerned a personal-injury form release signed days after an accident by an unrepresented claimant with no §1542 waiver. Winet involved a sophisticated businessman, advised by his own counsel about §1542 specifically, in an arm’s-length commercial settlement; the court independently construed the release, refused his uncommunicated subjective intent as parol evidence, and ENFORCED the waiver. Casey itself says such waivers are binding \"upon a showing the parties consciously understood and agreed such was the effect of their release\". The original note came from law-firm summaries that quoted Casey’s language under Winet’s name; no primary text had been opened."
 }

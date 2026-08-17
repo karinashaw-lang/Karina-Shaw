@@ -67,6 +67,37 @@ Two things unblock it, and they are independent:
 
 Neither reaches `primary-verified`, which requires a named human reviewer by design.
 
+## Reading one primary text corrected one of my own findings
+
+CourtListener came back online. It is a republisher, not a court — a mirror under this
+repo's own test — so it cannot satisfy the standard. It can still be *read*, and the corpus
+cites exactly one case among 118 distinct citations, so the question was whether reading it
+changed anything. It did, and not in the direction expected.
+
+The finding on `msa_ca_release` and `ea_ca_release` said Winet v. Price holds that a mere
+recital of waiver is not controlling, and that releasing unknown claims needs evidence of
+intent beyond the words. **The opinion says close to the opposite.** That proposition belongs
+to *Casey v. Proctor* (1963), which Winet quotes and then **distinguishes**: Casey was a
+personal-injury form release signed days after an accident by an unrepresented claimant with
+no §1542 waiver at all. Winet was a sophisticated businessman, advised by his own counsel
+about §1542 specifically, in an arm's-length commercial settlement — and the court refused
+his uncommunicated subjective intent as parol evidence and **enforced** the waiver. Casey
+itself says such waivers bind "upon a showing the parties consciously understood and agreed
+such was the effect of their release."
+
+The original note came from law-firm summaries quoting Casey's language under Winet's name.
+No primary text had been opened.
+
+The clauses are still defective — they state a drafting convention as a rule of law, and the
+consequence they assert is not automatic — but the defect is now described correctly, and
+the finding records what actually decides these cases: conscious understanding and advice,
+not any particular form of words.
+
+**This is the argument for the two-primary standard, made by the corpus against itself.** A
+finding assembled from four secondary sources, all agreeing with each other, was wrong about
+what the authority held. Secondary sources agreeing is not corroboration when they are all
+paraphrasing the same paraphrase.
+
 ## The prototype was making a stale claim about itself
 
 Checking what the product actually does under the new standard turned up a defect in the

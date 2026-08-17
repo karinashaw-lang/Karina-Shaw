@@ -185,12 +185,13 @@
    "assertsLaw": true,
    "classifiedBy": "heuristic-unreviewed",
    "defects": [
-    "\"a release must expressly waive §1542, quoting it in full\" — sources are explicit that section 1542 does not require a release to quote the statutory language — quoting it verbatim is best practice, not a condition of validity. The clause states a drafting convention as a rule of law.",
-    "\"otherwise the release will not extend to unknown claims\" — the consequence is not automatic either way. Winet v. Price holds that a mere recital of waiver is NOT controlling, and that releasing unknown claims needs evidence of intent beyond the words — so quoting the statute is neither necessary nor by itself sufficient. The clause states a binary that the case law does not.",
-    "Section 1542 was amended effective 1 January 2019 (adding \"or releasing party\", changing \"must\" to \"would\"). A clause that instructs the drafter to quote the section in full without saying which version is being quoted invites a stale quotation, which is the failure mode the instruction was meant to prevent."
+    "\"a release must expressly waive §1542, quoting it in full\" — The clause states a drafting convention as a rule of law. Section 1542 does not by its terms require a release to quote the statute — that rests on secondary sources here, not on any primary text this repo has opened. What the case law does establish is that what matters is conscious understanding of what is being given up, not any particular form of words.",
+    "\"otherwise the release will not extend to unknown claims\" — The stated consequence is not automatic. Winet enforced an express §1542 waiver against a counsel-advised commercial party; Casey’s protection against inadvertent waiver by mere recital is strongest in personal-injury settings with unrepresented claimants.",
+    "The clause gives no signal that the outcome turns on the releasing party’s conscious understanding and on whether they were advised — the facts Winet actually rested on. A clause that says \"quote it or unknown claims survive\" tells the drafter to get the words right and nothing about the circumstances that decide the case.",
+    "Section 1542 was amended effective 1 January 2019. A clause instructing the drafter to quote the section without saying which version invites a stale quotation, which is the failure the instruction exists to prevent."
    ],
-   "lastChecked": "2026-08-15",
-   "verificationNote": "Checked by web search only against 3 independent sources; no source document was opened. This clause was a control: the defect detectors predicted it clean and it is not. Defect types: overstated-consequence, omitted-qualifier."
+   "lastChecked": "2026-08-17",
+   "verificationNote": "Re-checked against the full opinion text of Winet v. Price on CourtListener, which corrected an earlier mischaracterisation of the holding taken from law-firm summaries. CourtListener is a republisher, not the court, so this remains below the two-primary standard."
   },
   {
    "id": "msa_ca_prop65",

@@ -10,7 +10,7 @@ with a point estimate near 347.
 
 The sample spans California employment, California entity, New York entity, and federal tax clauses, so the
 pattern is not specific to one jurisdiction or subject. Of 114 individual assertions checked,
-6 were contradicted outright and 8 could not be supported by any source found.
+4 were contradicted outright and 8 could not be supported by any source found.
 
 | Defect type | Count | What it means |
 |---|---:|---|
@@ -91,28 +91,28 @@ whether it is in the jurisdiction being led with, whether it asserts a specific 
 | 1 | `can_fair_chance` — Fair Chance Act Procedure | ca-notices | critical | `single-source` | Cal. Gov. Code §12952 |
 | 2 | `cal_soi` — California Statement of Information | compliance-calendar | critical | `multi-cited` | Cal. Corp. Code §17702.09 | Cal. Corp. Code §1502 |
 | 3 | `msa_ca_prop65` — Proposition 65 Warnings | msa | recommended | `single-source` | Cal. Health & Safety Code §25249.6 |
-| 4 | `can_calwarn` — Cal-WARN Notice | ca-notices | critical | `single-source` | Cal. Lab. Code §§1400–1408 |
-| 5 | `ea_ca_925` — California Forum and Choice of Law | employment-agreement | critical | `single-source` | Cal. Lab. Code §925 |
-| 6 | `ipa_state_carveout` — Statutory Invention Carve-Out | ip-assignment | critical | `single-source` | Cal. Lab. Code §2870 |
-| 7 | `cal_ca_soi` — California Statement of Information | compliance-calendar | critical | `single-source` | Cal. Corp. Code §§1502, 17702.09 |
-| 8 | `can_heat` — Heat Illness Prevention | ca-notices | critical | `single-source` | 8 C.C.R. §3395 |
-| 9 | `can_lactation` — Lactation Accommodation Policy | ca-notices | critical | `single-source` | Cal. Lab. Code §§1030–1034 |
-| 10 | `msa_ca_release` — Section 1542 Waiver in Settlements | msa | recommended | `single-source` | Cal. Civ. Code §1542 |
-| 11 | `emp_finalpay` — Final Pay Timing | employment | critical | `single-source` | Cal. Lab. Code §§201-203 |
-| 12 | `msa_ca_925` — California Choice of Law Limits | msa | critical | `multi-cited` | Cal. Lab. Code §925 | Cal. Civ. Code §1646.5 |
-| 13 | `hb_ca_jury_voting` — Jury, Witness, and Voting Leave | handbook | critical | `single-source` | Cal. Lab. Code §§230, 14350–14353 |
-| 14 | `ic_ca_freelance` — Freelance Worker Protection Act | contractor-agreement | critical | `single-source` | Cal. Bus. & Prof. Code §18100 (SB 988) |
-| 15 | `can_edd` — EDD Employer Registration | ca-notices | critical | `single-source` | Cal. Unemp. Ins. Code §1086 |
-| 16 | `can_harassment_policy` — Written Harassment and Discrimination Policy | ca-notices | critical | `single-source` | 2 C.C.R. §11023 |
-| 17 | `msa_ca_auto_renew` — California Automatic Renewal Requirements | msa | critical | `single-source` | Cal. Bus. & Prof. Code §§17601–17606 |
-| 18 | `charter_ny_publication` — Publication Requirement | charter | critical | `single-source` | NY LLC Law §206 |
-| 19 | `emp_ca_registration` — California Employer Registration Checklist | employment | critical | `unsourced` | (none) |
-| 20 | `msa_ca_indemnity_construction` — California Anti-Indemnity Limits | msa | critical | `single-source` | Cal. Civ. Code §§2782, 2782.05 |
-| 21 | `cal_ca_prop65_ops` — Proposition 65 Review | compliance-calendar | recommended | `single-source` | Cal. Health & Safety Code §25249.6 |
-| 22 | `hb_ca_lactation_break` — Lactation Breaks | handbook | critical | `single-source` | Cal. Lab. Code §§1030–1034 |
-| 23 | `can_harassment_training` — Harassment Prevention Training | ca-notices | critical | `multi-cited` | Cal. Gov. Code §12950.1 | California Civil Rights Department — Sexual harassment prevention training FAQ for employers | FindLaw — Cal. Gov. Code §12950.1 | Traliant — California sexual harassment training requirements |
-| 24 | `can_wtpa` — Wage Theft Prevention Act Notice | ca-notices | critical | `multi-cited` | Cal. Lab. Code §2810.5 | Ogletree Deakins — California publishes new wage theft notice | CalChamber HRWatchdog — Updated wage theft notice released | California Workplace Law Blog — Labor Commissioner publishes updated wage theft notice |
-| 25 | `b83_instructions` — Filing Instructions | election-83b | critical | `single-source` | Treas. Reg. §1.83-2(c) |
+| 4 | `msa_ca_release` — Section 1542 Waiver in Settlements | msa | recommended | `single-source` | Cal. Civ. Code §1542 |
+| 5 | `can_calwarn` — Cal-WARN Notice | ca-notices | critical | `single-source` | Cal. Lab. Code §§1400–1408 |
+| 6 | `ea_ca_925` — California Forum and Choice of Law | employment-agreement | critical | `single-source` | Cal. Lab. Code §925 |
+| 7 | `ipa_state_carveout` — Statutory Invention Carve-Out | ip-assignment | critical | `single-source` | Cal. Lab. Code §2870 |
+| 8 | `cal_ca_soi` — California Statement of Information | compliance-calendar | critical | `single-source` | Cal. Corp. Code §§1502, 17702.09 |
+| 9 | `can_heat` — Heat Illness Prevention | ca-notices | critical | `single-source` | 8 C.C.R. §3395 |
+| 10 | `can_lactation` — Lactation Accommodation Policy | ca-notices | critical | `single-source` | Cal. Lab. Code §§1030–1034 |
+| 11 | `ea_ca_release` — Release and Section 1542 Waiver | employment-agreement | recommended | `single-source` | Cal. Civ. Code §1542 |
+| 12 | `emp_finalpay` — Final Pay Timing | employment | critical | `single-source` | Cal. Lab. Code §§201-203 |
+| 13 | `msa_ca_925` — California Choice of Law Limits | msa | critical | `multi-cited` | Cal. Lab. Code §925 | Cal. Civ. Code §1646.5 |
+| 14 | `hb_ca_jury_voting` — Jury, Witness, and Voting Leave | handbook | critical | `single-source` | Cal. Lab. Code §§230, 14350–14353 |
+| 15 | `ic_ca_freelance` — Freelance Worker Protection Act | contractor-agreement | critical | `single-source` | Cal. Bus. & Prof. Code §18100 (SB 988) |
+| 16 | `can_edd` — EDD Employer Registration | ca-notices | critical | `single-source` | Cal. Unemp. Ins. Code §1086 |
+| 17 | `can_harassment_policy` — Written Harassment and Discrimination Policy | ca-notices | critical | `single-source` | 2 C.C.R. §11023 |
+| 18 | `msa_ca_auto_renew` — California Automatic Renewal Requirements | msa | critical | `single-source` | Cal. Bus. & Prof. Code §§17601–17606 |
+| 19 | `charter_ny_publication` — Publication Requirement | charter | critical | `single-source` | NY LLC Law §206 |
+| 20 | `emp_ca_registration` — California Employer Registration Checklist | employment | critical | `unsourced` | (none) |
+| 21 | `msa_ca_indemnity_construction` — California Anti-Indemnity Limits | msa | critical | `single-source` | Cal. Civ. Code §§2782, 2782.05 |
+| 22 | `cal_ca_prop65_ops` — Proposition 65 Review | compliance-calendar | recommended | `single-source` | Cal. Health & Safety Code §25249.6 |
+| 23 | `hb_ca_lactation_break` — Lactation Breaks | handbook | critical | `single-source` | Cal. Lab. Code §§1030–1034 |
+| 24 | `can_harassment_training` — Harassment Prevention Training | ca-notices | critical | `multi-cited` | Cal. Gov. Code §12950.1 | California Civil Rights Department — Sexual harassment prevention training FAQ for employers | FindLaw — Cal. Gov. Code §12950.1 | Traliant — California sexual harassment training requirements |
+| 25 | `can_wtpa` — Wage Theft Prevention Act Notice | ca-notices | critical | `multi-cited` | Cal. Lab. Code §2810.5 | Ogletree Deakins — California publishes new wage theft notice | CalChamber HRWatchdog — Updated wage theft notice released | California Workplace Law Blog — Labor Commissioner publishes updated wage theft notice |
 
 ## Clauses checked and found defective
 
@@ -146,6 +146,15 @@ Checked 2026-08-15. 4 defect(s).
 - Proposition 65 does not apply to a business employing fewer than 10 employees. For a product built for small companies this is the single most consequential qualifier in the statute, and the clause states the duty with no threshold at all — so the reader most likely to be exempt is told they are covered.
 - The exemption does not travel upstream: a manufacturer or distributor selling through an exempt small vendor still owes the consumer a warning. A clause that allocates responsibility between the parties without this cannot allocate it correctly.
 - The safe-harbor warning content and methods were amended effective 30 August 2018. The clause tells the reader to allocate responsibility for "the warning’s content and placement" without pointing at the regulations that define what content is safe.
+
+### `msa_ca_release` — Section 1542 Waiver in Settlements
+
+Checked 2026-08-17. 4 defect(s).
+
+- "a release must expressly waive §1542, quoting it in full" — The clause states a drafting convention as a rule of law. Section 1542 does not by its terms require a release to quote the statute — that rests on secondary sources here, not on any primary text this repo has opened. What the case law does establish is that what matters is conscious understanding of what is being given up, not any particular form of words.
+- "otherwise the release will not extend to unknown claims" — The stated consequence is not automatic. Winet enforced an express §1542 waiver against a counsel-advised commercial party; Casey’s protection against inadvertent waiver by mere recital is strongest in personal-injury settings with unrepresented claimants.
+- The clause gives no signal that the outcome turns on the releasing party’s conscious understanding and on whether they were advised — the facts Winet actually rested on. A clause that says "quote it or unknown claims survive" tells the drafter to get the words right and nothing about the circumstances that decide the case.
+- Section 1542 was amended effective 1 January 2019. A clause instructing the drafter to quote the section without saying which version invites a stale quotation, which is the failure the instruction exists to prevent.
 
 ### `can_calwarn` — Cal-WARN Notice
 
@@ -195,13 +204,13 @@ Checked 2026-08-15. 3 defect(s).
 - Section 1033 also carries a civil penalty of $100 for each day an employee is denied break time or space. The clause gives the 226.7 hour of pay and stops, so the reader sees the smaller of the two exposures.
 - The statute prescribes what the policy must contain: the right to request accommodation, the process for requesting it, the employer’s obligation to respond, and the right to complain to the Labor Commissioner. The clause requires a policy without saying what has to be in it, so a policy can satisfy the clause and fail the statute.
 
-### `msa_ca_release` — Section 1542 Waiver in Settlements
+### `ea_ca_release` — Release and Section 1542 Waiver
 
-Checked 2026-08-15. 3 defect(s).
+Checked 2026-08-17. 3 defect(s).
 
-- "a release must expressly waive §1542, quoting it in full" — sources are explicit that section 1542 does not require a release to quote the statutory language — quoting it verbatim is best practice, not a condition of validity. The clause states a drafting convention as a rule of law.
-- "otherwise the release will not extend to unknown claims" — the consequence is not automatic either way. Winet v. Price holds that a mere recital of waiver is NOT controlling, and that releasing unknown claims needs evidence of intent beyond the words — so quoting the statute is neither necessary nor by itself sufficient. The clause states a binary that the case law does not.
-- Section 1542 was amended effective 1 January 2019 (adding "or releasing party", changing "must" to "would"). A clause that instructs the drafter to quote the section in full without saying which version is being quoted invites a stale quotation, which is the failure mode the instruction was meant to prevent.
+- "any release must expressly waive §1542, quoting it, or unknown claims survive" — The stated consequence is not automatic. Winet enforced an express §1542 waiver against a counsel-advised commercial party; Casey’s protection against inadvertent waiver by mere recital is strongest in personal-injury settings with unrepresented claimants.
+- The clause gives no signal that the outcome turns on the releasing party’s conscious understanding and on whether they were advised — the facts Winet actually rested on. A clause that says "quote it or unknown claims survive" tells the drafter to get the words right and nothing about the circumstances that decide the case.
+- Section 1542 was amended effective 1 January 2019. A clause instructing the drafter to quote the section without saying which version invites a stale quotation, which is the failure the instruction exists to prevent.
 
 ### `emp_finalpay` — Final Pay Timing
 
@@ -309,10 +318,4 @@ Checked 2026-08-15. 1 defect(s).
 Checked 2026-08-15. 1 defect(s).
 
 - The parent defect propagated: the two papers are not interchangeable — the county clerk designates one daily and one weekly. "Two designated newspapers" reads as a free choice of any two, so a founder can publish in two dailies, satisfy this clause, and fail the statute. Confirmed in charter_ny_publication and repeated verbatim in substance here.
-
-### `ea_ca_release` — Release and Section 1542 Waiver
-
-Checked 2026-08-15. 1 defect(s).
-
-- "any release must expressly waive §1542, quoting it, or unknown claims survive" — the same error confirmed in msa_ca_release: §1542 does not require a release to quote the statute, and quoting it is neither necessary nor by itself sufficient. Written in two places, wrong in both.
 
