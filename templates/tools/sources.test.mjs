@@ -6,8 +6,8 @@
    gets asserted and then quietly not enforced, which is the failure this repo exists to
    avoid repeating.
 */
-import {tierOf, isPrimary, hostOf, meetsTwoPrimary, auditSources, HOSTS, TIERS}
-  from './sources.mjs';
+import {tierOf, isPrimary, hostOf, meetsTwoPrimary, auditSources, HOSTS, TIERS,
+        claimKind, claimText, fragility} from './sources.mjs';
 
 let pass=0, fail=0;
 const t=(n,c)=>{ if(c) pass++; else {fail++; console.log('  FAIL  '+n);} };
@@ -91,6 +91,55 @@ console.log('a URL nobody opened is not a source');
        {readBy:'K. Shaw'}).ok);
 }
 
+console.log('claim kind — what survives paraphrase and what does not');
+{
+  t('a number is a factual claim', claimKind('the deadline is 15 days').kind==='factual');
+  t('a threshold is factual', claimKind('applies to employers with five or more employees').kind==='factual');
+  t('"the court held" is interpretive', claimKind('the court held that the release barred it').kind==='interpretive');
+  t('"voidable" is interpretive', claimKind('the provision is voidable at the employee\'s election').kind==='interpretive');
+  t('"unenforceable" is interpretive', claimKind('the clause is unenforceable as written').kind==='interpretive');
+  t('the marker is named', claimKind('the court held X').why.length>0);
+  t('empty text is factual', claimKind('').kind==='factual');
+
+  const f = {assertions:[{text:'a', note:'the court held X'}], gaps:['b'],
+             method:'read on CourtListener', correction:'the court held Y'};
+  t('claim text covers assertions, notes and gaps', /the court held X/.test(claimText(f)) && /b/.test(claimText(f)));
+  t('and excludes method and correction prose',
+     !/CourtListener/.test(claimText(f)) && !/held Y/.test(claimText(f)));
+}
+
+console.log('fragility — the Winet shape');
+{
+  const sec = u => ({url:u, checked:'2026-08-15'});
+  const interpretiveSecondary = {clauseId:'x',
+    assertions:[{text:'the provision is voidable', note:''}],
+    sources:[sec('https://ogletree.com/a'), sec('https://shrm.org/b'), sec('https://law.justia.com/c')]};
+  t('an interpretive claim with no primary source is unverifiable as recorded',
+     fragility(interpretiveSecondary).level==='unverifiable-as-recorded');
+  t('and the reason names the failure it generalises from',
+     /Winet/.test(fragility(interpretiveSecondary).why));
+  t('three mirrors and blogs do not rescue it',
+     fragility(interpretiveSecondary).primary===0);
+
+  const factualSecondary = {clauseId:'y',
+    assertions:[{text:'the deadline is 15 days', note:''}],
+    sources:[sec('https://ogletree.com/a')]};
+  t('a factual claim with no primary source is merely secondary-only',
+     fragility(factualSecondary).level==='secondary-only');
+  t('because a number survives retelling', /survives retelling/.test(fragility(factualSecondary).why));
+
+  const onePrimary = {clauseId:'z', assertions:[{text:'the court held X'}],
+    sources:[sec('https://leginfo.legislature.ca.gov/a'), sec('https://ogletree.com/b')]};
+  t('one primary source is partial, not the Winet shape', fragility(onePrimary).level==='partial');
+
+  const twoPrimary = {clauseId:'w', assertions:[{text:'the court held X'}],
+    sources:[sec('https://leginfo.legislature.ca.gov/a'), sec('https://edd.ca.gov/b')]};
+  t('two primary sources with a publisher meets the standard', fragility(twoPrimary).level==='meets');
+  t('an agency pair alone does not meet it',
+     fragility({clauseId:'v', assertions:[{text:'x'}],
+       sources:[sec('https://edd.ca.gov/a'), sec('https://dir.ca.gov/b')]}).level==='partial');
+}
+
 console.log('against every finding actually recorded');
 {
   const fs = await import('node:fs');
@@ -101,6 +150,12 @@ console.log('against every finding actually recorded');
   t('none of them meets the two-primary standard', a.meeting===0);
   console.log(`        ${a.checked} finding(s), ${a.meeting} meeting the standard`);
   console.log(`        sources by tier: ${JSON.stringify(a.byTier)}`);
+  console.log(`        by fragility:    ${JSON.stringify(a.byFragility)}`);
+  const winet = a.rows.filter(r=>r.fragility.level==='unverifiable-as-recorded');
+  t('the Winet shape is detected in the real findings', winet.length>0);
+  t('every finding is assigned a fragility level',
+     a.rows.every(r=>['meets','partial','secondary-only','unverifiable-as-recorded'].includes(r.fragility.level)));
+  console.log(`        Winet shape:     ${winet.map(r=>r.id).join(', ')}`);
 }
 
 console.log(`\n${pass} passed, ${fail} failed`);

@@ -98,6 +98,31 @@ finding assembled from four secondary sources, all agreeing with each other, was
 what the authority held. Secondary sources agreeing is not corroboration when they are all
 paraphrasing the same paraphrase.
 
+### Which other findings could be wrong the same way
+
+Distinct hosts cannot catch a paraphrase chain. The *shape of the claim* can, because the two
+kinds fail differently. A **factual** claim — a deadline, a threshold, a dollar figure —
+survives retelling; ten sources repeating a number are weak evidence but not systematically
+wrong in one direction. An **interpretive** claim — what a court held, whether something is
+voidable, what the test is — does not survive retelling. Each compression drifts toward the
+memorable proposition rather than the actual holding.
+
+So an interpretive claim with no primary source is not weakly evidenced. It is
+**unverifiable as recorded**: nothing in the file could tell a reader whether it drifted.
+`npm run sources` now classifies every finding:
+
+| Level | Findings |
+|---|---|
+| `partial` — some primary, fewer than two | 16 |
+| `secondary-only` — factual claim, no primary | 8 |
+| **`unverifiable-as-recorded`** — interpretive claim, no primary | **4** |
+
+The four are `ea_ca_925`, `msa_ca_925`, `ipa_state_carveout`, `msa_ca_release` — which
+includes the findings this repo has leaned on hardest: the "primarily resides and works"
+defect and the §2870/§2872 miscitation. They may well be right. The point is that **nothing
+recorded here could show it**, and the one finding in this category that has since been
+checked against a primary text turned out to be wrong.
+
 ## The prototype was making a stale claim about itself
 
 Checking what the product actually does under the new standard turned up a defect in the

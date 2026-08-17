@@ -157,13 +157,77 @@ export function meetsTwoPrimary(sources = [], {assertionKind = 'statutory', read
   };
 }
 
+/* How far is a claim from a source that could settle it?
+
+   Winet v. Price is why this exists. A finding said the case held X; the opinion held close
+   to the opposite. It survived because four secondary sources agreed with each other — and
+   they agreed because they were all paraphrasing the same paraphrase, quoting an older
+   case's language under this case's name. Distinct hosts, no independence.
+
+   Host diversity cannot catch that. What can be caught is the shape of the claim, because
+   the two kinds fail differently:
+
+     factual       "the deadline is 15 days", "the threshold is five employees". A number
+                   survives paraphrase. Ten sources repeating it are weak evidence but they
+                   are not systematically wrong in the same direction.
+
+     interpretive  "the court held", "the provision is voidable", "the test is". Meaning does
+                   NOT survive paraphrase. Each retelling compresses, and compressions of
+                   compressions drift in a consistent direction — toward the memorable
+                   proposition rather than the actual holding. This is the Winet shape.
+
+   An interpretive claim with no primary source behind it is not weakly evidenced. It is
+   unverifiable as recorded: nothing in the file could tell a reader whether it drifted. */
+export const INTERPRETIVE_MARKERS = [
+  [/\b(holds?|held)\b/i,                    'states what an authority held'],
+  [/\bthe court\b/i,                        'describes what a court did'],
+  [/\bcase law\b/i,                         'appeals to case law'],
+  [/\b(un)?enforceab\w*/i,                  'asserts enforceability'],
+  [/\bvoid(able)?\b/i,                      'asserts something is void or voidable'],
+  [/\bconstrued?\b/i,                       'describes how language is construed'],
+  [/\bthe (test|standard) is\b/i,           'states a legal test'],
+  [/\bdoctrine\b/i,                         'invokes a doctrine'],
+];
+
+export function claimKind(text){
+  const hits = INTERPRETIVE_MARKERS.filter(([re])=>re.test(String(text||''))).map(([,why])=>why);
+  return {kind: hits.length ? 'interpretive' : 'factual', why: hits};
+}
+
+/* The text a finding actually asserts: its assertions, their notes, and its gaps. The
+   `method` and `correction` fields are prose about the finding rather than claims made by
+   it, so including them would flag every corrected finding forever. */
+export function claimText(finding){
+  return [...(finding.assertions||[]).map(a=>`${a.text||''} ${a.note||''}`),
+          ...(finding.gaps||[])].join(' ');
+}
+
+export function fragility(finding){
+  const tiers = (finding.sources||[]).map(s=>tierOf(s.url));
+  const primary = tiers.filter(t=>t==='publisher'||t==='agency').length;
+  const publishers = tiers.filter(t=>t==='publisher').length;
+  const {kind, why} = claimKind(claimText(finding));
+
+  if(primary >= 2 && publishers >= 1)
+    return {level:'meets', kind, primary, publishers,
+            why:'two primary sources on distinct hosts, one of them the publisher'};
+  if(kind === 'interpretive' && primary === 0)
+    return {level:'unverifiable-as-recorded', kind, primary, publishers, markers:why,
+            why:'an interpretive claim with no primary source behind it. Meaning does not survive paraphrase, and nothing recorded here could tell a reader whether it drifted — this is the shape that failed on Winet v. Price'};
+  if(primary === 0)
+    return {level:'secondary-only', kind, primary, publishers,
+            why:'no primary source, though the claim is factual and so survives retelling better than a holding would'};
+  return {level:'partial', kind, primary, publishers,
+          why:`${primary} primary source(s); the standard is two, one of them a publisher`};
+}
+
 /* Summarise a set of findings against the standard. Used by the report and the validator so
    there is one arithmetic, not two. */
 export function auditSources(findings){
   const rows = findings.map(f => {
     const v = meetsTwoPrimary(f.sources || [], {readBy: f.readBy});
     return {id: f.clauseId, ok: v.ok, problems: v.problems,
-            primaryHosts: v.primaryHosts, counts: v.counts};
+            primaryHosts: v.primaryHosts, counts: v.counts, fragility: fragility(f)};
   });
   return {
     checked: rows.length,
@@ -172,6 +236,7 @@ export function auditSources(findings){
     byTier: rows.reduce((m,r)=>{
       for(const [k,v] of Object.entries(r.counts)) m[k]=(m[k]||0)+v;
       return m;
-    }, {})
+    }, {}),
+    byFragility: rows.reduce((m,r)=>(m[r.fragility.level]=(m[r.fragility.level]||0)+1, m), {})
   };
 }

@@ -10,7 +10,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import {loadCorpus, ROOT} from './corpus.mjs';
-import {auditSources, meetsTwoPrimary, tierOf, hostOf, TIERS} from './sources.mjs';
+import {auditSources, meetsTwoPrimary, tierOf, hostOf, fragility, TIERS} from './sources.mjs';
 import {normCitation} from './propagation.mjs';
 
 const C = loadCorpus();
@@ -39,6 +39,19 @@ for(const f of findings){
     provisions.get(k).clauses.add(f.clauseId);
   }
 }
+
+/* Precomputed so the report template stays free of nested template literals. */
+const BT = String.fromCharCode(96);
+const code = x => BT + x + BT;
+const fragilityRows = Object.entries(a.byFragility || {})
+  .sort((x,y)=>y[1]-x[1])
+  .map(([k,v]) => '| ' + code(k) + ' | ' + v + ' |')
+  .join('\n');
+const winetRows = a.rows
+  .filter(r => r.fragility.level === 'unverifiable-as-recorded')
+  .map(r => '- ' + code(r.id) + ' — ' + (r.fragility.markers ? r.fragility.markers.join('; ') : 'interpretive claim') +
+             '; ' + (r.counts.secondary||0) + ' secondary and ' + (r.counts.mirror||0) + ' mirror source(s), no primary')
+  .join('\n');
 
 let md = `# The two-primary-source standard
 
@@ -74,6 +87,37 @@ guidance, faithful republishers, and expert readings.
 ### The hosts actually used
 
 ${['agency','mirror','secondary'].map(t=>`**${TIERS[t].name}** — ${byTier(t).map(([h,v])=>`${h} (${v.n})`).join(', ') || '—'}`).join('\n\n')}
+
+## Which findings could be wrong the way Winet was
+
+Reading one primary text corrected a finding of mine. It said *Winet v. Price* held that a
+mere recital of waiver is not controlling; the opinion holds close to the opposite. It
+survived because four secondary sources agreed — and they agreed because they were all
+paraphrasing the same paraphrase, quoting an older case's language under this case's name.
+
+Distinct hosts cannot catch that. The shape of the claim can, because the two kinds fail
+differently. A **factual** claim — a deadline, a threshold, a dollar figure — survives
+retelling; ten sources repeating a number are weak evidence but not systematically wrong in
+one direction. An **interpretive** claim — what a court held, whether something is voidable,
+what the test is — does not survive retelling. Each compression drifts toward the memorable
+proposition rather than the actual holding.
+
+So an interpretive claim with no primary source is not weakly evidenced. It is
+**unverifiable as recorded**: nothing in the file could tell a reader whether it drifted.
+
+| Level | Findings |
+|---|---|
+${fragilityRows}
+
+**These carry the Winet shape:**
+
+${winetRows}
+
+That list includes findings this repo has leaned on hardest — the "primarily resides and
+works" defect in ea_ca_925 and msa_ca_925, and the §2870/§2872 miscitation in
+ipa_state_carveout. They may well be right. The point is that **nothing recorded here could
+show it**, and the one finding in this category that has since been checked against a
+primary text turned out to be wrong.
 
 ## Why there are no publisher sources
 
