@@ -7,7 +7,7 @@
    avoid repeating.
 */
 import {tierOf, isPrimary, hostOf, meetsTwoPrimary, auditSources, HOSTS, TIERS,
-        claimKind, claimText, fragility} from './sources.mjs';
+        claimKind, claimText, fragility, judicialSupport} from './sources.mjs';
 
 let pass=0, fail=0;
 const t=(n,c)=>{ if(c) pass++; else {fail++; console.log('  FAIL  '+n);} };
@@ -140,6 +140,32 @@ console.log('fragility — the Winet shape');
        sources:[sec('https://edd.ca.gov/a'), sec('https://dir.ca.gov/b')]}).level==='partial');
 }
 
+console.log('judicial quotation — independence without verification');
+{
+  const sec = u => ({url:u, checked:'2026-08-15'});
+  const q = (op) => ({case:'X v. Y', opinion:op, quote:'the statute provides that an employer shall not require an employee who primarily resides and works in California'});
+  const base = {clauseId:'j', assertions:[{text:'the provision is voidable'}], sources:[sec('https://ogletree.com/a')]};
+
+  t('two independent opinions quoting verbatim count as independent',
+     judicialSupport({...base, judicialQuotations:[q(1), q(2)]}).independent);
+  t('one opinion is not independent',
+     !judicialSupport({...base, judicialQuotations:[q(1)]}).independent);
+  t('the same opinion twice is one quotation',
+     !judicialSupport({...base, judicialQuotations:[q(1), q(1)]}).independent);
+  t('a citation with no quoted text does not count',
+     !judicialSupport({...base, judicialQuotations:[{case:'A', opinion:1}, {case:'B', opinion:2}]}).independent);
+
+  const jc = fragility({...base, judicialQuotations:[q(1), q(2)]});
+  t('an interpretive claim with two judicial quotations is no longer unverifiable',
+     jc.level==='judicially-corroborated');
+  t('and the reason says it still does not meet the standard',
+     /not the body that enacted it/.test(jc.why));
+  t('without them it stays unverifiable as recorded',
+     fragility(base).level==='unverifiable-as-recorded');
+  t('judicial quotations do not promote a claim to meeting the standard',
+     fragility({...base, judicialQuotations:[q(1), q(2)]}).level !== 'meets');
+}
+
 console.log('against every finding actually recorded');
 {
   const fs = await import('node:fs');
@@ -154,7 +180,7 @@ console.log('against every finding actually recorded');
   const winet = a.rows.filter(r=>r.fragility.level==='unverifiable-as-recorded');
   t('the Winet shape is detected in the real findings', winet.length>0);
   t('every finding is assigned a fragility level',
-     a.rows.every(r=>['meets','partial','secondary-only','unverifiable-as-recorded'].includes(r.fragility.level)));
+     a.rows.every(r=>['meets','partial','secondary-only','judicially-corroborated','unverifiable-as-recorded'].includes(r.fragility.level)));
   console.log(`        Winet shape:     ${winet.map(r=>r.id).join(', ')}`);
 }
 

@@ -112,7 +112,7 @@ templates/
 ## Commands
 
 ```
-npm run test        # verification pipeline unit tests (459 assertions)
+npm run test        # verification pipeline unit tests (467 assertions)
 npm run validate    # corpus integrity across 12,120 answer sets
 npm run check       # validate, then assert the prototype is in sync with templates/
 npm run probe       # measure which source hosts this environment can reach

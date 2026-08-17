@@ -708,6 +708,24 @@ function claimText(finding){
           ...(finding.gaps||[])].join(' ');
 }
 
+/* A court quoting a statute verbatim is not the publisher's text — if a court's quotation
+   and the legislature's enactment differed, the enactment is the law. But it is the one kind
+   of evidence that directly answers the Winet failure, because the failure was not "the
+   source was weak", it was "the sources were not independent". Two courts, in different
+   years, quoting the same operative language, are independent in the way four law-firm
+   summaries of one summary are not.
+
+   So a judicial quotation does not make a claim verified, and it does stop the claim being
+   unverifiable as recorded. Two distinct opinions are required, for the same reason two
+   primary hosts are: one court quoted twice is one quotation. */
+function judicialSupport(finding){
+  const qs = finding.judicialQuotations || [];
+  const opinions = new Set(qs.map(q => q.opinion).filter(x => x !== undefined));
+  const verbatim = qs.filter(q => q.quote && q.quote.length > 40);
+  return {count: opinions.size, verbatim: verbatim.length,
+          independent: opinions.size >= 2 && verbatim.length >= 2};
+}
+
 function fragility(finding){
   const tiers = (finding.sources||[]).map(s=>tierOf(s.url));
   const primary = tiers.filter(t=>t==='publisher'||t==='agency').length;
@@ -717,6 +735,10 @@ function fragility(finding){
   if(primary >= 2 && publishers >= 1)
     return {level:'meets', kind, primary, publishers,
             why:'two primary sources on distinct hosts, one of them the publisher'};
+  const jud = judicialSupport(finding);
+  if(kind === 'interpretive' && primary === 0 && jud.independent)
+    return {level:'judicially-corroborated', kind, primary, publishers, judicial:jud,
+            why:`${jud.count} independent judicial opinions quote the provision verbatim. That answers the Winet failure — which was a lack of independence, not weak sources — without meeting the standard, because a court quoting a statute is not the body that enacted it`};
   if(kind === 'interpretive' && primary === 0)
     return {level:'unverifiable-as-recorded', kind, primary, publishers, markers:why,
             why:'an interpretive claim with no primary source behind it. Meaning does not survive paraphrase, and nothing recorded here could tell a reader whether it drifted — this is the shape that failed on Winet v. Price'};

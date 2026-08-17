@@ -117,11 +117,39 @@ So an interpretive claim with no primary source is not weakly evidenced. It is
 | `secondary-only` — factual claim, no primary | 8 |
 | **`unverifiable-as-recorded`** — interpretive claim, no primary | **4** |
 
-The four are `ea_ca_925`, `msa_ca_925`, `ipa_state_carveout`, `msa_ca_release` — which
-includes the findings this repo has leaned on hardest: the "primarily resides and works"
-defect and the §2870/§2872 miscitation. They may well be right. The point is that **nothing
-recorded here could show it**, and the one finding in this category that has since been
-checked against a primary text turned out to be wrong.
+The four were `ea_ca_925`, `msa_ca_925`, `ipa_state_carveout`, `msa_ca_release` — including
+the findings this repo has leaned on hardest.
+
+### Two of them have since been answered, by courts
+
+The Winet failure was not that the sources were weak. It was that they were **not
+independent** — four hosts, one paraphrase chain. The evidence that answers that is a court
+quoting the provision verbatim, and two California Courts of Appeal do:
+
+> "An employer shall not require an employee who **primarily resides and works** in
+> California, as a condition of employment, to agree to a provision that would … Require the
+> employee to adjudicate outside of California a claim arising in California."
+> — *Midwest Motor Supply Co. v. Super. Ct.* (2020), and materially identically
+> *Zhang v. Super. Ct.* (2022)
+
+The clauses say "primarily works in California". The residence conjunct is missing, exactly
+as the finding claimed. Two courts, two years apart, quoting the same operative language —
+that is independence four summaries of one summary never had.
+
+**It still does not meet the standard.** A court quoting a statute is not the body that
+enacted it, and these were read through CourtListener, which republishes opinions rather than
+issuing them. So `fragility` gains a level between the two: `judicially-corroborated` — the
+claim is no longer unverifiable as recorded, and it is not verified.
+
+| Level | Findings |
+|---|---|
+| `partial` | 16 |
+| `secondary-only` | 8 |
+| `judicially-corroborated` | 2 |
+| **`unverifiable-as-recorded`** | **2** |
+
+`ipa_state_carveout` and `msa_ca_release` remain in the worst category. The §2870/§2872 check
+was cut short by CourtListener's rate limit (5/min), not completed.
 
 ## The prototype was making a stale claim about itself
 
