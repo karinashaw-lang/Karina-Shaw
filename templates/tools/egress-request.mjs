@@ -9,6 +9,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import {loadCorpus, ROOT} from './corpus.mjs';
+import {writeIfChanged, VOLATILE_FIELDS, VOLATILE_LINES} from './artifact.mjs';
 
 const reg = JSON.parse(fs.readFileSync(path.join(ROOT,'sources','registry.json'),'utf8'));
 const C = loadCorpus();
@@ -92,7 +93,7 @@ const md = [
 
 const out = path.join(ROOT,'..','verification','egress-request.md');
 fs.mkdirSync(path.dirname(out),{recursive:true});
-fs.writeFileSync(out, md);
+writeIfChanged(out, md, {linePatterns:VOLATILE_LINES, fsImpl:fs});
 console.log(`egress request: ${rows.length} host(s) needed, ${blocked.length} blocked, ${primary.length} of them primary`);
 rows.forEach(r => console.log(`  ${String(r.citations).padStart(3)} citations  ${r.status.padEnd(10)} ${r.host}  (${r.kind})`));
 console.log(`\nwritten to verification/egress-request.md`);

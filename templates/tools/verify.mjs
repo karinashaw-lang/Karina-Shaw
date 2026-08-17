@@ -18,6 +18,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import {loadCorpus, ROOT} from './corpus.mjs';
+import {writeIfChanged, VOLATILE_FIELDS, VOLATILE_LINES} from './artifact.mjs';
 
 const args = process.argv.slice(2);
 const WRITE = args.includes('--write');
@@ -115,7 +116,8 @@ if(WRITE && report.upgraded.length){
 
 const outDir = path.join(ROOT,'..','verification');
 fs.mkdirSync(outDir,{recursive:true});
-fs.writeFileSync(path.join(outDir,'last-run.json'), JSON.stringify(report,null,2)+'\n');
+writeIfChanged(path.join(outDir,'last-run.json'), JSON.stringify(report,null,2)+'\n',
+  {volatile:VOLATILE_FIELDS, parse:JSON.parse, fsImpl:fs});
 
 console.log(`verify: ${report.attempted} clause(s) with citations, ${fetches} fetch(es)`);
 console.log(`  upgraded:  ${report.upgraded.length}`);

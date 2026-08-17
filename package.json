@@ -8,7 +8,7 @@
     "validate": "node templates/tools/validate.mjs",
     "build": "node templates/tools/build.mjs",
     "check": "node templates/tools/validate.mjs && node templates/tools/build.mjs --check",
-    "test": "node templates/tools/review.test.mjs && node templates/tools/classification.test.mjs && node templates/tools/propagation.test.mjs && node templates/tools/sources.test.mjs && node templates/tools/verify.test.mjs && node templates/tools/assertions.test.mjs && node templates/tools/findings.test.mjs && node templates/tools/docdefects.test.mjs && node templates/tools/textstore.test.mjs && node templates/tools/ingest.test.mjs && node templates/tools/pin.test.mjs && node templates/tools/lint.test.mjs && node templates/tools/provenance.test.mjs && node templates/tools/selfaudit.test.mjs",
+    "test": "node templates/tools/review.test.mjs && node templates/tools/classification.test.mjs && node templates/tools/propagation.test.mjs && node templates/tools/sources.test.mjs && node templates/tools/artifact.test.mjs && node templates/tools/verify.test.mjs && node templates/tools/assertions.test.mjs && node templates/tools/findings.test.mjs && node templates/tools/docdefects.test.mjs && node templates/tools/textstore.test.mjs && node templates/tools/ingest.test.mjs && node templates/tools/pin.test.mjs && node templates/tools/lint.test.mjs && node templates/tools/provenance.test.mjs && node templates/tools/selfaudit.test.mjs",
     "probe": "node templates/tools/probe-sources.mjs",
     "verify": "node templates/tools/verify.mjs",
     "queue": "node templates/tools/queue.mjs",

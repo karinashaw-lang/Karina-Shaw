@@ -18,6 +18,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import {loadCorpus, ROOT} from './corpus.mjs';
+import {writeIfChanged, VOLATILE_FIELDS, VOLATILE_LINES} from './artifact.mjs';
 
 const strip = b => b.replace(/\{\{(\w+)\}\}/g,'').replace(/\[\[([^\]|]+)(?:\|[^\]]+)?\]\]/g,'$1').replace(/<<xr:@?\w+>>/g,'');
 
@@ -140,7 +141,8 @@ if(INVOKED){
     console.log(`${String(n).padStart(4)}  ${id}  → predicts ${d.predicts}`);
   }
   const out = path.join(ROOT,'..','verification','lint.json');
-  fs.writeFileSync(out, JSON.stringify({lintedAt:new Date().toISOString(), flagged:rows.length, total:C.clauses.length,
-    byDetector:byDet, rows:rows.map(r=>({id:r.c.id, title:r.c.title, doc:r.c.doc, severity:r.c.severity, hits:r.hits}))},null,2)+'\n');
+  writeIfChanged(out, JSON.stringify({lintedAt:new Date().toISOString(), flagged:rows.length, total:C.clauses.length,
+    byDetector:byDet, rows:rows.map(r=>({id:r.c.id, title:r.c.title, doc:r.c.doc, severity:r.c.severity, hits:r.hits}))},null,2)+'\n',
+    {volatile:VOLATILE_FIELDS, parse:JSON.parse, fsImpl:fs});
   console.log(`\nwritten to verification/lint.json`);
 }

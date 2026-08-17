@@ -6,6 +6,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import {ROOT} from './corpus.mjs';
+import {writeIfChanged, VOLATILE_FIELDS, VOLATILE_LINES} from './artifact.mjs';
 
 const REG = path.join(ROOT,'sources','registry.json');
 const reg = JSON.parse(fs.readFileSync(REG,'utf8'));
@@ -26,7 +27,11 @@ for(const h of hosts) results[h] = {kind: reg.hostKinds[h] || 'control', ...awai
 
 const now = new Date().toISOString();
 reg.reachability = {...reg.reachability, probedAt: now, hosts: results};
-fs.writeFileSync(REG, JSON.stringify(reg,null,2)+'\n');
+const wrote = writeIfChanged(REG, JSON.stringify(reg,null,2)+'\n',
+  {volatile:VOLATILE_FIELDS, parse:JSON.parse, fsImpl:fs});
+console.log(wrote.written
+  ? `registry updated — ${wrote.reason}`
+  : `registry unchanged — ${wrote.reason}; the recorded probe date still marks when this result was first observed`);
 
 const reachable = Object.entries(results).filter(([,v])=>v.status==='reachable');
 const blocked   = Object.entries(results).filter(([,v])=>v.status!=='reachable');
