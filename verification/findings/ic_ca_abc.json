@@ -1,0 +1,69 @@
+{
+ "clauseId": "ic_ca_abc",
+ "checkedAt": "2026-08-18",
+ "method": "CourtListener opinion text — the ABC test as quoted verbatim by a California Court of Appeal. No statutory publisher was reachable; every publisher, agency and mirror host returns 403 from this environment's egress policy, re-measured the same day.",
+ "queries": [
+  "\"Labor Code section 2775\" ABC test independent contractor \"usual course\"",
+  "independently established trade, occupation, or business"
+ ],
+ "assertions": [
+  {
+   "text": "California presumes a worker is an employee",
+   "status": "corroborated",
+   "note": "Whitlach, quoting Dynamex at 4 Cal.5th 955: \"The ABC test presumptively considers all workers to be employees.\""
+  },
+  {
+   "text": "the hiring entity must satisfy all three prongs",
+   "status": "corroborated",
+   "note": "Dynamex at 964, quoted in Whitlach: \"[t]he hiring entity's failure to prove any one of these three prerequisites will be sufficient in itself to establish that the worker is an included employee.\""
+  },
+  {
+   "text": "prong A: the worker is free from the Company's control and direction in fact as well as under this agreement",
+   "status": "contradicted",
+   "note": "The test is freedom from control \"in connection with the performance of the work\". The clause drops that scope limiter, so it reads as freedom from the Company's control generally. That states a stricter test than the law imposes and could lead a reader to abandon an engagement the statute would allow."
+  },
+  {
+   "text": "prong C: customarily engaged in an independently established trade of the same nature",
+   "status": "contradicted",
+   "note": "Two omissions in one phrase. The category is \"an independently established trade, occupation, or business\" — the clause keeps only \"trade\", excluding a worker with an independently established occupation or business who would qualify. And \"of the same nature\" is left without its referent: the statute reads \"of the same nature as that involved in the work performed\". As written the comparison has no second term."
+  },
+  {
+   "text": "prong B cannot be satisfied by contract language",
+   "status": "unverified",
+   "note": "No opinion located states this. It is a reasonable inference — prong A expressly looks to the contract AND to fact, while prong B does not mention the contract — but an inference is not a holding, and this clause presents it as a rule. Recorded as unverified rather than contradicted: absence of evidence, not evidence of error."
+  }
+ ],
+ "gaps": [
+  "Labor Code §2775 does not stand alone. §§2776-2787 carve out a long list of occupations and relationships from the ABC test, which are then judged under the older Borello multi-factor standard. The clause states the ABC test as though it governs every engagement, and mentions the exemptions only in a separate clause (ic_ca_exemptions) that a reader may never reach.",
+  "The clause states the test but not who bears the burden. Dynamex places it on the hiring entity — the party the document is written for — which is the single most consequential procedural fact about the test and is absent."
+ ],
+ "sources": [
+  {
+   "title": "CourtListener — Whitlach v. Premier Valley, Inc. (Cal. Ct. App. 2022), quoting Dynamex Operations W. v. Superior Court, 4 Cal.5th 903, 955-956, 957, 964",
+   "url": "https://www.courtlistener.com/opinion/9353028/whitlach-v-premier-valley-inc/",
+   "checked": "2026-08-18"
+  }
+ ],
+ "defectTypes": [
+  "overstated-requirement",
+  "omitted-qualifier",
+  "omitted-requirement"
+ ],
+ "judicialQuotations": [
+  {
+   "case": "Whitlach v. Premier Valley, Inc. (Cal. Ct. App. 2022)",
+   "opinion": 9348500,
+   "url": "https://www.courtlistener.com/opinion/9353028/whitlach-v-premier-valley-inc/",
+   "checked": "2026-08-18",
+   "quote": "The ABC test presumptively considers all workers to be employees, and permits workers to be classified as independent contractors only if the hiring business demonstrates that the worker in question satisfies each of three conditions: (a) that the worker is free from the control and direction of the hirer in connection with the performance of the work, both under the contract for the performance of the work and in fact; and (b) that the worker performs work that is outside the usual course of the hiring entity's business; and (c) that the worker is customarily engaged in an independently established trade, occupation, or business of the same nature as that involved in the work performed."
+  },
+  {
+   "case": "Whitlach v. Premier Valley, Inc. (Cal. Ct. App. 2022)",
+   "opinion": 9348500,
+   "url": "https://www.courtlistener.com/opinion/9353028/whitlach-v-premier-valley-inc/",
+   "checked": "2026-08-18",
+   "quote": "In 2019, the Legislature passed AB 5 (Stats. 2019, ch. 296, § 2), which enacted, effective January 1, 2020, Labor Code section 2750.3, subsequently renumbered as Labor Code sections 2775-2787, effective September 4, 2020 (Stats. 2020, ch. 38, § 1)."
+  }
+ ],
+ "singleOpinionCaveat": "One opinion. It quotes the Supreme Court's own formulation in Dynamex, which is the strongest form this channel produces, but it is still one court's transcription of a statute this environment cannot reach directly. It does not meet the two-primary standard and does not upgrade the clause."
+}
