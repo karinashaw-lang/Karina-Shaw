@@ -298,6 +298,31 @@ export function fragility(finding){
           why:`${primary} primary source(s); the standard is two, one of them a publisher`};
 }
 
+/* Two different things stop a clause being verified, and conflating them hides the one
+   that is actually fixable here.
+
+     access    the citation names a provision precisely; the text is behind an egress denial
+               or has not been supplied. Granting egress or handing over the text fixes it.
+
+     citation  the citation names a body of law and no provision within it — "L.A. Mun.
+               Code", "IWC Wage Order (industry-specific)". Nobody can look that up, so no
+               amount of source access fixes it. The clause has to be re-cited by somebody
+               who knows which provision it was relying on.
+
+   Seven clauses are in the second category and six of them are critical, which is the more
+   urgent number: they are the deepest California work in the corpus and they rest on
+   citations nobody can follow. */
+export function blockedBy(clause){
+  const cits = (clause.sources||[]).map(s=>s.citation).filter(Boolean);
+  if(!cits.length) return {kind:'unsourced', why:'the clause carries no citation at all'};
+  const usable = cits.filter(c => looksLikeCitation(c).ok);
+  if(!usable.length)
+    return {kind:'citation', citations:cits,
+            why:'every citation names a body of law without a provision inside it, so there is nothing to look up. Source access does not fix this; re-citing does'};
+  return {kind:'access', citations:usable,
+          why:'the provision is named precisely and the text is not reachable from here'};
+}
+
 /* Summarise a set of findings against the standard. Used by the report and the validator so
    there is one arithmetic, not two. */
 export function auditSources(findings){

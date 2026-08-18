@@ -7,7 +7,8 @@
    avoid repeating.
 */
 import {tierOf, isPrimary, hostOf, meetsTwoPrimary, auditSources, HOSTS, TIERS,
-        claimKind, claimText, fragility, judicialSupport, looksLikeCitation} from './sources.mjs';
+        claimKind, claimText, fragility, judicialSupport, looksLikeCitation,
+        blockedBy} from './sources.mjs';
 
 let pass=0, fail=0;
 const t=(n,c)=>{ if(c) pass++; else {fail++; console.log('  FAIL  '+n);} };
@@ -123,6 +124,24 @@ console.log('a citation names a provision, not an article about one');
   t('empty is not a citation', K('')==='not-a-citation');
 }
 
+console.log('what is actually blocking a clause');
+{
+  const cite = c => ({sources:[{citation:c}]});
+  t('a precise citation is blocked by access',
+     blockedBy(cite('Cal. Lab. Code §925')).kind==='access');
+  t('a bare code name is blocked by the citation itself',
+     blockedBy(cite('L.A. Mun. Code')).kind==='citation');
+  t('and the reason says access will not fix it',
+     /Source access does not fix this/.test(blockedBy(cite('L.A. Mun. Code')).why));
+  t('no citation at all is its own category',
+     blockedBy({sources:[]}).kind==='unsourced');
+  t('one usable citation among several rescues the clause',
+     blockedBy({sources:[{citation:'L.A. Mun. Code'},{citation:'Cal. Lab. Code §925'}]}).kind==='access');
+  t('the usable citations are the ones reported',
+     blockedBy({sources:[{citation:'L.A. Mun. Code'},{citation:'Cal. Lab. Code §925'}]})
+       .citations.join()==='Cal. Lab. Code §925');
+}
+
 console.log('claim kind — what survives paraphrase and what does not');
 {
   t('a number is a factual claim', claimKind('the deadline is 15 days').kind==='factual');
@@ -225,6 +244,13 @@ console.log('against every finding actually recorded');
   t('every finding is assigned a fragility level',
      a.rows.every(r=>['meets','partial','secondary-only','judicially-corroborated','unverifiable-as-recorded'].includes(r.fragility.level)));
   console.log(`        Winet shape:     ${winet.map(r=>r.id).join(', ')}`);
+
+  const {loadCorpus} = await import('./corpus.mjs');
+  const C = loadCorpus();
+  const byBlock = C.clauses.reduce((m,c)=>{ const k=blockedBy(c).kind; m[k]=(m[k]||0)+1; return m; }, {});
+  t('some clauses are blocked by their own citation, not by access', (byBlock.citation||0) > 0);
+  t('and the corpus is mostly blocked by access or unsourced', (byBlock.access||0)+(byBlock.unsourced||0) > (byBlock.citation||0));
+  console.log(`        blocked by:      ${JSON.stringify(byBlock)}`);
 }
 
 console.log(`\n${pass} passed, ${fail} failed`);

@@ -145,6 +145,30 @@ primary sources, at least one a publisher.
 | Cal. Bus. & Prof. Code §§17601–17606 | `msa_ca_auto_renew` |
 | Cal. Civ. Code §§2782, 2782.05 | `msa_ca_indemnity_construction` |
 
+### Seven clauses that egress would not fix
+
+| Blocked by | Clauses |
+|---|---|
+| `unsourced` — no citation at all | 249 |
+| `access` — provision named, text unreachable | 104 |
+| **`citation`** — names a body of law, no provision | **7** |
+
+- `can_local_sf` (critical) — S.F. Admin. Code; S.F. Police Code
+- `can_local_la` (critical) — L.A. Mun. Code
+- `can_local_sd` (critical) — S.D. Mun. Code ch. 3, art. 9
+- `can_local_sj` (critical) — S.J. Mun. Code ch. 4.100, 4.101
+- `can_local_oak` (critical) — Oakland Mun. Code ch. 5.92, 5.93
+- `cal_tx_franchise` (recommended) — Tex. Tax Code ch. 171
+- `emp_rest` (critical) — IWC Wage Order (industry-specific)
+
+These name a whole municipal code, or a wage order whose number depends on an industry the
+citation does not state. Nobody can look them up, so no amount of source access verifies
+them — they have to be re-cited by somebody who knows which provision the clause was relying
+on. Six of the seven are critical, and they are the deepest California work in the corpus.
+
+They are deliberately not repaired here. Supplying a section number from memory is the exact
+failure this corpus is full of, and it would be undetectable afterwards.
+
 Two routes, unchanged and independent:
 
 1. **Egress to the publisher hosts.** One allowlist entry for `leginfo.legislature.ca.gov`

@@ -224,6 +224,36 @@ Building the check found two things I had wrong rather than the data:
 `validate.mjs` now refuses a citation that is not one and warns on an incomplete one. The
 corpus has **105 genuine provisions**, not the 118 previously counted.
 
+## Seven clauses that egress would not fix
+
+The citation check surfaced a second, sharper problem. Twelve entries name a body of law with
+no provision inside it — and for **seven clauses those are the only citations they have.**
+
+| Blocked by | Clauses |
+|---|---|
+| `unsourced` — no citation at all | 249 |
+| `access` — provision named, text unreachable | 104 |
+| **`citation`** — names a body of law, no provision | **7** |
+
+`can_local_sf`, `can_local_la`, `can_local_sd`, `can_local_sj`, `can_local_oak`,
+`cal_tx_franchise`, `emp_rest` — six of the seven **critical**, and the first five are the
+deepest California work in the corpus: local minimum wage, local sick leave, fair-chance
+hiring, service-charge ordinances. They cite a whole municipal code.
+
+**This is a different kind of blocked, and it changes the plan.** The other 104 are waiting
+on egress or a supplied text; grant access and they become checkable. These seven do not
+become checkable, because "L.A. Mun. Code" does not say what to look up. No amount of source
+access verifies them — they have to be re-cited by somebody who knows which provision the
+clause was relying on.
+
+They are deliberately **not** repaired here. Supplying a section number from memory is the
+exact failure this corpus is full of, and it would be undetectable afterwards.
+
+`emp_rest` is a distinct case worth separating: "IWC Wage Order (industry-specific)" is
+indeterminate on its face, but the engine *knows* the industry at generation time. That one is
+a design gap — the citation could be resolved from the answers the way the body already is —
+rather than a lost fact.
+
 ## The standard: two primary sources, or it is not verified
 
 **Measured, not assumed: the standard cannot be met in this environment.** Every publisher

@@ -10,7 +10,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import {loadCorpus, ROOT} from './corpus.mjs';
-import {auditSources, meetsTwoPrimary, tierOf, hostOf, fragility, TIERS} from './sources.mjs';
+import {auditSources, meetsTwoPrimary, tierOf, hostOf, fragility, blockedBy, TIERS} from './sources.mjs';
 import {normCitation} from './propagation.mjs';
 
 const C = loadCorpus();
@@ -46,6 +46,10 @@ const code = x => BT + x + BT;
 const fragilityRows = Object.entries(a.byFragility || {})
   .sort((x,y)=>y[1]-x[1])
   .map(([k,v]) => '| ' + code(k) + ' | ' + v + ' |')
+  .join('\n');
+const blockTally = C.clauses.reduce((m,c)=>{ const k=blockedBy(c).kind; m[k]=(m[k]||0)+1; return m; }, {});
+const uncitable = C.clauses.filter(c=>blockedBy(c).kind==='citation')
+  .map(c => '- ' + code(c.id) + ' (' + c.severity + ') — ' + blockedBy(c).citations.join('; '))
   .join('\n');
 const winetRows = a.rows
   .filter(r => r.fragility.level === 'unverifiable-as-recorded')
@@ -163,6 +167,24 @@ primary sources, at least one a publisher.
 |---|---|
 ${[...provisions.values()].sort((a,b)=>b.clauses.size-a.clauses.size)
   .map(p=>`| ${p.citation} | ${[...p.clauses].map(x=>`\`${x}\``).join(', ')} |`).join('\n')}
+
+### Seven clauses that egress would not fix
+
+| Blocked by | Clauses |
+|---|---|
+| \`unsourced\` — no citation at all | ${blockTally.unsourced || 0} |
+| \`access\` — provision named, text unreachable | ${blockTally.access || 0} |
+| **\`citation\`** — names a body of law, no provision | **${blockTally.citation || 0}** |
+
+${uncitable}
+
+These name a whole municipal code, or a wage order whose number depends on an industry the
+citation does not state. Nobody can look them up, so no amount of source access verifies
+them — they have to be re-cited by somebody who knows which provision the clause was relying
+on. Six of the seven are critical, and they are the deepest California work in the corpus.
+
+They are deliberately not repaired here. Supplying a section number from memory is the exact
+failure this corpus is full of, and it would be undetectable afterwards.
 
 Two routes, unchanged and independent:
 

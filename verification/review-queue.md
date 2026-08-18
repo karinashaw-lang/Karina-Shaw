@@ -110,13 +110,13 @@ whether it is in the jurisdiction being led with, whether it asserts a specific 
 | 20 | `emp_ca_registration` — California Employer Registration Checklist | employment | critical | `unsourced` | (none) |
 | 21 | `msa_ca_indemnity_construction` — California Anti-Indemnity Limits | msa | critical | `single-source` | Cal. Civ. Code §§2782, 2782.05 |
 | 22 | `cal_ca_prop65_ops` — Proposition 65 Review | compliance-calendar | recommended | `single-source` | Cal. Health & Safety Code §25249.6 |
-| 23 | `hb_ca_lactation_break` — Lactation Breaks | handbook | critical | `single-source` | Cal. Lab. Code §§1030–1034 |
-| 24 | `can_harassment_training` — Harassment Prevention Training | ca-notices | critical | `multi-cited` | Cal. Gov. Code §12950.1 |
-| 25 | `can_wtpa` — Wage Theft Prevention Act Notice | ca-notices | critical | `multi-cited` | Cal. Lab. Code §2810.5 |
+| 23 | `can_local_sd` — San Diego Ordinances | ca-notices | critical | `single-source` | S.D. Mun. Code ch. 3, art. 9 |
+| 24 | `emp_rest` — Rest Period Policy | employment | critical | `single-source` | IWC Wage Order (industry-specific) |
+| 25 | `hb_ca_lactation_break` — Lactation Breaks | handbook | critical | `single-source` | Cal. Lab. Code §§1030–1034 |
 
 ## Clauses checked and found defective
 
-27 clause(s) have been checked against sources and found to omit or misstate a requirement.
+34 clause(s) have been checked against sources and found to omit or misstate a requirement.
 These sit at the top of the queue: a clause known to be wrong is more dangerous than one merely unverified,
 because it reads as complete.
 
@@ -289,6 +289,18 @@ Checked 2026-08-15. 2 defect(s).
 - "a warning that is present but non-conforming is treated as no warning" — the same overstatement confirmed in msa_ca_prop65 — a non-conforming warning loses the safe harbour rather than being void as such
 - The parent defect propagated: this clause states the duty with no threshold, and Proposition 65 does not apply to a business employing fewer than ten employees. Both clauses in this pair tell the reader most likely to be exempt that they are covered.
 
+### `can_local_sd` — San Diego Ordinances
+
+Checked . 1 defect(s).
+
+- Every citation on this clause names a body of law without a provision inside it (S.D. Mun. Code ch. 3, art. 9), so there is nothing specific to look up. This clause cannot be verified as filed no matter what source access is granted — it has to be re-cited by somebody who knows which provision it was relying on. Not repaired here: supplying a section number from memory is the failure this corpus is full of.
+
+### `emp_rest` — Rest Period Policy
+
+Checked . 1 defect(s).
+
+- Every citation on this clause names a body of law without a provision inside it (IWC Wage Order (industry-specific)), so there is nothing specific to look up. This clause cannot be verified as filed no matter what source access is granted — it has to be re-cited by somebody who knows which provision it was relying on. Not repaired here: supplying a section number from memory is the failure this corpus is full of.
+
 ### `hb_ca_lactation_break` — Lactation Breaks
 
 Checked 2026-08-15. 1 defect(s).
@@ -307,6 +319,30 @@ Checked 2026-08-15. 1 defect(s).
 
 - The notice must state whether a federal or state disaster declaration applies to the county of employment. The clause omits this requirement entirely.
 
+### `can_local_la` — Los Angeles Ordinances
+
+Checked . 1 defect(s).
+
+- Every citation on this clause names a body of law without a provision inside it (L.A. Mun. Code), so there is nothing specific to look up. This clause cannot be verified as filed no matter what source access is granted — it has to be re-cited by somebody who knows which provision it was relying on. Not repaired here: supplying a section number from memory is the failure this corpus is full of.
+
+### `can_local_oak` — Oakland Ordinances
+
+Checked . 1 defect(s).
+
+- Every citation on this clause names a body of law without a provision inside it (Oakland Mun. Code ch. 5.92, 5.93), so there is nothing specific to look up. This clause cannot be verified as filed no matter what source access is granted — it has to be re-cited by somebody who knows which provision it was relying on. Not repaired here: supplying a section number from memory is the failure this corpus is full of.
+
+### `can_local_sj` — San Jose Ordinances
+
+Checked . 1 defect(s).
+
+- Every citation on this clause names a body of law without a provision inside it (S.J. Mun. Code ch. 4.100, 4.101), so there is nothing specific to look up. This clause cannot be verified as filed no matter what source access is granted — it has to be re-cited by somebody who knows which provision it was relying on. Not repaired here: supplying a section number from memory is the failure this corpus is full of.
+
+### `can_local_sf` — San Francisco Ordinances
+
+Checked . 1 defect(s).
+
+- Every citation on this clause names a body of law without a provision inside it (S.F. Admin. Code; S.F. Police Code), so there is nothing specific to look up. This clause cannot be verified as filed no matter what source access is granted — it has to be re-cited by somebody who knows which provision it was relying on. Not repaired here: supplying a section number from memory is the failure this corpus is full of.
+
 ### `b83_instructions` — Filing Instructions
 
 Checked 2026-08-15. 1 defect(s).
@@ -318,4 +354,10 @@ Checked 2026-08-15. 1 defect(s).
 Checked 2026-08-15. 1 defect(s).
 
 - The parent defect propagated: the two papers are not interchangeable — the county clerk designates one daily and one weekly. "Two designated newspapers" reads as a free choice of any two, so a founder can publish in two dailies, satisfy this clause, and fail the statute. Confirmed in charter_ny_publication and repeated verbatim in substance here.
+
+### `cal_tx_franchise` — Texas Franchise Tax and Public Information Report
+
+Checked . 1 defect(s).
+
+- Every citation on this clause names a body of law without a provision inside it (Tex. Tax Code ch. 171), so there is nothing specific to look up. This clause cannot be verified as filed no matter what source access is granted — it has to be re-cited by somebody who knows which provision it was relying on. Not repaired here: supplying a section number from memory is the failure this corpus is full of.
 
