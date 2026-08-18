@@ -195,6 +195,35 @@ What the product does under the standard, verified live in the page: `0 of 360 c
 usable and every document comes out empty`. That is the correct behaviour. Nothing is checked
 against the law, so nothing is used.
 
+## Nine "citations" were article titles
+
+Scoping which provisions judicial corroboration could ever reach turned up a data defect
+underneath. The `citation` field is supposed to name the provision that must be verified.
+Nine entries instead held the **title of a law-firm article** — "Ogletree Deakins — California
+publishes new wage theft notice", "FindLaw — Cal. Gov. Code §12950.1", "LegiScan — CA SB616
+text".
+
+That corrupts everything downstream: the shopping list counted articles as provisions to
+obtain, `propagation` treated two clauses citing one blog post as resting on the same
+provision, and the reported count of distinct provisions inflated by however many articles
+somebody happened to read. Moved to `title`, where they always belonged.
+
+The discriminator is punctuation, not vocabulary: **a legal citation never uses a spaced
+dash.** Ranges are written closed up (`§§17601–17606`); a source title separates publisher
+from headline with " — ". A denylist of publisher names would need maintaining forever and
+would miss the next one.
+
+Building the check found two things I had wrong rather than the data:
+
+- It rejected *Dynamex* and *Winet v. Price*. Case citations **are** citations, and
+  California puts the year before the volume — which my first pattern did not allow for.
+- Twelve entries name a body of law with no provision inside it (`L.A. Mun. Code`,
+  `IWC Wage Order (industry-specific)`). Those are real but unlookupable, so they are a
+  **warning**, not an error, and they are not "fixed" by inventing section numbers.
+
+`validate.mjs` now refuses a citation that is not one and warns on an incomplete one. The
+corpus has **105 genuine provisions**, not the 118 previously counted.
+
 ## The standard: two primary sources, or it is not verified
 
 **Measured, not assumed: the standard cannot be met in this environment.** Every publisher

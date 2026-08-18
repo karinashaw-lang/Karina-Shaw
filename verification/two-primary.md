@@ -115,7 +115,7 @@ the second one is the one being withheld.
 
 ## What it would take
 
-33 distinct provisions are cited by the 28 clauses checked so far. Each needs two
+24 distinct provisions are cited by the 28 clauses checked so far. Each needs two
 primary sources, at least one a publisher.
 
 | Provision | Clauses resting on it |
@@ -134,20 +134,11 @@ primary sources, at least one a publisher.
 | Cal. Gov. Code §12952 | `can_fair_chance` |
 | 2 C.C.R. §11023 | `can_harassment_policy` |
 | Cal. Gov. Code §12950.1 | `can_harassment_training` |
-| California Civil Rights Department — Sexual harassment prevention training FAQ for employers | `can_harassment_training` |
-| FindLaw — Cal. Gov. Code §12950.1 | `can_harassment_training` |
-| Traliant — California sexual harassment training requirements | `can_harassment_training` |
 | 8 C.C.R. §3395 | `can_heat` |
 | Cal. Lab. Code §2810.5 | `can_wtpa` |
-| Ogletree Deakins — California publishes new wage theft notice | `can_wtpa` |
-| CalChamber HRWatchdog — Updated wage theft notice released | `can_wtpa` |
-| California Workplace Law Blog — Labor Commissioner publishes updated wage theft notice | `can_wtpa` |
 | Cal. Lab. Code §§201-203 | `emp_finalpay` |
 | Cal. Lab. Code §§230, 14350–14353 | `hb_ca_jury_voting` |
 | Cal. Lab. Code §§245–249 | `hb_ca_sick` |
-| Legal Aid at Work — SB 616 increases paid sick leave from 3 to 5 days | `hb_ca_sick` |
-| CDF Labor Law — New California paid sick leave requirements | `hb_ca_sick` |
-| LegiScan — CA SB616 text | `hb_ca_sick` |
 | Cal. Bus. & Prof. Code §18100 (SB 988) | `ic_ca_freelance` |
 | Cal. Lab. Code §2870 | `ipa_state_carveout` |
 | Cal. Civ. Code §1646.5 | `msa_ca_925` |

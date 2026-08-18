@@ -157,6 +157,57 @@ export function meetsTwoPrimary(sources = [], {assertionKind = 'statutory', read
   };
 }
 
+/* Is this string a citation, or a source title wearing one?
+
+   The `citation` field is supposed to name a provision — the thing that must be verified.
+   Several entries instead hold the TITLE of a law-firm article, which quietly corrupts
+   everything downstream: the shopping list counts them as provisions to obtain, the
+   two-primary audit counts them as claims needing sources, propagation treats two clauses
+   citing the same blog post as resting on the same provision, and the reported count of
+   distinct provisions is inflated by the number of articles somebody happened to read.
+
+   The discriminator is punctuation, not vocabulary. A legal citation never uses a SPACED
+   dash: ranges are written closed up (§§17601–17606, §§1030–1034), while a source title
+   separates publisher from headline with " — ". A denylist of publisher names would have
+   to be maintained forever and would miss the next one. */
+export function looksLikeCitation(s){
+  const str = String(s || '').trim();
+  if(!str) return {ok:false, kind:'not-a-citation', why:'empty'};
+
+  /* A source title separates publisher from headline with a SPACED dash. A citation never
+     does — ranges are written closed up. This is the one discriminator that does not need a
+     denylist of publisher names kept up to date forever. */
+  if(/\s[—–-]\s/.test(str))
+    return {ok:false, kind:'not-a-citation',
+            why:'contains a spaced dash, which separates a publisher from a headline; a citation writes ranges closed up and belongs in the citation field alone'};
+
+  /* A case citation is a citation. The first version of this check rejected Dynamex, which
+     was the check being wrong rather than the data. */
+  const CASE = [
+    /\sv\.\s.+,\s*\d+\s+\S+\s+\d+/,          // Dynamex ... , 4 Cal.5th 903 (2018)
+    /\sv\.\s.+\(\d{4}\)\s*\d+\s+\S+\s+\d+/,  // Winet v. Price (1992) 4 Cal.App.4th 1159 — CA style puts the year first
+    /\bIn re\b.+\d+\s+\S+\s+\d+/,
+  ];
+  if(CASE.some(re => re.test(str))) return {ok:true, kind:'case'};
+
+  const hasSection =
+    /§/.test(str) ||
+    /\b[Ss]ections?\s+\d/.test(str) ||
+    /\b\d+\s+(U\.S\.C\.|C\.F\.R\.|C\.C\.R\.)/.test(str) ||
+    /\bStats\.\s*\d{4}/.test(str) ||
+    /\bWage Order\s*[\d§]/.test(str);
+  if(hasSection) return {ok:true, kind:'statute'};
+
+  /* Names a body of law but no provision within it. Real, and not yet a citation: nobody
+     can look up "L.A. Mun. Code" and find the rule the clause is relying on. */
+  if(/\b(Code|Act|Reg\.|Regulations|Ordinance|Rule|Wage Order)\b/.test(str))
+    return {ok:false, kind:'incomplete',
+            why:'names a body of law but no provision within it, so there is nothing specific to look up or verify against'};
+
+  return {ok:false, kind:'not-a-citation',
+          why:'names no provision — no section symbol, section number, code reference, wage order or case'};
+}
+
 /* How far is a claim from a source that could settle it?
 
    Winet v. Price is why this exists. A finding said the case held X; the opinion held close

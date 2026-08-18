@@ -9,7 +9,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {loadCorpus, ROOT} from './corpus.mjs';
 import {gateFor, validateSignoff, validateClassification, lawTalk, summarise} from './review.mjs';
-import {meetsTwoPrimary, tierOf} from './sources.mjs';
+import {meetsTwoPrimary, tierOf, looksLikeCitation} from './sources.mjs';
 import {evalExpr, fireRules, resolveFields, clauseEligible, docIncluded, allConfigs, resolveXref, ANSWER_FIELDS} from './evaluator.mjs';
 
 const C = loadCorpus();
@@ -31,6 +31,22 @@ const VLEVELS=C.taxonomy.verificationLevels;
 const DLEVELS=C.taxonomy.draftingReviewLevels;
 const PINS = (()=>{ try{ return JSON.parse(fs.readFileSync(path.join(ROOT,'sources','pins.json'),'utf8')); }catch{ return {pins:[]}; } })();
 function host(u){ try{ return new URL(u).host.replace(/^www\./,''); }catch{ return null; } }
+/* The citation field names the provision that must be verified. A source TITLE sitting in
+   it corrupts everything downstream — the shopping list counts articles as provisions to
+   obtain, propagation treats two clauses citing one blog post as resting on one provision,
+   and the count of distinct provisions inflates by however many articles somebody read.
+   Nine such entries were found in the corpus and moved to `title`, where they belonged. */
+function checkCitationShape(o,where){
+  for(const src of o.sources||[]){
+    if(!src.citation) continue;
+    const r = looksLikeCitation(src.citation);
+    if(r.kind==='not-a-citation')
+      err('NOT_A_CITATION',`${where} has a citation that is not one: "${src.citation}" — ${r.why}`);
+    else if(r.kind==='incomplete')
+      warn('INCOMPLETE_CITATION',`${where} cites "${src.citation}" — ${r.why}`);
+  }
+}
+
 function checkVerification(o,where){
   const v=o.verification;
   if(!VLEVELS[v]){ err('BAD_VERIFICATION',`${where} has unknown verification level "${v}"`); return; }
@@ -114,6 +130,7 @@ function checkTrack(c){
     if(!/^\d+\.\d+\.\d+$/.test(c.version)) err('BAD_VERSION',`clause "${c.id}" version "${c.version}" is not semver`);
     if(!/^\d{4}-\d{2}$/.test(c.updated))   err('BAD_DATE',`clause "${c.id}" updated "${c.updated}" is not YYYY-MM`);
     checkVerification(c,`clause "${c.id}"`);
+    checkCitationShape(c,`clause "${c.id}"`);
     checkTrack(c);
   }
 }

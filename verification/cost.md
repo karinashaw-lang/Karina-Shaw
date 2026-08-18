@@ -41,7 +41,7 @@ statute being pulled, and the California package cannot be cleared without all o
 ## The estimate
 
 *Measured.* Sampled defect rate: 27 of 28 (96%), 95% lower bound 84%.
-*Measured.* 116 clauses carry at least one detector flag.
+*Measured.* 117 clauses carry at least one detector flag.
 
 *Assumed.* 25 minutes per authority clause, 8 per drafting clause, 1.6× for a defective one.
 

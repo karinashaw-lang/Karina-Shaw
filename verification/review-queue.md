@@ -28,7 +28,7 @@ be caught by reading the clause on its own.
 ## Corpus-wide triage
 
 Those patterns are structural, so they can be looked for without checking each clause against a source.
-`tools/lint.mjs` implements one detector per taxonomy entry and flags **116 of 360 clauses**.
+`tools/lint.mjs` implements one detector per taxonomy entry and flags **117 of 360 clauses**.
 
 | Detector | Flagged | Predicts |
 |---|---:|---|
@@ -37,7 +37,7 @@ Those patterns are structural, so they can be looked for without checking each c
 | `scope-test-single-conjunct` | 2 | overstated-scope |
 | `form-not-named` | 32 | omitted-requirement |
 | `deadline-without-trigger` | 8 | omitted-qualifier |
-| `notice-duty-single-citation` | 17 | miscitation |
+| `notice-duty-single-citation` | 19 | miscitation |
 | `absolute-without-exception` | 27 | omitted-qualifier |
 
 **Read this with the caveat it deserves.** The detectors were written after seeing the nine sampled clauses,
@@ -111,8 +111,8 @@ whether it is in the jurisdiction being led with, whether it asserts a specific 
 | 21 | `msa_ca_indemnity_construction` — California Anti-Indemnity Limits | msa | critical | `single-source` | Cal. Civ. Code §§2782, 2782.05 |
 | 22 | `cal_ca_prop65_ops` — Proposition 65 Review | compliance-calendar | recommended | `single-source` | Cal. Health & Safety Code §25249.6 |
 | 23 | `hb_ca_lactation_break` — Lactation Breaks | handbook | critical | `single-source` | Cal. Lab. Code §§1030–1034 |
-| 24 | `can_harassment_training` — Harassment Prevention Training | ca-notices | critical | `multi-cited` | Cal. Gov. Code §12950.1 | California Civil Rights Department — Sexual harassment prevention training FAQ for employers | FindLaw — Cal. Gov. Code §12950.1 | Traliant — California sexual harassment training requirements |
-| 25 | `can_wtpa` — Wage Theft Prevention Act Notice | ca-notices | critical | `multi-cited` | Cal. Lab. Code §2810.5 | Ogletree Deakins — California publishes new wage theft notice | CalChamber HRWatchdog — Updated wage theft notice released | California Workplace Law Blog — Labor Commissioner publishes updated wage theft notice |
+| 24 | `can_harassment_training` — Harassment Prevention Training | ca-notices | critical | `multi-cited` | Cal. Gov. Code §12950.1 |
+| 25 | `can_wtpa` — Wage Theft Prevention Act Notice | ca-notices | critical | `multi-cited` | Cal. Lab. Code §2810.5 |
 
 ## Clauses checked and found defective
 

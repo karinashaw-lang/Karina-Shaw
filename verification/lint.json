@@ -1,9 +1,9 @@
 {
-  "lintedAt": "2026-08-17T06:54:10.638Z",
-  "flagged": 116,
+  "lintedAt": "2026-08-18T01:58:41.404Z",
+  "flagged": 117,
   "total": 360,
   "byDetector": {
-    "notice-duty-single-citation": 17,
+    "notice-duty-single-citation": 19,
     "threshold-without-lookback": 36,
     "scope-test-single-conjunct": 2,
     "penalty-without-cap": 16,
@@ -129,6 +129,18 @@
         {
           "id": "threshold-without-lookback",
           "predicts": "omitted-qualifier"
+        }
+      ]
+    },
+    {
+      "id": "can_wtpa",
+      "title": "Wage Theft Prevention Act Notice",
+      "doc": "ca-notices",
+      "severity": "critical",
+      "hits": [
+        {
+          "id": "notice-duty-single-citation",
+          "predicts": "miscitation"
         }
       ]
     },
@@ -306,6 +318,10 @@
       "doc": "handbook",
       "severity": "critical",
       "hits": [
+        {
+          "id": "notice-duty-single-citation",
+          "predicts": "miscitation"
+        },
         {
           "id": "absolute-without-exception",
           "predicts": "omitted-qualifier"

@@ -7,7 +7,7 @@
    avoid repeating.
 */
 import {tierOf, isPrimary, hostOf, meetsTwoPrimary, auditSources, HOSTS, TIERS,
-        claimKind, claimText, fragility, judicialSupport} from './sources.mjs';
+        claimKind, claimText, fragility, judicialSupport, looksLikeCitation} from './sources.mjs';
 
 let pass=0, fail=0;
 const t=(n,c)=>{ if(c) pass++; else {fail++; console.log('  FAIL  '+n);} };
@@ -89,6 +89,38 @@ console.log('a URL nobody opened is not a source');
      meetsTwoPrimary([{citation:'Cal. Lab. Code §925'},
                       src('https://leginfo.legislature.ca.gov/a'), src('https://edd.ca.gov/b')],
        {readBy:'K. Shaw'}).ok);
+}
+
+console.log('a citation names a provision, not an article about one');
+{
+  const K = x => looksLikeCitation(x).kind;
+  t('a code section is a statute citation', K('Cal. Lab. Code §925')==='statute');
+  t('a closed-up range is a statute citation', K('Cal. Bus. & Prof. Code §§17601–17606')==='statute');
+  t('a CFR reference is a statute citation', K('8 C.C.R. §3395')==='statute');
+  t('a wage order with a number is a statute citation', K('IWC Wage Order 4-2001')==='statute');
+  t('"Section 2870" spelled out is a statute citation', K('Labor Code Section 2870')==='statute');
+
+  /* The first version of this check rejected Dynamex and Winet. That was the check being
+     wrong, not the data — and California puts the year before the volume, which the first
+     case pattern did not allow for. */
+  t('a case citation is a citation', K('Dynamex Operations W. v. Superior Court, 4 Cal.5th 903 (2018)')==='case');
+  t('and so is the California year-first style', K('Winet v. Price (1992) 4 Cal.App.4th 1159')==='case');
+  t('and a federal reporter citation', K('Whitewater West Industries v. Alleshouse, 981 F.3d 1045 (Fed. Cir. 2020)')==='case');
+
+  t('a publisher headline is not a citation',
+     K('Ogletree Deakins — California publishes new wage theft notice')==='not-a-citation');
+  t('even when its subject is a citation',
+     K('FindLaw — Cal. Gov. Code §12950.1')==='not-a-citation');
+  t('the reason names the spaced dash',
+     /spaced dash/.test(looksLikeCitation('FindLaw — Cal. Gov. Code §12950.1').why));
+  t('a closed-up range is not mistaken for a spaced dash',
+     looksLikeCitation('Cal. Lab. Code §§1030–1034').ok);
+
+  t('a bare code name is incomplete rather than wrong', K('L.A. Mun. Code')==='incomplete');
+  t('and the reason says there is nothing to look up',
+     /nothing specific to look up/.test(looksLikeCitation('L.A. Mun. Code').why));
+  t('prose is not a citation', K('some note about the law')==='not-a-citation');
+  t('empty is not a citation', K('')==='not-a-citation');
 }
 
 console.log('claim kind — what survives paraphrase and what does not');
