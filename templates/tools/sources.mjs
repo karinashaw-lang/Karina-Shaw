@@ -229,17 +229,21 @@ export function fragility(finding){
   if(primary >= 2 && publishers >= 1)
     return {level:'meets', kind, primary, publishers,
             why:'two primary sources on distinct hosts, one of them the publisher'};
+  /* `judicial` rides on every result, not only on the level it unlocks. One quotation does
+     not change the verdict and a reader still needs to see that it exists — a report that
+     hides partial evidence invites somebody to go looking for it again. */
   const jud = judicialSupport(finding);
   if(kind === 'interpretive' && primary === 0 && jud.independent)
     return {level:'judicially-corroborated', kind, primary, publishers, judicial:jud,
             why:`${jud.count} independent judicial opinions quote the provision verbatim. That answers the Winet failure — which was a lack of independence, not weak sources — without meeting the standard, because a court quoting a statute is not the body that enacted it`};
   if(kind === 'interpretive' && primary === 0)
-    return {level:'unverifiable-as-recorded', kind, primary, publishers, markers:why,
-            why:'an interpretive claim with no primary source behind it. Meaning does not survive paraphrase, and nothing recorded here could tell a reader whether it drifted — this is the shape that failed on Winet v. Price'};
+    return {level:'unverifiable-as-recorded', kind, primary, publishers, markers:why, judicial:jud,
+            why:'an interpretive claim with no primary source behind it. Meaning does not survive paraphrase, and nothing recorded here could tell a reader whether it drifted — this is the shape that failed on Winet v. Price'
+                 + (jud.count===1 ? '. One judicial quotation is recorded; the independence test needs two, and one court quoted once is one quotation' : '')};
   if(primary === 0)
-    return {level:'secondary-only', kind, primary, publishers,
+    return {level:'secondary-only', kind, primary, publishers, judicial:jud,
             why:'no primary source, though the claim is factual and so survives retelling better than a holding would'};
-  return {level:'partial', kind, primary, publishers,
+  return {level:'partial', kind, primary, publishers, judicial:jud,
           why:`${primary} primary source(s); the standard is two, one of them a publisher`};
 }
 

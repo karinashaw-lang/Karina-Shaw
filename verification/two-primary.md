@@ -28,18 +28,18 @@ that is how a standard quietly stops being one.
 |---|---|---|
 | `publisher` | 0 | 0 |
 | `agency` | 23 | 9 |
-| `mirror` | 18 | 5 |
+| `mirror` | 19 | 5 |
 | `secondary` | 50 | 31 |
 
 The decisive line is the first one: **zero publisher-tier sources appear anywhere in
-91 recorded sources.** Not few — none. Every finding in this repo rests on agency
+92 recorded sources.** Not few — none. Every finding in this repo rests on agency
 guidance, faithful republishers, and expert readings.
 
 ### The hosts actually used
 
 **Primary — administering agency** — edd.ca.gov (6), dir.ca.gov (4), p65warnings.ca.gov (2), oehha.ca.gov (2), sos.ca.gov (2), dos.ny.gov (2), calcivilrights.ca.gov (2), cdph.ca.gov (2), elections.cdn.sos.ca.gov (1)
 
-**Faithful republisher** — codes.findlaw.com (6), courtlistener.com (6), law.justia.com (3), california.public.law (2), law.cornell.edu (1)
+**Faithful republisher** — courtlistener.com (7), codes.findlaw.com (6), law.justia.com (3), california.public.law (2), law.cornell.edu (1)
 
 **Expert reading** — ogletree.com (5), shrm.org (4), jonesday.com (3), stimmel-law.com (3), eminutes.com (2), kristinareed.com (2), upcounsel.com (2), newyorkregisteredagent.com (2), hrwatchdog.calchamber.com (2), shouselaw.com (2), californiaworkplacelawblog.com (2), cooley.com (2), kpmg.com (1), accountably.com (1), vestingstrategy.com (1), legalclarity.org (1), ebglaw.com (1), gtlaw-laborandemployment.com (1), traliant.com (1), sheppard.com (1), recordinglaw.com (1), legalaidatwork.org (1), cdflaborlaw.com (1), californiapayroll.com (1), fisherphillips.com (1), myhrconcierge.com (1), mondaq.com (1), fbm.com (1), patentlawip.com (1), wsgr.com (1), ktslaw.com (1)
 
@@ -69,7 +69,7 @@ So an interpretive claim with no primary source is not weakly evidenced. It is
 
 **These carry the Winet shape:**
 
-- `ipa_state_carveout` — asserts enforceability; asserts something is void or voidable; 3 secondary and 0 mirror source(s), no primary
+- `ipa_state_carveout` — asserts enforceability; asserts something is void or voidable; 3 secondary and 1 mirror source(s), no primary
 - `msa_ca_release` — appeals to case law; 2 secondary and 1 mirror source(s), no primary
 
 That list includes findings this repo has leaned on hardest — the "primarily resides and

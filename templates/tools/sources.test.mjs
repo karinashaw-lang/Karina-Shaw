@@ -164,6 +164,17 @@ console.log('judicial quotation — independence without verification');
      fragility(base).level==='unverifiable-as-recorded');
   t('judicial quotations do not promote a claim to meeting the standard',
      fragility({...base, judicialQuotations:[q(1), q(2)]}).level !== 'meets');
+
+  /* One quotation must stay visible even though it changes no verdict. ipa_state_carveout
+     has exactly one — CourtListener holds no second opinion quoting §2872 — and a report
+     that hid it would send the next reader looking for evidence already on file. */
+  const one = fragility({...base, judicialQuotations:[q(1)]});
+  t('one quotation leaves the level unchanged', one.level==='unverifiable-as-recorded');
+  t('but the count is still reported', one.judicial.count===1);
+  t('and the reason explains why one is not two', /one court quoted once is one quotation/.test(one.why));
+  t('the count rides on every level, not only the one it unlocks',
+     fragility({clauseId:'p', assertions:[{text:'15 days'}],
+       sources:[sec('https://leginfo.legislature.ca.gov/a')], judicialQuotations:[q(1)]}).judicial.count===1);
 }
 
 console.log('against every finding actually recorded');

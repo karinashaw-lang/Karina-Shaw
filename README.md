@@ -148,8 +148,29 @@ claim is no longer unverifiable as recorded, and it is not verified.
 | `judicially-corroborated` | 2 |
 | **`unverifiable-as-recorded`** | **2** |
 
-`ipa_state_carveout` and `msa_ca_release` remain in the worst category. The §2870/§2872 check
-was cut short by CourtListener's rate limit (5/min), not completed.
+### The third was answered too — and the rule still refused it
+
+The Federal Circuit states the division of labour between the two sections in terms:
+
+> "Related to § 2870, California Labor Code **§ 2872** requires that an employer must
+> 'provide a written notification' to an employee that any assignment provision 'does not
+> apply to an invention which qualifies fully under the provisions of Section 2870.'"
+> — *Whitewater West Industries v. Alleshouse* (Fed. Cir. 2020)
+
+The clause cites §2870 for the notice duty. §2872 creates it. The finding was right.
+
+**And `ipa_state_carveout` stays at `unverifiable-as-recorded`,** because the independence
+test needs two opinions and CourtListener holds exactly one quoting §2872's operative
+language. That is a fact about the case law, not a gap in the search — and the rule is not
+being relaxed to let a finding of mine through. The count is now reported at every level, so
+a reader can see the one quotation exists rather than going looking for it again.
+
+The same opinion yielded a gap the finding had missed: the district court found §2872
+"states no remedy for its violation" and treated the absent notification as not
+determinative. A clause that says to give the notice without indicating what turns on giving
+it leaves the reader unable to weigh the obligation.
+
+`msa_ca_release` remains the last finding in the worst category.
 
 ## The prototype was making a stale claim about itself
 
