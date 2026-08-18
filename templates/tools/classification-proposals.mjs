@@ -108,9 +108,15 @@ if(INVOKED){
   const risky = draft.filter(r=>r.lawTalk.length);
 
   const esc = v => `"${String(v??'').replace(/"/g,'""')}"`;
-  const csv = ['clause,document,title,severity,decision,by_exception,current,flips,law_talk']
+  /* The note travels into the clause JSON on --apply. It says which rule produced the call, so a
+     later reader can trace any one clause back to a document-level decision they can argue with,
+     rather than finding 360 flags with no reasoning attached to any of them. */
+  const note = r => r.byException
+    ? `${r.decision}: named exception to the "${r.doc}" default of ${r.decision==='authority'?'drafting':'authority'}`
+    : `${r.decision}: the "${r.doc}" default`;
+  const csv = ['clause,document,title,severity,decision,by_exception,current,flips,law_talk,note']
     .concat(rows.map(r=>[r.id,r.doc,r.title,r.severity,r.decision,r.byException?'exception':'default',
-                         r.current,r.flips?'flip':'',r.lawTalk.join('; ')].map(esc).join(',')))
+                         r.current,r.flips?'flip':'',r.lawTalk.join('; '),note(r)].map(esc).join(',')))
     .join('\n');
   writeIfChanged(path.join(V,'classification','proposed-decisions.csv'), csv+'\n',
                  {linePatterns:VOLATILE_LINES, fsImpl:fs});
