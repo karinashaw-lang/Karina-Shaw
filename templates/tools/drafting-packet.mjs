@@ -24,12 +24,31 @@ import {loadCorpus, ROOT} from './corpus.mjs';
 import {fireRules, clauseEligible, docIncluded, allConfigs} from './evaluator.mjs';
 import {gateFor, lawTalk} from './review.mjs';
 import {writeIfChanged, VOLATILE_FIELDS, VOLATILE_LINES} from './artifact.mjs';
+import {expand} from './classification-proposals.mjs';
 
 const C = loadCorpus();
 const TAX = C.taxonomy;
-const only = process.argv.includes('--doc') ? process.argv[process.argv.indexOf('--doc')+1] : null;
+/* --doc takes a comma-separated list, because the useful unit is a shippable set of documents
+   rather than one at a time — a reviewer sitting down with the NDA and the vesting agreement
+   wants one packet, not two. */
+const only = process.argv.includes('--doc')
+  ? new Set(process.argv[process.argv.indexOf('--doc')+1].split(',').map(s=>s.trim()).filter(Boolean))
+  : null;
 
-const drafting = C.clauses.filter(c => c.assertsLaw === false && (!only || c.doc === only));
+/* --proposed reads the track from verification/classification/proposals.json instead of the
+   stored assertsLaw label. The stored labels are heuristic and unreviewed; the proposals are a
+   real reading of every clause body. Until somebody applies them, this is the only way to see
+   the packet as it will actually be. It changes what is listed, never what is written. */
+let trackOf = c => c.assertsLaw === false;
+if(process.argv.includes('--proposed')){
+  const P = JSON.parse(fs.readFileSync(path.join(ROOT,'..','verification','classification','proposals.json'),'utf8'));
+  const {rows, problems} = expand(P, C.clauses);
+  if(problems.length){ console.error('proposals do not expand cleanly:'); problems.forEach(p=>console.error('  ! '+p)); process.exit(1); }
+  const dec = new Map(rows.map(r=>[r.id, r.decision]));
+  trackOf = c => dec.get(c.id) === 'drafting';
+}
+
+const drafting = C.clauses.filter(c => trackOf(c) && (!only || only.has(c.doc)));
 const docById  = new Map(C.documents.map(d=>[d.id,d]));
 
 /* ---- reach: how much of the configuration space actually sees this clause ---- */
@@ -88,7 +107,7 @@ const gate = TAX.releaseGate.draftingMinimum;
 
 let md = `# Drafting review packet
 
-${drafting.length} clauses across ${byDoc.size} documents${only?` (filtered to \`${only}\`)`:''}. None of them
+${drafting.length} clauses across ${byDoc.size} documents${only?` (filtered to \`${[...only].join('`, `')}\`)`:''}. None of them
 asserts what the law requires, so none can be verified against a statute — they are graded
 on drafting review instead, and the release gate for that ladder is **${gate}**.
 
