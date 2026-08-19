@@ -151,6 +151,8 @@
   .retr .rt{color:var(--muted);font-size:11px;margin-top:2px}
   .tagchip{display:inline-block;background:var(--chip);border:1px solid var(--line);color:var(--muted);
     font-size:10px;padding:1px 7px;border-radius:999px;margin:2px 3px 0 0}
+  .unver{display:inline-block;margin-left:8px;background:#fbf0f0;border:1px solid #e0bcbc;color:#8c3b3b;
+    border-radius:5px;padding:1px 7px;font-size:11px;vertical-align:middle;letter-spacing:.02em}
   .withheld{background:#f6ecd8;border:1px solid #d8c99b;border-radius:8px;padding:13px 15px;margin-top:20px;
     font:12.5px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#5c4d24}
   .withheld .wc{display:inline-block;background:#efe2c4;border:1px solid #d0bd8c;border-radius:5px;
@@ -1129,7 +1131,13 @@ function assemble(a){
     const title=resolveName(d.name,a,F);
     const included=docIncluded(d,a,TAX,ruleOf);
     const drafted=CLAUSES.filter(c=>c.doc===d.id && eligible(c,a,f) && (isAuto(c)||STATE.added.has(c.id)));
-    const clauses=drafted.filter(meetsClauseGate);
+    /* Assistive mode: this tool helps a person build a document, it does not hand them a
+       finished one. Withholding an unverified clause leaves the user with a blank page and
+       no idea what they are missing, which is worse for them than seeing the clause with an
+       honest label on it. So every eligible clause is drafted, and the ones that do not meet
+       the gate carry `unverified` so the renderer can mark them. The gate still decides what
+       is CLAIMED, it no longer decides what is SHOWN. */
+    const clauses=drafted.map(c=>({...c, unverified: !meetsClauseGate(c)}));
     const withheld=drafted.filter(c=>!meetsClauseGate(c));
     if(!included){ docs.push({...d,included:false,title,clauses:[],withheld:[],arts:[]}); continue; }
     const arts=[];
@@ -1190,21 +1198,24 @@ function renderDoc(pkg,docId){
       const r=renderBody(c.body,pkg,docId);
       const ct=condText(c.condition);
       const badge = ct ? `<span class="cond" title="${esc(ct.why)}">IF ${esc(ct.label)}</span>` : '';
+      const unver = c.unverified
+        ? `<span class="unver" title="${esc(gateFor(c,TAX).blocking||'')}">unverified — ${esc((VLEVELS[c.verification]||{name:'no level'}).name.toLowerCase())}</span>` : '';
       const manual = STATE.added.has(c.id) && !isAuto(c)
         ? `<span class="cond" style="background:#dff3e6;border-color:#9ccbaf;color:#1c5c37">added from AI review</span>` : '';
-      if(ar.heading && !c.no) h+=`<p>${r.html}${badge}${manual}</p>`;
-      else h+=`<h3>${esc(c.no)} ${esc(c.title)}${badge}${manual}</h3><p>${r.html}</p>`;
+      if(ar.heading && !c.no) h+=`<p>${r.html}${badge}${manual}${unver}</p>`;
+      else h+=`<h3>${esc(c.no)} ${esc(c.title)}${badge}${manual}${unver}</h3><p>${r.html}</p>`;
     }
   }
   if(d.withheld && d.withheld.length){
-    h+=`<div class="withheld"><b>${d.withheld.length} clause${d.withheld.length===1?'':'s'} withheld.</b>
-      ${d.withheld.length===1?'A clause was':'Clauses were'} drafted for this document and excluded because
-      ${d.withheld.length===1?'it does':'they do'} not meet the release gate (<span class="mono">${esc(GATE)}</span>).
-      ${esc(VLEVELS[GATE].meaning)}<br><br>
-      ${d.withheld.map(c=>`<span class="wc">${esc(c.title)} <em>${esc(VLEVELS[c.verification].name.toLowerCase())}</em></span>`).join('')}</div>`;
+    h+=`<div class="withheld"><b>${d.withheld.length} of ${d.clauses.length} clause${d.clauses.length===1?'':'s'} in this document ${d.withheld.length===1?'is':'are'} not verified.</b>
+      ${d.withheld.length===1?'It is':'They are'} drafted above and marked inline. Nothing here has been checked
+      against a primary source to the standard this project sets (<span class="mono">${esc(GATE)}</span>:
+      ${esc(VLEVELS[GATE].meaning)}), and no lawyer has reviewed it. Treat ${d.withheld.length===1?'it':'them'}
+      as a starting point to check, not as settled terms.<br><br>
+      ${d.withheld.map(c=>`<span class="wc">${esc(c.title)} <em>${esc((VLEVELS[c.verification]||{name:'no level'}).name.toLowerCase())}</em></span>`).join('')}</div>`;
   }
   if(!d.arts.length){
-    h+=`<p style="text-align:center;color:#8a8272"><em>No clause in this document currently meets the release gate, so nothing has been drafted into it.</em></p>`;
+    h+=`<p style="text-align:center;color:#8a8272"><em>No clause in the corpus is eligible for this configuration, so this document is empty.</em></p>`;
   }
   h+=`<div class="sig"><p><b>IN WITNESS WHEREOF</b>, the undersigned have executed this ${esc(d.title)} as of ${esc(pkg.F.date)}.</p>`;
   a.founderNames.filter(Boolean).forEach(n=>{
@@ -1332,8 +1343,8 @@ function renderKPIs(){
   const usableLib = CLAUSES.filter(meetsClauseGate).length;
   const k=[
     ['Documents',docs.length,'in generated package'],
-    ['Clauses drafted',drafted,`${usableLib} of ${CLAUSES.length} library clauses clear the gate`],
-    ['Withheld',held,`below release gate “${GATE}”`],
+    ['Clauses drafted',drafted,`every eligible clause is shown; ${usableLib} of ${CLAUSES.length} library clauses are verified`],
+    ['Needs checking',held,`drafted but below “${GATE}” — marked inline, not hidden`],
     ['Rules fired',`${f.size}/${RULES.length}`,'conditional logic engine'],
     ['AI confidence',conf===null?'—':conf+'%',conf===null?'generate to score':(conf<70?'below threshold — attorney review':'above 70% threshold')]
   ];
