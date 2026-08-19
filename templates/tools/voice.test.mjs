@@ -70,6 +70,33 @@ console.log('clause bodies attribute duties rather than issuing them');
   }
 }
 
+/* The mirror risk. Everything above guards against the platform saying something wrong.
+   This guards against it implying it has said everything — a user told the list is complete
+   stops looking, and whatever the library happens not to hold becomes something they never
+   knew to ask about. The product cannot support that claim: it is a California library with
+   token coverage of four other states. */
+console.log('the product never claims to be complete');
+{
+  const html=fs.readFileSync('draft-ai-engine.html','utf8');
+  const a=html.indexOf('/* BUILD:CORPUS-START'), b=html.indexOf('BUILD:CORPUS-END */');
+  const chrome=(html.slice(0,a)+html.slice(b))
+    .replace(/\/\*[\s\S]*?\*\//g,'').replace(/^\s*\/\/.*$/gm,'');
+  const COMPLETE=[
+    [/everything applicable/i,      'says the package holds everything that applies'],
+    [/nothing further to offer/i,   'implies the library is exhausted'],
+    [/\bfully compliant\b/i,        'claims compliance'],
+    [/covers everything/i,          'claims completeness'],
+    [/\bcomprehensive\b/i,          'claims completeness'],
+  ];
+  for(const [re,why] of COMPLETE){
+    t(`no "${re.source}" — ${why}`, !re.test(chrome));
+  }
+  t('the scope disclosure exists and is derived from the corpus',
+    /function coverageLine\(/.test(chrome) && /state-specific clauses/.test(chrome));
+  t('it is rendered whenever the user is choosing, not only when the list empties',
+    (chrome.match(/scope\s*\+/g)||[]).length>0 && /const scope=/.test(chrome));
+}
+
 console.log('every generated document carries the required disclaimer');
 {
   const html=fs.readFileSync('draft-ai-engine.html','utf8');
