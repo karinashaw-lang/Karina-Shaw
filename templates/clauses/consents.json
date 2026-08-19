@@ -35,7 +35,7 @@
    "group": "Organizational Actions",
    "title": "Election of Initial Directors",
    "severity": "critical",
-   "insertion": "auto",
+   "insertion": "suggest",
    "condition": {
     "rule": "is_corp"
    },
@@ -63,7 +63,7 @@
    "group": "Organizational Actions",
    "title": "Issuance of Interests",
    "severity": "critical",
-   "insertion": "auto",
+   "insertion": "suggest",
    "condition": {
     "any": [
      {
@@ -98,7 +98,7 @@
    "group": "Organizational Actions",
    "title": "Issuance of Interests",
    "severity": "critical",
-   "insertion": "auto",
+   "insertion": "suggest",
    "condition": {
     "not": {
      "any": [
@@ -135,7 +135,7 @@
    "group": "Organizational Actions",
    "title": "Ratification of IP Assignment",
    "severity": "recommended",
-   "insertion": "auto",
+   "insertion": "suggest",
    "condition": {
     "any": [
      {
@@ -274,7 +274,7 @@
    "group": "Authorizations",
    "title": "Acknowledgment of 83(b) Deadline",
    "severity": "recommended",
-   "insertion": "auto",
+   "insertion": "suggest",
    "condition": {
     "rule": "file_83b"
    },
@@ -302,7 +302,7 @@
    "group": "Authorizations",
    "title": "Authorization to Qualify in Other States",
    "severity": "recommended",
-   "insertion": "auto",
+   "insertion": "suggest",
    "condition": {
     "rule": "foreign_qual"
    },

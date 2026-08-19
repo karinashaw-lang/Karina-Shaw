@@ -61,7 +61,7 @@
    "group": "Organization",
    "title": "Capital Contributions",
    "severity": "critical",
-   "insertion": "auto",
+   "insertion": "suggest",
    "condition": {
     "rule": "is_llc"
    },
@@ -89,7 +89,7 @@
    "group": "Organization",
    "title": "Issuance of Stock",
    "severity": "critical",
-   "insertion": "auto",
+   "insertion": "suggest",
    "condition": {
     "rule": "is_corp"
    },
@@ -228,7 +228,7 @@
    "group": "Governance",
    "title": "Officers",
    "severity": "recommended",
-   "insertion": "auto",
+   "insertion": "suggest",
    "condition": {
     "rule": "is_corp"
    },
@@ -256,7 +256,7 @@
    "group": "Governance",
    "title": "Managers",
    "severity": "recommended",
-   "insertion": "auto",
+   "insertion": "suggest",
    "condition": {
     "all": [
      {
@@ -346,7 +346,7 @@
    "group": "Governance",
    "title": "Sole Owner Provisions",
    "severity": "recommended",
-   "insertion": "auto",
+   "insertion": "suggest",
    "condition": {
     "rule": "solo_founder"
    },
@@ -510,7 +510,7 @@
    "group": "Economics",
    "title": "Distributions",
    "severity": "recommended",
-   "insertion": "auto",
+   "insertion": "suggest",
    "condition": {
     "rule": "is_llc"
    },
@@ -574,7 +574,7 @@
    "group": "Economics",
    "title": "Allocations of Profit and Loss",
    "severity": "recommended",
-   "insertion": "auto",
+   "insertion": "suggest",
    "condition": {
     "rule": "is_llc"
    },
@@ -602,7 +602,7 @@
    "group": "Economics",
    "title": "Dividends",
    "severity": "optional",
-   "insertion": "auto",
+   "insertion": "suggest",
    "condition": {
     "rule": "is_corp"
    },

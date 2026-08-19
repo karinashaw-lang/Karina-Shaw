@@ -9,7 +9,7 @@
    "group": "Immediate Deadlines",
    "title": "83(b) Filing Deadline",
    "severity": "critical",
-   "insertion": "auto",
+   "insertion": "suggest",
    "condition": {
     "rule": "file_83b"
    },
@@ -44,7 +44,7 @@
    "group": "Immediate Deadlines",
    "title": "California Statement of Information",
    "severity": "critical",
-   "insertion": "auto",
+   "insertion": "suggest",
    "condition": {
     "rule": "ca_soi"
    },
@@ -121,7 +121,7 @@
    "group": "Immediate Deadlines",
    "title": "New York Publication Deadline",
    "severity": "critical",
-   "insertion": "auto",
+   "insertion": "suggest",
    "condition": {
     "rule": "ny_publication"
    },
@@ -241,7 +241,7 @@
    "group": "Recurring Obligations",
    "title": "Delaware Franchise Tax",
    "severity": "critical",
-   "insertion": "auto",
+   "insertion": "suggest",
    "condition": {
     "rule": "de_franchise"
    },
@@ -282,7 +282,7 @@
    "group": "Recurring Obligations",
    "title": "Texas Franchise Tax and Public Information Report",
    "severity": "recommended",
-   "insertion": "auto",
+   "insertion": "suggest",
    "condition": {
     "eq": [
      "formState",
@@ -323,7 +323,7 @@
    "group": "Recurring Obligations",
    "title": "Florida Annual Report",
    "severity": "recommended",
-   "insertion": "auto",
+   "insertion": "suggest",
    "condition": {
     "rule": "fl_annual"
    },
@@ -364,7 +364,7 @@
    "group": "Recurring Obligations",
    "title": "New York Biennial Statement",
    "severity": "recommended",
-   "insertion": "auto",
+   "insertion": "suggest",
    "condition": {
     "eq": [
      "formState",
@@ -402,7 +402,7 @@
    "group": "Recurring Obligations",
    "title": "Payroll Tax Deposits and Filings",
    "severity": "critical",
-   "insertion": "auto",
+   "insertion": "suggest",
    "condition": {
     "rule": "hiring"
    },
@@ -430,7 +430,7 @@
    "group": "Recurring Obligations",
    "title": "Annual BAA and Security Review",
    "severity": "recommended",
-   "insertion": "auto",
+   "insertion": "suggest",
    "condition": {
     "rule": "health_baa"
    },

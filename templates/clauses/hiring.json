@@ -87,7 +87,7 @@
    "group": "Position and Term",
    "title": "Work Location",
    "severity": "recommended",
-   "insertion": "auto",
+   "insertion": "suggest",
    "condition": {
     "rule": "remote_worker"
    },
@@ -141,7 +141,7 @@
    "group": "Compensation",
    "title": "Classification",
    "severity": "critical",
-   "insertion": "auto",
+   "insertion": "suggest",
    "condition": {
     "rule": "salaried_worker"
    },
@@ -169,7 +169,7 @@
    "group": "Compensation",
    "title": "Overtime and Timekeeping",
    "severity": "critical",
-   "insertion": "auto",
+   "insertion": "suggest",
    "condition": {
     "rule": "hourly_worker"
    },
@@ -224,7 +224,7 @@
    "group": "Compensation",
    "title": "Equity Award",
    "severity": "critical",
-   "insertion": "auto",
+   "insertion": "suggest",
    "condition": {
     "rule": "equity_grant"
    },
@@ -252,7 +252,7 @@
    "group": "Compensation",
    "title": "Tax Election Notice",
    "severity": "recommended",
-   "insertion": "auto",
+   "insertion": "suggest",
    "condition": {
     "rule": "equity_grant"
    },
@@ -306,7 +306,7 @@
    "group": "Compensation",
    "title": "Expense Reimbursement",
    "severity": "recommended",
-   "insertion": "auto",
+   "insertion": "suggest",
    "condition": {
     "any": [
      {
@@ -377,7 +377,7 @@
    "group": "Obligations",
    "title": "No Non-Compete",
    "severity": "critical",
-   "insertion": "auto",
+   "insertion": "suggest",
    "condition": {
     "eq": [
      "opState",
@@ -1012,7 +1012,7 @@
    "group": "Time and Pay",
    "title": "Meal and Rest Periods",
    "severity": "critical",
-   "insertion": "auto",
+   "insertion": "suggest",
    "condition": {
     "eq": [
      "opState",
@@ -1108,7 +1108,7 @@
    "group": "Conduct",
    "title": "Required Training",
    "severity": "recommended",
-   "insertion": "auto",
+   "insertion": "suggest",
    "condition": {
     "in": [
      "opState",
@@ -1169,7 +1169,7 @@
    "group": "Leave",
    "title": "Paid Sick Leave",
    "severity": "critical",
-   "insertion": "auto",
+   "insertion": "suggest",
    "condition": {
     "in": [
      "opState",
