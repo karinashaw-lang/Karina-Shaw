@@ -372,50 +372,6 @@
    "classifiedBy": "heuristic-unreviewed"
   },
   {
-   "id": "ea_noncompete_void",
-   "doc": "employment-agreement",
-   "group": "Obligations",
-   "title": "No Non-Compete",
-   "severity": "critical",
-   "insertion": "suggest",
-   "condition": {
-    "eq": [
-     "opState",
-     "CA"
-    ]
-   },
-   "jurisdictions": [
-    "CA"
-   ],
-   "industries": [
-    "*"
-   ],
-   "entities": [
-    "*"
-   ],
-   "version": "1.0.0",
-   "updated": "2026-06",
-   "rationale": "Since AB 1076 it is unlawful to include or attempt to enforce a non-compete against a California employee, regardless of the governing law the agreement names.",
-   "body": "This agreement contains no non-compete or customer non-solicitation covenant. Such provisions are void under California law and it is unlawful to include or attempt to enforce them, regardless of where the agreement is signed or which state’s law it names. The Company relies on the confidentiality and invention assignment obligations in <<xr:ea_ip>> instead.",
-   "sources": [
-    {
-     "citation": "Cal. Bus. & Prof. Code §16600",
-     "type": "statute-cited",
-     "url": null,
-     "checked": null
-    },
-    {
-     "citation": "Cal. Stats. 2023 ch. 157 (AB 1076)",
-     "type": "statute-cited",
-     "url": null,
-     "checked": null
-    }
-   ],
-   "verification": "multi-cited",
-   "assertsLaw": true,
-   "classifiedBy": "heuristic-unreviewed"
-  },
-  {
    "id": "ea_nonsolicit",
    "doc": "employment-agreement",
    "group": "Obligations",
@@ -1007,90 +963,6 @@
    "classifiedBy": "heuristic-unreviewed"
   },
   {
-   "id": "hb_meal_rest",
-   "doc": "handbook",
-   "group": "Time and Pay",
-   "title": "Meal and Rest Periods",
-   "severity": "critical",
-   "insertion": "suggest",
-   "condition": {
-    "eq": [
-     "opState",
-     "CA"
-    ]
-   },
-   "jurisdictions": [
-    "CA"
-   ],
-   "industries": [
-    "*"
-   ],
-   "entities": [
-    "*"
-   ],
-   "version": "1.0.0",
-   "updated": "2026-06",
-   "rationale": "California meal and rest violations each carry a one-hour premium per day, and they are the most frequently litigated wage claims in the state.",
-   "body": "If you are non-exempt you are entitled to an unpaid, uninterrupted meal period of at least thirty (30) minutes when you work more than five (5) hours in a day, and to a second one when you work more than ten (10) hours. The first has to be provided before your fifth hour is complete. You and the Company may agree to waive the first period on a day when you will work no more than six (6) hours, and to waive the second on a day of no more than twelve (12) hours if you did not waive the first. What the Company owes is to relieve you of all duty and leave you free to use the time as you like; it does not have to police the break, so a break you were given and chose to work through does not entitle you to extra pay. You are also authorized and permitted paid rest periods of ten (10) minutes for every four (4) hours worked or major fraction, which works out to ten minutes on a shift of three and one-half to six hours, twenty minutes over six and up to ten, and thirty minutes over ten and up to fourteen; no rest period is required on a shift under three and one-half hours. A rest period is off duty — the Company cannot ask you to stay on call through it — and is paid time. On any workday you are not provided a compliant meal period, and again on any workday you are not provided a compliant rest period, you are owed one (1) additional hour of pay at your regular rate of compensation, which is the same measure as the regular rate used for overtime and includes non-discretionary payments, not just your base hourly rate. That premium is a wage, so it is also reportable on your wage statement and payable when your employment ends.",
-   "sources": [
-    {
-     "citation": "Cal. Lab. Code §512",
-     "type": "statute-publisher",
-     "url": "https://leginfo.legislature.ca.gov/faces/codes_displayText.xhtml?lawCode=LAB&division=2.&title=&part=2.&chapter=1.&article=",
-     "checked": "2026-08-19",
-     "title": "California Legislative Counsel (leginfo) — Cal. Lab. Code §512 (as amended by Stats. 2025, Ch. 95 (SB 693), eff. Jan. 1, 2026)"
-    },
-    {
-     "citation": "Cal. Lab. Code §226.7",
-     "type": "statute-publisher",
-     "url": "https://leginfo.legislature.ca.gov/faces/codes_displayText.xhtml?lawCode=LAB&division=2.&title=&part=1.&chapter=1.&article=1.",
-     "checked": "2026-08-19",
-     "title": "California Legislative Counsel (leginfo) — Cal. Lab. Code §226.7"
-    },
-    {
-     "citation": "IWC Wage Order No. 4-2001 §§11–12",
-     "type": "statute-publisher",
-     "url": "https://www.dir.ca.gov/iwc/IWCArticle4.pdf",
-     "checked": "2026-08-19",
-     "title": "Department of Industrial Relations — IWC Order No. 4-2001, §§11 and 12, effective January 1, 2002 as amended"
-    },
-    {
-     "type": "case-mirror",
-     "url": "https://www.courtlistener.com/opinion/844210/brinker-restaurant-corp-v-superior-court/",
-     "checked": "2026-08-19",
-     "title": "CourtListener — Brinker Restaurant Corp. v. Superior Court (2012) 53 Cal.4th 1004"
-    },
-    {
-     "type": "case-mirror",
-     "url": "https://www.courtlistener.com/opinion/4333055/augustus-v-abm-security-services/",
-     "checked": "2026-08-19",
-     "title": "CourtListener — Augustus v. ABM Security Services, Inc. (2016) 2 Cal.5th 257"
-    },
-    {
-     "type": "case-mirror",
-     "url": "https://www.courtlistener.com/opinion/4900098/ferra-v-loews-hollywood-hotel-llc/",
-     "checked": "2026-08-19",
-     "title": "CourtListener — Ferra v. Loews Hollywood Hotel, LLC (2021) 11 Cal.5th 858"
-    },
-    {
-     "type": "case-mirror",
-     "url": "https://www.courtlistener.com/opinion/6470934/naranjo-v-spectrum-security-services-inc/",
-     "checked": "2026-08-19",
-     "title": "CourtListener — Naranjo v. Spectrum Security Services, Inc. (2022) 13 Cal.5th 93"
-    }
-   ],
-   "verification": "multi-cited",
-   "assertsLaw": true,
-   "classifiedBy": "heuristic-unreviewed",
-   "defects": [
-    "Order No. 4-2001 is the order read for this rebuild. The clause fires for any California operation, and the sixteen other orders — including the ones covering manufacturing, public housekeeping, agriculture and construction — were not read. A reader in one of those industries is being given Order 4's answer.",
-    "The handbook voice states the on-duty meal period nowhere, because the corresponding employer-facing clause carries it. An employee whose job is one where the nature of the work prevents relief from duty will not learn from this clause that an on-duty meal period is lawful with a signed, revocable agreement.",
-    "Whether an employee can recover both a meal premium and a rest premium for the same workday was not researched. The clause is drafted to read as though they are separate, which follows the text of §226.7(c), but no authority read here decides it."
-   ],
-   "lastChecked": "2026-08-19",
-   "verificationNote": "Rebuilt from the primary text on 2026-08-19. The previous body stated that any missed, late or interrupted meal or rest period entitles the employee to an hour of pay; that is the \"ensure\" standard the California Supreme Court rejected in Brinker, and it was the corpus's signature defect. Cal. Lab. Code §§512 and 226.7 were fetched from the California Legislative Counsel and IWC Order No. 4-2001 §§11–12 from the Department of Industrial Relations; the body was rewritten from what they say and checked against Brinker, Augustus, Ferra and Naranjo on CourtListener. Full record in verification/findings/hb_meal_rest.json. NOT primary-verified: no human has read or signed this."
-  },
-  {
    "id": "hb_conduct",
    "doc": "handbook",
    "group": "Conduct",
@@ -1143,41 +1015,6 @@
    "classifiedBy": "heuristic-unreviewed"
   },
   {
-   "id": "hb_training",
-   "doc": "handbook",
-   "group": "Conduct",
-   "title": "Required Training",
-   "severity": "recommended",
-   "insertion": "suggest",
-   "condition": {
-    "in": [
-     "opState",
-     [
-      "CA",
-      "NY"
-     ]
-    ]
-   },
-   "jurisdictions": [
-    "CA",
-    "NY"
-   ],
-   "industries": [
-    "*"
-   ],
-   "entities": [
-    "*"
-   ],
-   "version": "1.0.0",
-   "updated": "2026-06",
-   "rationale": "Both states mandate harassment prevention training at low headcount thresholds, with separate content and frequency requirements for supervisors.",
-   "body": "The Company provides the harassment prevention training required by {{opStateLong}} at the intervals and headcount thresholds that state specifies, including separate supervisor training where required, and retains records of completion.",
-   "sources": [],
-   "verification": "unsourced",
-   "assertsLaw": true,
-   "classifiedBy": "heuristic-unreviewed"
-  },
-  {
    "id": "hb_technology",
    "doc": "handbook",
    "group": "Conduct",
@@ -1198,41 +1035,6 @@
    "updated": "2026-06",
    "rationale": "Several states require advance written notice before monitoring employee electronic communications, and notice given after the fact does not cure it.",
    "body": "Company systems are provided for business use. Employees should have no expectation of privacy in data stored on or transmitted through Company systems, and the Company may monitor them consistent with the law of {{opStateLong}}, which may require advance written notice. Employees shall not store Company confidential information in personal accounts.",
-   "sources": [],
-   "verification": "unsourced",
-   "assertsLaw": true,
-   "classifiedBy": "heuristic-unreviewed"
-  },
-  {
-   "id": "hb_leave_sick",
-   "doc": "handbook",
-   "group": "Leave",
-   "title": "Paid Sick Leave",
-   "severity": "critical",
-   "insertion": "suggest",
-   "condition": {
-    "in": [
-     "opState",
-     [
-      "CA",
-      "NY"
-     ]
-    ]
-   },
-   "jurisdictions": [
-    "CA",
-    "NY"
-   ],
-   "industries": [
-    "*"
-   ],
-   "entities": [
-    "*"
-   ],
-   "version": "1.0.0",
-   "updated": "2026-06",
-   "rationale": "Mandatory in both states at low employee counts, with accrual and carryover mechanics that differ from vacation and cannot be merged into a single PTO bucket without care.",
-   "body": "Employees accrue paid sick leave as required by the law of {{opStateLong}}, beginning on the first day of employment and available for use as that law provides. Sick leave is tracked separately from vacation. The Company does not require a doctor’s note except where that law permits, and does not count protected sick leave use against attendance.",
    "sources": [],
    "verification": "unsourced",
    "assertsLaw": true,

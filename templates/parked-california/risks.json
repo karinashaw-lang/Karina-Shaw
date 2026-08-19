@@ -1,0 +1,29 @@
+{
+ "$comment": "Risks whose trigger clauses were parked with the California corpus. Restore alongside templates/parked-california/ if California support returns.",
+ "risks": [
+  {
+   "id": "ca_release_1542",
+   "level": "medium",
+   "title": "Release will not reach unknown claims without a Section 1542 waiver",
+   "condition": {
+    "rule": "ca_commercial"
+   },
+   "absent": [
+    "msa_ca_release"
+   ],
+   "packages": [
+    "commercial"
+   ],
+   "body": "Under California law a general release does not extend to claims the releasing party did not know or suspect to exist unless it expressly waives [[Civil Code §1542|section 1542]], quoting the statute. Unknown claims are ordinarily the principal reason a release is taken, so a settlement or termination release drafted without it buys much less than intended.",
+   "sources": [
+    {
+     "citation": "Cal. Civ. Code §1542",
+     "type": "statute-cited",
+     "url": null,
+     "checked": null
+    }
+   ],
+   "verification": "single-source"
+  }
+ ]
+}

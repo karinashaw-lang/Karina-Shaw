@@ -62,12 +62,20 @@ console.log('clause bodies attribute duties rather than issuing them');
 
   /* The rewrite must not have turned a recommended practice into a legal requirement. That
      would swap one false statement for another, which is not an improvement. */
+  /* Conditional on presence. These were parked when the corpus narrowed to generic templates,
+     and a test that demands a parked clause exist would block exactly the kind of scoping
+     decision it has no business having an opinion about. What it must not allow is one of them
+     coming back as a legal requirement, which is what the rewrite was guarding against. */
   const practice=['can_local_ordinance','can_paga_audit','cal_baa_review'];
+  let present=0;
   for(const id of practice){
     const c=C.clauses.find(x=>x.id===id);
+    if(!c) continue;
+    present++;
     t(`${id} is still described as practice, not as a requirement`,
-      c && !/^(California|Federal)\s+(requires|prohibits)/.test(String(c.body).trim()));
+      !/^(California|Federal)\s+(requires|prohibits)/.test(String(c.body).trim()));
   }
+  console.log(`        ${present} of ${practice.length} practice clauses present in this corpus`);
 }
 
 /* The mirror risk. Everything above guards against the platform saying something wrong.
@@ -121,10 +129,11 @@ console.log('the platform expresses no view on whether the document is complete'
 }
 
 console.log('every generated document carries the required disclaimer');
+/* Wording per the MVP Product Spec, which supersedes the earlier protection guide. */
 {
   const html=fs.readFileSync('draft-ai-engine.html','utf8');
   t('the exact footer wording is present',
-    html.includes('This document was generated using artificial intelligence tools and'));
+    html.includes('This document was created using DRAFT software. DRAFT is not a law firm'));
   t('it is emitted per document, not once per page',
     /genfoot/.test(html) && html.split('genfoot').length>2);
 }

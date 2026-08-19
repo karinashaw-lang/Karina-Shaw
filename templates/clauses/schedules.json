@@ -69,58 +69,6 @@
    "verification": "unsourced",
    "assertsLaw": false,
    "classifiedBy": "heuristic-unreviewed"
-  },
-  {
-   "id": "exh_b_spousal",
-   "doc": "schedules",
-   "group": "Exhibits",
-   "title": "Exhibit B — Spousal Consent",
-   "severity": "recommended",
-   "insertion": "suggest",
-   "condition": {
-    "all": [
-     {
-      "rule": "multi_founder"
-     },
-     {
-      "any": [
-       {
-        "eq": [
-         "opState",
-         "CA"
-        ]
-       },
-       {
-        "eq": [
-         "opState",
-         "TX"
-        ]
-       }
-      ]
-     }
-    ]
-   },
-   "jurisdictions": [
-    "CA",
-    "TX"
-   ],
-   "industries": [
-    "*"
-   ],
-   "entities": [
-    "*"
-   ],
-   "version": "1.0.0",
-   "updated": "2026-06",
-   "provides": [
-    "Exhibit B"
-   ],
-   "rationale": "Supplies the attachment the spousal consent clause refers to. Without it that clause points at a document that does not exist.",
-   "body": "The spouse of each married {{ownerSing}} acknowledges having read the {{govDoc}}, consents to its terms, and agrees that any community property interest in the {{ownerSing}}’s ownership is bound by the transfer restrictions and buy-sell provisions it contains. This exhibit supports <<xr:gov_spousal>>.",
-   "sources": [],
-   "verification": "unsourced",
-   "assertsLaw": false,
-   "classifiedBy": "heuristic-unreviewed"
   }
  ]
 }

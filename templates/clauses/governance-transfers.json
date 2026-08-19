@@ -89,56 +89,6 @@
    "classifiedBy": "heuristic-unreviewed"
   },
   {
-   "id": "gov_spousal",
-   "doc": "governance",
-   "group": "Ownership Transfers",
-   "title": "Spousal Consent",
-   "severity": "recommended",
-   "insertion": "suggest",
-   "condition": {
-    "all": [
-     {
-      "rule": "multi_founder"
-     },
-     {
-      "any": [
-       {
-        "eq": [
-         "opState",
-         "CA"
-        ]
-       },
-       {
-        "eq": [
-         "opState",
-         "TX"
-        ]
-       }
-      ]
-     }
-    ]
-   },
-   "jurisdictions": [
-    "CA",
-    "TX"
-   ],
-   "industries": [
-    "*"
-   ],
-   "entities": [
-    "*"
-   ],
-   "version": "1.0.0",
-   "updated": "2026-06",
-   "benchmark": "Present in 51% of multi-owner agreements in community property states",
-   "rationale": "In a community property state a spouse may hold an interest in the ownership stake without ever signing anything. A consent makes the buy-sell enforceable against that interest.",
-   "body": "Each married {{ownerSing}} residing in a community property jurisdiction shall cause their spouse to execute the spousal consent attached as Exhibit B, acknowledging this {{govDoc}} and agreeing that any community property interest is bound by the transfer restrictions in <<xr:gov_transfer>> and the buy-sell provisions in <<xr:gov_buysell>>.",
-   "sources": [],
-   "verification": "unsourced",
-   "assertsLaw": false,
-   "classifiedBy": "heuristic-unreviewed"
-  },
-  {
    "id": "gov_vesting",
    "doc": "governance",
    "group": "Ownership Transfers",

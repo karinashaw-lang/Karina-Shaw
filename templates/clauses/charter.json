@@ -354,68 +354,6 @@
    "classifiedBy": "heuristic-unreviewed"
   },
   {
-   "id": "charter_ca_professional",
-   "doc": "charter",
-   "group": "Charter",
-   "title": "Professional Services Restriction",
-   "severity": "critical",
-   "insertion": "suggest",
-   "condition": {
-    "all": [
-     {
-      "in": [
-       "industry",
-       [
-        "services",
-        "health"
-       ]
-      ]
-     },
-     {
-      "any": [
-       {
-        "eq": [
-         "formState",
-         "CA"
-        ]
-       },
-       {
-        "eq": [
-         "opState",
-         "CA"
-        ]
-       }
-      ]
-     }
-    ]
-   },
-   "jurisdictions": [
-    "CA"
-   ],
-   "industries": [
-    "services",
-    "health"
-   ],
-   "entities": [
-    "*"
-   ],
-   "version": "1.0.0",
-   "updated": "2026-06",
-   "rationale": "California does not permit an LLC to render professional services requiring a license. This is a formation-blocking issue, not a drafting preference.",
-   "body": "California law does not permit a {{entityLong}} to render professional services for which a license is required. If any service the Company intends to provide in {{opStateLong}} requires a state license, the Company must be organized as a professional corporation or a registered limited liability partnership instead. Confirm the licensing status of every intended service line before filing.",
-   "sources": [
-    {
-     "citation": "Cal. Corp. Code §17701.04(b)",
-     "type": "statute-cited",
-     "url": null,
-     "checked": null
-    }
-   ],
-   "verification": "single-source",
-   "assertsLaw": true,
-   "classifiedBy": "heuristic-unreviewed"
-  },
-  {
    "id": "charter_tx_purpose",
    "doc": "charter",
    "group": "Charter",
