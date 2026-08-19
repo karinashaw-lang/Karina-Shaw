@@ -1,60 +1,154 @@
 {
  "clauseId": "hb_meal_rest",
- "checkedAt": "2026-08-18",
- "method": "CourtListener opinion text. No statutory publisher was reachable; every publisher, agency and mirror host returns 403 at the egress proxy, and WebFetch fails the same way on every host. Re-measured 2026-08-18.",
+ "checkedAt": "2026-08-19",
+ "method": "Rebuild from primary text, replacing the check recorded on 2026-08-18. That earlier check was made when no statutory publisher was reachable and rested on Brinker's opinion text alone; it identified the defect but could not repair it. Egress is now open. Cal. Lab. Code §§512 and 226.7 were fetched from the California Legislative Counsel and IWC Order No. 4-2001 §§11 and 12 from the Department of Industrial Relations, the body that publishes the wage orders. The body was rewritten from those texts in the handbook's second-person voice and then checked against the construing case law on CourtListener. Assertions describe the REBUILT body; the earlier finding's contradicted assertions are preserved under priorDefects.",
  "queries": [
-  "Brinker meal period employer obligation provide relieve duty rest break",
-  "need not ensure",
-  "Employees are entitled to 10 minutes"
+  "Cal. Lab. Code §512, §226.7 full text (leginfo)",
+  "IWC Wage Order No. 4-2001 §§11-12 (dir.ca.gov)",
+  "Brinker meal period relieve of all duty need not ensure",
+  "Brinker Employees are entitled to 10 minutes",
+  "Augustus ABM rest period on call",
+  "Ferra regular rate of compensation",
+  "Naranjo Spectrum premium pay wages 203 226"
  ],
  "assertions": [
   {
-   "text": "a missed, late, or interrupted meal period entitles the employee to one additional hour of pay",
-   "status": "contradicted",
-   "note": "This is the 'ensure' standard the California Supreme Court expressly rejected. Brinker holds the duty is to RELIEVE the employee of all duty for the period; the employer need not ensure no work is done. So a break the employer provided and the employee chose to work through owes no premium. The clause ties the premium to the break being missed rather than to the employer failing to provide it, which is the opposite of the holding. The error runs toward telling a small employer it owes money it does not owe."
-  },
-  {
-   "text": "a paid ten (10) minute rest period for every four (4) hours worked or major fraction thereof",
-   "status": "contradicted",
-   "note": "This reproduces the wage order's raw words without the construction that says what they mean. Brinker settled it: 10 minutes for shifts of three and one-half to six hours, 20 minutes for shifts over six and up to ten, 30 minutes over ten and up to fourteen. The Court of Appeal had read the same words to give a seven-hour shift only 10 minutes, and the Supreme Court reversed that reading. A reader applying the clause as written can land on the rejected answer."
-  },
-  {
-   "text": "meal period beginning no later than the end of the fifth hour of work",
+   "text": "a meal period of at least 30 minutes is owed on a work period of more than five hours, a second on more than ten, and the first must come before the fifth hour is complete",
    "status": "corroborated",
-   "note": "Brinker: the first meal period must start after no more than five hours of work."
+   "note": "§512(a) and Wage Order 4 §11(A). The timing statement is a reading of the trigger itself — the duty attaches to 'a work period of more than five hours per day', so a compliant period has to be provided before the work period passes five hours. It is stated in the clause as following from the statute, not attributed to a case."
+  },
+  {
+   "text": "either meal period may be waived by mutual consent on the conditions in §512(a)",
+   "status": "corroborated",
+   "note": "§512(a). Absent from the previous body."
+  },
+  {
+   "text": "the employer's duty is to relieve the employee of all duty, not to ensure no work is done, so a break provided and worked through owes nothing",
+   "status": "corroborated",
+   "note": "Brinker, quoted below. The previous body stated the opposite and this was the corpus's canonical failure."
+  },
+  {
+   "text": "rest periods run 10 minutes for a shift of 3½–6 hours, 20 for more than 6 up to 10, 30 for more than 10 up to 14, with none required under 3½ hours",
+   "status": "corroborated",
+   "note": "Wage Order 4 §12(A) for the rate and the floor; Brinker for the schedule. The previous body gave the raw 'ten (10) minute rest period for every four (4) hours worked or major fraction' with no schedule, which is the phrasing the Court of Appeal misread and the Supreme Court corrected."
+  },
+  {
+   "text": "a rest period is off duty and the employer cannot require the employee to remain on call through it",
+   "status": "corroborated",
+   "note": "Augustus v. ABM Security Services, quoted below. Absent from the previous body."
+  },
+  {
+   "text": "one additional hour of pay is owed for each workday a compliant meal period is not provided, and again for each workday a compliant rest period is not provided",
+   "status": "corroborated",
+   "note": "§226.7(c); Wage Order 4 §§11(B), 12(B). The per-workday unit and the fact that the trigger is the employer's failure to provide are both in the text and both were missing from the previous body."
+  },
+  {
+   "text": "the premium is measured by the regular rate of compensation, which includes non-discretionary payments and not the base hourly rate alone",
+   "status": "corroborated",
+   "note": "Ferra v. Loews Hollywood Hotel, quoted below."
+  },
+  {
+   "text": "the premium is a wage, so it is reportable on the wage statement and payable when employment ends",
+   "status": "corroborated",
+   "note": "Naranjo v. Spectrum Security Services (2022): 'For these purposes, section 226.7 is both' a statutory remedy and wages, 'because under the relevant statute and wage order, an employee becomes entitled to premium pay for missed or noncompliant meal and rest breaks precisely because she was required to work when she should have been relieved of duty'. This is the consequence that turns an unpaid premium into a §203 and §226 exposure, and no version of this clause has ever carried it."
   }
  ],
+ "priorDefects": [
+  "contradicted: 'A missed, late, or interrupted meal or rest period entitles the employee to one additional hour of pay at the regular rate.' The ensure standard Brinker rejected, stated as the rule.",
+  "contradicted: 'a paid ten (10) minute rest period for every four (4) hours worked or major fraction' as the whole of the entitlement — the wage order's words without Brinker's construction of them.",
+  "omitted: waiver of either meal period.",
+  "omitted: the off-duty and no-on-call requirement for rest periods.",
+  "omitted: that the premium is measured by the regular rate of compensation as Ferra construes it.",
+  "omitted: that the premium is a wage with §§201-203 and §226 consequences.",
+  "citation-gap: 'IWC Wage Order (industry-specific)' named a body of law with no provision in it. Replaced with Order No. 4-2001 §§11-12."
+ ],
  "gaps": [
-  "The clause never says what 'provide' means, which is the whole of the employer's duty and the only thing that decides whether a premium is owed. Brinker devotes its central holding to it.",
-  "Nothing about the waiver available by mutual consent for shifts of six hours or less, which Brinker discusses and which a small employer with short shifts would rely on."
+  "Order No. 4-2001 is the order read. This clause fires whenever opState is CA, for any industry, and the sixteen other IWC orders were not read. A handbook for a restaurant (Order 5), a shop (Order 7) or a construction firm (Order 16) is being given Order 4's answer.",
+  "The clause does not mention on-duty meal periods, which are lawful for work whose nature prevents relief from duty if there is a signed and revocable written agreement. An employee in such a job will not find the rule that governs them here.",
+  "Whether a meal premium and a rest premium are both payable for the same workday was not researched. The clause is drafted as though they are, following the structure of §226.7(c), but nothing read here decides it.",
+  "The rebuilt body does not carry Donohue's rebuttable presumption or the rounding prohibition, because those are employer-side record-keeping rules and this is the employee handbook clause. They are carried in emp_meal."
  ],
  "sources": [
   {
-   "title": "CourtListener \u2014 Brinker Restaurant Corp. v. Superior Court, 53 Cal.4th 1004 (2012)",
+   "title": "California Legislative Counsel (leginfo) — Cal. Lab. Code §512 (as amended by Stats. 2025, Ch. 95 (SB 693), eff. Jan. 1, 2026)",
+   "url": "https://leginfo.legislature.ca.gov/faces/codes_displayText.xhtml?lawCode=LAB&division=2.&title=&part=2.&chapter=1.&article=",
+   "checked": "2026-08-19"
+  },
+  {
+   "title": "California Legislative Counsel (leginfo) — Cal. Lab. Code §226.7",
+   "url": "https://leginfo.legislature.ca.gov/faces/codes_displayText.xhtml?lawCode=LAB&division=2.&title=&part=1.&chapter=1.&article=1.",
+   "checked": "2026-08-19"
+  },
+  {
+   "title": "Department of Industrial Relations — IWC Order No. 4-2001 §§11 and 12",
+   "url": "https://www.dir.ca.gov/iwc/IWCArticle4.pdf",
+   "checked": "2026-08-19"
+  },
+  {
+   "title": "CourtListener — Brinker Restaurant Corp. v. Superior Court (2012) 53 Cal.4th 1004",
    "url": "https://www.courtlistener.com/opinion/844210/brinker-restaurant-corp-v-superior-court/",
-   "checked": "2026-08-18"
+   "checked": "2026-08-19"
+  },
+  {
+   "title": "CourtListener — Augustus v. ABM Security Services, Inc. (2016) 2 Cal.5th 257",
+   "url": "https://www.courtlistener.com/opinion/4333055/augustus-v-abm-security-services/",
+   "checked": "2026-08-19"
+  },
+  {
+   "title": "CourtListener — Ferra v. Loews Hollywood Hotel, LLC (2021) 11 Cal.5th 858",
+   "url": "https://www.courtlistener.com/opinion/4900098/ferra-v-loews-hollywood-hotel-llc/",
+   "checked": "2026-08-19"
+  },
+  {
+   "title": "CourtListener — Naranjo v. Spectrum Security Services, Inc. (2022) 13 Cal.5th 93",
+   "url": "https://www.courtlistener.com/opinion/6470934/naranjo-v-spectrum-security-services-inc/",
+   "checked": "2026-08-19"
   }
  ],
  "defectTypes": [
   "overstated-liability",
+  "understated-liability",
+  "construction-dropped",
   "omitted-qualifier",
-  "omitted-requirement"
+  "omitted-requirement",
+  "incomplete-citation"
  ],
  "judicialQuotations": [
   {
-   "case": "Brinker Restaurant Corp. v. Superior Court (Cal. 2012)",
+   "case": "Brinker Restaurant Corp. v. Superior Court (Cal. 2012) 53 Cal.4th 1004",
    "opinion": 9504043,
    "url": "https://www.courtlistener.com/opinion/844210/brinker-restaurant-corp-v-superior-court/",
-   "checked": "2026-08-18",
+   "checked": "2026-08-19",
    "quote": "We conclude that under Wage Order No. 5 and Labor Code section 512, subdivision (a), an employer must relieve the employee of all duty for the designated period, but need not ensure that the employee does no work."
   },
   {
-   "case": "Brinker Restaurant Corp. v. Superior Court (Cal. 2012)",
+   "case": "Brinker Restaurant Corp. v. Superior Court (Cal. 2012) 53 Cal.4th 1004",
    "opinion": 9504043,
    "url": "https://www.courtlistener.com/opinion/844210/brinker-restaurant-corp-v-superior-court/",
-   "checked": "2026-08-18",
+   "checked": "2026-08-19",
    "quote": "The combined effect of the two pertinent sentences, giving full effect to each, is this; Employees are entitled to 10 minutes' rest for shifts from three and one-half to six hours in length, 20 minutes for shifts of more than six hours up to 10 hours, 30 minutes for shifts of more than 10 hours up to 14 hours, and so on."
+  },
+  {
+   "case": "Augustus v. ABM Security Services, Inc. (Cal. 2016) 2 Cal.5th 257",
+   "opinion": 4110316,
+   "url": "https://www.courtlistener.com/opinion/4333055/augustus-v-abm-security-services/",
+   "checked": "2026-08-19",
+   "quote": "What we conclude is that state law prohibits on-duty and on-call rest periods. During required rest periods, employers must relieve their employees of all duties and relinquish any control over how employees spend their break time."
+  },
+  {
+   "case": "Ferra v. Loews Hollywood Hotel, LLC (Cal. 2021) 11 Cal.5th 858",
+   "opinion": 4703877,
+   "url": "https://www.courtlistener.com/opinion/4900098/ferra-v-loews-hollywood-hotel-llc/",
+   "checked": "2026-08-19",
+   "quote": "We hold that the terms are synonymous: “regular rate of compensation” under section 226.7(c), like “regular rate of pay” under section 510(a), encompasses all nondiscretionary payments, not just hourly wages."
+  },
+  {
+   "case": "Naranjo v. Spectrum Security Services, Inc. (Cal. 2022) 13 Cal.5th 93",
+   "opinion": 6343045,
+   "url": "https://www.courtlistener.com/opinion/6470934/naranjo-v-spectrum-security-services-inc/",
+   "checked": "2026-08-19",
+   "quote": "The Court of Appeal was correct that premium pay is a statutory remedy for a legal violation. But the court's further conclusion that premium pay cannot constitute wages rests on a false dichotomy: that a payment must be either a legal remedy or wages. For these purposes, section 226.7 is both."
   }
  ],
- "singleOpinionCaveat": "One opinion, but it is the California Supreme Court construing the statute and the wage order directly, which is the strongest thing this channel can produce. It still does not meet the two-primary standard and upgrades nothing."
+ "supersedes": "This finding replaces the 2026-08-18 record for this clause, which was made through CourtListener alone while every statutory publisher returned 403 at the egress proxy. That record's verdict — the clause states the standard Brinker rejected — is confirmed by the primary text and is preserved above under priorDefects."
 }

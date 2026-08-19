@@ -1,46 +1,156 @@
 {
-  "clauseId": "cal_ca_soi",
-  "checkedAt": "2026-08-15",
-  "method": "web search only — no source document was opened",
-  "heldOut": true,
-  "groupCheck": "one search covering a near-duplicate group; both members checked against the same evidence",
-  "sources": [
-    {
-      "title": "California Secretary of State — Business entities FAQ",
-      "url": "https://www.sos.ca.gov/business-programs/business-entities/faqs"
-    },
-    {
-      "title": "eMinutes — Waiver of penalty for a tardy Statement of Information",
-      "url": "https://eminutes.com/waiver-of-penalty-for-tardy-statement-of-information"
-    },
-    {
-      "title": "Kristina Reed — What to do if your California company is suspended or forfeited",
-      "url": "https://www.kristinareed.com/articles/what-to-do-if-your-california-company-is-suspended-or-forfeited/"
-    }
-  ],
-  "queries": [
-    "California Statement of Information Corporations Code 1502 17702.09 initial 90 days penalty $250 corporation annual LLC biennial suspension forfeiture Franchise Tax Board"
-  ],
-  "assertions": [
-    {
-      "text": "file an initial Statement of Information, with a stated renewal cadence by entity type",
-      "status": "corroborated"
-    },
-    {
-      "text": "late filing carries a penalty and can lead to suspension or forfeiture",
-      "status": "corroborated"
-    },
-    {
-      "text": "a suspended entity cannot prosecute or defend a lawsuit, cannot enforce its contracts, and loses the exclusive right to its own name",
-      "status": "corroborated"
-    }
-  ],
-  "gaps": [
-    "The penalty is $250; the clause does not say so.",
-    "The 60-day cure window after the notice of delinquency is omitted. This clause is the more detailed of the pair about what suspension costs, which makes the missing escape route more conspicuous, not less.",
-    "Restoration to active status runs through the Franchise Tax Board. The clause is unusually specific about the consequences of suspension and silent on how to undo it."
-  ],
-  "defectTypes": [
-    "omitted-requirement"
-  ]
+ "clauseId": "cal_ca_soi",
+ "checkedAt": "2026-08-19",
+ "method": "Rebuild from primary text. Corp. Code §§1502, 2204, 2205, 17702.09 and 17713.09 and Rev. & Tax. Code §§19141, 23301, 23302, 23304.1 and 23305a were fetched from leginfo.legislature.ca.gov and read. The construing case was located through CourtListener. This clause is the near-duplicate of cal_soi that the 2026-08-19 rebuild of cal_soi left untouched; it is rebuilt here from the same sections, plus the Revenue and Taxation Code provisions needed to test its two extra assertions. Assertions describe the REBUILT body.",
+ "queries": [
+  "Cal. Corp. Code §§1502, 2204, 2205, 17702.09, 17713.09 full text (leginfo)",
+  "Cal. Rev. & Tax. Code §§19141, 23301, 23302, 23304.1, 23305a full text (leginfo)",
+  "\"Corporations Code\" \"2205\" statement of information suspension corporate powers litigation"
+ ],
+ "assertions": [
+  {
+   "text": "the initial statement is due within 90 days after the original articles are filed, annually thereafter for a corporation and biennially for a limited liability company",
+   "status": "corroborated",
+   "note": "§1502(a) and §17702.09(a). The previous body carried the recurrence only through the {{caSoiRenewal}} field and stated no ninety-day initial deadline in words."
+  },
+  {
+   "text": "the applicable filing period is the calendar month in which the original articles were filed together with the immediately preceding five calendar months",
+   "status": "corroborated",
+   "note": "§1502(d); §17702.09(c). A six-month window, not a date. The previous body's {{soiDeadline}} presented it as one day."
+  },
+  {
+   "text": "the Secretary of State sends a reminder about three months before the period closes and not receiving it is no excuse",
+   "status": "corroborated",
+   "note": "§1502(d), final sentence, verbatim."
+  },
+  {
+   "text": "on failure to file, a notice of delinquency issues first, and only after 60 days without a filing is the entity certified to the Franchise Tax Board",
+   "status": "corroborated",
+   "note": "§2204(a) for corporations; §17713.09(a) for LLCs, in nearly identical words. The previous body's own defect list already flagged this omission; it is now in the body."
+  },
+  {
+   "text": "the penalty assessed on certification is $250",
+   "status": "corroborated",
+   "note": "Rev. & Tax. Code §19141, verbatim. Note the amount is in the Revenue and Taxation Code, which the previous clause did not cite."
+  },
+  {
+   "text": "the Secretary of State may waive the penalty for reasonable cause or unusual circumstances, and the delinquency notice must advise the entity of that right",
+   "status": "corroborated",
+   "note": "§2204(a) and (f); §17713.09(a) and (f)."
+  },
+  {
+   "text": "suspension of a corporation requires failure to file for the period, no filing during the preceding 24 months, and certification for penalty for that same period, followed by a further 60-day notice",
+   "status": "corroborated",
+   "note": "§2205(a)-(c), and Palm Valley states the same sequence. The previous body's 'Late filing carries a penalty and can lead to suspension or forfeiture' is true only at the end of this sequence."
+  },
+  {
+   "text": "while suspended the corporation's powers, rights and privileges are suspended except for an exempt-status application or an amendment to perfect it or set a new name, and it is disabled from participating in litigation",
+   "status": "corroborated",
+   "note": "§2205(c) for the text; Palm Valley for the litigation disability, which §2205 never spells out. The previous body's 'cannot prosecute or defend a lawsuit' was right and uncited."
+  },
+  {
+   "text": "the statement may be filed notwithstanding suspension and is what lifts it, subject to any separate Franchise Tax Board suspension for tax",
+   "status": "corroborated",
+   "note": "§2205(d)."
+  },
+  {
+   "text": "contract voidability and loss of the entity's name follow from a Franchise Tax Board suspension for unpaid tax, not from a Statement of Information suspension",
+   "status": "corroborated",
+   "note": "Rev. & Tax. Code §23304.1(a): 'Every contract made in this state by a taxpayer during the time that the taxpayer's powers, rights, and privileges are suspended or forfeited pursuant to Section 23301, 23301.5, or 23775 shall ... be voidable at the request of any party to the contract other than the taxpayer.' Those are the tax-suspension sections. §2205 is not among them. §23305a conditions a certificate of revivor on the name then meeting the availability requirements of Corp. Code §201(b), which is the route by which a name is lost. This is the correction that matters most in this clause: two of its three stated consequences were attached to the wrong kind of suspension."
+  }
+ ],
+ "priorDefects": [
+  "citation-gap: the clause asserted a penalty, a suspension, an inability to enforce contracts and a loss of the entity's name while citing only Corp. Code §§1502 and 17702.09, neither of which contains any of them.",
+  "overstated: 'cannot enforce its contracts' as a consequence of a Statement of Information suspension. Contract voidability under Rev. & Tax. Code §23304.1 attaches to a tax suspension under §§23301, 23301.5 or 23775. What §2205 produces is the litigation disability, which stops enforcement in practice but is a different rule with a different cure.",
+  "unsupported: 'loses the exclusive right to its own name' as a consequence of §2205. Nothing in §2205 says so. §2205(c) contemplates an amendment 'to set forth a new name' and §23305a conditions a tax revivor on name availability; that is the route, and it runs through the Revenue and Taxation Code.",
+  "omitted: the $250 figure.",
+  "omitted: the 60-day cure window after the notice of delinquency.",
+  "omitted: the reasonable-cause waiver.",
+  "omitted: §2205(a)'s three cumulative conditions and the second 60-day notice, so suspension read as a near consequence of one late filing.",
+  "omitted: the 90-day initial deadline and the six-month filing window in words rather than in template fields."
+ ],
+ "gaps": [
+  "The LLC suspension path was not fully traced. §17713.09 supplies the LLC delinquency and penalty route and matches §2204 closely, but no LLC counterpart to §2205's suspension mechanism was read. The rebuilt body states the suspension sequence for corporations only, and does not assert one for LLCs. That is narrower than the law may be, and it is deliberately narrow rather than guessed.",
+  "Whether a suspended LLC suffers the litigation disability Palm Valley found for a suspended corporation was not verified and is not asserted.",
+  "Rev. & Tax. Code §23302(d) forbids a suspended or forfeited taxpayer to sell, transfer or exchange California real property. It was read and is not carried, because it belongs to the tax-suspension branch the clause now expressly distinguishes. A reader who has both problems at once will not find it here.",
+  "cal_soi and cal_ca_soi remain near-duplicates. Both have now been rebuilt from the same sections but in separate passes, and no one has compared the two bodies line by line."
+ ],
+ "sources": [
+  {
+   "title": "California Legislative Counsel (leginfo) — Cal. Corp. Code §1502",
+   "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=1502.",
+   "checked": "2026-08-19"
+  },
+  {
+   "title": "California Legislative Counsel (leginfo) — Cal. Corp. Code §2204",
+   "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=2204.",
+   "checked": "2026-08-19"
+  },
+  {
+   "title": "California Legislative Counsel (leginfo) — Cal. Corp. Code §2205",
+   "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=2205.",
+   "checked": "2026-08-19"
+  },
+  {
+   "title": "California Legislative Counsel (leginfo) — Cal. Corp. Code §17702.09",
+   "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=17702.09.",
+   "checked": "2026-08-19"
+  },
+  {
+   "title": "California Legislative Counsel (leginfo) — Cal. Corp. Code §17713.09",
+   "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=17713.09.",
+   "checked": "2026-08-19"
+  },
+  {
+   "title": "California Legislative Counsel (leginfo) — Cal. Rev. & Tax. Code §19141",
+   "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=RTC&sectionNum=19141.",
+   "checked": "2026-08-19"
+  },
+  {
+   "title": "California Legislative Counsel (leginfo) — Cal. Rev. & Tax. Code §23304.1",
+   "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=RTC&sectionNum=23304.1.",
+   "checked": "2026-08-19"
+  },
+  {
+   "title": "California Legislative Counsel (leginfo) — Cal. Rev. & Tax. Code §23305a",
+   "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=RTC&sectionNum=23305a.",
+   "checked": "2026-08-19"
+  },
+  {
+   "title": "CourtListener — Palm Valley Homeowners Assn. v. Design MTC (2000) 85 Cal.App.4th 553",
+   "url": "https://www.courtlistener.com/opinion/2257844/palm-valley-homeowners-assn-v-design-mtc/",
+   "checked": "2026-08-19"
+  }
+ ],
+ "defectTypes": [
+  "uncited-assertion",
+  "overstated-liability",
+  "unsupported-assertion",
+  "omitted-requirement",
+  "omitted-qualifier"
+ ],
+ "judicialQuotations": [
+  {
+   "case": "Palm Valley Homeowners Assn. v. Design MTC (Cal. Ct. App. 2000) 85 Cal.App.4th 553",
+   "opinion": 2257844,
+   "url": "https://www.courtlistener.com/opinion/2257844/palm-valley-homeowners-assn-v-design-mtc/",
+   "checked": "2026-08-19",
+   "quote": "A Corporation Suspended Under Corporations Code Section 2205 for Failure to File a Required Information Statement Is Disabled from Participating in Litigation, as Is a Corporation Suspended Under Revenue and Taxation Code Section 23301 for Nonpayment of Taxes"
+  },
+  {
+   "case": "Palm Valley Homeowners Assn. v. Design MTC (Cal. Ct. App. 2000) 85 Cal.App.4th 553",
+   "opinion": 2257844,
+   "url": "https://www.courtlistener.com/opinion/2257844/palm-valley-homeowners-assn-v-design-mtc/",
+   "checked": "2026-08-19",
+   "quote": "If a corporation fails to file a statement under Corporations Code section 1502, fails to file a statement for 24 months, and has been assessed a penalty under Corporations Code section 2204 during that 24-month period, then the corporation is subject to suspension under Corporations Code section 2205."
+  },
+  {
+   "case": "Palm Valley Homeowners Assn. v. Design MTC (Cal. Ct. App. 2000) 85 Cal.App.4th 553",
+   "opinion": 2257844,
+   "url": "https://www.courtlistener.com/opinion/2257844/palm-valley-homeowners-assn-v-design-mtc/",
+   "checked": "2026-08-19",
+   "quote": "Corporations Code section 2205, subdivision (c) makes clear that, \"except for the purpose of amending the articles of incorporation to set forth a new name,\" the suspended corporation may transact no business of any kind. Conducting litigation is not \"amending the articles of incorporation to set forth a new name.\""
+  }
+ ],
+ "currencyCaveat": "Palm Valley is from 2000 and two things it says are out of date. It states that §1502 requires a statement 'every two years'; §1502(a) now requires corporations to file annually. Its quotation of §2205(c) predates the 2011 amendment (Stats. 2011, Ch. 204) that added the exempt-status application and the amendment to perfect it. The rebuilt clause follows the current statutory text and relies on the case only for the litigation disability, which turns on 'corporate powers, rights, and privileges' — unchanged."
 }

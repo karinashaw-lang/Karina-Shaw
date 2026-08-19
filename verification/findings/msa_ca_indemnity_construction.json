@@ -1,46 +1,106 @@
 {
-  "clauseId": "msa_ca_indemnity_construction",
-  "checkedAt": "2026-08-15",
-  "method": "web search only — no source document was opened",
-  "heldOut": true,
-  "control": "the detectors predicted this clause CLEAN — it was checked to test whether a clean prediction screens out defects",
-  "queries": [
-    "California Civil Code 2782 construction contract indemnity void sole negligence willful misconduct 2782.05 subcontractor active negligence exceptions residential"
-  ],
-  "assertions": [
-    {
-      "text": "California voids indemnity against the promisee’s own sole negligence or willful misconduct in a construction contract",
-      "status": "corroborated"
-    },
-    {
-      "text": "a subcontractor’s indemnity of a general contractor is limited as to the general contractor’s active negligence",
-      "status": "corroborated"
-    },
-    {
-      "text": "additional insured endorsements are subject to parallel restrictions",
-      "status": "corroborated"
-    }
-  ],
-  "gaps": [
-    "Section 2782.05 applies to contracts entered into on or after 1 January 2013. The clause states the limit with no temporal boundary, so it is asserted of contracts it does not reach.",
-    "Section 2782.05 also voids the subcontractor’s indemnity to the extent claims arise from work outside the subcontractor’s contractual scope. That is a third protection, independent of active negligence, and the clause omits it — a subcontractor relying on this clause would not know to raise it."
-  ],
-  "defectTypes": [
-    "omitted-qualifier",
-    "omitted-requirement"
-  ],
-  "sources": [
-    {
-      "title": "FindLaw — Cal. Civ. Code § 2782.05",
-      "url": "https://codes.findlaw.com/ca/civil-code/civ-sect-2782-05/"
-    },
-    {
-      "title": "Jones Day — Navigating California’s expanded anti-indemnity laws for construction projects",
-      "url": "https://www.jonesday.com/en/insights/2013/04/navigating-the-treacherous-waters-of-californias-expanded-antiindemnity-laws-for-construction-projects"
-    },
-    {
-      "title": "Justia — Cal. Civ. Code § 2782 (2024)",
-      "url": "https://law.justia.com/codes/california/code-civ/division-3/part-4/title-12/section-2782"
-    }
-  ]
+ "clauseId": "msa_ca_indemnity_construction",
+ "checkedAt": "2026-08-19",
+ "method": "Rebuild from primary text. Civ. Code Title 12 (Indemnity) was fetched from leginfo.legislature.ca.gov and §§2782 and 2782.05 were read in full. The construing case was located through CourtListener. Assertions describe the REBUILT body.",
+ "queries": [
+  "Cal. Civ. Code Title 12 Indemnity full text (leginfo)",
+  "\"Civil Code\" \"2782.05\" construction indemnity subcontractor active negligence void"
+ ],
+ "assertions": [
+  {
+   "text": "§2782(a) voids indemnity of the promisee against liability arising from the promisee's SOLE negligence or wilful misconduct, or from defects in design furnished by the promisee or those directly responsible to it",
+   "status": "corroborated",
+   "note": "§2782(a), verbatim. The design-defect limb was missing from the previous body, as were the four cross-referenced exceptions and the proviso that the section does not affect the validity of an insurance contract issued by an admitted insurer."
+  },
+  {
+   "text": "§2782.05 applies to construction contracts and amendments entered into on or after January 1, 2013",
+   "status": "corroborated",
+   "note": "§2782.05(a), verbatim. Already in the clause's defect list; now in the body."
+  },
+  {
+   "text": "§2782.05 voids a subcontractor's indemnity of a general contractor, construction manager or other subcontractor to the extent claims arise out of, pertain to, or relate to that party's active negligence or wilful misconduct, to defects in design it furnished, or to work outside the subcontractor's contractual scope",
+   "status": "corroborated",
+   "note": "§2782.05(a), verbatim. Four protections, not two. The previous body had active negligence only; its own defect list had caught the scope-of-work limb, and nobody had caught the design-defect limb."
+  },
+  {
+   "text": "'to the extent' means the indemnity is void only pro tanto, not extinguished",
+   "status": "corroborated",
+   "note": "Oltmans Construction v. Bayside Interiors, quoted below. The trial court there had held that a general contractor's active negligence barred all indemnity and the Court of Appeal reversed. This is the construction the previous body was missing and it runs in the general contractor's favour."
+  },
+  {
+   "text": "§2782.05 cannot be waived or modified, and California law applies to every contract within it notwithstanding any choice-of-law rule to the contrary",
+   "status": "corroborated",
+   "note": "§2782.05(a) (last sentences), (c) and (d). The choice-of-law override is material in a master services agreement and the previous body did not have it."
+  },
+  {
+   "text": "§2782.05 does not apply to a wrap-up policy or programme, or to a provision requiring the promisor to purchase or maintain insurance covering the promisor's own acts, including additional insured endorsements for ongoing and completed operations",
+   "status": "corroborated",
+   "note": "§2782.05(b)(4) and (b)(6), verbatim. This contradicts the previous body's 'Additional insured endorsements are subject to parallel restrictions, so a broad-form indemnity paired with a broad-form endorsement may fail on both.' §2782(a)'s insurance proviso points the same way."
+  },
+  {
+   "text": "§2782.05 also does not reach residential construction subject to Title 7, direct contracts with a public agency or a private owner, or contracts with design professionals",
+   "status": "corroborated",
+   "note": "§2782.05(b)(1)-(3) and (12), which route those to §2782(b), §2782(c) and §2782.8 respectively."
+  },
+  {
+   "text": "a defence obligation is triggered by a written tender, and the subcontractor must elect within 30 days to defend with its own counsel or to pay a reasonable allocated share of defence costs within 30 days of each invoice",
+   "status": "corroborated",
+   "note": "§2782.05(e)(1)-(2). Note the asymmetry with the residential regime in §2782(e)(1), where the election period is 90 days. Absent from the previous body entirely, and it is the operative mechanic in a live claim."
+  }
+ ],
+ "priorDefects": [
+  "contradicted: 'Additional insured endorsements are subject to parallel restrictions.' §2782.05(b)(6) expressly excludes a provision requiring the promisor to purchase or maintain insurance covering its own acts, including additional insured endorsements, from the section; §2782(a) contains a matching proviso for insurance contracts issued by an admitted insurer.",
+  "omitted: the January 1, 2013 application date.",
+  "omitted: the scope-of-work limb and the design-defect limb of §2782.05(a).",
+  "omitted: that the voiding operates 'to the extent' and not wholesale — the construction Oltmans supplies.",
+  "omitted: the non-waiver and California-law-applies provisions in §2782.05(c)-(d).",
+  "omitted: every exclusion in §2782.05(b).",
+  "omitted: the written tender and the 30-day election in §2782.05(e).",
+  "omitted: the design-defect limb and the exceptions cross-referenced in §2782(a)."
+ ],
+ "gaps": [
+  "§§2782.1, 2782.2, 2782.5 and 2782.6 are named as exceptions to §2782(a). Their contents were seen only in the Title 12 listing and were not read in full. A party relying on one of them gets no help from this clause.",
+  "The residential regime in §2782(d)-(i) is read only far enough to say that §2782.05 does not reach it. A residential builder or its subcontractor needs §2782(d), which uses a plain negligence standard rather than active negligence, gives a 90-day rather than a 30-day election, and has its own damages and fee provisions in §2782(f).",
+  "Whether §2782.05(c)'s choice-of-law override binds a court outside California was not researched. The section says California law applies; it does not say a foreign forum must apply it.",
+  "§2782.8, which governs design professional contracts entered into on or after January 1, 2018, was seen in the listing and not read."
+ ],
+ "sources": [
+  {
+   "title": "California Legislative Counsel (leginfo) — Cal. Civ. Code Title 12 (Indemnity), including §2782",
+   "url": "https://leginfo.legislature.ca.gov/faces/codes_displayText.xhtml?lawCode=CIV&division=3.&title=12.&part=4.&chapter=&article=",
+   "checked": "2026-08-19"
+  },
+  {
+   "title": "California Legislative Counsel (leginfo) — Cal. Civ. Code §2782.05",
+   "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=2782.05.",
+   "checked": "2026-08-19"
+  },
+  {
+   "title": "CourtListener — Oltmans Construction Co. v. Bayside Interiors, Inc. (2017) 10 Cal.App.5th 355",
+   "url": "https://www.courtlistener.com/opinion/4379720/oltmans-construction-co-v-bayside-interiors-inc/",
+   "checked": "2026-08-19"
+  }
+ ],
+ "defectTypes": [
+  "contradicted-by-statute",
+  "omitted-qualifier",
+  "omitted-requirement",
+  "construction-dropped"
+ ],
+ "judicialQuotations": [
+  {
+   "case": "Oltmans Construction Co. v. Bayside Interiors, Inc. (Cal. Ct. App. 2017) 10 Cal.App.5th 355",
+   "opinion": 4156973,
+   "url": "https://www.courtlistener.com/opinion/4379720/oltmans-construction-co-v-bayside-interiors-inc/",
+   "checked": "2026-08-19",
+   "quote": "Does this provision preclude the general contractor from recovering any indemnity if its active negligence contributed to the injury, or does the provision limit recoverable indemnity to the portion of liability attributable to the negligence of others? The same question arises as to the meaning of Civil Code section 2782.05, which renders void and unenforceable an indemnity provision \"to the extent the claims arise out of, pertain to, or relate to the active negligence or willful misconduct of that general contractor.\" The trial court adopted the former interpretation but we conclude this was error."
+  },
+  {
+   "case": "Oltmans Construction Co. v. Bayside Interiors, Inc. (Cal. Ct. App. 2017) 10 Cal.App.5th 355",
+   "opinion": 4156973,
+   "url": "https://www.courtlistener.com/opinion/4379720/oltmans-construction-co-v-bayside-interiors-inc/",
+   "checked": "2026-08-19",
+   "quote": "The purpose of the new provision, added in 2011, was to apportion liability on an equitable basis in proportion to the fault of the various parties."
+  }
+ ]
 }

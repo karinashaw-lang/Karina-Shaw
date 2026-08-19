@@ -514,22 +514,52 @@
    "version": "1.1.0",
    "updated": "2026-06",
    "rationale": "The election is lost by late filing far more often than by any substantive error. The deadline runs from the grant date, not from the tax year.",
-   "body": "This election must be postmarked to the IRS office where the undersigned files their federal return within thirty (30) days of {{date}} — that is {{d83bDeadline}}. Send it by certified mail with return receipt and retain the receipt. Provide a copy to the Company for its records. There is no procedure to cure a late filing.",
+   "body": "This election must be filed with the Internal Revenue Service office with which the undersigned files their federal income tax return, no later than thirty (30) days after {{date}} — that is {{d83bDeadline}} — and it may be filed before the transfer. The thirty days is set by the Internal Revenue Code itself, so the regulations provide no extension and no cure for a late filing. The statement must be signed, must say that it is being made under section 83(b), and must contain: the taxpayer's name, address and taxpayer identification number; a description of each property; the date or dates of transfer and the taxable year for which the election is made; the nature of the restrictions the property is subject to; the fair market value at the time of transfer, determined without regard to any restriction that will lapse; the amount, if any, paid for the property; and a statement that copies have been furnished as required. The IRS also publishes Form 15620, Section 83(b) Election, which may be used instead of a written statement and is submitted by mail to the same office. Providing a copy to the Company is not a courtesy: the person performing the services must submit a copy of the statement to the person for whom the services are performed, and, where the person performing the services and the transferee of the property are not the same, to the transferee as well. Send it in a way that produces a dated record of filing and keep that record. Two consequences worth knowing before filing. Paying full fair market value for the property, so that there is no bargain element at all, does not preclude the election — and where the property is subject to a substantial risk of forfeiture, making the election in the year of acquisition is the only way to keep later appreciation out of ordinary income. But if the property is later forfeited, no deduction is allowed in respect of the forfeiture, and the loss on the deemed sale is limited to the excess of what was paid for the property over what was realised on the forfeiture. The election may not be revoked except with the Commissioner's consent, which is given only where the transferee was under a mistake of fact as to the underlying transaction and only if requested within sixty (60) days of the date the mistake first became known; a mistake about the value of the property, a decline in its value, or a failure to do something contemplated at the time of transfer is not a mistake of fact.",
    "sources": [
     {
-     "citation": "Treas. Reg. §1.83-2(c)",
-     "type": "statute-cited",
-     "url": null,
-     "checked": null
+     "citation": "Treas. Reg. §1.83-2",
+     "type": "statute-publisher",
+     "url": "https://www.ecfr.gov/api/renderer/v1/content/enhanced/current/title-26?chapter=I&subchapter=A&part=1&section=1.83-2",
+     "checked": "2026-08-19",
+     "title": "eCFR (Office of the Federal Register) — 26 C.F.R. §1.83-2, election to include in gross income in year of transfer"
+    },
+    {
+     "citation": "26 U.S.C. §83(b)",
+     "type": "statute-publisher",
+     "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title26-section83&num=0&edition=prelim",
+     "checked": "2026-08-19",
+     "title": "Office of the Law Revision Counsel (uscode.house.gov) — 26 U.S.C. §83(b)"
+    },
+    {
+     "type": "secondary",
+     "url": "https://www.irs.gov/pub/irs-pdf/f15620.pdf",
+     "checked": "2026-08-19",
+     "title": "Internal Revenue Service — Form 15620 (Rev. 4-2025), Section 83(b) Election"
+    },
+    {
+     "type": "case-mirror",
+     "url": "https://www.courtlistener.com/opinion/435865/lawrence-j-alves-and-myra-l-alves-v-commissioner-of-internal-revenue/",
+     "checked": "2026-08-19",
+     "title": "CourtListener — Alves v. Commissioner (9th Cir. 1984) 734 F.2d 478"
+    },
+    {
+     "type": "case-mirror",
+     "url": "https://www.courtlistener.com/opinion/1200135/kadillak-v-commissioner-of-internal-revenue/",
+     "checked": "2026-08-19",
+     "title": "CourtListener — Kadillak v. Commissioner (9th Cir. 2008) 534 F.3d 1197"
     }
    ],
-   "verification": "single-source",
+   "verification": "multi-cited",
    "defects": [
-    "The IRS now provides Form 15620 as a standardised way to make the election. The clause describes only a written statement and does not mention the form, so a user following it would hand-draft something the IRS has since published a form for."
+    "The clause previously said the election must be \"postmarked\" within thirty days. Treas. Reg. §1.83-2(b) says the election shall be \"filed\" not later than 30 days after transfer, and §1.83-2(c) says it is made by filing one copy with the internal revenue office where the taxpayer files their return. The mailbox rule that turns a postmark into a filing date is Internal Revenue Code §7502, which was NOT read for this rebuild. The rebuilt body says to send it in a way that produces a dated record and does not assert that a postmark is a filing.",
+    "The clause previously said \"There is no procedure to cure a late filing.\" That is stated here on the narrower and verified ground that the 30-day period is fixed by §83(b)(2) of the statute rather than by regulation. Whether discretionary relief under Treas. Reg. §301.9100 is unavailable for that reason was not verified — §301.9100 was not read.",
+    "Form 15620 was read as a PDF from irs.gov, which is the agency and not a publisher of law. Its instruction text extracted only partially, and the extracted portions confirm the where-to-file rule and that the form is an alternative to a written statement. Its \"When to File\" paragraph did not extract cleanly and was not relied on.",
+    "State law was not considered. A California taxpayer may have a separate state election or filing obligation and nothing here addresses it."
    ],
-   "lastChecked": "2026-08-15",
+   "lastChecked": "2026-08-19",
    "assertsLaw": true,
-   "classifiedBy": "heuristic-unreviewed"
+   "classifiedBy": "heuristic-unreviewed",
+   "verificationNote": "Rebuilt from the primary text on 2026-08-19: 26 C.F.R. §1.83-2 was fetched from the eCFR and 26 U.S.C. §83 from the Office of the Law Revision Counsel, and the body was written from what they say. The clause previously described only a written statement with none of the seven content items the regulation requires, described the copy to the Company as being \"for its records\" when §1.83-2(d) requires it and §1.83-2(e)(7) makes a statement that copies were furnished a required content element, and did not mention that the election may be filed before the transfer or that revocation is possible in a narrow case. Full record in verification/findings/b83_instructions.json. NOT primary-verified: no human has read or signed this."
   },
   {
    "id": "b83_spouse",
