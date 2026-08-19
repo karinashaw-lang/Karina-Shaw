@@ -124,24 +124,53 @@
    "version": "1.0.0",
    "updated": "2026-06",
    "rationale": "Cal-WARN reaches further than the federal statute in every direction — lower threshold, relocations and terminations covered, part-time employees counted — and the notice period is not shortened by the layoff being unexpected.",
-   "body": "The Company has {{headcountBand}}, so [[Cal-WARN|cal-warn]] applies. Sixty (60) days' written notice to affected employees, the Employment Development Department, and local officials is required before a mass layoff, relocation, or termination of operations. Unlike the federal statute, Cal-WARN counts part-time employees toward the threshold, covers relocations of more than one hundred miles, and does not require the employer to be closing a whole facility. Damages are back pay and benefits for each day of shortfall, plus civil penalties. Plan any reduction in force against this notice period from the start.",
+   "body": "[[Cal-WARN|cal-warn]] applies to a covered establishment — an industrial or commercial facility that employs, or has employed within the preceding 12 months, 75 or more persons. The Company has {{headcountBand}}. Sixty (60) days' written notice is required before a mass layoff, relocation, or termination, and it must go to the affected employees, the Employment Development Department, the local workforce development board, and the chief elected official of each city and county in which the event occurs. A mass layoff is a layoff of 50 or more employees at the establishment during any 30-day period. A layoff is a separation from a position for lack of funds or lack of work, and it need not be permanent: the Court of Appeal has held a temporary furlough of a few weeks triggers the duty, even though the federal statute reaches a temporary layoff only if it exceeds six months. A relocation is the removal of all or substantially all operations to a location 100 miles or more away; a termination is the cessation or substantial cessation of operations. Only a person employed for at least 6 of the 12 months preceding the date notice is due counts as an employee — there is no part-time exclusion as under federal law, but there is that tenure floor. The notice must carry the elements required by the federal WARN Act, a statement of whether the Company will coordinate rapid response services and the local board's working email and telephone number, a description of CalFresh with its helpline and website, and a working email and telephone number for the Company. Failing to notify employees means back pay at the higher of the average regular rate over the last three years or the final rate, plus the value of lost benefits, for the period of the violation but capped at the lesser of 60 days or one-half the days the employee was employed, and reduced by wages and certain other payments already made. Failing to notify the agencies carries a civil penalty of up to five hundred dollars ($500) for each day of violation, which does not apply if the Company pays everything owed to the employees within three weeks of ordering the event. Notice is not required where the event is necessitated by a physical calamity or act of war; a narrower exception for an employer actively seeking capital or business covers a relocation or termination but never a mass layoff, and requires a determination by the department on a documented record and a sworn affidavit. Plan any reduction in force against this notice period from the start.",
    "sources": [
     {
-     "citation": "Cal. Lab. Code §§1400–1408",
-     "type": "statute-cited",
-     "url": null,
-     "checked": null
+     "citation": "Cal. Lab. Code §1400.5",
+     "type": "statute-publisher",
+     "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=1400.5",
+     "checked": "2026-08-19",
+     "title": "California Legislative Counsel (leginfo) — Cal. Lab. Code §1400.5 (definitions, renumbered from §1400 by Stats. 2022, Ch. 752)"
+    },
+    {
+     "citation": "Cal. Lab. Code §1401",
+     "type": "statute-publisher",
+     "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=1401",
+     "checked": "2026-08-19",
+     "title": "California Legislative Counsel (leginfo) — Cal. Lab. Code §1401 (as amended by Stats. 2025, Ch. 229, eff. Jan. 1, 2026)"
+    },
+    {
+     "citation": "Cal. Lab. Code §1402",
+     "type": "statute-publisher",
+     "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=1402",
+     "checked": "2026-08-19",
+     "title": "California Legislative Counsel (leginfo) — Cal. Lab. Code §1402"
+    },
+    {
+     "citation": "Cal. Lab. Code §1403",
+     "type": "statute-publisher",
+     "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=1403",
+     "checked": "2026-08-19",
+     "title": "California Legislative Counsel (leginfo) — Cal. Lab. Code §1403"
+    },
+    {
+     "citation": "Int'l Bhd. of Boilermakers v. NASSCO Holdings Inc. (2017) 17 Cal.App.5th 1105",
+     "type": "case-mirror",
+     "url": "https://www.courtlistener.com/opinion/6239226/intl-bhd-of-boilermakers-v-nassco-holdings-inc/",
+     "checked": "2026-08-19",
+     "title": "CourtListener — Int'l Bhd. of Boilermakers v. NASSCO Holdings Inc."
     }
    ],
-   "verification": "single-source",
+   "verification": "multi-cited",
    "defects": [
-    "The 75-employee threshold looks back twelve months — an establishment that hit 75 at any point in the preceding year is covered. The clause implies a current headcount test, which would let a shrinking employer conclude it is exempt when it is not.",
-    "A mass layoff means 50 or more job losses in any 30-day period. The clause uses the term without the trigger, so a user cannot tell whether a given reduction is covered.",
-    "Damages are capped at 60 days of back pay, or half the days the employee worked, whichever is smaller. The clause states back pay for each day of shortfall with no cap, overstating the exposure."
+    "Article 2 of the chapter (§1410 and following) sets separate requirements for grocery establishments. It was not read and the clause does not mention it.",
+    "The clause is gated on rule ca_75plus, which was not re-examined against §1400.5(a)'s \"employs, or has employed within the preceding 12 months\" test. If that rule reads current headcount only, the clause will not fire for an employer that has shrunk below 75 within the year, though the statute still covers it."
    ],
-   "lastChecked": "2026-08-15",
+   "lastChecked": "2026-08-19",
    "assertsLaw": true,
-   "classifiedBy": "heuristic-unreviewed"
+   "classifiedBy": "heuristic-unreviewed",
+   "verificationNote": "Rebuilt from the primary text on 2026-08-19: the cited sections were fetched from the California Legislative Counsel and the body was written from what they say, then checked against the construing case law on CourtListener. Full record in verification/findings/. This is NOT primary-verified and must not be read as verified: that gate requires a named human reviewer, a readBy, and a pin to an attested source text, and no human has read or signed this. The level is set to multi-cited because that is the highest rung on the ladder that claims nothing about a reader. The ladder currently has no rung for \"primary text read by an unsigned machine reader\", so this understates the evidence rather than overstating it."
   },
   {
    "id": "can_pay_equity",

@@ -2,24 +2,23 @@
 
 ## Sampling result
 
-28 clauses have been checked against sources. **27 of them (96%) are confirmed defective** —
+34 clauses have been checked against sources. **33 of them (97%) are confirmed defective** —
 they omit a requirement the sources describe, misstate its scope, or cite the wrong provision.
 
-At 95% confidence, **at least 84% of the corpus is defective** — around 303 of 360 clauses,
-with a point estimate near 347.
+At 95% confidence, **at least 87% of the corpus is defective** — around 312 of 360 clauses,
+with a point estimate near 349.
 
 The sample spans California employment, California entity, New York entity, and federal tax clauses, so the
-pattern is not specific to one jurisdiction or subject. Of 114 individual assertions checked,
-4 were contradicted outright and 8 could not be supported by any source found.
+pattern is not specific to one jurisdiction or subject. Of 160 individual assertions checked,
+8 were contradicted outright and 7 could not be supported by any source found.
 
 | Defect type | Count | What it means |
 |---|---:|---|
-| `omitted-requirement` | 17 | The source describes an obligation the clause does not mention at all. |
-| `omitted-qualifier` | 19 | The clause states a threshold or test without a condition that narrows or widens it. |
-| `overstated-scope` | 2 | The clause claims broader application than the provision has. |
-| `overstated-consequence` | 4 | The clause states exposure without a limit the source imposes. |
-| `miscitation` | 2 | The clause cites the wrong provision for the obligation it performs. |
-| `scope-mismatch` | 1 | The clause is drafted for a party the provision does not govern. |
+| `omitted-requirement` | 21 | The source describes an obligation the clause does not mention at all. |
+| `omitted-qualifier` | 24 | The clause states a threshold or test without a condition that narrows or widens it. |
+| `overstated-scope` | 3 | The clause claims broader application than the provision has. |
+| `overstated-consequence` | 3 | The clause states exposure without a limit the source imposes. |
+| `miscitation` | 1 | The clause cites the wrong provision for the obligation it performs. |
 
 The dominant failure is omission, not invention. The clauses generally get the headline number right and
 leave out the qualifier that decides whether the number applies — which is the failure mode least likely to
@@ -28,17 +27,17 @@ be caught by reading the clause on its own.
 ## Corpus-wide triage
 
 Those patterns are structural, so they can be looked for without checking each clause against a source.
-`tools/lint.mjs` implements one detector per taxonomy entry and flags **117 of 360 clauses**.
+`tools/lint.mjs` implements one detector per taxonomy entry and flags **114 of 360 clauses**.
 
 | Detector | Flagged | Predicts |
 |---|---:|---|
-| `threshold-without-lookback` | 36 | omitted-qualifier |
-| `penalty-without-cap` | 16 | overstated-consequence |
-| `scope-test-single-conjunct` | 2 | overstated-scope |
+| `threshold-without-lookback` | 35 | omitted-qualifier |
+| `penalty-without-cap` | 15 | overstated-consequence |
+| `scope-test-single-conjunct` | 1 | overstated-scope |
 | `form-not-named` | 32 | omitted-requirement |
 | `deadline-without-trigger` | 8 | omitted-qualifier |
-| `notice-duty-single-citation` | 19 | miscitation |
-| `absolute-without-exception` | 27 | omitted-qualifier |
+| `notice-duty-single-citation` | 17 | miscitation |
+| `absolute-without-exception` | 26 | omitted-qualifier |
 
 **Read this with the caveat it deserves.** The detectors were written after seeing the nine sampled clauses,
 so scoring them against those same nine measures fit, not predictive accuracy. The 88% recall and 88% precision
@@ -56,8 +55,8 @@ whether it is in the jurisdiction being led with, whether it asserts a specific 
 | Level | Clauses | Meaning |
 |---|---:|---|
 | `unsourced` | 249 | Drafted from model knowledge with no citation attached. No independent basis exists for anything it asserts. |
-| `single-source` | 89 | One citation is asserted, and nothing has checked that the cited provision says what the clause says it says. |
-| `multi-cited` | 22 | More than one citation is asserted. Still self-asserted — several citations written by one author are not corroboration. |
+| `single-source` | 85 | One citation is asserted, and nothing has checked that the cited provision says what the clause says it says. |
+| `multi-cited` | 26 | More than one citation is asserted. Still self-asserted — several citations written by one author are not corroboration. |
 | `search-corroborated` | 0 | The assertion matched a web search summary drawing on two or more independent sources, with URLs and a check date recorded. No source document was opened and no primary text was read. This is a lead for a reviewer, not a verification. |
 | `corroborated` | 0 | Two or more independent secondary sources were opened and read, and each was recorded with a URL and a date. The primary text was still not checked. This sits BELOW the release gate: secondary sources agreeing with each other is not two primary sources. |
 
@@ -88,27 +87,27 @@ whether it is in the jurisdiction being led with, whether it asserts a specific 
 
 | # | Clause | Doc | Sev | Level | Citations |
 |---:|---|---|---|---|---|
-| 1 | `can_fair_chance` — Fair Chance Act Procedure | ca-notices | critical | `single-source` | Cal. Gov. Code §12952 |
-| 2 | `cal_soi` — California Statement of Information | compliance-calendar | critical | `multi-cited` | Cal. Corp. Code §17702.09 | Cal. Corp. Code §1502 |
-| 3 | `msa_ca_prop65` — Proposition 65 Warnings | msa | recommended | `single-source` | Cal. Health & Safety Code §25249.6 |
-| 4 | `msa_ca_release` — Section 1542 Waiver in Settlements | msa | recommended | `single-source` | Cal. Civ. Code §1542 |
-| 5 | `can_calwarn` — Cal-WARN Notice | ca-notices | critical | `single-source` | Cal. Lab. Code §§1400–1408 |
-| 6 | `ea_ca_925` — California Forum and Choice of Law | employment-agreement | critical | `single-source` | Cal. Lab. Code §925 |
-| 7 | `ipa_state_carveout` — Statutory Invention Carve-Out | ip-assignment | critical | `single-source` | Cal. Lab. Code §2870 |
-| 8 | `cal_ca_soi` — California Statement of Information | compliance-calendar | critical | `single-source` | Cal. Corp. Code §§1502, 17702.09 |
-| 9 | `can_heat` — Heat Illness Prevention | ca-notices | critical | `single-source` | 8 C.C.R. §3395 |
-| 10 | `can_lactation` — Lactation Accommodation Policy | ca-notices | critical | `single-source` | Cal. Lab. Code §§1030–1034 |
-| 11 | `ea_ca_release` — Release and Section 1542 Waiver | employment-agreement | recommended | `single-source` | Cal. Civ. Code §1542 |
-| 12 | `emp_finalpay` — Final Pay Timing | employment | critical | `single-source` | Cal. Lab. Code §§201-203 |
-| 13 | `msa_ca_925` — California Choice of Law Limits | msa | critical | `multi-cited` | Cal. Lab. Code §925 | Cal. Civ. Code §1646.5 |
-| 14 | `hb_ca_jury_voting` — Jury, Witness, and Voting Leave | handbook | critical | `single-source` | Cal. Lab. Code §§230, 14350–14353 |
-| 15 | `ic_ca_freelance` — Freelance Worker Protection Act | contractor-agreement | critical | `single-source` | Cal. Bus. & Prof. Code §18100 (SB 988) |
-| 16 | `can_edd` — EDD Employer Registration | ca-notices | critical | `single-source` | Cal. Unemp. Ins. Code §1086 |
-| 17 | `can_harassment_policy` — Written Harassment and Discrimination Policy | ca-notices | critical | `single-source` | 2 C.C.R. §11023 |
-| 18 | `msa_ca_auto_renew` — California Automatic Renewal Requirements | msa | critical | `single-source` | Cal. Bus. & Prof. Code §§17601–17606 |
-| 19 | `charter_ny_publication` — Publication Requirement | charter | critical | `single-source` | NY LLC Law §206 |
-| 20 | `emp_ca_registration` — California Employer Registration Checklist | employment | critical | `unsourced` | (none) |
-| 21 | `msa_ca_indemnity_construction` — California Anti-Indemnity Limits | msa | critical | `single-source` | Cal. Civ. Code §§2782, 2782.05 |
+| 1 | `msa_ca_prop65` — Proposition 65 Warnings | msa | recommended | `single-source` | Cal. Health & Safety Code §25249.6 |
+| 2 | `msa_ca_release` — Section 1542 Waiver in Settlements | msa | recommended | `single-source` | Cal. Civ. Code §1542 |
+| 3 | `cal_ca_soi` — California Statement of Information | compliance-calendar | critical | `single-source` | Cal. Corp. Code §§1502, 17702.09 |
+| 4 | `can_heat` — Heat Illness Prevention | ca-notices | critical | `single-source` | 8 C.C.R. §3395 |
+| 5 | `can_lactation` — Lactation Accommodation Policy | ca-notices | critical | `single-source` | Cal. Lab. Code §§1030–1034 |
+| 6 | `ea_ca_release` — Release and Section 1542 Waiver | employment-agreement | recommended | `single-source` | Cal. Civ. Code §1542 |
+| 7 | `can_fair_chance` — Fair Chance Act Procedure | ca-notices | critical | `multi-cited` | Cal. Gov. Code §12952 |
+| 8 | `emp_finalpay` — Final Pay Timing | employment | critical | `single-source` | Cal. Lab. Code §§201-203 |
+| 9 | `msa_ca_925` — California Choice of Law Limits | msa | critical | `multi-cited` | Cal. Lab. Code §925 | Cal. Civ. Code §1646.5 |
+| 10 | `hb_ca_jury_voting` — Jury, Witness, and Voting Leave | handbook | critical | `single-source` | Cal. Lab. Code §§230, 14350–14353 |
+| 11 | `ic_ca_freelance` — Freelance Worker Protection Act | contractor-agreement | critical | `single-source` | Cal. Bus. & Prof. Code §18100 (SB 988) |
+| 12 | `can_edd` — EDD Employer Registration | ca-notices | critical | `single-source` | Cal. Unemp. Ins. Code §1086 |
+| 13 | `can_harassment_policy` — Written Harassment and Discrimination Policy | ca-notices | critical | `single-source` | 2 C.C.R. §11023 |
+| 14 | `msa_ca_auto_renew` — California Automatic Renewal Requirements | msa | critical | `single-source` | Cal. Bus. & Prof. Code §§17601–17606 |
+| 15 | `cal_soi` — California Statement of Information | compliance-calendar | critical | `multi-cited` | Cal. Corp. Code §1502 | Cal. Corp. Code §17702.09 | Cal. Corp. Code §2204 | Cal. Corp. Code §2205 | Cal. Rev. & Tax. Code §19141 | Palm Valley Homeowners Assn. v. Design MTC (2000) 85 Cal.App.4th 553 |
+| 16 | `ea_ca_925` — California Forum and Choice of Law | employment-agreement | critical | `multi-cited` | Cal. Lab. Code §925 |
+| 17 | `ipa_state_carveout` — Statutory Invention Carve-Out | ip-assignment | critical | `multi-cited` | Cal. Lab. Code §2870 | Cal. Lab. Code §2872 | Cubic Corp. v. Marty (1986) 185 Cal.App.3d 438 |
+| 18 | `charter_ny_publication` — Publication Requirement | charter | critical | `single-source` | NY LLC Law §206 |
+| 19 | `emp_ca_registration` — California Employer Registration Checklist | employment | critical | `unsourced` | (none) |
+| 20 | `msa_ca_indemnity_construction` — California Anti-Indemnity Limits | msa | critical | `single-source` | Cal. Civ. Code §§2782, 2782.05 |
+| 21 | `can_calwarn` — Cal-WARN Notice | ca-notices | critical | `multi-cited` | Cal. Lab. Code §1400.5 | Cal. Lab. Code §1401 | Cal. Lab. Code §1402 | Cal. Lab. Code §1403 | Int'l Bhd. of Boilermakers v. NASSCO Holdings Inc. (2017) 17 Cal.App.5th 1105 |
 | 22 | `cal_ca_prop65_ops` — Proposition 65 Review | compliance-calendar | recommended | `single-source` | Cal. Health & Safety Code §25249.6 |
 | 23 | `can_local_sd` — San Diego Ordinances | ca-notices | critical | `single-source` | S.D. Mun. Code ch. 3, art. 9 |
 | 24 | `emp_rest` — Rest Period Policy | employment | critical | `single-source` | IWC Wage Order (industry-specific) |
@@ -119,24 +118,6 @@ whether it is in the jurisdiction being led with, whether it asserts a specific 
 34 clause(s) have been checked against sources and found to omit or misstate a requirement.
 These sit at the top of the queue: a clause known to be wrong is more dangerous than one merely unverified,
 because it reads as complete.
-
-### `can_fair_chance` — Fair Chance Act Procedure
-
-Checked 2026-08-15. 4 defect(s).
-
-- "an additional five (5) days if the applicant disputes accuracy" — sources give five additional BUSINESS days. The clause says "business days" for the first period and drops the word for the second, so a user counting calendar days shortens the period the applicant is owed.
-- The Act applies to employers with five or more employees. The clause states the whole procedure unconditionally, so a four-person company following it believes it is bound when it is not, and a company crossing five has no signal that it now is.
-- The 2023 regulations set when the five days start running where receipt cannot be confirmed — two business days for email, five calendar days for mail to a California address, ten elsewhere in the United States, twenty abroad. The clause gives the duration without the trigger.
-- The statutory test is whether the conviction history has a direct and adverse relationship with the specific duties of the job. The clause lists the three factors that feed that test but never states the test itself, so an assessment can recite the factors and reach no finding.
-
-### `cal_soi` — California Statement of Information
-
-Checked 2026-08-15. 4 defect(s).
-
-- The penalty is $250. The clause says "a penalty" without the figure, which is the only part of it a founder can act on.
-- A delinquent entity gets a notice and a further 60 days to file before suspension or forfeiture. The clause presents suspension as the direct consequence of lateness, so a founder who has already missed the date does not know a cure window exists or how long it runs.
-- The clause states only the initial filing. Corporations file annually and LLCs biennially thereafter, and its near-duplicate cal_ca_soi carries that recurrence in a field — so the corpus has the fact and this clause drops it.
-- A suspended entity is restored to active status by the Franchise Tax Board, not the Secretary of State. The clause names the consequence and not the cure.
 
 ### `msa_ca_prop65` — Proposition 65 Warnings
 
@@ -155,30 +136,6 @@ Checked 2026-08-17. 4 defect(s).
 - "otherwise the release will not extend to unknown claims" — The stated consequence is not automatic. Winet enforced an express §1542 waiver against a counsel-advised commercial party; Casey’s protection against inadvertent waiver by mere recital is strongest in personal-injury settings with unrepresented claimants.
 - The clause gives no signal that the outcome turns on the releasing party’s conscious understanding and on whether they were advised — the facts Winet actually rested on. A clause that says "quote it or unknown claims survive" tells the drafter to get the words right and nothing about the circumstances that decide the case.
 - Section 1542 was amended effective 1 January 2019. A clause instructing the drafter to quote the section without saying which version invites a stale quotation, which is the failure the instruction exists to prevent.
-
-### `can_calwarn` — Cal-WARN Notice
-
-Checked 2026-08-15. 3 defect(s).
-
-- The 75-employee threshold looks back twelve months — an establishment that hit 75 at any point in the preceding year is covered. The clause implies a current headcount test, which would let a shrinking employer conclude it is exempt when it is not.
-- A mass layoff means 50 or more job losses in any 30-day period. The clause uses the term without the trigger, so a user cannot tell whether a given reduction is covered.
-- Damages are capped at 60 days of back pay, or half the days the employee worked, whichever is smaller. The clause states back pay for each day of shortfall with no cap, overstating the exposure.
-
-### `ea_ca_925` — California Forum and Choice of Law
-
-Checked 2026-08-15. 3 defect(s).
-
-- The prohibition attaches to requiring the provision as a condition of employment. The clause omits that qualifier and reads as though any such provision is voidable however it arose.
-- Injunctive relief is available alongside fees. The clause mentions only fees.
-- contradicted: applies to an employee who primarily works in California
-
-### `ipa_state_carveout` — Statutory Invention Carve-Out
-
-Checked 2026-08-15. 3 defect(s).
-
-- A provision purporting to require assignment of a §2870-protected invention is against the public policy of California and unenforceable. The clause states the carve-out but not that an overbroad assignment is void, which is the consequence that matters.
-- §§2870–2872 govern employees. The clause is drafted for founders and sits in the founder IP assignment; a founder who is not an employee may not be covered, and the clause does not flag that.
-- contradicted: the written notice is given under §2870
 
 ### `cal_ca_soi` — California Statement of Information
 
@@ -211,6 +168,13 @@ Checked 2026-08-17. 3 defect(s).
 - "any release must expressly waive §1542, quoting it, or unknown claims survive" — The stated consequence is not automatic. Winet enforced an express §1542 waiver against a counsel-advised commercial party; Casey’s protection against inadvertent waiver by mere recital is strongest in personal-injury settings with unrepresented claimants.
 - The clause gives no signal that the outcome turns on the releasing party’s conscious understanding and on whether they were advised — the facts Winet actually rested on. A clause that says "quote it or unknown claims survive" tells the drafter to get the words right and nothing about the circumstances that decide the case.
 - Section 1542 was amended effective 1 January 2019. A clause instructing the drafter to quote the section without saying which version invites a stale quotation, which is the failure the instruction exists to prevent.
+
+### `can_fair_chance` — Fair Chance Act Procedure
+
+Checked 2026-08-19. 2 defect(s).
+
+- The advertisement prohibition and the receipt-timing rule are not in §12952. They are carried in the body as explicitly unverified because the official publisher of the California Code of Regulations (govt.westlaw.com) returns HTTP 403 at this environment's egress proxy and the regulation text was never opened.
+- No decision construing §12952 was found. The statutory text is doing all the work and any ambiguity in it is unresolved.
 
 ### `emp_finalpay` — Final Pay Timing
 
@@ -261,6 +225,27 @@ Checked 2026-08-15. 2 defect(s).
 - AB 2863 was signed in September 2024 and applies to contracts entered into, amended, or extended on or after 1 July 2025 — more than a year before this check. The clause describes the pre-amendment regime and omits all of it: free-to-pay conversions brought into scope, the new annual reminder notice, the click-to-cancel requirement and its voice equivalent, and the duty to retain consent verification records for three years or one year after termination, whichever is longer.
 - The clause is not wrong about the old law. It is silent about the current law, which is the more dangerous failure for a compliance clause: it reads as a complete statement of the regime and is a year out of date.
 
+### `cal_soi` — California Statement of Information
+
+Checked 2026-08-19. 2 defect(s).
+
+- The LLC suspension path was not traced. §17713.09 supplies the LLC delinquency and penalty route; the LLC counterpart to §2205 was not read, so the body states the suspension sequence for corporations only and asserts none for LLCs.
+- cal_ca_soi is a near-duplicate of this clause and was not rebuilt. The two now rest on different work and will disagree until it is.
+
+### `ea_ca_925` — California Forum and Choice of Law
+
+Checked 2026-08-19. 2 defect(s).
+
+- The clause states §925 and stops. It does not tell the reader what happens if the employee never invokes it — the provision is voidable, not void, so an unexercised right leaves the contrary forum clause standing.
+- No published decision construing "primarily resides and works" was found. For a remote employee who resides outside California but works into it, or the reverse, the clause states the test without resolving it.
+
+### `ipa_state_carveout` — Statutory Invention Carve-Out
+
+Checked 2026-08-19. 2 defect(s).
+
+- The clause fires when opState is CA or TX but states California law only. No Texas provision was read and none is cited; for a Texas operation this notice recites law that does not govern it. Unresolved.
+- Whether §§2870-2872 reach a founder who is not an employee was not resolved from primary text. The body now names the question instead of assuming the answer.
+
 ### `charter_ny_publication` — Publication Requirement
 
 Checked 2026-08-15. 2 defect(s).
@@ -281,6 +266,13 @@ Checked 2026-08-15. 2 defect(s).
 
 - Section 2782.05 applies to contracts entered into on or after 1 January 2013. The clause states the limit with no temporal boundary, so it is asserted of contracts it does not reach.
 - Section 2782.05 also voids the subcontractor’s indemnity to the extent claims arise from work outside the subcontractor’s contractual scope. That is a third protection, independent of active negligence, and the clause omits it — a subcontractor relying on this clause would not know to raise it.
+
+### `can_calwarn` — Cal-WARN Notice
+
+Checked 2026-08-19. 2 defect(s).
+
+- Article 2 of the chapter (§1410 and following) sets separate requirements for grocery establishments. It was not read and the clause does not mention it.
+- The clause is gated on rule ca_75plus, which was not re-examined against §1400.5(a)'s "employs, or has employed within the preceding 12 months" test. If that rule reads current headcount only, the clause will not fire for an employer that has shrunk below 75 within the year, though the statute still covers it.
 
 ### `cal_ca_prop65_ops` — Proposition 65 Review
 

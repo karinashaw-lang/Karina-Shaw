@@ -118,24 +118,39 @@
    "version": "1.0.0",
    "updated": "2026-06",
    "rationale": "California requires written notice of the statutory carve-out. An assignment that purports to cover more than the statute allows can be attacked as overbroad.",
-   "body": "This assignment does not apply to an invention that the founder developed entirely on their own time without using Company equipment, supplies, facilities, or trade secret information, except for inventions that either relate to the Company’s business or actual or demonstrably anticipated research or development, or result from work performed by the founder for the Company. This notice is given under California Labor Code §2870.",
+   "body": "This assignment does not apply to an invention that the founder developed entirely on their own time without using Company equipment, supplies, facilities, or trade secret information, except for an invention that either (a) relates, at the time of conception or reduction to practice, to the Company's business or to the Company's actual or demonstrably anticipated research or development, or (b) results from any work performed by the founder for the Company. To the extent a provision purports to require assignment of an invention that this carve-out excludes, it is against the public policy of California and is unenforceable, and the Company may not require such a provision as a condition of employment or continued employment. This written notification is given under California Labor Code §2872, which requires it whenever an employment agreement entered into after January 1, 1980 contains an invention-assignment provision; §2870 is the section that defines which inventions are excluded. In any suit or action, the person claiming the benefit of §2870 bears the burden of proof. Sections 2870 to 2872 speak to employees and employment agreements, and whether they reach a founder who is not an employee is a question this notice does not decide.",
    "sources": [
     {
      "citation": "Cal. Lab. Code §2870",
-     "type": "statute-cited",
-     "url": null,
-     "checked": null
+     "type": "statute-publisher",
+     "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=2870",
+     "checked": "2026-08-19",
+     "title": "California Legislative Counsel (leginfo) — Cal. Lab. Code §2870"
+    },
+    {
+     "citation": "Cal. Lab. Code §2872",
+     "type": "statute-publisher",
+     "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=2872",
+     "checked": "2026-08-19",
+     "title": "California Legislative Counsel (leginfo) — Cal. Lab. Code §2872"
+    },
+    {
+     "citation": "Cubic Corp. v. Marty (1986) 185 Cal.App.3d 438",
+     "type": "case-mirror",
+     "url": "https://www.courtlistener.com/opinion/2139488/cubic-corp-v-marty/",
+     "checked": "2026-08-19",
+     "title": "CourtListener — Cubic Corp. v. Marty"
     }
    ],
-   "verification": "single-source",
+   "verification": "multi-cited",
    "defects": [
-    "A provision purporting to require assignment of a §2870-protected invention is against the public policy of California and unenforceable. The clause states the carve-out but not that an overbroad assignment is void, which is the consequence that matters.",
-    "§§2870–2872 govern employees. The clause is drafted for founders and sits in the founder IP assignment; a founder who is not an employee may not be covered, and the clause does not flag that.",
-    "contradicted: the written notice is given under §2870"
+    "The clause fires when opState is CA or TX but states California law only. No Texas provision was read and none is cited; for a Texas operation this notice recites law that does not govern it. Unresolved.",
+    "Whether §§2870-2872 reach a founder who is not an employee was not resolved from primary text. The body now names the question instead of assuming the answer."
    ],
-   "lastChecked": "2026-08-15",
+   "lastChecked": "2026-08-19",
    "assertsLaw": true,
-   "classifiedBy": "heuristic-unreviewed"
+   "classifiedBy": "heuristic-unreviewed",
+   "verificationNote": "Rebuilt from the primary text on 2026-08-19: the cited sections were fetched from the California Legislative Counsel and the body was written from what they say, then checked against the construing case law on CourtListener. Full record in verification/findings/. This is NOT primary-verified and must not be read as verified: that gate requires a named human reviewer, a readBy, and a pin to an attested source text, and no human has read or signed this. The level is set to multi-cited because that is the highest rung on the ladder that claims nothing about a reader. The ladder currently has no rung for \"primary text read by an unsigned machine reader\", so this understates the evidence rather than overstating it."
   },
   {
    "id": "ipa_confidential",

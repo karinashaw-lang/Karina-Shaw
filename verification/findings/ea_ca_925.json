@@ -1,77 +1,105 @@
 {
-  "clauseId": "ea_ca_925",
-  "checkedAt": "2026-08-15",
-  "method": "web search only — no source document was opened",
-  "queries": [
-    "California Labor Code 925 employee choice of law forum voidable represented by counsel attorney fees"
-  ],
-  "assertions": [
-    {
-      "text": "voidable at the employee's election",
-      "status": "corroborated"
-    },
-    {
-      "text": "exception where individually represented by counsel",
-      "status": "corroborated"
-    },
-    {
-      "text": "employee recovers attorney's fees",
-      "status": "corroborated"
-    },
-    {
-      "text": "applies to an employee who primarily works in California",
-      "status": "contradicted",
-      "note": "sources state the test is an employee who primarily works AND RESIDES in California. The clause states only 'works', which overstates the section's reach — an employee working in California but residing elsewhere may fall outside it."
-    }
-  ],
-  "gaps": [
-    "The prohibition attaches to requiring the provision as a condition of employment. The clause omits that qualifier and reads as though any such provision is voidable however it arose.",
-    "Injunctive relief is available alongside fees. The clause mentions only fees."
-  ],
-  "sources": [
-    {
-      "title": "CourtListener — Zhang v. Super. Ct. (Cal. Ct. App. 2022), quoting Cal. Lab. Code §925(a)",
-      "url": "https://www.courtlistener.com/opinion/8482718/zhang-v-super-ct/",
-      "checked": "2026-08-17"
-    },
-    {
-      "title": "CourtListener — Midwest Motor Supply Co. v. Super. Ct. (Cal. Ct. App. 2020), quoting Cal. Lab. Code §925(a)",
-      "url": "https://www.courtlistener.com/opinion/4581586/midwest-motor-supply-co-v-super-ct/",
-      "checked": "2026-08-17"
-    },
-    {
-      "title": "SHRM — 10 key questions about California choice of law and forum selection clauses",
-      "url": "https://www.shrm.org/topics-tools/employment-law-compliance/10-key-questions-california-choice-law-forum-selection-clauses"
-    },
-    {
-      "title": "Ogletree — Labor Code Section 925: answers to 10 key questions",
-      "url": "https://ogletree.com/insights-resources/blog-posts/labor-code-section-925-answers-to-10-key-questions-about-californias-new-limits-on-out-of-state-choice-of-law-and-forum-selection-clauses/"
-    },
-    {
-      "title": "Sheppard Mullin — A word of caution for out-of-state employers of California employees",
-      "url": "https://www.sheppard.com/insights/blogs/california-labor-code-section-925-a-word-of-caution-for-out-of-state-employers-of-california-employees"
-    }
-  ],
-  "defectTypes": [
-    "overstated-scope",
-    "omitted-qualifier",
-    "omitted-requirement"
-  ],
-  "judicialQuotations": [
-    {
-      "case": "Zhang v. Super. Ct. (Cal. Ct. App. 2022)",
-      "opinion": 8482718,
-      "url": "https://www.courtlistener.com/opinion/8482718/zhang-v-super-ct/",
-      "checked": "2026-08-17",
-      "quote": "Labor Code section 925 provides in part: \"(a) An employer shall not require an employee who primarily resides and works in California, as a condition of employment, to agree to a provision that would do either of the following: [¶] (1) Require the employee to adjudicate outside of California a claim arising in California.\""
-    },
-    {
-      "case": "Midwest Motor Supply Co. v. Super. Ct. (Cal. Ct. App. 2020)",
-      "opinion": 4581586,
-      "url": "https://www.courtlistener.com/opinion/4581586/midwest-motor-supply-co-v-super-ct/",
-      "checked": "2026-08-17",
-      "quote": "Section 925 provides: \"An employer shall not require an employee who primarily resides and works in California, as a condition of employment, to agree to a provision that would . . . :[¶] (1) Require the employee to adjudicate outside of California a claim arising in California.\" (§ 925, subd. (a).) \"Any provision of a contract that violates subdivision (a) is voidable by the employee...\""
-    }
-  ],
-  "judicialNote": "Two California Courts of Appeal, two years apart, quote §925(a) verbatim and both give the test as \"primarily resides AND works in California\". The clause says \"primarily works\", dropping the residence conjunct. This is independent corroboration of exactly the kind that was missing: two courts, not two summaries of one summary. It is still read through CourtListener, which republishes the opinions rather than issuing them, so the two-primary standard is not met — what has changed is that the claim is no longer unverifiable as recorded."
+ "clauseId": "ea_ca_925",
+ "checkedAt": "2026-08-19",
+ "method": "Rebuild from primary text. Egress to leginfo.legislature.ca.gov opened between 2026-08-18 and 2026-08-19; the full text of Labor Code §925 was fetched from the Legislative Counsel and the clause body was rewritten from what the section says rather than repaired assertion by assertion. Case law located through CourtListener. The clause body was replaced, so the assertions below describe the REBUILT body; what the previous body said is recorded under priorDefects.",
+ "queries": [
+  "Cal. Lab. Code §925 full text (leginfo)",
+  "\"Labor Code section 925\" employee California forum selection voidable"
+ ],
+ "assertions": [
+  {
+   "text": "§925 covers an employee who primarily resides and works in California",
+   "status": "corroborated",
+   "note": "§925(a): 'An employer shall not require an employee who primarily resides and works in California ...'. Both conditions, conjunctive. The previous body said 'primarily works in California', which covers people the section does not."
+  },
+  {
+   "text": "the prohibition attaches to requiring the provision as a condition of employment",
+   "status": "corroborated",
+   "note": "§925(a): '... as a condition of employment, to agree to a provision that would do either of the following'. A provision that arose some other way is not what the section forbids."
+  },
+  {
+   "text": "the covered provisions are out-of-California adjudication of a California claim, and deprivation of the substantive protection of California law in a California controversy",
+   "status": "corroborated",
+   "note": "§925(a)(1)-(2), quoted verbatim in the judicial quotation below."
+  },
+  {
+   "text": "adjudication includes litigation and arbitration",
+   "status": "corroborated",
+   "note": "§925(d), verbatim: 'For purposes of this section, adjudication includes litigation and arbitration.' The previous body did not mention arbitration, which is the form most of these provisions actually take."
+  },
+  {
+   "text": "the provision is voidable by the employee, and if voided at the employee's request the matter is adjudicated in California under California law",
+   "status": "corroborated",
+   "note": "§925(b). Voidable, not void: the section does nothing until the employee asks. The consequence — California forum AND California law — is part of the same subdivision and the previous body omitted it."
+  },
+  {
+   "text": "a court may award reasonable attorney's fees, in addition to injunctive relief and any other remedies available",
+   "status": "corroborated",
+   "note": "§925(c): 'In addition to injunctive relief and any other remedies available, a court may award an employee who is enforcing his or her rights under this section reasonable attorney's fees.' Permissive 'may', not an entitlement. The previous body said the employee 'is entitled to recover their attorney's fees', which overstates a discretionary award, and omitted injunctive relief."
+  },
+  {
+   "text": "§925 does not apply where the employee was in fact individually represented by legal counsel in negotiating the venue, forum or choice-of-law term",
+   "status": "corroborated",
+   "note": "§925(e). The exception is narrow: representation must be 'in fact individually' and must be in negotiating that specific term, not the agreement generally."
+  },
+  {
+   "text": "§925 applies to a contract entered into, modified, or extended on or after January 1, 2017",
+   "status": "corroborated",
+   "note": "§925(f), and (Added by Stats. 2016, Ch. 632, Sec. 1. (SB 1241) Effective January 1, 2017.). The previous body omitted this entirely, which is the single most consequential omission in it: an agreement signed in 2015 and never touched since is outside the section, and the previous body told the reader otherwise."
+  }
+ ],
+ "priorDefects": [
+  "contradicted: 'any employee who primarily works in California' — the section reads 'primarily resides and works'.",
+  "omitted: 'as a condition of employment', so the previous body read as though any such provision was voidable however it arose.",
+  "omitted: the January 1, 2017 application date in §925(f).",
+  "overstated: 'entitled to recover their attorney's fees' — §925(c) says a court 'may award'.",
+  "omitted: injunctive relief, which §925(c) names first.",
+  "omitted: that adjudication includes arbitration (§925(d)).",
+  "omitted: that voiding happens at the employee's request, and that the consequence is a California forum under California law (§925(b))."
+ ],
+ "gaps": [
+  "No published California decision was found squarely construing the phrase 'primarily resides and works', which is the element most likely to be litigated for a remote employee. LGCY Power recites the statutory language but did not need to construe it.",
+  "Whether and how §925 interacts with Federal Arbitration Act preemption where the covered provision is an arbitration clause was not researched and is not addressed in the clause."
+ ],
+ "sources": [
+  {
+   "title": "California Legislative Counsel (leginfo) — Cal. Lab. Code §925",
+   "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=925",
+   "checked": "2026-08-19"
+  },
+  {
+   "title": "CourtListener — LGCY Power, LLC v. Superior Court (Cal. Ct. App., 5th Dist., Mar. 1, 2022)",
+   "url": "https://www.courtlistener.com/opinion/6446558/lgcy-power-v-super-ct/",
+   "checked": "2026-08-19"
+  }
+ ],
+ "defectTypes": [
+  "overstated-liability",
+  "omitted-qualifier",
+  "omitted-requirement"
+ ],
+ "judicialQuotations": [
+  {
+   "case": "LGCY Power, LLC v. Superior Court (Cal. Ct. App. 2022)",
+   "opinion": 6318669,
+   "url": "https://www.courtlistener.com/opinion/6446558/lgcy-power-v-super-ct/",
+   "checked": "2026-08-19",
+   "quote": "California Labor Code section 925 went into effect on January 1, 2017, and provides that employers cannot force an employee who resides and works primarily in California to agree, as a condition of employment, to: (1) litigate a claim arising in California in a forum outside of California; or (2) waive the employee's right to the substantive protection of California law with respect to a controversy arising in California."
+  },
+  {
+   "case": "LGCY Power, LLC v. Superior Court (Cal. Ct. App. 2022)",
+   "opinion": 6318669,
+   "url": "https://www.courtlistener.com/opinion/6446558/lgcy-power-v-super-ct/",
+   "checked": "2026-08-19",
+   "quote": "Any provision in a contract that violates these terms is voidable by the employee, and if a violative provision is rendered void at the employee's request, the matter must be adjudicated in California under California law."
+  },
+  {
+   "case": "LGCY Power, LLC v. Superior Court (Cal. Ct. App. 2022) — quoting the San Diego Superior Court's order in the related Gutschmidt action, recited as background rather than as the holding of LGCY",
+   "opinion": 6318669,
+   "url": "https://www.courtlistener.com/opinion/6446558/lgcy-power-v-super-ct/",
+   "checked": "2026-08-19",
+   "quote": "The language here is permissive: providing only that certain contractual provisions are 'voidable'"
+  }
+ ],
+ "singleOpinionCaveat": "LGCY Power is a Court of Appeal decision whose actual holding is that §925 supplies an exception to the compulsory cross-complaint statute — a question of first impression. It is cited here for its recitation of the statutory text, which matches leginfo word for word, and not for a construction of the elements. The rebuild rests on the statutory text; the case corroborates the transcription."
 }

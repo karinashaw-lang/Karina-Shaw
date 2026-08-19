@@ -504,26 +504,31 @@
    "version": "1.0.0",
    "updated": "2026-06",
    "rationale": "The violation is usually procedural rather than substantive — asking too early, or rejecting without the written assessment and the waiting period.",
-   "body": "Do not ask about conviction history, on an application or otherwise, until after a conditional offer. If conviction history would lead to withdrawal, first perform a written [[individualized assessment]] of the nature and gravity of the offense, the time elapsed, and the nature of the job. Send a preliminary notice with a copy of the report, allow at least five (5) business days to respond, and allow an additional five (5) days if the applicant disputes accuracy. Then send a final written decision with the right to appeal. Job advertisements must not state that people with criminal histories will not be considered. This is the [[Fair Chance Act|fair chance act]] procedure.",
+   "body": "This procedure applies to an employer with five (5) or more employees. Do not ask about conviction history, on an application or otherwise, and do not inquire into or consider it, until after a conditional offer of employment. Never consider, distribute, or disseminate an arrest not followed by conviction, a referral to or participation in a diversion program, or a conviction that has been sealed, dismissed, expunged, statutorily eradicated, pardoned, or covered by a certificate of rehabilitation. To deny the position solely or in part because of conviction history, first make an [[individualized assessment]] of whether that history has a direct and adverse relationship with the specific duties of the job that justify denying the position, considering the nature and gravity of the offense or conduct, the time that has passed since the offense or conduct and completion of the sentence, and the nature of the job held or sought; the results may be committed to writing but the statute does not require it. Then notify the preliminary decision in writing, stating the disqualifying conviction or convictions, enclosing a copy of the conviction history report if there is one, and explaining the right to respond and the deadline for doing so. The applicant has at least five (5) business days to respond, and five (5) additional business days if, within that first period, the applicant notifies the Company in writing that they dispute the accuracy of the report and are taking specific steps to obtain evidence supporting that. Consider what the applicant submits before making a final decision. Notify a final denial in writing, stating the denial, any existing procedure the Company has for the applicant to challenge it or request reconsideration, and the right to file a complaint with the Civil Rights Department — there is no statutory right of appeal. The section does not apply to a position for which a state or local agency is required by law to run a conviction history check, to a criminal justice agency, to a Farm Labor Contractor position, or where any state, federal, or local law requires a criminal background check or restricts employment based on criminal history. This is the [[Fair Chance Act|fair chance act]] procedure. NOT VERIFIED: the Civil Rights Department's regulations are understood to bar advertisements stating that people with criminal histories will not be considered, and to fix when the response period starts running where receipt cannot be confirmed. Neither rule appears in §12952 and the official publisher of the regulations was unreachable, so both are recorded here unconfirmed rather than stated as law.",
    "sources": [
     {
      "citation": "Cal. Gov. Code §12952",
-     "type": "statute-cited",
-     "url": null,
-     "checked": null
+     "type": "statute-publisher",
+     "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=GOV&sectionNum=12952",
+     "checked": "2026-08-19",
+     "title": "California Legislative Counsel (leginfo) — Cal. Gov. Code §12952"
+    },
+    {
+     "type": "case-mirror",
+     "url": "https://www.courtlistener.com/opinion/9505091/shikha-v-lyft-inc/",
+     "checked": "2026-08-19",
+     "title": "CourtListener — Shikha v. Lyft, Inc. (Cal. Ct. App., May 17, 2024), quoting the individualized-assessment test"
     }
    ],
-   "verification": "single-source",
+   "verification": "multi-cited",
    "assertsLaw": true,
    "classifiedBy": "heuristic-unreviewed",
    "defects": [
-    "\"an additional five (5) days if the applicant disputes accuracy\" — sources give five additional BUSINESS days. The clause says \"business days\" for the first period and drops the word for the second, so a user counting calendar days shortens the period the applicant is owed.",
-    "The Act applies to employers with five or more employees. The clause states the whole procedure unconditionally, so a four-person company following it believes it is bound when it is not, and a company crossing five has no signal that it now is.",
-    "The 2023 regulations set when the five days start running where receipt cannot be confirmed — two business days for email, five calendar days for mail to a California address, ten elsewhere in the United States, twenty abroad. The clause gives the duration without the trigger.",
-    "The statutory test is whether the conviction history has a direct and adverse relationship with the specific duties of the job. The clause lists the three factors that feed that test but never states the test itself, so an assessment can recite the factors and reach no finding."
+    "The advertisement prohibition and the receipt-timing rule are not in §12952. They are carried in the body as explicitly unverified because the official publisher of the California Code of Regulations (govt.westlaw.com) returns HTTP 403 at this environment's egress proxy and the regulation text was never opened.",
+    "No decision construing §12952 was found. The statutory text is doing all the work and any ambiguity in it is unresolved."
    ],
-   "lastChecked": "2026-08-15",
-   "verificationNote": "Checked by web search only against 4 independent sources; no source document was opened. Defect types: omitted-qualifier, omitted-requirement."
+   "lastChecked": "2026-08-19",
+   "verificationNote": "Rebuilt from the primary text on 2026-08-19: the cited sections were fetched from the California Legislative Counsel and the body was written from what they say, then checked against the construing case law on CourtListener. Full record in verification/findings/. This is NOT primary-verified and must not be read as verified: that gate requires a named human reviewer, a readBy, and a pin to an attested source text, and no human has read or signed this. The level is set to multi-cited because that is the highest rung on the ladder that claims nothing about a reader. The ladder currently has no rung for \"primary text read by an unsigned machine reader\", so this understates the evidence rather than overstating it."
   },
   {
    "id": "can_lactation",
@@ -990,24 +995,31 @@
    "version": "1.0.0",
    "updated": "2026-06",
    "rationale": "A Delaware corporation instinctively names Delaware law. For a California employee that provision is voidable at the employee's election, and the fee-shifting runs one way.",
-   "body": "This agreement is governed by California law and any dispute is adjudicated in California. [[Labor Code §925|labor code 925]] makes a contrary forum or choice-of-law provision voidable at the {{workerLabel}}'s election for any employee who primarily works in California, unless they were individually represented by counsel in negotiating it. An employee who voids such a provision is entitled to recover their attorney's fees.",
+   "body": "This agreement is governed by California law and any dispute is adjudicated in California. [[Labor Code §925|labor code 925]] applies to a contract entered into, modified, or extended on or after January 1, 2017 with an employee who primarily resides and works in California. For such a contract the Company may not require, as a condition of employment, a provision that would make the {{workerLabel}} adjudicate a claim arising in California outside California, or that would deprive the {{workerLabel}} of the substantive protection of California law in a controversy arising in California; adjudication includes both litigation and arbitration. Such a provision is voidable by the {{workerLabel}}, and if it is voided at their request the matter is adjudicated in California and California law governs. In addition to [[injunctive relief]] and any other remedies available, a court may award reasonable attorney's fees to an employee enforcing the section. Section 925 does not apply to a contract with an employee who is in fact individually represented by legal counsel in negotiating the venue, forum, or choice-of-law term.",
    "sources": [
     {
      "citation": "Cal. Lab. Code §925",
-     "type": "statute-cited",
-     "url": null,
-     "checked": null
+     "type": "statute-publisher",
+     "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=925",
+     "checked": "2026-08-19",
+     "title": "California Legislative Counsel (leginfo) — Cal. Lab. Code §925"
+    },
+    {
+     "type": "case-mirror",
+     "url": "https://www.courtlistener.com/opinion/6446558/lgcy-power-v-super-ct/",
+     "checked": "2026-08-19",
+     "title": "CourtListener — LGCY Power, LLC v. Superior Court (Cal. Ct. App., 5th Dist., Mar. 1, 2022)"
     }
    ],
-   "verification": "single-source",
+   "verification": "multi-cited",
    "defects": [
-    "The prohibition attaches to requiring the provision as a condition of employment. The clause omits that qualifier and reads as though any such provision is voidable however it arose.",
-    "Injunctive relief is available alongside fees. The clause mentions only fees.",
-    "contradicted: applies to an employee who primarily works in California"
+    "The clause states §925 and stops. It does not tell the reader what happens if the employee never invokes it — the provision is voidable, not void, so an unexercised right leaves the contrary forum clause standing.",
+    "No published decision construing \"primarily resides and works\" was found. For a remote employee who resides outside California but works into it, or the reverse, the clause states the test without resolving it."
    ],
-   "lastChecked": "2026-08-15",
+   "lastChecked": "2026-08-19",
    "assertsLaw": true,
-   "classifiedBy": "heuristic-unreviewed"
+   "classifiedBy": "heuristic-unreviewed",
+   "verificationNote": "Rebuilt from the primary text on 2026-08-19: the cited sections were fetched from the California Legislative Counsel and the body was written from what they say, then checked against the construing case law on CourtListener. Full record in verification/findings/. This is NOT primary-verified and must not be read as verified: that gate requires a named human reviewer, a readBy, and a pin to an attested source text, and no human has read or signed this. The level is set to multi-cited because that is the highest rung on the ladder that claims nothing about a reader. The ladder currently has no rung for \"primary text read by an unsigned machine reader\", so this understates the evidence rather than overstating it."
   },
   {
    "id": "ea_ca_arbitration",

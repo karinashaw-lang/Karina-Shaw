@@ -1,55 +1,143 @@
 {
-  "clauseId": "can_calwarn",
-  "checkedAt": "2026-08-15",
-  "method": "web search only — no source document was opened",
-  "queries": [
-    "Cal-WARN Act California Labor Code 1400 75 employees 60 days notice mass layoff relocation part-time counted"
-  ],
-  "assertions": [
-    {
-      "text": "75 or more employees",
-      "status": "corroborated"
-    },
-    {
-      "text": "sixty (60) days written notice",
-      "status": "corroborated"
-    },
-    {
-      "text": "covers mass layoff, relocation, and termination",
-      "status": "corroborated"
-    },
-    {
-      "text": "part-time employees count toward the threshold",
-      "status": "corroborated"
-    },
-    {
-      "text": "relocation of more than one hundred (100) miles",
-      "status": "unsupported",
-      "note": "no source found stated a distance; the clause may be right but nothing checked supports it"
-    }
-  ],
-  "gaps": [
-    "The 75-employee threshold looks back twelve months — an establishment that hit 75 at any point in the preceding year is covered. The clause implies a current headcount test, which would let a shrinking employer conclude it is exempt when it is not.",
-    "A mass layoff means 50 or more job losses in any 30-day period. The clause uses the term without the trigger, so a user cannot tell whether a given reduction is covered.",
-    "Damages are capped at 60 days of back pay, or half the days the employee worked, whichever is smaller. The clause states back pay for each day of shortfall with no cap, overstating the exposure."
-  ],
-  "sources": [
-    {
-      "title": "California DIR — Cal-WARN Act",
-      "url": "https://www.dir.ca.gov/dlse/cal-warnact.html"
-    },
-    {
-      "title": "LegalClarity — California WARN Act requirements, notice and penalties",
-      "url": "https://legalclarity.org/what-is-the-california-warn-act-and-its-requirements/"
-    },
-    {
-      "title": "Stimmel Law — The WARN Act: federal and California law",
-      "url": "https://www.stimmel-law.com/en/articles/warn-act-warning-layoffs-employees-federal-and-california-law"
-    }
-  ],
-  "defectTypes": [
-    "omitted-qualifier",
-    "omitted-qualifier",
-    "overstated-consequence"
-  ]
+ "clauseId": "can_calwarn",
+ "checkedAt": "2026-08-19",
+ "method": "Rebuild from primary text. Labor Code §§1400, 1400.5, 1401, 1402, 1402.5, 1403, 1404, 1405, 1406, 1407 and 1408 were fetched individually from leginfo.legislature.ca.gov and read. The controlling construction was located through CourtListener. Assertions describe the REBUILT body; the previous body's errors are under priorDefects.",
+ "queries": [
+  "Cal. Lab. Code §§1400-1408 full text, section by section (leginfo)",
+  "Cal-WARN \"Labor Code\" 1400 1401 layoff \"lack of work\" furlough temporary separation"
+ ],
+ "assertions": [
+  {
+   "text": "a covered establishment is one that employs, or has employed within the preceding 12 months, 75 or more persons",
+   "status": "corroborated",
+   "note": "§1400.5(a), verbatim. The 12-month lookback means a shrinking employer stays covered; the previous body implied a current-headcount test."
+  },
+  {
+   "text": "an employee, for this chapter, is a person employed for at least 6 months of the 12 months preceding the date notice is required",
+   "status": "corroborated",
+   "note": "§1400.5(h). This is the qualifier that makes the previous body's 'counts part-time employees' claim only half right: there is no hours-per-week floor as under federal WARN, but there is a 6-month tenure floor, and the previous body stated neither."
+  },
+  {
+   "text": "a mass layoff is a layoff during any 30-day period of 50 or more employees at a covered establishment",
+   "status": "corroborated",
+   "note": "§1400.5(d), verbatim. The previous body used the term without ever giving the trigger."
+  },
+  {
+   "text": "a layoff is a separation from a position for lack of funds or lack of work, and need not be permanent",
+   "status": "corroborated",
+   "note": "§1400.5(c) supplies the definition; Boilermakers v. NASSCO holds it reaches a temporary furlough of three to five weeks, expressly rejecting the argument that federal WARN's six-month floor applies. This is the construction the previous body dropped, and it is the one that decides whether a short furlough triggers the duty at all."
+  },
+  {
+   "text": "a relocation is the removal of all or substantially all operations in a covered establishment to a different location 100 miles or more away",
+   "status": "corroborated",
+   "note": "§1400.5(e). The previous body said 'relocations of more than one hundred miles'; the section reads '100 miles or more', so a relocation of exactly 100 miles is covered and the previous body said it was not."
+  },
+  {
+   "text": "60 days' written notice must go to the affected employees, the Employment Development Department, the local workforce development board, and the chief elected official of each city and county in which the event occurs",
+   "status": "corroborated",
+   "note": "§1401(a)(1)-(2). The previous body named the EDD and 'local officials' and omitted the local workforce development board, which is a separate named recipient."
+  },
+  {
+   "text": "the notice must contain the elements required by the federal WARN Act, a statement about coordination of rapid response services with prescribed language and the board's email and telephone number, a description of CalFresh with its helpline and website, and the employer's own working email and telephone number",
+   "status": "corroborated",
+   "note": "§1401(b)-(e), as amended by Stats. 2025, Ch. 229 (SB 617), effective January 1, 2026. The previous body said nothing at all about notice content, and its 'updated: 2026-06' predates nothing — the content requirements were already in force."
+  },
+  {
+   "text": "back pay is at the higher of the average regular rate over the last three years or the final rate, plus the value of benefits, capped at the lesser of 60 days or one-half the days the employee was employed",
+   "status": "corroborated",
+   "note": "§1402(a)-(b). The previous body stated back pay 'for each day of shortfall' with no cap, which overstates the exposure. §1402(c) further reduces liability by wages paid during the violation period, voluntary unconditional payments, and third-party benefit payments."
+  },
+  {
+   "text": "the civil penalty is up to $500 for each day of violation, and does not apply if the employer pays all employees what it owes under §1402 within three weeks of ordering the event",
+   "status": "corroborated",
+   "note": "§1403. The previous body said 'plus civil penalties' with neither the figure nor the safe harbour, and the safe harbour is the part a small employer can act on."
+  },
+  {
+   "text": "no notice is required where the event is necessitated by a physical calamity or act of war",
+   "status": "corroborated",
+   "note": "§1401(f)."
+  },
+  {
+   "text": "the actively-seeking-capital exception is available for a relocation or termination but not for a mass layoff, and requires a determination by the department on a documented record and a sworn affidavit",
+   "status": "corroborated",
+   "note": "§1402.5(a)-(d). §1402.5(d) excludes mass layoffs. The previous body's rationale asserted the period 'is not shortened by the layoff being unexpected', which glosses over the exceptions that do exist."
+  },
+  {
+   "text": "a person, including a local government or employee representative, may bring a civil action, and a prevailing plaintiff may be awarded reasonable attorney's fees",
+   "status": "corroborated",
+   "note": "§1404."
+  }
+ ],
+ "priorDefects": [
+  "omitted: the 12-month lookback in the covered-establishment definition (§1400.5(a)).",
+  "omitted: the definition of mass layoff — 50 or more in any 30-day period (§1400.5(d)).",
+  "omitted: the 6-month tenure floor in the definition of employee (§1400.5(h)), while asserting that part-time employees count.",
+  "contradicted: 'relocations of more than one hundred miles' — §1400.5(e) reads '100 miles or more'.",
+  "omitted: the local workforce development board as a notice recipient (§1401(a)(2)).",
+  "omitted: every notice-content requirement in §1401(b)-(e).",
+  "overstated: 'back pay and benefits for each day of shortfall' with no mention of the §1402(b) cap at the lesser of 60 days or half the days employed, or the §1402(c) offsets.",
+  "omitted: the $500-per-day figure and the three-week payment safe harbour in §1403.",
+  "omitted: every exception — physical calamity or act of war (§1401(f)), actively seeking capital (§1402.5), project completion under Wage Orders 11, 12 and 16 and seasonal employment (§1400.5(g))."
+ ],
+ "gaps": [
+  "Article 2 of the chapter (§1410 and following, referenced by §1406(b)) sets separate requirements for grocery establishments. It was not read and the clause does not mention it; a grocery employer would need more than this clause gives.",
+  "The clause is conditioned on rule ca_75plus, which was not re-examined against §1400.5(a)'s 'employs, or has employed within the preceding 12 months' test. If that rule reads current headcount only, the condition is narrower than the statute and the clause will not fire for an employer that has shrunk below 75 within the year."
+ ],
+ "sources": [
+  {
+   "title": "California Legislative Counsel (leginfo) — Cal. Lab. Code §1400.5 (definitions, renumbered from §1400 by Stats. 2022, Ch. 752)",
+   "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=1400.5",
+   "checked": "2026-08-19"
+  },
+  {
+   "title": "California Legislative Counsel (leginfo) — Cal. Lab. Code §1401 (as amended by Stats. 2025, Ch. 229, eff. Jan. 1, 2026)",
+   "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=1401",
+   "checked": "2026-08-19"
+  },
+  {
+   "title": "California Legislative Counsel (leginfo) — Cal. Lab. Code §1402",
+   "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=1402",
+   "checked": "2026-08-19"
+  },
+  {
+   "title": "California Legislative Counsel (leginfo) — Cal. Lab. Code §1403",
+   "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=1403",
+   "checked": "2026-08-19"
+  },
+  {
+   "title": "CourtListener — Int'l Bhd. of Boilermakers v. NASSCO Holdings Inc. (2017) 17 Cal.App.5th 1105",
+   "url": "https://www.courtlistener.com/opinion/6239226/intl-bhd-of-boilermakers-v-nassco-holdings-inc/",
+   "checked": "2026-08-19"
+  }
+ ],
+ "defectTypes": [
+  "overstated-liability",
+  "omitted-qualifier",
+  "omitted-requirement",
+  "threshold-without-lookback"
+ ],
+ "judicialQuotations": [
+  {
+   "case": "Int'l Bhd. of Boilermakers v. NASSCO Holdings Inc. (Cal. Ct. App. 2017) 17 Cal.App.5th 1105",
+   "opinion": 6106132,
+   "url": "https://www.courtlistener.com/opinion/6239226/intl-bhd-of-boilermakers-v-nassco-holdings-inc/",
+   "checked": "2026-08-19",
+   "quote": "On appeal, the employer contends the court erred in interpreting the California WARN Act as applying to temporary layoffs. We affirm. Based on our analysis of the statutory language, statutory scheme, legislative history, federal WARN law, and policies underlying the California WARN Act, we determine the employer had a duty to provide statutory notice under the particular circumstances of this case, even if the layoffs were not permanent and were for less than six months."
+  },
+  {
+   "case": "Int'l Bhd. of Boilermakers v. NASSCO Holdings Inc. (Cal. Ct. App. 2017) 17 Cal.App.5th 1105",
+   "opinion": 6106132,
+   "url": "https://www.courtlistener.com/opinion/6239226/intl-bhd-of-boilermakers-v-nassco-holdings-inc/",
+   "checked": "2026-08-19",
+   "quote": "Under its plain meaning, \"separation\" means an action of moving apart, and does not contain a temporal component. Under a commonsense understanding, a separation can be permanent or it can be temporary. Thus, the fact that the work stoppage was temporary does not logically take the action outside the scope of the statutory duty."
+  },
+  {
+   "case": "Int'l Bhd. of Boilermakers v. NASSCO Holdings Inc. (Cal. Ct. App. 2017) 17 Cal.App.5th 1105",
+   "opinion": 6106132,
+   "url": "https://www.courtlistener.com/opinion/6239226/intl-bhd-of-boilermakers-v-nassco-holdings-inc/",
+   "checked": "2026-08-19",
+   "quote": "Mindful of the federal WARN Act, if the Legislature wished to include only permanent layoffs, the Legislature could have defined the term \"layoff\" as a \"permanent separation from a position.\" Or if it wished to maintain the six-month minimum, it could have defined \"layoff\" as a \"separation from a position for six months.\" The Legislature did not include either of these limitations."
+  }
+ ],
+ "renumberingNote": "NASSCO quotes the definitions as §1400, subdivisions (a)-(f). Stats. 2022, Ch. 752 renumbered that section to §1400.5 and left §1400 as the short title only; §1402.5(d) still cross-refers to 'subdivision (d) of Section 1400', which no longer exists as such. The definitional text the case construes is unchanged — only its section number moved. The clause cites the range §§1400-1408, which still contains it."
 }
