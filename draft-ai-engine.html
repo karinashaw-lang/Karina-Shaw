@@ -151,6 +151,9 @@
   .retr .rt{color:var(--muted);font-size:11px;margin-top:2px}
   .tagchip{display:inline-block;background:var(--chip);border:1px solid var(--line);color:var(--muted);
     font-size:10px;padding:1px 7px;border-radius:999px;margin:2px 3px 0 0}
+  .conf-rows{display:flex;gap:26px;flex-wrap:wrap}
+  .conf-row{display:flex;align-items:baseline;gap:8px;font-size:12px;color:#6a5f47}
+  .conf-n{font-size:26px;font-weight:600;color:#3d372c;letter-spacing:-.02em}
   .scope{background:#fdf6ec;border:1px solid #e3d3ae;border-radius:8px;padding:10px 13px;
     margin:0 0 13px;font-size:11.5px;line-height:1.6;color:#6a5f47}
   .genfoot{margin-top:26px;padding-top:13px;border-top:1px solid #d9d2c2;font-size:11px;line-height:1.55;
@@ -269,13 +272,13 @@
         <div id="missing"></div>
       </div>
       <div class="card">
-        <h3>Risk-based suggestions <span class="h">§2.3</span></h3>
+        <h3>Things people commonly consider <span class="h">§2.3</span></h3>
         <div id="risks"></div>
       </div>
     </div>
     <div>
       <div class="card">
-        <h3>AI confidence <span class="h">§7 — fallback threshold 70%</span></h3>
+        <h3>Template structure <span class="h">a count, not an assessment</span></h3>
         <div id="confidence"></div>
       </div>
       <div class="card">
@@ -1354,7 +1357,6 @@ function renderKPIs(){
   const f=fired(A), docs=DOCS.filter(d=>docIn(d,A,f));
   const nClauses=CLAUSES.filter(c=>docs.some(d=>d.id===c.doc)&&eligible(c,A,f)&&(isAuto(c)||STATE.added.has(c.id))).length;
   const gaps=STATE.pkg?findGaps(STATE.pkg).length:CLAUSES.filter(c=>!isAuto(c)&&eligible(c,A,f)&&docs.some(d=>d.id===c.doc)).length;
-  const conf=STATE.pkg?confidence(STATE.pkg).score:null;
   const drafted = STATE.pkg ? STATE.pkg.docs.filter(d=>d.included).reduce((s,d)=>s+d.clauses.length,0) : 0;
   const held    = STATE.pkg ? STATE.pkg.docs.filter(d=>d.included).reduce((s,d)=>s+d.withheld.length,0) : nClauses;
   const usableLib = CLAUSES.filter(meetsClauseGate).length;
@@ -1363,13 +1365,16 @@ function renderKPIs(){
     ['Clauses drafted',drafted,`every eligible clause is shown; ${usableLib} of ${CLAUSES.length} library clauses are verified`],
     ['Needs checking',held,`drafted but below “${GATE}” — marked inline, not hidden`],
     ['Rules fired',`${f.size}/${RULES.length}`,'conditional logic engine'],
-    ['AI confidence',conf===null?'—':conf+'%',conf===null?'generate to score':(conf<70?'below threshold — attorney review':'above 70% threshold')]
+    /* Was "AI confidence NN%". A percentage is a judgement about the user's document wearing
+       a number, and the spec does not allow the platform to hold one. A count does not. */
+    ['Sections selected', STATE.pkg?structure(STATE.pkg).selected:'—',
+      STATE.pkg?`of ${structure(STATE.pkg).available} in these templates`:'generate to count']
   ];
   $('#kpis').innerHTML=k.map(x=>`<div class="kpi"><div class="l">${x[0]}</div><div class="v">${x[1]}</div><div class="d">${x[2]}</div></div>`).join('');
 }
 
 /* =====================================================================
-   MISSING CLAUSE DETECTION — §2.1
+   THE CLAUSE LIBRARY — the user picks, the platform offers
    Compares the assembled package against the complete document schema.
    Every clause tagged insertion:"suggest" that is eligible for this
    configuration becomes a scored suggestion, carrying its own rationale and
@@ -1548,57 +1553,49 @@ function renderBenchmarks(){
 /* =====================================================================
    CONFIDENCE SCORING — §7 (fallback to human below 70%)
    ===================================================================== */
-function confidence(pkg){
-  const a=pkg.answers,f=pkg.fired,factors=[];
-  const drafted=pkg.docs.filter(d=>d.included).reduce((s,d)=>s+d.clauses.length,0);
-  const held=pkg.docs.filter(d=>d.included).reduce((s,d)=>s+d.withheld.length,0);
-  if(!drafted) return {score:0,blocked:true,held,factors:[
-    ['gate',`Every clause eligible for this package is below the release gate “${GATE}”. ${held} clause${held===1?'':'s'} withheld.`],
-    ['note','Confidence is not scored against an empty package. Nothing has been drafted, so there is nothing to be confident about.']
-  ]};
-  let score=100;
-  const gaps=findGaps(pkg);
-  const crit=gaps.filter(g=>g.severity==='critical').length;
-  const rec=gaps.filter(g=>g.severity==='recommended').length;
-  if(crit){ score-=crit*12; factors.push([`-${crit*12}`,`${crit} critical clause${crit>1?'s':''} missing from the package`]); }
-  if(rec){ score-=rec*2; factors.push([`-${rec*2}`,`${rec} recommended clause${rec>1?'s':''} not yet added`]); }
-  const opt=gaps.filter(g=>g.severity==='optional').length;
-  if(opt) factors.push(['-0',`${opt} optional clause${opt>1?'s':''} available but not scored — omitting them is a legitimate choice`]);
-  const broken=brokenRefs(pkg).length;
-  if(broken){ score-=broken*6; factors.push([`-${broken*6}`,`${broken} unresolved cross-reference${broken>1?'s':''}`]); }
-  if(f.has('vc_entity_mismatch')){ score-=25; factors.push(['-25','Entity type conflicts with the stated funding plan — a structural question, not a drafting one']); }
-  const jurClauses=CLAUSES.filter(c=>c.jurisdictions.includes(a.formState)||c.jurisdictions.includes(a.opState)).length;
-  if(jurClauses<2){ score-=8; factors.push(['-8',`Thin jurisdiction-specific coverage for ${STATES[a.formState].name}/${STATES[a.opState].name} in the clause library`]); }
-  else factors.push(['+0',`${jurClauses} jurisdiction-specific clauses available for your states`]);
-  if(a.industry==='other'){ score-=6; factors.push(['-6','Industry set to “Other” — no industry-specific provisions could be selected']); }
-  if(f.has('health_baa')||f.has('construction')){ score-=10; factors.push(['-10','Regulated industry — outcomes depend on facts the wizard does not collect']); }
-  score=Math.max(5,Math.min(100,Math.round(score)));
-  return {score,factors};
-}
-function renderConfidence(){
-  const c=confidence(STATE.pkg), score=c.score, factors=c.factors, low=score<70;
-  if(c.blocked){
-    $('#confidence').innerHTML=`
-      <div style="font-size:34px;font-weight:800;color:var(--red)">Blocked</div>
-      <div class="note" style="margin-top:8px"><b style="color:var(--red)">Nothing drafted.</b> ${esc(factors[0][1])}</div>
-      <div class="note">${esc(factors[1][1])} Raising a clause above the gate requires reading the sources, not adding
-        more citations to it — <span class="mono">templates/tools/validate.mjs</span> rejects a corroboration claim that
-        is not backed by at least two independent hosts with recorded check dates.</div>`;
-    return;
-  }
-  $('#confidence').innerHTML=`
-    <div style="font-size:34px;font-weight:800;color:${low?'var(--red)':'var(--green)'}">${score}%</div>
-    <div class="bar" style="height:9px"><i style="width:${score}%;background:${low?'linear-gradient(90deg,#f87171,#fbbf24)':'linear-gradient(90deg,#34d399,#3ba2ff)'}"></i></div>
-    <div class="note" style="margin-top:11px">${low
-      ? '<b style="color:var(--red)">Below the 70% threshold.</b> Per spec §7 the platform routes this package to attorney review rather than presenting it as ready to sign.'
-      : '<b style="color:var(--green)">Above the 70% threshold.</b> The package proceeds to the user with the standard AI-generated label. Attorney review remains available.'}</div>
-    <div style="margin-top:12px">${factors.map(([d,t])=>
-      `<div class="rule"><div class="rs mono" style="color:${d.startsWith('-')?'var(--red)':'var(--muted)'}">${esc(d)}</div>
-       <div class="rc"><div class="rr" style="color:var(--txt)">${esc(t)}</div></div></div>`).join('')}</div>
-    <div class="note">Scoring here is a transparent rubric over what the engine can actually check. It is deliberately not a
-      model self-report: asking a model how confident it is produces a number that correlates with fluency, not correctness.</div>`;
+/* Template structure, not a verdict.
+
+   This used to be a confidence score. It deducted points for every clause the user had not
+   picked and printed "23 critical clauses missing from the package" next to a red number.
+   The MVP spec bans exactly that: the AI never says "you are missing X", never says "your
+   contract is incomplete". A score that goes down when you decline a suggestion is that
+   sentence with the words removed and the judgement kept — arguably worse, because a number
+   is harder to argue with than a claim.
+
+   What replaces it is the framing the spec does allow: a count. "This template has 12
+   sections. You have selected 8." The user adds or removes. Nothing is scored, nothing is
+   withheld, and the platform expresses no view about whether 8 is the right number.
+
+   The structural checks that are about the DOCUMENT rather than the user's choices survive,
+   because an unresolved cross-reference is a defect in what we shipped, not a comment on
+   what they picked. */
+function structure(pkg){
+  const inc=pkg.docs.filter(d=>d.included);
+  const selected=inc.reduce((s,d)=>s+d.clauses.length,0);
+  const available=new Set();
+  for(const d of inc) for(const c of CLAUSES) if(c.doc===d.id) available.add(c.id);
+  const broken=brokenRefs(pkg);
+  return {docs:inc.length, selected, available:available.size, broken};
 }
 
+function renderConfidence(){
+  const st=structure(STATE.pkg);
+  const rows=[
+    ['sections in these templates', st.available],
+    ['you have selected',           st.selected],
+  ];
+  $('#confidence').innerHTML=
+    `<div class="conf-rows">${rows.map(([k,v])=>
+       `<div class="conf-row"><span class="conf-n">${v}</span><span>${esc(k)}</span></div>`).join('')}</div>
+     <p class="note" style="margin:12px 0 0">Add or remove any section from the clause library. This is a
+       count of what these templates contain and what you have chosen — not a view about whether it is
+       the right set for you. DRAFT does not assess whether a document is complete or sufficient.</p>`
+    + (st.broken.length
+       ? `<p class="note" style="margin:9px 0 0;color:#8c3b3b"><b>${st.broken.length} cross-reference${st.broken.length===1?'':'s'}
+          in the assembled text point${st.broken.length===1?'s':''} at a section that is not present.</b> That is a fault in the
+          template, not in your choices — the reference will read as unresolved until the section is added.</p>`
+       : '');
+}
 /* =====================================================================
    CONSISTENCY CHECKER — §3.1
    Runs over the assembled package, not over model output. Each check

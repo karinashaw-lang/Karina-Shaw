@@ -97,6 +97,29 @@ console.log('the product never claims to be complete');
     (chrome.match(/scope\s*\+/g)||[]).length>0 && /const scope=/.test(chrome));
 }
 
+/* The MVP spec's hard "never" list. The AI may auto-fill, explain on hover, and count
+   sections. It may not tell a user their document is missing something, needed something,
+   or was incomplete — and a score that drops when they decline a suggestion is that
+   judgement wearing a number, which is harder to argue with than the sentence would be. */
+console.log('the platform expresses no view on whether the document is complete');
+{
+  const html=fs.readFileSync('draft-ai-engine.html','utf8');
+  const a=html.indexOf('/* BUILD:CORPUS-START'), b=html.indexOf('BUILD:CORPUS-END */');
+  const chrome=(html.slice(0,a)+html.slice(b))
+    .replace(/\/\*[\s\S]*?\*\//g,'').replace(/^\s*\/\/.*$/gm,'');
+  const BANNED=[
+    [/missing from the package/i, 'tells the user clauses are missing'],
+    [/clauses? not yet added/i,   'frames unpicked clauses as an omission'],
+    [/you are missing/i,          'the spec forbids this exact sentence'],
+    [/\bis incomplete\b/i,        'a verdict on the document'],
+    [/AI confidence/i,            'a score is a judgement about the user document'],
+  ];
+  for(const [re,why] of BANNED) t(`no "${re.source}" — ${why}`, !re.test(chrome));
+  t('the neutral count replaced it', /sections in these templates/.test(chrome));
+  t('and it disclaims assessing sufficiency',
+    /does not assess whether a document is complete or sufficient/.test(chrome));
+}
+
 console.log('every generated document carries the required disclaimer');
 {
   const html=fs.readFileSync('draft-ai-engine.html','utf8');
