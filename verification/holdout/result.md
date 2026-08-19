@@ -56,36 +56,38 @@ already uses them that way.
 
 ## The corpus-wide estimate, updated
 
-30 of 31 clauses checked are demonstrably defective. The one that is not,
+33 of 34 clauses checked are demonstrably defective. The one that is not,
 `hb_ca_sick`, is still withheld by the gate — two of its assertions found no source either
 way, which is absence of evidence and is deliberately not counted as a defect.
 
 | | Before | Now |
 |---|---|---|
-| Clauses checked | 9 | 31 |
-| Demonstrably defective | 8 | 30 |
-| Withheld by the gate | 9 | 31 |
-| 95% lower bound on the defect rate | 57% | **86%** |
-| Implied defective clauses in the 360 | ≥206 | **≥308** |
+| Clauses checked | 9 | 34 |
+| Demonstrably defective | 8 | 33 |
+| Withheld by the gate | 9 | 34 |
+| 95% lower bound on the defect rate | 57% | **87%** |
+| Implied defective clauses in the 360 | ≥206 | **≥312** |
 
-The bound moved from 57% to 86% because the sample more than doubled and every added
+The bound moved from 57% to 87% because the sample more than doubled and every added
 clause was defective. Nothing about the corpus changed; what changed is how much of it has
 been looked at.
 
 The sample is not random — it is the top of a queue ordered by consequence, plus three
 controls chosen for being detector-clean. It is biased toward clauses that matter, which is
 the right bias for deciding what to fix and the wrong one for estimating a population mean.
-The lower bound should be read as: among clauses of this kind, at least 86% are defective.
+The lower bound should be read as: among clauses of this kind, at least 87% are defective.
 
 ## Every defect found, by category
 
-- **omitted-qualifier** — 22
-- **omitted-requirement** — 18
+- **omitted-qualifier** — 24
+- **omitted-requirement** — 20
 - **overstated-consequence** — 4
 - **overstated-scope** — 4
 - **miscitation** — 2
+- **overstated-liability** — 2
 - **unsupported-citation** — 1
 - **unsourced-assertion** — 1
+- **unsupported-claim** — 1
 - **overstated-requirement** — 1
 - **scope-mismatch** — 1
 - **stale** — 1
