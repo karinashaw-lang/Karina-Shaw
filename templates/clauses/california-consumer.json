@@ -311,24 +311,46 @@
    "version": "1.0.0",
    "updated": "2026-06",
    "rationale": "Enforced almost entirely by private plaintiffs who recover fees, so the practical exposure is the demand letter volume rather than the underlying health risk.",
-   "body": "Review the product catalogue annually against the listed chemicals, since the list is updated through the year, and confirm warnings are present, correctly worded, and placed where the purchase decision is made — including on the product page for online sales, not only on the package. A warning that is present but non-conforming is treated as no warning. Enforcement is primarily by private plaintiffs who recover attorney's fees, and the sixty-day notice that precedes suit is the window in which the matter is cheapest to resolve.",
+   "body": "This review is only required if the business employs ten (10) or more people: a person employing fewer than ten is outside the definition of \"person in the course of doing business\" and owes no Proposition 65 warning. If it applies, review the catalogue annually against the listed chemicals, which are updated through the year, and confirm that warnings are present, correctly worded and placed where the purchase decision is made — including on the product page for online sales and not only on the package. Do not treat having looked as a defence: a Court of Appeal has held that the statute's \"knowingly and intentionally\" element takes in constructive knowledge, so a business that could have known is exposed. A warning that departs from the safe-harbour regulations is not automatically void; it loses the safe harbour and then has to be defended as \"clear and reasonable\" on the facts, which is a worse position and a more expensive one. NOT VERIFIED: the safe-harbour content and methods are in 27 C.C.R. Article 6, and no section of it was read from a publisher — govt.westlaw.com returns HTTP 403 at this environment's egress proxy and the agency's own oehha.ca.gov and p65warnings.ca.gov return a firewall challenge. Enforcement is mostly by private plaintiffs, who may sue in the public interest only sixty (60) days after serving a notice with a certificate of merit on the alleged violator and the public prosecutors, and only where no public prosecutor is diligently prosecuting; that sixty-day window is when the matter is cheapest to resolve. Exposure is up to two thousand five hundred dollars ($2,500) per day per violation, and one of the seven factors the court must weigh is whether the business took good faith measures to comply and when — which is what this review is for.",
    "sources": [
     {
      "citation": "Cal. Health & Safety Code §25249.6",
-     "type": "statute-cited",
-     "url": null,
-     "checked": null
+     "type": "statute-publisher",
+     "url": "https://leginfo.legislature.ca.gov/faces/codes_displayText.xhtml?lawCode=HSC&division=20.&title=&part=&chapter=6.6.&article=",
+     "checked": "2026-08-19",
+     "title": "California Legislative Counsel (leginfo) — Cal. Health & Safety Code ch. 6.6, read as a whole"
+    },
+    {
+     "citation": "Cal. Health & Safety Code §25249.11",
+     "type": "statute-publisher",
+     "url": "https://leginfo.legislature.ca.gov/faces/codes_displayText.xhtml?lawCode=HSC&division=20.&title=&part=&chapter=6.6.&article=",
+     "checked": "2026-08-19",
+     "title": "California Legislative Counsel (leginfo) — Cal. Health & Safety Code §25249.11(b), the fewer-than-ten-employees exclusion"
+    },
+    {
+     "citation": "Cal. Health & Safety Code §25249.7",
+     "type": "statute-publisher",
+     "url": "https://leginfo.legislature.ca.gov/faces/codes_displayText.xhtml?lawCode=HSC&division=20.&title=&part=&chapter=6.6.&article=",
+     "checked": "2026-08-19",
+     "title": "California Legislative Counsel (leginfo) — Cal. Health & Safety Code §25249.7, enforcement, penalties and the 60-day notice"
+    },
+    {
+     "type": "case-mirror",
+     "url": "https://www.courtlistener.com/opinion/6457514/lee-v-amazoncom-inc/",
+     "checked": "2026-08-19",
+     "title": "CourtListener — Lee v. Amazon.com, Inc. (Cal. Ct. App. 2022)"
     }
    ],
-   "verification": "single-source",
+   "verification": "multi-cited",
    "assertsLaw": true,
    "classifiedBy": "heuristic-unreviewed",
    "defects": [
-    "\"a warning that is present but non-conforming is treated as no warning\" — the same overstatement confirmed in msa_ca_prop65 — a non-conforming warning loses the safe harbour rather than being void as such",
-    "The parent defect propagated: this clause states the duty with no threshold, and Proposition 65 does not apply to a business employing fewer than ten employees. Both clauses in this pair tell the reader most likely to be exempt that they are covered."
+    "The annual cadence is this corpus's operational choice, not a statutory one. Nothing in chapter 6.6 requires a periodic review, and no source read here says annually is enough. The clause presents a housekeeping rhythm alongside statutory rules and a reader will not distinguish them.",
+    "The Article 6 safe-harbour regulations were never opened: govt.westlaw.com returns HTTP 403 and the agency hosts return a firewall challenge. What a \"correctly worded\" warning is therefore cannot be stated, which is most of what this review is supposed to check.",
+    "The clause tells the reader to check placement on the product page. The regulation that governs internet purchases is in Article 6 and was not read, so the instruction has no verified content behind it."
    ],
-   "lastChecked": "2026-08-15",
-   "verificationNote": "Implicated by the confirmed defect in msa_ca_prop65 and checked against the evidence already recorded there; no new search. Defect types: omitted-qualifier, overstated-consequence."
+   "lastChecked": "2026-08-19",
+   "verificationNote": "Rebuilt from the primary text on 2026-08-19, from the same reading of Health & Safety Code chapter 6.6 as msa_ca_prop65 rather than by propagation from it — the previous record for this clause said in terms that it was checked against evidence recorded elsewhere with no new search, which is not a verification. The two defects it inherited are corrected: the fewer-than-ten-employees exclusion is now the first sentence, and the claim that a non-conforming warning is treated as no warning is replaced with what the sources support. Full record in verification/findings/cal_ca_prop65_ops.json. NOT primary-verified: no human has read or signed this."
   }
  ]
 }

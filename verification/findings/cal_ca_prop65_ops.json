@@ -1,43 +1,84 @@
 {
-  "clauseId": "cal_ca_prop65_ops",
-  "checkedAt": "2026-08-15",
-  "method": "no new search — checked against the evidence already recorded for msa_ca_prop65, which propagation.mjs named as the clause this one was built from. The question was whether the same defect is present, and the sources establishing it are already on file.",
-  "heldOut": true,
-  "propagatedFrom": "msa_ca_prop65",
-  "assertions": [
-    {
-      "text": "review the catalogue annually and confirm warnings are present and correctly placed",
-      "status": "corroborated"
-    },
-    {
-      "text": "a warning that is present but non-conforming is treated as no warning",
-      "status": "partial",
-      "note": "the same overstatement confirmed in msa_ca_prop65 — a non-conforming warning loses the safe harbour rather than being void as such"
-    },
-    {
-      "text": "enforcement is primarily by private plaintiffs who recover attorney’s fees, preceded by a sixty-day notice",
-      "status": "corroborated"
-    }
-  ],
-  "gaps": [
-    "The parent defect propagated: this clause states the duty with no threshold, and Proposition 65 does not apply to a business employing fewer than ten employees. Both clauses in this pair tell the reader most likely to be exempt that they are covered."
-  ],
-  "defectTypes": [
-    "omitted-qualifier",
-    "overstated-consequence"
-  ],
-  "sources": [
-    {
-      "title": "California OEHHA — Are any businesses exempt from Proposition 65?",
-      "url": "https://www.p65warnings.ca.gov/faq/businesses/are-any-businesses-exempt-proposition-65"
-    },
-    {
-      "title": "Jones Day — California simplifies Proposition 65 obligations",
-      "url": "https://www.jonesday.com/en/insights/2020/07/2020-regulatory-amendment-proposition-65"
-    },
-    {
-      "title": "OEHHA — Businesses and Proposition 65",
-      "url": "https://oehha.ca.gov/proposition-65/businesses-and-proposition-65"
-    }
-  ]
+ "clauseId": "cal_ca_prop65_ops",
+ "checkedAt": "2026-08-19",
+ "method": "Rebuild from primary text, from an independent reading of Health & Safety Code chapter 6.6 rather than by propagation from msa_ca_prop65. The previous record for this clause said in terms: 'Implicated by the confirmed defect in msa_ca_prop65 and checked against the evidence already recorded there; no new search.' A propagated verdict is not a verification. Assertions describe the REBUILT body.",
+ "queries": [
+  "Cal. Health & Safety Code ch. 6.6 full text (leginfo)",
+  "Lee v. Amazon.com Proposition 65 constructive knowledge"
+ ],
+ "assertions": [
+  {
+   "text": "a business employing fewer than ten people is outside 'person in the course of doing business' and owes no warning",
+   "status": "corroborated",
+   "note": "§25249.11(b). Now the first sentence of the clause, because it decides whether the rest of it applies at all."
+  },
+  {
+   "text": "the list of chemicals is updated through the year",
+   "status": "corroborated",
+   "note": "§25249.8 requires the list to be published and revised at least once per year. The annual review cadence the clause prescribes is this corpus's operational choice, not a statutory one — see gaps."
+  },
+  {
+   "text": "constructive knowledge suffices, so having failed to look is not a defence",
+   "status": "corroborated",
+   "note": "Lee v. Amazon.com. This is the reason a periodic review is worth doing at all, and it was absent from the previous body."
+  },
+  {
+   "text": "a non-conforming warning loses the safe harbour rather than being void",
+   "status": "corroborated",
+   "note": "See the msa_ca_prop65 finding. The statutory standard is 'clear and reasonable'; the safe harbour is regulatory and could not be read."
+  },
+  {
+   "text": "private enforcement requires 60 days' notice with a certificate of merit and no diligently prosecuting public prosecutor",
+   "status": "corroborated",
+   "note": "§25249.7(d)(1)-(2)."
+  },
+  {
+   "text": "exposure is up to $2,500 per day per violation, assessed against seven factors including good faith measures and when they were taken",
+   "status": "corroborated",
+   "note": "§25249.7(b)(1)-(2). This is the provision that gives a documented review programme its value, and it is why the clause now names it."
+  }
+ ],
+ "priorDefects": [
+  "overstated: 'A warning that is present but non-conforming is treated as no warning.' Propagated from msa_ca_prop65.",
+  "omitted: the fewer-than-ten-employees exclusion. Propagated from msa_ca_prop65.",
+  "omitted: the knowledge element and its constructive-knowledge construction.",
+  "omitted: the certificate of merit and the diligent-prosecution bar, which are what a 60-day notice has to satisfy.",
+  "omitted: the penalty figure and the seven factors — including the good-faith-measures factor that is the whole payoff of a review clause.",
+  "unsupported: 'private plaintiffs who recover attorney's fees'. No fee provision was found in chapter 6.6.",
+  "method: the previous record was not an independent check and said so."
+ ],
+ "gaps": [
+  "The annual cadence is a housekeeping choice, not a statutory requirement, and no source read here says annually is enough. The clause presents it alongside statutory rules and a reader will not tell them apart.",
+  "The Article 6 safe-harbour regulations were never opened — govt.westlaw.com returns HTTP 403 and the agency hosts oehha.ca.gov and p65warnings.ca.gov return a firewall challenge — so what a 'correctly worded' warning is cannot be stated, which is most of what this review is supposed to check.",
+  "The internet-purchase placement rule is in Article 6 and was not read.",
+  "Whether a private plaintiff recovers fees, and under what provision, was not verified."
+ ],
+ "sources": [
+  {
+   "title": "California Legislative Counsel (leginfo) — Cal. Health & Safety Code ch. 6.6 (§§25249.5–25249.14)",
+   "url": "https://leginfo.legislature.ca.gov/faces/codes_displayText.xhtml?lawCode=HSC&division=20.&title=&part=&chapter=6.6.&article=",
+   "checked": "2026-08-19"
+  },
+  {
+   "title": "CourtListener — Lee v. Amazon.com, Inc. (Cal. Ct. App. 2022)",
+   "url": "https://www.courtlistener.com/opinion/6457514/lee-v-amazoncom-inc/",
+   "checked": "2026-08-19"
+  }
+ ],
+ "defectTypes": [
+  "omitted-qualifier",
+  "overstated-consequence",
+  "unsupported-assertion",
+  "propagated-verdict",
+  "regulation-unreachable"
+ ],
+ "judicialQuotations": [
+  {
+   "case": "Lee v. Amazon.com, Inc. (Cal. Ct. App. 2022)",
+   "opinion": 6329625,
+   "url": "https://www.courtlistener.com/opinion/6457514/lee-v-amazoncom-inc/",
+   "checked": "2026-08-19",
+   "quote": "Interpreting section 25249.6 to require warnings only when a person in the course of doing business has actual knowledge that he or she will expose any individual to a listed chemical would significantly limit the reach of the statute and create incentives to avoid information that might reveal potential sources of exposure."
+  }
+ ]
 }

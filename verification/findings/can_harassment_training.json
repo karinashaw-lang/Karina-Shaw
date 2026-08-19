@@ -1,58 +1,95 @@
 {
-  "clauseId": "can_harassment_training",
-  "checkedAt": "2026-08-15",
-  "method": "web search only — no source document was opened",
-  "queries": [
-    "California Government Code 12950.1 harassment prevention training 5 employees two hours supervisors one hour nonsupervisory every two years"
-  ],
-  "assertions": [
-    {
-      "text": "five (5) or more employees",
-      "status": "corroborated"
-    },
-    {
-      "text": "two (2) hours for supervisors",
-      "status": "corroborated"
-    },
-    {
-      "text": "one (1) hour for non-supervisory employees",
-      "status": "corroborated"
-    },
-    {
-      "text": "every two (2) years",
-      "status": "corroborated"
-    },
-    {
-      "text": "within six (6) months of hire or promotion",
-      "status": "unsupported"
-    },
-    {
-      "text": "seasonal and temporary within thirty (30) days or one hundred hours",
-      "status": "unsupported"
-    },
-    {
-      "text": "retain records for two (2) years",
-      "status": "unsupported"
-    }
-  ],
-  "gaps": [
-    "Sources describe prevention of abusive conduct as a required component of the training. The clause does not mention it."
-  ],
-  "sources": [
-    {
-      "title": "California Civil Rights Department — Training FAQ for employers",
-      "url": "https://calcivilrights.ca.gov/wp-content/uploads/sites/32/2022/11/Sexual-Harassment-Prevention-Training-For-Employers-FAQ_ENG.pdf"
-    },
-    {
-      "title": "FindLaw — Cal. Gov. Code §12950.1",
-      "url": "https://codes.findlaw.com/ca/government-code/gov-sect-12950-1/"
-    },
-    {
-      "title": "Traliant — California sexual harassment training requirements",
-      "url": "https://www.traliant.com/resources/california-law-now-requires-sexual-harassment-training-for-all-employees/"
-    }
-  ],
-  "defectTypes": [
-    "omitted-requirement"
-  ]
+ "clauseId": "can_harassment_training",
+ "checkedAt": "2026-08-19",
+ "method": "Rebuild from primary text. Cal. Gov. Code §12950.1 was fetched from leginfo.legislature.ca.gov and read in full. The previous sources were a FindLaw mirror of the section, a Civil Rights Department FAQ and a training vendor's marketing page; the mirror and the vendor page have been removed. CourtListener was searched for construing decisions and none was found. Assertions describe the REBUILT body.",
+ "queries": [
+  "Cal. Gov. Code §12950.1 full text (leginfo)",
+  "\"Government Code\" \"12950.1\" sexual harassment prevention training two hours supervisory"
+ ],
+ "assertions": [
+  {
+   "text": "the trigger is an employer regularly employing five or more persons, or regularly receiving the services of five or more persons under a contract",
+   "status": "corroborated",
+   "note": "§12950.1(h)(1). The contract limb is what makes the clause's rationale about temporary and seasonal workers counting roughly right, but the statutory formula is about persons providing services under a contract, which is broader and different."
+  },
+  {
+   "text": "two hours for supervisory employees, one hour for non-supervisory employees, repeated once every two years",
+   "status": "corroborated",
+   "note": "§12950.1(a)(1). Already correct in the previous body; now cited to the section rather than to a mirror."
+  },
+  {
+   "text": "new non-supervisory employees within six months of hire; new supervisory employees within six months of assuming the supervisory position",
+   "status": "corroborated",
+   "note": "§12950.1(a)(1), verbatim. The earlier check recorded this as NOT confirmed. It is confirmed. Note the supervisory trigger is assumption of the position, not 'promotion' as the previous body had it — a person hired directly into a supervisory role is covered."
+  },
+  {
+   "text": "seasonal, temporary or other employees hired to work for less than six months must be trained within 30 calendar days after hire or 100 hours worked, whichever occurs first",
+   "status": "corroborated",
+   "note": "§12950.1(f), verbatim. The earlier check recorded this as NOT confirmed. It is confirmed — with a qualifier the previous body did not have: it applies to employees 'hired to work for less than six months'. §12950.1(f) also puts the duty on the temporary services employer rather than the client."
+  },
+  {
+   "text": "prevention of abusive conduct is a required component",
+   "status": "corroborated",
+   "note": "§12950.1(a)(2). This was the clause's recorded defect and it is now in the body. 'Abusive conduct' is defined in §12950.1(h)(2)."
+  },
+  {
+   "text": "training must be inclusive of harassment based on gender identity, gender expression and sexual orientation, with practical examples and trainers with expertise in those areas",
+   "status": "corroborated",
+   "note": "§12950.1(a)(3). Absent from the previous body and from its defect list."
+  },
+  {
+   "text": "the content must include information and practical guidance on federal and state law and available remedies, and practical examples instructing supervisors in preventing harassment, discrimination and retaliation, presented by trainers with knowledge and expertise",
+   "status": "corroborated",
+   "note": "§12950.1(a)(1). The previous body specified hours and deadlines and said nothing about content."
+  },
+  {
+   "text": "an employer may use its own module or direct employees to the Civil Rights Department's online courses, which is deemed to satisfy the obligation",
+   "status": "corroborated",
+   "note": "§12950.1(i)-(k). Absent from the previous body, and it is the cheapest route to compliance for a small employer."
+  },
+  {
+   "text": "a claim that the training did not reach a particular individual does not by itself create liability, and compliance does not insulate the employer from liability for harassment",
+   "status": "corroborated",
+   "note": "§12950.1(c), verbatim in substance. A two-way qualifier, and the previous body had neither half."
+  },
+  {
+   "text": "the remedy for a violation is that the department may seek an order requiring compliance",
+   "status": "corroborated",
+   "note": "§12950.1(d). The previous body stated no consequence."
+  }
+ ],
+ "priorDefects": [
+  "omitted: abusive conduct prevention as a required component (§12950.1(a)(2)) — already recorded as a defect and not repaired.",
+  "omitted: the gender identity, gender expression and sexual orientation component (§12950.1(a)(3)).",
+  "omitted: every content requirement in §12950.1(a)(1).",
+  "omitted: the 'hired to work for less than six months' qualifier on the 30-day/100-hour rule.",
+  "omitted: that the temporary services employer, not the client, trains a placed temporary employee.",
+  "omitted: §12950.1(c)'s two-way rule, §12950.1(d)'s remedy, and §12950.1(i)-(k)'s free compliance route.",
+  "imprecise: 'promotion into a supervisory role' for the statutory 'assumption of a supervisory position'.",
+  "unsupported: 'Retain records of completion for a minimum of two (2) years.' No such requirement is in §12950.1. It is a Civil Rights Department regulation and could not be read — see gaps. Carried in the rebuilt body behind an explicit NOT VERIFIED marker.",
+  "sources: two of the four recorded sources were a training vendor's marketing page and a law-firm-adjacent blog; one was a FindLaw mirror of the section itself, which this repo's own rules exclude as a legal-content source."
+ ],
+ "gaps": [
+  "The two-year record retention could not be verified. It rests on the Civil Rights Department's regulations, and govt.westlaw.com, the publisher of the California Code of Regulations, returns HTTP 403 at this environment's egress proxy. calcivilrights.ca.gov is reachable but is the agency, not the publisher of the regulation, and was not used as a substitute for the text. The requirement is carried with a NOT VERIFIED marker naming the host that refused.",
+  "No decision construing §12950.1 was found on CourtListener. The section appears unconstrued.",
+  "§12950.1(l) lets a construction-industry employer under a multiemployer collective bargaining agreement satisfy the requirement by verifying training received elsewhere within the past two years. It was read and is not carried, so a construction employer following this clause is being held to more than the section requires.",
+  "§12950 — the separate duty to post or distribute an information sheet on sexual harassment — was not read. It is a different section with a different duty and a reader may assume this clause covers it."
+ ],
+ "sources": [
+  {
+   "title": "California Legislative Counsel (leginfo) — Cal. Gov. Code §12950.1",
+   "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=GOV&sectionNum=12950.1.",
+   "checked": "2026-08-19"
+  }
+ ],
+ "defectTypes": [
+  "omitted-requirement",
+  "omitted-qualifier",
+  "unsupported-assertion",
+  "regulation-unreachable",
+  "mirror-source"
+ ],
+ "judicialQuotations": [],
+ "noCaseLawNote": "CourtListener returned nothing construing Gov. Code §12950.1. The check was made and came back empty.",
+ "singleHostNote": "This finding rests on one host, leginfo.legislature.ca.gov. That is the publisher of the California codes and the only host whose version of a California statute would be the law, but it is one host, and the corpus's own standard treats corroboration as requiring two. Nothing here should be read as meeting it."
 }
