@@ -1,0 +1,27 @@
+{
+ "$comment": "The half of the template metadata that cannot be computed. Counts, complexity and section totals are derived from the corpus by templates/tools/metadata.mjs and deliberately NOT stored here — this project has twice found hand-maintained numbers that had gone stale against the data they described, and a stored form_fields_count is that failure waiting to happen. What is here is judgement: how long something takes to think through, what to suggest next, which format it should leave in, and how often it needs re-reading. Estimated time in particular has to be authored, because the spec's own table gives the Invoice and the LLC Operating Agreement fifteen fields each and three-to-five versus fifteen-to-twenty-five minutes — a five-fold difference that no function of field count can produce.",
+ "reviewFrequencyByPackage": {
+  "formation": {"months": 12, "why": "State filing requirements and forms change periodically."},
+  "hiring":    {"months": 12, "why": "Labour rules and wage floors move on an annual cycle."},
+  "commercial":{"months": 24, "why": "General contract principles are comparatively stable."}
+ },
+ "documents": {
+  "governance":           {"estimatedMinutes": [15,25], "export": "pdf",  "industries": ["all","startups","small business"], "next": ["ip-assignment","nda","contractor-agreement"]},
+  "charter":              {"estimatedMinutes": [5,10],  "export": "pdf",  "industries": ["all","startups"], "next": ["governance","consent"]},
+  "ip-assignment":        {"estimatedMinutes": [5,10],  "export": "pdf",  "industries": ["all","tech","creative"], "next": ["governance","vesting"]},
+  "vesting":              {"estimatedMinutes": [10,15], "export": "pdf",  "industries": ["startups","tech"], "next": ["governance","ip-assignment"]},
+  "election-83b":         {"estimatedMinutes": [3,5],   "export": "pdf",  "industries": ["startups"], "next": ["vesting"]},
+  "consent":              {"estimatedMinutes": [10,15], "export": "pdf",  "industries": ["all","startups"], "next": ["governance","charter"]},
+  "employment":           {"estimatedMinutes": [15,25], "export": "word", "industries": ["all"], "next": ["employment-agreement","handbook"]},
+  "foreign-qualification":{"estimatedMinutes": [5,10],  "export": "pdf",  "industries": ["all"], "next": ["compliance-calendar"]},
+  "compliance-calendar":  {"estimatedMinutes": [5,10],  "export": "word", "industries": ["all","small business"], "next": ["governance"]},
+  "schedules":            {"estimatedMinutes": [3,5],   "export": "word", "industries": ["all"], "next": ["governance"]},
+  "nda":                  {"estimatedMinutes": [5,10],  "export": "pdf",  "industries": ["all","tech","healthcare","finance"], "next": ["msa","sow"]},
+  "msa":                  {"estimatedMinutes": [20,35], "export": "pdf",  "industries": ["all","saas","consulting","agencies"], "next": ["sow","dpa","nda"]},
+  "sow":                  {"estimatedMinutes": [10,15], "export": "pdf",  "industries": ["consulting","agencies","saas"], "next": ["msa","nda"]},
+  "dpa":                  {"estimatedMinutes": [10,20], "export": "pdf",  "industries": ["saas","tech","healthcare"], "next": ["msa"]},
+  "employment-agreement": {"estimatedMinutes": [10,15], "export": "pdf",  "industries": ["all"], "next": ["handbook","ip-assignment","nda"]},
+  "contractor-agreement": {"estimatedMinutes": [10,15], "export": "pdf",  "industries": ["tech","creative","consulting","construction","marketing"], "next": ["nda","sow"]},
+  "handbook":             {"estimatedMinutes": [20,30], "export": "word", "industries": ["all"], "next": ["employment-agreement","employment"]}
+ }
+}
