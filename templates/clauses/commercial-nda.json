@@ -105,7 +105,8 @@
    "sources": [],
    "verification": "unsourced",
    "assertsLaw": false,
-   "classifiedBy": "heuristic-unreviewed"
+   "classifiedBy": "heuristic-unreviewed",
+   "replaces": "sh_confidentiality"
   },
   {
    "id": "nda_permitted",
@@ -264,7 +265,8 @@
    "sources": [],
    "verification": "unsourced",
    "assertsLaw": true,
-   "classifiedBy": "heuristic-unreviewed"
+   "classifiedBy": "heuristic-unreviewed",
+   "replaces": "sh_return_property"
   },
   {
    "id": "nda_injunctive",
@@ -314,38 +316,6 @@
    "benchmark": "Present in 64% of mutual NDAs",
    "rationale": "Prevents an argument that the evaluation itself created a commitment or an exclusive negotiation.",
    "body": "Nothing in this Agreement obligates either Party to proceed with any transaction, to negotiate exclusively, or to refrain from pursuing a similar relationship with any third party.",
-   "sources": [],
-   "verification": "unsourced",
-   "assertsLaw": false,
-   "classifiedBy": "heuristic-unreviewed"
-  },
-  {
-   "id": "nda_nonsolicit",
-   "doc": "nda",
-   "group": "Term and Remedies",
-   "title": "Non-Solicitation of Personnel",
-   "severity": "optional",
-   "insertion": "suggest",
-   "condition": {
-    "ne": [
-     "opState",
-     "CA"
-    ]
-   },
-   "jurisdictions": [
-    "*"
-   ],
-   "industries": [
-    "*"
-   ],
-   "entities": [
-    "*"
-   ],
-   "version": "1.0.0",
-   "updated": "2026-06",
-   "benchmark": "Present in 38% of mutual NDAs outside California",
-   "rationale": "Enforceability varies sharply by state, and a general-advertising carve-out is what keeps the clause from being read as a no-hire agreement — which raises antitrust exposure of its own.",
-   "body": "For {{termWords}} months, neither Party shall knowingly solicit for employment any employee introduced during the evaluation, except through general advertising not targeted at that person or where the employee initiates contact. This provision is not enforceable against employees working in California.",
    "sources": [],
    "verification": "unsourced",
    "assertsLaw": false,

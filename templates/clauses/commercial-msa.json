@@ -665,7 +665,8 @@
    "sources": [],
    "verification": "unsourced",
    "assertsLaw": false,
-   "classifiedBy": "heuristic-unreviewed"
+   "classifiedBy": "heuristic-unreviewed",
+   "replaces": "sh_liability"
   },
   {
    "id": "msa_liability_supercap",
@@ -816,7 +817,8 @@
    "sources": [],
    "verification": "unsourced",
    "assertsLaw": false,
-   "classifiedBy": "heuristic-unreviewed"
+   "classifiedBy": "heuristic-unreviewed",
+   "replaces": "sh_confidentiality"
   },
   {
    "id": "msa_security",
@@ -992,32 +994,6 @@
    "classifiedBy": "heuristic-unreviewed"
   },
   {
-   "id": "msa_term_convenience",
-   "doc": "msa",
-   "group": "Term and Termination",
-   "title": "Termination for Convenience",
-   "severity": "recommended",
-   "insertion": "auto",
-   "condition": null,
-   "jurisdictions": [
-    "*"
-   ],
-   "industries": [
-    "*"
-   ],
-   "entities": [
-    "*"
-   ],
-   "version": "1.0.0",
-   "updated": "2026-06",
-   "rationale": "Symmetrical convenience termination protects the provider from being stranded mid-engagement while giving the customer the exit they will ask for anyway.",
-   "body": "Either Party may terminate this Agreement or any Statement of Work for convenience on {{renewalNotice}} days’ written notice, whether during the Initial Term or any renewal term. On [[termination for convenience]] the {{counterLabel}} shall pay for Services performed and non-cancellable commitments incurred through the effective date, and the {{selfLabel}} shall refund any prepaid fees for Services not yet performed.",
-   "sources": [],
-   "verification": "unsourced",
-   "assertsLaw": false,
-   "classifiedBy": "heuristic-unreviewed"
-  },
-  {
    "id": "msa_term_cause",
    "doc": "msa",
    "group": "Term and Termination",
@@ -1041,7 +1017,8 @@
    "sources": [],
    "verification": "unsourced",
    "assertsLaw": true,
-   "classifiedBy": "heuristic-unreviewed"
+   "classifiedBy": "heuristic-unreviewed",
+   "replaces": "sh_term_cause"
   },
   {
    "id": "msa_term_insolvency",
@@ -1178,65 +1155,6 @@
    "updated": "2026-03",
    "rationale": "Prevents a services relationship from being characterized as employment, partnership, or agency, each of which carries obligations neither side priced.",
    "body": "The Parties are independent contractors. Nothing in this Agreement creates a partnership, joint venture, agency, or employment relationship, and neither Party may bind the other.",
-   "sources": [],
-   "verification": "unsourced",
-   "assertsLaw": false,
-   "classifiedBy": "heuristic-unreviewed"
-  },
-  {
-   "id": "msa_nonsolicit",
-   "doc": "msa",
-   "group": "General Provisions",
-   "title": "Non-Solicitation of Personnel",
-   "severity": "optional",
-   "insertion": "suggest",
-   "condition": {
-    "ne": [
-     "opState",
-     "CA"
-    ]
-   },
-   "jurisdictions": [
-    "*"
-   ],
-   "industries": [
-    "*"
-   ],
-   "entities": [
-    "*"
-   ],
-   "version": "1.0.0",
-   "updated": "2026-06",
-   "benchmark": "Present in 44% of services agreements outside California",
-   "rationale": "A buy-out figure is easier to enforce than an outright bar, and it converts a dispute into a number. Void as to California employees regardless of the governing law named.",
-   "body": "During the term and for twelve (12) months after, neither Party shall knowingly solicit for employment any individual who performed under this Agreement, except through general advertising or where the individual initiates contact. If a Party hires such an individual, it shall pay a fee equal to fifty percent (50%) of the individual’s first-year base compensation as liquidated damages. This [[non-solicitation]] is not enforceable against individuals working in California.",
-   "sources": [],
-   "verification": "unsourced",
-   "assertsLaw": false,
-   "classifiedBy": "heuristic-unreviewed"
-  },
-  {
-   "id": "msa_dispute",
-   "doc": "msa",
-   "group": "General Provisions",
-   "title": "Dispute Escalation",
-   "severity": "recommended",
-   "insertion": "suggest",
-   "condition": null,
-   "jurisdictions": [
-    "*"
-   ],
-   "industries": [
-    "*"
-   ],
-   "entities": [
-    "*"
-   ],
-   "version": "1.0.0",
-   "updated": "2026-05",
-   "benchmark": "Present in 57% of master services agreements",
-   "rationale": "Most commercial disputes are really unescalated operational disputes. A short executive step resolves a large share of them before counsel is involved.",
-   "body": "Before filing suit, the Parties shall escalate any dispute to an executive of each Party with authority to resolve it, who shall confer within fifteen (15) business days. This does not prevent either Party from seeking [[injunctive relief]] under <<xr:nda_injunctive>> at any time.",
    "sources": [],
    "verification": "unsourced",
    "assertsLaw": false,

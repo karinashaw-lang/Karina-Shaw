@@ -372,38 +372,6 @@
    "classifiedBy": "heuristic-unreviewed"
   },
   {
-   "id": "ea_nonsolicit",
-   "doc": "employment-agreement",
-   "group": "Obligations",
-   "title": "Non-Solicitation",
-   "severity": "recommended",
-   "insertion": "suggest",
-   "condition": {
-    "ne": [
-     "opState",
-     "CA"
-    ]
-   },
-   "jurisdictions": [
-    "*"
-   ],
-   "industries": [
-    "*"
-   ],
-   "entities": [
-    "*"
-   ],
-   "version": "1.0.0",
-   "updated": "2026-06",
-   "benchmark": "Present in 57% of employment agreements outside California",
-   "rationale": "Enforceability turns on duration and scope, and courts in several of these states will narrow rather than strike an overbroad clause — but not all of them will.",
-   "body": "For twelve (12) months after employment ends, the {{workerLabel}} shall not solicit any employee of the Company to leave, or solicit any customer they served or learned confidential information about during the final twelve (12) months of employment, for the purpose of providing competing services. This does not restrict general advertising or a customer’s own decision to follow.",
-   "sources": [],
-   "verification": "unsourced",
-   "assertsLaw": false,
-   "classifiedBy": "heuristic-unreviewed"
-  },
-  {
    "id": "ea_outside_activity",
    "doc": "employment-agreement",
    "group": "Obligations",
@@ -504,32 +472,6 @@
    "benchmark": "Present in 29% of non-executive employment agreements",
    "rationale": "Conditioning severance on a signed release is the entire point of offering it. Severance paid without a release buys nothing.",
    "body": "If the Company terminates employment without Cause, and subject to the {{workerLabel}} signing and not revoking a general release of claims in the Company’s standard form, the Company shall pay [number] weeks of base compensation as severance on its regular payroll schedule. No severance is payable on resignation or termination for Cause.",
-   "sources": [],
-   "verification": "unsourced",
-   "assertsLaw": false,
-   "classifiedBy": "heuristic-unreviewed"
-  },
-  {
-   "id": "ea_return_property",
-   "doc": "employment-agreement",
-   "group": "Separation",
-   "title": "Return of Property",
-   "severity": "recommended",
-   "insertion": "auto",
-   "condition": null,
-   "jurisdictions": [
-    "*"
-   ],
-   "industries": [
-    "*"
-   ],
-   "entities": [
-    "*"
-   ],
-   "version": "1.0.0",
-   "updated": "2026-05",
-   "rationale": "Withholding a final paycheck until property is returned is unlawful in most states, which is why this obligation has to stand on its own.",
-   "body": "On separation or on request, the {{workerLabel}} shall return all Company equipment, credentials, records, and confidential material, and shall permanently delete Company data from personal devices and accounts. The Company may not withhold final wages to enforce this obligation.",
    "sources": [],
    "verification": "unsourced",
    "assertsLaw": false,
@@ -742,7 +684,8 @@
    "sources": [],
    "verification": "unsourced",
    "assertsLaw": true,
-   "classifiedBy": "heuristic-unreviewed"
+   "classifiedBy": "heuristic-unreviewed",
+   "replaces": "sh_confidentiality"
   },
   {
    "id": "ic_subcontract",

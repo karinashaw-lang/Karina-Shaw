@@ -122,6 +122,15 @@ function checkTrack(c){
     /* doc "*" is a shared block: it is drawn into every document rather than owned by one.
        Its group therefore has to exist in every document's groupOrder, not just one, or it
        would silently vanish from the documents that lack the group. */
+    /* A specialisation declares which shared block it stands in for, and the engine then
+       withholds that block from its document. A `replaces` naming a clause that does not exist
+       silently withholds nothing — the specialised clause and a generic one would both be
+       offered, which is the exact overlap the mechanism exists to prevent. */
+    if(c.replaces){
+      const target=clauseById.get(c.replaces);
+      if(!target) err('BAD_REPLACES',`clause "${c.id}" declares replaces "${c.replaces}", which is not a clause`);
+      else if(target.doc!=='*') err('BAD_REPLACES',`clause "${c.id}" declares replaces "${c.replaces}", which is not a shared block (doc "${target.doc}")`);
+    }
     if(c.doc==='*'){
       const missing=[...docById.values()].filter(d=>!d.groupOrder.includes(c.group)).map(d=>d.id);
       if(missing.length)

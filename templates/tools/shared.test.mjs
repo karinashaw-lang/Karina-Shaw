@@ -68,6 +68,28 @@ console.log('nothing references a superseded clause');
   t(`no risk points at a removed clause (${risks.join(', ')||'none'})`, risks.length===0);
 }
 
+console.log('a document with its own version is not offered the generic one');
+{
+  /* The NDA's confidentiality obligations ARE the NDA. Offering the shared Confidentiality
+     block on top would put two overlapping provisions in one document and leave which governs
+     as a question nobody wanted. A specialisation declares what it stands in for and the
+     shared block is withheld from that document. */
+  const spec = C.clauses.filter(c=>c.replaces);
+  t('some clauses declare a specialisation', spec.length>0);
+  t('every replaces target exists',
+     spec.every(c=>C.clauses.some(x=>x.id===c.replaces)));
+  t('and every target is a shared block, not another document-specific clause',
+     spec.every(c=>C.clauses.find(x=>x.id===c.replaces)?.doc==='*'));
+  t('nothing declares it replaces itself', spec.every(c=>c.replaces!==c.id));
+  /* Why msa_liability_cap was NOT collapsed into the library: four clauses reference it as part
+     of a coupled cap-and-carve-out structure, so flattening it would have broken them. It stays
+     and declares the specialisation instead. */
+  const cap = C.clauses.find(c=>c.id==='msa_liability_cap');
+  t('msa_liability_cap survived as a specialisation rather than being flattened',
+     cap && cap.replaces==='sh_liability');
+  console.log(`        ${spec.length} specialisation(s): ${spec.map(c=>c.id+'→'+c.replaces).join(', ')}`);
+}
+
 console.log('the engine draws them into every document');
 {
   const html=fs.readFileSync('draft-ai-engine.html','utf8');
@@ -77,8 +99,10 @@ console.log('the engine draws them into every document');
   t('and it accepts the shared wildcard', /c\.doc===docId\s*\|\|\s*c\.doc==='\*'/.test(code));
   /* The bug. findGaps is the clause picker; filtering it on document membership alone hid
      every shared block from the only surface that is required to show them. */
-  t('the clause picker does not filter shared blocks out',
-     /c\.doc==='\*'\s*\|\|\s*openDocs\.has\(c\.doc\)/.test(code));
+  t('the clause picker considers shared blocks against every open document',
+     /\[\.\.\.openDocs\]\.some\(id=>offerable\(c,id\)\)/.test(code));
+  t('and suppression is applied through one predicate',
+     /const offerable\s*=/.test(code) && /supersededIn/.test(code));
   /* Matched loosely on purpose. In the source this token appears inside a regex literal as
      \{\{thisDocument\}\}, so searching for the literal braces finds nothing — which is how
      this assertion failed while the feature worked. What matters is that the substitution

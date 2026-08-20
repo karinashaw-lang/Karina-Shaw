@@ -320,6 +320,208 @@
    "verification": "unsourced",
    "assertsLaw": false,
    "classifiedBy": "heuristic-unreviewed"
+  },
+  {
+   "id": "msa_term_convenience",
+   "doc": "msa",
+   "group": "Term and Termination",
+   "title": "Termination for Convenience",
+   "severity": "recommended",
+   "insertion": "auto",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "rationale": "Symmetrical convenience termination protects the provider from being stranded mid-engagement while giving the customer the exit they will ask for anyway.",
+   "body": "Either Party may terminate this Agreement or any Statement of Work for convenience on {{renewalNotice}} days’ written notice, whether during the Initial Term or any renewal term. On [[termination for convenience]] the {{counterLabel}} shall pay for Services performed and non-cancellable commitments incurred through the effective date, and the {{selfLabel}} shall refund any prepaid fees for Services not yet performed.",
+   "sources": [],
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
+  },
+  {
+   "id": "msa_nonsolicit",
+   "doc": "msa",
+   "group": "General Provisions",
+   "title": "Non-Solicitation of Personnel",
+   "severity": "optional",
+   "insertion": "suggest",
+   "condition": {
+    "ne": [
+     "opState",
+     "CA"
+    ]
+   },
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "benchmark": "Present in 44% of services agreements outside California",
+   "rationale": "A buy-out figure is easier to enforce than an outright bar, and it converts a dispute into a number. Void as to California employees regardless of the governing law named.",
+   "body": "During the term and for twelve (12) months after, neither Party shall knowingly solicit for employment any individual who performed under this Agreement, except through general advertising or where the individual initiates contact. If a Party hires such an individual, it shall pay a fee equal to fifty percent (50%) of the individual’s first-year base compensation as liquidated damages. This [[non-solicitation]] is not enforceable against individuals working in California.",
+   "sources": [],
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
+  },
+  {
+   "id": "msa_dispute",
+   "doc": "msa",
+   "group": "General Provisions",
+   "title": "Dispute Escalation",
+   "severity": "recommended",
+   "insertion": "suggest",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-05",
+   "benchmark": "Present in 57% of master services agreements",
+   "rationale": "Most commercial disputes are really unescalated operational disputes. A short executive step resolves a large share of them before counsel is involved.",
+   "body": "Before filing suit, the Parties shall escalate any dispute to an executive of each Party with authority to resolve it, who shall confer within fifteen (15) business days. This does not prevent either Party from seeking [[injunctive relief]] under <<xr:nda_injunctive>> at any time.",
+   "sources": [],
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
+  },
+  {
+   "id": "nda_nonsolicit",
+   "doc": "nda",
+   "group": "Term and Remedies",
+   "title": "Non-Solicitation of Personnel",
+   "severity": "optional",
+   "insertion": "suggest",
+   "condition": {
+    "ne": [
+     "opState",
+     "CA"
+    ]
+   },
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "benchmark": "Present in 38% of mutual NDAs outside California",
+   "rationale": "Enforceability varies sharply by state, and a general-advertising carve-out is what keeps the clause from being read as a no-hire agreement — which raises antitrust exposure of its own.",
+   "body": "For {{termWords}} months, neither Party shall knowingly solicit for employment any employee introduced during the evaluation, except through general advertising not targeted at that person or where the employee initiates contact. This provision is not enforceable against employees working in California.",
+   "sources": [],
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
+  },
+  {
+   "id": "gov_dispute",
+   "doc": "governance",
+   "group": "General Provisions",
+   "title": "Dispute Resolution",
+   "severity": "recommended",
+   "insertion": "suggest",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.1.0",
+   "updated": "2026-03",
+   "benchmark": "Present in 71% of comparable formation packages",
+   "rationale": "Without a forum clause, any dispute starts with a fight about where to have the fight.",
+   "body": "The parties shall attempt in good faith to resolve any dispute through mediation before initiating litigation. Any unresolved dispute shall be brought exclusively in the state or federal courts located in {{formStateLong}}, and each party consents to personal jurisdiction there and waives any objection based on inconvenient forum.",
+   "sources": [],
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
+  },
+  {
+   "id": "ea_nonsolicit",
+   "doc": "employment-agreement",
+   "group": "Obligations",
+   "title": "Non-Solicitation",
+   "severity": "recommended",
+   "insertion": "suggest",
+   "condition": {
+    "ne": [
+     "opState",
+     "CA"
+    ]
+   },
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "benchmark": "Present in 57% of employment agreements outside California",
+   "rationale": "Enforceability turns on duration and scope, and courts in several of these states will narrow rather than strike an overbroad clause — but not all of them will.",
+   "body": "For twelve (12) months after employment ends, the {{workerLabel}} shall not solicit any employee of the Company to leave, or solicit any customer they served or learned confidential information about during the final twelve (12) months of employment, for the purpose of providing competing services. This does not restrict general advertising or a customer’s own decision to follow.",
+   "sources": [],
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
+  },
+  {
+   "id": "ea_return_property",
+   "doc": "employment-agreement",
+   "group": "Separation",
+   "title": "Return of Property",
+   "severity": "recommended",
+   "insertion": "auto",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-05",
+   "rationale": "Withholding a final paycheck until property is returned is unlawful in most states, which is why this obligation has to stand on its own.",
+   "body": "On separation or on request, the {{workerLabel}} shall return all Company equipment, credentials, records, and confidential material, and shall permanently delete Company data from personal devices and accounts. The Company may not withhold final wages to enforce this obligation.",
+   "sources": [],
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
   }
  ]
 }
