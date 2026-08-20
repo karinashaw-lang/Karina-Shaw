@@ -155,6 +155,36 @@ console.log('the canvas is the user’s: edit, move, remove, add — all labeled
     (code.match(/STATE=freshState\(\)/g)||[]).length >= 3);
 }
 
+console.log('provenance is visible, and never claims more than the record holds');
+{
+  t('every clause carries a provenance button', /data-prov="\$\{esc\(key\)\}"/.test(code));
+  t('the panel admits when nothing has been checked',
+    /No source recorded\. Nothing about this clause has been checked against a primary source\./.test(code));
+  t('the panel marks unverified clauses as such, in bold',
+    /<b>not verified<\/b>/.test(code));
+  t('the panel names what verification would take, from the gate itself',
+    /What it would take to change that:.*gate\.blocking/s.test(code));
+  t('sources shown come only from the clause record, never invented',
+    /srcs\.map\(s=>/.test(code) && !/verified against leginfo|checked against official/.test(code));
+  t('the preview verified-count is computed, not typed',
+    /const nVer=inTpl\.filter\(meetsClauseGate\)\.length;/.test(code) &&
+    /\$\{nVer\} of \$\{inTpl\.length\}/.test(code));
+  t('the report leads with the checked-vs-total ratio',
+    /\$\{verified\} of \$\{total\} clauses have been checked against a primary source/.test(code));
+  t('the report says the gap out loud instead of hiding it',
+    /this report exists so that fact is never vague/.test(code));
+  t('the report declares itself outside the document and not advice',
+    /It is not part of the document, and it is not legal advice\./.test(code));
+  t('the report ships as its own file named after the document',
+    /provenanceReport\(STATE\.pkg, d\), docFilename\(d,'provenance\.html'\)/.test(code));
+  t('user edits are timestamped so “rewritten by you” has a date',
+    /STATE\.edits\[b\.dataset\.esave\]=\{text:ta\.value, at:Date\.now\(\)\}/.test(code));
+  t('documents saved before timestamps still open',
+    /typeof e==='string' \? e : \(e && e\.text\) \|\| ''/.test(code));
+  t('the contract export path gained no provenance chrome',
+    /querySelectorAll\('\.unver, \.withheld, \.cond, \.wc, \.appchrome, \.editbar, \.uchip, \.tray'\)/.test(code));
+}
+
 console.log('nothing the project does not have is written down');
 {
   t('no invented social proof anywhere in the page', !/Trusted by [\d,]+/i.test(noComments) && !/testimonial/i.test(noComments));

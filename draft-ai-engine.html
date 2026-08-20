@@ -506,6 +506,14 @@
   </div>
 </div>
 
+<!-- ============ CLAUSE PROVENANCE ============ -->
+<div class="overlay" id="provenance" hidden>
+  <div class="modal">
+    <div id="provBody"></div>
+    <div class="skip"><button id="provClose" style="text-decoration:none">Close</button></div>
+  </div>
+</div>
+
 <!-- ============ KEYBOARD SHORTCUTS / HELP ============ -->
 <div class="overlay" id="shortcuts" hidden>
   <div class="modal">
@@ -1456,6 +1464,10 @@ function plainClauseText(c,pkg,docId){
 function userTextHtml(text){
   return esc(text).trim().split(/\n{2,}/).map(p=>p.replace(/\n/g,'<br>')).join('</p><p>');
 }
+/* Edits are stored as {text, at} so provenance can say WHEN the user rewrote a clause.
+   Documents saved before timestamps existed stored a bare string — both shapes read. */
+function editText(e){ return typeof e==='string' ? e : (e && e.text) || ''; }
+function editAt(e){ return (e && typeof e==='object' && e.at) || null; }
 
 function renderDoc(pkg,docId,opts){
   const chrome = !opts || opts.chrome!==false;
@@ -1475,7 +1487,7 @@ function renderDoc(pkg,docId,opts){
     for(const c of ar.clauses){
       const key=d.id+':'+c.id;
       const edited=Object.prototype.hasOwnProperty.call(STATE.edits,key);
-      const r= edited ? {html:'<span>'+userTextHtml(STATE.edits[key])+'</span>'} : renderBody(c.body,pkg,docId);
+      const r= edited ? {html:'<span>'+userTextHtml(editText(STATE.edits[key]))+'</span>'} : renderBody(c.body,pkg,docId);
       const ct=condText(c.condition);
       const badge = ct && !edited ? `<span class="cond" title="${esc(ct.why)}">IF ${esc(ct.label)}</span>` : '';
       const unver = c.unverified
@@ -1486,7 +1498,7 @@ function renderDoc(pkg,docId,opts){
         ? `<span class="uchip" title="You rewrote this clause, so it no longer updates when your answers change. Edit it again to restore the template text.">edited by you</span>` : '';
       /* In-place editor for this clause */
       if(chrome && STATE.editingClause===key){
-        const cur = edited ? STATE.edits[key] : plainClauseText(c,pkg,docId);
+        const cur = edited ? editText(STATE.edits[key]) : plainClauseText(c,pkg,docId);
         h+=`<div class="clausewrap editing">`
           +(ar.heading && !c.no ? '' : `<h3>${esc(c.no)} ${esc(c.title)}</h3>`)
           +`<textarea class="editarea appchrome" data-ta="${esc(key)}">${esc(cur)}</textarea>
@@ -1499,6 +1511,7 @@ function renderDoc(pkg,docId,opts){
       }
       const bar = chrome
         ? `<span class="editbar appchrome">
+            <button data-prov="${esc(key)}" title="Where this clause comes from, and what has (and has not) been checked">ⓘ</button>
             <button data-eclause="${esc(key)}" title="Edit this clause">✎ Edit</button>
             <button data-mv="${esc(key)}|-1" title="Move up within its section">▲</button>
             <button data-mv="${esc(key)}|1" title="Move down within its section">▼</button>
@@ -2404,6 +2417,7 @@ function renderExportBar(){
      <button data-x="${other}">${EXPORT_LABEL[other]}</button>
      <button data-x="html">Export HTML</button>
      <button data-x="print">Print</button>
+     <button data-x="prov" title="A second file listing every clause\u2019s version, date, sources, and what has not been checked">Provenance report</button>
      <span class="hint">${pref==='pdf'
         ? 'PDF opens your browser\u2019s print dialog \u2014 choose \u201cSave as PDF\u201d.'
         : 'Word is recommended here so you can keep editing.'}</span>`;
@@ -2414,6 +2428,7 @@ function renderExportBar(){
     const paper = $('#paper');
     if(b.dataset.x === 'word') download(wordBlob(documentMarkup(paper), d.title), docFilename(d,'doc'));
     else if(b.dataset.x === 'html') download(htmlBlob(documentMarkup(paper), d.title), docFilename(d,'html'));
+    else if(b.dataset.x === 'prov') download(provenanceReport(STATE.pkg, d), docFilename(d,'provenance.html'));
     else window.print();
   });
 }
@@ -2483,7 +2498,7 @@ function bindEditor(){
   });
   $$(P+'[data-esave]').forEach(b=>b.onclick=()=>{
     const ta=$(P+'textarea[data-ta]');
-    if(ta && ta.value.trim()) STATE.edits[b.dataset.esave]=ta.value;
+    if(ta && ta.value.trim()) STATE.edits[b.dataset.esave]={text:ta.value, at:Date.now()};
     STATE.editingClause=null; regenerate();
   });
   $$(P+'[data-ecancel]').forEach(b=>b.onclick=()=>{ STATE.editingClause=null; renderPackage(); });
@@ -2512,6 +2527,7 @@ function bindEditor(){
     const bl=blocks.find(x=>x.id===b.dataset.bsave); if(!bl) return;
     bl.title=($(P+'input[data-bt]')||{value:''}).value.trim();
     bl.text=($(P+'textarea[data-ba]')||{value:''}).value;
+    bl.at=Date.now();
     if(!bl.text.trim()) STATE.userBlocks[b.dataset.doc]=blocks.filter(x=>x.id!==bl.id);
     STATE.editingBlock=null; renderPackage();
     if(STATE.saveId) saveCurrent();
@@ -2521,6 +2537,99 @@ function bindEditor(){
     STATE.editingBlock=null; renderPackage();
     if(STATE.saveId) saveCurrent();
   });
+  $$(P+'[data-prov]').forEach(b=>b.onclick=()=>showProvenance(b.dataset.prov));
+}
+
+/* =====================================================================
+   PROVENANCE — the receipts. For every clause: what it is, when it was
+   written, what has been checked against a primary source, and what has
+   not. The rule is the same one the rest of the corpus lives under:
+   never claim more than the record supports, and say the gap out loud.
+   ===================================================================== */
+function fmtStamp(ts){
+  return ts ? new Date(ts).toLocaleDateString([], {year:'numeric',month:'short',day:'numeric'}) : null;
+}
+function provFacts(key){
+  const docId=key.slice(0,key.indexOf(':')), cid=key.slice(key.indexOf(':')+1);
+  const c=CLAUSES.find(x=>x.id===cid); if(!c) return null;
+  const lvl=VLEVELS[c.verification]||{name:c.verification||'no level',meaning:''};
+  const gate=gateFor(c,TAX);
+  const edit=STATE.edits[key];
+  return {docId,c,lvl,gate,edit,verified:meetsClauseGate(c),srcs:c.sources||[]};
+}
+function showProvenance(key){
+  const f=provFacts(key); if(!f) return;
+  const {c,lvl,gate,edit,verified,srcs}=f;
+  const srcHtml = srcs.length
+    ? `<ul style="margin:6px 0 0;padding-left:18px">${srcs.map(s=>
+        `<li>${esc(s.citation||s.url||'(unnamed source)')}${s.url?` — <span class="mono" style="font-size:11px">${esc(s.url)}</span>`:''}${s.checked?` · checked ${esc(s.checked)}`:''}</li>`).join('')}</ul>`
+    : `<div style="opacity:.85">No source recorded. Nothing about this clause has been checked against a primary source.</div>`;
+  const userLayer = edit
+    ? `<div class="shortcutrow"><span>Your changes</span><span>rewritten by you${editAt(edit)?' on '+esc(fmtStamp(editAt(edit))):''} — no longer updates from your answers</span></div>` : '';
+  $('#provBody').innerHTML=`
+    <h2 style="margin:0 0 2px">${esc(c.title)}</h2>
+    <div class="sub">Where this clause comes from — and what has not been checked.</div>
+    <div class="shortcutrow"><span>Clause</span><span class="mono">${esc(c.id)} · v${esc(c.version)} · written ${esc(c.updated)}</span></div>
+    <div class="shortcutrow"><span>Kind</span><span>${c.assertsLaw===false?'drafting — asserts nothing about the law':c.assertsLaw===true?'authority — asserts what the law is':'unclassified'}</span></div>
+    <div class="shortcutrow"><span>Verification</span><span>${esc(lvl.name)}${verified?'':' — <b>not verified</b>'}</span></div>
+    <div style="font-size:12.5px;color:var(--muted);margin:8px 0 2px">${esc(lvl.meaning||'')}</div>
+    <div style="margin:10px 0 4px"><b>Sources on record</b></div>${srcHtml}
+    ${verified?'':`<div style="margin:12px 0 0;font-size:12.5px;color:var(--muted)"><b>What it would take to change that:</b> ${esc(gate.blocking||'meeting the release gate for its review track')}</div>`}
+    ${userLayer}`;
+  $('#provenance').hidden=false;
+}
+$('#provClose').onclick=()=>{ $('#provenance').hidden=true; };
+
+/* The provenance report: a second file that travels next to the contract. The contract
+   itself exports clean (no chrome, no badges); the receipts live here, per clause, with
+   the honest totals at the top. */
+function provenanceReport(pkg,d){
+  const rows=[];
+  let verified=0, total=0, editedCount=0;
+  for(const ar of d.arts) for(const c of ar.clauses){
+    total++;
+    const key=d.id+':'+c.id, f=provFacts(key);
+    if(f.verified) verified++;
+    if(f.edit) editedCount++;
+    const srcs=f.srcs.length
+      ? f.srcs.map(s=>`${esc(s.citation||s.url||'(unnamed source)')}${s.checked?` (checked ${esc(s.checked)})`:''}`).join('; ')
+      : 'no source recorded';
+    rows.push(`<tr><td>${esc(c.no||'—')}</td><td>${esc(c.title)}</td>
+      <td class="mono">${esc(c.id)} v${esc(c.version)}</td><td>${esc(c.updated)}</td>
+      <td>${esc((f.lvl).name)}${f.verified?'':' (not verified)'}</td><td>${srcs}</td>
+      <td>${f.edit?`rewritten by you${editAt(f.edit)?' on '+esc(fmtStamp(editAt(f.edit))):''}`:'template text'}</td></tr>`);
+  }
+  const blocks=STATE.userBlocks[d.id]||[];
+  const removed=[...STATE.removedCl].filter(k=>k.startsWith(d.id+':'))
+    .map(k=>CLAUSES.find(c=>c.id===k.slice(d.id.length+1))).filter(Boolean);
+  const html=`<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<title>Provenance — ${esc(d.title)}</title>
+<style>
+  body{font:13px/1.6 -apple-system,"Segoe UI",sans-serif;color:#1c1a17;background:#fff;max-width:900px;margin:36px auto;padding:0 24px}
+  h1{font-size:20px;margin:0 0 4px} .sub{color:#555;margin:0 0 18px}
+  .totals{background:#f6f4ec;border:1px solid #ddd6c4;border-radius:10px;padding:13px 16px;margin:0 0 20px}
+  table{width:100%;border-collapse:collapse;font-size:12px}
+  th{text-align:left;border-bottom:2px solid #333;padding:6px 8px;white-space:nowrap}
+  td{border-bottom:1px solid #ddd;padding:6px 8px;vertical-align:top}
+  .mono{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px}
+  .foot{margin-top:22px;padding-top:10px;border-top:1px solid #999;font-size:11px;color:#444}
+</style></head><body>
+<h1>Provenance report — ${esc(d.title)}</h1>
+<div class="sub">Generated by DRAFT on ${esc(pkg.F.date)}. This report describes where each clause of the document came from and what has been checked. It is not part of the document, and it is not legal advice.</div>
+<div class="totals"><b>${verified} of ${total} clauses have been checked against a primary source.</b>
+  ${verified<total?'The rest are dated, versioned template drafting that no one has verified — this report exists so that fact is never vague.':''}
+  ${editedCount?` ${editedCount} clause${editedCount===1?' was':'s were'} rewritten by you and ${editedCount===1?'is':'are'} yours, not the template’s.`:''}
+  ${blocks.length?` ${blocks.length} paragraph${blocks.length===1?'':'s'} under Additional Terms ${blocks.length===1?'was':'were'} written entirely by you.`:''}</div>
+<table><thead><tr><th>§</th><th>Clause</th><th>Id / version</th><th>Written</th><th>Verification</th><th>Sources on record</th><th>Whose text</th></tr></thead>
+<tbody>${rows.join('')}</tbody></table>
+${blocks.length?`<h1 style="font-size:15px;margin-top:24px">Additional Terms (written by you)</h1>
+  <table><thead><tr><th>Heading</th><th>Added / edited</th></tr></thead><tbody>
+  ${blocks.map(b=>`<tr><td>${esc(b.title||'(no heading)')}</td><td>${esc(fmtStamp(b.at)||'—')}</td></tr>`).join('')}</tbody></table>`:''}
+${removed.length?`<h1 style="font-size:15px;margin-top:24px">Removed by you</h1>
+  <div>${removed.map(c=>esc(c.title)).join(' · ')} — not in the document or its exports.</div>`:''}
+<div class="foot">Verification levels are defined by the DRAFT corpus standard: a clause is “verified” only when its content has been checked against primary sources to the corpus’s release gate. “No source recorded” means exactly that — nothing has been checked, and no claim is made.</div>
+</body></html>`;
+  return new Blob([html],{type:'text/html'});
 }
 
 /* plain-English hover — §3.2 */
@@ -3001,8 +3110,14 @@ function previewTemplate(id){
     STATE.added=keep.added; STATE.removedCl=keep.rm; STATE.forceInclude=keep.fi;
     STATE.edits=keep.ed; STATE.userBlocks=keep.ub; STATE.orderNudge=keep.on;
   }
+  /* The honest number, on the front door: how much of this template anyone has actually
+     checked against a primary source. Today the true answer is usually zero, and showing
+     the zero is the point — a claim that can be audited beats a vague reassurance. */
+  const inTpl=CLAUSES.filter(c=>inDoc(c,id));
+  const nVer=inTpl.filter(meetsClauseGate).length;
   $('#previewHead').innerHTML=`<h2 style="margin:0 0 4px">${esc(galleryTitle(d))} — sample preview</h2>
-    <div class="sub">Filled with example answers so you can see the finished shape. Your answers replace every highlighted field.</div>`;
+    <div class="sub">Filled with example answers so you can see the finished shape. Your answers replace every highlighted field.</div>
+    <div class="sub" style="margin-top:4px">Every clause here is versioned and dated. <b>${nVer} of ${inTpl.length}</b> have been checked against a primary source; the ⓘ on each clause in the editor shows its record.</div>`;
   $('#previewPaper').innerHTML=html;
   $('#preview').hidden=false;
   $('#preview').scrollTop=0;
@@ -3057,7 +3172,7 @@ addEventListener('keydown', e=>{
     if(STATE.pkg) saveCurrent();
     return;
   }
-  if(e.key==='Escape'){ toggleShortcuts(false); $('#welcome').hidden=true; $('#preview').hidden=true; return; }
+  if(e.key==='Escape'){ toggleShortcuts(false); $('#welcome').hidden=true; $('#preview').hidden=true; $('#provenance').hidden=true; return; }
   if(e.key==='?' && !typing) toggleShortcuts();
 });
 
