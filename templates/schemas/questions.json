@@ -733,6 +733,69 @@
       "when": {
         "rule": "pkg_invoice"
       }
+    },
+    {
+      "id": "productDesc",
+      "type": "text",
+      "default": "",
+      "required": true,
+      "prompt": "What does your business sell or do?",
+      "help": "One or two sentences — used in the executive summary and company description.",
+      "when": {
+        "rule": "pkg_businessplan"
+      },
+      "placeholder": "e.g. a subscription analytics tool for small e-commerce brands"
+    },
+    {
+      "id": "targetMarket",
+      "type": "text",
+      "default": "",
+      "required": false,
+      "prompt": "Who is your target customer? (optional)",
+      "help": "Leave blank and a bracketed placeholder is used instead — fill it in later.",
+      "when": {
+        "rule": "pkg_businessplan"
+      },
+      "placeholder": "e.g. small e-commerce brands doing $1M–$10M in annual revenue"
+    },
+    {
+      "id": "fundingAsk",
+      "type": "text",
+      "default": "",
+      "required": false,
+      "prompt": "Seeking funding? If so, how much and for what? (optional)",
+      "help": "Leave blank to omit the funding request section entirely.",
+      "when": {
+        "rule": "pkg_businessplan"
+      },
+      "placeholder": "e.g. $250,000 in seed funding for product development and hiring"
+    },
+    {
+      "id": "projections",
+      "type": "projections",
+      "default": [
+        {
+          "year": "Year 1",
+          "revenue": "",
+          "expenses": ""
+        },
+        {
+          "year": "Year 2",
+          "revenue": "",
+          "expenses": ""
+        },
+        {
+          "year": "Year 3",
+          "revenue": "",
+          "expenses": ""
+        }
+      ],
+      "required": false,
+      "prompt": "Rough financial projections",
+      "help": "Estimated revenue and expenses per year. Net income is calculated for you — these are your own estimates, not a forecast DRAFT is making.",
+      "when": {
+        "rule": "pkg_businessplan"
+      }
     }
   ]
 }

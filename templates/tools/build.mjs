@@ -20,6 +20,7 @@ const strip = f => fs.readFileSync(path.join(ROOT,'tools',f),'utf8')
   .replace(/^\/\*[\s\S]*?\*\/\n/,'');            /* drop the file's own header comment */
 const evaluator = strip('evaluator.mjs');
 const invoiceMath = strip('invoice-math.mjs');
+const projMath = strip('projections-math.mjs').replace(/^import .*\n/gm,'');
 /* review.mjs imports the source standard and the corroboration standard; all four are
    inlined so the engine's gate is the same code the validator runs, not a re-implementation
    that can drift from it. Order matters: each file is inlined before the one that imports it. */
@@ -55,6 +56,12 @@ ${evaluator.trim()}
 
 /* ---- invoice arithmetic, inlined verbatim from templates/tools/invoice-math.mjs ---- */
 ${invoiceMath.trim()}
+
+/* ---- financial-projection arithmetic, inlined verbatim from templates/tools/projections-math.mjs.
+   Imports parseMoney/formatCents from invoice-math.mjs above rather than redefining them --
+   inlining order matters here for readability only, since these are all top-level function
+   declarations that hoist regardless of position within the shared script scope. ---- */
+${projMath.trim()}
 
 /* ---- source standard, inlined verbatim from templates/tools/sources.mjs ---- */
 ${sources.trim()}

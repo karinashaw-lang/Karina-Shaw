@@ -425,6 +425,17 @@
       "rationale": "An invoice is its own package because it needs the line-item entry UI no other document uses."
     },
     {
+      "id": "pkg_businessplan",
+      "code": "IF [package == businessplan] THEN [generate a business plan]",
+      "when": {
+        "eq": [
+          "package",
+          "businessplan"
+        ]
+      },
+      "rationale": "A business plan is not a contract between two parties — it has no counterparty question — and needs the financial-projections entry UI no other document uses."
+    },
+    {
       "id": "money_installments",
       "code": "IF [money package] AND [repayment == installments] THEN [installment schedule terms]",
       "when": {

@@ -9,7 +9,8 @@ export const ANSWER_FIELDS = ['package','company','entity','formState','opState'
   'tenantName','propertyAddress','monthlyRent','securityDeposit','leaseTerm','petsAllowed','utilitiesIncluded',
   'borrowerName','principalAmount','interestText','repayment','securedLoan',
   'serviceDesc','payText','deadlineText','partnershipPurpose','offerDesc',
-  'invoiceNumber','dueText','taxRatePct'];
+  'invoiceNumber','dueText','taxRatePct',
+  'productDesc','targetMarket','fundingAsk'];
 
 /* Answers always carry every field, even the ones the current package does not ask
    about, so an expression can never dereference an undefined answer. */
@@ -25,7 +26,8 @@ export const BASE_ANSWERS = {
   repayment:'installments', securedLoan:false,
   serviceDesc:'brand and website design', payText:'$4,000 — half up front, half on delivery',
   deadlineText:'', partnershipPurpose:'a management consulting practice', offerDesc:'',
-  invoiceNumber:'INV-1001', dueText:'Net 30', taxRatePct:''
+  invoiceNumber:'INV-1001', dueText:'Net 30', taxRatePct:'',
+  productDesc:'a subscription analytics tool for small e-commerce brands', targetMarket:'', fundingAsk:''
 };
 
 /* ---- condition expression language (see templates/rules.json) ---- */
@@ -237,6 +239,13 @@ export function allConfigs(tax){
      varies clause eligibility is whether an invoice number was given. */
   for(const invoiceNumber of ['INV-1001',''])
     out.push(mk({package:'invoice', invoiceNumber, dueText:'Net 30', taxRatePct:''}));
+
+  /* 11 — business plan: projections are pure arithmetic like invoice line items, not rule
+     inputs. What varies clause eligibility is whether the target-market and funding-ask
+     answers were given, so each condition (bp_market_filled/blank, bp_funding_request) fires
+     in at least one enumerated configuration. */
+  out.push(mk({package:'businessplan', targetMarket:'', fundingAsk:''}));
+  out.push(mk({package:'businessplan', targetMarket:'small businesses', fundingAsk:'$100,000 in seed funding'}));
 
   return out;
 }

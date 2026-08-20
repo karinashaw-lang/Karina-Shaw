@@ -624,6 +624,28 @@
       ],
       "package": "invoice",
       "label": "Invoice"
+    },
+    {
+      "id": "businessplan",
+      "icon": "📊",
+      "numbering": "section",
+      "order": 91,
+      "name": {
+        "template": "Business Plan — {{company}}"
+      },
+      "include": {
+        "rule": "pkg_businessplan"
+      },
+      "rationale": "A narrative case for the business plus a computed financial-projections table — not a contract, and not addressed to a counterparty.",
+      "groupOrder": [
+        "Overview",
+        "Market",
+        "Strategy",
+        "Financial Projections",
+        "General Provisions"
+      ],
+      "package": "businessplan",
+      "label": "Business Plan"
     }
   ]
 }

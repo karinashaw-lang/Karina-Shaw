@@ -32,6 +32,10 @@
     "invoice": {
       "months": 24,
       "why": "Payment-terms drafting conventions are stable."
+    },
+    "businessplan": {
+      "months": 12,
+      "why": "A narrative-only document with no citations to age — reviewed yearly on general principle, not because anything in it goes stale faster."
     }
   },
   "documents": {
@@ -445,6 +449,19 @@
       "next": [
         "svc",
         "loa"
+      ]
+    },
+    "businessplan": {
+      "estimatedMinutes": [
+        15,
+        30
+      ],
+      "export": "word",
+      "industries": [
+        "all"
+      ],
+      "next": [
+        "charter"
       ]
     }
   }
