@@ -207,6 +207,52 @@
   .warnbar{background:#3a2e10;border:1px solid #6b5416;color:var(--amber);border-radius:11px;padding:11px 14px;
     font-size:12.5px;margin-bottom:16px;display:flex;gap:9px;align-items:flex-start;line-height:1.6}
 
+  /* ---------- home / document store ---------- */
+  .homecards{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+  .dcard{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:13px 14px;cursor:pointer;
+    display:flex;flex-direction:column;gap:6px;transition:.15s}
+  .dcard:hover{border-color:var(--accent2)}
+  .dcard .dn{font-weight:600;font-size:13.5px;display:flex;align-items:center;gap:6px;justify-content:space-between}
+  .dcard .dm{color:var(--muted);font-size:11.5px}
+  .fav{cursor:pointer;font-size:14px;opacity:.4;background:none;border:none;padding:0 2px}
+  .fav.on{opacity:1}
+  .statuschip{display:inline-block;font-size:10.5px;padding:2px 8px;border-radius:999px;background:var(--chip);
+    border:1px solid var(--line);color:var(--muted)}
+  .doctable{width:100%;border-collapse:collapse;font-size:12.5px}
+  .doctable th{text-align:left;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.5px;
+    padding:7px 8px;border-bottom:1px solid var(--line);cursor:pointer;user-select:none;white-space:nowrap}
+  .doctable td{padding:8px;border-bottom:1px solid var(--line);vertical-align:middle}
+  .doctable .mini{padding:3px 8px;font-size:11.5px;border-radius:7px}
+  .doctable select{background:var(--chip);color:var(--txt);border:1px solid var(--line);border-radius:7px;
+    font-size:11.5px;padding:3px 5px;font-family:inherit}
+  .doctable input[type=text]{background:var(--chip);color:var(--txt);border:1px solid var(--accent2);border-radius:7px;
+    font-size:12.5px;padding:4px 7px;font-family:inherit;width:95%}
+  .emptystate{text-align:center;padding:40px 20px;color:var(--muted)}
+  .emptystate .big{font-size:40px;margin-bottom:10px}
+  .progresswrap{margin:0 0 14px}
+  .progresslabel{font-size:12px;color:var(--muted);margin-bottom:5px}
+  .progressbar{height:6px;border-radius:999px;background:var(--chip);overflow:hidden}
+  .progressbar .fill{height:100%;background:linear-gradient(90deg,var(--accent2),var(--green));border-radius:999px;
+    transition:width .25s}
+  /* ---------- overlays: welcome + shortcuts ---------- */
+  .overlay{position:fixed;inset:0;z-index:60;background:#0009;display:flex;align-items:center;justify-content:center;padding:20px}
+  .overlay[hidden]{display:none}
+  .modal{background:linear-gradient(180deg,var(--panel),var(--panel2));border:1px solid var(--line);border-radius:16px;
+    padding:26px 28px;max-width:520px;width:100%;box-shadow:0 24px 60px #000a}
+  .modal h2{margin:0 0 6px;font-size:19px}
+  .modal .sub{color:var(--muted);font-size:13px;margin-bottom:16px}
+  .modal .choices{display:grid;gap:9px}
+  .modal .choice{background:var(--panel2);border:1px solid var(--line);border-radius:11px;padding:12px 14px;cursor:pointer;
+    font-size:13.5px;transition:.15s}
+  .modal .choice:hover{border-color:var(--accent2)}
+  .modal .choice .d{color:var(--muted);font-size:11.5px;margin-top:3px}
+  .modal .skip{margin-top:14px;text-align:center}
+  .modal .skip button{background:none;border:none;color:var(--muted);font-size:12.5px;text-decoration:underline}
+  .kbd{display:inline-block;background:var(--chip);border:1px solid var(--line);border-bottom-width:2px;border-radius:6px;
+    padding:1px 7px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11.5px;margin-right:6px}
+  .shortcutrow{display:flex;justify-content:space-between;gap:14px;padding:7px 0;border-bottom:1px solid var(--line);
+    font-size:13px;align-items:center}
+
   /* ---------- tooltip ---------- */
   #tip{position:fixed;z-index:99;background:#0d1420;border:1px solid var(--accent2);border-radius:10px;
     padding:10px 13px;max-width:330px;font:12.5px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
@@ -224,11 +270,13 @@
 <header class="hero">
   <div class="title">
     <h1>DRAFT — AI Template &amp; Content Engine</h1>
-    <div class="sub">Working prototype of spec §1–3, §6–7 · Wizard → conditional assembly → AI review → QA · formation, commercial, and hiring packages · California built out in depth</div>
+    <div class="sub">Working prototype · Wizard → conditional assembly → review → QA · formation, commercial, and hiring packages · jurisdiction-neutral template library</div>
   </div>
   <div class="ctrls">
+    <span class="badge" id="saveState" hidden><span class="dot live"></span> <span id="saveStateTxt">Saved</span></span>
     <span class="badge"><span class="dot live"></span> Rules engine live</span>
-    <button class="ghost" id="resetBtn">Reset</button>
+    <button class="ghost" id="helpBtn" title="Keyboard shortcuts and help">?</button>
+    <button class="ghost" id="resetBtn">New document</button>
     <button class="primary" id="demoBtn">Load demo answers</button>
   </div>
 </header>
@@ -236,18 +284,25 @@
 <div class="kpis" id="kpis"></div>
 
 <div class="tabs" id="tabs">
-  <div class="tab active" data-v="wizard">📝 Wizard</div>
+  <div class="tab active" data-v="home">🏠 Home</div>
+  <div class="tab" data-v="wizard">📝 Wizard</div>
   <div class="tab needsdoc" data-v="package">📄 Document Package</div>
   <div class="tab needsdoc" data-v="review">🔍 AI Review</div>
   <div class="tab needsdoc" data-v="qa">✅ Consistency &amp; QA</div>
   <div class="tab needsdoc" data-v="engine">⚙️ Engine Internals</div>
 </div>
 
+<!-- ============ HOME / DASHBOARD ============ -->
+<section class="view active" id="view-home">
+  <div id="home"></div>
+</section>
+
 <!-- ============ WIZARD ============ -->
-<section class="view active" id="view-wizard">
+<section class="view" id="view-wizard">
   <div class="grid2">
     <div class="card">
       <h3>Wizard <span class="h">Spec §1.1 — questions from templates/schemas/questions.json</span></h3>
+      <div class="progresswrap" id="wizProgress"></div>
       <div id="wizard"></div>
       <div style="margin-top:16px;display:flex;gap:8px;flex-wrap:wrap">
         <button class="primary" id="genBtn">⚡ Generate document package</button>
@@ -380,6 +435,30 @@
 </div>
 
 <div id="tip"></div>
+
+<!-- ============ ONBOARDING WELCOME ============ -->
+<div class="overlay" id="welcome" hidden>
+  <div class="modal">
+    <h2>What brings you to DRAFT?</h2>
+    <div class="sub">Pick one and we&rsquo;ll suggest the right templates. You can change this any time in the wizard.</div>
+    <div class="choices" id="welcomeChoices"></div>
+    <div class="skip"><button id="welcomeSkip">I&rsquo;ll browse on my own</button></div>
+  </div>
+</div>
+
+<!-- ============ KEYBOARD SHORTCUTS / HELP ============ -->
+<div class="overlay" id="shortcuts" hidden>
+  <div class="modal">
+    <h2>Shortcuts &amp; help</h2>
+    <div class="sub">DRAFT works entirely in this file. Documents you save are stored in this browser only.</div>
+    <div class="shortcutrow"><span><span class="kbd">Ctrl</span>+<span class="kbd">S</span> (or ⌘S)</span><span>Save the current document</span></div>
+    <div class="shortcutrow"><span><span class="kbd">Ctrl</span>+<span class="kbd">P</span> (or ⌘P)</span><span>Print / save as PDF</span></div>
+    <div class="shortcutrow"><span><span class="kbd">?</span></span><span>Show or hide this panel</span></div>
+    <div class="shortcutrow"><span><span class="kbd">Esc</span></span><span>Close any open panel</span></div>
+    <div class="skip"><button id="reWelcome">Show the welcome screen again</button>
+      <button id="shortcutsClose">Close</button></div>
+  </div>
+</div>
 <script>
 /* =====================================================================
    DRAFT AI ENGINE — PROTOTYPE
@@ -1096,7 +1175,9 @@ const DOCS      = [...CORPUS.documents].sort((a,b)=>a.order-b.order);
 const ALIASES   = CORPUS.aliases;
 const ROMAN=['','I','II','III','IV','V','VI','VII','VIII','IX','X','XI','XII','XIII','XIV','XV'];
 
-const esc = s => String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+/* Also escapes double quotes: user-typed names (rename, company) land inside HTML
+   attribute values on the home screen, and a bare quote there breaks out of the attribute. */
+const esc = s => String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
 /* A clause belongs to one document, or to all of them. doc "*" is a shared block from the
    General Provisions library — written once and drawn into every template, which is what
@@ -1195,7 +1276,7 @@ function condText(expr){
 /* =====================================================================
    ASSEMBLY — §1.2
    ===================================================================== */
-let STATE = { answers:null, pkg:null, added:new Set(), dismissed:new Set(), activeDoc:null };
+let STATE = { answers:null, pkg:null, added:new Set(), dismissed:new Set(), activeDoc:null, saveId:null };
 
 function assemble(a){
   const f=fired(a), ruleOf=ruleOfFor(f);
@@ -1391,6 +1472,26 @@ function updateGenBtn(){
   const missing=missingRequired();
   $('#genBtn').disabled=missing.length>0;
   $('#genHint').textContent = missing.length ? 'Still needed: '+missing.join(' · ').toLowerCase() : '';
+  renderWizProgress();
+}
+
+/* "8 of 15 questions completed" — counts only the questions currently visible, so a
+   conditional question that is hidden neither pads nor dents the total. */
+function answeredCount(){
+  const qs=visibleQuestions(); let done=0;
+  qs.forEach(q=>{
+    let ok = q.type==='text' ? !!String(A[q.id]||'').trim() : (A[q.id]!==undefined && A[q.id]!=='');
+    if(q.namesFor==='founderNames')
+      ok = ok && A.founderNames.slice(0,A.founders).every(n=>String(n).trim());
+    if(ok) done++;
+  });
+  return {done, total:qs.length};
+}
+function renderWizProgress(){
+  const el=$('#wizProgress'); if(!el) return;
+  const {done,total}=answeredCount(), pct=total?Math.round(done/total*100):0;
+  el.innerHTML=`<div class="progresslabel">${done} of ${total} questions completed</div>
+    <div class="progressbar"><div class="fill" style="width:${pct}%"></div></div>`;
 }
 
 function renderSidePanels(){
@@ -2119,6 +2220,7 @@ function renderExportBar(){
   bar.innerHTML =
     `<button class="primary" data-x="${pref}">${EXPORT_LABEL[pref]}</button>
      <button data-x="${other}">${EXPORT_LABEL[other]}</button>
+     <button data-x="html">Export HTML</button>
      <button data-x="print">Print</button>
      <span class="hint">${pref==='pdf'
         ? 'PDF opens your browser\u2019s print dialog \u2014 choose \u201cSave as PDF\u201d.'
@@ -2126,8 +2228,27 @@ function renderExportBar(){
   $$('#exportbar [data-x]').forEach(b=>b.onclick=()=>{
     const paper = $('#paper');
     if(b.dataset.x === 'word') download(wordBlob(documentMarkup(paper), d.title), docFilename(d,'doc'));
+    else if(b.dataset.x === 'html') download(htmlBlob(documentMarkup(paper), d.title), docFilename(d,'html'));
     else window.print();
   });
+}
+
+/* Same markup discipline as Word: chrome is removed by documentMarkup before this runs, and
+   the disclaimer footer is inside the markup, so it travels with the file. */
+function htmlBlob(paperHtml, title){
+  const html =
+`<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>${esc(title)}</title>
+<style>
+  body{font-family:Georgia,'Times New Roman',serif;font-size:14px;line-height:1.55;color:#1c1a17;
+    background:#fff;max-width:760px;margin:40px auto;padding:0 24px}
+  h2{font-size:19px;text-align:center;margin:0 0 8px}
+  h3{font-size:15px;margin:22px 0 6px}
+  .sub{text-align:center;font-size:12px;color:#444;margin:0 0 20px}
+  .sigline{border-bottom:1px solid #000;width:340px;margin-top:34px}
+  .signame{font-size:12px;color:#333;margin-top:4px}
+  .genfoot{margin-top:30px;padding-top:11px;border-top:1px solid #999;font-size:11px;color:#333}
+</style></head><body>${paperHtml}</body></html>`;
+  return new Blob([html], {type:'text/html'});
 }
 
 function renderPackage(){
@@ -2185,6 +2306,7 @@ function generate(){
   STATE.activeDoc=STATE.pkg.docs.find(d=>d.included).id;
   $$('.tab.needsdoc').forEach(t=>t.classList.remove('locked'));
   renderAllViews();
+  saveCurrent();
   go('package');
 }
 function regenerate(focusClauseId){
@@ -2223,8 +2345,10 @@ $('#demoBtn').onclick=()=>{
   renderWizard(); renderSidePanels(); generate();
 };
 $('#resetBtn').onclick=()=>{
+  /* "New document": the saved copy of whatever was open stays in the store; this only
+     detaches the working session from it so the next generate creates a fresh record. */
   A=JSON.parse(JSON.stringify(DEFAULTS));
-  STATE={answers:null,pkg:null,added:new Set(),dismissed:new Set(),activeDoc:null};
+  STATE={answers:null,pkg:null,added:new Set(),dismissed:new Set(),activeDoc:null,saveId:null};
   $$('.tab.needsdoc').forEach(t=>t.classList.add('locked'));
   renderWizard(); renderSidePanels(); go('wizard');
 };
@@ -2268,9 +2392,298 @@ $('#disc').innerHTML=`<b>What this is.</b> A working implementation of the deter
   There is no cost model for §1.1, which generates a multi-document package per user. And §5.1's connectors pull employee
   and client PII into prompt context with no stated scoping, retention, or residency treatment. Built ${new Date().toISOString().slice(0,10)}.`;
 
+/* =====================================================================
+   LOCAL DOCUMENT STORE — General Platform Features §2, §4, §5
+   Everything lives in this browser's localStorage. There is no account and
+   no server, so "saved" means saved on this machine, and the home screen
+   says so. Trash keeps a document for 30 days, then the next load purges it.
+   ===================================================================== */
+const STORE_KEY   = 'draft.documents.v1';
+const TRASH_DAYS  = 30;
+const AUTOSAVE_MS = 10000;
+const DOC_STATUSES = ['Draft','In Progress','Review','Final','Archived'];
+
+function loadStore(){
+  let s = null;
+  try { s = JSON.parse(localStorage.getItem(STORE_KEY) || 'null'); } catch(e) { s = null; }
+  if (!s || !Array.isArray(s.docs)) s = { docs: [] };
+  const cutoff = Date.now() - TRASH_DAYS*24*60*60*1000;
+  s.docs = s.docs.filter(d => !(d.deletedAt && d.deletedAt < cutoff));
+  return s;
+}
+let STORE = loadStore();
+function persistStore(){
+  try { localStorage.setItem(STORE_KEY, JSON.stringify(STORE)); } catch(e) { /* storage full or blocked — the session keeps working unsaved */ }
+}
+const storeDoc = id => STORE.docs.find(d => d.id === id);
+const liveDocs  = () => STORE.docs.filter(d => !d.deletedAt);
+const trashDocs = () => STORE.docs.filter(d => d.deletedAt);
+
+function snapshotName(a){
+  const pkg = TAX.packages[a.package];
+  const base = pkg ? pkg.name : 'Document package';
+  return a.company ? base + ' — ' + a.company : base;
+}
+function currentSnapshot(){
+  if(!STATE.pkg) return null;
+  return JSON.stringify({ a:STATE.answers, ad:[...STATE.added].sort(), di:[...STATE.dismissed].sort(), doc:STATE.activeDoc });
+}
+let LAST_SAVED_SNAP = null;
+
+function saveCurrent(){
+  if(!STATE.pkg) return null;
+  const now = Date.now();
+  let rec = STATE.saveId ? storeDoc(STATE.saveId) : null;
+  if(!rec){
+    rec = { id:'doc_'+now.toString(36)+'_'+Math.floor(Math.random()*1e9).toString(36),
+            name:snapshotName(STATE.answers), created:now, status:'Draft', favorite:false, deletedAt:null };
+    STORE.docs.push(rec);
+    STATE.saveId = rec.id;
+  }
+  rec.modified  = now;
+  rec.package   = STATE.answers.package;
+  rec.answers   = JSON.parse(JSON.stringify(STATE.answers));
+  rec.added     = [...STATE.added];
+  rec.dismissed = [...STATE.dismissed];
+  rec.activeDoc = STATE.activeDoc;
+  persistStore();
+  LAST_SAVED_SNAP = currentSnapshot();
+  markSaved(now);
+  renderHome();
+  return rec;
+}
+
+function markSaved(ts){
+  const badge=$('#saveState'); if(!badge) return;
+  badge.hidden=false;
+  $('#saveStateTxt').textContent = 'Saved ' + new Date(ts).toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
+}
+
+/* Auto-save every 10 seconds — but only when something actually changed, so the
+   modified time on the home screen means what it says. */
+setInterval(()=>{
+  const snap = currentSnapshot();
+  if(snap && snap !== LAST_SAVED_SNAP) saveCurrent();
+}, AUTOSAVE_MS);
+
+function openDoc(id){
+  const rec = storeDoc(id);
+  if(!rec || rec.deletedAt) return;
+  A = JSON.parse(JSON.stringify(rec.answers));
+  STATE = { answers: JSON.parse(JSON.stringify(rec.answers)), pkg:null,
+            added:new Set(rec.added||[]), dismissed:new Set(rec.dismissed||[]),
+            activeDoc:null, saveId:rec.id };
+  STATE.pkg = assemble(STATE.answers);
+  const wanted = rec.activeDoc && STATE.pkg.docs.some(d=>d.id===rec.activeDoc && d.included) ? rec.activeDoc : null;
+  STATE.activeDoc = wanted || STATE.pkg.docs.find(d=>d.included).id;
+  $$('.tab.needsdoc').forEach(t=>t.classList.remove('locked'));
+  renderWizard(); renderSidePanels(); renderAllViews();
+  LAST_SAVED_SNAP = currentSnapshot();
+  go('package');
+}
+
+function renameDoc(id, name){
+  const rec = storeDoc(id); if(!rec) return;
+  const clean = String(name||'').trim();
+  if(clean){ rec.name = clean.slice(0,120); rec.modified = Date.now(); persistStore(); }
+  HOME_EDITING = null; renderHome();
+}
+function duplicateDoc(id){
+  const rec = storeDoc(id); if(!rec) return;
+  const copy = JSON.parse(JSON.stringify(rec));
+  copy.id = 'doc_'+Date.now().toString(36)+'_'+Math.floor(Math.random()*1e9).toString(36);
+  copy.name = rec.name + ' (copy)';
+  copy.created = copy.modified = Date.now();
+  copy.favorite = false; copy.deletedAt = null;
+  STORE.docs.push(copy); persistStore(); renderHome();
+}
+function trashDoc(id){
+  const rec = storeDoc(id); if(!rec) return;
+  rec.deletedAt = Date.now();
+  if(STATE.saveId === id) STATE.saveId = null;
+  persistStore(); renderHome();
+}
+function restoreDoc(id){
+  const rec = storeDoc(id); if(!rec) return;
+  rec.deletedAt = null; rec.modified = Date.now();
+  persistStore(); renderHome();
+}
+function deleteForever(id){
+  STORE.docs = STORE.docs.filter(d => d.id !== id);
+  persistStore(); renderHome();
+}
+
+/* ---------- home screen ---------- */
+let HOME_SORT = { key:'modified', dir:-1 };
+let HOME_EDITING = null;   /* doc id whose name is being edited inline */
+let HOME_QUERY = '';
+
+function fmtWhen(ts){
+  if(!ts) return '—';
+  const d = new Date(ts), now = new Date();
+  const sameDay = d.toDateString() === now.toDateString();
+  return sameDay ? 'today ' + d.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'})
+                 : d.toLocaleDateString([], {month:'short', day:'numeric'});
+}
+function pkgLabel(p){ return (TAX.packages[p]||{}).name || p || '—'; }
+
+function renderHome(){
+  const root = $('#home'); if(!root) return;
+  const live = liveDocs(), trash = trashDocs();
+
+  if(!live.length && !trash.length){
+    root.innerHTML = `<div class="card"><div class="emptystate">
+      <div class="big">📄</div>
+      <div style="font-size:16px;color:var(--txt);margin-bottom:6px"><b>No documents yet</b></div>
+      Create your first document in about 3 minutes — pick a package, answer the wizard, and export.
+      <div style="margin-top:16px"><button class="primary" id="homeStart">Start from a template</button></div>
+    </div></div>`;
+    $('#homeStart').onclick = ()=>go('wizard');
+    return;
+  }
+
+  const q = HOME_QUERY.toLowerCase();
+  const filtered = live.filter(d => !q || d.name.toLowerCase().includes(q) || pkgLabel(d.package).toLowerCase().includes(q));
+  const dir = HOME_SORT.dir, key = HOME_SORT.key;
+  const val = d => key==='name' ? d.name.toLowerCase()
+             : key==='package'  ? pkgLabel(d.package).toLowerCase()
+             : key==='status'   ? DOC_STATUSES.indexOf(d.status)
+             : (d.modified||0);
+  const sorted = [...filtered].sort((x,y)=> (val(x)<val(y)?-1:val(x)>val(y)?1:0)*dir );
+
+  /* recents: favorites pinned first, then by modified */
+  const recents = [...live].sort((x,y)=> (y.favorite-x.favorite) || ((y.modified||0)-(x.modified||0))).slice(0,8);
+  const latest = live.reduce((a,b)=> (b.modified||0)>(a.modified||0)?b:a, live[0]);
+
+  const arrow = k => HOME_SORT.key===k ? (dir<0?' ↓':' ↑') : '';
+  const statusSel = d => `<select data-status="${d.id}">`+
+    DOC_STATUSES.map(s=>`<option ${s===d.status?'selected':''}>${s}</option>`).join('')+`</select>`;
+
+  const rows = sorted.map(d=>{
+    const nameCell = HOME_EDITING===d.id
+      ? `<input type="text" data-rename="${d.id}" value="${esc(d.name)}">`
+      : `<span style="cursor:pointer" data-open="${d.id}"><b>${esc(d.name)}</b></span>`;
+    return `<tr>
+      <td><button class="fav ${d.favorite?'on':''}" data-fav="${d.id}" title="Pin to top of recents">${d.favorite?'★':'☆'}</button></td>
+      <td>${nameCell}</td>
+      <td>${esc(pkgLabel(d.package))}</td>
+      <td>${statusSel(d)}</td>
+      <td>${fmtWhen(d.modified)}</td>
+      <td style="white-space:nowrap">
+        <button class="mini primary" data-open="${d.id}">Open</button>
+        <button class="mini" data-edit="${d.id}">Rename</button>
+        <button class="mini" data-dup="${d.id}">Duplicate</button>
+        <button class="mini" data-trash="${d.id}">Trash</button>
+      </td></tr>`;
+  }).join('');
+
+  root.innerHTML = `
+    ${latest ? `<div class="card" style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:space-between">
+      <div><b>Continue where you left off</b>
+        <div class="note" style="margin-top:3px">${esc(latest.name)} · <span class="statuschip">${esc(latest.status)}</span> · saved ${fmtWhen(latest.modified)}</div></div>
+      <div style="display:flex;gap:8px"><button class="primary" data-open="${latest.id}">Open</button>
+        <button id="homeStart2">Start from a template</button></div>
+    </div>` : ''}
+    <div class="card"><h3>Recent documents <span class="h">saved in this browser only</span></h3>
+      <div class="homecards">${recents.map(d=>`
+        <div class="dcard" data-open="${d.id}">
+          <div class="dn"><span>${esc(d.name)}</span>
+            <button class="fav ${d.favorite?'on':''}" data-fav="${d.id}" title="Pin to top">${d.favorite?'★':'☆'}</button></div>
+          <div><span class="statuschip">${esc(d.status)}</span></div>
+          <div class="dm">${esc(pkgLabel(d.package))} · saved ${fmtWhen(d.modified)}</div>
+        </div>`).join('')}</div></div>
+    <div class="card"><h3>All documents <span class="h">${live.length} saved</span></h3>
+      <input class="cq" type="text" id="homeSearch" placeholder="Search by name or template type" value="${esc(HOME_QUERY)}">
+      ${filtered.length ? `<div style="overflow-x:auto"><table class="doctable"><thead><tr>
+        <th></th><th data-sort="name">Name${arrow('name')}</th><th data-sort="package">Template${arrow('package')}</th>
+        <th data-sort="status">Status${arrow('status')}</th><th data-sort="modified">Modified${arrow('modified')}</th><th></th>
+      </tr></thead><tbody>${rows}</tbody></table></div>`
+      : `<div class="emptystate">We couldn’t find that. Try “services” or “hire” — this searches document names and template types.</div>`}
+    </div>
+    ${trash.length ? `<div class="card"><h3>Trash <span class="h">items are removed permanently after ${TRASH_DAYS} days</span></h3>
+      ${trash.map(d=>`<div class="shortcutrow"><span>${esc(d.name)} · deleted ${fmtWhen(d.deletedAt)}</span>
+        <span><button class="mini" data-restore="${d.id}">Restore</button>
+        <button class="mini" data-purge="${d.id}">Delete now</button></span></div>`).join('')}</div>` : ''}`;
+
+  const on=(sel,fn)=>$$(sel).forEach(el=>el.onclick=e=>{e.stopPropagation(); fn(el);});
+  on('#home [data-fav]',    el=>{ const r=storeDoc(el.dataset.fav); r.favorite=!r.favorite; persistStore(); renderHome(); });
+  on('#home [data-open]',   el=>openDoc(el.dataset.open));
+  on('#home [data-edit]',   el=>{ HOME_EDITING=el.dataset.edit; renderHome();
+                                  const inp=$(`#home [data-rename="${HOME_EDITING}"]`); if(inp){inp.focus(); inp.select();} });
+  on('#home [data-dup]',    el=>duplicateDoc(el.dataset.dup));
+  on('#home [data-trash]',  el=>trashDoc(el.dataset.trash));
+  on('#home [data-restore]',el=>restoreDoc(el.dataset.restore));
+  on('#home [data-purge]',  el=>deleteForever(el.dataset.purge));
+  $$('#home [data-rename]').forEach(inp=>{
+    inp.onclick=e=>e.stopPropagation();
+    inp.onkeydown=e=>{ if(e.key==='Enter') renameDoc(inp.dataset.rename, inp.value);
+                       if(e.key==='Escape'){ HOME_EDITING=null; renderHome(); } };
+    inp.onblur=()=>renameDoc(inp.dataset.rename, inp.value);
+  });
+  $$('#home [data-status]').forEach(sel=>{
+    sel.onclick=e=>e.stopPropagation();
+    sel.onchange=()=>{ const r=storeDoc(sel.dataset.status); r.status=sel.value; r.modified=Date.now(); persistStore(); renderHome(); };
+  });
+  $$('#home [data-sort]').forEach(th=>th.onclick=()=>{
+    HOME_SORT = HOME_SORT.key===th.dataset.sort ? {key:th.dataset.sort, dir:-HOME_SORT.dir} : {key:th.dataset.sort, dir:1};
+    renderHome();
+  });
+  const hs=$('#homeSearch');
+  if(hs) hs.oninput=()=>{ HOME_QUERY=hs.value; renderHome(); const el=$('#homeSearch'); el.focus(); el.setSelectionRange(el.value.length,el.value.length); };
+  const st=$('#homeStart2'); if(st) st.onclick=()=>go('wizard');
+}
+
+/* ---------- onboarding welcome — §1 ---------- */
+const WELCOME_KEY = 'draft.welcomed.v1';
+const WELCOME_CHOICES = [
+  { pkg:'formation',  label:'Starting a business',            d:'Formation documents — charter, governance, ownership' },
+  { pkg:'hiring',     label:'Hiring an employee or contractor', d:'Offer letters, agreements, and policies' },
+  { pkg:'commercial', label:'Selling or buying services',     d:'Service agreements, terms, and order forms' },
+];
+function showWelcome(){
+  $('#welcomeChoices').innerHTML = WELCOME_CHOICES.map((c,i)=>
+    `<div class="choice" data-i="${i}"><b>${esc(c.label)}</b><div class="d">${esc(c.d)}</div></div>`).join('');
+  $$('#welcomeChoices .choice').forEach(el=>el.onclick=()=>{
+    const c = WELCOME_CHOICES[+el.dataset.i];
+    A.package = c.pkg;
+    renderWizard(); renderSidePanels();
+    closeWelcome(); go('wizard');
+  });
+  $('#welcome').hidden = false;
+}
+function closeWelcome(){
+  $('#welcome').hidden = true;
+  try{ localStorage.setItem(WELCOME_KEY,'1'); }catch(e){}
+}
+$('#welcomeSkip').onclick = closeWelcome;
+function maybeWelcome(){
+  let seen = null;
+  try{ seen = localStorage.getItem(WELCOME_KEY); }catch(e){}
+  if(!seen && !liveDocs().length) showWelcome();
+}
+
+/* ---------- keyboard shortcuts & help — §5 ---------- */
+function toggleShortcuts(force){
+  const el=$('#shortcuts');
+  el.hidden = force!==undefined ? !force : !el.hidden;
+}
+$('#helpBtn').onclick = ()=>toggleShortcuts(true);
+$('#shortcutsClose').onclick = ()=>toggleShortcuts(false);
+$('#reWelcome').onclick = ()=>{ toggleShortcuts(false); showWelcome(); };
+addEventListener('keydown', e=>{
+  const typing = /^(input|textarea|select)$/i.test((e.target&&e.target.tagName)||'');
+  if((e.ctrlKey||e.metaKey) && e.key.toLowerCase()==='s'){
+    e.preventDefault();
+    if(STATE.pkg) saveCurrent();
+    return;
+  }
+  if(e.key==='Escape'){ toggleShortcuts(false); $('#welcome').hidden=true; return; }
+  if(e.key==='?' && !typing) toggleShortcuts();
+});
+
 /* init */
 $$('.tab.needsdoc').forEach(t=>t.classList.add('locked'));
-renderWizard(); renderSidePanels();
+renderWizard(); renderSidePanels(); renderHome(); maybeWelcome();
 </script>
 </body>
 </html>
