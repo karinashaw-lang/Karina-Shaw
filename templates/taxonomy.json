@@ -384,13 +384,18 @@
       "name": "Self-reviewed",
       "meaning": "Read by whoever produced it. Deliberately below the gate: an author checking their own work is not review, for the same reason a second citation by the same author is not corroboration."
     },
-    "counsel-reviewed": {
+    "practice-corroborated": {
       "rank": 2,
+      "name": "Practice-corroborated",
+      "meaning": "Two things, both mechanical, neither a legal opinion: (1) checked against real, named reference agreements from reputable non-law-firm sources for structural and substantive consistency with market practice, with URLs and fetch dates recorded; (2) run through the corpus's automated internal-consistency checks (terminology agreement between clause bodies and signature blocks, cross-reference validity, mutual-exclusivity of variants). This is evidence that the term is not obviously wrong or internally inconsistent. It is NOT legal review, is deliberately still below the release gate, and cannot be produced by an author self-certifying — see corroboration.mjs for what is actually required."
+    },
+    "counsel-reviewed": {
+      "rank": 3,
       "name": "Counsel-reviewed",
-      "meaning": "Read by a named lawyer other than the author, on a recorded date, against a stated scope. The finding is that the clause does what it says and is enforceable as written — not that it is the deal you want."
+      "meaning": "Read by a named lawyer other than the author, on a recorded date, against a stated scope. The finding is that the clause does what it says and is enforceable as written — not that it is the deal you want. Nothing below this rank, however much corroboration it carries, may be described to a user as reviewed by a lawyer."
     },
     "counsel-approved": {
-      "rank": 3,
+      "rank": 4,
       "name": "Counsel-approved",
       "meaning": "A named lawyer approves this as the term to use for the stated package and posture. A commercial judgement on top of the review, not a substitute for it."
     }

@@ -24,12 +24,23 @@
        name, a model name, or "the team" is refused.
      - a clause whose assertsLaw classification is still heuristic cannot clear EITHER
        gate, because nothing yet establishes which ladder it belongs on. That currently
-       blocks all 360 clauses — deliberately, and for the right reason.
+       blocks all clauses — deliberately, and for the right reason.
+
+   Between self-reviewed and counsel-reviewed sits `practice-corroborated` — real reference
+   agreements actually fetched and noted (corroboration.mjs, evidence checked against
+   reference-sources.mjs's host registry) plus the corpus's own automated self-consistency
+   checks (terminology.mjs, born from a real defect: the Service Agreement's clause bodies
+   called the other side "Client" throughout while its signature block, built from
+   taxonomy.contractRoles, signed them "Customer" — both halves correct in isolation, never
+   cross-checked). It is still, deliberately, below the gate: it is evidence that a term is
+   not obviously wrong, never a legal opinion, and the taxonomy's own meaning text for it says
+   so in words a UI can show a user without implying counsel reviewed anything.
 
    Every function here is pure. The taxonomy is passed in rather than read, so the same
    code runs in the validator, in the compiled engine, and in the tests.
 */
 import {meetsTwoPrimary} from './sources.mjs';
+import {validateCorroboration} from './corroboration.mjs';
 
 /* Names that are not a person taking responsibility. A signoff is a human undertaking;
    these are either machines or nobody in particular. */
@@ -83,6 +94,14 @@ export function validateSignoff(sign, tax){
     problems.push(`"${sign.reviewer}" is not a named person taking responsibility for the term`);
   if(!sign.date) problems.push('no review date recorded');
   else if(!isDate(sign.date)) problems.push(`review date "${sign.date}" is not an ISO date`);
+
+  /* practice-corroborated sits below counsel-reviewed on purpose (see taxonomy.json) and is
+     not a human legal signoff — `reviewer` here is whoever ran or attests to the corroboration
+     pass, same status as self-reviewed's reviewer. What makes this rank different from
+     self-reviewed is the evidence: real reference agreements, actually fetched, plus the
+     corpus's own automated consistency checks, both required by validateCorroboration. */
+  if(rank === (L['practice-corroborated']?.rank ?? -1))
+    problems.push(...validateCorroboration(sign.corroboration).map(p => `corroboration: ${p}`));
 
   if(rank >= (L['counsel-reviewed']?.rank ?? 2)){
     if(!sign.role) problems.push('a counsel-level review must record the reviewer\'s role — who they are to sign this off');

@@ -8,14 +8,25 @@
       "title": "Parties and Services",
       "severity": "critical",
       "insertion": "auto",
-      "condition": { "eq": ["role", "provider"] },
-      "jurisdictions": ["*"],
-      "industries": ["*"],
-      "entities": ["*"],
+      "condition": {
+        "eq": [
+          "role",
+          "provider"
+        ]
+      },
+      "jurisdictions": [
+        "*"
+      ],
+      "industries": [
+        "*"
+      ],
+      "entities": [
+        "*"
+      ],
       "version": "1.0.0",
       "updated": "2026-08",
       "rationale": "The provider-side variant: you are doing the work. The service description comes from the wizard in the user’s own words.",
-      "body": "This Service Agreement is entered into as of {{date}} between {{company}} (“Provider”) and {{counterparty}} (“Client”). Provider will perform the following services for Client: {{serviceDesc}} (the “Services”). Changes to the Services must be agreed in writing — a text or email exchange both sides clearly agree to counts.",
+      "body": "This Service Agreement is entered into as of {{date}} between {{company}} (“Provider”) and {{counterparty}} (“Customer”). Provider will perform the following services for Customer: {{serviceDesc}} (the “Services”). Changes to the Services must be agreed in writing — a text or email exchange both sides clearly agree to counts.",
       "sources": [],
       "verification": "unsourced",
       "assertsLaw": false,
@@ -28,14 +39,25 @@
       "title": "Parties and Services",
       "severity": "critical",
       "insertion": "auto",
-      "condition": { "eq": ["role", "customer"] },
-      "jurisdictions": ["*"],
-      "industries": ["*"],
-      "entities": ["*"],
+      "condition": {
+        "eq": [
+          "role",
+          "customer"
+        ]
+      },
+      "jurisdictions": [
+        "*"
+      ],
+      "industries": [
+        "*"
+      ],
+      "entities": [
+        "*"
+      ],
       "version": "1.0.0",
       "updated": "2026-08",
       "rationale": "The client-side variant: you are hiring the work done. Same structure, parties flipped.",
-      "body": "This Service Agreement is entered into as of {{date}} between {{counterparty}} (“Provider”) and {{company}} (“Client”). Provider will perform the following services for Client: {{serviceDesc}} (the “Services”). Changes to the Services must be agreed in writing — a text or email exchange both sides clearly agree to counts.",
+      "body": "This Service Agreement is entered into as of {{date}} between {{counterparty}} (“Provider”) and {{company}} (“Customer”). Provider will perform the following services for Customer: {{serviceDesc}} (the “Services”). Changes to the Services must be agreed in writing — a text or email exchange both sides clearly agree to counts.",
       "sources": [],
       "verification": "unsourced",
       "assertsLaw": false,
@@ -48,10 +70,18 @@
       "title": "Timeline",
       "severity": "recommended",
       "insertion": "auto",
-      "condition": { "truthy": "deadlineText" },
-      "jurisdictions": ["*"],
-      "industries": ["*"],
-      "entities": ["*"],
+      "condition": {
+        "truthy": "deadlineText"
+      },
+      "jurisdictions": [
+        "*"
+      ],
+      "industries": [
+        "*"
+      ],
+      "entities": [
+        "*"
+      ],
       "version": "1.0.0",
       "updated": "2026-08",
       "rationale": "Included only when the wizard names a deadline, and paired with the honest mechanic deadlines actually need: what happens when one slips.",
@@ -69,13 +99,19 @@
       "severity": "critical",
       "insertion": "auto",
       "condition": null,
-      "jurisdictions": ["*"],
-      "industries": ["*"],
-      "entities": ["*"],
+      "jurisdictions": [
+        "*"
+      ],
+      "industries": [
+        "*"
+      ],
+      "entities": [
+        "*"
+      ],
       "version": "1.0.0",
       "updated": "2026-08",
       "rationale": "The payment terms come from the wizard verbatim — amount and timing are the user’s deal, not the template’s guess.",
-      "body": "Client will pay Provider as follows: {{payText}}. Amounts unpaid [30] days after they are due bear a late charge of [amount or percentage, or “none”]. Provider may pause work while amounts are overdue after giving Client [7] days’ written notice.",
+      "body": "Customer will pay Provider as follows: {{payText}}. Amounts unpaid [30] days after they are due bear a late charge of [amount or percentage, or “none”]. Provider may pause work while amounts are overdue after giving Customer [7] days’ written notice.",
       "sources": [],
       "verification": "unsourced",
       "assertsLaw": false,
@@ -89,13 +125,19 @@
       "severity": "optional",
       "insertion": "suggest",
       "condition": null,
-      "jurisdictions": ["*"],
-      "industries": ["*"],
-      "entities": ["*"],
+      "jurisdictions": [
+        "*"
+      ],
+      "industries": [
+        "*"
+      ],
+      "entities": [
+        "*"
+      ],
       "version": "1.0.0",
       "updated": "2026-08",
       "rationale": "Offered because expense surprises sour small engagements; the approval threshold keeps it fair in both directions.",
-      "body": "Client will reimburse Provider’s reasonable out-of-pocket expenses directly required by the Services, provided any single expense over [amount] is approved by Client in writing first. Provider will include receipts with each request.",
+      "body": "Customer will reimburse Provider’s reasonable out-of-pocket expenses directly required by the Services, provided any single expense over [amount] is approved by Customer in writing first. Provider will include receipts with each request.",
       "sources": [],
       "verification": "unsourced",
       "assertsLaw": false,
@@ -109,13 +151,19 @@
       "severity": "critical",
       "insertion": "auto",
       "condition": null,
-      "jurisdictions": ["*"],
-      "industries": ["*"],
-      "entities": ["*"],
+      "jurisdictions": [
+        "*"
+      ],
+      "industries": [
+        "*"
+      ],
+      "entities": [
+        "*"
+      ],
       "version": "1.0.0",
       "updated": "2026-08",
       "rationale": "The default here is the freelance market’s standard bargain — client owns the deliverables on payment, provider keeps their reusable tools — stated plainly enough that either side can see it and edit it.",
-      "body": "Once paid in full, Client owns the deliverables produced for it under this Service Agreement. Provider keeps ownership of its pre-existing materials, tools, and general know-how, and grants Client whatever right to use them is needed to enjoy the deliverables. Until payment in full, the deliverables remain Provider’s.",
+      "body": "Once paid in full, Customer owns the deliverables produced for it under this Service Agreement. Provider keeps ownership of its pre-existing materials, tools, and general know-how, and grants Customer whatever right to use them is needed to enjoy the deliverables. Until payment in full, the deliverables remain Provider’s.",
       "sources": [],
       "verification": "unsourced",
       "assertsLaw": false,
@@ -129,13 +177,19 @@
       "severity": "recommended",
       "insertion": "suggest",
       "condition": null,
-      "jurisdictions": ["*"],
-      "industries": ["*"],
-      "entities": ["*"],
+      "jurisdictions": [
+        "*"
+      ],
+      "industries": [
+        "*"
+      ],
+      "entities": [
+        "*"
+      ],
       "version": "1.0.0",
       "updated": "2026-08",
       "rationale": "Offered for deliverable-shaped work. Unlimited revisions is the classic silent scope trap; a numbered round makes the boundary visible.",
-      "body": "The Services include up to [number] rounds of revisions to each deliverable. Client will review each deliverable within [7] days and either accept it or describe requested changes; a deliverable not responded to within that window is accepted. Revisions beyond the included rounds are billed at [rate].",
+      "body": "The Services include up to [number] rounds of revisions to each deliverable. Customer will review each deliverable within [7] days and either accept it or describe requested changes; a deliverable not responded to within that window is accepted. Revisions beyond the included rounds are billed at [rate].",
       "sources": [],
       "verification": "unsourced",
       "assertsLaw": false,
@@ -149,13 +203,19 @@
       "severity": "recommended",
       "insertion": "auto",
       "condition": null,
-      "jurisdictions": ["*"],
-      "industries": ["*"],
-      "entities": ["*"],
+      "jurisdictions": [
+        "*"
+      ],
+      "industries": [
+        "*"
+      ],
+      "entities": [
+        "*"
+      ],
       "version": "1.0.0",
       "updated": "2026-08",
       "rationale": "States the relationship the parties intend. Whether someone is actually an employee is decided by how the work is done, not by this sentence — the rationale says so because pretending otherwise is how misclassification happens.",
-      "body": "Provider performs the Services as an independent business, not as Client’s employee, and controls how the work is done. Neither party may act or sign for the other. Each party handles its own taxes, insurance, and people.",
+      "body": "Provider performs the Services as an independent business, not as Customer’s employee, and controls how the work is done. Neither party may act or sign for the other. Each party handles its own taxes, insurance, and people.",
       "sources": [],
       "verification": "unsourced",
       "assertsLaw": false,
@@ -169,9 +229,15 @@
       "severity": "recommended",
       "insertion": "suggest",
       "condition": null,
-      "jurisdictions": ["*"],
-      "industries": ["*"],
-      "entities": ["*"],
+      "jurisdictions": [
+        "*"
+      ],
+      "industries": [
+        "*"
+      ],
+      "entities": [
+        "*"
+      ],
       "version": "1.0.0",
       "updated": "2026-08",
       "rationale": "A short mutual confidence clause sized for small engagements — offered because many simple deals genuinely do not need one, and the full NDA exists for those that need more.",
@@ -189,13 +255,19 @@
       "severity": "critical",
       "insertion": "auto",
       "condition": null,
-      "jurisdictions": ["*"],
-      "industries": ["*"],
-      "entities": ["*"],
+      "jurisdictions": [
+        "*"
+      ],
+      "industries": [
+        "*"
+      ],
+      "entities": [
+        "*"
+      ],
       "version": "1.0.0",
       "updated": "2026-08",
       "rationale": "The clean exit both sides want to know exists before they sign: either side can leave on notice, work done gets paid for, owned things get delivered.",
-      "body": "Either party may end this Service Agreement with [14] days’ written notice. Client will pay for Services performed and approved expenses incurred through the end date, and Provider will deliver work in progress that has been paid for. Sections that by their nature continue — payment for work done, ownership, and confidentiality — survive the end of the agreement.",
+      "body": "Either party may end this Service Agreement with [14] days’ written notice. Customer will pay for Services performed and approved expenses incurred through the end date, and Provider will deliver work in progress that has been paid for. Sections that by their nature continue — payment for work done, ownership, and confidentiality — survive the end of the agreement.",
       "sources": [],
       "verification": "unsourced",
       "assertsLaw": false,
@@ -209,13 +281,19 @@
       "severity": "recommended",
       "insertion": "suggest",
       "condition": null,
-      "jurisdictions": ["*"],
-      "industries": ["*"],
-      "entities": ["*"],
+      "jurisdictions": [
+        "*"
+      ],
+      "industries": [
+        "*"
+      ],
+      "entities": [
+        "*"
+      ],
       "version": "1.0.0",
       "updated": "2026-08",
       "rationale": "Offered rather than automatic: a liability cap is a real economic choice, and in a two-paragraph deal some parties would rather leave it out than negotiate it.",
-      "body": "Provider promises to perform the Services with reasonable skill and care, and re-performance or correction of deficient Services is Client’s remedy for a breach of that promise. Neither party is liable to the other for indirect or consequential losses, and each party’s total liability under this Service Agreement is capped at the amount paid or payable for the Services, except for amounts owed under the payment section or losses that a party may not lawfully cap where the claim is brought.",
+      "body": "Provider promises to perform the Services with reasonable skill and care, and re-performance or correction of deficient Services is Customer’s remedy for a breach of that promise. Neither party is liable to the other for indirect or consequential losses, and each party’s total liability under this Service Agreement is capped at the amount paid or payable for the Services, except for amounts owed under the payment section or losses that a party may not lawfully cap where the claim is brought.",
       "sources": [],
       "verification": "unsourced",
       "assertsLaw": false,
@@ -229,9 +307,15 @@
       "severity": "critical",
       "insertion": "auto",
       "condition": null,
-      "jurisdictions": ["*"],
-      "industries": ["*"],
-      "entities": ["*"],
+      "jurisdictions": [
+        "*"
+      ],
+      "industries": [
+        "*"
+      ],
+      "entities": [
+        "*"
+      ],
       "version": "1.0.0",
       "updated": "2026-08",
       "rationale": "A letter of agreement reads like a letter: this opens it, names the parties, and states what it is — a binding record of a simple understanding, signed by both.",
@@ -249,9 +333,15 @@
       "severity": "critical",
       "insertion": "auto",
       "condition": null,
-      "jurisdictions": ["*"],
-      "industries": ["*"],
-      "entities": ["*"],
+      "jurisdictions": [
+        "*"
+      ],
+      "industries": [
+        "*"
+      ],
+      "entities": [
+        "*"
+      ],
       "version": "1.0.0",
       "updated": "2026-08",
       "rationale": "The heart of the letter, in the user’s own words from the wizard, with the payment stated next to the work so neither floats free of the other.",
@@ -268,10 +358,18 @@
       "title": "When",
       "severity": "recommended",
       "insertion": "auto",
-      "condition": { "truthy": "deadlineText" },
-      "jurisdictions": ["*"],
-      "industries": ["*"],
-      "entities": ["*"],
+      "condition": {
+        "truthy": "deadlineText"
+      },
+      "jurisdictions": [
+        "*"
+      ],
+      "industries": [
+        "*"
+      ],
+      "entities": [
+        "*"
+      ],
       "version": "1.0.0",
       "updated": "2026-08",
       "rationale": "Included only when the wizard names a date — a letter with an empty deadline line looks unfinished rather than flexible.",
@@ -289,9 +387,15 @@
       "severity": "recommended",
       "insertion": "auto",
       "condition": null,
-      "jurisdictions": ["*"],
-      "industries": ["*"],
-      "entities": ["*"],
+      "jurisdictions": [
+        "*"
+      ],
+      "industries": [
+        "*"
+      ],
+      "entities": [
+        "*"
+      ],
       "version": "1.0.0",
       "updated": "2026-08",
       "rationale": "Even a one-page letter needs the exit: either side can end it, and work already done gets paid for.",
@@ -309,9 +413,15 @@
       "severity": "optional",
       "insertion": "suggest",
       "condition": null,
-      "jurisdictions": ["*"],
-      "industries": ["*"],
-      "entities": ["*"],
+      "jurisdictions": [
+        "*"
+      ],
+      "industries": [
+        "*"
+      ],
+      "entities": [
+        "*"
+      ],
       "version": "1.0.0",
       "updated": "2026-08",
       "rationale": "Offered for parties who want the letter to acknowledge its own size: it is deliberately short, and bigger engagements deserve the fuller agreement.",

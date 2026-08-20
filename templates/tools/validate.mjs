@@ -9,6 +9,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {loadCorpus, ROOT} from './corpus.mjs';
 import {gateFor, validateSignoff, validateClassification, lawTalk, summarise} from './review.mjs';
+import {checkTerminology} from './terminology.mjs';
 import {meetsTwoPrimary, tierOf, looksLikeCitation} from './sources.mjs';
 import {evalExpr, fireRules, resolveFields, clauseEligible, docIncluded, allConfigs, resolveXref, ANSWER_FIELDS} from './evaluator.mjs';
 
@@ -110,6 +111,13 @@ function checkTrack(c){
   if(talk.length)
     warn('LAW_TALK_IN_DRAFTING',`clause "${c.id}" is classified as drafting but its body ${talk.join(', ')}`);
 }
+
+/* A document that calls one of its own parties something its signature block would not
+   recognize is not a citation problem — it is the document disagreeing with itself. Real
+   defect, found once (Service Agreement: body said "Client" throughout, signatures said
+   "Customer"); an ERROR, not a WARN, because nothing here is a judgement call. */
+for(const f of checkTerminology(C))
+  err('TERM_MISMATCH',`document "${f.doc}" clause "${f.clause}" uses "${f.term}", which its signature block would not recognize — expected one of: ${f.expected.join(', ')}`);
 
 /* ---- 1. structural ---- */
 {
