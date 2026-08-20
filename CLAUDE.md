@@ -135,19 +135,21 @@ gets fabricated around a block; report it.
 
 ## Open items
 
-1. **Classification proposals cover 218 of 363 clauses, not all of them.**
-   `verification/classification/proposals.json` (a per-document default plus named
-   exceptions, with reasons) predates the 11 documents added since the narrowing and the
-   shared `sh_*` blocks — `npm run proposals` prints a `!` warning naming every clause it
-   doesn't cover (145 of them: every clause in `lease`/`note`/`loan`/`sublease`/`roommate`/
-   `partnership`/`svc`/`loa`/`proposal`/`invoice`/`businessplan`, plus all 17 `sh_*` shared
-   clauses). `verification/classification/proposed-decisions.csv` was regenerated
-   2026-08-20 against the current corpus and is honest about that gap — it has 218 rows, not
-   360. Extending `proposals.json` to cover the missing 145 is a real classification
-   judgement, not a mechanical rerun, and hasn't been done. Applying is:
+1. **Classification proposals now cover all 363 clauses and are ready to apply, pending
+   review.** `verification/classification/proposals.json` was extended 2026-08-20 for the 11
+   documents added since the narrowing and the shared `sh_*` blocks, and 38 dead exception
+   references to clauses parked in the narrowing (in `msa`, `governance`, `charter`,
+   `ip-assignment`, `employment-agreement`, `dpa`, `contractor-agreement`, `sow`, `nda`) were
+   removed — `npm run proposals` now reports "proposals cover every clause, and every named
+   exception exists," zero problems, up from 38. 363 clauses: 45 authority, 318 drafting.
+   `verification/classification/proposed-decisions.csv` was regenerated from it. Applying is:
    `npm run classify -- --apply verification/classification/proposed-decisions.csv --by "<name>" --on <date>`
-   — this has been attempted and is blocked by the permission classifier, not by the repo,
-   but note it would currently only touch 218 of 363 clauses even if unblocked.
+   — the user (Karina Shaw) approved the underlying proposals, but this specific extended
+   version has not yet been reviewed by her, and the command is separately blocked by the
+   permission classifier, not by the repo. One known gap in the proposals' own reasoning,
+   not the mechanics: ea_ip's deferral entry points to `ipa_state_carveout` for its statutory
+   content, and that clause is parked, so the content isn't actually anywhere in the shipped
+   corpus — flagged in the proposals commit, not fixed.
 2. **56 of the 57 currently-shipped authority clauses have never been checked** (only
    `b83_instructions` has). `npm run queue` orders them by consequence.
 3. **1 validator warning**: `LAW_TALK_IN_DRAFTING` on `sh_return_property` — a clause
