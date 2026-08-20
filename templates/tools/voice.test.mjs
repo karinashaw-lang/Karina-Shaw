@@ -99,8 +99,15 @@ console.log('the product never claims to be complete');
   for(const [re,why] of COMPLETE){
     t(`no "${re.source}" — ${why}`, !re.test(chrome));
   }
-  t('the scope disclosure exists and is derived from the corpus',
-    /function coverageLine\(/.test(chrome) && /state-specific clauses/.test(chrome));
+  /* Checks the property, not the prose. An earlier version matched the exact phrase
+     "state-specific clauses" and broke when that line was reworded, which taught the wrong
+     lesson: it made the wording load-bearing when the thing worth holding is that the
+     disclosure is computed from CLAUSES rather than typed in. */
+  t('the scope disclosure exists', /function coverageLine\(/.test(chrome));
+  t('and it is derived from the corpus rather than written down',
+    /function coverage\(\)\{[\s\S]{0,400}for\(const c of CLAUSES\)/.test(chrome));
+  t('and it handles a corpus with no jurisdiction tags at all',
+    /if\(!c\.ranked\.length\)/.test(chrome));
   t('it is rendered whenever the user is choosing, not only when the list empties',
     (chrome.match(/scope\s*\+/g)||[]).length>0 && /const scope=/.test(chrome));
 }
