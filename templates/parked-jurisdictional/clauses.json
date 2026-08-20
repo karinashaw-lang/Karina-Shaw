@@ -1,0 +1,318 @@
+{
+ "$comment": "State-specific clauses removed when the Simple Build Spec required every template to be jurisdiction-neutral. Keyed by the file each came from. Restore alongside templates/parked-california/ if jurisdiction-specific templates return.",
+ "clausesBySourceFile": {
+  "charter.json": [
+   {
+    "id": "charter_ny_publication",
+    "doc": "charter",
+    "group": "Charter",
+    "title": "Publication Requirement",
+    "severity": "critical",
+    "insertion": "suggest",
+    "condition": {
+     "rule": "ny_publication"
+    },
+    "jurisdictions": [
+     "NY"
+    ],
+    "industries": [
+     "*"
+    ],
+    "entities": [
+     "llc"
+    ],
+    "version": "1.1.0",
+    "updated": "2026-06",
+    "rationale": "New York is the only state in this library with a publication requirement, and the penalty for missing it is suspension of authority to do business.",
+    "body": "Within 120 days of formation the Company shall publish notice of its formation once each week for six successive weeks in two newspapers designated by the county clerk of the county in which its office is located, and shall file a Certificate of Publication with the Department of State. Failure to comply suspends the Company’s authority to carry on business in New York until cured.",
+    "sources": [
+     {
+      "citation": "NY LLC Law §206",
+      "type": "statute-cited",
+      "url": null,
+      "checked": null
+     }
+    ],
+    "verification": "single-source",
+    "defects": [
+     "The two newspapers must be one daily and one weekly. The clause says only 'two newspapers', which reads as though any two designated papers will do.",
+     "The Certificate of Publication must have the affidavits of publication from each newspaper attached. The clause does not mention the affidavits, which are the part a filer has to collect from the papers."
+    ],
+    "lastChecked": "2026-08-15",
+    "assertsLaw": true,
+    "classifiedBy": "heuristic-unreviewed"
+   },
+   {
+    "id": "charter_tx_purpose",
+    "doc": "charter",
+    "group": "Charter",
+    "title": "Supplemental Purpose Statement",
+    "severity": "optional",
+    "insertion": "suggest",
+    "condition": {
+     "eq": [
+      "formState",
+      "TX"
+     ]
+    },
+    "jurisdictions": [
+     "TX"
+    ],
+    "industries": [
+     "*"
+    ],
+    "entities": [
+     "*"
+    ],
+    "version": "1.0.0",
+    "updated": "2026-04",
+    "rationale": "Texas accepts a general purpose statement, but a specific one can help with licensing applications that ask for evidence of the entity's stated business.",
+    "body": "Without limiting the general purpose stated in <<xr:charter_purpose>>, the Company’s initial line of business is {{industryName}}.",
+    "sources": [],
+    "verification": "unsourced",
+    "assertsLaw": false,
+    "classifiedBy": "heuristic-unreviewed"
+   }
+  ],
+  "compliance-calendar.json": [
+   {
+    "id": "cal_ny",
+    "doc": "compliance-calendar",
+    "group": "Immediate Deadlines",
+    "title": "New York Publication Deadline",
+    "severity": "critical",
+    "insertion": "suggest",
+    "condition": {
+     "rule": "ny_publication"
+    },
+    "jurisdictions": [
+     "NY"
+    ],
+    "industries": [
+     "*"
+    ],
+    "entities": [
+     "llc"
+    ],
+    "version": "1.1.0",
+    "updated": "2026-06",
+    "rationale": "Publication runs six consecutive weeks, so waiting until day 100 makes the 120-day deadline impossible to hit.",
+    "body": "Publication in two designated newspapers must run for six successive weeks and the Certificate of Publication must be filed within 120 days of formation — that is {{nyDeadline}} for this Company. Start the process early; the six-week run cannot be compressed. The full requirement is in <<xr:charter_ny_publication>>.",
+    "sources": [
+     {
+      "citation": "NY LLC Law §206",
+      "type": "statute-cited",
+      "url": null,
+      "checked": null
+     }
+    ],
+    "verification": "single-source",
+    "assertsLaw": true,
+    "classifiedBy": "heuristic-unreviewed",
+    "defects": [
+     "The parent defect propagated: the two papers are not interchangeable — the county clerk designates one daily and one weekly. \"Two designated newspapers\" reads as a free choice of any two, so a founder can publish in two dailies, satisfy this clause, and fail the statute. Confirmed in charter_ny_publication and repeated verbatim in substance here."
+    ],
+    "lastChecked": "2026-08-15",
+    "verificationNote": "Implicated by the confirmed defect in charter_ny_publication and checked against the evidence already recorded there; no new search. Defect types: omitted-qualifier."
+   },
+   {
+    "id": "cal_de_franchise",
+    "doc": "compliance-calendar",
+    "group": "Recurring Obligations",
+    "title": "Delaware Franchise Tax",
+    "severity": "critical",
+    "insertion": "suggest",
+    "condition": {
+     "rule": "de_franchise"
+    },
+    "jurisdictions": [
+     "DE"
+    ],
+    "industries": [
+     "*"
+    ],
+    "entities": [
+     "*"
+    ],
+    "version": "1.2.0",
+    "updated": "2026-06",
+    "rationale": "The first bill under the authorized-shares method routinely shocks founders. The assumed-par-value method is usually far cheaper and is elected on the same form.",
+    "body": "Delaware franchise tax is due annually regardless of revenue. Corporations file an annual report and pay by March 1; LLCs pay a flat annual tax by June 1. Corporations should compare the authorized-shares method against the assumed-par-value capital method — for a company with {{authShares}} authorized shares and little capital, the second is usually far less.",
+    "sources": [
+     {
+      "citation": "8 Del. C. §503",
+      "type": "statute-cited",
+      "url": null,
+      "checked": null
+     },
+     {
+      "citation": "6 Del. C. §18-1107",
+      "type": "statute-cited",
+      "url": null,
+      "checked": null
+     }
+    ],
+    "verification": "multi-cited",
+    "assertsLaw": true,
+    "classifiedBy": "heuristic-unreviewed"
+   },
+   {
+    "id": "cal_tx_franchise",
+    "doc": "compliance-calendar",
+    "group": "Recurring Obligations",
+    "title": "Texas Franchise Tax and Public Information Report",
+    "severity": "recommended",
+    "insertion": "suggest",
+    "condition": {
+     "eq": [
+      "formState",
+      "TX"
+     ]
+    },
+    "jurisdictions": [
+     "TX"
+    ],
+    "industries": [
+     "*"
+    ],
+    "entities": [
+     "*"
+    ],
+    "version": "1.0.0",
+    "updated": "2026-06",
+    "rationale": "Even below the no-tax-due revenue threshold the report itself must be filed, and forfeiture of charter follows non-filing.",
+    "body": "Texas franchise tax reports are due May 15 each year. A Company below the no-tax-due revenue threshold still must file the report and the Public Information Report. Failure to file can result in forfeiture of the Company’s right to transact business and of the liability protection in <<xr:charter_name>>.",
+    "sources": [
+     {
+      "citation": "Tex. Tax Code ch. 171",
+      "type": "statute-cited",
+      "url": null,
+      "checked": null
+     }
+    ],
+    "verification": "single-source",
+    "assertsLaw": true,
+    "classifiedBy": "heuristic-unreviewed",
+    "defects": [
+     "Every citation on this clause names a body of law without a provision inside it (Tex. Tax Code ch. 171), so there is nothing specific to look up. This clause cannot be verified as filed no matter what source access is granted — it has to be re-cited by somebody who knows which provision it was relying on. Not repaired here: supplying a section number from memory is the failure this corpus is full of."
+    ]
+   },
+   {
+    "id": "cal_fl_annual",
+    "doc": "compliance-calendar",
+    "group": "Recurring Obligations",
+    "title": "Florida Annual Report",
+    "severity": "recommended",
+    "insertion": "suggest",
+    "condition": {
+     "rule": "fl_annual"
+    },
+    "jurisdictions": [
+     "FL"
+    ],
+    "industries": [
+     "*"
+    ],
+    "entities": [
+     "*"
+    ],
+    "version": "1.0.0",
+    "updated": "2026-06",
+    "rationale": "The Florida late fee is substantial, non-waivable, and larger than the filing fee itself.",
+    "body": "Florida annual reports are due between January 1 and May 1. The late fee is non-waivable and applies from May 2. Failure to file by the third Friday in September results in administrative dissolution.",
+    "sources": [
+     {
+      "citation": "Fla. Stat. §605.0212",
+      "type": "statute-cited",
+      "url": null,
+      "checked": null
+     },
+     {
+      "citation": "Fla. Stat. §607.1622",
+      "type": "statute-cited",
+      "url": null,
+      "checked": null
+     }
+    ],
+    "verification": "multi-cited",
+    "assertsLaw": true,
+    "classifiedBy": "heuristic-unreviewed"
+   },
+   {
+    "id": "cal_ny_biennial",
+    "doc": "compliance-calendar",
+    "group": "Recurring Obligations",
+    "title": "New York Biennial Statement",
+    "severity": "recommended",
+    "insertion": "suggest",
+    "condition": {
+     "eq": [
+      "formState",
+      "NY"
+     ]
+    },
+    "jurisdictions": [
+     "NY"
+    ],
+    "industries": [
+     "*"
+    ],
+    "entities": [
+     "*"
+    ],
+    "version": "1.0.0",
+    "updated": "2026-06",
+    "rationale": "Two-year cadence makes it easy to forget, and New York does not reliably send a reminder.",
+    "body": "New York requires a Biennial Statement every two years, due in the anniversary month of formation. Set the reminder now — the two-year gap is long enough that the obligation is routinely forgotten by the time it comes due.",
+    "sources": [
+     {
+      "citation": "NY LLC Law §301(e)",
+      "type": "statute-cited",
+      "url": null,
+      "checked": null
+     }
+    ],
+    "verification": "single-source",
+    "assertsLaw": true,
+    "classifiedBy": "heuristic-unreviewed"
+   }
+  ],
+  "governance-transfers.json": [
+   {
+    "id": "gov_charging",
+    "doc": "governance",
+    "group": "Ownership Transfers",
+    "title": "Charging Order Protection",
+    "severity": "recommended",
+    "insertion": "suggest",
+    "condition": {
+     "rule": "tx_charging"
+    },
+    "jurisdictions": [
+     "TX"
+    ],
+    "industries": [
+     "*"
+    ],
+    "entities": [
+     "llc"
+    ],
+    "version": "1.1.0",
+    "updated": "2026-04",
+    "rationale": "Texas makes the charging order the exclusive remedy by statute. Restating it puts a creditor on notice without requiring them to look it up.",
+    "body": "A [[charging order]] is the exclusive remedy of a judgment creditor of a {{ownerSing}}. No creditor shall have the right to foreclose on or obtain possession of Company assets, to compel a distribution, or to exercise any management or voting right of the debtor {{ownerSing}}.",
+    "sources": [
+     {
+      "citation": "Tex. Bus. Orgs. Code §101.112",
+      "type": "statute-cited",
+      "url": null,
+      "checked": null
+     }
+    ],
+    "verification": "single-source",
+    "assertsLaw": true,
+    "classifiedBy": "heuristic-unreviewed"
+   }
+  ]
+ }
+}

@@ -133,7 +133,7 @@ console.log('every generated document carries the required disclaimer');
 {
   const html=fs.readFileSync('draft-ai-engine.html','utf8');
   t('the exact footer wording is present',
-    html.includes('This document was created using DRAFT software. DRAFT is not a law firm'));
+    html.includes('Created with DRAFT. This is a template, not legal advice.'));
   t('it is emitted per document, not once per page',
     /genfoot/.test(html) && html.split('genfoot').length>2);
 }

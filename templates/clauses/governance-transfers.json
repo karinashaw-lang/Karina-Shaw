@@ -188,41 +188,6 @@
    "classifiedBy": "heuristic-unreviewed"
   },
   {
-   "id": "gov_charging",
-   "doc": "governance",
-   "group": "Ownership Transfers",
-   "title": "Charging Order Protection",
-   "severity": "recommended",
-   "insertion": "suggest",
-   "condition": {
-    "rule": "tx_charging"
-   },
-   "jurisdictions": [
-    "TX"
-   ],
-   "industries": [
-    "*"
-   ],
-   "entities": [
-    "llc"
-   ],
-   "version": "1.1.0",
-   "updated": "2026-04",
-   "rationale": "Texas makes the charging order the exclusive remedy by statute. Restating it puts a creditor on notice without requiring them to look it up.",
-   "body": "A [[charging order]] is the exclusive remedy of a judgment creditor of a {{ownerSing}}. No creditor shall have the right to foreclose on or obtain possession of Company assets, to compel a distribution, or to exercise any management or voting right of the debtor {{ownerSing}}.",
-   "sources": [
-    {
-     "citation": "Tex. Bus. Orgs. Code §101.112",
-     "type": "statute-cited",
-     "url": null,
-     "checked": null
-    }
-   ],
-   "verification": "single-source",
-   "assertsLaw": true,
-   "classifiedBy": "heuristic-unreviewed"
-  },
-  {
    "id": "gov_deadlock",
    "doc": "governance",
    "group": "Ownership Transfers",
