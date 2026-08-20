@@ -51,10 +51,31 @@
    "updated": "2026-04",
    "rationale": "Work-made-for-hire only covers certain categories of work. The backstop assignment is what catches everything else.",
    "body": "All copyrightable works created by a founder within the scope of the Company’s business are [[work made for hire]] under the Copyright Act. To the extent any work does not qualify as a work made for hire, it is assigned to the Company under <<xr:ipa_assign>>.",
-   "sources": [],
-   "verification": "unsourced",
+   "sources": [
+    {
+     "type": "case-mirror",
+     "url": "https://www.courtlistener.com/opinion/112273/community-for-creative-non-violence-v-reid/",
+     "checked": "2026-08-20",
+     "title": "CourtListener — Community for Creative Non-Violence v. Reid (1989) 490 U.S. 730"
+    },
+    {
+     "type": "case-mirror",
+     "url": "https://www.courtlistener.com/opinion/596113/clifford-scott-aymes-v-jonathan-bonelli-doing-business-as-island-swimming/",
+     "checked": "2026-08-20",
+     "title": "CourtListener — Aymes v. Bonelli (2d Cir. 1992) 980 F.2d 857"
+    }
+   ],
+   "verification": "multi-cited",
    "assertsLaw": true,
-   "classifiedBy": "heuristic-unreviewed"
+   "classifiedBy": "heuristic-unreviewed",
+   "defects": [
+    "The clause's first sentence ('All copyrightable works created by a founder within the scope of the Company's business are work made for hire under the Copyright Act') is stated as a categorical fact. Under Reid it is a fact-specific legal conclusion that depends on the founder's actual working relationship with the Company -- control, payroll status, benefits, tax treatment, and the rest -- and will often come out the other way for an early-stage founder who is not drawing a W-2 salary. The clause does not say this, and a reader has no way to know the first sentence is a legal conclusion resting on facts not stated.",
+    "The practical consequence is muted, not absent: the second sentence's backstop assignment ('To the extent any work does not qualify... it is assigned to the Company') means the Company ends up owning the copyright either way, by assignment if not by operation of section 101. That is why this is recorded as a gap rather than a contradiction that blocks the document -- but an assignment and a work-for-hire are not identical in every respect. Section 203 of the Copyright Act lets an individual author terminate a granted assignment after 35 years; a true work made for hire cannot be terminated because the employer is deemed the author from the start. Whether that distinction matters for a given company was not researched, and the clause's flat 'is work made for hire' framing could leave a reader thinking the section 203 question does not arise when it may.",
+    "The statutory text of 17 U.S.C. section 101 was not independently fetched -- every primary and mirror host was blocked at the egress proxy during this check. The section 101(2) category list above is taken from the Court's own quotation of the statute in Reid, not read directly from the Office of the Law Revision Counsel's text.",
+    "Only one fact pattern (Aymes, a single hired programmer) was read as an application of the Reid factors. Founders' circumstances vary a great deal -- co-founders working full time with no other clients look more like employees than a founder who is also running a separate consultancy -- and this check does not cover that range.",
+    "contradicted: work made for hire under 17 U.S.C. section 101 arises automatically whenever a founder creates a copyrightable work within the scope of the Company's business"
+   ],
+   "lastChecked": "2026-08-20"
   },
   {
    "id": "ipa_prior",
@@ -482,10 +503,11 @@
    ],
    "verification": "multi-cited",
    "defects": [
-    "The clause previously said the election must be \"postmarked\" within thirty days. Treas. Reg. §1.83-2(b) says the election shall be \"filed\" not later than 30 days after transfer, and §1.83-2(c) says it is made by filing one copy with the internal revenue office where the taxpayer files their return. The mailbox rule that turns a postmark into a filing date is Internal Revenue Code §7502, which was NOT read for this rebuild. The rebuilt body says to send it in a way that produces a dated record and does not assert that a postmark is a filing.",
-    "The clause previously said \"There is no procedure to cure a late filing.\" That is stated here on the narrower and verified ground that the 30-day period is fixed by §83(b)(2) of the statute rather than by regulation. Whether discretionary relief under Treas. Reg. §301.9100 is unavailable for that reason was not verified — §301.9100 was not read.",
-    "Form 15620 was read as a PDF from irs.gov, which is the agency and not a publisher of law. Its instruction text extracted only partially, and the extracted portions confirm the where-to-file rule and that the form is an alternative to a written statement. Its \"When to File\" paragraph did not extract cleanly and was not relied on.",
-    "State law was not considered. A California taxpayer may have a separate state election or filing obligation and nothing here addresses it."
+    "26 U.S.C. §7502, the timely-mailing-is-timely-filing rule, was not read. The rebuilt body therefore tells the reader to send the election in a way that produces a dated record, and does not assert that a postmark is a filing.",
+    "Treas. Reg. §301.9100 was not read. The clause's claim that there is no cure for a late filing is stated on the narrower and verified ground that the 30-day period comes from the statute; whether §301.9100 relief is unavailable for that reason was not verified.",
+    "Form 15620's instruction text extracted only partially from the PDF — the 'Who May File' and 'When to File' paragraphs came through as fragments. What is asserted about the form is limited to the fragments that did extract cleanly. irs.gov is the agency and not a publisher of law.",
+    "State law was not considered. A California taxpayer may have a separate state filing obligation and nothing here addresses it.",
+    "The remaining substantive consequences in §1.83-2(a) — that the substantial vesting rules of §83(a) stop applying, and the basis rule for a later sale — were read and are not carried. Whether another clause in the election document states them was not checked."
    ],
    "lastChecked": "2026-08-19",
    "assertsLaw": true,

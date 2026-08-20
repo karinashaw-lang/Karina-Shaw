@@ -240,10 +240,18 @@ console.log('against every finding actually recorded');
   console.log(`        sources by tier: ${JSON.stringify(a.byTier)}`);
   console.log(`        by fragility:    ${JSON.stringify(a.byFragility)}`);
   const winet = a.rows.filter(r=>r.fragility.level==='unverifiable-as-recorded');
-  t('the Winet shape is detected in the real findings', winet.length>0);
+  /* This used to require winet.length>0 — ea_noncompete_void and ic_ca_abc had the shape.
+     Both clauses, and their findings, were parked in the jurisdiction-neutral narrowing
+     (moved to verification/findings-parked-california/ alongside the clauses they check),
+     for the same reason blockedBy's citation-kind assertion below was softened: demanding
+     the live corpus contain a particular defect makes the suite fail on its own success.
+     The detection mechanism itself is already covered above against synthetic fixtures
+     (`fragility(base).level==='unverifiable-as-recorded'`); what is worth asserting here
+     against the real findings is only that every one gets a known fragility level. */
+  if(winet.length) console.log(`        Winet shape:     ${winet.map(r=>r.id).join(', ')}`);
+  else console.log('        no real finding currently has the Winet shape (both examples are parked)');
   t('every finding is assigned a fragility level',
      a.rows.every(r=>['meets','partial','secondary-only','judicially-corroborated','unverifiable-as-recorded'].includes(r.fragility.level)));
-  console.log(`        Winet shape:     ${winet.map(r=>r.id).join(', ')}`);
 
   const {loadCorpus} = await import('./corpus.mjs');
   const C = loadCorpus();
