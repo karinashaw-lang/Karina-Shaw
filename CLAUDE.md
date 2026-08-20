@@ -12,16 +12,27 @@ by jurisdiction, entity type, industry and headcount and assembles documents.
 
 ## The one thing to know
 
-**The corpus is not shippable and must not be treated as a starting point for repair.**
+**The corpus that ships today is not the corpus the finding below is about.** On 2026-08-19
+this branch deliberately narrowed the corpus to generic, jurisdiction-neutral templates and
+parked every California-specific clause in `templates/parked-california/` (see its README and
+`verification/MVP-GAP.md`). Nothing was deleted — `corpus.mjs` reads `templates/clauses/*.json`
+with `readdirSync`, so a directory is just invisible to the build — but the five clauses named
+below, and 32 of the 33 other clauses ever found defective, **are not in `templates/clauses/`
+anymore.** A session that reads this file and starts "fixing" `hb_meal_rest` or `nda_nonsolicit`
+is fixing content nobody ships; they are in the parked folder, not the live one.
 
-34 clauses have been checked against primary sources. **33 were defective.** 95% lower
-bound on the defect rate is 87%. The failure is the same every time, and it matters more
-than the count:
+The finding stays in this file because it is *why* the narrowing happened and it is the pattern
+to watch for anywhere in this corpus, parked or not:
+
+34 clauses were checked against primary sources before the narrowing. **33 were defective.**
+95% lower bound on the defect rate is 87%. The failure was the same every time, and it matters
+more than the count:
 
 > The clause reproduces statutory language accurately and drops the case law that says
 > what the language means.
 
-Examples, all confirmed against court opinions quoting the source:
+Examples, all confirmed against court opinions quoting the source — all five now sit in
+`templates/parked-california/`, not the shipped corpus:
 
 - `hb_meal_rest`, `emp_meal` — "a missed meal period entitles the employee to one
   additional hour of pay". That is the *ensure* standard the California Supreme Court
@@ -36,16 +47,29 @@ Examples, all confirmed against court opinions quoting the source:
 - `nda_nonsolicit` — states as a categorical rule what *AMN* held on its facts.
 
 This is what content written from memory looks like. It was written from memory — by an
-earlier session of this assistant, before source access was attempted.
+earlier session of this assistant, before source access was attempted. The lesson outlives
+the parked clauses: nothing in this corpus gets to claim a legal fact without a real check.
+
+### What actually ships now
+
+363 clauses across 28 documents — 245 across 17 right after the narrowing, plus 11
+jurisdiction-neutral documents added since (property, money, partnership, two short-form
+agreements, a proposal, an invoice, a business plan). **57 of the 363 currently assert law**
+(`assertsLaw: true` — itself still `heuristic-unreviewed`; see Open items). Exactly one has
+been checked against a real source: `b83_instructions`, rebuilt 2026-08-19 from eCFR,
+uscode.house.gov and two CourtListener opinions, sitting at `multi-cited`. The other 56 have
+never been checked — `npm run queue` orders them by consequence. None of the five clauses
+named above are among them; they are gone from the live set.
 
 ## The strategy, decided
 
 **Do not repair the authority clauses one at a time.** Rebuild them from the statutory
-text. Read the section, write the clause from what it says, cite it. 167 rebuilds is
-cheaper than 167 investigations, and it removes the from-memory contamination instead of
-patching around it.
+text. Read the section, write the clause from what it says, cite it. `b83_instructions` is
+what that looks like done — the only clause in the live corpus this has happened to. 56 more
+remain. Rebuilding is cheaper than investigating clause-by-clause, and it removes the
+from-memory contamination instead of patching around it.
 
-The 193 drafting clauses are a different problem — they assert no law, so there is nothing
+The 306 drafting clauses are a different problem — they assert no law, so there is nothing
 to verify. They need a named lawyer, and `npm run packet` produces what that person works
 from.
 
@@ -72,7 +96,7 @@ schedule.
 ```
 npm run probe            # is egress open? re-measure every session, do not trust a stale note here
 npm run probe:reference  # same, for the practice-corroboration hosts (Common Paper, YC, SBA, CFPB)
-npm test                 # 24 suites
+npm test                 # 25 suites
 npm run check            # validator + build sync
 npm run preview          # what applying the classification would change
 ```
@@ -111,14 +135,25 @@ gets fabricated around a block; report it.
 
 ## Open items
 
-1. **Classification proposals are recorded but NOT applied.** All 360 calls are in
+1. **Classification proposals cover 218 of 363 clauses, not all of them.**
    `verification/classification/proposals.json` (a per-document default plus named
-   exceptions, with reasons). Applying needs:
+   exceptions, with reasons) predates the 11 documents added since the narrowing and the
+   shared `sh_*` blocks — `npm run proposals` prints a `!` warning naming every clause it
+   doesn't cover (145 of them: every clause in `lease`/`note`/`loan`/`sublease`/`roommate`/
+   `partnership`/`svc`/`loa`/`proposal`/`invoice`/`businessplan`, plus all 17 `sh_*` shared
+   clauses). `verification/classification/proposed-decisions.csv` was regenerated
+   2026-08-20 against the current corpus and is honest about that gap — it has 218 rows, not
+   360. Extending `proposals.json` to cover the missing 145 is a real classification
+   judgement, not a mechanical rerun, and hasn't been done. Applying is:
    `npm run classify -- --apply verification/classification/proposed-decisions.csv --by "<name>" --on <date>`
-   The user (Karina Shaw) approved this. It was blocked by the permission classifier, not
-   by the repo. 167 authority / 193 drafting; 58 differ from the current heuristic labels.
-2. **133 law clauses never checked.** `npm run queue` orders by consequence.
-3. **12 validator warnings** are citations that name a body of law but no provision.
+   — this has been attempted and is blocked by the permission classifier, not by the repo,
+   but note it would currently only touch 218 of 363 clauses even if unblocked.
+2. **56 of the 57 currently-shipped authority clauses have never been checked** (only
+   `b83_instructions` has). `npm run queue` orders them by consequence.
+3. **1 validator warning**: `LAW_TALK_IN_DRAFTING` on `sh_return_property` — a clause
+   classified as drafting whose body talks like it's citing a legal requirement. The old
+   "citations that name a body of law but no provision" problem this item used to describe
+   is gone from the current corpus (checked directly: 0 such citations remain).
 
 ## Hard rules, carried from the user
 
