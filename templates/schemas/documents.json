@@ -605,6 +605,25 @@
       ],
       "package": "commercial",
       "label": "Sales Proposal"
+    },
+    {
+      "id": "invoice",
+      "icon": "🧾",
+      "numbering": "section",
+      "order": 90,
+      "name": {
+        "template": "Invoice — {{company}}"
+      },
+      "include": {
+        "rule": "pkg_invoice"
+      },
+      "rationale": "The bill itself: a calculated line-item table plus the payment terms around it.",
+      "groupOrder": [
+        "Payment Terms",
+        "General Provisions"
+      ],
+      "package": "invoice",
+      "label": "Invoice"
     }
   ]
 }

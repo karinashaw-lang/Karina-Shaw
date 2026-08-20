@@ -19,6 +19,7 @@ const strip = f => fs.readFileSync(path.join(ROOT,'tools',f),'utf8')
   .replace(/^export /gm,'')
   .replace(/^\/\*[\s\S]*?\*\/\n/,'');            /* drop the file's own header comment */
 const evaluator = strip('evaluator.mjs');
+const invoiceMath = strip('invoice-math.mjs');
 /* review.mjs imports the source standard and the corroboration standard; all four are
    inlined so the engine's gate is the same code the validator runs, not a re-implementation
    that can drift from it. Order matters: each file is inlined before the one that imports it. */
@@ -51,6 +52,9 @@ const CORPUS = ${JSON.stringify(blob)};
 
 /* ---- shared evaluation core, inlined verbatim from templates/tools/evaluator.mjs ---- */
 ${evaluator.trim()}
+
+/* ---- invoice arithmetic, inlined verbatim from templates/tools/invoice-math.mjs ---- */
+${invoiceMath.trim()}
 
 /* ---- source standard, inlined verbatim from templates/tools/sources.mjs ---- */
 ${sources.trim()}

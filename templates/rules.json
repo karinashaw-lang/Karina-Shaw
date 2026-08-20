@@ -414,6 +414,17 @@
       "rationale": "The short service agreement and letter of agreement share the same parties, work, and payment answers."
     },
     {
+      "id": "pkg_invoice",
+      "code": "IF [package == invoice] THEN [generate an invoice]",
+      "when": {
+        "eq": [
+          "package",
+          "invoice"
+        ]
+      },
+      "rationale": "An invoice is its own package because it needs the line-item entry UI no other document uses."
+    },
+    {
       "id": "money_installments",
       "code": "IF [money package] AND [repayment == installments] THEN [installment schedule terms]",
       "when": {

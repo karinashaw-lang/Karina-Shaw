@@ -8,7 +8,8 @@ export const ANSWER_FIELDS = ['package','company','entity','formState','opState'
   'engagement','roleTitle','comp','equityGrant','remote','headcount','caCity',
   'tenantName','propertyAddress','monthlyRent','securityDeposit','leaseTerm','petsAllowed','utilitiesIncluded',
   'borrowerName','principalAmount','interestText','repayment','securedLoan',
-  'serviceDesc','payText','deadlineText','partnershipPurpose','offerDesc'];
+  'serviceDesc','payText','deadlineText','partnershipPurpose','offerDesc',
+  'invoiceNumber','dueText','taxRatePct'];
 
 /* Answers always carry every field, even the ones the current package does not ask
    about, so an expression can never dereference an undefined answer. */
@@ -23,7 +24,8 @@ export const BASE_ANSWERS = {
   borrowerName:'Casey Morgan', principalAmount:'$10,000', interestText:'',
   repayment:'installments', securedLoan:false,
   serviceDesc:'brand and website design', payText:'$4,000 — half up front, half on delivery',
-  deadlineText:'', partnershipPurpose:'a management consulting practice', offerDesc:''
+  deadlineText:'', partnershipPurpose:'a management consulting practice', offerDesc:'',
+  invoiceNumber:'INV-1001', dueText:'Net 30', taxRatePct:''
 };
 
 /* ---- condition expression language (see templates/rules.json) ---- */
@@ -230,6 +232,11 @@ export function allConfigs(tax){
      so nothing conditioned on it can go dead unnoticed */
   for(const founders of [2,3,4])
     out.push(mk({package:'partnership',founders}));
+
+  /* 10 — invoice: line items are pure arithmetic, not rule inputs, so the only thing that
+     varies clause eligibility is whether an invoice number was given. */
+  for(const invoiceNumber of ['INV-1001',''])
+    out.push(mk({package:'invoice', invoiceNumber, dueText:'Net 30', taxRatePct:''}));
 
   return out;
 }

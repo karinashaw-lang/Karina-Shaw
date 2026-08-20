@@ -154,6 +154,9 @@
           },
           {
             "rule": "pkg_agreements"
+          },
+          {
+            "rule": "pkg_invoice"
           }
         ]
       },
@@ -677,6 +680,59 @@
         "rule": "pkg_partnership"
       },
       "placeholder": "e.g. a management consulting practice"
+    },
+    {
+      "id": "invoiceNumber",
+      "type": "text",
+      "default": "",
+      "required": false,
+      "prompt": "Invoice number (optional)",
+      "help": "Leave blank if you don’t use invoice numbers.",
+      "when": {
+        "rule": "pkg_invoice"
+      },
+      "placeholder": "e.g. INV-1042"
+    },
+    {
+      "id": "dueText",
+      "type": "text",
+      "default": "",
+      "required": true,
+      "prompt": "When is payment due?",
+      "help": "Written into the invoice exactly as you type it.",
+      "when": {
+        "rule": "pkg_invoice"
+      },
+      "placeholder": "e.g. Net 30, or a specific date"
+    },
+    {
+      "id": "taxRatePct",
+      "type": "text",
+      "default": "",
+      "required": false,
+      "prompt": "Sales tax rate, if any (%)",
+      "help": "Leave blank for no tax. Whether tax applies, and at what rate, is yours to check — the invoice only computes what you enter.",
+      "when": {
+        "rule": "pkg_invoice"
+      },
+      "placeholder": "e.g. 8.5 — leave blank for none"
+    },
+    {
+      "id": "lineItems",
+      "type": "lineitems",
+      "default": [
+        {
+          "description": "",
+          "qty": "",
+          "rate": ""
+        }
+      ],
+      "required": false,
+      "prompt": "What are you billing for?",
+      "help": "Add a row for each item or service. Amounts are calculated for you.",
+      "when": {
+        "rule": "pkg_invoice"
+      }
     }
   ]
 }
