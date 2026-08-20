@@ -8,7 +8,7 @@ export const ANSWER_FIELDS = ['package','company','entity','formState','opState'
   'engagement','roleTitle','comp','equityGrant','remote','headcount','caCity',
   'tenantName','propertyAddress','monthlyRent','securityDeposit','leaseTerm','petsAllowed','utilitiesIncluded',
   'borrowerName','principalAmount','interestText','repayment','securedLoan',
-  'serviceDesc','payText','deadlineText','partnershipPurpose'];
+  'serviceDesc','payText','deadlineText','partnershipPurpose','offerDesc'];
 
 /* Answers always carry every field, even the ones the current package does not ask
    about, so an expression can never dereference an undefined answer. */
@@ -23,7 +23,7 @@ export const BASE_ANSWERS = {
   borrowerName:'Casey Morgan', principalAmount:'$10,000', interestText:'',
   repayment:'installments', securedLoan:false,
   serviceDesc:'brand and website design', payText:'$4,000 — half up front, half on delivery',
-  deadlineText:'', partnershipPurpose:'a management consulting practice'
+  deadlineText:'', partnershipPurpose:'a management consulting practice', offerDesc:''
 };
 
 /* ---- condition expression language (see templates/rules.json) ---- */
@@ -217,6 +217,10 @@ export function allConfigs(tax){
   for(const repayment of ['installments','lump','demand'])
   for(const securedLoan of [true,false]) for(const interestText of ['','5% per year'])
     out.push(mk({package:'money',repayment,securedLoan,interestText}));
+
+  /* 7b — proposal: the optional offer description, present and absent, both roles */
+  for(const role of Object.keys(tax.contractRoles)) for(const offerDesc of ['','a custom analytics dashboard'])
+    out.push(mk({package:'commercial',role,offerDesc}));
 
   /* 8 — simple agreements: both roles, deadline present and absent */
   for(const role of Object.keys(tax.contractRoles)) for(const deadlineText of ['','October 15, 2026'])

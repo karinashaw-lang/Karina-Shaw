@@ -61,16 +61,19 @@ Letter (19), NDA (14), Statement of Work (13).
 need merging), Consulting Agreement (the contractor agreement is close but is a different
 instrument), Service Agreement (the MSA has 51 sections; the spec asks for 13).
 
-**4 missing** — Business Plan, Sales Proposal, Invoice, Rental Application. (Business Plan is a
-narrative document, Rental Application is a regulated data-collection form, and Invoice needs
-calculated fields the engine does not have — all three need machinery, not just content. Sales
-Proposal is content and is the next candidate.)
+**3 missing** — Business Plan, Invoice, Rental Application. All three need machinery, not just
+content: Business Plan is a narrative document with financial projections, Rental Application is
+a regulated data-collection form (collects an SSN and driver's licence number), and Invoice needs
+calculated fields (quantity × rate, subtotal, tax, total) the engine does not have.
 
-**8 built 2026-08-20** — Residential Lease (fixed-term and month-to-month variants), Promissory
+**9 built 2026-08-20** — Residential Lease (fixed-term and month-to-month variants), Promissory
 Note, Loan Agreement, Sublease, Roommate Agreement, Partnership Agreement, Service Agreement
-(provider and client variants), Letter of Agreement. All jurisdiction-neutral drafting: numbers
-that are legal judgements (deposit return windows, notice periods, late charges, interest,
-buyout terms) are bracketed blanks whose rationale says to check locally.
+(provider and client variants), Letter of Agreement, Sales Proposal. All jurisdiction-neutral
+drafting: numbers that are legal judgements (deposit return windows, notice periods, late
+charges, interest, buyout terms) are bracketed blanks whose rationale says to check locally. The
+proposal reuses the commercial package's existing questions rather than adding required ones —
+its one new field (the offer description) is deliberately optional so picking it never blocks
+generating a plain NDA or MSA.
 
 Three of those are not contracts at all and need different machinery:
 

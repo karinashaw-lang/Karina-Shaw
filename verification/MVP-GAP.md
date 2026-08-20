@@ -30,7 +30,7 @@ four categories. This is what the corpus can assemble today, mapped onto that li
 |---|---|
 | Simple Service Agreement | **partial** — the MSA is 61 clauses and is not "simple"; a cut-down form does not exist |
 | Statement of Work | **have** — 14 clauses |
-| Sales Proposal | **missing** |
+| Sales Proposal | **have** (2026-08-20) — 14 clauses, reuses existing commercial questions |
 | Invoice | **missing** |
 | Letter of Intent (business purchase) | **missing** |
 

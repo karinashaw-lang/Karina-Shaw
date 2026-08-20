@@ -582,6 +582,29 @@
       ],
       "package": "partnership",
       "label": "Partnership Agreement"
+    },
+    {
+      "id": "proposal",
+      "icon": "📈",
+      "numbering": "section",
+      "order": 19,
+      "name": {
+        "template": "Proposal — {{company}} for {{counterparty}}"
+      },
+      "include": {
+        "rule": "pkg_commercial"
+      },
+      "rationale": "The pitch before the contract — what is proposed, what it costs, and what happens if the answer is yes. Comes first in the commercial package, before the NDA and MSA it leads into.",
+      "groupOrder": [
+        "Introduction",
+        "Scope",
+        "Investment",
+        "Timeline",
+        "Next Steps",
+        "General Provisions"
+      ],
+      "package": "commercial",
+      "label": "Sales Proposal"
     }
   ]
 }

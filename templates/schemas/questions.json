@@ -241,6 +241,18 @@
       }
     },
     {
+      "id": "offerDesc",
+      "type": "text",
+      "default": "",
+      "required": false,
+      "prompt": "What is the offer? (used in the Proposal template)",
+      "help": "One plain sentence describing what is proposed. Only the Proposal document uses it — leave it blank if you are not generating a proposal.",
+      "when": {
+        "rule": "pkg_commercial"
+      },
+      "placeholder": "e.g. a custom analytics dashboard and onboarding"
+    },
+    {
       "id": "engagement",
       "type": "choice",
       "default": "employee",

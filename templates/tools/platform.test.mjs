@@ -24,6 +24,7 @@
    reloads, downloads, key events) lives in a Playwright drive that must pass before the
    feature ships; the checks here are the regression tripwires for the properties above. */
 import fs from 'node:fs';
+import {loadCorpus} from './corpus.mjs';
 
 let pass = 0, fail = 0;
 const t = (n, c) => { if (c) pass++; else { fail++; console.log('  FAIL  ' + n); } };
@@ -31,6 +32,10 @@ const html = fs.readFileSync('draft-ai-engine.html', 'utf8');
 const a = html.indexOf('/* BUILD:CORPUS-START'), b = html.indexOf('BUILD:CORPUS-END */');
 const code = html.slice(0, a) + html.slice(b);
 const noComments = code.replace(/\/\*[\s\S]*?\*\//g, '').replace(/^\s*\/\/.*$/gm, '');
+/* The stripped `code` above deliberately excludes the compiled corpus JSON — checks on
+   clause or question CONTENT (not on app logic) read the template source directly via
+   loadCorpus(), the same helper the other corpus-content test suites use. */
+const C = loadCorpus();
 
 console.log('the document store keeps its promises');
 {
@@ -183,6 +188,25 @@ console.log('provenance is visible, and never claims more than the record holds'
     /typeof e==='string' \? e : \(e && e\.text\) \|\| ''/.test(code));
   t('the contract export path gained no provenance chrome',
     /querySelectorAll\('\.unver, \.withheld, \.cond, \.wc, \.appchrome, \.editbar, \.uchip, \.tray'\)/.test(code));
+}
+
+console.log('the sales proposal reuses questions instead of forcing new required ones');
+{
+  const offerQ = C.questions.find(q => q.id === 'offerDesc');
+  const scopeFilled = C.clauses.find(c => c.id === 'prop_scope_filled');
+  const scopeBlank = C.clauses.find(c => c.id === 'prop_scope_blank');
+  t('the proposal’s offer description exists and is not required',
+    !!offerQ && offerQ.required !== true);
+  t('the offer question only fires for the commercial package, never blocking other packages',
+    JSON.stringify(offerQ.when) === JSON.stringify({rule:'pkg_commercial'}));
+  t('a blank offer renders a labeled blank, never empty or missing text',
+    !!scopeBlank && scopeBlank.body.includes('[describe the work or offer]'));
+  t('the filled and blank scope variants key off the same field, opposite directions',
+    !!scopeFilled && !!scopeBlank &&
+    JSON.stringify(scopeFilled.condition) === JSON.stringify({truthy:'offerDesc'}) &&
+    JSON.stringify(scopeBlank.condition) === JSON.stringify({not:{truthy:'offerDesc'}}));
+  t('the reused serviceDesc question stayed scoped to the agreements package',
+    JSON.stringify(C.questions.find(q => q.id === 'serviceDesc').when) === JSON.stringify({rule:'pkg_agreements'}));
 }
 
 console.log('nothing the project does not have is written down');
