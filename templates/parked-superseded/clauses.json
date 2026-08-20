@@ -1,0 +1,325 @@
+{
+ "$comment": "Superseded by the shared General Provisions blocks in shared.json. Kept for reference: each of these was one document's private copy of a clause that is now written once.",
+ "clauses": [
+  {
+   "id": "msa_assignment",
+   "doc": "msa",
+   "group": "General Provisions",
+   "title": "Assignment",
+   "severity": "recommended",
+   "insertion": "auto",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-05",
+   "rationale": "The change-of-control carve-out is what keeps this clause from blocking the customer's own acquisition; the competitor exception is what a provider asks for in return.",
+   "body": "Neither Party may assign this Agreement without the other’s written consent, not to be unreasonably withheld, except that either Party may assign it in full to a successor in a merger, reorganization, or sale of substantially all assets. The non-assigning Party may object where the assignee is a direct competitor. Any other purported [[assignment]] is void.",
+   "sources": [],
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
+  },
+  {
+   "id": "msa_force_majeure",
+   "doc": "msa",
+   "group": "General Provisions",
+   "title": "Force Majeure",
+   "severity": "recommended",
+   "insertion": "auto",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-05",
+   "rationale": "Excusing payment obligations too is the drafting error here. Money is almost never impossible to pay, and a broad clause invites that argument.",
+   "body": "Neither Party is liable for a delay or failure caused by an event beyond its reasonable control, including natural disaster, war, terrorism, labor dispute, or failure of a utility or public network. [[Force majeure]] does not excuse a payment obligation. If the event continues beyond {{cure}} days, either Party may terminate the affected Statement of Work on written notice.",
+   "sources": [],
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
+  },
+  {
+   "id": "msa_govlaw",
+   "doc": "msa",
+   "group": "General Provisions",
+   "title": "Governing Law and Venue",
+   "severity": "critical",
+   "insertion": "suggest",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "benchmark": "Present in 98% of executed master services agreements",
+   "rationale": "The most commonly negotiated general provision, and the one whose absence is most expensive. Naming the home forum of whichever side drafted is the usual starting position.",
+   "body": "This Agreement is governed by the laws of {{opStateLong}}, excluding its [[conflict of laws]] rules and the UN Convention on Contracts for the International Sale of Goods. The Parties consent to the exclusive jurisdiction and venue of the state and federal courts located in {{opStateLong}}.",
+   "sources": [],
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
+  },
+  {
+   "id": "msa_notices",
+   "doc": "msa",
+   "group": "General Provisions",
+   "title": "Notices",
+   "severity": "optional",
+   "insertion": "suggest",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-03",
+   "benchmark": "Present in 85% of commercial contracts",
+   "rationale": "Several clauses in this agreement run deadlines from a notice, and email-only notice to an individual who has left the company is a common failure.",
+   "body": "Notices shall be in writing and sent to the addresses on the signature page, by hand, national overnight courier, or email with confirmation of receipt. Notices of breach, termination, or indemnity claim must also be sent to the recipient’s legal department or general counsel address, where one is stated.",
+   "sources": [],
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
+  },
+  {
+   "id": "msa_entire",
+   "doc": "msa",
+   "group": "General Provisions",
+   "title": "Entire Agreement and Amendment",
+   "severity": "optional",
+   "insertion": "suggest",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-03",
+   "benchmark": "Present in 91% of commercial contracts",
+   "rationale": "Sales conversations generate expectations that do not appear in the document. This clause decides whether those expectations are part of the deal.",
+   "body": "This Agreement, together with each Statement of Work and any addendum, is the entire agreement on its subject matter and supersedes all prior proposals and discussions. It may be amended only by a writing signed by both Parties, subject to <<xr:msa_structure>>.",
+   "sources": [],
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
+  },
+  {
+   "id": "nda_govlaw",
+   "doc": "nda",
+   "group": "Term and Remedies",
+   "title": "Governing Law",
+   "severity": "critical",
+   "insertion": "suggest",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-06",
+   "benchmark": "Present in 96% of executed NDAs",
+   "rationale": "An NDA with no governing law is the cheapest possible way to turn a two-page document into a jurisdictional dispute.",
+   "body": "This Agreement is governed by the laws of {{opStateLong}}, without regard to its [[conflict of laws]] principles, and the Parties consent to the exclusive jurisdiction of the courts located there.",
+   "sources": [],
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
+  },
+  {
+   "id": "gov_amend",
+   "doc": "governance",
+   "group": "Governance",
+   "title": "Amendment",
+   "severity": "recommended",
+   "insertion": "auto",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2025-11",
+   "rationale": "An amendment provision that points back to the voting clause keeps the approval thresholds in one place.",
+   "body": "This {{govDoc}} may be amended only by a writing signed by the {{ownerTerm}} required to approve amendments under <<xr:@approval>>. No course of dealing or oral statement amends this {{govDoc}}.",
+   "sources": [],
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
+  },
+  {
+   "id": "gov_govlaw",
+   "doc": "governance",
+   "group": "General Provisions",
+   "title": "Governing Law",
+   "severity": "critical",
+   "insertion": "suggest",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.2.0",
+   "updated": "2026-05",
+   "benchmark": "Present in 97% of comparable formation packages",
+   "rationale": "Without it, which state's law applies is decided by a judge applying conflict-of-laws rules — an expensive way to answer a question you could answer in one sentence.",
+   "body": "This [[governing law|governing law]] provision states that this {{govDoc}} shall be governed by and construed in accordance with the laws of {{formStateLong}}, without regard to its [[conflict of laws]] principles. Internal affairs of the Company are governed by {{formStateLong}} law regardless of where the Company operates.",
+   "sources": [],
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
+  },
+  {
+   "id": "gov_sever",
+   "doc": "governance",
+   "group": "General Provisions",
+   "title": "Severability",
+   "severity": "optional",
+   "insertion": "suggest",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2025-08",
+   "benchmark": "Present in 89% of commercial contracts",
+   "rationale": "If a court strikes one provision, nothing otherwise tells it to preserve the rest of the document.",
+   "body": "If any provision of this {{govDoc}} is held unenforceable, that provision shall be modified to the minimum extent necessary to make it enforceable, and the remaining provisions shall continue in full force. This is a standard [[severability]] provision.",
+   "sources": [],
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
+  },
+  {
+   "id": "gov_notices",
+   "doc": "governance",
+   "group": "General Provisions",
+   "title": "Notices",
+   "severity": "optional",
+   "insertion": "suggest",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2025-07",
+   "benchmark": "Present in 82% of commercial contracts",
+   "rationale": "Several clauses in this document run deadlines from a notice. Without delivery mechanics there is no agreed way to prove one was given.",
+   "body": "Notices shall be in writing and deemed given when delivered by hand, one business day after deposit with a national overnight courier, or on confirmed transmission by email to the addresses on Schedule A. A party may change its address by notice given under this section.",
+   "sources": [],
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
+  },
+  {
+   "id": "gov_entire",
+   "doc": "governance",
+   "group": "General Provisions",
+   "title": "Entire Agreement",
+   "severity": "optional",
+   "insertion": "suggest",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2025-09",
+   "benchmark": "Present in 86% of commercial contracts",
+   "rationale": "Founders accumulate side conversations before formation. This clause decides whether those conversations are part of the deal.",
+   "body": "This {{govDoc}}, together with the schedules and exhibits and the other documents in the formation package, is the entire agreement among the parties on its subject matter and supersedes all prior discussions and understandings, whether oral or written.",
+   "sources": [],
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
+  },
+  {
+   "id": "gov_waiver",
+   "doc": "governance",
+   "group": "General Provisions",
+   "title": "No Waiver",
+   "severity": "optional",
+   "insertion": "suggest",
+   "condition": null,
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2025-09",
+   "rationale": "Small companies tolerate breaches informally for years. Without this clause that tolerance can become a waiver of the right itself.",
+   "body": "No failure or delay in exercising a right under this {{govDoc}} operates as a waiver of it, and no single or partial exercise precludes any further exercise. A waiver is effective only if in writing and signed by the party granting it.",
+   "sources": [],
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
+  }
+ ]
+}

@@ -1,0 +1,205 @@
+{
+ "$comment": "Shared General Provisions. doc \"*\" means every document draws from these, which is what the Template Details spec calls the shared clause library. Before this, each document carried its own copy — there were three governing-law clauses and two each of notices and entire-agreement, worded differently, with nothing keeping them in agreement. Written once here instead. {{thisDocument}} resolves to the title of whichever document the block is rendering into, which is what lets one piece of text serve all of them.",
+ "clauses": [
+  {
+   "id": "sh_govlaw",
+   "doc": "*",
+   "group": "General Provisions",
+   "title": "Governing Law",
+   "severity": "recommended",
+   "insertion": "suggest",
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-08",
+   "rationale": "Names the law that applies. Left as a field the user fills in rather than defaulted, because guessing a state for someone is a judgement about their situation.",
+   "body": "This {{thisDocument}} is subject to the [[governing law|governing law]] of {{opStateLong}}, without regard to its [[conflict of laws]] principles.",
+   "sources": [],
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
+  },
+  {
+   "id": "sh_entire",
+   "doc": "*",
+   "group": "General Provisions",
+   "title": "Entire Agreement",
+   "severity": "recommended",
+   "insertion": "suggest",
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-08",
+   "rationale": "States that the written document is the whole deal, so earlier drafts and conversations do not become terms.",
+   "body": "This {{thisDocument}}, together with its schedules and exhibits, is the entire agreement between the parties on its subject matter and supersedes all prior discussions, proposals, and understandings, whether written or oral.",
+   "sources": [],
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
+  },
+  {
+   "id": "sh_amend",
+   "doc": "*",
+   "group": "General Provisions",
+   "title": "Amendment",
+   "severity": "recommended",
+   "insertion": "suggest",
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-08",
+   "rationale": "Without this, a course of dealing or an email exchange can be argued to have changed the terms.",
+   "body": "This {{thisDocument}} may be amended only by a writing signed by each party. No waiver, consent, or course of dealing amends it.",
+   "sources": [],
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
+  },
+  {
+   "id": "sh_notices",
+   "doc": "*",
+   "group": "General Provisions",
+   "title": "Notices",
+   "severity": "recommended",
+   "insertion": "suggest",
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-08",
+   "rationale": "Sets when a notice counts as delivered, which matters whenever a deadline runs from one.",
+   "body": "Notices under this {{thisDocument}} shall be in writing and sent to the addresses on the signature page. A notice is deemed given when delivered by hand, one business day after deposit with a national overnight courier, or three business days after deposit in the mail, postage prepaid. Either party may change its address by notice given under this section.",
+   "sources": [],
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
+  },
+  {
+   "id": "sh_severability",
+   "doc": "*",
+   "group": "General Provisions",
+   "title": "Severability",
+   "severity": "recommended",
+   "insertion": "suggest",
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-08",
+   "rationale": "Keeps one unenforceable provision from taking the rest of the document with it.",
+   "body": "Under this [[severability|severability]] provision, if any provision of this {{thisDocument}} is held unenforceable, it shall be modified to the minimum extent necessary to make it enforceable, or if it cannot be so modified, severed. The remaining provisions continue in full force.",
+   "sources": [],
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
+  },
+  {
+   "id": "sh_waiver",
+   "doc": "*",
+   "group": "General Provisions",
+   "title": "Waiver",
+   "severity": "optional",
+   "insertion": "suggest",
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-08",
+   "rationale": "Not enforcing a right once should not mean giving it up.",
+   "body": "No failure or delay in exercising a right under this {{thisDocument}} operates as a waiver of it, and no single or partial exercise precludes any further exercise. A waiver is effective only if in writing and signed by the party granting it.",
+   "sources": [],
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
+  },
+  {
+   "id": "sh_assignment",
+   "doc": "*",
+   "group": "General Provisions",
+   "title": "Assignment",
+   "severity": "recommended",
+   "insertion": "suggest",
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-08",
+   "rationale": "Controls whether the counterparty can hand the deal to somebody the other side never agreed to work with.",
+   "body": "Neither party may make an [[assignment|assignment]] of this {{thisDocument}} without the other's prior written consent, not to be unreasonably withheld, except to a successor in connection with a merger, reorganization, or sale of all or substantially all of its assets. Any purported assignment in breach of this section is void. This {{thisDocument}} binds and benefits the parties and their permitted successors and assigns.",
+   "sources": [],
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
+  },
+  {
+   "id": "sh_force_majeure",
+   "doc": "*",
+   "group": "General Provisions",
+   "title": "Force Majeure",
+   "severity": "optional",
+   "insertion": "suggest",
+   "jurisdictions": [
+    "*"
+   ],
+   "industries": [
+    "*"
+   ],
+   "entities": [
+    "*"
+   ],
+   "version": "1.0.0",
+   "updated": "2026-08",
+   "rationale": "Excuses performance blocked by something neither side controls. The payment carve-out is the point: an inability to pay is not usually treated as force majeure.",
+   "body": "Neither party is liable for a delay or failure to perform caused by a [[force majeure]] event beyond its reasonable control, including natural disaster, war, terrorism, civil unrest, labour dispute, epidemic, or failure of a utility or public network. The affected party shall notify the other promptly and resume performance as soon as practicable. This section does not excuse an obligation to pay amounts already due.",
+   "sources": [],
+   "verification": "unsourced",
+   "assertsLaw": false,
+   "classifiedBy": "heuristic-unreviewed"
+  }
+ ]
+}

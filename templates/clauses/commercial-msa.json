@@ -1184,58 +1184,6 @@
    "classifiedBy": "heuristic-unreviewed"
   },
   {
-   "id": "msa_assignment",
-   "doc": "msa",
-   "group": "General Provisions",
-   "title": "Assignment",
-   "severity": "recommended",
-   "insertion": "auto",
-   "condition": null,
-   "jurisdictions": [
-    "*"
-   ],
-   "industries": [
-    "*"
-   ],
-   "entities": [
-    "*"
-   ],
-   "version": "1.0.0",
-   "updated": "2026-05",
-   "rationale": "The change-of-control carve-out is what keeps this clause from blocking the customer's own acquisition; the competitor exception is what a provider asks for in return.",
-   "body": "Neither Party may assign this Agreement without the other’s written consent, not to be unreasonably withheld, except that either Party may assign it in full to a successor in a merger, reorganization, or sale of substantially all assets. The non-assigning Party may object where the assignee is a direct competitor. Any other purported [[assignment]] is void.",
-   "sources": [],
-   "verification": "unsourced",
-   "assertsLaw": false,
-   "classifiedBy": "heuristic-unreviewed"
-  },
-  {
-   "id": "msa_force_majeure",
-   "doc": "msa",
-   "group": "General Provisions",
-   "title": "Force Majeure",
-   "severity": "recommended",
-   "insertion": "auto",
-   "condition": null,
-   "jurisdictions": [
-    "*"
-   ],
-   "industries": [
-    "*"
-   ],
-   "entities": [
-    "*"
-   ],
-   "version": "1.0.0",
-   "updated": "2026-05",
-   "rationale": "Excusing payment obligations too is the drafting error here. Money is almost never impossible to pay, and a broad clause invites that argument.",
-   "body": "Neither Party is liable for a delay or failure caused by an event beyond its reasonable control, including natural disaster, war, terrorism, labor dispute, or failure of a utility or public network. [[Force majeure]] does not excuse a payment obligation. If the event continues beyond {{cure}} days, either Party may terminate the affected Statement of Work on written notice.",
-   "sources": [],
-   "verification": "unsourced",
-   "assertsLaw": false,
-   "classifiedBy": "heuristic-unreviewed"
-  },
-  {
    "id": "msa_nonsolicit",
    "doc": "msa",
    "group": "General Provisions",
@@ -1268,33 +1216,6 @@
    "classifiedBy": "heuristic-unreviewed"
   },
   {
-   "id": "msa_govlaw",
-   "doc": "msa",
-   "group": "General Provisions",
-   "title": "Governing Law and Venue",
-   "severity": "critical",
-   "insertion": "suggest",
-   "condition": null,
-   "jurisdictions": [
-    "*"
-   ],
-   "industries": [
-    "*"
-   ],
-   "entities": [
-    "*"
-   ],
-   "version": "1.0.0",
-   "updated": "2026-06",
-   "benchmark": "Present in 98% of executed master services agreements",
-   "rationale": "The most commonly negotiated general provision, and the one whose absence is most expensive. Naming the home forum of whichever side drafted is the usual starting position.",
-   "body": "This Agreement is governed by the laws of {{opStateLong}}, excluding its [[conflict of laws]] rules and the UN Convention on Contracts for the International Sale of Goods. The Parties consent to the exclusive jurisdiction and venue of the state and federal courts located in {{opStateLong}}.",
-   "sources": [],
-   "verification": "unsourced",
-   "assertsLaw": false,
-   "classifiedBy": "heuristic-unreviewed"
-  },
-  {
    "id": "msa_dispute",
    "doc": "msa",
    "group": "General Provisions",
@@ -1316,60 +1237,6 @@
    "benchmark": "Present in 57% of master services agreements",
    "rationale": "Most commercial disputes are really unescalated operational disputes. A short executive step resolves a large share of them before counsel is involved.",
    "body": "Before filing suit, the Parties shall escalate any dispute to an executive of each Party with authority to resolve it, who shall confer within fifteen (15) business days. This does not prevent either Party from seeking [[injunctive relief]] under <<xr:nda_injunctive>> at any time.",
-   "sources": [],
-   "verification": "unsourced",
-   "assertsLaw": false,
-   "classifiedBy": "heuristic-unreviewed"
-  },
-  {
-   "id": "msa_notices",
-   "doc": "msa",
-   "group": "General Provisions",
-   "title": "Notices",
-   "severity": "optional",
-   "insertion": "suggest",
-   "condition": null,
-   "jurisdictions": [
-    "*"
-   ],
-   "industries": [
-    "*"
-   ],
-   "entities": [
-    "*"
-   ],
-   "version": "1.0.0",
-   "updated": "2026-03",
-   "benchmark": "Present in 85% of commercial contracts",
-   "rationale": "Several clauses in this agreement run deadlines from a notice, and email-only notice to an individual who has left the company is a common failure.",
-   "body": "Notices shall be in writing and sent to the addresses on the signature page, by hand, national overnight courier, or email with confirmation of receipt. Notices of breach, termination, or indemnity claim must also be sent to the recipient’s legal department or general counsel address, where one is stated.",
-   "sources": [],
-   "verification": "unsourced",
-   "assertsLaw": false,
-   "classifiedBy": "heuristic-unreviewed"
-  },
-  {
-   "id": "msa_entire",
-   "doc": "msa",
-   "group": "General Provisions",
-   "title": "Entire Agreement and Amendment",
-   "severity": "optional",
-   "insertion": "suggest",
-   "condition": null,
-   "jurisdictions": [
-    "*"
-   ],
-   "industries": [
-    "*"
-   ],
-   "entities": [
-    "*"
-   ],
-   "version": "1.0.0",
-   "updated": "2026-03",
-   "benchmark": "Present in 91% of commercial contracts",
-   "rationale": "Sales conversations generate expectations that do not appear in the document. This clause decides whether those expectations are part of the deal.",
-   "body": "This Agreement, together with each Statement of Work and any addendum, is the entire agreement on its subject matter and supersedes all prior proposals and discussions. It may be amended only by a writing signed by both Parties, subject to <<xr:msa_structure>>.",
    "sources": [],
    "verification": "unsourced",
    "assertsLaw": false,

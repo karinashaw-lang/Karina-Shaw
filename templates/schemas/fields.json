@@ -546,6 +546,13 @@
     ]
    },
    "provenance": "Derived from the California work city"
+  },
+  {
+   "id": "thisDocument",
+   "from": {
+    "renderContext": "documentTitle"
+   },
+   "provenance": "Resolved per document at render time, not from the answer set. A shared General Provisions block has no single document — it is whichever one it is currently inside — so this is the one field whose value depends on where the clause is rather than on what the user answered."
   }
  ]
 }

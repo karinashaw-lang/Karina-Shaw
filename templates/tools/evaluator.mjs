@@ -110,6 +110,12 @@ export function resolveFields(fieldDefs, a, tax, now=new Date()){
       if(/\{\{(\w+)\}\}/.test(from.template) && [...from.template.matchAll(/\{\{(\w+)\}\}/g)].some(m=>F[m[1]]===undefined)) return undefined;
       return from.template.replace(/\{\{(\w+)\}\}/g,(m,k)=>F[k]);
     }
+    /* Resolved at render time from the document being drawn, not from the answer set. A shared
+       General Provisions block is inside whichever template is currently rendering it, so there
+       is no single value to compute here. Returned as a sentinel so the field counts as resolved
+       and the "unresolvable field(s)" check does not fire on it; the renderer substitutes the
+       real title. */
+    if(from.renderContext) return '\u0000renderContext:'+from.renderContext;
     throw new Error('unknown resolver on field '+f.id+': '+JSON.stringify(from));
   };
   /* iterate so template fields can depend on other fields regardless of order */

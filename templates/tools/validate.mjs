@@ -119,7 +119,15 @@ function checkTrack(c){
     seen.add(c.id);
     for(const k of ['doc','group','title','severity','insertion','jurisdictions','industries','entities','version','updated','sources','verification','rationale','body','assertsLaw','classifiedBy'])
       if(c[k]===undefined) err('MISSING_KEY',`clause "${c.id}" is missing required key "${k}"`);
-    if(!docById.has(c.doc)) err('BAD_DOC',`clause "${c.id}" targets unknown document "${c.doc}"`);
+    /* doc "*" is a shared block: it is drawn into every document rather than owned by one.
+       Its group therefore has to exist in every document's groupOrder, not just one, or it
+       would silently vanish from the documents that lack the group. */
+    if(c.doc==='*'){
+      const missing=[...docById.values()].filter(d=>!d.groupOrder.includes(c.group)).map(d=>d.id);
+      if(missing.length)
+        err('BAD_SHARED_GROUP',`shared clause "${c.id}" declares group "${c.group}", which is missing from the groupOrder of: ${missing.join(', ')}`);
+    }
+    else if(!docById.has(c.doc)) err('BAD_DOC',`clause "${c.id}" targets unknown document "${c.doc}"`);
     else if(!docById.get(c.doc).groupOrder.includes(c.group))
       err('BAD_GROUP',`clause "${c.id}" declares group "${c.group}", not in ${c.doc} groupOrder [${docById.get(c.doc).groupOrder.join(', ')}]`);
     if(!C.taxonomy.severities[c.severity]) err('BAD_SEVERITY',`clause "${c.id}" has severity "${c.severity}"`);
@@ -235,7 +243,7 @@ for(const a of configs){
 
   const present = new Set();
   for(const c of C.clauses){
-    if(!openDocs.has(c.doc)) continue;
+    if(c.doc!=='*' && !openDocs.has(c.doc)) continue;
     if(!clauseEligible(c,a,C.taxonomy,ruleOf)) continue;
     reachableClause.add(c.id);
     if(c.insertion==='auto') present.add(c.id);
