@@ -84,7 +84,8 @@ console.log('onboarding is an offer, not a gate');
   t('it can be revisited from help', /id="reWelcome"/.test(code) && /\$\('#reWelcome'\)\.onclick/.test(code));
   t('every choice maps to a real package', (() => {
     const pkgs = [...code.matchAll(/\{ pkg:'(\w+)',/g)].map(m => m[1]);
-    return pkgs.length === 3 && pkgs.every(p => ['formation', 'commercial', 'hiring'].includes(p));
+    return pkgs.length === 5 &&
+      pkgs.every(p => ['formation', 'commercial', 'hiring', 'property', 'money'].includes(p));
   })());
 }
 

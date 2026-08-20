@@ -61,9 +61,13 @@ Letter (19), NDA (14), Statement of Work (13).
 need merging), Consulting Agreement (the contractor agreement is close but is a different
 instrument), Service Agreement (the MSA has 51 sections; the spec asks for 13).
 
-**12 missing** — Partnership Agreement, Business Plan, Sales Proposal, Invoice, Residential Lease,
-Rental Application, Sublease, Roommate Agreement, Loan Agreement, Promissory Note, General
-Contract, Letter of Agreement.
+**9 missing** — Partnership Agreement, Business Plan, Sales Proposal, Invoice, Rental
+Application, Sublease, Roommate Agreement, General Contract, Letter of Agreement.
+
+**3 built 2026-08-20** — Residential Lease (fixed-term and month-to-month variants), Promissory
+Note, Loan Agreement. All jurisdiction-neutral drafting: numbers that are legal judgements
+(deposit return windows, notice periods, late charges, interest) are bracketed blanks whose
+rationale says to check locally.
 
 Three of those are not contracts at all and need different machinery:
 

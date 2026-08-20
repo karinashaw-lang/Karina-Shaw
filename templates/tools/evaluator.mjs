@@ -5,7 +5,9 @@
 
 export const ANSWER_FIELDS = ['package','company','entity','formState','opState','founders','founderNames',
   'industry','funding','employees','counterparty','role','dealSize','termMonths','autoRenew',
-  'engagement','roleTitle','comp','equityGrant','remote','headcount','caCity'];
+  'engagement','roleTitle','comp','equityGrant','remote','headcount','caCity',
+  'tenantName','propertyAddress','monthlyRent','securityDeposit','leaseTerm','petsAllowed','utilitiesIncluded',
+  'borrowerName','principalAmount','interestText','repayment','securedLoan'];
 
 /* Answers always carry every field, even the ones the current package does not ask
    about, so an expression can never dereference an undefined answer. */
@@ -14,7 +16,11 @@ export const BASE_ANSWERS = {
   founders:1, founderNames:['First Last'], industry:'saas', funding:'boot', employees:false,
   counterparty:'Acme Corporation', role:'provider', dealSize:'mid', termMonths:12, autoRenew:true,
   engagement:'employee', roleTitle:'Senior Engineer', comp:'salary', equityGrant:true, remote:false,
-  headcount:1, caCity:'none'
+  headcount:1, caCity:'none',
+  tenantName:'Riley Chen', propertyAddress:'12 Rose Lane, Apt 4', monthlyRent:'$1,800',
+  securityDeposit:'', leaseTerm:'fixed12', petsAllowed:false, utilitiesIncluded:false,
+  borrowerName:'Casey Morgan', principalAmount:'$10,000', interestText:'',
+  repayment:'installments', securedLoan:false
 };
 
 /* ---- condition expression language (see templates/rules.json) ---- */
@@ -197,6 +203,17 @@ export function allConfigs(tax){
   for(const industry of I) for(const caCity of cities) for(const remote of [true,false])
     out.push(mk({package:'hiring',opState:'CA',formState:'CA',industry,engagement:'contractor',
                  remote,headcount:5,caCity}));
+
+  /* 6 — tenancy: every lease answer combination (the block is small enough to cross fully) */
+  for(const leaseTerm of ['fixed12','fixed6','fixed24','m2m'])
+  for(const petsAllowed of [true,false]) for(const utilitiesIncluded of [true,false])
+  for(const securityDeposit of ['','$1,800'])
+    out.push(mk({package:'property',leaseTerm,petsAllowed,utilitiesIncluded,securityDeposit}));
+
+  /* 7 — loan: every repayment shape against secured/unsecured and interest/none */
+  for(const repayment of ['installments','lump','demand'])
+  for(const securedLoan of [true,false]) for(const interestText of ['','5% per year'])
+    out.push(mk({package:'money',repayment,securedLoan,interestText}));
 
   return out;
 }

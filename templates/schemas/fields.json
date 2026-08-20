@@ -1,558 +1,607 @@
 {
- "$comment": "Auto-population layer (spec §1.3). Every {{token}} used in a clause body must be defined here — tools/validate.mjs fails the build otherwise. `provenance` is shown to the user so an auto-filled value is never anonymous.",
- "version": "1.0.0",
- "resolvers": {
-  "answer": "value of a wizard answer field",
-  "const": "fixed string",
-  "taxonomy": "[answerField, collection, property] lookup in taxonomy.json",
-  "today": "current date, long format",
-  "todayPlusDays": "current date + N days, long format",
-  "template": "string with {{other_field}} tokens, resolved after its dependencies",
-  "choose": "{if: expr, then: resolver, else: resolver} using the rules expression language",
-  "builtin": "named function in the engine — used only where formatting cannot be expressed declaratively",
-  "reference": "[collection, key] direct lookup in a flat reference table in taxonomy.json"
- },
- "fields": [
-  {
-   "id": "company",
-   "from": {
-    "answer": "company"
-   },
-   "provenance": "Wizard answer 1"
+  "$comment": "Auto-population layer (spec §1.3). Every {{token}} used in a clause body must be defined here — tools/validate.mjs fails the build otherwise. `provenance` is shown to the user so an auto-filled value is never anonymous.",
+  "version": "1.0.0",
+  "resolvers": {
+    "answer": "value of a wizard answer field",
+    "const": "fixed string",
+    "taxonomy": "[answerField, collection, property] lookup in taxonomy.json",
+    "today": "current date, long format",
+    "todayPlusDays": "current date + N days, long format",
+    "template": "string with {{other_field}} tokens, resolved after its dependencies",
+    "choose": "{if: expr, then: resolver, else: resolver} using the rules expression language",
+    "builtin": "named function in the engine — used only where formatting cannot be expressed declaratively",
+    "reference": "[collection, key] direct lookup in a flat reference table in taxonomy.json"
   },
-  {
-   "id": "entityLong",
-   "from": {
-    "taxonomy": [
-     "entity",
-     "entities",
-     "long"
-    ]
-   },
-   "provenance": "Wizard answer 2"
-  },
-  {
-   "id": "charterDoc",
-   "from": {
-    "taxonomy": [
-     "entity",
-     "entities",
-     "charter"
-    ]
-   },
-   "provenance": "Document schema"
-  },
-  {
-   "id": "govDoc",
-   "from": {
-    "taxonomy": [
-     "entity",
-     "entities",
-     "governance"
-    ]
-   },
-   "provenance": "Document schema"
-  },
-  {
-   "id": "ownerTerm",
-   "from": {
-    "taxonomy": [
-     "entity",
-     "entities",
-     "owners"
-    ]
-   },
-   "provenance": "Document schema"
-  },
-  {
-   "id": "ownerSing",
-   "from": {
-    "taxonomy": [
-     "entity",
-     "entities",
-     "ownerSingular"
-    ]
-   },
-   "provenance": "Document schema"
-  },
-  {
-   "id": "principalTitle",
-   "from": {
-    "taxonomy": [
-     "entity",
-     "entities",
-     "principalTitle"
-    ]
-   },
-   "provenance": "Document schema"
-  },
-  {
-   "id": "formState",
-   "from": {
-    "answer": "formState"
-   },
-   "provenance": "Wizard answer 3"
-  },
-  {
-   "id": "formStateLong",
-   "from": {
-    "taxonomy": [
-     "formState",
-     "jurisdictions",
-     "name"
-    ]
-   },
-   "provenance": "Wizard answer 3"
-  },
-  {
-   "id": "opStateLong",
-   "from": {
-    "taxonomy": [
-     "opState",
-     "jurisdictions",
-     "name"
-    ]
-   },
-   "provenance": "Wizard answer 4"
-  },
-  {
-   "id": "agentCity",
-   "from": {
-    "taxonomy": [
-     "formState",
-     "jurisdictions",
-     "agentCity"
-    ]
-   },
-   "provenance": "Smart default — agent's city of record"
-  },
-  {
-   "id": "annualReportRule",
-   "from": {
-    "taxonomy": [
-     "formState",
-     "jurisdictions",
-     "annualReport"
-    ]
-   },
-   "provenance": "Jurisdiction table"
-  },
-  {
-   "id": "industryName",
-   "from": {
-    "taxonomy": [
-     "industry",
-     "industries",
-     "desc"
-    ]
-   },
-   "provenance": "Wizard answer 6"
-  },
-  {
-   "id": "founderList",
-   "from": {
-    "builtin": "founderList"
-   },
-   "provenance": "Wizard answer 5"
-  },
-  {
-   "id": "founder1",
-   "from": {
-    "builtin": "firstFounder"
-   },
-   "provenance": "Wizard answer 5"
-  },
-  {
-   "id": "date",
-   "from": {
-    "today": "long"
-   },
-   "provenance": "Date calculation — effective date defaults to today"
-  },
-  {
-   "id": "agent",
-   "from": {
-    "template": "{{formStateLong}} Registered Agents, Inc."
-   },
-   "provenance": "Smart default — no agent on file for this user"
-  },
-  {
-   "id": "agentAddress",
-   "from": {
-    "template": "1209 Orange Street, {{agentCity}}, {{formState}}"
-   },
-   "provenance": "Smart default — agent's address of record"
-  },
-  {
-   "id": "authShares",
-   "from": {
-    "const": "10,000,000"
-   },
-   "provenance": "Smart default — industry norm for an early-stage C-Corp"
-  },
-  {
-   "id": "shareCount",
-   "from": {
-    "const": "8,000,000"
-   },
-   "provenance": "Smart default — founder allocation, 80% of authorized"
-  },
-  {
-   "id": "parValue",
-   "from": {
-    "const": "$0.0001"
-   },
-   "provenance": "Smart default — standard early-stage par value"
-  },
-  {
-   "id": "vestYears",
-   "from": {
-    "const": "four (4)"
-   },
-   "provenance": "Smart default — market standard vesting term"
-  },
-  {
-   "id": "cliff",
-   "from": {
-    "const": "twelve (12)"
-   },
-   "provenance": "Smart default — 1-year cliff is the market standard"
-  },
-  {
-   "id": "cliffPct",
-   "from": {
-    "const": "Twenty-five percent (25%)"
-   },
-   "provenance": "Date calculation — 12 of 48 months"
-  },
-  {
-   "id": "monthlyCount",
-   "from": {
-    "const": "thirty-six (36)"
-   },
-   "provenance": "Date calculation — 48 months less the 12-month cliff"
-  },
-  {
-   "id": "cure",
-   "from": {
-    "const": "thirty (30)"
-   },
-   "provenance": "Smart default — firm preference, 30-day cure period"
-  },
-  {
-   "id": "noticeDays",
-   "from": {
-    "const": "thirty (30)"
-   },
-   "provenance": "Smart default — market standard notice period"
-  },
-  {
-   "id": "mgmtStyle",
-   "from": {
-    "choose": {
-     "if": {
-      "lte": [
-       "founders",
-       2
-      ]
-     },
-     "then": {
-      "const": "member-managed"
-     },
-     "else": {
-      "const": "manager-managed"
-     }
-    }
-   },
-   "provenance": "Smart default — based on founder count"
-  },
-  {
-   "id": "taxDefault",
-   "from": {
-    "choose": {
-     "if": {
-      "gte": [
-       "founders",
-       2
-      ]
-     },
-     "then": {
-      "taxonomy": [
-       "entity",
-       "entities",
-       "taxDefaultMulti"
-      ]
-     },
-     "else": {
-      "taxonomy": [
-       "entity",
-       "entities",
-       "taxDefaultSolo"
-      ]
-     }
-    }
-   },
-   "provenance": "Smart default — entity type default classification"
-  },
-  {
-   "id": "ownerSplitNote",
-   "from": {
-    "builtin": "ownerSplitNote"
-   },
-   "provenance": "Smart default — even split presumption"
-  },
-  {
-   "id": "nyDeadline",
-   "from": {
-    "todayPlusDays": 120
-   },
-   "provenance": "Date calculation — formation date + 120 days"
-  },
-  {
-   "id": "d83bDeadline",
-   "from": {
-    "todayPlusDays": 30
-   },
-   "provenance": "Date calculation — grant date + 30 days"
-  },
-  {
-   "id": "counterparty",
-   "from": {
-    "answer": "counterparty"
-   },
-   "provenance": "Wizard — counterparty name"
-  },
-  {
-   "id": "selfLabel",
-   "from": {
-    "taxonomy": [
-     "role",
-     "contractRoles",
-     "self"
-    ]
-   },
-   "provenance": "Derived from which side you are on"
-  },
-  {
-   "id": "counterLabel",
-   "from": {
-    "taxonomy": [
-     "role",
-     "contractRoles",
-     "counter"
-    ]
-   },
-   "provenance": "Derived from which side you are on"
-  },
-  {
-   "id": "dealSizeName",
-   "from": {
-    "taxonomy": [
-     "dealSize",
-     "dealSizes",
-     "name"
-    ]
-   },
-   "provenance": "Wizard — deal size"
-  },
-  {
-   "id": "capMultiple",
-   "from": {
-    "taxonomy": [
-     "dealSize",
-     "dealSizes",
-     "capMultiple"
-    ]
-   },
-   "provenance": "Smart default — cap multiple scales with deal size"
-  },
-  {
-   "id": "superCapMultiple",
-   "from": {
-    "const": "three (3) times"
-   },
-   "provenance": "Smart default — supercap for data and confidentiality breach"
-  },
-  {
-   "id": "termWords",
-   "from": {
-    "choose": {
-     "if": {
-      "lte": [
-       "termMonths",
-       12
-      ]
-     },
-     "then": {
-      "const": "twelve (12)"
-     },
-     "else": {
-      "choose": {
-       "if": {
-        "lte": [
-         "termMonths",
-         24
+  "fields": [
+    {
+      "id": "company",
+      "from": {
+        "answer": "company"
+      },
+      "provenance": "Wizard answer 1"
+    },
+    {
+      "id": "entityLong",
+      "from": {
+        "taxonomy": [
+          "entity",
+          "entities",
+          "long"
         ]
-       },
-       "then": {
-        "const": "twenty-four (24)"
-       },
-       "else": {
+      },
+      "provenance": "Wizard answer 2"
+    },
+    {
+      "id": "charterDoc",
+      "from": {
+        "taxonomy": [
+          "entity",
+          "entities",
+          "charter"
+        ]
+      },
+      "provenance": "Document schema"
+    },
+    {
+      "id": "govDoc",
+      "from": {
+        "taxonomy": [
+          "entity",
+          "entities",
+          "governance"
+        ]
+      },
+      "provenance": "Document schema"
+    },
+    {
+      "id": "ownerTerm",
+      "from": {
+        "taxonomy": [
+          "entity",
+          "entities",
+          "owners"
+        ]
+      },
+      "provenance": "Document schema"
+    },
+    {
+      "id": "ownerSing",
+      "from": {
+        "taxonomy": [
+          "entity",
+          "entities",
+          "ownerSingular"
+        ]
+      },
+      "provenance": "Document schema"
+    },
+    {
+      "id": "principalTitle",
+      "from": {
+        "taxonomy": [
+          "entity",
+          "entities",
+          "principalTitle"
+        ]
+      },
+      "provenance": "Document schema"
+    },
+    {
+      "id": "formState",
+      "from": {
+        "answer": "formState"
+      },
+      "provenance": "Wizard answer 3"
+    },
+    {
+      "id": "formStateLong",
+      "from": {
+        "taxonomy": [
+          "formState",
+          "jurisdictions",
+          "name"
+        ]
+      },
+      "provenance": "Wizard answer 3"
+    },
+    {
+      "id": "opStateLong",
+      "from": {
+        "taxonomy": [
+          "opState",
+          "jurisdictions",
+          "name"
+        ]
+      },
+      "provenance": "Wizard answer 4"
+    },
+    {
+      "id": "agentCity",
+      "from": {
+        "taxonomy": [
+          "formState",
+          "jurisdictions",
+          "agentCity"
+        ]
+      },
+      "provenance": "Smart default — agent's city of record"
+    },
+    {
+      "id": "annualReportRule",
+      "from": {
+        "taxonomy": [
+          "formState",
+          "jurisdictions",
+          "annualReport"
+        ]
+      },
+      "provenance": "Jurisdiction table"
+    },
+    {
+      "id": "industryName",
+      "from": {
+        "taxonomy": [
+          "industry",
+          "industries",
+          "desc"
+        ]
+      },
+      "provenance": "Wizard answer 6"
+    },
+    {
+      "id": "founderList",
+      "from": {
+        "builtin": "founderList"
+      },
+      "provenance": "Wizard answer 5"
+    },
+    {
+      "id": "founder1",
+      "from": {
+        "builtin": "firstFounder"
+      },
+      "provenance": "Wizard answer 5"
+    },
+    {
+      "id": "date",
+      "from": {
+        "today": "long"
+      },
+      "provenance": "Date calculation — effective date defaults to today"
+    },
+    {
+      "id": "agent",
+      "from": {
+        "template": "{{formStateLong}} Registered Agents, Inc."
+      },
+      "provenance": "Smart default — no agent on file for this user"
+    },
+    {
+      "id": "agentAddress",
+      "from": {
+        "template": "1209 Orange Street, {{agentCity}}, {{formState}}"
+      },
+      "provenance": "Smart default — agent's address of record"
+    },
+    {
+      "id": "authShares",
+      "from": {
+        "const": "10,000,000"
+      },
+      "provenance": "Smart default — industry norm for an early-stage C-Corp"
+    },
+    {
+      "id": "shareCount",
+      "from": {
+        "const": "8,000,000"
+      },
+      "provenance": "Smart default — founder allocation, 80% of authorized"
+    },
+    {
+      "id": "parValue",
+      "from": {
+        "const": "$0.0001"
+      },
+      "provenance": "Smart default — standard early-stage par value"
+    },
+    {
+      "id": "vestYears",
+      "from": {
+        "const": "four (4)"
+      },
+      "provenance": "Smart default — market standard vesting term"
+    },
+    {
+      "id": "cliff",
+      "from": {
+        "const": "twelve (12)"
+      },
+      "provenance": "Smart default — 1-year cliff is the market standard"
+    },
+    {
+      "id": "cliffPct",
+      "from": {
+        "const": "Twenty-five percent (25%)"
+      },
+      "provenance": "Date calculation — 12 of 48 months"
+    },
+    {
+      "id": "monthlyCount",
+      "from": {
         "const": "thirty-six (36)"
-       }
-      }
-     }
+      },
+      "provenance": "Date calculation — 48 months less the 12-month cliff"
+    },
+    {
+      "id": "cure",
+      "from": {
+        "const": "thirty (30)"
+      },
+      "provenance": "Smart default — firm preference, 30-day cure period"
+    },
+    {
+      "id": "noticeDays",
+      "from": {
+        "const": "thirty (30)"
+      },
+      "provenance": "Smart default — market standard notice period"
+    },
+    {
+      "id": "mgmtStyle",
+      "from": {
+        "choose": {
+          "if": {
+            "lte": [
+              "founders",
+              2
+            ]
+          },
+          "then": {
+            "const": "member-managed"
+          },
+          "else": {
+            "const": "manager-managed"
+          }
+        }
+      },
+      "provenance": "Smart default — based on founder count"
+    },
+    {
+      "id": "taxDefault",
+      "from": {
+        "choose": {
+          "if": {
+            "gte": [
+              "founders",
+              2
+            ]
+          },
+          "then": {
+            "taxonomy": [
+              "entity",
+              "entities",
+              "taxDefaultMulti"
+            ]
+          },
+          "else": {
+            "taxonomy": [
+              "entity",
+              "entities",
+              "taxDefaultSolo"
+            ]
+          }
+        }
+      },
+      "provenance": "Smart default — entity type default classification"
+    },
+    {
+      "id": "ownerSplitNote",
+      "from": {
+        "builtin": "ownerSplitNote"
+      },
+      "provenance": "Smart default — even split presumption"
+    },
+    {
+      "id": "nyDeadline",
+      "from": {
+        "todayPlusDays": 120
+      },
+      "provenance": "Date calculation — formation date + 120 days"
+    },
+    {
+      "id": "d83bDeadline",
+      "from": {
+        "todayPlusDays": 30
+      },
+      "provenance": "Date calculation — grant date + 30 days"
+    },
+    {
+      "id": "counterparty",
+      "from": {
+        "answer": "counterparty"
+      },
+      "provenance": "Wizard — counterparty name"
+    },
+    {
+      "id": "selfLabel",
+      "from": {
+        "taxonomy": [
+          "role",
+          "contractRoles",
+          "self"
+        ]
+      },
+      "provenance": "Derived from which side you are on"
+    },
+    {
+      "id": "counterLabel",
+      "from": {
+        "taxonomy": [
+          "role",
+          "contractRoles",
+          "counter"
+        ]
+      },
+      "provenance": "Derived from which side you are on"
+    },
+    {
+      "id": "dealSizeName",
+      "from": {
+        "taxonomy": [
+          "dealSize",
+          "dealSizes",
+          "name"
+        ]
+      },
+      "provenance": "Wizard — deal size"
+    },
+    {
+      "id": "capMultiple",
+      "from": {
+        "taxonomy": [
+          "dealSize",
+          "dealSizes",
+          "capMultiple"
+        ]
+      },
+      "provenance": "Smart default — cap multiple scales with deal size"
+    },
+    {
+      "id": "superCapMultiple",
+      "from": {
+        "const": "three (3) times"
+      },
+      "provenance": "Smart default — supercap for data and confidentiality breach"
+    },
+    {
+      "id": "termWords",
+      "from": {
+        "choose": {
+          "if": {
+            "lte": [
+              "termMonths",
+              12
+            ]
+          },
+          "then": {
+            "const": "twelve (12)"
+          },
+          "else": {
+            "choose": {
+              "if": {
+                "lte": [
+                  "termMonths",
+                  24
+                ]
+              },
+              "then": {
+                "const": "twenty-four (24)"
+              },
+              "else": {
+                "const": "thirty-six (36)"
+              }
+            }
+          }
+        }
+      },
+      "provenance": "Wizard — initial term"
+    },
+    {
+      "id": "renewalNotice",
+      "from": {
+        "const": "sixty (60)"
+      },
+      "provenance": "Smart default — non-renewal notice window"
+    },
+    {
+      "id": "paymentDays",
+      "from": {
+        "const": "thirty (30)"
+      },
+      "provenance": "Smart default — net 30 payment terms"
+    },
+    {
+      "id": "roleTitle",
+      "from": {
+        "answer": "roleTitle"
+      },
+      "provenance": "Wizard — role title"
+    },
+    {
+      "id": "compTypeName",
+      "from": {
+        "taxonomy": [
+          "comp",
+          "compTypes",
+          "name"
+        ]
+      },
+      "provenance": "Wizard — compensation type"
+    },
+    {
+      "id": "payDescription",
+      "from": {
+        "choose": {
+          "if": {
+            "eq": [
+              "comp",
+              "hourly"
+            ]
+          },
+          "then": {
+            "const": "at the hourly rate stated in the offer, for all hours actually worked"
+          },
+          "else": {
+            "const": "as an annual salary paid in equal installments on the Company’s regular payroll schedule"
+          }
+        }
+      },
+      "provenance": "Smart default — derived from compensation type"
+    },
+    {
+      "id": "workerLabel",
+      "from": {
+        "choose": {
+          "if": {
+            "eq": [
+              "engagement",
+              "contractor"
+            ]
+          },
+          "then": {
+            "const": "Contractor"
+          },
+          "else": {
+            "const": "Employee"
+          }
+        }
+      },
+      "provenance": "Derived from engagement type"
+    },
+    {
+      "id": "headcountBand",
+      "from": {
+        "taxonomy": [
+          "headcount",
+          "headcountBands",
+          "name"
+        ]
+      },
+      "provenance": "Wizard — employee headcount"
+    },
+    {
+      "id": "caLlcFeeTiers",
+      "from": {
+        "reference": [
+          "californiaReference",
+          "llcFeeTiers"
+        ]
+      },
+      "provenance": "California reference table"
+    },
+    {
+      "id": "caAnnualTax",
+      "from": {
+        "choose": {
+          "if": {
+            "eq": [
+              "entity",
+              "llc"
+            ]
+          },
+          "then": {
+            "reference": [
+              "californiaReference",
+              "annualTaxLLC"
+            ]
+          },
+          "else": {
+            "reference": [
+              "californiaReference",
+              "annualTaxCorp"
+            ]
+          }
+        }
+      },
+      "provenance": "California reference table, selected by entity type"
+    },
+    {
+      "id": "caCityName",
+      "from": {
+        "taxonomy": [
+          "caCity",
+          "californiaLocalities",
+          "name"
+        ]
+      },
+      "provenance": "Wizard — California work city"
+    },
+    {
+      "id": "caCitySummary",
+      "from": {
+        "taxonomy": [
+          "caCity",
+          "californiaLocalities",
+          "summary"
+        ]
+      },
+      "provenance": "Derived from the California work city"
+    },
+    {
+      "id": "thisDocument",
+      "from": {
+        "renderContext": "documentTitle"
+      },
+      "provenance": "Resolved per document at render time, not from the answer set. A shared General Provisions block has no single document — it is whichever one it is currently inside — so this is the one field whose value depends on where the clause is rather than on what the user answered."
+    },
+    {
+      "id": "tenantName",
+      "from": {
+        "answer": "tenantName"
+      },
+      "provenance": "Wizard answer — tenant"
+    },
+    {
+      "id": "propertyAddress",
+      "from": {
+        "answer": "propertyAddress"
+      },
+      "provenance": "Wizard answer — premises"
+    },
+    {
+      "id": "monthlyRent",
+      "from": {
+        "answer": "monthlyRent"
+      },
+      "provenance": "Wizard answer — rent"
+    },
+    {
+      "id": "securityDeposit",
+      "from": {
+        "answer": "securityDeposit"
+      },
+      "provenance": "Wizard answer — deposit"
+    },
+    {
+      "id": "borrowerName",
+      "from": {
+        "answer": "borrowerName"
+      },
+      "provenance": "Wizard answer — borrower"
+    },
+    {
+      "id": "principalAmount",
+      "from": {
+        "answer": "principalAmount"
+      },
+      "provenance": "Wizard answer — principal"
+    },
+    {
+      "id": "interestText",
+      "from": {
+        "answer": "interestText"
+      },
+      "provenance": "Wizard answer — interest"
     }
-   },
-   "provenance": "Wizard — initial term"
-  },
-  {
-   "id": "renewalNotice",
-   "from": {
-    "const": "sixty (60)"
-   },
-   "provenance": "Smart default — non-renewal notice window"
-  },
-  {
-   "id": "paymentDays",
-   "from": {
-    "const": "thirty (30)"
-   },
-   "provenance": "Smart default — net 30 payment terms"
-  },
-  {
-   "id": "roleTitle",
-   "from": {
-    "answer": "roleTitle"
-   },
-   "provenance": "Wizard — role title"
-  },
-  {
-   "id": "compTypeName",
-   "from": {
-    "taxonomy": [
-     "comp",
-     "compTypes",
-     "name"
-    ]
-   },
-   "provenance": "Wizard — compensation type"
-  },
-  {
-   "id": "payDescription",
-   "from": {
-    "choose": {
-     "if": {
-      "eq": [
-       "comp",
-       "hourly"
-      ]
-     },
-     "then": {
-      "const": "at the hourly rate stated in the offer, for all hours actually worked"
-     },
-     "else": {
-      "const": "as an annual salary paid in equal installments on the Company’s regular payroll schedule"
-     }
-    }
-   },
-   "provenance": "Smart default — derived from compensation type"
-  },
-  {
-   "id": "workerLabel",
-   "from": {
-    "choose": {
-     "if": {
-      "eq": [
-       "engagement",
-       "contractor"
-      ]
-     },
-     "then": {
-      "const": "Contractor"
-     },
-     "else": {
-      "const": "Employee"
-     }
-    }
-   },
-   "provenance": "Derived from engagement type"
-  },
-  {
-   "id": "headcountBand",
-   "from": {
-    "taxonomy": [
-     "headcount",
-     "headcountBands",
-     "name"
-    ]
-   },
-   "provenance": "Wizard — employee headcount"
-  },
-  {
-   "id": "caLlcFeeTiers",
-   "from": {
-    "reference": [
-     "californiaReference",
-     "llcFeeTiers"
-    ]
-   },
-   "provenance": "California reference table"
-  },
-  {
-   "id": "caAnnualTax",
-   "from": {
-    "choose": {
-     "if": {
-      "eq": [
-       "entity",
-       "llc"
-      ]
-     },
-     "then": {
-      "reference": [
-       "californiaReference",
-       "annualTaxLLC"
-      ]
-     },
-     "else": {
-      "reference": [
-       "californiaReference",
-       "annualTaxCorp"
-      ]
-     }
-    }
-   },
-   "provenance": "California reference table, selected by entity type"
-  },
-  {
-   "id": "caCityName",
-   "from": {
-    "taxonomy": [
-     "caCity",
-     "californiaLocalities",
-     "name"
-    ]
-   },
-   "provenance": "Wizard — California work city"
-  },
-  {
-   "id": "caCitySummary",
-   "from": {
-    "taxonomy": [
-     "caCity",
-     "californiaLocalities",
-     "summary"
-    ]
-   },
-   "provenance": "Derived from the California work city"
-  },
-  {
-   "id": "thisDocument",
-   "from": {
-    "renderContext": "documentTitle"
-   },
-   "provenance": "Resolved per document at render time, not from the answer set. A shared General Provisions block has no single document — it is whichever one it is currently inside — so this is the one field whose value depends on where the clause is rather than on what the user answered."
-  }
- ]
+  ]
 }

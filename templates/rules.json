@@ -370,6 +370,49 @@
       "rationale": "Employment agreement, handbook, and equity documents are the §4.3 sequence after a first hire."
     },
     {
+      "id": "pkg_property",
+      "code": "IF [package == property] THEN [generate the tenancy package]",
+      "when": {
+        "eq": [
+          "package",
+          "property"
+        ]
+      },
+      "rationale": "A lease stands alone — the tenancy questions apply to nothing else."
+    },
+    {
+      "id": "pkg_money",
+      "code": "IF [package == money] THEN [generate the loan package]",
+      "when": {
+        "eq": [
+          "package",
+          "money"
+        ]
+      },
+      "rationale": "The note and the loan agreement share the same parties, amount, and repayment answers."
+    },
+    {
+      "id": "money_installments",
+      "code": "IF [money package] AND [repayment == installments] THEN [installment schedule terms]",
+      "when": {
+        "all": [
+          {
+            "eq": [
+              "package",
+              "money"
+            ]
+          },
+          {
+            "eq": [
+              "repayment",
+              "installments"
+            ]
+          }
+        ]
+      },
+      "rationale": "Installment terms (schedule, application of payments, prepayment) only make sense when repayment is in installments."
+    },
+    {
       "id": "as_provider",
       "code": "IF [role == provider] THEN [draft provider-favorable defaults]",
       "when": {

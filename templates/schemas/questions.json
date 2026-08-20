@@ -17,9 +17,9 @@
       "type": "text",
       "default": "",
       "required": true,
-      "prompt": "What is your company called?",
-      "help": "Used as the defined term “Company” throughout the package.",
-      "placeholder": "e.g. Northwind Labs"
+      "prompt": "What is your name, or your company’s name?",
+      "help": "Used as your party name throughout the package — a person’s name works the same as a company’s.",
+      "placeholder": "e.g. Northwind Labs, or Jordan Alvarez"
     },
     {
       "id": "entity",
@@ -392,6 +392,210 @@
       },
       "options": {
         "taxonomy": "californiaLocalities"
+      }
+    },
+    {
+      "id": "tenantName",
+      "type": "text",
+      "default": "",
+      "required": true,
+      "prompt": "Who is the tenant?",
+      "help": "The person renting the property. Used as the defined term “Tenant”.",
+      "when": {
+        "rule": "pkg_property"
+      },
+      "placeholder": "e.g. Riley Chen"
+    },
+    {
+      "id": "propertyAddress",
+      "type": "text",
+      "default": "",
+      "required": true,
+      "prompt": "What is the address of the property?",
+      "help": "The premises being rented, exactly as you want it to appear in the lease.",
+      "when": {
+        "rule": "pkg_property"
+      },
+      "placeholder": "e.g. 12 Rose Lane, Apt 4"
+    },
+    {
+      "id": "monthlyRent",
+      "type": "text",
+      "default": "",
+      "required": true,
+      "prompt": "What is the monthly rent?",
+      "help": "Written into the rent clause exactly as you type it — include the currency.",
+      "when": {
+        "rule": "pkg_property"
+      },
+      "placeholder": "e.g. $1,800"
+    },
+    {
+      "id": "securityDeposit",
+      "type": "text",
+      "default": "",
+      "prompt": "How much is the security deposit?",
+      "help": "Leave blank for no deposit. Some places cap deposits — checking that is part of adapting the lease to where the property is.",
+      "when": {
+        "rule": "pkg_property"
+      },
+      "placeholder": "e.g. $1,800 — leave blank for none"
+    },
+    {
+      "id": "leaseTerm",
+      "type": "choice",
+      "default": "fixed12",
+      "prompt": "How long is the tenancy?",
+      "help": "A fixed term ends on a date; month-to-month continues until one side gives notice.",
+      "when": {
+        "rule": "pkg_property"
+      },
+      "options": {
+        "literal": [
+          [
+            "fixed12",
+            "12-month fixed term"
+          ],
+          [
+            "fixed6",
+            "6-month fixed term"
+          ],
+          [
+            "fixed24",
+            "24-month fixed term"
+          ],
+          [
+            "m2m",
+            "Month-to-month"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "petsAllowed",
+      "type": "choice",
+      "default": false,
+      "prompt": "Are pets allowed?",
+      "help": "Selects the pets clause the lease starts with — you can edit or remove it on the page.",
+      "when": {
+        "rule": "pkg_property"
+      },
+      "options": {
+        "literal": [
+          [
+            true,
+            "Yes"
+          ],
+          [
+            false,
+            "No"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "utilitiesIncluded",
+      "type": "choice",
+      "default": false,
+      "prompt": "Are utilities included in the rent?",
+      "help": "Decides which side the utilities clause puts the bills on.",
+      "when": {
+        "rule": "pkg_property"
+      },
+      "options": {
+        "literal": [
+          [
+            true,
+            "Included in rent"
+          ],
+          [
+            false,
+            "Tenant pays separately"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "borrowerName",
+      "type": "text",
+      "default": "",
+      "required": true,
+      "prompt": "Who is borrowing the money?",
+      "help": "Used as the defined term “Borrower”. You are the Lender.",
+      "when": {
+        "rule": "pkg_money"
+      },
+      "placeholder": "e.g. Casey Morgan"
+    },
+    {
+      "id": "principalAmount",
+      "type": "text",
+      "default": "",
+      "required": true,
+      "prompt": "How much is being lent?",
+      "help": "The principal, written exactly as you type it — include the currency.",
+      "when": {
+        "rule": "pkg_money"
+      },
+      "placeholder": "e.g. $10,000"
+    },
+    {
+      "id": "interestText",
+      "type": "text",
+      "default": "",
+      "prompt": "What interest, if any?",
+      "help": "Leave blank for an interest-free loan. Some places cap interest rates — checking that is part of adapting the documents to where you are.",
+      "when": {
+        "rule": "pkg_money"
+      },
+      "placeholder": "e.g. 5% per year — leave blank for none"
+    },
+    {
+      "id": "repayment",
+      "type": "choice",
+      "default": "installments",
+      "prompt": "How is it paid back?",
+      "help": "Picks the repayment clause: a monthly schedule, one payment on a date, or whenever the lender asks.",
+      "when": {
+        "rule": "pkg_money"
+      },
+      "options": {
+        "literal": [
+          [
+            "installments",
+            "Monthly installments"
+          ],
+          [
+            "lump",
+            "One payment on a set date"
+          ],
+          [
+            "demand",
+            "On demand"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "securedLoan",
+      "type": "choice",
+      "default": false,
+      "prompt": "Is the loan secured by any property?",
+      "help": "If yes, the documents include a collateral clause with a blank for describing the property.",
+      "when": {
+        "rule": "pkg_money"
+      },
+      "options": {
+        "literal": [
+          [
+            true,
+            "Yes — there is collateral"
+          ],
+          [
+            false,
+            "No — unsecured"
+          ]
+        ]
       }
     }
   ]
