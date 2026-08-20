@@ -6,9 +6,9 @@ three days of findings.
 ## What this is
 
 A single-file prototype (`draft-ai-engine.html`, compiled) over a clause corpus in
-`templates/`. 360 clauses across 18 documents: NDA, incorporation, governance, employment,
-commercial. The engine picks clauses by jurisdiction, entity type, industry and headcount
-and assembles documents.
+`templates/`. 363 clauses across 28 documents: NDA, incorporation, governance, employment,
+commercial, property, money, partnership, invoice, business plan. The engine picks clauses
+by jurisdiction, entity type, industry and headcount and assembles documents.
 
 ## The one thing to know
 
@@ -77,19 +77,37 @@ npm run check            # validator + build sync
 npm run preview          # what applying the classification would change
 ```
 
-Egress opened 2026-08-20: `leginfo.legislature.ca.gov` and 11 other primary/reference hosts
-are reachable (`npm run probe` / `probe:reference`). The same day, a real bug was found and
-fixed in `verify.mjs`'s `decideLevel` — it checked for `hostKind==='primary'`, a value that
-can never occur, which made `primary-verified` structurally unreachable regardless of
-evidence; a second bug (`gatherCitationEvidence` now tries every configured host for a
-citation, not just the first that succeeds) was fixed the same day for the same reason.
-`npm run verify` (dry run) has been run once since both fixes: 9 clauses carry a raw
-citation, 11 real fetches, 0 upgrades — most of those 9 have only one citation on file, so
-even with every host reachable and tried, they cannot reach `corroborated` (needs 2 distinct
-hosts) until a second, genuinely independent citation is added. See
-`verification/last-run.json` for the evidence trail and recent git log for the two fixes.
-If `probe` now reports refusals again, something changed — see `verification/EGRESS.md` for
-how to open it. Nothing gets fabricated around a block; report it.
+Egress opened briefly on 2026-08-20 (`leginfo.legislature.ca.gov` and 11 other
+primary/reference hosts were reachable) but has since closed again: re-probed later the same
+day and all 21 registry hosts plus all 4 reference hosts returned `http-403`/`EGRESS_BLOCKED`
+— confirmed two independent ways, `npm run probe` and a direct `WebFetch` on leginfo, same
+result. `verification/EGRESS.md` explains why this happens — "running sessions keep the
+network they started with," so a session started before (or after) the environment's Network
+access setting last changed will not see the current setting. **Re-run `npm run probe` every
+session; never trust this note.** While the block from 2026-08-20 still held, a real bug was
+found and fixed in `verify.mjs`'s `decideLevel` — it checked for `hostKind==='primary'`, a
+value that can never occur, which made `primary-verified` structurally unreachable regardless
+of evidence; a second bug (`gatherCitationEvidence` now tries every configured host for a
+citation, not just the first that succeeds) was fixed the same day for the same reason. Those
+two fixes are real and stay fixed regardless of network state. `npm run verify` (dry run) has
+been run once since both fixes, while egress was briefly open: 9 clauses carry a raw citation,
+11 real fetches, 0 upgrades — most of those 9 have only one citation on file, so even with
+every host reachable and tried, they cannot reach `corroborated` (needs 2 distinct hosts)
+until a second, genuinely independent citation is added. See `verification/last-run.json` for
+that evidence trail and recent git log for the two fixes.
+
+One thing that works regardless of the egress proxy: the **CourtListener MCP connector**
+(tool prefix `mcp__be259e10-16f3-4af6-9e7d-79e4791a0626__`) bypasses it entirely — MCP
+connectors are not routed through the proxy the way `fetch`/`WebFetch` are, and this project
+already has that connector attached. It returns real case law (confirmed live — a search for
+*Brinker Restaurant Corp. v. Superior Court* returned the actual 2012 opinion). Per
+`sources.mjs`, CourtListener is `mirror` tier, never `publisher`: useful for the case-law half
+of the corpus's core defect pattern (statutory text reproduced accurately, controlling case
+law dropped), and for `corroborated`, but not sufficient alone for `primary-verified` — that
+still needs `leginfo.legislature.ca.gov` itself, which remains blocked. If `probe` reports
+refusals, see `verification/EGRESS.md` for how to open it (Fix 1, environment Network access
+setting) or add a statute-serving MCP connector (Fix 2, candidates listed there). Nothing
+gets fabricated around a block; report it.
 
 ## Open items
 
