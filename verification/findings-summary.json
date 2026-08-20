@@ -1,8 +1,8 @@
 {
-  "scoredAt": "2026-08-20T23:03:52.340Z",
+  "scoredAt": "2026-08-20T23:57:51.475Z",
   "tally": {
     "contradicted": 1,
-    "incomplete": 1
+    "incomplete": 2
   },
   "rows": [
     {
@@ -23,6 +23,16 @@
       "assertions": 9,
       "gaps": 5,
       "hosts": 4,
+      "known": true
+    },
+    {
+      "id": "emp_overtime",
+      "outcome": "incomplete",
+      "upgradeTo": null,
+      "why": "4 requirement(s) described by sources are absent from the clause — a clause that is silent on a requirement reads as complete and is not",
+      "assertions": 3,
+      "gaps": 4,
+      "hosts": 1,
       "known": true
     }
   ]

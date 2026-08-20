@@ -1,0 +1,81 @@
+{
+ "clauseId": "emp_overtime",
+ "checkedAt": "2026-08-20",
+ "method": "Second check this session, same constraint as ipa_wfh: every host in templates/sources/registry.json returned http-403 at the egress proxy during this check, so 29 U.S.C. section 207 and section 203(g) were not independently fetched -- the statutory text quoted below comes from the courts' own quotation of it, not from uscode.house.gov directly. The clause already carried a raw citation to 29 U.S.C. section 207 with no fetch on file (checked: null); this is the first real check against it. Two circuits were read because the clause's riskier claim -- that unauthorized overtime must be paid regardless -- is exactly the kind of interpretive gloss on 'suffer or permit to work' that a single opinion cannot establish is settled law rather than one court's view.",
+ "queries": [
+  "Fair Labor Standards Act employer must pay overtime actually worked even if not authorized suffered or permitted (CourtListener)",
+  "Forrester v. Roth's I.G.A. Foodliner overtime (CourtListener, 9th Cir.)",
+  "employer actual or constructive knowledge employee worked unauthorized overtime FLSA must pay (CourtListener)",
+  "\"suffer or permit\" -- read within the Chao v. Gotham Registry opinion"
+ ],
+ "assertions": [
+  {
+   "text": "non-exempt employees are owed one and one-half times the regular rate for hours worked over 40 in a workweek",
+   "status": "corroborated",
+   "note": "Forrester, 646 F.2d at 414, quoting 29 U.S.C. section 207(a): 'no employer shall employ any of its covered employees for a work week that is longer than 40 hours unless that employee receives as compensation for his employment at least one and a half times the regular rate for all overtime hours.' Chao, 514 F.3d 280 (2d Cir. 2008), quotes the same subsection to the same effect (page not separately pinned -- this passage precedes the first page-turn marker read in the opinion). Two independent circuits quoting the operative language the same way is corroboration of the base rule, not independent primary verification -- the statute itself was not fetched (blocked)."
+  },
+  {
+   "text": "overtime actually worked must be paid whether or not it was authorized in advance",
+   "status": "partial",
+   "note": "Generally right, but stated as an absolute where the case law states a condition. Forrester, 646 F.2d at 414: 'an employer who knows or should have known that an employee is or was working overtime must comply with the provisions of section 207. An employer who is armed with this knowledge cannot stand idly by and allow an employee to perform overtime work without proper compensation, even if the employee does not make a claim for the overtime compensation.' Chao, 514 F.3d at 287, to the same effect, quoted below: liability requires the employer's actual or constructive knowledge that the work happened. Both cases also confirm the flip side, which the clause does not mention at all: where the employer has no knowledge and the employee's own conduct prevented the employer from acquiring it, there is no violation. Forrester affirmed summary judgment for the employer on exactly that basis."
+  },
+  {
+   "text": "an employer cannot avoid the duty to pay for unauthorized overtime merely by adopting and enforcing a policy against working unauthorized overtime",
+   "status": "corroborated",
+   "note": "Chao, 514 F.3d at 288-291, discussing Reich v. Department of Conservation and Natural Resources (11th Cir.): the agency 'could not avoid overtime compensation simply by adopting a policy against overtime and issuing periodic warnings.' This is the point the clause's own rationale is reaching for ('discipline for working it is permissible; refusing to pay for it is not') and it holds up -- with the same knowledge qualifier as above attached to it."
+  }
+ ],
+ "gaps": [
+  "The clause states the payment duty as unconditional ('must be paid whether or not it was authorized in advance') with no mention of the employer's-knowledge condition both circuits treat as load-bearing. In the ordinary case an employer that requires advance authorization also has visibility into hours worked (timekeeping, direct supervision), so the condition is usually satisfied and the clause's practical guidance is not wrong for the case it is written for. The gap matters at the edge: an employee who conceals hours or bypasses the time-reporting system entirely, then claims unreported overtime after the fact, is exactly the Forrester fact pattern, and on those facts the employer may owe nothing. The clause gives the reader no way to tell the ordinary case from the edge case.",
+  "29 U.S.C. section 207 and section 203(g) were not independently fetched -- every host that would carry them was blocked. The quoted statutory language above is the courts' own quotation of the text, not a primary read of the Office of the Law Revision Counsel's version.",
+  "The clause's second half ('and at any additional rate required by the law of {{opStateLong}}') is a pure deferral and was not checked -- it names no state-specific rule to verify.",
+  "ea_overtime (employment-agreement) makes close to the same two claims in worker-facing language and was not separately checked. Its risk profile is different -- it faces the employee being offered the job, not an internal handbook policy -- and it deserves its own pass rather than being assumed covered by this one."
+ ],
+ "sources": [
+  {
+   "type": "case-mirror",
+   "url": "https://www.courtlistener.com/opinion/389336/billy-h-forrester-v-roths-i-g-a-foodliner-incorporated-an-oregon/",
+   "checked": "2026-08-20",
+   "title": "CourtListener — Forrester v. Roth's I.G.A. Foodliner, Inc. (9th Cir. 1981) 646 F.2d 413"
+  },
+  {
+   "type": "case-mirror",
+   "url": "https://www.courtlistener.com/opinion/1386400/chao-v-gotham-registry-inc/",
+   "checked": "2026-08-20",
+   "title": "CourtListener — Chao v. Gotham Registry, Inc. (2d Cir. 2008) 514 F.3d 280"
+  }
+ ],
+ "defectTypes": [
+  "omitted-qualifier"
+ ],
+ "judicialQuotations": [
+  {
+   "case": "Forrester v. Roth's I.G.A. Foodliner, Inc. (9th Cir. 1981) 646 F.2d 413",
+   "opinion": 389336,
+   "url": "https://www.courtlistener.com/opinion/389336/billy-h-forrester-v-roths-i-g-a-foodliner-incorporated-an-oregon/",
+   "checked": "2026-08-20",
+   "quote": "Thus an employer who knows or should have known that an employee is or was working overtime must comply with the provisions of section 207. An employer who is armed with this knowledge cannot stand idly by and allow an employee to perform overtime work without proper compensation, even if the employee does not make a claim for the overtime compensation."
+  },
+  {
+   "case": "Forrester v. Roth's I.G.A. Foodliner, Inc. (9th Cir. 1981) 646 F.2d 413",
+   "opinion": 389336,
+   "url": "https://www.courtlistener.com/opinion/389336/billy-h-forrester-v-roths-i-g-a-foodliner-incorporated-an-oregon/",
+   "checked": "2026-08-20",
+   "quote": "However, where an employer has no knowledge that an employee is engaging in overtime work and that employee fails to notify the employer or deliberately prevents the employer from acquiring knowledge of the overtime work, the employer's failure to pay for the overtime hours is not a violation of section 207."
+  },
+  {
+   "case": "Chao v. Gotham Registry, Inc. (2d Cir. 2008) 514 F.3d 280",
+   "opinion": 9613742,
+   "url": "https://www.courtlistener.com/opinion/1386400/chao-v-gotham-registry-inc/",
+   "checked": "2026-08-20",
+   "quote": "It is clear an employer's actual or imputed knowledge that an employee is working is a necessary condition to finding the employer suffers or permits that work."
+  },
+  {
+   "case": "Chao v. Gotham Registry, Inc. (2d Cir. 2008) 514 F.3d 280",
+   "opinion": 9613742,
+   "url": "https://www.courtlistener.com/opinion/1386400/chao-v-gotham-registry-inc/",
+   "checked": "2026-08-20",
+   "quote": "In an ordinary employer-employee relationship, management is believed to have ready access to a panoply of practical measures to induce compliance with its formal rule against overtime. In such cases, a presumption arises that an employer who is armed with knowledge has the power to prevent work it does not wish performed. Where this presumption holds, an employer who knows of an employee's work may be held to suffer or permit that work."
+  }
+ ]
+}

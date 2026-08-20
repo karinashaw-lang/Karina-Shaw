@@ -168,11 +168,30 @@
      "type": "statute-cited",
      "url": null,
      "checked": null
+    },
+    {
+     "type": "case-mirror",
+     "url": "https://www.courtlistener.com/opinion/389336/billy-h-forrester-v-roths-i-g-a-foodliner-incorporated-an-oregon/",
+     "checked": "2026-08-20",
+     "title": "CourtListener — Forrester v. Roth's I.G.A. Foodliner, Inc. (9th Cir. 1981) 646 F.2d 413"
+    },
+    {
+     "type": "case-mirror",
+     "url": "https://www.courtlistener.com/opinion/1386400/chao-v-gotham-registry-inc/",
+     "checked": "2026-08-20",
+     "title": "CourtListener — Chao v. Gotham Registry, Inc. (2d Cir. 2008) 514 F.3d 280"
     }
    ],
-   "verification": "single-source",
+   "verification": "multi-cited",
    "assertsLaw": true,
-   "classifiedBy": "heuristic-unreviewed"
+   "classifiedBy": "heuristic-unreviewed",
+   "defects": [
+    "The clause states the payment duty as unconditional ('must be paid whether or not it was authorized in advance') with no mention of the employer's-knowledge condition both circuits treat as load-bearing. In the ordinary case an employer that requires advance authorization also has visibility into hours worked (timekeeping, direct supervision), so the condition is usually satisfied and the clause's practical guidance is not wrong for the case it is written for. The gap matters at the edge: an employee who conceals hours or bypasses the time-reporting system entirely, then claims unreported overtime after the fact, is exactly the Forrester fact pattern, and on those facts the employer may owe nothing. The clause gives the reader no way to tell the ordinary case from the edge case.",
+    "29 U.S.C. section 207 and section 203(g) were not independently fetched -- every host that would carry them was blocked. The quoted statutory language above is the courts' own quotation of the text, not a primary read of the Office of the Law Revision Counsel's version.",
+    "The clause's second half ('and at any additional rate required by the law of {{opStateLong}}') is a pure deferral and was not checked -- it names no state-specific rule to verify.",
+    "ea_overtime (employment-agreement) makes close to the same two claims in worker-facing language and was not separately checked. Its risk profile is different -- it faces the employee being offered the job, not an internal handbook policy -- and it deserves its own pass rather than being assumed covered by this one."
+   ],
+   "lastChecked": "2026-08-20"
   },
   {
    "id": "emp_ip",
