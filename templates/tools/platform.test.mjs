@@ -107,6 +107,53 @@ console.log('HTML export follows the same rules as Word export');
   t('the file is named after the document', /docFilename\(d,'html'\)/.test(code));
 }
 
+console.log('the gallery offers; the user picks');
+{
+  t('there is a template gallery view', /id="view-templates"/.test(code) && /function renderGallery\(/.test(code));
+  t('cards are generated from the corpus, not a hand-written list',
+    /DOCS\.filter\(d=>GALLERY_CAT==='all'\|\|d\.package===GALLERY_CAT\)/.test(code));
+  t('the offers-language is on the page', /you choose what goes in — DRAFT only offers options/.test(code));
+  t('a picked template is included because they picked it',
+    /docIncluded\(d,a,TAX,ruleOf\) \|\| STATE\.forceInclude\.has\(d\.id\)/.test(code));
+  t('picking a template starts a new document instead of overwriting the open one',
+    /function chooseTemplate\(id\)\{[\s\S]{0,400}?STATE=freshState\(\)/.test(code));
+  t('generate opens the template the user picked',
+    /STATE\.templateTarget && STATE\.pkg\.docs\.some\(d=>d\.id===STATE\.templateTarget/.test(code));
+  t('preview renders without editing chrome', /renderDoc\(assemble\(demo\), id, \{chrome:false\}\)/.test(code));
+  t('preview restores the user’s working state even if rendering throws',
+    /finally \{[\s\S]{0,300}?STATE\.added=keep\.added/.test(code));
+  t('the welcome choices land on the gallery, not a generated document',
+    /GALLERY_CAT = c\.pkg;[\s\S]{0,120}?go\('templates'\)/.test(code));
+}
+
+console.log('the canvas is the user’s: edit, move, remove, add — all labeled, all reversible');
+{
+  t('removal happens in assembly, so numbering, banner and references stay consistent',
+    /\.filter\(c=>!STATE\.removedCl\.has\(d\.id\+':'\+c\.id\)\)/.test(code));
+  t('removed clauses go to a visible tray with restore buttons, not into the void',
+    /Removed by you<\/b>[\s\S]{0,200}?data-restorecl/.test(code));
+  t('an edited clause is labeled and its label explains the trade',
+    /no longer updates when your answers change/.test(code) && />edited by you</.test(code));
+  t('the user’s own paragraphs are labeled as theirs and unchecked by DRAFT',
+    /You wrote this paragraph\. DRAFT did not draft or check it\./.test(code));
+  t('user paragraphs live under a contract-natural heading that exports',
+    /<h2>ADDITIONAL TERMS<\/h2>/.test(code));
+  t('reordering is constrained to the clause’s own section',
+    /groupIds=ids\.filter\(id=>\{ const c=d\.clauses\.find\(x=>x\.id===id\); return c && c\.group===me\.group; \}\)/.test(code));
+  t('every user assembly action saves immediately, not on the next timer tick',
+    /if\(STATE\.saveId\) saveCurrent\(\);/.test(code));
+  t('editing chrome is stripped from exported markup',
+    /querySelectorAll\('\.unver, \.withheld, \.cond, \.wc, \.appchrome, \.editbar, \.uchip, \.tray'\)/.test(code));
+  t('editing chrome is also dead in print',
+    /#paper \.appchrome, #paper \.editbar, #paper \.uchip, #paper \.tray\{display:none !important\}/.test(code));
+  t('exporting mid-edit closes the editor first so no clause exports as a blank',
+    /if\(STATE\.editingClause \|\| STATE\.editingBlock\)\{ STATE\.editingClause=null; STATE\.editingBlock=null; renderPackage\(\); \}/.test(code));
+  t('a reference broken by the user’s own removal is blamed on the removal, with the fix named',
+    /refers to a section <b>you removed<\/b>/.test(code) && /Restore that section from the “Removed by you” tray/.test(code));
+  t('demo answers and reset both start from a clean state object',
+    (code.match(/STATE=freshState\(\)/g)||[]).length >= 3);
+}
+
 console.log('nothing the project does not have is written down');
 {
   t('no invented social proof anywhere in the page', !/Trusted by [\d,]+/i.test(noComments) && !/testimonial/i.test(noComments));

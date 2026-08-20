@@ -177,6 +177,9 @@
        document. The disclaimer footer is the opposite and is kept deliberately: it is inside
        .paper precisely so it cannot be lost on the way out. */
     #paper .unver, #paper .withheld{display:none !important}
+    /* Editing chrome (toolbars, the removed-by-you tray, add-paragraph button, "edited by
+       you" chips) is application UI, same rule as the unverified markers. */
+    #paper .appchrome, #paper .editbar, #paper .uchip, #paper .tray{display:none !important}
     #paper .genfoot{visibility:visible;color:#333;border-top:1px solid #999;page-break-inside:avoid}
     #paper .sig{page-break-inside:avoid}
     #paper h3{page-break-after:avoid}
@@ -206,6 +209,44 @@
   .disc b{color:var(--txt)}
   .warnbar{background:#3a2e10;border:1px solid #6b5416;color:var(--amber);border-radius:11px;padding:11px 14px;
     font-size:12.5px;margin-bottom:16px;display:flex;gap:9px;align-items:flex-start;line-height:1.6}
+
+  /* ---------- template gallery ---------- */
+  .tab.advtoggle{opacity:.65;font-size:12px}
+  .offstage{display:none !important}
+  .gallerybar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;align-items:center}
+  .catchip{padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--panel2);
+    color:var(--muted);cursor:pointer;font-size:12.5px;user-select:none}
+  .catchip.sel{background:var(--accent);color:#1a1300;border-color:var(--accent);font-weight:600}
+  .tplgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(235px,1fr));gap:14px}
+  .tpl{background:var(--panel2);border:1px solid var(--line);border-radius:13px;padding:15px;
+    display:flex;flex-direction:column;gap:7px;transition:.15s}
+  .tpl:hover{border-color:var(--accent2)}
+  .tpl .ticon{font-size:28px}
+  .tpl .tname{font-weight:700;font-size:14px}
+  .tpl .tdesc{color:var(--muted);font-size:12px;line-height:1.55;flex:1}
+  .tpl .tmeta{font-size:11px;color:var(--muted)}
+  .tpl .tacts{display:flex;gap:7px;margin-top:3px}
+  .modal.wide{max-width:880px;max-height:92vh;overflow:auto}
+  /* ---------- editable canvas ---------- */
+  .clausewrap{position:relative;border-radius:6px}
+  .clausewrap:hover{outline:1px dashed #c9c2b0;outline-offset:5px}
+  .editbar{position:absolute;top:-4px;right:-2px;display:none;gap:3px;z-index:5}
+  .clausewrap:hover .editbar{display:flex}
+  .clausewrap.editing .editbar{display:none}
+  .editbar button{padding:2px 8px;font-size:11.5px;border-radius:6px;background:#fffdf5;
+    border:1px solid #cfc8b6;color:#5a5344;line-height:1.5}
+  .editbar button:hover{border-color:#8a7a4a;color:#1c1a17}
+  .editarea{width:100%;min-height:140px;font:13.5px/1.65 Georgia,'Times New Roman',serif;
+    border:1px solid #b9b2a2;border-radius:8px;padding:11px;background:#fffdf7;color:#1c1a17;
+    box-sizing:border-box;resize:vertical}
+  .titlearea{width:100%;font:600 14px Georgia,serif;border:1px solid #b9b2a2;border-radius:8px;
+    padding:8px 11px;background:#fffdf7;color:#1c1a17;box-sizing:border-box;margin-bottom:7px}
+  .uchip{display:inline-block;font-size:9.5px;letter-spacing:.3px;background:#eef5ee;
+    border:1px solid #b9d4bd;color:#2c5c3a;border-radius:5px;padding:1px 7px;margin-left:7px;
+    vertical-align:middle;font-family:-apple-system,sans-serif}
+  .tray{margin:18px 0;padding:11px 13px;border:1px dashed #cfc8b6;border-radius:9px;
+    background:#faf8f1;font-size:12px;color:#5a5344;font-family:-apple-system,sans-serif}
+  .tray .mini{margin:2px 3px 2px 0}
 
   /* ---------- home / document store ---------- */
   .homecards{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
@@ -285,16 +326,23 @@
 
 <div class="tabs" id="tabs">
   <div class="tab active" data-v="home">🏠 Home</div>
-  <div class="tab" data-v="wizard">📝 Wizard</div>
-  <div class="tab needsdoc" data-v="package">📄 Document Package</div>
-  <div class="tab needsdoc" data-v="review">🔍 AI Review</div>
-  <div class="tab needsdoc" data-v="qa">✅ Consistency &amp; QA</div>
-  <div class="tab needsdoc" data-v="engine">⚙️ Engine Internals</div>
+  <div class="tab" data-v="templates">🗂 Templates</div>
+  <div class="tab" data-v="wizard">📝 Fill in</div>
+  <div class="tab needsdoc" data-v="package">📄 Editor</div>
+  <div class="tab needsdoc" data-v="review">➕ Clause options</div>
+  <div class="tab advtoggle" id="advToggle">Advanced ▾</div>
+  <div class="tab needsdoc adv" data-v="qa" hidden>✅ Consistency &amp; QA</div>
+  <div class="tab needsdoc adv" data-v="engine" hidden>⚙️ Engine Internals</div>
 </div>
 
 <!-- ============ HOME / DASHBOARD ============ -->
 <section class="view active" id="view-home">
   <div id="home"></div>
+</section>
+
+<!-- ============ TEMPLATE GALLERY ============ -->
+<section class="view" id="view-templates">
+  <div id="gallery"></div>
 </section>
 
 <!-- ============ WIZARD ============ -->
@@ -443,6 +491,18 @@
     <div class="sub">Pick one and we&rsquo;ll suggest the right templates. You can change this any time in the wizard.</div>
     <div class="choices" id="welcomeChoices"></div>
     <div class="skip"><button id="welcomeSkip">I&rsquo;ll browse on my own</button></div>
+  </div>
+</div>
+
+<!-- ============ TEMPLATE PREVIEW ============ -->
+<div class="overlay" id="preview" hidden>
+  <div class="modal wide">
+    <div id="previewHead"></div>
+    <div class="paper" id="previewPaper" style="margin-top:12px"></div>
+    <div class="skip" style="display:flex;gap:10px;justify-content:center">
+      <button class="primary" id="previewUse" style="text-decoration:none">Use this template</button>
+      <button id="previewClose" style="text-decoration:none">Close</button>
+    </div>
   </div>
 </div>
 
@@ -1276,7 +1336,18 @@ function condText(expr){
 /* =====================================================================
    ASSEMBLY — §1.2
    ===================================================================== */
-let STATE = { answers:null, pkg:null, added:new Set(), dismissed:new Set(), activeDoc:null, saveId:null };
+/* The whole user-assembly layer lives in STATE: which clauses they accepted (added),
+   declined (dismissed), removed from the page (removedCl), rewrote (edits), wrote
+   themselves (userBlocks), reordered (orderNudge), and which template they picked from
+   the gallery (templateTarget / forceInclude). The engine proposes; all of this is the
+   user disposing. */
+function freshState(){
+  return { answers:null, pkg:null, added:new Set(), dismissed:new Set(), activeDoc:null, saveId:null,
+           forceInclude:new Set(), templateTarget:null,
+           edits:{}, removedCl:new Set(), userBlocks:{}, orderNudge:{},
+           editingClause:null, editingBlock:null };
+}
+let STATE = freshState();
 
 function assemble(a){
   const f=fired(a), ruleOf=ruleOfFor(f);
@@ -1284,8 +1355,18 @@ function assemble(a){
   const docs=[];
   for(const d of DOCS){
     const title=resolveName(d.name,a,F);
-    const included=docIncluded(d,a,TAX,ruleOf);
-    const drafted=CLAUSES.filter(c=>offerable(c,d.id) && eligible(c,a,f) && (isAuto(c)||STATE.added.has(c.id)));
+    /* A template the user picked from the gallery is included because they picked it —
+       the include rule still decides everything they did not pick. */
+    const included=docIncluded(d,a,TAX,ruleOf) || STATE.forceInclude.has(d.id);
+    let drafted=CLAUSES.filter(c=>offerable(c,d.id) && eligible(c,a,f) && (isAuto(c)||STATE.added.has(c.id)))
+                       .filter(c=>!STATE.removedCl.has(d.id+':'+c.id));
+    /* User reordering: an order list per document, captured when they first move a
+       clause. Unknown ids (new clauses accepted later) keep engine order at the end. */
+    const ord=STATE.orderNudge[d.id];
+    if(ord) drafted=[...drafted].sort((x,y)=>{
+      const ix=ord.indexOf(x.id), iy=ord.indexOf(y.id);
+      return (ix<0?1e9:ix)-(iy<0?1e9:iy);
+    });
     /* Assistive mode: this tool helps a person build a document, it does not hand them a
        finished one. Withholding an unverified clause leaves the user with a blank page and
        no idea what they are missing, which is worse for them than seeing the clause with an
@@ -1347,7 +1428,20 @@ function renderBody(text,pkg,curDoc){
   return {html:h};
 }
 
-function renderDoc(pkg,docId){
+/* Turn a clause body into plain text with every field resolved — the starting point the
+   user edits from. Their words then replace the template's, so the clause stops
+   auto-updating; that trade is theirs to make and is labeled on the page. */
+function plainClauseText(c,pkg,docId){
+  const tmp=document.createElement('div');
+  tmp.innerHTML=renderBody(c.body,pkg,docId).html;
+  return tmp.textContent;
+}
+function userTextHtml(text){
+  return esc(text).trim().split(/\n{2,}/).map(p=>p.replace(/\n/g,'<br>')).join('</p><p>');
+}
+
+function renderDoc(pkg,docId,opts){
+  const chrome = !opts || opts.chrome!==false;
   const d=pkg.docs.find(x=>x.id===docId);
   if(!d||!d.included) return '<div class="empty">This document was evaluated and excluded from the package.</div>';
   const a=pkg.answers;
@@ -1356,15 +1450,75 @@ function renderDoc(pkg,docId){
   for(const ar of d.arts){
     h+=`<h2>${esc(ar.label)}${ar.heading?' — '+esc(ar.heading):''}</h2>`;
     for(const c of ar.clauses){
-      const r=renderBody(c.body,pkg,docId);
+      const key=d.id+':'+c.id;
+      const edited=Object.prototype.hasOwnProperty.call(STATE.edits,key);
+      const r= edited ? {html:'<span>'+userTextHtml(STATE.edits[key])+'</span>'} : renderBody(c.body,pkg,docId);
       const ct=condText(c.condition);
-      const badge = ct ? `<span class="cond" title="${esc(ct.why)}">IF ${esc(ct.label)}</span>` : '';
+      const badge = ct && !edited ? `<span class="cond" title="${esc(ct.why)}">IF ${esc(ct.label)}</span>` : '';
       const unver = c.unverified
         ? `<span class="unver" title="${esc(gateFor(c,TAX).blocking||'')}">unverified — ${esc((VLEVELS[c.verification]||{name:'no level'}).name.toLowerCase())}</span>` : '';
       const manual = STATE.added.has(c.id) && !isAuto(c)
         ? `<span class="cond" style="background:#dff3e6;border-color:#9ccbaf;color:#1c5c37">added from AI review</span>` : '';
-      if(ar.heading && !c.no) h+=`<p>${r.html}${badge}${manual}${unver}</p>`;
-      else h+=`<h3>${esc(c.no)} ${esc(c.title)}${badge}${manual}${unver}</h3><p>${r.html}</p>`;
+      const uchip = edited && chrome
+        ? `<span class="uchip" title="You rewrote this clause, so it no longer updates when your answers change. Edit it again to restore the template text.">edited by you</span>` : '';
+      /* In-place editor for this clause */
+      if(chrome && STATE.editingClause===key){
+        const cur = edited ? STATE.edits[key] : plainClauseText(c,pkg,docId);
+        h+=`<div class="clausewrap editing">`
+          +(ar.heading && !c.no ? '' : `<h3>${esc(c.no)} ${esc(c.title)}</h3>`)
+          +`<textarea class="editarea appchrome" data-ta="${esc(key)}">${esc(cur)}</textarea>
+          <div class="appchrome" style="display:flex;gap:8px;margin:7px 0 16px;flex-wrap:wrap">
+            <button class="mini primary" data-esave="${esc(key)}">Save</button>
+            <button class="mini" data-ecancel="1">Cancel</button>
+            ${edited?`<button class="mini" data-erestore="${esc(key)}">Restore the template text</button>`:''}
+          </div></div>`;
+        continue;
+      }
+      const bar = chrome
+        ? `<span class="editbar appchrome">
+            <button data-eclause="${esc(key)}" title="Edit this clause">✎ Edit</button>
+            <button data-mv="${esc(key)}|-1" title="Move up within its section">▲</button>
+            <button data-mv="${esc(key)}|1" title="Move down within its section">▼</button>
+            <button data-rclause="${esc(key)}" title="Remove from this document (you can restore it below)">✕</button>
+          </span>` : '';
+      const open=chrome?`<div class="clausewrap">`:'', close=chrome?`</div>`:'';
+      if(ar.heading && !c.no) h+=`${open}${bar}<p>${r.html}${badge}${manual}${unver}${uchip}</p>${close}`;
+      else h+=`${open}${bar}<h3>${esc(c.no)} ${esc(c.title)}${badge}${manual}${unver}${uchip}</h3><p>${r.html}</p>${close}`;
+    }
+  }
+  /* Paragraphs the user wrote themselves. Part of the document — they export. */
+  const blocks=STATE.userBlocks[d.id]||[];
+  if(blocks.length || (chrome && STATE.editingBlock)){
+    h+=`<h2>ADDITIONAL TERMS</h2>`;
+    for(const bl of blocks){
+      if(chrome && STATE.editingBlock===bl.id){
+        h+=`<div class="clausewrap editing appchrome-keep">
+          <input class="titlearea appchrome" data-bt="${esc(bl.id)}" placeholder="Heading (optional)" value="${esc(bl.title)}">
+          <textarea class="editarea appchrome" data-ba="${esc(bl.id)}" placeholder="Write your paragraph. It goes into the document exactly as you write it.">${esc(bl.text)}</textarea>
+          <div class="appchrome" style="display:flex;gap:8px;margin:7px 0 16px">
+            <button class="mini primary" data-bsave="${esc(bl.id)}" data-doc="${esc(d.id)}">Save</button>
+            <button class="mini" data-bdel="${esc(bl.id)}" data-doc="${esc(d.id)}">Delete</button>
+          </div></div>`;
+        continue;
+      }
+      const bar = chrome
+        ? `<span class="editbar appchrome"><button data-bedit="${esc(bl.id)}" title="Edit">✎ Edit</button>
+           <button data-bdel="${esc(bl.id)}" data-doc="${esc(d.id)}" title="Delete this paragraph">✕</button></span>` : '';
+      const open=chrome?`<div class="clausewrap">`:'', close=chrome?`</div>`:'';
+      const uchip = chrome ? `<span class="uchip" title="You wrote this paragraph. DRAFT did not draft or check it.">written by you</span>` : '';
+      h+=`${open}${bar}${bl.title?`<h3>${esc(bl.title)}${uchip}</h3><p>${userTextHtml(bl.text)}</p>`
+                                 :`<p>${userTextHtml(bl.text)}${uchip}</p>`}${close}`;
+    }
+  }
+  if(chrome){
+    h+=`<div class="tray appchrome" style="border-style:solid;background:#fdfbf4;text-align:center">
+      <button class="mini" data-addblock="${esc(d.id)}">+ Add your own paragraph</button></div>`;
+    const removedHere=[...STATE.removedCl].filter(k=>k.startsWith(d.id+':'))
+      .map(k=>CLAUSES.find(c=>c.id===k.slice(d.id.length+1))).filter(Boolean);
+    if(removedHere.length){
+      h+=`<div class="tray appchrome"><b>Removed by you</b> — not in the document or its exports; restore any of them:<br>`
+        +removedHere.map(c=>`<button class="mini" data-restorecl="${esc(d.id+':'+c.id)}">↩ ${esc(c.title)}</button>`).join(' ')
+        +`</div>`;
     }
   }
   if(d.withheld && d.withheld.length){
@@ -1823,12 +1977,17 @@ function runConsistency(pkg){
   const C=[], all=includedClauses(pkg), a=pkg.answers;
   const corpus=all.map(c=>c.body).join(' ');
 
-  /* 1. cross-references */
+  /* 1. cross-references. A reference can break two ways and the blame differs: the engine
+     assembled a dangling reference (template fault), or the user removed the section being
+     referred to (their call — say so, and point at the fix). */
   const br=brokenRefs(pkg);
+  const userRemovedIds=new Set([...STATE.removedCl].map(k=>k.slice(k.indexOf(':')+1)));
+  const brUser=br.filter(b=>userRemovedIds.has(b.id)), brTpl=br.filter(b=>!userRemovedIds.has(b.id));
   C.push(br.length
     ? ['fail','Cross-reference validation',
-       br.map(b=>`“${b.from.title}” (${b.from.docTitle}) references clause <span class="mono">${b.id}</span>, which is not in this package.`).join('<br>')
-       +'<br><span style="opacity:.75">This is a real defect in the assembly logic, left in deliberately so this check has something to catch: a clause that is always included references a clause that is only conditionally included. The production fix is to make the reference itself conditional, or to validate the reference graph at assembly time and fail the build — not to rely on a downstream checker.</span>']
+       brTpl.map(b=>`“${b.from.title}” (${b.from.docTitle}) references clause <span class="mono">${b.id}</span>, which is not in this package.`).join('<br>')
+       +(brTpl.length?'<br><span style="opacity:.75">This is a real defect in the assembly logic, left in deliberately so this check has something to catch: a clause that is always included references a clause that is only conditionally included. The production fix is to make the reference itself conditional, or to validate the reference graph at assembly time and fail the build — not to rely on a downstream checker.</span>':'')
+       +(brUser.length?(brTpl.length?'<br><br>':'')+brUser.map(b=>`“${b.from.title}” (${b.from.docTitle}) refers to a section <b>you removed</b> (<span class="mono">${b.id}</span>). Restore that section from the “Removed by you” tray, or edit the referring clause to drop the reference.`).join('<br>'):'')]
     : ['pass','Cross-reference validation',`All ${(corpus.match(/<<xr:/g)||[]).length} cross-references resolve to a section that exists in the package.`]);
 
   /* 2. attachments referenced but not generated — clauses declare what they provide */
@@ -2179,7 +2338,7 @@ function docFilename(d,ext){
    renderer to keep a secret. */
 function documentMarkup(paperEl){
   const clone = paperEl.cloneNode(true);
-  clone.querySelectorAll('.unver, .withheld, .cond, .wc').forEach(n=>n.remove());
+  clone.querySelectorAll('.unver, .withheld, .cond, .wc, .appchrome, .editbar, .uchip, .tray').forEach(n=>n.remove());
   return clone.innerHTML;
 }
 
@@ -2226,6 +2385,9 @@ function renderExportBar(){
         ? 'PDF opens your browser\u2019s print dialog \u2014 choose \u201cSave as PDF\u201d.'
         : 'Word is recommended here so you can keep editing.'}</span>`;
   $$('#exportbar [data-x]').forEach(b=>b.onclick=()=>{
+    /* If a clause is mid-edit its body is sitting in a textarea, which exports as nothing.
+       Close the editor first so the document is whole. */
+    if(STATE.editingClause || STATE.editingBlock){ STATE.editingClause=null; STATE.editingBlock=null; renderPackage(); }
     const paper = $('#paper');
     if(b.dataset.x === 'word') download(wordBlob(documentMarkup(paper), d.title), docFilename(d,'doc'));
     else if(b.dataset.x === 'html') download(htmlBlob(documentMarkup(paper), d.title), docFilename(d,'html'));
@@ -2271,7 +2433,71 @@ function renderPackage(){
   const d=pkg.docs.find(x=>x.id===STATE.activeDoc);
   $('#docTitle').innerHTML=`${esc(d?d.title:'Generated document')} <span class="h">${d?esc(d.clauses.length)+' clauses assembled':''}</span>`;
   $('#paper').innerHTML=renderDoc(pkg,STATE.activeDoc);
-  bindTerms();
+  bindTerms(); bindEditor();
+}
+
+/* ---------- the user's hands on the document ---------- */
+function moveClause(docId,cid,dir){
+  const d=STATE.pkg.docs.find(x=>x.id===docId); if(!d) return;
+  const ids=d.arts.flatMap(ar=>ar.clauses.map(c=>c.id));
+  const me=d.clauses.find(c=>c.id===cid); if(!me) return;
+  /* Moves stay inside the clause's own section so the grouping (and numbering) keeps
+     making sense; a clause that should live elsewhere is a remove-and-add decision. */
+  const groupIds=ids.filter(id=>{ const c=d.clauses.find(x=>x.id===id); return c && c.group===me.group; });
+  const gi=groupIds.indexOf(cid), ni=gi+dir;
+  if(gi<0 || ni<0 || ni>=groupIds.length) return;
+  const swapped=[...ids], ai=swapped.indexOf(cid), bi=swapped.indexOf(groupIds[ni]);
+  [swapped[ai],swapped[bi]]=[swapped[bi],swapped[ai]];
+  STATE.orderNudge[docId]=swapped;
+  regenerate();
+}
+
+function bindEditor(){
+  const P='#paper ';
+  $$(P+'[data-eclause]').forEach(b=>b.onclick=()=>{
+    STATE.editingClause=b.dataset.eclause; STATE.editingBlock=null; renderPackage();
+    const ta=$(P+'textarea[data-ta]'); if(ta) ta.focus();
+  });
+  $$(P+'[data-esave]').forEach(b=>b.onclick=()=>{
+    const ta=$(P+'textarea[data-ta]');
+    if(ta && ta.value.trim()) STATE.edits[b.dataset.esave]=ta.value;
+    STATE.editingClause=null; regenerate();
+  });
+  $$(P+'[data-ecancel]').forEach(b=>b.onclick=()=>{ STATE.editingClause=null; renderPackage(); });
+  $$(P+'[data-erestore]').forEach(b=>b.onclick=()=>{
+    delete STATE.edits[b.dataset.erestore]; STATE.editingClause=null; regenerate();
+  });
+  $$(P+'[data-rclause]').forEach(b=>b.onclick=()=>{
+    STATE.removedCl.add(b.dataset.rclause); STATE.editingClause=null; regenerate();
+  });
+  $$(P+'[data-restorecl]').forEach(b=>b.onclick=()=>{ STATE.removedCl.delete(b.dataset.restorecl); regenerate(); });
+  $$(P+'[data-mv]').forEach(b=>b.onclick=()=>{
+    const [key,dir]=b.dataset.mv.split('|');
+    const docId=key.slice(0,key.indexOf(':')), cid=key.slice(key.indexOf(':')+1);
+    moveClause(docId,cid,+dir);
+  });
+  $$(P+'[data-addblock]').forEach(b=>b.onclick=()=>{
+    const docId=b.dataset.addblock;
+    const bl={id:'ub_'+Date.now().toString(36)+Math.floor(Math.random()*1e6).toString(36), title:'', text:''};
+    (STATE.userBlocks[docId] ||= []).push(bl);
+    STATE.editingBlock=bl.id; STATE.editingClause=null; renderPackage();
+    const ta=$(P+'textarea[data-ba]'); if(ta) ta.focus();
+  });
+  $$(P+'[data-bedit]').forEach(b=>b.onclick=()=>{ STATE.editingBlock=b.dataset.bedit; renderPackage(); });
+  $$(P+'[data-bsave]').forEach(b=>b.onclick=()=>{
+    const blocks=STATE.userBlocks[b.dataset.doc]||[];
+    const bl=blocks.find(x=>x.id===b.dataset.bsave); if(!bl) return;
+    bl.title=($(P+'input[data-bt]')||{value:''}).value.trim();
+    bl.text=($(P+'textarea[data-ba]')||{value:''}).value;
+    if(!bl.text.trim()) STATE.userBlocks[b.dataset.doc]=blocks.filter(x=>x.id!==bl.id);
+    STATE.editingBlock=null; renderPackage();
+    if(STATE.saveId) saveCurrent();
+  });
+  $$(P+'[data-bdel]').forEach(b=>b.onclick=()=>{
+    STATE.userBlocks[b.dataset.doc]=(STATE.userBlocks[b.dataset.doc]||[]).filter(x=>x.id!==b.dataset.bdel);
+    STATE.editingBlock=null; renderPackage();
+    if(STATE.saveId) saveCurrent();
+  });
 }
 
 /* plain-English hover — §3.2 */
@@ -2304,6 +2530,9 @@ function generate(){
   STATE.answers=JSON.parse(JSON.stringify(A));
   STATE.pkg=assemble(STATE.answers);
   STATE.activeDoc=STATE.pkg.docs.find(d=>d.included).id;
+  /* The user picked this template in the gallery, so it is what opens. */
+  if(STATE.templateTarget && STATE.pkg.docs.some(d=>d.id===STATE.templateTarget && d.included))
+    STATE.activeDoc=STATE.templateTarget;
   $$('.tab.needsdoc').forEach(t=>t.classList.remove('locked'));
   renderAllViews();
   saveCurrent();
@@ -2317,17 +2546,28 @@ function regenerate(focusClauseId){
     if(c && STATE.pkg.docs.some(d=>d.id===c.doc&&d.included)) STATE.activeDoc=c.doc;
   } else if(STATE.pkg.docs.some(d=>d.id===prev&&d.included)) STATE.activeDoc=prev;
   renderAllViews();
+  /* Every assembly change the user makes is saved now, not on the next timer tick —
+     an edit made ten seconds before closing the tab must not be the one that vanishes. */
+  if(STATE.saveId) saveCurrent();
 }
 
 function go(v){
   $$('.tab').forEach(t=>t.classList.toggle('active',t.dataset.v===v));
   $$('.view').forEach(s=>s.classList.toggle('active',s.id==='view-'+v));
+  /* The KPI strip is engine telemetry — shown with the engineering views, stowed on the
+     product-facing ones. */
+  $('#kpis').classList.toggle('offstage', v!=='qa' && v!=='engine');
   window.scrollTo({top:0,behavior:'smooth'});
 }
 $$('.tab').forEach(t=>t.onclick=()=>{
-  if(t.classList.contains('locked')) return;
+  if(t.classList.contains('locked') || t.classList.contains('advtoggle')) return;
   go(t.dataset.v);
 });
+$('#advToggle').onclick=()=>{
+  const nowHidden = !$$('.tab.adv')[0].hidden;
+  $$('.tab.adv').forEach(t=>t.hidden=nowHidden);
+  $('#advToggle').textContent = nowHidden ? 'Advanced ▾' : 'Advanced ▴';
+};
 $('#genBtn').onclick=generate;
 $('#clauseQuery').oninput=()=>{ if(STATE.pkg) renderMissing(); };
 const DEMOS = {
@@ -2339,18 +2579,20 @@ const DEMOS = {
           comp:'salary',equityGrant:true,remote:true,industry:'saas',opState:'CA'}
 };
 $('#demoBtn').onclick=()=>{
-  A={...JSON.parse(JSON.stringify(DEFAULTS)), ...DEMOS[A.package]};
+  const pkg=A.package;
+  A={...JSON.parse(JSON.stringify(DEFAULTS)), ...DEMOS[pkg]};
   A.founderNames = A.founderNames && A.founderNames.length ? A.founderNames : Array.from({length:A.founders||1},()=>'Sample Founder');
-  STATE.added=new Set(); STATE.dismissed=new Set();
+  /* Demo answers are a fresh document, never an overwrite of whatever was open. */
+  STATE=freshState();
   renderWizard(); renderSidePanels(); generate();
 };
 $('#resetBtn').onclick=()=>{
   /* "New document": the saved copy of whatever was open stays in the store; this only
      detaches the working session from it so the next generate creates a fresh record. */
   A=JSON.parse(JSON.stringify(DEFAULTS));
-  STATE={answers:null,pkg:null,added:new Set(),dismissed:new Set(),activeDoc:null,saveId:null};
+  STATE=freshState();
   $$('.tab.needsdoc').forEach(t=>t.classList.add('locked'));
-  renderWizard(); renderSidePanels(); go('wizard');
+  renderWizard(); renderSidePanels(); go('templates');
 };
 
 $('#disc').innerHTML=`<b>What this is.</b> A working implementation of the deterministic layer described in the
@@ -2426,7 +2668,9 @@ function snapshotName(a){
 }
 function currentSnapshot(){
   if(!STATE.pkg) return null;
-  return JSON.stringify({ a:STATE.answers, ad:[...STATE.added].sort(), di:[...STATE.dismissed].sort(), doc:STATE.activeDoc });
+  return JSON.stringify({ a:STATE.answers, ad:[...STATE.added].sort(), di:[...STATE.dismissed].sort(), doc:STATE.activeDoc,
+    fi:[...STATE.forceInclude].sort(), ed:STATE.edits, rm:[...STATE.removedCl].sort(),
+    ub:STATE.userBlocks, on:STATE.orderNudge, tt:STATE.templateTarget });
 }
 let LAST_SAVED_SNAP = null;
 
@@ -2446,6 +2690,12 @@ function saveCurrent(){
   rec.added     = [...STATE.added];
   rec.dismissed = [...STATE.dismissed];
   rec.activeDoc = STATE.activeDoc;
+  rec.forceInclude = [...STATE.forceInclude];
+  rec.templateTarget = STATE.templateTarget;
+  rec.edits     = JSON.parse(JSON.stringify(STATE.edits));
+  rec.removed   = [...STATE.removedCl];
+  rec.userBlocks = JSON.parse(JSON.stringify(STATE.userBlocks));
+  rec.orderNudge = JSON.parse(JSON.stringify(STATE.orderNudge));
   persistStore();
   LAST_SAVED_SNAP = currentSnapshot();
   markSaved(now);
@@ -2470,9 +2720,17 @@ function openDoc(id){
   const rec = storeDoc(id);
   if(!rec || rec.deletedAt) return;
   A = JSON.parse(JSON.stringify(rec.answers));
-  STATE = { answers: JSON.parse(JSON.stringify(rec.answers)), pkg:null,
-            added:new Set(rec.added||[]), dismissed:new Set(rec.dismissed||[]),
-            activeDoc:null, saveId:rec.id };
+  STATE = freshState();
+  STATE.answers = JSON.parse(JSON.stringify(rec.answers));
+  STATE.added = new Set(rec.added||[]);
+  STATE.dismissed = new Set(rec.dismissed||[]);
+  STATE.saveId = rec.id;
+  STATE.forceInclude = new Set(rec.forceInclude||[]);
+  STATE.templateTarget = rec.templateTarget||null;
+  STATE.edits = JSON.parse(JSON.stringify(rec.edits||{}));
+  STATE.removedCl = new Set(rec.removed||[]);
+  STATE.userBlocks = JSON.parse(JSON.stringify(rec.userBlocks||{}));
+  STATE.orderNudge = JSON.parse(JSON.stringify(rec.orderNudge||{}));
   STATE.pkg = assemble(STATE.answers);
   const wanted = rec.activeDoc && STATE.pkg.docs.some(d=>d.id===rec.activeDoc && d.included) ? rec.activeDoc : null;
   STATE.activeDoc = wanted || STATE.pkg.docs.find(d=>d.included).id;
@@ -2633,6 +2891,97 @@ function renderHome(){
   const st=$('#homeStart2'); if(st) st.onclick=()=>go('wizard');
 }
 
+/* =====================================================================
+   TEMPLATE GALLERY — the front door. DRAFT offers; the user picks.
+   ===================================================================== */
+let GALLERY_CAT='all', GALLERY_Q='', PREVIEW_ID=null;
+
+function galleryTitle(d){
+  const n=d.name;
+  if(typeof n==='string') return n;
+  if(n.const) return n.const;
+  if(n.template) return n.template.replace(/\s*—.*$/,'');
+  return d.label;   /* taxonomy-resolved names depend on answers; the label is the generic name */
+}
+function galleryDesc(d){
+  /* The rationale's first half explains the inclusion rule; the half after the dash
+     describes the document itself, which is what a browsing user needs. */
+  const r=String(d.rationale||''), i=r.indexOf('— ');
+  const s=(i>=0?r.slice(i+2):r).trim();
+  return s ? s[0].toUpperCase()+s.slice(1) : d.label;
+}
+
+function renderGallery(){
+  const root=$('#gallery'); if(!root) return;
+  const cats=[['all','All templates'],...Object.entries(TAX.packages).map(([k,v])=>[k,v.name])];
+  const q=GALLERY_Q.toLowerCase();
+  const docs=DOCS.filter(d=>GALLERY_CAT==='all'||d.package===GALLERY_CAT)
+    .filter(d=>!q || galleryTitle(d).toLowerCase().includes(q) || d.label.toLowerCase().includes(q)
+                 || galleryDesc(d).toLowerCase().includes(q));
+  root.innerHTML=`<div class="card">
+    <h3>Pick a template <span class="h">you choose what goes in — DRAFT only offers options</span></h3>
+    <div class="gallerybar">${cats.map(([k,l])=>`<div class="catchip ${GALLERY_CAT===k?'sel':''}" data-cat="${k}">${esc(l)}</div>`).join('')}
+      <input class="cq" style="flex:1;min-width:180px;margin:0" id="galleryQ" placeholder="Search templates" value="${esc(GALLERY_Q)}"></div>
+    ${docs.length?`<div class="tplgrid">${docs.map(d=>{
+      const meta=((CORPUS.templateMeta||{}).documents||{})[d.id]||{};
+      const nCl=CLAUSES.filter(c=>inDoc(c,d.id)).length;
+      const mins=meta.estimatedMinutes?` · ~${meta.estimatedMinutes[0]}–${meta.estimatedMinutes[1]} min`:'';
+      return `<div class="tpl"><div class="ticon">${d.icon}</div>
+        <div class="tname">${esc(galleryTitle(d))}</div>
+        <div class="tdesc">${esc(galleryDesc(d))}</div>
+        <div class="tmeta">${esc(pkgLabel(d.package))} · ${nCl} clauses on offer${mins}</div>
+        <div class="tacts"><button class="mini primary" data-use="${esc(d.id)}">Use this template</button>
+          <button class="mini" data-prev="${esc(d.id)}">Preview</button></div></div>`;}).join('')}</div>`
+    :`<div class="emptystate">We couldn’t find that. Try “agreement” or “policy”, or browse a category above.</div>`}
+    <div class="note">Every template is jurisdiction-neutral. What ends up in your document is your choice —
+      the wizard fills in names and details, Clause options offers more, and once generated every clause on the
+      page can be edited, moved, or removed.</div></div>`;
+  $$('#gallery [data-cat]').forEach(el=>el.onclick=()=>{ GALLERY_CAT=el.dataset.cat; renderGallery(); });
+  $$('#gallery [data-use]').forEach(el=>el.onclick=()=>chooseTemplate(el.dataset.use));
+  $$('#gallery [data-prev]').forEach(el=>el.onclick=()=>previewTemplate(el.dataset.prev));
+  const gq=$('#galleryQ');
+  if(gq) gq.oninput=()=>{ GALLERY_Q=gq.value; renderGallery();
+    const el=$('#galleryQ'); el.focus(); el.setSelectionRange(el.value.length,el.value.length); };
+}
+
+function chooseTemplate(id){
+  const d=DOCS.find(x=>x.id===id); if(!d) return;
+  /* Picking a template starts a new document; whatever was open stays saved in the store. */
+  A=JSON.parse(JSON.stringify(DEFAULTS));
+  A.package=d.package;
+  STATE=freshState();
+  STATE.templateTarget=id;
+  STATE.forceInclude.add(id);
+  $$('.tab.needsdoc').forEach(t=>t.classList.add('locked'));
+  $('#preview').hidden=true;
+  renderWizard(); renderSidePanels(); go('wizard');
+}
+
+function previewTemplate(id){
+  const d=DOCS.find(x=>x.id===id); if(!d) return;
+  PREVIEW_ID=id;
+  const demo={...JSON.parse(JSON.stringify(DEFAULTS)), ...DEMOS[d.package]};
+  demo.founderNames = demo.founderNames && demo.founderNames.length ? demo.founderNames : ['Jordan Sample','Riley Example'];
+  /* Render against a clean assembly state so the preview shows the template, not the
+     current session's edits. Swapped back immediately — nothing the user did is touched. */
+  const keep={added:STATE.added, rm:STATE.removedCl, fi:STATE.forceInclude, ed:STATE.edits, ub:STATE.userBlocks, on:STATE.orderNudge};
+  STATE.added=new Set(); STATE.removedCl=new Set(); STATE.forceInclude=new Set([id]);
+  STATE.edits={}; STATE.userBlocks={}; STATE.orderNudge={};
+  let html;
+  try { html=renderDoc(assemble(demo), id, {chrome:false}); }
+  finally {
+    STATE.added=keep.added; STATE.removedCl=keep.rm; STATE.forceInclude=keep.fi;
+    STATE.edits=keep.ed; STATE.userBlocks=keep.ub; STATE.orderNudge=keep.on;
+  }
+  $('#previewHead').innerHTML=`<h2 style="margin:0 0 4px">${esc(galleryTitle(d))} — sample preview</h2>
+    <div class="sub">Filled with example answers so you can see the finished shape. Your answers replace every highlighted field.</div>`;
+  $('#previewPaper').innerHTML=html;
+  $('#preview').hidden=false;
+  $('#preview').scrollTop=0;
+}
+$('#previewClose').onclick=()=>{ $('#preview').hidden=true; };
+$('#previewUse').onclick=()=>{ if(PREVIEW_ID) chooseTemplate(PREVIEW_ID); };
+
 /* ---------- onboarding welcome — §1 ---------- */
 const WELCOME_KEY = 'draft.welcomed.v1';
 const WELCOME_CHOICES = [
@@ -2645,9 +2994,10 @@ function showWelcome(){
     `<div class="choice" data-i="${i}"><b>${esc(c.label)}</b><div class="d">${esc(c.d)}</div></div>`).join('');
   $$('#welcomeChoices .choice').forEach(el=>el.onclick=()=>{
     const c = WELCOME_CHOICES[+el.dataset.i];
-    A.package = c.pkg;
-    renderWizard(); renderSidePanels();
-    closeWelcome(); go('wizard');
+    /* Land on the gallery filtered to their situation — they pick the template. */
+    GALLERY_CAT = c.pkg;
+    renderGallery();
+    closeWelcome(); go('templates');
   });
   $('#welcome').hidden = false;
 }
@@ -2677,13 +3027,14 @@ addEventListener('keydown', e=>{
     if(STATE.pkg) saveCurrent();
     return;
   }
-  if(e.key==='Escape'){ toggleShortcuts(false); $('#welcome').hidden=true; return; }
+  if(e.key==='Escape'){ toggleShortcuts(false); $('#welcome').hidden=true; $('#preview').hidden=true; return; }
   if(e.key==='?' && !typing) toggleShortcuts();
 });
 
 /* init */
 $$('.tab.needsdoc').forEach(t=>t.classList.add('locked'));
-renderWizard(); renderSidePanels(); renderHome(); maybeWelcome();
+$('#kpis').classList.add('offstage');
+renderWizard(); renderSidePanels(); renderHome(); renderGallery(); maybeWelcome();
 </script>
 </body>
 </html>

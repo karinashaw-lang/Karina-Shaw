@@ -28,11 +28,18 @@ client-side. Everything marked **built** is covered by `templates/tools/platform
 - §7 export PDF (print-to-PDF), export Word, print stylesheet with page-break handling
 - §7/§16 disclaimer footer on every export (see conflicts below)
 
+## Built in the second pass (Canva-shape: user picks, user assembles)
+
+| Spec § | Feature | How it landed |
+|---|---|---|
+| 3 | Template gallery: category grid, search, preview-before-select, cards with clause counts and estimated time | New Templates tab, generated from the corpus. Preview renders a completed sample (demo answers) with no editing chrome. "Use this template" starts a fresh document and generate opens *that* template — a gallery pick force-includes the document even where the package rule would have excluded it, because the user picked it |
+| — | Editable canvas | Every clause on the page: ✎ edit (textarea seeded with the resolved text; edited clauses are labeled "edited by you — no longer updates from answers", restorable to template text), ✕ remove (goes to a visible "Removed by you" tray, restorable; removal happens in assembly so numbering, the withheld banner, and cross-references stay consistent), ▲▼ move within its own section, "+ Add your own paragraph" (labeled "written by you", exports under ADDITIONAL TERMS) |
+| — | Product-shaped UI | Gallery + Fill in + Editor + Clause options are the visible product; Consistency & QA and Engine Internals sit behind an "Advanced" toggle; the KPI strip shows only on engineering views. Welcome choices land on the gallery filtered to the situation |
+| — | Immediate save on assembly actions | Every edit/remove/move/add saves to the store at once, not on the next 10 s tick — found by the Playwright drive as a real loss path |
+| — | Consistency checker knows whose fault a broken reference is | A reference broken because the user removed the target section is blamed on the removal, with the restore path named — not reported as an engine defect |
+
 ## Client-side possible, not built (candidates for a later pass)
 
-- §3 template gallery as its own browsing surface (category grid, filters, sort, favorites,
-  preview-before-select). The wizard's package choice covers discovery for 3 packages;
-  a gallery earns its keep when the template count grows.
 - §4 document info panel (word/page count), export history log, bulk actions
 - §5 named version history, zoom, fullscreen, dark mode (the page is dark; a light theme
   for the editor canvas would be the real feature), reading time
@@ -40,6 +47,7 @@ client-side. Everything marked **built** is covered by `templates/tools/platform
   straightforward next step on top of the document store)
 - §15 local usage stats (documents created, by template)
 - §4 duplicate detection — fuzzy similarity; skipped as low-value guesswork
+- Gallery sort options and favorites-on-templates (§3) — worth it as the template count grows
 
 ## Needs a backend, an account system, or a payments provider — out of prototype scope
 

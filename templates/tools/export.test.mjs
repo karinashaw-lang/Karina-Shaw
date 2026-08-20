@@ -55,8 +55,10 @@ console.log('the disclaimer travels with the document');
 console.log('application chrome is removed, not hidden');
 {
   t('markup is cloned and stripped before export', /function documentMarkup\(/.test(code));
+  /* The selector is pinned on purpose: extending it (as the editable canvas did with its
+     .appchrome/.editbar/.uchip/.tray) must be a deliberate edit here, never a drive-by. */
   t('and the badges are removed from the DOM',
-     /querySelectorAll\('\.unver, \.withheld, \.cond, \.wc'\)\.forEach\(n=>n\.remove\(\)\)/.test(code));
+     /querySelectorAll\('\.unver, \.withheld, \.cond, \.wc, \.appchrome, \.editbar, \.uchip, \.tray'\)\.forEach\(n=>n\.remove\(\)\)/.test(code));
   /* The regression this guards: relying on CSS to hide them shipped the text anyway. */
   t('the Word stylesheet no longer pretends to hide them with a rule',
      !/\.cond,\.unver,\.wc,\.withheld\{display:none\}/.test(noComments));
