@@ -55,26 +55,29 @@ the parked clauses: nothing in this corpus gets to claim a legal fact without a 
 363 clauses across 28 documents — 245 across 17 right after the narrowing, plus 11
 jurisdiction-neutral documents added since (property, money, partnership, two short-form
 agreements, a proposal, an invoice, a business plan). **57 of the 363 currently assert law**
-(`assertsLaw: true` — itself still `heuristic-unreviewed`; see Open items). Two have been
+(`assertsLaw: true` — itself still `heuristic-unreviewed`; see Open items). Three have been
 checked against a real source: `b83_instructions`, rebuilt 2026-08-19 from eCFR,
-uscode.house.gov and two CourtListener opinions (`multi-cited`), and `ipa_wfh`, checked
+uscode.house.gov and two CourtListener opinions (`multi-cited`); `ipa_wfh`, checked
 2026-08-20 against two CourtListener opinions alone since every statutory host was blocked
 that day — its central claim (that a founder's work is automatically work made for hire) was
-found **contradicted** by Reid v. CCNV's actual holding, recorded honestly rather than
-smoothed over; see `verification/findings/ipa_wfh.json`. The other 55 have never been checked
-— `npm run queue` orders them by consequence. None of the five clauses named above are among
-them; they are gone from the live set. Findings for clauses that are gone live in
-`verification/findings-parked-california/`, not `verification/findings/` — `findings.mjs`
-refuses to run at all if any file in the live directory names a clause outside the corpus.
+found **contradicted** by Reid v. CCNV's actual holding; and `emp_overtime`, same day, same
+method — its base rule (time and a half over 40 hours) held up, but its unconditional "must be
+paid whether or not authorized" claim omits the real knowledge condition *Forrester* and *Chao*
+both turn on, recorded as a gap. Neither ipa_wfh nor emp_overtime were smoothed over; see
+`verification/findings/`. The other 54 have never been checked — `npm run queue` orders them
+by consequence. None of the five clauses named above are among them; they are gone from the
+live set. Findings for clauses that are gone live in `verification/findings-parked-california/`,
+not `verification/findings/` — `findings.mjs` refuses to run at all if any file in the live
+directory names a clause outside the corpus.
 
 ## The strategy, decided
 
 **Do not repair the authority clauses one at a time.** Rebuild them from the statutory
 text. Read the section, write the clause from what it says, cite it. `b83_instructions` is
 what that looks like done — the only clause in the live corpus this has happened to (`ipa_wfh`
-is a partial case: real evidence, but case law alone, and its claim did not hold up). 55 more
-remain unchecked. Rebuilding is cheaper than investigating clause-by-clause, and it removes the
-from-memory contamination instead of patching around it.
+and `emp_overtime` are partial cases: real evidence, but case law alone since the statute hosts
+stay blocked). 54 more remain unchecked. Rebuilding is cheaper than investigating
+clause-by-clause, and it removes the from-memory contamination instead of patching around it.
 
 The 306 drafting clauses are a different problem — they assert no law, so there is nothing
 to verify. They need a named lawyer, and `npm run packet` produces what that person works
@@ -157,12 +160,12 @@ gets fabricated around a block; report it.
    not the mechanics: ea_ip's deferral entry points to `ipa_state_carveout` for its statutory
    content, and that clause is parked, so the content isn't actually anywhere in the shipped
    corpus — flagged in the proposals commit, not fixed.
-2. **55 of the 57 currently-shipped authority clauses have never been checked** (only
-   `b83_instructions` and `ipa_wfh` have). `npm run queue` orders them by consequence.
-   `ipa_wfh`'s check (2026-08-20) used the CourtListener MCP connector, which works
-   regardless of the egress proxy — real case law, no statute text, real citations
-   contradicted the clause's central claim rather than confirming it. Same tool, same
-   method, is available for any of the other 55 right now.
+2. **54 of the 57 currently-shipped authority clauses have never been checked** (only
+   `b83_instructions`, `ipa_wfh` and `emp_overtime` have). `npm run queue` orders them by
+   consequence. The latter two (2026-08-20) used the CourtListener MCP connector, which
+   works regardless of the egress proxy — real case law, no statute text. One found a
+   contradiction, one found a gap; neither was smoothed into a false upgrade. Same tool,
+   same method, is available for any of the other 54 right now.
 3. **1 validator warning**: `LAW_TALK_IN_DRAFTING` on `sh_return_property` — a clause
    classified as drafting whose body talks like it's citing a legal requirement. The old
    "citations that name a body of law but no provision" problem this item used to describe
