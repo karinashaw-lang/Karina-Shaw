@@ -70,14 +70,26 @@ schedule.
 ## First actions in a new session
 
 ```
-npm run probe        # is egress open? 17 hosts, all 403 as of 2026-08-18
-npm test             # 14 suites
-npm run check        # validator + build sync
-npm run preview      # what applying the classification would change
+npm run probe            # is egress open? re-measure every session, do not trust a stale note here
+npm run probe:reference  # same, for the practice-corroboration hosts (Common Paper, YC, SBA, CFPB)
+npm test                 # 24 suites
+npm run check            # validator + build sync
+npm run preview          # what applying the classification would change
 ```
 
-If `probe` still reports refusals, egress was not opened — see `verification/EGRESS.md`.
-Nothing can be verified until it is; do not fabricate around it.
+Egress opened 2026-08-20: `leginfo.legislature.ca.gov` and 11 other primary/reference hosts
+are reachable (`npm run probe` / `probe:reference`). The same day, a real bug was found and
+fixed in `verify.mjs`'s `decideLevel` — it checked for `hostKind==='primary'`, a value that
+can never occur, which made `primary-verified` structurally unreachable regardless of
+evidence; a second bug (`gatherCitationEvidence` now tries every configured host for a
+citation, not just the first that succeeds) was fixed the same day for the same reason.
+`npm run verify` (dry run) has been run once since both fixes: 9 clauses carry a raw
+citation, 11 real fetches, 0 upgrades — most of those 9 have only one citation on file, so
+even with every host reachable and tried, they cannot reach `corroborated` (needs 2 distinct
+hosts) until a second, genuinely independent citation is added. See
+`verification/last-run.json` for the evidence trail and recent git log for the two fixes.
+If `probe` now reports refusals again, something changed — see `verification/EGRESS.md` for
+how to open it. Nothing gets fabricated around a block; report it.
 
 ## Open items
 
