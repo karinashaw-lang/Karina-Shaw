@@ -119,6 +119,16 @@ export function tierOf(url){
 
 export const isPrimary = url => ['publisher','agency'].includes(tierOf(url));
 
+/* The same publisher/agency test, but for code that already has a host's KIND (a string
+   like 'publisher', 'agency', 'mirror') rather than a URL to classify — verify.mjs and
+   probe-sources.mjs both need this and previously each reimplemented it themselves. One of
+   those reimplementations checked `kind === 'primary'`, a value that string never actually
+   takes (kinds are publisher/agency/mirror/control) — so the check was permanently false
+   and the verification pipeline could never reach `primary-verified`, no matter how much
+   real evidence it gathered, for as long as the bug existed. Single source now. */
+export const PRIMARY_KINDS = ['publisher', 'agency'];
+export const isPrimaryKind = kind => PRIMARY_KINDS.includes(kind);
+
 /* The standard, as a function.
 
    Two primary sources means two DISTINCT primary hosts. Two pages on leginfo are one

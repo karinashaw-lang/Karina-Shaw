@@ -1,12 +1,26 @@
 /* Asserts the property that matters: verify.mjs cannot upgrade a clause without
    evidence it actually obtained. Every case here is a way the pipeline could have
-   been written to leak an upgrade. Run: node templates/tools/verify.test.mjs */
+   been written to leak an upgrade. Run: node templates/tools/verify.test.mjs
+
+   This file used to hand-write hostKind:'primary' directly into fake evidence objects —
+   a value fetchEvidence() can never actually produce (it only ever sets 'publisher',
+   'agency', 'mirror', or 'unknown', read from registry.json's hostKinds). decideLevel's
+   own check for the literal string 'primary' matched that fake value perfectly and never
+   matched anything a real fetch could return, so the pipeline could never reach
+   primary-verified no matter what evidence came in — and this suite reported all green
+   the entire time, because the test and the bug agreed with each other. Fixed by making
+   the fakes use real kind values, and adding a check below that a real registry.json kind
+   is what decideLevel actually recognizes. */
+import fs from 'node:fs';
+import path from 'node:path';
 import {decideLevel, hostsFor, fetchEvidence} from './verify.mjs';
+import {ROOT} from './corpus.mjs';
+import {isPrimaryKind} from './sources.mjs';
 
 let pass=0, fail=0;
 const t=(name,cond)=>{ if(cond){pass++;} else {fail++; console.log('  FAIL  '+name);} };
 
-const ok  = (host,kind='statute-mirror')=>({ok:true, url:`https://${host}/x`, hostKind:kind});
+const ok  = (host,kind='mirror')=>({ok:true, url:`https://${host}/x`, hostKind:kind});
 const bad = (reason)=>({ok:false, url:'https://blocked.example/x', reason});
 
 console.log('decideLevel — must not upgrade without evidence');
@@ -15,11 +29,34 @@ t('all fetches failed leaves level untouched',        decideLevel('single-source
 t('one good source is not corroboration',             decideLevel('single-source',[ok('a.com')])==='single-source');
 t('two good sources on the same host is not enough',  decideLevel('single-source',[ok('a.com'),ok('www.a.com')])==='single-source');
 t('two good sources on distinct hosts corroborates',  decideLevel('single-source',[ok('a.com'),ok('b.com')])==='corroborated');
-t('primary alone is not enough',                      decideLevel('single-source',[ok('leginfo.legislature.ca.gov','primary')])==='single-source');
-t('primary plus a second host verifies',              decideLevel('single-source',[ok('leginfo.legislature.ca.gov','primary'),ok('b.com')])==='primary-verified');
+t('primary alone is not enough',                      decideLevel('single-source',[ok('leginfo.legislature.ca.gov','publisher')])==='single-source');
+t('publisher plus a second host verifies',            decideLevel('single-source',[ok('leginfo.legislature.ca.gov','publisher'),ok('b.com')])==='primary-verified');
+t('agency plus a second host also verifies',          decideLevel('single-source',[ok('edd.ca.gov','agency'),ok('b.com')])==='primary-verified');
+t('a mirror plus a second host does NOT verify — a mirror is not primary',
+  decideLevel('single-source',[ok('law.justia.com','mirror'),ok('b.com')])==='corroborated');
 t('a failed primary does not count',                  decideLevel('single-source',[bad('http-403'),ok('b.com')])==='single-source');
 t('never downgrades an existing level',               decideLevel('primary-verified',[])==='primary-verified');
 t('never downgrades on partial evidence',             decideLevel('corroborated',[ok('a.com')])==='corroborated');
+
+console.log('decideLevel recognizes the SAME kinds fetchEvidence can actually produce');
+{
+  /* The real bug: a fictional kind in the test agreed with a fictional check in the code,
+     and neither was ever compared against what registry.json actually contains. This reads
+     the real file and proves every kind it uses either is or is not recognized correctly —
+     no more relying on a human to remember the two have to match. */
+  const reg = JSON.parse(fs.readFileSync(path.join(ROOT,'sources','registry.json'),'utf8'));
+  const realKinds = new Set(Object.values(reg.hostKinds));
+  t('registry.json actually contains publisher and agency kinds (or this check proves nothing)',
+    realKinds.has('publisher') && realKinds.has('agency'));
+  t('every publisher/agency kind in the real registry is recognized as primary',
+    [...realKinds].filter(k=>k==='publisher'||k==='agency').every(isPrimaryKind));
+  t('every mirror kind in the real registry is correctly NOT primary',
+    [...realKinds].filter(k=>k==='mirror').every(k=>!isPrimaryKind(k)));
+  t('the literal string "primary" — the old bug\'s check — is not itself a real kind',
+    !realKinds.has('primary'));
+  t('a clause with real evidence from a real publisher host actually reaches primary-verified',
+    decideLevel('single-source', [ok('leginfo.legislature.ca.gov', reg.hostKinds['leginfo.legislature.ca.gov']), ok('b.com','mirror')]) === 'primary-verified');
+}
 
 console.log('fetchEvidence — must reject anything that is not a real body');
 const stub = async()=>({ok:true, status:200, text:async()=>'<html></html>'});

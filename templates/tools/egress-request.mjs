@@ -10,6 +10,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {loadCorpus, ROOT} from './corpus.mjs';
 import {writeIfChanged, VOLATILE_FIELDS, VOLATILE_LINES} from './artifact.mjs';
+import {isPrimaryKind} from './sources.mjs';
 
 const reg = JSON.parse(fs.readFileSync(path.join(ROOT,'sources','registry.json'),'utf8'));
 const C = loadCorpus();
@@ -38,7 +39,10 @@ const rows = Object.entries(need)
   .sort((a,b) => b.citations - a.citations);
 
 const blocked = rows.filter(r => r.status !== 'reachable');
-const primary = blocked.filter(r => r.kind === 'primary');
+/* hostKinds values are 'publisher'/'agency'/'mirror' — never the literal string 'primary'.
+   That check made this list permanently empty, so the generated request always said no
+   primary host was routable even when one genuinely was. See sources.mjs's isPrimaryKind. */
+const primary = blocked.filter(r => isPrimaryKind(r.kind));
 
 const md = [
 '# Egress allowlist request',

@@ -7,6 +7,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {ROOT} from './corpus.mjs';
 import {writeIfChanged, VOLATILE_FIELDS, VOLATILE_LINES} from './artifact.mjs';
+import {isPrimaryKind} from './sources.mjs';
 
 const REG = path.join(ROOT,'sources','registry.json');
 const reg = JSON.parse(fs.readFileSync(REG,'utf8'));
@@ -44,7 +45,10 @@ else {
   console.log(`  reachable: ${reachable.length}  ${reachable.map(([h])=>h).join(', ')||'(none)'}`);
   console.log(`  blocked:   ${blocked.filter(([h])=>h!=='github.com').length}`);
   for(const [h,v] of blocked){ if(h!=='github.com') console.log(`    ${v.status.padEnd(12)} ${h}  (${v.kind})`); }
-  const anyPrimary = reachable.some(([h])=>reg.hostKinds[h]==='primary');
+  /* hostKinds values are 'publisher'/'agency'/'mirror' — never the literal string
+     'primary'. Checking for that string made this verdict permanently false regardless of
+     what was actually reachable; see sources.mjs's isPrimaryKind for the real test. */
+  const anyPrimary = reachable.some(([h])=>isPrimaryKind(reg.hostKinds[h]));
   console.log(anyPrimary
     ? '\nAt least one primary source is reachable — verification can proceed.'
     : '\nNo primary source is reachable. Verification cannot proceed in this environment;'

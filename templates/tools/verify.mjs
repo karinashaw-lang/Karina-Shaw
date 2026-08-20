@@ -19,6 +19,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {loadCorpus, ROOT} from './corpus.mjs';
 import {writeIfChanged, VOLATILE_FIELDS, VOLATILE_LINES} from './artifact.mjs';
+import {isPrimaryKind} from './sources.mjs';
 
 const args = process.argv.slice(2);
 const WRITE = args.includes('--write');
@@ -58,7 +59,11 @@ export function decideLevel(current, evidence){
   const rank = n => LEVELS[n].rank;
   const good = evidence.filter(e=>e.ok);
   const hosts = new Set(good.map(e=>{ try{ return new URL(e.url).host.replace(/^www\./,''); }catch{ return null; } }).filter(Boolean));
-  const primaries = good.filter(e=>e.hostKind==='primary');
+  /* hostKind is always 'publisher'/'agency'/'mirror'/'unknown' (from registry.json's
+     hostKinds, set in fetchEvidence below) — never the literal string 'primary'. Checking
+     for that string was a real bug: it made primaries permanently empty regardless of
+     evidence. isPrimaryKind is the one place that test now lives. */
+  const primaries = good.filter(e=>isPrimaryKind(e.hostKind));
 
   let proposed = current;
   if(good.length >= 2 && hosts.size >= 2) proposed = 'corroborated';

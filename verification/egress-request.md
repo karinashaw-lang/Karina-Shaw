@@ -13,11 +13,11 @@ denial or upstream failure)"* — for every host in this list. That is an organi
 egress policy decision, not a misconfiguration: the CA bundle, trust store, and proxy
 settings are all correct, and `github.com` reaches through the same path without error.
 
-Measured at 2026-08-17T06:54:05.875Z by `npm run probe`. Reproduce with `npm run audit`.
+Measured at 2026-08-20T20:15:42.983Z by `npm run probe`. Reproduce with `npm run audit`.
 
 ## Impact while blocked
 
-- 360 of 360 clauses sit below the release gate and cannot be drafted.
+- 347 of 347 clauses sit below the release gate and cannot be drafted.
 - `npm run verify` attempts every routable citation and upgrades nothing. Last run: 341 fetches, 341 HTTP 403.
 - The product generates empty documents, which is the correct output but not a shippable one.
 
@@ -25,25 +25,21 @@ Measured at 2026-08-17T06:54:05.875Z by `npm run probe`. Reproduce with `npm run
 
 | Host | Kind | Citations needing it | Covers | Current |
 |---|---|---:|---|---|
-| `law.justia.com` | mirror | 91 | statute, regulation, case | http-403 |
-| `codes.findlaw.com` | mirror | 85 | statute | http-403 |
-| `leginfo.legislature.ca.gov` | publisher | 78 | statute, session-law | http-403 |
 | `www.law.cornell.edu` | mirror | 7 | tax, regulation, statute | http-403 |
-| `library.municode.com` | mirror | 6 | ordinance | http-403 |
-| `codelibrary.amlegal.com` | mirror | 6 | ordinance | http-403 |
-| `govt.westlaw.com` | publisher | 5 | regulation | http-403 |
-| `www.dir.ca.gov` | agency | 4 | wage-order | http-403 |
 | `www.irs.gov` | agency | 3 | tax | http-403 |
 | `www.ecfr.gov` | publisher | 2 | regulation | http-403 |
 | `uscode.house.gov` | publisher | 2 | statute | http-403 |
-| `casetext.com` | mirror | 1 | case | http-403 |
-| `legiscan.com` | mirror | 1 | session-law | http-403 |
+| `leginfo.legislature.ca.gov` | publisher | 1 | statute | http-403 |
+| `law.justia.com` | mirror | 1 | statute | http-403 |
+| `codes.findlaw.com` | mirror | 1 | statute | http-403 |
 
 ## Minimum viable subset
 
 If the full list is not acceptable, the smallest set that unblocks meaningful progress is:
 
-- (no primary host is routable for this corpus — check the registry)
+- `www.irs.gov` — agency, needed by 3 citations (tax)
+- `www.ecfr.gov` — publisher, needed by 2 citations (regulation)
+- `uscode.house.gov` — publisher, needed by 2 citations (statute)
 
 One reachable primary source plus one reachable mirror is enough to move a clause to
 `corroborated`. `primary-verified` additionally requires a named human reviewer and is
