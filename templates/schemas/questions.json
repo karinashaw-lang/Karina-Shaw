@@ -61,10 +61,17 @@
       "id": "founders",
       "type": "choice",
       "default": 2,
-      "prompt": "How many founders?",
-      "help": "Drives transfer restrictions, buy-sell, and deadlock provisions.",
+      "prompt": "How many founders or partners?",
+      "help": "Drives transfer restrictions, buy-sell, and deadlock provisions — and the signature block.",
       "when": {
-        "rule": "pkg_formation"
+        "any": [
+          {
+            "rule": "pkg_formation"
+          },
+          {
+            "rule": "pkg_partnership"
+          }
+        ]
       },
       "options": {
         "literal": [
@@ -141,7 +148,14 @@
       "prompt": "Who is on the other side?",
       "help": "The counterparty’s legal name, used as a defined term throughout the contract set.",
       "when": {
-        "rule": "pkg_commercial"
+        "any": [
+          {
+            "rule": "pkg_commercial"
+          },
+          {
+            "rule": "pkg_agreements"
+          }
+        ]
       },
       "placeholder": "e.g. Acme Corporation"
     },
@@ -152,7 +166,14 @@
       "prompt": "Which side are you on?",
       "help": "Every cap, warranty, indemnity, and termination right flips with this answer.",
       "when": {
-        "rule": "pkg_commercial"
+        "any": [
+          {
+            "rule": "pkg_commercial"
+          },
+          {
+            "rule": "pkg_agreements"
+          }
+        ]
       },
       "options": {
         "taxonomy": "contractRoles"
@@ -399,8 +420,8 @@
       "type": "text",
       "default": "",
       "required": true,
-      "prompt": "Who is the tenant?",
-      "help": "The person renting the property. Used as the defined term “Tenant”.",
+      "prompt": "Who is the other person?",
+      "help": "The tenant on a lease, the subtenant on a sublease, or your roommate.",
       "when": {
         "rule": "pkg_property"
       },
@@ -597,6 +618,53 @@
           ]
         ]
       }
+    },
+    {
+      "id": "serviceDesc",
+      "type": "text",
+      "default": "",
+      "required": true,
+      "prompt": "What is the work?",
+      "help": "One plain sentence describing the services. It goes into the agreement exactly as you write it.",
+      "when": {
+        "rule": "pkg_agreements"
+      },
+      "placeholder": "e.g. brand and website design for the spring launch"
+    },
+    {
+      "id": "payText",
+      "type": "text",
+      "default": "",
+      "required": true,
+      "prompt": "What is the payment?",
+      "help": "Amount and timing, in your own words — written into the payment clause as-is.",
+      "when": {
+        "rule": "pkg_agreements"
+      },
+      "placeholder": "e.g. $4,000 — half up front, half on delivery"
+    },
+    {
+      "id": "deadlineText",
+      "type": "text",
+      "default": "",
+      "prompt": "Is there a deadline?",
+      "help": "Leave blank if the work has no fixed completion date.",
+      "when": {
+        "rule": "pkg_agreements"
+      },
+      "placeholder": "e.g. October 15, 2026 — leave blank for none"
+    },
+    {
+      "id": "partnershipPurpose",
+      "type": "text",
+      "default": "",
+      "required": true,
+      "prompt": "What is the partnership for?",
+      "help": "One plain sentence describing the business. It becomes the stated purpose.",
+      "when": {
+        "rule": "pkg_partnership"
+      },
+      "placeholder": "e.g. a management consulting practice"
     }
   ]
 }

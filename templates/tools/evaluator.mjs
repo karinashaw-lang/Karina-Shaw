@@ -7,7 +7,8 @@ export const ANSWER_FIELDS = ['package','company','entity','formState','opState'
   'industry','funding','employees','counterparty','role','dealSize','termMonths','autoRenew',
   'engagement','roleTitle','comp','equityGrant','remote','headcount','caCity',
   'tenantName','propertyAddress','monthlyRent','securityDeposit','leaseTerm','petsAllowed','utilitiesIncluded',
-  'borrowerName','principalAmount','interestText','repayment','securedLoan'];
+  'borrowerName','principalAmount','interestText','repayment','securedLoan',
+  'serviceDesc','payText','deadlineText','partnershipPurpose'];
 
 /* Answers always carry every field, even the ones the current package does not ask
    about, so an expression can never dereference an undefined answer. */
@@ -20,7 +21,9 @@ export const BASE_ANSWERS = {
   tenantName:'Riley Chen', propertyAddress:'12 Rose Lane, Apt 4', monthlyRent:'$1,800',
   securityDeposit:'', leaseTerm:'fixed12', petsAllowed:false, utilitiesIncluded:false,
   borrowerName:'Casey Morgan', principalAmount:'$10,000', interestText:'',
-  repayment:'installments', securedLoan:false
+  repayment:'installments', securedLoan:false,
+  serviceDesc:'brand and website design', payText:'$4,000 — half up front, half on delivery',
+  deadlineText:'', partnershipPurpose:'a management consulting practice'
 };
 
 /* ---- condition expression language (see templates/rules.json) ---- */
@@ -214,6 +217,15 @@ export function allConfigs(tax){
   for(const repayment of ['installments','lump','demand'])
   for(const securedLoan of [true,false]) for(const interestText of ['','5% per year'])
     out.push(mk({package:'money',repayment,securedLoan,interestText}));
+
+  /* 8 — simple agreements: both roles, deadline present and absent */
+  for(const role of Object.keys(tax.contractRoles)) for(const deadlineText of ['','October 15, 2026'])
+    out.push(mk({package:'agreements',role,deadlineText}));
+
+  /* 9 — partnership: the founders answer drives only the signature block, but enumerate it
+     so nothing conditioned on it can go dead unnoticed */
+  for(const founders of [2,3,4])
+    out.push(mk({package:'partnership',founders}));
 
   return out;
 }

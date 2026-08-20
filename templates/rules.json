@@ -392,6 +392,28 @@
       "rationale": "The note and the loan agreement share the same parties, amount, and repayment answers."
     },
     {
+      "id": "pkg_partnership",
+      "code": "IF [package == partnership] THEN [generate the partnership package]",
+      "when": {
+        "eq": [
+          "package",
+          "partnership"
+        ]
+      },
+      "rationale": "A general partnership forms by agreement rather than by filing, so its package is the agreement itself."
+    },
+    {
+      "id": "pkg_agreements",
+      "code": "IF [package == agreements] THEN [generate the simple agreement set]",
+      "when": {
+        "eq": [
+          "package",
+          "agreements"
+        ]
+      },
+      "rationale": "The short service agreement and letter of agreement share the same parties, work, and payment answers."
+    },
+    {
       "id": "money_installments",
       "code": "IF [money package] AND [repayment == installments] THEN [installment schedule terms]",
       "when": {

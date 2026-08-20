@@ -34,13 +34,13 @@ four categories. This is what the corpus can assemble today, mapped onto that li
 | Invoice | **missing** |
 | Letter of Intent (business purchase) | **missing** |
 
-## Real Estate — 2 of 5
+## Real Estate — 3 of 5
 
 | Spec template | Status |
 |---|---|
 | Residential Lease | **have** (2026-08-20) — 20 clauses, fixed-term/month-to-month/pets/utilities variants |
 | Month-to-Month Rental | **have** (2026-08-20) — a variant of the Residential Lease, chosen by the term answer |
-| Sublease | **missing** |
+| Sublease | **have** (2026-08-20) — 10 clauses, subordinate to the original lease by design |
 | Roommate Agreement | **missing** |
 | Lease Termination Notice | **missing** |
 

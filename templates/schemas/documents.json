@@ -477,6 +477,111 @@
       ],
       "package": "money",
       "label": "Loan Agreement"
+    },
+    {
+      "id": "sublease",
+      "icon": "🔁",
+      "numbering": "section",
+      "order": 61,
+      "name": {
+        "template": "Sublease Agreement — {{propertyAddress}}"
+      },
+      "include": {
+        "rule": "pkg_property"
+      },
+      "rationale": "For a tenant renting out the place they rent — the layer between the original lease and the person actually living there.",
+      "groupOrder": [
+        "Parties and the Original Lease",
+        "Rent and Term",
+        "Obligations",
+        "General Provisions"
+      ],
+      "package": "property",
+      "label": "Sublease"
+    },
+    {
+      "id": "roommate",
+      "icon": "🧑‍🤝‍🧑",
+      "numbering": "section",
+      "order": 62,
+      "name": {
+        "template": "Roommate Agreement — {{propertyAddress}}"
+      },
+      "include": {
+        "rule": "pkg_property"
+      },
+      "rationale": "For people sharing a home — who pays what, and the house rules, written down while everyone is still friends.",
+      "groupOrder": [
+        "Parties and the Home",
+        "Money",
+        "Living Together",
+        "General Provisions"
+      ],
+      "package": "property",
+      "label": "Roommate Agreement"
+    },
+    {
+      "id": "svc",
+      "icon": "🧾",
+      "numbering": "section",
+      "order": 80,
+      "name": {
+        "template": "Service Agreement — {{company}} and {{counterparty}}"
+      },
+      "include": {
+        "rule": "pkg_agreements"
+      },
+      "rationale": "The short, plain-language services contract — scope, money, timing, ownership, and a clean way out.",
+      "groupOrder": [
+        "Parties and Services",
+        "Payment",
+        "Work and Ownership",
+        "Ending the Agreement",
+        "General Provisions"
+      ],
+      "package": "agreements",
+      "label": "Service Agreement"
+    },
+    {
+      "id": "loa",
+      "icon": "✉️",
+      "numbering": "section",
+      "order": 81,
+      "name": {
+        "template": "Letter of Agreement — {{counterparty}}"
+      },
+      "include": {
+        "rule": "pkg_agreements"
+      },
+      "rationale": "A one-page letter that records what two parties agreed — lighter than a contract, better than an email thread.",
+      "groupOrder": [
+        "The Understanding",
+        "General Provisions"
+      ],
+      "package": "agreements",
+      "label": "Letter of Agreement"
+    },
+    {
+      "id": "partnership",
+      "icon": "🤝",
+      "numbering": "section",
+      "order": 15,
+      "name": {
+        "template": "Partnership Agreement — {{company}}"
+      },
+      "include": {
+        "rule": "pkg_partnership"
+      },
+      "rationale": "The document that decides, in advance, every question partners otherwise fight about later: shares, money, decisions, exits.",
+      "groupOrder": [
+        "Formation and Purpose",
+        "Contributions and Shares",
+        "Running the Partnership",
+        "Changes and Endings",
+        "General Provisions"
+      ],
+      "package": "partnership",
+      "label": "Partnership Agreement"
     }
   ]
 }

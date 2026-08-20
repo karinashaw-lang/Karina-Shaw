@@ -20,6 +20,14 @@
     "money": {
       "months": 24,
       "why": "Private-loan drafting conventions are comparatively stable; rate caps still deserve a periodic look."
+    },
+    "partnership": {
+      "months": 24,
+      "why": "Partnership drafting conventions are stable; buyout and dissolution terms deserve a periodic look."
+    },
+    "agreements": {
+      "months": 24,
+      "why": "Short-form service terms are stable; payment and IP defaults track market practice slowly."
     }
   },
   "documents": {
@@ -324,6 +332,81 @@
       ],
       "next": [
         "note"
+      ]
+    },
+    "sublease": {
+      "estimatedMinutes": [
+        8,
+        15
+      ],
+      "export": "pdf",
+      "industries": [
+        "all",
+        "tenants",
+        "individuals"
+      ],
+      "next": [
+        "lease"
+      ]
+    },
+    "roommate": {
+      "estimatedMinutes": [
+        8,
+        15
+      ],
+      "export": "pdf",
+      "industries": [
+        "all",
+        "individuals"
+      ],
+      "next": [
+        "lease"
+      ]
+    },
+    "svc": {
+      "estimatedMinutes": [
+        8,
+        15
+      ],
+      "export": "pdf",
+      "industries": [
+        "all",
+        "freelancers",
+        "small business"
+      ],
+      "next": [
+        "loa",
+        "nda"
+      ]
+    },
+    "loa": {
+      "estimatedMinutes": [
+        5,
+        10
+      ],
+      "export": "word",
+      "industries": [
+        "all",
+        "freelancers",
+        "small business"
+      ],
+      "next": [
+        "svc"
+      ]
+    },
+    "partnership": {
+      "estimatedMinutes": [
+        20,
+        35
+      ],
+      "export": "pdf",
+      "industries": [
+        "all",
+        "small business"
+      ],
+      "next": [
+        "nda",
+        "svc"
       ]
     }
   }
