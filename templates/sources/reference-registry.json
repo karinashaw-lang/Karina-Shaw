@@ -1,27 +1,27 @@
 {
   "$comment": "Measured reachability of the reference-corroboration hosts in templates/tools/reference-sources.mjs, written by tools/probe-reference-sources.mjs. Not a legal claim, not a market-practice claim — a routing/reachability measurement, kept separate from sources/registry.json because these hosts answer a different question (market drafting practice, not what the law says).",
   "reachability": {
-    "probedAt": "2026-08-20T21:08:08.881Z",
+    "probedAt": "2026-08-20T22:19:47.431Z",
     "hosts": {
       "commonpaper.com": {
         "kind": "standard-form",
-        "status": "reachable",
-        "ms": 441
+        "status": "http-403",
+        "ms": 232
       },
       "ycombinator.com": {
         "kind": "standard-form",
-        "status": "reachable",
-        "ms": 811
+        "status": "http-403",
+        "ms": 74
       },
       "sba.gov": {
         "kind": "agency-guidance",
-        "status": "reachable",
-        "ms": 916
+        "status": "http-403",
+        "ms": 622
       },
       "consumerfinance.gov": {
         "kind": "agency-guidance",
-        "status": "reachable",
-        "ms": 1022
+        "status": "http-403",
+        "ms": 693
       }
     }
   }
