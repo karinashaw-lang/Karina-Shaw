@@ -13,7 +13,7 @@
    is what decideLevel actually recognizes. */
 import fs from 'node:fs';
 import path from 'node:path';
-import {decideLevel, hostsFor, fetchEvidence} from './verify.mjs';
+import {decideLevel, hostsFor, fetchEvidence, gatherCitationEvidence} from './verify.mjs';
 import {ROOT} from './corpus.mjs';
 import {isPrimaryKind} from './sources.mjs';
 
@@ -76,6 +76,59 @@ t('USC routes to Cornell',              hostsFor('8 U.S.C. §1324a').hosts.inclu
 t('CA regulation routes somewhere',     hostsFor('8 C.C.R. §3203') !== null);
 t('municipal code routes somewhere',    hostsFor('S.F. Admin. Code / Police Code') !== null);
 t('an unroutable citation returns null',hostsFor('Some Made Up Authority') === null);
+
+console.log('gatherCitationEvidence — must not stop at the first success');
+{
+  /* Reproduces the exact shape the real dry run hit: a citation with two candidate hosts
+     where the first (ecfr.gov) 403s and the second (cornell.edu) succeeds. The old "stop at
+     first success" code never even got here since it only stopped early on success, not
+     failure — but the fix this guards against is the mirror image: a citation where the
+     FIRST host succeeds. The old code would have stopped there and never learned whether the
+     second host also had it, capping every single-citation clause at one host of evidence
+     forever regardless of what else was reachable. */
+  const fakeFetch = host => async () => host === 'blocked.example'
+    ? {ok:false, status:403, text:async()=>''}
+    : {ok:true, status:200, text:async()=>'x'.repeat(2000)};
+
+  const allSucceed = await gatherCitationEvidence('Cal. Lab. Code §2802', ['a.example','b.example'],
+    {fetchImpl: async (url) => fakeFetch(new URL(url).host)()});
+  t('both hosts are tried even though the first one succeeded',
+    allSucceed.length === 2 && allSucceed.every(e=>e.ok));
+  t('evidence carries the host and citation for each entry',
+    allSucceed[0].host === 'a.example' && allSucceed[1].host === 'b.example' &&
+    allSucceed.every(e=>e.citation === 'Cal. Lab. Code §2802'));
+
+  const oneBlocked = await gatherCitationEvidence('45 C.F.R. §164.308', ['blocked.example','ok.example'],
+    {fetchImpl: async (url) => fakeFetch(new URL(url).host)()});
+  t('a failure on the first host does not stop the second from being tried',
+    oneBlocked.length === 2 && !oneBlocked[0].ok && oneBlocked[1].ok);
+
+  const feedThrough = await gatherCitationEvidence('x', ['a.example','b.example'],
+    {fetchImpl: async () => ({ok:true, status:200, text:async()=>'x'.repeat(2000)})});
+  t('two successful hosts for ONE citation is exactly the evidence decideLevel needs',
+    decideLevel('single-source', feedThrough.map(e=>({...e, hostKind:'mirror'}))) === 'corroborated');
+}
+
+console.log('gatherCitationEvidence — respects a shared fetch budget');
+{
+  const always = async () => ({ok:true, status:200, text:async()=>'x'.repeat(2000)});
+  const budget = {remaining: 1};
+  const got = await gatherCitationEvidence('c', ['a.example','b.example','c.example'], {fetchImpl: always, budget});
+  t('stops once the shared budget is spent', got.length === 1 && budget.remaining === 0);
+
+  const exhausted = {remaining: 0};
+  const none = await gatherCitationEvidence('c', ['a.example'], {fetchImpl: always, budget: exhausted});
+  t('a zero budget tries nothing', none.length === 0);
+
+  const budget2 = {remaining: 5};
+  await gatherCitationEvidence('c1', ['a.example','b.example'], {fetchImpl: always, budget: budget2});
+  await gatherCitationEvidence('c2', ['c.example'], {fetchImpl: always, budget: budget2});
+  t('the budget is shared and decremented across separate citations, not reset per call',
+    budget2.remaining === 2);
+
+  const noOpts = await gatherCitationEvidence('c', ['a.example'], {fetchImpl: always});
+  t('an unspecified budget defaults to unlimited', noOpts.length === 1);
+}
 
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail?1:0);

@@ -73,6 +73,33 @@ export function decideLevel(current, evidence){
   return rank(proposed) > rank(current) && good.length ? proposed : current;
 }
 
+/* ---- gather evidence for one citation across every host configured for it ----
+
+   Used to stop at the first successful fetch — "one good source per citation is enough to
+   move on". That was the right call while egress was universally blocked and any success at
+   all was a hope rather than a plan. Now that fetches actually work, it was actively
+   sabotaging the pipeline's own goal: decideLevel needs evidence from 2 DISTINCT hosts to
+   reach `corroborated`, and stopping at the first host guarantees at most one host's worth
+   of evidence per citation. A clause with a single citation could never corroborate no
+   matter what was reachable — not a network problem, a one-line design bug, found the same
+   day leginfo.legislature.ca.gov first returned a real 200 for this project.
+
+   Extracted into its own function, unlike the loop it replaced, so a fake fetchImpl can
+   prove it visits every host rather than stopping early — the same class of gap (an
+   integration path no test ever actually drove) that let the hostKind==='primary' bug live
+   here for as long as it did. budget is a shared, mutable counter object so callers can cap
+   total fetches across an entire run, same ceiling --limit always enforced. */
+export async function gatherCitationEvidence(citation, hosts, {fetchImpl = fetch, budget = {remaining: Infinity}} = {}){
+  const evidence = [];
+  for(const host of hosts){
+    if(budget.remaining <= 0) break;
+    budget.remaining--;
+    const e = await fetchEvidence(host, citation, fetchImpl);
+    evidence.push({...e, citation, host});
+  }
+  return evidence;
+}
+
 /* ---- run (only when invoked directly, so the test can import the pure functions) ---- */
 const INVOKED_DIRECTLY = process.argv[1] && process.argv[1].endsWith('verify.mjs');
 if(INVOKED_DIRECTLY){
@@ -83,6 +110,7 @@ const targets = C.clauses
 const report = {startedAt:new Date().toISOString(), attempted:0, upgraded:[], unchanged:0,
                 noRoute:[], evidence:{}, hostFailures:{}};
 let fetches = 0;
+const budget = {remaining: LIMIT};
 
 for(const c of targets){
   const evidence = [];
@@ -92,13 +120,11 @@ for(const c of targets){
                                 reason:'prior-record-not-refetched'}); continue; }
     const route = hostsFor(src.citation);
     if(!route){ report.noRoute.push(`${c.id}: ${src.citation}`); continue; }
-    for(const host of route.hosts){
-      if(fetches >= LIMIT) break;
-      fetches++;
-      const e = await fetchEvidence(host, src.citation);
-      evidence.push({...e, citation:src.citation, host});
+    const got = await gatherCitationEvidence(src.citation, route.hosts, {budget});
+    fetches += got.length;   /* one evidence entry per host actually tried, always */
+    for(const e of got){
+      evidence.push(e);
       if(!e.ok) report.hostFailures[e.reason] = (report.hostFailures[e.reason]||0)+1;
-      if(e.ok) break;   // one good source per citation is enough to move on
     }
   }
   report.attempted++;
