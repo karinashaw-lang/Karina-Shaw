@@ -1,633 +1,15 @@
 {
-  "lintedAt": "2026-08-18T01:58:41.404Z",
-  "flagged": 117,
-  "total": 360,
+  "lintedAt": "2026-08-20T22:40:29.282Z",
+  "flagged": 68,
+  "total": 363,
   "byDetector": {
-    "notice-duty-single-citation": 19,
-    "threshold-without-lookback": 36,
-    "scope-test-single-conjunct": 2,
-    "penalty-without-cap": 16,
-    "form-not-named": 32,
-    "absolute-without-exception": 27,
-    "deadline-without-trigger": 8
+    "form-not-named": 16,
+    "threshold-without-lookback": 29,
+    "penalty-without-cap": 6,
+    "absolute-without-exception": 19,
+    "deadline-without-trigger": 3
   },
   "rows": [
-    {
-      "id": "msa_ca_auto_renew",
-      "title": "California Automatic Renewal Requirements",
-      "doc": "msa",
-      "severity": "critical",
-      "hits": [
-        {
-          "id": "notice-duty-single-citation",
-          "predicts": "miscitation"
-        }
-      ]
-    },
-    {
-      "id": "msa_ca_925",
-      "title": "California Choice of Law Limits",
-      "doc": "msa",
-      "severity": "critical",
-      "hits": [
-        {
-          "id": "threshold-without-lookback",
-          "predicts": "omitted-qualifier"
-        },
-        {
-          "id": "scope-test-single-conjunct",
-          "predicts": "overstated-scope"
-        }
-      ]
-    },
-    {
-      "id": "sow_ca_prevailing_wage",
-      "title": "California Prevailing Wage",
-      "doc": "sow",
-      "severity": "critical",
-      "hits": [
-        {
-          "id": "penalty-without-cap",
-          "predicts": "overstated-consequence"
-        }
-      ]
-    },
-    {
-      "id": "msa_ca_cipa",
-      "title": "Website Tracking and CIPA Exposure",
-      "doc": "msa",
-      "severity": "critical",
-      "hits": [
-        {
-          "id": "penalty-without-cap",
-          "predicts": "overstated-consequence"
-        },
-        {
-          "id": "notice-duty-single-citation",
-          "predicts": "miscitation"
-        }
-      ]
-    },
-    {
-      "id": "msa_ca_unruh",
-      "title": "Accessibility and Unruh Act Exposure",
-      "doc": "msa",
-      "severity": "critical",
-      "hits": [
-        {
-          "id": "penalty-without-cap",
-          "predicts": "overstated-consequence"
-        },
-        {
-          "id": "form-not-named",
-          "predicts": "omitted-requirement"
-        }
-      ]
-    },
-    {
-      "id": "msa_ca_dark_patterns",
-      "title": "Consent Interface Requirements",
-      "doc": "msa",
-      "severity": "recommended",
-      "hits": [
-        {
-          "id": "absolute-without-exception",
-          "predicts": "omitted-qualifier"
-        }
-      ]
-    },
-    {
-      "id": "msa_ca_privacy_notice_flow",
-      "title": "Notice at Collection Flow-Down",
-      "doc": "dpa",
-      "severity": "recommended",
-      "hits": [
-        {
-          "id": "notice-duty-single-citation",
-          "predicts": "miscitation"
-        }
-      ]
-    },
-    {
-      "id": "cal_ca_prop65_ops",
-      "title": "Proposition 65 Review",
-      "doc": "compliance-calendar",
-      "severity": "recommended",
-      "hits": [
-        {
-          "id": "notice-duty-single-citation",
-          "predicts": "miscitation"
-        }
-      ]
-    },
-    {
-      "id": "can_thresholds",
-      "title": "Headcount Thresholds Now in Scope",
-      "doc": "ca-notices",
-      "severity": "critical",
-      "hits": [
-        {
-          "id": "threshold-without-lookback",
-          "predicts": "omitted-qualifier"
-        }
-      ]
-    },
-    {
-      "id": "can_wtpa",
-      "title": "Wage Theft Prevention Act Notice",
-      "doc": "ca-notices",
-      "severity": "critical",
-      "hits": [
-        {
-          "id": "notice-duty-single-citation",
-          "predicts": "miscitation"
-        }
-      ]
-    },
-    {
-      "id": "can_harassment_training",
-      "title": "Harassment Prevention Training",
-      "doc": "ca-notices",
-      "severity": "critical",
-      "hits": [
-        {
-          "id": "deadline-without-trigger",
-          "predicts": "omitted-qualifier"
-        }
-      ]
-    },
-    {
-      "id": "can_harassment_policy",
-      "title": "Written Harassment and Discrimination Policy",
-      "doc": "ca-notices",
-      "severity": "critical",
-      "hits": [
-        {
-          "id": "threshold-without-lookback",
-          "predicts": "omitted-qualifier"
-        }
-      ]
-    },
-    {
-      "id": "can_fair_chance",
-      "title": "Fair Chance Act Procedure",
-      "doc": "ca-notices",
-      "severity": "critical",
-      "hits": [
-        {
-          "id": "threshold-without-lookback",
-          "predicts": "omitted-qualifier"
-        },
-        {
-          "id": "form-not-named",
-          "predicts": "omitted-requirement"
-        },
-        {
-          "id": "notice-duty-single-citation",
-          "predicts": "miscitation"
-        },
-        {
-          "id": "absolute-without-exception",
-          "predicts": "omitted-qualifier"
-        }
-      ]
-    },
-    {
-      "id": "can_lactation",
-      "title": "Lactation Accommodation Policy",
-      "doc": "ca-notices",
-      "severity": "critical",
-      "hits": [
-        {
-          "id": "penalty-without-cap",
-          "predicts": "overstated-consequence"
-        }
-      ]
-    },
-    {
-      "id": "can_heat",
-      "title": "Heat Illness Prevention",
-      "doc": "ca-notices",
-      "severity": "critical",
-      "hits": [
-        {
-          "id": "threshold-without-lookback",
-          "predicts": "omitted-qualifier"
-        }
-      ]
-    },
-    {
-      "id": "can_ccpa_hr",
-      "title": "Privacy Notice for Employee Data",
-      "doc": "ca-notices",
-      "severity": "critical",
-      "hits": [
-        {
-          "id": "notice-duty-single-citation",
-          "predicts": "miscitation"
-        }
-      ]
-    },
-    {
-      "id": "can_edd",
-      "title": "EDD Employer Registration",
-      "doc": "ca-notices",
-      "severity": "critical",
-      "hits": [
-        {
-          "id": "form-not-named",
-          "predicts": "omitted-requirement"
-        }
-      ]
-    },
-    {
-      "id": "can_workers_comp",
-      "title": "Workers' Compensation Insurance",
-      "doc": "ca-notices",
-      "severity": "critical",
-      "hits": [
-        {
-          "id": "notice-duty-single-citation",
-          "predicts": "miscitation"
-        }
-      ]
-    },
-    {
-      "id": "can_cobra",
-      "title": "Cal-COBRA Continuation Coverage",
-      "doc": "ca-notices",
-      "severity": "recommended",
-      "hits": [
-        {
-          "id": "notice-duty-single-citation",
-          "predicts": "miscitation"
-        }
-      ]
-    },
-    {
-      "id": "can_paydata",
-      "title": "Annual Pay Data Reporting",
-      "doc": "ca-notices",
-      "severity": "critical",
-      "hits": [
-        {
-          "id": "form-not-named",
-          "predicts": "omitted-requirement"
-        }
-      ]
-    },
-    {
-      "id": "ea_ca_exempt",
-      "title": "California Exempt Classification",
-      "doc": "employment-agreement",
-      "severity": "critical",
-      "hits": [
-        {
-          "id": "threshold-without-lookback",
-          "predicts": "omitted-qualifier"
-        }
-      ]
-    },
-    {
-      "id": "ea_ca_925",
-      "title": "California Forum and Choice of Law",
-      "doc": "employment-agreement",
-      "severity": "critical",
-      "hits": [
-        {
-          "id": "scope-test-single-conjunct",
-          "predicts": "overstated-scope"
-        }
-      ]
-    },
-    {
-      "id": "ea_ca_release",
-      "title": "Release and Section 1542 Waiver",
-      "doc": "employment-agreement",
-      "severity": "recommended",
-      "hits": [
-        {
-          "id": "form-not-named",
-          "predicts": "omitted-requirement"
-        }
-      ]
-    },
-    {
-      "id": "hb_ca_sick",
-      "title": "California Paid Sick Leave",
-      "doc": "handbook",
-      "severity": "critical",
-      "hits": [
-        {
-          "id": "notice-duty-single-citation",
-          "predicts": "miscitation"
-        },
-        {
-          "id": "absolute-without-exception",
-          "predicts": "omitted-qualifier"
-        }
-      ]
-    },
-    {
-      "id": "hb_ca_personnel_records",
-      "title": "Personnel and Payroll Record Requests",
-      "doc": "handbook",
-      "severity": "recommended",
-      "hits": [
-        {
-          "id": "threshold-without-lookback",
-          "predicts": "omitted-qualifier"
-        },
-        {
-          "id": "deadline-without-trigger",
-          "predicts": "omitted-qualifier"
-        }
-      ]
-    },
-    {
-      "id": "ic_ca_freelance",
-      "title": "Freelance Worker Protection Act",
-      "doc": "contractor-agreement",
-      "severity": "critical",
-      "hits": [
-        {
-          "id": "threshold-without-lookback",
-          "predicts": "omitted-qualifier"
-        },
-        {
-          "id": "form-not-named",
-          "predicts": "omitted-requirement"
-        }
-      ]
-    },
-    {
-      "id": "emp_ca_iipp",
-      "title": "California Safety and Violence Prevention Programs",
-      "doc": "employment",
-      "severity": "critical",
-      "hits": [
-        {
-          "id": "threshold-without-lookback",
-          "predicts": "omitted-qualifier"
-        }
-      ]
-    },
-    {
-      "id": "emp_ca_registration",
-      "title": "California Employer Registration Checklist",
-      "doc": "employment",
-      "severity": "critical",
-      "hits": [
-        {
-          "id": "deadline-without-trigger",
-          "predicts": "omitted-qualifier"
-        }
-      ]
-    },
-    {
-      "id": "can_paga",
-      "title": "Private Attorneys General Act",
-      "doc": "ca-notices",
-      "severity": "critical",
-      "hits": [
-        {
-          "id": "penalty-without-cap",
-          "predicts": "overstated-consequence"
-        }
-      ]
-    },
-    {
-      "id": "can_paga_cure",
-      "title": "PAGA Notice and Cure Window",
-      "doc": "ca-notices",
-      "severity": "critical",
-      "hits": [
-        {
-          "id": "notice-duty-single-citation",
-          "predicts": "miscitation"
-        }
-      ]
-    },
-    {
-      "id": "can_calwarn",
-      "title": "Cal-WARN Notice",
-      "doc": "ca-notices",
-      "severity": "critical",
-      "hits": [
-        {
-          "id": "threshold-without-lookback",
-          "predicts": "omitted-qualifier"
-        },
-        {
-          "id": "penalty-without-cap",
-          "predicts": "overstated-consequence"
-        },
-        {
-          "id": "notice-duty-single-citation",
-          "predicts": "miscitation"
-        }
-      ]
-    },
-    {
-      "id": "can_whistleblower",
-      "title": "Whistleblower Protection",
-      "doc": "ca-notices",
-      "severity": "critical",
-      "hits": [
-        {
-          "id": "notice-duty-single-citation",
-          "predicts": "miscitation"
-        }
-      ]
-    },
-    {
-      "id": "can_records",
-      "title": "Records Retention",
-      "doc": "ca-notices",
-      "severity": "recommended",
-      "hits": [
-        {
-          "id": "threshold-without-lookback",
-          "predicts": "omitted-qualifier"
-        }
-      ]
-    },
-    {
-      "id": "hb_ca_paga_reference",
-      "title": "Why Timekeeping Accuracy Matters Here",
-      "doc": "handbook",
-      "severity": "recommended",
-      "hits": [
-        {
-          "id": "penalty-without-cap",
-          "predicts": "overstated-consequence"
-        },
-        {
-          "id": "absolute-without-exception",
-          "predicts": "omitted-qualifier"
-        }
-      ]
-    },
-    {
-      "id": "cal_ca_soi",
-      "title": "California Statement of Information",
-      "doc": "compliance-calendar",
-      "severity": "critical",
-      "hits": [
-        {
-          "id": "form-not-named",
-          "predicts": "omitted-requirement"
-        }
-      ]
-    },
-    {
-      "id": "cal_ca_fbn",
-      "title": "Fictitious Business Name",
-      "doc": "compliance-calendar",
-      "severity": "recommended",
-      "hits": [
-        {
-          "id": "form-not-named",
-          "predicts": "omitted-requirement"
-        }
-      ]
-    },
-    {
-      "id": "gov_ca_professional",
-      "title": "California Professional Practice Restrictions",
-      "doc": "governance",
-      "severity": "critical",
-      "hits": [
-        {
-          "id": "form-not-named",
-          "predicts": "omitted-requirement"
-        }
-      ]
-    },
-    {
-      "id": "can_local_sd",
-      "title": "San Diego Ordinances",
-      "doc": "ca-notices",
-      "severity": "critical",
-      "hits": [
-        {
-          "id": "notice-duty-single-citation",
-          "predicts": "miscitation"
-        }
-      ]
-    },
-    {
-      "id": "can_local_remote",
-      "title": "Remote Employees and Local Coverage",
-      "doc": "ca-notices",
-      "severity": "recommended",
-      "hits": [
-        {
-          "id": "threshold-without-lookback",
-          "predicts": "omitted-qualifier"
-        }
-      ]
-    },
-    {
-      "id": "hb_ca_day_of_rest",
-      "title": "Day of Rest",
-      "doc": "handbook",
-      "severity": "recommended",
-      "hits": [
-        {
-          "id": "absolute-without-exception",
-          "predicts": "omitted-qualifier"
-        }
-      ]
-    },
-    {
-      "id": "hb_ca_uniforms_tools",
-      "title": "Uniforms, Tools, and Equipment",
-      "doc": "handbook",
-      "severity": "recommended",
-      "hits": [
-        {
-          "id": "threshold-without-lookback",
-          "predicts": "omitted-qualifier"
-        }
-      ]
-    },
-    {
-      "id": "hb_ca_jury_voting",
-      "title": "Jury, Witness, and Voting Leave",
-      "doc": "handbook",
-      "severity": "critical",
-      "hits": [
-        {
-          "id": "threshold-without-lookback",
-          "predicts": "omitted-qualifier"
-        },
-        {
-          "id": "notice-duty-single-citation",
-          "predicts": "miscitation"
-        }
-      ]
-    },
-    {
-      "id": "hb_ca_school_leave",
-      "title": "School and Child Care Activity Leave",
-      "doc": "handbook",
-      "severity": "recommended",
-      "hits": [
-        {
-          "id": "threshold-without-lookback",
-          "predicts": "omitted-qualifier"
-        }
-      ]
-    },
-    {
-      "id": "hb_ca_military_leave",
-      "title": "Military and Military Spouse Leave",
-      "doc": "handbook",
-      "severity": "recommended",
-      "hits": [
-        {
-          "id": "threshold-without-lookback",
-          "predicts": "omitted-qualifier"
-        }
-      ]
-    },
-    {
-      "id": "hb_ca_victim_leave",
-      "title": "Crime Victim and Safety Leave",
-      "doc": "handbook",
-      "severity": "critical",
-      "hits": [
-        {
-          "id": "notice-duty-single-citation",
-          "predicts": "miscitation"
-        }
-      ]
-    },
-    {
-      "id": "hb_ca_organ_donor",
-      "title": "Organ and Bone Marrow Donor Leave",
-      "doc": "handbook",
-      "severity": "optional",
-      "hits": [
-        {
-          "id": "threshold-without-lookback",
-          "predicts": "omitted-qualifier"
-        }
-      ]
-    },
-    {
-      "id": "hb_ca_lactation_break",
-      "title": "Lactation Breaks",
-      "doc": "handbook",
-      "severity": "critical",
-      "hits": [
-        {
-          "id": "penalty-without-cap",
-          "predicts": "overstated-consequence"
-        }
-      ]
-    },
     {
       "id": "charter_organizer",
       "title": "Organizer",
@@ -673,34 +55,6 @@
         {
           "id": "absolute-without-exception",
           "predicts": "omitted-qualifier"
-        }
-      ]
-    },
-    {
-      "id": "charter_ny_publication",
-      "title": "Publication Requirement",
-      "doc": "charter",
-      "severity": "critical",
-      "hits": [
-        {
-          "id": "form-not-named",
-          "predicts": "omitted-requirement"
-        },
-        {
-          "id": "notice-duty-single-citation",
-          "predicts": "miscitation"
-        }
-      ]
-    },
-    {
-      "id": "charter_ca_professional",
-      "title": "Professional Services Restriction",
-      "doc": "charter",
-      "severity": "critical",
-      "hits": [
-        {
-          "id": "form-not-named",
-          "predicts": "omitted-requirement"
         }
       ]
     },
@@ -853,34 +207,6 @@
       ]
     },
     {
-      "id": "msa_nonsolicit",
-      "title": "Non-Solicitation of Personnel",
-      "doc": "msa",
-      "severity": "optional",
-      "hits": [
-        {
-          "id": "penalty-without-cap",
-          "predicts": "overstated-consequence"
-        }
-      ]
-    },
-    {
-      "id": "msa_dispute",
-      "title": "Dispute Escalation",
-      "doc": "msa",
-      "severity": "recommended",
-      "hits": [
-        {
-          "id": "form-not-named",
-          "predicts": "omitted-requirement"
-        },
-        {
-          "id": "deadline-without-trigger",
-          "predicts": "omitted-qualifier"
-        }
-      ]
-    },
-    {
       "id": "msa_escrow",
       "title": "Source Code Escrow",
       "doc": "msa",
@@ -977,18 +303,6 @@
       ]
     },
     {
-      "id": "cal_soi",
-      "title": "California Statement of Information",
-      "doc": "compliance-calendar",
-      "severity": "critical",
-      "hits": [
-        {
-          "id": "form-not-named",
-          "predicts": "omitted-requirement"
-        }
-      ]
-    },
-    {
       "id": "cal_foreign",
       "title": "Foreign Qualification",
       "doc": "compliance-calendar",
@@ -1005,46 +319,6 @@
       "title": "Annual Report and Registered Agent",
       "doc": "compliance-calendar",
       "severity": "critical",
-      "hits": [
-        {
-          "id": "form-not-named",
-          "predicts": "omitted-requirement"
-        }
-      ]
-    },
-    {
-      "id": "cal_de_franchise",
-      "title": "Delaware Franchise Tax",
-      "doc": "compliance-calendar",
-      "severity": "critical",
-      "hits": [
-        {
-          "id": "form-not-named",
-          "predicts": "omitted-requirement"
-        }
-      ]
-    },
-    {
-      "id": "cal_tx_franchise",
-      "title": "Texas Franchise Tax and Public Information Report",
-      "doc": "compliance-calendar",
-      "severity": "recommended",
-      "hits": [
-        {
-          "id": "threshold-without-lookback",
-          "predicts": "omitted-qualifier"
-        },
-        {
-          "id": "form-not-named",
-          "predicts": "omitted-requirement"
-        }
-      ]
-    },
-    {
-      "id": "cal_fl_annual",
-      "title": "Florida Annual Report",
-      "doc": "compliance-calendar",
-      "severity": "recommended",
       "hits": [
         {
           "id": "form-not-named",
@@ -1105,74 +379,6 @@
       ]
     },
     {
-      "id": "emp_meal",
-      "title": "Meal Period Policy",
-      "doc": "employment",
-      "severity": "critical",
-      "hits": [
-        {
-          "id": "penalty-without-cap",
-          "predicts": "overstated-consequence"
-        }
-      ]
-    },
-    {
-      "id": "emp_rest",
-      "title": "Rest Period Policy",
-      "doc": "employment",
-      "severity": "critical",
-      "hits": [
-        {
-          "id": "absolute-without-exception",
-          "predicts": "omitted-qualifier"
-        }
-      ]
-    },
-    {
-      "id": "emp_pto",
-      "title": "PTO Accrual",
-      "doc": "employment",
-      "severity": "critical",
-      "hits": [
-        {
-          "id": "absolute-without-exception",
-          "predicts": "omitted-qualifier"
-        }
-      ]
-    },
-    {
-      "id": "emp_finalpay",
-      "title": "Final Pay Timing",
-      "doc": "employment",
-      "severity": "critical",
-      "hits": [
-        {
-          "id": "threshold-without-lookback",
-          "predicts": "omitted-qualifier"
-        },
-        {
-          "id": "deadline-without-trigger",
-          "predicts": "omitted-qualifier"
-        },
-        {
-          "id": "notice-duty-single-citation",
-          "predicts": "miscitation"
-        }
-      ]
-    },
-    {
-      "id": "emp_noncompete_notice",
-      "title": "Non-Compete Prohibition Notice",
-      "doc": "employment",
-      "severity": "critical",
-      "hits": [
-        {
-          "id": "absolute-without-exception",
-          "predicts": "omitted-qualifier"
-        }
-      ]
-    },
-    {
       "id": "emp_harassment",
       "title": "Anti-Harassment Policy and Training",
       "doc": "employment",
@@ -1197,18 +403,6 @@
       ]
     },
     {
-      "id": "ipa_state_carveout",
-      "title": "Statutory Invention Carve-Out",
-      "doc": "ip-assignment",
-      "severity": "critical",
-      "hits": [
-        {
-          "id": "notice-duty-single-citation",
-          "predicts": "miscitation"
-        }
-      ]
-    },
-    {
       "id": "ipa_opensource",
       "title": "Open Source Policy",
       "doc": "ip-assignment",
@@ -1229,18 +423,6 @@
         {
           "id": "absolute-without-exception",
           "predicts": "omitted-qualifier"
-        }
-      ]
-    },
-    {
-      "id": "b83_instructions",
-      "title": "Filing Instructions",
-      "doc": "election-83b",
-      "severity": "critical",
-      "hits": [
-        {
-          "id": "form-not-named",
-          "predicts": "omitted-requirement"
         }
       ]
     },
@@ -1413,30 +595,6 @@
       ]
     },
     {
-      "id": "ea_nonsolicit",
-      "title": "Non-Solicitation",
-      "doc": "employment-agreement",
-      "severity": "recommended",
-      "hits": [
-        {
-          "id": "absolute-without-exception",
-          "predicts": "omitted-qualifier"
-        }
-      ]
-    },
-    {
-      "id": "ea_return_property",
-      "title": "Return of Property",
-      "doc": "employment-agreement",
-      "severity": "recommended",
-      "hits": [
-        {
-          "id": "absolute-without-exception",
-          "predicts": "omitted-qualifier"
-        }
-      ]
-    },
-    {
       "id": "ic_payment",
       "title": "Fees and Invoicing",
       "doc": "contractor-agreement",
@@ -1473,18 +631,6 @@
       ]
     },
     {
-      "id": "hb_meal_rest",
-      "title": "Meal and Rest Periods",
-      "doc": "handbook",
-      "severity": "critical",
-      "hits": [
-        {
-          "id": "penalty-without-cap",
-          "predicts": "overstated-consequence"
-        }
-      ]
-    },
-    {
       "id": "hb_harassment",
       "title": "Anti-Harassment and Anti-Retaliation",
       "doc": "handbook",
@@ -1504,6 +650,198 @@
       "hits": [
         {
           "id": "absolute-without-exception",
+          "predicts": "omitted-qualifier"
+        }
+      ]
+    },
+    {
+      "id": "lease_term_6",
+      "title": "Term of the Tenancy",
+      "doc": "lease",
+      "severity": "critical",
+      "hits": [
+        {
+          "id": "threshold-without-lookback",
+          "predicts": "omitted-qualifier"
+        }
+      ]
+    },
+    {
+      "id": "lease_term_24",
+      "title": "Term of the Tenancy",
+      "doc": "lease",
+      "severity": "critical",
+      "hits": [
+        {
+          "id": "threshold-without-lookback",
+          "predicts": "omitted-qualifier"
+        }
+      ]
+    },
+    {
+      "id": "lease_term_m2m",
+      "title": "Term of the Tenancy",
+      "doc": "lease",
+      "severity": "critical",
+      "hits": [
+        {
+          "id": "threshold-without-lookback",
+          "predicts": "omitted-qualifier"
+        }
+      ]
+    },
+    {
+      "id": "lease_entry",
+      "title": "Landlord’s Entry",
+      "doc": "lease",
+      "severity": "recommended",
+      "hits": [
+        {
+          "id": "threshold-without-lookback",
+          "predicts": "omitted-qualifier"
+        }
+      ]
+    },
+    {
+      "id": "lease_holdover",
+      "title": "Holding Over",
+      "doc": "lease",
+      "severity": "optional",
+      "hits": [
+        {
+          "id": "threshold-without-lookback",
+          "predicts": "omitted-qualifier"
+        }
+      ]
+    },
+    {
+      "id": "note_repay_demand",
+      "title": "Repayment",
+      "doc": "note",
+      "severity": "critical",
+      "hits": [
+        {
+          "id": "threshold-without-lookback",
+          "predicts": "omitted-qualifier"
+        }
+      ]
+    },
+    {
+      "id": "loan_repay_demand",
+      "title": "Repayment",
+      "doc": "loan",
+      "severity": "critical",
+      "hits": [
+        {
+          "id": "threshold-without-lookback",
+          "predicts": "omitted-qualifier"
+        }
+      ]
+    },
+    {
+      "id": "pt_leaving",
+      "title": "A Partner Leaving",
+      "doc": "partnership",
+      "severity": "critical",
+      "hits": [
+        {
+          "id": "threshold-without-lookback",
+          "predicts": "omitted-qualifier"
+        }
+      ]
+    },
+    {
+      "id": "sub_term",
+      "title": "Term",
+      "doc": "sublease",
+      "severity": "critical",
+      "hits": [
+        {
+          "id": "absolute-without-exception",
+          "predicts": "omitted-qualifier"
+        }
+      ]
+    },
+    {
+      "id": "sub_entry_moveout",
+      "title": "Entry and Move-Out",
+      "doc": "sublease",
+      "severity": "recommended",
+      "hits": [
+        {
+          "id": "threshold-without-lookback",
+          "predicts": "omitted-qualifier"
+        }
+      ]
+    },
+    {
+      "id": "rm_guests_quiet",
+      "title": "Guests and Quiet Hours",
+      "doc": "roommate",
+      "severity": "optional",
+      "hits": [
+        {
+          "id": "threshold-without-lookback",
+          "predicts": "omitted-qualifier"
+        }
+      ]
+    },
+    {
+      "id": "rm_leaving",
+      "title": "If a Roommate Moves Out",
+      "doc": "roommate",
+      "severity": "critical",
+      "hits": [
+        {
+          "id": "threshold-without-lookback",
+          "predicts": "omitted-qualifier"
+        }
+      ]
+    },
+    {
+      "id": "prop_intro_provider",
+      "title": "Introduction",
+      "doc": "proposal",
+      "severity": "critical",
+      "hits": [
+        {
+          "id": "form-not-named",
+          "predicts": "omitted-requirement"
+        }
+      ]
+    },
+    {
+      "id": "sh_indemnity",
+      "title": "Indemnification",
+      "doc": "*",
+      "severity": "recommended",
+      "hits": [
+        {
+          "id": "penalty-without-cap",
+          "predicts": "overstated-consequence"
+        }
+      ]
+    },
+    {
+      "id": "sh_noncompete",
+      "title": "Non-Compete",
+      "doc": "*",
+      "severity": "optional",
+      "hits": [
+        {
+          "id": "absolute-without-exception",
+          "predicts": "omitted-qualifier"
+        }
+      ]
+    },
+    {
+      "id": "sh_confidentiality",
+      "title": "Confidentiality",
+      "doc": "*",
+      "severity": "recommended",
+      "hits": [
+        {
+          "id": "threshold-without-lookback",
           "predicts": "omitted-qualifier"
         }
       ]
