@@ -4,44 +4,26 @@
  "documents": {
   "msa": {
    "default": "drafting",
-   "authority": [
-    "msa_ca_auto_renew",
-    "msa_ca_925",
-    "msa_ca_indemnity_construction",
-    "msa_ca_release",
-    "msa_ca_prop65",
-    "msa_ca_ab5_flowdown",
-    "msa_ca_cipa",
-    "msa_ca_unruh",
-    "msa_ca_dark_patterns",
-    "msa_ca_song_beverly"
-   ],
-   "why": "A master services agreement is a negotiated instrument. The only clauses that state law are the California compliance overlays, which exist precisely to tell the reader what California requires."
+   "authority": [],
+   "why": "A master services agreement is a negotiated instrument. The only clauses that once stated law were the ten California compliance overlays, all parked in the 2026-08-19 narrowing (templates/parked-california/) along with the state they applied to. What remains is generic drafting end to end, including msa_marks and msa_breach_notify, whose 'required by law'/'statutory' phrasing is a deferral rather than an assertion (see deferralsReviewed)."
   },
   "governance": {
    "default": "drafting",
    "authority": [
-    "gov_ca_rullca",
-    "gov_ca_charging",
-    "gov_ca_2115",
-    "gov_ca_professional",
-    "gov_charging",
     "gov_baa",
     "gov_lien",
     "gov_fiduciary",
     "gov_licens",
     "gov_privacy_notice"
    ],
-   "why": "An operating agreement or bylaws is negotiated. The exceptions state background law the parties cannot vary: the LLC act's default rules, charging-order exclusivity, the fiduciary standard of care, HIPAA business-associate agreements, mechanics-lien preliminary notices, professional licensing, and the duty to publish a privacy notice."
+   "why": "An operating agreement or bylaws is negotiated. Five clauses state background law the parties cannot vary: HIPAA business-associate obligations, mechanics-lien and retainage rights, the fiduciary standard of care, professional licensure and scope of practice, and the duty to publish a privacy notice. The LLC-act-default and charging-order-exclusivity exceptions this entry once carried were California-specific and are parked (templates/parked-california/)."
   },
   "charter": {
    "default": "drafting",
    "authority": [
-    "charter_purpose",
-    "charter_ny_publication",
-    "charter_ca_professional"
+    "charter_purpose"
    ],
-   "why": "Charter text is drafted, but the purpose clause recites the statutory formula, and the New York publication and California professional-services clauses state what those states require."
+   "why": "Charter text is drafted, but the purpose clause recites the statutory formula. The New York publication and California professional-services exceptions this entry once carried are parked (templates/parked-california/)."
   },
   "consent": {
    "default": "drafting",
@@ -53,10 +35,9 @@
   "ip-assignment": {
    "default": "drafting",
    "authority": [
-    "ipa_wfh",
-    "ipa_state_carveout"
+    "ipa_wfh"
    ],
-   "why": "An assignment is negotiated. Work-made-for-hire status is a matter of copyright law, and the state carve-out states the statutory limit on what an assignment can reach."
+   "why": "An assignment is negotiated. Work-made-for-hire status is a matter of copyright law. The state carve-out exception this entry once carried (ipa_state_carveout, the section 2870-style statutory limit) is parked (templates/parked-california/) -- ea_ip's deferral in this same document set still names it as where that content lives, which is now a stale pointer worth fixing when the carve-out itself is rebuilt."
   },
   "vesting": {
    "default": "drafting",
@@ -80,11 +61,6 @@
    "authority": [],
    "why": "Schedules and exhibits are form content the parties fill in."
   },
-  "ca-notices": {
-   "default": "authority",
-   "drafting": [],
-   "why": "This document exists to tell the reader what California requires of an employer. Every clause in it is a statement of law, including the six that were classified as drafting: the benefit-notice and posting lists are statutory distribution duties, the two local-ordinance clauses assert that the more employee-favourable provision governs, and the proactive-audit clause rests its whole value on the PAGA penalty reduction for pre-notice compliance."
-  },
   "handbook": {
    "default": "authority",
    "drafting": [
@@ -97,22 +73,13 @@
   "employment-agreement": {
    "default": "drafting",
    "authority": [
-    "ea_ca_exempt",
-    "ea_ca_commission",
-    "ea_ca_925",
-    "ea_ca_arbitration",
-    "ea_ca_release",
-    "ea_ca_pay_equity",
-    "ea_ca_paga_waiver",
     "ea_location",
     "ea_overtime",
     "ea_83b_notice",
     "ea_expenses",
-    "ea_noncompete_void",
-    "ea_return_property",
     "ea_classification"
    ],
-   "why": "An offer letter is a negotiated instrument, so the default is drafting. The exceptions are the clauses that describe the law rather than operate: the California overlays, the statement that a representative PAGA waiver is generally unenforceable, that the terms follow the state where work is actually performed, that unapproved overtime is still payable, the 83(b) deadline, that section 2802 reimbursement applies regardless of policy, that non-competes are void, that salary alone does not establish exempt status, and that final wages may not be withheld to force return of property."
+   "why": "An offer letter is a negotiated instrument, so the default is drafting. Five clauses describe the law rather than operate: that the terms follow the state where work is actually performed, that unapproved overtime is still payable, the 83(b) deadline, that section 2802 reimbursement applies regardless of policy, and that salary alone does not establish exempt status. The seven California overlays, the PAGA-waiver statement, the non-compete-void statement, and the final-wages/return-of-property statement this entry once carried are parked or consolidated into shared blocks (templates/parked-california/)."
   },
   "employment": {
    "default": "authority",
@@ -132,42 +99,90 @@
   "dpa": {
    "default": "drafting",
    "authority": [
-    "dpa_ca_service_provider",
-    "dpa_ca_sensitive",
-    "dpa_ca_deletion_chain",
-    "msa_ca_privacy_notice_flow",
     "dpa_roles"
    ],
-   "why": "A data processing addendum is a contract: instructions, security measures, audit rights, subprocessor notice, transfers and liability are all negotiated. The exceptions describe law the contract cannot change — the CCPA service-provider conditions, the statutory definition of sensitive personal information, the deletion chain and its exceptions, the notice-at-collection purpose limitation, and the fact that controller status follows the purpose of the processing rather than the label the parties give it."
+   "why": "A data processing addendum is a contract: instructions, security measures, audit rights, subprocessor notice, transfers and liability are all negotiated. One clause describes law the contract cannot change: that controller status follows the purpose of the processing rather than the label the parties give it. The CCPA-specific exceptions this entry once carried (service-provider conditions, sensitive-personal-information definition, deletion chain, notice-at-collection) are parked (templates/parked-california/); dpa_assistance and dpa_deletion's 'statutory'/'required by law' phrasing is a deferral rather than an assertion (see deferralsReviewed)."
   },
   "contractor-agreement": {
    "default": "drafting",
    "authority": [
-    "ic_ca_abc",
-    "ic_ca_exemptions",
-    "ic_ca_freelance",
-    "ic_ca_expenses",
     "ic_engagement",
     "ic_payment",
     "ic_ip",
     "ic_confidentiality",
     "ic_no_benefits"
    ],
-   "why": "The engagement terms themselves are negotiated, but this document carries an unusual amount of law because misclassification is its central risk. The exceptions state it: the ABC test and its statutory exemptions, the Freelance Worker Protection Act, reimbursement exposure on reclassification, that a recital of independence does not establish it, that prompt-payment statutes may penalise late payment, that contractor work is generally not work made for hire so the express assignment is what transfers ownership, the whistleblower carve-out, and that a waiver of benefits does not stop an agency reclassifying the relationship."
+   "why": "The engagement terms themselves are negotiated, but five clauses describe law rather than operate: that a recital of independence does not establish it, that prompt-payment statutes may penalise late payment, that contractor work is generally not work made for hire so the express assignment is what transfers ownership, the whistleblower carve-out on confidentiality, and that a waiver of benefits does not stop an agency reclassifying the relationship. This document carried an unusual amount of California-specific law before the narrowing -- the ABC test, its statutory exemptions, and the Freelance Worker Protection Act are parked (templates/parked-california/), and misclassification risk is exactly why those were among the highest-consequence clauses this project ever checked (see ic_ca_abc's finding, verification/findings/ic_ca_abc.json)."
   },
   "sow": {
    "default": "drafting",
-   "authority": [
-    "sow_ca_prevailing_wage"
-   ],
-   "why": "A statement of work is scope, schedule, fees, dependencies and change control — all negotiated. Only the prevailing-wage clause states law: what makes a project a public work, registration with the Department of Industrial Relations, certified payroll, and per-worker per-day penalties."
+   "authority": [],
+   "why": "A statement of work is scope, schedule, fees, dependencies and change control — all negotiated. The one clause that stated law, sow_ca_prevailing_wage (what makes a project a public work, DIR registration, certified payroll, per-worker per-day penalties), is parked (templates/parked-california/)."
   },
   "nda": {
    "default": "drafting",
-   "authority": [
-    "nda_nonsolicit"
-   ],
-   "why": "A mutual NDA is a negotiated instrument end to end, including compelled disclosure and return-or-destruction, which are operative permissions rather than statements of law. The one exception is the personnel non-solicit, whose closing sentence asserts that the provision is unenforceable against employees working in California — the same claim ea_noncompete_void makes, and it belongs on the same track."
+   "authority": [],
+   "why": "A mutual NDA is a negotiated instrument end to end, including compelled disclosure and return-or-destruction, which are operative permissions rather than statements of law (their 'required by law' phrasing is a deferral, see deferralsReviewed). The one exception this entry once carried, nda_nonsolicit -- whose closing sentence asserted the provision unenforceable against employees working in California, the same claim ea_noncompete_void made -- is parked along with both (templates/parked-california/)."
+  },
+  "*": {
+   "default": "drafting",
+   "authority": [],
+   "why": "Seventeen boilerplate blocks shared across every generic document by templates/tools/build.mjs's shared-clause consolidation (governing law, entire agreement, amendment, notices, severability, waiver, assignment, force majeure, dispute resolution, liability cap, indemnity, both termination variants, return of property, non-solicit, non-compete, confidentiality). Every one states what THIS agreement provides, not what a statute requires — the whole point of consolidating them out of per-document copies was that they carry no jurisdiction-specific content to duplicate. sh_return_property's 'copies required by law' phrase trips the lawTalk() surface matcher and is handled by the existing deferralsReviewed entry for it (a deferral, not an assertion), not by an authority exception here."
+  },
+  "lease": {
+   "default": "drafting",
+   "authority": [],
+   "why": "A residential lease is a negotiated instrument: rent, term, deposit, use, maintenance, entry and move-out are all terms between landlord and tenant. Numbers that are legal judgements — deposit limits, notice periods, entry notice, holdover treatment — are deliberately left as bracketed blanks with a rationale to check locally rather than asserted here, which is the whole reason no clause in this document states what any state's law requires."
+  },
+  "sublease": {
+   "default": "drafting",
+   "authority": [],
+   "why": "A sublease operates the same way the lease does. The one clause that reads differently, sub_subordinate, states a structural fact about this document set (the original lease controls where the two conflict) rather than a claim about external law."
+  },
+  "roommate": {
+   "default": "drafting",
+   "authority": [],
+   "why": "An internal cost- and conduct-sharing agreement between roommates, addressed to no landlord and no statute. Rent and deposit splits, chores, guests, and what happens if someone leaves are all negotiated questions, not legal ones."
+  },
+  "note": {
+   "default": "drafting",
+   "authority": [],
+   "why": "A promissory note is the instrument of the promise to pay, not a description of lending law. Interest, repayment schedule, default, acceleration and security are all terms the parties set. Usury limits and any required disclosures are left to the user to check locally (see the clause rationales) rather than asserted."
+  },
+  "loan": {
+   "default": "drafting",
+   "authority": [],
+   "why": "A loan agreement operates the same way the promissory note does, one level up: disbursement, interest, repayment, default events and remedies are all terms this agreement gives the lender, not a report of what the law allows. Collateral and default-remedy language reads sternly but is still performative — usury and repossession law are the user's to check, same as in note."
+  },
+  "svc": {
+   "default": "drafting",
+   "authority": [],
+   "why": "A short-form service agreement — payment, IP ownership, revisions, confidentiality, termination — negotiated between provider and client, the same reasoning as the non-California clauses in msa above, at shorter length."
+  },
+  "loa": {
+   "default": "drafting",
+   "authority": [],
+   "why": "A one-page letter of agreement is drafting by construction: its own design point (loa_whole) is brevity over completeness, and every section states what the parties agreed to rather than what any law requires."
+  },
+  "partnership": {
+   "default": "drafting",
+   "authority": [],
+   "why": "Formation, contributions, profit shares, decisions, admission, exit and dissolution are all terms the partners are setting for themselves in this agreement. None of it reports a default rule of partnership law — worth naming as a real gap for a future pass, not a claim this document currently makes."
+  },
+  "proposal": {
+   "default": "drafting",
+   "authority": [],
+   "why": "A pitch document — introduction, scope, investment, timeline, next steps — stating what is being proposed and on what terms. It reuses the commercial package's existing role and deal-size answers rather than asserting anything about law."
+  },
+  "invoice": {
+   "default": "drafting",
+   "authority": [],
+   "why": "A bill, not a claim about the law: invoice details, payment methods, late fees and dispute windows are all terms this document sets, with the late-fee amount and percentage left as bracketed blanks specifically because what is lawful varies locally and is not asserted here. The calculated line-item table is arithmetic, not a legal proposition."
+  },
+  "businessplan": {
+   "default": "drafting",
+   "authority": [],
+   "why": "A narrative business case plus a computed financial-projections table, addressed to the reader of the plan rather than to any counterparty or statute. Every judgement call (market size, competitors, staffing, the assumptions behind the numbers) is a bracketed prompt for the business owner to fill in, never asserted by this document."
   }
  },
  "deferralsReviewed": {
