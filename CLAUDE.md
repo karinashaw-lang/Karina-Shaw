@@ -55,7 +55,7 @@ the parked clauses: nothing in this corpus gets to claim a legal fact without a 
 363 clauses across 28 documents — 245 across 17 right after the narrowing, plus 11
 jurisdiction-neutral documents added since (property, money, partnership, two short-form
 agreements, a proposal, an invoice, a business plan). **57 of the 363 currently assert law**
-(`assertsLaw: true` — itself still `heuristic-unreviewed`; see Open items). **Six have been
+(`assertsLaw: true` — itself still `heuristic-unreviewed`; see Open items). **Seven have been
 checked against a real source** — read `verification/findings/<id>.json` for each, not this
 summary, before touching any of them: `b83_instructions` (real primary text, `multi-cited`),
 `ipa_wfh` (**contradicted** — work-for-hire is not automatic for a founder, *Reid v. CCNV*),
@@ -64,7 +64,9 @@ authorized" omits the knowledge condition *Forrester*/*Chao* require — a gap),
 — its "may require separate consideration" hedge is earned, a real *Columber*/*Labriola*
 jurisdictional split), `hb_technology` (**contradicted** — "no expectation of privacy" in
 Company systems stated without qualification; *Stengart v. Loving Care* held the opposite for
-a personal account on a company device, "case-by-case," not resolved by a policy statement).
+a personal account on a company device, "case-by-case," not resolved by a policy statement),
+`hb_accommodation` (clean — good-faith interactive-process failure being independently
+actionable is real, *Taylor v. Phoenixville*/*Bultemeyer*).
 
 Before picking a clause to check, cross-reference it against
 `verification/classification/proposals.json` first — two candidates (`vest_transfer`,
@@ -73,21 +75,22 @@ drafting (negotiated terms, nothing stating law), which is why they aren't on th
 despite currently carrying `assertsLaw: true`. Case-law research on a misclassified clause is
 wasted effort; the fix there is reclassification, not verification.
 
-Three of six came back with a real, recorded defect; none reached the release gate (this
-project's independence bar needs two distinct *hosts*; CourtListener alone is always one,
-however many opinions it serves). The other 51 have never been checked — `npm run queue`
-orders them by consequence. None of the five clauses named in "the one thing to know" above
-are among them; they are gone from the live set. Findings for clauses that are gone live in
-`verification/findings-parked-california/`, not `verification/findings/` — `findings.mjs`
-refuses to run at all if any file in the live directory names a clause outside the corpus.
+Three of seven came back with a real, recorded defect, two came back clean; none reached the
+release gate (this project's independence bar needs two distinct *hosts*; CourtListener alone
+is always one, however many opinions it serves). The other 50 have never been checked —
+`npm run queue` orders them by consequence. None of the five clauses named in "the one thing
+to know" above are among them; they are gone from the live set. Findings for clauses that are
+gone live in `verification/findings-parked-california/`, not `verification/findings/` —
+`findings.mjs` refuses to run at all if any file in the live directory names a clause outside
+the corpus.
 
 ## The strategy, decided
 
 **Do not repair the authority clauses one at a time.** Rebuild them from the statutory
 text. Read the section, write the clause from what it says, cite it. `b83_instructions` is
 what that looks like done — the only clause in the live corpus this has happened to (the
-other five checked are partial cases: real evidence, but case law alone since the statute
-hosts stay blocked). 51 more remain unchecked. Rebuilding is cheaper than investigating
+other six checked are partial cases: real evidence, but case law alone since the statute
+hosts stay blocked). 50 more remain unchecked. Rebuilding is cheaper than investigating
 clause-by-clause, and it removes the from-memory contamination instead of patching around it.
 
 The 306 drafting clauses are a different problem — they assert no law, so there is nothing
@@ -171,8 +174,8 @@ gets fabricated around a block; report it.
    not the mechanics: ea_ip's deferral entry points to `ipa_state_carveout` for its statutory
    content, and that clause is parked, so the content isn't actually anywhere in the shipped
    corpus — flagged in the proposals commit, not fixed.
-2. **51 of the 57 currently-shipped authority clauses have never been checked** — see "What
-   actually ships now" above for the six that have. `npm run queue` orders the rest by
+2. **50 of the 57 currently-shipped authority clauses have never been checked** — see "What
+   actually ships now" above for the seven that have. `npm run queue` orders the rest by
    consequence, but check each against `verification/classification/proposals.json` before
    spending real research on it — some currently-`assertsLaw:true` clauses are misclassified
    negotiated terms the proposal already caught, and researching those wastes the effort.
