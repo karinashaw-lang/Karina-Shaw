@@ -1,0 +1,53 @@
+{
+ "clauseId": "emp_ip",
+ "checkedAt": "2026-08-21",
+ "method": "Fourth clause checked via CourtListener this session (egress to statute/treatise hosts still blocked, re-probed the same day, unchanged). Unlike the first three, this one is a positive result worth recording as carefully as a defect: the clause hedges ('may require separate consideration') rather than asserting a categorical rule, and the question was whether that hedge is actually earned by the law or just cautious drafting. Searched for the leading case on each side of what turns out to be a real, acknowledged jurisdictional split, rather than stopping at the first case found.",
+ "queries": [
+  "continued at-will employment sufficient consideration employee agreement signed after employment began (CourtListener)",
+  "Lake Land Employment Group of Akron v. Columber consideration covenant continued employment (CourtListener, Ohio)",
+  "Labriola v. Pollard Group noncompetition agreement independent consideration continued employment insufficient (CourtListener, Washington)"
+ ],
+ "assertions": [
+  {
+   "text": "an invention-assignment agreement signed after work has begun may require separate consideration to be enforceable",
+   "status": "corroborated",
+   "note": "The hedge is earned, not just cautious. Lake Land Emp. Group of Akron, LLC v. Columber, 101 Ohio St.3d 242 (2004), quoted below: Ohio holds that an at-will employer's forbearance from discharging the employee is itself sufficient consideration for an agreement signed after hire -- no separate consideration required. Labriola v. Pollard Group, Inc., 100 P.3d 791 (Wash. 2004), the same year, holds the opposite for Washington: 'A noncompete agreement entered into after employment has commenced is validly formed only when there is independent consideration at the time the agreement is reached.' Lake Land's own opinion states the reason directly: 'Jurisdictions throughout the country are split on the issue,' citing Sufficiency of Consideration for Employee's Covenant Not to Compete, Entered into after Inception of Employment, 51 A.L.R.3d 825 (1973). A clause written for a jurisdiction-neutral corpus that says 'may' rather than picking a side is stating the law correctly."
+  }
+ ],
+ "gaps": [
+  "Both opinions read address noncompetition covenants specifically, not a bare invention-assignment-and-confidentiality agreement with no competitive restriction. The general contract-law question is the same ('is a promise made after an at-will relationship already exists supported by consideration'), and nothing found suggests courts draw a different line for invention assignments -- but that was not independently confirmed with a case actually presenting an invention-assignment fact pattern, only inferred from the shared underlying doctrine.",
+  "This confirms a split exists; it does not tell a reader which side any particular {{opStateLong}} falls on, and the clause does not either -- by design, since this is the jurisdiction-neutral corpus and state-specific answers were parked. A reader who wants to know whether separate consideration is actually required in their state still has to look it up themselves.",
+  "Both sources are on the same host (courtlistener.com), so this does not meet this project's two-independent-host standard even though it draws on two independent courts reaching opposite conclusions -- an artifact of how host-independence is measured here, not a weakness in the finding itself."
+ ],
+ "sources": [
+  {
+   "type": "case-mirror",
+   "url": "https://www.courtlistener.com/opinion/6892723/lake-land-employment-group-of-akron-llc-v-columber/",
+   "checked": "2026-08-21",
+   "title": "CourtListener — Lake Land Employment Group of Akron, LLC v. Columber (Ohio 2004) 101 Ohio St.3d 242"
+  },
+  {
+   "type": "case-mirror",
+   "url": "https://www.courtlistener.com/opinion/2634466/labriola-v-pollard-group-inc/",
+   "checked": "2026-08-21",
+   "title": "CourtListener — Labriola v. Pollard Group, Inc. (Wash. 2004) 100 P.3d 791"
+  }
+ ],
+ "defectTypes": [],
+ "judicialQuotations": [
+  {
+   "case": "Lake Land Employment Group of Akron, LLC v. Columber (Ohio 2004) 101 Ohio St.3d 242",
+   "opinion": 6786976,
+   "url": "https://www.courtlistener.com/opinion/6892723/lake-land-employment-group-of-akron-llc-v-columber/",
+   "checked": "2026-08-21",
+   "quote": "Jurisdictions throughout the country are split on the issue presented by the certified question... The certified question puts in issue only the element of consideration. It asks, \"Is subsequent employment alone sufficient consideration to support a covenant-not-to-compete agreement with an at-will employee entered into after employment has already begun?\" We conclude that forbearance on the part of an at-will employer from discharging an at-will employee serves as consideration to support a noncompetition agreement."
+  },
+  {
+   "case": "Labriola v. Pollard Group, Inc. (Wash. 2004) 100 P.3d 791",
+   "opinion": 2634466,
+   "url": "https://www.courtlistener.com/opinion/2634466/labriola-v-pollard-group-inc/",
+   "checked": "2026-08-21",
+   "quote": "A noncompete agreement entered into after employment has commenced is validly formed only when there is independent consideration at the time the agreement is reached. Finding that there was no independent consideration at the time of the 2002 noncompete agreement, we reverse the trial court's summary judgment ruling."
+  }
+ ]
+}

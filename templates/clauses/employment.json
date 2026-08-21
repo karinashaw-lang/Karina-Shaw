@@ -214,10 +214,29 @@
    "updated": "2026-06",
    "rationale": "Founder IP assignment does not cover employees. Every hire needs their own assignment signed before the first day of work.",
    "body": "Every employee shall sign an invention assignment and confidentiality agreement before their first day of work, assigning to the Company all inventions and works created in the scope of employment, and including any statutory carve-out required in {{opStateLong}}. An assignment signed after work has begun may require separate consideration to be enforceable.",
-   "sources": [],
-   "verification": "unsourced",
+   "sources": [
+    {
+     "type": "case-mirror",
+     "url": "https://www.courtlistener.com/opinion/6892723/lake-land-employment-group-of-akron-llc-v-columber/",
+     "checked": "2026-08-21",
+     "title": "CourtListener — Lake Land Employment Group of Akron, LLC v. Columber (Ohio 2004) 101 Ohio St.3d 242"
+    },
+    {
+     "type": "case-mirror",
+     "url": "https://www.courtlistener.com/opinion/2634466/labriola-v-pollard-group-inc/",
+     "checked": "2026-08-21",
+     "title": "CourtListener — Labriola v. Pollard Group, Inc. (Wash. 2004) 100 P.3d 791"
+    }
+   ],
+   "verification": "multi-cited",
    "assertsLaw": true,
-   "classifiedBy": "heuristic-unreviewed"
+   "classifiedBy": "heuristic-unreviewed",
+   "defects": [
+    "Both opinions read address noncompetition covenants specifically, not a bare invention-assignment-and-confidentiality agreement with no competitive restriction. The general contract-law question is the same ('is a promise made after an at-will relationship already exists supported by consideration'), and nothing found suggests courts draw a different line for invention assignments -- but that was not independently confirmed with a case actually presenting an invention-assignment fact pattern, only inferred from the shared underlying doctrine.",
+    "This confirms a split exists; it does not tell a reader which side any particular {{opStateLong}} falls on, and the clause does not either -- by design, since this is the jurisdiction-neutral corpus and state-specific answers were parked. A reader who wants to know whether separate consideration is actually required in their state still has to look it up themselves.",
+    "Both sources are on the same host (courtlistener.com), so this does not meet this project's two-independent-host standard even though it draws on two independent courts reaching opposite conclusions -- an artifact of how host-independence is measured here, not a weakness in the finding itself."
+   ],
+   "lastChecked": "2026-08-21"
   },
   {
    "id": "emp_harassment",
