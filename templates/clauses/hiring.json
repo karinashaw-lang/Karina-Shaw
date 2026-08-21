@@ -994,10 +994,31 @@
    "updated": "2026-06",
    "rationale": "Several states require advance written notice before monitoring employee electronic communications, and notice given after the fact does not cure it.",
    "body": "Company systems are provided for business use. Employees should have no expectation of privacy in data stored on or transmitted through Company systems, and the Company may monitor them consistent with the law of {{opStateLong}}, which may require advance written notice. Employees shall not store Company confidential information in personal accounts.",
-   "sources": [],
-   "verification": "unsourced",
+   "sources": [
+    {
+     "type": "case-mirror",
+     "url": "https://www.courtlistener.com/opinion/1483465/stengart-v-loving-care-agency-inc/",
+     "checked": "2026-08-21",
+     "title": "CourtListener — Stengart v. Loving Care Agency, Inc. (N.J. 2010) 990 A.2d 650"
+    },
+    {
+     "type": "case-mirror",
+     "url": "https://www.courtlistener.com/opinion/2131293/smyth-v-pillsbury-co/",
+     "checked": "2026-08-21",
+     "title": "CourtListener — Smyth v. Pillsbury Co. (E.D. Pa. 1996) 914 F.Supp. 97"
+    }
+   ],
+   "verification": "multi-cited",
    "assertsLaw": true,
-   "classifiedBy": "heuristic-unreviewed"
+   "classifiedBy": "heuristic-unreviewed",
+   "defects": [
+    "The clause's 'no expectation of privacy... on Company systems' is accurate for the ordinary case Smyth addresses (an employee's ordinary use of the company's own email/systems) but is stated as though monitoring is therefore unconstrained. Stengart's own fact pattern is exactly the scenario this clause's last sentence gestures at without addressing -- an employee using a personal, password-protected account (there, webmail; the clause separately tells employees not to store confidential information in personal accounts, which implies personal accounts are in scope of employee behavior but not of what the Company may do with them) accessed through a company device. Personal accounts accessed on Company hardware are not squarely 'data stored on or transmitted through Company systems,' and the clause does not say whether the Company claims any monitoring right over them.",
+    "Privileged communications (attorney-client, in Stengart's case) get separate, stronger protection than ordinary personal communications under the case law read here. The clause draws no distinction for privileged content at all.",
+    "Courts described in Stengart's own survey (not independently read here, only as characterized by Stengart itself) draw a further distinction between accessing personal webmail through a browser versus routing personal messages through the company's own email address -- the latter looking more like Smyth even when the content is personal. The clause does not address this distinction because it does not address personal accounts at all.",
+    "The clause's own advance-written-notice requirement ('may require advance written notice') for state-law monitoring rules was not itself checked against any specific state's statute -- every host that would carry state notice-of-monitoring statutes was blocked.",
+    "contradicted: employees have no expectation of privacy in ANY data stored on or transmitted through Company systems, stated without qualification"
+   ],
+   "lastChecked": "2026-08-21"
   },
   {
    "id": "hb_leave_vacation",
