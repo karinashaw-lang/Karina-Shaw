@@ -186,10 +186,29 @@
    "updated": "2026-06",
    "rationale": "Unauthorized overtime is still payable. Discipline for working it is permissible; refusing to pay for it is not, and the distinction is where employers most often go wrong.",
    "body": "This role is non-exempt. The {{workerLabel}} shall record all hours worked accurately and shall be paid overtime as required by federal law and the law of {{opStateLong}}. Overtime requires advance approval, but all overtime actually worked will be paid whether or not it was approved.",
-   "sources": [],
-   "verification": "unsourced",
+   "sources": [
+    {
+     "type": "case-mirror",
+     "url": "https://www.courtlistener.com/opinion/389336/billy-h-forrester-v-roths-i-g-a-foodliner-incorporated-an-oregon/",
+     "checked": "2026-08-20",
+     "title": "CourtListener — Forrester v. Roth's I.G.A. Foodliner, Inc. (9th Cir. 1981) 646 F.2d 413"
+    },
+    {
+     "type": "case-mirror",
+     "url": "https://www.courtlistener.com/opinion/1386400/chao-v-gotham-registry-inc/",
+     "checked": "2026-08-20",
+     "title": "CourtListener — Chao v. Gotham Registry, Inc. (2d Cir. 2008) 514 F.3d 280"
+    }
+   ],
+   "verification": "multi-cited",
    "assertsLaw": true,
-   "classifiedBy": "heuristic-unreviewed"
+   "classifiedBy": "heuristic-unreviewed",
+   "defects": [
+    "Same omission as emp_overtime, worth restating in this clause's own terms because the audience is different: this is language in an offer letter, read by a new hire before they have worked a single shift, not an internal handbook policy read by someone already employed. Telling a new hire overtime 'will be paid whether or not it was approved' with no qualifier is the more consequential place for the gap to sit, since it sets an expectation the company may not always be able to meet -- specifically where the new hire never reports the hours through whatever channel the company actually uses.",
+    "29 U.S.C. section 207 and section 203(g) were not independently fetched -- every host that would carry them was blocked, same as for emp_overtime.",
+    "The clause's deferral to 'the law of {{opStateLong}}' was not checked against any state's actual daily-overtime or other overtime rules -- it names no specific state rule to verify."
+   ],
+   "lastChecked": "2026-08-21"
   },
   {
    "id": "ea_bonus",
