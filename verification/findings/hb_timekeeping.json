@@ -1,0 +1,38 @@
+{
+ "clauseId": "hb_timekeeping",
+ "checkedAt": "2026-08-21",
+ "method": "Eleventh clause checked this session, from the classification-aware authority queue (verification/classification/proposals.json, handbook document, drafting exceptions hb_welcome/hb_ack/hb_harassment excluded). The clause's third sentence states a specific, well-known FLSA burden-of-proof rule in one clause -- found the controlling Supreme Court opinion directly on the first search rather than needing a chain of circuit cases, since this doctrine has a single, named origin case that is still the operative precedent.",
+ "queries": [
+  "Anderson v. Mt. Clemens Pottery employee reasonable inference just and reasonable inference employer records inadequate (CourtListener)"
+ ],
+ "assertions": [
+  {
+   "text": "where timekeeping records are incomplete, an employee's reasonable estimate of hours worked will generally be accepted in a wage claim",
+   "status": "corroborated",
+   "note": "Anderson v. Mt. Clemens Pottery Co., 328 U.S. 680 (1946), quoted below -- still the controlling rule for FLSA recordkeeping-failure cases. The clause's practical bottom line (an employee's estimate can carry the day where the employer's records are inadequate) is correct and is the reason this rule is worth stating in a handbook at all: it is the consequence that should motivate the employer to keep records in the first place."
+  }
+ ],
+ "gaps": [
+  "The clause says the employee's estimate 'will generally be accepted,' which reads as though the estimate is simply credited. Mt. Clemens actually describes a two-step burden-shift: the employee must first produce evidence sufficient to support 'a matter of just and reasonable inference' as to the amount of work performed, and only then does the burden shift to the employer to 'come forward with evidence of the precise amount of work performed or with evidence to negative the reasonableness of the inference.' An employer that shows up with contrary evidence can defeat or narrow the employee's estimate -- the clause gives the reader no hint that the employer retains this rebuttal opportunity, which matters most to the audience actually reading a handbook (the employer), since it understates the extent to which good contrary evidence, even short of full records, can still limit exposure."
+ ],
+ "sources": [
+  {
+   "type": "case-mirror",
+   "url": "https://www.courtlistener.com/opinion/104318/anderson-v-mt-clemens-pottery-co/",
+   "checked": "2026-08-21",
+   "title": "CourtListener — Anderson v. Mt. Clemens Pottery Co. (1946) 328 U.S. 680"
+  }
+ ],
+ "defectTypes": [
+  "omitted-qualifier"
+ ],
+ "judicialQuotations": [
+  {
+   "case": "Anderson v. Mt. Clemens Pottery Co. (1946) 328 U.S. 680",
+   "opinion": 104318,
+   "url": "https://www.courtlistener.com/opinion/104318/anderson-v-mt-clemens-pottery-co/",
+   "checked": "2026-08-21",
+   "quote": "an employee has carried out his burden if he proves that he has in fact performed work for which he was improperly compensated and if he produces sufficient evidence to show the amount and extent of that work as a matter of just and reasonable inference. The burden then shifts to the employer to come forward with evidence of the precise amount of work performed or with evidence to negative the reasonableness of the inference to be drawn from the employee's evidence. If the employer fails to produce such evidence, the court may then award damages to the employee, even though the result be only approximate."
+  }
+ ]
+}

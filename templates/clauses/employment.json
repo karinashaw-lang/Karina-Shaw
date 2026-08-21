@@ -86,7 +86,12 @@
    ],
    "verification": "single-source",
    "assertsLaw": true,
-   "classifiedBy": "heuristic-unreviewed"
+   "classifiedBy": "heuristic-unreviewed",
+   "defects": [
+    "The clause's citation (8 U.S.C. section 1324a only) does not name section 1324b, which is the actual statutory source of the documentary-uniformity claim. Whether this is worth flagging as a citation gap depends on whether a reader would understand '8 U.S.C. section 1324a' to cover the whole clause or just the verification-duty sentence -- not resolved here, but noted because this project's stated failure pattern is exactly 'the clause reproduces something true and cites the wrong or incomplete provision.'",
+    "Robison's discrimination-requirement holding was for the pre-1996 version of section 1324b(a)(6); the opinion states the 1996 amendment made the discrimination requirement express rather than changing it, and the court read the requirement into the earlier text too -- so the current text should hold a fortiori, but the current (post-1996) statutory text was not independently fetched to confirm the amendment reads the way the opinion describes it, since every host carrying it directly is blocked."
+   ],
+   "lastChecked": "2026-08-21"
   },
   {
    "id": "emp_offer",

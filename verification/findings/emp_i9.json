@@ -1,0 +1,59 @@
+{
+ "clauseId": "emp_i9",
+ "checkedAt": "2026-08-21",
+ "method": "Ninth clause checked this session, top of the classification-aware authority queue (verification/classification/proposals.json's 45-clause authority set, cross-referenced against verification/findings/ to find the 37 still unchecked -- the raw npm run queue output mixes drafting and authority clauses because queue.mjs does not read proposals.json, so it is not a reliable ordering for this ladder). The clause makes three separable factual claims -- a completion deadline, a retention rule, and a nondiscrimination/documentary-uniformity rule -- backed by a single citation to 8 U.S.C. section 1324a. Checked each claim independently rather than treating the citation as covering all three. The third claim turned out to be the interesting one: it is not actually a section 1324a claim at all.",
+ "queries": [
+  "document abuse 1324b unfair immigration related employment practice requesting more or different documents (CourtListener)",
+  "Form I-9 three business days employment eligibility verification 1324a employer sanctions (CourtListener)",
+  "Zamora Elite Logistics I-9 document abuse different documents citizenship (CourtListener)",
+  "I-9 completed within three business days retain separately personnel file paperwork violation (CourtListener)"
+ ],
+ "assertions": [
+  {
+   "text": "applying the same documentary requirements to all employees, without regard to national origin or citizenship status, is what the law requires",
+   "status": "corroborated",
+   "note": "Robison Fruit Ranch, Inc. v. United States, 154 F.3d 807 (9th Cir. 1998), quoted below. This claim is not actually a section 1324a claim -- it is the 'document abuse' provision, 8 U.S.C. section 1324b(a)(6), read together with the general antidiscrimination provision, section 1324b(a)(1). The clause's single citation names only section 1324a, the verification-duty statute, and omits section 1324b, the antidiscrimination statute that is the actual source of this specific claim -- a miscitation in the sense this project's taxonomy uses the term, even though the underlying legal claim itself holds up. The Ninth Circuit held that requesting more or different documents from some employees than others is unlawful only where done for a discriminatory purpose or with discriminatory effect; treating everyone identically, which is what the clause instructs, is the safe-harbor practice the statute is designed to induce, and the court expressly approved uniform treatment as non-violative even where the specific documents requested exceeded the bare statutory minimum."
+  },
+  {
+   "text": "Form I-9 must be completed within three (3) business days of the employee's first day of work",
+   "status": "unsupported",
+   "note": "No opinion found in two targeted CourtListener searches states or corroborates this specific timing rule. This is a regulatory completion deadline (8 C.F.R. section 274a.2(b)(1)(ii)), not case-law doctrine -- the same tool-limitation pattern recorded in the cal_annual_report finding earlier this session. eCFR and the other hosts that would carry the regulation directly remain blocked (re-probed 2026-08-21, unchanged)."
+  },
+  {
+   "text": "I-9 forms must be retained separately from personnel files",
+   "status": "unsupported",
+   "note": "Same result and same reason -- a regulatory recordkeeping detail (8 C.F.R. section 274a.2(b)(2) region), not something published opinions restate, and the hosts that would confirm it directly are blocked."
+  }
+ ],
+ "gaps": [
+  "The clause's citation (8 U.S.C. section 1324a only) does not name section 1324b, which is the actual statutory source of the documentary-uniformity claim. Whether this is worth flagging as a citation gap depends on whether a reader would understand '8 U.S.C. section 1324a' to cover the whole clause or just the verification-duty sentence -- not resolved here, but noted because this project's stated failure pattern is exactly 'the clause reproduces something true and cites the wrong or incomplete provision.'",
+  "Robison's discrimination-requirement holding was for the pre-1996 version of section 1324b(a)(6); the opinion states the 1996 amendment made the discrimination requirement express rather than changing it, and the court read the requirement into the earlier text too -- so the current text should hold a fortiori, but the current (post-1996) statutory text was not independently fetched to confirm the amendment reads the way the opinion describes it, since every host carrying it directly is blocked."
+ ],
+ "sources": [
+  {
+   "type": "case-mirror",
+   "url": "https://www.courtlistener.com/opinion/755475/robison-fruit-ranch-inc-petitioner-v-united-states-of-america/",
+   "checked": "2026-08-21",
+   "title": "CourtListener — Robison Fruit Ranch, Inc. v. United States (9th Cir. 1998) 154 F.3d 807"
+  }
+ ],
+ "defectTypes": [
+  "miscitation"
+ ],
+ "judicialQuotations": [
+  {
+   "case": "Robison Fruit Ranch, Inc. v. United States (9th Cir. 1998) 154 F.3d 807",
+   "opinion": 755475,
+   "url": "https://www.courtlistener.com/opinion/755475/robison-fruit-ranch-inc-petitioner-v-united-states-of-america/",
+   "checked": "2026-08-21",
+   "quote": "We hold that Congress intended a discrimination requirement in the 1990 statute and merely clarified the statute to state that intent in its 1996 amendment. The evidence unquestionably shows that the employment practices in this case did not create additional burdens to any class of applicants or constitute differential treatment of authorized aliens and citizens. There could have been no discrimination, and the petition for review must be granted."
+  },
+  {
+   "case": "Robison Fruit Ranch, Inc. v. United States (9th Cir. 1998) 154 F.3d 807",
+   "opinion": 755475,
+   "url": "https://www.courtlistener.com/opinion/755475/robison-fruit-ranch-inc-petitioner-v-united-states-of-america/",
+   "checked": "2026-08-21",
+   "quote": "The ALJ in Zabala concluded that a request for specific documents did not violate section 1324b(a)(6) when the employer requested documents that are in fact routinely presented during the employment process... Inferring a discrimination requirement from the language of the statute, that ALJ held that section 1324b(a)(6) 'is not breached in the absence of evidence that ... aliens but not other new hires were required to rely on and produce specific documents.' We agree."
+  }
+ ]
+}

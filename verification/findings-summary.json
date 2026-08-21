@@ -1,8 +1,9 @@
 {
-  "scoredAt": "2026-08-21T00:14:37.248Z",
+  "scoredAt": "2026-08-21T00:30:21.285Z",
   "tally": {
     "contradicted": 2,
-    "incomplete": 5
+    "incomplete": 8,
+    "insufficient-sources": 1
   },
   "rows": [
     {
@@ -46,6 +47,16 @@
       "known": true
     },
     {
+      "id": "emp_i9",
+      "outcome": "incomplete",
+      "upgradeTo": null,
+      "why": "2 requirement(s) described by sources are absent from the clause — a clause that is silent on a requirement reads as complete and is not",
+      "assertions": 3,
+      "gaps": 2,
+      "hosts": 1,
+      "known": true
+    },
+    {
       "id": "emp_ip",
       "outcome": "incomplete",
       "upgradeTo": null,
@@ -73,6 +84,36 @@
       "assertions": 1,
       "gaps": 3,
       "hosts": 1,
+      "known": true
+    },
+    {
+      "id": "hb_i9",
+      "outcome": "incomplete",
+      "upgradeTo": null,
+      "why": "2 requirement(s) described by sources are absent from the clause — a clause that is silent on a requirement reads as complete and is not",
+      "assertions": 3,
+      "gaps": 2,
+      "hosts": 1,
+      "known": true
+    },
+    {
+      "id": "hb_timekeeping",
+      "outcome": "incomplete",
+      "upgradeTo": null,
+      "why": "1 requirement(s) described by sources are absent from the clause — a clause that is silent on a requirement reads as complete and is not",
+      "assertions": 1,
+      "gaps": 1,
+      "hosts": 1,
+      "known": true
+    },
+    {
+      "id": "cal_annual_report",
+      "outcome": "insufficient-sources",
+      "upgradeTo": null,
+      "why": "0 independent host(s); corroboration requires at least two",
+      "assertions": 3,
+      "gaps": 0,
+      "hosts": 0,
       "known": true
     }
   ]

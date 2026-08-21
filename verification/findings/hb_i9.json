@@ -1,0 +1,52 @@
+{
+ "clauseId": "hb_i9",
+ "checkedAt": "2026-08-21",
+ "method": "Tenth clause checked this session. hb_i9 (handbook) and emp_i9 (employment offer letter) state the same three claims in near-identical language with the same single citation to 8 U.S.C. section 1324a -- checked together as one research pass, recorded as two findings because they are two distinct shipped clauses that could drift independently. See verification/findings/emp_i9.json for the full method and queries; not repeated here.",
+ "queries": [
+  "document abuse 1324b unfair immigration related employment practice requesting more or different documents (CourtListener)",
+  "Form I-9 three business days employment eligibility verification 1324a employer sanctions (CourtListener)",
+  "Zamora Elite Logistics I-9 document abuse different documents citizenship (CourtListener)",
+  "I-9 completed within three business days retain separately personnel file paperwork violation (CourtListener)"
+ ],
+ "assertions": [
+  {
+   "text": "applying the same documentary requirements to all employees, without regard to national origin or citizenship status, is what the law requires",
+   "status": "corroborated",
+   "note": "Same finding as emp_i9: corroborated by Robison Fruit Ranch, Inc. v. United States, 154 F.3d 807 (9th Cir. 1998), but the claim's actual statutory source is 8 U.S.C. section 1324b(a)(6) read with section 1324b(a)(1), not section 1324a, which is the only citation this clause carries."
+  },
+  {
+   "text": "Form I-9 must be completed within three (3) business days of the employee's first day of work",
+   "status": "unsupported",
+   "note": "Same as emp_i9 -- a regulatory deadline (8 C.F.R. section 274a.2(b)(1)(ii)) that CourtListener's case-law index does not carry, and every host that would carry the regulation directly is blocked."
+  },
+  {
+   "text": "I-9 forms must be retained separately from personnel files",
+   "status": "unsupported",
+   "note": "Same as emp_i9, same reason."
+  }
+ ],
+ "gaps": [
+  "Same citation gap as emp_i9: the clause's only citation (8 U.S.C. section 1324a) does not name section 1324b, the actual source of the documentary-uniformity claim.",
+  "Same unconfirmed premise as emp_i9: Robison's discrimination-requirement holding construed the pre-1996 statute; the current text was not independently fetched to confirm the 1996 amendment reads the way the opinion describes."
+ ],
+ "sources": [
+  {
+   "type": "case-mirror",
+   "url": "https://www.courtlistener.com/opinion/755475/robison-fruit-ranch-inc-petitioner-v-united-states-of-america/",
+   "checked": "2026-08-21",
+   "title": "CourtListener — Robison Fruit Ranch, Inc. v. United States (9th Cir. 1998) 154 F.3d 807"
+  }
+ ],
+ "defectTypes": [
+  "miscitation"
+ ],
+ "judicialQuotations": [
+  {
+   "case": "Robison Fruit Ranch, Inc. v. United States (9th Cir. 1998) 154 F.3d 807",
+   "opinion": 755475,
+   "url": "https://www.courtlistener.com/opinion/755475/robison-fruit-ranch-inc-petitioner-v-united-states-of-america/",
+   "checked": "2026-08-21",
+   "quote": "We hold that Congress intended a discrimination requirement in the 1990 statute and merely clarified the statute to state that intent in its 1996 amendment. The evidence unquestionably shows that the employment practices in this case did not create additional burdens to any class of applicants or constitute differential treatment of authorized aliens and citizens. There could have been no discrimination, and the petition for review must be granted."
+  }
+ ]
+}
