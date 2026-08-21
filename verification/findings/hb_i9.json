@@ -1,33 +1,35 @@
 {
  "clauseId": "hb_i9",
  "checkedAt": "2026-08-21",
- "method": "Tenth clause checked this session. hb_i9 (handbook) and emp_i9 (employment offer letter) state the same three claims in near-identical language with the same single citation to 8 U.S.C. section 1324a -- checked together as one research pass, recorded as two findings because they are two distinct shipped clauses that could drift independently. See verification/findings/emp_i9.json for the full method and queries; not repeated here.",
+ "method": "Tenth clause checked this session. hb_i9 (handbook) and emp_i9 (employment offer letter) state the same three claims in near-identical language with the same single citation to 8 U.S.C. section 1324a -- checked together as one research pass, recorded as two findings because they are two distinct shipped clauses that could drift independently. A second, independent circuit's opinion (Split Rail Fence Co., 10th Cir. 2017) was added after the first pass, per the user's instruction to double every check rather than stop at one source. See verification/findings/emp_i9.json for the full method, queries, and quotations; not repeated here.",
  "queries": [
   "document abuse 1324b unfair immigration related employment practice requesting more or different documents (CourtListener)",
   "Form I-9 three business days employment eligibility verification 1324a employer sanctions (CourtListener)",
   "Zamora Elite Logistics I-9 document abuse different documents citizenship (CourtListener)",
-  "I-9 completed within three business days retain separately personnel file paperwork violation (CourtListener)"
+  "I-9 completed within three business days retain separately personnel file paperwork violation (CourtListener)",
+  "document abuse unfair immigration related employment practice 1324b(a)(6) requesting more documents than required discriminatory intent (CourtListener)",
+  "full-text search within Split Rail Fence Co. v. United States for 'business days', 'retain', 'personnel', '1324b'"
  ],
  "assertions": [
   {
    "text": "applying the same documentary requirements to all employees, without regard to national origin or citizenship status, is what the law requires",
    "status": "corroborated",
-   "note": "Same finding as emp_i9: corroborated by Robison Fruit Ranch, Inc. v. United States, 154 F.3d 807 (9th Cir. 1998), but the claim's actual statutory source is 8 U.S.C. section 1324b(a)(6) read with section 1324b(a)(1), not section 1324a, which is the only citation this clause carries."
+   "note": "Corroborated by two independent circuits: Robison Fruit Ranch, Inc. v. United States, 154 F.3d 807 (9th Cir. 1998), and Split Rail Fence Co. v. United States, 852 F.3d 1228 (10th Cir. 2017), which independently quotes the current post-1996 text of section 1324b(a)(6). The claim's actual statutory source is section 1324b(a)(6) read with section 1324b(a)(1), not section 1324a, which is the only citation this clause carries."
   },
   {
    "text": "Form I-9 must be completed within three (3) business days of the employee's first day of work",
-   "status": "unsupported",
-   "note": "Same as emp_i9 -- a regulatory deadline (8 C.F.R. section 274a.2(b)(1)(ii)) that CourtListener's case-law index does not carry, and every host that would carry the regulation directly is blocked."
+   "status": "corroborated",
+   "note": "Split Rail Fence Co. v. United States, 852 F.3d 1228 (10th Cir. 2017), directly quotes 8 C.F.R. section 274a.2(b)(1)(ii): an employer 'must within three business days of hire ... [c]omplete [S]ection 2' of Form I-9. Upgraded from unsupported after a targeted in-document search of a case already in the corpus surfaced the quotation -- see emp_i9.json for the full quote."
   },
   {
    "text": "I-9 forms must be retained separately from personnel files",
    "status": "unsupported",
-   "note": "Same as emp_i9, same reason."
+   "note": "Full-text searches inside both Robison and Split Rail found no discussion of this specific sub-requirement. Remains a regulatory recordkeeping detail (8 C.F.R. section 274a.2(b)(2) region) with no case law found addressing it, and every host that would carry the regulation directly is blocked."
   }
  ],
  "gaps": [
   "Same citation gap as emp_i9: the clause's only citation (8 U.S.C. section 1324a) does not name section 1324b, the actual source of the documentary-uniformity claim.",
-  "Same unconfirmed premise as emp_i9: Robison's discrimination-requirement holding construed the pre-1996 statute; the current text was not independently fetched to confirm the 1996 amendment reads the way the opinion describes."
+  "The retain-separately-from-personnel-files claim is still unsupported after two independent cases and targeted in-document searches of both."
  ],
  "sources": [
   {
@@ -35,6 +37,12 @@
    "url": "https://www.courtlistener.com/opinion/755475/robison-fruit-ranch-inc-petitioner-v-united-states-of-america/",
    "checked": "2026-08-21",
    "title": "CourtListener — Robison Fruit Ranch, Inc. v. United States (9th Cir. 1998) 154 F.3d 807"
+  },
+  {
+   "type": "case-mirror",
+   "url": "https://www.courtlistener.com/opinion/4153671/split-rail-fence-co-inc-v-united-states/",
+   "checked": "2026-08-21",
+   "title": "CourtListener — Split Rail Fence Co. v. United States (10th Cir. 2017) 852 F.3d 1228"
   }
  ],
  "defectTypes": [
@@ -47,6 +55,20 @@
    "url": "https://www.courtlistener.com/opinion/755475/robison-fruit-ranch-inc-petitioner-v-united-states-of-america/",
    "checked": "2026-08-21",
    "quote": "We hold that Congress intended a discrimination requirement in the 1990 statute and merely clarified the statute to state that intent in its 1996 amendment. The evidence unquestionably shows that the employment practices in this case did not create additional burdens to any class of applicants or constitute differential treatment of authorized aliens and citizens. There could have been no discrimination, and the petition for review must be granted."
+  },
+  {
+   "case": "Split Rail Fence Co. v. United States (10th Cir. 2017) 852 F.3d 1228",
+   "opinion": 4153671,
+   "url": "https://www.courtlistener.com/opinion/4153671/split-rail-fence-co-inc-v-united-states/",
+   "checked": "2026-08-21",
+   "quote": "The employer must complete Section 2, titled \"Employer Review and Verification,\" to confirm the identity and employment authorization of the employee by listing the document numbers and expiration dates of examined documents. See id. § 274a.2(b)(1)(ii) (explaining an employer \"must within three business days of hire ... [c]omplete [S]ection 2\")."
+  },
+  {
+   "case": "Split Rail Fence Co. v. United States (10th Cir. 2017) 852 F.3d 1228",
+   "opinion": 4153671,
+   "url": "https://www.courtlistener.com/opinion/4153671/split-rail-fence-co-inc-v-united-states/",
+   "checked": "2026-08-21",
+   "quote": "...documents than are required under such section or refusing to honor documents tendered that on their face reasonably appear to be genuine shall be treated as an unfair immigration-related employment practice if made for the purpose or with the intent of discriminating against an individual.\" 8 U.S.C. § 1324b(a)(6)."
   }
  ]
 }

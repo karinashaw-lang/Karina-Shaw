@@ -1,19 +1,20 @@
 {
  "clauseId": "hb_timekeeping",
  "checkedAt": "2026-08-21",
- "method": "Eleventh clause checked this session, from the classification-aware authority queue (verification/classification/proposals.json, handbook document, drafting exceptions hb_welcome/hb_ack/hb_harassment excluded). The clause's third sentence states a specific, well-known FLSA burden-of-proof rule in one clause -- found the controlling Supreme Court opinion directly on the first search rather than needing a chain of circuit cases, since this doctrine has a single, named origin case that is still the operative precedent.",
+ "method": "Eleventh clause checked this session, from the classification-aware authority queue (verification/classification/proposals.json, handbook document, drafting exceptions hb_welcome/hb_ack/hb_harassment excluded). The clause's third sentence states a specific, well-known FLSA burden-of-proof rule. Initially checked against the origin Supreme Court opinion alone; per the user's instruction to double every check rather than stop at one source, went back and read a second, independent opinion applying the same rule -- deliberately picked the most recent one available (2024) rather than another mid-century case, to also confirm the 1946 rule is still being applied as stated today, not just once and never revisited.",
  "queries": [
-  "Anderson v. Mt. Clemens Pottery employee reasonable inference just and reasonable inference employer records inadequate (CourtListener)"
+  "Anderson v. Mt. Clemens Pottery employee reasonable inference just and reasonable inference employer records inadequate (CourtListener)",
+  "just and reasonable inference employer failed to keep accurate time records employee estimate FLSA burden shifts (CourtListener)"
  ],
  "assertions": [
   {
    "text": "where timekeeping records are incomplete, an employee's reasonable estimate of hours worked will generally be accepted in a wage claim",
    "status": "corroborated",
-   "note": "Anderson v. Mt. Clemens Pottery Co., 328 U.S. 680 (1946), quoted below -- still the controlling rule for FLSA recordkeeping-failure cases. The clause's practical bottom line (an employee's estimate can carry the day where the employer's records are inadequate) is correct and is the reason this rule is worth stating in a handbook at all: it is the consequence that should motivate the employer to keep records in the first place."
+   "note": "Anderson v. Mt. Clemens Pottery Co., 328 U.S. 680 (1946), quoted below -- still the controlling rule for FLSA recordkeeping-failure cases, and Mazurek v. Metalcraft of Mayville, Inc., 111 F.4th 748 (7th Cir. 2024), confirms it is still being applied exactly as stated 78 years later, in a case decided during this session's own lifetime relative to the corpus's 2026 vintage. The clause's practical bottom line (an employee's estimate can carry the day where the employer's records are inadequate) is correct and is the reason this rule is worth stating in a handbook at all: it is the consequence that should motivate the employer to keep records in the first place."
   }
  ],
  "gaps": [
-  "The clause says the employee's estimate 'will generally be accepted,' which reads as though the estimate is simply credited. Mt. Clemens actually describes a two-step burden-shift: the employee must first produce evidence sufficient to support 'a matter of just and reasonable inference' as to the amount of work performed, and only then does the burden shift to the employer to 'come forward with evidence of the precise amount of work performed or with evidence to negative the reasonableness of the inference.' An employer that shows up with contrary evidence can defeat or narrow the employee's estimate -- the clause gives the reader no hint that the employer retains this rebuttal opportunity, which matters most to the audience actually reading a handbook (the employer), since it understates the extent to which good contrary evidence, even short of full records, can still limit exposure."
+  "The clause says the employee's estimate 'will generally be accepted,' which reads as though the estimate is simply credited. Mt. Clemens actually describes a two-step burden-shift, and Mazurek confirms courts still apply it as a genuine two-step test, not a rubber stamp: the employee must first produce evidence sufficient to support 'a matter of just and reasonable inference' as to the amount of work performed -- Mazurek shows this can fail on its own terms, since the district court there found the plaintiffs' reconstructed-memory estimates 'too unreliable to permit a factfinder to draw a just and reasonable inference' and granted summary judgment against them on exactly that ground -- and only if that showing is made does the burden shift to the employer to 'come forward with evidence of the precise amount of work performed or with evidence to negative the reasonableness of the inference.' The clause's 'will generally be accepted' does not capture either half correctly: an employee's bare estimate is not automatically credited (Mazurek), and an employer with contrary evidence can still defeat or narrow it even where the employee clears that first bar (Mt. Clemens). Reading a second, independent, and far more recent opinion did not soften this gap -- it sharpened it, by showing the leniency has a real floor courts actually enforce."
  ],
  "sources": [
   {
@@ -21,6 +22,12 @@
    "url": "https://www.courtlistener.com/opinion/104318/anderson-v-mt-clemens-pottery-co/",
    "checked": "2026-08-21",
    "title": "CourtListener — Anderson v. Mt. Clemens Pottery Co. (1946) 328 U.S. 680"
+  },
+  {
+   "type": "case-mirror",
+   "url": "https://www.courtlistener.com/opinion/10495444/richard-mazurek-v-metalcraft-of-mayville-inc/",
+   "checked": "2026-08-21",
+   "title": "CourtListener — Mazurek v. Metalcraft of Mayville, Inc. (7th Cir. 2024) 111 F.4th 748"
   }
  ],
  "defectTypes": [
@@ -33,6 +40,20 @@
    "url": "https://www.courtlistener.com/opinion/104318/anderson-v-mt-clemens-pottery-co/",
    "checked": "2026-08-21",
    "quote": "an employee has carried out his burden if he proves that he has in fact performed work for which he was improperly compensated and if he produces sufficient evidence to show the amount and extent of that work as a matter of just and reasonable inference. The burden then shifts to the employer to come forward with evidence of the precise amount of work performed or with evidence to negative the reasonableness of the inference to be drawn from the employee's evidence. If the employer fails to produce such evidence, the court may then award damages to the employee, even though the result be only approximate."
+  },
+  {
+   "case": "Mazurek v. Metalcraft of Mayville, Inc. (7th Cir. 2024) 111 F.4th 748",
+   "opinion": 10495444,
+   "url": "https://www.courtlistener.com/opinion/10495444/richard-mazurek-v-metalcraft-of-mayville-inc/",
+   "checked": "2026-08-21",
+   "quote": "When an employer does not keep accurate records of time worked, employees have a lower burden for proving FLSA damages... 'an employee has carried out his burden if he proves that he has in fact performed work for which he was improperly compensated and if he produces sufficient evidence to show the amount and extent of that work as a matter of just and reasonable inference.' ... If that standard is met, the employer then has the burden of showing either (1) evidence of the exact amount of work performed, or (2) evidence negating the inference drawn from the employee's evidence."
+  },
+  {
+   "case": "Mazurek v. Metalcraft of Mayville, Inc. (7th Cir. 2024) 111 F.4th 748",
+   "opinion": 10495444,
+   "url": "https://www.courtlistener.com/opinion/10495444/richard-mazurek-v-metalcraft-of-mayville-inc/",
+   "checked": "2026-08-21",
+   "quote": "The decisive issue in these cases was whether Plaintiffs could prove their allegedly uncompensated worktime as a matter of 'just and reasonable inference.' ... The problem was one of degree, not kind -- the methods Plaintiffs used to estimate worktime were simply too unreliable to permit a factfinder to draw a 'just and reasonable inference.'"
   }
  ]
 }
