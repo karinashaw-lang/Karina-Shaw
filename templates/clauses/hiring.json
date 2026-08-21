@@ -1093,10 +1093,29 @@
    "updated": "2026-06",
    "rationale": "Failure to engage in the interactive process is itself an independent violation in several states, separate from whether an accommodation was ultimately owed.",
    "body": "The Company provides reasonable accommodation for disability, pregnancy, and religious practice, and engages in a timely, good-faith interactive process on request. Failure to engage in that process can be a violation independent of whether an accommodation was ultimately required. Requests may be made to any manager or to the {{principalTitle}}.",
-   "sources": [],
-   "verification": "unsourced",
+   "sources": [
+    {
+     "type": "case-mirror",
+     "url": "https://www.courtlistener.com/opinion/765245/katherine-l-taylor-v-phoenixville-school-district/",
+     "checked": "2026-08-21",
+     "title": "CourtListener — Taylor v. Phoenixville School District (3d Cir. 1999) 184 F.3d 296"
+    },
+    {
+     "type": "case-mirror",
+     "url": "https://www.courtlistener.com/opinion/729768/robert-e-bultemeyer-v-fort-wayne-community-schools/",
+     "checked": "2026-08-21",
+     "title": "CourtListener — Bultemeyer v. Fort Wayne Community Schools (7th Cir. 1996) 100 F.3d 1281"
+    }
+   ],
+   "verification": "multi-cited",
    "assertsLaw": true,
-   "classifiedBy": "heuristic-unreviewed"
+   "classifiedBy": "heuristic-unreviewed",
+   "defects": [
+    "Both opinions read are from circuits (3d and 7th) that recognize interactive-process good faith as independently significant. Whether every circuit agrees that a bad-faith failure to engage is independently actionable even where no reasonable accommodation existed at all was not checked -- some circuits reason from the process failure to an inference about what accommodation would have been found, rather than treating the process failure as freestanding, and a genuine split on the precise formulation was not ruled out here.",
+    "29 C.F.R. section 1630.2(o)(3) and the EEOC's interpretive guidance, which both opinions quote as the source of the interactive-process obligation, were not independently fetched -- every host that would carry the regulation itself was blocked.",
+    "Neither case addresses the clause's separate factual claim that requests 'may be made to any manager or to the {{principalTitle}}' -- that is this document's own administrative choice, not a claim about what the law requires, and was not part of this check."
+   ],
+   "lastChecked": "2026-08-21"
   }
  ]
 }
