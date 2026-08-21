@@ -55,42 +55,39 @@ the parked clauses: nothing in this corpus gets to claim a legal fact without a 
 363 clauses across 28 documents — 245 across 17 right after the narrowing, plus 11
 jurisdiction-neutral documents added since (property, money, partnership, two short-form
 agreements, a proposal, an invoice, a business plan). **57 of the 363 currently assert law**
-(`assertsLaw: true` — itself still `heuristic-unreviewed`; see Open items). **Five have been
+(`assertsLaw: true` — itself still `heuristic-unreviewed`; see Open items). **Six have been
 checked against a real source** — read `verification/findings/<id>.json` for each, not this
-summary, before touching any of them:
+summary, before touching any of them: `b83_instructions` (real primary text, `multi-cited`),
+`ipa_wfh` (**contradicted** — work-for-hire is not automatic for a founder, *Reid v. CCNV*),
+`emp_overtime` and `ea_overtime` (base rule held up; unconditional "paid whether or not
+authorized" omits the knowledge condition *Forrester*/*Chao* require — a gap), `emp_ip` (clean
+— its "may require separate consideration" hedge is earned, a real *Columber*/*Labriola*
+jurisdictional split), `hb_technology` (**contradicted** — "no expectation of privacy" in
+Company systems stated without qualification; *Stengart v. Loving Care* held the opposite for
+a personal account on a company device, "case-by-case," not resolved by a policy statement).
 
-- `b83_instructions` — rebuilt 2026-08-19 from eCFR, uscode.house.gov and two CourtListener
-  opinions. `multi-cited`.
-- `ipa_wfh` — checked 2026-08-20, CourtListener only (every statutory host blocked that day).
-  Central claim (a founder's work is automatically work made for hire) **contradicted** by
-  Reid v. CCNV's actual holding.
-- `emp_overtime` — checked 2026-08-20, CourtListener only. Base rule (time and a half over 40
-  hours) held up; the unconditional "must be paid whether or not authorized" claim omits the
-  knowledge condition *Forrester* and *Chao* both turn on. Recorded as a gap.
-- `ea_overtime` — checked 2026-08-21, same two opinions reused rather than re-searched (the
-  claim is the same one emp_overtime makes). Same gap, restated for this clause's own
-  higher-stakes audience (an offer letter to a new hire, not a handbook).
-- `emp_ip` — checked 2026-08-21, CourtListener only. First clean result: the clause hedges
-  ("may require separate consideration") rather than asserting a rule, and the hedge is
-  earned — *Lake Land v. Columber* (Ohio) and *Labriola v. Pollard Group* (Wash.), same year,
-  opposite holdings, a real acknowledged jurisdictional split.
+Before picking a clause to check, cross-reference it against
+`verification/classification/proposals.json` first — two candidates (`vest_transfer`,
+`gov_indemnify`) turned out to be clauses this session's own proposal already judges as
+drafting (negotiated terms, nothing stating law), which is why they aren't on the list above
+despite currently carrying `assertsLaw: true`. Case-law research on a misclassified clause is
+wasted effort; the fix there is reclassification, not verification.
 
-None smoothed a finding into a false upgrade — two came back with a real defect, one came back
-clean, none reached the release gate (this project's independence bar needs two distinct
-*hosts*; CourtListener alone is always one, however many opinions it serves). The other 52
-have never been checked — `npm run queue` orders them by consequence. None of the five clauses
-named in "the one thing to know" above are among them; they are gone from the live set.
-Findings for clauses that are gone live in `verification/findings-parked-california/`, not
-`verification/findings/` — `findings.mjs` refuses to run at all if any file in the live
-directory names a clause outside the corpus.
+Three of six came back with a real, recorded defect; none reached the release gate (this
+project's independence bar needs two distinct *hosts*; CourtListener alone is always one,
+however many opinions it serves). The other 51 have never been checked — `npm run queue`
+orders them by consequence. None of the five clauses named in "the one thing to know" above
+are among them; they are gone from the live set. Findings for clauses that are gone live in
+`verification/findings-parked-california/`, not `verification/findings/` — `findings.mjs`
+refuses to run at all if any file in the live directory names a clause outside the corpus.
 
 ## The strategy, decided
 
 **Do not repair the authority clauses one at a time.** Rebuild them from the statutory
 text. Read the section, write the clause from what it says, cite it. `b83_instructions` is
 what that looks like done — the only clause in the live corpus this has happened to (the
-other four checked are partial cases: real evidence, but case law alone since the statute
-hosts stay blocked). 52 more remain unchecked. Rebuilding is cheaper than investigating
+other five checked are partial cases: real evidence, but case law alone since the statute
+hosts stay blocked). 51 more remain unchecked. Rebuilding is cheaper than investigating
 clause-by-clause, and it removes the from-memory contamination instead of patching around it.
 
 The 306 drafting clauses are a different problem — they assert no law, so there is nothing
@@ -174,11 +171,13 @@ gets fabricated around a block; report it.
    not the mechanics: ea_ip's deferral entry points to `ipa_state_carveout` for its statutory
    content, and that clause is parked, so the content isn't actually anywhere in the shipped
    corpus — flagged in the proposals commit, not fixed.
-2. **52 of the 57 currently-shipped authority clauses have never been checked** — see "What
-   actually ships now" above for the five that have. `npm run queue` orders the rest by
-   consequence. The CourtListener MCP connector works regardless of the egress proxy — real
-   case law, no statute text — and is the same tool, same method, available for any of them
-   right now.
+2. **51 of the 57 currently-shipped authority clauses have never been checked** — see "What
+   actually ships now" above for the six that have. `npm run queue` orders the rest by
+   consequence, but check each against `verification/classification/proposals.json` before
+   spending real research on it — some currently-`assertsLaw:true` clauses are misclassified
+   negotiated terms the proposal already caught, and researching those wastes the effort.
+   The CourtListener MCP connector works regardless of the egress proxy — real case law, no
+   statute text — and is the same tool, same method, available for any of the real ones.
 3. **1 validator warning**: `LAW_TALK_IN_DRAFTING` on `sh_return_property` — a clause
    classified as drafting whose body talks like it's citing a legal requirement. The old
    "citations that name a body of law but no provision" problem this item used to describe
