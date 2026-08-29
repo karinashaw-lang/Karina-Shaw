@@ -86,8 +86,8 @@
       "title": "Work Authorization",
       "kind": "authority",
       "status": "verified",
-      "checkedDate": "2026-08-21",
-      "gap": "This clause's documentary-uniformity claim is grounded in 8 U.S.C. §1324b(a)(6), not §1324a — confirmed directly against the statute's own text, not just a case quoting it, so this is no longer an open miscitation, just a citation this clause's single §1324a reference doesn't fully cover. The separate claim that I-9 forms must be kept apart from personnel files is not in the regulation itself — the full text of 8 C.F.R. §274a.2 was checked directly and contains no mention of personnel files. That instruction comes from USCIS's Handbook for Employers (Form M-274), which is agency guidance, not a codified requirement — a real distinction if the reader is deciding how strictly to treat it.",
+      "checkedDate": "2026-08-29",
+      "gap": "This clause's documentary-uniformity claim is grounded in 8 U.S.C. §1324b(a)(6), not §1324a — confirmed directly against the statute's own text, not just a case quoting it, so this is no longer an open miscitation, just a citation this clause's single §1324a reference doesn't fully cover. The separate claim that I-9 forms must be kept apart from personnel files is not in the regulation itself — the full text of 8 C.F.R. §274a.2 was checked directly and contains no mention of personnel files. That instruction comes from USCIS's Handbook for Employers (Form M-274), which is agency guidance, not a codified requirement — a real distinction if the reader is deciding how strictly to treat it. Two further qualifiers, found by reading past the already-quoted fragments of both sources: first, the “three business days” timing itself isn't universal — 8 C.F.R. §274a.2(b)(1)(iii) requires an employer who hires someone for less than three business days to complete verification the same day, not within three business days. Second, and more substantial: 8 U.S.C. §1324b(a)(2)(A) exempts any employer with three or fewer employees from this anti-discrimination protection entirely — the documentary-uniformity claim in this clause's body doesn't apply to the smallest employers at all, a real limit this clause didn't previously disclose.",
       "body": "{{companyName}} completes Form I-9 for every employee within three business days of their first day of work and applies the same documentary requirements to every employee, regardless of national origin or citizenship status.",
       "citations": [
         {
@@ -113,6 +113,18 @@
           "cite": "154 F.3d 807 (9th Cir. 1998)",
           "url": "https://www.courtlistener.com/opinion/755475/robison-fruit-ranch-inc-petitioner-v-united-states-of-america/",
           "quote": "The evidence unquestionably shows that the employment practices in this case did not create additional burdens to any class of applicants or constitute differential treatment of authorized aliens and citizens. There could have been no discrimination, and the petition for review must be granted."
+        },
+        {
+          "case": "8 C.F.R. § 274a.2(b)(1)(iii) (Cornell LII text)",
+          "cite": "Electronic Code of Federal Regulations",
+          "url": "https://www.law.cornell.edu/cfr/text/8/274a.2",
+          "quote": "An employer who hires an individual for employment for a duration of less than three business days must comply with paragraphs (b)(1)(ii)(A) and (b)(1)(ii)(B) of this section at the time of the hire."
+        },
+        {
+          "case": "8 U.S.C. § 1324b(a)(2)(A) (Cornell LII text)",
+          "cite": "U.S. Code, small-employer exception",
+          "url": "https://www.law.cornell.edu/uscode/text/8/1324b",
+          "quote": "Paragraph (1) shall not apply to— (A) a person or other entity that employs three or fewer employees"
         }
       ]
     },
@@ -156,8 +168,8 @@
       "title": "Technology and Monitoring",
       "kind": "authority",
       "status": "verified",
-      "checkedDate": "2026-08-21",
-      "gap": "Whether advance written notice of monitoring is required before any of this applies depends on the state — that was not checked here, and this clause does not name one. Privileged communications (attorney-client, as in Stengart itself) may get stronger protection than ordinary personal messages; this clause draws no separate line for those.",
+      "checkedDate": "2026-08-29",
+      "gap": "Whether advance written notice of monitoring is required before any of this applies depends on the state — that was not checked here, and this clause does not name one. Privileged communications (attorney-client, as in Stengart itself) may get stronger protection than ordinary personal messages; this clause draws no separate line for those. Both cited cases are themselves state common law, not a single national rule: Smyth applies Pennsylvania's tort of intrusion upon seclusion (a federal court sitting on a state-law claim), and Stengart is a New Jersey Supreme Court decision that says outright its privacy standard \"derives from the common law\" of private-party relationships, not a federal constitutional rule — the Fourth Amendment doesn't reach private employers at all. Other states' common law could reach a different result on the same facts; this clause illustrates the doctrine with two states' courts, not a uniform national one.",
       "body": "{{companyName}} may monitor use of its email, network, and computer systems. Employees have no reasonable expectation of privacy in communications made using {{companyName}}'s own systems. This does not extend to a personal, password-protected account — such as personal webmail — even when it is accessed on {{companyName}}'s equipment; courts have recognized a continuing privacy interest in those.",
       "citations": [
         {
@@ -197,8 +209,8 @@
       "title": "Overtime",
       "kind": "authority",
       "status": "verified",
-      "checkedDate": "2026-08-21",
-      "gap": "Both cases cited here address the federal floor under the FLSA. Whether a specific state's overtime law imposes a stricter or different rule was not checked — this clause names no state and defers to federal law only.",
+      "checkedDate": "2026-08-29",
+      "gap": "Both cases cited here address the federal floor under the FLSA. Whether a specific state's overtime law imposes a stricter or different rule was not checked — this clause names no state and defers to federal law only. The non-reporting safe harbor in the third sentence has its own limit, stated in Forrester itself: an employer can still be liable if it negligently maintains the records the FLSA requires, or deliberately turns its back on a situation rather than genuinely having no way to know — a company doesn't get the safe harbor just by not asking questions.",
       "body": "If you are a non-exempt employee, {{companyName}} requires advance approval before working overtime. Even so, the law requires {{companyName}} to pay for overtime it actually knew about, or should have known about, whether or not it was pre-approved. {{companyName}} is not liable for overtime hours it had no way of knowing about because they were never reported.",
       "citations": [
         {
@@ -224,6 +236,12 @@
           "cite": "47 F.3d 746 (5th Cir. 1995)",
           "url": "https://www.courtlistener.com/opinion/689147/stephen-r-newton-v-city-of-henderson/",
           "quote": "He was employed during those hours if the City had knowledge, actual or constructive, that he was working."
+        },
+        {
+          "case": "Forrester v. Roth's I.G.A. Foodliner, Inc.",
+          "cite": "646 F.2d 413 (9th Cir. 1981)",
+          "url": "https://www.courtlistener.com/opinion/389336/billy-h-forrester-v-roths-i-g-a-foodliner-incorporated-an-oregon/",
+          "quote": "An employer must have an opportunity to comply with the provisions of the FLSA. This is not to say that an employer may escape responsibility by negligently maintaining records required by the FLSA, or by deliberately turning its back on a situation."
         }
       ]
     },
@@ -240,13 +258,19 @@
       "status": "verified",
       "checkedDate": "2026-08-29",
       "body": "Work {{employeeName}} creates for {{companyName}} within the scope of employment is generally owned by {{companyName}} from the moment it's created — this is the “work made for hire” doctrine. That default applies to work actually created within an employment relationship as the law defines it, not just work created by someone {{companyName}} calls an employee. Courts look at factors like who controls how the work gets done, who provides the tools and workspace, how the work is paid for, and whether the person receives employee benefits and is treated as an employee for tax purposes — no single factor decides it on its own. Work created outside that scope, or by a contractor rather than an employee, is not automatically owned by {{companyName}} under this doctrine.",
-      "gap": "This clause describes the employee branch of the work-made-for-hire doctrine only. Work by a contractor or consultant is “made for hire” only if it falls into one of nine narrow categories listed in 17 U.S.C. §101 (things like a contribution to a collective work, a translation, an instructional text) and the parties sign a written agreement saying so — most contractor work doesn't qualify, and needs a separate written assignment to transfer ownership at all. That separate-assignment situation isn't covered by this clause.",
+      "gap": "This clause describes the employee branch of the work-made-for-hire doctrine only. Work by a contractor or consultant is “made for hire” only if it falls into one of nine narrow categories listed in 17 U.S.C. §101 (things like a contribution to a collective work, a translation, an instructional text) and the parties sign a written agreement saying so — most contractor work doesn't qualify, and needs a separate written assignment to transfer ownership at all. That separate-assignment situation isn't covered by this clause. One more precision point: §101 only defines the term “work made for hire” — the provision that actually vests ownership in the employer is 17 U.S.C. §201(b), which also contains its own carve-out: ownership vests in the employer “unless the parties have expressly agreed otherwise in a written instrument signed by them.” That carve-out is exactly why a written assignment agreement like this one still matters even for work that already qualifies as made for hire — it isn't a redundant formality.",
       "citations": [
         {
           "case": "17 U.S.C. § 101 (Cornell LII text)",
           "cite": "U.S. Code, definition of “work made for hire”",
           "url": "https://www.law.cornell.edu/uscode/text/17/101",
           "quote": "A “work made for hire” is— (1) a work prepared by an employee within the scope of his or her employment; or (2) a work specially ordered or commissioned for use as a contribution to a collective work, as a part of a motion picture or other audiovisual work, as a translation, as a supplementary work, as a compilation, as an instructional text, as a test, as answer material for a test, or as an atlas, if the parties expressly agree in a written instrument signed by them that the work shall be considered a work made for hire."
+        },
+        {
+          "case": "17 U.S.C. § 201(b) (Cornell LII text)",
+          "cite": "U.S. Code, ownership of work made for hire",
+          "url": "https://www.law.cornell.edu/uscode/text/17/201",
+          "quote": "In the case of a work made for hire, the employer or other person for whom the work was prepared is considered the author for purposes of this title, and, unless the parties have expressly agreed otherwise in a written instrument signed by them, owns all of the rights comprised in the copyright."
         },
         {
           "case": "Community for Creative Non-Violence v. Reid",
@@ -269,7 +293,7 @@
       "status": "verified",
       "checkedDate": "2026-08-29",
       "body": "If this agreement is signed after {{employeeName}}'s employment with {{companyName}} has already started, rather than at hiring, some states require something of value beyond continued employment for the agreement to be enforceable — and courts around the country don't agree on this. Some courts have held that continuing to employ an at-will employee is itself enough to support an assignment or noncompete agreement signed later. Other courts have held the opposite: that continued at-will employment alone isn't enough, and something further — a raise, a bonus, a new role — is needed for the later agreement to be enforceable. Which rule applies depends on the state whose law governs this agreement.",
-      "gap": "This document doesn't collect a governing-state field, so which side of this split applies can't be resolved automatically here. Ohio and Washington — the two states cited below — land on opposite sides of this exact question; other states may follow either rule or a variation of it. Check the rule for the specific state involved before relying on continued employment alone as sufficient consideration for an agreement signed after hire.",
+      "gap": "This document doesn't collect a governing-state field, so which side of this split applies can't be resolved automatically here. Ohio and Washington — the two states cited below — land on opposite sides of this exact question; other states may follow either rule or a variation of it. Check the rule for the specific state involved before relying on continued employment alone as sufficient consideration for an agreement signed after hire. One more thing worth naming: both Columber and Labriola are noncompete cases, not invention-assignment or confidentiality cases. Columber's own reasoning leans on public policy specific to noncompetes — courts have historically treated restraints on trade with \"skepticism,\" a concern that doesn't apply the same way to an agreement that doesn't restrict where someone can work afterward. Whether Ohio and Washington courts would apply the identical consideration rule to an invention-assignment or confidentiality agreement specifically wasn't found in this research — this clause applies the noncompete-consideration rule by analogy, not because a court has confirmed it extends this far.",
       "citations": [
         {
           "case": "Lake Land Employment Group of Akron, LLC v. Columber",
@@ -327,7 +351,7 @@
       "status": "verified",
       "checkedDate": "2026-08-29",
       "body": "Some states go further than the federal common-law test for specific purposes — most notably wage-and-hour law and unemployment insurance. California, for example, presumes a worker is an employee for those purposes unless the hiring business proves all three parts of what's called the “ABC test”: that the worker is free from the company's control and direction, that the work is outside the company's usual course of business, and that the worker is customarily engaged in an independently established trade or business of that same kind. Failing any one of the three means the worker counts as an employee for those purposes, regardless of what this agreement says. Which test applies, and how strictly, depends on the state and the specific law in question.",
-      "gap": "This clause names California's statute as one concrete example of a state going beyond the federal common-law test; it is not a survey of every state's rule. California's own ABC test has statutory exceptions for specific occupations and relationships that are governed by a different, older test instead — this clause doesn't attempt to enumerate them. Check the specific state and specific law involved before relying on independent-contractor status for any particular purpose.",
+      "gap": "This clause names California's statute as one concrete example of a state going beyond the federal common-law test; it is not a survey of every state's rule. California's own ABC test has statutory exceptions for specific occupations — insurance professionals, physicians and several other licensed health professions, and more, per Cal. Lab. Code §2783 — that revert to the older, more flexible Borello test instead; this clause doesn't attempt to enumerate them. Check the specific state and specific law involved before relying on independent-contractor status for any particular purpose.",
       "citations": [
         {
           "case": "Dynamex Operations W., Inc. v. Superior Court",
@@ -340,6 +364,12 @@
           "cite": "California Labor Code",
           "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=2775",
           "quote": "a person providing labor or services for remuneration shall be considered an employee rather than an independent contractor unless the hiring entity demonstrates that all of the following conditions are satisfied: (A) The person is free from the control and direction of the hiring entity in connection with the performance of the work, both under the contract for the performance of the work and in fact. (B) The person performs work that is outside the usual course of the hiring entity's business. (C) The person is customarily engaged in an independently established trade, occupation, or business of the same nature as that involved in the work performed."
+        },
+        {
+          "case": "Cal. Labor Code § 2783 (California Legislative Information text)",
+          "cite": "California Labor Code, occupational exceptions to the ABC test",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=2783",
+          "quote": "Section 2775 and the holding in Dynamex do not apply to the following occupations as defined in the paragraphs below, and instead, the determination of employee or independent contractor status for individuals in those occupations shall be governed by Borello"
         }
       ]
     },
@@ -368,7 +398,7 @@
       "status": "verified",
       "checkedDate": "2026-08-29",
       "body": "State law, not a single federal rule, controls when {{employeeName}}'s final paycheck is due. Some states require it immediately or within a few days of discharge; others allow payment on the next regularly scheduled payday. Which timeline applies depends on the state where {{employeeName}} works.",
-      "gap": "This clause illustrates the range with two real examples — California requires immediate payment on discharge, while New York allows payment on the next regular payday — rather than surveying all fifty states. Check the specific state's rule before setting a final-pay date.",
+      "gap": "This clause illustrates the range with two real examples — California requires immediate payment on discharge, while New York allows payment on the next regular payday — rather than surveying all fifty states. Check the specific state's rule before setting a final-pay date. Even California's \"immediate\" rule has a narrow carve-out: a mass layoff tied to the end of seasonal work in curing, canning, or drying perishable fruit, fish, or vegetables gets up to 72 hours instead of immediate payment. That's a narrow industry-specific exception, not a general escape hatch, but it means even the stricter of the two examples isn't absolute in every case.",
       "citations": [
         {
           "case": "Cal. Labor Code § 201(a) (California Legislative Information text)",
@@ -390,8 +420,8 @@
       "kind": "authority",
       "status": "verified",
       "checkedDate": "2026-08-29",
-      "body": "If {{companyName}} offers a group health plan, {{employeeName}}'s termination is generally a “qualifying event” that gives {{employeeName}} the right to continue that coverage temporarily at their own cost, under the federal law known as COBRA — unless the termination was for gross misconduct. {{companyName}} (or its plan administrator) must notify the plan of the qualifying event, which starts the clock on {{employeeName}}'s own notice of their continuation-coverage rights.",
-      "gap": "COBRA's continuation-coverage requirement generally does not apply to small employers — plans maintained by employers that normally had fewer than 20 employees in the prior calendar year are excepted. Some states have their own “mini-COBRA” laws extending similar rights to employees of smaller employers; those aren't covered here. Whether this particular termination genuinely qualifies as “gross misconduct” — the one exception named in the statute itself — is a fact-specific question this clause doesn't resolve.",
+      "body": "If {{companyName}} offers a group health plan, {{employeeName}}'s termination is generally a “qualifying event” that gives {{employeeName}} the right to continue that coverage at their own cost for up to 18 months, under the federal law known as COBRA — unless the termination was for gross misconduct. {{companyName}} (or its plan administrator) must notify the plan of the qualifying event, which starts the clock on {{employeeName}}'s own notice of their continuation-coverage rights.",
+      "gap": "COBRA's continuation-coverage requirement generally does not apply to small employers — plans maintained by employers that normally had fewer than 20 employees in the prior calendar year are excepted. Some states have their own “mini-COBRA” laws extending similar rights to employees of smaller employers; those aren't covered here. Whether this particular termination genuinely qualifies as “gross misconduct” — the one exception named in the statute itself — is a fact-specific question this clause doesn't resolve. The 18-month figure in the body is the general-rule maximum for a termination-based qualifying event; it can extend to 36 months if a second qualifying event happens during that window, and runs on a different clock entirely for a qualifying event tied to bankruptcy proceedings. This clause states the general rule, not every extension scenario.",
       "citations": [
         {
           "case": "29 U.S.C. § 1163(2) (Cornell LII text)",
@@ -410,6 +440,12 @@
           "cite": "U.S. Code, COBRA small-employer exception",
           "url": "https://www.law.cornell.edu/uscode/text/29/1161",
           "quote": "Subsection (a) shall not apply to any group health plan for any calendar year if all employers maintaining such plan normally employed fewer than 20 employees on a typical business day during the preceding calendar year."
+        },
+        {
+          "case": "29 U.S.C. § 1162(2)(A)(i) (Cornell LII text)",
+          "cite": "U.S. Code, COBRA maximum coverage period",
+          "url": "https://www.law.cornell.edu/uscode/text/29/1162",
+          "quote": "The coverage must extend for at least the period beginning on the date of the qualifying event and ending not earlier than the earliest of the following: (A) Maximum required period (i) General rule for terminations and reduced hours In the case of a qualifying event described in section 1163(2) of this title, except as provided in clause (ii), the date which is 18 months after the date of the qualifying event."
         }
       ]
     },
@@ -420,7 +456,7 @@
       "status": "verified",
       "checkedDate": "2026-08-29",
       "body": "Whether {{employeeName}} is owed a payout for unused, accrued vacation or PTO at termination depends on the state and the terms of {{companyName}}'s own policy. In California, for example, earned vacation time is treated as wages that vest as they're earned — once vested, it can't be forfeited, and must be paid out at termination. Many other states don't require any such payout at all, leaving it entirely to the employer's own policy.",
-      "gap": "This clause uses California as one concrete, strict example — not a claim about the company's actual state or policy. Whether any accrued time is owed here depends on which state's law applies and what the company's own written policy says, including whether it distinguishes vacation from other forms of paid time off.",
+      "gap": "This clause uses California as one concrete, strict example — not a claim about the company's actual state or policy. Whether any accrued time is owed here depends on which state's law applies and what the company's own written policy says, including whether it distinguishes vacation from other forms of paid time off. One distinction worth being precise about: California's no-forfeiture rule bars taking away vacation already earned, but it does not require unlimited accrual — a policy that simply stops the clock on earning more once a specified amount is banked (a “use it or lose it” accrual cap, not a forfeiture of time already earned) is permitted. This clause's “can't be forfeited” language is about time already earned; it doesn't mean the company's policy has to let vacation accrue without limit.",
       "citations": [
         {
           "case": "Suastez v. Plastic Dress-Up Co.",
@@ -433,6 +469,12 @@
           "cite": "California Labor Code",
           "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=227.3",
           "quote": "Unless otherwise provided by a collective-bargaining agreement, whenever a contract of employment or employer policy provides for paid vacations, and an employee is terminated without having taken off his vested vacation time, all vested vacation shall be paid to him as wages at his final rate in accordance with such contract of employment or employer policy respecting eligibility or time served; provided, however, that an employment contract or employer policy shall not provide for forfeiture of vested vacation time upon termination."
+        },
+        {
+          "case": "Boothby v. Atlas Mechanical, Inc.",
+          "cite": "6 Cal. App. 4th 1595 (1992)",
+          "url": "https://www.courtlistener.com/opinion/2297663/boothby-v-atlas-mechanical-inc/",
+          "quote": "However, an employment agreement may provide that the employee does not earn additional paid vacation if a specified amount of vested vacation remains unused. Such a provision does not attempt forfeiture of vested vacation and is therefore permissible."
         }
       ]
     },
