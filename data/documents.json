@@ -296,5 +296,33 @@
     "categories": [
       "Ending employment"
     ]
+  },
+  {
+    "id": "background_check",
+    "title": "Background Check Disclosure & Authorization",
+    "description": "The federal disclosure and authorization required before running a job applicant's consumer report, and what happens if it leads to a negative decision.",
+    "clauseOrder": [
+      "bgc_disclosure",
+      "bgc_authorization",
+      "bgc_adverse_action",
+      "bgc_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Applicant / employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      }
+    ],
+    "categories": [
+      "Hiring"
+    ]
   }
 ]
