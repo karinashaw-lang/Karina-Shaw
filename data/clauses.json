@@ -483,6 +483,70 @@
       "title": "Acknowledgment",
       "kind": "drafting",
       "body": "Please sign below to acknowledge receipt of this letter.\n\nEmployee: {{employeeName}}\nDate: _______________"
+    },
+    {
+      "id": "nda_definition",
+      "title": "What Counts as Confidential",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-08-29",
+      "body": "This agreement can define {{companyName}}'s confidential information broadly — the parties are free to agree on what counts. But if {{companyName}} ever needs to enforce protection through trade secret law specifically, rather than just this contract, only information that actually meets the legal definition qualifies: information whose owner has taken reasonable measures to keep it secret, and that has independent economic value because it isn't generally known or easily discovered by others who could profit from it. Information that's already public, or that {{employeeName}} already knew before this agreement, doesn't become a trade secret just because this agreement calls it confidential.",
+      "gap": "This describes the federal Defend Trade Secrets Act's definition specifically. State trade secret law (most states have adopted a version of the Uniform Trade Secrets Act) uses a similar two-part test, but this clause was checked against the federal definition only, not each state's exact statutory wording.",
+      "citations": [
+        {
+          "case": "18 U.S.C. § 1839(3) (Cornell LII text)",
+          "cite": "U.S. Code, Defend Trade Secrets Act, definition of \"trade secret\"",
+          "url": "https://www.law.cornell.edu/uscode/text/18/1839",
+          "quote": "the term \"trade secret\" means all forms and types of financial, business, scientific, technical, economic, or engineering information ... if— (A) the owner thereof has taken reasonable measures to keep such information secret; and (B) the information derives independent economic value, actual or potential, from not being generally known to, and not being readily ascertainable through proper means by, another person who can obtain economic value from the disclosure or use of the information"
+        },
+        {
+          "case": "Inteliclear, LLC v. ETC Global Holdings, Inc.",
+          "cite": "978 F.3d 653 (9th Cir. 2020)",
+          "url": "https://www.courtlistener.com/opinion/4796836/inteliclear-llc-v-etc-global-holdings/",
+          "quote": "the definition of trade secret consists of three elements: (1) information, (2) that is valuable because it is unknown to others, and (3) that the owner has attempted to keep secret."
+        }
+      ]
+    },
+    {
+      "id": "nda_dtsa_notice",
+      "title": "Whistleblower Immunity Notice",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-08-29",
+      "body": "Federal law requires {{companyName}} to give {{employeeName}} this notice: {{employeeName}} cannot be held criminally or civilly liable under federal or state trade secret law for disclosing a trade secret in confidence to a government official or an attorney, solely to report or investigate a suspected violation of law, or in a court filing made under seal. This notice is here because federal law requires it in any agreement governing the use of confidential information — an employer that omits it loses the right to certain enhanced damages and attorney's fees against this recipient in a future trade secret lawsuit, even one unrelated to whistleblowing.",
+      "gap": "The immunity itself only covers disclosures made to report or investigate a suspected legal violation, or made under seal in litigation — it doesn't protect using a trade secret for any other purpose, including ordinary competition after leaving the company. No case law addressing enforcement of this specific notice-and-consequence provision was found in this research; the statute's own text is unambiguous about the notice requirement and its consequence, so the statute stands as the source here without a corroborating case.",
+      "citations": [
+        {
+          "case": "18 U.S.C. § 1833(b)(1) (Cornell LII text)",
+          "cite": "U.S. Code, Defend Trade Secrets Act, whistleblower immunity",
+          "url": "https://www.law.cornell.edu/uscode/text/18/1833",
+          "quote": "An individual shall not be held criminally or civilly liable under any Federal or State trade secret law for the disclosure of a trade secret that— (A) is made— (i) in confidence to a Federal, State, or local government official, either directly or indirectly, or to an attorney; and (ii) solely for the purpose of reporting or investigating a suspected violation of law; or (B) is made in a complaint or other document filed in a lawsuit or other proceeding, if such filing is made under seal."
+        },
+        {
+          "case": "18 U.S.C. § 1833(b)(3) (Cornell LII text)",
+          "cite": "U.S. Code, Defend Trade Secrets Act, notice requirement and consequence",
+          "url": "https://www.law.cornell.edu/uscode/text/18/1833",
+          "quote": "An employer shall provide notice of the immunity set forth in this subsection in any contract or agreement with an employee that governs the use of a trade secret or other confidential information. ... If an employer does not comply with the notice requirement in subparagraph (A), the employer may not be awarded exemplary damages or attorney fees under subparagraph (C) or (D) of section 1836(b)(3) in an action against an employee to whom notice was not provided."
+        }
+      ]
+    },
+    {
+      "id": "nda_obligations",
+      "title": "Confidentiality Obligations",
+      "kind": "drafting",
+      "body": "{{employeeName}} will keep {{companyName}}'s confidential information private, use it only to do the work {{companyName}} asked for, and take reasonable care to prevent anyone else from accessing it."
+    },
+    {
+      "id": "nda_carveouts",
+      "title": "What This Agreement Doesn't Cover",
+      "kind": "drafting",
+      "body": "This agreement doesn't restrict information that was already public, that {{employeeName}} already knew before receiving it from {{companyName}}, that {{employeeName}} develops independently without using {{companyName}}'s confidential information, or that {{employeeName}} is required to disclose by law — though {{employeeName}} will tell {{companyName}} first if legally able to."
+    },
+    {
+      "id": "nda_ack",
+      "title": "Acknowledgment",
+      "kind": "drafting",
+      "body": "Please sign below to indicate your agreement to the terms above.\n\nRecipient: {{employeeName}}\nDate: _______________"
     }
   ]
 }

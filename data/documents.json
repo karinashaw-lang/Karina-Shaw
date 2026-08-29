@@ -170,5 +170,31 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "nda",
+    "title": "Non-Disclosure Agreement",
+    "description": "A one-way confidentiality agreement — what counts as confidential, standard exclusions, and the whistleblower notice federal law requires.",
+    "clauseOrder": [
+      "nda_definition",
+      "nda_obligations",
+      "nda_carveouts",
+      "nda_dtsa_notice",
+      "nda_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Recipient name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      }
+    ]
   }
 ]
