@@ -762,5 +762,61 @@
     "categories": [
       "During employment"
     ]
+  },
+  {
+    "id": "job_description",
+    "title": "Job Description Template",
+    "description": "A simple fill-in template for a job posting or internal job description.",
+    "clauseOrder": [
+      "job_description_details"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "jobTitle",
+        "label": "Job title",
+        "placeholder": "Software Engineer",
+        "required": true
+      }
+    ],
+    "categories": [
+      "Hiring"
+    ]
+  },
+  {
+    "id": "interview_scorecard",
+    "title": "Interview Scorecard",
+    "description": "A short candidate-evaluation form for interviewers to fill out after each interview.",
+    "clauseOrder": [
+      "interview_scorecard_details"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Candidate name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "jobTitle",
+        "label": "Position",
+        "placeholder": "Software Engineer",
+        "required": true
+      }
+    ],
+    "categories": [
+      "Hiring"
+    ]
   }
 ]
