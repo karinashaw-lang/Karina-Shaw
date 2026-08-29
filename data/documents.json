@@ -238,5 +238,36 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "severance",
+    "title": "Severance Agreement",
+    "description": "Severance pay in exchange for a release of claims — including the specific federal requirements for a valid release of age-discrimination claims.",
+    "clauseOrder": [
+      "sev_terms",
+      "sev_release",
+      "sev_owbpa",
+      "sev_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "severanceAmount",
+        "label": "Severance amount",
+        "placeholder": "$10,000, paid in a lump sum",
+        "required": true
+      }
+    ]
   }
 ]

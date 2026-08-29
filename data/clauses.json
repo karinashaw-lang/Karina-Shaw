@@ -570,6 +570,59 @@
       "title": "Acknowledgment",
       "kind": "drafting",
       "body": "Please sign below to indicate your agreement to the terms above.\n\nEmployee: {{employeeName}}\nDate: _______________"
+    },
+    {
+      "id": "sev_terms",
+      "title": "Severance Payment",
+      "kind": "drafting",
+      "body": "In exchange for the release below, {{companyName}} will pay {{employeeName}} {{severanceAmount}}, less applicable withholdings, according to {{companyName}}'s standard payroll schedule."
+    },
+    {
+      "id": "sev_release",
+      "title": "General Release",
+      "kind": "drafting",
+      "body": "In exchange for the severance payment above, {{employeeName}} releases {{companyName}} from all claims {{employeeName}} has or may have arising out of {{employeeName}}'s employment or its ending, to the fullest extent the law allows."
+    },
+    {
+      "id": "sev_owbpa",
+      "title": "Age Discrimination Release Requirements",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-08-29",
+      "body": "If {{employeeName}} is 40 or older, federal law imposes specific requirements before a release of age-discrimination claims counts as valid: it must be written in plain language, specifically refer to age-discrimination rights, not attempt to waive any claims that arise after signing, be exchanged for something of value beyond what {{employeeName}} is already owed, advise {{employeeName}} in writing to consult an attorney before signing, and give {{employeeName}} at least 21 days to consider it — 45 days if this is part of a larger group termination or exit-incentive program — plus 7 days to revoke it after signing. Missing any of these requirements makes the age-discrimination release invalid, even if {{employeeName}} keeps the severance payment.",
+      "gap": "This release also cannot lawfully bar the employee from filing a charge with, or participating in an investigation by, the Equal Employment Opportunity Commission — federal law says no waiver may interfere with that right, no matter how broadly this agreement is worded. The 21-day and 45-day periods are minimums that depend on whether this is an individual separation or part of a larger group termination or exit-incentive program; this document doesn't determine which applies here — confirm that before relying on the shorter period.",
+      "citations": [
+        {
+          "case": "29 U.S.C. § 626(f)(1)(A)-(E) (Cornell LII text)",
+          "cite": "U.S. Code, Older Workers Benefit Protection Act, core waiver requirements",
+          "url": "https://www.law.cornell.edu/uscode/text/29/626",
+          "quote": "(A) the waiver is part of an agreement between the individual and the employer that is written in a manner calculated to be understood by such individual, or by the average individual eligible to participate; (B) the waiver specifically refers to rights or claims arising under this chapter; (C) the individual does not waive rights or claims that may arise after the date the waiver is executed; (D) the individual waives rights or claims only in exchange for consideration in addition to anything of value to which the individual already is entitled; (E) the individual is advised in writing to consult with an attorney prior to executing the agreement;"
+        },
+        {
+          "case": "29 U.S.C. § 626(f)(1)(F)-(G) (Cornell LII text)",
+          "cite": "U.S. Code, Older Workers Benefit Protection Act, consideration and revocation periods",
+          "url": "https://www.law.cornell.edu/uscode/text/29/626",
+          "quote": "(F) (i) the individual is given a period of at least 21 days within which to consider the agreement; or (ii) if a waiver is requested in connection with an exit incentive or other employment termination program offered to a group or class of employees, the individual is given a period of at least 45 days within which to consider the agreement; (G) the agreement provides that for a period of at least 7 days following the execution of such agreement, the individual may revoke the agreement, and the agreement shall not become effective or enforceable until the revocation period has expired;"
+        },
+        {
+          "case": "29 U.S.C. § 626(f)(4) (Cornell LII text)",
+          "cite": "U.S. Code, Older Workers Benefit Protection Act, EEOC-participation carve-out",
+          "url": "https://www.law.cornell.edu/uscode/text/29/626",
+          "quote": "No waiver agreement may affect the Commission's rights and responsibilities to enforce this chapter. No waiver may be used to justify interfering with the protected right of an employee to file a charge or participate in an investigation or proceeding conducted by the Commission."
+        },
+        {
+          "case": "Oubre v. Entergy Operations, Inc.",
+          "cite": "522 U.S. 422 (1998)",
+          "url": "https://www.courtlistener.com/opinion/118169/oubre-v-entergy-operations-inc/",
+          "quote": "It suffices to hold that the release cannot bar the ADEA claim because it does not conform to the statute. Nor did the employee's mere retention of moneys amount to a ratification equivalent to a valid release of her ADEA claims, since the retention did not comply with the OWBPA any more than the original release did. The statute governs the effect of the release on ADEA claims, and the employer cannot invoke the employee's failure to tender back as a way of excusing its own failure to comply."
+        }
+      ]
+    },
+    {
+      "id": "sev_ack",
+      "title": "Acknowledgment",
+      "kind": "drafting",
+      "body": "Please sign below to indicate your agreement to the terms above.\n\nEmployee: {{employeeName}}\nDate: _______________"
     }
   ]
 }
