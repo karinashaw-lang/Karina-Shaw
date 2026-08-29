@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Groundtruth — Methodology</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .item{
+      padding:26px 0;
+      border-bottom:1px solid var(--line);
+    }
+    .item:last-of-type{ border-bottom:none; }
+    .item-num{
+      font-family:'IBM Plex Mono', monospace;
+      font-size:11.5px;
+      letter-spacing:0.06em;
+      color:var(--accent-ink);
+      display:block;
+      margin-bottom:6px;
+    }
+    .item h3{
+      font-family:'Fraunces', Georgia, serif;
+      font-weight:600;
+      font-size:20px;
+      margin:0 0 10px;
+    }
+    .item p{ margin:0 0 12px; }
+    .item-example{
+      background:var(--surface);
+      border-left:2px solid var(--accent);
+      border-radius:0 5px 5px 0;
+      padding:12px 16px;
+      font-size:14.5px;
+      color:var(--ink-soft);
+    }
+    .item-example b{
+      font-family:'IBM Plex Mono', monospace;
+      font-size:11px;
+      letter-spacing:0.05em;
+      text-transform:uppercase;
+      color:var(--accent-ink);
+      display:block;
+      margin-bottom:6px;
+    }
+    .item-example a{ font-family:'IBM Plex Mono', monospace; font-size:12.5px; }
+    .caveat{
+      background:var(--flag-soft);
+      border:1px solid var(--flag);
+      border-radius:6px;
+      padding:16px 18px;
+      margin:32px 0 0;
+      font-size:14.5px;
+    }
+    .caveat b{ color:var(--flag); }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <div class="topbar">
+      <a href="index.html" style="text-decoration:none; color:inherit;">
+        <div class="wordmark">Ground<span>truth</span></div>
+      </a>
+      <div class="topbar-right">
+        <a href="changelog.html" class="topbar-link">Changelog</a>
+        <div class="tagline">Methodology</div>
+      </div>
+    </div>
+
+    <h1>How a clause actually gets checked</h1>
+    <p class="lede">Every "Verified" badge in this project means a clause was run through the same nine checks below — not a general promise of accuracy, a specific, repeatable process. This page states the process; the <a href="changelog.html">changelog</a> shows what it actually caught. <a href="index.html">&larr; Back to Groundtruth</a></p>
+
+    <div id="items">
+
+      <div class="item">
+        <span class="item-num">1 — Classify correctly first</span>
+        <h3>Authority or drafting — decided before anything else</h3>
+        <p>A clause either asserts something about what the law requires ("authority" — needs citations, a checked-date, a badge) or it doesn't ("drafting" — a signature block, a payment amount, a scope-of-work description). Getting this wrong in either direction is its own failure: treating a legal claim as mere boilerplate skips verification it needs; treating boilerplate as a legal claim demands sourcing that doesn't exist to give.</p>
+        <div class="item-example">
+          <b>In practice</b>
+          A signature block ("Please sign below...") carries no legal claim and gets no badge. A sentence stating what federal law requires before a release of age-discrimination claims is valid gets the full nine-item treatment. Both live in the same document; only one needs a citation.
+        </div>
+      </div>
+
+      <div class="item">
+        <span class="item-num">2 — Primary source, reliable method</span>
+        <h3>The actual statute or case — not a summary, not a mirror</h3>
+        <p>A case that quotes a statute is not the same as the statute. A blog post describing a regulation is not the regulation. Wherever a codified rule exists, this project fetches the rule's own text directly, rather than settling for something that merely describes it.</p>
+        <div class="item-example">
+          <b>In practice</b>
+          The Timekeeping clause's recordkeeping duty is sourced to <a href="https://www.law.cornell.edu/uscode/text/29/211" target="_blank" rel="noopener noreferrer">29 U.S.C. § 211(c)</a>, fetched directly from the U.S. Code — not inferred from a case that happens to mention it.
+        </div>
+      </div>
+
+      <div class="item">
+        <span class="item-num">3 — Citation matches the claim</span>
+        <h3>The cited provision has to actually be the source of <em>this</em> claim</h3>
+        <p>It's not enough for a citation to be real and on-topic — it has to be the specific provision that actually supports the specific sentence it's attached to. A statute about the right subject but the wrong sub-question is still a mismatch.</p>
+        <div class="item-example">
+          <b>Caught by this check</b>
+          A recordkeeping-duty sentence was originally backed only by the FLSA's overtime pay-rate provision — real, on-topic, and still the wrong citation for that specific claim. <a href="changelog.html">See the fix.</a>
+        </div>
+      </div>
+
+      <div class="item">
+        <span class="item-num">4 — Two independent sources</span>
+        <h3>No clause rests on a single citation</h3>
+        <p>One source can be wrong, mis-scoped, or non-representative in ways that are hard to catch from inside that one source. A second, independent source — a different case, or the statute plus a case applying it — is what actually corroborates a claim rather than just restating it.</p>
+        <div class="item-example">
+          <b>In practice</b>
+          The Non-Disclosure Agreement's trade-secret definition cites both the statute itself (<a href="https://www.law.cornell.edu/uscode/text/18/1839" target="_blank" rel="noopener noreferrer">18 U.S.C. § 1839(3)</a>) and a Ninth Circuit case applying that same test — two sources for one claim, not one source cited twice.
+        </div>
+      </div>
+
+      <div class="item">
+        <span class="item-num">5 — Quote re-verified, word for word</span>
+        <h3>Every quote gets diffed against the actual fetched text — more than once</h3>
+        <p>A quote gets checked when it's first written, and checked again, independently, before anything ships — a fresh fetch, compared programmatically against what's in the file, not a memory of having checked it before.</p>
+        <div class="item-example">
+          <b>Caught by this check</b>
+          Two quotes trimmed at a natural stopping point had silently turned the source's own continuing comma or colon into a fabricated closing period — a small, real accuracy defect, caught only because the re-verification step runs regardless of who wrote the quote or how confident that felt at the time.
+        </div>
+      </div>
+
+      <div class="item">
+        <span class="item-num">6 — The source's full picture, not just the quoted fragment</span>
+        <h3>Does the clause carry the qualifier the source describes, or read more absolute than it should?</h3>
+        <p>This is the check that catches overclaiming — a clause technically citing a real source correctly, while stating the rule more broadly or more absolutely than that source actually holds. It requires reading past the sentence already quoted, into the rest of the source.</p>
+        <div class="item-example">
+          <b>Caught by this check — the most consequential defect this project found</b>
+          A clause claimed a bad-faith failure to engage in an accommodation process "can itself be a basis for liability, independent of whether an accommodation actually existed." Its own cited case's actual four-part test says the opposite on that exact point. <a href="changelog.html">See the fix.</a>
+        </div>
+      </div>
+
+      <div class="item">
+        <span class="item-num">7 — Jurisdiction named, or explicitly scoped as general on purpose</span>
+        <h3>No silent generic-by-default</h3>
+        <p>Law is often state-specific, sometimes sharply so. A clause either names which jurisdiction it's describing, discloses that it varies without picking one, or is genuinely federal/uniform — but it doesn't get to imply a single rule applies everywhere by simply not mentioning that it might not.</p>
+        <div class="item-example">
+          <b>In practice</b>
+          The Termination Letter's final-pay clause doesn't claim one national rule; it states plainly that this is state-governed and illustrates the real range with two verified, contrasting examples rather than picking one and presenting it as universal.
+        </div>
+      </div>
+
+      <div class="item">
+        <span class="item-num">8 — Stays on the informing side, never advising</span>
+        <h3>Checked separately from accuracy — a clause can be perfectly accurate and still cross this line</h3>
+        <p>A clause can state a real, correctly-cited rule and still fail this check if it tells a specific reader what to do about their specific situation rather than stating the rule and its consequence. This project is self-help document assembly, not legal advice — every clause is read against that line on its own, not assumed safe because the facts underneath it are accurate.</p>
+        <div class="item-example">
+          <b>In practice</b>
+          Every wizard screen states outright: "nothing here is legal advice, just fields the document needs." The <a href="index.html">document picker</a>'s category filter is built the same way — it narrows the list by category, it never asks someone to describe their situation and tells them what they need.
+        </div>
+      </div>
+
+      <div class="item">
+        <span class="item-num">9 — Staleness tracked</span>
+        <h3>A checked-date is recorded, and "verified" is a claim about a point in time</h3>
+        <p>Law changes. A citation confirmed accurate today isn't guaranteed accurate indefinitely. Every verified clause carries the date it was actually checked, visible on its badge — not to imply the check expires on a schedule, but so nobody mistakes a snapshot for a permanent guarantee.</p>
+        <div class="item-example">
+          <b>In practice</b>
+          Click any "Verified" badge in a generated document — the checked-date is right there next to the citation, not buried in a file nobody reads.
+        </div>
+      </div>
+
+    </div>
+
+    <div class="caveat">
+      <b>One standing caveat, stated here rather than left implicit:</b> primary-source fetches in this project generally use direct requests against sites like Cornell's Legal Information Institute, CourtListener, and individual state legislature sites. That's worked reliably every time it's been used, but it's still not a stable, schema-backed integration — a source's own page structure could change in a way that breaks a future fetch. Treat each citation as verified for the day it was checked, which is exactly what item 9 exists to make visible.
+    </div>
+
+    <footer class="hint">Nine items, applied to every authority clause in every document — not a summary of good intentions, the actual checklist used session over session. <a href="changelog.html">The changelog</a> is what it caught.</footer>
+  </div>
+</body>
+</html>
