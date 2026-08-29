@@ -574,5 +574,97 @@
     "categories": [
       "Ending employment"
     ]
+  },
+  {
+    "id": "employment_verification",
+    "title": "Employment Verification Letter",
+    "description": "A short letter confirming someone's employment — the classic \"proof of employment\" letter requested by landlords, lenders, and others.",
+    "clauseOrder": [
+      "verification_statement",
+      "verification_signature"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "jobTitle",
+        "label": "Job title",
+        "placeholder": "Software Engineer",
+        "required": true
+      },
+      {
+        "id": "startDate",
+        "label": "Start date",
+        "placeholder": "September 15, 2026",
+        "required": true
+      }
+    ],
+    "categories": [
+      "During employment"
+    ]
+  },
+  {
+    "id": "timesheet",
+    "title": "Timesheet / Time Records",
+    "description": "A weekly time record, plus the federal recordkeeping rule behind why non-exempt hours have to be tracked.",
+    "clauseOrder": [
+      "timesheet_entry",
+      "timekeeping",
+      "timesheet_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      }
+    ],
+    "categories": [
+      "During employment"
+    ]
+  },
+  {
+    "id": "overtime_authorization",
+    "title": "Overtime Authorization Form",
+    "description": "A simple advance-approval request for overtime hours, plus the federal rule on paying for overtime an employer knew about even without pre-approval.",
+    "clauseOrder": [
+      "overtime_request",
+      "offer_overtime",
+      "overtime_approval"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      }
+    ],
+    "categories": [
+      "During employment"
+    ]
   }
 ]
