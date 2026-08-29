@@ -324,5 +324,33 @@
     "categories": [
       "Hiring"
     ]
+  },
+  {
+    "id": "arbitration",
+    "title": "Employment Arbitration Agreement",
+    "description": "A binding, individual-arbitration agreement for employment disputes — including the federal carve-out for sexual assault and sexual harassment claims, and what this agreement doesn't limit.",
+    "clauseOrder": [
+      "arb_agreement",
+      "arb_sexual_harassment_carveout",
+      "arb_agency_rights",
+      "arb_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      }
+    ],
+    "categories": [
+      "Hiring"
+    ]
   }
 ]
