@@ -55,12 +55,57 @@ function renderWizard() {
   });
 }
 
-function renderOutputStub() {
+// Replace {{fieldId}} with the matching answer. Leaves the placeholder
+// untouched if a field was somehow left blank, rather than silently
+// dropping it — a half-filled document should look half-filled, not
+// wrong. Also swallows a template's own trailing period when the
+// inserted value already ends in one ("Acme, Inc." + ".") so real
+// company names like "Acme, Inc." don't render as "Acme, Inc..".
+function substitute(text, answers) {
+  return text.replace(/\{\{(\w+)\}\}(\.?)/g, (match, key, trailingDot) => {
+    const val = answers[key];
+    if (!val) return match;
+    return trailingDot && val.endsWith('.') ? val : val + trailingDot;
+  });
+}
+
+// Walk the document's clauseOrder, look each id up in the clause set,
+// and substitute this run's answers into its body. Clauses with no
+// match are dropped rather than throwing, so a typo in clauseOrder
+// fails quietly instead of breaking the whole render.
+function assembleDocument() {
+  return state.document.clauseOrder
+    .map(id => state.clauses.find(c => c.id === id))
+    .filter(Boolean)
+    .map(clause => ({ ...clause, renderedBody: substitute(clause.body, state.answers) }));
+}
+
+function renderOutput() {
+  const assembled = assembleDocument();
+
   const { companyName, state: st, employeeName } = state.answers;
   document.getElementById('output-meta').textContent =
     `Prepared for ${employeeName || '—'} · ${companyName || '—'} · ${st || '—'}`;
-  document.getElementById('output-clauses').innerHTML =
-    '<p style="color:var(--ink-soft)">Clause assembly lands in step 6 — this screen currently just proves the form data made it through.</p>';
+
+  const container = document.getElementById('output-clauses');
+  container.innerHTML = '';
+  assembled.forEach(clause => {
+    const block = document.createElement('div');
+    block.className = 'clause';
+
+    const h3 = document.createElement('h3');
+    h3.textContent = clause.title;
+    block.appendChild(h3);
+
+    const body = document.createElement('p');
+    body.className = 'body-text';
+    body.textContent = clause.renderedBody;
+    block.appendChild(body);
+
+    // Sourcing badge attaches here in step 7/8.
+
+    container.appendChild(block);
+  });
 }
 
 document.getElementById('wizard-back').addEventListener('click', () => showScreen('screen-picker'));
@@ -75,7 +120,7 @@ document.getElementById('wizard-form').addEventListener('submit', e => {
   state.document.fields.forEach(f => {
     state.answers[f.id] = (formData.get(f.id) || '').trim();
   });
-  renderOutputStub();
+  renderOutput();
   showScreen('screen-output');
 });
 
