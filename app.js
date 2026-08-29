@@ -1,5 +1,58 @@
 const state = { documents: null, document: null, clauses: null, answers: {} };
 
+// Draft persistence. Local-only, one slot at a time — closing the tab
+// mid-wizard shouldn't lose someone's answers. localStorage can throw
+// (private browsing, quota, disabled) so every call is wrapped; this
+// is a convenience, not something the app depends on to function.
+const DRAFT_KEY = 'groundtruth-draft';
+
+function saveDraft() {
+  try {
+    localStorage.setItem(DRAFT_KEY, JSON.stringify({
+      documentId: state.document.id,
+      answers: state.answers,
+      savedAt: new Date().toISOString(),
+    }));
+  } catch (e) { /* not fatal — drafting is a convenience, not a requirement */ }
+}
+
+function loadDraft() {
+  try {
+    const raw = localStorage.getItem(DRAFT_KEY);
+    return raw ? JSON.parse(raw) : null;
+  } catch (e) {
+    return null;
+  }
+}
+
+function clearDraft() {
+  try { localStorage.removeItem(DRAFT_KEY); } catch (e) { /* ignore */ }
+}
+
+function checkForDraft() {
+  const draft = loadDraft();
+  if (!draft) return;
+  const doc = state.documents.find(d => d.id === draft.documentId);
+  if (!doc) { clearDraft(); return; }
+
+  const banner = document.getElementById('draft-banner');
+  document.getElementById('draft-banner-text').textContent =
+    `You have an unfinished "${doc.title}" saved.`;
+  banner.hidden = false;
+
+  document.getElementById('draft-resume').onclick = () => {
+    state.document = doc;
+    state.answers = { ...draft.answers };
+    renderWizard();
+    showScreen('screen-wizard');
+    banner.hidden = true;
+  };
+  document.getElementById('draft-discard').onclick = () => {
+    clearDraft();
+    banner.hidden = true;
+  };
+}
+
 async function init() {
   const [docs, clauseData] = await Promise.all([
     fetch('data/documents.json').then(r => r.json()),
@@ -8,6 +61,7 @@ async function init() {
   state.documents = docs;
   state.clauses = clauseData.clauses;
   renderPicker();
+  checkForDraft();
 }
 
 function showScreen(id) {
@@ -34,6 +88,7 @@ function renderPicker() {
       state.answers = {};
       renderWizard();
       showScreen('screen-wizard');
+      document.getElementById('draft-banner').hidden = true;
     });
     list.appendChild(card);
   });
@@ -186,7 +241,17 @@ function renderBadge(clause) {
 document.getElementById('wizard-back').addEventListener('click', () => showScreen('screen-picker'));
 document.getElementById('output-back').addEventListener('click', () => {
   state.answers = {};
+  clearDraft();
   showScreen('screen-picker');
+});
+
+// Save on every keystroke rather than on blur/submit — a tab closed
+// mid-field shouldn't lose more than the current character.
+document.getElementById('wizard-form').addEventListener('input', e => {
+  if (!e.target.id.startsWith('field-')) return;
+  const fieldId = e.target.id.slice('field-'.length);
+  state.answers[fieldId] = e.target.value;
+  saveDraft();
 });
 
 // Builds a readable plain-text export of the assembled document,
@@ -257,6 +322,7 @@ document.getElementById('wizard-form').addEventListener('submit', e => {
   });
   renderOutput();
   showScreen('screen-output');
+  clearDraft();
 });
 
 init();
