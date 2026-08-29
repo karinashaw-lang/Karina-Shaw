@@ -387,5 +387,99 @@
     "categories": [
       "Ending employment"
     ]
+  },
+  {
+    "id": "property_return",
+    "title": "Company Property & Equipment Return Acknowledgment",
+    "description": "What has to come back before a departing employee's last day, and the federal limit on deducting its cost from final pay.",
+    "clauseOrder": [
+      "prop_return_list",
+      "prop_return_deduction_limit",
+      "prop_return_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "terminationDate",
+        "label": "Last day / return-by date",
+        "placeholder": "September 30, 2026",
+        "required": true
+      }
+    ],
+    "categories": [
+      "Ending employment"
+    ]
+  },
+  {
+    "id": "direct_deposit",
+    "title": "Direct Deposit Authorization",
+    "description": "A simple payroll direct-deposit authorization, with account details filled in by hand.",
+    "clauseOrder": [
+      "dd_authorization",
+      "dd_revocation",
+      "dd_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      }
+    ],
+    "categories": [
+      "Hiring",
+      "During employment"
+    ]
+  },
+  {
+    "id": "referral_bonus",
+    "title": "Employee Referral Bonus Agreement",
+    "description": "The terms of a referral bonus — amount, eligibility, and who doesn't qualify.",
+    "clauseOrder": [
+      "referral_terms",
+      "referral_eligibility",
+      "referral_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Referring employee's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "referralBonusAmount",
+        "label": "Referral bonus amount",
+        "placeholder": "$1,500",
+        "required": true
+      }
+    ],
+    "categories": [
+      "Hiring"
+    ]
   }
 ]

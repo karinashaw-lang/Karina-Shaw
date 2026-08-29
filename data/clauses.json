@@ -907,6 +907,77 @@
       "title": "Acknowledgment",
       "kind": "drafting",
       "body": "Please sign below to acknowledge receipt of this notice.\n\nEmployee: {{employeeName}}\nDate: _______________"
+    },
+    {
+      "id": "prop_return_list",
+      "title": "Property to Be Returned",
+      "kind": "drafting",
+      "body": "By {{terminationDate}}, {{employeeName}} must return all {{companyName}} property still in {{employeeName}}'s possession, including: keys, access cards, and badges; laptops, phones, and other equipment; company credit cards; and any documents, files, or materials — physical or electronic — containing {{companyName}}'s confidential or proprietary information."
+    },
+    {
+      "id": "prop_return_deduction_limit",
+      "title": "Limits on Deducting for Unreturned Property",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-08-29",
+      "body": "{{companyName}} may ask {{employeeName}} to pay for property that isn't returned, but can't simply withhold its estimated value from {{employeeName}}'s wages if doing so would cut into the minimum wage or overtime pay {{employeeName}} is otherwise owed. Federal law treats that kind of deduction the same as requiring an employee to hand wages back to the employer, which isn't allowed once those wages have actually been paid.",
+      "gap": "This is a federal wage-and-hour floor, not a full answer for every situation — many states go further and restrict or ban deductions for unreturned property entirely, or require the employee's written authorization first, regardless of whether minimum wage is affected. This document doesn't catalog those stricter state rules.",
+      "citations": [
+        {
+          "case": "29 C.F.R. § 531.35 (Cornell LII text)",
+          "cite": "Code of Federal Regulations, \"free and clear\" wage payment rule",
+          "url": "https://www.law.cornell.edu/cfr/text/29/531.35",
+          "quote": "Whether in cash or in facilities, “wages” cannot be considered to have been paid by the employer and received by the employee unless they are paid finally and unconditionally or “free and clear.” The wage requirements of the Act will not be met where the employee “kicks-back” directly or indirectly to the employer or to another person for the employer's benefit the whole or part of the wage delivered to the employee."
+        },
+        {
+          "case": "Stein v. hhgregg, Inc.",
+          "cite": "873 F.3d 523 (6th Cir. 2017)",
+          "url": "https://www.courtlistener.com/opinion/4433946/robert-stein-v-hhgregg-inc/",
+          "quote": "This aspect of the policy does violate the “free and clear” regulation, because it requires a repayment of wages ... Under these circumstances, we cannot say that the minimum wage is provided “free and clear.”"
+        }
+      ]
+    },
+    {
+      "id": "prop_return_ack",
+      "title": "Acknowledgment",
+      "kind": "drafting",
+      "body": "Please sign below to acknowledge receipt of this list and your obligation to return the property described above.\n\nEmployee: {{employeeName}}\nDate: _______________"
+    },
+    {
+      "id": "dd_authorization",
+      "title": "Authorization",
+      "kind": "drafting",
+      "body": "{{employeeName}} authorizes {{companyName}} to deposit {{employeeName}}'s pay directly into the account described below, instead of by paper check, until this authorization is changed or revoked.\n\nBank name: _______________\nRouting number: _______________\nAccount number: _______________\nAccount type: ☐ Checking  ☐ Savings"
+    },
+    {
+      "id": "dd_revocation",
+      "title": "Changing or Revoking This Authorization",
+      "kind": "drafting",
+      "body": "{{employeeName}} may change or revoke this authorization at any time by submitting a new form in writing to {{companyName}}. {{companyName}} will apply the change beginning with the next pay period for which there's enough time to process it."
+    },
+    {
+      "id": "dd_ack",
+      "title": "Acknowledgment",
+      "kind": "drafting",
+      "body": "Please sign below to indicate your agreement to the terms above.\n\nEmployee: {{employeeName}}\nDate: _______________"
+    },
+    {
+      "id": "referral_terms",
+      "title": "Referral Bonus",
+      "kind": "drafting",
+      "body": "{{companyName}} will pay {{employeeName}} a referral bonus of {{referralBonusAmount}} if a candidate {{employeeName}} refers is hired into an eligible role and both the new hire and {{employeeName}} remain employed with {{companyName}} through the payment date described below."
+    },
+    {
+      "id": "referral_eligibility",
+      "title": "Who Doesn't Qualify",
+      "kind": "drafting",
+      "body": "This bonus isn't available for referring an immediate family member, a current {{companyName}} contractor or contingent worker, or anyone {{employeeName}} is directly involved in interviewing or hiring for the referred role. {{companyName}} decides in its discretion whether a candidate counts as {{employeeName}}'s referral, including when more than one employee refers the same candidate."
+    },
+    {
+      "id": "referral_ack",
+      "title": "Acknowledgment",
+      "kind": "drafting",
+      "body": "Please sign below to indicate your agreement to the terms above.\n\nEmployee: {{employeeName}}\nDate: _______________"
     }
   ]
 }
