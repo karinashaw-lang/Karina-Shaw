@@ -481,5 +481,98 @@
     "categories": [
       "Hiring"
     ]
+  },
+  {
+    "id": "written_warning",
+    "title": "Written Warning / Corrective Action Notice",
+    "description": "Documents a performance or conduct issue, sets expectations going forward, and confirms this notice doesn't change at-will status.",
+    "clauseOrder": [
+      "warning_description",
+      "warning_expectations",
+      "at_will",
+      "warning_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      }
+    ],
+    "categories": [
+      "During employment"
+    ]
+  },
+  {
+    "id": "onboarding_checklist",
+    "title": "New Hire Onboarding Checklist",
+    "description": "What gets completed before or on a new hire's start date, including Form I-9 work-authorization verification.",
+    "clauseOrder": [
+      "onboarding_items",
+      "work_auth",
+      "onboarding_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "startDate",
+        "label": "Start date",
+        "placeholder": "September 15, 2026",
+        "required": true
+      }
+    ],
+    "categories": [
+      "Hiring"
+    ]
+  },
+  {
+    "id": "exit_interview",
+    "title": "Exit Interview Form",
+    "description": "A short set of standard departure-feedback questions.",
+    "clauseOrder": [
+      "exit_interview_questions",
+      "exit_interview_completion"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "terminationDate",
+        "label": "Last day",
+        "placeholder": "September 30, 2026",
+        "required": true
+      }
+    ],
+    "categories": [
+      "Ending employment"
+    ]
   }
 ]

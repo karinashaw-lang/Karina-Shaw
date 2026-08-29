@@ -12,7 +12,7 @@
       "kind": "authority",
       "status": "verified",
       "checkedDate": "2026-08-29",
-      "gap": "The general rule stated here is correct as a default, but it is a default, not an absolute: an employer's own policy statements — a handbook provision promising discharge only \"for cause,\" for example — can override it, unless an effective disclaimer preserves at-will status. Whether a disclaimer is effective turns on how conspicuous it is: courts have specifically held that a disclaimer buried inside a handbook's welcoming section, rather than set off in its own prominent provision, can be insufficient. That is exactly where this document's own disclaimer (in the Welcome clause) currently sits — a real, structural note for whoever finalizes this handbook, not a hypothetical.",
+      "gap": "The general rule stated here is correct as a default, but it is a default, not an absolute: an employer's own policy statements — a handbook provision promising discharge only \"for cause,\" for example — can override it, unless an effective disclaimer preserves at-will status. Whether a disclaimer is effective turns on how conspicuous it is: courts have specifically held that a disclaimer buried inside a handbook's welcoming section, rather than set off in its own prominent provision, can be insufficient. This clause is reused across several documents in this corpus; wherever it appears alongside a separate welcome or introductory section in the same document, that section is worth checking against this exact issue — a disclaimer tucked into a greeting rather than given its own prominent place is a real, checkable structural risk, not just a hypothetical one.",
       "body": "Your employment with {{companyName}} is at-will, meaning either you or the Company may end the employment relationship at any time, with or without cause or notice.",
       "citations": [
         {
@@ -978,6 +978,48 @@
       "title": "Acknowledgment",
       "kind": "drafting",
       "body": "Please sign below to indicate your agreement to the terms above.\n\nEmployee: {{employeeName}}\nDate: _______________"
+    },
+    {
+      "id": "warning_description",
+      "title": "Description of the Issue",
+      "kind": "drafting",
+      "body": "This notice documents a concern with {{employeeName}}'s performance or conduct.\n\nDescription of the issue:\n_______________________________________________\n_______________________________________________\n\nPrior discussion, if any: _______________________________________________"
+    },
+    {
+      "id": "warning_expectations",
+      "title": "Expectations Going Forward",
+      "kind": "drafting",
+      "body": "{{companyName}} expects {{employeeName}} to address the concern described above going forward. Continued or related issues may lead to further corrective action, up to and including termination of employment."
+    },
+    {
+      "id": "warning_ack",
+      "title": "Acknowledgment",
+      "kind": "drafting",
+      "body": "Please sign below to acknowledge that you have received and reviewed this notice. Signing doesn't necessarily mean you agree with it.\n\nEmployee: {{employeeName}}\nDate: _______________"
+    },
+    {
+      "id": "onboarding_items",
+      "title": "Before Your Start Date",
+      "kind": "drafting",
+      "body": "Before or on {{startDate}}, {{companyName}} will complete the following for {{employeeName}}: collect Form W-4 and any required state tax withholding forms; issue any company equipment, credentials, and system access; provide a copy of the employee handbook; and confirm {{employeeName}}'s emergency contact information."
+    },
+    {
+      "id": "onboarding_ack",
+      "title": "Acknowledgment",
+      "kind": "drafting",
+      "body": "Please sign below to confirm you've completed new-hire orientation and received the items described above.\n\nEmployee: {{employeeName}}\nDate: _______________"
+    },
+    {
+      "id": "exit_interview_questions",
+      "title": "Exit Interview Questions",
+      "kind": "drafting",
+      "body": "As part of {{employeeName}}'s departure from {{companyName}}, effective {{terminationDate}}, please answer the following:\n\n1. What was your primary reason for leaving?\n2. What did you like most about working here?\n3. What could {{companyName}} have done differently?\n4. Would you recommend {{companyName}} as a place to work? Why or why not?\n5. Any other feedback you'd like to share:"
+    },
+    {
+      "id": "exit_interview_completion",
+      "title": "Completion",
+      "kind": "drafting",
+      "body": "Completed by: {{employeeName}}\nDate: _______________"
     }
   ]
 }
