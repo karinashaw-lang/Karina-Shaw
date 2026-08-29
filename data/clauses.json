@@ -1,0 +1,90 @@
+{
+  "clauses": [
+    {
+      "id": "welcome",
+      "title": "Welcome",
+      "kind": "drafting",
+      "body": "Welcome to {{companyName}}. This handbook describes the policies that apply to your employment. It is not a contract and does not change your at-will employment status."
+    },
+    {
+      "id": "at_will",
+      "title": "At-Will Employment",
+      "kind": "authority",
+      "status": "unverified",
+      "body": "Your employment with {{companyName}} is at-will, meaning either you or the Company may end the employment relationship at any time, with or without cause or notice."
+    },
+    {
+      "id": "timekeeping",
+      "title": "Timekeeping",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-08-21",
+      "body": "Non-exempt employees must record all time worked. If {{companyName}}'s records are incomplete, you may still recover unpaid wages by showing the amount of work performed as a matter of just and reasonable inference — {{companyName}} then has the chance to rebut that estimate with its own evidence.",
+      "citations": [
+        {
+          "case": "Anderson v. Mt. Clemens Pottery Co.",
+          "cite": "328 U.S. 680 (1946)",
+          "url": "https://www.courtlistener.com/opinion/104318/anderson-v-mt-clemens-pottery-co/",
+          "quote": "an employee has carried out his burden if he proves that he has in fact performed work for which he was improperly compensated and if he produces sufficient evidence to show the amount and extent of that work as a matter of just and reasonable inference. The burden then shifts to the employer to come forward with evidence of the precise amount of work performed or with evidence to negative the reasonableness of the inference to be drawn from the employee's evidence."
+        },
+        {
+          "case": "Mazurek v. Metalcraft of Mayville, Inc.",
+          "cite": "111 F.4th 748 (7th Cir. 2024)",
+          "url": "https://www.courtlistener.com/opinion/10495444/richard-mazurek-v-metalcraft-of-mayville-inc/",
+          "quote": "The problem was one of degree, not kind — the methods Plaintiffs used to estimate worktime were simply too unreliable to permit a factfinder to draw a 'just and reasonable inference.'"
+        }
+      ]
+    },
+    {
+      "id": "work_auth",
+      "title": "Work Authorization",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-08-21",
+      "gap": "This clause's documentary-uniformity claim is actually grounded in 8 U.S.C. §1324b(a)(6), not §1324a. The separate claim that I-9 forms must be kept apart from personnel files remains unverified — no case addressing it was found.",
+      "body": "{{companyName}} completes Form I-9 for every employee within three business days of their first day of work and applies the same documentary requirements to every employee, regardless of national origin or citizenship status.",
+      "citations": [
+        {
+          "case": "Split Rail Fence Co. v. United States",
+          "cite": "852 F.3d 1228 (10th Cir. 2017)",
+          "url": "https://www.courtlistener.com/opinion/4153671/split-rail-fence-co-inc-v-united-states/",
+          "quote": "an employer \"must within three business days of hire … [c]omplete [S]ection 2\" — 8 C.F.R. §274a.2(b)(1)(ii)."
+        },
+        {
+          "case": "Robison Fruit Ranch, Inc. v. United States",
+          "cite": "154 F.3d 807 (9th Cir. 1998)",
+          "url": "https://www.courtlistener.com/opinion/755475/robison-fruit-ranch-inc-petitioner-v-united-states-of-america/",
+          "quote": "The evidence unquestionably shows that the employment practices in this case did not create additional burdens to any class of applicants or constitute differential treatment of authorized aliens and citizens. There could have been no discrimination, and the petition for review must be granted."
+        }
+      ]
+    },
+    {
+      "id": "accommodation",
+      "title": "Reasonable Accommodation",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-08-21",
+      "body": "If you request a reasonable accommodation, {{companyName}} will engage with you in good faith to identify one. Failing to do so in good faith can itself be a basis for liability, independent of whether an accommodation actually existed.",
+      "citations": [
+        {
+          "case": "Taylor v. Phoenixville School District",
+          "cite": "184 F.3d 296 (3d Cir. 1999)",
+          "url": "https://www.courtlistener.com/opinion/765245/katherine-l-taylor-v-phoenixville-school-district/",
+          "quote": "she raised genuine factual disputes on whether the school district participated in good faith in the interactive process required by the ADA."
+        },
+        {
+          "case": "Bultemeyer v. Fort Wayne Community Schools",
+          "cite": "100 F.3d 1281 (7th Cir. 1996)",
+          "url": "https://www.courtlistener.com/opinion/729768/robert-e-bultemeyer-v-fort-wayne-community-schools/",
+          "quote": "A party that obstructs or delays the interactive process is not acting in good faith. A party that fails to communicate, by way of initiation or response, may also be acting in bad faith."
+        }
+      ]
+    },
+    {
+      "id": "closing",
+      "title": "Acknowledgment",
+      "kind": "drafting",
+      "body": "I, {{employeeName}}, acknowledge that I have received and reviewed this handbook.\n\nEmployee: {{employeeName}}\nState: {{state}}\nDate: _______________"
+    }
+  ]
+}
