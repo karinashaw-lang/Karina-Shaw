@@ -138,5 +138,37 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "termination_letter",
+    "title": "Termination / Separation Letter",
+    "description": "Notice of termination — final pay timing, COBRA continuation coverage, and accrued vacation/PTO, each flagged for how much depends on the state.",
+    "clauseOrder": [
+      "term_notice",
+      "term_final_pay",
+      "term_cobra",
+      "term_accrued_pto",
+      "term_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "terminationDate",
+        "label": "Termination date",
+        "placeholder": "September 30, 2026",
+        "required": true
+      }
+    ]
   }
 ]

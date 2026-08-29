@@ -329,6 +329,93 @@
       "title": "Acknowledgment",
       "kind": "drafting",
       "body": "Please sign below to indicate your agreement to the terms above.\n\nContractor: {{employeeName}}\nDate: _______________"
+    },
+    {
+      "id": "term_notice",
+      "title": "Notice of Termination",
+      "kind": "drafting",
+      "body": "{{companyName}} is ending {{employeeName}}'s employment with the company, effective {{terminationDate}}."
+    },
+    {
+      "id": "term_final_pay",
+      "title": "Final Pay",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-08-29",
+      "body": "State law, not a single federal rule, controls when {{employeeName}}'s final paycheck is due. Some states require it immediately or within a few days of discharge; others allow payment on the next regularly scheduled payday. Which timeline applies depends on the state where {{employeeName}} works.",
+      "gap": "This clause illustrates the range with two real examples — California requires immediate payment on discharge, while New York allows payment on the next regular payday — rather than surveying all fifty states. Check the specific state's rule before setting a final-pay date.",
+      "citations": [
+        {
+          "case": "Cal. Labor Code § 201(a) (California Legislative Information text)",
+          "cite": "California Labor Code",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=201.",
+          "quote": "If an employer discharges an employee, the wages earned and unpaid at the time of discharge are due and payable immediately."
+        },
+        {
+          "case": "N.Y. Labor Law § 191(3) (New York State Senate text)",
+          "cite": "New York Labor Law",
+          "url": "https://www.nysenate.gov/legislation/laws/LAB/191",
+          "quote": "If employment is terminated, the employer shall pay the wages not later than the regular pay day for the pay period during which the termination occurred, as established in accordance with the provisions of this section."
+        }
+      ]
+    },
+    {
+      "id": "term_cobra",
+      "title": "Continuation of Health Coverage (COBRA)",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-08-29",
+      "body": "If {{companyName}} offers a group health plan, {{employeeName}}'s termination is generally a “qualifying event” that gives {{employeeName}} the right to continue that coverage temporarily at their own cost, under the federal law known as COBRA — unless the termination was for gross misconduct. {{companyName}} (or its plan administrator) must notify the plan of the qualifying event, which starts the clock on {{employeeName}}'s own notice of their continuation-coverage rights.",
+      "gap": "COBRA's continuation-coverage requirement generally does not apply to small employers — plans maintained by employers that normally had fewer than 20 employees in the prior calendar year are excepted. Some states have their own “mini-COBRA” laws extending similar rights to employees of smaller employers; those aren't covered here. Whether this particular termination genuinely qualifies as “gross misconduct” — the one exception named in the statute itself — is a fact-specific question this clause doesn't resolve.",
+      "citations": [
+        {
+          "case": "29 U.S.C. § 1163(2) (Cornell LII text)",
+          "cite": "U.S. Code, COBRA qualifying events",
+          "url": "https://www.law.cornell.edu/uscode/text/29/1163",
+          "quote": "The termination (other than by reason of such employee's gross misconduct), or reduction of hours, of the covered employee's employment."
+        },
+        {
+          "case": "29 U.S.C. § 1166(a)(2) (Cornell LII text)",
+          "cite": "U.S. Code, COBRA notice requirements",
+          "url": "https://www.law.cornell.edu/uscode/text/29/1166",
+          "quote": "the employer of an employee under a plan must notify the administrator of a qualifying event described in paragraph (1), (2), (4), or (6) of section 1163 of this title within 30 days (or, in the case of a group health plan which is a multiemployer plan, such longer period of time as may be provided in the terms of the plan) of the date of the qualifying event"
+        },
+        {
+          "case": "29 U.S.C. § 1161(b) (Cornell LII text)",
+          "cite": "U.S. Code, COBRA small-employer exception",
+          "url": "https://www.law.cornell.edu/uscode/text/29/1161",
+          "quote": "Subsection (a) shall not apply to any group health plan for any calendar year if all employers maintaining such plan normally employed fewer than 20 employees on a typical business day during the preceding calendar year."
+        }
+      ]
+    },
+    {
+      "id": "term_accrued_pto",
+      "title": "Accrued Vacation / PTO",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-08-29",
+      "body": "Whether {{employeeName}} is owed a payout for unused, accrued vacation or PTO at termination depends on the state and the terms of {{companyName}}'s own policy. In California, for example, earned vacation time is treated as wages that vest as they're earned — once vested, it can't be forfeited, and must be paid out at termination. Many other states don't require any such payout at all, leaving it entirely to the employer's own policy.",
+      "gap": "This clause uses California as one concrete, strict example — not a claim about the company's actual state or policy. Whether any accrued time is owed here depends on which state's law applies and what the company's own written policy says, including whether it distinguishes vacation from other forms of paid time off.",
+      "citations": [
+        {
+          "case": "Suastez v. Plastic Dress-Up Co.",
+          "cite": "31 Cal. 3d 774 (1982)",
+          "url": "https://www.courtlistener.com/opinion/1173656/suastez-v-plastic-dress-up-co/",
+          "quote": "The right to a paid vacation, when offered in an employer's policy or contract of employment, constitutes deferred wages for services rendered. Case law from this state and others, as well as principles of equity and justice, compel the conclusion that a proportionate right to a paid vacation \"vests\" as the labor is rendered. Once vested, the right is protected from forfeiture, by section 227.3. On termination of employment, therefore, the statute requires that an employee be paid in wages for a pro rata share of his vacation pay."
+        },
+        {
+          "case": "Cal. Labor Code § 227.3 (California Legislative Information text)",
+          "cite": "California Labor Code",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=227.3",
+          "quote": "Unless otherwise provided by a collective-bargaining agreement, whenever a contract of employment or employer policy provides for paid vacations, and an employee is terminated without having taken off his vested vacation time, all vested vacation shall be paid to him as wages at his final rate in accordance with such contract of employment or employer policy respecting eligibility or time served; provided, however, that an employment contract or employer policy shall not provide for forfeiture of vested vacation time upon termination."
+        }
+      ]
+    },
+    {
+      "id": "term_ack",
+      "title": "Acknowledgment",
+      "kind": "drafting",
+      "body": "Please sign below to acknowledge receipt of this letter.\n\nEmployee: {{employeeName}}\nDate: _______________"
     }
   ]
 }
