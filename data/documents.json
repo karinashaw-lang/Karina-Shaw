@@ -100,5 +100,43 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "independent_contractor",
+    "title": "Independent Contractor Agreement",
+    "description": "A short freelance/contractor engagement — scope of work, payment, and a note on misclassification risk.",
+    "clauseOrder": [
+      "ic_scope",
+      "ic_payment",
+      "ic_classification",
+      "ic_state_variation",
+      "ic_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Contractor name",
+        "placeholder": "Taylor Reyes",
+        "required": true
+      },
+      {
+        "id": "scopeOfWork",
+        "label": "Scope of work",
+        "placeholder": "Freelance graphic design services for marketing materials",
+        "required": true
+      },
+      {
+        "id": "paymentTerms",
+        "label": "Payment terms",
+        "placeholder": "$75 per hour, invoiced monthly",
+        "required": true
+      }
+    ]
   }
 ]

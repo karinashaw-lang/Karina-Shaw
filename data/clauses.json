@@ -265,6 +265,70 @@
       "title": "Acknowledgment",
       "kind": "drafting",
       "body": "Please sign below to indicate your agreement to the terms above.\n\nEmployee: {{employeeName}}\nDate: _______________"
+    },
+    {
+      "id": "ic_scope",
+      "title": "Scope of Work",
+      "kind": "drafting",
+      "body": "{{companyName}} is engaging {{employeeName}} to perform the following: {{scopeOfWork}}. {{employeeName}} determines the manner and means of performing this work, provided the results meet the specifications above."
+    },
+    {
+      "id": "ic_classification",
+      "title": "Independent Contractor Status",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-08-29",
+      "body": "Calling {{employeeName}} an “independent contractor” in this agreement doesn't by itself make that legally true. Courts and agencies look past the label to the actual working relationship — the same common-law factors used to decide who counts as an “employee” under federal statutes as different as copyright law and retirement-benefit law: who controls how the work gets done, who supplies the tools and workspace, how the person is paid, whether they receive employee benefits, and how they're treated for tax purposes. No single factor controls on its own. If the actual relationship looks more like employment than an independent engagement, {{companyName}} may owe the obligations that come with employee status regardless of what this agreement calls {{employeeName}}.",
+      "gap": "This clause states the federal common-law default, which several federal statutes (copyright, retirement-benefit law, and others) apply the same way. It does not by itself resolve any state-law test — some states use a different or stricter standard for specific purposes. See the next section.",
+      "citations": [
+        {
+          "case": "Community for Creative Non-Violence v. Reid",
+          "cite": "490 U.S. 730 (1989)",
+          "url": "https://www.courtlistener.com/opinion/112273/community-for-creative-non-violence-v-reid/",
+          "quote": "In determining whether a hired party is an employee under the general common law of agency, we consider the hiring party's right to control the manner and means by which the product is accomplished."
+        },
+        {
+          "case": "Nationwide Mutual Insurance Co. v. Darden",
+          "cite": "503 U.S. 318 (1992)",
+          "url": "https://www.courtlistener.com/opinion/112710/nationwide-mutual-insurance-v-darden/",
+          "quote": "In this case we construe the term “employee” as it appears in §3(6) of the Employee Retirement Income Security Act of 1974 (ERISA), 88 Stat. 834, 29 U.S.C. §1002(6), and read it to incorporate traditional agency law criteria for identifying master-servant relationships."
+        }
+      ]
+    },
+    {
+      "id": "ic_state_variation",
+      "title": "State Law May Apply a Stricter Test",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-08-29",
+      "body": "Some states go further than the federal common-law test for specific purposes — most notably wage-and-hour law and unemployment insurance. California, for example, presumes a worker is an employee for those purposes unless the hiring business proves all three parts of what's called the “ABC test”: that the worker is free from the company's control and direction, that the work is outside the company's usual course of business, and that the worker is customarily engaged in an independently established trade or business of that same kind. Failing any one of the three means the worker counts as an employee for those purposes, regardless of what this agreement says. Which test applies, and how strictly, depends on the state and the specific law in question.",
+      "gap": "This clause names California's statute as one concrete example of a state going beyond the federal common-law test; it is not a survey of every state's rule. California's own ABC test has statutory exceptions for specific occupations and relationships that are governed by a different, older test instead — this clause doesn't attempt to enumerate them. Check the specific state and specific law involved before relying on independent-contractor status for any particular purpose.",
+      "citations": [
+        {
+          "case": "Dynamex Operations W., Inc. v. Superior Court",
+          "cite": "4 Cal. 5th 903 (2018)",
+          "url": "https://www.courtlistener.com/opinion/4493839/dynamex-operations-w-inc-v-superior-court-of-l-a-cnty/",
+          "quote": "In sum, we conclude that unless the hiring entity establishes (A) that the worker is free from the control and direction of the hiring entity in connection with the performance of the work, both under the contract for the performance of the work and in fact, (B) that the worker performs work that is outside the usual course of the hiring entity's business, and (C) that the worker is customarily engaged in an independently established trade, occupation, or business, the worker should be considered an employee and the hiring business an employer under the suffer or permit to work standard in wage orders."
+        },
+        {
+          "case": "Cal. Labor Code § 2775(b)(1) (California Legislative Information text)",
+          "cite": "California Labor Code",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=2775",
+          "quote": "a person providing labor or services for remuneration shall be considered an employee rather than an independent contractor unless the hiring entity demonstrates that all of the following conditions are satisfied: (A) The person is free from the control and direction of the hiring entity in connection with the performance of the work, both under the contract for the performance of the work and in fact. (B) The person performs work that is outside the usual course of the hiring entity's business. (C) The person is customarily engaged in an independently established trade, occupation, or business of the same nature as that involved in the work performed."
+        }
+      ]
+    },
+    {
+      "id": "ic_payment",
+      "title": "Payment",
+      "kind": "drafting",
+      "body": "{{companyName}} will pay {{employeeName}} {{paymentTerms}} for the services described above. {{employeeName}} is responsible for their own tax withholding and reporting; {{companyName}} will not withhold income or payroll taxes from these payments."
+    },
+    {
+      "id": "ic_ack",
+      "title": "Acknowledgment",
+      "kind": "drafting",
+      "body": "Please sign below to indicate your agreement to the terms above.\n\nContractor: {{employeeName}}\nDate: _______________"
     }
   ]
 }
