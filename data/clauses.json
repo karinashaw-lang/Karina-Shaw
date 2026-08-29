@@ -11,8 +11,8 @@
       "title": "At-Will Employment",
       "kind": "authority",
       "status": "verified",
-      "checkedDate": "2026-08-21",
-      "gap": "The general rule stated here is correct as a default, but it is a default, not an absolute: an employer's own policy statements — a handbook provision promising discharge only \"for cause,\" for example — can override it, unless an effective disclaimer preserves at-will status. Whether a disclaimer is effective turns on how conspicuous it is: courts have specifically held that a disclaimer buried inside a handbook's welcoming section, rather than set off in its own prominent provision, can be insufficient. That is exactly where this document's own disclaimer (in the Welcome clause) currently sits — a real, structural note for whoever finalizes this handbook, not a hypothetical.",
+      "checkedDate": "2026-08-29",
+      "gap": "The general rule stated here is correct as a default, but it is a default, not an absolute: an employer's own policy statements — a handbook provision promising discharge only \"for cause,\" for example — can override it, unless an effective disclaimer preserves at-will status. Whether a disclaimer is effective turns on how conspicuous it is: courts have specifically held that a disclaimer buried inside a handbook's welcoming section, rather than set off in its own prominent provision, can be insufficient. That is exactly where this document's own disclaimer (in the Welcome clause) currently sits — a real, structural note for whoever finalizes this handbook, not a hypothetical. Separately: this clause states the at-will default as if it applies everywhere. It doesn't, universally — Montana is a real, statutory exception. Under Montana's Wrongful Discharge from Employment Act, once an employee completes the employer's probationary period, the employer needs “good cause” to terminate; at-will termination stops being lawful at that point. This clause and its underlying document don't collect a work-state field, so this exception can't be applied automatically — check whether Montana law governs before relying on the at-will statement above.",
       "body": "Your employment with {{companyName}} is at-will, meaning either you or the Company may end the employment relationship at any time, with or without cause or notice.",
       "citations": [
         {
@@ -32,6 +32,18 @@
           "cite": "867 P.2d 701 (Wyo. 1994)",
           "url": "https://www.courtlistener.com/opinion/1196517/lincoln-v-wackenhut-corp/",
           "quote": "the disclaimer was contained within a welcoming section of the employee handbook rather than in a separate provision where a reasonable person ought to have noticed it"
+        },
+        {
+          "case": "Buck v. Billings Montana Chevrolet, Inc.",
+          "cite": "811 P.2d 537 (Mont. 1991)",
+          "url": "https://www.courtlistener.com/opinion/882151/buck-v-billings-montana-chevrolet-inc/",
+          "quote": "According to pertinent parts of the Wrongful Discharge Act, a discharge is only wrongful if the discharge was not for good cause and the employee had completed the employer's probationary period of employment."
+        },
+        {
+          "case": "Sullivan v. Continental Construction of Montana, LLC",
+          "cite": "299 P.3d 832 (Mont. 2013)",
+          "url": "https://www.courtlistener.com/opinion/890272/sullivan-v-continental-construction-of-montana-llc/",
+          "quote": "A discharge is wrongful if no good cause exists for the termination."
         }
       ]
     },
@@ -40,9 +52,15 @@
       "title": "Timekeeping",
       "kind": "authority",
       "status": "verified",
-      "checkedDate": "2026-08-21",
+      "checkedDate": "2026-08-29",
       "body": "Non-exempt employees must record all time worked. If {{companyName}}'s records are incomplete, you may still recover unpaid wages by showing the amount of work performed as a matter of just and reasonable inference — {{companyName}} then has the chance to rebut that estimate with its own evidence.",
       "citations": [
+        {
+          "case": "29 U.S.C. § 211(c) (Cornell LII text)",
+          "cite": "U.S. Code, FLSA recordkeeping duty",
+          "url": "https://www.law.cornell.edu/uscode/text/29/211",
+          "quote": "Every employer subject to any provision of this chapter or of any order issued under this chapter shall make, keep, and preserve such records of the persons employed by him and of the wages, hours, and other conditions and practices of employment maintained by him."
+        },
         {
           "case": "29 U.S.C. § 207(a)(1) (Cornell LII text)",
           "cite": "U.S. Code",
@@ -103,8 +121,8 @@
       "title": "Reasonable Accommodation",
       "kind": "authority",
       "status": "verified",
-      "checkedDate": "2026-08-21",
-      "body": "If you request a reasonable accommodation, {{companyName}} will engage with you in good faith to identify one. Failing to do so in good faith can itself be a basis for liability, independent of whether an accommodation actually existed.",
+      "checkedDate": "2026-08-29",
+      "body": "If you request a reasonable accommodation, {{companyName}} will engage with you in good faith to identify one. If {{companyName}} fails to do so in good faith, that failure can be a basis for liability — but generally only where a reasonable accommodation was actually available and the lack of good faith is what kept it from being identified, not merely because the process itself broke down.",
       "citations": [
         {
           "case": "29 C.F.R. § 1630.2(o)(3) (Cornell LII text)",
@@ -123,8 +141,15 @@
           "cite": "100 F.3d 1281 (7th Cir. 1996)",
           "url": "https://www.courtlistener.com/opinion/729768/robert-e-bultemeyer-v-fort-wayne-community-schools/",
           "quote": "A party that obstructs or delays the interactive process is not acting in good faith. A party that fails to communicate, by way of initiation or response, may also be acting in bad faith."
+        },
+        {
+          "case": "Taylor v. Phoenixville School District",
+          "cite": "184 F.3d 296 (3d Cir. 1999)",
+          "url": "https://www.courtlistener.com/opinion/765245/katherine-l-taylor-v-phoenixville-school-district/",
+          "quote": "To show that an employer failed to participate in the interactive process, a disabled employee must demonstrate: 1) the employer knew about the employee's disability; 2) the employee requested accommodations or assistance for his or her disability; 3) the employer did not make a good faith effort to assist the employee in seeking accommodations; and 4) the employee could have been reasonably accommodated but for the employer's lack of good faith."
         }
-      ]
+      ],
+      "gap": "The cited cases require more than a bare failure to engage in good faith: the employee generally still has to show that a reasonable accommodation could have been identified but for the employer's lack of good faith — not that the failure alone is automatically actionable regardless of whether any accommodation was actually possible. An earlier version of this clause stated the rule more broadly than that; it's been corrected to match what the cited cases actually hold."
     },
     {
       "id": "monitoring",
