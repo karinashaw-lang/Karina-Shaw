@@ -300,3 +300,33 @@ footer.hint{
   .doc-card{ flex-direction:column; }
   form.wizard{ max-width:none; }
 }
+
+/* ---------- print / save as PDF ----------
+   A printed document should carry the same receipts the screen does —
+   citations always fully expanded here, regardless of which badges
+   were left open on screen (app.js also force-opens them before
+   calling window.print(), this is the belt-and-suspenders CSS path). */
+@media print{
+  body{ background:#fff; color:#000; font-size:12pt; }
+  .app{ max-width:none; margin:0; padding:0; }
+  .topbar, .actions, footer.hint, #screen-output > h1{ display:none !important; }
+  .screen{ display:none !important; }
+  .screen.active{ display:block !important; }
+
+  .doc-meta{ color:#000; margin:0 0 20px; }
+  .clause{ break-inside:avoid; border-bottom:1px solid #ccc; padding:14px 0; }
+  .clause h3{ color:#000; }
+  .clause .body-text{ color:#000; }
+
+  .badge{ border:1px solid #999; break-inside:avoid; }
+  .badge summary{ cursor:default; background:#f2f2f2 !important; color:#000 !important; }
+  .badge summary::before{ background:#666 !important; }
+  .badge summary .chev{ display:none; }
+  .badge .detail{ display:block !important; background:#fff; }
+  .badge .detail .quote{ color:#000; border-left-color:#999; }
+  .badge .detail .src-line{ color:#333; }
+  .badge .detail .src-line a{ color:#000; text-decoration:underline; }
+  .badge .detail .src-line a::after{ content:" (" attr(href) ")"; font-size:9pt; color:#555; word-break:break-all; }
+  .badge .detail .gap{ color:#333; border-top-color:#999; }
+  .badge .detail .gap b{ color:#000; }
+}

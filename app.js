@@ -189,6 +189,66 @@ document.getElementById('output-back').addEventListener('click', () => {
   showScreen('screen-picker');
 });
 
+// Builds a readable plain-text export of the assembled document,
+// including the same citations and gaps the on-screen badges show —
+// the text file should carry the same receipts the page does, not
+// just the fill-in-the-blank prose.
+function buildPlainText() {
+  const assembled = assembleDocument();
+  const { companyName, employeeName } = state.answers;
+  const lines = [];
+  lines.push(state.document.title.toUpperCase());
+  lines.push(`Prepared for ${employeeName || '—'} · ${companyName || '—'}`);
+  lines.push('');
+  assembled.forEach(clause => {
+    lines.push(clause.title.toUpperCase());
+    lines.push(clause.renderedBody);
+    if (clause.kind !== 'drafting') {
+      lines.push('');
+      if (clause.status === 'verified') {
+        lines.push(`[Verified — checked ${clause.checkedDate}]`);
+        (clause.citations || []).forEach(c => {
+          lines.push(`  "${c.quote}"`);
+          lines.push(`  — ${c.case}, ${c.cite} (${c.url})`);
+        });
+        if (clause.gap) lines.push(`  Known gap: ${clause.gap}`);
+      } else {
+        lines.push("[Not yet verified against a primary source or case law. Treat as a starting point, not a confirmed fact.]");
+      }
+    }
+    lines.push('');
+  });
+  lines.push('—');
+  lines.push('Groundtruth v1 demo · every "Verified" citation links to a real, checked source.');
+  return lines.join('\n');
+}
+
+document.getElementById('output-print').addEventListener('click', () => {
+  const badges = document.querySelectorAll('#output-clauses details.badge');
+  const wasOpen = new Set([...badges].filter(d => d.open));
+  badges.forEach(d => { d.open = true; });
+  const restore = () => {
+    badges.forEach(d => { d.open = wasOpen.has(d); });
+    window.removeEventListener('afterprint', restore);
+  };
+  window.addEventListener('afterprint', restore);
+  window.print();
+});
+
+document.getElementById('output-download').addEventListener('click', () => {
+  const text = buildPlainText();
+  const slug = state.document.title.replace(/[^\w\- ]+/g, '').trim().replace(/\s+/g, '-');
+  const blob = new Blob([text], { type: 'text/plain' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `${slug}.txt`;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+});
+
 document.getElementById('wizard-form').addEventListener('submit', e => {
   e.preventDefault();
   const formData = new FormData(e.target);
