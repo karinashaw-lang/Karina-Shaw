@@ -196,5 +196,48 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "noncompete",
+    "title": "Non-Compete Agreement",
+    "description": "A restriction on competing after employment ends — with the state-by-state enforceability question front and center, not buried.",
+    "clauseOrder": [
+      "nc_scope",
+      "nc_enforceability",
+      "nc_consideration",
+      "nc_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "restrictionPeriod",
+        "label": "Restriction period",
+        "placeholder": "12 months",
+        "required": true
+      },
+      {
+        "id": "restrictedActivity",
+        "label": "Restricted activity",
+        "placeholder": "work for or start a competing commercial HVAC installation business",
+        "required": true
+      },
+      {
+        "id": "geographicScope",
+        "label": "Geographic scope",
+        "placeholder": "50 miles of Springfield, Illinois",
+        "required": true
+      }
+    ]
   }
 ]

@@ -547,6 +547,70 @@
       "title": "Acknowledgment",
       "kind": "drafting",
       "body": "Please sign below to indicate your agreement to the terms above.\n\nRecipient: {{employeeName}}\nDate: _______________"
+    },
+    {
+      "id": "nc_scope",
+      "title": "Restriction",
+      "kind": "drafting",
+      "body": "For {{restrictionPeriod}} after {{employeeName}}'s employment with {{companyName}} ends, {{employeeName}} will not {{restrictedActivity}} within {{geographicScope}}."
+    },
+    {
+      "id": "nc_enforceability",
+      "title": "Enforceability Varies by State",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-08-29",
+      "body": "Whether this restriction is enforceable at all depends heavily on the state whose law governs it. California is the clearest example: state law voids any contract restraining someone from a lawful profession, trade, or business, with only narrow exceptions like a sale of a business — and as of 2024 it's unlawful for an employer to even include a noncompete clause in an employment contract that doesn't fit one of those exceptions. Most other states instead ask whether the restriction is reasonable: no broader than necessary to protect the employer's legitimate interests, not an undue hardship on {{employeeName}}, and not injurious to the public. Which approach applies, and how strictly, depends on the state.",
+      "gap": "This clause names California as the clearest outlier, not a survey of every state — several other states (including Minnesota, North Dakota, and Oklahoma) also restrict or ban most employee noncompetes by statute, and this document doesn't catalog them. Even in reasonableness-test states, courts differ on the remedy for a restriction that turns out to be broader than reasonable: some will narrow (\"blue pencil\") it down to what's enforceable, others will void the whole clause and refuse to rewrite it. Which approach a given state's courts take isn't addressed here.",
+      "citations": [
+        {
+          "case": "Cal. Bus. & Prof. Code § 16600 (California Legislative Information text)",
+          "cite": "California Business and Professions Code",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&sectionNum=16600.",
+          "quote": "Except as provided in this chapter, every contract by which anyone is restrained from engaging in a lawful profession, trade, or business of any kind is to that extent void."
+        },
+        {
+          "case": "Cal. Bus. & Prof. Code § 16600.1(a) (California Legislative Information text)",
+          "cite": "California Business and Professions Code",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&sectionNum=16600.1.",
+          "quote": "It shall be unlawful to include a noncompete clause in an employment contract, or to require an employee to enter a noncompete agreement, that does not satisfy an exception in this chapter."
+        },
+        {
+          "case": "Raimonde v. Van Vlerah",
+          "cite": "42 Ohio St. 2d 21 (1975)",
+          "url": "https://www.courtlistener.com/opinion/6865409/raimonde-v-van-vlerah/",
+          "quote": "A covenant restraining an employee from competing with his former employer upon termination of employment is reasonable if it is no greater than is required for the protection of the employer, does not impose undue hardship on the employee, and is not injurious to the public."
+        }
+      ]
+    },
+    {
+      "id": "nc_consideration",
+      "title": "If This Is Signed After Employment Begins",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-08-29",
+      "body": "If {{employeeName}} is asked to sign this agreement after employment with {{companyName}} has already started, rather than at hiring, some states require something of value beyond continued employment for the agreement to be enforceable — and courts around the country don't agree on this. Some courts have held that continuing to employ an at-will employee is itself enough consideration to support a noncompete agreement signed later. Other courts have held the opposite: that continued at-will employment alone isn't enough, and something further — a raise, a bonus, a new role — is needed for the later agreement to be enforceable. Which rule applies depends on the state whose law governs this agreement.",
+      "gap": "This document doesn't collect a governing-state field, so which side of this split applies can't be resolved automatically here. Ohio and Washington — the two states cited below — land on opposite sides of this exact question; other states may follow either rule or a variation of it. Check the rule for the specific state involved before relying on continued employment alone as sufficient consideration for an agreement signed after hire.",
+      "citations": [
+        {
+          "case": "Lake Land Employment Group of Akron, LLC v. Columber",
+          "cite": "101 Ohio St. 3d 242 (2004)",
+          "url": "https://www.courtlistener.com/opinion/6892723/lake-land-employment-group-of-akron-llc-v-columber/",
+          "quote": "We conclude that forbearance on the part of an at-will employer from discharging an at-will employee serves as consideration to support a noncompetition agreement."
+        },
+        {
+          "case": "Labriola v. Pollard Group, Inc.",
+          "cite": "100 P.3d 791 (Wash. 2004)",
+          "url": "https://www.courtlistener.com/opinion/2634466/labriola-v-pollard-group-inc/",
+          "quote": "A noncompete agreement entered into after employment has commenced is validly formed only when there is independent consideration at the time the agreement is reached. Finding that there was no independent consideration at the time of the 2002 noncompete agreement, we reverse the trial court's summary judgment ruling."
+        }
+      ]
+    },
+    {
+      "id": "nc_ack",
+      "title": "Acknowledgment",
+      "kind": "drafting",
+      "body": "Please sign below to indicate your agreement to the terms above.\n\nEmployee: {{employeeName}}\nDate: _______________"
     }
   ]
 }
