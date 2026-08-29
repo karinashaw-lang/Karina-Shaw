@@ -76,5 +76,29 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "ip_agreement",
+    "title": "Invention Assignment & Confidentiality Agreement",
+    "description": "Ownership of work product and a note on when a separate assignment or extra consideration may be needed.",
+    "clauseOrder": [
+      "ip_assignment",
+      "ip_consideration",
+      "ip_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      }
+    ]
   }
 ]

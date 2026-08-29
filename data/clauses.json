@@ -207,6 +207,64 @@
       "title": "Acceptance",
       "kind": "drafting",
       "body": "Please sign below to indicate your acceptance of this offer.\n\nEmployee: {{employeeName}}\nDate: _______________"
+    },
+    {
+      "id": "ip_assignment",
+      "title": "Ownership of Work Product",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-08-29",
+      "body": "Work {{employeeName}} creates for {{companyName}} within the scope of employment is generally owned by {{companyName}} from the moment it's created — this is the “work made for hire” doctrine. That default applies to work actually created within an employment relationship as the law defines it, not just work created by someone {{companyName}} calls an employee. Courts look at factors like who controls how the work gets done, who provides the tools and workspace, how the work is paid for, and whether the person receives employee benefits and is treated as an employee for tax purposes — no single factor decides it on its own. Work created outside that scope, or by a contractor rather than an employee, is not automatically owned by {{companyName}} under this doctrine.",
+      "gap": "This clause describes the employee branch of the work-made-for-hire doctrine only. Work by a contractor or consultant is “made for hire” only if it falls into one of nine narrow categories listed in 17 U.S.C. §101 (things like a contribution to a collective work, a translation, an instructional text) and the parties sign a written agreement saying so — most contractor work doesn't qualify, and needs a separate written assignment to transfer ownership at all. That separate-assignment situation isn't covered by this clause.",
+      "citations": [
+        {
+          "case": "17 U.S.C. § 101 (Cornell LII text)",
+          "cite": "U.S. Code, definition of “work made for hire”",
+          "url": "https://www.law.cornell.edu/uscode/text/17/101",
+          "quote": "A “work made for hire” is— (1) a work prepared by an employee within the scope of his or her employment; or (2) a work specially ordered or commissioned for use as a contribution to a collective work, as a part of a motion picture or other audiovisual work, as a translation, as a supplementary work, as a compilation, as an instructional text, as a test, as answer material for a test, or as an atlas, if the parties expressly agree in a written instrument signed by them that the work shall be considered a work made for hire."
+        },
+        {
+          "case": "Community for Creative Non-Violence v. Reid",
+          "cite": "490 U.S. 730 (1989)",
+          "url": "https://www.courtlistener.com/opinion/112273/community-for-creative-non-violence-v-reid/",
+          "quote": "In determining whether a hired party is an employee under the general common law of agency, we consider the hiring party's right to control the manner and means by which the product is accomplished."
+        },
+        {
+          "case": "Aymes v. Bonelli",
+          "cite": "980 F.2d 857 (2d Cir. 1992)",
+          "url": "https://www.courtlistener.com/opinion/596113/clifford-scott-aymes-v-jonathan-bonelli-doing-business-as-island-swimming/",
+          "quote": "Some factors, therefore, will often have little or no significance in determining whether a party is an independent contractor or an employee. In contrast, there are some factors that will be significant in virtually every situation. These include: (1) the hiring party's right to control the manner and means of creation; (2) the skill required; (3) the provision of employee benefits; (4) the tax treatment of the hired party; and (5) whether the hiring party has the right to assign additional projects to the hired party. These factors will almost always be relevant and should be given more weight in the analysis, because they will usually be highly probative of the true nature of the employment relationship."
+        }
+      ]
+    },
+    {
+      "id": "ip_consideration",
+      "title": "If This Is Signed After Employment Begins",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-08-29",
+      "body": "If this agreement is signed after {{employeeName}}'s employment with {{companyName}} has already started, rather than at hiring, some states require something of value beyond continued employment for the agreement to be enforceable — and courts around the country don't agree on this. Some courts have held that continuing to employ an at-will employee is itself enough to support an assignment or noncompete agreement signed later. Other courts have held the opposite: that continued at-will employment alone isn't enough, and something further — a raise, a bonus, a new role — is needed for the later agreement to be enforceable. Which rule applies depends on the state whose law governs this agreement.",
+      "gap": "This document doesn't collect a governing-state field, so which side of this split applies can't be resolved automatically here. Ohio and Washington — the two states cited below — land on opposite sides of this exact question; other states may follow either rule or a variation of it. Check the rule for the specific state involved before relying on continued employment alone as sufficient consideration for an agreement signed after hire.",
+      "citations": [
+        {
+          "case": "Lake Land Employment Group of Akron, LLC v. Columber",
+          "cite": "101 Ohio St. 3d 242 (2004)",
+          "url": "https://www.courtlistener.com/opinion/6892723/lake-land-employment-group-of-akron-llc-v-columber/",
+          "quote": "We conclude that forbearance on the part of an at-will employer from discharging an at-will employee serves as consideration to support a noncompetition agreement."
+        },
+        {
+          "case": "Labriola v. Pollard Group, Inc.",
+          "cite": "100 P.3d 791 (Wash. 2004)",
+          "url": "https://www.courtlistener.com/opinion/2634466/labriola-v-pollard-group-inc/",
+          "quote": "A noncompete agreement entered into after employment has commenced is validly formed only when there is independent consideration at the time the agreement is reached. Finding that there was no independent consideration at the time of the 2002 noncompete agreement, we reverse the trial court's summary judgment ruling."
+        }
+      ]
+    },
+    {
+      "id": "ip_ack",
+      "title": "Acknowledgment",
+      "kind": "drafting",
+      "body": "Please sign below to indicate your agreement to the terms above.\n\nEmployee: {{employeeName}}\nDate: _______________"
     }
   ]
 }
