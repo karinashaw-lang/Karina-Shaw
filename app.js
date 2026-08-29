@@ -102,10 +102,80 @@ function renderOutput() {
     body.textContent = clause.renderedBody;
     block.appendChild(body);
 
-    // Sourcing badge attaches here in step 7/8.
+    // Sourcing badge attaches here in step 8.
 
     container.appendChild(block);
   });
+}
+
+// The centerpiece: builds the sourcing badge for one clause. Returns
+// null for drafting content (no legal claim, nothing to source), an
+// expandable green badge for verified content (case, date, quote,
+// link — and a visible gap if one was found), or a plain, honest
+// "not yet verified" badge otherwise. This is what makes the
+// difference between checked and unchecked content visible to the
+// person reading the document, instead of it only living in the data
+// file where nobody sees it.
+function renderBadge(clause) {
+  if (clause.kind === 'drafting') return null;
+
+  const el = document.createElement('details');
+  el.className = 'badge ' + (clause.status === 'verified' ? 'verified' : 'unverified');
+
+  const summary = document.createElement('summary');
+  const label = document.createElement('span');
+  label.textContent =
+    clause.status === 'verified'
+      ? `Verified · checked ${clause.checkedDate}`
+      : 'Not yet verified';
+  summary.appendChild(label);
+  const chev = document.createElement('span');
+  chev.className = 'chev';
+  chev.textContent = '▸';
+  summary.appendChild(chev);
+  el.appendChild(summary);
+
+  const detail = document.createElement('div');
+  detail.className = 'detail';
+
+  if (clause.status === 'verified') {
+    (clause.citations || []).forEach(c => {
+      const quote = document.createElement('p');
+      quote.className = 'quote';
+      quote.textContent = `"${c.quote}"`;
+      detail.appendChild(quote);
+
+      const srcLine = document.createElement('p');
+      srcLine.className = 'src-line';
+      const link = document.createElement('a');
+      link.href = c.url;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = `${c.case} — ${c.cite}`;
+      srcLine.appendChild(link);
+      detail.appendChild(srcLine);
+    });
+
+    if (clause.gap) {
+      const gap = document.createElement('p');
+      gap.className = 'gap';
+      const b = document.createElement('b');
+      b.textContent = 'Known gap: ';
+      gap.appendChild(b);
+      gap.appendChild(document.createTextNode(clause.gap));
+      detail.appendChild(gap);
+    }
+  } else {
+    const note = document.createElement('p');
+    note.className = 'src-line';
+    note.textContent =
+      "This clause hasn't been checked against a primary source or case law yet. " +
+      'Treat it as a starting point, not a confirmed fact, until it is.';
+    detail.appendChild(note);
+  }
+
+  el.appendChild(detail);
+  return el;
 }
 
 document.getElementById('wizard-back').addEventListener('click', () => showScreen('screen-picker'));
