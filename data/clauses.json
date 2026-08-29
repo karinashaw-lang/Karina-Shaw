@@ -1056,6 +1056,36 @@
       "title": "Approval",
       "kind": "drafting",
       "body": "Approved by: _______________________________________________ (name/title)\nSignature: _______________________________________________\nDate: _______________"
+    },
+    {
+      "id": "pto_request_details",
+      "title": "Time Off Requested",
+      "kind": "drafting",
+      "body": "{{employeeName}} requests the following paid time off:\n\nStart date: _______________\nEnd date: _______________\nTotal days requested: _______________\nReason (optional): _______________________________________________"
+    },
+    {
+      "id": "expense_details",
+      "title": "Expenses",
+      "kind": "drafting",
+      "body": "Date | Description | Amount\n_______________________________________________\n_______________________________________________\n_______________________________________________\n\nTotal amount requested: _______________\n\nReceipts attached: ☐ Yes  ☐ No"
+    },
+    {
+      "id": "expense_certification",
+      "title": "Certification and Approval",
+      "kind": "drafting",
+      "body": "{{employeeName}} certifies that these expenses were incurred for legitimate business purposes on behalf of {{companyName}} and have not been previously reimbursed.\n\nEmployee: {{employeeName}}\nDate: _______________\n\nApproved by: _______________________________________________\nDate: _______________"
+    },
+    {
+      "id": "salary_change_details",
+      "title": "Change in Compensation",
+      "kind": "drafting",
+      "body": "Effective {{effectiveDate}}, {{employeeName}}'s title will change to {{jobTitle}} and base salary will change to {{salary}}. All other terms of {{employeeName}}'s employment remain the same."
+    },
+    {
+      "id": "salary_change_ack",
+      "title": "Acknowledgment",
+      "kind": "drafting",
+      "body": "Please sign below to acknowledge this change.\n\nEmployee: {{employeeName}}\nDate: _______________"
     }
   ]
 }

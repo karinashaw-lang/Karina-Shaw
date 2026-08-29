@@ -666,5 +666,101 @@
     "categories": [
       "During employment"
     ]
+  },
+  {
+    "id": "pto_request",
+    "title": "PTO / Vacation Request Form",
+    "description": "A simple paid-time-off request and approval form.",
+    "clauseOrder": [
+      "pto_request_details",
+      "overtime_approval"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      }
+    ],
+    "categories": [
+      "During employment"
+    ]
+  },
+  {
+    "id": "expense_reimbursement",
+    "title": "Business Expense Reimbursement Form",
+    "description": "An itemized expense list with an employee certification and manager approval.",
+    "clauseOrder": [
+      "expense_details",
+      "expense_certification"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      }
+    ],
+    "categories": [
+      "During employment"
+    ]
+  },
+  {
+    "id": "salary_change",
+    "title": "Salary Change / Promotion Notice",
+    "description": "A short notice documenting a title or salary change.",
+    "clauseOrder": [
+      "salary_change_details",
+      "salary_change_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "jobTitle",
+        "label": "New job title",
+        "placeholder": "Senior Software Engineer",
+        "required": true
+      },
+      {
+        "id": "salary",
+        "label": "New base salary",
+        "placeholder": "$110,000 per year",
+        "required": true
+      },
+      {
+        "id": "effectiveDate",
+        "label": "Effective date",
+        "placeholder": "October 1, 2026",
+        "required": true
+      }
+    ],
+    "categories": [
+      "During employment"
+    ]
   }
 ]
