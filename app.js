@@ -83,9 +83,9 @@ function assembleDocument() {
 function renderOutput() {
   const assembled = assembleDocument();
 
-  const { companyName, state: st, employeeName } = state.answers;
+  const { companyName, employeeName } = state.answers;
   document.getElementById('output-meta').textContent =
-    `Prepared for ${employeeName || '—'} · ${companyName || '—'} · ${st || '—'}`;
+    `Prepared for ${employeeName || '—'} · ${companyName || '—'}`;
 
   const container = document.getElementById('output-clauses');
   container.innerHTML = '';
