@@ -1,4 +1,4 @@
-const state = { documents: null, document: null, clauses: null, answers: {} };
+const state = { documents: null, document: null, clauses: null, answers: {}, categoryFilter: null };
 
 // Draft persistence. Local-only, one slot at a time — closing the tab
 // mid-wizard shouldn't lose someone's answers. localStorage can throw
@@ -60,6 +60,7 @@ async function init() {
   ]);
   state.documents = docs;
   state.clauses = clauseData.clauses;
+  renderCategoryFilter();
   renderPicker();
   checkForDraft();
 }
@@ -69,10 +70,40 @@ function showScreen(id) {
   document.getElementById(id).classList.add('active');
 }
 
+// Filter chips let someone narrow the list by category — a self-select
+// browse, same as any storefront's category nav. They never interpret
+// a reader's specific situation or suggest which document fits it;
+// every chip just shows or hides documents whose own, already-written
+// description already puts them in that category.
+function renderCategoryFilter() {
+  const el = document.getElementById('category-filter');
+  el.innerHTML = '';
+  const categories = [...new Set(state.documents.flatMap(d => d.categories || []))];
+
+  const makeChip = (label, value) => {
+    const chip = document.createElement('button');
+    chip.type = 'button';
+    chip.className = 'chip' + (state.categoryFilter === value ? ' active' : '');
+    chip.textContent = label;
+    chip.addEventListener('click', () => {
+      state.categoryFilter = value;
+      renderCategoryFilter();
+      renderPicker();
+    });
+    el.appendChild(chip);
+  };
+
+  makeChip('All', null);
+  categories.forEach(c => makeChip(c, c));
+}
+
 function renderPicker() {
   const list = document.getElementById('doc-list');
   list.innerHTML = '';
-  state.documents.forEach(doc => {
+  const docs = state.categoryFilter
+    ? state.documents.filter(d => (d.categories || []).includes(state.categoryFilter))
+    : state.documents;
+  docs.forEach(doc => {
     const card = document.createElement('button');
     card.className = 'doc-card';
     card.type = 'button';
