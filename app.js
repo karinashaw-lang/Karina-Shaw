@@ -1,11 +1,11 @@
-const state = { document: null, clauses: null, answers: {} };
+const state = { documents: null, document: null, clauses: null, answers: {} };
 
 async function init() {
-  const [doc, clauseData] = await Promise.all([
-    fetch('data/document.json').then(r => r.json()),
+  const [docs, clauseData] = await Promise.all([
+    fetch('data/documents.json').then(r => r.json()),
     fetch('data/clauses.json').then(r => r.json()),
   ]);
-  state.document = doc;
+  state.documents = docs;
   state.clauses = clauseData.clauses;
   renderPicker();
 }
@@ -18,21 +18,25 @@ function showScreen(id) {
 function renderPicker() {
   const list = document.getElementById('doc-list');
   list.innerHTML = '';
-  const card = document.createElement('button');
-  card.className = 'doc-card';
-  card.type = 'button';
-  card.innerHTML = `
-    <div>
-      <h3>${state.document.title}</h3>
-      <p>${state.document.description}</p>
-    </div>
-    <span class="go">START &rarr;</span>
-  `;
-  card.addEventListener('click', () => {
-    renderWizard();
-    showScreen('screen-wizard');
+  state.documents.forEach(doc => {
+    const card = document.createElement('button');
+    card.className = 'doc-card';
+    card.type = 'button';
+    card.innerHTML = `
+      <div>
+        <h3>${doc.title}</h3>
+        <p>${doc.description}</p>
+      </div>
+      <span class="go">START &rarr;</span>
+    `;
+    card.addEventListener('click', () => {
+      state.document = doc;
+      state.answers = {};
+      renderWizard();
+      showScreen('screen-wizard');
+    });
+    list.appendChild(card);
   });
-  list.appendChild(card);
 }
 
 function renderWizard() {

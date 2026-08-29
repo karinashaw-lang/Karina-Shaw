@@ -136,6 +136,53 @@
       "title": "Acknowledgment",
       "kind": "drafting",
       "body": "I, {{employeeName}}, acknowledge that I have received and reviewed this handbook.\n\nEmployee: {{employeeName}}\nDate: _______________"
+    },
+    {
+      "id": "offer_position",
+      "title": "Position",
+      "kind": "drafting",
+      "body": "{{companyName}} is pleased to offer you the position of {{jobTitle}}, reporting to {{managerTitle}}. Your anticipated start date is {{startDate}}."
+    },
+    {
+      "id": "offer_compensation",
+      "title": "Compensation",
+      "kind": "drafting",
+      "body": "Your starting base salary will be {{salary}}, paid in accordance with {{companyName}}'s standard payroll schedule."
+    },
+    {
+      "id": "offer_overtime",
+      "title": "Overtime",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-08-21",
+      "gap": "Both cases cited here address the federal floor under the FLSA. Whether a specific state's overtime law imposes a stricter or different rule was not checked — this clause names no state and defers to federal law only.",
+      "body": "If you are a non-exempt employee, {{companyName}} requires advance approval before working overtime. Even so, the law requires {{companyName}} to pay for overtime it actually knew about, or should have known about, whether or not it was pre-approved. {{companyName}} is not liable for overtime hours it had no way of knowing about because they were never reported.",
+      "citations": [
+        {
+          "case": "Forrester v. Roth's I.G.A. Foodliner, Inc.",
+          "cite": "646 F.2d 413 (9th Cir. 1981)",
+          "url": "https://www.courtlistener.com/opinion/389336/billy-h-forrester-v-roths-i-g-a-foodliner-incorporated-an-oregon/",
+          "quote": "an employer who knows or should have known that an employee is or was working overtime must comply with the provisions of § 207. An employer who is armed with this knowledge cannot stand idly by and allow an employee to perform overtime work without proper compensation, even if the employee does not make a claim for the overtime compensation."
+        },
+        {
+          "case": "Forrester v. Roth's I.G.A. Foodliner, Inc.",
+          "cite": "646 F.2d 413 (9th Cir. 1981)",
+          "url": "https://www.courtlistener.com/opinion/389336/billy-h-forrester-v-roths-i-g-a-foodliner-incorporated-an-oregon/",
+          "quote": "where an employer has no knowledge that an employee is engaging in overtime work and that employee fails to notify the employer or deliberately prevents the employer from acquiring knowledge of the overtime work, the employer's failure to pay for the overtime hours is not a violation of § 207."
+        },
+        {
+          "case": "Newton v. City of Henderson",
+          "cite": "47 F.3d 746 (5th Cir. 1995)",
+          "url": "https://www.courtlistener.com/opinion/689147/stephen-r-newton-v-city-of-henderson/",
+          "quote": "He was employed during those hours if the City had knowledge, actual or constructive, that he was working."
+        }
+      ]
+    },
+    {
+      "id": "offer_ack",
+      "title": "Acceptance",
+      "kind": "drafting",
+      "body": "Please sign below to indicate your acceptance of this offer.\n\nEmployee: {{employeeName}}\nDate: _______________"
     }
   ]
 }

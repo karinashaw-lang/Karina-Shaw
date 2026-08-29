@@ -1,0 +1,80 @@
+[
+  {
+    "id": "handbook",
+    "title": "Employee Handbook (excerpt)",
+    "description": "A short handbook excerpt demonstrating sourced-clause assembly — not a complete handbook.",
+    "clauseOrder": [
+      "welcome",
+      "at_will",
+      "timekeeping",
+      "work_auth",
+      "accommodation",
+      "monitoring",
+      "closing"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      }
+    ]
+  },
+  {
+    "id": "offer",
+    "title": "Offer Letter",
+    "description": "A short employment offer letter — position, compensation, at-will status, and overtime.",
+    "clauseOrder": [
+      "offer_position",
+      "offer_compensation",
+      "at_will",
+      "offer_overtime",
+      "offer_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "jobTitle",
+        "label": "Job title",
+        "placeholder": "Software Engineer",
+        "required": true
+      },
+      {
+        "id": "managerTitle",
+        "label": "Reports to",
+        "placeholder": "Engineering Manager",
+        "required": true
+      },
+      {
+        "id": "startDate",
+        "label": "Start date",
+        "placeholder": "September 15, 2026",
+        "required": true
+      },
+      {
+        "id": "salary",
+        "label": "Starting base salary",
+        "placeholder": "$95,000 per year",
+        "required": true
+      }
+    ]
+  }
+]
