@@ -269,6 +269,16 @@ button:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
 .clause .body-text{
   margin:0 0 12px;
   white-space:pre-line;
+  border-radius:4px;
+  padding:2px 4px;
+  margin-left:-4px;
+  margin-right:-4px;
+}
+.clause .body-text[contenteditable]:hover{ background:var(--surface-2); }
+.clause .body-text[contenteditable]:focus{
+  background:var(--surface);
+  outline:1px dashed var(--line);
+  outline-offset:2px;
 }
 
 /* ---------- sourcing badge ---------- */
@@ -279,6 +289,7 @@ button:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
 }
 .badge.verified{ border-color:var(--accent); }
 .badge.unverified{ border-color:var(--flag); }
+.badge.edited{ border-color:var(--flag); }
 
 .badge summary{
   list-style:none;
@@ -302,6 +313,8 @@ button:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
 .badge.verified summary::before{ background:var(--accent); }
 .badge.unverified summary{ background:var(--flag-soft); color:var(--flag); }
 .badge.unverified summary::before{ background:var(--flag); }
+.badge.edited summary{ background:var(--flag-soft); color:var(--flag); }
+.badge.edited summary::before{ background:var(--flag); }
 .badge summary .chev{ margin-left:auto; opacity:.6; font-size:11px; }
 .badge[open] summary .chev{ transform:rotate(90deg); }
 
@@ -357,7 +370,8 @@ footer.hint{
 @media print{
   body{ background:#fff; color:#000; font-size:12pt; }
   .app{ max-width:none; margin:0; padding:0; }
-  .topbar, .actions, footer.hint, #screen-output > h1{ display:none !important; }
+  .topbar, .actions, footer.hint, #screen-output > h1, #screen-output .lede{ display:none !important; }
+  .clause .body-text[contenteditable]{ outline:none !important; background:none !important; }
   .screen{ display:none !important; }
   .screen.active{ display:block !important; }
 

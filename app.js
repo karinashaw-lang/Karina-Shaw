@@ -1,4 +1,4 @@
-const state = { documents: null, document: null, clauses: null, answers: {}, categoryFilter: null };
+const state = { documents: null, document: null, clauses: null, answers: {}, categoryFilter: null, edits: {}, editedClauseIds: new Set() };
 
 // Draft persistence. Local-only, one slot at a time — closing the tab
 // mid-wizard shouldn't lose someone's answers. localStorage can throw
@@ -172,6 +172,8 @@ function assembleDocument() {
 
 function renderOutput() {
   const assembled = assembleDocument();
+  state.edits = {};
+  state.editedClauseIds = new Set();
 
   const { companyName, employeeName } = state.answers;
   document.getElementById('output-meta').textContent =
@@ -182,14 +184,28 @@ function renderOutput() {
   assembled.forEach(clause => {
     const block = document.createElement('div');
     block.className = 'clause';
+    block.dataset.clauseId = clause.id;
 
     const h3 = document.createElement('h3');
     h3.textContent = clause.title;
     block.appendChild(h3);
 
+    // contenteditable rather than a separate edit-mode toggle — a
+    // reader can just click into the text and change it, the same as
+    // any document. Every keystroke is tracked so an edited authority
+    // clause's badge can stop claiming an unqualified "Verified" —
+    // the citation below was checked against the original wording,
+    // not whatever this becomes.
     const body = document.createElement('p');
     body.className = 'body-text';
+    body.contentEditable = 'true';
+    body.spellcheck = false;
     body.textContent = clause.renderedBody;
+    body.addEventListener('input', () => {
+      state.edits[clause.id] = body.textContent;
+      state.editedClauseIds.add(clause.id);
+      markClauseEdited(clause, block);
+    });
     block.appendChild(body);
 
     const badge = renderBadge(clause);
@@ -197,6 +213,20 @@ function renderOutput() {
 
     container.appendChild(block);
   });
+}
+
+// Flips a verified clause's badge to an "edited" state the first time
+// its text changes. Citations and quotes stay visible underneath —
+// they're still real — but the label stops implying this exact
+// wording was the wording that got checked.
+function markClauseEdited(clause, block) {
+  if (clause.status !== 'verified') return;
+  const badge = block.querySelector('details.badge');
+  if (!badge || badge.classList.contains('edited')) return;
+  badge.classList.remove('verified');
+  badge.classList.add('edited');
+  const label = badge.querySelector('.badge-label');
+  if (label) label.textContent = 'Edited since verified — check the citation below still fits';
 }
 
 // The centerpiece: builds the sourcing badge for one clause. Returns
@@ -215,6 +245,7 @@ function renderBadge(clause) {
 
   const summary = document.createElement('summary');
   const label = document.createElement('span');
+  label.className = 'badge-label';
   label.textContent =
     clause.status === 'verified'
       ? `Verified · checked ${clause.checkedDate}`
@@ -297,11 +328,19 @@ function buildPlainText() {
   lines.push(`Prepared for ${employeeName || '—'} · ${companyName || '—'}`);
   lines.push('');
   assembled.forEach(clause => {
+    const edited = state.editedClauseIds.has(clause.id);
     lines.push(clause.title.toUpperCase());
-    lines.push(clause.renderedBody);
+    lines.push(edited ? state.edits[clause.id] : clause.renderedBody);
     if (clause.kind !== 'drafting') {
       lines.push('');
-      if (clause.status === 'verified') {
+      if (clause.status === 'verified' && edited) {
+        lines.push(`[Edited since verified on ${clause.checkedDate} — check the citation below still fits this wording]`);
+        (clause.citations || []).forEach(c => {
+          lines.push(`  "${c.quote}"`);
+          lines.push(`  — ${c.case}, ${c.cite} (${c.url})`);
+        });
+        if (clause.gap) lines.push(`  Known gap: ${clause.gap}`);
+      } else if (clause.status === 'verified') {
         lines.push(`[Verified — checked ${clause.checkedDate}]`);
         (clause.citations || []).forEach(c => {
           lines.push(`  "${c.quote}"`);
