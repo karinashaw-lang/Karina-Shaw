@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Groundtruth — Changelog</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .entry{
+      padding:24px 0;
+      border-bottom:1px solid var(--line);
+    }
+    .entry:last-of-type{ border-bottom:none; }
+    .entry-meta{
+      display:flex;
+      align-items:baseline;
+      gap:10px;
+      margin-bottom:10px;
+      flex-wrap:wrap;
+    }
+    .entry-date{
+      font-family:'IBM Plex Mono', monospace;
+      font-size:11.5px;
+      letter-spacing:0.04em;
+      color:var(--ink-soft);
+    }
+    .entry-clause{
+      font-family:'IBM Plex Mono', monospace;
+      font-size:11.5px;
+      letter-spacing:0.02em;
+      background:var(--surface-2);
+      color:var(--ink-soft);
+      padding:2px 8px;
+      border-radius:999px;
+    }
+    .entry h3{
+      font-family:'Fraunces', Georgia, serif;
+      font-weight:600;
+      font-size:19px;
+      margin:0 0 10px;
+    }
+    .entry-block{ margin:0 0 10px; }
+    .entry-block b{
+      font-family:'IBM Plex Mono', monospace;
+      font-size:11px;
+      letter-spacing:0.05em;
+      text-transform:uppercase;
+      color:var(--flag);
+      display:block;
+      margin-bottom:4px;
+    }
+    .entry-block.fixed b{ color:var(--accent-ink); }
+    .entry-sources{
+      display:flex;
+      flex-direction:column;
+      gap:3px;
+      margin-top:10px;
+      font-family:'IBM Plex Mono', monospace;
+      font-size:12px;
+    }
+    .entry-sources a{ text-decoration-color:var(--accent); text-underline-offset:3px; }
+    .policy-note{
+      background:var(--accent-soft);
+      border:1px solid var(--accent);
+      border-radius:6px;
+      padding:16px 18px;
+      margin:0 0 32px;
+      font-size:14.5px;
+    }
+    .policy-note b{ color:var(--accent-ink); }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <div class="topbar">
+      <a href="index.html" style="text-decoration:none; color:inherit;">
+        <div class="wordmark">Ground<span>truth</span></div>
+      </a>
+      <div class="tagline">Changelog</div>
+    </div>
+
+    <h1>What changed, and why</h1>
+    <p class="lede">Every entry below is a real defect this project found in its own content, and the fix — not a marketing page, an audit trail. Most legal-document sites don't publish this because they don't have it: nothing gets cited, so nothing can be checked, so nothing gets caught. <a href="index.html">&larr; Back to Groundtruth</a></p>
+
+    <div class="policy-note">
+      <b>A note on one entry below:</b> in late August 2026 this project made a deliberate policy decision to keep clause wording jurisdiction-general rather than naming specific states as examples in the document text — the underlying real citations stayed, but several clauses were reworded and one (a California-specific independent-contractor test) was removed outright. That's recorded here too, since it changed what several "Verified" badges actually say.
+    </div>
+
+    <div id="entries">
+
+      <div class="entry">
+        <div class="entry-meta">
+          <span class="entry-date">2026-08-29</span>
+          <span class="entry-clause">Reasonable Accommodation · Employee Handbook</span>
+        </div>
+        <h3>A clause overstated the law it cited</h3>
+        <div class="entry-block">
+          <b>What we found</b>
+          The clause claimed a bad-faith failure to engage in the interactive process "can itself be a basis for liability, independent of whether an accommodation actually existed." Reading the clause's own cited case in full — not just the fragment already quoted — surfaced a four-part test whose fourth element is exactly what the clause said didn't matter: the employee generally still has to show a reasonable accommodation could have been identified but for the employer's lack of good faith.
+        </div>
+        <div class="entry-block fixed">
+          <b>What changed</b>
+          Rewrote the clause to state the accommodation requirement accurately, rewrote the gap to explain the correction, and added the four-part-test quote itself as a supporting citation.
+        </div>
+        <div class="entry-sources">
+          <a href="https://www.courtlistener.com/opinion/765245/katherine-l-taylor-v-phoenixville-school-district/" target="_blank" rel="noopener noreferrer">Taylor v. Phoenixville School District, 184 F.3d 296 (3d Cir. 1999)</a>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-meta">
+          <span class="entry-date">2026-08-29</span>
+          <span class="entry-clause">Work Authorization · Employee Handbook</span>
+        </div>
+        <h3>An anti-discrimination claim didn't disclose who it doesn't cover</h3>
+        <div class="entry-block">
+          <b>What we found</b>
+          The clause said the same I-9 documentary requirements apply "to every employee, regardless of national origin or citizenship status." Reading past the already-cited fragment of the statute turned up 8 U.S.C. §1324b(a)(2)(A): employers with three or fewer employees are exempt from this anti-discrimination provision entirely. Separately, the "three business days" I-9 deadline itself isn't universal — hires for under three business days require same-day completion.
+        </div>
+        <div class="entry-block fixed">
+          <b>What changed</b>
+          Added both provisions as citations and extended the gap to disclose the small-employer exemption and the same-day exception.
+        </div>
+        <div class="entry-sources">
+          <a href="https://www.law.cornell.edu/uscode/text/8/1324b" target="_blank" rel="noopener noreferrer">8 U.S.C. § 1324b(a)(2)(A)</a>
+          <a href="https://www.law.cornell.edu/cfr/text/8/274a.2" target="_blank" rel="noopener noreferrer">8 C.F.R. § 274a.2(b)(1)(iii)</a>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-meta">
+          <span class="entry-date">2026-08-29</span>
+          <span class="entry-clause">Timekeeping · Employee Handbook</span>
+        </div>
+        <h3>A recordkeeping claim was citing the wrong statute</h3>
+        <div class="entry-block">
+          <b>What we found</b>
+          The clause's recordkeeping-duty sentence ("non-exempt employees must record all time worked") was backed only by 29 U.S.C. §207(a)(1) — the overtime pay-rate rule, not the actual recordkeeping duty, which is a separate provision.
+        </div>
+        <div class="entry-block fixed">
+          <b>What changed</b>
+          Fetched 29 U.S.C. §211(c) directly and added it as the precise citation for the recordkeeping sentence; kept §207(a)(1) for the underlying pay obligation it still supports.
+        </div>
+        <div class="entry-sources">
+          <a href="https://www.law.cornell.edu/uscode/text/29/211" target="_blank" rel="noopener noreferrer">29 U.S.C. § 211(c)</a>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-meta">
+          <span class="entry-date">2026-08-29</span>
+          <span class="entry-clause">Ownership of Work Product · Invention Assignment Agreement</span>
+        </div>
+        <h3>A copyright citation named the wrong provision</h3>
+        <div class="entry-block">
+          <b>What we found</b>
+          17 U.S.C. §101 only defines the term "work made for hire" — it doesn't vest anything. The provision that actually vests ownership in the employer, and carries its own written-instrument carve-out, is §201(b).
+        </div>
+        <div class="entry-block fixed">
+          <b>What changed</b>
+          Added §201(b) as a citation and explained in the gap why a written assignment still matters even for work that already qualifies as made for hire.
+        </div>
+        <div class="entry-sources">
+          <a href="https://www.law.cornell.edu/uscode/text/17/201" target="_blank" rel="noopener noreferrer">17 U.S.C. § 201(b)</a>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-meta">
+          <span class="entry-date">2026-08-29</span>
+          <span class="entry-clause">Continuation of Health Coverage (COBRA) · Termination Letter</span>
+        </div>
+        <h3>A clause promised continuation coverage with no actual duration</h3>
+        <div class="entry-block">
+          <b>What we found</b>
+          The clause said COBRA coverage lasts "temporarily" without ever stating how long — a vague promise instead of the concrete, checkable fact the rest of this project holds itself to.
+        </div>
+        <div class="entry-block fixed">
+          <b>What changed</b>
+          Fetched the actual maximum-coverage-period provision and rewrote the clause to state the real figure: 18 months, extendable to 36 for a second qualifying event.
+        </div>
+        <div class="entry-sources">
+          <a href="https://www.law.cornell.edu/uscode/text/29/1162" target="_blank" rel="noopener noreferrer">29 U.S.C. § 1162(2)(A)(i)</a>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-meta">
+          <span class="entry-date">2026-08-29</span>
+          <span class="entry-clause">Accrued Vacation / PTO · Termination Letter</span>
+        </div>
+        <h3>A "can't be forfeited" rule didn't distinguish forfeiture from a cap</h3>
+        <div class="entry-block">
+          <b>What we found</b>
+          The clause said accrued vacation, once vested, "can't be forfeited." True — but that's often misread as meaning an employer can't cap how much vacation accrues going forward, which is a different question with a different answer.
+        </div>
+        <div class="entry-block fixed">
+          <b>What changed</b>
+          Added a case confirming the actual line: forbidding forfeiture of time already earned doesn't require unlimited future accrual — a policy that stops the clock on earning more once a threshold is banked is a different thing from taking away time already vested.
+        </div>
+        <div class="entry-sources">
+          <a href="https://www.courtlistener.com/opinion/2297663/boothby-v-atlas-mechanical-inc/" target="_blank" rel="noopener noreferrer">Boothby v. Atlas Mechanical, Inc., 6 Cal. App. 4th 1595 (1992)</a>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-meta">
+          <span class="entry-date">2026-08-29</span>
+          <span class="entry-clause">Independent Contractor Agreement — policy change</span>
+        </div>
+        <h3>Generalized away from named-state examples</h3>
+        <div class="entry-block">
+          <b>What changed</b>
+          Several clauses across the corpus previously illustrated real state-law splits by naming specific states (a California test, an Ohio-vs-Washington split, a Montana exception). On explicit direction to keep the project general rather than state-specific, those clauses were reworded to state the general principle without picking an illustrative state, and one clause whose entire content was a single state's specific rule — with no general version worth keeping — was removed rather than watered down into something that no longer said anything real.
+        </div>
+        <div class="entry-block">
+          <b>The honest tradeoff</b>
+          This is a real loss of specificity, not a pure improvement. A clause that used to name a state's actual exception now says "this varies — check your state," which is true but less useful than the version that named the exception. Recorded here rather than quietly dropped.
+        </div>
+      </div>
+
+    </div>
+
+    <footer class="hint">This page lists a representative set of defects found and fixed during this project's own verification passes — not an exhaustive commit log. Every clause's own sourcing badge, inside each document, is the primary record.</footer>
+  </div>
+</body>
+</html>
