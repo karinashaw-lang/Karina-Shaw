@@ -102,7 +102,8 @@ function renderOutput() {
     body.textContent = clause.renderedBody;
     block.appendChild(body);
 
-    // Sourcing badge attaches here in step 8.
+    const badge = renderBadge(clause);
+    if (badge) block.appendChild(badge);
 
     container.appendChild(block);
   });
