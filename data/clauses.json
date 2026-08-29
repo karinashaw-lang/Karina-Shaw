@@ -450,7 +450,7 @@
       "status": "verified",
       "checkedDate": "2026-08-29",
       "body": "This agreement can define {{companyName}}'s confidential information broadly — the parties are free to agree on what counts. But if {{companyName}} ever needs to enforce protection through trade secret law specifically, rather than just this contract, only information that actually meets the legal definition qualifies: information whose owner has taken reasonable measures to keep it secret, and that has independent economic value because it isn't generally known or easily discovered by others who could profit from it. Information that's already public, or that {{employeeName}} already knew before this agreement, doesn't become a trade secret just because this agreement calls it confidential.",
-      "gap": "This describes the federal Defend Trade Secrets Act's definition specifically. State trade secret law (most states have adopted a version of the Uniform Trade Secrets Act) uses a similar two-part test, but this clause was checked against the federal definition only, not each state's exact statutory wording.",
+      "gap": "This describes the federal Defend Trade Secrets Act's definition specifically. State trade secret law (most states have adopted a version of the Uniform Trade Secrets Act) uses a similar two-part test, but this clause was checked against the federal definition only, not each state's exact statutory wording. Separately, this definition doesn't override a well-established doctrine outside the statute's text: an employee's own general skill, knowledge, and experience — the things they'd know how to do regardless of which employer taught it to them — aren't the employer's trade secret just because the employee developed or sharpened them on this job, and courts have declined to read confidentiality agreements to stop someone from taking that general know-how to their next employer.",
       "citations": [
         {
           "case": "18 U.S.C. § 1839(3) (Cornell LII text)",
@@ -463,6 +463,12 @@
           "cite": "978 F.3d 653 (9th Cir. 2020)",
           "url": "https://www.courtlistener.com/opinion/4796836/inteliclear-llc-v-etc-global-holdings/",
           "quote": "the definition of trade secret consists of three elements: (1) information, (2) that is valuable because it is unknown to others, and (3) that the owner has attempted to keep secret."
+        },
+        {
+          "case": "Analog Devices, Inc. v. Michalski",
+          "cite": "157 N.C. App. 462, 579 S.E.2d 449 (2003)",
+          "url": "https://www.courtlistener.com/opinion/1304930/analog-devices-inc-v-michalski/",
+          "quote": "both Michalski and Kamik have a great deal of general skill and knowledge as engineers who have studied for and worked in this area for years. These skills are not specific to the techniques and processes used by Analog, and both engineers are free to market those skills to competitors."
         }
       ]
     },
@@ -473,7 +479,7 @@
       "status": "verified",
       "checkedDate": "2026-08-29",
       "body": "Federal law requires {{companyName}} to give {{employeeName}} this notice: {{employeeName}} cannot be held criminally or civilly liable under federal or state trade secret law for disclosing a trade secret in confidence to a government official or an attorney, solely to report or investigate a suspected violation of law, or in a court filing made under seal. This notice is here because federal law requires it in any agreement governing the use of confidential information — an employer that omits it loses the right to certain enhanced damages and attorney's fees against this recipient in a future trade secret lawsuit, even one unrelated to whistleblowing.",
-      "gap": "The immunity itself only covers disclosures made to report or investigate a suspected legal violation, or made under seal in litigation — it doesn't protect using a trade secret for any other purpose, including ordinary competition after leaving the company. No case law addressing enforcement of this specific notice-and-consequence provision was found in this research; the statute's own text is unambiguous about the notice requirement and its consequence, so the statute stands as the source here without a corroborating case.",
+      "gap": "The immunity itself only covers disclosures made to report or investigate a suspected legal violation, or made under seal in litigation — it doesn't protect using a trade secret for any other purpose, including ordinary competition after leaving the company. Two related points the notice above doesn't spell out: an employer can satisfy this same notice requirement without putting it in a contract at all, by cross-referencing a separate policy document that states the employer's reporting policy instead; and someone who is retaliated against for reporting a suspected violation has a further right beyond the immunity itself — they may share the trade secret with their own attorney and use it in that retaliation lawsuit, if the filing is made under seal. No case law addressing enforcement of this specific notice-and-consequence provision was found in this research; the statute's own text is unambiguous about the notice requirement and its consequence, so the statute stands as the source here without a corroborating case.",
       "citations": [
         {
           "case": "18 U.S.C. § 1833(b)(1) (Cornell LII text)",
@@ -486,6 +492,18 @@
           "cite": "U.S. Code, Defend Trade Secrets Act, notice requirement and consequence",
           "url": "https://www.law.cornell.edu/uscode/text/18/1833",
           "quote": "An employer shall provide notice of the immunity set forth in this subsection in any contract or agreement with an employee that governs the use of a trade secret or other confidential information. ... If an employer does not comply with the notice requirement in subparagraph (A), the employer may not be awarded exemplary damages or attorney fees under subparagraph (C) or (D) of section 1836(b)(3) in an action against an employee to whom notice was not provided."
+        },
+        {
+          "case": "18 U.S.C. § 1833(b)(3)(B) (Cornell LII text)",
+          "cite": "U.S. Code, Defend Trade Secrets Act, policy-document alternative to contract notice",
+          "url": "https://www.law.cornell.edu/uscode/text/18/1833",
+          "quote": "An employer shall be considered to be in compliance with the notice requirement in subparagraph (A) if the employer provides a cross-reference to a policy document provided to the employee that sets forth the employer’s reporting policy for a suspected violation of law."
+        },
+        {
+          "case": "18 U.S.C. § 1833(b)(2) (Cornell LII text)",
+          "cite": "U.S. Code, Defend Trade Secrets Act, use of trade secret information in an anti-retaliation lawsuit",
+          "url": "https://www.law.cornell.edu/uscode/text/18/1833",
+          "quote": "An individual who files a lawsuit for retaliation by an employer for reporting a suspected violation of law may disclose the trade secret to the attorney of the individual and use the trade secret information in the court proceeding, if the individual— (A) files any document containing the trade secret under seal; and (B) does not disclose the trade secret, except pursuant to court order."
         }
       ]
     },
@@ -520,13 +538,19 @@
       "status": "verified",
       "checkedDate": "2026-08-29",
       "body": "Whether this restriction is enforceable at all depends heavily on the state whose law governs it. Some states void nearly any contract restraining someone from a lawful profession, trade, or business, with only narrow exceptions like a sale of a business — a few have gone further and made it unlawful for an employer to even include a noncompete clause that doesn't fit one of those exceptions. Most other states instead ask whether the restriction is reasonable: no broader than necessary to protect the employer's legitimate interests, not an undue hardship on {{employeeName}}, and not injurious to the public. Which approach applies, and how strictly, depends on the state.",
-      "gap": "This clause draws on one state's verified statutes as real evidence that an outright ban approach exists — not a claim about which state's law actually governs this agreement. Several states restrict or ban most employee noncompetes by statute to varying degrees, and this document doesn't catalog them. Even in reasonableness-test states, courts differ on the remedy for a restriction that turns out to be broader than reasonable: some will narrow (\"blue pencil\") it down to what's enforceable, others will void the whole clause and refuse to rewrite it. Which approach a given state's courts take isn't addressed here.",
+      "gap": "This clause draws on one state's verified statutes as real evidence that an outright ban approach exists — not a claim about which state's law actually governs this agreement. Several states restrict or ban most employee noncompetes by statute to varying degrees, and this document doesn't catalog them. In at least one such ban-state, the statute is explicit that narrow drafting doesn't save a noncompete from the ban — a restriction void under this approach stays void \"no matter how narrowly tailored,\" so tightening the scope of a restricted clause isn't a workaround where this approach applies. Even in reasonableness-test states, courts differ on the remedy for a restriction that turns out to be broader than reasonable: some will narrow (\"blue pencil\") it down to what's enforceable — as the case below did — while others will void the whole clause and refuse to rewrite it. Which approach a given state's courts take isn't addressed here.",
       "citations": [
         {
-          "case": "Cal. Bus. & Prof. Code § 16600 (California Legislative Information text)",
+          "case": "Cal. Bus. & Prof. Code § 16600(a) (California Legislative Information text)",
           "cite": "California Business and Professions Code",
           "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&sectionNum=16600.",
           "quote": "Except as provided in this chapter, every contract by which anyone is restrained from engaging in a lawful profession, trade, or business of any kind is to that extent void."
+        },
+        {
+          "case": "Cal. Bus. & Prof. Code § 16600(b)(1) (California Legislative Information text)",
+          "cite": "California Business and Professions Code, narrow-tailoring not a defense",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&sectionNum=16600.",
+          "quote": "This section shall be read broadly, in accordance with Edwards v. Arthur Andersen LLP (2008) 44 Cal.4th 937, to void the application of any noncompete agreement in an employment context, or any noncompete clause in an employment contract, no matter how narrowly tailored, that does not satisfy an exception in this chapter."
         },
         {
           "case": "Cal. Bus. & Prof. Code § 16600.1(a) (California Legislative Information text)",
@@ -539,6 +563,12 @@
           "cite": "42 Ohio St. 2d 21 (1975)",
           "url": "https://www.courtlistener.com/opinion/6865409/raimonde-v-van-vlerah/",
           "quote": "A covenant restraining an employee from competing with his former employer upon termination of employment is reasonable if it is no greater than is required for the protection of the employer, does not impose undue hardship on the employee, and is not injurious to the public."
+        },
+        {
+          "case": "Raimonde v. Van Vlerah",
+          "cite": "42 Ohio St. 2d 21 (1975) — the blue-pencil remedy",
+          "url": "https://www.courtlistener.com/opinion/6865409/raimonde-v-van-vlerah/",
+          "quote": "We hold that a covenant not to compete which imposes unreasonable restrictions upon an employee will be enforced to the extent necessary to protect the employer’s legitimate interests. ... Courts are empowered to modify or amend employment agreements to achieve such results."
         }
       ]
     },
@@ -549,7 +579,7 @@
       "status": "verified",
       "checkedDate": "2026-08-29",
       "body": "If {{employeeName}} is asked to sign this agreement after employment with {{companyName}} has already started, rather than at hiring, some states require something of value beyond continued employment for the agreement to be enforceable — and courts around the country don't agree on this. Some courts have held that continuing to employ an at-will employee is itself enough consideration to support a noncompete agreement signed later. Other courts have held the opposite: that continued at-will employment alone isn't enough, and something further — a raise, a bonus, a new role — is needed for the later agreement to be enforceable. Which rule applies depends on the state whose law governs this agreement.",
-      "gap": "This document doesn't collect a governing-state field, so which side of this split applies can't be resolved automatically here. Courts have gone both ways on this exact question; check the rule for the specific state involved before relying on continued employment alone as sufficient consideration for an agreement signed after hire.",
+      "gap": "This document doesn't collect a governing-state field, so which side of this split applies can't be resolved automatically here. Courts have gone both ways on this exact question, and this document doesn't take a position on which rule applies to any specific agreement. One more limit worth naming: even in a state that follows the continued-employment-is-enough rule, that court's own opinion is explicit that finding consideration doesn't by itself make the noncompete enforceable — a noncompetition agreement still separately has to satisfy whatever reasonableness or statutory test the state applies. Consideration and enforceability are two different questions, and satisfying one doesn't answer the other.",
       "citations": [
         {
           "case": "Lake Land Employment Group of Akron, LLC v. Columber",
@@ -590,7 +620,7 @@
       "status": "verified",
       "checkedDate": "2026-08-29",
       "body": "If {{employeeName}} is 40 or older, federal law imposes specific requirements before a release of age-discrimination claims counts as valid: it must be written in plain language, specifically refer to age-discrimination rights, not attempt to waive any claims that arise after signing, be exchanged for something of value beyond what {{employeeName}} is already owed, advise {{employeeName}} in writing to consult an attorney before signing, and give {{employeeName}} at least 21 days to consider it — 45 days if this is part of a larger group termination or exit-incentive program — plus 7 days to revoke it after signing. Missing any of these requirements makes the age-discrimination release invalid, even if {{employeeName}} keeps the severance payment.",
-      "gap": "This release also cannot lawfully bar the employee from filing a charge with, or participating in an investigation by, the Equal Employment Opportunity Commission — federal law says no waiver may interfere with that right, no matter how broadly this agreement is worded. The 21-day and 45-day periods are minimums that depend on whether this is an individual separation or part of a larger group termination or exit-incentive program; this document doesn't determine which applies here — confirm that before relying on the shorter period.",
+      "gap": "This release also cannot lawfully bar the employee from filing a charge with, or participating in an investigation by, the Equal Employment Opportunity Commission — federal law says no waiver may interfere with that right, no matter how broadly this agreement is worded. The 21-day and 45-day periods are minimums that depend on whether this is an individual separation or part of a larger group termination or exit-incentive program, and this document doesn't determine which applies to any specific agreement. Group and exit-incentive terminations carry a further requirement this clause doesn't state: the employer must also give written disclosure, at the start of the consideration period, of the group or class covered, the eligibility factors and time limits for the program, and the job titles and ages of everyone eligible or selected for it alongside everyone in the same job classification or unit who wasn't — a disclosure obligation with its own, separate compliance history apart from the 45-day period itself. Separately, a waiver settling an age-discrimination charge already filed with the EEOC or a lawsuit already filed in court follows a lighter set of requirements than the ones stated above — only a reasonable period to consider it, not the fixed 21/45-day and 7-day periods — because paragraph (f)(2) of this statute, not (f)(1), governs that narrower situation.",
       "citations": [
         {
           "case": "29 U.S.C. § 626(f)(1)(A)-(E) (Cornell LII text)",
@@ -609,6 +639,18 @@
           "cite": "U.S. Code, Older Workers Benefit Protection Act, EEOC-participation carve-out",
           "url": "https://www.law.cornell.edu/uscode/text/29/626",
           "quote": "No waiver agreement may affect the Commission's rights and responsibilities to enforce this chapter. No waiver may be used to justify interfering with the protected right of an employee to file a charge or participate in an investigation or proceeding conducted by the Commission."
+        },
+        {
+          "case": "29 U.S.C. § 626(f)(1)(H) (Cornell LII text)",
+          "cite": "U.S. Code, Older Workers Benefit Protection Act, group-termination disclosure requirement",
+          "url": "https://www.law.cornell.edu/uscode/text/29/626",
+          "quote": "if a waiver is requested in connection with an exit incentive or other employment termination program offered to a group or class of employees, the employer (at the commencement of the period specified in subparagraph (F)) informs the individual in writing in a manner calculated to be understood by the average individual eligible to participate, as to— (i) any class, unit, or group of individuals covered by such program, any eligibility factors for such program, and any time limits applicable to such program; and (ii) the job titles and ages of all individuals eligible or selected for the program, and the ages of all individuals in the same job classification or organizational unit who are not eligible or selected for the program."
+        },
+        {
+          "case": "29 U.S.C. § 626(f)(2) (Cornell LII text)",
+          "cite": "U.S. Code, Older Workers Benefit Protection Act, lighter rule for settling an already-filed charge or lawsuit",
+          "url": "https://www.law.cornell.edu/uscode/text/29/626",
+          "quote": "A waiver in settlement of a charge filed with the Equal Employment Opportunity Commission, or an action filed in court by the individual or the individual’s representative, alleging age discrimination of a kind prohibited under section 623 or 633a of this title may not be considered knowing and voluntary unless at a minimum— (A) subparagraphs (A) through (E) of paragraph (1) have been met; and (B) the individual is given a reasonable period of time within which to consider the settlement agreement."
         },
         {
           "case": "Oubre v. Entergy Operations, Inc.",
