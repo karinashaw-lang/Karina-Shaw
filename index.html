@@ -7,7 +7,40 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- filled in step 5 onward -->
+  <div class="app">
+    <div class="topbar">
+      <div class="wordmark">Ground<span>truth</span></div>
+      <div class="tagline">Sourced, not asserted</div>
+    </div>
+
+    <section id="screen-picker" class="screen active">
+      <h1>Choose a document</h1>
+      <p class="lede">Every clause below either links to a real source, or says plainly that it hasn't been checked yet.</p>
+      <div id="doc-list"></div>
+    </section>
+
+    <section id="screen-wizard" class="screen">
+      <h1 id="wizard-title"></h1>
+      <p class="lede" id="wizard-lede"></p>
+      <form class="wizard" id="wizard-form">
+        <div id="wizard-fields"></div>
+        <div class="actions">
+          <button type="button" class="secondary" id="wizard-back">Back</button>
+          <button type="submit" class="primary">Generate document</button>
+        </div>
+      </form>
+    </section>
+
+    <section id="screen-output" class="screen">
+      <h1>Your document</h1>
+      <div class="doc-meta" id="output-meta"></div>
+      <div id="output-clauses"></div>
+      <div class="actions">
+        <button type="button" class="secondary" id="output-back">Start over</button>
+      </div>
+      <footer class="hint">Groundtruth v1 demo — clause assembly and sourcing badges land in steps 6–8.</footer>
+    </section>
+  </div>
   <script src="app.js"></script>
 </body>
 </html>
