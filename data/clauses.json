@@ -815,6 +815,98 @@
       "title": "Acknowledgment",
       "kind": "drafting",
       "body": "Please sign below to indicate your understanding of and agreement to the terms above.\n\nEmployee: {{employeeName}}\nDate: _______________"
+    },
+    {
+      "id": "warn_coverage",
+      "title": "Whether This Notice Is Required",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-08-29",
+      "body": "Federal law requires this notice only if {{companyName}} is a covered employer — generally, a business with 100 or more employees not counting part-time employees — and only if the job losses meet one of two federal thresholds: a \"plant closing\" (50 or more employees losing their jobs at a single site within any 30-day period), or a \"mass layoff\" (a smaller-scale reduction that still hits at least a third of the workforce at that site and at least 50 employees, or any reduction hitting 500 or more employees regardless of percentage).",
+      "gap": "A number of states have their own layoff-notice laws — often called \"mini-WARN\" or \"baby WARN\" acts — with employee-count and layoff-size thresholds that can be lower than the federal ones described here. A business too small to trigger the federal law described in this clause can still be covered by a state law this document doesn't catalog.",
+      "citations": [
+        {
+          "case": "29 U.S.C. § 2101(a)(1) (Cornell LII text)",
+          "cite": "U.S. Code, Worker Adjustment and Retraining Notification Act, covered-employer definition",
+          "url": "https://www.law.cornell.edu/uscode/text/29/2101",
+          "quote": "the term “employer” means any business enterprise that employs— (A) 100 or more employees, excluding part-time employees; or (B) 100 or more employees who in the aggregate work at least 4,000 hours per week (exclusive of hours of overtime)"
+        },
+        {
+          "case": "29 U.S.C. § 2101(a)(2)-(3) (Cornell LII text)",
+          "cite": "U.S. Code, Worker Adjustment and Retraining Notification Act, \"plant closing\" and \"mass layoff\" definitions",
+          "url": "https://www.law.cornell.edu/uscode/text/29/2101",
+          "quote": "the term “plant closing” means the permanent or temporary shutdown of a single site of employment, or one or more facilities or operating units within a single site of employment, if the shutdown results in an employment loss at the single site of employment during any 30-day period for 50 or more employees excluding any part-time employees; (3) the term “mass layoff” means a reduction in force which— (A) is not the result of a plant closing; and (B) results in an employment loss at the single site of employment during any 30-day period for— (i) (I) at least 33 percent of the employees (excluding any part-time employees); and (II) at least 50 employees (excluding any part-time employees); or (ii) at least 500 employees (excluding any part-time employees)"
+        }
+      ]
+    },
+    {
+      "id": "warn_notice_requirement",
+      "title": "The 60-Day Notice Requirement",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-08-29",
+      "body": "If the thresholds above are met, federal law requires {{companyName}} to give written notice at least 60 days before {{terminationDate}}, the date the closing or layoff is expected to take effect. Notice goes to each affected employee directly, or to their union representative if one exists.",
+      "gap": "The same federal law also requires separate notice to the state's rapid-response dislocated-worker unit and to the chief elected official of the local government where the closing or layoff will happen — this document is the notice to the employee described above, not those separate filings.",
+      "citations": [
+        {
+          "case": "29 U.S.C. § 2102(a) (Cornell LII text)",
+          "cite": "U.S. Code, Worker Adjustment and Retraining Notification Act, 60-day notice requirement",
+          "url": "https://www.law.cornell.edu/uscode/text/29/2102",
+          "quote": "An employer shall not order a plant closing or mass layoff until the end of a 60-day period after the employer serves written notice of such an order— (1) to each representative of the affected employees as of the time of the notice or, if there is no such representative at that time, to each affected employee; and (2) to the State or entity designated by the State to carry out rapid response activities under section 3174(a)(2)(A) of this title, and the chief elected official of the unit of local government within which such closing or layoff is to occur."
+        }
+      ]
+    },
+    {
+      "id": "warn_exceptions",
+      "title": "When Less Than 60 Days Is Allowed",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-08-29",
+      "body": "Federal law allows {{companyName}} to give less than 60 days' notice in two situations: while actively and in good faith seeking capital or business that would have avoided the shutdown, and reasonably believing that giving notice earlier would have prevented that; or when the closing or layoff is caused by business circumstances that weren't reasonably foreseeable at the time notice would otherwise have been due. A third situation — a closing or layoff caused by a natural disaster — is different: the statute says no notice at all is required for that one.",
+      "gap": "The statute's own text creates some tension specifically around the natural-disaster exception: the duty to give \"as much notice as is practicable,\" quoted below, is written to apply to the whole exceptions subsection — which includes the natural-disaster provision — even though that provision separately says no notice is required at all. This document states both provisions as written rather than resolving that tension for a specific situation.",
+      "citations": [
+        {
+          "case": "29 U.S.C. § 2102(b)(1)-(2) (Cornell LII text)",
+          "cite": "U.S. Code, Worker Adjustment and Retraining Notification Act, exceptions to the 60-day period",
+          "url": "https://www.law.cornell.edu/uscode/text/29/2102",
+          "quote": "An employer may order the shutdown of a single site of employment before the conclusion of the 60-day period if as of the time that notice would have been required the employer was actively seeking capital or business which, if obtained, would have enabled the employer to avoid or postpone the shutdown and the employer reasonably and in good faith believed that giving the notice required would have precluded the employer from obtaining the needed capital or business. ... An employer may order a plant closing or mass layoff before the conclusion of the 60-day period if the closing or mass layoff is caused by business circumstances that were not reasonably foreseeable as of the time that notice would have been required. ... No notice under this chapter shall be required if the plant closing or mass layoff is due to any form of natural disaster, such as a flood, earthquake, or the drought currently ravaging the farmlands of the United States."
+        },
+        {
+          "case": "29 U.S.C. § 2102(b)(3) (Cornell LII text)",
+          "cite": "U.S. Code, Worker Adjustment and Retraining Notification Act, reduced-notice duty",
+          "url": "https://www.law.cornell.edu/uscode/text/29/2102",
+          "quote": "An employer relying on this subsection shall give as much notice as is practicable and at that time shall give a brief statement of the basis for reducing the notification period."
+        }
+      ]
+    },
+    {
+      "id": "warn_liability",
+      "title": "What Happens If Notice Isn't Given",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-08-29",
+      "body": "An employer that orders a plant closing or mass layoff without giving the notice described above is liable to each affected employee for back pay and benefits for each day of the violation, up to 60 days — capped at half the number of days the employee actually worked for {{companyName}}, if that's less. A violation involving a local government can also draw a civil penalty of up to $500 per day.",
+      "gap": "This liability is reduced by wages the employer actually paid during the violation period, any voluntary payment not otherwise legally required, and certain third-party benefit payments made on the employee's behalf — so a company that pays some form of transition pay during a botched notice period doesn't necessarily face this liability on top of that, dollar for dollar. A court can also reduce the liability or penalty if the employer proves the violation was a good-faith mistake made on reasonable grounds for believing it wasn't a violation at all, and can award the prevailing party attorney's fees.",
+      "citations": [
+        {
+          "case": "29 U.S.C. § 2104(a)(1) (Cornell LII text)",
+          "cite": "U.S. Code, Worker Adjustment and Retraining Notification Act, back pay and benefits liability",
+          "url": "https://www.law.cornell.edu/uscode/text/29/2104",
+          "quote": "Any employer who orders a plant closing or mass layoff in violation of section 2102 of this title shall be liable to each aggrieved employee who suffers an employment loss as a result of such closing or layoff for— (A) back pay for each day of violation at a rate of compensation not less than the higher of— (i) the average regular rate received by such employee during the last 3 years of the employee’s employment; or (ii) the final regular rate received by such employee; and (B) benefits under an employee benefit plan described in section 1002(3) of this title, including the cost of medical expenses incurred during the employment loss which would have been covered under an employee benefit plan if the employment loss had not occurred. Such liability shall be calculated for the period of the violation, up to a maximum of 60 days, but in no event for more than one-half the number of days the employee was employed by the employer."
+        },
+        {
+          "case": "29 U.S.C. § 2104(a)(2)-(4) (Cornell LII text)",
+          "cite": "U.S. Code, Worker Adjustment and Retraining Notification Act, offsets, local-government penalty, and good-faith reduction",
+          "url": "https://www.law.cornell.edu/uscode/text/29/2104",
+          "quote": "The amount for which an employer is liable under paragraph (1) shall be reduced by— (A) any wages paid by the employer to the employee for the period of the violation; (B) any voluntary and unconditional payment by the employer to the employee that is not required by any legal obligation; and (C) any payment by the employer to a third party or trustee (such as premiums for health benefits or payments to a defined contribution pension plan) on behalf of and attributable to the employee for the period of the violation. ... Any employer who violates the provisions of section 2102 of this title with respect to a unit of local government shall be subject to a civil penalty of not more than $500 for each day of such violation, except that such penalty shall not apply if the employer pays to each aggrieved employee the amount for which the employer is liable to that employee within 3 weeks from the date the employer orders the shutdown or layoff. ... If an employer which has violated this chapter proves to the satisfaction of the court that the act or omission that violated this chapter was in good faith and that the employer had reasonable grounds for believing that the act or omission was not a violation of this chapter the court may, in its discretion, reduce the amount of the liability or penalty provided for in this section."
+        }
+      ]
+    },
+    {
+      "id": "warn_ack",
+      "title": "Acknowledgment",
+      "kind": "drafting",
+      "body": "Please sign below to acknowledge receipt of this notice.\n\nEmployee: {{employeeName}}\nDate: _______________"
     }
   ]
 }

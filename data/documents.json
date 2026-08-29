@@ -352,5 +352,40 @@
     "categories": [
       "Hiring"
     ]
+  },
+  {
+    "id": "warn_notice",
+    "title": "WARN Act Layoff Notice",
+    "description": "The federal 60-day advance-notice requirement for a covered plant closing or mass layoff — who it applies to, when less notice is allowed, and what happens if it isn't given.",
+    "clauseOrder": [
+      "warn_coverage",
+      "warn_notice_requirement",
+      "warn_exceptions",
+      "warn_liability",
+      "warn_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "terminationDate",
+        "label": "Expected closing / layoff date",
+        "placeholder": "November 15, 2026",
+        "required": true
+      }
+    ],
+    "categories": [
+      "Ending employment"
+    ]
   }
 ]
