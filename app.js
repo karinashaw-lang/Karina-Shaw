@@ -322,6 +322,16 @@ function preparedForLine(answers) {
   if (person && company) return `Prepared for ${person} · ${company}`;
   if (person) return `Prepared for ${person}`;
   if (company) return `Prepared for ${company}`;
+
+  // Neither of the two common id pairs above applies to this document's
+  // fields (e.g. a lease's landlordName/tenantName) — fall back to the
+  // document's own field order rather than hardcoding every future
+  // document family's field ids here too.
+  const values = (state.document.fields || [])
+    .map(f => answers[f.id])
+    .filter(Boolean);
+  if (values.length >= 2) return `Prepared for ${values[0]} · ${values[1]}`;
+  if (values.length === 1) return `Prepared for ${values[0]}`;
   return 'Prepared for —';
 }
 

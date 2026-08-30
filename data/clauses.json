@@ -2091,6 +2091,129 @@
       "title": "Signatures",
       "kind": "drafting",
       "body": "Agreed to by all current owners:\n\nOwner: _______________________ Date: _______________\nOwner: _______________________ Date: _______________\nOwner: _______________________ Date: _______________\n(Add additional signature lines as needed.)"
+    },
+    {
+      "id": "lease_parties_property",
+      "title": "Parties and Property",
+      "kind": "drafting",
+      "body": "This is a residential lease agreement between {{landlordName}} (\"Landlord\") and {{tenantName}} (\"Tenant\") for the property at {{propertyAddress}}. The lease term runs from {{leaseStartDate}} to {{leaseEndDate}}."
+    },
+    {
+      "id": "lease_rent",
+      "title": "Rent",
+      "kind": "drafting",
+      "body": "Tenant will pay Landlord rent of ${{monthlyRent}} per month, due on the _______ day of each month, payable by: _______________________________________________."
+    },
+    {
+      "id": "lease_security_deposit",
+      "title": "Security Deposit",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-08-30",
+      "body": "Landlord may charge a security deposit of up to one month's rent, in addition to the first month's rent. If Landlord is an individual (or an LLC whose members are all individuals) who owns no more than two residential rental properties totaling no more than four units, Landlord may charge up to two months' rent instead. Within 21 days after Tenant moves out, Landlord must give Tenant an itemized statement of any deductions and return the remaining deposit.",
+      "gap": "A lease of six months or longer can separately require an advance rent payment of up to six months' rent, on top of the security deposit cap above — a different rule from the deposit cap itself, and easy to conflate with it. This is one state's statute, current as of a 2024 change that lowered the general cap to one month's rent; deposit limits and return deadlines vary by state, and this document doesn't track any state but this one.",
+      "citations": [
+        {
+          "case": "Cal. Civ. Code § 1950.5(c)(1) (California Legislative Information text)",
+          "cite": "California Civil Code, general security deposit cap",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1950.5.",
+          "quote": "a landlord shall not demand or receive security, however denominated, in an amount or value in excess of an amount equal to one month’s rent, in addition to any rent for the first month paid on or before initial occupancy."
+        },
+        {
+          "case": "Cal. Civ. Code § 1950.5(c)(5)(A) (California Legislative Information text)",
+          "cite": "California Civil Code, higher cap for a small individual landlord",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1950.5.",
+          "quote": "a landlord shall not demand or receive security, however denominated, in an amount or value in excess of an amount equal to two months’ rent, in addition to any rent for the first month paid on or before initial occupancy if the landlord meets both of the following requirements: (i) The landlord is a natural person or a limited liability company in which all members are natural persons. (ii) The landlord owns no more than two residential rental properties that collectively include no more than four dwelling units offered for rent."
+        },
+        {
+          "case": "Cal. Civ. Code § 1950.5(c)(2) (California Legislative Information text)",
+          "cite": "California Civil Code, advance rent for a longer lease",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1950.5.",
+          "quote": "This subdivision does not prohibit an advance payment of not less than six months’ rent if the term of the lease is six months or longer."
+        },
+        {
+          "case": "Cal. Civ. Code § 1950.5(h)(1) (California Legislative Information text)",
+          "cite": "California Civil Code, deposit return deadline",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1950.5.",
+          "quote": "No later than 21 calendar days after the tenant has vacated the premises"
+        }
+      ]
+    },
+    {
+      "id": "lease_habitability",
+      "title": "Habitability",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-08-30",
+      "body": "Landlord must maintain the property in a condition fit for human habitation and repair conditions that make it uninhabitable, except for conditions Tenant caused.",
+      "gap": "The statute's own text says this duty applies \"in the absence of an agreement to the contrary\" — which could read as if a lease could waive it. A separate provision closes that door for residential tenancies: a lease clause waiving or modifying this duty is void as against public policy, for any condition that actually makes the unit uninhabitable. The one thing landlord and tenant can agree to instead is having the tenant handle some repairs or maintenance as part of the rental terms — that's different from waiving the underlying habitability duty altogether. This is one state's statute; habitability protections exist in some form in most states, but the details vary.",
+      "citations": [
+        {
+          "case": "Cal. Civ. Code § 1941 (California Legislative Information text)",
+          "cite": "California Civil Code, landlord's habitability duty",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1941.",
+          "quote": "The lessor of a building intended for the occupation of human beings must, in the absence of an agreement to the contrary, put it into a condition fit for such occupation, and repair all subsequent dilapidations thereof, which render it untenantable, except such as are mentioned in section nineteen hundred and twenty-nine."
+        },
+        {
+          "case": "Cal. Civ. Code § 1942.1 (California Legislative Information text)",
+          "cite": "California Civil Code, habitability duty can't be waived",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1942.1.",
+          "quote": "Any agreement by a lessee of a dwelling waiving or modifying his rights under Section 1941 or 1942 shall be void as contrary to public policy with respect to any condition which renders the premises untenantable, except that the lessor and the lessee may agree that the lessee shall undertake to improve, repair or maintain all or stipulated portions of the dwelling as part of the consideration for rental."
+        }
+      ]
+    },
+    {
+      "id": "lease_entry_notice",
+      "title": "Landlord's Right to Enter",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-08-30",
+      "body": "Landlord may enter the unit only for specific reasons — emergencies, agreed-upon repairs or showings, court order, or if Tenant has abandoned the unit — and, except in an emergency or abandonment, only during normal business hours and only after giving Tenant reasonable written notice stating the date, approximate time, and purpose of the entry. Landlord can't abuse this right of access or use it to harass Tenant.",
+      "gap": "Twenty-four hours' written notice is presumed reasonable, but that's a presumption, not an absolute floor — it can be rebutted by evidence either way. This is one state's statute; notice requirements for landlord entry vary by state.",
+      "citations": [
+        {
+          "case": "Cal. Civ. Code § 1954(b) (California Legislative Information text)",
+          "cite": "California Civil Code, entry limited to normal business hours",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1954.",
+          "quote": "Except in cases of emergency or when the tenant has abandoned or surrendered the premises, entry may not be made during other than normal business hours unless the tenant consents to an entry during other than normal business hours at the time of entry."
+        },
+        {
+          "case": "Cal. Civ. Code § 1954(d)(1) (California Legislative Information text)",
+          "cite": "California Civil Code, written notice requirement",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1954.",
+          "quote": "the landlord shall give the tenant reasonable notice in writing of his or her intent to enter and enter only during normal business hours. The notice shall include the date, approximate time, and purpose of the entry."
+        },
+        {
+          "case": "Cal. Civ. Code § 1954(d)(1) (California Legislative Information text)",
+          "cite": "California Civil Code, 24-hour presumption",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1954.",
+          "quote": "Twenty-four hours shall be presumed to be reasonable notice in absence of evidence to the contrary."
+        },
+        {
+          "case": "Cal. Civ. Code § 1954(c) (California Legislative Information text)",
+          "cite": "California Civil Code, no abuse or harassment",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1954.",
+          "quote": "The landlord may not abuse the right of access or use it to harass the tenant."
+        }
+      ]
+    },
+    {
+      "id": "lease_maintenance",
+      "title": "Tenant's Maintenance Responsibilities",
+      "kind": "drafting",
+      "body": "Tenant will keep the unit clean and sanitary, use all appliances and fixtures properly, and promptly notify Landlord of any condition needing repair. Tenant is responsible for damage caused by Tenant's own negligence or misuse, beyond ordinary wear and tear."
+    },
+    {
+      "id": "lease_late_fees",
+      "title": "Late Fees",
+      "kind": "drafting",
+      "body": "If rent is not paid within _______ days of the due date, Tenant will owe a late fee of $_______ (or _______% of the monthly rent)."
+    },
+    {
+      "id": "lease_ack",
+      "title": "Signatures",
+      "kind": "drafting",
+      "body": "Signed:\n\nLandlord: _______________________ Date: _______________\nTenant: _______________________ Date: _______________"
     }
   ]
 }
