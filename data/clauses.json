@@ -1940,6 +1940,69 @@
       "title": "Adoption",
       "kind": "drafting",
       "body": "Adopted by the board of directors of {{companyName}}:\n\nDirector: _______________________ Date: _______________\nDirector: _______________________ Date: _______________\n(Add additional signature lines as needed.)"
+    },
+    {
+      "id": "scorp_eligibility",
+      "title": "Eligibility",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-08-30",
+      "body": "{{companyName}} can qualify to elect S corporation tax treatment only if it meets the federal 'small business corporation' test: a domestic corporation that isn't a bank, insurance company, or certain other ineligible corporation, and that doesn't have more than 100 shareholders, doesn't have a shareholder that isn't an individual (other than certain estates and trusts), doesn't have a nonresident alien as a shareholder, and doesn't have more than one class of stock.",
+      "gap": "The 100-shareholder count isn't a strict headcount of every person who owns stock — federal law treats all members of a single family, and their estates, as one shareholder for this purpose, which can make the practical limit much higher than 100 individual people. This document doesn't state which businesses would actually benefit from S corporation treatment — that depends on income level, how owners are paid, and other facts specific to the business.",
+      "citations": [
+        {
+          "case": "26 U.S.C. § 1361(b)(1) (Cornell LII text)",
+          "cite": "U.S. Code, small business corporation eligibility test",
+          "url": "https://www.law.cornell.edu/uscode/text/26/1361",
+          "quote": "the term “small business corporation” means a domestic corporation which is not an ineligible corporation and which does not— (A) have more than 100 shareholders, (B) have as a shareholder a person (other than an estate, a trust described in subsection (c)(2), or an organization described in subsection (c)(6)) who is not an individual, (C) have a nonresident alien as a shareholder, and (D) have more than 1 class of stock."
+        }
+      ]
+    },
+    {
+      "id": "scorp_consent",
+      "title": "Shareholder Consent",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-08-30",
+      "body": "An S corporation election is only valid if every person who is a shareholder on the day the election is made consents to it.",
+      "gap": "This is a real, all-or-nothing requirement — a single non-consenting shareholder can block the election entirely, no matter how small that shareholder's stake is.",
+      "citations": [
+        {
+          "case": "26 U.S.C. § 1362(a)(2) (Cornell LII text)",
+          "cite": "U.S. Code, unanimous shareholder consent requirement",
+          "url": "https://www.law.cornell.edu/uscode/text/26/1362",
+          "quote": "An election under this subsection shall be valid only if all persons who are shareholders in such corporation on the day on which such election is made consent to such election."
+        }
+      ]
+    },
+    {
+      "id": "scorp_deadline",
+      "title": "When the Election Must Be Made",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-08-30",
+      "body": "{{companyName}} can make an S corporation election either at any time during the tax year before the one it's meant to take effect for, or during that tax year itself, as long as it's made by the 15th day of the third month of that tax year.",
+      "gap": "Missing this deadline doesn't necessarily end the option — the IRS has authority to accept a late election where there was reasonable cause for the delay, though that relief isn't automatic and this document doesn't state what qualifies as reasonable cause. Absent such relief, an election made after the deadline is instead treated as made for the following tax year.",
+      "citations": [
+        {
+          "case": "26 U.S.C. § 1362(b)(1) (Cornell LII text)",
+          "cite": "U.S. Code, S corporation election timing",
+          "url": "https://www.law.cornell.edu/uscode/text/26/1362",
+          "quote": "An election under subsection (a) may be made by a small business corporation for any taxable year— (A) at any time during the preceding taxable year, or (B) at any time during the taxable year and on or before the 15th day of the 3d month of the taxable year."
+        }
+      ]
+    },
+    {
+      "id": "scorp_filing",
+      "title": "How to File",
+      "kind": "drafting",
+      "body": "The election is made by filing IRS Form 2553, signed by an authorized corporate officer, with the shareholder consents required above attached or included on the form. Form 2553 is filed with the IRS — it is a federal tax filing, not a state filing, and it doesn't replace or change anything filed with {{companyName}}'s state of incorporation or organization."
+    },
+    {
+      "id": "scorp_ack",
+      "title": "Consent Signatures",
+      "kind": "drafting",
+      "body": "Consent to this election:\n\nShareholder: _______________________ Date: _______________\nShareholder: _______________________ Date: _______________\n(Every shareholder on the date of the election must consent. Add additional lines as needed.)"
     }
   ]
 }
