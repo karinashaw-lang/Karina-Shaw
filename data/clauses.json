@@ -1748,6 +1748,99 @@
       "title": "Acknowledgment",
       "kind": "drafting",
       "body": "Adopted and agreed to by the sole member:\n\nMember: {{memberName}}\nDate: _______________"
+    },
+    {
+      "id": "llc_mm_formation_statement",
+      "title": "Formation and Membership",
+      "kind": "drafting",
+      "body": "{{companyName}} is a limited liability company organized under the laws of {{stateOfFormation}}, owned by more than one member as set forth below."
+    },
+    {
+      "id": "llc_mm_members",
+      "title": "Members, Contributions, and Ownership",
+      "kind": "drafting",
+      "body": "{{companyName}} has the following members, initial capital contributions, and ownership interests:\n\nMember: _______________________ Contribution: $_______________ Ownership: _______%\nMember: _______________________ Contribution: $_______________ Ownership: _______%\nMember: _______________________ Contribution: $_______________ Ownership: _______%\n(Add additional lines as needed. Ownership percentages should total 100%.)"
+    },
+    {
+      "id": "llc_mm_tax_classification",
+      "title": "Federal Tax Classification",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-08-30",
+      "body": "For federal tax purposes, {{companyName}} is, by default, classified as a partnership — its income, deductions, and credits pass through to its members' own tax returns, rather than {{companyName}} paying tax at the entity level, unless {{companyName}} affirmatively elects a different classification.",
+      "gap": "This default applies automatically, with no election required — but it isn't the only option. A multi-member LLC can elect to be taxed as a corporation, or potentially as an S corporation through a separate election, by filing the appropriate IRS form. This document doesn't say which classification is actually better for a given business — that depends on income level, self-employment tax exposure, and other facts specific to the business. Partnership tax treatment brings its own requirements this document doesn't cover, including that the LLC generally must file its own annual information return (Form 1065) even though it doesn't pay entity-level tax itself.",
+      "citations": [
+        {
+          "case": "26 C.F.R. § 301.7701-3(b)(1) (Cornell LII text)",
+          "cite": "Treasury Regulations, default federal tax classification of eligible entities (the 'check-the-box' rule)",
+          "url": "https://www.law.cornell.edu/cfr/text/26/301.7701-3",
+          "quote": "unless the entity elects otherwise, a domestic eligible entity is— (i) A partnership if it has two or more members; or (ii) Disregarded as an entity separate from its owner if it has a single owner."
+        }
+      ]
+    },
+    {
+      "id": "llc_mm_liability_shield",
+      "title": "Limited Liability",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-08-30",
+      "body": "{{companyName}}'s debts and liabilities are its own — they don't become a member's personal debts or liabilities solely because that person is a member.",
+      "gap": "This is one state's statute, used here as real evidence that a liability shield with a specific, real exception is a genuine feature of LLC law generally — not a claim about which state's law actually governs this company. The shield isn't absolute: a member can still be held personally liable under the common-law 'alter ego' doctrine, the same doctrine that can pierce a corporation's liability shield, under the same or similar circumstances. One thing that specifically does not count against a member on its own, at least under this statute: failing to hold formal member or manager meetings doesn't establish alter ego liability by itself, as long as the articles of organization or the operating agreement itself doesn't require holding them.",
+      "citations": [
+        {
+          "case": "Cal. Corp. Code § 17703.04(a) (California Legislative Information text)",
+          "cite": "California Revised Uniform Limited Liability Company Act, liability shield",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=17703.04.",
+          "quote": "All of the following apply to debts, obligations, or other liabilities of a limited liability company, whether arising in contract, tort, or otherwise: (1) They are solely the debts, obligations, or other liabilities of the limited liability company to which the debts, obligations, or other liabilities relate. (2) They do not become the debts, obligations, or other liabilities of a member or manager solely by reason of the member acting as a member or manager acting as a manager for the limited liability company."
+        },
+        {
+          "case": "Cal. Corp. Code § 17703.04(b) (California Legislative Information text)",
+          "cite": "California Revised Uniform Limited Liability Company Act, alter ego liability and the meeting-formalities carve-out",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=17703.04.",
+          "quote": "A member of a limited liability company shall be subject to liability under the common law governing alter ego liability, and shall also be personally liable under a judgment of a court or for any debt, obligation, or liability of the limited liability company, whether that liability or obligation arises in contract, tort, or otherwise, under the same or similar circumstances and to the same extent as a shareholder of a corporation may be personally liable for any debt, obligation, or liability of the corporation; except that the failure to hold meetings of members or managers or the failure to observe formalities pertaining to the calling or conduct of meetings shall not be considered a factor tending to establish that a member or the members have alter ego or personal liability for any debt, obligation, or liability of the limited liability company where the articles of organization or operating agreement do not expressly require the holding of meetings of members or managers."
+        }
+      ]
+    },
+    {
+      "id": "llc_mm_management",
+      "title": "Management and Voting",
+      "kind": "drafting",
+      "body": "{{companyName}} is: ☐ Member-managed  ☐ Manager-managed\n\nIf manager-managed, the manager(s): _______________________________________________\n\nOrdinary business decisions require the vote or written consent of members holding more than 50% of the ownership interests, unless this agreement requires a greater vote for a specific decision. Admitting a new member, amending this agreement, and selling substantially all of the company's assets each require the unanimous vote or written consent of all members."
+    },
+    {
+      "id": "llc_mm_distributions",
+      "title": "Distributions",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-08-30",
+      "body": "Distributions of available cash or property are made among the members as set forth in this agreement. Members may set any distribution arrangement they choose in this document — it doesn't have to match ownership percentages.",
+      "gap": "This is one state's default rule, useful as real evidence of what happens if an operating agreement doesn't actually state how distributions are shared: rather than splitting by ownership percentage, the default is based on the value of each member's contributions. That default can produce a genuinely surprising result — a member with a stated ownership percentage that doesn't match their actual capital contribution (a common setup for a member contributing services rather than cash) could receive far less than their ownership percentage would suggest, or nothing at all, unless the agreement itself sets a different rule. Separately, under this same default framework, a member who leaves the company isn't automatically entitled to a distribution just because they left, unless the company's governing documents say otherwise. This is exactly why this document states the members' agreed-upon arrangement directly, rather than leaving it to whatever the state default happens to be.",
+      "citations": [
+        {
+          "case": "Cal. Corp. Code § 17704.04(a) (California Legislative Information text)",
+          "cite": "California Revised Uniform Limited Liability Company Act, default distribution rule",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=17704.04.",
+          "quote": "Any distributions made by a limited liability company before its dissolution and winding up shall be among the members in accordance with the operating agreement. If the operating agreement does not otherwise provide, distributions shall be on the basis of the value, as stated in the required records when the limited liability company decides to make the distribution, of the contributions the limited liability company has received from each member"
+        },
+        {
+          "case": "Cal. Corp. Code § 17704.04(b) (California Legislative Information text)",
+          "cite": "California Revised Uniform Limited Liability Company Act, dissociation doesn't itself trigger a distribution",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=17704.04.",
+          "quote": "Unless the articles of organization or written operating agreement provides otherwise, a person’s dissociation does not entitle the person to a distribution"
+        }
+      ]
+    },
+    {
+      "id": "llc_mm_dissolution",
+      "title": "Dissolution",
+      "kind": "drafting",
+      "body": "{{companyName}} will continue until dissolved by the vote or written consent of members holding more than 50% of the ownership interests, or as otherwise required by law. Upon dissolution, {{companyName}}'s debts and liabilities will be paid or provided for first, with any remaining assets distributed to the members in accordance with their ownership interests, unless this agreement provides otherwise."
+    },
+    {
+      "id": "llc_mm_ack",
+      "title": "Acknowledgment",
+      "kind": "drafting",
+      "body": "Adopted and agreed to by all members:\n\nMember: _______________________ Date: _______________\nMember: _______________________ Date: _______________\nMember: _______________________ Date: _______________\n(Add additional signature lines as needed.)"
     }
   ]
 }

@@ -1073,5 +1073,37 @@
     "categories": [
       "Business Formation"
     ]
+  },
+  {
+    "id": "llc_operating_agreement_multi_member",
+    "title": "Multi-Member LLC Operating Agreement",
+    "description": "Governance for a multi-owner LLC — membership, contributions, and voting, plus the real, sourced default rules on tax treatment, liability, and distributions that apply if the members don't spell out their own.",
+    "clauseOrder": [
+      "llc_mm_formation_statement",
+      "llc_mm_members",
+      "llc_mm_tax_classification",
+      "llc_mm_liability_shield",
+      "llc_mm_management",
+      "llc_mm_distributions",
+      "llc_mm_dissolution",
+      "llc_mm_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "LLC name",
+        "placeholder": "Acme Ventures, LLC",
+        "required": true
+      },
+      {
+        "id": "stateOfFormation",
+        "label": "State of formation",
+        "placeholder": "Delaware",
+        "required": true
+      }
+    ],
+    "categories": [
+      "Business Formation"
+    ]
   }
 ]
