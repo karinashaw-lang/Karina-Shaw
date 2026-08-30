@@ -311,6 +311,20 @@ function renderWizard() {
   });
 }
 
+// Builds the "Prepared for X · Y" line without assuming every document
+// has an employeeName field — a formation document like the LLC
+// Operating Agreement has a memberName instead. Falls back gracefully
+// when only one of the two names is present, rather than showing a
+// bare em dash for a field that document never collects.
+function preparedForLine(answers) {
+  const person = answers.employeeName || answers.memberName || '';
+  const company = answers.companyName || '';
+  if (person && company) return `Prepared for ${person} · ${company}`;
+  if (person) return `Prepared for ${person}`;
+  if (company) return `Prepared for ${company}`;
+  return 'Prepared for —';
+}
+
 // Replace {{fieldId}} with the matching answer. Leaves the placeholder
 // untouched if a field was somehow left blank, rather than silently
 // dropping it — a half-filled document should look half-filled, not
@@ -341,9 +355,7 @@ function renderOutput() {
   state.edits = {};
   state.editedClauseIds = new Set();
 
-  const { companyName, employeeName } = state.answers;
-  document.getElementById('output-meta').textContent =
-    `Prepared for ${employeeName || '—'} · ${companyName || '—'}`;
+  document.getElementById('output-meta').textContent = preparedForLine(state.answers);
 
   const container = document.getElementById('output-clauses');
   container.innerHTML = '';
@@ -488,10 +500,9 @@ document.getElementById('wizard-form').addEventListener('input', e => {
 // just the fill-in-the-blank prose.
 function buildPlainText() {
   const assembled = assembleDocument();
-  const { companyName, employeeName } = state.answers;
   const lines = [];
   lines.push(state.document.title.toUpperCase());
-  lines.push(`Prepared for ${employeeName || '—'} · ${companyName || '—'}`);
+  lines.push(preparedForLine(state.answers));
   lines.push('');
   assembled.forEach(clause => {
     const edited = state.editedClauseIds.has(clause.id);

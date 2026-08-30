@@ -1672,6 +1672,82 @@
       "title": "Acknowledgment",
       "kind": "drafting",
       "body": "Please sign below to indicate agreement to these terms.\n\nEmployee: {{employeeName}}\nDate: _______________"
+    },
+    {
+      "id": "llc_formation_statement",
+      "title": "Formation and Membership",
+      "kind": "drafting",
+      "body": "{{companyName}} is a single-member limited liability company organized under the laws of {{stateOfFormation}}. {{memberName}} is its sole member, holding a 100% membership interest."
+    },
+    {
+      "id": "llc_tax_classification",
+      "title": "Federal Tax Classification",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-08-30",
+      "body": "For federal tax purposes, {{companyName}} is, by default, disregarded as an entity separate from {{memberName}} — its income, deductions, and credits are reported on {{memberName}}'s own tax return, rather than a separate company return, unless {{companyName}} affirmatively elects a different classification.",
+      "gap": "This default applies automatically, with no election required — but it isn't the only option. A single-member LLC can elect to be taxed as a corporation, or potentially as an S corporation through a separate election, by filing the appropriate IRS form. This document doesn't say which classification is actually better for a given business — that depends on income level, self-employment tax exposure, and other facts specific to the business. Being disregarded for federal tax purposes has no effect on the LLC's separate legal existence under state law; those are two different questions, addressed by two different bodies of law.",
+      "citations": [
+        {
+          "case": "26 C.F.R. § 301.7701-3(b)(1) (Cornell LII text)",
+          "cite": "Treasury Regulations, default federal tax classification of eligible entities (the 'check-the-box' rule)",
+          "url": "https://www.law.cornell.edu/cfr/text/26/301.7701-3",
+          "quote": "unless the entity elects otherwise, a domestic eligible entity is— (i) A partnership if it has two or more members; or (ii) Disregarded as an entity separate from its owner if it has a single owner."
+        }
+      ]
+    },
+    {
+      "id": "llc_liability_shield",
+      "title": "Limited Liability",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-08-30",
+      "body": "{{companyName}}'s debts and liabilities are its own — they don't become {{memberName}}'s personal debts or liabilities solely because {{memberName}} is its member.",
+      "gap": "This is one state's statute, used here as real evidence that a liability shield with a specific, real exception is a genuine feature of LLC law generally — not a claim about which state's law actually governs this company. The shield isn't absolute: a member can still be held personally liable under the common-law 'alter ego' doctrine, the same doctrine that can pierce a corporation's liability shield, under the same or similar circumstances. One thing that specifically does not count against a member on its own, at least under this statute: failing to hold formal member or manager meetings doesn't establish alter ego liability by itself, as long as the articles of organization or the operating agreement itself doesn't require holding them.",
+      "citations": [
+        {
+          "case": "Cal. Corp. Code § 17703.04(a) (California Legislative Information text)",
+          "cite": "California Revised Uniform Limited Liability Company Act, liability shield",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=17703.04.",
+          "quote": "All of the following apply to debts, obligations, or other liabilities of a limited liability company, whether arising in contract, tort, or otherwise: (1) They are solely the debts, obligations, or other liabilities of the limited liability company to which the debts, obligations, or other liabilities relate. (2) They do not become the debts, obligations, or other liabilities of a member or manager solely by reason of the member acting as a member or manager acting as a manager for the limited liability company."
+        },
+        {
+          "case": "Cal. Corp. Code § 17703.04(b) (California Legislative Information text)",
+          "cite": "California Revised Uniform Limited Liability Company Act, alter ego liability and the meeting-formalities carve-out",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=17703.04.",
+          "quote": "A member of a limited liability company shall be subject to liability under the common law governing alter ego liability, and shall also be personally liable under a judgment of a court or for any debt, obligation, or liability of the limited liability company, whether that liability or obligation arises in contract, tort, or otherwise, under the same or similar circumstances and to the same extent as a shareholder of a corporation may be personally liable for any debt, obligation, or liability of the corporation; except that the failure to hold meetings of members or managers or the failure to observe formalities pertaining to the calling or conduct of meetings shall not be considered a factor tending to establish that a member or the members have alter ego or personal liability for any debt, obligation, or liability of the limited liability company where the articles of organization or operating agreement do not expressly require the holding of meetings of members or managers."
+        }
+      ]
+    },
+    {
+      "id": "llc_capital_contribution",
+      "title": "Initial Capital Contribution",
+      "kind": "drafting",
+      "body": "{{memberName}} has contributed the following to {{companyName}} as an initial capital contribution:\n\nCash: $_______________\nOther property (describe): _______________________________________________"
+    },
+    {
+      "id": "llc_management",
+      "title": "Management",
+      "kind": "drafting",
+      "body": "{{companyName}} is managed by {{memberName}} as its sole member. {{memberName}} has full authority to make all decisions on behalf of {{companyName}}, including entering contracts, opening and operating bank accounts, and conducting business in the company's name."
+    },
+    {
+      "id": "llc_distributions",
+      "title": "Distributions",
+      "kind": "drafting",
+      "body": "{{companyName}} may distribute available cash or property to {{memberName}} at the times and in the amounts {{memberName}} determines."
+    },
+    {
+      "id": "llc_dissolution",
+      "title": "Dissolution",
+      "kind": "drafting",
+      "body": "{{companyName}} will continue until dissolved by {{memberName}} or as otherwise required by law. Upon dissolution, {{companyName}}'s debts and liabilities will be paid or provided for first, with any remaining assets distributed to {{memberName}}."
+    },
+    {
+      "id": "llc_ack",
+      "title": "Acknowledgment",
+      "kind": "drafting",
+      "body": "Adopted and agreed to by the sole member:\n\nMember: {{memberName}}\nDate: _______________"
     }
   ]
 }
