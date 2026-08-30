@@ -1105,5 +1105,37 @@
     "categories": [
       "Business Formation"
     ]
+  },
+  {
+    "id": "corporate_bylaws",
+    "title": "Corporate Bylaws",
+    "description": "Internal governance for a corporation — shareholder and board meeting defaults, officer roles, and indemnification, with the real statutory floors under quorum and voting thresholds, not just fill-in-the-blank numbers.",
+    "clauseOrder": [
+      "bylaws_purpose",
+      "bylaws_shareholder_meetings",
+      "bylaws_board",
+      "bylaws_board_meetings",
+      "bylaws_officers",
+      "bylaws_indemnification",
+      "bylaws_amendment",
+      "bylaws_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Corporation name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "stateOfFormation",
+        "label": "State of incorporation",
+        "placeholder": "Delaware",
+        "required": true
+      }
+    ],
+    "categories": [
+      "Business Formation"
+    ]
   }
 ]
