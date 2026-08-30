@@ -906,5 +906,40 @@
     "categories": [
       "During employment"
     ]
+  },
+  {
+    "id": "flsa_classification",
+    "title": "Exempt / Non-Exempt Classification Notice",
+    "description": "The federal overtime default, the actual three-part test a position has to meet to be classified exempt, and the classification decision itself.",
+    "clauseOrder": [
+      "classification_default_rule",
+      "classification_exemption_test",
+      "classification_decision",
+      "classification_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "jobTitle",
+        "label": "Job title",
+        "placeholder": "Software Engineer",
+        "required": true
+      }
+    ],
+    "categories": [
+      "Hiring",
+      "During employment"
+    ]
   }
 ]
