@@ -53,6 +53,171 @@ function checkForDraft() {
   };
 }
 
+// Document library. Every generated document's field values are saved
+// here automatically, browser-local only — this is content the user
+// already typed and already saw rendered on screen, just kept around
+// under a second key so it can be checked against other documents
+// later. Same wrap-every-call-in-try/catch discipline as draft
+// persistence above, for the same reason: a convenience, not a
+// requirement the app depends on.
+const LIBRARY_KEY = 'groundtruth-library';
+
+function loadLibrary() {
+  try {
+    const raw = localStorage.getItem(LIBRARY_KEY);
+    return raw ? JSON.parse(raw) : [];
+  } catch (e) {
+    return [];
+  }
+}
+
+function saveLibraryEntries(entries) {
+  try { localStorage.setItem(LIBRARY_KEY, JSON.stringify(entries)); } catch (e) { /* not fatal */ }
+}
+
+function addToLibrary(documentId, title, answers) {
+  const entries = loadLibrary();
+  entries.push({
+    id: `${documentId}-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`,
+    documentId,
+    title,
+    answers: { ...answers },
+    generatedAt: new Date().toISOString(),
+  });
+  saveLibraryEntries(entries);
+  updateLibraryCount();
+}
+
+function removeFromLibrary(entryId) {
+  saveLibraryEntries(loadLibrary().filter(e => e.id !== entryId));
+  updateLibraryCount();
+}
+
+function clearLibrary() {
+  saveLibraryEntries([]);
+  updateLibraryCount();
+}
+
+function updateLibraryCount() {
+  const el = document.getElementById('library-count');
+  if (!el) return;
+  const count = loadLibrary().length;
+  el.textContent = count ? ` (${count})` : '';
+}
+
+// Compares the same field id across every saved document. A field id
+// carrying two different values isn't necessarily a mistake — the
+// same field can legitimately hold a different real value in a
+// different document — but it's exactly the kind of quiet mismatch (a
+// typo'd company name, a restriction period that drifted between two
+// related agreements) that's easy to miss when each document was
+// filled out on its own, and invisible to a document generator that
+// only ever sees one form at a time. This only flags a difference; it
+// never says which value is right, since that's not something the
+// values alone can tell you.
+function computeConsistency(entries) {
+  const byField = {};
+  entries.forEach(entry => {
+    const doc = state.documents.find(d => d.id === entry.documentId);
+    if (!doc) return;
+    doc.fields.forEach(f => {
+      const val = (entry.answers[f.id] || '').trim();
+      if (!val) return;
+      (byField[f.id] = byField[f.id] || []).push({
+        docTitle: entry.title,
+        label: f.label,
+        value: val,
+      });
+    });
+  });
+
+  return Object.entries(byField)
+    .map(([fieldId, occurrences]) => ({ fieldId, occurrences }))
+    .filter(({ occurrences }) => new Set(occurrences.map(o => o.value)).size > 1);
+}
+
+function renderLibrary() {
+  const entries = loadLibrary();
+  const consistencyEl = document.getElementById('library-consistency');
+  const listEl = document.getElementById('library-list');
+  consistencyEl.innerHTML = '';
+  listEl.innerHTML = '';
+
+  if (entries.length === 0) {
+    listEl.innerHTML = '<p class="library-empty">Nothing saved yet — generate a document and it will show up here.</p>';
+    return;
+  }
+
+  const mismatches = computeConsistency(entries);
+  if (mismatches.length === 0) {
+    const ok = document.createElement('p');
+    ok.className = 'consistency-ok';
+    ok.textContent = `Checked ${entries.length} saved document${entries.length === 1 ? '' : 's'} — no field carries two different values.`;
+    consistencyEl.appendChild(ok);
+  } else {
+    const heading = document.createElement('p');
+    heading.className = 'consistency-heading';
+    heading.textContent = `${mismatches.length} field${mismatches.length === 1 ? '' : 's'} carry different values across your saved documents`;
+    consistencyEl.appendChild(heading);
+
+    mismatches.forEach(({ occurrences }) => {
+      const block = document.createElement('div');
+      block.className = 'consistency-block';
+
+      const title = document.createElement('div');
+      title.className = 'consistency-field';
+      title.textContent = occurrences[0].label;
+      block.appendChild(title);
+
+      const ul = document.createElement('ul');
+      occurrences.forEach(o => {
+        const li = document.createElement('li');
+        li.textContent = `${o.docTitle}: "${o.value}"`;
+        ul.appendChild(li);
+      });
+      block.appendChild(ul);
+
+      const note = document.createElement('p');
+      note.className = 'consistency-note';
+      note.textContent = 'This might be intentional — the same field can reasonably hold different values in different documents. Worth a second look if it was meant to be the same.';
+      block.appendChild(note);
+
+      consistencyEl.appendChild(block);
+    });
+  }
+
+  entries
+    .slice()
+    .sort((a, b) => new Date(b.generatedAt) - new Date(a.generatedAt))
+    .forEach(entry => {
+      const row = document.createElement('div');
+      row.className = 'library-row';
+
+      const info = document.createElement('div');
+      const titleEl = document.createElement('div');
+      titleEl.className = 'library-row-title';
+      titleEl.textContent = entry.title;
+      const dateEl = document.createElement('div');
+      dateEl.className = 'library-row-date';
+      dateEl.textContent = `Saved ${new Date(entry.generatedAt).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' })}`;
+      info.appendChild(titleEl);
+      info.appendChild(dateEl);
+      row.appendChild(info);
+
+      const removeBtn = document.createElement('button');
+      removeBtn.type = 'button';
+      removeBtn.className = 'secondary';
+      removeBtn.textContent = 'Remove';
+      removeBtn.addEventListener('click', () => {
+        removeFromLibrary(entry.id);
+        renderLibrary();
+      });
+      row.appendChild(removeBtn);
+
+      listEl.appendChild(row);
+    });
+}
+
 async function init() {
   const [docs, clauseData] = await Promise.all([
     fetch('data/documents.json').then(r => r.json()),
@@ -63,6 +228,7 @@ async function init() {
   renderCategoryFilter();
   renderPicker();
   checkForDraft();
+  updateLibraryCount();
 }
 
 function showScreen(id) {
@@ -393,6 +559,17 @@ document.getElementById('wizard-form').addEventListener('submit', e => {
   renderOutput();
   showScreen('screen-output');
   clearDraft();
+  addToLibrary(state.document.id, state.document.title, state.answers);
+});
+
+document.getElementById('library-link').addEventListener('click', () => {
+  renderLibrary();
+  showScreen('screen-library');
+});
+document.getElementById('library-back').addEventListener('click', () => showScreen('screen-picker'));
+document.getElementById('library-clear').addEventListener('click', () => {
+  clearLibrary();
+  renderLibrary();
 });
 
 init();

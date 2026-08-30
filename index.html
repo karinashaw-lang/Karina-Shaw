@@ -11,6 +11,7 @@
     <div class="topbar">
       <div class="wordmark">Ground<span>truth</span></div>
       <div class="topbar-right">
+        <button type="button" class="topbar-link-btn" id="library-link">My Documents<span id="library-count"></span></button>
         <a href="methodology.html" class="topbar-link">Methodology</a>
         <a href="changelog.html" class="topbar-link">Changelog</a>
         <div class="tagline">Sourced, not asserted</div>
@@ -54,6 +55,17 @@
         <button type="button" class="secondary" id="output-download">Download as text</button>
       </div>
       <footer class="hint">Groundtruth v1 demo · every "Verified" badge links to a real, checked source — click one to see it.</footer>
+    </section>
+
+    <section id="screen-library" class="screen">
+      <h1>My documents</h1>
+      <p class="lede">Every document you generate is saved here automatically, in your browser only — nothing is sent anywhere. Use it to check whether a value you typed the same way across documents (a company name, a restriction period, a person's name) actually matches everywhere it appears.</p>
+      <div id="library-consistency"></div>
+      <div id="library-list"></div>
+      <div class="actions">
+        <button type="button" class="secondary" id="library-back">Back</button>
+        <button type="button" class="secondary" id="library-clear">Clear all</button>
+      </div>
     </section>
   </div>
   <script src="app.js"></script>
