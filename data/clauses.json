@@ -1283,6 +1283,64 @@
       "title": "Acknowledgment",
       "kind": "drafting",
       "body": "Please sign below to acknowledge this leave request and the terms above.\n\nEmployee: {{employeeName}}\nDate: _______________"
+    },
+    {
+      "id": "accommodation_request_details",
+      "title": "Accommodation Requested",
+      "kind": "drafting",
+      "body": "{{employeeName}} requests a reasonable accommodation as described below.\n\nNature of the limitation: _______________________________________________\nRequested accommodation: _______________________________________________\nHow the accommodation would help: _______________________________________________"
+    },
+    {
+      "id": "accommodation_undue_hardship",
+      "title": "The Duty to Accommodate, and Its Limit",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-08-30",
+      "body": "Federal law requires {{companyName}} to make reasonable accommodations for the known physical or mental limitations of a qualified employee with a disability, unless doing so would impose an undue hardship on {{companyName}}'s operations.",
+      "gap": "Undue hardship isn't just about cost in isolation — the law weighs the accommodation's cost and nature against the size, financial resources, and structure of the specific employer and facility involved. The same accommodation can be reasonable for one employer and an undue hardship for a much smaller one; this document states the legal standard, not how it applies to any specific accommodation request.",
+      "citations": [
+        {
+          "case": "42 U.S.C. § 12112(b)(5)(A) (Cornell LII text)",
+          "cite": "U.S. Code, Americans with Disabilities Act, reasonable-accommodation duty",
+          "url": "https://www.law.cornell.edu/uscode/text/42/12112",
+          "quote": "not making reasonable accommodations to the known physical or mental limitations of an otherwise qualified individual with a disability who is an applicant or employee, unless such covered entity can demonstrate that the accommodation would impose an undue hardship on the operation of the business of such covered entity"
+        },
+        {
+          "case": "42 U.S.C. § 12111(10) (Cornell LII text)",
+          "cite": "U.S. Code, Americans with Disabilities Act, undue-hardship definition and factors",
+          "url": "https://www.law.cornell.edu/uscode/text/42/12111",
+          "quote": "The term “undue hardship” means an action requiring significant difficulty or expense, when considered in light of the factors set forth in subparagraph (B). ... factors to be considered include— (i) the nature and cost of the accommodation needed under this chapter; (ii) the overall financial resources of the facility or facilities involved in the provision of the reasonable accommodation; the number of persons employed at such facility; the effect on expenses and resources, or the impact otherwise of such accommodation upon the operation of the facility; (iii) the overall financial resources of the covered entity; the overall size of the business of a covered entity with respect to the number of its employees; the number, type, and location of its facilities; and (iv) the type of operation or operations of the covered entity, including the composition, structure, and functions of the workforce of such entity; the geographic separateness, administrative, or fiscal relationship of the facility or facilities in question to the covered entity."
+        }
+      ]
+    },
+    {
+      "id": "accommodation_confidentiality",
+      "title": "Confidentiality of Medical Information",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-08-30",
+      "body": "Medical information {{employeeName}} shares to support this request must be collected and kept on separate forms, in separate files from {{employeeName}}'s regular personnel file, and treated as confidential.",
+      "gap": "This confidentiality duty has specific, narrow exceptions written into the same law: supervisors and managers may be told about necessary work restrictions and accommodations, safety personnel may be told if the condition might require emergency treatment, and government officials investigating compliance can get the relevant information on request. Confidential doesn't mean nobody involved can ever know anything about it — it means the underlying medical details stay restricted to those specific, limited circumstances, not shared freely.",
+      "citations": [
+        {
+          "case": "42 U.S.C. § 12112(d)(4)(C) (Cornell LII text)",
+          "cite": "U.S. Code, Americans with Disabilities Act, confidentiality for current employees",
+          "url": "https://www.law.cornell.edu/uscode/text/42/12112",
+          "quote": "Information obtained under subparagraph (B) regarding the medical condition or history of any employee are subject to the requirements of subparagraphs (B) and (C) of paragraph (3)."
+        },
+        {
+          "case": "42 U.S.C. § 12112(d)(3)(B) (Cornell LII text)",
+          "cite": "U.S. Code, Americans with Disabilities Act, confidentiality requirements and exceptions",
+          "url": "https://www.law.cornell.edu/uscode/text/42/12112",
+          "quote": "information obtained regarding the medical condition or history of the applicant is collected and maintained on separate forms and in separate medical files and is treated as a confidential medical record, except that— (i) supervisors and managers may be informed regarding necessary restrictions on the work or duties of the employee and necessary accommodations; (ii) first aid and safety personnel may be informed, when appropriate, if the disability might require emergency treatment; and (iii) government officials investigating compliance with this chapter shall be provided relevant information on request"
+        }
+      ]
+    },
+    {
+      "id": "accommodation_ack",
+      "title": "Acknowledgment",
+      "kind": "drafting",
+      "body": "Please sign below to acknowledge this request.\n\nEmployee: {{employeeName}}\nDate: _______________"
     }
   ]
 }

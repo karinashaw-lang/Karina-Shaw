@@ -877,5 +877,34 @@
     "categories": [
       "During employment"
     ]
+  },
+  {
+    "id": "ada_accommodation_request",
+    "title": "ADA Reasonable Accommodation Request Form",
+    "description": "A request for a workplace accommodation, the employer's duty to engage in the interactive process in good faith, the undue-hardship limit on that duty, and the confidentiality of any medical information shared to support the request.",
+    "clauseOrder": [
+      "accommodation_request_details",
+      "accommodation",
+      "accommodation_undue_hardship",
+      "accommodation_confidentiality",
+      "accommodation_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      }
+    ],
+    "categories": [
+      "During employment"
+    ]
   }
 ]
