@@ -1160,5 +1160,31 @@
     "categories": [
       "Business Formation"
     ]
+  },
+  {
+    "id": "buy_sell_agreement",
+    "title": "Buy-Sell Agreement",
+    "description": "What happens to an owner's interest on death, disability, divorce, or departure — a rider to an LLC operating agreement or corporate bylaws, with the real default rules that apply if this gap is left open.",
+    "clauseOrder": [
+      "buysell_purpose",
+      "buysell_triggering_events",
+      "buysell_row_first_refusal",
+      "buysell_llc_default",
+      "buysell_corp_restriction_notice",
+      "buysell_valuation",
+      "buysell_funding",
+      "buysell_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      }
+    ],
+    "categories": [
+      "Business Formation"
+    ]
   }
 ]

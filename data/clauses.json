@@ -2003,6 +2003,94 @@
       "title": "Consent Signatures",
       "kind": "drafting",
       "body": "Consent to this election:\n\nShareholder: _______________________ Date: _______________\nShareholder: _______________________ Date: _______________\n(Every shareholder on the date of the election must consent. Add additional lines as needed.)"
+    },
+    {
+      "id": "buysell_purpose",
+      "title": "Purpose",
+      "kind": "drafting",
+      "body": "This agreement restricts the transfer of ownership interests in {{companyName}} and sets out what happens to an owner's interest when a triggering event occurs, so the remaining owners and the departing owner's interest don't end up governed only by whatever the default rule happens to be."
+    },
+    {
+      "id": "buysell_triggering_events",
+      "title": "Triggering Events",
+      "kind": "drafting",
+      "body": "This agreement applies when any of the following happens to an owner:\n\n☐ Death\n☐ Permanent disability\n☐ Divorce or legal separation affecting ownership of the interest\n☐ Voluntary withdrawal or resignation\n☐ Involuntary termination or expulsion (as permitted by the company's governing documents)\n☐ Bankruptcy or insolvency\n☐ A bona fide offer from an outside buyer the owner wishes to accept\n☐ Other: _______________________________________________"
+    },
+    {
+      "id": "buysell_row_first_refusal",
+      "title": "Right of First Refusal",
+      "kind": "drafting",
+      "body": "Before an owner may transfer an interest to anyone outside the company in response to an outside offer, the owner must first offer that interest to {{companyName}} and then to the other owners, on the same price and terms as the outside offer. The company and the other owners have _______ days to accept the offer before the owner may proceed with the outside transfer."
+    },
+    {
+      "id": "buysell_llc_default",
+      "title": "Why This Matters for an LLC",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-08-30",
+      "body": "Without an agreement like this one, a transfer of an LLC membership interest — by sale, gift, or on an owner's death — doesn't by itself dissolve the company or give the person who receives the interest a vote or a role in managing it. That person generally only receives the right to whatever distributions the original owner would have received.",
+      "gap": "This is one state's default rule, used here as real evidence of what happens automatically if the company's own governing documents don't set a different rule — not a claim about which state's law governs a specific company. This default cuts both ways: it's reassuring in that an unplanned transfer doesn't hand a stranger a vote, but it also means the remaining owners can end up running the business alongside someone who has an economic stake but no say and no obligation to contribute, unless this agreement — or the operating agreement itself — sets up a mechanism to convert that situation into an actual buyout.",
+      "citations": [
+        {
+          "case": "Cal. Corp. Code § 17705.02(a)(2) (California Legislative Information text)",
+          "cite": "California Revised Uniform Limited Liability Company Act, effect of a transfer",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=17705.02.",
+          "quote": "A transfer does not by itself cause a member’s dissociation or a dissolution and winding up of the activities of a limited liability company."
+        },
+        {
+          "case": "Cal. Corp. Code § 17705.02(a)(3) (California Legislative Information text)",
+          "cite": "California Revised Uniform Limited Liability Company Act, a transferee doesn't get management rights",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=17705.02.",
+          "quote": "a transfer does not entitle the transferee to do any of the following: (A) Vote or otherwise participate in the management or conduct of the activities of a limited liability company."
+        },
+        {
+          "case": "Cal. Corp. Code § 17705.02(b) (California Legislative Information text)",
+          "cite": "California Revised Uniform Limited Liability Company Act, a transferee's economic rights",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=17705.02.",
+          "quote": "A transferee has the right to receive, in accordance with the transfer, distributions to which the transferor would otherwise be entitled"
+        }
+      ]
+    },
+    {
+      "id": "buysell_corp_restriction_notice",
+      "title": "Why This Matters for a Corporation",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-08-30",
+      "body": "If {{companyName}} is a corporation, this transfer restriction only binds someone who buys or receives shares without knowing about it if the restriction is noted conspicuously on the stock certificate or the written statement that takes its place.",
+      "gap": "This is one state's statute, used as real evidence of a genuine formal requirement — not a claim about which state's law governs a specific corporation. A transfer restriction that exists only in this agreement or the bylaws, without also appearing on the actual shares or share records, risks being unenforceable against someone who buys or receives those shares without actual knowledge of the restriction.",
+      "citations": [
+        {
+          "case": "Cal. Corp. Code § 418(a)(1) (California Legislative Information text)",
+          "cite": "California General Corporation Law, required disclosure of a transfer restriction",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=418.",
+          "quote": "The fact that the shares are subject to restrictions upon transfer."
+        },
+        {
+          "case": "Cal. Corp. Code § 418(b) (California Legislative Information text)",
+          "cite": "California General Corporation Law, enforceability against a transferee without notice",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=418.",
+          "quote": "Unless stated on the certificate, the initial transaction statement, and written statements as required by subdivision (a), no restriction upon transfer, no right of redemption and no voting agreement under subdivision (a) of Section 706, no irrevocable proxy under subdivision (e) of Section 705, and no voting restriction imposed by the corporation shall be enforceable against a transferee of the shares without actual knowledge of such restriction, right, agreement or proxy."
+        }
+      ]
+    },
+    {
+      "id": "buysell_valuation",
+      "title": "Valuation",
+      "kind": "drafting",
+      "body": "The purchase price for an owner's interest under this agreement will be determined by:\n\n☐ A fixed price of $_______, to be updated by the owners at least annually\n☐ The formula: _______________________________________________\n☐ An independent appraisal, with the appraiser selected as follows: _______________________________________________"
+    },
+    {
+      "id": "buysell_funding",
+      "title": "Funding the Purchase",
+      "kind": "drafting",
+      "body": "The purchase price will be paid as follows:\n\n☐ In full at closing\n☐ In installments over _______ months/years, with interest at _______%\n☐ From the proceeds of a life insurance policy on the departing owner (if the triggering event is death)\n☐ Other: _______________________________________________"
+    },
+    {
+      "id": "buysell_ack",
+      "title": "Signatures",
+      "kind": "drafting",
+      "body": "Agreed to by all current owners:\n\nOwner: _______________________ Date: _______________\nOwner: _______________________ Date: _______________\nOwner: _______________________ Date: _______________\n(Add additional signature lines as needed.)"
     }
   ]
 }
