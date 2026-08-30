@@ -1098,6 +1098,87 @@
       "title": "Candidate Evaluation",
       "kind": "drafting",
       "body": "Candidate: {{employeeName}}\nPosition: {{jobTitle}}\nInterviewer: _______________________________________________\nDate: _______________\n\nRatings (1-5, 5 highest):\nRelevant experience: _______\nRole-specific skills: _______\nCommunication: _______\nOverall fit for the role: _______\n\nStrengths:\n_______________________________________________\n\nConcerns:\n_______________________________________________\n\nRecommendation: ☐ Strong yes  ☐ Yes  ☐ No  ☐ Strong no"
+    },
+    {
+      "id": "harassment_prohibition",
+      "title": "Prohibited Conduct",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-08-30",
+      "body": "{{companyName}} prohibits discrimination and harassment based on race, color, religion, sex, and national origin in every aspect of employment — hiring, compensation, discipline, promotion, and termination alike. Federal law makes this a legal requirement, not just a company policy choice.",
+      "gap": "This specific citation covers only employers with 15 or more employees for each working day in 20 or more calendar weeks in the current or preceding year — smaller employers aren't covered by this particular statute, though state or local law may still reach them. Separately, other protected characteristics — age, disability, genetic information, and pregnancy among them — come from different federal statutes with their own coverage thresholds, not from the provision cited here.",
+      "citations": [
+        {
+          "case": "42 U.S.C. § 2000e-2(a)(1) (Cornell LII text)",
+          "cite": "U.S. Code, Title VII of the Civil Rights Act of 1964",
+          "url": "https://www.law.cornell.edu/uscode/text/42/2000e-2",
+          "quote": "It shall be an unlawful employment practice for an employer— (1) to fail or refuse to hire or to discharge any individual, or otherwise to discriminate against any individual with respect to his compensation, terms, conditions, or privileges of employment, because of such individual’s race, color, religion, sex, or national origin"
+        },
+        {
+          "case": "42 U.S.C. § 2000e(b) (Cornell LII text)",
+          "cite": "U.S. Code, Title VII, covered-employer definition",
+          "url": "https://www.law.cornell.edu/uscode/text/42/2000e",
+          "quote": "The term “employer” means a person engaged in an industry affecting commerce who has fifteen or more employees for each working day in each of twenty or more calendar weeks in the current or preceding calendar year"
+        }
+      ]
+    },
+    {
+      "id": "harassment_reporting",
+      "title": "How to Report",
+      "kind": "drafting",
+      "body": "{{employeeName}} can report suspected harassment or discrimination to a supervisor, Human Resources, or any other member of management {{employeeName}} feels comfortable approaching. A report doesn't have to follow any particular format, and {{employeeName}} isn't required to raise it with the person accused of the conduct first."
+    },
+    {
+      "id": "harassment_employer_response",
+      "title": "How the Company Responds",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-08-30",
+      "body": "{{companyName}} will investigate reports of harassment promptly and take appropriate corrective action. This isn't just good practice — federal law gives {{companyName}} a real defense against certain harassment claims only if it can show it exercised reasonable care to prevent and promptly correct harassing behavior, and that the employee unreasonably failed to use the reporting process available.",
+      "gap": "This defense has a hard limit the case establishing it is explicit about: it's only available when the harassment didn't result in a tangible employment action against the employee — a firing, demotion, undesirable reassignment, or a decision causing a significant change in benefits. If a tangible employment action occurred, the employer can't rely on this defense no matter how good its policy or response was. Separately, having a written policy like this one isn't automatically enough by itself, nor is it strictly required as a matter of law — courts look at whether the policy was actually suitable to the circumstances, not just whether one existed on paper.",
+      "citations": [
+        {
+          "case": "Faragher v. City of Boca Raton",
+          "cite": "524 U.S. 775 (1998)",
+          "url": "https://www.courtlistener.com/opinion/118245/faragher-v-city-of-boca-raton/",
+          "quote": "An employer is subject to vicarious liability to a victimized employee for an actionable hostile environment created by a supervisor with immediate (or successively higher) authority over the employee. When no tangible employment action is taken, a defending employer may raise an affirmative defense to liability or damages, subject to proof by a preponderance of the evidence ... The defense comprises two necessary elements: (a) that the employer exercised reasonable care to prevent and correct promptly any sexually harassing behavior, and (b) that the plaintiff employee unreasonably failed to take advantage of any preventive or corrective opportunities provided by the employer or to avoid harm otherwise."
+        },
+        {
+          "case": "Faragher v. City of Boca Raton",
+          "cite": "524 U.S. 775 (1998) — on the policy itself",
+          "url": "https://www.courtlistener.com/opinion/118245/faragher-v-city-of-boca-raton/",
+          "quote": "While proof that an employer had promulgated an antiharassment policy with complaint procedure is not necessary in every instance as a matter of law, the need for a stated policy suitable to the employment circumstances may appropriately be addressed in any case when litigating the first element of the defense."
+        }
+      ]
+    },
+    {
+      "id": "harassment_no_retaliation",
+      "title": "No Retaliation",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-08-30",
+      "body": "{{companyName}} will not retaliate against {{employeeName}} for reporting harassment or discrimination in good faith, participating in an investigation, or otherwise opposing conduct this policy prohibits.",
+      "gap": "Retaliation under this law isn't limited to firing, demotion, or other classic employment actions — it covers anything that would materially discourage a reasonable employee from making or supporting a complaint in the first place, whether or not it affects the terms of employment itself. That's a broader standard than what counts as illegal discrimination in the first place, a distinction the statute's own text doesn't spell out but the Supreme Court has.",
+      "citations": [
+        {
+          "case": "42 U.S.C. § 2000e-3(a) (Cornell LII text)",
+          "cite": "U.S. Code, Title VII, anti-retaliation provision",
+          "url": "https://www.law.cornell.edu/uscode/text/42/2000e-3",
+          "quote": "It shall be an unlawful employment practice for an employer to discriminate against any of his employees or applicants for employment ... because he has opposed any practice made an unlawful employment practice by this subchapter, or because he has made a charge, testified, assisted, or participated in any manner in an investigation, proceeding, or hearing under this subchapter."
+        },
+        {
+          "case": "Burlington Northern & Santa Fe Railway Co. v. White",
+          "cite": "548 U.S. 53 (2006)",
+          "url": "https://www.courtlistener.com/opinion/145636/burlington-northern-santa-fe-railway-co-v-white/",
+          "quote": "We also conclude that the provision covers those (and only those) employer actions that would have been materially adverse to a reasonable employee or job applicant. In the present context that means that the employer’s actions must be harmful to the point that they could well dissuade a reasonable worker from making or supporting a charge of discrimination."
+        }
+      ]
+    },
+    {
+      "id": "harassment_ack",
+      "title": "Acknowledgment",
+      "kind": "drafting",
+      "body": "Please sign below to acknowledge that you have received and reviewed this policy.\n\nEmployee: {{employeeName}}\nDate: _______________"
     }
   ]
 }

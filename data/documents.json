@@ -818,5 +818,34 @@
     "categories": [
       "Hiring"
     ]
+  },
+  {
+    "id": "anti_harassment_policy",
+    "title": "Anti-Harassment & Non-Discrimination Policy",
+    "description": "The federal prohibition on workplace harassment and discrimination, how it's reported and investigated, the real legal reason a written policy and prompt response matter, and the separate protection against retaliation.",
+    "clauseOrder": [
+      "harassment_prohibition",
+      "harassment_reporting",
+      "harassment_employer_response",
+      "harassment_no_retaliation",
+      "harassment_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      }
+    ],
+    "categories": [
+      "During employment"
+    ]
   }
 ]
