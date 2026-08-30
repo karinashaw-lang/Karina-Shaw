@@ -941,5 +941,64 @@
       "Hiring",
       "During employment"
     ]
+  },
+  {
+    "id": "pwfa_accommodation",
+    "title": "Pregnant Workers Fairness Act Accommodation Request",
+    "description": "A pregnancy-related accommodation request under a 2023 federal law distinct from the ADA — it doesn't require the limitation to rise to the level of a disability.",
+    "clauseOrder": [
+      "pwfa_coverage",
+      "pwfa_accommodation_duty",
+      "pwfa_request_details",
+      "pwfa_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      }
+    ],
+    "categories": [
+      "During employment"
+    ]
+  },
+  {
+    "id": "whistleblower_policy",
+    "title": "Whistleblower Policy",
+    "description": "States the federal anti-retaliation protections that apply to reports of securities fraud and related misconduct — Sarbanes-Oxley and, separately, Dodd-Frank — and sets an internal reporting channel.",
+    "clauseOrder": [
+      "whistleblower_coverage",
+      "whistleblower_protected_activity",
+      "whistleblower_dodd_frank_scope",
+      "whistleblower_no_waiver",
+      "whistleblower_remedies",
+      "whistleblower_reporting_channel",
+      "whistleblower_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      }
+    ],
+    "categories": [
+      "During employment"
+    ]
   }
 ]

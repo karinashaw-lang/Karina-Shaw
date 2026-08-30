@@ -1399,6 +1399,203 @@
       "title": "Acknowledgment",
       "kind": "drafting",
       "body": "Please sign below to acknowledge this classification.\n\nEmployee: {{employeeName}}\nDate: _______________"
+    },
+    {
+      "id": "pwfa_coverage",
+      "title": "Who This Covers",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-08-30",
+      "body": "This request applies if {{companyName}} employs 15 or more people. Federal law requires accommodating a known limitation related to pregnancy, childbirth, or a related medical condition regardless of whether that limitation would separately qualify as a disability under the Americans with Disabilities Act.",
+      "gap": "This is a distinct federal law from the ADA, not an extension of it — a limitation doesn't have to be severe enough to count as a disability to trigger this specific accommodation duty. This document doesn't restate the ADA's own accommodation clause; the two laws overlap in some situations but aren't the same test.",
+      "citations": [
+        {
+          "case": "42 U.S.C. § 2000gg(2)(B)(i) (Cornell LII text)",
+          "cite": "U.S. Code, Pregnant Workers Fairness Act, covered-employer definition",
+          "url": "https://www.law.cornell.edu/uscode/text/42/2000gg",
+          "quote": "an employer, which means a person engaged in industry affecting commerce who has 15 or more employees as defined in section 2000e(b) of this title"
+        },
+        {
+          "case": "42 U.S.C. § 2000gg(4) (Cornell LII text)",
+          "cite": "U.S. Code, Pregnant Workers Fairness Act, known-limitation definition",
+          "url": "https://www.law.cornell.edu/uscode/text/42/2000gg",
+          "quote": "the term “known limitation” means physical or mental condition related to, affected by, or arising out of pregnancy, childbirth, or related medical conditions that the employee or employee’s representative has communicated to the employer whether or not such condition meets the definition of disability specified in section 3 of the Americans with Disabilities Act of 1990 (42 U.S.C. 12102)"
+        }
+      ]
+    },
+    {
+      "id": "pwfa_accommodation_duty",
+      "title": "The Accommodation Duty",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-08-30",
+      "body": "{{companyName}} must make a reasonable accommodation for {{employeeName}}'s known limitation unless doing so would impose an undue hardship. {{companyName}} can't require {{employeeName}} to accept a different accommodation than the one actually reached through the interactive process, and can't require {{employeeName}} to take leave — paid or unpaid — if another reasonable accommodation would work instead.",
+      "gap": "This duty extends further than it might appear: someone temporarily unable to perform an essential job function still counts as a qualified employee entitled to this protection, if the inability is temporary, the function could be performed again in the near future, and the inability can be reasonably accommodated in the meantime. That's a real, specific carve-out this law adds — a temporary inability to do part of the job doesn't by itself remove someone from this protection.",
+      "citations": [
+        {
+          "case": "42 U.S.C. § 2000gg-1(1)-(2) (Cornell LII text)",
+          "cite": "U.S. Code, Pregnant Workers Fairness Act, accommodation duty and imposed-accommodation ban",
+          "url": "https://www.law.cornell.edu/uscode/text/42/2000gg-1",
+          "quote": "It shall be an unlawful employment practice for a covered entity to— (1) not make reasonable accommodations to the known limitations related to the pregnancy, childbirth, or related medical conditions of a qualified employee, unless such covered entity can demonstrate that the accommodation would impose an undue hardship on the operation of the business of such covered entity; (2) require a qualified employee affected by pregnancy, childbirth, or related medical conditions to accept an accommodation other than any reasonable accommodation arrived at through the interactive process referred to in section 2000gg(7) of this title; ... (4) require a qualified employee to take leave, whether paid or unpaid, if another reasonable accommodation can be provided to the known limitations related to the pregnancy, childbirth, or related medical conditions of the qualified employee"
+        },
+        {
+          "case": "42 U.S.C. § 2000gg(6) (Cornell LII text)",
+          "cite": "U.S. Code, Pregnant Workers Fairness Act, qualified-employee definition",
+          "url": "https://www.law.cornell.edu/uscode/text/42/2000gg",
+          "quote": "the term “qualified employee” means an employee or applicant who, with or without reasonable accommodation, can perform the essential functions of the employment position, except that an employee or applicant shall be considered qualified if— (A) any inability to perform an essential function is for a temporary period; (B) the essential function could be performed in the near future; and (C) the inability to perform the essential function can be reasonably accommodated"
+        }
+      ]
+    },
+    {
+      "id": "pwfa_request_details",
+      "title": "Accommodation Requested",
+      "kind": "drafting",
+      "body": "{{employeeName}} requests a reasonable accommodation related to pregnancy, childbirth, or a related medical condition.\n\nDescription of the limitation: _______________________________________________\nRequested accommodation: _______________________________________________\nExpected duration (if known): _______________"
+    },
+    {
+      "id": "pwfa_ack",
+      "title": "Acknowledgment",
+      "kind": "drafting",
+      "body": "Please sign below to acknowledge this request.\n\nEmployee: {{employeeName}}\nDate: _______________"
+    },
+    {
+      "id": "whistleblower_coverage",
+      "title": "Who This Policy's Federal Protections Cover",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-08-30",
+      "body": "This policy's protections under the Sarbanes-Oxley Act apply if {{companyName}} has a class of securities registered under the Securities Exchange Act, is required to file reports under Exchange Act section 15(d), is a subsidiary or affiliate whose financial information is included in such a company's consolidated financial statements, or is a nationally recognized statistical rating organization. They extend to that company's officers, employees, contractors, subcontractors, and agents — not just to the company directly.",
+      "gap": "This is federal law written for public companies and their contractor and agent relationships, not a general private-sector whistleblower rule — a privately held company with no ties to a public company isn't covered by this specific statute. Many states have their own whistleblower-protection laws for private employers that this document doesn't state.",
+      "citations": [
+        {
+          "case": "18 U.S.C. § 1514A(a) (Cornell LII text)",
+          "cite": "U.S. Code, Sarbanes-Oxley whistleblower protection, covered-company definition",
+          "url": "https://www.law.cornell.edu/uscode/text/18/1514A",
+          "quote": "No company with a class of securities registered under section 12 of the Securities Exchange Act of 1934"
+        },
+        {
+          "case": "18 U.S.C. § 1514A(a) (Cornell LII text)",
+          "cite": "U.S. Code, Sarbanes-Oxley whistleblower protection, extension to officers, employees, contractors, and agents",
+          "url": "https://www.law.cornell.edu/uscode/text/18/1514A",
+          "quote": "any officer, employee, contractor, subcontractor, or agent of such company or nationally recognized statistical rating organization, may discharge, demote, suspend, threaten, harass, or in any other manner discriminate against an employee in the terms and conditions of employment because of any lawful act done by the employee"
+        }
+      ]
+    },
+    {
+      "id": "whistleblower_protected_activity",
+      "title": "What Counts As a Protected Report",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-08-30",
+      "body": "Protected reports include providing information, or otherwise assisting in an investigation, about conduct an employee reasonably believes violates mail, wire, bank, or securities fraud law, an SEC rule, or federal law prohibiting fraud against shareholders — as long as the report goes to a federal regulatory or law enforcement agency, a Member or committee of Congress, or a supervisor or other person at the company with authority to investigate or address the misconduct. Filing, testifying in, or otherwise assisting a related legal proceeding is protected the same way.",
+      "gap": "The standard is a reasonable, good-faith belief — a report doesn't have to turn out to be correct, or ever be proven in court, to be protected. This protects an internal report to a supervisor just as much as a report to an outside regulator; treating only external regulatory complaints as 'real' whistleblowing applies a narrower standard than the statute sets.",
+      "citations": [
+        {
+          "case": "18 U.S.C. § 1514A(a)(1) (Cornell LII text)",
+          "cite": "U.S. Code, Sarbanes-Oxley whistleblower protection, protected-activity definition",
+          "url": "https://www.law.cornell.edu/uscode/text/18/1514A",
+          "quote": "to provide information, cause information to be provided, or otherwise assist in an investigation regarding any conduct which the employee reasonably believes constitutes a violation of section 1341, 1343, 1344, or 1348, any rule or regulation of the Securities and Exchange Commission, or any provision of Federal law relating to fraud against shareholders"
+        },
+        {
+          "case": "18 U.S.C. § 1514A(a)(1)(C) (Cornell LII text)",
+          "cite": "U.S. Code, Sarbanes-Oxley whistleblower protection, internal-supervisor reporting channel",
+          "url": "https://www.law.cornell.edu/uscode/text/18/1514A",
+          "quote": "a person with supervisory authority over the employee (or such other person working for the employer who has the authority to investigate, discover, or terminate misconduct)"
+        },
+        {
+          "case": "18 U.S.C. § 1514A(a)(2) (Cornell LII text)",
+          "cite": "U.S. Code, Sarbanes-Oxley whistleblower protection, participation in a related proceeding",
+          "url": "https://www.law.cornell.edu/uscode/text/18/1514A",
+          "quote": "to file, cause to be filed, testify, participate in, or otherwise assist in a proceeding filed or about to be filed (with any knowledge of the employer) relating to an alleged violation of section 1341, 1343, 1344, or 1348, any rule or regulation of the Securities and Exchange Commission, or any provision of Federal law relating to fraud against shareholders."
+        }
+      ]
+    },
+    {
+      "id": "whistleblower_dodd_frank_scope",
+      "title": "A Separate, Narrower Protection for SEC Reports",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-08-30",
+      "body": "A different federal law, the Dodd-Frank Act, adds its own anti-retaliation right — with a direct right to sue in federal court and a longer filing deadline — but only for someone who meets Dodd-Frank's own definition of 'whistleblower': a person who has actually reported information to the Securities and Exchange Commission itself.",
+      "gap": "This is a distinct, narrower category from the Sarbanes-Oxley protection above. The Supreme Court held that Dodd-Frank's anti-retaliation provision doesn't cover an employee who only reported a concern internally and never reported it to the SEC — that employee may still be protected under Sarbanes-Oxley, just not under Dodd-Frank's separate, SEC-reporting-specific right.",
+      "citations": [
+        {
+          "case": "15 U.S.C. § 78u-6(a)(6) (Cornell LII text)",
+          "cite": "U.S. Code, Dodd-Frank Act, whistleblower definition",
+          "url": "https://www.law.cornell.edu/uscode/text/15/78u-6",
+          "quote": "the term “whistleblower” means any individual who provides, or 2 or more individuals acting jointly who provide, information relating to a violation of the securities laws to the Commission, in a manner established, by rule or regulation, by the Commission"
+        },
+        {
+          "case": "Digital Realty Trust, Inc. v. Somers",
+          "cite": "583 U.S. 149 (2018)",
+          "url": "https://www.courtlistener.com/opinion/4469602/digital-realty-trust-inc-v-somers/",
+          "quote": "Dodd-Frank’s anti-retaliation provision does not extend to an individual, like Somers, who has not reported a violation of the securities laws to the SEC."
+        }
+      ]
+    },
+    {
+      "id": "whistleblower_no_waiver",
+      "title": "This Can't Be Signed Away",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-08-30",
+      "body": "The rights described above can't be waived by any agreement, company policy, or condition of employment — including a predispute arbitration agreement. A predispute arbitration agreement is not valid or enforceable to the extent it would require arbitrating a dispute under this specific protection.",
+      "gap": "This is a stronger, more specific rule than the general principle that a government agency's own enforcement rights survive a private arbitration agreement (see the arbitration document's coverage of that separate point) — here, the employee's own personal claim under this statute is itself exempt from a predispute arbitration requirement, not just the agency's independent authority to act.",
+      "citations": [
+        {
+          "case": "18 U.S.C. § 1514A(e)(1) (Cornell LII text)",
+          "cite": "U.S. Code, Sarbanes-Oxley whistleblower protection, non-waivability",
+          "url": "https://www.law.cornell.edu/uscode/text/18/1514A",
+          "quote": "The rights and remedies provided for in this section may not be waived by any agreement, policy form, or condition of employment, including by a predispute arbitration agreement."
+        },
+        {
+          "case": "18 U.S.C. § 1514A(e)(2) (Cornell LII text)",
+          "cite": "U.S. Code, Sarbanes-Oxley whistleblower protection, predispute arbitration ban",
+          "url": "https://www.law.cornell.edu/uscode/text/18/1514A",
+          "quote": "No predispute arbitration agreement shall be valid or enforceable, if the agreement requires arbitration of a dispute arising under this section."
+        }
+      ]
+    },
+    {
+      "id": "whistleblower_remedies",
+      "title": "What's Available If Retaliation Happens",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-08-30",
+      "body": "An employee who proves retaliation under the Sarbanes-Oxley protection is entitled to reinstatement with the same seniority the employee would have had, back pay with interest, and compensation for special damages including litigation costs, expert witness fees, and reasonable attorney fees. Under the separate Dodd-Frank protection described above, back pay is doubled.",
+      "gap": "The doubled back pay is specific to a Dodd-Frank claim — someone who is protected only under Sarbanes-Oxley (for example, an internal report never made to the SEC) is entitled to ordinary back pay under that statute, not the doubled amount.",
+      "citations": [
+        {
+          "case": "18 U.S.C. § 1514A(c)(2) (Cornell LII text)",
+          "cite": "U.S. Code, Sarbanes-Oxley whistleblower protection, compensatory damages",
+          "url": "https://www.law.cornell.edu/uscode/text/18/1514A",
+          "quote": "reinstatement with the same seniority status that the employee would have had, but for the discrimination"
+        },
+        {
+          "case": "18 U.S.C. § 1514A(c)(2) (Cornell LII text)",
+          "cite": "U.S. Code, Sarbanes-Oxley whistleblower protection, special damages",
+          "url": "https://www.law.cornell.edu/uscode/text/18/1514A",
+          "quote": "compensation for any special damages sustained as a result of the discrimination, including litigation costs, expert witness fees, and reasonable attorney fees."
+        },
+        {
+          "case": "15 U.S.C. § 78u-6(h)(1)(C)(ii) (Cornell LII text)",
+          "cite": "U.S. Code, Dodd-Frank Act, doubled back pay remedy",
+          "url": "https://www.law.cornell.edu/uscode/text/15/78u-6",
+          "quote": "2 times the amount of back pay otherwise owed to the individual, with interest"
+        }
+      ]
+    },
+    {
+      "id": "whistleblower_reporting_channel",
+      "title": "How to Report a Concern",
+      "kind": "drafting",
+      "body": "Employees who become aware of suspected securities-law violations, accounting or auditing irregularities, or other reportable misconduct are encouraged to report it through the following channel(s): _______________________________________________. A report may be made confidentially. Retaliation against anyone who reports in good faith is prohibited by this policy, regardless of whether the report ultimately proves a violation occurred."
+    },
+    {
+      "id": "whistleblower_ack",
+      "title": "Acknowledgment",
+      "kind": "drafting",
+      "body": "Please sign below to acknowledge that you have received and read this policy.\n\nEmployee: {{employeeName}}\nDate: _______________"
     }
   ]
 }
