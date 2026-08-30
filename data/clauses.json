@@ -1596,6 +1596,64 @@
       "title": "Acknowledgment",
       "kind": "drafting",
       "body": "Please sign below to acknowledge that you have received and read this policy.\n\nEmployee: {{employeeName}}\nDate: _______________"
+    },
+    {
+      "id": "nonsolicit_scope",
+      "title": "Restriction",
+      "kind": "drafting",
+      "body": "For {{restrictionPeriod}} after {{employeeName}}'s employment with {{companyName}} ends, {{employeeName}} will not solicit or induce, or attempt to solicit or induce, any employee of {{companyName}} to leave their employment."
+    },
+    {
+      "id": "nonsolicit_employee_split",
+      "title": "A Genuinely Unsettled Question in Some States",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-08-30",
+      "body": "Whether a restriction like this one — barring solicitation of a former employer's own employees, as opposed to its customers — can be enforced at all is a real, unresolved question in at least one state. California courts have gone different ways on it.",
+      "gap": "In 1985, a California appellate court upheld a similar no-raiding restriction against a former executive as valid, reasoning it only slightly restrained trade. In 2018, a different panel of the same court, applying the California Supreme Court's intervening decision in Edwards v. Arthur Andersen, expressly doubted that the 1985 case remained good law, and held a similar restriction void as applied to individuals whose own profession was recruiting other people's employees. This is one state's real, citable split as evidence such uncertainty exists — not a claim about which state's law governs this specific agreement, or about how a court would rule on a different set of facts than either of these two cases.",
+      "citations": [
+        {
+          "case": "Loral Corp. v. Moyes",
+          "cite": "174 Cal. App. 3d 268 (1985)",
+          "url": "https://www.courtlistener.com/opinion/2140771/loral-corp-v-moyes/",
+          "quote": "We hold that this contract, as construed, is not void on its face under Business and Professions Code section 16600."
+        },
+        {
+          "case": "AMN Healthcare, Inc. v. Aya Healthcare Services, Inc.",
+          "cite": "28 Cal. App. 5th 923 (2018)",
+          "url": "https://www.courtlistener.com/opinion/4326974/amn-healthcare-inc-v-aya-healthcare-services-inc/",
+          "quote": "We thus doubt the continuing viability of Moyes post-Edwards."
+        },
+        {
+          "case": "AMN Healthcare, Inc. v. Aya Healthcare Services, Inc.",
+          "cite": "28 Cal. App. 5th 923 (2018)",
+          "url": "https://www.courtlistener.com/opinion/4326974/amn-healthcare-inc-v-aya-healthcare-services-inc/",
+          "quote": "We thus independently conclude section 3.2 of the CNDA is void under section 16600."
+        }
+      ]
+    },
+    {
+      "id": "nonsolicit_customer_distinction",
+      "title": "This Is Different From a Customer Non-Solicitation Clause",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-08-30",
+      "body": "A restriction on soliciting a former employer's customers is a separate question from the employee-solicitation restriction above, and in at least one state, better settled: a court there won't directly enforce a contract clause banning a former employee from soliciting former customers, though it can still stop someone from using the former employer's trade secrets to do so.",
+      "gap": "This means the underlying conduct — misusing confidential information or trade secrets to go after a former employer's customers — can still be restrained through trade-secret and unfair-competition law even where the contract clause itself can't be enforced directly. The Non-Disclosure Agreement document in this set covers trade-secret obligations separately; this document doesn't restate them.",
+      "citations": [
+        {
+          "case": "AMN Healthcare, Inc. v. Aya Healthcare Services, Inc.",
+          "cite": "28 Cal. App. 5th 923 (2018), quoting The Retirement Group v. Galante, 176 Cal. App. 4th 1226 (2009)",
+          "url": "https://www.courtlistener.com/opinion/4326974/amn-healthcare-inc-v-aya-healthcare-services-inc/",
+          "quote": "specifically enforcing . . . a contractual clause purporting to ban a former employee from soliciting former customers to transfer their business away from the former employer to the employee's new business, but a court may enjoin tortious conduct ... by banning the former employee from using trade secret information to identify existing customers, to facilitate the solicitation of such customers, or to otherwise unfairly compete with the former employer."
+        }
+      ]
+    },
+    {
+      "id": "nonsolicit_ack",
+      "title": "Acknowledgment",
+      "kind": "drafting",
+      "body": "Please sign below to indicate agreement to these terms.\n\nEmployee: {{employeeName}}\nDate: _______________"
     }
   ]
 }

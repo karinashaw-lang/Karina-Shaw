@@ -971,6 +971,41 @@
     ]
   },
   {
+    "id": "employee_nonsolicit",
+    "title": "Employee Non-Solicitation Agreement",
+    "description": "A restriction on recruiting a former employer's other employees after leaving — a narrower, distinct question from a noncompete, and one where courts genuinely disagree.",
+    "clauseOrder": [
+      "nonsolicit_scope",
+      "nonsolicit_employee_split",
+      "nonsolicit_customer_distinction",
+      "nonsolicit_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "restrictionPeriod",
+        "label": "Restriction period",
+        "placeholder": "12 months",
+        "required": true
+      }
+    ],
+    "categories": [
+      "Hiring",
+      "Confidentiality & IP"
+    ]
+  },
+  {
     "id": "whistleblower_policy",
     "title": "Whistleblower Policy",
     "description": "States the federal anti-retaliation protections that apply to reports of securities fraud and related misconduct — Sarbanes-Oxley and, separately, Dodd-Frank — and sets an internal reporting channel.",
