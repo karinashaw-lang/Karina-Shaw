@@ -1040,16 +1040,18 @@
   {
     "id": "llc_operating_agreement_single_member",
     "title": "Single-Member LLC Operating Agreement",
-    "description": "The internal governance document for a one-owner LLC — states the default federal tax treatment, what it actually takes to elect a different one, and the real, sourced limits of the liability shield, not just a fill-in-the-blank contract.",
+    "description": "The internal governance document for a one-owner LLC — states the default federal tax treatment, what it actually takes to elect a different one, the real, sourced limits of the liability shield, records access rights, and what actually happens to the company when its sole member dies.",
     "clauseOrder": [
       "llc_formation_statement",
       "llc_tax_classification",
       "llc_tax_election_mechanics",
       "llc_liability_shield",
+      "llc_records_inspection",
       "llc_capital_contribution",
       "llc_management",
       "llc_distributions",
       "llc_dissolution",
+      "llc_death_succession",
       "llc_ack"
     ],
     "fields": [
@@ -1079,15 +1081,18 @@
   {
     "id": "llc_operating_agreement_multi_member",
     "title": "Multi-Member LLC Operating Agreement",
-    "description": "Governance for a multi-owner LLC — membership, contributions, and voting, plus the real, sourced default rules on tax treatment (including how and when to elect a different one), liability, and distributions that apply if the members don't spell out their own.",
+    "description": "Governance for a multi-owner LLC — membership, contributions, and voting, plus the real, sourced default rules on tax treatment (including how and when to elect a different one), liability, member fiduciary duties, records access, and the actual statutory dissolution triggers that apply if the members don't spell out their own.",
     "clauseOrder": [
       "llc_mm_formation_statement",
       "llc_mm_members",
       "llc_mm_tax_classification",
       "llc_tax_election_mechanics",
       "llc_mm_liability_shield",
+      "llc_records_inspection",
       "llc_mm_management",
+      "llc_mm_fiduciary_duties",
       "llc_mm_distributions",
+      "llc_mm_dissolution_triggers",
       "llc_mm_dissolution",
       "llc_mm_ack"
     ],
@@ -1112,12 +1117,15 @@
   {
     "id": "corporate_bylaws",
     "title": "Corporate Bylaws",
-    "description": "Internal governance for a corporation — shareholder and board meeting defaults, officer roles, and indemnification, with the real statutory floors and ceilings under quorum and voting thresholds, board meeting notice requirements, and when indemnification stops being optional — not just fill-in-the-blank numbers.",
+    "description": "Internal governance for a corporation — shareholder and board meeting defaults, written consent, cumulative voting, director removal, officer roles, and indemnification, with the real statutory floors and ceilings under quorum and voting thresholds, board meeting notice requirements, and when indemnification stops being optional — not just fill-in-the-blank numbers.",
     "clauseOrder": [
       "bylaws_purpose",
       "bylaws_shareholder_meetings",
       "bylaws_shareholder_meeting_continuation",
+      "bylaws_written_consent",
       "bylaws_board",
+      "bylaws_cumulative_voting",
+      "bylaws_director_removal",
       "bylaws_board_meetings",
       "bylaws_board_meeting_notice",
       "bylaws_officers",
@@ -1148,13 +1156,16 @@
   {
     "id": "s_corp_election_overview",
     "title": "S Corporation Election Overview",
-    "description": "The federal eligibility test, unanimous shareholder consent requirement, and filing deadline for electing S corporation tax treatment — including the family-attribution rule for counting shareholders and what doesn't count as a second class of stock — closes the loop the LLC and Bylaws documents leave open.",
+    "description": "The federal eligibility test, unanimous shareholder consent requirement, filing deadline, revocation, and the ways S status can be lost or restored — including the family-attribution rule for counting shareholders and what doesn't count as a second class of stock — closes the loop the LLC and Bylaws documents leave open.",
     "clauseOrder": [
       "scorp_eligibility",
       "scorp_family_attribution",
       "scorp_second_class_exceptions",
       "scorp_consent",
       "scorp_deadline",
+      "scorp_revocation",
+      "scorp_termination_passive_income",
+      "scorp_after_termination",
       "scorp_filing",
       "scorp_ack"
     ],

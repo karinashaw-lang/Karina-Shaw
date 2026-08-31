@@ -1772,6 +1772,23 @@
       ]
     },
     {
+      "id": "llc_records_inspection",
+      "title": "Records and Tax Return Access",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-08-31",
+      "body": "A member — or someone a member's interest in {{companyName}} has been transferred to — has the right, for purposes reasonably related to their interest, to inspect and copy {{companyName}}'s required records during normal business hours, and to obtain a written copy of {{companyName}}'s federal, state, and local income tax returns for each year, promptly after they become available.",
+      "gap": "This is one state's statute, used as real evidence of a genuine default access right — not a claim about which state's law governs a specific LLC. This right belongs to a transferee (someone who receives an economic interest, such as an heir, without becoming a full member) as well as to members themselves — it isn't limited to people with voting rights. This document doesn't restate the additional annual and interim financial-reporting duties this same statute imposes once an LLC has more than 35 members.",
+      "citations": [
+        {
+          "case": "Cal. Corp. Code § 17704.10(b) (California Legislative Information text)",
+          "cite": "California Revised Uniform Limited Liability Company Act, member and transferee inspection and tax-return rights",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=17704.10.",
+          "quote": "Each member, manager, and transferee has the right, upon reasonable request, for purposes reasonably related to the interest of that person as a member, manager, or transferee, to each of the following: (1) To inspect and copy during normal business hours any of the records required to be maintained pursuant to Section 17701.13. (2) To obtain in writing from the limited liability company, promptly after becoming available, a copy of the limited liability company’s federal, state, and local income tax returns for each year."
+        }
+      ]
+    },
+    {
       "id": "llc_capital_contribution",
       "title": "Initial Capital Contribution",
       "kind": "drafting",
@@ -1794,6 +1811,23 @@
       "title": "Dissolution",
       "kind": "drafting",
       "body": "{{companyName}} will continue until dissolved by {{memberName}} or as otherwise required by law. Upon dissolution, {{companyName}}'s debts and liabilities will be paid or provided for first, with any remaining assets distributed to {{memberName}}."
+    },
+    {
+      "id": "llc_death_succession",
+      "title": "What Happens on the Sole Member's Death",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-08-31",
+      "body": "A single-member LLC does not automatically dissolve the moment its sole member dies. State law's default dissolution trigger for a membership gap is 90 consecutive days with no members — but on the death of a sole member, that member's interest can pass directly to their heirs, successors, or assigns by will or other applicable law, and that heir or successor becomes a substituted member without needing anyone's permission or consent.",
+      "gap": "This is one state's statute, used as real evidence of a genuine default succession rule — not a claim about which state's law governs a specific LLC. This default rule doesn't override estate administration itself — the interest still passes subject to whatever probate or other administration process otherwise applies to the deceased member's estate. This document doesn't say who the heir, successor, or assign actually is for a given member; that's a matter of the member's own estate plan (or intestacy law if there isn't one), not something this operating agreement can settle on its own.",
+      "citations": [
+        {
+          "case": "Cal. Corp. Code § 17707.01(c) (California Legislative Information text)",
+          "cite": "California Revised Uniform Limited Liability Company Act, sole member's death and heir succession",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=17707.01.",
+          "quote": "The passage of 90 consecutive days during which the limited liability company has no members, except that, on the death of a natural person who is the sole member of a limited liability company, the status of the member, including a membership interest, may pass to one or more heirs, successors, and assigns of the member by will or applicable law. An heir, successor, or assign of the member’s interest becomes a substituted member pursuant to paragraph (4) of subdivision (c) of Section 17704.01, subject to administration as provided by applicable law, without the permission or consent of the heirs, successors, or assigns or those administering the estate of the deceased member."
+        }
+      ]
     },
     {
       "id": "llc_ack",
@@ -1860,6 +1894,29 @@
       "body": "{{companyName}} is: ☐ Member-managed  ☐ Manager-managed\n\nIf manager-managed, the manager(s): _______________________________________________\n\nOrdinary business decisions require the vote or written consent of members holding more than 50% of the ownership interests, unless this agreement requires a greater vote for a specific decision. Admitting a new member, amending this agreement, and selling substantially all of the company's assets each require the unanimous vote or written consent of all members."
     },
     {
+      "id": "llc_mm_fiduciary_duties",
+      "title": "Fiduciary Duties — and Who Actually Owes Them",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-08-31",
+      "body": "Which management box is checked above changes who owes what to whom. If {{companyName}} is member-managed, each member owes the company and the other members a duty of loyalty — to account for and hold as trustee any property, profit, or benefit the member takes from the company or a company opportunity; to avoid dealing with the company on behalf of someone whose interests are adverse to it; and to avoid competing with the company — plus a duty of care limited to avoiding grossly negligent or reckless conduct, intentional misconduct, or a knowing violation of law (ordinary negligence isn't enough to breach it). If {{companyName}} is manager-managed instead, those same duties shift to the manager or managers — a member who isn't also a manager owes no fiduciary duty to the company or the other members solely because they're a member.",
+      "gap": "This is one state's statute, used as real evidence of a genuine default duty structure — not a claim about which state's law governs a specific LLC. A member doesn't breach these duties merely by acting in their own self-interest — the statute says so directly. Everyone still owes the company and the other members an obligation of good faith and fair dealing, regardless of which management structure applies; that obligation isn't one of the two duties that shifts to managers only.",
+      "citations": [
+        {
+          "case": "Cal. Corp. Code § 17704.09(b)-(c) (California Legislative Information text)",
+          "cite": "California Revised Uniform Limited Liability Company Act, a member's duties of loyalty and care",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=17704.09.",
+          "quote": "A member’s duty of loyalty to the limited liability company and the other members is limited to the following: (1) To account to the limited liability company and hold as trustee for it any property, profit, or benefit derived by the member in the conduct and winding up of the activities of a limited liability company or derived from a use by the member of a limited liability company property, including the appropriation of a limited liability company opportunity. (2) To refrain from dealing with the limited liability company in the conduct or winding up of the activities of the limited liability company as or on behalf of a person having an interest adverse to the limited liability company. (3) To refrain from competing with the limited liability company in the conduct or winding up of the activities of the limited liability company."
+        },
+        {
+          "case": "Cal. Corp. Code § 17704.09(f) (California Legislative Information text)",
+          "cite": "California Revised Uniform Limited Liability Company Act, duties shift to the manager in a manager-managed LLC",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=17704.09.",
+          "quote": "In a manager-managed limited liability company, all of the following rules apply: (1) Subdivisions (a), (b), (c), and (e) apply to the manager or managers and not the members. (2) Subdivision (d) applies to the members and managers. (3) Except as otherwise provided, a member does not have any fiduciary duty to the limited liability company or to any other member solely by reason of being a member."
+        }
+      ]
+    },
+    {
       "id": "llc_mm_distributions",
       "title": "Distributions",
       "kind": "authority",
@@ -1879,6 +1936,29 @@
           "cite": "California Revised Uniform Limited Liability Company Act, dissociation doesn't itself trigger a distribution",
           "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=17704.04.",
           "quote": "Unless the articles of organization or written operating agreement provides otherwise, a person’s dissociation does not entitle the person to a distribution"
+        }
+      ]
+    },
+    {
+      "id": "llc_mm_dissolution_triggers",
+      "title": "The Default Dissolution Triggers",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-08-31",
+      "body": "Absent a different rule in the operating agreement or articles of organization, state law dissolves an LLC on the first of several events: an event the operating agreement or articles specifically designate; a vote of members holding 50% or more of the voting interests (or a higher percentage, if the operating agreement sets one); 90 consecutive days with no members at all; or a court's decree of judicial dissolution.",
+      "gap": "This is one state's statute, used as real evidence of the actual default trigger set — not a claim about which state's law governs a specific LLC. The statutory member-vote default is 50% or more, not a majority exceeding 50% — a small but real difference from a \"more than half\" threshold, worth checking against whatever specific vote requirement this agreement's own management section actually sets. This document doesn't cover the separate grounds for judicial dissolution itself, which is a distinct statutory process from the events listed here.",
+      "citations": [
+        {
+          "case": "Cal. Corp. Code § 17707.01 (California Legislative Information text)",
+          "cite": "California Revised Uniform Limited Liability Company Act, default dissolution triggers",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=17707.01.",
+          "quote": "A limited liability company is dissolved, and its activities shall be wound up, upon the happening of the first to occur of the following: (a) On the happening of an event set forth in a written operating agreement or the articles of organization. (b) By the vote of 50 percent or more of the voting interests of the members of the limited liability company or a greater percentage of the voting interests of members as may be specified in the articles of organization, or a written operating agreement."
+        },
+        {
+          "case": "Cal. Corp. Code § 17707.01(c)-(d) (California Legislative Information text)",
+          "cite": "California Revised Uniform Limited Liability Company Act, the no-members and judicial-dissolution triggers",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=17707.01.",
+          "quote": "The passage of 90 consecutive days during which the limited liability company has no members... (d) Entry of a decree of judicial dissolution pursuant to Section 17707.03."
         }
       ]
     },
@@ -1941,10 +2021,79 @@
       ]
     },
     {
+      "id": "bylaws_written_consent",
+      "title": "Acting Without a Meeting",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-08-31",
+      "body": "Shareholders can generally approve most actions in writing, without holding a meeting at all, as long as shareholders holding at least the number of votes it would take to approve that action at a meeting sign a written consent. Electing directors is a real exception to that rule: directors can't be elected by written consent unless every single share entitled to vote signs on — a bare or even large majority isn't enough — with one narrow carve-out: shareholders can fill a board vacancy (other than one created by removing a director) by written consent of a majority of the outstanding voting shares.",
+      "gap": "This is one state's statute, used as real evidence of a genuine formal requirement — not a claim about which state's law governs a specific corporation. A shareholder who signs a consent can revoke it, but only before the required number of consents needed to approve the action have actually been filed with the corporation — not after. Separately, unless every voting shareholder consented in writing, the statute requires notice to shareholders who didn't sign, timed differently depending on what kind of action was approved.",
+      "citations": [
+        {
+          "case": "Cal. Corp. Code § 603(a) (California Legislative Information text)",
+          "cite": "California General Corporation Law, general written-consent mechanism",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=603.",
+          "quote": "Unless otherwise provided in the articles, any action that may be taken at any annual or special meeting of shareholders may be taken without a meeting and without prior notice, if a consent in writing, as specified in Section 195, setting forth the action so taken, shall be provided by the holders of outstanding shares having not less than the minimum number of votes that would be necessary to authorize or take that action at a meeting at which all shares entitled to vote thereon were present and voted."
+        },
+        {
+          "case": "Cal. Corp. Code § 603(d) (California Legislative Information text)",
+          "cite": "California General Corporation Law, directors generally can't be elected by less than unanimous consent",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=603.",
+          "quote": "Notwithstanding subdivision (a), directors may not be elected by written consent except by unanimous written consent of all shares entitled to vote for the election of directors; provided that the shareholders may elect a director to fill a vacancy, other than a vacancy created by removal, by the written consent of a majority of the outstanding shares entitled to vote."
+        }
+      ]
+    },
+    {
       "id": "bylaws_board",
       "title": "Board of Directors",
       "kind": "drafting",
       "body": "The number of directors shall be _______. Directors are elected by the shareholders at each annual meeting and serve until the next annual meeting or until a successor is elected."
+    },
+    {
+      "id": "bylaws_cumulative_voting",
+      "title": "Cumulative Voting for Directors",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-08-31",
+      "body": "Shareholders have a default right to cumulative voting in director elections: instead of casting one vote per share for each open board seat, a shareholder can give one candidate a number of votes equal to the number of directors being elected multiplied by that shareholder's normal vote count, or spread those same total votes across several candidates as they choose. That right doesn't activate automatically at a given meeting — it requires that a candidate's name was placed in nomination before the voting, and that some shareholder gave notice at the meeting, before voting began, of an intention to cumulate votes. Once any one shareholder gives that notice, every shareholder at that meeting may cumulate their votes.",
+      "gap": "This is one state's statute, used as real evidence of a genuine default shareholder right — not a claim about which state's law governs a specific corporation. Cumulative voting is a real protection for minority shareholders — it lets a large-enough minority concentrate their votes to elect at least one director, something they generally couldn't do if every seat were decided on a simple one-vote-per-share, highest-vote-getters basis.",
+      "citations": [
+        {
+          "case": "Cal. Corp. Code § 708(a) (California Legislative Information text)",
+          "cite": "California General Corporation Law, the cumulative voting mechanism",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=708.",
+          "quote": "every shareholder complying with subdivision (b) and entitled to vote at any election of directors may cumulate such shareholder’s votes and give one candidate a number of votes equal to the number of directors to be elected multiplied by the number of votes to which the shareholder’s shares are normally entitled, or distribute the shareholder’s votes on the same principle among as many candidates as the shareholder thinks fit."
+        },
+        {
+          "case": "Cal. Corp. Code § 708(b) (California Legislative Information text)",
+          "cite": "California General Corporation Law, the notice precondition for cumulative voting",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=708.",
+          "quote": "No shareholder shall be entitled to cumulate votes (i.e., cast for any candidate a number of votes greater than the number of votes that the shareholder normally is entitled to cast) unless the candidate or candidates’ names have been placed in nomination prior to the voting and the shareholder has given notice at the meeting prior to the voting of the shareholder’s intention to cumulate the shareholder’s votes. If any one shareholder has given that notice, all shareholders may cumulate their votes for candidates in nomination."
+        }
+      ]
+    },
+    {
+      "id": "bylaws_director_removal",
+      "title": "Removing a Director Before Their Term Ends",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-08-31",
+      "body": "Shareholders can generally remove one or more directors without cause, by the same kind of vote it would take to elect them. But that power has a real limit tied directly to cumulative voting: a director can't be removed (unless the whole board is removed at once) if the votes cast against removal would have been enough to elect that director in the first place, assuming they'd been cast cumulatively in an election for the board's full authorized size.",
+      "gap": "This is one state's statute, used as real evidence of a genuine minority-shareholder protection — not a claim about which state's law governs a specific corporation. This protection exists specifically because of cumulative voting: it prevents a bare majority from simply voting out a director whom a large-enough minority elected using their cumulative-voting power, which would otherwise make that minority protection meaningless. Reducing the authorized number of directors, or amending the bylaws to reduce board classes, doesn't itself remove a sitting director before their term is up.",
+      "citations": [
+        {
+          "case": "Cal. Corp. Code § 303(a)(1) (California Legislative Information text)",
+          "cite": "California General Corporation Law, removal without cause and the cumulative-voting protection",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=303.",
+          "quote": "Any or all of the directors may be removed without cause if the removal is approved by the outstanding shares (Section 152), subject to the following: (1) Except for a corporation to which paragraph (3) is applicable, no director may be removed (unless the entire board is removed) when the votes cast against removal, or not consenting in writing to the removal, would be sufficient to elect the director if voted cumulatively at an election at which the same total number of votes were cast (or, if the action is taken by written consent, all shares entitled to vote were voted) and the entire number of directors authorized at the time of the director’s most recent election were then being elected."
+        },
+        {
+          "case": "Cal. Corp. Code § 303(b) (California Legislative Information text)",
+          "cite": "California General Corporation Law, reducing the board doesn't remove a sitting director",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=303.",
+          "quote": "Any reduction of the authorized number of directors or amendment reducing the number of classes of directors does not remove any director prior to the expiration of the director’s term of office."
+        }
+      ]
     },
     {
       "id": "bylaws_board_meetings",
@@ -2161,6 +2310,75 @@
           "cite": "U.S. Code, S corporation election timing",
           "url": "https://www.law.cornell.edu/uscode/text/26/1362",
           "quote": "An election under subsection (a) may be made by a small business corporation for any taxable year— (A) at any time during the preceding taxable year, or (B) at any time during the taxable year and on or before the 15th day of the 3d month of the taxable year."
+        }
+      ]
+    },
+    {
+      "id": "scorp_revocation",
+      "title": "Revoking the Election",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-08-31",
+      "body": "Unlike making the election in the first place, which requires every shareholder's consent, revoking it takes less: shareholders holding more than half of {{companyName}}'s shares, as of the day the revocation is made, is enough to consent to revoke. Timing controls when it takes effect: a revocation made by the 15th day of the third month of the tax year is effective retroactively to the start of that same tax year; made any later, it's effective starting the following tax year instead — unless the revocation itself specifies a later, prospective effective date, in which case that specified date controls.",
+      "gap": "This is one federal rule, verified against the current U.S. Code text. This asymmetry is real and worth noticing: unanimous consent is required to elect S status, but only a bare majority is required to end it — a minority shareholder who wants to keep S status has no statutory veto over a majority's decision to revoke it.",
+      "citations": [
+        {
+          "case": "26 U.S.C. § 1362(d)(1)(B) (Cornell LII text)",
+          "cite": "U.S. Code, revocation requires more than half of shares, not unanimity",
+          "url": "https://www.law.cornell.edu/uscode/text/26/1362",
+          "quote": "An election may be revoked only if shareholders holding more than one-half of the shares of stock of the corporation on the day on which the revocation is made consent to the revocation."
+        },
+        {
+          "case": "26 U.S.C. § 1362(d)(1)(C) (Cornell LII text)",
+          "cite": "U.S. Code, when a revocation takes effect",
+          "url": "https://www.law.cornell.edu/uscode/text/26/1362",
+          "quote": "a revocation made during the taxable year and on or before the 15th day of the 3d month thereof shall be effective on the 1st day of such taxable year, and (ii) a revocation made during the taxable year but after such 15th day shall be effective on the 1st day of the following taxable year."
+        }
+      ]
+    },
+    {
+      "id": "scorp_termination_passive_income",
+      "title": "An Involuntary Termination Trap",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-08-31",
+      "body": "S status can also end without anyone voting to end it. If {{companyName}} has accumulated earnings and profits (which generally means it was previously a C corporation, or acquired one, and never distributed out its retained C-corporation earnings) at the close of each of three consecutive tax years, and more than 25% of its gross receipts in each of those same three years comes from passive investment income — royalties, rents, dividends, interest, and annuities — the S election terminates automatically, effective the first day of the tax year after that third consecutive year.",
+      "gap": "This is one federal rule, verified against the current U.S. Code text. This trap doesn't apply to an S corporation that has never had C-corporation earnings and profits to begin with — a company that has been an S corporation from its first tax year, and has no accumulated E&P from before that election, can't trigger this specific termination path no matter how passive its income is.",
+      "citations": [
+        {
+          "case": "26 U.S.C. § 1362(d)(3)(A) (Cornell LII text)",
+          "cite": "U.S. Code, automatic termination for excess passive income with accumulated earnings and profits",
+          "url": "https://www.law.cornell.edu/uscode/text/26/1362",
+          "quote": "An election under subsection (a) shall be terminated whenever the corporation— (I) has accumulated earnings and profits at the close of each of 3 consecutive taxable years, and (II) has gross receipts for each of such taxable years more than 25 percent of which are passive investment income."
+        }
+      ]
+    },
+    {
+      "id": "scorp_after_termination",
+      "title": "If S Status Ends — Fixing It or Waiting It Out",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-08-31",
+      "body": "If S status is lost — whether by revocation, by ceasing to qualify, or by the passive-income trap above — two different paths exist depending on the cause. If the loss happened by genuine accident (a missed shareholder consent, an eligibility slip the corporation didn't realize), the IRS can treat the corporation as having remained an S corporation the whole time, if it determines the circumstances were inadvertent, the corporation fixes the underlying problem within a reasonable time after discovering it, and the corporation and every affected shareholder agree to make whatever tax adjustments the IRS requires. Absent that relief, once an election has been terminated, the corporation generally can't re-elect S status again until its fifth tax year after the one the termination took effect in — a five-year wait — unless the IRS consents to an earlier re-election.",
+      "gap": "This is one federal rule, verified against the current U.S. Code text. Inadvertent-termination relief is a determination the IRS makes on the specific facts, not something a corporation can grant itself by simply asserting good faith; this document doesn't state what the IRS actually looks for in making that determination.",
+      "citations": [
+        {
+          "case": "26 U.S.C. § 1362(f) (Cornell LII text)",
+          "cite": "U.S. Code, inadvertent termination relief — the conditions",
+          "url": "https://www.law.cornell.edu/uscode/text/26/1362",
+          "quote": "the Secretary determines that the circumstances resulting in such ineffectiveness or termination were inadvertent"
+        },
+        {
+          "case": "26 U.S.C. § 1362(f) (Cornell LII text)",
+          "cite": "U.S. Code, inadvertent termination relief — the actual outcome",
+          "url": "https://www.law.cornell.edu/uscode/text/26/1362",
+          "quote": "then, notwithstanding the circumstances resulting in such ineffectiveness or termination, such corporation shall be treated as an S corporation or a qualified subchapter S subsidiary, as the case may be, during the period specified by the Secretary."
+        },
+        {
+          "case": "26 U.S.C. § 1362(g) (Cornell LII text)",
+          "cite": "U.S. Code, the five-year bar on re-electing after termination",
+          "url": "https://www.law.cornell.edu/uscode/text/26/1362",
+          "quote": "such corporation (and any successor corporation) shall not be eligible to make an election under subsection (a) for any taxable year before its 5th taxable year which begins after the 1st taxable year for which such termination is effective, unless the Secretary consents to such election."
         }
       ]
     },
