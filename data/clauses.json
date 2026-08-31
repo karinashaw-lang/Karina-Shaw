@@ -1697,6 +1697,35 @@
       ]
     },
     {
+      "id": "llc_tax_election_mechanics",
+      "title": "How and When a Different Classification Gets Elected",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-08-30",
+      "body": "Changing away from the default disregarded-entity treatment isn't automatic — it takes filing IRS Form 8832 (Entity Classification Election). The effective date on that form has real limits: it can't be dated more than 75 days before the filing date, and can't be dated more than 12 months after it. Once {{companyName}} makes an election to change its classification, it generally can't elect a different classification again for 60 months from the effective date of that election, absent IRS permission.",
+      "gap": "This is one federal rule, verified against the current Treasury Regulations text. The 60-month lock-in has a narrow exception — the IRS may allow an earlier change if more than half the entity's ownership as of the later election is held by people who owned no interest at the time of the earlier one — but that relief isn't automatic, and this document doesn't state the full standard for obtaining it. This document doesn't cover the separate, S-corporation-specific election under 26 U.S.C. § 1362, which has its own timing rule.",
+      "citations": [
+        {
+          "case": "26 C.F.R. § 301.7701-3(c)(1)(i) (Cornell LII text)",
+          "cite": "Treasury Regulations, how an eligible entity elects its classification",
+          "url": "https://www.law.cornell.edu/cfr/text/26/301.7701-3",
+          "quote": "an eligible entity may elect to be classified other than as provided under paragraph (b) of this section, or to change its classification, by filing Form 8832, Entity Classification Election, with the service center designated on Form 8832."
+        },
+        {
+          "case": "26 C.F.R. § 301.7701-3(c)(1)(iii) (Cornell LII text)",
+          "cite": "Treasury Regulations, the effective-date window for a classification election",
+          "url": "https://www.law.cornell.edu/cfr/text/26/301.7701-3",
+          "quote": "The effective date specified on Form 8832 can not be more than 75 days prior to the date on which the election is filed and can not be more than 12 months after the date on which the election is filed."
+        },
+        {
+          "case": "26 C.F.R. § 301.7701-3(c)(1)(iv) (Cornell LII text)",
+          "cite": "Treasury Regulations, the sixty-month limitation on re-electing",
+          "url": "https://www.law.cornell.edu/cfr/text/26/301.7701-3",
+          "quote": "If an eligible entity makes an election under paragraph (c)(1)(i) of this section to change its classification (other than an election made by an existing entity to change its classification as of the effective date of this section), the entity cannot change its classification by election again during the sixty months succeeding the effective date of the election."
+        }
+      ]
+    },
+    {
       "id": "llc_liability_shield",
       "title": "Limited Liability",
       "kind": "authority",
@@ -1854,20 +1883,37 @@
       "kind": "authority",
       "status": "verified",
       "checkedDate": "2026-08-30",
-      "body": "Unless the articles of incorporation say otherwise, a quorum for a shareholders' meeting is a majority of the shares entitled to vote, present in person or by proxy — though it can never be less than one-third of the shares entitled to vote. Once a quorum is present, a matter passes with the affirmative vote of a majority of the shares actually represented and voting at the meeting, unless a bigger vote is required by law or the articles.",
-      "gap": "This is one state's default rule, used here as real evidence of what a corporation gets automatically if its own bylaws don't set a different quorum or voting threshold — not a claim about which state's law governs a specific corporation. Because the quorum floor (one-third) is set by statute in this state, bylaws can't set the shareholder quorum requirement arbitrarily low.",
+      "body": "Unless the articles of incorporation say otherwise, a quorum for a shareholders' meeting is a majority of the shares entitled to vote, present in person or by proxy — though it can never be less than one-third of the shares entitled to vote, and (except for a close corporation) never more than a majority either. Once a quorum is present, a matter passes with the affirmative vote of a majority of the shares actually represented and voting at the meeting, unless a bigger vote is required by law or the articles.",
+      "gap": "This is one state's default rule, used here as real evidence of what a corporation gets automatically if its own bylaws don't set a different quorum or voting threshold — not a claim about which state's law governs a specific corporation. The quorum requirement is boxed in on both sides by statute in this state: bylaws can't set it below one-third, and — unless the corporation is a close corporation — can't set it above a majority either.",
       "citations": [
         {
           "case": "Cal. Corp. Code § 602(a) (California Legislative Information text)",
-          "cite": "California General Corporation Law, shareholder meeting quorum",
+          "cite": "California General Corporation Law, shareholder meeting quorum floor and ceiling",
           "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=602.",
-          "quote": "Unless otherwise provided in the articles, a majority of the shares entitled to vote, represented in person or by proxy, shall constitute a quorum at a meeting of the shareholders, but in no event shall a quorum consist of less than one-third"
+          "quote": "Unless otherwise provided in the articles, a majority of the shares entitled to vote, represented in person or by proxy, shall constitute a quorum at a meeting of the shareholders, but in no event shall a quorum consist of less than one-third (or, in the case of a mutual water company, 20 percent) of the shares entitled to vote at the meeting or, except in the case of a close corporation, of more than a majority of the shares entitled to vote at the meeting."
         },
         {
           "case": "Cal. Corp. Code § 602(a) (California Legislative Information text)",
           "cite": "California General Corporation Law, shareholder voting threshold",
           "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=602.",
           "quote": "Except as provided in subdivision (b), the affirmative vote of a majority of the shares represented and voting at a duly held meeting at which a quorum is present (which shares voting affirmatively also constitute at least a majority of the required quorum) shall be the act of the shareholders, unless the vote of a greater number or voting by classes is required by this division or the articles."
+        }
+      ]
+    },
+    {
+      "id": "bylaws_shareholder_meeting_continuation",
+      "title": "If Shareholders Leave Mid-Meeting",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-08-30",
+      "body": "Once a quorum is present at a properly called shareholders' meeting, the meeting doesn't automatically lose its authority to act just because enough shareholders leave to drop attendance below quorum. The shareholders who remain may keep transacting business, as long as whatever they approve (other than an adjournment) gets the affirmative vote of at least a majority of the shares it would have taken to make a quorum in the first place — or a bigger vote, if a bigger vote was otherwise required for that action.",
+      "gap": "This is one state's default rule, used here as real evidence of a genuine feature of shareholder-meeting procedure — not a claim about which state's law governs a specific corporation. This means a shareholder can't block action simply by walking out once a quorum has already been established; the practical check is the majority-of-quorum vote threshold, not attendance at the moment of the vote.",
+      "citations": [
+        {
+          "case": "Cal. Corp. Code § 602(b) (California Legislative Information text)",
+          "cite": "California General Corporation Law, meeting continues despite a walkout",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=602.",
+          "quote": "The shareholders present at a duly called or held meeting at which a quorum is present may continue to transact business until adjournment notwithstanding the withdrawal of enough shareholders to leave less than a quorum, if any action taken (other than adjournment) is approved by at least a majority of the shares required to constitute a quorum"
         }
       ]
     },
@@ -1901,6 +1947,29 @@
       ]
     },
     {
+      "id": "bylaws_board_meeting_notice",
+      "title": "Calling and Noticing Board Meetings",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-08-30",
+      "body": "A regular board meeting can be held without any notice at all, as long as the bylaws or the board have already fixed its time and place. A special meeting is different: it requires at least four days' notice by mail, or 48 hours' notice delivered personally, by telephone (including voicemail), or electronically. Unlike quorum, this is a floor the bylaws can't lower — they cannot do away with notice of a special meeting altogether. Directors don't have to meet in person: participating by conference telephone or video counts as being present, as long as everyone can hear each other.",
+      "gap": "This is one state's default rule, used here as real evidence of a genuine formal requirement — not a claim about which state's law governs a specific corporation. A director who shows up to a meeting without objecting to a lack of notice, or who signs a written waiver, can't later challenge that meeting for lack of notice — but that's a separate, narrower point from whether notice was required in the first place.",
+      "citations": [
+        {
+          "case": "Cal. Corp. Code § 307(a)(2) (California Legislative Information text)",
+          "cite": "California General Corporation Law, notice for regular vs. special board meetings",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=307.",
+          "quote": "Regular meetings of the board may be held without notice if the time and place of the meetings are fixed by the bylaws or the board. Special meetings of the board shall be held upon four days’ notice by mail or 48 hours’ notice delivered personally or by telephone, including a voice messaging system or by electronic transmission by the corporation (Section 20). The articles or bylaws may not dispense with notice of a special meeting."
+        },
+        {
+          "case": "Cal. Corp. Code § 307(a)(6) (California Legislative Information text)",
+          "cite": "California General Corporation Law, remote participation counts as presence",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=307.",
+          "quote": "Participation in a meeting through use of conference telephone or electronic video screen communication pursuant to this subdivision constitutes presence in person at that meeting as long as all members participating in the meeting are able to hear one another"
+        }
+      ]
+    },
+    {
       "id": "bylaws_officers",
       "title": "Officers",
       "kind": "drafting",
@@ -1930,6 +1999,40 @@
       ]
     },
     {
+      "id": "bylaws_indemnification_mandatory",
+      "title": "When Indemnification Isn't Optional",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-08-30",
+      "body": "Everything above is a power {{companyName}} may exercise, not a promise — except in one specific situation, where indemnification stops being discretionary: if a director, officer, employee, or other agent is successful on the merits in defending a proceeding (or a specific claim or issue within it), the corporation must indemnify that person for the expenses actually and reasonably incurred defending it.",
+      "gap": "This is one state's statute, used as real evidence of a genuine mandatory floor underneath the general discretionary indemnification power — not a claim about which state's law governs a specific corporation. \"Successful on the merits\" is a narrower outcome than simply avoiding liability (for example, a case settled or dismissed on procedural grounds may not qualify), so this mandatory right shouldn't be assumed to cover every favorable outcome.",
+      "citations": [
+        {
+          "case": "Cal. Corp. Code § 317(d) (California Legislative Information text)",
+          "cite": "California General Corporation Law, mandatory indemnification for success on the merits",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=317.",
+          "quote": "To the extent that an agent of a corporation has been successful on the merits in defense of any proceeding referred to in subdivision (b) or (c) or in defense of any claim, issue, or matter therein, the agent shall be indemnified against expenses actually and reasonably incurred by the agent in connection therewith."
+        }
+      ]
+    },
+    {
+      "id": "bylaws_indemnification_advancement",
+      "title": "Advancing Defense Costs",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-08-30",
+      "body": "{{companyName}} may pay a director, officer, employee, or other agent's litigation expenses as they're incurred, before the proceeding is even over, rather than waiting to reimburse them only after a final determination that indemnification is proper. That advance comes with a condition: the person receiving it must first agree, in writing, to repay the money if it turns out later that they weren't actually entitled to be indemnified.",
+      "gap": "This is one state's statute, used as real evidence of a genuine mechanism — not a claim about which state's law governs a specific corporation. Like the general indemnification power itself, advancement here is something the corporation may do, not something it automatically must do, unless the corporation's own bylaws or a separate agreement commits to it.",
+      "citations": [
+        {
+          "case": "Cal. Corp. Code § 317(f) (California Legislative Information text)",
+          "cite": "California General Corporation Law, advancement of defense expenses",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=317.",
+          "quote": "Expenses incurred in defending any proceeding may be advanced by the corporation prior to the final disposition of the proceeding upon receipt of an undertaking by or on behalf of the agent to repay that amount if it shall be determined ultimately that the agent is not entitled to be indemnified as authorized in this section."
+        }
+      ]
+    },
+    {
       "id": "bylaws_amendment",
       "title": "Amendment",
       "kind": "drafting",
@@ -1955,6 +2058,52 @@
           "cite": "U.S. Code, small business corporation eligibility test",
           "url": "https://www.law.cornell.edu/uscode/text/26/1361",
           "quote": "the term “small business corporation” means a domestic corporation which is not an ineligible corporation and which does not— (A) have more than 100 shareholders, (B) have as a shareholder a person (other than an estate, a trust described in subsection (c)(2), or an organization described in subsection (c)(6)) who is not an individual, (C) have a nonresident alien as a shareholder, and (D) have more than 1 class of stock."
+        }
+      ]
+    },
+    {
+      "id": "scorp_family_attribution",
+      "title": "Counting Shareholders: the Family Rule",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-08-30",
+      "body": "The 100-shareholder cap doesn't count every stockholder individually: a husband and wife (and their estates) count as one shareholder, and so does an entire family — a common ancestor plus that ancestor's lineal descendants and their spouses or former spouses — no matter how many of them actually hold stock. There's a limit to how far back the family line can be traced for this purpose: an individual doesn't count as the common ancestor if, as of the relevant date, they're more than six generations removed from the youngest generation of shareholders who would otherwise be treated as part of the family.",
+      "gap": "This is one federal rule, verified against the current U.S. Code text. It only addresses how shareholders are counted toward the 100-shareholder cap — it doesn't change who is eligible to be a shareholder at all (the separate rules on individuals, estates, trusts, and nonresident aliens still apply).",
+      "citations": [
+        {
+          "case": "26 U.S.C. § 1361(c)(1)(A)-(B) (Cornell LII text)",
+          "cite": "U.S. Code, members of a family treated as one shareholder",
+          "url": "https://www.law.cornell.edu/uscode/text/26/1361",
+          "quote": "For purposes of subsection (b)(1)(A), there shall be treated as one shareholder— (i) a husband and wife (and their estates), and (ii) all members of a family (and their estates)."
+        },
+        {
+          "case": "26 U.S.C. § 1361(c)(1)(B)(i)-(ii) (Cornell LII text)",
+          "cite": "U.S. Code, who counts as a member of the family, and the six-generation limit",
+          "url": "https://www.law.cornell.edu/uscode/text/26/1361",
+          "quote": "The term “members of a family” means a common ancestor, any lineal descendant of such common ancestor, and any spouse or former spouse of such common ancestor or any such lineal descendant."
+        }
+      ]
+    },
+    {
+      "id": "scorp_second_class_exceptions",
+      "title": "What Doesn't Count as a Second Class of Stock",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-08-30",
+      "body": "Two structures common in small corporations don't by themselves violate the one-class-of-stock eligibility rule: giving some shares more voting power than others while keeping the same economic rights (for example, voting and non-voting common stock), and straight debt — a written, unconditional promise to pay a fixed sum on demand or on a set date, where the interest rate and payment dates aren't tied to profits, discretion, or similar contingencies, held by someone eligible to be an S corporation shareholder (or a bank or similar lender in the ordinary course of lending).",
+      "gap": "This is one federal rule, verified against the current U.S. Code text. The straight-debt safe harbor has its own detailed definition beyond what's stated here (the full test for what qualifies), so a shareholder loan that departs from a simple fixed-rate, on-demand or fixed-date structure should be checked against that fuller definition before assuming it's protected.",
+      "citations": [
+        {
+          "case": "26 U.S.C. § 1361(c)(4) (Cornell LII text)",
+          "cite": "U.S. Code, voting-rights differences among common stock disregarded",
+          "url": "https://www.law.cornell.edu/uscode/text/26/1361",
+          "quote": "For purposes of subsection (b)(1)(D), a corporation shall not be treated as having more than 1 class of stock solely because there are differences in voting rights among the shares of common stock."
+        },
+        {
+          "case": "26 U.S.C. § 1361(c)(5)(A) (Cornell LII text)",
+          "cite": "U.S. Code, straight debt safe harbor",
+          "url": "https://www.law.cornell.edu/uscode/text/26/1361",
+          "quote": "For purposes of subsection (b)(1)(D), straight debt shall not be treated as a second class of stock."
         }
       ]
     },
@@ -2052,6 +2201,29 @@
       ]
     },
     {
+      "id": "buysell_llc_restriction_enforceable",
+      "title": "Making the Restriction Stick for an LLC",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-08-30",
+      "body": "For this restriction to actually bind an outside buyer or an owner's heirs — not just the owners who signed it — it needs to be written into {{companyName}}'s operating agreement, not left as a side agreement. A transfer that violates a restriction written into the operating agreement is ineffective against anyone who had notice of the restriction at the time of the transfer. The company also doesn't have to recognize a transfer at all — for any purpose — until it has actual notice that the transfer happened.",
+      "gap": "This is one state's statute, used as real evidence of a genuine mechanism — not a claim about which state's law governs a specific LLC. The practical implication: a right of first refusal that lives only in this standalone agreement, and isn't also incorporated into the operating agreement itself, may not bind a transferee who never saw this agreement and had no notice of it. This document is meant to work alongside the operating agreement, not replace it.",
+      "citations": [
+        {
+          "case": "Cal. Corp. Code § 17705.02(f) (California Legislative Information text)",
+          "cite": "California Revised Uniform Limited Liability Company Act, a transfer restriction binds a transferee with notice",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=17705.02.",
+          "quote": "A transfer of a transferable interest in violation of a restriction on transfer contained in the operating agreement is ineffective as to a person having notice of the restriction at the time of transfer."
+        },
+        {
+          "case": "Cal. Corp. Code § 17705.02(e) (California Legislative Information text)",
+          "cite": "California Revised Uniform Limited Liability Company Act, the company need not recognize a transfer without notice",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=17705.02.",
+          "quote": "A limited liability company need not give effect to a transferee’s rights under this section until the limited liability company has notice of the transfer."
+        }
+      ]
+    },
+    {
       "id": "buysell_corp_restriction_notice",
       "title": "Why This Matters for a Corporation",
       "kind": "authority",
@@ -2071,6 +2243,29 @@
           "cite": "California General Corporation Law, enforceability against a transferee without notice",
           "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=418.",
           "quote": "Unless stated on the certificate, the initial transaction statement, and written statements as required by subdivision (a), no restriction upon transfer, no right of redemption and no voting agreement under subdivision (a) of Section 706, no irrevocable proxy under subdivision (e) of Section 705, and no voting restriction imposed by the corporation shall be enforceable against a transferee of the shares without actual knowledge of such restriction, right, agreement or proxy."
+        }
+      ]
+    },
+    {
+      "id": "buysell_corp_close_corp_cap",
+      "title": "If the Corporation Is a Close Corporation",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-08-30",
+      "body": "If {{companyName}} has formally elected close corporation status, there's a separate, stricter rule beyond the general transfer-restriction disclosure above: a close corporation's shares must carry a specific legend on their face capping the number of shareholders of record (a number the corporation sets, up to a statutory maximum), and any voluntary transfer that would push the shareholder count past that cap is void — not just unenforceable against an unknowing buyer, but void outright.",
+      "gap": "This is one state's statute, used as real evidence of a genuine formal requirement for a specific corporate subtype — not a claim about which state's law governs a specific corporation, and it only applies if the corporation has actually elected close corporation status (most small corporations have not). Check the articles of incorporation for a close corporation election before assuming this applies.",
+      "citations": [
+        {
+          "case": "Cal. Corp. Code § 418(c) (California Legislative Information text)",
+          "cite": "California General Corporation Law, required close-corporation legend and shareholder cap",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=418.",
+          "quote": "All certificates representing shares of a close corporation shall contain in addition to any other statements required by this section, the following conspicuous legend on the face thereof: “This corporation is a close corporation. The number of holders of record of its shares of all classes cannot exceed ____ [a number not in excess of 35]. Any attempted voluntary inter vivos transfer which would violate this requirement is void. Refer to the articles, bylaws and any agreements on file with the secretary of the corporation for further restrictions.”"
+        },
+        {
+          "case": "Cal. Corp. Code § 418(d) (California Legislative Information text)",
+          "cite": "California General Corporation Law, a transfer past the cap is void",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=418.",
+          "quote": "Any attempted voluntary inter vivos transfer of the shares of a close corporation which would result in the number of holders of record of its shares exceeding the maximum number specified in its articles is void if the certificate contains the legend required by subdivision (c)."
         }
       ]
     },

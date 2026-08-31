@@ -1039,10 +1039,11 @@
   {
     "id": "llc_operating_agreement_single_member",
     "title": "Single-Member LLC Operating Agreement",
-    "description": "The internal governance document for a one-owner LLC — states the default federal tax treatment and the real, sourced limits of the liability shield, not just a fill-in-the-blank contract.",
+    "description": "The internal governance document for a one-owner LLC — states the default federal tax treatment, what it actually takes to elect a different one, and the real, sourced limits of the liability shield, not just a fill-in-the-blank contract.",
     "clauseOrder": [
       "llc_formation_statement",
       "llc_tax_classification",
+      "llc_tax_election_mechanics",
       "llc_liability_shield",
       "llc_capital_contribution",
       "llc_management",
@@ -1077,11 +1078,12 @@
   {
     "id": "llc_operating_agreement_multi_member",
     "title": "Multi-Member LLC Operating Agreement",
-    "description": "Governance for a multi-owner LLC — membership, contributions, and voting, plus the real, sourced default rules on tax treatment, liability, and distributions that apply if the members don't spell out their own.",
+    "description": "Governance for a multi-owner LLC — membership, contributions, and voting, plus the real, sourced default rules on tax treatment (including how and when to elect a different one), liability, and distributions that apply if the members don't spell out their own.",
     "clauseOrder": [
       "llc_mm_formation_statement",
       "llc_mm_members",
       "llc_mm_tax_classification",
+      "llc_tax_election_mechanics",
       "llc_mm_liability_shield",
       "llc_mm_management",
       "llc_mm_distributions",
@@ -1109,14 +1111,18 @@
   {
     "id": "corporate_bylaws",
     "title": "Corporate Bylaws",
-    "description": "Internal governance for a corporation — shareholder and board meeting defaults, officer roles, and indemnification, with the real statutory floors under quorum and voting thresholds, not just fill-in-the-blank numbers.",
+    "description": "Internal governance for a corporation — shareholder and board meeting defaults, officer roles, and indemnification, with the real statutory floors and ceilings under quorum and voting thresholds, board meeting notice requirements, and when indemnification stops being optional — not just fill-in-the-blank numbers.",
     "clauseOrder": [
       "bylaws_purpose",
       "bylaws_shareholder_meetings",
+      "bylaws_shareholder_meeting_continuation",
       "bylaws_board",
       "bylaws_board_meetings",
+      "bylaws_board_meeting_notice",
       "bylaws_officers",
       "bylaws_indemnification",
+      "bylaws_indemnification_mandatory",
+      "bylaws_indemnification_advancement",
       "bylaws_amendment",
       "bylaws_ack"
     ],
@@ -1141,9 +1147,11 @@
   {
     "id": "s_corp_election_overview",
     "title": "S Corporation Election Overview",
-    "description": "The federal eligibility test, unanimous shareholder consent requirement, and filing deadline for electing S corporation tax treatment — closes the loop the LLC and Bylaws documents leave open.",
+    "description": "The federal eligibility test, unanimous shareholder consent requirement, and filing deadline for electing S corporation tax treatment — including the family-attribution rule for counting shareholders and what doesn't count as a second class of stock — closes the loop the LLC and Bylaws documents leave open.",
     "clauseOrder": [
       "scorp_eligibility",
+      "scorp_family_attribution",
+      "scorp_second_class_exceptions",
       "scorp_consent",
       "scorp_deadline",
       "scorp_filing",
@@ -1164,13 +1172,15 @@
   {
     "id": "buy_sell_agreement",
     "title": "Buy-Sell Agreement",
-    "description": "What happens to an owner's interest on death, disability, divorce, or departure — a rider to an LLC operating agreement or corporate bylaws, with the real default rules that apply if this gap is left open.",
+    "description": "What happens to an owner's interest on death, disability, divorce, or departure — a rider to an LLC operating agreement or corporate bylaws, with the real default rules that apply if this gap is left open, and what it actually takes to make the restriction enforceable against an outside transferee.",
     "clauseOrder": [
       "buysell_purpose",
       "buysell_triggering_events",
       "buysell_row_first_refusal",
       "buysell_llc_default",
+      "buysell_llc_restriction_enforceable",
       "buysell_corp_restriction_notice",
+      "buysell_corp_close_corp_cap",
       "buysell_valuation",
       "buysell_funding",
       "buysell_ack"
