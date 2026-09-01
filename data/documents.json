@@ -3480,5 +3480,48 @@
     "categories": [
       "Ending employment"
     ]
+  },
+  {
+    "id": "mutual_nda",
+    "title": "Mutual Non-Disclosure Agreement",
+    "description": "A two-way confidentiality agreement for two businesses exchanging information in both directions -- for example, exploring a partnership or evaluating a deal -- distinct from this project's one-way, employer-to-employee Non-Disclosure Agreement.",
+    "clauseOrder": [
+      "mutualnda_definitions",
+      "mutualnda_obligations",
+      "mutualnda_carveouts",
+      "mutualnda_ca_tradesecret_definition",
+      "mutualnda_contractual_independent_of_tradesecret",
+      "mutualnda_dtsa_notice_scope",
+      "mutualnda_term_and_ack"
+    ],
+    "fields": [
+      {
+        "id": "party1Name",
+        "label": "First party's name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "party2Name",
+        "label": "Second party's name",
+        "placeholder": "Beta Ventures, LLC",
+        "required": true
+      },
+      {
+        "id": "purposeOfDisclosure",
+        "label": "Purpose of disclosure",
+        "placeholder": "evaluating a potential business partnership",
+        "required": true
+      },
+      {
+        "id": "confidentialityDuration",
+        "label": "Duration of confidentiality obligations",
+        "placeholder": "three (3) years",
+        "required": true
+      }
+    ],
+    "categories": [
+      "Confidentiality & IP"
+    ]
   }
 ]
