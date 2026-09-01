@@ -7503,6 +7503,619 @@
       "title": "Signatures",
       "kind": "drafting",
       "body": "IN WITNESS WHEREOF, the undersigned founders of {{companyName}} have executed this Founders' Agreement as of the date last signed below.\n\n{{founder1Name}}\nSignature: ☐ _________________________\nDate: _______________\n\n{{founder2Name}}\nSignature: ☐ _________________________\nDate: _______________"
+    },
+    {
+      "id": "sdi_deposit_details",
+      "title": "Deposit Details",
+      "kind": "drafting",
+      "body": "SECURITY DEPOSIT ITEMIZATION / MOVE-OUT STATEMENT. Landlord: {{landlordName}}. Tenant: {{tenantName}}. Property: {{propertyAddress}}. Security deposit received: ${{depositAmount}}, received on or about {{moveInDate}}. Tenant vacated the property on {{moveOutDate}}. This statement is dated {{statementDate}} and sets out the disposition of the security deposit described above."
+    },
+    {
+      "id": "sdi_deposit_cap",
+      "title": "The Statutory Cap on the Deposit Amount",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-01",
+      "body": "Under California statute, a landlord generally may not demand or receive a security deposit, however denominated, in excess of one month's rent, in addition to the first month's rent paid on or before initial occupancy. A narrower exception permits a higher cap of two months' rent, but only for a landlord who is a natural person (or an LLC whose members are all natural persons) and who owns no more than two residential rental properties totaling no more than four dwelling units offered for rent combined — and even that higher cap does not apply if the prospective tenant is a service member, in which case the one-month cap still controls. This general one-month cap took effect for security collected or demanded on or after July 1, 2024; it does not apply to security collected or demanded before that date. Separately, and not subject to the cap described above, a landlord may require an advance rent payment of not less than six months' rent if the lease term is six months or longer.",
+      "gap": "This is California's current statutory cap, not a nationwide figure — security deposit caps vary enormously by state, from no state-level cap at all to caps expressed in different terms, and this document tracks California's statewide statute only, not the pre-July 2024 two- or three-month caps that used to apply generally and that a reader may have seen referenced in older material. This document addresses California's statewide statute only; it does not cover any city or county's local rent-control or security-deposit ordinance that might impose its own, different rule. All citations below are subsections of the same statutory section (Civil Code § 1950.5) rather than independently authored sources; no additional independent source was found for this.",
+      "citations": [
+        {
+          "case": "Cal. Civ. Code § 1950.5(c)(1)",
+          "cite": "California Civil Code, general one-month security deposit cap",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1950.5.",
+          "quote": "a landlord shall not demand or receive security, however denominated, in an amount or value in excess of an amount equal to one month's rent, in addition to any rent for the first month paid on or before initial occupancy."
+        },
+        {
+          "case": "Cal. Civ. Code § 1950.5(c)(5)(A)",
+          "cite": "California Civil Code, higher cap for a small individual landlord",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1950.5.",
+          "quote": "a landlord shall not demand or receive security, however denominated, in an amount or value in excess of an amount equal to two months' rent, in addition to any rent for the first month paid on or before initial occupancy if the landlord meets both of the following requirements: (i) The landlord is a natural person or a limited liability company in which all members are natural persons. (ii) The landlord owns no more than two residential rental properties that collectively include no more than four dwelling units offered for rent."
+        },
+        {
+          "case": "Cal. Civ. Code § 1950.5(c)(5)(B)",
+          "cite": "California Civil Code, the small-landlord cap doesn't apply to a service-member tenant",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1950.5.",
+          "quote": "Subparagraph (A) shall not apply if the prospective tenant is a service member."
+        },
+        {
+          "case": "Cal. Civ. Code § 1950.5(c)(6)",
+          "cite": "California Civil Code, effective date of the general cap",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1950.5.",
+          "quote": "This subdivision shall not apply to a security collected or demanded by the landlord before July 1, 2024."
+        },
+        {
+          "case": "Cal. Civ. Code § 1950.5(c)(2)",
+          "cite": "California Civil Code, advance rent for a longer lease",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1950.5.",
+          "quote": "This subdivision does not prohibit an advance payment of not less than six months' rent if the term of the lease is six months or longer."
+        }
+      ]
+    },
+    {
+      "id": "sdi_permitted_uses",
+      "title": "Permitted Uses of the Deposit — and the Ordinary Wear-and-Tear Carve-Out",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-01",
+      "body": "Under California statute, a security deposit may be used only for the following purposes, subject to the further limits described below: (1) compensating the landlord for a tenant's default in the payment of rent; (2) repairing damage to the premises caused by the tenant or the tenant's guest or licensee, exclusive of ordinary wear and tear; (3) cleaning the premises at the end of the tenancy, to the extent necessary to return the unit to the same level of cleanliness it was in at the start of the tenancy; and (4) remedying a future default by the tenant in an obligation to restore, replace, or return personal property or appurtenances, exclusive of ordinary wear and tear, but only if the rental agreement authorizes the deposit to be applied to that purpose. Beyond this list, a landlord may claim from the deposit only amounts that are reasonably necessary for those purposes, and may not assert a claim against the deposit for damage or a defective condition that predates the tenancy, for ordinary wear and tear or its effects (whether the wear and tear predates or occurs during the tenancy), or for the cumulative effect of ordinary wear and tear across one or more tenancies.",
+      "gap": "The \"ordinary wear and tear\" exclusion is a real, litigated line rather than a formality — the statute repeats it separately for damage repair, for the fourth (personal-property) use, and again as an affirmative bar on any claim for wear and tear regardless of when it occurred, but the statute itself does not define what counts as \"ordinary\" wear and tear as opposed to tenant-caused damage; that line is drawn case by case rather than by a statutory checklist. This is one state's exhaustive statutory list — other states permit different, and sometimes broader or narrower, categories of deductions, and this document does not track any state's law but California's, and only the statewide rule, not any city or county ordinance that might narrow it further. All citations below are subsections of the same statutory section (Civil Code § 1950.5) rather than independently authored sources; no additional independent source was found for this.",
+      "citations": [
+        {
+          "case": "Cal. Civ. Code § 1950.5(b)",
+          "cite": "California Civil Code, the first three permitted uses of a security deposit",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1950.5.",
+          "quote": "(1) The compensation of a landlord for a tenant's default in the payment of rent. (2) The repair of damages to the premises, exclusive of ordinary wear and tear, caused by the tenant or by a guest or licensee of the tenant. (3) The cleaning of the premises upon termination of the tenancy necessary to return the unit to the same level of cleanliness it was in at the inception of the tenancy."
+        },
+        {
+          "case": "Cal. Civ. Code § 1950.5(b)(4)",
+          "cite": "California Civil Code, the fourth permitted use — future personal-property defaults",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1950.5.",
+          "quote": "(4) To remedy future defaults by the tenant in any obligation under the rental agreement to restore, replace, or return personal property or appurtenances, exclusive of ordinary wear and tear, if the security deposit is authorized to be applied thereto by the rental agreement."
+        },
+        {
+          "case": "Cal. Civ. Code § 1950.5(e)(1)",
+          "cite": "California Civil Code, the \"reasonably necessary\" limit on a claim",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1950.5.",
+          "quote": "the landlord may claim of the security only those amounts as are reasonably necessary for the purposes specified in subdivision (b)."
+        },
+        {
+          "case": "Cal. Civ. Code § 1950.5(e)(2)(A)",
+          "cite": "California Civil Code, the affirmative bar on a wear-and-tear or pre-existing-condition claim",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1950.5.",
+          "quote": "The landlord shall not assert a claim against the tenant or the security for damages to the premises or any defective conditions that preexisted the tenancy, for ordinary wear and tear or the effects thereof, whether the wear and tear preexisted the tenancy or occurred during the tenancy, or for the cumulative effects of ordinary wear and tear occurring during any one or more tenancies."
+        }
+      ]
+    },
+    {
+      "id": "sdi_return_deadline",
+      "title": "The 21-Day Itemization and Refund Deadline",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-01",
+      "body": "Under California statute, no later than 21 calendar days after the tenant has vacated the premises, the landlord must furnish the tenant a copy of an itemized statement indicating the basis for, and the amount of, any security received and its disposition, and must return any remaining portion of the deposit to the tenant. Along with that itemized statement, the landlord must also include copies of documents showing the charges deducted — bills, invoices, or receipts for repair or cleaning work performed by someone other than the landlord, or a description of the work and the time and hourly rate charged if the landlord or the landlord's employee performed it. If a repair cannot reasonably be completed within the 21-day period, or if supporting documents from a person or entity providing services, materials, or supplies are not yet in the landlord's possession within that period, the landlord may instead deduct a good-faith estimate of the charges and provide that estimate with the itemized statement, then complete the documentation requirements within 14 calendar days after the repair is finished or the documentation is received. A landlord need not provide supporting documents at all — for either the initial statement or the later completion — if the total deductions for repairs and cleaning combined do not exceed $125, or if the tenant has separately signed a written waiver of that documentation right.",
+      "gap": "This is one state's statutory deadline and documentation threshold, not a nationwide figure — the length of the return/itemization period, and whether receipts are required at all, vary considerably by state. This document addresses California's statewide statute only, not any city or county ordinance that might impose additional or different move-out documentation requirements. The 21-day period does not start running before the landlord or tenant gives notice to terminate the tenancy (or, for a fixed-term lease, no earlier than 60 calendar days before the lease's expiration) — a timing nuance distinct from the 21-day outer deadline itself and easy to overlook. A landlord who, in bad faith, fails to comply with this itemization and documentation subdivision is not entitled to claim any amount of the security at all — a separate and more severe consequence than the general bad-faith penalty described elsewhere in this document. All citations below are subsections of the same statutory section (Civil Code § 1950.5) rather than independently authored sources; no additional independent source was found for this.",
+      "citations": [
+        {
+          "case": "Cal. Civ. Code § 1950.5(h)(1)",
+          "cite": "California Civil Code, the 21-day itemization and refund deadline",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1950.5.",
+          "quote": "No later than 21 calendar days after the tenant has vacated the premises, but not earlier than the time that either the landlord or the tenant provides a notice to terminate the tenancy under Section 1946 or 1946.1, Section 1161 of the Code of Civil Procedure, or not earlier than 60 calendar days prior to the expiration of a fixed-term lease, the landlord shall furnish the tenant, a copy of an itemized statement indicating the basis for, and the amount of, any security received and the disposition of the security, and shall return any remaining portion of the security to the tenant..."
+        },
+        {
+          "case": "Cal. Civ. Code § 1950.5(h)(3)",
+          "cite": "California Civil Code, the good-faith-estimate alternative when work isn't done in 21 days",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1950.5.",
+          "quote": "If a repair to be done by the landlord or the landlord's employee cannot reasonably be completed within 21 calendar days after the tenant has vacated the premises, or if the documents from a person or entity providing services, materials, or supplies are not in the landlord's possession within 21 calendar days after the tenant has vacated the premises, the landlord may deduct the amount of a good faith estimate of the charges that will be incurred and provide that estimate with the itemized statement. ...Within 14 calendar days of completing the repair or receiving the documentation, the landlord shall complete the requirements in paragraphs (1) and (2) in the manner specified."
+        },
+        {
+          "case": "Cal. Civ. Code § 1950.5(h)(4)(A)",
+          "cite": "California Civil Code, the $125 documentation threshold",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1950.5.",
+          "quote": "The landlord need not comply with paragraph (2) or (3) if either of the following applies: (A) The deductions for repairs and cleaning together do not exceed one hundred twenty-five dollars ($125)."
+        },
+        {
+          "case": "Cal. Civ. Code § 1950.5(h)(7)",
+          "cite": "California Civil Code, forfeiture for bad-faith noncompliance with this subdivision",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1950.5.",
+          "quote": "The landlord shall not be entitled to claim any amount of the security if the landlord, in bad faith, fails to comply with this subdivision."
+        }
+      ]
+    },
+    {
+      "id": "sdi_deductions_schedule",
+      "title": "Itemized Deductions Schedule",
+      "kind": "drafting",
+      "body": "ITEMIZED DEDUCTIONS. The following amounts are deducted from the security deposit of ${{depositAmount}} described above, each identified by category, description, and amount:\n\n1. Unpaid rent: {{unpaidRentDeduction}} — description: {{unpaidRentDescription}}\n2. Repair of damage beyond ordinary wear and tear: {{repairDeduction}} — description: {{repairDescription}}\n3. Cleaning necessary to return the unit to its move-in level of cleanliness: {{cleaningDeduction}} — description: {{cleaningDescription}}\n4. Remedying a future default in returning or restoring personal property (only if authorized by the rental agreement): {{personalPropertyDeduction}} — description: {{personalPropertyDescription}}\n\nTotal deductions: {{totalDeductions}}. Remaining deposit refunded to {{tenantName}}: ${{refundAmount}}.\n\nSupporting documentation. Copies of bills, invoices, or receipts for the deductions listed above (or, where work was not complete, a good-faith estimate) are attached to this statement as Exhibit A, except for any deduction category exempted from that documentation requirement by its dollar amount or by a signed waiver."
+    },
+    {
+      "id": "sdi_bad_faith_penalty",
+      "title": "Bad-Faith Retention: The Penalty for Improperly Withholding a Deposit",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-01",
+      "body": "Under California statute, if a landlord (or the landlord's successor in interest) claims or retains a security deposit in bad faith, in violation of the security-deposit statute, the landlord may be liable for statutory damages of up to twice the amount of the deposit, in addition to actual damages — meaning the up-to-double penalty is added on top of whatever actual damages the tenant proves, not a cap that replaces or absorbs them. A court may award this bad-faith penalty whenever the facts warrant it, even if the tenant did not specifically request that relief. In any action under this statute, the landlord bears the burden of proving the reasonableness of amounts claimed against the deposit, or the landlord's authority to demand additional security. An action to recover a wrongfully retained deposit — including both actual and statutory damages — may be brought in small claims court if the total claimed falls within that court's jurisdictional dollar limit.",
+      "gap": "\"Bad faith\" is not defined by a fixed statutory checklist here; it is a standard applied to the facts of each case, and a landlord's good-faith interpretation of what may be deducted, or a good-faith accounting error, is not automatically bad faith. This is one state's statutory remedy; the amount, structure, and even the existence of a bad-faith deposit-retention penalty vary by state, and this document addresses California's statewide statute only, not any city or county ordinance. All citations below are subsections of the same statutory section (Civil Code § 1950.5) rather than independently authored sources; no additional independent source was found for this.",
+      "citations": [
+        {
+          "case": "Cal. Civ. Code § 1950.5(m)",
+          "cite": "California Civil Code, the bad-faith retention penalty",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1950.5.",
+          "quote": "The bad faith claim or retention by a landlord or the landlord's successors in interest of the security or any portion thereof in violation of this section, or the bad faith demand of replacement of security in violation of subdivision (k), may subject the landlord or the landlord's successors in interest to statutory damages of up to twice the amount of the security, in addition to actual damages. The court may award damages for bad faith whenever the facts warrant that award, regardless of whether the injured party has specifically requested relief. In an action under this section, the landlord or the landlord's successors in interest shall have the burden of proof as to the reasonableness of the amounts claimed or the authority pursuant to this section to demand additional security deposits."
+        },
+        {
+          "case": "Cal. Civ. Code § 1950.5(h)(7) [forfeiture]",
+          "cite": "California Civil Code, forfeiture of the entire deposit for bad-faith itemization noncompliance",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1950.5.",
+          "quote": "The landlord shall not be entitled to claim any amount of the security if the landlord, in bad faith, fails to comply with this subdivision."
+        },
+        {
+          "case": "Cal. Civ. Code § 1950.5(o)",
+          "cite": "California Civil Code, small claims court jurisdiction over these damages",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1950.5.",
+          "quote": "An action under this section may be maintained in small claims court if the damages claimed, whether actual, statutory, or both, are within the jurisdictional amount allowed by Section 116.220 or 116.221 of the Code of Civil Procedure."
+        }
+      ]
+    },
+    {
+      "id": "sdi_interest_status",
+      "title": "Interest on the Deposit: Not Required by This Statute",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-01",
+      "body": "California's security-deposit statute — the same statute that sets the deposit cap, the permitted uses, the 21-day return deadline, and the bad-faith penalty described elsewhere in this document — contains no provision requiring a landlord to pay interest on a tenant's security deposit while it is held. Its only references to the word \"interest\" anywhere in the statute concern a landlord's \"interest in the premises\" (ownership) and a landlord's \"successor in interest\" on a sale or transfer of the property — an unrelated legal use of the same word, not a security-deposit interest-payment obligation.",
+      "gap": "This is a negative finding based on direct review of the current, complete text of California Civil Code section 1950.5 (the statute governing residential security deposits statewide) — not a claim that no California jurisdiction anywhere requires deposit interest. A number of California cities and counties with local rent-control or tenant-protection ordinances (San Francisco and Berkeley are commonly cited examples) separately require a landlord to pay tenants interest on a held security deposit, sometimes annually, under those local ordinances — but that obligation comes from municipal or county law, not from the statewide Civil Code section on which this document is based, and this document does not track any city's or county's local ordinance. Deposit-interest requirements also vary by state at the state level; some states require it and California's statewide rule does not. This is a single statutory citation confirming the absence of an interest-payment provision in the operative, currently amended text of the section; no additional independent source was found for this.",
+      "citations": [
+        {
+          "case": "Cal. Civ. Code § 1950.5(b)",
+          "cite": "California Civil Code, the full definitional/permitted-use provision, containing no interest obligation",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1950.5.",
+          "quote": "As used in this section, \"security\" means any payment, fee, deposit, or charge, including, but not limited to, any payment, fee, deposit, or charge, except as provided in Section 1950.6, that is imposed at the beginning of the tenancy to be used to reimburse the landlord for costs associated with processing a new tenant or that is imposed as an advance payment of rent, used or to be used for any purpose, including, but not limited to, any of the following: (1) The compensation of a landlord for a tenant's default in the payment of rent. (2) The repair of damages to the premises, exclusive of ordinary wear and tear, caused by the tenant or by a guest or licensee of the tenant. (3) The cleaning of the premises upon termination of the tenancy necessary to return the unit to the same level of cleanliness it was in at the inception of the tenancy. (4) To remedy future defaults by the tenant in any obligation under the rental agreement to restore, replace, or return personal property or appurtenances, exclusive of ordinary wear and tear, if the security deposit is authorized to be applied thereto by the rental agreement."
+        },
+        {
+          "case": "Cal. Civ. Code § 1950.5 [amendment history]",
+          "cite": "California Civil Code, confirming the currently operative, fully reviewed version of the section",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1950.5.",
+          "quote": "(Amended by Stats. 2025, Ch. 340, Sec. 1. (AB 414) Effective January 1, 2026.)"
+        }
+      ]
+    },
+    {
+      "id": "sdi_signature_certification",
+      "title": "Landlord Signature and Certification",
+      "kind": "drafting",
+      "body": "Landlord certifies that the amounts and descriptions stated in this itemized statement are accurate to the best of Landlord's knowledge and reflect deductions for the purposes and in the amounts described in this statement.\n\nSigned: {{landlordName}}, Landlord. Date: {{statementDate}}.\n\nDelivery record. This statement, together with the refund described above and any required supporting documentation, was provided to {{tenantName}} on _______________ (date) by the following method (check one): ☐ personal delivery; ☐ first-class mail, postage prepaid; ☐ email to an address provided by Tenant, by mutual written agreement; ☐ electronic delivery of the refund with the itemized statement furnished as described above.\n\nProvided by: _______________ (name) Date: _______________"
+    },
+    {
+      "id": "wagestmt_nine_items",
+      "title": "The Nine Required Itemized Statement Items",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-01",
+      "body": "California law requires {{companyName}} to furnish {{employeeName}} an accurate itemized wage statement, in writing, at the time of each payment of wages (or semimonthly), showing: (1) gross wages earned; (2) total hours worked by {{employeeName}}, except as separately provided for certain exempt or salaried categories; (3) the number of piece-rate units earned and any applicable piece rate, if {{employeeName}} is paid on a piece-rate basis; (4) all deductions; (5) net wages earned; (6) the inclusive dates of the pay period; (7) {{employeeName}}'s name and only the last four digits of {{employeeName}}'s social security number, or an employee identification number other than a social security number; (8) the name and address of the legal entity that employs {{employeeName}}; and (9) all applicable hourly rates in effect during the pay period and the corresponding number of hours worked by {{employeeName}} at each hourly rate.",
+      "gap": "This is one state's statute (Cal. Labor Code § 226, subd. (a)) — used as evidence of the actual nine-item list California law requires on an itemized wage statement, not as a claim about which state's law governs a specific employment relationship. California's itemized-wage-statement requirement is unusually detailed and penalty-backed compared to many other states, some of which impose no itemized pay-stub requirement at all. Two of the nine items carry built-in statutory exceptions this list does not itemize in full: item (2) (total hours worked) is not required on the statement for certain salaried-exempt and other categories of employees the statute separately defines, and item (8) requires disclosure of an additional legal entity's name and address when the employer is a farm labor contractor. Item (9)'s temporary-services-assignment component applies only where the employer is a temporary services employer as separately defined, beginning July 1, 2013. This is a single statutory subsection (§ 226(a)); no additional independent source was found for this.",
+      "citations": [
+        {
+          "case": "Cal. Labor Code § 226(a)",
+          "cite": "Cal. Lab. Code § 226, subd. (a)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=226.",
+          "quote": "(a) An employer, semimonthly or at the time of each payment of wages, shall furnish to their employee, either as a detachable part of the check, draft, or voucher paying the employee's wages, or separately if wages are paid by personal check or cash, an accurate itemized statement in writing showing (1) gross wages earned, (2) total hours worked by the employee, except as provided in subdivision (j), (3) the number of piece-rate units earned and any applicable piece rate if the employee is paid on a piece-rate basis, (4) all deductions, provided that all deductions made on written orders of the employee may be aggregated and shown as one item, (5) net wages earned, (6) the inclusive dates of the period for which the employee is paid, (7) the name of the employee and only the last four digits of their social security number or an employee identification number other than a social security number, (8) the name and address of the legal entity that is the employer and, if the employer is a farm labor contractor, as defined in subdivision (b) of Section 1682, the name and address of the legal entity that secured the services of the employer, and (9) all applicable hourly rates in effect during the pay period and the corresponding number of hours worked at each hourly rate by the employee and, beginning July 1, 2013, if the employer is a temporary services employer as defined in Section 201.3, the rate of pay and the total hours worked for each temporary services assignment."
+        }
+      ]
+    },
+    {
+      "id": "wagestmt_itemized_deductions",
+      "title": "The Itemized-Deductions Requirement",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-01",
+      "body": "California law requires that deductions from {{employeeName}}'s wages be itemized on the wage statement {{companyName}} provides, not stated only as a single combined total. The one recognized exception is narrow: deductions {{companyName}} makes on {{employeeName}}'s own written order may be aggregated and shown as one item. {{companyName}} records deductions in ink or other indelible form, dated by month, day, and year, and retains a copy of each wage statement together with the deduction record for at least three years, at the place of employment or at a central location within California.",
+      "gap": "This is one state's statute (Cal. Labor Code § 226, subd. (a)) — used as evidence of how California law treats wage-statement deductions, not as a claim about which state's law governs a specific employer's deduction practices. The statute's aggregation exception is narrow: only deductions made on the employee's own written order may be shown as a single combined item; the statutory text does not, on its face, authorize showing all deductions generally as one lump-sum figure. Both citations below are drawn from the same statutory subdivision (§ 226(a)) rather than independently authored sources; no additional independent source was found for this specific point beyond it.",
+      "citations": [
+        {
+          "case": "Cal. Labor Code § 226(a)",
+          "cite": "Cal. Lab. Code § 226, subd. (a) (item 4)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=226.",
+          "quote": "(4) all deductions, provided that all deductions made on written orders of the employee may be aggregated and shown as one item,"
+        },
+        {
+          "case": "Cal. Labor Code § 226(a)",
+          "cite": "Cal. Lab. Code § 226, subd. (a) (recordkeeping)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=226.",
+          "quote": "The deductions made from payment of wages shall be recorded in ink or other indelible form, properly dated, showing the month, day, and year, and a copy of the statement and the record of the deductions shall be kept on file by the employer for at least three years at the place of employment or at a central location within the State of California. For purposes of this subdivision, \"copy\" includes a duplicate of the itemized statement provided to an employee or a computer-generated record that accurately shows all of the information required by this subdivision."
+        }
+      ]
+    },
+    {
+      "id": "wagestmt_knowing_intentional_penalty",
+      "title": "The Statutory Penalty for a Knowing and Intentional Violation",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-01",
+      "body": "If {{companyName}}'s failure to comply with the itemized wage statement requirements is knowing and intentional, and {{employeeName}} suffers injury as a result, California law entitles {{employeeName}} to recover the greater of all actual damages or $50 for the initial pay period in which a violation occurs, and $100 per employee for each violation in a subsequent pay period, up to an aggregate penalty of $4,000, plus costs and reasonable attorney's fees. An isolated and unintentional payroll error due to a clerical or inadvertent mistake does not, by itself, make a violation \"knowing and intentional.\"",
+      "gap": "This is one state's statute (Cal. Labor Code § 226, subd. (e)) — used as evidence of California's specific statutory penalty scheme for wage-statement violations, not as a claim about which state's law governs a specific employer. This kind of automatic, per-pay-period statutory penalty for a pay-stub defect is unusually detailed compared to most other states, many of which provide no comparable private statutory penalty for wage-statement noncompliance at all. The $4,000 aggregate cap and the $50/$100 figures are the amounts the statutory text itself states; whether a particular failure is \"knowing and intentional\" is a fact question the statute does not fully define beyond excluding isolated, unintentional clerical or payroll errors, and the statute separately allows a factfinder to consider an employer's pre-violation compliance policies as a relevant factor. This is a distinct statutory right of action under § 226(e) itself; how it interacts procedurally with a civil penalty pursued under the Private Attorneys General Act (a related clause in this set covers that separately) is not addressed by the quoted text and is not asserted here. Both citations below are drawn from the same statutory section (§ 226) — subdivisions (e)(1) and (e)(3) — rather than independently authored sources; no additional independent source was found for this specific point beyond it.",
+      "citations": [
+        {
+          "case": "Cal. Labor Code § 226(e)(1)",
+          "cite": "Cal. Lab. Code § 226, subd. (e)(1)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=226.",
+          "quote": "(e) (1) An employee suffering injury as a result of a knowing and intentional failure by an employer to comply with subdivision (a) is entitled to recover the greater of all actual damages or fifty dollars ($50) for the initial pay period in which a violation occurs and one hundred dollars ($100) per employee for each violation in a subsequent pay period, not to exceed an aggregate penalty of four thousand dollars ($4,000), and is entitled to an award of costs and reasonable attorney's fees."
+        },
+        {
+          "case": "Cal. Labor Code § 226(e)(3)",
+          "cite": "Cal. Lab. Code § 226, subd. (e)(3)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=226.",
+          "quote": "(3) For purposes of this subdivision, a \"knowing and intentional failure\" does not include an isolated and unintentional payroll error due to a clerical or inadvertent mistake. In reviewing for compliance with this section, the factfinder may consider as a relevant factor whether the employer, prior to an alleged violation, has adopted and is in compliance with a set of policies, procedures, and practices that fully comply with this section."
+        }
+      ]
+    },
+    {
+      "id": "wagestmt_suffering_injury",
+      "title": "What Counts as \"Suffering Injury\" Under the Penalty Provision",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-01",
+      "body": "For purposes of the knowing-and-intentional penalty, California law deems {{employeeName}} to suffer injury if {{companyName}} fails to provide a wage statement at all, or if {{companyName}} fails to provide accurate and complete information for one or more of the nine required items and {{employeeName}} cannot promptly and easily determine, from the wage statement alone: the gross or net wages paid; the other item (2)-(4), (6), or (9) information; which deductions were made; the name and address of the employer; or {{employeeName}}'s name and last four SSN digits or employee ID number. \"Promptly and easily determine\" means a reasonable person would be able to readily ascertain the information without reference to other documents or information.",
+      "gap": "This is one state's statute (Cal. Labor Code § 226, subd. (e)(2)) — used as evidence of California's specific statutory test for when an employee is deemed to suffer injury for purposes of the knowing-and-intentional penalty, not as a claim about which state's law governs a specific employer. This is a single, continuous statutory paragraph (§ 226(e)(2)(A)-(C)); no additional independent source was sought for this specific test. Most states with any wage-statement requirement do not define an injury threshold this specifically; California's definition is notably detailed, distinguishing a complete failure to provide a statement from a statement that omits or obscures particular required items.",
+      "citations": [
+        {
+          "case": "Cal. Labor Code § 226(e)(2)(A)-(C)",
+          "cite": "Cal. Lab. Code § 226, subd. (e)(2)(A)-(C)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=226.",
+          "quote": "(2) (A) An employee is deemed to suffer injury for purposes of this subdivision if the employer fails to provide a wage statement. (B) An employee is deemed to suffer injury for purposes of this subdivision if the employer fails to provide accurate and complete information as required by any one or more of items (1) to (9), inclusive, of subdivision (a) and the employee cannot promptly and easily determine from the wage statement alone one or more of the following: (i) The amount of the gross wages or net wages paid to the employee during the pay period or any of the other information required to be provided on the itemized wage statement pursuant to items (2) to (4), inclusive, (6), and (9) of subdivision (a). (ii) Which deductions the employer made from gross wages to determine the net wages paid to the employee during the pay period. Nothing in this subdivision alters the ability of the employer to aggregate deductions consistent with the requirements of item (4) of subdivision (a). (iii) The name and address of the employer and, if the employer is a farm labor contractor, as defined in subdivision (b) of Section 1682, the name and address of the legal entity that secured the services of the employer during the pay period. (iv) The name of the employee and only the last four digits of their social security number or an employee identification number other than a social security number. (C) For purposes of this paragraph, \"promptly and easily determine\" means a reasonable person would be able to readily ascertain the information without reference to other documents or information."
+        }
+      ]
+    },
+    {
+      "id": "wagestmt_inspection_right",
+      "title": "The Right to Inspect and Copy Employment Records",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-01",
+      "body": "California law gives {{employeeName}}, as a current or former employee, the right to inspect or receive a copy of records pertaining to {{employeeName}}'s employment that {{companyName}} is required to keep under the itemized wage statement requirement, upon reasonable request to {{companyName}}. {{companyName}} may take reasonable steps to verify {{employeeName}}'s identity, and may charge the actual cost of reproduction for copies it provides. {{companyName}} must comply with a request as soon as practicable, but no later than 21 calendar days from the date of the request; failing to permit inspection or copying within that time exposes {{companyName}} to a $750 penalty payable to {{employeeName}} or the Labor Commissioner.",
+      "gap": "This is one state's statute (Cal. Labor Code § 226, subds. (b), (c), (f)) — used as evidence of California's specific inspection-and-copy right and its enforcement deadline, not as a claim about which state's law governs a specific employer's recordkeeping. The 21-calendar-day compliance deadline, the $750 penalty for missing it, and the recognized \"impossibility of performance\" affirmative defense are all as stated in the quoted text; the statute also separately makes a violation of the 21-day deadline an infraction, which is a distinct consequence from the $750 penalty rather than a substitute for it. Both citations below are drawn from the same statutory section (§ 226) — subdivisions (b)-(c) and (f) — rather than independently authored sources; no additional independent source was found for this specific point beyond it.",
+      "citations": [
+        {
+          "case": "Cal. Labor Code § 226(b)-(c)",
+          "cite": "Cal. Lab. Code § 226, subds. (b)-(c)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=226.",
+          "quote": "(b) An employer that is required by this code or any regulation adopted pursuant to this code to keep the information required by subdivision (a) shall afford current and former employees the right to inspect or receive a copy of records pertaining to their employment, upon reasonable request to the employer. The employer may take reasonable steps to ensure the identity of a current or former employee. If the employer provides copies of the records, the actual cost of reproduction may be charged to the current or former employee. (c) An employer who receives a written or oral request to inspect or receive a copy of records pursuant to subdivision (b) pertaining to a current or former employee shall comply with the request as soon as practicable, but no later than 21 calendar days from the date of the request. A violation of this subdivision is an infraction. Impossibility of performance, not caused by or a result of a violation of law, shall be an affirmative defense for an employer in any action alleging a violation of this subdivision. An employer may designate the person to whom a request under this subdivision will be made."
+        },
+        {
+          "case": "Cal. Labor Code § 226(f)",
+          "cite": "Cal. Lab. Code § 226, subd. (f)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=226.",
+          "quote": "(f) A failure by an employer to permit a current or former employee to inspect or receive a copy of records within the time set forth in subdivision (c) entitles the current or former employee or the Labor Commissioner to recover a seven-hundred-fifty-dollar ($750) penalty from the employer."
+        }
+      ]
+    },
+    {
+      "id": "wagestmt_paga_context",
+      "title": "PAGA Exposure for Wage Statement Violations",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-01",
+      "body": "Beyond the private penalty described above, a wage-statement violation under California Labor Code § 226(a) may also be pursued through a civil action brought by an aggrieved employee under the Labor Code Private Attorneys General Act (PAGA), Labor Code § 2699, on behalf of that employee and other current or former employees. PAGA gives an aggrieved employee an alternative avenue to recover, through a civil action, civil penalties that the Labor and Workforce Development Agency would otherwise assess and collect. For a PAGA claim based on the § 226(a)(8) item (the employer's name and address), the statute treats the violation as cured only if {{companyName}} provides written notice of the correct information to each aggrieved employee, identifying the correct information for each pay period in which the violation occurred. For a PAGA claim based on a violation of § 226(a) items (1) through (7) or (9), the statute treats the violation as cured only if {{companyName}} provides, at no cost, a fully compliant itemized wage statement (or, where that information is customarily provided digitally, reasonable access to a digital or computer-generated record containing the same information) to each aggrieved employee for each pay period in which the violation occurred during the three years before the notice.",
+      "gap": "This is one state's statute (Cal. Labor Code § 2699) — used as evidence of how California's Private Attorneys General Act treats wage-statement violations specifically, not as a claim about which state's law governs a specific employer. PAGA itself is a distinctly Californian enforcement mechanism; most states have no comparable statute letting an employee sue for civil penalties that a state labor agency would otherwise be the one to assess and collect. This clause is deliberately narrow: it covers only the cure mechanism specific to a § 226(a) violation, not PAGA's general procedural requirements — the pre-suit notice process, the definition of \"aggrieved employee,\" the default civil-penalty schedule under § 2699(f), or the allocation of any recovery between the state and employees — none of which are detailed here. No PAGA-related clause was found elsewhere in this document set to cross-reference (checked against the current clause library); if one is added later, this clause should point to it rather than duplicate its content. Whether a § 226(e) penalty and a PAGA civil penalty for the same wage-statement violation can both be pursued for the same conduct, or how they interact, is not addressed by the quoted text and is not asserted here. Both citations below are drawn from the same statutory section (§ 2699) — subdivisions (a) and (d)(2)(A)-(B) — rather than independently authored sources; no additional independent source was found for this specific point beyond it.",
+      "citations": [
+        {
+          "case": "Cal. Labor Code § 2699(a)",
+          "cite": "Cal. Lab. Code § 2699, subd. (a)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=2699.",
+          "quote": "2699. (a) Notwithstanding any other provision of law, any provision of this code that provides for a civil penalty to be assessed and collected by the Labor and Workforce Development Agency or any of its departments, divisions, commissions, boards, agencies, or employees, for a violation of this code, may, as an alternative, be recovered through a civil action brought by an aggrieved employee on behalf of the employee and other current or former employees against whom a violation of the same provision was committed pursuant to the procedures specified in Section 2699.3."
+        },
+        {
+          "case": "Cal. Labor Code § 2699(d)(2)(A)-(B)",
+          "cite": "Cal. Lab. Code § 2699, subd. (d)(2)(A)-(B)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=2699.",
+          "quote": "(2) (A) A violation of paragraph (8) of subdivision (a) of Section 226 shall be considered cured only upon a showing that the employer has provided written notice of the correct information to each aggrieved employee. Such notice may be provided in summary form but shall identify correct information for each pay period in which a violation occurred. (B) A violation of paragraphs (1) to (7), inclusive, and (9) of subdivision (a) of Section 226 shall be considered cured only upon a showing that the employer has provided, at no cost to the employee, a fully compliant, itemized wage statement or, if such information is customarily provided in digital form, reasonable access to a digital or computer-generated record or records maintained in the ordinary course of business containing the same information required on a fully compliant, itemized wage statement, to each aggrieved employee for each pay period during which the violation occurred during the three years prior to the date of the notice. Nothing in this subdivision will impact any right the employee has to request copies of employment records pursuant to Sections 226, 432, and 1198.5."
+        }
+      ]
+    },
+    {
+      "id": "wagestmt_policy_statement",
+      "title": "Policy Statement",
+      "kind": "drafting",
+      "body": "{{companyName}} maintains this Wage Statement Itemization Policy to describe how {{companyName}} prepares and furnishes itemized wage statements to {{employeeName}} and other employees with each payment of wages. This policy describes the categories of information a wage statement includes, how deductions are itemized, and how {{employeeName}} may request to inspect or obtain a copy of records pertaining to {{employeeName}}'s employment. This policy is a statement of {{companyName}}'s practice; it does not itself create, waive, expand, or limit any right or obligation that may exist under applicable law."
+    },
+    {
+      "id": "wagestmt_sample_itemization",
+      "title": "Sample Wage Statement Itemization",
+      "kind": "drafting",
+      "body": "Each wage statement {{companyName}} furnishes to {{employeeName}} with a payment of wages is expected to show, at minimum: {{employeeName}}'s gross wages earned; {{employeeName}}'s total hours worked for the pay period (unless {{employeeName}}'s position is exempt from this item under applicable law); if {{employeeName}} is paid on a piece-rate basis, the number of piece-rate units earned and the applicable piece rate; each deduction from {{employeeName}}'s wages, itemized separately, except that a deduction made on {{employeeName}}'s own written order may be shown as one aggregated item; {{employeeName}}'s net wages earned; the inclusive dates of the pay period; {{employeeName}}'s name and only the last four digits of {{employeeName}}'s social security number, or an employee identification number; the name and address of the legal entity employing {{employeeName}}; and all applicable hourly rates in effect during the pay period, with the corresponding number of hours {{employeeName}} worked at each rate. This description is illustrative of the categories a wage statement covers; the wage statement itself, not this policy, is {{employeeName}}'s official pay record."
+    },
+    {
+      "id": "wagestmt_acknowledgment",
+      "title": "Employee Acknowledgment",
+      "kind": "drafting",
+      "body": "{{employeeName}} acknowledges having received and reviewed a copy of this Wage Statement Itemization Policy. {{employeeName}} understands that {{employeeName}} may request to inspect or receive a copy of records pertaining to {{employeeName}}'s employment by directing a request to {{companyName}}, and that {{employeeName}} may raise any question about the accuracy or completeness of a wage statement with {{companyName}}."
+    },
+    {
+      "id": "safe_sec_act_5_registration",
+      "title": "Federal Registration Requirement for Securities Offerings",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-01",
+      "body": "A SAFE issued by {{companyName}} to {{investorName}} in exchange for cash is a security for purposes of federal securities law, because a SAFE conveys a contractual right to receive equity (or other consideration) in {{companyName}} based on the future performance of {{companyName}}'s business and the efforts of others. Section 5 of the Securities Act, codified at 15 U.S.C. § 77e, makes it unlawful to offer or sell a security using the mails or interstate commerce unless a registration statement is in effect, or has been filed, as to that security, or unless an exemption from registration applies. This registration requirement is a matter of federal law and applies uniformly regardless of which state the parties are located in.",
+      "gap": "Federal law does not automatically exempt a SAFE from registration merely because it is denominated as a contract rather than as \"stock\" or a \"bond.\" Whether a particular SAFE offering may proceed without SEC registration depends on whether the offering qualifies for a registration exemption, addressed elsewhere in this document. This clause states the general registration requirement only; it does not identify which exemption, if any, applies to a specific offering, and does not constitute a determination that any exemption is available. This is a single statutory section (§ 5, 15 U.S.C. § 77e); no additional independent source was found for this.",
+      "citations": [
+        {
+          "case": "Securities Act of 1933, § 5",
+          "cite": "15 U.S.C. § 77e(a), (c)",
+          "url": "https://www.law.cornell.edu/uscode/text/15/77e",
+          "quote": "(a) Sale or delivery after sale of unregistered securities Unless a registration statement is in effect as to a security, it shall be unlawful for any person, directly or indirectly— (1) to make use of any means or instruments of transportation or communication in interstate commerce or of the mails to sell such security through the use or medium of any prospectus or otherwise; or (2) to carry or cause to be carried through the mails or in interstate commerce, by any means or instruments of transportation, any such security for the purpose of sale or for delivery after sale. ... (c) Necessity of filing registration statement It shall be unlawful for any person, directly or indirectly, to make use of any means or instruments of transportation or communication in interstate commerce or of the mails to offer to sell or offer to buy through the use or medium of any prospectus or otherwise any security, unless a registration statement has been filed as to such security, or while the registration statement is the subject of a refusal order or stop order or (prior to the effective date of the registration statement) any public proceeding or examination under section 77h of this title."
+        }
+      ]
+    },
+    {
+      "id": "safe_reg_d_506_exemption",
+      "title": "Regulation D Rule 506 Private Offering Exemption — 506(b) vs. 506(c)",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-01",
+      "body": "The most commonly used exemption from Securities Act registration for a SAFE offering by an early-stage company such as {{companyName}} is Rule 506 of Regulation D, 17 C.F.R. § 230.506, which has two alternative tracks with materially different conditions. Under Rule 506(b), an issuer may sell to an unlimited number of accredited investors and up to 35 non-accredited investors who (individually or with a purchaser representative) have sufficient knowledge and experience to evaluate the investment, but the issuer and anyone acting on its behalf may not use general solicitation or general advertising to offer the securities. Under Rule 506(c), an issuer may use general solicitation and general advertising, but every purchaser in the offering must be an accredited investor, and the issuer must take reasonable steps to verify each purchaser's accredited-investor status rather than relying on the purchaser's self-certification alone. An offering under either track is exempt from Securities Act registration but is not exempt from the antifraud provisions of federal or state securities law.",
+      "gap": "506(b) and 506(c) are two alternative compliance paths within the same rule, not independently arising legal tracks — they are subsections of one regulation. The general-solicitation prohibition described above is stated in a related section of the same regulatory framework (Rule 502(c)), which Rule 506(b) incorporates by reference; it is not a source of law independent from Regulation D. Which track, if either, a particular offering satisfies depends on facts not stated here: whether general solicitation was used, how many purchasers participated and whether they are accredited, and what steps (if any) were taken to verify accredited status. This clause does not state that any specific offering qualifies for either track. This is a single regulatory framework (Regulation D, §§ 230.506, 230.502); no additional independent source was found for this.",
+      "citations": [
+        {
+          "case": "17 C.F.R. § 230.506(b)",
+          "cite": "Regulation D, conditions in offerings subject to limitation on manner of offering",
+          "url": "https://www.law.cornell.edu/cfr/text/17/230.506",
+          "quote": "(b) Conditions to be met in offerings subject to limitation on manner of offering—(1) General conditions. To qualify for an exemption under this section, offers and sales must satisfy all the terms and conditions of §§ 230.501 and 230.502. (2) Specific conditions— (i) Limitation on number of purchasers. There are no more than, or the issuer reasonably believes that there are no more than, 35 purchasers of securities from the issuer in offerings under this section in any 90-calendar-day period. ... (ii) Nature of purchasers. Each purchaser who is not an accredited investor either alone or with his purchaser representative(s) has such knowledge and experience in financial and business matters that he is capable of evaluating the merits and risks of the prospective investment, or the issuer reasonably believes immediately prior to making any sale that such purchaser comes within this description."
+        },
+        {
+          "case": "17 C.F.R. § 230.506(c)",
+          "cite": "Regulation D, conditions in offerings not subject to limitation on manner of offering",
+          "url": "https://www.law.cornell.edu/cfr/text/17/230.506",
+          "quote": "(c) Conditions to be met in offerings not subject to limitation on manner of offering—(1) General conditions. To qualify for exemption under this section, sales must satisfy all the terms and conditions of §§ 230.501 and 230.502(a) and (d). (2) Specific conditions—(i) Nature of purchasers. All purchasers of securities sold in any offering under paragraph (c) of this section are accredited investors. (ii) Verification of accredited investor status. The issuer shall take reasonable steps to verify that purchasers of securities sold in any offering under paragraph (c) of this section are accredited investors."
+        },
+        {
+          "case": "17 C.F.R. § 230.502(c)",
+          "cite": "Regulation D, limitation on manner of offering (general-solicitation prohibition)",
+          "url": "https://www.law.cornell.edu/cfr/text/17/230.502",
+          "quote": "(c) Limitation on manner of offering. Except as provided in § 230.504(b)(1) or § 230.506(c), neither the issuer nor any person acting on its behalf shall offer or sell the securities by any form of general solicitation or general advertising, including, but not limited to, the following: (1) Any advertisement, article, notice or other communication published in any newspaper, magazine, or similar media or broadcast over television or radio; and (2) Any seminar or meeting whose attendees have been invited by any general solicitation or general advertising..."
+        }
+      ]
+    },
+    {
+      "id": "safe_accredited_investor_definition",
+      "title": "Definition of \"Accredited Investor\"",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-01",
+      "body": "Both tracks of the Rule 506 exemption depend in part on which purchasers qualify as \"accredited investors,\" a term defined by SEC rule at 17 C.F.R. § 230.501(a). The definition includes, among other categories, natural persons whose individual net worth (or joint net worth with a spouse or spousal equivalent) exceeds $1,000,000, excluding the value of the person's primary residence; natural persons with individual income exceeding $200,000 (or joint income with a spouse or spousal equivalent exceeding $300,000) in each of the two most recent years with a reasonable expectation of reaching the same level in the current year; and certain institutional and entity purchasers. The definition was amended in 2020 to add further categories, including natural persons holding certain professional certifications, designations, or credentials that the SEC has specifically recognized as qualifying a person for accredited-investor status, and \"knowledgeable employees\" of certain private funds. The definition below is the current version, last amended effective February 2025.",
+      "gap": "Whether a particular investor meets any category of this definition depends on facts about that investor's income, net worth, professional credentials, or institutional status that are outside the scope of this document. The list of SEC-recognized professional certifications referenced in the rule is maintained separately by the SEC and is not reproduced here. This is a single regulatory subsection (17 C.F.R. § 230.501(a)); no additional independent source was found for this.",
+      "citations": [
+        {
+          "case": "17 C.F.R. § 230.501(a)",
+          "cite": "Regulation D, accredited investor definition",
+          "url": "https://www.law.cornell.edu/cfr/text/17/230.501",
+          "quote": "(a) Accredited investor. Accredited investor shall mean any person who comes within any of the following categories, or who the issuer reasonably believes comes within any of the following categories, at the time of the sale of the securities to that person: ... (5) Any natural person whose individual net worth, or joint net worth with that person's spouse or spousal equivalent, exceeds $1,000,000; ... (6) Any natural person who had an individual income in excess of $200,000 in each of the two most recent years or joint income with that person's spouse or spousal equivalent in excess of $300,000 in each of those years and has a reasonable expectation of reaching the same income level in the current year; ... (10) Any natural person holding in good standing one or more professional certifications or designations or credentials from an accredited educational institution that the Commission has designated as qualifying an individual for accredited investor status. ..."
+        }
+      ]
+    },
+    {
+      "id": "safe_ca_blue_sky_notice_filing",
+      "title": "California Notice Filing for Federally Covered Rule 506 Offerings",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-01",
+      "body": "State securities law applies independently of federal securities law; qualifying for a federal registration exemption such as Rule 506 does not by itself satisfy state-law requirements. However, the National Securities Markets Improvement Act of 1996 amended the federal Securities Act to preempt states from imposing their own registration or qualification requirements on securities offered under SEC rules issued pursuant to Securities Act § 4(2) (the private-offering exemption under which Regulation D, including Rule 506, was adopted), while expressly preserving state authority to impose a notice filing requirement substantially similar to the one in effect on September 1, 1996. California's Corporations Code implements this framework: for an offer or sale exempt from federal registration under Rule 506, California requires a notice filing with the Commissioner of Financial Protection and Innovation — in the form of a copy of the Form D filed with the SEC — within 15 days of the first sale in California, together with a consent to service of process and payment of a notice filing fee. This obligation is separate from, and additional to, compliance with the federal exemption; it is specific to California, and other states may impose different notice-filing or fee requirements for the same offering.",
+      "gap": "Whether California's notice filing requirement applies to a particular offering, and the precise fee amount and filing mechanics currently in effect, depend on facts about the offering — including whether any California resident purchases the security — that are outside the scope of this document.",
+      "citations": [
+        {
+          "case": "Cal. Corp. Code § 25102.1(d)",
+          "cite": "California Corporations Code, notice filing exemption from qualification for federally covered securities",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=25102.1",
+          "quote": "(d) Any offer or sale of a security with respect to a transaction that is exempt from registration under the Securities Act of 1933 pursuant to Section 18 (b)(4)(F) of that act, if all of the following requirements are met: (1) A notice in the form of a copy of the completed Form D (17 C.F.R. 239.500) filed with the Securities and Exchange Commission is filed with the commissioner within 15 days of the first sale in this state, along with documents filed with the Securities and Exchange Commission in annual or periodic reports that the commissioner by rule or order deems appropriate. The commissioner may allow for a notice in the form of the electronic transmission of the information in Form D. (2) A consent to service of process under Section 25165 is filed with the notice as required by paragraph (1). (3) Payment of the notice filing fee provided for in subdivision (c) of Section 25608.1 is made."
+        },
+        {
+          "case": "15 U.S.C. § 77r(b)(4)(F)",
+          "cite": "NSMIA federal preemption of state registration for Rule 506-type offerings, preserving notice-filing authority",
+          "url": "https://www.law.cornell.edu/uscode/text/15/77r",
+          "quote": "(F) Commission rules or regulations issued under section 77d(2) of this title, except that this subparagraph does not prohibit a State from imposing notice filing requirements that are substantially similar to those required by rule or regulation under section 77d(2) of this title that are in effect on September 1, 1996; or"
+        }
+      ]
+    },
+    {
+      "id": "safe_antifraud_persists",
+      "title": "Antifraud Liability Applies Regardless of Registration Exemption",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-01",
+      "body": "Qualifying for an exemption from registration, whether under Rule 506 or any other exemption, does not exempt an offer or sale of a SAFE from the antifraud provisions of federal or California securities law. At the federal level, Section 17(a) of the Securities Act makes it unlawful, in the offer or sale of any security, to employ any device, scheme, or artifice to defraud; to obtain money or property by means of an untrue statement of a material fact or an omission of a material fact necessary to make the statements made not misleading; or to engage in any transaction, practice, or course of business that operates as a fraud or deceit on the purchaser. California law contains an independent, parallel prohibition: it is unlawful for any person to offer or sell (or buy or offer to buy) a security in California by means of a written or oral communication that includes an untrue statement of a material fact or omits a material fact necessary to make the statements made not misleading.",
+      "gap": "This clause states the existence and general terms of these antifraud provisions; it does not evaluate whether any particular statement made, or omitted, in connection with a specific offering would violate them. Other antifraud provisions exist at both the federal level (including Exchange Act Rule 10b-5) and under California law that are not quoted here.",
+      "citations": [
+        {
+          "case": "15 U.S.C. § 77q(a)",
+          "cite": "Securities Act of 1933 § 17(a), fraudulent interstate transactions",
+          "url": "https://www.law.cornell.edu/uscode/text/15/77q",
+          "quote": "(a) Use of interstate commerce for purpose of fraud or deceit It shall be unlawful for any person in the offer or sale of any securities (including security-based swaps) or any security-based swap agreement (as defined in section 78c(a)(78) of this title) by the use of any means or instruments of transportation or communication in interstate commerce or by use of the mails, directly or indirectly— (1) to employ any device, scheme, or artifice to defraud, or (2) to obtain money or property by means of any untrue statement of a material fact or any omission to state a material fact necessary in order to make the statements made, in light of the circumstances under which they were made, not misleading; or (3) to engage in any transaction, practice, or course of business which operates or would operate as a fraud or deceit upon the purchaser."
+        },
+        {
+          "case": "Cal. Corp. Code § 25401",
+          "cite": "California Corporate Securities Law, fraud in issuance, purchase, or sale of security",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=25401",
+          "quote": "It is unlawful for any person to offer or sell a security in this state, or to buy or offer to buy a security in this state, by means of any written or oral communication that includes an untrue statement of a material fact or omits to state a material fact necessary to make the statements made, in the light of the circumstances under which the statements were made, not misleading."
+        }
+      ]
+    },
+    {
+      "id": "safe_investment_terms",
+      "title": "Investment Amount, Valuation Cap, and Discount Rate",
+      "kind": "drafting",
+      "body": "{{investorName}} agrees to pay {{companyName}} the amount of ${{purchaseAmount}} (the \"Purchase Amount\") in exchange for this SAFE. Two of the terms most commonly negotiated in SAFEs are a valuation cap and a discount rate, either or both of which may apply to a given SAFE. A valuation cap sets a maximum company valuation, of ${{valuationCap}}, used to calculate the number or price of shares {{investorName}} receives on conversion, so that {{investorName}} converts as though {{companyName}} had been valued at no more than the cap even if the actual financing round values the company higher. A discount rate, of {{discountRate}}%, gives {{investorName}} the right to convert at a price equal to that percentage discount off the price paid by investors in the triggering equity financing round. Where both a cap and a discount apply, a SAFE commonly converts at whichever of the two produces the lower conversion price, unless the parties' agreement states otherwise. These are contractual deal terms negotiated between {{companyName}} and {{investorName}}; no statute or regulation defines or requires a valuation cap or a discount rate — these are private contract terms popularized by market practice (originating with Y Combinator's standard SAFE form), not creatures of statute."
+    },
+    {
+      "id": "safe_conversion_trigger",
+      "title": "Conversion Trigger — Next Equity Financing",
+      "kind": "drafting",
+      "body": "This SAFE converts into shares of {{companyName}}'s capital stock upon the closing of {{companyName}}'s next \"Equity Financing\" — generally understood as the next transaction, or series of related transactions, in which {{companyName}} issues and sells preferred stock for the principal purpose of raising capital, with a minimum aggregate gross proceeds threshold of ${{financingThreshold}} (typically excluding the conversion of SAFEs, convertible notes, or other convertible securities from that threshold, unless the parties agree otherwise). {{companyName}} and {{investorName}} may separately define whether a change of control, an initial public offering, or a dissolution of {{companyName}} independently triggers payment or conversion on terms other than those applicable to an Equity Financing: {{alternateTriggerTerms}}."
+    },
+    {
+      "id": "safe_mfn_clause",
+      "title": "Most Favored Nation Provision",
+      "kind": "drafting",
+      "body": "If, after the date of this SAFE and before it terminates (by conversion, payment, or otherwise), {{companyName}} issues another SAFE, convertible note, or similar convertible security to any other investor on terms materially more favorable to that other investor than the terms of this SAFE — for example, a lower valuation cap, a larger discount rate, or additional investor rights — {{companyName}} will provide {{investorName}} notice of those terms, and {{investorName}} will have the option to amend this SAFE to include the more favorable term(s), subject to the following conditions, deadlines, or exceptions: {{mfnConditions}}. This is a negotiated contractual protection, not a right created by statute or regulation."
+    },
+    {
+      "id": "safe_signature_block",
+      "title": "Signature Block",
+      "kind": "drafting",
+      "body": "IN WITNESS WHEREOF, the parties have executed this SAFE as of the date set forth below.\n\n{{companyName}}\n\nBy: ☐ _________________________\nName: _________________________\nTitle: _________________________\nDate: _______________\n\n{{investorName}}\n\nBy: ☐ _________________________\nName: _________________________\nTitle (if applicable): _________________________\nDate: _______________"
+    },
+    {
+      "id": "remains_priority_order",
+      "title": "Default Priority Order for Control of Disposition",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-01",
+      "body": "California Health & Safety Code § 7100(a) provides that, unless other directions have been given by the decedent under Health & Safety Code § 7100.1, the right to control the disposition of a decedent's remains, the location and conditions of interment, and arrangements for funeral goods and services — together with the corresponding duty and cost liability — vests in the following persons, in the order named: (1) an agent under a power of attorney for health care with the right and duty of disposition under Probate Code Division 4.7 (commencing with § 4600), whose personal liability for costs is limited to cases where the agent specifically agreed to pay them or personally incurred them through the agent's own decisions; (2) the competent surviving spouse; (3) the sole surviving competent adult child, or a majority of the surviving competent adult children if there is more than one; (4) the surviving competent parent or parents; (5) the sole surviving competent adult sibling, or a majority of surviving competent adult siblings if there is more than one; (6) the surviving competent adult person or persons in the next degree of kinship, or a majority of persons of that same degree; (7) a conservator of the person appointed under Probate Code Division 4, Part 3 (commencing with § 1800), if the decedent has sufficient assets; (8) a conservator of the estate appointed under the same provisions, if the decedent has sufficient assets; and (9) the public administrator, if the decedent has sufficient assets. For categories (3), (5), and (6), the statute allows less than a full majority to act if they used reasonable efforts to notify the others and are not aware of opposition from the majority. As written, category (2) names only a \"competent surviving spouse\" — the text does not itself say \"or registered domestic partner.\"",
+      "gap": "This is California's statute, used as real evidence of one state's default priority scheme for who has the legal right and duty to control disposition of a decedent's remains — not a claim about which state's law governs a specific person's remains, or that any other state orders priority the same way; both the identity and order of persons on this list vary significantly by state. The statutory text itself names only a \"competent surviving spouse\" in category (2); it does not say \"or registered domestic partner.\" Whether a registered domestic partner is treated the same as a spouse for this specific list would depend on Family Code § 297.5's general rule equating domestic partners with spouses for most purposes, which has not been independently verified against this specific section as part of this research. This is a single statutory subsection (§ 7100(a)); no additional independent source was found for this.",
+      "citations": [
+        {
+          "case": "Cal. Health & Safety Code § 7100(a)",
+          "cite": "complete statutory priority list for the right to control disposition of remains",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=HSC&sectionNum=7100.",
+          "quote": "(a) The right to control the disposition of the remains of a deceased person, the location and conditions of interment, and arrangements for funeral goods and services to be provided, unless other directions have been given by the decedent pursuant to Section 7100.1, vests in, and the duty of disposition and the liability for the reasonable cost of disposition of the remains devolves upon, the following in the order named:(1) An agent under a power of attorney for health care who has the right and duty of disposition under Division 4.7 (commencing with Section 4600) of the Probate Code, except that the agent is liable for the costs of disposition only in either of the following cases:(A) Where the agent makes a specific agreement to pay the costs of disposition.(B) Where, in the absence of a specific agreement, the agent makes decisions concerning disposition that incur costs, in which case the agent is liable only for the reasonable costs incurred as a result of the agent's decisions, to the extent that the decedent's estate or other appropriate fund is insufficient.(2) The competent surviving spouse.(3) The sole surviving competent adult child of the decedent or, if there is more than one competent adult child of the decedent, the majority of the surviving competent adult children. However, less than the majority of the surviving competent adult children shall be vested with the rights and duties of this section if they have used reasonable efforts to notify all other surviving competent adult children of their instructions and are not aware of any opposition to those instructions by the majority of all surviving competent adult children.(4) The surviving competent parent or parents of the decedent. If one of the surviving competent parents is absent, the remaining competent parent shall be vested with the rights and duties of this section after reasonable efforts have been unsuccessful in locating the absent surviving competent parent.(5) The sole surviving competent adult sibling of the decedent or, if there is more than one surviving competent adult sibling of the decedent, the majority of the surviving competent adult siblings. However, less than the majority of the surviving competent adult siblings shall be vested with the rights and duties of this section if they have used reasonable efforts to notify all other surviving competent adult siblings of their instructions and are not aware of any opposition to those instructions by the majority of all surviving competent adult siblings.(6) The surviving competent adult person or persons respectively in the next degrees of kinship or, if there is more than one surviving competent adult person of the same degree of kinship, the majority of those persons. Less than the majority of surviving competent adult persons of the same degree of kinship shall be vested with the rights and duties of this section if those persons have used reasonable efforts to notify all other surviving competent adult persons of the same degree of kinship of their instructions and are not aware of any opposition to those instructions by the majority of all surviving competent adult persons of the same degree of kinship.(7) A conservator of the person appointed under Part 3 (commencing with Section 1800) of Division 4 of the Probate Code when the decedent has sufficient assets.(8) A conservator of the estate appointed under Part 3 (commencing with Section 1800) of Division 4 of the Probate Code when the decedent has sufficient assets.(9) The public administrator when the deceased has sufficient assets."
+        }
+      ]
+    },
+    {
+      "id": "remains_written_direction",
+      "title": "A Decedent's Written Direction Can Override the Default Order",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-01",
+      "body": "California Health & Safety Code § 7100.1(a) lets a competent adult, prior to death, direct in writing the disposition of the person's remains and specify the funeral goods and services to be provided — and § 7100(a) makes the entire statutory priority order it sets out apply only \"unless other directions have been given by the decedent pursuant to Section 7100.1,\" so a validly made § 7100.1 direction by {{principalName}} would supersede the default priority list. For {{principalName}}'s direction to be binding as written and not subject to alteration by anyone else, two conditions must both be met: the directions must set forth {{principalName}}'s final wishes clearly and completely enough to preclude any material ambiguity, and arrangements for payment (through a trust, insurance, a commitment by another person, or any other effective and binding means) must have been made so that no survivor who would otherwise hold the right to control disposition is left to pay for it.",
+      "gap": "This is California's statute, used as real evidence of one state's mechanism for a person to set binding advance instructions on the disposition of their own remains — not a claim about which state's law would govern, or that another state uses the same mechanics; some states use a distinct \"designation of agent\" form with its own execution formalities, and California's approach here is different. Unlike the separate route of naming an agent under a power of attorney for health care (which Probate Code § 4673 requires to be notarized or signed by two qualifying witnesses), the text of § 7100.1 itself imposes no notarization or witness requirement — its only stated conditions are the clarity/completeness of the instructions and that funding arrangements have been made; this has not been cross-checked against any individual funeral establishment's own paperwork practices, which may go beyond what the statute requires. The statute's own words say a decedent may \"direct... the disposition\" and \"specify funeral goods and services\" — it does not use the word \"agent\" or expressly say the decedent may name a substitute decision-maker; that it also functions as a way to name a specific person (rather than only set instructions) is inferred here from § 7100(a)'s cross-reference making the default order yield to \"other directions... given... pursuant to Section 7100.1,\" not from explicit statutory language using the word \"agent\" or \"designate.\"",
+      "citations": [
+        {
+          "case": "Cal. Health & Safety Code § 7100.1(a)",
+          "cite": "a decedent's written direction on disposition of remains, and the conditions for it to be binding",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=HSC&sectionNum=7100.1.",
+          "quote": "(a) A decedent, prior to death, may direct, in writing, the disposition of his or her remains and specify funeral goods and services to be provided. Unless there is a statement to the contrary that is signed and dated by the decedent, the directions may not be altered, changed, or otherwise amended in any material way, except as may be required by law, and shall be faithfully carried out upon his or her death, provided both of the following requirements are met: (1) the directions set forth clearly and completely the final wishes of the decedent in sufficient detail so as to preclude any material ambiguity with regard to the instructions; and, (2) arrangements for payment through trusts, insurance, commitments by others, or any other effective and binding means, have been made, so as to preclude the payment of any funds by the survivor or survivors of the deceased that might otherwise retain the right to control the disposition."
+        },
+        {
+          "case": "Cal. Health & Safety Code § 7100(a) [opening clause]",
+          "cite": "the default priority order yields to a decedent's § 7100.1 direction",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=HSC&sectionNum=7100.",
+          "quote": "The right to control the disposition of the remains of a deceased person, the location and conditions of interment, and arrangements for funeral goods and services to be provided, unless other directions have been given by the decedent pursuant to Section 7100.1, vests in, and the duty of disposition and the liability for the reasonable cost of disposition of the remains devolves upon, the following in the order named:"
+        }
+      ]
+    },
+    {
+      "id": "remains_partial_funding",
+      "title": "How Far a Written Direction Must Be Followed When Funding Is Incomplete",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-01",
+      "body": "California Health & Safety Code § 7100.1(b) addresses what happens if a decedent's written direction only arranged payment for one of the two cost categories — either the cost of interment or the cost of the funeral goods and services — rather than both: the remaining, unfunded wishes are carried out only to the extent the decedent's estate has sufficient assets to pay for them, unless the person or persons who would otherwise have held the right to control disposition agree to assume that cost themselves. All other provisions of the direction — the ones for which funding was arranged — must still be carried out.",
+      "gap": "This is California's statute, used as real evidence of how one state prorates the enforceability of a decedent's own funeral/disposition instructions when funding was only partly arranged — not a claim about which state's law governs a specific person's estate, or that other states apply the same partial-funding rule. This is a single statutory subsection (§ 7100.1(b)); no additional independent source was found for this specific point.",
+      "citations": [
+        {
+          "case": "Cal. Health & Safety Code § 7100.1(b)",
+          "cite": "proration when only one cost category is funded",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=HSC&sectionNum=7100.1.",
+          "quote": "(b) In the event arrangements for only one of either the cost of interment or the cost of the funeral goods and services are made pursuant to this section, the remaining wishes of the decedent shall be carried out only to the extent that the decedent has sufficient assets to do so, unless the person or persons that otherwise have the right to control the disposition and arrange for funeral goods and services agree to assume the cost. All other provisions of the directions shall be carried out."
+        }
+      ]
+    },
+    {
+      "id": "remains_will_provision_effect",
+      "title": "A Disposition Direction Placed in a Will Takes Effect Immediately, Without Waiting for Probate",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-01",
+      "body": "California Health & Safety Code § 7100.1(c) provides that if a decedent's written direction on disposition of remains is contained in a will, it must be carried out immediately upon death — regardless of whether the will is otherwise valid, and regardless of whether the will has yet been offered for or admitted to probate. The statute addresses only that timing question; it does not separately state which document controls when a will's disposition instructions and a standalone, non-will disposition-of-remains document conflict with each other.",
+      "gap": "This is California's statute, used as real evidence of one state's rule that a will's disposition-of-remains instructions are not held hostage to the probate timeline — not a claim about which state's law governs a specific person's remains, or that every state treats a will's disposition clause the same way. As to whether a later, separate § 7100.1 document overrides an earlier will provision on the same subject, or vice versa, no statutory text answering that question was found anywhere in this chapter; § 7100.1(c) only removes the probate-timing objection to a will-based direction and does not rank a will against a non-will writing when the two conflict. This is a single statutory subsection (§ 7100.1(c)); no additional independent source was found on the priority question, and it should be treated as an open point rather than a settled one.",
+      "citations": [
+        {
+          "case": "Cal. Health & Safety Code § 7100.1(c)",
+          "cite": "a will-based direction is carried out immediately, regardless of probate status",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=HSC&sectionNum=7100.1.",
+          "quote": "(c) If the directions are contained in a will, they shall be immediately carried out, regardless of the validity of the will in other respects or of the fact that the will may not be offered for or admitted to probate until a later date."
+        }
+      ]
+    },
+    {
+      "id": "remains_revocation",
+      "title": "How a Disposition Direction Can Be Changed or Revoked",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-01",
+      "body": "California Health & Safety Code § 7100.1(a) states that, once made, a decedent's written direction on disposition of remains \"may not be altered, changed, or otherwise amended in any material way, except as may be required by law,\" unless the person who made it has signed and dated a statement to the contrary. The statute does not set out a separate, dedicated revocation procedure of the kind that exists elsewhere in California law for revoking an agent designation in an advance health care directive; the only mechanism the text of § 7100.1 itself describes for changing a direction is the maker's own signed and dated statement.",
+      "gap": "This is California's statute, used as real evidence of one state's limited statutory text on altering a disposition-of-remains direction — not a claim about which state's law governs a specific person's document, or that every state handles revocation the same way. This is the same subsection already quoted for the written-direction mechanism (§ 7100.1(a)); no additional independent source or separate revocation-specific statute was found in this chapter, and the practical mechanics of superseding an earlier § 7100.1 document — for example, by simply executing and dating a later one — are not spelled out beyond this sentence. This is a single statutory subsection (§ 7100.1(a)); no additional independent source was found for this.",
+      "citations": [
+        {
+          "case": "Cal. Health & Safety Code § 7100.1(a) [revocation]",
+          "cite": "the only stated method for altering a written direction",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=HSC&sectionNum=7100.1.",
+          "quote": "Unless there is a statement to the contrary that is signed and dated by the decedent, the directions may not be altered, changed, or otherwise amended in any material way, except as may be required by law, and shall be faithfully carried out upon his or her death..."
+        }
+      ]
+    },
+    {
+      "id": "remains_cremated_remains_gap",
+      "title": "No Separate Statutory Priority Rule Found for Already-Cremated Remains",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-01",
+      "body": "California Health & Safety Code § 7100(a)'s priority-of-control framework, on its face, governs \"the disposition of the remains of a deceased person\" generally, without carving out a separate rule for who controls remains after cremation has already occurred, as distinct from the initial decision to cremate. Health & Safety Code § 7112 addresses cremated remains, but on two narrower points that are not about who controls disposition: it bars any action against a cemetery authority over cremated remains left in its possession for a year (unless there is a written care contract or the remains have been permanently interred), and it states that a licensed funeral director is not liable in damages for the lawful disposition of cremated human remains. Neither provision assigns or re-orders the right to control what happens to cremated remains once cremation has taken place.",
+      "gap": "This is a negative finding about California's statute, reported directly rather than forced into a citation that doesn't support it: a review of the entire Health & Safety Code chapter governing custody and duty of interment (§§ 7100-7117.1) did not turn up a separate, clean statutory provision assigning the right to control already-cremated remains distinct from the general § 7100(a) priority framework that governs \"remains\" generally; § 7112's cremated-remains language is a liability/retention-period rule, not a control-priority rule. This does not rule out that such a rule exists elsewhere in California statute or case law outside this specific chapter — only that it was not located within the disposition-of-remains chapter itself, which is where it would be expected to appear.",
+      "citations": [
+        {
+          "case": "Cal. Health & Safety Code § 7100(a) [opening clause, cremated]",
+          "cite": "the general disposition-of-remains framework, with no cremated-remains carve-out",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=HSC&sectionNum=7100.",
+          "quote": "The right to control the disposition of the remains of a deceased person, the location and conditions of interment, and arrangements for funeral goods and services to be provided, unless other directions have been given by the decedent pursuant to Section 7100.1, vests in, and the duty of disposition and the liability for the reasonable cost of disposition of the remains devolves upon, the following in the order named:"
+        },
+        {
+          "case": "Cal. Health & Safety Code § 7112",
+          "cite": "cremated remains — retention-period and lawful-disposition liability rules only",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=HSC&sectionNum=7112.",
+          "quote": "No action shall lie against any cemetery authority relating to the cremated remains of any person which have been left in its possession for a period of one year, unless a written contract has been entered into with the cemetery authority for their care or unless permanent interment has been made.No licensed funeral director shall be liable in damages for the lawful disposition of any cremated human remains."
+        }
+      ]
+    },
+    {
+      "id": "remains_liability_protection",
+      "title": "Liability Protection for a Funeral Director, Cemetery Authority, or Crematory That Relies on the Designation",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-01",
+      "body": "California Health & Safety Code § 7100(f) states that a funeral director or cemetery authority is not liable to any person for carrying out the instructions of the decedent or of the person entitled to control the disposition. Separately, Health & Safety Code § 7111 lets a cemetery authority or crematory proceed with an interment or cremation upon receiving a written authorization from a person who represents that they have the right to control disposition under § 7100, and shields the cemetery authority or crematory from liability for cremating, interring, or otherwise disposing of remains in reliance on that authorization — unless it has actual notice that the representation is untrue.",
+      "gap": "This is California's statute, used as real evidence of one state's rule protecting a funeral director, cemetery authority, or crematory that relies in good faith on a decedent's instructions, the statutory default order, or a person's written representation of authority under § 7100 — not a claim about which state's law governs a specific facility's conduct, or that every state extends the same good-faith reliance protection to funeral or cemetery businesses. § 7100(f) and § 7111 are genuinely different statutory sections, not two subsections of one section, so they are treated as independent sources here.",
+      "citations": [
+        {
+          "case": "Cal. Health & Safety Code § 7100(f)",
+          "cite": "no liability for carrying out the decedent's or controlling person's instructions",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=HSC&sectionNum=7100.",
+          "quote": "(f) A funeral director or cemetery authority shall not be liable to any person or persons for carrying out the instructions of the decedent or the person entitled to control the disposition."
+        },
+        {
+          "case": "Cal. Health & Safety Code § 7111",
+          "cite": "good-faith reliance on a written authorization of right to control disposition",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=HSC&sectionNum=7111.",
+          "quote": "A cemetery authority or crematory may make an interment or cremation of any remains upon the receipt of a written authorization of a person representing himself or herself to be a person having the right to control the disposition of the remains pursuant to Section 7100.A cemetery authority or crematory is not liable for cremating, making an interment, or for other disposition of remains permitted by law, pursuant to that authorization, unless it has actual notice that the representation is untrue."
+        }
+      ]
+    },
+    {
+      "id": "remains_agent_designation_declaration",
+      "title": "Designation of Agent to Control Disposition of Remains",
+      "kind": "drafting",
+      "body": "I, {{principalName}}, being an adult of sound mind, direct under California Health & Safety Code §§ 7100 and 7100.1 that {{agentName}} shall have the right to control the disposition of my remains, including the location and conditions of interment and arrangements for funeral goods and services, ahead of any person who would otherwise hold that right under the statutory order of priority. If {{agentName}} is unable, unwilling, or unavailable to act, I designate {{alternateAgentName}} to act in {{agentName}}'s place. This document revokes any earlier written direction I have given under Health & Safety Code § 7100.1 regarding the disposition of my remains."
+    },
+    {
+      "id": "remains_instructions_schedule",
+      "title": "Disposition Instructions and Preferences",
+      "kind": "drafting",
+      "body": "My preferences and instructions regarding disposition of my remains, given under Health & Safety Code § 7100.1, are as follows:\n\nMethod of disposition: ☐ Burial ☐ Cremation ☐ Other: _________________________\n\nSpecific instructions: {{dispositionInstructions}}\n\nFunding arrangements made for these costs (trust, insurance policy, prepaid contract, or other binding means): {{fundingArrangementDescription}}\n\nThese instructions are intended to set forth my final wishes clearly and completely, and are to be carried out to the extent funding has been arranged for them as described above."
+    },
+    {
+      "id": "remains_signature_notarization",
+      "title": "Signature and Notarization",
+      "kind": "drafting",
+      "body": "Signature of {{principalName}}: ☐ _________________________ Date: _______________\n\nCalifornia Health & Safety Code § 7100.1 does not itself require this document to be witnessed or notarized. Some funeral establishments and cemetery authorities may nonetheless request notarization or witnesses as their own condition for accepting a written authorization under Health & Safety Code § 7111.\n\nOptional notary acknowledgment:\n\nState of California, County of _________________________\n\nOn _________________________, before me, personally appeared {{principalName}}, proved to me on the basis of satisfactory evidence to be the person whose name is subscribed to this instrument.\n\nNotary signature: _________________________ Printed name: _________________________ Commission expires: _________________________"
     }
   ]
 }

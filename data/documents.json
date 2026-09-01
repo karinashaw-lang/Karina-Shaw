@@ -2517,5 +2517,282 @@
     "categories": [
       "Business Formation"
     ]
+  },
+  {
+    "id": "security_deposit_itemization",
+    "title": "Security Deposit Itemization / Move-Out Statement",
+    "description": "A landlord's itemized statement accounting for a tenant's security deposit after move-out — the statutory cap, permitted deductions, the 21-day return deadline and receipts threshold, the pre-move-out inspection right, and the bad-faith retention penalty.",
+    "clauseOrder": [
+      "sdi_deposit_details",
+      "sdi_deposit_cap",
+      "sdi_permitted_uses",
+      "lease_security_deposit_inspection",
+      "sdi_return_deadline",
+      "sdi_deductions_schedule",
+      "sdi_bad_faith_penalty",
+      "sdi_interest_status",
+      "sdi_signature_certification"
+    ],
+    "fields": [
+      {
+        "id": "landlordName",
+        "label": "Landlord's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "tenantName",
+        "label": "Tenant's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "propertyAddress",
+        "label": "Property address",
+        "placeholder": "123 Main St., Apt. 4, Sacramento, CA 95814",
+        "required": true
+      },
+      {
+        "id": "depositAmount",
+        "label": "Security deposit amount received",
+        "placeholder": "2,200",
+        "required": true
+      },
+      {
+        "id": "moveInDate",
+        "label": "Date the deposit was received / tenancy began",
+        "placeholder": "September 1, 2024",
+        "required": true
+      },
+      {
+        "id": "moveOutDate",
+        "label": "Move-out date (date tenant vacated)",
+        "placeholder": "August 31, 2026",
+        "required": true
+      },
+      {
+        "id": "statementDate",
+        "label": "Date of this itemized statement",
+        "placeholder": "September 15, 2026",
+        "required": true
+      },
+      {
+        "id": "unpaidRentDeduction",
+        "label": "Unpaid rent deduction amount",
+        "placeholder": "$0",
+        "required": false
+      },
+      {
+        "id": "unpaidRentDescription",
+        "label": "Unpaid rent deduction description",
+        "placeholder": "N/A",
+        "required": false
+      },
+      {
+        "id": "repairDeduction",
+        "label": "Repair deduction amount",
+        "placeholder": "$250",
+        "required": false
+      },
+      {
+        "id": "repairDescription",
+        "label": "Repair deduction description",
+        "placeholder": "Repair of hole in living room wall",
+        "required": false
+      },
+      {
+        "id": "cleaningDeduction",
+        "label": "Cleaning deduction amount",
+        "placeholder": "$100",
+        "required": false
+      },
+      {
+        "id": "cleaningDescription",
+        "label": "Cleaning deduction description",
+        "placeholder": "Carpet cleaning",
+        "required": false
+      },
+      {
+        "id": "personalPropertyDeduction",
+        "label": "Personal property deduction amount",
+        "placeholder": "$0",
+        "required": false
+      },
+      {
+        "id": "personalPropertyDescription",
+        "label": "Personal property deduction description",
+        "placeholder": "N/A",
+        "required": false
+      },
+      {
+        "id": "totalDeductions",
+        "label": "Total deductions",
+        "placeholder": "$350",
+        "required": true
+      },
+      {
+        "id": "refundAmount",
+        "label": "Amount of deposit being refunded to tenant",
+        "placeholder": "1,850",
+        "required": true
+      }
+    ],
+    "categories": [
+      "Real Estate"
+    ]
+  },
+  {
+    "id": "wage_statement_itemization_policy",
+    "title": "Wage Statement Itemization Policy",
+    "description": "A policy describing California's itemized wage statement requirements, the statutory penalty for a knowing and intentional violation, the employee records-inspection right, and how a wage-statement violation fits into PAGA enforcement.",
+    "clauseOrder": [
+      "wagestmt_policy_statement",
+      "wagestmt_nine_items",
+      "wagestmt_itemized_deductions",
+      "wagestmt_sample_itemization",
+      "wagestmt_knowing_intentional_penalty",
+      "wagestmt_suffering_injury",
+      "wagestmt_inspection_right",
+      "wagestmt_paga_context",
+      "wagestmt_acknowledgment"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      }
+    ],
+    "categories": [
+      "During employment"
+    ]
+  },
+  {
+    "id": "safe_note",
+    "title": "SAFE (Simple Agreement for Future Equity) Note",
+    "description": "An early-stage financing instrument where an investor pays a company cash now in exchange for the right to future equity, alongside the federal and California securities law that governs how such an offering may be made.",
+    "clauseOrder": [
+      "safe_investment_terms",
+      "safe_conversion_trigger",
+      "safe_mfn_clause",
+      "safe_sec_act_5_registration",
+      "safe_reg_d_506_exemption",
+      "safe_accredited_investor_definition",
+      "safe_ca_blue_sky_notice_filing",
+      "safe_antifraud_persists",
+      "safe_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "investorName",
+        "label": "Investor's name",
+        "placeholder": "Jordan Morgan",
+        "required": true
+      },
+      {
+        "id": "purchaseAmount",
+        "label": "Purchase amount",
+        "placeholder": "50,000",
+        "required": true
+      },
+      {
+        "id": "valuationCap",
+        "label": "Valuation cap",
+        "placeholder": "8,000,000",
+        "required": false
+      },
+      {
+        "id": "discountRate",
+        "label": "Discount rate",
+        "placeholder": "20",
+        "required": false
+      },
+      {
+        "id": "financingThreshold",
+        "label": "Minimum gross proceeds to trigger conversion",
+        "placeholder": "1,000,000",
+        "required": true
+      },
+      {
+        "id": "alternateTriggerTerms",
+        "label": "Alternate conversion triggers (change of control, IPO, dissolution)",
+        "placeholder": "On a Change of Control, this SAFE converts into the right to receive a cash payment equal to the greater of the Purchase Amount or the as-converted value of the SAFE",
+        "required": false
+      },
+      {
+        "id": "mfnConditions",
+        "label": "Most-favored-nation conditions",
+        "placeholder": "This provision terminates upon the closing of the next Equity Financing",
+        "required": false
+      }
+    ],
+    "categories": [
+      "Business Formation"
+    ]
+  },
+  {
+    "id": "disposition_of_remains_instructions",
+    "title": "Disposition of Remains Instructions",
+    "description": "A designation of who has the right to control disposition of your remains after death, and your specific burial/cremation instructions, under California's statutory framework for this decision.",
+    "clauseOrder": [
+      "remains_agent_designation_declaration",
+      "remains_priority_order",
+      "remains_written_direction",
+      "remains_instructions_schedule",
+      "remains_partial_funding",
+      "remains_will_provision_effect",
+      "remains_revocation",
+      "remains_cremated_remains_gap",
+      "remains_liability_protection",
+      "remains_signature_notarization"
+    ],
+    "fields": [
+      {
+        "id": "principalName",
+        "label": "Your full legal name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "agentName",
+        "label": "Designated agent's name",
+        "placeholder": "Morgan Lee",
+        "required": true
+      },
+      {
+        "id": "alternateAgentName",
+        "label": "Alternate agent's name",
+        "placeholder": "Casey Lee",
+        "required": false
+      },
+      {
+        "id": "dispositionInstructions",
+        "label": "Specific disposition instructions",
+        "placeholder": "I wish to be cremated and my ashes scattered at a location of my agent's choosing.",
+        "required": false
+      },
+      {
+        "id": "fundingArrangementDescription",
+        "label": "Funding arrangement for these costs",
+        "placeholder": "Prepaid funeral contract #1234 with Acme Mortuary",
+        "required": false
+      }
+    ],
+    "categories": [
+      "Estate Planning"
+    ]
   }
 ]
