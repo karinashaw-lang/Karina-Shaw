@@ -3265,5 +3265,220 @@
     "categories": [
       "Estate Planning"
     ]
+  },
+  {
+    "id": "grant_deed",
+    "title": "Grant Deed",
+    "description": "A deed that conveys real property with California's statutory implied covenants — that the grantor hasn't already conveyed the same interest to someone else, and that the property is free of encumbrances the grantor made — unlike a quitclaim deed, which carries no such covenants.",
+    "clauseOrder": [
+      "grantdeed_granting_clause",
+      "grantdeed_legal_description_and_apn",
+      "grantdeed_statutory_form_and_fee_simple",
+      "grantdeed_implied_covenants",
+      "grantdeed_after_acquired_title",
+      "qcd_execution_requirements",
+      "qcd_acknowledgment_recordability",
+      "qcd_recording_effect",
+      "qcd_pcor_requirement",
+      "qcd_documentary_transfer_tax",
+      "grantdeed_signature_notarization"
+    ],
+    "fields": [
+      {
+        "id": "grantorName",
+        "label": "Grantor's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "granteeName",
+        "label": "Grantee's name",
+        "placeholder": "Jordan Morgan",
+        "required": true
+      },
+      {
+        "id": "propertyAddress",
+        "label": "Property address",
+        "placeholder": "123 Main St., Sacramento, CA 95814",
+        "required": true
+      },
+      {
+        "id": "legalDescription",
+        "label": "Legal description of the property",
+        "placeholder": "Lot 12, Block 3, Tract No. 4567, as per map recorded in Book 45, Page 12 of Maps, Sacramento County Records",
+        "required": true
+      },
+      {
+        "id": "parcelNumber",
+        "label": "Assessor's Parcel Number",
+        "placeholder": "123-456-789",
+        "required": false
+      }
+    ],
+    "categories": [
+      "Real Estate"
+    ]
+  },
+  {
+    "id": "guardianship_petition",
+    "title": "Guardianship of the Person (Petition Information Sheet)",
+    "description": "Explains the actual California court process for appointing a guardian of a minor's person — petition, notice, investigation, and court order — as distinct from a parent's advance guardian nomination. This document is informational and does not itself appoint a guardian; only a court order can do that.",
+    "clauseOrder": [
+      "guardianpet_declaration",
+      "guardianpet_scope_vs_nomination",
+      "guardianpet_petition_notice",
+      "guardianpet_investigation_requirement",
+      "guardianpet_priority_and_parent_bar",
+      "guardianpet_not_parental_rights_termination",
+      "guardianpet_powers_and_duties",
+      "guardianpet_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "proposedGuardianName",
+        "label": "Proposed guardian's name",
+        "placeholder": "Morgan Lee",
+        "required": true
+      },
+      {
+        "id": "childName",
+        "label": "Child's name",
+        "placeholder": "Riley Lee",
+        "required": true
+      },
+      {
+        "id": "childDOB",
+        "label": "Child's date of birth",
+        "placeholder": "May 3, 2015",
+        "required": true
+      },
+      {
+        "id": "relationshipToChild",
+        "label": "Proposed guardian's relationship to the child",
+        "placeholder": "Maternal aunt",
+        "required": true
+      },
+      {
+        "id": "parent1Name",
+        "label": "Parent 1 name (if known)",
+        "placeholder": "Jordan Alex Lee",
+        "required": false
+      },
+      {
+        "id": "parent2Name",
+        "label": "Parent 2 name (if known)",
+        "placeholder": "Casey Lee",
+        "required": false
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ],
+    "categories": [
+      "Family Law"
+    ]
+  },
+  {
+    "id": "articles_of_incorporation",
+    "title": "Articles of Incorporation (California Corporation)",
+    "description": "The actual formation filing with the California Secretary of State that legally creates a corporation — distinct from this project's Corporate Bylaws document, which covers internal governance after incorporation.",
+    "clauseOrder": [
+      "articlesinc_declaration",
+      "articlesinc_formation_and_existence",
+      "articlesinc_required_content",
+      "articlesinc_name_requirements",
+      "articlesinc_agent_designation",
+      "articlesinc_agent_for_service",
+      "articlesinc_statement_of_information",
+      "articlesinc_annual_franchise_tax",
+      "articlesinc_delayed_filing_date",
+      "articlesinc_incorporator_signature"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Corporation name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "authorizedShares",
+        "label": "Total authorized shares",
+        "placeholder": "10,000,000",
+        "required": true
+      },
+      {
+        "id": "principalOfficeAddress",
+        "label": "Principal office address",
+        "placeholder": "500 Market St, San Francisco, CA 94105",
+        "required": true
+      },
+      {
+        "id": "agentName",
+        "label": "Agent for service of process name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "agentAddress",
+        "label": "Agent's California street address",
+        "placeholder": "500 Market St, San Francisco, CA 94105",
+        "required": true
+      },
+      {
+        "id": "incorporatorName",
+        "label": "Incorporator name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      }
+    ],
+    "categories": [
+      "Business Formation"
+    ]
+  },
+  {
+    "id": "unemployment_change_notice",
+    "title": "Notice to Employee as to Change in Relationship",
+    "description": "California's separate, often-overlooked requirement to notify a departing employee of a change in their employment relationship and to supply the EDD's unemployment-benefits pamphlet — distinct from this project's Termination/Separation Letter and WARN Act Layoff Notice documents.",
+    "clauseOrder": [
+      "unemploynotice_intro",
+      "unemploynotice_pamphlet_requirement",
+      "unemploynotice_change_in_relationship",
+      "unemploynotice_no_size_threshold",
+      "unemploynotice_penalty",
+      "unemploynotice_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Employer name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "changeDate",
+        "label": "Effective date of the change",
+        "placeholder": "September 1, 2026",
+        "required": true
+      }
+    ],
+    "categories": [
+      "Ending employment"
+    ]
   }
 ]
