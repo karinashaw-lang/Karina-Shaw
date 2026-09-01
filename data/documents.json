@@ -1649,5 +1649,49 @@
     "categories": [
       "Estate Planning"
     ]
+  },
+  {
+    "id": "premarital_agreement",
+    "title": "Premarital Agreement",
+    "description": "A prenup with the real, sourced specifics on what it can and can't control — the spousal-support waiver's actual conditions, the two-part test that can unwind the whole agreement, and the specific seven-day and independent-counsel rules that determine whether it was signed voluntarily in the eyes of a court.",
+    "clauseOrder": [
+      "prenup_declaration_and_intent",
+      "prenup_definition_and_effective_date",
+      "prenup_execution_formalities",
+      "prenup_no_consideration_required",
+      "prenup_permitted_subject_matter",
+      "prenup_child_support_not_waivable",
+      "prenup_spousal_support_waiver_conditions",
+      "prenup_disclosure_schedule_reference",
+      "prenup_unenforceability_test",
+      "prenup_seven_day_counsel_presumption",
+      "prenup_amendment_revocation",
+      "prenup_limitations_tolling",
+      "prenup_void_marriage_effect",
+      "prenup_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "party1Name",
+        "label": "First party's full legal name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "party2Name",
+        "label": "Second party's full legal name",
+        "placeholder": "Morgan Casey Lee",
+        "required": true
+      },
+      {
+        "id": "marriageDate",
+        "label": "Anticipated marriage date",
+        "placeholder": "June 14, 2027",
+        "required": true
+      }
+    ],
+    "categories": [
+      "Family Law"
+    ]
   }
 ]
