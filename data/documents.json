@@ -3621,5 +3621,80 @@
     "categories": [
       "Ending employment"
     ]
+  },
+  {
+    "id": "dvro_petition_information",
+    "title": "Domestic Violence Restraining Order (Request for Order) Information Sheet",
+    "description": "Explains California's Domestic Violence Prevention Act restraining order process (Family Code § 6200 et seq.) -- qualifying relationships, the statutory definition of abuse, the standard of proof, order duration, and firearm relinquishment -- distinct from this project's Civil Harassment Restraining Order, which applies only between people without a qualifying domestic relationship. This document is informational and does not itself grant a restraining order; only a court order can do that.",
+    "clauseOrder": [
+      "dvro_incident_and_relationship_declaration",
+      "dvro_scope_and_distinction",
+      "dvro_qualifying_relationships",
+      "dvro_abuse_definition",
+      "dvro_disturbing_peace_coercive_control",
+      "dvro_standard_of_proof",
+      "dvro_ex_parte_and_duration",
+      "dvro_firearm_relinquishment",
+      "dvro_verification_signature"
+    ],
+    "fields": [
+      {
+        "id": "petitionerName",
+        "label": "Petitioner's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "respondentName",
+        "label": "Respondent's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "qualifyingRelationship",
+        "label": "Relationship to respondent",
+        "placeholder": "Former spouse",
+        "required": true
+      },
+      {
+        "id": "incidentDate",
+        "label": "Date of incident",
+        "placeholder": "August 15, 2026",
+        "required": true
+      },
+      {
+        "id": "incidentLocation",
+        "label": "Location of incident",
+        "placeholder": "123 Main St., Sacramento, CA",
+        "required": true
+      },
+      {
+        "id": "incidentDescription",
+        "label": "Description of incident",
+        "placeholder": "Describe what happened",
+        "required": true
+      },
+      {
+        "id": "additionalIncidents",
+        "label": "Additional incidents (if any)",
+        "placeholder": "Describe any additional incidents",
+        "required": false
+      },
+      {
+        "id": "signatureDate",
+        "label": "Signature date",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "signatureCity",
+        "label": "City where signed",
+        "placeholder": "Sacramento",
+        "required": true
+      }
+    ],
+    "categories": [
+      "Family Law"
+    ]
   }
 ]
