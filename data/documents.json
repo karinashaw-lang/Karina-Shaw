@@ -1925,5 +1925,316 @@
     "categories": [
       "Family Law"
     ]
+  },
+  {
+    "id": "domestic_partnership_declaration",
+    "title": "Domestic Partnership Declaration",
+    "description": "A domestic partnership declaration with the real, sourced specifics on the current eligibility requirements (updated by a 2020 law that removed the old same-sex-only and age-62 restrictions), the sweeping same-rights-as-spouses statute, the two ways to end a partnership, and how a later marriage between the same partners is actually handled.",
+    "clauseOrder": [
+      "dp_recitals",
+      "dp_eligibility",
+      "dp_filing_mechanism",
+      "dp_legal_effect",
+      "dp_community_property",
+      "dp_confidential",
+      "dp_declaration_of_intent",
+      "dp_termination",
+      "dp_intermarriage",
+      "dp_outofstate_recognition",
+      "dp_exclusivity",
+      "dp_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "party1Name",
+        "label": "First partner's full legal name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "party2Name",
+        "label": "Second partner's full legal name",
+        "placeholder": "Morgan Casey Lee",
+        "required": true
+      },
+      {
+        "id": "filingDate",
+        "label": "Filing date",
+        "placeholder": "September 1, 2026",
+        "required": true
+      }
+    ],
+    "categories": [
+      "Family Law"
+    ]
+  },
+  {
+    "id": "voluntary_declaration_of_parentage",
+    "title": "Voluntary Declaration of Parentage",
+    "description": "A voluntary parentage declaration with the real, sourced specifics on its judgment-equivalent legal effect, the exact signing and witnessing requirements, the 60-day rescission window, the narrower two-year outer deadline for a later challenge, and what the declaration does and doesn't establish beyond parentage itself.",
+    "clauseOrder": [
+      "parentage_declaration_statement",
+      "parentage_legislative_basis",
+      "parentage_signing_and_witnessing",
+      "parentage_marital_presumption_conflict",
+      "parentage_no_competing_claim_statement",
+      "parentage_scope_vs_custody_support",
+      "parentage_rescission_window",
+      "parentage_later_challenge_by_signer",
+      "parentage_genetic_testing_on_challenge",
+      "parentage_minor_signer_timing",
+      "parentage_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "parent1Name",
+        "label": "First parent's full legal name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "parent2Name",
+        "label": "Second parent's full legal name",
+        "placeholder": "Morgan Casey Lee",
+        "required": true
+      },
+      {
+        "id": "childName",
+        "label": "Child's name",
+        "placeholder": "Riley Lee",
+        "required": true
+      }
+    ],
+    "categories": [
+      "Family Law"
+    ]
+  },
+  {
+    "id": "commission_agreement",
+    "title": "Commission Agreement",
+    "description": "A written agreement documenting how commission wages are computed and paid, as California law requires for commission-based employment.",
+    "clauseOrder": [
+      "commission_agreement_declaration",
+      "commission_writing_requirement",
+      "commission_statutory_definition",
+      "commission_structure_schedule",
+      "commission_payment_timing",
+      "commission_expired_contract_continuation",
+      "commission_signed_receipt",
+      "commission_receipt_acknowledgment"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "jobTitle",
+        "label": "Job title",
+        "placeholder": "Account Executive",
+        "required": true
+      },
+      {
+        "id": "effectiveDate",
+        "label": "Effective date",
+        "placeholder": "October 1, 2026",
+        "required": true
+      },
+      {
+        "id": "commissionStructure",
+        "label": "Commission structure and rate",
+        "placeholder": "5% of net sales revenue on each closed deal, paid on the next regular payday after the customer's payment is received",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "October 1, 2026",
+        "required": true
+      }
+    ],
+    "categories": [
+      "Hiring",
+      "During employment"
+    ]
+  },
+  {
+    "id": "small_estate_affidavit",
+    "title": "Small Estate Affidavit",
+    "description": "A sworn affidavit a successor uses to collect a decedent's personal property without a full probate proceeding, when the estate is small enough to qualify under California's no-probate small-estate procedure.",
+    "clauseOrder": [
+      "smallestate_declaration",
+      "smallestate_threshold_mechanism",
+      "smallestate_excluded_property",
+      "smallestate_40day_wait",
+      "smallestate_affidavit_required_contents",
+      "smallestate_multiple_successors_signing",
+      "smallestate_property_schedule",
+      "smallestate_holder_protection",
+      "smallestate_transferee_liability",
+      "smallestate_real_property_affidavit",
+      "smallestate_signature_perjury"
+    ],
+    "fields": [
+      {
+        "id": "decedentName",
+        "label": "Decedent's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "dateOfDeath",
+        "label": "Date of death",
+        "placeholder": "March 15, 2026",
+        "required": true
+      },
+      {
+        "id": "successorName",
+        "label": "Successor's (affiant's) name",
+        "placeholder": "Jordan Morgan",
+        "required": true
+      },
+      {
+        "id": "propertyDescription",
+        "label": "Description of property sought",
+        "placeholder": "Checking account #1234 at Acme Bank; 2019 furniture and household items located at 123 Main St.",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "May 10, 2026",
+        "required": true
+      },
+      {
+        "id": "cityOfExecution",
+        "label": "City where signed",
+        "placeholder": "Sacramento",
+        "required": true
+      }
+    ],
+    "categories": [
+      "Estate Planning"
+    ]
+  },
+  {
+    "id": "partnership_agreement",
+    "title": "General Partnership Agreement",
+    "description": "An agreement between two partners forming a California general partnership, documenting formation, capital contributions, profit/loss sharing, management, and dissolution alongside the statutory default rules that apply either way.",
+    "clauseOrder": [
+      "partnership_formation_statement",
+      "partnership_formation_default",
+      "partnership_capital_contributions",
+      "partnership_default_profit_loss_share",
+      "partnership_default_management",
+      "partnership_fiduciary_duties",
+      "partnership_property_ownership",
+      "partnership_personal_liability",
+      "partnership_records_access",
+      "partnership_dissociation_triggers",
+      "partnership_dissolution_not_automatic",
+      "partnership_ack"
+    ],
+    "fields": [
+      {
+        "id": "partnershipName",
+        "label": "Partnership name",
+        "placeholder": "Morgan & Lee Consulting",
+        "required": true
+      },
+      {
+        "id": "partner1Name",
+        "label": "First partner's name",
+        "placeholder": "Jordan Morgan",
+        "required": true
+      },
+      {
+        "id": "partner2Name",
+        "label": "Second partner's name",
+        "placeholder": "Casey Lee",
+        "required": true
+      },
+      {
+        "id": "partner1Contribution",
+        "label": "First partner's capital contribution",
+        "placeholder": "$25,000 cash",
+        "required": true
+      },
+      {
+        "id": "partner2Contribution",
+        "label": "Second partner's capital contribution",
+        "placeholder": "$25,000 cash",
+        "required": true
+      }
+    ],
+    "categories": [
+      "Business Formation"
+    ]
+  },
+  {
+    "id": "residential_purchase_agreement",
+    "title": "Residential Purchase Agreement",
+    "description": "An agreement for the sale of a single-family residential property, covering the statutory disclosure requirements that apply to a California residential purchase alongside the deal terms.",
+    "clauseOrder": [
+      "purchase_parties_property",
+      "purchase_tds_requirement",
+      "purchase_tds_content",
+      "purchase_tds_timing_termination",
+      "purchase_natural_hazard_disclosure",
+      "purchase_lead_paint_federal",
+      "purchase_megans_law_notice",
+      "purchase_contingencies_closing",
+      "purchase_liquidated_damages",
+      "purchase_ack"
+    ],
+    "fields": [
+      {
+        "id": "sellerName",
+        "label": "Seller's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "buyerName",
+        "label": "Buyer's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "propertyAddress",
+        "label": "Property address",
+        "placeholder": "123 Main St., Sacramento, CA 95814",
+        "required": true
+      },
+      {
+        "id": "purchasePrice",
+        "label": "Purchase price",
+        "placeholder": "750,000",
+        "required": true
+      },
+      {
+        "id": "contingencies",
+        "label": "Contingencies",
+        "placeholder": "Buyer's obtaining financing on terms acceptable to Buyer within 21 days; Buyer's approval of a property inspection within 17 days",
+        "required": true
+      },
+      {
+        "id": "closingDate",
+        "label": "Closing date",
+        "placeholder": "November 15, 2026",
+        "required": true
+      }
+    ],
+    "categories": [
+      "Real Estate"
+    ]
   }
 ]
