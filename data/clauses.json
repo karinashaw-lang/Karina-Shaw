@@ -9056,6 +9056,365 @@
       "title": "Organizer Signature",
       "kind": "drafting",
       "body": "Executed by the organizer:\n\nOrganizer: {{organizerName}}\n\nSignature: ☐ _________________________ Date: _______________"
+    },
+    {
+      "id": "commlease_residential_protections_not_applicable",
+      "title": "Residential-Only Statutes Don't Apply Here",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-01",
+      "body": "California's residential security deposit statute, its statewide just-cause-for-termination rule, and its statewide rent-increase cap each apply only to residential tenancies, not to a commercial lease. Civil Code § 1950.5, the security deposit statute, states that it \"applies to security for a rental agreement for residential property that is used as the dwelling of the tenant.\" Civil Code §§ 1946.2 (the just-cause termination rule) and 1947.12 (the rent-increase cap) each define their own scope as \"residential real property,\" which both statutes define identically as \"any dwelling or unit that is intended for human habitation.\" None of these three statutes contains language reaching a commercial tenancy.",
+      "gap": "This document doesn't restate the security-deposit cap, the just-cause termination requirements, or the rent-increase cap found elsewhere in California law, because none of them govern a commercial lease by their own terms — a landlord and tenant negotiating a commercial lease are working from a different, thinner statutory baseline than a residential landlord and tenant. This is one state's statutes; some other states regulate commercial security deposits, commercial eviction notice, or commercial rent increases even though California generally does not for those specific protections (see the separate clauses on security deposits and notice elsewhere in this document for the commercial-specific rules that do exist). Two of the three citations below (§§ 1946.2 and 1947.12) happen to use identical definitional language for \"residential real property,\" but they are independent, separately enacted and amended sections of the code, not subsections of one statute.",
+      "citations": [
+        {
+          "case": "Cal. Civ. Code § 1950.5(a)",
+          "cite": "California Civil Code, scope of the residential security deposit statute",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1950.5.",
+          "quote": "This section applies to security for a rental agreement for residential property that is used as the dwelling of the tenant."
+        },
+        {
+          "case": "Cal. Civ. Code § 1946.2(k)(2)",
+          "cite": "California Civil Code, scope of the statewide just-cause statute",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1946.2.",
+          "quote": "\"Residential real property\" means any dwelling or unit that is intended for human habitation, including any dwelling or unit in a mobilehome park."
+        },
+        {
+          "case": "Cal. Civ. Code § 1947.12(g)(4)",
+          "cite": "California Civil Code, scope of the statewide rent-cap statute",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1947.12.",
+          "quote": "\"Residential real property\" means any dwelling or unit that is intended for human habitation, including any dwelling or unit in a mobilehome park."
+        }
+      ]
+    },
+    {
+      "id": "commlease_no_implied_habitability",
+      "title": "No Implied Warranty of Habitability for Commercial Space",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-01",
+      "body": "California's implied warranty of habitability — the doctrine requiring a landlord to keep leased space fit for occupation — was recognized by the California Supreme Court specifically for residential leases, not commercial ones. Consistent with that, the statutory checklist defining what \"habitable\" specifically requires (Civil Code § 1941.1) is written in terms of a \"dwelling,\" and the companion statute making the habitability duty non-waivable (Civil Code § 1942.1) is written in terms of \"a lessee of a dwelling.\" Neither statute's text extends to commercial premises.",
+      "gap": "A commercial tenant can't point to a defined statutory habitability checklist the way a residential tenant can. What a commercial space needs to be fit for its intended use is left almost entirely to what the lease itself says — which is why a commercial lease typically carries its own detailed condition-of-premises, maintenance, and repair provisions; state law doesn't fill that gap the way it does for a residential unit. This is one state's case law and statutory scheme, current as of this document's research date; some other states extend habitability-type protections to commercial tenants in narrower circumstances (for example, for latent defects known to the landlord), and this document doesn't track any state but California.",
+      "citations": [
+        {
+          "case": "Green v. Superior Court",
+          "cite": "10 Cal. 3d 616 (1974)",
+          "url": "https://www.courtlistener.com/opinion/1182285/green-v-superior-court/",
+          "quote": "each of these jurisdictions has discarded the old common law rule and has adopted an implied warranty of habitability for residential leases... we have determined that the Hinson court properly recognized a common law implied warranty of habitability in residential leases in California."
+        },
+        {
+          "case": "Cal. Civ. Code § 1941.1(a)",
+          "cite": "California Civil Code, the tenantability checklist is dwelling-specific",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1941.1.",
+          "quote": "A dwelling shall be deemed untenantable for purposes of Section 1941 if it substantially lacks any of the following affirmative standard characteristics or is a residential unit described in Section 17920.3 or 17920.10 of the Health and Safety Code..."
+        },
+        {
+          "case": "Cal. Civ. Code § 1942.1",
+          "cite": "California Civil Code, the non-waiver rule is dwelling-specific",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1942.1.",
+          "quote": "Any agreement by a lessee of a dwelling waiving or modifying his rights under Section 1941 or 1942 shall be void as contrary to public policy with respect to any condition which renders the premises untenantable, except that the lessor and the lessee may agree that the lessee shall undertake to improve, repair or maintain all or stipulated portions of the dwelling as part of the consideration for rental."
+        }
+      ]
+    },
+    {
+      "id": "commlease_security_deposit",
+      "title": "Commercial Security Deposits Are Regulated Differently, Not Left Unregulated",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-01",
+      "body": "Commercial security deposits are governed by a separate, less protective statute than the residential one — Civil Code § 1950.7 — rather than being entirely unregulated. Section 1950.7 doesn't cap the amount a commercial landlord can charge as a deposit, and it doesn't require the itemized statement that Civil Code § 1950.5 requires for a residential deposit. But it does restrict what the deposit can be used for — unpaid rent, repairing tenant-caused damage, and cleaning at the end of the tenancy — and it does set return deadlines: if the landlord's only claim is for possible unpaid rent and the deposit (plus anything designated as last month's rent) is one month's rent or less, any unused balance must be returned within 30 days of the landlord regaining possession; if that rent-only deposit exceeds one month's rent, the excess over one month must be returned within two weeks, with the remainder returned or accounted for within 30 days; and if the landlord's claim includes damage repair or cleaning, any unused balance must be returned within 30 days. A landlord who retains a commercial deposit in bad faith is liable for the tenant's actual damages plus a statutory penalty of up to $200.",
+      "gap": "This is worth stating precisely because it corrects a common assumption: California doesn't simply have no rule for commercial security deposits — it has a real statute, just a much thinner one than the residential statute. There is no deposit-amount cap, no photo-documentation duty, no pre-move-out inspection right, and the bad-faith penalty tops out at $200 rather than residential's up-to-double-the-deposit exposure. Because there's no statutory cap on amount, the deposit figure in a commercial lease is set entirely by negotiation. This is one state's statute; other states regulate commercial deposits differently, including some with no statute on the subject at all. All three citations below are subsections of the same statutory section (§ 1950.7) rather than independently authored sources; no additional independent source was found for this.",
+      "citations": [
+        {
+          "case": "Cal. Civ. Code § 1950.7(a)",
+          "cite": "California Civil Code, scope of the commercial deposit statute",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1950.7.",
+          "quote": "Any payment or deposit of money the primary function of which is to secure the performance of a rental agreement for other than residential property or any part of the agreement, other than a payment or deposit, including an advance payment of rent, made to secure the execution of a rental agreement, shall be governed by the provisions of this section. With respect to residential property, the provisions of Section 1950.5 shall prevail."
+        },
+        {
+          "case": "Cal. Civ. Code § 1950.7(c)",
+          "cite": "California Civil Code, permitted deductions and return deadlines",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1950.7.",
+          "quote": "The landlord may claim of the payment or deposit only those amounts as are reasonably necessary to remedy tenant defaults in the payment of rent, to repair damages to the premises caused by the tenant, or to clean the premises upon termination of the tenancy, if the payment or deposit is made for any or all of those specific purposes. (1) If the claim of the landlord upon the payment or deposit is only for defaults in the payment of rent and the security deposit equals no more than one month's rent plus a deposit amount clearly described as the payment of the last month's rent, then any remaining portion of the payment or deposit shall be returned to the tenant at a time as may be mutually agreed upon by landlord and tenant, but in no event later than 30 days from the date the landlord receives possession of the premises."
+        },
+        {
+          "case": "Cal. Civ. Code § 1950.7(f)",
+          "cite": "California Civil Code, bad-faith retention penalty",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1950.7.",
+          "quote": "The bad faith retention by a landlord or transferee of a payment or deposit or any portion thereof, in violation of this section, may subject the landlord or the transferee to damages not to exceed two hundred dollars ($200), in addition to any actual damages."
+        }
+      ]
+    },
+    {
+      "id": "commlease_casp_disclosure",
+      "title": "CASp Inspection Status Disclosure",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-01",
+      "body": "A commercial property owner or lessor must state on every lease form or rental agreement executed on or after January 1, 2017, whether the premises have undergone inspection by a Certified Access Specialist (CASp). If the premises have not been issued a CASp disability access inspection certificate confirming compliance, the lease must include this exact statutory disclosure: \"A Certified Access Specialist (CASp) can inspect the subject premises and determine whether the subject premises comply with all of the applicable construction-related accessibility standards under state law. Although state law does not require a CASp inspection of the subject premises, the commercial property owner or lessor may not prohibit the lessee or tenant from obtaining a CASp inspection of the subject premises for the occupancy or potential occupancy of the lessee or tenant, if requested by the lessee or tenant. The parties shall mutually agree on the arrangements for the time and manner of the CASp inspection, the payment of the fee for the CASp inspection, and the cost of making any repairs necessary to correct violations of construction-related accessibility standards within the premises.\"",
+      "gap": "This applies to \"commercial property\" as this specific statute defines it — property offered for rent to someone operating, or intending to operate, a place of public accommodation, or a facility the general public is invited to — so it's aimed squarely at retail and public-facing space; the statute doesn't itself say whether it reaches every kind of non-public commercial lease (e.g., a private warehouse with no public access), and this document doesn't resolve that line. Separate rules apply if the premises have already been inspected and no impacting alterations have happened since (the CASp report must be shared with a confidentiality agreement, and a 72-hour rescission right applies if it isn't shared at least 48 hours before signing) — this clause's quoted paragraph is specifically for the no-certificate case. This is one state's statute; this particular pre-lease accessibility disclosure requirement is distinctive to California, not a nationwide practice. All three citations below are subsections of the same statutory section (§ 1938) rather than independently authored sources; no additional independent source was found for this.",
+      "citations": [
+        {
+          "case": "Cal. Civ. Code § 1938(a)",
+          "cite": "California Civil Code, the disclosure obligation",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1938.",
+          "quote": "A commercial property owner or lessor shall state on every lease form or rental agreement executed on or after January 1, 2017, whether or not the subject premises have undergone inspection by a Certified Access Specialist (CASp)."
+        },
+        {
+          "case": "Cal. Civ. Code § 1938(e)",
+          "cite": "California Civil Code, the required disclosure paragraph",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1938.",
+          "quote": "If the subject premises have not been issued a disability access inspection certificate, as described in subdivision (e) of Section 55.53, the commercial property owner or lessor shall state the following on the lease form or rental agreement: \"A Certified Access Specialist (CASp) can inspect the subject premises and determine whether the subject premises comply with all of the applicable construction-related accessibility standards under state law. Although state law does not require a CASp inspection of the subject premises, the commercial property owner or lessor may not prohibit the lessee or tenant from obtaining a CASp inspection of the subject premises for the occupancy or potential occupancy of the lessee or tenant, if requested by the lessee or tenant. The parties shall mutually agree on the arrangements for the time and manner of the CASp inspection, the payment of the fee for the CASp inspection, and the cost of making any repairs necessary to correct violations of construction-related accessibility standards within the premises.\""
+        },
+        {
+          "case": "Cal. Civ. Code § 1938(f)",
+          "cite": "California Civil Code, definition of \"commercial property\" for this section",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1938.",
+          "quote": "As used in this section, \"commercial property\" means property that is offered for rent or lease to persons operating, or intending to operate, a place of public accommodation as defined in Section 202 of Chapter 2 of Part 2 of Title 24 of the California Code of Regulations, or a facility to which the general public is invited, at those premises."
+        }
+      ]
+    },
+    {
+      "id": "commlease_casp_inspection_right",
+      "title": "Tenant's Right to Request a CASp Inspection",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-01",
+      "body": "Section 1938 doesn't just require a disclosure — it separately protects the tenant's ability to have the premises inspected. Even though state law doesn't require a CASp inspection, the statute states the landlord \"may not prohibit the lessee or tenant from obtaining a CASp inspection of the subject premises for the occupancy or potential occupancy of the lessee or tenant, if requested by the lessee or tenant.\" The statute requires the parties to \"mutually agree on the arrangements for the time and manner of the CASp inspection, the payment of the fee for the CASp inspection, and the cost of making any repairs necessary\" — meaning the statute itself does not assign that cost to either party by default; it's left to negotiation. Separately, if a CASp inspection has already happened and turned up violations, the statute presumes the landlord bears the cost of fixing them, \"unless otherwise mutually agreed upon by the commercial property owner or lessor and the lessee or tenant.\"",
+      "gap": "The task of confirming \"who bears the cost\" of a tenant-requested inspection has an honest answer that cuts against a natural assumption: the statute does not say the tenant pays for it. It requires the landlord and tenant to mutually agree on the fee, the timing, and the manner of the inspection — cost-shifting isn't automatic in either direction under this statute. What the statute does presume by default is that the landlord bears the cost of fixing violations an inspection turns up, unless the parties agree otherwise. This is one state's statute. All citations below are subsections of the same statutory section (§ 1938) as the CASp disclosure clause elsewhere in this document; no additional independent source was found for this.",
+      "citations": [
+        {
+          "case": "Cal. Civ. Code § 1938(e) [inspection right]",
+          "cite": "California Civil Code, tenant's right to request an inspection and cost/time arrangements",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1938.",
+          "quote": "the commercial property owner or lessor may not prohibit the lessee or tenant from obtaining a CASp inspection of the subject premises for the occupancy or potential occupancy of the lessee or tenant, if requested by the lessee or tenant. The parties shall mutually agree on the arrangements for the time and manner of the CASp inspection, the payment of the fee for the CASp inspection, and the cost of making any repairs necessary to correct violations of construction-related accessibility standards within the premises."
+        },
+        {
+          "case": "Cal. Civ. Code § 1938(c)",
+          "cite": "California Civil Code, default responsibility for repairs found in an existing CASp report",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1938.",
+          "quote": "Making any repairs or modifications necessary to correct violations of construction-related accessibility standards that are noted in a CASp report is presumed to be the responsibility of the commercial property owner or lessor, unless otherwise mutually agreed upon by the commercial property owner or lessor and the lessee or tenant."
+        }
+      ]
+    },
+    {
+      "id": "commlease_notice_to_terminate",
+      "title": "Notice to End a Commercial Tenancy",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-01",
+      "body": "For a periodic (e.g., month-to-month) commercial tenancy with no fixed end date, Civil Code § 1946 sets a default notice period of 30 days from either party to terminate — the same general default statute that applies to any periodic tenancy of real property, residential or commercial, unless the parties agree in the lease to a shorter period (as little as seven days). A narrower statute, Civil Code § 1946.1, extends the longer, residential-style 60-day (or 30-day, for a tenancy under a year) notice period to a \"qualified commercial tenant\" specifically — defined as a tenant that is a microenterprise, a restaurant with fewer than 10 employees, or a nonprofit with fewer than 20 employees, that has given the landlord a required written self-attestation of that status. Outside that narrow category, an ordinary commercial tenant gets the 30-day default under § 1946, not the 60-day residential-style period. For ending a tenancy for cause — nonpayment of rent or a lease breach — the same unlawful detainer statute used for residential tenancies, Code of Civil Procedure § 1161, applies to commercial tenancies too: it requires three days' written notice (excluding judicial holidays) to pay rent or quit, or to cure a covenant breach or quit, before an unlawful detainer action can be filed, because § 1161 applies broadly to \"a tenant of real property,\" not only a residential dwelling unit. California law even sets out a separate set of notice-service methods specifically for a \"commercial tenant\" under Code of Civil Procedure § 1162, confirming the legislature understands this statute to reach commercial tenancies directly.",
+      "gap": "This describes the statutory floor, not the whole picture — a fixed-term commercial lease typically states its own notice-and-cure terms, and none of this analysis governs a fixed-term lease that simply expires by its own stated end date (though the lease may separately require notice of intent to renew or vacate). Whether a specific tenant actually qualifies as a \"qualified commercial tenant\" under § 1946.1 depends on facts (entity type, employee count, and whether the required written self-attestation was actually given) that this document doesn't evaluate. This is one state's statutes, current as of a January 1, 2025 amendment that extended § 1946.1 to qualified commercial tenants for the first time — notice requirements for ending a commercial tenancy vary significantly by state, and some states impose no statutory notice floor at all for a commercial periodic tenancy. Two of the citations below (§ 1946.1(b)-(c) and § 1946.1(k)(4)) are subsections of the same statutory section, as are two others (§ 1161(2) and § 1161(7)); together, the citations below draw from four independently enacted statutes — §§ 1946, 1946.1, 1161, and 1162 — not one source restated multiple times.",
+      "citations": [
+        {
+          "case": "Cal. Civ. Code § 1946",
+          "cite": "California Civil Code, default 30-day notice to end a periodic tenancy of real property",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1946.",
+          "quote": "A hiring of real property, for a term not specified by the parties, is deemed to be renewed as stated in Section 1945, at the end of the term implied by law unless one of the parties gives written notice to the other of that party's intention to terminate the same, at least as long before the expiration thereof as the term of the hiring itself, not exceeding 30 days; provided, however, that as to tenancies from month to month either of the parties may terminate the same by giving at least 30 days' written notice thereof at any time and the rent shall be due and payable to and including the date of termination. It shall be competent for the parties to provide by an agreement at the time the tenancy is created that a notice of the intention to terminate the same may be given at any time not less than seven days before the expiration of the term thereof."
+        },
+        {
+          "case": "Cal. Civ. Code § 1946.1(b)-(c)",
+          "cite": "California Civil Code, extended 60/30-day notice for a qualified commercial tenant",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1946.1.",
+          "quote": "An owner of a residential dwelling or commercial real property hired by a qualified commercial tenant giving notice pursuant to this section shall give notice at least 60 days prior to the proposed date of termination. A tenant giving notice pursuant to this section shall give notice for a period at least as long as the term of the periodic tenancy prior to the proposed date of termination... an owner of a residential dwelling or commercial real property hired by a qualified commercial tenant giving notice pursuant to this section shall give notice at least 30 days prior to the proposed date of termination if a tenant or resident has resided in the dwelling or occupied the property for less than one year."
+        },
+        {
+          "case": "Cal. Civ. Code § 1946.1(k)(4)",
+          "cite": "California Civil Code, definition of \"qualified commercial tenant\"",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1946.1.",
+          "quote": "\"Qualified commercial tenant\" means a tenant of commercial real property that meets both of the following requirements: (A) The tenant is a microenterprise, a restaurant with fewer than 10 employees, or a nonprofit organization with fewer than 20 employees. (B) (i) Subject to clause (ii), the tenant has provided the landlord, within the previous 12 months, a written notice that the tenant is a qualified commercial tenant and a self-attestation regarding the number of employees, at such time the protections under this section come into place."
+        },
+        {
+          "case": "Cal. Code Civ. Proc. § 1161(2)",
+          "cite": "Code of Civil Procedure, three-day pay-rent-or-quit notice",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=1161.",
+          "quote": "When the tenant continues in possession, in person or by subtenant, without the permission of the landlord, or the successor in estate of the landlord, if applicable, after default in the payment of rent, pursuant to the lease or agreement under which the property is held, and three days' notice, excluding Saturdays and Sundays and other judicial holidays, in writing, requiring its payment, stating the amount that is due... or possession of the property, shall have been served upon the tenant and if there is a subtenant in actual occupation of the premises, also upon the subtenant."
+        },
+        {
+          "case": "Cal. Code Civ. Proc. § 1161(7)",
+          "cite": "Code of Civil Procedure, this notice statute is not limited to dwellings",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=1161.",
+          "quote": "As used in this section, \"tenant\" includes any person who hires real property except those persons whose occupancy is described in subdivision (b) of Section 1940 of the Civil Code."
+        },
+        {
+          "case": "Cal. Code Civ. Proc. § 1162(b)-(c)",
+          "cite": "Code of Civil Procedure, separate service methods and definition for a commercial tenant",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=1162.",
+          "quote": "The notices required by Section 1161 may be served upon a commercial tenant by any of the following methods: (1) By delivering a copy to the tenant personally. (2) If he or she is absent from the commercial rental property, by leaving a copy with some person of suitable age and discretion at the property, and sending a copy through the mail addressed to the tenant at the address where the property is situated... For purposes of subdivision (b), \"commercial tenant\" means a person or entity that hires any real property in this state that is not a dwelling unit, as defined in subdivision (c) of Section 1940 of the Civil Code, or a mobilehome, as defined in Section 798.3 of the Civil Code."
+        }
+      ]
+    },
+    {
+      "id": "commlease_personal_guaranty",
+      "title": "Personal Guaranties Are General Contract Law, Not a Commercial-Lease-Specific Statute",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-01",
+      "body": "California has no statute written specifically for a personal guaranty of a commercial lease. What applies instead is the general contract-law statute of frauds: Civil Code § 1624(a)(2) makes \"a special promise to answer for the debt, default, or miscarriage of another\" — which is what a personal guaranty of a tenant entity's lease obligations is — unenforceable \"unless they, or some note or memorandum thereof, are in writing and subscribed by the party to be charged or by the party's agent.\" Separately, the lease itself, if for a term longer than one year, independently must be in writing under Civil Code § 1624(a)(3).",
+      "gap": "This is an honest gap in the sense the task asked to check for: there is no commercial-lease-specific guaranty statute in California comparable to, say, the CASp disclosure requirement. A personal guaranty of a commercial lease is enforced, or not, under the same general statute-of-frauds and suretyship principles that apply to a personal guaranty of any other kind of debt or obligation — principles found in Civil Code § 1624 and in the general suretyship statutes (Civil Code §§ 2787 et seq.), which this document doesn't otherwise cover. This is one state's statute of frauds; every state has some version of a statute of frauds covering a promise to answer for another's debt, but the exact wording and exceptions vary. Both citations below are subsections of the same statutory section (§ 1624) rather than independently authored sources; no additional independent source was found for this.",
+      "citations": [
+        {
+          "case": "Cal. Civ. Code § 1624(a)(2)",
+          "cite": "California Civil Code, statute of frauds for a promise to answer for another's debt",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1624.",
+          "quote": "The following contracts are invalid, unless they, or some note or memorandum thereof, are in writing and subscribed by the party to be charged or by the party's agent... (2) A special promise to answer for the debt, default, or miscarriage of another, except in the cases provided for in Section 2794."
+        },
+        {
+          "case": "Cal. Civ. Code § 1624(a)(3)",
+          "cite": "California Civil Code, statute of frauds for a lease longer than one year",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1624.",
+          "quote": "An agreement for the leasing for a longer period than one year, or for the sale of real property, or of an interest therein; such an agreement, if made by an agent of the party sought to be charged, is invalid, unless the authority of the agent is in writing, subscribed by the party sought to be charged."
+        }
+      ]
+    },
+    {
+      "id": "commlease_parties_premises_rent",
+      "title": "Parties, Premises, and Rent",
+      "kind": "drafting",
+      "body": "This is a commercial lease agreement between {{landlordName}} (\"Landlord\") and {{tenantName}} (\"Tenant\") for the commercial premises located at {{propertyAddress}}. The lease term runs from {{leaseStartDate}} to {{leaseEndDate}}. Tenant will pay Landlord base rent of ${{monthlyRent}} per month, due on the day of each month specified in this agreement, payable by the method specified in this agreement. This lease is for commercial, non-residential use of the premises only. It does not create a residential tenancy, and the statutory protections that apply specifically to residential tenancies under California law do not apply to it."
+    },
+    {
+      "id": "commlease_permitted_use",
+      "title": "Use of Premises",
+      "kind": "drafting",
+      "body": "Tenant may use the premises only for the following purpose(s): {{permittedUse}} (the \"Permitted Use\"), and for no other purpose without Landlord's prior written consent. Confirming that the Permitted Use complies with applicable zoning, building, health, safety, and accessibility requirements for the premises is Tenant's responsibility."
+    },
+    {
+      "id": "commlease_ack",
+      "title": "Signatures",
+      "kind": "drafting",
+      "body": "Signed:\n\nLandlord: ☐ _________________________ Date: _______________\n\nTenant: ☐ _________________________ Date: _______________\n\nGuarantor (if applicable): ☐ _________________________ Date: _______________\n\nA personal guaranty of Tenant's obligations under this lease is a separate promise that California law requires to be set out in a signed writing of its own; an individual's signature on this lease in a representative capacity for a business-entity Tenant does not, by itself, create a personal guaranty of that entity's obligations."
+    },
+    {
+      "id": "trustamend_statutory_basis",
+      "title": "The Settlor's Statutory Power to Modify a Revocable Trust",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-01",
+      "body": "Once {{trustName}} exists as a trust revocable by {{settlorName}}, California's Probate Code gives {{settlorName}} an independent statutory power to modify it, separate from the power to revoke it outright. Unless {{trustName}}'s own instrument provides otherwise, {{settlorName}} may modify {{trustName}} by following the same procedure the Probate Code provides for revoking it.",
+      "gap": "This is one state's statute, used as real evidence of the actual statutory basis for a settlor's power to modify a revocable trust -- not a claim about which state's law governs a specific trust. The statute's current text is a single sentence, and that sentence does not itself offer 'a signed writing delivered to the trustee' as one alternative among several, with an additional catch-all allowing modification by any method that shows clear and convincing evidence of the settlor's intent. That broader 'clear and convincing evidence of intent' standard appears in some other states' trust statutes and in the Restatement (Third) of Trusts, but was not found in the current text of California Probate Code section 15402 itself -- so this document does not attribute that language to section 15402. What the modification power actually incorporates is whatever procedure a separate statute sets out for revocation, quoted in a different clause of this document. This clause cites a single statutory section (§ 15402); no additional independent source was found for this.",
+      "citations": [
+        {
+          "case": "Cal. Prob. Code § 15402 (California Legislative Information text)",
+          "cite": "the settlor's statutory power to modify a revocable trust",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=15402.",
+          "quote": "Unless the trust instrument provides otherwise, if a trust is revocable by the settlor, the settlor may modify the trust by the procedure for revocation."
+        }
+      ]
+    },
+    {
+      "id": "trustamend_revocation_procedure",
+      "title": "The Procedure for Revocation, Incorporated by Reference for Modification",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-01",
+      "body": "Because {{trustName}}'s modification power works 'by the procedure for revocation,' the specific procedure that power incorporates comes from a separate Probate Code section governing revocation. That section provides two routes: compliance with whatever revocation method {{trustName}}'s own instrument sets out, or -- if {{trustName}}'s instrument doesn't make its own method the exclusive one -- a writing, other than a will, signed by {{settlorName}} and delivered to {{trusteeName}} during {{settlorName}}'s lifetime.",
+      "gap": "This is one state's statute, used as real evidence of the actual procedure California's modification statute incorporates by reference -- not a claim about which state's law governs a specific trust. This same statutory section, Probate Code section 15401, is also the source for a separate clause of this document addressing a trust with more than one settlor; that clause quotes a different subdivision -- (b) -- of this same section, rather than an independent source, and this disclosure is made there as well. A further subdivision of this section, (e), also states that a trust created by an instrument executed before July 1, 1987 is governed by prior law rather than by this section; this document does not independently research what that prior law required.",
+      "citations": [
+        {
+          "case": "Cal. Prob. Code § 15401(a) (California Legislative Information text)",
+          "cite": "the statutory methods of revocation, incorporated by section 15402 for modification",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=15401.",
+          "quote": "(a) A trust that is revocable by the settlor or any other person may be revoked in whole or in part by any of the following methods: (1) By compliance with any method of revocation provided in the trust instrument. (2) By a writing, other than a will, signed by the settlor or any other person holding the power of revocation and delivered to the trustee during the lifetime of the settlor or the person holding the power of revocation. If the trust instrument explicitly makes the method of revocation provided in the trust instrument the exclusive method of revocation, the trust may not be revoked pursuant to this paragraph."
+        }
+      ]
+    },
+    {
+      "id": "trustamend_exclusive_method",
+      "title": "When the Trust Instrument Makes Its Own Amendment Method Exclusive",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-01",
+      "body": "If {{trustName}}'s own instrument states, in explicit terms, that its stated amendment or revocation method is the exclusive method, then the fallback method -- a signed writing delivered to {{trusteeName}} -- is not available; only the method the instrument itself specifies will do. A published California Court of Appeal decision, applying this same statutory framework, has summarized the rule this way: a trust may be revoked by complying with any method the trust instrument provides; if the instrument explicitly makes that method exclusive, the trust may be revoked only in that manner; if not, the trust may also be revoked by a writing, signed by the settlor and delivered to the trustee; and unless the trust provides otherwise, a trust may be modified by these same revocation procedures.",
+      "gap": "This clause draws on the same Probate Code section 15401(a)(2) 'exclusive method' language already quoted in a separate clause of this document addressing the general revocation procedure, plus one independent source: a published California Court of Appeal decision, not a California Supreme Court decision. A search for a California Supreme Court decision squarely deciding whether a trust instrument's stated amendment method can be made exclusive did not turn up one on that specific question -- the most relevant California Supreme Court decision this search located, Donkin v. Donkin (2013) 58 Cal.4th 412, addresses a different question (how post-2010 no-contest-clause law applies to a trust amendment), not the exclusive-method question, so it is not cited here. The Court of Appeal decision quoted here, Huscher v. Wells Fargo Bank (2004) 121 Cal.App.4th 956, states the current-law rule in an overview passage, but the trust at issue in that case was created before July 1, 1987, so the court's actual holding turned on interpreting a prior Civil Code provision rather than on Probate Code sections 15401-15402 directly; the quoted passage is the court's own description of 'current law,' not the basis of its holding in that case. This is one state's case law and statute, used as real evidence -- not a claim about which state's law governs a specific trust.",
+      "citations": [
+        {
+          "case": "Huscher v. Wells Fargo Bank (2004) 121 Cal.App.4th 956 (California Court of Appeal, Second Appellate District)",
+          "cite": "overview of the exclusive-method rule under Probate Code sections 15401-15402",
+          "url": "https://www.courtlistener.com/opinion/2259556/huscher-v-wells-fargo-bank/",
+          "quote": "Under current law, a trust may be revoked by complying with any method provided in the trust instrument. (Prob. Code, § 15401, subd. (a)(1).) If the trust explicitly makes that method exclusive, then it may be revoked only in that manner. If not, then the trust may also be revoked by a writing, other than a will, signed by the trustor and delivered to the trustee while the trustor is alive. (Prob. Code, § 15401, subd. (a)(2).) Unless the trust provides otherwise, the trust may be modified by the revocation procedures of Probate Code section 15401. (Prob. Code, § 15402.)"
+        }
+      ]
+    },
+    {
+      "id": "trustamend_capacity",
+      "title": "The Capacity Standard for Amending a Trust",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-01",
+      "body": "The Probate Code sets a general legal-capacity standard that, by its own terms, applies to a person's capacity 'to execute trusts,' among other acts. That general standard applies 'except where otherwise provided by law' -- and the statute setting that general standard itself lists 'the statutory and decisional law of testamentary capacity' as an example of law that can displace it. A published California Court of Appeal decision has held that when a settlor's trust amendment, in its content and complexity, closely resembles a will or codicil, it is that lower, will-specific testamentary-capacity standard -- not the Probate Code's general capacity statute standing alone -- that a court should use to evaluate the settlor's capacity to make the amendment.",
+      "gap": "This is one state's statute and case law, used as real evidence of how California determines the capacity standard applicable to a trust amendment -- not a claim about which state's law governs a specific trust amendment, or about the capacity of any specific person to amend a specific trust. The Court of Appeal decision quoted here, Andersen v. Hunt (2011) 196 Cal.App.4th 722, held that the will-specific standard (Probate Code section 6100.5) applies to a trust amendment only because it is incorporated through Probate Code section 811, subdivision (b) -- the court expressly said that section 6100.5 'is not directly applicable to determine competency to make or amend a trust' on its own, and that whether the will-specific standard controls a given amendment can depend on how closely, 'in its content and complexity,' that amendment resembles a will or codicil. This document does not attempt to resolve that content-and-complexity question for any particular amendment. This is a Court of Appeal decision, not a California Supreme Court decision; this search did not identify a California Supreme Court decision resolving the same question.",
+      "citations": [
+        {
+          "case": "Cal. Prob. Code § 812 (California Legislative Information text)",
+          "cite": "the general capacity standard and its carve-out for testamentary-capacity law",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=812.",
+          "quote": "Except where otherwise provided by law, including, but not limited to, Section 813 and the statutory and decisional law of testamentary capacity, a person lacks the capacity to make a decision unless the person has the ability to communicate verbally, or by any other means, the decision, and to understand and appreciate, to the extent relevant, all of the following: (a) The rights, duties, and responsibilities created by, or affected by the decision. (b) The probable consequences for the decisionmaker and, where appropriate, the persons affected by the decision. (c) The significant risks, benefits, and reasonable alternatives involved in the decision."
+        },
+        {
+          "case": "Cal. Prob. Code § 811(a), (b) (California Legislative Information text)",
+          "cite": "the general-capacity evidentiary standard, expressly covering the act of executing a trust",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=811.",
+          "quote": "(a) A determination that a person is of unsound mind or lacks the capacity to make a decision or do a certain act, including, but not limited to, the incapacity to contract, to make a conveyance, to marry, to make medical decisions, to execute wills, or to execute trusts, shall be supported by evidence of a deficit in at least one of the following mental functions, subject to subdivision (b), and evidence of a correlation between the deficit or deficits and the decision or acts in question: ... (b) A deficit in the mental functions listed above may be considered only if the deficit, by itself or in combination with one or more other mental function deficits, significantly impairs the person's ability to understand and appreciate the consequences of his or her actions with regard to the type of act or decision in question."
+        },
+        {
+          "case": "Andersen v. Hunt (2011) 196 Cal.App.4th 722 (California Court of Appeal, Second Appellate District)",
+          "cite": "holding that the testamentary-capacity standard applies to a trust amendment resembling a will or codicil, via section 811(b)",
+          "url": "https://www.courtlistener.com/opinion/5810338/andersen-v-hunt/",
+          "quote": "When determining whether a trustor had capacity to execute a trust amendment that, in its content and complexity, closely resembles a will or codicil, we believe it is appropriate to look to section 6100.5 to determine when a person's mental deficits are sufficient to allow a court to conclude that the person lacks the ability 'to understand and appreciate the consequences of his or her actions with regard to the type of act or decision in question.' (§ 811, subd. (b).) In other words, while section 6100.5 is not directly applicable to determine competency to make or amend a trust, it is made applicable through section 811 to trusts or trust amendments that are analogous to wills or codicils."
+        }
+      ]
+    },
+    {
+      "id": "trustamend_joint_settlors",
+      "title": "A Trust With More Than One Settlor",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-01",
+      "body": "If a trust has more than one settlor -- as is common for a married couple's joint trust -- the same statute that supplies the default modification procedure also addresses, separately from the single-settlor case, what each settlor may do on their own. Unless the trust instrument provides otherwise, where a trust is created by more than one settlor, each settlor may revoke -- and, through the modification statute's cross-reference, modify -- the trust as to the portion of the trust that settlor contributed, subject to a Family Code provision governing community property. A settlor may also grant another person, including a spouse, a power to revoke or modify all or part of that settlor's own contributed portion.",
+      "gap": "This is one state's statute, used as real evidence of how California's revocation-and-modification statute addresses a trust with more than one settlor -- not a claim about which state's law governs a specific joint trust, and not a claim about how any specific joint trust's own terms should be read. This clause quotes subdivision (b) of Probate Code section 15401, the same statutory section already quoted (subdivision (a)) in a separate clause of this document addressing the single-settlor default procedure; it is presented as its own clause because subdivision (b) addresses a distinct question. The statute's cross-reference to Family Code section 761, governing community property held in trust, is not independently quoted or researched here. Beyond this subdivision, no additional statute specific to joint or shared trusts addressing modification was located; whether unanimous consent, majority action, or some other rule applies to jointly contributed or community property held in a specific joint trust can depend on that trust's own terms and on the community-property characterization of the property involved, neither of which this document resolves.",
+      "citations": [
+        {
+          "case": "Cal. Prob. Code § 15401(b) (California Legislative Information text)",
+          "cite": "revocation and modification where a trust has more than one settlor",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=15401.",
+          "quote": "(b) (1) Unless otherwise provided in the instrument, if a trust is created by more than one settlor, each settlor may revoke the trust as to the portion of the trust contributed by that settlor, except as provided in Section 761 of the Family Code. (2) Notwithstanding paragraph (1), a settlor may grant to another person, including, but not limited to, his or her spouse, a power to revoke all or part of that portion of the trust contributed by that settlor, regardless of whether that portion was separate property or community property of that settlor, and regardless of whether that power to revoke is exercisable during the lifetime of that settlor or continues after the death of that settlor, or both."
+        }
+      ]
+    },
+    {
+      "id": "trustamend_vs_restatement",
+      "title": "'Amendment' Versus 'Restatement' Is a Drafting Convention, Not a Separate Statute",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-01",
+      "body": "California's Probate Code does not use or define the term 'restatement' anywhere in its trust-modification provisions. Whether a settlor changes a trust by executing a document labeled an 'amendment' that alters specific provisions, or by executing a document labeled an 'amendment and restatement' that replaces the entire body of the trust instrument while keeping the same underlying trust in existence, both are exercises of the same statutory modification power: the settlor's ability, unless the trust instrument provides otherwise, to modify the trust by the procedure for revocation. The choice between amending discrete provisions and restating the whole instrument is a drafting convention, not a distinct legal mechanism with its own statutory requirements.",
+      "gap": "This is one state's statute, used as real evidence that California's trust-modification statute does not distinguish between an 'amendment' and a 'restatement' as separate legal categories -- not a claim about which state's law governs a specific trust. This clause quotes the same single-sentence statute, Probate Code section 15402, already quoted in full in a separate clause of this document addressing the general statutory basis for modification; it is repeated here only because this clause makes a distinct point about that statute's scope -- that it does not carve out 'restatement' as something different from 'modification' -- and no independent second source using 'restatement' as a term of art was located in the statute itself.",
+      "citations": [
+        {
+          "case": "Cal. Prob. Code § 15402 (California Legislative Information text)",
+          "cite": "the modification power, which does not distinguish 'amendment' from 'restatement'",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=15402.",
+          "quote": "Unless the trust instrument provides otherwise, if a trust is revocable by the settlor, the settlor may modify the trust by the procedure for revocation."
+        }
+      ]
+    },
+    {
+      "id": "trustamend_declaration",
+      "title": "Declaration Identifying the Original Trust and the Amendment",
+      "kind": "drafting",
+      "body": "I, {{settlorName}}, of {{settlorCounty}} County, California, as settlor, declare this instrument to be an amendment to the {{trustName}}, dated {{originalTrustDate}} (the \"Trust\"). I identify below the specific provision(s) of the Trust that this amendment adds, deletes, or amends, and the new text of each: ☐ _________________________. This amendment is effective as of {{amendmentDate}}."
+    },
+    {
+      "id": "trustamend_ratification",
+      "title": "Ratification of All Other Trust Provisions",
+      "kind": "drafting",
+      "body": "Except as specifically changed by this amendment, I confirm that all other provisions of the Trust remain unchanged and in full force and effect. This amendment does not revoke the Trust; the Trust, as amended by this instrument and by any prior amendments, continues without interruption."
+    },
+    {
+      "id": "trustamend_signature_notarization",
+      "title": "Signature and Notarization",
+      "kind": "drafting",
+      "body": "IN WITNESS WHEREOF, {{settlorName}}, as settlor, has signed this amendment to {{trustName}} on the date written below.\n\n_________________________ Date: _________________________\n{{settlorName}}, Settlor\n\nDelivery of a signed writing to {{trusteeName}} is one of the statutory methods described elsewhere in this document for satisfying the procedure that California's modification statute incorporates, unless {{trustName}}'s own instrument makes a different method exclusive.\n\nA notary public or other officer completing a notarial certificate for this instrument verifies only the identity of the individual who signed the document, not the truthfulness, accuracy, or validity of that document."
     }
   ]
 }

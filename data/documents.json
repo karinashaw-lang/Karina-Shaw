@@ -3144,5 +3144,126 @@
     "categories": [
       "Business Formation"
     ]
+  },
+  {
+    "id": "commercial_lease",
+    "title": "Commercial Lease Agreement",
+    "description": "A commercial (non-residential) lease built on the actually-different statutory baseline that applies to commercial space — the CASp accessibility disclosure, the thinner commercial security-deposit statute, and the notice-to-terminate rules that diverge from residential law.",
+    "clauseOrder": [
+      "commlease_parties_premises_rent",
+      "commlease_permitted_use",
+      "commlease_residential_protections_not_applicable",
+      "commlease_no_implied_habitability",
+      "commlease_security_deposit",
+      "commlease_casp_disclosure",
+      "commlease_casp_inspection_right",
+      "commlease_notice_to_terminate",
+      "commlease_personal_guaranty",
+      "commlease_ack"
+    ],
+    "fields": [
+      {
+        "id": "landlordName",
+        "label": "Landlord name",
+        "placeholder": "Acme Properties, LLC",
+        "required": true
+      },
+      {
+        "id": "tenantName",
+        "label": "Tenant name",
+        "placeholder": "Jordan Lee Consulting, Inc.",
+        "required": true
+      },
+      {
+        "id": "propertyAddress",
+        "label": "Property address",
+        "placeholder": "500 Commerce Way, Suite 200, Springfield",
+        "required": true
+      },
+      {
+        "id": "monthlyRent",
+        "label": "Monthly base rent",
+        "placeholder": "4,500",
+        "required": true
+      },
+      {
+        "id": "leaseStartDate",
+        "label": "Lease start date",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "leaseEndDate",
+        "label": "Lease end date",
+        "placeholder": "August 31, 2031",
+        "required": true
+      },
+      {
+        "id": "permittedUse",
+        "label": "Permitted use of premises",
+        "placeholder": "General office use",
+        "required": true
+      }
+    ],
+    "categories": [
+      "Real Estate"
+    ]
+  },
+  {
+    "id": "trust_amendment",
+    "title": "Trust Amendment",
+    "description": "A standalone amendment to an existing revocable living trust, built on the actual statutory modification power (Probate Code § 15402) rather than treated as identical to revoking and re-creating the trust — distinct from this project's Revocable Living Trust (creation) and Codicil to a Will (will amendment) documents.",
+    "clauseOrder": [
+      "trustamend_declaration",
+      "trustamend_statutory_basis",
+      "trustamend_revocation_procedure",
+      "trustamend_exclusive_method",
+      "trustamend_capacity",
+      "trustamend_joint_settlors",
+      "trustamend_vs_restatement",
+      "trustamend_ratification",
+      "trustamend_signature_notarization"
+    ],
+    "fields": [
+      {
+        "id": "settlorName",
+        "label": "Settlor name (you)",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "settlorCounty",
+        "label": "Settlor's county of residence",
+        "placeholder": "Alameda County",
+        "required": true
+      },
+      {
+        "id": "trustName",
+        "label": "Name of the trust being amended",
+        "placeholder": "The Jordan Alex Lee Revocable Living Trust",
+        "required": true
+      },
+      {
+        "id": "trusteeName",
+        "label": "Current trustee name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "originalTrustDate",
+        "label": "Date the original trust was created",
+        "placeholder": "March 14, 2020",
+        "required": true
+      },
+      {
+        "id": "amendmentDate",
+        "label": "Effective date of this amendment",
+        "placeholder": "September 1, 2026",
+        "required": true
+      }
+    ],
+    "categories": [
+      "Estate Planning"
+    ]
   }
 ]
