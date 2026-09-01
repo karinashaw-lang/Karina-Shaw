@@ -2794,5 +2794,75 @@
     "categories": [
       "Estate Planning"
     ]
+  },
+  {
+    "id": "civil_harassment_restraining_order",
+    "title": "Civil Harassment Restraining Order",
+    "description": "An informational document describing California's civil harassment restraining order process under CCP § 527.6 -- for harassment outside a family, dating, or cohabitant relationship -- including the harassment definition, the temporary and permanent order mechanisms, and how this differs from a domestic violence restraining order.",
+    "clauseOrder": [
+      "harassment_incident_declaration",
+      "harassment_definition",
+      "course_of_conduct_definition",
+      "tro_mechanism",
+      "order_contents",
+      "harassment_relief_checklist",
+      "order_duration",
+      "violation_consequences",
+      "dvpa_distinction",
+      "harassment_verification_signature"
+    ],
+    "fields": [
+      {
+        "id": "petitionerName",
+        "label": "Petitioner's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "respondentName",
+        "label": "Respondent's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "incidentDate",
+        "label": "Date of incident",
+        "placeholder": "August 15, 2026",
+        "required": true
+      },
+      {
+        "id": "incidentLocation",
+        "label": "Location of incident",
+        "placeholder": "123 Main St., Sacramento, CA",
+        "required": true
+      },
+      {
+        "id": "incidentDescription",
+        "label": "Description of incident",
+        "placeholder": "Describe what happened",
+        "required": true
+      },
+      {
+        "id": "additionalIncidents",
+        "label": "Additional incidents (if any)",
+        "placeholder": "Describe any additional incidents",
+        "required": false
+      },
+      {
+        "id": "signatureDate",
+        "label": "Signature date",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "signatureCity",
+        "label": "City where signed",
+        "placeholder": "Sacramento",
+        "required": true
+      }
+    ],
+    "categories": [
+      "Family Law"
+    ]
   }
 ]
