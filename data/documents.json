@@ -3888,5 +3888,65 @@
     "categories": [
       "Business Formation"
     ]
+  },
+  {
+    "id": "tenant_notice_to_vacate",
+    "title": "Tenant's Notice of Intent to Vacate",
+    "description": "A tenant-initiated notice ending a periodic (month-to-month) tenancy -- the two-way 30-day default, why a fixed-term lease that simply expires needs no statutory notice at all, and what giving this notice triggers on the landlord's side for the pre-move-out inspection right.",
+    "clauseOrder": [
+      "vacatenotice_notice_details",
+      "vacatenotice_periodic_30day_default",
+      "vacatenotice_fixed_term_no_statutory_notice",
+      "vacatenotice_1946_1_scope",
+      "vacatenotice_moveout_inspection_trigger",
+      "vacatenotice_signature_service"
+    ],
+    "fields": [
+      {
+        "id": "landlordName",
+        "label": "Landlord's name",
+        "placeholder": "Acme Properties, LLC",
+        "required": true
+      },
+      {
+        "id": "tenantName",
+        "label": "Tenant's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "propertyAddress",
+        "label": "Property address",
+        "placeholder": "123 Main St, Apt 4, Springfield",
+        "required": true
+      },
+      {
+        "id": "monthlyRent",
+        "label": "Monthly rent",
+        "placeholder": "2,200",
+        "required": true
+      },
+      {
+        "id": "noticeDate",
+        "label": "Date of this notice",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "moveOutDate",
+        "label": "Intended move-out date",
+        "placeholder": "October 1, 2026",
+        "required": true
+      },
+      {
+        "id": "forwardingAddress",
+        "label": "Forwarding address for deposit return",
+        "placeholder": "456 Oak Ave, Springfield",
+        "required": true
+      }
+    ],
+    "categories": [
+      "Real Estate"
+    ]
   }
 ]
