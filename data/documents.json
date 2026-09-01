@@ -3043,5 +3043,55 @@
     "categories": [
       "Real Estate"
     ]
+  },
+  {
+    "id": "individual_health_care_instruction",
+    "title": "Individual Health Care Instruction",
+    "description": "A stand-alone statement of your health care wishes given directly, without naming any health care agent -- a lighter-weight alternative to a full Advance Health Care Directive with an appointed agent.",
+    "clauseOrder": [
+      "ihci_declaration",
+      "ihci_statutory_basis",
+      "ihci_purpose_and_scope",
+      "ihci_instruction_content",
+      "ihci_no_agent_direct_compliance",
+      "ihci_oral_or_written_execution",
+      "ihci_revocation",
+      "ihci_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "patientName",
+        "label": "Your full legal name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "lifeProlongingWishes",
+        "label": "Wishes regarding life-prolonging treatment",
+        "placeholder": "I do not want my life to be prolonged if I have an incurable and irreversible condition with no reasonable chance of recovery",
+        "required": false
+      },
+      {
+        "id": "painReliefWishes",
+        "label": "Wishes regarding pain relief",
+        "placeholder": "I want treatment for alleviation of pain, even if it hastens my death",
+        "required": false
+      },
+      {
+        "id": "additionalHealthCareWishes",
+        "label": "Additional health care wishes",
+        "placeholder": "Any other wishes about your physical or mental health care",
+        "required": false
+      },
+      {
+        "id": "effectiveCondition",
+        "label": "When this instruction takes effect",
+        "placeholder": "Immediately upon execution",
+        "required": false
+      }
+    ],
+    "categories": [
+      "Estate Planning"
+    ]
   }
 ]
