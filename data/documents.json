@@ -1268,5 +1268,78 @@
     "categories": [
       "Real Estate"
     ]
+  },
+  {
+    "id": "last_will_testament",
+    "title": "Last Will and Testament",
+    "description": "A will with the real, sourced specifics on what makes one legally valid — the two-part capacity test, the exact signing requirements, the handwritten-will fallback, what a later divorce or a child born afterward does to it, and the statutory fallback for who administers an estate with no executor named.",
+    "clauseOrder": [
+      "will_declaration",
+      "will_testamentary_capacity",
+      "will_execution_requirements",
+      "will_holographic_alternative",
+      "will_specific_bequests",
+      "will_residuary_estate",
+      "will_executor_designation",
+      "will_executor_appointment",
+      "will_executor_bond",
+      "will_guardian_designation",
+      "will_guardian_nomination",
+      "will_revocation",
+      "will_revocation_by_divorce",
+      "will_omitted_spouse",
+      "will_omitted_children",
+      "will_simultaneous_death",
+      "will_no_contest_clause",
+      "will_proof_at_probate",
+      "will_signature_attestation"
+    ],
+    "fields": [
+      {
+        "id": "testatorName",
+        "label": "Your full legal name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "testatorCounty",
+        "label": "County of residence",
+        "placeholder": "Alameda County",
+        "required": true
+      },
+      {
+        "id": "executorName",
+        "label": "Executor name",
+        "placeholder": "Morgan Lee",
+        "required": true
+      },
+      {
+        "id": "alternateExecutorName",
+        "label": "Alternate executor name",
+        "placeholder": "Casey Lee",
+        "required": false
+      },
+      {
+        "id": "guardianName",
+        "label": "Guardian for minor children",
+        "placeholder": "Riley Lee",
+        "required": false
+      },
+      {
+        "id": "alternateGuardianName",
+        "label": "Alternate guardian",
+        "placeholder": "Sam Lee",
+        "required": false
+      },
+      {
+        "id": "residuaryBeneficiary",
+        "label": "Residuary beneficiary",
+        "placeholder": "Jordan Alex Lee's spouse, Morgan Lee",
+        "required": true
+      }
+    ],
+    "categories": [
+      "Estate Planning"
+    ]
   }
 ]
