@@ -2236,5 +2236,55 @@
     "categories": [
       "Real Estate"
     ]
+  },
+  {
+    "id": "cohabitation_agreement",
+    "title": "Cohabitation Agreement",
+    "description": "An agreement between two unmarried adults sharing a household, documenting property, expenses, and financial expectations, and disclosing how California's courts have and haven't addressed contracts between unmarried cohabitants.",
+    "clauseOrder": [
+      "cohab_recitals",
+      "cohab_marvin_doctrine",
+      "cohab_implied_contract_equitable_remedies",
+      "cohab_meretricious_consideration_limit",
+      "cohab_no_automatic_sharing",
+      "cohab_state_variation_disclosure",
+      "cohab_property_expense_schedule",
+      "cohab_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "party1Name",
+        "label": "First partner's full legal name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "party2Name",
+        "label": "Second partner's full legal name",
+        "placeholder": "Morgan Casey Lee",
+        "required": true
+      },
+      {
+        "id": "agreementDate",
+        "label": "Agreement date",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "propertyCharacterizationApproach",
+        "label": "How property acquired during the relationship will be characterized",
+        "placeholder": "Property acquired jointly will be owned equally; property acquired individually and titled in one partner's name alone remains that partner's separate property",
+        "required": true
+      },
+      {
+        "id": "expenseSplitTerms",
+        "label": "How household expenses will be split",
+        "placeholder": "Rent and utilities split equally; each partner covers their own individual expenses",
+        "required": true
+      }
+    ],
+    "categories": [
+      "Family Law"
+    ]
   }
 ]
