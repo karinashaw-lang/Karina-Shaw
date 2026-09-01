@@ -3850,5 +3850,43 @@
     "categories": [
       "Ending employment"
     ]
+  },
+  {
+    "id": "llc_dissolution_cancellation",
+    "title": "LLC Dissolution and Cancellation",
+    "description": "The actual statutory winding-up and cancellation filing process that formally terminates an LLC's existence with the California Secretary of State -- distinct from this project's LLC Operating Agreement documents, which cover only the contractual/statutory triggers for dissolution, not the winding-up conduct or the cancellation filings themselves.",
+    "clauseOrder": [
+      "llcdiss_recitals",
+      "llcdiss_winding_up_duty",
+      "llcdiss_distribution_priority",
+      "llcdiss_certificate_filings",
+      "llcdiss_continued_existence",
+      "llcdiss_short_form_eligibility",
+      "llcdiss_final_tax_clearance",
+      "llcdiss_winding_up_declaration"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "LLC name",
+        "placeholder": "Acme Ventures, LLC",
+        "required": true
+      },
+      {
+        "id": "dissolutionDate",
+        "label": "Dissolution date",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "dissolutionReason",
+        "label": "Reason/event triggering dissolution",
+        "placeholder": "Unanimous vote of the members",
+        "required": true
+      }
+    ],
+    "categories": [
+      "Business Formation"
+    ]
   }
 ]
