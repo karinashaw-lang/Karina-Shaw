@@ -3795,5 +3795,60 @@
     "categories": [
       "Confidentiality & IP"
     ]
+  },
+  {
+    "id": "waiting_time_penalty_demand",
+    "title": "Final Wage Payment / Waiting-Time Penalty Demand Letter",
+    "description": "An employee-side demand letter for unpaid final wages and California's waiting-time penalty -- the statutory deadlines for final pay, how the penalty accrues and its 30-day cap, the 'willful' standard courts apply, and the filing deadline -- distinct from this project's employer-facing Termination/Separation Letter.",
+    "clauseOrder": [
+      "waitingtime_demand_letter_body",
+      "waitingtime_final_wages_due",
+      "waitingtime_penalty_mechanics",
+      "waitingtime_willful_standard",
+      "waitingtime_statute_of_limitations",
+      "waitingtime_accrued_pto_reference",
+      "waitingtime_closing_and_signature"
+    ],
+    "fields": [
+      {
+        "id": "employeeName",
+        "label": "Employee name (you)",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Employer name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "terminationDate",
+        "label": "Date employment ended",
+        "placeholder": "August 15, 2026",
+        "required": true
+      },
+      {
+        "id": "separationType",
+        "label": "Type of separation",
+        "placeholder": "Discharged (involuntary termination)",
+        "required": true
+      },
+      {
+        "id": "unpaidWagesAmount",
+        "label": "Unpaid wages amount",
+        "placeholder": "$3,200.00",
+        "required": true
+      },
+      {
+        "id": "dailyWageRate",
+        "label": "Daily wage rate",
+        "placeholder": "$200.00",
+        "required": true
+      }
+    ],
+    "categories": [
+      "Ending employment"
+    ]
   }
 ]
