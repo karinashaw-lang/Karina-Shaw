@@ -3093,5 +3093,56 @@
     "categories": [
       "Estate Planning"
     ]
+  },
+  {
+    "id": "llc_articles_of_organization",
+    "title": "LLC Articles of Organization",
+    "description": "The formation filing document itself -- filed with the California Secretary of State to legally create an LLC -- distinct from the internal governance covered by this project's LLC Operating Agreement documents.",
+    "clauseOrder": [
+      "llc_articles_declaration",
+      "llc_articles_filing_requirement",
+      "llc_articles_required_content",
+      "llc_articles_name_requirements",
+      "llc_articles_agent_designation",
+      "llc_articles_agent_for_service",
+      "llc_articles_statement_of_information",
+      "llc_articles_annual_tax",
+      "llc_articles_organizer_signature"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "LLC name",
+        "placeholder": "Acme Ventures, LLC",
+        "required": true
+      },
+      {
+        "id": "managementStructure",
+        "label": "Management structure",
+        "placeholder": "member-managed",
+        "required": true
+      },
+      {
+        "id": "agentName",
+        "label": "Agent for service of process name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "agentAddress",
+        "label": "Agent for service of process California street address",
+        "placeholder": "123 Main St., Sacramento, CA 95814",
+        "required": true
+      },
+      {
+        "id": "organizerName",
+        "label": "Organizer's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      }
+    ],
+    "categories": [
+      "Business Formation"
+    ]
   }
 ]
