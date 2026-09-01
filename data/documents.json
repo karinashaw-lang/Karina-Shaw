@@ -3696,5 +3696,67 @@
     "categories": [
       "Family Law"
     ]
+  },
+  {
+    "id": "sublease_agreement",
+    "title": "Sublease Agreement",
+    "description": "A sublease between an existing tenant and a new subtenant -- distinguishing assignment from sublease, confirming the sublessor's continuing liability to the original landlord, and explaining that California's statutory landlord-consent-to-transfer chapter applies only to nonresidential leases, so a residential sublease's rights turn on the master lease's own terms.",
+    "clauseOrder": [
+      "sublease_parties_property",
+      "sublease_rent",
+      "sublease_governing_framework",
+      "sublease_assignment_vs_sublease",
+      "sublease_sublessor_liability",
+      "sublease_no_privity",
+      "sublease_consent_and_master_lease",
+      "sublease_ack"
+    ],
+    "fields": [
+      {
+        "id": "landlordName",
+        "label": "Original landlord's name",
+        "placeholder": "Acme Properties, LLC",
+        "required": true
+      },
+      {
+        "id": "sublessorName",
+        "label": "Sublessor's name (original tenant)",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "subtenantName",
+        "label": "Subtenant's name",
+        "placeholder": "Morgan Lee",
+        "required": true
+      },
+      {
+        "id": "propertyAddress",
+        "label": "Property address",
+        "placeholder": "123 Main St, Apt 4, Springfield",
+        "required": true
+      },
+      {
+        "id": "monthlyRent",
+        "label": "Monthly sublease rent",
+        "placeholder": "1,800",
+        "required": true
+      },
+      {
+        "id": "subleaseStartDate",
+        "label": "Sublease start date",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "subleaseEndDate",
+        "label": "Sublease end date",
+        "placeholder": "February 28, 2027",
+        "required": true
+      }
+    ],
+    "categories": [
+      "Real Estate"
+    ]
   }
 ]
