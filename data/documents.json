@@ -1509,5 +1509,44 @@
     "categories": [
       "Estate Planning"
     ]
+  },
+  {
+    "id": "hipaa_authorization",
+    "title": "HIPAA Authorization",
+    "description": "A standalone medical-information release authorization, with the real, sourced specifics on the exact statements and elements federal law requires it to contain, how revocation works, and what makes a signed authorization invalid — distinct from naming a health care decision-making agent.",
+    "clauseOrder": [
+      "hipaa_auth_declaration",
+      "hipaa_auth_general_rule",
+      "hipaa_auth_scope_distinction",
+      "hipaa_auth_core_elements",
+      "hipaa_auth_required_statements",
+      "hipaa_auth_revocation",
+      "hipaa_auth_defective",
+      "hipaa_auth_ca_state_law_note",
+      "hipaa_auth_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "patientName",
+        "label": "Your full legal name (patient)",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "authorizedRecipientName",
+        "label": "Person or organization authorized to receive information",
+        "placeholder": "Morgan Lee",
+        "required": true
+      },
+      {
+        "id": "expirationDate",
+        "label": "Expiration date or event",
+        "placeholder": "One year from the date of signing",
+        "required": true
+      }
+    ],
+    "categories": [
+      "Estate Planning"
+    ]
   }
 ]
