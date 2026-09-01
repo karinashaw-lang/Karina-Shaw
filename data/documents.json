@@ -1693,5 +1693,99 @@
     "categories": [
       "Family Law"
     ]
+  },
+  {
+    "id": "marital_settlement_agreement",
+    "title": "Marital Settlement Agreement",
+    "description": "A divorce settlement with the real, sourced specifics on the equal-division default rule and its written-agreement exception, the community-vs-separate property line, the date-of-separation test that decides which earnings count, the actual spousal-support factor list, and the 10-year rule that keeps a court's jurisdiction over support open indefinitely.",
+    "clauseOrder": [
+      "msa_declaration",
+      "msa_equal_division_default",
+      "msa_community_separate_property",
+      "msa_date_of_separation",
+      "msa_property_schedule_reference",
+      "msa_spousal_support_factors",
+      "msa_long_duration_marriage",
+      "msa_custody_agreements_subject_to_best_interest",
+      "msa_incorporation_into_judgment",
+      "msa_attorneys_fees_parity",
+      "msa_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "party1Name",
+        "label": "First party's full legal name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "party2Name",
+        "label": "Second party's full legal name",
+        "placeholder": "Morgan Casey Lee",
+        "required": true
+      },
+      {
+        "id": "marriageDate",
+        "label": "Date of marriage",
+        "placeholder": "June 14, 2015",
+        "required": true
+      },
+      {
+        "id": "separationDate",
+        "label": "Date of separation",
+        "placeholder": "March 2, 2026",
+        "required": true
+      }
+    ],
+    "categories": [
+      "Family Law"
+    ]
+  },
+  {
+    "id": "postnuptial_agreement",
+    "title": "Postnuptial Agreement",
+    "description": "A property agreement between spouses already married, with the real, sourced specifics on the interspousal fiduciary duty, the transmutation writing requirement that actually controls whether it works, the personal-gift exception, and the real, disclosed gap between this and a premarital agreement's spousal-support waiver rules.",
+    "clauseOrder": [
+      "postnup_declaration",
+      "postnup_fiduciary_duty",
+      "postnup_property_characterization_defaults",
+      "postnup_transmutation_writing_requirement",
+      "postnup_transmutation_personal_gift_exception",
+      "postnup_transmutation_recording_third_parties",
+      "postnup_property_schedule_express_declaration",
+      "postnup_community_property_management_disclosure",
+      "postnup_spousal_support_provision_basis",
+      "postnup_transmutation_effect_at_death",
+      "postnup_signature_notarization"
+    ],
+    "fields": [
+      {
+        "id": "party1Name",
+        "label": "First party's full legal name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "party2Name",
+        "label": "Second party's full legal name",
+        "placeholder": "Morgan Casey Lee",
+        "required": true
+      },
+      {
+        "id": "marriageDate",
+        "label": "Date of marriage",
+        "placeholder": "June 14, 2015",
+        "required": true
+      },
+      {
+        "id": "agreementDate",
+        "label": "Date of this agreement",
+        "placeholder": "September 1, 2026",
+        "required": true
+      }
+    ],
+    "categories": [
+      "Family Law"
+    ]
   }
 ]
