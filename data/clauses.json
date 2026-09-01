@@ -4135,6 +4135,335 @@
       "title": "Signature",
       "kind": "drafting",
       "body": "Signature of {{patientName}}: ☐ _________________________ Date: ☐ _________________________\n\nIf signed by a personal representative on behalf of {{patientName}}, printed name of representative and description of the representative's authority to act: ☐ _________________________"
+    },
+    {
+      "id": "codicil_definition",
+      "title": "What a Codicil Is Under California Law",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-01",
+      "body": "California's Probate Code treats a codicil not as a separate category of legal instrument with its own rules, but as a type of will. The Probate Code's general definitions provide that the term \"will\" includes a codicil, and that these definitions govern the construction of the Probate Code's provisions unless context requires otherwise. As a result, any Probate Code statute that refers to a \"will\" — including execution formalities, revocation rules, and revival rules — presumptively applies to a codicil, such as this one executed by {{testatorName}} of {{testatorCounty}}, in the same way it applies to the original will.",
+      "gap": "This is one state's statute, used as real evidence of how \"codicil\" is defined and treated in relation to \"will\" — not a claim about which state's law governs a specific codicil. The definition itself (Probate Code § 88) is a single sentence with no further codicil-specific elaboration; this clause does not overstate its brevity into something more detailed than the statute provides.",
+      "citations": [
+        {
+          "case": "Cal. Probate Code § 88 (California Legislative Information text)",
+          "cite": "definition of 'will'",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=88",
+          "quote": "“Will” includes codicil and any testamentary instrument which merely appoints an executor or revokes or revises another will."
+        },
+        {
+          "case": "Cal. Probate Code § 20 (California Legislative Information text)",
+          "cite": "definitions govern construction of the code",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=20",
+          "quote": "Unless the provision or context otherwise requires, the definitions in this part govern the construction of this code."
+        }
+      ]
+    },
+    {
+      "id": "codicil_execution_requirements",
+      "title": "A Codicil Must Independently Satisfy Will-Execution Formalities",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-01",
+      "body": "Because \"will\" is statutorily defined to include \"codicil,\" a codicil to {{testatorName}}'s will dated {{originalWillDate}} is not exempt from the formalities that apply to wills generally. Probate Code § 6110 requires that a will be in writing and satisfy the section's signature and witnessing requirements. A codicil that fails to independently meet these formalities does not receive any special exemption from them merely because it amends, rather than replaces, an already-valid will.",
+      "gap": "This is one state's statute, used as real evidence of the execution requirements applicable to a codicil — not a claim about which state's law governs a specific codicil. The full detail of California's signature and witnessing requirements (including the two-witness rule and the harmless-error exception) is addressed at length in this project's companion Last Will and Testament document and is not re-derived here; this clause states only that a codicil is not exempt from those requirements, not what all of their details are.",
+      "citations": [
+        {
+          "case": "Cal. Probate Code § 6110(a) (California Legislative Information text)",
+          "cite": "execution of wills",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=6110",
+          "quote": "Except as provided in this part, a will shall be in writing and satisfy the requirements of this section."
+        },
+        {
+          "case": "Cal. Probate Code § 88 (California Legislative Information text)",
+          "cite": "definition of 'will'",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=88",
+          "quote": "“Will” includes codicil and any testamentary instrument which merely appoints an executor or revokes or revises another will."
+        }
+      ]
+    },
+    {
+      "id": "codicil_revocation_no_automatic_revival",
+      "title": "Revoking a Codicil Does Not Automatically Revive What It Changed",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-01",
+      "body": "If a codicil that revoked or changed part of {{testatorName}}'s will dated {{originalWillDate}} is itself later revoked, the terms of the original will that the codicil had changed are not automatically restored. California's revival statute provides that when a later testamentary instrument that would have revoked part of an earlier one is itself thereafter revoked, the earlier instrument's revoked terms are revived only if it is evident from the circumstances of the later instrument's revocation, or from the testator's contemporaneous or subsequent declarations, that the testator intended the earlier terms to take effect as originally executed.",
+      "gap": "This is one state's statute, used as real evidence of California's revival rule — not a claim about which state's law governs a specific codicil. Probate Code § 6120, which defines revocation generally, does not itself use the word \"codicil\" and does not separately address the scenario of two physically distinct paper instruments (an original will and a separate codicil document) — it is Probate Code § 88's definitional inclusion of \"codicil\" within \"will\" that extends §§ 6120 and 6123 to codicils at all. Neither § 6120 nor § 6123 expressly states, in so many words, whether physically revoking the original will instrument automatically revokes a separate codicil to it, or the reverse; that specific multi-document question is not resolved by the statutory text found.",
+      "citations": [
+        {
+          "case": "Cal. Probate Code § 6123(a) (California Legislative Information text)",
+          "cite": "revival",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=6123",
+          "quote": "If a second will which, had it remained effective at death, would have revoked the first will in whole or in part, is thereafter revoked by acts under Section 6120 or 6121, the first will is revoked in whole or in part unless it is evident from the circumstances of the revocation of the second will or from the testator’s contemporary or subsequent declarations that the testator intended the first will to take effect as executed."
+        },
+        {
+          "case": "Cal. Probate Code § 6120(a) (California Legislative Information text)",
+          "cite": "revocation by subsequent will",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=6120",
+          "quote": "A will or any part thereof is revoked by any of the following: (a) A subsequent will which revokes the prior will or part expressly or by inconsistency."
+        }
+      ]
+    },
+    {
+      "id": "codicil_inconsistent_provisions",
+      "title": "A Later Codicil Inconsistent With an Earlier Instrument",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-01",
+      "body": "California's Probate Code does not contain a statute written specifically for the scenario of a later codicil that conflicts with an earlier codicil or with the original will. Two general principles govern instead. First, a subsequent testamentary instrument revokes a prior one, in whole or in part, \"expressly or by inconsistency\" — a rule that, because \"will\" includes \"codicil,\" applies to a later codicil in relation to an earlier one or to the original will. Second, general rules of construction direct that all parts of an instrument be construed in relation to each other so as, if possible, to form a consistent whole, with any ambiguity resolved by reference to other parts of the instrument.",
+      "gap": "This is one state's statute, used as real evidence of how California addresses conflicting testamentary provisions — not a claim about which state's law governs a specific codicil. Beyond the general \"expressly or by inconsistency\" revocation rule and the general construction principles cited here, no codicil-specific inconsistency statute was found in the Probate Code's Division 6 or Division 11.",
+      "citations": [
+        {
+          "case": "Cal. Probate Code § 6120(a) (California Legislative Information text)",
+          "cite": "revocation by inconsistency",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=6120",
+          "quote": "A will or any part thereof is revoked by any of the following: (a) A subsequent will which revokes the prior will or part expressly or by inconsistency."
+        },
+        {
+          "case": "Cal. Probate Code § 21121 (California Legislative Information text)",
+          "cite": "construing an instrument as a consistent whole",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=21121",
+          "quote": "All parts of an instrument are to be construed in relation to each other and so as, if possible, to form a consistent whole. If the meaning of any part of an instrument is ambiguous or doubtful, it may be explained by any reference to or recital of that part in another part of the instrument."
+        }
+      ]
+    },
+    {
+      "id": "codicil_lost_codicil_presumption",
+      "title": "A Lost Codicil Is Presumed Revoked, Separately From the Will",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-01",
+      "body": "California law presumes that a will last in the testator's possession, which cannot be found after the testator's death, was destroyed by the testator with intent to revoke it. Because \"will\" includes \"codicil,\" this presumption applies separately to a codicil that was last in {{testatorName}}'s possession and cannot be located after death, independent of whether the original will dated {{originalWillDate}} is itself found.",
+      "gap": "This is one state's statute, used as real evidence of California's lost-instrument presumption — not a claim about which state's law governs a specific codicil. This is a single statutory subsection (§ 6124); no additional independent source was found for this.",
+      "citations": [
+        {
+          "case": "Cal. Probate Code § 6124 (California Legislative Information text)",
+          "cite": "presumption of revocation",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=6124",
+          "quote": "If the testator’s will was last in the testator’s possession, the testator was competent until death, and neither the will nor a duplicate original of the will can be found after the testator’s death, it is presumed that the testator destroyed the will with intent to revoke it. This presumption is a presumption affecting the burden of producing evidence."
+        }
+      ]
+    },
+    {
+      "id": "codicil_declaration",
+      "title": "Declaration Identifying the Original Will and the Amendment",
+      "kind": "drafting",
+      "body": "I, {{testatorName}}, of {{testatorCounty}}, declare this instrument to be a codicil to my Last Will and Testament dated {{originalWillDate}} (the \"Will\"). I identify below the specific provision(s) of the Will that this codicil adds, deletes, or amends: ☐ _________________________. Except as specifically changed by this codicil, I confirm and republish the Will, and all of its provisions not specifically amended by this codicil, in all other respects."
+    },
+    {
+      "id": "codicil_execution_block",
+      "title": "Signature and Witness Block",
+      "kind": "drafting",
+      "body": "Signed by {{testatorName}} as a codicil to the Will dated {{originalWillDate}}, on {{codicilDate}}, at {{testatorCounty}}, California.\n\nWe, the undersigned, being at least two in number, each declare under penalty of perjury that {{testatorName}}, in our presence and in the presence of each other, signed this codicil, or acknowledged the signature or the codicil already made, and declared to us that it is {{testatorName}}'s codicil; that we understood this instrument to be {{testatorName}}'s codicil; and that we, and each of us, in {{testatorName}}'s presence and at {{testatorName}}'s request, and in the presence of each other, sign our names below as witnesses.\n\nSignature of {{testatorName}}: ☐ _________________________ Date: ☐ _________________________\nWitness 1 — Signature: ☐ _________________________ Printed name: ☐ _________________________\nWitness 2 — Signature: ☐ _________________________ Printed name: ☐ _________________________"
+    },
+    {
+      "id": "guardian_nom_standalone_writing",
+      "title": "Nomination by Written Document Outside a Will",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-01",
+      "body": "{{parentName}} nominates {{nominatedGuardianName}}, and if that person is unable or unwilling to serve, {{alternateGuardianName}}, as guardian of the person of {{minorChildName}}, by this written document. California Probate Code § 1500 permits a parent to nominate a guardian of a minor child's person or estate, or both. California Probate Code § 1502(a) permits that nomination to be made \"in a writing signed either before or after the petition for the appointment of the guardian is filed\" — meaning a signed nomination document can exist and take legal significance independent of a will and independent of an already-pending court case.",
+      "gap": "This is one state's statute, used as real evidence of how a parent's guardian nomination may be documented outside a will — not a claim about which state's law governs a specific guardianship nomination. Section 1500 itself is subject to Section 1502's conditions (e.g., when the other parent has not consented), and neither section makes a nomination self-executing; a court guardianship proceeding is still required to give it legal effect.",
+      "citations": [
+        {
+          "case": "Cal. Prob. Code § 1500 (California Legislative Information text)",
+          "cite": "Prob. C. § 1500",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=1500",
+          "quote": "Subject to Section 1502, a parent may nominate a guardian of the person or estate, or both, of a minor child in either of the following cases: (a) Where the other parent nominates, or consents in writing to the nomination of, the same guardian for the same child. (b) Where, at the time the petition for appointment of the guardian is filed, either (1) the other parent is dead or lacks legal capacity to consent to the nomination or (2) the consent of the other parent would not be required for an adoption of the child."
+        },
+        {
+          "case": "Cal. Prob. Code § 1502(a) (California Legislative Information text)",
+          "cite": "Prob. C. § 1502(a)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=1502",
+          "quote": "A nomination of a guardian under this article may be made in the petition for the appointment of the guardian or at the hearing on the petition or in a writing signed either before or after the petition for the appointment of the guardian is filed."
+        }
+      ]
+    },
+    {
+      "id": "guardian_nom_conditional_temporary",
+      "title": "Timing and Conditions of a Nomination's Effect",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-01",
+      "body": "A nomination made under this document may be drafted to take effect immediately, or only upon the occurrence of a stated condition, such as {{parentName}}'s absence, travel, incapacity, or death. California Probate Code § 1502(b) allows a nomination in writing to specify the condition or conditions under which it becomes effective. Absent a contrary statement in the writing, § 1502(c) provides that a nomination remains effective notwithstanding the nominating parent's later absence, incapacity, or death.",
+      "gap": "This is one state's statute, used as real evidence of how a written guardian nomination's timing and conditions can be structured — not a claim about which state's law governs a specific guardianship nomination. This is a single statutory subsection (§ 1502); no additional independent source was found for this. A nomination's stated effective date or condition does not itself create a guardianship; a court proceeding is still the mechanism by which a guardian is actually appointed.",
+      "citations": [
+        {
+          "case": "Cal. Prob. Code § 1502(b) (California Legislative Information text)",
+          "cite": "Prob. C. § 1502(b)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=1502",
+          "quote": "The nomination of a guardian under this article is effective when made except that a writing nominating a guardian under this article may provide that the nomination becomes effective only upon the occurrence of such condition or conditions as are specified in the writing, including, but not limited to, conditions as to the subsequent absence, legal incapacity, or death of the person making the nomination."
+        },
+        {
+          "case": "Cal. Prob. Code § 1502(c) (California Legislative Information text)",
+          "cite": "Prob. C. § 1502(c)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=1502",
+          "quote": "Unless the writing making the nomination expressly otherwise provides, a nomination made under this article remains effective notwithstanding the subsequent absence, legal incapacity, or death of the person making the nomination."
+        }
+      ]
+    },
+    {
+      "id": "guardian_nom_minor_preference",
+      "title": "The Minor Child's Own Role in a Guardianship Nomination",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-01",
+      "body": "Under California law, a minor who is 12 years of age or older may personally file a petition for the appointment of a guardian. In a proceeding to appoint a guardian of the person, the court is directed by Probate Code § 1514(b)(1) to the Family Code chapters governing custody of a minor, which include Family Code § 3042: where a child is of sufficient age and capacity to form an intelligent preference, the court must consider and give due weight to that preference, and a child 14 or older who wishes to address the court about the matter must be permitted to do so absent a contrary best-interest finding.",
+      "gap": "This is one state's statute, used as real evidence of a minor's own statutory role in who is nominated or appointed as their guardian — not a claim about which state's law governs a specific guardianship nomination. Family Code § 3042 is written for custody and visitation orders generally and is incorporated into guardian-of-the-person appointments only by Probate Code § 1514(b)(1)'s cross-reference to that Family Code chapter; it does not independently mention \"guardian\" nominations by name.",
+      "citations": [
+        {
+          "case": "Cal. Prob. Code § 1510(a) (California Legislative Information text)",
+          "cite": "Prob. C. § 1510(a)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=1510",
+          "quote": "A relative or other person on behalf of the minor, or the minor if 12 years of age or older, may file a petition for the appointment of a guardian of the minor."
+        },
+        {
+          "case": "Cal. Prob. Code § 1514(b)(1) (California Legislative Information text)",
+          "cite": "Prob. C. § 1514(b)(1)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=1514",
+          "quote": "In appointing a guardian of the person, the court is governed by Chapter 1 (commencing with Section 3020) and Chapter 2 (commencing with Section 3040) of Part 2 of Division 8 of the Family Code, relating to custody of a minor."
+        },
+        {
+          "case": "Cal. Fam. Code § 3042(a) (California Legislative Information text)",
+          "cite": "Fam. C. § 3042(a)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=3042",
+          "quote": "If a child is of sufficient age and capacity to reason so as to form an intelligent preference as to custody or visitation, the court shall consider, and give due weight to, the wishes of the child in making an order granting or modifying custody or visitation."
+        },
+        {
+          "case": "Cal. Fam. Code § 3042(c) (California Legislative Information text)",
+          "cite": "Fam. C. § 3042(c)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=3042",
+          "quote": "If the child is 14 years of age or older and wishes to address the court regarding custody or visitation, the child shall be permitted to do so, unless the court determines that doing so is not in the child’s best interest, in which case, the court shall state its reasons for that finding on the record."
+        }
+      ]
+    },
+    {
+      "id": "guardian_nom_caregiver_affidavit_scope",
+      "title": "The Caregiver's Authorization Affidavit — What It Allows Without Court Action",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-01",
+      "body": "California Family Code §§ 6550–6552 create a Caregiver's Authorization Affidavit that operates without any court proceeding. A caregiver 18 or older who completes items 1–4 of the statutory affidavit form and signs it is authorized to enroll {{minorChildName}} in school and consent to school-related medical care. A caregiver who is a \"relative\" — defined by statute as an adult related to the child by blood, adoption, or affinity within the fifth degree of kinship, including stepparents, stepsiblings, and \"great,\" \"great-great,\" or \"grand\" relatives, or their spouses — who additionally completes items 5–8 and signs has the same rights to authorize medical and dental care given to guardians under Probate Code § 2353, which may include mental health treatment subject to the limits of Probate Code § 2356.",
+      "gap": "This is one state's statute, used as real evidence of a no-court caregiver-authorization mechanism distinct from a court-appointed guardianship — not a claim about which state's law governs a specific guardianship nomination. The affidavit's authority to consent to medical/dental care beyond school-related care is available only to a caregiver who is a statutory \"relative\"; a non-relative caregiver's authority under this affidavit is limited to school enrollment and school-related medical care.",
+      "citations": [
+        {
+          "case": "Cal. Fam. Code § 6550(a) (California Legislative Information text)",
+          "cite": "Fam. C. § 6550(a)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=6550",
+          "quote": "A caregiver’s authorization affidavit that meets the requirements of this part authorizes a caregiver 18 years of age or older who completes items 1 to 4, inclusive, of the affidavit provided in Section 6552 and signs the affidavit to enroll a minor in school and consent to school-related medical care on behalf of the minor. A caregiver who is a relative and who completes items 1 to 8, inclusive, of the affidavit provided in Section 6552 and signs the affidavit shall have the same rights to authorize medical care and dental care for the minor that are given to guardians under Section 2353 of the Probate Code. The medical care authorized by this caregiver who is a relative may include mental health treatment subject to the limitations of Section 2356 of the Probate Code."
+        },
+        {
+          "case": "Cal. Fam. Code § 6552 (statutory affidavit form text, California Legislative Information)",
+          "cite": "Fam. C. § 6552",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=6552",
+          "quote": "When signed by a relative, this affidavit shall confer the same rights to authorize medical care and dental care for the minor that are given to guardians under Section 2353 of the Probate Code. The medical care authorized by a relative caregiver may include mental health treatment subject to the limitations of Section 2356 of the Probate Code."
+        }
+      ]
+    },
+    {
+      "id": "guardian_nom_caregiver_affidavit_limits",
+      "title": "The Caregiver's Authorization Affidavit — What It Does Not Do",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-01",
+      "body": "The Caregiver's Authorization Affidavit does not create a legal guardianship and does not affect the legal rights of {{minorChildName}}'s parents or legal guardian over the child's care, custody, and control. A caregiver's decision to consent to or refuse medical or dental care for the minor is superseded by any contravening decision of a parent or other person with legal custody, unless that decision would jeopardize the minor's life, health, or safety.",
+      "gap": "This is one state's statute, used as real evidence of the stated limits of a no-court caregiver authorization — not a claim about which state's law governs a specific guardianship nomination. These are the limits stated in the cited text; the affidavit's interaction with a parent's or guardian's decision in a specific factual situation is not addressed further by these sections.",
+      "citations": [
+        {
+          "case": "Cal. Fam. Code § 6552 (statutory affidavit form text, California Legislative Information)",
+          "cite": "Fam. C. § 6552 Notice 1",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=6552",
+          "quote": "This declaration does not affect the rights of the minor’s parents or legal guardian regarding the care, custody, and control of the minor, and does not mean that the caregiver has legal custody of the minor."
+        },
+        {
+          "case": "Cal. Fam. Code § 6550(b) (California Legislative Information text)",
+          "cite": "Fam. C. § 6550(b)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=6550",
+          "quote": "The decision of a caregiver to consent to or to refuse medical or dental care for a minor shall be superseded by any contravening decision of the parent or other person having legal custody of the minor, provided the decision of the parent or other person having legal custody of the minor does not jeopardize the life, health, or safety of the minor."
+        }
+      ]
+    },
+    {
+      "id": "guardian_nom_caregiver_affidavit_termination",
+      "title": "When a Caregiver's Authorization Affidavit Stops Being Valid",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-01",
+      "body": "The Caregiver's Authorization Affidavit does not carry a fixed expiration date; instead, California Family Code § 6550(f) ties its validity to the minor's living arrangement. If {{minorChildName}} stops living with the caregiver who signed the affidavit, that caregiver is required to notify any school, health care provider, or health care service plan that received the affidavit, and the affidavit becomes invalid once that notice is received.",
+      "gap": "This is one state's statute, used as real evidence of a stated termination mechanism for a no-court caregiver authorization — not a claim about which state's law governs a specific guardianship nomination. The statute ties invalidity to actual notice being received by the school or provider, not automatically to the date the child stops living with the caregiver.",
+      "citations": [
+        {
+          "case": "Cal. Fam. Code § 6550(f) (California Legislative Information text)",
+          "cite": "Fam. C. § 6550(f)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=6550",
+          "quote": "If the minor stops living with the caregiver, the caregiver shall notify any school, health care provider, or health care service plan that has been given the affidavit. The affidavit is invalid after the school, health care provider, or health care service plan receives notice that the minor is no longer living with the caregiver."
+        },
+        {
+          "case": "Cal. Fam. Code § 6552 (statutory affidavit form text, California Legislative Information)",
+          "cite": "Fam. C. § 6552, To Caregivers ¶3",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=6552",
+          "quote": "If the minor stops living with you, the affidavit is no longer valid. You are required to notify any school, health care provider, or health care service plan to which you have given this affidavit that the minor is no longer living with you and that, as a result, the affidavit is no longer valid."
+        }
+      ]
+    },
+    {
+      "id": "guardian_nom_court_guardianship_basics",
+      "title": "Formal Court Guardianship, in Contrast to the Affidavit",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-01",
+      "body": "Unlike the Caregiver's Authorization Affidavit, a legal guardianship of a minor's person or estate is established only through a court proceeding. A petition requesting appointment of a guardian must specify the proposed guardian's name and address, the proposed ward's name and date of birth, and must state that the appointment is necessary or convenient. At the hearing on that petition, the court — not the petition alone — decides whether to appoint a guardian of the person, the estate, or both.",
+      "gap": "This is one state's statute, used as real evidence that a formal guardianship (unlike the affidavit mechanism) requires an actual court petition and hearing — not a claim about which state's law governs a specific guardianship nomination, and not a description of the full court guardianship process, which involves additional notice, investigation, and ongoing court-oversight requirements not covered here.",
+      "citations": [
+        {
+          "case": "Cal. Prob. Code § 1510(b) (California Legislative Information text)",
+          "cite": "Prob. C. § 1510(b)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=1510",
+          "quote": "The petition shall request that a guardian of the person or estate of the minor, or both, be appointed, shall specify the name and address of the proposed guardian and the name and date of birth of the proposed ward, and shall state that the appointment is necessary or convenient."
+        },
+        {
+          "case": "Cal. Prob. Code § 1514(a) (California Legislative Information text)",
+          "cite": "Prob. C. § 1514(a)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=1514",
+          "quote": "Upon hearing of the petition, if it appears necessary or convenient, the court may appoint a guardian of the person or estate of the proposed ward or both."
+        }
+      ]
+    },
+    {
+      "id": "guardian_nom_school_residency",
+      "title": "The Affidavit's Effect on School Enrollment Residency",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-01",
+      "body": "A separately codified Education Code provision reinforces the affidavit's practical, no-court effect for school purposes: a pupil who lives in the home of a caregiving adult satisfies school-district residency requirements once that caregiving adult executes the Family Code § 6550 affidavit, and no guardianship or custody order is required for that determination, unless the school district determines from actual facts that the minor does not live with the caregiver.",
+      "gap": "This is one state's statute, used as real evidence that a caregiver's affidavit — not a guardianship — can independently satisfy a school residency requirement — not a claim about which state's law governs a specific guardianship nomination. The school district retains authority to determine from actual facts that the minor is not living with the caregiver, which can override this residency effect.",
+      "citations": [
+        {
+          "case": "Cal. Educ. Code § 48204(a)(5) (California Legislative Information text)",
+          "cite": "Educ. C. § 48204(a)(5)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=EDC&sectionNum=48204",
+          "quote": "A pupil who lives in the home of a caregiving adult that is located within the boundaries of that school district. Execution of an affidavit under penalty of perjury pursuant to Part 1.5 (commencing with Section 6550) of Division 11 of the Family Code by the caregiving adult is a sufficient basis for a determination that the pupil lives in the home of the caregiver, unless the school district determines from actual facts that the pupil is not living in the home of the caregiver."
+        },
+        {
+          "case": "Cal. Fam. Code § 6552 (statutory affidavit form text, California Legislative Information)",
+          "cite": "Fam. C. § 6552, To School Officials ¶1",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=6552",
+          "quote": "Section 48204 of the Education Code provides that this affidavit constitutes a sufficient basis for a determination of residency of the minor, without the requirement of a guardianship or other custody order, unless the school district determines from actual facts that the minor is not living with the caregiver."
+        }
+      ]
+    },
+    {
+      "id": "guardian_nom_declaration",
+      "title": "Nomination Declaration",
+      "kind": "drafting",
+      "body": "I, {{parentName}}, being the parent of {{minorChildName}}, a minor child, hereby nominate {{nominatedGuardianName}} to serve as guardian of the person of {{minorChildName}}. If {{nominatedGuardianName}} is unable, unwilling, or unavailable to serve, I nominate {{alternateGuardianName}} as guardian in their place. This nomination is made by written document as permitted under California law and is separate from any nomination made in a will."
+    },
+    {
+      "id": "guardian_nom_signature_block",
+      "title": "Signature and Acknowledgment Block",
+      "kind": "drafting",
+      "body": "I declare under penalty of perjury under the laws of the State of California that the foregoing is true and correct.\n\nExecuted on {{dateSigned}} at {{cityState}}.\n\nSignature of {{parentName}}: ☐ _________________________\n\n[Notary acknowledgment or witness signature lines, as applicable, attached.]"
     }
   ]
 }

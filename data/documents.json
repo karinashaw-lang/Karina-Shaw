@@ -1548,5 +1548,106 @@
     "categories": [
       "Estate Planning"
     ]
+  },
+  {
+    "id": "codicil",
+    "title": "Codicil to a Will",
+    "description": "A narrow, sourced amendment to an existing will — what makes a codicil legally distinct from a new will, why it must independently satisfy the same signing formalities, and the real, honest gap in California's statute on republication and multi-document revocation.",
+    "clauseOrder": [
+      "codicil_declaration",
+      "codicil_definition",
+      "codicil_execution_requirements",
+      "codicil_revocation_no_automatic_revival",
+      "codicil_inconsistent_provisions",
+      "codicil_lost_codicil_presumption",
+      "codicil_execution_block"
+    ],
+    "fields": [
+      {
+        "id": "testatorName",
+        "label": "Your full legal name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "testatorCounty",
+        "label": "County of residence",
+        "placeholder": "Alameda County",
+        "required": true
+      },
+      {
+        "id": "originalWillDate",
+        "label": "Date of the original will",
+        "placeholder": "January 15, 2024",
+        "required": true
+      },
+      {
+        "id": "codicilDate",
+        "label": "Date of this codicil",
+        "placeholder": "September 1, 2026",
+        "required": true
+      }
+    ],
+    "categories": [
+      "Estate Planning"
+    ]
+  },
+  {
+    "id": "guardianship_nomination",
+    "title": "Nomination of Guardian for Minor Children",
+    "description": "A standalone guardian nomination separate from a will, with the real, sourced specifics on how a nomination can be timed or conditioned, a minor's own statutory role, and California's no-court Caregiver's Authorization Affidavit mechanism — what it allows, what it doesn't, and when it stops being valid.",
+    "clauseOrder": [
+      "guardian_nom_declaration",
+      "guardian_nom_standalone_writing",
+      "guardian_nom_conditional_temporary",
+      "guardian_nom_minor_preference",
+      "guardian_nom_caregiver_affidavit_scope",
+      "guardian_nom_caregiver_affidavit_limits",
+      "guardian_nom_caregiver_affidavit_termination",
+      "guardian_nom_school_residency",
+      "guardian_nom_court_guardianship_basics",
+      "guardian_nom_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "parentName",
+        "label": "Your full legal name (parent)",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "minorChildName",
+        "label": "Minor child's name",
+        "placeholder": "Riley Lee",
+        "required": true
+      },
+      {
+        "id": "nominatedGuardianName",
+        "label": "Nominated guardian name",
+        "placeholder": "Morgan Lee",
+        "required": true
+      },
+      {
+        "id": "alternateGuardianName",
+        "label": "Alternate guardian name",
+        "placeholder": "Casey Lee",
+        "required": false
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ],
+    "categories": [
+      "Estate Planning"
+    ]
   }
 ]
