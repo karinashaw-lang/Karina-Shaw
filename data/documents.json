@@ -1787,5 +1787,143 @@
     "categories": [
       "Family Law"
     ]
+  },
+  {
+    "id": "parenting_plan",
+    "title": "Parenting Plan",
+    "description": "A custody and visitation agreement with the real, sourced specifics on the difference between legal and physical custody, the actual best-interest factor list, the state's stated priority when child safety and frequent contact conflict, the domestic-violence rebuttable presumption, and why a parents' own agreement is evidence for a court, not a self-executing order.",
+    "clauseOrder": [
+      "parenting_plan_declaration",
+      "parenting_custody_definitions",
+      "parenting_best_interest_factors",
+      "parenting_public_policy",
+      "parenting_dv_presumption",
+      "parenting_agreement_court_review",
+      "parenting_visitation_schedule_reference",
+      "parenting_modification_standard",
+      "parenting_mediation",
+      "parenting_records_access",
+      "parenting_relocation",
+      "parenting_plan_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "parent1Name",
+        "label": "First parent's full legal name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "parent2Name",
+        "label": "Second parent's full legal name",
+        "placeholder": "Morgan Casey Lee",
+        "required": true
+      },
+      {
+        "id": "childName",
+        "label": "Child's name",
+        "placeholder": "Riley Lee",
+        "required": true
+      }
+    ],
+    "categories": [
+      "Family Law"
+    ]
+  },
+  {
+    "id": "child_support_agreement",
+    "title": "Child Support Agreement",
+    "description": "A child support agreement with the real, sourced specifics on the guideline formula that makes an amount presumptively correct, the enumerated grounds for departing from it, the exact conditions required for a valid below-guideline stipulation, the mandatory-vs-discretionary add-on expense distinction, and the automatic earnings assignment that attaches to a court-ordered amount.",
+    "clauseOrder": [
+      "childsupport_declaration",
+      "childsupport_guideline_presumption",
+      "childsupport_statewide_principles",
+      "childsupport_guideline_formula",
+      "childsupport_lowincome_adjustment",
+      "childsupport_departure_factors",
+      "childsupport_stipulation_conditions",
+      "childsupport_addon_expenses",
+      "childsupport_addon_schedule",
+      "childsupport_duration",
+      "childsupport_earnings_assignment",
+      "childsupport_signatures"
+    ],
+    "fields": [
+      {
+        "id": "parent1Name",
+        "label": "First parent's full legal name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "parent2Name",
+        "label": "Second parent's full legal name",
+        "placeholder": "Morgan Casey Lee",
+        "required": true
+      },
+      {
+        "id": "childName",
+        "label": "Child's name",
+        "placeholder": "Riley Lee",
+        "required": true
+      },
+      {
+        "id": "childDOB",
+        "label": "Child's date of birth",
+        "placeholder": "April 3, 2019",
+        "required": true
+      },
+      {
+        "id": "payorName",
+        "label": "Paying parent's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "payeeName",
+        "label": "Receiving parent's name",
+        "placeholder": "Morgan Casey Lee",
+        "required": true
+      },
+      {
+        "id": "monthlySupportAmount",
+        "label": "Monthly support amount",
+        "placeholder": "850",
+        "required": true
+      },
+      {
+        "id": "supportStartDate",
+        "label": "Support start date",
+        "placeholder": "October 1, 2026",
+        "required": true
+      },
+      {
+        "id": "childcareAllocation",
+        "label": "Childcare cost allocation",
+        "placeholder": "Split equally",
+        "required": false
+      },
+      {
+        "id": "healthcareAllocation",
+        "label": "Uninsured health care cost allocation",
+        "placeholder": "Split equally",
+        "required": false
+      },
+      {
+        "id": "educationAllocation",
+        "label": "Educational/special-needs cost allocation",
+        "placeholder": "Split equally",
+        "required": false
+      },
+      {
+        "id": "travelAllocation",
+        "label": "Visitation travel expense allocation",
+        "placeholder": "Each parent pays their own",
+        "required": false
+      }
+    ],
+    "categories": [
+      "Family Law"
+    ]
   }
 ]
