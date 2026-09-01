@@ -1341,5 +1341,112 @@
     "categories": [
       "Estate Planning"
     ]
+  },
+  {
+    "id": "financial_power_of_attorney",
+    "title": "Financial Power of Attorney",
+    "description": "A durable power of attorney with the real, sourced specifics on when it takes effect, what a general grant of authority actually covers, the powers that need express authorization even under a broad grant, and how a bank or other third party is required to treat an agent acting under it.",
+    "clauseOrder": [
+      "poa_appointment_declaration",
+      "poa_execution_formalities",
+      "poa_durability",
+      "poa_effective_timing",
+      "poa_general_grant_scope",
+      "poa_hot_powers",
+      "poa_fiduciary_duties",
+      "poa_liability_standard",
+      "poa_multiple_agents",
+      "poa_third_party_acceptance",
+      "poa_revocation",
+      "poa_termination_events",
+      "poa_notary_witness_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "principalName",
+        "label": "Your full legal name (principal)",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "agentName",
+        "label": "Agent name",
+        "placeholder": "Morgan Lee",
+        "required": true
+      },
+      {
+        "id": "alternateAgentName",
+        "label": "Alternate (successor) agent name",
+        "placeholder": "Casey Lee",
+        "required": false
+      }
+    ],
+    "categories": [
+      "Estate Planning"
+    ]
+  },
+  {
+    "id": "advance_health_care_directive",
+    "title": "Advance Health Care Directive",
+    "description": "A health care directive with the real, sourced specifics on who can and can't witness it, when an agent's authority actually takes effect, the real limits on what an agent can decide, how revocation works differently for the agent designation than for everything else, and a provider's duty to comply or transfer care.",
+    "clauseOrder": [
+      "ahcd_declaration_appointment",
+      "ahcd_two_components",
+      "ahcd_execution_requirements",
+      "ahcd_witness_disqualifications",
+      "ahcd_skilled_nursing_witness",
+      "ahcd_capacity_determination",
+      "ahcd_agent_decision_standard",
+      "ahcd_scope_of_authority",
+      "ahcd_records_access",
+      "ahcd_end_of_life_wishes",
+      "ahcd_revocation",
+      "ahcd_divorce_effect",
+      "ahcd_provider_compliance",
+      "ahcd_immunity",
+      "ahcd_statutory_form",
+      "ahcd_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "patientName",
+        "label": "Your full legal name (patient)",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "agentName",
+        "label": "Agent name",
+        "placeholder": "Morgan Lee",
+        "required": true
+      },
+      {
+        "id": "alternateAgentName",
+        "label": "Alternate agent name",
+        "placeholder": "Casey Lee",
+        "required": false
+      },
+      {
+        "id": "lifeProlongingWishes",
+        "label": "Wishes regarding life-prolonging treatment",
+        "placeholder": "I want life-prolonging treatment withheld if I am in a permanent coma with no reasonable chance of recovery.",
+        "required": false
+      },
+      {
+        "id": "painReliefWishes",
+        "label": "Wishes regarding pain relief",
+        "placeholder": "I want pain relief provided even if it may hasten my death.",
+        "required": false
+      },
+      {
+        "id": "additionalHealthCareWishes",
+        "label": "Additional health care wishes",
+        "placeholder": "None.",
+        "required": false
+      }
+    ],
+    "categories": [
+      "Estate Planning"
+    ]
   }
 ]
