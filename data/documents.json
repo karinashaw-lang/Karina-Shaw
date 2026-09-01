@@ -2286,5 +2286,236 @@
     "categories": [
       "Family Law"
     ]
+  },
+  {
+    "id": "meal_rest_break_policy",
+    "title": "Meal and Rest Break Policy",
+    "description": "A policy describing California's meal and rest period requirements for non-exempt employees, including the waiver and on-duty-meal exceptions and the premium-pay remedy for a missed break.",
+    "clauseOrder": [
+      "mealrest_policy_statement",
+      "meal_period_requirement",
+      "rest_period_requirement",
+      "brinker_meal_timing",
+      "brinker_provide_not_ensure",
+      "on_duty_meal_period",
+      "meal_rest_premium_pay",
+      "mealrest_employee_acknowledgment",
+      "mealrest_signature_receipt"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      }
+    ],
+    "categories": [
+      "During employment"
+    ]
+  },
+  {
+    "id": "transfer_on_death_deed",
+    "title": "Transfer-on-Death Deed",
+    "description": "A revocable deed that transfers a qualifying residence to a named beneficiary automatically at death, without probate, while the owner retains full ownership and control during their lifetime.",
+    "clauseOrder": [
+      "tod_declaration",
+      "tod_property_scope",
+      "tod_revocability",
+      "tod_execution_formalities",
+      "tod_revocation_methods",
+      "tod_beneficiary_designation",
+      "tod_beneficiary_predecease",
+      "tod_effect_on_will",
+      "tod_joint_tenancy_community_property",
+      "tod_creditor_medical_recovery",
+      "tod_signature_notarization"
+    ],
+    "fields": [
+      {
+        "id": "ownerName",
+        "label": "Property owner's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "beneficiaryName",
+        "label": "Beneficiary's name",
+        "placeholder": "Jordan Morgan",
+        "required": true
+      },
+      {
+        "id": "additionalBeneficiaryName",
+        "label": "Additional beneficiary's name (if any)",
+        "placeholder": "Casey Morgan",
+        "required": false
+      },
+      {
+        "id": "propertyAddress",
+        "label": "Property address",
+        "placeholder": "123 Main St., Sacramento, CA 95814",
+        "required": true
+      },
+      {
+        "id": "legalDescription",
+        "label": "Legal description of the property",
+        "placeholder": "Lot 12, Block 3, Tract No. 4567, as per map recorded in Book 45, Page 12 of Maps, Sacramento County Records",
+        "required": true
+      }
+    ],
+    "categories": [
+      "Estate Planning"
+    ]
+  },
+  {
+    "id": "notice_to_pay_rent_or_quit",
+    "title": "Notice to Pay Rent or Quit",
+    "description": "The statutory three-day notice a California landlord serves on a tenant for nonpayment of rent, before an unlawful detainer (eviction) action for nonpayment can be filed.",
+    "clauseOrder": [
+      "notice_pay_rent_details",
+      "notice_pay_rent_3day_timing",
+      "notice_pay_rent_required_contents",
+      "notice_pay_rent_service_methods",
+      "notice_pay_rent_cure_right",
+      "notice_pay_rent_just_cause_context",
+      "notice_pay_rent_covid_status",
+      "notice_pay_rent_payment_instructions",
+      "notice_pay_rent_signature_service"
+    ],
+    "fields": [
+      {
+        "id": "landlordName",
+        "label": "Landlord's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "tenantName",
+        "label": "Tenant's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "propertyAddress",
+        "label": "Property address",
+        "placeholder": "123 Main St., Apt. 4, Sacramento, CA 95814",
+        "required": true
+      },
+      {
+        "id": "rentOwed",
+        "label": "Rent owed",
+        "placeholder": "3,500",
+        "required": true
+      },
+      {
+        "id": "noticeDate",
+        "label": "Notice date",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "paymentPayeeName",
+        "label": "Name of person or entity to receive rent payment",
+        "placeholder": "Acme Properties, LLC",
+        "required": true
+      },
+      {
+        "id": "paymentPhone",
+        "label": "Payment contact phone number",
+        "placeholder": "(555) 123-4567",
+        "required": true
+      },
+      {
+        "id": "paymentAddress",
+        "label": "Address for rent payment",
+        "placeholder": "123 Main St, Suite 100, Sacramento, CA 95814",
+        "required": true
+      },
+      {
+        "id": "paymentHours",
+        "label": "Usual days/hours available to receive payment in person (if applicable)",
+        "placeholder": "Monday-Friday, 9am-5pm",
+        "required": false
+      }
+    ],
+    "categories": [
+      "Real Estate"
+    ]
+  },
+  {
+    "id": "founders_agreement",
+    "title": "Founders' Agreement",
+    "description": "An agreement between startup co-founders documenting equity split and vesting, alongside the federal tax, IP-assignment, fiduciary-duty, and at-will employment rules that bear on a founder relationship.",
+    "clauseOrder": [
+      "founders_equity_declaration",
+      "founders_vesting_schedule_reference",
+      "founders_vesting_general_rule",
+      "founders_vesting_substantial_risk_of_forfeiture",
+      "founders_83b_election",
+      "founders_ip_workforhire_baseline",
+      "founders_ip_preincorporation_gap",
+      "founders_fiduciary_duties_by_entity",
+      "founders_atwill_status",
+      "founders_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "founder1Name",
+        "label": "First founder's name",
+        "placeholder": "Jordan Morgan",
+        "required": true
+      },
+      {
+        "id": "founder2Name",
+        "label": "Second founder's name",
+        "placeholder": "Casey Lee",
+        "required": true
+      },
+      {
+        "id": "founder1EquityPercent",
+        "label": "First founder's equity percentage",
+        "placeholder": "50",
+        "required": true
+      },
+      {
+        "id": "founder2EquityPercent",
+        "label": "Second founder's equity percentage",
+        "placeholder": "50",
+        "required": true
+      },
+      {
+        "id": "vestingStartDate",
+        "label": "Vesting commencement date",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "vestingPeriodMonths",
+        "label": "Total vesting period (months)",
+        "placeholder": "48",
+        "required": true
+      },
+      {
+        "id": "cliffPeriodMonths",
+        "label": "Cliff period (months, if any)",
+        "placeholder": "12",
+        "required": false
+      }
+    ],
+    "categories": [
+      "Business Formation"
+    ]
   }
 ]
