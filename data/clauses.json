@@ -10040,6 +10040,150 @@
       "title": "Term, Survival, and Signatures",
       "kind": "drafting",
       "body": "This agreement's confidentiality obligations continue for {{confidentialityDuration}} from the date each piece of information is disclosed. That duration is a term the parties are setting for themselves in this contract, not a period fixed by statute.\n\nPlease sign below to indicate agreement to the terms above.\n\n{{party1Name}}: _______________\nDate: _______________\n\n{{party2Name}}: _______________\nDate: _______________"
+    },
+    {
+      "id": "cobra_qualifying_events",
+      "title": "COBRA Qualifying Events",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-01",
+      "body": "Federal law lists six specific events that can trigger a covered employee's or family member's right to elect continuation coverage under a group health plan: (1) the covered employee's death; (2) the covered employee's termination of employment (other than for gross misconduct) or a reduction in hours; (3) the covered employee's divorce or legal separation from their spouse; (4) the covered employee becoming entitled to Medicare; (5) a dependent child ceasing to be a dependent child under the plan's own terms; and (6) certain employer bankruptcy proceedings affecting retiree coverage. Any of these events that would otherwise cause a qualified beneficiary to lose coverage can be a \"qualifying event\" that starts the continuation-coverage process for {{employeeName}} and, where applicable, {{employeeName}}'s covered spouse and dependents.",
+      "gap": "This is federal law, used as real evidence of what the statute defines as a qualifying event nationally — not a claim that this particular company's plan is subject to COBRA or that this particular employee's own circumstances match one of these six categories. Whether a given termination was genuinely \"for gross misconduct\" (the one carve-out named in the statute for event (2)) is a fact-specific determination this clause does not make. This clause lists the statutory categories; it does not determine which one, if any, applies here. This clause cites a single statutory section (§ 1163); no additional independent source was found for this.",
+      "citations": [
+        {
+          "case": "29 U.S.C. § 1163 (Cornell LII text)",
+          "cite": "U.S. Code, definition of \"qualifying event\"",
+          "url": "https://www.law.cornell.edu/uscode/text/29/1163",
+          "quote": "For purposes of this part, the term \"qualifying event\" means, with respect to any covered employee, any of the following events which, but for the continuation coverage required under this part, would result in the loss of coverage of a qualified beneficiary: (1) The death of the covered employee. (2) The termination (other than by reason of such employee's gross misconduct), or reduction of hours, of the covered employee's employment. (3) The divorce or legal separation of the covered employee from the employee's spouse. (4) The covered employee becoming entitled to benefits under title XVIII of the Social Security Act. (5) A dependent child ceasing to be a dependent child under the generally applicable requirements of the plan. (6) A proceeding in a case under title 11, commencing on or after July 1, 1986, with respect to the employer from whose employment the covered employee retired at any time."
+        }
+      ]
+    },
+    {
+      "id": "cobra_notice_timing",
+      "title": "COBRA Notice Timing Obligations",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-01",
+      "body": "Federal law imposes a two-step notice chain once a qualifying event occurs. First, for a qualifying event like termination of employment, {{companyName}} (as employer) must notify the group health plan's administrator of the qualifying event within 30 days of the date of the event. Second, once the plan administrator has that notice, the administrator must in turn notify each qualified beneficiary — {{employeeName}} and, where applicable, {{employeeName}}'s covered spouse and dependents — of their continuation-coverage election rights within 14 days of the date the administrator was notified.",
+      "gap": "This is federal law, used as real evidence of the two-step statutory notice chain — not a claim that this particular company is itself the plan administrator, that it has already given this notice, or that this particular plan is subject to COBRA at all. The statute states the 30-day and 14-day periods as two separate, sequential steps (employer to administrator, then administrator to beneficiary); it does not itself state a single combined \"44 days\" figure. A combined ~44-day outer bound is commonly described in U.S. Department of Labor guidance and regulations (29 C.F.R. § 2590.606-4) that synthesize these two statutory periods for the common case where the employer is also the plan administrator, but that combined figure was not independently verified against primary regulatory text for this clause and is not asserted here as a direct quotation of § 1166 itself — only the two statutory periods it draws from are quoted below. Both citations are subsections of the same statutory section (§ 1166); no additional independent source was found for this.",
+      "citations": [
+        {
+          "case": "29 U.S.C. § 1166(a)(2) (Cornell LII text)",
+          "cite": "U.S. Code, COBRA employer notice to plan administrator",
+          "url": "https://www.law.cornell.edu/uscode/text/29/1166",
+          "quote": "the employer of an employee under a plan must notify the administrator of a qualifying event described in paragraph (1), (2), (4), or (6) of section 1163 of this title within 30 days ... of the date of the qualifying event"
+        },
+        {
+          "case": "29 U.S.C. § 1166(c) (Cornell LII text)",
+          "cite": "U.S. Code, COBRA administrator notice to qualified beneficiaries",
+          "url": "https://www.law.cornell.edu/uscode/text/29/1166",
+          "quote": "For purposes of subsection (a)(4), any notification shall be made within 14 days (or, in the case of a group health plan which is a multiemployer plan, such longer period of time as may be provided in the terms of the plan) of the date on which the administrator is notified under paragraph (2) or (3), whichever is applicable."
+        }
+      ]
+    },
+    {
+      "id": "cobra_election_period",
+      "title": "60-Day COBRA Election Period",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-01",
+      "body": "Federal law gives each qualified beneficiary an election period of at least 60 days to elect continuation coverage. That period begins no later than the date coverage would otherwise terminate because of the qualifying event, and ends no earlier than 60 days after the later of that termination date or the date the qualified beneficiary is sent the COBRA election notice. Coverage may not require payment of any premium before the day that is 45 days after the date the qualified beneficiary makes the initial election.",
+      "gap": "This is federal law, used as real evidence of the minimum statutory election window and the minimum initial-payment grace period — not a claim about the specific dates that apply to this particular employee's own election, which depend on when the qualifying event occurred and when the election notice was actually sent. This clause states the general 60-day/45-day statutory minimums; it does not calculate the employee's actual election or first-payment deadline.",
+      "citations": [
+        {
+          "case": "29 U.S.C. § 1165(a)(1) (Cornell LII text)",
+          "cite": "U.S. Code, COBRA election period",
+          "url": "https://www.law.cornell.edu/uscode/text/29/1165",
+          "quote": "The term \"election period\" means the period which— (A) begins not later than the date on which coverage terminates under the plan by reason of a qualifying event, (B) is of at least 60 days' duration, and (C) ends not earlier than 60 days after the later of— (i) the date described in subparagraph (A), or (ii) in the case of any qualified beneficiary who receives notice under section 1166(4) of this title, the date of such notice."
+        },
+        {
+          "case": "29 U.S.C. § 1162(3)(A) (Cornell LII text)",
+          "cite": "U.S. Code, COBRA initial premium payment deadline",
+          "url": "https://www.law.cornell.edu/uscode/text/29/1162",
+          "quote": "In no event may the plan require the payment of any premium before the day which is 45 days after the day on which the qualified beneficiary made the initial election for continuation coverage."
+        }
+      ]
+    },
+    {
+      "id": "cobra_coverage_scope_duration",
+      "title": "Scope and Maximum Duration of COBRA Continuation Coverage",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-01",
+      "body": "Federal law requires that continuation coverage be identical to the coverage the plan provides to similarly situated active employees and their families who have not had a qualifying event; if the plan's coverage changes for that comparison group, it must change the same way for people on continuation coverage. For a qualifying event that is a termination of employment or reduction of hours, the coverage must last at least until 18 months after the qualifying event. For most other qualifying events (death, divorce or legal separation, Medicare entitlement, or loss of dependent-child status), the required period extends to at least 36 months after the qualifying event. If a second qualifying event occurs during an 18-month period that started with a termination or reduced-hours event, the maximum period can extend to 36 months from the original event.",
+      "gap": "This is federal law (a single statutory section, 29 U.S.C. § 1162; no additional independent source was found for this), used as real evidence of the coverage-parity requirement and the general 18-month/36-month maximum-period framework — not a claim about what this particular company's specific plan actually covers or costs. The statute contains additional special rules not restated here in full (bankruptcy-related events, Pension Benefit Guaranty Corporation recipients, a disability extension to 29 months, and a rule for Medicare entitlement followed by a later qualifying event); this clause states the general rule, not every extension scenario.",
+      "citations": [
+        {
+          "case": "29 U.S.C. § 1162(1) (Cornell LII text)",
+          "cite": "U.S. Code, COBRA coverage-parity requirement",
+          "url": "https://www.law.cornell.edu/uscode/text/29/1162",
+          "quote": "The coverage must consist of coverage which, as of the time the coverage is being provided, is identical to the coverage provided under the plan to similarly situated beneficiaries under the plan with respect to whom a qualifying event has not occurred."
+        },
+        {
+          "case": "29 U.S.C. § 1162(2)(A) (Cornell LII text)",
+          "cite": "U.S. Code, COBRA maximum coverage periods",
+          "url": "https://www.law.cornell.edu/uscode/text/29/1162",
+          "quote": "In the case of a qualifying event described in section 1163(2) of this title, except as provided in clause (ii), the date which is 18 months after the date of the qualifying event. ... If a qualifying event (other than a qualifying event described in section 1163(6) of this title) occurs during the 18 months after the date of a qualifying event described in section 1163(2) of this title, the date which is 36 months after the date of the qualifying event described in section 1163(2) of this title. ... In the case of a qualifying event not described in section 1163(2) or 1163(6) of this title, the date which is 36 months after the date of the qualifying event."
+        }
+      ]
+    },
+    {
+      "id": "cobra_premium",
+      "title": "COBRA Premium — Up to 102% of Applicable Premium",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-01",
+      "body": "A plan may charge a qualified beneficiary for continuation coverage, but federal law caps that charge at 102% of the plan's \"applicable premium\" — generally, the cost the plan would otherwise use for similarly situated active employees and their families, without regard to who pays it. Payment may be made in monthly installments if the qualified beneficiary elects that. A different, higher cap (150% instead of 102%) applies only to certain months of extended coverage tied to the statute's disability-extension rule, not to the general case.",
+      "gap": "This is federal law, drawn from two different statutory sections that work together — the 102%-of-applicable-premium cap itself is stated in 29 U.S.C. § 1162(3)(A), while \"applicable premium\" is defined separately in 29 U.S.C. § 1164 — used as real evidence of the statutory premium ceiling, not a claim about what this particular company's plan actually charges or what this particular employee will actually be billed. Note for drafting accuracy: the 102% figure itself is not located in § 1164 (which only defines the underlying \"applicable premium\" cost figure); it is located in § 1162(3)(A), which caps what a plan may charge relative to that defined figure. This clause states the general premium cap; it does not address the separate 150%-of-applicable-premium rule that applies only during certain months of a disability extension.",
+      "citations": [
+        {
+          "case": "29 U.S.C. § 1162(3)(A) (Cornell LII text)",
+          "cite": "U.S. Code, COBRA premium cap",
+          "url": "https://www.law.cornell.edu/uscode/text/29/1162",
+          "quote": "The plan may require payment of a premium for any period of continuation coverage, except that such premium— (A) shall not exceed 102 percent of the applicable premium for such period, and (B) may, at the election of the payor, be made in monthly installments."
+        },
+        {
+          "case": "29 U.S.C. § 1164(1) (Cornell LII text)",
+          "cite": "U.S. Code, definition of \"applicable premium\"",
+          "url": "https://www.law.cornell.edu/uscode/text/29/1164",
+          "quote": "The term \"applicable premium\" means, with respect to any period of continuation coverage of qualified beneficiaries, the cost to the plan for such period of the coverage for similarly situated beneficiaries with respect to whom a qualifying event has not occurred (without regard to whether such cost is paid by the employer or employee)."
+        }
+      ]
+    },
+    {
+      "id": "cobra_small_employer_scope",
+      "title": "COBRA's Employer-Size Threshold and Cal-COBRA",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-01",
+      "body": "Federal COBRA continuation-coverage rules do not apply to every group health plan. They are excepted for any calendar year in which all employers maintaining the plan normally employed fewer than 20 employees on a typical business day during the preceding calendar year. Separately, California has its own state continuation-coverage law — the California Continuation Benefits Replacement Act, commonly called \"Cal-COBRA\" — enacted specifically to extend similar coverage rights to employees of smaller employers (with 2 to 19 eligible employees) who are not otherwise covered by federal COBRA.",
+      "gap": "The federal-law statement above (fewer than 20 employees) is federal law, used as real evidence of COBRA's own small-employer exception — not a claim about this particular company's actual headcount or whether its plan is or is not subject to COBRA. Cal-COBRA is a genuinely distinct, separate state statutory scheme (California Health and Safety Code § 1366.20 et seq., part of the Knox-Keene Act framework, with a parallel scheme for insured plans in the Insurance Code) with its own eligibility rules, notice timelines, and maximum coverage periods that are not restated in this document, which addresses federal COBRA only. Whether Cal-COBRA (rather than, or in addition to, federal COBRA) applies to this particular company depends on facts — employer size, plan type, and whether the plan is insured or self-funded — that this clause does not resolve.",
+      "citations": [
+        {
+          "case": "29 U.S.C. § 1161(b) (Cornell LII text)",
+          "cite": "U.S. Code, COBRA small-employer exception",
+          "url": "https://www.law.cornell.edu/uscode/text/29/1161",
+          "quote": "Subsection (a) shall not apply to any group health plan for any calendar year if all employers maintaining such plan normally employed fewer than 20 employees on a typical business day during the preceding calendar year."
+        },
+        {
+          "case": "Cal. Health & Safety Code § 1366.20(a)-(b) (California Legislative Information text)",
+          "cite": "California Health and Safety Code, Cal-COBRA",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=HSC&sectionNum=1366.20.",
+          "quote": "(a) This article shall be known as the California Continuation Benefits Replacement Act, or \"Cal-COBRA.\" (b) It is the intent of the Legislature that continued access to health insurance coverage is provided to employees, and their dependents, of employers with 2 to 19 eligible employees who are not currently offered continuation coverage under the Consolidated Omnibus Budget Reconciliation Act of 1985."
+        }
+      ]
+    },
+    {
+      "id": "cobra_election_notice_letter",
+      "title": "COBRA Election Notice Letter",
+      "kind": "drafting",
+      "body": "COBRA CONTINUATION COVERAGE ELECTION NOTICE\n\nDate: {{noticeDate}}\n\nTo: {{employeeName}}\n\nFrom: {{companyName}}, on behalf of the Plan Administrator of {{planName}}\n\nRe: Your Right to Elect COBRA Continuation Coverage\n\nThis notice is to inform you of your rights under the federal law known as COBRA (the Consolidated Omnibus Budget Reconciliation Act) to continue your group health plan coverage.\n\n1. Qualifying Event. On {{qualifyingEventDate}}, you experienced the following qualifying event: {{qualifyingEventType}}. This event resulted, or will result, in a loss of coverage under {{planName}}.\n\n2. Who May Elect Coverage. You, and any covered spouse or dependent children who were covered under the plan immediately before the qualifying event, are each a \"qualified beneficiary\" and may independently elect continuation coverage.\n\n3. Your Election Period. You have at least 60 days from the later of (a) the date coverage would otherwise end, or (b) the date of this notice, to elect continuation coverage. If you do not elect coverage within that period, your right to elect COBRA continuation coverage will end.\n\n4. Cost of Coverage. If you elect continuation coverage, you may be required to pay up to 102% of the full cost of coverage. The estimated monthly premium is {{monthlyPremiumAmount}}. You are not required to make your first payment until 45 days after the date you elect coverage.\n\n5. Duration of Coverage. Continuation coverage elected in connection with this qualifying event may last for up to {{maxCoverageMonths}} months, subject to the plan's terms and the statutory rules governing early termination, extension, and second qualifying events.\n\n6. How to Elect. To elect continuation coverage, complete and return the attached election form to {{planAdministratorName}} at {{planAdministratorAddress}} by {{electionDeadline}}.\n\nThis notice summarizes your rights under the plan and applicable law. It is not a complete description of the plan or of COBRA, and it does not modify the plan's actual terms."
+    },
+    {
+      "id": "cobra_election_form",
+      "title": "COBRA Continuation Coverage Election Form",
+      "kind": "drafting",
+      "body": "COBRA CONTINUATION COVERAGE ELECTION FORM\n\nI, {{employeeName}}, have received the COBRA Continuation Coverage Election Notice from {{companyName}} dated {{noticeDate}} regarding {{planName}}.\n\nQualifying Event: {{qualifyingEventType}}, effective {{qualifyingEventDate}}.\n\nI elect the following (check applicable):\n[  ] I elect to continue coverage for myself.\n[  ] I elect to continue coverage for the following qualified beneficiaries: {{additionalBeneficiaryName}}.\n[  ] I decline continuation coverage for myself and all listed qualified beneficiaries.\n\nI understand that:\n- This election, if made, must be returned no later than {{electionDeadline}}.\n- My first premium payment is due no later than 45 days after the date I sign this election.\n- Continuation coverage, once elected, is subject to the terms of {{planName}} and to applicable law, including the plan's right to terminate continuation coverage early for the reasons permitted by law (for example, non-payment of premium, the qualified beneficiary becoming covered under another group health plan, or the plan ceasing to provide group health coverage to any employee).\n\nSignature: ______________________  Date: {{dateSigned}}\n\nPrint Name: {{employeeName}}"
     }
   ]
 }
