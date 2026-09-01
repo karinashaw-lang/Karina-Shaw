@@ -2864,5 +2864,184 @@
     "categories": [
       "Family Law"
     ]
+  },
+  {
+    "id": "paga_notice_letter",
+    "title": "PAGA Pre-Suit Notice Letter",
+    "description": "The written pre-suit notice California's Private Attorneys General Act requires before an aggrieved employee may bring a civil action for Labor Code violations -- notice content, the LWDA's response window, 2024-reform employer cure rights, standing, penalty defaults, allocation, and the limitations period.",
+    "clauseOrder": [
+      "paga_notice_details",
+      "paga_notice_requirement",
+      "paga_aggrieved_employee_standing",
+      "paga_notice_waiting_period",
+      "paga_employer_cure_rights",
+      "paga_civil_penalty_default",
+      "paga_penalty_allocation",
+      "paga_statute_of_limitations",
+      "paga_service_confirmation",
+      "paga_signature_verification"
+    ],
+    "fields": [
+      {
+        "id": "employeeName",
+        "label": "Aggrieved employee's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Employer's name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "allegedViolations",
+        "label": "Specific Labor Code provisions alleged to have been violated",
+        "placeholder": "Labor Code § 226(a) (itemized wage statement); Labor Code § 512(a) (meal periods)",
+        "required": true
+      },
+      {
+        "id": "supportingFacts",
+        "label": "Facts supporting each alleged violation",
+        "placeholder": "Describe the specific facts giving rise to each violation listed above",
+        "required": true
+      },
+      {
+        "id": "legalTheories",
+        "label": "Legal theories supporting each alleged violation",
+        "placeholder": "Describe the legal theory connecting the facts to each violation listed above",
+        "required": true
+      },
+      {
+        "id": "lwdaFilingDate",
+        "label": "LWDA online filing date",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "serviceDate",
+        "label": "Certified mail service date on employer",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "employerServiceAddress",
+        "label": "Employer's address for service",
+        "placeholder": "123 Main St., Suite 100, Sacramento, CA 95814",
+        "required": true
+      }
+    ],
+    "categories": [
+      "During employment"
+    ]
+  },
+  {
+    "id": "special_needs_trust",
+    "title": "Special Needs Trust",
+    "description": "A trust holding assets for the benefit of a person with a disability without disqualifying that person from means-tested government benefits, alongside the federal Medicaid/SSI rules and the California-specific statute that actually govern it.",
+    "clauseOrder": [
+      "snt_declaration",
+      "snt_first_party_statutory_basis",
+      "snt_medicaid_payback_requirement",
+      "snt_third_party_no_payback",
+      "snt_ssi_resource_limit",
+      "snt_distribution_standard",
+      "snt_able_account_alternative",
+      "snt_ca_probate_special_needs_trust",
+      "snt_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "settlorName",
+        "label": "Settlor's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "trusteeName",
+        "label": "Trustee's name",
+        "placeholder": "Jordan Morgan",
+        "required": true
+      },
+      {
+        "id": "successorTrusteeName",
+        "label": "Successor trustee's name",
+        "placeholder": "Casey Morgan",
+        "required": true
+      },
+      {
+        "id": "beneficiaryName",
+        "label": "Beneficiary's name",
+        "placeholder": "Alex Morgan",
+        "required": true
+      },
+      {
+        "id": "trustName",
+        "label": "Trust name",
+        "placeholder": "The Alex Morgan Special Needs Trust",
+        "required": true
+      },
+      {
+        "id": "distributionLimitations",
+        "label": "Any limitations on the trustee's distribution discretion",
+        "placeholder": "None",
+        "required": false
+      }
+    ],
+    "categories": [
+      "Estate Planning"
+    ]
+  },
+  {
+    "id": "quitclaim_deed",
+    "title": "Quitclaim Deed",
+    "description": "A deed transferring whatever interest a grantor has in real property, without any warranty of title -- commonly used between family members, to clear a title cloud, or to add or remove a spouse from title.",
+    "clauseOrder": [
+      "qcd_parties_property_declaration",
+      "qcd_no_warranty_title",
+      "qcd_legal_description",
+      "qcd_execution_requirements",
+      "qcd_acknowledgment_recordability",
+      "qcd_recording_effect",
+      "qcd_pcor_requirement",
+      "qcd_documentary_transfer_tax",
+      "qcd_interspousal_transmutation",
+      "qcd_signature_notarization"
+    ],
+    "fields": [
+      {
+        "id": "grantorName",
+        "label": "Grantor's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "granteeName",
+        "label": "Grantee's name",
+        "placeholder": "Jordan Morgan",
+        "required": true
+      },
+      {
+        "id": "propertyAddress",
+        "label": "Property address",
+        "placeholder": "123 Main St., Sacramento, CA 95814",
+        "required": true
+      },
+      {
+        "id": "legalDescription",
+        "label": "Legal description of the property",
+        "placeholder": "Lot 12, Block 3, Tract No. 4567, as per map recorded in Book 45, Page 12 of Maps, Sacramento County Records",
+        "required": true
+      },
+      {
+        "id": "parcelNumber",
+        "label": "Assessor's Parcel Number",
+        "placeholder": "123-456-789",
+        "required": false
+      }
+    ],
+    "categories": [
+      "Real Estate"
+    ]
   }
 ]
