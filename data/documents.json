@@ -1448,5 +1448,66 @@
     "categories": [
       "Estate Planning"
     ]
+  },
+  {
+    "id": "revocable_living_trust",
+    "title": "Revocable Living Trust",
+    "description": "A revocable living trust with the real, sourced specifics on how it's created, revoked, and administered — and a fact this document puts up front rather than burying: a trust holds only the property actually, correctly transferred into it. Real property needs its own recorded deed into the trustee's name; property never transferred stays outside the trust and subject to probate, which is why this document is typically paired with a pour-over will (this corpus's own Last Will and Testament) rather than relied on alone.",
+    "clauseOrder": [
+      "trust_declaration",
+      "trust_property_formality",
+      "trust_creation_methods",
+      "trust_validity_requirements",
+      "trust_no_consideration_required",
+      "trust_revocation_default",
+      "trust_fiduciary_duty_loyalty",
+      "trust_settlor_interest_revocable",
+      "trust_accounting_duty",
+      "trust_successor_trustee_vacancy",
+      "trust_distribution_on_death",
+      "trust_pour_over_will",
+      "trust_signature_notarization"
+    ],
+    "fields": [
+      {
+        "id": "settlorName",
+        "label": "Settlor name (you)",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "settlorCounty",
+        "label": "Settlor's county of residence",
+        "placeholder": "Alameda County",
+        "required": true
+      },
+      {
+        "id": "trustName",
+        "label": "Name of this trust",
+        "placeholder": "The Jordan Alex Lee Revocable Living Trust",
+        "required": true
+      },
+      {
+        "id": "trusteeName",
+        "label": "Initial trustee name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "successorTrusteeName",
+        "label": "Successor trustee name",
+        "placeholder": "Morgan Lee",
+        "required": true
+      },
+      {
+        "id": "beneficiaryName",
+        "label": "Residuary beneficiary",
+        "placeholder": "Jordan Alex Lee's children, in equal shares",
+        "required": true
+      }
+    ],
+    "categories": [
+      "Estate Planning"
+    ]
   }
 ]
