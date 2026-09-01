@@ -1758,7 +1758,7 @@
       "status": "verified",
       "checkedDate": "2026-08-30",
       "body": "For federal tax purposes, {{companyName}} is, by default, disregarded as an entity separate from {{memberName}} — its income, deductions, and credits are reported on {{memberName}}'s own tax return, rather than a separate company return, unless {{companyName}} affirmatively elects a different classification.",
-      "gap": "This default applies automatically, with no election required — but it isn't the only option. A single-member LLC can elect to be taxed as a corporation, or potentially as an S corporation through a separate election, by filing the appropriate IRS form. This document doesn't say which classification is actually better for a given business — that depends on income level, self-employment tax exposure, and other facts specific to the business. Being disregarded for federal tax purposes has no effect on the LLC's separate legal existence under state law; those are two different questions, addressed by two different bodies of law.",
+      "gap": "This default applies automatically, with no election required — but it isn't the only option. A single-member LLC can elect to be taxed as a corporation, or potentially as an S corporation through a separate election, by filing the appropriate IRS form. This document doesn't say which classification is actually better for a given business — that depends on income level, self-employment tax exposure, and other facts specific to the business. Being disregarded for federal tax purposes has no effect on the LLC's separate legal existence under state law; those are two different questions, addressed by two different bodies of law. This is one federal regulation; no additional independent source was found restating this specific default classification separately.",
       "citations": [
         {
           "case": "26 C.F.R. § 301.7701-3(b)(1) (Cornell LII text)",
@@ -1903,7 +1903,7 @@
       "status": "verified",
       "checkedDate": "2026-08-30",
       "body": "For federal tax purposes, {{companyName}} is, by default, classified as a partnership — its income, deductions, and credits pass through to its members' own tax returns, rather than {{companyName}} paying tax at the entity level, unless {{companyName}} affirmatively elects a different classification.",
-      "gap": "This default applies automatically, with no election required — but it isn't the only option. A multi-member LLC can elect to be taxed as a corporation, or potentially as an S corporation through a separate election, by filing the appropriate IRS form. This document doesn't say which classification is actually better for a given business — that depends on income level, self-employment tax exposure, and other facts specific to the business. Partnership tax treatment brings its own requirements this document doesn't cover, including that the LLC generally must file its own annual information return (Form 1065) even though it doesn't pay entity-level tax itself.",
+      "gap": "This default applies automatically, with no election required — but it isn't the only option. A multi-member LLC can elect to be taxed as a corporation, or potentially as an S corporation through a separate election, by filing the appropriate IRS form. This document doesn't say which classification is actually better for a given business — that depends on income level, self-employment tax exposure, and other facts specific to the business. Partnership tax treatment brings its own requirements this document doesn't cover, including that the LLC generally must file its own annual information return (Form 1065) even though it doesn't pay entity-level tax itself. This is one federal regulation; no additional independent source was found restating this specific default classification separately.",
       "citations": [
         {
           "case": "26 C.F.R. § 301.7701-3(b)(1) (Cornell LII text)",
@@ -1972,7 +1972,7 @@
       "status": "verified",
       "checkedDate": "2026-08-30",
       "body": "Distributions of available cash or property are made among the members as set forth in this agreement. Members may set any distribution arrangement they choose in this document — it doesn't have to match ownership percentages.",
-      "gap": "This is one state's default rule, useful as real evidence of what happens if an operating agreement doesn't actually state how distributions are shared: rather than splitting by ownership percentage, the default is based on the value of each member's contributions. That default can produce a genuinely surprising result — a member with a stated ownership percentage that doesn't match their actual capital contribution (a common setup for a member contributing services rather than cash) could receive far less than their ownership percentage would suggest, or nothing at all, unless the agreement itself sets a different rule. Separately, under this same default framework, a member who leaves the company isn't automatically entitled to a distribution just because they left, unless the company's governing documents say otherwise. This is exactly why this document states the members' agreed-upon arrangement directly, rather than leaving it to whatever the state default happens to be.",
+      "gap": "This is one state's default rule, useful as real evidence of what happens if an operating agreement doesn't actually state how distributions are shared: rather than splitting by ownership percentage, the default is based on the value of each member's contributions. That default can produce a genuinely surprising result — a member with a stated ownership percentage that doesn't match their actual capital contribution (a common setup for a member contributing services rather than cash) could receive far less than their ownership percentage would suggest, or nothing at all, unless the agreement itself sets a different rule. Separately, under this same default framework, a member who leaves the company isn't automatically entitled to a distribution just because they left, unless the company's governing documents say otherwise. This is exactly why this document states the members' agreed-upon arrangement directly, rather than leaving it to whatever the state default happens to be. This is one state's default rule, cited as real evidence — not a claim about which state's law actually governs this company.",
       "citations": [
         {
           "case": "Cal. Corp. Code § 17704.04(a) (California Legislative Information text)",
@@ -2004,10 +2004,16 @@
           "quote": "A limited liability company is dissolved, and its activities shall be wound up, upon the happening of the first to occur of the following: (a) On the happening of an event set forth in a written operating agreement or the articles of organization. (b) By the vote of 50 percent or more of the voting interests of the members of the limited liability company or a greater percentage of the voting interests of members as may be specified in the articles of organization, or a written operating agreement."
         },
         {
-          "case": "Cal. Corp. Code § 17707.01(c)-(d) (California Legislative Information text)",
-          "cite": "California Revised Uniform Limited Liability Company Act, the no-members and judicial-dissolution triggers",
+          "case": "Cal. Corp. Code § 17707.01(c) (California Legislative Information text)",
+          "cite": "California Revised Uniform Limited Liability Company Act, the no-members trigger",
           "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=17707.01.",
-          "quote": "The passage of 90 consecutive days during which the limited liability company has no members... (d) Entry of a decree of judicial dissolution pursuant to Section 17707.03."
+          "quote": "The passage of 90 consecutive days during which the limited liability company has no members, except that, on the death of a natural person who is the sole member of a limited liability company, the status of the member, including a membership interest, may pass to one or more heirs, successors, and assigns of the member by will or applicable law."
+        },
+        {
+          "case": "Cal. Corp. Code § 17707.01(d) (California Legislative Information text)",
+          "cite": "California Revised Uniform Limited Liability Company Act, the judicial-dissolution trigger",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=17707.01.",
+          "quote": "Entry of a decree of judicial dissolution pursuant to Section 17707.03."
         }
       ]
     },
@@ -2035,8 +2041,8 @@
       "kind": "authority",
       "status": "verified",
       "checkedDate": "2026-08-30",
-      "body": "Unless the articles of incorporation say otherwise, a quorum for a shareholders' meeting is a majority of the shares entitled to vote, present in person or by proxy — though it can never be less than one-third of the shares entitled to vote, and (except for a close corporation) never more than a majority either. Once a quorum is present, a matter passes with the affirmative vote of a majority of the shares actually represented and voting at the meeting, unless a bigger vote is required by law or the articles.",
-      "gap": "This is one state's default rule, used here as real evidence of what a corporation gets automatically if its own bylaws don't set a different quorum or voting threshold — not a claim about which state's law governs a specific corporation. The quorum requirement is boxed in on both sides by statute in this state: bylaws can't set it below one-third, and — unless the corporation is a close corporation — can't set it above a majority either.",
+      "body": "Unless the articles of incorporation say otherwise, a quorum for a shareholders' meeting is a majority of the shares entitled to vote, present in person or by proxy — though it can never be less than one-third of the shares entitled to vote (20% instead, for a mutual water company), and (except for a close corporation) never more than a majority either. Once a quorum is present, a matter passes with the affirmative vote of a majority of the shares actually represented and voting at the meeting, unless a bigger vote is required by law or the articles.",
+      "gap": "This is one state's default rule, used here as real evidence of what a corporation gets automatically if its own bylaws don't set a different quorum or voting threshold — not a claim about which state's law governs a specific corporation. The quorum requirement is boxed in on both sides by statute in this state: bylaws can't set it below one-third (or 20% for a mutual water company), and — unless the corporation is a close corporation — can't set it above a majority either. Both citations below are subsections of the same statutory section (§ 602) rather than independently authored sources; no additional independent source was found for this.",
       "citations": [
         {
           "case": "Cal. Corp. Code § 602(a) (California Legislative Information text)",
@@ -2059,7 +2065,7 @@
       "status": "verified",
       "checkedDate": "2026-08-30",
       "body": "Once a quorum is present at a properly called shareholders' meeting, the meeting doesn't automatically lose its authority to act just because enough shareholders leave to drop attendance below quorum. The shareholders who remain may keep transacting business, as long as whatever they approve (other than an adjournment) gets the affirmative vote of at least a majority of the shares it would have taken to make a quorum in the first place — or a bigger vote, if a bigger vote was otherwise required for that action.",
-      "gap": "This is one state's default rule, used here as real evidence of a genuine feature of shareholder-meeting procedure — not a claim about which state's law governs a specific corporation. This means a shareholder can't block action simply by walking out once a quorum has already been established; the practical check is the majority-of-quorum vote threshold, not attendance at the moment of the vote.",
+      "gap": "This is one state's default rule, used here as real evidence of a genuine feature of shareholder-meeting procedure — not a claim about which state's law governs a specific corporation. This means a shareholder can't block action simply by walking out once a quorum has already been established; the practical check is the majority-of-quorum vote threshold, not attendance at the moment of the vote. This is a single statutory subsection (§ 602(b)); no additional independent source was found for this.",
       "citations": [
         {
           "case": "Cal. Corp. Code § 602(b) (California Legislative Information text)",
@@ -2076,7 +2082,7 @@
       "status": "verified",
       "checkedDate": "2026-08-31",
       "body": "Shareholders can generally approve most actions in writing, without holding a meeting at all, as long as shareholders holding at least the number of votes it would take to approve that action at a meeting sign a written consent. Electing directors is a real exception to that rule: directors can't be elected by written consent unless every single share entitled to vote signs on — a bare or even large majority isn't enough — with one narrow carve-out: shareholders can fill a board vacancy (other than one created by removing a director) by written consent of a majority of the outstanding voting shares.",
-      "gap": "This is one state's statute, used as real evidence of a genuine formal requirement — not a claim about which state's law governs a specific corporation. A shareholder who signs a consent can revoke it, but only before the required number of consents needed to approve the action have actually been filed with the corporation — not after. Separately, unless every voting shareholder consented in writing, the statute requires notice to shareholders who didn't sign, timed differently depending on what kind of action was approved.",
+      "gap": "This is one state's statute, used as real evidence of a genuine formal requirement — not a claim about which state's law governs a specific corporation. A shareholder who signs a consent can revoke it, but only before the required number of consents needed to approve the action have actually been filed with the corporation — not after. Separately, unless every voting shareholder consented in writing, the statute requires notice to shareholders who didn't sign, timed differently depending on what kind of action was approved. Both citations below are subsections of the same statutory section (§ 603) rather than independently authored sources; no additional independent source was found for this.",
       "citations": [
         {
           "case": "Cal. Corp. Code § 603(a) (California Legislative Information text)",
@@ -2104,14 +2110,14 @@
       "kind": "authority",
       "status": "verified",
       "checkedDate": "2026-08-31",
-      "body": "Shareholders have a default right to cumulative voting in director elections: instead of casting one vote per share for each open board seat, a shareholder can give one candidate a number of votes equal to the number of directors being elected multiplied by that shareholder's normal vote count, or spread those same total votes across several candidates as they choose. That right doesn't activate automatically at a given meeting — it requires that a candidate's name was placed in nomination before the voting, and that some shareholder gave notice at the meeting, before voting began, of an intention to cumulate votes. Once any one shareholder gives that notice, every shareholder at that meeting may cumulate their votes.",
-      "gap": "This is one state's statute, used as real evidence of a genuine default shareholder right — not a claim about which state's law governs a specific corporation. Cumulative voting is a real protection for minority shareholders — it lets a large-enough minority concentrate their votes to elect at least one director, something they generally couldn't do if every seat were decided on a simple one-vote-per-share, highest-vote-getters basis.",
+      "body": "Shareholders have a default right to cumulative voting in director elections, subject to certain exceptions (classified boards and short-slate voting under other sections, discussed below): instead of casting one vote per share for each open board seat, a shareholder can give one candidate a number of votes equal to the number of directors being elected multiplied by that shareholder's normal vote count, or spread those same total votes across several candidates as they choose. That right doesn't activate automatically at a given meeting — it requires that a candidate's name was placed in nomination before the voting, and that some shareholder gave notice at the meeting, before voting began, of an intention to cumulate votes. Once any one shareholder gives that notice, every shareholder at that meeting may cumulate their votes.",
+      "gap": "This is one state's statute, used as real evidence of a genuine default shareholder right — not a claim about which state's law governs a specific corporation. Cumulative voting is a real protection for minority shareholders — it lets a large-enough minority concentrate their votes to elect at least one director, something they generally couldn't do if every seat were decided on a simple one-vote-per-share, highest-vote-getters basis. This right doesn't apply the same way to every corporation: it's subject to two statutory exceptions this document doesn't detail (classified-board and short-slate-voting rules under other sections), and it doesn't apply at all to a mutual water company's shareholders unless that company's own articles or bylaws say it does. Both citations below are subsections of the same statutory section (§ 708) rather than independently authored sources; no additional independent source was found for this.",
       "citations": [
         {
           "case": "Cal. Corp. Code § 708(a) (California Legislative Information text)",
           "cite": "California General Corporation Law, the cumulative voting mechanism",
           "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=708.",
-          "quote": "every shareholder complying with subdivision (b) and entitled to vote at any election of directors may cumulate such shareholder’s votes and give one candidate a number of votes equal to the number of directors to be elected multiplied by the number of votes to which the shareholder’s shares are normally entitled, or distribute the shareholder’s votes on the same principle among as many candidates as the shareholder thinks fit."
+          "quote": "Except as provided in Sections 301.5 and 708.5, every shareholder complying with subdivision (b) and entitled to vote at any election of directors may cumulate such shareholder’s votes and give one candidate a number of votes equal to the number of directors to be elected multiplied by the number of votes to which the shareholder’s shares are normally entitled, or distribute the shareholder’s votes on the same principle among as many candidates as the shareholder thinks fit."
         },
         {
           "case": "Cal. Corp. Code § 708(b) (California Legislative Information text)",
@@ -2127,14 +2133,20 @@
       "kind": "authority",
       "status": "verified",
       "checkedDate": "2026-08-31",
-      "body": "Shareholders can generally remove one or more directors without cause, by the same kind of vote it would take to elect them. But that power has a real limit tied directly to cumulative voting: a director can't be removed (unless the whole board is removed at once) if the votes cast against removal would have been enough to elect that director in the first place, assuming they'd been cast cumulatively in an election for the board's full authorized size.",
-      "gap": "This is one state's statute, used as real evidence of a genuine minority-shareholder protection — not a claim about which state's law governs a specific corporation. This protection exists specifically because of cumulative voting: it prevents a bare majority from simply voting out a director whom a large-enough minority elected using their cumulative-voting power, which would otherwise make that minority protection meaningless. Reducing the authorized number of directors, or amending the bylaws to reduce board classes, doesn't itself remove a sitting director before their term is up.",
+      "body": "Shareholders can generally remove one or more directors without cause, by the same kind of vote it would take to elect them. But that power has a real limit tied directly to cumulative voting: a director can't be removed (unless the whole board is removed at once) if the votes cast against removal would have been enough to elect that director in the first place, assuming they'd been cast cumulatively in an election for the board's full authorized size. A corporation with a classified board is a real exception to that limit — it gets a separate, differently worded cumulative-voting test instead.",
+      "gap": "This is one state's statute, used as real evidence of a genuine minority-shareholder protection — not a claim about which state's law governs a specific corporation. This protection exists specifically because of cumulative voting: it prevents a bare majority from simply voting out a director whom a large-enough minority elected using their cumulative-voting power, which would otherwise make that minority protection meaningless. Reducing the authorized number of directors, or amending the bylaws to reduce board classes, doesn't itself remove a sitting director before their term is up. All three citations below are subsections of the same statutory section (§ 303) rather than independently authored sources; no additional independent source was found for this.",
       "citations": [
         {
           "case": "Cal. Corp. Code § 303(a)(1) (California Legislative Information text)",
           "cite": "California General Corporation Law, removal without cause and the cumulative-voting protection",
           "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=303.",
           "quote": "Any or all of the directors may be removed without cause if the removal is approved by the outstanding shares (Section 152), subject to the following: (1) Except for a corporation to which paragraph (3) is applicable, no director may be removed (unless the entire board is removed) when the votes cast against removal, or not consenting in writing to the removal, would be sufficient to elect the director if voted cumulatively at an election at which the same total number of votes were cast (or, if the action is taken by written consent, all shares entitled to vote were voted) and the entire number of directors authorized at the time of the director’s most recent election were then being elected."
+        },
+        {
+          "case": "Cal. Corp. Code § 303(a)(3) (California Legislative Information text)",
+          "cite": "California General Corporation Law, the separate test for a classified board",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=303.",
+          "quote": "A director of a corporation whose board of directors is classified pursuant to Section 301.5 may not be removed if the votes cast against removal of the director, or not consenting in writing to the removal, would be sufficient to elect the director if voted cumulatively (without regard to whether shares may otherwise be voted cumulatively) at an election at which the same total number of votes were cast (or, if the action is taken by written consent, all shares entitled to vote were voted) and either the number of directors elected at the most recent annual meeting of shareholders, or if greater, the number of directors for whom removal is being sought, were then being elected."
         },
         {
           "case": "Cal. Corp. Code § 303(b) (California Legislative Information text)",
@@ -2150,8 +2162,8 @@
       "kind": "authority",
       "status": "verified",
       "checkedDate": "2026-08-30",
-      "body": "Unless the bylaws provide otherwise, a majority of the authorized number of directors constitutes a quorum for a board meeting, and a decision made by a majority of the directors present at a meeting where a quorum exists is the act of the board.",
-      "gap": "This state's statute puts a real floor under how low a corporation can set board quorum by bylaw: never less than one-third of the authorized number of directors, and never less than two — unless the corporation has only one director, in which case that one director is a quorum. The statute also bars the bylaws from letting fewer than a majority of directors present decide a matter; a corporation can require a bigger majority for board decisions, but can't require a smaller one. This is one state's statute, used as real evidence these floors are a genuine feature of corporate law generally, not a claim about which state's law governs a specific corporation.",
+      "body": "Unless the bylaws provide otherwise, a majority of the authorized number of directors constitutes a quorum for a board meeting, and a decision made by a majority of the directors present at a meeting where a quorum exists is the act of the board — except for certain interested-director transactions and indemnification decisions covered elsewhere in this same corporate law, which carry their own, different approval requirements a plain majority doesn't automatically satisfy.",
+      "gap": "This state's statute puts a real floor under how low a corporation can set board quorum by bylaw: never less than one-third of the authorized number of directors, and never less than two — unless the corporation has only one director, in which case that one director is a quorum. The statute also bars the bylaws from letting fewer than a majority of directors present decide a matter; a corporation can require a bigger majority for board decisions, but can't require a smaller one. This is one state's statute, used as real evidence these floors are a genuine feature of corporate law generally, not a claim about which state's law governs a specific corporation. Both citations below are subsections of the same statutory section (§ 307) rather than independently authored sources; no additional independent source was found for this.",
       "citations": [
         {
           "case": "Cal. Corp. Code § 307(a)(7) (California Legislative Information text)",
@@ -2163,7 +2175,7 @@
           "case": "Cal. Corp. Code § 307(a)(8) (California Legislative Information text)",
           "cite": "California General Corporation Law, act of the board",
           "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=307.",
-          "quote": "An act or decision done or made by a majority of the directors present at a meeting duly held at which a quorum is present is the act of the board"
+          "quote": "An act or decision done or made by a majority of the directors present at a meeting duly held at which a quorum is present is the act of the board, subject to the provisions of Section 310 and subdivision (e) of Section 317."
         }
       ]
     },
@@ -2174,7 +2186,7 @@
       "status": "verified",
       "checkedDate": "2026-08-30",
       "body": "A regular board meeting can be held without any notice at all, as long as the bylaws or the board have already fixed its time and place. A special meeting is different: it requires at least four days' notice by mail, or 48 hours' notice delivered personally, by telephone (including voicemail), or electronically. Unlike quorum, this is a floor the bylaws can't lower — they cannot do away with notice of a special meeting altogether. Directors don't have to meet in person: participating by conference telephone or video counts as being present, as long as everyone can hear each other.",
-      "gap": "This is one state's default rule, used here as real evidence of a genuine formal requirement — not a claim about which state's law governs a specific corporation. A director who shows up to a meeting without objecting to a lack of notice, or who signs a written waiver, can't later challenge that meeting for lack of notice — but that's a separate, narrower point from whether notice was required in the first place.",
+      "gap": "This is one state's default rule, used here as real evidence of a genuine formal requirement — not a claim about which state's law governs a specific corporation. A director who shows up to a meeting without objecting to a lack of notice, or who signs a written waiver, can't later challenge that meeting for lack of notice — but that's a separate, narrower point from whether notice was required in the first place. Both citations below are subsections of the same statutory section (§ 307) rather than independently authored sources; no additional independent source was found for this.",
       "citations": [
         {
           "case": "Cal. Corp. Code § 307(a)(2) (California Legislative Information text)",
@@ -2203,7 +2215,7 @@
       "status": "verified",
       "checkedDate": "2026-08-30",
       "body": "{{companyName}} may indemnify a director, officer, employee, or other agent who is or was a party to a legal proceeding because of that role, against expenses, judgments, fines, and settlements actually and reasonably incurred, if that person acted in good faith and in a manner reasonably believed to be in the corporation's best interests — and, in a criminal proceeding, had no reasonable cause to believe the conduct was unlawful.",
-      "gap": "This power is permissive under this statute — it authorizes indemnification but doesn't by itself require it; a corporation that wants indemnification to be guaranteed, not discretionary, typically has to say so explicitly in its own bylaws or a separate agreement. A real, important limitation: this specific rule is narrower for a proceeding brought by or in the right of the corporation itself (a derivative suit) — indemnification for amounts a person is found liable to the corporation for is barred in that kind of case unless a court specifically determines the person is fairly and reasonably entitled to it, even where the general good-faith standard above would otherwise be met. This is one state's statute, used as real evidence of what indemnification powers and limits typically look like — not a claim about which state's law governs a specific corporation.",
+      "gap": "This power is permissive under this statute — it authorizes indemnification but doesn't by itself require it; a corporation that wants indemnification to be guaranteed, not discretionary, typically has to say so explicitly in its own bylaws or a separate agreement. A real, important limitation: this specific rule is narrower for a proceeding brought by or in the right of the corporation itself (a derivative suit) — indemnification for amounts a person is found liable to the corporation for is barred in that kind of case unless a court specifically determines the person is fairly and reasonably entitled to it, even where the general good-faith standard above would otherwise be met. This is one state's statute, used as real evidence of what indemnification powers and limits typically look like — not a claim about which state's law governs a specific corporation. Both citations below are subsections of the same statutory section (§ 317) rather than independently authored sources; no additional independent source was found for this.",
       "citations": [
         {
           "case": "Cal. Corp. Code § 317(b) (California Legislative Information text)",
@@ -2226,7 +2238,7 @@
       "status": "verified",
       "checkedDate": "2026-08-30",
       "body": "Everything above is a power {{companyName}} may exercise, not a promise — except in one specific situation, where indemnification stops being discretionary: if a director, officer, employee, or other agent is successful on the merits in defending a proceeding (or a specific claim or issue within it), the corporation must indemnify that person for the expenses actually and reasonably incurred defending it.",
-      "gap": "This is one state's statute, used as real evidence of a genuine mandatory floor underneath the general discretionary indemnification power — not a claim about which state's law governs a specific corporation. \"Successful on the merits\" is a narrower outcome than simply avoiding liability (for example, a case settled or dismissed on procedural grounds may not qualify), so this mandatory right shouldn't be assumed to cover every favorable outcome.",
+      "gap": "This is one state's statute, used as real evidence of a genuine mandatory floor underneath the general discretionary indemnification power — not a claim about which state's law governs a specific corporation. \"Successful on the merits\" is a narrower outcome than simply avoiding liability (for example, a case settled or dismissed on procedural grounds may not qualify), so this mandatory right shouldn't be assumed to cover every favorable outcome. This is a single statutory subsection (§ 317(d)); no additional independent source was found for this.",
       "citations": [
         {
           "case": "Cal. Corp. Code § 317(d) (California Legislative Information text)",
@@ -2243,7 +2255,7 @@
       "status": "verified",
       "checkedDate": "2026-08-30",
       "body": "{{companyName}} may pay a director, officer, employee, or other agent's litigation expenses as they're incurred, before the proceeding is even over, rather than waiting to reimburse them only after a final determination that indemnification is proper. That advance comes with a condition: the person receiving it must first agree, in writing, to repay the money if it turns out later that they weren't actually entitled to be indemnified.",
-      "gap": "This is one state's statute, used as real evidence of a genuine mechanism — not a claim about which state's law governs a specific corporation. Like the general indemnification power itself, advancement here is something the corporation may do, not something it automatically must do, unless the corporation's own bylaws or a separate agreement commits to it.",
+      "gap": "This is one state's statute, used as real evidence of a genuine mechanism — not a claim about which state's law governs a specific corporation. Like the general indemnification power itself, advancement here is something the corporation may do, not something it automatically must do, unless the corporation's own bylaws or a separate agreement commits to it. This is a single statutory subsection (§ 317(f)); no additional independent source was found for this.",
       "citations": [
         {
           "case": "Cal. Corp. Code § 317(f) (California Legislative Information text)",
@@ -2272,7 +2284,7 @@
       "status": "verified",
       "checkedDate": "2026-08-30",
       "body": "{{companyName}} can qualify to elect S corporation tax treatment only if it meets the federal 'small business corporation' test: a domestic corporation that isn't a bank, insurance company, or certain other ineligible corporation, and that doesn't have more than 100 shareholders, doesn't have a shareholder that isn't an individual (other than certain estates and trusts), doesn't have a nonresident alien as a shareholder, and doesn't have more than one class of stock.",
-      "gap": "The 100-shareholder count isn't a strict headcount of every person who owns stock — federal law treats all members of a single family, and their estates, as one shareholder for this purpose, which can make the practical limit much higher than 100 individual people. This document doesn't state which businesses would actually benefit from S corporation treatment — that depends on income level, how owners are paid, and other facts specific to the business.",
+      "gap": "The 100-shareholder count isn't a strict headcount of every person who owns stock — federal law treats all members of a single family, and their estates, as one shareholder for this purpose, which can make the practical limit much higher than 100 individual people. This document doesn't state which businesses would actually benefit from S corporation treatment — that depends on income level, how owners are paid, and other facts specific to the business. This is one federal rule; no additional independent source was found restating this specific eligibility test separately.",
       "citations": [
         {
           "case": "26 U.S.C. § 1361(b)(1) (Cornell LII text)",
@@ -2298,10 +2310,16 @@
           "quote": "For purposes of subsection (b)(1)(A), there shall be treated as one shareholder— (i) a husband and wife (and their estates), and (ii) all members of a family (and their estates)."
         },
         {
-          "case": "26 U.S.C. § 1361(c)(1)(B)(i)-(ii) (Cornell LII text)",
-          "cite": "U.S. Code, who counts as a member of the family, and the six-generation limit",
+          "case": "26 U.S.C. § 1361(c)(1)(B)(i) (Cornell LII text)",
+          "cite": "U.S. Code, who counts as a member of the family",
           "url": "https://www.law.cornell.edu/uscode/text/26/1361",
           "quote": "The term “members of a family” means a common ancestor, any lineal descendant of such common ancestor, and any spouse or former spouse of such common ancestor or any such lineal descendant."
+        },
+        {
+          "case": "26 U.S.C. § 1361(c)(1)(B)(ii) (Cornell LII text)",
+          "cite": "U.S. Code, the six-generation limit",
+          "url": "https://www.law.cornell.edu/uscode/text/26/1361",
+          "quote": "An individual shall not be considered to be a common ancestor if, on the applicable date, the individual is more than 6 generations removed from the youngest generation of shareholders who would (but for this subparagraph) be members of the family."
         }
       ]
     },
@@ -2311,8 +2329,8 @@
       "kind": "authority",
       "status": "verified",
       "checkedDate": "2026-08-30",
-      "body": "Two structures common in small corporations don't by themselves violate the one-class-of-stock eligibility rule: giving some shares more voting power than others while keeping the same economic rights (for example, voting and non-voting common stock), and straight debt — a written, unconditional promise to pay a fixed sum on demand or on a set date, where the interest rate and payment dates aren't tied to profits, discretion, or similar contingencies, held by someone eligible to be an S corporation shareholder (or a bank or similar lender in the ordinary course of lending).",
-      "gap": "This is one federal rule, verified against the current U.S. Code text. The straight-debt safe harbor has its own detailed definition beyond what's stated here (the full test for what qualifies), so a shareholder loan that departs from a simple fixed-rate, on-demand or fixed-date structure should be checked against that fuller definition before assuming it's protected.",
+      "body": "Two structures common in small corporations don't by themselves violate the one-class-of-stock eligibility rule: giving some shares more voting power than others while keeping the same economic rights (for example, voting and non-voting common stock), and straight debt — a written, unconditional promise to pay a fixed sum on demand or on a set date, where the interest rate and payment dates aren't tied to profits, the borrower's discretion, or similar factors, that isn't convertible into stock, and that's held by someone eligible to be an S corporation shareholder (or a bank or similar lender in the ordinary course of lending).",
+      "gap": "This is one federal rule, verified against the current U.S. Code text.",
       "citations": [
         {
           "case": "26 U.S.C. § 1361(c)(4) (Cornell LII text)",
@@ -2325,6 +2343,12 @@
           "cite": "U.S. Code, straight debt safe harbor",
           "url": "https://www.law.cornell.edu/uscode/text/26/1361",
           "quote": "For purposes of subsection (b)(1)(D), straight debt shall not be treated as a second class of stock."
+        },
+        {
+          "case": "26 U.S.C. § 1361(c)(5)(B) (Cornell LII text)",
+          "cite": "U.S. Code, the full definition of straight debt",
+          "url": "https://www.law.cornell.edu/uscode/text/26/1361",
+          "quote": "For purposes of this paragraph, the term “straight debt” means any written unconditional promise to pay on demand or on a specified date a sum certain in money if— (i) the interest rate (and interest payment dates) are not contingent on profits, the borrower’s discretion, or similar factors, (ii) there is no convertibility (directly or indirectly) into stock, and (iii) the creditor is an individual (other than a nonresident alien), an estate, a trust described in paragraph (2), or a person which is actively and regularly engaged in the business of lending money."
         }
       ]
     },
@@ -2335,7 +2359,7 @@
       "status": "verified",
       "checkedDate": "2026-08-30",
       "body": "An S corporation election is only valid if every person who is a shareholder on the day the election is made consents to it.",
-      "gap": "This is a real, all-or-nothing requirement — a single non-consenting shareholder can block the election entirely, no matter how small that shareholder's stake is.",
+      "gap": "This is a real, all-or-nothing requirement — a single non-consenting shareholder can block the election entirely, no matter how small that shareholder's stake is. This is one federal rule; no additional independent source was found restating this specific consent requirement separately.",
       "citations": [
         {
           "case": "26 U.S.C. § 1362(a)(2) (Cornell LII text)",
@@ -2352,7 +2376,7 @@
       "status": "verified",
       "checkedDate": "2026-08-30",
       "body": "{{companyName}} can make an S corporation election either at any time during the tax year before the one it's meant to take effect for, or during that tax year itself, as long as it's made by the 15th day of the third month of that tax year.",
-      "gap": "Missing this deadline doesn't necessarily end the option — the IRS has authority to accept a late election where there was reasonable cause for the delay, though that relief isn't automatic and this document doesn't state what qualifies as reasonable cause. Absent such relief, an election made after the deadline is instead treated as made for the following tax year.",
+      "gap": "Missing this deadline doesn't necessarily end the option — the IRS has authority to accept a late election where there was reasonable cause for the delay, though that relief isn't automatic and this document doesn't state what qualifies as reasonable cause. Absent such relief, an election made after the deadline is instead treated as made for the following tax year. This is one federal rule; no additional independent source was found restating this specific deadline separately.",
       "citations": [
         {
           "case": "26 U.S.C. § 1362(b)(1) (Cornell LII text)",
@@ -2382,6 +2406,12 @@
           "cite": "U.S. Code, when a revocation takes effect",
           "url": "https://www.law.cornell.edu/uscode/text/26/1362",
           "quote": "a revocation made during the taxable year and on or before the 15th day of the 3d month thereof shall be effective on the 1st day of such taxable year, and (ii) a revocation made during the taxable year but after such 15th day shall be effective on the 1st day of the following taxable year."
+        },
+        {
+          "case": "26 U.S.C. § 1362(d)(1)(D) (Cornell LII text)",
+          "cite": "U.S. Code, a revocation may instead specify a prospective date",
+          "url": "https://www.law.cornell.edu/uscode/text/26/1362",
+          "quote": "If the revocation specifies a date for revocation which is on or after the day on which the revocation is made, the revocation shall be effective on and after the date so specified."
         }
       ]
     },
@@ -2399,6 +2429,12 @@
           "cite": "U.S. Code, automatic termination for excess passive income with accumulated earnings and profits",
           "url": "https://www.law.cornell.edu/uscode/text/26/1362",
           "quote": "An election under subsection (a) shall be terminated whenever the corporation— (I) has accumulated earnings and profits at the close of each of 3 consecutive taxable years, and (II) has gross receipts for each of such taxable years more than 25 percent of which are passive investment income."
+        },
+        {
+          "case": "26 U.S.C. § 1362(d)(3)(A)(ii) (Cornell LII text)",
+          "cite": "U.S. Code, when this termination becomes effective",
+          "url": "https://www.law.cornell.edu/uscode/text/26/1362",
+          "quote": "Any termination under this paragraph shall be effective on and after the first day of the first taxable year beginning after the third consecutive taxable year referred to in clause (i)."
         }
       ]
     },
@@ -2412,10 +2448,22 @@
       "gap": "This is one federal rule, verified against the current U.S. Code text. Inadvertent-termination relief is a determination the IRS makes on the specific facts, not something a corporation can grant itself by simply asserting good faith; this document doesn't state what the IRS actually looks for in making that determination.",
       "citations": [
         {
-          "case": "26 U.S.C. § 1362(f) (Cornell LII text)",
-          "cite": "U.S. Code, inadvertent termination relief — the conditions",
+          "case": "26 U.S.C. § 1362(f)(2) (Cornell LII text)",
+          "cite": "U.S. Code, inadvertent termination relief — the IRS's determination",
           "url": "https://www.law.cornell.edu/uscode/text/26/1362",
           "quote": "the Secretary determines that the circumstances resulting in such ineffectiveness or termination were inadvertent"
+        },
+        {
+          "case": "26 U.S.C. § 1362(f)(3) (Cornell LII text)",
+          "cite": "U.S. Code, inadvertent termination relief — fixing the problem",
+          "url": "https://www.law.cornell.edu/uscode/text/26/1362",
+          "quote": "no later than a reasonable period of time after discovery of the circumstances resulting in such ineffectiveness or termination, steps were taken— (A) so that the corporation for which the election was made or the termination occurred is a small business corporation or a qualified subchapter S subsidiary, as the case may be, or (B) to acquire the required shareholder consents"
+        },
+        {
+          "case": "26 U.S.C. § 1362(f)(4) (Cornell LII text)",
+          "cite": "U.S. Code, inadvertent termination relief — shareholder agreement to adjustments",
+          "url": "https://www.law.cornell.edu/uscode/text/26/1362",
+          "quote": "the corporation for which the election was made or the termination occurred, and each person who was a shareholder in such corporation at any time during the period specified pursuant to this subsection, agrees to make such adjustments (consistent with the treatment of such corporation as an S corporation or a qualified subchapter S subsidiary, as the case may be) as may be required by the Secretary with respect to such period"
         },
         {
           "case": "26 U.S.C. § 1362(f) (Cornell LII text)",
@@ -2496,7 +2544,7 @@
       "kind": "authority",
       "status": "verified",
       "checkedDate": "2026-08-30",
-      "body": "For this restriction to actually bind an outside buyer or an owner's heirs — not just the owners who signed it — it needs to be written into {{companyName}}'s operating agreement, not left as a side agreement. A transfer that violates a restriction written into the operating agreement is ineffective against anyone who had notice of the restriction at the time of the transfer. The company also doesn't have to recognize a transfer at all — for any purpose — until it has actual notice that the transfer happened.",
+      "body": "For this restriction to actually bind an outside buyer or an owner's heirs — not just the owners who signed it — it needs to be written into {{companyName}}'s operating agreement, not left as a side agreement. A transfer that violates a restriction written into the operating agreement is ineffective against anyone who had notice of the restriction at the time of the transfer. The company also doesn't have to give effect to a transferee's rights under that same statute until it has actual notice that the transfer happened.",
       "gap": "This is one state's statute, used as real evidence of a genuine mechanism — not a claim about which state's law governs a specific LLC. The practical implication: a right of first refusal that lives only in this standalone agreement, and isn't also incorporated into the operating agreement itself, may not bind a transferee who never saw this agreement and had no notice of it. This document is meant to work alongside the operating agreement, not replace it.",
       "citations": [
         {
@@ -2543,7 +2591,7 @@
       "status": "verified",
       "checkedDate": "2026-08-30",
       "body": "If {{companyName}} has formally elected close corporation status, there's a separate, stricter rule beyond the general transfer-restriction disclosure above: a close corporation's shares must carry a specific legend on their face capping the number of shareholders of record (a number the corporation sets, up to a statutory maximum), and any voluntary transfer that would push the shareholder count past that cap is void — not just unenforceable against an unknowing buyer, but void outright.",
-      "gap": "This is one state's statute, used as real evidence of a genuine formal requirement for a specific corporate subtype — not a claim about which state's law governs a specific corporation, and it only applies if the corporation has actually elected close corporation status (most small corporations have not). Check the articles of incorporation for a close corporation election before assuming this applies.",
+      "gap": "This is one state's statute, used as real evidence of a genuine formal requirement for a specific corporate subtype — not a claim about which state's law governs a specific corporation, and it only applies if the corporation has actually elected close corporation status, which most small corporations have not; whether that election was made is stated in the corporation's own articles of incorporation.",
       "citations": [
         {
           "case": "Cal. Corp. Code § 418(c) (California Legislative Information text)",
@@ -2595,8 +2643,8 @@
       "kind": "authority",
       "status": "verified",
       "checkedDate": "2026-08-30",
-      "body": "Landlord may charge a security deposit of up to one month's rent, in addition to the first month's rent. If Landlord is an individual (or an LLC whose members are all individuals) who owns no more than two residential rental properties totaling no more than four units, Landlord may charge up to two months' rent instead. The deposit may only be used for: (1) unpaid rent; (2) repairing damage Tenant (or Tenant's guest) caused, beyond ordinary wear and tear; (3) cleaning needed to return the unit to the same level of cleanliness it was in when the tenancy began; and (4) remedying a future default in returning or restoring personal property, if the lease authorizes that use. Within 21 days after Tenant moves out, Landlord must give Tenant an itemized statement of any deductions and return the remaining deposit.",
-      "gap": "A lease of six months or longer can separately require an advance rent payment of up to six months' rent, on top of the security deposit cap above — a different rule from the deposit cap itself, and easy to conflate with it. This is one state's statute, current as of a 2024 change that lowered the general cap to one month's rent; deposit limits and return deadlines vary by state, and this document doesn't track any state but this one.",
+      "body": "Landlord may charge a security deposit of up to one month's rent, in addition to the first month's rent. If Landlord is an individual (or an LLC whose members are all individuals) who owns no more than two residential rental properties totaling no more than four units, Landlord may charge up to two months' rent instead — except that this higher cap doesn't apply if the prospective tenant is a service member, in which case the general one-month cap still controls. The deposit may only be used for: (1) unpaid rent; (2) repairing damage Tenant (or Tenant's guest) caused, beyond ordinary wear and tear; (3) cleaning needed to return the unit to the same level of cleanliness it was in when the tenancy began; and (4) remedying a future default in returning or restoring personal property, if the lease authorizes that use. Within 21 days after Tenant moves out, Landlord must give Tenant an itemized statement of any deductions and return the remaining deposit.",
+      "gap": "A lease of six months or longer can separately require an advance rent payment of up to six months' rent, on top of the security deposit cap above — a different rule from the deposit cap itself, and easy to conflate with it. This is one state's statute, current as of a 2024 change that lowered the general cap to one month's rent; deposit limits and return deadlines vary by state, and this document doesn't track any state but this one. All six citations below are subsections of the same statutory section (§ 1950.5) rather than independently authored sources; no additional independent source was found for this.",
       "citations": [
         {
           "case": "Cal. Civ. Code § 1950.5(c)(1) (California Legislative Information text)",
@@ -2609,6 +2657,12 @@
           "cite": "California Civil Code, higher cap for a small individual landlord",
           "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1950.5.",
           "quote": "a landlord shall not demand or receive security, however denominated, in an amount or value in excess of an amount equal to two months’ rent, in addition to any rent for the first month paid on or before initial occupancy if the landlord meets both of the following requirements: (i) The landlord is a natural person or a limited liability company in which all members are natural persons. (ii) The landlord owns no more than two residential rental properties that collectively include no more than four dwelling units offered for rent."
+        },
+        {
+          "case": "Cal. Civ. Code § 1950.5(c)(5)(B) (California Legislative Information text)",
+          "cite": "California Civil Code, the small-landlord cap doesn't apply to a service-member tenant",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1950.5.",
+          "quote": "Subparagraph (A) shall not apply if the prospective tenant is a service member."
         },
         {
           "case": "Cal. Civ. Code § 1950.5(c)(2) (California Legislative Information text)",
@@ -2643,7 +2697,7 @@
       "status": "verified",
       "checkedDate": "2026-08-30",
       "body": "Before Tenant moves out, Landlord must notify Tenant in writing of Tenant's option to request an initial (pre-move-out) inspection and the right to be present for it. If Tenant requests one, Landlord must inspect no earlier than two weeks before the move-out date and give Tenant at least 48 hours' written notice of the inspection date and time. The point of this inspection is to let Tenant fix any identified problems before move-out, to avoid a deduction from the deposit for them.",
-      "gap": "If Tenant requests this inspection and the unit isn't full of Tenant's belongings in a way that would hide problems from view, Landlord generally can't later deduct from the deposit for a repair or cleaning issue that wasn't identified at that inspection. This is a real, concrete consequence of the inspection right, not just a formality — and it's easy to miss because the inspection itself is optional (Tenant has to request it; if Tenant doesn't, this whole process — and its protection — doesn't apply). This is one state's statute; not every state gives tenants this specific right.",
+      "gap": "If Tenant requests this inspection and the unit isn't full of Tenant's belongings in a way that would hide problems from view, Landlord generally can't later deduct from the deposit for a repair or cleaning issue that wasn't identified at that inspection. This is a real, concrete consequence of the inspection right, not just a formality — and it's easy to miss because the inspection itself is optional (Tenant has to request it; if Tenant doesn't, this whole process — and its protection — doesn't apply). This entire inspection right doesn't apply at all if the tenancy is ending through an unlawful detainer based on nonpayment of rent, a lease breach, or waste/nuisance — those specific for-cause terminations void the right described in this clause. This is one state's statute; not every state gives tenants this specific right. All three citations below are subsections of the same statutory section (§ 1950.5) rather than independently authored sources; no additional independent source was found for this.",
       "citations": [
         {
           "case": "Cal. Civ. Code § 1950.5(f)(1) (California Legislative Information text)",
@@ -2662,6 +2716,12 @@
           "cite": "California Civil Code, effect of not identifying an issue at the inspection",
           "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1950.5.",
           "quote": "if an initial inspection is conducted pursuant to this subdivision and, at the time of inspection, the premises do not contain tenant possessions that prevent the landlord from identifying repairs or cleanings due to the presence of those possessions, the landlord shall not use the security for deductions for repairs or cleanings that are not identified in the itemized statement described in paragraph (2)."
+        },
+        {
+          "case": "Cal. Civ. Code § 1950.5(f)(7) (California Legislative Information text)",
+          "cite": "California Civil Code, this right doesn't apply to a for-cause unlawful detainer",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1950.5.",
+          "quote": "The requirements of this subdivision do not apply when the tenancy is terminated pursuant to subdivision (2), (3), or (4) of Section 1161 of the Code of Civil Procedure."
         }
       ]
     },
@@ -2672,7 +2732,7 @@
       "status": "verified",
       "checkedDate": "2026-08-30",
       "body": "For a tenancy that begins on or after July 1, 2025, Landlord must photograph the unit before or at the start of the tenancy. Separately, beginning April 1, 2025, Landlord must photograph the unit after Tenant moves out but before making any repairs or cleaning charged against the deposit, and again after that repair or cleaning is finished.",
-      "gap": "This is a very recent requirement — it phases in on two different dates for two different purposes (a baseline record at move-in, and a before-and-after record around any move-out deduction) — and it's one state's statute, not a nationwide practice. A landlord who skips this doesn't automatically lose the right to make deductions under this document's reading, but the photos are exactly the kind of evidence that would resolve a dispute over what condition the unit was actually in.",
+      "gap": "This is a very recent requirement — it phases in on two different dates for two different purposes (a baseline record at move-in, and a before-and-after record around any move-out deduction) — and it's one state's statute, not a nationwide practice. The move-out photos aren't just good practice: for any deduction the landlord makes for repairs or cleaning, the statute separately requires the landlord to provide those same photographs to the tenant, along with a written explanation of the cost, as part of the itemized deduction statement — so skipping the photos leaves the landlord unable to fully comply with that separate documentation requirement. Both citations below are subsections of the same statutory section (§ 1950.5) rather than independently authored sources; no additional independent source was found for this.",
       "citations": [
         {
           "case": "Cal. Civ. Code § 1950.5(g)(1) (California Legislative Information text)",
@@ -2685,6 +2745,12 @@
           "cite": "California Civil Code, move-out before-and-after photo requirement",
           "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1950.5.",
           "quote": "Beginning April 1, 2025, the landlord shall take photographs of the unit within a reasonable time after the possession of the unit is returned to the landlord, but prior to any repairs or cleanings for which the landlord will make a deduction from or claim against the security deposit pursuant to this section, and shall also take photographs of the unit within a reasonable time after such repairs or cleanings are completed."
+        },
+        {
+          "case": "Cal. Civ. Code § 1950.5(h)(2)(D) (California Legislative Information text)",
+          "cite": "California Civil Code, the photos are a required part of the deduction documentation",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1950.5.",
+          "quote": "If a deduction is made for repairs or cleanings allowed by this section, the landlord shall provide photographs taken pursuant to subdivision (g), along with a written explanation of the cost of the allowable repairs or cleanings, as described in subparagraphs (A) to (C), inclusive."
         }
       ]
     },
@@ -2718,7 +2784,7 @@
       "status": "verified",
       "checkedDate": "2026-08-30",
       "body": "A unit is legally uninhabitable if it substantially lacks any of the following: effective weatherproofing (including intact windows and doors); working plumbing and gas fixtures that met the code in effect when installed; hot and cold running water connected to an approved sewage system; working heating that met the code in effect when installed; working electrical wiring and lighting that met the code in effect when installed; a building and grounds kept clean, sanitary, and free of debris, rodents, and vermin; adequate garbage and rubbish receptacles, kept in clean condition and good repair; and floors, stairways, and railings kept in good repair.",
-      "gap": "This is the specific legal checklist behind the general \"habitable\" duty stated above — a unit can look fine and still be legally uninhabitable if it's substantially missing even one of these items. This list also includes a locking mail receptacle requirement for residential hotel units specifically, which this document doesn't restate since it isn't relevant to an ordinary residential lease. This is one state's statute; other states define habitability differently, whether by statute, regulation, or case law.",
+      "gap": "This is the specific legal checklist behind the general \"habitable\" duty stated above — a unit can look fine and still be legally uninhabitable if it's substantially missing even one of these items. This list also includes a locking mail receptacle requirement for residential hotel units specifically, which this document doesn't restate since it isn't relevant to an ordinary residential lease. This is one state's statute; other states define habitability differently, whether by statute, regulation, or case law. This is a single statutory subsection; no additional independent source was found for this.",
       "citations": [
         {
           "case": "Cal. Civ. Code § 1941.1(a)(1)-(8) (California Legislative Information text)",
@@ -2735,7 +2801,7 @@
       "status": "verified",
       "checkedDate": "2026-08-30",
       "body": "For a lease entered into, amended, or extended on or after January 1, 2026, a unit is also legally uninhabitable if it substantially lacks a working stove capable of safely generating heat for cooking, or a working refrigerator capable of safely storing food — and a stove or refrigerator under an active manufacturer or public-entity recall doesn't count as safe. Tenant and Landlord can agree at signing that Tenant will bring and maintain their own refrigerator instead, using specific statutory language, but Tenant can end that arrangement with 30 days' written notice, after which Landlord must install a working refrigerator.",
-      "gap": "This requirement doesn't apply to every kind of housing — it's carved out for permanent supportive housing, single-room-occupancy units, residential hotel units, and housing with shared or communal kitchens (including assisted living facilities), since those housing types often don't work the way an ordinary rental unit does. This is a very new requirement — it only applies to leases entered into, amended, or extended on or after January 1, 2026 — and it's one state's statute, not a general rule.",
+      "gap": "This requirement doesn't apply to every kind of housing — it's carved out for permanent supportive housing, single-room-occupancy units, residential hotel units, and housing with shared or communal kitchens (including assisted living facilities), since those housing types often don't work the way an ordinary rental unit does. This is a very new requirement — it only applies to leases entered into, amended, or extended on or after January 1, 2026 — and it's one state's statute, not a general rule. All four citations below are subsections of the same statutory section (§ 1941.1) rather than independently authored sources; no additional independent source was found for this.",
       "citations": [
         {
           "case": "Cal. Civ. Code § 1941.1(a)(10) (California Legislative Information text)",
@@ -2769,8 +2835,8 @@
       "kind": "authority",
       "status": "verified",
       "checkedDate": "2026-08-30",
-      "body": "Landlord may enter the unit only in these specific cases: (1) an emergency; (2) to make necessary or agreed repairs, decorations, alterations, or improvements, to supply necessary or agreed services, or to show the unit to a prospective or actual purchaser, mortgagee, tenant, worker, or contractor, or to make the pre-move-out inspection described elsewhere in this document; (3) when Tenant has abandoned or surrendered the unit; or (4) under a court order. (Two further categories exist under separate statutes for specific health, safety, and emergency-preparedness purposes this document doesn't cover.) Except in an emergency or abandonment, entry is limited to normal business hours and requires reasonable written notice stating the date, approximate time, and purpose of the entry. Landlord can't abuse this right of access or use it to harass Tenant.",
-      "gap": "Twenty-four hours' written notice is presumed reasonable, but that's a presumption, not an absolute floor — it can be rebutted by evidence either way. This is one state's statute; notice requirements for landlord entry vary by state.",
+      "body": "Landlord may enter the unit only in these specific cases: (1) an emergency; (2) to make necessary or agreed repairs, decorations, alterations, or improvements, to supply necessary or agreed services, or to show the unit to a prospective or actual purchaser, mortgagee, tenant, worker, or contractor, or to make the pre-move-out inspection described elsewhere in this document; (3) when Tenant has abandoned or surrendered the unit; or (4) under a court order. (Two further categories exist under separate statutes for specific health, safety, and emergency-preparedness purposes this document doesn't cover.) Except in an emergency or abandonment, entry is limited to normal business hours and generally requires reasonable written notice stating the date, approximate time, and purpose of the entry — but written notice itself isn't always required: no notice at all is required if Tenant is present and consents to the entry at the time of entry; oral notice is enough to show the unit to a prospective or actual purchaser, if Landlord has separately given Tenant written notice within the last 120 days that the property is for sale; and Landlord and Tenant may agree orally to a repair or service visit within the coming week, with no written notice required for that agreed visit either. Landlord can't abuse this right of access or use it to harass Tenant.",
+      "gap": "Twenty-four hours' written notice is presumed reasonable, but that's a presumption, not an absolute floor — it can be rebutted by evidence either way. This is one state's statute; notice requirements for landlord entry vary by state. All citations below are subsections of the same statutory section (§ 1954) rather than independently authored sources; no additional independent source was found for this.",
       "citations": [
         {
           "case": "Cal. Civ. Code § 1954(a) (California Legislative Information text)",
@@ -2788,13 +2854,31 @@
           "case": "Cal. Civ. Code § 1954(d)(1) (California Legislative Information text)",
           "cite": "California Civil Code, written notice requirement",
           "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1954.",
-          "quote": "the landlord shall give the tenant reasonable notice in writing of his or her intent to enter and enter only during normal business hours. The notice shall include the date, approximate time, and purpose of the entry."
+          "quote": "Except as provided in subdivision (e), or as provided in paragraph (2) or (3), the landlord shall give the tenant reasonable notice in writing of his or her intent to enter and enter only during normal business hours. The notice shall include the date, approximate time, and purpose of the entry."
         },
         {
           "case": "Cal. Civ. Code § 1954(d)(1) (California Legislative Information text)",
           "cite": "California Civil Code, 24-hour presumption",
           "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1954.",
           "quote": "Twenty-four hours shall be presumed to be reasonable notice in absence of evidence to the contrary."
+        },
+        {
+          "case": "Cal. Civ. Code § 1954(d)(2) (California Legislative Information text)",
+          "cite": "California Civil Code, oral notice suffices to show the unit to a prospective purchaser",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1954.",
+          "quote": "If the purpose of the entry is to exhibit the dwelling unit to prospective or actual purchasers, the notice may be given orally, in person or by telephone, if the landlord or his or her agent has notified the tenant in writing within 120 days of the oral notice that the property is for sale and that the landlord or agent may contact the tenant orally for the purpose described above."
+        },
+        {
+          "case": "Cal. Civ. Code § 1954(d)(3) (California Legislative Information text)",
+          "cite": "California Civil Code, an oral agreement for a repair or service visit needs no written notice",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1954.",
+          "quote": "The tenant and the landlord may agree orally to an entry to make agreed repairs or supply agreed services. The agreement shall include the date and approximate time of the entry, which shall be within one week of the agreement. In this case, the landlord is not required to provide the tenant a written notice."
+        },
+        {
+          "case": "Cal. Civ. Code § 1954(e) (California Legislative Information text)",
+          "cite": "California Civil Code, when no notice at all is required",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1954.",
+          "quote": "No notice of entry is required under this section: (1) To respond to an emergency. (2) If the tenant is present and consents to the entry at the time of entry. (3) After the tenant has abandoned or surrendered the unit."
         },
         {
           "case": "Cal. Civ. Code § 1954(c) (California Legislative Information text)",
