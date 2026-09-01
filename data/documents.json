@@ -3758,5 +3758,42 @@
     "categories": [
       "Real Estate"
     ]
+  },
+  {
+    "id": "copyright_assignment",
+    "title": "Copyright Assignment Agreement",
+    "description": "An independent creator or freelancer's assignment of copyright ownership in a specific work to the hiring party -- distinct from this project's employment-context Invention Assignment & Confidentiality Agreement, since most freelance work is not automatically \"work made for hire\" and requires a signed assignment to actually transfer ownership.",
+    "clauseOrder": [
+      "copyrightassign_grant",
+      "copyrightassign_initial_ownership",
+      "copyrightassign_wfh_categories",
+      "copyrightassign_writing_required",
+      "copyrightassign_termination_right",
+      "copyrightassign_moral_rights",
+      "copyrightassign_ack"
+    ],
+    "fields": [
+      {
+        "id": "hiringPartyName",
+        "label": "Hiring party's name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "creatorName",
+        "label": "Creator's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "workDescription",
+        "label": "Description of the work",
+        "placeholder": "Logo design and brand style guide delivered August 2026",
+        "required": true
+      }
+    ],
+    "categories": [
+      "Confidentiality & IP"
+    ]
   }
 ]
