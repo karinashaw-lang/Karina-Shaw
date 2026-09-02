@@ -11839,5 +11839,67 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "jury_duty_witness_leave_info_sheet",
+    "title": "Jury Duty and Witness Leave — Information Sheet",
+    "description": "Explains California's job protections for an employee who takes time off to serve on a jury or to appear in court as a witness under subpoena or court order -- now codified at Government Code section 12945.8 as of a January 1, 2025 relocation out of the former Labor Code section 230, which remains on the books only for pre-2025 conduct until its scheduled 2035 repeal. Covers the advance-notice condition (which applies to jury duty but not witness leave), the use of accrued paid leave in place of a state-mandated pay benefit, the anti-interference provision, and a pointer to the same section's separate crime-victim and domestic-violence leave protections.",
+    "categories": [
+      "During employment"
+    ],
+    "clauseOrder": [
+      "juryduty_leave_notice",
+      "juryduty_current_codification",
+      "juryduty_jury_protection",
+      "juryduty_witness_protection",
+      "juryduty_pay_and_leave_usage",
+      "juryduty_no_interference",
+      "juryduty_related_but_distinct_scope",
+      "juryduty_ack"
+    ],
+    "fields": [
+      {
+        "id": "employeeName",
+        "label": "Employee's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme Innovations LLC",
+        "required": true
+      },
+      {
+        "id": "courtName",
+        "label": "Court name",
+        "placeholder": "Superior Court of California, County of Sacramento",
+        "required": true
+      },
+      {
+        "id": "serviceStartDate",
+        "label": "Service start date",
+        "placeholder": "September 8, 2026",
+        "required": true
+      },
+      {
+        "id": "serviceEndDate",
+        "label": "Service end date (if known)",
+        "placeholder": "September 12, 2026",
+        "required": false
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 2, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, state",
+        "placeholder": "Sacramento, California",
+        "required": true
+      }
+    ]
   }
 ]
