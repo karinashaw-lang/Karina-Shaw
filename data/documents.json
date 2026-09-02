@@ -7098,5 +7098,69 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "emancipation_of_minor_info_sheet",
+    "title": "Emancipation of a Minor — Information Sheet",
+    "description": "An information sheet describing California's Emancipation of Minors Law, distinct from the existing Guardianship of the Person, Guardianship of the Estate, and Petition for Change of Name documents. Covers the three statutory paths to emancipated status (marriage/domestic partnership, active military duty, or court declaration), who may petition and the facts the petition must allege, notice requirements before the hearing, the court's findings and the legal effect of a declaration, the full statutory list of what emancipation changes, the two distinct grounds and procedures for voiding (fraud) or rescinding (indigency) a declaration, and how emancipation automatically terminates an existing guardianship of the person.",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "emancipation_declaration",
+      "emancipation_information_summary",
+      "emancipation_statutory_purpose_and_paths",
+      "emancipation_eligibility_requirements",
+      "emancipation_notice_requirements",
+      "emancipation_hearing_standard_and_declaration",
+      "emancipation_legal_effects",
+      "emancipation_voiding_and_rescission",
+      "emancipation_guardianship_cross_reference",
+      "emancipation_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "petitionerName",
+        "label": "Minor/petitioner name",
+        "placeholder": "Sam T. Rivera",
+        "required": true
+      },
+      {
+        "id": "petitionerDOB",
+        "label": "Minor's date of birth",
+        "placeholder": "June 12, 2010",
+        "required": true
+      },
+      {
+        "id": "parent1Name",
+        "label": "Parent/guardian of record (1)",
+        "placeholder": "Taylor M. Rivera",
+        "required": false
+      },
+      {
+        "id": "parent2Name",
+        "label": "Parent/guardian of record (2), if applicable",
+        "placeholder": "Casey L. Nguyen",
+        "required": false
+      },
+      {
+        "id": "countyOfFiling",
+        "label": "County of filing",
+        "placeholder": "Sacramento County",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "April 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, State",
+        "placeholder": "Sacramento, California",
+        "required": true
+      }
+    ]
   }
 ]
