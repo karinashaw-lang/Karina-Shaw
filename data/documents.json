@@ -11901,5 +11901,48 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "slayer_statute_disqualification_info_sheet",
+    "title": "Slayer Statute — Disqualification from Inheriting Information Sheet",
+    "description": "Explains California's general \"slayer statute\" doctrine (Probate Code sections 250-254): the rule disqualifying a person who feloniously and intentionally kills a decedent from inheriting or benefiting under a will, trust, intestate succession, quasi-community property, nonprobate transfers, or family-protection property, the predecease mechanism used to redirect disqualified property, the distinct joint-tenancy severance rule, the residual catch-all for other acquisitions, and how a felonious and intentional killing is established (a final conviction, or a court finding by a preponderance of the evidence). Distinct from and broader than this corpus's existing life-insurance-specific slayer statute clause in the Life Insurance Beneficiary Designation Information Sheet.",
+    "categories": [
+      "Estate Planning"
+    ],
+    "clauseOrder": [
+      "slayerstatute_declaration",
+      "slayerstatute_core_disqualification",
+      "slayerstatute_predecease_effect",
+      "slayerstatute_joint_tenancy_severance",
+      "slayerstatute_killing_established",
+      "slayerstatute_catchall_other_property",
+      "slayerstatute_certification"
+    ],
+    "fields": [
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "decedentName",
+        "label": "Decedent's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 2, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, state",
+        "placeholder": "Sacramento, California",
+        "required": true
+      }
+    ]
   }
 ]
