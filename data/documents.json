@@ -4743,5 +4743,103 @@
     "categories": [
       "Estate Planning"
     ]
+  },
+  {
+    "id": "calcobra_election_notice",
+    "title": "Cal-COBRA Election Notice (California Continuation Benefits Replacement Act)",
+    "description": "An election notice describing continuation-coverage rights under California's own Cal-COBRA statute — a state scheme distinct from federal COBRA, covering small employers with 2-19 eligible employees, with a higher premium cap (110% vs. federal COBRA's 102%) and a flat 36-month maximum duration.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "calcobra_election_notice_letter",
+      "calcobra_scope_and_eligibility",
+      "calcobra_qualifying_events",
+      "calcobra_notice_obligations",
+      "calcobra_premium_cap",
+      "calcobra_coverage_duration",
+      "calcobra_extension_after_federal_cobra",
+      "calcobra_election_form"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Employer name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee/qualified beneficiary name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "noticeDate",
+        "label": "Date of this notice",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "planName",
+        "label": "Group health plan name",
+        "placeholder": "Acme, Inc. Group Health Plan",
+        "required": true
+      },
+      {
+        "id": "qualifyingEventDate",
+        "label": "Date of the qualifying event",
+        "placeholder": "August 31, 2026",
+        "required": true
+      },
+      {
+        "id": "qualifyingEventType",
+        "label": "Type of qualifying event",
+        "placeholder": "Termination of employment (other than gross misconduct)",
+        "required": true
+      },
+      {
+        "id": "monthlyPremiumAmount",
+        "label": "Estimated monthly premium",
+        "placeholder": "$490.00",
+        "required": true
+      },
+      {
+        "id": "maxCoverageMonths",
+        "label": "Maximum coverage period (months)",
+        "placeholder": "36",
+        "required": true
+      },
+      {
+        "id": "planAdministratorName",
+        "label": "Plan administrator name",
+        "placeholder": "Acme, Inc. Benefits Department",
+        "required": true
+      },
+      {
+        "id": "planAdministratorAddress",
+        "label": "Plan administrator address",
+        "placeholder": "500 Market St, San Francisco, CA 94105",
+        "required": true
+      },
+      {
+        "id": "electionDeadline",
+        "label": "Election deadline",
+        "placeholder": "November 1, 2026",
+        "required": true
+      },
+      {
+        "id": "additionalBeneficiaryName",
+        "label": "Additional covered beneficiaries (if any)",
+        "placeholder": "Spouse and one dependent child",
+        "required": false
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 15, 2026",
+        "required": true
+      }
+    ]
   }
 ]

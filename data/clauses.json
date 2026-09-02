@@ -13161,6 +13161,144 @@
       "title": "Signature and Acknowledgment Block — Conservatorship Petition Information Sheet",
       "kind": "drafting",
       "body": "I declare under penalty of perjury under the laws of the State of California that the foregoing is true and correct.\n\nExecuted on {{dateSigned}} at {{cityState}}.\n\nSignature of {{proposedConservatorName}}: ☐ _________________________\n\n[This information sheet is prepared for use alongside an actual conservatorship petition filed with the California probate court. It does not itself constitute, replace, or complete that petition, and it does not establish a conservatorship or appoint a conservator; only a court order does that.]"
+    },
+    {
+      "id": "calcobra_scope_and_eligibility",
+      "title": "Cal-COBRA Eligibility — Small-Employer Scope and Qualified Beneficiary Definition",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-02",
+      "body": "California's Cal-COBRA statute defines who counts as an \"employer\" and who counts as a \"qualified beneficiary\" for purposes of this state continuation-coverage scheme. An \"employer\" is one that meets the Knox-Keene Act's definition of a \"small employer\" and that employed 2 to 19 eligible employees on at least half its working days during the preceding calendar year (or calendar quarter, for an employer not in business the full preceding year), that has contracted for coverage through a group health care service plan, and that is not itself subject to federal COBRA. A \"qualified beneficiary\" is any individual who, on the day before the qualifying event, was enrolled in that group benefit plan and who has a qualifying event as the statute defines that term. {{employeeName}} and, where applicable, {{employeeName}}'s covered spouse and dependents who were enrolled in {{planName}} immediately before the qualifying event fall within this statutory \"qualified beneficiary\" definition if {{companyName}} meets the statutory \"employer\" definition described above.",
+      "gap": "This is one state's statute, used as real evidence of California's Cal-COBRA scheme — not a claim about which state's law governs a specific employer or plan. It is federal and California law together in the sense that the statutory \"employer\" definition below cross-references (and excludes employers subject to) 29 U.S.C. § 1161 et seq. (federal COBRA), but no federal statutory text is quoted in this clause. This clause quotes two different subdivisions of the same statutory section, Health and Safety Code § 1366.21 — subdivision (e) (the \"employer\" definition) and subdivision (c)(1) (the \"qualified beneficiary\" definition) — which are disclosed together here rather than as separate authorities. This clause states the general statutory definitions; it does not determine whether this particular company actually meets the 2-to-19-employee threshold, whether its plan is a Knox-Keene group benefit plan rather than a self-funded or federally-covered plan, or whether this particular individual was in fact enrolled immediately before the event described.",
+      "citations": [
+        {
+          "case": "Cal. Health & Safety Code § 1366.21(e) (California Legislative Information text)",
+          "cite": "California Health and Safety Code, Cal-COBRA \"employer\" definition",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=HSC&sectionNum=1366.21.",
+          "quote": "“Employer” means any employer that meets the definition of “small employer” as set forth in Section 1357 and (1) employed 2 to 19 eligible employees on at least 50 percent of its working days during the preceding calendar year, or, if the employer was not in business during any part of the preceding calendar year, employed 2 to 19 eligible employees on at least 50 percent of its working days during the preceding calendar quarter, (2) has contracted for health care coverage through a group benefit plan offered by a health care service plan, and (3) is not subject to Section 4980B of the United States Internal Revenue Code or Chapter 18 of the Employee Retirement Income Security Act, 29 U.S.C. Section 1161 et seq."
+        },
+        {
+          "case": "Cal. Health & Safety Code § 1366.21(c)(1) (California Legislative Information text)",
+          "cite": "California Health and Safety Code, Cal-COBRA \"qualified beneficiary\" definition",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=HSC&sectionNum=1366.21.",
+          "quote": "“Qualified beneficiary” means any individual who, on the day before the qualifying event, is an enrollee in a group benefit plan offered by a health care service plan pursuant to Article 3.1 (commencing with Section 1357) and has a qualifying event, as defined in subdivision (d)."
+        }
+      ]
+    },
+    {
+      "id": "calcobra_qualifying_events",
+      "title": "Cal-COBRA Qualifying Events",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-02",
+      "body": "California's Cal-COBRA statute lists five events that can be a \"qualifying event\" for a qualified beneficiary: (1) the death of the covered employee; (2) the termination of employment or a reduction in hours of the covered employee's employment, except that termination for gross misconduct does not qualify; (3) the divorce or legal separation of the covered employee from the covered employee's spouse; (4) the loss of dependent status by a dependent enrolled in the group benefit plan; and (5), with respect to a covered dependent only, the covered employee's entitlement to Medicare benefits under Title XVIII of the Social Security Act. On {{qualifyingEventDate}}, the event identified for {{employeeName}} was: {{qualifyingEventType}}.",
+      "gap": "This is one state's statute, used as real evidence of California's Cal-COBRA scheme — not a claim about which state's law governs a specific employer or plan. This clause cites a single subdivision of a single statutory section (Health and Safety Code § 1366.21(d)); no additional independent source was found for this. Whether the event identified above was, in fact, a \"termination of employment\" rather than a termination \"for gross misconduct\" (the one carve-out named in the statute for category (2)) is a fact-specific determination this clause does not make.",
+      "citations": [
+        {
+          "case": "Cal. Health & Safety Code § 1366.21(d) (California Legislative Information text)",
+          "cite": "California Health and Safety Code, Cal-COBRA qualifying events",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=HSC&sectionNum=1366.21.",
+          "quote": "“Qualifying event” means any of the following events that, but for the election of continuation coverage under this article, would result in a loss of coverage under the group benefit plan to a qualified beneficiary: (1) The death of the covered employee. (2) The termination of employment or reduction in hours of the covered employee’s employment, except that termination for gross misconduct does not constitute a qualifying event. (3) The divorce or legal separation of the covered employee from the covered employee’s spouse. (4) The loss of dependent status by a dependent enrolled in the group benefit plan. (5) With respect to a covered dependent only, the covered employee’s entitlement to benefits under Title XVIII of the United States Social Security Act (Medicare)."
+        }
+      ]
+    },
+    {
+      "id": "calcobra_notice_obligations",
+      "title": "Cal-COBRA Notice Obligations Run Through the Health Plan, Not Necessarily the Employer",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-02",
+      "body": "Cal-COBRA's notice chain is structured differently from federal COBRA's. Under Cal-COBRA, the group contract between the health care service plan and the employer must require the employer to notify the health care service plan, in writing, of an employee's termination-of-employment or reduction-of-hours qualifying event within 30 days of that event. The health care service plan itself is then the party the statute directs to act next: the plan (or an employer or administrator that has separately contracted with the plan to perform these notice and administrative services) must, within 14 days of receiving notice of the qualifying event, send the qualified beneficiary the benefits information, premium information, enrollment forms, and disclosures needed to elect continuation coverage. Separately, for qualifying events the employer may not independently know about — divorce or legal separation, a dependent losing dependent status, or a covered dependent's Medicare entitlement — the qualified beneficiary is instead responsible for notifying the health care service plan (or the employer, if the employer has contracted to perform that administrative function) within 60 days of the qualifying event.",
+      "gap": "This is one state's statute, used as real evidence of California's Cal-COBRA scheme — not a claim about which state's law governs a specific employer or plan. This clause quotes two different subdivisions of the same statutory section, Health and Safety Code § 1366.25 — subdivision (a) (employer-to-plan notice) and subdivision (e) (plan-to-beneficiary notice) — which are disclosed together here rather than as separate authorities; it also draws, without a separate quoted citation, on the beneficiary's own 60-day notice duty stated in Health and Safety Code § 1366.24(b). This clause states the general statutory notice structure; it does not identify who has actually performed which notice step for this particular company's plan, nor whether this employer's plan documents in fact allocate the health care service plan's administrative duties to the employer or a third-party administrator, which the statute allows by contract.",
+      "citations": [
+        {
+          "case": "Cal. Health & Safety Code § 1366.25(a) (California Legislative Information text)",
+          "cite": "California Health and Safety Code, Cal-COBRA employer notice to health care service plan",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=HSC&sectionNum=1366.25.",
+          "quote": "Every group contract between a health care service plan and an employer subject to this article that is issued, amended, or renewed on or after July 1, 1998, shall require the employer to notify the plan, in writing, of any employee who has had a qualifying event, as defined in paragraph (2) of subdivision (d) of Section 1366.21, within 30 days of the qualifying event."
+        },
+        {
+          "case": "Cal. Health & Safety Code § 1366.25(e) (California Legislative Information text)",
+          "cite": "California Health and Safety Code, Cal-COBRA health care service plan notice to qualified beneficiary",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=HSC&sectionNum=1366.25.",
+          "quote": "Every health care service plan, or employer or administrator that contracts to perform the notice and administrative services pursuant to this section, shall, within 14 days of receiving a notice of a qualifying event, provide to the qualified beneficiary the necessary benefits information, premium information, enrollment forms, and disclosures consistent with the notice requirements contained in subdivisions (b) and (c) of Section 1366.24 to allow the qualified beneficiary to formally elect continuation coverage."
+        }
+      ]
+    },
+    {
+      "id": "calcobra_premium_cap",
+      "title": "Cal-COBRA Premium Cap — Up to 110% of Applicable Rate",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-02",
+      "body": "California's Cal-COBRA statute caps what a health care service plan may charge a qualified beneficiary for continuation coverage at not more than 110% of the applicable rate charged for a covered employee, or, for dependent coverage, not more than 110% of the applicable rate charged to a similarly situated individual under the group benefit plan being continued. A higher cap of up to 150% of the group rate applies only to a qualified beneficiary determined to be disabled under Title II or Title XVI of the Social Security Act, and only after the first 18 months of continuation coverage. The estimated monthly premium under this article for {{employeeName}}'s continuation coverage is {{monthlyPremiumAmount}}.",
+      "gap": "This is one state's statute, used as real evidence of California's Cal-COBRA premium ceiling — not a claim about which state's law governs a specific employer or plan, and not a claim about what this particular health care service plan actually charges or what this particular qualified beneficiary will actually be billed. This clause cites a single statutory section (Health and Safety Code § 1366.26); no additional independent source was found for this. Cal-COBRA's 110% cap is higher than federal COBRA's 102% cap; this clause states California's own figure and does not restate the separate federal figure.",
+      "citations": [
+        {
+          "case": "Cal. Health & Safety Code § 1366.26 (California Legislative Information text)",
+          "cite": "California Health and Safety Code, Cal-COBRA premium cap",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=HSC&sectionNum=1366.26.",
+          "quote": "A qualified beneficiary electing continuation coverage shall pay to the health care service plan, on or before the due date of each payment but not more frequently than on a monthly basis, not more than 110 percent of the applicable rate charged for a covered employee or, in the case of dependent coverage, not more than 110 percent of the applicable rate charged to a similarly situated individual under the group benefit plan being continued under the group contract. In the case of a qualified beneficiary who is determined to be disabled pursuant to Title II or Title XVI of the United States Social Security Act, the qualified beneficiary shall be required to pay to the health care service plan an amount no greater than 150 percent of the group rate after the first 18 months of continuation coverage provided pursuant to this section."
+        }
+      ]
+    },
+    {
+      "id": "calcobra_coverage_duration",
+      "title": "Cal-COBRA Maximum Coverage Duration — 36 Months",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-02",
+      "body": "Unlike federal COBRA's tiered 18-month/36-month structure, California's Cal-COBRA statute sets a single maximum coverage period of 36 months after the date the qualified beneficiary's benefits would otherwise have terminated because of the qualifying event, regardless of which of the statute's qualifying-event categories applies. This 36-month outer limit applies both to a qualifying event that is a termination of employment or reduction of hours and to the other qualifying-event categories (death, divorce or legal separation, loss of dependent status, or a dependent's Medicare entitlement), subject to earlier termination on the other grounds the statute separately lists (for example, nonpayment of premium, the employer ceasing to offer any group benefit plan, or the qualified beneficiary moving out of the plan's service area). Continuation coverage elected in connection with the qualifying event identified for {{employeeName}} may last for up to {{maxCoverageMonths}} months under this statutory maximum, subject to those other statutory termination grounds.",
+      "gap": "This is one state's statute, used as real evidence of California's Cal-COBRA scheme — not a claim about which state's law governs a specific employer or plan. This clause quotes two different paragraphs of the same subdivision of the same statutory section, Health and Safety Code § 1366.27(a)(1) and § 1366.27(a)(3), which are disclosed together here rather than as separate authorities. This clause states the general 36-month maximum; it does not restate every one of the statute's other termination grounds in full, and it does not determine whether any of those other grounds has actually occurred for this particular qualified beneficiary.",
+      "citations": [
+        {
+          "case": "Cal. Health & Safety Code § 1366.27(a)(1) (California Legislative Information text)",
+          "cite": "California Health and Safety Code, Cal-COBRA 36-month maximum for termination/reduced-hours events",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=HSC&sectionNum=1366.27.",
+          "quote": "In the case of a qualified beneficiary who is eligible for continuation coverage pursuant to paragraph (2) of subdivision (d) of Section 1366.21, the date 36 months after the date the qualified beneficiary’s benefits under the contract would otherwise have terminated because of a qualifying event."
+        },
+        {
+          "case": "Cal. Health & Safety Code § 1366.27(a)(3) (California Legislative Information text)",
+          "cite": "California Health and Safety Code, Cal-COBRA 36-month maximum for other qualifying events",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=HSC&sectionNum=1366.27.",
+          "quote": "In the case of a qualified beneficiary who is eligible for continuation coverage pursuant to paragraph (1), (3), (4), or (5) of subdivision (d) of Section 1366.21, the date 36 months after the date the qualified beneficiary’s benefits under the contract would otherwise have terminated by reason of a qualifying event."
+        }
+      ]
+    },
+    {
+      "id": "calcobra_extension_after_federal_cobra",
+      "title": "Cal-COBRA Extension for People Who Exhaust Federal COBRA",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-02",
+      "body": "California law provides a further, separate right for someone who has exhausted federal COBRA continuation coverage and who was entitled to less than 36 months of it under COBRA. Under the Knox-Keene Act, a health care service plan must offer such an enrollee the opportunity to continue coverage for up to 36 months total, measured from the date the enrollee's COBRA continuation coverage began, on the same rate terms Cal-COBRA otherwise applies. A parallel provision in the Insurance Code imposes the same obligation on a health insurer providing coverage through an insured (rather than Knox-Keene-regulated) group health plan. Notification of this extension right must be included in the notice of pending COBRA termination that is otherwise required to be sent to COBRA beneficiaries.",
+      "gap": "This is one state's statute, used as real evidence of California's Cal-COBRA scheme — not a claim about which state's law governs a specific employer or plan. This clause cites two parallel provisions in two different California codes, Health and Safety Code § 1366.29(a) (health care service plans) and Insurance Code § 10128.59(a) (health insurers); each governs a different plan structure and neither restates the other. The 36-month period this extension describes runs from the date the enrollee's federal COBRA continuation coverage began, not from the date of the original qualifying event, and not from the date federal COBRA is exhausted; those dates will often be close together but are not stated by the statute to be identical. This clause does not determine which of the two provisions, if either, applies to a particular plan, or whether a particular person was in fact entitled to less than 36 months of coverage under federal COBRA.",
+      "citations": [
+        {
+          "case": "Cal. Health & Safety Code § 1366.29(a) (California Legislative Information text)",
+          "cite": "California Health and Safety Code, Cal-COBRA extension after exhausting federal COBRA",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=HSC&sectionNum=1366.29.",
+          "quote": "A health care service plan shall offer an enrollee who has exhausted continuation coverage under COBRA the opportunity to continue coverage for up to 36 months from the date the enrollee’s continuation coverage began, if the enrollee is entitled to less than 36 months of continuation coverage under COBRA. The health care service plan shall offer coverage pursuant to the terms of this article, including the rate limitations contained in Section 1366.26."
+        },
+        {
+          "case": "Cal. Insurance Code § 10128.59(a) (California Legislative Information text)",
+          "cite": "California Insurance Code, parallel Cal-COBRA extension for insured group plans",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=INS&sectionNum=10128.59.",
+          "quote": "A health insurer that provides coverage under a group benefit plan to an employer shall offer an insured who has exhausted continuation coverage under COBRA the opportunity to continue coverage for up to 36 months from the date the insured’s continuation coverage began if the insured is entitled to less than 36 months of continuation coverage under COBRA. The health insurer shall offer coverage pursuant to terms of this article, including the rate limitations contained in Section 10128.56."
+        }
+      ]
+    },
+    {
+      "id": "calcobra_election_notice_letter",
+      "title": "Cal-COBRA Election Notice Letter",
+      "kind": "drafting",
+      "body": "CAL-COBRA CONTINUATION COVERAGE ELECTION NOTICE\n\nDate: {{noticeDate}}\n\nTo: {{employeeName}}\n\nFrom: {{companyName}}, in connection with {{planName}}\n\nRe: Your Right to Elect Continuation Coverage Under California's Cal-COBRA Law\n\nThis notice is to inform you of rights that may be available to you under California's Cal-COBRA statute (Health and Safety Code § 1366.20 et seq.), a state law separate from federal COBRA that applies to certain group health plans offered by small employers.\n\n1. Qualifying Event. On {{qualifyingEventDate}}, the following qualifying event was identified: {{qualifyingEventType}}. This event resulted, or will result, in a loss of coverage under {{planName}}.\n\n2. Who May Elect Coverage. You, and any covered spouse or dependent children who were enrolled under the plan immediately before the qualifying event, are each a \"qualified beneficiary\" under Cal-COBRA and may independently elect continuation coverage.\n\n3. Notice and Election Timing. California law requires an employer to notify the health care service plan of a termination or reduced-hours qualifying event within 30 days of that event, and requires the health care service plan (or an employer or administrator under contract to perform this function) to send you the information needed to elect continuation coverage within 14 days after that notice is received. You then have 60 days from the later of (a) the date your coverage under the plan would otherwise end, or (b) the date this notice is sent to you, to elect continuation coverage.\n\n4. Cost of Coverage. If you elect continuation coverage, California law permits the health care service plan to charge up to 110% of the applicable rate. The estimated monthly premium is {{monthlyPremiumAmount}}. Your first premium payment is not due until 45 days after the date you provide written notice of your election.\n\n5. Duration of Coverage. Continuation coverage elected in connection with this qualifying event may last for up to {{maxCoverageMonths}} months under California's Cal-COBRA statute, subject to the statutory grounds for earlier termination (for example, nonpayment of premium, the employer ceasing to offer any group benefit plan, or moving outside the plan's service area).\n\n6. How to Elect. To elect continuation coverage, complete and return the attached election form, by first-class mail or other reliable means of delivery, to {{planAdministratorName}} at {{planAdministratorAddress}} by {{electionDeadline}}.\n\nThis notice summarizes rights that may be available under California's Cal-COBRA statute. It is not a complete description of the statute or of the plan, and it does not modify the plan's actual terms."
+    },
+    {
+      "id": "calcobra_election_form",
+      "title": "Cal-COBRA Continuation Coverage Election Form",
+      "kind": "drafting",
+      "body": "CAL-COBRA CONTINUATION COVERAGE ELECTION FORM\n\nI, {{employeeName}}, have received the Cal-COBRA Continuation Coverage Election Notice from {{companyName}} dated {{noticeDate}} regarding {{planName}}.\n\nQualifying Event: {{qualifyingEventType}}, effective {{qualifyingEventDate}}.\n\nI elect the following (check applicable):\n[  ] I elect to continue coverage for myself.\n[  ] I elect to continue coverage for the following qualified beneficiaries: {{additionalBeneficiaryName}}.\n[  ] I decline continuation coverage for myself and all listed qualified beneficiaries.\n\nI understand that, under California's Cal-COBRA statute:\n- This election, if made, must be delivered no later than {{electionDeadline}}.\n- My first premium payment is due no later than 45 days after the date I provide written notice of this election, and must be sufficient to cover all premiums then due.\n- The premium charged may be up to 110% of the applicable rate (or, if I am later determined disabled under Title II or Title XVI of the Social Security Act, up to 150% of the group rate after the first 18 months of continuation coverage).\n- Continuation coverage, once elected, is subject to the terms of {{planName}} and to applicable law, including the statutory grounds on which continuation coverage may terminate before the end of the maximum coverage period (for example, nonpayment of premium, the qualified beneficiary becoming covered under another group health plan, the employer ceasing to offer any group benefit plan, or the qualified beneficiary moving outside the plan's service area).\n\nSignature: ______________________  Date: {{dateSigned}}\n\nPrint Name: {{employeeName}}"
     }
   ]
 }
