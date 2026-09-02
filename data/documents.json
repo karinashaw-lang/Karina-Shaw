@@ -13147,5 +13147,38 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "cfra_info_sheet",
+    "title": "California Family Rights Act (CFRA) — Information Sheet",
+    "description": "Information about California's own family/medical leave law, Government Code § 12945.2 — its 5-employee coverage threshold, eligibility, broader family-member definitions than federal FMLA, restoration rights, and how CFRA and FMLA leave run together.",
+    "categories": [
+      "During employment"
+    ],
+    "clauseOrder": [
+      "cfra_covered_employers",
+      "cfra_eligibility",
+      "cfra_qualifying_reasons",
+      "cfra_family_definitions",
+      "cfra_request_details",
+      "cfra_restoration",
+      "cfra_no_interference",
+      "cfra_fmla_relationship",
+      "cfra_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme Corp",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      }
+    ]
   }
 ]
