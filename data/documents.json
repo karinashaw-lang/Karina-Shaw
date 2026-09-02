@@ -6266,5 +6266,56 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "copyright_registration_info_sheet",
+    "title": "Copyright Registration (U.S. Copyright Office) — Information Sheet",
+    "description": "An information sheet describing the federal statutory framework for registering a copyright with the U.S. Copyright Office: what copyright protects and the idea/expression distinction, the basic term of protection, that registration is optional rather than a condition of copyright's existence, the deposit and application requirements, the certificate of registration's evidentiary effect, registration (or its refusal) as a precondition to filing an infringement lawsuit, and the safe-harbor timing rule for statutory damages and attorney's fees. Distinct from the existing Copyright Assignment Agreement, which concerns transferring ownership of an existing copyright rather than registering one.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "copyrightreg_work_and_claimant_info",
+      "copyrightreg_subject_matter_and_idea_expression",
+      "copyrightreg_basic_term_of_copyright",
+      "copyrightreg_registration_permissive_not_mandatory",
+      "copyrightreg_deposit_and_application_requirements",
+      "copyrightreg_certificate_and_evidentiary_effect",
+      "copyrightreg_precondition_to_infringement_suit",
+      "copyrightreg_safe_harbor_statutory_damages_fees",
+      "copyrightreg_record_and_signature"
+    ],
+    "fields": [
+      {
+        "id": "claimantName",
+        "label": "Author/copyright claimant name",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "workTitle",
+        "label": "Title of the work",
+        "placeholder": "Riverbend (novel)",
+        "required": true
+      },
+      {
+        "id": "workDescription",
+        "label": "Description of the work",
+        "placeholder": "A full-length literary work of fiction, approximately 90,000 words",
+        "required": true
+      },
+      {
+        "id": "creationDate",
+        "label": "Date the work was created (completed)",
+        "placeholder": "January 15, 2026",
+        "required": true
+      },
+      {
+        "id": "firstPublicationDate",
+        "label": "Date of first publication, if published",
+        "placeholder": "March 1, 2026",
+        "required": false
+      }
+    ]
   }
 ]
