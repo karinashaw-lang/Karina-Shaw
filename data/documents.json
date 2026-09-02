@@ -7524,5 +7524,63 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "domestic_partnership_dissolution_info_sheet",
+    "title": "Domestic Partnership Dissolution — Information Sheet",
+    "description": "Explains how a California registered domestic partnership is legally terminated: the Secretary of State's administrative Notice of Termination track and its eligibility conditions, the judicial dissolution track for partnerships that don't qualify, the same-rights-and-duties statute that ties dissolution largely to marital dissolution procedures, property/support/custody standards, and one express statutory carve-out.",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "dpdissolution_declaration",
+      "dpdissolution_administrative_notice_eligibility",
+      "dpdissolution_administrative_effect_revocation_challenge",
+      "dpdissolution_court_track_same_as_marriage",
+      "dpdissolution_effective_date_and_transition",
+      "dpdissolution_same_rights_and_duties_general",
+      "dpdissolution_children_custody_standards",
+      "dpdissolution_property_and_support_standards",
+      "dpdissolution_express_carveout_ltc",
+      "dpdissolution_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "party1Name",
+        "label": "First partner's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "party2Name",
+        "label": "Second partner's name",
+        "placeholder": "Taylor Morgan",
+        "required": true
+      },
+      {
+        "id": "registrationDate",
+        "label": "Date the domestic partnership was registered",
+        "placeholder": "June 1, 2018",
+        "required": true
+      },
+      {
+        "id": "countyOfFiling",
+        "label": "County where filing",
+        "placeholder": "San Francisco County",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "October 15, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "San Francisco, California",
+        "required": true
+      }
+    ]
   }
 ]
