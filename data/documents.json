@@ -11778,5 +11778,66 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "workers_compensation_retaliation_132a_info_sheet",
+    "title": "Workers' Compensation Retaliation (Labor Code Section 132a) — Information Sheet",
+    "description": "Explains California Labor Code section 132a, a distinct statute prohibiting an employer from discharging, threatening, or discriminating against an employee for filing or intending to file a workers' compensation claim, receiving a rating/award/settlement, or testifying in another employee's case, and a parallel prohibition on insurer inducement. Covers the remedy the statute itself authorizes (increased compensation and reinstatement/reimbursement) and the genuinely distinct procedure -- a petition filed with, and adjudicated by, the Workers' Compensation Appeals Board rather than a superior court civil action, subject to a one-year deadline. Distinct from this corpus's existing Wrongful Termination in Violation of Public Policy document, which covers section 1102.5 and section 98.6 retaliation.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "wc132a_declaration",
+      "wc132a_declared_policy_and_core_prohibition",
+      "wc132a_insurer_inducement",
+      "wc132a_testimony_protection",
+      "wc132a_remedy_structure",
+      "wc132a_wcab_petition_procedure_and_deadline",
+      "wc132a_closing_signature"
+    ],
+    "fields": [
+      {
+        "id": "employeeName",
+        "label": "Employee's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme Innovations LLC",
+        "required": true
+      },
+      {
+        "id": "allegedProtectedActivity",
+        "label": "Workers' compensation-related activity believed connected to the adverse action",
+        "placeholder": "Filed a workers' compensation claim on...",
+        "required": true
+      },
+      {
+        "id": "allegedAdverseAction",
+        "label": "Adverse action believed connected to that activity",
+        "placeholder": "Describe the adverse action",
+        "required": true
+      },
+      {
+        "id": "adverseActionDate",
+        "label": "Date of the adverse action",
+        "placeholder": "August 15, 2026",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 2, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, state",
+        "placeholder": "Sacramento, California",
+        "required": true
+      }
+    ]
   }
 ]
