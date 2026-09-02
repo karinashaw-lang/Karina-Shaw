@@ -5557,5 +5557,55 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "retirement_401k_distribution_notice",
+    "title": "401(k)/Retirement Plan Distribution Notice at Termination",
+    "description": "A notice describing what happens to a former employee's employer-sponsored retirement plan account at termination under federal tax law and ERISA: the tax-free rollover mechanism and 60-day window, what counts as an eligible rollover distribution, the direct-rollover right, mandatory 20% withholding on distributions paid directly to the employee, the plan administrator's required written explanation (the 402(f) notice), and vesting rules for employer contributions.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "retirement401k_declaration",
+      "retirement401k_rollover_right",
+      "retirement401k_eligible_rollover_distribution_defined",
+      "retirement401k_direct_rollover_right",
+      "retirement401k_mandatory_withholding",
+      "retirement401k_notice_requirement",
+      "retirement401k_vesting",
+      "retirement401k_statement_and_signature"
+    ],
+    "fields": [
+      {
+        "id": "employeeName",
+        "label": "Employee/former employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "terminationDate",
+        "label": "Termination date",
+        "placeholder": "October 1, 2026",
+        "required": true
+      },
+      {
+        "id": "planName",
+        "label": "Retirement plan name",
+        "placeholder": "Acme, Inc. 401(k) Plan",
+        "required": true
+      },
+      {
+        "id": "vestedBalance",
+        "label": "Vested account balance (if known)",
+        "placeholder": "$18,450.00",
+        "required": false
+      }
+    ]
   }
 ]
