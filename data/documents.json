@@ -4545,7 +4545,6 @@
     "id": "hoa_ccr_disclosure",
     "title": "HOA / CC&R Disclosure (Davis-Stirling Common Interest Development Disclosure)",
     "description": "An informational disclosure package describing the governing documents, financial statements, assessment status, and other Civil Code § 4525 items a seller of a home in a California common-interest development (HOA) must provide to a buyer, separate from the standard Transfer Disclosure Statement.",
-    "category": "Real Estate",
     "clauseOrder": [
       "hoadisc_intro",
       "hoadisc_document_list",
@@ -4586,13 +4585,15 @@
         "placeholder": "350",
         "required": true
       }
+    ],
+    "categories": [
+      "Real Estate"
     ]
   },
   {
     "id": "ccpa_service_provider_agreement",
     "title": "CCPA Service Provider Data Processing Agreement",
     "description": "A data processing agreement establishing the contract terms California's Consumer Privacy Act (as amended by the CPRA) requires between a business and a vendor processing personal information on its behalf, so the vendor qualifies as a \"service provider\" and the disclosure is not treated as a \"sale\" or \"share\" of personal information.",
-    "category": "Confidentiality & IP",
     "clauseOrder": [
       "ccpasp_recitals",
       "ccpasp_definitions_business_and_service_provider",
@@ -4621,13 +4622,15 @@
         "placeholder": "processing customer support tickets and providing technical support services",
         "required": true
       }
+    ],
+    "categories": [
+      "Confidentiality & IP"
     ]
   },
   {
     "id": "commission_payout_statement",
     "title": "Commission Payout Upon Termination — Statement of Earned but Unpaid Commissions",
     "description": "An informational statement identifying a commission a former employee contends was already earned, under the terms of the commission agreement, before employment ended — as distinct from a commission that was merely anticipated or still contingent — and that remains unpaid.",
-    "category": "Ending employment",
     "clauseOrder": [
       "commpayout_declaration",
       "commpayout_wages_include_commissions",
@@ -4680,13 +4683,15 @@
         "placeholder": "5% of net sales revenue, earned upon the customer's countersignature of the contract, paid on the next regular payday",
         "required": true
       }
+    ],
+    "categories": [
+      "Ending employment"
     ]
   },
   {
     "id": "adult_conservatorship_petition_info",
     "title": "Conservatorship of an Adult — Petition Information Sheet",
     "description": "An informational sheet describing California's court process for appointing a conservator of the person, the estate, or both, for an adult who cannot care for themself or manage their finances — distinct from guardianship (for minors) or a power of attorney (a private designation made while still competent). Does not itself establish a conservatorship; only a court order does.",
-    "category": "Estate Planning",
     "clauseOrder": [
       "conserv_scope_and_petitioners",
       "conserv_two_types_and_standard",
@@ -4734,6 +4739,9 @@
         "placeholder": "Sacramento, California",
         "required": true
       }
+    ],
+    "categories": [
+      "Estate Planning"
     ]
   }
 ]
