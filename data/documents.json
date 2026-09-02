@@ -7749,5 +7749,86 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "pet_trust_info_sheet",
+    "title": "Pet Trust — Information Sheet",
+    "description": "Explains California's statutory pet trust (Prob. Code section 15212): the trust's authorization and termination on the animal's death, what counts as a covered animal, the use restriction and distribution of remaining funds, who can enforce the trust, trustee vacancy and court supervision, the accounting duty and its $40,000 waiver threshold, inspection rights, and how the statute displaces the older honorary-trust doctrine for pet gifts.",
+    "categories": [
+      "Estate Planning"
+    ],
+    "clauseOrder": [
+      "pettrust_declaration",
+      "pettrust_core_authorization",
+      "pettrust_animal_scope_limitation",
+      "pettrust_use_restriction_and_distribution",
+      "pettrust_enforcement_standing",
+      "pettrust_trustee_vacancy_and_court_authority",
+      "pettrust_accounting_threshold_and_inspection",
+      "pettrust_displaces_honorary_trust_doctrine",
+      "pettrust_signature_and_acknowledgment"
+    ],
+    "fields": [
+      {
+        "id": "settlorName",
+        "label": "Settlor's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "settlorCounty",
+        "label": "Settlor's county of residence",
+        "placeholder": "San Francisco County",
+        "required": true
+      },
+      {
+        "id": "trustName",
+        "label": "Name of the trust",
+        "placeholder": "The Jordan Alex Lee Pet Trust",
+        "required": true
+      },
+      {
+        "id": "animalDescription",
+        "label": "Description of the animal(s) covered",
+        "placeholder": "a dog named Biscuit and a cat named Whiskers",
+        "required": true
+      },
+      {
+        "id": "caretakerName",
+        "label": "Caretaker's name",
+        "placeholder": "Taylor Morgan",
+        "required": true
+      },
+      {
+        "id": "successorCaretakerName",
+        "label": "Successor caretaker's name (optional)",
+        "placeholder": "Casey Rivera",
+        "required": false
+      },
+      {
+        "id": "enforcerName",
+        "label": "Designated enforcer's name (optional)",
+        "placeholder": "Casey Rivera",
+        "required": false
+      },
+      {
+        "id": "trustFundingAmount",
+        "label": "Amount funding the trust",
+        "placeholder": "$20,000",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "October 15, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "San Francisco, California",
+        "required": true
+      }
+    ]
   }
 ]
