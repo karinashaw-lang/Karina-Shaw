@@ -9355,5 +9355,68 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "nonprofit_religious_corporation_info_sheet",
+    "title": "Nonprofit Religious Corporation — Formation Information Sheet",
+    "description": "Explains California's Nonprofit Religious Corporation Law, the third branch of the state's nonprofit corporation statutes alongside the Public Benefit and Mutual Benefit laws already covered in this corpus: required articles content, the 'primarily or exclusively... religious purposes' eligibility standard, the Attorney General's reduced oversight role (a blanket statutory bar with narrow carve-outs), how the no-distributions rule applies by cross-reference with a narrower enforcement list, dissolution with a weaker Attorney General role, a genuine governance-flexibility difference in director removal, and the separate federal tax-exempt question.",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "religcorp_purpose_and_agent_declaration",
+      "religcorp_required_content",
+      "religcorp_eligibility_standard",
+      "religcorp_attorney_general_oversight_exemption",
+      "religcorp_distributions_cross_reference",
+      "religcorp_dissolution_reduced_ag_role",
+      "religcorp_governance_removal_flexibility",
+      "religcorp_federal_tax_exempt_cross_reference",
+      "religcorp_incorporator_signature"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Nonprofit corporation name",
+        "placeholder": "Acme Fellowship",
+        "required": true
+      },
+      {
+        "id": "religiousPurposeScope",
+        "label": "Description of religious purpose",
+        "placeholder": "the advancement of religious worship and education",
+        "required": true
+      },
+      {
+        "id": "additionalPurposeDescription",
+        "label": "Additional purpose description (optional)",
+        "placeholder": "and to operate a religious school",
+        "required": false
+      },
+      {
+        "id": "principalOfficeAddress",
+        "label": "Principal office address",
+        "placeholder": "500 Market St, San Francisco, CA 94105",
+        "required": true
+      },
+      {
+        "id": "agentName",
+        "label": "Agent for service of process name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "agentAddress",
+        "label": "Agent's California street address",
+        "placeholder": "500 Market St, San Francisco, CA 94105",
+        "required": true
+      },
+      {
+        "id": "incorporatorName",
+        "label": "Incorporator name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      }
+    ]
   }
 ]
