@@ -11706,5 +11706,35 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "post_offer_medical_examination_info_sheet",
+    "title": "Post-Offer, Pre-Employment Medical Examination — Information Sheet",
+    "description": "Explains federal (ADA) and California (FEHA) law governing when an employer may require a job applicant to undergo a medical examination or answer disability-related questions: the pre-offer prohibition, the conditions under which a post-offer exam is permitted, confidentiality requirements for exam results, and the standard for withdrawing an offer if the exam reveals a disability. Distinct from this corpus's existing Background Check Disclosure & Authorization, Pre-Employment and Workplace Drug Testing, and ADA Reasonable Accommodation Request Form documents.",
+    "categories": [
+      "Hiring"
+    ],
+    "clauseOrder": [
+      "medexam_purpose",
+      "medexam_preoffer_prohibition",
+      "medexam_postoffer_permitted",
+      "medexam_confidentiality",
+      "medexam_withdrawal_standard",
+      "medexam_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme Innovations LLC",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Applicant/employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      }
+    ]
   }
 ]
