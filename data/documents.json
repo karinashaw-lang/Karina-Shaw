@@ -8042,5 +8042,61 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "professional_corporation_info_sheet",
+    "title": "Professional Corporation — Formation Information Sheet",
+    "description": "Explains California's Moscone-Knox Professional Corporation Act, governing how licensed professionals incorporate: the general regulatory framework and its board-specific carve-outs, share ownership restrictions and their narrow minority exception, naming requirements, why incorporation does not shield a professional from liability for their own malpractice, the General Corporation Law's role, and the separate licensing board registration step.",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "profcorp_articles_declaration",
+      "profcorp_definition_and_framework",
+      "profcorp_ownership_restrictions",
+      "profcorp_naming_requirements",
+      "profcorp_liability_not_shielded",
+      "profcorp_relationship_to_gcl",
+      "profcorp_licensing_board_registration",
+      "profcorp_incorporator_signature"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Professional corporation name",
+        "placeholder": "Acme Law Corporation",
+        "required": true
+      },
+      {
+        "id": "professionType",
+        "label": "Licensed profession",
+        "placeholder": "law",
+        "required": true
+      },
+      {
+        "id": "principalOfficeAddress",
+        "label": "Principal office address",
+        "placeholder": "500 Market St, San Francisco, CA 94105",
+        "required": true
+      },
+      {
+        "id": "agentName",
+        "label": "Agent for service of process name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "agentAddress",
+        "label": "Agent's California street address",
+        "placeholder": "500 Market St, San Francisco, CA 94105",
+        "required": true
+      },
+      {
+        "id": "incorporatorName",
+        "label": "Incorporator name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      }
+    ]
   }
 ]
