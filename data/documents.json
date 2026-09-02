@@ -5519,5 +5519,43 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "i9_employment_eligibility_info_sheet",
+    "title": "I-9 Employment Eligibility Verification — Information Sheet",
+    "description": "An informational sheet describing the federal Form I-9 process under the Immigration Reform and Control Act: the prohibition on knowingly hiring or continuing to employ an unauthorized alien, the attestation and document-examination requirement, verification timing, civil penalties, retention, and the separate anti-discrimination protection layered on top of verification.",
+    "categories": [
+      "Hiring"
+    ],
+    "clauseOrder": [
+      "i9_scope",
+      "i9_knowing_employment_prohibition",
+      "i9_verification_attestation",
+      "i9_verification_timing",
+      "i9_civil_penalties",
+      "i9_retention_no_filing",
+      "i9_antidiscrimination",
+      "i9_closing"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "startDate",
+        "label": "Start date",
+        "placeholder": "October 1, 2026",
+        "required": true
+      }
+    ]
   }
 ]
