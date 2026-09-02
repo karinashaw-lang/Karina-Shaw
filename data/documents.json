@@ -5071,5 +5071,74 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "petition_for_probate_info_sheet",
+    "title": "Petition for Probate — Information Sheet",
+    "description": "An informational sheet describing California's formal, court-supervised probate process for estates that don't use the small-estate procedures — who may petition, required petition contents, notice and creditor claims, the intestate administrator priority order, the requirement of Letters before a personal representative has authority to act, and Independent Administration of Estates Act authority. Does not itself open probate or appoint anyone; only a court order does that.",
+    "categories": [
+      "Estate Planning"
+    ],
+    "clauseOrder": [
+      "probate_declaration",
+      "probate_scope_and_who_may_petition",
+      "probate_no_general_filing_deadline",
+      "probate_petition_required_contents",
+      "probate_notice_of_hearing_and_creditor_claims",
+      "probate_intestate_administrator_priority",
+      "probate_letters_required_before_authority",
+      "probate_independent_administration_vs_court_supervision",
+      "probate_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "petitionerName",
+        "label": "Petitioner's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "decedentName",
+        "label": "Decedent's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "dateOfDeath",
+        "label": "Date of death",
+        "placeholder": "August 1, 2026",
+        "required": true
+      },
+      {
+        "id": "placeOfDeath",
+        "label": "Place of death",
+        "placeholder": "Sacramento, California",
+        "required": true
+      },
+      {
+        "id": "relationshipToDecedent",
+        "label": "Relationship to decedent",
+        "placeholder": "adult child",
+        "required": true
+      },
+      {
+        "id": "estimatedEstateValue",
+        "label": "Character and estimated value of estate property",
+        "placeholder": "Real property and financial accounts with an estimated total value of $650,000",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, state",
+        "placeholder": "Sacramento, California",
+        "required": true
+      }
+    ]
   }
 ]
