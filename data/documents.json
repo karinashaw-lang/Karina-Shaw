@@ -6103,5 +6103,67 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "wrongful_termination_public_policy_info_sheet",
+    "title": "Wrongful Termination in Violation of Public Policy — Information Sheet",
+    "description": "An information sheet describing California's at-will employment default and the statutory retaliation protections most relevant to evaluating whether a termination may have violated public policy: Labor Code section 1102.5's protections for reporting a suspected legal violation, refusing to break the law, and carrying that protection from a former job, its civil-penalty and attorney's-fee provisions, a separate statute protecting wage claims and Labor Commissioner complaints (Labor Code section 98.6), and the general personal-injury filing deadline potentially relevant to this kind of claim.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "wrongfulterm_declaration",
+      "wrongfulterm_at_will_baseline",
+      "wrongfulterm_1102_5_protected_disclosure",
+      "wrongfulterm_1102_5_refusal_and_scope",
+      "wrongfulterm_1102_5_penalty",
+      "wrongfulterm_98_6_wage_retaliation",
+      "wrongfulterm_tort_characterization",
+      "wrongfulterm_closing_signature"
+    ],
+    "fields": [
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Morgan T. Ellis",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Company/employer name",
+        "placeholder": "Acme Manufacturing, Inc.",
+        "required": true
+      },
+      {
+        "id": "terminationDate",
+        "label": "Termination date",
+        "placeholder": "March 14, 2026",
+        "required": true
+      },
+      {
+        "id": "allegedProtectedActivity",
+        "label": "Activity or report believed to be legally protected",
+        "placeholder": "Reported suspected wage-and-hour violations to the payroll manager",
+        "required": false
+      },
+      {
+        "id": "allegedPolicyViolated",
+        "label": "Law, regulation, or public policy believed to be implicated",
+        "placeholder": "California wage-and-hour law requiring payment of overtime",
+        "required": false
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "April 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, State",
+        "placeholder": "Fresno, California",
+        "required": true
+      }
+    ]
   }
 ]
