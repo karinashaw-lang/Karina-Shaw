@@ -11944,5 +11944,66 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "tenant_habitability_remedies_repair_deduct_retaliation_info_sheet",
+    "title": "Tenant Habitability Remedies: Repair-and-Deduct and Retaliation Protection — Information Sheet",
+    "description": "Explains two related California Civil Code provisions beyond the corpus's existing general habitability clause: section 1942's repair-and-deduct-or-vacate remedy (cost cap, timing presumption, tenant-caused-condition exclusion) and section 1942.5's 180-day retaliation protection (the protected tenant activities that trigger it, the frequency limit, immigration-status reporting as retaliation, the landlord's stated-ground safe harbor, and the remedies and penalties for a violation).",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "repairdeduct_notice_declaration",
+      "repairdeduct_remedy",
+      "repairdeduct_notice_and_exclusions",
+      "repairdeduct_retaliation_prohibition",
+      "repairdeduct_retaliation_limits_and_rebuttal",
+      "repairdeduct_retaliation_remedies",
+      "repairdeduct_signature_record"
+    ],
+    "fields": [
+      {
+        "id": "tenantName",
+        "label": "Tenant's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "landlordName",
+        "label": "Landlord's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "propertyAddress",
+        "label": "Rental property address",
+        "placeholder": "123 Main St., Sacramento, CA 95814",
+        "required": true
+      },
+      {
+        "id": "noticeDate",
+        "label": "Date notice was given to landlord",
+        "placeholder": "August 15, 2026",
+        "required": true
+      },
+      {
+        "id": "habitabilityDefectDescription",
+        "label": "Description of the condition needing repair",
+        "placeholder": "Describe the condition",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 2, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, state",
+        "placeholder": "Sacramento, California",
+        "required": true
+      }
+    ]
   }
 ]
