@@ -10727,5 +10727,37 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "bereavement_leave_info_sheet",
+    "title": "Bereavement Leave — Information Sheet",
+    "description": "Explains California's statutory bereavement leave requirement (Gov. Code §12945.7, added by AB 1949): the core 5-day entitlement, the 5+ employee coverage threshold, the 30-day tenure eligibility requirement, the 3-month timing window and default unpaid status, the employer's limited documentation rights and confidentiality mandate, and the statute's own dedicated anti-retaliation and anti-interference provisions.",
+    "categories": [
+      "During employment"
+    ],
+    "clauseOrder": [
+      "bereavement_request_notice",
+      "bereavement_entitlement",
+      "bereavement_employer_coverage",
+      "bereavement_eligibility",
+      "bereavement_timing_and_pay",
+      "bereavement_documentation",
+      "bereavement_retaliation",
+      "bereavement_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      }
+    ]
   }
 ]
