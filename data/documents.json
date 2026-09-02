@@ -12976,5 +12976,66 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "shareholder_derivative_lawsuit_info_sheet",
+    "title": "Shareholder Derivative Lawsuit — Information Sheet",
+    "description": "Information about the procedural conditions California Corporations Code § 800 imposes on a shareholder suing on behalf of a corporation — contemporaneous ownership, the demand-on-the-board requirement, and the security bond motion.",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "derivsuit_declaration",
+      "derivsuit_scope_and_definitions",
+      "derivsuit_contemporaneous_ownership",
+      "derivsuit_demand_requirement",
+      "derivsuit_security_bond_motion",
+      "derivsuit_bond_consequences",
+      "derivsuit_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Corporation name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "entityType",
+        "label": "Entity type",
+        "placeholder": "stock corporation",
+        "required": true
+      },
+      {
+        "id": "shareholderName",
+        "label": "Shareholder's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "transactionDescription",
+        "label": "Transaction or conduct at issue, if applicable",
+        "placeholder": "The board's approval of a related-party asset sale below market value",
+        "required": false
+      },
+      {
+        "id": "demandDetails",
+        "label": "Efforts to secure board action, or reasons for not making them",
+        "placeholder": "Written demand sent to the board on August 1, 2026, requesting an investigation; no response received within 60 days",
+        "required": false
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
