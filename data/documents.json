@@ -6426,5 +6426,68 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "dlse_wage_claim_info_sheet",
+    "title": "Wage Claim with the California Labor Commissioner (Berman Hearing) — Information Sheet",
+    "description": "An information sheet describing the administrative process for filing an unpaid-wage claim with California's Division of Labor Standards Enforcement (DLSE) — commonly called a 'Berman hearing' — distinct from a private demand letter and distinct from filing a lawsuit. Covers the Labor Commissioner's intake and hearing authority, the notice and answer procedure, the order, decision, or award (ODA) and its contents, the 10-day appeal deadline and trial de novo standard, the employer-specific bond requirement on appeal, the fee-shifting rule for an unsuccessful appeal, finality and entry of judgment when no appeal is filed, and the general civil filing deadlines that may apply to an underlying wage claim.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "dlsewageclaim_declaration",
+      "dlsewageclaim_98_intake_and_hearing",
+      "dlsewageclaim_98_notice_and_answer",
+      "dlsewageclaim_98_1_order_decision_award",
+      "dlsewageclaim_98_2_appeal_deadline_and_bond",
+      "dlsewageclaim_98_2_fee_shifting",
+      "dlsewageclaim_98_2_finality_and_judgment",
+      "dlsewageclaim_wage_claim_limitations_periods",
+      "dlsewageclaim_closing_signature"
+    ],
+    "fields": [
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Morgan T. Ellis",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Company/employer name",
+        "placeholder": "Acme Manufacturing, Inc.",
+        "required": true
+      },
+      {
+        "id": "wageClaimBasis",
+        "label": "What the claimed wages are for",
+        "placeholder": "Unpaid overtime for hours worked over 8 per day",
+        "required": true
+      },
+      {
+        "id": "unpaidWagesAmount",
+        "label": "Amount currently identified as owed",
+        "placeholder": ",200.00",
+        "required": false
+      },
+      {
+        "id": "terminationDate",
+        "label": "Termination date, if applicable",
+        "placeholder": "March 14, 2026",
+        "required": false
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "April 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, State",
+        "placeholder": "Fresno, California",
+        "required": true
+      }
+    ]
   }
 ]
