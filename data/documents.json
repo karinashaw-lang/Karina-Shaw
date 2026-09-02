@@ -5220,5 +5220,49 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "trademark_registration_info_sheet",
+    "title": "Trademark Registration (USPTO Application) Information Sheet",
+    "description": "An informational sheet describing federal trademark registration under the Lanham Act: the use-based and intent-to-use filing bases, the statutory \"use in commerce\" standard, refusal grounds (confusing similarity, descriptiveness, secondary meaning), unregistered common-law rights, and the benefits registration adds (constructive notice, incontestability, the ® symbol).",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "tmreg_applicant_and_mark_info",
+      "tmreg_filing_basis_use_vs_itu",
+      "tmreg_basis_for_filing",
+      "tmreg_use_in_commerce_standard",
+      "tmreg_refusal_grounds",
+      "tmreg_common_law_vs_federal_rights",
+      "tmreg_registration_notice_and_incontestability",
+      "tmreg_registration_symbol"
+    ],
+    "fields": [
+      {
+        "id": "applicantName",
+        "label": "Applicant's name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "trademarkDescription",
+        "label": "Description of the mark",
+        "placeholder": "ACME (standard character mark)",
+        "required": true
+      },
+      {
+        "id": "goodsServicesDescription",
+        "label": "Goods and/or services",
+        "placeholder": "Class 42: providing temporary use of online, non-downloadable software for project management",
+        "required": true
+      },
+      {
+        "id": "firstUseDate",
+        "label": "Date of first use in commerce (if applicable)",
+        "placeholder": "March 3, 2025",
+        "required": false
+      }
+    ]
   }
 ]
