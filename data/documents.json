@@ -7446,5 +7446,39 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "california_paid_sick_leave_info_sheet",
+    "title": "California Paid Sick Leave — Information Sheet",
+    "description": "Explains the Healthy Workplaces, Healthy Families Act: accrual methods and caps, permitted reasons for use, the family member definition, no-payout-at-termination with a rehire exception, anti-retaliation protection, posting and recordkeeping duties, and the statute's own coverage exemptions.",
+    "categories": [
+      "During employment"
+    ],
+    "clauseOrder": [
+      "sickleave_declaration_and_scope",
+      "sickleave_short_title_and_scope",
+      "sickleave_accrual_alternative_method_and_caps",
+      "sickleave_permissible_reasons_for_use",
+      "sickleave_family_member_definition",
+      "sickleave_no_payout_at_termination",
+      "sickleave_retaliation_protection",
+      "sickleave_poster_recordkeeping_and_notice_duties",
+      "sickleave_exemptions_from_coverage",
+      "sickleave_acknowledgment"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme Corp",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      }
+    ]
   }
 ]
