@@ -9257,5 +9257,103 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "uifsa_registration_info_sheet",
+    "title": "UIFSA — Registration of an Out-of-State Support Order Information Sheet",
+    "description": "Explains California's current recodification of the Uniform Interstate Family Support Act (Fam. Code sections 5700.101-5700.905): registering an out-of-state support order for enforcement, the continuing-exclusive-jurisdiction principle (including a genuine asymmetry between child and spousal support), the distinct additional requirements for registering to seek a modification, the limited enumerated defenses available to contest a registered order, the effect of registration and confirmation, and the choice-of-law rule for arrears and interest versus California's own enforcement procedures.",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "uifsa_registration_declaration",
+      "uifsa_registration_enforcement",
+      "uifsa_continuing_exclusive_jurisdiction",
+      "uifsa_modification_vs_enforcement_registration",
+      "uifsa_contesting_registered_order",
+      "uifsa_effect_of_registration_and_confirmation",
+      "uifsa_choice_of_law_arrears_interest",
+      "uifsa_signature_certification_block"
+    ],
+    "fields": [
+      {
+        "id": "registeringPartyName",
+        "label": "Registering party's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "obligorName",
+        "label": "Obligor's name",
+        "placeholder": "Taylor Morgan",
+        "required": true
+      },
+      {
+        "id": "obligeeName",
+        "label": "Obligee's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "issuingState",
+        "label": "Issuing state",
+        "placeholder": "Texas",
+        "required": true
+      },
+      {
+        "id": "issuingCourtName",
+        "label": "Issuing court's name",
+        "placeholder": "District Court of Travis County, Texas",
+        "required": true
+      },
+      {
+        "id": "issuingCaseNumber",
+        "label": "Issuing court's case number",
+        "placeholder": "D-1-FM-24-001234",
+        "required": true
+      },
+      {
+        "id": "orderIssuanceDate",
+        "label": "Date the order was issued",
+        "placeholder": "March 1, 2022",
+        "required": true
+      },
+      {
+        "id": "orderedSupportAmount",
+        "label": "Ordered support amount",
+        "placeholder": "$1,200 per month",
+        "required": true
+      },
+      {
+        "id": "arrearsAmount",
+        "label": "Arrears amount, if any",
+        "placeholder": "$3,600",
+        "required": false
+      },
+      {
+        "id": "arrearsAsOfDate",
+        "label": "Arrears as-of date",
+        "placeholder": "September 1, 2026",
+        "required": false
+      },
+      {
+        "id": "californiaCounty",
+        "label": "California county for registration",
+        "placeholder": "San Francisco County",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 2, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "San Francisco, California",
+        "required": true
+      }
+    ]
   }
 ]
