@@ -11437,5 +11437,65 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "legal_separation_petition_info_sheet",
+    "title": "Petition for Legal Separation — Information Sheet",
+    "description": "Explains what is distinctive about a California legal separation proceeding compared to dissolution (divorce) and nullity: no residency or durational requirement to file, no six-month waiting period, the same no-fault grounds and community-property default, and the key fact that a judgment of legal separation does not end the parties' marital status the way a judgment of dissolution does.",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "legalseparation_declaration",
+      "legalseparation_no_residency_requirement",
+      "legalseparation_marital_status_not_terminated",
+      "legalseparation_grounds_and_property_framework",
+      "legalseparation_no_waiting_period_and_common_reasons",
+      "legalseparation_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "party1Name",
+        "label": "First spouse's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "party2Name",
+        "label": "Second spouse's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "marriageDate",
+        "label": "Date of marriage",
+        "placeholder": "June 12, 2015",
+        "required": true
+      },
+      {
+        "id": "separationDate",
+        "label": "Date of separation",
+        "placeholder": "March 1, 2026",
+        "required": true
+      },
+      {
+        "id": "countyOfFiling",
+        "label": "County of filing",
+        "placeholder": "Sacramento County",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 2, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, state",
+        "placeholder": "Sacramento, California",
+        "required": true
+      }
+    ]
   }
 ]
