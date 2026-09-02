@@ -5021,5 +5021,55 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "personnel_records_request",
+    "title": "Employee's Request to Inspect Personnel and Payroll Records",
+    "description": "A written request exercising two separate California statutory rights: inspecting and copying personnel records under Labor Code § 1198.5 (30-35 calendar day deadline) and payroll records under Labor Code § 226(b)-(c) (21 calendar day deadline), available to a current or former employee.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "personnelrec_request_letter_body",
+      "personnelrec_two_distinct_rights",
+      "personnelrec_who_may_request",
+      "personnelrec_response_timeframe",
+      "personnelrec_exclusions",
+      "personnelrec_payroll_records_226",
+      "personnelrec_penalty_and_remedies",
+      "personnelrec_signature_closing"
+    ],
+    "fields": [
+      {
+        "id": "employeeName",
+        "label": "Employee/former employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employmentStatus",
+        "label": "Employment status",
+        "placeholder": "Former employee (employment ended August 15, 2026)",
+        "required": true
+      },
+      {
+        "id": "requestDate",
+        "label": "Date of this request",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "recordsRequested",
+        "label": "Records requested",
+        "placeholder": "Complete personnel file, including performance evaluations, and payroll records for the last three years of employment",
+        "required": true
+      }
+    ]
   }
 ]
