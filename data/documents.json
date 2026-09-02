@@ -6489,5 +6489,67 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "living_trust_funding_info_sheet",
+    "title": "Living Trust Funding — Information Sheet",
+    "description": "An information sheet describing the legal mechanics of transferring ('funding') property into an already-created revocable living trust, distinct from the trust instrument itself (addressed in this corpus's Revocable Living Trust document). Covers why creating a trust doesn't by itself fund it, the written-deed requirement for real property, what recording a deed does and doesn't do, why funded property remains reachable by the settlor's own creditors during the settlor's lifetime, the statutory 'Heggstad petition' safety valve for incomplete funding, and the higher evidentiary risk of an unwritten personal-property transfer.",
+    "categories": [
+      "Estate Planning"
+    ],
+    "clauseOrder": [
+      "trustfunding_declaration",
+      "trustfunding_creation_methods_funding_gap",
+      "trustfunding_real_property_deed_requirement",
+      "trustfunding_recording_effect",
+      "trustfunding_creditor_exposure_during_life",
+      "trustfunding_heggstad_petition",
+      "trustfunding_personal_property_assignment_risk",
+      "trustfunding_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "settlorName",
+        "label": "Settlor's name",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "trustName",
+        "label": "Trust name",
+        "placeholder": "The Jordan T. Reyes Revocable Living Trust",
+        "required": true
+      },
+      {
+        "id": "trusteeName",
+        "label": "Trustee's name",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "originalTrustDate",
+        "label": "Date the trust was originally executed",
+        "placeholder": "January 15, 2026",
+        "required": true
+      },
+      {
+        "id": "propertyDescription",
+        "label": "Description of the property this sheet concerns",
+        "placeholder": "Real property at 123 Main Street, Sacramento, California",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "April 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, State",
+        "placeholder": "Sacramento, California",
+        "required": true
+      }
+    ]
   }
 ]
