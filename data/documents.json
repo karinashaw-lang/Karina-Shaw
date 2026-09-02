@@ -13180,5 +13180,54 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "blacklisting_former_employee_info_sheet",
+    "title": "Blacklisting a Former Employee — Information Sheet",
+    "description": "Information about California Labor Code §§ 1050-1054 — the statute prohibiting an employer from preventing a former employee's re-employment by misrepresentation, a related prohibition on conditioning employment on shared photographs/fingerprints, the truthful-statement safe harbor, and the private treble-damages remedy.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "blacklist_declaration",
+      "blacklist_core_prohibition",
+      "blacklist_photograph_fingerprint_scheme",
+      "blacklist_liability_for_permitting_violation",
+      "blacklist_truthful_statement_safe_harbor",
+      "blacklist_civil_treble_damages",
+      "blacklist_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "preparerName",
+        "label": "Name of person preparing this information sheet",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Company name, if applicable",
+        "placeholder": "Acme Corp",
+        "required": false
+      },
+      {
+        "id": "employeeName",
+        "label": "Former employee's name, if applicable",
+        "placeholder": "Taylor Morgan",
+        "required": false
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 2, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
