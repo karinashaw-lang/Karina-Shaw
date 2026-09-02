@@ -7918,5 +7918,49 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "trademark_assignment_agreement_info_sheet",
+    "title": "Trademark Assignment Agreement — Information Sheet",
+    "description": "Explains federal law governing the transfer of ownership of a trademark under 15 U.S.C. section 1060: the requirement that an assignment carry the goodwill of the business connected with the mark, the restriction on assigning an intent-to-use application before use is shown, the 'assignment in gross' doctrine and its consequences, the writing requirement, recording an assignment with the USPTO, and California's own parallel state assignment statute.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "tmassign_declaration",
+      "tmassign_statutory_basis",
+      "tmassign_itu_restriction",
+      "tmassign_in_gross_doctrine",
+      "tmassign_writing_requirement",
+      "tmassign_recording",
+      "tmassign_ca_state_law",
+      "tmassign_signature"
+    ],
+    "fields": [
+      {
+        "id": "assignorName",
+        "label": "Assignor's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "assigneeName",
+        "label": "Assignee's name",
+        "placeholder": "Acme Corp",
+        "required": true
+      },
+      {
+        "id": "trademarkDescription",
+        "label": "Description of the trademark",
+        "placeholder": "the word mark ACME and design logo",
+        "required": true
+      },
+      {
+        "id": "registrationOrApplicationNumber",
+        "label": "Registration or application number (if any)",
+        "placeholder": "U.S. Reg. No. 1,234,567",
+        "required": false
+      }
+    ]
   }
 ]
