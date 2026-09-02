@@ -4959,5 +4959,67 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "statement_of_information",
+    "title": "Statement of Information (California Secretary of State Periodic Filing)",
+    "description": "An ongoing compliance filing California corporations and LLCs must submit to the Secretary of State after formation, on a recurring schedule (annual for corporations, biennial for LLCs), reporting current officers/directors or managers/members, agent for service of process, and principal business information — with a $250 penalty and, for sustained non-filing, suspension of the entity's powers as consequences for not filing.",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "soi_declaration",
+      "soi_filing_deadlines",
+      "soi_required_content_corporation",
+      "soi_required_content_llc",
+      "soi_no_change_certification",
+      "soi_current_information_worksheet",
+      "soi_penalty_for_nonfiling",
+      "soi_suspension_consequence"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "entityType",
+        "label": "Entity type",
+        "placeholder": "stock corporation",
+        "required": true
+      },
+      {
+        "id": "principalOfficeAddress",
+        "label": "Principal office address",
+        "placeholder": "500 Market St, San Francisco, CA 94105",
+        "required": true
+      },
+      {
+        "id": "agentName",
+        "label": "Agent for service of process",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "agentAddress",
+        "label": "Agent's address",
+        "placeholder": "500 Market St, San Francisco, CA 94105",
+        "required": true
+      },
+      {
+        "id": "keyPersonnelNames",
+        "label": "Current officers/directors or managers/members",
+        "placeholder": "Jordan Lee, CEO; Pat Morgan, Secretary and CFO",
+        "required": true
+      },
+      {
+        "id": "businessActivityDescription",
+        "label": "Principal business activity",
+        "placeholder": "Software as a service for small business accounting",
+        "required": true
+      }
+    ]
   }
 ]
