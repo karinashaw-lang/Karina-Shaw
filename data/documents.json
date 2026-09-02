@@ -10894,5 +10894,83 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "move_away_custody_info_sheet",
+    "title": "Move-Away Custody — Information Sheet",
+    "description": "Explains California's law on a custodial parent's request (or a non-custodial parent's objection) to relocate a child's residence -- in depth beyond the corpus's existing single Parenting Plan clause. Covers the Family Code's relocation right and the court's power to restrain it, the notice requirement (which depends on the specific custody order, not a statewide default), and a court-ordered custody evaluation's confidentiality. Also includes an explicitly hedged, unsourced background summary of the widely-reported contested move-away standard and joint-custody distinction, disclosed as not independently verified against primary case law this session.",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "moveaway_relocation_notice_declaration",
+      "moveaway_statutory_right_and_legislative_intent",
+      "moveaway_notice_is_court_ordered_not_automatic",
+      "moveaway_custody_evaluation_confidentiality",
+      "moveaway_case_law_background_not_independently_verified",
+      "moveaway_signature_certification"
+    ],
+    "fields": [
+      {
+        "id": "childName",
+        "label": "Child's name",
+        "placeholder": "Casey Lee",
+        "required": true
+      },
+      {
+        "id": "parent1Name",
+        "label": "Parent 1's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "parent2Name",
+        "label": "Parent 2's name",
+        "placeholder": "Taylor Morgan",
+        "required": true
+      },
+      {
+        "id": "proposedNewAddress",
+        "label": "Proposed new address",
+        "placeholder": "Portland, Oregon",
+        "required": true
+      },
+      {
+        "id": "proposedMoveDate",
+        "label": "Proposed move date",
+        "placeholder": "December 1, 2026",
+        "required": true
+      },
+      {
+        "id": "reasonForProposedMove",
+        "label": "Reason for the proposed move",
+        "placeholder": "new job opportunity",
+        "required": true
+      },
+      {
+        "id": "noticeDate",
+        "label": "Notice date",
+        "placeholder": "October 1, 2026",
+        "required": true
+      },
+      {
+        "id": "countyOfFiling",
+        "label": "County of filing",
+        "placeholder": "San Francisco County",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "October 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "San Francisco, California",
+        "required": true
+      }
+    ]
   }
 ]
