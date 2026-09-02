@@ -7225,5 +7225,62 @@
         "required": false
       }
     ]
+  },
+  {
+    "id": "digital_assets_access_info_sheet",
+    "title": "Digital Assets and Online Account Access — Information Sheet",
+    "description": "An information sheet describing California's Revised Uniform Fiduciary Access to Digital Assets Act (Prob. Code §§ 870-884), the statutory framework governing when and how a fiduciary (executor/personal representative, trustee, agent under a power of attorney, or conservator) may obtain access to a person's digital assets and online accounts from the custodian. Supplements, without duplicating, the general authority granted by the existing Last Will and Testament, Financial Power of Attorney, and Revocable Living Trust documents. Covers the statutory definitions and the content/catalogue distinction, the Act's scope (including the 2024 extension to agents and conservators), the three-tier priority system (online tool, then estate-planning document, then terms of service), the different disclosure requirements for personal representatives, trustees, and agents (with content requiring more specific consent than catalogue access), and the custodian's 60-day response deadline and good-faith liability shield.",
+    "categories": [
+      "Estate Planning"
+    ],
+    "clauseOrder": [
+      "digitalassets_declaration",
+      "digitalassets_definitions",
+      "digitalassets_scope_of_act",
+      "digitalassets_priority_tiers",
+      "digitalassets_personal_representative_disclosure",
+      "digitalassets_trustee_disclosure",
+      "digitalassets_agent_disclosure",
+      "digitalassets_response_timeframe_and_liability",
+      "digitalassets_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "accountHolderName",
+        "label": "Account holder's name",
+        "placeholder": "Pat M. Alvarez",
+        "required": true
+      },
+      {
+        "id": "fiduciaryName",
+        "label": "Fiduciary's name",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "fiduciaryRole",
+        "label": "Fiduciary role",
+        "placeholder": "Personal representative (executor)",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "April 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, State",
+        "placeholder": "Sacramento, California",
+        "required": true
+      }
+    ]
   }
 ]
