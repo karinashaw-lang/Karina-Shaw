@@ -13299,6 +13299,127 @@
       "title": "Cal-COBRA Continuation Coverage Election Form",
       "kind": "drafting",
       "body": "CAL-COBRA CONTINUATION COVERAGE ELECTION FORM\n\nI, {{employeeName}}, have received the Cal-COBRA Continuation Coverage Election Notice from {{companyName}} dated {{noticeDate}} regarding {{planName}}.\n\nQualifying Event: {{qualifyingEventType}}, effective {{qualifyingEventDate}}.\n\nI elect the following (check applicable):\n[  ] I elect to continue coverage for myself.\n[  ] I elect to continue coverage for the following qualified beneficiaries: {{additionalBeneficiaryName}}.\n[  ] I decline continuation coverage for myself and all listed qualified beneficiaries.\n\nI understand that, under California's Cal-COBRA statute:\n- This election, if made, must be delivered no later than {{electionDeadline}}.\n- My first premium payment is due no later than 45 days after the date I provide written notice of this election, and must be sufficient to cover all premiums then due.\n- The premium charged may be up to 110% of the applicable rate (or, if I am later determined disabled under Title II or Title XVI of the Social Security Act, up to 150% of the group rate after the first 18 months of continuation coverage).\n- Continuation coverage, once elected, is subject to the terms of {{planName}} and to applicable law, including the statutory grounds on which continuation coverage may terminate before the end of the maximum coverage period (for example, nonpayment of premium, the qualified beneficiary becoming covered under another group health plan, the employer ceasing to offer any group benefit plan, or the qualified beneficiary moving outside the plan's service area).\n\nSignature: ______________________  Date: {{dateSigned}}\n\nPrint Name: {{employeeName}}"
+    },
+    {
+      "id": "dmca_required_elements",
+      "title": "Required Elements of an Effective Takedown Notification",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-02",
+      "body": "Federal copyright law specifies what a notification of claimed infringement must contain to be treated as effective under the notice-and-takedown procedure of 17 U.S.C. § 512(c) — the provision that lets an online service provider qualify for a safe harbor from monetary liability for infringing material its users store on its system. To be effective, a notification must be a written communication, provided to the service provider's designated agent, that includes substantially: a physical or electronic signature of a person authorized to act on behalf of the owner of the exclusive right claimed to be infringed; identification of the copyrighted work claimed to have been infringed (or a representative list, if a single notification covers multiple works at one online site); identification of the material claimed to be infringing, along with information reasonably sufficient to permit the service provider to locate it; information reasonably sufficient to permit the service provider to contact the complaining party; a statement that the complaining party has a good faith belief that the use complained of is not authorized by the copyright owner, its agent, or the law; and a statement, made under penalty of perjury, that the information in the notification is accurate and that the complaining party is authorized to act on behalf of the owner of the exclusive right claimed to be infringed. A notification that fails to comply substantially with these elements generally is not counted, under the statute, toward whether a service provider had the knowledge that triggers its duty to remove or disable access to material.",
+      "gap": "This is federal law, used as real evidence of what 17 U.S.C. § 512(c)(3)(A) requires a takedown notification to contain — not a claim about which jurisdiction's law governs a particular website, a particular hosting arrangement, or a particular piece of content, or that any individual online service provider's own submission form asks for exactly this list and nothing more (a platform's internal process can require additional information beyond the statutory floor). The consequence of only partial compliance is addressed in the adjoining subsection, 17 U.S.C. § 512(c)(3)(B), which is not cited separately here as an independent source — it is a continuation of the same statutory provision, not corroborating evidence from elsewhere.",
+      "citations": [
+        {
+          "case": "17 U.S.C. § 512(c)(3)(A) (Cornell LII text)",
+          "cite": "U.S. Code, elements of an effective notification of claimed infringement",
+          "url": "https://www.law.cornell.edu/uscode/text/17/512",
+          "quote": "To be effective under this subsection, a notification of claimed infringement must be a written communication provided to the designated agent of a service provider that includes substantially the following: (i) A physical or electronic signature of a person authorized to act on behalf of the owner of an exclusive right that is allegedly infringed. (ii) Identification of the copyrighted work claimed to have been infringed, or, if multiple copyrighted works at a single online site are covered by a single notification, a representative list of such works at that site. (iii) Identification of the material that is claimed to be infringing or to be the subject of infringing activity and that is to be removed or access to which is to be disabled, and information reasonably sufficient to permit the service provider to locate the material. (iv) Information reasonably sufficient to permit the service provider to contact the complaining party, such as an address, telephone number, and, if available, an electronic mail address at which the complaining party may be contacted. (v) A statement that the complaining party has a good faith belief that use of the material in the manner complained of is not authorized by the copyright owner, its agent, or the law. (vi) A statement that the information in the notification is accurate, and under penalty of perjury, that the complaining party is authorized to act on behalf of the owner of an exclusive right that is allegedly infringed."
+        }
+      ]
+    },
+    {
+      "id": "dmca_designated_agent_requirement",
+      "title": "Effective Notice Must Reach the Service Provider's Designated Agent",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-02",
+      "body": "Federal copyright law ties the safe harbor described elsewhere in this document to whether a service provider has designated an agent to receive notifications of claimed infringement, and to whether a notification is delivered to that agent. A service provider qualifies for the safe harbor in the first place only if it has designated such an agent — by making the agent's name, address, phone number, and email address available through its service (including on its website) and by providing that information to the Copyright Office, which maintains a public directory of designated agents. A notification directed somewhere other than the designated agent (for example, a general customer-support inbox or a form unrelated to copyright) does not necessarily trigger the notice-and-takedown mechanism described in this document.",
+      "gap": "This is federal law, used as real evidence that the designated-agent mechanism exists and is a precondition to the safe harbor under 17 U.S.C. § 512(c) — not a claim about whether any particular website has designated an agent, what that agent's current contact information is, or whether a specific service provider's public-facing abuse or copyright-report channel qualifies as its designated agent for a given piece of content. The Copyright Office's public directory of designated agents is a separate, non-statutory resource this clause does not independently verify.",
+      "citations": [
+        {
+          "case": "17 U.S.C. § 512(c)(2) (Cornell LII text)",
+          "cite": "U.S. Code, designated agent requirement for the service-provider safe harbor",
+          "url": "https://www.law.cornell.edu/uscode/text/17/512",
+          "quote": "The limitations on liability established in this subsection apply to a service provider only if the service provider has designated an agent to receive notifications of claimed infringement described in paragraph (3), by making available through its service, including on its website in a location accessible to the public, and by providing to the Copyright Office, substantially the following information: (A) the name, address, phone number, and electronic mail address of the agent."
+        }
+      ]
+    },
+    {
+      "id": "dmca_notice_identification",
+      "title": "Notification of Claimed Infringement — Identification",
+      "kind": "drafting",
+      "body": "This notice is submitted to {{serviceProviderName}}'s designated agent under 17 U.S.C. § 512(c)(3) to report claimed copyright infringement.\n\n1. I am {{copyrightHolderName}}, the owner of an exclusive right in the copyrighted work described below, or am authorized to act on behalf of that owner.\n\n2. The copyrighted work claimed to have been infringed is described as follows: {{copyrightedWorkDescription}}.\n\n3. The material claimed to be infringing, and its location on {{serviceProviderName}}'s service, is identified as follows: {{infringingContentURL}}.\n\n4. My contact information, so that {{serviceProviderName}} may reach me about this notice, is: {{contactInfo}}."
+    },
+    {
+      "id": "dmca_notice_statements",
+      "title": "Notification of Claimed Infringement — Required Statements",
+      "kind": "drafting",
+      "body": "I have a good faith belief that use of the material identified above, in the manner complained of, is not authorized by the copyright owner, its agent, or the law.\n\nI declare under penalty of perjury that the information in this notification is accurate, and that I am {{copyrightHolderName}}, the owner of an exclusive right that is allegedly infringed, or am authorized to act on behalf of that owner."
+    },
+    {
+      "id": "dmca_notice_signature_block",
+      "title": "Notice Signature Block",
+      "kind": "drafting",
+      "body": "Signature: _______________\n{{copyrightHolderName}}\nDate: {{dateSigned}}"
+    },
+    {
+      "id": "dmca_misrepresentation_liability",
+      "title": "Liability for Knowingly Misrepresenting Infringement",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-02",
+      "body": "Federal copyright law imposes liability on a person who knowingly materially misrepresents, in a submission under this notice-and-takedown mechanism, that material or activity is infringing. A person found to have made such a misrepresentation is liable for any damages — including costs and attorney's fees — incurred by the party injured by the misrepresentation (which can include the person whose material was removed, the copyright owner, or the service provider) as a result of the service provider relying on the misrepresentation to remove or disable access to material, or to restore it. The same liability applies to a knowing material misrepresentation that material was removed or disabled by mistake or misidentification, made in a counter-notification.",
+      "gap": "This is federal law, used as real evidence that 17 U.S.C. § 512(f) creates a damages remedy for a knowing material misrepresentation in a takedown notice or counter-notification — not a claim about whether any particular notice or counter-notification meets that standard, which turns on facts (including the sender's actual, subjective state of mind, not merely whether they were mistaken) that this clause doesn't resolve. A well-known Ninth Circuit decision, Lenz v. Universal Music Corp., 815 F.3d 1145 (9th Cir. 2016), addressed whether a copyright owner must consider fair use before sending a takedown notice and what \"knowingly materially misrepresents\" means under this subsection. That case could not be independently verified for this clause: the CourtListener research tool returned a daily rate-limit error (125 requests/day, next available in roughly 16 hours) on every attempt, and direct or automated fetches of the case from other sources (courtlistener.com, the Ninth Circuit's own courts.gov opinion PDF, and a legal-research aggregator) were each blocked by this environment's network egress controls. Rather than quote the case from memory, it is omitted from the citations below; only the directly fetched and verified statutory text of § 512(f) is cited. Anyone relying on this clause should treat the Lenz case as a genuine, disclosed research gap, not as verified content.",
+      "citations": [
+        {
+          "case": "17 U.S.C. § 512(f) (Cornell LII text)",
+          "cite": "U.S. Code, misrepresentations in a takedown notice or counter-notification",
+          "url": "https://www.law.cornell.edu/uscode/text/17/512",
+          "quote": "Any person who knowingly materially misrepresents under this section— (1) that material or activity is infringing, or (2) that material or activity was removed or disabled by mistake or misidentification, shall be liable for any damages, including costs and attorneys' fees, incurred by the alleged infringer, by any copyright owner or copyright owner's authorized licensee, or by a service provider, who is injured by such misrepresentation, as the result of the service provider relying upon such misrepresentation in removing or disabling access to the material or activity claimed to be infringing, or in replacing the removed material or ceasing to disable access to it."
+        }
+      ]
+    },
+    {
+      "id": "dmca_counternotice_putback",
+      "title": "The Counter-Notification Process and Put-Back Timeline",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-02",
+      "body": "Federal copyright law gives the person whose material was removed or disabled in response to a takedown notification a way to seek its restoration. That person (the statute calls them a \"subscriber\") may submit a written counter notification to the service provider's designated agent, which must include substantially: a physical or electronic signature of the subscriber; identification of the removed material and its location before removal; a statement, under penalty of perjury, that the subscriber has a good faith belief the material was removed or disabled as a result of mistake or misidentification; and the subscriber's name, address, and telephone number, together with a statement consenting to the jurisdiction of the applicable federal district court and agreeing to accept service of process from the person who sent the original notification. Once the service provider receives a valid counter notification, it must promptly provide a copy to the person who sent the original takedown notice and tell that person it will restore the material in 10 business days. The service provider must then restore the material not less than 10, and not more than 14, business days after receiving the counter notification — unless its designated agent first receives notice that the original complaining party has filed a lawsuit seeking a court order restraining the subscriber's allegedly infringing activity.",
+      "gap": "This is federal law, used as real evidence of the counter-notification content requirements and the 10-to-14-business-day put-back window under 17 U.S.C. § 512(g) — not a claim about whether any particular service provider actually follows this process (the safe harbor described in this subsection is optional protection for the service provider, not a legal duty automatically owed to any given subscriber), or about how a service provider's own terms of service handle counter-notifications and restoration. These citations are both to subsections of the same statutory section, 17 U.S.C. § 512(g); they are not independent sources corroborating each other.",
+      "citations": [
+        {
+          "case": "17 U.S.C. § 512(g)(2)(B)-(C) (Cornell LII text)",
+          "cite": "U.S. Code, notice to the complaining party and the put-back timeline",
+          "url": "https://www.law.cornell.edu/uscode/text/17/512",
+          "quote": "upon receipt of a counter notification described in paragraph (3), promptly provides the person who provided the notification under subsection (c)(1)(C) with a copy of the counter notification, and informs that person that it will replace the removed material or cease disabling access to it in 10 business days; and (C) replaces the removed material and ceases disabling access to it not less than 10, nor more than 14, business days following receipt of the counter notice, unless its designated agent first receives notice from the person who submitted the notification under subsection (c)(1)(C) that such person has filed an action seeking a court order to restrain the subscriber from engaging in infringing activity relating to the material on the service provider's system or network."
+        },
+        {
+          "case": "17 U.S.C. § 512(g)(3) (Cornell LII text)",
+          "cite": "U.S. Code, required contents of a counter notification",
+          "url": "https://www.law.cornell.edu/uscode/text/17/512",
+          "quote": "To be effective under this subsection, a counter notification must be a written communication provided to the service provider's designated agent that includes substantially the following: (A) A physical or electronic signature of the subscriber. (B) Identification of the material that has been removed or to which access has been disabled and the location at which the material appeared before it was removed or access to it was disabled. (C) A statement under penalty of perjury that the subscriber has a good faith belief that the material was removed or disabled as a result of mistake or misidentification of the material to be removed or disabled. (D) The subscriber's name, address, and telephone number, and a statement that the subscriber consents to the jurisdiction of Federal District Court for the judicial district in which the address is located..."
+        }
+      ]
+    },
+    {
+      "id": "dmca_not_a_lawsuit",
+      "title": "A Takedown Notice Is a Different Mechanism Than a Copyright Infringement Lawsuit",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-02",
+      "body": "The notice-and-takedown procedure described in this document is a mechanism aimed at online service providers: it lets a service provider qualify for a safe harbor from certain monetary liability by responding to a notification and, separately, gives the service provider its own protection from claims when it takes down material in good faith. By its own terms, the statute does not affect any other defense a service provider may have, and nothing in the notice-and-takedown provisions creates a claim against the person who posted the allegedly infringing material — a copyright owner's claim against an infringer, if any, arises separately, under the general infringement provisions of Title 17, which allow the legal or beneficial owner of an exclusive right to bring a civil infringement action against an infringer. Sending a takedown notice under 17 U.S.C. § 512(c) also does not require that the copyrighted work be registered with the U.S. Copyright Office — registration is not listed among the required elements of an effective notification. Filing a civil infringement lawsuit is different: with narrow exceptions, federal law generally bars a civil action for infringement of a U.S. work until the work has been registered, or preregistered, with the Copyright Office.",
+      "gap": "This is federal law, used as real evidence that 17 U.S.C. § 512 is a liability-limitation and takedown mechanism directed at service providers rather than a source of a direct legal claim against an infringer, and that copyright registration is a precondition to filing an infringement lawsuit under 17 U.S.C. § 411(a) but is not listed among the required elements of a takedown notification under § 512(c)(3)(A) — not a claim about whether registration would be strategically useful before sending any particular notice, whether a specific work has in fact been registered, or how the narrow exceptions to the registration requirement in § 411 (such as for a refused application, or for certain works not originating in the United States) apply to any particular situation. The citations below are to three different statutory sections (§ 512(l), § 501(b), and § 411(a)), not different subsections of one section.",
+      "citations": [
+        {
+          "case": "17 U.S.C. § 512(l) (Cornell LII text)",
+          "cite": "U.S. Code, other defenses not affected by the safe harbor",
+          "url": "https://www.law.cornell.edu/uscode/text/17/512",
+          "quote": "The failure of a service provider's conduct to qualify for limitation of liability under this section shall not bear adversely upon the consideration of a defense by the service provider that the service provider's conduct is not infringing under this title or any other defense."
+        },
+        {
+          "case": "17 U.S.C. § 501(b) (Cornell LII text)",
+          "cite": "U.S. Code, who may institute a civil action for copyright infringement",
+          "url": "https://www.law.cornell.edu/uscode/text/17/501",
+          "quote": "The legal or beneficial owner of an exclusive right under a copyright is entitled, subject to the requirements of section 411, to institute an action for any infringement of that particular right committed while he or she is the owner of it."
+        },
+        {
+          "case": "17 U.S.C. § 411(a) (Cornell LII text)",
+          "cite": "U.S. Code, registration as a precondition to a civil infringement action",
+          "url": "https://www.law.cornell.edu/uscode/text/17/411",
+          "quote": "no civil action for infringement of the copyright in any United States work shall be instituted until preregistration or registration of the copyright claim has been made in accordance with this title."
+        }
+      ]
     }
   ]
 }

@@ -4841,5 +4841,61 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "dmca_takedown_notice",
+    "title": "DMCA Takedown Notice (Copyright Infringement Notification)",
+    "description": "A notice-and-takedown notification under 17 U.S.C. § 512(c), describing the required elements of an effective infringement notice, the counter-notification and put-back process available to the person whose content was removed, and the liability that attaches to a knowing material misrepresentation.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "dmca_notice_identification",
+      "dmca_required_elements",
+      "dmca_designated_agent_requirement",
+      "dmca_notice_statements",
+      "dmca_misrepresentation_liability",
+      "dmca_counternotice_putback",
+      "dmca_not_a_lawsuit",
+      "dmca_notice_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "copyrightHolderName",
+        "label": "Copyright holder's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "serviceProviderName",
+        "label": "Online service provider's name",
+        "placeholder": "Example Hosting, Inc.",
+        "required": true
+      },
+      {
+        "id": "copyrightedWorkDescription",
+        "label": "Description of the copyrighted work",
+        "placeholder": "Photograph titled \"Sunset Ridge,\" first published on jordanleephoto.com on March 3, 2025",
+        "required": true
+      },
+      {
+        "id": "infringingContentURL",
+        "label": "Location of the infringing material",
+        "placeholder": "https://example.com/user123/post/456",
+        "required": true
+      },
+      {
+        "id": "contactInfo",
+        "label": "Contact information",
+        "placeholder": "Jordan Lee, 500 Market St, San Francisco, CA 94105, (415) 555-0100, jordan@example.com",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      }
+    ]
   }
 ]
