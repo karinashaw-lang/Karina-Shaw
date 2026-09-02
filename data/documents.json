@@ -6317,5 +6317,75 @@
         "required": false
       }
     ]
+  },
+  {
+    "id": "stepparent_adoption_info_sheet",
+    "title": "Stepparent Adoption — Information Sheet",
+    "description": "An information sheet describing California's statutory process for a stepparent or domestic partner to adopt their spouse's or partner's child under Family Code Chapter 5 (§§ 9000-9007): who may file and the applicable age-gap dispensation, the investigative report requirement and its 00 cost cap, a narrower streamlined exception removing the investigation, fee, hearing, and minimum-relationship-duration requirements for children born during the marriage or partnership, whose consent is generally required, the defined statutory categories in which a parent's consent may be dispensed with, the child's own consent requirement above age 12, and the legal effect of a completed adoption. Distinct from guardianship, which does not terminate any parent's rights or create a new legal parent.",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "stepparentadopt_declaration",
+      "stepparentadopt_who_may_file",
+      "stepparentadopt_investigation_and_fee",
+      "stepparentadopt_streamlined_exception",
+      "stepparentadopt_consent_of_birth_parents",
+      "stepparentadopt_dispensing_with_consent",
+      "stepparentadopt_minor_own_consent",
+      "stepparentadopt_effect_of_adoption",
+      "stepparentadopt_case_summary",
+      "stepparentadopt_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "petitionerName",
+        "label": "Petitioner (stepparent/domestic partner) name",
+        "placeholder": "Jordan A. Rivera",
+        "required": true
+      },
+      {
+        "id": "legalParentName",
+        "label": "Petitioner's spouse or domestic partner (the child's existing legal parent)",
+        "placeholder": "Taylor M. Rivera",
+        "required": true
+      },
+      {
+        "id": "childName",
+        "label": "Child's name",
+        "placeholder": "Sam T. Rivera",
+        "required": true
+      },
+      {
+        "id": "childDOB",
+        "label": "Child's date of birth",
+        "placeholder": "June 12, 2016",
+        "required": true
+      },
+      {
+        "id": "otherParentName",
+        "label": "Child's other legal or birth parent (if any, and so far as known)",
+        "placeholder": "Casey L. Nguyen",
+        "required": false
+      },
+      {
+        "id": "countyOfFiling",
+        "label": "County of filing",
+        "placeholder": "Sacramento County",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "April 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, State",
+        "placeholder": "Sacramento, California",
+        "required": true
+      }
+    ]
   }
 ]
