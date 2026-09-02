@@ -5789,5 +5789,55 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "fictitious_business_name_statement",
+    "title": "Fictitious Business Name (DBA) Statement — Information Sheet",
+    "description": "An informational sheet describing California's county-level (not state-level) requirement to file a fictitious business name statement when using a name other than a registrant's true legal name. Covers the statutory definition by registrant type, the 40-day filing deadline and county of filing, required content, the newspaper publication requirement, 5-year expiration, the limited rebuttable presumption of exclusive use it creates, and the civil/criminal consequences of noncompliance.",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "fbn_declaration",
+      "fbn_definition",
+      "fbn_filing_requirement",
+      "fbn_required_content",
+      "fbn_publication_requirement",
+      "fbn_expiration_and_refiling",
+      "fbn_no_exclusive_right",
+      "fbn_noncompliance_consequences"
+    ],
+    "fields": [
+      {
+        "id": "fictitiousBusinessName",
+        "label": "Fictitious business name",
+        "placeholder": "Acme Custom Woodworking",
+        "required": true
+      },
+      {
+        "id": "registrantName",
+        "label": "Registrant's name",
+        "placeholder": "Acme Enterprises, LLC",
+        "required": true
+      },
+      {
+        "id": "entityType",
+        "label": "Entity type",
+        "placeholder": "limited liability company",
+        "required": true
+      },
+      {
+        "id": "principalOfficeAddress",
+        "label": "Principal place of business address",
+        "placeholder": "500 Market St, San Francisco, CA 94105",
+        "required": true
+      },
+      {
+        "id": "filingCounty",
+        "label": "County of filing",
+        "placeholder": "San Francisco",
+        "required": true
+      }
+    ]
   }
 ]
