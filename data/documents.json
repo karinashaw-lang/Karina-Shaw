@@ -11239,5 +11239,36 @@
         "required": false
       }
     ]
+  },
+  {
+    "id": "personnel_payroll_record_retention_duration_info_sheet",
+    "title": "Personnel and Payroll Record Retention Duration — Information Sheet",
+    "description": "Explains the employer's duty to retain personnel and payroll records for a specific period -- distinct from the corpus's existing Employee's Request to Inspect Personnel and Payroll Records document, which covers the employee's right to inspect, not the underlying retention-duration obligation. Covers Lab. Code §1198.5(c)(1)'s 3-year post-termination personnel record duty, §226(a)'s 3-year on-file payroll record duty (a genuinely different, non-termination-triggered clock), a comparison of the two different periods, a federal I-9 retention comparison, and what the statutes actually say about failing to retain versus failing to permit inspection.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "recordretentionduty_declaration",
+      "recordretentionduty_personnel_records_three_years_after_termination",
+      "recordretentionduty_payroll_records_three_years_on_file",
+      "recordretentionduty_two_different_three_year_periods",
+      "recordretentionduty_i9_federal_comparison",
+      "recordretentionduty_consequences_of_failing_to_retain",
+      "recordretentionduty_acknowledgment_and_signature"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      }
+    ]
   }
 ]
