@@ -9094,5 +9094,68 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "layoff_selection_criteria_info_sheet",
+    "title": "Layoff / Reduction-in-Force Selection Criteria — Information Sheet",
+    "description": "Explains the legal principles constraining how an employer selects which employees to lay off in a group reduction in force, distinct from the WARN Act's notice requirement: the ADEA's disparate-impact theory and the 'reasonable factors other than age' defense with its regulatory reasonableness criteria, California's parallel statutory rule for age-based layoffs, the common practice of statistical adverse-impact analysis, the distinction between subjective and objective selection criteria, and the connection to the OWBPA's group-termination disclosure rule already covered in the Severance Agreement document.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "rifselect_criteria_documentation",
+      "rifselect_adea_disparate_impact",
+      "rifselect_rfoa_defense",
+      "rifselect_rfoa_reasonableness_factors",
+      "rifselect_feha_disparate_impact",
+      "rifselect_adverse_impact_statistical_practice",
+      "rifselect_objective_vs_subjective_criteria",
+      "rifselect_owbpa_group_disclosure_crossref",
+      "rifselect_certification"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme Corp",
+        "required": true
+      },
+      {
+        "id": "effectiveDate",
+        "label": "Effective date of the layoff",
+        "placeholder": "November 1, 2026",
+        "required": true
+      },
+      {
+        "id": "selectionCriteriaDescription",
+        "label": "Description of the selection criteria used",
+        "placeholder": "seniority within job classification, documented performance ratings for the prior two review cycles",
+        "required": true
+      },
+      {
+        "id": "adverseImpactAnalysisStatement",
+        "label": "Statement of whether an adverse-impact analysis was performed",
+        "placeholder": "an adverse-impact analysis of the selected group by age was performed prior to finalizing the list",
+        "required": true
+      },
+      {
+        "id": "authorizedSignerName",
+        "label": "Authorized signer's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "authorizedSignerTitle",
+        "label": "Authorized signer's title",
+        "placeholder": "VP of Human Resources",
+        "required": true
+      },
+      {
+        "id": "signatureDate",
+        "label": "Date signed",
+        "placeholder": "November 1, 2026",
+        "required": true
+      }
+    ]
   }
 ]
