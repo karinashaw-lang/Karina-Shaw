@@ -6729,5 +6729,93 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "guardianship_of_estate_info_sheet",
+    "title": "Guardianship of the Estate (Petition Information Sheet)",
+    "description": "An information sheet describing California's statutory process for a court to appoint a guardian to manage a minor's money and property, legally distinct from this corpus's Guardianship of the Person document (which concerns custody and day-to-day care). Covers the shared petition mechanism and estate-specific petition content, the appointment standard and nomination priority (including that no general bar exists on a parent serving as guardian of the estate, unlike guardian of the person), the bonding requirement, the inventory and periodic accounting duties, the default court-approval requirement before selling estate property (and the court's power to grant independent powers in advance), the ,000 total-estate threshold below which simpler alternatives apply, and when the guardianship terminates.",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "guardestate_declaration",
+      "guardestate_estate_information_summary",
+      "guardestate_scope_vs_person",
+      "guardestate_appointment_standard",
+      "guardestate_bond_requirement",
+      "guardestate_inventory_and_accounting",
+      "guardestate_transactions_court_approval",
+      "guardestate_alternatives_small_estate",
+      "guardestate_termination",
+      "guardestate_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "proposedGuardianName",
+        "label": "Proposed guardian name",
+        "placeholder": "Jordan A. Rivera",
+        "required": true
+      },
+      {
+        "id": "childName",
+        "label": "Minor's name",
+        "placeholder": "Sam T. Rivera",
+        "required": true
+      },
+      {
+        "id": "childDOB",
+        "label": "Minor's date of birth",
+        "placeholder": "June 12, 2016",
+        "required": true
+      },
+      {
+        "id": "relationshipToChild",
+        "label": "Proposed guardian's relationship to the minor",
+        "placeholder": "Aunt",
+        "required": true
+      },
+      {
+        "id": "parent1Name",
+        "label": "Minor's parent (1)",
+        "placeholder": "Taylor M. Rivera",
+        "required": false
+      },
+      {
+        "id": "parent2Name",
+        "label": "Minor's parent (2), if applicable",
+        "placeholder": "Casey L. Nguyen",
+        "required": false
+      },
+      {
+        "id": "estimatedEstateValue",
+        "label": "Estimated value of the minor's total estate",
+        "placeholder": "2,000",
+        "required": true
+      },
+      {
+        "id": "estateDescription",
+        "label": "General description of the money or property involved",
+        "placeholder": "Proceeds of a personal injury settlement held in a bank account",
+        "required": true
+      },
+      {
+        "id": "countyOfFiling",
+        "label": "County of filing",
+        "placeholder": "Sacramento County",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "April 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, State",
+        "placeholder": "Sacramento, California",
+        "required": true
+      }
+    ]
   }
 ]
