@@ -8490,5 +8490,58 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "everify_info_sheet",
+    "title": "E-Verify — Information Sheet",
+    "description": "Explains the federal E-Verify employment eligibility verification program and California's specific statutory restrictions on its use: what E-Verify is and its legal basis, when its use is mandatory versus voluntary, California's prohibition on a state or local agency mandating it, California's restriction on an employer's own use of it, the notice requirement upon a tentative nonconfirmation, the civil penalty for unlawful use, and its relationship to the Form I-9 process.",
+    "categories": [
+      "Hiring"
+    ],
+    "clauseOrder": [
+      "everify_scope",
+      "everify_program_basis",
+      "everify_voluntary_by_default",
+      "everify_federal_contractor_mandate",
+      "everify_ca_state_local_mandate_prohibition",
+      "everify_ca_restriction_on_employer_use",
+      "everify_ca_notice_requirement",
+      "everify_ca_civil_penalty",
+      "everify_relationship_to_i9",
+      "everify_participation_declaration",
+      "everify_acknowledgment"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme Corp",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "startDate",
+        "label": "Start date",
+        "placeholder": "October 1, 2026",
+        "required": true
+      },
+      {
+        "id": "participationStatus",
+        "label": "E-Verify participation status",
+        "placeholder": "voluntary participant",
+        "required": true
+      },
+      {
+        "id": "mandateBasis",
+        "label": "Basis for mandatory use, if applicable",
+        "placeholder": "federal contract clause under 48 C.F.R. 52.222-54",
+        "required": false
+      }
+    ]
   }
 ]
