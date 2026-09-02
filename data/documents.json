@@ -12153,5 +12153,66 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "shareholder_member_inspection_rights_info_sheet",
+    "title": "Shareholder and Member Inspection Rights — Corporate and LLC Records Information Sheet",
+    "description": "Explains the statutory rights a California corporation's shareholder or a California LLC's member has to inspect and copy the entity's books, records, and minutes: the corporate books-and-records right (no ownership threshold), the two distinct shareholder-list rights (one ownership-gated, one not), the court remedy for a refused demand, the parallel LLC member/transferee inspection right, and the non-waivability of these rights across both entity types.",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "inspectionrights_declaration",
+      "inspectionrights_corp_books_records",
+      "inspectionrights_corp_shareholder_list",
+      "inspectionrights_corp_remedy",
+      "inspectionrights_llc_member_records",
+      "inspectionrights_nonwaivable",
+      "inspectionrights_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company/entity name",
+        "placeholder": "Acme Innovations, Inc.",
+        "required": true
+      },
+      {
+        "id": "entityType",
+        "label": "Entity type",
+        "placeholder": "California corporation",
+        "required": true
+      },
+      {
+        "id": "shareholderOrMemberName",
+        "label": "Shareholder's or member's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "inspectionPurpose",
+        "label": "Stated purpose for the records request, if applicable",
+        "placeholder": "Describe the purpose reasonably related to the requester's interest",
+        "required": false
+      },
+      {
+        "id": "ownershipPercentage",
+        "label": "Approximate ownership or membership interest, if known",
+        "placeholder": "10%",
+        "required": false
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 2, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, state",
+        "placeholder": "Sacramento, California",
+        "required": true
+      }
+    ]
   }
 ]
