@@ -9468,5 +9468,73 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "apprenticeship_agreement_info_sheet",
+    "title": "Apprenticeship Agreement — Information Sheet",
+    "description": "Explains California's statutory apprenticeship framework under Labor Code section 3070 et seq., administered through the Division of Apprenticeship Standards: the definition of an apprentice, the required content of a written apprentice agreement, the approval process, wage schedule requirements, the related and supplemental instruction requirement (including the 144-hour/2,000-hour time-based figures), and termination and cancellation mechanics.",
+    "categories": [
+      "Hiring"
+    ],
+    "clauseOrder": [
+      "apprentice_program_declaration",
+      "apprentice_definition",
+      "apprentice_agreement_required_content",
+      "apprentice_agreement_approval",
+      "apprentice_wage_schedule",
+      "apprentice_related_supplemental_instruction",
+      "apprentice_termination_cancellation",
+      "apprentice_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "apprenticeName",
+        "label": "Apprentice's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "employerOrProgramName",
+        "label": "Employer or program sponsor's name",
+        "placeholder": "Acme Trade Program",
+        "required": true
+      },
+      {
+        "id": "tradeOrCraft",
+        "label": "Trade or craft",
+        "placeholder": "Electrician",
+        "required": true
+      },
+      {
+        "id": "apprenticeshipTerm",
+        "label": "Term of apprenticeship",
+        "placeholder": "4 years",
+        "required": true
+      },
+      {
+        "id": "wageSchedule",
+        "label": "Graduated wage schedule",
+        "placeholder": "50% of journey-level wage in year 1, increasing 10% annually",
+        "required": true
+      },
+      {
+        "id": "probationaryPeriod",
+        "label": "Probationary period",
+        "placeholder": "the first 6 months",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "October 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "San Francisco, California",
+        "required": true
+      }
+    ]
   }
 ]
