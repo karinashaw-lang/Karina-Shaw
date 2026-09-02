@@ -12646,5 +12646,55 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "disclaimer_of_inheritance_info_sheet",
+    "title": "Disclaimer of Inheritance — Information Sheet",
+    "description": "Information about disclaiming (refusing) an inheritance or other interest under California Probate Code Division 2, Part 8 — who may disclaim, what formal requirements apply, and the legal effect of a valid disclaimer.",
+    "categories": [
+      "Estate Planning"
+    ],
+    "clauseOrder": [
+      "disclaimer_who_may_disclaim",
+      "disclaimer_scope_of_interests",
+      "disclaimer_formal_requirements",
+      "disclaimer_timing",
+      "disclaimer_effect",
+      "disclaimer_partial_and_bars",
+      "disclaimer_declaration",
+      "disclaimer_signature_notarization"
+    ],
+    "fields": [
+      {
+        "id": "disclaimantName",
+        "label": "Disclaimant's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "decedentName",
+        "label": "Creator of the interest's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "propertyDescription",
+        "label": "Description of the interest disclaimed",
+        "placeholder": "My one-third interest in the residence at 500 Market St, San Francisco, CA 94105",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 2, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "San Francisco, California",
+        "required": true
+      }
+    ]
   }
 ]
