@@ -6949,5 +6949,56 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "elder_financial_abuse_info_sheet",
+    "title": "Elder and Dependent Adult Financial Abuse — Information Sheet",
+    "description": "An information sheet describing California's Elder Abuse and Dependent Adult Civil Protection Act as it applies to financial abuse specifically, distinct from the existing Conservatorship of an Adult document (which concerns court appointment of a decision-maker, a separate legal question). Covers the statutory definitions of elder and dependent adult, the three alternative prongs of financial abuse, the statutory undue-influence factors, the civil remedies available (attorney's fees on a preponderance standard, with a higher clear-and-convincing standard only for removing the survival-damages cap), the four-year discovery-based statute of limitations, and the mandated-reporter framework, including a narrower category specific to financial institution officers and employees.",
+    "categories": [
+      "Estate Planning"
+    ],
+    "clauseOrder": [
+      "elderabuse_declaration",
+      "elderabuse_elder_dependent_adult_definitions",
+      "elderabuse_financial_abuse_definition",
+      "elderabuse_undue_influence_factors",
+      "elderabuse_civil_remedies",
+      "elderabuse_statute_of_limitations",
+      "elderabuse_mandated_reporters_general",
+      "elderabuse_financial_institution_reporters",
+      "elderabuse_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "personOfConcernName",
+        "label": "Name of the person this information sheet concerns",
+        "placeholder": "Pat M. Alvarez",
+        "required": true
+      },
+      {
+        "id": "relationshipToPersonOfConcern",
+        "label": "Preparer's relationship to that person",
+        "placeholder": "Adult child",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "April 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, State",
+        "placeholder": "Sacramento, California",
+        "required": true
+      }
+    ]
   }
 ]
