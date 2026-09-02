@@ -11997,6 +11997,127 @@
       "title": "Statement of Facts Regarding Separation",
       "kind": "drafting",
       "body": "{{companyName}} states that {{employeeName}}'s employment ended for the following reason: {{separationReason}}. In support of this response, {{companyName}} submits the following facts within its knowledge concerning the separation: {{supportingFacts}}. {{companyName}} is submitting this statement within the time period stated in the EDD's notice."
+    },
+    {
+      "id": "swlicense_license_vs_sale",
+      "title": "License Versus Sale: Why the Distinction Matters",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-01",
+      "body": "Federal copyright law treats a license and a sale of software very differently. Under the Copyright Act, the owner of copyright in a work has the exclusive rights to reproduce it, prepare derivative works from it, distribute copies of it, and to authorize others to do those things. This document grants {{licenseeName}} permission to use {{softwareDescription}} under some of {{licensorName}}'s exclusive rights — it is a license, not a sale, and {{licensorName}} retains ownership of the copyright in {{softwareDescription}} unless a separate agreement transfers that ownership. This distinction matters because federal law also gives the owner of a lawfully made copy — someone who bought that copy outright — the right to resell or otherwise dispose of that particular copy without needing the copyright owner's permission, a rule known as the first sale doctrine. Whether {{licenseeName}} qualifies as an \"owner\" of a copy for purposes of that rule, given that this document is a license rather than a sale, is addressed elsewhere in this document.",
+      "gap": "This is federal law, uniform nationwide. The exclusive-rights list in 17 U.S.C. § 106 is itself expressly made \"subject to sections 107 through 122\" of the Copyright Act — including fair use and other statutory limitations not addressed by this clause. This clause states the general license/sale distinction and the existence of the first sale doctrine; it does not resolve whether any particular transaction under this agreement will be characterized as a license or a sale, which depends on the specific terms of the agreement and is addressed in the next clause.",
+      "citations": [
+        {
+          "case": "17 U.S.C. § 106 (Cornell LII text)",
+          "cite": "U.S. Code, exclusive rights in copyrighted works",
+          "url": "https://www.law.cornell.edu/uscode/text/17/106",
+          "quote": "Subject to sections 107 through 122, the owner of copyright under this title has the exclusive rights to do and to authorize any of the following: (1) to reproduce the copyrighted work in copies or phonorecords; (2) to prepare derivative works based upon the copyrighted work; (3) to distribute copies or phonorecords of the copyrighted work to the public by sale or other transfer of ownership, or by rental, lease, or lending..."
+        },
+        {
+          "case": "17 U.S.C. § 109(a) (Cornell LII text)",
+          "cite": "U.S. Code, limitations on exclusive rights — effect of transfer of particular copy or phonorecord (first sale doctrine)",
+          "url": "https://www.law.cornell.edu/uscode/text/17/109",
+          "quote": "Notwithstanding the provisions of section 106(3), the owner of a particular copy or phonorecord lawfully made under this title, or any person authorized by such owner, is entitled, without the authority of the copyright owner, to sell or otherwise dispose of the possession of that copy or phonorecord."
+        }
+      ]
+    },
+    {
+      "id": "swlicense_vernor_factors",
+      "title": "The Ninth Circuit Test for Whether Software Is Licensed or Sold",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-01",
+      "body": "The label a software agreement uses for itself is not necessarily the last word on whether the transaction is legally a license or a sale. The Ninth Circuit has articulated a specific test: a software user is a licensee, rather than an owner of a copy — meaning the first sale doctrine does not apply to that copy — where the copyright owner (1) specifies that the user is granted a license, (2) significantly restricts the user's ability to transfer the software, and (3) imposes notable use restrictions. In the case establishing this test, the software publisher's agreement retained title to the software, barred the customer from renting, leasing, or transferring it without consent, barred transfer outside a defined geographic area, and restricted the customer's ability to modify or reverse-engineer the software — and the court held that because of those provisions, the customer was a licensee, not an owner, so a person who later acquired copies from that customer could not invoke the first sale doctrine to justify reselling them. A consequence the same court identified is that a licensee who is not an \"owner\" of a copy also cannot invoke the separate statutory defense that lets an owner of a copy make the essential copies needed just to run software on a computer.",
+      "gap": "This is Ninth Circuit precedent (Vernor v. Autodesk); it is binding within that circuit, including on courts sitting in California, but other federal circuits have not uniformly adopted this same three-factor test for distinguishing a software license from a sale, and the question can be analyzed differently outside the Ninth Circuit. This clause states the three-factor test and its stated consequences as articulated in that case; it does not resolve how any particular license's actual terms would be evaluated under that test, since that depends on close review of the specific provisions at issue — something this clause does not do for this agreement.",
+      "citations": [
+        {
+          "case": "Vernor v. Autodesk, Inc.",
+          "cite": "621 F.3d 1102, 1110-13 (9th Cir. 2010)",
+          "url": "https://www.courtlistener.com/opinion/175116/vernor-v-autodesk-inc/",
+          "quote": "We hold today that a software user is a licensee rather than an owner of a copy where the copyright owner (1) specifies that the user is granted a license; (2) significantly restricts the user's ability to transfer the software; and (3) imposes notable use restrictions."
+        },
+        {
+          "case": "Vernor v. Autodesk, Inc.",
+          "cite": "621 F.3d 1102, 1111 (9th Cir. 2010)",
+          "url": "https://www.courtlistener.com/opinion/175116/vernor-v-autodesk-inc/",
+          "quote": "CTA was a licensee rather than an “owner of a particular copy” of Release 14, and it was not entitled to resell its Release 14 copies to Vernor under the first sale doctrine. 17 U.S.C. § 109(a). Therefore, Vernor did not receive title to the copies from CTA and accordingly could not pass ownership on to others."
+        }
+      ]
+    },
+    {
+      "id": "swlicense_clickwrap_enforceability",
+      "title": "Clickwrap and Browsewrap: What Makes an Online Agreement Enforceable",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-01",
+      "body": "When a software license is presented to a user online rather than signed on paper, courts distinguish between two common formats. In a \"clickwrap\" (or \"click-through\") agreement, the user must click an \"I agree\" button after being shown the terms; in a \"browsewrap\" agreement, the terms are simply posted, often via a hyperlink, and the site states that continuing to use it counts as agreement, without requiring the user to take any affirmative step. The Ninth Circuit has explained that ordinary contract-formation principles — including that mutual assent is the touchstone of a contract — apply to both formats, but they are not treated the same in practice: because a browsewrap agreement doesn't require the user to expressly manifest assent, its enforceability turns on whether the user had actual notice of the terms, or whether the design and placement of the notice would put a reasonably prudent user on inquiry notice of them, and courts have refused to enforce browsewrap terms that were buried or easy to miss. A clickwrap agreement's affirmative \"I agree\" step is what distinguishes it and is why courts have been more willing to find assent where a browsewrap-style notice resembles a clickwrap flow — for example, requiring an affirmative acknowledgment before proceeding.",
+      "gap": "This clause draws on Ninth Circuit case law (Nguyen v. Barnes & Noble); it is binding within that circuit and is frequently cited by California federal and state courts on this point, but it applied New York law under the parties' contractual choice-of-law clause in that specific case (the court noted California and New York law reached the same result on the facts before it, so it did not need to resolve which applied). This clause describes the general clickwrap/browsewrap distinction and the reasoning courts have used; it does not evaluate whether any specific online presentation of this license's terms to the software's licensee would in fact be found enforceable, which depends on the actual design, placement, and required steps of that specific presentation.",
+      "citations": [
+        {
+          "case": "Nguyen v. Barnes & Noble Inc.",
+          "cite": "763 F.3d 1171, 1175-76 (9th Cir. 2014)",
+          "url": "https://www.courtlistener.com/opinion/2718526/kevin-nguyen-v-barnes-noble-inc/",
+          "quote": "Contracts formed on the Internet come primarily in two flavors: “clickwrap” (or “click-through”) agreements, in which website users are required to click on an “I agree” box after being presented with a list of terms and conditions of use; and “browsewrap” agreements, where a website's terms and conditions of use are generally posted on the website via a hyperlink at the bottom of the screen."
+        },
+        {
+          "case": "Nguyen v. Barnes & Noble Inc.",
+          "cite": "763 F.3d 1171, 1176-77 (9th Cir. 2014)",
+          "url": "https://www.courtlistener.com/opinion/2718526/kevin-nguyen-v-barnes-noble-inc/",
+          "quote": "Because no affirmative action is required by the website user to agree to the terms of a contract other than his or her use of the website, the determination of the validity of the browsewrap contract depends on whether the user has actual or constructive knowledge of a website's terms and conditions."
+        }
+      ]
+    },
+    {
+      "id": "swlicense_exclusive_license_writing",
+      "title": "Exclusive Licenses Are Treated as Ownership Transfers — and Must Be in Writing",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-01",
+      "body": "Federal copyright law draws a sharp line between an exclusive license and a nonexclusive one. An exclusive license — one where {{licensorName}} promises not to grant the same rights to anyone else, including {{licensorName}} itself in some cases — is legally treated as a \"transfer of copyright ownership,\" the same category that includes an outright assignment. A nonexclusive license is expressly excluded from that definition. This distinction has a real consequence: like other transfers of copyright ownership, an exclusive license is not valid unless there is a signed writing — an instrument of conveyance, or at least a note or memorandum of the transfer, signed by {{licensorName}} or {{licensorName}}'s authorized agent. A nonexclusive license carries no equivalent federal writing requirement and, under general contract-law principles, can in some circumstances be granted orally or implied from conduct.",
+      "gap": "This is federal law, uniform nationwide. This clause cites two provisions that work together — the Copyright Act's definition of \"transfer of copyright ownership\" in 17 U.S.C. § 101 and its writing requirement for such transfers in 17 U.S.C. § 204(a) — rather than two independent sources, since the definition is what makes the writing requirement apply to an exclusive license in the first place. This clause does not determine whether any particular license granted under this agreement is exclusive or nonexclusive; that depends on the license's actual terms, addressed elsewhere in this document.",
+      "citations": [
+        {
+          "case": "17 U.S.C. § 101 (Cornell LII text)",
+          "cite": "U.S. Code, definitions — \"transfer of copyright ownership\"",
+          "url": "https://www.law.cornell.edu/uscode/text/17/101",
+          "quote": "A “transfer of copyright ownership” is an assignment, mortgage, exclusive license, or any other conveyance, alienation, or hypothecation of a copyright or of any of the exclusive rights comprised in a copyright, whether or not it is limited in time or place of effect, but not including a nonexclusive license."
+        },
+        {
+          "case": "17 U.S.C. § 204(a) (Cornell LII text)",
+          "cite": "U.S. Code, execution of transfers of copyright ownership",
+          "url": "https://www.law.cornell.edu/uscode/text/17/204",
+          "quote": "A transfer of copyright ownership, other than by operation of law, is not valid unless an instrument of conveyance, or a note or memorandum of the transfer, is in writing and signed by the owner of the rights conveyed or such owner's duly authorized agent."
+        }
+      ]
+    },
+    {
+      "id": "swlicense_warranty_disclaimer_basis",
+      "title": "Whether an Implied Warranty Applies to Licensed Software Is Unsettled",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-01",
+      "body": "California's Commercial Code implies a warranty that goods are merchantable — fit for their ordinary purpose, among other things — in a contract for the sale of goods, when the seller is a merchant dealing in goods of that kind, unless that warranty is excluded or modified. This warranty, by its own terms, is tied to a \"contract for sale\" of \"goods.\" Whether software delivered under a license, rather than sold outright, counts as a \"sale\" of \"goods\" for purposes of this warranty is a genuinely unsettled and contested question: software is intangible information rather than a tangible item in the traditional sense, and courts in different jurisdictions have not converged on a single answer, including on whether the analysis differs depending on how the software is delivered (for example, on physical media versus downloaded or accessed remotely) or on whether a transaction that bundles software with services is treated under a \"predominant purpose\" test that looks at the transaction as a whole. This is why software license agreements, including this one, commonly include an express warranty disclaimer: to state the parties' agreement plainly rather than depend on how an unresolved threshold question about the Commercial Code's scope would eventually be answered.",
+      "gap": "California's Commercial Code Article 2 (Cal. Com. Code §§ 2101 et seq.) is a state statute; other states' versions of the Uniform Commercial Code contain similar merchantability language, and the same scope question exists under those states' laws as well, so this clause's description of the underlying provision is specific to California but the unresolved-scope problem is not unique to it. This clause is deliberately conservative: it identifies a real, cited textual hook (the \"contract for sale\" of \"goods\" limitation in Cal. Com. Code § 2314) and honestly states that whether software licensing satisfies that hook is contested, rather than asserting a definitive answer either way — a case-law search for on-point California and Ninth Circuit authority on this specific question was attempted but could not be completed and quote-verified before this session's legal-research tool access was rate-limited, so no case citation is included here for that narrower question, only the statutory hook itself. This clause cites a single statutory section (§ 2314); no additional independent source was found for this.",
+      "citations": [
+        {
+          "case": "Cal. Com. Code § 2314 (California Legislative Information, official text)",
+          "cite": "California Commercial Code, implied warranty of merchantability",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=COM&sectionNum=2314.",
+          "quote": "Unless excluded or modified (Section 2316), a warranty that the goods shall be merchantable is implied in a contract for their sale if the seller is a merchant with respect to goods of that kind."
+        }
+      ]
+    },
+    {
+      "id": "swlicense_grant",
+      "title": "Grant of Software License",
+      "kind": "drafting",
+      "body": "{{licensorName}} (\"Licensor\") owns or controls all right, title, and interest in and to the copyright in the following software: {{softwareDescription}} (the \"Software\"). Subject to {{licenseeName}}'s (\"Licensee\") compliance with this agreement, Licensor grants Licensee a license to use the Software as described in this agreement. This is a license, not a sale or other transfer of ownership: Licensor retains all right, title, and interest in and to the Software, including all copyright and other intellectual property rights in it, except for the specific rights expressly granted to Licensee under this agreement. No rights in the Software are granted to Licensee by implication, estoppel, or otherwise, other than as expressly stated here."
+    },
+    {
+      "id": "swlicense_disclaimer",
+      "title": "Disclaimer of Warranties",
+      "kind": "drafting",
+      "body": "EXCEPT AS EXPRESSLY STATED IN THIS AGREEMENT, THE SOFTWARE IS PROVIDED \"AS IS,\" WITHOUT WARRANTY OF ANY KIND, WHETHER EXPRESS, IMPLIED, OR STATUTORY, INCLUDING WITHOUT LIMITATION ANY IMPLIED WARRANTY OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, OR NON-INFRINGEMENT. {{licensorName}} does not warrant that the Software will be error-free, uninterrupted, or free of security vulnerabilities, or that it will meet {{licenseeName}}'s particular requirements. Some jurisdictions do not allow the exclusion or limitation of certain implied warranties, so some of the exclusions in this section may not apply to {{licenseeName}} to the extent prohibited by applicable law."
     }
   ]
 }

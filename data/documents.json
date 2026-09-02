@@ -4323,5 +4323,42 @@
     "categories": [
       "Ending employment"
     ]
+  },
+  {
+    "id": "software_license",
+    "title": "Software License Agreement",
+    "description": "A license granting permission to use software under copyright, rather than assigning ownership -- the license/sale distinction and the Ninth Circuit's three-factor test for which one a transaction actually is (Vernor v. Autodesk), clickwrap vs. browsewrap enforceability (Nguyen v. Barnes & Noble), the writing requirement that attaches to an exclusive license, and an honest disclosure that whether an implied merchantability warranty applies to licensed software is a genuinely unsettled question.",
+    "clauseOrder": [
+      "swlicense_grant",
+      "swlicense_license_vs_sale",
+      "swlicense_vernor_factors",
+      "swlicense_clickwrap_enforceability",
+      "swlicense_exclusive_license_writing",
+      "swlicense_warranty_disclaimer_basis",
+      "swlicense_disclaimer"
+    ],
+    "fields": [
+      {
+        "id": "licensorName",
+        "label": "Licensor's name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "licenseeName",
+        "label": "Licensee's name",
+        "placeholder": "Beta Corp",
+        "required": true
+      },
+      {
+        "id": "softwareDescription",
+        "label": "Description of the software",
+        "placeholder": "Acme Widget Manager, version 3.2",
+        "required": true
+      }
+    ],
+    "categories": [
+      "Confidentiality & IP"
+    ]
   }
 ]
