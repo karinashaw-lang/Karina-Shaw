@@ -10972,5 +10972,65 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "final_paycheck_delivery_method_info_sheet",
+    "title": "Final Paycheck Delivery Method and Location — Information Sheet",
+    "description": "Explains the mechanics of how and where final wages must be delivered under California law -- distinct from the corpus's existing Waiting-Time Penalty Demand Letter document, which covers when final wages are due and the penalty for late payment. Covers the Lab. Code §208 place-of-payment rule for discharge vs. quitting, the §202(a) mailing option for a no-notice quit and its effect on the payment date, a narrow §201(a) mailing right for seasonal perishable-food-industry group layoffs, §213(d)'s conditions on direct deposit of final wages, and confirmation that the itemized wage statement requirement is not excused for a final paycheck.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "finalpaydelivery_method_declaration",
+      "finalpaydelivery_place_of_payment",
+      "finalpaydelivery_mailing_option",
+      "finalpaydelivery_direct_deposit",
+      "finalpaydelivery_wage_statement_still_applies",
+      "finalpaydelivery_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "terminationDate",
+        "label": "Termination date",
+        "placeholder": "October 1, 2026",
+        "required": true
+      },
+      {
+        "id": "separationType",
+        "label": "Type of separation",
+        "placeholder": "discharge",
+        "required": true
+      },
+      {
+        "id": "deliveryMethod",
+        "label": "Delivery method",
+        "placeholder": "mailed to designated address",
+        "required": true
+      },
+      {
+        "id": "deliveryAddress",
+        "label": "Delivery address (if mailed)",
+        "placeholder": "123 Main St, San Francisco, CA 94103",
+        "required": false
+      },
+      {
+        "id": "mailingDate",
+        "label": "Mailing date (if applicable)",
+        "placeholder": "October 1, 2026",
+        "required": false
+      }
+    ]
   }
 ]
