@@ -12815,5 +12815,43 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "california_warn_act_info_sheet",
+    "title": "California WARN Act (Cal/WARN) — Information Sheet",
+    "description": "Information about California's own layoff-notice law, the Cal/WARN Act (Labor Code § 1400 et seq.), which is materially different from the federal WARN Act — coverage thresholds, triggering events, notice content and recipients, exceptions, and liability.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "calwarn_coverage",
+      "calwarn_triggers",
+      "calwarn_notice_requirement",
+      "calwarn_exceptions",
+      "calwarn_liability",
+      "calwarn_penalties_enforcement",
+      "calwarn_notice_declaration",
+      "calwarn_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme Corp",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "terminationDate",
+        "label": "Effective date of layoff/relocation/termination",
+        "placeholder": "November 1, 2026",
+        "required": true
+      }
+    ]
   }
 ]
