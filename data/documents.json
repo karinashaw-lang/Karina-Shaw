@@ -12453,5 +12453,43 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "injury_illness_prevention_program_info_sheet",
+    "title": "Injury and Illness Prevention Program (IIPP) — Information Sheet",
+    "description": "Explains California's foundational workplace safety program requirement (Labor Code section 6401.7 and its implementing Cal/OSHA regulation, 8 Cal. Code Regs. section 3203): the statute's own list of required program elements, who must be identified as having authority and responsibility for the program, what triggers a hazard evaluation and how hazards must be corrected, when employee training is required, recordkeeping and employee access to the written program, and enforcement including the statute's first-citation safe harbor for employers who adopt Cal/OSHA's model program.",
+    "categories": [
+      "During employment"
+    ],
+    "clauseOrder": [
+      "iipp_declaration_and_scope",
+      "iipp_statutory_duty_and_elements",
+      "iipp_program_administrator",
+      "iipp_hazard_evaluation_and_correction",
+      "iipp_training_requirements",
+      "iipp_recordkeeping_and_employee_access",
+      "iipp_enforcement_and_safe_harbor",
+      "iipp_acknowledgment_signature"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme Innovations LLC",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "programAdministratorName",
+        "label": "Name of person with authority and responsibility for the program",
+        "placeholder": "Pat Morgan",
+        "required": true
+      }
+    ]
   }
 ]
