@@ -6666,5 +6666,68 @@
         "required": false
       }
     ]
+  },
+  {
+    "id": "sellers_permit_info_sheet",
+    "title": "Seller's Permit (California Department of Tax and Fee Administration Registration) — Information Sheet",
+    "description": "An information sheet describing California's statutory requirement that a retailer register with the California Department of Tax and Fee Administration (CDTFA) and hold a seller's permit before making retail sales of tangible personal property — a separate statutory scheme from Secretary of State formation and qualification filings, administered by a different agency. Covers the application filing requirement, the statutory definitions of seller, retailer, sale, and retail sale, permit issuance and non-assignability, the suspension/revocation procedure, the criminal penalty for unlicensed selling, and CDTFA's authority to require a security deposit.",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "sellerspermit_declaration",
+      "sellerspermit_permit_filing_requirement",
+      "sellerspermit_seller_retailer_definitions",
+      "sellerspermit_sale_retail_sale_definitions",
+      "sellerspermit_issuance_and_nonassignability",
+      "sellerspermit_suspension_and_revocation",
+      "sellerspermit_criminal_penalty",
+      "sellerspermit_security_deposit",
+      "sellerspermit_closing_signature"
+    ],
+    "fields": [
+      {
+        "id": "businessName",
+        "label": "Business name",
+        "placeholder": "Acme Retail, LLC",
+        "required": true
+      },
+      {
+        "id": "entityType",
+        "label": "Entity type",
+        "placeholder": "limited liability company",
+        "required": true
+      },
+      {
+        "id": "principalOfficeAddress",
+        "label": "California place of business",
+        "placeholder": "100 Market Street, San Diego, CA",
+        "required": true
+      },
+      {
+        "id": "businessActivityDescription",
+        "label": "Description of what is sold",
+        "placeholder": "retail clothing and accessories",
+        "required": true
+      },
+      {
+        "id": "authorizedSignerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "April 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, State",
+        "placeholder": "San Diego, California",
+        "required": true
+      }
+    ]
   }
 ]
