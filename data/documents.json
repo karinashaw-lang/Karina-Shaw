@@ -12921,5 +12921,60 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "charging_order_info_sheet",
+    "title": "Charging Order — Information Sheet",
+    "description": "Information about the charging order remedy under California Corporations Code § 17705.03 — the exclusive remedy a judgment creditor of an LLC member has against that member's transferable interest, further court orders including conditioned foreclosure, and how a charging order may be extinguished or redeemed.",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "chargingorder_declaration",
+      "chargingorder_what_it_is",
+      "chargingorder_exclusive_remedy",
+      "chargingorder_additional_court_orders",
+      "chargingorder_extinguish_and_redemption",
+      "chargingorder_no_compelled_distribution",
+      "chargingorder_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "LLC name",
+        "placeholder": "Acme Holdings, LLC",
+        "required": true
+      },
+      {
+        "id": "stateOfFormation",
+        "label": "State of formation",
+        "placeholder": "California",
+        "required": true
+      },
+      {
+        "id": "memberName",
+        "label": "Member's or transferee's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "authorizedSignerName",
+        "label": "Name of person preparing this information sheet",
+        "placeholder": "Taylor Morgan",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
