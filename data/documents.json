@@ -13093,5 +13093,59 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "watts_epstein_info_sheet",
+    "title": "Watts Charges and Epstein Credits — Information Sheet",
+    "description": "Information about two California case-law reimbursement doctrines that can arise during a pending dissolution: Watts charges (reimbursement for a spouse's exclusive post-separation use of a community asset) and Epstein credits (reimbursement for a spouse's separate-property payments on a community debt after separation).",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "wattsepstein_declaration",
+      "wattsepstein_watts_charge_doctrine",
+      "wattsepstein_epstein_credit_doctrine",
+      "wattsepstein_epstein_credit_limits",
+      "wattsepstein_statutory_codification",
+      "wattsepstein_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "party1Name",
+        "label": "First party's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "party2Name",
+        "label": "Second party's name",
+        "placeholder": "Taylor Morgan",
+        "required": true
+      },
+      {
+        "id": "separationDate",
+        "label": "Date of separation",
+        "placeholder": "March 1, 2026",
+        "required": true
+      },
+      {
+        "id": "countyOfFiling",
+        "label": "County of filing",
+        "placeholder": "Alameda County",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 2, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
