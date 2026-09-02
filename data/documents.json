@@ -12584,5 +12584,67 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "prop19_parent_child_transfer_exclusion_info_sheet",
+    "title": "Property Tax Parent-Child Transfer Exclusion (Proposition 19) — Information Sheet",
+    "description": "Explains California's current property tax reassessment exclusion for a transfer of real property between parents and children, or grandparents and grandchildren, under Revenue and Taxation Code section 63.2 and Article XIII A, Section 2.1 of the California Constitution (Proposition 19, effective February 16, 2021): the principal-residence requirement and homeowners'/disabled veterans' exemption filing condition, the taxable-value formula capping the increase added to the transferred property, the biennial inflation adjustment of the ,000,000 figure, the family farm exclusion and the end of the general exclusion for non-residence property, and the grandparent-grandchild transfer's deceased-parent eligibility condition. Distinct from the corpus's existing 1031 Exchange and Quitclaim Deed documents.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "prop19_claim_declaration",
+      "prop19_effective_date_transition",
+      "prop19_principal_residence_requirement",
+      "prop19_exclusion_formula",
+      "prop19_inflation_adjustment",
+      "prop19_family_farm_and_nonresidence_transfers",
+      "prop19_grandparent_grandchild_condition",
+      "prop19_signature_cert"
+    ],
+    "fields": [
+      {
+        "id": "propertyAddress",
+        "label": "Property address",
+        "placeholder": "123 Main St., Sacramento, CA 95814",
+        "required": true
+      },
+      {
+        "id": "parcelNumber",
+        "label": "Assessor's Parcel Number",
+        "placeholder": "123-456-789",
+        "required": true
+      },
+      {
+        "id": "transferorName",
+        "label": "Transferor's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "transfereeName",
+        "label": "Transferee's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "relationshipToTransferor",
+        "label": "Transferee's relationship to transferor",
+        "placeholder": "Child",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 2, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, state",
+        "placeholder": "Sacramento, California",
+        "required": true
+      }
+    ]
   }
 ]
