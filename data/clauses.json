@@ -15488,6 +15488,144 @@
       "title": "Signature and Acknowledgment — Not a Modification Order",
       "kind": "drafting",
       "body": "I declare under penalty of perjury under the laws of the State of California that the foregoing background information is true and correct.\n\nExecuted on {{dateSigned}} at {{cityState}}.\n\nSignature of {{parent1Name}}: ☐ _________________________\n\n[This information sheet is prepared for use alongside an actual noticed motion or order to show cause to modify or terminate a custody, visitation, or support order, filed with the California superior court that entered the order. It does not itself constitute, replace, or complete that filing, and it does not modify or terminate any custody, visitation, or support order concerning {{childName}}; only a new court order can do that.]"
+    },
+    {
+      "id": "covenantnotice_details",
+      "title": "Perform-Covenant-or-Quit Notice Details",
+      "kind": "drafting",
+      "body": "NOTICE TO PERFORM COVENANT OR QUIT. To: {{tenantName}}. Property: {{propertyAddress}}. Date of this notice: {{noticeDate}}. {{landlordName}}, as landlord, states that {{tenantName}} has neglected or failed to perform the following condition(s) or covenant(s) of the lease or rental agreement governing the property described above, other than the payment of rent: {{covenantDescription}}. Within three (3) days after service of this notice, excluding Saturdays, Sundays, and other judicial holidays, {{tenantName}} must either perform the condition(s) or covenant(s) described above or deliver possession of the property. Failure to do either within that period may result in legal proceedings to recover possession of the property."
+    },
+    {
+      "id": "covenantnotice_statutory_basis",
+      "title": "Statutory Basis and Required Content of This Notice",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-02",
+      "body": "California statute makes a tenant guilty of unlawful detainer when the tenant continues in possession after neglecting or failing to perform a condition or covenant of the lease — other than the payment of rent — and after having been served with a three-day notice, excluding Saturdays, Sundays, and other judicial holidays, requiring either performance of that condition or covenant or possession of the property. This is a distinct statutory paragraph from the one governing nonpayment of rent, within the same code section, and it expressly extends to a covenant not to assign or sublet the premises. By its terms, the statute requires the notice to require \"the performance of those conditions or covenants\" that the tenant has neglected or failed to perform — meaning the notice must identify which condition or covenant of the lease is at issue, not simply assert in general terms that some unspecified breach has occurred. The statute does not, in its own text, spell out a separate list of required notice contents (such as an amount, payee, or payment address) the way the neighboring paragraph does for a rent-default notice, because a covenant breach does not involve a sum of money to be stated.",
+      "gap": "This is one state's statute, used as real evidence of California's unlawful detainer notice requirements — not a claim about which state's law governs a specific tenancy; landlord-tenant notice procedures vary significantly by state. This document addresses California's statewide statute only; it does not cover any city or county's local rent-control or just-cause eviction ordinance, some of which layer additional or different notice-and-cure requirements on top of this statewide floor for a covenant violation. This research could not confirm, through case law, exactly how much particularity a court requires when a notice identifies the breached condition or covenant (for example, whether identifying the covenant by its lease-section reference is enough, or whether the notice must also describe the specific facts of the breach) — CourtListener, the case-law research tool used for this project, returned a daily rate-limit error (429, \"Rate limit exceeded: 125/day\") when queried on this exact question, and that limit could not be worked around within this research session. The pay-rent-or-quit notice covered elsewhere in this corpus is governed by published case law (Kwok v. Bergren) holding that a notice under this same code section must strictly comply with its statutory requirements; that same strict-compliance principle, drawn from the same statute, is likely to extend to this covenant notice as well, but this document does not assert that as case-law-confirmed for this specific notice because the case law was not independently verified here. The citation below is to a single paragraph of a single statutory section (Code of Civil Procedure section 1161(3)); no additional independent source was used for this clause.",
+      "citations": [
+        {
+          "case": "Cal. Code Civ. Proc. § 1161(3)",
+          "cite": "California Code of Civil Procedure, the statutory basis for the notice to perform covenant or quit and the requirement that it require performance of the specific conditions or covenants breached",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=1161.",
+          "quote": "When the tenant continues in possession, in person or by subtenant, after a neglect or failure to perform other conditions or covenants of the lease or agreement under which the property is held, including any covenant not to assign or sublet, than the one for the payment of rent, and three days’ notice, excluding Saturdays and Sundays and other judicial holidays, in writing, requiring the performance of those conditions or covenants, or the possession of the property, shall have been served upon the tenant, and if there is a subtenant in actual occupation of the premises, also, upon the subtenant."
+        }
+      ]
+    },
+    {
+      "id": "covenantnotice_cure_right",
+      "title": "The Tenant's Right to Cure and Save the Lease",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-02",
+      "body": "California statute states, in the same paragraph that creates this notice, that within the three-day period the tenant, a subtenant in actual occupation, a mortgagee of the term, or another person interested in the lease's continuance \"may perform the conditions or covenants of the lease or pay the stipulated rent, as the case may be, and thereby save the lease from forfeiture.\" The statute's own text also recognizes that a breach is not always capable of being cured after the fact: it provides that if the violated conditions or covenants \"cannot afterward be performed,\" then no notice offering the tenant the chance to perform need be given at all.",
+      "gap": "This is one state's statute, used as real evidence of California's unlawful detainer notice requirements — not a claim about which state's law governs a specific tenancy; landlord-tenant notice procedures vary significantly by state. This document addresses California's statewide statute only, not any city or county's local ordinance. Both quotations below come from a single sentence within paragraph (3) of the same statutory section (Code of Civil Procedure section 1161); no additional independent source was used for this clause. This document does not, and cannot, determine whether any particular lease covenant, once breached, is or is not capable of being performed after the fact — that determination depends on the specific covenant and the specific facts.",
+      "citations": [
+        {
+          "case": "Cal. Code Civ. Proc. § 1161(3) [cure right]",
+          "cite": "California Code of Civil Procedure, the tenant's statutory right to cure within the three-day period",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=1161.",
+          "quote": "Within three days, excluding Saturdays and Sundays and other judicial holidays, after the service of the notice, the tenant, or any subtenant in actual occupation of the premises, or any mortgagee of the term, or other person interested in its continuance, may perform the conditions or covenants of the lease or pay the stipulated rent, as the case may be, and thereby save the lease from forfeiture"
+        },
+        {
+          "case": "Cal. Code Civ. Proc. § 1161(3) [incapable-of-performance proviso]",
+          "cite": "California Code of Civil Procedure, the proviso excusing a cure notice when the breach cannot afterward be performed",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=1161.",
+          "quote": "provided, if the conditions and covenants of the lease, violated by the lessee, cannot afterward be performed, then no notice, as last prescribed herein, need be given to the lessee or the subtenant, demanding the performance of the violated conditions or covenants of the lease"
+        }
+      ]
+    },
+    {
+      "id": "covenantnotice_no_cure_categories",
+      "title": "Breaches California Statute Treats Differently: No Cure Notice Required",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-02",
+      "body": "In a separate paragraph of the same statute — not the paragraph that creates the perform-or-quit notice described elsewhere in this document — California law provides that a tenant who assigns or sublets contrary to the lease's conditions or covenants, or who commits or permits waste, or who maintains, commits, or permits a nuisance on the premises, or who uses the premises for an unlawful purpose, \"thereby terminates the lease,\" and the landlord is entitled to restitution of possession upon service of a three-day notice to quit — a notice to vacate, not a notice offering the tenant an opportunity to perform a covenant or otherwise cure the breach. The statute treats these categories of breach as ending the tenancy outright rather than as conditions capable of being cured through the perform-or-quit procedure described elsewhere in this document.",
+      "gap": "This is one state's statute, used as real evidence of California's unlawful detainer notice requirements — not a claim about which state's law governs a specific tenancy; landlord-tenant notice procedures vary significantly by state. This document addresses California's statewide statute only. This research attempted to confirm this distinction with published California case law (for example, cases discussing waste, nuisance, or illegal-use evictions as categorically incurable) but could not do so: CourtListener, the case-law research tool used for this project, returned a daily rate-limit error (429, \"Rate limit exceeded: 125/day\") before any such search could be run, and that limit could not be worked around within this research session. The finding above rests solely on the directly-verified text of the statute itself (Code of Civil Procedure section 1161, paragraph 4, as contrasted with paragraph 3), not on case law construing it. This document does not determine whether any specific act (an unauthorized subletting, an unauthorized pet, or any other lease violation) falls into this no-cure category as opposed to the perform-or-quit category described elsewhere in this document — that determination depends on the specific covenant, the specific conduct, and how a court would characterize it.",
+      "citations": [
+        {
+          "case": "Cal. Code Civ. Proc. § 1161(4)",
+          "cite": "California Code of Civil Procedure, lease-terminating breaches served with a straight notice to quit rather than a perform-or-quit notice",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=1161.",
+          "quote": "Any tenant, subtenant, or executor or administrator of that person’s estate heretofore qualified and now acting, or hereafter to be qualified and act, assigning or subletting or committing waste upon the demised premises, contrary to the conditions or covenants of the lease, or maintaining, committing, or permitting the maintenance or commission of a nuisance upon the demised premises or using the premises for an unlawful purpose, thereby terminates the lease, and the landlord, or the landlord’s successor in estate, shall upon service of three days’ notice to quit upon the person or persons in possession, be entitled to restitution of possession of the demised premises under this chapter."
+        }
+      ]
+    },
+    {
+      "id": "covenantnotice_3day_timing",
+      "title": "How the Three-Day Period Is Counted",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-02",
+      "body": "The three-day period this notice provides is counted, by the statute's own express terms, excluding Saturdays, Sundays, and other judicial holidays — not by counting every calendar day. This exclusion is written directly into the same statutory sentence that creates the notice, rather than left to a separate general time-computation statute. California also has general statutes governing how time periods are computed when a statute does not otherwise specify: one excludes the first day and includes the last day of a period unless the last day is a holiday, in which case that day is also excluded; a related statute extends a deadline that would otherwise fall on a holiday to the next non-holiday day, and defines \"holiday\" for that purpose to include every Saturday. Because this notice's own three-day period already excludes Saturdays, Sundays, and other judicial holidays from the count entirely — not merely from the last day — the notice's own express language, not the general default computation rules, governs how the three days are counted here.",
+      "gap": "This is one state's statute, used as real evidence of California's unlawful detainer notice requirements — not a claim about which state's law governs a specific tenancy; landlord-tenant notice procedures vary significantly by state, and some states count all calendar days rather than excluding weekends and holidays. This document addresses California's statewide statute only, not any city or county's local ordinance. The three citations below are to three different statutory sections: Code of Civil Procedure section 1161(3) (the notice's own weekend/holiday exclusion), section 12 (the general first-day-excluded, last-day-included computation default), and section 12a (the general holiday-extension rule) — they are independent statutory sources compared against one another, not restatements of a single source, and are disclosed together here for that reason.",
+      "citations": [
+        {
+          "case": "Cal. Code Civ. Proc. § 1161(3)",
+          "cite": "California Code of Civil Procedure, the notice's own weekend/holiday exclusion",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=1161.",
+          "quote": "three days’ notice, excluding Saturdays and Sundays and other judicial holidays, in writing, requiring the performance of those conditions or covenants, or the possession of the property, shall have been served upon the tenant"
+        },
+        {
+          "case": "Cal. Code Civ. Proc. § 12",
+          "cite": "California Code of Civil Procedure, the general rule for computing a time period",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=12.",
+          "quote": "The time in which any act provided by law is to be done is computed by excluding the first day, and including the last, unless the last day is a holiday, and then it is also excluded."
+        },
+        {
+          "case": "Cal. Code Civ. Proc. § 12a(a)",
+          "cite": "California Code of Civil Procedure, the general rule extending a deadline that falls on a holiday, and defining Saturdays as holidays for that purpose",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=12a.",
+          "quote": "If the last day for the performance of any act provided or required by law to be performed within a specified period of time is a holiday, then that period is hereby extended to and including the next day that is not a holiday. For purposes of this section, “holiday” means all day on Saturdays, all holidays specified in Section 135 and, to the extent provided in Section 12b, all days that by terms of Section 12b are required to be considered as holidays."
+        }
+      ]
+    },
+    {
+      "id": "covenantnotice_service_methods",
+      "title": "How This Notice May Be Served",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-02",
+      "body": "The same statute that prescribes service methods for a nonpayment-of-rent three-day notice applies equally to this notice: it governs service of \"the notices required by Sections 1161 and 1161a,\" without distinguishing among the different paragraphs of section 1161. For a residential tenant, three methods are permitted, to be used in this order of preference: (1) personal delivery to the tenant; (2) if the tenant cannot be found at home or at their usual place of business, leaving a copy with a person of suitable age and discretion at either place and also mailing a copy to the tenant's residence; or (3) if neither the tenant's residence nor place of business can be determined, or no person of suitable age or discretion can be found there, posting a copy in a conspicuous place on the property and mailing a copy to the property address, while also handing a copy to anyone else found residing there. If a subtenant is in actual occupation of the property, service must also be made on the subtenant. There is no difference in required service method between this notice and the pay-rent-or-quit notice covered elsewhere in this corpus — both are served under this same statutory subdivision.",
+      "gap": "This is one state's statute, used as real evidence of California's unlawful detainer notice requirements — not a claim about which state's law governs a specific tenancy; landlord-tenant notice procedures vary significantly by state. This document addresses the statewide residential-tenant method only — the same statute sets out a separate set of service methods for a commercial tenant, in a different subdivision of this same section, which this document does not address, and some California cities impose additional local service or documentation requirements on top of the statewide method. This is a single statutory subsection (§ 1162(a)); no additional independent source was found for this.",
+      "citations": [
+        {
+          "case": "Cal. Code Civ. Proc. § 1162(a)",
+          "cite": "California Code of Civil Procedure, the permitted methods of serving the notice on a residential tenant, applicable to notices under section 1161 generally",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=1162.",
+          "quote": "Except as provided in subdivision (b), the notices required by Sections 1161 and 1161a may be served by any of the following methods: (1) By delivering a copy to the tenant personally. (2) If he or she is absent from his or her place of residence, and from his or her usual place of business, by leaving a copy with some person of suitable age and discretion at either place, and sending a copy through the mail addressed to the tenant at his or her place of residence. (3) If such place of residence and business cannot be ascertained, or a person of suitable age or discretion there can not be found, then by affixing a copy in a conspicuous place on the property, and also delivering a copy to a person there residing, if such person can be found; and also sending a copy through the mail addressed to the tenant at the place where the property is situated. Service upon a subtenant may be made in the same manner."
+        }
+      ]
+    },
+    {
+      "id": "covenantnotice_just_cause_context",
+      "title": "This Notice Under California's Statewide Just-Cause Law",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-02",
+      "body": "Since 2020, California's Tenant Protection Act has required a landlord to have \"just cause,\" stated in the written termination notice, to end certain tenancies once a tenant has continuously and lawfully occupied a unit for 12 months (or, in some multi-tenant situations, 24 months). A curable lease violation is one form of \"at-fault just cause\" recognized by that statute, and for a curable lease violation the statute requires the landlord to first give the tenant notice of the violation with an opportunity to cure, specifically identified by cross-reference as the notice described in paragraph (3) of Code of Civil Procedure section 1161 — the same statute that is the basis for this document. The Tenant Protection Act's just-cause requirement does not apply to every California tenancy: the statute lists a number of specific exemptions, including (among others) certain single-family owner-occupied residences, certain small two-unit owner-occupied properties, and housing issued a certificate of occupancy within the preceding 15 years. This statewide just-cause requirement is currently scheduled to expire, and be repealed, on January 1, 2030.",
+      "gap": "This is one state's statute, used as real evidence of California's unlawful detainer notice requirements — not a claim about which state's law governs a specific tenancy; landlord-tenant notice procedures vary significantly by state. This document addresses statewide California law only; a number of California cities and counties have their own local rent-control and just-cause ordinances that impose additional or different requirements on top of the statewide law, and this document does not cover any of them. The exemption list above is a summary, not a complete restatement of the statute's exemption paragraph, which contains nine numbered categories with detailed sub-conditions attached to several of them. This document does not determine whether the just-cause law applies to, or is satisfied by, any specific tenancy or notice. The two citations below are subsections of the same statutory section (Civil Code section 1946.2) rather than independently authored sources; no additional independent source was used for this clause.",
+      "citations": [
+        {
+          "case": "Cal. Civ. Code § 1946.2(c)",
+          "cite": "California Civil Code, the just-cause law's cross-reference to this notice as the required cure step for a curable lease violation",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1946.2.",
+          "quote": "Before an owner of residential real property issues a notice to terminate a tenancy for just cause that is a curable lease violation, the owner shall first give notice of the violation to the tenant with an opportunity to cure the violation pursuant to paragraph (3) of Section 1161 of the Code of Civil Procedure."
+        },
+        {
+          "case": "Cal. Civ. Code § 1946.2(n)",
+          "cite": "California Civil Code, the just-cause law's own sunset date",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1946.2.",
+          "quote": "This section shall remain in effect only until January 1, 2030, and as of that date is repealed."
+        }
+      ]
+    },
+    {
+      "id": "covenantnotice_signature_service",
+      "title": "Landlord Signature and Declaration of Service (Covenant Notice)",
+      "kind": "drafting",
+      "body": "Signed: {{landlordName}}, Landlord. Date: _______________.\n\nDeclaration of Service. This notice was served on {{tenantName}} on _______________ (date), by the following method (check one): ☐ personal delivery to the tenant; ☐ leaving a copy with a person of suitable age and discretion at the tenant's residence or usual place of business, together with mailing a copy to the tenant's residence; ☐ posting a copy in a conspicuous place on the property and mailing a copy to the property address, after the tenant's residence and place of business could not be ascertained or no person of suitable age or discretion could be found there.\n\nServed by: _______________ (name) Date: _______________"
     }
   ]
 }

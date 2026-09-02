@@ -5688,5 +5688,55 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "notice_to_perform_covenant_or_quit",
+    "title": "3-Day Notice to Perform Covenant or Quit",
+    "description": "A notice used when a tenant has breached a lease covenant other than nonpayment of rent (e.g., an unauthorized pet or occupant), giving the tenant 3 days to cure the breach or vacate. Distinct from the Notice to Pay Rent or Quit document. Covers the statutory basis and content requirement (Code Civ. Proc. § 1161(3)), the cure right and the incurable-breach proviso, the separate category of lease-terminating breaches served with a straight notice to quit instead (§ 1161(4)), how the 3-day period is counted, service methods, and this notice's role as the required cure step under California's statewide just-cause eviction law.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "covenantnotice_details",
+      "covenantnotice_statutory_basis",
+      "covenantnotice_cure_right",
+      "covenantnotice_no_cure_categories",
+      "covenantnotice_3day_timing",
+      "covenantnotice_service_methods",
+      "covenantnotice_just_cause_context",
+      "covenantnotice_signature_service"
+    ],
+    "fields": [
+      {
+        "id": "landlordName",
+        "label": "Landlord's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "tenantName",
+        "label": "Tenant's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "propertyAddress",
+        "label": "Property address",
+        "placeholder": "123 Main St., Apt. 4, Sacramento, CA 95814",
+        "required": true
+      },
+      {
+        "id": "noticeDate",
+        "label": "Date of this notice",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "covenantDescription",
+        "label": "Covenant breached",
+        "placeholder": "Keeping an unauthorized dog on the premises in violation of Section 12 of the lease's no-pets clause",
+        "required": true
+      }
+    ]
   }
 ]
