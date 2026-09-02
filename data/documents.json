@@ -7162,5 +7162,68 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "bonus_incentive_termination_info_sheet",
+    "title": "Bonus and Incentive Compensation at Termination — Information Sheet",
+    "description": "An information sheet describing how California authorities treat bonus and incentive compensation as wages (or not) when employment ends, distinct from the existing Commission Payout Upon Termination document (which addresses commissions specifically under Labor Code § 2751). Covers the general statutory 'wages' definition and the DLSE's interpretation of bonuses as wages, the discretionary/nondiscretionary distinction (agency guidance, not codified statute), the fact- and plan-specific treatment of an 'employed on the payment date' condition, the different treatment of an employer-initiated discharge before a bonus period ends, a bonus-forfeiture condition's independent unenforceability where it conflicts with other public policy, and how an earned, unpaid bonus rides on the same final-pay deadlines and waiting-time penalty as other wages.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "bonuspay_declaration",
+      "bonuspay_wages_general_definition",
+      "bonuspay_discretionary_not_earned",
+      "bonuspay_nondiscretionary_formula_is_wages",
+      "bonuspay_employment_on_payment_date_unsettled",
+      "bonuspay_discharge_before_completion_prorata",
+      "bonuspay_illegal_forfeiture_conditions",
+      "bonuspay_waiting_time_penalty_reference",
+      "bonuspay_summary_and_signature"
+    ],
+    "fields": [
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Morgan T. Ellis",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Company/employer name",
+        "placeholder": "Acme Manufacturing, Inc.",
+        "required": true
+      },
+      {
+        "id": "terminationDate",
+        "label": "Termination date",
+        "placeholder": "March 14, 2026",
+        "required": true
+      },
+      {
+        "id": "bonusType",
+        "label": "Type of bonus or incentive compensation",
+        "placeholder": "Annual performance bonus",
+        "required": true
+      },
+      {
+        "id": "bonusPeriodCovered",
+        "label": "Period the bonus covers",
+        "placeholder": "Calendar year 2025",
+        "required": true
+      },
+      {
+        "id": "bonusPlanTerms",
+        "label": "Plan terms (formula, quota, continued-employment condition, payment date)",
+        "placeholder": "5% of base salary if annual sales quota met; must be employed on March 1 payment date",
+        "required": true
+      },
+      {
+        "id": "statedBonusAmount",
+        "label": "Amount potentially at issue, if known",
+        "placeholder": ",000",
+        "required": false
+      }
+    ]
   }
 ]
