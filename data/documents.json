@@ -11076,5 +11076,78 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "copyright_fair_use_info_sheet",
+    "title": "Copyright Fair Use Doctrine — Information Sheet",
+    "description": "Explains the federal fair use defense under 17 U.S.C. §107 -- distinct from the corpus's existing Copyright Registration, Assignment, and DMCA documents, none of which explain the doctrine itself. Covers the statutory text and its illustrative (non-exhaustive) list of purposes, the four statutory factors, why \"transformative use\" is a judicial gloss from Campbell v. Acuff-Rose Music rather than statutory text, the absence of any fixed quantitative rule, and fair use as an affirmative defense with its burden-of-proof question.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "fairuse_self_assessment_declaration",
+      "fairuse_statutory_text_and_illustrative_purposes",
+      "fairuse_four_statutory_factors",
+      "fairuse_transformative_use_is_judicial_not_statutory",
+      "fairuse_no_fixed_quantitative_rule",
+      "fairuse_affirmative_defense_and_burden",
+      "fairuse_signature_and_certification"
+    ],
+    "fields": [
+      {
+        "id": "userName",
+        "label": "User's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "ownerName",
+        "label": "Copyright owner's name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "copyrightedWorkDescription",
+        "label": "Description of the copyrighted work",
+        "placeholder": "a photograph published in 2020",
+        "required": true
+      },
+      {
+        "id": "useDescription",
+        "label": "Description of the intended use",
+        "placeholder": "a critical commentary blog post quoting a short excerpt",
+        "required": true
+      },
+      {
+        "id": "purposeAndCharacterNotes",
+        "label": "Notes on purpose and character of the use (factor 1)",
+        "placeholder": "commentary and criticism, nonprofit blog",
+        "required": true
+      },
+      {
+        "id": "natureOfWorkNotes",
+        "label": "Notes on the nature of the copyrighted work (factor 2)",
+        "placeholder": "published factual photograph",
+        "required": true
+      },
+      {
+        "id": "amountUsedNotes",
+        "label": "Notes on amount and substantiality used (factor 3)",
+        "placeholder": "one cropped section, roughly 10% of the image",
+        "required": true
+      },
+      {
+        "id": "marketEffectNotes",
+        "label": "Notes on effect on the market for the work (factor 4)",
+        "placeholder": "no substitute for the original; no licensing market displaced",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "October 1, 2026",
+        "required": true
+      }
+    ]
   }
 ]
