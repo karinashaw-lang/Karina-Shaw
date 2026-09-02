@@ -10586,5 +10586,60 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "cooperative_corporation_info_sheet",
+    "title": "Cooperative Corporation — Formation Information Sheet",
+    "description": "Explains California's Cooperative Corporation Law (Corp. Code §§12200-12704), covering consumer and worker cooperatives -- a distinct legal form from the corpus's existing for-profit corporation, LLC, nonprofit, and benefit corporation documents. Covers the patronage-based purpose requirement, the one-member-one-vote default rule and its narrow exception, patronage dividends and how patronage is measured, the statutory cap on distributions for capital contributions, and required articles content.",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "coop_purpose_and_membership_declaration",
+      "coop_definition_and_purpose",
+      "coop_one_member_one_vote",
+      "coop_patronage_distribution",
+      "coop_capital_return_limit",
+      "coop_required_articles_content",
+      "coop_incorporator_signature"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Cooperative's name",
+        "placeholder": "Acme Cooperative",
+        "required": true
+      },
+      {
+        "id": "principalOfficeAddress",
+        "label": "Principal office address",
+        "placeholder": "123 Main St, San Francisco, CA 94103",
+        "required": true
+      },
+      {
+        "id": "agentName",
+        "label": "Agent for service of process's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "agentAddress",
+        "label": "Agent for service of process's address",
+        "placeholder": "123 Main St, San Francisco, CA 94103",
+        "required": true
+      },
+      {
+        "id": "incorporatorName",
+        "label": "Incorporator's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "additionalPurposeDescription",
+        "label": "Description of the cooperative's purpose (optional)",
+        "placeholder": "providing wholesale groceries to member-owned retail stores",
+        "required": false
+      }
+    ]
   }
 ]
