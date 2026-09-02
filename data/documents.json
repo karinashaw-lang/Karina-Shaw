@@ -5914,5 +5914,50 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "ccpa_consumer_privacy_policy",
+    "title": "Website/App Privacy Policy — CCPA Consumer-Facing Disclosure",
+    "description": "A consumer-facing privacy notice, distinct from the existing CCPA Service Provider Data Processing Agreement's B2B contract terms. Covers the notice-at-collection requirement, the substantive consumer rights to know, delete, correct, opt out of sale/sharing, and limit use of sensitive personal information, the required \"Do Not Sell or Share\" homepage link and opt-out preference signal alternative, the privacy policy's required content, and the non-discrimination provision with its financial incentive exception.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "ccpapolicy_recitals",
+      "ccpapolicy_notice_at_collection_requirement",
+      "ccpapolicy_notice_at_collection_disclosure",
+      "ccpapolicy_rights_to_know_delete_correct",
+      "ccpapolicy_rights_disclosure_and_contact",
+      "ccpapolicy_rights_optout_and_limit_sensitive",
+      "ccpapolicy_donotsell_link_and_optout_signal",
+      "ccpapolicy_privacy_policy_required_content",
+      "ccpapolicy_nondiscrimination"
+    ],
+    "fields": [
+      {
+        "id": "businessName",
+        "label": "Business name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "categoriesCollected",
+        "label": "Categories of personal information collected",
+        "placeholder": "Identifiers (name, email address), internet activity (browsing history on our site), and geolocation data",
+        "required": true
+      },
+      {
+        "id": "purposesOfUse",
+        "label": "Purposes of collection and use",
+        "placeholder": "Providing and improving our services, processing transactions, and customer support",
+        "required": true
+      },
+      {
+        "id": "contactMethod",
+        "label": "How consumers may contact the business or submit requests",
+        "placeholder": "privacy@acme.com or (415) 555-0100",
+        "required": true
+      }
+    ]
   }
 ]
