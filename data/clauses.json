@@ -11507,6 +11507,139 @@
       "title": "Certification and Acknowledgment of Disclosure",
       "kind": "drafting",
       "body": "Seller's/Landlord's Disclosure (initial one):\n\n___ Known lead-based paint and/or lead-based paint hazards are present in the housing at {{propertyAddress}}, described as follows: ______________________________\n\n___ {{sellerLandlordName}} has no knowledge of lead-based paint and/or lead-based paint hazards in the housing.\n\nRecords and Reports available to {{sellerLandlordName}} pertaining to lead-based paint and/or lead-based paint hazards in the housing (list documents below, or state \"None available\"):\n\n______________________________________________________\n\nBuyer's/Tenant's Acknowledgment (initial each):\n\n___ {{buyerTenantName}} has received the information and records/reports identified above.\n\n___ {{buyerTenantName}} has received the EPA-approved pamphlet, Protect Your Family From Lead in Your Home.\n\n___ (Sale transactions only) {{buyerTenantName}} has received a 10-day opportunity (or a mutually agreed alternative period, if any: ______) to conduct a risk assessment or inspection for lead-based paint hazards before becoming obligated under the contract, or has waived that opportunity in writing.\n\nAgent's Acknowledgment (if an agent is involved in the transaction):\n\n___ The agent has informed {{sellerLandlordName}} of {{sellerLandlordName}}'s obligations under 42 U.S.C. § 4852d and is aware of the agent's own duty to ensure compliance with those requirements.\n\nSigned:\n\nSeller/Landlord: {{sellerLandlordName}} _______________________ Date: _______________\nBuyer/Tenant: {{buyerTenantName}} _______________________ Date: _______________\nAgent (if any): _______________________ Date: _______________"
+    },
+    {
+      "id": "patentassign_initial_ownership",
+      "title": "Who Owns a Patent Before It's Assigned",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-01",
+      "body": "Under federal patent law, the right to a patent vests initially in the individual human inventor — not automatically in an employer, a company that funded the research, or anyone else — unless and until the inventor actually assigns those rights away. The U.S. Supreme Court confirmed this default in a case involving a university, a research company, and a scientist who had signed two different agreements about the same line of research: one merely promising to assign future inventions, the other actually assigning them outright. The Court held that even federal funding of the underlying research didn't change this default; rights in an invention belong to the inventor unless the inventor signs them away. Where {{assignorName}} holds an existing patent, or has invented something covered by {{patentDescription}}, that ownership belongs to {{assignorName}} personally unless and until {{assignorName}} signs an assignment — like this one — transferring it to {{assigneeName}}.",
+      "gap": "This is federal law — patent ownership is governed exclusively by the Patent Act and federal case law nationwide, with no state-by-state variation on this initial-ownership question to resolve. This clause states the default rule from Board of Trustees of the Leland Stanford Junior University v. Roche Molecular Systems, Inc., a U.S. Supreme Court decision binding nationwide. That case's underlying facts illustrate two related points this document addresses separately rather than resolving here: an employer can still end up owning an inventor's rights through an actual signed assignment (the subject of this document), and — in a narrower category of case — a court may find an inventor's rights were never entirely under the inventor's own control to begin with, where the inventor's engagement was specifically to solve the problem the invention solves. That narrower doctrine, sometimes called \"hired to invent,\" is addressed in a separate clause. This clause also doesn't resolve joint-inventorship questions — where more than one person contributed to conceiving an invention, ownership can be shared among them in ways not addressed here.",
+      "citations": [
+        {
+          "case": "Board of Trustees of the Leland Stanford Junior University v. Roche Molecular Systems, Inc.",
+          "cite": "563 U.S. 776 (2011)",
+          "url": "https://www.courtlistener.com/opinion/218133/board-of-trustees-of-the-leland-stanford-junior-university-v-roche/",
+          "quote": "Since 1790, the patent law has operated on the premise that rights in an invention belong to the inventor."
+        },
+        {
+          "case": "United States v. Dubilier Condenser Corp.",
+          "cite": "289 U.S. 178, 187 (1933)",
+          "url": "https://www.courtlistener.com/opinion/102083/united-states-v-dubilier-condenser-corp/",
+          "quote": "A patent is property and title to it can pass only by assignment."
+        }
+      ]
+    },
+    {
+      "id": "patentassign_hired_to_invent",
+      "title": "The \"Hired to Invent\" Exception to Inventor Ownership",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-01",
+      "body": "Patent case law recognizes a narrow exception to the default rule that an invention belongs to the person who conceived it: where an individual was specifically engaged — not just employed in a general capacity — to solve the particular problem that resulted in the invention, courts have held that the resulting patent belongs to the employer even without a separate written assignment, because the individual has, as the U.S. Supreme Court put it, \"only produced that which he was employed to invent.\" This is different from general employment during which someone happens to conceive something inventive along the way; courts have held that general employment alone, without a specific engagement to solve that problem, does not transfer patent rights to the employer by itself. Whether {{assignorName}}'s relationship to {{assigneeName}} was general employment or a specific engagement to solve the problem addressed by {{patentDescription}} is a factual question this document doesn't resolve — which is a central reason a written assignment, rather than reliance on this exception, is the reliable way to establish {{assigneeName}}'s ownership.",
+      "gap": "A sourcing note worth being direct about: this doctrine is sometimes assumed to be a matter of state law, but the authority actually verified for this clause is federal — two U.S. Supreme Court decisions (United States v. Dubilier Condenser Corp. and Standard Parts Co. v. Peck) applying what those opinions describe as the implied terms of \"the contract of employment\" as a matter of patent case law, not a distinct state statute. No independent state statute or state appellate decision establishing a separately-sourced state-law version of this doctrine was located in this research. That said, because the doctrine turns on interpreting the implied terms of an employment relationship, some modern courts analyze the same question under state contract-law principles rather than as freestanding federal common law; both Supreme Court decisions cited here predate Erie Railroad Co. v. Tompkins' curtailment of general federal common law in ordinary contract disputes, and how a court today would characterize the doctrine's legal source was not resolved by anything found in this research. This clause states federal patent-law authority for the existence of the doctrine, applicable nationwide; it does not determine how any particular court would characterize that authority's source, or whether any specific employment relationship actually fits it.",
+      "citations": [
+        {
+          "case": "United States v. Dubilier Condenser Corp.",
+          "cite": "289 U.S. 178, 187 (1933)",
+          "url": "https://www.courtlistener.com/opinion/102083/united-states-v-dubilier-condenser-corp/",
+          "quote": "One employed to make an invention, who succeeds, during his term of service, in accomplishing that task, is bound to assign to his employer any patent obtained. The reason is that he has only produced that which he was employed to invent. His invention is the precise subject of the contract of employment. A term of the agreement necessarily is that what he is paid to produce belongs to his paymaster."
+        },
+        {
+          "case": "Standard Parts Co. v. Peck",
+          "cite": "264 U.S. 52, 59-60 (1924)",
+          "url": "https://www.courtlistener.com/opinion/100345/standard-parts-co-v-peck/",
+          "quote": "Whose property was the 'process and machinery' to be when developed? The answer would seem to be inevitable and resistless — of him who engaged the services and paid for them, they being his inducement and compensation."
+        }
+      ]
+    },
+    {
+      "id": "patentassign_writing_requirement",
+      "title": "Patents Are Property, and Assignments Must Be in Writing",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-01",
+      "body": "Federal patent law treats a patent, and an interest in one, as personal property. That property interest — including an interest in a patent application that hasn't yet issued as a patent — can be transferred only by an instrument in writing. The statute is explicit that this covers not just an already-issued patent but also applications for patent, meaning rights in an invention can be assigned before the patent office has acted on an application, or even before any application has been filed at all. This is part of why a written, signed assignment like this one — rather than a verbal understanding or an informal exchange of messages — is what's needed to actually transfer {{assignorName}}'s ownership interest in {{patentDescription}} to {{assigneeName}}.",
+      "gap": "This clause draws on two sentences of the same federal statute, 35 U.S.C. § 261, rather than two independent sources. Both were checked directly against the U.S. Code text at Cornell's Legal Information Institute, fetched twice with different request headers to confirm the returned text was byte-identical both times, rather than assumed from memory or a summary. This is federal law, uniform nationwide — patent assignment law doesn't vary state to state the way many of this project's other clauses do, since patents are exclusively a creature of federal statute. This clause doesn't resolve what specific form of signature (a handwritten signature, a scanned signature, or a fully electronic signature under the federal E-SIGN Act or a state UETA-equivalent statute) satisfies the \"instrument in writing\" requirement in every circumstance — that question wasn't independently verified here.",
+      "citations": [
+        {
+          "case": "35 U.S.C. § 261 (Cornell LII text)",
+          "cite": "U.S. Code, ownership; assignment of patents and applications",
+          "url": "https://www.law.cornell.edu/uscode/text/35/261",
+          "quote": "Subject to the provisions of this title, patents shall have the attributes of personal property."
+        },
+        {
+          "case": "35 U.S.C. § 261 (Cornell LII text)",
+          "cite": "U.S. Code, ownership; assignment of patents and applications",
+          "url": "https://www.law.cornell.edu/uscode/text/35/261",
+          "quote": "Applications for patent, patents, or any interest therein, shall be assignable in law by an instrument in writing."
+        }
+      ]
+    },
+    {
+      "id": "patentassign_recording",
+      "title": "Recording the Assignment With the USPTO",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-01",
+      "body": "Federal law permits — but doesn't require — an assignment like this one to be recorded with the U.S. Patent and Trademark Office. Recording matters because of a specific consequence for not doing so: an assignment is void as against a later, good-faith purchaser or mortgagee who pays valuable consideration for the same patent rights without notice of this assignment, unless this assignment is recorded with the USPTO within three months of its date, or before the date of that later purchase. In other words, an unrecorded assignment remains fully valid as between {{assignorName}} and {{assigneeName}} — the three-month window doesn't affect that — but it can lose its priority against a specific kind of later, unaware buyer if it isn't recorded in time. A federal appellate court has described this rule as adapting to patents the same basic idea used in real-estate recording statutes.",
+      "gap": "This is federal law, uniform nationwide; the only registry involved is the USPTO's own, and there's no state recording system in play. This clause doesn't resolve whether recording actually occurs for any particular signed copy of this agreement — that's a ministerial step the parties would need to take themselves, and this document doesn't track it. It also doesn't address the separate rules governing recordal of ownership changes for patents in other countries, which fall outside the U.S. statute cited here. And it states the general recording rule and its \"subsequent purchaser\" consequence only; the Federal Circuit decision cited below also describes evidentiary requirements — paying real value, and actually lacking notice of the earlier assignment — to qualify as a protected subsequent purchaser in the first place, which go beyond what's summarized above.",
+      "citations": [
+        {
+          "case": "35 U.S.C. § 261 (Cornell LII text)",
+          "cite": "U.S. Code, ownership; assignment of patents and applications",
+          "url": "https://www.law.cornell.edu/uscode/text/35/261",
+          "quote": "An interest that constitutes an assignment, grant or conveyance shall be void as against any subsequent purchaser or mortgagee for a valuable consideration, without notice, unless it is recorded in the Patent and Trademark Office within three months from its date or prior to the date of such subsequent purchase or mortgage."
+        },
+        {
+          "case": "FilmTec Corp. v. Allied-Signal, Inc.",
+          "cite": "939 F.2d 1568, 1573-74 (Fed. Cir. 1991)",
+          "url": "https://www.courtlistener.com/opinion/565195/filmtec-corporation-v-allied-signal-inc-and-uop-inc/",
+          "quote": "Section 261 of Title 35 goes a step further. It adopts the principle of the real property recording acts, and provides that the bona fide purchaser for value cuts off the rights of a prior assignee who has failed to record the prior assignment in the Patent and Trademark Office by the dates specified in the statute."
+        }
+      ]
+    },
+    {
+      "id": "patentassign_present_assignment_language",
+      "title": "Why This Agreement Uses \"Hereby Assigns,\" Not \"Agrees to Assign\"",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-01",
+      "body": "The exact words a patent assignment uses can determine whether it transfers ownership immediately or merely creates an obligation to transfer it later. Federal appellate courts have distinguished contract language promising to assign rights in the future — which courts have read as creating only a future obligation, not an immediate transfer — from language that assigns rights immediately, in the present tense, sometimes called a present assignment. In one closely watched case, a research scientist signed one agreement in which he merely \"agree[d] to assign\" future inventions to his university, and a separate agreement in which he stated he \"will assign and do[es] hereby assign\" his rights to a company; a federal appellate court held that only the second agreement's present-tense language actually transferred his rights — automatically, without any further paperwork, the moment the invention came into existence. This agreement is written to use present-tense assignment language for that reason: to transfer {{assignorName}}'s rights in {{patentDescription}} to {{assigneeName}} immediately upon signing, rather than merely promising a future transfer.",
+      "gap": "This describes Federal Circuit precedent — the federal appellate court with exclusive jurisdiction over patent appeals nationwide — on how courts interpret assignment language. Courts treat this specific question as a matter of federal law even though contract interpretation is usually governed by state law, because whether an assignment clause creates an automatic transfer or merely an obligation to assign later directly affects who has standing to sue for patent infringement. This clause doesn't guarantee that the language used elsewhere in this document achieves a present assignment under every possible reading a court might give it — it explains the reasoning behind using that language, not the outcome of any future dispute over it. It's also worth being precise about what was and wasn't decided in the related U.S. Supreme Court appeal arising from the same underlying dispute: the question of which agreement's wording created a present assignment was resolved by the Federal Circuit below and was not the question the Supreme Court took up (the Supreme Court's opinion addressed a different statute, the Bayh-Dole Act). The present-assignment holding cited here is Federal Circuit authority, not Supreme Court authority, even though it comes out of the same litigation.",
+      "citations": [
+        {
+          "case": "Board of Trustees of the Leland Stanford Junior University v. Roche Molecular Systems, Inc.",
+          "cite": "583 F.3d 832, 841 (Fed. Cir. 2009)",
+          "url": "https://www.courtlistener.com/opinion/207967/board-of-trustees-of-the-leland-stanford-junior-university-v-roche/",
+          "quote": "We have held that the contract language \"agree to assign\" reflects a mere promise to assign rights in the future, not an immediate transfer of expectant interests."
+        },
+        {
+          "case": "Board of Trustees of the Leland Stanford Junior University v. Roche Molecular Systems, Inc.",
+          "cite": "583 F.3d 832, 842 (Fed. Cir. 2009)",
+          "url": "https://www.courtlistener.com/opinion/207967/board-of-trustees-of-the-leland-stanford-junior-university-v-roche/",
+          "quote": "In contrast to the CPA, the VCA's language of \"do hereby assign\" effected a present assignment of Holodniy's future inventions to Cetus."
+        },
+        {
+          "case": "FilmTec Corp. v. Allied-Signal, Inc.",
+          "cite": "939 F.2d 1568, 1573 (Fed. Cir. 1991)",
+          "url": "https://www.courtlistener.com/opinion/565195/filmtec-corporation-v-allied-signal-inc-and-uop-inc/",
+          "quote": "Ordinarily, no further act would be required once an invention came into being; the transfer of title would occur by operation of law."
+        }
+      ]
+    },
+    {
+      "id": "patentassign_grant",
+      "title": "Assignment of Patent Rights",
+      "kind": "drafting",
+      "body": "{{assignorName}} hereby assigns and transfers to {{assigneeName}} all right, title, and interest in and to {{patentDescription}}, including all rights to file, prosecute, and obtain patents based on it in the United States and elsewhere, all rights to sue for and collect damages for past, present, and future infringement, and all rights of priority under any earlier-filed application. This assignment is effective as of the date this agreement is signed and applies whether {{patentDescription}} is an issued patent, a pending application, or an invention for which no application has yet been filed. {{assignorName}} agrees to sign any additional documents, and to cooperate with any further steps, reasonably requested by {{assigneeName}} to confirm, record, or perfect this assignment, including recording it with the United States Patent and Trademark Office."
+    },
+    {
+      "id": "patentassign_ack",
+      "title": "Acknowledgment",
+      "kind": "drafting",
+      "body": "Please sign below to indicate agreement to the terms above.\n\nAssignor: {{assignorName}}\nDate: _______________\n\nAssignee: {{assigneeName}}\nDate: _______________"
     }
   ]
 }

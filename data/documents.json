@@ -4126,5 +4126,42 @@
     "categories": [
       "Real Estate"
     ]
+  },
+  {
+    "id": "patent_assignment",
+    "title": "Patent Assignment Agreement",
+    "description": "The assignment of an issued patent, pending application, or not-yet-filed invention -- built on Stanford v. Roche's holding that patent rights vest initially in the individual inventor, not an employer, absent an actual signed assignment, and the present-tense assignment language courts require for an automatic transfer.",
+    "clauseOrder": [
+      "patentassign_grant",
+      "patentassign_initial_ownership",
+      "patentassign_hired_to_invent",
+      "patentassign_writing_requirement",
+      "patentassign_present_assignment_language",
+      "patentassign_recording",
+      "patentassign_ack"
+    ],
+    "fields": [
+      {
+        "id": "assignorName",
+        "label": "Assignor's name (inventor/current owner)",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "assigneeName",
+        "label": "Assignee's name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "patentDescription",
+        "label": "Description of the patent or invention",
+        "placeholder": "U.S. Patent No. 10,123,456, \"Widget Fastening Mechanism\"",
+        "required": true
+      }
+    ],
+    "categories": [
+      "Confidentiality & IP"
+    ]
   }
 ]
