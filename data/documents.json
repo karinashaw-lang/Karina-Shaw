@@ -4163,5 +4163,55 @@
     "categories": [
       "Confidentiality & IP"
     ]
+  },
+  {
+    "id": "board_written_consent",
+    "title": "Corporate Board Resolution / Action by Written Consent",
+    "description": "The actual statutory mechanics for a corporation's board (or shareholders) to act without holding a meeting -- unanimous written consent for the board, versus a meeting-equivalent (not unanimous) vote count for most shareholder action, plus the meeting-notice-and-waiver alternative and the limits on delegating authority to a committee. Distinct from this project's Corporate Bylaws and Articles of Incorporation documents, which don't cover the mechanics of taking a specific action.",
+    "clauseOrder": [
+      "boardconsent_consent_heading",
+      "boardconsent_resolution",
+      "boardconsent_board_written_consent",
+      "boardconsent_meeting_notice_and_waiver",
+      "boardconsent_unanimity_distinction",
+      "boardconsent_shareholder_consent_procedure",
+      "boardconsent_committee_delegation",
+      "boardconsent_signatures"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Corporation name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "stateOfFormation",
+        "label": "State of incorporation",
+        "placeholder": "California",
+        "required": true
+      },
+      {
+        "id": "resolutionDate",
+        "label": "Effective date of the resolution",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "resolutionDescription",
+        "label": "Description of the action being taken",
+        "placeholder": "the Corporation is authorized to open a bank account at Acme Bank",
+        "required": true
+      },
+      {
+        "id": "directorNames",
+        "label": "Names of all directors signing",
+        "placeholder": "Jordan Alex Lee, Morgan Lee",
+        "required": true
+      }
+    ],
+    "categories": [
+      "Business Formation"
+    ]
   }
 ]
