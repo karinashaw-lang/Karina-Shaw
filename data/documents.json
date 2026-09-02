@@ -6551,5 +6551,38 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "drug_testing_info_sheet",
+    "title": "Pre-Employment and Workplace Drug Testing — Information Sheet",
+    "description": "An information sheet describing California's constitutional and statutory framework around drug testing of job applicants and employees, distinct from the existing Background Check Disclosure & Authorization document. Covers California's explicit state constitutional right to privacy and its application to private employers, key points from Hill v. National Collegiate Athletic Assn. and Loder v. City of Glendale, the statutory duty to accommodate voluntary drug/alcohol rehabilitation for employers with 25 or more employees, and the 2024 statutory protections against discrimination based on off-duty cannabis use or nonpsychoactive-metabolite screening results, including their exemptions.",
+    "categories": [
+      "Hiring"
+    ],
+    "clauseOrder": [
+      "drugtest_purpose",
+      "drugtest_ca_constitutional_privacy",
+      "drugtest_hill_private_employer_privacy",
+      "drugtest_loder_new_position_testing",
+      "drugtest_rehab_accommodation_duty",
+      "drugtest_rehab_privacy_leave_enforcement",
+      "drugtest_cannabis_off_duty_protection",
+      "drugtest_cannabis_exemptions",
+      "drugtest_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company/employer name",
+        "placeholder": "Acme Manufacturing, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Applicant/employee name",
+        "placeholder": "Morgan T. Ellis",
+        "required": true
+      }
+    ]
   }
 ]
