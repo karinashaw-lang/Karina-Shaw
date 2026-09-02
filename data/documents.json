@@ -10474,5 +10474,79 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "third_party_custody_visitation_info_sheet",
+    "title": "Third-Party (Nonparent) Custody and Visitation — Information Sheet",
+    "description": "Explains California's statutory framework for a nonparent -- other than a grandparent under the corpus's existing Grandparent Visitation document -- seeking custody or visitation of a child: the general custody preference order (Fam. Code §3040(a)), the heightened detriment finding and its statutory definition required to award a nonparent custody over a parent's objection (§3041), the general discretionary nonparent visitation provision (§3100(a)), stepparent visitation as a separate narrower pathway (§3101), the proceeding-types requirement that governs standing (§3021), and the constitutional backdrop from Troxel v. Granville.",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "thirdpartycustody_declaration",
+      "thirdpartycustody_3040_preference_order",
+      "thirdpartycustody_3041_detriment_standard",
+      "thirdpartycustody_3100_general_visitation",
+      "thirdpartycustody_3101_stepparent_distinct",
+      "thirdpartycustody_standing_proceeding_requirement",
+      "thirdpartycustody_troxel_crossref",
+      "thirdpartycustody_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "petitionerName",
+        "label": "Petitioner's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "relationshipToChild",
+        "label": "Petitioner's relationship to the child",
+        "placeholder": "stepparent",
+        "required": true
+      },
+      {
+        "id": "childName",
+        "label": "Child's name",
+        "placeholder": "Casey Lee",
+        "required": true
+      },
+      {
+        "id": "childDOB",
+        "label": "Child's date of birth",
+        "placeholder": "January 1, 2018",
+        "required": true
+      },
+      {
+        "id": "parent1Name",
+        "label": "Parent 1's name",
+        "placeholder": "Taylor Morgan",
+        "required": true
+      },
+      {
+        "id": "parent2Name",
+        "label": "Parent 2's name (if applicable)",
+        "placeholder": "Riley Chen",
+        "required": false
+      },
+      {
+        "id": "countyOfFiling",
+        "label": "County of filing",
+        "placeholder": "San Francisco County",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "October 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "San Francisco, California",
+        "required": true
+      }
+    ]
   }
 ]
