@@ -7962,5 +7962,85 @@
         "required": false
       }
     ]
+  },
+  {
+    "id": "section_1031_exchange_info_sheet",
+    "title": "1031 Exchange — Information Sheet",
+    "description": "Explains the federal tax-deferred like-kind exchange rules for real property under 26 U.S.C. section 1031: the core nonrecognition rule (real property only, since the 2017 Tax Cuts and Jobs Act), the like-kind standard, the 45-day identification and 180-day completion deadlines, exclusions, boot and basis carryover, and California's information-return requirement for exchanges into out-of-state replacement property.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "exch1031_declaration",
+      "exch1031_core_nonrecognition",
+      "exch1031_like_kind_standard",
+      "exch1031_identification_deadlines",
+      "exch1031_exclusions",
+      "exch1031_boot_and_basis",
+      "exch1031_ca_reporting",
+      "exch1031_signature_cert"
+    ],
+    "fields": [
+      {
+        "id": "taxpayerName",
+        "label": "Taxpayer's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "relinquishedPropertyAddress",
+        "label": "Relinquished property address",
+        "placeholder": "500 Market St, San Francisco, CA 94105",
+        "required": true
+      },
+      {
+        "id": "relinquishedLegalDescription",
+        "label": "Relinquished property legal description",
+        "placeholder": "Lot 5, Block 12, per map recorded in Book 40, Page 15, San Francisco County Records",
+        "required": false
+      },
+      {
+        "id": "transferDate",
+        "label": "Date relinquished property was transferred",
+        "placeholder": "October 1, 2026",
+        "required": true
+      },
+      {
+        "id": "identificationDate",
+        "label": "45-day identification deadline",
+        "placeholder": "November 15, 2026",
+        "required": true
+      },
+      {
+        "id": "exchangeCompletionDate",
+        "label": "180-day exchange completion deadline",
+        "placeholder": "March 30, 2027",
+        "required": true
+      },
+      {
+        "id": "replacementPropertyAddress",
+        "label": "Replacement property address",
+        "placeholder": "200 Elm St, Reno, NV 89501",
+        "required": true
+      },
+      {
+        "id": "replacementLegalDescription",
+        "label": "Replacement property legal description",
+        "placeholder": "Lot 8, Block 3, per map recorded in Book 22, Page 9, Washoe County Records",
+        "required": false
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "October 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityOfExecution",
+        "label": "City where signed",
+        "placeholder": "San Francisco, California",
+        "required": true
+      }
+    ]
   }
 ]
