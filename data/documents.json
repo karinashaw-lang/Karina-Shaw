@@ -11369,5 +11369,73 @@
         "required": false
       }
     ]
+  },
+  {
+    "id": "volunteer_employee_classification_info_sheet",
+    "title": "Volunteer vs. Employee Classification — Information Sheet",
+    "description": "Explains when a person providing unpaid services is genuinely a \"volunteer\" (not owed minimum wage/overtime) versus when the relationship is legally employment -- in depth beyond the corpus's existing Unpaid Internship Compliance document, which covers only the narrow public-agency-specific volunteer rule. Covers the FLSA's broad \"employ\" definition and the purely judicial volunteer exception traced to Walling v. Portland Terminal Co., the key distinguishing factors, why for-profit private employers generally cannot use volunteers at all, why a charitable purpose alone does not create volunteer status, California's substantially similar framework, and the fact-specific standard for nominal fees and benefits.",
+    "categories": [
+      "Hiring"
+    ],
+    "clauseOrder": [
+      "volunteerclass_role_declaration",
+      "volunteerclass_flsa_employ_definition",
+      "volunteerclass_key_factors",
+      "volunteerclass_forprofit_limits",
+      "volunteerclass_nonprofit_not_exempt",
+      "volunteerclass_california_standard",
+      "volunteerclass_nominal_benefits",
+      "volunteerclass_signature_ack"
+    ],
+    "fields": [
+      {
+        "id": "volunteerName",
+        "label": "Volunteer's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Organization name",
+        "placeholder": "Acme Charitable Foundation",
+        "required": true
+      },
+      {
+        "id": "supervisorName",
+        "label": "Supervisor's name",
+        "placeholder": "Taylor Morgan",
+        "required": true
+      },
+      {
+        "id": "startDate",
+        "label": "Start date",
+        "placeholder": "October 1, 2026",
+        "required": true
+      },
+      {
+        "id": "endDate",
+        "label": "End date (if applicable)",
+        "placeholder": "December 31, 2026",
+        "required": false
+      },
+      {
+        "id": "hoursPerWeek",
+        "label": "Expected hours per week",
+        "placeholder": "5",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "October 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "San Francisco, California",
+        "required": true
+      }
+    ]
   }
 ]
