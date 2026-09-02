@@ -9634,5 +9634,176 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "benefit_corporation_info_sheet",
+    "title": "Benefit Corporation — Formation Information Sheet",
+    "description": "Explains California's for-profit Benefit Corporation statute (Corp. Code Part 13, §§ 14600-14631) — a distinct legal form from a regular for-profit corporation and from the nonprofit public benefit, mutual benefit, and religious corporation laws covered elsewhere in this corpus: the general-public-benefit purpose requirement, required articles content, the annual benefit report, modified director duties, the benefit enforcement proceeding, and the supermajority vote required to terminate benefit corporation status.",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "benefitcorp_purpose_and_election_declaration",
+      "benefitcorp_definition_and_purpose",
+      "benefitcorp_required_articles_content",
+      "benefitcorp_annual_benefit_report",
+      "benefitcorp_director_duties",
+      "benefitcorp_enforcement",
+      "benefitcorp_termination_of_status",
+      "benefitcorp_incorporator_signature"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "principalOfficeAddress",
+        "label": "Principal office address",
+        "placeholder": "123 Main St, San Francisco, CA 94103",
+        "required": true
+      },
+      {
+        "id": "agentName",
+        "label": "Agent for service of process's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "agentAddress",
+        "label": "Agent for service of process's address",
+        "placeholder": "123 Main St, San Francisco, CA 94103",
+        "required": true
+      },
+      {
+        "id": "incorporatorName",
+        "label": "Incorporator's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "additionalPurposeDescription",
+        "label": "Description of specific public benefit purpose (optional)",
+        "placeholder": "promoting access to affordable clean energy",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "domain_name_dispute_info_sheet",
+    "title": "Domain Name Dispute — Information Sheet",
+    "description": "Explains the Anticybersquatting Consumer Protection Act (ACPA), 15 U.S.C. § 1125(d): the bad-faith-intent-to-profit cause of action against a domain name identical or confusingly similar to a distinctive mark (or identical/confusingly similar/dilutive of a famous mark), the statutory bad-faith factors, court-ordered forfeiture/cancellation/transfer and statutory damages, in rem jurisdiction when the registrant cannot be sued directly, and a domain registrant's own right to sue for reactivation or transfer back after a registrar suspends a domain under a reasonable dispute policy.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "domaindispute_declaration",
+      "domaindispute_acpa_cause_of_action",
+      "domaindispute_acpa_bad_faith_factors",
+      "domaindispute_acpa_remedies",
+      "domaindispute_acpa_in_rem_jurisdiction",
+      "domaindispute_acpa_registrant_court_review",
+      "domaindispute_signature"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company/mark owner's name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "trademarkDescription",
+        "label": "Description of the trademark",
+        "placeholder": "ACME (word mark)",
+        "required": true
+      },
+      {
+        "id": "goodsServicesDescription",
+        "label": "Description of goods/services",
+        "placeholder": "consumer electronics",
+        "required": true
+      },
+      {
+        "id": "disputedDomain",
+        "label": "Disputed domain name",
+        "placeholder": "acme-electronics.com",
+        "required": true
+      },
+      {
+        "id": "registrantName",
+        "label": "Domain registrant's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "demandDate",
+        "label": "Date of this notice",
+        "placeholder": "October 1, 2026",
+        "required": true
+      }
+    ]
+  },
+  {
+    "id": "deferred_compensation_equity_vesting_termination_info_sheet",
+    "title": "Deferred Compensation and Equity Vesting at Termination — Information Sheet",
+    "description": "Explains how stock options, RSUs, and other equity compensation are treated when California employment ends — a distinct question from the corpus's existing wage/PTO payout at termination materials. Covers the open statutory question of whether unvested equity is a \"wage\" under Lab. Code § 200, why the § 227.3/Suastez \"vacation is wages\" doctrine does not extend to equity, and federal tax law's post-termination exercise window for incentive stock options under 26 U.S.C. § 422.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "equityterm_declaration_and_scope",
+      "equityterm_wages_definition_gap",
+      "equityterm_vacation_distinguished",
+      "equityterm_iso_exercise_window",
+      "equityterm_equity_status_declaration",
+      "equityterm_signature"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "terminationDate",
+        "label": "Termination date",
+        "placeholder": "October 1, 2026",
+        "required": true
+      },
+      {
+        "id": "equityPlanName",
+        "label": "Equity plan name",
+        "placeholder": "2020 Equity Incentive Plan",
+        "required": true
+      },
+      {
+        "id": "equityType",
+        "label": "Type of equity compensation",
+        "placeholder": "incentive stock options",
+        "required": true
+      },
+      {
+        "id": "equityVestingStatus",
+        "label": "Vesting status as of termination",
+        "placeholder": "10,000 shares vested; 5,000 shares unvested and forfeited",
+        "required": true
+      },
+      {
+        "id": "postTerminationExerciseWindow",
+        "label": "Post-termination exercise window",
+        "placeholder": "90 days from the termination date",
+        "required": true
+      }
+    ]
   }
 ]
