@@ -4090,5 +4090,41 @@
     "categories": [
       "Family Law"
     ]
+  },
+  {
+    "id": "lead_based_paint_disclosure",
+    "title": "Lead-Based Paint Disclosure",
+    "description": "The federal disclosure requirement for the sale or lease of housing built before 1978 -- target-housing scope and exemptions, the EPA pamphlet and known-hazard disclosure duties, the 10-day inspection opportunity for a sale, and the treble-damages/civil-penalty consequences of noncompliance -- covering both sale and lease transactions, including the separate, shorter lease-side Lead Warning Statement not previously in this project's corpus.",
+    "clauseOrder": [
+      "leadpaint_certification_acknowledgment",
+      "leadpaint_target_housing_scope",
+      "leadpaint_disclosure_duties",
+      "leadpaint_sale_inspection_opportunity",
+      "leadpaint_penalties_enforcement",
+      "leadpaint_warning_statements"
+    ],
+    "fields": [
+      {
+        "id": "sellerLandlordName",
+        "label": "Seller's or landlord's name",
+        "placeholder": "Acme Properties, LLC",
+        "required": true
+      },
+      {
+        "id": "buyerTenantName",
+        "label": "Buyer's or tenant's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "propertyAddress",
+        "label": "Property address",
+        "placeholder": "123 Main St, Springfield",
+        "required": true
+      }
+    ],
+    "categories": [
+      "Real Estate"
+    ]
   }
 ]
