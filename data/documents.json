@@ -7641,5 +7641,45 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "non_disparagement_agreement_info_sheet",
+    "title": "Non-Disparagement Agreement — Information Sheet",
+    "description": "Explains the legal limits on non-disparagement clauses at the end of employment: California's settlement-agreement disclosure ban for sexual harassment, discrimination, and retaliation claims (Code Civ. Proc. section 1001), the broader Silenced No More Act (Gov. Code section 12964.5), federal NLRA limits on severance non-disparagement clauses, general contract-law enforceability, and the factual distinction between non-disparagement and confidentiality clauses.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "nondisparagement_ccp_1001_scope",
+      "nondisparagement_ccp_1001_carveouts",
+      "nondisparagement_gov_12964_5_prohibition",
+      "nondisparagement_gov_12964_5_carveouts",
+      "nondisparagement_nlra_section7",
+      "nondisparagement_nlra_supervisor_scope",
+      "nondisparagement_general_enforceability",
+      "nondisparagement_vs_confidentiality",
+      "nondisparagement_mutual_clause",
+      "nondisparagement_signature"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme Corp",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "October 15, 2026",
+        "required": true
+      }
+    ]
   }
 ]
