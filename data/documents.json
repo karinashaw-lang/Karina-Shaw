@@ -11032,5 +11032,49 @@
         "required": false
       }
     ]
+  },
+  {
+    "id": "job_applicant_record_retention_info_sheet",
+    "title": "Job Applicant Record Retention Requirements — Information Sheet",
+    "description": "Explains California's requirements for how long an employer must retain job application materials and related hiring records (Gov. Code §12946): the current 4-year retention duration (extended from 2 years by SB 807, effective January 1, 2022), what records are covered, the rule extending retention until final disposition when a complaint is filed, the shorter federal EEOC/federal-contractor baselines for comparison, why California's longer period controls for a California employer, and the statute's own enforcement mechanism.",
+    "categories": [
+      "Hiring"
+    ],
+    "clauseOrder": [
+      "applicantretention_declaration",
+      "applicantretention_core_duration",
+      "applicantretention_covered_records_scope",
+      "applicantretention_complaint_trigger",
+      "applicantretention_federal_comparison",
+      "applicantretention_state_law_controls",
+      "applicantretention_enforcement_and_noncompliance",
+      "applicantretention_signature_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "effectiveDate",
+        "label": "Policy effective date",
+        "placeholder": "October 1, 2026",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "October 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "San Francisco, California",
+        "required": true
+      }
+    ]
   }
 ]
