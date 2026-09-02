@@ -8889,5 +8889,67 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "statutory_conversion_info_sheet",
+    "title": "Statutory Conversion — Information Sheet",
+    "description": "Explains California's statutory business-entity conversion procedure, letting a converting entity (e.g., an LLC) become a different type of entity (e.g., a corporation) while continuing as the same legal entity: the separate, entity-type-specific conversion schemes for corporations and LLCs, the continuity-of-entity principle, approval requirements, the required Secretary of State filing, the effect on shares and membership interests, and the honest note that tax consequences are a separate consideration outside the conversion statute itself.",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "statconv_declaration",
+      "statconv_general_authorization",
+      "statconv_continuity_of_entity",
+      "statconv_approval_requirements",
+      "statconv_filing_requirements",
+      "statconv_securities_and_interests",
+      "statconv_tax_treatment",
+      "statconv_signature"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Converting entity's current name",
+        "placeholder": "Acme LLC",
+        "required": true
+      },
+      {
+        "id": "entityType",
+        "label": "Converting entity's current type",
+        "placeholder": "California limited liability company",
+        "required": true
+      },
+      {
+        "id": "convertedEntityName",
+        "label": "Converted entity's name",
+        "placeholder": "Acme Corp",
+        "required": true
+      },
+      {
+        "id": "convertedEntityType",
+        "label": "Converted entity's type",
+        "placeholder": "California corporation",
+        "required": true
+      },
+      {
+        "id": "requiredApprovalStatement",
+        "label": "Statement of required approval obtained",
+        "placeholder": "approved by unanimous written consent of the members",
+        "required": true
+      },
+      {
+        "id": "authorizedSignerName",
+        "label": "Authorized signer's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "authorizedSignerTitle",
+        "label": "Authorized signer's title",
+        "placeholder": "Managing Member",
+        "required": true
+      }
+    ]
   }
 ]
