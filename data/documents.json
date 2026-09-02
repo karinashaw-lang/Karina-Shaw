@@ -4360,5 +4360,67 @@
     "categories": [
       "Confidentiality & IP"
     ]
+  },
+  {
+    "id": "home_improvement_contract",
+    "title": "Home Improvement Contract",
+    "description": "The underlying contract between a homeowner and a licensed contractor for home improvement work -- the mandatory written terms and disclosures under California's Contractors State License Law, the down-payment cap and progress-payment rule, the three-day right to cancel, the mechanics lien warning, and the real consequences of using an unlicensed contractor. Distinct from this project's Mechanics Lien Preliminary Notice document, which covers a contractor's lien rights for nonpayment rather than the underlying contract.",
+    "clauseOrder": [
+      "homeimprove_parties_and_project_terms",
+      "homeimprove_contract_required_and_writing",
+      "homeimprove_downpayment_and_progress_payments",
+      "homeimprove_right_to_cancel",
+      "homeimprove_right_to_cancel_notice",
+      "homeimprove_unlicensed_contractor_consequences",
+      "homeimprove_service_repair_contract_distinction",
+      "homeimprove_mechanics_lien_and_cslb_notices"
+    ],
+    "fields": [
+      {
+        "id": "homeownerName",
+        "label": "Homeowner's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "contractorName",
+        "label": "Contractor's name",
+        "placeholder": "Acme Construction, Inc.",
+        "required": true
+      },
+      {
+        "id": "contractorLicenseNumber",
+        "label": "Contractor's license number",
+        "placeholder": "123456",
+        "required": true
+      },
+      {
+        "id": "propertyAddress",
+        "label": "Property address",
+        "placeholder": "123 Main St, Springfield",
+        "required": true
+      },
+      {
+        "id": "contractPrice",
+        "label": "Contract price",
+        "placeholder": "25,000",
+        "required": true
+      },
+      {
+        "id": "startDate",
+        "label": "Approximate start date",
+        "placeholder": "September 15, 2026",
+        "required": true
+      },
+      {
+        "id": "completionDate",
+        "label": "Approximate completion date",
+        "placeholder": "November 15, 2026",
+        "required": true
+      }
+    ],
+    "categories": [
+      "Real Estate"
+    ]
   }
 ]
