@@ -7000,5 +7000,64 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "trademark_cease_and_desist_info_sheet",
+    "title": "Trademark Infringement — Cease and Desist Letter Information Sheet",
+    "description": "An information sheet and cease-and-desist letter template describing the federal Lanham Act framework for trademark infringement, distinct from the existing Trade Secret Misappropriation Cease and Desist Letter and Trademark Registration (USPTO Application) Information Sheet documents. Covers the likelihood-of-confusion standard for infringement of a registered mark, the separate federal cause of action for an unregistered mark (false designation of origin), federal dilution (blurring and tarnishment, available only to a 'famous' mark), the monetary remedies available (profits, damages, costs, discretionary enhancement, and the mandatory treble-damages rule for counterfeiting), injunctive relief, the fact that federal law does not require a cease-and-desist letter before filing suit, and California's statutory preservation of common-law trademark rights.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "trademarkcd_intro",
+      "trademarkcd_description",
+      "trademarkcd_demand",
+      "trademarkcd_registered_mark_infringement",
+      "trademarkcd_unregistered_mark_cause_of_action",
+      "trademarkcd_federal_dilution",
+      "trademarkcd_remedies_monetary",
+      "trademarkcd_injunctive_relief",
+      "trademarkcd_no_presuit_notice_requirement",
+      "trademarkcd_ca_common_law_rights",
+      "trademarkcd_reservation_and_signature"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Sender/mark owner name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "recipientName",
+        "label": "Recipient name",
+        "placeholder": "Beta Products, LLC",
+        "required": true
+      },
+      {
+        "id": "trademarkDescription",
+        "label": "Description of the mark",
+        "placeholder": "ACME (standard character mark)",
+        "required": true
+      },
+      {
+        "id": "goodsServicesDescription",
+        "label": "Goods and/or services associated with the mark",
+        "placeholder": "Retail sale of outdoor sporting equipment",
+        "required": true
+      },
+      {
+        "id": "allegedInfringingUseDescription",
+        "label": "Description of the conduct at issue",
+        "placeholder": "Use of a highly similar mark on a competing retail website",
+        "required": true
+      },
+      {
+        "id": "demandDate",
+        "label": "Response deadline",
+        "placeholder": "April 15, 2026",
+        "required": true
+      }
+    ]
   }
 ]
