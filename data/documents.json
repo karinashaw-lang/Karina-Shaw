@@ -8753,5 +8753,79 @@
         "required": false
       }
     ]
+  },
+  {
+    "id": "quiet_title_action_info_sheet",
+    "title": "Quiet Title Action — Information Sheet",
+    "description": "Explains California's statutory quiet title action letting a person establish title to real or personal property against adverse claims through a court proceeding: the scope of the action, required complaint content and the verified-pleading requirement, commencement and the lis pendens recording requirement, the judgment's no-default-without-evidence rule and binding effect, and the honest finding that no single statute of limitations applies uniformly to a quiet title action.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "quiettitle_complaint_declaration",
+      "quiettitle_action_and_scope",
+      "quiettitle_complaint_required_content",
+      "quiettitle_commencement_and_lis_pendens",
+      "quiettitle_judgment_no_default_and_binding_effect",
+      "quiettitle_no_uniform_limitations_period",
+      "quiettitle_verification_mechanics",
+      "quiettitle_verification_signature"
+    ],
+    "fields": [
+      {
+        "id": "plaintiffName",
+        "label": "Plaintiff's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "propertyAddress",
+        "label": "Property address",
+        "placeholder": "500 Market St, San Francisco, CA 94105",
+        "required": true
+      },
+      {
+        "id": "legalDescription",
+        "label": "Legal description of the property",
+        "placeholder": "Lot 5, Block 12, per map recorded in Book 40, Page 15, San Francisco County Records",
+        "required": false
+      },
+      {
+        "id": "parcelNumber",
+        "label": "Assessor's parcel number",
+        "placeholder": "123-456-789",
+        "required": false
+      },
+      {
+        "id": "titleBasis",
+        "label": "Basis of plaintiff's claimed title",
+        "placeholder": "grant deed recorded January 5, 2020",
+        "required": true
+      },
+      {
+        "id": "adverseClaimantNames",
+        "label": "Adverse claimant(s)' name(s)",
+        "placeholder": "Taylor Morgan",
+        "required": true
+      },
+      {
+        "id": "adverseClaimDescription",
+        "label": "Description of the adverse claim challenged",
+        "placeholder": "an unreleased deed of trust recorded in 1998",
+        "required": true
+      },
+      {
+        "id": "determinationDate",
+        "label": "Date as of which determination is sought",
+        "placeholder": "the date of filing",
+        "required": true
+      },
+      {
+        "id": "recordingCounty",
+        "label": "County for recording",
+        "placeholder": "San Francisco County",
+        "required": true
+      }
+    ]
   }
 ]
