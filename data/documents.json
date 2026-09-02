@@ -12098,5 +12098,60 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "child_abduction_prevention_orders_info_sheet",
+    "title": "Child Abduction Prevention Orders — Information Sheet",
+    "description": "Explains California Family Code section 3048: the contents required in every custody or visitation order, the court's duty to consider eight enumerated risk factors when it becomes aware of facts suggesting an abduction risk, the eleven categories of preventive measures a court may order (supervised visitation, bond, passport surrender, travel-assurance documentation, and more), the required notice of the district attorney's Child Abduction Unit, and how this framework connects to, without duplicating, the UCCJEA and Hague Convention. Distinct from this corpus's existing Move-Away Custody, Child Custody Jurisdiction (UCCJEA), and Emergency (Ex Parte) Custody Order documents.",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "abductionprevention_information_declaration",
+      "abductionprevention_fam3048a_required_order_contents",
+      "abductionprevention_fam3048b1_risk_factors",
+      "abductionprevention_fam3048b2_preventive_measures",
+      "abductionprevention_fam3048b2j_uccjea_hague_relationship",
+      "abductionprevention_fam3048b4_district_attorney_notice",
+      "abductionprevention_signature_acknowledgment"
+    ],
+    "fields": [
+      {
+        "id": "childName",
+        "label": "Child's name",
+        "placeholder": "Alex Morgan",
+        "required": true
+      },
+      {
+        "id": "party1Name",
+        "label": "First parent's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "party2Name",
+        "label": "Second parent's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "countyOfFiling",
+        "label": "County of filing",
+        "placeholder": "Sacramento County",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 2, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, state",
+        "placeholder": "Sacramento, California",
+        "required": true
+      }
+    ]
   }
 ]
