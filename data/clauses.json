@@ -14425,6 +14425,180 @@
       "title": "Statement of the Accrued Vacation Balance and Signature",
       "kind": "drafting",
       "body": "{{employeeName}} identifies the following accrued, unused vacation or paid-time-off balance as vested and unpaid as of {{terminationDate}}:\n\nAccrued, unused vacation/PTO balance: {{accruedVacationBalance}}\n\nFinal rate of pay used to value this balance: {{finalRateOfPay}}\n\nVacation/PTO policy terms applied (accrual rate, any cap, eligibility): {{vacationPolicyTerms}}\n\nAmount claimed as owed: {{vacationPayoutAmount}}\n\n{{employeeName}} states that the foregoing is accurate to the best of {{employeeName}}'s knowledge.\n\nSignature: ☐ _________________________ Date: _______________\n\n{{employeeName}}"
+    },
+    {
+      "id": "provpat_requirements",
+      "title": "What a Provisional Application Must Contain",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-02",
+      "body": "Federal patent law sets out what a provisional application for patent must include, and what it doesn't. Under 35 U.S.C. § 111(b)(1), a provisional application must include a specification as prescribed by 35 U.S.C. § 112(a) — a written description of the invention — and a drawing as prescribed by 35 U.S.C. § 113, which requires a drawing only \"where necessary for the understanding of the subject matter sought to be patented.\" The application must also be accompanied by the filing fee required by law, though the fee itself may be submitted after the filing date within a period the USPTO Director prescribes; failing to pay it within that period results in the application being regarded as abandoned. Unlike a nonprovisional application filed under 35 U.S.C. § 111(a), which must include one or more claims, 35 U.S.C. § 111(b)(2) is explicit that a claim \"shall not be required in a provisional application.\" A provisional application describing {{inventionTitle}} — summarized in {{inventionDescription}} — would, as a factual matter, need a written specification and, where the subject matter admits of illustration, a drawing, but not a claim, to satisfy these statutory requirements.",
+      "gap": "This clause cites three different paragraphs of the same statutory subsection, 35 U.S.C. § 111(b) — (b)(1), (b)(2), and (b)(3) — along with the related drawing requirement in 35 U.S.C. § 113, which § 111(b)(1)(B) itself incorporates by reference; these are different pieces of the same statutory scheme rather than independent corroborating sources for one another. Both statutes were checked directly against the U.S. Code text at Cornell's Legal Information Institute and re-fetched with a distinct User-Agent to confirm the returned text was byte-identical both times. This is federal law, used as real evidence of what a provisional application must and must not contain — not a claim about which jurisdiction's law governs any specific invention or filing. This clause doesn't address the separate requirement that the application be made, or authorized to be made, by the inventor in writing to the Director, and doesn't address the oath-or-declaration requirement that applies to nonprovisional applications, since a provisional application has no oath-or-declaration requirement of its own under § 111(b)(1).",
+      "citations": [
+        {
+          "case": "35 U.S.C. § 111(b)(1) (Cornell LII text)",
+          "cite": "U.S. Code, provisional application — specification and drawing",
+          "url": "https://www.law.cornell.edu/uscode/text/35/111",
+          "quote": "Such application shall include— (A) a specification as prescribed by section 112(a); and (B) a drawing as prescribed by section 113."
+        },
+        {
+          "case": "35 U.S.C. § 111(b)(2) (Cornell LII text)",
+          "cite": "U.S. Code, provisional application — no claim required",
+          "url": "https://www.law.cornell.edu/uscode/text/35/111",
+          "quote": "A claim, as required by subsections (b) through (e) of section 112, shall not be required in a provisional application."
+        },
+        {
+          "case": "35 U.S.C. § 111(b)(3) (Cornell LII text)",
+          "cite": "U.S. Code, provisional application — filing fee",
+          "url": "https://www.law.cornell.edu/uscode/text/35/111",
+          "quote": "The application shall be accompanied by the fee required by law."
+        },
+        {
+          "case": "35 U.S.C. § 113 (Cornell LII text)",
+          "cite": "U.S. Code, drawings",
+          "url": "https://www.law.cornell.edu/uscode/text/35/113",
+          "quote": "The applicant shall furnish a drawing where necessary for the understanding of the subject matter sought to be patented."
+        }
+      ]
+    },
+    {
+      "id": "provpat_never_examined",
+      "title": "A Provisional Application Is Never Examined and Cannot Itself Become a Patent",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-02",
+      "body": "Federal patent law treats a provisional application differently from a regular, nonprovisional application in a fundamental way: it is never examined on its merits, and no patent can issue directly from it. 35 U.S.C. § 111(b)(8) states that the provisions of Title 35 relating to applications for patent generally apply to provisional applications, \"except that provisional applications for patent shall not be subject to sections 131 and 135\" — the statute governing substantive examination of an application by the Patent and Trademark Office, and the statute governing derivation proceedings between competing applicants over priority of invention. Because a provisional application is never examined under § 131, a patent can issue only from a nonprovisional application — whether a new filing or one that later claims the benefit of an earlier-filed provisional application's filing date, as described in a separate clause of this document.",
+      "gap": "This is federal law, used as real evidence of the mechanical relationship between a provisional application and eventual patent examination — not a claim about which jurisdiction's law governs any specific invention or the outcome of any application. This clause confirms that § 111(b)(8) exempts provisional applications from § 131 (examination) and § 135 (derivation proceedings); it doesn't independently verify the full substantive content of those two sections beyond that exemption, since their own text wasn't separately fetched and checked for this research. Checked directly against the U.S. Code text at Cornell's Legal Information Institute and re-fetched with a distinct User-Agent to confirm the returned text was byte-identical both times.",
+      "citations": [
+        {
+          "case": "35 U.S.C. § 111(b)(8) (Cornell LII text)",
+          "cite": "U.S. Code, provisions applicable to provisional applications",
+          "url": "https://www.law.cornell.edu/uscode/text/35/111",
+          "quote": "provisional applications for patent shall not be subject to sections 131 and 135"
+        }
+      ]
+    },
+    {
+      "id": "provpat_twelve_month_deadline",
+      "title": "The 12-Month Deadline Following a Provisional Application's Filing Date",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-02",
+      "body": "Federal patent law fixes a firm deadline tied to a provisional application's own filing date. Under 35 U.S.C. § 111(b)(5), unless a timely request is made to treat the provisional application itself as a nonprovisional application under 35 U.S.C. § 111(a), \"the provisional application shall be regarded as abandoned 12 months after the filing date of such application and shall not be subject to revival after such 12-month period.\" A corresponding nonprovisional application that claims the benefit of the provisional application's earlier filing date under 35 U.S.C. § 119(e) must also be filed within that same 12-month window to obtain that benefit. Federal law provides one narrow, automatic adjustment to this calendar: under 35 U.S.C. § 119(e)(3), if the day that is 12 months after the provisional application's filing date falls on a Saturday, Sunday, or federal holiday in the District of Columbia, the period is extended to the next business day. For a provisional application with a filing date of {{filingDate}}, this 12-month period is measured from that date, subject to that narrow calendar adjustment.",
+      "gap": "This is federal law, used as real evidence of the 12-month deadline that runs from a provisional application's own filing date — not a claim about which jurisdiction's law governs any specific invention or filing decision. A related, separate provision, 35 U.S.C. § 119(e)(1), lets the Director prescribe regulations allowing the 12-month period referenced in that subsection to be extended by an additional 2 months where the delay in filing the later nonprovisional application was unintentional, subject to a fee; 35 U.S.C. § 111(b)(5)'s own cross-reference is limited to § 119(e)(3)'s weekend-or-holiday adjustment, and this clause doesn't resolve how, or whether, that separate unintentional-delay extension interacts with a provisional application's own abandonment under § 111(b)(5) — that procedural interaction wasn't independently verified in this research. Both statutes were checked directly against the U.S. Code text at Cornell's Legal Information Institute and re-fetched with a distinct User-Agent to confirm the returned text was byte-identical both times.",
+      "citations": [
+        {
+          "case": "35 U.S.C. § 111(b)(5) (Cornell LII text)",
+          "cite": "U.S. Code, provisional application — abandonment",
+          "url": "https://www.law.cornell.edu/uscode/text/35/111",
+          "quote": "the provisional application shall be regarded as abandoned 12 months after the filing date of such application and shall not be subject to revival after such 12-month period"
+        },
+        {
+          "case": "35 U.S.C. § 119(e)(3) (Cornell LII text)",
+          "cite": "U.S. Code, benefit of earlier filing date — weekend and holiday adjustment",
+          "url": "https://www.law.cornell.edu/uscode/text/35/119",
+          "quote": "If the day that is 12 months after the filing date of a provisional application falls on a Saturday, Sunday, or Federal holiday within the District of Columbia, the period of pendency of the provisional application shall be extended to the next succeeding secular or business day."
+        }
+      ]
+    },
+    {
+      "id": "provpat_priority_date",
+      "title": "What Claiming the Benefit of a Provisional Application's Filing Date Actually Does",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-02",
+      "body": "The concept of a \"priority date\" in patent law refers to a specific statutory mechanic, not a general notion of who thought of an invention first. Under 35 U.S.C. § 119(e)(1), a nonprovisional application \"shall have the same effect, as to such invention, as though filed on the date of the provisional application filed under section 111(b), if the application for patent filed under section 111(a) or section 363 is filed not later than 12 months after the date on which the provisional application was filed\" — and only for the invention actually disclosed in the provisional application in the manner 35 U.S.C. § 112(a) requires, and only if the nonprovisional application contains, or is amended to contain, a specific reference to the provisional application. The provisional application itself carries no independent right of priority: 35 U.S.C. § 111(b)(7) states that \"a provisional application shall not be entitled to the right of priority of any other application under section 119\" or to the benefit of an earlier filing date of its own — the benefit runs only in the direction of a later-filed nonprovisional application claiming back to the provisional, not the other way. And claiming that earlier filing date doesn't lengthen the eventual patent's term: 35 U.S.C. § 154(a)(3) states that \"[p]riority under section 119...shall not be taken into account in determining the term of a patent,\" whose term instead runs from the nonprovisional application's own filing date.",
+      "gap": "This is federal law, used as real evidence of what claiming the benefit of a provisional application's filing date does and doesn't accomplish — not a claim about which jurisdiction's law governs any specific invention or filing. This clause draws on three different sections of Title 35 — § 111(b)(7), § 119(e)(1), and § 154(a)(3) — each cited once; no two citations in this clause are to different subsections of the same section. It doesn't address what § 112(a)'s written-description and enablement requirements themselves demand of a provisional's disclosure for a later claim to actually receive the earlier date, a fact-specific inquiry that wasn't independently researched here, nor does it address the separate foreign-priority mechanic under § 119(a)–(d), which involves a different filing (a foreign application, not a U.S. provisional). All three statutes were checked directly against the U.S. Code text at Cornell's Legal Information Institute and re-fetched with a distinct User-Agent to confirm the returned text was byte-identical both times.",
+      "citations": [
+        {
+          "case": "35 U.S.C. § 119(e)(1) (Cornell LII text)",
+          "cite": "U.S. Code, benefit of earlier filing date of provisional application",
+          "url": "https://www.law.cornell.edu/uscode/text/35/119",
+          "quote": "shall have the same effect, as to such invention, as though filed on the date of the provisional application filed under section 111(b), if the application for patent filed under section 111(a) or section 363 is filed not later than 12 months after the date on which the provisional application was filed"
+        },
+        {
+          "case": "35 U.S.C. § 111(b)(7) (Cornell LII text)",
+          "cite": "U.S. Code, provisional application — no independent right of priority",
+          "url": "https://www.law.cornell.edu/uscode/text/35/111",
+          "quote": "A provisional application shall not be entitled to the right of priority of any other application under section 119"
+        },
+        {
+          "case": "35 U.S.C. § 154(a)(3) (Cornell LII text)",
+          "cite": "U.S. Code, patent term — priority not counted",
+          "url": "https://www.law.cornell.edu/uscode/text/35/154",
+          "quote": "Priority under section 119 , 365(a) , 365(b) , 386(a) , or 386(b) shall not be taken into account in determining the term of a patent."
+        }
+      ]
+    },
+    {
+      "id": "provpat_novelty_and_grace",
+      "title": "The Public-Disclosure Bar to Patentability, and the One-Year Grace Period for the Inventor's Own Disclosures",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-02",
+      "body": "Federal patent law can bar an invention from being patentable based on disclosures that occurred before a patent application's effective filing date — including disclosures by the inventor. Under 35 U.S.C. § 102(a)(1), a person is not entitled to a patent if \"the claimed invention was patented, described in a printed publication, or in public use, on sale, or otherwise available to the public before the effective filing date of the claimed invention.\" Filing a provisional application establishes an effective filing date for this purpose, for whatever subject matter the provisional actually discloses. Federal law also provides a limited exception for the inventor's own disclosures: under 35 U.S.C. § 102(b)(1), \"a disclosure made 1 year or less before the effective filing date of a claimed invention shall not be prior art to the claimed invention under subsection (a)(1)\" if, among other conditions, \"the disclosure was made by the inventor or joint inventor or by another who obtained the subject matter disclosed directly or indirectly from the inventor or a joint inventor.\" This one-year window runs backward from the effective filing date and applies only to the inventor's own qualifying disclosures (or those derived from the inventor) — it does not affect the separate, unconditional bar that can apply to a disclosure made by an unrelated third party who did not obtain the information from the inventor.",
+      "gap": "This clause cites three different subsections of the same statutory section, 35 U.S.C. § 102 — (a)(1), (b)(1), and (b)(1)(A) — which describe interlocking parts of the same novelty and public-disclosure scheme rather than independent corroborating sources for one another. Checked directly against the U.S. Code text at Cornell's Legal Information Institute and re-fetched with a distinct User-Agent to confirm the returned text was byte-identical both times. This is federal law, used as real evidence of the novelty bar and the inventor's-own-disclosure grace period written into the Patent Act — not a claim about which jurisdiction's law governs any specific disclosure or invention. This clause doesn't address 35 U.S.C. § 102(a)(2) (the separate rule concerning an earlier-filed, later-published application by another inventor covering the same subject matter) or § 102(b)(2) (that section's own, differently structured exceptions), and it doesn't resolve the fact-specific question of whether any particular disclosure counts as \"public use,\" \"on sale,\" or \"otherwise available to the public\" under the case law interpreting those terms, which wasn't independently researched here.",
+      "citations": [
+        {
+          "case": "35 U.S.C. § 102(a)(1) (Cornell LII text)",
+          "cite": "U.S. Code, novelty and public-disclosure bar",
+          "url": "https://www.law.cornell.edu/uscode/text/35/102",
+          "quote": "the claimed invention was patented, described in a printed publication, or in public use, on sale, or otherwise available to the public before the effective filing date of the claimed invention"
+        },
+        {
+          "case": "35 U.S.C. § 102(b)(1) (Cornell LII text)",
+          "cite": "U.S. Code, one-year grace period for the inventor's own disclosures",
+          "url": "https://www.law.cornell.edu/uscode/text/35/102",
+          "quote": "A disclosure made 1 year or less before the effective filing date of a claimed invention shall not be prior art to the claimed invention under subsection (a)(1) if"
+        },
+        {
+          "case": "35 U.S.C. § 102(b)(1)(A) (Cornell LII text)",
+          "cite": "U.S. Code, grace period — disclosures by the inventor",
+          "url": "https://www.law.cornell.edu/uscode/text/35/102",
+          "quote": "the disclosure was made by the inventor or joint inventor or by another who obtained the subject matter disclosed directly or indirectly from the inventor or a joint inventor"
+        }
+      ]
+    },
+    {
+      "id": "provpat_patent_pending",
+      "title": "What \"Patent Pending\" Does and Doesn't Mean",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-02",
+      "body": "The phrase \"patent pending\" has a specific legal meaning under federal law, but that meaning is narrower than the phrase might suggest. Federal law makes it a fineable offense to mark or advertise an article with the words \"patent applied for,\" \"patent pending,\" or similar language \"when no application for patent has been made, or if made, is not pending, for the purpose of deceiving the public\" — confirming that the phrase, used honestly, indicates only that a patent application (provisional or nonprovisional) is currently on file and has not been abandoned, finally rejected, or already issued. It does not indicate that a patent will issue, and it does not itself confer any of the rights a patent confers. Under 35 U.S.C. § 154(a)(1), a patent grants its owner \"a grant to the patentee, his heirs or assigns, of the right to exclude others from making, using, offering for sale, or selling the invention throughout the United States,\" and 35 U.S.C. § 154(a)(2) fixes the term of that grant as beginning \"on the date on which the patent issues.\" Filing a provisional application places an application on file — and, described honestly, supports calling that status \"patent pending\" — but because a provisional application is never examined and cannot itself mature into a patent, patent-pending status arising from a provisional application alone does not, by itself, create any enforceable right to exclude anyone from doing anything with {{inventionTitle}}.",
+      "gap": "This clause cites two different subsections of the same statutory section, 35 U.S.C. § 154(a)(1) and § 154(a)(2), alongside 35 U.S.C. § 292(a) for the meaning and misuse penalty tied to the phrase \"patent pending\" itself; the two § 154 citations describe related parts of the same grant-and-term provision rather than independent corroborating sources for one another. All three were checked directly against the U.S. Code text at Cornell's Legal Information Institute and re-fetched with a distinct User-Agent to confirm the returned text was byte-identical both times. This is federal law, used as real evidence of what patent-pending status does and doesn't confer — not a claim about which jurisdiction's law governs any specific invention, product, or marketing claim. Neither § 292 nor § 154 mentions provisional applications specifically; this clause connects them to the provisional-application context using the separately verified fact that a provisional application is never examined and cannot itself mature into a patent (35 U.S.C. § 111(b)(8), covered in a separate clause of this document) — that connection is this document's own inference from the statutes, not itself a quoted statutory statement. This clause also doesn't address whether marking something \"patent pending\" before any application has actually been filed, rather than after, independently violates § 292(a) — that fact-specific question wasn't researched here.",
+      "citations": [
+        {
+          "case": "35 U.S.C. § 292(a) (Cornell LII text)",
+          "cite": "U.S. Code, false marking — \"patent pending\"",
+          "url": "https://www.law.cornell.edu/uscode/text/35/292",
+          "quote": "the words “patent applied for,” “patent pending,” or any word importing that an application for patent has been made, when no application for patent has been made, or if made, is not pending, for the purpose of deceiving the public"
+        },
+        {
+          "case": "35 U.S.C. § 154(a)(1) (Cornell LII text)",
+          "cite": "U.S. Code, contents of a patent — right to exclude",
+          "url": "https://www.law.cornell.edu/uscode/text/35/154",
+          "quote": "a grant to the patentee, his heirs or assigns, of the right to exclude others from making, using, offering for sale, or selling the invention throughout the United States"
+        },
+        {
+          "case": "35 U.S.C. § 154(a)(2) (Cornell LII text)",
+          "cite": "U.S. Code, patent term — begins on issuance",
+          "url": "https://www.law.cornell.edu/uscode/text/35/154",
+          "quote": "such grant shall be for a term beginning on the date on which the patent issues and ending 20 years from the date on which the application for the patent was filed in the United States"
+        }
+      ]
+    },
+    {
+      "id": "provpat_invention_summary",
+      "title": "Invention Summary",
+      "kind": "drafting",
+      "body": "Inventor Name: {{inventorName}}\nTitle of Invention: {{inventionTitle}}\nDescription of Invention: {{inventionDescription}}\n\nThis sheet records basic information about the invention described above as of the date it is completed. It is an informational record only — it is not itself a patent application, and completing it does not file anything with the United States Patent and Trademark Office or create patent-pending status for {{inventionTitle}}. Whether the description above is complete and detailed enough to support any future filing is governed by the applicable statutory disclosure requirements and is determined by whoever prepares any actual application; this sheet does not evaluate or certify that sufficiency."
+    },
+    {
+      "id": "provpat_filing_record",
+      "title": "Provisional Filing Record and 12-Month Reference Date",
+      "kind": "drafting",
+      "body": "Filing Date of Provisional Application: {{filingDate}}\n\nUnder 35 U.S.C. § 111(b)(5), a provisional application is regarded as abandoned 12 months after its filing date unless a corresponding nonprovisional application claiming its benefit under 35 U.S.C. § 119(e) is filed within that period, subject to the narrow weekend-or-federal-holiday adjustment in 35 U.S.C. § 119(e)(3). Measured from the filing date entered above, that 12-month period runs to the corresponding date one year later. This record states that statutory reference point only; it does not calculate any available extension, does not track whether a nonprovisional application claiming the benefit of {{inventionTitle}} has in fact been filed, and does not indicate whether filing one would be appropriate."
     }
   ]
 }

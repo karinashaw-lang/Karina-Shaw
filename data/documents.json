@@ -5325,5 +5325,49 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "provisional_patent_application_info_sheet",
+    "title": "Provisional Patent Application Information Sheet",
+    "description": "An informational sheet describing how a provisional patent application works under federal patent law: what it must contain (no claim required), that it is never examined and cannot itself become a patent, the firm 12-month deadline, what claiming its priority date actually does and doesn't accomplish, the novelty/public-disclosure bar and one-year grace period, and what \"patent pending\" status does and doesn't mean.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "provpat_invention_summary",
+      "provpat_requirements",
+      "provpat_never_examined",
+      "provpat_filing_record",
+      "provpat_twelve_month_deadline",
+      "provpat_priority_date",
+      "provpat_novelty_and_grace",
+      "provpat_patent_pending"
+    ],
+    "fields": [
+      {
+        "id": "inventorName",
+        "label": "Inventor's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "inventionTitle",
+        "label": "Title of invention",
+        "placeholder": "Adjustable Ergonomic Laptop Stand",
+        "required": true
+      },
+      {
+        "id": "inventionDescription",
+        "label": "Description of invention",
+        "placeholder": "A laptop stand with a spring-loaded hinge mechanism allowing continuous height and angle adjustment without tools",
+        "required": true
+      },
+      {
+        "id": "filingDate",
+        "label": "Filing date of provisional application",
+        "placeholder": "September 1, 2026",
+        "required": true
+      }
+    ]
   }
 ]
