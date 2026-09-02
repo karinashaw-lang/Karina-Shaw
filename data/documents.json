@@ -5959,5 +5959,149 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "name_change_petition_info_sheet",
+    "title": "Petition for Change of Name (Adult or Minor) — Information Sheet",
+    "description": "An information sheet describing California's statutory court process for changing a person's legal name under Code of Civil Procedure sections 1275-1279.6: who may file, what the petition must state, the order to show cause and publication requirements, the confidential/sealed-record exception for certain safety-related petitions, the hearing standard and limited grounds for denial, and the separate, simpler name-change process available through a marriage license application or domestic partnership registration.",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "namechange_declaration",
+      "namechange_superior_court_and_petition_contents",
+      "namechange_minor_petition_and_parental_notice",
+      "namechange_order_to_show_cause_and_publication",
+      "namechange_confidential_name_change",
+      "namechange_hearing_standard_and_denial_grounds",
+      "namechange_marriage_domestic_partnership_distinct_process",
+      "namechange_petition_summary",
+      "namechange_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "petitionerName",
+        "label": "Petitioner name",
+        "placeholder": "Jordan A. Rivera",
+        "required": true
+      },
+      {
+        "id": "currentName",
+        "label": "Current legal name",
+        "placeholder": "Jordan Alexander Rivera",
+        "required": true
+      },
+      {
+        "id": "proposedName",
+        "label": "Proposed name",
+        "placeholder": "Jordan Alexander Reyes",
+        "required": true
+      },
+      {
+        "id": "placeOfBirth",
+        "label": "Place of birth",
+        "placeholder": "Sacramento, California",
+        "required": false
+      },
+      {
+        "id": "reasonForChange",
+        "label": "Reason for the proposed change of name",
+        "placeholder": "To adopt a name consistent with gender identity",
+        "required": false
+      },
+      {
+        "id": "otherParentName",
+        "label": "Other parent's name (if a minor's petition is signed by only one parent)",
+        "placeholder": "Taylor M. Rivera",
+        "required": false
+      },
+      {
+        "id": "countyOfFiling",
+        "label": "County of filing",
+        "placeholder": "Sacramento County",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "April 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, State",
+        "placeholder": "Sacramento, California",
+        "required": true
+      }
+    ]
+  },
+  {
+    "id": "hoa_assessment_lien_foreclosure_info_sheet",
+    "title": "HOA Assessment Lien and Foreclosure — Information Sheet",
+    "description": "An information sheet describing the statutory lien and foreclosure process a homeowners association may use to collect unpaid assessments under California's Davis-Stirling Common Interest Development Act (Civil Code sections 5650-5740): how the assessment debt and delinquency are calculated, the required 30-day pre-lien notice, how the lien is actually created and its priority, the limitation on using the lien to collect fines and penalties, the ,800/12-month minimum before foreclosure is available, the required board votes and dispute-resolution offer, and the trustee's-sale mechanics including the 90-day right of redemption.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "hoalien_intro",
+      "hoalien_debt_and_delinquency",
+      "hoalien_prelien_notice",
+      "hoalien_lien_creation_and_priority",
+      "hoalien_fines_penalties_limitation",
+      "hoalien_dollar_threshold_and_time",
+      "hoalien_board_votes_and_preforeclosure_offer",
+      "hoalien_sale_mechanics_and_redemption",
+      "hoalien_ack"
+    ],
+    "fields": [
+      {
+        "id": "propertyAddress",
+        "label": "Property address",
+        "placeholder": "456 Meadowbrook Lane, Riverside, CA",
+        "required": true
+      },
+      {
+        "id": "ownerName",
+        "label": "Owner of record",
+        "placeholder": "Pat T. Alvarez",
+        "required": true
+      },
+      {
+        "id": "hoaName",
+        "label": "Homeowners association name",
+        "placeholder": "Meadowbrook Homeowners Association",
+        "required": true
+      },
+      {
+        "id": "amountDelinquent",
+        "label": "Amount stated as delinquent (if known)",
+        "placeholder": "$2,450.00",
+        "required": false
+      },
+      {
+        "id": "delinquencyDate",
+        "label": "Delinquency date (if known)",
+        "placeholder": "March 1, 2026",
+        "required": false
+      },
+      {
+        "id": "lienRecordingDate",
+        "label": "Lien recording date (if a notice of delinquent assessment has been recorded)",
+        "placeholder": "May 15, 2026",
+        "required": false
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "June 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, State",
+        "placeholder": "Riverside, California",
+        "required": true
+      }
+    ]
   }
 ]
