@@ -7480,5 +7480,49 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "new_hire_reporting_info_sheet",
+    "title": "New Hire Reporting — Information Sheet",
+    "description": "Explains the federal and California new-hire reporting framework: the reporting deadline, what counts as a reportable new employee or rehire, the required information, penalties for noncompliance, and the separate reporting duty for certain paid independent contractors.",
+    "categories": [
+      "Hiring"
+    ],
+    "clauseOrder": [
+      "newhirereport_declaration_and_scope",
+      "newhirereport_federal_framework",
+      "newhirereport_ca_duty_and_deadline",
+      "newhirereport_new_employee_and_rehire_definition",
+      "newhirereport_required_information",
+      "newhirereport_penalties",
+      "newhirereport_independent_contractors",
+      "newhirereport_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme Corp",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "employeeAddress",
+        "label": "Employee's address",
+        "placeholder": "500 Market St, San Francisco, CA 94105",
+        "required": true
+      },
+      {
+        "id": "startDate",
+        "label": "Start date",
+        "placeholder": "October 1, 2026",
+        "required": true
+      }
+    ]
   }
 ]
