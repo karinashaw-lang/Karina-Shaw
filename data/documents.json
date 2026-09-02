@@ -7582,5 +7582,64 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "community_property_agreement_info_sheet",
+    "title": "Community Property Agreement — Information Sheet",
+    "description": "Explains California's statutory mechanism letting community and quasi-community property pass to a surviving spouse or registered domestic partner without formal probate administration (Prob. Code section 13500 and related sections): the passage-without-administration rule, what's excluded, the election to administer anyway, the separate Spousal Property Petition court procedure, the definitions of community and quasi-community property, and the surviving spouse's continuing liability for the decedent's debts.",
+    "categories": [
+      "Estate Planning"
+    ],
+    "clauseOrder": [
+      "commprop_declaration",
+      "commprop_survivors_own_half",
+      "commprop_no_administration_rule",
+      "commprop_property_excluded_from_13500",
+      "commprop_election_to_administer",
+      "commprop_right_to_dispose_real_property",
+      "commprop_spousal_property_petition",
+      "commprop_definitions",
+      "commprop_spousal_debt_liability",
+      "commprop_vs_small_estate_and_probate",
+      "commprop_signature_ack"
+    ],
+    "fields": [
+      {
+        "id": "decedentName",
+        "label": "Decedent's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "survivingSpouseName",
+        "label": "Surviving spouse or domestic partner's name",
+        "placeholder": "Taylor Morgan",
+        "required": true
+      },
+      {
+        "id": "dateOfDeath",
+        "label": "Date of death",
+        "placeholder": "March 5, 2026",
+        "required": true
+      },
+      {
+        "id": "propertyDescription",
+        "label": "Description of the community/quasi-community property",
+        "placeholder": "the residence at 500 Market St, San Francisco, CA 94105",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "October 15, 2026",
+        "required": true
+      },
+      {
+        "id": "cityOfExecution",
+        "label": "City where signed",
+        "placeholder": "San Francisco, California",
+        "required": true
+      }
+    ]
   }
 ]
