@@ -9878,5 +9878,61 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "utma_custodial_account_info_sheet",
+    "title": "Custodial Account for a Minor (UTMA) — Information Sheet",
+    "description": "Explains California's version of the Uniform Transfers to Minors Act (Prob. Code §§ 3900-3925): how a custodial transfer is created and what property qualifies, the custodian's powers and prudent-person standard of care, permitted uses of custodial property for the minor without court order, the termination age (default 18, extendable to 21 or 25 depending on how the transfer was made), irrevocability and vested title in the minor, and custodian liability and successor-custodian rules. Distinct from the corpus's existing Guardianship of the Estate and Testamentary Trust documents, which only mention UTMA in passing as an alternative mechanism.",
+    "categories": [
+      "Estate Planning"
+    ],
+    "clauseOrder": [
+      "utma_transfer_declaration",
+      "utma_creation_method",
+      "utma_custodian_powers_standard",
+      "utma_permitted_uses",
+      "utma_termination_age",
+      "utma_irrevocability_vested_title",
+      "utma_liability_successor_custodian",
+      "utma_signature_certification"
+    ],
+    "fields": [
+      {
+        "id": "transferorName",
+        "label": "Transferor's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "custodianName",
+        "label": "Custodian's name",
+        "placeholder": "Taylor Morgan",
+        "required": true
+      },
+      {
+        "id": "minorName",
+        "label": "Minor's name",
+        "placeholder": "Casey Rivera",
+        "required": true
+      },
+      {
+        "id": "propertyDescription",
+        "label": "Description of the property transferred",
+        "placeholder": "0,000 cash",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "October 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "San Francisco, California",
+        "required": true
+      }
+    ]
   }
 ]
