@@ -12378,5 +12378,49 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "willful_misclassification_penalties_info_sheet",
+    "title": "Willful Misclassification of Independent Contractors — Penalties Information Sheet",
+    "description": "Explains California Labor Code section 226.8's civil penalty scheme for \"willful misclassification\" of an employee as an independent contractor, distinct from this corpus's Independent Contractor Agreement document, which covers the classification test itself: the statutory definition of willful misclassification, the civil penalty ranges (including an enhanced range for a pattern or practice), referral to the Contractors State License Board for a licensed contractor, the public notice-posting requirement, joint-and-several liability for a paid advisor under Labor Code section 2753, and who enforces the statute and how.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "willfulmisclass_declaration",
+      "willfulmisclass_prohibited_conduct_and_definition",
+      "willfulmisclass_civil_penalties",
+      "willfulmisclass_cslb_referral",
+      "willfulmisclass_notice_posting",
+      "willfulmisclass_advisor_liability",
+      "willfulmisclass_enforcement",
+      "willfulmisclass_signature"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme Innovations LLC",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Worker's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 2, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, state",
+        "placeholder": "Sacramento, California",
+        "required": true
+      }
+    ]
   }
 ]
