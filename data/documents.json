@@ -11497,5 +11497,85 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "elder_abuse_restraining_order_info_sheet",
+    "title": "Elder Abuse Restraining Order — Information Sheet",
+    "description": "Explains the civil protective-order remedy under California's Elder Abuse and Dependent Adult Civil Protection Act (Welf. & Inst. Code section 15657.03): who qualifies as a protected elder or dependent adult, the statutory definition of abuse, who may petition (the protected person or specified others on their behalf), the relief a court may order, the standard and duration for an order, and how this remedy differs from a civil harassment or domestic violence restraining order. Distinct from this corpus's separate Elder and Dependent Adult Financial Abuse Information Sheet, which addresses financial-abuse reporting and documentation rather than the restraining-order remedy.",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "elderabuseTRO_petition_declaration",
+      "elderabuseTRO_protected_person_definitions",
+      "elderabuseTRO_abuse_definition",
+      "elderabuseTRO_who_may_petition",
+      "elderabuseTRO_relief_available",
+      "elderabuseTRO_standard_duration_enforcement",
+      "elderabuseTRO_distinction_from_other_restraining_orders",
+      "elderabuseTRO_verification_signature"
+    ],
+    "fields": [
+      {
+        "id": "petitionerName",
+        "label": "Petitioner's name (person filing)",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "elderOrDependentAdultName",
+        "label": "Name of the elder or dependent adult to be protected",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "petitionerRelationshipToElder",
+        "label": "Petitioner's relationship to that person (if not the same person)",
+        "placeholder": "Adult child / conservator / attorney-in-fact / etc.",
+        "required": false
+      },
+      {
+        "id": "respondentName",
+        "label": "Respondent's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "incidentDate",
+        "label": "Date of incident",
+        "placeholder": "August 15, 2026",
+        "required": true
+      },
+      {
+        "id": "incidentLocation",
+        "label": "Location of incident",
+        "placeholder": "123 Main St., Sacramento, CA",
+        "required": true
+      },
+      {
+        "id": "incidentDescription",
+        "label": "Description of incident",
+        "placeholder": "Describe what happened",
+        "required": true
+      },
+      {
+        "id": "additionalIncidents",
+        "label": "Additional incidents (if any)",
+        "placeholder": "Describe any additional incidents",
+        "required": false
+      },
+      {
+        "id": "signatureDate",
+        "label": "Signature date",
+        "placeholder": "September 2, 2026",
+        "required": true
+      },
+      {
+        "id": "signatureCity",
+        "label": "City where signed",
+        "placeholder": "Sacramento",
+        "required": true
+      }
+    ]
   }
 ]
