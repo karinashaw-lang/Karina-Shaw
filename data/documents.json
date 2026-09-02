@@ -10641,5 +10641,91 @@
         "required": false
       }
     ]
+  },
+  {
+    "id": "common_interest_development_formation_info_sheet",
+    "title": "Common Interest Development Formation — Information Sheet",
+    "description": "Explains how a common interest development (condominium, planned development, or stock cooperative) is created under California's Davis-Stirling Common Interest Development Act (Civ. Code §4000 et seq.) -- distinct from the corpus's existing HOA/CC&R Disclosure document (buyer disclosure obligations) and HOA Assessment Lien and Foreclosure document (lien enforcement mechanics). Covers the statutory definition of a CID, the declaration's required content, the recording mechanics that actually create the CID, the association's mandatory formation, and the formation-stage statutory basis for the power to levy assessments.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "cidform_intro",
+      "cidform_statutory_definition",
+      "cidform_declaration_defined_and_content",
+      "cidform_recording_mechanics",
+      "cidform_mandatory_association",
+      "cidform_assessment_levy_authority",
+      "cidform_declaration_statement",
+      "cidform_declarant_signature"
+    ],
+    "fields": [
+      {
+        "id": "declarantName",
+        "label": "Declarant's name",
+        "placeholder": "Acme Development, LLC",
+        "required": true
+      },
+      {
+        "id": "projectName",
+        "label": "Project name",
+        "placeholder": "Sunset Terrace Condominiums",
+        "required": true
+      },
+      {
+        "id": "cidCategory",
+        "label": "Type of common interest development",
+        "placeholder": "condominium project",
+        "required": true
+      },
+      {
+        "id": "propertyAddress",
+        "label": "Property address",
+        "placeholder": "789 Terrace Way, San Diego, CA 92101",
+        "required": true
+      },
+      {
+        "id": "county",
+        "label": "County",
+        "placeholder": "San Diego County",
+        "required": true
+      },
+      {
+        "id": "associationName",
+        "label": "Association name",
+        "placeholder": "Sunset Terrace Owners Association",
+        "required": true
+      },
+      {
+        "id": "associationIncorporationStatus",
+        "label": "Association's incorporation status",
+        "placeholder": "incorporated as a nonprofit mutual benefit corporation",
+        "required": true
+      },
+      {
+        "id": "declarationRecordingInfo",
+        "label": "Declaration recording information",
+        "placeholder": "Recorded October 1, 2026, Instrument No. 2026-0123456",
+        "required": true
+      },
+      {
+        "id": "conditionsRecordingInfo",
+        "label": "Additional recorded documents (condominium plan, final map, if any)",
+        "placeholder": "Condominium Plan recorded October 1, 2026, Instrument No. 2026-0123457",
+        "required": false
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "October 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "San Diego, California",
+        "required": true
+      }
+    ]
   }
 ]
