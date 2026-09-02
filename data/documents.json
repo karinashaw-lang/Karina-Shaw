@@ -9997,5 +9997,116 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "uccjea_child_custody_jurisdiction_info_sheet",
+    "title": "Child Custody Jurisdiction (UCCJEA) — Information Sheet",
+    "description": "Explains California's Uniform Child Custody Jurisdiction and Enforcement Act (Fam. Code §§ 3400-3465), which governs which state's courts may hear a child custody case in the first place -- a distinct question from the corpus's existing UIFSA document (interstate child support enforcement) and Emergency (Ex Parte) Custody Order document (the procedure for emergency relief once jurisdiction exists). Covers home state jurisdiction, alternative jurisdictional bases, exclusive continuing jurisdiction, temporary emergency jurisdiction, registration and enforcement of an out-of-state custody determination, and the rule for simultaneous proceedings in two states.",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "uccjea_jurisdictional_facts_declaration",
+      "uccjea_home_state_jurisdiction",
+      "uccjea_alternative_bases_no_home_state",
+      "uccjea_exclusive_continuing_jurisdiction",
+      "uccjea_temporary_emergency_jurisdiction",
+      "uccjea_registration_enforcement",
+      "uccjea_simultaneous_proceedings",
+      "uccjea_signature_certification_block"
+    ],
+    "fields": [
+      {
+        "id": "requestingPartyName",
+        "label": "Requesting party's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "otherParentName",
+        "label": "Other parent's name",
+        "placeholder": "Taylor Morgan",
+        "required": true
+      },
+      {
+        "id": "childName",
+        "label": "Child's name",
+        "placeholder": "Casey Lee",
+        "required": true
+      },
+      {
+        "id": "childCurrentState",
+        "label": "Child's current state of residence",
+        "placeholder": "California",
+        "required": true
+      },
+      {
+        "id": "childResidenceHistory",
+        "label": "Child's residence history (past 5 years)",
+        "placeholder": "Lived in Nevada from 2020-2023, California since 2023",
+        "required": true
+      },
+      {
+        "id": "countyOfFiling",
+        "label": "County of filing",
+        "placeholder": "San Francisco County",
+        "required": true
+      },
+      {
+        "id": "otherCustodyProceedingsInfo",
+        "label": "Information about other custody proceedings, if any",
+        "placeholder": "None known",
+        "required": false
+      },
+      {
+        "id": "otherPersonsClaimingRights",
+        "label": "Other persons claiming custody or visitation rights, if any",
+        "placeholder": "None known",
+        "required": false
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "October 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "San Francisco, California",
+        "required": true
+      }
+    ]
+  },
+  {
+    "id": "background_check_adverse_action_notice_info_sheet",
+    "title": "Background Check Adverse Action Notice — Information Sheet",
+    "description": "Explains the full two-step federal FCRA adverse-action process (15 U.S.C. §§ 1681b(b)(3), 1681m) plus California's Fair Chance Act individualized-assessment and dispute-window requirements (Gov. Code § 12952) -- deeper than the corpus's existing Background Check Disclosure & Authorization document, which only briefly mentions the pre-adverse-action step. Covers the pre-adverse-action notice, the final adverse-action notice, California's individualized assessment and preliminary notice, the business-day response window, and the open question of how the federal and California processes relate under FCRA's preemption provisions.",
+    "categories": [
+      "Hiring"
+    ],
+    "clauseOrder": [
+      "adverseaction_declaration",
+      "adverseaction_fcra_step1_pre_adverse",
+      "adverseaction_fcra_step2_final_notice",
+      "adverseaction_ca_individualized_assessment",
+      "adverseaction_ca_response_window",
+      "adverseaction_relationship_fcra_ca",
+      "adverseaction_certification"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Applicant/employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      }
+    ]
   }
 ]
