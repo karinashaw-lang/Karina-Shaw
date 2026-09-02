@@ -12422,5 +12422,36 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "icraa_info_sheet",
+    "title": "Investigative Consumer Reporting Agencies Act (ICRAA) — Information Sheet",
+    "description": "Explains California's Investigative Consumer Reporting Agencies Act (Civil Code sections 1786 et seq.), a separate California statute from the federal FCRA and California's CCRAA already covered in this corpus's Background Check documents: the definition of an \"investigative consumer report\" (character/reputation-based, as opposed to an ordinary credit report), the employment disclosure ICRAA requires, the certification ICRAA requires the employer to give the reporting agency, the right to a copy of the report and ICRAA's own adverse-action notice, and the remedies ICRAA authorizes for a violation.",
+    "categories": [
+      "Hiring"
+    ],
+    "clauseOrder": [
+      "icraa_declaration",
+      "icraa_definition",
+      "icraa_disclosure_requirements",
+      "icraa_agency_certification",
+      "icraa_report_copy_and_adverse_action",
+      "icraa_remedies",
+      "icraa_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme Innovations LLC",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Applicant/employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      }
+    ]
   }
 ]
