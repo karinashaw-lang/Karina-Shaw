@@ -10360,5 +10360,38 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "lactation_accommodation_info_sheet",
+    "title": "Lactation Accommodation — Information Sheet",
+    "description": "Explains California's workplace lactation accommodation law (Lab. Code §§1030-1034): the break-time duty and its interaction with paid rest breaks, the required private lactation location and its specific features, two distinct exemptions (a general operations-disruption exemption from break time, and a separate fewer-than-50-employees undue-hardship exemption from location requirements), the written policy requirement added by SB 142, and enforcement/anti-retaliation protections with civil penalties.",
+    "categories": [
+      "During employment"
+    ],
+    "clauseOrder": [
+      "lactation_policy_declaration",
+      "lactation_break_time_duty",
+      "lactation_location_duty",
+      "lactation_location_standards",
+      "lactation_operations_exemption",
+      "lactation_small_employer_exemption",
+      "lactation_written_policy_requirement",
+      "lactation_enforcement_retaliation",
+      "lactation_signature_acknowledgment"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      }
+    ]
   }
 ]
