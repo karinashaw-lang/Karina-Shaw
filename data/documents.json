@@ -9934,5 +9934,68 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "workers_compensation_claim_notice_info_sheet",
+    "title": "Workers' Compensation Claim Notice — Information Sheet",
+    "description": "Explains the California workers' compensation claim-notice process: the employee's duty to notify the employer of a work injury (Lab. Code § 5400), the employer's knowledge-equivalent-to-notice exception, the employer's duty to provide a claim form, the time limit to reject a claim and the presumption of compensability (§ 5402), the one-year statute of limitations (§ 5405), and the exclusive remedy rule (§§ 3600, 3602) with its narrow statutory exceptions.",
+    "categories": [
+      "During employment"
+    ],
+    "clauseOrder": [
+      "wcclaim_injury_claim_declaration",
+      "wcclaim_employee_notice_duty",
+      "wcclaim_employer_knowledge_equivalent_notice",
+      "wcclaim_claim_form_duty",
+      "wcclaim_claim_response_duty",
+      "wcclaim_statute_of_limitations",
+      "wcclaim_exclusive_remedy_general_rule",
+      "wcclaim_exclusive_remedy_exceptions",
+      "wcclaim_signature_certification"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "injuryDate",
+        "label": "Date of injury",
+        "placeholder": "October 1, 2026",
+        "required": true
+      },
+      {
+        "id": "injuryDescription",
+        "label": "Description of the injury",
+        "placeholder": "lower back strain from lifting",
+        "required": true
+      },
+      {
+        "id": "employerNoticeDate",
+        "label": "Date employer was notified",
+        "placeholder": "October 2, 2026",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "October 3, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "San Francisco, California",
+        "required": true
+      }
+    ]
   }
 ]
