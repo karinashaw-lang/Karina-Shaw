@@ -6817,5 +6817,79 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "local_business_license_info_sheet",
+    "title": "Local Business License / Business Tax Certificate — Information Sheet",
+    "description": "An information sheet describing California's constitutional and statutory framework authorizing cities and counties to require a local business license or business tax certificate — a separate, locally-administered requirement distinct from the existing Seller's Permit (CDTFA), Fictitious Business Name (DBA) Statement, and Foreign LLC/Corporation Qualification documents. Covers the constitutional police-power source of local licensing authority, the parallel city and county statutory licensing grants, the multi-jurisdiction apportionment rule and nonprofit/clergy exemption, the contractor-license verification requirement and disabled-veteran peddler exemption, and the constitutional voter-approval requirement for local tax increases. Honestly discloses that California has no single statewide business-license statute — the actual license name, fee, and procedure are set locally and vary by city and county.",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "bizlicense_declaration",
+      "bizlicense_constitutional_police_power",
+      "bizlicense_city_statutory_licensing_authority",
+      "bizlicense_county_statutory_licensing_authority",
+      "bizlicense_apportionment_and_nonprofit_clergy_exemption",
+      "bizlicense_contractor_verification_and_veteran_exemption",
+      "bizlicense_voter_approval_requirement_no_statewide_fee_cap",
+      "bizlicense_closing_signature"
+    ],
+    "fields": [
+      {
+        "id": "businessName",
+        "label": "Business name",
+        "placeholder": "Acme Retail, LLC",
+        "required": true
+      },
+      {
+        "id": "entityType",
+        "label": "Entity type",
+        "placeholder": "limited liability company",
+        "required": true
+      },
+      {
+        "id": "principalOfficeAddress",
+        "label": "Place of business",
+        "placeholder": "100 Market Street, San Diego, CA",
+        "required": true
+      },
+      {
+        "id": "businessActivityDescription",
+        "label": "Description of business activity",
+        "placeholder": "retail clothing and accessories",
+        "required": true
+      },
+      {
+        "id": "cityOfOperation",
+        "label": "City of operation",
+        "placeholder": "San Diego",
+        "required": true
+      },
+      {
+        "id": "countyOfOperation",
+        "label": "County of operation",
+        "placeholder": "San Diego County",
+        "required": true
+      },
+      {
+        "id": "authorizedSignerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "April 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, State",
+        "placeholder": "San Diego, California",
+        "required": true
+      }
+    ]
   }
 ]
