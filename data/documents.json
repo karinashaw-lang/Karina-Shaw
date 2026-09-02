@@ -6203,5 +6203,68 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "foreign_entity_qualification_info_sheet",
+    "title": "Foreign LLC/Corporation Qualification to Transact Business in California — Information Sheet",
+    "description": "An information sheet describing California's statutory requirement that an out-of-state ('foreign') corporation or limited liability company register with the California Secretary of State before transacting intrastate business here: the certificate-of-qualification/certificate-of-registration application requirements for both entity types, the statutory definition of 'transacting intrastate business' and the specific activities that do not by themselves trigger it, and the differing consequences California law attaches to transacting business without registering for corporations (a per-day penalty, a curable bar on maintaining a lawsuit, and a misdemeanor) versus LLCs (a bar on maintaining a lawsuit without a comparable per-day or criminal penalty, plus Attorney General injunctive authority).",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "foreignqual_declaration",
+      "foreignqual_corp_qualification_requirement",
+      "foreignqual_corp_application_content",
+      "foreignqual_transacting_business_definition",
+      "foreignqual_activities_not_transacting_business",
+      "foreignqual_llc_application_requirements",
+      "foreignqual_corp_consequences",
+      "foreignqual_llc_consequences",
+      "foreignqual_closing_signature"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company/entity name",
+        "placeholder": "Acme Holdings, LLC",
+        "required": true
+      },
+      {
+        "id": "entityType",
+        "label": "Entity type",
+        "placeholder": "limited liability company",
+        "required": true
+      },
+      {
+        "id": "stateOfFormation",
+        "label": "State or jurisdiction of original formation",
+        "placeholder": "Delaware",
+        "required": true
+      },
+      {
+        "id": "principalOfficeAddress",
+        "label": "Principal office address",
+        "placeholder": "100 Market Street, Suite 400, Wilmington, DE",
+        "required": true
+      },
+      {
+        "id": "authorizedSignerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "April 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, State",
+        "placeholder": "San Francisco, California",
+        "required": true
+      }
+    ]
   }
 ]
