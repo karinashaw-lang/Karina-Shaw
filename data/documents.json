@@ -12491,5 +12491,42 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "hoa_board_election_procedures_info_sheet",
+    "title": "HOA Board Election Procedures — Information Sheet",
+    "description": "Explains the Davis-Stirling Act's secret-ballot election procedures for a California common interest development association (Civil Code sections 5100-5145): when secret-ballot procedures apply, the association's requirement to adopt election operating rules, the independent-third-party inspector-of-elections requirement, the notice-timing and double-envelope ballot mechanics, and how ballots are counted, tabulated, and reported. Distinct from this corpus's existing HOA/CC&R Disclosure, HOA Assessment Lien and Foreclosure, and Common Interest Development Formation documents.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "hoaelection_declaration",
+      "hoaelection_secret_ballot_scope",
+      "hoaelection_election_rules_adoption",
+      "hoaelection_independent_third_party",
+      "hoaelection_ballot_notice_and_double_envelope",
+      "hoaelection_vote_tabulation_and_results",
+      "hoaelection_signature"
+    ],
+    "fields": [
+      {
+        "id": "hoaName",
+        "label": "Homeowners association's name",
+        "placeholder": "Sunnyvale Meadows Homeowners Association",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 2, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, state",
+        "placeholder": "Sacramento, California",
+        "required": true
+      }
+    ]
   }
 ]
