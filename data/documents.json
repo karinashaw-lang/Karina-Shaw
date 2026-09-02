@@ -9418,5 +9418,55 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "trade_dress_info_sheet",
+    "title": "Trade Dress — Information Sheet",
+    "description": "Explains federal trade dress protection under the Lanham Act, the body of law protecting a product's or service's overall look and feel (packaging, product design, decor) as opposed to a word mark or logo: the statutory basis, the functionality doctrine's categorical bar to protection, the distinctiveness requirement, federal registration availability, the remedies framework shared with other Lanham Act claims, and the honest finding that California's general unfair competition statute is not itself a trade-dress-specific doctrine.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "tradedress_description",
+      "tradedress_statutory_basis",
+      "tradedress_functionality_doctrine",
+      "tradedress_distinctiveness_requirement",
+      "tradedress_registration_optional",
+      "tradedress_remedies_cross_reference",
+      "tradedress_ca_state_law",
+      "tradedress_signature_certification"
+    ],
+    "fields": [
+      {
+        "id": "ownerName",
+        "label": "Trade dress owner's name",
+        "placeholder": "Acme Corp",
+        "required": true
+      },
+      {
+        "id": "tradeDressDescription",
+        "label": "Description of the trade dress",
+        "placeholder": "the distinctive red-and-white striped packaging and rounded bottle shape",
+        "required": true
+      },
+      {
+        "id": "goodsServicesDescription",
+        "label": "Description of the goods/services",
+        "placeholder": "bottled beverages",
+        "required": true
+      },
+      {
+        "id": "nonFunctionalityStatement",
+        "label": "Statement addressing non-functionality",
+        "placeholder": "the packaging design is ornamental and not essential to the product's use",
+        "required": true
+      },
+      {
+        "id": "distinctivenessBasis",
+        "label": "Basis for distinctiveness",
+        "placeholder": "five years of continuous, exclusive use and substantial advertising expenditure",
+        "required": true
+      }
+    ]
   }
 ]
