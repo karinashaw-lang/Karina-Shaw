@@ -7059,5 +7059,44 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "pay_scale_disclosure_info_sheet",
+    "title": "Pay Scale Disclosure and Salary History Ban — Information Sheet",
+    "description": "An information sheet describing California's salary-history ban and pay-scale disclosure requirements under Labor Code section 432.3, and clarifying what the separate Equal Pay Act (section 1197.5) does and does not require. Covers the two salary-history prohibitions applicable to all employers regardless of size, the voluntary-disclosure and salary-expectation exceptions, the request-triggered pay-scale disclosure duties owed to applicants and current employees (no size threshold), the proactive job-posting pay-scale requirement and its 15-employee threshold, the statutory definitions of 'pay scale' and 'applicant', the recordkeeping duty and civil-penalty enforcement structure, and a dedicated correction confirming the job-posting requirement lives in section 432.3, not section 1197.5.",
+    "categories": [
+      "Hiring"
+    ],
+    "clauseOrder": [
+      "payscale_purpose",
+      "payscale_salary_history_ban",
+      "payscale_voluntary_disclosure_and_expectations",
+      "payscale_reasonable_request_disclosure",
+      "payscale_job_posting_requirement",
+      "payscale_definitions",
+      "payscale_records_penalty_enforcement",
+      "payscale_1197_5_not_job_posting_source",
+      "payscale_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company/employer name",
+        "placeholder": "Acme Manufacturing, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Applicant/employee name",
+        "placeholder": "Morgan T. Ellis",
+        "required": true
+      },
+      {
+        "id": "jobTitle",
+        "label": "Job title",
+        "placeholder": "Warehouse Associate",
+        "required": true
+      }
+    ]
   }
 ]
