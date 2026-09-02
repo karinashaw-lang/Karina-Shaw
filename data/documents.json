@@ -13229,5 +13229,73 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "shine_the_light_info_sheet",
+    "title": "California 'Shine the Light' Law — Information Sheet",
+    "description": "Information about Civil Code § 1798.83 — a California customer's right to request what personal information a business disclosed to third parties for their direct marketing purposes, and the alternative opt-out/opt-in privacy-policy compliance path, distinct from the CCPA and CalOPPA.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "shinelight_purpose_and_scope",
+      "shinelight_covered_businesses_and_exemption",
+      "shinelight_customer_request_and_designated_channel",
+      "shinelight_required_disclosure_content_and_response_time",
+      "shinelight_optout_alternative_compliance",
+      "shinelight_definitions_customer_and_direct_marketing",
+      "shinelight_remedies",
+      "shinelight_compliance_declaration_and_signature"
+    ],
+    "fields": [
+      {
+        "id": "businessName",
+        "label": "Business name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "websiteURL",
+        "label": "Website URL",
+        "placeholder": "https://www.acme.com",
+        "required": true
+      },
+      {
+        "id": "complianceMethod",
+        "label": "Compliance method used (individual response or opt-out/opt-in policy)",
+        "placeholder": "Opt-out policy disclosed in our privacy policy",
+        "required": true
+      },
+      {
+        "id": "designatedRequestChannel",
+        "label": "Designated request channel, if using the individual-response method",
+        "placeholder": "privacy@acme.com",
+        "required": false
+      },
+      {
+        "id": "contactMethod",
+        "label": "How consumers may contact the business or submit requests",
+        "placeholder": "privacy@acme.com or (415) 555-0100",
+        "required": true
+      },
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 2, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
