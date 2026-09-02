@@ -6891,5 +6891,63 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "just_cause_eviction_rent_cap_info_sheet",
+    "title": "California Statewide Just Cause Eviction and Rent Cap (AB 1482) — Information Sheet",
+    "description": "An information sheet describing the Tenant Protection Act of 2019's two statewide requirements: a cap on rent increases (Civ. Code § 1947.12) and a just-cause requirement before ending certain tenancies (Civ. Code § 1946.2). Covers the 12-month occupancy threshold, the enumerated at-fault and no-fault just-cause grounds, the relocation-assistance-or-rent-waiver requirement for no-fault terminations, the rent-cap formula and its 5%-plus-CPI/10% ceiling and twice-per-year limit, and the separate exemption lists for the rent cap and the just-cause requirement, including the shared alienable-title exemption's required statutory notice language. Distinct from the existing Notice to Pay Rent or Quit and 3-Day Notice to Perform Covenant or Quit documents, which concern specific eviction notices operating within this broader statutory framework.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "justcause_intro",
+      "justcause_occupancy_threshold_and_definition",
+      "justcause_at_fault_grounds",
+      "justcause_no_fault_grounds",
+      "justcause_relocation_assistance",
+      "justcause_rent_cap_formula",
+      "justcause_rent_cap_exemptions",
+      "justcause_eviction_exemptions",
+      "justcause_single_family_exemption_notice",
+      "justcause_ack"
+    ],
+    "fields": [
+      {
+        "id": "landlordName",
+        "label": "Landlord name",
+        "placeholder": "Acme Properties, LLC",
+        "required": true
+      },
+      {
+        "id": "tenantName",
+        "label": "Tenant name",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "propertyAddress",
+        "label": "Property address",
+        "placeholder": "456 Maple Street, Apt 2, Oakland, CA",
+        "required": true
+      },
+      {
+        "id": "monthlyRent",
+        "label": "Current monthly rent, if relevant",
+        "placeholder": ",400",
+        "required": false
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "April 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, State",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
