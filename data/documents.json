@@ -8230,5 +8230,67 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "dmca_counter_notification_info_sheet",
+    "title": "DMCA Counter-Notification — Information Sheet",
+    "description": "Explains 17 U.S.C. section 512(g), the process by which a person whose online content was taken down in response to a DMCA takedown notice can file a counter-notification to have it restored: the required elements, the put-back timeline, misrepresentation liability, who may file (and the anonymity consequence of doing so), the service provider's safe-harbor incentive to follow the process, and the narrow scope of the required good-faith statement.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "dmcacounter_declaration",
+      "dmcacounter_required_elements",
+      "dmcacounter_good_faith_standard",
+      "dmcacounter_who_may_file",
+      "dmcacounter_putback_timeline",
+      "dmcacounter_misrepresentation_liability",
+      "dmcacounter_safe_harbor_incentive",
+      "dmcacounter_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "subscriberName",
+        "label": "Your name (the subscriber)",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "serviceProviderName",
+        "label": "Service provider's name",
+        "placeholder": "Acme Hosting Inc.",
+        "required": true
+      },
+      {
+        "id": "removedMaterialDescription",
+        "label": "Description of the removed material",
+        "placeholder": "a blog post titled 'Product Review'",
+        "required": true
+      },
+      {
+        "id": "contentLocationURL",
+        "label": "URL or location before removal",
+        "placeholder": "https://example.com/blog/product-review",
+        "required": true
+      },
+      {
+        "id": "contactInfo",
+        "label": "Your contact information (address and phone)",
+        "placeholder": "500 Market St, San Francisco, CA 94105, (415) 555-0100",
+        "required": true
+      },
+      {
+        "id": "consentDistrict",
+        "label": "Federal district for consent to jurisdiction",
+        "placeholder": "the Northern District of California",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "October 15, 2026",
+        "required": true
+      }
+    ]
   }
 ]
