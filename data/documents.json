@@ -7282,5 +7282,55 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "real_estate_agency_disclosure_info_sheet",
+    "title": "Real Estate Agency Relationship Disclosure — Information Sheet",
+    "description": "An information sheet describing California's statutory requirement that a real estate agent disclose the nature of their agency relationship in a real property transaction, distinct from the existing Residential Purchase Agreement (transaction terms) and other disclosure documents. Covers the scope of covered property and transactions, the statutory definitions of seller's agent, buyer's agent, and dual agent, the disclosure timing rules (which differ by agent role), the prescribed statutory disclosure-form text describing each agent's duties (including duties owed to the non-client party), the separate written confirmation of the actual agency relationship, and the statute's preservation of an agent's other disclosure duties and liability.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "agencydisc_declaration",
+      "agencydisc_scope",
+      "agencydisc_agency_relationships",
+      "agencydisc_disclosure_timing",
+      "agencydisc_statutory_form_duties",
+      "agencydisc_confirmation_of_actual_relationship",
+      "agencydisc_duties_not_diminished",
+      "agencydisc_signature_ack"
+    ],
+    "fields": [
+      {
+        "id": "propertyAddress",
+        "label": "Property address",
+        "placeholder": "456 Meadowbrook Lane, Riverside, CA",
+        "required": true
+      },
+      {
+        "id": "sellerName",
+        "label": "Seller name",
+        "placeholder": "Pat T. Alvarez",
+        "required": true
+      },
+      {
+        "id": "buyerName",
+        "label": "Buyer name",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "sellerAgentName",
+        "label": "Seller's agent name, if any",
+        "placeholder": "Taylor M. Chen, Acme Realty",
+        "required": false
+      },
+      {
+        "id": "buyerAgentName",
+        "label": "Buyer's agent name, if any",
+        "placeholder": "Morgan L. Ellis, Beta Realty",
+        "required": false
+      }
+    ]
   }
 ]
