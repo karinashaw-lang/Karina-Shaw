@@ -31641,6 +31641,151 @@
       "title": "Closing and Signature Block — EIN Information Sheet",
       "kind": "drafting",
       "body": "This information sheet regarding {{companyName}}'s federal Employer Identification Number was prepared by {{authorizedSignerName}}.\n\nExecuted on {{dateSigned}} at {{cityState}}.\n\nSignature of {{authorizedSignerName}}: ☐ _________________________\n\n[This information sheet describes the federal statutory and regulatory framework governing Employer Identification Numbers under 26 U.S.C. § 6109 and 26 C.F.R. § 301.6109-1, including which entities the IRS's own guidance identifies as needing an EIN, when an existing Social Security number or already-issued EIN may continue to be used instead of a new one, how an EIN application is made, the IRS's own warning that EIN issuance carries no fee, and California's separate EDD payroll tax account number. It is not IRS Form SS-4 or any other IRS or EDD form, does not itself apply for, obtain, or cancel an EIN or a California EDD account number for {{companyName}} or any other person, does not constitute legal or tax advice, and does not determine whether {{companyName}}'s specific activities require an EIN. The current official EIN application tool and instructions are published by the Internal Revenue Service at IRS.gov.]"
+    },
+    {
+      "id": "agentservice_eligibility",
+      "title": "Who Is Eligible to Serve as an Agent for Service of Process",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-02",
+      "body": "California recognizes two categories of eligible agent for service of process: an individual who resides in California, or a corporation that has separately registered with the Secretary of State as a corporate agent under Corporations Code section 1505 (commonly called a \"1505 agent\"). A business entity cannot designate itself as its own agent for service of process. Where a corporation is named as the agent, that corporation must currently be authorized to engage in business in California and in good standing on the Secretary of State's records before it may file the certificate that qualifies it to act as a registered corporate agent in the first place. The Secretary of State's own published guidance adds a practical detail not found in the statute's text: advance approval is ordinarily obtained from a registered corporate agent before that corporation is named as an entity's agent for service of process.",
+      "gap": "This is one state's eligibility rule, not a claim about what any other state requires. The individual-resident-or-qualifying-corporation dichotomy stated here is the same underlying eligibility rule already verified elsewhere in this project's corpus for LLC and corporation formation documents (at Cal. Corp. Code section 17701.13(c) and section 1502(b) respectively); this clause does not re-quote those provisions, and instead supplies the deeper, previously unresearched layer -- what actually qualifies a corporation to be the \"corporation that has complied with Section 1505\" those other provisions refer to. Two of the three citations below (the definition and the advance-approval note) come from the same Secretary of State FAQ page and are treated as one source, not independent of each other; the good-standing requirement is independently verified against the statutory text of Cal. Corp. Code section 1505(c) itself, a separate primary source.",
+      "citations": [
+        {
+          "case": "Cal. Sec'y of State, Business Entities FAQ — Agent for Service of Process",
+          "cite": "California Secretary of State, published guidance defining who may serve as an agent for service of process",
+          "url": "https://www.sos.ca.gov/business-programs/business-entities/faqs",
+          "quote": "An agent for service of process is an individual who resides in California, or a registered 1505 corporate agent, designated to accept service of process (court papers) if the business entity is sued."
+        },
+        {
+          "case": "Cal. Sec'y of State, Business Entities FAQ — Agent for Service of Process",
+          "cite": "California Secretary of State, published guidance on obtaining a registered corporate agent's approval before designation",
+          "url": "https://www.sos.ca.gov/business-programs/business-entities/faqs",
+          "quote": "Note: Advanced approval must be obtained from a Registered Corporate Agent prior to designating that corporation as your agent for service of process."
+        },
+        {
+          "case": "Cal. Corp. Code § 1505(c)",
+          "cite": "California General Corporation Law, prerequisite to filing a corporate-agent certificate",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=1505.",
+          "quote": "No domestic or foreign corporation may file a certificate pursuant to this section unless it is currently authorized to engage in business in this state and is in good standing on the records of the Secretary of State."
+        }
+      ]
+    },
+    {
+      "id": "agentservice_corporate_agent_certificate",
+      "title": "The Certificate a Corporation Must File to Become a Registered Corporate Agent",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-02",
+      "body": "Becoming eligible to act as a corporate agent for service of process requires an affirmative filing, not merely satisfying the good-standing requirement described elsewhere. Before any corporation may be designated as an agent for service of process, it must file a certificate, executed by one of its officers, stating the complete street address in California of the office or offices where it may be served, the name of each person it authorizes to accept delivery of process at each such office, and its consent that delivery to any such person constitutes delivery to the corporation as agent. A corporation that has filed this certificate may later file any number of supplemental certificates restating this information, and each supplemental filing supersedes the statements in the original certificate or any earlier supplemental certificate. The Secretary of State's own form for this filing confirms that any active corporation registered with the Secretary of State may file it to become authorized to act as a corporate agent for other registered business entities.",
+      "gap": "This is one state's certificate-filing requirement, not a claim about what any other state requires. The two statutory quotes below are subsections of the same section, Cal. Corp. Code section 1505 -- subdivision (a) for the certificate's required content and subdivision (b) for supplemental certificates -- and are treated as one source, not independent ones. The Secretary of State's Form 1505 instructions are an independently fetched, separate primary source (the agency's own published form and instructions, not the statutory text itself) that corroborates, in the agency's own words, who may file this certificate.",
+      "citations": [
+        {
+          "case": "Cal. Corp. Code § 1505(a)",
+          "cite": "California General Corporation Law, required content of a corporate agent's certificate",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=1505.",
+          "quote": "Any domestic or foreign corporation, before it may be designated as the agent for the purpose of service of process of any entity pursuant to any law which refers to this section, shall file a certificate executed in the name of the corporation by an officer thereof stating all of the following: (1) The complete street address of its office or offices in this state, wherein any entity designating it as such agent may be served with process. (2) The name of each person employed by it at each such office to whom it authorizes the delivery of a copy of any such process. (3) Its consent that delivery thereof to any such person at the office where the person is employed shall constitute delivery of any such copy to it, as such agent."
+        },
+        {
+          "case": "Cal. Corp. Code § 1505(b)",
+          "cite": "California General Corporation Law, supplemental certificates",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=1505.",
+          "quote": "Any corporation which has filed the certificate provided for in subdivision (a) may file any number of supplemental certificates containing all the statements provided for in subdivision (a), which, upon the filing thereof, shall supersede the statements contained in the original or in any supplemental certificate previously filed."
+        },
+        {
+          "case": "Cal. Sec'y of State, Form 1505 Instructions (Registered Corporate Agent for Service of Process Certificate)",
+          "cite": "California Secretary of State, official form instructions describing who may file Form 1505",
+          "url": "https://bpd.cdn.sos.ca.gov/corp/pdf/amendments/corp-1505.pdf",
+          "quote": "Who Can File? Any active corporation that is registered with the California Secretary of State can file this Form 1505 to become authorized to be a corporate agent for service of process for other business entities that are registered with the Secretary of State."
+        }
+      ]
+    },
+    {
+      "id": "agentservice_change_after_formation",
+      "title": "How an Entity Changes Its Agent After Formation: A Current Statement of Information, Not a Separate Filing",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-02",
+      "body": "California does not provide a distinct \"change of agent\" filing separate from the Statement of Information system. For a corporation, the statute is explicit: in order to change its agent for service of process, or the address of its existing agent, the corporation must file a current statement containing all of the information the Statement of Information statute otherwise requires -- the same filing used for periodic reporting, not a different form. The California Revised Uniform Limited Liability Company Act imposes the identical mechanism on an LLC, in mandatory terms: when changing its agent for service of process, or when the agent's address changes, the LLC must file a current statement containing all of the information its own Statement of Information statute requires. Unlike the ordinary periodic filing, which follows the entity's assigned filing period, an agent change is not deferred to that period -- the current statement reflecting the new agent may be, and for the entity's own updated public record must eventually be, filed once the change occurs. The Secretary of State's own published guidance directs entities to the same mechanism: a California stock corporation files its Statement of Information, and a California LLC files its own Statement of Information, to reflect a changed agent for service of process.",
+      "gap": "This is one state's mechanism, not a claim about what any other state requires. The corporation-specific and LLC-specific statutory quotes below come from two independently enacted sections, Cal. Corp. Code section 1502(e) and Cal. Corp. Code section 17702.09(d), and are treated as two independent statutory sources, not subsections of one section. The Secretary of State FAQ quote is a third, independent-of-statute source (agency guidance rather than statutory text), though it is drawn from the same FAQ page already cited elsewhere in this document for a different question, and is not independent of those other FAQ citations. This finding corrects a plausible but incorrect assumption: an entity does not change its agent by amending its original articles of incorporation or articles of organization. This project's Certificate of Amendment document already establishes, at Cal. Corp. Code section 900(b), that a corporation's articles generally cannot be amended to alter the agent information stated in the original articles, except to correct an error or to delete that information once a Statement of Information has since been filed; that existing clause is not re-quoted here.",
+      "citations": [
+        {
+          "case": "Cal. Corp. Code § 1502(e)",
+          "cite": "California General Corporation Law, filing a current statement to change the agent for service of process",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=1502.",
+          "quote": "Whenever any of the information required by subdivision (a) is changed, the corporation may file a current statement containing all the information required by subdivisions (a) and (b). In order to change its agent for service of process or the address of the agent, the corporation must file a current statement containing all the information required by subdivisions (a) and (b). Whenever any statement is filed pursuant to this section, it supersedes any previously filed statement and the statement in the articles as to the agent for service of process and the address of the agent."
+        },
+        {
+          "case": "Cal. Corp. Code § 17702.09(d)",
+          "cite": "California Revised Uniform Limited Liability Company Act, filing a current statement to change the agent for service of process",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=17702.09.",
+          "quote": "Whenever any of the information required by subdivision (a) changes, other than the name and address of the agent for service of process, the limited liability company or foreign limited liability company may file a current statement containing all the information required by subdivision (a). When changing its agent for service of process or when the address of the agent changes, the limited liability company or foreign limited liability company shall file a current statement containing all the information required by subdivision (a)."
+        },
+        {
+          "case": "Cal. Sec'y of State, Business Entities FAQ — Agent for Service of Process",
+          "cite": "California Secretary of State, published guidance on changing an entity's agent for service of process",
+          "url": "https://www.sos.ca.gov/business-programs/business-entities/faqs",
+          "quote": "A business registered with the California Secretary of State may change its address(es) by submitting the appropriate document: California Stock Corporation and Out-of-State Corporation: File online at bizfileOnline.sos.ca.gov the Statement of Information – CA and Out-of-State Corporation."
+        }
+      ]
+    },
+    {
+      "id": "agentservice_agent_resignation",
+      "title": "The Agent's Own Resignation — a Filing the Agent, Not the Entity, Makes",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-02",
+      "body": "Separate from an entity's own act of changing its designated agent by filing a current Statement of Information, California law gives the agent itself an independent, agent-initiated way to end its own service in that role. An agent designated for a corporation's service of process may deliver to the Secretary of State a signed and acknowledged statement of resignation, on a form the Secretary of State prescribes, stating the corporation's name and Secretary of State file number, the resigning agent's name, and that the agent is resigning; once filed, the agent's authority to act in that capacity ceases, and the Secretary of State provides written notice of the resignation to the corporation at its principal office. California's LLC statute gives an LLC's agent the same independent power, through nearly identical language: the agent delivers its own signed and acknowledged statement of resignation to the Secretary of State, the agent's authority ceases upon that filing, and the Secretary of State notifies the LLC's principal office. In both cases, this resignation filing ends the resigning party's own status as agent; it does not itself name a replacement agent for the entity.",
+      "gap": "This is one state's mechanism, not a claim about what any other state requires. The corporation-specific and LLC-specific statutory quotes below come from two independently enacted sections, Cal. Corp. Code section 1503(a) and Cal. Corp. Code section 17701.15(a), and are treated as two independent statutory sources, not subsections of one section, though the Legislature drafted their operative language in closely parallel terms. This is the one genuinely separate statutory filing this document identifies: unlike the entity's own change-of-agent filing (a current Statement of Information, described in a separate clause of this document), a resignation under these sections is filed by the agent itself, on its own initiative, using a distinct Secretary of State form for that purpose.",
+      "citations": [
+        {
+          "case": "Cal. Corp. Code § 1503(a)",
+          "cite": "California General Corporation Law, an agent's own resignation as agent for service of process",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=1503.",
+          "quote": "An agent designated for service of process pursuant to Section 202, 1502, 2105, or 2117 may deliver to the Secretary of State, on a form prescribed by the Secretary of State for filing, a signed and acknowledged written statement of resignation as an agent for service of process. The form shall contain the name of the corporation, the Secretary of State’s file number of the corporation, the name of the resigning agent for service of process, and a statement that the agent is resigning. Thereupon the authority of the agent to act in such capacity shall cease and the Secretary of State forthwith shall mail or otherwise provide written notice of the filing of the statement of resignation to the corporation at its principal office."
+        },
+        {
+          "case": "Cal. Corp. Code § 17701.15(a)",
+          "cite": "California Revised Uniform Limited Liability Company Act, an agent's own resignation as agent for service of process",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=17701.15.",
+          "quote": "To resign as an agent for service of process of a limited liability company or foreign limited liability company, the agent shall deliver to the Secretary of State for filing, on a form prescribed by the Secretary of State for filing, a signed and acknowledged statement of resignation as an agent for service of process containing the name of the limited liability company or foreign limited liability company, the Secretary of State’s file number for the limited liability company or foreign limited liability company, the name of the resigning agent for service of process, and a statement that the agent is resigning."
+        }
+      ]
+    },
+    {
+      "id": "agentservice_consequences_no_valid_agent",
+      "title": "Consequences When No Valid Agent Can Be Found",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-02",
+      "body": "California's LLC statute lists the specific events that trigger a duty to promptly update an LLC's agent designation: if an individual designated as agent dies, resigns, or no longer resides in the state, or if a corporate agent resigns, dissolves, withdraws from the state, forfeits its right to transact intrastate business, has its corporate rights, powers, or privileges suspended, or ceases to exist, the LLC must promptly file an initial or amended Statement of Information reflecting the change. Beyond that filing duty, both a corporation and an LLC face a separate, litigation-facing consequence when service cannot actually be accomplished on a designated agent: if the agent has resigned and not been replaced, or cannot with reasonable diligence be found at its listed address, a court may order that service instead be made by delivering process to the Secretary of State, with service deemed complete on the tenth day after that delivery. For a corporation specifically, this same substituted-service mechanism is also available if no agent has been designated for it at all.",
+      "gap": "This is one state's rule, not a claim about what any other state requires. The two statutory quotes below come from two independently enacted sections, one for each entity type: Cal. Corp. Code section 17701.15(e) and Cal. Corp. Code section 1702(a); they are treated as independent sources, not subsections of one section. This project's existing LLC Articles of Organization document already quotes the LLC's own parallel substituted-service provision, Cal. Corp. Code section 17701.16(c), and that quote is not repeated here to avoid duplicating an already-verified citation. This clause instead supplies two pieces of previously unresearched material: the LLC statute's specific list of triggering events at section 17701.15(e) (a different subsection of a different section than 17701.16, addressing when the duty to update arises rather than how substituted service works), and the corporation's own substituted-service statute, section 1702(a), which had not previously been cited anywhere in this project's corpus.",
+      "citations": [
+        {
+          "case": "Cal. Corp. Code § 17701.15(e)",
+          "cite": "California Revised Uniform Limited Liability Company Act, duty to update the Statement of Information when an agent can no longer serve",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=17701.15.",
+          "quote": "If an individual who has been designated agent for service of process dies or resigns or no longer resides in the state, or if the corporate agent for that purpose resigns, dissolves, withdraws from the state, forfeits its right to transact intrastate business in this state, has its corporate rights, powers, and privileges suspended, or ceases to exist, the limited liability company or foreign limited liability company shall promptly file an initial or amended statement of information as set forth in Section 17702.09."
+        },
+        {
+          "case": "Cal. Corp. Code § 1702(a)",
+          "cite": "California General Corporation Law, service on the Secretary of State when a corporation's agent cannot be found or none has been designated",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=1702.",
+          "quote": "If an agent for the purpose of service of process has resigned and has not been replaced or if the agent designated cannot with reasonable diligence be found at the address designated for personally delivering the process, or if no agent has been designated, and it is shown by affidavit to the satisfaction of the court that process against a domestic corporation cannot be served with reasonable diligence upon the designated agent by hand in the manner provided in Section 415.10, subdivision (a) of Section 415.20 or subdivision (a) of Section 415.30 of the Code of Civil Procedure or upon the corporation in the manner provided in subdivision (a), (b), or (c) of Section 416.10 or subdivision (a) of Section 416.20 of the Code of Civil Procedure, the court may make an order that the service be made upon the corporation by delivering by hand to the Secretary of State, or to any person employed in the Secretary of State’s office in the capacity of assistant or deputy, one copy of the process for each defendant to be served, together with a copy of the order authorizing such service. Service in this manner is deemed complete on the 10th day after delivery of the process to the Secretary of State."
+        }
+      ]
+    },
+    {
+      "id": "agentservice_change_of_agent_declaration",
+      "title": "Change of Agent for Service of Process — Declaration",
+      "kind": "drafting",
+      "body": "{{companyName}}, a California {{entityType}}, is changing its agent for service of process on file with the California Secretary of State. {{companyName}}'s prior agent for service of process was {{priorAgentName}}. {{companyName}}'s new agent for service of process is {{newAgentName}}. {{newAgentName}}'s California street address is {{newAgentAddress}} (omitted if {{newAgentName}} is a registered corporate agent). This declaration organizes the information needed to complete {{companyName}}'s current Statement of Information reflecting this change. It is not itself the Secretary of State's official statement form, which must be completed and filed in the format the Secretary of State prescribes, and it does not itself effect the change until that filing is accepted."
+    },
+    {
+      "id": "agentservice_closing_signature",
+      "title": "Closing and Signature Block — Agent for Service of Process Information Sheet",
+      "kind": "drafting",
+      "body": "This information sheet regarding {{companyName}}'s agent for service of process was prepared by {{authorizedSignerName}}.\n\nExecuted on {{dateSigned}} at {{cityState}}.\n\nSignature of {{authorizedSignerName}}: ☐ _________________________\n\n[This information sheet describes California's statutory rules governing who is eligible to serve as an agent for service of process, the certificate that qualifies a corporation to serve as a registered corporate agent, and the separate statutory mechanisms for an agent's own resignation and for an entity's own change of its designated agent after formation. It is not the Secretary of State's official Statement of Information form or Form 1505 certificate, does not itself change {{companyName}}'s agent for service of process on file with the Secretary of State, and does not constitute legal advice. The current official forms and instructions are published by the California Secretary of State.]"
     }
   ]
 }

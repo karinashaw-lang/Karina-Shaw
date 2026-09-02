@@ -11639,5 +11639,72 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "agent_for_service_of_process_info_sheet",
+    "title": "Agent for Service of Process — Duties and Change of Agent Information Sheet",
+    "description": "Explains who is eligible to serve as a California agent for service of process (a resident individual or a registered corporate agent under Corp. Code section 1505), the certificate a corporation must file to become a registered corporate agent, the separate statutory mechanisms for an entity to change its own agent after formation (a current Statement of Information, not a distinct filing) and for an agent to resign on its own initiative, and the consequences when no valid agent can be found. Distinct from this corpus's existing formation documents, which cover only the initial agent designation.",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "agentservice_change_of_agent_declaration",
+      "agentservice_eligibility",
+      "agentservice_corporate_agent_certificate",
+      "agentservice_change_after_formation",
+      "agentservice_agent_resignation",
+      "agentservice_consequences_no_valid_agent",
+      "agentservice_closing_signature"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company/entity name",
+        "placeholder": "Acme Innovations LLC",
+        "required": true
+      },
+      {
+        "id": "entityType",
+        "label": "Entity type",
+        "placeholder": "Limited liability company",
+        "required": true
+      },
+      {
+        "id": "priorAgentName",
+        "label": "Prior agent's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "newAgentName",
+        "label": "New agent's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "newAgentAddress",
+        "label": "New agent's California street address",
+        "placeholder": "123 Main St., Sacramento, CA 95814",
+        "required": false
+      },
+      {
+        "id": "authorizedSignerName",
+        "label": "Name of person preparing this information sheet",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 2, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, state",
+        "placeholder": "Sacramento, California",
+        "required": true
+      }
+    ]
   }
 ]
