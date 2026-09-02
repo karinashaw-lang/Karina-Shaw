@@ -8703,5 +8703,55 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "payable_on_death_account_info_sheet",
+    "title": "Payable-on-Death (POD) Account Designation — Information Sheet",
+    "description": "Explains California's Multiple-Party Accounts Law governing payable-on-death account designations: what a P.O.D. account is (and how it statutorily differs from a Totten trust account), how the designation is created, the account holder's rights during their lifetime, the automatic, no-probate transfer at death, multiple-beneficiary and survivorship defaults, and revocability, community property, and the honest gap on creditor exposure after death.",
+    "categories": [
+      "Estate Planning"
+    ],
+    "clauseOrder": [
+      "podaccount_declaration",
+      "podaccount_definition",
+      "podaccount_creation",
+      "podaccount_lifetime_rights",
+      "podaccount_death_transfer",
+      "podaccount_multiple_beneficiaries",
+      "podaccount_revocability_creditors",
+      "podaccount_signature_acknowledgment"
+    ],
+    "fields": [
+      {
+        "id": "accountHolderName",
+        "label": "Account holder's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "financialInstitutionName",
+        "label": "Financial institution's name",
+        "placeholder": "Acme Bank",
+        "required": true
+      },
+      {
+        "id": "accountDescription",
+        "label": "Description of the account",
+        "placeholder": "checking account ending in 4321",
+        "required": true
+      },
+      {
+        "id": "beneficiaryName",
+        "label": "P.O.D. beneficiary's name",
+        "placeholder": "Taylor Morgan",
+        "required": true
+      },
+      {
+        "id": "additionalBeneficiaryName",
+        "label": "Additional P.O.D. beneficiary's name (optional)",
+        "placeholder": "Casey Rivera",
+        "required": false
+      }
+    ]
   }
 ]
