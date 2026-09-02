@@ -11270,5 +11270,36 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "kin_care_info_sheet",
+    "title": "Kin Care — Using Sick Leave to Care for a Family Member Information Sheet",
+    "description": "Explains California's \"kin care\" law (Lab. Code §233): the core right requiring an employer to permit at least six months' worth of accrued sick leave to be used for a family member's illness or other §246.5(a) reason, the cross-reference to the Paid Sick Leave family-member definition, how kin care functions as a usage floor on existing accrued sick leave rather than a separate accrual right (and does not apply to uncapped PTO-for-illness policies, per McCarther v. Pacific Telesis Group), the §234 prohibition on counting kin care leave against a no-fault attendance policy, and enforcement/remedies.",
+    "categories": [
+      "During employment"
+    ],
+    "clauseOrder": [
+      "kincare_leave_request_declaration",
+      "kincare_core_right_and_calculation",
+      "kincare_family_member_cross_reference",
+      "kincare_relationship_to_paid_sick_leave_act",
+      "kincare_no_fault_absence_control_prohibition",
+      "kincare_enforcement_and_remedies",
+      "kincare_acknowledgment"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      }
+    ]
   }
 ]
