@@ -12323,5 +12323,60 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "california_art_preservation_act_info_sheet",
+    "title": "California Art Preservation Act — Moral Rights for Fine Art Information Sheet",
+    "description": "Explains California Civil Code section 987, California's own moral-rights statute protecting a visual artist's work of fine art (a narrowly defined category: original paintings, sculptures, drawings, or original glass artwork of recognized quality) against intentional physical defacement, mutilation, alteration, or destruction, and the artist's separate right to claim or disclaim authorship. Covers the remedies and time limit to sue, the special procedure for a work that has become part of a building, and the duration and waiver rules. The statute is silent on its relationship to the federal Visual Artists Rights Act (VARA), and this document does not characterize that relationship.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "artpreservation_declaration_and_purpose",
+      "artpreservation_core_prohibition_and_fine_art_definition",
+      "artpreservation_authorship_attribution_right",
+      "artpreservation_remedies_and_time_limit",
+      "artpreservation_building_removal_procedure",
+      "artpreservation_duration_and_waiver",
+      "artpreservation_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "workDescription",
+        "label": "Description of the work",
+        "placeholder": "Describe the work",
+        "required": true
+      },
+      {
+        "id": "workTitle",
+        "label": "Title of the work",
+        "placeholder": "Untitled No. 4",
+        "required": true
+      },
+      {
+        "id": "artistName",
+        "label": "Artist's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "ownerName",
+        "label": "Work's current owner or possessor",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 2, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, state",
+        "placeholder": "San Francisco, California",
+        "required": true
+      }
+    ]
   }
 ]
