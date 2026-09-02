@@ -8951,5 +8951,67 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "model_publicity_release_info_sheet",
+    "title": "Model/Publicity Release — Information Sheet",
+    "description": "Companion document to the Right of Publicity Demand Letter, covering consent to the use of a person's name, image, likeness, or voice: the statutory consent element under Civil Code section 3344(a) (which has no written-form requirement in its text), the limits on the scope of consent under general contract-interpretation rules, revocability, a minor's capacity to sign, how a lifetime consent interacts with the separate posthumous right under section 3344.1, and consideration under general California contract law.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "modelrelease_declaration",
+      "modelrelease_consent_element",
+      "modelrelease_scope_of_consent",
+      "modelrelease_revocability",
+      "modelrelease_minor_capacity",
+      "modelrelease_posthumous_interaction",
+      "modelrelease_consideration",
+      "modelrelease_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "personName",
+        "label": "Name of the person granting consent",
+        "placeholder": "Taylor Morgan",
+        "required": true
+      },
+      {
+        "id": "identityDescription",
+        "label": "Description of the identity used (name, likeness, voice, signature, etc.)",
+        "placeholder": "photograph and name",
+        "required": true
+      },
+      {
+        "id": "granteeName",
+        "label": "Name of the person or company receiving consent",
+        "placeholder": "Acme Media LLC",
+        "required": true
+      },
+      {
+        "id": "useDescription",
+        "label": "Description of the specific use(s) consented to",
+        "placeholder": "use in a 2026 social media advertising campaign",
+        "required": true
+      },
+      {
+        "id": "compensationDescription",
+        "label": "Description of compensation, if any",
+        "placeholder": "$500 flat fee",
+        "required": false
+      },
+      {
+        "id": "parentGuardianName",
+        "label": "Parent or legal guardian's name (if the person is a minor)",
+        "placeholder": "Jordan Alex Lee",
+        "required": false
+      },
+      {
+        "id": "signatureDate",
+        "label": "Date signed",
+        "placeholder": "October 15, 2026",
+        "required": true
+      }
+    ]
   }
 ]
