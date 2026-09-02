@@ -8292,5 +8292,56 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "certificate_of_amendment_info_sheet",
+    "title": "Certificate of Amendment to Articles of Incorporation — Information Sheet",
+    "description": "Explains California's statutory process for a corporation to amend its articles of incorporation after formation: the general power to amend, board and shareholder approval requirements, the different pre-issuance amendment process, required certificate content, amendments requiring a separate class vote, when an amendment becomes effective, and restated articles as an alternative to a standalone amendment.",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "certamend_declaration",
+      "certamend_general_power",
+      "certamend_board_shareholder_approval",
+      "certamend_preissuance_amendment",
+      "certamend_required_content",
+      "certamend_class_vote_trigger",
+      "certamend_effective_date",
+      "certamend_restated_articles",
+      "certamend_signature"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Corporation's current name",
+        "placeholder": "Acme Corp",
+        "required": true
+      },
+      {
+        "id": "formerCompanyName",
+        "label": "Former name (if the amendment changes the name)",
+        "placeholder": "Acme Inc.",
+        "required": false
+      },
+      {
+        "id": "amendedArticleText",
+        "label": "Text of the article(s) as amended",
+        "placeholder": "ARTICLE I: The name of the corporation is Acme Corp.",
+        "required": true
+      },
+      {
+        "id": "officerName",
+        "label": "Officer's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "officerTitle",
+        "label": "Officer's title",
+        "placeholder": "President",
+        "required": true
+      }
+    ]
   }
 ]
