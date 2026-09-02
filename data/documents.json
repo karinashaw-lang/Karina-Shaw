@@ -4484,5 +4484,61 @@
     "categories": [
       "Family Law"
     ]
+  },
+  {
+    "id": "nonprofit_articles_of_incorporation",
+    "title": "Nonprofit Public Benefit Corporation Articles of Incorporation",
+    "description": "The formation filing for a California nonprofit public benefit corporation under the state's separate Nonprofit Corporation Law -- distinct from this project's for-profit Articles of Incorporation, with its own required purpose statement, naming rules, and statutory prohibition on distributions, plus an honest, load-bearing distinction between what California's own statute requires and what a separate federal 501(c)(3) tax-exemption layer additionally requires.",
+    "clauseOrder": [
+      "nonprofit_purpose_declaration",
+      "nonprofit_required_content",
+      "nonprofit_purpose_state_vs_federal",
+      "nonprofit_dissolution_state_vs_federal",
+      "nonprofit_no_distributions",
+      "nonprofit_name_requirements",
+      "nonprofit_agent_designation",
+      "nonprofit_incorporator_signature"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Nonprofit corporation name",
+        "placeholder": "Acme Community Fund",
+        "required": true
+      },
+      {
+        "id": "nonprofitPurpose",
+        "label": "Statement of purposes",
+        "placeholder": "providing after-school educational programs to underserved youth",
+        "required": true
+      },
+      {
+        "id": "principalOfficeAddress",
+        "label": "Principal office address",
+        "placeholder": "500 Market St, San Francisco, CA 94105",
+        "required": true
+      },
+      {
+        "id": "agentName",
+        "label": "Agent for service of process name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "agentAddress",
+        "label": "Agent's California street address",
+        "placeholder": "500 Market St, San Francisco, CA 94105",
+        "required": true
+      },
+      {
+        "id": "incorporatorName",
+        "label": "Incorporator name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      }
+    ],
+    "categories": [
+      "Business Formation"
+    ]
   }
 ]
