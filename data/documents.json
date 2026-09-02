@@ -12853,5 +12853,73 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "california_pay_data_reporting_info_sheet",
+    "title": "California Pay Data Reporting — Information Sheet",
+    "description": "Information about California's annual pay data reporting law, Government Code section 12999 — which private employers must file, what the report and the separate labor-contractor report must contain, an already-enacted 2027 job-category change, and penalties for failing to file.",
+    "categories": [
+      "Hiring"
+    ],
+    "clauseOrder": [
+      "paydatareport_purpose_and_self_assessment",
+      "paydatareport_threshold_and_deadline",
+      "paydatareport_labor_contractor_report",
+      "paydatareport_report_contents",
+      "paydatareport_upcoming_job_category_change",
+      "paydatareport_penalties_enforcement",
+      "paydatareport_confidentiality_recordkeeping_and_definitions",
+      "paydatareport_certification_signature"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeCount",
+        "label": "Approximate total employee count",
+        "placeholder": "150",
+        "required": true
+      },
+      {
+        "id": "reportingYear",
+        "label": "Reporting Year addressed",
+        "placeholder": "2026",
+        "required": true
+      },
+      {
+        "id": "laborContractorUseDescription",
+        "label": "Use of labor contractors, if any",
+        "placeholder": "We use a staffing agency to supply approximately 20 warehouse workers",
+        "required": true
+      },
+      {
+        "id": "authorizedSignerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "authorizedSignerTitle",
+        "label": "Authorized signer's title",
+        "placeholder": "HR Director",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
