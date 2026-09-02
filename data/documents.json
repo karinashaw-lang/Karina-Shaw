@@ -5140,5 +5140,85 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "easement_agreement",
+    "title": "Easement Agreement",
+    "description": "A grant of a limited right to use another's land for a stated purpose (right of way, utility access, and similar uses), distinct from a full transfer of title. Covers the statutory basis for easements (Civ. Code §§ 801-802), the extent-of-grant rule, interpretation, recording and constructive notice, and how an appurtenant easement passes automatically on transfer of the benefited property.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "easement_grant_purpose_scope",
+      "easement_statutory_servitudes_basis",
+      "easement_extent_of_grant",
+      "easement_interpretation_and_reservation",
+      "easement_maintenance_and_duration",
+      "easement_recording_constructive_notice",
+      "easement_runs_with_land_on_transfer",
+      "easement_signature_notarization"
+    ],
+    "fields": [
+      {
+        "id": "grantorName",
+        "label": "Grantor's name (servient property owner)",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "granteeName",
+        "label": "Grantee's name (easement holder)",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "servientPropertyAddress",
+        "label": "Servient property address",
+        "placeholder": "123 Main St., Sacramento, CA 95814",
+        "required": true
+      },
+      {
+        "id": "servientLegalDescription",
+        "label": "Servient property legal description",
+        "placeholder": "Lot 5, Block 2, Tract No. 1234, per map recorded in Book 45, Page 12 of Maps, Sacramento County",
+        "required": true
+      },
+      {
+        "id": "dominantPropertyAddress",
+        "label": "Dominant property address",
+        "placeholder": "125 Main St., Sacramento, CA 95814",
+        "required": true
+      },
+      {
+        "id": "dominantLegalDescription",
+        "label": "Dominant property legal description",
+        "placeholder": "Lot 6, Block 2, Tract No. 1234, per map recorded in Book 45, Page 12 of Maps, Sacramento County",
+        "required": true
+      },
+      {
+        "id": "easementPurpose",
+        "label": "Purpose of the easement",
+        "placeholder": "vehicular and pedestrian ingress and egress",
+        "required": true
+      },
+      {
+        "id": "easementLocationDescription",
+        "label": "Location of easement area",
+        "placeholder": "The westerly 12 feet of the Servient Property, running from the public street to the rear property line",
+        "required": true
+      },
+      {
+        "id": "easementDuration",
+        "label": "Duration of the easement",
+        "placeholder": "perpetual and shall run with the land",
+        "required": true
+      },
+      {
+        "id": "maintenanceResponsibility",
+        "label": "Maintenance responsibility",
+        "placeholder": "Grantee shall maintain the easement area in good condition at Grantee's sole expense",
+        "required": true
+      }
+    ]
   }
 ]
