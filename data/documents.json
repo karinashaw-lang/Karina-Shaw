@@ -8543,5 +8543,97 @@
         "required": false
       }
     ]
+  },
+  {
+    "id": "wage_garnishment_info_sheet",
+    "title": "Wage Garnishment (Earnings Withholding Order) — Information Sheet",
+    "description": "Explains California's Wage Garnishment Law: how an employer becomes obligated to withhold under a served earnings withholding order, the general lesser-of withholding formula, the different and higher cap for a withholding order for support, when withholding must begin and when withheld amounts must be remitted, anti-retaliation protection against discharge based on garnishment, and employer liability to the judgment creditor for noncompliance.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "wagegarnish_processing_declaration",
+      "wagegarnish_framework",
+      "wagegarnish_withholding_limits",
+      "wagegarnish_support_priority",
+      "wagegarnish_employer_duties_timing",
+      "wagegarnish_antiretaliation",
+      "wagegarnish_employer_liability",
+      "wagegarnish_signature_certification"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Employer name",
+        "placeholder": "Acme Corp",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee/judgment debtor name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "judgmentCreditorName",
+        "label": "Judgment creditor's name",
+        "placeholder": "Acme Collections LLC",
+        "required": true
+      },
+      {
+        "id": "courtCaseNumber",
+        "label": "Court case number",
+        "placeholder": "CGC-26-123456",
+        "required": true
+      },
+      {
+        "id": "levyingOfficerName",
+        "label": "Levying officer's name",
+        "placeholder": "San Francisco County Sheriff",
+        "required": true
+      },
+      {
+        "id": "orderServiceDate",
+        "label": "Date the order was served on the employer",
+        "placeholder": "October 1, 2026",
+        "required": true
+      },
+      {
+        "id": "disposableEarningsAmount",
+        "label": "Disposable earnings for the pay period",
+        "placeholder": "$1,200",
+        "required": true
+      },
+      {
+        "id": "payPeriodType",
+        "label": "Pay period type",
+        "placeholder": "weekly",
+        "required": true
+      },
+      {
+        "id": "applicableMinimumWage",
+        "label": "Applicable minimum hourly wage",
+        "placeholder": "$16.50",
+        "required": true
+      },
+      {
+        "id": "amountOwed",
+        "label": "Amount owed under the judgment",
+        "placeholder": "$5,000",
+        "required": true
+      },
+      {
+        "id": "employerRepresentativeName",
+        "label": "Employer representative's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "signatureDate",
+        "label": "Date signed",
+        "placeholder": "October 1, 2026",
+        "required": true
+      }
+    ]
   }
 ]
