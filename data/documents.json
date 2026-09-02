@@ -7388,5 +7388,63 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "right_of_publicity_info_sheet",
+    "title": "Right of Publicity Demand Letter Information Sheet",
+    "description": "Explains California's statutory right of publicity for living persons (Civ. Code § 3344) and for deceased personalities (Civ. Code § 3344.1) — the knowing-use standard, statutory damages and remedies, the 2025 injunction amendment, statutory exceptions, the posthumous right's duration and registration requirement, and the 2024 digital-replica provision — and generates a demand letter describing the identity and conduct at issue.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "publicity_intro",
+      "publicity_description",
+      "publicity_statutory_standard",
+      "publicity_statutory_injunctive_relief",
+      "publicity_statutory_exceptions",
+      "publicity_posthumous_standard",
+      "publicity_posthumous_duration_standing_registration",
+      "publicity_posthumous_entertainment_exemption",
+      "publicity_posthumous_digital_replica",
+      "publicity_demand_and_signature"
+    ],
+    "fields": [
+      {
+        "id": "preparerName",
+        "label": "Your name (or your organization's name)",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "recipientName",
+        "label": "Recipient's name",
+        "placeholder": "Acme Media LLC",
+        "required": true
+      },
+      {
+        "id": "personName",
+        "label": "Name of the person whose identity is at issue",
+        "placeholder": "Taylor Morgan",
+        "required": true
+      },
+      {
+        "id": "identityDescription",
+        "label": "Description of the identity used (name, likeness, voice, signature, etc.)",
+        "placeholder": "photograph and name",
+        "required": true
+      },
+      {
+        "id": "allegedUseDescription",
+        "label": "Description of the alleged use",
+        "placeholder": "used in a paid social media advertisement without consent",
+        "required": true
+      },
+      {
+        "id": "demandDate",
+        "label": "Response deadline date",
+        "placeholder": "October 15, 2026",
+        "required": true
+      }
+    ]
   }
 ]
