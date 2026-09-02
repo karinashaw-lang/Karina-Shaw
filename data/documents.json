@@ -8412,5 +8412,83 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "boundary_line_agreement_info_sheet",
+    "title": "Boundary Line Agreement — Information Sheet",
+    "description": "Explains California's agreed-boundary doctrine, the common-law rule allowing adjoining landowners to fix an uncertain property boundary line: its elements, the distinction from adverse possession, the absence of a boundary-specific recording statute (and the general recording rules that apply instead), and legal-description sufficiency for recording and notice to later purchasers.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "boundaryline_declaration",
+      "boundaryline_doctrine_and_elements",
+      "boundaryline_vs_adverse_possession",
+      "boundaryline_no_specific_recording_statute",
+      "boundaryline_legal_description_requirement",
+      "boundaryline_signature_acknowledgment"
+    ],
+    "fields": [
+      {
+        "id": "party1Name",
+        "label": "First adjoining owner's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "party1PropertyAddress",
+        "label": "First owner's property address",
+        "placeholder": "500 Market St, San Francisco, CA 94105",
+        "required": true
+      },
+      {
+        "id": "party1ParcelNumber",
+        "label": "First owner's assessor's parcel number",
+        "placeholder": "123-456-789",
+        "required": false
+      },
+      {
+        "id": "party1LegalDescription",
+        "label": "First owner's legal description",
+        "placeholder": "Lot 5, Block 12, per map recorded in Book 40, Page 15, San Francisco County Records",
+        "required": false
+      },
+      {
+        "id": "party2Name",
+        "label": "Second adjoining owner's name",
+        "placeholder": "Taylor Morgan",
+        "required": true
+      },
+      {
+        "id": "party2PropertyAddress",
+        "label": "Second owner's property address",
+        "placeholder": "502 Market St, San Francisco, CA 94105",
+        "required": true
+      },
+      {
+        "id": "party2ParcelNumber",
+        "label": "Second owner's assessor's parcel number",
+        "placeholder": "123-456-790",
+        "required": false
+      },
+      {
+        "id": "party2LegalDescription",
+        "label": "Second owner's legal description",
+        "placeholder": "Lot 6, Block 12, per map recorded in Book 40, Page 15, San Francisco County Records",
+        "required": false
+      },
+      {
+        "id": "agreedBoundaryDescription",
+        "label": "Description of the agreed boundary line",
+        "placeholder": "the existing fence line running north-south between the two parcels",
+        "required": true
+      },
+      {
+        "id": "recordingCounty",
+        "label": "County for recording",
+        "placeholder": "San Francisco County",
+        "required": true
+      }
+    ]
   }
 ]
