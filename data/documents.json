@@ -4897,5 +4897,67 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "dissolution_petition_info_sheet",
+    "title": "Petition for Dissolution of Marriage (Divorce) — Information Sheet",
+    "description": "An informational sheet describing California's statutory dissolution-of-marriage process — residency requirements, the two no-fault grounds, the mandatory six-month waiting period, and the community-property default absent a settlement agreement. Does not itself dissolve a marriage; only a court judgment does that.",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "dissolution_declaration",
+      "dissolution_scope_three_proceedings",
+      "dissolution_grounds_no_fault",
+      "dissolution_residency_requirement",
+      "dissolution_waiting_period",
+      "dissolution_property_division_default",
+      "dissolution_petition_commencement_and_contents",
+      "dissolution_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "party1Name",
+        "label": "First spouse's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "party2Name",
+        "label": "Second spouse's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "marriageDate",
+        "label": "Date of marriage",
+        "placeholder": "June 12, 2015",
+        "required": true
+      },
+      {
+        "id": "separationDate",
+        "label": "Date of separation",
+        "placeholder": "March 1, 2026",
+        "required": true
+      },
+      {
+        "id": "countyOfFiling",
+        "label": "County of filing",
+        "placeholder": "Sacramento County",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, state",
+        "placeholder": "Sacramento, California",
+        "required": true
+      }
+    ]
   }
 ]
