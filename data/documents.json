@@ -8098,5 +8098,60 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "unemployment_insurance_appeal_info_sheet",
+    "title": "Unemployment Insurance Appeal — Information Sheet",
+    "description": "Explains the process for appealing an EDD determination on an unemployment insurance claim: the right to appeal to an administrative law judge and the 30-day deadline, how the hearing works, further appeal to the California Unemployment Insurance Appeals Board, judicial review and its six-month deadline, and whether benefits continue while an appeal is pending.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "uiappeal_declaration",
+      "uiappeal_right_and_deadline",
+      "uiappeal_hearing_process",
+      "uiappeal_further_appeal_to_board",
+      "uiappeal_judicial_review",
+      "uiappeal_continued_benefits",
+      "uiappeal_certification"
+    ],
+    "fields": [
+      {
+        "id": "appealingParty",
+        "label": "Party filing the appeal",
+        "placeholder": "Jordan Alex Lee (claimant)",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee/claimant name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Employer name",
+        "placeholder": "Acme Corp",
+        "required": true
+      },
+      {
+        "id": "eddCaseNumber",
+        "label": "EDD case/claim number",
+        "placeholder": "SDI-1234567890",
+        "required": true
+      },
+      {
+        "id": "determinationDate",
+        "label": "Date of the EDD determination",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "groundsForAppeal",
+        "label": "Grounds for the appeal",
+        "placeholder": "the determination misapplied the reason for separation from employment",
+        "required": true
+      }
+    ]
   }
 ]
