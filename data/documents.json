@@ -3948,5 +3948,42 @@
     "categories": [
       "Real Estate"
     ]
+  },
+  {
+    "id": "trademark_license",
+    "title": "Trademark License Agreement",
+    "description": "A trademark owner's license permitting another party to use a mark -- built on the Lanham Act's related-company inurement rule and the real risk of \"naked licensing\": a license granted without real quality control can result in the trademark being deemed abandoned, exposing the registration to cancellation at any time.",
+    "clauseOrder": [
+      "tmlicense_grant",
+      "tmlicense_what_is_a_trademark",
+      "tmlicense_related_company_inurement",
+      "tmlicense_quality_control",
+      "tmlicense_naked_licensing_abandonment",
+      "tmlicense_cancellation_ground",
+      "tmlicense_no_statutory_writing_requirement"
+    ],
+    "fields": [
+      {
+        "id": "licensorName",
+        "label": "Licensor's name (mark owner)",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "licenseeName",
+        "label": "Licensee's name",
+        "placeholder": "Beta Distributors, LLC",
+        "required": true
+      },
+      {
+        "id": "trademarkDescription",
+        "label": "Description of the trademark",
+        "placeholder": "The word mark \"ACME\" and associated logo, U.S. Reg. No. 1,234,567",
+        "required": true
+      }
+    ],
+    "categories": [
+      "Confidentiality & IP"
+    ]
   }
 ]
