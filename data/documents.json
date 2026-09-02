@@ -12269,5 +12269,59 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "alter_ego_piercing_corporate_veil_info_sheet",
+    "title": "Piercing the Corporate Veil / Alter Ego Liability — Information Sheet",
+    "description": "Explains California's common-law alter ego doctrine, under which a court may disregard a corporation's or LLC's separate legal existence and hold an owner personally liable for the entity's debts: the two-part test (unity of interest and an inequitable result), the non-exhaustive factors courts weigh under a totality-of-circumstances standard, the statute extending the doctrine to LLC members on the same terms as corporate shareholders, and the doctrine's equitable nature (imposing liability without dissolving the entity).",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "alterego_declaration",
+      "alterego_two_part_test",
+      "alterego_factors_totality",
+      "alterego_llc_parity",
+      "alterego_equitable_nature",
+      "alterego_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company/entity name",
+        "placeholder": "Acme Innovations, Inc.",
+        "required": true
+      },
+      {
+        "id": "entityType",
+        "label": "Entity type",
+        "placeholder": "California corporation",
+        "required": true
+      },
+      {
+        "id": "stateOfFormation",
+        "label": "State of formation",
+        "placeholder": "California",
+        "required": true
+      },
+      {
+        "id": "authorizedSignerName",
+        "label": "Name of person preparing this information sheet",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 2, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, state",
+        "placeholder": "Sacramento, California",
+        "required": true
+      }
+    ]
   }
 ]
