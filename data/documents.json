@@ -13037,5 +13037,61 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "atros_info_sheet",
+    "title": "Automatic Temporary Restraining Orders (ATROS) — Information Sheet",
+    "description": "Information about the automatic temporary restraining orders that Family Code § 2040 requires be included in the summons for a dissolution, nullity, or legal separation proceeding — restraints on property transfers, child removal, insurance changes, and nonprobate transfers, distinct from a discretionary domestic violence restraining order.",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "atros_declaration",
+      "atros_automatic_attachment_and_scope",
+      "atros_effective_dates_duration_and_enforcement",
+      "atros_property_transfer_restraint_and_exceptions",
+      "atros_child_removal_and_passport_restraint",
+      "atros_insurance_and_beneficiary_restraint",
+      "atros_nonprobate_transfer_restraint_and_exceptions",
+      "atros_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "petitionerName",
+        "label": "Petitioner's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "respondentName",
+        "label": "Respondent's name",
+        "placeholder": "Taylor Morgan",
+        "required": true
+      },
+      {
+        "id": "proceedingType",
+        "label": "Type of proceeding",
+        "placeholder": "dissolution of marriage",
+        "required": true
+      },
+      {
+        "id": "countyOfFiling",
+        "label": "County of filing",
+        "placeholder": "Alameda County",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 2, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
