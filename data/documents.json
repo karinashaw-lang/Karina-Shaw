@@ -6387,5 +6387,44 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "data_breach_notification_info_sheet",
+    "title": "Data Breach Notification — Information Sheet",
+    "description": "An information sheet describing California's statutory duty to notify affected individuals after a security breach involving personal information under Civil Code § 1798.82, independent of and predating the CCPA: who must comply and what triggers the duty, the statutory definition of 'personal information' for this purpose, the fixed 30-calendar-day notification deadline and its permitted delay grounds, the required content and format of the notice, the substitute-notice thresholds when individual notice is impractical, the duty to notify the California Attorney General for breaches affecting more than 500 residents, and the civil remedies available under the Customer Records title. Distinct from the existing CCPA Service Provider Data Processing Agreement and Website/App Privacy Policy documents.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "databreach_purpose_and_scope",
+      "databreach_covered_persons_and_breach_definition",
+      "databreach_personal_information_definition",
+      "databreach_timing_requirement",
+      "databreach_required_notice_content",
+      "databreach_substitute_notice",
+      "databreach_ag_notification",
+      "databreach_civil_remedies",
+      "databreach_record_and_signature"
+    ],
+    "fields": [
+      {
+        "id": "businessName",
+        "label": "Business name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "contactMethod",
+        "label": "Contact for questions about this sheet",
+        "placeholder": "privacy@acme.com or (415) 555-0100",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date reviewed",
+        "placeholder": "April 1, 2026",
+        "required": true
+      }
+    ]
   }
 ]
