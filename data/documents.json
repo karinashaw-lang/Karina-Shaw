@@ -10393,5 +10393,61 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "immigration_related_unfair_employment_practices_info_sheet",
+    "title": "Immigration-Related Unfair Employment Practices — Information Sheet",
+    "description": "Explains the federal Immigration and Nationality Act's anti-discrimination provision, 8 U.S.C. §1324b, in depth beyond the corpus's existing I-9 document's brief mention: the three prohibited practices, who qualifies as a \"protected individual,\" \"document abuse\" as a distinct violation from core hiring/discharge discrimination, the charge-filing process with the Special Counsel and its 180-day deadline, available administrative remedies, and the employer-size threshold and its relationship to Title VII.",
+    "categories": [
+      "Hiring"
+    ],
+    "clauseOrder": [
+      "immigdiscrim_declaration",
+      "immigdiscrim_core_prohibited_practices",
+      "immigdiscrim_protected_individual_defined",
+      "immigdiscrim_document_abuse",
+      "immigdiscrim_charge_and_deadline",
+      "immigdiscrim_remedies",
+      "immigdiscrim_employer_size_threshold",
+      "immigdiscrim_signature_certification"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee/applicant name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "allegedPracticeDescription",
+        "label": "Description of the alleged practice",
+        "placeholder": "refusal to accept a facially valid work authorization document",
+        "required": true
+      },
+      {
+        "id": "incidentDate",
+        "label": "Date of the incident",
+        "placeholder": "October 1, 2026",
+        "required": true
+      },
+      {
+        "id": "additionalIncidents",
+        "label": "Additional incidents, if any",
+        "placeholder": "None",
+        "required": false
+      },
+      {
+        "id": "signatureDate",
+        "label": "Signature date",
+        "placeholder": "October 3, 2026",
+        "required": true
+      }
+    ]
   }
 ]
