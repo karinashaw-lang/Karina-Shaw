@@ -4022,5 +4022,73 @@
     "categories": [
       "Ending employment"
     ]
+  },
+  {
+    "id": "grandparent_visitation_petition",
+    "title": "Grandparent Visitation (Petition Information Sheet)",
+    "description": "Explains California's three distinct statutory pathways for a grandparent to petition for court-ordered visitation (Family Code §§ 3102-3104) -- the deceased-parent pathway, the pending-custody-proceeding pathway, and the general freestanding petition, including the filing restriction and rebuttable presumptions confirmed constitutional under Troxel v. Granville. This document is informational and does not itself grant visitation; only a court order can do that.",
+    "clauseOrder": [
+      "grandvis_declaration",
+      "grandvis_scope_informational",
+      "grandvis_3102_deceased_parent",
+      "grandvis_3103_pending_proceeding",
+      "grandvis_3104_petition_requirements",
+      "grandvis_3104b_filing_restriction",
+      "grandvis_3104ef_presumptions",
+      "grandvis_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "grandparentName",
+        "label": "Grandparent's name (petitioner)",
+        "placeholder": "Casey Lee",
+        "required": true
+      },
+      {
+        "id": "childName",
+        "label": "Child's name",
+        "placeholder": "Riley Lee",
+        "required": true
+      },
+      {
+        "id": "childDOB",
+        "label": "Child's date of birth",
+        "placeholder": "May 3, 2015",
+        "required": true
+      },
+      {
+        "id": "relationshipToChild",
+        "label": "Grandparent's relationship to the child",
+        "placeholder": "Paternal grandmother",
+        "required": true
+      },
+      {
+        "id": "parent1Name",
+        "label": "Parent 1 name (if known)",
+        "placeholder": "Jordan Alex Lee",
+        "required": false
+      },
+      {
+        "id": "parent2Name",
+        "label": "Parent 2 name (if known)",
+        "placeholder": "Morgan Lee",
+        "required": false
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ],
+    "categories": [
+      "Family Law"
+    ]
   }
 ]
