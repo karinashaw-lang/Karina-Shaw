@@ -12735,5 +12735,85 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "caloppa_info_sheet",
+    "title": "California Online Privacy Protection Act (CalOPPA) — Information Sheet",
+    "description": "Information about CalOPPA's requirement that operators of commercial websites and online services that collect personal information from California residents conspicuously post a privacy policy, and what that policy must disclose, under Business and Professions Code §§ 22575-22579.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "caloppa_posting_requirement",
+      "caloppa_policy_required_content",
+      "caloppa_dnt_and_thirdparty_tracking_disclosure",
+      "caloppa_definitions_pii_and_operator",
+      "caloppa_conspicuous_posting_methods",
+      "caloppa_violation_standard_and_operative_date",
+      "caloppa_policy_posting_declaration",
+      "caloppa_certification"
+    ],
+    "fields": [
+      {
+        "id": "businessName",
+        "label": "Business name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "websiteURL",
+        "label": "Website or online service URL",
+        "placeholder": "https://www.acme.com",
+        "required": true
+      },
+      {
+        "id": "categoriesCollected",
+        "label": "Categories of personal information collected",
+        "placeholder": "Identifiers (name, email address), internet activity (browsing history on our site), and geolocation data",
+        "required": true
+      },
+      {
+        "id": "thirdPartiesSharedWith",
+        "label": "Categories of third parties information may be shared with",
+        "placeholder": "Analytics providers, advertising networks, and payment processors",
+        "required": true
+      },
+      {
+        "id": "reviewRequestProcess",
+        "label": "Process for consumers to review/request changes to their information (if any)",
+        "placeholder": "Consumers may email privacy@acme.com to request access to or correction of their information",
+        "required": false
+      },
+      {
+        "id": "materialChangesProcess",
+        "label": "Process for notifying consumers of material policy changes",
+        "placeholder": "We will post an updated effective date and notify registered users by email",
+        "required": true
+      },
+      {
+        "id": "effectiveDate",
+        "label": "Effective date",
+        "placeholder": "October 1, 2026",
+        "required": true
+      },
+      {
+        "id": "dntResponse",
+        "label": "How the business responds to Do Not Track signals",
+        "placeholder": "We do not currently respond to Do Not Track browser signals",
+        "required": true
+      },
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "signatureDate",
+        "label": "Signature date",
+        "placeholder": "September 1, 2026",
+        "required": true
+      }
+    ]
   }
 ]
