@@ -5264,5 +5264,66 @@
         "required": false
       }
     ]
+  },
+  {
+    "id": "vacation_payout_statement",
+    "title": "Vacation/PTO Payout at Termination — Statement of Accrued but Unused Vacation",
+    "description": "A statement identifying accrued, vested vacation or PTO that must be paid out at termination under California law (Lab. Code § 227.3, Suastez v. Plastic Dress-Up Co.), going deeper than this project's brief existing multistate accrued-vacation references — including the accrual-cap-vs-forfeiture distinction, payout timing, and the vacation/sick-leave distinction.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "vacpayout_declaration_and_scope",
+      "vacpayout_vests_as_earned",
+      "vacpayout_cap_vs_forfeiture",
+      "vacpayout_payout_timing",
+      "vacpayout_sick_leave_distinct",
+      "vacpayout_policy_terms_control",
+      "vacpayout_statement_and_signature"
+    ],
+    "fields": [
+      {
+        "id": "employeeName",
+        "label": "Employee/former employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "terminationDate",
+        "label": "Termination date",
+        "placeholder": "October 1, 2026",
+        "required": true
+      },
+      {
+        "id": "vacationPolicyTerms",
+        "label": "Vacation/PTO policy terms",
+        "placeholder": "Accrues at 1.25 days per month, capped at 20 days banked, eligible after 90 days of employment",
+        "required": true
+      },
+      {
+        "id": "accruedVacationBalance",
+        "label": "Accrued, unused vacation/PTO balance",
+        "placeholder": "8.5 days",
+        "required": true
+      },
+      {
+        "id": "finalRateOfPay",
+        "label": "Final rate of pay",
+        "placeholder": "$40.00/hour",
+        "required": true
+      },
+      {
+        "id": "vacationPayoutAmount",
+        "label": "Amount claimed as owed",
+        "placeholder": "$2,720.00",
+        "required": true
+      }
+    ]
   }
 ]

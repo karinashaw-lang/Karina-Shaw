@@ -14321,6 +14321,110 @@
       "title": "Basis for Filing",
       "kind": "drafting",
       "body": "Basis for filing (use in commerce or intent to use), as applicable: [use in commerce / intent to use]. If the basis is use in commerce, date of first use of the mark anywhere: {{firstUseDate}}. If the basis is intent to use, no first-use date is stated, and a verified statement of use identifying the date of first use in commerce will be required after a notice of allowance issues and before registration can be granted on that basis."
+    },
+    {
+      "id": "vacpayout_declaration_and_scope",
+      "title": "Declaration and Scope of This Vacation Payout Statement",
+      "kind": "drafting",
+      "body": "This Statement of Accrued but Unused Vacation is prepared by {{employeeName}}, a former employee of {{companyName}}, whose employment ended on {{terminationDate}}. It identifies vacation or paid-time-off time that {{employeeName}} contends had already accrued and vested, under California law and the terms of {{companyName}}'s own written vacation or paid-time-off policy, before employment ended, and that remains unpaid as of the date of this statement.\n\nThis document deliberately goes deeper into California's vacation-payout rule than the brief, general, multistate clauses already found elsewhere in this project's forms. The Termination/Separation Letter document's accrued-vacation clause and the Final Wage Payment / Waiting-Time Penalty Demand Letter document's accrued-vacation-reference clause each note, in general terms, only that some states treat earned vacation as vested wages that cannot be forfeited while many other states do not require any such payout at all — without setting out California's own statutory text or case law on the subject in full. This document sets out that California-specific rule directly, including the statute itself, the case law interpreting it, and the state labor agency's own published guidance distinguishing a lawful accrual cap from an unlawful \"use-it-or-lose-it\" forfeiture."
+    },
+    {
+      "id": "vacpayout_vests_as_earned",
+      "title": "Vacation Pay Vests as It Is Earned and Cannot Be Forfeited",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-02",
+      "body": "Under California Labor Code section 227.3, whenever an employer's policy or an employment contract provides for paid vacation, an employee who is terminated without having used all of their vested vacation time must be paid, as wages, for all of that vested vacation at their final rate of pay — and neither an employment contract nor an employer policy may provide for forfeiture of vested vacation time upon termination. The California Supreme Court has held that this vesting happens gradually, as the labor is performed, rather than all at once on some later date a policy might specify: a proportionate, pro rata share of vacation pay vests with each day worked, so an employee who leaves before an arbitrary policy \"anniversary date\" still holds a vested, non-forfeitable right to the proportionate share already earned.",
+      "gap": "This is one state's statute and case law, used as real evidence of California's vacation-payout rule — not a claim about which state's law governs a specific employer or employee; many other states do not require any vacation payout at termination at all. This clause does not address whether accrued but unused paid sick leave (as distinct from vacation) must also be paid out at termination; that distinction is addressed in a separate clause of this document. This session's CourtListener access was rate-limited (125 requests/day, exhausted before this document's case-law citation could be independently re-fetched and re-read this session, with the quota not resetting until roughly 14.5 hours later) — that limit is disclosed here rather than worked around. The Suastez quotation below was independently verified via CourtListener in this same project's corpus (the Termination/Separation Letter document's accrued-vacation clause, checked 2026-08-29) and is reused verbatim here rather than re-fetched; it is also independently corroborated by the California Division of Labor Standards Enforcement's own published FAQ on vacation (dir.ca.gov/dlse/FAQ_Vacation.htm, fetched and byte-compared twice with different User-Agent headers this session), which cites this same case for this same proposition and states that, unless otherwise provided by a collective-bargaining agreement, \"upon termination of employment all earned and unused vacation must be paid to the employee at his or her final rate of pay,\" citing Labor Code section 227.3. The statutory text quoted below was fetched twice this session, directly from leginfo.legislature.ca.gov, using two different User-Agent headers, and found byte-identical both times.",
+      "citations": [
+        {
+          "case": "Cal. Labor Code § 227.3 (California Legislative Information text)",
+          "cite": "California Labor Code",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=227.3.",
+          "quote": "Unless otherwise provided by a collective-bargaining agreement, whenever a contract of employment or employer policy provides for paid vacations, and an employee is terminated without having taken off his vested vacation time, all vested vacation shall be paid to him as wages at his final rate in accordance with such contract of employment or employer policy respecting eligibility or time served; provided, however, that an employment contract or employer policy shall not provide for forfeiture of vested vacation time upon termination."
+        },
+        {
+          "case": "Suastez v. Plastic Dress-Up Co.",
+          "cite": "31 Cal. 3d 774 (1982)",
+          "url": "https://www.courtlistener.com/opinion/1173656/suastez-v-plastic-dress-up-co/",
+          "quote": "The right to a paid vacation, when offered in an employer's policy or contract of employment, constitutes deferred wages for services rendered. Case law from this state and others, as well as principles of equity and justice, compel the conclusion that a proportionate right to a paid vacation \"vests\" as the labor is rendered. Once vested, the right is protected from forfeiture, by section 227.3. On termination of employment, therefore, the statute requires that an employee be paid in wages for a pro rata share of his vacation pay."
+        }
+      ]
+    },
+    {
+      "id": "vacpayout_cap_vs_forfeiture",
+      "title": "A Reasonable Accrual Cap Is Permitted; \"Use-It-or-Lose-It\" Forfeiture Is Not",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-02",
+      "body": "The text of Labor Code section 227.3 itself addresses only forfeiture of vacation time already vested — it does not, on its own face, say anything about whether an employer may cap how much vacation an employee accrues going forward, or about \"use-it-or-lose-it\" policies specifically. That distinction has instead been developed through case law and through the California Division of Labor Standards Enforcement's (DLSE) published interpretation of the statute. Under that guidance, a policy that simply stops further vacation from accruing once an employee's banked balance reaches a specified ceiling — a \"cap\" — is lawful, because it does not take away any vacation time already earned; it only pauses future accrual until the balance drops below the cap. A \"use-it-or-lose-it\" policy is treated differently, because it does take away vacation time the employee already earned if it is not used by some deadline, which section 227.3 does not permit.",
+      "gap": "This is one state's case law and labor-agency guidance, used as real evidence of California's cap-versus-forfeiture distinction — not a claim about which state's law governs a specific employer's policy; many other states do not require any vacation payout at termination at all, and so have no occasion to draw this distinction the way California does. This session's CourtListener access was rate-limited (disclosed in full in this document's clause on vesting), so the Boothby opinion was not independently re-fetched and re-read this session; the quotation below is reused verbatim from this same project's own already-verified corpus (checked 2026-08-29) and is independently corroborated by the DLSE FAQ guidance quoted below, fetched fresh this session directly from dir.ca.gov and byte-compared across two fetches with different User-Agent headers. The DLSE FAQ is the state labor agency's own sub-regulatory interpretive guidance, not a statute or a binding judicial holding; it is cited here as real evidence of how the agency that enforces section 227.3 applies it, not as a claim that a court would necessarily reach the same result in every case.",
+      "citations": [
+        {
+          "case": "Boothby v. Atlas Mechanical, Inc.",
+          "cite": "6 Cal. App. 4th 1595 (1992)",
+          "url": "https://www.courtlistener.com/opinion/2297663/boothby-v-atlas-mechanical-inc/",
+          "quote": "However, an employment agreement may provide that the employee does not earn additional paid vacation if a specified amount of vested vacation remains unused. Such a provision does not attempt forfeiture of vested vacation and is therefore permissible."
+        },
+        {
+          "case": "California DLSE, \"Vacation\" FAQ (California Department of Industrial Relations text)",
+          "cite": "DLSE FAQ - Vacation, Question 5",
+          "url": "https://www.dir.ca.gov/dlse/FAQ_Vacation.htm",
+          "quote": "Unlike \"use it or lose it\" policies, a vacation policy that places a \"cap\" or \"ceiling\" on vacation pay accruals is permissible. Whereas a \"use it or lose it\" policy results in a forfeiture of accrued vacation pay, a \"cap\" simply places a limit on the amount of vacation that can accrue; that is, once a certain level or amount of accrued vacation is earned but not taken, no further vacation or vacation pay accrues until the balance falls below the cap."
+        }
+      ]
+    },
+    {
+      "id": "vacpayout_payout_timing",
+      "title": "Vacation Payout Follows the Same Final-Wage Deadlines, Not a Separate One",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-02",
+      "body": "Labor Code section 227.3 does not itself set out any separate payment deadline for vested vacation — it requires only that vested vacation be paid \"as wages at his final rate,\" without specifying a particular number of days after termination by which that payment must be made. The California Division of Labor Standards Enforcement's published guidance confirms that vacation payout is folded into the same final-paycheck requirement that governs other final wages, rather than treated as a separate category of pay with its own separate due date. Where California's vacation-payout rule applies, that payout is accordingly treated as part of the final wages covered by whichever statutory final-pay deadline and waiting-time-penalty framework already applies to {{employeeName}}'s separation from {{companyName}}.",
+      "gap": "This is one state's statute and labor-agency guidance, used as real evidence that accrued vacation payout is legally folded into the final-wage-payment deadlines, not given its own separate deadline — not a claim about which state's law governs this particular payout, and not a claim that any particular accrued balance is actually owed here. This clause deliberately does not re-derive the specific final-pay deadlines of Labor Code sections 201 and 202 or the waiting-time-penalty mechanics of section 203, because this project's Final Wage Payment / Waiting-Time Penalty Demand Letter document already contains dedicated, separately verified clauses covering those rules in full; this clause exists only to establish that vacation payout rides on those same deadlines rather than running on a timetable of its own. This clause cites a single statutory section (§ 227.3, quoted in full in this document's clause on vesting and not re-quoted here) together with the DLSE guidance below, fetched fresh this session directly from dir.ca.gov and byte-compared across two fetches with different User-Agent headers; no case law was located, this session or in this project's existing corpus, addressing the payout-deadline question specifically (as opposed to the vesting and no-forfeiture questions the case law above addresses).",
+      "citations": [
+        {
+          "case": "California DLSE, \"Vacation\" FAQ (California Department of Industrial Relations text)",
+          "cite": "DLSE FAQ - Vacation, Question 10",
+          "url": "https://www.dir.ca.gov/dlse/FAQ_Vacation.htm",
+          "quote": "Because paid vacation benefits are considered wages, such pay must be included in the employee's final paycheck."
+        }
+      ]
+    },
+    {
+      "id": "vacpayout_sick_leave_distinct",
+      "title": "Vacation Is Distinct From Paid Sick Leave, Which California Law Does Not Require to Be Paid Out at Termination",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-02",
+      "body": "California's statutory paid-sick-leave law is separate from the vacation-vesting rule described elsewhere in this document, and the two are not paid out the same way at termination. By its own text, the paid-sick-leave statute does not require an employer to compensate an employee for accrued, unused paid sick days upon termination, resignation, retirement, or other separation from employment. Where an employer instead combines vacation and sick leave into a single \"paid time off\" or \"PTO\" bank that an employee may use for any purpose, without the employer designating a portion of it as sick-leave-only, the state labor agency's published guidance treats the combined bank the same as vacation for payout purposes — meaning it is earned day by day, vested amounts cannot be forfeited, and any unused, accrued balance must be paid out at termination. Whether a specific benefit {{employeeName}} held at {{companyName}} was structured as vacation, as combined PTO, or as sick leave carved out separately under a compliant sick-leave policy depends on the terms of {{companyName}}'s own written policy.",
+      "gap": "This is one state's statute and labor-agency guidance, used as real evidence of California's vacation-versus-sick-leave distinction — not a claim about which state's law governs a specific employer's policy, and not a claim about how any particular policy at any particular employer is actually structured. This clause cites a single statutory subsection (§ 246(g)(1)); the same statutory section also contains a related but separate rule, in § 246(g)(2), about reinstating accrued sick leave for an employee rehired within a year of separation, which this clause does not address because it concerns reinstatement on rehire rather than payout at termination. The statutory text quoted below was fetched twice this session, directly from leginfo.legislature.ca.gov, using two different User-Agent headers, and found byte-identical both times. The DLSE guidance on combined PTO banks was fetched fresh this session directly from dir.ca.gov and byte-compared across two fetches with different User-Agent headers; no case law specifically addressing the vacation/sick-leave or combined-PTO distinction was located this session.",
+      "citations": [
+        {
+          "case": "Cal. Labor Code § 246(g)(1) (California Legislative Information text)",
+          "cite": "California Labor Code, Healthy Workplaces, Healthy Families Act",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=246.",
+          "quote": "Except as specified in paragraph (2), an employer is not required to provide compensation to an employee for accrued, unused paid sick days upon termination, resignation, retirement, or other separation from employment."
+        },
+        {
+          "case": "California DLSE, \"Vacation\" FAQ (California Department of Industrial Relations text)",
+          "cite": "DLSE FAQ - Vacation, Question 8",
+          "url": "https://www.dir.ca.gov/dlse/FAQ_Vacation.htm",
+          "quote": "Where an employer replaces its separate arrangements for vacation and sick leave with a program whereby employees are granted a certain number of \"paid days off\" each year that can be used for any purpose, including vacation and sick leave, the employees have an absolute right to take these days off. Consequently, again applying the principles of equity and fairness, DLSE takes the position that such a program is subject to the same rules as other vacation policies. Thus, for example, the \"paid time off\" is earned on a day-by-day basis, vested paid time off days cannot be forfeited, the number of earned and accrued paid time off days can be capped, and if an employee has earned and accrued paid time off days that have not been used at the time the employment relationship ends, the employee must be paid for these days."
+        }
+      ]
+    },
+    {
+      "id": "vacpayout_policy_terms_control",
+      "title": "The Employer's Own Policy Sets the Accrual Rate, Cap, and Eligibility Terms",
+      "kind": "drafting",
+      "body": "California's vacation-vesting rule does not itself dictate how fast vacation accrues, whether a cap applies, or who is eligible for it — Labor Code section 227.3 ties the payout obligation to \"such contract of employment or employer policy respecting eligibility or time served.\" The specific accrual rate, any accrual cap, and the eligibility terms that applied to {{employeeName}}'s vacation or paid-time-off benefit at {{companyName}} are set by {{companyName}}'s own written policy, described here as: {{vacationPolicyTerms}}. Once vacation time vests under whatever formula that policy sets, California law requires it to be honored and prohibits the policy from providing for its forfeiture upon termination — but the formula itself, and any lawful cap on future accrual, is a function of the policy's own terms rather than a state-mandated rate."
+    },
+    {
+      "id": "vacpayout_statement_and_signature",
+      "title": "Statement of the Accrued Vacation Balance and Signature",
+      "kind": "drafting",
+      "body": "{{employeeName}} identifies the following accrued, unused vacation or paid-time-off balance as vested and unpaid as of {{terminationDate}}:\n\nAccrued, unused vacation/PTO balance: {{accruedVacationBalance}}\n\nFinal rate of pay used to value this balance: {{finalRateOfPay}}\n\nVacation/PTO policy terms applied (accrual rate, any cap, eligibility): {{vacationPolicyTerms}}\n\nAmount claimed as owed: {{vacationPayoutAmount}}\n\n{{employeeName}} states that the foregoing is accurate to the best of {{employeeName}}'s knowledge.\n\nSignature: ☐ _________________________ Date: _______________\n\n{{employeeName}}"
     }
   ]
 }
