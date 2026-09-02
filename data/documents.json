@@ -8827,5 +8827,67 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "gestational_carrier_agreement_info_sheet",
+    "title": "Gestational Carrier (Surrogacy) Agreement — Information Sheet",
+    "description": "Explains California's statutory framework for gestational surrogacy under Family Code sections 7960-7962: the key statutory terms, the requirements for a valid assisted reproduction agreement for gestational carriers, how parentage is established before birth without the carrier being a legal parent, the narrower-than-assumed noncompliance fallback, compensation and facilitator fee handling, and the distinction between gestational and traditional surrogacy.",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "gestcarrier_declaration",
+      "gestcarrier_definitions",
+      "gestcarrier_execution_requirements",
+      "gestcarrier_parentage_establishment",
+      "gestcarrier_noncompliance_consequences",
+      "gestcarrier_compensation",
+      "gestcarrier_gestational_vs_traditional",
+      "gestcarrier_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "intendedParent1Name",
+        "label": "First intended parent's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "intendedParent2Name",
+        "label": "Second intended parent's name (optional)",
+        "placeholder": "Taylor Morgan",
+        "required": false
+      },
+      {
+        "id": "gestationalCarrierName",
+        "label": "Gestational carrier's name",
+        "placeholder": "Casey Rivera",
+        "required": true
+      },
+      {
+        "id": "carrierSpousePartnerName",
+        "label": "Gestational carrier's spouse or partner's name (optional)",
+        "placeholder": "Robin Rivera",
+        "required": false
+      },
+      {
+        "id": "countyOfFiling",
+        "label": "County where filing",
+        "placeholder": "San Francisco County",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "October 15, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "San Francisco, California",
+        "required": true
+      }
+    ]
   }
 ]
