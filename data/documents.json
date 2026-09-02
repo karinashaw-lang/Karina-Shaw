@@ -6165,5 +6165,43 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "wage_theft_prevention_notice",
+    "title": "Wage Theft Prevention Act Notice to Employee — Information Sheet",
+    "description": "An information sheet describing California Labor Code section 2810.5's written hiring-time notice requirement: which employees the statute's notice duty reaches and which categories it excludes, the specific list of information the notice must contain (pay rate and basis, payday, employer identity and contact information, workers' compensation carrier, paid sick leave rights, and recent emergency/disaster declarations), the separate duty to notify employees in writing of later changes within seven calendar days, the Labor Commissioner's required template, additional content for temporary services employers, and an honest disclosure of what enforcement mechanism (if any) attaches to a violation.",
+    "categories": [
+      "Hiring"
+    ],
+    "clauseOrder": [
+      "wagetheft_scope",
+      "wagetheft_hiring_time_notice",
+      "wagetheft_required_contents",
+      "wagetheft_excluded_employees",
+      "wagetheft_update_notice",
+      "wagetheft_template_and_temp_services",
+      "wagetheft_no_specific_penalty_text",
+      "wagetheft_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company/employer name",
+        "placeholder": "Acme Manufacturing, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Morgan T. Ellis",
+        "required": true
+      },
+      {
+        "id": "startDate",
+        "label": "Start date",
+        "placeholder": "April 1, 2026",
+        "required": true
+      }
+    ]
   }
 ]
