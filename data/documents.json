@@ -9013,5 +9013,37 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "reporting_time_pay_info_sheet",
+    "title": "Reporting Time Pay — Information Sheet",
+    "description": "Explains California's IWC Wage Order reporting time pay requirement: the core rule paying half the scheduled day (2-4 hour range) when an employee reports but isn't put to work or is furnished less than half their usual shift, the flat 2-hour minimum for a second same-day reporting, the wage order's own three exceptions plus the separate paid-standby-status subsection, the honest note that the text doesn't address pre-report shift cancellation, its independence from overtime and meal/rest premium pay, and the related split shift premium.",
+    "categories": [
+      "During employment"
+    ],
+    "clauseOrder": [
+      "reportingtime_policy_statement",
+      "reportingtime_core_rule",
+      "reportingtime_second_reporting",
+      "reportingtime_exceptions",
+      "reportingtime_actual_reporting_required",
+      "reportingtime_relationship_to_other_wages",
+      "reportingtime_split_shift_premium",
+      "reportingtime_signature_acknowledgment"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme Corp",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      }
+    ]
   }
 ]
