@@ -3985,5 +3985,42 @@
     "categories": [
       "Confidentiality & IP"
     ]
+  },
+  {
+    "id": "neutral_reference_policy",
+    "title": "Neutral Reference / Employment Verification Policy",
+    "description": "The actual California legal framework around what an employer can say when asked for a reference about a former employee -- the blacklisting prohibition, the truthful-statement safe harbor, the civil treble-damages remedy, and the qualified privilege for good-faith performance communications -- distinct from this project's Employment Verification Letter and Termination/Separation Letter documents.",
+    "clauseOrder": [
+      "reference_intro",
+      "reference_blacklisting_prohibition",
+      "reference_truthful_statement_safe_harbor",
+      "reference_civil_treble_damages",
+      "reference_qualified_privilege",
+      "reference_no_mandated_neutral_policy",
+      "reference_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Employer name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Former employee's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "inquiringPartyName",
+        "label": "Name of the party requesting the reference",
+        "placeholder": "Beta Corp Hiring Manager",
+        "required": true
+      }
+    ],
+    "categories": [
+      "Ending employment"
+    ]
   }
 ]
