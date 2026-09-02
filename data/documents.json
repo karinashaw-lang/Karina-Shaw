@@ -4422,5 +4422,67 @@
     "categories": [
       "Real Estate"
     ]
+  },
+  {
+    "id": "paternity_action_petition",
+    "title": "Paternity Action (Petition to Establish Parental Relationship) Information Sheet",
+    "description": "Explains California's contested court process for establishing or disestablishing a parent-child relationship under the Uniform Parentage Act (Fam. Code §§ 7630, 7540-7541, 7551, 7555, 7611-7612) -- standing, the marital presumption and its two-year disestablishment deadline, genetic testing, competing presumptions, and the varied timing rules. Distinct from this project's Voluntary Declaration of Parentage document, which covers the out-of-court, agreed, signed-form process. This document is informational and does not itself establish or disestablish parentage; only a court judgment can do that.",
+    "clauseOrder": [
+      "paternity_declaration",
+      "paternity_scope_vs_voluntary_declaration",
+      "paternity_standing",
+      "paternity_marital_presumption_disestablishment",
+      "paternity_genetic_testing",
+      "paternity_competing_presumptions",
+      "paternity_timing_rules",
+      "paternity_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "petitionerName",
+        "label": "Petitioner's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "allegedParentName",
+        "label": "Alleged parent's name",
+        "placeholder": "Morgan Lee",
+        "required": true
+      },
+      {
+        "id": "childName",
+        "label": "Child's name",
+        "placeholder": "Riley Lee",
+        "required": true
+      },
+      {
+        "id": "childDOB",
+        "label": "Child's date of birth",
+        "placeholder": "May 3, 2015",
+        "required": true
+      },
+      {
+        "id": "respondentName",
+        "label": "Other parent/presumed parent of record (if known)",
+        "placeholder": "Casey Lee",
+        "required": false
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ],
+    "categories": [
+      "Family Law"
+    ]
   }
 ]
