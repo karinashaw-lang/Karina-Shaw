@@ -5839,5 +5839,80 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "trustee_notification_to_beneficiaries",
+    "title": "Trustee's Notification to Beneficiaries — Information Sheet",
+    "description": "An informational sheet describing a real statutory duty most people don't know exists: a trustee's obligation under Probate Code § 16061.7 to serve a notification on beneficiaries, heirs, and (for charitable trusts) the Attorney General once a trust becomes irrevocable. Covers the three triggering events, who must be served, the 60-day deadline and service method, required content, confidentiality of trust terms, the mandatory contest-deadline warning and the resulting 120-day limitations period, and that a settlor cannot waive this requirement. Does not itself satisfy any trustee's notice obligation for any specific trust.",
+    "categories": [
+      "Estate Planning"
+    ],
+    "clauseOrder": [
+      "trustnotice_declaration",
+      "trustnotice_duty_and_triggers",
+      "trustnotice_who_must_be_served",
+      "trustnotice_deadline_and_service",
+      "trustnotice_required_contents",
+      "trustnotice_confidentiality_on_request",
+      "trustnotice_warning_and_contest_period",
+      "trustnotice_no_waiver_optional_service",
+      "trustnotice_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "trusteeName",
+        "label": "Trustee's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "trusteeAddress",
+        "label": "Trustee's address",
+        "placeholder": "500 Market St, San Francisco, CA 94105",
+        "required": true
+      },
+      {
+        "id": "trustName",
+        "label": "Trust name",
+        "placeholder": "The Pat Morgan Revocable Living Trust",
+        "required": true
+      },
+      {
+        "id": "originalTrustDate",
+        "label": "Date trust instrument executed",
+        "placeholder": "March 3, 2015",
+        "required": true
+      },
+      {
+        "id": "decedentName",
+        "label": "Deceased settlor's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "dateOfDeath",
+        "label": "Date of death",
+        "placeholder": "August 1, 2026",
+        "required": true
+      },
+      {
+        "id": "beneficiaryName",
+        "label": "Beneficiary's name (for reference)",
+        "placeholder": "Alex Morgan",
+        "required": false
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, state",
+        "placeholder": "Sacramento, California",
+        "required": true
+      }
+    ]
   }
 ]
