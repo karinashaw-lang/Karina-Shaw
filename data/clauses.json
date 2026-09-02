@@ -32711,6 +32711,133 @@
           "quote": "(a) Except as otherwise provided in subdivision (g) and subject to subdivision (f), in the absence of an express, contrary indication by the donor, a person other than the donor is barred from making, amending, or revoking an anatomical gift of a donor’s body or part if the donor made an anatomical gift of the donor’s body or part under Section 7150.20 or an amendment to an anatomical gift of the donor’s body or part under Section 7150.25.(b) A donor’s revocation of an anatomical gift of the donor’s body or part under Section 7150.25 is not a refusal and does not bar another person specified in Section 7150.15 or 7150.40 from making an anatomical gift of the donor’s body or part under Section 7150.20 or 7150.45.(c) If a person other than the donor makes an unrevoked anatomical gift of the donor’s body or part under Section 7150.20 or an amendment to an anatomical gift of the donor’s body or part under Section 7150.25, another person may not make, amend, or revoke the gift of the donor’s body or part under Section 7150.45.(d) A revocation of an anatomical gift of a donor’s body or part under Section 7150.25 by a person other than the donor does not bar another person from making an anatomical gift of the body or part under Section 7150.20 or 7150.45.(e) In the absence of an express, contrary indication by the donor or other person authorized to make an anatomical gift under Section 7150.15, an anatomical gift of a part is neither a refusal to give another part nor a limitation on the making of an anatomical gift of another part at a later time by the donor or another person.(f) In the absence of an express, contrary indication by the donor or other person authorized to make an anatomical gift under Section 7150.15, an anatomical gift of a part for one or more of the purposes set forth in Section 7150.15 is not a limitation on the making of an anatomical gift of the part for any of the other purposes by the donor or any other person under Section 7150.20 or 7150.45.(g) Notwithstanding subdivision (a), an individual who is between 15 and 18 years of age may make an anatomical gift for any purpose authorized in this chapter, may limit an anatomical gift to one or more of those purposes, may refuse to make an anatomical gift, or may amend or revoke an anatomical gift, only upon the written consent of the parent or guardian. If a donor who is an unemancipated minor dies, a parent of the donor who is reasonably available may revoke or amend an anatomical gift of the donor’s body or part."
         }
       ]
+    },
+    {
+      "id": "scralease_notice_declaration",
+      "title": "Notice of Lease Termination",
+      "kind": "drafting",
+      "body": "{{tenantName}} (\"Servicemember\") delivers this written notice to {{landlordName}} (\"Landlord\") to terminate the lease for the property at {{propertyAddress}}. This notice is delivered on {{noticeDate}}, together with a copy of Servicemember's military orders dated {{ordersDate}} — {{dutyStationOrDeploymentDescription}} — under 50 U.S.C. § 3955, the lease-termination provision of the Servicemembers Civil Relief Act."
+    },
+    {
+      "id": "scralease_ack",
+      "title": "Delivery and Signature",
+      "kind": "drafting",
+      "body": "Delivered by: _______________________ ({{tenantName}}) Date: {{dateSigned}}\n\nMethod of delivery (check one):\n☐ Hand delivery\n☐ Private business carrier\n☐ U.S. mail, postage prepaid, return receipt requested\n☐ Electronic delivery to an address designated by Landlord or Landlord's agent\n\nReceived by: _______________________ ({{landlordName}} or Landlord's agent) Date: _______________\n\n{{cityState}}"
+    },
+    {
+      "id": "scralease_eligibility",
+      "title": "Who May Terminate a Lease Under the SCRA",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-02",
+      "body": "A federal statute, the Servicemembers Civil Relief Act (SCRA), gives the tenant on a covered lease the option to terminate the lease at any time after one of two events. First: the lease was executed by, or on behalf of, a person who thereafter and during the term of the lease enters military service. Second: the tenant was already in military service when the lease was signed, and afterward receives military orders for a permanent change of station, or to deploy with a military unit (or as an individual in support of a military operation), for a period of not less than 90 days.",
+      "gap": "This covers the two most common triggers, but the statute lists two further, narrower ones this clause doesn't detail: a tenant who executed a lease upon already having PCS or deployment orders and then separately receives a stop-movement order (a different timing rule applies to that trigger, described below in this document's effective-date clause); and a one-year window for a lessee's spouse or dependent to terminate if the lessee dies while in military service, or if the lessee incurs a catastrophic injury or illness (as separately defined by statute) during military service — neither of which this clause's citations cover. A lessee's termination under this section also ends any dependent's own obligations under the same lease, per a separate subsection not quoted here. The 90-day threshold above is specific to a premises lease; the same statutory section sets a 180-day threshold instead for the motor-vehicle-lease branch of this law, which this document doesn't otherwise cover. All citations below are subsections of the same statutory section (50 U.S.C. § 3955) rather than independently authored sources. The text was fetched twice independently from law.cornell.edu (byte-identical both times) and cross-checked against a separate two-fetch retrieval of the official U.S. House Office of the Law Revision Counsel text at uscode.house.gov (also identical on both fetches, and matching Cornell's text word for word) — both mirror the same enacted U.S. Code text rather than being independently authored sources of their own.",
+      "citations": [
+        {
+          "case": "50 U.S.C. § 3955(a)(1) (Cornell LII text)",
+          "cite": "U.S. Code, Servicemembers Civil Relief Act, the termination option",
+          "url": "https://www.law.cornell.edu/uscode/text/50/3955",
+          "quote": "The lessee on a lease described in subsection (b) may, at the lessee’s option, terminate the lease at any time after—"
+        },
+        {
+          "case": "50 U.S.C. § 3955(b)(1)(A) (Cornell LII text)",
+          "cite": "U.S. Code, first trigger: lease signed before entering military service",
+          "url": "https://www.law.cornell.edu/uscode/text/50/3955",
+          "quote": "the lease is executed by or on behalf of a person who thereafter and during the term of the lease enters military service;"
+        },
+        {
+          "case": "50 U.S.C. § 3955(b)(1)(B) (Cornell LII text)",
+          "cite": "U.S. Code, second trigger: PCS or deployment orders of 90+ days",
+          "url": "https://www.law.cornell.edu/uscode/text/50/3955",
+          "quote": "the servicemember, while in military service, executes the lease and thereafter receives military orders for a permanent change of station or to deploy with a military unit, or as an individual in support of a military operation, for a period of not less than 90 days; or"
+        }
+      ]
+    },
+    {
+      "id": "scralease_scope",
+      "title": "Which Leases This Covers",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-02",
+      "body": "This SCRA provision applies to a lease of premises occupied, or intended to be occupied, by a servicemember or the servicemember's dependents, for a residential, professional, business, agricultural, or similar purpose. The same statutory section separately covers a lease of a motor vehicle used, or intended to be used, by a servicemember or dependents for personal or business transportation, on different terms this document doesn't address.",
+      "gap": "This is broader than just a dwelling lease: the statute's own words cover a premises lease used for a \"residential, professional, business, agricultural, or similar purpose,\" not \"residential\" alone — this document's focus on the residential/dwelling situation is a narrowing choice, not the full reach of the statute. The motor-vehicle-lease branch of the same section uses a materially different threshold than the premises-lease branch covered above: a 180-day PCS or deployment order requirement (versus 90 days for a premises lease), plus its own geographic conditions for a change-of-station trigger and its own vehicle-return mechanics — a reader shouldn't assume the 90-day premises-lease threshold carries over to a motor-vehicle lease under this same law. All citations below are subsections of the same statutory section (50 U.S.C. § 3955) rather than independently authored sources. The text was fetched twice independently from law.cornell.edu (byte-identical both times) and cross-checked against a separate two-fetch retrieval of uscode.house.gov (also identical on both fetches, and matching Cornell's text word for word) — both mirror the same enacted U.S. Code text rather than being independently authored sources of their own.",
+      "citations": [
+        {
+          "case": "50 U.S.C. § 3955(b)(1) (Cornell LII text)",
+          "cite": "U.S. Code, covered premises leases",
+          "url": "https://www.law.cornell.edu/uscode/text/50/3955",
+          "quote": "A lease of premises occupied, or intended to be occupied, by a servicemember or a servicemember’s dependents for a residential, professional, business, agricultural, or similar purpose if—"
+        },
+        {
+          "case": "50 U.S.C. § 3955(b)(2) (Cornell LII text)",
+          "cite": "U.S. Code, covered motor-vehicle leases, briefly noted",
+          "url": "https://www.law.cornell.edu/uscode/text/50/3955",
+          "quote": "A lease of a motor vehicle used, or intended to be used, by a servicemember or a servicemember’s dependents for personal or business transportation if—"
+        }
+      ]
+    },
+    {
+      "id": "scralease_notice_mechanism",
+      "title": "How Termination Notice Must Be Given",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-02",
+      "body": "Terminating a covered premises lease under this provision requires the tenant to deliver written notice of the termination, together with a copy of the servicemember's military orders, to the landlord (or the landlord's grantee), or to the landlord's agent (or the agent's grantee). The statute defines \"military orders\" broadly: the term means official military orders (including orders for separation or retirement), or any notification, certification, or verification from the servicemember's commanding officer regarding the servicemember's current or future military duty status.",
+      "gap": "A common assumption is that the statute offers two separate, alternative documents a tenant can attach to the notice — either military orders or a commanding officer's letter. That's not quite how the text is built: the definition of \"military orders\" itself already includes a notification, certification, or verification from the commanding officer as one qualifying form of \"military orders,\" so there is one document requirement (a copy of \"military orders,\" broadly defined), not two independent alternatives. Separately, the statute lists four specific permitted methods for delivering the notice itself — hand delivery, private business carrier, U.S. mail with return receipt requested, or specified electronic means — in a subsection this clause doesn't quote directly; this document's signature/delivery block reflects those methods as checkboxes. All citations below are subsections of the same statutory section (50 U.S.C. § 3955) rather than independently authored sources. The text was fetched twice independently from law.cornell.edu (byte-identical both times) and cross-checked against a separate two-fetch retrieval of uscode.house.gov (also identical on both fetches, and matching Cornell's text word for word) — both mirror the same enacted U.S. Code text rather than being independently authored sources of their own.",
+      "citations": [
+        {
+          "case": "50 U.S.C. § 3955(c)(1)(A) (Cornell LII text)",
+          "cite": "U.S. Code, written notice plus a copy of military orders",
+          "url": "https://www.law.cornell.edu/uscode/text/50/3955",
+          "quote": "by delivery by the lessee of written notice of such termination, and a copy of the servicemember’s military orders, to the lessor (or the lessor’s grantee), or to the lessor’s agent (or the agent’s grantee); and"
+        },
+        {
+          "case": "50 U.S.C. § 3955(i)(1) (Cornell LII text)",
+          "cite": "U.S. Code, definition of “military orders”",
+          "url": "https://www.law.cornell.edu/uscode/text/50/3955",
+          "quote": "The term “military orders”, with respect to a servicemember, means official military orders (including orders for separation or retirement), or any notification, certification, or verification from the servicemember’s commanding officer, with respect to the servicemember’s current or future military duty status."
+        }
+      ]
+    },
+    {
+      "id": "scralease_effective_date",
+      "title": "When Termination Takes Effect",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-02",
+      "body": "For a covered premises lease that provides for monthly rent, once notice of termination is delivered, the lease terminates 30 days after the first date on which the next rent payment is due and payable following that delivery. For a covered premises lease that isn't a monthly-rent lease, termination is effective on the last day of the month following the month in which notice was delivered.",
+      "gap": "The 30-day period does not run from the date notice is delivered — it runs from the next rent due date after delivery. Depending on where in the rent cycle the notice lands, the lease can therefore stay in effect well beyond 30 days from the date of the notice itself (for example, notice delivered the day after rent was due can push the effective termination date close to two months out, once the following month's due date plus 30 days is reached). This timing rule applies specifically to a lease covered by the two triggers in this document's eligibility clause (entering military service, or receiving PCS/deployment orders); the same statutory section sets a different rule for the narrower stop-movement-order trigger not covered by that clause — termination there is effective on the date the notice-and-orders requirement is met, with no 30-day or month-end wait. This is a single statutory subsection; no additional independent source was found for this. The text was fetched twice independently from law.cornell.edu (byte-identical both times) and cross-checked against a separate two-fetch retrieval of uscode.house.gov (also identical on both fetches, and matching Cornell's text word for word) — both mirror the same enacted U.S. Code text rather than being independently authored sources of their own.",
+      "citations": [
+        {
+          "case": "50 U.S.C. § 3955(d)(1)(A) (Cornell LII text)",
+          "cite": "U.S. Code, effective date for a monthly-rent premises lease",
+          "url": "https://www.law.cornell.edu/uscode/text/50/3955",
+          "quote": "In the case of a lease described in subparagraph (A) or (B) of subsection (b)(1) that provides for monthly payment of rent, termination of the lease under subsection (a) is effective 30 days after the first date on which the next rental payment is due and payable after the date on which the notice under subsection (c) is delivered. In the case of any other lease described in subparagraphs (A) and (B) of subsection (b)(1) termination of the lease under subsection (a) is effective on the last day of the month following the month in which the notice is delivered."
+        }
+      ]
+    },
+    {
+      "id": "scralease_no_penalty",
+      "title": "No Early-Termination Charge; What Remains Owed",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-02",
+      "body": "A landlord may not impose an early termination charge because a lease is terminated under this provision. Rent that was unpaid for the period before the termination's effective date must still be paid, on a prorated basis, and any other obligation under the lease's terms — such as taxes, summonses, or reasonable charges for excess wear — that is due and unpaid at the time of termination remains the tenant's responsibility. Rent paid in advance for any period after the termination's effective date must be refunded to the tenant within 30 days of that effective date.",
+      "gap": "\"No early termination charge\" is not the same as \"nothing owed\": arrearages, excess-wear charges, and taxes or summonses tied to the lease survive termination and remain collectible from the tenant. Separately, the statute makes it a misdemeanor, punishable under Title 18 or by up to a year's imprisonment (or both), for anyone to knowingly seize, hold, or detain a servicemember's personal effects, security deposit, or other property — or to knowingly interfere with removing that property — for the purpose of subjecting it to a claim for rent accruing after the termination date; that penalty provision exists in the same statutory section but isn't independently quoted in this clause's citations. All citations below are subsections of the same statutory section (50 U.S.C. § 3955) rather than independently authored sources. The text was fetched twice independently from law.cornell.edu (byte-identical both times) and cross-checked against a separate two-fetch retrieval of uscode.house.gov (also identical on both fetches, and matching Cornell's text word for word) — both mirror the same enacted U.S. Code text rather than being independently authored sources of their own.",
+      "citations": [
+        {
+          "case": "50 U.S.C. § 3955(e)(1) (Cornell LII text)",
+          "cite": "U.S. Code, prorated arrearages and no early-termination charge",
+          "url": "https://www.law.cornell.edu/uscode/text/50/3955",
+          "quote": "Rent amounts for a lease described in subsection (b)(1) that are unpaid for the period preceding the effective date of the lease termination shall be paid on a prorated basis. The lessor may not impose an early termination charge, but any taxes, summonses, or other obligations and liabilities of the lessee in accordance with the terms of the lease, including reasonable charges to the lessee for excess wear, that are due and unpaid at the time of termination of the lease shall be paid by the lessee."
+        },
+        {
+          "case": "50 U.S.C. § 3955(f) (Cornell LII text)",
+          "cite": "U.S. Code, refund of rent paid in advance",
+          "url": "https://www.law.cornell.edu/uscode/text/50/3955",
+          "quote": "Rents or lease amounts paid in advance for a period after the effective date of the termination of the lease shall be refunded to the lessee by the lessor (or the lessor’s assignee or the assignee’s agent) within 30 days of the effective date of the termination of the lease."
+        }
+      ]
     }
   ]
 }

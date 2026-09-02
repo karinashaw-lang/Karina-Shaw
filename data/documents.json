@@ -12031,5 +12031,72 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "scra_lease_termination_info_sheet",
+    "title": "Servicemembers Civil Relief Act — Lease Termination Information Sheet",
+    "description": "Explains the federal Servicemembers Civil Relief Act's lease-termination provision (50 U.S.C. section 3955): who may terminate a covered premises lease (entering military service after signing, or receiving PCS/deployment orders of 90+ days while already serving), the notice-and-military-orders mechanism, when termination actually takes effect (tied to the next rent due date, not the notice date), and the prohibition on early-termination charges alongside what remains owed.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "scralease_notice_declaration",
+      "scralease_eligibility",
+      "scralease_scope",
+      "scralease_notice_mechanism",
+      "scralease_effective_date",
+      "scralease_no_penalty",
+      "scralease_ack"
+    ],
+    "fields": [
+      {
+        "id": "tenantName",
+        "label": "Servicemember/tenant's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "landlordName",
+        "label": "Landlord's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "propertyAddress",
+        "label": "Leased property address",
+        "placeholder": "123 Main St., Sacramento, CA 95814",
+        "required": true
+      },
+      {
+        "id": "noticeDate",
+        "label": "Date notice is delivered",
+        "placeholder": "September 2, 2026",
+        "required": true
+      },
+      {
+        "id": "ordersDate",
+        "label": "Date of military orders",
+        "placeholder": "August 20, 2026",
+        "required": true
+      },
+      {
+        "id": "dutyStationOrDeploymentDescription",
+        "label": "Description of orders (change of station, deployment, etc.)",
+        "placeholder": "Permanent change of station to Fort Liberty, NC",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 2, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, state",
+        "placeholder": "Sacramento, California",
+        "required": true
+      }
+    ]
   }
 ]
