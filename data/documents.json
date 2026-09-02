@@ -5369,5 +5369,43 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "corporate_dissolution",
+    "title": "Corporate Dissolution (Certificate of Dissolution)",
+    "description": "The separately-codified process for dissolving a California for-profit corporation, distinct from the LLC Dissolution and Cancellation document's LLC-specific scheme: shareholder-vote grounds, the certificate of election and certificate of dissolution filings, winding-up commencement and director powers, distribution priority, surviving claims against the dissolved corporation and its shareholders, and Franchise Tax Board minimum-tax clearance.",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "corpdiss_recitals",
+      "corpdiss_grounds_for_dissolution",
+      "corpdiss_winding_up_commencement_and_powers",
+      "corpdiss_certificate_filings",
+      "corpdiss_distribution_priority",
+      "corpdiss_continued_existence_and_claims",
+      "corpdiss_tax_clearance",
+      "corpdiss_dissolution_declaration"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "dissolutionDate",
+        "label": "Dissolution effective date",
+        "placeholder": "December 31, 2026",
+        "required": true
+      },
+      {
+        "id": "dissolutionReason",
+        "label": "Reason for dissolution",
+        "placeholder": "Winding down operations following the sale of substantially all company assets",
+        "required": true
+      }
+    ]
   }
 ]
