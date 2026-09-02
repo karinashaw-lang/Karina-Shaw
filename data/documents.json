@@ -5738,5 +5738,56 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "trade_secret_cease_and_desist",
+    "title": "Trade Secret Misappropriation Cease and Desist Letter",
+    "description": "An enforcement letter sent after a suspected trade secret misappropriation has already occurred, distinct from the preventive NDA documents. Covers the federal DTSA private civil cause of action and its 3-year limitations period, the statutory definitions of \"misappropriation\" and \"improper means,\" federal civil remedies including the 2x exemplary-damages cap, and California's parallel Uniform Trade Secrets Act definitions and remedies.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "tsmisap_intro",
+      "tsmisap_description",
+      "tsmisap_dtsa_cause_of_action",
+      "tsmisap_dtsa_misappropriation_definition",
+      "tsmisap_dtsa_remedies",
+      "tsmisap_ca_misappropriation_definition",
+      "tsmisap_ca_remedies",
+      "tsmisap_demand",
+      "tsmisap_reservation_and_signature"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name (trade secret owner)",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "recipientName",
+        "label": "Recipient's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "tradeSecretDescription",
+        "label": "Description of the trade secret",
+        "placeholder": "Acme's proprietary customer-pricing algorithm and associated source code",
+        "required": true
+      },
+      {
+        "id": "misappropriationDescription",
+        "label": "Description of the conduct at issue",
+        "placeholder": "Recipient appears to have retained and used Acme's pricing algorithm files after leaving Acme's employment",
+        "required": true
+      },
+      {
+        "id": "demandDate",
+        "label": "Response deadline",
+        "placeholder": "September 15, 2026",
+        "required": true
+      }
+    ]
   }
 ]

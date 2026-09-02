@@ -15626,6 +15626,133 @@
       "title": "Landlord Signature and Declaration of Service (Covenant Notice)",
       "kind": "drafting",
       "body": "Signed: {{landlordName}}, Landlord. Date: _______________.\n\nDeclaration of Service. This notice was served on {{tenantName}} on _______________ (date), by the following method (check one): ☐ personal delivery to the tenant; ☐ leaving a copy with a person of suitable age and discretion at the tenant's residence or usual place of business, together with mailing a copy to the tenant's residence; ☐ posting a copy in a conspicuous place on the property and mailing a copy to the property address, after the tenant's residence and place of business could not be ascertained or no person of suitable age or discretion could be found there.\n\nServed by: _______________ (name) Date: _______________"
+    },
+    {
+      "id": "tsmisap_intro",
+      "title": "Purpose of This Letter",
+      "kind": "drafting",
+      "body": "This letter is sent by {{companyName}} to {{recipientName}} concerning trade secret information that {{companyName}} owns or controls. {{companyName}} is sending this letter to describe its concerns and to request specific actions in response, by no later than {{demandDate}}."
+    },
+    {
+      "id": "tsmisap_description",
+      "title": "Description of the Trade Secret and the Conduct at Issue",
+      "kind": "drafting",
+      "body": "{{companyName}} identifies the trade secret information at issue as follows: {{tradeSecretDescription}}\n\nBased on information currently available to {{companyName}}, the following describes conduct that {{companyName}} believes may involve the acquisition, disclosure, or use of that information without {{companyName}}'s consent: {{misappropriationDescription}}\n\nThis description reflects {{companyName}}'s current understanding. It is not a judicial finding, and nothing in this letter states that a court has determined that misappropriation occurred."
+    },
+    {
+      "id": "tsmisap_demand",
+      "title": "Requested Actions and Response Deadline",
+      "kind": "drafting",
+      "body": "{{companyName}} requests that, by {{demandDate}}, {{recipientName}}: (1) stop any further use or disclosure of the trade secret information described above; (2) identify, and either return to {{companyName}} or destroy, all copies of that information and any materials derived from it that are in {{recipientName}}'s possession, custody, or control; and (3) confirm the above in writing. {{companyName}} requests a written response by that date."
+    },
+    {
+      "id": "tsmisap_reservation_and_signature",
+      "title": "Reservation of Rights and Signature",
+      "kind": "drafting",
+      "body": "Nothing in this letter is a complete statement of the facts, claims, or legal theories available to {{companyName}}. Nothing in this letter waives or limits any right or remedy {{companyName}} may have, all of which are expressly reserved, whether or not specifically mentioned above.\n\n{{companyName}}\nBy: _______________\nDate: _______________"
+    },
+    {
+      "id": "tsmisap_dtsa_cause_of_action",
+      "title": "Federal Civil Cause of Action for Trade Secret Misappropriation",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-02",
+      "body": "Federal law gives the owner of a trade secret a private civil cause of action for misappropriation, but only where the trade secret is related to a product or service used in, or intended for use in, interstate or foreign commerce. A civil action under this federal law generally must be brought within three years after the misappropriation is discovered, or after it should have been discovered through reasonable diligence; a misappropriation that continues over time counts as a single claim for this purpose, not a separate claim each time it recurs.",
+      "gap": "This is federal law, used as real evidence of the existence and scope of the federal private civil cause of action for trade secret misappropriation — not a claim about which jurisdiction's law governs this letter or any dispute related to it, and not a claim that the interstate-or-foreign-commerce requirement is met for any specific trade secret. This clause cites two provisions of the same statutory section, 18 U.S.C. § 1836 — subsection (b)(1) (the cause of action itself) and subsection (d) (the three-year limitations period) — grouped together because both define the outer boundaries of the same federal claim. A CourtListener case-law search for this clause was attempted but returned a rate-limit error (HTTP 429, daily limit reported as exhausted) before any case could be retrieved, so no case law on how courts apply the interstate-commerce requirement in practice is included here; only the statutory text is quoted.",
+      "citations": [
+        {
+          "case": "18 U.S.C. § 1836(b)(1) (Cornell LII text)",
+          "cite": "U.S. Code, Defend Trade Secrets Act, private civil action",
+          "url": "https://www.law.cornell.edu/uscode/text/18/1836",
+          "quote": "An owner of a trade secret that is misappropriated may bring a civil action under this subsection if the trade secret is related to a product or service used in, or intended for use in, interstate or foreign commerce."
+        },
+        {
+          "case": "18 U.S.C. § 1836(d) (Cornell LII text)",
+          "cite": "U.S. Code, Defend Trade Secrets Act, period of limitations",
+          "url": "https://www.law.cornell.edu/uscode/text/18/1836",
+          "quote": "A civil action under subsection (b) may not be commenced later than 3 years after the date on which the misappropriation with respect to which the action would relate is discovered or by the exercise of reasonable diligence should have been discovered. For purposes of this subsection, a continuing misappropriation constitutes a single claim of misappropriation."
+        }
+      ]
+    },
+    {
+      "id": "tsmisap_dtsa_misappropriation_definition",
+      "title": "Federal Definition of \"Misappropriation\" and \"Improper Means\"",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-02",
+      "body": "Federal law defines \"misappropriation\" of a trade secret to cover two distinct situations: acquiring a trade secret while knowing or having reason to know it was acquired by improper means, and disclosing or using a trade secret without consent under specified circumstances — including where the person used improper means to acquire it, or knew or had reason to know they owed a duty to keep it secret or limit its use. \"Improper means\" is itself a separately defined term; it includes theft, bribery, misrepresentation, breach or inducement of breach of a duty to maintain secrecy, and espionage, but it specifically excludes reverse engineering, independent derivation, and other lawful means of acquiring the same information.",
+      "gap": "This is federal law, used as real evidence of the statutory definitions of \"misappropriation\" and \"improper means\" — not a claim about which jurisdiction's law governs this letter or any dispute related to it, and not a claim that misappropriation, as this statute defines it, occurred in any specific case. This clause cites two provisions of the same statutory section, 18 U.S.C. § 1839 — paragraph (5) (misappropriation) and paragraph (6) (improper means). The statutory definition of \"trade secret\" itself, 18 U.S.C. § 1839(3), is not requoted here because it is already covered as an authority clause elsewhere in this tool's confidentiality-agreement documents; this clause adds the misappropriation and improper-means definitions, which those other documents do not cover. A CourtListener case-law search for this clause was attempted but returned a rate-limit error (HTTP 429) before any case could be retrieved, so no corroborating case law is included here; only the statutory text is quoted.",
+      "citations": [
+        {
+          "case": "18 U.S.C. § 1839(5) (Cornell LII text)",
+          "cite": "U.S. Code, Defend Trade Secrets Act, definition of \"misappropriation\"",
+          "url": "https://www.law.cornell.edu/uscode/text/18/1839",
+          "quote": "the term \"misappropriation\" means— (A) acquisition of a trade secret of another by a person who knows or has reason to know that the trade secret was acquired by improper means; or (B) disclosure or use of a trade secret of another without express or implied consent by a person who— (i) used improper means to acquire knowledge of the trade secret; (ii) at the time of disclosure or use, knew or had reason to know that the knowledge of the trade secret was— (I) derived from or through a person who had used improper means to acquire the trade secret; (II) acquired under circumstances giving rise to a duty to maintain the secrecy of the trade secret or limit the use of the trade secret; or (III) derived from or through a person who owed a duty to the person seeking relief to maintain the secrecy of the trade secret or limit the use of the trade secret; or (iii) before a material change of the position of the person, knew or had reason to know that— (I) the trade secret was a trade secret; and (II) knowledge of the trade secret had been acquired by accident or mistake"
+        },
+        {
+          "case": "18 U.S.C. § 1839(6) (Cornell LII text)",
+          "cite": "U.S. Code, Defend Trade Secrets Act, definition of \"improper means\"",
+          "url": "https://www.law.cornell.edu/uscode/text/18/1839",
+          "quote": "the term \"improper means\"— (A) includes theft, bribery, misrepresentation, breach or inducement of a breach of a duty to maintain secrecy, or espionage through electronic or other means; and (B) does not include reverse engineering, independent derivation, or any other lawful means of acquisition"
+        }
+      ]
+    },
+    {
+      "id": "tsmisap_dtsa_remedies",
+      "title": "Federal Civil Remedies for Trade Secret Misappropriation",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-02",
+      "body": "In a federal civil action for trade secret misappropriation, a court may grant injunctive relief; award damages for the trade secret owner's actual loss and for the misappropriator's unjust enrichment not already captured in that loss figure, or, in place of those damages, impose a reasonable royalty for the unauthorized disclosure or use; and, where the trade secret was willfully and maliciously misappropriated, award exemplary damages of up to two times the damages awarded, plus reasonable attorney's fees to the prevailing party. Federal law separately authorizes an extraordinary, ex parte civil seizure remedy in limited circumstances; that seizure remedy is a different provision and isn't addressed by this clause.",
+      "gap": "This is federal law, used as real evidence of the remedies a court may award in a federal civil action for trade secret misappropriation — not a claim about which jurisdiction's law governs this letter or any dispute related to it, and not a claim about what remedy, if any, a court would award for any specific conduct. This clause quotes a single statutory provision, 18 U.S.C. § 1836(b)(3), covering injunctive relief, damages, and exemplary damages/attorney's fees together (with the injunctive-relief detail abridged); it does not separately quote the civil-seizure provision, § 1836(b)(2), which is only mentioned by name here. A CourtListener case-law search for this clause was attempted but returned a rate-limit error (HTTP 429) before any case could be retrieved, so no case law on how courts apply these remedy provisions is included here; only the statutory text is quoted.",
+      "citations": [
+        {
+          "case": "18 U.S.C. § 1836(b)(3) (Cornell LII text)",
+          "cite": "U.S. Code, Defend Trade Secrets Act, civil remedies",
+          "url": "https://www.law.cornell.edu/uscode/text/18/1836",
+          "quote": "In a civil action brought under this subsection with respect to the misappropriation of a trade secret, a court may— (A) grant an injunction ... ; (B) award— (i) (I) damages for actual loss caused by the misappropriation of the trade secret; and (II) damages for any unjust enrichment caused by the misappropriation of the trade secret that is not addressed in computing damages for actual loss; or (ii) in lieu of damages measured by any other methods, the damages caused by the misappropriation measured by imposition of liability for a reasonable royalty for the misappropriator’s unauthorized disclosure or use of the trade secret; (C) if the trade secret is willfully and maliciously misappropriated, award exemplary damages in an amount not more than 2 times the amount of the damages awarded under subparagraph (B); and (D) if a claim of the misappropriation is made in bad faith, which may be established by circumstantial evidence, a motion to terminate an injunction is made or opposed in bad faith, or the trade secret was willfully and maliciously misappropriated, award reasonable attorney’s fees to the prevailing party."
+        }
+      ]
+    },
+    {
+      "id": "tsmisap_ca_misappropriation_definition",
+      "title": "California's Definition of Misappropriation",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-02",
+      "body": "California's Uniform Trade Secrets Act separately defines \"misappropriation.\" Under that statute, misappropriation includes acquiring a trade secret while knowing or having reason to know it was acquired by improper means, and it also includes disclosing or using a trade secret without express or implied consent under specified circumstances — including where the person used improper means to acquire it, or knew or had reason to know they owed a duty to keep it secret or limit its use. This definition is substantively similar to the federal Defend Trade Secrets Act's own misappropriation definition, though the two statutes use some different phrasing, and both a federal DTSA claim and a California UTSA claim can potentially be based on the same underlying conduct.",
+      "gap": "This is one state's statute, used as real evidence of California's own definition of \"misappropriation\" — not a claim about which state's law governs this letter or any dispute related to it, and not a claim that misappropriation, as this statute defines it, occurred in any specific case. This clause cites a single statutory subsection, Cal. Civ. Code § 3426.1(b); no additional independent source was found for this. The observation that California's definition is substantively similar to the federal definition is this researcher's own side-by-side comparison of the two statutes' text (compare 18 U.S.C. § 1839(5), quoted in a separate authority clause in this document), not a holding from any case that has compared them; no case law testing that comparison is included, since a CourtListener search attempted for this clause returned a rate-limit error (HTTP 429) before any case could be retrieved.",
+      "citations": [
+        {
+          "case": "Cal. Civ. Code § 3426.1(b) (official leginfo.legislature.ca.gov text)",
+          "cite": "California Uniform Trade Secrets Act, definition of \"misappropriation\"",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=3426.1.",
+          "quote": "\"Misappropriation\" means: (1) Acquisition of a trade secret of another by a person who knows or has reason to know that the trade secret was acquired by improper means; or (2) Disclosure or use of a trade secret of another without express or implied consent by a person who: (A) Used improper means to acquire knowledge of the trade secret; or (B) At the time of disclosure or use, knew or had reason to know that his or her knowledge of the trade secret was: (i) Derived from or through a person who had utilized improper means to acquire it; (ii) Acquired under circumstances giving rise to a duty to maintain its secrecy or limit its use; or (iii) Derived from or through a person who owed a duty to the person seeking relief to maintain its secrecy or limit its use; or (C) Before a material change of his or her position, knew or had reason to know that it was a trade secret and that knowledge of it had been acquired by accident or mistake."
+        }
+      ]
+    },
+    {
+      "id": "tsmisap_ca_remedies",
+      "title": "California's Remedies for Trade Secret Misappropriation",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-02",
+      "body": "California's Uniform Trade Secrets Act allows a complainant to recover damages for actual loss caused by misappropriation, plus damages for unjust enrichment caused by the misappropriation that isn't already counted in the actual-loss figure. If neither actual loss nor unjust enrichment can be proven, the statute instead allows a court to order payment of a reasonable royalty for no longer than the period the use could have been prohibited. If the misappropriation was willful and malicious, the statute allows a court to award exemplary damages of up to twice the damages otherwise awarded. Separately, California's statute allows a court to award reasonable attorney's fees and costs to the prevailing party where a misappropriation claim (or a motion to terminate an injunction) is made or opposed in bad faith, or where willful and malicious misappropriation exists. This overall structure closely parallels the federal Defend Trade Secrets Act's own remedy structure, including the same two-times cap on exemplary damages for willful and malicious misappropriation, though the two statutes are independent of each other and a court would apply each on its own terms.",
+      "gap": "This is one state's statute, used as real evidence of California's own remedy structure for trade secret misappropriation — not a claim about which state's law governs this letter or any dispute related to it, and not a claim about what remedy, if any, a court would award for any specific conduct. This clause cites two different statutory sections, Cal. Civ. Code § 3426.3 (damages, royalty, and exemplary damages) and § 3426.4 (attorney's fees and costs) — these are separate sections of the same title, not different subsections of one section. The observation that California's two-times exemplary-damages cap parallels the federal cap is this researcher's own comparison of the two statutes' text (compare 18 U.S.C. § 1836(b)(3)(C), quoted in a separate authority clause in this document), not a holding from any case; no case law on how courts apply either cap in practice is included, since a CourtListener search attempted for this clause returned a rate-limit error (HTTP 429) before any case could be retrieved.",
+      "citations": [
+        {
+          "case": "Cal. Civ. Code § 3426.3 (official leginfo.legislature.ca.gov text)",
+          "cite": "California Uniform Trade Secrets Act, damages",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=3426.3.",
+          "quote": "(a) A complainant may recover damages for the actual loss caused by misappropriation. A complainant also may recover for the unjust enrichment caused by misappropriation that is not taken into account in computing damages for actual loss. (b) If neither damages nor unjust enrichment caused by misappropriation are provable, the court may order payment of a reasonable royalty for no longer than the period of time the use could have been prohibited. (c) If willful and malicious misappropriation exists, the court may award exemplary damages in an amount not exceeding twice any award made under subdivision (a) or (b)."
+        },
+        {
+          "case": "Cal. Civ. Code § 3426.4 (official leginfo.legislature.ca.gov text)",
+          "cite": "California Uniform Trade Secrets Act, attorney's fees",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=3426.4.",
+          "quote": "If a claim of misappropriation is made in bad faith, a motion to terminate an injunction is made or resisted in bad faith, or willful and malicious misappropriation exists, the court may award reasonable attorney’s fees and costs to the prevailing party."
+        }
+      ]
     }
   ]
 }
