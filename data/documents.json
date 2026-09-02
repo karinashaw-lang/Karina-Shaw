@@ -8635,5 +8635,73 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "emergency_custody_order_info_sheet",
+    "title": "Emergency (Ex Parte) Custody Order — Information Sheet",
+    "description": "Explains California's procedure for requesting an emergency, temporary child custody order without advance notice to the other parent: the ex parte application procedure and standard under Rule of Court 5.151, Family Code section 3064's immediate-harm standard, the required follow-up noticed hearing, the separate notice requirements for the ex parte application itself under Rule 5.165, the distinction from a Domestic Violence Restraining Order, and a brief distinction from the law-enforcement-initiated Emergency Protective Order.",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "exparteorder_application_declaration",
+      "exparteorder_crc5151_procedure_and_standard",
+      "exparteorder_fam3064_immediate_harm_standard",
+      "exparteorder_crc5165_notice_requirements",
+      "exparteorder_fam3062_followup_hearing",
+      "exparteorder_dvro_relationship_distinction",
+      "exparteorder_epo_distinction",
+      "exparteorder_signature_verification"
+    ],
+    "fields": [
+      {
+        "id": "requestingPartyName",
+        "label": "Requesting party's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "otherParentName",
+        "label": "Other parent's name",
+        "placeholder": "Taylor Morgan",
+        "required": true
+      },
+      {
+        "id": "childrenNames",
+        "label": "Children's names",
+        "placeholder": "Casey Lee, age 7",
+        "required": true
+      },
+      {
+        "id": "countyOfFiling",
+        "label": "County where filing",
+        "placeholder": "San Francisco County",
+        "required": true
+      },
+      {
+        "id": "dateOfMostRecentIncident",
+        "label": "Date of the most recent incident",
+        "placeholder": "August 28, 2026",
+        "required": true
+      },
+      {
+        "id": "factsShowingImmediateRisk",
+        "label": "Facts showing immediate harm or risk",
+        "placeholder": "the other parent has threatened to remove the child from California without notice",
+        "required": true
+      },
+      {
+        "id": "signatureDate",
+        "label": "Date signed",
+        "placeholder": "September 2, 2026",
+        "required": true
+      },
+      {
+        "id": "signatureCity",
+        "label": "City and state signed",
+        "placeholder": "San Francisco, California",
+        "required": true
+      }
+    ]
   }
 ]
