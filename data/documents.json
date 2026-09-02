@@ -9805,5 +9805,78 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "adverse_possession_info_sheet",
+    "title": "Adverse Possession — Information Sheet",
+    "description": "Explains California's statutory doctrine letting a person acquire title to real property through possession for the statutory period: the two statutory pathways (color of title under Code Civ. Proc. § 322 versus bare claim of right under § 324), the manner-of-possession requirements (enclosure, cultivation), the property-tax-payment requirement under § 325(b), the five-year limitations period, and the bar against adverse possession of publicly owned or dedicated land under Civ. Code § 1007. Distinct from the corpus's existing Boundary Line Agreement and Quiet Title Action documents, which only mention this doctrine in passing.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "adversepossession_possession_history_declaration",
+      "adversepossession_two_statutory_pathways",
+      "adversepossession_possession_manner_requirements",
+      "adversepossession_tax_payment_requirement",
+      "adversepossession_five_year_limitations_period",
+      "adversepossession_government_land_barred",
+      "adversepossession_declarant_certification"
+    ],
+    "fields": [
+      {
+        "id": "possessorName",
+        "label": "Possessor's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "recordOwnerName",
+        "label": "Record owner's name",
+        "placeholder": "Taylor Morgan",
+        "required": true
+      },
+      {
+        "id": "propertyAddress",
+        "label": "Property address",
+        "placeholder": "123 Main St, San Francisco, CA 94103",
+        "required": true
+      },
+      {
+        "id": "legalDescription",
+        "label": "Legal description of the property",
+        "placeholder": "Lot 12, Block 4, per map recorded in Book 10, Page 5",
+        "required": true
+      },
+      {
+        "id": "parcelNumber",
+        "label": "Assessor's parcel number",
+        "placeholder": "123-456-789",
+        "required": true
+      },
+      {
+        "id": "recordingCounty",
+        "label": "County",
+        "placeholder": "San Francisco County",
+        "required": true
+      },
+      {
+        "id": "possessionStartDate",
+        "label": "Date possession began",
+        "placeholder": "January 1, 2019",
+        "required": true
+      },
+      {
+        "id": "possessionMannerDescription",
+        "label": "Description of the manner of possession",
+        "placeholder": "enclosed by fence and used as a garden",
+        "required": true
+      },
+      {
+        "id": "taxPaymentDescription",
+        "label": "Description of property tax payment history",
+        "placeholder": "paid all property taxes assessed since 2019, as shown on county tax records",
+        "required": true
+      }
+    ]
   }
 ]
