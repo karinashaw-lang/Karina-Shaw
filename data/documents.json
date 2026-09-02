@@ -11577,5 +11577,67 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "ein_info_sheet",
+    "title": "Employer Identification Number (EIN) — Information Sheet",
+    "description": "Explains the federal Employer Identification Number: its statutory and regulatory basis, which entities and individuals the IRS says need one, situations where a single-member LLC or sole proprietor may continue using an existing number instead of a new EIN, how an application is made (including the IRS's own free-of-charge warning), a common point of confusion about whether a business reorganization requires a new EIN, and how California's separate EDD payroll tax account number differs from the federal EIN.",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "ein_declaration",
+      "ein_statutory_basis",
+      "ein_which_entities_need_one",
+      "ein_disregarded_entity_existing_number",
+      "ein_new_ein_not_required_on_reorganization",
+      "ein_how_to_apply",
+      "ein_state_vs_federal_disambiguation",
+      "ein_closing_signature"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company/entity name",
+        "placeholder": "Acme Innovations LLC",
+        "required": true
+      },
+      {
+        "id": "entityType",
+        "label": "Entity type",
+        "placeholder": "Single-member LLC",
+        "required": true
+      },
+      {
+        "id": "responsiblePartyName",
+        "label": "Responsible party's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "ssnOrItin",
+        "label": "Responsible party's SSN or ITIN (for reference only -- not filed by this document)",
+        "placeholder": "XXX-XX-XXXX",
+        "required": false
+      },
+      {
+        "id": "authorizedSignerName",
+        "label": "Name of person preparing this information sheet",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 2, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, state",
+        "placeholder": "Sacramento, California",
+        "required": true
+      }
+    ]
   }
 ]
