@@ -7830,5 +7830,93 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "alternative_workweek_schedule_election_info_sheet",
+    "title": "Alternative Workweek Schedule Election — Information Sheet",
+    "description": "Explains California's statutory process for adopting an alternative workweek schedule (Labor Code section 511 and IWC Wage Order No. 4): the two-thirds secret-ballot vote within a work unit, what the schedule changes about daily overtime, the required pre-election disclosure and voting procedure, the reporting requirement (and a real discrepancy between the statute and the wage order over which agency receives it), the repeal mechanism, and anti-coercion protection for the vote.",
+    "categories": [
+      "During employment"
+    ],
+    "clauseOrder": [
+      "awwelection_notice_disclosure",
+      "awwelection_authorization",
+      "awwelection_work_unit_definition",
+      "awwelection_overtime_mechanics",
+      "awwelection_election_procedure_disclosure",
+      "awwelection_reporting_requirement",
+      "awwelection_repeal_second_election",
+      "awwelection_anticoercion",
+      "awwelection_distinct_from_flextime",
+      "awwelection_results_certification"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme Corp",
+        "required": true
+      },
+      {
+        "id": "workUnitDescription",
+        "label": "Description of the affected work unit",
+        "placeholder": "the Assembly Department",
+        "required": true
+      },
+      {
+        "id": "proposedScheduleDescription",
+        "label": "Description of the proposed schedule",
+        "placeholder": "four 10-hour days, Monday through Thursday",
+        "required": true
+      },
+      {
+        "id": "disclosureMeetingDate",
+        "label": "Date of the pre-election disclosure meeting",
+        "placeholder": "September 15, 2026",
+        "required": true
+      },
+      {
+        "id": "electionDate",
+        "label": "Election date",
+        "placeholder": "September 29, 2026",
+        "required": true
+      },
+      {
+        "id": "affectedEmployeeCount",
+        "label": "Number of affected employees",
+        "placeholder": "24",
+        "required": true
+      },
+      {
+        "id": "votesInFavor",
+        "label": "Votes in favor",
+        "placeholder": "18",
+        "required": true
+      },
+      {
+        "id": "votesOpposed",
+        "label": "Votes opposed",
+        "placeholder": "6",
+        "required": true
+      },
+      {
+        "id": "employerRepresentativeName",
+        "label": "Employer representative's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "signatureDate",
+        "label": "Date signed",
+        "placeholder": "September 29, 2026",
+        "required": true
+      },
+      {
+        "id": "signatureCity",
+        "label": "City where signed",
+        "placeholder": "San Francisco, California",
+        "required": true
+      }
+    ]
   }
 ]
