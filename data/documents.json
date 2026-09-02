@@ -12214,5 +12214,60 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "sperm_egg_donor_parentage_info_sheet",
+    "title": "Sperm/Egg Donor Parentage — Information Sheet",
+    "description": "Explains California Family Code section 7613, the assisted-reproduction donor parentage framework distinct from this corpus's Gestational Carrier (Surrogacy) Agreement document: the two different default rules for a semen donor depending on physician/sperm-bank involvement, the different rule for ova and embryo providers, how a non-birth-giving intended parent's own parentage is established by written or oral consent, the optional section 7613.5 statutory forms and how they relate to the gestational-carrier framework, and the rules for multi-hand genetic material and embryo-disposition renunciation agreements.",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "donorparentage_declaration",
+      "donorparentage_sperm_donor_default_rule",
+      "donorparentage_ova_embryo_provider_rule",
+      "donorparentage_nonbirthgiving_intended_parent_consent",
+      "donorparentage_statutory_forms_and_gestcarrier_relationship",
+      "donorparentage_original_source_consent_and_embryo_disposition",
+      "donorparentage_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "intendedParent1Name",
+        "label": "First intended parent's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "intendedParent2Name",
+        "label": "Second intended parent's name, if applicable",
+        "placeholder": "Pat Morgan",
+        "required": false
+      },
+      {
+        "id": "donorName",
+        "label": "Donor's name",
+        "placeholder": "Taylor Morgan",
+        "required": true
+      },
+      {
+        "id": "donationType",
+        "label": "Description of the donation (semen, ova, or embryo; physician/sperm-bank involvement, if any)",
+        "placeholder": "Describe the donation",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 2, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, state",
+        "placeholder": "Sacramento, California",
+        "required": true
+      }
+    ]
   }
 ]
