@@ -12696,5 +12696,44 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "workplace_violence_prevention_plan_info_sheet",
+    "title": "Workplace Violence Prevention Plan — Information Sheet",
+    "description": "Information about California's Workplace Violence Prevention Plan requirement under Labor Code § 6401.9 (SB 553) — which employers and workplaces it covers, what the written plan must contain, employee training, the violent incident log, and recordkeeping.",
+    "categories": [
+      "During employment"
+    ],
+    "clauseOrder": [
+      "wvpp_declaration_and_scope",
+      "wvpp_applicability_and_exemptions",
+      "wvpp_plan_requirement_and_form",
+      "wvpp_plan_content_elements",
+      "wvpp_training_requirements",
+      "wvpp_violent_incident_log",
+      "wvpp_recordkeeping_and_access",
+      "wvpp_enforcement_and_effective_date",
+      "wvpp_acknowledgment_signature"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme Corp",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "programAdministratorName",
+        "label": "Plan administrator's name",
+        "placeholder": "Taylor Morgan",
+        "required": true
+      }
+    ]
   }
 ]
