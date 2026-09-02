@@ -29280,6 +29280,132 @@
           "quote": "In light of this extensive precedent, it cannot now be doubted that the Due Process Clause of the Fourteenth Amendment protects the fundamental right of parents to make decisions concerning the care, custody, and control of their children."
         }
       ]
+    },
+    {
+      "id": "patentinfringe_direct_infringement",
+      "title": "The Definition of Direct Patent Infringement",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-02",
+      "body": "Federal patent law defines direct infringement in a single sentence: whoever, without authority, makes, uses, offers to sell, or sells any patented invention within the United States, or imports a patented invention into the United States, during the term of the patent, infringes the patent. Several features of this definition are easy to miss. First, it names five distinct infringing acts — making, using, offering to sell, selling, and importing — any one of which is independently sufficient; a person who only imports a patented device, for example, without ever making or selling it, is still described by the statute. Second, the statute's text does not require that the person accused of infringing knew about the patent, intended to infringe it, or copied the invention; as written, it describes the making, using, offering to sell, selling, or importing itself, without reference to the actor's state of mind, which is why direct infringement is often described as not requiring intent (this differs from indirect infringement, addressed separately, where knowledge does play a role). Third, infringement under this provision is limited to the patent's territorial and temporal scope: the conduct must occur within the United States (or as an importation into the United States) and during the patent's term — a patent that has expired, or conduct that occurs entirely outside the United States, falls outside what this particular provision describes. Where {{patentDescription}} is the patent or patented invention in question, and {{allegedInfringerName}} is the party whose making, using, offering to sell, selling, or importing of it is at issue, this is the statutory definition against which that conduct would be measured.",
+      "gap": "This is federal law — patent infringement is governed exclusively by the Patent Act and by decisions of the U.S. Court of Appeals for the Federal Circuit, which has exclusive nationwide appellate jurisdiction over patent cases, so there is no state-by-state variation to resolve. The statutory text was checked directly against the U.S. Code at Cornell's Legal Information Institute, fetched twice with different request headers to confirm the returned text was byte-identical both times. This clause states the bare definitional rule only. It does not resolve whether any specific product or activity actually falls within a particular patent's claims — that determination (called claim construction and infringement analysis) requires comparing the accused product or activity to the specific claims of the specific patent at issue, which this sheet does not do and which is a fact- and document-intensive inquiry beyond what a general information sheet can perform. It also does not address the statute's separate provisions on process-patent infringement, infringement by supplying components for combination outside the United States, or the pharmaceutical-specific infringement provisions found elsewhere in the same section — none of which are summarized here.",
+      "citations": [
+        {
+          "case": "35 U.S.C. § 271(a) (Cornell LII text)",
+          "cite": "U.S. Code, infringement of patent — direct infringement",
+          "url": "https://www.law.cornell.edu/uscode/text/35/271",
+          "quote": "Except as otherwise provided in this title, whoever without authority makes, uses, offers to sell, or sells any patented invention, within the United States or imports into the United States any patented invention during the term of the patent therefor, infringes the patent."
+        }
+      ]
+    },
+    {
+      "id": "patentinfringe_indirect_infringement",
+      "title": "Indirect Infringement: Inducement and Contributory Infringement",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-02",
+      "body": "Beyond direct infringement, federal patent law separately describes two ways a person can be liable for someone else's infringing conduct. The first, active inducement, makes liable whoever actively induces infringement of a patent — a short statutory phrase that courts have read to require that the inducing party knew of the patent and knew (or was willfully blind to the fact) that the induced acts would constitute infringement; inducement liability depends on an underlying act of direct infringement by someone else that the defendant encouraged, instructed, or otherwise brought about. The second, contributory infringement, is narrower and more specific: it applies to whoever offers to sell or sells within the United States, or imports into the United States, a component of a patented machine, manufacture, combination, or composition — or a material or apparatus for use in practicing a patented process — that constitutes a material part of the invention, knowing it to be especially made or especially adapted for use in an infringement of the patent, and that is not a staple article or commodity of commerce suitable for substantial noninfringing use. In plain terms, contributory infringement targets suppliers of a specialized component that has essentially no legitimate use other than completing someone else's infringement, while inducement reaches anyone who knowingly encourages another party's infringing conduct regardless of whether they supply any component at all. Where {{allegedInfringerName}}'s conduct relative to {{patentDescription}} does not consist of directly making, using, selling, or importing the patented invention, these are the two statutory provisions under which conduct that facilitates someone else's infringement can independently give rise to liability.",
+      "gap": "Both provisions summarized here — 35 U.S.C. § 271(b) and § 271(c) — are subsections of the same statutory section as the direct-infringement provision addressed in a separate clause, so this clause and that one draw on the same source rather than two independent ones; the statutory text was checked directly against the U.S. Code at Cornell's Legal Information Institute, fetched twice with different request headers to confirm byte-identical results. This is federal law, uniform nationwide. This clause states the statutory text of both provisions; it does not restate the substantial body of Federal Circuit and Supreme Court case law interpreting what \"knowledge\" of the patent and of infringement means for inducement purposes (including how that knowledge requirement applies where a defendant was willfully blind, or genuinely believed in good faith that the patent was invalid) — that case law was not independently verified for this clause and is not summarized here. It also does not resolve whether any specific conduct actually satisfies either provision's requirements for any particular set of facts.",
+      "citations": [
+        {
+          "case": "35 U.S.C. § 271(b) (Cornell LII text)",
+          "cite": "U.S. Code, infringement of patent — active inducement",
+          "url": "https://www.law.cornell.edu/uscode/text/35/271",
+          "quote": "Whoever actively induces infringement of a patent shall be liable as an infringer."
+        },
+        {
+          "case": "35 U.S.C. § 271(c) (Cornell LII text)",
+          "cite": "U.S. Code, infringement of patent — contributory infringement",
+          "url": "https://www.law.cornell.edu/uscode/text/35/271",
+          "quote": "Whoever offers to sell or sells within the United States or imports into the United States a component of a patented machine, manufacture, combination or composition, or a material or apparatus for use in practicing a patented process, constituting a material part of the invention, knowing the same to be especially made or especially adapted for use in an infringement of such patent, and not a staple article or commodity of commerce suitable for substantial noninfringing use, shall be liable as a contributory infringer."
+        }
+      ]
+    },
+    {
+      "id": "patentinfringe_injunctive_relief",
+      "title": "Injunctions Are a Discretionary Equitable Remedy, Not an Automatic One",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-02",
+      "body": "The federal statute governing injunctions in patent cases states that courts having jurisdiction of patent cases may grant injunctions in accordance with the principles of equity to prevent the violation of any right secured by a patent, on such terms as the court deems reasonable. Two things about that wording matter. First, the word is \"may,\" not \"shall\" — the statute makes an injunction available, but it does not make one automatic upon a finding of infringement. Second, the statute ties the remedy to \"the principles of equity,\" which is a body of traditional, judge-made standards governing when a court will order or forbid specific conduct, as opposed to simply awarding money. Historically, some courts applied a presumption that a patent owner who proved infringement was entitled to an injunction as a matter of course. The U.S. Supreme Court's 2006 decision in eBay Inc. v. MercExchange, L.L.C. is widely cited for rejecting that presumption and holding that the traditional four-factor equitable test — requiring a patent owner seeking a permanent injunction to demonstrate irreparable injury, that remedies available at law (such as money damages) are inadequate to compensate for that injury, that the balance of hardships between the parties favors an injunction, and that the public interest would not be disserved by a permanent injunction — applies in patent cases just as in other areas of law, with no automatic entitlement to injunctive relief simply because infringement is shown. Whether an injunction would actually issue against {{allegedInfringerName}}'s conduct involving {{patentDescription}} is not something this sheet determines; it depends on how a court applying these equitable factors would weigh the specific facts of a specific case.",
+      "gap": "The statutory text of 35 U.S.C. § 283 was checked directly against the U.S. Code at Cornell's Legal Information Institute, fetched twice with different request headers to confirm byte-identical results, and is the only citation below. The description of eBay Inc. v. MercExchange and its four-factor test in the body above is stated as a widely-known principle of patent law, not as a verified quotation from the opinion — CourtListener, the case-law database used to verify authority clauses in this project, returned a rate-limit error (HTTP 429) when queried for that decision during this research session, and no other primary source was substituted for it. Accordingly, the eBay decision is not listed as a citation here, and its four-factor test should be understood as unverified background rather than a confirmed quotation from the case. This is federal law — patent remedies are governed by the Patent Act and by Federal Circuit and Supreme Court precedent applying it nationwide, without state-by-state variation.",
+      "citations": [
+        {
+          "case": "35 U.S.C. § 283 (Cornell LII text)",
+          "cite": "U.S. Code, injunctions in patent cases",
+          "url": "https://www.law.cornell.edu/uscode/text/35/283",
+          "quote": "The several courts having jurisdiction of cases under this title may grant injunctions in accordance with the principles of equity to prevent the violation of any right secured by patent, on such terms as the court deems reasonable."
+        }
+      ]
+    },
+    {
+      "id": "patentinfringe_damages",
+      "title": "Damages: A Reasonable-Royalty Floor, and Discretionary Trebling",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-02",
+      "body": "Federal patent law sets a floor, not a fixed amount, for money damages in an infringement case. Upon finding for the patent owner, the statute directs the court to award damages adequate to compensate for the infringement, but in no event less than a reasonable royalty for the use the infringer made of the invention, together with interest and costs as fixed by the court. \"Adequate to compensate\" and \"reasonable royalty\" are not the same figure in every case — actual damages (such as the patent owner's own lost profits) can exceed a royalty figure, but a reasonable royalty operates as the statutory minimum even where the patent owner cannot prove a higher actual-damages amount. Separately, the statute gives the court discretion — not an obligation — to increase the damages found or assessed, up to three times that amount; this is the source of what is commonly called treble damages, and courts have limited its use to cases involving egregious or willful infringement rather than applying it routinely to every infringement finding. The statute also allows the court to receive expert testimony to help determine damages or what royalty would be reasonable under the circumstances. Whether {{allegedInfringerName}}'s use of {{patentDescription}} would support a particular damages figure, or whether any enhancement would be available, is not something this sheet calculates.",
+      "gap": "The statutory text of 35 U.S.C. § 284 was checked directly against the U.S. Code at Cornell's Legal Information Institute, fetched twice with different request headers to confirm byte-identical results. This is federal law, uniform nationwide. This clause states the statute's text; it does not restate the Supreme Court's decision in Halo Electronics, Inc. v. Pulse Electronics, Inc. narrowing the standard for when enhanced damages are available, since that decision was not independently verified against a primary source in this research session and is not cited here. It also does not address the separate statutory carve-out, found in the same section of Title 35 as the marking statute, exempting increased damages from applying to certain provisional-rights infringement under 35 U.S.C. § 154(d).",
+      "citations": [
+        {
+          "case": "35 U.S.C. § 284 (Cornell LII text)",
+          "cite": "U.S. Code, damages for patent infringement",
+          "url": "https://www.law.cornell.edu/uscode/text/35/284",
+          "quote": "Upon finding for the claimant the court shall award the claimant damages adequate to compensate for the infringement, but in no event less than a reasonable royalty for the use made of the invention by the infringer, together with interest and costs as fixed by the court."
+        },
+        {
+          "case": "35 U.S.C. § 284 (Cornell LII text)",
+          "cite": "U.S. Code, damages for patent infringement — discretionary trebling",
+          "url": "https://www.law.cornell.edu/uscode/text/35/284",
+          "quote": "In either event the court may increase the damages up to three times the amount found or assessed."
+        }
+      ]
+    },
+    {
+      "id": "patentinfringe_marking_notice",
+      "title": "The Marking Statute: Unmarked Products Can Cut Off Damages",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-02",
+      "body": "A separate statute affects how far back in time a patent owner can recover damages, based on whether patented products were marked. The statute permits — but does not require — a patentee, or a person making, offering for sale, or selling a patented article under the patentee, to give public notice that an article is patented, by marking the article itself (or, if that isn't practical, its packaging) with the word \"patent\" or the abbreviation \"pat.\" together with the patent number, or with an internet address that associates the article with the patent number. The consequence for not marking is direct: in the event of a failure to mark, no damages may be recovered by the patentee in an infringement action, except on proof that the infringer was actually notified of the infringement and continued to infringe afterward — and even then, damages may be recovered only for infringement occurring after that notice. The statute also states that filing an infringement lawsuit itself counts as this kind of notice. In practical terms, a patent owner who never marked a patented product and never separately notified an accused infringer of the alleged infringement is limited, under this statute, to damages for infringement occurring on or after the date the lawsuit was filed — not for years of earlier unmarked, un-notified infringement, even if that infringement can otherwise be proven. Whether {{patentHolderName}} marked products embodying {{patentDescription}}, or gave {{allegedInfringerName}} actual notice of the alleged infringement, and when, are factual questions this sheet does not answer, but they are the specific facts this statute makes relevant to how far back damages can reach.",
+      "gap": "The statutory text of 35 U.S.C. § 287(a) was checked directly against the U.S. Code at Cornell's Legal Information Institute, fetched twice with different request headers to confirm byte-identical results. This is federal law, uniform nationwide. This clause addresses subsection (a) only; it does not address the separate, more specialized damages limitations for process-patent infringement under 35 U.S.C. § 271(g) found later in the same section, nor an additional marking-related notice-of-suit provision found elsewhere in the same subsection concerning actions the patentee failed to bring within a set period — neither was independently verified for inclusion here. It also does not resolve whether marking obligations under this statute actually applied to any specific product, or whether any specific communication would count as \"actual notice\" of infringement sufficient to satisfy the statute's proof requirement — both are fact-specific determinations beyond what a general information sheet addresses.",
+      "citations": [
+        {
+          "case": "35 U.S.C. § 287(a) (Cornell LII text)",
+          "cite": "U.S. Code, limitation on damages for failure to mark",
+          "url": "https://www.law.cornell.edu/uscode/text/35/287",
+          "quote": "In the event of failure so to mark, no damages shall be recovered by the patentee in any action for infringement, except on proof that the infringer was notified of the infringement and continued to infringe thereafter, in which event damages may be recovered only for infringement occurring after such notice."
+        }
+      ]
+    },
+    {
+      "id": "patentinfringe_statute_of_limitations",
+      "title": "The Six-Year Damages Limitations Period",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-02",
+      "body": "Federal patent law places a firm time limit on how far back damages can be recovered, stated in its own terms rather than as an ordinary filing deadline: except as otherwise provided by law, no recovery may be had for any infringement committed more than six years before the filing of the complaint (or a counterclaim for infringement) in the action. Note precisely what this provision limits — it caps how far back in time damages can be recovered once a suit is filed, measured backward six years from the filing date, rather than setting a deadline by which a lawsuit itself must be filed after infringement is discovered or occurs. Ongoing infringement that continues within the six years before filing remains fully within reach even if the same infringing conduct began earlier; what falls outside the statute is recovery for the portion of infringement that occurred more than six years before the complaint or counterclaim was filed. Where the conduct at issue involving {{patentDescription}} occurred, and how it relates to any complaint's filing date, are the facts this six-year measurement would be applied to; this sheet does not calculate that period for any specific timeline.",
+      "gap": "The statutory text of 35 U.S.C. § 286 was checked directly against the U.S. Code at Cornell's Legal Information Institute, fetched twice with different request headers to confirm byte-identical results. This is federal law, uniform nationwide. This clause states the statute's general rule; it does not address the statute's separate second paragraph concerning claims against the United States government for use of a patented invention, which extends the period in a specific, narrower circumstance not addressed here, and it does not resolve what other doctrines (referenced only obliquely by the statute's \"except as otherwise provided by law\" language, such as equitable doctrines affecting timing) might bear on a specific case's facts.",
+      "citations": [
+        {
+          "case": "35 U.S.C. § 286 (Cornell LII text)",
+          "cite": "U.S. Code, time limitation on damages",
+          "url": "https://www.law.cornell.edu/uscode/text/35/286",
+          "quote": "Except as otherwise provided by law, no recovery shall be had for any infringement committed more than six years prior to the filing of the complaint or counterclaim for infringement in the action."
+        }
+      ]
+    },
+    {
+      "id": "patentinfringe_notice_declaration",
+      "title": "Infringement Observation Record",
+      "kind": "drafting",
+      "body": "Patent Holder: {{patentHolderName}}\nPatent at Issue: {{patentDescription}}\nParty Whose Conduct Is Described: {{allegedInfringerName}}\nDescription of the Observed Conduct (e.g., the product, process, or activity believed to involve the patent, and how {{allegedInfringerName}} is understood to be making, using, offering to sell, selling, or importing it): ______________________________________________________\nDate This Conduct Was First Observed or Learned Of: _______________\nWas {{patentDescription}} Marked on Products Embodying It, to {{patentHolderName}}'s Knowledge? ___ Yes ___ No ___ Unknown\nHas {{allegedInfringerName}} Previously Been Given Actual, Specific Notice of This Conduct and of {{patentDescription}}? ___ Yes, on (date): _______________ ___ No ___ Unknown\n\nThis record documents facts as understood by {{patentHolderName}} as of the date below. It is a factual record only. It does not conclude, allege, or certify that the conduct described actually infringes {{patentDescription}} or any claim of it, does not constitute a notice of infringement or demand to {{allegedInfringerName}}, and does not determine what damages period, remedy, or legal consequence would apply to the facts recorded. Whether particular conduct falls within the scope of a particular patent's claims is a legal and technical determination this record does not make."
+    },
+    {
+      "id": "patentinfringe_certification",
+      "title": "Certification",
+      "kind": "drafting",
+      "body": "The undersigned certifies that the facts recorded above are true and accurate to the best of the undersigned's knowledge as of the date signed, and understands that this information sheet is a factual record and general legal-information resource only — it does not constitute legal advice, does not evaluate whether any described conduct infringes any patent, and is not a substitute for consultation with a licensed attorney regarding any specific situation.\n\nSigned: _______________________\nName: {{patentHolderName}}\nDate: _______________"
     }
   ]
 }

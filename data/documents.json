@@ -10548,5 +10548,43 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "patent_infringement_info_sheet",
+    "title": "Patent Infringement — Information Sheet",
+    "description": "Explains the basics of a federal patent infringement claim under 35 U.S.C. §271 -- distinct from the corpus's existing Patent Assignment Agreement and Provisional Patent Application documents, which cover ownership and filing rather than infringement. Covers the direct infringement definition, indirect infringement (inducement and contributory infringement), the discretionary nature of injunctive relief, the reasonable-royalty damages floor and discretionary treble-damages cap, the marking statute's effect on recoverable damages, and the six-year damages limitations period.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "patentinfringe_notice_declaration",
+      "patentinfringe_direct_infringement",
+      "patentinfringe_indirect_infringement",
+      "patentinfringe_injunctive_relief",
+      "patentinfringe_damages",
+      "patentinfringe_marking_notice",
+      "patentinfringe_statute_of_limitations",
+      "patentinfringe_certification"
+    ],
+    "fields": [
+      {
+        "id": "patentHolderName",
+        "label": "Patent holder's name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "allegedInfringerName",
+        "label": "Alleged infringer's name",
+        "placeholder": "Beta Corp.",
+        "required": true
+      },
+      {
+        "id": "patentDescription",
+        "label": "Description of the patent",
+        "placeholder": "U.S. Patent No. 10,123,456",
+        "required": true
+      }
+    ]
   }
 ]
