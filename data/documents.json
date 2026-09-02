@@ -9045,5 +9045,54 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "fixed_term_employment_contract_info_sheet",
+    "title": "Fixed-Term Employment Contract — Information Sheet",
+    "description": "Explains California law on employment for a specified term as an alternative to at-will employment: the statutory definition of a specified term and how it displaces the at-will default under Labor Code section 2922, the statutory grounds for early termination during the term, the general contract-damages remedy that applies to a premature termination without sufficient cause, what happens when work continues after the term ends, and how a specified term differs from an at-will offer, including one with a probationary period.",
+    "categories": [
+      "Hiring"
+    ],
+    "clauseOrder": [
+      "fixedterm_declaration",
+      "fixedterm_atwill_default_specified_term",
+      "fixedterm_sufficient_cause_grounds",
+      "fixedterm_premature_termination_damages",
+      "fixedterm_renewal_and_holdover",
+      "fixedterm_distinction_from_atwill_and_probation",
+      "fixedterm_signature"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme Corp",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "jobTitle",
+        "label": "Job title",
+        "placeholder": "Project Manager",
+        "required": true
+      },
+      {
+        "id": "startDate",
+        "label": "Start date",
+        "placeholder": "October 1, 2026",
+        "required": true
+      },
+      {
+        "id": "endDate",
+        "label": "Specified end date",
+        "placeholder": "September 30, 2027",
+        "required": true
+      }
+    ]
   }
 ]
