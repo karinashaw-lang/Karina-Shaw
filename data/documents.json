@@ -10164,5 +10164,201 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "trademark_opposition_cancellation_info_sheet",
+    "title": "Trademark Opposition and Cancellation — Information Sheet",
+    "description": "Explains the Trademark Trial and Appeal Board (TTAB) administrative proceedings for opposing a pending trademark application or cancelling an existing registration under 15 U.S.C. §§1063, 1064 -- distinct from the corpus's existing Trademark Registration, License, Assignment, and Cease and Desist documents, none of which cover this adversarial administrative process. Covers who may oppose or petition to cancel, the statutory deadlines, how available cancellation grounds narrow after five years, grounds common to both proceedings, the Board's register-only authority (distinct from federal court infringement litigation), and abandonment as a ground.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "ttab_notice_declaration",
+      "ttab_opposition_basis_and_timing",
+      "ttab_cancellation_basis_and_timing",
+      "ttab_grounds_common_to_both_proceedings",
+      "ttab_administrative_tribunal_scope",
+      "ttab_abandonment_ground",
+      "ttab_signature_certification"
+    ],
+    "fields": [
+      {
+        "id": "filingPartyName",
+        "label": "Filing party's name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "adversePartyName",
+        "label": "Adverse party's name",
+        "placeholder": "Beta Corp.",
+        "required": true
+      },
+      {
+        "id": "proceedingType",
+        "label": "Type of proceeding",
+        "placeholder": "opposition",
+        "required": true
+      },
+      {
+        "id": "trademarkDescription",
+        "label": "Description of the trademark",
+        "placeholder": "ACME (word mark)",
+        "required": true
+      },
+      {
+        "id": "goodsServicesDescription",
+        "label": "Description of goods/services",
+        "placeholder": "consumer electronics",
+        "required": true
+      },
+      {
+        "id": "registrationOrApplicationNumber",
+        "label": "Registration or application number",
+        "placeholder": "Serial No. 90/123,456",
+        "required": true
+      },
+      {
+        "id": "groundsForProceeding",
+        "label": "Grounds for the proceeding",
+        "placeholder": "likelihood of confusion with a prior mark",
+        "required": true
+      }
+    ]
+  },
+  {
+    "id": "close_corporation_info_sheet",
+    "title": "Close Corporation — Formation Information Sheet",
+    "description": "Explains California's statutory close corporation election within the General Corporation Law (Corp. Code § 158 and related sections) -- a shareholder-cap election (not exceeding 35 shareholders) with a required articles statement, a mandatory share certificate legend, the option for shareholders to govern by written management agreement in place of a board, and expanded standing for close-corporation shareholders in deadlock and dissolution proceedings.",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "closecorp_election_declaration",
+      "closecorp_definition",
+      "closecorp_election_amendment_mechanics",
+      "closecorp_transfer_restriction_legend",
+      "closecorp_shareholder_management_agreement",
+      "closecorp_deadlock_dissolution",
+      "closecorp_incorporator_signature"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "principalOfficeAddress",
+        "label": "Principal office address",
+        "placeholder": "123 Main St, San Francisco, CA 94103",
+        "required": true
+      },
+      {
+        "id": "agentName",
+        "label": "Agent for service of process's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "agentAddress",
+        "label": "Agent for service of process's address",
+        "placeholder": "123 Main St, San Francisco, CA 94103",
+        "required": true
+      },
+      {
+        "id": "incorporatorName",
+        "label": "Incorporator's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "authorizedShares",
+        "label": "Number of authorized shares",
+        "placeholder": "1,000,000",
+        "required": true
+      },
+      {
+        "id": "maxShareholders",
+        "label": "Maximum number of shareholders of record",
+        "placeholder": "35",
+        "required": true
+      }
+    ]
+  },
+  {
+    "id": "mobilehome_park_tenancy_info_sheet",
+    "title": "Mobilehome Park Tenancy (Mobilehome Residency Law) — Information Sheet",
+    "description": "Explains California's Mobilehome Residency Law (Civ. Code §§798-799.13), which governs the tenancy of a mobilehome space in a mobilehome park -- a distinct statutory scheme from an ordinary residential lease: the homeowner owns the mobilehome itself and rents only the site. Covers the tenancy structure, required rental agreement contents, the anti-waiver rule for statutory rights, the statute's own closed list of termination grounds, notice periods for rent increases and termination, and the right to sell the mobilehome in place with limited park approval discretion.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "mobilehome_tenancy_declaration",
+      "mobilehome_tenancy_structure_definitions",
+      "mobilehome_rental_agreement_requirements",
+      "mobilehome_rules_waiver_protection",
+      "mobilehome_termination_grounds",
+      "mobilehome_notice_periods",
+      "mobilehome_sale_in_place",
+      "mobilehome_ack"
+    ],
+    "fields": [
+      {
+        "id": "homeownerName",
+        "label": "Homeowner's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "parkOwnerName",
+        "label": "Park owner/management's name",
+        "placeholder": "Acme Mobilehome Park, LLC",
+        "required": true
+      },
+      {
+        "id": "parkName",
+        "label": "Park name",
+        "placeholder": "Sunset Mobile Estates",
+        "required": true
+      },
+      {
+        "id": "parkAddress",
+        "label": "Park address",
+        "placeholder": "456 Park Rd, Sacramento, CA 95814",
+        "required": true
+      },
+      {
+        "id": "spaceNumber",
+        "label": "Space number",
+        "placeholder": "Space 12",
+        "required": true
+      },
+      {
+        "id": "mobilehomeDescription",
+        "label": "Description of the mobilehome",
+        "placeholder": "1998 double-wide, 24x60 ft",
+        "required": true
+      },
+      {
+        "id": "monthlyRent",
+        "label": "Monthly space rent",
+        "placeholder": "00",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "October 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Sacramento, California",
+        "required": true
+      }
+    ]
   }
 ]
