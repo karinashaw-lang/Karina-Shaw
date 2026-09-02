@@ -5476,5 +5476,48 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "work_made_for_hire_agreement",
+    "title": "Work Made for Hire Agreement (Independent Contractor)",
+    "description": "A prospective work-for-hire designation for work commissioned from an independent contractor, distinct from transferring an already-existing copyright: covers the conjunctive two-part test under 17 U.S.C. § 101 (one of nine enumerated categories, plus a signed writing) that must be satisfied for contractor work-for-hire status to attach, and a backup assignment clause for work that doesn't qualify.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "wfh_default_ownership_rule",
+      "wfh_statutory_definition_two_branches",
+      "wfh_no_automatic_status_for_contractors",
+      "wfh_designation_clause",
+      "wfh_outside_categories_fallback_assignment",
+      "wfh_fallback_assignment_clause",
+      "wfh_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "contractorName",
+        "label": "Contractor's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "workDescription",
+        "label": "Description of the work",
+        "placeholder": "A 90-second animated explainer video for use in Acme's onboarding materials",
+        "required": true
+      },
+      {
+        "id": "categoryOfWork",
+        "label": "Statutory category under 17 U.S.C. § 101",
+        "placeholder": "part of an audiovisual work",
+        "required": true
+      }
+    ]
   }
 ]
