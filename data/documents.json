@@ -11736,5 +11736,47 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "employee_invention_statutory_limits_shop_right_info_sheet",
+    "title": "Employee Invention Assignment — Statutory Limits and Shop Right — Information Sheet",
+    "description": "Explains two things California law does with an invention-assignment provision like the one in the corpus's Invention Assignment & Confidentiality Agreement: the statutory carve-out under Labor Code sections 2870-2872 for inventions an employee develops entirely on their own time and without employer resources, and the separate common-law \"shop right\" doctrine under which an employer can hold an implied, nonexclusive license to use (but not own) an invention made with the employer's time or materials.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "inventionlimits_declaration",
+      "inventionlimits_2870_carveout",
+      "inventionlimits_2872_notice",
+      "inventionlimits_shop_right_definition",
+      "inventionlimits_shop_right_not_ownership",
+      "inventionlimits_signature"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme Innovations LLC",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 2, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, state",
+        "placeholder": "San Francisco, California",
+        "required": true
+      }
+    ]
   }
 ]
