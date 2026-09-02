@@ -7681,5 +7681,73 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "piece_rate_compensation_agreement_info_sheet",
+    "title": "Piece-Rate Compensation Agreement — Information Sheet",
+    "description": "Explains California Labor Code section 226.2's rules for piece-rate employees: the requirement to pay rest/recovery periods and other nonproductive time separately from piece-rate earnings, the minimum-rate formulas for each, the piece-rate-specific wage-statement itemization requirement, the now-expired transitional safe harbor for past noncompliance, and the absence of a statutory definition of piece-rate compensation itself.",
+    "categories": [
+      "During employment"
+    ],
+    "clauseOrder": [
+      "piecerate_declaration",
+      "piecerate_core_separate_compensation",
+      "piecerate_rate_formula",
+      "piecerate_nonproductive_time_rate",
+      "piecerate_itemization_addon",
+      "piecerate_safe_harbor_expired",
+      "piecerate_definition_gap",
+      "piecerate_signature_acknowledgment"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme Corp",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "pieceRateAmount",
+        "label": "Piece rate amount",
+        "placeholder": "$2.50 per unit",
+        "required": true
+      },
+      {
+        "id": "unitOfProductionDescription",
+        "label": "Description of the unit of production or task",
+        "placeholder": "each garment sewn and inspected",
+        "required": true
+      },
+      {
+        "id": "effectiveDate",
+        "label": "Effective date",
+        "placeholder": "October 1, 2026",
+        "required": true
+      },
+      {
+        "id": "signatureDate",
+        "label": "Date signed",
+        "placeholder": "October 1, 2026",
+        "required": true
+      },
+      {
+        "id": "signatureCity",
+        "label": "City where signed",
+        "placeholder": "San Francisco, California",
+        "required": true
+      },
+      {
+        "id": "authorizedSignerName",
+        "label": "Authorized signer's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      }
+    ]
   }
 ]
