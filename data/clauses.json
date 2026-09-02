@@ -15350,6 +15350,144 @@
       "title": "Statement of Plan and Account Information, and Signature",
       "kind": "drafting",
       "body": "The following information relates to {{employeeName}}'s account under {{companyName}}'s {{planName}} following the termination of {{employeeName}}'s employment on {{terminationDate}}:\n\nRetirement plan name: {{planName}}\n\nVested account balance (if known as of the date of this notice): {{vestedBalance}}\n\nThis document does not state, and should not be read to state, whether {{employeeName}} should roll this balance over, take it as a cash distribution, leave it in {{planName}} (if the plan permits that), or take any other action available under {{planName}}'s own terms and applicable federal law. Those are decisions for {{employeeName}} to make, informed by the written explanation {{planName}}'s administrator is required to provide before any eligible rollover distribution is made, and by {{employeeName}}'s own tax and financial considerations, which this document does not address.\n\n{{employeeName}} states that the foregoing plan and balance information is accurate to the best of {{employeeName}}'s knowledge as of the date below.\n\nSignature: ☐ _________________________ Date: _______________\n\n{{employeeName}}"
+    },
+    {
+      "id": "custodymod_declaration",
+      "title": "Declaration of Parents and the Order Sought to Be Modified",
+      "kind": "drafting",
+      "body": "This Post-Judgment Modification of Child Custody/Support — Information Sheet concerns an existing California custody, visitation, or support order regarding {{childName}} (date of birth: {{childDOB}}), whose parents are {{parent1Name}} and {{parent2Name}}. The order sought to be modified was entered on {{originalOrderDate}} in {{countyOfFiling}}. This information sheet is prepared for use alongside an actual noticed motion or order to show cause to modify or terminate that order, filed in the California superior court that entered it. It is not itself a court filing, and completing it does not modify, terminate, or otherwise change the existing custody, visitation, or support order concerning {{childName}}. Only a new order signed by the court can do that."
+    },
+    {
+      "id": "custodymod_court_continuing_jurisdiction",
+      "title": "The Court's Continuing Jurisdiction to Modify Custody and Support — Two Different Statutes",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-02",
+      "body": "A California court's authority to change a custody or support order it has already entered does not expire once the original judgment becomes final. As to custody, the court \"may, during the pendency of a proceeding or at any time thereafter, make an order for the custody of a child during minority that seems necessary or proper.\" As to support, a support order \"may be modified or terminated at any time as the court determines to be necessary,\" subject to statutory limits described elsewhere in this document. In each case, that continuing authority belongs to the court, not to {{parent1Name}} or {{parent2Name}} acting alone.",
+      "gap": "This is one state's statute, used as real evidence of California's post-judgment custody/support modification process — not a claim about which state's law governs a specific order. This document is informational: it does not itself modify or terminate any custody, visitation, or support order concerning this document's parents; only a court order can do that. These two citations are to two different Family Code sections (§ 3022, governing custody, and § 3651(a), governing support), not subsections of the same section. This corrects an initial research assumption in the task brief that treated § 3651 as the statutory basis for modifying custody as well as support: on the fetched statutory text, § 3651 addresses only support orders (child and spousal) and never uses the word \"custody\"; the custody-specific continuing-jurisdiction statute is instead § 3022, cited separately here.",
+      "citations": [
+        {
+          "case": "Cal. Fam. Code § 3022 (California Legislative Information text)",
+          "cite": "the court's continuing jurisdiction over custody",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=3022.",
+          "quote": "The court may, during the pendency of a proceeding or at any time thereafter, make an order for the custody of a child during minority that seems necessary or proper."
+        },
+        {
+          "case": "Cal. Fam. Code § 3651(a) (California Legislative Information text)",
+          "cite": "the court's continuing jurisdiction over support",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=3651.",
+          "quote": "Except as provided in subdivisions (c) and (d) and subject to Article 3 (commencing with Section 3680) and Sections 3552, 3587, and 4004, a support order may be modified or terminated at any time as the court determines to be necessary."
+        }
+      ]
+    },
+    {
+      "id": "custodymod_custody_changed_circumstances_doctrine",
+      "title": "Modifying a Final Custody Order: A Judicially Developed Stability Standard",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-02",
+      "body": "Beyond that bare continuing-jurisdiction statute, California's appellate courts have described a further, judicially developed limit on reopening a final custody judgment: before the court will revisit custody terms already decided, the parent seeking the change is ordinarily described as needing to show some significant change in circumstances since the prior custody order, tied to the child's welfare — a doctrine aimed at protecting the stability of a final custody judgment rather than allowing it to be relitigated on demand. That doctrine is not written into one clean Family Code section. The reason-stating and best-interest showing the Legislature did codify for one particular kind of custody order — a joint-custody order — reflects the same protective posture in narrower, statutory form: an order for joint custody \"may be modified or terminated upon the petition of one or both parents or on the court's own motion if it is shown that the best interest of the child requires modification or termination of the order,\" and if either parent opposes the change, \"the court shall state in its decision the reasons for modification or termination of the joint custody order.\"",
+      "gap": "This is one state's statute, used as real evidence of California's post-judgment custody modification process — not a claim about which state's law governs a specific custody order. This document is informational: it does not itself modify or terminate any custody order named in this document; only a court order can do that. This is a single statutory section (§ 3087); no additional independent source was found for this. This same section is independently cited in this corpus's Parenting Plan document (clause parenting_modification_standard); it is cited again here, independently re-verified against the statute's live text, for this document's distinct post-judgment-modification purpose. Honest gap on the broader doctrine: the changed-circumstances rule described in this clause's body — commonly associated with the California Supreme Court's decision in Montenegro v. Diaz, 26 Cal.4th 249 (2001) — is judge-made doctrine, not directly codified in one statute. This research attempted to independently verify that case's actual holding through CourtListener, the case-law source this corpus's verification discipline requires, but CourtListener's daily request cap (125 requests/day) had already been exhausted by earlier calls in this same research session before that attempt, with the next availability roughly 13.6 hours out at the time of the attempt. Rather than presenting an unverified case citation as verified, or waiting out the rate limit, this clause describes the doctrine's substance in general terms and does not cite Montenegro or any other case for it; that description should be read as unverified case law, not as an independently confirmed holding.",
+      "citations": [
+        {
+          "case": "Cal. Fam. Code § 3087 (California Legislative Information text)",
+          "cite": "modification or termination of a joint custody order",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=3087.",
+          "quote": "An order for joint custody may be modified or terminated upon the petition of one or both parents or on the court’s own motion if it is shown that the best interest of the child requires modification or termination of the order. If either parent opposes the modification or termination order, the court shall state in its decision the reasons for modification or termination of the joint custody order."
+        }
+      ]
+    },
+    {
+      "id": "custodymod_support_standard_differs_from_custody",
+      "title": "Modifying Support to Match the Guideline: A More Permissive Standard Than Custody's",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-02",
+      "body": "The standard governing a support-order modification is not identical to the judicially developed stability standard described elsewhere in this document for custody. On its face, the support-modification statute asks only whether the change is something \"the court determines to be necessary\"; it contains no \"changed circumstances\" language of its own. California's guideline-conformity rule goes further still in one specific circumstance: where {{parent1Name}} and {{parent2Name}} earlier stipulated to a child support order below the amount the statewide guideline formula would produce, \"no change of circumstances need be demonstrated to obtain a modification of the child support order to the applicable guideline level or above.\" A request to raise support to the guideline amount in that circumstance does not require the kind of threshold showing California courts describe before reopening a final custody judgment.",
+      "gap": "This is one state's statute, used as real evidence that California applies a different, and in this specific circumstance more permissive, standard to a child-support modification than the judicially developed changed-circumstances doctrine described in this document's companion clause on custody modification — not a claim about which state's law governs a specific support order, and not a claim that every support modification requires no showing at all: this statutory rule applies specifically to raising a below-guideline stipulated order up to the guideline level. A downward modification, a modification of an order that was not originally stipulated below guideline, or a modification unrelated to guideline conformity is not addressed by this subsection and may be subject to other standards this document does not describe. This document is informational: it does not itself modify or terminate any support order named in this document; only a court order can do that. This is a single statutory subsection (§ 4065(d)); no additional independent source was found for this.",
+      "citations": [
+        {
+          "case": "Cal. Fam. Code § 4065(d) (California Legislative Information text)",
+          "cite": "no change-of-circumstances showing to modify up to the guideline level",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=4065.",
+          "quote": "If the parties to a stipulated agreement stipulate to a child support order below the amount established by the statewide uniform guideline, no change of circumstances need be demonstrated to obtain a modification of the child support order to the applicable guideline level or above."
+        }
+      ]
+    },
+    {
+      "id": "custodymod_retroactivity_limit",
+      "title": "How Far Back a Support Modification Can Reach",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-02",
+      "body": "California law limits how far back in time a support modification can reach. A support order \"may not be modified or terminated as to an amount that accrued before the date of the filing of the notice of motion or order to show cause to modify or terminate,\" subject to narrow exceptions this document does not describe. Consistent with that limit, an order modifying or terminating support \"may be made retroactive to the date of the filing of the notice of motion or order to show cause to modify or terminate, or to any subsequent date\" — but not earlier, except as federal law or a narrow statutory exception separately provides.",
+      "gap": "This is one state's statute, used as real evidence of a real retroactivity limit tied to the date a party files a request to modify — not a claim about which state's law governs a specific support order, and not an exhaustive statement of the exceptions to that limit (§ 3651(c)(2)-(4) separately addresses a servicemember's activation and deployment, and § 3653(b)-(c) separately address retroactivity following unemployment or military deployment; none of those narrower exceptions is described in this clause). These two citations are to two different Family Code sections (§ 3651(c)(1) and § 3653(a)), not subsections of the same section; § 3651(c)(1) itself cross-references § 3653 only in the narrower military-deployment context this clause does not quote. This document is informational: it does not itself modify or terminate any support order named in this document; only a court order can do that. This clause does not address whether, or on what showing, a custody order may likewise be given retroactive effect; no equivalent custody-retroactivity statute was independently verified for this document, so none is offered here rather than presenting an unverified rule as verified.",
+      "citations": [
+        {
+          "case": "Cal. Fam. Code § 3651(c)(1) (California Legislative Information text)",
+          "cite": "no modification of amounts that accrued before the filing",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=3651.",
+          "quote": "Except as provided in paragraph (2) and subdivision (b), a support order may not be modified or terminated as to an amount that accrued before the date of the filing of the notice of motion or order to show cause to modify or terminate."
+        },
+        {
+          "case": "Cal. Fam. Code § 3653(a) (California Legislative Information text)",
+          "cite": "retroactivity to the date of filing, or later",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=3653.",
+          "quote": "An order modifying or terminating a support order may be made retroactive to the date of the filing of the notice of motion or order to show cause to modify or terminate, or to any subsequent date, except as provided in subdivision (b) or by federal law (42 U.S.C. Sec. 666(a)(9))."
+        }
+      ]
+    },
+    {
+      "id": "custodymod_no_self_modification_without_court_order",
+      "title": "A Parents' Agreement to Change Support Is Not, By Itself, a Modified Order",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-02",
+      "body": "{{parent1Name}} and {{parent2Name}} can agree between themselves that a support amount should change, but that agreement does not, by itself, become the legally operative support order. California's child-support-stipulation statute allows parties to \"stipulate to a child support amount subject to approval of the court\" — meaning court approval, not the parents' agreement alone, is what makes a stipulated amount an enforceable order. The support-modification statute confirms the same point from a different angle: it \"applies whether or not the support order is based upon an agreement between the parties,\" so even an order that originated in the parties' own agreement is changed only through the same court process described elsewhere in this document, not by a later, private agreement to change it.",
+      "gap": "This is one state's statute, used as real evidence that even an agreed change to a support order requires court approval to take legal effect — not a claim about which state's law governs a specific order. This document is informational: it does not itself modify or terminate any custody, visitation, or support order named in this document, and a parents' private agreement on that subject does not do so either; only a court order can do that. These two citations are to two different Family Code sections (§ 4065(a) and § 3651(e)), not subsections of the same section. § 4065(a) is also independently cited, for a different point (the specific findings required for a below-guideline stipulation), in this corpus's Child Support Agreement document (clause childsupport_stipulation_conditions); it is re-verified here against the statute's live text and quoted only for its opening sentence, for the narrower point that court approval — not agreement alone — is what makes a stipulated support figure operative. This document's research did not separately verify an equivalent single statutory statement that a custody order likewise cannot be changed by private agreement alone; that conclusion is drawn here from this document's companion clause on the court's continuing custody jurisdiction (Family Code § 3022), which describes only the court as empowered to \"make an order\" for custody, rather than from an independently cited custody-specific analogue to § 4065(a).",
+      "citations": [
+        {
+          "case": "Cal. Fam. Code § 4065(a) (California Legislative Information text)",
+          "cite": "a stipulated support amount is subject to court approval",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=4065.",
+          "quote": "Unless prohibited by applicable federal law, the parties may stipulate to a child support amount subject to approval of the court."
+        },
+        {
+          "case": "Cal. Fam. Code § 3651(e) (California Legislative Information text)",
+          "cite": "the modification statute applies regardless of the parties' agreement",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=3651.",
+          "quote": "This section applies whether or not the support order is based upon an agreement between the parties."
+        }
+      ]
+    },
+    {
+      "id": "custodymod_guideline_presumption_on_modification",
+      "title": "The Guideline Presumption Applies to a Modified Amount, Not Only a First-Time Order",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-02",
+      "body": "Whenever a California court sets a child support amount — including in ruling on a request to modify an existing order — the amount produced by the statewide guideline formula \"is presumed to be the correct amount of child support to be ordered.\" That presumption is rebuttable: a parent seeking a different, modified amount carries the burden of showing, by admissible evidence, that applying the formula would be unjust or inappropriate given the case's specific circumstances.",
+      "gap": "This is one state's statute, used as real evidence that a guideline-based presumption governs any court-ordered child support figure, not only a first-time order — not a claim about which state's law governs a specific support modification. This is a single statutory section (§ 4057(a)-(b)); no additional independent source was found for this. This same section is independently cited in this corpus's Child Support Agreement document (clause childsupport_guideline_presumption) for the initial-order context; it is cited again here, independently re-verified against the statute's live text, to state that the presumption applies to a modified amount as well — a reading drawn from § 4057(a)'s own unrestricted \"to be ordered\" language, since the statute does not separately limit the presumption to a first-time order, rather than from a sentence in the statute that names modification specifically. This document is informational: it does not itself modify or terminate any support order named in this document; only a court order can do that.",
+      "citations": [
+        {
+          "case": "Cal. Fam. Code § 4057(a)-(b) (California Legislative Information text)",
+          "cite": "the presumptive-correctness rule and its rebuttable burden",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=4057.",
+          "quote": "The amount of child support established by the formula provided in subdivision (a) of Section 4055 is presumed to be the correct amount of child support to be ordered. (b) The presumption of subdivision (a) is a rebuttable presumption affecting the burden of proof and may be rebutted by admissible evidence showing that application of the formula would be unjust or inappropriate in the particular case, consistent with the principles set forth in Section 4053, because one or more of the following factors is found to be applicable by a preponderance of the evidence, and the court states in writing or on the record the information required in subdivision (a) of Section 4056:"
+        }
+      ]
+    },
+    {
+      "id": "custodymod_change_description",
+      "title": "Description of the Alleged Changed Circumstance and Modification Sought",
+      "kind": "drafting",
+      "body": "For reference in connection with a request to modify the {{originalOrderDate}} custody, visitation, or support order concerning {{childName}}, entered in {{countyOfFiling}}: the circumstance identified as having changed since that order is: {{allegedChangedCircumstance}}. The modification described as being sought is: {{proposedModification}}. This description is background information only; it is not a declaration filed with any court, and it does not itself change the existing order."
+    },
+    {
+      "id": "custodymod_signature_block",
+      "title": "Signature and Acknowledgment — Not a Modification Order",
+      "kind": "drafting",
+      "body": "I declare under penalty of perjury under the laws of the State of California that the foregoing background information is true and correct.\n\nExecuted on {{dateSigned}} at {{cityState}}.\n\nSignature of {{parent1Name}}: ☐ _________________________\n\n[This information sheet is prepared for use alongside an actual noticed motion or order to show cause to modify or terminate a custody, visitation, or support order, filed with the California superior court that entered the order. It does not itself constitute, replace, or complete that filing, and it does not modify or terminate any custody, visitation, or support order concerning {{childName}}; only a new court order can do that.]"
     }
   ]
 }

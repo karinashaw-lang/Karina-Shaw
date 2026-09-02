@@ -5607,5 +5607,86 @@
         "required": false
       }
     ]
+  },
+  {
+    "id": "custody_support_modification_info_sheet",
+    "title": "Post-Judgment Modification of Child Custody/Support — Information Sheet",
+    "description": "An informational sheet describing California's post-judgment process for modifying an existing custody, visitation, or support order -- distinct from the initial Parenting Plan and Child Support Agreement documents. Covers the court's continuing jurisdiction, the judicially developed changed-circumstances standard for custody, the more permissive statutory standard for support, retroactivity limits, and why a parents' private agreement alone doesn't modify an order. Does not itself modify any order; only a court order does that.",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "custodymod_declaration",
+      "custodymod_court_continuing_jurisdiction",
+      "custodymod_custody_changed_circumstances_doctrine",
+      "custodymod_support_standard_differs_from_custody",
+      "custodymod_retroactivity_limit",
+      "custodymod_no_self_modification_without_court_order",
+      "custodymod_guideline_presumption_on_modification",
+      "custodymod_change_description",
+      "custodymod_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "parent1Name",
+        "label": "First parent's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "parent2Name",
+        "label": "Second parent's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "childName",
+        "label": "Child's name",
+        "placeholder": "Alex Morgan-Lee",
+        "required": true
+      },
+      {
+        "id": "childDOB",
+        "label": "Child's date of birth",
+        "placeholder": "May 4, 2019",
+        "required": true
+      },
+      {
+        "id": "originalOrderDate",
+        "label": "Date of the order sought to be modified",
+        "placeholder": "January 15, 2024",
+        "required": true
+      },
+      {
+        "id": "countyOfFiling",
+        "label": "County of filing",
+        "placeholder": "Sacramento County",
+        "required": true
+      },
+      {
+        "id": "allegedChangedCircumstance",
+        "label": "Alleged changed circumstance",
+        "placeholder": "Parent relocated 150 miles for a new job, affecting the existing visitation schedule",
+        "required": true
+      },
+      {
+        "id": "proposedModification",
+        "label": "Modification sought",
+        "placeholder": "Revised weekend visitation schedule accounting for the new distance",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, state",
+        "placeholder": "Sacramento, California",
+        "required": true
+      }
+    ]
   }
 ]
