@@ -6584,5 +6584,43 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "landlord_right_of_entry_info_sheet",
+    "title": "Landlord's Right of Entry — Information Sheet",
+    "description": "An information sheet describing California's statutory limits on a residential landlord's right to enter a rented unit, distinct from the habitability clauses in this corpus's Residential Lease Agreement document. Covers the permitted purposes for entry, the written-notice requirement and its content/delivery methods, the two reasonable-notice presumptions (24 hours generally, 6 days for mailed notice), the normal-business-hours restriction, the three situations requiring no notice at all, the narrower oral-notice exceptions for showing the property to a buyer and for agreed repair visits, and what happens when a landlord violates the statute.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "landlordentry_declaration",
+      "landlordentry_general_rule",
+      "landlordentry_notice_requirement",
+      "landlordentry_business_hours",
+      "landlordentry_no_notice_required",
+      "landlordentry_reduced_notice_exceptions",
+      "landlordentry_remedy",
+      "landlordentry_ack"
+    ],
+    "fields": [
+      {
+        "id": "landlordName",
+        "label": "Landlord name",
+        "placeholder": "Acme Properties, LLC",
+        "required": true
+      },
+      {
+        "id": "tenantName",
+        "label": "Tenant name",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "propertyAddress",
+        "label": "Property address",
+        "placeholder": "456 Maple Street, Apt 2, Oakland, CA",
+        "required": true
+      }
+    ]
   }
 ]
