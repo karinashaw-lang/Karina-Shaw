@@ -12528,5 +12528,61 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "trust_decanting_info_sheet",
+    "title": "Trust Decanting — Information Sheet",
+    "description": "Explains California's Uniform Trust Decanting Act (Probate Code sections 19501-19530), the mechanism by which a trustee (rather than a settlor) distributes principal from an existing irrevocable trust into a new trust with different terms -- distinct from this corpus's Trust Amendment document, which covers a settlor's own power to modify a still-revocable trust. Covers who qualifies as an authorized fiduciary and which trusts the Act reaches, the expanded-versus-limited distributive discretion distinction, the notice and objection process, what an authorized fiduciary with expanded discretion cannot do to a beneficiary's interest, and protections for charitable interests and tax-sensitive provisions.",
+    "categories": [
+      "Estate Planning"
+    ],
+    "clauseOrder": [
+      "decanting_declaration",
+      "decanting_definition",
+      "decanting_authority_and_scope",
+      "decanting_discretion_distinction",
+      "decanting_notice_and_objection",
+      "decanting_beneficiary_protections",
+      "decanting_tax_and_charitable_limitations",
+      "decanting_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "trusteeName",
+        "label": "Trustee's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "trustName",
+        "label": "First trust name",
+        "placeholder": "The Pat Morgan Living Trust",
+        "required": true
+      },
+      {
+        "id": "originalTrustDate",
+        "label": "Date the first trust was executed",
+        "placeholder": "June 1, 2015",
+        "required": true
+      },
+      {
+        "id": "secondTrustName",
+        "label": "Proposed second trust name",
+        "placeholder": "The Pat Morgan 2026 Trust",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 2, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, state",
+        "placeholder": "San Francisco, California",
+        "required": true
+      }
+    ]
   }
 ]
