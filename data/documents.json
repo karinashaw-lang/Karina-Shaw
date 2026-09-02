@@ -5407,5 +5407,74 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "notice_of_default_foreclosure_info_sheet",
+    "title": "Notice of Default / Nonjudicial Foreclosure Process — Information Sheet",
+    "description": "An informational sheet describing California's nonjudicial (power-of-sale) foreclosure process under a deed of trust -- the process used for the large majority of California residential mortgage foreclosures. Covers the notice of default's trigger and required content, who may record it, the 3-month waiting period, notice-of-sale requirements, the right to reinstate the loan, and the anti-deficiency rule. Does not itself initiate, halt, or affect any specific foreclosure.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "foreclosure_intro_scope",
+      "foreclosure_power_of_sale_vs_judicial",
+      "foreclosure_who_may_record_notice_of_default",
+      "foreclosure_notice_of_default_trigger_and_content",
+      "foreclosure_waiting_period_before_notice_of_sale",
+      "foreclosure_notice_of_sale_requirements",
+      "foreclosure_reinstatement_right",
+      "foreclosure_antideficiency_rule",
+      "foreclosure_closing_acknowledgment"
+    ],
+    "fields": [
+      {
+        "id": "propertyAddress",
+        "label": "Property address",
+        "placeholder": "123 Main St., Sacramento, CA 95814",
+        "required": true
+      },
+      {
+        "id": "trustorName",
+        "label": "Trustor (borrower) name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "beneficiaryName",
+        "label": "Beneficiary (lender) name",
+        "placeholder": "Example Mortgage Lending, Inc.",
+        "required": true
+      },
+      {
+        "id": "trusteeName",
+        "label": "Trustee name (if known)",
+        "placeholder": "Statewide Trustee Services, Inc.",
+        "required": false
+      },
+      {
+        "id": "noticeOfDefaultRecordingDate",
+        "label": "Notice of Default recording date (if recorded)",
+        "placeholder": "August 1, 2026",
+        "required": false
+      },
+      {
+        "id": "defaultAmount",
+        "label": "Amount stated as in default (if stated)",
+        "placeholder": "$14,250.00",
+        "required": false
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, state",
+        "placeholder": "Sacramento, California",
+        "required": true
+      }
+    ]
   }
 ]
