@@ -4213,5 +4213,61 @@
     "categories": [
       "Business Formation"
     ]
+  },
+  {
+    "id": "mechanics_lien_preliminary_notice",
+    "title": "Mechanics Lien Preliminary Notice",
+    "description": "A contractor's, subcontractor's, or supplier's statutory preliminary notice -- the mandatory prerequisite (with narrow exceptions) to recording a mechanics lien, giving a stop payment notice, or asserting a payment bond claim -- covering who must give notice, the 20-day deadline and its partial-recovery rule for a late notice, required content and service, and the lien-recording deadlines that follow.",
+    "clauseOrder": [
+      "mechlien_notice_parties_and_work",
+      "mechlien_who_may_claim",
+      "mechlien_prelim_notice_who_must_give",
+      "mechlien_prelim_notice_deadline",
+      "mechlien_prelim_notice_content_and_service",
+      "mechlien_lien_recording_deadline",
+      "mechlien_lien_claim_requirements",
+      "mechlien_notice_statutory_warning_and_service"
+    ],
+    "fields": [
+      {
+        "id": "claimantName",
+        "label": "Claimant's name (contractor/supplier)",
+        "placeholder": "Acme Construction, Inc.",
+        "required": true
+      },
+      {
+        "id": "ownerName",
+        "label": "Property owner's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "propertyAddress",
+        "label": "Property address",
+        "placeholder": "123 Main St, Springfield",
+        "required": true
+      },
+      {
+        "id": "directContractorName",
+        "label": "Direct contractor's name (if different from claimant)",
+        "placeholder": "Beta Builders, LLC",
+        "required": false
+      },
+      {
+        "id": "amountOwed",
+        "label": "Estimated total price of work",
+        "placeholder": "15,000",
+        "required": true
+      },
+      {
+        "id": "firstFurnishedDate",
+        "label": "Date work was first furnished",
+        "placeholder": "August 1, 2026",
+        "required": true
+      }
+    ],
+    "categories": [
+      "Real Estate"
+    ]
   }
 ]
