@@ -9219,5 +9219,43 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "timeshare_purchase_info_sheet",
+    "title": "Timeshare Purchase — Information Sheet",
+    "description": "Explains California's Vacation Ownership and Time-Share Act of 2004: the two statutory categories of time-share interest (estate versus use), the 7-calendar-day statutory right to cancel a purchase contract without penalty, the registration and public-report requirements that must be satisfied before a purchaser is bound, the conspicuous-notice placement requirement for the cancellation right, the court cost-shifting remedy for a developer that wrongfully denies rescission, and the separate, recurring assessment obligations controlled by the plan's own governing documents.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "timeshare_purchase_declaration",
+      "timeshare_definitions",
+      "timeshare_rescission_right",
+      "timeshare_required_disclosures",
+      "timeshare_conspicuous_notice_requirement",
+      "timeshare_rescission_enforcement",
+      "timeshare_ongoing_assessments",
+      "timeshare_signature_ack"
+    ],
+    "fields": [
+      {
+        "id": "buyerName",
+        "label": "Purchaser's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "timeshareResortDescription",
+        "label": "Description of the time-share plan/resort",
+        "placeholder": "Acme Vacation Resort, Unit 204, Week 12",
+        "required": true
+      },
+      {
+        "id": "purchasePrice",
+        "label": "Purchase price",
+        "placeholder": "$18,000",
+        "required": true
+      }
+    ]
   }
 ]
