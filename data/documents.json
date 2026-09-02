@@ -7332,5 +7332,61 @@
         "required": false
       }
     ]
+  },
+  {
+    "id": "nonprofit_mutual_benefit_corporation_info_sheet",
+    "title": "Nonprofit Mutual Benefit Corporation — Formation Information Sheet",
+    "description": "Explains California's Nonprofit Mutual Benefit Corporation Law — required articles content, how a mutual benefit purpose differs from a public benefit purpose, the separate federal tax-exempt-status question, distribution restrictions, and member-approval requirements for major transactions — and generates a purpose/agent declaration and incorporator signature block.",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "mutualbenefit_required_content",
+      "mutualbenefit_purpose_distinct_from_public_benefit",
+      "mutualbenefit_federal_tax_status_separate_question",
+      "mutualbenefit_distributions_limitation",
+      "mutualbenefit_dissolution_distribution_to_members",
+      "mutualbenefit_member_approval_major_transactions",
+      "mutualbenefit_purpose_and_agent_declaration",
+      "mutualbenefit_incorporator_signature"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Nonprofit corporation name",
+        "placeholder": "Acme Trade Alliance",
+        "required": true
+      },
+      {
+        "id": "additionalPurposeDescription",
+        "label": "Additional purpose description (optional)",
+        "placeholder": "and to promote the professional interests of its members through education and networking",
+        "required": false
+      },
+      {
+        "id": "principalOfficeAddress",
+        "label": "Principal office address",
+        "placeholder": "500 Market St, San Francisco, CA 94105",
+        "required": true
+      },
+      {
+        "id": "agentName",
+        "label": "Agent for service of process name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "agentAddress",
+        "label": "Agent's California street address",
+        "placeholder": "500 Market St, San Francisco, CA 94105",
+        "required": true
+      },
+      {
+        "id": "incorporatorName",
+        "label": "Incorporator name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      }
+    ]
   }
 ]
