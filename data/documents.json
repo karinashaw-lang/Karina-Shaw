@@ -10809,5 +10809,90 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "ancillary_probate_info_sheet",
+    "title": "Ancillary Probate for Out-of-State Property — Information Sheet",
+    "description": "Explains California's ancillary probate procedure (Prob. Code Part 13, §§12500-12591), used when a nondomiciliary decedent owned California real or personal property, requiring a separate California proceeding ancillary to the primary probate in the decedent's home state. Covers why a separate California proceeding is needed, who may petition, the California ancillary personal representative's authority and appointment priority, the two statutory paths for distributing California assets, and a simplified alternative for smaller California property.",
+    "categories": [
+      "Estate Planning"
+    ],
+    "clauseOrder": [
+      "ancillaryprobate_declaration",
+      "ancillaryprobate_situs_basis",
+      "ancillaryprobate_who_may_petition",
+      "ancillaryprobate_administrator_authority",
+      "ancillaryprobate_distribution_of_ca_assets",
+      "ancillaryprobate_small_estate_alternative",
+      "ancillaryprobate_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "petitionerName",
+        "label": "Petitioner's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "relationshipToDecedent",
+        "label": "Petitioner's relationship to the decedent",
+        "placeholder": "sister-state personal representative",
+        "required": true
+      },
+      {
+        "id": "decedentName",
+        "label": "Decedent's name",
+        "placeholder": "Taylor Morgan",
+        "required": true
+      },
+      {
+        "id": "dateOfDeath",
+        "label": "Date of death",
+        "placeholder": "January 1, 2026",
+        "required": true
+      },
+      {
+        "id": "domiciliaryState",
+        "label": "Decedent's domiciliary state",
+        "placeholder": "Nevada",
+        "required": true
+      },
+      {
+        "id": "domiciliaryCourtInfo",
+        "label": "Domiciliary court information",
+        "placeholder": "Clark County District Court, Case No. P-26-000000",
+        "required": true
+      },
+      {
+        "id": "californiaPropertyDescription",
+        "label": "Description of California property",
+        "placeholder": "123 Main St, San Diego, CA 92101",
+        "required": true
+      },
+      {
+        "id": "estimatedEstateValue",
+        "label": "Estimated value of California property",
+        "placeholder": "50,000",
+        "required": true
+      },
+      {
+        "id": "countyOfFiling",
+        "label": "County of filing",
+        "placeholder": "San Diego County",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "October 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "San Diego, California",
+        "required": true
+      }
+    ]
   }
 ]
