@@ -9536,5 +9536,103 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "meal_period_waiver_info_sheet",
+    "title": "Meal Period Waiver — Information Sheet",
+    "description": "Explains California's statutory rules letting an employee waive an otherwise-required meal period: the shift-length thresholds under Lab. Code § 512(a), why a bare waiver requires no writing, the different writing and revocation-notice rules that apply specifically to on-duty meal-period agreements, and why a coerced or involuntary waiver does not excuse the employer's meal-period obligation.",
+    "categories": [
+      "During employment"
+    ],
+    "clauseOrder": [
+      "mealwaiver_declaration",
+      "mealwaiver_core_waiver_rule",
+      "mealwaiver_mutual_consent_not_written",
+      "mealwaiver_on_duty_distinct",
+      "mealwaiver_on_duty_revocability",
+      "mealwaiver_invalid_waiver_premium",
+      "mealwaiver_signature_acknowledgment"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "shiftLength",
+        "label": "Shift length",
+        "placeholder": "5 hours",
+        "required": true
+      }
+    ]
+  },
+  {
+    "id": "life_insurance_beneficiary_designation_info_sheet",
+    "title": "Life Insurance Beneficiary Designation — Information Sheet",
+    "description": "Explains the legal mechanics of naming a beneficiary on a life insurance policy in California: why it is a nonprobate transfer under Prob. Code § 5000, how the designation and its revocability are governed by the policy under Ins. Code § 10170(e), the community-property issue when premiums were paid with community funds and a non-spouse is named, the simultaneous-death default rule specific to life insurance, and the slayer statute's disqualification of a beneficiary who feloniously and intentionally kills the insured.",
+    "categories": [
+      "Estate Planning"
+    ],
+    "clauseOrder": [
+      "lifeinsbene_declaration",
+      "lifeinsbene_nonprobate_transfer",
+      "lifeinsbene_designation_source_revocability",
+      "lifeinsbene_community_property",
+      "lifeinsbene_simultaneous_death",
+      "lifeinsbene_slayer_statute",
+      "lifeinsbene_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "policyOwnerName",
+        "label": "Policy owner's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "insurerName",
+        "label": "Insurer's name",
+        "placeholder": "Acme Life Insurance Co.",
+        "required": true
+      },
+      {
+        "id": "policyNumber",
+        "label": "Policy number",
+        "placeholder": "LI-1234567",
+        "required": true
+      },
+      {
+        "id": "beneficiaryName",
+        "label": "Primary beneficiary's name",
+        "placeholder": "Taylor Morgan",
+        "required": true
+      },
+      {
+        "id": "contingentBeneficiaryName",
+        "label": "Contingent beneficiary's name (optional)",
+        "placeholder": "Casey Rivera",
+        "required": false
+      },
+      {
+        "id": "additionalBeneficiaryName",
+        "label": "Additional primary beneficiary's name (optional)",
+        "placeholder": "Riley Chen",
+        "required": false
+      },
+      {
+        "id": "designationStatus",
+        "label": "Designation status",
+        "placeholder": "revocable",
+        "required": true
+      }
+    ]
   }
 ]
