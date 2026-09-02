@@ -11149,5 +11149,95 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "prescriptive_easement_necessity_info_sheet",
+    "title": "Prescriptive Easement and Easement by Necessity — Information Sheet",
+    "description": "Explains how an easement can arise by operation of law in California -- distinct from the corpus's existing Easement Agreement document, which covers only an express, negotiated easement. Covers the case-law elements of a prescriptive easement and its borrowed five-year period, how it differs from adverse possession (no exclusivity or tax-payment requirement, with honest nuance), easement by necessity's two-part test (common ownership at severance and strict necessity), and how each type of easement can be extinguished.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "prescriptiveeasement_use_history_declaration",
+      "prescriptiveeasement_elements_and_five_year_period",
+      "prescriptiveeasement_no_exclusivity_no_tax_distinction",
+      "prescriptiveeasement_necessity_elements",
+      "prescriptiveeasement_termination_of_servitude",
+      "prescriptiveeasement_declarant_certification"
+    ],
+    "fields": [
+      {
+        "id": "claimantName",
+        "label": "Claimant's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "recordOwnerName",
+        "label": "Servient property's record owner name",
+        "placeholder": "Taylor Morgan",
+        "required": true
+      },
+      {
+        "id": "dominantPropertyAddress",
+        "label": "Dominant property address",
+        "placeholder": "123 Main St, Sacramento, CA 95814",
+        "required": true
+      },
+      {
+        "id": "dominantLegalDescription",
+        "label": "Dominant property legal description",
+        "placeholder": "Lot 5, Block 2, per map recorded in Book 8, Page 12",
+        "required": true
+      },
+      {
+        "id": "servientPropertyAddress",
+        "label": "Servient property address",
+        "placeholder": "125 Main St, Sacramento, CA 95814",
+        "required": true
+      },
+      {
+        "id": "servientLegalDescription",
+        "label": "Servient property legal description",
+        "placeholder": "Lot 6, Block 2, per map recorded in Book 8, Page 12",
+        "required": true
+      },
+      {
+        "id": "parcelNumber",
+        "label": "Assessor's parcel number",
+        "placeholder": "456-789-012",
+        "required": true
+      },
+      {
+        "id": "recordingCounty",
+        "label": "County",
+        "placeholder": "Sacramento County",
+        "required": true
+      },
+      {
+        "id": "useStartDate",
+        "label": "Date the claimed use began",
+        "placeholder": "January 1, 2018",
+        "required": true
+      },
+      {
+        "id": "useMannerDescription",
+        "label": "Description of the manner of use",
+        "placeholder": "a gravel driveway used openly to access the rear parcel",
+        "required": true
+      },
+      {
+        "id": "priorCommonOwnerName",
+        "label": "Prior common owner's name (for easement by necessity)",
+        "placeholder": "Riley Chen",
+        "required": false
+      },
+      {
+        "id": "severanceDate",
+        "label": "Date of severance from common ownership (for easement by necessity)",
+        "placeholder": "January 1, 2015",
+        "required": false
+      }
+    ]
   }
 ]
