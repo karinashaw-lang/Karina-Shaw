@@ -11301,5 +11301,73 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "psychiatric_advance_directive_info_sheet",
+    "title": "Psychiatric Advance Directive — Information Sheet",
+    "description": "Explains California's framework for stating wishes about future mental health treatment in advance -- distinct from the corpus's existing Advance Health Care Directive document's general medical decision-making treatment. Covers the finding that no separate mental-health-specific statute exists (mental health is simply one recognized subject within the general Health Care Decisions Law), what content is permitted (provider selection, medication approval/disapproval), what cannot be authorized (civil commitment and electroconvulsive therapy consent), ECT's wholly separate consent procedure under the LPS Act, the shared capacity-determination rule, and conditional effective dates.",
+    "categories": [
+      "Estate Planning"
+    ],
+    "clauseOrder": [
+      "psychadvdirective_preferences_declaration",
+      "psychadvdirective_single_statute",
+      "psychadvdirective_permitted_content",
+      "psychadvdirective_ect_commitment_carveout",
+      "psychadvdirective_ect_separate_procedure",
+      "psychadvdirective_capacity_cross_reference",
+      "psychadvdirective_conditional_effective_date",
+      "psychadvdirective_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "patientName",
+        "label": "Patient/principal's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "agentName",
+        "label": "Agent's name",
+        "placeholder": "Taylor Morgan",
+        "required": true
+      },
+      {
+        "id": "alternateAgentName",
+        "label": "Alternate agent's name (optional)",
+        "placeholder": "Riley Chen",
+        "required": false
+      },
+      {
+        "id": "preferredMedicationWishes",
+        "label": "Preferred/refused medications",
+        "placeholder": "approve: sertraline; refuse: lithium",
+        "required": true
+      },
+      {
+        "id": "treatmentFacilityWishes",
+        "label": "Preferred treatment facility",
+        "placeholder": "Acme Behavioral Health Center",
+        "required": false
+      },
+      {
+        "id": "hospitalizationWishes",
+        "label": "Hospitalization preferences",
+        "placeholder": "prefer voluntary admission over involuntary hold where possible",
+        "required": false
+      },
+      {
+        "id": "ectWishes",
+        "label": "Views on electroconvulsive therapy (informational only, not binding consent)",
+        "placeholder": "generally opposed to ECT except as a last resort",
+        "required": false
+      },
+      {
+        "id": "additionalMentalHealthWishes",
+        "label": "Additional mental health treatment wishes",
+        "placeholder": "None",
+        "required": false
+      }
+    ]
   }
 ]
