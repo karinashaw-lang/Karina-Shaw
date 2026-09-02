@@ -8343,5 +8343,74 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "nullity_of_marriage_info_sheet",
+    "title": "Nullity of Marriage (Annulment) — Petition Information Sheet",
+    "description": "Explains California's statutory grounds and procedure for a judgment of nullity: void marriages (incest, bigamy/polygamy) versus voidable marriages and their six statutory grounds, who may sue and by when, the putative spouse doctrine and quasi-marital property, how support/property and custody consequences differ from an ordinary dissolution, and a fault-based limit on attorney's fees unique to nullity proceedings.",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "nullity_declaration",
+      "nullity_void_marriage_grounds",
+      "nullity_void_voidable_distinction",
+      "nullity_voidable_marriage_grounds",
+      "nullity_standing_and_time_limits",
+      "nullity_putative_spouse_doctrine",
+      "nullity_property_support_custody_consequences",
+      "nullity_effect_of_judgment_and_fees",
+      "nullity_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "party1Name",
+        "label": "First party's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "party2Name",
+        "label": "Second party's name",
+        "placeholder": "Taylor Morgan",
+        "required": true
+      },
+      {
+        "id": "marriageDate",
+        "label": "Date of the marriage",
+        "placeholder": "June 1, 2024",
+        "required": true
+      },
+      {
+        "id": "countyOfFiling",
+        "label": "County where filing",
+        "placeholder": "San Francisco County",
+        "required": true
+      },
+      {
+        "id": "nullityGround",
+        "label": "Statutory ground for nullity",
+        "placeholder": "fraud",
+        "required": true
+      },
+      {
+        "id": "nullityFactualBasis",
+        "label": "Factual basis for the ground claimed",
+        "placeholder": "the other party concealed an existing marriage to a third person at the time of the wedding",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "October 15, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "San Francisco, California",
+        "required": true
+      }
+    ]
   }
 ]
