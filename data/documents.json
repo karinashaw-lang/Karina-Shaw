@@ -4269,5 +4269,59 @@
     "categories": [
       "Real Estate"
     ]
+  },
+  {
+    "id": "employer_ui_claim_response",
+    "title": "Employer's Response to Unemployment Insurance Claim",
+    "description": "The distinct, later process of an employer responding to the EDD when a former employee actually files an unemployment insurance claim -- the 10-day window to submit facts, the misconduct/voluntary-quit disqualification standard EDD applies, and the reserve-account charging and contribution-rate consequences of a timely or untimely response. Distinct from this project's Notice to Employee as to Change in Relationship document, which covers the employer's earlier duty at separation.",
+    "clauseOrder": [
+      "uiresponse_intro",
+      "uiresponse_notice_and_deadline",
+      "uiresponse_disqualification_standard",
+      "uiresponse_facts_statement",
+      "uiresponse_charging_consequence",
+      "uiresponse_tax_rate_consequence"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Employer name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Former employee's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "separationDate",
+        "label": "Date employment ended",
+        "placeholder": "August 15, 2026",
+        "required": true
+      },
+      {
+        "id": "claimDate",
+        "label": "Date EDD mailed its notice",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "separationReason",
+        "label": "Employer's stated reason for separation",
+        "placeholder": "Discharged for repeated policy violations",
+        "required": true
+      },
+      {
+        "id": "supportingFacts",
+        "label": "Supporting facts",
+        "placeholder": "Describe the relevant facts known to the employer",
+        "required": true
+      }
+    ],
+    "categories": [
+      "Ending employment"
+    ]
   }
 ]

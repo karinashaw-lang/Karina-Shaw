@@ -11911,6 +11911,92 @@
       "title": "Preliminary Notice — Statutory Warning and Proof of Service",
       "kind": "drafting",
       "body": "NOTICE TO PROPERTY OWNER\n\nEVEN THOUGH YOU HAVE PAID YOUR CONTRACTOR IN FULL, if the person or firm that has given you this notice is not paid in full for labor, service, equipment, or material provided or to be provided to your construction project, a lien may be placed on your property. Foreclosure of the lien may lead to loss of all or part of your property. You may wish to protect yourself against this by (1) requiring your contractor to provide a signed release by the person or firm that has given you this notice before making payment to your contractor, or (2) any other method that is appropriate under the circumstances.\n\nThis notice is required by law to be served by the undersigned as a statement of your legal rights. This notice is not intended to reflect upon the financial condition of the contractor or the person employed by you on the construction project.\n\nIf you record a notice of cessation or completion of your construction project, you must within 10 days after recording, send a copy of the notice of completion to your contractor and the person or firm that has given you this notice. The notice must be sent by registered or certified mail. Failure to send the notice will extend the deadline to record a claim of lien. You are not required to send the notice if you are a residential homeowner of a dwelling containing four or fewer units.\n\nClaimant: {{claimantName}}\nSignature: _______________________ Date: _______________\n\nPROOF OF SERVICE\nThis notice was served on {{ownerName}} on _______________, by (check one):\n☐ Registered mail   ☐ Certified mail   ☐ Express mail   ☐ Overnight delivery by an express service carrier\naddressed to: _______________________________________________\n\nServed by: _______________________________________________"
+    },
+    {
+      "id": "uiresponse_intro",
+      "title": "Response to Notice of Claim Filed",
+      "kind": "drafting",
+      "body": "{{companyName}} submits this response to the Notice of Claim Filed that the California Employment Development Department (EDD) mailed regarding a claim for unemployment insurance benefits filed by {{employeeName}}, a former employee of {{companyName}} whose employment with {{companyName}} ended on {{separationDate}}. The EDD's notice was mailed on {{claimDate}}."
+    },
+    {
+      "id": "uiresponse_notice_and_deadline",
+      "title": "The Notice of Claim Filed and the Employer's 10-Day Window to Respond",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-01",
+      "body": "When a former employee files a new or additional unemployment insurance claim, California law requires the EDD to give notice of the filing to the employing unit that last employed the claimant immediately before the claim was filed. That employer must, within 10 days after the notice is mailed, submit to the EDD any facts then known that may affect the claimant's eligibility for benefits — a duty the statute's own text says expressly includes facts relevant to the misconduct/voluntary-quit disqualification standard described below. A related, more specific statute independently gives an employer entitled under that same notice provision up to 10 days after the notice is mailed to submit facts showing that the claimant left employment voluntarily without good cause, was discharged for misconduct connected with the work, or left under several other listed circumstances (for example, to accompany a spouse or domestic partner, or to escape domestic violence abuse). Both 10-day periods described here may be extended by the EDD's director for good cause, and if an employer learns relevant facts only after its 10-day period has run, it has a further 10 days from acquiring that knowledge to submit them.",
+      "gap": "This task's research brief asked this document's drafter to verify, rather than assume, which statute sets the commonly-cited 10-day employer response deadline, expecting it to be Unemployment Insurance Code § 1032. That expectation does not match the statutory text: § 1032 was checked directly and contains no response deadline at all — it addresses whether benefits paid are charged to the employer's reserve account, which is a separate, later-in-the-process question addressed in a separate clause below. The real 10-day deadline is set by two overlapping provisions: § 1327 (the general duty on the claimant's last employer to report any fact affecting eligibility) and § 1030(a) (a more specific right, for an employer entitled under § 1327 to receive notice, to submit facts on the voluntary-quit-without-good-cause and misconduct issues listed in that subsection). The commonly-cited '10 days' figure itself is accurate; the section number commonly associated with it in this project's prior assumptions was not. Separately, the brief also asked this drafter to verify whether § 1327 establishes that a non-responding employer loses its status as an 'interested party' to the claim, along with related appeal or relief-from-charges rights. No such text was found: neither § 1327 nor § 1030 uses the phrase 'interested party' to describe an employer's status, and the one appearance of that phrase in § 1030 (subdivision (c)) describes the EDD director's own status on an appeal, not any employer's. This document therefore does not state that an employer forfeits 'interested party' status for a late or missing response; the real, verified consequence of an untimely or missing response — loss of the reserve-account non-charging protection — is described in a separate clause below. This is one state's statute (California Unemployment Insurance Code §§ 1327 and 1030(a)), used as real evidence of the notice-and-response mechanism a state can build into its unemployment insurance claims process — not a claim about which state's law governs a given employer or claim.",
+      "citations": [
+        {
+          "case": "Cal. Unemployment Insurance Code § 1327 (California Legislative Information text)",
+          "cite": "California Unemployment Insurance Code",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=UIC&sectionNum=1327.",
+          "quote": "The department shall give a notice of the filing of a new or additional claim to the employing unit by which the claimant was last employed immediately preceding the filing of the claim unless the additional claim is the result of the filing of a partial claim as defined by the department, there has not been a subsequent employing unit which is designated as the last employer, and there is no separation issue. The employing unit so notified shall submit within 10 days after the mailing of the notice any facts then known that may affect the claimant’s eligibility for benefits, including, but not limited to, facts pertaining to eligibility under Section 1256. The 10-day period may be extended for good cause. If after the 10-day period the employing unit acquires knowledge of facts that may affect the eligibility of the claimant and facts could not reasonably have been known within the period, the employing unit shall, within 10 days of acquiring the knowledge, submit the facts to the department, and the 10-day period may also be extended for good cause."
+        },
+        {
+          "case": "Cal. Unemployment Insurance Code § 1030(a) (California Legislative Information text)",
+          "cite": "California Unemployment Insurance Code",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=UIC&sectionNum=1030.",
+          "quote": "(a) An employer that is entitled under Section 1327 to receive notice of the filing of a new or additional claim may, within 10 days after mailing of the notice, submit to the department any facts within its possession disclosing whether the claimant left the employer’s employ voluntarily and without good cause or left under one of the following circumstances: (1) The claimant was discharged from the employment for misconduct connected with their work. … The period during which the employer may submit these facts may be extended by the director for good cause."
+        }
+      ]
+    },
+    {
+      "id": "uiresponse_disqualification_standard",
+      "title": "Reason for Separation: The Misconduct / Voluntary-Quit Standard",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-01",
+      "body": "A separate statute states the substantive standard the EDD applies in deciding whether a claimant's own reason for leaving disqualifies the claimant from unemployment insurance benefits: an individual is disqualified if the director finds that the individual left the most recent work voluntarily without good cause, or was discharged for misconduct connected with the most recent work. The same statute creates a rebuttable presumption running in the claimant's favor: an individual is presumed to have been discharged for reasons other than misconduct, and not to have voluntarily left without good cause, unless the employer has given written notice to the contrary to the EDD (as provided in the notice-and-response statute described above), setting out facts sufficient to overcome that presumption.",
+      "gap": "This is one state's statute (California Unemployment Insurance Code § 1256), used as real evidence of the substantive eligibility standard and burden-shifting structure a state can attach to an employer's separation-response duty — not a claim about which state's law governs any particular claimant's eligibility, and not a statement about how a specific claimant's separation should be characterized. Neither 'misconduct' nor 'good cause' is defined within the statutory text quoted here; both terms have been the subject of extensive EDD precedent decisions and California appellate case law construing their meaning, which this document does not survey or attempt to summarize. This clause cites a single statutory section (§ 1256); no additional independent source was found for this.",
+      "citations": [
+        {
+          "case": "Cal. Unemployment Insurance Code § 1256 (California Legislative Information text)",
+          "cite": "California Unemployment Insurance Code",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=UIC&sectionNum=1256.",
+          "quote": "An individual is disqualified for unemployment compensation benefits if the director finds that he or she left his or her most recent work voluntarily without good cause or that he or she has been discharged for misconduct connected with his or her most recent work. An individual is presumed to have been discharged for reasons other than misconduct in connection with his or her work and not to have voluntarily left his or her work without good cause unless his or her employer has given written notice to the contrary to the department as provided in Section 1327, setting forth facts sufficient to overcome the presumption. The presumption provided by this section is rebuttable."
+        }
+      ]
+    },
+    {
+      "id": "uiresponse_charging_consequence",
+      "title": "Reserve-Account Charging Consequence of an Untimely or Missing Response",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-01",
+      "body": "A further statute ties the outcome of the misconduct/voluntary-quit ruling described above to the employer's own unemployment insurance reserve account. If it is ruled that the claimant left voluntarily without good cause, was discharged for misconduct, or left under one of several other listed circumstances, benefits later paid to the claimant based on wages earned from that employer are, subject to certain exceptions, not charged to the employer's reserve account. That protection from charging does not apply, however, if the employer failed to furnish the facts described above within the applicable time limit, or if the ruling is later reversed on reconsideration.",
+      "gap": "This is one state's statute (California Unemployment Insurance Code § 1032), used as real evidence that a state can condition an employer's protection from reserve-account charging on a timely factual response to a notice of claim — not a claim about which state's law governs a given employer's account or charges. This clause quotes § 1032's operative sentence, which itself cross-references Unemployment Insurance Code §§ 1026, 1026.1, 1030, and 1328; this document does not independently verify the content of §§ 1026, 1026.1, or 1328, and describes only what § 1032's own text says about the consequence of an untimely or missing § 1030 response. This clause cites a single statutory section (§ 1032); no additional independent source was found for this.",
+      "citations": [
+        {
+          "case": "Cal. Unemployment Insurance Code § 1032 (California Legislative Information text)",
+          "cite": "California Unemployment Insurance Code",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=UIC&sectionNum=1032.",
+          "quote": "If it is ruled under Section 1030 or 1328 that the claimant left the employer’s employ voluntarily and without good cause, or left under one of the following circumstances, benefits paid to the claimant subsequent to the termination of employment that are based upon wages earned from the employer prior to the date of the termination of employment shall not be charged to the account of the employer, except as provided by Section 1026 or if the department determines pursuant to Section 1026.1 that the employer’s reserve account should not be credited, unless the employer failed to furnish the information specified in Section 1030 within the time limit prescribed in that section or unless that ruling is reversed by a reconsidered ruling: (a) The claimant was discharged by reason of misconduct connected with his or her work."
+        }
+      ]
+    },
+    {
+      "id": "uiresponse_tax_rate_consequence",
+      "title": "How Reserve-Account Charges Connect to the Employer's Contribution Rate",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-01",
+      "body": "A separate statute sets each employer's UI contribution (payroll tax) rate from a statutory schedule keyed to the employer's own 'reserve ratio' — the employer's net reserve-account balance measured against its average base payroll — with rate lines that, depending on which statewide schedule is in effect for the year and where the employer's reserve ratio falls on it, run from a small fraction of a percent up to a statutory maximum of 5.4% of the wage base described in the statute. Because a benefit charge that is not excluded from charging under the provision described in the previous clause is charged to the employer's reserve account, and because that account's balance is a direct input to this rate-setting formula, a charge to the account is capable of moving an employer to a different line on this statutory schedule, and therefore a different contribution rate, in a later year.",
+      "gap": "This is one state's statute (California Unemployment Insurance Code § 977(a)), used as real evidence that California ties an employer's own future UI contribution rate to that employer's reserve-account balance through a statutory experience-rating formula — not a claim about which state's law governs a given employer's rate, and not a prediction of what will happen to any particular employer's rate. The statute itself sets out the rate-schedule mechanics; it does not contain a sentence stating that a single unanswered claim will raise a given employer's rate, and this document does not calculate or predict the size, timing, or existence of any rate effect for any specific employer — that depends on the employer's full reserve-account history, the statewide schedule in effect for the relevant year, and other statutory provisions (including § 1032, described in the preceding clause) that are not independently modeled here. § 977(a) also incorporates a lengthy numeric rate table with dozens of lines; this clause quotes only the table's structural, operative sentence and does not reproduce the table itself. This clause cites a single statutory subsection (§ 977(a)); no additional independent source was found for this.",
+      "citations": [
+        {
+          "case": "Cal. Unemployment Insurance Code § 977(a) (California Legislative Information text)",
+          "cite": "California Unemployment Insurance Code",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=UIC&sectionNum=977.",
+          "quote": "(a) Except as provided in subdivision (c), if, as of the computation date, the employer’s net balance of reserve equals or exceeds that percentage of his or her average base payroll which appears on any line in column 1 of the following table, but is less than that percentage of his or her average base payroll which appears on the same line in column 2 of that table, his or her contribution rate shall be the figure appearing on that same line in the appropriate schedule, as defined in subdivision (b), which shall be a percentage of the wages specified in Section 930."
+        }
+      ]
+    },
+    {
+      "id": "uiresponse_facts_statement",
+      "title": "Statement of Facts Regarding Separation",
+      "kind": "drafting",
+      "body": "{{companyName}} states that {{employeeName}}'s employment ended for the following reason: {{separationReason}}. In support of this response, {{companyName}} submits the following facts within its knowledge concerning the separation: {{supportingFacts}}. {{companyName}} is submitting this statement within the time period stated in the EDD's notice."
     }
   ]
 }
