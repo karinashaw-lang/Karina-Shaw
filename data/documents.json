@@ -10108,5 +10108,61 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "ui_overpayment_fraud_info_sheet",
+    "title": "Unemployment Insurance Overpayment and Fraud — Information Sheet",
+    "description": "Explains California's rules on unemployment insurance benefit overpayments and fraud -- distinct from the corpus's existing UI Claimant and UI Appeal documents, which cover claiming and appealing benefits, not what happens after the EDD determines someone was overpaid. Covers the statutory distinction between a non-fraud and fraudulent overpayment (Unemp. Ins. Code §§1375, 1375.1), the equity/good-conscience waiver conditions for a non-fraud overpayment, the 30% fraud penalty and disqualification/criminal exposure, the overpayment-specific notice and 30-day appeal right, and California's recovery methods.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "uioverpay_declaration",
+      "uioverpay_nonfraud_fraud_distinction",
+      "uioverpay_waiver_conditions",
+      "uioverpay_fraud_penalties",
+      "uioverpay_notice_and_appeal",
+      "uioverpay_recovery_methods",
+      "uioverpay_response_declaration",
+      "uioverpay_certification"
+    ],
+    "fields": [
+      {
+        "id": "employeeName",
+        "label": "Claimant name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Last employer's name",
+        "placeholder": "Acme, Inc.",
+        "required": false
+      },
+      {
+        "id": "eddCaseNumber",
+        "label": "EDD case/claim number",
+        "placeholder": "EDD-1234567",
+        "required": true
+      },
+      {
+        "id": "determinationDate",
+        "label": "Date of the overpayment determination",
+        "placeholder": "October 1, 2026",
+        "required": true
+      },
+      {
+        "id": "overpaymentAmount",
+        "label": "Overpayment amount",
+        "placeholder": ",200",
+        "required": true
+      },
+      {
+        "id": "overpaymentResponseAction",
+        "label": "Response to the overpayment determination",
+        "placeholder": "requesting a waiver of repayment",
+        "required": true
+      }
+    ]
   }
 ]
