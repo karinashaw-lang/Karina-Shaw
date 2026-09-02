@@ -10759,5 +10759,55 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "userra_military_leave_reemployment_info_sheet",
+    "title": "USERRA — Military Leave and Reemployment Rights Information Sheet",
+    "description": "Explains the federal Uniformed Services Employment and Reemployment Rights Act (38 U.S.C. §4301 et seq.): the reemployment right and its conditions, the \"escalator principle\" for the reemployment position, the discharge-protection period after reemployment, non-discrimination and anti-retaliation protections, continuation of health plan coverage during service, and how USERRA is enforced.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "userra_service_declaration",
+      "userra_reemployment_right",
+      "userra_escalator_principle",
+      "userra_discharge_protection",
+      "userra_nondiscrimination",
+      "userra_health_continuation",
+      "userra_enforcement",
+      "userra_ack"
+    ],
+    "fields": [
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "startDate",
+        "label": "Service start date",
+        "placeholder": "October 1, 2026",
+        "required": true
+      },
+      {
+        "id": "endDate",
+        "label": "Service end date (if known)",
+        "placeholder": "April 1, 2027",
+        "required": false
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "October 1, 2026",
+        "required": true
+      }
+    ]
   }
 ]
