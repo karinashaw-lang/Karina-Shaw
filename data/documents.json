@@ -9157,5 +9157,67 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "testamentary_trust_info_sheet",
+    "title": "Testamentary Trust — Information Sheet",
+    "description": "Explains a trust created within a will, taking effect only at death and subject to probate -- a distinct mechanism from a revocable living trust and a pour-over will: how a testamentary trust is created, why probate applies to it, a common use holding property for a minor beneficiary, how it is funded through the probate distribution process, the trustee's continuing obligations under the same general trust law that governs any trust, and why it becomes irrevocable at the testator's death.",
+    "categories": [
+      "Estate Planning"
+    ],
+    "clauseOrder": [
+      "testtrust_declaration",
+      "testtrust_creation",
+      "testtrust_probate_required",
+      "testtrust_common_uses",
+      "testtrust_funding_mechanics",
+      "testtrust_trustee_obligations",
+      "testtrust_revocability",
+      "testtrust_trustee_acceptance"
+    ],
+    "fields": [
+      {
+        "id": "testatorName",
+        "label": "Testator's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "testatorCounty",
+        "label": "Testator's county of residence",
+        "placeholder": "San Francisco County",
+        "required": true
+      },
+      {
+        "id": "trustName",
+        "label": "Name of the testamentary trust",
+        "placeholder": "The Jordan Alex Lee Testamentary Trust for Minor Children",
+        "required": true
+      },
+      {
+        "id": "trusteeName",
+        "label": "Trustee's name",
+        "placeholder": "Taylor Morgan",
+        "required": true
+      },
+      {
+        "id": "successorTrusteeName",
+        "label": "Successor trustee's name (optional)",
+        "placeholder": "Casey Rivera",
+        "required": false
+      },
+      {
+        "id": "beneficiaryName",
+        "label": "Beneficiary's name",
+        "placeholder": "Casey Lee",
+        "required": true
+      },
+      {
+        "id": "distributionAge",
+        "label": "Age at which the trust distributes to the beneficiary",
+        "placeholder": "25",
+        "required": true
+      }
+    ]
   }
 ]

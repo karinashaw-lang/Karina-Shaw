@@ -25779,6 +25779,150 @@
       "title": "Certification",
       "kind": "drafting",
       "body": "The undersigned, {{authorizedSignerName}}, {{authorizedSignerTitle}} of {{companyName}}, certifies that the selection-criteria documentation above accurately describes, to the best of the undersigned's knowledge, the criteria {{companyName}} applied in this workforce reduction and the status of any adverse-impact analysis performed.\n\nSignature: ☐ _________________________ Date: {{signatureDate}}\n\n{{authorizedSignerName}}, {{authorizedSignerTitle}}\nOn behalf of {{companyName}}"
+    },
+    {
+      "id": "testtrust_creation",
+      "title": "How a Testamentary Trust Is Created",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-02",
+      "body": "A testamentary trust is a trust created by the terms of {{testatorName}}'s own will, rather than by a separate trust instrument executed during {{testatorName}}'s lifetime. California Probate Code § 15200 lists a transfer of property \"by will or by other instrument taking effect upon the death of the owner, to another person as trustee\" as one of the statutory methods of creating a trust, alongside a lifetime declaration of trust and a lifetime transfer to a trustee. Because that transfer takes effect only upon {{testatorName}}'s death, the trust it creates does not exist, and holds no property, while {{testatorName}} is alive; it comes into existence only once {{testatorName}}'s will takes legal effect.",
+      "gap": "This is one state's statute, used as real evidence of the actual statutory basis for a will's ability to create a trust — not a claim about which state's law governs a specific will or trust. This clause quotes a single subsection of Cal. Prob. Code § 15200(c); no additional independent source was found for this. This document does not restate the general requirements for a valid trust — settlor intent, a lawful purpose, and an ascertainable beneficiary — which apply to a trust created this way exactly as they would to a trust created any other way; see this corpus's Revocable Living Trust document for those requirements, sourced separately from the same Probate Code chapter (§§ 15201, 15203, 15205).",
+      "citations": [
+        {
+          "case": "Cal. Prob. Code § 15200(c) (California Legislative Information text)",
+          "cite": "a will is a statutory method of creating a trust",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=15200.",
+          "quote": "(c) A transfer of property by the owner, by will or by other instrument taking effect upon the death of the owner, to another person as trustee."
+        }
+      ]
+    },
+    {
+      "id": "testtrust_probate_required",
+      "title": "Why Probate Applies to a Testamentary Trust — the Key Difference From a Living Trust",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-02",
+      "body": "Because a testamentary trust is created by {{testatorName}}'s will rather than by a lifetime trust instrument, the property that funds it is, at the moment of {{testatorName}}'s death, still {{testatorName}}'s own property passing under the will — not property already held by a trustee. California Probate Code § 7000 provides that title to a decedent's property passes at death to the person to whom it is devised by the decedent's will, but § 7001 immediately qualifies that: the decedent's property remains \"subject to administration under this code\" and to the rights of beneficiaries, creditors, and other persons as provided by law. That administration is the probate process — a court proceeding, not an automatic transfer. This is the structural difference from a properly funded revocable living trust, which already holds title to its property through a lifetime transfer and so does not depend on probate administration to give the trustee that property.",
+      "gap": "This is one state's statute, used as real evidence of the actual mechanics of how a decedent's property passes and is administered — not a claim about which state's law governs a specific estate or trust. § 7000 and § 7001 are two different, adjacent statutory sections within the same short chapter (Chapter 1 of Division 7, Part 1); they are cited together because § 7001's administration language directly qualifies § 7000's passage-of-title rule, not as two unrelated sources. This document does not restate this corpus's separate Petition for Probate Information Sheet, which describes the actual probate court proceeding (petition, notice, hearing, and appointment of a personal representative) in full; see that document's clauses for those mechanics. Nor does it restate the corpus's Revocable Living Trust document's own funding disclosure, which addresses the parallel point for a lifetime trust: that a trust holds only property actually, correctly transferred into it during the settlor's life, and that property never transferred stays outside the trust and subject to probate. This document's companion drafting clause on a pour-over will's relationship to a living trust (`trust_pour_over_will`, Cal. Prob. Code § 6300(a)-(b)) addresses a related but distinct mechanism: a will provision that routes probate property into a trust the testator already created during life. Property left this way is not deemed to be held under a testamentary trust of the testator; a testamentary trust — the subject of this document — is a different mechanism, one where the will itself is the trust instrument, not a delivery vehicle to a separately-existing trust.",
+      "citations": [
+        {
+          "case": "Cal. Prob. Code § 7000 (California Legislative Information text)",
+          "cite": "title to a decedent's property passes at death to the will's devisee",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=7000.",
+          "quote": "Subject to Section 7001, title to a decedent’s property passes on the decedent’s death to the person to whom it is devised in the decedent’s last will or, in the absence of such a devise, to the decedent’s heirs as prescribed in the laws governing intestate succession."
+        },
+        {
+          "case": "Cal. Prob. Code § 7001 (California Legislative Information text)",
+          "cite": "that property remains subject to probate administration",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=7001.",
+          "quote": "The decedent’s property is subject to administration under this code, except as otherwise provided by law, and is subject to the rights of beneficiaries, creditors, and other persons as provided by law."
+        }
+      ]
+    },
+    {
+      "id": "testtrust_common_uses",
+      "title": "A Common Use: Holding Property for a Minor or Other Beneficiary Until a Stated Age",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-02",
+      "body": "One reason a will creates a trust, rather than simply giving property outright, is that a will's ordinary gifts vest immediately — a will has no built-in mechanism to hold and manage property for a beneficiary over time the way a trust does. This matters in particular for a beneficiary who is a minor at {{testatorName}}'s death: California Probate Code § 3401 lets money or property belonging to a minor be paid directly to a parent to hold in trust for the minor without a court-appointed guardian of the estate, but only where the minor's total estate — as defined in § 3400, and net of certain deductions such as custodial property already held under the California Uniform Transfers to Minors Act — does not exceed $5,000 in value. Above that threshold, this simplified route is unavailable on its own terms.",
+      "gap": "Sourcing tier, disclosed honestly: the statutory citations below verify a real, specific fact — that California's simplified mechanism for handling a minor's inherited property without a guardian of the estate is capped at $5,000 — but they do not themselves say that testators commonly respond to that cap, or to a beneficiary's youth or vulnerability generally, by writing a testamentary trust into their wills. That broader claim is common estate-planning practice and professional convention, not a proposition independently stated by any single California statute this project verified; it's presented here as informed context, not as a specific state law creates it. This is one state's statute, used as real evidence of one concrete, verifiable trigger point — not a claim about which state's law governs a specific minor's inheritance. § 3400 and § 3401 are two different sections within the same short article; § 3401's dollar threshold is the operative fact, and § 3400 is cited only because it defines the \"total estate of the minor\" figure that threshold is measured against. This document does not address the California Uniform Transfers to Minors Act (Prob. Code §§ 3900-3925) itself, a separate, simpler mechanism for holding property for a minor that this document's drafting clauses do not use.",
+      "citations": [
+        {
+          "case": "Cal. Prob. Code § 3401(a), (c) (California Legislative Information text)",
+          "cite": "the $5,000 cap on paying a minor's property to a parent to hold in trust without a guardian of the estate",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=3401.",
+          "quote": "(a) Where a minor does not have a guardian of the estate, money or other property belonging to the minor may be paid or delivered to a parent of the minor entitled to the custody of the minor to be held in trust for the minor until the minor reaches majority if the requirements of subdivision (c) are satisfied."
+        },
+        {
+          "case": "Cal. Prob. Code § 3400(a)-(b) (California Legislative Information text)",
+          "cite": "how the minor's \"total estate\" is defined and calculated for that cap",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=3400.",
+          "quote": "(a) As used in this article, “total estate of the minor” includes both the money and other property belonging to the minor and the money and other property belonging to the guardianship estate, if any, of the minor. (b) In computing the “total estate of the minor” for the purposes of this article, all of the following shall be deducted: (1) “Custodial property” held pursuant to the California Uniform Transfers to Minors Act, Part 9 (commencing with Section 3900)."
+        }
+      ]
+    },
+    {
+      "id": "testtrust_funding_mechanics",
+      "title": "How a Testamentary Trust Is Funded — Through the Probate Distribution Process",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-02",
+      "body": "A testamentary trust does not receive its property automatically or immediately at {{testatorName}}'s death. Once {{testatorName}}'s estate is in a condition to be closed, California Probate Code § 11640(a) requires the personal representative to file a petition for, and the court to make, an order for final distribution of the estate; § 11641 then allows the personal representative to immediately distribute the estate property to the persons — including a testamentary trustee — entitled to it under that order, without further notice or proceedings. It is that court-ordered distribution, carried out by the personal representative during and at the conclusion of probate administration, that actually delivers property from {{testatorName}}'s estate into {{trustName}}'s hands as trustee.",
+      "gap": "This is one state's statute, used as real evidence of the actual mechanics by which a testamentary trust is funded — not a claim about which state's law governs a specific estate. No provision specific to testamentary trusts was found for this step; funding a testamentary trust simply uses the same general order-for-distribution machinery that applies to any estate distribution, whether the ultimate recipient is an individual devisee or a trustee named in the will. § 11640 and § 11641 are two different sections within the same three-section article (Article 3, Final Distribution); no single section is cited more than once in this clause. This document does not address preliminary distribution before an estate is fully closed, or the separate procedures that apply if a distribution order fails to dispose of after-discovered property (Cal. Prob. Code § 11642) — a scenario in which a testamentary trust named in the will could still later receive property distributed under a supplemental court order.",
+      "citations": [
+        {
+          "case": "Cal. Prob. Code § 11640(a) (California Legislative Information text)",
+          "cite": "the personal representative must petition for, and the court must make, an order of final distribution",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=11640.",
+          "quote": "(a) When all debts have been paid or adequately provided for, or if the estate is insolvent, and the estate is in a condition to be closed, the personal representative shall file a petition for, and the court shall make, an order for final distribution of the estate."
+        },
+        {
+          "case": "Cal. Prob. Code § 11641 (California Legislative Information text)",
+          "cite": "the personal representative then distributes the property under that order",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=11641.",
+          "quote": "When an order settling a final account and for final distribution is entered, the personal representative may immediately distribute the property in the estate to the persons entitled to distribution, without further notice or proceedings."
+        }
+      ]
+    },
+    {
+      "id": "testtrust_trustee_obligations",
+      "title": "Trustee Obligations Once the Trust Is Funded — the Same Trust Law That Governs Any Trust",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-02",
+      "body": "Once funded, {{trustName}} is administered under the same body of law that governs a trust created any other way. California Probate Code § 15001(a) provides that the Trust Law (Probate Code Division 9) \"applies to all trusts,\" without limiting that coverage by how the trust was created; and § 16000 provides that on accepting the trust, {{trusteeName}} has a duty to administer it according to the trust instrument — here, {{testatorName}}'s will — and, except as the trust instrument itself provides otherwise, according to that same Division. The specific duties this generally imposes on a trustee — among them, the duty of loyalty and the duty to account to beneficiaries — apply to {{trusteeName}} exactly as they would to the trustee of a lifetime trust; this document does not restate them.",
+      "gap": "This is one state's statute, used as real evidence of the actual, general scope of California's Trust Law — not a claim about which state's law governs a specific trust. No statutory provision was found that says, in so many words, that Division 9 applies \"regardless of a trust's creation method\"; that specific phrasing does not appear in the Probate Code. § 15001(a)'s \"applies to all trusts\" language and § 16000's unqualified reference to \"the trustee\" are the actual statutory basis for the inference stated in this clause's body, and that inference — not an express creation-method-neutrality rule — is what this clause relies on; it is not invented beyond what these two sections say. § 15001 and § 16000 are two different sections in two different parts of the same division (Part 1, General Provisions, and Part 4, Trust Administration); no single section is cited more than once in this clause. This document does not restate the specific trustee duties sourced elsewhere in this corpus's Revocable Living Trust document — the duty of loyalty and duty to keep trust property separate (Cal. Prob. Code § 16002(a), § 16009), and the duty to account (§ 16062(a), § 16069(a)(1)) — which apply here in the same way; see that document's clauses for the sourced text of those specific duties.",
+      "citations": [
+        {
+          "case": "Cal. Prob. Code § 15001(a) (California Legislative Information text)",
+          "cite": "the Trust Law applies to all trusts",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=15001.",
+          "quote": "(a) This division applies to all trusts regardless of whether they were created before, on, or after July 1, 1987."
+        },
+        {
+          "case": "Cal. Prob. Code § 16000 (California Legislative Information text)",
+          "cite": "the trustee's general duty to administer the trust according to trust law",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=16000.",
+          "quote": "On acceptance of the trust, the trustee has a duty to administer the trust according to the trust instrument and, except to the extent the trust instrument provides otherwise, according to this division."
+        }
+      ]
+    },
+    {
+      "id": "testtrust_revocability",
+      "title": "Revocability — Why a Testamentary Trust Becomes Irrevocable at the Testator's Death",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-02",
+      "body": "A testamentary trust does not exist, and so is not itself capable of being revoked, until {{testatorName}}'s death — it is created by {{testatorName}}'s will, and that will has no effect until then. Before death, what can be changed is the will itself: California Probate Code § 6120 lets {{testatorName}} revoke the will (and with it, any trust the will would otherwise have created) by a later will, or by a physical act done with the intent to revoke — but only {{testatorName}}, or someone acting in {{testatorName}}'s presence and at {{testatorName}}'s direction, can do that. Once {{testatorName}} has died, § 6120 no longer offers any living person a way to revoke the will. California's default trust-revocation rule works the same way for the trust itself: § 15400 makes a trust revocable by the settlor by default, and § 15401(a)(2) requires that a settlor's chosen method of revocation, absent the trust's own exclusive method, be exercised by a signed writing delivered to the trustee \"during the lifetime of the settlor.\" With {{testatorName}} deceased once {{trustName}} takes effect, no one remains who can exercise a settlor's power to revoke it under that rule.",
+      "gap": "This is one state's statute, used as real evidence of the actual mechanics that make a testamentary trust irrevocable in practice once it takes effect — not a claim about which state's law governs a specific will or trust, and not a claim that any single statute says in so many words that \"a testamentary trust is irrevocable.\" That conclusion is this clause's own inference from § 6120 (which requires the testator's living act to revoke a will) and § 15400/§ 15401(a) (which condition a settlor's default revocation power on the settlor being alive to exercise it) — not an independently stated rule. Honest qualification: § 15401(b)(2) separately allows a settlor to grant another person a power to revoke that continues even after the settlor's death; on its text this provision is not limited to multi-settlor trusts, though it appears in a subdivision otherwise concerned with revocation of a specific settlor's contributed portion of a multi-settlor trust, and no source reviewed for this document applies it to a testamentary trust specifically. This document does not independently verify whether or how that narrow provision could apply to a testamentary trust naming someone other than the deceased testator as a revocation-power holder. § 6120 is sourced from Probate Code Division 6 (Wills) and § 15400/§ 15401 from Division 9 (Trust Law) — two different divisions of the code, not the same source; § 15400 and § 15401 are, however, adjacent sections of the same statutory chapter and are treated as one source, not independent, for purposes of this clause's revocable-trust half of the argument. This corpus's Last Will and Testament document independently sources § 6120's two revocation methods in its own `will_revocation` clause; this clause relies on, and does not restate, that same statutory text rather than duplicating it here as an unrelated finding.",
+      "citations": [
+        {
+          "case": "Cal. Prob. Code § 6120 (California Legislative Information text)",
+          "cite": "only the testator can revoke the will during life",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=6120.",
+          "quote": "A will or any part thereof is revoked by any of the following: (a) A subsequent will which revokes the prior will or part expressly or by inconsistency. (b) Being burned, torn, canceled, obliterated, or destroyed, with the intent and for the purpose of revoking it, by either (1) the testator or (2) another person in the testator’s presence and by the testator’s direction."
+        },
+        {
+          "case": "Cal. Prob. Code § 15401(a)(2) (California Legislative Information text)",
+          "cite": "a settlor's default revocation power must be exercised during the settlor's lifetime",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=15401.",
+          "quote": "By a writing, other than a will, signed by the settlor or any other person holding the power of revocation and delivered to the trustee during the lifetime of the settlor or the person holding the power of revocation."
+        }
+      ]
+    },
+    {
+      "id": "testtrust_declaration",
+      "title": "Testamentary Trust Declaration",
+      "kind": "drafting",
+      "body": "If {{beneficiaryName}} has not reached the age of {{distributionAge}} at the time of my death, I direct that the share of my estate otherwise passing to {{beneficiaryName}} be held in trust rather than distributed outright, to be known as the {{trustName}}. I nominate {{trusteeName}} to serve as trustee of the {{trustName}}. If {{trusteeName}} is unable or unwilling to serve, I nominate {{successorTrusteeName}} to serve as successor trustee. The trustee shall hold, manage, and apply the trust property for {{beneficiaryName}}'s health, education, maintenance, and support until {{beneficiaryName}} reaches the age of {{distributionAge}}, at which time the trustee shall distribute the remaining trust property outright to {{beneficiaryName}}. The {{trustName}} is created by this will; it does not exist, and holds no property, unless and until this will is admitted to probate."
+    },
+    {
+      "id": "testtrust_trustee_acceptance",
+      "title": "Trustee Acceptance",
+      "kind": "drafting",
+      "body": "I, {{trusteeName}}, have been nominated as trustee of the {{trustName}} under the will of {{testatorName}}. I accept the office of trustee and agree to administer the {{trustName}} according to its terms and the law that governs it. Because the {{trustName}} is created by {{testatorName}}'s will rather than by a separate lifetime trust instrument, this acceptance is executed separately from the will itself, and this trusteeship has no effect unless and until {{testatorName}}'s will has been admitted to probate.\n\n_________________________ Date: _________________________\n{{trusteeName}}, Trustee of the {{trustName}}"
     }
   ]
 }
