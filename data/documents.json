@@ -8153,5 +8153,82 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "unpaid_internship_compliance_info_sheet",
+    "title": "Unpaid Internship Compliance — Information Sheet",
+    "description": "Explains the federal 'primary beneficiary' test used to determine whether an intern at a for-profit employer must be paid minimum wage and overtime under the FLSA, the separate volunteer rule for public agencies, why nonprofits are not categorically exempt, California's DLSE standard (which currently applies an older six-factor federal-derived test rather than the primary-beneficiary test, and its superseded eleven-factor predecessor), and the consequences if an unpaid internship is later found not to qualify.",
+    "categories": [
+      "Hiring"
+    ],
+    "clauseOrder": [
+      "internship_program_declaration",
+      "internship_flsa_default_rule",
+      "internship_employee_test_required",
+      "internship_primary_beneficiary_test",
+      "internship_seven_factors",
+      "internship_public_agency_volunteers",
+      "internship_nonprofit_workers",
+      "internship_california_dlse_standard",
+      "internship_california_prior_eleven_factor_test",
+      "internship_misclassification_consequences",
+      "internship_signature_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme Corp",
+        "required": true
+      },
+      {
+        "id": "internName",
+        "label": "Intern's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "supervisorName",
+        "label": "Supervisor's name",
+        "placeholder": "Taylor Morgan",
+        "required": true
+      },
+      {
+        "id": "educationalInstitution",
+        "label": "Educational institution (if applicable)",
+        "placeholder": "State University",
+        "required": false
+      },
+      {
+        "id": "startDate",
+        "label": "Internship start date",
+        "placeholder": "June 1, 2026",
+        "required": true
+      },
+      {
+        "id": "endDate",
+        "label": "Internship end date",
+        "placeholder": "August 15, 2026",
+        "required": true
+      },
+      {
+        "id": "hoursPerWeek",
+        "label": "Hours per week",
+        "placeholder": "20",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "May 20, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "San Francisco, California",
+        "required": true
+      }
+    ]
   }
 ]

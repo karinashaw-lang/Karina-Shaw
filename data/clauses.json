@@ -23300,6 +23300,201 @@
       "title": "Signature and Certification",
       "kind": "drafting",
       "body": "{{appealingParty}} certifies that the statements made in this appeal request are true and correct, and that this document is intended to accompany, and does not itself substitute for, an appeal actually filed with the EDD, an administrative law judge, or the CUIAB using their own required forms and procedures.\n\nEDD case number: {{eddCaseNumber}}\n\nSignature: _______________________ Date: _______________\n\nPrinted name: _______________________"
+    },
+    {
+      "id": "internship_flsa_default_rule",
+      "title": "The FLSA's Default Rule for Interns",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-02",
+      "body": "The Fair Labor Standards Act requires that covered employers pay at least the federal minimum wage to each of their \"employees,\" and pay overtime of at least one and one-half times the regular rate for hours worked beyond 40 in a workweek. An intern who is legally an \"employee\" under the Act is covered by both requirements in exactly the same way as any other employee — the label \"intern,\" \"trainee,\" or \"volunteer\" attached to a position does not itself change whether the Act's minimum-wage and overtime requirements apply. Being unpaid is therefore not the default status of an internship at a for-profit employer; it is an exception that exists only where the specific legal test described elsewhere in this document is actually met.",
+      "gap": "This describes the federal floor only. It does not by itself determine whether any particular internship qualifies as unpaid — that question is addressed by the separate clauses below, and this clause states only what follows once (or unless) an intern is found to be an \"employee.\" Some states set a higher minimum wage or additional overtime requirements than federal law requires; this document does not catalog those. This document is informational only: it does not itself determine that any specific internship is, or is not, an employment relationship covered by the FLSA, and does not determine that any particular employer's practices are compliant or noncompliant with the Act.",
+      "citations": [
+        {
+          "case": "29 U.S.C. § 206(a) (Cornell LII text)",
+          "cite": "U.S. Code, Fair Labor Standards Act, minimum wage",
+          "url": "https://www.law.cornell.edu/uscode/text/29/206",
+          "quote": "Every employer shall pay to each of his employees who in any workweek is engaged in commerce or in the production of goods for commerce , or is employed in an enterprise engaged in commerce or in the production of goods for commerce , wages at the following rates:"
+        },
+        {
+          "case": "29 U.S.C. § 207(a)(1) (Cornell LII text)",
+          "cite": "U.S. Code, Fair Labor Standards Act, overtime",
+          "url": "https://www.law.cornell.edu/uscode/text/29/207",
+          "quote": "no employer shall employ any of his employees who in any workweek is engaged in commerce or in the production of goods for commerce , or is employed in an enterprise engaged in commerce or in the production of goods for commerce , for a workweek longer than forty hours unless such employee receives compensation for his employment in excess of the hours above specified at a rate not less than one and one-half times the regular rate at which he is employed."
+        }
+      ]
+    },
+    {
+      "id": "internship_employee_test_required",
+      "title": "Why an Intern's Status Requires a Legal Test, Not Just a Label",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-02",
+      "body": "The Fair Labor Standards Act does not define \"intern\" or \"trainee\" at all, and its definition of \"employee\" is notoriously circular and broad: the statute defines \"employee\" as any individual employed by an employer, and separately defines \"employ\" to include \"to suffer or permit to work.\" Because the statute's own text supplies no separate standard for distinguishing a genuine trainee or student from a worker who happens to be unpaid, courts and the Department of Labor have had to develop their own tests — described in the following clauses — to decide when an unpaid intern is, in substance, an \"employee\" the Act was written to protect.",
+      "gap": "Both citations below are to different subsections of the same statutory section, 29 U.S.C. § 203; they are treated as one source, not independent. This document is informational only: it does not itself determine that any particular intern is, or is not, an \"employee\" within the meaning of the Act.",
+      "citations": [
+        {
+          "case": "29 U.S.C. § 203(e)(1) (Cornell LII text)",
+          "cite": "U.S. Code, Fair Labor Standards Act, definitions",
+          "url": "https://www.law.cornell.edu/uscode/text/29/203",
+          "quote": "the term “ employee ” means any individual employed by an employer ."
+        },
+        {
+          "case": "29 U.S.C. § 203(g) (Cornell LII text)",
+          "cite": "U.S. Code, Fair Labor Standards Act, definitions",
+          "url": "https://www.law.cornell.edu/uscode/text/29/203",
+          "quote": "“ Employ ” includes to suffer or permit to work."
+        }
+      ]
+    },
+    {
+      "id": "internship_primary_beneficiary_test",
+      "title": "The 'Primary Beneficiary' Test",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-02",
+      "body": "The test federal courts and the U.S. Department of Labor currently use to decide whether an intern at a for-profit employer is an \"employee\" under the FLSA is commonly called the \"primary beneficiary\" test. It asks, in substance, whether the economic reality of the internship shows that the intern is the primary beneficiary of the relationship (in which case an unpaid arrangement can be lawful) or that the employer is the primary beneficiary (in which case the intern is an employee entitled to minimum wage and overtime). This flexible, no-single-factor-controlling approach traces back to the Supreme Court's 1947 decision holding that railroad brakeman trainees were not \"employees\" where the employer received no immediate advantage from their work — a case still cited as the doctrinal starting point for the modern test.",
+      "gap": "This clause's account of the primary-beneficiary test's current form and adoption rests on more than one tier of sourcing, and that mix is disclosed here rather than papered over. What is independently verified below is the older, foundational case — Walling v. Portland Terminal Co., 330 U.S. 148 (1947) — fetched and quoted directly from a primary-source text. What is NOT independently verified in this session is the specific case usually credited with articulating the \"primary beneficiary\" test by that name, Glatt v. Fox Searchlight Pictures, Inc. (2d Cir., decided 2015 and amended 2016), or its later adoption by other circuits (including, per this research session's own case-law search results, the Ninth Circuit's Benjamin v. B & H Education) and by the U.S. Department of Labor. This session's attempts to verify Glatt against primary opinion text failed on every channel tried: the CourtListener API tool returned a daily rate-limit error (125 requests/day); a direct fetch of the individual CourtListener opinion page was blocked by CourtListener's own bot-challenge system (an AWS WAF JavaScript challenge, distinct from any rate limit); and the WebFetch tool reported that courtlistener.com is blocked by this environment's network egress policy. A CourtListener case-law search (a lighter, non-rate-limited endpoint) did confirm that opinions captioned \"Glatt v. Fox Searchlight Pictures, Inc.\" exist in the database, dated 2015 and 2016 from the Second Circuit, and that a case captioned \"Jacqueline Benjamin v. B & H Education\" also exists — consistent with, but not a substitute for, independently reading either opinion's actual text. The description of the test and its case-law lineage in this clause's body is accordingly based on this document's general legal knowledge, not on primary-source text examined in this session, and is a materially weaker sourcing tier than the Walling citation below. This document is informational only: it does not itself determine that any particular internship's economic reality favors the intern or the employer.",
+      "citations": [
+        {
+          "case": "Walling v. Portland Terminal Co.",
+          "cite": "330 U.S. 148 (1947) (Cornell LII text)",
+          "url": "https://www.law.cornell.edu/supremecourt/text/330/148",
+          "quote": "Accepting the unchallenged findings here that the railroads receive no 'immediate advantage' from any work done by the trainees, we hold that they are not employees within the Act's meaning."
+        }
+      ]
+    },
+    {
+      "id": "internship_seven_factors",
+      "title": "Factors Bearing on Which Party Is the Primary Beneficiary",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-02",
+      "body": "Rather than a rigid checklist where every element must be satisfied, the primary-beneficiary analysis is commonly described as weighing a non-exhaustive set of factors, with no single factor controlling and the answer depending on the totality of the circumstances of a given internship. Current U.S. Department of Labor guidance (Wage and Hour Division Fact Sheet #71, in the version issued in January 2018) is understood to describe seven such factors: (1) the extent to which the intern and the employer clearly understand there is no expectation of compensation; (2) the extent to which the internship provides training similar to that given in an educational environment; (3) the extent to which the internship is tied to the intern's formal education program, through integrated coursework or the receipt of academic credit; (4) the extent to which the internship accommodates the intern's academic commitments by corresponding to the academic calendar; (5) the extent to which the internship's duration is limited to the period in which it provides the intern with beneficial learning; (6) the extent to which the intern's work complements, rather than displaces, the work of paid employees while providing significant educational benefits to the intern; and (7) the extent to which the intern and the employer understand that the internship is conducted without entitlement to a paid job at its conclusion.",
+      "gap": "This clause's seven-factor list carries a materially weaker sourcing tier than the rest of this document, and that is disclosed plainly rather than dressed up as verified. Every attempt to fetch DOL's own text of Fact Sheet #71 (or the related Field Assistance Bulletin No. 2018-2 describing the same seven factors) failed in this session: a direct fetch of dol.gov returned an HTTP 403 \"Access Denied\" response, and the WebFetch tool separately reported that www.dol.gov is blocked by this environment's network egress policy. This document's own general legal knowledge is the source of the specific seven-factor list stated above; an automated web search run in this session returned law-firm and industry-blog summaries that corroborate the existence, general framing, and roughly the first three factors of the same list, but those summary snippets were not independently fetched and checked against DOL's own primary text, so they do not upgrade this to a verified citation. No factor listed above was invented for this document, but none of the seven should be treated as independently confirmed against DOL's own current text in the way the citation below is. What IS independently verified is the older Supreme Court case establishing that this kind of question is decided by weighing the whole relationship rather than any one circumstance in isolation. This document is informational only: it does not itself weigh these factors for any particular internship or reach a conclusion about any specific intern's status.",
+      "citations": [
+        {
+          "case": "Walling v. Portland Terminal Co.",
+          "cite": "330 U.S. 148 (1947) (Cornell LII text)",
+          "url": "https://www.law.cornell.edu/supremecourt/text/330/148",
+          "quote": "The Fair Labor Standards Act was not intended to penalize railroads for providing, free of charge, the same kind of instruction at a place and in a manner which would most greatly benefit the trainees."
+        }
+      ]
+    },
+    {
+      "id": "internship_public_agency_volunteers",
+      "title": "A Separate Rule for Volunteers at Public Agencies",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-02",
+      "body": "A different, narrower regulatory framework — not the primary-beneficiary test — governs unpaid volunteers at public agencies, meaning state and local government employers. Federal regulations provide that an individual who performs services for a public agency for civic, charitable, or humanitarian reasons, without promise, expectation, or receipt of compensation, is a volunteer for the time so spent, and is not subject to the Act's minimum-wage, overtime, and recordkeeping provisions for that time, subject to further conditions in the same regulations — including that the services be offered freely and without coercion, and that the individual not be otherwise employed by the same public agency to perform the same type of services.",
+      "gap": "This regulation applies specifically to public agencies — government employers — and does not by its own terms extend to for-profit employers, which is the primary subject of the rest of this document, or automatically to private nonprofit organizations, which are addressed separately in this document. This document is informational only: it does not itself determine that any particular public-agency arrangement meets every condition this regulation requires.",
+      "citations": [
+        {
+          "case": "29 C.F.R. § 553.101(a) (Cornell LII text)",
+          "cite": "Code of Federal Regulations, definition of \"volunteer\"",
+          "url": "https://www.law.cornell.edu/cfr/text/29/553.101",
+          "quote": "An individual who performs hours of service for a public agency for civic, charitable, or humanitarian reasons, without promise, expectation or receipt of compensation for services rendered, is considered to be a volunteer during such hours."
+        }
+      ]
+    },
+    {
+      "id": "internship_nonprofit_workers",
+      "title": "Nonprofit Employers Are Not Categorically Exempt",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-02",
+      "body": "Calling an unpaid worker at a nonprofit organization a \"volunteer\" or an \"associate,\" rather than an intern, does not by itself remove that person from the FLSA's coverage. The Supreme Court has held that unpaid workers at a nonprofit religious organization were \"employees\" under the Act because they worked in contemplation of compensation — there, compensation in the form of food, clothing, shelter, and other in-kind benefits, which the Court treated as wages in another form — applying the same \"economic reality\" test used generally to determine employee status, rather than any special nonprofit exemption.",
+      "gap": "Both citations below are to the same Supreme Court decision; they are treated as one source, not independent. This is a single, older (1985) case addressing a specific fact pattern — in-kind compensation at a residential religious foundation — not a general holding about internship programs at nonprofits, and this document does not independently verify how, or whether, the specific primary-beneficiary test described elsewhere in this document (developed in later case law addressing for-profit employers by its own terms) has been extended by courts or by the Department of Labor to nonprofit-employer internships specifically; any such extension was not checked against primary source text in this session. This document is informational only: it does not itself determine that any particular nonprofit's unpaid workers are, or are not, \"employees\" under the Act.",
+      "citations": [
+        {
+          "case": "Tony and Susan Alamo Foundation v. Secretary of Labor",
+          "cite": "471 U.S. 290 (1985) (Cornell LII text)",
+          "url": "https://www.law.cornell.edu/supremecourt/text/471/290",
+          "quote": "the test of employment under the Act is one of \"economic reality.\""
+        },
+        {
+          "case": "Tony and Susan Alamo Foundation v. Secretary of Labor",
+          "cite": "471 U.S. 290 (1985) (Cornell LII text)",
+          "url": "https://www.law.cornell.edu/supremecourt/text/471/290",
+          "quote": "its associates are \"employees\" within the meaning of the Act because they work in contemplation of compensation."
+        }
+      ]
+    },
+    {
+      "id": "internship_california_dlse_standard",
+      "title": "California's DLSE Applies Its Own Federal-Derived Test — Not the Primary-Beneficiary Test",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-02",
+      "body": "California has no state statute or regulation of its own that expressly exempts interns from the state's wage-and-hour laws. California's Division of Labor Standards Enforcement (DLSE), in its own currently published Enforcement Policies and Interpretations Manual, states that it evaluates unpaid intern and trainee arrangements using a six-factor test the federal Department of Labor derived from the Supreme Court's Walling v. Portland Terminal Co. decision — not the newer, more flexible \"primary beneficiary\" test described elsewhere in this document. As of this manual's currently posted text, DLSE adopted this six-factor federal test, in preference to an older and stricter eleven-factor test it had previously applied, in a 2010 opinion letter.",
+      "gap": "Both citations below are to the same source — section 46.6.4 of DLSE's Enforcement Policies and Interpretations Manual — and are treated as one source, not independent. The specific pages of the manual quoted here carry a \"JULY, 2017\" revision date printed in that section's own page footer, even though the manual's cover page is dated August 2019 and other sections carry later revision dates (some as recent as December 2020); this document fetched the manual live from California's Department of Industrial Relations website on the date shown above and quotes the section as currently published there, but cannot rule out that DLSE has since updated its position on interns specifically in a way not reflected in this publicly posted edition, and this document did not separately search for a more recent DLSE opinion letter on point. Note also that this section predates the U.S. Department of Labor's January 2018 adoption of the primary-beneficiary test described elsewhere in this document; whether DLSE's internal practice has since converged with the federal primary-beneficiary approach, notwithstanding what its own published manual currently states, was not independently verified. This document is informational only: it does not itself determine which test would actually be applied to any specific California internship, or by whom.",
+      "citations": [
+        {
+          "case": "California DLSE, Enforcement Policies and Interpretations Manual § 46.6.4, \"Intern Programs\" (current California Department of Industrial Relations text; section revision dated July 2017)",
+          "cite": "California Department of Industrial Relations, Division of Labor Standards Enforcement",
+          "url": "https://www.dir.ca.gov/dlse/DLSEManual/dlse_enfcmanual.pdf",
+          "quote": "In California there is no state statute or regulation which expressly exempts persons participating in an internship from wage and hour laws."
+        },
+        {
+          "case": "California DLSE, Enforcement Policies and Interpretations Manual § 46.6.4, \"Intern Programs\" (current California Department of Industrial Relations text; section revision dated July 2017)",
+          "cite": "California Department of Industrial Relations, Division of Labor Standards Enforcement",
+          "url": "https://www.dir.ca.gov/dlse/DLSEManual/dlse_enfcmanual.pdf",
+          "quote": "O.L 2010.04.07 adopted the above different six-factor federal test noting that the 5 additional factors identified in Wilcox, California Employment Law, § 104[1](e) previously used would have made no difference in the conclusion."
+        }
+      ]
+    },
+    {
+      "id": "internship_california_prior_eleven_factor_test",
+      "title": "DLSE's Earlier, Stricter Eleven-Factor Test (Historical, Superseded)",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-02",
+      "body": "Before 2010, DLSE opinion letters applied a stricter eleven-factor test, drawn from a legal treatise rather than from a statute or regulation, under which an unpaid arrangement was lawful only if every one of the eleven listed criteria was satisfied — not merely a majority of them. As reflected in a 1998 DLSE opinion letter applying that test to a newspaper's unpaid editorial interns, the agency treated the test's own first prong, requiring training similar to that given in a vocational school, as capable by itself of disqualifying an internship where the intern's duties strayed into ordinary clerical or business work.",
+      "gap": "Both citations below are to the same source — a single 1998 DLSE opinion letter — and are treated as one source, not independent. This eleven-factor test is historical background, not the currently operative DLSE standard: the separate clause in this document on DLSE's current position states that DLSE replaced this eleven-factor test with a six-factor federal test in a 2010 opinion letter, on the reasoning that the five additional factors this older test required would have made no difference to the outcome. This document is informational only: it does not itself determine that any particular internship would, or would not, have satisfied this now-superseded test.",
+      "citations": [
+        {
+          "case": "California DLSE Opinion Letter 1998.11.12 (Re: Intern Program Exemption)",
+          "cite": "California Department of Industrial Relations, Division of Labor Standards Enforcement, Legal Section (Miles E. Locker, Chief Counsel)",
+          "url": "https://www.dir.ca.gov/dlse/opinions/1998-11-12.pdf",
+          "quote": "The test used by DLSE to determine whether individuals are exempt from minimum wage and overtime compensation requirements as \"trainees\" is published at §1.04[l][e] of Wilcox, California Employment Law."
+        },
+        {
+          "case": "California DLSE Opinion Letter 1998.11.12 (Re: Intern Program Exemption)",
+          "cite": "California Department of Industrial Relations, Division of Labor Standards Enforcement, Legal Section (Miles E. Locker, Chief Counsel)",
+          "url": "https://www.dir.ca.gov/dlse/opinions/1998-11-12.pdf",
+          "quote": "While the ninth prong of the test appears to have been met, the program must satisfy all eleven prongs for the employer to evade liability for compensating the participants."
+        }
+      ]
+    },
+    {
+      "id": "internship_misclassification_consequences",
+      "title": "If an Unpaid Internship Is Later Found Not to Qualify",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-02",
+      "body": "If an internship treated as unpaid is later determined to have been, in substance, an employment relationship covered by the FLSA, the statute makes the employer liable to the affected intern for the amount of unpaid minimum wages or unpaid overtime compensation, as applicable, plus an additional equal amount as liquidated damages — in effect, double the wages that should have been paid. This liability attaches to the work actually performed; it is not avoided by the fact that the arrangement was labeled, or intended by both sides, to be unpaid.",
+      "gap": "This describes the federal remedy only; it does not state the FLSA's own statute of limitations for bringing such a claim, which this document does not independently verify. This document also does not restate California's separate wage-claim enforcement process and remedies — including the DLSE's Berman hearing process, its order-decision-award mechanism, and California-specific penalties — which are addressed in a separate information sheet elsewhere in this corpus (its DLSE Wage Claim Information Sheet) rather than duplicated here; an intern's or employer's actual exposure in California may include state-law remedies in addition to, and calculated differently from, the federal liquidated-damages remedy described in this clause. This document is informational only: it does not itself determine that any particular internship was misclassified, and does not calculate any specific amount owed.",
+      "citations": [
+        {
+          "case": "29 U.S.C. § 216(b) (Cornell LII text)",
+          "cite": "U.S. Code, Fair Labor Standards Act, damages and right of action",
+          "url": "https://www.law.cornell.edu/uscode/text/29/216",
+          "quote": "Any employer who violates the provisions of section 206 or section 207 of this title shall be liable to the employee or employees affected in the amount of their unpaid minimum wages, or their unpaid overtime compensation, as the case may be, and in an additional equal amount as liquidated damages."
+        }
+      ]
+    },
+    {
+      "id": "internship_program_declaration",
+      "title": "Internship Program Declaration",
+      "kind": "drafting",
+      "body": "Intern: {{internName}}\nOrganization: {{companyName}}\nSupervisor: {{supervisorName}}\nInternship dates: {{startDate}} through {{endDate}}\nScheduled hours per week: {{hoursPerWeek}}\nEducational institution, if any: {{educationalInstitution}}\n\nThe following statements describe this internship as structured by {{companyName}}. They are factual statements about this specific arrangement, not a legal conclusion about {{internName}}'s status under the Fair Labor Standards Act or any state wage-and-hour law.\n\nCompensation: ☐ Unpaid  ☐ Paid (rate: _______________)\n\nAcademic credit: ☐ {{internName}} will receive academic credit from {{educationalInstitution}} for this internship  ☐ No academic credit is associated with this internship\n\nRelationship to coursework: ☐ This internship is integrated with {{internName}}'s formal coursework  ☐ This internship is not tied to a specific course or curriculum\n\nDuration: ☐ This internship's dates are limited to a period the parties intend to be equivalent to the internship's period of beneficial learning  ☐ This internship is of indefinite or open-ended duration\n\nJob offer: ☐ {{internName}} is entitled to a paid position with {{companyName}} at the conclusion of this internship  ☐ {{internName}} is not entitled to a paid position at the conclusion of this internship\n\nRelationship to paid staff: ☐ {{internName}}'s work is intended to complement, not displace, the work of {{companyName}}'s paid employees  ☐ Other (describe): _______________________________________________\n\nSupervision and training description: _______________________________________________"
+    },
+    {
+      "id": "internship_signature_ack",
+      "title": "Signature and Acknowledgment",
+      "kind": "drafting",
+      "body": "{{internName}} and {{companyName}} each acknowledge that they have reviewed the internship program declaration above and this information sheet's description of the federal and California legal standards that can apply to unpaid internships.\n\nExecuted on {{dateSigned}} at {{cityState}}.\n\nSignature of {{internName}}: ☐ _________________________\n\nSignature on behalf of {{companyName}}: ☐ _________________________\n\n[This information sheet describes the federal \"primary beneficiary\" test, related federal regulations and case law, and California's DLSE guidance concerning unpaid internships. It is not a legal opinion about {{internName}}'s status, does not itself determine that this internship is, or is not, lawfully unpaid under the Fair Labor Standards Act or California law, is not a substitute for the statutes, regulations, and case law it describes, does not constitute legal advice, and is not a substitute for consulting a licensed attorney.]"
     }
   ]
 }
