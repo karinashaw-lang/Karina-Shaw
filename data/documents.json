@@ -14307,5 +14307,55 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "ellis_act_info_sheet",
+    "title": "Ellis Act — Information Sheet",
+    "description": "Background information on California's Ellis Act (Government Code sections 7060-7060.7), which lets a residential landlord withdraw all rental units at a property from the rental market, subject to notice, tenancy-extension, and re-offering provisions -- distinct from the statewide just-cause eviction and rent-cap framework.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "ellisact_declaration",
+      "ellisact_core_right_to_withdraw",
+      "ellisact_all_units_no_partial_withdrawal",
+      "ellisact_notice_and_date_of_withdrawal",
+      "ellisact_elderly_disabled_extension",
+      "ellisact_rerental_restrictions",
+      "ellisact_scope_of_preemption_and_ud_defense",
+      "ellisact_ack"
+    ],
+    "fields": [
+      {
+        "id": "landlordName",
+        "label": "Landlord name",
+        "placeholder": "Acme Properties, LLC",
+        "required": true
+      },
+      {
+        "id": "tenantName",
+        "label": "Tenant name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "propertyAddress",
+        "label": "Property address",
+        "placeholder": "123 Main St, Apt 4, Springfield",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
