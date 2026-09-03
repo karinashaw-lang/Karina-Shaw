@@ -14597,5 +14597,67 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "marital_summary_dissolution_info_sheet",
+    "title": "Marital Summary Dissolution — Information Sheet",
+    "description": "Background information on California's simplified summary dissolution procedure for married spouses (Family Code sections 2400-2406) -- the narrow eligibility conditions, the joint-petition process, the right to revoke before judgment, and the judgment's effect -- distinct from the corpus's Domestic Partnership Dissolution document's administrative termination mechanism.",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "summarydissolution_declaration",
+      "summarydissolution_eligibility_conditions",
+      "summarydissolution_petition_commencement_and_contents",
+      "summarydissolution_revocation_before_judgment",
+      "summarydissolution_judgment_entry_and_status",
+      "summarydissolution_judgment_effect_and_setaside",
+      "summarydissolution_distinction_from_dp_administrative_termination",
+      "summarydissolution_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "party1Name",
+        "label": "First party's full legal name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "party2Name",
+        "label": "Second party's full legal name",
+        "placeholder": "Morgan Casey Lee",
+        "required": true
+      },
+      {
+        "id": "marriageDate",
+        "label": "Date of marriage",
+        "placeholder": "June 14, 2020",
+        "required": true
+      },
+      {
+        "id": "separationDate",
+        "label": "Date of separation",
+        "placeholder": "March 2, 2026",
+        "required": true
+      },
+      {
+        "id": "countyOfFiling",
+        "label": "County of filing",
+        "placeholder": "Sacramento County",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
