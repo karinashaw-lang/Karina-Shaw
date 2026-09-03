@@ -13826,5 +13826,49 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "confidential_marriage_info_sheet",
+    "title": "Confidential Marriage — Information Sheet",
+    "description": "Information about California's confidential marriage license, Family Code §§ 500-536 — a distinct license track from the standard public marriage license, covering eligibility, issuance through a county clerk or approved notary public, the notary approval/training regime, ceremony completion, and the confidential, non-public status of the record.",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "confmarriage_recitals",
+      "confmarriage_eligibility",
+      "confmarriage_issuance_methods",
+      "confmarriage_notary_approval",
+      "confmarriage_no_witness_requirement",
+      "confmarriage_confidentiality_of_record",
+      "confmarriage_certified_copy_access",
+      "confmarriage_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "party1Name",
+        "label": "First party's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "party2Name",
+        "label": "Second party's name",
+        "placeholder": "Taylor Morgan",
+        "required": true
+      },
+      {
+        "id": "countyOfFiling",
+        "label": "County of filing",
+        "placeholder": "Alameda County",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 3, 2026",
+        "required": true
+      }
+    ]
   }
 ]
