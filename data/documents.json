@@ -13661,5 +13661,67 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "ccpa_employee_job_applicant_data_info_sheet",
+    "title": "CCPA Employee and Job Applicant Data — Information Sheet",
+    "description": "Information about how the California Consumer Privacy Act, as amended by the CPRA, applies to a business's own personnel data since the former temporary employee/HR/B2B exemption (Civ. Code § 1798.145(m)-(n)) expired on January 1, 2023 — coverage thresholds, the notice-at-collection requirement, and the rights to know, delete, and correct.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "ccpaemployee_recitals",
+      "ccpaemployee_former_exemption_expired",
+      "ccpaemployee_consumer_definition_includes_personnel",
+      "ccpaemployee_covered_business_thresholds",
+      "ccpaemployee_notice_at_collection_requirement",
+      "ccpaemployee_rights_to_know_delete_correct",
+      "ccpaemployee_notice_at_collection_declaration",
+      "ccpaemployee_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "businessName",
+        "label": "Business name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "contactMethod",
+        "label": "How personnel may contact the business or submit requests",
+        "placeholder": "privacy@acme.com or (415) 555-0100",
+        "required": true
+      },
+      {
+        "id": "categoriesCollected",
+        "label": "Categories of personal information collected from personnel",
+        "placeholder": "Identifiers (name, contact info), employment history, education, and performance records",
+        "required": true
+      },
+      {
+        "id": "purposesOfUse",
+        "label": "Purposes for collecting and using personnel data",
+        "placeholder": "Recruiting, payroll and benefits administration, and performance management",
+        "required": true
+      },
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 3, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
