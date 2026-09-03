@@ -14659,5 +14659,67 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "involuntary_dissolution_corporation_info_sheet",
+    "title": "Involuntary Dissolution of a Corporation — Information Sheet",
+    "description": "Background information on California Corporations Code sections 1800-1806's general involuntary-dissolution statute -- the six statutory grounds, standing to petition, court procedure, the provisional-director interim remedy for deadlock, court-supervised winding up, and the section 2000 buyout alternative that can avoid dissolution -- a companion to the existing Close Corporation document's narrower standing-expansion coverage.",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "involdissolution_purpose_declaration",
+      "involdissolution_grounds",
+      "involdissolution_standing_general",
+      "involdissolution_procedure",
+      "involdissolution_deadlock_provisional_director",
+      "involdissolution_winding_up_supervision",
+      "involdissolution_buyout_alternative",
+      "involdissolution_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "entityType",
+        "label": "Entity type",
+        "placeholder": "stock corporation",
+        "required": true
+      },
+      {
+        "id": "petitionerName",
+        "label": "Petitioner's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "groundsForProceeding",
+        "label": "Grounds for the proceeding",
+        "placeholder": "board deadlock",
+        "required": true
+      },
+      {
+        "id": "ownershipPercentage",
+        "label": "Approximate ownership or membership interest, if known",
+        "placeholder": "10%",
+        "required": false
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
