@@ -13919,5 +13919,77 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "de_facto_parent_status_info_sheet",
+    "title": "De Facto Parent Status — Information Sheet",
+    "description": "Background information about California's de facto parent doctrine in juvenile dependency proceedings: what the term means, how a court recognizes the status, what rights it confers, and how it differs from legal parentage or guardianship.",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "defactoparent_declaration",
+      "defactoparent_definition",
+      "defactoparent_standing_rights",
+      "defactoparent_origin_bg",
+      "defactoparent_not_legal_parent",
+      "defactoparent_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "petitionerName",
+        "label": "Petitioner's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "relationshipToChild",
+        "label": "Petitioner's relationship to the child",
+        "placeholder": "stepparent",
+        "required": true
+      },
+      {
+        "id": "childName",
+        "label": "Child's name",
+        "placeholder": "Casey Lee",
+        "required": true
+      },
+      {
+        "id": "childDOB",
+        "label": "Child's date of birth",
+        "placeholder": "January 1, 2018",
+        "required": true
+      },
+      {
+        "id": "parent1Name",
+        "label": "Parent 1's name",
+        "placeholder": "Taylor Morgan",
+        "required": true
+      },
+      {
+        "id": "parent2Name",
+        "label": "Parent 2's name (if applicable)",
+        "placeholder": "Riley Chen",
+        "required": false
+      },
+      {
+        "id": "countyOfFiling",
+        "label": "County of filing",
+        "placeholder": "San Francisco County",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "October 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "San Francisco, California",
+        "required": true
+      }
+    ]
   }
 ]
