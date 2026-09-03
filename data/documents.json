@@ -14783,5 +14783,67 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "dissenters_rights_info_sheet",
+    "title": "Dissenters' Rights (Appraisal Rights) — Information Sheet",
+    "description": "Background information on California Corporations Code sections 1300-1313 (Chapter 13, \"Dissenters' Rights\") -- a shareholder's right to demand cash at fair market value for shares dissenting from certain reorganizations, the \"market-out\" exception and its carve-backs, the demand and endorsement procedure and deadlines, valuation and payment, the court process for resolving disputes, and how dissenting-share status can be lost.",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "dissenters_declaration",
+      "dissenters_what_and_when",
+      "dissenters_market_out_exception",
+      "dissenters_procedure_demand",
+      "dissenters_valuation_and_payment",
+      "dissenters_court_action_and_costs",
+      "dissenters_loss_of_status_and_no_other_remedy",
+      "dissenters_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "entityType",
+        "label": "Entity type",
+        "placeholder": "stock corporation",
+        "required": true
+      },
+      {
+        "id": "shareholderName",
+        "label": "Shareholder's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "numberOfSharesHeld",
+        "label": "Number of shares held",
+        "placeholder": "1,000 shares of common stock",
+        "required": true
+      },
+      {
+        "id": "reorganizationDescription",
+        "label": "Description of the reorganization or merger",
+        "placeholder": "Merger of Acme, Inc. into Beta Holdings, Inc.",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
