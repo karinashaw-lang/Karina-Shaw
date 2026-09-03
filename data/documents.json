@@ -13870,5 +13870,54 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "professional_llc_prohibition_info_sheet",
+    "title": "Professional LLC Prohibition in California — Information Sheet",
+    "description": "Information about why California generally does not allow a limited liability company to render licensed 'professional services,' under Corporations Code § 17701.04 and the definitions it cross-references, and how that contrasts with the Professional Corporation and Registered Limited Liability Partnership forms.",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "profllc_declaration",
+      "profllc_general_purpose_and_licensing_carveout",
+      "profllc_professional_services_prohibition",
+      "profllc_professional_services_defined",
+      "profllc_healthcare_subsidiary_exception",
+      "profllc_rllp_narrower_professions",
+      "profllc_certification"
+    ],
+    "fields": [
+      {
+        "id": "preparerName",
+        "label": "Name of person preparing this information sheet",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "professionType",
+        "label": "Profession or field discussed, if applicable",
+        "placeholder": "Law",
+        "required": false
+      },
+      {
+        "id": "companyName",
+        "label": "Business name under consideration, if applicable",
+        "placeholder": "Acme Consulting",
+        "required": false
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 3, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
