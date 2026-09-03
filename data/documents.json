@@ -14095,5 +14095,61 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "copyright_termination_right_info_sheet",
+    "title": "Copyright Termination Right — Information Sheet",
+    "description": "Background information on the federal statutory right to terminate a copyright transfer or license decades after it was granted, under 17 U.S.C. section 203 (post-1978 grants) and section 304(c)/(d) (pre-1978 grants), including the work-for-hire exception, timing windows, notice requirements, and effect of termination.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "copyrightterm_declaration",
+      "copyrightterm_scope_and_override",
+      "copyrightterm_work_for_hire_exception",
+      "copyrightterm_who_may_exercise",
+      "copyrightterm_window_timing_two_pathways",
+      "copyrightterm_notice_requirements",
+      "copyrightterm_effect_of_termination",
+      "copyrightterm_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "creatorName",
+        "label": "Creator's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "granteeName",
+        "label": "Grantee's name",
+        "placeholder": "Jordan Morgan",
+        "required": true
+      },
+      {
+        "id": "workTitle",
+        "label": "Title of the work",
+        "placeholder": "Riverbend (novel)",
+        "required": true
+      },
+      {
+        "id": "grantExecutionDate",
+        "label": "Date the grant was executed",
+        "placeholder": "June 1, 2010",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
