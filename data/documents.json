@@ -13591,5 +13591,75 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "displaced_janitor_opportunity_act_info_sheet",
+    "title": "Displaced Janitor Opportunity Act — Information Sheet",
+    "description": "Information about California Labor Code §§ 1060-1065 — the successor building-service contractor's obligation to retain a terminated contractor's covered janitorial/building-maintenance employees for a 60-day transition period, the written-offer and seniority rules, discharge protection, and enforcement.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "djoa_background",
+      "djoa_definitions",
+      "djoa_notice_and_employee_info",
+      "djoa_retention_obligation",
+      "djoa_offer_terms_and_seniority",
+      "djoa_lists_and_preferential_hiring",
+      "djoa_discharge_protection_and_evaluation",
+      "djoa_scope_and_limits",
+      "djoa_enforcement",
+      "djoa_certification"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Successor contractor's name",
+        "placeholder": "Acme Building Services, Inc.",
+        "required": true
+      },
+      {
+        "id": "facilityDescription",
+        "label": "Site(s)/facility covered by the service contract",
+        "placeholder": "123 Main St office building, floors 1-10",
+        "required": true
+      },
+      {
+        "id": "effectiveDate",
+        "label": "Effective date of the successor service contract",
+        "placeholder": "November 1, 2026",
+        "required": true
+      },
+      {
+        "id": "retainedEmployeeStatement",
+        "label": "Statement regarding retention of the predecessor's employees",
+        "placeholder": "All 12 eligible employees were offered retention in writing on October 15, 2026",
+        "required": true
+      },
+      {
+        "id": "causeExceptionStatement",
+        "label": "Statement regarding any employees not offered retention for cause",
+        "placeholder": "None; alternatively, describe the employee(s) and the stated cause",
+        "required": false
+      },
+      {
+        "id": "authorizedSignerName",
+        "label": "Name of person completing this record",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "authorizedSignerTitle",
+        "label": "Authorized signer's title",
+        "placeholder": "Operations Director",
+        "required": true
+      },
+      {
+        "id": "signatureDate",
+        "label": "Date signed",
+        "placeholder": "October 15, 2026",
+        "required": true
+      }
+    ]
   }
 ]
