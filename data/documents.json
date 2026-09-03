@@ -14245,5 +14245,67 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "california_homeowner_bill_of_rights_info_sheet",
+    "title": "California Homeowner Bill of Rights — Information Sheet",
+    "description": "Background information on California's Homeowner Bill of Rights borrower protections for certain owner-occupied residential mortgage loans -- the pre-foreclosure contact requirement, the dual-tracking prohibition, the single point of contact requirement, the small-servicer exemption, and statutory remedies -- as a companion to the corpus's general nonjudicial foreclosure process information sheet.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "hbor_intro_scope",
+      "hbor_scope_owner_occupied",
+      "hbor_preforeclosure_contact_requirement",
+      "hbor_dual_track_prohibition",
+      "hbor_single_point_of_contact",
+      "hbor_small_servicer_exemption",
+      "hbor_remedy_private_right_of_action",
+      "hbor_closing_acknowledgment"
+    ],
+    "fields": [
+      {
+        "id": "propertyAddress",
+        "label": "Property address",
+        "placeholder": "123 Main St., Sacramento, CA 95814",
+        "required": true
+      },
+      {
+        "id": "trustorName",
+        "label": "Trustor (borrower) name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "beneficiaryName",
+        "label": "Beneficiary (lender) name",
+        "placeholder": "Example Mortgage Lending, Inc.",
+        "required": true
+      },
+      {
+        "id": "mortgageServicerName",
+        "label": "Mortgage servicer name",
+        "placeholder": "Example Loan Servicing, Inc.",
+        "required": true
+      },
+      {
+        "id": "loanNumber",
+        "label": "Loan number",
+        "placeholder": "0012345678",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, state",
+        "placeholder": "Sacramento, California",
+        "required": true
+      }
+    ]
   }
 ]
