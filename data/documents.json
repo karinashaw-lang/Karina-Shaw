@@ -14151,5 +14151,49 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "crime_victim_domestic_violence_leave_info_sheet",
+    "title": "Crime Victim and Domestic Violence Leave — Information Sheet",
+    "description": "Background information on California's job-protected leave, notice/certification, confidentiality, and reasonable-accommodation protections for employees who are victims of domestic violence, sexual assault, stalking, or certain other crimes (or their family members) -- formerly Labor Code sections 230 and 230.1, now recodified as Government Code section 12945.8 under the Fair Employment and Housing Act.",
+    "categories": [
+      "During employment"
+    ],
+    "clauseOrder": [
+      "dvleave_declaration",
+      "dvleave_codification_status",
+      "dvleave_core_protected_reasons",
+      "dvleave_25plus_expanded_purposes",
+      "dvleave_notice_certification",
+      "dvleave_confidentiality",
+      "dvleave_reasonable_accommodation",
+      "dvleave_ack"
+    ],
+    "fields": [
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
