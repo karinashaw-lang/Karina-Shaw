@@ -13297,5 +13297,43 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "fair_chance_act_info_sheet",
+    "title": "California Fair Chance Act ('Ban the Box') — Information Sheet",
+    "description": "Information about California Government Code § 12952 — the pre-conditional-offer restriction on inquiring about or considering an applicant's conviction history, what a background check may not consider, and which employers and positions are covered or exempted.",
+    "categories": [
+      "Hiring"
+    ],
+    "clauseOrder": [
+      "fairchance_declaration",
+      "fairchance_pre_offer_prohibition",
+      "fairchance_background_check_content_restrictions",
+      "fairchance_background_check_not_banned",
+      "fairchance_covered_employers_and_exemptions",
+      "fairchance_definitions",
+      "fairchance_postoffer_process_reference",
+      "fairchance_certification"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme Corp",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Applicant's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "jobTitle",
+        "label": "Position applied for",
+        "placeholder": "Warehouse Associate",
+        "required": true
+      }
+    ]
   }
 ]
