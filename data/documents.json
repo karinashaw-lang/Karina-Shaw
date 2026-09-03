@@ -14195,5 +14195,55 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "grounds_to_contest_will_trust_info_sheet",
+    "title": "Grounds to Contest a Will or Trust — Information Sheet",
+    "description": "Background information on the substantive grounds California law recognizes for challenging a will or trust's validity -- lack of testamentary capacity, duress, menace, fraud, and undue influence -- and the standing and time-limit rules for raising a challenge.",
+    "categories": [
+      "Estate Planning"
+    ],
+    "clauseOrder": [
+      "willcontest_declaration",
+      "willcontest_capacity_ground",
+      "willcontest_6104_invalidity_grounds",
+      "willcontest_undue_influence_definition",
+      "willcontest_standing_and_procedure",
+      "willcontest_postprobate_revocation_deadline",
+      "willcontest_trust_contest_deadline",
+      "willcontest_certification"
+    ],
+    "fields": [
+      {
+        "id": "decedentName",
+        "label": "Decedent's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "dateOfDeath",
+        "label": "Date of death",
+        "placeholder": "March 15, 2026",
+        "required": true
+      },
+      {
+        "id": "countyOfFiling",
+        "label": "County of filing",
+        "placeholder": "Sacramento County",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
