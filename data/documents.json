@@ -13465,5 +13465,55 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "omitted_spouse_child_info_sheet",
+    "title": "Omitted Spouse and Omitted Child (Pretermitted Heir) — Information Sheet",
+    "description": "Information about California's statutory protections for a spouse married to, or a child born/adopted to, a decedent after the decedent's will or qualifying revocable trust was executed, under Probate Code §§ 21600, 21610-21611, and 21620-21623 — the default share, the exceptions that defeat it, and how the share is satisfied.",
+    "categories": [
+      "Estate Planning"
+    ],
+    "clauseOrder": [
+      "omitted_declaration",
+      "omitted_scope_instruments",
+      "omitted_spouse_share",
+      "omitted_spouse_exceptions",
+      "omitted_child_share",
+      "omitted_child_exceptions",
+      "omitted_satisfaction_apportionment",
+      "omitted_certification"
+    ],
+    "fields": [
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "decedentName",
+        "label": "Decedent's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "relationshipToDecedent",
+        "label": "Relationship to decedent",
+        "placeholder": "Surviving spouse",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 3, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
