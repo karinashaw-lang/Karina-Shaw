@@ -13778,5 +13778,53 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "director_duty_of_care_bjr_info_sheet",
+    "title": "Director's Duty of Care and the Business Judgment Rule — Information Sheet",
+    "description": "Information about California Corporations Code § 309 — a director's statutory standard of care, the right to rely on officers, experts, and board committees, the conditions on that reliance right, and the resulting statutory liability protection (business judgment rule).",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "bjr_purpose_declaration",
+      "bjr_standard_of_care",
+      "bjr_reliance_sources",
+      "bjr_reliance_conditions",
+      "bjr_liability_protection",
+      "bjr_signature_certification"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Corporation name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "directorName",
+        "label": "Director's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Taylor Morgan",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 3, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
