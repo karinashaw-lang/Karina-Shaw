@@ -13515,5 +13515,43 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "mold_disclosure_info_sheet",
+    "title": "Mold Disclosure — Information Sheet",
+    "description": "Information about California's Toxic Mold Protection Act of 2001 (Health & Safety Code §§ 26100-26157) — the residential landlord disclosure duty, the commercial/industrial seller disclosure duty, and the statute's own conditional triggering structure, which ties several disclosure duties to regulatory action the statutory text itself does not confirm has occurred.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "mold_declaration",
+      "mold_act_framework",
+      "mold_standards_not_shown_adopted",
+      "mold_residential_landlord_disclosure",
+      "mold_consumer_booklet_disclosure",
+      "mold_sale_disclosure_scope",
+      "mold_liability_and_enforcement",
+      "mold_ack"
+    ],
+    "fields": [
+      {
+        "id": "propertyAddress",
+        "label": "Property address",
+        "placeholder": "123 Main St, Apt 4, Springfield",
+        "required": true
+      },
+      {
+        "id": "sellerLandlordName",
+        "label": "Seller's or landlord's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "buyerTenantName",
+        "label": "Buyer's or tenant's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      }
+    ]
   }
 ]
