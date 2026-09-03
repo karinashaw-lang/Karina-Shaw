@@ -40949,6 +40949,132 @@
       "title": "Acknowledgment of Receipt",
       "kind": "drafting",
       "body": "Please sign below to acknowledge that you received this Cal/OSHA Injury and Illness Recording Requirements — Information Sheet.\n\nEmployee: {{employeeName}}\nSignature: _______________  Date: _______________\n\nRecordkeeper: {{programAdministratorName}}\nSignature: _______________  Date: _______________\n\nOn behalf of {{companyName}}:\nSignature: _______________  Date: _______________"
+    },
+    {
+      "id": "ideasubmission_purpose",
+      "title": "Purpose of This Idea Submission Doctrine Information Sheet",
+      "kind": "drafting",
+      "body": "This Information Sheet describes California's common-law idea submission doctrine, originating in the California Supreme Court's 1956 decision in Desny v. Wilder — the body of law that addresses when a person who discloses an idea to another (for example, a business, a studio, or a company) may be entitled to payment for that idea's use, apart from and independent of any copyright or trade secret protection. It is prepared by {{preparerName}} concerning an idea described as follows: {{ideaDescription}}. That idea was submitted to {{recipientName}} on or around {{submissionDate}}. This Information Sheet is a general informational reference describing what the Desny v. Wilder opinion, and later published California case law applying it, actually say about this doctrine. It does not itself determine whether the disclosure described above did, or did not, give rise to an implied-in-fact contract, and it is not a substitute for that case-specific legal determination. This is a California common-law doctrine; other states have developed their own idea-submission rules, which are not necessarily identical to California's and which this Information Sheet does not address. This document is also distinct from, and does not replace, this project's existing Non-Disclosure Agreement, Mutual Non-Disclosure Agreement, and Invention Assignment & Confidentiality Agreement documents, each of which concerns an express, signed, written contract rather than the implied-in-fact contract theory this Information Sheet describes."
+    },
+    {
+      "id": "ideasubmission_signature_acknowledgment",
+      "title": "Signature and Acknowledgment Block — Idea Submission Doctrine Information Sheet",
+      "kind": "drafting",
+      "body": "I declare under penalty of perjury under the laws of the State of California that the foregoing is true and correct.\n\nExecuted on {{dateSigned}} at {{cityState}}.\n\nSignature of {{preparerName}}: ☐ _________________________\n\n[This Information Sheet is a general reference describing California's idea submission doctrine as stated in Desny v. Wilder (1956) 46 Cal.2d 715 and later published California case law applying it. It is not a contract, a demand letter, a court filing, or legal advice about whether any specific submission described in this Information Sheet gave rise to an enforceable obligation to pay, and completing or signing this Information Sheet does not itself create, establish, or waive any such obligation.]"
+    },
+    {
+      "id": "ideasubmission_why_doctrine_exists",
+      "title": "Why This Doctrine Exists: An Idea, by Itself, Is Not Protected Property",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-03",
+      "body": "Under California law, an abstract idea is not treated as property that its originator can exclusively own, and it is not protected by copyright, which extends only to the expression of an idea and never to the idea itself. In Desny v. Wilder, the California Supreme Court confirmed that general rule, and went on to explain that a claim for the use of someone's story synopsis or composition does not depend on that material qualifying for copyright protection at all — the claim can instead rest entirely on ordinary contract law, separate from and unconcerned with copyright's requirements. Because neither general property law nor copyright law protects a bare idea, and because an idea disclosed without any confidentiality restriction placed on the recipient may not, without more, qualify as a trade secret either, California courts developed a separate, contract-based doctrine — described in the remaining clauses of this Information Sheet — to address whether, and on what basis, a person who submits an idea to another can recover for its use.",
+      "gap": "Both quotations cited below come from the same source — the California Supreme Court's 1956 opinion in Desny v. Wilder, 46 Cal.2d 715 — so this is one primary source, not two independent ones. That repetition recurs across several clauses of this Information Sheet because Desny is the single foundational case for this entire doctrine; each clause's own gap notes this explicitly. The opinion's text was retrieved and its quoted sentences confirmed via two distinct retrieval methods within the CourtListener database: (1) CourtListener's document-read/search-document tools, which serve the opinion's `html_with_citations` text, and (2) a direct call to CourtListener's underlying `opinions` REST API endpoint requesting the raw `xml_harvard` field (the Harvard Caselaw Access Project digitization CourtListener has ingested for this particular opinion) — both paths returned character-for-character identical text for the quoted sentences. Because both paths ultimately query the same CourtListener-hosted database, and for this particular opinion draw on the same underlying Harvard-sourced digitization (no separate Lawbox or Columbia text layer was available for this 1956 opinion, unlike for the 1979 opinion cited elsewhere in this Information Sheet), this is disclosed honestly as one primary source checked two ways, not two independently hosted sources. The sentence in this clause's body about trade secret protection describes a general principle of California trade secret law (that a claimed trade secret must be the subject of reasonable efforts to maintain its secrecy) without a separate statutory citation in this clause — no fresh, independent confirmation of that statutory text was performed in this research session, since the relevant California statute is hosted only at leginfo.legislature.ca.gov, which this session's network access could not reach. Readers may also consult this project's existing Non-Disclosure Agreement clauses, which independently cite and quote California's statutory trade secret definition (Cal. Civ. Code § 3426.1(d)). This is California common-law doctrine; other states have their own idea-submission rules, not necessarily identical to California's, which this document does not address.",
+      "citations": [
+        {
+          "case": "Desny v. Wilder, 46 Cal. 2d 715 (Cal., Jun. 28, 1956)",
+          "cite": "California Supreme Court holding that California does not accord property-type protection to abstract ideas",
+          "url": "https://www.courtlistener.com/opinion/1444748/desny-v-wilder/",
+          "quote": "it is clear that California does not now accord individual property type protection to abstract ideas."
+        },
+        {
+          "case": "Desny v. Wilder, 46 Cal. 2d 715, 744 (Cal., Jun. 28, 1956)",
+          "cite": "California Supreme Court holding that copyright protectibility is not required for contract-based recovery",
+          "url": "https://www.courtlistener.com/opinion/1444748/desny-v-wilder/",
+          "quote": "It is not essential to recovery that plaintiff’s story or synopsis possess the elements of copyright protectibility if the fact of consensual contract be found."
+        }
+      ]
+    },
+    {
+      "id": "ideasubmission_implied_in_fact_contract_theory",
+      "title": "The Implied-in-Fact Contract Theory Desny v. Wilder Articulated",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-03",
+      "body": "Desny v. Wilder addressed a person who submits an idea to another party without ever obtaining a signed agreement, and held that such a person can still recover for the idea's use — but only under contract principles, never because of any property interest in the idea itself. The California Supreme Court explained that an idea's originator cannot prevail unless there is either an express promise to pay, made before or after disclosure, or circumstances showing a contract described as \"implied-in-fact\" — meaning a genuine, if unwritten and unspoken, meeting of the minds that is inferred from conduct rather than from words. The court was explicit that this implied promise cannot simply be assumed because an idea turned out to be valuable or was later used; it must instead be grounded in circumstances the recipient actually knew, and conduct by which the recipient voluntarily accepted the idea's disclosure, before the idea itself was revealed.",
+      "gap": "Both quotations cited below come from the same source — the California Supreme Court's 1956 opinion in Desny v. Wilder, 46 Cal.2d 715 — so this is one primary source, not two independent ones, as explained more fully in this Information Sheet's first authority clause. The opinion's text and these specific sentences were confirmed via the same two distinct retrieval methods described there: CourtListener's document-read/search-document tools (serving `html_with_citations`) and a direct CourtListener REST API call to the `opinions` endpoint requesting the raw `xml_harvard` field, which returned identical text. This describes the general contract theory Desny recognizes; it does not by itself describe every limit the opinion places on that theory — those limits are addressed in the following clauses of this Information Sheet.",
+      "citations": [
+        {
+          "case": "Desny v. Wilder, 46 Cal. 2d 715, 738–739 (Cal., Jun. 28, 1956)",
+          "cite": "California Supreme Court's statement of the two ways an idea's originator may recover: an express promise, or a promise implied-in-fact",
+          "url": "https://www.courtlistener.com/opinion/1444748/desny-v-wilder/",
+          "quote": "the idea purveyor cannot prevail in an action to recover compensation for an abstract idea unless (a) before or after disclosure he has obtained an express promise to pay, or (b) the circumstances preceding and attending disclosure, together with the conduct of the offeree acting with knowledge of the circumstances, show a promise of the type usually referred to as \"implied” or \"implied-in-fact.”"
+        },
+        {
+          "case": "Desny v. Wilder, 46 Cal. 2d 715, 739 (Cal., Jun. 28, 1956)",
+          "cite": "California Supreme Court's requirement that an implied-in-fact promise be grounded in circumstances known to, and voluntary conduct by, the recipient before disclosure",
+          "url": "https://www.courtlistener.com/opinion/1444748/desny-v-wilder/",
+          "quote": "Such inferred or implied promise, if it is to be found at all, must be based on circumstances which were known to the producer at and preceding the time of disclosure of the idea to him and he must voluntarily accept the disclosure, knowing the conditions on which it is tendered."
+        }
+      ]
+    },
+    {
+      "id": "ideasubmission_conditioned_disclosure_required",
+      "title": "Desny's Limits: An Unconditioned Disclosure Does Not, by Itself, Create an Obligation to Pay",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-03",
+      "body": "Desny v. Wilder places a significant limit on the implied-in-fact contract theory it recognizes: an obligation to pay does not arise merely because a valuable idea was disclosed, was later used, and produced a profit for the recipient, or merely because the person disclosing it hoped or expected to be paid. The California Supreme Court held that a person who discloses an idea without first securing some condition on that disclosure — a condition communicated to, and accepted by, the recipient before the idea itself is revealed — cannot later have that condition read into the transaction by a court. The opinion frames this as a matter of bargaining position: it is the timing and communication of the condition, not the discloser's private hopes or subsequent demands, that the law examines.",
+      "gap": "This quotation comes from the same source cited throughout this Information Sheet — the California Supreme Court's 1956 opinion in Desny v. Wilder, 46 Cal.2d 715 — confirmed via the same two retrieval methods described in this Information Sheet's first authority clause (CourtListener's document-read tool serving `html_with_citations`, and a direct CourtListener REST API call to the `opinions` endpoint's raw `xml_harvard` field), which returned identical text. The quotation below reproduces two consecutive sentences from a single paragraph of the opinion as one continuous, exact excerpt.",
+      "citations": [
+        {
+          "case": "Desny v. Wilder, 46 Cal. 2d 715, 739 (Cal., Jun. 28, 1956)",
+          "cite": "California Supreme Court holding that an unconditioned disclosure of an idea does not give rise to an implied promise to pay, even if the idea is later used for profit",
+          "url": "https://www.courtlistener.com/opinion/1444748/desny-v-wilder/",
+          "quote": "The idea man who blurts out his idea without having first made his bargain has no one but himself to blame for the loss of his bargaining power. The law will not in any event, from demands stated subsequent to the unconditioned disclosure of an abstract idea, imply a promise to pay for the idea, for its use, or for its previous disclosure. The law will not imply a promise to pay for an idea from the mere facts that the idea has been conveyed, is valuable, and has been used for profit; this is true even though the conveyance has been made with the hope or expectation that some obligation will ensue."
+        }
+      ]
+    },
+    {
+      "id": "ideasubmission_faris_four_elements",
+      "title": "A Later California Court of Appeal's Four-Part Synthesis of the Desny Test (Faris v. Enberg)",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-03",
+      "body": "In 1979, the California Court of Appeal in Faris v. Enberg distilled Desny v. Wilder's implied-in-fact contract theory — applied there to an idea for a televised sports quiz show — into a four-part statement of what a person asserting this theory must show: that they prepared the work; that they disclosed the work to the offeree for sale; that, under all the circumstances attending disclosure, the offeree can be found to have voluntarily accepted the disclosure while knowing the conditions on which it was offered (necessarily meaning the offeree had an opportunity to reject the disclosure on those terms); and the reasonable value of the work. Applying that framework to the record before it, the Court of Appeal affirmed summary judgment against the plaintiff, because the evidence showed no indication the plaintiff had ever communicated an expectation of payment, or that the recipient had reason to believe the submission was conditioned on one.",
+      "gap": "Faris v. Enberg, 97 Cal.App.3d 309 (Cal. Ct. App., 2d Dist. 1979), is a published opinion of the California Court of Appeal, confirmed as a distinct, later California appellate decision via CourtListener search results. Its text, and the quoted sentence specifically, were confirmed via two distinct retrieval methods: (1) CourtListener's document-read/search-document tools, serving the opinion's `html_with_citations` text, and (2) a direct call to CourtListener's `opinions` REST API endpoint requesting three separately-digitized raw text fields the platform has ingested for this opinion — `html_lawbox`, `html_columbia`, and `xml_harvard`, corresponding to three historically distinct digitization projects (Public.Resource.Org/Lawbox, Columbia Law School's caselaw archive, and the Harvard Caselaw Access Project). Two of the three fields (`html_lawbox` and `html_columbia`) contained the quoted sentence character-for-character identically; the third (`xml_harvard`) contained the same sentence with two minor OCR-type artifacts not reproduced in this document's quote — \"conditions On which\" (capitalized \"On\") in place of \"conditions on which,\" and \"and- the reasonable value\" (an inserted hyphen) in place of \"and the reasonable value\" — which this document treats as digitization noise rather than as a genuine textual variant, given that two independently-produced sources agree on the clean reading. Because all three fields are ultimately served through the same CourtListener-hosted database, this is disclosed honestly as one platform queried multiple ways rather than genuinely separate hosting infrastructure; the agreement of two of the three independently-produced source digitizations, with the third differing only by evident OCR noise, still provides meaningfully stronger confirmation of the quoted language than a single source alone would. This is one Court of Appeal decision from one appellate district (the Second Appellate District); it is not a California Supreme Court decision, and this document does not represent that every California appellate district has adopted identical language for this four-part synthesis, or that no California case has stated the elements differently.",
+      "citations": [
+        {
+          "case": "Faris v. Enberg, 97 Cal. App. 3d 309, 318 (Cal. Ct. App., 2d Dist., Sep. 27, 1979)",
+          "cite": "California Court of Appeal's four-part synthesis of what a Desny implied-in-fact contract claim requires",
+          "url": "https://www.courtlistener.com/opinion/2166627/faris-v-enberg/",
+          "quote": "for an implied-in-fact contract one must show: that he or she prepared the work; that he or she disclosed the work to the offeree for sale; under all circumstances attending disclosure it can be concluded that the offeree voluntarily accepted the disclosure knowing the conditions on which it was tendered (i.e., the offeree must have the opportunity to reject the attempted disclosure if the conditions were unacceptable); and the reasonable value of the work."
+        }
+      ]
+    },
+    {
+      "id": "ideasubmission_novelty_not_required",
+      "title": "One Commonly-Assumed Element the Desny Opinion Does Not Impose on This Theory: Novelty",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-03",
+      "body": "Secondary summaries of the idea submission doctrine sometimes describe novelty — meaning that the idea must be new, and not already widely known — as a required element of a Desny claim. The Desny v. Wilder opinion itself does not impose that requirement on the implied-in-fact contract theory it recognizes. Quoting language it expressly adopted as the law of California, the California Supreme Court stated that even an idea that is widely known and generally understood may still be protected by an express contract providing that it will be paid for regardless of its lack of novelty. The court distinguished this contract-based theory from a separate literary-property theory (concerning whether a written composition itself, as opposed to the bare idea it embodies, qualifies as protectible property), under which the concepts of originality and novelty carry their own, different significance — a distinct question from whether a promise to pay for an idea's use can be inferred from conduct.",
+      "gap": "This quotation comes from Desny v. Wilder, 46 Cal.2d 715, 733, in which the California Supreme Court described itself as adopting, as the law of California, language originating in Justice Traynor's dissenting opinion in Stanley v. Columbia Broadcasting System (1950) 35 Cal.2d 653, 674, and stated that this language had already been accepted as California law in Weitzenkorn v. Lesser (1953) 40 Cal.2d 778, 791–792 — meaning the quoted sentence did not originate with the Desny opinion itself, although this document quotes it exactly as it appears within, and as adopted and applied by, the Desny opinion (neither Stanley's dissent nor Weitzenkorn was independently retrieved or verified in this research). Independently of that history, this same sentence was also confirmed, in this research, to appear — quoted approvingly and for the identical proposition — within a separate, later opinion: Faris v. Enberg (1979) 97 Cal.App.3d 309, 314, a California Court of Appeal decision issued 23 years after Desny. Both opinions' texts were independently retrieved via CourtListener using the two retrieval methods described in this Information Sheet's other clauses. This document treats that as confirmation that the quoted sentence is accurately reproduced (since it is found, verbatim, in two separately-retrieved published California opinions), not as confirmation that Faris v. Enberg is itself an independent source for the underlying legal proposition — Faris is simply quoting Desny on this point, as this document's own body text explains. This document does not independently address whether novelty may carry different significance for other legal theories besides this implied-in-fact contract theory (for example, a common law copyright theory, or a breach-of-confidence theory) — published California case law encountered in this research, including within Faris v. Enberg's own discussion of other authorities, suggested such theories may impose different requirements, but those theories and that case law were not independently read or verified here and are outside the scope of this document.",
+      "citations": [
+        {
+          "case": "Desny v. Wilder, 46 Cal. 2d 715, 733 (Cal., Jun. 28, 1956)",
+          "cite": "California Supreme Court holding that an idea's lack of novelty does not bar its protection by contract",
+          "url": "https://www.courtlistener.com/opinion/1444748/desny-v-wilder/",
+          "quote": "Even though the idea disclosed may be ‘widely known and generally understood’ [citation], it may be protected by an express contract providing that it will be paid for regardless of its lack of novelty."
+        }
+      ]
+    },
+    {
+      "id": "ideasubmission_distinct_from_express_written_agreements",
+      "title": "How This Doctrine Differs from a Written NDA or Invention Assignment Agreement",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-03",
+      "body": "The Desny v. Wilder doctrine addresses a contract the law infers from conduct and surrounding circumstance — what the opinion calls a contract \"implied-in-fact\" — rather than a contract the parties put in writing and signed. The California Supreme Court described this as one of two distinct ways a recipient can become bound to pay for a disclosed idea: either the recipient makes an express promise to pay, or the surrounding circumstances and the recipient's own conduct, undertaken with knowledge of the condition on which the idea was offered, show the functional equivalent of an agreement even though nothing was ever spoken or written down. This project's existing Non-Disclosure Agreement, Mutual Non-Disclosure Agreement, and Invention Assignment & Confidentiality Agreement documents all operate on the first of these two tracks: each is an express, signed, written contract whose confidentiality and assignment obligations do not depend on a court inferring them from conduct after the fact. The doctrine described in this Information Sheet instead addresses what happens — and what a person disclosing an idea, or a person receiving one, may be exposed to — when no such signed agreement exists.",
+      "gap": "This quotation comes from the same source cited throughout this Information Sheet — the California Supreme Court's 1956 opinion in Desny v. Wilder, 46 Cal.2d 715 — confirmed via the same two retrieval methods described in this Information Sheet's first authority clause. This clause references, but does not reproduce or duplicate, the substantive terms of this project's existing Non-Disclosure Agreement, Mutual Non-Disclosure Agreement, or Invention Assignment & Confidentiality Agreement documents; readers consulting this clause for a contrast with those documents should read this clause alongside those documents' own clauses, not as a substitute for them.",
+      "citations": [
+        {
+          "case": "Desny v. Wilder, 46 Cal. 2d 715, 738 (Cal., Jun. 28, 1956)",
+          "cite": "California Supreme Court's description of how a condition on disclosure, if clearly communicated and knowingly accepted, produces either an express or an implied-in-fact contract",
+          "url": "https://www.courtlistener.com/opinion/1444748/desny-v-wilder/",
+          "quote": "if the idea purveyor has clearly conditioned his offer to convey the idea upon an obligation to pay for it if it is used by the offeree and the offeree, knowing the condition before he knows the idea, voluntarily accepts its disclosure (necessarily on the specified basis) and finds it valuable and uses it, the law will either apply the objective test (discussed, supra, pp. 801-802) and hold that the parties have made an express (sometimes called implied-in-fact) contract, or under those circumstances, as some writers view it, the law itself, to prevent fraud and unjust enrichment, will imply a promise to compensate."
+        }
+      ]
     }
   ]
 }

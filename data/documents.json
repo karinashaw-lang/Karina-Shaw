@@ -14926,5 +14926,61 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "idea_submission_doctrine_info_sheet",
+    "title": "Idea Submission Doctrine (Desny v. Wilder) — Information Sheet",
+    "description": "Background information on California's common-law idea submission doctrine originating in Desny v. Wilder (1956) -- the implied-in-fact contract theory that lets a person recover for an idea's use apart from copyright or trade secret protection, its limits, and the four-part synthesis later California courts have used to apply it -- distinct from this corpus's express written NDA and invention assignment documents.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "ideasubmission_purpose",
+      "ideasubmission_why_doctrine_exists",
+      "ideasubmission_implied_in_fact_contract_theory",
+      "ideasubmission_conditioned_disclosure_required",
+      "ideasubmission_faris_four_elements",
+      "ideasubmission_novelty_not_required",
+      "ideasubmission_distinct_from_express_written_agreements",
+      "ideasubmission_signature_acknowledgment"
+    ],
+    "fields": [
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "ideaDescription",
+        "label": "Description of the idea submitted",
+        "placeholder": "A televised trivia format pairing celebrity guests with audience contestants",
+        "required": true
+      },
+      {
+        "id": "recipientName",
+        "label": "Recipient's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "submissionDate",
+        "label": "Date the idea was submitted",
+        "placeholder": "March 1, 2026",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
