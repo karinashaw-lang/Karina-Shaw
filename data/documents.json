@@ -14721,5 +14721,67 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "independent_adoption_info_sheet",
+    "title": "Independent Adoption — Information Sheet",
+    "description": "Background information on California's independent adoption procedure (Family Code Chapter 3, sections 8800-8823) -- a birth-parent-selected placement, distinct from an agency adoption and from the corpus's existing Stepparent Adoption document's narrower chapter -- covering the required investigation and report, consent procedure, and the 30-day consent revocation window.",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "independentadoption_declaration",
+      "independentadoption_definition_independent_vs_agency",
+      "independentadoption_birthparent_selection_and_filing",
+      "independentadoption_investigation_and_report",
+      "independentadoption_consent_procedure",
+      "independentadoption_consent_revocability",
+      "independentadoption_distinction_from_stepparent",
+      "independentadoption_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "petitionerName",
+        "label": "Petitioner's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "childName",
+        "label": "Child's name",
+        "placeholder": "Riley Lee",
+        "required": true
+      },
+      {
+        "id": "childDOB",
+        "label": "Child's date of birth",
+        "placeholder": "April 3, 2019",
+        "required": true
+      },
+      {
+        "id": "birthParentName",
+        "label": "Birth parent's name",
+        "placeholder": "Casey Morgan",
+        "required": true
+      },
+      {
+        "id": "countyOfFiling",
+        "label": "County of filing",
+        "placeholder": "Sacramento County",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
