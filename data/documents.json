@@ -14542,5 +14542,60 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "trade_secret_preemption_doctrine_info_sheet",
+    "title": "Trade Secret Preemption Doctrine — Information Sheet",
+    "description": "Background information on California Civil Code section 3426.7 (CUTSA), which displaces certain civil claims resting on the same facts as a trade secret misappropriation claim while expressly preserving contractual, criminal, and non-trade-secret civil remedies, plus the \"same nucleus of facts\" test California courts have developed to apply it -- a companion to the existing Trade Secret Misappropriation Cease and Desist Letter document.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "cutsapreempt_purpose",
+      "cutsapreempt_no_supersession_other_ts_statutes",
+      "cutsapreempt_preserved_contract_criminal_other_civil",
+      "cutsapreempt_public_records_act_carveout",
+      "cutsapreempt_case_law_same_nucleus_of_facts_test",
+      "cutsapreempt_case_law_application_to_common_claims",
+      "cutsapreempt_signature_and_acknowledgment"
+    ],
+    "fields": [
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "adversePartyName",
+        "label": "Adverse party's name",
+        "placeholder": "Beta Corp.",
+        "required": true
+      },
+      {
+        "id": "otherClaimsDescription",
+        "label": "Other claims or remedies under consideration",
+        "placeholder": "Breach of contract, breach of confidence, unfair competition",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
