@@ -14889,5 +14889,42 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "cal_osha_injury_illness_recording_info_sheet",
+    "title": "Cal/OSHA Injury and Illness Recording Requirements — Information Sheet",
+    "description": "Background information on California's Cal/OSHA workplace injury and illness recordkeeping regulations (8 Cal. Code Regs. sections 14300-14300.48) and the separate serious-injury reporting regulation (section 342) -- the after-the-fact recording and reporting duty, distinct from the corpus's existing Injury and Illness Prevention Program document's forward-looking safety-program requirement.",
+    "categories": [
+      "During employment"
+    ],
+    "clauseOrder": [
+      "injuryrecording_declaration_and_scope",
+      "injuryrecording_recording_duty_and_recordable_criteria",
+      "injuryrecording_partial_exemption_size_and_industry",
+      "injuryrecording_recordkeeping_retention",
+      "injuryrecording_annual_summary_posting",
+      "injuryrecording_serious_injury_reporting_deadline",
+      "injuryrecording_acknowledgment_signature"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "programAdministratorName",
+        "label": "Name of person with authority and responsibility for the program",
+        "placeholder": "Pat Morgan",
+        "required": true
+      }
+    ]
   }
 ]
