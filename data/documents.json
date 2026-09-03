@@ -14357,5 +14357,67 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "spousal_property_petition_info_sheet",
+    "title": "Spousal or Domestic Partner Property Petition — Information Sheet",
+    "description": "Background information on the California superior court petition procedure (Probate Code sections 13650-13660) letting a surviving spouse or registered domestic partner obtain a court order that administration of property passing to them is unnecessary, or confirming property they already own -- distinct from the corpus's Small Estate Affidavit and Petition for Probate documents.",
+    "categories": [
+      "Estate Planning"
+    ],
+    "clauseOrder": [
+      "spousalpetition_declaration",
+      "spousalpetition_two_types_of_relief",
+      "spousalpetition_who_may_file_and_where",
+      "spousalpetition_required_petition_contents",
+      "spousalpetition_notice_requirements",
+      "spousalpetition_order_finality_and_business_protection",
+      "spousalpetition_vs_small_estate_and_probate",
+      "spousalpetition_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "decedentName",
+        "label": "Decedent's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "dateOfDeath",
+        "label": "Date of death",
+        "placeholder": "March 15, 2026",
+        "required": true
+      },
+      {
+        "id": "survivingSpouseName",
+        "label": "Surviving spouse or domestic partner's name",
+        "placeholder": "Taylor Morgan",
+        "required": true
+      },
+      {
+        "id": "propertyDescription",
+        "label": "Description of property sought",
+        "placeholder": "Checking account #1234 at Acme Bank; 2019 furniture and household items located at 123 Main St.",
+        "required": true
+      },
+      {
+        "id": "countyOfFiling",
+        "label": "County of filing",
+        "placeholder": "Sacramento County",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
