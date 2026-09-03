@@ -13553,5 +13553,43 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "heat_illness_prevention_info_sheet",
+    "title": "Heat Illness Prevention — Information Sheet",
+    "description": "Information about California's Cal/OSHA heat illness prevention standards for outdoor (8 CCR § 3395) and indoor (8 CCR § 3396) places of employment — coverage, water and shade/cool-down access, higher-temperature control measures, acclimatization and training, and the written plan requirement.",
+    "categories": [
+      "During employment"
+    ],
+    "clauseOrder": [
+      "heatillness_declaration_and_scope",
+      "heatillness_applicability_outdoor_and_indoor",
+      "heatillness_water_access",
+      "heatillness_shade_and_cooldown_areas",
+      "heatillness_highheat_and_control_measures",
+      "heatillness_acclimatization_and_training",
+      "heatillness_written_plan_requirement",
+      "heatillness_acknowledgment_signature"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme Corp",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "programAdministratorName",
+        "label": "Person responsible for heat illness prevention",
+        "placeholder": "Taylor Morgan",
+        "required": true
+      }
+    ]
   }
 ]
