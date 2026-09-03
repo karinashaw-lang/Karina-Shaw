@@ -14505,5 +14505,42 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "no_rehire_clause_restriction_info_sheet",
+    "title": "No-Rehire Clause Restriction in Settlement Agreements — Information Sheet",
+    "description": "Background information on California Code of Civil Procedure section 1002.5, which generally voids a no-rehire provision in a settlement agreement resolving an employment dispute, subject to specific exceptions for a pre-claim documented good-faith determination of sexual harassment, sexual assault, or criminal conduct, and for a legitimate non-discriminatory or non-retaliatory reason.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "norehire_declaration",
+      "norehire_ccp_1002_5_scope",
+      "norehire_ccp_1002_5_aggrieved_person_definition",
+      "norehire_ccp_1002_5_good_faith_exception",
+      "norehire_ccp_1002_5_legitimate_reason_exception",
+      "norehire_ccp_1002_5_definitions_and_history",
+      "norehire_signature"
+    ],
+    "fields": [
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      }
+    ]
   }
 ]
