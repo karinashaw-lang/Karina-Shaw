@@ -14845,5 +14845,49 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "admt_employment_info_sheet",
+    "title": "Automated Decision-Making Technology in Employment — Information Sheet",
+    "description": "Background information on the California Privacy Protection Agency's ADMT regulations (Cal. Code Regs. tit. 11) as applied to significant employment decisions -- what counts as ADMT, the phased compliance timeline, and the pre-use notice, opt-out, and access rights the regulations create.",
+    "categories": [
+      "Hiring"
+    ],
+    "clauseOrder": [
+      "admt_purpose",
+      "admt_definition",
+      "admt_significant_decision",
+      "admt_applicability",
+      "admt_preuse_notice",
+      "admt_optout",
+      "admt_access",
+      "admt_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]

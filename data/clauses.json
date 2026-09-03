@@ -40600,6 +40600,186 @@
       "title": "Closing and Signature Block — Dissenters' Rights Information Sheet",
       "kind": "drafting",
       "body": "This information sheet regarding {{companyName}} was prepared by {{shareholderName}}.\n\nExecuted on {{dateSigned}} at {{cityState}}.\n\nSignature of {{shareholderName}}: ☐ _________________________\nShares held in {{companyName}}, if known: {{numberOfSharesHeld}}\n\n[This information sheet describes the dissenters'-rights (appraisal-rights) statutes in Cal. Corp. Code §§ 1300-1313, including the transactions that trigger the right, the \"market-out\" exception and its carve-backs, the procedural steps and deadlines for demanding purchase, how fair market value is determined and when payment is due, the court process for resolving disputes, and the ways dissenting-share status can be lost. It is not a completed written demand under Section 1301, does not itself preserve, waive, or exercise any dissenters' rights with respect to {{companyName}}, and does not constitute legal advice. The current statutory text is published by the California Legislative Information website (leginfo.legislature.ca.gov).]"
+    },
+    {
+      "id": "admt_purpose",
+      "title": "Purpose of This Information Sheet",
+      "kind": "drafting",
+      "body": "{{companyName}} provides this Information Sheet to describe, in general terms, California's regulations governing the use of automated decisionmaking technology (\"ADMT\") to make significant employment-related decisions, including decisions about hiring, work allocation and compensation, promotion, demotion, suspension, and termination. This Information Sheet explains what the law requires; it is educational in nature, does not constitute legal advice, and does not itself determine whether or how {{companyName}} uses ADMT with respect to any particular applicant or employee."
+    },
+    {
+      "id": "admt_definition",
+      "title": "What Counts as Automated Decisionmaking Technology (ADMT)",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-03",
+      "body": "California regulations define \"automated decisionmaking technology\" or \"ADMT\" as any technology that processes personal information and uses computation to replace human decisionmaking or substantially replace human decisionmaking. Technology substantially replaces human decisionmaking when its output is used to make a decision without human involvement — meaning a human reviewer who knows how to interpret and use the output, reviews and analyzes the output and other relevant information, and has the authority to make or change the decision based on that analysis. ADMT includes profiling that replaces or substantially replaces human decisionmaking. It does not include tools such as web hosting, firewalls, spam filtering, spellcheckers, calculators, databases, and spreadsheets, provided those tools do not replace human decisionmaking.",
+      "gap": "California-specific: this describes only the California Privacy Protection Agency's regulations under the CCPA/CPRA (Cal. Code Regs. tit. 11), not any other state's or federal automated-decision-technology rule. All three citations below are subdivisions of the single definition in section 7001, subsection (e), of the same regulatory text adopted in one rulemaking action — they are not independent sources of each other, only independent excerpts of one provision. This is a newly operative area (the regulations took effect January 1, 2026) with no judicial or CPPA enforcement decisions yet interpreting how \"substantially replace human decisionmaking\" applies to specific employment tools; the wording above tracks the adopted regulatory text itself, not any interpretation of it.",
+      "citations": [
+        {
+          "case": "Cal. Code Regs. tit. 11, § 7001(e) (CPPA Approved Regulation Text, filed with the Secretary of State Sept. 22, 2025)",
+          "cite": "California Code of Regulations, ADMT defined",
+          "url": "https://cppa.ca.gov/regulations/pdf/ccpa_updates_cyber_risk_admt_appr_text.pdf",
+          "quote": "“Automated decisionmaking technology” or “ADMT” means any technology that processes personal information and uses computation to replace human decisionmaking or substantially replace human decisionmaking."
+        },
+        {
+          "case": "Cal. Code Regs. tit. 11, § 7001(e)(1) (CPPA Approved Regulation Text, filed with the Secretary of State Sept. 22, 2025)",
+          "cite": "California Code of Regulations, the human-involvement test",
+          "url": "https://cppa.ca.gov/regulations/pdf/ccpa_updates_cyber_risk_admt_appr_text.pdf",
+          "quote": "(A) Know how to interpret and use the technology’s output to make the decision; (B) Review and analyze the output of the technology, and any other information that is relevant to make or change the decision; and (C) Have the authority to make or change the decision based on their analysis in subsection (B)."
+        },
+        {
+          "case": "Cal. Code Regs. tit. 11, § 7001(e)(3) (CPPA Approved Regulation Text, filed with the Secretary of State Sept. 22, 2025)",
+          "cite": "California Code of Regulations, tools excluded from ADMT",
+          "url": "https://cppa.ca.gov/regulations/pdf/ccpa_updates_cyber_risk_admt_appr_text.pdf",
+          "quote": "ADMT does not include web hosting, domain registration, networking, caching, website-loading, data storage, firewalls, anti-virus, anti-malware, spam- and robocall-filtering, spellchecking, calculators, databases, and spreadsheets, provided that they do not replace human decisionmaking."
+        }
+      ]
+    },
+    {
+      "id": "admt_significant_decision",
+      "title": "\"Significant Decision\" in Employment",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-03",
+      "body": "California regulations define a \"significant decision\" as a decision that results in the provision or denial of specified categories of opportunities or services, including \"employment or independent contracting opportunities or compensation.\" For employment, the regulations specify that this category covers: hiring; the allocation or assignment of work for employees, and salary, hourly or per-assignment compensation, incentive compensation such as a bonus, or another benefit; promotion; and demotion, suspension, and termination. A decision that consists only of advertising to a consumer does not qualify as a significant decision.",
+      "gap": "California-specific: describes only the CPPA's own regulatory definition (Cal. Code Regs. tit. 11, § 7001(ddd)), not any other state's or the federal government's definition of a covered employment decision. All three citations below are subdivisions of the same section 7001(ddd) definition, adopted in the same single rulemaking action as the other admt_ clauses in this set — they confirm the wording of one definition, not independent legal propositions. The definition does not itself say which specific tools (e.g., resume-screening software, video-interview scoring, productivity-monitoring software) qualify as ADMT for a given significant decision; that turns on the separate ADMT definition in section 7001(e) (see the companion clause) applied to the facts of a particular tool.",
+      "citations": [
+        {
+          "case": "Cal. Code Regs. tit. 11, § 7001(ddd) (CPPA Approved Regulation Text, filed with the Secretary of State Sept. 22, 2025)",
+          "cite": "California Code of Regulations, \"significant decision\" defined",
+          "url": "https://cppa.ca.gov/regulations/pdf/ccpa_updates_cyber_risk_admt_appr_text.pdf",
+          "quote": "“Significant decision” means a decision that results in the provision or denial of financial or lending services, housing, education enrollment or opportunities, employment or independent contracting opportunities or compensation, or healthcare services."
+        },
+        {
+          "case": "Cal. Code Regs. tit. 11, § 7001(ddd)(4) (CPPA Approved Regulation Text, filed with the Secretary of State Sept. 22, 2025)",
+          "cite": "California Code of Regulations, employment decisions covered",
+          "url": "https://cppa.ca.gov/regulations/pdf/ccpa_updates_cyber_risk_admt_appr_text.pdf",
+          "quote": "“Employment or independent contracting opportunities or compensation” means: (A) Hiring; (B) Allocation or assignment of work for employees; or salary, hourly or per-assignment compensation, incentive compensation such as a bonus, or another benefit (“allocation/assignment of work and compensation”); (C) Promotion; and (D) Demotion, suspension, and termination."
+        },
+        {
+          "case": "Cal. Code Regs. tit. 11, § 7001(ddd)(6) (CPPA Approved Regulation Text, filed with the Secretary of State Sept. 22, 2025)",
+          "cite": "California Code of Regulations, advertising excluded",
+          "url": "https://cppa.ca.gov/regulations/pdf/ccpa_updates_cyber_risk_admt_appr_text.pdf",
+          "quote": "Significant decision does not include advertising to a consumer."
+        }
+      ]
+    },
+    {
+      "id": "admt_applicability",
+      "title": "When the ADMT Requirements Apply",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-03",
+      "body": "Under California regulations effective January 1, 2026, {{companyName}}'s use of ADMT to make a significant decision concerning a consumer — including an applicant or employee — is subject to the pre-use notice, opt-out, and access requirements described in this Information Sheet. The regulations set a phased compliance timeline distinct from that general effective date: for ADMT already in use for a significant decision before January 1, 2027, compliance with these requirements is required no later than January 1, 2027. For ADMT first used for a significant decision on or after January 1, 2027, compliance is required at the time of that use, with no phase-in period.",
+      "gap": "California-specific: applies only to the CPPA's own regulations (Cal. Code Regs. tit. 11, § 7200). The two citations below are subdivisions (a) and (b) of that same section, adopted together in one rulemaking action, so they are not independent of each other. This provision's phased timeline is easy to state imprecisely: January 1, 2026 is the regulations' general effective date, but January 1, 2027 is a separate, later compliance deadline that applies specifically to ADMT already in use before that date for a significant decision — not a delay of the regulations' effectiveness generally. This distinction was confirmed directly against the regulatory text of section 7200 itself, and separately against the CPPA's own summary of the rulemaking (\"Effective Date: January 1, 2026\") on its regulations status page, fetched independently of the regulation-text PDF.",
+      "citations": [
+        {
+          "case": "Cal. Code Regs. tit. 11, § 7200(a) (CPPA Approved Regulation Text, filed with the Secretary of State Sept. 22, 2025)",
+          "cite": "California Code of Regulations, general applicability of the ADMT article",
+          "url": "https://cppa.ca.gov/regulations/pdf/ccpa_updates_cyber_risk_admt_appr_text.pdf",
+          "quote": "A business that uses ADMT to make a significant decision concerning a consumer must comply with the requirements of this Article."
+        },
+        {
+          "case": "Cal. Code Regs. tit. 11, § 7200(b) (CPPA Approved Regulation Text, filed with the Secretary of State Sept. 22, 2025)",
+          "cite": "California Code of Regulations, phased compliance deadline",
+          "url": "https://cppa.ca.gov/regulations/pdf/ccpa_updates_cyber_risk_admt_appr_text.pdf",
+          "quote": "A business that uses ADMT for a significant decision prior to January 1, 2027, must be in compliance with the requirements of this Article no later than January 1, 2027. A business that uses ADMT on or after January 1, 2027, must be in compliance with the requirements of this Article any time it is using ADMT for a significant decision."
+        }
+      ]
+    },
+    {
+      "id": "admt_preuse_notice",
+      "title": "Pre-Use Notice Requirement",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-03",
+      "body": "Before processing an applicant's or employee's personal information using ADMT for a significant decision, California regulations require {{companyName}} to provide a Pre-use Notice, presented prominently and conspicuously and in the manner {{companyName}} primarily uses to interact with the individual. The notice must include a specific, non-generic explanation of the purpose for which the ADMT will be used — the regulations expressly identify describing the purpose only as \"to make a significant decision\" as insufficient — together with a description of the right to opt out of the ADMT, or, where an exception to the opt-out right applies, the right to appeal the decision to a human reviewer and how to submit that appeal, a description of the right to access information about the ADMT, and a statement that retaliation for exercising CCPA rights is prohibited.",
+      "gap": "California-specific: describes only the pre-use notice required by Cal. Code Regs. tit. 11, § 7220. All three citations are subdivisions of that same section, adopted in one rulemaking action, and are not independent of each other. Section 7220 also permits a consolidated Pre-use Notice covering multiple ADMT uses or purposes, and allows the notice to be folded into an existing Notice at Collection if that notice meets the same content requirements; those permitted formats are not restated in the body above. This clause does not address the additional, more detailed \"how the ADMT works\" disclosure that section 7220(c)(5) separately requires.",
+      "citations": [
+        {
+          "case": "Cal. Code Regs. tit. 11, § 7220(a) (CPPA Approved Regulation Text, filed with the Secretary of State Sept. 22, 2025)",
+          "cite": "California Code of Regulations, Pre-use Notice requirement",
+          "url": "https://cppa.ca.gov/regulations/pdf/ccpa_updates_cyber_risk_admt_appr_text.pdf",
+          "quote": "A business that uses ADMT as set forth in section 7200, subsection (a), must provide consumers with a Pre-use Notice. The Pre-use Notice must inform consumers about the business’s use of ADMT and consumers’ rights to opt-out of ADMT and to access ADMT, as set forth in this section."
+        },
+        {
+          "case": "Cal. Code Regs. tit. 11, § 7220(c)(1) (CPPA Approved Regulation Text, filed with the Secretary of State Sept. 22, 2025)",
+          "cite": "California Code of Regulations, purpose explanation cannot be generic",
+          "url": "https://cppa.ca.gov/regulations/pdf/ccpa_updates_cyber_risk_admt_appr_text.pdf",
+          "quote": "A plain language explanation of the specific purpose for which the business plans to use the ADMT. The business must not describe the purpose in generic terms, such as “to make a significant decision” without further information, because this does not describe to the consumer the specific decision for which the business plans to use ADMT with respect to them."
+        },
+        {
+          "case": "Cal. Code Regs. tit. 11, § 7220(c)(4) (CPPA Approved Regulation Text, filed with the Secretary of State Sept. 22, 2025)",
+          "cite": "California Code of Regulations, no-retaliation statement required",
+          "url": "https://cppa.ca.gov/regulations/pdf/ccpa_updates_cyber_risk_admt_appr_text.pdf",
+          "quote": "That the business is prohibited from retaliating against consumers for exercising their CCPA rights."
+        }
+      ]
+    },
+    {
+      "id": "admt_optout",
+      "title": "Right to Opt Out of ADMT and Its Employment Exceptions",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-03",
+      "body": "California regulations give consumers — including applicants and employees — the right to opt out of {{companyName}}'s use of ADMT to make a significant decision, except where a specific exception applies. One exception applies where {{companyName}} instead provides a method to appeal the decision to a human reviewer who has the authority to overturn it. A separate exception applies to certain employment decisions: for admission, acceptance, or hiring decisions, where the ADMT is used solely to assess the individual's ability to perform the job and works for that purpose without unlawfully discriminating based on protected characteristics; and, on the same conditions, for decisions allocating or assigning work or compensation. Where {{companyName}} relies on the human-appeal exception rather than offering an opt-out, the Pre-use Notice must instead describe how to submit an appeal.",
+      "gap": "California-specific: describes only the opt-out right and exceptions created by Cal. Code Regs. tit. 11, § 7221. All three citations are subdivisions of that same section, adopted in one rulemaking action, and are not independent of each other. Section 7221 also imposes detailed process requirements once an opt-out is exercised (e.g., two or more submission methods, no account-creation requirement, an at-least-12-month waiting period before re-soliciting consent, and timelines for stopping processing) that are not restated here. Whether a particular hiring or work-allocation tool actually \"works for the business's purpose and does not unlawfully discriminate\" so as to qualify for the two employment-specific exceptions is a fact-specific determination the regulatory text does not resolve in the abstract, and no case law yet construes that standard.",
+      "citations": [
+        {
+          "case": "Cal. Code Regs. tit. 11, § 7221(a) (CPPA Approved Regulation Text, filed with the Secretary of State Sept. 22, 2025)",
+          "cite": "California Code of Regulations, general opt-out right",
+          "url": "https://cppa.ca.gov/regulations/pdf/ccpa_updates_cyber_risk_admt_appr_text.pdf",
+          "quote": "A business must provide consumers with the ability to opt-out of the use of ADMT to make a significant decision concerning the consumer, except as set forth in subsection (b)."
+        },
+        {
+          "case": "Cal. Code Regs. tit. 11, § 7221(b)(1) (CPPA Approved Regulation Text, filed with the Secretary of State Sept. 22, 2025)",
+          "cite": "California Code of Regulations, human-appeal exception",
+          "url": "https://cppa.ca.gov/regulations/pdf/ccpa_updates_cyber_risk_admt_appr_text.pdf",
+          "quote": "The business provides the consumer with a method to appeal the decision to a human reviewer who has the authority to overturn the decision."
+        },
+        {
+          "case": "Cal. Code Regs. tit. 11, § 7221(b)(2) (CPPA Approved Regulation Text, filed with the Secretary of State Sept. 22, 2025)",
+          "cite": "California Code of Regulations, hiring-decision exception",
+          "url": "https://cppa.ca.gov/regulations/pdf/ccpa_updates_cyber_risk_admt_appr_text.pdf",
+          "quote": "(A) The business uses the ADMT solely for the business’s assessment of the consumer’s ability to perform at work or in an educational program to determine whether to admit, accept, or hire them; and (B) The ADMT works for the business’s purpose and does not unlawfully discriminate based upon protected characteristics."
+        }
+      ]
+    },
+    {
+      "id": "admt_access",
+      "title": "Right to Access Information About ADMT",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-03",
+      "body": "California regulations give consumers — including applicants and employees — the right to request access to information about {{companyName}}'s use of ADMT to make a significant decision concerning them. In response to such a request, {{companyName}} must provide plain-language explanations of the specific, non-generic purpose for which it used the ADMT, information about the logic of the ADMT sufficient for the consumer to understand how it processed their personal information to generate an output, and the outcome of the decisionmaking process, including whether the output was the sole factor in the decision or, if not, what other factors were involved.",
+      "gap": "California-specific: describes only the access right created by Cal. Code Regs. tit. 11, § 7222. All three citations are subdivisions of that same section, adopted in one rulemaking action, and are not independent of each other. Section 7222 also allows a business to withhold trade secrets and certain security-related information from an access response, requires identity verification under the CCPA's general verification rules, and permits a secure self-service portal as a compliance method; those details are not restated here. This right is separate from, and additional to, the general CCPA right to know what personal information a business holds.",
+      "citations": [
+        {
+          "case": "Cal. Code Regs. tit. 11, § 7222(a) (CPPA Approved Regulation Text, filed with the Secretary of State Sept. 22, 2025)",
+          "cite": "California Code of Regulations, right to access ADMT information",
+          "url": "https://cppa.ca.gov/regulations/pdf/ccpa_updates_cyber_risk_admt_appr_text.pdf",
+          "quote": "A business that uses ADMT to make a significant decision must provide a consumer with information about this use when responding to a consumer’s request to access ADMT."
+        },
+        {
+          "case": "Cal. Code Regs. tit. 11, § 7222(b)(1) (CPPA Approved Regulation Text, filed with the Secretary of State Sept. 22, 2025)",
+          "cite": "California Code of Regulations, purpose disclosure cannot be generic",
+          "url": "https://cppa.ca.gov/regulations/pdf/ccpa_updates_cyber_risk_admt_appr_text.pdf",
+          "quote": "The specific purpose for which the business used ADMT with respect to the consumer. The business must not describe the purpose in generic terms, such as “to improve our services.”"
+        },
+        {
+          "case": "Cal. Code Regs. tit. 11, § 7222(b)(2) (CPPA Approved Regulation Text, filed with the Secretary of State Sept. 22, 2025)",
+          "cite": "California Code of Regulations, logic disclosure required",
+          "url": "https://cppa.ca.gov/regulations/pdf/ccpa_updates_cyber_risk_admt_appr_text.pdf",
+          "quote": "Information about the logic of the ADMT. Such information must enable a consumer to understand how the ADMT processed their personal information to generate an output with respect to them"
+        }
+      ]
+    },
+    {
+      "id": "admt_ack",
+      "title": "Acknowledgment of Receipt",
+      "kind": "drafting",
+      "body": "Please sign below to acknowledge receipt of this Information Sheet describing California's regulations on the use of automated decisionmaking technology in employment.\n\n{{employeeName}}\nSignature: _______________\nDate: {{dateSigned}}\n{{cityState}}"
     }
   ]
 }
