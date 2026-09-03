@@ -14034,5 +14034,66 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "wage_claim_retaliation_info_sheet",
+    "title": "Retaliation for Filing a Wage Claim — Information Sheet",
+    "description": "Background information on California Labor Code section 98.6's prohibition on retaliation connected to a wage claim or other protected Labor Commissioner-related activity, the remedies it provides, its rebuttable presumption, and the separate administrative complaint process under section 98.7.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "wageretaliation_declaration",
+      "wageretaliation_core_prohibition_and_protected_conduct",
+      "wageretaliation_remedies_reinstatement_reimbursement_and_penalty",
+      "wageretaliation_presumption_and_administrative_deadline",
+      "wageretaliation_applicant_and_family_member_protections",
+      "wageretaliation_distinguishing_from_132a_and_civil_action_path",
+      "wageretaliation_closing_signature"
+    ],
+    "fields": [
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "allegedProtectedActivity",
+        "label": "Activity or report believed to be legally protected",
+        "placeholder": "Reported suspected wage-and-hour violations to the payroll manager",
+        "required": false
+      },
+      {
+        "id": "allegedAdverseAction",
+        "label": "Adverse action believed connected to that activity",
+        "placeholder": "Describe the adverse action",
+        "required": true
+      },
+      {
+        "id": "adverseActionDate",
+        "label": "Date of the adverse action",
+        "placeholder": "August 15, 2026",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
