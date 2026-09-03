@@ -13335,5 +13335,67 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "natural_hazard_disclosure_statement_info_sheet",
+    "title": "Natural Hazard Disclosure Statement — Information Sheet",
+    "description": "Information about California's natural hazard disclosure law, Civil Code § 1103 et seq. — which transfers are covered, the six statutory hazard zones, the required disclosure form, the good-faith/third-party-report safe harbor, and stated exemptions.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "nhd_declaration",
+      "nhd_covered_transfers",
+      "nhd_exemptions",
+      "nhd_hazard_zone_categories",
+      "nhd_statutory_form_and_use_restrictions",
+      "nhd_good_faith_third_party_safe_harbor",
+      "nhd_no_duty_to_update",
+      "nhd_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "propertyAddress",
+        "label": "Property address",
+        "placeholder": "123 Main St, Apt 4, Springfield",
+        "required": true
+      },
+      {
+        "id": "sellerName",
+        "label": "Seller's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "buyerName",
+        "label": "Buyer's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "sellerAgentName",
+        "label": "Seller's agent name, if any",
+        "placeholder": "Taylor M. Chen, Acme Realty",
+        "required": false
+      },
+      {
+        "id": "thirdPartyProviderName",
+        "label": "Third-party disclosure provider, if a substituted disclosure is used",
+        "placeholder": "Acme Hazard Reports, Inc.",
+        "required": false
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 2, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]

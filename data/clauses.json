@@ -6555,9 +6555,9 @@
       "title": "Natural Hazard Disclosure",
       "kind": "authority",
       "status": "verified",
-      "checkedDate": "2026-09-01",
-      "body": "Separately from the Transfer Disclosure Statement, California law requires a distinct Natural Hazard Disclosure Statement whenever the seller or the seller's agent is required by other law to disclose the property's location within a hazard zone. This statement must disclose, as its own itemized categories: whether the property lies within a special flood hazard area (FEMA Zone \"A\" or \"V\"); an area of potential flooding shown on a dam-failure inundation map; a high or very-high fire hazard severity zone (which also carries its own vegetation-maintenance requirement for the owner); a wildland area that may contain substantial forest-fire risks and hazards (which also carries its own maintenance requirement for the owner); an earthquake fault zone; and a seismic hazard zone (landslide or liquefaction). The statement itself says this information is not a warranty, though prospective buyers may rely on it in deciding whether and on what terms to buy. Any waiver of these natural-hazard disclosure requirements is void as against public policy. Separately, for a home constructed before January 1, 2010 and located in a high or very-high fire hazard severity zone, the seller must provide an additional, specific wildfire-hardening disclosure notice, in statutorily specified language.",
-      "gap": "This is one state's statute, used as real evidence of how one jurisdiction defines its natural-hazard disclosure categories — not a claim about which state's law governs a specific residential purchase; hazard-disclosure categories and the underlying hazard-zone maps are jurisdiction- and geography-specific. All citations to § 1103 below are subsections of the same statutory section as each other; all citations to § 1103.2 (the actual disclosure-form text) are subsections of that different, independent section; § 1102.6f (the separate pre-2010 wildfire notice) is a third, independently-authored section.",
+      "checkedDate": "2026-09-03",
+      "body": "Separately from the Transfer Disclosure Statement, California law requires a distinct Natural Hazard Disclosure Statement whenever the seller or the seller's agent is required by other law to disclose the property's location within a hazard zone. This statement must disclose, as its own itemized categories: whether the property lies within a special flood hazard area (FEMA Zone \"A\" or \"V\"); an area of potential flooding shown on a dam-failure inundation map; a high or very-high fire hazard severity zone (which also carries its own vegetation-maintenance requirement for the owner); a wildland area that may contain substantial forest-fire risks and hazards (which also carries its own maintenance requirement for the owner, and a statement that the state is not responsible for fire protection to structures there absent a specific cooperative agreement); an earthquake fault zone; and a seismic hazard zone (landslide or liquefaction). The statement itself says this information is not a warranty, though prospective buyers may rely on it in deciding whether and on what terms to buy. Any waiver of these natural-hazard disclosure requirements is void as against public policy. Separately, for a home constructed before January 1, 2010 and located in a high or very-high fire hazard severity zone, the seller must provide an additional, specific wildfire-hardening disclosure notice, in statutorily specified language.",
+      "gap": "This is one state's statute, used as real evidence of how one jurisdiction defines its natural-hazard disclosure categories — not a claim about which state's law governs a specific residential purchase; hazard-disclosure categories and the underlying hazard-zone maps are jurisdiction- and geography-specific. All citations to § 1103 below are subsections of the same statutory section as each other; all citations to § 1103.2 (the actual disclosure-form text) are subsections of that different, independent section; § 1102.6f (the separate pre-2010 wildfire notice) is a third, independently-authored section. The wildland-area quotation was re-verified on 2026-09-03 and updated to reflect the current statutory text as amended by Stats. 2024, Ch. 80 (effective January 1, 2025), which added a sentence on the state's fire-protection responsibility; this correction was identified during independent research for this corpus's separate Natural Hazard Disclosure Statement — Information Sheet document.",
       "citations": [
         {
           "case": "Cal. Civ. Code § 1103(b)",
@@ -6593,7 +6593,7 @@
           "case": "Cal. Civ. Code § 1103.2(a) [wildland area]",
           "cite": "California Civil Code, wildland fire area category",
           "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1103.2.",
-          "quote": "A WILDLAND AREA THAT MAY CONTAIN SUBSTANTIAL FOREST FIRE RISKS AND HAZARDS pursuant to Section 4125 of the Public Resources Code. The owner of this property is subject to the maintenance requirements of Section 4291 of the Public Resources Code."
+          "quote": "A WILDLAND AREA THAT MAY CONTAIN SUBSTANTIAL FOREST FIRE RISKS AND HAZARDS pursuant to Section 4125 of the Public Resources Code. The owner of this property is subject to the maintenance requirements of Section 4291 of the Public Resources Code. Additionally, it is not the state’s responsibility to provide fire protection services to any building or structure located within the wildlands unless the Department of Forestry and Fire Protection has entered into a cooperative agreement with a local agency for those purposes pursuant to Section 4142 of the Public Resources Code."
         },
         {
           "case": "Cal. Civ. Code § 1103.2(a) [earthquake fault]",
@@ -36425,6 +36425,216 @@
       "title": "Signature and Certification",
       "kind": "drafting",
       "body": "Please sign below to indicate receipt and review of this information sheet.\n\nApplicant: {{employeeName}}\nPosition applied for: {{jobTitle}}\nDate: _______________\n\n{{companyName}} certifies that this information sheet was provided to {{employeeName}}.\n\nCompany representative: _______________\nDate: _______________"
+    },
+    {
+      "id": "nhd_declaration",
+      "title": "Purpose of This Information Sheet",
+      "kind": "drafting",
+      "body": "This information sheet describes California statutory law on natural hazard disclosure, Civil Code section 1103 et seq., as it may relate to the transfer of the real property at {{propertyAddress}}, where {{sellerName}} is named as seller and {{buyerName}} is named as buyer. It states what California law provides about which transfers are covered, which statutorily defined hazard zones must be addressed, the required disclosure form, the good-faith and third-party-report safe harbor, and the statute's stated exemptions. It is separate from, and in addition to, any Transfer Disclosure Statement, real estate agency disclosure, or lead-based paint disclosure provided in connection with this transaction, each of which concerns different subject matter. This information sheet is not itself the statutory Natural Hazard Disclosure Statement that Civil Code section 1103.2 requires, and it does not tell {{sellerName}}, {{buyerName}}, or any real estate agent involved whether this transaction is covered, which box to check, or how to proceed."
+    },
+    {
+      "id": "nhd_covered_transfers",
+      "title": "Which Transfers This Disclosure Law Covers",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-03",
+      "body": "California's natural hazard disclosure article (Civil Code sections 1103 through 1103.15) applies, except as exempted, to a sale, exchange, real property sales contract (as defined in Civil Code section 2985), lease with an option to purchase, any other option to purchase, or ground lease coupled with improvements, of single-family residential real property. Even within that class of transfer, the article's disclosure duty is not free-standing: by its own terms, the article applies to a covered transaction only if the seller or the seller's agent is already required — by one of six separately enumerated statutory triggers, one for each hazard-zone category — to disclose the property's location within that hazard zone. Each of those six triggers is satisfied either by the seller's or agent's actual knowledge that the property is within the zone, or by a public list or map having been provided to, and posted at, the offices of the county recorder, county assessor, and county planning agency.",
+      "gap": "This is one state's statute, used as real evidence of how one jurisdiction defines the transfers subject to its natural-hazard disclosure law — not a claim about which state's law governs a specific transfer; disclosure coverage and the underlying hazard-zone maps are jurisdiction- and geography-specific. The two citations below, to subdivisions (b) and (c) of Civil Code section 1103, are subsections of the same statutory section and are treated here as one source, not as independently corroborating sources.",
+      "citations": [
+        {
+          "case": "Cal. Civ. Code § 1103(b)",
+          "cite": "California Civil Code, scope of the natural hazard disclosure article",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1103.",
+          "quote": "Except as provided in Section 1103.1, this article applies to a sale, exchange, real property sales contract, as defined in Section 2985, lease with an option to purchase, any other option to purchase, or ground lease coupled with improvements, of any single-family residential real property."
+        },
+        {
+          "case": "Cal. Civ. Code § 1103(c)",
+          "cite": "California Civil Code, disclosure duty applies only when triggered by an enumerated hazard-zone provision",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1103.",
+          "quote": "This article shall apply to the transactions described in subdivision (b) only if the seller or his or her agent is required by one or more of the following to disclose the property’s location within a hazard zone:"
+        }
+      ]
+    },
+    {
+      "id": "nhd_exemptions",
+      "title": "Sales Exempt From the Disclosure Requirement",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-03",
+      "body": "The natural hazard disclosure article states that it does not apply to a list of specifically enumerated sales, including: sales or transfers pursuant to court order (such as a probate-administration sale, a sale on a writ of execution, a foreclosure sale, a bankruptcy-trustee sale, an eminent domain taking, or a sale on a decree for specific performance); certain sales or transfers to a mortgagee, beneficiary, or foreclosure purchaser following a default; sales or transfers by a fiduciary administering a trust, guardianship, conservatorship, or decedent's estate (though this particular exemption does not apply where the trustee is a natural person serving as trustee of a revocable trust and the seller was a former owner of the property, or an occupant of it within the preceding year); transfers between co-owners; transfers to a spouse or to a person within the line of consanguinity of a seller; transfers between spouses arising from a dissolution or legal-separation judgment or an incidental property settlement; certain sales by the Controller administering unclaimed-property law and certain tax-sale transfers; sales, transfers, or exchanges to or from a governmental entity; and the creation or transfer of a lease of any duration, except a lease with an option to purchase or a ground lease coupled with improvements. The statute separately notes that a sale falling outside this article may still be subject to other, distinct disclosure statutes, and that in such sales an agent may make those other required disclosures in a separate writing.",
+      "gap": "This is one state's statute, used as real evidence of how one jurisdiction defines its exemptions from natural-hazard disclosure — not a claim about which state's law governs a specific transfer. All five citations below are subsections of the same statutory section, Civil Code section 1103.1, and are treated here as one source, not as independently corroborating sources.",
+      "citations": [
+        {
+          "case": "Cal. Civ. Code § 1103.1(a)",
+          "cite": "California Civil Code, exemptions from the natural hazard disclosure article",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1103.1.",
+          "quote": "(a) This article does not apply to the following sales:"
+        },
+        {
+          "case": "Cal. Civ. Code § 1103.1(a)(1)",
+          "cite": "California Civil Code, court-ordered and similar sales exemption",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1103.1.",
+          "quote": "(1) Sales or transfers pursuant to court order, including, but not limited to, sales ordered by a probate court in administration of an estate, sales pursuant to a writ of execution, sales by any foreclosure sale, sales by a trustee in bankruptcy, sales by eminent domain, and sales resulting from a decree for specific performance."
+        },
+        {
+          "case": "Cal. Civ. Code § 1103.1(a)(3)",
+          "cite": "California Civil Code, fiduciary-administration sales exemption and its carve-out",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1103.1.",
+          "quote": "(3) Sales or transfers by a fiduciary in the course of the administration of a trust, guardianship, conservatorship, or decedent’s estate. This exemption shall not apply to a sale if the trustee is a natural person who is a trustee of a revocable trust and the seller is a former owner of the property or an occupant in possession of the property within the preceding year."
+        },
+        {
+          "case": "Cal. Civ. Code § 1103.1(a)(5)",
+          "cite": "California Civil Code, transfers to a spouse or within the line of consanguinity",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1103.1.",
+          "quote": "(5) Sales or transfers made to a spouse, or to a person or persons in the line of consanguinity of one or more of the sellers."
+        },
+        {
+          "case": "Cal. Civ. Code § 1103.1(a)(10)",
+          "cite": "California Civil Code, lease-of-any-duration exemption and its own exception",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1103.1.",
+          "quote": "(10) The sale, creation, or transfer of any lease of any duration except a lease with an option to purchase or a ground lease coupled with improvements."
+        }
+      ]
+    },
+    {
+      "id": "nhd_hazard_zone_categories",
+      "title": "The Six Statutory Hazard Zone Categories",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-03",
+      "body": "The statutory Natural Hazard Disclosure Statement itself states that the property may lie within six specifically defined hazardous areas, each with its own citation and its own Yes/No/Do-Not-Know checkboxes on the form: (1) a special flood hazard area, any type FEMA Zone \"A\" or \"V\"; (2) an area of potential flooding shown on a dam-failure inundation map under Government Code section 8589.5; (3) a high or very high fire hazard severity zone (FHSZ) as identified under Government Code section 51178 or the corresponding Public Resources Code provisions, which the form states also subjects the owner to the vegetation-maintenance requirements of Government Code section 51182; (4) a wildland area that may contain substantial forest fire risks and hazards under Public Resources Code section 4125, which the form states also subjects the owner to the maintenance requirements of Public Resources Code section 4291, and separately notes that the state is not responsible for providing fire protection services to a structure within the wildlands unless the Department of Forestry and Fire Protection has entered into a cooperative agreement with a local agency under Public Resources Code section 4142; (5) an earthquake fault zone under Public Resources Code section 2622; and (6) a seismic hazard zone (landslide zone, liquefaction zone, or a zone not yet mapped) under Public Resources Code section 2696. The form's own text warns that these hazards may limit the ability to develop the property, to obtain insurance, or to receive disaster assistance, and that the underlying maps estimate, rather than definitively indicate, where a natural hazard exists.",
+      "gap": "This is one state's statute, used as real evidence of how one jurisdiction defines its natural-hazard disclosure categories — not a claim about which state's law governs a specific transfer; hazard-disclosure categories and the underlying hazard-zone maps are jurisdiction- and geography-specific. All six citations below are the six hazard-category paragraphs of the same statutory form text within Civil Code section 1103.2(a), and are treated here as one source, not as independently corroborating sources. The wildland-area category text quoted below (including the sentence on the state's fire-protection responsibility, tied to Public Resources Code section 4142) reflects the section as most recently amended (Stats. 2024, Ch. 80, effective January 1, 2025) and is more current than, and not identical to, any earlier-verified quotation of this same category elsewhere in this corpus.",
+      "citations": [
+        {
+          "case": "Cal. Civ. Code § 1103.2(a) [flood zone]",
+          "cite": "California Civil Code, special flood hazard area category",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1103.2.",
+          "quote": "A SPECIAL FLOOD HAZARD AREA (Any type Zone “A” or “V”) designated by the Federal Emergency Management Agency."
+        },
+        {
+          "case": "Cal. Civ. Code § 1103.2(a) [dam inundation]",
+          "cite": "California Civil Code, dam-failure inundation area category",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1103.2.",
+          "quote": "AN AREA OF POTENTIAL FLOODING shown on a dam failure inundation map pursuant to Section 8589.5 of the Government Code."
+        },
+        {
+          "case": "Cal. Civ. Code § 1103.2(a) [fire hazard]",
+          "cite": "California Civil Code, fire hazard severity zone category",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1103.2.",
+          "quote": "A HIGH or VERY HIGH FIRE HAZARD SEVERITY ZONE (FHSZ) as identified by the Director of Forestry and Fire Protection pursuant to Section 51178 of the Government Code or Article 9 (commencing with Section 4201) of Chapter 1 of Part 2 of Division 4 of the Public Resources Code. The owner of this property is subject to the maintenance requirements of Section 51182 of the Government Code."
+        },
+        {
+          "case": "Cal. Civ. Code § 1103.2(a) [wildland area]",
+          "cite": "California Civil Code, wildland fire area category",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1103.2.",
+          "quote": "A WILDLAND AREA THAT MAY CONTAIN SUBSTANTIAL FOREST FIRE RISKS AND HAZARDS pursuant to Section 4125 of the Public Resources Code. The owner of this property is subject to the maintenance requirements of Section 4291 of the Public Resources Code. Additionally, it is not the state’s responsibility to provide fire protection services to any building or structure located within the wildlands unless the Department of Forestry and Fire Protection has entered into a cooperative agreement with a local agency for those purposes pursuant to Section 4142 of the Public Resources Code."
+        },
+        {
+          "case": "Cal. Civ. Code § 1103.2(a) [earthquake fault]",
+          "cite": "California Civil Code, earthquake fault zone category",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1103.2.",
+          "quote": "AN EARTHQUAKE FAULT ZONE pursuant to Section 2622 of the Public Resources Code."
+        },
+        {
+          "case": "Cal. Civ. Code § 1103.2(a) [seismic hazard]",
+          "cite": "California Civil Code, seismic hazard zone category",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1103.2.",
+          "quote": "A SEISMIC HAZARD ZONE pursuant to Section 2696 of the Public Resources Code."
+        }
+      ]
+    },
+    {
+      "id": "nhd_statutory_form_and_use_restrictions",
+      "title": "The Required Disclosure Form and Its Stated Limits",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-03",
+      "body": "The statute requires that the natural-hazard disclosures it covers be made on a copy of a specifically set-out form, the Natural Hazard Disclosure Statement — or, alternatively, that they be provided within the Local Option Real Estate Transfer Disclosure Statement described in Civil Code section 1102.6a, provided that document includes substantially the same information and substantially the same warnings the natural-hazard form itself requires. The form's own text states that the disclosed information is not a warranty, though it also states that prospective buyers may rely on it in deciding whether and on what terms to purchase. The statute further restricts who may use the completed disclosure: it states that the disclosure is only a disclosure between the seller, the seller's agent, and the prospective buyer, and that it is not to be used by any other party — including, but not limited to, insurance companies, lenders, or governmental agencies — for any purpose.",
+      "gap": "This is one state's statute, used as real evidence of how one jurisdiction structures its required natural-hazard disclosure form — not a claim about which state's law governs a specific transfer. All four citations below are subsections of the same statutory section, Civil Code section 1103.2, and are treated here as one source, not as independently corroborating sources.",
+      "citations": [
+        {
+          "case": "Cal. Civ. Code § 1103.2(a)",
+          "cite": "California Civil Code, requirement to use the statutory disclosure form",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1103.2.",
+          "quote": "The disclosures required by this article are set forth in, and shall be made on a copy of, the following Natural Hazard Disclosure Statement:"
+        },
+        {
+          "case": "Cal. Civ. Code § 1103.2(a)",
+          "cite": "California Civil Code, the form is not a warranty",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1103.2.",
+          "quote": "The seller and the seller’s agent(s) or a third-party consultant disclose the following information with the knowledge that even though this is not a warranty, prospective buyers may rely on this information in deciding whether and on what terms to purchase the subject property."
+        },
+        {
+          "case": "Cal. Civ. Code § 1103.2(e)",
+          "cite": "California Civil Code, disclosure may instead be made via the Local Option Transfer Disclosure Statement",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1103.2.",
+          "quote": "The disclosure required pursuant to this article may be provided by the seller and the seller’s agent in the Local Option Real Estate Transfer Disclosure Statement described in Section 1102.6a, provided that the Local Option Real Estate Transfer Disclosure Statement includes substantially the same information and substantially the same warnings that are required by this section."
+        },
+        {
+          "case": "Cal. Civ. Code § 1103.2(g)",
+          "cite": "California Civil Code, disclosure limited to seller/agent/buyer, not usable by other parties",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1103.2.",
+          "quote": "The disclosure required by this article is only a disclosure between the seller, the seller’s agent, and the prospective buyer, and shall not be used by any other party, including, but not limited to, insurance companies, lenders, or governmental agencies, for any purpose."
+        }
+      ]
+    },
+    {
+      "id": "nhd_good_faith_third_party_safe_harbor",
+      "title": "Good Faith and the Third-Party Report Safe Harbor",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-03",
+      "body": "The statute provides that neither the seller nor any seller's or buyer's agent is liable for an error, inaccuracy, or omission in information delivered under the natural-hazard disclosure article if the error, inaccuracy, or omission was outside that person's personal knowledge, was based on information timely provided by a public agency or by another qualifying person, and ordinary care was exercised in obtaining and transmitting it. As one way of qualifying for that protection, the statute states that delivery, in response to a request, of a report or opinion prepared by a licensed engineer, land surveyor, geologist, or other expert in natural hazard discovery, addressing matters within that professional's license or expertise, is sufficient compliance for this exemption. The statutory disclosure form itself contains a checkbox by which the seller and agent may instead acknowledge that they exercised good faith in selecting a third-party report provider and that the form's representations rest on that provider's report as a substituted disclosure, rather than on the seller's or agent's own independent verification. Separately, the article states a general good-faith standard applicable to every disclosure and act performed under it, and defines \"good faith,\" for these purposes, as honesty in fact in the conduct of the transaction.",
+      "gap": "This is one state's statute, used as real evidence of how one jurisdiction structures its good-faith and third-party-report safe harbor for natural-hazard disclosure — not a claim about which state's law governs a specific transfer. The first two citations below, to Civil Code section 1103.4(a) and (c), are subsections of the same statutory section and are treated here as one source; the third citation, to Civil Code section 1103.7, is a separate, independently enacted section defining the \"good faith\" standard used elsewhere in this article, including on the statutory form's own third-party-report checkbox referenced in the body above.",
+      "citations": [
+        {
+          "case": "Cal. Civ. Code § 1103.4(a)",
+          "cite": "California Civil Code, liability shield for errors outside personal knowledge",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1103.4.",
+          "quote": "Neither the seller nor any seller’s agent or buyer’s agent shall be liable for any error, inaccuracy, or omission of any information delivered pursuant to this article if the error, inaccuracy, or omission was not within the personal knowledge of the seller or the seller’s agent or buyer’s agent and was based on information timely provided by public agencies or by other persons providing information as specified in subdivision (c) that is required to be disclosed pursuant to this article, and ordinary care was exercised in obtaining and transmitting the information."
+        },
+        {
+          "case": "Cal. Civ. Code § 1103.4(c)",
+          "cite": "California Civil Code, third-party expert report as sufficient compliance",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1103.4.",
+          "quote": "The delivery of a report or opinion prepared by a licensed engineer, land surveyor, geologist, or expert in natural hazard discovery dealing with matters within the scope of the professional’s license or expertise shall be sufficient compliance for application of the exemption provided by subdivision (a) if the information is provided to the prospective buyer pursuant to a request therefor, whether written or oral."
+        },
+        {
+          "case": "Cal. Civ. Code § 1103.7",
+          "cite": "California Civil Code, definition of \"good faith\" for this article",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1103.7.",
+          "quote": "Each disclosure required by this article and each act that may be performed in making the disclosure shall be made in good faith. For purposes of this article, “good faith” means honesty in fact in the conduct of the transaction."
+        }
+      ]
+    },
+    {
+      "id": "nhd_no_duty_to_update",
+      "title": "No Ongoing Duty to Update After Compliance",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-03",
+      "body": "The statute provides that once a seller and the seller's agent comply with the disclosure-form requirement, they are relieved of further duty under the article with respect to the items they disclosed, and are not required to notify the prospective buyer if that information later becomes inaccurate because of governmental action, a map revision, changed information, or another subsequent act or occurrence — unless the seller or agent has actual knowledge that the information has become inaccurate. Correspondingly, the statute states that if previously disclosed information is later rendered inaccurate by such a subsequent governmental action, map revision, changed information, or other occurrence, that resulting inaccuracy does not itself constitute a violation of the article.",
+      "gap": "This is one state's statute, used as real evidence of how one jurisdiction limits the duration of its natural-hazard disclosure duty — not a claim about which state's law governs a specific transfer. Both citations below are subsections of the same statutory section, Civil Code section 1103.5, and are treated here as one source, not as independently corroborating sources.",
+      "citations": [
+        {
+          "case": "Cal. Civ. Code § 1103.5(a)",
+          "cite": "California Civil Code, no duty to notify of later inaccuracy absent actual knowledge",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1103.5.",
+          "quote": "After a seller and his or her agent comply with Section 1103.2, they shall be relieved of further duty under this article with respect to those items of information. The seller and the seller’s agent shall not be required to provide notice to the prospective buyer if the information provided subsequently becomes inaccurate as a result of any governmental action, map revision, changed information, or other act or occurrence, unless the seller or agent has actual knowledge that the information has become inaccurate."
+        },
+        {
+          "case": "Cal. Civ. Code § 1103.5(b)",
+          "cite": "California Civil Code, later inaccuracy from subsequent events is not a violation",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1103.5.",
+          "quote": "If information disclosed in accordance with this article is subsequently rendered inaccurate as a result of any governmental action, map revision, changed information, or other act or occurrence subsequent to the delivery of the required disclosures, the inaccuracy resulting therefrom does not constitute a violation of this article."
+        }
+      ]
+    },
+    {
+      "id": "nhd_signature_block",
+      "title": "Acknowledgment of Receipt and Review",
+      "kind": "drafting",
+      "body": "By signing below, the undersigned acknowledge that they have received and reviewed this information sheet describing California's natural hazard disclosure law, Civil Code section 1103 et seq., in connection with the property at {{propertyAddress}}. This information sheet is not the statutory Natural Hazard Disclosure Statement required by Civil Code section 1103.2, does not itself disclose whether {{propertyAddress}} lies within any statutory hazard zone, and does not satisfy any disclosure, good-faith, or third-party-report obligation that the statute separately requires.\n\nSeller: {{sellerName}}\nSignature: _______________________  Date: {{dateSigned}}\n\nSeller's Agent (if any): {{sellerAgentName}}\nSignature: _______________________  Date: {{dateSigned}}\n\nThird-Party Disclosure Provider (if a substituted disclosure under Civil Code section 1103.4 is used): {{thirdPartyProviderName}}\nSignature: _______________________  Date: {{dateSigned}}\n\nBuyer: {{buyerName}}\nSignature: _______________________  Date: {{dateSigned}}\n\nExecuted at {{cityState}}."
     }
   ]
 }
