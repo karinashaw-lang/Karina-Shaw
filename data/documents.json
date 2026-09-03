@@ -13723,5 +13723,60 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "minor_work_permits_info_sheet",
+    "title": "Minor Work Permits — Information Sheet",
+    "description": "Information about California's school-issued work-permit requirement for minors under 18 — who counts as a minor, who may issue a permit, the employer's certificate-of-age/permit-to-employ and recordkeeping obligations, age-based hour and time-of-day limits, permit revocation, and the graduate exemption, under Education Code §§ 49101-49120 and Labor Code §§ 1286, 1299, and 1391.",
+    "categories": [
+      "Hiring"
+    ],
+    "clauseOrder": [
+      "minorwork_declaration",
+      "minorwork_covered_minors",
+      "minorwork_permit_request_and_issuer",
+      "minorwork_permit_to_employ_recordkeeping_expiration",
+      "minorwork_hours_and_revocation",
+      "minorwork_exemption_graduates",
+      "minorwork_certification"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Employer name",
+        "placeholder": "Acme Corp",
+        "required": true
+      },
+      {
+        "id": "minorName",
+        "label": "Minor's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "jobTitle",
+        "label": "Position",
+        "placeholder": "Retail Associate",
+        "required": true
+      },
+      {
+        "id": "parentGuardianName",
+        "label": "Parent or legal guardian's name",
+        "placeholder": "Taylor Morgan",
+        "required": true
+      },
+      {
+        "id": "educationalInstitution",
+        "label": "Minor's school",
+        "placeholder": "Lincoln High School",
+        "required": true
+      },
+      {
+        "id": "startDate",
+        "label": "Anticipated start date",
+        "placeholder": "September 15, 2026",
+        "required": true
+      }
+    ]
   }
 ]
