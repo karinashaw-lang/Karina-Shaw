@@ -13397,5 +13397,73 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "family_allowance_info_sheet",
+    "title": "Family Allowance — Information Sheet",
+    "description": "Information about the family allowance a probate court may order paid from a decedent's estate to support a surviving spouse, minor children, or dependent adult children/parent during estate administration, under Probate Code §§ 6540-6545.",
+    "categories": [
+      "Estate Planning"
+    ],
+    "clauseOrder": [
+      "familyallow_declaration",
+      "familyallow_eligible_persons_and_standard",
+      "familyallow_petition_ex_parte_and_notice",
+      "familyallow_commencement_and_retroactivity",
+      "familyallow_duration_and_termination",
+      "familyallow_costs_paid_by_estate",
+      "familyallow_priority_among_estate_debts",
+      "familyallow_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "petitionerName",
+        "label": "Petitioner's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "decedentName",
+        "label": "Decedent's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "relationshipToDecedent",
+        "label": "Relationship to decedent",
+        "placeholder": "Surviving spouse",
+        "required": true
+      },
+      {
+        "id": "dateOfDeath",
+        "label": "Date of death",
+        "placeholder": "June 1, 2026",
+        "required": true
+      },
+      {
+        "id": "countyOfFiling",
+        "label": "County of filing",
+        "placeholder": "Alameda County",
+        "required": true
+      },
+      {
+        "id": "requestedAllowanceAmount",
+        "label": "Requested monthly family allowance amount",
+        "placeholder": "$3,000 per month",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 3, 2026",
+        "required": true
+      },
+      {
+        "id": "cityOfExecution",
+        "label": "City of execution",
+        "placeholder": "Oakland",
+        "required": true
+      }
+    ]
   }
 ]
