@@ -13991,5 +13991,48 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "polygraph_lie_detector_prohibition_info_sheet",
+    "title": "Polygraph and Lie Detector Test Prohibition — Information Sheet",
+    "description": "Background information on California's prohibition on polygraph and lie detector testing of job applicants and employees, and a comparison to the overlapping federal Employee Polygraph Protection Act.",
+    "categories": [
+      "Hiring"
+    ],
+    "clauseOrder": [
+      "polygraph_purpose",
+      "polygraph_core_prohibition",
+      "polygraph_public_employer_exception",
+      "polygraph_written_notice_requirement",
+      "polygraph_misdemeanor_penalty",
+      "polygraph_federal_eppa_comparison",
+      "polygraph_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
