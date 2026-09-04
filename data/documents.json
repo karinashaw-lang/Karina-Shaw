@@ -19607,5 +19607,48 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "intestate_succession_distribution_info_sheet",
+    "title": "California Intestate Succession Distribution Shares (Prob. Code §§ 6400-6402) — Information Sheet",
+    "description": "Explains, using the statutes' own text, California's default statutory scheme for dividing a decedent's property when there is no valid will covering all or part of the estate: the § 6400 trigger, the surviving spouse's or registered domestic partner's separate-property share on a sliding scale (entire estate, one-half, or one-third depending on which relatives survive -- distinct from the spouse's community/quasi-community property share already covered elsewhere in this corpus), and § 6402's full descent order when there is no surviving spouse or partner (descendants, then parents, then siblings' issue, then grandparents and their issue, then issue of a predeceased spouse, then next of kin generally, then in-laws of a predeceased spouse). Distinct from this project's Petition for Probate document, which covers who is APPOINTED administrator (§§ 8460-8461), a different question from who INHERITS.",
+    "categories": [
+      "Estate Planning"
+    ],
+    "clauseOrder": [
+      "intestateshares_declaration",
+      "intestateshares_general_framework",
+      "intestateshares_spouse_separate_property_shares",
+      "intestateshares_no_spouse_or_remainder_to_descendants_parents",
+      "intestateshares_siblings_grandparents_order",
+      "intestateshares_next_of_kin_and_predeceased_spouse_kin",
+      "intestateshares_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "decedentName",
+        "label": "Decedent's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 5, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Sacramento, California",
+        "required": true
+      }
+    ]
   }
 ]
