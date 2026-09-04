@@ -48158,6 +48158,81 @@
       "title": "Record and Signature",
       "kind": "drafting",
       "body": "{{artistName}} and {{talentRepresentativeName}} identify the following as of the date this sheet is completed:\n\nArtist: {{artistName}}\nRepresentative: {{talentRepresentativeName}}\nDate: {{dateSigned}}\nLocation: {{cityState}}\n\nThis sheet is an informational record only. It is not a talent agency contract, a form of contract submitted to or approved by the Labor Commissioner under Labor Code section 1700.23, a talent agency license, or a waiver of any right or requirement under Labor Code section 1700 et seq. Completing or signing it does not itself create, satisfy, or waive the licensing requirement described in this sheet, and does not itself resolve whether any controversy between the parties would fall within the Labor Commissioner's jurisdiction described in this sheet.\n\nSignature: _________________________ Date: {{dateSigned}}\n\n{{artistName}}\n\n{{cityState}}"
+    },
+    {
+      "id": "severancenotrequired_intro",
+      "title": "Purpose of This Information Sheet",
+      "kind": "drafting",
+      "body": "This information sheet explains what California law does — and does not — require regarding severance pay when {{employeeName}}'s employment with {{companyName}} ends. It addresses severance pay specifically: additional compensation not tied to work already performed. It does not address, and is separate from, final wages — compensation {{employeeName}} has already earned by working, which California law separately requires {{companyName}} to pay by its own deadlines regardless of whether any severance is ever paid."
+    },
+    {
+      "id": "severancenotrequired_general_absence",
+      "title": "No General Right to Severance Pay",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-04",
+      "body": "California law does not give {{employeeName}} a general, default right to severance pay simply because {{employeeName}}'s employment with {{companyName}} ends. Unlike final wages — which state law requires to be paid by fixed deadlines regardless of the circumstances of separation — severance pay is additional money not tied to work already performed, and no California statute or common-law rule entitles an employee to it by default. The California Supreme Court has approached severance pay as a matter of ordinary contract law rather than a right the law supplies automatically: whether an employer's severance-related policy binds the employer is treated as a question of contract formation — whether the employer made a promise and the employee accepted it — not as the application of a standing legal entitlement that exists independent of any such promise.",
+      "gap": "This clause's conclusion rests on two things verified this session: (1) published California Supreme Court case law that analyzes severance-pay policies exclusively through contract-formation doctrine (offer, acceptance, and unilateral-contract principles), reasoning that would be unnecessary if the law already guaranteed severance pay by default; and (2) this corpus's own separate, already-verified documents addressing money owed at the end of employment (final wages, the waiting-time penalty, and unclaimed final wages), none of which identify any general severance-pay mandate. This session's network access to primary California government sources — California Legislative Information's Labor Code text and the Department of Industrial Relations' published guidance — was blocked by this environment's network controls, so this clause does not rest on an exhaustive, line-by-line canvass of the Labor Code affirmatively ruling out every possible severance provision, and no source was found or verified this session stating the negative proposition — \"California has no general severance-pay statute\" — in so many words. The citation below comes from a wrongful-termination/implied-contract case rather than a case or agency source addressing severance pay's absence head-on.",
+      "citations": [
+        {
+          "case": "Scott v. Pacific Gas & Electric Co.",
+          "cite": "11 Cal. 4th 454, 464 (1995)",
+          "url": "https://www.courtlistener.com/opinion/1387313/scott-v-pacific-gas-electric-co/",
+          "quote": "Conceptually, there is no rational reason why an employer’s policy that its employees will not be demoted except for good cause, like a policy restricting termination or providing for severance pay, cannot become an implied term of an employment contract. In each of these instances, an employer promises to confer a significant benefit on the employee, and it is a question of fact whether that promise was reasonably understood by the employee to create a contractual obligation."
+        }
+      ]
+    },
+    {
+      "id": "severancenotrequired_promise_enforceable",
+      "title": "An Employer's Own Promise of Severance Can Become Binding",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-04",
+      "body": "While California law does not require {{companyName}} to offer severance in the first place, a severance policy or promise {{companyName}} does choose to adopt — in an employee handbook, an individual agreement, or an established practice — can become a binding legal obligation once made. California courts have recognized that an employer's promise to pay severance benefits can form an enforceable \"unilateral contract\": an offer that becomes binding once an employee accepts it, typically simply by continuing to work for the employer after the policy is adopted. That is the legal mechanism that separates an unenforceable gratuity from a binding commitment — not any default statutory entitlement, but the ordinary contract-law consequence of a promise, once made and accepted.",
+      "gap": "Both citations below are drawn from the same opinion (Asmus v. Pacific Bell), so they are not independent of one another. The first is that opinion's own bracketed characterization of a separate, older Court of Appeal decision, Chinn v. China National Aviation Corp. (1955) 138 Cal.App.2d 98, 99-100 — Chinn itself was not independently read or verified for this document. Asmus's broader holding (not restated in this clause) concerned a different question: once such a policy has become a binding unilateral contract through employee acceptance, on what terms an employer may later modify or terminate it prospectively; this clause only draws on Asmus for the antecedent point that such a policy can become binding in the first place, which the parties in that case did not dispute.",
+      "citations": [
+        {
+          "case": "Asmus v. Pacific Bell",
+          "cite": "23 Cal. 4th 1, 11-12 (2000), characterizing Chinn v. China National Aviation Corp. (1955) 138 Cal.App.2d 98, 99-100",
+          "url": "https://www.courtlistener.com/opinion/1159643/asmus-v-pacific-bell/",
+          "quote": "[employer's agreement to pay severance benefits becomes enforceable unilateral contract if employee accepts benefit offer by continuing employment]"
+        },
+        {
+          "case": "Asmus v. Pacific Bell",
+          "cite": "23 Cal. 4th 1, 10 (2000)",
+          "url": "https://www.courtlistener.com/opinion/1159643/asmus-v-pacific-bell/",
+          "quote": "In a unilateral contract, there is only one promisor, who is under an enforceable legal duty."
+        }
+      ]
+    },
+    {
+      "id": "severancenotrequired_warn_distinction",
+      "title": "How This Differs from the California WARN Act",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-04",
+      "body": "One specific, narrow rule operates alongside the general absence of a severance requirement described above: the California WARN Act (Cal/WARN, Labor Code § 1400 et seq., covered fully in this project's California WARN Act (Cal/WARN) Information Sheet) does not create a right to severance pay either, but it does impose its own separate monetary liability on a covered employer that orders a qualifying mass layoff, relocation, or termination without first giving the 60 days' written notice California law requires. An employer who violates that notice requirement is liable to each affected employee for back pay and the value of lost benefits, capped at 60 days of liability (or half the employee's total time worked, if smaller). In practice, that liability can resemble severance pay — money paid to a terminated employee beyond wages already earned — but legally it is a penalty tied specifically to the employer's failure to give the required notice, not a severance entitlement in its own right: an employer that gives timely, complete notice owes nothing further under this law, and an event or employer that does not meet Cal/WARN's own coverage thresholds and triggering conditions is not reached by it at all.",
+      "gap": "This clause's description of the Cal/WARN liability formula restates — rather than independently re-verifies — the primary-source Labor Code § 1402 quotations already fetched and verified for this project's existing California WARN Act (Cal/WARN) Information Sheet document (clause id calwarn_liability, checked 2026-09-02); this session's access to leginfo.legislature.ca.gov was blocked by this environment's network controls, so the statute could not be independently re-fetched for this document. The two citations below are both subdivisions of the same statutory section (Labor Code § 1402) and so are not independent of one another. Readers should treat the existing California WARN Act (Cal/WARN) Information Sheet document, not this one, as the authoritative source for Cal/WARN's coverage thresholds, triggering events, notice content, exceptions, and enforcement mechanics — including the coverage threshold (a facility employing 75 or more people) and the definition of a qualifying mass layoff, relocation, or termination, neither of which is restated here.",
+      "citations": [
+        {
+          "case": "Cal. Labor Code § 1402(a) (California Legislative Information, official text)",
+          "cite": "California Labor Code, Cal/WARN Act, back pay and benefits liability for failure to give required notice",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=1402.",
+          "quote": "An employer who fails to give notice as required by paragraph (1) of subdivision (a) of Section 1401 before ordering a mass layoff, relocation, or termination is liable to each employee entitled to notice who lost his or her employment for: (1) Back pay at the average regular rate of compensation received by the employee during the last three years of his or her employment, or the employee’s final rate of compensation, whichever is higher. (2) The value of the cost of any benefits to which the employee would have been entitled had his or her employment not been lost, including the cost of any medical expenses incurred by the employee that would have been covered under an employee benefit plan."
+        },
+        {
+          "case": "Cal. Labor Code § 1402(b) (California Legislative Information, official text)",
+          "cite": "California Labor Code, Cal/WARN Act, liability cap",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=1402.",
+          "quote": "Liability under this section is calculated for the period of the employer’s violation, up to a maximum of 60 days, or one-half the number of days that the employee was employed by the employer, whichever period is smaller."
+        }
+      ]
+    },
+    {
+      "id": "severancenotrequired_ack",
+      "title": "Acknowledgment",
+      "kind": "drafting",
+      "body": "Please sign below to acknowledge receipt of this information sheet.\n\nEmployee: {{employeeName}}\nDate: _______________"
     }
   ]
 }
