@@ -54057,6 +54057,41 @@
       "title": "Job Titles and Ages Disclosure",
       "kind": "drafting",
       "body": "AGES AND JOB TITLES — ELIGIBLE OR SELECTED, AND NOT ELIGIBLE OR SELECTED\n\nDecisional unit: {{decisionalUnitDescription}}\n\nAges of individuals eligible or selected for {{programName}}, by job title:\n{{eligibleSelectedAgesTable}}\n\nAges of individuals in the same job classification or organizational unit who are NOT eligible or selected for {{programName}}, by job title:\n{{ineligibleAgesTable}}\n\nAges above are listed individually for each person; they are not grouped into ranges or bands."
+    },
+    {
+      "id": "nonsolicit_narrow_restraint",
+      "title": "No \"Narrow-Restraint\" Exception Under Section 16600",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-04",
+      "body": "Section 16600 directs that it be read broadly, with no carve-out for a restriction that limits only a small or \"narrow\" slice of someone's business, trade, or profession. California's Court of Appeal has explained that this reflects the state Supreme Court's own refusal, in Edwards v. Arthur Andersen LLP, to adopt a judicially created \"narrow-restraint\" exception that a federal appeals court had recognized for a restraint covering only a small or limited part of a person's business, trade, or profession. Applying that rule, the same Court of Appeal held a contractual non-solicitation restriction void under Section 16600 even though the restriction could be characterized as narrow or limited in scope.",
+      "gap": "Source independence: the statutory quote below was independently fetched from California Legislative Information (leginfo.legislature.ca.gov) and confirmed byte-identical across two fetches with two different User-Agent strings. The case-law quotes below were independently fetched from the official, certified-for-publication opinion PDF hosted on the California Courts website (courts.ca.gov/opinions/documents/D071924.PDF) -- a primary court source, not a mirror -- and likewise confirmed byte-identical across two fetches with two different User-Agent strings; this is the same opinion the corpus already cites elsewhere as 'AMN Healthcare, Inc. v. Aya Healthcare Services, Inc.' Real limitation on sourcing: the two quotations attributed to Edwards v. Arthur Andersen LLP itself were not independently fetched from Edwards's own opinion text. CourtListener's API was rate-limited (125 requests/day, already exhausted) and its opinion pages return an AWS WAF bot challenge rather than content; Justia and FindLaw mirror pages returned a Cloudflare bot-challenge page rather than the opinion; the California Courts website's own opinion archive does not retain a 2008 opinion (its D071924 PDF above is retained, but an equivalent S147190 URL for Edwards returns 404). Those two Edwards quotations are therefore reproduced only as block-quoted within AMN Healthcare's verified opinion text, not confirmed against Edwards's own opinion independently -- a meaningfully weaker form of verification than the AMN Healthcare and statutory quotes, which is why the case field for those two citations names the chain explicitly rather than citing Edwards alone. What this clause does not cover: AMN Healthcare's own facts and its own application of this no-narrow-restraint rule concerned a clause barring former employees from soliciting the company's other employees (travel nurses) -- the clause discussed in this document's clause on that split of authority -- not a clause barring solicitation of the company's customers. The customer-solicitation-specific rule (that a court will not directly enforce such a clause, though it may still restrain trade-secret misuse) traces to a different, earlier case, The Retirement Group v. Galante (2009), which AMN Healthcare quotes approvingly elsewhere in the same opinion -- see this document's clause distinguishing customer non-solicitation -- but which this clause does not independently verify by name against a fetched copy of Galante's own opinion; the California Courts archive did not have a retrievable PDF for that 2009 case either. This clause states the broader, general anti-narrow-restraint principle that both the employee-solicitation and customer-solicitation lines of authority are built on; it doesn't independently confirm that Galante's own reasoning used the term \"narrow restraint,\" only that AMN Healthcare's use of that term arose in the employee-solicitation context. Left open: whether this rule applies identically where the person bound is an independent contractor rather than an employee, and whether it applies identically to soliciting prospective customers as opposed to existing ones -- neither question is addressed in the sources fetched for this clause.",
+      "citations": [
+        {
+          "case": "Cal. Bus. & Prof. Code § 16600(b)(1) (California Legislative Information text)",
+          "cite": "California Business and Professions Code",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&sectionNum=16600.",
+          "quote": "This section shall be read broadly, in accordance with Edwards v. Arthur Andersen LLP (2008) 44 Cal.4th 937, to void the application of any noncompete agreement in an employment context, or any noncompete clause in an employment contract, no matter how narrowly tailored, that does not satisfy an exception in this chapter."
+        },
+        {
+          "case": "AMN Healthcare, Inc. v. Aya Healthcare Services, Inc.",
+          "cite": "28 Cal. App. 5th 923 (2018), certified-for-publication opinion, official court PDF",
+          "url": "https://www.courts.ca.gov/opinions/documents/D071924.PDF",
+          "quote": "Our conclusion is further buttressed by the Edwards court's refusal to adopt the \"limited or 'narrow-restraint' exception to section 16600\" created by the Ninth Circuit in Campbell v. Trustees of Leland Stanford Jr. Univ. (9th Cir. 1987) 817 F.2d 499 (Campbell)"
+        },
+        {
+          "case": "Edwards v. Arthur Andersen LLP, as quoted in AMN Healthcare, Inc. v. Aya Healthcare Services, Inc. (see gap field on sourcing)",
+          "cite": "44 Cal. 4th 937, 949 (2008), quoted at 28 Cal. App. 5th 923 (2018)",
+          "url": "https://www.courts.ca.gov/opinions/documents/D071924.PDF",
+          "quote": "California courts have not embraced the Ninth Circuit's narrow-restraint exception"
+        },
+        {
+          "case": "AMN Healthcare, Inc. v. Aya Healthcare Services, Inc.",
+          "cite": "28 Cal. App. 5th 923 (2018), certified-for-publication opinion, official court PDF",
+          "url": "https://www.courts.ca.gov/opinions/documents/D071924.PDF",
+          "quote": "If enforced, section 3.2 thus restrained individual defendants from engaging in their chosen profession, even in a \"narrow\" manner or a \"limited\" way."
+        }
+      ]
     }
   ]
 }
