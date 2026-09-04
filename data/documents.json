@@ -21465,5 +21465,54 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "federal_estate_gift_tax_basics_info_sheet",
+    "title": "Federal Estate and Gift Tax Basics — Information Sheet",
+    "description": "Describes federal estate and gift tax fundamentals under 26 U.S.C. §§ 2010, 2056, 2503: the unified credit mechanism, the current $15,000,000 basic exclusion amount and its post-2026 inflation-adjustment formula, portability of a deceased spouse's unused exclusion amount and its election requirement, the unlimited marital deduction, and the annual per-donee gift tax exclusion's statutory base amount and inflation-adjustment mechanism (without asserting any specific current inflation-adjusted dollar figure not stated in the statute's own text).",
+    "categories": [
+      "Estate Planning"
+    ],
+    "clauseOrder": [
+      "esttax_credit_mechanism",
+      "esttax_basic_exclusion_amount",
+      "esttax_portability",
+      "esttax_marital_deduction",
+      "esttax_annual_gift_exclusion",
+      "esttax_estate_disclosure",
+      "esttax_gift_disclosure"
+    ],
+    "fields": [
+      {
+        "id": "decedentName",
+        "label": "Decedent's Name",
+        "placeholder": "e.g., Jane Doe",
+        "required": true
+      },
+      {
+        "id": "dateOfDeath",
+        "label": "Date of Death",
+        "placeholder": "e.g., January 1, 2026",
+        "required": true
+      },
+      {
+        "id": "survivingSpouseName",
+        "label": "Surviving Spouse's Name",
+        "placeholder": "e.g., John Doe",
+        "required": false
+      },
+      {
+        "id": "estimatedEstateValue",
+        "label": "Estimated Total Estate Value",
+        "placeholder": "e.g., $2,000,000",
+        "required": false
+      },
+      {
+        "id": "giftDonorName",
+        "label": "Gift Donor's Name",
+        "placeholder": "e.g., Jane Doe",
+        "required": false
+      }
+    ]
   }
 ]
