@@ -15374,5 +15374,54 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "employer_reference_immunity_info_sheet",
+    "title": "Employer Reference Immunity — Information Sheet",
+    "description": "Background information on the qualified legal immunity California Civil Code section 47(c) can provide for a job-reference communication -- the underlying common-interest privilege, the employment-reference sentence and what \"based on credible evidence\" does and does not mean, the published California case law on what \"without malice\" requires, the rehire and sexual-harassment-related protections, and the statute's own constitutionally-protected-speech carve-out. A companion resource to, and distinct from, the Neutral Reference / Employment Verification Policy document.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "referenceimmunity_intro",
+      "referenceimmunity_statute_core",
+      "referenceimmunity_employment_reference_prong",
+      "referenceimmunity_malice_standard",
+      "referenceimmunity_rehire_and_harassment",
+      "referenceimmunity_protected_speech_carveout",
+      "referenceimmunity_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "inquiringPartyName",
+        "label": "Name of the party requesting the reference",
+        "placeholder": "Beta Corp Hiring Manager",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]

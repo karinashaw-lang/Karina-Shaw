@@ -41987,6 +41987,121 @@
       "title": "Closing and Signature Block — Right to Refuse Hazardous Work Information Sheet",
       "kind": "drafting",
       "body": "I declare that the information above is true and correct to the best of my knowledge.\n\nExecuted on {{dateSigned}} at {{cityState}}.\n\nSignature of {{employeeName}}: ☐ _________________________\n\n[This information sheet describes California Labor Code sections 6310, 6311, and 6312 — the statutes addressing an employee's right to refuse to perform work that would violate a safety standard, order, or the Labor Code itself where doing so creates a real and apparent hazard, and the related, broader protection for certain workplace safety complaints and other specified safety-related conduct — and the Labor Commissioner complaint procedure under Labor Code section 98.7 that enforces them. It does not itself determine that {{employeeName}}'s refusal to perform the work described above was protected under these statutes, that {{companyName}} violated any of these statutes, or that any adverse action described above was connected to that refusal. It is not a complaint or petition, is not filed with the Labor Commissioner, the Division of Occupational Safety and Health, the United States Department of Labor, or any court by completing it, does not constitute legal advice, and is not a substitute for consulting the actual statutes or a licensed attorney.]"
+    },
+    {
+      "id": "referenceimmunity_intro",
+      "title": "Purpose of This Information Sheet",
+      "kind": "drafting",
+      "body": "This information sheet describes a qualified legal immunity that California Civil Code § 47(c) can provide for a job-reference communication from {{companyName}} about {{employeeName}}'s job performance or qualifications. It is a companion resource to, and is distinct from, this project's Neutral Reference / Employment Verification Policy document: that document sets out an employer's internal reference-handling policy choices, while this document explains only the underlying statutory immunity itself -- what § 47(c) covers, what published California case law says \"without malice\" requires, the specific rehire-related protections the statute adds, and where the statute's own text says the privilege does not reach. This document states California law as background information. It does not tell {{companyName}} what to communicate to {{inquiringPartyName}} about {{employeeName}}, and it does not determine whether any particular past or future communication about {{employeeName}} was, or will be, privileged."
+    },
+    {
+      "id": "referenceimmunity_statute_core",
+      "title": "The Underlying Privilege — Civil Code § 47(c)",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-04",
+      "body": "California Civil Code § 47(c) makes certain communications \"privileged\" -- meaning they cannot support a defamation claim under California law -- when made without malice to a person interested in the communication, under any one of three circumstances the statute lists in the disjunctive: the communication is made (1) by someone who is also interested in the subject, (2) by someone who stands in a relation to the interested person that affords a reasonable ground for supposing the communication's motive to be innocent, or (3) by someone the interested person has requested to give the information. This is the general common-interest privilege framework; a more specific set of rules within the same subdivision, addressed in this document's companion clauses, governs communications about an applicant's job performance or qualifications specifically.",
+      "gap": "This is one state's statute, used as real evidence that a qualified reference privilege of this kind exists in California -- not a claim about which state's law governs a particular communication. This clause quotes the general chapeau language of § 47(c) that precedes its employment-specific sentences; this document's other authority clauses quote and address those employment-specific sentences separately. All of this document's statutory citations are to subdivisions and sentences within the single subsection Civil Code § 47(c) -- they are not independent of one another, and that lack of independence is disclosed here rather than presented as multiple separate sources. The statutory text was confirmed by fetching Cal. Civ. Code § 47 directly from leginfo.legislature.ca.gov twice, using two different User-Agent strings and request headers, on 2026-09-04; both fetches produced byte-identical section text once whitespace was normalized.",
+      "citations": [
+        {
+          "case": "Cal. Civ. Code § 47(c) (California Legislative Information text)",
+          "cite": "California Civil Code",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=47.",
+          "quote": "In a communication, without malice, to a person interested therein, (1) by one who is also interested, or (2) by one who stands in such a relation to the person interested as to afford a reasonable ground for supposing the motive for the communication to be innocent, or (3) who is requested by the person interested to give the information."
+        }
+      ]
+    },
+    {
+      "id": "referenceimmunity_employment_reference_prong",
+      "title": "The Employment-Reference Sentence and \"Credible Evidence\"",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-04",
+      "body": "Within § 47(c), a sentence added by a 1994 amendment applies the privilege specifically to a communication concerning an applicant's job performance or qualifications: it covers a communication based upon credible evidence, made without malice, by a current or former employer to, and upon request of, one the employer reasonably believes is a prospective employer of the applicant. Published California case law construing this exact sentence has held that the phrase \"based on credible evidence\" does not lower the applicable standard to ordinary negligence. A California Court of Appeal, addressing a former employer's statement to a background-check company (a prospective employer's agent) about a former employee, held that the Legislature did not intend, by adding that phrase, to make the privilege inapplicable in the employment-reference context merely because an employer's statement turned out to be negligently mistaken -- malice, not negligence, remains the standard a plaintiff must meet to defeat the privilege.",
+      "gap": "This is one state's statute and one state's published appellate case construing it -- not a claim about which state's law governs a particular reference. The statutory citation here is to a sentence within the same Civil Code § 47(c) subsection cited in this document's other authority clauses, so it is not an independent statutory source. The case citation (Noel v. River Hills Wilsons, Inc.) was located and read via the CourtListener MCP server; its text was retrieved through two separate CourtListener tool calls (a full-document read and a chunked read of the same opinion), and its citation and published status were independently cross-checked against CourtListener's separate case-cluster metadata endpoint, which returned the same reporter citation (113 Cal.App.4th 1363) and \"Published\" status. Attempts to verify the opinion text against a source outside CourtListener's own database -- Justia (HTTP 403), CourtListener's own public website (blocked by an automated-traffic check, HTTP 202 with no body), and Google Scholar (blocked by this environment's outbound network policy) -- were made but did not succeed from this research environment; that limitation on source independence is disclosed honestly rather than concealed. The underlying facts of Noel involved a mistaken statement about the wrong former employee (a factual error in a background check, not a rehire question specifically); this document's own account above is limited to the legal standard the case actually announced, not an extension of its facts to every kind of employment-reference error.",
+      "citations": [
+        {
+          "case": "Cal. Civ. Code § 47(c) (California Legislative Information text)",
+          "cite": "California Civil Code",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=47.",
+          "quote": "This subdivision applies to and includes a communication concerning the job performance or qualifications of an applicant for employment, based upon credible evidence, made without malice, by a current or former employer of the applicant to, and upon request of, one whom the employer reasonably believes is a prospective employer of the applicant."
+        },
+        {
+          "case": "Noel v. River Hills Wilsons, Inc.",
+          "cite": "113 Cal. App. 4th 1363 (2003)",
+          "url": "https://www.courtlistener.com/opinion/2278467/noel-v-river-hills-wilsons-inc/",
+          "quote": "we hold that in including the “based on credible evidence” language in the 1994 amendment to section 47, subdivision (c), the Legislature did not intend to make the common-interest privilege inapplicable in the employment reference context on a showing of the defendant’s mere negligence."
+        }
+      ]
+    },
+    {
+      "id": "referenceimmunity_malice_standard",
+      "title": "What \"Without Malice\" Requires — Published Case Law",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-04",
+      "body": "Because § 47(c)'s privilege applies only \"without malice,\" a communication made with malice falls outside it. A California Court of Appeal decision addressing this exact statutory language in the employment-reference context described the malice needed to defeat the privilege as \"actual malice,\" established in either of two ways: a showing that the communication was motivated by hatred or ill will toward the person discussed, or a showing that the person making the communication lacked reasonable grounds for believing it true and therefore acted in reckless disregard of the other person's rights. The same body of California case law draws a further distinction: an honest mistake is not malice. Mere negligence -- an oversight, an unintentional error, or a careless mix-up -- is not by itself enough to establish malice; only negligence that rises to a reckless or wanton disregard for the truth, amounting to a willful disregard of or avoidance of accuracy, satisfies the standard.",
+      "gap": "This is California case law construing a California statute -- not a claim about which state's law governs a particular communication, and not a claim about how any specific California court would resolve a specific dispute. This clause closes a gap left open in this project's earlier, briefer treatment of § 47(c) (the Neutral Reference / Employment Verification Policy document's reference_qualified_privilege clause), whose own gap field disclosed that independent case law on what defeats this privilege had not been verified because CourtListener research was rate-limited during that document's drafting and was not pursued further. That research was repeated here: Noel v. River Hills Wilsons, Inc. (2003) 113 Cal.App.4th 1363 was located via the CourtListener MCP server's search tool, read via two separate CourtListener tool calls, and cross-checked against CourtListener's separate case-cluster metadata endpoint for its citation and published status; independent verification outside CourtListener's own database was attempted (Justia returned HTTP 403; CourtListener's public website returned an empty HTTP 202 behind an automated-traffic check; Google Scholar was blocked by this environment's outbound network policy) but did not succeed, so this remains, honestly, a single-database confirmation rather than two fully independent ones. Whether any particular communication was made with malice, or with only negligence, is a fact-specific question this document does not resolve for any individual's situation.",
+      "citations": [
+        {
+          "case": "Noel v. River Hills Wilsons, Inc.",
+          "cite": "113 Cal. App. 4th 1363, 1371 (2003)",
+          "url": "https://www.courtlistener.com/opinion/2278467/noel-v-river-hills-wilsons-inc/",
+          "quote": "The malice necessary to defeat a qualified privilege is “actual malice” which is established by a showing that the publication was motivated by hatred or ill will towards the plaintiff or by a showing that the defendant lacked reasonable grounds for belief in the truth of the publication and therefore acted in reckless disregard of the plaintiff’s rights"
+        },
+        {
+          "case": "Noel v. River Hills Wilsons, Inc. (quoting Roemer v. Retail Credit Co. (1970) 3 Cal.App.3d 368, 371-372)",
+          "cite": "113 Cal. App. 4th 1363, 1371 (2003)",
+          "url": "https://www.courtlistener.com/opinion/2278467/noel-v-river-hills-wilsons-inc/",
+          "quote": "mere negligence ... in the sense of oversight or unintentional error, is not alone enough to constitute malice. It is only when the negligence amounts to a reckless or wanton disregard for the truth, so as to reasonably imply a wilful disregard for or avoidance of accuracy, that malice is shown."
+        }
+      ]
+    },
+    {
+      "id": "referenceimmunity_rehire_and_harassment",
+      "title": "Rehire Questions and Sexual-Harassment-Related Communications",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-04",
+      "body": "The same statutory sentence adds two further, more specific protections. First, it lets a current or former employer, or the employer's agent, state -- without malice -- whether or not the employer would rehire a current or former employee, and whether a decision not to rehire is based on the employer's determination that the former employee engaged in sexual harassment. Second, and separately, the subdivision extends to a complaint of sexual harassment by an employee to an employer based upon credible evidence, and to communications between the employer and interested persons regarding such a complaint -- in both cases, only if made without malice. This second sentence is not limited to communications with a prospective employer; by its own terms it covers internal communications about a harassment complaint among the employer and other interested persons.",
+      "gap": "This is one state's statute, used as real evidence of what these specific sentences within § 47(c) do and do not protect -- not a claim about which state's law governs a particular disclosure. Both quoted sentences come from the same Civil Code § 47(c) subsection quoted in this document's other authority clauses, so they are not independent statutory sources of each other; this corrects and substantially expands on an earlier, briefer description of the rehire-related language in this project's Neutral Reference / Employment Verification Policy document, which quoted only the rehire sentence and did not separately address the harassment-complaint sentence quoted here. No published California case law specifically construing either of these two sentences (as opposed to the general job-performance-and-qualifications sentence addressed in this document's other clauses) was located or verified for this clause; the malice standard described in this document's companion clause on that subject was developed in a case addressing the job-performance-and-qualifications language, and this document does not claim that standard has been judicially applied to these two more specific sentences, even though both sentences use the same \"without malice\" language.",
+      "citations": [
+        {
+          "case": "Cal. Civ. Code § 47(c) (California Legislative Information text)",
+          "cite": "California Civil Code",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=47.",
+          "quote": "This subdivision authorizes a current or former employer, or the employer’s agent, to answer, without malice, whether or not the employer would rehire a current or former employee and whether the decision to not rehire is based upon the employer’s determination that the former employee engaged in sexual harassment."
+        },
+        {
+          "case": "Cal. Civ. Code § 47(c) (California Legislative Information text)",
+          "cite": "California Civil Code",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=47.",
+          "quote": "This subdivision applies to and includes a complaint of sexual harassment by an employee, without malice, to an employer based upon credible evidence and communications between the employer and interested persons, without malice, regarding a complaint of sexual harassment."
+        }
+      ]
+    },
+    {
+      "id": "referenceimmunity_protected_speech_carveout",
+      "title": "A Statutory Limit — Constitutionally Protected Speech or Activities",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-04",
+      "body": "The same subdivision also states an express limit on its own reach: it does not apply to a communication concerning the speech or activities of an applicant for employment if that speech or activity is constitutionally protected, or is otherwise protected by Code of Civil Procedure § 527.3 (California's statute concerning labor-related peaceful picketing and speech) or any other provision of law. This carve-out means the employment-reference privilege described in this document's other clauses is not unlimited by its own terms -- it does not extend to every communication about a job applicant's job performance or qualifications, but excludes, at minimum, communications concerning constitutionally protected speech or activity.",
+      "gap": "This is one state's statute, used as real evidence of an express textual limit on California's employment-reference privilege -- not a claim about which state's law governs a particular communication, and not a claim about the outer boundary of what counts as \"constitutionally protected\" speech or activity in this context, which the statute does not itself define. This quoted sentence comes from the same Civil Code § 47(c) subsection quoted in this document's other authority clauses, so it is not an independent statutory source. No published California case law specifically applying this carve-out in the employment-reference context was located or verified during this research; that absence is reported honestly rather than filled with an unverified case citation, consistent with the discipline this document otherwise applies to the malice case law addressed in its companion clauses.",
+      "citations": [
+        {
+          "case": "Cal. Civ. Code § 47(c) (California Legislative Information text)",
+          "cite": "California Civil Code",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=47.",
+          "quote": "This subdivision does not apply to a communication concerning the speech or activities of an applicant for employment if the speech or activities are constitutionally protected, or otherwise protected by Section 527.3 of the Code of Civil Procedure or any other provision of law."
+        }
+      ]
+    },
+    {
+      "id": "referenceimmunity_ack",
+      "title": "Acknowledgment",
+      "kind": "drafting",
+      "body": "This information sheet was prepared for reference regarding {{companyName}} and {{employeeName}} on {{dateSigned}}, at {{cityState}}. It states California statutory and case law as background information and is not legal advice about any particular communication, past or future.\n\n_______________________________________________\nPrepared by / on behalf of {{companyName}}\nDate: {{dateSigned}}"
     }
   ]
 }
