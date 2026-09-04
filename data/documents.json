@@ -20785,5 +20785,55 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "mandatory_child_custody_mediation_info_sheet",
+    "title": "Mandatory Child Custody Mediation — Information Sheet",
+    "description": "Describes California's mandatory mediation requirement for contested custody or visitation disputes under Family Code Chapter 11 (§§ 3160-3188): when mediation is required and its timing, the statute's own stated purposes, confidentiality of mediation communications, the mediator's availability, qualifications, and duties, the distinction between recommending and confidential mediation programs, and domestic-violence-specific mediation safeguards.",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "custodymediation_declaration",
+      "custodymediation_trigger",
+      "custodymediation_purpose",
+      "custodymediation_confidentiality",
+      "custodymediation_mediator_role",
+      "custodymediation_recommending_vs_confidential",
+      "custodymediation_domestic_violence_safeguards",
+      "custodymediation_acknowledgment"
+    ],
+    "fields": [
+      {
+        "id": "childName",
+        "label": "Child's Name",
+        "placeholder": "e.g., Alex Doe",
+        "required": true
+      },
+      {
+        "id": "parent1Name",
+        "label": "Parent 1 Name",
+        "placeholder": "e.g., Jane Doe",
+        "required": true
+      },
+      {
+        "id": "parent2Name",
+        "label": "Parent 2 Name",
+        "placeholder": "e.g., John Doe",
+        "required": true
+      },
+      {
+        "id": "countyOfFiling",
+        "label": "County of Filing",
+        "placeholder": "e.g., Los Angeles County",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date Signed",
+        "placeholder": "e.g., January 1, 2026",
+        "required": true
+      }
+    ]
   }
 ]
