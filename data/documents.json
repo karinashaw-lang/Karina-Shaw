@@ -18155,5 +18155,90 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "good_neighbor_fence_act_info_sheet",
+    "title": "Good Neighbor Fence Act — Information Sheet",
+    "description": "Explains California's Good Neighbor Fence Act (Civil Code § 841): the presumption that adjoining landowners share equally in the reasonable costs of a boundary fence's construction, maintenance, or replacement, the 30-day written notice a landowner must give before incurring those costs and its required content, the statutory factors a court considers to rebut the presumption, and what the statute does and does not provide if the landowners disagree. A separate statute from this project's Boundary Line Agreement document, which covers the different question of where a disputed boundary line is located.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "goodneighborfence_purpose",
+      "goodneighborfence_presumption",
+      "goodneighborfence_notice_requirement",
+      "goodneighborfence_rebuttal_factors",
+      "goodneighborfence_dispute_recourse",
+      "goodneighborfence_definitions",
+      "goodneighborfence_notice_and_signature"
+    ],
+    "fields": [
+      {
+        "id": "party1Name",
+        "label": "First landowner's full name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "party2Name",
+        "label": "Second (adjoining) landowner's full name",
+        "placeholder": "Morgan Casey",
+        "required": true
+      },
+      {
+        "id": "party1PropertyAddress",
+        "label": "First landowner's property address",
+        "placeholder": "123 Main St., Fresno, CA 93701",
+        "required": true
+      },
+      {
+        "id": "party2PropertyAddress",
+        "label": "Second landowner's property address",
+        "placeholder": "125 Main St., Fresno, CA 93701",
+        "required": true
+      },
+      {
+        "id": "fenceLocationDescription",
+        "label": "Description of the fence and its location",
+        "placeholder": "Wood fence along the rear property line",
+        "required": true
+      },
+      {
+        "id": "fenceProblemDescription",
+        "label": "Nature of the problem facing the shared fence",
+        "placeholder": "Fence panels rotted and leaning",
+        "required": true
+      },
+      {
+        "id": "proposedSolution",
+        "label": "Proposed solution",
+        "placeholder": "Replace with new 6-foot wood fence",
+        "required": true
+      },
+      {
+        "id": "estimatedCost",
+        "label": "Estimated construction or maintenance cost",
+        "placeholder": "$3,500",
+        "required": true
+      },
+      {
+        "id": "proposedCostSharing",
+        "label": "Proposed cost-sharing approach",
+        "placeholder": "Split equally, 50/50",
+        "required": true
+      },
+      {
+        "id": "proposedTimeline",
+        "label": "Proposed timeline for addressing the problem",
+        "placeholder": "Work to begin within 45 days of this notice",
+        "required": true
+      },
+      {
+        "id": "noticeDate",
+        "label": "Date of this notice",
+        "placeholder": "September 5, 2026",
+        "required": true
+      }
+    ]
   }
 ]
