@@ -16006,5 +16006,54 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "homestead_exemption_info_sheet",
+    "title": "California Homestead Exemption — Information Sheet",
+    "description": "Background information on California's automatic homestead exemption for a judgment debtor's principal residence (Code of Civ. Proc. sections 704.710-704.850) -- the statutory definitions of \"dwelling\" and \"homestead,\" the current exemption-amount formula (the greater of a countywide median-price-based figure capped at $600,000, or a $300,000 floor, both inflation-adjusted annually since 2022), how this automatic exemption is distinct from California's separate recorded \"declared homestead\" procedure, the forced-sale notice/minimum-bid mechanism, and the order of distribution of sale proceeds.",
+    "categories": [
+      "Estate Planning"
+    ],
+    "clauseOrder": [
+      "homestead_purpose",
+      "homestead_definitions",
+      "homestead_exemption_amount",
+      "homestead_automatic_vs_declared",
+      "homestead_forced_sale_mechanism",
+      "homestead_proceeds_distribution",
+      "homestead_signature_ack"
+    ],
+    "fields": [
+      {
+        "id": "homeownerName",
+        "label": "Homeowner's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "propertyAddress",
+        "label": "Property address",
+        "placeholder": "123 Main St, Apt 4, Springfield",
+        "required": true
+      },
+      {
+        "id": "county",
+        "label": "County",
+        "placeholder": "San Diego County",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityOfExecution",
+        "label": "City where signed",
+        "placeholder": "Sacramento",
+        "required": true
+      }
+    ]
   }
 ]
