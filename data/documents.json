@@ -20412,5 +20412,60 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "golden_parachute_excise_tax_info_sheet",
+    "title": "Golden Parachute Excise Tax — Information Sheet",
+    "description": "Explains the federal golden parachute excise tax rules (26 U.S.C. §§ 280G, 4999): what a \"parachute payment\" is (compensation contingent on a change in corporate ownership or control), the \"disqualified individual\" definition, the 3-times-base-amount threshold, the two consequences once that threshold is crossed (denial of the employer's tax deduction and a 20% federal excise tax on the recipient), and the shareholder-approval exception available to certain corporations whose stock is not publicly traded. This is federal tax law with no California-specific analog. Distinct from the corpus's existing Deferred Compensation/Equity Vesting and 401(k) Distribution Notice documents, which cover different termination-stage compensation topics.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "goldenparachute_declaration_and_scope",
+      "goldenparachute_parachute_payment_defined",
+      "goldenparachute_disqualified_individual_defined",
+      "goldenparachute_three_times_base_amount_threshold",
+      "goldenparachute_deduction_denial_and_excise_tax",
+      "goldenparachute_shareholder_approval_exception",
+      "goldenparachute_status_declaration_and_signature"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme Corp.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "changeInControlDate",
+        "label": "Date of the change in ownership or control",
+        "placeholder": "September 4, 2026",
+        "required": true
+      },
+      {
+        "id": "aggregateParachutePaymentAmount",
+        "label": "Aggregate present value of contingent payments (as currently estimated)",
+        "placeholder": "$750,000",
+        "required": false
+      },
+      {
+        "id": "baseAmount",
+        "label": "Base amount (annualized includible compensation for the 5-year base period), if known",
+        "placeholder": "$180,000",
+        "required": false
+      },
+      {
+        "id": "effectiveDate",
+        "label": "Date of this statement",
+        "placeholder": "September 4, 2026",
+        "required": true
+      }
+    ]
   }
 ]

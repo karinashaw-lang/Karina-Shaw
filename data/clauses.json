@@ -55489,6 +55489,139 @@
       "title": "Acknowledgment",
       "kind": "drafting",
       "body": "Please sign below to acknowledge this leave request and the terms above.\n\nEmployee: {{employeeName}}\nDate: _______________"
+    },
+    {
+      "id": "goldenparachute_declaration_and_scope",
+      "title": "Declaration and Scope of This Golden Parachute Excise Tax Information Sheet",
+      "kind": "drafting",
+      "body": "This Golden Parachute Excise Tax Information Sheet is prepared with respect to compensation paid or payable to {{employeeName}} by {{companyName}} in connection with a change in ownership or control of {{companyName}} occurring on or about {{changeInControlDate}}. It describes what federal tax law, at 26 U.S.C. §§ 280G and 4999, calls a \"parachute payment\": compensation contingent on a change in control that, in the aggregate, equals or exceeds three times an individual's base amount. It states the two separate federal tax consequences the statute attaches once that threshold is crossed — loss of {{companyName}}'s federal income tax deduction for the excess portion, and a 20% federal excise tax owed by {{employeeName}} on that same excess portion, in addition to regular federal income tax — and the shareholder-approval exception available to certain corporations whose stock is not publicly traded. This document states facts about how federal tax law defines and treats parachute payments in general; it does not calculate {{employeeName}}'s base amount, determine whether any specific payment is or is not a parachute payment, or state what {{employeeName}} or {{companyName}} should do about their situation."
+    },
+    {
+      "id": "goldenparachute_parachute_payment_defined",
+      "title": "\"Parachute Payment\" Defined: Compensation Contingent on a Change in Control",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-04",
+      "body": "Federal tax law defines a “parachute payment,” for purposes of the golden parachute excise tax rules, as any payment in the nature of compensation to or for the benefit of a “disqualified individual” that meets two conditions: the payment must be contingent on a change in the ownership or effective control of the corporation, or in the ownership of a substantial portion of the corporation's assets, and the aggregate present value of all such contingent payments to that individual must equal or exceed a threshold tied to the individual's base amount. A separate provision of the same statute also treats certain payments made pursuant to an agreement entered into within one year before the change in control as presumptively contingent on that change, unless the contrary is established by clear and convincing evidence.",
+      "gap": "This clause and the goldenparachute_three_times_base_amount_threshold clause both cite subdivisions of the same statutory section, 26 U.S.C. § 280G(b)(2) — they are not independent sources of each other. This clause states only the general definitional test in § 280G(b)(2)(A); it does not cover the separate statutory inclusion for payments made in violation of securities laws (§ 280G(b)(2)(B)), the one-year-agreement presumption's exact operation (§ 280G(b)(2)(C)), or the exemptions for reasonable compensation, small business corporations, or qualified retirement plans (§ 280G(b)(4)-(6)), each of which can remove a payment from “parachute payment” treatment even where this general test is met. It does not determine whether any specific payment to the individual named in this document meets this definition.",
+      "citations": [
+        {
+          "case": "26 U.S.C. § 280G(b)(2)(A) (Golden parachute payments — parachute payment defined)",
+          "cite": "26 U.S.C. § 280G(b)(2)(A)",
+          "url": "https://www.law.cornell.edu/uscode/text/26/280G",
+          "quote": "The term “ parachute payment ” means any payment in the nature of compensation to (or for the benefit of) a disqualified individual if—"
+        },
+        {
+          "case": "26 U.S.C. § 280G(b)(2)(A)(i) (Golden parachute payments — change in control condition)",
+          "cite": "26 U.S.C. § 280G(b)(2)(A)(i)",
+          "url": "https://www.law.cornell.edu/uscode/text/26/280G",
+          "quote": "such payment is contingent on a change— (I) in the ownership or effective control of the corporation, or (II) in the ownership of a substantial portion of the assets of the corporation, and"
+        }
+      ]
+    },
+    {
+      "id": "goldenparachute_disqualified_individual_defined",
+      "title": "\"Disqualified Individual\" Defined",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-04",
+      "body": "The golden parachute excise tax rules apply only to payments to a “disqualified individual.” Federal tax law defines that term as an employee, independent contractor, or other person specified in regulations who performs personal services for a corporation, and who is an officer, a shareholder, or a “highly-compensated individual” of that corporation. The statute further limits “highly-compensated individual” to a person who is (or would be, if an employee) among the highest-paid 1 percent of the corporation's employees, or the highest-paid 250 employees if that number is smaller.",
+      "gap": "This clause covers only the general definition in 26 U.S.C. § 280G(c); it does not address the statute's separate treatment of personal service corporations as individuals, or of members of an affiliated group as a single corporation for these purposes (§ 280G(d)(5)), and it does not determine whether the individual named in this document in fact qualifies as an officer, shareholder, or highly-compensated individual of the corporation named in this document.",
+      "citations": [
+        {
+          "case": "26 U.S.C. § 280G(c) (Golden parachute payments — disqualified individuals)",
+          "cite": "26 U.S.C. § 280G(c)",
+          "url": "https://www.law.cornell.edu/uscode/text/26/280G",
+          "quote": "an employee, independent contractor, or other person specified in regulations by the Secretary who performs personal services for any corporation, and"
+        },
+        {
+          "case": "26 U.S.C. § 280G(c)(2) (Golden parachute payments — disqualified individual, officer/shareholder/highly-compensated)",
+          "cite": "26 U.S.C. § 280G(c)(2)",
+          "url": "https://www.law.cornell.edu/uscode/text/26/280G",
+          "quote": "is an officer, shareholder, or highly-compensated individual"
+        }
+      ]
+    },
+    {
+      "id": "goldenparachute_three_times_base_amount_threshold",
+      "title": "The 3-Times-Base-Amount Threshold",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-04",
+      "body": "A payment is treated as a parachute payment only if the aggregate present value of all payments in the nature of compensation to the disqualified individual that are contingent on the change in control equals or exceeds an amount equal to three times the individual's “base amount.” Federal tax law defines “base amount” as the individual's annualized includible compensation for the base period, which the statute separately defines as the individual's average annual compensation includible in gross income over the most recent five taxable years ending before the change in control (or the portion of that period during which the individual performed services for the corporation).",
+      "gap": "This clause and the goldenparachute_parachute_payment_defined clause both cite subdivisions of the same statutory section, 26 U.S.C. § 280G(b) — they are not independent sources of each other. This clause states the 3-times-base-amount threshold and the base-amount definition itself; it does not cover the statute's present-value discount-rate rule (§ 280G(b)(4), applying a rate equal to 120 percent of the applicable federal rate), the rules for allocating base amount across multiple payments (§ 280G(b)(3)(B)), or the base period's own special rules (§ 280G(d)(1)-(2)). It does not calculate the base amount of the individual named in this document, or state whether any payment amount stated in this document in fact equals or exceeds three times it.",
+      "citations": [
+        {
+          "case": "26 U.S.C. § 280G(b)(2)(A)(ii) (Golden parachute payments — 3-times-base-amount threshold)",
+          "cite": "26 U.S.C. § 280G(b)(2)(A)(ii)",
+          "url": "https://www.law.cornell.edu/uscode/text/26/280G",
+          "quote": "the aggregate present value of the payments in the nature of compensation to (or for the benefit of) such individual which are contingent on such change equals or exceeds an amount equal to 3 times the base amount"
+        },
+        {
+          "case": "26 U.S.C. § 280G(b)(3)(A) (Golden parachute payments — base amount defined)",
+          "cite": "26 U.S.C. § 280G(b)(3)(A)",
+          "url": "https://www.law.cornell.edu/uscode/text/26/280G",
+          "quote": "The term “ base amount ” means the individual’s annualized includible compensation for the base period ."
+        }
+      ]
+    },
+    {
+      "id": "goldenparachute_deduction_denial_and_excise_tax",
+      "title": "The Two Consequences: No Employer Deduction, and a 20% Employee Excise Tax",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-04",
+      "body": "Once a payment is an “excess parachute payment” — generally, the portion of a parachute payment above the share of the base amount allocated to it — federal tax law imposes two separate consequences. First, the paying corporation may not deduct the excess parachute payment as a business expense: no deduction is allowed under the relevant chapter of the Internal Revenue Code for any excess parachute payment. Second, and independently, the individual who receives the excess parachute payment owes a federal excise tax equal to 20 percent of the amount of that payment, imposed in addition to the individual's regular federal income tax on the same amount. The statute defines “excess parachute payment,” for purposes of this 20 percent excise tax, by cross-reference to the deduction-denial section's own definition of that term.",
+      "gap": "This clause cites two genuinely independent sections of the Internal Revenue Code: 26 U.S.C. § 280G(a), which denies the employer's deduction, and 26 U.S.C. § 4999(a) and (b), which impose the employee's excise tax and define its base by cross-reference to § 280G(b). It does not restate § 280G(b)'s own definition of “excess parachute payment” (covered in the goldenparachute_three_times_base_amount_threshold clause) and does not cover § 4999(c)'s separate withholding rule for excess parachute payments that are wages, or how the 20 percent excise tax interacts with any other federal or state tax owed on the same income. It does not state whether any payment amount stated in this document is in fact an excess parachute payment.",
+      "citations": [
+        {
+          "case": "26 U.S.C. § 280G(a) (Golden parachute payments — general rule, no deduction)",
+          "cite": "26 U.S.C. § 280G(a)",
+          "url": "https://www.law.cornell.edu/uscode/text/26/280G",
+          "quote": "No deduction shall be allowed under this chapter for any excess parachute payment ."
+        },
+        {
+          "case": "26 U.S.C. § 4999(a) (Golden parachute payments — imposition of 20% excise tax)",
+          "cite": "26 U.S.C. § 4999(a)",
+          "url": "https://www.law.cornell.edu/uscode/text/26/4999",
+          "quote": "There is hereby imposed on any person who receives an excess parachute payment a tax equal to 20 percent of the amount of such payment."
+        },
+        {
+          "case": "26 U.S.C. § 4999(b) (Golden parachute payments — excess parachute payment defined by cross-reference)",
+          "cite": "26 U.S.C. § 4999(b)",
+          "url": "https://www.law.cornell.edu/uscode/text/26/4999",
+          "quote": "the term “ excess parachute payment ” has the meaning given to such term by section 280G(b)."
+        }
+      ]
+    },
+    {
+      "id": "goldenparachute_shareholder_approval_exception",
+      "title": "Shareholder-Approval Exception for Certain Closely-Held Corporations",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-04",
+      "body": "Federal tax law excludes certain payments from “parachute payment” treatment altogether for corporations whose stock is not publicly traded. Where, immediately before the change in control, no stock in the corporation was readily tradeable on an established securities market or otherwise, a payment to a disqualified individual falls outside the parachute-payment rules if the corporation's shareholders approve it under the statute's shareholder approval requirements. Those requirements are met if the payment was approved by a vote of the persons who owned, immediately before the change in control, more than 75 percent of the voting power of all outstanding stock of the corporation, and if there was adequate disclosure to shareholders of all material facts concerning all payments that would, but for this exception, be parachute payments to that disqualified individual.",
+      "gap": "This clause cites subdivisions of the same statutory section as the other clauses in this document, 26 U.S.C. § 280G(b)(5) — it is not an independent source of them. It covers only the closely-held-corporation branch of the exception in § 280G(b)(5)(A)(ii)-(B); it does not cover the separate, unconditional exemption for small business corporations under § 280G(b)(5)(A)(i) (corporations meeting the S corporation ownership-and-structure requirements of § 1361(b)), the Treasury regulatory authority referenced in § 280G(b)(5)(A) to disregard certain indirect public tradeability, or the qualified-plan exemption in § 280G(b)(6). It does not determine whether the corporation named in this document's stock was, in fact, readily tradeable on an established securities market immediately before the change in control described in this document, or whether any shareholder vote meeting these requirements actually occurred.",
+      "citations": [
+        {
+          "case": "26 U.S.C. § 280G(b)(5)(A)(ii) (Golden parachute payments — exemption condition, no readily tradeable stock)",
+          "cite": "26 U.S.C. § 280G(b)(5)(A)(ii)",
+          "url": "https://www.law.cornell.edu/uscode/text/26/280G",
+          "quote": "immediately before the change described in paragraph (2)(A)(i), no stock in such corporation was readily tradeable on an established securities market or otherwise, and"
+        },
+        {
+          "case": "26 U.S.C. § 280G(b)(5)(B) (Golden parachute payments — shareholder approval requirements)",
+          "cite": "26 U.S.C. § 280G(b)(5)(B)",
+          "url": "https://www.law.cornell.edu/uscode/text/26/280G",
+          "quote": "such payment was approved by a vote of the persons who owned, immediately before the change described in paragraph (2)(A)(i), more than 75 percent of the voting power of all outstanding stock of the corporation, and"
+        }
+      ]
+    },
+    {
+      "id": "goldenparachute_status_declaration_and_signature",
+      "title": "Statement of Golden Parachute Payment Facts and Signature",
+      "kind": "drafting",
+      "body": "{{employeeName}} identifies the following facts concerning compensation from {{companyName}} contingent on the change in ownership or control described in this document:\n\nDate of the change in ownership or control: {{changeInControlDate}}\n\nAggregate present value of payments to {{employeeName}} contingent on that change, as currently estimated: {{aggregateParachutePaymentAmount}}\n\n{{employeeName}}'s base amount (annualized includible compensation for the 5-year base period), as currently estimated, if known: {{baseAmount}}\n\nThis statement records {{employeeName}}'s current understanding of these facts as of {{effectiveDate}}. It is not a determination by {{companyName}}, the Internal Revenue Service, or any court of whether any payment identified above is a parachute payment, an excess parachute payment, or subject to the shareholder-approval exception, and it does not modify the terms of any agreement under which the payments described above are made.\n\nSignature: ☐ _________________________ Date: _______________\n\n{{employeeName}}"
     }
   ]
 }
