@@ -19467,5 +19467,41 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "motion_picture_broadcasting_final_wage_info_sheet",
+    "title": "Motion Picture and Broadcasting Industry Final-Wage Timing (Labor Code § 201.5) — Information Sheet",
+    "description": "Explains, using the statute's own text, California's distinct final-wage timing rule for employees engaged in the production or broadcasting of motion pictures (Labor Code § 201.5): the statute's own two-part definition of covered work and workers, the next-regular-payday due date (a different trigger from the general immediate-on-discharge and 72-hour-on-quit rules), the mailing/on-site-availability payment option, the broad definition of 'terminates' (covering resignation and specified-term expiration, not just discharge), the collective bargaining agreement carve-out, and the Section 203 waiting-time penalty cross-reference.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "indfinalwage_declaration",
+      "indfinalwage_worker_definition",
+      "indfinalwage_next_payday_rule",
+      "indfinalwage_mailing_and_termination_definition",
+      "indfinalwage_cba_carveout",
+      "indfinalwage_penalty_crossref"
+    ],
+    "fields": [
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme Productions, Inc.",
+        "required": true
+      },
+      {
+        "id": "terminationDate",
+        "label": "Termination date",
+        "placeholder": "October 1, 2026",
+        "required": true
+      }
+    ]
   }
 ]
