@@ -18439,5 +18439,36 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "warehouse_quota_law_info_sheet",
+    "title": "California Warehouse Quota Law — Information Sheet",
+    "description": "Explains California's warehouse quota law (Labor Code §§ 2100-2112, AB 701): the employee-count and NAICS-code coverage threshold for a \"warehouse distribution center employer,\" the written quota disclosure requirement, the prohibition on a quota that prevents meal/rest compliance or bathroom use, the employee's conditional right to request quota and personal work-speed data, and the rebuttable presumption of retaliation.",
+    "categories": [
+      "During employment"
+    ],
+    "clauseOrder": [
+      "warehousequota_intro",
+      "warehousequota_scope",
+      "warehousequota_disclosure_requirement",
+      "warehousequota_meal_rest_bathroom_limit",
+      "warehousequota_employee_data_request_right",
+      "warehousequota_retaliation_presumption",
+      "warehousequota_acknowledgment"
+    ],
+    "fields": [
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme Distribution, Inc.",
+        "required": true
+      }
+    ]
   }
 ]
