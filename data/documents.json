@@ -20380,5 +20380,37 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "organ_bone_marrow_donor_leave_info_sheet",
+    "title": "Organ and Bone Marrow Donor Leave — Information Sheet",
+    "description": "Explains California's Michelle Maykin Memorial Donation Protection Act (Labor Code §§ 1508-1513): the 15-or-more-employee coverage threshold, the 30-business-day paid organ-donation leave and 5-business-day paid bone-marrow-donation leave, the additional 30-business-day unpaid organ-donation leave, the written-verification/medical-necessity condition and the employer's option to require use of accrued paid leave first, the rule against running this leave concurrently with FMLA or CFRA leave, reinstatement rights, and the interference/anti-retaliation prohibitions. Distinct from the corpus's existing FMLA and CFRA documents, which cover different leave entitlements with different coverage thresholds.",
+    "categories": [
+      "During employment"
+    ],
+    "clauseOrder": [
+      "organdonorleave_request_details",
+      "organdonorleave_coverage",
+      "organdonorleave_entitlement",
+      "organdonorleave_certification",
+      "organdonorleave_no_concurrent",
+      "organdonorleave_reinstatement",
+      "organdonorleave_antiretaliation",
+      "organdonorleave_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme Corp.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      }
+    ]
   }
 ]
