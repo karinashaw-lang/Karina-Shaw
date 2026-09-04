@@ -19223,5 +19223,85 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "california_limited_partnership_formation_info_sheet",
+    "title": "California Limited Partnership Formation — Information Sheet",
+    "description": "Explains, using the statutes' own text, California's Uniform Limited Partnership Act of 2008 (Corp. Code §§ 15900-15912.07): formation by filing a Certificate of Limited Partnership with the Secretary of State (and the required certificate content), the naming requirement, the structural agency distinction between general partners and limited partners, the limited partner liability shield and its exceptions, and a general partner's own joint-and-several liability rule and before-admission carve-out. Distinct from this project's General Partnership Agreement (general partnerships, a different entity type and statute) and Charging Order (LLC creditor remedies) documents.",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "lpform_formation_statement",
+      "lpform_certificate_particulars",
+      "lpform_formation_certificate",
+      "lpform_name_requirement",
+      "lpform_gp_lp_distinction",
+      "lpform_lp_liability_shield",
+      "lpform_gp_liability",
+      "lpform_ack"
+    ],
+    "fields": [
+      {
+        "id": "partnershipName",
+        "label": "Limited partnership's name",
+        "placeholder": "Acme Ventures, LP",
+        "required": true
+      },
+      {
+        "id": "filingDate",
+        "label": "Certificate filing date",
+        "placeholder": "September 5, 2026",
+        "required": true
+      },
+      {
+        "id": "principalOfficeAddress",
+        "label": "Principal office address",
+        "placeholder": "123 Main St., Sacramento, CA 95814",
+        "required": true
+      },
+      {
+        "id": "agentName",
+        "label": "Agent for service of process's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "agentAddress",
+        "label": "Agent for service of process's address",
+        "placeholder": "456 Oak Ave., Sacramento, CA 95814",
+        "required": true
+      },
+      {
+        "id": "generalPartnerName",
+        "label": "General partner's name",
+        "placeholder": "Casey Alex",
+        "required": true
+      },
+      {
+        "id": "generalPartnerAddress",
+        "label": "General partner's address",
+        "placeholder": "789 Pine St., Sacramento, CA 95814",
+        "required": true
+      },
+      {
+        "id": "authorizedSignerName",
+        "label": "Authorized signer's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 5, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Sacramento, California",
+        "required": true
+      }
+    ]
   }
 ]
