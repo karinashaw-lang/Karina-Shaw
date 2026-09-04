@@ -16618,5 +16618,55 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "unclaimed_final_wages_info_sheet",
+    "title": "Unclaimed Final Wages — Information Sheet",
+    "description": "Explains California's Unclaimed Property Law (Code of Civil Procedure § 1500 et seq.) as it applies to final wages an employer has been unable to deliver — a companion to this corpus's Final Paycheck Delivery Method and Location document, which addresses delivery when the employer knows where to send the paycheck: the one-year dormancy period specific to wages (shorter than the general three-year rule), the pre-report notice requirement and its $50 threshold, the annual reporting deadline to the State Controller, the deadline for remitting escheated wages, the holder's discharge from liability and the former employee's later claims process, and the interest penalty for late reporting or remittance.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "unclaimedwages_declaration",
+      "unclaimedwages_dormancy_period",
+      "unclaimedwages_prereport_notice",
+      "unclaimedwages_reporting_deadline",
+      "unclaimedwages_remittance_deadline",
+      "unclaimedwages_discharge_and_claim",
+      "unclaimedwages_penalty_interest",
+      "unclaimedwages_recordkeeping_worksheet"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "terminationDate",
+        "label": "Termination date",
+        "placeholder": "September 30, 2026",
+        "required": true
+      },
+      {
+        "id": "unpaidWagesAmount",
+        "label": "Unpaid wages amount",
+        "placeholder": "$3,200.00",
+        "required": true
+      },
+      {
+        "id": "employeeAddress",
+        "label": "Employee's address",
+        "placeholder": "500 Market St, San Francisco, CA 94105",
+        "required": true
+      }
+    ]
   }
 ]
