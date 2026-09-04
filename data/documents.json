@@ -16891,5 +16891,35 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "social_media_password_protection_info_sheet",
+    "title": "Employee/Applicant Social Media Password Protection — Information Sheet",
+    "description": "Explains California Labor Code § 980, which restricts an employer's ability to require or request access to an employee's or applicant's personal social media — distinct from this corpus's general employee monitoring content, which addresses employer-owned systems and equipment rather than an employee's personal accounts. Covers the statute's broad definition of \"social media\" and its three-item prohibition list, the exception for misconduct or legal-violation investigations, the separate exception for employer-issued devices, and the retaliation protection with its \"otherwise permitted by law\" limit.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "socialmediapw_purpose",
+      "socialmediapw_prohibition",
+      "socialmediapw_investigation_exception",
+      "socialmediapw_device_exception",
+      "socialmediapw_retaliation",
+      "socialmediapw_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      }
+    ]
   }
 ]
