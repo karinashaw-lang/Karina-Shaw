@@ -18240,5 +18240,65 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "special_administrator_info_sheet",
+    "title": "Special Administrator of a Decedent's Estate — Information Sheet",
+    "description": "Explains California's special administrator process (Probate Code §§ 8540-8547): when a court may appoint a special administrator to protect a decedent's estate on a temporary, emergency basis before a general personal representative is appointed, that notice is discretionary rather than mandatory, the default (limited) scope of a special administrator's powers versus the broader powers a court may separately grant, and how and when the appointment terminates. Distinct from this project's Petition for Probate document, which covers the regular personal representative appointment process.",
+    "categories": [
+      "Estate Planning"
+    ],
+    "clauseOrder": [
+      "specialadmin_intro",
+      "specialadmin_grounds",
+      "specialadmin_ex_parte",
+      "specialadmin_powers_scope",
+      "specialadmin_termination",
+      "specialadmin_signature"
+    ],
+    "fields": [
+      {
+        "id": "decedentName",
+        "label": "Decedent's name",
+        "placeholder": "Pat Morgan Rivera",
+        "required": true
+      },
+      {
+        "id": "dateOfDeath",
+        "label": "Date of death",
+        "placeholder": "August 12, 2026",
+        "required": true
+      },
+      {
+        "id": "emergencyCircumstances",
+        "label": "Circumstances requiring immediate protection of the estate",
+        "placeholder": "Perishable inventory in a decedent-owned business requires immediate management",
+        "required": true
+      },
+      {
+        "id": "petitionerName",
+        "label": "Person proposed for appointment as special administrator",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "countyOfFiling",
+        "label": "County of filing",
+        "placeholder": "Alameda County",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 5, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
