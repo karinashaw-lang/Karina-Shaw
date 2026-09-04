@@ -15564,5 +15564,68 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "retirement_benefits_division_qdro_info_sheet",
+    "title": "Division of Retirement Benefits in Divorce and QDROs — Information Sheet",
+    "description": "Background information on how retirement benefits are divided in a California dissolution -- the court's authority under Family Code section 2610 to ensure each party's full community property share, the separate statutory mechanism for public/governmental retirement systems, the limits on a court's division orders, and the federal ERISA mechanism (a qualified domestic relations order, or QDRO) used to divide a private-sector plan, including what an order must contain to qualify and the plan administrator's own separate determination process.",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "qdro_declaration",
+      "qdro_ca_retirement_division_authority",
+      "qdro_ca_public_plan_specific_statutes",
+      "qdro_ca_retirement_division_limits",
+      "qdro_erisa_antialienation_and_exception",
+      "qdro_erisa_qdro_definition_and_contents",
+      "qdro_erisa_governmental_plan_exclusion",
+      "qdro_erisa_administrator_determination",
+      "qdro_worksheet_signature"
+    ],
+    "fields": [
+      {
+        "id": "party1Name",
+        "label": "First party's full legal name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "party2Name",
+        "label": "Second party's full legal name",
+        "placeholder": "Morgan Casey Lee",
+        "required": true
+      },
+      {
+        "id": "marriageDate",
+        "label": "Date of marriage",
+        "placeholder": "June 14, 2015",
+        "required": true
+      },
+      {
+        "id": "separationDate",
+        "label": "Date of separation",
+        "placeholder": "March 2, 2026",
+        "required": true
+      },
+      {
+        "id": "planName",
+        "label": "Retirement plan name",
+        "placeholder": "Acme, Inc. 401(k) Plan",
+        "required": true
+      },
+      {
+        "id": "planAdministratorName",
+        "label": "Plan administrator name (if known)",
+        "placeholder": "Acme, Inc. Benefits Department",
+        "required": false
+      },
+      {
+        "id": "employerName",
+        "label": "Employer sponsoring the plan (if known)",
+        "placeholder": "Acme, Inc.",
+        "required": false
+      }
+    ]
   }
 ]
