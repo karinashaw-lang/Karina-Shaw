@@ -17913,5 +17913,53 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "coogan_law_trust_account_info_sheet",
+    "title": "Coogan Law Trust Account (Minor's Entertainment Earnings) — Information Sheet",
+    "description": "Explains California's \"Coogan Law\" (Family Code §§ 6750-6753): which contracts between a minor and a third party trigger the 15% gross-earnings set-aside, that court approval of the contract is not what triggers the requirement, the meaning of \"gross earnings,\" the Coogan Trust Account's required characteristics and blocked status until age 18 or emancipation, and the consequence — forwarding to The Actors' Fund of America — if no trustee's statement is provided within 180 days.",
+    "categories": [
+      "Hiring"
+    ],
+    "clauseOrder": [
+      "coogan_purpose",
+      "coogan_trigger",
+      "coogan_percentage_and_gross_earnings",
+      "coogan_trust_account_requirements",
+      "coogan_noncompliance_consequence",
+      "coogan_acknowledgment"
+    ],
+    "fields": [
+      {
+        "id": "minorName",
+        "label": "Minor's name",
+        "placeholder": "Riley Morgan Lee",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Employer name",
+        "placeholder": "Acme Productions, Inc.",
+        "required": true
+      },
+      {
+        "id": "parentGuardianName",
+        "label": "Parent or legal guardian's name",
+        "placeholder": "Morgan Lee",
+        "required": true
+      },
+      {
+        "id": "trusteeName",
+        "label": "Proposed trustee of the Coogan Trust Account",
+        "placeholder": "Morgan Lee",
+        "required": false
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 4, 2026",
+        "required": true
+      }
+    ]
   }
 ]
