@@ -18909,5 +18909,42 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "structural_pest_control_report_info_sheet",
+    "title": "Structural Pest Control Inspection Report — Information Sheet",
+    "description": "Explains, using the statutes' own text, California's structural pest control ('wood destroying pests or organisms') inspection report requirements: the Civil Code § 1099 delivery trigger (conditional on certification/report being a condition of the contract or financing, not universal), the Business and Professions Code § 8516 licensing and 10-business-day timing requirements, the statute's own distinction between evident infestation and conditions likely to lead to infestation, the § 8519 optional certification and its statutory 'no infestation' text, and the § 8517/§ 8518 requirements that later correspondence reference the report and that completed work be noticed.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "pestreport_declaration",
+      "pestreport_delivery_trigger",
+      "pestreport_inspection_licensing_and_timing",
+      "pestreport_section1_section2_distinction",
+      "pestreport_certification",
+      "pestreport_correspondence_and_completion_notice",
+      "pestreport_ack"
+    ],
+    "fields": [
+      {
+        "id": "propertyAddress",
+        "label": "Property address",
+        "placeholder": "123 Main St., Sacramento, CA 95814",
+        "required": true
+      },
+      {
+        "id": "sellerName",
+        "label": "Seller's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "buyerName",
+        "label": "Buyer's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      }
+    ]
   }
 ]
