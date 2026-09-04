@@ -10989,7 +10989,7 @@
   {
     "id": "final_paycheck_delivery_method_info_sheet",
     "title": "Final Paycheck Delivery Method and Location — Information Sheet",
-    "description": "Explains the mechanics of how and where final wages must be delivered under California law -- distinct from the corpus's existing Waiting-Time Penalty Demand Letter document, which covers when final wages are due and the penalty for late payment. Covers the Lab. Code §208 place-of-payment rule for discharge vs. quitting, the §202(a) mailing option for a no-notice quit and its effect on the payment date, a narrow §201(a) mailing right for seasonal perishable-food-industry group layoffs, §213(d)'s conditions on direct deposit of final wages, and confirmation that the itemized wage statement requirement is not excused for a final paycheck.",
+    "description": "Explains the mechanics of how and where final wages must be delivered under California law -- distinct from the corpus's existing Waiting-Time Penalty Demand Letter document, which covers when final wages are due and the penalty for late payment. Covers the Lab. Code §208 place-of-payment rule for discharge vs. quitting, the §202(a) mailing option for a no-notice quit and its effect on the payment date, a narrow §201(a) mailing right for seasonal perishable-food-industry group layoffs, §213(d)'s conditions on direct deposit of final wages, and confirmation that the itemized wage statement requirement is not excused for a final paycheck. Also covers Labor Code § 201.3's special final-wage timing rules for temporary services (staffing agency) employees, distinct from the general §§ 201/202 rules.",
     "categories": [
       "Ending employment"
     ],
@@ -10999,6 +10999,12 @@
       "finalpaydelivery_mailing_option",
       "finalpaydelivery_direct_deposit",
       "finalpaydelivery_wage_statement_still_applies",
+      "tempsvcfinal_declaration",
+      "tempsvcfinal_definition",
+      "tempsvcfinal_general_weekly_rule",
+      "tempsvcfinal_daily_pay_exceptions",
+      "tempsvcfinal_discharge_quit_fallback",
+      "tempsvcfinal_90day_exception_and_savings",
       "finalpaydelivery_ack"
     ],
     "fields": [
@@ -11041,6 +11047,18 @@
       {
         "id": "mailingDate",
         "label": "Mailing date (if applicable)",
+        "placeholder": "October 1, 2026",
+        "required": false
+      },
+      {
+        "id": "clientCompanyName",
+        "label": "Client company name (for temporary services employees)",
+        "placeholder": "Client Corp",
+        "required": false
+      },
+      {
+        "id": "assignmentEndDate",
+        "label": "Assignment end date (for temporary services employees)",
         "placeholder": "October 1, 2026",
         "required": false
       }
