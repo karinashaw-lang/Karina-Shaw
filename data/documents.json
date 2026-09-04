@@ -19352,5 +19352,66 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "notice_to_alleged_father_adoption_info_sheet",
+    "title": "Notice to an Alleged Father in an Adoption Proceeding — Information Sheet",
+    "description": "Explains, using the statutes' own text, California's process for identifying and giving notice to an alleged father in an adoption proceeding under Family Code §§ 7660-7671. Corrects a common assumption: unlike a number of other states, California does not maintain a centralized, self-registration 'putative father registry.' Instead, the court and a state or county agency (the State Department of Social Services, per § 7663(a)(1)) have an affirmative duty to search for and identify an alleged father, then serve him actual notice with a 30-day statutory response window. Covers the mandatory inquiry, notice and the 30-day deadline, the alleged father's own voluntary waiver/denial mechanism, and what happens when no alleged father can be identified at all, including the 45-day hearing deadline.",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "putfatherreg_declaration",
+      "putfatherreg_no_formal_registry",
+      "putfatherreg_mandatory_inquiry",
+      "putfatherreg_notice_and_response_deadline",
+      "putfatherreg_voluntary_waiver",
+      "putfatherreg_unidentified_father_and_hearing_timing",
+      "putfatherreg_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "childName",
+        "label": "Child's name",
+        "placeholder": "Riley Lee",
+        "required": true
+      },
+      {
+        "id": "childDOB",
+        "label": "Child's date of birth",
+        "placeholder": "May 3, 2025",
+        "required": true
+      },
+      {
+        "id": "allegedParentName",
+        "label": "Alleged father's name",
+        "placeholder": "Casey Alex",
+        "required": true
+      },
+      {
+        "id": "birthParentName",
+        "label": "Birth parent's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "countyOfFiling",
+        "label": "County of filing",
+        "placeholder": "Sacramento County",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 5, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Sacramento, California",
+        "required": true
+      }
+    ]
   }
 ]
