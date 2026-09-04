@@ -15462,5 +15462,53 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "name_availability_reservation_info_sheet",
+    "title": "Name Availability and Reservation — Information Sheet",
+    "description": "Background information on California's statutory distinguishable-name standard for corporations and limited liability companies (Corp. Code §§ 201, 17701.08), the procedure and 60-day duration for reserving a proposed name with the Secretary of State before filing formation documents, restricted words requiring separate regulatory approval or barred outright, and the statutory injunction remedy for a name that turns out not to have been distinguishable.",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "namereserve_declaration",
+      "namereserve_distinguishable",
+      "namereserve_reservation_procedure",
+      "namereserve_restricted_words",
+      "namereserve_consequences",
+      "namereserve_request_record"
+    ],
+    "fields": [
+      {
+        "id": "proposedName",
+        "label": "Proposed entity name",
+        "placeholder": "Meridian Ventures, Inc.",
+        "required": true
+      },
+      {
+        "id": "entityType",
+        "label": "Entity type",
+        "placeholder": "stock corporation",
+        "required": true
+      },
+      {
+        "id": "applicantName",
+        "label": "Applicant's name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
