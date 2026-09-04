@@ -18101,5 +18101,59 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "costa_hawkins_rental_housing_act_info_sheet",
+    "title": "Costa-Hawkins Rental Housing Act — Information Sheet",
+    "description": "Explains California's Costa-Hawkins Rental Housing Act (Civil Code § 1954.50 et seq.), a 1995 preemption statute limiting local governments' authority to apply residential rent control to certain housing: the single-family-home/condominium (\"alienable title\") exemption and its own exceptions, the two-pathway new-construction exemption, and \"vacancy decontrol\" — resetting rent between tenancies. A separate, older statute from this project's AB 1482 (statewide Tenant Protection Act) document, which works by a different mechanism.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "costahawkins_intro",
+      "costahawkins_scope",
+      "costahawkins_condo_sfh_exemption",
+      "costahawkins_new_construction_exemption",
+      "costahawkins_vacancy_decontrol",
+      "costahawkins_ack"
+    ],
+    "fields": [
+      {
+        "id": "propertyAddress",
+        "label": "Property address",
+        "placeholder": "123 Main St., San Diego, CA 92101",
+        "required": true
+      },
+      {
+        "id": "tenantName",
+        "label": "Tenant's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "landlordName",
+        "label": "Landlord's name",
+        "placeholder": "Morgan Casey",
+        "required": true
+      },
+      {
+        "id": "monthlyRent",
+        "label": "Monthly rent (if relevant)",
+        "placeholder": "$2,200",
+        "required": false
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 5, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "San Diego, California",
+        "required": true
+      }
+    ]
   }
 ]
