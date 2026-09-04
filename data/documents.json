@@ -16273,5 +16273,60 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "officer_removal_info_sheet",
+    "title": "Removal of a Corporate Officer — Information Sheet",
+    "description": "Background information on California Corporations Code section 312 -- the officers a California corporation must have, the default chief executive officer designation, holding multiple offices, the board's statutory authority to remove an officer (who \"serves at the pleasure of the board,\" subject to any contract of employment rights), an officer's own right to resign, and a verified distinction from the separate at-will employment default under Labor Code section 2922.",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "officerremoval_purpose",
+      "officerremoval_required_officers",
+      "officerremoval_multiple_offices",
+      "officerremoval_selection_and_removal",
+      "officerremoval_resignation",
+      "officerremoval_vs_at_will_employee",
+      "officerremoval_record"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "officerName",
+        "label": "Officer's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "officerTitle",
+        "label": "Officer's title",
+        "placeholder": "President",
+        "required": true
+      },
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
