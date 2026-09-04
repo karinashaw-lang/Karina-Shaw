@@ -17609,5 +17609,43 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "genetic_information_privacy_act_info_sheet",
+    "title": "California Genetic Information Privacy Act — Information Sheet",
+    "description": "Explains California's Genetic Information Privacy Act, Civil Code § 56.18 et seq. — a state consumer-privacy statute governing direct-to-consumer genetic testing companies' data practices, distinct from this corpus's GINA document (a federal employment-discrimination statute). Covers who the statute regulates and its \"express consent\" definition, the required privacy-practices summary and notice, the statute's five-category menu of separate consents (not one blanket consent), the revocation/sample-destruction/data-security/access-deletion mechanisms, the nondiscrimination rule and the restriction on disclosure to insurers and employers, and the enforcement structure — civil penalties prosecuted exclusively by named public officials, explicitly not a standalone private right of action.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "genprivacy_purpose",
+      "genprivacy_definitions",
+      "genprivacy_privacy_notice",
+      "genprivacy_consent_menu",
+      "genprivacy_revocation_security_deletion_rights",
+      "genprivacy_nondiscrimination_and_insurer_restriction",
+      "genprivacy_enforcement_and_penalties",
+      "genprivacy_closing_signature"
+    ],
+    "fields": [
+      {
+        "id": "businessName",
+        "label": "Business name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "signatureDate",
+        "label": "Signature date",
+        "placeholder": "September 1, 2026",
+        "required": true
+      }
+    ]
   }
 ]
