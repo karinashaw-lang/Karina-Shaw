@@ -16532,5 +16532,54 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "data_broker_registration_act_info_sheet",
+    "title": "California Data Broker Registration Act (Delete Act) — Information Sheet",
+    "description": "Background information on California's Data Broker Registration Act, Civ. Code section 1798.99.80 et seq., as amended by the Delete Act (SB 362) and SB 361 -- the statutory definition of \"data broker\" (no direct consumer relationship) and its four exemptions, distinct from the broader CCPA; the annual registration requirement with the California Privacy Protection Agency and its fee; the required registration content; the Delete Request and Opt-out Platform (\"DROP\") and its phased compliance deadlines, both already passed as of this document's preparation; and the administrative fine schemes for failing to register or comply with DROP.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "databroker_recitals",
+      "databroker_definition_and_exemptions",
+      "databroker_registration_authority_and_fee",
+      "databroker_registration_required_content",
+      "databroker_drop_mechanism_and_deadlines",
+      "databroker_penalties_for_noncompliance",
+      "databroker_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "businessName",
+        "label": "Business name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "contactMethod",
+        "label": "How consumers may contact the business or submit requests",
+        "placeholder": "privacy@acme.com or (415) 555-0100",
+        "required": true
+      },
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
