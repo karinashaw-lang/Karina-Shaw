@@ -19,32 +19,37 @@ model User {
   clips          Clip[]
   wallItems      WallItem[]
   tipsSent       Tip[]
+  subscriptions  Subscription[]
 }
 
 model CreatorProfile {
-  id            String     @id @default(cuid())
-  userId        String     @unique
-  user          User       @relation(fields: [userId], references: [id])
-  handle        String     @unique
-  displayName   String
-  bio           String?
-  createdAt     DateTime   @default(now())
-  videos        Video[]
-  followers     Follow[]
-  tipsReceived  Tip[]
+  id                     String         @id @default(cuid())
+  userId                 String         @unique
+  user                   User           @relation(fields: [userId], references: [id])
+  handle                 String         @unique
+  displayName            String
+  bio                    String?
+  subscriptionPriceCents Int?
+  createdAt              DateTime       @default(now())
+  videos                 Video[]
+  followers              Follow[]
+  tipsReceived           Tip[]
+  subscribers            Subscription[]
 }
 
 model Video {
-  id          String         @id @default(cuid())
-  creatorId   String
-  creator     CreatorProfile @relation(fields: [creatorId], references: [id])
-  title       String
-  description String?
-  videoUrl    String
-  createdAt   DateTime       @default(now())
-  comments    Comment[]
-  clips       Clip[]
-  wallItems   WallItem[]
+  id             String              @id @default(cuid())
+  creatorId      String
+  creator        CreatorProfile      @relation(fields: [creatorId], references: [id])
+  title          String
+  description    String?
+  videoUrl       String
+  subscriberOnly Boolean             @default(false)
+  createdAt      DateTime            @default(now())
+  comments       Comment[]
+  clips          Clip[]
+  wallItems      WallItem[]
+  transcript     TranscriptSegment[]
 }
 
 model Comment {
@@ -90,6 +95,35 @@ model WallItem {
   clipId    String?
   clip      Clip?    @relation(fields: [clipId], references: [id])
   createdAt DateTime @default(now())
+}
+
+/// A timestamped line of a video's transcript. Creators paste these in
+/// manually for now (see the transcript editor) — there's no speech-to-text
+/// pipeline wired up yet — but this is the same shape real ASR output would
+/// fill in, so search and the commute briefing can build on it either way.
+model TranscriptSegment {
+  id           String   @id @default(cuid())
+  videoId      String
+  video        Video    @relation(fields: [videoId], references: [id])
+  startSeconds Int
+  text         String
+  createdAt    DateTime @default(now())
+
+  @@index([videoId])
+}
+
+/// A simulated subscription — no billing provider is wired up yet, so this
+/// just records that a viewer subscribed, the same way Tip records a
+/// payment that never actually moved money.
+model Subscription {
+  id           String         @id @default(cuid())
+  subscriberId String
+  subscriber   User           @relation(fields: [subscriberId], references: [id])
+  creatorId    String
+  creator      CreatorProfile @relation(fields: [creatorId], references: [id])
+  createdAt    DateTime       @default(now())
+
+  @@unique([subscriberId, creatorId])
 }
 
 model Tip {

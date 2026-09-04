@@ -1,11 +1,25 @@
-# Creator Platform (V1 skeleton)
+# Creator Platform (V1)
 
-A first vertical slice of the real-time, video-first creator platform described in
-[`../business-plan.md`](../business-plan.md): sign up, become a creator, post a video, and comment on it.
+A working build of the V1 core loop from the business plan in
+[`../business-plan.md`](../business-plan.md): sign up, become a creator, post a video (upload
+a file, record from your camera, or paste a URL), get found through transcript search, build
+a following, gate content behind a subscription, get tipped, and let viewers clip and save
+what they find into a personal wall.
 
-Video hosting isn't wired up yet — the upload form just takes a URL to an existing video
-file. Live streaming, clipping, the personal wall, search, tips, and everything else in the
-roadmap come later.
+Three things are simulated rather than fully real, called out in the UI wherever they show up:
+
+- **Video storage** — uploaded files are saved to local disk (`public/uploads/`), not a real
+  blob/video service (Mux, Cloudflare Stream, S3). Fine for development; won't survive a
+  serverless deploy's ephemeral filesystem.
+- **Transcripts** — creators paste them in manually (see the transcript editor on a video
+  page). There's no speech-to-text pipeline; search and timestamp jump-links work off
+  whatever's pasted in.
+- **Tips and subscriptions** — recorded as ledger entries with no payment processor behind
+  them (no Stripe integration yet).
+
+Live streaming, AI-automated clip detection, the commute briefing, Studio Look, and AI
+dubbing all need real infrastructure decisions (a live/RTMP provider, an ASR/TTS provider,
+a billing provider) before they're buildable — see the business plan's V2/V3 roadmap.
 
 ## Stack
 
@@ -42,11 +56,22 @@ roadmap come later.
 
    Open [http://localhost:3000](http://localhost:3000).
 
-## Project layout
+## Feature map
 
-- `prisma/schema.prisma` — `User`, `CreatorProfile`, `Video`, `Comment` models
-- `src/lib/session.ts`, `src/lib/auth.ts` — session cookie + current-user lookup
-- `src/lib/actions/*` — Server Actions for signup/login/logout, creating a creator
-  profile, uploading a video, and commenting
-- `src/app/*` — pages for the home feed, auth, creator setup/upload, creator profiles,
-  and video detail
+- **Auth** — `src/lib/session.ts`, `src/lib/auth.ts`, `src/lib/actions/auth.ts`
+- **Creator profiles** — `src/app/creator/setup`, `src/lib/actions/creator.ts`
+- **Upload** (file / camera recording / URL) — `src/app/creator/upload`,
+  `src/components/upload-form.tsx`, `src/components/camera-recorder.tsx`,
+  `src/lib/video-storage.ts`
+- **Comments** — `src/components/comment-form.tsx`, `postComment` in
+  `src/lib/actions/video.ts`
+- **Follows** — `src/components/follow-button.tsx`, `src/lib/actions/follow.ts`
+- **Viewer-created clips** — `src/app/clips/[id]`, `src/components/clip-form.tsx`,
+  `src/lib/actions/clip.ts` (playback uses a media-fragment URL, e.g. `#t=10,20`)
+- **Personal wall** — `src/app/wall`, `src/lib/actions/wall.ts`
+- **Search inside video** — `src/app/search`, `src/lib/transcript.ts`,
+  `src/components/transcript-editor.tsx`, `src/components/video-with-transcript.tsx`
+- **Tips** — `src/components/tip-form.tsx`, `src/lib/actions/tip.ts`
+- **Subscriptions** (gates `subscriberOnly` videos) — `src/components/subscribe-button.tsx`,
+  `src/lib/actions/subscription.ts`
+- **Creator dashboard** — `src/app/creator/dashboard`

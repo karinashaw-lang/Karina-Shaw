@@ -6,9 +6,14 @@ import { getCurrentUser } from "@/lib/auth";
 import CommentForm from "@/components/comment-form";
 import SaveButton from "@/components/save-button";
 import ClipForm from "@/components/clip-form";
+import VideoWithTranscript from "@/components/video-with-transcript";
+import TranscriptEditor from "@/components/transcript-editor";
 
 export default async function VideoPage(props: PageProps<"/videos/[id]">) {
   const { id } = await props.params;
+  const searchParams = await props.searchParams;
+  const seekParam = Array.isArray(searchParams.t) ? searchParams.t[0] : searchParams.t;
+  const initialSeek = seekParam ? Number(seekParam) : undefined;
 
   const [video, user] = await Promise.all([
     prisma.video.findUnique({
@@ -16,6 +21,7 @@ export default async function VideoPage(props: PageProps<"/videos/[id]">) {
       include: {
         creator: true,
         comments: { orderBy: { createdAt: "asc" }, include: { user: true } },
+        transcript: { orderBy: { startSeconds: "asc" } },
       },
     }),
     getCurrentUser(),
@@ -23,9 +29,42 @@ export default async function VideoPage(props: PageProps<"/videos/[id]">) {
 
   if (!video) notFound();
 
+  const isOwner = user?.creatorProfile?.id === video.creatorId;
+
+  const isSubscribed =
+    user && video.subscriberOnly && !isOwner
+      ? Boolean(
+          await prisma.subscription.findUnique({
+            where: {
+              subscriberId_creatorId: { subscriberId: user.id, creatorId: video.creatorId },
+            },
+          })
+        )
+      : false;
+
+  const isLocked = video.subscriberOnly && !isOwner && !isSubscribed;
+
   return (
     <div className="mx-auto max-w-3xl px-6 py-10">
-      <video controls className="w-full rounded-lg bg-black" src={video.videoUrl} />
+      {isLocked ? (
+        <div className="flex aspect-video items-center justify-center rounded-lg bg-black text-center text-white">
+          <div>
+            <p className="text-lg font-medium">Subscribers only</p>
+            <p className="mt-1 text-sm text-zinc-300">
+              <Link href={`/creators/${video.creator.handle}`} className="underline">
+                Subscribe to {video.creator.displayName}
+              </Link>{" "}
+              to watch this video.
+            </p>
+          </div>
+        </div>
+      ) : (
+        <VideoWithTranscript
+          src={video.videoUrl}
+          initialSeek={Number.isFinite(initialSeek) ? initialSeek : undefined}
+          segments={video.transcript}
+        />
+      )}
 
       <div className="mt-4 flex items-start justify-between gap-4">
         <div>
@@ -37,12 +76,19 @@ export default async function VideoPage(props: PageProps<"/videos/[id]">) {
             </Link>
           </p>
         </div>
-        {user && <SaveButton kind="video" itemId={video.id} path={`/videos/${video.id}`} />}
+        {user && !isLocked && <SaveButton kind="video" itemId={video.id} path={`/videos/${video.id}`} />}
       </div>
 
       {video.description && <p className="mt-4">{video.description}</p>}
 
-      {user && <ClipForm videoId={video.id} />}
+      {isLocked ? null : isOwner && (
+        <TranscriptEditor
+          videoId={video.id}
+          initialText={video.transcript.map((s) => `${s.startSeconds} ${s.text}`).join("\n")}
+        />
+      )}
+
+      {user && !isLocked && <ClipForm videoId={video.id} />}
 
       <h2 className="mt-8 text-lg font-medium">
         Comments ({video.comments.length})

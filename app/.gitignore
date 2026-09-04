@@ -47,3 +47,7 @@ next-env.d.ts
 /.claude
 /.windsurf
 skills-lock.json
+
+# Locally uploaded video files (dev-only storage stand-in for real blob storage)
+/public/uploads/*
+!/public/uploads/.gitkeep

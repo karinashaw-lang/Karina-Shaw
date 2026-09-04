@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import prisma from "@/lib/prisma";
 import { getCurrentUser } from "@/lib/auth";
 import FollowButton from "@/components/follow-button";
+import SubscribeButton from "@/components/subscribe-button";
 import TipForm from "@/components/tip-form";
 
 export default async function CreatorPage(props: PageProps<"/creators/[handle]">) {
@@ -24,13 +25,20 @@ export default async function CreatorPage(props: PageProps<"/creators/[handle]">
 
   const isOwner = user?.creatorProfile?.id === creator.id;
 
-  const isFollowing = user
-    ? Boolean(
-        await prisma.follow.findUnique({
-          where: { followerId_creatorId: { followerId: user.id, creatorId: creator.id } },
-        })
-      )
-    : false;
+  const [isFollowing, isSubscribed] = user
+    ? await Promise.all([
+        prisma.follow
+          .findUnique({
+            where: { followerId_creatorId: { followerId: user.id, creatorId: creator.id } },
+          })
+          .then(Boolean),
+        prisma.subscription
+          .findUnique({
+            where: { subscriberId_creatorId: { subscriberId: user.id, creatorId: creator.id } },
+          })
+          .then(Boolean),
+      ])
+    : [false, false];
 
   return (
     <div className="mx-auto max-w-3xl px-6 py-10">
@@ -42,9 +50,19 @@ export default async function CreatorPage(props: PageProps<"/creators/[handle]">
             {creator._count.followers === 1 ? "follower" : "followers"}
           </p>
         </div>
-        {user && !isOwner && (
-          <FollowButton creatorId={creator.id} handle={creator.handle} initialFollowing={isFollowing} />
-        )}
+        <div className="flex gap-2">
+          {user && !isOwner && (
+            <FollowButton creatorId={creator.id} handle={creator.handle} initialFollowing={isFollowing} />
+          )}
+          {user && !isOwner && creator.subscriptionPriceCents !== null && (
+            <SubscribeButton
+              creatorId={creator.id}
+              handle={creator.handle}
+              priceCents={creator.subscriptionPriceCents}
+              initialSubscribed={isSubscribed}
+            />
+          )}
+        </div>
       </div>
 
       {creator.bio && <p className="mt-4">{creator.bio}</p>}
@@ -61,6 +79,11 @@ export default async function CreatorPage(props: PageProps<"/creators/[handle]">
               <Link href={`/videos/${video.id}`} className="font-medium underline">
                 {video.title}
               </Link>
+              {video.subscriberOnly && (
+                <span className="ml-2 rounded bg-zinc-200 px-1.5 py-0.5 text-xs text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">
+                  Subscribers only
+                </span>
+              )}
             </li>
           ))}
         </ul>

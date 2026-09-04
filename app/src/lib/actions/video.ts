@@ -6,11 +6,13 @@ import { z } from "zod";
 
 import { getCurrentUser } from "@/lib/auth";
 import prisma from "@/lib/prisma";
+import { saveVideoFile } from "@/lib/video-storage";
 
 const uploadSchema = z.object({
   title: z.string().min(1).max(120),
   description: z.string().max(2000).optional(),
-  videoUrl: z.string().url(),
+  videoUrl: z.string().url().optional(),
+  subscriberOnly: z.coerce.boolean().optional(),
 });
 
 export type UploadActionState = { error: string } | null;
@@ -27,21 +29,37 @@ export async function uploadVideo(
   const parsed = uploadSchema.safeParse({
     title: formData.get("title"),
     description: formData.get("description") || undefined,
-    videoUrl: formData.get("videoUrl"),
+    videoUrl: formData.get("videoUrl") || undefined,
+    subscriberOnly: formData.get("subscriberOnly") === "on" ? true : undefined,
   });
 
   if (!parsed.success) {
     return { error: parsed.error.issues[0]?.message ?? "Invalid video details." };
   }
 
-  const { title, description, videoUrl } = parsed.data;
+  const { title, description, videoUrl, subscriberOnly } = parsed.data;
+
+  const file = formData.get("videoFile");
+  const hasFile = file instanceof File && file.size > 0;
+
+  if (!hasFile && !videoUrl) {
+    return { error: "Record or upload a video file, or paste a video URL." };
+  }
+
+  let resolvedUrl: string;
+  try {
+    resolvedUrl = hasFile ? await saveVideoFile(file as File) : videoUrl!;
+  } catch (err) {
+    return { error: err instanceof Error ? err.message : "Could not save that video file." };
+  }
 
   const video = await prisma.video.create({
     data: {
       creatorId: user.creatorProfile.id,
       title,
       description,
-      videoUrl,
+      videoUrl: resolvedUrl,
+      subscriberOnly: subscriberOnly ?? false,
     },
   });
 

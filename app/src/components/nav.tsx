@@ -13,6 +13,7 @@ export default async function Nav() {
           Creator Platform
         </Link>
         <div className="flex items-center gap-4 text-sm">
+          <Link href="/search">Search</Link>
           {user ? (
             <>
               <Link href="/wall">Wall</Link>
