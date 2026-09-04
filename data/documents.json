@@ -21185,5 +21185,65 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "temporary_pendente_lite_spousal_support_info_sheet",
+    "title": "Temporary (Pendente Lite) Spousal Support — Information Sheet",
+    "description": "Describes California's authority for a court to order spousal support while a dissolution, legal separation, or nullity proceeding is pending, under Family Code §§ 3600-3604: the pendency authority itself, how the temporary-support standard's narrow cross-reference to Family Code § 4320(i), (m) and § 4325 differs from the full post-judgment factor list, the automatic unenforceability during a period of reconciliation, and modification, termination, and the limit on retroactivity.",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "temppendlite_declaration",
+      "temppendlite_pendency_authority",
+      "temppendlite_narrower_standard",
+      "temppendlite_reconciliation_bar",
+      "temppendlite_modification_and_termination",
+      "temppendlite_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "party1Name",
+        "label": "Party 1 Name",
+        "placeholder": "e.g., Jane Doe",
+        "required": true
+      },
+      {
+        "id": "party2Name",
+        "label": "Party 2 Name",
+        "placeholder": "e.g., John Doe",
+        "required": true
+      },
+      {
+        "id": "marriageDate",
+        "label": "Date of Marriage",
+        "placeholder": "e.g., June 1, 2010",
+        "required": true
+      },
+      {
+        "id": "separationDate",
+        "label": "Date of Separation",
+        "placeholder": "e.g., January 1, 2026",
+        "required": true
+      },
+      {
+        "id": "countyOfFiling",
+        "label": "County of Filing",
+        "placeholder": "e.g., Los Angeles County",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date Signed",
+        "placeholder": "e.g., January 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, State",
+        "placeholder": "e.g., Los Angeles, California",
+        "required": true
+      }
+    ]
   }
 ]
