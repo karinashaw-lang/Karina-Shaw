@@ -16223,5 +16223,55 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "computer_data_access_fraud_act_info_sheet",
+    "title": "California Comprehensive Computer Data Access and Fraud Act — Demand Letter Information Sheet",
+    "description": "Explains California Penal Code section 502 -- the state civil cause of action for unauthorized computer access, distinct from federal trade secret law and from the federal Computer Fraud and Abuse Act. Covers the statutory prohibited acts, the private civil cause of action and its compensatory-damages scope, attorney's fees and punitive damages, the three-year limitations period, case law on the scope of \"without permission\" (including revocation of previously-implied access), and the Ninth Circuit's holding that section 502 requires only knowing access, not unauthorized access like the CFAA -- and generates a demand letter describing the computer system and conduct at issue.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "compfraud_intro",
+      "compfraud_prohibited_acts",
+      "compfraud_civil_cause_of_action",
+      "compfraud_remedies_fees_and_punitive",
+      "compfraud_limitations_period",
+      "compfraud_without_permission_scope",
+      "compfraud_distinct_from_cfaa",
+      "compfraud_closing_record"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "recipientName",
+        "label": "Recipient's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "computerSystemDescription",
+        "label": "Description of the computer, system, network, or data at issue",
+        "placeholder": "Acme, Inc.'s internal customer database and CRM system",
+        "required": true
+      },
+      {
+        "id": "incidentDescription",
+        "label": "Description of incident",
+        "placeholder": "Describe what happened",
+        "required": true
+      },
+      {
+        "id": "demandDate",
+        "label": "Response deadline",
+        "placeholder": "September 15, 2026",
+        "required": true
+      }
+    ]
   }
 ]
