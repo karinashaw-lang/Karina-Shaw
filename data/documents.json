@@ -17405,5 +17405,71 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "recording_act_priority_info_sheet",
+    "title": "California Recording Act and Priority of Interests — Information Sheet",
+    "description": "Explains California's real property recording system, Civil Code §§ 1213, 1214, 1217 — deepening two supporting clauses already embedded in this corpus's Grant Deed/Quitclaim Deed and Living Trust Funding documents into a dedicated, standalone explainer that adds genuinely new depth: the recording-and-indexing requirement for constructive notice, and California case law construing \"good faith\" and \"notice\" for purposes of the race-notice priority rule. Covers the core priority rule (§ 1214) and its three-part race-notice structure, what recording actually accomplishes and the indexing requirement courts have added to it (§ 1213), an unrecorded instrument's continued validity between the original parties (§ 1217), and how courts have defined \"good faith\" and \"notice\" (actual vs. constructive, the reasonable-inquiry standard).",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "recordingact_purpose_and_scope_declaration",
+      "recordingact_priority_rule_1214",
+      "recordingact_constructive_notice_and_indexing_1213",
+      "recordingact_unrecorded_instrument_validity_1217",
+      "recordingact_good_faith_and_notice_case_law",
+      "recordingact_declarant_acknowledgment"
+    ],
+    "fields": [
+      {
+        "id": "requestingPartyName",
+        "label": "Requesting party's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "adverseClaimantNames",
+        "label": "Adverse claimant(s)' name(s)",
+        "placeholder": "Taylor Morgan",
+        "required": true
+      },
+      {
+        "id": "propertyAddress",
+        "label": "Property address",
+        "placeholder": "123 Main St, Apt 4, Springfield",
+        "required": true
+      },
+      {
+        "id": "legalDescription",
+        "label": "Legal description of the property",
+        "placeholder": "Lot 12, Block 3, Tract No. 4567, as per map recorded in Book 45, Page 12 of Maps, Sacramento County Records",
+        "required": true
+      },
+      {
+        "id": "parcelNumber",
+        "label": "Assessor's Parcel Number",
+        "placeholder": "123-456-789",
+        "required": false
+      },
+      {
+        "id": "recordingCounty",
+        "label": "County for recording",
+        "placeholder": "San Francisco County",
+        "required": true
+      },
+      {
+        "id": "signatureDate",
+        "label": "Signature date",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "signatureCity",
+        "label": "City where signed",
+        "placeholder": "Sacramento",
+        "required": true
+      }
+    ]
   }
 ]
