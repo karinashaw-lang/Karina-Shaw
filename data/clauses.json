@@ -42827,6 +42827,104 @@
       "title": "Acknowledgment",
       "kind": "drafting",
       "body": "Please sign below to indicate that you have received and reviewed this information sheet.\n\nApplicant / Employee: {{employeeName}}\nDate: _______________"
+    },
+    {
+      "id": "seating_purpose_statement",
+      "title": "Purpose",
+      "kind": "drafting",
+      "body": "{{companyName}} maintains this California Suitable Seating Information Sheet to describe the suitable-seating requirement that applies to working employees, including {{employeeName}}, under the applicable California IWC Wage Order, and to summarize how California courts have construed that requirement. This information sheet states facts about California law; it does not determine whether any particular job, task, or workspace at {{companyName}} does or does not require a seat, and it is not a statement that {{companyName}} has or has not provided suitable seating for any specific position."
+    },
+    {
+      "id": "seating_wage_order_requirement",
+      "title": "The Wage Order Seating Requirement",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-04",
+      "body": "California's Industrial Welfare Commission (IWC) Wage Orders require that \"[a]ll working employees shall be provided with suitable seats when the nature of the work reasonably permits the use of seats.\" Separately, when an employee is not engaged in the active duties of employment and the nature of the work requires standing, the same wage order requires that \"an adequate number of suitable seats shall be placed in reasonable proximity to the work area\" and that employees be permitted to use those seats when doing so does not interfere with the performance of their duties.",
+      "gap": "This clause quotes IWC Wage Order No. 4-2001, section 14 (the general, catch-all wage order for professional, technical, clerical, mechanical, and similar occupations, used elsewhere in this corpus for the same reason). It was fetched directly from the California Department of Industrial Relations (dir.ca.gov) using two separate curl requests with different User-Agent strings, both returning byte-identical PDF content (HTTP 200); the extracted text was then confirmed as an exact, whitespace-normalized substring of that fetched text. WebFetch was not used for this domain in this session (it is expected to be blocked in this environment for dir.ca.gov, based on prior sessions' notes), so the curl-with-two-User-Agents method served as the verification substitute. The identical section 14(A) and 14(B) language was independently confirmed to also appear, word for word, in IWC Wage Order No. 7-2001 (Mercantile Industry), fetched the same way. This is not, however, proof that every one of the 17 other IWC wage orders phrases section 14 identically — only Wage Orders 4-2001 and 7-2001 were fetched and checked this session. The two subdivisions quoted, section 14(A) and section 14(B), are two paragraphs of the same wage-order section and are not independent sources of each other; they describe two different circumstances (actively working, versus not engaged in active duties) rather than corroborating the same rule twice. This is California regulatory text, offered as documented evidence of what California requires — not a claim about which state's law governs any specific employer or employee; the federal Fair Labor Standards Act contains no comparable seating requirement, and most states impose none. This clause states what the wage order requires; it does not state whether any particular job or task \"reasonably permits the use of seats,\" which is addressed in the case-law clauses below.",
+      "citations": [
+        {
+          "case": "IWC Wage Order No. 4-2001, § 14(A)",
+          "cite": "Cal. Code Regs., tit. 8, § 11040, subd. 14(A)",
+          "url": "https://www.dir.ca.gov/IWC/IWCArticle04.pdf",
+          "quote": "All working employees shall be provided with suitable seats when the nature of the work reasonably permits the use of seats."
+        },
+        {
+          "case": "IWC Wage Order No. 4-2001, § 14(B)",
+          "cite": "Cal. Code Regs., tit. 8, § 11040, subd. 14(B)",
+          "url": "https://www.dir.ca.gov/IWC/IWCArticle04.pdf",
+          "quote": "When employees are not engaged in the active duties of their employment and the nature of the work requires standing, an adequate number of suitable seats shall be placed in reasonable proximity to the work area and employees shall be permitted to use such seats when it does not interfere with the performance of their duties."
+        }
+      ]
+    },
+    {
+      "id": "seating_kilby_nature_of_work_test",
+      "title": "“Nature of the Work” — The Kilby Test",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-04",
+      "body": "In Kilby v. CVS Pharmacy, Inc. (2016) 63 Cal.4th 1, the California Supreme Court construed what the wage order's \"nature of the work\" language means. The Court held that \"[t]he 'nature of the work' refers to an employee's tasks performed at a given location for which a right to a suitable seat is claimed, rather than a 'holistic' consideration of the entire range of an employee's duties anywhere on the jobsite during a complete shift.\" The Court further held that whether the nature of the work reasonably permits sitting \"is a question to be determined objectively based on the totality of the circumstances,\" and that \"[a]n employer's business judgment and the physical layout of the workplace are relevant but not dispositive factors,\" with the inquiry focused on the nature of the work rather than on an individual employee's characteristics.",
+      "gap": "This clause is drawn from a single case, Kilby v. CVS Pharmacy, Inc. (2016) 63 Cal.4th 1, 8 (a California Supreme Court decision answering questions certified by the Ninth Circuit in two consolidated matters, Kilby v. CVS Pharmacy and Henderson v. JPMorgan Chase Bank). The opinion text was read directly from CourtListener (opinion id 3191160, cluster id 3191248) and both quoted passages were confirmed as exact, whitespace-normalized substrings of that fetched opinion text. The two quoted sentences both come from the same opinion and are not independent sources of each other — they are presented together because they answer two parts of the same certified question (the meaning of \"nature of the work,\" and the factors relevant to \"reasonably permits\"). This clause states the legal test the Court adopted; it does not apply that test to any specific job, task, or workplace, and Kilby itself did not resolve whether either of the underlying employees (a CVS customer service representative or Chase bank tellers) was entitled to a seat — it returned the certified-question answers to the Ninth Circuit for further proceedings in each case.",
+      "citations": [
+        {
+          "case": "Kilby v. CVS Pharmacy, Inc.",
+          "cite": "(2016) 63 Cal.4th 1, 8",
+          "url": "https://www.courtlistener.com/opinion/3191248/kilby-v-cvs-pharmacy-inc/",
+          "quote": "The “nature of the work” refers to an employee’s tasks performed at a given location for which a right to a suitable seat is claimed, rather than a “holistic” consideration of the entire range of an employee’s duties anywhere on the jobsite during a complete shift."
+        },
+        {
+          "case": "Kilby v. CVS Pharmacy, Inc.",
+          "cite": "(2016) 63 Cal.4th 1, 8",
+          "url": "https://www.courtlistener.com/opinion/3191248/kilby-v-cvs-pharmacy-inc/",
+          "quote": "Whether the nature of the work reasonably permits sitting is a question to be determined objectively based on the totality of the circumstances. An employer’s business judgment and the physical layout of the workplace are relevant but not dispositive factors."
+        }
+      ]
+    },
+    {
+      "id": "seating_kilby_burden_of_proof",
+      "title": "Burden of Proof on Seat Availability",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-04",
+      "body": "The California Supreme Court in Kilby v. CVS Pharmacy, Inc. also addressed who bears the burden of proof on whether a suitable seat is available. The Court held that \"[a]n employer seeking to be excused from the requirement bears the burden of showing compliance is infeasible because no suitable seating exists.\" The Court reasoned that the wage order's text \"unambiguously states employees 'shall be provided with suitable seats'\" once the nature of the work reasonably permits seated work, and that there is no language requiring an employee to additionally prove that a particular type of seat would satisfy that requirement.",
+      "gap": "This clause is drawn from the same single case as the preceding clause, Kilby v. CVS Pharmacy, Inc. (2016) 63 Cal.4th 1, 24, and is not independently corroborated by a second source; the burden-of-proof holding appears only in Kilby's discussion of the certified questions. The opinion text was read directly from CourtListener (opinion id 3191160) and the quoted passage was confirmed as an exact, whitespace-normalized substring of that fetched opinion text. This clause states which party bears the burden of proof on the question of seat availability as a matter of law; it does not state whether a suitable seat is or is not available for any specific job or workplace, and it does not address burdens of proof on any other element of a seating claim (such as whether the nature of the work reasonably permits sitting in the first place, which is addressed by the totality-of-the-circumstances test in the preceding clause).",
+      "citations": [
+        {
+          "case": "Kilby v. CVS Pharmacy, Inc.",
+          "cite": "(2016) 63 Cal.4th 1, 24",
+          "url": "https://www.courtlistener.com/opinion/3191248/kilby-v-cvs-pharmacy-inc/",
+          "quote": "An employer seeking to be excused from the requirement bears the burden of showing compliance is infeasible because no suitable seating exists."
+        }
+      ]
+    },
+    {
+      "id": "seating_enforcement_mechanism",
+      "title": "How the Seating Requirement Is Enforced",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-04",
+      "body": "The suitable-seating requirement is a \"condition[] of labor\" fixed by an IWC wage order. California Labor Code section 1198 provides that \"[t]he maximum hours of work and the standard conditions of labor fixed by the commission shall be the maximum hours of work and the standard conditions of labor for employees,\" and that employment \"under conditions of labor prohibited by the order is unlawful.\" Separately, the Labor Code Private Attorneys General Act (PAGA) provides that, for Labor Code provisions that do not otherwise specify a civil penalty, \"there is established a civil penalty for a violation of these provisions,\" which an \"aggrieved employee\" may recover through a civil action \"as an alternative\" to enforcement by the Labor and Workforce Development Agency.",
+      "gap": "Neither the wage order text nor Kilby v. CVS Pharmacy specifies a penalty amount for a suitable-seating violation, and this clause does not identify a case applying a specific dollar penalty to a seating violation. The mechanism described here is inferred from two Labor Code provisions read together: section 1198 (which makes employment under conditions prohibited by a wage order \"unlawful\" but does not itself set a penalty) and section 2699, subdivisions (a) and (f) (the PAGA default civil penalty and private-right-of-action provisions, which apply to Labor Code provisions — like section 1198 — that lack their own specified civil penalty). Section 2699(a) and section 2699(f) are two subdivisions of the same statutory section and are not independent of one another; together they are one source, independent of the section 1198 citation and of the wage-order and case-law citations in the other clauses of this document. This clause also does not address Labor Code section 1199, which separately makes a violation of wage order conditions of labor a criminal misdemeanor (fine of not less than $100 or imprisonment of not less than 30 days, or both) — a different, non-civil enforcement track this document does not describe further. All statutory text quoted here was fetched directly from leginfo.legislature.ca.gov using two separate curl requests with different User-Agent strings, both returning HTTP 200, and each quoted passage was confirmed as an exact, whitespace-normalized substring of the fetched text.",
+      "citations": [
+        {
+          "case": "Cal. Labor Code § 1198",
+          "cite": "Cal. Lab. Code § 1198",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=1198.",
+          "quote": "The employment of any employee for longer hours than those fixed by the order or under conditions of labor prohibited by the order is unlawful."
+        },
+        {
+          "case": "Cal. Labor Code § 2699(a), (f)",
+          "cite": "Cal. Lab. Code § 2699, subds. (a), (f)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=2699.",
+          "quote": "For all provisions of this code except those for which a civil penalty is specifically provided, there is established a civil penalty for a violation of these provisions, as follows:"
+        }
+      ]
+    },
+    {
+      "id": "seating_signature_acknowledgment",
+      "title": "Signature and Receipt",
+      "kind": "drafting",
+      "body": "Employee Signature: ☐ _________________________ Date: _______________\n\n{{employeeName}} (print name)\n\nEmployer Representative Signature: ☐ _________________________ Date: _______________\n\n{{companyName}} (print name and title)"
     }
   ]
 }
