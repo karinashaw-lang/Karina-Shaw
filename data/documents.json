@@ -19829,5 +19829,77 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "owbpa_group_program_disclosure_notice",
+    "title": "OWBPA Group/Exit-Incentive Program Disclosure Notice",
+    "description": "Explains and provides the additional written disclosure the Older Workers Benefit Protection Act requires when an age-discrimination-claim waiver is requested in connection with an exit-incentive program or other employment-termination program offered to a group or class of employees (29 U.S.C. section 626(f)(1)(H); 29 C.F.R. section 1625.22(f)): the class/unit/eligibility-factors/time-limits disclosure, the job-titles-and-ages disclosure for both those eligible or selected and those in the same job classification who are not, the decisional-unit concept and the two program types the duty attaches to, and the regulation's own limited scope. Meant to be used together with the corpus's existing Severance Agreement document, whose Age Discrimination Release Requirements clause covers the individual 21/45-day consideration period and 7-day revocation period this group-disclosure duty sits on top of, not in place of.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "owbpagroup_notice",
+      "owbpagroup_class_eligibility_timelimits",
+      "owbpagroup_decisional_unit_and_program_types",
+      "owbpagroup_ages_disclosure",
+      "owbpagroup_ages_table",
+      "owbpagroup_disclosure_scope_limit"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme Corp.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "noticeDate",
+        "label": "Date of this notice",
+        "placeholder": "September 4, 2026",
+        "required": true
+      },
+      {
+        "id": "programName",
+        "label": "Name of the exit-incentive or termination program",
+        "placeholder": "2026 Voluntary Separation Program",
+        "required": true
+      },
+      {
+        "id": "decisionalUnitDescription",
+        "label": "Class, unit, or group covered by the program (the \"decisional unit\")",
+        "placeholder": "All Customer Support Representatives in the Sacramento office",
+        "required": true
+      },
+      {
+        "id": "eligibilityFactors",
+        "label": "Eligibility factors for the program",
+        "placeholder": "Employees in the decisional unit with 5 or more years of service as of the program date",
+        "required": true
+      },
+      {
+        "id": "programTimeLimits",
+        "label": "Time limits applicable to the program",
+        "placeholder": "Election window open September 4, 2026 through October 19, 2026",
+        "required": true
+      },
+      {
+        "id": "eligibleSelectedAgesTable",
+        "label": "Ages, by job title, of individuals eligible or selected for the program",
+        "placeholder": "Customer Support Representative: 34, 41, 47, 52, 58",
+        "required": true
+      },
+      {
+        "id": "ineligibleAgesTable",
+        "label": "Ages, by job title, of individuals in the same job classification or unit who are NOT eligible or selected",
+        "placeholder": "Customer Support Representative: 29, 33, 39",
+        "required": true
+      }
+    ]
   }
 ]
