@@ -20835,5 +20835,42 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "severance_pay_unemployment_insurance_effect_info_sheet",
+    "title": "Severance Pay and Unemployment Insurance Eligibility — Information Sheet",
+    "description": "Describes how severance pay, dismissal pay, wage-continuation payments, and pay in lieu of notice can affect eligibility for California unemployment insurance benefits under the general 'unemployed'/'wages' test, corrects the common misconception that Unemployment Insurance Code section 1255.3 governs this topic (it governs the pension offset instead), and describes the CUIAB precedent distinguishing group severance plan payments from individually continued wages.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "severanceui_intro",
+      "severanceui_unemployed_wages_test",
+      "severanceui_1255_3_correction",
+      "severanceui_sub_plan_1265",
+      "severanceui_group_plan_severance_distinction",
+      "severanceui_wage_continuation_and_notice_pay",
+      "severanceui_ack"
+    ],
+    "fields": [
+      {
+        "id": "employeeName",
+        "label": "Employee Name",
+        "placeholder": "e.g., Jane Doe",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Company Name",
+        "placeholder": "e.g., Acme Corp.",
+        "required": true
+      },
+      {
+        "id": "separationDate",
+        "label": "Separation Date",
+        "placeholder": "e.g., January 1, 2026",
+        "required": true
+      }
+    ]
   }
 ]
