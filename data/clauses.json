@@ -44027,6 +44027,92 @@
       "title": "Acknowledgment of Receipt",
       "kind": "drafting",
       "body": "{{employeeName}} acknowledges having received this information sheet describing reimbursement rights and obligations under California Labor Code § 2802.\n\nEmployee: {{employeeName}}\nSignature: _______________________________________________\nDate: _______________\n\nOn behalf of {{companyName}}:\nSignature: _______________________________________________\nDate: _______________"
+    },
+    {
+      "id": "wagerelease_intro",
+      "title": "Purpose and Scope of This Information Sheet",
+      "kind": "drafting",
+      "body": "Re: Release as a Condition of Wage Payment — {{employeeName}}\n\nThis document concerns wages that {{companyName}} owes to {{employeeName}} as of {{terminationDate}}, identified here as: {{wageClaimBasis}}, in the amount of {{unpaidWagesAmount}}.\n\nCalifornia Labor Code section 206.5 addresses a narrow, specific situation: an employer requiring an employee to sign a release of a claim to wages the employee has already earned, as a condition of paying those wages. This is distinct from a severance agreement, in which an employee releases claims in exchange for consideration beyond the wages the employer already owes — for example, an additional payment, extended benefits, or other value the employer is not otherwise legally required to provide. This document addresses only the former situation: a release tied to wages already due. It does not address, and is not a substitute for, a broader release given in exchange for additional consideration, which this project's separate Severance Agreement document covers."
+    },
+    {
+      "id": "wagerelease_core_prohibition",
+      "title": "Prohibition on Conditioning Wage Payment on a Release",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-04",
+      "body": "California Labor Code section 206.5(a) states that an employer shall not require the execution of a release of a claim or right on account of wages due, or to become due, or made as an advance on wages to be earned, unless payment of those wages has actually been made. The statute further states that a release required or executed in violation of this section is null and void as between the employer and the employee, and that violation of the section by an employer is a misdemeanor.",
+      "gap": "This clause covers only wages the statute treats as ‘due’ — that is, wages the employer does not genuinely dispute owing. A separate clause in this document describes how a California appellate court has distinguished a release of wages already due from a release given to settle a good-faith dispute over whether wages are owed at all; this document does not determine which category any particular wage claim falls into. Section 206.5 also does not itself define ‘wages’ — see the companion clause on that point. This document does not determine whether any specific release, in any specific situation, complies with or violates this statute.",
+      "citations": [
+        {
+          "case": "Cal. Labor Code § 206.5(a)",
+          "cite": "Lab. Code § 206.5, subd. (a)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=206.5.",
+          "quote": "An employer shall not require the execution of a release of a claim or right on account of wages due, or to become due, or made as an advance on wages to be earned, unless payment of those wages has been made. A release required or executed in violation of the provisions of this section shall be null and void as between the employer and the employee. Violation of this section by the employer is a misdemeanor."
+        }
+      ]
+    },
+    {
+      "id": "wagerelease_execution_defined",
+      "title": "What Counts as “Execution of a Release” Under the Statute",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-04",
+      "body": "The same statutory section defines the term further. For purposes of section 206.5, California law states that “execution of a release” also includes requiring an employee, as a condition of being paid, to execute a statement of the hours worked during a pay period that the employer knows to be false.",
+      "gap": "This citation is to subdivision (b) of the same section 206.5 quoted in the prior clause, not to an independent statutory source — the two are not independent of one another. This anti-evasion provision reaches only a false hours statement the employer knows to be false; the statute's text does not describe any other specific method of extracting a release as covered by this same definition, and this document does not determine whether any particular employer practice falls within it.",
+      "citations": [
+        {
+          "case": "Cal. Labor Code § 206.5(b)",
+          "cite": "Lab. Code § 206.5, subd. (b)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=206.5.",
+          "quote": "For purposes of this section, “execution of a release” includes requiring an employee, as a condition of being paid, to execute a statement of the hours he or she worked during a pay period which the employer knows to be false."
+        }
+      ]
+    },
+    {
+      "id": "wagerelease_wages_defined",
+      "title": "How “Wages” Is Defined Elsewhere in the Same Article",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-04",
+      "body": "Section 206.5 does not itself define the term “wages.” California Labor Code section 200(a) — a separately numbered section of the Labor Code, within the same article as section 206.5 (Article 1, General Occupations, sections 200 through 244) — states that “wages” includes all amounts for labor performed by employees of every description, whether the amount is fixed or ascertained by the standard of time, task, piece, commission basis, or other method of calculation.",
+      "gap": "Section 206.5's own text contains no express cross-reference to section 200 or to any other definitional section — the full current text of section 206.5 was read for this document and nowhere mentions section 200. The connection described here rests on the two sections' shared placement within the same statutory article (section 200 begins ‘As used in this article’), not on any language inside section 206.5 pointing to section 200. Because section 200 and section 206.5 are separately numbered sections rather than subdivisions of the same section, this citation is genuinely independent of the section 206.5 citations in this document.",
+      "citations": [
+        {
+          "case": "Cal. Labor Code § 200(a)",
+          "cite": "Lab. Code § 200, subd. (a)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=200.",
+          "quote": "“Wages” includes all amounts for labor performed by employees of every description, whether the amount is fixed or ascertained by the standard of time, task, piece, commission basis, or other method of calculation."
+        }
+      ]
+    },
+    {
+      "id": "wagerelease_bona_fide_dispute",
+      "title": "A Settlement of a Genuinely Disputed Wage Claim Is Treated Differently",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-04",
+      "body": "A California Court of Appeal has held that section 206.5's prohibition reaches wages that are due — meaning wages the employer does not dispute owing — and does not reach a release given to settle a bona fide (genuine, good-faith) dispute over whether wages are owed at all. In Chindarah v. Pick Up Stix, Inc., the court held that “there is no statute providing that an employee cannot release his claim to past overtime wages as part of a settlement of a bona fide dispute over those wages,” and that “this public policy is not violated by a settlement of a bona fide dispute over wages already earned.”",
+      "gap": "This is the clearest published authority found on how section 206.5 relates to a broader settlement-style release, but it involved a class and collective wage-and-hour settlement, not a severance agreement specifically, and the court did not need to decide how section 206.5 treats a release exchanged for consideration beyond the wages themselves (as in a severance agreement) where the wages in question are not genuinely disputed at all. No case addressing that exact scenario was located, so this document does not resolve it, and this document does not determine whether any specific wage claim is genuinely disputed or whether any specific release fits within the distinction described here.",
+      "citations": [
+        {
+          "case": "Chindarah v. Pick Up Stix, Inc.",
+          "cite": "171 Cal. App. 4th 796 (2009)",
+          "url": "https://www.courtlistener.com/opinion/2256802/chindarah-v-pick-up-stix-inc/",
+          "quote": "there is no statute providing that an employee cannot release his claim to past overtime wages as part of a settlement of a bona fide dispute over those wages"
+        },
+        {
+          "case": "Chindarah v. Pick Up Stix, Inc.",
+          "cite": "171 Cal. App. 4th 796 (2009)",
+          "url": "https://www.courtlistener.com/opinion/2256802/chindarah-v-pick-up-stix-inc/",
+          "quote": "This public policy is not violated by a settlement of a bona fide dispute over wages already earned."
+        }
+      ]
+    },
+    {
+      "id": "wagerelease_ack",
+      "title": "Acknowledgment",
+      "kind": "drafting",
+      "body": "Please sign below to acknowledge review of the information above.\n\nEmployee: {{employeeName}}\nDate: _______________\n\nEmployer representative (on behalf of {{companyName}}): _______________\nDate: _______________"
     }
   ]
 }

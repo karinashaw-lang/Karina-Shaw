@@ -16175,5 +16175,53 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "release_as_condition_of_wages_info_sheet",
+    "title": "Prohibition on Requiring a Release as a Condition of Wage Payment — Information Sheet",
+    "description": "Background information on California Labor Code section 206.5 -- the narrow prohibition on requiring an employee to release a claim to wages already due as a condition of payment, the anti-evasion rule reaching a coerced false hours statement, how \"wages\" is defined elsewhere in the same statutory article, and Chindarah v. Pick Up Stix's distinction between wages the employer concedes are due and a settlement of a bona fide, good-faith wage dispute. A companion to, and distinct from, this project's Severance Agreement document.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "wagerelease_intro",
+      "wagerelease_core_prohibition",
+      "wagerelease_execution_defined",
+      "wagerelease_wages_defined",
+      "wagerelease_bona_fide_dispute",
+      "wagerelease_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "terminationDate",
+        "label": "Termination date",
+        "placeholder": "September 30, 2026",
+        "required": true
+      },
+      {
+        "id": "unpaidWagesAmount",
+        "label": "Unpaid wages amount",
+        "placeholder": "$3,200.00",
+        "required": true
+      },
+      {
+        "id": "wageClaimBasis",
+        "label": "What the claimed wages are for",
+        "placeholder": "Unpaid overtime for hours worked over 8 per day",
+        "required": true
+      }
+    ]
   }
 ]
