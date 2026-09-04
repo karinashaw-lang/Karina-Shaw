@@ -21361,5 +21361,48 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "wage_repayment_clawback_info_sheet",
+    "title": "Wage Repayment / Clawback — Information Sheet",
+    "description": "Describes California Labor Code §§ 221-224's limits on an employer collecting back wages already paid: the core §221 prohibition, the narrower §222/§223 collective-bargaining and designated-wage-scale prohibitions, §224's own statutory exception for legally required, individually authorized, and collectively bargained deductions, the judicial gloss on \"wages already paid,\" and DLSE opinion-letter guidance on bonus repayment (distinguished from binding statutory or case law), in connection with a signing bonus, relocation payment, or training-cost repayment arrangement.",
+    "categories": [
+      "Hiring"
+    ],
+    "clauseOrder": [
+      "wageclawback_declaration",
+      "wageclawback_s221_core_prohibition",
+      "wageclawback_s222_s223_related",
+      "wageclawback_s224_exception",
+      "wageclawback_s221_judicial_gloss",
+      "wageclawback_dlse_opinion_letters",
+      "wageclawback_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company Name",
+        "placeholder": "e.g., Acme Corp.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee Name",
+        "placeholder": "e.g., Jane Doe",
+        "required": true
+      },
+      {
+        "id": "repaymentTriggerDescription",
+        "label": "Description of the Repayment Trigger",
+        "placeholder": "e.g., signing bonus repayable if employment ends within 12 months",
+        "required": true
+      },
+      {
+        "id": "repaymentAmount",
+        "label": "Amount at Issue",
+        "placeholder": "e.g., $5,000",
+        "required": true
+      }
+    ]
   }
 ]
