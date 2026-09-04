@@ -21514,5 +21514,48 @@
         "required": false
       }
     ]
+  },
+  {
+    "id": "elder_abuse_inheritance_disqualification_info_sheet",
+    "title": "Inheritance Disqualification for Elder or Dependent Adult Abuse — Information Sheet",
+    "description": "Describes California Probate Code § 259, part of the statutory scheme addressing abuse of an elder or dependent adult decedent: the civil path requiring four clear-and-convincing findings (§ 259(a)), the alternative criminal-conviction path under Penal Code §§ 236 and 368 (§ 259(b)), the \"deemed to have predeceased\" mechanism and its regained-capacity limit (§ 259(c)), the cross-referenced definitions of physical abuse, neglect, false imprisonment, and financial abuse (§ 259(d)), and the severance-to-civil-action provision (§ 259(e)) — distinguished from the corpus's separate Slayer Statute and Elder/Dependent Adult Financial Abuse documents.",
+    "categories": [
+      "Estate Planning"
+    ],
+    "clauseOrder": [
+      "eldabusedisq_declaration",
+      "eldabusedisq_civil_findings_required",
+      "eldabusedisq_conviction_alternative",
+      "eldabusedisq_predecease_effect_and_limits",
+      "eldabusedisq_definitions",
+      "eldabusedisq_severance_to_civil_action",
+      "eldabusedisq_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "preparerName",
+        "label": "Preparer's Name",
+        "placeholder": "e.g., Jane Doe",
+        "required": true
+      },
+      {
+        "id": "decedentName",
+        "label": "Decedent's Name",
+        "placeholder": "e.g., John Smith",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date Signed",
+        "placeholder": "e.g., January 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, State",
+        "placeholder": "e.g., Los Angeles, California",
+        "required": true
+      }
+    ]
   }
 ]
