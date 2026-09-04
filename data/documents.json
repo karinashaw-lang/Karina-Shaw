@@ -18674,5 +18674,73 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "california_indian_child_welfare_act_info_sheet",
+    "title": "California Indian Child Welfare Act (Cal-ICWA) — Information Sheet",
+    "description": "Explains, using the statutes' own text, California's Cal-ICWA inquiry, notice, active-efforts, and placement-preference requirements that apply once there is an indication a child in a California proceeding is or may be an Indian child (Fam. Code § 177; Welf. & Inst. Code §§ 224.2, 224.3, 361.7, 361.31): which proceedings trigger these protections and the Family Code § 170(c) definition, the affirmative and continuing duty to inquire, the six statutory circumstances giving \"reason to know\" an Indian child is involved and the resulting notice duty, what the required notice must say and how it must be sent, the heightened \"active efforts\" standard, and the statutory placement-preference hierarchy for foster care/guardianship and adoptive placements. Deepens a gap this project's Third-Party Custody document previously flagged: that Fam. Code § 3041(e)'s cross-reference to ICWA had not been independently verified.",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "calicwa_declaration",
+      "calicwa_scope",
+      "calicwa_inquiry_duty",
+      "calicwa_reason_to_know_trigger",
+      "calicwa_notice_requirements",
+      "calicwa_active_efforts",
+      "calicwa_placement_preferences",
+      "calicwa_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "petitionerName",
+        "label": "Your full name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "childName",
+        "label": "Child's name",
+        "placeholder": "Riley Lee",
+        "required": true
+      },
+      {
+        "id": "childDOB",
+        "label": "Child's date of birth",
+        "placeholder": "May 3, 2015",
+        "required": true
+      },
+      {
+        "id": "possibleTribeName",
+        "label": "Child's possible tribal affiliation, if known",
+        "placeholder": "Navajo Nation (or \"not yet known\")",
+        "required": true
+      },
+      {
+        "id": "relationshipToChild",
+        "label": "Your relationship to the child, if any",
+        "placeholder": "Parent",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 5, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      },
+      {
+        "id": "countyOfFiling",
+        "label": "County of filing",
+        "placeholder": "Alameda County",
+        "required": true
+      }
+    ]
   }
 ]
