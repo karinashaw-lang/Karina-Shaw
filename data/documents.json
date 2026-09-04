@@ -15968,5 +15968,43 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "polst_physician_orders_life_sustaining_treatment_info_sheet",
+    "title": "Physician Orders for Life-Sustaining Treatment (POLST) — Information Sheet",
+    "description": "Background information on California Probate Code sections 4780-4786 -- what the statute defines a POLST form to be (a \"request regarding resuscitative measures,\" distinct from an advance health care directive), who must sign it and when a health care decisionmaker may execute it, how it can be revoked, the broad definition of covered health care providers (including EMS/first responders), the good-faith immunity and validity presumption that incentivize compliance, and the honest disclosure of what the statute does not say.",
+    "categories": [
+      "Estate Planning"
+    ],
+    "clauseOrder": [
+      "polst_intro",
+      "polst_statutory_definition",
+      "polst_not_advance_directive",
+      "polst_signature_execution",
+      "polst_revocation",
+      "polst_provider_reliance_and_scope",
+      "polst_no_repeal_of_other_law",
+      "polst_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "patientName",
+        "label": "Your full legal name (patient)",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "agentName",
+        "label": "Legally recognized health care decisionmaker's name (if applicable)",
+        "placeholder": "Morgan Lee",
+        "required": false
+      },
+      {
+        "id": "physicianName",
+        "label": "Physician, nurse practitioner, or physician assistant name",
+        "placeholder": "Dr. Taylor Morgan, M.D.",
+        "required": true
+      }
+    ]
   }
 ]
