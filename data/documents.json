@@ -17768,5 +17768,60 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "interstate_compact_placement_children_info_sheet",
+    "title": "Interstate Compact on the Placement of Children (ICPC) — Information Sheet",
+    "description": "Explains California's enactment of the Interstate Compact on the Placement of Children (Family Code §§ 7900-7913), which governs placing a child across state lines for foster care or as a preliminary to a possible adoption: the compact's stated purpose, what counts as a covered \"placement\" and a statutory exclusion for certain relative placements, the pre-placement notice-and-approval requirement, the sending agency's continuing jurisdiction, and the California agency designated to administer compact notices.",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "icpc_declaration",
+      "icpc_purpose",
+      "icpc_definitions_exclusions",
+      "icpc_notice_requirement",
+      "icpc_continuing_jurisdiction",
+      "icpc_administering_authority",
+      "icpc_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "childName",
+        "label": "Child's name",
+        "placeholder": "Riley Morgan Lee",
+        "required": true
+      },
+      {
+        "id": "childDOB",
+        "label": "Child's date of birth",
+        "placeholder": "April 3, 2016",
+        "required": true
+      },
+      {
+        "id": "otherState",
+        "label": "Other state involved in the proposed placement",
+        "placeholder": "Nevada",
+        "required": true
+      },
+      {
+        "id": "placingPartyName",
+        "label": "Person or agency proposing/arranging the placement",
+        "placeholder": "Sacramento County Department of Child, Family and Adult Services",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 4, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Sacramento, California",
+        "required": true
+      }
+    ]
   }
 ]
