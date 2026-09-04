@@ -16854,5 +16854,42 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "smoke_alarm_co_device_compliance_info_sheet",
+    "title": "Smoke Alarm and Carbon Monoxide Device Compliance Disclosure — Information Sheet",
+    "description": "Explains two separate, specifically-codified California life-safety device statutes that apply to residential property transfers — Health & Safety Code § 13113.8 (smoke alarms) and § 17926 (carbon monoxide devices, under the Carbon Monoxide Poisoning Prevention Act of 2010) — distinct from this corpus's general Transfer Disclosure Statement and Natural Hazard Disclosure content. Covers the smoke alarm requirement and the transferor's written compliance statement obligation, the statute's own exemption list (which differs from the general TDS exemptions), the agent/escrow liability limits and $100 damages cap for noncompliance, the carbon monoxide device installation requirement and its now-past phased deadlines, and the CO statute's infraction penalty and parallel transfer remedy.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "detectorcompliance_declaration",
+      "detectorcompliance_smoke_alarm_requirement",
+      "detectorcompliance_smoke_alarm_exemptions",
+      "detectorcompliance_smoke_alarm_liability",
+      "detectorcompliance_co_device_requirement",
+      "detectorcompliance_co_device_consequences",
+      "detectorcompliance_signature"
+    ],
+    "fields": [
+      {
+        "id": "sellerName",
+        "label": "Seller's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "buyerName",
+        "label": "Buyer's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "propertyAddress",
+        "label": "Property address",
+        "placeholder": "123 Main St, Apt 4, Springfield",
+        "required": true
+      }
+    ]
   }
 ]
