@@ -20095,5 +20095,49 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "franchise_investment_relations_law_info_sheet",
+    "title": "California Franchise Investment Law and Franchise Relations Act — Information Sheet",
+    "description": "Explains two related California statutory schemes governing franchises: the Franchise Investment Law's pre-sale disclosure and registration requirements (Corp. Code §§ 31000 et seq.) and the California Franchise Relations Act's termination and non-renewal protections for an existing franchise (Bus. & Prof. Code §§ 20000-20043): the shared three-part definition of \"franchise,\" the pre-sale registration requirement, the 14-day franchise disclosure document delivery requirement, the good-cause requirement and notice-and-cure period for termination, the 180-day notice requirement for non-renewal, and the form/content requirements for a termination or non-renewal notice. Distinct from the corpus's existing SAFE Note document, which covers unrelated securities-offering exemption mechanics.",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "franchise_declaration",
+      "franchise_definition",
+      "franchise_presale_registration",
+      "franchise_disclosure_document_timing",
+      "franchise_good_cause_termination",
+      "franchise_nonrenewal_notice",
+      "franchise_notice_requirements",
+      "franchise_ack"
+    ],
+    "fields": [
+      {
+        "id": "preparerName",
+        "label": "Preparer's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Business name under consideration (if applicable)",
+        "placeholder": "Acme Franchising, Inc.",
+        "required": false
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 4, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, state",
+        "placeholder": "Sacramento, California",
+        "required": true
+      }
+    ]
   }
 ]
