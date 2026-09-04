@@ -18831,5 +18831,48 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "employment_agency_fee_regulation_info_sheet",
+    "title": "California Fee-Charging Employment Agency Regulation — Information Sheet",
+    "description": "Explains, using the statute's own text, California's Employment Agency, Employment Counseling, and Job Listing Services Act (Civ. Code §§ 1812.500 et seq.), which regulates businesses that charge a jobseeker (not just an employer) a fee to help find work: the statutory definition of a fee-charging 'employment agency' and 'jobseeker,' the $3,000 surety bond requirement, jobseeker fee-schedule disclosure and dollar limits, the refund right when a jobseeker does not accept the arranged employment, and prohibited practices (referrals to nonexistent jobs, false advertising). Distinct from this project's Talent Agencies Act document, which governs procuring engagements for artists in the entertainment industry under a separate statute (Labor Code § 1700 et seq.).",
+    "categories": [
+      "Hiring"
+    ],
+    "clauseOrder": [
+      "empagencyfee_declaration_and_purpose",
+      "empagencyfee_definition_and_scope",
+      "empagencyfee_bonding_requirement",
+      "empagencyfee_fee_disclosure_and_limits",
+      "empagencyfee_refund_right",
+      "empagencyfee_prohibited_practices",
+      "empagencyfee_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "jobseekerName",
+        "label": "Jobseeker's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "employmentAgencyName",
+        "label": "Employment agency's name",
+        "placeholder": "Acme Career Placement, Inc.",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 5, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
