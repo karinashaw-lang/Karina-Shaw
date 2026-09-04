@@ -16774,5 +16774,85 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "partition_action_info_sheet",
+    "title": "Partition Action — Information Sheet",
+    "description": "Explains California's partition action, Code of Civil Procedure §§ 872.010-874.323 — the statutory mechanism a co-owner of real (or personal) property can use to seek a division or court-ordered sale of jointly-owned property. A companion to, and genuinely distinct from, this corpus's Quiet Title Action and Boundary Line Agreement documents: this document covers a remedy for co-owners who agree on ownership shares but want the property divided or sold, not a dispute over who owns the property or where a boundary sits. Covers who may bring the action and what it covers, the court's equitable power to order accounting and contribution among co-owners, the costs-of-partition and attorney's-fee rules (a specific departure from the general American Rule), the statutory preference for partition in kind over partition by sale and the \"great prejudice\" standard, and — where California's 2022-amended Partition of Real Property Act applies — the court-ordered appraisal and buyout right that precede a forced sale.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "partition_declaration",
+      "partition_who_may_bring_and_scope",
+      "partition_contribution_and_accounting",
+      "partition_costs_and_attorneys_fees",
+      "partition_in_kind_vs_sale_preference",
+      "partition_real_property_act_scope",
+      "partition_appraisal_and_buyout_right",
+      "partition_signature_acknowledgment"
+    ],
+    "fields": [
+      {
+        "id": "plaintiffName",
+        "label": "Plaintiff's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "otherCoOwnersNames",
+        "label": "Other co-owners' names",
+        "placeholder": "Taylor Morgan and Casey Morgan",
+        "required": true
+      },
+      {
+        "id": "coOwnershipType",
+        "label": "Form of co-ownership",
+        "placeholder": "tenants in common",
+        "required": true
+      },
+      {
+        "id": "requestedPartitionType",
+        "label": "Type of partition being considered",
+        "placeholder": "partition by sale",
+        "required": true
+      },
+      {
+        "id": "propertyAddress",
+        "label": "Property address",
+        "placeholder": "123 Main St, Apt 4, Springfield",
+        "required": true
+      },
+      {
+        "id": "legalDescription",
+        "label": "Legal description of the property",
+        "placeholder": "Lot 12, Block 3, Tract No. 4567, as per map recorded in Book 45, Page 12 of Maps, Sacramento County Records",
+        "required": true
+      },
+      {
+        "id": "parcelNumber",
+        "label": "Assessor's Parcel Number",
+        "placeholder": "123-456-789",
+        "required": false
+      },
+      {
+        "id": "countyOfFiling",
+        "label": "County of filing",
+        "placeholder": "Sacramento County",
+        "required": true
+      },
+      {
+        "id": "signatureDate",
+        "label": "Signature date",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "signatureCity",
+        "label": "City where signed",
+        "placeholder": "Sacramento",
+        "required": true
+      }
+    ]
   }
 ]
