@@ -19065,5 +19065,60 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "agricultural_worker_overtime_phase_in_info_sheet",
+    "title": "Phase-In Overtime for Agricultural Workers Act (Labor Code §§ 857-864) — Information Sheet",
+    "description": "Explains, using the statutes' own text, California's Phase-In Overtime for Agricultural Workers Act of 2016 (Labor Code §§ 857-864): the legislative findings, the Wage Order 14-2001 cross-reference defining 'agricultural occupation,' the now-fully-effective overtime phase-in schedule (8 hours/day, 40 hours/week for all agricultural employers regardless of size, since the final January 1, 2025 step for smaller employers has passed), the extension of general overtime rules and the 12-hour daily double-time threshold, and the Governor's now-lapsed conditional authority to delay the schedule.",
+    "categories": [
+      "During employment"
+    ],
+    "clauseOrder": [
+      "agot_declaration",
+      "agot_title_and_findings",
+      "agot_agricultural_occupation_definition",
+      "agot_overtime_phase_in_schedule",
+      "agot_general_overtime_extension_and_double_time",
+      "agot_governor_suspension_authority",
+      "agot_acknowledgment"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "jobTitle",
+        "label": "Job title",
+        "placeholder": "Field Supervisor",
+        "required": true
+      },
+      {
+        "id": "startDate",
+        "label": "Start date",
+        "placeholder": "March 1, 2026",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 5, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
