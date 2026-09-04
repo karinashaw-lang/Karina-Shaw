@@ -15043,5 +15043,54 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "uniform_prudent_investor_act_info_sheet",
+    "title": "Uniform Prudent Investor Act — Information Sheet",
+    "description": "Background information on California's Uniform Prudent Investor Act (Probate Code sections 16045-16054) -- the trustee's duty to invest and manage trust assets as a prudent investor would, evaluated in the context of the trust portfolio as a whole, the mandatory diversification duty and its exception, the statutory factors a trustee must consider, and the trust instrument's power to expand or restrict the standard.",
+    "categories": [
+      "Estate Planning"
+    ],
+    "clauseOrder": [
+      "prudentinvestor_declaration",
+      "prudentinvestor_core_standard",
+      "prudentinvestor_factors",
+      "prudentinvestor_diversification",
+      "prudentinvestor_expand_restrict",
+      "prudentinvestor_hindsight",
+      "prudentinvestor_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "trusteeName",
+        "label": "Initial trustee name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "trustName",
+        "label": "Name of this trust",
+        "placeholder": "The Jordan Alex Lee Revocable Living Trust",
+        "required": true
+      },
+      {
+        "id": "originalTrustDate",
+        "label": "Date the original trust was created",
+        "placeholder": "March 14, 2020",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
