@@ -51073,6 +51073,75 @@
           "quote": "No employment agency shall give any false information or make any false promises or representations concerning an engagement or employment to any jobseeker who registers or applies for an engagement or employment or help."
         }
       ]
+    },
+    {
+      "id": "splitshift_intro",
+      "title": "About This Information Sheet",
+      "kind": "drafting",
+      "body": "This information sheet describes additional facts about California's split shift premium pay requirement under the Industrial Welfare Commission (IWC) Wage Orders, beyond the core one-hour premium formula and the live-in-employee exception already described in this project's Reporting Time Pay Information Sheet: the Wage Order's own formal definition of a \"split shift,\" the Division of Labor Standards Enforcement's (DLSE) stated position on how long an unpaid interruption must last before it is treated as a split shift rather than a bona fide meal or rest period, and the Wage Order's separate recordkeeping duty for split shift intervals. It states facts about how these requirements apply to {{employeeName}}'s employment with {{companyName}}. It does not restate the one-hour premium formula, the offset of wages paid above minimum wage, or the live-in-employee exception, all of which are addressed elsewhere in this project rather than repeated here."
+    },
+    {
+      "id": "splitshift_acknowledgment",
+      "title": "Signature and Receipt",
+      "kind": "drafting",
+      "body": "Employee Signature: ☐ _________________________ Date: _______________\n\n{{employeeName}} (print name)\n\nEmployer Representative Signature: ☐ _________________________ Date: _______________\n\n{{companyName}} (print name and title)"
+    },
+    {
+      "id": "splitshift_definition",
+      "title": "The Wage Order's Definition of a \"Split Shift\"",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-04",
+      "body": "The applicable IWC Wage Order defines a \"split shift,\" for purposes of the split-shift premium requirement, as a work schedule that is interrupted by a non-paid, non-working period established by {{companyName}}, other than a bona fide rest or meal period. Under this definition, an interruption that qualifies as a bona fide rest or meal period does not, by itself, turn a day's schedule into a split shift.",
+      "gap": "This clause quotes IWC Wage Order No. 4-2001, section 2(R) (the order's \"Definitions\" section), Cal. Code Regs., tit. 8, § 11040, subd. 2(R) — fetched directly from the California Department of Industrial Relations (dir.ca.gov) using two separate curl requests with different User-Agent strings, both returning byte-identical PDF content (HTTP 200), with the quoted text confirmed as an exact, whitespace-normalized substring of that fetched text (the source PDF line-wraps the sentence between \"employer,\" and \"other than,\" which this clause's quote collapses to a single space). This is the same wage order already cited elsewhere in this corpus for the split-shift premium formula itself (IWC Wage Order No. 4-2001, § 4(C), quoted in this project's Reporting Time Pay Information Sheet) — the definition quoted here is a different, independently numbered subdivision of that same regulatory instrument, not an independent second source confirming the same fact from elsewhere. This clause states the Wage Order's own definitional text; it does not determine whether any specific interruption in a specific work schedule qualifies as a bona fide rest or meal period rather than a split-shift-triggering interruption — that threshold question is addressed, to the extent DLSE guidance was located and verified, in a separate clause of this document. This is one state's regulatory text, offered as documented evidence of what California requires — not a claim about which jurisdiction's law governs a specific employer or employee.",
+      "citations": [
+        {
+          "case": "IWC Wage Order No. 4-2001, § 2(R)",
+          "cite": "Cal. Code Regs., tit. 8, § 11040, subd. 2(R)",
+          "url": "https://www.dir.ca.gov/IWC/IWCArticle04.pdf",
+          "quote": "a work schedule, which is interrupted by non-paid non-working periods established by the employer, other than bona fide rest or meal periods."
+        }
+      ]
+    },
+    {
+      "id": "splitshift_bona_fide_duration",
+      "title": "DLSE's Position on How Long an Interruption May Last Before It Becomes a Split Shift",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-04",
+      "body": "California's Division of Labor Standards Enforcement (DLSE), the agency that enforces the Wage Orders, has stated its historical position that a \"bona fide\" meal period, for purposes of the split-shift definition, is one that does not exceed one hour (60 minutes) in length, and that an unpaid interruption exceeding one hour will give rise to a \"split shift\" situation.",
+      "gap": "Both quotations in this clause's citations are drawn from a single source — a December 11, 2002 DLSE opinion letter (No. 2002.12.11, \"Hours Worked — Split Shift\") — and are two passages from the same short letter, not independent of one another. That letter was fetched directly from the California Department of Industrial Relations (dir.ca.gov) using two separate curl requests with different User-Agent strings, both returning byte-identical PDF content (HTTP 200); both quotations were confirmed as exact, whitespace-normalized substrings of that fetched text (the source PDF line-wraps each quoted passage mid-sentence, which this clause's quotes collapse to single spaces). The letter itself was written in response to an inquiry about IWC Wage Order No. 9-2001 (Transportation Industry), not Wage Order No. 4-2001, though the letter states that the same split-shift definition \"provides, inter alia, at Section 4\" — with materially the same operative language — \"as with all of the orders,\" and this project independently confirmed the identical split-shift definition text in Wage Order No. 4-2001, section 2(R) (quoted in the preceding clause of this document). A DLSE opinion letter is agency interpretive guidance stating the Labor Commissioner's enforcement position; it is not itself the Wage Order's own codified regulatory text, and this clause does not determine whether it would be given controlling weight in a specific dispute. This is one state's regulatory and enforcement guidance, offered as documented evidence of what California requires — not a claim about which jurisdiction's law governs a specific employer or employee.",
+      "citations": [
+        {
+          "case": "DLSE Opinion Letter No. 2002.12.11 (Hours Worked — Split Shift)",
+          "cite": "Cal. Div. of Labor Standards Enforcement, Opinion Letter 2002.12.11 (Dec. 11, 2002)",
+          "url": "https://www.dir.ca.gov/dlse/opinions/2002-12-11.pdf",
+          "quote": "a \"bona fide\" meal period is one that does not exceed one hour (60 minutes) in length."
+        },
+        {
+          "case": "DLSE Opinion Letter No. 2002.12.11 (Hours Worked — Split Shift)",
+          "cite": "Cal. Div. of Labor Standards Enforcement, Opinion Letter 2002.12.11 (Dec. 11, 2002)",
+          "url": "https://www.dir.ca.gov/dlse/opinions/2002-12-11.pdf",
+          "quote": "any interruption exceeding a one-hour period will give rise to a \"split shift\" situation."
+        }
+      ]
+    },
+    {
+      "id": "splitshift_recordkeeping",
+      "title": "The Wage Order's Recordkeeping Duty for Split Shift Intervals",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-04",
+      "body": "Separate from the split-shift premium itself, the applicable IWC Wage Order requires {{companyName}} to keep time records showing when {{employeeName}} begins and ends each work period, and requires that split shift intervals, along with meal periods and total daily hours worked, be recorded.",
+      "gap": "This clause quotes IWC Wage Order No. 4-2001, section 7(A)(3) (the order's \"Records\" section), Cal. Code Regs., tit. 8, § 11040, subd. 7(A)(3) — fetched directly from the California Department of Industrial Relations (dir.ca.gov) using two separate curl requests with different User-Agent strings, both returning byte-identical PDF content (HTTP 200), with the quoted text confirmed as an exact, whitespace-normalized substring of that fetched text (the source PDF line-wraps the sentence between \"total\" and \"daily,\" which this clause's quote collapses to a single space). This is the same wage order already cited elsewhere in this corpus and in this document for the split-shift premium formula and definition — the recordkeeping duty quoted here is a different, independently numbered subdivision of that same regulatory instrument, not an independent second source. This clause states that a recordkeeping duty exists; it does not state a specific formula for the split-shift premium itself (addressed in this project's existing Reporting Time Pay Information Sheet) or a penalty for a specific recordkeeping failure, which the quoted subdivision does not itself specify. This is one state's regulatory text, offered as documented evidence of what California requires — not a claim about which jurisdiction's law governs a specific employer or employee.",
+      "citations": [
+        {
+          "case": "IWC Wage Order No. 4-2001, § 7(A)(3)",
+          "cite": "Cal. Code Regs., tit. 8, § 11040, subd. 7(A)(3)",
+          "url": "https://www.dir.ca.gov/IWC/IWCArticle04.pdf",
+          "quote": "Time records showing when the employee begins and ends each work period. Meal periods, split shift intervals and total daily hours worked shall also be recorded."
+        }
+      ]
     }
   ]
 }

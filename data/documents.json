@@ -18874,5 +18874,34 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "split_shift_premium_pay_info_sheet",
+    "title": "Split Shift Premium Pay — Additional Requirements Information Sheet",
+    "description": "Explains, using the Wage Order's own text, additional facts about California's split shift premium pay requirement beyond the core one-hour premium formula and live-in-employee exception already covered in this project's Reporting Time Pay Information Sheet: the IWC Wage Order's formal definition of a 'split shift,' DLSE's stated enforcement position on how long an unpaid interruption must last before it is treated as a split shift rather than a bona fide meal or rest period, and the Wage Order's separate recordkeeping duty for split shift intervals.",
+    "categories": [
+      "During employment"
+    ],
+    "clauseOrder": [
+      "splitshift_intro",
+      "splitshift_definition",
+      "splitshift_bona_fide_duration",
+      "splitshift_recordkeeping",
+      "splitshift_acknowledgment"
+    ],
+    "fields": [
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      }
+    ]
   }
 ]
