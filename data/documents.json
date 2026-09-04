@@ -20614,5 +20614,48 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "charitable_trust_registry_annual_reporting_info_sheet",
+    "title": "Registry of Charitable Trusts — Registration and Annual Reporting — Information Sheet",
+    "description": "Explains California's Registry of Charitable Trusts, administered by the Attorney General under the Supervision of Trustees and Fundraisers for Charitable Purposes Act (Gov. Code §§ 12580-12599.10): who must register (charitable corporations, unincorporated associations, trustees, and other entities holding property for charitable purposes, plus the exemptions for government entities and organizations operated primarily as religious, educational, hospital, or licensed health care service plan entities), the 30-day initial-registration deadline triggered by first receiving property, the recurring Form RRF-1 annual reporting requirement and the $2,000,000 gross-revenue audited-financial-statement threshold, Attorney General enforcement authority and statutory civil penalties, and the consequences of delinquency or failure to renew. Distinct from the corpus's existing nonprofit-formation documents (Public Benefit, Mutual Benefit, Religious Corporation Articles of Incorporation), which stop at Secretary of State formation filing and do not cover this ongoing Attorney General registration and reporting duty.",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "charityregistry_declaration",
+      "charityregistry_who_must_register",
+      "charityregistry_initial_registration_timing",
+      "charityregistry_annual_reporting_requirement",
+      "charityregistry_ag_enforcement_penalties",
+      "charityregistry_delinquency_and_good_standing",
+      "charityregistry_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "preparerName",
+        "label": "Preparer's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Organization name",
+        "placeholder": "Acme Community Foundation",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 4, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, state",
+        "placeholder": "Sacramento, California",
+        "required": true
+      }
+    ]
   }
 ]
