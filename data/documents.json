@@ -17866,5 +17866,52 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "series_llc_california_treatment_info_sheet",
+    "title": "Series LLCs and California Law — Information Sheet",
+    "description": "Explains California's treatment of series limited liability companies: the absence of any domestic series-LLC formation mechanism in California's Revised Uniform Limited Liability Company Act, the ordinary foreign-LLC registration framework that instead applies to a series LLC formed under another state's law, and the Franchise Tax Board's administrative treatment of each qualifying series as a separate LLC for the 00 annual tax and LLC fee.",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "seriesllc_declaration",
+      "seriesllc_no_domestic_formation",
+      "seriesllc_foreign_registration",
+      "seriesllc_per_series_tax_treatment",
+      "seriesllc_closing_signature"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Series LLC name",
+        "placeholder": "Acme Series, LLC",
+        "required": true
+      },
+      {
+        "id": "stateOfFormation",
+        "label": "State where the series LLC was formed",
+        "placeholder": "Delaware",
+        "required": true
+      },
+      {
+        "id": "authorizedSignerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 4, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Los Angeles, California",
+        "required": true
+      }
+    ]
   }
 ]
