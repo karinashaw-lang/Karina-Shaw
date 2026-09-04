@@ -17187,5 +17187,36 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "llc_member_dissociation_info_sheet",
+    "title": "LLC Member Dissociation and Buyout — Information Sheet",
+    "description": "Explains California's Revised Uniform Limited Liability Company Act default rules on member dissociation, Corp. Code §§ 17706.01-17706.03, 17707.01, 17707.03 — a genuine companion to this corpus's Partnership Agreement document, which covers dissociation under a separate statute (the 1994 Uniform Partnership Act) for general partnerships, not LLCs. Covers the statutory events that dissociate a member, the distinction between the power to dissociate (which always exists) and wrongful dissociation (which carries liability), the default effect of dissociation on voting/management/economic rights, why dissociation does not itself dissolve the LLC, and — a key finding — the absence of any general statutory buyout right for an ordinarily dissociated member, apart from a narrower mechanism tied specifically to avoiding a judicial dissolution decree.",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "llcdissociation_purpose",
+      "llcdissociation_triggers",
+      "llcdissociation_wrongful",
+      "llcdissociation_effect",
+      "llcdissociation_continuation",
+      "llcdissociation_no_default_buyout",
+      "llcdissociation_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "stateOfFormation",
+        "label": "State of formation",
+        "placeholder": "California",
+        "required": true
+      }
+    ]
   }
 ]
