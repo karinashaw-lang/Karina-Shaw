@@ -17218,5 +17218,42 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "california_invasion_of_privacy_act_info_sheet",
+    "title": "California Invasion of Privacy Act (CIPA) — Information Sheet",
+    "description": "Explains California's Invasion of Privacy Act, Penal Code §§ 630-638.55 — a distinct body of law from this corpus's employee-monitoring content, which addresses employer computer/email/network systems specifically. CIPA governs the recording, wiretapping, and interception of communications broadly, regardless of an employment relationship, and carries both criminal penalties and a private civil right of action. Covers the wiretapping/unauthorized-connection prohibition (§ 631), the all-party consent requirement for recording a confidential communication (§ 632) and the statute's own definitions, the evidentiary exclusion rule both sections state for unlawfully obtained material, and the private right of action's statutory damages and injunctive relief (§ 637.2).",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "cipa_purpose_and_overview",
+      "cipa_631_wiretapping_and_unauthorized_connection",
+      "cipa_632_all_party_consent_recording",
+      "cipa_632_confidential_communication_defined",
+      "cipa_evidence_exclusion_rule",
+      "cipa_637_2_private_right_of_action",
+      "cipa_acknowledgment"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "signatureDate",
+        "label": "Signature date",
+        "placeholder": "September 1, 2026",
+        "required": true
+      }
+    ]
   }
 ]
