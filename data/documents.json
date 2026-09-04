@@ -17719,5 +17719,54 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "family_code_2641_reimbursement_info_sheet",
+    "title": "Section 2641 Reimbursement for Community Contributions to Education or Training — Information Sheet",
+    "description": "Explains California Family Code section 2641's community-reimbursement right when community or quasi-community property paid for a party's education or training that substantially enhanced that party's earning capacity — the core right, the interest and loan-assignment rules, the statutory reduction grounds including the ten-year rebuttable presumption, and the exclusive-remedy and written-agreement-waiver provisions. A distinct statute from Family Code section 2640, covered in a separate companion information sheet.",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "reimbursement2641_declaration",
+      "reimbursement2641_definitions",
+      "reimbursement2641_core_right",
+      "reimbursement2641_tenyear_presumption",
+      "reimbursement2641_other_reduction_grounds",
+      "reimbursement2641_exclusive_remedy_and_waiver",
+      "reimbursement2641_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "party1Name",
+        "label": "First party's full legal name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "party2Name",
+        "label": "Second party's full legal name",
+        "placeholder": "Morgan Casey Lee",
+        "required": true
+      },
+      {
+        "id": "countyOfFiling",
+        "label": "County of filing",
+        "placeholder": "Sacramento County",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
