@@ -16963,5 +16963,55 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "deceased_employee_wages_surviving_spouse_info_sheet",
+    "title": "Payment of a Deceased Employee's Wages to a Surviving Spouse Without Probate — Information Sheet",
+    "description": "Explains Probate Code §§ 13600-13606, a statutory procedure that lets an employer pay a deceased employee's wages or other compensation directly to the employee's surviving spouse (or that spouse's guardian or conservator) without probate — narrower than a general \"successor\" procedure, since the chapter is titled \"Collection by Affidavit of Compensation Owed to Deceased Spouse\" and names only the surviving spouse. A companion to this corpus's Unclaimed Final Wages information sheet, which covers the different scenario where final wages go unclaimed and eventually escheat to the state. Covers the core authorization, dollar cap, and lack of a waiting period; the declaration's required content; the employer's duty to pay promptly; the employer's discharge from liability for good-faith reliance; the surviving spouse's remedy and fee-shifting rule if the employer refuses to pay; and the procedure's non-exclusivity and the recipient's continued accountability to the estate.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "deceasedwages_purpose",
+      "deceasedwages_core_authorization",
+      "deceasedwages_declaration_content",
+      "deceasedwages_employer_payment_duty",
+      "deceasedwages_employer_discharge",
+      "deceasedwages_refusal_remedy",
+      "deceasedwages_not_exclusive_and_recipient_liability",
+      "deceasedwages_signature_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "decedentName",
+        "label": "Decedent's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "dateOfDeath",
+        "label": "Date of death",
+        "placeholder": "March 15, 2026",
+        "required": true
+      },
+      {
+        "id": "survivingSpouseName",
+        "label": "Surviving spouse or domestic partner's name",
+        "placeholder": "Taylor Morgan",
+        "required": true
+      },
+      {
+        "id": "unpaidWagesAmount",
+        "label": "Unpaid wages amount",
+        "placeholder": "$3,200.00",
+        "required": true
+      }
+    ]
   }
 ]
