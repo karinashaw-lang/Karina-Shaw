@@ -16581,5 +16581,42 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "consumer_credit_report_restriction_info_sheet",
+    "title": "Employer Use of Consumer Credit Reports — Information Sheet",
+    "description": "Explains California Labor Code § 1024.5, a statute restricting whether an employer may use a consumer credit report to make an employment decision — separate from this corpus's Investigative Consumer Reporting Agencies Act (ICRAA) document, which covers disclosure and authorization mechanics for a different kind of report: the statute's core prohibition, its list of eight exempted position categories, its own definitions of \"consumer credit report\" and \"managerial position,\" its exclusion for certain financial institutions, and how the statute is enforced.",
+    "categories": [
+      "Hiring"
+    ],
+    "clauseOrder": [
+      "creditreport_declaration",
+      "creditreport_core_prohibition",
+      "creditreport_exempt_positions",
+      "creditreport_definitions",
+      "creditreport_financial_institution_exclusion",
+      "creditreport_enforcement",
+      "creditreport_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme Innovations LLC",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Applicant/employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "jobTitle",
+        "label": "Job title",
+        "placeholder": "Software Engineer",
+        "required": true
+      }
+    ]
   }
 ]
