@@ -15295,5 +15295,84 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "right_to_refuse_hazardous_work_info_sheet",
+    "title": "Right to Refuse Hazardous Work — Information Sheet",
+    "description": "Background information on California Labor Code sections 6310, 6311, and 6312 -- an employee's right not to be laid off or discharged for refusing to perform work that would violate a safety standard, order, or the Labor Code itself where doing so creates a real and apparent hazard, the broader complaint-based protection of section 6310, and the Labor Commissioner complaint procedure that enforces both.",
+    "categories": [
+      "During employment"
+    ],
+    "clauseOrder": [
+      "refusehazardous_declaration",
+      "refusehazardous_core_right_and_hazard_standard",
+      "refusehazardous_no_express_notice_precondition_in_text",
+      "refusehazardous_wage_remedy_right_of_action",
+      "refusehazardous_complaint_procedure_and_deadlines",
+      "refusehazardous_section6310_broader_complaint_protection",
+      "refusehazardous_signature_acknowledgment"
+    ],
+    "fields": [
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "jobTitle",
+        "label": "Job title",
+        "placeholder": "Software Engineer",
+        "required": true
+      },
+      {
+        "id": "workDescription",
+        "label": "Description of the work",
+        "placeholder": "Repairing a live electrical panel without lockout/tagout equipment",
+        "required": true
+      },
+      {
+        "id": "incidentDescription",
+        "label": "Description of incident",
+        "placeholder": "Describe what happened",
+        "required": true
+      },
+      {
+        "id": "incidentLocation",
+        "label": "Location of incident",
+        "placeholder": "123 Main St., Sacramento, CA",
+        "required": true
+      },
+      {
+        "id": "incidentDate",
+        "label": "Date of incident",
+        "placeholder": "August 15, 2026",
+        "required": true
+      },
+      {
+        "id": "supervisorName",
+        "label": "Supervisor's name",
+        "placeholder": "Taylor Morgan",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
