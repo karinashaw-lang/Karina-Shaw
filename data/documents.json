@@ -16921,5 +16921,47 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "workers_compensation_insurance_duty_info_sheet",
+    "title": "Employer's Duty to Secure Workers' Compensation Insurance — Information Sheet",
+    "description": "Explains California employers' mandatory duty to secure workers' compensation insurance coverage, Labor Code §§ 3700-3710.1 — a companion to this corpus's Workers' Compensation Claim Notice and Workers' Compensation Retaliation (§ 132a) documents, which cover the claims process and retaliation for filing a claim rather than the employer's threshold duty to carry coverage in the first place. Covers the acceptable ways an employer may secure coverage, the criminal penalty for a knowing failure to do so, the Director of Industrial Relations' stop-order authority, and an injured employee's civil-action remedy — with the exclusive-remedy bar lifted and a presumption of employer negligence — against an employer who has failed to secure coverage.",
+    "categories": [
+      "Hiring"
+    ],
+    "clauseOrder": [
+      "wcinsurance_coverage_declaration",
+      "wcinsurance_mandatory_duty",
+      "wcinsurance_criminal_penalty",
+      "wcinsurance_stop_order_authority",
+      "wcinsurance_employee_civil_remedy",
+      "wcinsurance_signature_certification"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
