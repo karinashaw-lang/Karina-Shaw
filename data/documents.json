@@ -18355,5 +18355,47 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "california_abc_test_info_sheet",
+    "title": "California ABC Test for Worker Classification — Information Sheet",
+    "description": "Explains California's own statutory worker-classification test (Labor Code §§ 2775-2776, codifying Dynamex Operations West, Inc. v. Superior Court): the presumption of employee status and the hiring entity's burden, the three required ABC factors, the test's own stated scope and its fallback to the older Borello multi-factor test, and the business-to-business exemption. Distinct from the federal common-law control test addressed in this project's Independent Contractor Agreement document — the two tests can produce different answers for the same relationship.",
+    "categories": [
+      "Hiring"
+    ],
+    "clauseOrder": [
+      "abctest_purpose",
+      "abctest_presumption_and_burden",
+      "abctest_three_factors",
+      "abctest_scope_and_fallback",
+      "abctest_b2b_exemption",
+      "abctest_acknowledgment"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Worker name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 5, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Sacramento, California",
+        "required": true
+      }
+    ]
   }
 ]
