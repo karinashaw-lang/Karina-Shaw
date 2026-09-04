@@ -19736,5 +19736,48 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "california_whistleblower_protection_info_sheet",
+    "title": "California General Whistleblower Protection (Labor Code Section 1102.5) — Information Sheet",
+    "description": "Explains California's general whistleblower-protection statute, Labor Code section 1102.5: the scope of a protected disclosure (to a government or law enforcement agency, a person with authority over the employee, or another employee with authority to investigate) and the reasonable-cause-to-believe standard, the anti-retaliation rule, protection for refusing to break the law and for activity in a former job, the lawyer-client/physician-patient/trade-secret exceptions and family-member retaliation protection, the broad statutory definition of \"employer,\" and the civil-penalty and attorney's-fee remedies. Distinct from the corpus's existing Whistleblower Policy document, which covers only the federal securities-fraud statutes (Sarbanes-Oxley and Dodd-Frank), and from the Wrongful Termination and Section 132a Retaliation information sheets, which address section 1102.5 only as background for an already-ended employment relationship.",
+    "categories": [
+      "During employment"
+    ],
+    "clauseOrder": [
+      "labor1102_reporting_note",
+      "labor1102_protected_disclosure_scope",
+      "labor1102_antiretaliation_rule",
+      "labor1102_refusal_and_prior_employer",
+      "labor1102_exceptions_and_coverage",
+      "labor1102_civil_penalty_and_fees",
+      "labor1102_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme Corp.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 4, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, state",
+        "placeholder": "Sacramento, California",
+        "required": true
+      }
+    ]
   }
 ]
