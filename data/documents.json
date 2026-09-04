@@ -17961,5 +17961,72 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "grocery_worker_retention_law_info_sheet",
+    "title": "California Grocery Worker Retention Law — Information Sheet",
+    "description": "Explains California's grocery worker retention law (Labor Code §§ 2500-2522, Division 2, Part 9.5), triggered by a change in control (ownership/asset sale, not a management change) of a covered grocery establishment: who qualifies as an eligible grocery worker, the 15-day employee-information transfer and 5-day posted-notice duties, the preferential hiring list and 90-day retention obligation with its no-discharge-without-cause protection and end-of-period evaluation, the anti-retaliation provision, and the small-employer exemption, bargaining-out mechanism, and enforcement scheme. A separate statute from this project's Displaced Janitor Opportunity Act document, which covers a different industry and a different triggering event.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "groceryworker_background",
+      "groceryworker_definitions",
+      "groceryworker_notice_and_posting",
+      "groceryworker_retention_and_hiring_list",
+      "groceryworker_discharge_protection_and_antiretaliation",
+      "groceryworker_scope_exemptions_and_enforcement",
+      "groceryworker_certification"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Successor grocery employer name",
+        "placeholder": "Acme Grocery, Inc.",
+        "required": true
+      },
+      {
+        "id": "incumbentEmployerName",
+        "label": "Incumbent grocery employer name (owner/operator before the change in control)",
+        "placeholder": "Old Owner Grocery Co.",
+        "required": true
+      },
+      {
+        "id": "establishmentDescription",
+        "label": "Grocery establishment covered by this record",
+        "placeholder": "123 Main St. store location",
+        "required": true
+      },
+      {
+        "id": "transferDocumentDate",
+        "label": "Date the transfer document effecting the change in control was executed",
+        "placeholder": "September 4, 2026",
+        "required": true
+      },
+      {
+        "id": "affectedEmployeeCount",
+        "label": "Approximate number of eligible grocery workers affected",
+        "placeholder": "45",
+        "required": false
+      },
+      {
+        "id": "authorizedSignerName",
+        "label": "Name of person completing this record",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "authorizedSignerTitle",
+        "label": "Authorized signer's title",
+        "placeholder": "HR Director",
+        "required": true
+      },
+      {
+        "id": "signatureDate",
+        "label": "Signature date",
+        "placeholder": "September 4, 2026",
+        "required": true
+      }
+    ]
   }
 ]
