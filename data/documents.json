@@ -18028,5 +18028,34 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "wage_order_uniform_maintenance_info_sheet",
+    "title": "Wage Order Uniform Requirement — Information Sheet",
+    "description": "Explains the IWC Wage Orders' provide-and-maintain duty for a required employee uniform: the Wage Order's own definition of \"uniform\" (distinctive design or color, not an employee's ordinary basic wardrobe), which industries and occupations the requirement was confirmed to cover, and the exemptions for administrative/executive/professional employees and (with limited exceptions) public employees. A separate, Wage-Order-specific rule from this project's general Labor Code § 2802 business-expense reimbursement document.",
+    "categories": [
+      "During employment"
+    ],
+    "clauseOrder": [
+      "uniformmaint_intro",
+      "uniformmaint_obligation",
+      "uniformmaint_definition",
+      "uniformmaint_scope",
+      "uniformmaint_acknowledgment"
+    ],
+    "fields": [
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      }
+    ]
   }
 ]

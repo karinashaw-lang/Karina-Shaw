@@ -48986,6 +48986,93 @@
       "title": "Certification",
       "kind": "drafting",
       "body": "The undersigned, {{authorizedSignerName}}, {{authorizedSignerTitle}} of {{companyName}}, certifies that the transition record above accurately describes, to the best of the undersigned's knowledge, {{companyName}}'s actions regarding the retention of eligible grocery workers at the grocery establishment identified above under California's grocery worker retention law, Labor Code §§ 2500-2522.\n\nSignature: ☐ _________________________ Date: {{signatureDate}}\n\n{{authorizedSignerName}}, {{authorizedSignerTitle}}\nOn behalf of {{companyName}}"
+    },
+    {
+      "id": "uniformmaint_intro",
+      "title": "About This Information Sheet",
+      "kind": "drafting",
+      "body": "This information sheet describes a specific requirement of California's Industrial Welfare Commission (IWC) Wage Orders: the duty of an employer to provide and maintain a uniform it requires an employee to wear, and the Wage Orders' own definition of what counts as a \"uniform\" for that purpose. It states facts about that requirement as it applies to {{employeeName}}'s employment with {{companyName}}. It is separate from, and does not restate, this project's existing information sheet on the general duty under Labor Code § 2802 to reimburse necessary business expenses — the Wage Order uniform requirement described here has its own statutory definition of \"uniform\" and its own provide-and-maintain mechanism, independent of that statute."
+    },
+    {
+      "id": "uniformmaint_obligation",
+      "title": "The Wage Order's Provide-and-Maintain Duty",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-04",
+      "body": "California's Industrial Welfare Commission (IWC) Wage Orders provide that \"When uniforms are required by the employer to be worn by the employee as a condition of employment, such uniforms shall be provided and maintained by the employer.\" This duty applies to {{employeeName}}'s employment with {{companyName}} to the extent {{companyName}} requires {{employeeName}} to wear a uniform, as that term is defined in the following clause.",
+      "gap": "This clause quotes IWC Wage Order No. 4-2001, section 9(A) (Cal. Code Regs., tit. 8, § 11040) — the general, catch-all wage order for professional, technical, clerical, mechanical, and similar occupations, used elsewhere in this corpus for the same reason. It was fetched directly from the California Department of Industrial Relations (dir.ca.gov) using two separate curl requests with different User-Agent strings, both returning byte-identical PDF content (HTTP 200); the extracted text was then confirmed as an exact, whitespace-normalized substring of that fetched text. WebFetch was not used for this domain in this session (it is expected to be blocked in this environment for dir.ca.gov), so the curl-with-two-User-Agents method served as the verification substitute. The identical sentence was independently confirmed to also appear, word for word, in IWC Wage Order No. 7-2001 (Mercantile Industry, Cal. Code Regs., tit. 8, § 11070), fetched and verified the same way, and separately in a California Court of Appeal's own footnote quoting that same Wage Order No. 7-2001 provision — the second citation below, which is a genuinely independent source (a judicial opinion, not another wage order) even though the quoted sentence happens to be word for word identical. A near-identical but not word-for-word version of the requirement also appears at section 8(A) of IWC Wage Order No. 16-2001 (Certain On-Site Occupations in the Construction, Drilling, Logging and Mining Industries, Cal. Code Regs., tit. 8, § 11160), also fetched and verified this session, which reorders the sentence to read \"When the employer requires uniforms to be worn by the employee...\" rather than \"When uniforms are required by the employer...\" and numbers the provision as its own section 8 rather than section 9. This confirms the requirement recurs across at least these three of California's 17 industry/occupation wage orders, but is not proof that its exact wording or section number is identical in every one of them — only these three were fetched and checked this session. Neither the wage order text nor the case law fetched this session specifies a dollar formula, percentage, or other fixed method for calculating the cost of \"maintaining\" a uniform (for example, a specific reimbursement rate for an employee who launders a required uniform at home); this clause states that a maintenance duty exists, not how its cost is to be calculated in a specific case. Separately, this clause does not restate the general necessary-expense reimbursement duty under Labor Code § 2802 (covered in this project's other information sheet on that subject); a California Court of Appeal has recognized that a uniform-cost claim can implicate both that statute and the Wage Order's own uniform provision, but this document addresses only the Wage Order rule.",
+      "citations": [
+        {
+          "case": "IWC Wage Order No. 4-2001, § 9(A)",
+          "cite": "Cal. Code Regs., tit. 8, § 11040, subd. 9(A)",
+          "url": "https://www.dir.ca.gov/IWC/IWCArticle04.pdf",
+          "quote": "When uniforms are required by the employer to be worn by the employee as a condition of employment, such uniforms shall be provided and maintained by the employer."
+        },
+        {
+          "case": "Dep't of Indus. Relations v. UI Video Stores, Inc.",
+          "cite": "55 Cal. App. 4th 1084, 1088 fn. 1 (1997)",
+          "url": "https://www.courtlistener.com/opinion/2302211/dept-of-indus-relations-v-ui-video-stores-inc/",
+          "quote": "When uniforms are required by the employer to be worn by the employee as a condition of employment, such uniforms shall be provided and maintained by the employer."
+        }
+      ]
+    },
+    {
+      "id": "uniformmaint_definition",
+      "title": "What Counts as a \"Uniform\": Distinctive Design or Color, Not Ordinary Wardrobe",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-04",
+      "body": "The Wage Order defines the term \"uniform,\" for purposes of this requirement, so that it \"includes wearing apparel and accessories of distinctive design or color.\" California's Division of Labor Standards Enforcement (DLSE) — the agency that enforces the Wage Orders — has stated that this definition \"is sufficiently flexible to allow the employer to specify basic wardrobe items which are usual and generally usable in the occupation, such as white shirts, dark pants and black shoes and belts, all of unspecified design,\" without the employer having to furnish those items. DLSE's stated position is that \"If a required black or white uniform or accessory does not meet the test of being generally usable in the occupation the employee may not be required to pay for it.\"",
+      "gap": "This clause's first citation quotes IWC Wage Order No. 4-2001, section 9(A) (Cal. Code Regs., tit. 8, § 11040), fetched and verified using the same two-User-Agent curl method described in the preceding clause, and confirmed as an exact, whitespace-normalized substring of that fetched text; the identical definition sentence also appears, word for word, in Wage Order No. 7-2001 and Wage Order No. 16-2001, both also fetched this session. Separately, the two quoted sentences describing \"basic wardrobe items\" are drawn from a single source, section 45.5.5 of the DLSE's own Enforcement Policies and Interpretations Manual (fetched from dir.ca.gov using the same two-User-Agent method, byte-identical both times), and are two consecutive sentences of that same subsection — not independent of one another. That Manual passage itself states that this \"basic wardrobe\" language originated in the IWC's own Statement as to the Basis for the wage orders beginning in 1980, and that despite later amendments to the wage orders, \"the basis for the language remains valid.\" This document did not independently fetch or verify the text of that original 1980 Statement of Basis — only the DLSE Manual's own reproduction and adoption of it as current enforcement policy, which is a genuinely different, independent source from the Wage Order's own operative regulatory text quoted in the first citation, but is agency interpretive guidance rather than the Wage Order's own codified language. The DLSE Manual and a published Court of Appeal decision (Dep't of Indus. Relations v. UI Video Stores, Inc. (1997) 55 Cal.App.4th 1084) both reference further examples of what has been found to be, or not be, a qualifying \"uniform\" — for instance, a distinctively colored \"tropical shirt\" per a DLSE opinion letter the Manual cites, and a required blue shirt and tan or khaki pants (the dress code at issue in UI Video Stores itself) — but this session did not independently fetch and verify the text of that underlying DLSE opinion letter, and this clause does not itself determine whether any specific garment an employer may require an employee to wear meets or fails the distinctive-design-or-color test; that remains a fact-specific determination that the Wage Order's own text and this agency guidance leave to be applied case by case. Separately, the source PDF for Wage Order No. 4-2001 renders the nested quotation marks immediately around the single word \"uniform\" in this same sentence (\"The term 'uniform' includes...\") as two non-standard characters instead of ordinary curly quotation marks — confirmed to be a rendering artifact of that specific PDF's embedded font by visually inspecting a rendering of the PDF page itself, and resolved here by quoting only the portion of the sentence after that word, which extracts cleanly and identically from all three wage orders' PDFs.",
+      "citations": [
+        {
+          "case": "IWC Wage Order No. 4-2001, § 9(A)",
+          "cite": "Cal. Code Regs., tit. 8, § 11040, subd. 9(A)",
+          "url": "https://www.dir.ca.gov/IWC/IWCArticle04.pdf",
+          "quote": "includes wearing apparel and accessories of distinctive design or color."
+        },
+        {
+          "case": "DLSE Enforcement Policies and Interpretations Manual, § 45.5.5",
+          "cite": "Cal. DLSE Enforcement Policies and Interpretations Manual § 45.5.5 (quoting the IWC's Statement as to the Basis for the 1980 and subsequent Orders)",
+          "url": "https://www.dir.ca.gov/dlse/DLSEManual/dlse_enfcmanual.pdf",
+          "quote": "The definition and [DLSE] enforcement policy is sufficiently flexible to allow the employer to specify basic wardrobe items which are usual and generally usable in the occupation, such as white shirts, dark pants and black shoes and belts, all of unspecified design"
+        },
+        {
+          "case": "DLSE Enforcement Policies and Interpretations Manual, § 45.5.5",
+          "cite": "Cal. DLSE Enforcement Policies and Interpretations Manual § 45.5.5 (quoting the IWC's Statement as to the Basis for the 1980 and subsequent Orders)",
+          "url": "https://www.dir.ca.gov/dlse/DLSEManual/dlse_enfcmanual.pdf",
+          "quote": "If a required black or white uniform or accessory does not meet the test of being generally usable in the occupation the employee may not be required to pay for it."
+        }
+      ]
+    },
+    {
+      "id": "uniformmaint_scope",
+      "title": "Which Employees and Industries This Requirement Covers",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-04",
+      "body": "This uniform requirement is not confined to a single industry: it appears, in substantively identical form, at section 9(A) of Wage Order No. 4-2001 (professional, technical, clerical, mechanical, and similar occupations) and Wage Order No. 7-2001 (Mercantile Industry), and — reworded and renumbered as section 8(A) — in Wage Order No. 16-2001 (certain on-site construction, drilling, logging, and mining occupations). Separately, most of a Wage Order's substantive requirements, including this one, do not apply to an employee who meets the Wage Order's own administrative, executive, or professional exemption: \"Provisions of Sections 3 through 12 shall not apply to persons employed in administrative, executive, or professional capacities.\" And except for a short list of provisions that does not include the uniform requirement, a Wage Order's provisions do not apply to an employee directly employed by the State or a political subdivision such as a city, county, or special district: \"Except as provided in Sections 1, 2, 4, 10, and 20, the provisions of this order shall not apply to any employees directly employed by the State or any political subdivision thereof, including any city, county, or special district.\"",
+      "gap": "This clause's two citations, section 1(A) and section 1(B), are both subsections of the same \"Applicability of Order\" section of Wage Order No. 4-2001 — not independent of one another. Both were fetched and verified using the same two-User-Agent curl method described in the preceding clauses. Wage Order No. 7-2001's section 1(B) was independently confirmed to state the identical political-subdivision exclusion, word for word (Cal. Code Regs., tit. 8, § 11070, subd. 1(B)), also fetched and verified this session. Wage Order No. 16-2001's equivalent applicability section states a materially different, shorter list of provisions that continue to apply to public employees — \"Sections 1, Applicability; 2, Definitions; 4, Minimum Wages; 9, Meals and Lodging; and 18, Penalties\" rather than \"Sections 1, 2, 4, 10, and 20\" — and its own uniform requirement (numbered section 8, not section 9, in that order) is likewise absent from that shorter list; this document does not claim the excepted-sections list, or the uniform provision's own section number, is identical across all 17 of California's industry/occupation wage orders, only that the uniform requirement was confirmed absent from the public-employee carve-out in each of the three wage orders actually fetched this session (Nos. 4-2001, 7-2001, and 16-2001) — no claim is made about the other 14. Separately, a published Court of Appeal decision has held that Labor Code § 2802's indemnification duty does not require several categories of public entity employers (the State, a Regents-governed university system, and general-law and charter counties and cities) to pay for uniform purchase and maintenance, reasoning from those entities' own constitutional and statutory wage-setting authority rather than from the Wage Orders themselves (In re Work Uniform Cases (2005) 133 Cal.App.4th 328, read directly from CourtListener this session but not formally cited here with a verified quote); it is noted only as further, independent confirmation that public-sector coverage of a uniform-cost duty is a genuinely separate question from the private-sector Wage Order rule this document describes, not as an extension of that holding to any specific public employer. This clause does not determine whether a specific job qualifies for the administrative, executive, or professional exemption, or whether a specific employer is \"the State or a political subdivision\" for this purpose — both are fact-specific determinations outside its scope.",
+      "citations": [
+        {
+          "case": "IWC Wage Order No. 4-2001, § 1(A)",
+          "cite": "Cal. Code Regs., tit. 8, § 11040, subd. 1(A)",
+          "url": "https://www.dir.ca.gov/IWC/IWCArticle04.pdf",
+          "quote": "Provisions of Sections 3 through 12 shall not apply to persons employed in administrative, executive, or professional capacities."
+        },
+        {
+          "case": "IWC Wage Order No. 4-2001, § 1(B)",
+          "cite": "Cal. Code Regs., tit. 8, § 11040, subd. 1(B)",
+          "url": "https://www.dir.ca.gov/IWC/IWCArticle04.pdf",
+          "quote": "Except as provided in Sections 1, 2, 4, 10, and 20, the provisions of this order shall not apply to any employees directly employed by the State or any political subdivision thereof, including any city, county, or special district."
+        }
+      ]
+    },
+    {
+      "id": "uniformmaint_acknowledgment",
+      "title": "Signature and Receipt",
+      "kind": "drafting",
+      "body": "Employee Signature: ☐ _________________________ Date: _______________\n\n{{employeeName}} (print name)\n\nEmployer Representative Signature: ☐ _________________________ Date: _______________\n\n{{companyName}} (print name and title)"
     }
   ]
 }
