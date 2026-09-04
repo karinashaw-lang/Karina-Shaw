@@ -17013,5 +17013,36 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "paid_family_leave_info_sheet",
+    "title": "Paid Family Leave (PFL) — Information Sheet",
+    "description": "Explains California's Paid Family Leave (PFL) program, Unemployment Insurance Code §§ 3300-3308 — a wage-replacement insurance benefit funded through SDI payroll deductions and administered by the EDD, distinct from this corpus's CFRA document, which covers unpaid, job-protected leave. Covers what the program is and who administers it, the statutory qualifying reasons, the 8-week duration cap, the current tiered wage-replacement formula, and how PFL relates to (and does not replace) job-protected leave under CFRA and FMLA.",
+    "categories": [
+      "During employment"
+    ],
+    "clauseOrder": [
+      "pfl_purpose_declaration",
+      "pfl_program_overview",
+      "pfl_qualifying_reasons",
+      "pfl_benefit_duration",
+      "pfl_wage_replacement_formula",
+      "pfl_relationship_to_job_protected_leave",
+      "pfl_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      }
+    ]
   }
 ]
