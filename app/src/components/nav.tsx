@@ -15,15 +15,17 @@ export default async function Nav() {
         <div className="flex items-center gap-4 text-sm">
           {user ? (
             <>
+              <Link href="/wall">Wall</Link>
               {user.creatorProfile ? (
-                <Link href={`/creators/${user.creatorProfile.handle}`}>
-                  {user.creatorProfile.displayName}
-                </Link>
+                <>
+                  <Link href={`/creators/${user.creatorProfile.handle}`}>
+                    {user.creatorProfile.displayName}
+                  </Link>
+                  <Link href="/creator/upload">Upload</Link>
+                  <Link href="/creator/dashboard">Dashboard</Link>
+                </>
               ) : (
                 <Link href="/creator/setup">Become a creator</Link>
-              )}
-              {user.creatorProfile && (
-                <Link href="/creator/upload">Upload</Link>
               )}
               <form action={logout}>
                 <button type="submit" className="cursor-pointer">

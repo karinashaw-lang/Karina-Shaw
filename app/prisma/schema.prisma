@@ -8,24 +8,30 @@ datasource db {
 }
 
 model User {
-  id           String         @id @default(cuid())
-  email        String         @unique
-  passwordHash String
-  name         String
-  createdAt    DateTime       @default(now())
+  id             String          @id @default(cuid())
+  email          String          @unique
+  passwordHash   String
+  name           String
+  createdAt      DateTime        @default(now())
   creatorProfile CreatorProfile?
-  comments     Comment[]
+  comments       Comment[]
+  follows        Follow[]
+  clips          Clip[]
+  wallItems      WallItem[]
+  tipsSent       Tip[]
 }
 
 model CreatorProfile {
-  id          String   @id @default(cuid())
-  userId      String   @unique
-  user        User     @relation(fields: [userId], references: [id])
-  handle      String   @unique
-  displayName String
-  bio         String?
-  createdAt   DateTime @default(now())
-  videos      Video[]
+  id            String     @id @default(cuid())
+  userId        String     @unique
+  user          User       @relation(fields: [userId], references: [id])
+  handle        String     @unique
+  displayName   String
+  bio           String?
+  createdAt     DateTime   @default(now())
+  videos        Video[]
+  followers     Follow[]
+  tipsReceived  Tip[]
 }
 
 model Video {
@@ -37,6 +43,8 @@ model Video {
   videoUrl    String
   createdAt   DateTime       @default(now())
   comments    Comment[]
+  clips       Clip[]
+  wallItems   WallItem[]
 }
 
 model Comment {
@@ -47,4 +55,50 @@ model Comment {
   user      User     @relation(fields: [userId], references: [id])
   body      String
   createdAt DateTime @default(now())
+}
+
+model Follow {
+  id         String         @id @default(cuid())
+  followerId String
+  follower   User           @relation(fields: [followerId], references: [id])
+  creatorId  String
+  creator    CreatorProfile @relation(fields: [creatorId], references: [id])
+  createdAt  DateTime       @default(now())
+
+  @@unique([followerId, creatorId])
+}
+
+model Clip {
+  id            String     @id @default(cuid())
+  sourceVideoId String
+  sourceVideo   Video      @relation(fields: [sourceVideoId], references: [id])
+  ownerId       String
+  owner         User       @relation(fields: [ownerId], references: [id])
+  title         String
+  startSeconds  Int
+  endSeconds    Int
+  createdAt     DateTime   @default(now())
+  wallItems     WallItem[]
+}
+
+model WallItem {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  videoId   String?
+  video     Video?   @relation(fields: [videoId], references: [id])
+  clipId    String?
+  clip      Clip?    @relation(fields: [clipId], references: [id])
+  createdAt DateTime @default(now())
+}
+
+model Tip {
+  id          String         @id @default(cuid())
+  fromUserId  String
+  fromUser    User           @relation(fields: [fromUserId], references: [id])
+  toCreatorId String
+  toCreator   CreatorProfile @relation(fields: [toCreatorId], references: [id])
+  amountCents Int
+  message     String?
+  createdAt   DateTime       @default(now())
 }
