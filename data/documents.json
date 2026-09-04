@@ -19572,5 +19572,40 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "stigmatized_property_disclosure_info_sheet",
+    "title": "Death-on-Property and HIV/AIDS-Status Disclosure ('Stigmatized Property,' Civ. Code § 1710.2) — Information Sheet",
+    "description": "Explains, using the statute's own text, California Civil Code § 1710.2's disclosure rules for real property sale, lease, or rental transactions: the three-year no-duty-to-disclose rule for an occupant's death or its manner (with no cause of action arising from non-disclosure), the separate, time-unlimited no-duty rule for a prior occupant's HIV/AIDS status, and the Legislature's stated intent to occupy the field on both subjects. Also covers the statute's own express limits: it does not alter other physical/mental-condition disclosure duties, and does not immunize an intentional misrepresentation made in response to a direct inquiry about deaths on the property.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "stigprop_declaration",
+      "stigprop_death_no_duty_rule",
+      "stigprop_hiv_aids_no_duty",
+      "stigprop_scope_and_misrepresentation_limit",
+      "stigprop_ack"
+    ],
+    "fields": [
+      {
+        "id": "propertyAddress",
+        "label": "Property address",
+        "placeholder": "123 Main St., Sacramento, CA 95814",
+        "required": true
+      },
+      {
+        "id": "sellerLandlordName",
+        "label": "Seller/landlord's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "buyerTenantName",
+        "label": "Buyer/tenant's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      }
+    ]
   }
 ]
