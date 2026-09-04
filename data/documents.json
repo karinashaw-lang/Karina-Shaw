@@ -20268,5 +20268,36 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "time_off_to_vote_info_sheet",
+    "title": "Time Off to Vote — Information Sheet",
+    "description": "Explains California's paid time-off-to-vote entitlement (Elections Code §§ 14000-14002): the condition that triggers it (insufficient time outside working hours to vote at a statewide election), the two-hour paid cap and default beginning-or-end-of-shift timing, the employee's advance-notice duty, the employer's workplace-posting requirement before every statewide election, and the extension of these duties to public as well as private employers. Includes a sample workplace posting. Distinct from Elections Code § 14003 (an unrelated militia-duty exemption) and § 14004 (a separate right barring an employer from requiring a vote-by-mail ballot be brought to or voted at work), neither of which is covered here.",
+    "categories": [
+      "During employment"
+    ],
+    "clauseOrder": [
+      "votingleave_purpose_and_scope",
+      "votingleave_entitlement_condition",
+      "votingleave_paid_time_amount_and_timing",
+      "votingleave_advance_notice_requirement",
+      "votingleave_posting_requirement",
+      "votingleave_applies_public_and_private_employers",
+      "votingleave_required_posting_text"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme Corp.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      }
+    ]
   }
 ]
