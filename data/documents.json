@@ -15895,5 +15895,78 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "landlord_duty_to_mitigate_info_sheet",
+    "title": "Landlord's Duty to Mitigate Damages on Tenant Abandonment — Information Sheet",
+    "description": "Background information on California Civil Code sections 1951.2 and 1951.4 -- what happens to a landlord's damages claim when a tenant breaches the lease and abandons the property: the four statutory categories of recoverable damages, how the mitigation duty operates as a subtraction within the damages formula (not an all-or-nothing bar), the reletting precondition and burden of proof for future-term rent, and the alternative remedy of continuing the lease instead of terminating it.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "mitigate_intro",
+      "mitigate_trigger_termination",
+      "mitigate_damages_components",
+      "mitigate_mitigation_offset",
+      "mitigate_reletting_and_burden",
+      "mitigate_continue_lease_election",
+      "mitigate_worksheet_signature"
+    ],
+    "fields": [
+      {
+        "id": "landlordName",
+        "label": "Landlord name",
+        "placeholder": "Acme Properties, LLC",
+        "required": true
+      },
+      {
+        "id": "tenantName",
+        "label": "Tenant name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "propertyAddress",
+        "label": "Property address",
+        "placeholder": "123 Main St, Apt 4, Springfield",
+        "required": true
+      },
+      {
+        "id": "monthlyRent",
+        "label": "Monthly rent",
+        "placeholder": "2,200",
+        "required": true
+      },
+      {
+        "id": "leaseStartDate",
+        "label": "Lease start date",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "leaseEndDate",
+        "label": "Lease end date",
+        "placeholder": "August 31, 2027",
+        "required": true
+      },
+      {
+        "id": "abandonmentDate",
+        "label": "Date premises were abandoned or possession otherwise terminated",
+        "placeholder": "March 15, 2027",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
