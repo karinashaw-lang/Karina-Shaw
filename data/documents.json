@@ -17321,5 +17321,53 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "wage_claim_statute_of_limitations_info_sheet",
+    "title": "Wage-and-Hour Claim Filing Deadlines — Information Sheet",
+    "description": "Explains California's general civil statutes of limitations as applied to wage-and-hour claims after employment ends — a companion to this corpus's DLSE Wage Claim and Waiting-Time Penalty Demand documents, resolving a nuanced point those documents' own clauses flagged as unverified. Covers the three-year deadline for a statutory wage claim (confirmed for both unpaid final wages and meal/rest period premium pay), the four-year deadline for a claim founded on a written contract, why the Labor Code § 203 waiting-time penalty's filing deadline tracks the underlying wage claim's own period rather than the general one-year penalty deadline — confirmed by California Supreme Court authority (Pineda v. Bank of America) even where the penalty is sued for alone — and the absence of a separate filing deadline in the statute authorizing a DLSE administrative wage claim.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "wagelimitations_declaration",
+      "wagelimitations_338a_statutory_wage_claims",
+      "wagelimitations_337_written_contract_wages",
+      "wagelimitations_203_penalty_tracks_wage_claim",
+      "wagelimitations_dlse_no_separate_administrative_period",
+      "wagelimitations_closing_signature"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "terminationDate",
+        "label": "Termination date",
+        "placeholder": "September 30, 2026",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
