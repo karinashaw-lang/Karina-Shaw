@@ -18946,5 +18946,60 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "california_directed_trust_act_info_sheet",
+    "title": "California Uniform Directed Trust Act ('Trust Director' / 'Trust Protector') — Information Sheet",
+    "description": "Explains, using the statute's own text, California's Uniform Directed Trust Act (Prob. Code §§ 16600-16632, effective January 1, 2024), which governs a person who holds authority over some aspect of a trust's administration without serving as trustee -- a role sometimes called a 'trust protector' in general estate-planning practice, though the statute's own text uses only 'trust director' and 'power of direction.' Covers the statutory definitions, the scope of a 'power of direction' and what it expressly excludes (including the power to appoint or remove a trustee), the trust director's default fiduciary status, how a directed trustee must respond to a trust director's exercise of power, and the default procedural rules (acceptance, bond, compensation, resignation, vacancy) and applicability date.",
+    "categories": [
+      "Estate Planning"
+    ],
+    "clauseOrder": [
+      "trustprotector_declaration",
+      "trustprotector_terminology_and_definition",
+      "trustprotector_scope_and_exclusions",
+      "trustprotector_fiduciary_status",
+      "trustprotector_directed_trustee_relationship",
+      "trustprotector_procedural_defaults",
+      "trustprotector_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "settlorName",
+        "label": "Settlor's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "trustName",
+        "label": "Trust name",
+        "placeholder": "The Morgan Family Revocable Trust",
+        "required": true
+      },
+      {
+        "id": "trusteeName",
+        "label": "Trustee's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "trustDirectorName",
+        "label": "Trust director's name",
+        "placeholder": "Casey Alex",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 5, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
