@@ -19303,5 +19303,54 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "confidential_intermediary_search_info_sheet",
+    "title": "Confidential Intermediary Search — Information Sheet",
+    "description": "Explains, using the statute's own text, California's confidential-intermediary petition mechanism under Family Code § 9205(g)-(h) -- a sibling-search mechanism, not a general adult-adoptee/birth-parent search mechanism -- by which an adoptee or sibling with no waiver on file may petition the court to appoint a confidential intermediary to search sealed adoption records and seek the sought person's consent to contact, without disclosing the records to the petitioner directly. Also distinguishes this from the separate, non-petition mutual-consent disclosure/contact procedure for adult adoptees and birth parents under Family Code §§ 9203-9204, and the general record-sealing baseline under § 9200(a).",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "confintermediary_declaration",
+      "confintermediary_who_may_petition",
+      "confintermediary_who_may_serve",
+      "confintermediary_search_and_consent_process",
+      "confintermediary_confidentiality_protection",
+      "confintermediary_distinction_from_mutual_consent_registry",
+      "confintermediary_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "petitionerName",
+        "label": "Petitioner's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "countyOfFiling",
+        "label": "County of filing",
+        "placeholder": "Sacramento County",
+        "required": true
+      },
+      {
+        "id": "siblingSoughtName",
+        "label": "Name of the sibling or adoptee being sought",
+        "placeholder": "Casey Alex",
+        "required": false
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 5, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Sacramento, California",
+        "required": true
+      }
+    ]
   }
 ]
