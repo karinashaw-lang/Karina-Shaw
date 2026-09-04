@@ -20657,5 +20657,66 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "section_409a_payment_timing_info_sheet",
+    "title": "Internal Revenue Code Section 409A Payment-Timing Rules — Information Sheet",
+    "description": "Explains IRC section 409A's payment-timing rules for nonqualified deferred compensation, including separation pay at termination: the broad, exclusion-based \"nonqualified deferred compensation plan\" definition, the six permitted payment-triggering events (with separation from service listed first), the six-month delay required for a \"specified employee\" of a publicly traded corporation, two Treasury-regulation exemptions (the \"short-term deferral\" rule and the \"separation pay plan\" exception), and the severe consequence of a violation (accelerated income inclusion, a 20% additional tax, and interest). Federal tax law with no California-specific analog. Distinct from the corpus's existing Deferred Compensation/Equity Vesting document (Labor Code wage characterization, ISO exercise windows) and Golden Parachute Excise Tax document (IRC §§ 280G/4999), neither of which addresses payment timing.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "section409a_declaration_and_scope",
+      "section409a_nonqualified_deferred_compensation_defined",
+      "section409a_separation_from_service_permitted_timing",
+      "section409a_specified_employee_six_month_delay",
+      "section409a_regulatory_exemptions_short_term_deferral_and_separation_pay",
+      "section409a_violation_consequences",
+      "section409a_status_declaration_and_signature"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme Corp.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "separationDate",
+        "label": "Date of separation from service",
+        "placeholder": "September 4, 2026",
+        "required": true
+      },
+      {
+        "id": "planName",
+        "label": "Plan, agreement, or arrangement under which the payment arises",
+        "placeholder": "2024 Executive Severance Plan",
+        "required": true
+      },
+      {
+        "id": "severanceAmount",
+        "label": "Amount and payment terms of the separation pay",
+        "placeholder": "$150,000, paid in a lump sum within 60 days of separation",
+        "required": false
+      },
+      {
+        "id": "specifiedEmployeeStatus",
+        "label": "Current understanding of \"specified employee\" status, if known",
+        "placeholder": "Believed to be a specified employee as of the separation date",
+        "required": false
+      },
+      {
+        "id": "effectiveDate",
+        "label": "Date of this statement",
+        "placeholder": "September 4, 2026",
+        "required": true
+      }
+    ]
   }
 ]
