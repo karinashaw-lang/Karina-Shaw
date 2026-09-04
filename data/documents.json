@@ -18543,5 +18543,65 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "corporate_statutory_merger_info_sheet",
+    "title": "California Corporate Statutory Merger — Information Sheet",
+    "description": "Explains California's general corporation law merger procedure (Corp. Code §§ 1100-1113): the required contents of an agreement of merger, the two-layer board-and-shareholder approval requirement (with the statutory definition of \"approved by the outstanding shares\"), the effect of merger — successor liability included — once effective, and the officers'-certificate filing and effective-date mechanics. Distinct from this project's Statutory Conversion document (changing an entity's type, not combining entities) and Buy-Sell Agreement document (a private transfer-restriction contract).",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "corpmerger_recitals",
+      "corpmerger_agreement_requirements",
+      "corpmerger_approval",
+      "corpmerger_effect_successor_liability",
+      "corpmerger_certificate_filing",
+      "corpmerger_certification_signatures"
+    ],
+    "fields": [
+      {
+        "id": "constituentCorporationNames",
+        "label": "Names of the constituent corporations",
+        "placeholder": "Acme, Inc. and Beta Corp.",
+        "required": true
+      },
+      {
+        "id": "survivingCorporationName",
+        "label": "Name of the surviving corporation",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "outstandingSharesVoteStatement",
+        "label": "Statement of outstanding shares and vote obtained",
+        "placeholder": "1,000,000 shares outstanding; 750,000 shares voted in favor",
+        "required": true
+      },
+      {
+        "id": "boardApprovalDate",
+        "label": "Date of board approval",
+        "placeholder": "September 5, 2026",
+        "required": true
+      },
+      {
+        "id": "shareholderApprovalDate",
+        "label": "Date of shareholder approval (if required)",
+        "placeholder": "September 12, 2026",
+        "required": false
+      },
+      {
+        "id": "authorizedSignerName",
+        "label": "Name of person completing this record",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "authorizedSignerTitle",
+        "label": "Authorized signer's title",
+        "placeholder": "Chief Executive Officer",
+        "required": true
+      }
+    ]
   }
 ]
