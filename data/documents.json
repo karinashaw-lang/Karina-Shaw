@@ -19990,5 +19990,72 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "crd_feha_administrative_complaint_info_sheet",
+    "title": "FEHA Administrative Complaint with California's Civil Rights Department — Information Sheet",
+    "description": "Explains the administrative complaint process for a Fair Employment and Housing Act (FEHA) discrimination, harassment, or retaliation claim filed with California's Civil Rights Department (Gov. Code §§ 12960, 12965): the three-year filing deadline, how a complaint is filed and what it must contain, the department's investigation/conciliation process and mandatory dispute resolution, the option to request a right-to-sue notice instead of awaiting the department's own timeline, and the right-to-sue notice's legal effect and one-year civil-action deadline. Distinct from the corpus's existing Wrongful Termination in Violation of Public Policy information sheet, which covers Labor Code §§ 1102.5/98.6 whistleblower and wage-retaliation theories, not the FEHA/CRD administrative claim process.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "crdcomplaint_declaration",
+      "crdcomplaint_filing_deadline",
+      "crdcomplaint_filing_mechanics",
+      "crdcomplaint_investigation_process",
+      "crdcomplaint_immediate_right_to_sue_option",
+      "crdcomplaint_right_to_sue_effect_and_deadline",
+      "crdcomplaint_closing_signature"
+    ],
+    "fields": [
+      {
+        "id": "employeeName",
+        "label": "Employee's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Company/employer name",
+        "placeholder": "Acme Corp.",
+        "required": true
+      },
+      {
+        "id": "allegedPracticeDescription",
+        "label": "Description of the alleged unlawful practice",
+        "placeholder": "Terminated shortly after requesting a religious accommodation",
+        "required": true
+      },
+      {
+        "id": "allegedUnlawfulPracticeDate",
+        "label": "Date the alleged unlawful practice occurred",
+        "placeholder": "March 14, 2026",
+        "required": true
+      },
+      {
+        "id": "crdComplaintFiledDate",
+        "label": "Date a complaint was filed with the Civil Rights Department (if applicable)",
+        "placeholder": "April 1, 2026",
+        "required": false
+      },
+      {
+        "id": "rightToSueNoticeDate",
+        "label": "Date of the right-to-sue notice (if issued)",
+        "placeholder": "May 15, 2026",
+        "required": false
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 4, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, state",
+        "placeholder": "Sacramento, California",
+        "required": true
+      }
+    ]
   }
 ]
