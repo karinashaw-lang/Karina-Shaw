@@ -19779,5 +19779,55 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "freelance_worker_protection_act_agreement",
+    "title": "California Freelance Worker Protection Act Agreement",
+    "description": "A written contract satisfying California's Freelance Worker Protection Act (Business and Professions Code section 18100 et seq., added by SB 988, effective January 1, 2025) for engaging a freelance worker to provide professional services worth $250 or more: the statutory who/what coverage definitions, the written-contract requirement and the four minimum contract contents, the timely-payment rule and its anti-lowball protection, anti-retaliation and non-waivability protections, and the civil-enforcement remedies including statutory damages. Distinct from the corpus's existing Independent Contractor Agreement, which covers only generic scope-of-work and payment terms and federal common-law misclassification risk, with no reference to this statute.",
+    "categories": [
+      "Hiring"
+    ],
+    "clauseOrder": [
+      "fwpa_purpose",
+      "fwpa_coverage_definitions",
+      "fwpa_written_contract_required",
+      "fwpa_contract_contents",
+      "fwpa_timely_payment",
+      "fwpa_antiretaliation",
+      "fwpa_enforcement_remedies",
+      "fwpa_ack"
+    ],
+    "fields": [
+      {
+        "id": "hiringPartyName",
+        "label": "Hiring party's name",
+        "placeholder": "Acme Corp.",
+        "required": true
+      },
+      {
+        "id": "contractorName",
+        "label": "Freelance worker's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "workDescription",
+        "label": "Description of services",
+        "placeholder": "Graphic design for the Q4 marketing campaign",
+        "required": true
+      },
+      {
+        "id": "contractPrice",
+        "label": "Compensation for services",
+        "placeholder": "$2,500",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 4, 2026",
+        "required": true
+      }
+    ]
   }
 ]
