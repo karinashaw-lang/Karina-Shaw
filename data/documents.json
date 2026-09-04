@@ -17647,5 +17647,48 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "talent_agencies_act_info_sheet",
+    "title": "California Talent Agencies Act — Information Sheet",
+    "description": "Explains California's Talent Agencies Act, Labor Code § 1700 et seq., which regulates who may lawfully procure employment or engagements for an artist and requires licensing by the Labor Commissioner. Covers the statutory definition of \"talent agency\" and \"artists,\" the recording-contract carve-out, the licensing requirement, the required Labor-Commissioner-approved contract form and disclosure, the Labor Commissioner's role in hearing controversies (including that unlicensed activity is not itself a criminal act, and the one-year time limit), and Marathon Entertainment, Inc. v. Blasi's holding that the Act applies to personal managers who procure employment, with the Labor Commissioner's discretion to sever rather than void an entire contract.",
+    "categories": [
+      "Hiring"
+    ],
+    "clauseOrder": [
+      "talentagency_declaration_and_purpose",
+      "talentagency_definition_and_scope",
+      "talentagency_licensing_requirement",
+      "talentagency_required_contract_terms",
+      "talentagency_labor_commissioner_jurisdiction",
+      "talentagency_personal_manager_case_law",
+      "talentagency_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "artistName",
+        "label": "Artist's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "talentRepresentativeName",
+        "label": "Talent representative's name",
+        "placeholder": "Taylor Morgan",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
