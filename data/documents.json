@@ -15423,5 +15423,44 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "patent_license_agreement",
+    "title": "Patent License Agreement",
+    "description": "A license under a patent -- granting permission to make, use, offer for sale, sell, or import the claimed invention without transferring ownership of the patent itself. Explains the legal difference between a license and an assignment, what a patent actually grants (a right to exclude, not a right to practice), USPTO recording, an exclusive licensee's path to standing to sue infringers, and the patent-misuse safe harbor for licensing decisions. A companion to, and distinct from, this project's Patent Assignment Agreement document.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "patentlicense_grant",
+      "patentlicense_assignment_vs_license",
+      "patentlicense_statute_no_license_definition",
+      "patentlicense_right_to_exclude",
+      "patentlicense_recording_scope",
+      "patentlicense_standing_exclusive_licensee",
+      "patentlicense_misuse_safe_harbor",
+      "patentlicense_term",
+      "patentlicense_ack"
+    ],
+    "fields": [
+      {
+        "id": "licensorName",
+        "label": "Licensor's name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "licenseeName",
+        "label": "Licensee's name",
+        "placeholder": "Beta Distributors, LLC",
+        "required": true
+      },
+      {
+        "id": "patentDescription",
+        "label": "Description of the patent or invention",
+        "placeholder": "U.S. Patent No. 10,123,456, \"Widget Fastening Mechanism\"",
+        "required": true
+      }
+    ]
   }
 ]

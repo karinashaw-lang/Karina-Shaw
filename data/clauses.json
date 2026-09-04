@@ -42102,6 +42102,156 @@
       "title": "Acknowledgment",
       "kind": "drafting",
       "body": "This information sheet was prepared for reference regarding {{companyName}} and {{employeeName}} on {{dateSigned}}, at {{cityState}}. It states California statutory and case law as background information and is not legal advice about any particular communication, past or future.\n\n_______________________________________________\nPrepared by / on behalf of {{companyName}}\nDate: {{dateSigned}}"
+    },
+    {
+      "id": "patentlicense_grant",
+      "title": "Grant of Patent License",
+      "kind": "drafting",
+      "body": "{{licensorName}} (\"Licensor\") owns or controls all right, title, and interest in and to {{patentDescription}} (the \"Licensed Patent\"). Subject to {{licenseeName}}'s (\"Licensee\") compliance with this agreement, Licensor grants Licensee a license under the Licensed Patent to make, use, offer for sale, sell, and/or import the invention it claims, within the territory, field of use, and other scope described in this agreement. This is a license, not an assignment or sale of the Licensed Patent: Licensor retains all right, title, and interest in and to the Licensed Patent, including record ownership of it, except for the specific rights expressly granted to Licensee under this agreement. No rights in the Licensed Patent are granted to Licensee by implication, estoppel, or otherwise, other than as expressly stated here.\n\n___ This license is exclusive: Licensor will not itself practice the Licensed Patent, and will not grant any other license under it, within the scope described above.\n\n___ This license is non-exclusive: Licensor may itself continue to practice the Licensed Patent, and may grant other licenses under it, including to others who compete with Licensee."
+    },
+    {
+      "id": "patentlicense_term",
+      "title": "Term and Termination",
+      "kind": "drafting",
+      "body": "This license begins on the date this agreement is signed and continues, unless terminated earlier as described below, until the natural expiration of the Licensed Patent's term (or, if {{patentDescription}} covers more than one patent or a pending application, until the natural expiration of the last of them to expire). Either party may terminate this agreement upon written notice if the other party materially breaches this agreement and does not cure that breach within 30 days after receiving notice describing it. Upon termination or expiration, all rights granted to Licensee under this agreement end, and Licensee must stop making, using, offering for sale, selling, or importing the invention claimed by the Licensed Patent, except to the extent this agreement expressly states otherwise."
+    },
+    {
+      "id": "patentlicense_ack",
+      "title": "Acknowledgment",
+      "kind": "drafting",
+      "body": "Please sign below to indicate agreement to the terms above.\n\nLicensor: {{licensorName}} _______________________ Date: _______________\n\nLicensee: {{licenseeName}} _______________________ Date: _______________"
+    },
+    {
+      "id": "patentlicense_assignment_vs_license",
+      "title": "License vs. Assignment: Different Legal Effects Under Patent Law",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-04",
+      "body": "A patent license and a patent assignment do different legal work, even though both involve one party's rights under a patent moving toward another party's benefit. An assignment transfers ownership itself -- title to the whole patent, an undivided share of it, or the exclusive right to the whole patent within a specified part of the United States -- and this project's separate Patent Assignment Agreement document covers that kind of transaction. A license does something narrower: it permits {{licenseeName}} to do what would otherwise infringe {{licensorName}}'s rights in {{patentDescription}}, without transferring {{licensorName}}'s ownership of the patent itself. The U.S. Supreme Court has held that whether a particular transfer counts, legally, as an assignment or merely a license does not depend on what the parties call it, but on the actual legal effect of what was transferred: only a transfer of the whole patent, an undivided share of it, or the exclusive right to the whole patent within a specified part of the United States is an assignment; anything short of that is, in the law's eyes, a mere license, conveying no ownership interest or title in the patent itself -- regardless of how the document transferring it is titled or worded.",
+      "gap": "This clause draws on two passages from the same 1891 U.S. Supreme Court decision, Waterman v. Mackenzie, rather than two independent sources -- both illustrate the same holding rather than corroborating it independently. This is federal law, binding nationwide; patents are exclusively a creature of federal statute, with no state-by-state variation on the assignment/license distinction. Waterman interpreted the then-governing statute, Revised Statutes section 4898; that statute's operative language -- an assignment being limited to the whole patent, an undivided share of it, or an exclusive right within a specified part of the United States -- persists essentially unchanged in the current codification, 35 U.S.C. § 261, independently verified against the current U.S. Code text in this document's other clauses. This clause doesn't resolve every possible hybrid arrangement against Waterman's three categories -- for instance, an exclusive license limited to a particular field of use or product line rather than a geographic part of the United States, which Waterman's own opinion treats as still being a 'mere license' on facts resembling that pattern, but a comprehensive survey of later case law on every field-of-use fact pattern was not undertaken here. Both quotations below were independently confirmed by retrieving the opinion's text through two different methods against CourtListener's database and verifying the passages were identical both times.",
+      "citations": [
+        {
+          "case": "Waterman v. Mackenzie",
+          "cite": "138 U.S. 252, 255 (1891)",
+          "url": "https://www.courtlistener.com/opinion/92947/waterman-v-mackenzie/",
+          "quote": "Whether a transfer of a particular right or interest under a patent is an assignment or a license does not depend upon the name by which it calls itself, but upon the legal effect of its provisions."
+        },
+        {
+          "case": "Waterman v. Mackenzie",
+          "cite": "138 U.S. 252, 255 (1891)",
+          "url": "https://www.courtlistener.com/opinion/92947/waterman-v-mackenzie/",
+          "quote": "Any assignment or transfer, short of one of these, is a mere license, giving the licensee no title in the patent, and no right to sue at law in his own name for an infringement."
+        }
+      ]
+    },
+    {
+      "id": "patentlicense_statute_no_license_definition",
+      "title": "The Patent Statute Never Defines \"License\"",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-04",
+      "body": "Title 35 of the United States Code -- the federal Patent Act -- never actually defines the word \"license,\" even though the concept is central to countless real transactions like this one. The statute governing ownership and transfer, 35 U.S.C. § 261, speaks in terms of what is \"assignable\" by \"instrument in writing,\" and separately authorizes a patent owner to \"grant and convey an exclusive right\" limited to \"the whole or any specified part of the United States\" -- but nowhere in that section, or elsewhere in the Patent Act's core ownership provisions, does Congress define what a \"license\" is or spell out its required terms or form. What that means in practice is that a patent license -- including this one -- is fundamentally a creature of ordinary contract law layered on top of the patent statute's property-law framework for ownership, rather than a transaction with its own detailed statutory template the way a patent assignment's writing requirement is spelled out in that same section.",
+      "gap": "Both citations below are drawn from the same federal statutory section, 35 U.S.C. § 261, rather than two independent sources -- they corroborate a single provision's actual wording rather than two separately authored ones. This clause was verified by fetching the current U.S. Code text at Cornell's Legal Information Institute twice, using different request headers (a browser-style User-Agent and a plain command-line one), and confirming the returned text was byte-identical both times. This is federal law, uniform nationwide; patent law does not vary state to state. This clause states an absence -- the word \"license\" does not appear in § 261's operative text -- rather than affirmatively characterizing every source of patent licensing law; other Patent Act provisions elsewhere in Title 35 (for example, the patent-misuse safe harbor addressed in a separate clause of this document) do use the word \"license\" in narrower contexts, and this clause doesn't survey the entire Title. It also doesn't mean licensing is unregulated by anything beyond the parties' own contract -- ordinary state contract law, and in some circumstances federal antitrust and patent-misuse law, still bears on a specific license's terms and enforceability, and those bodies of law are not what this clause addresses.",
+      "citations": [
+        {
+          "case": "35 U.S.C. § 261 (Cornell LII text)",
+          "cite": "U.S. Code, ownership; assignment of patents and applications",
+          "url": "https://www.law.cornell.edu/uscode/text/35/261",
+          "quote": "Applications for patent, patents, or any interest therein, shall be assignable in law by an instrument in writing."
+        },
+        {
+          "case": "35 U.S.C. § 261 (Cornell LII text)",
+          "cite": "U.S. Code, ownership; assignment of patents and applications",
+          "url": "https://www.law.cornell.edu/uscode/text/35/261",
+          "quote": "The applicant, patentee, or his assigns or legal representatives may in like manner grant and convey an exclusive right under his application for patent, or patents, to the whole or any specified part of the United States."
+        }
+      ]
+    },
+    {
+      "id": "patentlicense_recording_scope",
+      "title": "Recording With the USPTO: Assignments and Exclusive Territorial Grants, Not Necessarily a Bare License",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-04",
+      "body": "Federal law requires a patent assignment, grant, or conveyance to be recorded with the U.S. Patent and Trademark Office within three months of its date -- or before a later purchaser or mortgagee buys the same rights in good faith and for value -- or else it becomes void against that later, unaware purchaser. This project's separate Patent Assignment Agreement document addresses that recording rule for an outright assignment. Whether the same recording rule reaches a license like this one turns on what kind of transfer it actually is: under the U.S. Supreme Court's own framework for what counts as an assignment, grant, or conveyance in the first place, an exclusive right limited to a specified geographic part of the United States is treated as an assignment for these purposes -- but a mere license, granting {{licenseeName}} something short of that (for instance, a non-exclusive right, or an exclusive right limited to a particular field of use or product rather than a defined part of the United States), doesn't obviously fall within what the recording statute calls an \"assignment, grant or conveyance.\" This document doesn't resolve that question for every possible license structure, and recording an agreement like this one with the USPTO, even where not clearly required, remains something the parties may choose to do.",
+      "gap": "This clause combines one statutory citation (35 U.S.C. § 261) with one case-law citation (Waterman v. Mackenzie, also cited in a separate clause of this document on a different passage of the same opinion, so the two clauses are not fully independent of each other where they both rely on Waterman). The statutory text was verified by fetching the current U.S. Code text at Cornell's Legal Information Institute twice with different request headers and confirming byte-identical results; the case-law passage was independently confirmed by retrieving the opinion's text through two different methods against CourtListener's database and verifying it was identical both times. This is federal law, uniform nationwide. This clause states the recording statute's text and the general shape of Waterman's assignment/license line-drawing; it does not resolve how a court would categorize every specific exclusivity arrangement (particularly a field-of-use or product-line exclusivity that isn't tied to a geographic part of the United States), and it is not a comprehensive account of USPTO recording practice for licenses, which in practice are sometimes recorded voluntarily regardless of whether the recording statute's priority-against-subsequent-purchasers consequence technically applies to them.",
+      "citations": [
+        {
+          "case": "35 U.S.C. § 261 (Cornell LII text)",
+          "cite": "U.S. Code, ownership; assignment of patents and applications",
+          "url": "https://www.law.cornell.edu/uscode/text/35/261",
+          "quote": "An interest that constitutes an assignment, grant or conveyance shall be void as against any subsequent purchaser or mortgagee for a valuable consideration, without notice, unless it is recorded in the Patent and Trademark Office within three months from its date or prior to the date of such subsequent purchase or mortgage."
+        },
+        {
+          "case": "Waterman v. Mackenzie",
+          "cite": "138 U.S. 252, 256 (1891)",
+          "url": "https://www.courtlistener.com/opinion/92947/waterman-v-mackenzie/",
+          "quote": "For instance, a grant of an exclusive right to make, use and vend two patented machines within a certain district, is an assignment, and gives the grantee the right to sue in his own name for an infringement within the district, because the right, although limited to making, using and vending two machines, excludes all other persons, even the patentee, from making, using or vending like machines within the district."
+        }
+      ]
+    },
+    {
+      "id": "patentlicense_right_to_exclude",
+      "title": "What a Patent Actually Grants: A Right to Exclude, Not a Right to Practice",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-04",
+      "body": "A common misconception is that owning a patent gives the owner an affirmative legal right to make, use, or sell the patented invention. What federal law actually grants a patent owner is narrower, and in a sense the opposite: the right to exclude other people from making, using, offering for sale, or selling the invention -- not a guarantee that the patent owner is itself free to do those things, which can separately depend on other patents, regulations, or rights that exist independently of {{licensorName}}'s own patent. Understanding a patent as a right to exclude, rather than a right to practice, clarifies what a license under it actually does: it is fundamentally {{licensorName}}'s promise not to exercise that exclusionary right against {{licenseeName}} within the scope this agreement describes, permitting {{licenseeName}} to do what would otherwise infringe -- rather than some independently existing permission that {{licensorName}} is handing over.",
+      "gap": "This is federal law, uniform nationwide. This clause cites a single statutory section, 35 U.S.C. § 154(a)(1), verified by fetching the current U.S. Code text at Cornell's Legal Information Institute twice, using different request headers, and confirming the returned text was byte-identical both times; no second, independent source was located or needed for this specific textual point, since the \"right to exclude\" framing is the statute's own express language rather than a contested characterization requiring case-law corroboration. This clause doesn't address the separate, genuinely contested question of exactly how broadly a particular patent's right to exclude extends against a specific accused product or process -- that depends on the scope of the patent's claims as construed by a court, which this document doesn't and can't evaluate for the patent described in this agreement.",
+      "citations": [
+        {
+          "case": "35 U.S.C. § 154(a)(1) (Cornell LII text)",
+          "cite": "U.S. Code, contents and term of patent; provisional rights",
+          "url": "https://www.law.cornell.edu/uscode/text/35/154",
+          "quote": "Every patent shall contain a short title of the invention and a grant to the patentee, his heirs or assigns, of the right to exclude others from making, using, offering for sale, or selling the invention throughout the United States or importing the invention into the United States"
+        }
+      ]
+    },
+    {
+      "id": "patentlicense_standing_exclusive_licensee",
+      "title": "Standing to Sue Infringers: A Statutory Blank Filled In by Case Law for Exclusive Licensees",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-04",
+      "body": "Federal law gives the civil remedy for patent infringement to \"a patentee\" -- and the Patent Act's own definitions section says that word \"includes not only the patentee to whom the patent was issued but also the successors in title to the patentee,\" meaning an assignee. Read on its own, that statutory language doesn't obviously extend the right to sue an infringer to a mere licensee, and under the U.S. Supreme Court's own long-standing rule (addressed in a separate clause of this document), a licensee holding less than an assignment generally cannot sue an infringer in its own name at all -- any such suit has to be brought by, or in the name of, the patent owner. Case law has, however, filled in real relief for a narrower category: an exclusive licensee, meaning one granted the sole right to make, use, or sell the invention -- excluding even the patent owner -- within the scope of the license. The U.S. Supreme Court has held that a patent owner who grants that kind of exclusive right holds title to the patent in trust for the exclusive licensee to that extent, and can be required -- even against the patent owner's own wishes, and even joined involuntarily as a co-plaintiff -- to let its name be used so the exclusive licensee can pursue an infringer. This is a judge-made gap-filler layered on top of the statute's bare text, not something the statute spells out for licensees itself.",
+      "gap": "This clause draws on three sources: two different sections of the same federal statute (35 U.S.C. §§ 281 and 100(d)), which are not independent of each other in the sense that both are non-case-law text from the same Act rather than separately authored sources, and one U.S. Supreme Court decision, Independent Wireless Telegraph Co. v. Radio Corp. of America. The statutory sections were each verified by fetching the current U.S. Code text at Cornell's Legal Information Institute twice with different request headers and confirming byte-identical results. The case-law passage was independently verified by retrieving the opinion's text through two different methods against CourtListener's database and confirming the quoted passage was identical both times; one intermediate retrieval of the same underlying opinion, through a different stored text field of the same database record, showed what appears to be a single stray scanning artifact in that field only (rendering one word as \"by'\" rather than \"by\"), and the quote used here reflects the reading confirmed identically by the two other, independently retrieved renderings of the same passage. This is federal law, uniform nationwide, since patent standing to sue is exclusively a matter of the federal Patent Act and federal case law construing it. This clause states a 1926 Supreme Court framework, not a full modern account of patent-standing doctrine -- the Federal Circuit (the federal appellate court with exclusive jurisdiction over patent appeals) has developed further, more granular doctrine since then on exactly how much of the bundle of exclusive rights a licensee must hold to sue entirely on its own without even joining the patent owner, and that more recent doctrine was not independently verified in this research session, so this clause does not state a position on it.",
+      "citations": [
+        {
+          "case": "35 U.S.C. § 281 (Cornell LII text)",
+          "cite": "U.S. Code, remedy for infringement of patent",
+          "url": "https://www.law.cornell.edu/uscode/text/35/281",
+          "quote": "A patentee shall have remedy by civil action for infringement of his patent."
+        },
+        {
+          "case": "35 U.S.C. § 100(d) (Cornell LII text)",
+          "cite": "U.S. Code, definitions -- \"patentee\"",
+          "url": "https://www.law.cornell.edu/uscode/text/35/100",
+          "quote": "The word “patentee” includes not only the patentee to whom the patent was issued but also the successors in title to the patentee."
+        },
+        {
+          "case": "Independent Wireless Telegraph Co. v. Radio Corp. of America",
+          "cite": "269 U.S. 459, 469 (1926)",
+          "url": "https://www.courtlistener.com/opinion/100765/independent-wireless-telegraph-co-v-radio-corp-of-america/",
+          "quote": "It seems clear then on principle and authority that the owner of a patent who grants to another the exclusive right to make, use or vend the invention, which does not constitute a statutory assignment, holds the title to the patent in trust for such a licensee, to the extent that he must allow the use of his name as plaintiff in any action brought at the instance of the licensee in law or in equity to obtain damages for the injury to his exclusive right by an infringer or to enjoin infringement of it."
+        }
+      ]
+    },
+    {
+      "id": "patentlicense_misuse_safe_harbor",
+      "title": "A Patent Owner's Right to License -- or Refuse to License -- and the Limits of Patent Misuse",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-04",
+      "body": "Federal law expressly protects a patent owner's freedom to decide who gets a license and on what terms. The same statute that defines patent infringement also lists specific things a patent owner can do without being denied relief for infringement or found guilty of \"misuse\" of the patent -- including refusing to license the patent to anyone at all, and licensing it to some parties but not others. That protection has a limit: conditioning a license under {{patentDescription}} on the licensee also taking a license to a separate patent, or buying a separate product, can still cross into patent misuse if -- but only if -- {{licensorName}} has market power in the relevant market for the patent or product the license or sale is conditioned on. Outside that specific tying scenario, and outside other doctrines not addressed here, the statute does not require {{licensorName}} to license {{patentDescription}} to any particular party, or on any particular terms, and granting a license -- exclusive or not -- to {{licenseeName}} does not by itself expose the underlying patent to a misuse defense.",
+      "gap": "This is federal law, uniform nationwide; patent misuse is a doctrine created and limited by the federal Patent Act, without state-by-state variation. This clause cites a single statutory subsection, 35 U.S.C. § 271(d)(4)-(5), verified by fetching the current U.S. Code text at Cornell's Legal Information Institute twice, using different request headers, and confirming the returned text was byte-identical both times; no independent case-law source was added for this specific textual point, since the safe harbor and its tying-based limit are the statute's own express terms. This clause doesn't define \"market power\" in the relevant market, doesn't address the separate common-law patent misuse doctrine as it existed before this 1988 statutory safe harbor was enacted, and doesn't address antitrust law, which can impose its own, separately sourced constraints on licensing terms beyond what the patent misuse doctrine covers.",
+      "citations": [
+        {
+          "case": "35 U.S.C. § 271(d) (Cornell LII text)",
+          "cite": "U.S. Code, infringement of patent -- patent misuse safe harbor",
+          "url": "https://www.law.cornell.edu/uscode/text/35/271",
+          "quote": "(4) refused to license or use any rights to the patent; or (5) conditioned the license of any rights to the patent or the sale of the patented product on the acquisition of a license to rights in another patent or purchase of a separate product, unless, in view of the circumstances, the patent owner has market power in the relevant market for the patent or patented product on which the license or sale is conditioned."
+        }
+      ]
     }
   ]
 }
