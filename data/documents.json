@@ -21133,5 +21133,57 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "director_officer_indemnification_info_sheet",
+    "title": "Director and Officer Indemnification — Information Sheet",
+    "description": "Describes California Corporations Code § 317 in full: the statutory definitions of \"agent,\" \"proceeding,\" and \"expenses,\" the mandatory rule for an agent successful on the merits, the permissive standards for a third-party proceeding versus a derivative action, the statutory approval procedure for authorizing indemnification in a specific case, expense advancement, the statutory bars on indemnification, and the corporation's separate power to purchase director and officer liability insurance.",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "doindemnify_declaration",
+      "doindemnify_definitions",
+      "bylaws_indemnification",
+      "bylaws_indemnification_mandatory",
+      "doindemnify_derivative_standard",
+      "doindemnify_approval_procedure",
+      "bylaws_indemnification_advancement",
+      "doindemnify_bars",
+      "doindemnify_insurance",
+      "doindemnify_signature"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company Name",
+        "placeholder": "e.g., Acme Corp.",
+        "required": true
+      },
+      {
+        "id": "directorName",
+        "label": "Director/Officer Name",
+        "placeholder": "e.g., Jane Doe",
+        "required": true
+      },
+      {
+        "id": "preparerName",
+        "label": "Preparer's Name",
+        "placeholder": "e.g., John Smith",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date Signed",
+        "placeholder": "e.g., January 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, State",
+        "placeholder": "e.g., Los Angeles, California",
+        "required": true
+      }
+    ]
   }
 ]
