@@ -21096,5 +21096,42 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "sale_of_business_dissolution_noncompete_exceptions_info_sheet",
+    "title": "Sale-of-Business and Dissolution Noncompete Exceptions — Information Sheet",
+    "description": "Describes California's statutory exceptions to the general noncompete ban for sale-of-business goodwill, ownership-interest, or asset sales (Bus. & Prof. Code § 16601), partnership dissolution or dissociation (§ 16602), and LLC dissolution or termination of a member's interest (§ 16602.5) — who qualifies, the geographic and buyer-continued-operation conditions, and the statute's own definitions.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "salenoncompete_intro",
+      "salenoncompete_general_ban_context",
+      "salenoncompete_sale_of_business",
+      "salenoncompete_sale_definitions",
+      "salenoncompete_partnership_dissolution",
+      "salenoncompete_llc_dissolution",
+      "salenoncompete_ack"
+    ],
+    "fields": [
+      {
+        "id": "businessName",
+        "label": "Business Name",
+        "placeholder": "e.g., Acme Corp.",
+        "required": true
+      },
+      {
+        "id": "sellerName",
+        "label": "Seller/Partner/Member Name",
+        "placeholder": "e.g., Jane Doe",
+        "required": true
+      },
+      {
+        "id": "buyerName",
+        "label": "Buyer/Business Name",
+        "placeholder": "e.g., John Smith",
+        "required": true
+      }
+    ]
   }
 ]
