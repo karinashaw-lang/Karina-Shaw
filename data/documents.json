@@ -16328,5 +16328,60 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "domestic_violence_custody_presumption_info_sheet",
+    "title": "Domestic Violence Custody Presumption — Information Sheet",
+    "description": "Background information on California Family Code section 3044 -- the rebuttable presumption against awarding sole or joint custody to a parent found to have perpetrated domestic violence within the preceding five years, the statutory factors for overcoming the presumption, section 3044's own self-contained definition of \"perpetrated domestic violence\" (genuinely distinct from the general DVPA definitions), the finding-timing procedure and the Jaime G. v. H.L. specific-findings requirement, and the required pre-mediation notice. A companion to, and distinct from, this project's DVRO Petition Information document.",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "dvcustody_information_declaration",
+      "dvcustody_core_presumption",
+      "dvcustody_rebuttal_factors",
+      "dvcustody_perpetration_definition",
+      "dvcustody_finding_procedure_and_best_interest_interaction",
+      "dvcustody_mediation_notice_requirement",
+      "dvcustody_signature_acknowledgment"
+    ],
+    "fields": [
+      {
+        "id": "childName",
+        "label": "Child's name",
+        "placeholder": "Riley Lee",
+        "required": true
+      },
+      {
+        "id": "party1Name",
+        "label": "First party's full legal name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "party2Name",
+        "label": "Second party's full legal name",
+        "placeholder": "Morgan Casey Lee",
+        "required": true
+      },
+      {
+        "id": "countyOfFiling",
+        "label": "County of filing",
+        "placeholder": "Sacramento County",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
