@@ -42609,6 +42609,121 @@
       "title": "Retirement Benefit Information and Signatures",
       "kind": "drafting",
       "body": "The following information relates to the retirement plan interest addressed by this document:\n\nParticipant/plan member: ☐ {{party1Name}}  ☐ {{party2Name}}\n\nRetirement plan or account name: {{planName}}\n\nPlan administrator or record-keeper (if known): {{planAdministratorName}}\n\nEmployer sponsoring the plan (if known): {{employerName}}\n\n☐ Public/governmental plan (subject to a separate, system-specific division statute rather than a federal QDRO)\n☐ Private-sector plan (potentially subject to a qualified domestic relations order under federal law)\n☐ Not yet determined\n\nThis information is provided to identify the plan or account under discussion. It is not a qualified domestic relations order, does not direct any plan or administrator to take any action, and does not determine whether the plan above is public or private for legal purposes.\n\n{{party1Name}}: ☐ _________________________ Date: _________________________\n\n{{party2Name}}: ☐ _________________________ Date: _________________________"
+    },
+    {
+      "id": "mildivorce_purpose_intro",
+      "title": "Purpose of This Information Sheet",
+      "kind": "drafting",
+      "body": "This information sheet addresses one specific issue that can arise in a divorce, dissolution, annulment, or legal separation involving a current or former member of the uniformed services: {{memberName}}, who has served in the {{serviceBranch}}, and {{spouseName}}, {{memberName}}'s spouse or former spouse. It explains, as a matter of federal law, how a state court's authority to divide military retired pay in a divorce is affected by a federal statute, the Uniformed Services Former Spouses' Protection Act (10 U.S.C. § 1408), and how a separate mechanism under that same statute governs direct payment of a share of that retired pay from the Defense Finance and Accounting Service (DFAS) to a former spouse. The parties were married on {{marriageDate}}. This sheet states what the federal statute says. It does not state whether military retired pay in this particular case will be divided, in what amount, or whether direct payment from DFAS will be available -- those are outcomes that depend on the facts of the case, the terms of the state court's order, and DFAS's own application of the statute to that order."
+    },
+    {
+      "id": "mildivorce_usfspa_overview",
+      "title": "USFSPA: State Courts May Treat Disposable Retired Pay as Divisible Property",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-04",
+      "body": "Before 1981, whether a state court could divide a service member's military retired pay as marital or community property upon divorce was itself contested. In McCarty v. McCarty, the U.S. Supreme Court took up 'the question ... whether, upon the dissolution of a marriage, federal law precludes a state court from dividing military nondisability retired pay pursuant to state community property laws,' and reversed a California Court of Appeal judgment that had divided such pay as community property, holding that federal law did preclude the state-law division. Congress responded the same year by enacting the Uniformed Services Former Spouses' Protection Act (USFSPA), codified at 10 U.S.C. § 1408, which authorizes -- but does not require -- state courts to treat military retired pay as divisible property. The statute's operative authorization states: 'Subject to the limitations of this section, a court may treat disposable retired pay payable to a member for pay periods beginning after June 25, 1981, either as property solely of the member or as property of the member and his spouse in accordance with the law of the jurisdiction of such court.' The statute goes on to bar a court from treating retired pay as divisible property in a proceeding involving a final divorce, dissolution, annulment, or legal separation decree that was issued before June 25, 1981, and that did not treat or reserve jurisdiction to treat any retired pay as property of the member and spouse. Whether, and how, disposable retired pay is actually divided in a given case is governed by the law of the state whose court has jurisdiction -- USFSPA authorizes state-law property division of this pay; it does not itself impose a particular division formula or outcome.",
+      "gap": "This clause cites two genuinely independent, different-type sources: the current statutory text of 10 U.S.C. § 1408(c)(1) (fetched from Cornell Legal Information Institute, law.cornell.edu/uscode/text/10/1408, and independently re-fetched with a second, distinct User-Agent string and request configuration -- the two fetches returned byte-identical text) and the U.S. Supreme Court's opinion in McCarty v. McCarty, 453 U.S. 210 (1981) (fetched via the CourtListener case-law database, a different source and source type entirely -- primary case law rather than the U.S. Code). One precise detail worth flagging rather than glossing over: the statute's retroactivity cutoff is pay periods beginning after June 25, 1981 -- one day before the McCarty decision issued (June 26, 1981) -- not the date of the decision itself; this clause states the statutory date exactly as codified rather than approximating it to the decision date. Note also that the commonly cited case-reporter citation for McCarty is sometimes miswritten as 452 U.S. 210; the citation actually returned by CourtListener's official reporter data is 453 U.S. 210, which is the citation used here. This clause does not address the separate, further requirements for direct payment from DFAS (a different question from divisibility, covered in a separate clause), nor the statutory definition of 'disposable retired pay' itself (also covered separately).",
+      "citations": [
+        {
+          "case": "10 U.S.C. § 1408(c)(1)",
+          "cite": "10 U.S.C. § 1408(c)(1)",
+          "url": "https://www.law.cornell.edu/uscode/text/10/1408",
+          "quote": "Subject to the limitations of this section, a court may treat disposable retired pay payable to a member for pay periods beginning after June 25, 1981, either as property solely of the member or as property of the member and his spouse in accordance with the law of the jurisdiction of such court."
+        },
+        {
+          "case": "McCarty v. McCarty",
+          "cite": "453 U.S. 210 (1981)",
+          "url": "https://www.courtlistener.com/opinion/110552/mccarty-v-mccarty/",
+          "quote": "The question presented by this case is whether, upon the dissolution of a marriage, federal law precludes a state court from dividing military nondisability retired pay pursuant to state community property laws."
+        }
+      ]
+    },
+    {
+      "id": "mildivorce_disposable_retired_pay_definition",
+      "title": "The Statutory Definition of \"Disposable Retired Pay\"",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-04",
+      "body": "USFSPA's authorization to treat retired pay as divisible property applies specifically to \"disposable retired pay,\" a defined term -- not necessarily a member's full gross retired pay. The statute defines it as follows: 'The term \"disposable retired pay\" means the total monthly retired pay to which a member is entitled less amounts which-- (i) are owed by that member to the United States for previous overpayments of retired pay and for recoupments required by law resulting from entitlement to retired pay; (ii) are deducted from the retired pay of such member as a result of forfeitures of retired pay ordered by a court-martial or as a result of a waiver of retired pay required by law in order to receive compensation under title 5 or title 38; (iii) in the case of a member entitled to retired pay under chapter 61 of this title, are equal to the amount of retired pay of the member under that chapter computed using the percentage of the member's disability on the date when the member was retired (or the date on which the member's name was placed on the temporary disability retired list); or (iv) are deducted because of an election under chapter 73 of this title to provide an annuity to a spouse or former spouse to whom payment of a portion of such member's retired pay is being made pursuant to a court order under this section.' In plain terms, the statute's own text excludes from the divisible amount: prior overpayment recoupments owed to the United States; court-martial forfeitures and certain waivers required to receive VA or federal civil-service compensation; the disability-percentage-computed portion of pay for a member retired under the statute's disability-retirement chapter (chapter 61); and amounts deducted for a Survivor Benefit Plan annuity election benefiting the spouse or former spouse who is already receiving a court-ordered share.",
+      "gap": "This clause quotes 10 U.S.C. § 1408(a)(4)(A), fetched from Cornell Legal Information Institute and independently re-fetched with a second, distinct User-Agent string and request configuration; both fetches returned byte-identical text. This is the same statutory section as the surrounding clauses in this document (10 U.S.C. § 1408) -- not an independent source from those clauses, only a different subsection of the same section. The statute contains an additional subparagraph, § 1408(a)(4)(B), setting out special rules for computing a member's hypothetical retired pay when a property-division decree becomes final before the member actually retires; that computation-heavy provision is not quoted here. This clause states only the statutory exclusions themselves; it does not state, and should not be read to suggest, what any particular service member's disposable retired pay amount is or would be.",
+      "citations": [
+        {
+          "case": "10 U.S.C. § 1408(a)(4)(A)",
+          "cite": "10 U.S.C. § 1408(a)(4)(A)",
+          "url": "https://www.law.cornell.edu/uscode/text/10/1408",
+          "quote": "The term “disposable retired pay” means the total monthly retired pay to which a member is entitled less amounts which— (i) are owed by that member to the United States for previous overpayments of retired pay and for recoupments required by law resulting from entitlement to retired pay; (ii) are deducted from the retired pay of such member as a result of forfeitures of retired pay ordered by a court-martial or as a result of a waiver of retired pay required by law in order to receive compensation under title 5 or title 38; (iii) in the case of a member entitled to retired pay under chapter 61 of this title, are equal to the amount of retired pay of the member under that chapter computed using the percentage of the member’s disability on the date when the member was retired (or the date on which the member’s name was placed on the temporary disability retired list); or (iv) are deducted because of an election under chapter 73 of this title to provide an annuity to a spouse or former spouse to whom payment of a portion of such member’s retired pay is being made pursuant to a court order under this section."
+        }
+      ]
+    },
+    {
+      "id": "mildivorce_ten_ten_rule_direct_payment",
+      "title": "The \"10/10 Rule\" Governs Direct DFAS Payment, Not Whether Retired Pay Can Be Divided",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-04",
+      "body": "A frequently repeated shorthand -- the \"10/10 rule\" -- is often described as though it decides whether military retired pay can be divided as property at all. The statutory text does not support that description. The 10-year overlap requirement appears only in the part of USFSPA that governs direct payment by DFAS to a former spouse, not in the part that authorizes courts to treat retired pay as divisible property (addressed in a separate clause, which contains no marriage-length or service-length threshold). The direct-payment provision states: 'If the spouse or former spouse to whom payments are to be made under this section was not married to the member for a period of 10 years or more during which the member performed at least 10 years of service creditable in determining the member's eligibility for retired pay, payments may not be made under this section to the extent that they include an amount resulting from the treatment by the court under subsection (c) of disposable retired pay of the member as property of the member or property of the member and his spouse.' In plain terms: if the marriage and the member's creditable military service did not overlap for at least 10 years, DFAS will not make direct payments to the former spouse of the property-division portion of a court order under this statute -- but this provision, by its own terms, only limits payments 'under this section' (i.e., direct payment by DFAS); it does not purport to limit a court's separate authority under subsection (c) to treat the retired pay as divisible property in the first place. A court order dividing retired pay issued in a marriage that does not meet the 10/10 overlap can still be enforced -- just not through DFAS's direct-payment mechanism.",
+      "gap": "This clause quotes 10 U.S.C. § 1408(d)(2), fetched from Cornell Legal Information Institute and independently re-fetched with a second, distinct User-Agent string and request configuration; both fetches returned byte-identical text. This is the same statutory section as the surrounding clauses in this document (10 U.S.C. § 1408) -- not an independent source from those clauses, only a different subsection of the same section. This clause states what the statutory text itself says about the scope of the 10/10 rule (a direct-payment limitation) versus the divisibility authorization in subsection (c); it does not address how a former spouse who does not meet the 10/10 overlap might otherwise seek to collect an awarded share directly from the member, which is a matter of state enforcement law outside this federal statute and not covered here.",
+      "citations": [
+        {
+          "case": "10 U.S.C. § 1408(d)(2)",
+          "cite": "10 U.S.C. § 1408(d)(2)",
+          "url": "https://www.law.cornell.edu/uscode/text/10/1408",
+          "quote": "If the spouse or former spouse to whom payments are to be made under this section was not married to the member for a period of 10 years or more during which the member performed at least 10 years of service creditable in determining the member’s eligibility for retired pay, payments may not be made under this section to the extent that they include an amount resulting from the treatment by the court under subsection (c) of disposable retired pay of the member as property of the member or property of the member and his spouse."
+        }
+      ]
+    },
+    {
+      "id": "mildivorce_disposable_retired_pay_cap",
+      "title": "Statutory Caps on the Percentage Payable Through DFAS",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-04",
+      "body": "USFSPA caps how much of a member's disposable retired pay DFAS may pay out through its direct-payment mechanism, and the statute sets more than one cap depending on what is being paid. For property-division orders specifically, the statute provides: 'The total amount of the disposable retired pay of a member payable under all court orders pursuant to subsection (c) may not exceed 50 percent of such disposable retired pay.' A separate, broader cap applies when property-division payments are combined with other legal process against the same pay (for example, wage-garnishment-type process for child support or alimony under the Social Security Act): 'the total amount of the disposable retired pay of a member payable by the Secretary concerned under all court orders pursuant to this section and all legal processes pursuant to section 459 of the Social Security Act (42 U.S.C. 659) with respect to a member may not exceed 65 percent of the amount of the retired pay payable to such member that is considered under section 462 of the Social Security Act (42 U.S.C. 662) to be remuneration for employment that is payable by the United States.' In plain terms, the statute sets a 50 percent ceiling on the disposable retired pay DFAS will pay out under property-division court orders alone, and a separate, higher 65 percent ceiling that applies when property-division payments are combined with other garnishment-type legal process against the same member's pay.",
+      "gap": "This clause quotes 10 U.S.C. § 1408(e)(1) and § 1408(e)(4), fetched from Cornell Legal Information Institute and independently re-fetched with a second, distinct User-Agent string and request configuration; both fetches returned byte-identical text. These two subsections are not independent of one another, or of the other clauses in this document -- all are the same statutory section, 10 U.S.C. § 1408. This clause does not attempt to compute what percentage would apply in any particular case, does not address the separate 25 percent cap the statute sets for child-abuse garnishment orders under a different subsection, and does not address how these caps interact with a member's own separate wage garnishment or allotment obligations outside this statute.",
+      "citations": [
+        {
+          "case": "10 U.S.C. § 1408(e)(1)",
+          "cite": "10 U.S.C. § 1408(e)(1)",
+          "url": "https://www.law.cornell.edu/uscode/text/10/1408",
+          "quote": "The total amount of the disposable retired pay of a member payable under all court orders pursuant to subsection (c) may not exceed 50 percent of such disposable retired pay."
+        },
+        {
+          "case": "10 U.S.C. § 1408(e)(4)",
+          "cite": "10 U.S.C. § 1408(e)(4)",
+          "url": "https://www.law.cornell.edu/uscode/text/10/1408",
+          "quote": "the total amount of the disposable retired pay of a member payable by the Secretary concerned under all court orders pursuant to this section and all legal processes pursuant to section 459 of the Social Security Act (42 U.S.C. 659) with respect to a member may not exceed 65 percent of the amount of the retired pay payable to such member that is considered under section 462 of the Social Security Act (42 U.S.C. 662) to be remuneration for employment that is payable by the United States."
+        }
+      ]
+    },
+    {
+      "id": "mildivorce_distinct_federal_scheme",
+      "title": "A Separate Federal Mechanism -- Not an ERISA Plan or QDRO",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-04",
+      "body": "Military retired pay is not divided through the same legal mechanism used for a typical private-employer pension or 401(k). Division of private-sector retirement plans generally proceeds under Title I of the Employee Retirement Income Security Act (ERISA), using an order commonly called a Qualified Domestic Relations Order (QDRO). ERISA's own text says that Title I 'shall not apply to any employee benefit plan if ... such plan is a governmental plan (as defined in section 1002(32) of this title),' and separately defines that term: 'The term \"governmental plan\" means a plan established or maintained for its employees by the Government of the United States, by the government of any State or political subdivision thereof, or by any agency or instrumentality of any of the foregoing.' Military retired pay is a benefit established and maintained by the United States government for its own uniformed-service personnel. Division of military retired pay upon divorce is instead governed entirely by the separate federal statute discussed throughout this document, 10 U.S.C. § 1408, which sets its own definitions, its own state-court authorization, and its own direct-payment mechanism through DFAS.",
+      "gap": "This clause's ERISA quotations -- 29 U.S.C. § 1003(b)(1) and 29 U.S.C. § 1002(32) -- were fetched from Cornell Legal Information Institute and independently re-fetched with a second, distinct User-Agent string and request configuration; both fetches returned byte-identical text. Those two ERISA sections are not independent of one another (both are provisions of the same statute, ERISA), though as a pair they are an independent source from the 10 U.S.C. § 1408 material quoted in this document's other clauses -- a genuinely different federal statute. This clause was deliberately kept narrow: it verifies only that ERISA Title I's own governmental-plan exclusion covers a benefit plan of the United States government (which military retired pay is), and that the QDRO mechanism is a creature of that same excluded Title I. It does not assert that court orders dividing military retired pay are called \"military pension division orders\" or any other specific term of art -- no primary source located in this research used that phrase in describing 10 U.S.C. § 1408, so that terminology is not used here. It also does not address California's CalPERS or CalSTRS public-employee pension systems, which are governed by their own state statutes; no primary citation for those systems' treatment on divorce was verified in this research, so that comparison is omitted rather than asserted.",
+      "citations": [
+        {
+          "case": "29 U.S.C. § 1003(b)(1)",
+          "cite": "29 U.S.C. § 1003(b)(1) (ERISA § 4(b)(1))",
+          "url": "https://www.law.cornell.edu/uscode/text/29/1003",
+          "quote": "The provisions of this subchapter shall not apply to any employee benefit plan if— (1) such plan is a governmental plan (as defined in section 1002(32) of this title)"
+        },
+        {
+          "case": "29 U.S.C. § 1002(32)",
+          "cite": "29 U.S.C. § 1002(32) (ERISA § 3(32))",
+          "url": "https://www.law.cornell.edu/uscode/text/29/1002",
+          "quote": "The term “governmental plan” means a plan established or maintained for its employees by the Government of the United States, by the government of any State or political subdivision thereof, or by any agency or instrumentality of any of the foregoing."
+        }
+      ]
+    },
+    {
+      "id": "mildivorce_acknowledgment_block",
+      "title": "Acknowledgment and Signature Block",
+      "kind": "drafting",
+      "body": "{{memberName}} and {{spouseName}} acknowledge that this information sheet describes the federal statutory framework under the Uniformed Services Former Spouses' Protection Act, 10 U.S.C. § 1408, as it exists on the date signed below, and that it is not legal advice about, and does not determine, how any military retired pay involved in their case will actually be treated, divided, or paid.\n\nIf known, the following facts are noted here for reference in connection with any related court filing: member's branch of service -- {{serviceBranch}}; date of marriage -- {{marriageDate}}; member's years of creditable military service, if known -- {{yearsOfCreditableService}}.\n\nExecuted on {{dateSigned}}, at {{cityState}}.\n\n☐ _________________________ {{memberName}}, signature\n\n☐ _________________________ {{spouseName}}, signature\n\n[This information sheet is prepared for general reference alongside an actual divorce, dissolution, annulment, or legal separation proceeding. It does not itself divide any retired pay, does not constitute a court order, and does not itself request direct payment from the Defense Finance and Accounting Service.]"
     }
   ]
 }

@@ -15627,5 +15627,66 @@
         "required": false
       }
     ]
+  },
+  {
+    "id": "military_divorce_usfspa_info_sheet",
+    "title": "Military Divorce and the Uniformed Services Former Spouses' Protection Act — Information Sheet",
+    "description": "Background information on the federal Uniformed Services Former Spouses' Protection Act (10 U.S.C. section 1408) -- how it authorizes, but does not require, state courts to treat military disposable retired pay as divisible property following McCarty v. McCarty (1981); the statutory definition of \"disposable retired pay\"; the honest correction that the widely-repeated \"10/10 rule\" governs direct payment from DFAS, not whether retired pay can be divided at all; the statutory percentage caps on direct payment; and the confirmation that military retired pay is a separate federal scheme from an ERISA-governed QDRO.",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "mildivorce_purpose_intro",
+      "mildivorce_usfspa_overview",
+      "mildivorce_disposable_retired_pay_definition",
+      "mildivorce_ten_ten_rule_direct_payment",
+      "mildivorce_disposable_retired_pay_cap",
+      "mildivorce_distinct_federal_scheme",
+      "mildivorce_acknowledgment_block"
+    ],
+    "fields": [
+      {
+        "id": "memberName",
+        "label": "Service member's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "spouseName",
+        "label": "Spouse or former spouse's name",
+        "placeholder": "Morgan Casey Lee",
+        "required": true
+      },
+      {
+        "id": "serviceBranch",
+        "label": "Branch of service",
+        "placeholder": "U.S. Navy",
+        "required": true
+      },
+      {
+        "id": "marriageDate",
+        "label": "Date of marriage",
+        "placeholder": "June 14, 2015",
+        "required": true
+      },
+      {
+        "id": "yearsOfCreditableService",
+        "label": "Member's years of creditable military service (if known)",
+        "placeholder": "14",
+        "required": false
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
