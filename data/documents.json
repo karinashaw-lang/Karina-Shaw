@@ -19018,5 +19018,52 @@
       "simuldeath_community_property"
     ],
     "fields": []
+  },
+  {
+    "id": "fraudulent_inducement_to_relocate_info_sheet",
+    "title": "Fraudulent Inducement to Change Residence for Work (Labor Code §§ 970-972) — Information Sheet",
+    "description": "Explains, using the statutes' own text, California's prohibition on inducing a person to change residence for work through knowingly false representations about the kind/character/existence of the work, its duration or compensation, sanitary/housing conditions, or a pending labor dispute (Labor Code § 970), the misdemeanor criminal penalty for a violation (§ 971), and the separate civil double-damages remedy available to the aggrieved person (§ 972).",
+    "categories": [
+      "Hiring"
+    ],
+    "clauseOrder": [
+      "reloinduce_declaration",
+      "reloinduce_core_prohibition",
+      "reloinduce_criminal_penalty",
+      "reloinduce_civil_double_damages",
+      "reloinduce_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "jobseekerName",
+        "label": "Jobseeker's name",
+        "placeholder": "Casey Alex",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 5, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
