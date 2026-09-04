@@ -17823,5 +17823,48 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "llc_annual_fee_info_sheet",
+    "title": "California LLC Annual Fee — Information Sheet",
+    "description": "Explains California's separate, income-tiered LLC fee (Rev. & Tax. Code § 17942), owed in addition to the flat $800 minimum franchise tax by an LLC taxed as a partnership or disregarded entity: who it applies to, the tiered fee schedule, the gross-income (not net-profit) definition of \"total income,\" and the mid-year estimate-and-payment requirement.",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "llcfee_declaration",
+      "llcfee_scope",
+      "llcfee_addition_to_franchise_tax",
+      "llcfee_schedule",
+      "llcfee_total_income_defined",
+      "llcfee_estimate_timing",
+      "llcfee_ack"
+    ],
+    "fields": [
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Business name under consideration (if applicable)",
+        "placeholder": "Acme, LLC",
+        "required": false
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 4, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "San Jose, California",
+        "required": true
+      }
+    ]
   }
 ]
