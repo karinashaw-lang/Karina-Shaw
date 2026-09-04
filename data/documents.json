@@ -15241,5 +15241,59 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "right_to_copy_of_signed_documents_info_sheet",
+    "title": "Right to a Copy of Signed Employment Documents — Information Sheet",
+    "description": "Background information on California Labor Code section 432 -- the right of an employee or applicant who signs an instrument relating to obtaining or holding employment to receive a copy of that instrument upon request, what the statute's text does and does not specify, and its placement among neighboring hiring-document provisions.",
+    "categories": [
+      "Hiring"
+    ],
+    "clauseOrder": [
+      "copyofdocuments_purpose",
+      "copyofdocuments_core_right",
+      "copyofdocuments_request_trigger",
+      "copyofdocuments_statutory_silences",
+      "copyofdocuments_placement_and_neighbors",
+      "copyofdocuments_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "jobTitle",
+        "label": "Job title",
+        "placeholder": "Software Engineer",
+        "required": true
+      },
+      {
+        "id": "requestDate",
+        "label": "Date of this request",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "recordsRequested",
+        "label": "Records requested",
+        "placeholder": "Complete personnel file, including performance evaluations, and payroll records for the last three years of employment",
+        "required": true
+      },
+      {
+        "id": "deliveryMethod",
+        "label": "Delivery method",
+        "placeholder": "mailed to designated address",
+        "required": true
+      }
+    ]
   }
 ]
