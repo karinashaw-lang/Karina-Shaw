@@ -15136,5 +15136,55 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "right_to_repair_act_info_sheet",
+    "title": "Right to Repair Act — Information Sheet",
+    "description": "Background information on California's Right to Repair Act (Civil Code sections 895-945.5, SB 800) -- the detailed construction-defect performance standards for new residential construction, the mandatory prelitigation notice-and-opportunity-to-repair process, the outer limitations period and its tolling during that process, and recoverable damages and statutory affirmative defenses -- a companion to the corpus's existing Home Improvement Contract document.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "righttorepair_purpose_and_background",
+      "righttorepair_scope_and_standards_structure",
+      "righttorepair_example_performance_standards",
+      "righttorepair_prelitigation_notice",
+      "righttorepair_builder_inspection_and_repair_offer",
+      "righttorepair_limitations_period_and_tolling",
+      "righttorepair_remedies_and_affirmative_defenses",
+      "righttorepair_signature_acknowledgment"
+    ],
+    "fields": [
+      {
+        "id": "homeownerName",
+        "label": "Homeowner's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "builderName",
+        "label": "Builder's name",
+        "placeholder": "Acme Homes, Inc.",
+        "required": true
+      },
+      {
+        "id": "propertyAddress",
+        "label": "Property address",
+        "placeholder": "123 Main St, Apt 4, Springfield",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
