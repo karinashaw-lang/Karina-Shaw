@@ -20139,5 +20139,48 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "need_based_attorney_fees_family_law_info_sheet",
+    "title": "Need-Based Attorney's Fees in Family Law Proceedings — Information Sheet",
+    "description": "Explains California's need-based attorney's fees provisions for a dissolution, nullity, or legal separation proceeding (Family Code §§ 2030-2032): the mandatory findings a court must make when a fee request is made and the disparity/ability-to-pay standard, the rule that fees may cover services before or after the proceeding began and the court's duty to augment an award as the case continues, the \"just and reasonable under the relative circumstances\" standard for the amount awarded, the factors considered (cross-referencing Family Code section 4320), and the motion/order-to-show-cause procedure and 15-day ruling deadline for a temporary fee order during the proceeding. Distinct from the corpus's existing Marital Settlement Agreement document, which cites only Family Code section 2030(a)(1)'s underlying access-to-representation duty, not these mandatory-findings, timing, standard, factor, or procedural provisions.",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "famfees_request_declaration",
+      "famfees_mandatory_findings_on_request",
+      "famfees_fees_timing_and_augmentation",
+      "famfees_pendente_lite_procedure",
+      "famfees_just_and_reasonable_standard",
+      "famfees_relative_circumstances_factors",
+      "famfees_relief_requested"
+    ],
+    "fields": [
+      {
+        "id": "petitionerName",
+        "label": "Petitioner's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "respondentName",
+        "label": "Respondent's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "courtCaseNumber",
+        "label": "Court case number",
+        "placeholder": "26FL00123",
+        "required": true
+      },
+      {
+        "id": "countyOfFiling",
+        "label": "County of filing",
+        "placeholder": "Sacramento",
+        "required": true
+      }
+    ]
   }
 ]
