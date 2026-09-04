@@ -16144,5 +16144,36 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "business_expense_reimbursement_info_sheet",
+    "title": "Employer's Duty to Reimburse Business Expenses — Information Sheet",
+    "description": "Background information on California Labor Code section 2802 -- the statutory duty to indemnify an employee for necessary expenditures or losses incurred in discharging job duties, interest on unpaid reimbursement awards, the statutory definition of \"necessary expenditures or losses\" (including attorney's fees for successful enforcement), the non-waivable nature of the right under section 2804, and Cochran v. Schwan's Home Service's holding that the duty extends to a reasonable percentage of a personal cell phone bill used for work calls, regardless of plan type or who pays the bill. A companion to this project's existing bare Business Expense Reimbursement Form.",
+    "categories": [
+      "During employment"
+    ],
+    "clauseOrder": [
+      "expreimb_intro",
+      "expreimb_duty",
+      "expreimb_interest",
+      "expreimb_definition_fees",
+      "expreimb_nonwaivable",
+      "expreimb_remote_work",
+      "expreimb_acknowledgment"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      }
+    ]
   }
 ]
