@@ -17255,5 +17255,41 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "political_activity_protection_info_sheet",
+    "title": "Employee Political Activity Protection — Information Sheet",
+    "description": "Explains California Labor Code §§ 1101-1106, which protect employees' political activities and affiliations — a genuine, standalone topic only incidentally cross-referenced elsewhere in this corpus (as an exception carve-out in wage-retaliation citations), not substantively covered until now. Covers the core prohibition on employer rules restricting political activity, the separate prohibition on coercing employees through threat of discharge, the California Supreme Court's construction of \"political activity\" as not narrowly confined to partisan activity, and the chapter's own criminal misdemeanor penalty and preserved civil damages remedy.",
+    "categories": [
+      "During employment"
+    ],
+    "clauseOrder": [
+      "politicalactivity_purpose_statement",
+      "politicalactivity_core_prohibition_1101",
+      "politicalactivity_coercion_prohibition_1102",
+      "politicalactivity_scope_case_law",
+      "politicalactivity_remedies_and_penalties",
+      "politicalactivity_signature_acknowledgment"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      }
+    ]
   }
 ]
