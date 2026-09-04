@@ -21041,5 +21041,60 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "criminal_trade_secret_theft_info_sheet",
+    "title": "Criminal Trade Secret Theft — Information Sheet",
+    "description": "Describes California's criminal trade secret theft statute, Penal Code § 499c: its own \"trade secret\" definition (textually matching CUTSA's civil definition), the theft-type prohibited acts under subdivision (b), the bribery/inducement offense and penalty under subdivision (c), the rule that returning the article is no defense, and how this criminal statute relates to California's separate civil Uniform Trade Secrets Act framework.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "pc499c_purpose",
+      "pc499c_trade_secret_definition",
+      "pc499c_prohibited_theft_acts",
+      "pc499c_bribery_inducement_offense",
+      "pc499c_return_not_a_defense",
+      "pc499c_relationship_to_civil_cutsa",
+      "pc499c_signature_and_acknowledgment"
+    ],
+    "fields": [
+      {
+        "id": "preparerName",
+        "label": "Preparer's Name",
+        "placeholder": "e.g., Jane Doe",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Company Name",
+        "placeholder": "e.g., Acme Corp.",
+        "required": true
+      },
+      {
+        "id": "adversePartyName",
+        "label": "Adverse Party's Name",
+        "placeholder": "e.g., John Smith",
+        "required": false
+      },
+      {
+        "id": "tradeSecretDescription",
+        "label": "Description of the Trade Secret Information at Issue",
+        "placeholder": "e.g., customer pricing formulas",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date Signed",
+        "placeholder": "e.g., January 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, State",
+        "placeholder": "e.g., Los Angeles, California",
+        "required": true
+      }
+    ]
   }
 ]
