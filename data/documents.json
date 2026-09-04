@@ -19413,5 +19413,59 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "noncompete_void_notification_info_sheet",
+    "title": "Noncompete Void Notification (Bus. & Prof. Code § 16600.1(b)) — Information Sheet and Notice Template",
+    "description": "Explains, using the statute's own text, the employer's affirmative duty under Business and Professions Code § 16600.1(b) to notify current employees, and former employees employed after January 1, 2022, whose contract includes a void noncompete clause, that the clause is void -- a duty separate from the general noncompete prohibition already covered in this project's Non-Compete Agreement document. Covers the notice deadline, the required written, individualized, dual-channel delivery, and the statute's own unfair-competition enforcement consequence, and includes a notice template.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "ncvoidnotice_recital",
+      "ncvoidnotice_delivery_stmt",
+      "ncvoidnotice_duty",
+      "ncvoidnotice_delivery_req",
+      "ncvoidnotice_enforcement",
+      "ncvoidnotice_signature"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee or former employee's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "employeeAddress",
+        "label": "Employee's last known address",
+        "placeholder": "123 Main St., Sacramento, CA 95814",
+        "required": true
+      },
+      {
+        "id": "employeeEmail",
+        "label": "Employee's email address",
+        "placeholder": "jordan.lee@example.com",
+        "required": true
+      },
+      {
+        "id": "agreementDate",
+        "label": "Date of the agreement containing the noncompete clause",
+        "placeholder": "June 1, 2021",
+        "required": true
+      },
+      {
+        "id": "noticeDate",
+        "label": "Date of this notice",
+        "placeholder": "January 15, 2024",
+        "required": true
+      }
+    ]
   }
 ]
