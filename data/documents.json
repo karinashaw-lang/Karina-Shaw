@@ -18742,5 +18742,58 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "bona_fide_wage_dispute_info_sheet",
+    "title": "Bona Fide Wage Dispute — Undisputed Portion Must Still Be Paid",
+    "description": "Explains, using Labor Code § 206's own text, the rule that applies when an employer disputes the amount of final wages owed to a discharged or resigning employee: the employer must still pay, without condition and within the otherwise-applicable deadline, whatever amount it concedes is due, and paying that conceded amount does not waive the employee's remedies for the disputed balance. Also explains the Labor Commissioner determination-and-treble-damages remedy under § 206(b). Distinct from this project's Final Paycheck Delivery Method and Location (how/where wages are delivered), Final Wage Payment / Waiting-Time Penalty Demand Letter (the deadline and penalty for late payment), and Prohibition on Requiring a Release as a Condition of Wage Payment (§ 206.5's separate release-conditioning rule) documents, which it cross-references rather than restates.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "bonafidedispute_intro",
+      "bonafidedispute_recital",
+      "bonafidedispute_core_rule",
+      "bonafidedispute_commissioner_remedy",
+      "bonafidedispute_ack"
+    ],
+    "fields": [
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "terminationDate",
+        "label": "Termination date",
+        "placeholder": "September 30, 2026",
+        "required": true
+      },
+      {
+        "id": "unpaidWagesAmount",
+        "label": "Total amount employee claims is owed",
+        "placeholder": "$3,200.00",
+        "required": true
+      },
+      {
+        "id": "concededAmount",
+        "label": "Amount company concedes is due",
+        "placeholder": "$2,100.00",
+        "required": true
+      },
+      {
+        "id": "disputedAmount",
+        "label": "Amount company disputes",
+        "placeholder": "$1,100.00",
+        "required": true
+      }
+    ]
   }
 ]
