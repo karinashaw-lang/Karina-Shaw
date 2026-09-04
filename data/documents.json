@@ -16669,5 +16669,67 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "probate_homestead_set_aside_info_sheet",
+    "title": "Probate Homestead Set-Aside — Information Sheet",
+    "description": "Explains California's probate homestead set-aside (Probate Code §§ 6520-6528) — a probate court's discretionary power, exercised during estate administration, to select and set apart a homestead for the use of a decedent's surviving spouse and/or minor children. A companion to, and genuinely distinct from, this corpus's Homestead Exemption information sheet, which covers a living debtor's creditor-exemption homestead under the Code of Civil Procedure: who may petition and for whose use, what property is eligible and in what order of preference, the factors and discretion a court applies in selecting and setting terms, the outer time limits on the set-aside and its effect on ongoing administration, the set-aside's priority relative to creditors' claims, and its relationship to a separate declaration of homestead.",
+    "categories": [
+      "Estate Planning"
+    ],
+    "clauseOrder": [
+      "probatehomestead_purpose",
+      "probatehomestead_who_may_petition",
+      "probatehomestead_eligible_property",
+      "probatehomestead_court_discretion_selection",
+      "probatehomestead_duration_and_effect",
+      "probatehomestead_creditor_priority",
+      "probatehomestead_distinct_from_declared_homestead",
+      "probatehomestead_signature_ack"
+    ],
+    "fields": [
+      {
+        "id": "decedentName",
+        "label": "Decedent's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "petitionerName",
+        "label": "Petitioner's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "survivingSpouseName",
+        "label": "Surviving spouse or domestic partner's name",
+        "placeholder": "Taylor Morgan",
+        "required": true
+      },
+      {
+        "id": "dateOfDeath",
+        "label": "Date of death",
+        "placeholder": "March 15, 2026",
+        "required": true
+      },
+      {
+        "id": "propertyAddress",
+        "label": "Property address",
+        "placeholder": "123 Main St, Apt 4, Springfield",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityOfExecution",
+        "label": "City where signed",
+        "placeholder": "Sacramento",
+        "required": true
+      }
+    ]
   }
 ]
