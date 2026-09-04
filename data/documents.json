@@ -17291,5 +17291,35 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "mandatory_arbitration_restriction_info_sheet",
+    "title": "Restriction on Requiring Arbitration as a Condition of Employment — Information Sheet",
+    "description": "Explains California Labor Code § 432.6 (AB 51), which restricts requiring arbitration as a condition of employment — a companion to this corpus's Arbitration Agreement drafting template, addressing the separate statutory restriction rather than the agreement's own terms. Covers the statute's own prohibition and its FAA-enforceable-agreement savings clause, and — critically — its current, court-ordered enforcement status: the Ninth Circuit's 2023 holding in Chamber of Commerce v. Bonta that the FAA preempts the statute as applied to arbitration agreements, and the resulting January 2024 permanent injunction barring named California officials from enforcing § 432.6(a)-(c) wherever the alleged waiver is an FAA-covered arbitration agreement.",
+    "categories": [
+      "Hiring"
+    ],
+    "clauseOrder": [
+      "mandatoryarb_notice_purpose",
+      "mandatoryarb_prohibition",
+      "mandatoryarb_faa_savings",
+      "mandatoryarb_ninth_circuit_preemption",
+      "mandatoryarb_current_status",
+      "mandatoryarb_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      }
+    ]
   }
 ]

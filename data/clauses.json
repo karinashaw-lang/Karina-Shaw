@@ -47033,6 +47033,86 @@
       "title": "Acknowledgment",
       "kind": "drafting",
       "body": "By signing below, the undersigned acknowledge that this information sheet was provided and that it states general rules of California law about employees' political activities under Labor Code sections 1101 through 1106 and their judicial construction, rather than advice about {{employeeName}}'s specific circumstances or {{companyName}}'s specific policies, practices, or legal obligations.\n\nEmployer: {{companyName}}\nBy: _______________\nTitle: _______________\nDate: {{dateSigned}}\n\nEmployee: {{employeeName}}\nSignature: _______________\nDate: {{dateSigned}}"
+    },
+    {
+      "id": "mandatoryarb_notice_purpose",
+      "title": "Purpose of This Notice",
+      "kind": "drafting",
+      "body": "This notice describes what California Labor Code Section 432.6 says about requiring arbitration as a condition of employment, and the current, court-ordered limits on enforcing that statute. It is provided by {{companyName}} to {{employeeName}} for informational purposes and does not itself waive, modify, expand, or create any right, agreement, or obligation between {{companyName}} and {{employeeName}}."
+    },
+    {
+      "id": "mandatoryarb_prohibition",
+      "title": "California's Restriction on Requiring Arbitration",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-04",
+      "body": "California Labor Code Section 432.6 states that a person may not, as a condition of employment, continued employment, or the receipt of any employment-related benefit, require an applicant for employment or an employee to waive any right, forum, or procedure for a violation of the California Fair Employment and Housing Act or the Labor Code — including the right to file a civil action or a complaint with a government agency. The statute separately bars threatening, retaliating against, or terminating an applicant or employee because they refused to consent to that kind of waiver, and it treats an agreement that requires someone to affirmatively opt out of a waiver, rather than opt in, as itself a \"condition of employment\" covered by the same prohibition.",
+      "gap": "Fetched twice from leginfo.legislature.ca.gov on 2026-09-04 using two distinct User-Agent strings; the two fetches of the statutory text were byte-identical after whitespace normalization. This clause quotes only subdivisions (a) through (c) of the section; the next clause quotes subdivision (f) of the same section, so the two are not independent of one another as sources — both come from Labor Code Section 432.6 itself.",
+      "citations": [
+        {
+          "case": "Cal. Lab. Code § 432.6(a)-(c) (leginfo.legislature.ca.gov official text)",
+          "cite": "California Labor Code § 432.6, subdivisions (a) through (c)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=432.6",
+          "quote": "432.6. (a) A person shall not, as a condition of employment, continued employment, or the receipt of any employment-related benefit, require any applicant for employment or any employee to waive any right, forum, or procedure for a violation of any provision of the California Fair Employment and Housing Act (Part 2.8 (commencing with Section 12900) of Division 3 of Title 2 of the Government Code) or this code, including the right to file and pursue a civil action or a complaint with, or otherwise notify, any state agency, other public prosecutor, law enforcement agency, or any court or other governmental entity of any alleged violation. (b) An employer shall not threaten, retaliate or discriminate against, or terminate any applicant for employment or any employee because of the refusal to consent to the waiver of any right, forum, or procedure for a violation of the California Fair Employment and Housing Act or this code, including the right to file and pursue a civil action or a complaint with, or otherwise notify, any state agency, other public prosecutor, law enforcement agency, or any court or other governmental entity of any alleged violation. (c) For purposes of this section, an agreement that requires an employee to opt out of a waiver or take any affirmative action in order to preserve their rights is deemed a condition of employment."
+        }
+      ]
+    },
+    {
+      "id": "mandatoryarb_faa_savings",
+      "title": "The Statute's Own Carve-Out for FAA-Enforceable Agreements",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-04",
+      "body": "Section 432.6 says, in its own text, that nothing in the section is intended to invalidate a written arbitration agreement that is otherwise enforceable under the Federal Arbitration Act. The section also doesn't apply to postdispute settlement agreements or negotiated severance agreements, or to a person covered by a securities self-regulatory organization's own arbitration rules, and by its terms it applies only to employment contracts entered into, modified, or extended on or after January 1, 2020.",
+      "gap": "Fetched twice from leginfo.legislature.ca.gov on 2026-09-04 using two distinct User-Agent strings; the two fetches were byte-identical after whitespace normalization. This clause and the one above quote different subdivisions of the same Labor Code section, so they are not independent of one another as sources. Subdivision (f)'s savings clause matters beyond its own terms: as the next clause describes, the Ninth Circuit pointed to this exact language as evidence that the statute targets the formation of arbitration agreements rather than their enforceability — which is what drove the court's preemption analysis.",
+      "citations": [
+        {
+          "case": "Cal. Lab. Code § 432.6(e)-(h) (leginfo.legislature.ca.gov official text)",
+          "cite": "California Labor Code § 432.6, subdivisions (e) through (h)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=432.6",
+          "quote": "(e) This section does not apply to a person registered with a self-regulatory organization as defined by the Securities Exchange Act of 1934 (15 U.S.C. Sec. 78c) or regulations adopted under that act pertaining to any requirement of a self-regulatory organization that a person arbitrate disputes that arise between the person and their employer or any other person as specified by the rules of the self-regulatory organization. (f) Nothing in this section is intended to invalidate a written arbitration agreement that is otherwise enforceable under the Federal Arbitration Act (9 U.S.C. Sec. 1 et seq.). (g) This section does not apply to postdispute settlement agreements or negotiated severance agreements. (h) This section applies to contracts for employment entered into, modified, or extended on or after January 1, 2020."
+        }
+      ]
+    },
+    {
+      "id": "mandatoryarb_ninth_circuit_preemption",
+      "title": "The Ninth Circuit Held the FAA Preempts This Statute",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-04",
+      "body": "In Chamber of Commerce of the United States v. Bonta, a divided panel of the Ninth Circuit Court of Appeals held that the Federal Arbitration Act preempts Section 432.6 to the extent it applies to arbitration agreements, and affirmed a district court order preliminarily enjoining California officials from enforcing it. The majority reasoned that Section 432.6 discriminates against the formation of arbitration agreements — pointing to subdivision (f)'s own admission that an arbitration agreement formed in violation of the statute remains enforceable — and held that a state rule burdening arbitration agreements at the formation stage is preempted for the same reasons the U.S. Supreme Court has struck down state rules that single out arbitration agreements for different treatment than other contracts.",
+      "gap": "Read via CourtListener (opinion id 9371215, cluster id 9375739) on 2026-09-04. This was a 2-1 panel decision (Judges Ikuta and W. Fletcher in the majority, Judge Lucero dissenting), not an en banc ruling. The docket shows an earlier version of this opinion (13 F.4th 766, filed Sept. 15, 2021) drew a petition for rehearing en banc; the panel then sua sponte granted panel rehearing, withdrew that opinion, and the en banc petition was denied as moot when the panel reissued this opinion on Feb. 15, 2023. No further en banc or Ninth Circuit petition followed this opinion — the appellate docket (No. 20-15291) shows the mandate issued March 9, 2023, and the case then returned to the district court, whose final disposition is the subject of the next clause. Whether the dissent's narrower reading of FAA preemption is correct was not resolved by any higher court; the litigation ended by stipulated judgment rather than further appellate review, so this holding was never tested by the U.S. Supreme Court or an en banc Ninth Circuit panel.",
+      "citations": [
+        {
+          "case": "Chamber of Commerce of the United States of America v. Bonta",
+          "cite": "62 F.4th 473 (9th Cir. 2023)",
+          "url": "https://www.courtlistener.com/opinion/9375739/chamber-of-commerce-of-the-us-v-rob-bonta/",
+          "quote": "Because all provisions of AB 51 work together to burden the formation of arbitration agreements, we conclude that the FAA preempts AB 51 as a whole to the extent it applies to arbitration agreements. ... Because AB 51 is preempted by the FAA, the district court correctly held that the Chamber of Commerce is likely to succeed on the merits of its claim for declaratory and injunctive relief. And because California does not challenge the district court's holding that the remaining factors also weigh in favor of the Chamber of Commerce, we hold that the district court did not abuse its discretion when it granted the Chamber of Commerce's motion for a preliminary injunction. AFFIRMED."
+        }
+      ]
+    },
+    {
+      "id": "mandatoryarb_current_status",
+      "title": "Current Enforcement Status",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-04",
+      "body": "After the Ninth Circuit's decision, the parties to that lawsuit stipulated to a final judgment. On January 1, 2024, the U.S. District Court for the Eastern District of California entered a permanent injunction barring California's Attorney General, Labor Commissioner, the Secretary of the Labor and Workforce Development Agency, and the Director of the Department of Fair Employment and Housing — and each of their successors — from enforcing Labor Code Section 432.6, subdivisions (a), (b), or (c), or the related civil-penalty provision in Government Code Section 12953, wherever the alleged \"waiver\" consists of entering into an arbitration agreement covered by the Federal Arbitration Act. The court dismissed the underlying case with prejudice, retained jurisdiction to enforce that injunction, and closed the case.",
+      "gap": "Read directly from the docket and the filed order (E.D. Cal. Case No. 2:19-cv-02456-KJM-DB, ECF No. 87, \"Order Regarding Permanent Injunction,\" entered Jan. 2, 2024) via CourtListener on 2026-09-04. This is a district court order, not an appellate opinion, so it is independent of the Ninth Circuit opinion above as a source, even though it implements that decision. Nothing in the docket entries retrieved here (95 entries total, the last dated Jan. 2, 2024) shows the injunction being modified, appealed further, or reopened since it was entered — but this research did not turn up, and cannot rule out, developments outside that docket. The injunction is also limited to its own terms: it runs against these named California officials specifically, and only bars enforcing Section 432.6(a)-(c) and Government Code Section 12953 where the alleged waiver takes the form of entering into an FAA-covered arbitration agreement. The statute's text remains on the books, unrepealed, and this record does not establish what — if anything — of Section 432.6 still has force where a waiver doesn't take the form of an FAA-covered arbitration agreement, or whether Section 432.6(d)'s reference to a \"prevailing plaintiff\" reflects some private right of action distinct from the enjoined state officials' own enforcement.",
+      "citations": [
+        {
+          "case": "Chamber of Commerce of the United States of America v. Bonta, Order Regarding Permanent Injunction",
+          "cite": "No. 2:19-cv-02456-KJM-DB, ECF No. 87 (E.D. Cal. entered Jan. 2, 2024)",
+          "url": "https://www.courtlistener.com/docket/16584445/chamber-of-commerce-of-the-usa-v-becerra/",
+          "quote": "It is hereby ORDERED that Defendants Rob Bonta, in his official capacity as the Attorney General of the State of California; Lilia Garcia Brower, in her official capacity as the Labor Commissioner of the State of California; Stewart Knox, in his official capacity as the Secretary of the California Labor and Workforce Development Agency; and Kevin Kish, in his official capacity as Director of the California Department of Fair Employment and Housing; and each of their successors, are: 1. Enjoined from enforcing sections 432.6(a), (b), and (c) of the California Labor Code where the alleged \"waiver of any right, forum, or procedure\" is the entry into an arbitration agreement that is covered by the Federal Arbitration Act, 9 U.S.C. §§ 1-16 (\"FAA\"); and 2. Enjoined from enforcing section 12953 of the California Government Code where the alleged violation of \"Section 432.6 of the Labor Code\" is the entry into an arbitration agreement that is covered by the FAA. ... It is further ORDERED that this action is dismissed with prejudice; It is further ORDERED that this Court shall retain jurisdiction over this action for purposes of implementing and enforcing the final judgment."
+        }
+      ]
+    },
+    {
+      "id": "mandatoryarb_ack",
+      "title": "Acknowledgment of Receipt",
+      "kind": "drafting",
+      "body": "Please sign below to acknowledge that you received and reviewed this notice.\n\nEmployee: {{employeeName}}\nDate: _______________"
     }
   ]
 }
