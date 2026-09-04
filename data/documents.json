@@ -19503,5 +19503,42 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "arrest_diversion_sealed_record_inquiry_info_sheet",
+    "title": "Restrictions on Employer Inquiry Into Arrest, Diversion, and Sealed Conviction Records (Labor Code § 432.7) — Information Sheet",
+    "description": "Explains, using the statutes' own text, California Labor Code § 432.7's restrictions on an employer asking about, seeking, or using an applicant's or employee's arrest not resulting in conviction, diversion program participation, or a judicially dismissed or sealed conviction, plus § 432.8's separate extension of those limitations to certain marijuana-related convictions more than two years old. Covers the core prohibition, the statutory definition of 'conviction,' the stated exceptions (peace officers/criminal justice agencies, the 'particular conviction' exceptions, and legally-required background checks), and the civil/criminal remedies. Deepens what this project's Fair Chance Act document only cross-references without independently verifying.",
+    "categories": [
+      "Hiring"
+    ],
+    "clauseOrder": [
+      "arrestrecord_declaration",
+      "arrestrecord_core_prohibition",
+      "arrestrecord_definition_conviction",
+      "arrestrecord_exceptions",
+      "arrestrecord_marijuana",
+      "arrestrecord_remedies",
+      "arrestrecord_certification"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Applicant/employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "jobTitle",
+        "label": "Job title",
+        "placeholder": "Warehouse Associate",
+        "required": true
+      }
+    ]
   }
 ]
