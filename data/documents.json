@@ -19181,5 +19181,47 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "registered_llp_registration_liability_shield_info_sheet",
+    "title": "Registered Limited Liability Partnership — Registration Procedure and Liability Shield Information Sheet",
+    "description": "Explains, using the statutes' own text, two questions about California's registered limited liability partnership (RLLP) form: the registration procedure with the Secretary of State (Corp. Code § 16953 -- required filing content, fee, when registration takes effect and how it continues), and the extent of the liability shield registration creates (Corp. Code § 16306 -- the core shield against vicarious liability, and its express limits: a partner remains liable for their own tortious conduct, and the shield does not apply at all to a law-practice RLLP's professional-service claims absent a current State Bar certificate of registration). Distinct from this project's Professional LLC Prohibition in California document, which addresses only which professions may use the RLLP form in the first place.",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "rllpreg_declaration",
+      "rllpreg_secstate_filing_requirements",
+      "rllpreg_registration_effective_continuing",
+      "rllpreg_liability_shield_core",
+      "rllpreg_liability_shield_limits",
+      "rllpreg_certification"
+    ],
+    "fields": [
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "partnershipName",
+        "label": "Partnership name, if applicable",
+        "placeholder": "Acme & Associates LLP",
+        "required": false
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 5, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
