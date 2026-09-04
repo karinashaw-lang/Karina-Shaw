@@ -21306,5 +21306,60 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "post_foreclosure_tenant_90_day_notice_info_sheet",
+    "title": "Post-Foreclosure Tenant 90-Day Notice — Information Sheet",
+    "description": "Describes California Code of Civil Procedure § 1161b: the 90-day written notice to quit a purchaser or successor in interest must give a periodic-tenancy tenant after a foreclosure sale (displacing the shorter notice period § 1161a would otherwise set), the fixed-term lease survival right and its four statutory exceptions, the purchaser's burden of proof in establishing a disqualifying exception, and the party-to-the-note and local-just-cause-ordinance limits on the statute's own application.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "postforeclosure90_intro_scope",
+      "postforeclosure90_90day_notice_general_rule",
+      "postforeclosure90_prior_default_rule_1161a",
+      "postforeclosure90_fixedterm_lease_protection",
+      "postforeclosure90_burden_of_proof",
+      "postforeclosure90_exceptions_partytonote_localordinance",
+      "postforeclosure90_closing_acknowledgment"
+    ],
+    "fields": [
+      {
+        "id": "propertyAddress",
+        "label": "Property Address",
+        "placeholder": "e.g., 123 Main St., Los Angeles, CA",
+        "required": true
+      },
+      {
+        "id": "foreclosureSaleDate",
+        "label": "Foreclosure Sale Date",
+        "placeholder": "e.g., January 1, 2026",
+        "required": true
+      },
+      {
+        "id": "tenantName",
+        "label": "Tenant's Name",
+        "placeholder": "e.g., Jane Doe",
+        "required": true
+      },
+      {
+        "id": "buyerName",
+        "label": "Purchaser/Successor in Interest Name",
+        "placeholder": "e.g., John Smith",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date Signed",
+        "placeholder": "e.g., January 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, State",
+        "placeholder": "e.g., Los Angeles, California",
+        "required": true
+      }
+    ]
   }
 ]
