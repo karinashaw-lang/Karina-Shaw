@@ -18470,5 +18470,35 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "paga_arbitration_standing_info_sheet",
+    "title": "PAGA Representative Claims and Arbitration — Information Sheet",
+    "description": "Explains the current, combined effect of Viking River Cruises, Inc. v. Moriana (2022) and Adolph v. Uber Technologies, Inc. (2023) on whether an arbitration agreement can compel arbitration of an employee's individual PAGA claim while the representative portion proceeds in court: the FAA preempts California's Iskanian rule against splitting PAGA claims, but the California Supreme Court held in Adolph that compelling arbitration of the individual claim does not, by itself, strip the employee of standing to pursue the non-individual claims in court. Distinct from this project's PAGA Pre-Suit Notice Letter document, which covers pre-suit notice mechanics.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "pagaarb_intro",
+      "pagaarb_viking_river_preemption",
+      "pagaarb_viking_river_dismissal_reasoning",
+      "pagaarb_adolph_standing",
+      "pagaarb_combined_current_picture",
+      "pagaarb_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      }
+    ]
   }
 ]

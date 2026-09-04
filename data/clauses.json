@@ -50050,6 +50050,116 @@
       "title": "Acknowledgment of Receipt",
       "kind": "drafting",
       "body": "{{employeeName}} acknowledges having received this information sheet describing California's warehouse quota law, Labor Code §§ 2100–2112.\n\nEmployee: {{employeeName}}\nSignature: _______________________________________________\nDate: _______________\n\nOn behalf of {{companyName}}:\nSignature: _______________________________________________\nDate: _______________"
+    },
+    {
+      "id": "pagaarb_intro",
+      "title": "Purpose of This Notice",
+      "kind": "drafting",
+      "body": "This notice describes what the U.S. Supreme Court's decision in Viking River Cruises, Inc. v. Moriana and the California Supreme Court's decision in Adolph v. Uber Technologies, Inc. say about whether an employment arbitration agreement can compel arbitration of an individual claim under California's Private Attorneys General Act (PAGA) while the employee pursues the representative portion of that claim in court. It is provided by {{companyName}} to {{employeeName}} for informational purposes and does not itself waive, modify, expand, or create any right, agreement, or obligation between {{companyName}} and {{employeeName}}."
+    },
+    {
+      "id": "pagaarb_viking_river_preemption",
+      "title": "Viking River Cruises: The FAA Preempts California's Rule Against Splitting PAGA Claims",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-05",
+      "body": "In Iskanian v. CLS Transportation Los Angeles, LLC, the California Supreme Court held that a PAGA action could not be divided by agreement into an arbitrable “individual” claim (based on Labor Code violations the plaintiff personally sustained) and a non-arbitrable “representative” claim (based on violations sustained by other employees). In Viking River Cruises, Inc. v. Moriana, the U.S. Supreme Court held that the Federal Arbitration Act (FAA) preempts that anti-splitting rule, meaning an employer can rely on an arbitration agreement's severability clause to compel arbitration of the individual portion of a PAGA claim even though Iskanian would otherwise have kept the whole action in court.",
+      "gap": "This is a single U.S. Supreme Court opinion (596 U.S. 639 (2022)), read directly from the official slip opinion published at supremecourt.gov on 2026-09-04. CourtListener's API was not used to independently cross-check this opinion because this research exhausted CourtListener's daily rate limit (125 requests/day) before reaching this case; the official Supreme Court slip opinion was used as the primary source instead. The slip opinion's line breaks required dehyphenating words split across lines (e.g., “in-\\nsofar” to “insofar”) and removing running page headers (“Cite as: 596 U.S. ____ (2022)” / “Opinion of the Court”) that the PDF-to-text extraction inserted mid-sentence; genuine compound hyphens (e.g., “non-individual”) were preserved. Viking River left a different part of Iskanian intact: its separate rule that a predispute agreement cannot categorically waive the right to bring a PAGA claim at all remains valid and is not addressed in this clause. The next clause addresses a further, more consequential part of the same opinion — what the Court said should happen to the non-individual claims once the individual claim is sent to arbitration — which is the part of Viking River that a later California Supreme Court decision treats differently.",
+      "citations": [
+        {
+          "case": "Viking River Cruises, Inc. v. Moriana",
+          "cite": "596 U.S. 639 (2022)",
+          "url": "https://www.supremecourt.gov/opinions/21pdf/20-1573_8p6h.pdf",
+          "quote": "We hold that the FAA preempts the rule of Iskanian insofar as it precludes division of PAGA actions into individual and non-individual claims through an agreement to arbitrate."
+        }
+      ]
+    },
+    {
+      "id": "pagaarb_viking_river_dismissal_reasoning",
+      "title": "What Viking River Itself Said Should Happen to the Non-Individual Claims",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-05",
+      "body": "Having held that Viking could compel arbitration of Moriana's individual PAGA claim, the Court in Viking River Cruises went on to address what should happen to her remaining, non-individual claims. The Court reasoned that PAGA's own standing requirement lets a plaintiff maintain non-individual claims in an action only by also maintaining an individual claim in that same action, so that once the individual claim is pared away into a separate arbitration proceeding, the plaintiff stands in no different position than an uninvolved member of the public. On that reasoning, the Court concluded that the plaintiff loses statutory standing to continue litigating the non-individual claims in court, and that the correct course is to dismiss them.",
+      "gap": "All three citations below are drawn from the same U.S. Supreme Court opinion cited in the clause above (596 U.S. 639 (2022)) — not independent sources of one another — and are three separate, non-adjacent passages of that opinion (intervening case-citation text, e.g. a cross-reference to Cal. Lab. Code §§2699(a), (c) and a citation to Kim v. Reins International California, Inc., falls between them in the original); each is quoted here as its own exact, contiguous excerpt rather than joined with an ellipsis, consistent with this corpus's practice of never combining non-adjacent text into a single quote. The sourcing and text-extraction caveats disclosed in the clause above apply here as well. This part of Viking River's reasoning was the Court's own interpretation of what a California statute (PAGA) requires — a question of state law on which the U.S. Supreme Court does not have the final word. As the next clause describes, the California Supreme Court read PAGA's standing requirement differently just over a year later in Adolph v. Uber Technologies; this exact passage is the part of Viking River whose practical effect no longer reflects the operative rule on PAGA standing.",
+      "citations": [
+        {
+          "case": "Viking River Cruises, Inc. v. Moriana",
+          "cite": "596 U.S. 639 (2022)",
+          "url": "https://www.supremecourt.gov/opinions/21pdf/20-1573_8p6h.pdf",
+          "quote": "But as we see it, PAGA provides no mechanism to enable a court to adjudicate nonindividual PAGA claims once an individual claim has been committed to a separate proceeding. Under PAGA’s standing requirement, a plaintiff can maintain non-individual PAGA claims in an action only by virtue of also maintaining an individual claim in that action."
+        },
+        {
+          "case": "Viking River Cruises, Inc. v. Moriana",
+          "cite": "596 U.S. 639 (2022)",
+          "url": "https://www.supremecourt.gov/opinions/21pdf/20-1573_8p6h.pdf",
+          "quote": "When an employee’s own dispute is pared away from a PAGA action, the employee is no different from a member of the general public, and PAGA does not allow such persons to maintain suit."
+        },
+        {
+          "case": "Viking River Cruises, Inc. v. Moriana",
+          "cite": "596 U.S. 639 (2022)",
+          "url": "https://www.supremecourt.gov/opinions/21pdf/20-1573_8p6h.pdf",
+          "quote": "As a result, Moriana lacks statutory standing to continue to maintain her non-individual claims in court, and the correct course is to dismiss her remaining claims."
+        }
+      ]
+    },
+    {
+      "id": "pagaarb_adolph_standing",
+      "title": "Adolph v. Uber: Compelled Arbitration of the Individual Claim Doesn't End Standing",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-05",
+      "body": "In Adolph v. Uber Technologies, Inc., the California Supreme Court took up the same standing question Viking River Cruises had addressed and reached the opposite conclusion as a matter of California law. The court held that where a plaintiff has brought a PAGA action made up of both an individual claim and non-individual claims, an order compelling arbitration of the individual claim does not strip the plaintiff of standing to litigate the non-individual claims in court, so long as the plaintiff remains an “aggrieved employee.” The court reasoned that arbitrating the individual claim doesn't nullify the fact of the underlying violation or extinguish the plaintiff's status as an aggrieved employee.",
+      "gap": "All three citations below are drawn from the same California Supreme Court opinion (14 Cal.5th 1104 (2023)), so they are not independent of one another as sources; the first two are the opinion's summary holding (with substantial intervening text about the statutory 'aggrieved employee' standard omitted between them, so each is quoted as its own exact contiguous excerpt rather than joined with an ellipsis), and the third is a separate passage from the analysis section. Read directly from the official slip opinion published at courts.ca.gov on 2026-09-04; as with Viking River, CourtListener's API was unavailable due to an exhausted daily rate limit, so the official court website was used as the primary source instead, and the same dehyphenation/header-removal text-cleanup caveats described in the Viking River preemption clause's gap apply here. Adolph also explains that a trial court has discretion to stay the non-individual claims in court pending the outcome of the arbitration under Code of Civil Procedure section 1281.4, and that if the arbitrator determines the plaintiff is not in fact an aggrieved employee, and a court confirms that determination, the plaintiff could still lose the ability to prosecute the non-individual claims for lack of standing — so this holding does not make PAGA standing invulnerable to what happens in the arbitration, only immune to being cut off automatically by the mere fact that the individual claim was sent to arbitration.",
+      "citations": [
+        {
+          "case": "Adolph v. Uber Technologies, Inc.",
+          "cite": "14 Cal.5th 1104 (2023)",
+          "url": "https://www.courts.ca.gov/opinions/documents/S274671.PDF",
+          "quote": "We hold that the answer is yes."
+        },
+        {
+          "case": "Adolph v. Uber Technologies, Inc.",
+          "cite": "14 Cal.5th 1104 (2023)",
+          "url": "https://www.courts.ca.gov/opinions/documents/S274671.PDF",
+          "quote": "Where a plaintiff has brought a PAGA action comprising individual and non-individual claims, an order compelling arbitration of the individual claims does not strip the plaintiff of standing as an aggrieved employee to litigate claims on behalf of other employees under PAGA."
+        },
+        {
+          "case": "Adolph v. Uber Technologies, Inc.",
+          "cite": "14 Cal.5th 1104 (2023)",
+          "url": "https://www.courts.ca.gov/opinions/documents/S274671.PDF",
+          "quote": "Standing under PAGA is not affected by enforcement of an agreement to adjudicate a plaintiff’s individual claim in another forum. Arbitrating a PAGA plaintiff’s individual claim does not nullify the fact of the violation or extinguish the plaintiff’s status as an aggrieved employee"
+        }
+      ]
+    },
+    {
+      "id": "pagaarb_combined_current_picture",
+      "title": "The Combined Current Picture: Arbitrate the Individual Claim, Litigate the Rest",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-05",
+      "body": "Taken together, Viking River Cruises and Adolph currently mean that an employer with an FAA-covered arbitration agreement can rely on that agreement to compel arbitration of the individual portion of an employee's PAGA claim — the portion based on Labor Code violations the employee personally sustained — but compelling that arbitration does not, by itself, end the employee's standing to pursue the non-individual, representative portion of the PAGA claim in court on behalf of other current or former employees, so long as the employee remains an aggrieved employee.",
+      "gap": "The two citations below are independent of one another: one is the U.S. Supreme Court's holding in Viking River Cruises, 596 U.S. 639 (2022), on FAA preemption of the anti-splitting rule; the other is the California Supreme Court's holding in Adolph v. Uber Technologies, 14 Cal.5th 1104 (2023), on standing. Separately, California's 2024 PAGA reform (AB 2288 and SB 92, as further amended by Stats. 2025, Ch. 67 (AB 1170)) tightened the general statutory definition of “aggrieved employee” to require personally suffering each violation alleged — a change already addressed in this project's PAGA Pre-Suit Notice Letter document (see its paga_aggrieved_employee_standing clause) rather than restated here. This research did not find, and does not represent having found, any 2024 reform provision, or any U.S. Supreme Court or California Supreme Court decision issued after Adolph, that revisits the specific arbitration-splitting question addressed in this document. Whether lower courts have applied Adolph consistently in every context, and whether Adolph's discretionary-stay approach (described in the clause above) has itself generated further litigation since 2023, was not independently reviewed for this document — that is disclosed here as a gap rather than represented as settled.",
+      "citations": [
+        {
+          "case": "Viking River Cruises, Inc. v. Moriana",
+          "cite": "596 U.S. 639 (2022)",
+          "url": "https://www.supremecourt.gov/opinions/21pdf/20-1573_8p6h.pdf",
+          "quote": "Based on this clause, Viking was entitled to enforce the agreement insofar as it mandated arbitration of Moriana’s individual PAGA claim."
+        },
+        {
+          "case": "Adolph v. Uber Technologies, Inc.",
+          "cite": "14 Cal.5th 1104 (2023)",
+          "url": "https://www.courts.ca.gov/opinions/documents/S274671.PDF",
+          "quote": "Under the statute, a plaintiff who files a PAGA action with individual and non-individual claims does not lose standing to litigate the non-individual claims in court simply because the individual claims have been ordered to arbitration."
+        }
+      ]
+    },
+    {
+      "id": "pagaarb_ack",
+      "title": "Acknowledgment of Receipt",
+      "kind": "drafting",
+      "body": "Please sign below to acknowledge that you received and reviewed this notice.\n\nEmployee: {{employeeName}}\nDate: _______________"
     }
   ]
 }
