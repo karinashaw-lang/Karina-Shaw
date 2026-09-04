@@ -17044,5 +17044,53 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "family_code_2640_reimbursement_info_sheet",
+    "title": "Section 2640 Reimbursement of Separate Property Contributions — Information Sheet",
+    "description": "Explains Family Code § 2640, a distinct reimbursement right — tracing a spouse's separate-property contribution to the ACQUISITION of community property made DURING the marriage (e.g., a down payment), reimbursed at the time of division. A companion to this corpus's Watts/Epstein document, which covers different doctrines: exclusive post-separation use of a community asset, and separate funds paying a community debt after separation. Covers what qualifies as a \"contribution to the acquisition of property\" and the statute's own exclusions, the core reimbursement right and its written-waiver exception, the fixed-dollar limit (no interest, no adjustment for value change, capped at net value at division), and the related but distinct rule for contributions to the other spouse's separate property.",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "reimbursement2640_declaration",
+      "reimbursement2640_qualifying_contributions",
+      "reimbursement2640_core_right",
+      "reimbursement2640_limit",
+      "reimbursement2640_separate_to_separate",
+      "reimbursement2640_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "party1Name",
+        "label": "First party's full legal name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "party2Name",
+        "label": "Second party's full legal name",
+        "placeholder": "Morgan Casey Lee",
+        "required": true
+      },
+      {
+        "id": "countyOfFiling",
+        "label": "County of filing",
+        "placeholder": "Sacramento County",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
