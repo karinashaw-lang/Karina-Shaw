@@ -19540,5 +19540,37 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "pregnancy_disability_leave_info_sheet",
+    "title": "California Pregnancy Disability Leave Law (Gov. Code § 12945) — Information Sheet",
+    "description": "Explains, using the statutes' own text, California's pregnancy disability leave law (Gov. Code § 12945), part of FEHA: the core leave entitlement (up to four months, tied to actual disability duration, not a flat grant), the covered-employer threshold via § 12926's cross-referenced definition, group health plan coverage during leave, the prohibition on interference with the right, and how this leave relates to -- and is additive with -- CFRA and FMLA leave. Distinct from this project's CFRA document (family-care/bonding leave), Pregnant Workers Fairness Act document (a federal reasonable-accommodation duty), and Paid Family Leave document (a wage-replacement benefit, not job-protected leave itself).",
+    "categories": [
+      "During employment"
+    ],
+    "clauseOrder": [
+      "pdll_declaration",
+      "pdll_core_entitlement",
+      "pdll_covered_employers",
+      "pdll_health_coverage",
+      "pdll_cfra_relationship",
+      "pdll_no_interference",
+      "pdll_leave_request_details",
+      "pdll_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      }
+    ]
   }
 ]
