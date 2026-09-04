@@ -19650,5 +19650,91 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "disqualified_transferee_donative_transfer_presumption_info_sheet",
+    "title": "Presumption of Fraud or Undue Influence — Donative Transfers to a Disqualified Person — Information Sheet",
+    "description": "Explains California's statutory presumption of fraud or undue influence for a donative transfer to a \"disqualified person\" under Probate Code sections 21380, 21382, and 21384, and Evidence Code section 606: the seven categories of disqualified person (the instrument's drafter, a fiduciary who transcribed it, certain care custodians of a dependent adult, and their relatives, cohabitants, employees, and law-firm associates), the rebuttable-versus-conclusive split in who bears which presumption and the clear-and-convincing-evidence standard, the cost-shifting rule for an unsuccessful rebuttal, the statutory exceptions (including the asymmetric fourth-degree blood/affinity exemption and the small-transfer exemption), and the Certificate of Independent Review escape route. Distinct from the corpus's existing Omitted Spouse, Elder/Dependent Adult Financial Abuse, and Grounds to Contest a Will or Trust documents.",
+    "categories": [
+      "Estate Planning"
+    ],
+    "clauseOrder": [
+      "disqualifiedtransfer_declaration",
+      "disqualifiedtransfer_core_presumption",
+      "disqualifiedtransfer_disqualified_categories",
+      "disqualifiedtransfer_conclusive_presumption_and_costs",
+      "disqualifiedtransfer_exceptions",
+      "disqualifiedtransfer_certificate_of_independent_review",
+      "disqualifiedtransfer_certification"
+    ],
+    "fields": [
+      {
+        "id": "preparerName",
+        "label": "Preparer's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "transferorName",
+        "label": "Transferor's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "relationshipToTransferor",
+        "label": "Recipient's relationship or role in relation to the transferor",
+        "placeholder": "Drafter of the instrument",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 4, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, state",
+        "placeholder": "Sacramento, California",
+        "required": true
+      }
+    ]
+  },
+  {
+    "id": "adu_jadu_ministerial_approval_info_sheet",
+    "title": "Accessory Dwelling Unit / Junior Accessory Dwelling Unit Ministerial Approval — Information Sheet",
+    "description": "Explains California's ministerial local-agency approval process for accessory dwelling units (ADUs) and junior accessory dwelling units (JADUs) under Government Code Chapter 13, sections 66310-66342 (recodified from former sections 65852.2 and 65852.22 by SB 477, effective March 25, 2024, and further amended by 2025 legislation effective January 1, 2026): the ministerial-review mandate and completeness/approval/appeal timelines, the statutory floors and ceilings a local ordinance's lot-size, unit-size, and height standards must respect, the circumstances in which no parking requirement may be imposed and the one-space cap when it can be, the rule that no owner-occupancy requirement may be imposed on an ADU as such, and the JADU's distinct size cap and conditional owner-occupancy rule tied to shared sanitation facilities. Distinct from the corpus's existing Home Improvement Contract document and the ADU cross-references inside the AB 1482 rent-cap/just-cause exemption clauses.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "adu_project_identification",
+      "adu_ministerial_approval_and_timeline",
+      "adu_ordinance_size_and_lotsize_limits",
+      "adu_parking_limits",
+      "adu_no_owner_occupancy_requirement",
+      "adu_jadu_size_and_shared_sanitation",
+      "adu_jadu_conditional_owner_occupancy"
+    ],
+    "fields": [
+      {
+        "id": "ownerName",
+        "label": "Property owner's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "propertyAddress",
+        "label": "Property address",
+        "placeholder": "123 Main St., Sacramento, CA 95814",
+        "required": true
+      },
+      {
+        "id": "localAgencyName",
+        "label": "Local agency (city, county, or city and county with permitting jurisdiction over the property)",
+        "placeholder": "City of Sacramento",
+        "required": true
+      }
+    ]
   }
 ]
