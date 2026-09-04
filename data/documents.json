@@ -14982,5 +14982,66 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "constructive_discharge_info_sheet",
+    "title": "Constructive Discharge — Information Sheet",
+    "description": "Background information on California's judicially created constructive discharge doctrine (Turner v. Anheuser-Busch, Inc. (1994)) -- when a resignation is treated in law as an employer-initiated termination for purposes of a separate underlying claim, the objective reasonable-employee standard, the aggravated-conditions/continuous-pattern threshold, and the employer-knowledge requirement.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "constructivedischarge_declaration",
+      "constructivedischarge_core_doctrine",
+      "constructivedischarge_underlying_claim",
+      "constructivedischarge_objective_standard",
+      "constructivedischarge_aggravated_pattern",
+      "constructivedischarge_employer_knowledge",
+      "constructivedischarge_closing_signature"
+    ],
+    "fields": [
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "resignationDate",
+        "label": "Date of resignation",
+        "placeholder": "August 15, 2026",
+        "required": true
+      },
+      {
+        "id": "allegedIntolerableConditions",
+        "label": "Working conditions believed to be intolerable",
+        "placeholder": "Describe the working conditions",
+        "required": true
+      },
+      {
+        "id": "underlyingClaimDescription",
+        "label": "Underlying legal claim this analysis relates to, if any",
+        "placeholder": "Wrongful termination in violation of public policy",
+        "required": false
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
