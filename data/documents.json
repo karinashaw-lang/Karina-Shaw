@@ -19947,5 +19947,48 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "cmia_employer_medical_information_confidentiality_info_sheet",
+    "title": "Confidentiality of Medical Information Act — Employer Obligations — Information Sheet",
+    "description": "Explains California's Confidentiality of Medical Information Act as it applies to an employer holding an employee's medical information (Civil Code §§ 56.20, 56.36): the duty to establish confidentiality procedures, the restriction on using or disclosing medical information without a signed authorization, the benefits-administration exception to that restriction, the rule against discriminating against an employee for refusing to sign an authorization, and the civil penalties and private right of action for violations. Distinct from the corpus's existing ADA confidentiality clause (a different, federal statute with its own separate-file requirement) and from the existing HIPAA Authorization document's health-care-provider-facing citation to Civil Code section 56.10, which addresses a different audience.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "cmia_employer_confidentiality_procedures",
+      "cmia_employer_disclosure_restriction",
+      "cmia_employer_benefits_administration_exception",
+      "cmia_employer_no_retaliation_for_refusal",
+      "cmia_civil_penalty_private_right_of_action",
+      "cmia_employer_medical_info_handling_record",
+      "cmia_employer_authorization_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company/employer name",
+        "placeholder": "Acme Corp.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 4, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, state",
+        "placeholder": "Sacramento, California",
+        "required": true
+      }
+    ]
   }
 ]
