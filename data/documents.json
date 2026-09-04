@@ -20872,5 +20872,49 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "california_statutory_will_info_sheet",
+    "title": "California Statutory Will — Information Sheet",
+    "description": "Describes California's codified fill-in-the-blank statutory will form under Probate Code §§ 6200-6243: what it is and how it differs from a custom-drafted will, its own execution requirements, the limitations its own text discloses (not designed for tax planning, trusts, out-of-state assets, or disinheriting a spouse or descendants), the effect of an incompletely or improperly completed form, and the automatic effect of a later divorce or dissolution.",
+    "categories": [
+      "Estate Planning"
+    ],
+    "clauseOrder": [
+      "statwill_declaration",
+      "statwill_definition",
+      "statwill_execution_requirements",
+      "statwill_use_limitations",
+      "statwill_incomplete_or_improper_use",
+      "statwill_divorce_revocation",
+      "statwill_form_overview",
+      "statwill_certification"
+    ],
+    "fields": [
+      {
+        "id": "testatorName",
+        "label": "Testator's Name",
+        "placeholder": "e.g., Jane Doe",
+        "required": true
+      },
+      {
+        "id": "testatorCounty",
+        "label": "Testator's County of Residence",
+        "placeholder": "e.g., Los Angeles",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date Signed",
+        "placeholder": "e.g., January 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, State",
+        "placeholder": "e.g., Los Angeles, California",
+        "required": true
+      }
+    ]
   }
 ]
