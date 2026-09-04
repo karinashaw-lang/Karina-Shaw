@@ -15804,5 +15804,96 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "life_insurance_conversion_privilege_info_sheet",
+    "title": "Group Life Insurance Conversion Privilege — Information Sheet",
+    "description": "Background information on California Insurance Code section 10209 -- the right to convert group life insurance coverage to an individual policy without evidence of insurability after employment ends: the 31-day application deadline, the statutory face-amount rule, what happens if death occurs during the conversion period, the notice-timing extension rule, and the honest confirmation that this state-law right is separate from, and unaffected by, COBRA and Cal-COBRA, which apply only to group health plans.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "lifeconv_notice_letter",
+      "lifeconv_conversion_right",
+      "lifeconv_face_amount",
+      "lifeconv_death_during_window",
+      "lifeconv_notice_and_extension",
+      "lifeconv_distinct_from_cobra",
+      "lifeconv_conversion_request_record"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "planName",
+        "label": "Group life insurance plan name",
+        "placeholder": "Acme, Inc. Group Life Insurance Plan",
+        "required": true
+      },
+      {
+        "id": "policyNumber",
+        "label": "Policy number",
+        "placeholder": "LI-1234567",
+        "required": true
+      },
+      {
+        "id": "insurerName",
+        "label": "Insurer's name",
+        "placeholder": "Acme Life Insurance Co.",
+        "required": true
+      },
+      {
+        "id": "separationDate",
+        "label": "Date of separation",
+        "placeholder": "March 2, 2026",
+        "required": true
+      },
+      {
+        "id": "noticeDate",
+        "label": "Notice date",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "groupCoverageFaceAmount",
+        "label": "Amount of group life coverage in force at termination",
+        "placeholder": "$150,000",
+        "required": true
+      },
+      {
+        "id": "conversionApplicationDeadline",
+        "label": "31-day conversion application deadline",
+        "placeholder": "October 2, 2026",
+        "required": true
+      },
+      {
+        "id": "planAdministratorName",
+        "label": "Plan administrator name",
+        "placeholder": "Acme, Inc. Benefits Department",
+        "required": true
+      },
+      {
+        "id": "planAdministratorAddress",
+        "label": "Plan administrator address",
+        "placeholder": "500 Market St, San Francisco, CA 94105",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      }
+    ]
   }
 ]

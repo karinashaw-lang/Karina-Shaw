@@ -43064,6 +43064,109 @@
       "title": "Record and Signature",
       "kind": "drafting",
       "body": "{{artistName}} and {{ownerName}} identify the following as of the date this sheet is completed:\n\nArtist: {{artistName}}\nWork: {{workTitle}}\nDescription: {{workDescription}}\nCurrent owner or possessor: {{ownerName}}\n\nThis sheet is an informational record only. It is not a notice, demand, waiver, recorded instrument, or legal filing of any kind, and completing or signing it does not itself create, assert, waive, reserve, or enforce any right under 17 U.S.C. § 106A, 17 U.S.C. § 301(f), or any other law.\n\nSignature: _________________________ Date: {{dateSigned}}\n\n{{artistName}}\n\n{{cityState}}"
+    },
+    {
+      "id": "lifeconv_notice_letter",
+      "title": "Group Life Insurance Conversion Notice",
+      "kind": "drafting",
+      "body": "NOTICE OF THE RIGHT TO CONVERT GROUP LIFE INSURANCE TO AN INDIVIDUAL POLICY\n\nDate: {{noticeDate}}\n\nTo: {{employeeName}}\n\nFrom: {{companyName}}, on behalf of the plan administrator of {{planName}}\n\nRe: Your Right to Convert Group Life Insurance Coverage Under California Insurance Code Section 10209\n\nThis notice concerns a right that is separate from, and unaffected by, any continuation-of-coverage notice you may separately receive regarding group HEALTH insurance (for example, under the federal COBRA statute or California's Cal-COBRA statute). Those laws govern continuation of group health-plan coverage. This notice instead concerns group LIFE insurance coverage under {{planName}} (policy number {{policyNumber}}, issued by {{insurerName}}), and the separate body of law that governs it: the California Insurance Code's provisions on group life policies.\n\n1. Reason Coverage Under the Group Policy Is Ending. Your group life insurance coverage under {{planName}} is ending because your employment with {{companyName}} ended, effective {{separationDate}}.\n\n2. Amount of Group Coverage in Force. The amount of your life insurance protection under the group policy at the time of termination was {{groupCoverageFaceAmount}}.\n\n3. What This Notice Covers. The clauses that follow state what California Insurance Code Section 10209 provides about converting this group coverage to an individual policy, including the application deadline, the amount and type of policy available, what happens if death occurs during the conversion period, and the notice-timing rule that can extend the deadline. This notice summarizes that statute; it does not modify the actual terms of {{planName}} or of any individual policy that may be issued."
+    },
+    {
+      "id": "lifeconv_conversion_right",
+      "title": "Right to Convert to an Individual Policy Without Evidence of Insurability",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-04",
+      "body": "California law requires that a group life insurance policy contain a provision allowing an employee whose employment terminates, for any reason, to obtain an individual life insurance policy. To do so, {{employeeName}} must apply to {{insurerName}} within 31 days after the termination of employment and pay the premium applicable to the class of risk {{employeeName}} belongs to and to the form and amount of the policy at {{employeeName}}'s then-attained age. If application and payment are made within that 31-day period, the statute entitles the applicant to issuance of the individual policy without producing evidence of insurability. The individual policy must be one of the forms the insurer customarily issues, other than term insurance.",
+      "gap": "This is California statutory law (Cal. Insurance Code Section 10209(a)(2)), used as real evidence of the conversion right the statute creates for group life policies delivered in California — not a claim that any particular group life plan is in fact a policy \"delivered in this state\" and therefore governed by this section, or that a particular employee's own termination and application will in fact satisfy the statute's conditions. This clause and the other California-law clauses in this document (the face-amount clause, the death-during-the-conversion-period clause, and the notice/extension clause) all cite different subdivisions of this same statutory section, Insurance Code Section 10209; they are not independent of one another as sources. The statute's own text refers to two exceptions, Sections 10203.5 and 10203.8, that this document does not independently verify or restate.",
+      "citations": [
+        {
+          "case": "Cal. Insurance Code Section 10209(a)(2) (California Legislative Information text)",
+          "cite": "California Insurance Code, group life policy conversion right",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=INS&sectionNum=10209.",
+          "quote": "A provision that if the employment terminates for any reason whatsoever and the employee applies to the insurer within 31 days after the termination, paying the premium applicable to the class of risk to which he or she belongs and to the form and amount of the policy at his or her then attained age, he or she is entitled, without producing evidence of insurability, to the issue by the insurer of any individual life policy in any one of the forms, other than term insurance, customarily issued by the insurer."
+        }
+      ]
+    },
+    {
+      "id": "lifeconv_face_amount",
+      "title": "Amount of the Converted Individual Policy",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-04",
+      "body": "California law states that the individual policy issued in lieu of group insurance must be in an amount equal to the amount of the employee's protection under the group insurance at the time of the termination. The statute does not authorize the insurer to issue a converted policy for a lesser face amount, and does not itself state a separate cap distinct from the group coverage amount in force at termination -- here, {{groupCoverageFaceAmount}} under {{planName}}.",
+      "gap": "This is California statutory law (Cal. Insurance Code Section 10209(a)(3)), used as real evidence of the statutory face-amount rule -- not a claim about what a particular employee's group coverage amount actually was at termination, which depends on the group policy's own terms (for example, coverage amounts can themselves depend on salary or a scheduled benefit that may already have changed before termination). This clause cites the same statutory section as the conversion-right, death-during-window, and notice/extension clauses in this document (Insurance Code Section 10209); they are not independent of one another as sources.",
+      "citations": [
+        {
+          "case": "Cal. Insurance Code Section 10209(a)(3) (California Legislative Information text)",
+          "cite": "California Insurance Code, amount of converted individual policy",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=INS&sectionNum=10209.",
+          "quote": "A statement that the policy in lieu of group insurance will be in an amount equal to the amount of his or her protection under the group insurance at the time of the termination."
+        }
+      ]
+    },
+    {
+      "id": "lifeconv_death_during_window",
+      "title": "Death During the 31-Day Conversion Period",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-04",
+      "body": "California law provides that if the employee dies during the 31-day period within which the employee is entitled to have an individual policy issued, and before the individual policy has become effective, the amount of life insurance the employee was entitled to have issued under the individual policy is payable as a claim under the group policy. This is true whether or not the employee had applied for the individual policy or paid the first premium for it before death.",
+      "gap": "This is California statutory law (Cal. Insurance Code Section 10209(a)(4)), used as real evidence of this statutory death-during-conversion rule -- not a claim about any particular person's cause or date of death, or about who the beneficiary of any resulting claim would be, which depends on the group policy's own beneficiary-designation terms and is not addressed by this clause. This clause cites the same statutory section as the conversion-right, face-amount, and notice/extension clauses in this document (Insurance Code Section 10209); they are not independent of one another as sources.",
+      "citations": [
+        {
+          "case": "Cal. Insurance Code Section 10209(a)(4) (California Legislative Information text)",
+          "cite": "California Insurance Code, death during the conversion period",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=INS&sectionNum=10209.",
+          "quote": "A provision that if the employee dies during the 31-day period within which he or she is entitled to have an individual policy issued to him or her in accordance with this section and before the policy shall have become effective, the amount of life insurance that the employee is entitled to have issued to him or her under the individual policy shall be payable as a claim under the group policy, whether or not application for the individual policy or the payment of the first premium therefor has been made."
+        }
+      ]
+    },
+    {
+      "id": "lifeconv_notice_and_extension",
+      "title": "Notice of the Conversion Right and the Extension When Notice Is Late",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-04",
+      "body": "California law provides that if an employee entitled to convert group life coverage without evidence of insurability is not given notice of the existence of that right at least 15 days before the conversion period would otherwise expire, the employee has an additional period to exercise the right. That additional period expires 25 days after the employee is given the notice, but in no event does it extend beyond 60 days after the expiration date the policy otherwise provided. Written notice presented to the employee, or mailed by the policyholder or the insurer to the employee's last-known address, satisfies this notice requirement. This rule does not, by itself, extend any insurance coverage beyond the period the policy provides.",
+      "gap": "This is California statutory law (Cal. Insurance Code Section 10209(b)), used as real evidence of the statutory notice-and-extension rule -- not a claim about whether a particular employee has, or has not, already been given the notice this rule describes, or about the date any such notice was given, which are facts this clause does not establish. Section 10209 itself does not specify who -- the employer, the plan administrator, or the insurer -- bears the obligation to give this notice in the first instance; it states only the consequence (an extended period) if notice of the right is not given at least 15 days before the period would otherwise expire. This clause cites the same statutory section as the conversion-right, face-amount, and death-during-window clauses in this document (Insurance Code Section 10209); they are not independent of one another as sources. This document did not locate a separate, independently-numbered statutory section imposing an affirmative notice-timing deadline on the employer or insurer specific to Section 10209 conversions; that is a gap in this document's research, not an assertion that no such obligation could exist under some other source (for example, a plan's own summary plan description or ERISA disclosure obligations, which were not researched for this document).",
+      "citations": [
+        {
+          "case": "Cal. Insurance Code Section 10209(b) (California Legislative Information text)",
+          "cite": "California Insurance Code, extension when notice of the conversion right is late",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=INS&sectionNum=10209.",
+          "quote": "If any employee insured under a group life insurance policy delivered in this state becomes entitled under the terms of the policy to have an individual policy of life insurance issued to him or her without evidence of insurability, subject to making of application and payment of the first premium within the period specified in the policy, and if the employee is not given notice of the existence of the right at least 15 days prior to the expiration date of the period, the employee shall have an additional period within which to exercise the right, but nothing in this section shall be construed to continue any insurance beyond the period provided in the policy. This additional period shall expire 25 days next after the employee is given the notice but in no event shall the additional period extend beyond 60 days next after the expiration date of the period provided in the policy."
+        }
+      ]
+    },
+    {
+      "id": "lifeconv_distinct_from_cobra",
+      "title": "This Right Is Separate From, and Unaffected By, COBRA and Cal-COBRA",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-04",
+      "body": "The federal COBRA statute requires the plan sponsor of a \"group health plan\" to provide qualified beneficiaries the opportunity to elect continuation coverage. \"Group health plan\" is itself defined, for this purpose, as an employee welfare benefit plan providing medical care to participants or beneficiaries. Group life insurance is not medical care and is not a \"group health plan\" within this federal definition, so the federal COBRA continuation-coverage scheme -- and California's parallel Cal-COBRA scheme, which extends a similar right for small employers not covered by federal COBRA -- do not apply to group life insurance coverage. The conversion right described in this document arises instead from California's Insurance Code provisions on group life policies, an entirely separate body of law, and operates independently of whatever rights {{employeeName}} may separately have regarding continuation of group health coverage.",
+      "gap": "This clause combines two independent, separately-numbered federal statutory sections -- 29 U.S.C. Section 1161(a) (the COBRA continuation-coverage obligation itself) and 29 U.S.C. Section 1167(1) (COBRA's definition of \"group health plan\") -- which is a genuinely independent verification, not two subdivisions of one section. It is offered as real evidence of federal law's own textual scope (medical care plans), used to support the general proposition that life insurance is not a COBRA-covered benefit -- not a claim that any particular group life plan has been individually confirmed to fall outside COBRA's scope, and not a restatement of California's Cal-COBRA statute, which this document does not independently quote here (see this corpus's separate Cal-COBRA Election Notice document, whose own clauses describe Cal-COBRA's scope as extending continuation rights for group health coverage specifically). This clause does not address whether some other law -- for example, a state law mandating conversion rights for other insurance types, or an employer's own severance-plan terms -- might separately touch group life insurance; none was researched for this document.",
+      "citations": [
+        {
+          "case": "29 U.S.C. Section 1161(a) (Cornell LII text)",
+          "cite": "U.S. Code, COBRA continuation-coverage obligation runs to group health plans",
+          "url": "https://www.law.cornell.edu/uscode/text/29/1161",
+          "quote": "The plan sponsor of each group health plan shall provide, in accordance with this part, that each qualified beneficiary who would lose coverage under the plan as a result of a qualifying event is entitled, under the plan, to elect, within the election period, continuation coverage under the plan."
+        },
+        {
+          "case": "29 U.S.C. Section 1167(1) (Cornell LII text)",
+          "cite": "U.S. Code, COBRA's definition of \"group health plan\"",
+          "url": "https://www.law.cornell.edu/uscode/text/29/1167",
+          "quote": "The term “group health plan” means an employee welfare benefit plan providing medical care (as defined in section 213(d) of title 26) to participants or beneficiaries directly or through insurance, reimbursement, or otherwise."
+        }
+      ]
+    },
+    {
+      "id": "lifeconv_conversion_request_record",
+      "title": "Record of Conversion Application",
+      "kind": "drafting",
+      "body": "RECORD OF GROUP LIFE INSURANCE CONVERSION APPLICATION\n\nI, {{employeeName}}, acknowledge that I received this notice regarding the right to convert group life insurance coverage under {{planName}} (policy number {{policyNumber}}, issued by {{insurerName}}) to an individual policy under California Insurance Code Section 10209.\n\nMy employment with {{companyName}} ended on {{separationDate}}. The amount of my life insurance protection under the group policy at that time was {{groupCoverageFaceAmount}}.\n\nI understand that:\n- Any application for an individual policy, together with the applicable first premium, must reach {{insurerName}} within 31 days after {{separationDate}} -- that is, by {{conversionApplicationDeadline}} -- unless the notice-timing extension described in this document applies.\n- The individual policy, if issued under this statute, would be in a form other than term insurance and in an amount equal to my group coverage amount stated above.\n- This record is not itself an application for coverage; any application must be submitted directly to {{insurerName}} using its own required forms.\n\nFor administrative reference:\nPlan administrator: {{planAdministratorName}}\nPlan administrator address: {{planAdministratorAddress}}\n\nSignature: ______________________  Date: {{dateSigned}}\n\nPrint Name: {{employeeName}}"
     }
   ]
 }
