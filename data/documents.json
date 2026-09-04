@@ -20996,5 +20996,48 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "feha_housing_discrimination_info_sheet",
+    "title": "FEHA Housing Discrimination — Information Sheet",
+    "description": "Describes the housing-discrimination provisions of California's Fair Employment and Housing Act, Government Code § 12955 et seq.: the statute's definitions of \"housing accommodation,\" \"owner,\" and \"real estate-related transactions,\" the protected characteristics, examples of prohibited practices including discriminatory advertising, the \"source of income\" protection, and the statute's own cross-reference to the Unruh Civil Rights Act.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "fehahousing_declaration",
+      "fehahousing_scope_and_covered_transactions",
+      "fehahousing_protected_characteristics",
+      "fehahousing_prohibited_practices",
+      "fehahousing_source_of_income",
+      "fehahousing_unruh_relationship",
+      "fehahousing_ack"
+    ],
+    "fields": [
+      {
+        "id": "propertyAddress",
+        "label": "Property Address",
+        "placeholder": "e.g., 123 Main St., Los Angeles, CA",
+        "required": true
+      },
+      {
+        "id": "preparerName",
+        "label": "Preparer's Name",
+        "placeholder": "e.g., Jane Doe",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date Signed",
+        "placeholder": "e.g., January 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, State",
+        "placeholder": "e.g., Los Angeles, California",
+        "required": true
+      }
+    ]
   }
 ]
