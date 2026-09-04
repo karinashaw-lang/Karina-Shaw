@@ -50160,6 +50160,139 @@
       "title": "Acknowledgment of Receipt",
       "kind": "drafting",
       "body": "Please sign below to acknowledge that you received and reviewed this notice.\n\nEmployee: {{employeeName}}\nDate: _______________"
+    },
+    {
+      "id": "ucc1_purpose_and_scope",
+      "title": "UCC-1 Financing Statement — Purpose and Scope",
+      "kind": "drafting",
+      "body": "UCC-1 FINANCING STATEMENT — INFORMATION AND FILING WORKSHEET\n(California Commercial Code Division 9, Secured Transactions)\n\nThis worksheet relates to a proposed or existing financing statement naming {{debtorName}} as debtor and {{securedPartyName}} as secured party, covering the following collateral: {{collateralDescription}}.\n\nA UCC-1 financing statement is the document California Commercial Code Division 9 authorizes a secured party to file with the California Secretary of State to give public notice of a security interest in a debtor's personal property. Filing a financing statement is the step that perfects a security interest (establishes its priority against most third parties) — it is a separate legal event from the security interest attaching (becoming enforceable between the debtor and the secured party in the first place), and separate from whichever set of facts caused attachment to occur. This worksheet does not determine whether a security interest described here has attached, whether it is properly perfected, whether this particular collateral description is legally sufficient, or what priority this security interest holds against any other creditor's claim to the same collateral — those are determinations that depend on the full facts of a transaction and, where disputed, on a court's application of Division 9 to those facts."
+    },
+    {
+      "id": "ucc1_sufficiency_requirements",
+      "title": "What a Financing Statement Must Contain to Be Sufficient",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-05",
+      "body": "California law states that a financing statement is sufficient only if it satisfies three conditions: it provides the name of the debtor, it provides the name of the secured party (or a representative of the secured party), and it indicates the collateral covered by the financing statement. Additional content requirements apply only to specific categories of collateral not addressed by this worksheet (as-extracted collateral, timber to be cut, or a fixture filing). Separately, the statute confirms that a financing statement may be filed before a security agreement is made or a security interest otherwise attaches — filing is not conditioned on attachment having already occurred.",
+      "gap": "This is one state's statute, used as real evidence of California's own content requirements for a sufficient financing statement — not a claim about which state's law governs a particular debtor, collateral, or filing. The two quotations below are both drawn from the same statutory section (§ 9502), specifically its subdivision (a) and subdivision (d): they are not independent of one another. This clause does not state whether a specific financing statement's debtor name, secured-party name, or collateral description actually satisfies these requirements on the facts of any particular transaction — for example, whether a given collateral description is sufficiently specific, or whether a given debtor name matches the standard the statute or the Secretary of State applies to that type of debtor — those questions require applying subsequent sections of Division 9 (and Secretary of State filing rules) that this worksheet does not independently verify or cover.",
+      "citations": [
+        {
+          "case": "California Commercial Code § 9502(a) — sufficiency of a financing statement",
+          "cite": "Cal. Com. Code § 9502(a)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=COM&sectionNum=9502.",
+          "quote": "a financing statement is sufficient only if it satisfies all of the following conditions: (1) It provides the name of the debtor. (2) It provides the name of the secured party or a representative of the secured party. (3) It indicates the collateral covered by the financing statement."
+        },
+        {
+          "case": "California Commercial Code § 9502(d) — a financing statement may be filed before attachment",
+          "cite": "Cal. Com. Code § 9502(d)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=COM&sectionNum=9502.",
+          "quote": "A financing statement may be filed before a security agreement is made or a security interest otherwise attaches."
+        }
+      ]
+    },
+    {
+      "id": "ucc1_attachment_vs_perfection",
+      "title": "Attachment and Perfection Are Two Separate Legal Events",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-05",
+      "body": "California's secured transactions statute treats attachment and perfection as two distinct legal events, each governed by its own statutory chapter. Attachment is the point at which a security interest becomes enforceable against the debtor with respect to the collateral (subject to the parties' ability to expressly postpone that time by agreement); a separate chapter of the statute sets out the further conditions — including that value has been given and the debtor has rights in the collateral — that must be satisfied before a security interest is enforceable at all. Perfection is a different, later-focused concept: a security interest is perfected once it has attached and all of the applicable statutory requirements for perfection (which include filing a financing statement, among other methods addressed elsewhere in the statute) have been satisfied. A security interest cannot be perfected before it has attached — perfection presupposes attachment — but attachment alone does not perfect a security interest against third parties; that additional step is what a properly filed financing statement is generally for.",
+      "gap": "This is one state's statute, used as real evidence of a real, distinct two-step attachment/perfection structure in California's own text — not a claim about which state's law governs a particular transaction. The two citations below are from separate, independently numbered statutory sections (§ 9203 and § 9308), not subsections of the same section. This clause states only the general attachment and perfection rules quoted; it does not restate the full list of alternative conditions under § 9203(b)(3) that can satisfy the 'value given plus rights in collateral' requirement (only the signed-security-agreement path is described above), does not address the specific perfection methods listed in §§ 9310 through 9316 that § 9308(a) cross-references, and does not determine whether attachment or perfection has actually occurred for any specific security interest.",
+      "citations": [
+        {
+          "case": "California Commercial Code § 9203(a) — when a security interest attaches",
+          "cite": "Cal. Com. Code § 9203(a)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=COM&sectionNum=9203.",
+          "quote": "A security interest attaches to collateral when it becomes enforceable against the debtor with respect to the collateral, unless an agreement expressly postpones the time of attachment."
+        },
+        {
+          "case": "California Commercial Code § 9308(a) — when a security interest is perfected",
+          "cite": "Cal. Com. Code § 9308(a)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=COM&sectionNum=9308.",
+          "quote": "a security interest is perfected if it has attached and all of the applicable requirements for perfection in Sections 9310 to 9316, inclusive, have been satisfied."
+        }
+      ]
+    },
+    {
+      "id": "ucc1_authorization",
+      "title": "Who Must Authorize the Filing of a Financing Statement",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-05",
+      "body": "California law generally allows a person to file an initial financing statement (or an amendment adding collateral or adding a debtor) only if the debtor authorizes the filing in a signed record, or authorizes it in one of two specific ways the statute itself treats as authorization. One of those statutory paths is directly relevant here: by signing (or otherwise becoming bound as debtor by) a security agreement, a debtor automatically authorizes the filing of an initial financing statement — and later amendments — covering the collateral described in that security agreement. A debtor's signed security agreement therefore does double duty under this statute: it is also the debtor's authorization for the secured party to file a financing statement describing that same collateral, without a further, separate signed authorization document.",
+      "gap": "This is one state's statute, used as real evidence of California's own filing-authorization rule — not a claim about which state's law governs a particular filing. The two quotations below are both subsections of the same statutory section (§ 9509) — specifically subdivisions (a) and (b) — and are not independent of one another. This clause describes only the security-agreement path to authorization; it does not restate the alternative agricultural-lien path in § 9509(a)(2), the after-acquired-collateral authorization in § 9509(c), or the separate rules in § 9509(d)-(e) governing who may authorize filing amendments other than those adding collateral or a debtor (including termination statements) — none of which this worksheet addresses. It also does not determine whether any specific debtor named in this worksheet has, in fact, signed a security agreement or otherwise become bound as debtor.",
+      "citations": [
+        {
+          "case": "California Commercial Code § 9509(a) — debtor authorization required to file",
+          "cite": "Cal. Com. Code § 9509(a)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=COM&sectionNum=9509.",
+          "quote": "A person may file an initial financing statement, an amendment that adds collateral covered by a financing statement, or an amendment that adds a debtor to a financing statement only if either of the following conditions is satisfied: (1) The debtor authorizes the filing in a signed record or pursuant to subdivision (b) or (c)."
+        },
+        {
+          "case": "California Commercial Code § 9509(b) — signing a security agreement authorizes the filing",
+          "cite": "Cal. Com. Code § 9509(b)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=COM&sectionNum=9509.",
+          "quote": "By signing or becoming bound as debtor by a security agreement, a debtor or new debtor authorizes the filing of an initial financing statement, and an amendment, covering both of the following: (1) The collateral described in the security agreement."
+        }
+      ]
+    },
+    {
+      "id": "ucc1_duration_lapse",
+      "title": "Duration of a Financing Statement, and Lapse",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-05",
+      "body": "California law generally makes a filed financing statement effective for a period of five years after the date of filing (a longer, 30-year period applies only to a financing statement filed in connection with a public finance transaction or a manufactured home transaction, which this worksheet does not address). If that period expires without a timely continuation statement, the financing statement lapses: it ceases to be effective, and any security interest that was perfected by that financing statement becomes unperfected (unless perfected by some other method) — and, as against a purchaser of the collateral for value, is treated as if it had never been perfected at all. A continuation statement can prevent lapse, but only if filed within a narrow statutory window: no earlier than six months before the five-year period (or the 30-year period, if applicable) expires.",
+      "gap": "This is one state's statute, used as real evidence of California's own duration and lapse rules for a financing statement — not a claim about which state's law governs a particular filing's effective period. The three quotations below are all subsections of the same statutory section (§ 9515) — specifically subdivisions (a), (c), and (d) — and are not independent of one another. This clause does not restate the separate 30-year rule's own text (subdivision (b)), the rule for a continuation statement's own effect once timely filed (subdivision (e)), or the special rules for a transmitting utility's financing statement or a mortgage recorded as a fixture filing (subdivisions (f)-(g)); none of those are addressed here. It does not determine whether any specific financing statement referenced in this worksheet has lapsed or been timely continued.",
+      "citations": [
+        {
+          "case": "California Commercial Code § 9515(a) — five-year effective period",
+          "cite": "Cal. Com. Code § 9515(a)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=COM&sectionNum=9515.",
+          "quote": "a filed financing statement is effective for a period of five years after the date of filing."
+        },
+        {
+          "case": "California Commercial Code § 9515(c) — effect of lapse",
+          "cite": "Cal. Com. Code § 9515(c)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=COM&sectionNum=9515.",
+          "quote": "The effectiveness of a filed financing statement lapses on the expiration of the period of its effectiveness unless before the lapse a continuation statement is filed pursuant to subdivision (d). Upon lapse, a financing statement ceases to be effective and any security interest or agricultural lien that was perfected by the financing statement becomes unperfected, unless the security interest is perfected otherwise."
+        },
+        {
+          "case": "California Commercial Code § 9515(d) — window to file a continuation statement",
+          "cite": "Cal. Com. Code § 9515(d)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=COM&sectionNum=9515.",
+          "quote": "A continuation statement may be filed only within six months before the expiration of the five-year period specified in subdivision (a) or the 30-year period specified in subdivision (b), whichever is applicable."
+        }
+      ]
+    },
+    {
+      "id": "ucc1_priority",
+      "title": "The Basic Priority Rule a Financing Statement Filing Accomplishes",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-05",
+      "body": "California law's general priority rule for conflicting security interests in the same collateral is a first-in-time rule, but the statute states it with specific mechanics rather than a simple 'first in time' generality: conflicting perfected security interests rank according to priority in time of filing or perfection, and that priority dates from the earlier of when a filing covering the collateral is first made or when the security interest is first perfected — provided there is no later gap when the collateral was covered by neither a filing nor a perfected interest. Separate from that ranking-among-perfected-interests rule, the statute also states directly that a perfected security interest has priority over a conflicting unperfected security interest. Both rules are expressly made subject to exceptions stated elsewhere in the same statutory section and cross-referenced sections — this is not an unqualified 'first to file always wins' rule.",
+      "gap": "This is one state's statute, used as real evidence of California's own default priority rule and its own express first-in-time mechanics — not a claim about which state's law governs a particular priority dispute. Both quotations below are drawn from the same statutory subdivision, § 9322(a) — specifically its paragraphs (1) and (2) — and are not independent of one another. This clause does not restate paragraph (3) (the rule for two unperfected, conflicting interests), the further mechanics in subdivisions (b) through (g) (including special rules for proceeds, supporting obligations, certain collateral types perfected by a method other than filing, and specific numbered-section exceptions such as purchase-money priority under other sections this statute cross-references), or the agricultural-lien priority exception in subdivision (g). It does not determine the actual priority of any specific security interest described in this worksheet.",
+      "citations": [
+        {
+          "case": "California Commercial Code § 9322(a)(1) — priority among perfected interests dates from first filing or perfection",
+          "cite": "Cal. Com. Code § 9322(a)(1)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=COM&sectionNum=9322.",
+          "quote": "priority among conflicting security interests and agricultural liens in the same collateral is determined according to the following rules: (1) Conflicting perfected security interests and agricultural liens rank according to priority in time of filing or perfection. Priority dates from the earlier of the time a filing covering the collateral is first made or the security interest or agricultural lien is first perfected, if there is no period thereafter when there is neither filing nor perfection."
+        },
+        {
+          "case": "California Commercial Code § 9322(a)(2) — a perfected interest has priority over an unperfected one",
+          "cite": "Cal. Com. Code § 9322(a)(2)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=COM&sectionNum=9322.",
+          "quote": "A perfected security interest or agricultural lien has priority over a conflicting unperfected security interest or agricultural lien."
+        }
+      ]
+    },
+    {
+      "id": "ucc1_filing_worksheet_and_ack",
+      "title": "UCC-1 Financing Statement — Filing Worksheet and Acknowledgment",
+      "kind": "drafting",
+      "body": "FINANCING STATEMENT FILING WORKSHEET\n(For use in preparing a California UCC-1 to be filed with the California Secretary of State)\n\nDebtor's exact legal name: {{debtorName}}\n\nSecured Party's (or Secured Party's Representative's) name: {{securedPartyName}}\n\nCollateral covered (description): {{collateralDescription}}\n\nThis worksheet was prepared by {{preparerName}} for use in connection with a financing statement naming the above debtor and secured party. Preparation of this worksheet does not itself file anything with the California Secretary of State, does not itself create or perfect any security interest, and does not determine whether the collateral description above, or the debtor's or secured party's name as stated, will be treated by the Secretary of State's filing office as legally sufficient. Filing is a separate, subsequent act, undertaken with the debtor's authorization as California Commercial Code § 9509 requires.\n\nPrepared by: {{preparerName}}\nDate: _______________\n\n[This worksheet describes California Commercial Code Division 9's rules on what a financing statement must contain to be sufficient, the distinction between a security interest's attachment and its perfection, who must authorize a financing statement's filing, a financing statement's five-year duration and the consequences of lapse, and the general first-in-time priority rule that filing serves. It is educational only. It does not determine whether any security interest described here has attached or been authorized, does not determine whether any financing statement referenced here is or would be sufficient or properly perfected, and does not constitute legal advice. Whether to file a financing statement, and what its legal effect is in a specific transaction, are determinations made by applying Division 9 to the specific facts involved — including facts this worksheet does not evaluate.]"
     }
   ]
 }

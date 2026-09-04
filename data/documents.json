@@ -18500,5 +18500,48 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "ucc1_financing_statement_info_sheet",
+    "title": "UCC-1 Financing Statement — Information and Filing Worksheet",
+    "description": "Explains California Commercial Code Division 9's rules for perfecting a security interest in personal property by filing a UCC-1 financing statement: the statutory sufficiency requirements, the distinction between a security interest's attachment and its perfection, who must authorize the filing, the financing statement's five-year duration and the consequences of lapse, and the general first-in-time priority rule filing accomplishes.",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "ucc1_purpose_and_scope",
+      "ucc1_sufficiency_requirements",
+      "ucc1_attachment_vs_perfection",
+      "ucc1_authorization",
+      "ucc1_duration_lapse",
+      "ucc1_priority",
+      "ucc1_filing_worksheet_and_ack"
+    ],
+    "fields": [
+      {
+        "id": "debtorName",
+        "label": "Debtor's exact legal name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "securedPartyName",
+        "label": "Secured party's (or representative's) name",
+        "placeholder": "First Capital Lending, LLC",
+        "required": true
+      },
+      {
+        "id": "collateralDescription",
+        "label": "Description of collateral covered",
+        "placeholder": "All equipment, inventory, and accounts receivable",
+        "required": true
+      },
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this worksheet",
+        "placeholder": "Jordan Lee",
+        "required": true
+      }
+    ]
   }
 ]
