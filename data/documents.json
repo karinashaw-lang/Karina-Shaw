@@ -17092,5 +17092,45 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "director_inspection_rights_info_sheet",
+    "title": "Director's Inspection Rights — Information Sheet",
+    "description": "Explains Cal. Corp. Code § 1602, a California corporate director's own statutory right to inspect and copy the corporation's books, records, and documents and to inspect its physical properties — distinct from the shareholder's inspection right documented in this corpus's Shareholder and Member Inspection Rights information sheet. Covers the statute's own \"absolute right\" wording and its broader-than-shareholder scope, the absence of any stated-purpose condition (unlike the shareholder's right), inspection by agent or attorney, and the court remedy for a refused inspection demand — with an honest disclosure that applying that remedy to a refused director demand is a structural reading of the statute's placement and wording, not an express cross-reference.",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "directorinspect_declaration",
+      "directorinspect_absolute_right",
+      "directorinspect_remedy",
+      "directorinspect_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "directorName",
+        "label": "Director's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
