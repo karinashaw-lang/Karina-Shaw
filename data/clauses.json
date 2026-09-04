@@ -55767,6 +55767,146 @@
       "title": "Certification",
       "kind": "drafting",
       "body": "I, {{preparerName}}, certify that I prepared this information sheet as a summary of Cal. Bus. & Prof. Code §§ 22757–22757.6 and Cal. Civ. Code §§ 3110–3111, for informational reference only regarding {{businessName}}. This information sheet does not evaluate whether any particular product, system, or practice of {{businessName}} complies with either statute, and is not a substitute for consulting a person licensed to practice law in the relevant jurisdiction.\n\nExecuted on {{signatureDate}}.\n\nSignature of {{preparerName}}: ☐ _________________________"
+    },
+    {
+      "id": "deedoftrust_granting_clause",
+      "title": "Deed of Trust — Granting Clause, Parties, and Secured Obligation",
+      "kind": "drafting",
+      "body": "THIS DEED OF TRUST is made as of {{dateSigned}}, in {{cityState}}, among {{trustorName}} (\"Trustor\"), {{trusteeName}} (\"Trustee\"), and {{beneficiaryName}} (\"Beneficiary\"). Trustor irrevocably GRANTS, TRANSFERS, AND ASSIGNS to Trustee, IN TRUST, WITH POWER OF SALE, the real property located at {{propertyAddress}}, more particularly described as: {{legalDescription}} (Assessor's Parcel Number: {{parcelNumber}}), together with all improvements, tenements, hereditaments, rents, issues, and profits now or later belonging to it (the \"Property\"). This conveyance is made FOR THE PURPOSE OF SECURING: (1) payment of the principal sum of {{loanAmount}}, with interest as provided in a promissory note of even date executed by Trustor in favor of Beneficiary (the \"Note\"); and (2) performance of each agreement of Trustor set forth in this Deed of Trust and the Note. Trustee holds bare legal title to the Property for Beneficiary's benefit, subject to reconveyance as provided below, and has no beneficial interest of Trustee's own in the Property or in the debt this Deed of Trust secures."
+    },
+    {
+      "id": "deedoftrust_trustee_power_of_sale_and_reconveyance",
+      "title": "Trustee's Power of Sale, Substitution, and Duty to Reconvey",
+      "kind": "drafting",
+      "body": "Trustor grants Trustee the power to sell the Property, to be exercised only after a breach of an obligation this Deed of Trust secures and only in the manner California law prescribes for a nonjudicial foreclosure sale under a power of sale — a process this document does not itself describe. {{beneficiaryName}}, as Beneficiary, may substitute a new trustee in place of {{trusteeName}} at any time by recording a substitution in the county where the Property is located, without needing Trustee's consent. Once the obligations this Deed of Trust secures have been paid and performed in full, Beneficiary must request a reconveyance, and Trustee must reconvey the Property to the person or persons legally entitled to it, releasing this Deed of Trust's lien, as provided by law. This Deed of Trust is to be recorded in the office of the County Recorder of {{recordingCounty}} County, California."
+    },
+    {
+      "id": "deedoftrust_promissory_note",
+      "title": "Promissory Note Secured by This Deed of Trust",
+      "kind": "drafting",
+      "body": "FOR VALUE RECEIVED, {{trustorName}} (\"Borrower\") promises to pay to the order of {{beneficiaryName}} (\"Lender\"), at such place as Lender may from time to time designate in writing, the principal sum of {{loanAmount}}, together with interest on the unpaid principal balance from {{dateSigned}} until paid, at the rate of {{interestRate}} per year. Principal and interest are payable in installments of {{monthlyPaymentAmount}}, beginning on {{firstPaymentDueDate}} and continuing on the same day of each month thereafter, until {{maturityDate}}, when the entire remaining principal balance and all accrued, unpaid interest are due and payable in full. Loan/Account No.: {{loanNumber}}. This Note is secured by a Deed of Trust of even date encumbering the real property located at {{propertyAddress}}, and its terms — including any provisions for late charges, default, or acceleration of the balance due upon default — are stated in full in that Deed of Trust and in any separate loan or security agreement the parties sign; this Note does not restate them here."
+    },
+    {
+      "id": "deedoftrust_signature_acknowledgment_recording",
+      "title": "Signature, Notarial Acknowledgment, and Recording Request",
+      "kind": "drafting",
+      "body": "SIGNATURE AND DATE: {{trustorName}}, as Trustor, signs and dates this Deed of Trust below; the name should exactly match the name shown on the Property's current title documents.\n\nSignature of {{trustorName}}: _________________________ Date: {{dateSigned}}\n\nACKNOWLEDGMENT OF NOTARY: A notary public or other officer completing this certificate verifies only the identity of the individual who signed the document to which this certificate is attached, and not the truthfulness, accuracy, or validity of that document.\n\nState of California ) County of _________________________ )\n\nOn _________________________ before me, _________________________ (here insert name and title of the officer), personally appeared _________________________, who proved to me on the basis of satisfactory evidence to be the person(s) whose name(s) is/are subscribed to the within instrument and acknowledged to me that they executed the same in their authorized capacity(ies), and that by their signature(s) on the instrument the person(s), or the entity upon behalf of which the person(s) acted, executed the instrument. I certify under PENALTY OF PERJURY under the laws of the State of California that the foregoing paragraph is true and correct.\n\nWITNESS my hand and official seal.\n\nSignature: _________________________ (Seal)\n\nRECORDING REQUEST: After being signed and acknowledged, this Deed of Trust should be presented for recording to the County Recorder of {{recordingCounty}} County, California, together with the applicable recording fees; {{beneficiaryName}}, {{trusteeName}}, or Beneficiary's servicing agent, if any, should be listed as the party to whom the recorded document and any future reconveyance are to be mailed."
+    },
+    {
+      "id": "deedoftrust_definition_and_three_party_structure",
+      "title": "What a Deed of Trust Is and Its Three-Party Structure",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-04",
+      "body": "California's Civil Code defines a mortgage as a contract by which specific property is hypothecated for the performance of an act, without a change of possession: \"A mortgage is a contract by which specific property, including an estate for years in real property, is hypothecated for the performance of an act, without the necessity of a change of possession.\" A deed of trust is a distinct instrument the same chapter of the Civil Code expressly treats as something other than a mortgage: the statute defining a security device with a power of sale for purposes of the nonjudicial foreclosure statutes reaches \"any security device or instrument, other than a deed of trust, that confers a power of sale affecting real property or an estate for years therein, to be exercised after breach of the obligation so secured\" — naming a deed of trust as its own category rather than folding it into \"mortgage.\" Consistent with that distinction, a deed of trust is structured as a three-party transaction, not a two-party one like an ordinary mortgage: {{trustorName}}, as Trustor (the borrower granting the security interest), transfers bare legal title to {{trusteeName}}, as Trustee, to be held in trust for {{beneficiaryName}}, as Beneficiary (the lender), until the secured obligation is paid or the Trustee's power of sale is exercised after a default. California law reflects the Trustee's limited, largely mechanical role by giving Beneficiary a statutory right to replace the Trustee without the Trustee's consent: a trustee under a trust deed \"conferring no other duties upon the trustee than those which are incidental to the exercise of the power of sale therein conferred, may be substituted by the recording in the county in which the property is located of a substitution executed and acknowledged by\" the beneficiaries under the deed of trust or their successors in interest.",
+      "gap": "Civ. Code §§ 2920 and 2934a are genuinely separate statutory sections; the two quotations from § 2920 are subdivisions (a) and (b) of that same section, quoted separately because they make two different points (the general definition of a mortgage, and the express carve-out of a deed of trust from that definition). This clause states California's statutory and structural framework for a deed of trust as a security device; the label \"three-party\" for a deed of trust's trustor/trustee/beneficiary structure is this document's own description of what these statutes establish through that terminology, not a phrase any single quoted provision uses on its own. This clause does not describe what happens after Trustor defaults — the notice of default, notice of sale, reinstatement right, and anti-deficiency protection that follow are addressed in this corpus's separate Notice of Default / Nonjudicial Foreclosure Process — Information Sheet and California Homeowner Bill of Rights — Information Sheet, and are not restated here. Nor does it address a mortgage — the alternative security instrument these same statutes also govern — as distinct from a deed of trust.",
+      "citations": [
+        {
+          "case": "Cal. Civ. Code § 2920(a) (California Legislative Information text)",
+          "cite": "Civ. C. § 2920(a)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?sectionNum=2920.&lawCode=CIV",
+          "quote": "A mortgage is a contract by which specific property, including an estate for years in real property, is hypothecated for the performance of an act, without the necessity of a change of possession."
+        },
+        {
+          "case": "Cal. Civ. Code § 2920(b) (California Legislative Information text)",
+          "cite": "Civ. C. § 2920(b)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?sectionNum=2920.&lawCode=CIV",
+          "quote": "any security device or instrument, other than a deed of trust, that confers a power of sale affecting real property or an estate for years therein, to be exercised after breach of the obligation so secured"
+        },
+        {
+          "case": "Cal. Civ. Code § 2934a(a)(1) (California Legislative Information text)",
+          "cite": "Civ. C. § 2934a(a)(1)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?sectionNum=2934a.&lawCode=CIV",
+          "quote": "conferring no other duties upon the trustee than those which are incidental to the exercise of the power of sale therein conferred, may be substituted by the recording in the county in which the property is located of a substitution executed and acknowledged by"
+        }
+      ]
+    },
+    {
+      "id": "deedoftrust_recording_requirement",
+      "title": "Recording a Deed of Trust: Permissive Recordation and Its Effect on Priority and Enforcement",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-04",
+      "body": "California law does not require a deed of trust to be recorded for it to be valid and binding as between {{trustorName}}, {{trusteeName}}, and {{beneficiaryName}}; recording is authorized, not mandated, as a general matter for instruments affecting title to real property: \"Any instrument or judgment affecting the title to or possession of real property may be recorded pursuant to this chapter.\" What recording changes is a deed of trust's effect on people outside the transaction: once a conveyance affecting real property is acknowledged, certified, and recorded as prescribed by law, from the time it is filed with the recorder it becomes \"constructive notice of the contents thereof to subsequent purchasers and mortgagees\" — giving a recorded lien against {{propertyAddress}} priority protection against later purchasers or lenders who take an interest in the Property without actual notice of it. Recording also has a specific, separate significance for the power of sale a deed of trust confers: if {{beneficiaryName}}'s interest is later assigned to someone else, the assignee may exercise the power of sale \"only if the assignment is duly acknowledged and recorded.\"",
+      "gap": "This clause states California's own permissive-recording and constructive-notice framework as it bears on a deed of trust; it is not a claim about which state's recording law governs a particular loan or property. Gov. Code § 27280 and Civ. Code §§ 1213 and 2932.5 are three genuinely independent statutory sections, addressed together here because each speaks to a different consequence of recording (authorization to record, priority against later claimants, and an assignee's ability to invoke the power of sale) rather than because they duplicate one another; the quotation from § 2932.5 is that section's second sentence — its first sentence, on the assignability of the power of sale itself, is quoted in this document's separate clause on the power-of-sale mechanism's statutory basis, not repeated here. This clause does not restate California's full \"race-notice\" priority rule among competing recorded and unrecorded conveyances of title, which this corpus's grant deed and quitclaim deed documents address in the context of an outright transfer rather than a security instrument; nor does it address county-specific recording formatting requirements, transfer tax, or Preliminary Change of Ownership Report obligations that may apply when a deed of trust or the property it encumbers changes hands.",
+      "citations": [
+        {
+          "case": "Cal. Gov. Code § 27280(a) (California Legislative Information text)",
+          "cite": "Gov. C. § 27280(a)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?sectionNum=27280.&lawCode=GOV",
+          "quote": "Any instrument or judgment affecting the title to or possession of real property may be recorded pursuant to this chapter."
+        },
+        {
+          "case": "Cal. Civ. Code § 1213 (California Legislative Information text)",
+          "cite": "Civ. C. § 1213",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?sectionNum=1213.&lawCode=CIV",
+          "quote": "Every conveyance of real property or an estate for years therein acknowledged or proved and certified and recorded as prescribed by law from the time it is filed with the recorder for record is constructive notice of the contents thereof to subsequent purchasers and mortgagees"
+        },
+        {
+          "case": "Cal. Civ. Code § 2932.5 (California Legislative Information text)",
+          "cite": "Civ. C. § 2932.5",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?sectionNum=2932.5.&lawCode=CIV",
+          "quote": "The power of sale may be exercised by the assignee if the assignment is duly acknowledged and recorded."
+        }
+      ]
+    },
+    {
+      "id": "deedoftrust_power_of_sale_statutory_basis",
+      "title": "The Power-of-Sale Mechanism's Statutory Basis",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-04",
+      "body": "A deed of trust's power of sale — the mechanism that lets {{beneficiaryName}} or {{trusteeName}} sell {{propertyAddress}} without going to court after a default — exists only because California statute authorizes it, not automatically as an incident of every security instrument: \"A power of sale may be conferred by a mortgage upon the mortgagee or any other person, to be exercised after a breach of the obligation for which the mortgage is a security.\" That same statutory power of sale can arise \"or in any transfer in trust made after July 27, 1917, of a like estate to secure the performance of an obligation,\" under which \"a power of sale is conferred upon the mortgagee, trustee, or any other person, to be exercised after a breach of the obligation for which that mortgage or transfer is a security.\" The power of sale is also assignable along with the debt it secures: \"the power is part of the security and vests in any person who by assignment becomes entitled to payment of the money secured by the instrument.\"",
+      "gap": "The two quotations drawn from Civ. Code § 2924(a) are different clauses of the same sentence within that subdivision, quoted separately from the § 2932 and § 2932.5 quotations, which are genuinely independent sections; the § 2932.5 quotation here is that section's first sentence, on assignability, while its second sentence, on the recording an assignee needs before exercising the power, is quoted in this document's separate recording clause rather than repeated here. § 2924 is the same section this corpus's existing Notice of Default / Nonjudicial Foreclosure Process — Information Sheet already cites, but that document quotes a different part of § 2924(a)(1) — the notice-of-default filing and content requirements — while this clause quotes different language, earlier in subdivision (a), about how the power of sale is created in the first place. This clause states only that the power exists and how it is created and assigned; it does not describe how the power is exercised once a default occurs — the notice of default, the required waiting period, the notice of sale, the right to reinstate, and the anti-deficiency rule that follow a default are covered in that Notice of Default / Nonjudicial Foreclosure Process — Information Sheet and in the companion California Homeowner Bill of Rights — Information Sheet, and are not restated here.",
+      "citations": [
+        {
+          "case": "Cal. Civ. Code § 2932 (California Legislative Information text)",
+          "cite": "Civ. C. § 2932",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?sectionNum=2932.&lawCode=CIV",
+          "quote": "A power of sale may be conferred by a mortgage upon the mortgagee or any other person, to be exercised after a breach of the obligation for which the mortgage is a security."
+        },
+        {
+          "case": "Cal. Civ. Code § 2924(a) (California Legislative Information text)",
+          "cite": "Civ. C. § 2924(a)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?sectionNum=2924.&lawCode=CIV",
+          "quote": "or in any transfer in trust made after July 27, 1917, of a like estate to secure the performance of an obligation"
+        },
+        {
+          "case": "Cal. Civ. Code § 2924(a) (California Legislative Information text)",
+          "cite": "Civ. C. § 2924(a)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?sectionNum=2924.&lawCode=CIV",
+          "quote": "a power of sale is conferred upon the mortgagee, trustee, or any other person, to be exercised after a breach of the obligation for which that mortgage or transfer is a security"
+        },
+        {
+          "case": "Cal. Civ. Code § 2932.5 (California Legislative Information text)",
+          "cite": "Civ. C. § 2932.5",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?sectionNum=2932.5.&lawCode=CIV",
+          "quote": "Where a power to sell real property is given to a mortgagee, or other encumbrancer, in an instrument intended to secure the payment of money, the power is part of the security and vests in any person who by assignment becomes entitled to payment of the money secured by the instrument."
+        }
+      ]
+    },
+    {
+      "id": "deedoftrust_reconveyance_obligation",
+      "title": "The Reconveyance Obligation Once the Secured Debt Is Paid Off",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-04",
+      "body": "A deed of trust does not simply disappear once {{trustorName}} pays off the debt it secures; California statute imposes an affirmative, time-limited duty on the lender's side to clear the lien from title: \"Within 30 calendar days after the obligation secured by any deed of trust has been satisfied, the beneficiary or the assignee of the beneficiary shall execute and deliver to the trustee the original note, deed of trust, request for a full reconveyance, and other documents as may be necessary to reconvey, or cause to be reconveyed, the deed of trust.\" The Trustee then has its own statutory deadline to act: \"The trustee shall execute the full reconveyance and shall record or cause it to be recorded in the office of the county recorder in which the deed of trust is recorded within 21 calendar days after receipt by the trustee of the original note, deed of trust, request for a full reconveyance, the fee that may be charged pursuant to subdivision (e), recorder's fees, and other documents as may be necessary to reconvey, or cause to be reconveyed, the deed of trust.\" Recording this reconveyance is what removes the deed of trust as a recorded encumbrance against {{propertyAddress}}.",
+      "gap": "Both quotations are drawn from Civ. Code § 2941, and are subdivisions of the same section — § 2941(b)(1) and § 2941(b)(1)(A) — quoted separately because the first states the beneficiary's deadline to hand the paperwork to the trustee and the second states the trustee's separate, later deadline to record the reconveyance itself. § 2941 also has its own parallel provision for an ordinary mortgage (as opposed to a deed of trust) in subdivision (a), which this clause does not quote or address. This clause states only that the reconveyance obligation exists and its statutory timing; it does not address the fee a trustee may charge for a reconveyance under § 2941(e), the electronic-note procedure under later paragraphs of § 2941(b), or any statutory remedy or penalty for a beneficiary's or trustee's failure to meet these deadlines. It also does not address what happens if the debt is instead unpaid and in default — that is the subject of this corpus's separate Notice of Default / Nonjudicial Foreclosure Process — Information Sheet, not of this clause.",
+      "citations": [
+        {
+          "case": "Cal. Civ. Code § 2941(b)(1) (California Legislative Information text)",
+          "cite": "Civ. C. § 2941(b)(1)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?sectionNum=2941.&lawCode=CIV",
+          "quote": "Within 30 calendar days after the obligation secured by any deed of trust has been satisfied, the beneficiary or the assignee of the beneficiary shall execute and deliver to the trustee the original note, deed of trust, request for a full reconveyance, and other documents as may be necessary to reconvey, or cause to be reconveyed, the deed of trust."
+        },
+        {
+          "case": "Cal. Civ. Code § 2941(b)(1)(A) (California Legislative Information text)",
+          "cite": "Civ. C. § 2941(b)(1)(A)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?sectionNum=2941.&lawCode=CIV",
+          "quote": "The trustee shall execute the full reconveyance and shall record or cause it to be recorded in the office of the county recorder in which the deed of trust is recorded within 21 calendar days after receipt by the trustee of the original note, deed of trust, request for a full reconveyance, the fee that may be charged pursuant to subdivision (e), recorder’s fees, and other documents as may be necessary to reconvey, or cause to be reconveyed, the deed of trust."
+        }
+      ]
     }
   ]
 }

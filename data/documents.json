@@ -20504,5 +20504,115 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "deed_of_trust_promissory_note",
+    "title": "Deed of Trust and Promissory Note (Private/Seller-Financed Real Estate Loan)",
+    "description": "A fillable California deed of trust and accompanying promissory note for a private or seller-financed real estate loan, plus an explanation of the statutory framework: what a deed of trust is and its three-party (trustor/trustee/beneficiary) structure as distinct from an ordinary mortgage (Civil Code section 2920), the permissive nature of recording and its effect on priority (Government Code section 27280, Civil Code section 1213), the statutory basis for the power-of-sale mechanism and its assignability (Civil Code sections 2924, 2932, 2932.5), the beneficiary's right to substitute the trustee (Civil Code section 2934a), and the statutory reconveyance deadlines once the secured debt is paid in full (Civil Code section 2941). This is the document-creation side of a secured real estate loan, distinct from the corpus's existing Notice of Default, Nonjudicial Foreclosure Process, and Homeowner Bill of Rights documents, which all describe the foreclosure process for a deed of trust that already exists, and distinct from the Grant Deed and Quitclaim Deed documents, which cover outright transfers of title rather than a security instrument.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "deedoftrust_granting_clause",
+      "deedoftrust_definition_and_three_party_structure",
+      "deedoftrust_trustee_power_of_sale_and_reconveyance",
+      "deedoftrust_power_of_sale_statutory_basis",
+      "deedoftrust_recording_requirement",
+      "deedoftrust_reconveyance_obligation",
+      "deedoftrust_promissory_note",
+      "deedoftrust_signature_acknowledgment_recording"
+    ],
+    "fields": [
+      {
+        "id": "trustorName",
+        "label": "Trustor's (borrower's) name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "trusteeName",
+        "label": "Trustee's name",
+        "placeholder": "First American Title Company",
+        "required": true
+      },
+      {
+        "id": "beneficiaryName",
+        "label": "Beneficiary's (lender's) name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "propertyAddress",
+        "label": "Property address",
+        "placeholder": "123 Main St., Sacramento, CA 95814",
+        "required": true
+      },
+      {
+        "id": "legalDescription",
+        "label": "Legal description of the property",
+        "placeholder": "Lot 12, Block 3, Tract No. 4567, per map recorded in Book 45, Page 12 of Maps",
+        "required": true
+      },
+      {
+        "id": "parcelNumber",
+        "label": "Assessor's Parcel Number",
+        "placeholder": "123-456-789",
+        "required": true
+      },
+      {
+        "id": "loanAmount",
+        "label": "Principal loan amount",
+        "placeholder": "$400,000",
+        "required": true
+      },
+      {
+        "id": "interestRate",
+        "label": "Interest rate (per year)",
+        "placeholder": "6.5%",
+        "required": true
+      },
+      {
+        "id": "monthlyPaymentAmount",
+        "label": "Monthly payment amount",
+        "placeholder": "$2,528.27",
+        "required": true
+      },
+      {
+        "id": "firstPaymentDueDate",
+        "label": "First payment due date",
+        "placeholder": "October 1, 2026",
+        "required": true
+      },
+      {
+        "id": "maturityDate",
+        "label": "Maturity date",
+        "placeholder": "September 1, 2056",
+        "required": true
+      },
+      {
+        "id": "loanNumber",
+        "label": "Loan/account number",
+        "placeholder": "1234567",
+        "required": false
+      },
+      {
+        "id": "recordingCounty",
+        "label": "County for recording",
+        "placeholder": "Sacramento",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 4, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, state",
+        "placeholder": "Sacramento, California",
+        "required": true
+      }
+    ]
   }
 ]
