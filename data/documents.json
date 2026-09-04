@@ -19902,5 +19902,48 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "labor_code_925_forum_choice_of_law_info_sheet",
+    "title": "California Labor Code Section 925 — Forum Selection and Choice-of-Law Restriction — Information Sheet",
+    "description": "Explains California Labor Code section 925, which restricts an employer from requiring a California-resident-and-worker employee, as a condition of employment, to agree to a provision requiring out-of-state adjudication (including arbitration) of a California claim or depriving the employee of California law's substantive protection for a California controversy: the core prohibition and the statute's own definition of \"adjudication,\" the voidability-at-the-employee's-request consequence, the court's discretionary attorney's-fee and injunctive-relief authority, the individually-negotiated-with-counsel exception, and the January 1, 2017 applicability date. Distinct from the corpus's existing Noncompete Void Notification document (Bus. & Prof. Code section 16600.1(b)), which addresses noncompete voidness itself, not where or under whose law a dispute is resolved.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "lab925_purpose",
+      "lab925_prohibition",
+      "lab925_voidability",
+      "lab925_remedies",
+      "lab925_counsel_exception",
+      "lab925_applicability",
+      "lab925_signature"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme Corp.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 4, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, state",
+        "placeholder": "Sacramento, California",
+        "required": true
+      }
+    ]
   }
 ]
