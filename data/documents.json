@@ -16383,5 +16383,66 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "distribution_restrictions_info_sheet",
+    "title": "Restrictions on Distributions to Shareholders — Information Sheet",
+    "description": "Background information on California Corp. Code sections 166, 500, 501, 309, 316, and 506 -- the statutory definition of \"distribution to its shareholders,\" section 500's two alternative balance-sheet tests (a retained-earnings test and an asset-versus-liabilities test, verified against the current text with no fixed numeric ratio), section 501's separate ability-to-pay-debts test, and the statutory liability consequences for directors and knowingly-receiving shareholders when a distribution violates these provisions.",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "distrestrict_purpose",
+      "distrestrict_definition",
+      "distrestrict_balance_sheet_tests",
+      "distrestrict_equitable_insolvency",
+      "distrestrict_director_liability",
+      "distrestrict_shareholder_liability",
+      "distrestrict_worksheet_and_signature"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "entityType",
+        "label": "Entity type",
+        "placeholder": "stock corporation",
+        "required": true
+      },
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "officerTitle",
+        "label": "Officer's title",
+        "placeholder": "Chief Financial Officer",
+        "required": true
+      },
+      {
+        "id": "proposedDistributionDescription",
+        "label": "Description of the proposed distribution",
+        "placeholder": "$0.50 per share cash dividend to common shareholders of record",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
