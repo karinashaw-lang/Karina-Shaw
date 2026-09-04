@@ -21404,5 +21404,66 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "sexual_harassment_prevention_training_info_sheet",
+    "title": "Mandatory Sexual Harassment Prevention Training — Information Sheet",
+    "description": "Describes California's mandatory sexual harassment prevention training requirement under Government Code § 12950.1: which employers must comply (5+ employees, including contracted persons), the two-hour supervisory / one-hour nonsupervisory training split, the two-year retraining cycle and six-month new-hire/new-supervisor deadlines, the required content categories (including abusive conduct and gender identity/expression/sexual orientation components), and the statute's own limits on what compliance or non-compliance proves in a harassment case.",
+    "categories": [
+      "During employment"
+    ],
+    "clauseOrder": [
+      "sexharasstrain_declaration",
+      "sexharasstrain_covered_employers",
+      "sexharasstrain_hours_by_role",
+      "sexharasstrain_frequency_and_newhire_timing",
+      "sexharasstrain_content_requirements",
+      "sexharasstrain_compliance_not_shield",
+      "sexharasstrain_certification"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company Name",
+        "placeholder": "e.g., Acme Corp.",
+        "required": true
+      },
+      {
+        "id": "employeeCount",
+        "label": "Approximate Total Employee Count",
+        "placeholder": "e.g., 25",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee Name",
+        "placeholder": "e.g., Jane Doe",
+        "required": true
+      },
+      {
+        "id": "jobTitle",
+        "label": "Job Title",
+        "placeholder": "e.g., Store Manager",
+        "required": true
+      },
+      {
+        "id": "trainingCompletionDate",
+        "label": "Training Completion Date",
+        "placeholder": "e.g., January 1, 2026",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date Signed",
+        "placeholder": "e.g., January 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, State",
+        "placeholder": "e.g., Los Angeles, California",
+        "required": true
+      }
+    ]
   }
 ]
