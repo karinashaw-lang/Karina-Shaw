@@ -20299,5 +20299,43 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "live_scan_doj_fingerprint_background_check_info_sheet",
+    "title": "Live Scan / DOJ Fingerprint Background Check — Information Sheet",
+    "description": "Explains California's Live Scan / Department of Justice fingerprint-based criminal history clearance system, distinct from the private consumer-reporting-agency background checks covered elsewhere in this corpus (FCRA, ICRAA, Fair Chance Act): what Live Scan is, the general statutory framework authorizing fingerprint-based DOJ (and, where forwarded, FBI) background checks for positions with supervisory or disciplinary power over a minor or dependent person (Penal Code section 11105.3), the applicant's right to a copy of the report and to challenge its accuracy, and two independently verified sector-specific mandates: childcare facility licensing (Health and Safety Code section 1596.871) and intermediate care facilities for the developmentally disabled (Health and Safety Code section 1265.5).",
+    "categories": [
+      "Hiring"
+    ],
+    "clauseOrder": [
+      "livescan_declaration",
+      "livescan_what_it_is",
+      "livescan_general_framework",
+      "livescan_state_and_federal_role",
+      "livescan_applicant_rights",
+      "livescan_childcare_sector",
+      "livescan_healthcare_sector",
+      "livescan_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme Corp.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Applicant/employee's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "jobTitle",
+        "label": "Position",
+        "placeholder": "Childcare Program Assistant",
+        "required": true
+      }
+    ]
   }
 ]
