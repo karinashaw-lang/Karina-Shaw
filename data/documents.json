@@ -20718,5 +20718,72 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "guardian_ad_litem_appointment_info_sheet",
+    "title": "Guardian Ad Litem Appointment — Information Sheet",
+    "description": "Describes when California law requires or permits appointment of a guardian ad litem for a minor or a person who lacks legal capacity or has a conservator, who may apply and by when, the pre-appointment conflict-of-interest disclosure, the guardian ad litem's litigation-specific authority, and the exceptions letting certain minors appear without one in specified family-law and protective-order proceedings.",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "galappoint_when_required_or_permitted",
+      "galappoint_who_and_distinct_from_estate_guardian",
+      "galappoint_application_process_and_disclosure",
+      "galappoint_scope_of_authority",
+      "galappoint_family_law_and_protective_order_exceptions",
+      "galappoint_application_declaration",
+      "galappoint_signature_and_proposed_order"
+    ],
+    "fields": [
+      {
+        "id": "petitionerName",
+        "label": "Petitioner/Applicant Name",
+        "placeholder": "e.g., Jane Doe",
+        "required": true
+      },
+      {
+        "id": "proposedGuardianName",
+        "label": "Proposed Guardian Ad Litem Name",
+        "placeholder": "e.g., John Smith",
+        "required": true
+      },
+      {
+        "id": "minorOrIncapacitatedPersonName",
+        "label": "Name of Minor or Person Lacking Legal Capacity",
+        "placeholder": "e.g., Alex Doe",
+        "required": true
+      },
+      {
+        "id": "courtCaseNumber",
+        "label": "Court Case Number",
+        "placeholder": "e.g., 24CV000000",
+        "required": true
+      },
+      {
+        "id": "courtName",
+        "label": "Court Name",
+        "placeholder": "e.g., Superior Court of California, County of Los Angeles",
+        "required": true
+      },
+      {
+        "id": "countyOfFiling",
+        "label": "County of Filing",
+        "placeholder": "e.g., Los Angeles County",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, State",
+        "placeholder": "e.g., Los Angeles, California",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date Signed",
+        "placeholder": "e.g., January 1, 2026",
+        "required": true
+      }
+    ]
   }
 ]
