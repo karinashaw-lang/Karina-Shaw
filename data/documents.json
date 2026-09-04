@@ -18603,5 +18603,72 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "full_faith_credit_protective_order_info_sheet",
+    "title": "Full Faith and Credit for Out-of-State Protective Orders — Information Sheet",
+    "description": "Explains how California recognizes and enforces an out-of-state protective order under California's Uniform Interstate Enforcement of Domestic Violence Protection Orders Act (Fam. Code §§ 6400-6409) and the federal full faith and credit mandate (18 U.S.C. § 2265): the core enforcement rule, the jurisdiction-and-notice validity conditions, that registration in California is NOT required before enforcement, a California peace officer's duty to enforce a facially valid order, and an optional (not mandatory) registration mechanism for a protected person's convenience. Distinct from this project's Domestic Violence Restraining Order document (obtaining a California order) and UIFSA document (registering an out-of-state support order, a different subject matter).",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "ffcpo_purpose_declaration",
+      "ffcpo_core_rule",
+      "ffcpo_validity_conditions",
+      "ffcpo_no_registration_required",
+      "ffcpo_law_enforcement_duty",
+      "ffcpo_optional_registration",
+      "ffcpo_acknowledgment_signature"
+    ],
+    "fields": [
+      {
+        "id": "protectedPersonName",
+        "label": "Protected person's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "respondentName",
+        "label": "Respondent's name",
+        "placeholder": "Morgan Casey",
+        "required": true
+      },
+      {
+        "id": "issuingState",
+        "label": "Issuing state",
+        "placeholder": "Nevada",
+        "required": true
+      },
+      {
+        "id": "issuingCourtName",
+        "label": "Issuing court's name",
+        "placeholder": "Eighth Judicial District Court, Clark County",
+        "required": true
+      },
+      {
+        "id": "issuingCaseNumber",
+        "label": "Issuing court's case number",
+        "placeholder": "D-26-123456",
+        "required": true
+      },
+      {
+        "id": "orderIssuanceDate",
+        "label": "Date the order was issued",
+        "placeholder": "June 1, 2026",
+        "required": true
+      },
+      {
+        "id": "signatureDate",
+        "label": "Signature date",
+        "placeholder": "September 5, 2026",
+        "required": true
+      },
+      {
+        "id": "signatureCity",
+        "label": "City where signed",
+        "placeholder": "Sacramento",
+        "required": true
+      }
+    ]
   }
 ]
