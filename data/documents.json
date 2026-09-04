@@ -20337,5 +20337,48 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "dmv_employer_pull_notice_program_info_sheet",
+    "title": "DMV Employer Pull Notice Program — Information Sheet",
+    "description": "Explains California's DMV Employer Pull Notice (EPN) Program (Vehicle Code section 1808.1), the driving-record monitoring system for employers of drivers operating certain vehicles requiring specific license classes or certificates: what the pull-notice system is, which vehicles and license classes trigger the participation requirement, the pre-hire driving-record report requirement, the periodic (at least every 12 months) driving-record report requirement, and the duty to notify the DMV to discontinue enrollment when a driver's employment ends. Distinct from the corpus's existing background-check documents, which address consumer-reporting-agency and DOJ criminal-history checks, not DMV driving-record monitoring.",
+    "categories": [
+      "Hiring"
+    ],
+    "clauseOrder": [
+      "epnp_scope",
+      "epnp_program_mechanism",
+      "epnp_covered_vehicles",
+      "epnp_prehire_report",
+      "epnp_periodic_report",
+      "epnp_termination_notice",
+      "epnp_acknowledgment"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme Corp.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "jobTitle",
+        "label": "Position",
+        "placeholder": "Delivery Driver",
+        "required": true
+      },
+      {
+        "id": "startDate",
+        "label": "Start date",
+        "placeholder": "September 4, 2026",
+        "required": true
+      }
+    ]
   }
 ]
