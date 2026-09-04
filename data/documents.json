@@ -16731,5 +16731,48 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "personal_representative_statutory_compensation_info_sheet",
+    "title": "Statutory Compensation of the Personal Representative — Information Sheet",
+    "description": "Explains California's statutory framework for compensating a personal representative (executor or administrator) in probate, Probate Code §§ 10800-10805 — a companion to this corpus's Petition for Probate document, which covers opening probate rather than compensation: the tiered statutory percentage fee schedule for ordinary services and how \"value of the estate accounted for\" is defined for that purpose, the court's separate discretionary allowance for extraordinary services, how a will's own compensation provision displaces the statutory schedule and why side agreements for more than the statute allows are void, the rule for a personal representative who is also an attorney, and how compensation is apportioned when there are two or more personal representatives.",
+    "categories": [
+      "Estate Planning"
+    ],
+    "clauseOrder": [
+      "executorcomp_declaration",
+      "executorcomp_statutory_percentage_schedule",
+      "executorcomp_extraordinary_services",
+      "executorcomp_will_provision_controls_and_no_side_agreements",
+      "executorcomp_attorney_personal_representative_dual_role",
+      "executorcomp_multiple_personal_representatives",
+      "executorcomp_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "decedentName",
+        "label": "Decedent's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "executorName",
+        "label": "Executor name",
+        "placeholder": "Morgan Lee",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
