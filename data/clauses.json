@@ -52003,6 +52003,151 @@
           "quote": "This section shall not be interpreted to limit any rights or remedies otherwise available under state or federal law."
         }
       ]
+    },
+    {
+      "id": "ueta_purpose",
+      "title": "Purpose of This Uniform Electronic Transactions Act Information Sheet",
+      "kind": "drafting",
+      "body": "This Information Sheet describes California's Uniform Electronic Transactions Act (UETA), Civil Code sections 1633.1 through 1633.17 — the general California statute addressing when an electronic record or an electronic signature satisfies a legal requirement that something be in writing or be signed, when the parties to a transaction are treated as having agreed to conduct that transaction by electronic means, and how an electronic signature's attribution to a particular person and legal effect are determined. It is prepared by {{preparerName}}. Transaction or record this Information Sheet may relate to, if applicable: {{transactionDescription}}. This Information Sheet is a general informational reference describing what UETA's own text says. It does not identify which other law — a specific writing or signature requirement found elsewhere in this project's documents, or in another statute — applies to any particular record, and it does not determine whether the parties to any specific transaction have in fact agreed, by their conduct or otherwise, to conduct that transaction electronically, which UETA itself treats as a fact-specific question to be answered from the context and surrounding circumstances. UETA is a California state statute; other states have enacted their own, not-necessarily-identical versions of the model Uniform Electronic Transactions Act, and Congress has separately enacted the federal Electronic Signatures in Global and National Commerce Act (E-SIGN Act), neither of which this Information Sheet addresses."
+    },
+    {
+      "id": "ueta_signature_acknowledgment",
+      "title": "Signature and Acknowledgment Block — Uniform Electronic Transactions Act Information Sheet",
+      "kind": "drafting",
+      "body": "I declare under penalty of perjury under the laws of the State of California that the foregoing is true and correct.\n\nExecuted on {{dateSigned}} at {{cityState}}.\n\nSignature of {{preparerName}}: ☐ _________________________\n\n[This Information Sheet is a general reference describing California's Uniform Electronic Transactions Act, Civil Code §§ 1633.1-1633.17, and the text of the specific sections quoted above. It is not a contract, a consent to conduct any transaction electronically, or legal advice about whether UETA applies to, or is satisfied by, any specific record, signature, or transaction described in this Information Sheet, and completing or signing this Information Sheet does not itself create, satisfy, or waive any requirement under UETA or any other law.]"
+    },
+    {
+      "id": "ueta_core_validity_rule",
+      "title": "The Core Rule: Electronic Form Alone Does Not Defeat Legal Effect",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-04",
+      "body": "UETA's central rule states that a record or a signature may not be denied legal effect or enforceability solely because it is in electronic form, and that a contract may not be denied legal effect or enforceability solely because an electronic record was used in its formation. Building on that rule, the statute further states that if a law requires a record to be in writing, an electronic record satisfies that law, and that if a law requires a signature, an electronic signature satisfies that law. These four rules do not, by their own terms, address whether any other specific legal requirement is in fact satisfied by a particular electronic record or signature in a given case — they establish only that electronic form is not, by itself, a basis for denying legal effect.",
+      "gap": "This clause quotes all four subdivisions of a single statutory section, Civil Code § 1633.7(a) through (d), fetched directly from the California Legislative Information website (leginfo.legislature.ca.gov) and confirmed identical across two fetches made with two different User-Agent request headers. It states UETA's own general validity rule; it does not resolve whether the particular writing or signature requirement applicable to any specific document or transaction is, in fact, one UETA reaches — that depends on whether the transaction falls within UETA's scope (see the companion clause on the agreement requirement and the companion clause on scope exclusions below) and on the terms of the other law imposing the specific requirement, neither of which this clause independently verifies for any given case.",
+      "citations": [
+        {
+          "case": "Cal. Civ. Code § 1633.7(a)-(b) (California Legislative Information text)",
+          "cite": "California Civil Code, UETA's core non-discrimination-against-electronic-form rule",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1633.7.",
+          "quote": "(a) A record or signature may not be denied legal effect or enforceability solely because it is in electronic form. (b) A contract may not be denied legal effect or enforceability solely because an electronic record was used in its formation."
+        },
+        {
+          "case": "Cal. Civ. Code § 1633.7(c)-(d) (California Legislative Information text)",
+          "cite": "California Civil Code, electronic records and signatures satisfy writing/signature requirements",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1633.7.",
+          "quote": "(c) If a law requires a record to be in writing, an electronic record satisfies the law. (d) If a law requires a signature, an electronic signature satisfies the law."
+        }
+      ]
+    },
+    {
+      "id": "ueta_agreement_to_conduct_electronically",
+      "title": "UETA Applies Only Where the Parties Have Agreed to Transact Electronically",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-04",
+      "body": "UETA does not require that any record or signature be created, sent, received, or otherwise handled electronically — nothing in the statute forces a transaction into electronic form. Rather, UETA applies only to a transaction between parties who have each agreed to conduct that transaction by electronic means, and whether such an agreement exists is determined from the context and the surrounding circumstances, including the parties' conduct, not from any single required form of consent. The statute places specific limits on how that agreement can arise: except for a separate, optional agreement whose primary purpose is to authorize electronic transacting, an agreement to conduct a transaction electronically may not be contained in a standard form contract that is not itself an electronic record, and an agreement in such a standard form contract may not be conditioned on agreeing to transact electronically. The statute also states that an agreement to conduct a transaction electronically may not be inferred solely from the fact that a party used electronic means to pay an account or register a purchase or warranty. A party who has agreed to conduct one transaction electronically may still refuse to conduct other transactions electronically, and where a seller sells goods or services by both electronic and nonelectronic means, a buyer who transacted electronically may refuse to conduct further transactions regarding those goods or services electronically.",
+      "gap": "This clause quotes subdivisions (a) through (c) of Civil Code § 1633.5, fetched directly from the California Legislative Information website and confirmed identical across two fetches with different User-Agent headers. It states UETA's own threshold applicability rule; it does not determine, for any specific transaction, whether the parties' actual context and conduct in fact show the agreement UETA requires — that remains a fact-specific determination the statute itself commits to the context and circumstances of each transaction, which this clause does not resolve.",
+      "citations": [
+        {
+          "case": "Cal. Civ. Code § 1633.5(a) (California Legislative Information text)",
+          "cite": "California Civil Code, UETA does not compel electronic form",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1633.5.",
+          "quote": "(a) This title does not require a record or signature to be created, generated, sent, communicated, received, stored, or otherwise processed or used by electronic means or in electronic form."
+        },
+        {
+          "case": "Cal. Civ. Code § 1633.5(b) (California Legislative Information text)",
+          "cite": "California Civil Code, UETA applies only where the parties agreed to transact electronically",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1633.5.",
+          "quote": "(b) This title applies only to a transaction between parties each of which has agreed to conduct the transaction by electronic means. Whether the parties agree to conduct a transaction by electronic means is determined from the context and surrounding circumstances, including the parties’ conduct."
+        },
+        {
+          "case": "Cal. Civ. Code § 1633.5(b) [limits on how consent may be shown] (California Legislative Information text)",
+          "cite": "California Civil Code, limits on standard-form and inferred consent to transact electronically",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1633.5.",
+          "quote": "Except for a separate and optional agreement the primary purpose of which is to authorize a transaction to be conducted by electronic means, an agreement to conduct a transaction by electronic means may not be contained in a standard form contract that is not an electronic record. An agreement in such a standard form contract may not be conditioned upon an agreement to conduct transactions by electronic means. An agreement to conduct a transaction by electronic means may not be inferred solely from the fact that a party has used electronic means to pay an account or register a purchase or warranty."
+        },
+        {
+          "case": "Cal. Civ. Code § 1633.5(c) (California Legislative Information text)",
+          "cite": "California Civil Code, a party may refuse further electronic transactions",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1633.5.",
+          "quote": "(c) A party that agrees to conduct a transaction by electronic means may refuse to conduct other transactions by electronic means. If a seller sells goods or services by both electronic and nonelectronic means and a buyer purchases the goods or services by conducting the transaction by electronic means, the buyer may refuse to conduct further transactions regarding the goods or services by electronic means."
+        }
+      ]
+    },
+    {
+      "id": "ueta_electronic_signature_defined",
+      "title": "How UETA Defines \"Electronic Record\" and \"Electronic Signature\"",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-04",
+      "body": "UETA defines an \"electronic record\" as a record created, generated, sent, communicated, received, or stored by electronic means. It defines an \"electronic signature\" as an electronic sound, symbol, or process attached to or logically associated with an electronic record and executed or adopted by a person with the intent to sign the electronic record. The statute further states that a \"digital signature\" as defined in Government Code § 16.5(d) — a term that refers to a specific cryptographic technology — is one type of electronic signature under UETA, meaning UETA's own definition of \"electronic signature\" is broader than, and not limited to, that particular technology; a typed name, a click-to-sign action, or another electronic mark or process can also qualify if executed or adopted with the intent to sign.",
+      "gap": "This clause quotes subdivisions (g) and (h) of Civil Code § 1633.2, fetched directly from the California Legislative Information website and confirmed identical across two fetches with different User-Agent headers. It states UETA's own statutory definitions; it does not determine whether any specific act (for example, typing a name into a form field, clicking an \"I agree\" button, or applying a scanned signature image) was, in a particular case, executed or adopted \"with the intent to sign\" — that remains a fact-specific inquiry the statute leaves open, which this clause does not resolve.",
+      "citations": [
+        {
+          "case": "Cal. Civ. Code § 1633.2(g) (California Legislative Information text)",
+          "cite": "California Civil Code, definition of \"electronic record\"",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1633.2.",
+          "quote": "“Electronic record” means a record created, generated, sent, communicated, received, or stored by electronic means."
+        },
+        {
+          "case": "Cal. Civ. Code § 1633.2(h) (California Legislative Information text)",
+          "cite": "California Civil Code, definition of \"electronic signature\"",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1633.2.",
+          "quote": "“Electronic signature” means an electronic sound, symbol, or process attached to or logically associated with an electronic record and executed or adopted by a person with the intent to sign the electronic record. For purposes of this title, a “digital signature” as defined in subdivision (d) of Section 16.5 of the Government Code is a type of electronic signature."
+        }
+      ]
+    },
+    {
+      "id": "ueta_attribution",
+      "title": "Attribution: When an Electronic Signature Is \"the Act of\" a Particular Person",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-04",
+      "body": "UETA states that an electronic record or an electronic signature is attributable to a person if it was the act of that person, and that this fact — whose act it was — may be shown in any manner, including by showing the efficacy of any security procedure applied to determine whose act it was. The statute does not limit attribution to any single method of proof, such as a password, a click-through log, or a particular authentication technology; it allows attribution to be established by any means that shows the record or signature was in fact that person's act. Separately, the legal effect of an electronic record or signature once attributed to a person is itself determined from the context and surrounding circumstances at the time of its creation, execution, or adoption, including any agreement of the parties, and otherwise as provided by other law.",
+      "gap": "This clause quotes subdivisions (a) and (b) of Civil Code § 1633.9, fetched directly from the California Legislative Information website and confirmed identical across two fetches with different User-Agent headers. It states UETA's own attribution rule; it does not determine, for any specific electronic record or signature, whose act it in fact was, nor what evidentiary showing would establish that in a particular case — those remain fact-specific questions the statute commits to proof \"in any manner,\" which this clause does not resolve.",
+      "citations": [
+        {
+          "case": "Cal. Civ. Code § 1633.9(a) (California Legislative Information text)",
+          "cite": "California Civil Code, attribution of an electronic record or signature",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1633.9.",
+          "quote": "(a) An electronic record or electronic signature is attributable to a person if it was the act of the person. The act of the person may be shown in any manner, including a showing of the efficacy of any security procedure applied to determine the person to which the electronic record or electronic signature was attributable."
+        },
+        {
+          "case": "Cal. Civ. Code § 1633.9(b) (California Legislative Information text)",
+          "cite": "California Civil Code, effect of an attributed electronic record or signature",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1633.9.",
+          "quote": "(b) The effect of an electronic record or electronic signature attributed to a person under subdivision (a) is determined from the context and surrounding circumstances at the time of its creation, execution, or adoption, including the parties’ agreement, if any, and otherwise as provided by law."
+        }
+      ]
+    },
+    {
+      "id": "ueta_scope_exclusions",
+      "title": "Transactions UETA's Own Text Excludes From Its Scope",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-04",
+      "body": "UETA does not apply to every transaction. Its own text states that the statute does not apply to transactions subject to certain other bodies of law, including a law governing the creation and execution of wills, codicils, or testamentary trusts, and most of the Uniform Commercial Code's provisions on negotiable instruments, documents of title, investment securities, and secured transactions (with narrow carve-outs for a small number of Division 1 UCC sections). The statute also excludes a law that requires specifically identifiable text or disclosures in a record to be separately signed or initialed apart from the rest of the record, subject to its own narrow exceptions, and it separately lists a substantial number of specific California consumer-protection, real estate, insurance, and vehicle-related statutes to which it does not apply. Where a transaction is excluded from UETA's scope under these provisions, the statute states that this exclusion does not itself prohibit the transaction from being conducted electronically if some other applicable law permits that — it only means UETA's own general rules are not what makes electronic form effective for that particular transaction.",
+      "gap": "This clause quotes subdivisions (a) and (b)(1)-(2) of Civil Code § 1633.3, and separately subdivision (f), fetched directly from the California Legislative Information website and confirmed identical across two fetches with different User-Agent headers. Subdivision (c)'s extensive list of additional excluded California statutes (spanning provisions of the Business and Professions, Civil, Code of Civil Procedure, Financial, Health and Safety, Insurance, Public Utilities, and Vehicle Codes) is described here only in general summary, not quoted verbatim, and a transaction potentially covered by one of those specific cross-referenced statutes would need that list's current text checked directly rather than relying on this summary. This clause states what UETA's own scope-exclusion provisions say; it does not determine whether any particular transaction in fact falls within one of these exclusions, which depends on matching the transaction's specific legal character against the statute's own cross-references.",
+      "citations": [
+        {
+          "case": "Cal. Civ. Code § 1633.3(a) (California Legislative Information text)",
+          "cite": "California Civil Code, general scope of UETA subject to exclusions",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1633.3.",
+          "quote": "(a) Except as otherwise provided in subdivisions (b) and (c), this title applies to electronic records and electronic signatures relating to a transaction."
+        },
+        {
+          "case": "Cal. Civ. Code § 1633.3(b)(1)-(2) (California Legislative Information text)",
+          "cite": "California Civil Code, exclusion of wills/testamentary trusts and most UCC provisions",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1633.3.",
+          "quote": "(b) This title does not apply to transactions subject to any of the following laws: (1) A law governing the creation and execution of wills, codicils, or testamentary trusts. (2) Division 1 (commencing with Section 1101) of the Uniform Commercial Code, except Sections 1206 and 1306."
+        },
+        {
+          "case": "Cal. Civ. Code § 1633.3(f) (California Legislative Information text)",
+          "cite": "California Civil Code, an exclusion under (b) or (c) doesn't itself bar electronic form under other law",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1633.3.",
+          "quote": "(f) The exclusion of a transaction from the application of this title under subdivision (b) or (c) shall be construed only to exclude the transaction from the application of this title, but shall not be construed to prohibit the transaction from being conducted by electronic means if the transaction may be conducted by electronic means under any other applicable law."
+        }
+      ]
     }
   ]
 }

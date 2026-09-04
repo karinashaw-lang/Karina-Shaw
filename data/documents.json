@@ -19138,5 +19138,48 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "california_uniform_electronic_transactions_act_info_sheet",
+    "title": "California Uniform Electronic Transactions Act (UETA) — Information Sheet",
+    "description": "Explains, using the statute's own text, California's Uniform Electronic Transactions Act (UETA, Civ. Code §§ 1633.1-1633.17): the core rule that electronic form alone does not defeat a record's, signature's, or contract's legal effect; the threshold requirement that UETA applies only where the parties have agreed to conduct a transaction electronically, and the limits on how that agreement may be shown; UETA's definitions of 'electronic record' and 'electronic signature'; the attribution rule for determining whose act an electronic record or signature was; and the transactions UETA's own text excludes from its scope, including wills/codicils/testamentary trusts and most UCC provisions.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "ueta_purpose",
+      "ueta_core_validity_rule",
+      "ueta_agreement_to_conduct_electronically",
+      "ueta_electronic_signature_defined",
+      "ueta_attribution",
+      "ueta_scope_exclusions",
+      "ueta_signature_acknowledgment"
+    ],
+    "fields": [
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "transactionDescription",
+        "label": "Transaction or record this sheet relates to, if applicable",
+        "placeholder": "Signature on a services agreement",
+        "required": false
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 5, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
