@@ -21245,5 +21245,66 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "criminal_wage_theft_grand_theft_info_sheet",
+    "title": "Criminal Wage Theft as Grand Theft — Information Sheet",
+    "description": "Describes Penal Code § 487m, added by AB 1003 (2021), which allows intentional theft of wages, gratuities, benefits, or other compensation above statutory dollar thresholds to be punished as grand theft: the $950 single-employee / $2,350 aggregate thresholds, the statutory definition and intent element (borrowing \"wages\" from Labor Code § 200 and \"gratuities\" from § 350), the expanded independent-contractor \"employee\"/\"employer\" scope, restitution and the preserved civil action, and the separate, differently structured Labor Code § 1197.1 minimum-wage civil penalty track.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "wtgrandtheft_declaration",
+      "wtgrandtheft_dollar_thresholds",
+      "wtgrandtheft_theft_of_wages_defined",
+      "wtgrandtheft_employee_employer_scope",
+      "wtgrandtheft_restitution_and_savings_clauses",
+      "wtgrandtheft_relationship_to_civil_1197_1",
+      "wtgrandtheft_signature_and_closing"
+    ],
+    "fields": [
+      {
+        "id": "preparerName",
+        "label": "Preparer's Name",
+        "placeholder": "e.g., Jane Doe",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Company Name",
+        "placeholder": "e.g., Acme Corp.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee Name",
+        "placeholder": "e.g., John Smith",
+        "required": true
+      },
+      {
+        "id": "unpaidWagesAmount",
+        "label": "Amount of Unpaid Wages/Compensation",
+        "placeholder": "e.g., $2,500",
+        "required": true
+      },
+      {
+        "id": "wageClaimBasis",
+        "label": "Basis of the Wage Claim",
+        "placeholder": "e.g., unpaid final wages and tips",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date Signed",
+        "placeholder": "e.g., January 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, State",
+        "placeholder": "e.g., Los Angeles, California",
+        "required": true
+      }
+    ]
   }
 ]
