@@ -18397,5 +18397,47 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "california_eraser_law_info_sheet",
+    "title": "California \"Eraser Law\" (Minor's Right to Remove Posted Content) — Information Sheet",
+    "description": "Explains California's Eraser Law (Bus. & Prof. Code §§ 22580-22582): the dual coverage trigger (an operator directed to minors OR one with actual knowledge a minor is a user), the core removal right limited to content the minor registered user posted themselves (not a broad right to be forgotten), the required notice and instructions, and the statute's own exceptions and \"deemed compliant\" safe harbor — invisibility to other users and the public, not guaranteed deletion from the operator's servers.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "eraserlaw_purpose",
+      "eraserlaw_scope",
+      "eraserlaw_removal_right",
+      "eraserlaw_notice_requirement",
+      "eraserlaw_exceptions",
+      "eraserlaw_acknowledgment"
+    ],
+    "fields": [
+      {
+        "id": "businessName",
+        "label": "Business name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "websiteURL",
+        "label": "Website or online service URL",
+        "placeholder": "https://www.acme.com",
+        "required": true
+      },
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "signatureDate",
+        "label": "Signature date",
+        "placeholder": "September 5, 2026",
+        "required": true
+      }
+    ]
   }
 ]
