@@ -20916,5 +20916,42 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "calsavers_retirement_savings_program_info_sheet",
+    "title": "CalSavers Retirement Savings Program — Information Sheet",
+    "description": "Describes California's CalSavers Retirement Savings Program under Government Code § 100000 et seq.: what the state-facilitated payroll-deduction IRA program is, which employers must register and by when (with the exemption for employers that already sponsor a qualifying retirement plan), why CalSavers is not an employer-sponsored plan, the automatic-enrollment/opt-out mechanism and default contribution rate, and the penalty for employer noncompliance.",
+    "categories": [
+      "Hiring"
+    ],
+    "clauseOrder": [
+      "calsavers_declaration",
+      "calsavers_program_description",
+      "calsavers_employer_coverage_and_deadlines",
+      "calsavers_not_employer_sponsored",
+      "calsavers_autoenrollment_optout",
+      "calsavers_penalty_noncompliance",
+      "calsavers_certification"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company Name",
+        "placeholder": "e.g., Acme Corp.",
+        "required": true
+      },
+      {
+        "id": "employeeCount",
+        "label": "Approximate Total Employee Count",
+        "placeholder": "e.g., 25",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee Name",
+        "placeholder": "e.g., Jane Doe",
+        "required": true
+      }
+    ]
   }
 ]
