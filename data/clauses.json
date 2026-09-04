@@ -55622,6 +55622,151 @@
       "title": "Statement of Golden Parachute Payment Facts and Signature",
       "kind": "drafting",
       "body": "{{employeeName}} identifies the following facts concerning compensation from {{companyName}} contingent on the change in ownership or control described in this document:\n\nDate of the change in ownership or control: {{changeInControlDate}}\n\nAggregate present value of payments to {{employeeName}} contingent on that change, as currently estimated: {{aggregateParachutePaymentAmount}}\n\n{{employeeName}}'s base amount (annualized includible compensation for the 5-year base period), as currently estimated, if known: {{baseAmount}}\n\nThis statement records {{employeeName}}'s current understanding of these facts as of {{effectiveDate}}. It is not a determination by {{companyName}}, the Internal Revenue Service, or any court of whether any payment identified above is a parachute payment, an excess parachute payment, or subject to the shareholder-approval exception, and it does not modify the terms of any agreement under which the payments described above are made.\n\nSignature: ☐ _________________________ Date: _______________\n\n{{employeeName}}"
+    },
+    {
+      "id": "aitransparency_purpose_intro",
+      "title": "Purpose and Scope of This Information Sheet",
+      "kind": "drafting",
+      "body": "This information sheet, prepared by {{preparerName}} on behalf of {{businessName}}, states what California's Business and Professions Code §§ 22757–22757.6 (the California AI Transparency Act, enacted as Senate Bill 942 and substantially amended by Assembly Bill 853) and California's Civil Code §§ 3110–3111 (the Artificial Intelligence Training Data Transparency Act, enacted as Assembly Bill 2013) provide about disclosing that image, video, or audio content was created or altered by generative artificial intelligence, making an AI-detection tool available, and publicly posting documentation about training data. These are two separate statutes in two separate codes. This sheet states what each statute's own text says; it does not evaluate whether any particular product, system, or business practice of {{businessName}} complies with either statute, and it is not a substitute for individualized legal advice."
+    },
+    {
+      "id": "aitransparency_covered_provider",
+      "title": "The AI Transparency Act: Who Is a \"Covered Provider,\" and What Is a \"GenAI System\"",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-04",
+      "body": "Business and Professions Code § 22757 states that Chapter 25 of Division 8 of the Business and Professions Code — which the statute's own text calls the California AI Transparency Act — became operative on August 2, 2026. Section 22757.1(d) defines a \"covered provider,\" the category of business subject to the Act's detection-tool and disclosure duties, as a person that creates, codes, or otherwise produces a generative artificial intelligence system that has over 1,000,000 monthly visitors or users and is publicly accessible within California's geographic boundaries. Section 22757.1(f) defines the \"generative artificial intelligence system\" or \"GenAI system\" a covered provider must produce as an artificial intelligence that can generate derived synthetic content — including text, images, video, and audio — that emulates the structure and characteristics of the system's training data.",
+      "gap": "§ 22757 is an independently numbered section from § 22757.1; the two subdivisions of § 22757.1 quoted here — (d) and (f) — are part of the same statutory section and are not independent sources of authority from one another, and that section also separately defines \"large online platform\" (a different, 2,000,000-unique-monthly-user category, per § 22757.1(h), that carries its own obligations this sheet does not address), \"capture device manufacturer,\" \"manifest,\" \"latent,\" and \"provenance data,\" none of which is restated here beyond what the later clauses below use. This is very recently operative law — the chapter was added in 2024 (SB 942) and substantially amended in 2025 by AB 853, which is what moved its operative date to August 2, 2026 — and may see further amendment; this sheet does not track amendments after the checked date above. This sheet does not determine whether any particular product or business meets the 1,000,000-monthly-visitor threshold.",
+      "citations": [
+        {
+          "case": "Cal. Bus. & Prof. Code § 22757",
+          "cite": "California AI Transparency Act, Short Title and Operative Date",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&sectionNum=22757.",
+          "quote": "This chapter shall be known as the California AI Transparency Act."
+        },
+        {
+          "case": "Cal. Bus. & Prof. Code § 22757.1(d)",
+          "cite": "California AI Transparency Act, Definitions — \"Covered Provider\"",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&sectionNum=22757.1.",
+          "quote": "“Covered provider” means a person that creates, codes, or otherwise produces a generative artificial intelligence system that has over 1,000,000 monthly visitors or users and is publicly accessible within the geographic boundaries of the state."
+        },
+        {
+          "case": "Cal. Bus. & Prof. Code § 22757.1(f)",
+          "cite": "California AI Transparency Act, Definitions — \"Generative Artificial Intelligence System\"",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&sectionNum=22757.1.",
+          "quote": "“Generative artificial intelligence system” or “GenAI system” means an artificial intelligence that can generate derived synthetic content, including text, images, video, and audio, that emulates the structure and characteristics of the system’s training data."
+        }
+      ]
+    },
+    {
+      "id": "aitransparency_detection_tool",
+      "title": "The AI Transparency Act: Required AI Detection Tool",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-04",
+      "body": "Business and Professions Code § 22757.2(a) requires a covered provider to make available an AI detection tool, at no cost to the user, that allows a user to assess whether image, video, or audio content — or content that is any combination of those — was created or altered by the covered provider's GenAI system. The same subdivision's paragraphs (2) and (3) state what the tool's output must and must not contain: the tool outputs any system provenance data detected in the content, but the tool does not output any personal provenance data detected in the content. The statute's own text separately requires the tool to be publicly accessible (subject to reasonable security-related access limitations), to accept an uploaded file or a URL, and to support an API that allows use without visiting the covered provider's website.",
+      "gap": "Both citations below are drawn from the same statutory subdivision, § 22757.2(a), and are not independent of one another; this clause does not restate every one of paragraphs (1) through (6), including the API and public-accessibility requirements described in this clause's body without a citation. This sheet does not separately address § 22757.2(b)'s user-feedback-collection duty or § 22757.2(c)'s limits on the covered provider's own collection and retention of personal information and content submitted to the tool, both of which are part of the same section. This is very recently operative law that may see further amendment.",
+      "citations": [
+        {
+          "case": "Cal. Bus. & Prof. Code § 22757.2(a)",
+          "cite": "California AI Transparency Act, AI Detection Tool Requirement",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&sectionNum=22757.2.",
+          "quote": "A covered provider shall make available an AI detection tool at no cost to the user that meets all of the following criteria: (1) The tool allows a user to assess whether image, video, or audio content, or content that is any combination thereof, was created or altered by the covered provider’s GenAI system."
+        },
+        {
+          "case": "Cal. Bus. & Prof. Code § 22757.2(a)(2)-(3)",
+          "cite": "California AI Transparency Act, Detection Tool Output Limits",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&sectionNum=22757.2.",
+          "quote": "(2) The tool outputs any system provenance data that is detected in the content. (3) The tool does not output any personal provenance data that is detected in the content."
+        }
+      ]
+    },
+    {
+      "id": "aitransparency_disclosure_requirements",
+      "title": "The AI Transparency Act: Manifest and Latent Content Disclosures",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-04",
+      "body": "Business and Professions Code § 22757.3(a) requires a covered provider to offer the user the option to include a manifest disclosure — one that identifies content as AI-generated content — in image, video, or audio content that the covered provider's GenAI system created or altered, and states that this disclosure must be clear, conspicuous, appropriate for the medium, understandable to a reasonable person, and permanent or extraordinarily difficult to remove to the extent technically feasible. Section 22757.3(b) separately requires the covered provider to include a latent disclosure — one embedded in the content or its metadata rather than visible to a viewer — in AI-generated image, video, or audio content the system created, detectable by the covered provider's own AI detection tool and consistent with widely accepted industry standards.",
+      "gap": "Both citations below are drawn from the same statutory section, § 22757.3, subdivisions (a) and (b), and are not independent of one another. This clause does not restate every listed item the latent disclosure must convey under § 22757.3(b)(1) — the covered provider's name, the GenAI system's name and version number, the time and date of creation or alteration, and a unique identifier — nor § 22757.3(c)'s separate contractual and license-revocation duties that apply when a covered provider licenses its GenAI system to a third party. This is very recently operative law that may see further amendment.",
+      "citations": [
+        {
+          "case": "Cal. Bus. & Prof. Code § 22757.3(a)",
+          "cite": "California AI Transparency Act, Manifest Disclosure Requirement",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&sectionNum=22757.3.",
+          "quote": "A covered provider shall offer the user the option to include a manifest disclosure in image, video, or audio content, or content that is any combination thereof, created or altered by the covered provider’s GenAI system that meets all of the following criteria: (1) The disclosure identifies content as AI-generated content."
+        },
+        {
+          "case": "Cal. Bus. & Prof. Code § 22757.3(b)",
+          "cite": "California AI Transparency Act, Latent Disclosure Requirement",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&sectionNum=22757.3.",
+          "quote": "A covered provider shall include a latent disclosure in AI-generated image, video, or audio content, or content that is any combination thereof, created by the covered provider’s GenAI system that meets all of the following criteria:"
+        }
+      ]
+    },
+    {
+      "id": "aitransparency_enforcement_and_scope",
+      "title": "The AI Transparency Act: Civil Penalties, an Exemption, and the Operative Date",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-04",
+      "body": "Business and Professions Code § 22757.4(a)(1) makes a violator of the chapter liable for a civil penalty of five thousand dollars ($5,000) per violation, collected in a civil action filed by the Attorney General, a city attorney, or a county counsel; § 22757.4(b) states that each day a covered provider, large online platform, or capture device manufacturer is in violation is deemed a discrete violation. Section 22757.5 states that the chapter does not apply to any product, service, internet website, or application that provides exclusively non-user-generated video game, television, streaming, movie, or interactive experiences. Section 22757.6 states that the chapter became operative on August 2, 2026 — later than the Act's original January 1, 2026 effective date, because AB 853 (2025) both amended the chapter's substantive requirements and pushed back when the chapter actually took operative effect.",
+      "gap": "§§ 22757.4, 22757.5, and 22757.6 are three independently numbered sections; within § 22757.4, subdivisions (a)(1) and (b) are part of the same section and not independent of one another. This clause does not restate § 22757.4(a)(2)'s prevailing-plaintiff attorney's-fees provision or § 22757.4(c)'s separate injunctive-relief and fee-shifting remedy for a third-party licensee's violation of § 22757.3(c)(3). This sheet does not identify any implementing regulations or enforcement actions under this very recently operative chapter, which may see further amendment.",
+      "citations": [
+        {
+          "case": "Cal. Bus. & Prof. Code § 22757.4(a)(1)",
+          "cite": "California AI Transparency Act, Civil Penalty",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&sectionNum=22757.4.",
+          "quote": "A violator of this chapter shall be liable for a civil penalty in the amount of five thousand dollars ($5,000) per violation to be collected in a civil action filed by the Attorney General, a city attorney, or a county counsel."
+        },
+        {
+          "case": "Cal. Bus. & Prof. Code § 22757.4(b)",
+          "cite": "California AI Transparency Act, Discrete Daily Violations",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&sectionNum=22757.4.",
+          "quote": "Each day that a covered provider, large online platform, or capture device manufacturer is in violation of this chapter shall be deemed a discrete violation."
+        },
+        {
+          "case": "Cal. Bus. & Prof. Code § 22757.5",
+          "cite": "California AI Transparency Act, Exemption for Non-User-Generated Media",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&sectionNum=22757.5.",
+          "quote": "This chapter does not apply to any product, service, internet website, or application that provides exclusively non-user-generated video game, television, streaming, movie, or interactive experiences."
+        },
+        {
+          "case": "Cal. Bus. & Prof. Code § 22757.6",
+          "cite": "California AI Transparency Act, Operative Date",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&sectionNum=22757.6.",
+          "quote": "This chapter shall become operative on August 2, 2026."
+        }
+      ]
+    },
+    {
+      "id": "aitransparency_training_data_transparency",
+      "title": "The Related, Distinct AI Training Data Transparency Law",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-04",
+      "body": "A separate statute, Civil Code §§ 3110–3111 (Title 15.2, \"Artificial Intelligence Training Data Transparency,\" enacted as Assembly Bill 2013), imposes a different duty on a different category of business than the AI Transparency Act above: it requires the \"developer\" of a generative artificial intelligence system or service to publicly post documentation about the data used to train it, rather than requiring a detection tool or content disclosures. Civil Code § 3111 requires that, on or before January 1, 2026, and before each later time a generative AI system or service (or a substantial modification to one released on or after January 1, 2022) is made publicly available to Californians, the developer post on its own website documentation about the training data, including the dataset sources, whether the data include copyrighted material or personal information, and the time period the data were collected. Civil Code § 3110(c) defines \"generative artificial intelligence,\" for purposes of this separate title, as artificial intelligence that can generate derived synthetic content, such as text, images, video, and audio, that emulates the structure and characteristics of the artificial intelligence's training data.",
+      "gap": "This is a distinct statute, in a distinct code (Civil Code, not Business and Professions Code), from the AI Transparency Act addressed in the clauses above; it is not codified in the Health and Safety Code. Civil Code § 3110 (definitions) and § 3111 (the posting duty) are two separate, independently numbered sections within the same title, and the two citations below are independent of one another. This clause does not restate § 3111(a)'s full twelve-item list of what the posted documentation must include beyond the examples given above, nor § 3111(b)'s exemptions for security-and-integrity-only systems, aircraft-operation systems, and systems developed exclusively for federal national-security, military, or defense use available only to a federal entity. This sheet does not address who qualifies as a \"developer\" under § 3110(b) in any particular case, and does not address this title's relationship to the separate AI Transparency Act's \"covered provider\" definition, which uses different terms and a different threshold. This is very recently effective law — § 3111 was itself amended in 2025 by AB 1170 — that may see further amendment.",
+      "citations": [
+        {
+          "case": "Cal. Civ. Code § 3111",
+          "cite": "Artificial Intelligence Training Data Transparency Act, Public Posting Requirement",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=3111.",
+          "quote": "On or before January 1, 2026, and before each time thereafter that a generative artificial intelligence system or service, or a substantial modification to a generative artificial intelligence system or service, released on or after January 1, 2022, is made publicly available to Californians for use, regardless of whether the terms of that use include compensation, the developer of the system or service shall post on the developer’s internet website documentation regarding the data used by the developer to train the generative artificial intelligence system or service, including, but not limited to, all of the following:"
+        },
+        {
+          "case": "Cal. Civ. Code § 3110(c)",
+          "cite": "Artificial Intelligence Training Data Transparency Act, Definitions — \"Generative Artificial Intelligence\"",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=3110.",
+          "quote": "“Generative artificial intelligence” means artificial intelligence that can generate derived synthetic content, such as text, images, video, and audio, that emulates the structure and characteristics of the artificial intelligence’s training data."
+        }
+      ]
+    },
+    {
+      "id": "aitransparency_certification",
+      "title": "Certification",
+      "kind": "drafting",
+      "body": "I, {{preparerName}}, certify that I prepared this information sheet as a summary of Cal. Bus. & Prof. Code §§ 22757–22757.6 and Cal. Civ. Code §§ 3110–3111, for informational reference only regarding {{businessName}}. This information sheet does not evaluate whether any particular product, system, or practice of {{businessName}} complies with either statute, and is not a substitute for consulting a person licensed to practice law in the relevant jurisdiction.\n\nExecuted on {{signatureDate}}.\n\nSignature of {{preparerName}}: ☐ _________________________"
     }
   ]
 }
