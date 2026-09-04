@@ -15510,5 +15510,59 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "stock_certificates_uncertificated_shares_info_sheet",
+    "title": "Stock Certificates and Uncertificated Shares — Information Sheet",
+    "description": "Background information on the California Corporations Code statutes governing how a corporation may evidence share ownership -- every shareholder's default entitlement to a signed certificate and who must sign it (Corp. Code section 416(a)), the permitted alternative of an uncertificated (book-entry) system (section 416(b)), required disclosure when shares are classified into classes or series (section 417), and the procedure for replacing a lost, stolen, or destroyed certificate (section 419).",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "stockcert_purpose",
+      "stockcert_certificate_entitlement",
+      "stockcert_uncertificated_shares",
+      "stockcert_class_series_disclosure",
+      "stockcert_lost_stolen_destroyed",
+      "stockcert_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "stateOfFormation",
+        "label": "State of formation",
+        "placeholder": "California",
+        "required": true
+      },
+      {
+        "id": "shareholderName",
+        "label": "Shareholder's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "numberOfSharesHeld",
+        "label": "Number of shares held",
+        "placeholder": "1,000 shares of common stock",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
