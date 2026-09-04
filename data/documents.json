@@ -17132,5 +17132,60 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "preliminary_final_declarations_disclosure_info_sheet",
+    "title": "Preliminary and Final Declarations of Disclosure — Information Sheet",
+    "description": "Explains California's mandatory financial-disclosure framework in a dissolution, legal-separation, or nullity proceeding, Family Code §§ 2100-2113 — the general framework this corpus's Bifurcation of Marital Status document explicitly flagged as not yet independently covered. Covers the Legislature's stated purpose and each party's continuing duty to update disclosure, the requirement of two separate sequential disclosures (preliminary and final), the preliminary declaration's required content and service deadlines, the final declaration's required content, timing, and mutual-waiver mechanism with its five required representations, and the mandatory monetary-sanctions and judgment-set-aside consequences for noncompliance.",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "disclosure_declaration",
+      "disclosure_legislative_purpose",
+      "disclosure_dual_requirement",
+      "disclosure_preliminary_content_timing",
+      "disclosure_final_content_timing_waiver",
+      "disclosure_noncompliance_consequences",
+      "disclosure_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "party1Name",
+        "label": "First party's full legal name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "party2Name",
+        "label": "Second party's full legal name",
+        "placeholder": "Morgan Casey Lee",
+        "required": true
+      },
+      {
+        "id": "marriageDate",
+        "label": "Date of marriage",
+        "placeholder": "June 14, 2015",
+        "required": true
+      },
+      {
+        "id": "countyOfFiling",
+        "label": "County of filing",
+        "placeholder": "Sacramento County",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
