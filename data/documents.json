@@ -16055,5 +16055,61 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "eminent_domain_inverse_condemnation_info_sheet",
+    "title": "Eminent Domain and Inverse Condemnation — Information Sheet",
+    "description": "Background information on California's constitutional and statutory framework for eminent domain and inverse condemnation -- the state constitution's taken-or-damaged and just-compensation provisions (Cal. Const. art. I, sec. 19, broader than the federal Fifth Amendment), the Eminent Domain Law's public-use and necessity findings, the resolution-of-necessity prerequisite to filing, the fair-market-value compensation standard, the inverse condemnation cause of action (a property owner's reverse action against a public entity, confirmed as a no-fault doctrine by Albers v. County of Los Angeles), and litigation-expense fee-shifting rules.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "emdomain_intro_scope",
+      "emdomain_const_foundation",
+      "emdomain_public_use_requirement",
+      "emdomain_resolution_of_necessity",
+      "emdomain_just_compensation_standard",
+      "emdomain_inverse_condemnation_doctrine",
+      "emdomain_litigation_expenses",
+      "emdomain_closing_acknowledgment"
+    ],
+    "fields": [
+      {
+        "id": "propertyAddress",
+        "label": "Property address",
+        "placeholder": "123 Main St, Apt 4, Springfield",
+        "required": true
+      },
+      {
+        "id": "ownerName",
+        "label": "Property owner's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "publicEntityName",
+        "label": "Public entity involved",
+        "placeholder": "City of Springfield",
+        "required": true
+      },
+      {
+        "id": "projectDescription",
+        "label": "Description of the public project or action",
+        "placeholder": "Widening of Main Street between 3rd and 5th Avenue",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
