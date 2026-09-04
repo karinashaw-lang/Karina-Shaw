@@ -17553,5 +17553,59 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "domestic_worker_bill_of_rights_info_sheet",
+    "title": "Domestic Worker Bill of Rights — Information Sheet",
+    "description": "Explains California's Domestic Worker Bill of Rights, Labor Code §§ 1450-1455, which extended overtime protections to personal attendants (in-home caregivers, largely excluded from general overtime rules before this law) — only incidentally referenced elsewhere in this corpus as an exemption category, not substantively covered until now. Covers the statute's coverage of \"domestic work\" and its exclusions, the definition of \"personal attendant\" and its 20%-other-work ceiling, domestic work employee status and statutory exclusions (family members, IHSS workers, casual babysitters), and the distinct overtime formula for personal attendants (1.5x after 9 hours/day or 45 hours/week, verified as different from the general 8-hour/40-hour standard).",
+    "categories": [
+      "During employment"
+    ],
+    "clauseOrder": [
+      "domesticworker_declaration",
+      "domesticworker_title_and_scope",
+      "domesticworker_personal_attendant_definition",
+      "domesticworker_employee_and_exclusions",
+      "domesticworker_overtime_formula",
+      "domesticworker_acknowledgment"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "jobTitle",
+        "label": "Job title",
+        "placeholder": "Software Engineer",
+        "required": true
+      },
+      {
+        "id": "startDate",
+        "label": "Start date",
+        "placeholder": "September 15, 2026",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
