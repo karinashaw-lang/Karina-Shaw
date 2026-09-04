@@ -17515,5 +17515,43 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "ademption_abatement_info_sheet",
+    "title": "Ademption and Abatement of Testamentary Gifts — Information Sheet",
+    "description": "Explains two related California statutory doctrines determining what a beneficiary actually receives from an estate: ademption (Probate Code §§ 21133-21140), covering what happens to a specific gift when the specifically-given property is no longer part of the estate at death, and abatement (Probate Code §§ 21400-21406), covering the statutory order in which gifts are reduced when the estate's assets are insufficient. A companion to this corpus's Last Will and Testament and Grounds to Contest a Will/Trust documents, neither of which addresses these doctrines. Covers ademption by extinction and its statutory substitute rights, the incapacity exception for sales/encumbrances by a conservator, agent, or trustee, ademption by satisfaction's four-condition test, the precise six-class statutory abatement order and a testator's power to override it, and the pro-rata-within-class and exoneration rules.",
+    "categories": [
+      "Estate Planning"
+    ],
+    "clauseOrder": [
+      "ademptionabatement_declaration",
+      "ademptionabatement_extinction_core_rule",
+      "ademptionabatement_incapacity_exception",
+      "ademptionabatement_satisfaction",
+      "ademptionabatement_order_of_reduction",
+      "ademptionabatement_scope_and_override",
+      "ademptionabatement_prorata_and_exoneration",
+      "ademptionabatement_certification"
+    ],
+    "fields": [
+      {
+        "id": "decedentName",
+        "label": "Decedent's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
