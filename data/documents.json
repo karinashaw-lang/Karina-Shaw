@@ -20953,5 +20953,48 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "immigrant_worker_protection_act_info_sheet",
+    "title": "Immigrant Worker Protection Act — Information Sheet",
+    "description": "Describes California's Immigrant Worker Protection Act (AB 450), codified at Labor Code § 90.2 and Government Code §§ 7285.1-7285.3: the required employee notice before and after a federal immigration agency's inspection of I-9 or other employment records, the civil penalty for failing to give either notice, and the restrictions on an employer voluntarily granting a federal immigration enforcement agent access to nonpublic work areas or employee records without a warrant or subpoena.",
+    "categories": [
+      "During employment"
+    ],
+    "clauseOrder": [
+      "iwpa_scope",
+      "iwpa_notice_of_inspection",
+      "iwpa_notice_of_results",
+      "iwpa_notice_penalties",
+      "iwpa_nonpublic_area_access",
+      "iwpa_employee_records_access",
+      "iwpa_acknowledgment"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company Name",
+        "placeholder": "e.g., Acme Corp.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee Name",
+        "placeholder": "e.g., Jane Doe",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date Signed",
+        "placeholder": "e.g., January 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, State",
+        "placeholder": "e.g., Los Angeles, California",
+        "required": true
+      }
+    ]
   }
 ]
