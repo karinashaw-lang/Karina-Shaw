@@ -18300,5 +18300,60 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "creditor_claim_against_estate_info_sheet",
+    "title": "Creditor's Claim Against a Decedent's Estate — Information Sheet",
+    "description": "Explains California's statutory procedure (Probate Code § 9000 et seq.) for a creditor to file a claim against a decedent's probate estate: what counts as a \"claim\" and the consequence of not filing one, the claim-filing deadline (the later of four months after letters issue or 60 days after notice of administration), what a claim must contain and how it is filed and served, the personal representative's options after a claim is filed (including a default-rejection rule for silence), and the creditor's own 90-day deadline to sue on a rejected claim.",
+    "categories": [
+      "Estate Planning"
+    ],
+    "clauseOrder": [
+      "creditorclaim_intro_purpose",
+      "creditorclaim_definition_and_bar",
+      "creditorclaim_filing_deadline",
+      "creditorclaim_contents_and_filing",
+      "creditorclaim_pr_response",
+      "creditorclaim_deadline_to_sue_after_rejection",
+      "creditorclaim_acknowledgment"
+    ],
+    "fields": [
+      {
+        "id": "decedentName",
+        "label": "Decedent's name",
+        "placeholder": "Pat Morgan Rivera",
+        "required": true
+      },
+      {
+        "id": "courtName",
+        "label": "Court name",
+        "placeholder": "Superior Court of California",
+        "required": true
+      },
+      {
+        "id": "countyOfFiling",
+        "label": "County of filing",
+        "placeholder": "Alameda County",
+        "required": true
+      },
+      {
+        "id": "personalRepresentativeName",
+        "label": "Personal representative's name",
+        "placeholder": "Morgan Lee",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 5, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
