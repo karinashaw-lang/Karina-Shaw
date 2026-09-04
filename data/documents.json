@@ -17471,5 +17471,49 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "iaea_notice_of_proposed_action_info_sheet",
+    "title": "IAEA Notice of Proposed Action Procedure — Information Sheet",
+    "description": "Explains the Notice of Proposed Action procedure under California's Independent Administration of Estates Act, Probate Code §§ 10580-10592 — deepening a gap the corpus's own Petition for Probate document explicitly flagged as not independently researched. Covers when notice is required versus optional, who must receive it and how written consent or waiver eliminates the requirement, the notice's required content and delivery timing/method under Probate Code § 1215 (including that the 15-day period is not extended for mail or electronic delivery), how a person objects and the ex parte restraining-order alternative, what happens after a timely objection versus silence, and the noncompliance consequences — third-party/bona fide purchaser protection and the court's discretionary authority to remove the personal representative.",
+    "categories": [
+      "Estate Planning"
+    ],
+    "clauseOrder": [
+      "noticeproposedaction_declaration",
+      "noticeproposedaction_when_required",
+      "noticeproposedaction_who_and_consent_waiver",
+      "noticeproposedaction_contents_and_delivery",
+      "noticeproposedaction_objection_procedure",
+      "noticeproposedaction_consequence_of_objection_or_silence",
+      "noticeproposedaction_noncompliance_consequences",
+      "noticeproposedaction_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "decedentName",
+        "label": "Decedent's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "executorName",
+        "label": "Executor name",
+        "placeholder": "Morgan Lee",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
