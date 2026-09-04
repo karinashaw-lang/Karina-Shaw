@@ -17369,5 +17369,41 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "water_conserving_plumbing_fixture_compliance_info_sheet",
+    "title": "Water-Conserving Plumbing Fixture Compliance Disclosure — Information Sheet",
+    "description": "Explains Civil Code §§ 1101.1-1101.9, California's water-conserving plumbing fixture retrofit and disclosure requirement for pre-1994 residential and commercial real property — a separate statutory scheme (Civil Code) from this corpus's Smoke Alarm and CO Device Compliance Disclosure document (Health & Safety Code). Covers the statute's own defined terms (\"noncompliant plumbing fixture,\" \"water-conserving plumbing fixture\"), the single-family retrofit deadline (January 1, 2017) and seller's disclosure duty, the later multifamily/commercial deadline (January 1, 2019) and its own disclosure duty, and the statute's exemption list — narrower and differently drawn than the smoke alarm statute's exemptions.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "waterfixture_declaration",
+      "waterfixture_applicability_and_definitions",
+      "waterfixture_single_family_retrofit_and_disclosure",
+      "waterfixture_multifamily_commercial_retrofit_and_disclosure",
+      "waterfixture_exemptions",
+      "waterfixture_signature"
+    ],
+    "fields": [
+      {
+        "id": "sellerName",
+        "label": "Seller's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "buyerName",
+        "label": "Buyer's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "propertyAddress",
+        "label": "Property address",
+        "placeholder": "123 Main St, Apt 4, Springfield",
+        "required": true
+      }
+    ]
   }
 ]
