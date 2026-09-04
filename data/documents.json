@@ -15749,5 +15749,60 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "visual_artists_rights_act_info_sheet",
+    "title": "Federal Visual Artists Rights Act (VARA) — Information Sheet",
+    "description": "Background information on the federal Visual Artists Rights Act (17 U.S.C. section 106A) -- the attribution and integrity rights it gives the author of a narrowly defined \"work of visual art,\" that definition and its express exclusions, how long the rights last, how they can be waived, and the key finding on how VARA's preemption provision (17 U.S.C. section 301(f)) relates to state moral-rights statutes such as California's Art Preservation Act, covered in a separate document in this corpus.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "vara_declaration_and_purpose",
+      "vara_attribution_and_integrity_rights",
+      "vara_work_of_visual_art_definition",
+      "vara_duration",
+      "vara_waiver",
+      "vara_preemption_of_state_law",
+      "vara_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "workDescription",
+        "label": "Description of the work",
+        "placeholder": "Describe the work",
+        "required": true
+      },
+      {
+        "id": "workTitle",
+        "label": "Title of the work",
+        "placeholder": "Untitled No. 4",
+        "required": true
+      },
+      {
+        "id": "artistName",
+        "label": "Artist's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "ownerName",
+        "label": "Work's current owner or possessor",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 2, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, state",
+        "placeholder": "San Francisco, California",
+        "required": true
+      }
+    ]
   }
 ]
