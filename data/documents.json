@@ -20182,5 +20182,91 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "certification_of_trust_info_sheet",
+    "title": "Certification of Trust — Information Sheet and Form",
+    "description": "Explains and provides California's Certification of Trust (Probate Code section 18100.5), the document a trustee may present to a bank, title company, escrow, or other third party in lieu of the complete trust instrument to establish the trust's existence and the trustee's authority: what the certification may confirm or contain, what it must state and its acknowledged-declaration/signature formalities, the trustee's discretion to include (or withhold) excerpts and a third party's right to require excerpts evidencing succession or authority, the protection for a person who relies on a certification in good faith, and the liability provision for a bad-faith demand for the complete trust documents beyond the certification. Distinct from the corpus's existing Digital Assets document, which mentions certification of trust only in passing as one acceptable document a fiduciary-access custodian may accept.",
+    "categories": [
+      "Estate Planning"
+    ],
+    "clauseOrder": [
+      "certoftrust_declaration",
+      "certoftrust_definition_and_purpose",
+      "certoftrust_permitted_and_required_contents",
+      "certoftrust_certification_content",
+      "certoftrust_excerpts_optional_and_third_party_right",
+      "certoftrust_third_party_reliance_protection",
+      "certoftrust_liability_for_bad_faith_refusal",
+      "certoftrust_signature_notarization"
+    ],
+    "fields": [
+      {
+        "id": "trustName",
+        "label": "Trust name",
+        "placeholder": "The Jordan Lee Living Trust",
+        "required": true
+      },
+      {
+        "id": "originalTrustDate",
+        "label": "Date the trust instrument was executed",
+        "placeholder": "March 14, 2020",
+        "required": true
+      },
+      {
+        "id": "settlorName",
+        "label": "Settlor(s)",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "trusteeName",
+        "label": "Currently acting trustee(s)",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "successorTrusteeName",
+        "label": "Successor trustee (if any)",
+        "placeholder": "Pat Morgan",
+        "required": false
+      },
+      {
+        "id": "trusteePowers",
+        "label": "Powers of the trustee / signature authority of multiple trustees",
+        "placeholder": "Full power to buy, sell, and manage trust property; any one trustee may act alone",
+        "required": true
+      },
+      {
+        "id": "trustRevocability",
+        "label": "Revocability of the trust and identity of any person holding a power to revoke",
+        "placeholder": "The trust is revocable by the settlor, Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "trustTaxpayerId",
+        "label": "Trust taxpayer identification number",
+        "placeholder": "XX-XXXXXXX",
+        "required": false
+      },
+      {
+        "id": "titleVestingManner",
+        "label": "Manner in which title to trust assets should be taken",
+        "placeholder": "Jordan Lee, Trustee of the Jordan Lee Living Trust dated March 14, 2020",
+        "required": false
+      },
+      {
+        "id": "recipientName",
+        "label": "Recipient of this certification",
+        "placeholder": "First National Title Company",
+        "required": true
+      },
+      {
+        "id": "signatureDate",
+        "label": "Date signed",
+        "placeholder": "September 4, 2026",
+        "required": true
+      }
+    ]
   }
 ]
