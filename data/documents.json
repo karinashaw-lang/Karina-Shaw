@@ -18057,5 +18057,49 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "age_appropriate_design_code_act_info_sheet",
+    "title": "California Age-Appropriate Design Code Act — Information Sheet",
+    "description": "Explains California's Age-Appropriate Design Code Act (Civil Code § 1798.99.28 et seq.): the statute's own \"likely to be accessed by children\" coverage test, its core codified duties (Data Protection Impact Assessment, age estimation, default privacy settings), its data-use and dark-patterns restrictions, and its Attorney-General-exclusive enforcement scheme with no private right of action. Also traces the ongoing NetChoice, LLC v. Bonta litigation and states, as of the most recent ruling reviewed, which provisions are currently enjoined (the DPIA requirement, the notice-and-cure provision, and the data-use/dark-patterns restrictions on vagueness grounds) and which are not (the coverage definition and age estimation requirement) — a preliminary-injunction posture, not a final judgment.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "aadc_purpose",
+      "aadc_scope",
+      "aadc_core_duties",
+      "aadc_prohibited_actions",
+      "aadc_enforcement",
+      "aadc_netchoice_dpia_injunction",
+      "aadc_netchoice_current_status",
+      "aadc_acknowledgment"
+    ],
+    "fields": [
+      {
+        "id": "businessName",
+        "label": "Business name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "websiteURL",
+        "label": "Website or online service URL",
+        "placeholder": "https://www.acme.com",
+        "required": true
+      },
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "signatureDate",
+        "label": "Signature date",
+        "placeholder": "September 4, 2026",
+        "required": true
+      }
+    ]
   }
 ]
