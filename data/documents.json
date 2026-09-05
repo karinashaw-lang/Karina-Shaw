@@ -21557,5 +21557,54 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "computer_software_employee_overtime_exemption_info_sheet",
+    "title": "Computer Software Employee Overtime Exemption — Information Sheet",
+    "description": "Describes California's computer software employee overtime exemption under Labor Code § 515.5: how it differs structurally from the general executive/administrative/professional exemptions under § 515(a), the statutory duties and skill test, the rate-of-pay requirement and its annual DIR cost-of-living adjustment mechanism (with the current DIR-published figures effective January 1, 2026), and the statute's six exclusions (trainees, close-supervision workers, hardware operators/technicians, CAD-dependent professionals, writers, and motion-picture/television/theatrical effects imagery).",
+    "categories": [
+      "During employment"
+    ],
+    "clauseOrder": [
+      "compsoftexempt_purpose_scope",
+      "compsoftexempt_default_and_distinction",
+      "compsoftexempt_duties_test",
+      "compsoftexempt_rate_requirement",
+      "compsoftexempt_current_rate",
+      "compsoftexempt_exclusions",
+      "compsoftexempt_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company Name",
+        "placeholder": "e.g., Acme Corp.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee Name",
+        "placeholder": "e.g., Jane Doe",
+        "required": true
+      },
+      {
+        "id": "jobTitle",
+        "label": "Job Title",
+        "placeholder": "e.g., Senior Software Engineer",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date Signed",
+        "placeholder": "e.g., January 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, State",
+        "placeholder": "e.g., Los Angeles, California",
+        "required": true
+      }
+    ]
   }
 ]
