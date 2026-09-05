@@ -21662,5 +21662,61 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "real_estate_transfer_disclosure_statement_info_sheet",
+    "title": "Real Estate Transfer Disclosure Statement — Information Sheet",
+    "description": "Describes California's Real Estate Transfer Disclosure Statement requirement, Civil Code § 1102 et seq.: which single-family residential transfers are covered, the statute's twelve exemption categories, the statutory disclosure form and the preserved underlying duty to disclose material facts, delivery timing, the buyer's 3/5/5-day right to terminate an offer after a late or amended disclosure, and the consequence of noncompliance.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "tds_declaration",
+      "tds_covered_transfers",
+      "tds_exemptions",
+      "tds_form_and_material_fact_duty",
+      "tds_delivery_timing",
+      "tds_late_delivery_termination_right",
+      "tds_noncompliance_effect",
+      "tds_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "propertyAddress",
+        "label": "Property Address",
+        "placeholder": "e.g., 123 Main St., Los Angeles, CA",
+        "required": true
+      },
+      {
+        "id": "sellerName",
+        "label": "Seller's Name",
+        "placeholder": "e.g., Jane Doe",
+        "required": true
+      },
+      {
+        "id": "buyerName",
+        "label": "Buyer's Name",
+        "placeholder": "e.g., John Smith",
+        "required": true
+      },
+      {
+        "id": "sellerAgentName",
+        "label": "Seller's Agent Name (if any)",
+        "placeholder": "e.g., Alex Realtor",
+        "required": false
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date Signed",
+        "placeholder": "e.g., January 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, State",
+        "placeholder": "e.g., Los Angeles, California",
+        "required": true
+      }
+    ]
   }
 ]
