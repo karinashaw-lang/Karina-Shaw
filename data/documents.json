@@ -21607,5 +21607,60 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "economic_espionage_act_info_sheet",
+    "title": "Economic Espionage Act — Information Sheet",
+    "description": "Describes the federal Economic Espionage Act, 18 U.S.C. §§ 1831-1839: the foreign-benefit offense (§ 1831) and the general offense (§ 1832), their differing individual and organizational penalties, the chapter-wide \"trade secret\" definition (§ 1839) that also governs the civil DTSA cause of action, and how this federal criminal statute relates to California's separate Penal Code § 499c criminal statute and the federal civil DTSA private suit and Attorney General injunction mechanisms.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "econespionage_purpose",
+      "econespionage_1831_foreign_benefit_offense",
+      "econespionage_1832_general_offense",
+      "econespionage_organizational_penalties",
+      "econespionage_trade_secret_definition",
+      "econespionage_relationship_to_state_and_civil_law",
+      "econespionage_closing_notice"
+    ],
+    "fields": [
+      {
+        "id": "preparerName",
+        "label": "Preparer's Name",
+        "placeholder": "e.g., Jane Doe",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Company Name",
+        "placeholder": "e.g., Acme Corp.",
+        "required": true
+      },
+      {
+        "id": "adversePartyName",
+        "label": "Adverse Party's Name",
+        "placeholder": "e.g., John Smith",
+        "required": false
+      },
+      {
+        "id": "tradeSecretDescription",
+        "label": "Description of the Trade Secret Information at Issue",
+        "placeholder": "e.g., customer pricing formulas",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date Signed",
+        "placeholder": "e.g., January 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, State",
+        "placeholder": "e.g., Los Angeles, California",
+        "required": true
+      }
+    ]
   }
 ]
