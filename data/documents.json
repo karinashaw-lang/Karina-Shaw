@@ -21718,5 +21718,48 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "california_limited_offering_exemption_info_sheet",
+    "title": "California Limited Offering Exemption — Information Sheet",
+    "description": "Describes California's limited offering exemption from securities qualification, Corporations Code § 25102(f): the 35-purchaser limit and preexisting-relationship/sophistication requirement, the investment representation and no-advertisement conditions, the statutory notice-filing directive and its cure provision for a late or missed notice, the implementing regulation's 15-calendar-day filing deadline and Regulation D dual-filing shortcut, and how the exemption's purchaser-based conditions differ from federal Rule 506(b).",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "limoffexempt_declaration",
+      "limoffexempt_purchaser_limit_and_qualification",
+      "limoffexempt_investment_representation_no_advertising",
+      "limoffexempt_notice_filing_statute",
+      "limoffexempt_notice_filing_mechanics",
+      "limoffexempt_reg_d_comparison",
+      "limoffexempt_ack"
+    ],
+    "fields": [
+      {
+        "id": "preparerName",
+        "label": "Preparer's Name",
+        "placeholder": "e.g., Jane Doe",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Company Name",
+        "placeholder": "e.g., Acme Corp.",
+        "required": false
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date Signed",
+        "placeholder": "e.g., January 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, State",
+        "placeholder": "e.g., Los Angeles, California",
+        "required": true
+      }
+    ]
   }
 ]
