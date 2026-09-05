@@ -17,9 +17,13 @@ Three things are simulated rather than fully real, called out in the UI wherever
 - **Tips and subscriptions** — recorded as ledger entries with no payment processor behind
   them (no Stripe integration yet).
 
-Live streaming, AI-automated clip detection, the commute briefing, Studio Look, and AI
-dubbing all need real infrastructure decisions (a live/RTMP provider, an ASR/TTS provider,
-a billing provider) before they're buildable — see the business plan's V2/V3 roadmap.
+Studio Look (an optional real-time cinematic color grade + vignette while recording) is
+implemented for real, entirely client-side with a `<canvas>` — see
+`src/components/camera-recorder.tsx`.
+
+Live streaming, AI-automated clip detection, the commute briefing, and AI dubbing all need
+real infrastructure decisions (a live/RTMP provider, an ASR/TTS provider) plus API keys
+before they're buildable — see the business plan's V2/V3 roadmap.
 
 ## Stack
 
@@ -63,6 +67,8 @@ a billing provider) before they're buildable — see the business plan's V2/V3 r
 - **Upload** (file / camera recording / URL) — `src/app/creator/upload`,
   `src/components/upload-form.tsx`, `src/components/camera-recorder.tsx`,
   `src/lib/video-storage.ts`
+- **Studio Look** (real-time canvas color grade during recording) —
+  `src/components/camera-recorder.tsx`
 - **Comments** — `src/components/comment-form.tsx`, `postComment` in
   `src/lib/actions/video.ts`
 - **Follows** — `src/components/follow-button.tsx`, `src/lib/actions/follow.ts`
