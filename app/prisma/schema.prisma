@@ -8,18 +8,20 @@ datasource db {
 }
 
 model User {
-  id             String          @id @default(cuid())
-  email          String          @unique
-  passwordHash   String
-  name           String
-  createdAt      DateTime        @default(now())
-  creatorProfile CreatorProfile?
-  comments       Comment[]
-  follows        Follow[]
-  clips          Clip[]
-  wallItems      WallItem[]
-  tipsSent       Tip[]
-  subscriptions  Subscription[]
+  id               String          @id @default(cuid())
+  email            String          @unique
+  passwordHash     String
+  name             String
+  stripeCustomerId String?         @unique
+  createdAt        DateTime        @default(now())
+  creatorProfile   CreatorProfile?
+  comments         Comment[]
+  follows          Follow[]
+  clips            Clip[]
+  wallItems        WallItem[]
+  tipsSent         Tip[]
+  subscriptions    Subscription[]
+  briefings        Briefing[]
 }
 
 model CreatorProfile {
@@ -35,6 +37,13 @@ model CreatorProfile {
   followers              Follow[]
   tipsReceived           Tip[]
   subscribers            Subscription[]
+  liveStream             LiveStream?
+}
+
+enum VideoStatus {
+  PROCESSING
+  READY
+  ERRORED
 }
 
 model Video {
@@ -43,7 +52,13 @@ model Video {
   creator        CreatorProfile      @relation(fields: [creatorId], references: [id])
   title          String
   description    String?
-  videoUrl       String
+  /// Null while a Mux-hosted upload is still processing (see `status`).
+  videoUrl       String?
+  status         VideoStatus         @default(READY)
+  /// Set for uploads routed through Mux (see src/lib/integrations/mux.ts).
+  muxUploadId    String?             @unique
+  muxAssetId     String?
+  muxPlaybackId  String?
   subscriberOnly Boolean             @default(false)
   createdAt      DateTime            @default(now())
   comments       Comment[]
@@ -97,10 +112,9 @@ model WallItem {
   createdAt DateTime @default(now())
 }
 
-/// A timestamped line of a video's transcript. Creators paste these in
-/// manually for now (see the transcript editor) — there's no speech-to-text
-/// pipeline wired up yet — but this is the same shape real ASR output would
-/// fill in, so search and the commute briefing can build on it either way.
+/// A timestamped line of a video's transcript. Populated automatically by
+/// OpenAI Whisper when OPENAI_API_KEY is set (see src/lib/integrations/openai.ts);
+/// otherwise creators paste these in manually via the transcript editor.
 model TranscriptSegment {
   id           String   @id @default(cuid())
   videoId      String
@@ -112,27 +126,63 @@ model TranscriptSegment {
   @@index([videoId])
 }
 
-/// A simulated subscription — no billing provider is wired up yet, so this
-/// just records that a viewer subscribed, the same way Tip records a
-/// payment that never actually moved money.
+/// Real when STRIPE_SECRET_KEY is set (stripeSubscriptionId identifies the
+/// Stripe Subscription); otherwise a simulated ledger entry with no billing
+/// behind it, same as before.
 model Subscription {
-  id           String         @id @default(cuid())
-  subscriberId String
-  subscriber   User           @relation(fields: [subscriberId], references: [id])
-  creatorId    String
-  creator      CreatorProfile @relation(fields: [creatorId], references: [id])
-  createdAt    DateTime       @default(now())
+  id                   String         @id @default(cuid())
+  subscriberId         String
+  subscriber           User           @relation(fields: [subscriberId], references: [id])
+  creatorId            String
+  creator              CreatorProfile @relation(fields: [creatorId], references: [id])
+  stripeSubscriptionId String?        @unique
+  createdAt            DateTime       @default(now())
 
   @@unique([subscriberId, creatorId])
 }
 
+/// Real when STRIPE_SECRET_KEY is set (stripeCheckoutSessionId identifies the
+/// completed Checkout Session); otherwise a simulated ledger entry with no
+/// payment behind it, same as before.
 model Tip {
-  id          String         @id @default(cuid())
-  fromUserId  String
-  fromUser    User           @relation(fields: [fromUserId], references: [id])
-  toCreatorId String
-  toCreator   CreatorProfile @relation(fields: [toCreatorId], references: [id])
-  amountCents Int
-  message     String?
-  createdAt   DateTime       @default(now())
+  id                      String         @id @default(cuid())
+  fromUserId              String
+  fromUser                User           @relation(fields: [fromUserId], references: [id])
+  toCreatorId             String
+  toCreator               CreatorProfile @relation(fields: [toCreatorId], references: [id])
+  amountCents             Int
+  message                 String?
+  stripeCheckoutSessionId String?        @unique
+  createdAt               DateTime       @default(now())
+}
+
+enum LiveStreamStatus {
+  IDLE
+  ACTIVE
+  DISABLED
+}
+
+/// A creator's persistent Mux live stream target (RTMP URL + stream key).
+/// Only usable when MUX_TOKEN_ID/MUX_TOKEN_SECRET are set.
+model LiveStream {
+  id              String           @id @default(cuid())
+  creatorId       String           @unique
+  creator         CreatorProfile   @relation(fields: [creatorId], references: [id])
+  muxLiveStreamId String           @unique
+  muxStreamKey    String
+  muxPlaybackId   String
+  status          LiveStreamStatus @default(IDLE)
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+}
+
+/// An AI-generated audio summary of a viewer's wall, per the "commute
+/// briefing" feature. Only buildable when OPENAI_API_KEY is set.
+model Briefing {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  script    String
+  audioUrl  String
+  createdAt DateTime @default(now())
 }

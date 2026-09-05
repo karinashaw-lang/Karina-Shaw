@@ -1,15 +1,23 @@
 "use client";
 
-import { useActionState, useRef, useState } from "react";
+import { useActionState, useRef, useState, useTransition, type FormEvent } from "react";
 import Link from "next/link";
 
-import { uploadVideo } from "@/lib/actions/video";
+import { createMuxUpload, uploadVideo } from "@/lib/actions/video";
 import CameraRecorder from "@/components/camera-recorder";
 
-export default function UploadForm({ hasSubscriptionPrice }: { hasSubscriptionPrice: boolean }) {
+export default function UploadForm({
+  hasSubscriptionPrice,
+  muxConfigured,
+}: {
+  hasSubscriptionPrice: boolean;
+  muxConfigured: boolean;
+}) {
   const [state, formAction, pending] = useActionState(uploadVideo, null);
   const [mode, setMode] = useState<"file" | "record" | "url">("file");
   const [pickedFileName, setPickedFileName] = useState<string | null>(null);
+  const [muxUploading, startMuxTransition] = useTransition();
+  const [muxError, setMuxError] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const urlInputRef = useRef<HTMLInputElement>(null);
 
@@ -37,8 +45,36 @@ export default function UploadForm({ hasSubscriptionPrice }: { hasSubscriptionPr
     setPickedFileName(null);
   }
 
+  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    if (!muxConfigured) return; // native form submission handles this case
+
+    const file = fileInputRef.current?.files?.[0];
+    if (!file) return; // URL mode (or nothing picked yet) — submit as-is
+
+    e.preventDefault();
+    setMuxError(null);
+    const formEl = e.currentTarget;
+
+    startMuxTransition(async () => {
+      try {
+        const { uploadUrl, uploadId } = await createMuxUpload();
+        const putResponse = await fetch(uploadUrl, { method: "PUT", body: file });
+        if (!putResponse.ok) throw new Error("Upload to Mux failed.");
+
+        const formData = new FormData(formEl);
+        formData.delete("videoFile");
+        formData.set("muxUploadId", uploadId);
+        formAction(formData);
+      } catch (err) {
+        setMuxError(err instanceof Error ? err.message : "Could not upload to Mux.");
+      }
+    });
+  }
+
+  const isPending = pending || muxUploading;
+
   return (
-    <form action={formAction} className="mt-6 flex flex-col gap-4">
+    <form action={formAction} onSubmit={handleSubmit} className="mt-6 flex flex-col gap-4">
       <label className="flex flex-col gap-1 text-sm">
         Title
         <input
@@ -118,14 +154,14 @@ export default function UploadForm({ hasSubscriptionPrice }: { hasSubscriptionPr
         </p>
       )}
 
-      {state?.error && <p className="text-sm text-red-600">{state.error}</p>}
+      {(state?.error || muxError) && <p className="text-sm text-red-600">{state?.error ?? muxError}</p>}
 
       <button
         type="submit"
-        disabled={pending}
+        disabled={isPending}
         className="rounded bg-black px-4 py-2 text-white disabled:opacity-50 dark:bg-white dark:text-black"
       >
-        {pending ? "Posting…" : "Post video"}
+        {muxUploading ? "Uploading…" : pending ? "Posting…" : "Post video"}
       </button>
     </form>
   );

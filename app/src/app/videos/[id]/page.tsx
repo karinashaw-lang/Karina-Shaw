@@ -58,6 +58,14 @@ export default async function VideoPage(props: PageProps<"/videos/[id]">) {
             </p>
           </div>
         </div>
+      ) : video.status === "PROCESSING" || !video.videoUrl ? (
+        <div className="flex aspect-video items-center justify-center rounded-lg bg-black text-center text-white">
+          <p className="text-sm text-zinc-300">
+            {video.status === "ERRORED"
+              ? "Something went wrong processing this video."
+              : "Still processing — check back in a moment."}
+          </p>
+        </div>
       ) : (
         <VideoWithTranscript
           src={video.videoUrl}

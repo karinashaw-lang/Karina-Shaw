@@ -23,6 +23,7 @@ export default async function Nav() {
                     {user.creatorProfile.displayName}
                   </Link>
                   <Link href="/creator/upload">Upload</Link>
+                  <Link href="/creator/live">Go live</Link>
                   <Link href="/creator/dashboard">Dashboard</Link>
                 </>
               ) : (

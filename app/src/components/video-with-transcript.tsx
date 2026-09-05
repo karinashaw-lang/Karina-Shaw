@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Hls from "hls.js";
 
 function formatTime(totalSeconds: number) {
   const hours = Math.floor(totalSeconds / 3600);
@@ -22,6 +23,28 @@ export default function VideoWithTranscript({
 }) {
   const videoRef = useRef<HTMLVideoElement>(null);
 
+  // Mux-hosted videos are HLS (.m3u8); local/pasted-URL videos are plain
+  // files. Only Safari plays HLS natively, so route .m3u8 through hls.js.
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    if (!src.endsWith(".m3u8")) {
+      video.src = src;
+      return;
+    }
+    if (video.canPlayType("application/vnd.apple.mpegurl")) {
+      video.src = src;
+      return;
+    }
+    if (Hls.isSupported()) {
+      const hls = new Hls();
+      hls.loadSource(src);
+      hls.attachMedia(video);
+      return () => hls.destroy();
+    }
+  }, [src]);
+
   useEffect(() => {
     if (initialSeek !== undefined && videoRef.current) {
       videoRef.current.currentTime = initialSeek;
@@ -37,7 +60,7 @@ export default function VideoWithTranscript({
 
   return (
     <div>
-      <video ref={videoRef} controls className="w-full rounded-lg bg-black" src={src} />
+      <video ref={videoRef} controls className="w-full rounded-lg bg-black" />
 
       {segments.length > 0 && (
         <div className="mt-3 max-h-48 overflow-y-auto rounded border border-black/10 p-3 text-sm dark:border-white/10">
