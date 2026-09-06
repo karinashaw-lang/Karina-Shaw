@@ -27296,5 +27296,63 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "limited_partner_control_safe_harbor_info_sheet",
+    "title": "Limited Partner Control Safe Harbor — Information Sheet",
+    "description": "Explains, using the statute's own text, the safe-harbor list in California's Uniform Limited Partnership Act of 2008 (Corp. Code § 15903.03(b)-(c)) of specific activities that a limited partner may engage in without being treated as \"participating in the control of the business\" for purposes of the limited partner liability shield, plus the related good-faith-erroneous-investor protection and diligent-effort withdrawal right of Corp. Code § 15903.06. A companion to, and does not restate, this project's California Limited Partnership Formation Information Sheet, which addresses the liability shield's general rule under Corp. Code § 15903.03(a) and a general partner's own liability under § 15904.04.",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "lpcontrol_intro",
+      "lpcontrol_safe_harbor_intro",
+      "lpcontrol_safe_harbor_relationship_roles",
+      "lpcontrol_safe_harbor_advice_and_credit",
+      "lpcontrol_safe_harbor_voting_and_meetings",
+      "lpcontrol_safe_harbor_winding_up_and_filings",
+      "lpcontrol_safe_harbor_oversight_and_catchall",
+      "lpcontrol_good_faith_erroneous_investor",
+      "lpcontrol_diligent_effort_withdrawal_right",
+      "lpcontrol_ack"
+    ],
+    "fields": [
+      {
+        "id": "limitedPartnerName",
+        "label": "Limited partner's name",
+        "placeholder": "Casey Alex",
+        "required": true
+      },
+      {
+        "id": "partnershipName",
+        "label": "Limited partnership's name",
+        "placeholder": "Acme Ventures, LP",
+        "required": true
+      },
+      {
+        "id": "generalPartnerName",
+        "label": "General partner's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "authorizedSignerName",
+        "label": "Authorized signer's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 6, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Sacramento, California",
+        "required": true
+      }
+    ]
   }
 ]
