@@ -5,6 +5,7 @@ import { after } from "next/server";
 import prisma from "@/lib/prisma";
 import { getCurrentUser } from "@/lib/auth";
 import { recordWallItemView } from "@/lib/actions/wall-view";
+import { recordDailyActivity } from "@/lib/actions/activity";
 import { buildClipCaption } from "@/lib/caption";
 import { findRelatedSegments } from "@/lib/recommendations";
 import SaveButton from "@/components/save-button";
@@ -36,7 +37,10 @@ export default async function ClipPage(props: PageProps<"/clips/[id]">) {
 
   if (!clip) notFound();
 
-  if (user) after(() => recordWallItemView(user.id, { clipId: clip.id }));
+  if (user) {
+    after(() => recordWallItemView(user.id, { clipId: clip.id }));
+    after(() => recordDailyActivity(user.id));
+  }
 
   const isHls = Boolean(clip.sourceVideo.videoUrl?.endsWith(".m3u8"));
   const caption = buildClipCaption(clip, clip.sourceVideo.creator.displayName, clip.sourceVideo.transcript);

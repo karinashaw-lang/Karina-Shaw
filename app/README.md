@@ -2,9 +2,11 @@
 
 A working build of the core loop from the business plan in
 [`../business-plan.md`](../business-plan.md): sign up, become a creator, post a video (upload
-a file, record from your camera, or paste a URL), get found through transcript search, build
-a following, gate content behind a subscription, get tipped, go live, and let viewers clip and
-save what they find into a personal wall — plus a commute briefing generated from that wall.
+a file, record from your camera, or paste a URL — with a real audio-only stream extracted
+automatically), get found through transcript search, build a following, gate content behind a
+subscription, get tipped and paid out directly via Stripe Connect, go live, keep a streak going,
+and let viewers clip and save what they find into a personal wall — plus a commute briefing and
+a shareable monthly Wall Card generated from that wall.
 
 ## Real integrations, off by default
 
@@ -17,6 +19,7 @@ real. This is the actual state of each:
 |---|---|---|---|
 | Tips | `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET` | Instant simulated ledger entry | Real Stripe Checkout, webhook-confirmed |
 | Subscriptions | same as above | Instant simulated toggle | Real recurring Stripe subscription, webhook-confirmed, cancel-able |
+| Creator payouts | same as above (+ creator completes Connect onboarding) | Tips/subscriptions charge to the *platform's* Stripe account | Stripe Connect Express: funds route directly to the creator's own account (`transfer_data`), tracked via the `account.updated` webhook |
 | Video upload | `MUX_TOKEN_ID`, `MUX_TOKEN_SECRET`, `MUX_WEBHOOK_SECRET` | Saved to local disk (`public/uploads/`) | Uploaded direct-to-Mux, transcoded, HLS playback |
 | Live streaming | same as above | "Go live" page says Mux isn't configured | Real RTMP ingest + HLS live playback, webhook-driven status |
 | Transcripts | `OPENAI_API_KEY` | Creator pastes manually | Auto-transcribed with Whisper on local file uploads |
@@ -68,6 +71,16 @@ infrastructure, build differentiation" philosophy:
   theirs the most). Rendered as a real PNG via `next/og`'s `ImageResponse` (Satori + resvg,
   bundled with Next.js — no new dependency or API key). One drop per calendar month
   (`WallCard` row, unique per user+month) with a download link built for posting externally.
+- **Audio-optional by default** — every locally-uploaded video gets a real audio-only stream
+  extracted with ffmpeg, with a "Watch / Listen only" toggle on the video page. Requires ffmpeg
+  installed on the host (`apt-get install ffmpeg` — a system dependency, not an npm package);
+  degrades to no audio-only stream (not an error) if it's missing. Only covers local file
+  uploads for the same reason auto-transcription does — Mux/pasted-URL videos never have their
+  bytes pass through this server. A production build on Mux would use Mux's own audio-only
+  static rendition instead.
+- **Streaks** — a simple consecutive-day counter (🔥 shown in the nav) from visiting any video
+  or clip, computed from a `DailyActivity` table with plain date-gap arithmetic — no scheduled
+  job needed.
 
 ## Stack
 
@@ -77,8 +90,12 @@ infrastructure, build differentiation" philosophy:
 - Auth: custom email/password with bcrypt + a JWT session cookie (no third-party auth
   provider yet)
 - Stripe, `@mux/mux-node`, OpenAI, hls.js — see the table above
+- ffmpeg (system binary, for audio-only extraction — see below)
 
 ## Getting started
+
+0. Install ffmpeg (`apt-get install ffmpeg` / `brew install ffmpeg`). Optional — without it,
+   uploads still work, just without an audio-only stream.
 
 1. Start Postgres and create a database (adjust to taste):
 
@@ -115,7 +132,10 @@ infrastructure, build differentiation" philosophy:
   `src/lib/video-storage.ts`, `src/lib/integrations/mux.ts`
 - **Studio Look** (real-time canvas color grade during recording) —
   `src/components/camera-recorder.tsx`
+- **Audio-optional by default** (ffmpeg audio extraction + Watch/Listen toggle) —
+  `src/lib/audio-extraction.ts`, `src/components/video-with-transcript.tsx`
 - **Auto-transcription** (Whisper) — `src/lib/integrations/transcribe.ts`
+- **Streaks** — `src/lib/streaks.ts`, `src/lib/actions/activity.ts`
 - **Comments** — `src/components/comment-form.tsx`, `postComment` in
   `src/lib/actions/video.ts`
 - **Follows** — `src/components/follow-button.tsx`, `src/lib/actions/follow.ts`
@@ -134,6 +154,8 @@ infrastructure, build differentiation" philosophy:
   `src/app/api/webhooks/stripe`
 - **Subscriptions** (gates `subscriberOnly` videos) — `src/components/subscribe-button.tsx` /
   `subscribe-checkout-form.tsx`, `src/lib/actions/subscription.ts`
+- **Creator payouts** (Stripe Connect) — `src/lib/actions/connect.ts`,
+  `src/components/stripe-connect-button.tsx`, onboarding UI in `src/app/creator/dashboard`
 - **Live streaming** — `src/app/creator/live` (creator RTMP setup),
   `src/app/creators/[handle]/live` (viewer HLS playback), `src/lib/actions/live.ts`,
   `src/app/api/webhooks/mux`

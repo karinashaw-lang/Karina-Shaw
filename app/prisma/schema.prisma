@@ -25,6 +25,7 @@ model User {
   partyMessages    PartyMessage[]
   partyRsvps       PartyRsvp[]
   wallCards        WallCard[]
+  dailyActivity    DailyActivity[]
 }
 
 model CreatorProfile {
@@ -35,6 +36,14 @@ model CreatorProfile {
   displayName            String
   bio                    String?
   subscriptionPriceCents Int?
+  /// Stripe Connect Express account for direct creator payouts. Null means
+  /// the creator hasn't onboarded yet, so tips/subscriptions (when Stripe is
+  /// configured) are charged to the platform's own account instead of being
+  /// routed to the creator — see src/lib/integrations/stripe.ts.
+  stripeAccountId        String?        @unique
+  /// True once Stripe reports charges_enabled for the connected account
+  /// (via the account.updated webhook) — only then are payments routed to it.
+  stripeChargesEnabled   Boolean        @default(false)
   createdAt              DateTime       @default(now())
   videos                 Video[]
   followers              Follow[]
@@ -57,6 +66,11 @@ model Video {
   description      String?
   /// Null while a Mux-hosted upload is still processing (see `status`).
   videoUrl         String?
+  /// Audio-only stream, so the platform works when someone is just
+  /// listening (see the business plan's "audio-optional by default").
+  /// Extracted with ffmpeg on local file uploads only — see
+  /// src/lib/audio-extraction.ts. Null for pasted-URL and Mux uploads.
+  audioUrl         String?
   status           VideoStatus         @default(READY)
   /// Set for uploads routed through Mux (see src/lib/integrations/mux.ts).
   muxUploadId      String?             @unique
@@ -253,4 +267,17 @@ model WallCard {
   createdAt DateTime @default(now())
 
   @@unique([userId, month])
+}
+
+/// One row per (user, calendar day) they visited a video or clip — the
+/// whole signal behind streaks (see src/lib/streaks.ts). Deliberately not a
+/// general analytics table, just enough to compute "days in a row."
+model DailyActivity {
+  id     String @id @default(cuid())
+  userId String
+  user   User   @relation(fields: [userId], references: [id])
+  /// "YYYY-MM-DD" in UTC.
+  date   String
+
+  @@unique([userId, date])
 }

@@ -77,6 +77,11 @@ export async function startSubscriptionCheckout(
         },
       },
     ],
+    // Same Connect routing as tips — see sendTip in actions/tip.ts.
+    subscription_data:
+      creator.stripeChargesEnabled && creator.stripeAccountId
+        ? { transfer_data: { destination: creator.stripeAccountId } }
+        : undefined,
     metadata: { kind: "subscription", subscriberId: user.id, creatorId },
     success_url: `${appUrl}/creators/${handle}?subscribed=1`,
     cancel_url: `${appUrl}/creators/${handle}`,

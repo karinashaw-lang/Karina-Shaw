@@ -71,6 +71,15 @@ export async function POST(request: Request) {
       break;
     }
 
+    case "account.updated": {
+      const account = event.data.object;
+      await prisma.creatorProfile.updateMany({
+        where: { stripeAccountId: account.id },
+        data: { stripeChargesEnabled: Boolean(account.charges_enabled) },
+      });
+      break;
+    }
+
     default:
       break;
   }

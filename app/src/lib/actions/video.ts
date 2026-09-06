@@ -87,9 +87,16 @@ export async function uploadVideo(
     return { error: "Record or upload a video file, or paste a video URL." };
   }
 
-  let resolvedUrl: string;
+  let resolvedVideoUrl: string;
+  let resolvedAudioUrl: string | null = null;
   try {
-    resolvedUrl = hasFile ? await saveVideoFile(file as File) : videoUrl!;
+    if (hasFile) {
+      const saved = await saveVideoFile(file as File);
+      resolvedVideoUrl = saved.videoUrl;
+      resolvedAudioUrl = saved.audioUrl;
+    } else {
+      resolvedVideoUrl = videoUrl!;
+    }
   } catch (err) {
     return { error: err instanceof Error ? err.message : "Could not save that video file." };
   }
@@ -99,7 +106,8 @@ export async function uploadVideo(
       creatorId: user.creatorProfile.id,
       title,
       description,
-      videoUrl: resolvedUrl,
+      videoUrl: resolvedVideoUrl,
+      audioUrl: resolvedAudioUrl,
       subscriberOnly: subscriberOnly ?? false,
     },
   });

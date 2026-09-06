@@ -4,6 +4,7 @@ import { after } from "next/server";
 
 import prisma from "@/lib/prisma";
 import { recordWallItemView } from "@/lib/actions/wall-view";
+import { recordDailyActivity } from "@/lib/actions/activity";
 import { getCurrentUser } from "@/lib/auth";
 import CommentForm from "@/components/comment-form";
 import SaveButton from "@/components/save-button";
@@ -39,7 +40,10 @@ export default async function VideoPage(props: PageProps<"/videos/[id]">) {
 
   if (!video) notFound();
 
-  if (user) after(() => recordWallItemView(user.id, { videoId: video.id }));
+  if (user) {
+    after(() => recordWallItemView(user.id, { videoId: video.id }));
+    after(() => recordDailyActivity(user.id));
+  }
 
   const isOwner = user?.creatorProfile?.id === video.creatorId;
 
@@ -89,6 +93,7 @@ export default async function VideoPage(props: PageProps<"/videos/[id]">) {
       ) : (
         <VideoWithTranscript
           src={video.videoUrl}
+          audioSrc={video.audioUrl}
           initialSeek={Number.isFinite(initialSeek) ? initialSeek : undefined}
           segments={video.transcript}
         />

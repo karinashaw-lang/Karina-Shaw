@@ -3,7 +3,9 @@ import { redirect } from "next/navigation";
 
 import { getCurrentUser } from "@/lib/auth";
 import prisma from "@/lib/prisma";
+import { isStripeConfigured } from "@/lib/integrations/stripe";
 import SubscriptionPriceForm from "@/components/subscription-price-form";
+import StripeConnectButton from "@/components/stripe-connect-button";
 
 export default async function DashboardPage() {
   const user = await getCurrentUser();
@@ -49,9 +51,33 @@ export default async function DashboardPage() {
         </div>
       </div>
 
-      <p className="mt-4 text-xs text-zinc-500">
-        Tips and subscriptions are simulated for now — no payment processor is connected yet.
-      </p>
+      {!isStripeConfigured() ? (
+        <p className="mt-4 text-xs text-zinc-500">
+          Tips and subscriptions are simulated for now — no payment processor is connected yet.
+        </p>
+      ) : (
+        <div className="mt-6 rounded-lg border border-black/10 p-4 dark:border-white/10">
+          <h2 className="text-lg font-medium">Payouts</h2>
+          {user.creatorProfile.stripeChargesEnabled ? (
+            <p className="mt-1 text-sm text-green-700 dark:text-green-500">
+              Stripe payouts are set up — tips and subscriptions pay out directly to you.
+            </p>
+          ) : (
+            <>
+              <p className="mt-1 text-sm text-zinc-500">
+                {user.creatorProfile.stripeAccountId
+                  ? "Onboarding started but not finished yet — payments still go to the platform until it's complete."
+                  : "Without this, tips and subscriptions are still charged for real but go to the platform's account, not to you."}
+              </p>
+              <div className="mt-2">
+                <StripeConnectButton
+                  label={user.creatorProfile.stripeAccountId ? "Finish setting up payouts" : "Set up payouts with Stripe"}
+                />
+              </div>
+            </>
+          )}
+        </div>
+      )}
 
       <h2 className="mt-8 text-lg font-medium">Subscription price</h2>
       <SubscriptionPriceForm currentPriceCents={user.creatorProfile.subscriptionPriceCents} />

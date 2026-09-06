@@ -74,6 +74,14 @@ export async function sendTip(
           },
         },
       ],
+      // Routes the full tip straight to the creator's connected account
+      // once they've completed Stripe Connect onboarding; otherwise it's
+      // charged to the platform's own account, same as before Connect
+      // existed. No platform fee taken — see README if that changes.
+      payment_intent_data:
+        creator.stripeChargesEnabled && creator.stripeAccountId
+          ? { transfer_data: { destination: creator.stripeAccountId } }
+          : undefined,
       metadata: {
         kind: "tip",
         fromUserId: user.id,

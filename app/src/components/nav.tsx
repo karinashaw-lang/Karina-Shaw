@@ -2,9 +2,11 @@ import Link from "next/link";
 
 import { getCurrentUser } from "@/lib/auth";
 import { logout } from "@/lib/actions/auth";
+import { getCurrentStreak } from "@/lib/streaks";
 
 export default async function Nav() {
   const user = await getCurrentUser();
+  const streak = user ? await getCurrentStreak(user.id) : 0;
 
   return (
     <header className="border-b border-black/10 dark:border-white/10">
@@ -17,6 +19,7 @@ export default async function Nav() {
           <Link href="/parties">Parties</Link>
           {user ? (
             <>
+              {streak > 0 && <span title={`${streak}-day streak`}>🔥 {streak}</span>}
               <Link href="/wall">Wall</Link>
               {user.creatorProfile ? (
                 <>
