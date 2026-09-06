@@ -22692,5 +22692,36 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "on_call_standby_time_compensability_info_sheet",
+    "title": "On-Call and Standby Time Compensability — Information Sheet",
+    "description": "An informational sheet on California's control-based \"hours worked\" definition (IWC Wage Order No. 4-2001) as applied to on-call and standby time before an employee is called in — the general and health-care-industry variants of the definition, the factors courts have generally examined, how the classification affects minimum wage and overtime, and how this differs from the corpus's existing Reporting Time Pay information sheet.",
+    "categories": [
+      "During employment"
+    ],
+    "clauseOrder": [
+      "oncall_intro",
+      "oncall_hours_worked_definition",
+      "oncall_health_care_variant",
+      "oncall_control_test_factors",
+      "oncall_wages_owed_consequence",
+      "oncall_distinguishing_reporting_time",
+      "oncall_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      }
+    ]
   }
 ]
