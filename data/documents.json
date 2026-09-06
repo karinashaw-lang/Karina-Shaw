@@ -23221,5 +23221,61 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "home_equity_sales_contract_act_info_sheet",
+    "title": "Home Equity Sales Contract Act — Information Sheet",
+    "description": "An informational sheet on California's Home Equity Sales Contract Act (Civil Code §§ 1695-1695.17): who qualifies as an \"equity purchaser,\" \"equity seller,\" and \"residence in foreclosure\" (requiring an actual recorded notice of default), required contract form and content, the seller's 5-business-day statutory cancellation right and required cancellation notice, prohibited purchaser practices during the cancellation period and the \"unconscionable advantage\" prohibition, and civil/criminal remedies including post-sale rescission. Distinguishes this private equity-purchaser transaction from the corpus's existing lender-side foreclosure-process documents.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "hesca_intro_scope",
+      "hesca_definitions",
+      "hesca_contract_form_and_required_terms",
+      "hesca_cancellation_right",
+      "hesca_notice_of_cancellation_form",
+      "hesca_prohibited_practices",
+      "hesca_remedies_and_penalties",
+      "hesca_closing_acknowledgment"
+    ],
+    "fields": [
+      {
+        "id": "propertyAddress",
+        "label": "Property address",
+        "placeholder": "123 Main St, Apt 4, Springfield",
+        "required": true
+      },
+      {
+        "id": "sellerName",
+        "label": "Seller's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "buyerName",
+        "label": "Buyer's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "noticeOfDefaultRecordingDate",
+        "label": "Notice of Default recording date (if recorded)",
+        "placeholder": "August 1, 2026",
+        "required": false
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
