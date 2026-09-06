@@ -29525,5 +29525,82 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "contracts_regarding_wills_info_sheet",
+    "title": "Contracts Regarding Wills — Information Sheet",
+    "description": "Information about California's rule for proving a contract to make a will or devise, not to revoke one, or to die intestate (Probate Code § 21700), including why signing a joint or mutual will does not by itself prove such a contract, and the one-year deadline for a claim to distribution based on a decedent's promise or agreement (Code of Civil Procedure § 366.3). This is distinct from the corpus's existing will-contest and grounds-to-contest coverage, which addresses invalidating a will for lack of capacity, fraud, or undue influence rather than enforcing a contractual promise about what a will would say.",
+    "categories": [
+      "Estate Planning"
+    ],
+    "clauseOrder": [
+      "contractwill_declaration",
+      "contractwill_exclusive_methods_of_proof",
+      "contractwill_documentary_proof_methods",
+      "contractwill_equitable_proof_methods",
+      "contractwill_joint_mutual_wills_no_presumption",
+      "contractwill_pre2001_contracts_saved",
+      "contractwill_one_year_limitations_period",
+      "contractwill_no_tolling_exceptions",
+      "contractwill_limitations_applicability_date",
+      "contractwill_evidence_summary",
+      "contractwill_certification"
+    ],
+    "fields": [
+      {
+        "id": "claimantName",
+        "label": "Claimant's name (person asserting the promise or agreement)",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "decedentName",
+        "label": "Decedent's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "relationshipToDecedent",
+        "label": "Claimant's relationship to decedent",
+        "placeholder": "Stepchild",
+        "required": true
+      },
+      {
+        "id": "dateOfDeath",
+        "label": "Date of death",
+        "placeholder": "June 1, 2026",
+        "required": true
+      },
+      {
+        "id": "agreementDate",
+        "label": "Date of the promise or agreement with the decedent (if known)",
+        "placeholder": "March 15, 2010",
+        "required": false
+      },
+      {
+        "id": "underlyingClaimDescription",
+        "label": "Description of the promised distribution (property or interest at issue)",
+        "placeholder": "The decedent's residence at 123 Oak Street, promised in exchange for the claimant providing years of unpaid in-home caregiving",
+        "required": true
+      },
+      {
+        "id": "countyOfFiling",
+        "label": "County of filing",
+        "placeholder": "Alameda County",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 6, 2026",
+        "required": true
+      },
+      {
+        "id": "cityOfExecution",
+        "label": "City of execution",
+        "placeholder": "Oakland",
+        "required": true
+      }
+    ]
   }
 ]
