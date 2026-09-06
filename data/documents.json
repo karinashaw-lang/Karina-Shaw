@@ -22416,5 +22416,60 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "supplemental_job_displacement_benefit_info_sheet",
+    "title": "Supplemental Job Displacement Benefit (Workers' Comp Voucher) — Information Sheet",
+    "description": "California's Supplemental Job Displacement Benefit under Labor Code section 4658.7: the permanent-partial-disability eligibility trigger, the timing of a qualifying return-to-work offer and the voucher offer, the voucher's dollar value and permitted uses, expiration, and settlement/liability limits.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "jobdisplacement_intro",
+      "jobdisplacement_eligibility_trigger",
+      "jobdisplacement_offer_and_voucher_timing",
+      "jobdisplacement_voucher_value_and_use",
+      "jobdisplacement_expiration",
+      "jobdisplacement_settlement_and_employer_liability",
+      "jobdisplacement_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "injuryDate",
+        "label": "Date of injury",
+        "placeholder": "October 1, 2026",
+        "required": true
+      },
+      {
+        "id": "injuryDescription",
+        "label": "Description of the injury",
+        "placeholder": "lower back strain from lifting",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
