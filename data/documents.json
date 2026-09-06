@@ -22244,5 +22244,60 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "medi_cal_estate_recovery_info_sheet",
+    "title": "Medi-Cal Estate Recovery — Information Sheet",
+    "description": "California's Medi-Cal Estate Recovery Program under Welfare and Institutions Code section 14009.5: the recovery triggers, the 2017 limitation to probate-estate assets, the surviving-spouse/child exemption, the hardship waiver and modest-homestead exception, and the living member's right to request an accounting.",
+    "categories": [
+      "Estate Planning"
+    ],
+    "clauseOrder": [
+      "medicalrecovery_intro",
+      "medicalrecovery_trigger",
+      "medicalrecovery_2017_probate_only_limitation",
+      "medicalrecovery_spousal_child_exemption",
+      "medicalrecovery_hardship_waiver",
+      "medicalrecovery_information_request_right",
+      "medicalrecovery_ack"
+    ],
+    "fields": [
+      {
+        "id": "decedentName",
+        "label": "Decedent's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "dateOfDeath",
+        "label": "Date of death",
+        "placeholder": "March 15, 2026",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      },
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "estimatedEstateValue",
+        "label": "Character and estimated value of estate property",
+        "placeholder": "Real property and financial accounts with an estimated total value of $650,000",
+        "required": true
+      }
+    ]
   }
 ]
