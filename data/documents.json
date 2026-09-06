@@ -25472,5 +25472,39 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "cobra_notice_penalties_info_sheet",
+    "title": "COBRA Notice Penalties — Information Sheet",
+    "description": "Explains the federal civil penalty and excise tax consequences when a COBRA election notice required by 29 U.S.C. §1166 is not provided, or is provided late or defectively: the ERISA §502(c)(1) civil penalty against the plan administrator, its regulatory inflation adjustment, the separate 26 U.S.C. §4980B excise tax against the employer or plan, its daily and annual caps, its 30-day correction safe harbor, and who is liable under each track.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "cobrapenalty_intro",
+      "cobrapenalty_erisa_admin_penalty",
+      "cobrapenalty_separate_violations",
+      "cobrapenalty_adjusted_amount",
+      "cobrapenalty_civil_action",
+      "cobrapenalty_excise_tax_employer",
+      "cobrapenalty_excise_tax_caps",
+      "cobrapenalty_excise_tax_overall_cap_and_correction",
+      "cobrapenalty_liable_party",
+      "cobrapenalty_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      }
+    ]
   }
 ]

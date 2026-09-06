@@ -69721,6 +69721,172 @@
       "title": "Signature and Acknowledgment Block — Beneficiary's Right to a Trust Accounting Information Sheet",
       "kind": "drafting",
       "body": "I declare under penalty of perjury under the laws of the State of California that the foregoing background information is true and correct to the best of my knowledge.\n\nExecuted on {{dateSigned}} at {{cityState}}.\n\nSignature of {{trusteeName}}, as trustee of {{trustName}}: ☐ _________________________\n\n[This information sheet is prepared as background regarding the accounting rights and duties described in California Probate Code §§ 16060-16064, 16069, 16460-16461, and 17200. It does not itself constitute a trust accounting, does not itself satisfy any trustee's duty to account for {{trustName}} or any other trust, and does not itself constitute or replace a court petition under § 17200. This is not a substitute for consulting a licensed attorney about a specific trust's accounting rights or obligations.]"
+    },
+    {
+      "id": "cobrapenalty_intro",
+      "title": "About This Information Sheet",
+      "kind": "drafting",
+      "body": "This information sheet describes the federal civil penalty and excise tax that can apply when a COBRA election notice required by 29 U.S.C. § 1166 is not provided, or is provided late or in a defective form. It is a companion to, and distinct from, this project's COBRA Election Notice document, which contains the notice and election form itself — this document instead explains what federal law provides when that notice obligation is not met. It addresses two separate federal enforcement tracks: a civil penalty against the plan administrator under the Employee Retirement Income Security Act (ERISA), and an excise tax against the employer or plan under the Internal Revenue Code. It does not address California's Cal-COBRA counterpart, which is the subject of a separate document in this project. It states the law generally and does not determine whether a penalty or tax applies to any particular notice sent, or not sent, by {{companyName}} to {{employeeName}}."
+    },
+    {
+      "id": "cobrapenalty_erisa_admin_penalty",
+      "title": "ERISA Civil Penalty Against the Plan Administrator",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Under the Employee Retirement Income Security Act, an administrator who fails to meet the COBRA notice requirements described in 29 U.S.C. § 1166(a)(1) or (a)(4) with respect to a participant or beneficiary may, in a court's discretion, be held personally liable to that participant or beneficiary in an amount of up to $100 a day from the date of the failure, and the court may also order such other relief as it considers proper. This is a distinct statutory track from the excise tax described elsewhere in this document, which runs against the employer or the plan rather than against the administrator personally.",
+      "gap": "This clause states the maximum penalty amount set by the bare statutory text; the adjusted-amount clause elsewhere in this document explains that the amount actually assessed under current regulations is $110, not the $100 stated here, and that even more recent inflation adjustments may not be reflected in that regulation. This clause also does not resolve who qualifies as the 'administrator' of a particular plan, whether a given notice failure falls within the scope of section 1166(a)(1) or (a)(4), or whether a court would exercise its discretion to impose the maximum amount, a lesser amount, or no penalty at all — that determination is fact-specific and requires litigation.",
+      "citations": [
+        {
+          "case": "29 U.S.C. § 1132",
+          "cite": "29 U.S.C. § 1132(c)(1)(A) (ERISA § 502(c)(1)(A))",
+          "url": "https://www.law.cornell.edu/uscode/text/29/1132",
+          "quote": "Any administrator (A) who fails to meet the requirements of paragraph (1) or (4) of section 1166"
+        },
+        {
+          "case": "29 U.S.C. § 1132",
+          "cite": "29 U.S.C. § 1132(c)(1) — the same paragraph as the citation above; not an independent statutory source from it",
+          "url": "https://www.law.cornell.edu/uscode/text/29/1132",
+          "quote": "may in the court’s discretion be personally liable to such participant or beneficiary in the amount of up to $100 a day from the date of such failure or refusal, and the court may in its discretion order such other relief as it deems proper."
+        }
+      ]
+    },
+    {
+      "id": "cobrapenalty_separate_violations",
+      "title": "Each Notice Failure to Each Person Is a Separate Violation",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "The same ERISA civil-penalty provision specifies how violations are counted. A notice failure described in the paragraph covering required-notice failures is treated as a separate violation with respect to each single participant, and a failure described in the paragraph covering refusal to furnish requested information is treated as a separate violation with respect to each single participant or beneficiary. Because the statutory daily penalty described elsewhere in this document runs from the date of the failure, a single defective or missing notice affecting more than one qualified beneficiary of the same qualifying event (for example, {{employeeName}} together with a covered spouse or dependent) can be counted, and penalized, separately as to each of them.",
+      "gap": "This clause quotes the same paragraph of 29 U.S.C. § 1132(c)(1) as the administrator-penalty clause elsewhere in this document — it is not an independent statutory source, only a different sentence of the same paragraph. It states how violations are counted; it does not itself establish that any particular notice was in fact untimely or defective, which is a factual question outside the scope of this information sheet.",
+      "citations": [
+        {
+          "case": "29 U.S.C. § 1132",
+          "cite": "29 U.S.C. § 1132(c)(1) — same paragraph as the administrator-penalty clause in this document; not an independent source",
+          "url": "https://www.law.cornell.edu/uscode/text/29/1132",
+          "quote": "For purposes of this paragraph, each violation described in subparagraph (A) with respect to any single participant, and each violation described in subparagraph (B) with respect to any single participant or beneficiary, shall be treated as a separate violation."
+        }
+      ]
+    },
+    {
+      "id": "cobrapenalty_adjusted_amount",
+      "title": "The Penalty Amount as Adjusted by Regulation",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "The $100-a-day maximum set out in the ERISA statute itself has been adjusted upward by regulation. Under a Department of Labor regulation implementing a statutory inflation-adjustment requirement, the maximum civil penalty under 29 U.S.C. § 1132(c)(1) was increased from $100 a day to $110 a day, effective for violations occurring after July 29, 1997.",
+      "gap": "This regulation fixes only the adjustment made effective in 1997; the underlying statutory framework requiring periodic inflation adjustment of civil penalties has since been amended (in 2015) to require more frequent republication of adjusted maximums, and this specific Code of Federal Regulations section does not itself state any dollar figure more recent than $110. The current inflation-adjusted maximum applicable to a specific violation date must be confirmed against the Department of Labor's most recent published adjustment, which is not reproduced in this citation.",
+      "citations": [
+        {
+          "case": "29 C.F.R. § 2575.502c-1",
+          "cite": "29 C.F.R. § 2575.502c-1",
+          "url": "https://www.law.cornell.edu/cfr/text/29/2575.502c-1",
+          "quote": "In accordance with the requirements of the 1990 Act, as amended, the maximum amount of the civil monetary penalty established by section 502(c)(1) of the Employee Retirement Income Security Act of 1974 , as amended ( ERISA ), is hereby increased from $100 a day to $110 a day. This adjusted penalty applies only to violations occurring after July 29, 1997."
+        }
+      ]
+    },
+    {
+      "id": "cobrapenalty_civil_action",
+      "title": "Enforcement Requires a Civil Action",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "The ERISA penalty described elsewhere in this document is not self-executing. The statute authorizes a civil action to be brought by a participant or beneficiary for the relief provided for under the penalty provision, among other kinds of relief a participant or beneficiary may seek under the same section of ERISA.",
+      "gap": "This clause quotes a different subsection (the civil-enforcement subsection, § 1132(a)) of the same 29 U.S.C. § 1132 discussed throughout this document — it is not an independent statutory source from the administrator-penalty and separate-violations clauses, only a different subsection of one section. It states that a civil action is the enforcement mechanism; it does not address venue, statute of limitations, or other procedural requirements for bringing such an action, which are outside the scope of this information sheet.",
+      "citations": [
+        {
+          "case": "29 U.S.C. § 1132",
+          "cite": "29 U.S.C. § 1132(a)(1)(A) — same section as the administrator-penalty and separate-violations clauses in this document; not an independent source",
+          "url": "https://www.law.cornell.edu/uscode/text/29/1132",
+          "quote": "A civil action may be brought— (1) by a participant or beneficiary— (A) for the relief provided for in subsection (c) of this section, or (B) to recover benefits due to him under the terms of his plan , to enforce his rights under the terms of the plan , or to clarify his rights to future benefits under the terms of the plan ;"
+        }
+      ]
+    },
+    {
+      "id": "cobrapenalty_excise_tax_employer",
+      "title": "A Separate Federal Excise Tax on the Employer or Plan",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Apart from the ERISA civil penalty described elsewhere in this document, the Internal Revenue Code separately imposes an excise tax on a group health plan's failure to meet COBRA's continuation-coverage requirements. The tax is imposed on the failure of a group health plan to meet those requirements with respect to any qualified beneficiary, and the amount of the tax is $100 for each day in the 'noncompliance period' with respect to that failure.",
+      "gap": "This clause states only the general excise-tax rule and its base per-day amount; it does not by itself state who is liable to pay the tax (addressed in a separate clause in this document), the daily caps that can reduce the amount owed, or the correction and reasonable-cause exceptions that can eliminate the tax entirely (both addressed in other clauses in this document).",
+      "citations": [
+        {
+          "case": "26 U.S.C. § 4980B",
+          "cite": "26 U.S.C. § 4980B(a)",
+          "url": "https://www.law.cornell.edu/uscode/text/26/4980B",
+          "quote": "(a) General rule There is hereby imposed a tax on the failure of a group health plan to meet the requirements of subsection (f) with respect to any qualified beneficiary ."
+        },
+        {
+          "case": "26 U.S.C. § 4980B",
+          "cite": "26 U.S.C. § 4980B(b)(1) — same section as § 4980B(a) cited above; not an independent source from it",
+          "url": "https://www.law.cornell.edu/uscode/text/26/4980B",
+          "quote": "(1) In general The amount of the tax imposed by subsection (a) on any failure with respect to a qualified beneficiary shall be $100 for each day in the noncompliance period with respect to such failure."
+        }
+      ]
+    },
+    {
+      "id": "cobrapenalty_excise_tax_caps",
+      "title": "Daily Caps on the Excise Tax",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "The Internal Revenue Code caps the excise tax described elsewhere in this document. Except in the case of more than one qualified beneficiary, the maximum tax imposed for failures on any single day with respect to one qualified beneficiary is $100; if more than one qualified beneficiary is affected by the same qualifying event, the maximum tax imposed for failures on any single day with respect to all of those qualified beneficiaries together is $200.",
+      "gap": "This clause quotes the same Internal Revenue Code section, § 4980B, as the base excise-tax clause elsewhere in this document — it is not an independent statutory source, only a different subsection of the same section. It states only the per-day caps; it does not state the separate overall (taxable-year) cap described in another clause in this document, which can further limit the total tax owed for unintentional failures.",
+      "citations": [
+        {
+          "case": "26 U.S.C. § 4980B",
+          "cite": "26 U.S.C. § 4980B(c)(3) — same section as the other Internal Revenue Code clauses in this document; not an independent source",
+          "url": "https://www.law.cornell.edu/uscode/text/26/4980B",
+          "quote": "(3) $100 limit on amount of tax for failures on any day with respect to a qualified beneficiary (A) In general Except as provided in subparagraph (B), the maximum amount of tax imposed by subsection (a) on failures on any day during the noncompliance period with respect to a qualified beneficiary shall be $100. (B) Special rule where more than 1 qualified beneficiary If there is more than 1 qualified beneficiary with respect to the same qualifying event, the maximum amount of tax imposed by subsection (a) on all failures on any day during the noncompliance period with respect to such qualified beneficiaries shall be $200."
+        }
+      ]
+    },
+    {
+      "id": "cobrapenalty_excise_tax_overall_cap_and_correction",
+      "title": "An Overall Annual Cap and a 30-Day Correction Safe Harbor",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Two further limits can reduce or eliminate the excise tax described elsewhere in this document. First, no tax is imposed on a failure that was due to reasonable cause and not to willful neglect if the failure is corrected during a 30-day period beginning on the date any liable person first knew, or exercising reasonable diligence would have known, that the failure existed. Second, for failures due to reasonable cause and not willful neglect that are not corrected under that safe harbor, the Internal Revenue Code separately caps the total excise tax imposed on a single-employer plan's failures during the employer's taxable year at the lesser of 10 percent of the amount the employer paid for group health plans during the preceding taxable year, or $500,000.",
+      "gap": "This clause quotes the same Internal Revenue Code section, § 4980B, as the other excise-tax clauses in this document — it is not an independent statutory source. It does not address the separate, higher minimum-tax rule that applies once a notice of examination of income tax liability has been sent to the employer, nor the multiemployer-plan version of the overall cap, both of which are outside the scope of this clause.",
+      "citations": [
+        {
+          "case": "26 U.S.C. § 4980B",
+          "cite": "26 U.S.C. § 4980B(c)(2)",
+          "url": "https://www.law.cornell.edu/uscode/text/26/4980B",
+          "quote": "(2) Tax not to apply to failures corrected within 30 days No tax shall be imposed by subsection (a) on any failure if— (A) such failure was due to reasonable cause and not to willful neglect, and (B) such failure is corrected during the 30-day period beginning on the 1st date any of the persons referred to in subsection (e) knew, or exercising reasonable diligence would have known, that such failure existed."
+        },
+        {
+          "case": "26 U.S.C. § 4980B",
+          "cite": "26 U.S.C. § 4980B(c)(4)(A) — same section as the other Internal Revenue Code clauses in this document; not an independent source",
+          "url": "https://www.law.cornell.edu/uscode/text/26/4980B",
+          "quote": "(4) Overall limitation for unintentional failures In the case of failures which are due to reasonable cause and not to willful neglect— (A) Single employer plans (i) In general In the case of failures with respect to plans other than multiemployer plans, the tax imposed by subsection (a) for failures during the taxable year of the employer shall not exceed the amount equal to the lesser of— (I) 10 percent of the aggregate amount paid or incurred by the employer (or predecessor employer) during the preceding taxable year for group health plans , or (II) $500,000."
+        }
+      ]
+    },
+    {
+      "id": "cobrapenalty_liable_party",
+      "title": "Who Owes the Excise Tax, as Distinct from Who Owes the ERISA Penalty",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "The excise tax described elsewhere in this document is owed by a different party than the ERISA civil penalty described earlier in this document. Except as otherwise specifically provided, the person liable for the excise tax is, in the case of a plan other than a multiemployer plan, the employer, and in the case of a multiemployer plan, the plan itself. The ERISA civil penalty, by contrast, runs against the plan's administrator personally, not necessarily against the employer. Depending on how {{companyName}}'s group health plan is structured and administered, the employer and the plan administrator may or may not be the same party.",
+      "gap": "This clause quotes only the general liability rule of 26 U.S.C. § 4980B(e)(1)(A) — the same section as the other excise-tax clauses in this document, not an independent source. It does not reproduce the statute's separate rule making certain third-party plan administrators or other responsible persons also liable for the excise tax in specified circumstances, which is a narrower rule not addressed here.",
+      "citations": [
+        {
+          "case": "26 U.S.C. § 4980B",
+          "cite": "26 U.S.C. § 4980B(e)(1)(A) — same section as the other Internal Revenue Code clauses in this document; not an independent source",
+          "url": "https://www.law.cornell.edu/uscode/text/26/4980B",
+          "quote": "(e) Liability for tax (1) In general Except as otherwise provided in this subsection, the following shall be liable for the tax imposed by subsection (a) on a failure: (A) (i) In the case of a plan other than a multiemployer plan, the employer. (ii) In the case of a multiemployer plan, the plan."
+        }
+      ]
+    },
+    {
+      "id": "cobrapenalty_ack",
+      "title": "Acknowledgment of Receipt",
+      "kind": "drafting",
+      "body": "{{employeeName}} acknowledges having received this information sheet describing the federal civil penalty and excise tax consequences that can apply to a late or defective COBRA notice.\n\nEmployee/Qualified beneficiary: {{employeeName}}\nSignature: _______________________________________________\nDate: _______________\n\nOn behalf of {{companyName}}:\nSignature: _______________________________________________\nDate: _______________"
     }
   ]
 }
