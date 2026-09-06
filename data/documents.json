@@ -24116,5 +24116,83 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "marriage_of_a_minor_info_sheet",
+    "title": "Marriage of a Minor — Information Sheet",
+    "description": "Explains California's court-order and consent requirements before a person under 18 may obtain a marriage license: the Family Court Services interview and report, the 30-day waiting period and its exceptions, discretionary premarital counseling, required disclosures to the minor, and licensing/solemnization (Fam. Code §§ 301-306, 420, 423).",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "minormarriage_declaration",
+      "minormarriage_adult_baseline",
+      "minormarriage_court_order_requirement",
+      "minormarriage_no_capable_parent",
+      "minormarriage_interview_and_report_process",
+      "minormarriage_thirty_day_wait",
+      "minormarriage_premarital_counseling",
+      "minormarriage_order_documentation_requirements",
+      "minormarriage_required_disclosures_to_minor",
+      "minormarriage_statutory_exceptions",
+      "minormarriage_licensing_solemnization_return",
+      "minormarriage_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "party1Name",
+        "label": "First party's name",
+        "placeholder": "e.g., Jane Doe",
+        "required": true
+      },
+      {
+        "id": "party2Name",
+        "label": "Second party's name",
+        "placeholder": "e.g., John Smith",
+        "required": true
+      },
+      {
+        "id": "petitionerDOB",
+        "label": "Minor's date of birth",
+        "placeholder": "e.g., January 1, 2009",
+        "required": true
+      },
+      {
+        "id": "marriageDate",
+        "label": "Anticipated marriage date",
+        "placeholder": "e.g., June 1, 2026",
+        "required": false
+      },
+      {
+        "id": "countyOfFiling",
+        "label": "County",
+        "placeholder": "e.g., Los Angeles County",
+        "required": true
+      },
+      {
+        "id": "courtName",
+        "label": "Court name",
+        "placeholder": "e.g., Superior Court of California, County of Los Angeles",
+        "required": false
+      },
+      {
+        "id": "courtCaseNumber",
+        "label": "Court case number",
+        "placeholder": "e.g., 24FL012345",
+        "required": false
+      },
+      {
+        "id": "parentName",
+        "label": "Consenting parent or guardian's name",
+        "placeholder": "e.g., Jane Doe",
+        "required": false
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "e.g., January 1, 2026",
+        "required": true
+      }
+    ]
   }
 ]
