@@ -27511,5 +27511,51 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "h1b_bona_fide_termination_info_sheet",
+    "title": "H-1B Bona Fide Termination — Information Sheet",
+    "description": "An informational sheet on federal requirements that apply when H-1B employment ends: the Department of Labor's rule that the required-wage obligation continues absent a bona fide termination, the Department of Homeland Security's requirement that the employer immediately notify USCIS of the change, automatic revocation of the petition upon that notice, the employer's liability for the beneficiary's reasonable return-transportation costs upon dismissal (and its inapplicability to a voluntary resignation), the beneficiary's avenue to raise noncompliance with USCIS, and the separate Department of Labor conditions and consequences for withdrawing the underlying labor condition application.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "h1bterm_intro",
+      "h1bterm_bona_fide_termination_standard",
+      "h1bterm_dhs_notification_duty",
+      "h1bterm_automatic_revocation",
+      "h1bterm_transportation_liability",
+      "h1bterm_voluntary_resignation_distinction",
+      "h1bterm_transportation_complaint_process",
+      "h1bterm_lca_withdrawal_conditions",
+      "h1bterm_wage_obligation_survives_withdrawal",
+      "h1bterm_closing"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "jobTitle",
+        "label": "Job title",
+        "placeholder": "Software Engineer",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 6, 2026",
+        "required": true
+      }
+    ]
   }
 ]
