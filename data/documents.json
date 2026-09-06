@@ -23726,5 +23726,98 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "self_dealing_interested_director_officer_transactions_info_sheet",
+    "title": "Self-Dealing and Interested Director/Officer Transactions — Information Sheet",
+    "description": "An informational sheet on California's statutory safe-harbor procedures for a contract or transaction between a corporation and its own director or officer: the general-corporation safe harbor (Corp. Code § 310(a)) and its separate common-directorship harbor (§ 310(b)) and quorum rule (§ 310(c)), the closely parallel nonprofit mutual benefit corporation harbor (§ 7233), and nonprofit public benefit corporations' materially different regulated \"self-dealing transaction\" framework (§ 5233) with its own standing, conditions, and limitations rules. Distinguishes this interested-transaction topic from the corpus's existing Duty of Care/Business Judgment Rule and Indemnification documents.",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "selfdealing_intro",
+      "selfdealing_gp_safe_harbor_310a",
+      "selfdealing_common_director_310b",
+      "selfdealing_quorum_310c",
+      "selfdealing_mutual_benefit_7233",
+      "selfdealing_public_benefit_5233_definition",
+      "selfdealing_public_benefit_5233_conditions",
+      "selfdealing_practice_note",
+      "selfdealing_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "directorName",
+        "label": "Director's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "officerName",
+        "label": "Officer's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "officerTitle",
+        "label": "Officer's title",
+        "placeholder": "President",
+        "required": true
+      },
+      {
+        "id": "transactionDescription",
+        "label": "Transaction or conduct at issue, if applicable",
+        "placeholder": "The board's approval of a related-party asset sale below market value",
+        "required": false
+      },
+      {
+        "id": "boardApprovalDate",
+        "label": "Date of board approval",
+        "placeholder": "September 5, 2026",
+        "required": true
+      },
+      {
+        "id": "shareholderApprovalDate",
+        "label": "Date of shareholder approval (if required)",
+        "placeholder": "September 12, 2026",
+        "required": false
+      },
+      {
+        "id": "votesInFavor",
+        "label": "Votes in favor",
+        "placeholder": "18",
+        "required": true
+      },
+      {
+        "id": "votesOpposed",
+        "label": "Votes opposed",
+        "placeholder": "6",
+        "required": true
+      },
+      {
+        "id": "authorizedSignerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "authorizedSignerTitle",
+        "label": "Authorized signer's title",
+        "placeholder": "Managing Member",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      }
+    ]
   }
 ]

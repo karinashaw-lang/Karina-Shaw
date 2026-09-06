@@ -64878,6 +64878,156 @@
       "title": "Acknowledgment",
       "kind": "drafting",
       "body": "{{employeeName}} acknowledges having received and reviewed this information sheet regarding the federal Trade Adjustment Assistance program, in connection with {{employeeName}}'s employment with {{companyName}} that ended on {{separationDate}}. This document is informational only. It does not itself constitute a TAA petition, application, or certification, and {{employeeName}} understands that any such filing must be made directly with the U.S. Department of Labor and the applicable state agency.\n\nSignature: _______________________ Date: _______________"
+    },
+    {
+      "id": "selfdealing_intro",
+      "title": "Self-Dealing and Interested Director/Officer Transactions",
+      "kind": "drafting",
+      "body": "This information sheet addresses a specific, narrow question under California corporations law: whether a contract or transaction between {{companyName}} and one of its own directors or officers — including {{directorName}} or {{officerName}} — or between {{companyName}} and another entity in which a director has a material financial interest, can be voided by the corporation, a shareholder, or a court solely because that director was on both sides of it. This is different from two other topics addressed elsewhere in this corpus. A director's or officer's general Duty of Care and the business judgment rule concern whether a decision-maker exercised reasonable care and informed judgment in a decision that does not necessarily involve a personal financial conflict. Indemnification concerns whether the corporation may or must reimburse a director or officer for expenses or liability incurred by reason of having served in that role, after the fact of a claim. This document instead addresses the specific statutory procedure — described in this document's companion clauses — that a corporation, its board, and an interested director can follow, at the time a self-dealing transaction is authorized, so that the transaction is not automatically void or voidable merely because of the director's or officer's personal interest in it. This document states what the statutes require; it does not tell {{companyName}} or {{directorName}} what to do about any specific transaction."
+    },
+    {
+      "id": "selfdealing_gp_safe_harbor_310a",
+      "title": "The General-Corporation Safe Harbor for a Director's Own Interested Transaction — Corporations Code § 310(a)",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "For a California general (for-profit) corporation such as {{companyName}}, Corporations Code § 310(a) provides that a contract or transaction between the corporation and one or more of its own directors, or between the corporation and another entity in which a director has a material financial interest, is not automatically \"void or voidable\" merely because the interested director was a party, or was present at the board meeting that authorized it. Instead, § 310(a) sets out three independent ways the transaction can be validated: (1) full disclosure of the material facts and the director's interest to the shareholders, followed by shareholder approval in good faith, with the interested director's own shares not entitled to vote on it; (2) full disclosure to the board or a committee, followed by board or committee approval in good faith by a vote sufficient without counting the interested director's vote, where the transaction is also just and reasonable to the corporation at the time it was authorized; or (3), if the transaction was not approved either way, the person asserting the transaction's validity carries the burden of proving it was just and reasonable to the corporation at the time it was authorized. Section 310(a) also states that \"a mere common directorship does not constitute a material financial interest\" for this purpose, and that a director is not \"interested\" merely because a board resolution fixes another director's compensation as a director, officer, or employee.",
+      "gap": "This is the actual, current statutory text of Corporations Code § 310(a), fetched directly from the California Legislative Information website and verified byte-identical across two separate fetches with different User-Agent strings — not a claim about which state's law governs a specific corporation or transaction, and not a claim that meeting one of these three pathways is the only way a court could ever uphold an interested-director transaction. A CourtListener case-law search to locate judicial decisions construing how courts actually apply § 310(a)'s \"just and reasonable\" standard, or how the three numbered pathways interact with each other, returned an HTTP 429 rate-limit error (125/day quota already exhausted) before any search could run; this clause and its companions therefore rest on the statutory text alone, with no case law verified for this document. This clause quotes only isolated phrases from a longer subdivision; the full subdivision (a) text, including its numbered paragraphs in full and its two additional interpretive sentences, is not reproduced verbatim here.",
+      "citations": [
+        {
+          "case": "Cal. Corp. Code § 310(a) (California Legislative Information text)",
+          "cite": "Corp. C. § 310(a)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=310.",
+          "quote": "No contract or other transaction between a corporation and one or more of its directors, or between a corporation and any corporation, firm or association in which one or more of its directors has a material financial interest, is either void or voidable because such director or directors or such other corporation, firm or association are parties or because such director or directors are present at the meeting of the board or a committee thereof which authorizes, approves or ratifies the contract or transaction"
+        },
+        {
+          "case": "Cal. Corp. Code § 310(a) (California Legislative Information text)",
+          "cite": "Corp. C. § 310(a)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=310.",
+          "quote": "A mere common directorship does not constitute a material financial interest within the meaning of this subdivision."
+        }
+      ]
+    },
+    {
+      "id": "selfdealing_common_director_310b",
+      "title": "The Separate Safe Harbor for Interlocking-Director Transactions Between Two Corporations — Corporations Code § 310(b)",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Corporations Code § 310(b) addresses a related but distinct scenario from subdivision (a): a contract or transaction between {{companyName}} and another corporation or association where one or more people (potentially including {{directorName}}) serve as a director of both, but without any director holding a \"material financial interest\" of the kind subdivision (a) addresses. For that common-directorship scenario, § 310(b) provides that the transaction is not void or voidable because the common director was present at the authorizing meeting, if either: (1) the material facts of the transaction and the common directorship are disclosed to the board or committee, which approves the transaction in good faith by a vote sufficient without counting the common director's vote, or the transaction is approved by the shareholders in good faith; or (2), if not approved either way, the transaction is just and reasonable to the corporation at the time it was authorized. Section 310(b) expressly states that it \"does not apply to contracts or transactions covered by subdivision (a)\" — meaning the two subdivisions are mutually exclusive safe harbors for two different fact patterns.",
+      "gap": "This is the actual, current statutory text of Corporations Code § 310(b), fetched directly from the California Legislative Information website and verified byte-identical across two separate fetches with different User-Agent strings — not a claim about which state's law governs a specific transaction. No CourtListener case-law search could be completed for this clause; the daily quota (125/day) was already exhausted when checked, so this clause rests on the statutory text alone. This corrects a simplification in the research brief that prompted this document: the safe-harbor conditions for a common-directorship transaction under subdivision (b) are not identical to the material-financial-interest safe harbor in subdivision (a) — subdivision (b) does not include a shareholder-vote-exclusion-of-interested-shares mechanism and instead uses a simpler two-path structure, and the two subdivisions are, by the statute's own terms, mutually exclusive.",
+      "citations": [
+        {
+          "case": "Cal. Corp. Code § 310(b) (California Legislative Information text)",
+          "cite": "Corp. C. § 310(b)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=310.",
+          "quote": "No contract or other transaction between a corporation and any corporation or association of which one or more of its directors are directors is either void or voidable because such director or directors are present at the meeting of the board or a committee thereof which authorizes, approves or ratifies the contract or transaction"
+        },
+        {
+          "case": "Cal. Corp. Code § 310(b) (California Legislative Information text)",
+          "cite": "Corp. C. § 310(b)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=310.",
+          "quote": "This subdivision does not apply to contracts or transactions covered by subdivision (a)."
+        }
+      ]
+    },
+    {
+      "id": "selfdealing_quorum_310c",
+      "title": "Interested and Common Directors May Still Be Counted Toward a Quorum — Corporations Code § 310(c)",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Corporations Code § 310(c) provides a separate, narrow rule that applies regardless of which safe harbor in subdivisions (a) or (b) a transaction relies on: \"Interested or common directors may be counted in determining the presence of a quorum at a meeting of the board or a committee thereof which authorizes, approves or ratifies a contract or transaction.\" This means that {{directorName}}'s presence as an interested or common director does not, by itself, prevent the board or committee meeting considering the transaction from having a valid quorum — although, as described in this document's companion clauses, that same director's vote is not counted toward the separate vote-sufficiency requirement in subdivisions (a)(2) and (b)(1).",
+      "gap": "This is the actual, current statutory text of Corporations Code § 310(c), fetched directly from the California Legislative Information website and verified byte-identical across two separate fetches with different User-Agent strings. No CourtListener case-law search could be completed for this clause; the daily quota (125/day) was already exhausted when checked. This clause addresses only the quorum question; it does not restate the separate vote-counting requirement described in this document's companion clauses on subdivisions (a) and (b), and a reader should not assume that being counted for quorum purposes means the interested director's vote is also counted toward approval.",
+      "citations": [
+        {
+          "case": "Cal. Corp. Code § 310(c) (California Legislative Information text)",
+          "cite": "Corp. C. § 310(c)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=310.",
+          "quote": "Interested or common directors may be counted in determining the presence of a quorum at a meeting of the board or a committee thereof which authorizes, approves or ratifies a contract or transaction."
+        }
+      ]
+    },
+    {
+      "id": "selfdealing_mutual_benefit_7233",
+      "title": "The Parallel Safe Harbor for Nonprofit Mutual Benefit Corporations — Corporations Code § 7233",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "For a California nonprofit mutual benefit corporation, Corporations Code § 7233 closely tracks the general-corporation structure of § 310 described in this document's companion clauses, adapted for a membership organization. Section 7233(a) provides that a contract or transaction between the corporation and one or more of its directors, or an entity in which a director has a material financial interest, is not void or voidable solely because the director was a party or present at the authorizing meeting, if: (1) the material facts and the director's interest are disclosed to the members, and the transaction is approved by the members in good faith, with any membership owned by the interested director not entitled to vote on it; (2) the material facts and interest are disclosed to the board or committee, which approves the transaction in good faith by a vote sufficient without counting the interested director's vote, with the transaction also just and reasonable to the corporation at the time it was authorized; or (3), absent either approval, the person asserting validity bears the burden of proving the transaction was just and reasonable at the time it was authorized. Section 7233(b) provides a parallel, separate safe harbor for common-directorship transactions between the corporation and another entity, materially identical in structure to § 310(b).",
+      "gap": "This is the actual, current statutory text of Corporations Code § 7233, fetched directly from the California Legislative Information website and verified byte-identical across two separate fetches with different User-Agent strings. No CourtListener case-law search could be completed for this clause; the daily quota (125/day) was already exhausted when checked. This confirms one assumption in the research brief that prompted this document: § 7233 is, in fact, a close structural parallel to § 310, adapted so that member approval (and member voting rights on the interested director's own membership) substitutes for shareholder approval. This document's companion clause on Corporations Code § 5233 discloses that the other statute named in the same research brief — the nonprofit public benefit corporation provision — is not a comparably close parallel to § 310, and should not be assumed to work the same way.",
+      "citations": [
+        {
+          "case": "Cal. Corp. Code § 7233(a) (California Legislative Information text)",
+          "cite": "Corp. C. § 7233(a)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=7233.",
+          "quote": "The material facts as to the transaction and as to such director’s interest are fully disclosed or known to the members and such contract or transaction is approved by the members (Section 5034) in good faith, with any membership owned by any interested director not being entitled to vote thereon"
+        },
+        {
+          "case": "Cal. Corp. Code § 7233(b) (California Legislative Information text)",
+          "cite": "Corp. C. § 7233(b)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=7233.",
+          "quote": "This subdivision does not apply to contracts or transactions covered by subdivision (a)."
+        }
+      ]
+    },
+    {
+      "id": "selfdealing_public_benefit_5233_definition",
+      "title": "A Different Structure for Nonprofit Public Benefit Corporations — Corporations Code § 5233 Defines and Regulates \"Self-Dealing Transactions\" Rather Than Simply Validating Them",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Corporations Code § 5233, which applies to a California nonprofit public benefit corporation, is not organized the same way as § 310 or § 7233. Rather than stating that an interested-director transaction is \"not void or voidable\" if certain conditions are met, § 5233(a) first defines a \"self-dealing transaction\" as \"a transaction to which the corporation is a party and in which one or more of its directors has a material financial interest, and which does not meet the requirements of paragraph (1), (2), or (3) of subdivision (d)\" — making that director an \"interested director\" for purposes of the section. Section 5233(c) then identifies who may bring an action in superior court over such a transaction: the Attorney General; the corporation itself, or a member suing derivatively on the corporation's behalf; a director of the corporation; an officer of the corporation; or a person granted relator status by the Attorney General.",
+      "gap": "This is the actual, current statutory text of Corporations Code § 5233, fetched directly from the California Legislative Information website and verified byte-identical across two separate fetches with different User-Agent strings. No CourtListener case-law search could be completed for this clause; the daily quota (125/day) was already exhausted when checked. This corrects a framing assumption in the research brief that prompted this document: the brief described § 5233 as a likely parallel to § 310's \"not void or voidable if disclosed and approved\" safe-harbor formula, but § 5233's actual text is built around a different mechanism — defining a regulated category of transaction and then specifying, in the companion clause on subdivision (d), the facts that must be established before a court may grant a remedy in litigation over it — with Attorney General oversight and standing built directly into the statute in a way § 310 and § 7233 do not have. This clause does not restate § 5233(b)'s three carve-outs (director compensation-fixing, certain charitable-program transactions, and small transactions below a dollar/percentage threshold of which the interested director had no actual knowledge), which are addressed in this document's companion clause.",
+      "citations": [
+        {
+          "case": "Cal. Corp. Code § 5233(a) (California Legislative Information text)",
+          "cite": "Corp. C. § 5233(a)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=5233.",
+          "quote": "a self-dealing transaction means a transaction to which the corporation is a party and in which one or more of its directors has a material financial interest and which does not meet the requirements of paragraph (1), (2), or (3) of subdivision (d)"
+        },
+        {
+          "case": "Cal. Corp. Code § 5233(c) (California Legislative Information text)",
+          "cite": "Corp. C. § 5233(c)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=5233.",
+          "quote": "The Attorney General or, if the Attorney General is joined as an indispensable party, any of the following may bring an action in the superior court of the proper county for the remedies specified in subdivision (h):"
+        }
+      ]
+    },
+    {
+      "id": "selfdealing_public_benefit_5233_conditions",
+      "title": "When a Court May Not Grant a Remedy for a Public Benefit Corporation's Self-Dealing Transaction — Corporations Code § 5233(d)",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Corporations Code § 5233(d) identifies the conditions under which the remedies described in subdivision (h) — such as an accounting for profits, or return of property or its value, described in this document's companion clause on subdivision (h) — \"shall not be granted\" against a director of a nonprofit public benefit corporation. This includes prior Attorney General or court approval of the transaction, or a showing of several facts together: that the corporation entered into the transaction for its own benefit; that the transaction was fair and reasonable to the corporation at the time it was entered into; that, before consummating the transaction, \"the board authorized or approved the transaction in good faith by a vote of a majority of the directors then in office without counting the vote of the interested director or directors, and with knowledge of the material facts concerning the transaction and the director's interest in the transaction\"; and that the board determined, or the corporation in fact could not have obtained, a more advantageous arrangement with reasonable effort under the circumstances. Section 5233(d)(3) separately allows a committee or authorized person's approval, followed by board ratification at its next meeting, where board pre-approval was not reasonably practicable. Section 5233(e) further requires that an action under subdivision (c) generally be filed within two years after written notice of the transaction is filed with the Attorney General, or within three years if no such notice is filed — except the Attorney General itself, which has ten years to sue.",
+      "gap": "This is the actual, current statutory text of Corporations Code § 5233(d) and (e), fetched directly from the California Legislative Information website and verified byte-identical across two separate fetches with different User-Agent strings. No CourtListener case-law search could be completed for this clause; the daily quota (125/day) was already exhausted when checked, so it is not verified here how courts have actually applied the \"more advantageous arrangement\" or \"fair and reasonable\" standards in litigated cases. This clause does not restate § 5233(b)'s three carve-outs from the self-dealing definition altogether (director compensation-fixing, certain charitable-program benefits to directors or their families, and small transactions below a dollar/percentage threshold of which the interested director had no actual knowledge) or § 5233(g)'s quorum-counting rule (materially identical to § 310(c)), which are not reproduced in this document's clause set as separately cited authority.",
+      "citations": [
+        {
+          "case": "Cal. Corp. Code § 5233(d) (California Legislative Information text)",
+          "cite": "Corp. C. § 5233(d)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=5233.",
+          "quote": "the board authorized or approved the transaction in good faith by a vote of a majority of the directors then in office without counting the vote of the interested director or directors, and with knowledge of the material facts concerning the transaction and the director’s interest in the transaction"
+        },
+        {
+          "case": "Cal. Corp. Code § 5233(e) (California Legislative Information text)",
+          "cite": "Corp. C. § 5233(e)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=5233.",
+          "quote": "an action under subdivision (c) must be filed within two years after written notice setting forth the material facts of the transaction and the director’s interest in the transaction is filed with the Attorney General"
+        }
+      ]
+    },
+    {
+      "id": "selfdealing_practice_note",
+      "title": "What This Information Sheet Records",
+      "kind": "drafting",
+      "body": "This information sheet is intended to accompany, not replace, {{companyName}}'s own corporate records of a specific transaction — such as board or committee minutes, a written disclosure of the material facts and the interested director's or officer's relationship to the transaction, and a record of the vote taken. Transaction under review: {{transactionDescription}}. Interested director or officer: {{directorName}} / {{officerName}} ({{officerTitle}}). Date of board or committee approval, if applicable: {{boardApprovalDate}}. Date of shareholder or member approval, if applicable: {{shareholderApprovalDate}}. Votes in favor: {{votesInFavor}}. Votes opposed: {{votesOpposed}}. This sheet does not certify that any particular transaction satisfies Corporations Code § 310, § 5233, or § 7233 — only a court, or the process each statute itself describes, can determine that for a specific transaction."
+    },
+    {
+      "id": "selfdealing_signature_block",
+      "title": "Preparer Acknowledgment",
+      "kind": "drafting",
+      "body": "Prepared for {{companyName}} regarding the transaction described in this information sheet. Prepared by: {{authorizedSignerName}}, {{authorizedSignerTitle}}. Date: {{dateSigned}}. This information sheet states facts about California's statutory safe-harbor procedures for self-dealing and interested-director or -officer transactions; it does not recommend or advise how {{companyName}} or {{directorName}} should structure, approve, or respond to any specific transaction."
     }
   ]
 }
