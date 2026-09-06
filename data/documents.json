@@ -26612,5 +26612,46 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "hazard_communication_standard_info_sheet",
+    "title": "Hazard Communication Standard — Information Sheet",
+    "description": "Explains California's Cal/OSHA Hazard Communication Standard (8 Cal. Code Regs. § 5194) — the written hazard communication program requirement, multi-employer-worksite notification duties, container labeling, the duty to obtain and maintain safety data sheets and keep them accessible, employee information and training requirements, the limited trade-secret exception for withholding a specific chemical identity, employee and representative access to the program and SDSs, and selected exemptions from the standard's coverage.",
+    "categories": [
+      "During employment"
+    ],
+    "clauseOrder": [
+      "hazcom_declaration_and_scope",
+      "hazcom_scope_and_application",
+      "hazcom_written_program_requirement",
+      "hazcom_multi_employer_worksite",
+      "hazcom_container_labeling",
+      "hazcom_safety_data_sheets_availability",
+      "hazcom_employee_training_requirements",
+      "hazcom_trade_secret_disclosure",
+      "hazcom_employee_and_representative_access",
+      "hazcom_exemptions_and_scope_limits",
+      "hazcom_acknowledgment_signature"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme Innovations LLC",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "programAdministratorName",
+        "label": "Person responsible for the Hazard Communication Program",
+        "placeholder": "Pat Morgan",
+        "required": true
+      }
+    ]
   }
 ]
