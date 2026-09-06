@@ -25027,5 +25027,58 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "patent_term_adjustment_info_sheet",
+    "title": "Patent Term Adjustment — Information Sheet",
+    "description": "Explains patent term adjustment (PTA) under 35 U.S.C. § 154(b): the three statutory delay guarantees (prompt PTO checkpoints, 3-year pendency, derivation/secrecy-order/appeal delay), the overlap and terminal-disclaimer limitations, the reduction for the applicant's own lack of reasonable efforts, the Director's determination and judicial-review procedure, and how PTA differs from design patent term and § 156 regulatory-review patent term extension.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "ptadj_declaration",
+      "ptadj_statutory_basis_and_scope",
+      "ptadj_guarantee_a_prompt_response",
+      "ptadj_guarantee_b_three_year_pendency",
+      "ptadj_guarantee_c_proceedings_orders_appeals",
+      "ptadj_overlap_limitation",
+      "ptadj_disclaimed_term_limitation",
+      "ptadj_applicant_delay_reduction",
+      "ptadj_determination_and_appeal_procedure",
+      "ptadj_distinct_from_design_patent_term_and_pte",
+      "ptadj_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "patentDescription",
+        "label": "Description of the patent or application",
+        "placeholder": "e.g., U.S. Patent Application No. 17/123,456, \"Widget Fastener\"",
+        "required": true
+      },
+      {
+        "id": "patentHolderName",
+        "label": "Patent holder/applicant's name",
+        "placeholder": "e.g., Jane Doe or Acme Inc.",
+        "required": true
+      },
+      {
+        "id": "filingDate",
+        "label": "Application filing date",
+        "placeholder": "e.g., January 1, 2020",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "e.g., January 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, State",
+        "placeholder": "e.g., San Jose, California",
+        "required": true
+      }
+    ]
   }
 ]

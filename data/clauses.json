@@ -68314,6 +68314,225 @@
       "title": "Acknowledgment",
       "kind": "drafting",
       "body": "Please sign below to indicate that you have received and reviewed this information sheet.\n\nApplicant / Employee: {{employeeName}}\nSignature: _______________\nDate: {{dateSigned}}\n\nOn behalf of {{companyName}}: _______________\nCity, State: {{cityState}}"
+    },
+    {
+      "id": "ptadj_declaration",
+      "title": "Declaration",
+      "kind": "drafting",
+      "body": "This information sheet describes patent term adjustment (\"PTA\") under 35 U.S.C. § 154(b) — the federal statutory mechanism that extends the term of a utility or plant patent, day for day, to compensate for certain delays in the U.S. Patent and Trademark Office's own examination process. It is prepared with reference to {{patentDescription}}, held by or applied for by {{patentHolderName}}, with an application filing date of {{filingDate}}. This sheet describes the general operation of the three statutory delay guarantees in § 154(b)(1), the limitations that reduce or cap an adjustment in § 154(b)(2), and the Patent and Trademark Office's determination and appeal procedure in § 154(b)(3)-(4); it does not calculate, request, contest, or verify any specific number of adjustment days for {{patentDescription}}, which depends on prosecution-history facts (the specific dates of every Office action, response, and procedural event in that application's file) that this sheet does not contain. This document is distinct from the corpus's existing Provisional Patent Application, Patent Assignment, Patent License, Patent Infringement, and False Patent Marking documents, none of which address how long a patent's term lasts or how that term can be lengthened. It is also distinct from patent term extension under 35 U.S.C. § 156 (a separate mechanism compensating for regulatory review delay, most commonly used for pharmaceutical and other FDA-regulated products) and from the term of a design patent under 35 U.S.C. § 173, neither of which this sheet addresses. This sheet is educational only; it is not a substitute for consulting a licensed patent attorney or registered patent practitioner, and it does not itself request, calculate, or contest any patent term adjustment before the Patent and Trademark Office."
+    },
+    {
+      "id": "ptadj_statutory_basis_and_scope",
+      "title": "The Baseline 20-Year Term and What Adjustment Extends",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "For a utility or plant patent, federal law sets the baseline term at 20 years, running from the date the application was filed (or, where the application claims priority to an earlier-filed application, from the date that earliest application was filed) and continuing to the date the patent issues. Patent term adjustment under § 154(b) operates on top of this baseline: it does not change how the 20-year period is measured, but instead adds days to the end of that period — one day for each day of certain kinds of Patent and Trademark Office delay described in the guarantees below, subject to the limitations described elsewhere in this document.",
+      "gap": "This clause states the general filing-date-to-issuance term rule in § 154(a)(2) and does not address the priority-disregarding rule of § 154(a)(3), continuing applications, terminal disclaimers, or the pre-1995 transitional term rule in § 154(c) for patents in force when the current 20-year-from-filing measure took effect, none of which is restated here.",
+      "citations": [
+        {
+          "case": "35 U.S.C. § 154(a)(2) (Cornell LII text)",
+          "cite": "U.S. Code, contents and term of patent; provisional rights — term",
+          "url": "https://www.law.cornell.edu/uscode/text/35/154",
+          "quote": "Subject to the payment of fees under this title, such grant shall be for a term beginning on the date on which the patent issues and ending 20 years from the date on which the application for the patent was filed in the United States or, if the application contains a specific reference to an earlier filed application or applications under section 120, 121, 365(c), or 386(c), from the date on which the earliest such application was filed."
+        }
+      ]
+    },
+    {
+      "id": "ptadj_guarantee_a_prompt_response",
+      "title": "The First Guarantee — Prompt Patent and Trademark Office Responses",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "The first of three statutory delay guarantees addresses the Patent and Trademark Office's own responsiveness at specific procedural checkpoints. It applies if the Office fails to meet deadlines that include providing an initial notification or notice of allowance within 14 months of filing, or responding to a reply or an appeal within 4 months of it being filed. Where the Office misses one of these listed deadlines, the statute extends the patent's term one day for each day between the deadline and the date the Office actually takes the missed action.",
+      "gap": "This clause summarizes only two of the four listed checkpoints in § 154(b)(1)(A) — the 14-month initial-notification deadline and the 4-month reply/appeal-response deadline — and omits the two remaining checkpoints (timely action after a Patent Trial and Appeal Board or court decision, and timely issuance after the issue fee is paid), as well as the cross-reference to the overlap and applicant-delay limitations in § 154(b)(2) that can reduce or cap any extension calculated under this guarantee.",
+      "citations": [
+        {
+          "case": "35 U.S.C. § 154(b)(1)(A) (Cornell LII text)",
+          "cite": "U.S. Code, adjustment of patent term — guarantee of prompt Patent and Trademark Office responses",
+          "url": "https://www.law.cornell.edu/uscode/text/35/154",
+          "quote": "provide at least one of the notifications under section 132 or a notice of allowance under section 151 not later than 14 months after—"
+        },
+        {
+          "case": "35 U.S.C. § 154(b)(1)(A)(ii) (Cornell LII text)",
+          "cite": "U.S. Code, adjustment of patent term — 4-month reply/appeal response deadline",
+          "url": "https://www.law.cornell.edu/uscode/text/35/154",
+          "quote": "respond to a reply under section 132, or to an appeal taken under section 134, within 4 months after the date on which the reply was filed or the appeal was taken;"
+        },
+        {
+          "case": "35 U.S.C. § 154(b)(1)(A) (Cornell LII text)",
+          "cite": "U.S. Code, adjustment of patent term — day-for-day extension for a missed checkpoint",
+          "url": "https://www.law.cornell.edu/uscode/text/35/154",
+          "quote": "the term of the patent shall be extended 1 day for each day after the end of the period specified in clause (i), (ii), (iii), or (iv), as the case may be, until the action described in such clause is taken."
+        }
+      ]
+    },
+    {
+      "id": "ptadj_guarantee_b_three_year_pendency",
+      "title": "The Second Guarantee — No More Than 3-Year Application Pendency",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "The second statutory guarantee addresses the total time an application spends pending before the Patent and Trademark Office, independent of any specific missed checkpoint. If the Office fails to issue a patent within 3 years of the application's actual U.S. filing date (or, for an international application, the date the national stage commenced), the term is extended one day for each day beyond that 3-year period until the patent issues. This 3-year count itself excludes certain periods, including time consumed by a request for continued examination that the applicant made, time consumed by specified interference-type proceedings, secrecy orders, or appellate review, and delay in processing that the applicant itself requested.",
+      "gap": "This clause states the general 3-year guarantee and its request-for-continued-examination exclusion in § 154(b)(1)(B)(i); it does not restate the full text of the other two listed exclusions (delay from certain proceedings/orders/appellate review, and applicant-requested processing delay other than as permitted elsewhere in the statute), nor the separate applicant-delay reduction in § 154(b)(2)(C) that operates independently of these exclusions and is addressed in a separate clause of this document.",
+      "citations": [
+        {
+          "case": "35 U.S.C. § 154(b)(1)(B) (Cornell LII text)",
+          "cite": "U.S. Code, adjustment of patent term — guarantee of no more than 3-year application pendency",
+          "url": "https://www.law.cornell.edu/uscode/text/35/154",
+          "quote": "if the issue of an original patent is delayed due to the failure of the United States Patent and Trademark Office to issue a patent within 3 years after the actual filing date of the application under section 111(a) in the United States or, in the case of an international application, the date of commencement of the national stage under section 371 in the international application, not including—"
+        },
+        {
+          "case": "35 U.S.C. § 154(b)(1)(B)(i) (Cornell LII text)",
+          "cite": "U.S. Code, adjustment of patent term — continued-examination exclusion from the 3-year count",
+          "url": "https://www.law.cornell.edu/uscode/text/35/154",
+          "quote": "any time consumed by continued examination of the application requested by the applicant under section 132(b);"
+        },
+        {
+          "case": "35 U.S.C. § 154(b)(1)(B) (Cornell LII text)",
+          "cite": "U.S. Code, adjustment of patent term — day-for-day extension beyond the 3-year period",
+          "url": "https://www.law.cornell.edu/uscode/text/35/154",
+          "quote": "the term of the patent shall be extended 1 day for each day after the end of that 3-year period until the patent is issued."
+        }
+      ]
+    },
+    {
+      "id": "ptadj_guarantee_c_proceedings_orders_appeals",
+      "title": "The Third Guarantee — Derivation Proceedings, Secrecy Orders, and Successful Appeals",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "The third statutory guarantee covers delay caused by three specific kinds of proceedings outside the applicant's control: a derivation proceeding, a secrecy order imposed on the application, or an appellate review by the Patent Trial and Appeal Board or a federal court that results in a decision reversing an adverse determination of patentability. Where one of these applies, the term is extended one day for each day of the pendency of the proceeding, order, or review, without the 3-year threshold that applies to the second guarantee.",
+      "gap": "This clause states the general rule without addressing how the statute defines when a derivation proceeding or secrecy order 'begins' and 'ends' for purposes of counting pendency days, or how this third guarantee interacts with the overlap-limitation rule in § 154(b)(2)(A) when the same delay period also qualifies under the first or second guarantee.",
+      "citations": [
+        {
+          "case": "35 U.S.C. § 154(b)(1)(C) (Cornell LII text)",
+          "cite": "U.S. Code, adjustment of patent term — guarantee of adjustments for derivation proceedings, secrecy orders, and appeals",
+          "url": "https://www.law.cornell.edu/uscode/text/35/154",
+          "quote": "if the issue of an original patent is delayed due to—"
+        },
+        {
+          "case": "35 U.S.C. § 154(b)(1)(C)(i) (Cornell LII text)",
+          "cite": "U.S. Code, adjustment of patent term — derivation proceeding as a qualifying delay",
+          "url": "https://www.law.cornell.edu/uscode/text/35/154",
+          "quote": "a proceeding under section 135(a);"
+        },
+        {
+          "case": "35 U.S.C. § 154(b)(1)(C) (Cornell LII text)",
+          "cite": "U.S. Code, adjustment of patent term — day-for-day extension for the pendency period",
+          "url": "https://www.law.cornell.edu/uscode/text/35/154",
+          "quote": "the term of the patent shall be extended 1 day for each day of the pendency of the proceeding, order, or review, as the case may be."
+        }
+      ]
+    },
+    {
+      "id": "ptadj_overlap_limitation",
+      "title": "No Double-Counting for Overlapping Delay",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "The three guarantees described above can, on the same application, point to overlapping stretches of calendar time. The statute does not let those overlapping days be counted more than once: to the extent periods of delay attributable to the different guarantees overlap, the total adjustment is capped at the actual number of days the patent's issuance was in fact delayed, rather than the sum of the days computed separately under each guarantee.",
+      "gap": "The statute states this overlap rule in a single general sentence and does not itself define what counts as 'overlap' between two differently-defined delay periods; how a period counted under the first guarantee (missed checkpoints) is compared against a period counted under the second guarantee (3-year pendency) for overlap purposes is a question the statutory text leaves to Patent and Trademark Office regulation and interpretation that this sheet does not address, and CourtListener case-law research on this point was not completed for this document (a search request returned a rate-limit error rather than results).",
+      "citations": [
+        {
+          "case": "35 U.S.C. § 154(b)(2)(A) (Cornell LII text)",
+          "cite": "U.S. Code, adjustment of patent term — limitation on overlapping periods of delay",
+          "url": "https://www.law.cornell.edu/uscode/text/35/154",
+          "quote": "To the extent that periods of delay attributable to grounds specified in paragraph (1) overlap, the period of any adjustment granted under this subsection shall not exceed the actual number of days the issuance of the patent was delayed."
+        }
+      ]
+    },
+    {
+      "id": "ptadj_disclaimed_term_limitation",
+      "title": "No Adjustment Beyond a Terminal Disclaimer",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Where a patent's term has been disclaimed beyond a specified date — most commonly through a terminal disclaimer filed to overcome an obviousness-type double patenting rejection — the statute does not permit any adjustment under § 154(b) to push the term past the date named in that disclaimer, regardless of how many adjustment days the delay guarantees would otherwise produce.",
+      "gap": "This clause states the disclaimer cap itself; it does not describe the separate legal requirements for filing or the effect of a terminal disclaimer, which are governed by other statutory and regulatory provisions not addressed in this document.",
+      "citations": [
+        {
+          "case": "35 U.S.C. § 154(b)(2)(B) (Cornell LII text)",
+          "cite": "U.S. Code, adjustment of patent term — disclaimed term limitation",
+          "url": "https://www.law.cornell.edu/uscode/text/35/154",
+          "quote": "No patent the term of which has been disclaimed beyond a specified date may be adjusted under this section beyond the expiration date specified in the disclaimer."
+        }
+      ]
+    },
+    {
+      "id": "ptadj_applicant_delay_reduction",
+      "title": "Reduction for the Applicant's Own Lack of Reasonable Efforts",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Patent term adjustment is not a one-way benefit that runs regardless of the applicant's own conduct. The statute reduces any adjustment otherwise available under the three guarantees by the amount of time during which the applicant failed to engage in reasonable efforts to conclude prosecution of the application. For adjustments calculated under the second guarantee (the 3-year pendency guarantee) specifically, the statute deems the applicant to have failed to engage in reasonable efforts for any cumulative period, in excess of 3 months, that the applicant takes to respond to an Office notice raising a rejection, objection, argument, or other request — measured from the date the Office gave or mailed that notice.",
+      "gap": "This clause states the general reduction rule and the specific 3-month response-time deeming rule tied to the second guarantee; it does not address the Director's separate regulatory authority to define what else constitutes a failure of reasonable efforts, or the reinstatement procedure that lets an applicant recover some of a reduced period on a showing of due care, which is addressed in a separate clause.",
+      "citations": [
+        {
+          "case": "35 U.S.C. § 154(b)(2)(C)(i) (Cornell LII text)",
+          "cite": "U.S. Code, adjustment of patent term — reduction for applicant's failure to engage in reasonable efforts",
+          "url": "https://www.law.cornell.edu/uscode/text/35/154",
+          "quote": "The period of adjustment of the term of a patent under paragraph (1) shall be reduced by a period equal to the period of time during which the applicant failed to engage in reasonable efforts to conclude prosecution of the application."
+        },
+        {
+          "case": "35 U.S.C. § 154(b)(2)(C)(ii) (Cornell LII text)",
+          "cite": "U.S. Code, adjustment of patent term — deemed failure of reasonable efforts for responses exceeding 3 months",
+          "url": "https://www.law.cornell.edu/uscode/text/35/154",
+          "quote": "With respect to adjustments to patent term made under the authority of paragraph (1)(B), an applicant shall be deemed to have failed to engage in reasonable efforts to conclude processing or examination of an application for the cumulative total of any periods of time in excess of 3 months that are taken to respond to a notice from the Office making any rejection, objection, argument, or other request, measuring such 3-month period from the date the notice was given or mailed to the applicant."
+        }
+      ]
+    },
+    {
+      "id": "ptadj_determination_and_appeal_procedure",
+      "title": "How the Adjustment Is Determined, Reconsidered, and Reviewed",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "The Director of the Patent and Trademark Office, not the applicant, makes the initial determination of how many days of patent term adjustment a given application has earned, and must transmit notice of that determination no later than the date the patent issues. The applicant has one opportunity to request reconsideration of that determination. If the applicant remains dissatisfied after reconsideration, the statute's exclusive remedy is a civil action against the Director in the United States District Court for the Eastern District of Virginia, filed within 180 days of the Director's decision on reconsideration; a favorable final judgment requires the Director to alter the patent's term accordingly. A third party has no statutory right to appeal or challenge a patent term adjustment determination before the patent is granted.",
+      "gap": "This clause describes the reconsideration and judicial-review pathway; it does not address the separate procedural regulations the Director is directed to prescribe for applying for an adjustment in the first place, nor the reinstatement mechanism in § 154(b)(3)(C) that can restore part of a reduced adjustment period on a due-care showing, both of which sit outside the scope of this sheet.",
+      "citations": [
+        {
+          "case": "35 U.S.C. § 154(b)(3)(B)(i)-(ii) (Cornell LII text)",
+          "cite": "U.S. Code, adjustment of patent term — Director's determination and applicant's reconsideration opportunity",
+          "url": "https://www.law.cornell.edu/uscode/text/35/154",
+          "quote": "provide the applicant one opportunity to request reconsideration of any patent term adjustment determination made by the Director."
+        },
+        {
+          "case": "35 U.S.C. § 154(b)(4)(A) (Cornell LII text)",
+          "cite": "U.S. Code, adjustment of patent term — exclusive judicial remedy in the Eastern District of Virginia",
+          "url": "https://www.law.cornell.edu/uscode/text/35/154",
+          "quote": "An applicant dissatisfied with the Director’s decision on the applicant’s request for reconsideration under paragraph (3)(B)(ii) shall have exclusive remedy by a civil action against the Director filed in the United States District Court for the Eastern District of Virginia within 180 days after the date of the Director’s decision on the applicant’s request for reconsideration."
+        },
+        {
+          "case": "35 U.S.C. § 154(b)(4)(B) (Cornell LII text)",
+          "cite": "U.S. Code, adjustment of patent term — no pre-grant third-party challenge",
+          "url": "https://www.law.cornell.edu/uscode/text/35/154",
+          "quote": "The determination of a patent term adjustment under this subsection shall not be subject to appeal or challenge by a third party prior to the grant of the patent."
+        }
+      ]
+    },
+    {
+      "id": "ptadj_distinct_from_design_patent_term_and_pte",
+      "title": "What This Adjustment Mechanism Does Not Cover",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Section 154(b)'s day-for-day adjustment mechanism is written against the backdrop of the utility/plant patent term described above — a term measured in years from the application's filing date. A design patent's term is set by an entirely separate statute using a different measure: a design patent's term runs 15 years from the date of grant, not from filing, and § 154(b)'s adjustment mechanism is not written to apply to it. This adjustment mechanism is also a distinct legal concept from patent term extension under 35 U.S.C. § 156, which compensates for regulatory review delay (most often FDA review) rather than Patent and Trademark Office examination delay, uses different eligibility criteria and a different application procedure, and is not addressed in this document.",
+      "gap": "This clause draws a scope boundary using the plain text of § 154(a)-(b) and § 173; it does not independently research or cite the text of § 156 (patent term extension for regulatory review delay), so no specific representation is made here about that separate statute's requirements beyond noting that it exists and addresses a different kind of delay.",
+      "citations": [
+        {
+          "case": "35 U.S.C. § 173 (Cornell LII text)",
+          "cite": "U.S. Code, term of design patent",
+          "url": "https://www.law.cornell.edu/uscode/text/35/173",
+          "quote": "Patents for designs shall be granted for the term of 15 years from the date of grant."
+        }
+      ]
+    },
+    {
+      "id": "ptadj_signature_block",
+      "title": "Signature and Acknowledgment Block — Patent Term Adjustment Information Sheet",
+      "kind": "drafting",
+      "body": "The undersigned acknowledges reviewing this information sheet regarding patent term adjustment under 35 U.S.C. § 154(b), prepared with reference to {{patentDescription}} held by or applied for by {{patentHolderName}}, with an application filing date of {{filingDate}}.\n\nExecuted on {{dateSigned}} at {{cityState}}.\n\nSignature: _________________________\n\n{{patentHolderName}}\n\n[This information sheet is educational only. It does not calculate, request, contest, or verify any specific number of patent term adjustment days, does not constitute a filing with or determination by the Patent and Trademark Office, and is not a substitute for consulting a licensed patent attorney or registered patent practitioner regarding a specific application's prosecution history.]"
     }
   ]
 }
