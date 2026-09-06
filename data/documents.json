@@ -29296,5 +29296,65 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "compensatory_equity_plan_exemption_info_sheet",
+    "title": "Compensatory Equity Plan Securities Exemption — Information Sheet",
+    "description": "Explains the securities-law exemption a California corporation or LLC relies on to grant stock options, restricted stock, or other equity awards to its own employees, directors, and consultants under a written plan without qualifying the offering — California Corporations Code § 25102(o) (incorporating federal Rule 701, 17 C.F.R. § 230.701, plus California's own notice-filing and regulatory conditions under 10 Cal. Code Regs. §§ 260.140.41 and 260.140.46). This is a distinct exemption from this corpus's existing California Limited Offering Exemption (Corp. Code § 25102(f), a private-placement exemption for outside investors) and Rule 506 blue-sky notice-filing documents, neither of which addresses compensatory equity grants.",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "cbpexempt_declaration",
+      "cbpexempt_ca_exemption_grant",
+      "cbpexempt_ca_notice_cure_and_integration",
+      "cbpexempt_federal_exemption_and_issuer_eligibility",
+      "cbpexempt_eligible_recipients",
+      "cbpexempt_consultant_and_plan_definition",
+      "cbpexempt_aggregate_amount_cap",
+      "cbpexempt_disclosure_trigger",
+      "cbpexempt_ccr_option_plan_terms",
+      "cbpexempt_ccr_financial_statements",
+      "cbpexempt_statement",
+      "cbpexempt_signature"
+    ],
+    "fields": [
+      {
+        "id": "preparerName",
+        "label": "Preparer's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": false
+      },
+      {
+        "id": "equityPlanName",
+        "label": "Equity plan name",
+        "placeholder": "2026 Equity Incentive Plan",
+        "required": true
+      },
+      {
+        "id": "equityType",
+        "label": "Type of award(s) covered",
+        "placeholder": "incentive stock options",
+        "required": false
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "e.g., January 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, State",
+        "placeholder": "e.g., Los Angeles, California",
+        "required": true
+      }
+    ]
   }
 ]
