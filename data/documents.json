@@ -24662,5 +24662,43 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "captive_audience_meetings_info_sheet",
+    "title": "Captive Audience Meetings — Information Sheet",
+    "description": "Explains the California Worker Freedom from Employer Intimidation Act (Labor Code § 1137, effective January 1, 2025): its definitions, the core prohibition on mandatory religious or political meetings with pay-continuation for declining employees, permitted employer communications, exempt entities and activities, and the statute's civil penalty, Labor Commissioner, and private civil action enforcement tracks.",
+    "categories": [
+      "During employment"
+    ],
+    "clauseOrder": [
+      "captiveaudience_intro",
+      "captiveaudience_definitions",
+      "captiveaudience_short_title",
+      "captiveaudience_core_prohibition",
+      "captiveaudience_permitted_communications",
+      "captiveaudience_exempt_entities",
+      "captiveaudience_enforcement_remedies",
+      "captiveaudience_signature_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "e.g., Acme Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee's name",
+        "placeholder": "e.g., Jane Doe",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "e.g., January 1, 2026",
+        "required": true
+      }
+    ]
   }
 ]
