@@ -23984,5 +23984,41 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "crown_act_race_based_hairstyle_discrimination_info_sheet",
+    "title": "CROWN Act: Race-Based Hairstyle Discrimination in Hiring — Information Sheet",
+    "description": "Explains how California's Fair Employment and Housing Act defines \"race\" to include hair texture and protective hairstyles (Gov. Code § 12926(w)-(x)), and how FEHA's refusal-to-hire prohibition and employer-coverage threshold apply to that definition.",
+    "categories": [
+      "Hiring"
+    ],
+    "clauseOrder": [
+      "crownact_intro",
+      "crownact_race_includes_hair_traits",
+      "crownact_protective_hairstyles_defined",
+      "crownact_hiring_prohibition",
+      "crownact_covered_employers",
+      "crownact_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "e.g., Acme Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Applicant/Employee name",
+        "placeholder": "e.g., Jane Doe",
+        "required": true
+      },
+      {
+        "id": "jobTitle",
+        "label": "Job title / position",
+        "placeholder": "e.g., Marketing Coordinator",
+        "required": true
+      }
+    ]
   }
 ]
