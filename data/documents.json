@@ -26464,5 +26464,51 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "security_guard_registration_info_sheet",
+    "title": "Security Guard / Proprietary Security Officer Registration (BSIS) — Information Sheet",
+    "description": "Explains California's Bureau of Security and Investigative Services (BSIS) registration requirements that apply before a person may perform security guard or in-house (\"proprietary\") security officer duties: the two parallel statutory schemes for contract security guards (Private Security Services Act, Business and Professions Code Chapter 11.5) and in-house officers (Proprietary Security Services Act, Chapter 11.4), the employer- and individual-level registration requirements, the fingerprint-based Department of Justice/FBI background check and training preconditions, provisional work authorization while an application is pending, a licensed operator's ongoing duty to verify current registration, and a statutory exemption category.",
+    "categories": [
+      "Hiring"
+    ],
+    "clauseOrder": [
+      "secguardreg_intro",
+      "secguardreg_two_categories_defined",
+      "secguardreg_proprietary_employer_registration_required",
+      "secguardreg_proprietary_officer_registration_process",
+      "secguardreg_provisional_work_pending_card",
+      "secguardreg_contract_guard_training_condition",
+      "secguardreg_contract_guard_background_check",
+      "secguardreg_licensee_duty_verify_current",
+      "secguardreg_exemptions_limit",
+      "secguardreg_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "jobTitle",
+        "label": "Job title",
+        "placeholder": "Security Guard",
+        "required": true
+      },
+      {
+        "id": "applicantName",
+        "label": "Applicant's name",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      }
+    ]
   }
 ]
