@@ -26567,5 +26567,50 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "llc_default_operating_rules_info_sheet",
+    "title": "LLC Default Operating Rules — Information Sheet",
+    "description": "Explains the statutory default rules that govern a California limited liability company's internal affairs under the Revised Uniform Limited Liability Company Act (Cal. Corp. Code § 17701.01 et seq.) when the members have no written operating agreement, or when a written agreement is silent on a given matter -- including what counts as an 'operating agreement' at all (oral, implied, or written), the default member-managed voting thresholds, manager-managed default rules, default fiduciary duties, the non-waivable statutory floor, and which defaults can be changed only in writing.",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "llcdefault_declaration",
+      "llcdefault_operating_agreement_defined",
+      "llcdefault_statutory_gap_filling",
+      "llcdefault_nonwaivable_floor",
+      "llcdefault_written_agreement_required_for_some_variations",
+      "llcdefault_management_and_voting",
+      "llcdefault_manager_managed_rules",
+      "llcdefault_filed_record_conflicts",
+      "llcdefault_ack"
+    ],
+    "fields": [
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Business name under consideration (if applicable)",
+        "placeholder": "Acme, LLC",
+        "required": false
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 6, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "San Jose, California",
+        "required": true
+      }
+    ]
   }
 ]
