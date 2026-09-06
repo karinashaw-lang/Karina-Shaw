@@ -74064,6 +74064,196 @@
       "title": "Acknowledgment -- Not a Certification, Release, or Court Order",
       "kind": "drafting",
       "body": "I, {{obligorName}}, and I, {{obligeeName}}, each acknowledge that I have reviewed this information sheet describing California's child support license suspension and denial program under Family Code Section 17520, in connection with case number {{courtCaseNumber}} pending in {{countyOfFiling}}, involving a license described as: {{licenseTypeDescription}}, with arrears (if any) of {{arrearsAmount}} as of {{arrearsAsOfDate}}.\n\nExecuted on {{dateSigned}}.\n\n☐ _________________________ {{obligorName}}, signature\n\n☐ _________________________ {{obligeeName}}, signature\n\n{{cityState}}\n\n[This information sheet is prepared for use alongside an actual filing or proceeding in the appropriate California superior court or before the appropriate local child support agency. It does not itself certify any obligor to the Department of Child Support Services or any board, request or grant any temporary license, release, suspension, or judicial review, and it does not create any attorney-client relationship or privilege. Only the local child support agency, the applicable licensing board, and the applicable superior court determine what actually occurs in a specific case, and this is not a substitute for consulting a licensed attorney.]"
+    },
+    {
+      "id": "rewhold_recitals",
+      "title": "About This Information Sheet",
+      "kind": "drafting",
+      "body": "This information sheet describes California's real estate withholding law, Revenue and Taxation Code section 18662 and related sections, which can require the buyer in a sale of California real property to withhold a portion of the sales price and remit it to the Franchise Tax Board as an advance payment toward the seller's California income or franchise tax on any gain from the sale. It is prepared in connection with a transaction involving the property at {{propertyAddress}}, between {{sellerName}} as seller/transferor and {{buyerName}} as buyer/transferee. This sheet states what the statute says about when withholding applies, how much must be withheld, who is exempt or may certify a lower amount, who must give notice, and what happens if the required withholding is not made. It does not calculate any specific withholding amount for this transaction, does not determine whether any exemption applies to {{sellerName}}, and is not a substitute for the written certifications, escrow instructions, or Franchise Tax Board forms used to administer withholding in this transaction."
+    },
+    {
+      "id": "rewhold_general_rule",
+      "title": "The Basic Withholding Requirement and Rate",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "When a transferor disposes of a California real property interest, California law can require the transferee (buyer) — including any intermediary or accommodator handling a deferred exchange — to withhold a percentage of the sales price and send it to the Franchise Tax Board. The default withholding amount is 3⅓ percent of the sales price of the California real property conveyed. This withholding requirement generally reaches individual, trust, and estate sellers, and reaches corporate or partnership sellers only if the corporation or partnership has no permanent place of business in California immediately after the transfer — meaning it is not organized under California law, is not qualified with the Secretary of State to transact business here, and does not maintain and staff a permanent office here. The withheld amount is credited against the seller's ultimate California tax liability on the sale; it is a prepayment mechanism, not an additional tax.",
+      "gap": "The statutory text renders the fraction \"3⅓\" using stacked superscript/subscript HTML markup (3 with a stacked \"1\" over \"3\"); when that markup is stripped to plain text it collapses to the string \"31/3\" with no space, which is why the citation quote below reads \"31⁄​3 percent\" run together rather than \"3 1/3 percent\" — this is a rendering artifact of extracting text from the government's own HTML, not an alteration of the statute's substance, and the rate is 3⅓ percent (i.e., 3.3333...%), not \"31/3 percent\" as a number. This clause describes the general 3⅓% default rate and the general who's-covered rule only; it does not describe the $100,000 sales-price threshold, the written-notice precondition, the seller's certification-based exemptions, or the seller's alternative gain-based election, each of which is addressed in separate clauses and each of which can eliminate or change the withholding obligation for a specific transaction.",
+      "citations": [
+        {
+          "case": "Cal. Rev. & Tax. Code § 18662(e)(1)",
+          "cite": "Revenue and Taxation Code § 18662(e)(1)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=RTC&sectionNum=18662.",
+          "quote": "(e) (1) This subdivision applies"
+        },
+        {
+          "case": "Cal. Rev. & Tax. Code § 18662(e)(2)(A)",
+          "cite": "Revenue and Taxation Code § 18662(e)(2)(A)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=RTC&sectionNum=18662.",
+          "quote": "(2) (A) Except as provided in subparagraph (B), in the case of any disposition of a California real property interest by a transferor described in paragraph (1), the transferee, including for this purpose any intermediary or accommodator in a deferred exchange, is required to withhold an amount equal to 31/3 percent of the sales price of the California real property conveyed."
+        }
+      ]
+    },
+    {
+      "id": "rewhold_ca_real_property_defined",
+      "title": "What Counts as a \"California Real Property Interest\" and \"Sales Price\"",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "For purposes of this withholding requirement, a \"California real property interest\" means an interest in real property located in California, using the definition borrowed from Internal Revenue Code section 897(c)(1)(A)(i) (the federal FIRPTA provision defining a U.S. real property interest, applied here to property located in California). \"Sales price\" is defined broadly: it is the sum of the cash paid or to be paid (excluding any stated or unstated interest or original issue discount), the fair market value of other property transferred or to be transferred, and the outstanding amount of any liability assumed by the transferee or to which the property is subject immediately before and after the transfer.",
+      "gap": "This clause quotes the cross-reference to IRC § 897(c)(1)(A)(i) as the statute states it, but does not independently research or reproduce the text of that federal provision; readers relying on the precise boundaries of \"California real property interest\" (for example, whether a particular leasehold, mineral interest, or entity holding predominantly real property qualifies) would need to consult that federal definition and its California adoption directly, which was outside the scope of this research. \"Sales price\" as defined here is the base for calculating the 3⅓% default withholding amount; it is not necessarily the same figure used to calculate gain for the seller's optional alternative certified-withholding election, which is tied to recognized gain rather than sales price.",
+      "citations": [
+        {
+          "case": "Cal. Rev. & Tax. Code § 18662(e)(5)",
+          "cite": "Revenue and Taxation Code § 18662(e)(5)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=RTC&sectionNum=18662.",
+          "quote": "(5) For purposes of this subdivision, “California real property interest” means an interest in real property located in California and defined in Section 897(c)(1)(A)(i) of the Internal Revenue Code."
+        }
+      ]
+    },
+    {
+      "id": "rewhold_threshold_and_notice",
+      "title": "The $100,000 Sales-Price Threshold and the Notice Precondition",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Withholding is not required at all unless the sales price of the California real property conveyed exceeds one hundred thousand dollars ($100,000). Separately, no transferee other than an intermediary or accommodator in a deferred exchange is required to withhold anything unless the real estate escrow person handling the transaction has first provided written notification of the withholding requirements to that transferee. Both conditions are independent preconditions to any withholding obligation for an ordinary buyer.",
+      "gap": "These two preconditions apply to an ordinary transferee; the statute separately makes clear that this $100,000 threshold exception does not apply to individual payments received under an installment sale agreement once the transaction as a whole is subject to withholding (addressed in a separate clause). This clause does not address the further exemptions available even above the $100,000 threshold — the seller's principal-residence, like-kind exchange, involuntary conversion, no-gain, and in-state-corporation certifications — which are addressed separately and can eliminate withholding regardless of price.",
+      "citations": [
+        {
+          "case": "Cal. Rev. & Tax. Code § 18662(e)(3)(A)",
+          "cite": "Revenue and Taxation Code § 18662(e)(3)(A)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=RTC&sectionNum=18662.",
+          "quote": "(A) No transferee is required to withhold any amount under this subdivision unless the sales price of the California real property conveyed exceeds one hundred thousand dollars ($100,000)."
+        },
+        {
+          "case": "Cal. Rev. & Tax. Code § 18662(e)(3)(B)",
+          "cite": "Revenue and Taxation Code § 18662(e)(3)(B)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=RTC&sectionNum=18662.",
+          "quote": "(B) No transferee, other than an intermediary or an accommodator in a deferred exchange, is required to withhold any amount under this subdivision unless written notification of the withholding requirements of this subdivision has been provided by the real estate escrow person."
+        }
+      ]
+    },
+    {
+      "id": "rewhold_seller_certification_exemptions",
+      "title": "Seller Certifications That Excuse Withholding",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "A transferee is not required to withhold if, in good faith and based on all information the transferee knows, the transferee relies on a written certificate signed by the transferor under penalty of perjury attesting to one of several statutory grounds. Those grounds include: that the property is (or was last used as) the transferor's or decedent's principal residence within the meaning of Internal Revenue Code section 121; that the property is being or will be exchanged for like-kind property under Internal Revenue Code section 1031, to the extent gain is not required to be recognized for California purposes; that the property was compulsorily or involuntarily converted under Internal Revenue Code section 1033 and the transferor intends to acquire qualifying replacement property; that the transaction will result in a net loss or a net gain not required to be recognized for California income or franchise tax purposes; or that the transferor is a corporation with a permanent place of business in California.",
+      "gap": "This clause paraphrases the range of certification grounds using the statute's own cross-references to IRC §§ 121, 1031, and 1033; it does not independently verify the substance of those federal provisions. The 1031-exchange certification ground has its own internal conditions in the statute (including a requirement that the transferee notify the Franchise Tax Board in writing within 10 days if the exchange's 180-day completion period expires without the exchange being finished, and then remit withholding on undisbursed exchange proceeds) that are not quoted here and would need to be checked directly for any transaction relying specifically on that ground. A transferor who knowingly signs a false certificate to avoid withholding is separately subject to liability for twice the amount that should have been withheld, discussed in the buyer/escrow-liability clause of this sheet.",
+      "citations": [
+        {
+          "case": "Cal. Rev. & Tax. Code § 18662(e)(3)(D)",
+          "cite": "Revenue and Taxation Code § 18662(e)(3)(D)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=RTC&sectionNum=18662.",
+          "quote": "(D) No transferee, including for this purpose any intermediary or accommodator in a deferred exchange, is required to withhold any amount under this subdivision if the transferee, in good faith and based on all the information of which the transferee has knowledge, relies on a written certificate executed by the transferor, certifying, under penalty of perjury, one of the following:"
+        },
+        {
+          "case": "Cal. Rev. & Tax. Code § 18662(e)(3)(D)(i)",
+          "cite": "Revenue and Taxation Code § 18662(e)(3)(D)(i)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=RTC&sectionNum=18662.",
+          "quote": "(i) (I) The California real property being conveyed is the seller’s or decedent’s principal residence, within the meaning of Section 121 of the Internal Revenue Code.(II) The last use of the property being conveyed was use by the transferor as the transferor’s principal residence within the meaning of Section 121 of the Internal Revenue Code."
+        }
+      ]
+    },
+    {
+      "id": "rewhold_alternative_certified_amount",
+      "title": "Seller's Election to Certify a Different Withholding Amount",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Instead of the flat 3⅓% of sales price, a transferor may elect to have the transferee withhold an amount the transferor certifies in writing, under penalty of perjury, based on the transferor's actual recognized gain rather than the full sales price. That certified amount cannot be less than the gain required to be recognized under California's personal income tax law or corporation tax law, multiplied by the applicable tax rate — the corporate rate under Revenue and Taxation Code section 23151 or 23186 for corporate transferors, or the highest individual rate under section 17041 for other transferors. The written form used for this election must include a statement that title, escrow, and exchange-accommodation personnel are not authorized to give legal or accounting advice on determining the withholding amount and that transferors are encouraged to consult a tax professional.",
+      "gap": "This clause describes the mechanics of the gain-based election as the statute frames it; it does not calculate, and cannot calculate, what any particular transferor's recognized gain or resulting withholding amount would be — that depends on the transferor's basis, prior depreciation, and other facts specific to that taxpayer, none of which is addressed here. The statute also directs the Franchise Tax Board to publish the prescribed certification form and an online gain-estimation tool; this clause does not verify the current content or availability of that Franchise Tax Board form or tool against ftb.ca.gov, because that domain was not part of the primary-source verification performed for this document (only leginfo.legislature.ca.gov statutory text was fetched and cross-checked).",
+      "citations": [
+        {
+          "case": "Cal. Rev. & Tax. Code § 18662(e)(2)(B)",
+          "cite": "Revenue and Taxation Code § 18662(e)(2)(B)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=RTC&sectionNum=18662.",
+          "quote": "(B) If the transferor makes an election under this subparagraph, the transferee, including any intermediary or accommodator in a deferred exchange, is required to withhold an amount equal to an amount certified by the transferor in writing under penalty of perjury. The amount certified shall not be less than the gain required to be recognized under Part 10 (commencing with Section 17001) and Part 11 (commencing with Section 23001) on the disposition of the California real property multiplied by the rate specified in either Section 23151 or Section 23186, as applicable, for transferors that are corporations, or the highest rate specified in Section 17041 for transferors other than corporations."
+        }
+      ]
+    },
+    {
+      "id": "rewhold_reep_role_and_fee_cap",
+      "title": "The Real Estate Escrow Person's Role and the Cap on What It May Charge",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "The statute defines a \"real estate escrow person\" as the person responsible for closing the transaction — which can include an attorney, escrow company, or title company — or, if no such person is responsible for closing, any other person who receives and disburses the consideration for the property conveyed. It is unlawful for a real estate escrow person to charge a customer anything for merely complying with the withholding notice requirement. If the real estate escrow person goes further and provides \"assistance\" — such as helping the parties resolve with the Franchise Tax Board whether withholding is required, or actually withholding and remitting funds at the parties' request — it may charge for that assistance, but that charge is capped by statute at forty-five dollars ($45).",
+      "gap": "This clause covers the fee cap for withholding-related assistance specifically; it says nothing about escrow fees generally, which are governed by other provisions (including the separate Escrow Law addressed in this collection's California Escrow Law information sheet) and are not capped at $45. The statute distinguishes \"assistance\" from the bare written notification the real estate escrow person must always provide free of charge; a real estate escrow person that provides only the required notice, without more, is not subject to the $45 cap because no chargeable \"assistance\" occurred, and this clause does not address how the line between the two is drawn in a disputed case.",
+      "citations": [
+        {
+          "case": "Cal. Rev. & Tax. Code § 18662(e)(6)",
+          "cite": "Revenue and Taxation Code § 18662(e)(6)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=RTC&sectionNum=18662.",
+          "quote": "(6) For purposes of this subdivision, “real estate escrow person” means any of the following persons involved in the real estate transaction:(A) The person, including any attorney, escrow company, or title company, responsible for closing the transaction.(B) If no person described in subparagraph (A) is responsible for closing the transaction, then any other person who receives and disburses the consideration or value for the interest or property conveyed."
+        },
+        {
+          "case": "Cal. Rev. & Tax. Code § 18662(e)(7)(D)",
+          "cite": "Revenue and Taxation Code § 18662(e)(7)(D)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=RTC&sectionNum=18662.",
+          "quote": "(D) In a case where the real estate escrow person provides “assistance” in complying with the withholding requirements of this subdivision, it shall be unlawful for the real estate escrow person to charge any customer a fee that exceeds forty-five dollars ($45)."
+        }
+      ]
+    },
+    {
+      "id": "rewhold_installment_sale_and_remittance",
+      "title": "Installment Sales and When Withheld Funds Must Be Sent to the Franchise Tax Board",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "If the sale qualifies as an \"installment sale\" within the meaning of Internal Revenue Code section 453(b) for California income tax purposes, the withholding rules are applied separately to each principal payment made under the installment sale agreement, rather than once to the full sales price at closing. Once withholding applies, amounts withheld must be reported and remitted to the Franchise Tax Board in the form, manner, and timing the Board specifies; for individual transactions, a real estate escrow person may choose to remit by the 20th day of the month following the month escrow closed, or may instead remit monthly together with other transactions that closed that same month.",
+      "gap": "The statute separately provides that the $100,000 sales-price threshold exemption (covered in another clause of this sheet) does not apply on a payment-by-payment basis to an installment sale once the transaction as a whole is subject to withholding — meaning a series of small installment payments can remain subject to withholding even though no single payment reaches $100,000. This clause states the remittance timing options available to a real estate escrow person specifically; it does not address remittance timing for a transferee who is not a real estate escrow person (such as a buyer directly withholding without one), which the statute leaves to Franchise Tax Board form and manner requirements not reproduced here.",
+      "citations": [
+        {
+          "case": "Cal. Rev. & Tax. Code § 18662(e)(3)(E)(i)",
+          "cite": "Revenue and Taxation Code § 18662(e)(3)(E)(i)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=RTC&sectionNum=18662.",
+          "quote": "(E) (i) In the case of any transaction otherwise subject to this subdivision that qualifies as an “installment sale,” within the meaning of Section 453(b) of the Internal Revenue Code, for California income tax purposes, the provisions of this subdivision shall be separately applied to each principal payment to be made under the terms of the installment sale agreement between the parties."
+        },
+        {
+          "case": "Cal. Rev. & Tax. Code § 18662(e)(4)(A)",
+          "cite": "Revenue and Taxation Code § 18662(e)(4)(A)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=RTC&sectionNum=18662.",
+          "quote": "Amounts withheld and payments made in accordance with this subdivision shall be reported and remitted to the Franchise Tax Board in the form and manner and at the time specified by the Franchise Tax Board. Notwithstanding the foregoing, funds withheld on individual transactions by real estate escrow persons may, at the option of the real estate escrow person, be remitted by the 20th day of the month following the close of escrow for the individual transaction, or may be remitted on a monthly basis in combination with other transactions closed during that month."
+        }
+      ]
+    },
+    {
+      "id": "rewhold_failure_to_withhold_liability",
+      "title": "Consequences of Failing to Withhold or to Give Required Notice",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "If a transferee is required to withhold under section 18662(e) and fails to do so after being notified in writing of the requirement, the transferee is liable for the greater of $500 or 10 percent of the amount that should have been withheld — unless the failure is shown to be due to reasonable cause. Separately, if the real estate escrow person fails, without reasonable cause, to give the transferee the required written notice of the withholding requirement, the real estate escrow person itself is liable for that same amount. A real estate escrow person is not liable, however, if the tax due on the sale is paid by the original or extended due date of the transferor's return for the year of the sale, and neither the real estate escrow person nor the transferee is liable if the failure to withhold resulted from good-faith reliance on a transferor's written penalty-of-perjury certification.",
+      "gap": "This clause addresses civil liability for failing to withhold or notify under sections 18662(e) and 18668; it does not address the separate, more general withholding-liability rule in section 18668(a)-(c) that applies to the broader categories of withholding under section 18662(a)-(d) (interest, dividends, rents, wages, and similar income items unrelated to real property sales), which was outside the real-property scope of this document. A transferor who knowingly files a false certificate to avoid withholding is liable for twice the amount specified for transferee liability under section 18668(d), a penalty on the seller rather than the buyer or escrow person that this clause does not separately detail.",
+      "citations": [
+        {
+          "case": "Cal. Rev. & Tax. Code § 18668(d)",
+          "cite": "Revenue and Taxation Code § 18668(d)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=RTC&sectionNum=18668.",
+          "quote": "(d) In lieu of the amount provided for in subdivision (a), unless it is shown that the failure to withhold is due to reasonable cause, whenever any transferee is required to withhold any amount pursuant to subdivision (e) of Section 18662, the transferee is liable for the greater of the following amounts for failure to withhold only after the transferee, as specified, is notified in writing of the requirements under subdivision (e) of Section 18662:(1) Five hundred dollars ($500).(2) Ten percent of the amount required to be withheld under subdivision (e) of Section 18662."
+        },
+        {
+          "case": "Cal. Rev. & Tax. Code § 18668(e)(1)",
+          "cite": "Revenue and Taxation Code § 18668(e)(1)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=RTC&sectionNum=18668.",
+          "quote": "(e) (1) Unless it is shown that the failure to notify is due to reasonable cause, the real estate escrow person is liable for the amount specified in subdivision (d), when written notification of the withholding requirements of subdivision (e) of Section 18662 is not provided to the transferee, other than a transferee that is an intermediary or accommodator in a deferred exchange, and the California real property disposition is subject to withholding under subdivision (e) of Section 18662."
+        },
+        {
+          "case": "Cal. Rev. & Tax. Code § 18668(e)(3)",
+          "cite": "Revenue and Taxation Code § 18668(e)(3)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=RTC&sectionNum=18668.",
+          "quote": "(3) The real estate escrow person is not liable under this subdivision if the tax due as a result of the disposition of California real property is paid by the original or extended due date of the transferor’s return for the taxable year in which the disposition occurred."
+        }
+      ]
+    },
+    {
+      "id": "rewhold_ack",
+      "title": "Acknowledgment",
+      "kind": "drafting",
+      "body": "This information sheet was prepared for reference in connection with the transaction involving {{propertyAddress}} between {{sellerName}} and {{buyerName}}, and does not itself constitute a withholding certificate, escrow instructions, a Franchise Tax Board form, or tax advice about whether withholding applies to this transaction or in what amount. Prepared and reviewed as of {{dateSigned}}, at {{cityState}}."
     }
   ]
 }

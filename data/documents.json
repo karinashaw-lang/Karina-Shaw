@@ -26731,5 +26731,57 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "california_real_estate_withholding_info_sheet",
+    "title": "California Real Estate Withholding — Information Sheet",
+    "description": "Explains California's real estate withholding law under Revenue and Taxation Code section 18662 and section 18668: the 3⅓% default withholding rate on the sales price of a California real property interest, the $100,000 sales-price threshold and written-notice precondition, the seller's certification-based exemptions (principal residence, 1031 exchange, involuntary conversion, no gain, in-state corporation), the seller's alternative gain-based certified withholding election, the real estate escrow person's role and $45 fee cap, installment-sale and remittance-timing rules, and the liability a buyer or escrow person faces for failing to withhold or give notice.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "rewhold_recitals",
+      "rewhold_general_rule",
+      "rewhold_ca_real_property_defined",
+      "rewhold_threshold_and_notice",
+      "rewhold_seller_certification_exemptions",
+      "rewhold_alternative_certified_amount",
+      "rewhold_reep_role_and_fee_cap",
+      "rewhold_installment_sale_and_remittance",
+      "rewhold_failure_to_withhold_liability",
+      "rewhold_ack"
+    ],
+    "fields": [
+      {
+        "id": "propertyAddress",
+        "label": "Property address",
+        "placeholder": "500 Market St, San Francisco, CA 94105",
+        "required": true
+      },
+      {
+        "id": "sellerName",
+        "label": "Seller's/transferor's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "buyerName",
+        "label": "Buyer's/transferee's name",
+        "placeholder": "Morgan Casey Rivera",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "October 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state where signed",
+        "placeholder": "San Francisco, California",
+        "required": true
+      }
+    ]
   }
 ]
