@@ -22471,5 +22471,54 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "bed_bug_disclosure_inspection_info_sheet",
+    "title": "Bed Bug Disclosure and Inspection — Information Sheet",
+    "description": "California's bed bug disclosure and inspection statute (Civil Code sections 1954.600-1954.605): the pre-tenancy written notice requirement, the limit on leasing a known-infested vacant unit, inspection entry and tenant cooperation, and the landlord's post-inspection notification duty.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "bedbug_intro",
+      "bedbug_legislative_findings",
+      "bedbug_prelease_disclosure",
+      "bedbug_known_infestation_limit",
+      "bedbug_inspection_entry_and_cooperation",
+      "bedbug_findings_notification_duty",
+      "bedbug_ack"
+    ],
+    "fields": [
+      {
+        "id": "propertyAddress",
+        "label": "Property address",
+        "placeholder": "123 Main St, Apt 4, Springfield",
+        "required": true
+      },
+      {
+        "id": "landlordName",
+        "label": "Landlord name",
+        "placeholder": "Acme Properties, LLC",
+        "required": true
+      },
+      {
+        "id": "tenantName",
+        "label": "Tenant name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
