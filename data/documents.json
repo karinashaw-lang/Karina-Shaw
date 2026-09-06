@@ -26882,5 +26882,86 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "trustee_removal_grounds_info_sheet",
+    "title": "Removal of a Trustee — Information Sheet",
+    "description": "Explains California Probate Code §§ 15642, 15643, and 17200(b)(10)-(11) and (c): the three pathways by which a trustee may be removed (trust instrument, court's own motion, or beneficiary/settlor/cotrustee petition), the general statutory grounds for court-ordered removal, the distinct removal ground for a sole trustee who is a disqualified person under § 21380(a), the court's own-motion authority to remove an unlicensed professional fiduciary trustee, the circumstances that create a vacancy in the office of trustee, the cost-shifting rules tied to specific findings in a removal proceeding, and the court's authority to protect trust property while a removal petition is pending.",
+    "categories": [
+      "Estate Planning"
+    ],
+    "clauseOrder": [
+      "trustremv_declaration",
+      "trustremv_removal_pathways",
+      "trustremv_statutory_grounds",
+      "trustremv_disqualified_person_ground",
+      "trustremv_professional_fiduciary_license",
+      "trustremv_vacancy_circumstances",
+      "trustremv_cost_shifting",
+      "trustremv_interim_protective_relief",
+      "trustremv_certification"
+    ],
+    "fields": [
+      {
+        "id": "trustName",
+        "label": "Name of this trust",
+        "placeholder": "The Jordan Alex Lee Revocable Living Trust",
+        "required": true
+      },
+      {
+        "id": "originalTrustDate",
+        "label": "Date the original trust was created",
+        "placeholder": "March 14, 2020",
+        "required": true
+      },
+      {
+        "id": "trusteeName",
+        "label": "Initial trustee name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "successorTrusteeName",
+        "label": "Successor trustee name",
+        "placeholder": "Morgan Lee",
+        "required": true
+      },
+      {
+        "id": "beneficiaryName",
+        "label": "Residuary beneficiary",
+        "placeholder": "Jordan Alex Lee's children, in equal shares",
+        "required": true
+      },
+      {
+        "id": "petitionerName",
+        "label": "Petitioner's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "countyOfFiling",
+        "label": "County of filing",
+        "placeholder": "Sacramento County",
+        "required": true
+      },
+      {
+        "id": "courtCaseNumber",
+        "label": "Court case number",
+        "placeholder": "CGC-26-123456",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
