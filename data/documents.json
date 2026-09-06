@@ -22520,5 +22520,47 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "common_law_marriage_non_recognition_info_sheet",
+    "title": "Common Law Marriage in California — Non-Recognition Information Sheet",
+    "description": "California does not recognize common law marriage formed within the state -- a license and solemnization are required -- while generally recognizing a marriage, including a common law marriage, validly contracted under the law of another jurisdiction.",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "commonlawmarriage_intro",
+      "commonlawmarriage_ca_formation_requirements",
+      "commonlawmarriage_no_recognition_instate",
+      "commonlawmarriage_out_of_state_recognition",
+      "commonlawmarriage_out_of_state_recognition_requires_actual_validity",
+      "commonlawmarriage_ack"
+    ],
+    "fields": [
+      {
+        "id": "party1Name",
+        "label": "First party's full legal name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "party2Name",
+        "label": "Second party's full legal name",
+        "placeholder": "Morgan Casey Lee",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
