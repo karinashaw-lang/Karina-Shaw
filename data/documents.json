@@ -21999,5 +21999,59 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "corporate_transparency_act_boi_reporting_info_sheet",
+    "title": "Federal Corporate Transparency Act / Beneficial Ownership Information Reporting — Information Sheet",
+    "description": "The federal beneficial ownership information reporting regime under the Corporate Transparency Act, as narrowed by 2025-2026 FinCEN rulemaking to exclude domestic (U.S.-formed) entities and U.S. persons.",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "ctaboi_intro",
+      "ctaboi_reporting_company_definition",
+      "ctaboi_2025_scope_narrowing",
+      "ctaboi_beneficial_owner_definition",
+      "ctaboi_filing_mechanics",
+      "ctaboi_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "authorizedSignerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "entityType",
+        "label": "Entity type",
+        "placeholder": "stock corporation",
+        "required": true
+      },
+      {
+        "id": "stateOfFormation",
+        "label": "State of formation",
+        "placeholder": "Delaware",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
