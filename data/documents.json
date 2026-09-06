@@ -22766,5 +22766,49 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "caregiver_authorization_affidavit_info_sheet",
+    "title": "Caregiver's Authorization Affidavit — Information Sheet",
+    "description": "An informational sheet on California's Caregiver's Authorization Affidavit (Family Code §§ 6550, 6552): who may sign it, the baseline school-enrollment/school-related-medical-care authority versus the fuller guardian-level medical/dental authority available to qualifying relatives, the parental-supersession rule, when it stops being valid, and how it differs from a court-supervised guardianship nomination.",
+    "categories": [
+      "Estate Planning"
+    ],
+    "clauseOrder": [
+      "caregiverauth_intro",
+      "caregiverauth_caregiver_declaration",
+      "caregiverauth_who_may_execute",
+      "caregiverauth_relative_definition",
+      "caregiverauth_scope_and_immunizations",
+      "caregiverauth_parental_supersession",
+      "caregiverauth_no_guardianship_created",
+      "caregiverauth_termination_and_reliance"
+    ],
+    "fields": [
+      {
+        "id": "minorChildName",
+        "label": "Minor child's name",
+        "placeholder": "Riley Lee",
+        "required": true
+      },
+      {
+        "id": "caregiverName",
+        "label": "Caregiver's full legal name",
+        "placeholder": "Jamie Morgan Lee",
+        "required": true
+      },
+      {
+        "id": "parentName",
+        "label": "Your full legal name (parent)",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "relationshipToChild",
+        "label": "Proposed guardian's relationship to the child",
+        "placeholder": "Maternal aunt",
+        "required": true
+      }
+    ]
   }
 ]

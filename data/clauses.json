@@ -61949,6 +61949,138 @@
       "title": "Acknowledgment — DMCA Anti-Circumvention Information Sheet",
       "kind": "drafting",
       "body": "Prepared by {{preparerName}} on {{dateSigned}} concerning {{companyName}}'s {{softwareDescription}}.\n\nSignature of {{preparerName}}: ☐ _________________________\n\n[This Information Sheet is a general reference describing 17 U.S.C. § 1201's anti-circumvention prohibition and its reverse-engineering and encryption-research exemptions, and how that statute differs from this project's separate DMCA notice-and-takedown documents and its separate trade secret documents. It is not a court filing, a compliance certification, or legal advice about whether any specific technological measure, product, or research activity involving {{softwareDescription}} complies with, or is exempt from, 17 U.S.C. § 1201, and completing or signing it does not itself determine that outcome.]"
+    },
+    {
+      "id": "caregiverauth_intro",
+      "title": "About This Information Sheet",
+      "kind": "drafting",
+      "body": "This information sheet explains California's Caregiver's Authorization Affidavit, a statutory tool under Family Code §§ 6550 and 6552 that a caregiver signs on their own, without going to court, to gain authority to enroll {{minorChildName}} in school and consent to school-related medical care. It is fundamentally different from a Nomination of Guardian: a guardian nomination is a written request that a specific person be appointed by a court as {{minorChildName}}'s legal guardian, and it only takes effect once a probate court grants a guardianship. The Caregiver's Authorization Affidavit is not a step toward that court proceeding — it is self-executing the moment {{caregiverName}} signs it, requires no judge, no guardianship case, and no court order, and it never gives {{caregiverName}} legal custody of {{minorChildName}}."
+    },
+    {
+      "id": "caregiverauth_caregiver_declaration",
+      "title": "Caregiver and Minor Information",
+      "kind": "drafting",
+      "body": "I, {{caregiverName}}, declare that {{minorChildName}} currently lives in my home, that I am 18 years of age or older, and that my relationship to {{minorChildName}} is: {{relationshipToChild}}. I intend to complete and sign California's statutory Caregiver's Authorization Affidavit under Family Code § 6552 so that I may enroll {{minorChildName}} in school and consent to school-related medical care on {{minorChildName}}'s behalf. I understand that {{parentName}}, as {{minorChildName}}'s parent, retains full legal rights regarding {{minorChildName}}'s care, custody, and control, and that this declaration is a preparatory record for my own files rather than the statutory affidavit form itself."
+    },
+    {
+      "id": "caregiverauth_who_may_execute",
+      "title": "Who May Sign the Affidavit, and What It Authorizes",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Any caregiver 18 or older who completes items 1 through 4 of the statutory affidavit form and signs it is authorized to enroll {{minorChildName}} in school and consent to school-related medical care on {{minorChildName}}'s behalf — relative status is not required for this baseline authority. A broader authority, covering the same medical and dental care a court-appointed guardian could authorize under Probate Code § 2353, is available only to a caregiver who additionally qualifies as a statutory \"relative\" and completes items 5 through 8.",
+      "gap": "This describes what the statute itself authorizes; it does not address how a particular school, doctor, or health plan will in practice treat an affidavit, which can vary. A CourtListener case-law search for this topic returned a 429 daily-quota error before any search results could be reviewed, so this clause and the others in this document rely on the statutory text alone, with no case law confirming how courts or agencies apply it in disputed situations.",
+      "citations": [
+        {
+          "case": "Cal. Fam. Code § 6550(a) (California Legislative Information text)",
+          "cite": "Fam. C. § 6550(a)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=6550",
+          "quote": "A caregiver’s authorization affidavit that meets the requirements of this part authorizes a caregiver 18 years of age or older who completes items 1 to 4, inclusive, of the affidavit provided in Section 6552 and signs the affidavit to enroll a minor in school and consent to school-related medical care on behalf of the minor."
+        }
+      ]
+    },
+    {
+      "id": "caregiverauth_relative_definition",
+      "title": "Which Relatives Qualify for the Fuller Medical Authority",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Whether {{caregiverName}} can obtain the fuller, guardian-level medical and dental authority under items 5 through 8 of the affidavit turns on the statutory definition of \"relative.\" California Family Code § 6550(h)(2) defines a qualifying relative as an adult related to the child by blood, adoption, or affinity within the fifth degree of kinship, expressly including stepparents, stepsiblings, \"great,\" \"great-great,\" or \"grand\" relatives, and the spouse of any such relative, even after that marriage has ended by death or dissolution.",
+      "gap": "This definition governs only who may use items 5 through 8 of this specific affidavit; it is not necessarily the same definition of \"relative\" used elsewhere in California law (for example, in relative-placement or probate-guardianship contexts), and this clause does not compare those other definitions.",
+      "citations": [
+        {
+          "case": "Cal. Fam. Code § 6550(h)(2) (California Legislative Information text)",
+          "cite": "Fam. C. § 6550(h)(2)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=6550",
+          "quote": "“Relative” means an adult who is related to the child by blood, adoption, or affinity within the fifth degree of kinship, including all stepparents, stepsiblings, and all relatives whose status is preceded by the words “great,” “great-great,” or “grand,” or the spouse of any of the persons specified in this definition, even after the marriage has been terminated by death or dissolution."
+        }
+      ]
+    },
+    {
+      "id": "caregiverauth_scope_and_immunizations",
+      "title": "What \"School-Related Medical Care\" Covers",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "\"School-related medical care\" — the category of care that any caregiver (relative or not) can consent to using only items 1 through 4 of the affidavit — is statutorily defined to include immunizations, along with physical and medical examinations conducted in schools, when required by state or local governmental authority as a condition of school enrollment or of participating in local-educational-agency extracurricular activities.",
+      "gap": "This definition was itself amended effective January 1, 2026 (Stats. 2025, Ch. 664, Sec. 4 (AB 495)), so older descriptions of this statute may not reflect that immunizations are now expressly listed. Naming immunizations in this definition establishes that they fall within the affidavit's baseline authority; it does not by itself override the parent-supersession rule described elsewhere in this statute, which can still control the outcome for a specific immunization decision.",
+      "citations": [
+        {
+          "case": "Cal. Fam. Code § 6550(h)(3) (California Legislative Information text)",
+          "cite": "Fam. C. § 6550(h)(3)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=6550",
+          "quote": "“School-related medical care” means medical care, including immunizations, physical examinations, and medical examinations conducted in schools for pupils, that is required by state or local governmental authority as a condition for school enrollment or participation in local educational agency-related extracurricular activities."
+        }
+      ]
+    },
+    {
+      "id": "caregiverauth_parental_supersession",
+      "title": "A Parent's Contrary Decision Controls",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "A caregiver's decision to consent to or refuse medical or dental care for {{minorChildName}} is superseded by any contrary decision of {{parentName}} or another person with legal custody, unless that contrary decision would jeopardize {{minorChildName}}'s life, health, or safety. Separately, before a relative caregiver can rely on the fuller items 5–8 medical/dental authority, the affidavit requires the caregiver to state that they have advised the parent or other legal custodian of their intent to authorize medical care and received no objection, or that they were unable to contact that parent or custodian.",
+      "gap": "The statute's supersession rule applies generally to a caregiver's medical and dental decisions; the text does not carve out immunizations as a separate category with its own objection rule, so a general description that the affidavit categorically cannot authorize immunizations over parental objection overstates a rule that is actually broader and applies to medical/dental care generally. Neither this clause nor the underlying statute defines how \"jeopardize the life, health, or safety of the minor\" is applied in a specific dispute, and the CourtListener search that could have surfaced case law construing that phrase returned a quota-exceeded error rather than results.",
+      "citations": [
+        {
+          "case": "Cal. Fam. Code § 6550(b) (California Legislative Information text)",
+          "cite": "Fam. C. § 6550(b)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=6550",
+          "quote": "The decision of a caregiver to consent to or to refuse medical or dental care for a minor shall be superseded by any contravening decision of the parent or other person having legal custody of the minor, provided the decision of the parent or other person having legal custody of the minor does not jeopardize the life, health, or safety of the minor."
+        },
+        {
+          "case": "Cal. Fam. Code § 6552 (statutory affidavit form text, California Legislative Information)",
+          "cite": "Fam. C. § 6552, item 6",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=6552",
+          "quote": "I have advised the parent(s) or other person(s) having legal custody of the minor of my intent to authorize medical care, and have received no objection."
+        }
+      ]
+    },
+    {
+      "id": "caregiverauth_no_guardianship_created",
+      "title": "This Affidavit Does Not Create a Guardianship or Legal Custody",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "The statutory affidavit form itself states that signing it does not affect the legal rights of {{minorChildName}}'s parents or legal guardian over {{minorChildName}}'s care, custody, and control, and does not give {{caregiverName}} legal custody. Consistent with that, the form requires no court seal or judicial signature and does not need to be notarized.",
+      "gap": "This describes what the affidavit itself does not do; it says nothing about how a specific existing court order (such as a custody order or a prior guardianship) would interact with a caregiver's use of this affidavit in a given family's situation, which these sections do not address.",
+      "citations": [
+        {
+          "case": "Cal. Fam. Code § 6552 (statutory affidavit form text, California Legislative Information)",
+          "cite": "Fam. C. § 6552, Notice 1",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=6552",
+          "quote": "This declaration does not affect the rights of the minor’s parents or legal guardian regarding the care, custody, and control of the minor, and does not mean that the caregiver has legal custody of the minor."
+        },
+        {
+          "case": "Cal. Fam. Code § 6552 (statutory affidavit form text, California Legislative Information)",
+          "cite": "Fam. C. § 6552, Warning to Local Educational Agencies and Health Care Service Providers",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=6552",
+          "quote": "Warning to Local Educational Agencies and Health Care Service Providers: A seal or signature from a court is not required. This form is not required to be notarized."
+        }
+      ]
+    },
+    {
+      "id": "caregiverauth_termination_and_reliance",
+      "title": "When the Affidavit Stops Being Valid, and Who Can Rely On It",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "If {{minorChildName}} stops living with {{caregiverName}}, {{caregiverName}} is required to notify any school, health care provider, or health care service plan that was given the affidavit, and the affidavit becomes invalid once that notice is received. A separate provision protects anyone who acts in good-faith reliance on the affidavit to provide medical or dental care, without actual knowledge of facts contrary to what the affidavit states: that person is not subject to criminal liability, civil liability to any person, or professional disciplinary action for that reliance, so long as the applicable parts of the affidavit were completed.",
+      "gap": "Invalidity under this statute is tied to the school, provider, or plan actually receiving notice that the child no longer lives with the caregiver, not automatically to the date the living arrangement changes, so an affidavit can remain outwardly valid to a recipient who has not yet been notified. The reliance protection runs to the person relying on the affidavit (such as the school or provider), not to the caregiver's own underlying decision to consent to or refuse care.",
+      "citations": [
+        {
+          "case": "Cal. Fam. Code § 6550(f) (California Legislative Information text)",
+          "cite": "Fam. C. § 6550(f)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=6550",
+          "quote": "If the minor stops living with the caregiver, the caregiver shall notify any school, health care provider, or health care service plan that has been given the affidavit. The affidavit is invalid after the school, health care provider, or health care service plan receives notice that the minor is no longer living with the caregiver."
+        },
+        {
+          "case": "Cal. Fam. Code § 6550(c) (California Legislative Information text)",
+          "cite": "Fam. C. § 6550(c)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=6550",
+          "quote": "A person who acts in good faith reliance on a caregiver’s authorization affidavit to provide medical or dental care, without actual knowledge of facts contrary to those stated on the affidavit, is not subject to criminal liability or to civil liability to any person, and is not subject to professional disciplinary action, for that reliance if the applicable portions of the affidavit are completed."
+        }
+      ]
     }
   ]
 }
