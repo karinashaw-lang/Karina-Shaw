@@ -28341,5 +28341,93 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "abandoned_personal_property_disposition_info_sheet",
+    "title": "Disposition of Personal Property Remaining on the Premises After Tenancy — Information Sheet",
+    "description": "Background information on California Civil Code §§ 1980–1991 — the optional statutory procedure for handling personal property a tenant leaves behind after a residential tenancy terminates and the premises are vacated: what the chapter does and does not cover, the notice a landlord must give the former tenant and any other reasonably-believed owner (including the statutory notice forms), the duty to store the property pending release or disposal, the conditions for releasing it (including a two-day free-reclaim window), the public-sale and under-$700 disposal paths once the notice period expires, how storage costs are assessed, and the landlord's resulting limitation of liability.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "abanprop_intro",
+      "abanprop_definitions",
+      "abanprop_scope_exclusions",
+      "abanprop_notice_requirements",
+      "abanprop_statutory_forms",
+      "abanprop_storage_duty",
+      "abanprop_release_and_cost",
+      "abanprop_disposal_and_sale",
+      "abanprop_liability_limit",
+      "abanprop_notice_worksheet_signature"
+    ],
+    "fields": [
+      {
+        "id": "landlordName",
+        "label": "Landlord's name",
+        "placeholder": "Acme Properties, LLC",
+        "required": true
+      },
+      {
+        "id": "tenantName",
+        "label": "Former tenant's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "propertyAddress",
+        "label": "Property address (premises vacated)",
+        "placeholder": "123 Main St., Apt. 4, Sacramento, CA 95814",
+        "required": true
+      },
+      {
+        "id": "moveOutDate",
+        "label": "Date premises were vacated",
+        "placeholder": "August 31, 2026",
+        "required": true
+      },
+      {
+        "id": "personalPropertyDescription",
+        "label": "Description of personal property left behind",
+        "placeholder": "One dresser, two boxes of books, a floor lamp",
+        "required": true
+      },
+      {
+        "id": "claimLocationAddress",
+        "label": "Address where the property may be claimed",
+        "placeholder": "123 Main St., Apt. 4, Sacramento, CA 95814",
+        "required": true
+      },
+      {
+        "id": "claimDeadlineDate",
+        "label": "Deadline date to claim the property (not less than 15 days after personal delivery, or 18 days after mailing, per Civil Code § 1983(b))",
+        "placeholder": "September 20, 2026",
+        "required": true
+      },
+      {
+        "id": "estimatedResaleValue",
+        "label": "Landlord's reasonable estimate of the property's total resale value, if applicable to the under-$700 disclosure statement",
+        "placeholder": "150",
+        "required": false
+      },
+      {
+        "id": "noticeDate",
+        "label": "Date of the notice",
+        "placeholder": "September 2, 2026",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 2, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Sacramento, California",
+        "required": true
+      }
+    ]
   }
 ]
