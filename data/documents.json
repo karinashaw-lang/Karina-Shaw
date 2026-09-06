@@ -22089,5 +22089,98 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "california_overtime_pay_calculation_info_sheet",
+    "title": "California Daily/Weekly Overtime Pay Calculation — Information Sheet",
+    "description": "The general daily and weekly overtime and double-time pay-rate triggers under Labor Code sections 510-511, and how the \"regular rate of pay\" used to compute overtime is determined, including the divisor rule for flat-sum bonuses.",
+    "categories": [
+      "During employment"
+    ],
+    "clauseOrder": [
+      "overtime510_intro",
+      "overtime510_daily_triggers",
+      "overtime510_weekly_trigger",
+      "overtime510_seventh_day_premium",
+      "overtime510_no_stacking_and_aws_reference",
+      "overtime510_regular_rate_of_pay",
+      "overtime510_flat_sum_bonus_regular_rate",
+      "overtime510_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
+  },
+  {
+    "id": "anti_slapp_confidentiality_ip_disputes_info_sheet",
+    "title": "California's Anti-SLAPP Statute in Confidentiality/IP Disputes — Information Sheet",
+    "description": "California's anti-SLAPP statute (Code of Civil Procedure section 425.16) -- the special motion to strike, its two-step analysis, fee-shifting consequences, and how published case law has applied it to trade secret and confidentiality-related claims.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "antislapp_intro",
+      "antislapp_statute_overview",
+      "antislapp_two_prong_test",
+      "antislapp_protected_activity_categories",
+      "antislapp_fee_shifting",
+      "antislapp_ip_context_case_law",
+      "antislapp_ack"
+    ],
+    "fields": [
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "adversePartyName",
+        "label": "Adverse party's name",
+        "placeholder": "Beta Corp.",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
