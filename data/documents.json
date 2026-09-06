@@ -24700,5 +24700,67 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "subdivision_map_act_info_sheet",
+    "title": "Subdivision Map Act — Information Sheet",
+    "description": "Explains California's Subdivision Map Act (Gov. Code § 66410 et seq.): the statutory definition of \"subdivision,\" when a tentative and final map is required versus a parcel map, the lot line adjustment exemption, the prohibition on selling, leasing, or financing land before a required map is recorded, tentative map expiration and tolling rules, and the required general/specific plan consistency finding.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "submapact_intro",
+      "submapact_subdivision_definition",
+      "submapact_tentative_final_map_requirement",
+      "submapact_lot_line_adjustment_exemption",
+      "submapact_sale_lease_finance_prohibition",
+      "submapact_tentative_map_expiration",
+      "submapact_general_plan_consistency",
+      "submapact_closing"
+    ],
+    "fields": [
+      {
+        "id": "propertyAddress",
+        "label": "Property address",
+        "placeholder": "e.g., 123 Main St.",
+        "required": true
+      },
+      {
+        "id": "county",
+        "label": "County",
+        "placeholder": "e.g., Sonoma",
+        "required": true
+      },
+      {
+        "id": "parcelNumber",
+        "label": "Assessor's Parcel Number",
+        "placeholder": "e.g., 012-345-678",
+        "required": true
+      },
+      {
+        "id": "ownerName",
+        "label": "Property owner's name",
+        "placeholder": "e.g., Jane Doe",
+        "required": true
+      },
+      {
+        "id": "proposedDivisionDescription",
+        "label": "Description of the proposed land division",
+        "placeholder": "e.g., dividing a 10-acre parcel into three residential lots",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "e.g., January 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, State",
+        "placeholder": "e.g., Santa Rosa, California",
+        "required": true
+      }
+    ]
   }
 ]
