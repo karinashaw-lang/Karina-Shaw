@@ -23165,5 +23165,61 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "college_athlete_nil_compensation_info_sheet",
+    "title": "College Athlete Name, Image, and Likeness (NIL) Compensation — Information Sheet",
+    "description": "An informational sheet on California's Student Athlete Bill of Rights NIL provision (Education Code § 67456): the bar on institutions and athletic associations (including the NCAA by name) restricting a student athlete's outside NIL compensation, the separate opposite-direction bar on an institution or association paying a prospective athlete, licensed-professional-representation rights, the scholarship/compensation distinction, NIL-contract disclosure and team-contract conflict rules, and the limit on a team contract restricting commercial NIL use outside official team activities. Distinguishes this statutory regime from the corpus's general Model/Publicity Release document.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "nilathlete_scope_distinction",
+      "nilathlete_no_restriction_by_association",
+      "nilathlete_no_recruiting_inducement",
+      "nilathlete_professional_representation",
+      "nilathlete_scholarship_not_compensation",
+      "nilathlete_disclosure_and_conflict",
+      "nilathlete_team_contract_limit",
+      "nilathlete_disclosure_declaration"
+    ],
+    "fields": [
+      {
+        "id": "athleteName",
+        "label": "Student athlete's name",
+        "placeholder": "Jordan T. Ellis",
+        "required": true
+      },
+      {
+        "id": "sportName",
+        "label": "Sport",
+        "placeholder": "Women's basketball",
+        "required": true
+      },
+      {
+        "id": "educationalInstitution",
+        "label": "Educational institution (if applicable)",
+        "placeholder": "State University",
+        "required": false
+      },
+      {
+        "id": "granteeName",
+        "label": "Grantee's name",
+        "placeholder": "Jordan Morgan",
+        "required": true
+      },
+      {
+        "id": "compensationDescription",
+        "label": "Description of compensation, if any",
+        "placeholder": "$500 flat fee",
+        "required": false
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      }
+    ]
   }
 ]
