@@ -23819,5 +23819,62 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "uniform_voidable_transactions_act_info_sheet",
+    "title": "Uniform Voidable Transactions Act — Information Sheet",
+    "description": "Explains California's Uniform Voidable Transactions Act (Civil Code § 3439 et seq.): what counts as a voidable transfer, the actual-intent and constructive-fraud grounds, statutory time limits, and available creditor remedies.",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "uvta_declaration",
+      "uvta_definitions",
+      "uvta_insolvency_definition",
+      "uvta_actual_intent_test",
+      "uvta_badges_of_fraud",
+      "uvta_constructive_fraud_test",
+      "uvta_limitations_period",
+      "uvta_creditor_remedies",
+      "uvta_ack"
+    ],
+    "fields": [
+      {
+        "id": "debtorName",
+        "label": "Debtor's name",
+        "placeholder": "e.g., Jane Doe or Acme LLC",
+        "required": true
+      },
+      {
+        "id": "creditorName",
+        "label": "Creditor's name",
+        "placeholder": "e.g., John Smith or Acme Supplies Inc.",
+        "required": true
+      },
+      {
+        "id": "propertyDescription",
+        "label": "Description of the property or transfer at issue",
+        "placeholder": "e.g., the real property at 123 Main St., or the transfer of business assets on [date]",
+        "required": true
+      },
+      {
+        "id": "preparerName",
+        "label": "Preparer's name",
+        "placeholder": "e.g., Jane Doe",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "e.g., January 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, State",
+        "placeholder": "e.g., Los Angeles, California",
+        "required": true
+      }
+    ]
   }
 ]
