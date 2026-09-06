@@ -23606,5 +23606,49 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "h1b_visa_sponsorship_compliance_info_sheet",
+    "title": "H-1B Visa Sponsorship Compliance — Information Sheet",
+    "description": "An informational sheet on federal H-1B sponsorship obligations under the Labor Condition Application provisions of 8 U.S.C. § 1182(n) and the Department of Labor's implementing wage regulation, 20 C.F.R. § 655.731: the wage attestation and notice requirements, how the required wage is determined and paid, the prohibition on recouping attorney fees or H-1B filing costs from the sponsored worker, the penalty-versus-liquidated-damages distinction for early departure, and the prohibition on rebating the employer's own ACWIA filing fee.",
+    "categories": [
+      "Hiring"
+    ],
+    "clauseOrder": [
+      "h1bcompliance_intro",
+      "h1bcompliance_lca_wage",
+      "h1bcompliance_lca_notice",
+      "h1bcompliance_required_wage_source",
+      "h1bcompliance_no_recoupment_attorney_fees",
+      "h1bcompliance_no_early_termination_penalty",
+      "h1bcompliance_no_filing_fee_rebate",
+      "h1bcompliance_closing"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "jobTitle",
+        "label": "Job title",
+        "placeholder": "Software Engineer",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      }
+    ]
   }
 ]
