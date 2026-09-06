@@ -80657,6 +80657,243 @@
       "title": "Employee Acknowledgment of Receipt",
       "kind": "drafting",
       "body": "I, {{employeeName}}, acknowledge that I have received and reviewed the language-related workplace policy and notice described in this document from {{companyName}}, effective {{effectiveDate}}. My signature below acknowledges receipt of this notice; it does not waive any right I may have under California Government Code section 12951 or any other law.\n\nEmployee: {{employeeName}}\nDate: {{dateSigned}}"
+    },
+    {
+      "id": "icara_declaration_of_facts",
+      "title": "Declaration of Facts Concerning an International Child Abduction Claim",
+      "kind": "drafting",
+      "body": "I, {{petitionerName}}, state that {{childName}}'s country of habitual residence immediately before the removal or retention described below was {{childHabitualResidenceCountry}}. On or about {{dateOfRemovalOrRetention}}, {{respondentName}} removed {{childName}} from {{childHabitualResidenceCountry}}, or retained {{childName}} outside of {{childHabitualResidenceCountry}}, in a manner I believe breached rights of custody that I was exercising, or would have been exercising but for the removal or retention, at that time. {{childName}} is currently believed to be located in {{childCurrentCountry}}. This declaration collects the category of facts a petition under the International Child Abduction Remedies Act, 22 U.S.C. § 9003(b), and the 1980 Hague Convention on the Civil Aspects of International Child Abduction would need to state; it does not itself constitute that petition, does not itself establish that a removal or retention was wrongful within the meaning of the Convention, and does not itself determine where {{childName}}'s habitual residence was at the relevant time -- only a court, applying 22 U.S.C. § 9003 and the Convention to the facts of a filed case, can make those determinations."
+    },
+    {
+      "id": "icara_congressional_findings_and_no_merits_rule",
+      "title": "Congressional Findings Behind ICARA, and the Rule That a Return Proceeding Is Not a Custody Case",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "The International Child Abduction Remedies Act (ICARA), 22 U.S.C. §§ 9001-9011, is the federal statute implementing, within the United States, the 1980 Hague Convention on the Civil Aspects of International Child Abduction. Congress found that \"The Convention on the Civil Aspects of International Child Abduction, done at The Hague on October 25, 1980, establishes legal rights and procedures for the prompt return of children who have been wrongfully removed or retained, as well as for securing the exercise of visitation rights.\" A return proceeding brought under this framework, however, is not a vehicle for deciding who should ultimately have custody of {{childName}}: Congress declared that \"The Convention and this chapter empower courts in the United States to determine only rights under the Convention and not the merits of any underlying child custody claims.\" A court hearing a Convention return petition therefore decides only whether {{childName}} should be returned to {{childHabitualResidenceCountry}} for the courts there to resolve custody -- it does not itself decide custody or visitation.",
+      "gap": "This is one federal statute's stated findings and declared purpose (22 U.S.C. § 9001(a)(4) and (b)(4)), not a description of every circumstance in which a court might, in practice, touch on custody-adjacent facts (for example, when assessing a grave-risk defense) while formally deciding only the return question. It also does not address the separate, narrower California statutory framework for preventing an abduction before it happens (Family Code § 3048, covered in this corpus's Child Abduction Prevention Orders document) or the UCCJEA's jurisdictional rules for an ordinary interstate or international custody case that does not involve an alleged wrongful removal or retention (covered in this corpus's Child Custody Jurisdiction (UCCJEA) document) -- a Convention return action is a third, distinct track from both. Both quotes were fetched directly from Cornell Law School's Legal Information Institute (law.cornell.edu), confirmed textually identical across two independent fetches using distinct User-Agent strings, and confirmed programmatically as exact (whitespace-normalized) substrings of the fetched section text.",
+      "citations": [
+        {
+          "case": "22 U.S.C. § 9001(a)(4) (Cornell LII text)",
+          "cite": "ICARA findings -- the Convention's purpose",
+          "url": "https://www.law.cornell.edu/uscode/text/22/9001",
+          "quote": "The Convention on the Civil Aspects of International Child Abduction, done at The Hague on October 25, 1980, establishes legal rights and procedures for the prompt return of children who have been wrongfully removed or retained, as well as for securing the exercise of visitation rights."
+        },
+        {
+          "case": "22 U.S.C. § 9001(b)(4) (Cornell LII text)",
+          "cite": "ICARA declarations -- courts decide only Convention rights, not custody merits",
+          "url": "https://www.law.cornell.edu/uscode/text/22/9001",
+          "quote": "The Convention and this chapter empower courts in the United States to determine only rights under the Convention and not the merits of any underlying child custody claims."
+        }
+      ]
+    },
+    {
+      "id": "icara_key_definitions",
+      "title": "Who Is a “Petitioner,” a “Respondent,” and What “Rights of Access” Means",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "ICARA's definitions section, 22 U.S.C. § 9002, fixes the vocabulary used throughout a Convention return or access proceeding. A petitioner is defined as any person who files the court petition: the statute provides that \"the term “petitioner” means any person who, in accordance with this chapter, files a petition in court seeking relief under the Convention.\" The person on the other side is the respondent, defined so that \"the term “respondent” means any person against whose interests a petition is filed in court, in accordance with this chapter, which seeks relief under the Convention.\" Separately, the Convention's second remedy -- distinct from return of the child -- is addressed through what the statute calls “rights of access,” and \"the term “rights of access” means visitation rights.\" These definitions apply to {{petitionerName}} and {{respondentName}} only if and to the extent a court having jurisdiction determines that {{petitionerName}}'s filing qualifies as a petition under this chapter.",
+      "gap": "This clause states only three of the nine defined terms in 22 U.S.C. § 9002 (petitioner, respondent, and rights of access); it does not state the statute's separate definitions of “applicant,” “Convention,” “Parent Locator Service,” “person,” “State,” or “United States Central Authority,” though all appear in the same fetched section text. It also does not define -- because § 9002 itself does not define -- the Convention's own substantive terms “wrongful removal or retention,” “habitual residence,” or “rights of custody”; those turn on the Convention's text and on federal case law construing it (addressed, to the extent this document reaches it, in the separate wrongful-removal clause below). Fetched directly from Cornell Law School's Legal Information Institute, confirmed textually identical across two independent fetches using distinct User-Agent strings, and confirmed programmatically as an exact substring of the fetched section text.",
+      "citations": [
+        {
+          "case": "22 U.S.C. § 9002(4) (Cornell LII text)",
+          "cite": "ICARA definitions -- “petitioner”",
+          "url": "https://www.law.cornell.edu/uscode/text/22/9002",
+          "quote": "the term “petitioner” means any person who, in accordance with this chapter, files a petition in court seeking relief under the Convention"
+        },
+        {
+          "case": "22 U.S.C. § 9002(6) (Cornell LII text)",
+          "cite": "ICARA definitions -- “respondent”",
+          "url": "https://www.law.cornell.edu/uscode/text/22/9002",
+          "quote": "the term “respondent” means any person against whose interests a petition is filed in court, in accordance with this chapter, which seeks relief under the Convention"
+        },
+        {
+          "case": "22 U.S.C. § 9002(7) (Cornell LII text)",
+          "cite": "ICARA definitions -- “rights of access”",
+          "url": "https://www.law.cornell.edu/uscode/text/22/9002",
+          "quote": "the term “rights of access” means visitation rights"
+        }
+      ]
+    },
+    {
+      "id": "icara_concurrent_jurisdiction_and_petition_filing",
+      "title": "State and Federal Courts Share Jurisdiction, and a Petition Is Filed Where the Child Is Located",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "A Convention return or access petition concerning {{childName}} is not confined to one court system: ICARA provides that \"The courts of the States and the United States district courts shall have concurrent original jurisdiction of actions arising under the Convention.\" That means {{petitionerName}} may generally choose to file in a California superior court or in the appropriate United States district court, subject to that court's own jurisdictional and venue rules. Wherever filed, the petition is filed as an ordinary civil action: \"Any person seeking to initiate judicial proceedings under the Convention for the return of a child or for arrangements for organizing or securing the effective exercise of rights of access to a child may do so by commencing a civil action by filing a petition for the relief sought in any court which has jurisdiction of such action and which is authorized to exercise its jurisdiction in the place where the child is located at the time the petition is filed.\" The place-of-filing rule is keyed to where {{childName}} is located when the petition is filed, not to where {{childHabitualResidenceCountry}} is or where {{respondentName}} resides.",
+      "gap": "This clause states the concurrent-jurisdiction and where-to-file rules in 22 U.S.C. § 9003(a)-(b); it does not state subsection (c)'s separate notice rule (notice is given “in accordance with the applicable law governing notice in interstate child custody proceedings”) or subsection (d)'s rule that the court decide the case in accordance with the Convention, both of which were fetched and confirmed in the same section but are not quoted here. It also does not identify which specific California superior court or federal district would have jurisdiction and be an appropriate venue over any particular petitioner, respondent, or child -- that depends on facts (residence, where the child is actually located) this document does not and cannot determine. Fetched directly from Cornell Law School's Legal Information Institute, confirmed textually identical across two independent fetches using distinct User-Agent strings, and confirmed programmatically as an exact substring of the fetched section text.",
+      "citations": [
+        {
+          "case": "22 U.S.C. § 9003(a) (Cornell LII text)",
+          "cite": "ICARA judicial remedies -- concurrent jurisdiction of state and federal courts",
+          "url": "https://www.law.cornell.edu/uscode/text/22/9003",
+          "quote": "The courts of the States and the United States district courts shall have concurrent original jurisdiction of actions arising under the Convention."
+        },
+        {
+          "case": "22 U.S.C. § 9003(b) (Cornell LII text)",
+          "cite": "ICARA judicial remedies -- filing a petition where the child is located",
+          "url": "https://www.law.cornell.edu/uscode/text/22/9003",
+          "quote": "Any person seeking to initiate judicial proceedings under the Convention for the return of a child or for arrangements for organizing or securing the effective exercise of rights of access to a child may do so by commencing a civil action by filing a petition for the relief sought in any court which has jurisdiction of such action and which is authorized to exercise its jurisdiction in the place where the child is located at the time the petition is filed."
+        }
+      ]
+    },
+    {
+      "id": "icara_burden_of_proof_framework",
+      "title": "Two Different Burdens: Preponderance to Show Wrongful Removal, Clear and Convincing for the Narrowest Defenses",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "ICARA assigns the initial burden to {{petitionerName}}: a petitioner must establish by a preponderance of the evidence, \"in the case of an action for the return of a child, that the child has been wrongfully removed or retained within the meaning of the Convention.\" If {{petitionerName}} makes that showing, the burden shifts to {{respondentName}} to establish a recognized exception, and the statute sets two different standards depending on which exception is invoked. For the narrowest, most serious exceptions -- the Convention's grave-risk-of-harm exception (article 13b) and its human-rights exception (article 20) -- a respondent must show the exception applies \"by clear and convincing evidence that one of the exceptions set forth in article 13b or 20 of the Convention applies.\" For every other exception -- including the Convention's one-year/well-settled exception and its consent, acquiescence, and child's-objection exceptions (articles 12 and 13) -- a respondent need only show the exception applies \"by a preponderance of the evidence that any other exception set forth in article 12 or 13 of the Convention applies.\" This two-tier structure means the hardest defenses to prove are exactly the ones most often invoked to resist return.",
+      "gap": "This clause states the burden-allocation rules of 22 U.S.C. § 9003(e) as enacted; it does not state or quote the Convention's own article 12, 13, 13b, or 20 text describing what each exception requires substantively (habitual attachment for the one-year/well-settled exception, the nature of the grave risk, and so on) -- an attempt to fetch the Convention's original treaty text directly from the Hague Conference (hcch.net) and the U.S. State Department (state.gov, travel.state.gov) failed in this research session because the outbound network proxy configured for this environment rejected connections to those hosts (HTTP 403 on the CONNECT tunnel, logged as organization policy denials, not a fault of the underlying sites); this clause is therefore built only from ICARA's own enacted statutory text describing those articles, not from the Convention's original wording, and it does not evaluate whether any specific set of facts would meet either burden. This clause also does not state § 9003(e)(1)(B) or (e)(1) generally, which governs the separate burden for a rights-of-access petition rather than a return petition. Fetched directly from Cornell Law School's Legal Information Institute, confirmed textually identical across two independent fetches using distinct User-Agent strings, and confirmed programmatically as exact substrings of the fetched section text. CourtListener was queried this session for case law interpreting these burdens (e.g., how courts apply the grave-risk exception) and returned an HTTP 429 rate-limit error (125/day quota exhausted); no case law is cited in this clause as a result, and none is recalled from memory in its place.",
+      "citations": [
+        {
+          "case": "22 U.S.C. § 9003(e)(1)(A) (Cornell LII text)",
+          "cite": "ICARA burdens of proof -- petitioner's preponderance showing of wrongful removal or retention",
+          "url": "https://www.law.cornell.edu/uscode/text/22/9003",
+          "quote": "in the case of an action for the return of a child, that the child has been wrongfully removed or retained within the meaning of the Convention"
+        },
+        {
+          "case": "22 U.S.C. § 9003(e)(2)(A) (Cornell LII text)",
+          "cite": "ICARA burdens of proof -- clear-and-convincing standard for articles 13b and 20",
+          "url": "https://www.law.cornell.edu/uscode/text/22/9003",
+          "quote": "by clear and convincing evidence that one of the exceptions set forth in article 13b or 20 of the Convention applies"
+        },
+        {
+          "case": "22 U.S.C. § 9003(e)(2)(B) (Cornell LII text)",
+          "cite": "ICARA burdens of proof -- preponderance standard for articles 12 and 13's other exceptions",
+          "url": "https://www.law.cornell.edu/uscode/text/22/9003",
+          "quote": "by a preponderance of the evidence that any other exception set forth in article 12 or 13 of the Convention applies"
+        }
+      ]
+    },
+    {
+      "id": "icara_wrongful_removal_definition_and_one_year_clock",
+      "title": "A Wrongful Removal Can Predate Any Custody Order, and What Starts the Convention's One-Year Clock",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "ICARA clarifies two application questions that its enactment left open. First, a wrongful removal or retention of {{childName}} does not require that a custody order already existed at the time: \"the terms “wrongful removal or retention” and “wrongfully removed or retained”, as used in the Convention, include a removal or retention of a child before the entry of a custody order regarding that child.\" A parent who was exercising -- or would have been exercising -- rights of custody by operation of law, without any court order yet in place, can still bring a Convention claim. Second, the Convention's article 12 gives extra significance to whether a return petition is filed within one year of the wrongful removal or retention, and ICARA fixes what starts that one-year clock for a child located in the United States: \"the term “commencement of proceedings”, as used in article 12 of the Convention, means, with respect to the return of a child located in the United States, the filing of a petition in accordance with subsection (b) of this section.\" In other words, the clock runs until {{petitionerName}} actually files the petition described in the concurrent-jurisdiction clause above -- not until some earlier request for help, such as an application to a Central Authority.",
+      "gap": "This clause states only 22 U.S.C. § 9003(f)(2) and (f)(3); it does not state § 9003(f)(1) (the separate clarification of who counts as “authorities” under article 15), and it does not state or quote article 12 of the Convention itself, which is what actually creates the one-year significance and the “well settled in its new environment” standard that applies after one year -- that treaty text could not be independently fetched in this research session for the network-proxy reasons noted in the burden-of-proof clause above, so this clause describes article 12's existence and the commencement-of-proceedings definition only as ICARA's own enacted text describes them, not as independently verified against the Convention's original wording. It also does not address what happens, or what showing is required, once the one-year period has passed. Fetched directly from Cornell Law School's Legal Information Institute, confirmed textually identical across two independent fetches using distinct User-Agent strings, and confirmed programmatically as exact substrings of the fetched section text.",
+      "citations": [
+        {
+          "case": "22 U.S.C. § 9003(f)(2) (Cornell LII text)",
+          "cite": "ICARA application of Convention -- wrongful removal or retention can predate a custody order",
+          "url": "https://www.law.cornell.edu/uscode/text/22/9003",
+          "quote": "the terms “wrongful removal or retention” and “wrongfully removed or retained”, as used in the Convention, include a removal or retention of a child before the entry of a custody order regarding that child"
+        },
+        {
+          "case": "22 U.S.C. § 9003(f)(3) (Cornell LII text)",
+          "cite": "ICARA application of Convention -- commencement of proceedings means filing the petition",
+          "url": "https://www.law.cornell.edu/uscode/text/22/9003",
+          "quote": "the term “commencement of proceedings”, as used in article 12 of the Convention, means, with respect to the return of a child located in the United States, the filing of a petition in accordance with subsection (b) of this section"
+        }
+      ]
+    },
+    {
+      "id": "icara_provisional_remedies_pending_disposition",
+      "title": "Interim Measures a Court May Take While a Return Petition Is Pending, and Their Limit",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "While a petition concerning {{childName}} is pending and undecided, ICARA authorizes interim protective measures: \"any court exercising jurisdiction of an action brought under section 9003(b) of this title may take or cause to be taken measures under Federal or State law, as appropriate, to protect the well-being of the child involved or to prevent the child’s further removal or concealment before the final disposition of the petition.\" That authority is not unlimited, however. The same statute immediately restricts the most drastic interim measure -- physically removing {{childName}} from whoever currently has physical control -- unless ordinary state-law requirements for such a removal are independently satisfied: \"No court exercising jurisdiction of an action brought under section 9003(b) of this title may, under subsection (a) of this section, order a child removed from a person having physical control of the child unless the applicable requirements of State law are satisfied.\" A court cannot use the Convention proceeding itself as a shortcut around the state-law standards that would otherwise govern removing a child from a caretaker's physical control.",
+      "gap": "This clause states 22 U.S.C. § 9004(a)-(b) in full; it does not describe what “the applicable requirements of State law” actually require in California for removing a child from a person's physical control on an interim basis -- that depends on the separate body of California law governing emergency and temporary custody orders (addressed in this corpus's Emergency (Ex Parte) Custody Order document), which this clause does not itself state or attempt to reconcile with § 9004(b)'s cross-reference. It also does not address what showing a party must make to obtain such interim relief in a particular case. Fetched directly from Cornell Law School's Legal Information Institute, confirmed textually identical across two independent fetches using distinct User-Agent strings, and confirmed programmatically as exact substrings of the fetched section text.",
+      "citations": [
+        {
+          "case": "22 U.S.C. § 9004(a) (Cornell LII text)",
+          "cite": "ICARA provisional remedies -- interim protective measures pending disposition",
+          "url": "https://www.law.cornell.edu/uscode/text/22/9004",
+          "quote": "any court exercising jurisdiction of an action brought under section 9003(b) of this title may take or cause to be taken measures under Federal or State law, as appropriate, to protect the well-being of the child involved or to prevent the child’s further removal or concealment before the final disposition of the petition"
+        },
+        {
+          "case": "22 U.S.C. § 9004(b) (Cornell LII text)",
+          "cite": "ICARA provisional remedies -- limitation requiring state-law removal standards to be met",
+          "url": "https://www.law.cornell.edu/uscode/text/22/9004",
+          "quote": "No court exercising jurisdiction of an action brought under section 9003(b) of this title may, under subsection (a) of this section, order a child removed from a person having physical control of the child unless the applicable requirements of State law are satisfied."
+        }
+      ]
+    },
+    {
+      "id": "icara_costs_and_fees",
+      "title": "No Administrative Fee for a Convention Application, and a Presumption of Fee-Shifting After a Successful Return Petition",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Applying to a Central Authority for help under the Convention does not itself cost anything in government fees: \"No department, agency, or instrumentality of the Federal Government or of any State or local government may impose on an applicant any fee in relation to the administrative processing of applications submitted under the Convention.\" Litigating a return petition in court is a different matter -- {{petitionerName}} ordinarily bears the initial cost of legal counsel and court costs -- but ICARA creates a presumption that shifts those costs to {{respondentName}} if the petition succeeds: \"Any court ordering the return of a child pursuant to an action brought under section 9003 of this title shall order the respondent to pay necessary expenses incurred by or on behalf of the petitioner, including court costs, legal fees, foster home or other care during the course of proceedings in the action, and transportation costs related to the return of the child, unless the respondent establishes that such order would be clearly inappropriate.\" That presumption places the burden on {{respondentName}} to show why fee-shifting would be clearly inappropriate on the facts of a particular case; it is not automatic in every successful case, and it applies only once a court has actually ordered {{childName}}'s return.",
+      "gap": "This clause states 22 U.S.C. § 9007(a) and (b)(3); it does not state § 9007(b)(1)-(2), which describe the default rule that a petitioner initially bears these costs and that they may be covered by legal-assistance programs, both fetched in the same section but not quoted here. It also does not describe what showing would make a fee-shifting order “clearly inappropriate,” does not address costs in an unsuccessful petition or in a rights-of-access proceeding rather than a return proceeding, and does not address costs at all if a case is litigated in a foreign Contracting State's courts rather than a U.S. court. Fetched directly from Cornell Law School's Legal Information Institute, confirmed textually identical across two independent fetches using distinct User-Agent strings, and confirmed programmatically as exact substrings of the fetched section text.",
+      "citations": [
+        {
+          "case": "22 U.S.C. § 9007(a) (Cornell LII text)",
+          "cite": "ICARA costs and fees -- no administrative fee for a Convention application",
+          "url": "https://www.law.cornell.edu/uscode/text/22/9007",
+          "quote": "No department, agency, or instrumentality of the Federal Government or of any State or local government may impose on an applicant any fee in relation to the administrative processing of applications submitted under the Convention."
+        },
+        {
+          "case": "22 U.S.C. § 9007(b)(3) (Cornell LII text)",
+          "cite": "ICARA costs and fees -- presumption of fee-shifting to a respondent after a successful return order",
+          "url": "https://www.law.cornell.edu/uscode/text/22/9007",
+          "quote": "Any court ordering the return of a child pursuant to an action brought under section 9003 of this title shall order the respondent to pay necessary expenses incurred by or on behalf of the petitioner, including court costs, legal fees, foster home or other care during the course of proceedings in the action, and transportation costs related to the return of the child, unless the respondent establishes that such order would be clearly inappropriate."
+        }
+      ]
+    },
+    {
+      "id": "icara_us_central_authority_role",
+      "title": "The U.S. Central Authority: A Coordinating Office, Not a Party's Lawyer",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "ICARA requires the designation of a single federal coordinating office: \"The President shall designate a Federal agency to serve as the Central Authority for the United States under the Convention.\" That office has been designated by regulation: \"The Office of Children's Issues in the Bureau of Consular Affairs is designated as the U.S. Central Authority to discharge the duties which are imposed by the Convention and the International Child Abduction Remedies Act upon such authorities.\" Its role toward {{childName}}'s case is cooperative and administrative, not representational -- by regulation, \"The U.S. Central Authority shall cooperate with the Central Authorities of other countries party to the Convention and promote cooperation by appropriate U.S. state authorities to secure the prompt location and return of children wrongfully removed to or retained in any Contracting State, to ensure that rights of custody and access under the laws of one Contracting State are effectively respected in the other Contracting States, and to achieve the other objects of the Convention.\" It does not appear in court as {{petitionerName}}'s or {{respondentName}}'s attorney and does not decide the case; the return or access determination itself is made by a court under the separate judicial-remedies framework addressed elsewhere in this document.",
+      "gap": "This clause states 22 U.S.C. § 9006(a) together with the Central Authority's designation and general cooperative function under 22 C.F.R. §§ 94.2-94.3; it does not state § 9006(b)-(f) (the Central Authority's further functions, regulatory authority, Parent Locator Service access, grant authority, and the limited liability regime for grantees), and it does not state 22 C.F.R. § 94.4's express prohibition on the Central Authority acting as a party's agent or attorney or bearing legal costs, or § 94.5's application procedure, though all were fetched in the course of this research. It does not describe how to actually apply to the Central Authority (the Office of Children's Issues) or what that application must contain. The 22 C.F.R. Part 94 quotes were fetched directly from the Electronic Code of Federal Regulations (ecfr.gov) rather than from leginfo (an appropriate substitute given this is a federal, not California, regulation), confirmed identical across two independent fetches using distinct User-Agent strings after normalizing an expected per-request Content-Security-Policy script nonce that differed between the two fetches (an artifact of the page's own anti-caching behavior, not of the regulatory text), and confirmed programmatically as exact substrings of the fetched section text.",
+      "citations": [
+        {
+          "case": "22 U.S.C. § 9006(a) (Cornell LII text)",
+          "cite": "ICARA -- designation of the United States Central Authority",
+          "url": "https://www.law.cornell.edu/uscode/text/22/9006",
+          "quote": "The President shall designate a Federal agency to serve as the Central Authority for the United States under the Convention."
+        },
+        {
+          "case": "22 C.F.R. § 94.2 (eCFR text)",
+          "cite": "designation of the Office of Children's Issues as the U.S. Central Authority",
+          "url": "https://www.ecfr.gov/current/title-22/chapter-I/subchapter-J/part-94/section-94.2",
+          "quote": "The Office of Children's Issues in the Bureau of Consular Affairs is designated as the U.S. Central Authority to discharge the duties which are imposed by the Convention and the International Child Abduction Remedies Act upon such authorities."
+        },
+        {
+          "case": "22 C.F.R. § 94.3 (eCFR text)",
+          "cite": "functions of the U.S. Central Authority",
+          "url": "https://www.ecfr.gov/current/title-22/chapter-I/subchapter-J/part-94/section-94.3",
+          "quote": "The U.S. Central Authority shall cooperate with the Central Authorities of other countries party to the Convention and promote cooperation by appropriate U.S. state authorities to secure the prompt location and return of children wrongfully removed to or retained in any Contracting State, to ensure that rights of custody and access under the laws of one Contracting State are effectively respected in the other Contracting States, and to achieve the other objects of the Convention."
+        }
+      ]
+    },
+    {
+      "id": "icara_full_faith_credit_and_cumulative_remedies",
+      "title": "One Court's Return Decision Binds Others, and the Convention Does Not Replace Other Available Remedies",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "A decision on {{childName}}'s return is not confined to the court that issued it. ICARA requires that \"Full faith and credit shall be accorded by the courts of the States and the courts of the United States to the judgment of any other such court ordering or denying the return of a child, pursuant to the Convention, in an action brought under this chapter.\" A California court and a federal court, in other words, must each respect a return-related judgment already entered by the other, rather than re-litigating the same Convention question. Separately, ICARA does not displace whatever other legal avenues {{petitionerName}} may have: \"The remedies established by the Convention and this chapter shall be in addition to remedies available under other laws or international agreements.\" A Convention petition is an addition to, not a substitute for, remedies such as a UCCJEA custody proceeding or a state-law emergency custody order.",
+      "gap": "This clause states 22 U.S.C. § 9003(g) and (h) in full; it does not address how full faith and credit interacts with a foreign Contracting State's own return decision (as opposed to a decision by another U.S. state or federal court), and it does not identify which other specific remedies -- beyond naming the UCCJEA and state emergency custody orders by way of example -- might be available on any given set of facts; that depends on the family's particular circumstances. Fetched directly from Cornell Law School's Legal Information Institute, confirmed textually identical across two independent fetches using distinct User-Agent strings, and confirmed programmatically as exact substrings of the fetched section text.",
+      "citations": [
+        {
+          "case": "22 U.S.C. § 9003(g) (Cornell LII text)",
+          "cite": "ICARA judicial remedies -- full faith and credit for a return judgment",
+          "url": "https://www.law.cornell.edu/uscode/text/22/9003",
+          "quote": "Full faith and credit shall be accorded by the courts of the States and the courts of the United States to the judgment of any other such court ordering or denying the return of a child, pursuant to the Convention, in an action brought under this chapter."
+        },
+        {
+          "case": "22 U.S.C. § 9003(h) (Cornell LII text)",
+          "cite": "ICARA judicial remedies -- Convention remedies are cumulative, not exclusive",
+          "url": "https://www.law.cornell.edu/uscode/text/22/9003",
+          "quote": "The remedies established by the Convention and this chapter shall be in addition to remedies available under other laws or international agreements."
+        }
+      ]
+    },
+    {
+      "id": "icara_signature_certification_block",
+      "title": "Signature and Certification -- Not a Petition, Not a Return Order",
+      "kind": "drafting",
+      "body": "I, {{petitionerName}}, declare under penalty of perjury under the laws of the State of California that the foregoing statement concerning {{childName}} is true and correct to the best of my knowledge.\n\nExecuted on {{dateSigned}}, at {{cityState}}.\n\n☐ _________________________ {{petitionerName}}, signature\n\n[This information sheet is prepared for use alongside an actual petition, filed in {{courtName}} or another court of competent jurisdiction, under the International Child Abduction Remedies Act, 22 U.S.C. §§ 9001-9011, and the 1980 Hague Convention on the Civil Aspects of International Child Abduction. It does not itself constitute that petition, does not itself constitute an application to the United States Central Authority or any foreign Central Authority, and does not order the return of, or access to, {{childName}} -- only a court can do that.]"
     }
   ]
 }

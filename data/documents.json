@@ -28784,5 +28784,82 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "icara_hague_convention_child_abduction_return_info_sheet",
+    "title": "International Child Abduction Remedies Act (ICARA / Hague Convention Return) — Information Sheet",
+    "description": "Explains the federal International Child Abduction Remedies Act, 22 U.S.C. §§ 9001-9011, which implements the 1980 Hague Convention on the Civil Aspects of International Child Abduction in U.S. courts -- concurrent state/federal jurisdiction over a return or access petition, the shifting preponderance and clear-and-convincing burdens of proof, the rule that a wrongful removal can predate any custody order, what starts the Convention's one-year clock, interim protective measures, fee-shifting after a successful return order, and the U.S. Central Authority's coordinating (non-representational) role. Distinct from this corpus's California Child Abduction Prevention Orders (Family Code § 3048, which addresses preventing an abduction before it happens) and Child Custody Jurisdiction (UCCJEA) documents (which address an ordinary interstate custody case, not an alleged wrongful international removal or retention already completed).",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "icara_declaration_of_facts",
+      "icara_congressional_findings_and_no_merits_rule",
+      "icara_key_definitions",
+      "icara_concurrent_jurisdiction_and_petition_filing",
+      "icara_burden_of_proof_framework",
+      "icara_wrongful_removal_definition_and_one_year_clock",
+      "icara_provisional_remedies_pending_disposition",
+      "icara_costs_and_fees",
+      "icara_us_central_authority_role",
+      "icara_full_faith_credit_and_cumulative_remedies",
+      "icara_signature_certification_block"
+    ],
+    "fields": [
+      {
+        "id": "petitionerName",
+        "label": "Petitioner's name (parent or person seeking the child's return)",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "respondentName",
+        "label": "Respondent's name (person who removed or is retaining the child)",
+        "placeholder": "Casey Morgan",
+        "required": true
+      },
+      {
+        "id": "childName",
+        "label": "Child's name",
+        "placeholder": "Alex Morgan",
+        "required": true
+      },
+      {
+        "id": "childHabitualResidenceCountry",
+        "label": "Child's country of habitual residence immediately before the removal or retention",
+        "placeholder": "Mexico",
+        "required": true
+      },
+      {
+        "id": "dateOfRemovalOrRetention",
+        "label": "Date of the removal or retention",
+        "placeholder": "March 15, 2026",
+        "required": true
+      },
+      {
+        "id": "childCurrentCountry",
+        "label": "Country where the child is currently believed to be located",
+        "placeholder": "United States",
+        "required": true
+      },
+      {
+        "id": "courtName",
+        "label": "Court where the petition will be or was filed",
+        "placeholder": "U.S. District Court, Central District of California",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 6, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, state",
+        "placeholder": "Los Angeles, California",
+        "required": true
+      }
+    ]
   }
 ]
