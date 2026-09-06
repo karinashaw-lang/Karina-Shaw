@@ -23688,5 +23688,43 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "trade_adjustment_assistance_info_sheet",
+    "title": "Trade Adjustment Assistance (TAA) — Information Sheet",
+    "description": "An informational sheet on the federal Trade Adjustment Assistance program (19 U.S.C. § 2271 et seq. and 26 U.S.C. § 35): the program's current operational status (new benefits under this part are not authorized after June 30, 2022, per the statute's own text, with the related Health Coverage Tax Credit having expired even earlier), how a group of workers is petitioned for and certified, how Trade Readjustment Allowances relate to and depend on exhausting state unemployment insurance, and the training/job-search/relocation benefit categories. Distinguishes TAA from the corpus's existing state UI and WARN Act documents.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "taa_intro",
+      "taa_program_status",
+      "taa_petition_and_certification",
+      "taa_tra_and_ui_relationship",
+      "taa_training_jobsearch_relocation_benefits",
+      "taa_health_coverage_tax_credit",
+      "taa_benefits_overview",
+      "taa_ack"
+    ],
+    "fields": [
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "separationDate",
+        "label": "Date of separation",
+        "placeholder": "March 2, 2026",
+        "required": true
+      }
+    ]
   }
 ]
