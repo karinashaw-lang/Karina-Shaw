@@ -24856,5 +24856,69 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "trust_modification_termination_beneficiary_consent_info_sheet",
+    "title": "Trust Modification and Termination by Consent — Information Sheet",
+    "description": "Explains California's statutory routes for modifying or terminating an irrevocable trust: the all-beneficiaries court-petition route and its material-purpose limitation, the settlor-and-beneficiaries without-court written-consent route, the heirs/next-of-kin class-narrowing power, and the consent-independent bases for unanticipated changed circumstances and a trust too small to justify its administration costs (Prob. Code §§ 15403-15404, 15408-15410).",
+    "categories": [
+      "Estate Planning"
+    ],
+    "clauseOrder": [
+      "trustmodconsent_declaration",
+      "trustmodconsent_two_consent_routes",
+      "trustmodconsent_material_purpose_limit",
+      "trustmodconsent_settlor_participation_required",
+      "trustmodconsent_heirs_next_of_kin_class",
+      "trustmodconsent_unanticipated_circumstances",
+      "trustmodconsent_small_or_uneconomical_trust",
+      "trustmodconsent_disposition_on_termination",
+      "trustmodconsent_distinct_from_other_corpus_documents",
+      "trustmodconsent_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "settlorName",
+        "label": "Settlor's name",
+        "placeholder": "e.g., Jane Doe",
+        "required": false
+      },
+      {
+        "id": "trustName",
+        "label": "Trust name",
+        "placeholder": "e.g., The Jane Doe Revocable Trust",
+        "required": true
+      },
+      {
+        "id": "originalTrustDate",
+        "label": "Date the trust was originally executed",
+        "placeholder": "e.g., January 1, 2015",
+        "required": true
+      },
+      {
+        "id": "trusteeName",
+        "label": "Trustee's name",
+        "placeholder": "e.g., John Smith",
+        "required": true
+      },
+      {
+        "id": "beneficiaryName",
+        "label": "Beneficiary's name",
+        "placeholder": "e.g., Jane Doe Jr.",
+        "required": false
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "e.g., January 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, State",
+        "placeholder": "e.g., Los Angeles, California",
+        "required": true
+      }
+    ]
   }
 ]
