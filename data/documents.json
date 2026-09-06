@@ -27354,5 +27354,57 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "private_investigator_licensing_info_sheet",
+    "title": "Private Investigator Licensing — Information Sheet",
+    "description": "Explains California's Private Investigator Act (Business and Professions Code Sections 7512-7573.5): the statutory definition of \"private investigator\" (including investigations into an employer's own employees), the license requirement administered by the Bureau of Security and Investigative Services, the misdemeanor exposure for a business that knowingly engages an unlicensed, nonexempt investigator, the exemption for in-house unarmed investigative employees, other named statutory exemptions, licensure qualifications, the fingerprint-based FBI background check built into the license application, and the licensee's responsibility for its own staff. Distinct from this corpus's existing Security Guard / Proprietary Security Officer Registration, Farm Labor Contractor Licensing, Talent Agencies Act, TNC Driver Background Check, and Live Scan / DOJ Fingerprint Background Check documents, none of which address the separate Private Investigator Act licensing scheme.",
+    "categories": [
+      "Hiring"
+    ],
+    "clauseOrder": [
+      "privinv_intro",
+      "privinv_definition_scope",
+      "privinv_license_required",
+      "privinv_employer_liability",
+      "privinv_inhouse_exemption",
+      "privinv_other_named_exemptions",
+      "privinv_licensure_qualifications",
+      "privinv_applicant_fingerprint_check",
+      "privinv_licensee_responsibility_for_staff",
+      "privinv_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "investigativeServicesUseDescription",
+        "label": "Company's use of investigative services, if any",
+        "placeholder": "We are considering engaging a firm to conduct pre-employment background investigations on finalist candidates",
+        "required": true
+      },
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 6, 2026",
+        "required": true
+      }
+    ]
   }
 ]
