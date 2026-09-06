@@ -25238,5 +25238,64 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "williamson_act_info_sheet",
+    "title": "Williamson Act (Land Conservation Contract) — Information Sheet",
+    "description": "Explains California's Land Conservation Act of 1965 (the Williamson Act): how a landowner and a city or county enter a contract restricting land to agricultural or open-space use, the automatic renewal and notice-of-nonrenewal process, the separate cancellation procedure and its 12.5% fee, and the capitalized-income property tax valuation method that applies while a contract is in force.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "williamsonact_declaration",
+      "williamsonact_definitions_and_purpose",
+      "williamsonact_contract_authority",
+      "williamsonact_term_and_renewal",
+      "williamsonact_notice_of_nonrenewal",
+      "williamsonact_cancellation_grounds",
+      "williamsonact_cancellation_fee",
+      "williamsonact_certificate_of_cancellation_process",
+      "williamsonact_judicial_review",
+      "williamsonact_property_tax_valuation",
+      "williamsonact_signature_acknowledgment"
+    ],
+    "fields": [
+      {
+        "id": "propertyAddress",
+        "label": "Property address",
+        "placeholder": "123 Main St, Apt 4, Springfield",
+        "required": true
+      },
+      {
+        "id": "county",
+        "label": "County",
+        "placeholder": "San Diego County",
+        "required": true
+      },
+      {
+        "id": "parcelNumber",
+        "label": "Assessor's Parcel Number",
+        "placeholder": "123-456-789",
+        "required": false
+      },
+      {
+        "id": "legalDescription",
+        "label": "Legal description of the property",
+        "placeholder": "Lot 12, Block 3, Tract No. 4567, as per map recorded in Book 45, Page 12 of Maps, Sacramento County Records",
+        "required": true
+      },
+      {
+        "id": "ownerName",
+        "label": "Property owner's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "signatureDate",
+        "label": "Signature date",
+        "placeholder": "September 1, 2026",
+        "required": true
+      }
+    ]
   }
 ]
