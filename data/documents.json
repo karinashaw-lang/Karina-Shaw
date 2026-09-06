@@ -27863,5 +27863,70 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "annual_report_to_shareholders_info_sheet",
+    "title": "Corporation's Annual Report to Shareholders — Information Sheet",
+    "description": "Explains California Corporations Code § 1501's affirmative duty on a corporation's board to send shareholders an annual financial report within 120 days after the close of the fiscal year, the bylaw waiver and relaxed accounting standard available to corporations with fewer than 100 holders of record, the electronic-transmission delivery option, the additional related-party-transaction and indemnification disclosures required of qualifying mid-size corporations, a shareholder's fallback right to demand statements when no report was sent, the court-enforcement and fee-shifting remedy for an unjustified failure to report, and the section's reach to both domestic and certain foreign corporations. Distinguishes this board-initiated reporting duty from the corpus's existing shareholder/member records-inspection-rights, Benefit Corporation annual-benefit-report, and Social Purpose Corporation annual-report documents.",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "annrpt_intro",
+      "annrpt_core_duty_deadline",
+      "annrpt_electronic_transmission",
+      "annrpt_timing_relative_to_meeting",
+      "annrpt_small_corp_gaap_exception",
+      "annrpt_related_party_transaction_disclosure",
+      "annrpt_indemnification_disclosure",
+      "annrpt_shareholder_demand_rights",
+      "annrpt_enforcement_and_fee_shifting",
+      "annrpt_scope_domestic_and_foreign",
+      "annrpt_signature"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Corporation's name",
+        "placeholder": "Acme Innovations, Inc.",
+        "required": true
+      },
+      {
+        "id": "fiscalYearEndDate",
+        "label": "Fiscal year-end date",
+        "placeholder": "December 31, 2026",
+        "required": true
+      },
+      {
+        "id": "holdersOfRecordCount",
+        "label": "Approximate number of holders of record of shares",
+        "placeholder": "42",
+        "required": false
+      },
+      {
+        "id": "shareholderName",
+        "label": "Shareholder's name (if illustrating a demand under subdivision (c))",
+        "placeholder": "Jordan Lee",
+        "required": false
+      },
+      {
+        "id": "preparerName",
+        "label": "Preparer's name",
+        "placeholder": "Taylor Morgan",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 6, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Sacramento, California",
+        "required": true
+      }
+    ]
   }
 ]
