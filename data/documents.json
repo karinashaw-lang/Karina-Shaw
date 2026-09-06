@@ -29732,5 +29732,85 @@
         "required": false
       }
     ]
+  },
+  {
+    "id": "pace_financing_info_sheet",
+    "title": "PACE (Property Assessed Clean Energy) Financing — Information Sheet",
+    "description": "Explains California's Property Assessed Clean Energy (PACE) voluntary contractual assessment financing framework: what a PACE assessment is and how it becomes a lien collected on the property tax bill (Sts. & High. Code §§ 5898.12, 5898.20, 5898.30), the statutory 5% value cap (§ 5898.15), the residential right to cancel — 3 business days, 5 for senior citizens (§ 5898.16), the required Financing Estimate and Disclosure, its valuation-representation restriction, its late-payment-penalty and sale/refinance-payoff acknowledgments (§ 5898.17), and the PACE program administrator's pre-contract eligibility, financing-amount/combined-debt, and ability-to-pay checks (Fin. Code §§ 22684, 22686). Distinct from the corpus's existing Solar Rights Act sheet (which addresses an HOA's ability to restrict installing a solar system) and from the Mello-Roos special-tax-lien disclosure clauses already in the Residential Purchase Agreement (which only name-check a 'contractual assessment program' as one of several lien types requiring a resale notice) — this document is the corpus's first coverage of PACE's own owner-facing disclosure, cancellation, and administrator-underwriting protections.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "pacefin_intro_scope",
+      "pacefin_what_is_pace",
+      "pacefin_voluntary_contractual_basis",
+      "pacefin_lien_and_tax_collection",
+      "pacefin_five_percent_value_cap",
+      "pacefin_right_to_cancel",
+      "pacefin_financing_estimate_disclosure_required",
+      "pacefin_valuation_representation_restriction",
+      "pacefin_statutory_penalty_disclosure",
+      "pacefin_sale_or_refinance_payoff_disclosure",
+      "pacefin_administrator_eligibility_checks",
+      "pacefin_financing_amount_and_combined_debt_limits",
+      "pacefin_ability_to_pay_requirement",
+      "pacefin_closing_acknowledgment"
+    ],
+    "fields": [
+      {
+        "id": "propertyAddress",
+        "label": "Property address",
+        "placeholder": "123 Main St, Apt 4, Springfield",
+        "required": true
+      },
+      {
+        "id": "county",
+        "label": "County where the property is located",
+        "placeholder": "Alameda",
+        "required": true
+      },
+      {
+        "id": "parcelNumber",
+        "label": "Assessor's Parcel Number",
+        "placeholder": "123-456-789",
+        "required": false
+      },
+      {
+        "id": "ownerName",
+        "label": "Property owner's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "businessName",
+        "label": "PACE program administrator or financing company name",
+        "placeholder": "Sunrise PACE Program Administrator, Inc.",
+        "required": false
+      },
+      {
+        "id": "workDescription",
+        "label": "Description of the improvements to be financed",
+        "placeholder": "Rooftop solar panel system and attic insulation upgrade",
+        "required": false
+      },
+      {
+        "id": "loanAmount",
+        "label": "Estimated amount to be financed under the PACE assessment",
+        "placeholder": "$28,500",
+        "required": false
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 6, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
