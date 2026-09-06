@@ -24194,5 +24194,43 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "employee_literacy_education_assistance_info_sheet",
+    "title": "Employee Literacy Education Assistance Act — Information Sheet",
+    "description": "Explains California's Employee Literacy Education Assistance Act (Labor Code §§ 1040-1044): the 25-employee coverage threshold, the accommodation-and-assistance duty, what counts as employer assistance, the privacy-safeguarding duty, the no-paid-leave disclaimer, and the protection against termination for disclosing a literacy problem.",
+    "categories": [
+      "During employment"
+    ],
+    "clauseOrder": [
+      "empliteracy_intro",
+      "empliteracy_short_title",
+      "empliteracy_accommodation_duty",
+      "empliteracy_employer_assistance_defined",
+      "empliteracy_privacy_duty",
+      "empliteracy_no_paid_leave_required",
+      "empliteracy_antitermination",
+      "empliteracy_ack"
+    ],
+    "fields": [
+      {
+        "id": "employeeName",
+        "label": "Employee's name",
+        "placeholder": "e.g., Jane Doe",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Employer/company name",
+        "placeholder": "e.g., Acme Inc.",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "e.g., January 1, 2026",
+        "required": true
+      }
+    ]
   }
 ]
