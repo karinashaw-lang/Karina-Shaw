@@ -28655,5 +28655,69 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "adult_incapacitated_child_support_info_sheet",
+    "title": "Support for an Adult Child Incapacitated from Earning a Living — Information Sheet",
+    "description": "Information about California Family Code section 3910, a distinct statutory duty requiring each parent to support a child of any age who is incapacitated from earning a living and without sufficient means — including the court's option to direct payment to a special needs trust. This is separate from, and not covered by, this corpus's existing minor-child and guideline-support materials, which address only the ordinary support duty that ends at 18 or 19.",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "incapchildsupport_declaration",
+      "incapchildsupport_core_duty",
+      "incapchildsupport_distinct_from_minor_support_duty",
+      "incapchildsupport_special_needs_trust_option",
+      "incapchildsupport_statutory_placement_and_recency",
+      "incapchildsupport_no_marital_status_condition_note",
+      "incapchildsupport_distinction_from_guideline_support",
+      "incapchildsupport_interaction_with_public_benefits_note",
+      "incapchildsupport_information_to_gather",
+      "incapchildsupport_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "parent1Name",
+        "label": "First parent's full legal name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "parent2Name",
+        "label": "Second parent's full legal name",
+        "placeholder": "Morgan Casey Lee",
+        "required": true
+      },
+      {
+        "id": "childName",
+        "label": "Adult child's name (the person for whom support is discussed)",
+        "placeholder": "Casey Alex Lee",
+        "required": true
+      },
+      {
+        "id": "countyOfFiling",
+        "label": "County of filing",
+        "placeholder": "Sacramento County",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 6, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Sacramento, California",
+        "required": true
+      },
+      {
+        "id": "trustName",
+        "label": "Name of special needs trust, if a support payment to one is under discussion",
+        "placeholder": "The Casey Alex Lee Special Needs Trust",
+        "required": false
+      }
+    ]
   }
 ]
