@@ -29356,5 +29356,59 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "state_civil_service_disciplinary_due_process_info_sheet",
+    "title": "State Civil Service Disciplinary Due Process (Government Code §§ 19570-19589) — Information Sheet",
+    "description": "Explains the disciplinary-proceedings article of California's State Civil Service Act, Government Code sections 19570 through 19589 -- the pre-discipline written-notice requirement (and its current State Bargaining Unit 5 limitation), the enumerated causes for discipline, the 30-day right to answer, the right to a hearing, the board's decision standard and backpay/mitigation rules, the right to petition for rehearing and to separately seek judicial review, and the three-year reprimand-letter removal rule. This is distinct from this corpus's existing Public Safety Officers Procedural Bill of Rights Act document, which covers a different statute limited to peace officers, and from the general wrongful-termination and personnel-record documents, none of which address this state-civil-service-specific pre-disciplinary notice and appeal process before the State Personnel Board.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "civilsvcdp_declaration",
+      "civilsvcdp_scope_and_source",
+      "civilsvcdp_adverse_action_definition",
+      "civilsvcdp_causes_for_discipline",
+      "civilsvcdp_notice_requirement",
+      "civilsvcdp_bargaining_unit_limitation",
+      "civilsvcdp_right_to_answer",
+      "civilsvcdp_hearing_right",
+      "civilsvcdp_decision_backpay_and_mitigation",
+      "civilsvcdp_rehearing_and_judicial_review",
+      "civilsvcdp_reprimand_removal",
+      "civilsvcdp_closing_signature"
+    ],
+    "fields": [
+      {
+        "id": "employeeName",
+        "label": "State civil service employee's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "State agency, board, or department name",
+        "placeholder": "California Department of Example Services",
+        "required": true
+      },
+      {
+        "id": "jobTitle",
+        "label": "Civil service classification / job title",
+        "placeholder": "Associate Governmental Program Analyst",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 6, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, state",
+        "placeholder": "Sacramento, California",
+        "required": true
+      }
+    ]
   }
 ]
