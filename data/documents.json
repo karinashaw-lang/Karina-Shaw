@@ -27191,5 +27191,69 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "child_support_income_determination_info_sheet",
+    "title": "Determination of Income for Guideline Child Support — Information Sheet",
+    "description": "Explains what California's statewide uniform child support guideline statutes say about how a parent's income is defined and measured before the guideline formula is ever applied — the broad, non-exhaustive definition of annual gross income and its business-income and discretionary-benefit categories, the statutory exclusions from gross income, the mandatory-vs-discretionary standard for considering earning capacity instead of actual income (including the specific rule that incarceration or involuntary institutionalization is not treated as voluntary unemployment), the enumerated list of deductions used to compute annual net disposable income, the annual-to-monthly conversion and the court's power to adjust an inaccurate or seasonal/fluctuating income figure, and the extreme financial hardship deduction's enumerated circumstances, cap, and required findings. A companion to this corpus's Child Support Agreement (which covers the guideline formula itself, departure factors, and add-on expenses) and its Low-Income Adjustment clause — this document covers the distinct, upstream question of how the income figures that feed into those calculations are themselves defined.",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "csincomedet_declaration",
+      "csincomedet_gross_income_definition",
+      "csincomedet_business_and_benefit_income",
+      "csincomedet_earning_capacity_imputation",
+      "csincomedet_incarceration_not_voluntary_unemployment",
+      "csincomedet_gross_income_exclusions",
+      "csincomedet_net_disposable_income_deductions",
+      "csincomedet_monthly_conversion_and_adjustment",
+      "csincomedet_extreme_hardship_deduction",
+      "csincomedet_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "parent1Name",
+        "label": "First parent's full legal name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "parent2Name",
+        "label": "Second parent's full legal name",
+        "placeholder": "Morgan Casey Lee",
+        "required": true
+      },
+      {
+        "id": "childName",
+        "label": "Child's name",
+        "placeholder": "Riley Lee",
+        "required": true
+      },
+      {
+        "id": "childDOB",
+        "label": "Child's date of birth",
+        "placeholder": "April 3, 2019",
+        "required": true
+      },
+      {
+        "id": "countyOfFiling",
+        "label": "County of filing",
+        "placeholder": "Sacramento County",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]

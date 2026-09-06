@@ -75618,6 +75618,232 @@
       "title": "Acknowledgment",
       "kind": "drafting",
       "body": "Please sign below to indicate review of the information above.\n\n{{companyName}}\nBy: _______________\nName/Title: _______________\nDate: {{dateSigned}}\n\nWorker: {{employeeName}}\nSignature: _______________\nDate: {{dateSigned}}"
+    },
+    {
+      "id": "csincomedet_declaration",
+      "title": "Declaration of Parents and Purpose of This Information Sheet",
+      "kind": "drafting",
+      "body": "This Determination of Income for Guideline Child Support Information Sheet concerns {{parent1Name}} and {{parent2Name}}, the parents of {{childName}} (date of birth: {{childDOB}}), in connection with a child support matter pending, or that may be filed, in the California superior court for {{countyOfFiling}}. It describes what the statutes governing California's statewide uniform child support guideline say about how a parent's income is defined, measured, and converted into the annual gross income and net disposable income figures the guideline formula uses — including what counts as gross income, when a court considers earning capacity instead of actual income, the specific statutory exclusions from gross income and deductions from gross income, and the mechanisms for adjusting the resulting figure for inaccurate, seasonal, or fluctuating income, and for financial hardship. This information sheet does not itself calculate any support amount, does not itself constitute or replace a court-ordered income and expense declaration, and is not a substitute for the moving papers, financial disclosures, or Judicial Council forms a party actually files in a support proceeding."
+    },
+    {
+      "id": "csincomedet_gross_income_definition",
+      "title": "Annual Gross Income Is Broadly Defined and Non-Exhaustive",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "California's child support guideline statute defines the annual gross income of each parent, for guideline purposes, as income from whatever source derived, except as specified in the statute's own exclusions subdivision, and states that the definition includes, but is not limited to, an enumerated list. The statute's non-exhaustive list of included income types is broad: it names commissions, salaries, royalties, wages, bonuses, rents, dividends, pensions, interest, trust income, annuities, workers' compensation benefits, unemployment insurance benefits, disability insurance benefits, social security benefits, severance pay, veterans benefits that are not based on need, military allowances for housing and food, and spousal support actually received from a person who is not a party to the child support proceeding.",
+      "gap": "This is the actual text of Family Code section 4058(a) and 4058(a)(1), fetched directly from leginfo.legislature.ca.gov and confirmed byte-identical (after whitespace normalization) across two fetches made with different User-Agent strings. The statute's own list is expressly non-exhaustive (\"includes, but is not limited to\"), so this document does not attempt to catalog every category of receipt a court has treated as gross income; subdivisions (a)(2) and (a)(3), addressing business income and discretionary employee/self-employment benefits, are addressed in this document's companion clause rather than here. This section became operative September 1, 2024 (Stats. 2023, Ch. 213); this document does not address or quote the version of section 4058 in effect before that operative date.",
+      "citations": [
+        {
+          "case": "Cal. Fam. Code § 4058(a) (California Legislative Information text)",
+          "cite": "the statute's broad, non-exhaustive definition of annual gross income",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=4058.",
+          "quote": "The annual gross income of each parent means income from whatever source derived, except as specified in subdivision (c) and includes, but is not limited to, the following:"
+        },
+        {
+          "case": "Cal. Fam. Code § 4058(a)(1) (California Legislative Information text)",
+          "cite": "the enumerated (non-exhaustive) list of included income types",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=4058.",
+          "quote": "Income such as commissions, salaries, royalties, wages, bonuses, rents, dividends, pensions, interest, trust income, annuities, workers’ compensation benefits, unemployment insurance benefits, disability insurance benefits, social security benefits, severance pay, veterans benefits that are not based on need, military allowances for housing and food, and spousal support actually received from a person not a party to the proceeding to establish a child support order pursuant to this article."
+        }
+      ]
+    },
+    {
+      "id": "csincomedet_business_and_benefit_income",
+      "title": "Business Income and Discretionary Inclusion of Employee or Self-Employment Benefits",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Beyond the enumerated list of standard income types, California's guideline statute separately addresses two further categories of income. Income from the proprietorship of a business is defined as the business's gross receipts reduced by the expenditures required to operate the business — not gross receipts alone. Separately, the statute gives a court discretion to include employee benefits or self-employment benefits as income, and directs the court, in exercising that discretion, to take into consideration the benefit to the employee, any corresponding reduction in living expenses, and other relevant facts.",
+      "gap": "This is the actual text of Family Code section 4058(a)(2) and 4058(a)(3), fetched directly from leginfo.legislature.ca.gov and confirmed byte-identical across two fetches made with different User-Agent strings. These are two subdivisions of the same enacted section as this document's companion clause on the general definition of gross income (subdivision (a) and (a)(1)); they are not independent of one another. The statute's text does not itself define \"expenditures required for the operation of the business\" or specify which employee or self-employment benefits a court has found to fall within its discretionary-inclusion authority; this document does not address that further line-drawing.",
+      "citations": [
+        {
+          "case": "Cal. Fam. Code § 4058(a)(2) (California Legislative Information text)",
+          "cite": "business proprietorship income measured as gross receipts less required operating expenditures",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=4058.",
+          "quote": "Income from the proprietorship of a business, such as gross receipts from the business reduced by expenditures required for the operation of the business."
+        },
+        {
+          "case": "Cal. Fam. Code § 4058(a)(3) (California Legislative Information text)",
+          "cite": "the court's discretion to include employee or self-employment benefits, and the factors guiding that discretion",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=4058.",
+          "quote": "In the discretion of the court, employee benefits or self-employment benefits, taking into consideration the benefit to the employee, any corresponding reduction in living expenses, and other relevant facts."
+        }
+      ]
+    },
+    {
+      "id": "csincomedet_earning_capacity_imputation",
+      "title": "Earning Capacity: Mandatory When Income Is Unknown, Discretionary and Best-Interest-Limited When Known",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "California's guideline statute distinguishes two situations for a court's consideration of a parent's earning capacity rather than the parent's actual income. When a parent's annual gross income is unknown, the statute is mandatory: the court shall consider the parent's earning capacity. When a parent's annual gross income is known, the statute instead makes earning-capacity consideration discretionary, and conditions it: the court may, in its discretion, consider earning capacity in lieu of income only consistent with the best interests of the children, taking into consideration the children's overall welfare and developmental needs and the time that parent spends with the children. When a court determines earning capacity under this subdivision, the statute directs the court to consider the specific circumstances of the parent, to the extent known.",
+      "gap": "This is the actual text of Family Code section 4058(b)(1)(A), 4058(b)(1)(B), and the opening sentence of 4058(b)(2), fetched directly from leginfo.legislature.ca.gov and confirmed byte-identical across two fetches made with different User-Agent strings. The statute's text at 4058(b)(2) lists specific circumstances a court considers (assets, residence, employment and earnings history, job skills, educational attainment, literacy, age, health, criminal record and other employment barriers, record of seeking work, the local job market, availability of employers, and prevailing local earnings levels) that this document does not separately quote or catalog in full; this document also does not address any case law interpreting when a court's earning-capacity finding will be upheld, which is outside the scope of a document limited to the statute's own text.",
+      "citations": [
+        {
+          "case": "Cal. Fam. Code § 4058(b)(1)(A) (California Legislative Information text)",
+          "cite": "mandatory consideration of earning capacity when income is unknown",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=4058.",
+          "quote": "In a case when a parent’s annual gross income is unknown, the court shall consider the earning capacity of the parent."
+        },
+        {
+          "case": "Cal. Fam. Code § 4058(b)(1)(B) (California Legislative Information text)",
+          "cite": "discretionary, best-interest-limited consideration of earning capacity in lieu of known income",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=4058.",
+          "quote": "In a case when a parent’s annual gross income is known, the court may, in its discretion, consider the earning capacity of a parent in lieu of the parent’s income, consistent with the best interests of the children, taking into consideration the overall welfare and developmental needs of the children, and the time that parent spends with the children."
+        },
+        {
+          "case": "Cal. Fam. Code § 4058(b)(2) (California Legislative Information text)",
+          "cite": "the requirement to consider the parent's specific circumstances, to the extent known",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=4058.",
+          "quote": "When determining the earning capacity of the parent pursuant to this subdivision, the court shall consider the specific circumstances of the parent, to the extent known."
+        }
+      ]
+    },
+    {
+      "id": "csincomedet_incarceration_not_voluntary_unemployment",
+      "title": "Incarceration or Involuntary Institutionalization Is Not Treated as Voluntary Unemployment",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "California's guideline statute contains a specific rule addressing incarcerated or involuntarily institutionalized parents in the earning-capacity context: notwithstanding any other law, a parent's incarceration or involuntary institutionalization shall not be treated as voluntary unemployment in establishing or modifying support orders, regardless of the nature of the offense. The statute cross-references a defined-terms provision, Family Code section 4007.5(e), for the meaning of \"incarcerated or involuntarily institutionalized.\"",
+      "gap": "This is the actual text of Family Code section 4058(b)(3)'s first sentence, fetched directly from leginfo.legislature.ca.gov and confirmed byte-identical across two fetches made with different User-Agent strings. This document has not independently fetched or verified Family Code section 4007.5(e), which the quoted sentence cross-references for the definition of \"incarcerated or involuntarily institutionalized\"; this document states only that the cross-reference exists, and does not state what section 4007.5(e)'s definition itself provides. The statute's rule addresses only whether incarceration/involuntary institutionalization is treated as voluntary unemployment for earning-capacity purposes; it does not itself address how a support order is otherwise established, modified, or enforced during a parent's incarceration, which this document does not address.",
+      "citations": [
+        {
+          "case": "Cal. Fam. Code § 4058(b)(3) (California Legislative Information text)",
+          "cite": "the rule against treating incarceration or involuntary institutionalization as voluntary unemployment",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=4058.",
+          "quote": "Notwithstanding any other law, the incarceration or involuntary institutionalization of a parent shall not be treated as voluntary unemployment in establishing or modifying support orders regardless of the nature of the offense."
+        }
+      ]
+    },
+    {
+      "id": "csincomedet_gross_income_exclusions",
+      "title": "Statutory Exclusions from Annual Gross Income",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "California's guideline statute excludes specific categories of receipt from annual gross income. Annual gross income does not include any income derived from child support payments actually received, or income derived from any public assistance program for which eligibility is based on a determination of need. As a related but separately stated rule, child support received by a party for children from another relationship shall not be included as part of that party's gross or net income.",
+      "gap": "This is the actual text of Family Code section 4058(c)'s first and second sentences, fetched directly from leginfo.legislature.ca.gov and confirmed byte-identical across two fetches made with different User-Agent strings. This document treats the two quoted sentences as stating two related exclusions (need-based public assistance and child support actually received on the one hand; child support received for children of another relationship on the other) because the statute states them as separate sentences, but takes no position on whether they are legally coextensive in any particular case. Section 4058(c) also contains a third sentence, an operative date provision (subdivision (d) in the statute's own lettering, stating the section is operative September 1, 2024), which this document does not separately quote here because it is addressed in this document's companion clause on the general definition of gross income.",
+      "citations": [
+        {
+          "case": "Cal. Fam. Code § 4058(c) (California Legislative Information text)",
+          "cite": "the exclusion of child support actually received and need-based public assistance income from gross income",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=4058.",
+          "quote": "Annual gross income does not include any income derived from child support payments actually received, and income derived from any public assistance program, eligibility for which is based on a determination of need."
+        },
+        {
+          "case": "Cal. Fam. Code § 4058(c) (California Legislative Information text)",
+          "cite": "the separate exclusion of child support received for children from another relationship",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=4058.",
+          "quote": "Child support received by a party for children from another relationship shall not be included as part of that party’s gross or net income."
+        }
+      ]
+    },
+    {
+      "id": "csincomedet_net_disposable_income_deductions",
+      "title": "Annual Net Disposable Income Is Gross Income Minus an Enumerated List of Deductions",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "California's guideline statute defines annual net disposable income, the figure the guideline formula actually uses, as computed by deducting from the parent's annual gross income the actual amounts attributable to a list of enumerated items or other items permitted under the statute's own article. Among the enumerated deductions: the state and federal income tax liability resulting from the parties' taxable income; deductions attributed to the employee's or self-employed worker's contribution under the Federal Insurance Contributions Act (FICA), or an equivalent capped amount for a parent not subject to FICA, provided the deducted amount is used to secure retirement or disability benefits; and any child or spousal support actually being paid by the parent under a court order to or for the benefit of a person who is not a subject of the support order being established.",
+      "gap": "This is the actual text of Family Code section 4059's opening sentence, and the first sentence of subdivision (a), all of subdivision (b), and the first sentence of subdivision (e), fetched directly from leginfo.legislature.ca.gov and confirmed byte-identical across two fetches made with different User-Agent strings. Section 4059 enumerates additional deduction categories this document does not quote here — mandatory union dues and retirement benefits required as a condition of employment (subdivision (c)), health insurance or health plan and state disability insurance premiums (subdivision (d)), court-allowed job-related expenses (subdivision (f)), and a hardship deduction under sections 4070 through 4073 (subdivision (g), addressed in this document's separate hardship-deduction clause) — because this document selects representative deductions rather than reproducing the full enumerated list. This document does not address the remainder of subdivision (a) (concerning the tax-status factors used to compute income tax liability) or the remainder of subdivision (e) (concerning deductions for support of children not the subject of the order, in the absence of a court order).",
+      "citations": [
+        {
+          "case": "Cal. Fam. Code § 4059 (California Legislative Information text)",
+          "cite": "the statutory framework: net disposable income equals gross income minus the enumerated deductions",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=4059.",
+          "quote": "The annual net disposable income of each parent shall be computed by deducting from the parent’s annual gross income the actual amounts attributable to the following items or other items permitted under this article:"
+        },
+        {
+          "case": "Cal. Fam. Code § 4059(a) (California Legislative Information text)",
+          "cite": "the deduction for state and federal income tax liability",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=4059.",
+          "quote": "The state and federal income tax liability resulting from the parties’ taxable income."
+        },
+        {
+          "case": "Cal. Fam. Code § 4059(b) (California Legislative Information text)",
+          "cite": "the FICA (or FICA-equivalent) deduction",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=4059.",
+          "quote": "Deductions attributed to the employee’s contribution or the self-employed worker’s contribution pursuant to the Federal Insurance Contributions Act (FICA), or an amount not to exceed that allowed under FICA for persons not subject to FICA, provided that the deducted amount is used to secure retirement or disability benefits for the parent."
+        },
+        {
+          "case": "Cal. Fam. Code § 4059(e) (California Legislative Information text)",
+          "cite": "the deduction for child or spousal support actually being paid under a court order for a person not a subject of the order being established",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=4059.",
+          "quote": "Any child or spousal support actually being paid by the parent pursuant to a court order, to or for the benefit of a person who is not a subject of the order to be established by the court."
+        }
+      ]
+    },
+    {
+      "id": "csincomedet_monthly_conversion_and_adjustment",
+      "title": "Converting Annual Income to a Monthly Figure, and Adjusting for Inaccurate, Seasonal, or Fluctuating Income",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "California's guideline statute converts the annual net disposable income figure into the monthly figure the guideline formula uses by dividing it by 12. The statute then gives the court an express adjustment power for two circumstances: if the resulting monthly net disposable income figure does not accurately reflect the actual or prospective earnings of the parties at the time the support determination is made, the court may adjust the amount appropriately; and, in a separately stated section, the court may adjust the child support order as appropriate to accommodate seasonal or fluctuating income of either parent.",
+      "gap": "This is the actual text of Family Code section 4060 in full and Family Code section 4064 in full, fetched directly from leginfo.legislature.ca.gov and confirmed byte-identical across two fetches made with different User-Agent strings. Both statutes vest the adjustment decision in the court's discretion (\"may adjust\") without specifying a particular method, formula, or averaging period for the adjustment; this document does not describe or endorse any particular adjustment method, and does not address how the two adjustment provisions interact where both an inaccuracy and seasonal/fluctuating income are present in the same case.",
+      "citations": [
+        {
+          "case": "Cal. Fam. Code § 4060 (California Legislative Information text)",
+          "cite": "the annual-to-monthly conversion by dividing by 12",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=4060.",
+          "quote": "The monthly net disposable income shall be computed by dividing the annual net disposable income by 12."
+        },
+        {
+          "case": "Cal. Fam. Code § 4060 (California Legislative Information text)",
+          "cite": "the court's power to adjust a monthly figure that does not accurately reflect actual or prospective earnings",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=4060.",
+          "quote": "If the monthly net disposable income figure does not accurately reflect the actual or prospective earnings of the parties at the time the determination of support is made, the court may adjust the amount appropriately."
+        },
+        {
+          "case": "Cal. Fam. Code § 4064 (California Legislative Information text)",
+          "cite": "the court's separate power to adjust the order to accommodate seasonal or fluctuating income",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=4064.",
+          "quote": "The court may adjust the child support order as appropriate to accommodate seasonal or fluctuating income of either parent."
+        }
+      ]
+    },
+    {
+      "id": "csincomedet_extreme_hardship_deduction",
+      "title": "The Extreme Financial Hardship Deduction: Enumerated Circumstances, a Cap, and Required Findings",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "California's guideline statute permits an additional deduction from a parent's income for extreme financial hardship. Where a parent is experiencing extreme financial hardship due to justifiable expenses resulting from circumstances the statute enumerates, the court may, on a party's request, allow the income deductions under the net-disposable-income statute that are necessary to accommodate those circumstances. The enumerated hardship circumstances include extraordinary health expenses for which the parent is financially responsible and uninsured catastrophic losses, and the minimum basic living expenses of the parent's other natural or adopted children, from other marriages or relationships, who reside with the parent. For that second circumstance, the maximum hardship deduction for each such child may be equal to, but shall not exceed, the support allocated to each child subject to the order. If a court allows a hardship deduction, the statute requires the court to state the reasons supporting the deduction in writing or on the record, and to document the amount of the deduction and the underlying facts and circumstances.",
+      "gap": "This is the actual text of Family Code section 4070 in full, section 4071(a) (its introductory clause and paragraphs (1) and (2)) and 4071(b), and section 4072(a) (its introductory clause and paragraphs (1) and (2)), fetched directly from leginfo.legislature.ca.gov and confirmed byte-identical across two fetches made with different User-Agent strings. This document does not quote section 4071(c) (authorizing the Judicial Council to develop hardship-deduction tables) or section 4072(b) (directing the court to specify the deduction's duration whenever possible) or section 4073 (a general goals-guidance provision); those provisions exist but are not reproduced here. The statute's own text states that the hardship amount is deducted from the paying party's income, not from the child support amount itself, and section 4059(g) states a court must seek equity between competing child support orders when applying the paragraph (2) hardship under section 4071(a) — that interaction is addressed in this document's companion clause on net disposable income deductions, which quotes section 4059's cross-reference to this hardship framework, and is not repeated in full here.",
+      "citations": [
+        {
+          "case": "Cal. Fam. Code § 4070 (California Legislative Information text)",
+          "cite": "the extreme-financial-hardship deduction authority, tied to the circumstances enumerated in section 4071",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=4070.",
+          "quote": "If a parent is experiencing extreme financial hardship due to justifiable expenses resulting from the circumstances enumerated in Section 4071, on the request of a party, the court may allow the income deductions under Section 4059 that may be necessary to accommodate those circumstances."
+        },
+        {
+          "case": "Cal. Fam. Code § 4071(a) (California Legislative Information text)",
+          "cite": "the two enumerated hardship circumstances: extraordinary health expenses/uninsured catastrophic losses, and minimum basic living expenses of other resident children the parent must support",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=4071.",
+          "quote": "Circumstances evidencing hardship include the following:(1) Extraordinary health expenses for which the parent is financially responsible, and uninsured catastrophic losses.(2) The minimum basic living expenses of either parent’s natural or adopted children for whom the parent has the obligation to support from other marriages or relationships who reside with the parent."
+        },
+        {
+          "case": "Cal. Fam. Code § 4071(b) (California Legislative Information text)",
+          "cite": "the cap on the per-child hardship deduction for other resident children",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=4071.",
+          "quote": "The maximum hardship deduction under paragraph (2) of subdivision (a) for each child who resides with the parent may be equal to, but shall not exceed, the support allocated each child subject to the order."
+        },
+        {
+          "case": "Cal. Fam. Code § 4072(a) (California Legislative Information text)",
+          "cite": "the requirement that a court allowing a hardship deduction state its reasons and document the amount and underlying facts",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=4072.",
+          "quote": "If a deduction for hardship expenses is allowed, the court shall do both of the following:(1) State the reasons supporting the deduction in writing or on the record.(2) Document the amount of the deduction and the underlying facts and circumstances."
+        }
+      ]
+    },
+    {
+      "id": "csincomedet_signature_block",
+      "title": "Signature and Acknowledgment — Not a Court Filing",
+      "kind": "drafting",
+      "body": "I declare under penalty of perjury under the laws of the State of California that the foregoing background information is true and correct.\n\nExecuted on {{dateSigned}} at {{cityState}}.\n\nSignature of {{parent1Name}}: ☐ _________________________\n\nSignature of {{parent2Name}}: ☐ _________________________\n\n[This information sheet is prepared for background use alongside an actual child support proceeding pending, or to be filed, in the California superior court for {{countyOfFiling}}. It does not itself calculate, allege, stipulate to, or resolve any parent's income, earning capacity, or support amount, and it is not a substitute for a court-ordered Income and Expense Declaration or other Judicial Council form.]"
     }
   ]
 }
