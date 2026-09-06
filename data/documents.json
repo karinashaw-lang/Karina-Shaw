@@ -27928,5 +27928,44 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "emergency_action_plan_info_sheet",
+    "title": "Emergency Action Plan — Information Sheet",
+    "description": "Explains California's Cal/OSHA regulation requiring most employers to establish an emergency action plan for fire and other workplace emergencies (8 Cal. Code Regs. section 3220): what the plan must cover and when it must be written, the six elements the regulation itself requires the plan to include, the employee alarm system and evacuation-type requirements, when the employer must designate and train evacuation personnel, when and how employees must be advised of their responsibilities under the plan, and where the written plan must be kept, including the regulation's own exception for employers with 10 or fewer employees.",
+    "categories": [
+      "During employment"
+    ],
+    "clauseOrder": [
+      "eap_declaration_and_scope",
+      "eap_scope_and_written_plan_requirement",
+      "eap_required_plan_elements",
+      "eap_alarm_system_requirement",
+      "eap_evacuation_types",
+      "eap_training_and_designation",
+      "eap_employee_notification_timing",
+      "eap_plan_availability_and_small_employer_exception",
+      "eap_acknowledgment_signature"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme Corp",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "programAdministratorName",
+        "label": "Person or department who can be contacted about the plan",
+        "placeholder": "Taylor Morgan",
+        "required": true
+      }
+    ]
   }
 ]
