@@ -22723,5 +22723,48 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "dmca_anticircumvention_reverse_engineering_info_sheet",
+    "title": "DMCA Anti-Circumvention and Reverse-Engineering Exemptions — Information Sheet",
+    "description": "An informational sheet on 17 U.S.C. § 1201's prohibition on circumventing a technological access-control measure, its statutory definitions, the conditional (not automatic) reverse-engineering/interoperability exemption in § 1201(f), the encryption-research exemption in § 1201(g), and how this federal copyright statute differs from both this project's DMCA notice-and-takedown documents and its trade secret reverse-engineering treatment.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "dmca1201_intro",
+      "dmca1201_general_prohibition",
+      "dmca1201_circumvention_defined",
+      "dmca1201_interoperability_exemption",
+      "dmca1201_encryption_research_exemption",
+      "dmca1201_distinction_from_trade_secret_reverse_engineering",
+      "dmca1201_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "softwareDescription",
+        "label": "Description of the software",
+        "placeholder": "Acme Widget Manager, version 3.2",
+        "required": true
+      },
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      }
+    ]
   }
 ]
