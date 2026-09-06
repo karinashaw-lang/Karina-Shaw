@@ -24920,5 +24920,68 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "deployed_parent_custody_visitation_info_sheet",
+    "title": "Deployed Parent Custody and Visitation — Information Sheet",
+    "description": "Explains California's Deployed Parent Custody and Visitation statute (Fam. Code § 3047): the rule that military absence alone is not grounds for modification, the temporary/reversion-presumption structure for deployment-related orders, family-member visitation the deploying party may seek, expedited-hearing and remote-participation rights, UCCJEA jurisdiction retention, and the statute's own definitions and legislative intent.",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "deployedparent_intro",
+      "deployedparent_absence_not_sole_basis_for_modification",
+      "deployedparent_temporary_order_and_reversion_presumption",
+      "deployedparent_family_member_visitation_during_deployment",
+      "deployedparent_expedited_hearing_and_remote_participation",
+      "deployedparent_uccjea_jurisdiction_retention",
+      "deployedparent_definitions",
+      "deployedparent_legislative_intent",
+      "deployedparent_signature_acknowledgment"
+    ],
+    "fields": [
+      {
+        "id": "parent1Name",
+        "label": "First parent's name",
+        "placeholder": "e.g., Jane Doe",
+        "required": true
+      },
+      {
+        "id": "parent2Name",
+        "label": "Second parent's name",
+        "placeholder": "e.g., John Smith",
+        "required": true
+      },
+      {
+        "id": "childName",
+        "label": "Child's name",
+        "placeholder": "e.g., Alex Doe",
+        "required": true
+      },
+      {
+        "id": "countyOfFiling",
+        "label": "County",
+        "placeholder": "e.g., San Diego County",
+        "required": true
+      },
+      {
+        "id": "courtName",
+        "label": "Court name",
+        "placeholder": "e.g., Superior Court of California, County of San Diego",
+        "required": false
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "e.g., January 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, State",
+        "placeholder": "e.g., San Diego, California",
+        "required": true
+      }
+    ]
   }
 ]
