@@ -29015,5 +29015,68 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "unpaid_trial_work_working_interview_info_sheet",
+    "title": "Unpaid Trial Work / Working Interview — Information Sheet",
+    "description": "Explains when time a job applicant spends performing an actual work trial, skills demonstration, or unpaid \"working interview\" during the hiring process counts as compensable \"hours worked\" under California's minimum wage law, as distinct from this corpus's existing Unpaid Internship Compliance and Volunteer vs. Employee Classification documents, which address ongoing internship and volunteer arrangements rather than a brief pre-hire trial shift or tryout.",
+    "categories": [
+      "Hiring"
+    ],
+    "clauseOrder": [
+      "worktrial_purpose",
+      "worktrial_employ_employee_definitions",
+      "worktrial_no_activity_based_exception",
+      "worktrial_agreement_cannot_waive",
+      "worktrial_current_minimum_wage_rate",
+      "worktrial_no_small_employer_exception",
+      "worktrial_recordkeeping_duty",
+      "worktrial_trial_record",
+      "worktrial_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "applicantName",
+        "label": "Applicant's name",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "jobTitle",
+        "label": "Position applied for",
+        "placeholder": "Line Cook",
+        "required": true
+      },
+      {
+        "id": "startDate",
+        "label": "Date(s) of the trial work period",
+        "placeholder": "September 15, 2026",
+        "required": true
+      },
+      {
+        "id": "applicableMinimumWage",
+        "label": "Applicable minimum hourly wage",
+        "placeholder": "$16.90",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 15, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
