@@ -27068,5 +27068,76 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "cfaa_civil_remedy_info_sheet",
+    "title": "Computer Fraud and Abuse Act Civil Remedy — Information Sheet",
+    "description": "Explains the private civil remedy in the federal Computer Fraud and Abuse Act, 18 U.S.C. § 1030(g): the compensatory-damages-and-injunctive-relief cause of action, the requirement that the conduct involve one of five statutory qualifying factors (including the $5,000 aggregate-loss factor most often relied on by businesses), the economic-damages-only limit for loss-only claims, the two-year limitations period, the carve-out barring claims for negligent design or manufacture of computer hardware, software, or firmware, and the statute's own definitions of \"damage,\" \"loss,\" and \"exceeds authorized access\" — and generates a signed information sheet describing the computer system and conduct at issue, distinct from this corpus's existing California Penal Code section 502 demand-letter document and this corpus's trade secret materials.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "cfaacivil_intro_scope",
+      "cfaacivil_private_right_of_action",
+      "cfaacivil_qualifying_factors",
+      "cfaacivil_five_thousand_dollar_loss_factor",
+      "cfaacivil_economic_damages_limit",
+      "cfaacivil_two_year_limitations_period",
+      "cfaacivil_no_negligent_design_claim",
+      "cfaacivil_damage_defined",
+      "cfaacivil_loss_defined",
+      "cfaacivil_exceeds_authorized_access_defined",
+      "cfaacivil_signature_certification"
+    ],
+    "fields": [
+      {
+        "id": "preparerName",
+        "label": "Preparer's name",
+        "placeholder": "e.g., Jane Doe",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "adversePartyName",
+        "label": "Adverse party's name",
+        "placeholder": "e.g., John Smith Manufacturing",
+        "required": true
+      },
+      {
+        "id": "computerSystemDescription",
+        "label": "Description of the computer, system, network, or data at issue",
+        "placeholder": "Acme, Inc.'s internal customer database and CRM system",
+        "required": true
+      },
+      {
+        "id": "incidentDescription",
+        "label": "Description of incident",
+        "placeholder": "Describe what happened",
+        "required": true
+      },
+      {
+        "id": "lossOrDamageDescription",
+        "label": "Description of the loss or damage claimed, including any known dollar figure",
+        "placeholder": "e.g., approximately $18,000 in forensic investigation and system restoration costs after a former employee accessed the company's file server after resignation",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "e.g., January 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, State",
+        "placeholder": "e.g., San Francisco, California",
+        "required": true
+      }
+    ]
   }
 ]

@@ -75251,6 +75251,177 @@
       "title": "Closing and Signature Block — Pseudo-Foreign Corporation (Section 2115) Information Sheet",
       "kind": "drafting",
       "body": "This information sheet regarding {{companyName}}'s potential status under California Corporations Code Section 2115 was prepared by {{authorizedSignerName}}.\n\nExecuted on {{dateSigned}} at {{cityState}}.\n\nSignature of {{authorizedSignerName}}: ☐ _________________________\n\n[This information sheet describes California Corporations Code Section 2115: the two-part test for whether it applies to a foreign corporation, the specific California governance provisions it applies in place of the corporation's home-jurisdiction law, the statutory exemptions, the timing rules for when its requirements begin and cease to apply, and the statutory duty to disclose Section 2115(b) status on written request. It is not a determination that {{companyName}} or any other entity is or is not currently subject to Section 2115(b), does not calculate any corporation's property, payroll, sales, or voting-securities figures, and does not constitute legal advice. It also does not address the separate statutory requirement that a foreign corporation obtain a certificate of qualification before transacting intrastate business in California, which this project addresses in a separate information sheet.]"
+    },
+    {
+      "id": "cfaacivil_intro_scope",
+      "title": "What This Information Sheet Covers",
+      "kind": "drafting",
+      "body": "This information sheet describes the private civil remedy in the federal Computer Fraud and Abuse Act (CFAA), 18 U.S.C. section 1030(g). Section 1030(g) lets a person who suffers damage or loss from certain violations of section 1030 bring a civil lawsuit against the violator. It covers which kinds of violations qualify for a civil suit, the $5,000 aggregate-loss factor most often relied on by businesses, the limit on damages for loss-only claims, the two-year period to bring the action, the carve-out for claims about negligently designed or manufactured computer products, and the statute's own definitions of \"damage,\" \"loss,\" and \"exceeds authorized access.\"\n\nThis document is distinct from this corpus's existing California Comprehensive Computer Data Access and Fraud Act -- Demand Letter Information Sheet, which addresses the separate California civil cause of action in Penal Code section 502(e) -- a different statute with its own elements, remedies, and three-year limitations period. Conduct can potentially be examined under either or both statutes, but this document addresses only the federal CFAA civil remedy. This document is also distinct from this corpus's trade secret documents (including the DTSA and UTSA materials), which address trade secret misappropriation specifically; the CFAA civil remedy instead turns on unauthorized access to, or damage involving, a computer, regardless of whether a trade secret is involved.\n\nRegarding {{computerSystemDescription}} and the conduct {{companyName}} attributes to {{adversePartyName}} -- described as {{incidentDescription}}, with loss or damage described as {{lossOrDamageDescription}} -- this sheet sets out the statutory framework the law provides. It does not determine whether that conduct violates section 1030, whether a civil action under section 1030(g) would succeed, or what {{companyName}} should do in response."
+    },
+    {
+      "id": "cfaacivil_private_right_of_action",
+      "title": "The Section 1030(g) Private Civil Action",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Section 1030(g) gives a private civil remedy to any person who suffers damage or loss by reason of a violation of section 1030. That person may bring a civil action against the violator to obtain compensatory damages and injunctive relief or other equitable relief.",
+      "gap": "This is the statute's own text, quoted from 18 U.S.C. section 1030(g), used as evidence of the existence and general shape of the civil remedy -- not a claim that any specific access or conduct actually violated section 1030, and not a claim that any specific person suffered damage or loss as the statute defines those terms. The statute does not itself list which subsections of section 1030(a) can support a civil action; a civil action is available only for conduct that separately satisfies section 1030's substantive prohibitions and the qualifying-factor requirement addressed in the next clause. No case law on how courts have applied this remedy in practice was researched or is cited in this clause.",
+      "citations": [
+        {
+          "case": "18 U.S.C. § 1030(g) (Cornell LII text)",
+          "cite": "Computer Fraud and Abuse Act, private civil action",
+          "url": "https://www.law.cornell.edu/uscode/text/18/1030",
+          "quote": "Any person who suffers damage or loss by reason of a violation of this section may maintain a civil action against the violator to obtain compensatory damages and injunctive relief or other equitable relief."
+        }
+      ]
+    },
+    {
+      "id": "cfaacivil_qualifying_factors",
+      "title": "A Civil Action Requires One of Five Statutory Factors",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Section 1030(g) does not allow a civil action for every violation of section 1030. A civil action may be brought only if the conduct involves one of five factors set out in a separate subsection, subclauses (I) through (V) of section 1030(c)(4)(A)(i): an aggregate loss of at least $5,000 in a one-year period; modification or impairment of medical examination, diagnosis, treatment, or care; physical injury to any person; a threat to public health or safety; or damage to a computer used by or for a United States government entity in furtherance of the administration of justice, national defense, or national security. (A sixth factor in that same subsection -- damage affecting ten or more protected computers in a one-year period -- is defined elsewhere in subsection (c)(4)(A)(i) but is not separately quoted here.)",
+      "gap": "This clause quotes two non-adjacent fragments of the same sentence in 18 U.S.C. section 1030(g), split around a numbered footnote reference (\"5\") that the Office of the Law Revision Counsel inserted into the official text between the words \"subclauses\" and \"(I)\" -- confirmed present in the same location in both the Cornell LII and the official uscode.house.gov renderings of the section, where an accompanying editorial note states \"So in original. Probably should be 'subclause.'\" That footnote number is an editorial annotation, not part of the substantive statutory text, so it is excluded from both quoted fragments rather than being quoted mid-sentence. This clause identifies the five (in fact six, per the parenthetical) factors listed in section 1030(c)(4)(A)(i) by cross-reference and paraphrase rather than by quoting the full text of subclauses (II) through (VI); the $5,000 aggregate-loss factor, subclause (I), is quoted in full in the next clause. No case law on how courts apply any of these factors was researched or is cited in this clause.",
+      "citations": [
+        {
+          "case": "18 U.S.C. § 1030(g) (Cornell LII text)",
+          "cite": "Computer Fraud and Abuse Act, qualifying-factor requirement (part 1)",
+          "url": "https://www.law.cornell.edu/uscode/text/18/1030",
+          "quote": "A civil action for a violation of this section may be brought only if the conduct involves 1 of the factors set forth in subclauses"
+        },
+        {
+          "case": "18 U.S.C. § 1030(g) (Cornell LII text)",
+          "cite": "Computer Fraud and Abuse Act, qualifying-factor requirement (part 2)",
+          "url": "https://www.law.cornell.edu/uscode/text/18/1030",
+          "quote": "(I), (II), (III), (IV), or (V) of subsection (c)(4)(A)(i)."
+        }
+      ]
+    },
+    {
+      "id": "cfaacivil_five_thousand_dollar_loss_factor",
+      "title": "The $5,000 Aggregate-Loss Factor",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "The first of the qualifying factors under section 1030(c)(4)(A)(i) -- the one most often relied on in civil suits between businesses -- is loss to one or more persons during any one-year period aggregating at least $5,000 in value. For an investigation, prosecution, or other proceeding brought by the United States only, that aggregate loss can also include loss from a related course of conduct affecting one or more other protected computers.",
+      "gap": "This is the statute's own text, quoted from 18 U.S.C. section 1030(c)(4)(A)(i)(I), used as evidence of the dollar threshold and the one-year aggregation period that subclause describes -- not a claim that any specific loss actually reaches $5,000 or that it was incurred within a single one-year period. Section 1030(e)(11) defines \"loss\" (quoted in a separate clause of this document); this clause does not itself restate that definition or address how a court would calculate whether a particular set of costs adds up to $5,000. The related-course-of-conduct aggregation language applies only to proceedings the United States brings, not to a private civil action; this clause does not address whether or how a private plaintiff could aggregate losses across multiple incidents or victims.",
+      "citations": [
+        {
+          "case": "18 U.S.C. § 1030(c)(4)(A)(i)(I) (Cornell LII text)",
+          "cite": "Computer Fraud and Abuse Act, $5,000 aggregate-loss factor",
+          "url": "https://www.law.cornell.edu/uscode/text/18/1030",
+          "quote": "loss to 1 or more persons during any 1-year period (and, for purposes of an investigation, prosecution, or other proceeding brought by the United States only, loss resulting from a related course of conduct affecting 1 or more other protected computers) aggregating at least $5,000 in value;"
+        }
+      ]
+    },
+    {
+      "id": "cfaacivil_economic_damages_limit",
+      "title": "Damages Limited to Economic Damages for Loss-Only Claims",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Where the only qualifying factor for the civil action is the $5,000 aggregate-loss factor described above, section 1030(g) limits the damages available to economic damages. Damages for a violation involving only conduct described in subsection (c)(4)(A)(i)(I) are limited to economic damages.",
+      "gap": "This is the statute's own text, quoted from 18 U.S.C. section 1030(g), used as evidence that this damages limitation exists and of which claims it applies to -- not a claim about what dollar amount of economic damages any specific claim could support. The statute does not define \"economic damages\" in section 1030 itself; this clause does not supply or verify any definition of that term from another source. This limitation applies only when the $5,000 loss factor is the sole qualifying factor; a claim that also involves one of the other factors listed in section 1030(c)(4)(A)(i) (for example, physical injury or a threat to public health or safety) is not subject to this particular limitation, though this clause does not independently verify what broader damages might be available in that situation.",
+      "citations": [
+        {
+          "case": "18 U.S.C. § 1030(g) (Cornell LII text)",
+          "cite": "Computer Fraud and Abuse Act, economic-damages limitation",
+          "url": "https://www.law.cornell.edu/uscode/text/18/1030",
+          "quote": "Damages for a violation involving only conduct described in subsection (c)(4)(A)(i)(I) are limited to economic damages."
+        }
+      ]
+    },
+    {
+      "id": "cfaacivil_two_year_limitations_period",
+      "title": "Two-Year Period to Bring a Civil Action",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "A civil action under section 1030(g) may not be brought unless it is begun within two years of the date of the act complained of, or the date of the discovery of the damage, whichever comes into play under the statute's own terms.",
+      "gap": "This is the statute's own text, quoted from 18 U.S.C. section 1030(g) -- not a claim about when any specific act occurred or was discovered, and not a claim about whether any tolling doctrine might extend or suspend this two-year period in a specific case. This two-year federal period is shorter than the three-year period this corpus's existing California Comprehensive Computer Data Access and Fraud Act information sheet describes for the separate state civil action under Penal Code section 502(e)(5); a claim time-barred under one statute is not necessarily time-barred under the other, since they are separate statutes with separate limitations periods.",
+      "citations": [
+        {
+          "case": "18 U.S.C. § 1030(g) (Cornell LII text)",
+          "cite": "Computer Fraud and Abuse Act, two-year limitations period",
+          "url": "https://www.law.cornell.edu/uscode/text/18/1030",
+          "quote": "No action may be brought under this subsection unless such action is begun within 2 years of the date of the act complained of or the date of the discovery of the damage."
+        }
+      ]
+    },
+    {
+      "id": "cfaacivil_no_negligent_design_claim",
+      "title": "No Civil Claim for Negligent Design or Manufacture of Computer Products",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Section 1030(g) does not allow a civil action for the negligent design or manufacture of computer hardware, computer software, or firmware. No action may be brought under this subsection for the negligent design or manufacture of computer hardware, computer software, or firmware.",
+      "gap": "This is the statute's own text, quoted from 18 U.S.C. section 1030(g) -- not a claim about whether any specific product-liability or negligence theory involving computer hardware, software, or firmware would or would not be barred by this carve-out in a particular case. The statute does not define \"negligent design or manufacture\" for purposes of this carve-out, and this clause does not address how this provision interacts with product-liability law outside of section 1030, or with claims that combine a section 1030 violation with a separate negligent-design theory.",
+      "citations": [
+        {
+          "case": "18 U.S.C. § 1030(g) (Cornell LII text)",
+          "cite": "Computer Fraud and Abuse Act, negligent-design-or-manufacture carve-out",
+          "url": "https://www.law.cornell.edu/uscode/text/18/1030",
+          "quote": "No action may be brought under this subsection for the negligent design or manufacture of computer hardware, computer software, or firmware."
+        }
+      ]
+    },
+    {
+      "id": "cfaacivil_damage_defined",
+      "title": "Statutory Definition of \"Damage\"",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Section 1030 defines \"damage\" for purposes of the entire section, including the civil remedy in subsection (g). The term \"damage\" means any impairment to the integrity or availability of data, a program, a system, or information.",
+      "gap": "This is the statute's own text, quoted from 18 U.S.C. section 1030(e)(8) -- not a claim that any specific event actually impaired the integrity or availability of any particular data, program, system, or information. This is a broad, single-sentence definition; the statute does not further define \"integrity,\" \"availability,\" or \"impairment\" within section 1030 itself, and this clause does not supply or verify any further gloss on those terms from case law.",
+      "citations": [
+        {
+          "case": "18 U.S.C. § 1030(e)(8) (Cornell LII text)",
+          "cite": "Computer Fraud and Abuse Act, definition of \"damage\"",
+          "url": "https://www.law.cornell.edu/uscode/text/18/1030",
+          "quote": "the term “damage” means any impairment to the integrity or availability of data, a program, a system, or information;"
+        }
+      ]
+    },
+    {
+      "id": "cfaacivil_loss_defined",
+      "title": "Statutory Definition of \"Loss\"",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Section 1030 also defines \"loss\" for purposes of the entire section, including the $5,000 aggregate-loss factor described above. The term \"loss\" means any reasonable cost to any victim, including the cost of responding to an offense, conducting a damage assessment, and restoring the data, program, system, or information to its condition prior to the offense, and any revenue lost, cost incurred, or other consequential damages incurred because of interruption of service.",
+      "gap": "This is the statute's own text, quoted from 18 U.S.C. section 1030(e)(11) -- not a claim that any specific expense or lost revenue actually qualifies as \"loss\" under this definition, or that any particular cost was \"reasonable.\" The statute does not itself set out how these cost categories should be itemized or proven in a given case, and this clause does not address how courts have applied this definition to specific categories of expense (for example, employee time spent on incident response, or the cost of outside forensic investigators).",
+      "citations": [
+        {
+          "case": "18 U.S.C. § 1030(e)(11) (Cornell LII text)",
+          "cite": "Computer Fraud and Abuse Act, definition of \"loss\"",
+          "url": "https://www.law.cornell.edu/uscode/text/18/1030",
+          "quote": "the term “loss” means any reasonable cost to any victim, including the cost of responding to an offense, conducting a damage assessment, and restoring the data, program, system, or information to its condition prior to the offense, and any revenue lost, cost incurred, or other consequential damages incurred because of interruption of service;"
+        }
+      ]
+    },
+    {
+      "id": "cfaacivil_exceeds_authorized_access_defined",
+      "title": "Statutory Definition of \"Exceeds Authorized Access\"",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Several of section 1030's prohibitions, including ones commonly invoked in civil suits over employees or contractors who misuse computer access they were given, turn on whether a person \"exceeds authorized access.\" Section 1030 defines that term: the term \"exceeds authorized access\" means to access a computer with authorization and to use such access to obtain or alter information in the computer that the accesser is not entitled so to obtain or alter.",
+      "gap": "This is the statute's own text, quoted from 18 U.S.C. section 1030(e)(6) -- not a claim that any specific person's access to any specific computer or data did or did not exceed authorized access as this definition describes. Section 1030 does not separately define the related term \"without authorization,\" which appears in several of the section's substantive prohibitions alongside \"exceeds authorized access\" but is left undefined by the statute itself. The scope of both terms -- including how far an authorized user's later use of already-accessible information can itself violate the statute -- has been the subject of federal appellate and U.S. Supreme Court case law (including a 2021 Supreme Court decision construing \"exceeds authorized access\"). A CourtListener case-law search for that case law was attempted for this document but returned an HTTP 429 rate-limit error (125/day quota exhausted) before any case could be retrieved and independently verified, so no case is cited here and this clause does not describe any court's holding on the scope of either term.",
+      "citations": [
+        {
+          "case": "18 U.S.C. § 1030(e)(6) (Cornell LII text)",
+          "cite": "Computer Fraud and Abuse Act, definition of \"exceeds authorized access\"",
+          "url": "https://www.law.cornell.edu/uscode/text/18/1030",
+          "quote": "the term “exceeds authorized access” means to access a computer with authorization and to use such access to obtain or alter information in the computer that the accesser is not entitled so to obtain or alter;"
+        }
+      ]
+    },
+    {
+      "id": "cfaacivil_signature_certification",
+      "title": "Signature and Certification",
+      "kind": "drafting",
+      "body": "{{preparerName}}, on behalf of {{companyName}}, certifies that the description of {{computerSystemDescription}}, the description of the conduct attributed to {{adversePartyName}} as {{incidentDescription}}, and the description of loss or damage as {{lossOrDamageDescription}} set out above are true and correct to the best of {{preparerName}}'s knowledge as of the date signed below. This information sheet is not a civil complaint or any other court filing, and completing or signing it does not itself commence any civil action in any court.\n\nSigned: ______________________\n{{preparerName}}\nDate signed: {{dateSigned}}\nCity, State: {{cityState}}"
     }
   ]
 }
