@@ -26259,5 +26259,93 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "right_of_recall_hospitality_info_sheet",
+    "title": "COVID-19 Right of Recall for Hospitality and Building-Service Workers — Information Sheet and Notice Template",
+    "description": "Explains California Labor Code Section 2810.8, which requires hotel, private club, event center, airport hospitality, airport service provider, and building-service (janitorial, maintenance, or security) employers to offer available positions to their own COVID-19-related laid-off employees, in a length-of-service order of preference, before hiring outside that pool. Covers the covered-enterprise and laid-off-employee definitions, the five-business-day written offer duty and five-business-day employee response window, the three-year recordkeeping duty and 30-day declined-recall notice, continued coverage after a change in ownership, form, assets, or location, the statute's anti-retaliation provision, its Labor-Commissioner-only enforcement scheme and penalties, and its collective-bargaining waiver rule, local-ordinance savings clause, and January 1, 2027 sunset date. Includes a notice template documenting a specific recall offer.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "recallrt_intro",
+      "recallrt_covered_enterprises_and_employees",
+      "recallrt_offer_duty_and_preference",
+      "recallrt_response_window",
+      "recallrt_recordkeeping_and_declined_notice",
+      "recallrt_successor_and_reorg_coverage",
+      "recallrt_antiretaliation",
+      "recallrt_enforcement_remedies_penalties",
+      "recallrt_cba_local_law_and_sunset",
+      "recallrt_signature"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Employer / covered enterprise name",
+        "placeholder": "Bayview Grand Hotel, LLC",
+        "required": true
+      },
+      {
+        "id": "enterpriseDescription",
+        "label": "Description of the covered enterprise",
+        "placeholder": "180-room hotel",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Laid-off employee's name",
+        "placeholder": "Taylor Morgan",
+        "required": true
+      },
+      {
+        "id": "jobTitle",
+        "label": "Employee's job classification at the time of separation",
+        "placeholder": "Banquet Server",
+        "required": true
+      },
+      {
+        "id": "terminationDate",
+        "label": "Date of employee's most recent layoff / separation from active employment",
+        "placeholder": "April 15, 2020",
+        "required": true
+      },
+      {
+        "id": "positionOffered",
+        "label": "Position now being offered",
+        "placeholder": "Banquet Server",
+        "required": true
+      },
+      {
+        "id": "offerDate",
+        "label": "Date of this written offer",
+        "placeholder": "September 6, 2026",
+        "required": true
+      },
+      {
+        "id": "acceptDeclineDeadline",
+        "label": "Deadline to accept or decline this offer",
+        "placeholder": "September 15, 2026",
+        "required": true
+      },
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this notice",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "San Diego, California",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 6, 2026",
+        "required": true
+      }
+    ]
   }
 ]
