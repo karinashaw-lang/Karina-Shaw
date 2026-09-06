@@ -26510,5 +26510,62 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "ip_license_bankruptcy_protections_info_sheet",
+    "title": "Intellectual Property License Bankruptcy Protections (11 U.S.C. § 365(n)) — Information Sheet",
+    "description": "Explains the federal Bankruptcy Code protections that apply to a licensee of intellectual property when its licensor later files for bankruptcy and rejects the license: the general rejection-as-breach rule of 11 U.S.C. section 365(g), the closed six-category definition of \"intellectual property\" in section 101(35A) (trade secret, patent/patent-application, plant variety, copyright, and mask work -- not trademark), the licensee's election under section 365(n)(1) to treat the license as terminated or retain its rights, the trustee's and the retaining licensee's matching obligations under section 365(n)(2)-(3), the 1988 legislative history responding to Lubrizol Enterprises v. Richmond Metal Finishers, and the U.S. Supreme Court's 2019 resolution in Mission Product Holdings, Inc. v. Tempnology, LLC of what happens to a license (such as a trademark license) that section 365(n)'s definition does not cover. Distinct from the corpus's existing Software License Agreement, Patent License Agreement, Trademark License Agreement, and trade-secret litigation documents, none of which addresses a licensor's bankruptcy.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "ipbankr_intro",
+      "ipbankr_rejection_as_breach",
+      "ipbankr_ip_definition_scope",
+      "ipbankr_trademark_exclusion",
+      "ipbankr_licensee_election",
+      "ipbankr_retained_rights_scope",
+      "ipbankr_mission_product_holding",
+      "ipbankr_lubrizol_background",
+      "ipbankr_signature_and_acknowledgment"
+    ],
+    "fields": [
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Company name (the licensee)",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "licensorName",
+        "label": "Licensor's name",
+        "placeholder": "Beta Corp.",
+        "required": true
+      },
+      {
+        "id": "licensedIpDescription",
+        "label": "Description of the licensed intellectual property",
+        "placeholder": "U.S. Patent No. 10,123,456, licensed under the parties' March 2023 patent license agreement",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 6, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
