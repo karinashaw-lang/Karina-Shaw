@@ -63677,6 +63677,120 @@
       "title": "Signature and Acknowledgment Block — Nonprofit Tax-Exempt Status Application Information Sheet",
       "kind": "drafting",
       "body": "I declare under penalty of perjury under the laws of the State of California that the foregoing background information is true and correct to the best of my knowledge.\n\nExecuted on {{dateSigned}} at {{cityState}}.\n\nSignature of {{preparerName}}: ☐ _________________________\n\n[This information sheet is prepared as background about 26 U.S.C. §§ 501(c)(3) and 508 and Rev. & Tax. Code §§ 23701 and 23701d in connection with {{companyName}}. It does not itself apply for, obtain, or determine tax-exempt status for {{companyName}} under any federal or California statute; whether {{companyName}} qualifies for and has obtained recognized federal or California tax-exempt status depends on the IRS's and the Franchise Tax Board's own separate determinations on {{companyName}}'s particular facts and application materials.]"
+    },
+    {
+      "id": "steppedupbasis_intro",
+      "title": "About This Information Sheet",
+      "kind": "drafting",
+      "body": "This document describes the federal income-tax basis rule of 26 U.S.C. § 1014, commonly called \"stepped-up basis at death.\" This is a different federal tax concept from this corpus's separate Federal Estate and Gift Tax Basics — Information Sheet document, which addresses the federal estate tax exemption, portability, the marital deduction, and the gift tax annual exclusion under 26 U.S.C. §§ 2010, 2056, and 2503 — those are transfer-tax provisions governing whether tax is owed on a transfer itself. Section 1014, by contrast, is an income-tax provision: it governs how much capital gain, if any, {{decedentName}}'s heirs or beneficiaries would recognize for income-tax purposes if they later sell property they acquired from {{decedentName}}, by fixing that property's income-tax \"basis\" (the reference figure against which gain or loss is measured) as of the date of death rather than at whatever {{decedentName}} originally paid for it. A decedent's estate can be entirely exempt from federal estate tax and still involve property whose income-tax basis is governed by this section."
+    },
+    {
+      "id": "steppedupbasis_general_rule",
+      "title": "General Rule: Basis Set to Fair Market Value at Death",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Under 26 U.S.C. § 1014(a)(1), the default federal income-tax basis of property in the hands of a person who acquires it from a decedent, or to whom it passes from a decedent, is the property's fair market value at the date of the decedent's death — not the decedent's own original cost basis. This applies to property such as {{propertyAddress}} that {{executorName}} distributes from {{decedentName}}'s estate, so long as the property is not sold, exchanged, or otherwise disposed of by the acquiring person before the decedent's death. This rule is the mechanism behind what is commonly called a \"stepped-up basis\": built-in appreciation that accrued during the decedent's lifetime is generally not carried forward as taxable gain to the person who inherits the property.",
+      "gap": "This clause states only the default rule of paragraph (a)(1). Paragraph (a) itself begins \"[e]xcept as otherwise provided in this section,\" and the statute lists several exceptions and modifications addressed in separate clauses of this document (an alternate valuation date election, a special-use valuation election, an anti-abuse rule for appreciated property gifted to the decedent shortly before death, and a basis-consistency rule tied to the estate tax return) as well as one this document does not independently address: paragraph (a)(4)'s basis rule for property to which the exclusion described in section 2031(c) (a qualified conservation easement) applies. It also does not address subsection (d)'s separate rule for DISC stock. No CourtListener case-law search was performed for this document: a preliminary quota-availability check this session received an HTTP 429 (\"Rate limit exceeded: 125/day\"), so this document was deliberately limited to primary statutory text rather than case law, consistent with this corpus's practice of disclosing that choice rather than waiting out or working around the quota.",
+      "citations": [
+        {
+          "case": "26 U.S.C. § 1014(a)(1)",
+          "cite": "26 U.S.C. § 1014(a)(1)",
+          "url": "https://www.law.cornell.edu/uscode/text/26/1014",
+          "quote": "Except as otherwise provided in this section, the basis of property in the hands of a person acquiring the property from a decedent or to whom the property passed from a decedent shall, if not sold, exchanged, or otherwise disposed of before the decedent’s death by such person, be— (1) the fair market value of the property at the date of the decedent’s death,"
+        }
+      ]
+    },
+    {
+      "id": "steppedupbasis_alternate_valuation",
+      "title": "Alternate Valuation Date and Special Use Valuation Elections",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Section 1014(a) does not always fix basis at the date-of-death value. If the estate makes an election under 26 U.S.C. § 2032 (the alternate valuation date, generally six months after death), the property's basis under section 1014 is instead its value at that later, statutorily prescribed valuation date. Separately, if the estate makes a special-use valuation election for qualified real property under 26 U.S.C. § 2032A (a lower valuation available for certain farm or closely held business real property), the section 1014 basis is the value determined under that section rather than ordinary fair market value. Whether {{executorName}} makes either election for {{decedentName}}'s estate is a separate determination under section 2032 or section 2032A itself.",
+      "gap": "This clause identifies that these two elections exist and that each changes the section 1014 basis figure when made; it does not restate the eligibility requirements, election deadlines, or valuation mechanics of section 2032 or section 2032A themselves, neither of which was independently fetched or verified for this document. No CourtListener case-law search was performed for this document: a preliminary quota-availability check this session received an HTTP 429 (\"Rate limit exceeded: 125/day\"), so this document was deliberately limited to primary statutory text rather than case law, consistent with this corpus's practice of disclosing that choice rather than waiting out or working around the quota.",
+      "citations": [
+        {
+          "case": "26 U.S.C. § 1014(a)(2)-(3)",
+          "cite": "26 U.S.C. § 1014(a)(2)-(3)",
+          "url": "https://www.law.cornell.edu/uscode/text/26/1014",
+          "quote": "in the case of an election under section 2032, its value at the applicable valuation date prescribed by such section, (3) in the case of an election under section 2032A, its value determined under such section, or"
+        }
+      ]
+    },
+    {
+      "id": "steppedupbasis_community_property_double_stepup",
+      "title": "Community Property: Both Halves May Receive a Stepped-Up Basis",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "26 U.S.C. § 1014(b)(6) treats the surviving spouse's own one-half share of community property as property \"acquired from\" or \"passed from\" the decedent for purposes of section 1014(a), when the decedent died after December 31, 1947 and at least one-half of the whole community interest in the property was includible in the decedent's gross estate for federal estate tax purposes. Because California is a community property state, this means that when one spouse of {{decedentName}} and {{survivingSpouseName}} dies owning community property such as {{propertyAddress}}, both halves of that community property — not only the half the decedent owned — can receive a new, stepped-up income-tax basis equal to fair market value at the date of death under section 1014(a). This is commonly referred to as a \"double step-up\" and is a materially different result from the general rule applicable to separate property or to property held in forms such as joint tenancy with a non-spouse, where ordinarily only the decedent's own fractional interest receives a new basis and the survivor's pre-existing interest keeps its original, unstepped basis.",
+      "gap": "This is a federal statute construing the effect of state community-property law generally, not a claim that any specific asset held by a decedent and a surviving spouse is, or was, community property under California law; whether a particular asset is community property, separate property, or some other form of co-ownership is a state-law characterization question this clause does not resolve. Section 1014(b)(6) also requires that at least one-half of the whole community interest actually was includible in the decedent's gross estate under chapter 11 (the federal estate tax) or the corresponding 1939 Code provision; this document does not independently verify that inclusion requirement was met for any specific property. The statute's cross-reference to \"the community property laws of any State\" means this same double-step-up mechanism applies in other community-property states as well, not only California, and this clause does not survey other states' community property statutes. No CourtListener case-law search was performed for this document: a preliminary quota-availability check this session received an HTTP 429 (\"Rate limit exceeded: 125/day\"), so this document was deliberately limited to primary statutory text rather than case law, consistent with this corpus's practice of disclosing that choice rather than waiting out or working around the quota.",
+      "citations": [
+        {
+          "case": "26 U.S.C. § 1014(b)(6)",
+          "cite": "26 U.S.C. § 1014(b)(6)",
+          "url": "https://www.law.cornell.edu/uscode/text/26/1014",
+          "quote": "In the case of decedents dying after December 31, 1947 , property which represents the surviving spouse’s one-half share of community property held by the decedent and the surviving spouse under the community property laws of any State, or possession of the United States or any foreign country, if at least one-half of the whole of the community interest in such property was includible in determining the value of the decedent’s gross estate under chapter 11 of subtitle B (section 2001 and following, relating to estate tax) or section 811 of the Internal Revenue Code of 1939 ;"
+        }
+      ]
+    },
+    {
+      "id": "steppedupbasis_separate_vs_community_contrast",
+      "title": "Why the Property's Character Matters",
+      "kind": "drafting",
+      "body": "The size of the basis adjustment available under 26 U.S.C. § 1014 can depend on how property was characterized and held before the decedent's death. For community property includible in the decedent's gross estate, section 1014(b)(6) adjusts the basis of both the decedent's one-half interest and the surviving spouse's one-half interest. For property that is separate property of the decedent, or that is held in a form such as joint tenancy between spouses or between non-spouses, the general basis rules instead typically adjust only the fractional interest attributable to the decedent, leaving the survivor's own pre-existing fractional interest with its original, unstepped basis. This document does not determine how {{propertyAddress}} or any other specific asset of {{decedentName}} was characterized or held immediately before death; that characterization is a separate factual and legal question."
+    },
+    {
+      "id": "steppedupbasis_gift_within_one_year",
+      "title": "Limit on Step-Up for Property Gifted to the Decedent Shortly Before Death",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "26 U.S.C. § 1014(e) limits the stepped-up basis rule for appreciated property that was given to a decedent within the one-year period ending on the date of the decedent's death, if that property is then acquired from the decedent by (or passes to) the original donor or the donor's spouse. In that situation, the basis in the hands of the donor or the donor's spouse is not stepped up to fair market value; it is instead the same adjusted basis the property had in the decedent's hands immediately before death — the same basis it would have had if the decedent had never held it. \"Appreciated property\" for this purpose means property whose fair market value on the date it was transferred to the decedent by gift exceeded its adjusted basis at that time.",
+      "gap": "This clause states the general rule of paragraph (e)(1) and the \"appreciated property\" definition in paragraph (e)(2)(A); it does not separately restate paragraph (e)(2)(B)'s extension of the same rule to appreciated property sold by the decedent's estate or by a grantor trust of the decedent, which this document does not address further. This clause does not determine whether any specific gift to a decedent falls within this one-year rule. No CourtListener case-law search was performed for this document: a preliminary quota-availability check this session received an HTTP 429 (\"Rate limit exceeded: 125/day\"), so this document was deliberately limited to primary statutory text rather than case law, consistent with this corpus's practice of disclosing that choice rather than waiting out or working around the quota.",
+      "citations": [
+        {
+          "case": "26 U.S.C. § 1014(e)(1)-(2)(A)",
+          "cite": "26 U.S.C. § 1014(e)(1)-(2)(A)",
+          "url": "https://www.law.cornell.edu/uscode/text/26/1014",
+          "quote": "appreciated property was acquired by the decedent by gift during the 1-year period ending on the date of the decedent’s death, and (B) such property is acquired from the decedent by (or passes from the decedent to) the donor of such property (or the spouse of such donor), the basis of such property in the hands of such donor (or spouse) shall be the adjusted basis of such property in the hands of the decedent immediately before the death of the decedent."
+        }
+      ]
+    },
+    {
+      "id": "steppedupbasis_consistency_with_estate_tax_return",
+      "title": "Basis Must Be Consistent With the Estate Tax Return",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "26 U.S.C. § 1014(f), added effective for property with respect to which an estate tax return is filed after July 31, 2015, caps the basis of property under section 1014(a) so that it cannot exceed the value finally determined for federal estate tax purposes, or, where no final value has yet been determined, the value most recently reported to the beneficiary and the IRS under the separate reporting requirement of 26 U.S.C. § 6035(a). This consistency requirement applies only to property whose inclusion in the decedent's gross estate increased the estate's federal estate tax liability (after allowable credits); it does not apply to property that had no effect on the estate's tax liability, such as property in an estate with no federal estate tax due.",
+      "gap": "This clause does not restate the further mechanics of paragraph (f)(3) (how a value counts as \"determined\" for this purpose) beyond identifying the general concept, and does not address paragraph (f)(4)'s grant of regulatory authority to the Secretary to create exceptions. It also does not restate the separate section 6035 reporting statute in full; only its role as a value-reporting trigger under section 1014(f)(1)(B) is described here. No CourtListener case-law search was performed for this document: a preliminary quota-availability check this session received an HTTP 429 (\"Rate limit exceeded: 125/day\"), so this document was deliberately limited to primary statutory text rather than case law, consistent with this corpus's practice of disclosing that choice rather than waiting out or working around the quota.",
+      "citations": [
+        {
+          "case": "26 U.S.C. § 1014(f)(1)-(2)",
+          "cite": "26 U.S.C. § 1014(f)(1)-(2)",
+          "url": "https://www.law.cornell.edu/uscode/text/26/1014",
+          "quote": "The basis of any property to which subsection (a) applies shall not exceed— (A) in the case of property the final value of which has been determined for purposes of the tax imposed by chapter 11 on the estate of such decedent, such value, and (B) in the case of property not described in subparagraph (A) and with respect to which a statement has been furnished under section 6035(a) identifying the value of such property, such value. (2) Exception Paragraph (1) shall only apply to any property whose inclusion in the decedent’s estate increased the liability for the tax imposed by chapter 11 (reduced by credits allowable against such tax) on such estate."
+        }
+      ]
+    },
+    {
+      "id": "steppedupbasis_ird_exception",
+      "title": "Exception: Income in Respect of a Decedent",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "26 U.S.C. § 1014(c) states that section 1014 does not apply to property that constitutes a right to receive an item of income in respect of a decedent, as that term is used in 26 U.S.C. § 691. Income in respect of a decedent generally refers to amounts a decedent was entitled to receive as income but had not yet received or reported before death — for example, uncollected wages, or a traditional IRA or retirement account balance. Property of that kind does not receive a stepped-up basis under section 1014, regardless of the property's fair market value at the date of death.",
+      "gap": "This clause identifies the existence and general subject matter of the income-in-respect-of-a-decedent exception by cross-reference to 26 U.S.C. § 691, but § 691 itself was not independently fetched or verified for this document, so this clause does not restate § 691's own operative text or its detailed rules for what counts as income in respect of a decedent or how it is taxed. It does not determine whether any specific asset of a decedent's estate is income in respect of a decedent. No CourtListener case-law search was performed for this document: a preliminary quota-availability check this session received an HTTP 429 (\"Rate limit exceeded: 125/day\"), so this document was deliberately limited to primary statutory text rather than case law, consistent with this corpus's practice of disclosing that choice rather than waiting out or working around the quota.",
+      "citations": [
+        {
+          "case": "26 U.S.C. § 1014(c)",
+          "cite": "26 U.S.C. § 1014(c)",
+          "url": "https://www.law.cornell.edu/uscode/text/26/1014",
+          "quote": "This section shall not apply to property which constitutes a right to receive an item of income in respect of a decedent under section 691"
+        }
+      ]
     }
   ]
 }

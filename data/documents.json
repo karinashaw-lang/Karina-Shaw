@@ -23320,5 +23320,49 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "stepped_up_basis_at_death_info_sheet",
+    "title": "Stepped-Up Basis at Death — Information Sheet",
+    "description": "An informational sheet on the federal income-tax basis rule of 26 U.S.C. § 1014: the general fair-market-value-at-death basis rule, the alternate/special-use valuation elections, California's community-property \"double step-up\" under § 1014(b)(6), the one-year gift-back anti-abuse limit, the basis-consistency requirement tied to the estate tax return, and the income-in-respect-of-a-decedent exception. Distinguishes this income-tax-basis topic from the corpus's existing Federal Estate and Gift Tax Basics document, which addresses transfer-tax provisions.",
+    "categories": [
+      "Estate Planning"
+    ],
+    "clauseOrder": [
+      "steppedupbasis_intro",
+      "steppedupbasis_general_rule",
+      "steppedupbasis_alternate_valuation",
+      "steppedupbasis_community_property_double_stepup",
+      "steppedupbasis_separate_vs_community_contrast",
+      "steppedupbasis_gift_within_one_year",
+      "steppedupbasis_consistency_with_estate_tax_return",
+      "steppedupbasis_ird_exception"
+    ],
+    "fields": [
+      {
+        "id": "decedentName",
+        "label": "Decedent's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "survivingSpouseName",
+        "label": "Surviving spouse or domestic partner's name",
+        "placeholder": "Taylor Morgan",
+        "required": true
+      },
+      {
+        "id": "propertyAddress",
+        "label": "Property address",
+        "placeholder": "123 Main St, Apt 4, Springfield",
+        "required": true
+      },
+      {
+        "id": "executorName",
+        "label": "Executor name",
+        "placeholder": "Morgan Lee",
+        "required": true
+      }
+    ]
   }
 ]
