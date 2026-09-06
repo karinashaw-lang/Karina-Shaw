@@ -26381,5 +26381,88 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "petition_determine_succession_real_property_info_sheet",
+    "title": "Petition to Determine Succession to Real Property — Information Sheet",
+    "description": "Background information on California's superior-court petition procedure (Probate Code sections 13150-13157) letting a successor obtain a court order determining that a decedent's primary-residence real property, valued at or under a statutory ceiling (currently $750,000), has passed to the petitioner without a full probate administration -- distinct from the corpus's Small Estate Affidavit, the real-property small-value affidavit, and the Spousal or Domestic Partner Property Petition.",
+    "categories": [
+      "Estate Planning"
+    ],
+    "clauseOrder": [
+      "detsucc_declaration",
+      "detsucc_when_available",
+      "detsucc_threshold_and_standing",
+      "detsucc_dollar_threshold_schedule",
+      "detsucc_petition_contents_and_appraisal",
+      "detsucc_notice_requirements",
+      "detsucc_court_determinations",
+      "detsucc_order_finality",
+      "detsucc_personal_liability",
+      "detsucc_attorney_fees_and_comparison",
+      "detsucc_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "decedentName",
+        "label": "Decedent's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "dateOfDeath",
+        "label": "Date of death",
+        "placeholder": "March 15, 2026",
+        "required": true
+      },
+      {
+        "id": "petitionerName",
+        "label": "Petitioner's (successor's) name",
+        "placeholder": "Jordan Morgan",
+        "required": true
+      },
+      {
+        "id": "propertyAddress",
+        "label": "Property address",
+        "placeholder": "123 Main St., Sacramento, California",
+        "required": true
+      },
+      {
+        "id": "legalDescription",
+        "label": "Legal description of the property",
+        "placeholder": "Lot 4, Block 2, Tract No. 1234, as per map recorded in Book 10, Page 5 of Maps, Sacramento County",
+        "required": true
+      },
+      {
+        "id": "parcelNumber",
+        "label": "Assessor's Parcel Number",
+        "placeholder": "123-456-789",
+        "required": true
+      },
+      {
+        "id": "estimatedEstateValue",
+        "label": "Gross value of the real property (decedent's primary residence)",
+        "placeholder": "$620,000",
+        "required": true
+      },
+      {
+        "id": "countyOfFiling",
+        "label": "County of filing",
+        "placeholder": "Sacramento County",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 6, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Sacramento, California",
+        "required": true
+      }
+    ]
   }
 ]
