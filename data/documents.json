@@ -25594,5 +25594,63 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "dtsa_civil_seizure_remedy_info_sheet",
+    "title": "DTSA Civil Seizure Remedy — Information Sheet",
+    "description": "Explains the federal Defend Trade Secrets Act's ex parte civil seizure remedy, 18 U.S.C. §1836(b)(2): the extraordinary-circumstances threshold, the required necessity/harm and merits findings, the narrowest-seizure and confidentiality-protection requirements, the seven-day hearing deadline and security bond, execution by law enforcement only, custody and confidentiality of seized materials, and liability for a wrongful or excessive seizure.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "dtsaseize_purpose",
+      "dtsaseize_extraordinary_and_ex_parte",
+      "dtsaseize_necessity_findings",
+      "dtsaseize_merits_findings",
+      "dtsaseize_order_narrowness_and_protection",
+      "dtsaseize_hearing_deadline_and_security",
+      "dtsaseize_execution_by_law_enforcement",
+      "dtsaseize_custody_and_confidentiality",
+      "dtsaseize_wrongful_seizure_liability",
+      "dtsaseize_signature_and_acknowledgment"
+    ],
+    "fields": [
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "tradeSecretDescription",
+        "label": "Description of the trade secret",
+        "placeholder": "Acme's proprietary customer-pricing algorithm and associated source code",
+        "required": true
+      },
+      {
+        "id": "adversePartyName",
+        "label": "Adverse party's name",
+        "placeholder": "Beta Corp.",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
