@@ -26783,5 +26783,58 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "pobr_termination_appeal_info_sheet",
+    "title": "Public Safety Officers Procedural Bill of Rights Act (POBR) — Termination and Administrative Appeal Information Sheet",
+    "description": "Explains the Public Safety Officers Procedural Bill of Rights Act, Government Code sections 3300-3313 -- a distinct statutory scheme limited to peace officers within the Penal Code's peace-officer classifications, covering the statute's own definitions of 'public safety officer' and 'punitive action' (including dismissal), the right to representation during an interrogation that could lead to punitive action, the prohibition on punitive action for exercising chapter or grievance rights, the right to an opportunity for administrative appeal before a non-probationary officer's dismissal, the one-year deadline (and tolling grounds) to complete an investigation and notify the officer of proposed discipline, the right to read, sign, and respond to an adverse personnel comment, the right to inspect the personnel file used to decide termination, and the superior court enforcement mechanism including its civil penalty for a malicious violation. Distinct from this corpus's general Wrongful Termination in Violation of Public Policy, Personnel and Payroll Record Retention Duration, and Employee's Request to Inspect Personnel and Payroll Records documents, none of which address this chapter's peace-officer-specific procedural rights.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "pobrterm_declaration",
+      "pobrterm_scope_public_safety_officer",
+      "pobrterm_punitive_action_definition",
+      "pobrterm_interrogation_representation_right",
+      "pobrterm_no_retaliation_for_exercising_rights",
+      "pobrterm_administrative_appeal_right",
+      "pobrterm_one_year_deadline_and_tolling",
+      "pobrterm_adverse_comment_read_sign_and_response",
+      "pobrterm_personnel_file_inspection_right",
+      "pobrterm_enforcement_superior_court_and_civil_penalty",
+      "pobrterm_closing_signature"
+    ],
+    "fields": [
+      {
+        "id": "employeeName",
+        "label": "Public safety officer's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Employing public safety department / agency name",
+        "placeholder": "City of Example Police Department",
+        "required": true
+      },
+      {
+        "id": "jobTitle",
+        "label": "Rank / job classification",
+        "placeholder": "Police Officer II",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 6, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, state",
+        "placeholder": "Sacramento, California",
+        "required": true
+      }
+    ]
   }
 ]
