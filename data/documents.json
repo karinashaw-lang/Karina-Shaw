@@ -26653,5 +26653,83 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "license_suspension_child_support_info_sheet",
+    "title": "License Suspension for Unpaid Child Support (Family Code Section 17520) — Information Sheet",
+    "description": "Explains California's child support license suspension and denial program under Family Code Section 17520: which boards and licenses the statute reaches, its definition of compliance with a support order, the certified-list and consolidated-list process between a local child support agency and the Department of Child Support Services, the 150-day temporary license for new applicants, the supplemental-list process for suspending an existing license, the no-refund rule, the grounds for a required release, the judicial review process and its limited scope, the statute's sole-administrative-remedy provision, and its specific protections against vehicle impoundment and increased insurance costs for a suspended driver's license.",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "licsusp_intro",
+      "licsusp_board_and_license_scope",
+      "licsusp_compliance_definition",
+      "licsusp_certified_list_process",
+      "licsusp_temporary_license",
+      "licsusp_supplemental_list_suspension",
+      "licsusp_no_refund_on_denial_or_suspension",
+      "licsusp_release_grounds",
+      "licsusp_judicial_review",
+      "licsusp_sole_administrative_remedy",
+      "licsusp_driver_license_specific_protections",
+      "licsusp_signature_ack"
+    ],
+    "fields": [
+      {
+        "id": "obligorName",
+        "label": "Obligor's name",
+        "placeholder": "Taylor Morgan",
+        "required": true
+      },
+      {
+        "id": "obligeeName",
+        "label": "Obligee's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "courtCaseNumber",
+        "label": "Court case number",
+        "placeholder": "CGC-26-123456",
+        "required": true
+      },
+      {
+        "id": "countyOfFiling",
+        "label": "County of filing",
+        "placeholder": "Sacramento County",
+        "required": true
+      },
+      {
+        "id": "licenseTypeDescription",
+        "label": "Type of license at issue",
+        "placeholder": "California driver's license (Department of Motor Vehicles)",
+        "required": false
+      },
+      {
+        "id": "arrearsAmount",
+        "label": "Arrears amount, if any",
+        "placeholder": "$4,800",
+        "required": false
+      },
+      {
+        "id": "arrearsAsOfDate",
+        "label": "Arrears as-of date",
+        "placeholder": "September 1, 2026",
+        "required": false
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 6, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Sacramento, California",
+        "required": true
+      }
+    ]
   }
 ]
