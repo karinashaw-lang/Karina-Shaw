@@ -28933,5 +28933,87 @@
         "required": false
       }
     ]
+  },
+  {
+    "id": "mediation_confidentiality_info_sheet",
+    "title": "Mediation Confidentiality (Evid. Code §§ 1115-1129, 703.5) — Information Sheet and Statutory Disclosure Notice",
+    "description": "Explains California's general civil mediation confidentiality statute — Evidence Code sections 1115 through 1129 governing what mediation communications, writings, and settlement agreements are (and are not) admissible, discoverable, or disclosable, when a mediation ends for confidentiality purposes, and the attorney's duty under section 1129 to give clients a printed confidentiality disclosure — together with the related mediator testimonial-incompetence rule in section 703.5. It includes the section 1129(d) statutory safe-harbor disclosure and acknowledgment form. It differs from the corpus's existing Mandatory Child Custody Mediation Information Sheet (a different, Family Code-specific mediation confidentiality scheme) and Trade Secret Evidentiary Privilege Information Sheet (the separate Evidence Code sections 1060-1062 trade secret privilege, not specific to mediation).",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "medconf_intro",
+      "medconf_1115_definitions",
+      "medconf_1119_general_confidentiality_rule",
+      "medconf_1120_limits_and_carveouts",
+      "medconf_1121_mediator_reports_restricted",
+      "medconf_1122_consent_exceptions",
+      "medconf_1123_written_settlement_exception",
+      "medconf_1118_1124_oral_agreement_exception",
+      "medconf_1125_when_mediation_ends",
+      "medconf_1126_confidentiality_survives_end",
+      "medconf_1127_feeshifting_for_improper_subpoena",
+      "medconf_1128_reference_at_trial_consequences",
+      "medconf_703_5_mediator_testimonial_incompetence",
+      "medconf_1129_attorney_disclosure_duty",
+      "medconf_1129_statutory_notice_form",
+      "medconf_closing_signature"
+    ],
+    "fields": [
+      {
+        "id": "preparerName",
+        "label": "Preparer's Name",
+        "placeholder": "e.g., Jane Doe",
+        "required": true
+      },
+      {
+        "id": "clientName",
+        "label": "Client's Name",
+        "placeholder": "e.g., John Smith",
+        "required": true
+      },
+      {
+        "id": "attorneyName",
+        "label": "Attorney's Name",
+        "placeholder": "e.g., Maria Garcia, Esq.",
+        "required": false
+      },
+      {
+        "id": "mediatorName",
+        "label": "Mediator's Name",
+        "placeholder": "e.g., Robert Lee",
+        "required": false
+      },
+      {
+        "id": "disputeDescription",
+        "label": "Description of the Dispute Being Mediated",
+        "placeholder": "e.g., breach of a software license and non-disclosure agreement",
+        "required": true
+      },
+      {
+        "id": "courtCaseNumber",
+        "label": "Court Case Number (if any)",
+        "placeholder": "e.g., 24CV012345",
+        "required": false
+      },
+      {
+        "id": "courtName",
+        "label": "Court Name (if any)",
+        "placeholder": "e.g., Superior Court of California, County of Santa Clara",
+        "required": false
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date Prepared / Signed",
+        "placeholder": "e.g., January 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, State",
+        "placeholder": "e.g., Los Angeles, California",
+        "required": true
+      }
+    ]
   }
 ]
