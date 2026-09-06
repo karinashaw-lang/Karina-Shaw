@@ -25297,5 +25297,62 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "trade_secret_injunctive_relief_standards_info_sheet",
+    "title": "Trade Secret Injunctive Relief Standards — Information Sheet",
+    "description": "Explains the statutory standards for injunctive relief in trade secret misappropriation cases under California Civil Code section 3426.2 (CUTSA) and the parallel federal Defend Trade Secrets Act provision, 18 U.S.C. section 1836(b)(3)(A), including when an injunction may issue or must end, the DTSA's express limits protecting employment mobility and state law, and the royalty-in-lieu and affirmative-acts mechanisms both statutes provide.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "tsinjunct_purpose",
+      "tsinjunct_ca_enjoin_and_termination",
+      "tsinjunct_ca_royalty_in_lieu",
+      "tsinjunct_ca_affirmative_acts",
+      "tsinjunct_dtsa_enjoin_standard",
+      "tsinjunct_dtsa_employment_and_state_law_limits",
+      "tsinjunct_dtsa_affirmative_acts",
+      "tsinjunct_dtsa_royalty_in_lieu",
+      "tsinjunct_signature_and_acknowledgment"
+    ],
+    "fields": [
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "tradeSecretDescription",
+        "label": "Description of the trade secret",
+        "placeholder": "Acme's proprietary customer-pricing algorithm and associated source code",
+        "required": true
+      },
+      {
+        "id": "adversePartyName",
+        "label": "Adverse party's name",
+        "placeholder": "Beta Corp.",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
