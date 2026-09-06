@@ -25080,5 +25080,51 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "workers_rights_in_emergencies_info_sheet",
+    "title": "Workers' Rights in Emergencies — Information Sheet",
+    "description": "Explains California Labor Code § 1139 (SB 1044): the defined term \"emergency condition\" (excluding health pandemics), the reasonable-belief-of-unsafety standard, the core right to refuse to report to or leave an affected workplace, thirteen exempt employee categories, the separate communications-device access right, the employee's feasibility-based notice duty, when the protection stops applying, and PAGA enforcement with the employer's right to cure.",
+    "categories": [
+      "During employment"
+    ],
+    "clauseOrder": [
+      "emergencycond_declaration",
+      "emergencycond_definitions_emergency_condition",
+      "emergencycond_reasonable_belief_standard",
+      "emergencycond_core_right_refuse_or_leave",
+      "emergencycond_exempt_occupations",
+      "emergencycond_device_access_right",
+      "emergencycond_notice_duty",
+      "emergencycond_duration_limit",
+      "emergencycond_paga_enforcement",
+      "emergencycond_signature"
+    ],
+    "fields": [
+      {
+        "id": "employeeName",
+        "label": "Employee's name",
+        "placeholder": "e.g., Jane Doe",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Employer/company name",
+        "placeholder": "e.g., Acme Inc.",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "e.g., January 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, State",
+        "placeholder": "e.g., Chico, California",
+        "required": true
+      }
+    ]
   }
 ]
