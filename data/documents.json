@@ -22649,5 +22649,48 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "vehicle_tracking_device_privacy_info_sheet",
+    "title": "Electronic Vehicle Tracking Device Privacy — Information Sheet",
+    "description": "An informational sheet on California Penal Code §§ 637.7 and 637.2: the general prohibition on using an electronic tracking device to determine a vehicle's location or movement, the registered-owner/lessor/lessee consent exception (including business-owned vehicles), the device definition, criminal penalties and license-revocation consequences, and the related civil remedy.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "vehicletracking_intro",
+      "vehicletracking_general_prohibition",
+      "vehicletracking_device_definition",
+      "vehicletracking_business_vehicle_exception",
+      "vehicletracking_penalty",
+      "vehicletracking_civil_remedy",
+      "vehicletracking_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      }
+    ]
   }
 ]

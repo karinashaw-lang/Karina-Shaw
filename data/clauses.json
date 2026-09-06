@@ -61604,6 +61604,115 @@
       "title": "Acknowledgment of Receipt",
       "kind": "drafting",
       "body": "{{employeeName}} acknowledges receiving this informational sheet about California Labor Code §§ 350-356 governing gratuities. This acknowledgment confirms only that {{employeeName}} received and reviewed this sheet. It does not describe, approve, or waive any right or defense regarding any tip-pooling arrangement, service charge, or gratuity-handling practice of {{companyName}}.\n\nEmployee: {{employeeName}}\nDate: {{dateSigned}}\n{{cityState}}"
+    },
+    {
+      "id": "vehicletracking_intro",
+      "title": "About This Information Sheet",
+      "kind": "drafting",
+      "body": "This information sheet describes California Penal Code § 637.7, a criminal statute addressing the use of an electronic tracking device to determine a vehicle's location or movement, and the related civil remedy in Penal Code § 637.2. It states facts about the statutory text as currently in effect. It does not evaluate whether any particular tracking device, vehicle, or practice complies with the law, and does not recommend for or against installing, disabling, disclosing, or consenting to the use of any tracking device on any vehicle."
+    },
+    {
+      "id": "vehicletracking_general_prohibition",
+      "title": "General Prohibition on Using an Electronic Tracking Device",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "California Penal Code § 637.7(a) states that no person or entity in California shall use an electronic tracking device to determine the location or movement of a person. This prohibition appears within the Invasion of Privacy chapter of the Penal Code's criminal provisions (Penal Code §§ 630-638.55).",
+      "gap": "Subdivision (a)'s prohibition is worded in terms of tracking the location or movement of \"a person,\" while the consent exception in subdivision (b) (addressed in a separate clause of this document) is worded specifically in terms of a vehicle's registered owner, lessor, or lessee. The statute's text does not itself reconcile or further explain that difference in wording, and this clause does not attempt to resolve it. Penal Code § 637.7 is a criminal statute; it does not purport to be a comprehensive statement of all California law touching electronic location tracking (for example, it does not address tracking through a cell phone application or other means not involving a device attached to a vehicle or movable thing, which is discussed in a separate clause of this document).",
+      "citations": [
+        {
+          "case": "California Penal Code § 637.7(a)",
+          "cite": "Cal. Penal Code § 637.7(a)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PEN&sectionNum=637.7",
+          "quote": "No person or entity in this state shall use an electronic tracking device to determine the location or movement of a person."
+        }
+      ]
+    },
+    {
+      "id": "vehicletracking_device_definition",
+      "title": "Statutory Definition of \"Electronic Tracking Device\"",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Penal Code § 637.7(d) defines \"electronic tracking device,\" for purposes of this section, as any device attached to a vehicle or other movable thing that reveals its location or movement by the transmission of electronic signals. The definition is not limited to any particular technology (such as GPS); it turns on the device being attached to a vehicle or other movable thing and revealing location or movement through transmitted electronic signals.",
+      "gap": "The statute does not define \"attached,\" and its text does not specify whether a tracking function built into a vehicle's own factory-installed telematics or infotainment system (as opposed to an aftermarket device physically affixed to the vehicle) falls within this definition. No California appellate decision addressing that question was located or reviewed during this research session; CourtListener's case-law search tool returned a rate-limit error (125 requests/day, already exhausted earlier in this project, reported as not resetting for roughly another 5-6 hours) when queried for this topic, so this clause is based on the statutory text alone rather than on any judicial construction of \"attached\" or \"device.\"",
+      "citations": [
+        {
+          "case": "California Penal Code § 637.7(d)",
+          "cite": "Cal. Penal Code § 637.7(d)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PEN&sectionNum=637.7",
+          "quote": "As used in this section, “electronic tracking device” means any device attached to a vehicle or other movable thing that reveals its location or movement by the transmission of electronic signals."
+        }
+      ]
+    },
+    {
+      "id": "vehicletracking_business_vehicle_exception",
+      "title": "Consent Exception, Including Business-Owned Vehicles",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Penal Code § 637.7(b) states that the general prohibition in subdivision (a) does not apply when the registered owner, lessor, or lessee of a vehicle has consented to the use of the electronic tracking device with respect to that vehicle. Where a vehicle is registered to, owned by, or leased by a business entity rather than an individual, the business is the registered owner, lessor, or lessee for purposes of this consent requirement, so the business's own consent to tracking a vehicle it owns or leases satisfies subdivision (b), including where an employee or agent of the business is the person who drives or uses that vehicle. Separately, Penal Code § 637.7(c) states that the section does not apply to the lawful use of an electronic tracking device by a law enforcement agency.",
+      "gap": "Penal Code § 637.7 does not use the phrase \"business entity\" and does not contain a separately worded exception naming employer-employee or business-vehicle tracking as such. What is commonly described as a \"business vehicle exception\" is this clause's own characterization of applying subdivision (b)'s general consent rule (consent by the vehicle's registered owner, lessor, or lessee) to circumstances where a business is that registered owner, lessor, or lessee; the statutory text does not add any further condition to that consent, such as a requirement that the business separately notify the employee or agent who drives the vehicle, and does not distinguish for consent purposes between an owner who drives the vehicle personally and one who authorizes an employee or agent to drive it. This clause does not determine whether a particular business's relationship to a particular vehicle (for example, under a lease, a title held by a financing party, or a vehicle owned by an affiliated entity) actually makes that business the vehicle's \"registered owner, lessor, or lessee\" within the meaning of subdivision (b), and it does not address whether any other California law outside Penal Code § 637.7 imposes notice or other requirements on tracking a vehicle used by an employee or agent. CourtListener's case-law search was unavailable during this research session (125-request daily quota already exhausted before this topic was researched), so no California appellate decision construing subdivision (b) or applying it to an employer-owned-vehicle fact pattern was located or verified this session; this clause is based on the statutory text alone.",
+      "citations": [
+        {
+          "case": "California Penal Code § 637.7(b)",
+          "cite": "Cal. Penal Code § 637.7(b)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PEN&sectionNum=637.7",
+          "quote": "This section shall not apply when the registered owner, lessor, or lessee of a vehicle has consented to the use of the electronic tracking device with respect to that vehicle."
+        },
+        {
+          "case": "California Penal Code § 637.7(c)",
+          "cite": "Cal. Penal Code § 637.7(c)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PEN&sectionNum=637.7",
+          "quote": "This section shall not apply to the lawful use of an electronic tracking device by a law enforcement agency."
+        }
+      ]
+    },
+    {
+      "id": "vehicletracking_penalty",
+      "title": "Criminal Penalty and Professional License Consequences",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Penal Code § 637.7(e) states that a violation of the section is a misdemeanor. Penal Code § 637.7(f) further states that a violation by a person, business, firm, company, association, partnership, or corporation licensed under Division 3 (commencing with Section 5000) of the Business and Professions Code constitutes grounds for revocation of that license, under the license-revocation provisions of Division 3.",
+      "gap": "Division 3 of the Business and Professions Code covers numerous distinct licensed occupations and businesses. This clause does not determine which, if any, specific license category a particular person or business holds, or whether a licensing board would in fact pursue revocation for a given violation; the statute states only that a violation constitutes grounds for revocation, and the revocation process itself is governed by Division 3's own separate procedures, which are not restated in this clause.",
+      "citations": [
+        {
+          "case": "California Penal Code § 637.7(e)-(f)",
+          "cite": "Cal. Penal Code § 637.7(e), (f)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PEN&sectionNum=637.7",
+          "quote": "A violation of this section is a misdemeanor."
+        }
+      ]
+    },
+    {
+      "id": "vehicletracking_civil_remedy",
+      "title": "Civil Remedy for a Violation of the Invasion of Privacy Chapter",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Penal Code § 637.2, part of the same Invasion of Privacy chapter as § 637.7, states that a person injured by a violation of that chapter may bring a civil action against the person who committed the violation, for the greater of $5,000 per violation or three times the plaintiff's actual damages, if any. Section 637.2(b) states that a person may also bring an action, under Code of Civil Procedure Chapter 3 (commencing with Section 525) of Title 7 of Part 2, to enjoin and restrain a violation of the chapter, and may seek the same damages in that same action. Section 637.2(c) states that it is not a necessary prerequisite to such an action that the plaintiff has suffered, or be threatened with, actual damages.",
+      "gap": "Section 637.2 applies to a violation of the entire Invasion of Privacy chapter (Penal Code §§ 630-638.55), not solely to § 637.7, and this clause does not determine whether any particular use of a tracking device would in fact be found to violate § 637.7 in the first place — the civil remedy described here becomes available only once a violation of the chapter has been established. Section 637.2(d) also states that the section does not affect a separate body of law (Civil Code Title 4, commencing with § 3425.1, addressing trade secrets); that interaction is noted but not analyzed further here.",
+      "citations": [
+        {
+          "case": "California Penal Code § 637.2(a)",
+          "cite": "Cal. Penal Code § 637.2(a)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PEN&sectionNum=637.2",
+          "quote": "Any person who has been injured by a violation of this chapter may bring an action against the person who committed the violation for the greater of the following amounts: (1) Five thousand dollars ($5,000) per violation. (2) Three times the amount of actual damages, if any, sustained by the plaintiff."
+        },
+        {
+          "case": "California Penal Code § 637.2(c)",
+          "cite": "Cal. Penal Code § 637.2(c)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PEN&sectionNum=637.2",
+          "quote": "It is not a necessary prerequisite to an action pursuant to this section that the plaintiff has suffered, or be threatened with, actual damages."
+        }
+      ]
+    },
+    {
+      "id": "vehicletracking_ack",
+      "title": "Acknowledgment of Receipt and Review",
+      "kind": "drafting",
+      "body": "This information sheet regarding Penal Code § 637.7 and related California law on electronic vehicle tracking was provided by {{companyName}} to {{employeeName}} on {{dateSigned}}, and was prepared by {{preparerName}}. Receipt and review of this information sheet does not itself constitute consent to the use of any electronic tracking device, and this information sheet does not itself authorize, prohibit, or evaluate the use of any electronic tracking device on any vehicle."
     }
   ]
 }
