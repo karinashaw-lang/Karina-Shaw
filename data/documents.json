@@ -27688,5 +27688,51 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "heart_balm_actions_info_sheet",
+    "title": "Abolished Heart-Balm Actions in California — Information Sheet",
+    "description": "Explains that California statute bars lawsuits for alienation of affection, criminal conversation, seduction of a person over the age of legal consent, and breach of promise of marriage, and describes a separate, related statute letting a donor seek return of a gift given because a marriage was expected when the marriage does not take place.",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "heartbalm_intro",
+      "heartbalm_statute_overview",
+      "heartbalm_alienation_and_conversation",
+      "heartbalm_seduction",
+      "heartbalm_breach_of_promise",
+      "heartbalm_gift_recovery_survives",
+      "heartbalm_gift_just_amount_standard",
+      "heartbalm_common_1939_enactment",
+      "heartbalm_scope_named_torts_only",
+      "heartbalm_ack"
+    ],
+    "fields": [
+      {
+        "id": "party1Name",
+        "label": "First party's full legal name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "party2Name",
+        "label": "Second party's full legal name",
+        "placeholder": "Morgan Casey Lee",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
