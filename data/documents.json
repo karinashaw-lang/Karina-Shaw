@@ -26142,5 +26142,63 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "vexatious_litigant_family_court_info_sheet",
+    "title": "Vexatious Litigant Designation in Family Court — Information Sheet",
+    "description": "Explains California's vexatious litigant statute, Code of Civ. Proc. §§391-391.7, as it can apply in a family law proceeding: the statutory definition and its 2023 domestic-violence-restraining-order-based category, the motion for security or dismissal and its filing-fee exemption for a protected person, the non-merits hearing standard, dismissal for nonpayment of security, the automatic stay, and the prefiling-order procedure and its express extension to Family Code and Probate Code filings.",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "vexlit_intro",
+      "vexlit_definition_criteria",
+      "vexlit_dv_basis",
+      "vexlit_motion_for_security",
+      "vexlit_hearing_standard",
+      "vexlit_security_or_dismissal_order",
+      "vexlit_dismissal_nonpayment",
+      "vexlit_automatic_stay",
+      "vexlit_prefiling_order",
+      "vexlit_ack"
+    ],
+    "fields": [
+      {
+        "id": "petitionerName",
+        "label": "Petitioner's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "respondentName",
+        "label": "Respondent's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "courtCaseNumber",
+        "label": "Court case number",
+        "placeholder": "CGC-26-123456",
+        "required": true
+      },
+      {
+        "id": "countyOfFiling",
+        "label": "County of filing",
+        "placeholder": "Sacramento County",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      }
+    ]
   }
 ]
