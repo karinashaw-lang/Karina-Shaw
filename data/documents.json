@@ -22605,5 +22605,49 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "tip_pooling_gratuities_ownership_info_sheet",
+    "title": "Tip Pooling and Gratuities Ownership — Information Sheet",
+    "description": "An informational sheet on California Labor Code §§ 350-356: who owns a gratuity, what an employer or its agents may not do with one, credit-card gratuity timing, employer record-keeping duties, and the statute's own silence on tip-pooling categories and service-charge classification.",
+    "categories": [
+      "During employment"
+    ],
+    "clauseOrder": [
+      "tippooling_intro",
+      "tippooling_gratuity_definition_and_ownership",
+      "tippooling_no_employer_collection",
+      "tippooling_creditcard_payment_timing",
+      "tippooling_recordkeeping",
+      "tippooling_pooling_and_service_charge",
+      "tippooling_enforcement_and_penalties",
+      "tippooling_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
