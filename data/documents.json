@@ -27459,5 +27459,57 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "uniform_fiduciary_income_principal_act_info_sheet",
+    "title": "Uniform Fiduciary Income and Principal Act — Information Sheet",
+    "description": "Background information on California's Uniform Fiduciary Income and Principal Act (Probate Code sections 16320-16383), effective January 1, 2024 -- the default statutory rules a trustee applies to allocate receipts and disbursements between income and principal when a trust's own terms are silent, the trustee's power to adjust between income and principal and separate power to convert an income trust to a unitrust (with the required notice and minimum 30-day beneficiary objection period), specific default allocation rules for entity distributions (dividends and similar payments) and for receipts from minerals, water, and other natural resources, and when an income beneficiary's right to net income begins.",
+    "categories": [
+      "Estate Planning"
+    ],
+    "clauseOrder": [
+      "ufipa_declaration",
+      "ufipa_purpose_and_scope",
+      "ufipa_trust_terms_and_default_gap_filling",
+      "ufipa_power_to_adjust",
+      "ufipa_unitrust_conversion_power",
+      "ufipa_unitrust_notice_objection_period",
+      "ufipa_entity_distribution_default_rule",
+      "ufipa_natural_resources_receipts",
+      "ufipa_income_interest_begins_at_death",
+      "ufipa_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "trusteeName",
+        "label": "Initial trustee name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "trustName",
+        "label": "Name of this trust",
+        "placeholder": "The Jordan Alex Lee Revocable Living Trust",
+        "required": true
+      },
+      {
+        "id": "originalTrustDate",
+        "label": "Date the original trust was created",
+        "placeholder": "March 14, 2020",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
