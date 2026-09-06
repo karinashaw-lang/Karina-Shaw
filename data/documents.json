@@ -24983,5 +24983,49 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "yellow_dog_contract_prohibition_info_sheet",
+    "title": "Yellow-Dog Contract Prohibition — Information Sheet",
+    "description": "Explains California's prohibition on requiring, as a condition of employment, a promise to join or not join a labor or employer organization (Lab. Code §§ 920-923): the statute's broad definition of \"promise,\" the core prohibition, the promise's unenforceability in court, the misdemeanor for coercing such a promise, the statute's own public-policy declaration, and a comparison to the federal NLRA's parallel unfair-labor-practice rule.",
+    "categories": [
+      "Hiring"
+    ],
+    "clauseOrder": [
+      "yellowdog_purpose",
+      "yellowdog_definitions",
+      "yellowdog_core_prohibition",
+      "yellowdog_no_legal_effect",
+      "yellowdog_misdemeanor_coercion",
+      "yellowdog_public_policy_declaration",
+      "yellowdog_federal_nlra_comparison",
+      "yellowdog_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "e.g., Acme Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Applicant/Employee name",
+        "placeholder": "e.g., Jane Doe",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "e.g., January 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, State",
+        "placeholder": "e.g., Los Angeles, California",
+        "required": true
+      }
+    ]
   }
 ]
