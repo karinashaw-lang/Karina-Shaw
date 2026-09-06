@@ -28276,5 +28276,70 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "semiconductor_mask_work_protection_info_sheet",
+    "title": "Semiconductor Chip Mask Work Protection (17 U.S.C. §§ 901-914) — Information Sheet",
+    "description": "Explains the federal Semiconductor Chip Protection Act of 1984 -- a sui generis intellectual property right, separate from copyright, patent, and trade secret law, that protects the layered circuitry design (\"mask work\") of a semiconductor chip: the statutory definitions of \"mask work\" and \"semiconductor chip product,\" the non-original/staple-design and idea/process exclusions from protection, ownership and transfer, the 10-year term running from registration or first commercial exploitation, the three exclusive rights, the reverse-engineering limitation, the 2-year registration deadline (after which protection terminates), the optional notice form, and the statute's preemption of equivalent state-law protection. Distinct from the corpus's existing Copyright Assignment, Patent Assignment, Patent License, Trademark License, Software License, and trade-secret documents, none of which addresses this separate statutory scheme.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "maskwork_intro",
+      "maskwork_definition",
+      "maskwork_protection_limits",
+      "maskwork_ownership",
+      "maskwork_duration",
+      "maskwork_exclusive_rights",
+      "maskwork_reverse_engineering",
+      "maskwork_registration_deadline",
+      "maskwork_notice",
+      "maskwork_preemption",
+      "maskwork_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "workDescription",
+        "label": "Description of the mask work / semiconductor chip product",
+        "placeholder": "The layered circuitry topography of the Acme AC-7 microcontroller die",
+        "required": true
+      },
+      {
+        "id": "ownerName",
+        "label": "Mask work owner's name",
+        "placeholder": "Acme Semiconductor, Inc.",
+        "required": true
+      },
+      {
+        "id": "firstUseDate",
+        "label": "Date first commercially exploited, if known (relevant to the 10-year term and 2-year registration deadline)",
+        "placeholder": "e.g., March 1, 2026, or leave blank if not yet commercially exploited",
+        "required": false
+      },
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme Semiconductor, Inc.",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "San Jose, California",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 6, 2026",
+        "required": true
+      }
+    ]
   }
 ]
