@@ -29680,5 +29680,57 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "digital_replica_performer_contracts_info_sheet",
+    "title": "Digital Replica Provisions in Personal and Professional Services Contracts — Information Sheet",
+    "description": "Explains California Labor Code section 927 (added by AB 2602, operative January 1, 2025), which makes a contract provision unenforceable — but only as to a new performance fixed on or after that date, and only if every statutory condition is met — where the provision lets a digital replica of an individual's voice or likeness stand in for work the individual would otherwise have performed in person. Covers the reasonably-specific-description requirement and its exception, the legal-counsel and labor-union representation safe harbors, the limited scope of unenforceability (the rest of the contract and any exclusivity grants are unaffected), and the statutory definition of 'digital replica' and its exclusions. Distinguishes this contract-formation rule from this corpus's separate Right of Publicity Demand Letter Information Sheet, which covers Civil Code sections 3344 and 3344.1 (unauthorized-use liability, including for a deceased personality's postmortem digital replica) rather than contract enforceability for a living individual's own agreement.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "digitalreplica927_scope_intro",
+      "digitalreplica927_core_rule_and_timing",
+      "digitalreplica927_condition_in_place_of_in_person_work",
+      "digitalreplica927_condition_description_requirement",
+      "digitalreplica927_condition_representation_safe_harbors",
+      "digitalreplica927_limited_effect_not_whole_contract",
+      "digitalreplica927_definition_digital_replica",
+      "digitalreplica927_definition_exclusions",
+      "digitalreplica927_contract_record_declaration",
+      "digitalreplica927_closing_disclaimer"
+    ],
+    "fields": [
+      {
+        "id": "individualName",
+        "label": "Individual whose voice or likeness digital replica is at issue",
+        "placeholder": "Taylor Morgan",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Other contracting party (company or individual)",
+        "placeholder": "Acme Studios LLC",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date the agreement was signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "digitalReplicaUseDescription",
+        "label": "Description of the intended uses of the digital replica stated in the contract provision, if any",
+        "placeholder": "Use of a synthetic voice model in dubbed foreign-language versions of the same film",
+        "required": false
+      },
+      {
+        "id": "representationDescription",
+        "label": "How the individual was represented when the provision was agreed to (legal counsel, labor union, both, or neither)",
+        "placeholder": "Represented by personal entertainment counsel who negotiated the digital replica license terms",
+        "required": false
+      }
+    ]
   }
 ]
