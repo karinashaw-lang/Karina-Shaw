@@ -24303,5 +24303,60 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "pet_animal_custody_ownership_info_sheet",
+    "title": "Pet Animal Custody and Ownership — Information Sheet",
+    "description": "Explains Family Code § 2605: a court's authority to order interim care of a pet animal during a pending dissolution or legal separation, and its authority to assign sole or joint pet-animal ownership by considering care rather than applying the community estate's default equal-division rule, plus the statute's definitions of \"care\" and \"pet animal.\"",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "petcustody_intro",
+      "petcustody_interim_care_order",
+      "petcustody_ownership_assignment_standard",
+      "petcustody_care_definition",
+      "petcustody_pet_animal_definition",
+      "petcustody_declaration",
+      "petcustody_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "party1Name",
+        "label": "First party's name",
+        "placeholder": "e.g., Jane Doe",
+        "required": true
+      },
+      {
+        "id": "party2Name",
+        "label": "Second party's name",
+        "placeholder": "e.g., John Smith",
+        "required": true
+      },
+      {
+        "id": "countyOfFiling",
+        "label": "County",
+        "placeholder": "e.g., Los Angeles County",
+        "required": true
+      },
+      {
+        "id": "animalDescription",
+        "label": "Description of the pet animal",
+        "placeholder": "e.g., a 4-year-old golden retriever named Max",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "e.g., January 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, State",
+        "placeholder": "e.g., San Diego, California",
+        "required": true
+      }
+    ]
   }
 ]

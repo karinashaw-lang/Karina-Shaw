@@ -66405,6 +66405,98 @@
       "title": "Acknowledgment and Signature",
       "kind": "drafting",
       "body": "{{employeeName}} acknowledges having received this Special Enrollment Rights Information Sheet describing the federal HIPAA special enrollment right under 29 U.S.C. § 1181(f) and the federal Affordable Care Act marketplace special enrollment right under 45 C.F.R. § 155.420, and acknowledges that this document states general federal legal rules rather than a determination of {{employeeName}}'s own eligibility, deadlines, or plan options.\n\nSignature: ☐ _________________________ Date: _______________\n\n{{employeeName}}\n\nDate signed: {{dateSigned}}"
+    },
+    {
+      "id": "petcustody_intro",
+      "title": "What This Information Sheet Covers",
+      "kind": "drafting",
+      "body": "This Pet Animal Custody and Ownership Information Sheet concerns {{party1Name}} and {{party2Name}}, whose marital dissolution or legal separation proceeding is pending, or may be filed, in the California superior court for {{countyOfFiling}}. It describes what California Family Code section 2605 says about a pending-proceeding order for the interim care of a pet animal and about the court's authority, at final property division, to assign sole or joint ownership of a pet animal by considering the animal's care rather than applying the community estate's usual equal-division rule. It also describes how section 2605 defines \"pet animal\" and \"care\" for purposes of that section. This document is about {{animalDescription}}. This information sheet states what the Family Code says about pet animal ownership and interim care in general terms. It does not determine, calculate, or assert that section 2605 applies to any particular animal connected with {{party1Name}} and {{party2Name}}'s case, whether an animal is community property, or how a court would weigh any party's care of the animal; those are matters for the court to decide based on the specific facts, or for {{party1Name}} and {{party2Name}} to resolve by their own written agreement. This document is distinct from this corpus's existing Pet Trust Information Sheet, which concerns a Probate Code mechanism for naming a caretaker and funding an animal's care after a settlor's death or incapacity, not a family court's division of property between spouses or domestic partners during a dissolution or legal separation."
+    },
+    {
+      "id": "petcustody_interim_care_order",
+      "title": "Interim Order for Care of a Pet Animal During the Proceeding",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Family Code section 2605(a) allows the court, at a party's request in a dissolution or legal separation proceeding, to enter an order requiring a party to care for a pet animal before the court makes its final determination of who owns the animal. The statute expressly states that the existence of such an interim care order does not affect the court's later, final ownership determination -- the two are treated as separate questions decided at different points in the case.",
+      "gap": "This is the actual text of Family Code section 2605(a), fetched directly from leginfo.legislature.ca.gov and confirmed byte-identical (after whitespace normalization) across two fetches made with different User-Agent strings. The statute's text does not itself specify what factors a court considers in deciding whether to grant an interim care order, what the order may or must contain beyond requiring a party to provide care, or how long such an order remains in effect; this document does not address those questions further because the statute's text does not resolve them. This session's CourtListener case-law search for judicial interpretation of section 2605 returned a 429 quota-exhausted error (125/day limit) before any result could be retrieved, so this clause relies on the statutory text alone and has not been checked against any case law.",
+      "citations": [
+        {
+          "case": "Cal. Fam. Code § 2605(a) (California Legislative Information text)",
+          "cite": "the interim pet-animal care order and its non-effect on the final ownership determination",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=2605.",
+          "quote": "The court, at the request of a party to proceedings for dissolution of marriage or for legal separation of the parties, may enter an order, prior to the final determination of ownership of a pet animal, to require a party to care for the pet animal. The existence of an order providing for the care of a pet animal during the course of proceedings for dissolution of marriage or for legal separation of the parties shall not have any impact on the court’s final determination of ownership of the pet animal."
+        }
+      ]
+    },
+    {
+      "id": "petcustody_ownership_assignment_standard",
+      "title": "Final Ownership Assignment: A Care-Based Standard, Not the Equal-Division Default",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Family Code section 2605(b) states that, notwithstanding any other law -- including, but not limited to, Family Code section 2550 -- the court, at a party's request in a dissolution or legal separation proceeding, may assign sole or joint ownership of a pet animal by taking into consideration the care of the pet animal. Family Code section 2550 separately states the general rule that, apart from the parties' own written agreement or oral stipulation in open court, the court divides the community estate equally. Section 2605(b)'s own text singles out section 2550 by name as a rule that does not control a pet animal's ownership assignment -- the statute allows the court to award one party sole ownership of a community-property pet animal, considering that party's care of the animal, rather than applying the community estate's default of an equal division.",
+      "gap": "This is the actual text of Family Code section 2605(b) and, for the general rule it displaces, section 2550, both fetched directly from leginfo.legislature.ca.gov and confirmed byte-identical (after whitespace normalization) across two fetches of each section made with different User-Agent strings. Section 2605(b)'s text does not itself define \"taking into consideration,\" state how much weight a court must give the care factor relative to other considerations, or resolve what happens if more than two parties assert care of the same animal; this document does not address those questions because the statute's text does not resolve them. This session's CourtListener case-law search returned a 429 quota-exhausted error (125/day limit) before any result could be retrieved, so this clause relies on the statutory text alone and has not been checked against any judicial gloss on how courts actually apply the care factor.",
+      "citations": [
+        {
+          "case": "Cal. Fam. Code § 2605(b) (California Legislative Information text)",
+          "cite": "the court's authority to assign sole or joint pet-animal ownership considering care, notwithstanding other law including section 2550",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=2605.",
+          "quote": "Notwithstanding any other law, including, but not limited to, Section 2550, the court, at the request of a party to proceedings for dissolution of marriage or for legal separation of the parties, may assign sole or joint ownership of a pet animal taking into consideration the care of the pet animal."
+        },
+        {
+          "case": "Cal. Fam. Code § 2550 (California Legislative Information text)",
+          "cite": "the general rule requiring equal division of the community estate absent agreement or another provision of the division",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=2550.",
+          "quote": "the court shall, either in its judgment of dissolution of the marriage, in its judgment of legal separation of the parties, or at a later time if it expressly reserves jurisdiction to make such a property division, divide the community estate of the parties equally"
+        }
+      ]
+    },
+    {
+      "id": "petcustody_care_definition",
+      "title": "The Statutory Definition of \"Care\"",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Family Code section 2605(c)(1) defines \"care,\" as that term is used in section 2605, to include -- without being limited to -- the prevention of acts of harm or cruelty described in Penal Code section 597, and the provision of food, water, veterinary care, and safe and protected shelter. Because the statute's list is stated as nonexclusive (\"includes, but is not limited to\"), other conduct may also count as \"care\" for purposes of section 2605, even though the statute does not enumerate what that other conduct might be.",
+      "gap": "This is the actual text of Family Code section 2605(c)(1), fetched directly from leginfo.legislature.ca.gov and confirmed byte-identical (after whitespace normalization) across two fetches made with different User-Agent strings. This document has not independently fetched or verified the text of Penal Code section 597 referenced within this definition; it reports only that section 2605(c)(1) cross-references that section for the meaning of \"harm or cruelty,\" without stating what Penal Code section 597 itself provides. This session's CourtListener case-law search returned a 429 quota-exhausted error (125/day limit) before any result could be retrieved, so this clause relies on the statutory text alone.",
+      "citations": [
+        {
+          "case": "Cal. Fam. Code § 2605(c)(1) (California Legislative Information text)",
+          "cite": "the nonexclusive statutory definition of \"care\" for purposes of section 2605",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=2605.",
+          "quote": "“Care” includes, but is not limited to, the prevention of acts of harm or cruelty, as described in Section 597 of the Penal Code, and the provision of food, water, veterinary care, and safe and protected shelter."
+        }
+      ]
+    },
+    {
+      "id": "petcustody_pet_animal_definition",
+      "title": "The Statutory Definition of \"Pet Animal\" -- Community Property Only",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Family Code section 2605(c)(2) defines \"pet animal,\" as that term is used in section 2605, to mean any animal that is community property and is kept as a household pet. Both parts of this definition are conditions on the statute's reach: an animal that is not community property (for example, an animal one party owned before the marriage or received as a separate-property gift or inheritance and did not transmute) is not a \"pet animal\" within section 2605's own definition, and section 2605 does not by its terms apply to it. Likewise, an animal that is community property but is not kept as a household pet -- the statute does not define that phrase further -- falls outside this definition as well.",
+      "gap": "This is the actual text of Family Code section 2605(c)(2), fetched directly from leginfo.legislature.ca.gov and confirmed byte-identical (after whitespace normalization) across two fetches made with different User-Agent strings. The statute's text does not define \"kept as a household pet,\" does not state how a court determines whether a given animal is community or separate property in a contested case, and does not address an animal that is only partly community property (for example, purchased partly with separate-property funds); this document does not resolve those questions because the statute's text does not resolve them. This session's CourtListener case-law search returned a 429 quota-exhausted error (125/day limit) before any result could be retrieved, so this clause relies on the statutory text alone.",
+      "citations": [
+        {
+          "case": "Cal. Fam. Code § 2605(c)(2) (California Legislative Information text)",
+          "cite": "the statutory definition of \"pet animal\" as community property kept as a household pet",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=2605.",
+          "quote": "“Pet animal” means any animal that is community property and kept as a household pet."
+        }
+      ]
+    },
+    {
+      "id": "petcustody_declaration",
+      "title": "Declaration Regarding the Pet Animal",
+      "kind": "drafting",
+      "body": "In connection with the dissolution or legal separation proceeding between {{party1Name}} and {{party2Name}} pending, or to be filed, in the California superior court for {{countyOfFiling}}, this section describes {{animalDescription}} and each party's own account of that animal's day-to-day care, without asserting which account a court would accept or how a court would rule. Nothing in this section is itself a request, application, or order; a party seeking an interim care order or a final ownership assignment under Family Code section 2605 does so through the applicable court forms and procedures in that proceeding."
+    },
+    {
+      "id": "petcustody_signature_block",
+      "title": "Signature and Acknowledgment -- Not a Court Filing",
+      "kind": "drafting",
+      "body": "I declare under penalty of perjury under the laws of the State of California that the foregoing background information is true and correct.\n\nExecuted on {{dateSigned}} at {{cityState}}.\n\nSignature of {{party1Name}}: ☐ _________________________\n\n[This information sheet is prepared for background use alongside an actual dissolution or legal separation proceeding pending, or to be filed, in the California superior court for {{countyOfFiling}}. It does not itself request, grant, or assign an interim care order or final ownership of {{animalDescription}} under Family Code section 2605; only the court -- or {{party1Name}} and {{party2Name}}'s own written agreement -- can do that.]"
     }
   ]
 }
