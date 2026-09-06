@@ -21,6 +21,10 @@ One platform covering the full creator and viewer loop:
 - **Search inside everything**: transcript-powered search lets anyone find the exact moment something was said or shown, across a creator's entire back catalog of streams and episodes — then clip it instantly.
 - **Commute briefing**: viewers can queue up videos they want to watch, and AI generates a summarized audio briefing they can listen to on the go — turning the personal wall into an active daily tool, not just an archive.
 - **Community layer**: comments, follows, and posts attached to specific content keep engagement alive between live sessions.
+- **Ask the show**: viewers can ask a question and get an answer pulled from across a creator's entire back catalog, with links to the exact moments it came from.
+- **Moment-level recommendations**: surfaces related clips based on what was actually said or shown, not just show category or creator tags.
+- **Auto-captioned clips**: every clip is automatically captioned and formatted for external sharing, built on the same transcript data used for search.
+- **Scheduled listening parties**: viewers can synchronize playback of existing episodes at a set time with a shared chat, a low-cost way to get "watching together" before investing in full live infrastructure.
 - **Direct monetization**: tips and (later) subscriptions pay creators directly.
 
 ## Target Market
@@ -38,6 +42,9 @@ One platform covering the full creator and viewer loop:
 7. **Optional "Studio Look"** — a real-time cinematic lighting/visual mode creators can toggle on when recording or going live, entirely opt-in. Authenticity stays the default; polish becomes a creative choice, not a platform-imposed identity.
 8. **Habit and identity features** — recap reels and streaks turn passive consumption into something personal and worth returning to.
 9. **Direct, creator-first monetization** — tips and subscriptions pay creators directly from the people who value them, rather than routing through an ad-share model.
+10. **Ask the show** — a question-answering layer over a creator's full catalog, built on transcript data already required for search. No major podcast or video platform offers this.
+11. **Moment-level recommendations** — content-based discovery driven by what was actually said, not show metadata, surfacing connections between creators that category tags would miss.
+12. **Personal notes on saved clips** — a one-line "why I saved this" on any wall item, turning the wall into something more personal and shareable, not just a bookmark list.
 
 ## Business Model
 - Tips on live streams, videos, and clips (creator-first, transaction-based)
@@ -50,26 +57,38 @@ One platform covering the full creator and viewer loop:
 - Lean on clips (creator-made and viewer-made, including real-time clipping during live streams) as the organic growth loop: clips shared externally drive new viewers back to full episodes, live streams, and creator profiles.
 - Expand from professional podcasters to a broader range of creators — cooking streamers, IRL/talk streamers, semi-professional and hobbyist creators — once the core product and monetization are proven, without requiring a repositioning of the platform's identity.
 
+## Build Philosophy: Rent Infrastructure, Build Differentiation
+Every major platform capability below has a cheap, off-the-shelf way to stand it up and an expensive, custom way to build it. The plan defaults to renting commodity infrastructure (video hosting, transcription, live delivery, payments) via existing APIs, and spending engineering time only on the pieces that are actually differentiated (the wall, search, ask-the-show, recommendations). This keeps V1 buildable by a small team or solo founder, and keeps each later stage's cost tied to usage rather than a large upfront infrastructure bill.
+
+- **Transcription**: off-the-shelf speech-to-text (e.g., Whisper), not custom-built.
+- **Search**: keyword/vector search on top of transcripts using standard tools (e.g., Postgres full-text search or a hosted vector database), not a custom search engine.
+- **Commute briefing**: transcript → LLM summary → text-to-speech, chained API calls, no new infrastructure beyond what search already requires.
+- **Payments**: a payments platform with built-in creator payouts and tax handling (e.g., Stripe Connect), not custom payment infrastructure.
+- **Live streaming**: a live-streaming API (ingest, transcoding, delivery) rather than in-house video infrastructure — see the tiered live rollout below.
+- **Real-time chat / listening parties**: a hosted real-time messaging service, not custom WebSocket infrastructure.
+
 ## Roadmap
 
-**V1 — Prove the core loop**
-- Creator profiles, upload flow, manual clipping, viewer-created private clips, personal wall, comments and posts attached to content, follows, tips, basic creator dashboard.
+**V1 — Prove the core loop (single content type, cheapest to build)**
+- Focus on one content type at launch (podcasts, the original wedge) rather than podcasts, cooking, and IRL content simultaneously — same infrastructure supports the others later, but scoping to one keeps V1 lean.
+- Creator profiles, upload/record flow (no live yet), automatic audio + video split, manual clipping, viewer-created private clips, auto-captioned clips.
+- Transcript-powered search and "ask the show," brought forward into V1 since both are built on transcription already required for the audio split — cheap to include early, and core to the differentiation.
+- Personal wall with notes on saved items, moment-level recommendations, comments and posts attached to content, follows, tips (via Stripe Connect), basic creator dashboard.
 
-**V2 — Live, depth, and the virality/search loop**
-- Live streaming (go-live + chat), built for talk, cooking, and general content — not gaming-first
-- Subscriptions
-- Transcript-powered semantic search across a creator's full catalog — moved up as core infrastructure, since it underpins search, clipping, and the commute briefing
-- AI-automated clip/highlight detection, plus real-time viewer clipping during live streams
-- "Studio Look" — optional real-time relighting/visual mode for recording and live, off by default
-- Commute briefing — AI-generated audio summaries of a viewer's queued videos, built on the same transcript infrastructure as search
-- Recap reels, streaks, guest-following
-- Co-watch — synchronous group watch/listen rooms with shared chat/reactions, tying into the personal wall as social curation
+**V2 — Live streaming and togetherness, rolled out in tiers**
+- **Tier 1 (near-zero cost):** scheduled listening parties — synchronized playback of existing episodes at a set time, with shared real-time chat. Validates demand for togetherness before spending on live infrastructure.
+- **Tier 2 (usage-based cost):** real one-to-many live broadcasting via a live-streaming API — creators go live, viewers watch and chat, real-time viewer clipping during the stream. Cost scales with actual streaming usage rather than requiring upfront infrastructure spend.
+- Subscriptions.
+- AI-automated clip/highlight detection layered on top of the existing transcript pipeline.
+- Commute briefing extended to include queued live-stream VODs, not just uploaded episodes.
+- Recap reels, streaks, guest-following.
+- Expansion to additional content types (cooking, IRL, talk) once the core loop and live tier 1/2 are validated — same infrastructure, broader creator base.
 
-**V3 — AI-native differentiation and open social**
-- Real-time or near-live AI dubbing with voice cloning (via third-party providers, not built in-house)
-- Multi-guest "same room" native recording
-- Standalone open text/thought feed — short public posts independent of a specific video, with its own following and reaction mechanics, for creators and viewers to share thoughts between live sessions
-- Full public/open social feed expansion beyond content-attached comments
+**V3 — Higher-cost, higher-risk additions (only after V1/V2 traction and revenue)**
+- **Tier 3 live (highest cost):** multi-guest "same room" native recording and low-latency interactive live, built on WebRTC infrastructure (e.g., LiveKit) — the most expensive live capability, pursued only once live tiers 1–2 have proven demand.
+- Real-time cinematic "Studio Look" relighting — deferred from earlier plans due to compute cost; a cheap client-side filter/color-grade can serve as a lightweight stand-in if visual differentiation is wanted sooner.
+- Real-time or near-live AI dubbing with voice cloning (via third-party providers, not built in-house).
+- Standalone open text/thought feed and full public/open social feed expansion beyond content-attached comments — held until moderation infrastructure and revenue justify the operational cost.
 
 ## Competitive Landscape
 - **Twitch:** dominant in live streaming, but gaming-first culture, tools, and discovery; VODs are largely unsearchable and disappear from relevance quickly; no personal curation layer.
@@ -84,13 +103,13 @@ One platform covering the full creator and viewer loop:
 - **Adoption risk:** creators may treat the platform as "one more place to crosspost" rather than their primary home, undermining the network effects the model depends on.
 - **Cold-start risk:** value depends on having both creators and engaged viewers early; viewer-created clips, live clipping, and direct outreach to creators are designed to mitigate this, but it remains the central early risk.
 - **Scope risk:** the platform now spans several major surfaces — live, on-demand video, search, clipping, a personal wall, and eventually an open text feed. Sequencing (V1 → V2 → V3) is designed to manage this, but scope must be actively guarded against, not just planned around.
-- **Technical/infra risk:** live streaming, transcript search, AI summarization, and AI dubbing are the most complex and costly pieces to execute well; sequencing them after the core loop reduces but doesn't eliminate this risk.
+- **Technical/infra risk:** live streaming and AI dubbing remain the most complex and costly pieces to execute well even when rented rather than built in-house; the tiered live rollout and reliance on off-the-shelf transcription/search infrastructure reduce but don't eliminate this risk, particularly at the multi-guest, low-latency tier.
 - **Positioning risk:** blending "authentic, unedited" content with an optional polished "Studio Look" mode requires clear framing (opt-in, not platform-imposed) to avoid diluting the authenticity positioning that differentiates the platform from YouTube's polish-optimized culture.
 - **Competitive response:** incumbents (YouTube, Twitch, TikTok) are actively investing in live, video podcasting, and AI features, and could narrow the gaps this plan is built around; timing and depth of execution on search and the personal wall are the main defenses, since these are the features most misaligned with incumbents' existing business models.
 - **Moderation risk:** any open commenting, posting, live chat, or clipping feature introduces moderation needs that scale with usage. This grows substantially with live streaming (V2) and further with an open text feed (V3), and must be planned for at each stage, not bolted on after growth.
 
 ## Team & Execution Notes
-- Early build (V1) can realistically be executed by a small team, or a solo founder using AI-assisted development tools, since it relies on established infrastructure (video hosting, transcription, payments) rather than novel technology.
-- V2 features (live streaming, transcript search, AI summarization, Studio Look) raise technical complexity meaningfully and will likely require either specialized hires or close integration with third-party providers for live infrastructure and AI models.
-- V3 features (AI dubbing, an open social feed) are both the most technically demanding and the most operationally demanding (moderation, community management) additions, and should only be pursued once the core loop, revenue, and moderation infrastructure are proven at V1/V2 scale.
+- V1, scoped to a single content type and built on rented infrastructure (transcription, search tooling, payments), is realistically buildable by a small team or a solo founder using AI-assisted development tools — this is a cost and time question, not a novel-technology question.
+- V2's tiered live rollout is designed to defer cost: tier 1 (listening parties) is cheap and validates demand; tier 2 (real live broadcast via a rented live-streaming API) only requires spend once tier 1 shows people want to watch together, and that spend scales with usage rather than requiring a large upfront build.
+- V3 features (multi-guest low-latency live, AI dubbing, real-time relighting, an open social feed) are both the most technically demanding and the most operationally demanding (moderation, community management) additions, and should only be pursued once the core loop, live tiers 1–2, and revenue are proven at V1/V2 scale.
 - Direct relationships with early creator users are the most important non-technical execution priority — the plan depends on real adoption, not just a working product.
