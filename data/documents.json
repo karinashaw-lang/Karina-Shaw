@@ -25187,5 +25187,56 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "voting_trusts_shareholder_voting_agreements_info_sheet",
+    "title": "Voting Trusts and Shareholder Voting Agreements — Information Sheet",
+    "description": "Explains the two statutory devices California law recognizes for controlling how shares are voted: a written shareholder voting agreement, and a voting trust in which shares are transferred to trustees, including the 10-year term cap, extension procedure, and filing/inspection duty.",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "votingtrust_intro",
+      "votingtrust_two_voting_control_mechanisms",
+      "votingtrust_shareholder_voting_agreement_terms",
+      "votingtrust_creation_and_ten_year_cap",
+      "votingtrust_extension_procedure",
+      "votingtrust_filing_and_inspection_duty",
+      "votingtrust_no_formal_crossover_requirement",
+      "votingtrust_related_irrevocable_proxy",
+      "votingtrust_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "entityType",
+        "label": "Entity type",
+        "placeholder": "stock corporation",
+        "required": true
+      },
+      {
+        "id": "shareholderName",
+        "label": "Shareholder's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
