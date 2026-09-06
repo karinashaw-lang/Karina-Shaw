@@ -29410,5 +29410,59 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "court_appointed_child_custody_evaluation_info_sheet",
+    "title": "Court-Appointed Child Custody Evaluations — Information Sheet",
+    "description": "Explains California's statutory scheme for court-appointed child custody evaluators and investigators under Family Code Chapter 6 (§§ 3110-3118) -- who may serve as an evaluator, the domestic-violence and child-sexual-abuse training precondition, cost allocation, report confidentiality and sanctions for unwarranted disclosure, a domestic-violence separate-interview safeguard, the right to cross-examine the evaluator, and the heightened protocol that applies when a serious child-sexual-abuse allegation is at issue. Distinct from this project's Mandatory Child Custody Mediation, Minor's Counsel, and Move-Away Custody information sheets, which address separate procedures and only cross-reference this chapter in passing.",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "custodyeval_declaration",
+      "custodyeval_investigator_definition",
+      "custodyeval_appointment_and_standards",
+      "custodyeval_evaluator_licensing_categories",
+      "custodyeval_dv_child_abuse_training_requirement",
+      "custodyeval_cost_allocation",
+      "custodyeval_report_confidentiality_and_sanctions",
+      "custodyeval_domestic_violence_separate_meetings",
+      "custodyeval_cross_examination_right",
+      "custodyeval_serious_sexual_abuse_protocol",
+      "custodyeval_relationship_to_other_processes",
+      "custodyeval_acknowledgment"
+    ],
+    "fields": [
+      {
+        "id": "childName",
+        "label": "Child's Name",
+        "placeholder": "e.g., Alex Doe",
+        "required": true
+      },
+      {
+        "id": "parent1Name",
+        "label": "Parent 1 Name",
+        "placeholder": "e.g., Jane Doe",
+        "required": true
+      },
+      {
+        "id": "parent2Name",
+        "label": "Parent 2 Name",
+        "placeholder": "e.g., John Doe",
+        "required": true
+      },
+      {
+        "id": "countyOfFiling",
+        "label": "County of Filing",
+        "placeholder": "e.g., Los Angeles County",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date Signed",
+        "placeholder": "e.g., January 1, 2026",
+        "required": true
+      }
+    ]
   }
 ]
