@@ -66953,6 +66953,235 @@
       "title": "Incorporator Acknowledgment and Signature",
       "kind": "drafting",
       "body": "The undersigned, {{incorporatorName}}, acknowledges reviewing this information sheet concerning the California Social Purpose Corporations Act and understands that this document is informational only, does not constitute legal advice about {{companyName}}'s specific circumstances, and does not itself form, register, or amend any corporation.\n\nSignature: _____________________________   Date: _____________\n{{incorporatorName}}, Incorporator"
+    },
+    {
+      "id": "poapt_intro",
+      "title": "About This Powers of Appointment Information Sheet",
+      "kind": "drafting",
+      "body": "This information sheet, prepared by {{preparerName}}, describes the general body of California law governing powers of appointment — Probate Code Division 2, Part 14 (§§ 600–695) — as that law may bear on {{appointmentInstrumentDescription}}, under which {{appointmentDonorName}} is identified as donor and {{appointmentPowerholderName}} is identified as powerholder. A power of appointment is a mechanism, most often created inside a will or trust, by which one person (the donor) authorizes another (the powerholder) to designate later who receives specified property, without the powerholder owning that property outright. This sheet covers, on a general informational basis only: the statutory definitions of donor, powerholder, appointee, and appointive property; the distinction between a general and a special (nongeneral) power; the distinction between an imperative and a discretionary power; the formal requirements for exercising a power, including the specific-reference requirement and the separate rule that an ordinary residuary clause does not exercise a power; the rules governing contracts to appoint and releases of a power; what happens when an exercise is defective, overbroad, or never made; and how the creditors of a powerholder are, and are not, exposed to appointive property. It is distinct from this project's Rule Against Perpetuities information sheet, which addresses how long a power of appointment may remain unexercised before it becomes invalid under Probate Code §§ 21200–21231 (a timing limit) rather than how a power is defined, created, exercised, or released (the subject of this sheet); from the Certification of Trust and California Uniform Directed Trust Act information sheets, which address a trustee's or trust director's fiduciary authority rather than a nonfiduciary power held by an individual powerholder; and from the Disclaimer information sheet, which addresses declining an interest or power outright rather than exercising, contracting to exercise, or releasing one. This sheet does not identify, draft, or evaluate the validity of any specific exercise, release, or contract to appoint involving {{appointmentInstrumentDescription}}; whether a particular attempted exercise satisfies the creating instrument's requirements and this statutory scheme depends on the instrument's precise terms and is a legal determination this sheet does not make."
+    },
+    {
+      "id": "poapt_key_definitions",
+      "title": "Statutory Definitions: Donor, Powerholder, Appointee, and Appointive Property",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Probate Code § 610 defines the vocabulary used throughout Part 14. A power of appointment is a power, held by a powerholder acting in a nonfiduciary capacity, to designate who receives an ownership interest in the appointive property or a further power over it — a category of authority the statute expressly distinguishes from a power of attorney. The person who creates or reserves the power is the donor; the writing that does so — a deed, will, trust, or other instrument — is the creating instrument; and a person in whose favor the power can be exercised is a permissible appointee, while a person in whose favor it actually is exercised is the appointee. Here, {{appointmentInstrumentDescription}} is the creating instrument, {{appointmentDonorName}} is the donor, and {{appointmentPowerholderName}} is the powerholder.",
+      "gap": "Section 610 was fetched twice from leginfo.legislature.ca.gov using two distinct User-Agent strings (a custom research-bot UA for pass 1 and a Chrome-style browser UA for pass 2); both fetches returned byte-identical text after whitespace normalization. This clause quotes only the definitions of “power of appointment” and “creating instrument”/“donor”; § 610 also separately defines “appointee,” “appointive property,” “permissible appointee,” and “powerholder,” which are paraphrased rather than block-quoted here, and a reader relying on this clause should consult the full text of § 610 rather than this summary for any of those other terms.",
+      "citations": [
+        {
+          "case": "Cal. Prob. Code § 610 (California Legislative Information text)",
+          "cite": "California Probate Code, definition of “power of appointment”",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=610.",
+          "quote": "“Power of appointment” means a power that enables a powerholder acting in a nonfiduciary capacity to designate a recipient of an ownership interest in or another power of appointment over the appointive property. The term does not include a power of attorney."
+        },
+        {
+          "case": "Cal. Prob. Code § 610 (California Legislative Information text)",
+          "cite": "California Probate Code, definitions of “creating instrument” and “donor”",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=610.",
+          "quote": "“Creating instrument” means the deed, will, trust, or other writing or document that creates or reserves the power of appointment. (d) “Donor” means the person who creates or reserves a power of appointment."
+        }
+      ]
+    },
+    {
+      "id": "poapt_general_vs_special",
+      "title": "General Powers Versus Special (Nongeneral) Powers",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Probate Code § 611 classifies every power of appointment as either general or special. A power is general only to the extent it can be exercised in favor of the powerholder, the powerholder's estate, the powerholder's creditors, or the creditors of the powerholder's estate; any power that is not general is, by the statute's own terms, special. The statute carves out two situations that would otherwise look like general powers: a support-limited power to consume or invade property for someone's health, education, support, or maintenance under an ascertainable standard is not a general power, and neither is a power the powerholder can exercise only jointly with someone whose interest in the property is adverse to an exercise in the powerholder's own favor. A single power can also be general as to some appointive property and special as to the rest. This general/special classification then determines, among other things, how far a powerholder's creditors can reach the appointive property, addressed elsewhere in this sheet.",
+      "gap": "Section 611 was fetched twice from leginfo.legislature.ca.gov using two distinct User-Agent strings (a custom research-bot UA for pass 1 and a Chrome-style browser UA for pass 2); both fetches returned byte-identical text after whitespace normalization. This clause quotes subdivisions (a) and (b) of § 611; it does not separately quote subdivision (c) (the adverse-interest carve-out), subdivision (d) (the residual definition of “special”), or subdivision (e) (mixed classification as to different property), each of which is only paraphrased above.",
+      "citations": [
+        {
+          "case": "Cal. Prob. Code § 611 (California Legislative Information text)",
+          "cite": "California Probate Code, definition of a “general” power of appointment",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=611.",
+          "quote": "A power of appointment is “general” only to the extent that it is exercisable in favor of the powerholder, the powerholder’s estate, the powerholder’s creditors, or creditors of the powerholder’s estate, whether or not it is exercisable in favor of others."
+        },
+        {
+          "case": "Cal. Prob. Code § 611 (California Legislative Information text)",
+          "cite": "California Probate Code, ascertainable-standard exception to a “general” power",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=611.",
+          "quote": "A power to consume, invade, or appropriate property for the benefit of a person in discharge of the powerholder’s obligation of support that is limited by an ascertainable standard relating to the person’s health, education, support, or maintenance is not a general power of appointment."
+        }
+      ]
+    },
+    {
+      "id": "poapt_imperative_vs_discretionary",
+      "title": "Imperative Powers Versus Discretionary Powers",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Separately from the general/special classification, Probate Code § 613 classifies a power of appointment as either imperative or discretionary based on the donor's intent as shown in the creating instrument. A power is imperative when the creating instrument shows the donor intended the permissible appointees to be benefited even if the powerholder never exercises the power — and a power can still be imperative even though the powerholder is free to select some permissible appointees and exclude others. Every other power is discretionary, meaning the powerholder is free to exercise it, or not, as the powerholder chooses. This classification affects what happens if {{appointmentPowerholderName}} never exercises the power created by {{appointmentInstrumentDescription}}, addressed elsewhere in this sheet.",
+      "gap": "Section 613 was fetched twice from leginfo.legislature.ca.gov using two distinct User-Agent strings (a custom research-bot UA for pass 1 and a Chrome-style browser UA for pass 2); both fetches returned byte-identical text after whitespace normalization. Section 613 states the definition itself but does not, by its own terms, resolve whether any particular creating instrument's language manifests the donor's intent to make a given power imperative rather than discretionary; that is a matter of interpreting the specific instrument, which this clause does not do.",
+      "citations": [
+        {
+          "case": "Cal. Prob. Code § 613 (California Legislative Information text)",
+          "cite": "California Probate Code, definition of “imperative” and “discretionary” powers",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=613.",
+          "quote": "A power of appointment is “imperative” where the creating instrument manifests an intent that the permissible appointees be benefited even if the powerholder fails to exercise the power. An imperative power can exist even though the powerholder has the privilege of selecting some and excluding others of the designated permissible appointees. All other powers of appointment are “discretionary.” The powerholder of a discretionary power is privileged to exercise, or not to exercise, the power as the powerholder chooses."
+        }
+      ]
+    },
+    {
+      "id": "poapt_manner_of_exercise",
+      "title": "Complying With the Creating Instrument's Formal Requirements",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Probate Code § 630 states the baseline rule for how a power of appointment must be exercised: if the creating instrument specifies requirements for the manner, time, or conditions of exercise, the power can be exercised only by complying with those requirements, subject to other provisions of Part 14 (such as the substantial-compliance rule of § 631, not addressed in this sheet). The statute also supplies a default rule for a gap the creating instrument often does not address: unless the creating instrument expressly prohibits it, a power stated to be exercisable by an inter vivos (lifetime) instrument can also be exercised by a written will.",
+      "gap": "Section 630 was fetched twice from leginfo.legislature.ca.gov using two distinct User-Agent strings (a custom research-bot UA for pass 1 and a Chrome-style browser UA for pass 2); both fetches returned byte-identical text after whitespace normalization. This clause does not address § 631's separate substantial-compliance doctrine, under which a court may excuse a defective attempt to comply with the creating instrument's formal requirements in certain circumstances; whether that doctrine applies to any specific attempted exercise under a given creating instrument is not addressed here.",
+      "citations": [
+        {
+          "case": "Cal. Prob. Code § 630 (California Legislative Information text)",
+          "cite": "California Probate Code, compliance with the creating instrument's formal requirements",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=630.",
+          "quote": "Except as otherwise provided in this part, if the creating instrument specifies requirements as to the manner, time, and conditions of the exercise of a power of appointment, the power can be exercised only by complying with those requirements. (b) Unless expressly prohibited by the creating instrument, a power stated to be exercisable by an inter vivos instrument is also exercisable by a written will."
+        }
+      ]
+    },
+    {
+      "id": "poapt_specific_reference_requirement",
+      "title": "The Specific-Reference Requirement",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Probate Code § 632 addresses a creating instrument that goes further than § 630's general manner-of-exercise rule by expressly requiring that any exercise refer specifically to the power itself or to the instrument that created it. Where the creating instrument imposes that requirement, the power can be exercised only by an instrument that actually contains the required specific reference; an instrument attempting to exercise the power without that reference does not satisfy this section.",
+      "gap": "Section 632 was fetched twice from leginfo.legislature.ca.gov using two distinct User-Agent strings (a custom research-bot UA for pass 1 and a Chrome-style browser UA for pass 2); both fetches returned byte-identical text after whitespace normalization. Whether a particular creating instrument itself imposes a specific-reference requirement — and, if so, exactly what reference it demands — depends on that instrument's own text, which this clause does not examine.",
+      "citations": [
+        {
+          "case": "Cal. Prob. Code § 632 (California Legislative Information text)",
+          "cite": "California Probate Code, specific-reference requirement",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=632.",
+          "quote": "If the creating instrument expressly directs that a power of appointment be exercised by an instrument that makes a specific reference to the power or to the instrument that created the power, the power can be exercised only by an instrument containing the required reference."
+        }
+      ]
+    },
+    {
+      "id": "poapt_residuary_clause_does_not_exercise",
+      "title": "An Ordinary Residuary Clause Does Not Exercise a Power of Appointment",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Probate Code § 641 states a rule distinct from — and easy to overlook alongside — the specific-reference rule of § 632: even where the creating instrument imposes no specific-reference requirement at all, a general residuary clause in a will, or a will that makes a general disposition of all the testator's property, does not by itself exercise a power of appointment the testator holds. Exercise occurs only if the will specifically references the power or otherwise shows an indication of intent to exercise it. The statute states that this rule applies where the powerholder dies on or after July 1, 1982.",
+      "gap": "Section 641 was fetched twice from leginfo.legislature.ca.gov using two distinct User-Agent strings (a custom research-bot UA for pass 1 and a Chrome-style browser UA for pass 2); both fetches returned byte-identical text after whitespace normalization. This clause quotes only subdivision (a); subdivision (b), which limits the rule to a powerholder who dies on or after July 1, 1982, is paraphrased rather than quoted. Section 641 also does not itself define what “some other indication of intent to exercise the power” means beyond the specific-reference example; whether any particular will contains such an indication depends on that will's own language.",
+      "citations": [
+        {
+          "case": "Cal. Prob. Code § 641 (California Legislative Information text)",
+          "cite": "California Probate Code, residuary clause does not exercise a power of appointment",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=641.",
+          "quote": "A general residuary clause in a will, or a will making general disposition of all the testator’s property, does not exercise a power of appointment held by the testator unless specific reference is made to the power or there is some other indication of intent to exercise the power."
+        }
+      ]
+    },
+    {
+      "id": "poapt_contracts_and_release",
+      "title": "Contracting to Appoint, and Releasing, a Power of Appointment",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Probate Code § 660 ties a powerholder's ability to contract to make an appointment to whether the power is currently exercisable: the powerholder of a power that is presently exercisable — general or special — can contract to appoint to the same extent an actual appointment could be made, but the powerholder of a power that is not yet presently exercisable cannot contract to appoint at all (with a separate rule the statute states for the case where the donor and powerholder are the same person). Probate Code § 661 addresses the separate act of releasing a power altogether: unless the creating instrument provides otherwise, a general or special power that is discretionary may be released, with or without consideration, by a written instrument signed by the powerholder and delivered as the statute specifies — including, where the appointive property is held by a trustee, delivery to that trustee.",
+      "gap": "Section 660 was fetched twice from leginfo.legislature.ca.gov using two distinct User-Agent strings (a custom research-bot UA for pass 1 and a Chrome-style browser UA for pass 2); both fetches returned byte-identical text after whitespace normalization. Section 661 was fetched twice from leginfo.legislature.ca.gov using two distinct User-Agent strings (a custom research-bot UA for pass 1 and a Chrome-style browser UA for pass 2); both fetches returned byte-identical text after whitespace normalization. This clause does not address § 660(c)'s separate rule for the case where the donor and powerholder are the same person, § 661(b)'s limits on releasing a power in a way that would make a previously non-imperative remaining power imperative, or § 662's separate procedure for release on behalf of a minor powerholder.",
+      "citations": [
+        {
+          "case": "Cal. Prob. Code § 660 (California Legislative Information text)",
+          "cite": "California Probate Code, contracting to make an appointment",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=660.",
+          "quote": "The powerholder of a power of appointment that is presently exercisable, whether general or special, can contract to make an appointment to the same extent that the powerholder could make an effective appointment."
+        },
+        {
+          "case": "Cal. Prob. Code § 661 (California Legislative Information text)",
+          "cite": "California Probate Code, releasing a discretionary power of appointment",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=661.",
+          "quote": "Unless the creating instrument otherwise provides, a general or special power of appointment that is a discretionary power, whether testamentary or otherwise, may be released, either with or without consideration, by a written instrument signed by the powerholder and delivered as provided in subdivision (c)."
+        }
+      ]
+    },
+    {
+      "id": "poapt_overbroad_exercise_saved",
+      "title": "An Exercise That Goes Too Far Is Saved to the Extent Permissible",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Probate Code § 670 addresses an exercise of a power of appointment that attempts to do more than the power actually authorizes — for example, appointing to someone who is not a permissible appointee, or attaching a restriction the power does not allow. Rather than voiding the entire attempted exercise, the statute makes it valid to the extent the exercise was within what the power actually permitted, treating only the excess as ineffective.",
+      "gap": "Section 670 was fetched twice from leginfo.legislature.ca.gov using two distinct User-Agent strings (a custom research-bot UA for pass 1 and a Chrome-style browser UA for pass 2); both fetches returned byte-identical text after whitespace normalization. Section 670 states the general severability principle but does not itself specify how to separate the permissible portion of a given exercise from the impermissible portion when the two are not obviously divisible; that line-drawing is not addressed in this clause.",
+      "citations": [
+        {
+          "case": "Cal. Prob. Code § 670 (California Legislative Information text)",
+          "cite": "California Probate Code, overbroad exercise valid to the extent permissible",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=670.",
+          "quote": "An exercise of a power of appointment is not void solely because it is more extensive than authorized by the power, but is valid to the extent that the exercise was permissible under the terms of the power."
+        }
+      ]
+    },
+    {
+      "id": "poapt_failure_to_exercise_default_rules",
+      "title": "Default Rules When the Power Is Never Exercised",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Probate Code §§ 671 and 672 supply different default outcomes depending on whether an unexercised power was imperative or discretionary, as classified under § 613. For an imperative power, § 671 provides that, unless the creating instrument or the powerholder in writing manifests a contrary intent, if the powerholder dies without exercising the power in whole or in part, the permissible appointees take the unappointed property equally among themselves. For a discretionary power, § 672 provides a different default: if the powerholder fails to appoint the property, releases the entire power, or makes an ineffective appointment, the unappointed property passes instead to whomever the donor named as taker in default, or, if the donor named no one, the property reverts to the donor.",
+      "gap": "Section 671 was fetched twice from leginfo.legislature.ca.gov using two distinct User-Agent strings (a custom research-bot UA for pass 1 and a Chrome-style browser UA for pass 2); both fetches returned byte-identical text after whitespace normalization. Section 672 was fetched twice from leginfo.legislature.ca.gov using two distinct User-Agent strings (a custom research-bot UA for pass 1 and a Chrome-style browser UA for pass 2); both fetches returned byte-identical text after whitespace normalization. This clause does not address § 671(b) and (c) (adjudicating a defectively executed imperative power, or compelling its exercise) or § 672(b) (the implied-alternative-appointment rule for an ineffective exercise of a general power), each a further refinement of the default rules stated here.",
+      "citations": [
+        {
+          "case": "Cal. Prob. Code § 671 (California Legislative Information text)",
+          "cite": "California Probate Code, default rule for an unexercised imperative power",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=671.",
+          "quote": "Unless the creating instrument or the powerholder, in writing, manifests a contrary intent, where the powerholder dies without having exercised an imperative power of appointment either in whole or in part, the persons designated as permissible appointees take equally of the property not already appointed."
+        },
+        {
+          "case": "Cal. Prob. Code § 672 (California Legislative Information text)",
+          "cite": "California Probate Code, default rule for an unexercised discretionary power",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=672.",
+          "quote": "Except as provided in subdivision (b), if the powerholder of a discretionary power of appointment fails to appoint the property, releases the entire power, or makes an ineffective appointment, in whole or in part, the appointive property not effectively appointed passes to the person named by the donor as taker in default or, if there is none, reverts to the donor."
+        }
+      ]
+    },
+    {
+      "id": "poapt_creditors_rights",
+      "title": "Creditor Exposure Differs for General and Special Powers",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Probate Code §§ 680–682 tie a powerholder's creditors' access to appointive property to the general/special classification under § 611, and § 680 states that a donor cannot override this creditor-rights scheme by contrary language in the creating instrument. Under § 681, property subject to a special power is, with limited statutory exceptions, not reachable by the powerholder's creditors or by the expenses of administering the powerholder's estate. Under § 682, the opposite is true for a general power that is presently exercisable during the powerholder's lifetime: to the extent the powerholder's own property is inadequate to satisfy the powerholder's creditors, the appointive property is reachable to the same extent it would be if the powerholder owned it outright, and a parallel rule reaches a general testamentary power (or a general power presently exercisable at death) after the powerholder dies, to the extent the powerholder's estate is inadequate for the estate's creditors and administration expenses.",
+      "gap": "Section 680 was fetched twice from leginfo.legislature.ca.gov using two distinct User-Agent strings (a custom research-bot UA for pass 1 and a Chrome-style browser UA for pass 2); both fetches returned byte-identical text after whitespace normalization. Section 681 was fetched twice from leginfo.legislature.ca.gov using two distinct User-Agent strings (a custom research-bot UA for pass 1 and a Chrome-style browser UA for pass 2); both fetches returned byte-identical text after whitespace normalization. Section 682 was fetched twice from leginfo.legislature.ca.gov using two distinct User-Agent strings (a custom research-bot UA for pass 1 and a Chrome-style browser UA for pass 2); both fetches returned byte-identical text after whitespace normalization. This clause does not address § 681(b)'s two specific exceptions that expose special-power property to creditors after all, § 682(c)'s statement that § 682 applies whether or not the power was ever exercised, or §§ 683–684, which this sheet does not cover; whether a given powerholder's power is general or special for purposes of this creditor-rights scheme is addressed in this sheet's definitions clause, not here.",
+      "citations": [
+        {
+          "case": "Cal. Prob. Code § 681 (California Legislative Information text)",
+          "cite": "California Probate Code, special-power property generally shielded from the powerholder's creditors",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=681.",
+          "quote": "Except as provided in subdivision (b), property covered by a special power of appointment is not subject to the claims of creditors of the powerholder or of the powerholder’s estate or to the expenses of the administration of the powerholder’s estate."
+        },
+        {
+          "case": "Cal. Prob. Code § 682 (California Legislative Information text)",
+          "cite": "California Probate Code, general power property reachable by the powerholder's creditors",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=682.",
+          "quote": "To the extent that the property owned by the powerholder is inadequate to satisfy the claims of the powerholder’s creditors, property subject to a general power of appointment that is presently exercisable is subject to the claims to the same extent that it would be subject to the claims if the property were owned by the powerholder."
+        }
+      ]
+    },
+    {
+      "id": "poapt_perpetuities_cross_reference",
+      "title": "How This Part Connects to the Statutory Rule Against Perpetuities",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Probate Code § 690 is the provision within Part 14 that connects the powers-of-appointment rules described in this sheet to the separate statutory Rule Against Perpetuities: it states that the perpetuities rule set out in Division 11, Part 2 (§§ 21200 et seq.) applies to powers of appointment governed by this Part 14. This sheet's own definitions, exercise, release, and default rules govern whether and how a power of appointment is created, exercised, or released; the separate perpetuities rule those provisions cross-reference governs, instead, how long a power may remain unexercised before it becomes invalid on timing grounds alone — the subject of this project's separate Rule Against Perpetuities information sheet.",
+      "gap": "Section 690 was fetched twice from leginfo.legislature.ca.gov using two distinct User-Agent strings (a custom research-bot UA for pass 1 and a Chrome-style browser UA for pass 2); both fetches returned byte-identical text after whitespace normalization. This clause states only that the cross-reference exists; it does not restate the perpetuities test itself (the two-alternative validity structure in §§ 21206–21207), which this project addresses in its separate Rule Against Perpetuities information sheet rather than here.",
+      "citations": [
+        {
+          "case": "Cal. Prob. Code § 690 (California Legislative Information text)",
+          "cite": "California Probate Code, statutory Rule Against Perpetuities applies to powers of appointment under this Part",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=690.",
+          "quote": "The statutory rule against perpetuities provided by Part 2 (commencing with Section 21200) of Division 11 applies to powers of appointment governed by this part."
+        }
+      ]
+    },
+    {
+      "id": "poapt_closing_signature",
+      "title": "Acknowledgment and Signature",
+      "kind": "drafting",
+      "body": "I declare under penalty of perjury under the laws of the State of California that the foregoing background information is true and correct to the best of my knowledge.\n\nExecuted on {{dateSigned}} at {{cityState}}.\n\nSignature of {{preparerName}}: ☐ _________________________\n\n[This information sheet is prepared as background about California Probate Code §§ 600–695 in connection with {{appointmentInstrumentDescription}}. It does not itself determine, and preparing or signing it does not determine, whether any specific exercise, release, or contract to appoint involving that power satisfies the creating instrument's requirements or this statutory scheme; only a court, or the parties applying these statutes to the actual, specific terms of that instrument, does that.]"
     }
   ]
 }

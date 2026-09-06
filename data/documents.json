@@ -24483,5 +24483,66 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "powers_of_appointment_info_sheet",
+    "title": "Powers of Appointment — Information Sheet",
+    "description": "Explains California's general body of law on powers of appointment (Prob. Code §§ 600-695): the key definitions, the general/special and imperative/discretionary classifications, formal exercise requirements including the specific-reference rule, contracts to appoint and releases, default rules when a power is never exercised, and creditor exposure — distinct from the corpus's Rule Against Perpetuities timing rule.",
+    "categories": [
+      "Estate Planning"
+    ],
+    "clauseOrder": [
+      "poapt_intro",
+      "poapt_key_definitions",
+      "poapt_general_vs_special",
+      "poapt_imperative_vs_discretionary",
+      "poapt_manner_of_exercise",
+      "poapt_specific_reference_requirement",
+      "poapt_residuary_clause_does_not_exercise",
+      "poapt_contracts_and_release",
+      "poapt_overbroad_exercise_saved",
+      "poapt_failure_to_exercise_default_rules",
+      "poapt_creditors_rights",
+      "poapt_perpetuities_cross_reference",
+      "poapt_closing_signature"
+    ],
+    "fields": [
+      {
+        "id": "preparerName",
+        "label": "Preparer's name",
+        "placeholder": "e.g., Jane Doe",
+        "required": true
+      },
+      {
+        "id": "appointmentDonorName",
+        "label": "Donor's name",
+        "placeholder": "e.g., Jane Doe",
+        "required": true
+      },
+      {
+        "id": "appointmentPowerholderName",
+        "label": "Powerholder's name",
+        "placeholder": "e.g., John Smith",
+        "required": true
+      },
+      {
+        "id": "appointmentInstrumentDescription",
+        "label": "Description of the creating instrument",
+        "placeholder": "e.g., the Jane Doe Revocable Trust dated January 1, 2020",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "e.g., January 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, State",
+        "placeholder": "e.g., Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
