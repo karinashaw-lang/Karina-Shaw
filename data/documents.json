@@ -27793,5 +27793,75 @@
         "required": false
       }
     ]
+  },
+  {
+    "id": "trade_secret_evidentiary_privilege_info_sheet",
+    "title": "Trade Secret Evidentiary Privilege (Evid. Code §§ 1060-1062) — Information Sheet",
+    "description": "Explains California's trade secret evidentiary privilege under Evidence Code section 1060 (the privilege to refuse disclosure, subject to a fraud/injustice exception) and the criminal-proceeding-specific procedures in Evidence Code sections 1061 (motion, affidavit, and protective-order standards) and 1062 (closing part of a criminal proceeding to the public to protect a trade secret).",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "evid1060_intro",
+      "evid1060_general_privilege",
+      "evid1061_definitions",
+      "evid1061_protective_order_motion_procedure",
+      "evid1061_protective_order_standard",
+      "evid1061_protective_order_permissible_terms",
+      "evid1061_no_effect_on_status_or_civil_case",
+      "evid1062_closure_of_proceedings",
+      "evid1062_scope_review_and_transcript",
+      "evid1060_closing_signature"
+    ],
+    "fields": [
+      {
+        "id": "preparerName",
+        "label": "Preparer's Name",
+        "placeholder": "e.g., Jane Doe",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Company Name",
+        "placeholder": "e.g., Acme Corp.",
+        "required": true
+      },
+      {
+        "id": "adversePartyName",
+        "label": "Adverse Party's Name",
+        "placeholder": "e.g., John Smith",
+        "required": false
+      },
+      {
+        "id": "tradeSecretDescription",
+        "label": "Description of the Trade Secret at Issue",
+        "placeholder": "e.g., the proprietary formulation described in the complaint",
+        "required": true
+      },
+      {
+        "id": "courtCaseNumber",
+        "label": "Court Case Number",
+        "placeholder": "e.g., 24CV012345",
+        "required": false
+      },
+      {
+        "id": "courtName",
+        "label": "Court Name",
+        "placeholder": "e.g., Superior Court of California, County of Santa Clara",
+        "required": false
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date Prepared",
+        "placeholder": "e.g., January 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, State",
+        "placeholder": "e.g., Los Angeles, California",
+        "required": true
+      }
+    ]
   }
 ]
