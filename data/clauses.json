@@ -62791,6 +62791,81 @@
       "title": "Acknowledgment",
       "kind": "drafting",
       "body": "{{employeeName}} acknowledges having received this information sheet describing California State Disability Insurance eligibility rules under the Unemployment Insurance Code, including how those rules apply regardless of {{employeeName}}'s current employment status with {{companyName}} as of {{separationDate}}, and that this sheet states facts about the law without recommending any course of action."
+    },
+    {
+      "id": "wageadvance_declaration",
+      "title": "About This Information Sheet",
+      "kind": "drafting",
+      "body": "This is an informational sheet about California law on wage advances and \"draw against commission\" arrangements offered at hire, prepared in connection with an arrangement between {{companyName}} and {{employeeName}}, hired as {{jobTitle}} effective {{startDate}}. Draw arrangement: {{drawAmount}}, applied against the following commission structure: {{commissionStructure}}. It states facts drawn from California Labor Code §§ 221 and 224, and from a California Industrial Welfare Commission wage order, about (1) why an employer paying a draw before any commission is earned is generally extending an advance rather than paying a wage that the no-clawback rule already protects, (2) the written-authorization mechanism California law uses for deductions taken from wages to recover such a draw, and (3) a wage-floor rule that applies to commission-based pay regardless of how a draw is later reconciled. It does not determine whether {{drawAmount}}, or any part of it, is lawfully structured as an advance rather than a wage, whether any specific written authorization {{employeeName}} may sign satisfies Labor Code § 224, or whether any specific pay period's total pay to {{employeeName}} satisfies the wage-floor rule described here."
+    },
+    {
+      "id": "wageadvance_s221_repayable_draw_advance",
+      "title": "Why a Repayable Draw Extended at Hire Is Not Automatically a § 221 Problem",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "California Labor Code § 221 makes it unlawful for an employer to collect or receive back any part of wages it has already paid to an employee. On its own text, § 221 says nothing about draws, advances, or commissions specifically; it turns entirely on whether a payment was already a \"wage\" at the moment the employer seeks to take part of it back. California courts have read the word \"wage\" in this setting to mean a payment that has actually been earned by completion of whatever the payment's own terms required — and have held that a payment made before that condition is satisfied, where the employer cannot yet tell whether the underlying commission will ever be earned, is by its own nature an advance rather than a wage. A guaranteed draw offered to {{employeeName}} at hire, paid before any commission tied to {{commissionStructure}} has been earned, fits this description: because it is paid in advance of the condition that would make it a commission wage, § 221's no-clawback rule does not, by itself, make the draw's later recoupment unlawful. Whether {{drawAmount}} in {{employeeName}}'s specific arrangement is actually structured this way, or instead functions as an already-earned wage under a different label, is not something this clause determines.",
+      "gap": "This is one state's statute, fetched and independently verified twice this session against leginfo.legislature.ca.gov's own current text, together with one state's case law on how courts have read that statute — not a claim about which state's law governs a specific draw arrangement, and not a claim that any particular draw, however labeled, is actually an advance rather than a wage. The case-law quotation below (Steinhebel v. Los Angeles Times Communications, LLC) was not independently re-verified against the opinion's primary text this session: this session's CourtListener MCP search tool returned an HTTP 429 rate-limit response (125 requests/day, quota exhausted, not resetting for roughly 5 more hours), a direct curl fetch of the opinion's page on courtlistener.com returned an HTTP 202 response with an empty body (an access-control challenge page, not the opinion text), and the WebFetch tool reported that courtlistener.com is blocked by this environment's network egress proxy (error type EGRESS_BLOCKED) — all three paths were tried and failed. This exact quotation was independently verified against the opinion's primary text by an earlier session of this project (for this corpus's Commission Payout Upon Termination document, clause id commpayout_earned_vs_contingent) and is reused verbatim here rather than re-fetched, disclosed as reused-and-previously-verified rather than independently re-verified this session. Separately, Steinhebel itself addressed a chargeback of commissions already advanced against sales that were later cancelled or modified, not a guaranteed draw paid to a newly hired salesperson before any sale occurs at all; this clause applies the same advance-versus-wage reasoning to the hiring-stage draw scenario, but no case squarely addressing a guaranteed draw extended at hire (as opposed to a per-sale commission advance) was independently verified against a primary source this session.",
+      "citations": [
+        {
+          "case": "Cal. Labor Code § 221 (California Legislative Information text)",
+          "cite": "the prohibition on collecting back wages already paid",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=221.",
+          "quote": "It shall be unlawful for any employer to collect or receive from an employee any part of wages theretofore paid by said employer to said employee."
+        },
+        {
+          "case": "Steinhebel v. Los Angeles Times Communications, LLC",
+          "cite": "126 Cal. App. 4th 696, 705-706 (2005)",
+          "url": "https://www.courtlistener.com/opinion/2259299/steinhebel-v-los-angeles-times-commun/",
+          "quote": "The essence of an advance is that at the time of payment the employer cannot determine whether the commission will eventually be earned because a condition to the employee’s right to the commission has yet to occur or its occurrence as yet is otherwise unascertainable. An advance, therefore, by definition is not a wage because all conditions for performance have not been satisfied."
+        }
+      ]
+    },
+    {
+      "id": "wageadvance_s224_written_authorization",
+      "title": "Recovering a Draw Through a Payroll Deduction: § 224's Written-Authorization Mechanism",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Labor Code § 224 states that §§ 221, 222, and 223 do not make it unlawful for an employer to withhold or divert part of an employee's wages in certain listed circumstances, including \"when a deduction is expressly authorized in writing by the employee to cover insurance premiums, hospital or medical dues, or other deductions not amounting to a rebate or deduction from the standard wage arrived at by collective bargaining or pursuant to wage agreement or statute.\" Read together with § 221, this is the statutory mechanism California law provides for an employer to take a payroll deduction from {{employeeName}}'s later, actually-earned commission wages to recover an outstanding draw balance under {{drawAmount}}, rather than relying on the advance-versus-wage distinction alone: the deduction must be expressly authorized in writing by {{employeeName}}, and § 224's own listed examples (insurance premiums, hospital or medical dues) illustrate the kind of individually-authorized, non-rebate deduction the exception was written around.",
+      "gap": "This is one state's statute, fetched and independently verified twice this session against leginfo.legislature.ca.gov's own current text — not a claim about which state's law governs a specific draw arrangement, and not a claim that any specific written authorization an employee may sign for draw recoupment actually satisfies § 224's \"expressly authorized in writing\" language or its \"not amounting to a rebate\" limitation. Section 224's own text does not use the words \"draw,\" \"advance,\" or \"commission\" anywhere, and does not say that a signed draw-recoupment authorization is, by its nature, the same kind of deduction as the insurance-premium and medical-dues examples it does list; that is an application of the statute's general language this clause does not resolve. Separately, and contrary to one common assumption about this statute: § 224's own text, read in full, contains no minimum-wage floor, no reference to \"net wages,\" and no limitation tied to hours worked — a wage-floor limitation on commission-based pay does exist in California law, but it comes from a different, independently sourced provision described in this document's companion clause on the IWC wage order minimum-wage requirement, not from § 224 itself. This clause does not independently fetch or verify Government Code § 50026, which § 224 separately cross-references only to disclaim authorizing withholding to pay a prohibited tax, fee, or charge.",
+      "citations": [
+        {
+          "case": "Cal. Labor Code § 224 (California Legislative Information text)",
+          "cite": "the written-authorization exception for wage deductions",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=224.",
+          "quote": "a deduction is expressly authorized in writing by the employee to cover insurance premiums, hospital or medical dues, or other deductions not amounting to a rebate or deduction from the standard wage arrived at by collective bargaining or pursuant to wage agreement or statute"
+        }
+      ]
+    },
+    {
+      "id": "wageadvance_wageorder_minimum_wage_floor",
+      "title": "The Actual Source of a Minimum-Wage Floor on Commission Pay: An IWC Wage Order, Not § 224",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Separately from Labor Code §§ 221 and 224, California's Industrial Welfare Commission Wage Order No. 4-2001 (covering professional, technical, clerical, mechanical, and similar occupations) requires that \"every employer shall pay to each employee, on the established payday for the period involved, not less than the applicable minimum wage for all hours worked in the payroll period, whether the remuneration is measured by time, piece, commission, or otherwise.\" This is the source of the rule that a commission-based employee's total pay for a given pay period — including a period in which {{companyName}} has deducted part of {{employeeName}}'s pay to recover an outstanding draw balance under {{drawAmount}} — must still reach at least the applicable minimum wage, expressed as {{applicableMinimumWage}}, for every hour {{employeeName}} actually worked in that pay period; the statute does not permit averaging a shortfall in one period against a surplus in another to satisfy this floor.",
+      "gap": "This is one California administrative wage order, fetched and independently verified twice this session (byte-for-byte identical downloads, confirmed by matching file checksums) directly from dir.ca.gov — not a claim about which state's law governs a specific draw arrangement, and not a claim that Wage Order No. 4-2001 is the wage order that actually covers a specific employee's occupation. California has 17 industry- and occupation-specific wage orders, several of which contain their own, separately numbered version of this same minimum-wage-for-all-hours-worked provision; only Wage Order No. 4-2001 was independently fetched and checked this session, and this clause does not verify that every other wage order's minimum-wage provision is worded identically, nor does it determine which wage order applies to any particular employee's job classification. This clause's statement that shortfalls cannot be averaged across pay periods reflects this provision's own \"for all hours worked in the payroll period\" language on its face; a California Supreme Court decision (commonly cited on this exact point) was not independently verified against its primary opinion text this session for the same CourtListener rate-limiting and network-egress-blocking reasons disclosed in this document's companion clause on § 221, so no case citation is offered here beyond the wage order's own text.",
+      "citations": [
+        {
+          "case": "Cal. Indus. Welfare Comm'n Wage Order No. 4-2001, § 4(B) (8 Cal. Code Regs. § 11040(4)(B))",
+          "cite": "the minimum-wage-for-all-hours-worked requirement applied to commission pay",
+          "url": "https://www.dir.ca.gov/IWC/IWCArticle04.pdf",
+          "quote": "Every employer shall pay to each employee, on the established payday for the period involved, not less than the applicable minimum wage for all hours worked in the payroll period, whether the remuneration is measured by time, piece, commission, or otherwise."
+        }
+      ]
+    },
+    {
+      "id": "wageadvance_draw_arrangement_terms",
+      "title": "Description of the Draw Arrangement",
+      "kind": "drafting",
+      "body": "The draw arrangement offered to {{employeeName}} at hire is described as follows:\n\nGuaranteed draw amount and frequency: {{drawAmount}}, paid on the {{payPeriodType}} payroll schedule.\n\nUnderlying commission structure the draw is measured against: {{commissionStructure}}.\n\nHow and when the draw is reconciled against earned commissions: {{repaymentTriggerDescription}}.\n\nApplicable minimum wage referenced above: {{applicableMinimumWage}}."
+    },
+    {
+      "id": "wageadvance_written_authorization_signature",
+      "title": "Written Authorization for Draw-Recovery Deductions and Acknowledgment",
+      "kind": "drafting",
+      "body": "{{employeeName}} expressly authorizes, in writing, {{companyName}} to deduct from {{employeeName}}'s subsequently earned commission wages the amount needed to recover any outstanding draw balance under {{drawAmount}}, as described above, consistent with the written-authorization mechanism described in this information sheet.\n\n{{employeeName}} separately acknowledges receiving and reviewing this informational sheet about California Labor Code §§ 221 and 224 and the IWC wage-order minimum-wage requirement described above. This acknowledgment confirms only that {{employeeName}} received and reviewed this sheet and signed the authorization above; it does not determine whether any specific deduction taken under this authorization is lawful in a given pay period, and it does not waive any right or defense {{employeeName}} or {{companyName}} may have.\n\nEmployee: {{employeeName}} Signature: ☐ _________________________ Date: {{dateSigned}}\n\nCompany Representative: ☐ _________________________ Date: {{dateSigned}}"
     }
   ]
 }

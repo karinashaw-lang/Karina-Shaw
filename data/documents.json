@@ -23005,5 +23005,83 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "wage_advances_draws_against_commission_info_sheet",
+    "title": "Wage Advances and Draws Against Commission — Information Sheet",
+    "description": "An informational sheet on California law governing a guaranteed draw against commission extended at hire: why a draw paid before a commission is earned is generally an advance rather than a wage under Labor Code § 221's no-clawback rule, the § 224 written-authorization mechanism for deducting to recover an outstanding draw, and the actual source of a minimum-wage floor on commission pay (an IWC wage order, not § 224 itself).",
+    "categories": [
+      "Hiring"
+    ],
+    "clauseOrder": [
+      "wageadvance_declaration",
+      "wageadvance_s221_repayable_draw_advance",
+      "wageadvance_s224_written_authorization",
+      "wageadvance_wageorder_minimum_wage_floor",
+      "wageadvance_draw_arrangement_terms",
+      "wageadvance_written_authorization_signature"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "jobTitle",
+        "label": "Job title",
+        "placeholder": "Software Engineer",
+        "required": true
+      },
+      {
+        "id": "startDate",
+        "label": "Start date",
+        "placeholder": "September 15, 2026",
+        "required": true
+      },
+      {
+        "id": "drawAmount",
+        "label": "Guaranteed draw amount and frequency",
+        "placeholder": "$1,000 per pay period",
+        "required": true
+      },
+      {
+        "id": "commissionStructure",
+        "label": "Commission structure and rate",
+        "placeholder": "5% of net sales revenue on each closed deal, paid on the next regular payday after the customer's payment is received",
+        "required": true
+      },
+      {
+        "id": "payPeriodType",
+        "label": "Pay period type",
+        "placeholder": "weekly",
+        "required": true
+      },
+      {
+        "id": "repaymentTriggerDescription",
+        "label": "Description of the Repayment Trigger",
+        "placeholder": "e.g., signing bonus repayable if employment ends within 12 months",
+        "required": true
+      },
+      {
+        "id": "applicableMinimumWage",
+        "label": "Applicable minimum hourly wage",
+        "placeholder": "$16.50",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      }
+    ]
   }
 ]
