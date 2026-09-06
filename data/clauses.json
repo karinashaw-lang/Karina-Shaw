@@ -67764,6 +67764,69 @@
       "title": "Acknowledgment",
       "kind": "drafting",
       "body": "By signing below, {{ownerName}} acknowledges having reviewed this information sheet describing California's Subdivision Map Act, Government Code section 66410 et seq., and understands that it states general California statutory law rather than a determination about {{propertyAddress}} or about {{proposedDivisionDescription}}.\n\nSignature of {{ownerName}}: _________________________ Date: {{dateSigned}}\n\nSigned at {{cityState}}."
+    },
+    {
+      "id": "preempt_intro",
+      "title": "Purpose and Scope — Preemptive Rights Information Sheet",
+      "kind": "drafting",
+      "body": "This information sheet describes California's statutory treatment of preemptive rights for {{companyName}}: the default rule that applies to a California corporation unless its articles of incorporation say otherwise, and the specific mechanism by which the articles can create such rights instead. A preemptive right, where one exists, is a shareholder's right to be offered a proportionate share of a new issuance of stock or securities before the corporation offers that issuance to others. This sheet does not draft, recommend, or evaluate specific preemptive-rights language for {{companyName}}'s articles, does not calculate any shareholder's proportionate entitlement under a preemptive-rights provision that may already exist, and does not address the separate topics covered elsewhere in this corpus: original formation of the articles of incorporation (Articles of Incorporation document), the general procedure for amending existing articles (Certificate of Amendment to Articles of Incorporation — Information Sheet), or the mechanics of issuing or replacing stock certificates once shares are issued (Stock Certificates and Uncertificated Shares — Information Sheet). It states what California's General Corporation Law itself says on this one topic and no more."
+    },
+    {
+      "id": "preempt_default_no_rights",
+      "title": "The Default Rule: No Preemptive Rights Unless the Articles Provide Otherwise",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Under California's General Corporation Law, a corporation's board of directors is free, as a default matter, to issue new shares, options, or securities with conversion or option rights without first offering them to any existing shareholder. This default applies to {{companyName}} unless {{companyName}}'s own articles of incorporation state otherwise. A shareholder of {{companyName}} has no preemptive right arising automatically from status as a shareholder, from the number of shares already held, or from any class of shares held; the statute makes shareholder-level preemptive rights the exception that must be affirmatively created, not the rule.",
+      "gap": "This clause states only the default rule under California's General Corporation Law (Corporations Code Chapter 4, Shares and Share Certificates). It does not address whether a particular corporation's own articles of incorporation already displace that default — that depends on the actual text of the articles, which this sheet does not review. It also does not address preemptive-rights doctrine for entities other than California stock corporations (for example, statutes or agreements governing LLC membership interests or limited partnership interests), which are outside Corporations Code Chapter 4 and are not addressed here.",
+      "citations": [
+        {
+          "case": "Cal. Corp. Code § 406",
+          "cite": "Cal. Corp. Code § 406",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=406.",
+          "quote": "Unless the articles provide otherwise, the board may issue shares, options or securities having conversion or option rights without first offering them to shareholders of any class."
+        }
+      ]
+    },
+    {
+      "id": "preempt_articles_may_grant",
+      "title": "How the Default Can Be Changed: Preemptive Rights as an Optional Articles Provision",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "California law lists preemptive rights among a specific set of optional provisions that a corporation's articles of incorporation are permitted to include. If {{companyName}}'s articles were to include such a provision, it would grant shareholders a right to subscribe to some or all future issuances of shares or securities, reversing the default rule that a shareholder has no such right. The statute frames this as a matter of drafting choice at the articles level, not something that arises from board resolution, bylaw amendment, or shareholder vote alone.",
+      "gap": "This clause identifies that a preemptive-rights provision is one of the optional articles provisions California law lists (Corporations Code § 204, subdivision (a)); it does not state whether any particular corporation's articles actually contain one, and it does not supply drafting language, a proportionality formula, an exercise period, or any other implementing mechanic for such a provision — the statute itself does not prescribe those mechanics, leaving them (if the right is created at all) to the articles' own text.",
+      "citations": [
+        {
+          "case": "Cal. Corp. Code § 204(a)(2)",
+          "cite": "Cal. Corp. Code § 204, subd. (a)(2)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=204.",
+          "quote": "Granting to shareholders preemptive rights to subscribe to any or all issues of shares or securities."
+        }
+      ]
+    },
+    {
+      "id": "preempt_must_be_express",
+      "title": "Silence Is Not Enough: An Articles Provision on This Point Must Be Express",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "The same statutory list that includes preemptive rights states that none of the provisions on that list — preemptive rights among them — takes effect unless the articles expressly provide for it. This means that an articles of incorporation that is merely silent on preemptive rights, or that references the topic ambiguously, does not create a preemptive right for {{companyName}}'s shareholders; under the default rule described above, the absence of an express grant leaves the board free to issue shares without first offering them to existing shareholders.",
+      "gap": "This clause addresses only the express-provision requirement found in the introductory clause of Corporations Code § 204, subdivision (a). It does not address how a reviewing court would characterize particular non-standard or ambiguous articles language as \"express\" or not, since that determination depends on the specific wording used and is not resolved by the statute's text; a case-law search for this topic could not be completed in this research because the CourtListener research API returned a daily quota-exhausted (HTTP 429) error before any query could run, so this clause relies on the statutory text alone and no judicial gloss on the express-provision requirement has been checked.",
+      "citations": [
+        {
+          "case": "Cal. Corp. Code § 204(a)",
+          "cite": "Cal. Corp. Code § 204, subd. (a)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=204.",
+          "quote": "Any or all of the following provisions, which shall not be effective unless expressly provided in the articles:"
+        }
+      ]
+    },
+    {
+      "id": "preempt_ack",
+      "title": "Closing and Acknowledgment — Preemptive Rights Information Sheet",
+      "kind": "drafting",
+      "body": "This information sheet was prepared for {{companyName}} by {{preparerName}} on {{dateSigned}} in {{cityState}}. It reflects the statutory text of Corporations Code §§ 204 and 406 as of the date checked above and does not reflect any review of {{companyName}}'s actual articles of incorporation or any determination of whether a preemptive-rights provision currently exists for {{companyName}}.\n\n{{preparerName}}\nDate: {{dateSigned}}\n{{cityState}}"
     }
   ]
 }

@@ -24762,5 +24762,46 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "preemptive_rights_of_shareholders_info_sheet",
+    "title": "Preemptive Rights of Shareholders — Information Sheet",
+    "description": "Explains California's default rule that a corporation's board may issue new shares or securities without first offering them to existing shareholders (Corp. Code § 406), and the optional articles-of-incorporation provision by which preemptive rights can instead be created (Corp. Code § 204(a)(2)), including the requirement that such a provision be express.",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "preempt_intro",
+      "preempt_default_no_rights",
+      "preempt_articles_may_grant",
+      "preempt_must_be_express",
+      "preempt_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "e.g., Acme Inc.",
+        "required": true
+      },
+      {
+        "id": "preparerName",
+        "label": "Preparer's name",
+        "placeholder": "e.g., Jane Doe",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date prepared",
+        "placeholder": "e.g., January 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, State",
+        "placeholder": "e.g., San Francisco, California",
+        "required": true
+      }
+    ]
   }
 ]
