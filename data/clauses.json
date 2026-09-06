@@ -67296,6 +67296,174 @@
       "title": "Signature and Certification",
       "kind": "drafting",
       "body": "{{preparerName}}, on behalf of {{companyName}}, certifies that the description of {{markingDescription}}, the identification of {{adversePartyName}}, and the description of {{competitiveInjuryDescription}} set out above are true and correct to the best of {{preparerName}}'s knowledge as of the date signed below. This information sheet is not a civil complaint, a criminal referral, a demand letter, or any other filing, and completing or signing it does not itself commence any action in any court or before any government agency.\n\nSigned: ______________________\n{{preparerName}}\nDate signed: {{dateSigned}}\nCity, State: {{cityState}}"
+    },
+    {
+      "id": "wotc_intro",
+      "title": "About This Work Opportunity Tax Credit Information Sheet",
+      "kind": "drafting",
+      "body": "This information sheet describes the federal Work Opportunity Tax Credit (WOTC), a general business tax credit under 26 U.S.C. § 51 available to an employer for wages paid to an individual the employer certifies as a member of one of several statutorily defined \"targeted groups,\" in connection with {{companyName}}'s hiring of {{employeeName}} for the position of {{jobTitle}} with a start date of {{startDate}}. It summarizes selected requirements of 26 U.S.C. § 51: how the credit amount and wage limits are calculated, the certification process built around a pre-screening notice and a 28-day submission deadline, what happens when a certification is denied or later found incorrect, categories of individuals whose wages never qualify, and the credit's current statutory expiration date.\n\nThis document is distinct from this corpus's existing New Hire Reporting — Information Sheet, which describes an unrelated legal duty — reporting a new hire to a state new-hire reporting agency under Unemployment Insurance Code § 1088.5 and 42 U.S.C. § 653a, a program aimed at locating parents who owe child support and preventing certain benefit overpayments. WOTC is a separate, voluntary federal income tax credit program with its own certification agency and deadline; a hiring event can potentially implicate both requirements independently, but satisfying one does not satisfy the other. This document is also distinct from this corpus's Apprenticeship Agreement — Information Sheet and EIN information sheet, neither of which addresses a hiring-related federal tax credit.\n\nThis information sheet does not itself request, complete, submit, or obtain a WOTC certification for {{employeeName}}, does not determine whether {{employeeName}} is or is not a member of any targeted group, does not claim any tax credit on {{companyName}}'s behalf, and does not state whether {{companyName}} has met the certification deadline described below for this particular hire."
+    },
+    {
+      "id": "wotc_credit_amount_and_wage_limits",
+      "title": "How the Credit Amount and Wage Caps Are Calculated",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Under 26 U.S.C. § 51(a), the amount of the work opportunity credit for a taxable year equals 40 percent of an employer's \"qualified first-year wages\" for that year — wages paid or incurred during the employer's taxable year to an individual who is a certified member of a targeted group, attributable to service during the 1-year period beginning with the day the individual begins work. Section 51(b)(3) caps how much of an individual's qualified first-year wages can be taken into account: generally $6,000 per year, but a higher cap applies for certain categories of qualified veteran — $12,000, $14,000, or $24,000 per year depending on which veteran category applies. At the general $6,000 cap, the resulting credit is $2,400 (40 percent of $6,000); at the highest $24,000 veteran cap, the resulting credit is $9,600 (40 percent of $24,000) — the maximum-credit figure California's Employment Development Department cites in its own public description of the program.",
+      "gap": "This clause covers only the general 40-percent rate and the wage caps stated in § 51(a) and § 51(b)(3); it does not cover the separate, reduced 25-percent rate that applies to an individual who has performed at least 120 but fewer than 400 hours of service (addressed in this document's companion clause on ineligible individuals and minimum hours), the special summer-youth-employee wage substitution rules in § 51(d)(7)(B), or the separate \"qualified second-year wages\" and $10,000 cap that § 51(e) provides for long-term family assistance recipients specifically. It also does not address how the credit interacts with the general business credit limitations under 26 U.S.C. § 38, to which § 51(a) itself cross-refers. This clause does not state whether any particular employer qualifies for any specific dollar amount of credit for any particular hire.",
+      "citations": [
+        {
+          "case": "26 U.S.C. § 51(a) (U.S. Code, Cornell Legal Information Institute text)",
+          "cite": "26 U.S.C. § 51(a)",
+          "url": "https://www.law.cornell.edu/uscode/text/26/51",
+          "quote": "the amount of the work opportunity credit determined under this section for the taxable year shall be equal to 40 percent of the qualified first-year wages for such year."
+        },
+        {
+          "case": "26 U.S.C. § 51(b)(3) (U.S. Code, Cornell Legal Information Institute text)",
+          "cite": "26 U.S.C. § 51(b)(3)",
+          "url": "https://www.law.cornell.edu/uscode/text/26/51",
+          "quote": "The amount of the qualified first-year wages which may be taken into account with respect to any individual shall not exceed $6,000 per year ($12,000 per year in the case of any individual who is a qualified veteran by reason of subsection (d)(3)(A)(ii)(I), $14,000 per year in the case of any individual who is a qualified veteran by reason of subsection (d)(3)(A)(iv), and $24,000 per year in the case of any individual who is a qualified veteran by reason of subsection (d)(3)(A)(ii)(II))."
+        },
+        {
+          "case": "California EDD, \"Work Opportunity Tax Credit\" program page (Employment Development Department)",
+          "cite": "EDD's own description of the maximum credit amount",
+          "url": "https://edd.ca.gov/en/jobs_and_training/Work_Opportunity_Tax_Credit",
+          "quote": "Give employers a federal tax credit of up to $9,600 for hiring these individuals."
+        }
+      ]
+    },
+    {
+      "id": "wotc_targeted_groups",
+      "title": "The Ten Statutory \"Targeted Group\" Categories",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Section 51(d)(1) provides that an individual is a member of a \"targeted group\" — the threshold requirement for any wages paid to that individual to qualify for the credit — only if the individual falls into one of ten statutorily listed categories: a qualified IV-A recipient (certain public-assistance recipients), a qualified veteran, a qualified ex-felon, a designated community resident (an 18-to-39-year-old residing in a designated economically distressed area), a vocational rehabilitation referral, a qualified summer youth employee, a qualified supplemental nutrition assistance program (SNAP) benefits recipient, a qualified SSI recipient, a long-term family assistance recipient, or a qualified long-term unemployment recipient. Each category has its own detailed statutory definition in the rest of § 51(d), generally built around certification by a \"designated local agency\" that the individual meets that category's specific conditions (for example, a particular public-benefits history, a discharge date from military service, or a conviction and release date). Membership in a targeted group is not self-declared or determined by the employer alone — it depends on the certification process described in this document's companion clause.",
+      "gap": "This clause states that ten targeted-group categories exist and names them, but does not restate each category's full, detailed statutory definition (for example, the specific benefit-duration and time-window requirements within each subparagraph of § 51(d)(2) through (d)(10)) — a reader would need to consult the relevant subparagraph directly to evaluate a specific individual's category membership. This clause also does not address § 51(d)(14), a now-expired category that applied only to individuals beginning work in 2009 or 2010, since it has no continuing relevance to a current hire.",
+      "citations": [
+        {
+          "case": "26 U.S.C. § 51(d)(1) (U.S. Code, Cornell Legal Information Institute text)",
+          "cite": "26 U.S.C. § 51(d)(1)",
+          "url": "https://www.law.cornell.edu/uscode/text/26/51",
+          "quote": "An individual is a member of a targeted group if such individual is—"
+        }
+      ]
+    },
+    {
+      "id": "wotc_certification_via_prescreening_notice",
+      "title": "The Certification Mechanism: Pre-Screening Notice and the 28-Day Deadline",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Section 51(d)(13)(A) sets out two, and only two, ways an individual's wages can be treated as paid to a member of a targeted group. The first is straightforward: the employer receives an actual certification from a \"designated local agency\" on or before the day the individual begins work. The second, more commonly used path involves two separate deadlines: a \"pre-screening notice\" — defined as a document, in a form the Secretary of the Treasury prescribes, containing information from which the employer believes the individual is a member of a targeted group — must be completed on or before the day the individual is offered employment, and then, not later than the 28th day after the individual begins work, the employer must submit that signed notice to the designated local agency as part of a written request for certification. Section 51(d)(12) defines \"designated local agency\" as a State employment security agency established under the federal Wagner-Peyser Act of June 6, 1933. In California, the Employment Development Department (EDD) performs this function: EDD's own WOTC program page lists an EDD unit — the \"Work Opportunity Tax Credit Authorization Center\" — as the mailing destination for a paper certification request, and separately describes an online submission option called eWOTC.",
+      "gap": "This clause describes the statutory pre-screening-notice-and-28-day mechanism in § 51(d)(13)(A) and the general definition of \"designated local agency\" in § 51(d)(12); it does not independently verify, from an irs.gov source, the specific current IRS form number (commonly referenced elsewhere as Form 8850) that the Secretary has prescribed for the pre-screening notice, since this research pass was limited to Cornell LII's U.S. Code text and California EDD's own program page rather than an IRS.gov fetch. It also does not address § 51(d)(13)(D)'s separate, alternative certification pathway specific to certain unemployed veterans, or the Secretary's regulatory authority under § 51(d)(13)(D)(ii) to prescribe alternative certification methods. This clause does not state whether the 28-day deadline has been met, or could still be met, for any particular hire's start date.",
+      "citations": [
+        {
+          "case": "26 U.S.C. § 51(d)(13)(A) (U.S. Code, Cornell Legal Information Institute text)",
+          "cite": "26 U.S.C. § 51(d)(13)(A)(ii)",
+          "url": "https://www.law.cornell.edu/uscode/text/26/51",
+          "quote": "on or before the day the individual is offered employment with the employer, a pre-screening notice is completed by the employer with respect to such individual, and"
+        },
+        {
+          "case": "26 U.S.C. § 51(d)(13)(A) (U.S. Code, Cornell Legal Information Institute text)",
+          "cite": "26 U.S.C. § 51(d)(13)(A)(ii)(II)",
+          "url": "https://www.law.cornell.edu/uscode/text/26/51",
+          "quote": "not later than the 28th day after the individual begins work for the employer, the employer submits such notice, signed by the employer and the individual under penalties of perjury, to the designated local agency as part of a written request for such a certification from such agency."
+        },
+        {
+          "case": "26 U.S.C. § 51(d)(12) (U.S. Code, Cornell Legal Information Institute text)",
+          "cite": "26 U.S.C. § 51(d)(12)",
+          "url": "https://www.law.cornell.edu/uscode/text/26/51",
+          "quote": "The term “designated local agency” means a State employment security agency established in accordance with the Act of June 6, 1933, as amended (29 U.S.C. 49–49n)."
+        },
+        {
+          "case": "California EDD, \"Work Opportunity Tax Credit\" program page (Employment Development Department)",
+          "cite": "EDD's description of where a mailed WOTC certification request is sent in California",
+          "url": "https://edd.ca.gov/en/jobs_and_training/Work_Opportunity_Tax_Credit",
+          "quote": "Employment Development Department Attn: Work Opportunity Tax Credit Authorization Center 2901 50th Street Sacramento, CA 95817"
+        }
+      ]
+    },
+    {
+      "id": "wotc_certification_denial_and_revocation",
+      "title": "Denied Requests and Revocation of an Incorrect Certification",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Certification under this program is not necessarily final or immune from later correction. Section 51(d)(13)(B) provides that if an individual has been certified as a member of a targeted group and that certification is later found incorrect because it was based on false information the individual provided, the certification is revoked, and any wages the employer pays after the employer receives notice of that revocation no longer count as qualified wages for the credit — but the statute does not disturb the wages already paid and treated as qualified before the revocation notice arrived. Separately, § 51(d)(13)(C) gives an unsuccessful applicant a specific procedural right: if a designated local agency denies a request for certification of targeted-group membership, the agency must provide the person who made the request a written explanation of the reasons for the denial.",
+      "gap": "The statutory text reviewed states that a written explanation of denial must be provided, but does not itself specify a deadline for the designated local agency to provide it, or an appeal process beyond that explanation. This clause also does not address whether an employer, an individual, or both are the intended recipient of a denial explanation when a request names both, nor does it address any consequence to the individual (as opposed to the employer's lost wage-qualification) that may follow a revoked certification.",
+      "citations": [
+        {
+          "case": "26 U.S.C. § 51(d)(13)(B) (U.S. Code, Cornell Legal Information Institute text)",
+          "cite": "26 U.S.C. § 51(d)(13)(B)",
+          "url": "https://www.law.cornell.edu/uscode/text/26/51",
+          "quote": "the certification shall be revoked and wages paid by the employer after the date on which notice of revocation is received by the employer shall not be treated as qualified wages."
+        },
+        {
+          "case": "26 U.S.C. § 51(d)(13)(C) (U.S. Code, Cornell Legal Information Institute text)",
+          "cite": "26 U.S.C. § 51(d)(13)(C)",
+          "url": "https://www.law.cornell.edu/uscode/text/26/51",
+          "quote": "If a designated local agency denies a request for certification of membership in a targeted group, such agency shall provide to the person making such request a written explanation of the reasons for such denial."
+        }
+      ]
+    },
+    {
+      "id": "wotc_ineligible_individuals_and_minimum_hours",
+      "title": "Related Individuals, Rehires, and the Minimum-Hours Requirement",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Even a properly certified targeted-group member's wages do not always qualify. Section 51(i)(1) excludes wages paid to certain \"related individuals\" — most notably, an individual related to the employer (or, for a corporate employer, related to a more-than-50-percent owner) within the family relationships the Internal Revenue Code defines for dependency purposes, as well as certain estate or trust grantors, beneficiaries, and fiduciaries. Section 51(i)(2) separately excludes any individual the employer had already employed at any time before that individual's current hiring date — a \"nonqualifying rehire\" is not eligible regardless of targeted-group membership. Finally, § 51(i)(3) ties the credit to a minimum amount of actual work: no wages qualify at all for an individual who performs fewer than 120 hours of service for the employer, and for an individual who performs at least 120 but fewer than 400 hours, the credit rate drops from 40 percent to 25 percent of qualified first-year wages.",
+      "gap": "This clause states the existence and general shape of the § 51(i)(1) related-individual exclusion but does not restate the full family-relationship definitions incorporated by cross-reference from 26 U.S.C. § 152(d)(2)(A) through (H) and § 267(c); a reader would need to consult those separate sections to evaluate a specific family or ownership relationship. This clause also does not address § 51(f) (the separate requirement that more than half of an individual's remuneration be for trade-or-business services), § 51(h) (special agricultural- and railway-labor wage rules), or § 51(k) (successor-employer and leased-employee rules). This clause does not state whether any particular individual falls into any excluded category or has performed any particular number of hours of service for any particular employer.",
+      "citations": [
+        {
+          "case": "26 U.S.C. § 51(i)(2) (U.S. Code, Cornell Legal Information Institute text)",
+          "cite": "26 U.S.C. § 51(i)(2)",
+          "url": "https://www.law.cornell.edu/uscode/text/26/51",
+          "quote": "No wages shall be taken into account under subsection (a) with respect to any individual if, prior to the hiring date of such individual, such individual had been employed by the employer at any time."
+        },
+        {
+          "case": "26 U.S.C. § 51(i)(3)(A) (U.S. Code, Cornell Legal Information Institute text)",
+          "cite": "26 U.S.C. § 51(i)(3)(A)",
+          "url": "https://www.law.cornell.edu/uscode/text/26/51",
+          "quote": "In the case of an individual who has performed at least 120 hours, but less than 400 hours, of service for the employer, subsection (a) shall be applied by substituting “25 percent” for “40 percent”."
+        },
+        {
+          "case": "26 U.S.C. § 51(i)(3)(B) (U.S. Code, Cornell Legal Information Institute text)",
+          "cite": "26 U.S.C. § 51(i)(3)(B)",
+          "url": "https://www.law.cornell.edu/uscode/text/26/51",
+          "quote": "No wages shall be taken into account under subsection (a) with respect to any individual unless such individual has performed at least 120 hours of service for the employer."
+        }
+      ]
+    },
+    {
+      "id": "wotc_current_expiration_status",
+      "title": "Current Statutory Expiration: December 31, 2025",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "The credit is not currently open-ended. Section 51(c)(4) defines \"wages\" for purposes of this program to exclude any amount paid or incurred to an individual who begins work for the employer after December 31, 2025 — meaning that, as carried in the current U.S. Code text, no wages paid to an individual hired after that date qualify for the credit at all, regardless of targeted-group membership or certification. California's own EDD, in the WOTC program page fetched for this document (current as of this document's own drafting), confirms this same cutoff in plain terms and describes its own current practice for hires made after it: federal authorization for the program expired on December 31, 2025, EDD states that employers should continue submitting WOTC applications within the required timeframes, and EDD states that it will accept and retain applications for individuals with 2026 and later start dates pending federal reauthorization, rather than rejecting them outright.",
+      "gap": "This finding corrects an assumption in this document's initial research framing, which treated WOTC as a presently operating, open-ended hiring credit without qualification. Having fetched and read the actual current 26 U.S.C. § 51(c)(4) text directly from Cornell's Legal Information Institute, and cross-checked it against California EDD's own current WOTC program page, the honest finding is that, as of both sources' text at the time of this research (September 2026), no wages paid to an individual who begins work after December 31, 2025 currently qualify for the credit, unless Congress has since enacted a reauthorization not yet reflected in either fetched source. This program's amendment history (recorded in the same U.S. Code text) shows a long pattern of Congress retroactively extending this same December 31 cutoff date after prior lapses, so a lapse of this kind is not unprecedented for this specific credit and does not necessarily mean the program has permanently ended — but this document takes no position on whether, or when, any future reauthorization will occur, and states only what the fetched text shows as of the dates given. This session's CourtListener case-law search for this topic returned a rate-limit error (HTTP 429, quota exhausted) rather than results, so this clause and this document rest on the statutory and EDD text alone, without a case-law check for any judicial decision addressing this or a prior WOTC lapse.",
+      "citations": [
+        {
+          "case": "26 U.S.C. § 51(c)(4) (U.S. Code, Cornell Legal Information Institute text)",
+          "cite": "26 U.S.C. § 51(c)(4)",
+          "url": "https://www.law.cornell.edu/uscode/text/26/51",
+          "quote": "The term “wages” shall not include any amount paid or incurred to an individual who begins work for the employer after December 31, 2025."
+        },
+        {
+          "case": "California EDD, \"Work Opportunity Tax Credit\" program page (Employment Development Department)",
+          "cite": "EDD's own \"WOTC Program Update\" notice",
+          "url": "https://edd.ca.gov/en/jobs_and_training/Work_Opportunity_Tax_Credit",
+          "quote": "Federal authorization for the Work Opportunity Tax Credit (WOTC) expired on December 31, 2025. Employers should continue submitting WOTC applications within required timeframes. Applications with start dates of January 1, 2026, and after will be accepted and retained pending federal reauthorization."
+        }
+      ]
+    },
+    {
+      "id": "wotc_ack",
+      "title": "Acknowledgment",
+      "kind": "drafting",
+      "body": "Please sign below to acknowledge that you received this information sheet describing the federal Work Opportunity Tax Credit.\n\nEmployee: {{employeeName}}\nSignature: _______________  Date: {{dateSigned}}\n\nOn behalf of {{companyName}}:\nSignature: _______________  Date: {{dateSigned}}\n\nSigned at: {{cityState}}\n\nThis acknowledgment confirms only that this information sheet was received. It is not a WOTC pre-screening notice, does not constitute a request for certification to any designated local agency, and does not itself claim, waive, or affect any tax credit that may or may not be available under 26 U.S.C. § 51."
     }
   ]
 }

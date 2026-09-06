@@ -24606,5 +24606,61 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "work_opportunity_tax_credit_info_sheet",
+    "title": "Work Opportunity Tax Credit — Information Sheet",
+    "description": "Explains the federal Work Opportunity Tax Credit (26 U.S.C. § 51): the credit amount and wage caps, the ten targeted-group categories, the pre-screening-notice and 28-day certification deadline, denial/revocation procedures, related-individual and minimum-hours exclusions, and the credit's current December 31, 2025 statutory expiration, pending federal reauthorization.",
+    "categories": [
+      "Hiring"
+    ],
+    "clauseOrder": [
+      "wotc_intro",
+      "wotc_credit_amount_and_wage_limits",
+      "wotc_targeted_groups",
+      "wotc_certification_via_prescreening_notice",
+      "wotc_certification_denial_and_revocation",
+      "wotc_ineligible_individuals_and_minimum_hours",
+      "wotc_current_expiration_status",
+      "wotc_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "e.g., Acme Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee's name",
+        "placeholder": "e.g., Jane Doe",
+        "required": true
+      },
+      {
+        "id": "jobTitle",
+        "label": "Job title / position",
+        "placeholder": "e.g., Warehouse Associate",
+        "required": true
+      },
+      {
+        "id": "startDate",
+        "label": "Start date",
+        "placeholder": "e.g., January 1, 2026",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "e.g., January 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, State",
+        "placeholder": "e.g., Sacramento, California",
+        "required": true
+      }
+    ]
   }
 ]
