@@ -67182,6 +67182,120 @@
       "title": "Acknowledgment and Signature",
       "kind": "drafting",
       "body": "I declare under penalty of perjury under the laws of the State of California that the foregoing background information is true and correct to the best of my knowledge.\n\nExecuted on {{dateSigned}} at {{cityState}}.\n\nSignature of {{preparerName}}: ☐ _________________________\n\n[This information sheet is prepared as background about California Probate Code §§ 600–695 in connection with {{appointmentInstrumentDescription}}. It does not itself determine, and preparing or signing it does not determine, whether any specific exercise, release, or contract to appoint involving that power satisfies the creating instrument's requirements or this statutory scheme; only a court, or the parties applying these statutes to the actual, specific terms of that instrument, does that.]"
+    },
+    {
+      "id": "falsemark_intro_scope",
+      "title": "What This Information Sheet Covers",
+      "kind": "drafting",
+      "body": "This information sheet describes the federal false marking statute, 35 U.S.C. § 292. That statute addresses false or deceptive statements about patent status: marking or advertising an article as patented when it is not, imitating another person's patent marking, or stating that a patent application is pending when none has been filed or none remains pending. It covers the categories of conduct the statute addresses, the criminal penalty for that conduct and who may sue to collect it, the separate private civil action available to a competitor who has suffered a competitive injury, and the statutory exception for continuing to reference a patent that covered a product but has since expired.\n\nThis document is distinct from this corpus's existing Patent Infringement Information Sheet, which separately addresses 35 U.S.C. § 287(a) — a different marking-related statute that limits how far back in time a patentee can recover infringement damages if the patentee's own product went unmarked. Section 287(a) protects an accused infringer's exposure to damages; the statute described in this document instead addresses false statements about patent status on their own terms, independent of any infringement claim, and is enforced differently — by the United States as a criminal penalty, or by an injured competitor in a private civil action, rather than by an accused infringer. This document is also distinct from this corpus's Patent Assignment Agreement, Patent License Agreement, and Provisional Patent Application Information Sheet documents, which address ownership, licensing, and the filing of a patent application rather than marking practices.\n\nRegarding {{markingDescription}} attributed to {{adversePartyName}}, and any competitive injury {{companyName}} associates with that marking, this sheet sets out the statutory framework the law provides. It does not determine whether that marking violates the statute, whether a civil action under it would succeed, or what {{companyName}} should do in response."
+    },
+    {
+      "id": "falsemark_prohibited_conduct",
+      "title": "Three Categories of Prohibited False Marking",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "The false marking statute describes three separate categories of prohibited conduct, each carrying its own required mental state. The first covers marking, affixing, or advertising something with the name (or an imitation of the name) of an actual patentee, the patent number, or words like \"patent\" or \"patentee,\" done without the patentee's consent and with the intent of counterfeiting or imitating the patentee's mark, or of deceiving the public into believing the item came from or was authorized by the patentee. The second covers marking, affixing, or advertising an unpatented article with the word \"patent\" or any word or number suggesting it is patented, done for the purpose of deceiving the public. The third covers marking, affixing, or advertising any article with words like \"patent applied for\" or \"patent pending,\" or any word suggesting a patent application has been made, when no application has actually been made — or, if one was made, when it is no longer pending, done for the purpose of deceiving the public. All three categories require a purpose or intent to deceive or to counterfeit; the statute does not, by its terms, reach an innocent or merely careless mismarking made without that purpose.",
+      "gap": "This clause describes the categories of conduct the statute addresses in subsection (a); it does not resolve whether any specific marking, advertisement, or statement about a patent's status meets the statute's intent-or-purpose-to-deceive requirement, which courts have described as a factual question turning on the circumstances of the particular marking. A CourtListener case-law search for judicial decisions construing this intent element was attempted but returned an HTTP 429 rate-limit error (125/day quota exhausted) before any results could be retrieved, so this clause relies on the statutory text alone and does not reflect how courts have actually applied the intent requirement in practice.",
+      "citations": [
+        {
+          "case": "35 U.S.C. § 292 (Cornell LII text)",
+          "cite": "35 U.S.C. § 292(a) (three categories of prohibited conduct)",
+          "url": "https://www.law.cornell.edu/uscode/text/35/292",
+          "quote": "Whoever, without the consent of the patentee, marks upon, or affixes to, or uses in advertising in connection with anything made, used, offered for sale, or sold by such person within the United States, or imported by the person into the United States, the name or any imitation of the name of the patentee, the patent number, or the words “patent,” “patentee,” or the like, with the intent of counterfeiting or imitating the mark of the patentee, or of deceiving the public and inducing them to believe that the thing was made, offered for sale, sold, or imported into the United States by or with the consent of the patentee; or Whoever marks upon, or affixes to, or uses in advertising in connection with any unpatented article, the word “patent” or any word or number importing that the same is patented, for the purpose of deceiving the public; or Whoever marks upon, or affixes to, or uses in advertising in connection with any article, the words “patent applied for,” “patent pending,” or any word importing that an application for patent has been made, when no application for patent has been made, or if made, is not pending, for the purpose of deceiving the public—"
+        }
+      ]
+    },
+    {
+      "id": "falsemark_criminal_penalty_government_only",
+      "title": "The Fine Is Capped Per Offense, and Only the United States May Collect It",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "A violation of the false marking statute is punishable by a fine of not more than $500 for every such offense. The statute expressly reserves the right to sue for that penalty to the United States: no private person — including a competitor, a consumer, or anyone else — may bring an action to collect this particular fine. This is a change from how the statute once read; the current single-government-plaintiff rule for this penalty was added to the statute in 2011.",
+      "gap": "This clause describes the current text of subsection (a) as amended in 2011; it does not address how the Department of Justice or another United States authority decides, as a matter of enforcement discretion, whether to bring an action for this penalty in any given case, nor how frequently such actions are actually filed. That is an enforcement-practice question the statutory text alone does not answer.",
+      "citations": [
+        {
+          "case": "35 U.S.C. § 292 (Cornell LII text)",
+          "cite": "35 U.S.C. § 292(a) (penalty and exclusive government standing)",
+          "url": "https://www.law.cornell.edu/uscode/text/35/292",
+          "quote": "Shall be fined not more than $500 for every such offense. Only the United States may sue for the penalty authorized by this subsection."
+        }
+      ]
+    },
+    {
+      "id": "falsemark_pre_2011_qui_tam_history",
+      "title": "Before 2011, Any Person Could Sue for This Penalty",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Before a 2011 amendment, the false marking statute worked differently: it allowed any person — not just the United States — to sue for the $500-per-offense penalty, with the recovery split so that half went to the person who sued and half went to the United States. That prior version of subsection (b) is no longer in effect. The 2011 amendment eliminated this private-suit mechanism for the government's penalty and replaced it with the competitive-injury civil action described elsewhere in this statute. The amendment applies to all cases, without exception, that were pending on or commenced on or after September 16, 2011.",
+      "gap": "This clause describes the historical and current statutory text as reported in Cornell LII's editorial notes and amendment history for this section; it does not independently verify the text of the pre-2011 version of the U.S. Code against a contemporaneous 2010 or earlier source, only against the current section's own notes describing that prior text. It also does not address litigation that was already filed under the old qui tam version before September 16, 2011, and how the 2011 amendment's retroactive application to then-pending cases was resolved in specific disputes.",
+      "citations": [
+        {
+          "case": "35 U.S.C. § 292 (Cornell LII text)",
+          "cite": "35 U.S.C. § 292, Editorial Notes (quoting the pre-2011 text of subsection (b))",
+          "url": "https://www.law.cornell.edu/uscode/text/35/292",
+          "quote": "Any person may sue for the penalty, in which event one-half shall go to the person suing and the other to the use of the United States."
+        }
+      ]
+    },
+    {
+      "id": "falsemark_competitive_injury_civil_action",
+      "title": "A Competitor's Own Civil Action Requires a Competitive Injury",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Separate from the government-only criminal penalty, the statute gives a private civil remedy to a narrower category of plaintiff: a person who has suffered a competitive injury as a result of a violation of the statute. That person may file a civil action in a United States district court, and the recovery available is damages adequate to compensate for the injury — not the flat $500-per-offense penalty available only to the United States, and not a fixed statutory amount. This civil action is the only private remedy the statute itself provides for a false marking violation.",
+      "gap": "This clause describes the text of subsection (b); it does not define what showing establishes a \"competitive injury\" in a particular factual scenario, nor how a district court calculates \"damages adequate to compensate\" for one. Those are questions the statutory text leaves to case-by-case adjudication. A CourtListener search for decisions applying this standard was attempted but returned an HTTP 429 rate-limit error (125/day daily quota already exhausted), so no case law interpreting the competitive-injury or damages standards was reviewed for this clause.",
+      "citations": [
+        {
+          "case": "35 U.S.C. § 292 (Cornell LII text)",
+          "cite": "35 U.S.C. § 292(b) (private civil action for competitive injury)",
+          "url": "https://www.law.cornell.edu/uscode/text/35/292",
+          "quote": "A person who has suffered a competitive injury as a result of a violation of this section may file a civil action in a district court of the United States for recovery of damages adequate to compensate for the injury."
+        }
+      ]
+    },
+    {
+      "id": "falsemark_expired_patent_safe_harbor",
+      "title": "Marking With an Expired Patent Is Not a Violation",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "The statute contains an express exception: marking a product, in the manner otherwise described in subsection (a), with matter relating to a patent that covered that product but has since expired is not a violation of this section. In other words, the statute's false marking prohibitions are directed at markings that were never accurate or that misrepresent whether a patent exists or is pending — not at markings that were accurate when the patent was in force and have simply not been updated after the patent's term ended.",
+      "gap": "This clause describes the text of subsection (c) only. It does not address how this exception interacts with the separate intent-to-deceive requirements in subsection (a), whether continuing to use an expired-patent marking could still support liability under some other legal theory outside this statute (such as a false-advertising claim under a different law), or how a person would go about verifying whether a specific patent number referenced in a marking has, in fact, expired.",
+      "citations": [
+        {
+          "case": "35 U.S.C. § 292 (Cornell LII text)",
+          "cite": "35 U.S.C. § 292(c) (expired-patent exception)",
+          "url": "https://www.law.cornell.edu/uscode/text/35/292",
+          "quote": "The marking of a product, in a manner described in subsection (a), with matter relating to a patent that covered that product but has expired is not a violation of this section."
+        }
+      ]
+    },
+    {
+      "id": "falsemark_distinction_from_section_287",
+      "title": "How This Differs From the Failure-to-Mark Damages Statute",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "The statute described in this document, captioned \"False marking,\" should not be confused with the separate marking statute addressed in this corpus's existing Patent Infringement Information Sheet document. That other statute, 35 U.S.C. § 287(a), addresses the opposite situation: a patentee who does not mark its own patented products at all limits how far back in time it can later recover infringement damages from an accused infringer. The statute described in this document instead addresses marking, advertising, or claiming a patent status that is false or no longer accurate, done with an intent or purpose to deceive. One statute constrains a patentee's own recovery for under-marking; the other penalizes false or deceptive over-marking by anyone, whether or not that person holds any patent at all.",
+      "gap": "This clause is a comparative summary of two statutes' subject matter and does not itself restate the full text of 35 U.S.C. § 287(a) (which is verified separately in this corpus's Patent Infringement Information Sheet); it does not address any scenario in which both statutes might be implicated by the same set of facts, which is a legal question this sheet does not resolve.",
+      "citations": [
+        {
+          "case": "35 U.S.C. § 292 (Cornell LII text)",
+          "cite": "35 U.S.C. § 292, title (\"False marking\")",
+          "url": "https://www.law.cornell.edu/uscode/text/35/292",
+          "quote": "35 U.S. Code § 292 - False marking"
+        }
+      ]
+    },
+    {
+      "id": "falsemark_signature_certification",
+      "title": "Signature and Certification",
+      "kind": "drafting",
+      "body": "{{preparerName}}, on behalf of {{companyName}}, certifies that the description of {{markingDescription}}, the identification of {{adversePartyName}}, and the description of {{competitiveInjuryDescription}} set out above are true and correct to the best of {{preparerName}}'s knowledge as of the date signed below. This information sheet is not a civil complaint, a criminal referral, a demand letter, or any other filing, and completing or signing it does not itself commence any action in any court or before any government agency.\n\nSigned: ______________________\n{{preparerName}}\nDate signed: {{dateSigned}}\nCity, State: {{cityState}}"
     }
   ]
 }

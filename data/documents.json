@@ -24544,5 +24544,67 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "false_patent_marking_info_sheet",
+    "title": "False Patent Marking — Information Sheet",
+    "description": "Explains the federal false marking statute (35 U.S.C. § 292): its three categories of prohibited conduct, the government-only $500-per-offense criminal penalty and its pre-2011 qui tam history, the competitor's private civil action for competitive injury, the expired-patent safe harbor, and how it differs from the failure-to-mark damages-limitation statute (35 U.S.C. § 287(a)).",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "falsemark_intro_scope",
+      "falsemark_prohibited_conduct",
+      "falsemark_criminal_penalty_government_only",
+      "falsemark_pre_2011_qui_tam_history",
+      "falsemark_competitive_injury_civil_action",
+      "falsemark_expired_patent_safe_harbor",
+      "falsemark_distinction_from_section_287",
+      "falsemark_signature_certification"
+    ],
+    "fields": [
+      {
+        "id": "preparerName",
+        "label": "Preparer's name",
+        "placeholder": "e.g., Jane Doe",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "e.g., Acme Inc.",
+        "required": true
+      },
+      {
+        "id": "adversePartyName",
+        "label": "Adverse party's name",
+        "placeholder": "e.g., John Smith Manufacturing",
+        "required": true
+      },
+      {
+        "id": "markingDescription",
+        "label": "Description of the marking or statement at issue",
+        "placeholder": "e.g., \"Patented\" stamped on product model X, referencing U.S. Patent No. 1,234,567",
+        "required": true
+      },
+      {
+        "id": "competitiveInjuryDescription",
+        "label": "Description of the competitive injury, if any",
+        "placeholder": "e.g., lost sales to customers who believed the competing product was patented",
+        "required": false
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "e.g., January 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, State",
+        "placeholder": "e.g., San Francisco, California",
+        "required": true
+      }
+    ]
   }
 ]
