@@ -25821,5 +25821,45 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "federal_warn_act_business_sale_and_notice_info_sheet",
+    "title": "Federal WARN Act: Government Notice, Aggregation, and Business Transfer — Information Sheet",
+    "description": "A companion to this corpus's WARN Act Layoff Notice document, covering federal WARN Act rules that document does not state: notice to a state dislocated worker unit and local government (and its distinct content requirements), the 90-day job-loss aggregation rule, the \"single site of employment\" definition, the statutory part-time-employee exclusion, the seller/buyer notice split and employee continuity on a business sale, the qualifying-transfer exclusion from \"employment loss,\" and statutory offsets to back-pay liability plus the bar on federal injunctive relief.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "warnsale_intro",
+      "warnsale_govt_notice_recipients",
+      "warnsale_govt_notice_content",
+      "warnsale_aggregation_90day",
+      "warnsale_single_site_definition",
+      "warnsale_parttime_employee_exclusion",
+      "warnsale_business_sale_seller_buyer",
+      "warnsale_qualifying_transfer_exclusion",
+      "warnsale_liability_offsets_no_injunction",
+      "warnsale_closing_signature"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      }
+    ]
   }
 ]
