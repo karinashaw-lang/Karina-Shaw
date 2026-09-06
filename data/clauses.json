@@ -66245,6 +66245,166 @@
       "title": "Acknowledgment",
       "kind": "drafting",
       "body": "Please sign below to acknowledge review of this Employee Literacy Assistance information sheet.\n\nEmployee: {{employeeName}}\nEmployer: {{companyName}}\nDate: {{dateSigned}}"
+    },
+    {
+      "id": "specialenroll_intro",
+      "title": "Purpose and Scope of This Information Sheet",
+      "kind": "drafting",
+      "body": "This Special Enrollment Rights Information Sheet describes two federal-law rights that can let {{employeeName}} enroll in a *different* health plan after health coverage from {{companyName}} ends on {{terminationDate}}: (1) the right under the federal Health Insurance Portability and Accountability Act (\"HIPAA\") of 1996 to a special enrollment period in another group health plan for which {{employeeName}} is otherwise eligible, such as a spouse's employer-sponsored plan; and (2) the right under the Affordable Care Act to a special enrollment period in a health insurance marketplace plan, such as one offered through Covered California.\n\nThis document is not the same as, and does not repeat, this project's COBRA and Cal-COBRA information sheets and election-notice forms. Those documents describe the right to continue enrollment in the *same* group health plan the employee already had, purchased at a group rate. This document instead describes the separate right to move onto a *new and different* plan — a spouse's plan or a marketplace plan — triggered by the same loss of job-based coverage. A person who has lost job-based coverage may have both kinds of rights available at the same time, and this document does not state which one, if either, better fits {{employeeName}}'s own circumstances.\n\nThis document also has nothing to do with the different, more commonly cited part of HIPAA — its Privacy Rule governing the confidentiality of protected health information, referenced elsewhere in this project's medical-authorization and accommodation documents. The \"HIPAA\" right described here comes from a separate part of the same 1996 federal statute: the portability and nondiscrimination provisions that added special enrollment periods to federal group-health-plan law, codified at 29 U.S.C. § 1181(f) (among parallel provisions in the Internal Revenue Code and the Public Health Service Act). This document states the federal statutory and regulatory text on special enrollment; it does not determine whether {{employeeName}}'s own prior plan or a specific spouse's plan is subject to these requirements, and it is not a claim, notice, or election form."
+    },
+    {
+      "id": "specialenroll_hipaa_core_right",
+      "title": "HIPAA's Special Enrollment Right to Join Another Group Health Plan",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Federal law requires a group health plan, and a health insurance issuer offering group health insurance coverage in connection with a group health plan, to permit an employee who is eligible but not enrolled for coverage under the plan's terms (or an eligible-but-unenrolled dependent of that employee) to enroll for coverage if certain conditions are met. This is the right that can let {{employeeName}} enroll in a spouse's or other family member's group health plan, mid-year and outside that plan's normal open-enrollment window, once each of the statute's own conditions is satisfied.",
+      "gap": "This clause states the federal statutory rule itself; it does not determine that any particular plan — a former employer's plan or a family member's plan — is a \"group health plan\" covered by this statute, since certain plans (including many church plans and governmental plans) are wholly or partly exempt from this part of federal law under other statutory provisions not addressed here. A targeted case-law search on how courts have applied this special-enrollment provision could not be completed for this clause because the research tool's daily query quota had already been exhausted at the time of research; this clause relies on the statutory text alone.",
+      "citations": [
+        {
+          "case": "29 U.S.C. § 1181(f)(1) (Cornell LII text)",
+          "cite": "U.S. Code, HIPAA special enrollment periods — core rule",
+          "url": "https://www.law.cornell.edu/uscode/text/29/1181",
+          "quote": "A group health plan , and a health insurance issuer offering group health insurance coverage in connection with a group health plan, shall permit an employee who is eligible, but not enrolled, for coverage under the terms of the plan (or a dependent of such an employee if the dependent is eligible, but not enrolled, for coverage under such terms) to enroll for coverage under the terms of the plan if each of the following conditions is met:"
+        }
+      ]
+    },
+    {
+      "id": "specialenroll_hipaa_qualifying_loss_events",
+      "title": "What Counts as a Qualifying Loss of Coverage Under HIPAA's Special Enrollment Rule",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "The statute defines the kind of coverage loss that can open a HIPAA special enrollment period. It covers two situations: prior coverage that was under a COBRA continuation provision and has since been exhausted, and prior coverage that was not under COBRA and was terminated because of a loss of eligibility — the statute's own examples of a loss of eligibility include legal separation, divorce, death, termination of employment, or a reduction in the number of hours of employment — or because employer contributions toward that coverage were terminated. A loss of job-based coverage that follows {{employeeName}}'s employment ending on {{terminationDate}} falls within the statute's own listed examples of a loss of eligibility.",
+      "gap": "This clause quotes the statute's own list of qualifying circumstances; it does not itself determine that a given employee's coverage loss meets every element of the statute (for example, whether the loss resulted from termination of employment as opposed to some other cause the statute does not cover, such as a voluntary drop in coverage while still eligible). Unlike COBRA's qualifying-event definition, this HIPAA provision contains no exclusion for coverage lost due to the employee's own misconduct; this clause does not resolve whether some other statute or plan term might treat a given termination differently.",
+      "citations": [
+        {
+          "case": "29 U.S.C. § 1181(f)(1)(C) (Cornell LII text)",
+          "cite": "U.S. Code, HIPAA special enrollment — qualifying loss-of-coverage events",
+          "url": "https://www.law.cornell.edu/uscode/text/29/1181",
+          "quote": "(C) The employee ’s or dependent’s coverage described in subparagraph (A)— (i) was under a COBRA continuation provision and the coverage under such provision was exhausted; or (ii) was not under such a provision and either the coverage was terminated as a result of loss of eligibility for the coverage (including as a result of legal separation, divorce, death, termination of employment, or reduction in the number of hours of employment) or employer contributions toward such coverage were terminated."
+        }
+      ]
+    },
+    {
+      "id": "specialenroll_hipaa_written_statement_precondition",
+      "title": "A Precondition Most Summaries Omit: The Prior Written Statement Requirement",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "The statute's special enrollment right is not available solely because coverage was lost. It also requires that, at the earlier time the employee declined enrollment in the new plan because of other coverage, the employee stated in writing that other coverage was the reason for declining — but the statute makes this written-statement requirement apply only if the plan sponsor or issuer had itself required such a statement at that earlier time and had given the employee notice of that requirement and its consequences. Where a plan never imposed or gave notice of this written-statement requirement when {{employeeName}} originally declined enrollment, this particular precondition does not apply at all.",
+      "gap": "This clause states a conditional rule from the statute's own text; it does not determine, for any particular plan, whether that plan actually required a written statement of the reason for declining enrollment or gave the required notice of that requirement at the time enrollment was originally declined — that is a fact about the specific plan's own enrollment materials and administration that this document does not investigate.",
+      "citations": [
+        {
+          "case": "29 U.S.C. § 1181(f)(1)(B) (Cornell LII text)",
+          "cite": "U.S. Code, HIPAA special enrollment — conditional written-statement requirement",
+          "url": "https://www.law.cornell.edu/uscode/text/29/1181",
+          "quote": "(B) The employee stated in writing at such time that coverage under a group health plan or health insurance coverage was the reason for declining enrollment, but only if the plan sponsor or issuer (if applicable) required such a statement at such time and provided the employee with notice of such requirement (and the consequences of such requirement) at such time."
+        }
+      ]
+    },
+    {
+      "id": "specialenroll_hipaa_30day_deadline",
+      "title": "The 30-Day Deadline to Request HIPAA Special Enrollment",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "The statute requires the enrollment request itself to be made within a specific window measured from the coverage-loss event: under the terms of the plan, the employee must request enrollment no later than 30 days after the date the earlier COBRA coverage was exhausted, or 30 days after the date the other coverage or employer contribution toward it was terminated. This 30-day period is the statutory floor for special enrollment in another group health plan; it is a different, and shorter, period than the separate marketplace special enrollment period described elsewhere in this document.",
+      "gap": "This clause states the statutory minimum request window; it does not calculate the specific calendar deadline that applies following a given employee's own coverage loss, which depends on the exact date coverage was exhausted or terminated. A plan may allow a longer period than this 30-day statutory floor, but this clause does not identify whether any particular plan does so.",
+      "citations": [
+        {
+          "case": "29 U.S.C. § 1181(f)(1)(D) (Cornell LII text)",
+          "cite": "U.S. Code, HIPAA special enrollment — 30-day request deadline",
+          "url": "https://www.law.cornell.edu/uscode/text/29/1181",
+          "quote": "(D) Under the terms of the plan , the employee requests such enrollment not later than 30 days after the date of exhaustion of coverage described in subparagraph (C)(i) or termination of coverage or employer contribution described in subparagraph (C)(ii)."
+        }
+      ]
+    },
+    {
+      "id": "specialenroll_aca_marketplace_trigger",
+      "title": "Loss of Job-Based Coverage as a Marketplace Special Enrollment Trigger",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Separately from the group-health-plan right described above, federal regulations implementing the Affordable Care Act require a health insurance exchange — including a state-based exchange such as Covered California — to allow a qualified individual to enroll in or change a marketplace health plan when a \"triggering event\" listed in the regulation occurs. The first listed triggering event is the loss of minimum essential coverage by the qualified individual or a dependent, with the date of that loss of coverage defined as the last day the consumer would have coverage under the previous plan.",
+      "gap": "This clause states the federal regulatory trigger itself; it does not determine that a given former employer-sponsored plan was \"minimum essential coverage\" within the meaning of the cross-referenced tax regulation (26 CFR 1.5000A-1(b)), which this research did not independently fetch or verify. It also does not address any additional or different procedural rules a specific state-based exchange, such as Covered California, may layer on top of this federal floor.",
+      "citations": [
+        {
+          "case": "45 C.F.R. § 155.420(d)(1)(i) (Cornell LII / e-CFR text)",
+          "cite": "Code of Federal Regulations, ACA marketplace special enrollment — loss of coverage trigger",
+          "url": "https://www.law.cornell.edu/cfr/text/45/155.420",
+          "quote": "(1) The qualified individual or his or her dependent either: (i) Loses minimum essential coverage . The date of the loss of coverage is the last day the consumer would have coverage under his or her previous plan or coverage;"
+        }
+      ]
+    },
+    {
+      "id": "specialenroll_aca_60day_general_window",
+      "title": "The Marketplace's General 60-Day Special Enrollment Window",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "The general rule stated in the regulation gives a qualified individual or enrollee 60 days from the date of a triggering event, such as the loss of job-based coverage, to select a marketplace health plan, unless the regulation specifically states a different rule for a particular category of triggering event.",
+      "gap": "This clause states the regulation's default 60-day figure; a following clause in this document describes a materially different rule that applies specifically to loss-of-coverage events, so this general-rule clause alone should not be read as the complete special enrollment timeline for a coverage-loss situation like this one.",
+      "citations": [
+        {
+          "case": "45 C.F.R. § 155.420(c)(1) (Cornell LII / e-CFR text)",
+          "cite": "Code of Federal Regulations, ACA marketplace special enrollment — general 60-day rule",
+          "url": "https://www.law.cornell.edu/cfr/text/45/155.420",
+          "quote": "(1) General rule. Unless specifically stated otherwise herein, a qualified individual or enrollee has 60 days from the date of a triggering event to select a QHP."
+        }
+      ]
+    },
+    {
+      "id": "specialenroll_aca_advance_60day_for_loss_of_coverage",
+      "title": "A Correction to the General Rule: 60 Days Before, Not Just 60 Days After, a Loss of Coverage",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "For a loss-of-coverage triggering event specifically, the regulation does not simply apply the general 60-days-after rule. It instead gives \"advanced availability\": a qualified individual or dependent described in the loss-of-minimum-essential-coverage provision has 60 days *before* the triggering event, and (unless the exchange exercises a specific option to shorten this) 60 days *after* the triggering event, to select a marketplace plan. This differs from an initial assumption that a marketplace special enrollment period for a coverage loss runs only forward from the loss date — the regulation's own text extends the window to include the 60 days leading up to the loss of coverage as well.",
+      "gap": "This clause states the regulatory text defining the length of this particular special enrollment window; it does not address the separate exchange option (referenced in the regulation as paragraph (c)(6)) to shorten the post-event portion of this window, which this research did not fetch or verify, nor does it state which specific dates result from a given employee's own coverage loss.",
+      "citations": [
+        {
+          "case": "45 C.F.R. § 155.420(c)(2) (Cornell LII / e-CFR text)",
+          "cite": "Code of Federal Regulations, ACA marketplace special enrollment — advanced availability for loss of coverage",
+          "url": "https://www.law.cornell.edu/cfr/text/45/155.420",
+          "quote": "(2) Advanced availability. A qualified individual or their dependent who is described in paragraph (d)(1), (d)(6)(iii), or (d)(15) of this section has 60 days before and, unless the Exchange exercises the option in paragraph (c)(6) of this section, 60 days after the triggering event to select a QHP."
+        }
+      ]
+    },
+    {
+      "id": "specialenroll_two_tracks_distinguished",
+      "title": "Two Separate Federal Deadlines Measured From the Same Coverage-Loss Date",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "The same loss of job-based coverage can start two different federal enrollment clocks that run on different schedules and lead to different destinations. The HIPAA special enrollment right runs for 30 days from the coverage-loss event and can lead to enrollment in another group health plan such as a spouse's employer plan. The Affordable Care Act marketplace special enrollment right, for this same kind of triggering event, runs for a longer window — beginning 60 days before the triggering event and continuing 60 days after it — and leads to enrollment in a marketplace plan such as one offered through Covered California. Neither statutory or regulatory provision states that a person must choose only one of these two tracks, or that using one forecloses the other.",
+      "gap": "This clause synthesizes the deadlines already stated in the statute and the regulation quoted elsewhere in this document; it does not itself resolve any conflict, coordination rule, or state-specific administrative practice — for example, how Covered California's own enrollment platform treats a person who is also mid-window on a HIPAA special enrollment election — because no additional independent source addressing that specific interaction was located, and a case-law search on this topic could not be completed because the research tool's daily quota had already been exhausted at the time of research.",
+      "citations": [
+        {
+          "case": "29 U.S.C. § 1181(f)(1)(D) (Cornell LII text)",
+          "cite": "U.S. Code, HIPAA special enrollment — 30-day request deadline",
+          "url": "https://www.law.cornell.edu/uscode/text/29/1181",
+          "quote": "(D) Under the terms of the plan , the employee requests such enrollment not later than 30 days after the date of exhaustion of coverage described in subparagraph (C)(i) or termination of coverage or employer contribution described in subparagraph (C)(ii)."
+        },
+        {
+          "case": "45 C.F.R. § 155.420(c)(1) (Cornell LII / e-CFR text)",
+          "cite": "Code of Federal Regulations, ACA marketplace special enrollment — general 60-day rule",
+          "url": "https://www.law.cornell.edu/cfr/text/45/155.420",
+          "quote": "(1) General rule. Unless specifically stated otherwise herein, a qualified individual or enrollee has 60 days from the date of a triggering event to select a QHP."
+        }
+      ]
+    },
+    {
+      "id": "specialenroll_facts_statement",
+      "title": "Statement of Facts Relevant to Special Enrollment Timing",
+      "kind": "drafting",
+      "body": "This information sheet is being prepared with respect to {{employeeName}}, whose employment with {{companyName}} ended on {{terminationDate}}, and whose group health coverage under {{planName}} ended or is expected to end on {{qualifyingEventDate}}.\n\nOther health coverage being considered, if any: {{newCoverageSource}}\n\nDate a special enrollment request or marketplace application was or will be submitted, if known: {{requestDate}}\n\nThis statement records these dates for reference alongside the federal deadlines described in this document. It does not itself constitute an enrollment request, election, or application to any plan or exchange."
+    },
+    {
+      "id": "specialenroll_acknowledgment_and_signature",
+      "title": "Acknowledgment and Signature",
+      "kind": "drafting",
+      "body": "{{employeeName}} acknowledges having received this Special Enrollment Rights Information Sheet describing the federal HIPAA special enrollment right under 29 U.S.C. § 1181(f) and the federal Affordable Care Act marketplace special enrollment right under 45 C.F.R. § 155.420, and acknowledges that this document states general federal legal rules rather than a determination of {{employeeName}}'s own eligibility, deadlines, or plan options.\n\nSignature: ☐ _________________________ Date: _______________\n\n{{employeeName}}\n\nDate signed: {{dateSigned}}"
     }
   ]
 }

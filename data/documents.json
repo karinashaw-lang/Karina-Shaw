@@ -24232,5 +24232,76 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "hipaa_aca_special_enrollment_rights_info_sheet",
+    "title": "HIPAA & ACA Special Enrollment Rights — Information Sheet",
+    "description": "Explains two federal special-enrollment rights triggered by a loss of job-based health coverage: HIPAA's 30-day right to join another group health plan (29 U.S.C. § 1181(f)), and the ACA marketplace's 60-days-before-and-after special enrollment window (45 C.F.R. § 155.420) — separate from continuing the same plan under COBRA/Cal-COBRA.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "specialenroll_intro",
+      "specialenroll_hipaa_core_right",
+      "specialenroll_hipaa_qualifying_loss_events",
+      "specialenroll_hipaa_written_statement_precondition",
+      "specialenroll_hipaa_30day_deadline",
+      "specialenroll_aca_marketplace_trigger",
+      "specialenroll_aca_60day_general_window",
+      "specialenroll_aca_advance_60day_for_loss_of_coverage",
+      "specialenroll_two_tracks_distinguished",
+      "specialenroll_facts_statement",
+      "specialenroll_acknowledgment_and_signature"
+    ],
+    "fields": [
+      {
+        "id": "employeeName",
+        "label": "Employee's name",
+        "placeholder": "e.g., Jane Doe",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Employer/company name",
+        "placeholder": "e.g., Acme Inc.",
+        "required": true
+      },
+      {
+        "id": "terminationDate",
+        "label": "Employment termination date",
+        "placeholder": "e.g., January 1, 2026",
+        "required": true
+      },
+      {
+        "id": "planName",
+        "label": "Health plan name",
+        "placeholder": "e.g., Acme Inc. PPO Plan",
+        "required": true
+      },
+      {
+        "id": "qualifyingEventDate",
+        "label": "Date coverage ended or will end",
+        "placeholder": "e.g., January 31, 2026",
+        "required": true
+      },
+      {
+        "id": "newCoverageSource",
+        "label": "Source of new health coverage sought",
+        "placeholder": "e.g., spouse's employer plan, or Covered California/marketplace plan",
+        "required": false
+      },
+      {
+        "id": "requestDate",
+        "label": "Date special enrollment request/application was or will be submitted",
+        "placeholder": "e.g., February 10, 2026",
+        "required": false
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "e.g., January 1, 2026",
+        "required": true
+      }
+    ]
   }
 ]
