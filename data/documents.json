@@ -23364,5 +23364,79 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "appointment_of_minors_counsel_info_sheet",
+    "title": "Appointment of Minor's Counsel in Custody Proceedings — Information Sheet",
+    "description": "An informational sheet on California Family Code §§ 3150-3153: the discretionary best-interest standard for appointing private counsel to represent a child in a custody or visitation proceeding, how this differs from a guardian ad litem, the scope of counsel's role and duties (best-interest advocacy plus reporting the child's stated wishes), counsel's litigation powers and access to records, the CPS-records release procedure, and how compensation is determined and allocated between the parties and, where they can't pay, the county.",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "minorscounsel_case_declaration",
+      "minorscounsel_appointment_standard_and_continuation",
+      "minorscounsel_distinct_from_guardian_ad_litem",
+      "minorscounsel_role_and_duties",
+      "minorscounsel_litigation_powers_and_access",
+      "minorscounsel_cps_records_access",
+      "minorscounsel_compensation_and_fee_allocation",
+      "minorscounsel_record_and_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "childName",
+        "label": "Child's name",
+        "placeholder": "Riley Lee",
+        "required": true
+      },
+      {
+        "id": "parent1Name",
+        "label": "First parent's full legal name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "parent2Name",
+        "label": "Second parent's full legal name",
+        "placeholder": "Morgan Casey Lee",
+        "required": true
+      },
+      {
+        "id": "minorsCounselName",
+        "label": "Appointed minor's counsel's name (if known)",
+        "placeholder": "Jordan T. Reyes, Esq.",
+        "required": false
+      },
+      {
+        "id": "courtName",
+        "label": "Court name",
+        "placeholder": "Superior Court of California, County of Sacramento",
+        "required": true
+      },
+      {
+        "id": "courtCaseNumber",
+        "label": "Court case number",
+        "placeholder": "CGC-26-123456",
+        "required": true
+      },
+      {
+        "id": "countyOfFiling",
+        "label": "County of filing",
+        "placeholder": "Sacramento County",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
