@@ -25541,5 +25541,58 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "farm_labor_contractor_licensing_info_sheet",
+    "title": "Farm Labor Contractor Licensing — Information Sheet",
+    "description": "Explains California's Farm Labor Contractor Licensing Law, Labor Code §§1682-1699: who is a \"farm labor contractor\" and the two statutory exemptions, the license requirement and civil penalty for operating without one, the sworn application and Labor Commissioner investigation, payroll-tiered bond and fee requirements, the written exam and sexual harassment training conditions, license denial and revocation grounds, ongoing licensee duties, and criminal penalties and private civil remedies.",
+    "categories": [
+      "Hiring"
+    ],
+    "clauseOrder": [
+      "flc_intro",
+      "flc_definitions_and_exemptions",
+      "flc_license_required_and_penalty",
+      "flc_application_process",
+      "flc_bond_and_fee_requirements",
+      "flc_exam_and_harassment_training_conditions",
+      "flc_license_denial_grounds",
+      "flc_license_revocation_grounds",
+      "flc_ongoing_licensee_duties",
+      "flc_enforcement_and_remedies",
+      "flc_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "laborContractorUseDescription",
+        "label": "Use of labor contractors, if any",
+        "placeholder": "We use a staffing agency to supply approximately 20 warehouse workers",
+        "required": true
+      },
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      }
+    ]
   }
 ]
