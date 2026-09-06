@@ -67827,6 +67827,69 @@
       "title": "Closing and Acknowledgment — Preemptive Rights Information Sheet",
       "kind": "drafting",
       "body": "This information sheet was prepared for {{companyName}} by {{preparerName}} on {{dateSigned}} in {{cityState}}. It reflects the statutory text of Corporations Code §§ 204 and 406 as of the date checked above and does not reflect any review of {{companyName}}'s actual articles of incorporation or any determination of whether a preemptive-rights provision currently exists for {{companyName}}.\n\n{{preparerName}}\nDate: {{dateSigned}}\n{{cityState}}"
+    },
+    {
+      "id": "tradedispute_intro",
+      "title": "Purpose of This Trade Dispute Information Sheet",
+      "kind": "drafting",
+      "body": "This information sheet states facts about a single, specific California unemployment insurance disqualification: Unemployment Insurance Code Section 1262, which bars unemployment compensation benefits to an individual who left work because of a \"trade dispute\" (a labor dispute such as a strike or lockout), for as long as that dispute remains in active progress at the establishment where {{employeeName}} was employed by {{companyName}}. It does not determine whether any particular work stoppage involving {{employeeName}} and {{companyName}} is or is not a \"trade dispute\" within the meaning of Section 1262 — that determination is made by the Employment Development Department and, on appeal, by an administrative law judge or the courts, based on the specific facts of the dispute. This document is a separate, distinct topic from this corpus's Unemployment Insurance Benefits — Claimant Information Sheet, which states the general disqualification standard for voluntarily quitting without good cause or being discharged for misconduct under a different statute, Unemployment Insurance Code Section 1256; a trade-dispute separation is not evaluated under that misconduct/voluntary-quit standard. It is also distinct from the notice-of-change-in-relationship duty addressed elsewhere in this corpus, which identifies a work stoppage caused by a trade dispute only as one circumstance the Employment Development Department's guidance treats as not requiring that separate written notice — this document instead addresses the benefits-eligibility question itself. This document does not address rights or protections under the federal National Labor Relations Act that may apply to strikers or locked-out employees, does not address an employer's or union's bargaining obligations, does not address replacement-worker or reinstatement rights, and does not address whether severance, WARN Act, or other termination-related obligations apply to any employer action taken during a labor dispute. Nothing here instructs {{employeeName}} or {{companyName}} to take, or refrain from taking, any particular action with respect to an actual or anticipated labor dispute."
+    },
+    {
+      "id": "tradedispute_core_disqualification",
+      "title": "The Trade Dispute Disqualification: Leaving Work Because of a Labor Dispute",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "A distinct provision of the California Unemployment Insurance Code, separate from the general misconduct/voluntary-quit disqualification, makes an individual ineligible for unemployment compensation benefits if that individual left work because of a trade dispute. The statutory text does not limit this disqualification to individuals who personally called, organized, or voted for the dispute, and it does not contain any textual exception for an individual who did not participate in, finance, or have a direct interest in the dispute, or who worked in a different grade or class of work than the employees involved in it. On the face of the statute, the disqualifying question is why the individual left work — because of a trade dispute — not what role, if any, that individual played in causing it.",
+      "gap": "This clause quotes only the first sentence of Unemployment Insurance Code Section 1262, fetched directly from California Legislative Information and confirmed byte-identical across two independently user-agented fetches; the statute itself does not define \"trade dispute,\" and does not, on its face, distinguish a strike (a work stoppage initiated by employees) from a lockout (a work stoppage initiated by the employer) or resolve whether an employee excluded from work by an employer-initiated lockout has \"left\" work within the meaning of this section. California courts and the California Unemployment Insurance Appeals Board have construed this term and this strike/lockout distinction in published decisions, but this document's drafter could not verify any specific case citation this session: the CourtListener research tool used for that purpose returned a rate-limit error (429, \"125/day\" quota exhausted, roughly 9,437 seconds remaining) before any search could be completed. Rather than rely on an unverified case citation or an assumption about how courts have resolved the strike/lockout distinction, this document discloses that limitation and does not characterize how any court has applied this statute to a lockout, a sympathy strike, or a dispute an individual did not personally join. This clause also does not determine whether any specific work stoppage is a \"trade dispute,\" and does not address the separate false-statement penalty, the general misconduct/voluntary-quit standard, or any other unemployment insurance disqualification.",
+      "citations": [
+        {
+          "case": "Cal. Unemployment Insurance Code § 1262 (California Legislative Information text)",
+          "cite": "California Unemployment Insurance Code",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=UIC&sectionNum=1262.",
+          "quote": "An individual is not eligible for unemployment compensation benefits, and these benefits shall not be payable to him or her, if the individual left his or her work because of a trade dispute."
+        }
+      ]
+    },
+    {
+      "id": "tradedispute_duration_and_establishment",
+      "title": "Duration of the Disqualification: Tied to the Dispute's Active Progress at That Establishment",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "The same statutory section that creates the trade dispute disqualification also fixes its duration and its geographic scope. The disqualification does not run for a fixed number of weeks; instead, it lasts only for as long as the individual continues out of work because the trade dispute remains in active progress in the specific establishment where that individual was employed. Read together with the disqualification itself, this means the statute ties both the trigger and the end of ineligibility to the same underlying fact — the status of the dispute at that particular establishment — rather than to a separate waiting period, a fixed number of weeks, or a requirement that the individual earn a minimum amount in new wages before requalifying, of the kind that applies to some other disqualifications under this code.",
+      "gap": "This clause quotes the second sentence of the same Unemployment Insurance Code Section 1262 already cited in this document's core-disqualification clause; it is drawn from the same statutory section and is not an independent corroborating source. The statute does not define \"establishment,\" and does not state how this provision applies where an individual works for an employer with multiple locations, only one of which is affected by the dispute, or where an individual is reassigned to a different location during the dispute. This document's drafter could not verify any case law construing \"establishment\" or the active-progress requirement this session because the CourtListener research tool returned a rate-limit error (125/day quota exhausted) before any search could be run; no case citation is offered on this point, and this clause does not determine when, on any specific set of facts, a trade dispute has stopped being in \"active progress.\"",
+      "citations": [
+        {
+          "case": "Cal. Unemployment Insurance Code § 1262 (California Legislative Information text)",
+          "cite": "California Unemployment Insurance Code",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=UIC&sectionNum=1262.",
+          "quote": "The individual shall remain ineligible for the period during which he or she continues out of work by reason of the fact that the trade dispute is still in active progress in the establishment in which he or she was employed."
+        }
+      ]
+    },
+    {
+      "id": "tradedispute_edd_investigation_not_eligibility_determination",
+      "title": "The EDD's Duty to Investigate a Trade Dispute Is Separate From, and Not a Substitute for, an Eligibility Determination",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "A companion statutory section requires the Employment Development Department, whenever it learns that a trade dispute is in progress, to promptly investigate and make findings about the dispute's nature, location, and the labor organizations and employers involved, and to share those findings with its field offices and, on request, with any employer, employers' association, or labor organization involved in the dispute. The same statute expressly separates that fact-finding role from the individual eligibility question: the department's investigation findings about the dispute itself are based on the information then available to the department and are not a determination of any particular claimant's eligibility for benefits under the trade dispute disqualification. An individual claimant's eligibility is decided through the department's separate claim-determination process, not by the department's general findings about the dispute.",
+      "gap": "This clause quotes Unemployment Insurance Code Section 1262.5, fetched directly from California Legislative Information and confirmed byte-identical across two independently user-agented fetches. The statute does not specify a deadline by which the department must complete its investigation or issue its findings, does not state whether or how a claimant may obtain or contest the department's dispute-level findings independently of that claimant's own individual benefits determination, and does not address the general claim-filing, employer-notice, or appeal procedures that apply once an individual eligibility determination is made — those general procedures are addressed elsewhere in this corpus and are not repeated here. This document's drafter located no published case law construing this section this session because the CourtListener research tool returned a rate-limit error (125/day quota exhausted) before a search could be run; no case citation is offered on this point.",
+      "citations": [
+        {
+          "case": "Cal. Unemployment Insurance Code § 1262.5 (California Legislative Information text)",
+          "cite": "California Unemployment Insurance Code",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=UIC&sectionNum=1262.5.",
+          "quote": "The department’s investigation findings shall be based upon the information then available to it and shall not be a determination as to the eligibility of any claimant for benefits under Section 1262."
+        }
+      ]
+    },
+    {
+      "id": "tradedispute_closing_signature",
+      "title": "Acknowledgment",
+      "kind": "drafting",
+      "body": "By signing below, {{employeeName}} acknowledges having received this information sheet describing the Unemployment Insurance Code Section 1262 trade dispute disqualification and the related investigation duty under Section 1262.5, in connection with a work stoppage described as: {{tradeDisputeDescription}}, affecting {{employeeName}}'s work for {{companyName}} beginning on or about {{workStoppageDate}}. This acknowledgment confirms only that this information sheet was provided and reviewed; it is not a determination that any particular separation is or is not disqualifying under Section 1262, and it is not a claim, waiver, admission, or election regarding any unemployment insurance benefits.\n\nSigned: ___________________________\n{{employeeName}}\n\nDate: {{dateSigned}}\nLocation: {{cityState}}"
     }
   ]
 }
