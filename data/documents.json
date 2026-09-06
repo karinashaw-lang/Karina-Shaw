@@ -21952,5 +21952,52 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "no_poach_no_hire_agreement_between_businesses_info_sheet",
+    "title": "No-Poach / No-Hire Agreement Between Businesses — Information Sheet",
+    "description": "A restraint between two businesses not to hire or solicit each other's workers, and California's general rule against restraints of trade under Business and Professions Code section 16600, which reaches such agreements even though the restrained worker is not a party to them.",
+    "categories": [
+      "Hiring"
+    ],
+    "clauseOrder": [
+      "nopoach_scope",
+      "nopoach_bpc16600_general_rule",
+      "nopoach_bpc16600_third_party_reach",
+      "nopoach_ag_enforcement_context",
+      "nopoach_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "secondCompanyName",
+        "label": "Second company's name",
+        "placeholder": "Beta Staffing, Inc.",
+        "required": true
+      },
+      {
+        "id": "restrictionPeriod",
+        "label": "Restriction period",
+        "placeholder": "12 months",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
