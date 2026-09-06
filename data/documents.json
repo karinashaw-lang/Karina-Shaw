@@ -25756,5 +25756,70 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "freedom_from_parental_custody_and_control_info_sheet",
+    "title": "Termination of Parental Rights (Freedom from Parental Custody and Control) — Information Sheet",
+    "description": "Explains California's \"Freedom from Parental Custody and Control\" proceeding under Family Code Part 4 (§§7800-7895): the proceeding's purpose and legal effect, the clear-and-convincing evidence standard, the statutory grounds (abandonment, neglect/dependency, felony conviction, and parental mental disability), who may petition, the right to counsel for parent and child, and the child's participation and in-chambers testimony rights.",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "tpr_intro",
+      "tpr_purpose_and_effect",
+      "tpr_standard_of_proof",
+      "tpr_ground_abandonment",
+      "tpr_ground_neglect_or_dependency",
+      "tpr_ground_felony_or_rape_conception",
+      "tpr_ground_mental_disability",
+      "tpr_who_may_petition",
+      "tpr_right_to_counsel",
+      "tpr_child_participation",
+      "tpr_signature"
+    ],
+    "fields": [
+      {
+        "id": "petitionerName",
+        "label": "Petitioner's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "respondentName",
+        "label": "Respondent's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "childName",
+        "label": "Child's name",
+        "placeholder": "Alex Lee",
+        "required": true
+      },
+      {
+        "id": "childDOB",
+        "label": "Child's date of birth",
+        "placeholder": "March 14, 2018",
+        "required": true
+      },
+      {
+        "id": "countyOfFiling",
+        "label": "County of filing",
+        "placeholder": "Sacramento County",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
