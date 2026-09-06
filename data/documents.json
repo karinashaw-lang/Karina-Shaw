@@ -24415,5 +24415,73 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "social_purpose_corporation_info_sheet",
+    "title": "Social Purpose Corporation — Information Sheet",
+    "description": "Explains California's Social Purpose Corporations Act (Corp. Code Division 1.5, §§ 2500-3503): its 2011 flexible-purpose-corporation predecessor, formation and required purpose statements, director duty of care, the no-third-party-rights rule, and the recurring annual report, special purpose current report, and false-report liability provisions — distinct from the corpus's separate Benefit Corporation statute.",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "socialpurpose_intro",
+      "socialpurpose_act_name_and_history",
+      "socialpurpose_general_corporation_law_applies",
+      "socialpurpose_formation_and_name",
+      "socialpurpose_required_purpose_statements",
+      "socialpurpose_powers_subject_to_special_purpose",
+      "socialpurpose_director_duty_of_care",
+      "socialpurpose_no_third_party_rights_created",
+      "socialpurpose_annual_report_and_mda",
+      "socialpurpose_current_report",
+      "socialpurpose_small_corporation_financial_statement_exception",
+      "socialpurpose_false_report_liability",
+      "socialpurpose_purpose_and_agent_declaration",
+      "socialpurpose_incorporator_signature"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "e.g., Acme Social Purpose Corporation",
+        "required": true
+      },
+      {
+        "id": "additionalPurposeDescription",
+        "label": "Description of the intended special purpose",
+        "placeholder": "e.g., promoting positive environmental effects of the corporation's operations",
+        "required": true
+      },
+      {
+        "id": "principalOfficeAddress",
+        "label": "Principal office address",
+        "placeholder": "e.g., 123 Main St., Sacramento, CA 95814",
+        "required": true
+      },
+      {
+        "id": "agentName",
+        "label": "Agent for service of process",
+        "placeholder": "e.g., Jane Doe",
+        "required": true
+      },
+      {
+        "id": "agentAddress",
+        "label": "Agent's address",
+        "placeholder": "e.g., 123 Main St., Sacramento, CA 95814",
+        "required": true
+      },
+      {
+        "id": "authorizedShares",
+        "label": "Authorized shares",
+        "placeholder": "e.g., 10,000,000 shares of common stock",
+        "required": true
+      },
+      {
+        "id": "incorporatorName",
+        "label": "Incorporator's name",
+        "placeholder": "e.g., Jane Doe",
+        "required": true
+      }
+    ]
   }
 ]
