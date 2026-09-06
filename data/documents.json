@@ -28429,5 +28429,82 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "shared_work_unemployment_insurance_info_sheet",
+    "title": "Shared Work (Work Sharing) Unemployment Insurance Program — Information Sheet",
+    "description": "Explains California's Shared Work Unemployment Insurance Program under Unemployment Insurance Code § 1279.5 and § 1279.7 — a statutory alternative to layoff in which an employer submits a plan to the Employment Development Department to reduce a defined \"affected unit's\" hours by 10 to 60 percent, and the affected employees draw partial unemployment \"work sharing compensation\" for the reduced hours. Covers the statutory definitions, what a plan application must contain, the director's 10-working-day approval deadline and the employer's 20-day appeal window, plan duration and the director's good-cause revocation power, individual employee eligibility and the weekly compensation formula, the combined-benefits cap and 52-week limit, the requirement that both the employer and any collective bargaining agent agree in writing to participate, and the electronic-application portal with its one-year deemed-approval term. Distinct from this corpus's existing WARN Act, layoff-selection-criteria, and individual UI-claimant/UI-appeal documents, which address notice of an already-decided layoff or an individual claimant's own eligibility dispute rather than this employer-initiated, hours-reduction alternative to laying employees off at all.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "sharedwork_intro",
+      "sharedwork_definitions",
+      "sharedwork_purpose_and_unemployed_definition",
+      "sharedwork_application_requirements",
+      "sharedwork_approval_process_and_appeal",
+      "sharedwork_duration_revocation_termination",
+      "sharedwork_employee_eligibility_and_benefit_calc",
+      "sharedwork_combined_benefit_cap_and_52_week_limit",
+      "sharedwork_voluntary_participation_requirement",
+      "sharedwork_electronic_application_and_one_year_term",
+      "sharedwork_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "workUnitDescription",
+        "label": "Description of the affected unit",
+        "placeholder": "the Fabrication Department",
+        "required": true
+      },
+      {
+        "id": "affectedEmployeeCount",
+        "label": "Number of employees in the affected unit",
+        "placeholder": "22",
+        "required": true
+      },
+      {
+        "id": "hoursReductionPercentage",
+        "label": "Proposed percentage reduction in usual weekly hours",
+        "placeholder": "20",
+        "required": true
+      },
+      {
+        "id": "effectiveDate",
+        "label": "Proposed plan effective date",
+        "placeholder": "November 1, 2026",
+        "required": true
+      },
+      {
+        "id": "authorizedSignerName",
+        "label": "Authorized signer's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "authorizedSignerTitle",
+        "label": "Authorized signer's title",
+        "placeholder": "VP of Human Resources",
+        "required": true
+      },
+      {
+        "id": "signatureCity",
+        "label": "City where signed",
+        "placeholder": "Sacramento, California",
+        "required": true
+      },
+      {
+        "id": "signatureDate",
+        "label": "Date signed",
+        "placeholder": "October 15, 2026",
+        "required": true
+      }
+    ]
   }
 ]
