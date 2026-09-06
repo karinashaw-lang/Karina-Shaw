@@ -25126,5 +25126,66 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "health_fsa_hsa_forfeiture_at_separation_info_sheet",
+    "title": "Health FSA and HSA Treatment at Job Separation — Information Sheet",
+    "description": "Explains federal tax law on what happens to unused health flexible spending account (FSA) and health savings account (HSA) funds when a job ends: the cafeteria plan definition, the anti-deferred-compensation rule underlying \"use-it-or-lose-it\" FSA treatment, the contrasting nonforfeitable and portable nature of an HSA, and the narrow COBRA continuation right for an \"underspent\" health FSA (26 U.S.C. §§ 125, 223; 26 C.F.R. § 54.4980B-2).",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "healthfsa_intro",
+      "healthfsa_cafeteria_plan_definition",
+      "healthfsa_deferred_comp_anti_rollover_rule",
+      "healthfsa_hsa_portability_contrast",
+      "healthfsa_cobra_general_rule",
+      "healthfsa_cobra_underspent_test",
+      "healthfsa_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "preparerName",
+        "label": "Preparer's name",
+        "placeholder": "e.g., Jane Doe",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Employer/company name",
+        "placeholder": "e.g., Acme Inc.",
+        "required": false
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee's name",
+        "placeholder": "e.g., John Smith",
+        "required": false
+      },
+      {
+        "id": "planName",
+        "label": "Plan or account name, if applicable",
+        "placeholder": "e.g., Acme Inc. Health FSA",
+        "required": false
+      },
+      {
+        "id": "qualifyingEventDate",
+        "label": "Date of the qualifying event, if applicable",
+        "placeholder": "e.g., January 31, 2026",
+        "required": false
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "e.g., January 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, State",
+        "placeholder": "e.g., Los Angeles, California",
+        "required": true
+      }
+    ]
   }
 ]

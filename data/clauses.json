@@ -68711,6 +68711,121 @@
       "title": "Acknowledgment of Receipt",
       "kind": "drafting",
       "body": "Please sign below to acknowledge that you received this Workers' Rights in Emergencies — Information Sheet.\n\nEmployee: {{employeeName}}\nSignature: _______________  Date: {{dateSigned}}\n\nOn behalf of {{companyName}}:\nSignature: _______________  Date: {{dateSigned}}\n\nSigned at: {{cityState}}"
+    },
+    {
+      "id": "healthfsa_intro",
+      "title": "Purpose and Scope of This Information Sheet",
+      "kind": "drafting",
+      "body": "This information sheet, prepared by {{preparerName}}, explains what federal tax law says happens to unused funds in a health flexible spending account (a \"health FSA\") -- a benefit commonly offered through an employer's cafeteria plan under Internal Revenue Code section 125 -- when a covered employee's job ends, and how that treatment differs from a health savings account (an \"HSA\") under Internal Revenue Code section 223. Where a specific employer and employee are named below, those names are {{companyName}} and {{employeeName}}; this sheet can also be read on its own, without any specific employer or employee named, as a general reference to what the law says. It covers the federal statutory rule against a cafeteria plan providing \"deferred compensation\" -- the anti-deferral rule that underlies what is commonly called a health FSA's \"use-it-or-lose-it\" treatment of unused balances -- the contrasting nonforfeitable, portable nature of an HSA balance, and the narrow circumstance in which federal COBRA continuation coverage can still apply to an underspent health FSA after a qualifying event such as termination of employment. This sheet addresses federal tax and COBRA law; no California-specific statute or regulation addressing a health FSA's or HSA's treatment at job separation is cited here. It is distinct from this project's Cal-COBRA Election Notice document, which addresses continuation of a fully insured group health plan generally, not a health FSA's internal forfeiture or COBRA-obligation mechanics, and from this project's Deferred Compensation/Equity Vesting and 401(k) Distribution Notice documents, which address different, retirement-oriented benefits governed by different Code sections. This sheet does not state whether any particular health FSA balance has been or will be forfeited, does not calculate any COBRA premium, does not identify whether a particular employer's plan document offers a grace period or a carryover feature, and is not a substitute for consulting the applicable plan document, the plan administrator, or a person licensed to practice law or provide tax advice in the relevant jurisdiction."
+    },
+    {
+      "id": "healthfsa_cafeteria_plan_definition",
+      "title": "What a Cafeteria Plan and a Health FSA Are",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Under 26 U.S.C. section 125(d)(1), a \"cafeteria plan\" is a written plan under which all participants are employees and the participants may choose among two or more benefits consisting of cash and \"qualified benefits.\" A health flexible spending account is one common way of structuring such a qualified benefit: an employee elects to reduce salary in exchange for the employer's promise to reimburse the employee's substantiated health expenses, up to the elected amount, during the plan year.",
+      "gap": "Section 125(d)(1) defines \"cafeteria plan\" generally; the statute does not itself use the term \"flexible spending account\" or \"health FSA\" for the salary-reduction health-reimbursement structure described here -- those are terms of art from Treasury guidance and common employee-benefits usage, not from this statutory text. This clause does not address the separate excepted-benefit, minimum-value, or nondiscrimination-testing requirements that determine whether a particular employer's arrangement in fact qualifies as a cafeteria plan or a health FSA within it.",
+      "citations": [
+        {
+          "case": "26 U.S.C. § 125(d)(1) (Cornell LII text)",
+          "cite": "U.S. Code, Cafeteria plans",
+          "url": "https://www.law.cornell.edu/uscode/text/26/125",
+          "quote": "The term “cafeteria plan” means a written plan under which—"
+        }
+      ]
+    },
+    {
+      "id": "healthfsa_deferred_comp_anti_rollover_rule",
+      "title": "The Statutory Root of Health FSA \"Use-It-or-Lose-It\" Treatment",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "26 U.S.C. section 125(d)(2)(A) provides that the term \"cafeteria plan\" does not include any plan which provides for deferred compensation. This anti-deferral rule is the statutory root of what is commonly described as a health FSA's \"use-it-or-lose-it\" treatment of unused amounts: if a cafeteria plan let participants carry forward or cash out unused health FSA amounts from one plan year to the next without limit, the plan would be providing deferred compensation and would risk failing to qualify as a cafeteria plan under the statute at all, which would change the tax treatment of everything offered through it, not only the health FSA.",
+      "gap": "This clause verifies only the statutory anti-deferral rule in section 125(d)(2)(A) itself. The detailed operational rules that Treasury has issued interpreting this rule for health FSAs specifically -- including the regulation commonly cited for the \"use-or-lose\" principle (26 C.F.R. section 1.125-5) and the separate IRS guidance permitting a limited carryover amount or an extended grace period as exceptions to strict use-or-lose treatment -- were not independently fetched or verified for this document; this sheet does not state their current dollar limits or conditions. A lightweight case-law search for this topic on CourtListener returned a rate-limit error (HTTP 429, daily quota exhausted) before any results could be reviewed, so this clause is not informed by any case law and none is cited.",
+      "citations": [
+        {
+          "case": "26 U.S.C. § 125(d)(2)(A) (Cornell LII text)",
+          "cite": "U.S. Code, Cafeteria plans -- deferred compensation plans excluded",
+          "url": "https://www.law.cornell.edu/uscode/text/26/125",
+          "quote": "The term “cafeteria plan” does not include any plan which provides for deferred compensation."
+        }
+      ]
+    },
+    {
+      "id": "healthfsa_hsa_portability_contrast",
+      "title": "HSA Balances Are Nonforfeitable and Portable, Unlike a Health FSA",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "An HSA is legally structured as a trust, and 26 U.S.C. section 223(d)(1)(E) requires that the interest of an individual in the balance in the individual's HSA be nonforfeitable. A distribution from an HSA used exclusively to pay the qualified medical expenses of the account beneficiary is not includible in gross income under section 223(f)(1). Because section 125(d)(2)(D) allows a cafeteria plan to let an employee direct pre-tax salary-reduction amounts into an HSA without that arrangement being treated as prohibited deferred compensation, an employee's HSA balance -- unlike a health FSA balance -- continues to belong to the employee, and remains available to pay qualified medical expenses, after the employee's job with the contributing employer ends.",
+      "gap": "This clause verifies the nonforfeitability and tax-free-qualified-distribution rules and the specific statutory carve-out that lets HSA contributions run through a cafeteria plan without triggering the deferred-compensation exclusion. It does not verify or state the separate eligibility conditions for contributing to an HSA (including the high-deductible-health-plan coverage requirement), the annual contribution limits, or the additional tax that section 223 imposes on a distribution not used for qualified medical expenses.",
+      "citations": [
+        {
+          "case": "26 U.S.C. § 223(d)(1)(E) (Cornell LII text)",
+          "cite": "U.S. Code, Health savings accounts -- nonforfeitability",
+          "url": "https://www.law.cornell.edu/uscode/text/26/223",
+          "quote": "The interest of an individual in the balance in his account is nonforfeitable."
+        },
+        {
+          "case": "26 U.S.C. § 223(f)(1) (Cornell LII text)",
+          "cite": "U.S. Code, Health savings accounts -- tax treatment of distributions",
+          "url": "https://www.law.cornell.edu/uscode/text/26/223",
+          "quote": "Any amount paid or distributed out of a health savings account which is used exclusively to pay qualified medical expenses of any account beneficiary shall not be includible in gross income."
+        },
+        {
+          "case": "26 U.S.C. § 125(d)(2)(D) (Cornell LII text)",
+          "cite": "U.S. Code, Cafeteria plans -- exception for health savings accounts",
+          "url": "https://www.law.cornell.edu/uscode/text/26/125",
+          "quote": "Subparagraph (A) shall not apply to a plan to the extent of amounts which a covered employee may elect to have the employer pay as contributions to a health savings account established on behalf of the employee."
+        }
+      ]
+    },
+    {
+      "id": "healthfsa_cobra_general_rule",
+      "title": "COBRA Applies to a Health FSA, But Only to the Coverage Actually Being Received",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "The Treasury regulation implementing COBRA confirms that health care benefits do not escape being a \"group health plan\" merely because they are offered through a cafeteria plan, including a health FSA. However, the regulation also states that the COBRA continuation-coverage requirements apply only to the type and level of coverage a qualified beneficiary was actually receiving under the cafeteria plan or other flexible benefit arrangement on the day before the qualifying event -- for example, a termination of employment. The same regulation then sets out separate rules, described in a companion clause, that can limit or eliminate a health FSA's own COBRA obligation beyond that.",
+      "gap": "This clause verifies only the general framing rule quoted below. It does not by itself determine whether COBRA continuation is or is not available for any particular health FSA in any particular circumstance -- that depends on the two-part test addressed in this sheet's companion clause on underspent health FSAs, and on facts (such as the qualified beneficiary's remaining potential benefit as of the qualifying event) that this sheet does not evaluate.",
+      "citations": [
+        {
+          "case": "26 C.F.R. § 54.4980B-2, Q&A-8(a)(1) (Cornell LII text)",
+          "cite": "Treasury Regulations, Definition of group health plan -- cafeteria plans and flexible benefit arrangements",
+          "url": "https://www.law.cornell.edu/cfr/text/26/54.4980B-2",
+          "quote": "The provision of health care benefits does not fail to be a group health plan merely because those benefits are offered under a cafeteria plan (as defined in section 125) or under any other arrangement under which an employee is offered a choice between health care benefits and other taxable or nontaxable benefits. However, the COBRA continuation coverage requirements apply only to the type and level of coverage under the cafeteria plan or other flexible benefit arrangement that a qualified beneficiary is actually receiving on the day before the qualifying event."
+        }
+      ]
+    },
+    {
+      "id": "healthfsa_cobra_underspent_test",
+      "title": "The Limited COBRA Obligation for an \"Underspent\" Health FSA",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "The same COBRA regulation limits a health FSA's obligation to offer continuation coverage when two conditions are both satisfied for the plan year: the health FSA's benefits qualify as \"excepted benefits\" within the meaning of the federal excepted-benefit statutes, and the maximum amount the health FSA can require to be paid for a year of COBRA continuation coverage equals or exceeds the maximum benefit available under the health FSA for that year. Where both conditions are met, the regulation further provides that the health FSA is not obligated to make COBRA continuation coverage available for the plan year in which the qualifying event occurs unless, as of the date of the qualifying event, the qualified beneficiary could become entitled to receive, during the remainder of the plan year, a benefit exceeding the maximum amount the health FSA could require to be paid for COBRA coverage for that remaining period -- a comparison sometimes summarized as whether the account is \"underspent\" as of the qualifying event.",
+      "gap": "This clause verifies the two-condition test and the underspent-account comparison as the regulation itself states them. It does not verify or restate the regulation's own worked numerical example, which uses dollar figures and a 2002 plan year for illustration only and does not reflect current contribution limits or premium amounts. Whether any particular health FSA in fact meets the \"excepted benefit\" condition, and whether any particular qualified beneficiary's account is in fact underspent as of a given qualifying event, are fact-specific determinations this sheet does not make. This clause also does not address a dependent care FSA, which is a separate arrangement not subject to COBRA.",
+      "citations": [
+        {
+          "case": "26 C.F.R. § 54.4980B-2, Q&A-8(c) (Cornell LII text)",
+          "cite": "Treasury Regulations, Limited COBRA obligation for certain health FSAs -- the two conditions",
+          "url": "https://www.law.cornell.edu/cfr/text/26/54.4980B-2",
+          "quote": "(1) Benefits provided under the health FSA are excepted benefits within the meaning of sections 9831 and 9832; and \n\n(2) The maximum amount that the health FSA can require to be paid for a year of COBRA continuation coverage under Q&A-1 of § 54.4980B-8 equals or exceeds the maximum benefit available under the health FSA for the year."
+        },
+        {
+          "case": "26 C.F.R. § 54.4980B-2, Q&A-8(e) (Cornell LII text)",
+          "cite": "Treasury Regulations, Limited COBRA obligation for certain health FSAs -- the underspent-account comparison",
+          "url": "https://www.law.cornell.edu/cfr/text/26/54.4980B-2",
+          "quote": "the health FSA is not obligated to make COBRA continuation coverage available for that plan year to any qualified beneficiary who experiences a qualifying event during that plan year unless, as of the date of the qualifying event, the qualified beneficiary can become entitled to receive during the remainder of the plan year a benefit that exceeds the maximum amount that the health FSA is permitted to require to be paid for COBRA continuation coverage for the remainder of the plan year"
+        }
+      ]
+    },
+    {
+      "id": "healthfsa_signature_block",
+      "title": "Certification",
+      "kind": "drafting",
+      "body": "I, {{preparerName}}, certify that I prepared this information sheet as a summary of federal tax law under Internal Revenue Code sections 125 and 223 and the Treasury regulation implementing COBRA at 26 C.F.R. section 54.4980B-2, for informational reference only, in connection with the health flexible spending account and health savings account described above (plan or account name, if applicable: {{planName}}; date of the qualifying event, if applicable: {{qualifyingEventDate}}). This information sheet does not constitute legal or tax advice, does not determine whether any specific balance has been forfeited or is eligible for COBRA continuation, and is not a substitute for consulting a person licensed to practice law or provide tax advice in the relevant jurisdiction.\n\nExecuted on {{dateSigned}} at {{cityState}}.\n\nSignature of {{preparerName}}: ☐ _________________________"
     }
   ]
 }
