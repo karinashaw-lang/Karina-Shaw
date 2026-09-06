@@ -27139,5 +27139,57 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "stay_or_pay_training_repayment_termination_info_sheet",
+    "title": "Stay-or-Pay and Training Repayment Provisions at Termination (Labor Code § 926 / Bus. & Prof. Code § 16608) — Information Sheet",
+    "description": "Describes California's new \"stay-or-pay\" law (AB 692, effective for contracts entered into on or after January 1, 2026): Business and Professions Code section 16608's prohibition on contract terms that make a worker pay a debt, penalty, fee, or cost because employment with a specific employer terminates, its statutory exceptions for transferable-credential tuition repayment and certain discretionary retention bonuses, its voidness rule under section 16600, and Labor Code section 926's private civil action and statutory damages.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "stayorpay_declaration",
+      "stayorpay_core_prohibition",
+      "stayorpay_key_definitions",
+      "stayorpay_void_and_effective_date",
+      "stayorpay_transferable_credential_exception",
+      "stayorpay_signing_bonus_exception",
+      "stayorpay_other_statutory_exceptions",
+      "stayorpay_civil_remedies",
+      "stayorpay_cumulative_with_other_law",
+      "stayorpay_signature"
+    ],
+    "fields": [
+      {
+        "id": "employeeName",
+        "label": "Employee Name",
+        "placeholder": "e.g., Jane Doe",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Company Name",
+        "placeholder": "e.g., Acme Corp.",
+        "required": true
+      },
+      {
+        "id": "repaymentTriggerDescription",
+        "label": "Description of the Repayment Trigger",
+        "placeholder": "e.g., training-cost repayment agreement triggered if employment ends within 18 months",
+        "required": true
+      },
+      {
+        "id": "repaymentAmount",
+        "label": "Amount at Issue",
+        "placeholder": "e.g., $5,000",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 6, 2026",
+        "required": true
+      }
+    ]
   }
 ]
