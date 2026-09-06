@@ -28719,5 +28719,70 @@
         "required": false
       }
     ]
+  },
+  {
+    "id": "workplace_language_restriction_policy_info_sheet",
+    "title": "Workplace Language Restriction Policy — Information Sheet",
+    "description": "Explains California Government Code section 12951, which makes it an unlawful employment practice to adopt or enforce a workplace policy limiting which language an employee may use unless the restriction is justified by a business necessity and employees are notified of its circumstances and consequences, and compares it to a related federal EEOC speak-English-only guideline.",
+    "categories": [
+      "During employment"
+    ],
+    "clauseOrder": [
+      "language_policy_intro",
+      "language_policy_core_prohibition",
+      "language_policy_business_necessity_condition",
+      "language_policy_business_necessity_defined",
+      "language_policy_notice_requirement",
+      "language_policy_employer_coverage",
+      "language_policy_feha_chapter_placement",
+      "language_policy_federal_eeoc_comparison",
+      "language_policy_written_statement",
+      "language_policy_employee_notice",
+      "language_policy_acknowledgment"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "jobTitle",
+        "label": "Position / department affected",
+        "placeholder": "Retail Sales Associate",
+        "required": true
+      },
+      {
+        "id": "languageRestrictionDescription",
+        "label": "Description of the language restriction (what is restricted, where, and when)",
+        "placeholder": "English only while operating the cash register during customer-facing transactions on the sales floor",
+        "required": true
+      },
+      {
+        "id": "businessPurpose",
+        "label": "Stated business necessity for the restriction",
+        "placeholder": "so that a supervisor can verify price overrides and refund transactions in real time for loss-prevention purposes",
+        "required": true
+      },
+      {
+        "id": "effectiveDate",
+        "label": "Date the restriction and notice take effect",
+        "placeholder": "November 1, 2026",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 6, 2026",
+        "required": true
+      }
+    ]
   }
 ]
