@@ -26200,5 +26200,64 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "density_bonus_law_info_sheet",
+    "title": "California Density Bonus Law — Information Sheet",
+    "description": "Explains California's Density Bonus Law, Gov. Code §65915: the eligibility thresholds that trigger the density bonus entitlement, the lower-income/very-low-income unit set-asides, how the density bonus percentage is calculated, entitlement to incentives or concessions and the narrow grounds for denial, what counts as an incentive or concession, the no-preclusion waiver of development standards, statutory parking ratio caps, the additional land-donation density bonus, and the 55-year affordability covenant duration.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "denbonus_project_identification",
+      "denbonus_eligibility_thresholds",
+      "denbonus_lowincome_verylowincome_setaside",
+      "denbonus_density_bonus_calculation",
+      "denbonus_incentives_concessions_entitlement",
+      "denbonus_incentive_concession_definition",
+      "denbonus_waiver_development_standards",
+      "denbonus_parking_ratio_caps",
+      "denbonus_land_donation_bonus",
+      "denbonus_affordability_covenant_duration",
+      "denbonus_acknowledgment_signature"
+    ],
+    "fields": [
+      {
+        "id": "applicantName",
+        "label": "Applicant/developer name",
+        "placeholder": "Acme Development LLC",
+        "required": true
+      },
+      {
+        "id": "propertyAddress",
+        "label": "Property address",
+        "placeholder": "123 Main St, Springfield",
+        "required": true
+      },
+      {
+        "id": "localAgencyName",
+        "label": "Local agency (city, county, or city and county)",
+        "placeholder": "City of Springfield",
+        "required": true
+      },
+      {
+        "id": "projectDescription",
+        "label": "Description of proposed housing development",
+        "placeholder": "50-unit development including 5 lower-income units",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
