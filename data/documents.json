@@ -22562,5 +22562,48 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "physical_ability_agility_testing_info_sheet",
+    "title": "Physical Ability / Agility Pre-Employment Testing — Information Sheet",
+    "description": "California FEHA and federal law (ADA, Title VII) governing physical or agility tests for job applicants: the general anti-discrimination prohibition, the disability and Title VII disparate-impact/business-necessity frameworks, the EEOC's guidance distinguishing agility tests from medical examinations, and FEHA's pre-offer/post-offer timing rules for medical or psychological examinations.",
+    "categories": [
+      "Hiring"
+    ],
+    "clauseOrder": [
+      "physicalability_intro",
+      "physicalability_fehas_general_prohibition",
+      "physicalability_disability_disparate_impact_framework",
+      "physicalability_agility_not_medical_exam",
+      "physicalability_sex_based_disparate_impact_title_vii",
+      "physicalability_timing_conditional_offer",
+      "physicalability_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "jobTitle",
+        "label": "Job title",
+        "placeholder": "Software Engineer",
+        "required": true
+      },
+      {
+        "id": "applicantName",
+        "label": "Applicant's name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      }
+    ]
   }
 ]
