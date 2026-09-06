@@ -23438,5 +23438,73 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "interstate_conservatorship_jurisdiction_transfer_info_sheet",
+    "title": "Interstate Transfer and Jurisdiction of Adult Conservatorships (California Conservatorship Jurisdiction Act) — Information Sheet",
+    "description": "An informational sheet on California's modified enactment of the Uniform Adult Guardianship and Protective Proceedings Jurisdiction Act (Probate Code §§ 1980-2033, cited as the California Conservatorship Jurisdiction Act): the statute's scope, the \"home state\"/\"significant-connection state\" jurisdictional test, the exclusive priority order for which state's courts may appoint a conservator, the petition processes for transferring an existing conservatorship into or out of California, and the narrower registration mechanism for an out-of-state conservator to act in California without transferring the case. Distinguishes this interstate-jurisdiction/transfer topic from the corpus's existing in-state Conservatorship of an Adult petition document.",
+    "categories": [
+      "Estate Planning"
+    ],
+    "clauseOrder": [
+      "uagppja_intro",
+      "uagppja_enactment_and_scope",
+      "uagppja_key_definitions",
+      "uagppja_jurisdiction_basis",
+      "uagppja_transfer_from_california",
+      "uagppja_transfer_to_california",
+      "uagppja_registration_not_full_transfer",
+      "uagppja_declaration_and_signature"
+    ],
+    "fields": [
+      {
+        "id": "conserveeName",
+        "label": "Conservatee's name",
+        "placeholder": "Morgan T. Ellis",
+        "required": true
+      },
+      {
+        "id": "conservatorName",
+        "label": "Conservator's name",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "issuingState",
+        "label": "Issuing state",
+        "placeholder": "Texas",
+        "required": true
+      },
+      {
+        "id": "issuingCourtName",
+        "label": "Issuing court's name",
+        "placeholder": "District Court of Travis County, Texas",
+        "required": true
+      },
+      {
+        "id": "issuingCaseNumber",
+        "label": "Issuing court's case number",
+        "placeholder": "D-1-FM-24-001234",
+        "required": true
+      },
+      {
+        "id": "otherState",
+        "label": "Other state involved in the proposed placement",
+        "placeholder": "Nevada",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
