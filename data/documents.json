@@ -22182,5 +22182,67 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "charitable_remainder_trust_basics_info_sheet",
+    "title": "Charitable Remainder Trust — Basics Information Sheet",
+    "description": "The federal tax-law structure of a charitable remainder annuity trust (CRAT) or unitrust (CRUT) under 26 U.S.C. section 664: the income/remainder split, the 5%-50% payout limits, the 10% minimum remainder-value test, and the trust-level tax exemption and charitable deduction rules.",
+    "categories": [
+      "Estate Planning"
+    ],
+    "clauseOrder": [
+      "crt_intro",
+      "crt_basic_structure",
+      "crt_annuity_trust_structure",
+      "crt_unitrust_structure",
+      "crt_payout_and_remainder_tests",
+      "crt_tax_treatment_and_deduction",
+      "crt_distinction_from_registration_sheet",
+      "crt_ack"
+    ],
+    "fields": [
+      {
+        "id": "settlorName",
+        "label": "Settlor name (you)",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "trusteeName",
+        "label": "Initial trustee name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "beneficiaryName",
+        "label": "Residuary beneficiary",
+        "placeholder": "Jordan Alex Lee's children, in equal shares",
+        "required": true
+      },
+      {
+        "id": "charityBeneficiaryName",
+        "label": "Charitable remainder beneficiary's name",
+        "placeholder": "Acme Community Foundation",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      },
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      }
+    ]
   }
 ]

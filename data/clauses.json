@@ -60372,6 +60372,127 @@
       "title": "Acknowledgment — Anti-SLAPP Information Sheet",
       "kind": "drafting",
       "body": "I declare under penalty of perjury under the laws of the State of California that the foregoing is true and correct.\n\nExecuted on {{dateSigned}} at {{cityState}}.\n\nSignature of {{preparerName}}: ☐ _________________________\n\n[This Information Sheet is a general reference describing California's anti-SLAPP statute, Code of Civil Procedure section 425.16, and how published case law has applied it to trade secret, confidentiality, and other intellectual-property-related claims. It is not a court filing, a pleading, or legal advice about whether any special motion to strike would or would not succeed against any specific claim involving {{companyName}} and {{adversePartyName}}, and completing or signing it does not itself determine that outcome.]"
+    },
+    {
+      "id": "crt_intro",
+      "title": "About This Information Sheet",
+      "kind": "drafting",
+      "body": "This information sheet describes the basic legal structure of a charitable remainder trust (CRT) under federal tax law, including the two statutory forms — the charitable remainder annuity trust (CRAT) and the charitable remainder unitrust (CRUT) — and the qualification requirements set out in 26 U.S.C. § 664. A charitable remainder trust of this type would typically be established by {{settlorName}}, with {{trusteeName}} acting as trustee, {{beneficiaryName}} named as the individual (non-charitable) income beneficiary, and {{charityBeneficiaryName}} named as the qualified charitable remainder beneficiary. This sheet states general federal tax rules; it is not a trust instrument and does not itself create, qualify, or fund any trust."
+    },
+    {
+      "id": "crt_basic_structure",
+      "title": "Basic Structure: Split-Interest Trust",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "A charitable remainder trust is a split-interest trust: it pays an income interest to one or more named beneficiaries for a term (a fixed number of years not exceeding 20, or the life or lives of one or more individuals), after which the remaining trust property (the \"remainder\") passes to or is retained for one or more organizations described in Internal Revenue Code § 170(c) — i.e., organizations eligible to receive tax-deductible charitable contributions. At least one of the income beneficiaries must not itself be a § 170(c) organization, and if any income beneficiary is an individual, that individual must be living at the time the trust is created. Under 26 U.S.C. § 664(a), a trust qualifying under this section is treated, by regulation, as either a charitable remainder annuity trust or a charitable remainder unitrust.",
+      "gap": "This clause describes the general split-interest structure common to both statutory CRT forms under 26 U.S.C. § 664(d)(1) and (d)(2). It does not address non-statutory variations (e.g., net-income unitrusts with make-up provisions, flip unitrusts, or charitable remainder trusts holding qualified employer securities transferred to an ESOP), state-law trust administration requirements, or state charitable-trust registration and reporting duties, which are covered separately in this corpus's Registry of Charitable Trusts information sheet.",
+      "citations": [
+        {
+          "case": "Charitable remainder trusts — general rule",
+          "cite": "26 U.S.C. § 664(a)",
+          "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title26-section664&num=0&edition=prelim",
+          "quote": "the provisions of this section shall, in accordance with regulations prescribed by the Secretary, apply in the case of a charitable remainder annuity trust and a charitable remainder unitrust."
+        },
+        {
+          "case": "Charitable remainder trusts — term of payments",
+          "cite": "26 U.S.C. § 664(d)(1)",
+          "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title26-section664&num=0&edition=prelim",
+          "quote": "for a term of years (not in excess of 20 years) or for the life or lives of such individual or individuals"
+        }
+      ]
+    },
+    {
+      "id": "crt_annuity_trust_structure",
+      "title": "Charitable Remainder Annuity Trust (CRAT)",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "A charitable remainder annuity trust (CRAT) is defined in 26 U.S.C. § 664(d)(1) as a trust that pays a \"sum certain\" — a fixed dollar amount set when the trust is created — not less often than annually, to the named income beneficiaries. That fixed payment must equal at least 5 percent and not more than 50 percent of the initial net fair market value of the property placed in the trust, and it does not change even if the trust's investment performance later causes its value to rise or fall. No additional contributions may be made to a CRAT after it is initially funded.",
+      "gap": "This clause paraphrases the CRAT payout-percentage rule from § 664(d)(1)(A). It does not address how the sum certain is calculated when the trust's term begins on a date other than the first day of the taxable year, or IRS-prescribed adjustments for a short first year; those computational details are set out in Treasury regulations under § 664, which were not independently fetched and verified for this clause.",
+      "citations": [
+        {
+          "case": "Definition of charitable remainder annuity trust",
+          "cite": "26 U.S.C. § 664(d)(1)(A)",
+          "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title26-section664&num=0&edition=prelim",
+          "quote": "a charitable remainder annuity trust is a trust- (A) from which a sum certain (which is not less than 5 percent nor more than 50 percent of the initial net fair market value of all property placed in trust) is to be paid, not less often than annually, to one or more persons"
+        }
+      ]
+    },
+    {
+      "id": "crt_unitrust_structure",
+      "title": "Charitable Remainder Unitrust (CRUT)",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "A charitable remainder unitrust (CRUT) is defined in 26 U.S.C. § 664(d)(2) as a trust that pays a fixed percentage — again, not less than 5 percent and not more than 50 percent — of the net fair market value of the trust's assets, revalued annually, not less often than annually, to the named income beneficiaries. Because the trust's assets are revalued each year, the dollar amount of a unitrust payment rises and falls with the trust's investment performance, unlike a CRAT's fixed sum certain. Unlike a CRAT, a CRUT may generally accept additional contributions after it is first funded. Federal law also permits a limited exception, described in § 664(d)(3), under which a unitrust may pay the lesser of trust income or the stated unitrust percentage, with a right to make up prior shortfalls in later years to the extent trust income allows (commonly called a net-income or net-income-with-makeup unitrust).",
+      "gap": "This clause covers only the statutory fixed-percentage unitrust payout described in § 664(d)(2)(A) and the existence of the net-income/make-up exception in § 664(d)(3); it does not walk through the make-up computation itself, the separate \"flip\" unitrust rules found in Treasury regulations, or the severance-of-additional-contributions mechanics of § 664(d)(4), none of which were independently verified against primary source text for this clause.",
+      "citations": [
+        {
+          "case": "Definition of charitable remainder unitrust",
+          "cite": "26 U.S.C. § 664(d)(2)(A)",
+          "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title26-section664&num=0&edition=prelim",
+          "quote": "a charitable remainder unitrust is a trust- (A) from which a fixed percentage (which is not less than 5 percent nor more than 50 percent) of the net fair market value of its assets, valued annually, is to be paid, not less often than annually, to one or more persons"
+        }
+      ]
+    },
+    {
+      "id": "crt_payout_and_remainder_tests",
+      "title": "The 5%/50% Payout Limits and the 10% Minimum Remainder Value",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Both statutory CRT forms are subject to two numeric qualification tests found directly in 26 U.S.C. § 664(d): (1) the annual payout — the CRAT's sum certain or the CRUT's fixed percentage — must be at least 5 percent and not more than 50 percent of the relevant trust value; and (2) the present value of the charitable remainder interest, computed under 26 U.S.C. § 7520, must be at least 10 percent of the initial net fair market value of the property placed in the trust (for a CRAT) or, for a CRUT, at least 10 percent of the value of each contributed property as of its contribution date. A trust that fails either test at the time it is created (or, for a CRUT, at the time of a later contribution) does not qualify as a charitable remainder annuity trust or charitable remainder unitrust under § 664.",
+      "gap": "Both numeric tests were located and verified directly within § 664(d) itself (subparagraphs (d)(1)(A)/(D) for the CRAT and (d)(2)(A)/(D) for the CRUT) rather than in a separate section — the statute states both the payout-percentage range and the 10%-remainder-value test in the same subsection. This clause does not walk through the § 7520 present-value computation itself (the applicable federal discount rate and IRS actuarial tables), which is a separate mechanical topic governed by § 7520 and its regulations and was not independently fetched for this clause.",
+      "citations": [
+        {
+          "case": "CRAT minimum remainder value requirement",
+          "cite": "26 U.S.C. § 664(d)(1)(D)",
+          "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title26-section664&num=0&edition=prelim",
+          "quote": "the value (determined under section 7520) of such remainder interest is at least 10 percent of the initial net fair market value of all property placed in the trust."
+        },
+        {
+          "case": "CRUT minimum remainder value requirement",
+          "cite": "26 U.S.C. § 664(d)(2)(D)",
+          "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title26-section664&num=0&edition=prelim",
+          "quote": "the value (determined under section 7520) of such remainder interest in such property is at least 10 percent of the net fair market value of such property as of the date such property is contributed to the trust."
+        }
+      ]
+    },
+    {
+      "id": "crt_tax_treatment_and_deduction",
+      "title": "Trust-Level Tax Exemption and the Charitable Income Tax Deduction",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "A qualifying charitable remainder annuity trust or unitrust is, for any taxable year, not subject to the federal income tax otherwise imposed on trusts under 26 U.S.C. § 664(c)(1), although the trust may owe an excise tax equal to any unrelated business taxable income it earns. Amounts later distributed to the non-charitable income beneficiary retain the trust's underlying tax character under a four-tier ordering rule in § 664(b) (ordinary income first, then capital gain, then other income, then a tax-free return of corpus). Separately, under 26 U.S.C. § 170(f)(2)(A), a donor who transfers property into a trust may not claim a federal charitable income tax deduction for the value of a remainder interest in that trust unless the trust is a charitable remainder annuity trust or charitable remainder unitrust described in § 664 (or a pooled income fund described in § 642(c)(5)). Because the trust itself generally pays no income tax on its earnings and the CRAT/CRUT structure is one of the few trust forms for which a remainder-interest charitable deduction is available at all, it is the combination of these two rules — trust-level tax exemption plus deductibility of the present value of the remainder interest — that gives the CRAT/CRUT structure its tax significance.",
+      "gap": "This clause states the general income-tax-exemption and deduction-eligibility rules found directly in §§ 664(c)(1), 664(b), and 170(f)(2)(A). It does not address the separate rules governing the deduction's dollar-amount limits based on adjusted gross income, the reduction of a donor's deduction for contributions of ordinary-income or short-term-capital-gain property, gift or estate tax charitable deductions for remainder interests, or the excise tax consequences for unrelated business taxable income in § 664(c)(2) beyond the general statement above — those are distinct, more detailed topics not independently verified for this clause.",
+      "citations": [
+        {
+          "case": "Charitable remainder trusts — income tax exemption",
+          "cite": "26 U.S.C. § 664(c)(1)",
+          "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title26-section664&num=0&edition=prelim",
+          "quote": "A charitable remainder annuity trust and a charitable remainder unitrust shall, for any taxable year, not be subject to any tax imposed by this subtitle."
+        },
+        {
+          "case": "Charitable contribution deduction for a remainder interest transferred in trust",
+          "cite": "26 U.S.C. § 170(f)(2)(A)",
+          "url": "https://www.law.cornell.edu/uscode/text/26/170",
+          "quote": "no deduction shall be allowed under this section for the value of a contribution of a remainder interest unless the trust is a charitable remainder annuity trust or a charitable remainder unitrust (described in section 664 ), or a pooled income fund (described in section 642(c)(5))."
+        }
+      ]
+    },
+    {
+      "id": "crt_distinction_from_registration_sheet",
+      "title": "How This Differs From Charitable Trust Registration and Reporting",
+      "kind": "drafting",
+      "body": "This information sheet addresses the federal tax-law structure that makes a trust a qualifying charitable remainder annuity trust or unitrust in the first place — the income/remainder split, the 5%/50% payout limits, and the 10% minimum remainder-value test under 26 U.S.C. § 664. It is distinct from this corpus's separate Registry of Charitable Trusts information sheet, which addresses an unrelated, later-stage California state-law duty: the ongoing obligation of charitable trustees and organizations to register and file annual reports with the California Attorney General under the Supervision of Trustees and Fundraisers for Charitable Purposes Act. A trust can be validly formed and can fully satisfy the federal § 664 qualification rules described here while its trustee separately remains subject to (or exempt from) the state registration and reporting duties described in that other sheet; the two sets of rules serve different purposes and arise under different bodies of law."
+    },
+    {
+      "id": "crt_ack",
+      "title": "Acknowledgment",
+      "kind": "drafting",
+      "body": "{{settlorName}} acknowledges reviewing this information sheet describing the basic federal tax-law structure of charitable remainder trusts, including the CRAT and CRUT forms and the qualification requirements of 26 U.S.C. § 664, before taking any further steps toward establishing such a trust with {{trusteeName}} as trustee, {{beneficiaryName}} as income beneficiary, and {{charityBeneficiaryName}} as the intended charitable remainder beneficiary. This sheet is signed in {{cityState}} on {{dateSigned}}. Prepared by: {{preparerName}}."
     }
   ]
 }
