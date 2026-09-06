@@ -26836,5 +26836,51 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "tnc_driver_background_check_info_sheet",
+    "title": "Transportation Network Company Driver Background Check Requirements — Information Sheet",
+    "description": "Explains the driver-screening requirements California law imposes specifically on transportation network companies (TNCs) under Public Utilities Code sections 5431, 5445.2, and 5445.3 — a statutory scheme distinct from the general consumer-reporting-agency background check rules (FCRA, ICRAA) and the Fair Chance Act conviction-history rules covered elsewhere in this corpus: who counts as a \"transportation network company\" and \"participating driver,\" the mandatory local/national criminal background check methodology, the permanent disqualification for sex-offender registration and specified convictions, the separate seven-year lookback disqualifiers, the rule that out-of-state equivalent convictions count and that companies may impose additional standards, the statutory civil penalty for noncompliance, a narrow ICRAA carve-out permitting investigative consumer reporting agencies to furnish reports to TNCs regardless of employee/independent-contractor status, and the valid driver's license requirement.",
+    "categories": [
+      "Hiring"
+    ],
+    "clauseOrder": [
+      "tncdriverbg_declaration",
+      "tncdriverbg_definitions",
+      "tncdriverbg_core_requirement",
+      "tncdriverbg_permanent_bar",
+      "tncdriverbg_sevenyear_lookback",
+      "tncdriverbg_outofstate_and_additional_standards",
+      "tncdriverbg_civil_penalty",
+      "tncdriverbg_icraa_carveout",
+      "tncdriverbg_license_requirement",
+      "tncdriverbg_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme Rides, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Participating driver / applicant name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "jobTitle",
+        "label": "Position",
+        "placeholder": "Participating Driver",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 6, 2026",
+        "required": true
+      }
+    ]
   }
 ]
