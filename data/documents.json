@@ -23556,5 +23556,55 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "school_activities_leave_info_sheet",
+    "title": "School Activities Leave — Information Sheet",
+    "description": "An informational sheet on California Labor Code § 230.8: the 25-or-more-employees-at-the-same-location coverage threshold, the two distinct covered activity categories (planned school/child-care participation, capped at 8 hours/month, and child-care-provider-or-school-emergency response) within an overall 40-hour/year cap, the broad \"parent\" definition and priority rule between two employed parents, use of existing leave banks, documentation the employer may request, and anti-retaliation remedies. Distinguishes this narrow leave from the corpus's other leave-law documents and from the separate suspension-related school-appearance leave under Labor Code § 230.7.",
+    "categories": [
+      "During employment"
+    ],
+    "clauseOrder": [
+      "schoolactivitiesleave_intro",
+      "schoolactivitiesleave_employer_coverage",
+      "schoolactivitiesleave_entitlement",
+      "schoolactivitiesleave_eligible_parents",
+      "schoolactivitiesleave_notice_and_pay",
+      "schoolactivitiesleave_documentation",
+      "schoolactivitiesleave_remedies",
+      "schoolactivitiesleave_ack"
+    ],
+    "fields": [
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "childName",
+        "label": "Child's name",
+        "placeholder": "Riley Lee",
+        "required": true
+      },
+      {
+        "id": "relationshipToChild",
+        "label": "Proposed guardian's relationship to the child",
+        "placeholder": "Maternal aunt",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      }
+    ]
   }
 ]
