@@ -22810,5 +22810,55 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "california_escrow_law_info_sheet",
+    "title": "California Escrow Law — Information Sheet",
+    "description": "An informational sheet on California's Escrow Law (Financial Code §§ 17000-17703): what counts as an escrow, the escrow agent licensing requirement and bond, the statutory exemptions for banks, attorneys, title companies, and real estate brokers acting in their own exempt capacity, the mechanics and disclosure requirements for escrow instructions, trust-fund handling rules, and criminal/civil penalties for misappropriation or unlicensed activity.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "escrowlaw_recitals",
+      "escrowlaw_definitions",
+      "escrowlaw_licensing_requirement",
+      "escrowlaw_exemptions",
+      "escrowlaw_instructions_mechanics",
+      "escrowlaw_trust_fund_handling",
+      "escrowlaw_penalties",
+      "escrowlaw_ack"
+    ],
+    "fields": [
+      {
+        "id": "propertyAddress",
+        "label": "Property address",
+        "placeholder": "123 Main St, Apt 4, Springfield",
+        "required": true
+      },
+      {
+        "id": "sellerName",
+        "label": "Seller's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "buyerName",
+        "label": "Buyer's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
