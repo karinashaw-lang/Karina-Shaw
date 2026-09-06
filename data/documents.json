@@ -23506,5 +23506,55 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "adult_adoption_info_sheet",
+    "title": "Adult Adoption in California — Information Sheet",
+    "description": "An informational sheet on California's Family Code §§ 9320-9328 adult-adoption procedure: eligibility and the written adoption agreement (with no birth-parent or adoptee-spouse consent requirement), the petition and venue rule, hearing notice and personal-appearance requirements, the default no-investigation rule and its narrower exception for adults with developmental disabilities adopted by their care providers, the court's best-interest approval standard, and the adoption's effect on inheritance from the adoptee's birth family under Probate Code §§ 6450-6451. Distinguishes this adult-specific track from the corpus's existing minor-adoption documents.",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "adultadopt_declaration",
+      "adultadopt_eligibility_and_agreement",
+      "adultadopt_petition_and_venue",
+      "adultadopt_hearing_notice_and_appearance",
+      "adultadopt_investigation_and_developmental_disability_notice",
+      "adultadopt_court_approval_standard",
+      "adultadopt_inheritance_effect",
+      "adultadopt_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "petitionerName",
+        "label": "Petitioner's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "adopteeName",
+        "label": "Proposed adult adoptee's name",
+        "placeholder": "Morgan T. Ellis",
+        "required": true
+      },
+      {
+        "id": "countyOfFiling",
+        "label": "County of filing",
+        "placeholder": "Sacramento County",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
