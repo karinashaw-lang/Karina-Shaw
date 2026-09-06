@@ -29168,5 +29168,70 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "furlough_info_sheet",
+    "title": "Furlough (Temporary Reduction in Work or Pay) — Information Sheet",
+    "description": "Describes how a temporary, employer-initiated furlough — a full or partial reduction in an employee's hours or pay without a formal termination — interacts with the specific triggering definitions in Cal/WARN, the federal WARN Act, California's unemployment insurance partial-benefits rule, the federal exempt-employee salary-basis regulation, and the federal COBRA regulations, and includes a fillable furlough notice and return-to-work acknowledgment. Unlike this corpus's existing WARN Act, exempt final-week salary, COBRA, and unemployment insurance documents, which each address a single statute's general rules, this document focuses narrowly on the ambiguous middle ground where employment continues but work and pay are interrupted.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "furlough_about",
+      "furlough_term_not_defined",
+      "furlough_calwarn_layoff_definition",
+      "furlough_federal_warn_employment_loss",
+      "furlough_ui_partial_benefits",
+      "furlough_exempt_salary_deduction_rule",
+      "furlough_cobra_reduction_of_hours",
+      "furlough_cobra_loss_of_coverage_condition",
+      "furlough_notice_template",
+      "furlough_return_to_work_acknowledgment",
+      "furlough_informational_only_disclaimer"
+    ],
+    "fields": [
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "jobTitle",
+        "label": "Job title",
+        "placeholder": "Software Engineer",
+        "required": true
+      },
+      {
+        "id": "furloughStartDate",
+        "label": "Furlough start date",
+        "placeholder": "March 16, 2026",
+        "required": true
+      },
+      {
+        "id": "expectedReturnDate",
+        "label": "Expected return-to-work date, if known",
+        "placeholder": "e.g., April 13, 2026, or \"Not yet determined\"",
+        "required": false
+      },
+      {
+        "id": "salary",
+        "label": "Weekly salary or wage rate before furlough",
+        "placeholder": "$1,800 per week",
+        "required": true
+      },
+      {
+        "id": "hoursPerWeek",
+        "label": "Reduced hours per week during furlough (enter 0 if work is fully suspended)",
+        "placeholder": "0",
+        "required": true
+      }
+    ]
   }
 ]
