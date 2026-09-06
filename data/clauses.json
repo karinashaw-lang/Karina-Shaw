@@ -62653,6 +62653,144 @@
       "title": "Research Note: Case Law Not Accessed",
       "kind": "drafting",
       "body": "This information sheet is limited to the current text of Civil Code Section 1542 itself. A single check of this corpus's case-law research tool (CourtListener) returned a daily-quota-exceeded response before any case search could run, and this corpus's practice is to disclose that honestly rather than wait for the quota to reset or substitute weaker, off-point authority. As a result, this sheet does not cite or summarize any judicial decision interpreting Section 1542 or describing what makes an express waiver of it effective, including on questions such as whether particular language must name the statute, and readers should not assume the absence of case law here means no such case law exists."
+    },
+    {
+      "id": "sdi_intro",
+      "title": "About This Information Sheet",
+      "kind": "drafting",
+      "body": "This information sheet describes California State Disability Insurance (SDI) — the wage-replacement benefit payable under the Unemployment Insurance Code when a worker cannot perform their own regular or customary work because of their own non-occupational illness, injury, or other qualifying condition. SDI is not the same program as Paid Family Leave (PFL), which is a separate, related benefit under the same statutory part that instead compensates a worker for time away to care for a seriously ill family member or to bond with a new child — a different qualifying reason covered by this corpus's separate Paid Family Leave (PFL) — Information Sheet. SDI is also not the same program as regular Unemployment Insurance (UI), which compensates a worker who is unemployed and able and available for work; this corpus's separate Unemployment Insurance documents address that program's claim, appeal, and overpayment rules. This sheet is limited to the statutory rules governing whether {{employeeName}}, as a claimant, meets SDI's own disability, wage-earning, and waiting-period eligibility requirements, including how those requirements interact with a period of unemployment from {{companyName}} or eligibility for regular UI benefits for the same period."
+    },
+    {
+      "id": "sdi_purpose_and_scope",
+      "title": "Statutory Purpose Distinguishes SDI From Paid Family Leave",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "The Unemployment Insurance Code states the purpose of the disability compensation part in a single sentence that names two distinct wage-loss situations: an individual's own sickness or injury, and separately, the sickness or injury of a family member or the birth, adoption, or foster care placement of a new child. Both situations are compensated from the same statutory part and the same disability fund, but California administers them as two distinct benefit programs built on that shared statutory foundation: State Disability Insurance for a claimant's own condition, and Paid Family Leave for the family-care and bonding situations. This document addresses only the first — SDI eligibility for a claimant's own disability.",
+      "gap": "Section 2601 is a declaration of legislative purpose, not itself an eligibility or benefits rule; it states that the part is to be construed liberally toward that purpose but does not by itself define who qualifies, which is instead governed by the eligibility provisions cited elsewhere in this document. This document does not independently trace how or when the Legislature split the single statutory purpose in Section 2601 into the two administratively separate SDI and PFL programs described elsewhere in this part (Sections 3300 et seq. for PFL) beyond what Section 2601's own text shows.",
+      "citations": [
+        {
+          "case": "Cal. Unemp. Ins. Code § 2601 (California Legislative Information text)",
+          "cite": "Cal. Unemp. Ins. Code § 2601",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=UIC&sectionNum=2601.",
+          "quote": "The purpose of this part is to compensate in part for the wage loss sustained by any individual who is unable to work due to the employee’s own sickness or injury, the sickness or injury of a family member, or the birth, adoption, or foster care placement of a new child, and to reduce to a minimum the suffering caused by unemployment resulting therefrom."
+        }
+      ]
+    },
+    {
+      "id": "sdi_disability_definition",
+      "title": "Statutory Definition of \"Disability\"",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "The Unemployment Insurance Code defines when an individual is \"disabled\" for SDI purposes: an individual is deemed disabled on any day on which, because of their physical or mental condition, they are unable to perform their regular or customary work. The statute specifies that this definition includes illness or injury (physical or mental, including one resulting from pregnancy, childbirth, or a related medical condition), inability to work under a health officer's quarantine-type order for a communicable disease, and, to a more limited extent, medically treated acute alcoholism or drug-induced illness.",
+      "gap": "The statute does not itself define what counts as an individual's \"regular or customary work\" when the individual has no current employer at the onset of the disability — for example, someone who became unemployed before becoming disabled. That question is addressed, if at all, by EDD regulations rather than by the statutory text examined here, and this document does not independently verify or state the regulatory answer. This document also does not detail the additional conditions attached to the alcoholism and drug-treatment categories in Sections 2626.1 and 2626.2, which were not independently fetched.",
+      "citations": [
+        {
+          "case": "Cal. Unemp. Ins. Code § 2626(a) (California Legislative Information text)",
+          "cite": "Cal. Unemp. Ins. Code § 2626(a)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=UIC&sectionNum=2626.",
+          "quote": "(a) An individual shall be deemed disabled on any day in which, because of his or her physical or mental condition, he or she is unable to perform his or her regular or customary work."
+        },
+        {
+          "case": "Cal. Unemp. Ins. Code § 2626(b) (California Legislative Information text)",
+          "cite": "Cal. Unemp. Ins. Code § 2626(b)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=UIC&sectionNum=2626.",
+          "quote": "(b) For purposes of this section, “disability” or “disabled” includes: (1) Illness or injury, whether physical or mental, including any illness or injury resulting from pregnancy, childbirth, or related medical condition. (2) Inability to work because of a written order from a state or local health officer to an individual infected with, or suspected of being infected with, a communicable disease. (3) Acute alcoholism being medically treated or, to the extent specified in Section 2626.1, resident status in an alcoholic recovery home. (4) Acute drug-induced illness being medically treated or, to the extent specified in Section 2626.2, resident status in a drug-free residential facility."
+        }
+      ]
+    },
+    {
+      "id": "sdi_unemployed_claimant_eligibility",
+      "title": "Current Employment Is Not Itself an SDI Eligibility Requirement",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "The statutory definition of a \"valid claim\" for SDI does not require that the claimant be currently employed at the time the disability begins. It requires that the individual be unemployed and disabled and have been paid qualifying wages during a defined disability base period. Consistent with this, the statute's definition of the disability base period expressly addresses individuals who do not have an unexpired benefit year for unemployment compensation benefits — that is, individuals with no open UI claim — showing that the statute contemplates SDI claims filed by people who are not currently working and are not currently drawing UI. Under this statutory framework, a person who has recently lost a job and has sufficient wages in the applicable base period may still be able to establish a valid SDI claim if they later become disabled, whether or not they are working, or looking for work, at that time.",
+      "gap": "This document does not verify the outer time limit within which a former employee's past wages remain usable toward a disability base period after employment ends, nor does it address whether or how a gap in employment before the disability onset affects the base-period calculation beyond what Sections 2609 and 2610 state on their face. It also does not address EDD's non-statutory claim-filing deadlines or procedural requirements for filing after employment has ended.",
+      "citations": [
+        {
+          "case": "Cal. Unemp. Ins. Code § 2609 (California Legislative Information text)",
+          "cite": "Cal. Unemp. Ins. Code § 2609",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=UIC&sectionNum=2609.",
+          "quote": "“Valid claim” means any claim for unemployment compensation disability benefits made in accordance with the provisions of this code and rules and regulations adopted thereunder if the individual is unemployed and disabled and has been paid wages in employment for employers necessary to qualify for benefits under Section 2652."
+        },
+        {
+          "case": "Cal. Unemp. Ins. Code § 2610 (California Legislative Information text)",
+          "cite": "Cal. Unemp. Ins. Code § 2610",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=UIC&sectionNum=2610.",
+          "quote": "“Disability base period,” with respect to an individual who does not have an unexpired benefit year for unemployment compensation benefits, means for disability benefit periods beginning in October, November, or December, the four calendar quarters ended in the next preceding month of June; the disability base period for disability benefit periods beginning in January, February, or March, shall be the four calendar quarters ended in the next preceding month of September; the disability base period for disability benefit periods beginning in April, May, or June, shall be the four calendar quarters ended in the next preceding month of December; the disability base period for disability benefit periods beginning in July, August, or September shall be the four calendar quarters ended with the next preceding month of March."
+        }
+      ]
+    },
+    {
+      "id": "sdi_wage_base_period_requirement",
+      "title": "Wage-Earning Requirement and the Disability Base Period",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "An individual cannot establish a valid SDI claim unless they were paid at least $300 in wages for employment by employers during their disability base period. Which quarters make up that base period depends on the claimant's circumstances: if the individual also has an unexpired benefit year for regular unemployment compensation benefits, the base period is the same one used for the disability base period generally if qualifying earnings there are sufficient, or otherwise the same base period used to establish the individual's unemployment compensation benefit year.",
+      "gap": "The $300 wage-earning threshold in Section 2652 was last amended in 1957 and, as codified, has not been adjusted for inflation by that section's own text; this document does not verify whether any other statute, since superseded or amended, has raised the operative qualifying amount in practice. This document also does not state the formula used to calculate the dollar amount of weekly disability benefits (addressed elsewhere in this part, including Section 3301 as covered in this corpus's Paid Family Leave document, which shares the same benefit-computation provisions) — only the base-period and minimum-earnings gate to establishing a claim at all.",
+      "citations": [
+        {
+          "case": "Cal. Unemp. Ins. Code § 2652 (California Legislative Information text)",
+          "cite": "Cal. Unemp. Ins. Code § 2652",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=UIC&sectionNum=2652.",
+          "quote": "An individual cannot establish a valid claim unless he has during his disability base period been paid wages for employment by employers of not less than three hundred dollars ($300)."
+        },
+        {
+          "case": "Cal. Unemp. Ins. Code § 2611 (California Legislative Information text)",
+          "cite": "Cal. Unemp. Ins. Code § 2611",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=UIC&sectionNum=2611.",
+          "quote": "“Disability base period,” with respect to an individual who has an unexpired benefit year for unemployment compensation benefits, shall be: (a) The same as the disability base period in Section 2610 if the individual has sufficient qualifying earnings in that disability base period. (b) The same as the base period used to establish the benefit year for unemployment compensation benefits if the individual does not have sufficient qualifying earnings in the disability base period in Section 2610."
+        }
+      ]
+    },
+    {
+      "id": "sdi_waiting_period",
+      "title": "Seven-Day Unpaid Waiting Period",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Among the conditions the statute sets for disability-benefit eligibility, an individual must have been unemployed and disabled for a waiting period of seven consecutive days during each disability benefit period, and no disability benefits are payable for that waiting period. The statute exempts a person from re-serving the waiting period on a later, related claim: if the person already satisfied the waiting period on an initial claim and files a subsequent claim for the same or a related cause or condition within 60 days after the original disability benefit period, the waiting period requirement does not apply again.",
+      "gap": "This document addresses only the waiting-period condition in subdivision (b) of Section 2627; it does not independently detail the other conditions listed in the same section (the claim-filing requirement, the examination requirement, and the certification-filing requirement), which govern eligibility in addition to the waiting period. It also does not address any temporary executive or emergency waiver of the waiting period that may have applied during a declared emergency; it states only the standing codified rule as currently in effect.",
+      "citations": [
+        {
+          "case": "Cal. Unemp. Ins. Code § 2627(b) (California Legislative Information text)",
+          "cite": "Cal. Unemp. Ins. Code § 2627(b)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=UIC&sectionNum=2627.",
+          "quote": "(b) (1) He or she has been unemployed and disabled for a waiting period of seven consecutive days during each disability benefit period with respect to which waiting period no disability benefits are payable. (2) The waiting period requirement shall not apply to a person who has met the waiting period requirements on the initial claim for disability benefits when that person files a subsequent claim for disability benefits for the same or a related cause or condition within 60 days after the original disability benefit period."
+        }
+      ]
+    },
+    {
+      "id": "sdi_no_concurrent_ui_benefits",
+      "title": "No Concurrent SDI and Unemployment Insurance Benefits for the Same Period",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "The statute directly addresses the interaction between SDI and regular Unemployment Insurance: an individual is not eligible for disability benefits for any period for which the director finds the individual has received, or is entitled to receive, unemployment compensation benefits under Part 1 of the Unemployment Insurance Code (California's regular UI program) or under an unemployment compensation act of another state or the federal government. Separately, regular UI eligibility itself requires that the claimant be able to work and available for work for the week claimed — a requirement that a person who is fully disabled from their regular or customary work will typically not satisfy for the same period. Together, these two provisions mean a claimant generally cannot draw SDI and UI benefits for the identical period, though they operate through two separate statutory tests rather than a single unified \"either/or\" rule.",
+      "gap": "Section 2628, on its face, bars disability-benefit eligibility when UI benefits were received or the claimant was entitled to receive them for the same period; this document did not locate, within the sections reviewed, a mirror-image provision in Part 1 that independently disqualifies a claimant from UI merely because they received SDI benefits — the practical bar on the UI side in this document rests on the separate \"able to work and available for work\" requirement in Section 1253(c), not on a UI-side statute naming SDI receipt directly. This document also does not address partial-disability or light-duty situations where a claimant might satisfy Section 1253(c) for a portion of a week while also being found disabled for another portion. Case law interpreting these provisions was not reviewed for this document: a CourtListener case-law search was attempted before drafting, but returned a 429 daily-quota-exceeded error, so this document relies on statutory text only and does not represent that no relevant case law exists.",
+      "citations": [
+        {
+          "case": "Cal. Unemp. Ins. Code § 2628 (California Legislative Information text)",
+          "cite": "Cal. Unemp. Ins. Code § 2628",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=UIC&sectionNum=2628.",
+          "quote": "An individual is not eligible for disability benefits with respect to any period for which the director finds that he has received or is entitled to receive unemployment compensation benefits under Part 1 of this division or under an unemployment compensation act of any other state or of the Federal Government."
+        },
+        {
+          "case": "Cal. Unemp. Ins. Code § 1253(c) (California Legislative Information text)",
+          "cite": "Cal. Unemp. Ins. Code § 1253(c)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=UIC&sectionNum=1253.",
+          "quote": "(c) He or she was able to work and available for work for that week."
+        }
+      ]
+    },
+    {
+      "id": "sdi_ack",
+      "title": "Acknowledgment",
+      "kind": "drafting",
+      "body": "{{employeeName}} acknowledges having received this information sheet describing California State Disability Insurance eligibility rules under the Unemployment Insurance Code, including how those rules apply regardless of {{employeeName}}'s current employment status with {{companyName}} as of {{separationDate}}, and that this sheet states facts about the law without recommending any course of action."
     }
   ]
 }

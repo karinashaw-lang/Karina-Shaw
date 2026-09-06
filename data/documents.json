@@ -22967,5 +22967,43 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "state_disability_insurance_eligibility_info_sheet",
+    "title": "State Disability Insurance (SDI) Eligibility — Information Sheet",
+    "description": "An informational sheet on California State Disability Insurance eligibility under the Unemployment Insurance Code: the statutory disability definition, why current employment is not itself required (a recently-unemployed person may still qualify if disabled within the base period), the wage-earning/base-period requirement, the seven-day waiting period, and the statutory bar on drawing SDI and regular UI benefits for the same period. Distinguishes SDI from this corpus's existing Paid Family Leave and Unemployment Insurance documents.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "sdi_intro",
+      "sdi_purpose_and_scope",
+      "sdi_disability_definition",
+      "sdi_unemployed_claimant_eligibility",
+      "sdi_wage_base_period_requirement",
+      "sdi_waiting_period",
+      "sdi_no_concurrent_ui_benefits",
+      "sdi_ack"
+    ],
+    "fields": [
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "separationDate",
+        "label": "Date of separation",
+        "placeholder": "March 2, 2026",
+        "required": true
+      }
+    ]
   }
 ]
