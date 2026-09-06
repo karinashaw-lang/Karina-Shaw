@@ -25506,5 +25506,40 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "health_care_worker_minimum_wage_info_sheet",
+    "title": "Health Care Worker Minimum Wage — Information Sheet",
+    "description": "Explains California's health care worker minimum wage, Labor Code §1182.14 (SB 525/SB 159): who is a covered health care employee and covered health care facility, the four tiered wage schedules, the annual CPI-based cost-of-living adjustment, the related exempt-salary threshold, enforcement/posting/notice requirements, the clinic waiver program, and preemption of local minimum wage ordinances.",
+    "categories": [
+      "During employment"
+    ],
+    "clauseOrder": [
+      "hcmw_intro",
+      "hcmw_covered_employee_scope",
+      "hcmw_covered_facility_scope",
+      "hcmw_wage_schedule_large_employers",
+      "hcmw_wage_schedule_clinics_and_other",
+      "hcmw_annual_cpi_adjustment",
+      "hcmw_salary_exempt_threshold",
+      "hcmw_enforcement_and_notice",
+      "hcmw_waiver_program",
+      "hcmw_local_preemption",
+      "hcmw_acknowledgment"
+    ],
+    "fields": [
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      }
+    ]
   }
 ]
