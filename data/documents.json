@@ -27598,5 +27598,43 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "driver_license_job_posting_restriction_info_sheet",
+    "title": "Driver's License Requirement in Job Postings — Information Sheet",
+    "description": "Explains California's restriction (Gov. Code § 12940(q), added by SB 1100, effective January 1, 2025) on stating in a job advertisement, posting, or application that a driver's license is required, unless driving is an expected job function and no comparable alternative transportation exists.",
+    "categories": [
+      "Hiring"
+    ],
+    "clauseOrder": [
+      "dlreq_intro",
+      "dlreq_core_prohibition",
+      "dlreq_driving_function_condition",
+      "dlreq_transportation_comparability_condition",
+      "dlreq_alternative_transportation_examples",
+      "dlreq_covered_employer_definition",
+      "dlreq_effective_date_origin",
+      "dlreq_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "e.g., Acme Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Applicant/Employee name",
+        "placeholder": "e.g., Jane Doe",
+        "required": true
+      },
+      {
+        "id": "jobTitle",
+        "label": "Job title / position",
+        "placeholder": "e.g., Marketing Coordinator",
+        "required": true
+      }
+    ]
   }
 ]
