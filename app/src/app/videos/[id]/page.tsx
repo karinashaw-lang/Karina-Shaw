@@ -10,6 +10,8 @@ import VideoWithTranscript from "@/components/video-with-transcript";
 import TranscriptEditor from "@/components/transcript-editor";
 import RelatedMoments from "@/components/related-moments";
 import { findRelatedSegments } from "@/lib/recommendations";
+import SchedulePartyForm from "@/components/schedule-party-form";
+import { hoursAgo } from "@/lib/time";
 
 export default async function VideoPage(props: PageProps<"/videos/[id]">) {
   const { id } = await props.params;
@@ -24,6 +26,10 @@ export default async function VideoPage(props: PageProps<"/videos/[id]">) {
         creator: true,
         comments: { orderBy: { createdAt: "asc" }, include: { user: true } },
         transcript: { orderBy: { startSeconds: "asc" } },
+        listeningParties: {
+          where: { scheduledAt: { gte: hoursAgo(6) } },
+          orderBy: { scheduledAt: "asc" },
+        },
       },
     }),
     getCurrentUser(),
@@ -107,6 +113,23 @@ export default async function VideoPage(props: PageProps<"/videos/[id]">) {
       )}
 
       {user && !isLocked && <ClipForm videoId={video.id} />}
+
+      {!isLocked && video.listeningParties.length > 0 && (
+        <div className="mt-4">
+          <h2 className="text-sm font-medium">Listening parties</h2>
+          <ul className="mt-1 flex flex-col gap-1 text-sm">
+            {video.listeningParties.map((party) => (
+              <li key={party.id}>
+                <Link href={`/parties/${party.id}`} className="underline">
+                  {new Date(party.scheduledAt).toLocaleString()}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {!isLocked && isOwner && <SchedulePartyForm videoId={video.id} />}
 
       <RelatedMoments segments={relatedSegments} />
 

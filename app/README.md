@@ -38,8 +38,8 @@ origin from the incoming request, which is fine for local dev but should be set 
 behind a proxy/CDN in production.
 
 Still not buildable without further infrastructure/product decisions: AI-automated
-clip/highlight detection, AI dubbing (voice cloning), and scheduled listening parties (needs a
-hosted real-time chat decision) — see the business plan's V2/V3 roadmap.
+clip/highlight detection and AI dubbing (voice cloning) — see the business plan's V2/V3
+roadmap.
 
 ## Cheap-to-build differentiators (no new credentials needed)
 
@@ -56,6 +56,13 @@ infrastructure, build differentiation" philosophy:
 - **Auto-captioned clips** — every clip page shows a ready-to-paste caption built from whatever
   transcript text falls inside its time range, with a copy button.
 - **Personal notes on wall items** — a one-line "why I saved this" on anything in the wall.
+- **Scheduled listening parties** (V2 Tier 1 togetherness) — synchronized playback of an
+  existing episode at a set time, with shared chat. Chat is DB-backed with client polling
+  (`src/components/party-chat.tsx`, ~3s interval) rather than a hosted real-time provider like
+  Pusher/Ably — no vendor decision was made, so this defaults to the zero-new-dependency option;
+  swapping in a real-time provider later wouldn't change the data model, just the transport.
+  Playback sync seeks once when the party starts (not continuously, so it doesn't fight the
+  viewer's own play/pause/scrub) plus a manual "Jump to live position" button.
 
 ## Stack
 
@@ -127,4 +134,6 @@ infrastructure, build differentiation" philosophy:
   `src/app/api/webhooks/mux`
 - **Commute briefing** — `src/lib/actions/briefing.ts` (GPT summary + TTS), surfaced on
   `src/app/wall`
+- **Scheduled listening parties** — `src/app/parties`, `src/lib/actions/party.ts`,
+  `src/components/party-player.tsx` (sync), `src/components/party-chat.tsx` (polling chat)
 - **Creator dashboard** — `src/app/creator/dashboard`

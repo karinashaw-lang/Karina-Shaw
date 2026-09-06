@@ -22,6 +22,8 @@ model User {
   tipsSent         Tip[]
   subscriptions    Subscription[]
   briefings        Briefing[]
+  partyMessages    PartyMessage[]
+  partyRsvps       PartyRsvp[]
 }
 
 model CreatorProfile {
@@ -47,24 +49,25 @@ enum VideoStatus {
 }
 
 model Video {
-  id             String              @id @default(cuid())
-  creatorId      String
-  creator        CreatorProfile      @relation(fields: [creatorId], references: [id])
-  title          String
-  description    String?
+  id               String              @id @default(cuid())
+  creatorId        String
+  creator          CreatorProfile      @relation(fields: [creatorId], references: [id])
+  title            String
+  description      String?
   /// Null while a Mux-hosted upload is still processing (see `status`).
-  videoUrl       String?
-  status         VideoStatus         @default(READY)
+  videoUrl         String?
+  status           VideoStatus         @default(READY)
   /// Set for uploads routed through Mux (see src/lib/integrations/mux.ts).
-  muxUploadId    String?             @unique
-  muxAssetId     String?
-  muxPlaybackId  String?
-  subscriberOnly Boolean             @default(false)
-  createdAt      DateTime            @default(now())
-  comments       Comment[]
-  clips          Clip[]
-  wallItems      WallItem[]
-  transcript     TranscriptSegment[]
+  muxUploadId      String?             @unique
+  muxAssetId       String?
+  muxPlaybackId    String?
+  subscriberOnly   Boolean             @default(false)
+  createdAt        DateTime            @default(now())
+  comments         Comment[]
+  clips            Clip[]
+  wallItems        WallItem[]
+  transcript       TranscriptSegment[]
+  listeningParties ListeningParty[]
 }
 
 model Comment {
@@ -188,4 +191,44 @@ model Briefing {
   script    String
   audioUrl  String
   createdAt DateTime @default(now())
+}
+
+/// V2 Tier 1 live/togetherness: synchronized playback of an existing
+/// episode at a set time, with a shared chat. No live-streaming
+/// infrastructure required — the video already exists, this just
+/// coordinates when people watch it together.
+model ListeningParty {
+  id          String         @id @default(cuid())
+  videoId     String
+  video       Video          @relation(fields: [videoId], references: [id])
+  scheduledAt DateTime
+  createdAt   DateTime       @default(now())
+  messages    PartyMessage[]
+  rsvps       PartyRsvp[]
+}
+
+/// Polling-based chat (no hosted real-time provider configured yet — see
+/// src/lib/actions/party.ts). Swappable for a real-time service like
+/// Pusher/Ably later without changing this shape.
+model PartyMessage {
+  id        String         @id @default(cuid())
+  partyId   String
+  party     ListeningParty @relation(fields: [partyId], references: [id])
+  userId    String
+  user      User           @relation(fields: [userId], references: [id])
+  body      String
+  createdAt DateTime       @default(now())
+
+  @@index([partyId, createdAt])
+}
+
+model PartyRsvp {
+  id        String         @id @default(cuid())
+  partyId   String
+  party     ListeningParty @relation(fields: [partyId], references: [id])
+  userId    String
+  user      User           @relation(fields: [userId], references: [id])
+  createdAt DateTime       @default(now())
+
+  @@unique([partyId, userId])
 }
