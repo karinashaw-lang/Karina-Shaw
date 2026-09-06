@@ -28583,5 +28583,77 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "volunteer_emergency_responder_leave_info_sheet",
+    "title": "Volunteer Emergency Responder Leave — Information Sheet",
+    "description": "Explains California's job protections for an employee who serves as a volunteer firefighter, a reserve peace officer, or emergency rescue personnel: the size-independent protection against discharge or discrimination for taking time off to perform actual emergency duty (Labor Code § 230.3), and the separate, size-limited right at employers with 50 or more employees to take up to 14 days of unpaid leave per year for fire, law enforcement, or emergency rescue training (Labor Code § 230.4). This is distinct from the corpus's existing jury duty/witness leave and USERRA military leave documents, which address unrelated categories of civic and military absence.",
+    "categories": [
+      "During employment"
+    ],
+    "clauseOrder": [
+      "volresponderlv_intro",
+      "volresponderlv_covered_roles_definitions",
+      "volresponderlv_emergency_duty_notice",
+      "volresponderlv_emergency_duty_protection",
+      "volresponderlv_health_care_provider_notice_duty",
+      "volresponderlv_public_safety_employer_exception",
+      "volresponderlv_emergency_duty_remedies",
+      "volresponderlv_training_leave_notice",
+      "volresponderlv_training_leave_right",
+      "volresponderlv_training_leave_remedies",
+      "volresponderlv_complaint_procedure",
+      "volresponderlv_ack"
+    ],
+    "fields": [
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "respondingAgencyName",
+        "label": "Fire department, agency, or organization served",
+        "placeholder": "Cal Fire, Sonoma County Volunteer Fire Department",
+        "required": true
+      },
+      {
+        "id": "serviceStartDate",
+        "label": "Service or training start date",
+        "placeholder": "September 8, 2026",
+        "required": true
+      },
+      {
+        "id": "serviceEndDate",
+        "label": "Service or training end date (if known)",
+        "placeholder": "September 9, 2026",
+        "required": false
+      },
+      {
+        "id": "employeeCount",
+        "label": "Approximate Total Employee Count",
+        "placeholder": "e.g., 75",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
