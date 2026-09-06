@@ -81492,6 +81492,178 @@
       "title": "Signature and Acknowledgment",
       "kind": "drafting",
       "body": "{{applicantName}} and {{companyName}} each acknowledge that they have reviewed the record above and this information sheet's description of the California wage-and-hour standards that can apply to trial work performed during a hiring process.\n\nExecuted on {{dateSigned}} at {{cityState}}.\n\nSignature of {{applicantName}}: ☐ _________________________\n\nSignature on behalf of {{companyName}}: ☐ _________________________\n\n[This information sheet describes selected provisions of the California Labor Code and the applicable IWC wage order addressing when time spent during a hiring process is compensable \"hours worked.\" It is not a legal opinion about whether any specific activity described above is or was compensable, does not itself determine that {{applicantName}} is owed any wages, is not a substitute for the statutes, regulations, and case law it describes, does not constitute legal advice, and is not a substitute for consulting a licensed attorney.]"
+    },
+    {
+      "id": "ilit_intro",
+      "title": "About This Information Sheet",
+      "kind": "drafting",
+      "body": "This information sheet describes the federal tax-law structure and California insurance-law mechanics of an irrevocable life insurance trust (ILIT) — a trust deliberately made irrevocable and designed to own a life insurance policy (or receive an existing one by transfer) so that the policy's death proceeds are kept out of the insured's taxable gross estate. An ILIT of this kind would typically be established by {{settlorName}} as settlor, insuring the life of {{insuredName}}, with {{trusteeName}} acting as initial trustee (and {{successorTrusteeName}} as successor trustee), {{beneficiaryName}} named as the trust's beneficiaries, and a policy issued by {{insurerName}} (policy number {{policyNumber}}) held as the trust's primary asset. This sheet states general federal tax and California insurance-law rules; it is not a trust instrument, does not itself create or fund any trust, and does not evaluate whether an ILIT is an appropriate estate-planning tool for any particular reader's circumstances."
+    },
+    {
+      "id": "ilit_estate_inclusion_incidents_of_ownership",
+      "title": "Why an ILIT Exists: Section 2042 and ‘Incidents of Ownership’",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Under federal estate tax law, a decedent's gross estate includes the proceeds of a life insurance policy on the decedent's own life that are payable to a beneficiary other than the decedent's executor, if the decedent possessed at death any ‘incidents of ownership’ in the policy — a power exercisable either alone or together with another person. An irrevocable life insurance trust is structured so that {{insuredName}}, as the insured, holds no incidents of ownership in a policy owned by the trust: {{trusteeName}} as trustee, not {{insuredName}}, holds the power to change the beneficiary, borrow against the policy, surrender it, or assign it, so that the death proceeds are not included in {{insuredName}}'s gross estate under this rule.",
+      "gap": "This states one paragraph of one estate-tax inclusion provision — 26 U.S.C. § 2042(2) — and does not address § 2042(1) (proceeds receivable by the decedent's own executor, which are included regardless of incidents of ownership), nor the extensive body of IRS and Tax Court case law interpreting what specific policy powers (for example, a power to change a mode of premium payment, or a power held only in a corporate capacity) do or do not count as an ‘incident of ownership’ — none of which was independently researched or verified here. It also does not address the community-property complication that can arise if the insured's spouse contributes community funds toward premiums on a trust-owned policy, which California community-property law can treat as attributing a partial interest to the spouse even though the policy is nominally owned by the trust; that issue is not addressed by this clause.",
+      "citations": [
+        {
+          "case": "26 U.S.C. § 2042(2) (Cornell LII text)",
+          "cite": "gross estate inclusion for life insurance proceeds where the decedent held any incidents of ownership",
+          "url": "https://www.law.cornell.edu/uscode/text/26/2042",
+          "quote": "To the extent of the amount receivable by all other beneficiaries as insurance under policies on the life of the decedent with respect to which the decedent possessed at his death any of the incidents of ownership, exercisable either alone or in conjunction with any other person."
+        }
+      ]
+    },
+    {
+      "id": "ilit_three_year_rule",
+      "title": "The Three-Year Rule for Transferring an Existing Policy",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "If {{insuredName}} already owns a life insurance policy on {{insuredName}}'s own life and transfers that policy — or otherwise relinquishes incidents of ownership in it — into an existing or new irrevocable life insurance trust, federal estate tax law pulls the transferred property back into {{insuredName}}'s gross estate if {{insuredName}} dies within three years of that transfer, producing the same estate-tax result as if the transfer had never happened. A policy that {{trustName}} itself applies for and owns from the outset, rather than one {{insuredName}} first owned individually and later transferred into the trust, is not a transfer of a previously retained interest for purposes of this three-year rule.",
+      "gap": "26 U.S.C. § 2035(a) applies broadly to any transfer, by trust or otherwise, of property that would have been included in the gross estate under §§ 2036, 2037, 2038, or 2042 if retained — this clause states only its application to a life-insurance transfer implicating § 2042, not its application to the other three referenced sections (retained life estates, transfers taking effect at death, and revocable transfers), which govern different kinds of property transfers not addressed here. The statute's own text does not use any phrase like ‘new policy exception’ — the conclusion that a trust-originated policy avoids § 2035(a)'s three-year look-back altogether is this research's reading of the statute's ‘transfer … of an interest in any property’ language, not language appearing in the statute itself, and it was not independently checked against any IRS ruling or Tax Court decision.",
+      "citations": [
+        {
+          "case": "26 U.S.C. § 2035(a) (Cornell LII text)",
+          "cite": "three-year look-back pulling back transfers that would have been includible under section 2042 (among others) if retained",
+          "url": "https://www.law.cornell.edu/uscode/text/26/2035",
+          "quote": "the value of such property (or an interest therein) would have been included in the decedent’s gross estate under section 2036, 2037, 2038, or 2042 if such transferred interest or relinquished power had been retained by the decedent on the date of his death, the value of the gross estate shall include the value of any property (or interest therein) which would have been so included."
+        }
+      ]
+    },
+    {
+      "id": "ilit_present_interest_requirement",
+      "title": "Why Gifts to Fund an ILIT Usually Need a ‘Present Interest’",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Federal gift tax law's annual per-donee exclusion is available only for a gift of a ‘present interest’ — an unrestricted right to the immediate use, possession, or enjoyment of property or its income — and is not available for a ‘future interest,’ an interest limited to commence in use, possession, or enjoyment at some future date or time. A federal Treasury regulation illustrates this distinction with a life-insurance-specific example: a transfer of existing life insurance policies into a trust, where income is not payable to the trust's beneficiary until after the insured's death, is treated as a gift of a future interest for which no annual exclusion is allowed. Because {{settlorName}}'s payments toward premiums on a policy held by {{trustName}} function economically as gifts to the trust for {{beneficiaryName}}'s eventual benefit, those contributions do not automatically qualify as present-interest gifts merely because they are used to pay a premium.",
+      "gap": "This clause relies on 26 CFR § 25.2503-3, a Treasury regulation interpreting the ‘present interest’ requirement of 26 U.S.C. § 2503(b)(1); the base statutory text of § 2503(b) itself, including its current-year exclusion dollar amount, is addressed elsewhere in this corpus's federal estate and gift tax basics information sheet and is not restated here. This research located and verified the regulation's own text, including its Example (2) (a life-insurance-to-trust fact pattern), but a CourtListener search for Crummey v. Commissioner — the 1968 Ninth Circuit decision most commonly cited for the proposition that giving a beneficiary a right to demand withdrawal of a contribution can itself convert a future interest into a present interest — returned a rate-limit error (HTTP 429, 125/day quota exhausted) before this research could independently fetch and verify the case's text. No holding, quote, or citation from that case is included anywhere in this sheet as a result; only the regulation's own present-interest/future-interest text and worked example are cited here.",
+      "citations": [
+        {
+          "case": "26 CFR § 25.2503-3(b) (eCFR text)",
+          "cite": "definition of a present interest as an unrestricted right to immediate use, possession, or enjoyment",
+          "url": "https://www.ecfr.gov/current/title-26/section-25.2503-3",
+          "quote": "An unrestricted right to the immediate use, possession, or enjoyment of property or the income from property (such as a life estate or term certain) is a present interest in property."
+        },
+        {
+          "case": "26 CFR § 25.2503-3(c), Example (2) (eCFR text)",
+          "cite": "regulatory example applying the future-interest rule to life insurance policies transferred into a trust",
+          "url": "https://www.ecfr.gov/current/title-26/section-25.2503-3",
+          "quote": "C transfers certain insurance policies on his own life to a trust created for the benefit of D. Upon C's death the proceeds of the policies are to be invested and the net income therefrom paid to D during his lifetime. Since the income payments to D will not begin until after C's death the transfer in trust represents a gift of a future interest in property against which no exclusion is allowable."
+        }
+      ]
+    },
+    {
+      "id": "ilit_crummey_withdrawal_technique",
+      "title": "The Withdrawal-Right Technique Referred to as a ‘Crummey Power’",
+      "kind": "drafting",
+      "body": "Estate planning practice commonly addresses the present-interest problem described elsewhere in this sheet by giving each beneficiary named by {{settlorName}} — such as {{beneficiaryName}} — a limited-duration right to withdraw some or all of any contribution {{settlorName}} makes to {{trustName}}, typically before {{trusteeName}} as trustee uses those funds to pay an upcoming premium. A right of this kind, commonly called a ‘Crummey power’ or ‘Crummey withdrawal right’ in estate-planning practice (a name drawn from a federal tax case this sheet does not independently cite, for the reason disclosed in the preceding clause), is a drafting and administrative technique — not itself a separate statute — aimed at satisfying the present-interest requirement described in that clause. This sheet does not draft the specific withdrawal-right, notice, or timing provisions of any trust instrument."
+    },
+    {
+      "id": "ilit_lapse_as_release_5and5",
+      "title": "When a Withdrawal Right Lapses: the ‘Release’ Rule and the 5-and-5 Exception",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "If a beneficiary such as {{beneficiaryName}} is given a right to withdraw a contribution to {{trustName}} and does not exercise it before the right expires, federal gift tax law treats that lapse as if the beneficiary had released a power of appointment — potentially a taxable gift by the beneficiary to the trust's other beneficiaries. This lapse-as-release rule applies only to the extent that the property the beneficiary could have withdrawn in a given calendar year, counting that lapse together with any other lapsed withdrawal rights during the same year, exceeds the greater of $5,000 or 5 percent of the value of the assets the withdrawal right could reach.",
+      "gap": "26 U.S.C. § 2514(e) states this rule and its $5,000-or-5%-of-corpus threshold (sometimes called the ‘5-and-5’ limit) as a general lapse-of-power-of-appointment rule — it is not written as, and this clause does not claim it to be, a life-insurance-trust-specific statute. This clause does not address the drafting techniques, such as a withdrawal power that ‘hangs’ and carries an unlapsed balance forward into later years, that estate planning practice has developed to limit a beneficiary's exposure to this rule when annual contributions exceed the 5-and-5 threshold; those techniques are not found in the statute's own text and were not independently researched for this sheet.",
+      "citations": [
+        {
+          "case": "26 U.S.C. § 2514(e) (Cornell LII text)",
+          "cite": "lapse of a power of withdrawal treated as a release, subject to the $5,000-or-5%-of-corpus exception",
+          "url": "https://www.law.cornell.edu/uscode/text/26/2514",
+          "quote": "The lapse of a power of appointment created after October 21, 1942, during the life of the individual possessing the power shall be considered a release of such power. The rule of the preceding sentence shall apply with respect to the lapse of powers during any calendar year only to the extent that the property which could have been appointed by exercise of such lapsed powers exceeds in value the greater of the following amounts: (1) $5,000, or (2) 5 percent of the aggregate value of the assets out of which, or the proceeds of which, the exercise of the lapsed powers could be satisfied."
+        }
+      ]
+    },
+    {
+      "id": "ilit_gst_indirect_skip_allocation",
+      "title": "Automatic Allocation of GST Exemption to an ILIT That Is a ‘GST Trust’",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "If {{settlorName}}'s lifetime transfers to {{trustName}} are subject to federal gift tax and the trust could have a generation-skipping transfer with respect to {{settlorName}} — for example, because a grandchild of {{settlorName}} is among its potential future beneficiaries — then, unless {{settlorName}} elects out, federal law automatically allocates {{settlorName}}'s unused generation-skipping transfer (GST) tax exemption to the property transferred to {{trustName}}, to the extent needed to make the trust's inclusion ratio zero.",
+      "gap": "26 U.S.C. § 2632(c)(1) states this automatic-allocation rule for an ‘indirect skip’ to a ‘GST trust,’ terms defined in § 2632(c)(3) and addressed in the next clause of this sheet. This clause does not address direct skips under § 2632(b) (a related but separate automatic-allocation rule for outright transfers to skip persons), the election-out mechanics under § 2632(c)(5), or the substantive GST tax computation itself under 26 U.S.C. §§ 2601–2663 — none of which were researched for this sheet. Whether a given trust in fact has beneficiaries who are ‘skip persons’ for GST purposes depends on that trust's own beneficiary provisions, which this sheet does not draft or evaluate.",
+      "citations": [
+        {
+          "case": "26 U.S.C. § 2632(c)(1) (Cornell LII text)",
+          "cite": "automatic allocation of unused GST exemption to an indirect skip made to a GST trust",
+          "url": "https://www.law.cornell.edu/uscode/text/26/2632",
+          "quote": "If any individual makes an indirect skip during such individual’s lifetime, any unused portion of such individual’s GST exemption shall be allocated to the property transferred to the extent necessary to make the inclusion ratio for such property zero."
+        }
+      ]
+    },
+    {
+      "id": "ilit_gst_trust_definition",
+      "title": "What Makes a Trust a ‘GST Trust’ for the Automatic-Allocation Rule",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "For purposes of the automatic GST exemption allocation described in the preceding clause, federal law defines an ‘indirect skip’ as a gift-tax-subject transfer, other than a direct skip, made to a ‘GST trust,’ and defines a ‘GST trust’ as a trust that could have a generation-skipping transfer with respect to the transferor — subject to a list of exceptions, including an exception for a trust instrument requiring more than 25 percent of the trust corpus to be distributed to, or be withdrawable by, one or more non-skip-person individuals before those individuals turn 46.",
+      "gap": "This clause states the base ‘GST trust’ definition together with only the first of § 2632(c)(3)(B)'s several listed exceptions (clause (i), the 25%-before-age-46 exception) — the statute lists additional exceptions in clauses (ii) through (vi) covering other distribution and testamentary-power patterns, none of which are stated here. Whether a given trust's own beneficiary and distribution provisions would place it within any exception — and therefore outside automatic GST-exemption allocation — depends entirely on that trust instrument's specific terms, which this sheet does not draft.",
+      "citations": [
+        {
+          "case": "26 U.S.C. § 2632(c)(3)(A) (Cornell LII text)",
+          "cite": "definition of an ‘indirect skip’",
+          "url": "https://www.law.cornell.edu/uscode/text/26/2632",
+          "quote": "For purposes of this subsection, the term “indirect skip” means any transfer of property (other than a direct skip) subject to the tax imposed by chapter 12 made to a GST trust."
+        },
+        {
+          "case": "26 U.S.C. § 2632(c)(3)(B) (Cornell LII text)",
+          "cite": "definition of a ‘GST trust’ and its 25%-before-age-46 exception",
+          "url": "https://www.law.cornell.edu/uscode/text/26/2632",
+          "quote": "The term “GST trust” means a trust that could have a generation-skipping transfer with respect to the transferor unless— (i) the trust instrument provides that more than 25 percent of the trust corpus must be distributed to or may be withdrawn by one or more individuals who are non-skip persons— (I) before the date that the individual attains age 46,"
+        }
+      ]
+    },
+    {
+      "id": "ilit_ca_insurable_interest_self",
+      "title": "An Individual's Own Insurable Interest, and Naming Any Payee",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Under California insurance law, {{insuredName}} has an unlimited insurable interest in {{insuredName}}'s own life and may lawfully take out a policy insuring that life with the policy made payable to whomever {{insuredName}} chooses — regardless of whether the person or entity named, such as {{trusteeName}} as trustee of {{trustName}}, independently has an insurable interest in {{insuredName}}'s life.",
+      "gap": "This states only Cal. Ins. Code § 10110.1(b), the subdivision addressing an individual's own-life policies; it does not restate subdivision (a)'s general definition of ‘insurable interest’ or subdivision (c)'s separate employer-insurable-interest rule, and the next clause of this sheet addresses subdivision (d)'s distinct limits on a trust that itself originates coverage. Insurable interest under this subdivision governs who may lawfully be named payable on a policy insuring the insured's own life when the insured personally applies for it — a distinct question from whether a trustee, acting as such, may independently apply for and own a new policy directly in the trust's own name in the first instance, addressed next.",
+      "citations": [
+        {
+          "case": "Cal. Ins. Code § 10110.1(b) (California Legislative Information text)",
+          "cite": "individual's unlimited insurable interest in own life and right to name any payee",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=INS&sectionNum=10110.1.",
+          "quote": "An individual has an unlimited insurable interest in his or her own life, health, and bodily safety and may lawfully take out a policy of insurance on his or her own life, health, or bodily safety and have the policy made payable to whomsoever he or she pleases, regardless of whether the beneficiary designated has an insurable interest."
+        }
+      ]
+    },
+    {
+      "id": "ilit_ca_insurable_interest_trust_caution",
+      "title": "A Trust That Originates Its Own Coverage: the Insurable-Interest Limit",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "California insurance law separately provides that a trust used to apply for and initiate the issuance of a life insurance policy — as opposed to receiving an existing policy by transfer, or being named payee on a policy the insured personally applied for — violates California's insurable-interest laws and the prohibition against wagering on life if one or more beneficiaries of that trust do not themselves have an insurable interest in the life of the person insured.",
+      "gap": "Cal. Ins. Code § 10110.1(d) is worded to reach ‘trusts and special purpose entities that are used to apply for and initiate the issuance of policies of insurance for investors’ — language that, on its face, targets stranger-originated life insurance (STOLI) arrangements rather than an ordinary family ILIT whose beneficiaries are the insured's own spouse, descendants, or other close relatives (who separately may qualify as having an insurable interest under § 10110.1(a)'s ‘love and affection’ clause, mentioned only in passing in this sheet's other insurable-interest clause and not independently researched here). This research did not locate California case law construing how subdivision (d) applies to an ordinary family ILIT specifically, and given the CourtListener rate-limit failure already disclosed elsewhere in this sheet, a separate search was not attempted for this subdivision; whether a given trust's actual beneficiaries satisfy the insurable-interest requirement as to the insured depends on their real relationship to the insured, which this sheet does not evaluate.",
+      "citations": [
+        {
+          "case": "Cal. Ins. Code § 10110.1(d) (California Legislative Information text)",
+          "cite": "trusts used to originate life insurance policies violate insurable-interest laws unless trust beneficiaries have an insurable interest in the insured",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=INS&sectionNum=10110.1.",
+          "quote": "Trusts and special purpose entities that are used to apply for and initiate the issuance of policies of insurance for investors, where one or more beneficiaries of those trusts or special purpose entities do not have an insurable interest in the life of the insured, violate the insurable interest laws and the prohibition against wagering on life."
+        }
+      ]
+    },
+    {
+      "id": "ilit_distinction_from_corpus",
+      "title": "How This Differs From Other Trust and Life Insurance Documents in This Corpus",
+      "kind": "drafting",
+      "body": "This information sheet addresses a trust deliberately made irrevocable to own a life insurance policy and keep its proceeds outside the insured's taxable estate, together with the annual-exclusion ‘present interest’ and California insurable-interest rules that arise specifically from that structure. It is distinct from this corpus's Revocable Living Trust document, which addresses a trust the settlor can amend or revoke during life; from its Life Insurance Beneficiary Designation information sheet, which addresses naming a beneficiary directly on a policy the insured — not a trust — owns; and from its Testamentary Trust information sheet, which addresses a trust that does not exist, and holds no assets, until the testator's death. A given individual's estate plan may use any combination of these documents for different purposes; this sheet does not evaluate which combination, if any, fits a particular reader's circumstances."
+    },
+    {
+      "id": "ilit_signature_ack",
+      "title": "Signature and Acknowledgment",
+      "kind": "drafting",
+      "body": "{{settlorName}} acknowledges reviewing this information sheet describing the federal tax-law structure and California insurable-interest rules applicable to an irrevocable life insurance trust insuring {{insuredName}}, before taking any further steps toward establishing {{trustName}} with {{trusteeName}} as trustee. This sheet is signed in {{cityState}} on {{dateSigned}}. Prepared by: {{preparerName}}."
     }
   ]
 }

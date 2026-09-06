@@ -29078,5 +29078,95 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "irrevocable_life_insurance_trust_info_sheet",
+    "title": "Irrevocable Life Insurance Trust (ILIT) — Information Sheet",
+    "description": "The federal estate- and gift-tax structure of an irrevocable life insurance trust — the incidents-of-ownership rule under 26 U.S.C. § 2042, the three-year look-back under § 2035(a), the present-interest requirement behind Crummey-style withdrawal rights under 26 CFR § 25.2503-3, the lapse-as-release ‘5-and-5’ rule under § 2514(e), and automatic GST-exemption allocation under § 2632(c) — together with California's insurable-interest statute (Ins. Code § 10110.1) governing a trust that owns or originates a policy. Distinct from this corpus's Revocable Living Trust, Life Insurance Beneficiary Designation, and Testamentary Trust documents, none of which address a trust deliberately made irrevocable to hold life insurance outside the insured's taxable estate.",
+    "categories": [
+      "Estate Planning"
+    ],
+    "clauseOrder": [
+      "ilit_intro",
+      "ilit_estate_inclusion_incidents_of_ownership",
+      "ilit_three_year_rule",
+      "ilit_present_interest_requirement",
+      "ilit_crummey_withdrawal_technique",
+      "ilit_lapse_as_release_5and5",
+      "ilit_gst_indirect_skip_allocation",
+      "ilit_gst_trust_definition",
+      "ilit_ca_insurable_interest_self",
+      "ilit_ca_insurable_interest_trust_caution",
+      "ilit_distinction_from_corpus",
+      "ilit_signature_ack"
+    ],
+    "fields": [
+      {
+        "id": "settlorName",
+        "label": "Settlor/grantor's name (you)",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "insuredName",
+        "label": "Name of the insured individual",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "trustName",
+        "label": "Name of this trust",
+        "placeholder": "The Jordan Alex Lee 2026 Irrevocable Life Insurance Trust",
+        "required": true
+      },
+      {
+        "id": "trusteeName",
+        "label": "Initial trustee name",
+        "placeholder": "Morgan Lee",
+        "required": true
+      },
+      {
+        "id": "successorTrusteeName",
+        "label": "Successor trustee name",
+        "placeholder": "Casey Lee",
+        "required": false
+      },
+      {
+        "id": "beneficiaryName",
+        "label": "Trust beneficiary(ies) with withdrawal rights",
+        "placeholder": "Jordan Alex Lee's children, in equal shares",
+        "required": true
+      },
+      {
+        "id": "insurerName",
+        "label": "Insurer's name",
+        "placeholder": "Acme Life Insurance Co.",
+        "required": false
+      },
+      {
+        "id": "policyNumber",
+        "label": "Policy number (if already issued)",
+        "placeholder": "LI-1234567",
+        "required": false
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 6, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      },
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      }
+    ]
   }
 ]
