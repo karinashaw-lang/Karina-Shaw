@@ -29233,5 +29233,68 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "joint_venture_formation_info_sheet",
+    "title": "Joint Ventures Under California Law — Information Sheet",
+    "description": "Explains how California treats an unincorporated joint venture in the absence of any dedicated \"joint venture\" business-entity statute — including the partnership-law tests that determine whether a joint venture is legally a partnership, when two or more separately licensed contractors must obtain a distinct joint venture contractor's license before bidding or contracting jointly under the Contractors State License Law, and how California tax law classifies a joint venture. This is the corpus's first document to address joint ventures as a distinct topic, separate from this project's existing general partnership formation, default-rules, and dissolution documents.",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "jv_declaration",
+      "jv_partnership_law_no_dedicated_statute",
+      "jv_property_coownership_distinction",
+      "jv_venture_property_not_individual_property",
+      "jv_participant_and_venture_facts",
+      "jv_contractor_joint_venture_license_required",
+      "jv_contractor_prelicense_bidding_and_discipline",
+      "jv_tax_classification_state_conformity",
+      "jv_certification"
+    ],
+    "fields": [
+      {
+        "id": "preparerName",
+        "label": "Name of person preparing this information sheet",
+        "placeholder": "Taylor Kim",
+        "required": true
+      },
+      {
+        "id": "partnershipName",
+        "label": "Joint venture name, if the participants have given it one",
+        "placeholder": "Riverside Development Joint Venture",
+        "required": false
+      },
+      {
+        "id": "partner1Name",
+        "label": "First participant's name",
+        "placeholder": "Jordan Alvarez",
+        "required": false
+      },
+      {
+        "id": "partner2Name",
+        "label": "Second participant's name",
+        "placeholder": "Morgan Ito",
+        "required": false
+      },
+      {
+        "id": "contractorLicenseNumber",
+        "label": "Contractor's license number, if a CSLB joint venture license is under discussion",
+        "placeholder": "987654",
+        "required": false
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 6, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "San Diego, California",
+        "required": true
+      }
+    ]
   }
 ]

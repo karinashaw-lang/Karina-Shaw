@@ -81796,6 +81796,144 @@
       "title": "This Document States Facts About the Law; It Does Not Determine Whether Any Specific Furlough Complies With It",
       "kind": "drafting",
       "body": "This Furlough Information Sheet describes selected statutory and regulatory definitions and rules that can bear on a temporary reduction in {{employeeName}}'s work or pay at {{companyName}} — from Cal/WARN, the federal WARN Act, California's unemployment insurance law, the federal salary-basis regulation for exempt employees, and the federal COBRA regulations. It does not describe every law that could apply to a furlough, including state and local paid-sick-leave, disability, or predictive-scheduling laws that this document's research did not address. It does not calculate any notice deadline, benefit amount, or continuation-coverage election deadline, and it does not determine that {{companyName}}'s furlough of {{employeeName}}, as actually carried out, does or does not comply with any of the sources described above."
+    },
+    {
+      "id": "jv_declaration",
+      "title": "Purpose and Scope of This Information Sheet",
+      "kind": "drafting",
+      "body": "This information sheet, prepared by {{preparerName}}, states what California law provides about an unincorporated joint venture — an arrangement in which two or more people or businesses carry on a specific undertaking together — including how California's general partnership statute treats such an arrangement in the absence of any separate \"joint venture\" entity statute, when two or more licensed contractors who jointly bid or contract must first obtain a distinct joint venture contractor's license, and how California's income tax law classifies a joint venture for state tax purposes. Where a venture name, participants, or a contractor's license number are given below, those are {{partnershipName}}, {{partner1Name}} and {{partner2Name}}, and {{contractorLicenseNumber}}; this sheet can also be read on its own, without any of them filled in, as a general reference to what the law says. This sheet states the law; it does not evaluate whether any specific arrangement is or is not a joint venture, does not evaluate whether any specific undertaking requires a contractor's joint venture license, and is not a substitute for individualized legal advice."
+    },
+    {
+      "id": "jv_partnership_law_no_dedicated_statute",
+      "title": "California Has No Separate \"Joint Venture\" Business-Entity Statute",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Outside the licensed-contractor context addressed later in this sheet, California has not enacted a business-entity statute that defines or separately governs a \"joint venture\" as such, the way it has separate statutes for a corporation, a limited liability company, or a limited partnership. When people carrying on a joint venture together share the venture's profits, California's general partnership statute — the same statute this project's General Partnership Agreement and General Partnership Dissolution and Winding-Up documents draw on for an arrangement the participants themselves call a \"partnership\" — supplies a default rule for identifying the relationship: a person who receives a share of a business's profits is presumed to be a partner in that business, subject to statutory exceptions for profits received as a debt payment, wages or independent-contractor compensation, rent, a retirement annuity, loan interest, or the price of purchased goodwill. Because this presumption is not limited by its terms to arrangements the participants call a \"partnership,\" an arrangement the participants call a \"joint venture\" that meets this profit-sharing test is analyzed under the same statutory presumption.",
+      "gap": "This clause quotes only the profit-sharing presumption itself, Section 16202(c)(3); it does not quote the six lettered exceptions to that presumption that the same subdivision lists (subparagraphs (A) through (F), covering debt payments, wages or independent-contractor pay, rent, retirement annuities, loan interest, and goodwill-sale proceeds), each of which can determine the outcome in a specific case. This is one state's statute, used as evidence of how California's own partnership law treats an arrangement styled as a joint venture — not a claim about which state's law governs a specific joint venture, and other states classify joint ventures differently. This sheet does not itself determine whether any specific arrangement rises to the level of a \"joint venture\" or a \"partnership\" under this or any other test. California courts have also developed their own case-law factors for identifying a joint venture apart from this statutory presumption; a CourtListener case-law search for those decisions was attempted during this research and returned a rate-limit error (HTTP 429, \"Rate limit exceeded... 125/day\") rather than results, so no case law is cited or relied on anywhere in this sheet, and that gap is not independently filled here.",
+      "citations": [
+        {
+          "case": "Cal. Corp. Code § 16202(c)(3)",
+          "cite": "California Uniform Partnership Act of 1994, presumption that a profit-sharer is a partner",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=16202.",
+          "quote": "A person who receives a share of the profits of a business is presumed to be a partner in the business, unless the profits were received for any of the following reasons:"
+        }
+      ]
+    },
+    {
+      "id": "jv_property_coownership_distinction",
+      "title": "Co-Owning Property Does Not by Itself Create a Joint Venture",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "The same statutory section draws a specific line around the profit-sharing presumption described above: holding property together — as joint tenants, tenants in common, tenants by the entireties, or other joint or common property or part ownership — does not by itself establish a partnership, even when the co-owners share the profits the property produces. Because California has no separate joint-venture statute, this same carve-out is what applies to an arrangement styled as a joint venture: two or more people jointly owning an asset such as rental real estate or a piece of equipment, and splitting what it earns, are not by that fact alone in a joint venture under this statute.",
+      "gap": "This clause states only the property-co-ownership carve-out at Section 16202(c)(1); it does not restate the separate, related carve-out at Section 16202(c)(2) for merely sharing gross returns from jointly held property, a different subdivision addressing a related but distinct fact pattern (gross returns rather than net profits). This clause does not evaluate whether any specific co-ownership arrangement crosses over into a joint venture — that can turn on facts, such as active joint management of the property as a business rather than passive co-ownership, that this statute's bare text does not itself resolve, and that this sheet does not independently address.",
+      "citations": [
+        {
+          "case": "Cal. Corp. Code § 16202(c)(1)",
+          "cite": "California Uniform Partnership Act of 1994, co-ownership of property does not by itself establish a partnership",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=16202.",
+          "quote": "Joint tenancy, tenancy in common, tenancy by the entireties, joint property, common property, or part ownership does not by itself establish a partnership, even if the coowners share profits made by the use of the property."
+        }
+      ]
+    },
+    {
+      "id": "jv_venture_property_not_individual_property",
+      "title": "Property the Venture Acquires Belongs to the Venture, Not to Any One Participant",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Where a joint venture is characterized as a partnership under the rules described above, California's partnership statute states a baseline ownership rule: property the partnership acquires is the partnership's property, not the individual property of any one partner. Applied to a joint venture characterized as a partnership, this means an asset the venture acquires in carrying out its purpose — for example, materials, equipment, or a leasehold the venture obtains for a specific project — is attributed to the venture itself rather than to whichever participant happened to sign for it, which affects what becomes of that property if one participant dies, is individually sued, or the venture ends.",
+      "gap": "This clause states only the general rule of Section 16203; it does not restate the separate, more detailed statutory test in Section 16204 for determining whose name property is legally acquired in (covered in this project's General Partnership Agreement document), which governs close cases this general rule alone does not resolve. This clause also does not address what becomes of venture property on dissolution or winding up, a separate question this project's General Partnership Dissolution and Winding-Up Information Sheet addresses for a general partnership generally, not specifically for a joint venture.",
+      "citations": [
+        {
+          "case": "Cal. Corp. Code § 16203",
+          "cite": "California Uniform Partnership Act of 1994, partnership property belongs to the partnership",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=16203.",
+          "quote": "Property acquired by a partnership is property of the partnership and not of the partners individually."
+        }
+      ]
+    },
+    {
+      "id": "jv_participant_and_venture_facts",
+      "title": "Venture and Participants Described in This Sheet",
+      "kind": "drafting",
+      "body": "Where filled in, this information sheet was prepared with the following venture and participants in mind:\n\nJoint venture name, if any: {{partnershipName}}\nFirst participant: {{partner1Name}}\nSecond participant: {{partner2Name}}\nContractor's license number, if a joint venture contractor's license is under discussion: {{contractorLicenseNumber}}\n\nNaming a venture or participants here states a fact about how this sheet was prepared; it does not itself form a joint venture, does not itself apply for or obtain any license, and does not evaluate whether the arrangement described is legally a joint venture, a partnership, or something else."
+    },
+    {
+      "id": "jv_contractor_joint_venture_license_required",
+      "title": "A Joint Venture of Licensed Contractors Generally Needs Its Own Contractor's License",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Separately from the general partnership-law analysis above, California's Contractors State License Law creates a specific license category for a joint venture that will act as a contractor: a joint venture license, issued to a combination of individuals, corporations, limited liability companies, partnerships, or other joint ventures, each of which already holds a current, active contractor's license in good standing. A joint venture license can be issued in a given classification (for example, a specific trade) as long as at least one of the combined entities is licensed in that classification — not all of them. The license is also self-policing: it is automatically suspended by operation of law during any period in which any one member of the joint venture stops holding a current, active license in good standing, without a separate suspension proceeding against the joint venture license itself.",
+      "gap": "This clause quotes Section 7029 in full, but does not independently trace the licensing classification rules it cross-references (which classification a given trade or project requires) or the separate statutes governing suspension or revocation of an individual member's underlying contractor's license, which is what triggers the automatic joint venture license suspension described here. The Contractors State License Board's own regulations (16 Cal. Code Regs. §§ 821-822) govern the joint venture license application procedure in more operational detail than this statute alone provides; this sheet attempted no fetch of that regulatory text because the California Code of Regulations is not one of the primary-source hosts confirmed reachable in this research session, and no unverified description of it is included here.",
+      "citations": [
+        {
+          "case": "Cal. Bus. & Prof. Code § 7029",
+          "cite": "Contractors State License Law, definition and automatic suspension of a joint venture license",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&sectionNum=7029.",
+          "quote": "A joint venture license is a license issued to any combination of individuals, corporations, limited liability companies, partnerships, or other joint ventures, each of which holds a current, active license in good standing. A joint venture license may be issued in any classification in which at least one of the entities is licensed. An active joint venture license shall be automatically suspended by operation of law during any period in which any member of the entity does not hold a current, active license in good standing."
+        }
+      ]
+    },
+    {
+      "id": "jv_contractor_prelicense_bidding_and_discipline",
+      "title": "Acting as a Contractor Jointly Without First Securing the License",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "The statute that creates the joint venture license also makes it unlawful, except as the statute itself provides, for two or more separately licensed contractors to be awarded a contract jointly, or otherwise act as a contractor jointly, without first securing a joint venture license. The statute carves out one specific step from that prohibition: before obtaining the joint venture license, the same contractors may jointly submit a bid for covered work — bidding jointly is permitted even though contracting jointly without the license is not. That carve-out for bidding does not eliminate other legal consequences of submitting a bid: if a combination of licensees bids on work that requires a joint venture license and then fails to obtain one, the statute states that this failure does not prevent the imposition of whatever penalty already applies by law to a contractor who submits a bid and then fails to enter into the resulting contract. Separately, the statute states that violating this section is itself cause for disciplinary action.",
+      "gap": "This clause quotes all three subdivisions of Section 7029.1 in full. It does not independently trace or quote the \"penalty specified by law for the failure of a contractor who submits a bid to enter into a contract\" that subdivision (b) cross-references only by description, or the specific disciplinary procedures the Contractors State License Board applies under subdivision (c) — both are separate statutory or regulatory provisions this sheet does not independently verify. This is one state's statute, applicable to contractors licensed under this specific chapter; it says nothing about joint bidding or contracting requirements for any occupation licensed under a different licensing scheme.",
+      "citations": [
+        {
+          "case": "Cal. Bus. & Prof. Code § 7029.1(a)",
+          "cite": "Contractors State License Law, prohibition on jointly contracting without a joint venture license",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&sectionNum=7029.1.",
+          "quote": "Except as provided in this section, it is unlawful for any two or more licensees, each of whom has been issued a license to act separately in the capacity of a contractor within this state, to be awarded a contract jointly or otherwise act as a contractor without first having secured a joint venture license in accordance with the provisions of this chapter."
+        },
+        {
+          "case": "Cal. Bus. & Prof. Code § 7029.1(b)",
+          "cite": "Contractors State License Law, permitted joint bidding before a joint venture license is obtained",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&sectionNum=7029.1.",
+          "quote": "Prior to obtaining a joint venture license, contractors licensed in accordance with this chapter may jointly bid for the performance of work covered by this section.  If a combination of licensees submit a bid for the performance of work for which a joint venture license is required, a failure to obtain that license shall not prevent the imposition of any penalty specified by law for the failure of a contractor who submits a bid to enter into a contract pursuant to the bid."
+        },
+        {
+          "case": "Cal. Bus. & Prof. Code § 7029.1(c)",
+          "cite": "Contractors State License Law, violation is cause for disciplinary action",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&sectionNum=7029.1.",
+          "quote": "A violation of this section constitutes a cause for disciplinary action."
+        }
+      ]
+    },
+    {
+      "id": "jv_tax_classification_state_conformity",
+      "title": "California Tax Law Classifies an Unincorporated Joint Venture as a Partnership",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "For California personal income tax purposes, the state's Revenue and Taxation Code adopts federal partnership tax law wholesale: California's own statute states that Subchapter K of the Internal Revenue Code, the federal subchapter governing partners and partnerships, applies for state law purposes except where California law separately provides otherwise. Subchapter K's own definitional section, in turn, does not limit the term \"partnership\" to arrangements the participants call a partnership: it defines \"partnership\" to include a syndicate, group, pool, joint venture, or other unincorporated organization through or by means of which any business, financial operation, or venture is carried on, so long as the arrangement is not, for tax purposes, a corporation or a trust or estate. Read together, these two provisions are why an unincorporated joint venture carrying on a business is generally classified as a partnership for California income tax purposes, with the tax filing and reporting consequences that follow from that classification.",
+      "gap": "This clause verifies California's conformity statute (Rev. & Tax. Code § 17851, in the Personal Income Tax Law) and the federal definition it incorporates (26 U.S.C. § 761(a)); it does not independently trace the separate conformity provisions of California's Corporation Tax Law, which governs the franchise or income tax treatment of a corporate participant in a joint venture rather than an individual one, and which is not the same statute quoted here. It also does not trace the election-out mechanism the same federal subsection creates — a joint venture organized only for investment, for joint production or use of property without selling the output, or by securities dealers for short-term underwriting can, on the unanimous election of its members and under Treasury regulations, be excluded from Subchapter K's partnership treatment — which this sheet does not independently restate or evaluate for any specific venture. 26 U.S.C. § 761 is a federal statute, fetched from Cornell Law School's Legal Information Institute rather than a California government source, because it is the specific provision Rev. & Tax. Code § 17851 incorporates by reference.",
+      "citations": [
+        {
+          "case": "Cal. Rev. & Tax. Code § 17851",
+          "cite": "Personal Income Tax Law, California's adoption of federal Subchapter K partnership tax rules",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=RTC&sectionNum=17851.",
+          "quote": "Subchapter K of Chapter 1 of Subtitle A of the Internal Revenue Code, relating to partners and partnerships, shall apply, except as otherwise provided."
+        },
+        {
+          "case": "26 U.S.C. § 761(a)",
+          "cite": "Internal Revenue Code, federal tax-law definition of \"partnership\" includes a joint venture",
+          "url": "https://www.law.cornell.edu/uscode/text/26/761",
+          "quote": "For purposes of this subtitle, the term “partnership” includes a syndicate, group, pool, joint venture, or other unincorporated organization through or by means of which any business, financial operation, or venture is carried on, and which is not, within the meaning of this title, a corporation or a trust or estate."
+        }
+      ]
+    },
+    {
+      "id": "jv_certification",
+      "title": "Signature and Certification",
+      "kind": "drafting",
+      "body": "I, {{preparerName}}, certify that I prepared this information sheet as a summary of Cal. Corp. Code §§ 16202, 16203, Cal. Bus. & Prof. Code §§ 7029, 7029.1, Cal. Rev. & Tax. Code § 17851, and 26 U.S.C. § 761(a), for informational reference only. This information sheet does not constitute legal advice, does not evaluate whether any specific arrangement is a joint venture or a partnership, does not evaluate whether any specific undertaking requires a contractor's joint venture license, and is not a substitute for consulting a person licensed to practice law in the relevant jurisdiction.\n\nJoint venture name, if any: {{partnershipName}}\n\nExecuted on {{dateSigned}} at {{cityState}}.\n\nSignature of {{preparerName}}: ☐ _________________________"
     }
   ]
 }
