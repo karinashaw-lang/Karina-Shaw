@@ -29464,5 +29464,66 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "occupational_licensing_criminal_history_info_sheet",
+    "title": "Occupational Licensing Eligibility Despite Criminal History — Information Sheet",
+    "description": "Explains, using the statutes' own text, the framework Business and Professions Code §§ 480-484 and § 7.5 impose on every California licensing board (not any single profession's board) when a board considers denying a license based on an applicant's criminal history: the two narrow grounds for denial and their seven-year limitation, the substantially-related criteria boards must use, the rehabilitation and dismissed-conviction protections, the arrest/infraction/juvenile-adjudication protection, the default rule against requiring disclosure of criminal history on the application at all, required notice on denial, the controlling definition of 'conviction,' and the bar on requiring third-party good-moral-character attestations. This complements, without duplicating, this project's existing licensing-specific documents (private investigator, security guard, farm labor contractor, public works contractor) by stating the general cross-board statutory floor that BPC § 7526 itself cross-references but leaves unverified.",
+    "categories": [
+      "Hiring"
+    ],
+    "clauseOrder": [
+      "occlic_declaration",
+      "occlic_core_denial_standard",
+      "occlic_formal_discipline_ground",
+      "occlic_sevenyear_exceptions",
+      "occlic_substantial_relation_criteria",
+      "occlic_rehabilitation_pathways",
+      "occlic_dismissed_conviction_protection",
+      "occlic_arrest_infraction_juvenile_protection",
+      "occlic_disclosure_restriction",
+      "occlic_denial_notice_and_appeal_rights",
+      "occlic_conviction_definition_controls",
+      "occlic_good_moral_character_prohibition",
+      "occlic_certification"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "applicantName",
+        "label": "Applicant's name",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "jobTitle",
+        "label": "Position applicant is pursuing",
+        "placeholder": "Licensed Cosmetologist",
+        "required": true
+      },
+      {
+        "id": "professionType",
+        "label": "Licensed occupation or profession",
+        "placeholder": "cosmetology",
+        "required": true
+      },
+      {
+        "id": "licensingBoardName",
+        "label": "Name of the licensing board",
+        "placeholder": "Board of Barbering and Cosmetology",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 6, 2026",
+        "required": true
+      }
+    ]
   }
 ]
