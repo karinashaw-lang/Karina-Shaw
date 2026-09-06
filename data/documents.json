@@ -28506,5 +28506,82 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "california_state_trademark_registration_info_sheet",
+    "title": "California State Trademark Registration (Model State Trademark Law) — Information Sheet",
+    "description": "An information sheet describing California's own state-level trademark and service mark registration system — the Model State Trademark Law (Cal. Bus. & Prof. Code §§ 14200–14272), administered by the California Secretary of State and separate from federal USPTO registration. Covers the statutory definitions of trademark, service mark, and use; the grounds on which the Secretary may refuse registration; required application contents, including California's own dual first-use-date requirement; the examination, priority, and mandamus procedure; what a certificate of registration shows and proves; the five-year renewable term; the statutory grounds for cancellation, including the carve-out for a registrant's own concurrent federal registration; and this state statute's own declared relationship to the federal Lanham Act system.",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "castmreg_declaration",
+      "castmreg_short_title_and_mark_definition",
+      "castmreg_use_requirement",
+      "castmreg_refusal_grounds",
+      "castmreg_application_contents",
+      "castmreg_examination_priority_and_mandamus",
+      "castmreg_certificate_contents_and_evidentiary_effect",
+      "castmreg_term_and_renewal",
+      "castmreg_cancellation_grounds",
+      "castmreg_relation_to_federal_law",
+      "castmreg_closing_signature"
+    ],
+    "fields": [
+      {
+        "id": "applicantName",
+        "label": "Applicant's name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "principalOfficeAddress",
+        "label": "Applicant's business address",
+        "placeholder": "500 Market St, San Francisco, CA 94105",
+        "required": true
+      },
+      {
+        "id": "trademarkDescription",
+        "label": "Description of the mark",
+        "placeholder": "The word mark \"ACME\" in standard characters",
+        "required": true
+      },
+      {
+        "id": "goodsServicesDescription",
+        "label": "Goods and/or services",
+        "placeholder": "Retail sale of outdoor recreational equipment",
+        "required": true
+      },
+      {
+        "id": "firstUseDate",
+        "label": "Date of first use anywhere",
+        "placeholder": "March 3, 2024",
+        "required": false
+      },
+      {
+        "id": "firstUseInCaliforniaDate",
+        "label": "Date of first use in California",
+        "placeholder": "June 15, 2024",
+        "required": false
+      },
+      {
+        "id": "authorizedSignerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 6, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Sacramento, California",
+        "required": true
+      }
+    ]
   }
 ]
