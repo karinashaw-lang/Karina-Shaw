@@ -24358,5 +24358,62 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "coastal_development_permit_requirement_info_sheet",
+    "title": "Coastal Development Permit Requirement — Information Sheet",
+    "description": "Explains California's Coastal Act permit requirement (Pub. Res. Code § 30000 et seq.): the statutory \"coastal zone\" and \"development\" definitions, the general permit requirement, additional Commission jurisdiction in sensitive areas, delegation to local government after Local Coastal Program certification, statutory exemptions, and civil penalties for a violation.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "cdp_intro",
+      "cdp_coastal_zone_definition",
+      "cdp_development_definition",
+      "cdp_general_permit_requirement",
+      "cdp_commission_jurisdiction_areas",
+      "cdp_local_government_delegation",
+      "cdp_statutory_exemptions",
+      "cdp_civil_penalties",
+      "cdp_closing"
+    ],
+    "fields": [
+      {
+        "id": "propertyAddress",
+        "label": "Property address",
+        "placeholder": "e.g., 123 Ocean Ave.",
+        "required": true
+      },
+      {
+        "id": "county",
+        "label": "County",
+        "placeholder": "e.g., San Luis Obispo",
+        "required": true
+      },
+      {
+        "id": "parcelNumber",
+        "label": "Assessor's Parcel Number",
+        "placeholder": "e.g., 012-345-678",
+        "required": true
+      },
+      {
+        "id": "ownerName",
+        "label": "Property owner's name",
+        "placeholder": "e.g., Jane Doe",
+        "required": true
+      },
+      {
+        "id": "applicantName",
+        "label": "Applicant's name (if different from owner)",
+        "placeholder": "e.g., John Smith",
+        "required": false
+      },
+      {
+        "id": "developmentDescription",
+        "label": "Description of the proposed development",
+        "placeholder": "e.g., construction of a new single-family residence",
+        "required": true
+      }
+    ]
   }
 ]
