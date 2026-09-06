@@ -1,7 +1,9 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { after } from "next/server";
 
 import prisma from "@/lib/prisma";
+import { recordWallItemView } from "@/lib/actions/wall-view";
 import { getCurrentUser } from "@/lib/auth";
 import CommentForm from "@/components/comment-form";
 import SaveButton from "@/components/save-button";
@@ -36,6 +38,8 @@ export default async function VideoPage(props: PageProps<"/videos/[id]">) {
   ]);
 
   if (!video) notFound();
+
+  if (user) after(() => recordWallItemView(user.id, { videoId: video.id }));
 
   const isOwner = user?.creatorProfile?.id === video.creatorId;
 

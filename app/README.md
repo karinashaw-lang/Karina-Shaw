@@ -63,6 +63,11 @@ infrastructure, build differentiation" philosophy:
   swapping in a real-time provider later wouldn't change the data model, just the transport.
   Playback sync seeks once when the party starts (not continuously, so it doesn't fight the
   viewer's own play/pause/scrub) plus a manual "Jump to live position" button.
+- **Wall Cards** — the plan's primary viral loop: a shareable image summarizing a viewer's wall
+  (top saved moments, most-rewatched item, a "taste twin" — the other viewer whose saves overlap
+  theirs the most). Rendered as a real PNG via `next/og`'s `ImageResponse` (Satori + resvg,
+  bundled with Next.js — no new dependency or API key). One drop per calendar month
+  (`WallCard` row, unique per user+month) with a download link built for posting externally.
 
 ## Stack
 
@@ -136,4 +141,7 @@ infrastructure, build differentiation" philosophy:
   `src/app/wall`
 - **Scheduled listening parties** — `src/app/parties`, `src/lib/actions/party.ts`,
   `src/components/party-player.tsx` (sync), `src/components/party-chat.tsx` (polling chat)
+- **Wall Cards** — `src/app/api/wall-card/[userId]` (PNG rendering), `src/lib/wall-card.ts`
+  (stats/taste-twin aggregation), `src/lib/actions/wall-view.ts` (rewatch tracking),
+  `src/components/wall-card-panel.tsx`
 - **Creator dashboard** — `src/app/creator/dashboard`

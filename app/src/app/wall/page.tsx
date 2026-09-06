@@ -6,6 +6,8 @@ import { isOpenAIConfigured } from "@/lib/integrations/openai";
 import RemoveFromWallButton from "@/components/remove-from-wall-button";
 import GenerateBriefingButton from "@/components/generate-briefing-button";
 import WallItemNote from "@/components/wall-item-note";
+import WallCardPanel from "@/components/wall-card-panel";
+import { currentMonthKey } from "@/lib/time";
 
 export default async function WallPage() {
   const user = await getCurrentUser();
@@ -23,7 +25,7 @@ export default async function WallPage() {
     );
   }
 
-  const [items, briefings] = await Promise.all([
+  const [items, briefings, wallCards] = await Promise.all([
     prisma.wallItem.findMany({
       where: { userId: user.id },
       orderBy: { createdAt: "desc" },
@@ -37,7 +39,15 @@ export default async function WallPage() {
       orderBy: { createdAt: "desc" },
       take: 5,
     }),
+    prisma.wallCard.findMany({
+      where: { userId: user.id },
+      orderBy: { month: "desc" },
+      select: { month: true },
+    }),
   ]);
+
+  const currentMonth = currentMonthKey();
+  const pastMonths = wallCards.map((c) => c.month).filter((m) => m !== currentMonth);
 
   return (
     <div className="mx-auto max-w-3xl px-6 py-10">
@@ -45,6 +55,8 @@ export default async function WallPage() {
       <p className="mt-1 text-sm text-zinc-500">
         Videos and clips you&apos;ve saved from across creators.
       </p>
+
+      <WallCardPanel userId={user.id} pastMonths={pastMonths} />
 
       <div className="mt-4">
         {isOpenAIConfigured() ? (

@@ -7,3 +7,9 @@ export function hoursAgo(hours: number): Date {
 export function nowMs(): number {
   return Date.now();
 }
+
+/** Current calendar month as "YYYY-MM", used to key monthly Wall Cards. */
+export function currentMonthKey(): string {
+  const now = new Date();
+  return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}`;
+}

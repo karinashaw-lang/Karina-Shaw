@@ -24,6 +24,7 @@ model User {
   briefings        Briefing[]
   partyMessages    PartyMessage[]
   partyRsvps       PartyRsvp[]
+  wallCards        WallCard[]
 }
 
 model CreatorProfile {
@@ -115,6 +116,10 @@ model WallItem {
   /// A short "why I saved this" note the viewer can add, per the
   /// personal-wall differentiation in the business plan.
   note      String?
+  /// Incremented each time the owner revisits this saved video/clip (see
+  /// src/lib/actions/wall-view.ts) — powers the Wall Card's "most-rewatched"
+  /// stat. Not a general analytics/view-count system, just this.
+  viewCount Int      @default(0)
   createdAt DateTime @default(now())
 }
 
@@ -231,4 +236,21 @@ model PartyRsvp {
   createdAt DateTime       @default(now())
 
   @@unique([partyId, userId])
+}
+
+/// Records that a viewer generated their shareable Wall Card for a given
+/// month — the platform's primary viral loop. The image itself is rendered
+/// on demand (src/app/api/wall-card/[userId]/route.tsx) from live wall
+/// data, not stored; this row just tracks the monthly-drop cadence (one per
+/// user per month) so the wall page can show "already generated this
+/// month" and a history of past drops.
+model WallCard {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  /// Calendar month the card represents, e.g. "2026-09".
+  month     String
+  createdAt DateTime @default(now())
+
+  @@unique([userId, month])
 }
