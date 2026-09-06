@@ -60650,6 +60650,168 @@
       "title": "Acknowledgment",
       "kind": "drafting",
       "body": "Prepared by {{preparerName}} regarding the estate of {{decedentName}} (date of death: {{dateOfDeath}}; estimated estate value: {{estimatedEstateValue}}).\n\nSigned: _______________________________\nDate: {{dateSigned}}\nLocation: {{cityState}}"
+    },
+    {
+      "id": "gpdissolution_intro",
+      "title": "About This Document",
+      "kind": "drafting",
+      "body": "This document explains how a California general partnership like {{partnershipName}} actually dissolves and winds up under Article 8 of the California Uniform Partnership Act of 1994, \"Winding Up Partnership Business\" (Corp. Code §§ 16801–16807), and how that process differs from a single partner's dissociation. It is written as a statement of California law, not as advice about whether or how {{partner1Name}} and {{partner2Name}} should end their own partnership. Where the parties have identified an actual or anticipated dissolution, this document records it: {{partnershipName}} is treated as dissolved effective {{dissolutionDate}}, based on {{dissolutionReason}}."
+    },
+    {
+      "id": "gpdissolution_dissociation_vs_dissolution",
+      "title": "Dissociation of a Partner Is Not the Same Event as Dissolution of the Partnership",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "California's partnership statute treats a partner's \"dissociation\" — that partner's individual exit from partner status — as a legally distinct event from the partnership's \"dissolution.\" Dissociation of one partner does not by itself end the partnership's existence or trigger winding up; the statute instead identifies a specific list of events that actually dissolve a partnership (addressed in a companion clause of this document), and only actual dissolution starts the winding-up process. Once a partnership is in fact dissolved, California law states that the partnership continues in existence after that point only for the limited purpose of winding up its business, and is terminated once that winding up is complete. A California Court of Appeal decision illustrates why this distinction matters in a two-partner partnership specifically: because a partnership by definition requires at least two persons, one partner's withdrawal from a two-person partnership does not merely dissociate that partner while the partnership continues — it dissolves the partnership outright, because no single remaining person can carry on the business \"as partners.\"",
+      "gap": "This is one state's statute and one published California appellate decision, used as real evidence of how California's modern (RUPA-based) partnership law treats the dissociation/dissolution distinction — not a claim about which state's law governs any particular general partnership, or about how any other state's partnership statute draws this line. This document does not say whether any specific partner's departure would itself dissolve a given partnership; that depends on which statutory event actually occurred and on the partnership's own agreement, addressed in the companion clauses below and in this corpus's separate General Partnership Agreement document. The cited case addressed a two-partner partnership; its reasoning about a single remaining partner does not by its own terms resolve how the dissociation/dissolution line applies in a partnership with three or more partners.",
+      "citations": [
+        {
+          "case": "Cal. Corp. Code § 16802(a)",
+          "cite": "California Uniform Partnership Act of 1994, a partnership continues after dissolution only to wind up",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=16802.",
+          "quote": "(a) Subject to subdivision (b), a partnership continues after dissolution only for the purpose of winding up its business. The partnership is terminated when the winding up of its business is completed."
+        },
+        {
+          "case": "Corrales v. Corrales",
+          "cite": "198 Cal.App.4th 221, 227 (2011)",
+          "url": "https://www.courtlistener.com/opinion/5810484/corrales-v-corrales/",
+          "quote": "When Richard withdrew from RCE, the partnership dissolved by operation of law; by definition, a partnership must consist of at least two persons."
+        }
+      ]
+    },
+    {
+      "id": "gpdissolution_dissolution_events",
+      "title": "The Full Statutory List of Events That Actually Dissolve a Partnership",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "California's partnership statute dissolves a partnership, and requires its business to be wound up, only on the occurrence of specific listed events. Beyond the at-will and term-partnership dissociation-related triggers, the statute's list also includes: an event the partnership agreement itself designates as causing winding up; an event making it unlawful to continue substantially all of the partnership's business (subject to a 90-day cure that applies retroactively); and three distinct judicial-dissolution grounds available on a partner's own application — that the partnership's economic purpose is likely to be unreasonably frustrated, that another partner's conduct makes it not reasonably practicable to carry on the business with that partner, or that it is otherwise not reasonably practicable to carry on the business in conformity with the partnership agreement. A further, narrower judicial-dissolution ground is available specifically to a transferee of a partner's transferable interest (such as a judgment creditor holding a charging order), letting that transferee ask a court to wind up a term or particular-undertaking partnership as equitable once its term or undertaking has expired.",
+      "gap": "This is one state's statute, used as real evidence of the complete statutory dissolution-event list — not a claim about which state's law governs any particular general partnership, or a prediction that any court would actually grant judicial dissolution on these or similar facts; the judicial grounds quoted below require an actual court application and a judicial determination, not merely a partner's own belief that one applies. This document does not requote the statute's at-will-partnership and definite-term/particular-undertaking dissolution triggers in full here, since this corpus's separate General Partnership Agreement document already addresses those two triggers (Corp. Code § 16801(1)–(2)) in detail; this clause instead completes the picture with the remaining statutory grounds — agreed events, illegality, and judicial dissolution — that a single passing reference to § 16801 does not itemize. All citations below are subsections of the same statutory section (§ 16801).",
+      "citations": [
+        {
+          "case": "Cal. Corp. Code § 16801",
+          "cite": "California Uniform Partnership Act of 1994, dissolution occurs only on a listed event",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=16801.",
+          "quote": "A partnership is dissolved, and its business shall be wound up, only upon the occurrence of any of the following events:"
+        },
+        {
+          "case": "Cal. Corp. Code § 16801(3)-(4)",
+          "cite": "California Uniform Partnership Act of 1994, dissolution by agreed event or illegality",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=16801.",
+          "quote": "(3) An event agreed to in the partnership agreement resulting in the winding up of the partnership business. (4) An event that makes it unlawful for all or substantially all of the business of the partnership to be continued, but a cure of illegality within 90 days after notice to the partnership of the event is effective retroactively to the date of the event for purposes of this section."
+        },
+        {
+          "case": "Cal. Corp. Code § 16801(5)",
+          "cite": "California Uniform Partnership Act of 1994, judicial dissolution grounds on a partner's application",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=16801.",
+          "quote": "(5) On application by a partner, a judicial determination that any of the following apply: (A) The economic purpose of the partnership is likely to be unreasonably frustrated. (B) Another partner has engaged in conduct relating to the partnership business that makes it not reasonably practicable to carry on the business in partnership with that partner. (C) It is not otherwise reasonably practicable to carry on the partnership business in conformity with the partnership agreement."
+        },
+        {
+          "case": "Cal. Corp. Code § 16801(6)",
+          "cite": "California Uniform Partnership Act of 1994, judicial dissolution on a transferee's application",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=16801.",
+          "quote": "(6) On application by a transferee of a partner’s transferable interest, a judicial determination that it is equitable to wind up the partnership business after the expiration of the term or completion of the undertaking, if the partnership was for a definite term or particular undertaking at the time of the transfer or entry of the charging order that gave rise to the transfer."
+        }
+      ]
+    },
+    {
+      "id": "gpdissolution_winding_up_waiver",
+      "title": "Winding Up Can Be Waived — Dissolution Is Not Always the End",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Even after a partnership has actually dissolved, California law lets the partners undo that outcome before winding up is complete. At any time after dissolution and before the winding up of the business is completed, all of the partners — including a dissociating partner other than one who wrongfully dissociated — may waive the right to have the business wound up and the partnership terminated. If they do, the partnership resumes carrying on its business as if the dissolution had never happened, and liability incurred between the dissolution and the waiver is determined the same way. That waiver, however, cannot retroactively harm a third party's rights that already accrued in reliance on the dissolution before that third party knew or was notified of the waiver.",
+      "gap": "This is one state's statute, used as real evidence that California's dissolution/winding-up framework is not automatically a one-way street — not a claim about which state's law governs any particular general partnership, or a statement that any particular partnership's own agreement permits or forecloses this waiver. The statute requires waiver by all of the partners (with the stated exception for a wrongfully dissociating partner); this document does not say whether the partners named in this document have in fact agreed to any such waiver. All quoted text below is a single subdivision of one statutory section (§ 16802(b)).",
+      "citations": [
+        {
+          "case": "Cal. Corp. Code § 16802(b)",
+          "cite": "California Uniform Partnership Act of 1994, waiver of winding up after dissolution",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=16802.",
+          "quote": "(b) At any time after the dissolution of a partnership and before the winding up of its business is completed, all of the partners, including any dissociating partner other than a wrongfully dissociating partner, may waive the right to have the partnership’s business wound up and the partnership terminated. In that event both of the following apply: (1) The partnership resumes carrying on its business as if dissolution had never occurred, and any liability incurred by the partnership or a partner after the dissolution and before the waiver is determined as if dissolution had never occurred. (2) The rights of a third party accruing under paragraph (1) of Section 16804 or arising out of conduct in reliance on the dissolution before the third party knew or received a notification of the waiver may not be adversely affected."
+        }
+      ]
+    },
+    {
+      "id": "gpdissolution_winding_up_authority",
+      "title": "Who May Wind Up the Partnership, and What That Authority Covers",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "By default, California law lets any partner who has not dissociated participate in winding up the partnership's business after dissolution, though a court may order judicial supervision of the winding up on application of any partner, a partner's legal representative, or a transferee, for good cause shown. If the partnership has only one surviving partner left, the legal representative of that last surviving partner may wind up the business. A person conducting the winding up has broad statutory authority to act for the partnership in doing so: preserving the business or property as a going concern for a reasonable time, prosecuting and defending civil, criminal, or administrative actions, settling and closing the business, transferring partnership property, discharging partnership liabilities, distributing partnership assets under the statute's own priority rule, settling disputes by mediation or arbitration, and performing other acts necessary to the winding up.",
+      "gap": "This is one state's statute, used as real evidence of who may conduct a California general partnership's winding up and what that role covers by default — not a claim about which state's law governs any particular general partnership, or about who is actually conducting any specific partnership's winding up in fact. A partnership's own written agreement can supply different or additional terms governing who winds up its affairs; this document does not say whether a given partnership's own agreement does that. This document also does not address the separate statement-of-dissolution recording mechanism (Corp. Code § 16805), by which a partner may file a public statement giving third parties constructive notice of the dissolution and limiting the dissociated or dissolved partnership's apparent authority — that recording option is outside the scope of this clause. Both citations below are subsections of the same statutory section (§ 16803).",
+      "citations": [
+        {
+          "case": "Cal. Corp. Code § 16803(a)-(b)",
+          "cite": "California Uniform Partnership Act of 1994, default authority to wind up and judicial supervision",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=16803.",
+          "quote": "(a) After dissolution, a partner who has not dissociated may participate in winding up the partnership’s business, but on application of any partner, partner’s legal representative, or transferee, the court, for good cause shown, may order judicial supervision of the winding up. (b) The legal representative of the last surviving partner may wind up a partnership’s business."
+        },
+        {
+          "case": "Cal. Corp. Code § 16803(c)",
+          "cite": "California Uniform Partnership Act of 1994, scope of a winding-up person's authority",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=16803.",
+          "quote": "(c) A person winding up a partnership’s business may preserve the partnership business or property as a going concern for a reasonable time, prosecute and defend actions and proceedings, whether civil, criminal, or administrative, settle and close the partnership’s business, dispose of and transfer the partnership’s property, discharge the partnership’s liabilities, distribute the assets of the partnership pursuant to Section 16807, settle disputes by mediation or arbitration, and perform other necessary acts."
+        }
+      ]
+    },
+    {
+      "id": "gpdissolution_post_dissolution_acts_liability",
+      "title": "The Partnership's and Partners' Exposure for Acts Taken After Dissolution",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Dissolution does not immediately strip a partner's power to bind the partnership. California law binds the partnership to a partner's post-dissolution act if that act is either appropriate for winding up the partnership's business, or is an act that would have bound the partnership before dissolution and the other party to the transaction did not have notice of the dissolution. Because that second category can bind the partnership to obligations the other partners never wanted, the statute separately makes an acting partner personally answerable within the partnership for it: after dissolution, a partner is generally liable to the other partners for that partner's share of any such partnership liability, and a partner who, knowing of the dissolution, incurs a liability of that kind by an act that was not appropriate for winding up is liable to the partnership itself for the resulting damage.",
+      "gap": "This is one state's statute, used as real evidence of how California law allocates exposure for acts taken after a partnership has dissolved but before winding up is complete — not a claim about which state's law governs any particular general partnership, or about whether any specific partner's act falls into either statutory category. Both of these rules expressly except registered and foreign limited liability partnerships, which this document does not address; it also does not address the separate statement-of-dissolution filing (Corp. Code § 16805) that affects when a person outside the partnership is deemed to have notice of the dissolution for these purposes. The two citations below are to two different statutory sections (§ 16804 and § 16806), not subsections of a single section.",
+      "citations": [
+        {
+          "case": "Cal. Corp. Code § 16804",
+          "cite": "California Uniform Partnership Act of 1994, when the partnership is bound by a post-dissolution act",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=16804.",
+          "quote": "Subject to Section 16805, a partnership is bound by a partner’s act after dissolution that is either of the following: (1) Appropriate for winding up the partnership business. (2) Would have bound the partnership under Section 16301 before dissolution, if the other party to the transaction did not have notice of the dissolution."
+        },
+        {
+          "case": "Cal. Corp. Code § 16806",
+          "cite": "California Uniform Partnership Act of 1994, a partner's liability for incurring a post-dissolution obligation",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=16806.",
+          "quote": "(a) Except as otherwise provided in subdivision (b) and except for registered limited liability partnerships and foreign limited liability partnerships, after dissolution a partner is liable to the other partners for the partner’s share of any partnership liability incurred under Section 16804. (b) Except for registered limited liability partnerships and foreign limited liability partnerships, a partner who, with knowledge of the dissolution, incurs a partnership liability under paragraph (2) of Section 16804 by an act that is not appropriate for winding up the partnership business is liable to the partnership for any damage caused to the partnership arising from the liability."
+        }
+      ]
+    },
+    {
+      "id": "gpdissolution_asset_priority",
+      "title": "The Priority Order for Applying Partnership Assets in Winding Up",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "California's partnership statute fixes a specific order for applying a partnership's assets during winding up. Creditors come first: the partnership's assets, including any contributions the statute requires from the partners, must be applied to discharge the partnership's obligations to creditors — which, to the extent the law permits, includes partners who are themselves creditors of the partnership. Only after creditors are paid does any surplus go to the partners, and even then it is distributed according to a settlement of accounts: profits and losses from liquidating the partnership's assets are credited and charged to each partner's own account, a partner with a net credit balance receives a cash distribution equal to that excess, and (apart from a registered or foreign limited liability partnership) a partner with a net charge balance must instead contribute that excess to the partnership. If a partner fails to contribute the full amount that partner owes, the other partners must make up the shortfall in proportion to how they share partnership losses, though a partner who contributes more than that partner's own share of the personally-liable obligations may recover the excess from the other partners. A California Court of Appeal decision applying this same statute underscores why the sequence matters: a partner who is merely dissociating (not dissolving the partnership) is bought out of their own interest first, while a partner exiting through an actual dissolution has no such priority — creditors are paid ahead of any partner.",
+      "gap": "This is one state's statute and one published California appellate decision, used as real evidence of California's own default winding-up priority rule — not a claim about which state's law governs any particular general partnership, or about the specific dollar amounts, if any, that would result from winding up any given partnership's own accounts. This document does not address the further statutory contribution obligations that can arise after the initial settlement of accounts, for partnership obligations not known at the time of settlement, or a deceased partner's estate's own contribution liability — those exist in the same statutory section but are not detailed here. This is also a default rule; it does not say whether a given partnership's own written partnership agreement modifies it, since a partnership agreement can generally vary many of these default rules among the partners themselves. All statutory citations below are subsections of a single section (§ 16807).",
+      "citations": [
+        {
+          "case": "Cal. Corp. Code § 16807(a)",
+          "cite": "California Uniform Partnership Act of 1994, creditors are paid before any surplus reaches partners",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=16807.",
+          "quote": "(a) In winding up a partnership’s business, the assets of the partnership, including the contributions of the partners required by this section, shall be applied to discharge its obligations to creditors, including, to the extent permitted by law, partners who are creditors. Any surplus shall be applied to pay in cash the net amount distributable to partners in accordance with their right to distributions under subdivision (b)."
+        },
+        {
+          "case": "Cal. Corp. Code § 16807(b)",
+          "cite": "California Uniform Partnership Act of 1994, settlement of partner accounts on winding up",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=16807.",
+          "quote": "(b) Each partner is entitled to a settlement of all partnership accounts upon winding up the partnership business. In settling accounts among the partners, the profits and losses that result from the liquidation of the partnership assets shall be credited and charged to the partners’ accounts. The partnership shall make a distribution to a partner in an amount equal to any excess of the credits over the charges in the partner’s account."
+        },
+        {
+          "case": "Corrales v. Corrales",
+          "cite": "198 Cal.App.4th 221, 227-228 & n.7 (2011)",
+          "url": "https://www.courtlistener.com/opinion/5810484/corrales-v-corrales/",
+          "quote": "This rule is necessary to protect the partnership’s creditors. In a dissociation, the partnership assets are used to buy out the withdrawing partner. (§ 16701.) In a dissolution, the assets go first to pay the creditors. (§ 16807, subd. (a).) A partner cannot get first dibs on partnership assets by dissociating when in fact the withdrawal effects a dissolution."
+        }
+      ]
+    },
+    {
+      "id": "gpdissolution_ack",
+      "title": "Acknowledgment",
+      "kind": "drafting",
+      "body": "The undersigned acknowledge the foregoing statement of California law governing {{partnershipName}}'s dissolution and winding up.\n\n☐ _________________________ {{partner1Name}}   Date: _______________\n\n☐ _________________________ {{partner2Name}}   Date: _______________\n\nExecuted at {{cityState}} on {{dateSigned}}.\n\nPrepared by: {{preparerName}}"
     }
   ]
 }

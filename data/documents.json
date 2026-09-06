@@ -22299,5 +22299,73 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "general_partnership_dissolution_winding_up_info_sheet",
+    "title": "General Partnership Dissolution and Winding-Up — Information Sheet",
+    "description": "How and when a California general partnership actually dissolves under Corporations Code sections 16801-16807: the dissociation/dissolution distinction, the full list of dissolution-triggering events, winding-up authority, post-dissolution act liability, and the creditor-first asset-distribution priority.",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "gpdissolution_intro",
+      "gpdissolution_dissociation_vs_dissolution",
+      "gpdissolution_dissolution_events",
+      "gpdissolution_winding_up_waiver",
+      "gpdissolution_winding_up_authority",
+      "gpdissolution_post_dissolution_acts_liability",
+      "gpdissolution_asset_priority",
+      "gpdissolution_ack"
+    ],
+    "fields": [
+      {
+        "id": "partnershipName",
+        "label": "Partnership name",
+        "placeholder": "Morgan & Lee Consulting",
+        "required": true
+      },
+      {
+        "id": "partner1Name",
+        "label": "First partner's name",
+        "placeholder": "Jordan Morgan",
+        "required": true
+      },
+      {
+        "id": "partner2Name",
+        "label": "Second partner's name",
+        "placeholder": "Casey Lee",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      },
+      {
+        "id": "dissolutionDate",
+        "label": "Dissolution date",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "dissolutionReason",
+        "label": "Reason/event triggering dissolution",
+        "placeholder": "Unanimous vote of the members",
+        "required": true
+      },
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      }
+    ]
   }
 ]
