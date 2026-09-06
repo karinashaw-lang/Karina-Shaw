@@ -28043,5 +28043,70 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "vocational_training_counselor_spousal_support_info_sheet",
+    "title": "Vocational Training Counselor Evaluations in Spousal Support Proceedings — Information Sheet",
+    "description": "Describes California's Family Code Chapter 3 on spousal support upon dissolution or legal separation (Sections 4330-4339): the court's general order-making authority based on the marital standard of living, the discretionary self-sufficiency advisement, the court's authority to order an examination by a vocational training counselor and that counselor's required qualifications and cost allocation, mandatory findings on the marital standard of living, retroactivity of a support order, termination of contingent support and the refund obligation, automatic termination on death or remarriage, and the order in which property is resorted to when enforcing a spousal support order.",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "vocsupport_declaration",
+      "vocsupport_order_authority_standard_of_living",
+      "vocsupport_self_sufficiency_advisement",
+      "vocsupport_vocational_exam_authority_and_procedure",
+      "vocsupport_counselor_qualifications_and_cost",
+      "vocsupport_mandatory_standard_of_living_findings",
+      "vocsupport_retroactivity_of_support_order",
+      "vocsupport_contingent_termination_and_refund",
+      "vocsupport_termination_on_death_or_remarriage",
+      "vocsupport_enforcement_order_of_resort_to_property",
+      "vocsupport_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "party1Name",
+        "label": "Party 1 Name",
+        "placeholder": "e.g., Jane Doe",
+        "required": true
+      },
+      {
+        "id": "party2Name",
+        "label": "Party 2 Name",
+        "placeholder": "e.g., John Doe",
+        "required": true
+      },
+      {
+        "id": "marriageDate",
+        "label": "Date of Marriage",
+        "placeholder": "e.g., June 1, 2010",
+        "required": true
+      },
+      {
+        "id": "separationDate",
+        "label": "Date of Separation",
+        "placeholder": "e.g., January 1, 2026",
+        "required": true
+      },
+      {
+        "id": "countyOfFiling",
+        "label": "County of Filing",
+        "placeholder": "e.g., Los Angeles County",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date Signed",
+        "placeholder": "e.g., January 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, State",
+        "placeholder": "e.g., Los Angeles, California",
+        "required": true
+      }
+    ]
   }
 ]
