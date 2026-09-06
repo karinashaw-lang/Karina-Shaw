@@ -25,6 +25,7 @@ One platform covering the full creator and viewer loop:
 - **Moment-level recommendations**: surfaces related clips based on what was actually said or shown, not just show category or creator tags.
 - **Auto-captioned clips**: every clip is automatically captioned and formatted for external sharing, built on the same transcript data used for search.
 - **Scheduled listening parties**: viewers can synchronize playback of existing episodes at a set time with a shared chat, a low-cost way to get "watching together" before investing in full live infrastructure.
+- **Wall Cards**: a one-tap, shareable image/video card summarizing a slice of a viewer's personal wall — top saved moments, most-rewatched clip, taste-twin matches — designed to be posted externally to Instagram, TikTok, or X, turning the wall into the platform's core growth loop.
 - **Direct monetization**: tips and (later) subscriptions pay creators directly.
 
 ## Target Market
@@ -45,6 +46,7 @@ One platform covering the full creator and viewer loop:
 10. **Ask the show** — a question-answering layer over a creator's full catalog, built on transcript data already required for search. No major podcast or video platform offers this.
 11. **Moment-level recommendations** — content-based discovery driven by what was actually said, not show metadata, surfacing connections between creators that category tags would miss.
 12. **Personal notes on saved clips** — a one-line "why I saved this" on any wall item, turning the wall into something more personal and shareable, not just a bookmark list.
+13. **Wall Cards — the platform's viral mechanic** — a one-tap, personalized, shareable card generated from a viewer's wall (top moments, most-rewatched clip, taste-twin match), built for posting outside the app. Unlike streaks or in-app engagement features, this is designed to leave the platform and pull new users in, the same mechanism that made Spotify Wrapped one of the largest organic marketing moments in tech. A recurring monthly drop (rather than a once-a-year event) turns it into a habitual share instead of an annual novelty, creating a synchronized wave of external posts each time it lands.
 
 ## Business Model
 - Tips on live streams, videos, and clips (creator-first, transaction-based)
@@ -54,7 +56,8 @@ One platform covering the full creator and viewer loop:
 ## Go-to-Market Strategy
 - Start narrow: recruit a small group of professional podcasters directly (outreach, not paid acquisition) who are already frustrated with juggling separate tools.
 - Use their existing audiences as the initial user base — creators bring their listeners with them rather than the platform needing to generate demand from zero.
-- Lean on clips (creator-made and viewer-made, including real-time clipping during live streams) as the organic growth loop: clips shared externally drive new viewers back to full episodes, live streams, and creator profiles.
+- Lean on clips (creator-made and viewer-made, including real-time clipping during live streams) as one organic growth loop: clips shared externally drive new viewers back to full episodes, live streams, and creator profiles.
+- Lean on Wall Cards as the primary viral loop: a recurring, synchronized monthly drop encourages simultaneous external sharing, turning personal curation into visible, recurring word-of-mouth outside the platform.
 - Expand from professional podcasters to a broader range of creators — cooking streamers, IRL/talk streamers, semi-professional and hobbyist creators — once the core product and monetization are proven, without requiring a repositioning of the platform's identity.
 
 ## Build Philosophy: Rent Infrastructure, Build Differentiation
@@ -74,6 +77,7 @@ Every major platform capability below has a cheap, off-the-shelf way to stand it
 - Creator profiles, upload/record flow (no live yet), automatic audio + video split, manual clipping, viewer-created private clips, auto-captioned clips.
 - Transcript-powered search and "ask the show," brought forward into V1 since both are built on transcription already required for the audio split — cheap to include early, and core to the differentiation.
 - Personal wall with notes on saved items, moment-level recommendations, comments and posts attached to content, follows, tips (via Stripe Connect), basic creator dashboard.
+- Wall Cards — shareable card generation from wall data, included in V1 since it's a templated export layer on data already being collected, and serves as the primary organic growth loop from day one.
 
 **V2 — Live streaming and togetherness, rolled out in tiers**
 - **Tier 1 (near-zero cost):** scheduled listening parties — synchronized playback of existing episodes at a set time, with shared real-time chat. Validates demand for togetherness before spending on live infrastructure.
