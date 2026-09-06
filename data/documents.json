@@ -23133,5 +23133,37 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "reproductive_loss_leave_info_sheet",
+    "title": "Reproductive Loss Leave — Information Sheet",
+    "description": "An informational sheet on California's Reproductive Loss Leave (Government Code § 12945.6): the up-to-5-day entitlement per event (capped at 20 days combined per 12-month period), the statutory definition of a qualifying reproductive loss event, employee/employer eligibility, the three-month completion window and its extension when combined with other leave, paid/unpaid status, and confidentiality and anti-retaliation protections. Distinguishes this narrower 2024 statutory entitlement from the corpus's existing bereavement leave document.",
+    "categories": [
+      "During employment"
+    ],
+    "clauseOrder": [
+      "reprolossleave_entitlement",
+      "reprolossleave_qualifying_events",
+      "reprolossleave_eligibility_coverage",
+      "reprolossleave_timing",
+      "reprolossleave_pay_status",
+      "reprolossleave_confidentiality_and_protections",
+      "reprolossleave_request_notice",
+      "reprolossleave_ack"
+    ],
+    "fields": [
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      }
+    ]
   }
 ]
