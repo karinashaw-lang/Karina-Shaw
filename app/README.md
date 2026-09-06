@@ -81,6 +81,11 @@ infrastructure, build differentiation" philosophy:
 - **Streaks** — a simple consecutive-day counter (🔥 shown in the nav) from visiting any video
   or clip, computed from a `DailyActivity` table with plain date-gap arithmetic — no scheduled
   job needed.
+- **Guest-following** — guests are a separate identity from the creator, matched by exact name
+  (not tied to a `User` account), so the same guest can be tagged across different creators'
+  episodes and fans can follow the person rather than just the show. A creator re-tags a video's
+  full guest list at once (`GuestEditor`); each guest gets a profile page aggregating every
+  episode they appear in, across creators, with a follower count and follow button.
 
 ## Stack
 
@@ -166,4 +171,6 @@ infrastructure, build differentiation" philosophy:
 - **Wall Cards** — `src/app/api/wall-card/[userId]` (PNG rendering), `src/lib/wall-card.ts`
   (stats/taste-twin aggregation), `src/lib/actions/wall-view.ts` (rewatch tracking),
   `src/components/wall-card-panel.tsx`
+- **Guest-following** — `src/app/guests/[id]` (guest profile), `src/lib/actions/guest.ts`,
+  `src/components/guest-editor.tsx` (creator tagging), `src/components/guest-follow-button.tsx`
 - **Creator dashboard** — `src/app/creator/dashboard`

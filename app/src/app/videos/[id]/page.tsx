@@ -14,6 +14,7 @@ import TranscriptEditor from "@/components/transcript-editor";
 import RelatedMoments from "@/components/related-moments";
 import { findRelatedSegments } from "@/lib/recommendations";
 import SchedulePartyForm from "@/components/schedule-party-form";
+import GuestEditor from "@/components/guest-editor";
 import { hoursAgo } from "@/lib/time";
 
 export default async function VideoPage(props: PageProps<"/videos/[id]">) {
@@ -33,6 +34,7 @@ export default async function VideoPage(props: PageProps<"/videos/[id]">) {
           where: { scheduledAt: { gte: hoursAgo(6) } },
           orderBy: { scheduledAt: "asc" },
         },
+        guests: { include: { guest: true } },
       },
     }),
     getCurrentUser(),
@@ -113,6 +115,24 @@ export default async function VideoPage(props: PageProps<"/videos/[id]">) {
       </div>
 
       {video.description && <p className="mt-4">{video.description}</p>}
+
+      {video.guests.length > 0 && (
+        <p className="mt-2 text-sm text-zinc-500">
+          Featuring{" "}
+          {video.guests.map(({ guest }, i) => (
+            <span key={guest.id}>
+              <Link href={`/guests/${guest.id}`} className="underline">
+                {guest.name}
+              </Link>
+              {i < video.guests.length - 1 && ", "}
+            </span>
+          ))}
+        </p>
+      )}
+
+      {isOwner && (
+        <GuestEditor videoId={video.id} initialNames={video.guests.map(({ guest }) => guest.name)} />
+      )}
 
       {isLocked ? null : isOwner && (
         <TranscriptEditor

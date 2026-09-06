@@ -26,6 +26,7 @@ model User {
   partyRsvps       PartyRsvp[]
   wallCards        WallCard[]
   dailyActivity    DailyActivity[]
+  guestFollows     GuestFollow[]
 }
 
 model CreatorProfile {
@@ -83,6 +84,42 @@ model Video {
   wallItems        WallItem[]
   transcript       TranscriptSegment[]
   listeningParties ListeningParty[]
+  guests           VideoGuest[]
+}
+
+/// A guest featured on an episode — a distinct identity from the creator
+/// who can appear across multiple different creators' shows, so fans can
+/// follow the person rather than just the show (V2 "guest-following").
+/// Matched by exact name, not tied to a User account — guests don't need
+/// their own login to be tagged and followed.
+model Guest {
+  id        String        @id @default(cuid())
+  name      String        @unique
+  bio       String?
+  createdAt DateTime      @default(now())
+  videos    VideoGuest[]
+  followers GuestFollow[]
+}
+
+model VideoGuest {
+  id      String @id @default(cuid())
+  videoId String
+  video   Video  @relation(fields: [videoId], references: [id])
+  guestId String
+  guest   Guest  @relation(fields: [guestId], references: [id])
+
+  @@unique([videoId, guestId])
+}
+
+model GuestFollow {
+  id         String   @id @default(cuid())
+  followerId String
+  follower   User     @relation(fields: [followerId], references: [id])
+  guestId    String
+  guest      Guest    @relation(fields: [guestId], references: [id])
+  createdAt  DateTime @default(now())
+
+  @@unique([followerId, guestId])
 }
 
 model Comment {
