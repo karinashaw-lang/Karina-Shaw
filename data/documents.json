@@ -23876,5 +23876,68 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "manufactured_home_ownership_title_transfer_info_sheet",
+    "title": "Manufactured Home Ownership and Title Transfer — Information Sheet",
+    "description": "Explains California's HCD certificate-of-title system for a manufactured home or mobilehome registered as personal property: the registration requirement, the personal-property/real-property dividing line, ownership roles, and the process for transferring title on a sale.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "mhtitle_purpose_declaration",
+      "mhtitle_definitions",
+      "mhtitle_registration_requirement",
+      "mhtitle_personal_vs_real_property",
+      "mhtitle_ownership_roles",
+      "mhtitle_original_registration_application",
+      "mhtitle_transfer_of_ownership_process",
+      "mhtitle_coownership_signature_rules",
+      "mhtitle_ack"
+    ],
+    "fields": [
+      {
+        "id": "sellerName",
+        "label": "Seller's (transferring registered owner's) name",
+        "placeholder": "e.g., Jane Doe",
+        "required": true
+      },
+      {
+        "id": "buyerName",
+        "label": "Buyer's (incoming registered owner's) name",
+        "placeholder": "e.g., John Smith",
+        "required": true
+      },
+      {
+        "id": "mobilehomeDescription",
+        "label": "Description of the manufactured home / mobilehome",
+        "placeholder": "e.g., 1998 Skyline single-wide manufactured home",
+        "required": true
+      },
+      {
+        "id": "serialOrDecalNumber",
+        "label": "HCD serial number and/or insignia/decal number",
+        "placeholder": "e.g., serial no. XXXXXXX, insignia no. XXXXXX",
+        "required": true
+      },
+      {
+        "id": "propertyAddress",
+        "label": "Address where the home is situated",
+        "placeholder": "e.g., 123 Main St., Space 45",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, State",
+        "placeholder": "e.g., Fresno, California",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "e.g., January 1, 2026",
+        "required": true
+      }
+    ]
   }
 ]
