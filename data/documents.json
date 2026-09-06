@@ -25652,5 +25652,50 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "certificate_of_revivor_reinstatement_info_sheet",
+    "title": "Certificate of Revivor — Reinstatement of a Suspended or Forfeited Business Entity — Information Sheet",
+    "description": "Explains California's Franchise Tax Board suspension/forfeiture and certificate-of-revivor process for a corporation or LLC, Rev. & Tax. Code §§23301-23305.5: the tax-nonpayment grounds for suspension, the notice requirement and real-property disability, contract voidability during suspension, the certificate-of-revivor application requirements, the name-check and what reinstatement does and doesn't undo, the separate relief-from-voidability procedure, and how the scheme reaches both corporations and LLCs.",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "revivor_declaration",
+      "revivor_suspension_grounds",
+      "revivor_notice_and_sos_transmittal",
+      "revivor_contract_voidability",
+      "revivor_certificate_of_revivor_requirements",
+      "revivor_name_check_and_effect_of_reinstatement",
+      "revivor_relief_from_voidability",
+      "revivor_scope_corporations_and_llcs",
+      "revivor_closing_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
