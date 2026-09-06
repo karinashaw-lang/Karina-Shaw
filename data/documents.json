@@ -23277,5 +23277,48 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "nonprofit_tax_exempt_status_application_info_sheet",
+    "title": "Nonprofit Tax-Exempt Status Application (Federal and California) — Information Sheet",
+    "description": "An informational sheet on the federal and California processes for a nonprofit to obtain recognized tax-exempt status: 26 U.S.C. § 501(c)(3)'s organizational/operational requirements, 26 U.S.C. § 508's notice-of-application requirement and private-foundation presumption (with church and small-organization exceptions), California's parallel Rev. & Tax. Code § 23701d exemption (including its own irrevocable-dedication-of-assets language, absent from the federal statute's text), and California's two statutory pathways to recognized state exemption under § 23701(a)-(b). Fills the self-flagged gap the corpus's existing nonprofit-formation documents point to but don't address.",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "taxexemptapp_intro",
+      "taxexemptapp_federal_purposes_and_operational_test",
+      "taxexemptapp_federal_notice_and_private_foundation_presumption",
+      "taxexemptapp_state_organizational_test",
+      "taxexemptapp_state_application_pathways",
+      "taxexemptapp_procedural_details_disclosure",
+      "taxexemptapp_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
