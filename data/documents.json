@@ -27004,5 +27004,69 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "pseudo_foreign_corporation_2115_info_sheet",
+    "title": "California Corp. Code § 2115 — Application of California Corporate Law to Out-of-State Corporations — Information Sheet",
+    "description": "An information sheet describing California Corporations Code Section 2115, sometimes called the \"pseudo-foreign corporation\" or \"quasi-California corporation\" statute: the two-part statutory test (average property/payroll/sales factor above 50% plus majority California-resident voting securities) that determines whether a foreign corporation becomes subject to a specified list of California governance provisions in place of its home state's corporate law, how nominee-held securities are counted toward that test, the full list of California director, distribution, voting, merger, reorganization, dissenters'-rights, records, and inspection provisions that apply, the exchange-listing and wholly-owned-subsidiary exemptions, the statutory timing rules for when the requirements begin and cease to apply, and the statutory duty to disclose Section 2115(b) status on written request.",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "corp2115_declaration",
+      "corp2115_threshold_test",
+      "corp2115_nominee_holder_certification",
+      "corp2115_applicable_provisions_governance",
+      "corp2115_applicable_provisions_structural",
+      "corp2115_exemptions",
+      "corp2115_effective_date",
+      "corp2115_cessation_date",
+      "corp2115_disclosure_duty",
+      "corp2115_closing_signature"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company/entity name",
+        "placeholder": "Acme Holdings, Inc.",
+        "required": true
+      },
+      {
+        "id": "entityType",
+        "label": "Entity type",
+        "placeholder": "corporation",
+        "required": true
+      },
+      {
+        "id": "stateOfFormation",
+        "label": "State or jurisdiction of original formation",
+        "placeholder": "Delaware",
+        "required": true
+      },
+      {
+        "id": "principalOfficeAddress",
+        "label": "Principal office address",
+        "placeholder": "100 Market Street, Suite 400, Wilmington, DE",
+        "required": true
+      },
+      {
+        "id": "authorizedSignerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "April 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, State",
+        "placeholder": "San Francisco, California",
+        "required": true
+      }
+    ]
   }
 ]
