@@ -28166,5 +28166,69 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "probate_referee_inventory_appraisal_info_sheet",
+    "title": "Probate Referee and the Inventory and Appraisal — Information Sheet",
+    "description": "Explains California's statutory inventory-and-appraisal procedure in a full probate administration (Probate Code § 8800 et seq.): the four-month deadline to file, how probate referees are appointed and qualified (Probate Code § 400 et seq.), which property the personal representative appraises directly versus what the probate referee appraises, the duty to file a supplemental inventory for later-discovered property, and how the referee's statutory commission and expenses are computed and paid.",
+    "categories": [
+      "Estate Planning"
+    ],
+    "clauseOrder": [
+      "probateinv_intro_purpose",
+      "probateinv_duty_and_deadline",
+      "probateinv_referee_appointment_process",
+      "probateinv_referee_qualification",
+      "probateinv_required_contents",
+      "probateinv_cash_items_appraised_by_pr",
+      "probateinv_referee_appraises_remaining_property",
+      "probateinv_supplemental_inventory_duty",
+      "probateinv_referee_compensation",
+      "probateinv_acknowledgment"
+    ],
+    "fields": [
+      {
+        "id": "decedentName",
+        "label": "Decedent's name",
+        "placeholder": "Pat Morgan Rivera",
+        "required": true
+      },
+      {
+        "id": "personalRepresentativeName",
+        "label": "Personal representative's name",
+        "placeholder": "Morgan Lee",
+        "required": true
+      },
+      {
+        "id": "courtName",
+        "label": "Court name",
+        "placeholder": "Superior Court of California",
+        "required": true
+      },
+      {
+        "id": "countyOfFiling",
+        "label": "County of filing",
+        "placeholder": "Alameda County",
+        "required": true
+      },
+      {
+        "id": "courtCaseNumber",
+        "label": "Probate case number",
+        "placeholder": "PRO-26-123456",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 6, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
