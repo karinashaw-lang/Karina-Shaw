@@ -21897,5 +21897,60 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "family_code_271_sanctions_info_sheet",
+    "title": "Family Code Section 271 Sanctions — Information Sheet",
+    "description": "California Family Code section 271's fee-shifting sanction for litigation conduct that furthers or frustrates the policy of promoting settlement and cooperation, distinct from need-based fee awards and disclosure-noncompliance sanctions.",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "fc271sanctions_intro",
+      "fc271sanctions_statutory_standard",
+      "fc271sanctions_no_financial_need_required",
+      "fc271sanctions_notice_and_payment_source",
+      "fc271sanctions_case_law_application",
+      "fc271sanctions_distinguishing_2030_and_2100",
+      "fc271sanctions_ack"
+    ],
+    "fields": [
+      {
+        "id": "petitionerName",
+        "label": "Petitioner's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "respondentName",
+        "label": "Respondent's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "courtCaseNumber",
+        "label": "Court case number",
+        "placeholder": "CGC-26-123456",
+        "required": true
+      },
+      {
+        "id": "countyOfFiling",
+        "label": "County of filing",
+        "placeholder": "Sacramento County",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
