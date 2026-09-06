@@ -29602,5 +29602,83 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "civil_air_patrol_leave_info_sheet",
+    "title": "Civil Air Patrol Leave — Information Sheet",
+    "description": "Explains California's Civil Air Patrol Employment Protection Act (Labor Code §§ 1500-1507): the right of an eligible employee at an employer with more than 15 employees to up to 10 days per calendar year of unpaid leave to respond to a California Wing Civil Air Patrol emergency operational mission, the notice/certification conditions, the anti-discrimination and reinstatement protections, and the private-civil-action enforcement route. This is a distinct statute from this corpus's existing Volunteer Emergency Responder Leave document (Labor Code §§ 230.3-230.4), which covers firefighters, reserve peace officers, and emergency rescue personnel under different definitions, a different employer-size threshold, and a Labor Commissioner complaint procedure that Civil Air Patrol leave does not have.",
+    "categories": [
+      "During employment"
+    ],
+    "clauseOrder": [
+      "capleave_intro",
+      "capleave_definitions",
+      "capleave_leave_entitlement",
+      "capleave_notice_certification",
+      "capleave_no_forced_exhaustion_unpaid",
+      "capleave_antidiscrimination_membership",
+      "capleave_reinstatement_rights",
+      "capleave_benefits_continuity",
+      "capleave_retaliation_prohibited",
+      "capleave_enforcement_civil_action",
+      "capleave_leave_request_notice",
+      "capleave_ack"
+    ],
+    "fields": [
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "respondingAgencyName",
+        "label": "Civil Air Patrol unit or squadron (California Wing)",
+        "placeholder": "California Wing, Civil Air Patrol — Sacramento Squadron",
+        "required": true
+      },
+      {
+        "id": "startDate",
+        "label": "Employee's hire date",
+        "placeholder": "March 3, 2024",
+        "required": true
+      },
+      {
+        "id": "employeeCount",
+        "label": "Approximate total employee count",
+        "placeholder": "e.g., 40",
+        "required": true
+      },
+      {
+        "id": "serviceStartDate",
+        "label": "Leave start date",
+        "placeholder": "September 8, 2026",
+        "required": true
+      },
+      {
+        "id": "serviceEndDate",
+        "label": "Leave end date (if known)",
+        "placeholder": "September 9, 2026",
+        "required": false
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
