@@ -21761,5 +21761,48 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "compelled_self_publication_defamation_info_sheet",
+    "title": "Compelled Self-Publication Defamation — Information Sheet",
+    "description": "California case law on the \"compelled self-publication\" defamation doctrine in the employment-termination context.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "selfpubdefam_intro",
+      "selfpubdefam_general_rule_and_exception",
+      "selfpubdefam_mckinney_doctrine",
+      "selfpubdefam_elements",
+      "selfpubdefam_tilkey_current_state",
+      "selfpubdefam_qualified_privilege_interaction",
+      "selfpubdefam_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
