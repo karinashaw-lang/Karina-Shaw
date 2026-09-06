@@ -38,8 +38,24 @@ origin from the incoming request, which is fine for local dev but should be set 
 behind a proxy/CDN in production.
 
 Still not buildable without further infrastructure/product decisions: AI-automated
-clip/highlight detection and AI dubbing (voice cloning) — see the business plan's V2/V3
-roadmap.
+clip/highlight detection, AI dubbing (voice cloning), and scheduled listening parties (needs a
+hosted real-time chat decision) — see the business plan's V2/V3 roadmap.
+
+## Cheap-to-build differentiators (no new credentials needed)
+
+A few features from the latest plan revision are built entirely on infrastructure already
+here — transcript search and OpenAI, both already wired — matching the plan's "rent
+infrastructure, build differentiation" philosophy:
+
+- **Ask the show** — question answering over a creator's whole catalog. Keyword-matches the
+  question against that creator's transcripts (same approach as search, no vector DB); with
+  `OPENAI_API_KEY` set it synthesizes a cited answer from the matches, without it it just shows
+  the matching moments directly — a real degrade, not a dead end.
+- **Moment-level recommendations** — "related moments" on video/clip pages, found by keyword
+  overlap against *other* videos' transcripts (including other creators'), not category tags.
+- **Auto-captioned clips** — every clip page shows a ready-to-paste caption built from whatever
+  transcript text falls inside its time range, with a copy button.
+- **Personal notes on wall items** — a one-line "why I saved this" on anything in the wall.
 
 ## Stack
 
@@ -94,7 +110,12 @@ roadmap.
 - **Viewer-created clips** — `src/app/clips/[id]`, `src/components/clip-form.tsx`,
   `src/lib/actions/clip.ts` (playback uses a media-fragment URL, e.g. `#t=10,20`; this doesn't
   precisely trim Mux-hosted/HLS sources yet, only local/URL video files)
-- **Personal wall** — `src/app/wall`, `src/lib/actions/wall.ts`
+- **Personal wall** (with notes) — `src/app/wall`, `src/lib/actions/wall.ts`,
+  `src/components/wall-item-note.tsx`
+- **Ask the show** — `src/lib/actions/ask.ts`, `src/components/ask-the-show.tsx`
+- **Moment-level recommendations** — `src/lib/recommendations.ts`,
+  `src/components/related-moments.tsx`
+- **Auto-captioned clips** — `src/lib/caption.ts`, `src/components/copy-caption-button.tsx`
 - **Search inside video** — `src/app/search`, `src/lib/transcript.ts`,
   `src/components/transcript-editor.tsx`, `src/components/video-with-transcript.tsx`
 - **Tips** — `src/components/tip-form.tsx`, `src/lib/actions/tip.ts`,

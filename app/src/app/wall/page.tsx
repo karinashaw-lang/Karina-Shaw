@@ -5,6 +5,7 @@ import prisma from "@/lib/prisma";
 import { isOpenAIConfigured } from "@/lib/integrations/openai";
 import RemoveFromWallButton from "@/components/remove-from-wall-button";
 import GenerateBriefingButton from "@/components/generate-briefing-button";
+import WallItemNote from "@/components/wall-item-note";
 
 export default async function WallPage() {
   const user = await getCurrentUser();
@@ -96,6 +97,7 @@ export default async function WallPage() {
                       {creator.displayName}
                     </Link>
                   </p>
+                  <WallItemNote wallItemId={item.id} initialNote={item.note} />
                 </div>
                 <RemoveFromWallButton wallItemId={item.id} />
               </li>

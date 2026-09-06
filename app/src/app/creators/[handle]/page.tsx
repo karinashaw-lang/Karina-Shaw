@@ -10,6 +10,7 @@ import SubscribeCheckoutForm from "@/components/subscribe-checkout-form";
 import UnsubscribeButton from "@/components/unsubscribe-button";
 import TipForm from "@/components/tip-form";
 import LiveBadge from "@/components/live-badge";
+import AskTheShow from "@/components/ask-the-show";
 
 export default async function CreatorPage(props: PageProps<"/creators/[handle]">) {
   const { handle } = await props.params;
@@ -109,6 +110,8 @@ export default async function CreatorPage(props: PageProps<"/creators/[handle]">
       )}
 
       {user && !isOwner && <TipForm creatorId={creator.id} handle={creator.handle} />}
+
+      {creator.videos.length > 0 && <AskTheShow creatorId={creator.id} />}
 
       <h2 className="mt-8 text-lg font-medium">Videos</h2>
       {creator.videos.length === 0 ? (

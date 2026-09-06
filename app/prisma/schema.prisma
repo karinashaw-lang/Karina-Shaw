@@ -109,6 +109,9 @@ model WallItem {
   video     Video?   @relation(fields: [videoId], references: [id])
   clipId    String?
   clip      Clip?    @relation(fields: [clipId], references: [id])
+  /// A short "why I saved this" note the viewer can add, per the
+  /// personal-wall differentiation in the business plan.
+  note      String?
   createdAt DateTime @default(now())
 }
 

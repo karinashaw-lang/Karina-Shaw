@@ -48,3 +48,19 @@ export async function removeFromWall(wallItemId: string) {
 
   revalidatePath("/wall");
 }
+
+const MAX_NOTE_LENGTH = 280;
+
+/** The wall's "why I saved this" note — a one-liner, not a comment thread. */
+export async function setWallItemNote(wallItemId: string, note: string) {
+  const user = await requireUser();
+
+  const trimmed = note.trim().slice(0, MAX_NOTE_LENGTH);
+
+  await prisma.wallItem.updateMany({
+    where: { id: wallItemId, userId: user.id },
+    data: { note: trimmed || null },
+  });
+
+  revalidatePath("/wall");
+}

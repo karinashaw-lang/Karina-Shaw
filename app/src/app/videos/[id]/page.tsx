@@ -8,6 +8,8 @@ import SaveButton from "@/components/save-button";
 import ClipForm from "@/components/clip-form";
 import VideoWithTranscript from "@/components/video-with-transcript";
 import TranscriptEditor from "@/components/transcript-editor";
+import RelatedMoments from "@/components/related-moments";
+import { findRelatedSegments } from "@/lib/recommendations";
 
 export default async function VideoPage(props: PageProps<"/videos/[id]">) {
   const { id } = await props.params;
@@ -43,6 +45,14 @@ export default async function VideoPage(props: PageProps<"/videos/[id]">) {
       : false;
 
   const isLocked = video.subscriberOnly && !isOwner && !isSubscribed;
+
+  const relatedSegments =
+    !isLocked && video.transcript.length > 0
+      ? await findRelatedSegments({
+          excludeVideoId: video.id,
+          seedText: video.transcript.map((s) => s.text).join(" "),
+        })
+      : [];
 
   return (
     <div className="mx-auto max-w-3xl px-6 py-10">
@@ -97,6 +107,8 @@ export default async function VideoPage(props: PageProps<"/videos/[id]">) {
       )}
 
       {user && !isLocked && <ClipForm videoId={video.id} />}
+
+      <RelatedMoments segments={relatedSegments} />
 
       <h2 className="mt-8 text-lg font-medium">
         Comments ({video.comments.length})
