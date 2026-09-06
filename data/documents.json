@@ -27557,5 +27557,46 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "bloodborne_pathogens_exposure_control_info_sheet",
+    "title": "Bloodborne Pathogens Exposure Control — Information Sheet",
+    "description": "Explains California's Cal/OSHA Bloodborne Pathogens standard (8 Cal. Code Regs. § 5193): which employees and work situations trigger coverage as \"occupational exposure,\" the written Exposure Control Plan and Sharps Injury Log employers with exposed employees must maintain, the universal-precautions and engineering/work-practice-control approach the standard requires, personal protective equipment requirements, the hepatitis B vaccination employers must make available, post-exposure medical evaluation and follow-up after a reported exposure incident, employee training requirements, and recordkeeping and retention requirements for exposure-related medical records.",
+    "categories": [
+      "During employment"
+    ],
+    "clauseOrder": [
+      "bbp_declaration_and_scope",
+      "bbp_scope_and_occupational_exposure",
+      "bbp_exposure_control_plan_requirement",
+      "bbp_sharps_injury_log",
+      "bbp_universal_precautions_and_compliance_methods",
+      "bbp_personal_protective_equipment",
+      "bbp_hepatitis_b_vaccination",
+      "bbp_post_exposure_evaluation_and_followup",
+      "bbp_training_requirements",
+      "bbp_recordkeeping_and_confidentiality",
+      "bbp_acknowledgment_signature"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme Innovations LLC",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "programAdministratorName",
+        "label": "Person responsible for the Exposure Control Plan",
+        "placeholder": "Pat Morgan",
+        "required": true
+      }
+    ]
   }
 ]
