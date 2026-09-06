@@ -25697,5 +25697,64 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "mortgage_foreclosure_consultants_info_sheet",
+    "title": "Mortgage Foreclosure Consultants — Information Sheet",
+    "description": "Explains California's regulation of foreclosure consultants under Civil Code §§2945-2945.11: the statutory definition and exemptions, the owner's five-business-day right to cancel a contract, required written-contract content and warning notice, the advance-fee prohibition and loan-rate cap, bars on security interests/powers of attorney/property-interest acquisition, the private right of action and four-year limitations period, and license/bonding disclosure for certain representatives.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "fcconsult_intro_scope",
+      "fcconsult_legislative_findings",
+      "fcconsult_definition",
+      "fcconsult_exemptions",
+      "fcconsult_right_to_cancel",
+      "fcconsult_contract_content_and_notice",
+      "fcconsult_no_advance_fee_and_rate_cap",
+      "fcconsult_no_security_poa_or_property_interest",
+      "fcconsult_remedies_and_limitations",
+      "fcconsult_representative_license_and_bond",
+      "fcconsult_closing_acknowledgment"
+    ],
+    "fields": [
+      {
+        "id": "propertyAddress",
+        "label": "Property address",
+        "placeholder": "123 Main St, Apt 4, Springfield",
+        "required": true
+      },
+      {
+        "id": "ownerName",
+        "label": "Property owner's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "foreclosureConsultantName",
+        "label": "Foreclosure consultant's name",
+        "placeholder": "Sunrise Foreclosure Solutions LLC",
+        "required": true
+      },
+      {
+        "id": "foreclosureConsultantAddress",
+        "label": "Foreclosure consultant's address",
+        "placeholder": "456 Business Ave, Suite 200, Sacramento, California",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
