@@ -28861,5 +28861,77 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "mechanics_lien_waiver_and_release_forms",
+    "title": "Mechanics Lien Waiver and Release Forms (Progress and Final Payment)",
+    "description": "The four statutory forms a California contractor, subcontractor, or supplier signs to waive and release mechanics lien, stop payment notice, and payment bond rights in exchange for payment -- conditional and unconditional versions for both progress payments and final payment -- together with the statutory rules for when each form is required, when it is null and void, and when it actually protects the owner, construction lender, or surety. This is distinct from this collection's existing Mechanics Lien Preliminary Notice document, which covers the notice a claimant gives before a lien attaches, not the release a claimant gives after being paid.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "mlwr_purpose",
+      "mlwr_applicability",
+      "mlwr_anti_waiver_of_other_claimants",
+      "mlwr_effect_of_release_conditions",
+      "mlwr_conditional_progress_authority",
+      "mlwr_conditional_progress_form",
+      "mlwr_unconditional_progress_authority",
+      "mlwr_unconditional_progress_form",
+      "mlwr_conditional_final_authority",
+      "mlwr_conditional_final_form",
+      "mlwr_unconditional_final_authority",
+      "mlwr_unconditional_final_form"
+    ],
+    "fields": [
+      {
+        "id": "claimantName",
+        "label": "Claimant's name (contractor, subcontractor, or supplier)",
+        "placeholder": "Acme Construction, Inc.",
+        "required": true
+      },
+      {
+        "id": "customerName",
+        "label": "Name of customer (party who owes payment to the claimant)",
+        "placeholder": "Beta Builders, LLC",
+        "required": true
+      },
+      {
+        "id": "ownerName",
+        "label": "Property owner's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "propertyAddress",
+        "label": "Job location / property address",
+        "placeholder": "123 Main St, Springfield",
+        "required": true
+      },
+      {
+        "id": "throughDate",
+        "label": "Through date (progress-payment forms only)",
+        "placeholder": "August 31, 2026",
+        "required": false
+      },
+      {
+        "id": "checkAmount",
+        "label": "Amount of check or payment (conditional forms and unconditional progress form)",
+        "placeholder": "15,000",
+        "required": false
+      },
+      {
+        "id": "payorName",
+        "label": "Maker of check (conditional forms only)",
+        "placeholder": "Beta Builders, LLC",
+        "required": false
+      },
+      {
+        "id": "payeeName",
+        "label": "Check payable to (conditional forms only)",
+        "placeholder": "Acme Construction, Inc.",
+        "required": false
+      }
+    ]
   }
 ]
