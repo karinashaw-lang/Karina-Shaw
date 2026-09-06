@@ -62578,6 +62578,81 @@
       "title": "Acknowledgment and Signature",
       "kind": "drafting",
       "body": "This information sheet was reviewed by {{applicantName}} in connection with a possible application to California's Safe at Home Address Confidentiality Program. It summarizes the Government Code provisions described above; it does not itself constitute an application, does not enroll anyone in the program, and does not name or bind any other party, since Safe at Home involves no respondent. Any application must be filed with, and can only be approved by, the Secretary of State's office through the process described in this document.\n\nSigned: ________________________\n{{applicantName}}\n\nDate: {{dateSigned}}\nSigned at: {{cityState}}"
+    },
+    {
+      "id": "release1542_intro",
+      "title": "About This Information Sheet",
+      "kind": "drafting",
+      "body": "This information sheet explains California Civil Code Section 1542, the statute that limits what a general release actually covers. It is a companion to {{companyName}}'s Severance Agreement and its general release clause, not a replacement for it. The Severance Agreement's release clause releases {{employeeName}}'s known claims against {{companyName}} in broad terms, but it does not quote or reference Civil Code Section 1542 or its rule about unknown claims. This sheet fills that gap by stating what Section 1542 itself says and what is and is not known about waiving its protection, so that {{employeeName}} and {{companyName}} can read the Severance Agreement's release alongside the actual statutory text it operates against."
+    },
+    {
+      "id": "release1542_full_text",
+      "title": "Text of Civil Code Section 1542",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "California Civil Code Section 1542 currently reads: 'A general release does not extend to claims that the creditor or releasing party does not know or suspect to exist in his or her favor at the time of executing the release and that, if known by him or her, would have materially affected his or her settlement with the debtor or released party.' This is a default rule of California law that applies to general releases unless the parties provide otherwise.",
+      "gap": "This is the current, in-force text as codified on the California Legislature's official site; it does not capture the statute's amendment history or how courts have applied it to particular fact patterns, and a settlement's own release language can change how this default rule applies to that specific agreement.",
+      "citations": [
+        {
+          "case": "Cal. Civ. Code § 1542 (current text, official California Legislative Information site)",
+          "cite": "Cal. Civ. Code § 1542",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1542.",
+          "quote": "A general release does not extend to claims that the creditor or releasing party does not know or suspect to exist in his or her favor at the time of executing the release and that, if known by him or her, would have materially affected his or her settlement with the debtor or released party."
+        }
+      ]
+    },
+    {
+      "id": "release1542_two_elements",
+      "title": "What the Statute's Rule Actually Requires",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Section 1542's rule has two parts, both of which must be true for a claim to fall outside a general release under this default rule: first, the releasing party must not have known or suspected the claim existed at the time of signing, and second, had the releasing party known of it, the claim would have materially affected the settlement reached. A claim the releasing party already knew about, or one that would not have changed the settlement even if known, is not the kind of claim this statute protects.",
+      "gap": "The statute's own text does not define 'suspect to exist' or 'materially affected' any further, and whether a particular claim meets either part of this test is a fact-specific question this document does not resolve. This corpus was unable to check current case law applying these two elements to specific fact patterns because the case-law research tool's daily query quota was exhausted at the time of this research (see the companion clause on that gap).",
+      "citations": [
+        {
+          "case": "Cal. Civ. Code § 1542 (current text, official California Legislative Information site)",
+          "cite": "Cal. Civ. Code § 1542",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1542.",
+          "quote": "does not know or suspect to exist in his or her favor at the time of executing the release and that, if known by him or her, would have materially affected his or her settlement with the debtor or released party"
+        }
+      ]
+    },
+    {
+      "id": "release1542_statute_silent_on_waiver_mechanics",
+      "title": "The Statute's Text Does Not Itself Describe How to Waive It",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Section 1542's own text, quoted above, states only the default rule about what a general release does not cover. It contains no language describing a waiver of that protection, no list of drafting requirements, and no 'knowing and voluntary' standard anywhere in its text. Any requirements for how a releasing party validly gives up Section 1542's protection come from sources outside the statute's own wording, such as case law interpreting it and general contract principles about waiver, not from the text of Section 1542 itself.",
+      "gap": "This is a correction of a common assumption: the research brief for this document expected the statute's own text to state what a valid waiver requires, but the current statutory text has no such language at all. This corpus was unable to identify squarely-on-point case law describing what makes an express Section 1542 waiver enforceable, because the case-law research tool used for this project (CourtListener) returned a daily-quota-exceeded error on the single lightweight check made for this document, and this corpus's practice is not to wait out that quota. As a result, this clause and this document describe only what the statute's text does and does not say, and do not state a judicially-derived waiver standard.",
+      "citations": [
+        {
+          "case": "Cal. Civ. Code § 1542 (current text, official California Legislative Information site)",
+          "cite": "Cal. Civ. Code § 1542",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1542.",
+          "quote": "A general release does not extend to claims that the creditor or releasing party does not know or suspect to exist in his or her favor at the time of executing the release"
+        }
+      ]
+    },
+    {
+      "id": "release1542_waiver_clause_practice",
+      "title": "Common Practice: Express Section 1542 Waiver Language",
+      "kind": "drafting",
+      "body": "Because Section 1542 states a default rule, settlement and severance agreements in California commonly include a separate paragraph in which the releasing party expressly acknowledges Section 1542, states its text or effect, and states that the releasing party is waiving its protection so that the release also covers claims not known or suspected at signing. This practice exists precisely because a general release that does not mention Section 1542 or unknown claims is understood, under the statute's default rule, to leave unknown and unsuspected claims outside its scope."
+    },
+    {
+      "id": "release1542_relationship_to_severance_release",
+      "title": "How This Relates to the Severance Agreement's Release Clause",
+      "kind": "drafting",
+      "body": "{{companyName}}'s Severance Agreement contains a general release clause releasing {{companyName}} from claims {{employeeName}} 'has or may have' arising from employment or its ending. That clause does not mention Civil Code Section 1542, unknown claims, or suspected claims anywhere in its text. Under Section 1542's default rule described above, a general release that is silent on unknown and unsuspected claims does not, by that silence alone, extend to claims {{employeeName}} did not know or suspect existed at the time of signing. This information sheet does not add waiver language to that release clause; it only describes the statutory backdrop against which that release clause operates."
+    },
+    {
+      "id": "release1542_case_law_research_gap",
+      "title": "Research Note: Case Law Not Accessed",
+      "kind": "drafting",
+      "body": "This information sheet is limited to the current text of Civil Code Section 1542 itself. A single check of this corpus's case-law research tool (CourtListener) returned a daily-quota-exceeded response before any case search could run, and this corpus's practice is to disclose that honestly rather than wait for the quota to reset or substitute weaker, off-point authority. As a result, this sheet does not cite or summarize any judicial decision interpreting Section 1542 or describing what makes an express waiver of it effective, including on questions such as whether particular language must name the statute, and readers should not assume the absence of case law here means no such case law exists."
     }
   ]
 }
