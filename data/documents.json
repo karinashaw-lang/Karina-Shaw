@@ -27734,5 +27734,64 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "tod_security_registration_info_sheet",
+    "title": "Transfer-on-Death (TOD) Security Registration — Information Sheet",
+    "description": "Explains California's Uniform TOD Security Registration Act (Probate Code §§ 5500-5512), a nonprobate-transfer statute separate from the Multiple-Party Accounts Law and the Transfer-on-Death Deed statute: what counts as a \"security\" and \"security account,\" who may register in beneficiary form, how a TOD or POD designation is created and shown, its lifetime revocability, the effect of the owner's death, the registering entity's discretion and discharge from claims, the transfer's nontestamentary character, preserved surviving-spouse/creditor/community-property rights, and the Act's own applicability date.",
+    "categories": [
+      "Estate Planning"
+    ],
+    "clauseOrder": [
+      "todsec_declaration",
+      "todsec_purpose_and_definitions",
+      "todsec_security_and_account_scope",
+      "todsec_eligible_owners_and_governing_law",
+      "todsec_designation_mechanics",
+      "todsec_revocability_lifetime",
+      "todsec_death_transfer_effect",
+      "todsec_registering_entity_protections",
+      "todsec_nontestamentary_and_other_rights_preserved",
+      "todsec_terms_conditions_and_applicability",
+      "todsec_signature_acknowledgment"
+    ],
+    "fields": [
+      {
+        "id": "ownerName",
+        "label": "Security owner's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "financialInstitutionName",
+        "label": "Brokerage firm, transfer agent, or other registering entity's name",
+        "placeholder": "Acme Brokerage, LLC",
+        "required": true
+      },
+      {
+        "id": "accountDescription",
+        "label": "Description of the security or account",
+        "placeholder": "brokerage account ending in 7890",
+        "required": true
+      },
+      {
+        "id": "beneficiaryName",
+        "label": "TOD (primary) beneficiary's name",
+        "placeholder": "Taylor Morgan",
+        "required": true
+      },
+      {
+        "id": "additionalBeneficiaryName",
+        "label": "Additional primary beneficiary's name (optional)",
+        "placeholder": "Casey Rivera",
+        "required": false
+      },
+      {
+        "id": "contingentBeneficiaryName",
+        "label": "Substitute (contingent) beneficiary's name (optional)",
+        "placeholder": "Riley Chen",
+        "required": false
+      }
+    ]
   }
 ]
