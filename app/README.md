@@ -22,13 +22,19 @@ real. This is the actual state of each:
 | Creator payouts | same as above (+ creator completes Connect onboarding) | Tips/subscriptions charge to the *platform's* Stripe account | Stripe Connect Express: funds route directly to the creator's own account (`transfer_data`), tracked via the `account.updated` webhook |
 | Video upload | `MUX_TOKEN_ID`, `MUX_TOKEN_SECRET`, `MUX_WEBHOOK_SECRET` | Saved to local disk (`public/uploads/`) | Uploaded direct-to-Mux, transcoded, HLS playback |
 | Live streaming | same as above | "Go live" page says Mux isn't configured | Real RTMP ingest + HLS live playback, webhook-driven status |
+| Live chat + viewer clipping | same as above | N/A — both only exist once a stream can go live at all | Chat during the broadcast (polling, same pattern as listening parties) and a "Clip this moment" button that grabs the last 30s; once the stream ends, Mux's recording becomes a regular rewatchable video and pending clip requests become real clips against it |
 | Transcripts | `OPENAI_API_KEY` | Creator pastes manually | Auto-transcribed with Whisper on local file uploads |
 | Commute briefing | same as above | Button says it needs the key | Real GPT summary + TTS audio file |
 
 See `src/lib/integrations/` for the client setup and `isXConfigured()` guards. Because I don't
-have accounts/keys for any of these, **the real-credential paths are implemented but not
-end-to-end verified against the live APIs** — only the fallback paths have been exercised in a
-real browser. Test each with its provider's local tooling before trusting it in production:
+have accounts/keys for any of these, **the real-credential paths that call out to a provider's
+API are implemented but not end-to-end verified against the live APIs** — only the fallback
+paths have been exercised in a real browser. Test each with its provider's local tooling before
+trusting it in production. One exception: the Mux webhook's live-recording-to-Video pipeline
+(`materializeLiveRecording` in `src/app/api/webhooks/mux/route.ts`) needed no outbound Mux call
+to verify, just a correctly-signed inbound webhook, so it *was* exercised end-to-end — a real
+HTTP POST with a hand-computed Mux webhook signature (HMAC-SHA256, matching `@mux/mux-node`'s own
+verification), asserting on the actual Video/Clip rows it produced.
 
 - **Stripe**: `stripe listen --forward-to localhost:3000/api/webhooks/stripe` for local webhook
   delivery; use Stripe's test-mode keys and test card numbers first.
@@ -171,6 +177,13 @@ infrastructure, build differentiation" philosophy:
 - **Live streaming** — `src/app/creator/live` (creator RTMP setup),
   `src/app/creators/[handle]/live` (viewer HLS playback), `src/lib/actions/live.ts`,
   `src/app/api/webhooks/mux`
+- **Live chat + real-time viewer clipping** (V2 Tier 2) — `src/components/live-chat.tsx` +
+  `src/lib/actions/live-chat.ts` (polling chat, same pattern as party chat);
+  `src/components/request-live-clip-form.tsx` + `src/lib/actions/live-clip.ts` (marks a moment
+  during the broadcast) and `src/lib/live-clip.ts` (the 30s lookback window); materialized into
+  real Clips by `materializeLiveRecording` in `src/app/api/webhooks/mux/route.ts`, which also
+  saves the ended broadcast as a normal rewatchable Video — surfaced on `src/app/wall` until
+  resolved
 - **Commute briefing** — `src/lib/actions/briefing.ts` (GPT summary + TTS), surfaced on
   `src/app/wall`
 - **Scheduled listening parties** — `src/app/parties`, `src/lib/actions/party.ts`,

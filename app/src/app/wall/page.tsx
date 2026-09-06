@@ -26,7 +26,7 @@ export default async function WallPage() {
     );
   }
 
-  const [items, briefings, wallCards, recapReels] = await Promise.all([
+  const [items, briefings, wallCards, recapReels, liveClipRequests] = await Promise.all([
     prisma.wallItem.findMany({
       where: { userId: user.id },
       orderBy: { createdAt: "desc" },
@@ -49,6 +49,12 @@ export default async function WallPage() {
       where: { userId: user.id },
       orderBy: { weekStart: "desc" },
       select: { weekStart: true },
+    }),
+    prisma.liveClipRequest.findMany({
+      where: { ownerId: user.id },
+      orderBy: { createdAt: "desc" },
+      take: 10,
+      include: { resultClip: true },
     }),
   ]);
 
@@ -86,6 +92,27 @@ export default async function WallPage() {
               <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">{briefing.script}</p>
             </div>
           ))}
+        </div>
+      )}
+
+      {liveClipRequests.length > 0 && (
+        <div className="mt-6">
+          <h2 className="text-lg font-medium">Live clips</h2>
+          <ul className="mt-2 flex flex-col gap-2 text-sm">
+            {liveClipRequests.map((request) => (
+              <li key={request.id}>
+                {request.resultClip ? (
+                  <Link href={`/clips/${request.resultClip.id}`} className="underline">
+                    {request.title}
+                  </Link>
+                ) : (
+                  <span className="text-zinc-500">
+                    {request.title} — clipped, will be ready once the stream ends
+                  </span>
+                )}
+              </li>
+            ))}
+          </ul>
         </div>
       )}
 

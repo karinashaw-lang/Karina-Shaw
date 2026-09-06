@@ -8,12 +8,12 @@ datasource db {
 }
 
 model User {
-  id               String          @id @default(cuid())
-  email            String          @unique
+  id               String            @id @default(cuid())
+  email            String            @unique
   passwordHash     String
   name             String
-  stripeCustomerId String?         @unique
-  createdAt        DateTime        @default(now())
+  stripeCustomerId String?           @unique
+  createdAt        DateTime          @default(now())
   creatorProfile   CreatorProfile?
   comments         Comment[]
   follows          Follow[]
@@ -28,6 +28,8 @@ model User {
   dailyActivity    DailyActivity[]
   guestFollows     GuestFollow[]
   recapReels       RecapReel[]
+  liveChatMessages LiveChatMessage[]
+  liveClipRequests LiveClipRequest[]
 }
 
 model CreatorProfile {
@@ -145,16 +147,17 @@ model Follow {
 }
 
 model Clip {
-  id            String     @id @default(cuid())
-  sourceVideoId String
-  sourceVideo   Video      @relation(fields: [sourceVideoId], references: [id])
-  ownerId       String
-  owner         User       @relation(fields: [ownerId], references: [id])
-  title         String
-  startSeconds  Int
-  endSeconds    Int
-  createdAt     DateTime   @default(now())
-  wallItems     WallItem[]
+  id              String           @id @default(cuid())
+  sourceVideoId   String
+  sourceVideo     Video            @relation(fields: [sourceVideoId], references: [id])
+  ownerId         String
+  owner           User             @relation(fields: [ownerId], references: [id])
+  title           String
+  startSeconds    Int
+  endSeconds      Int
+  createdAt       DateTime         @default(now())
+  wallItems       WallItem[]
+  liveClipRequest LiveClipRequest?
 }
 
 model WallItem {
@@ -228,15 +231,57 @@ enum LiveStreamStatus {
 /// A creator's persistent Mux live stream target (RTMP URL + stream key).
 /// Only usable when MUX_TOKEN_ID/MUX_TOKEN_SECRET are set.
 model LiveStream {
-  id              String           @id @default(cuid())
-  creatorId       String           @unique
-  creator         CreatorProfile   @relation(fields: [creatorId], references: [id])
-  muxLiveStreamId String           @unique
+  id              String            @id @default(cuid())
+  creatorId       String            @unique
+  creator         CreatorProfile    @relation(fields: [creatorId], references: [id])
+  muxLiveStreamId String            @unique
   muxStreamKey    String
   muxPlaybackId   String
-  status          LiveStreamStatus @default(IDLE)
-  createdAt       DateTime         @default(now())
-  updatedAt       DateTime         @updatedAt
+  status          LiveStreamStatus  @default(IDLE)
+  /// Set when the current broadcast session flips to ACTIVE — the anchor
+  /// viewer-clip timestamps are measured from (see LiveClipRequest). Reset
+  /// on every new broadcast, since Mux reuses the same LiveStream row
+  /// across sessions.
+  wentLiveAt      DateTime?
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @updatedAt
+  chatMessages    LiveChatMessage[]
+  clipRequests    LiveClipRequest[]
+}
+
+/// Polling-based chat during a live broadcast — same DB-backed approach as
+/// listening-party chat (PartyMessage), no hosted real-time provider.
+model LiveChatMessage {
+  id           String     @id @default(cuid())
+  liveStreamId String
+  liveStream   LiveStream @relation(fields: [liveStreamId], references: [id])
+  userId       String
+  user         User       @relation(fields: [userId], references: [id])
+  body         String
+  createdAt    DateTime   @default(now())
+
+  @@index([liveStreamId, createdAt])
+}
+
+/// A viewer's "clip this moment" request made *during* a live broadcast —
+/// V2 Tier 2's real-time viewer clipping. There's no Video/VOD to point a
+/// Clip at yet while the stream is live, so this just marks a moment
+/// (seconds elapsed since LiveStream.wentLiveAt); once the stream ends and
+/// Mux's recording asset is ready (see the mux webhook), it's materialized
+/// into a real Clip covering the ~30s before the marked moment, and
+/// resultClipId is set. An approximation, not frame-accurate — same
+/// caveat as regular clip trimming on Mux-hosted sources.
+model LiveClipRequest {
+  id              String     @id @default(cuid())
+  liveStreamId    String
+  liveStream      LiveStream @relation(fields: [liveStreamId], references: [id])
+  ownerId         String
+  owner           User       @relation(fields: [ownerId], references: [id])
+  title           String
+  markedAtSeconds Int
+  resultClipId    String?    @unique
+  resultClip      Clip?      @relation(fields: [resultClipId], references: [id])
+  createdAt       DateTime   @default(now())
 }
 
 /// An AI-generated audio summary of a viewer's wall, per the "commute
