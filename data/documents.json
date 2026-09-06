@@ -23650,5 +23650,43 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "speak_out_act_info_sheet",
+    "title": "Speak Out Act — Information Sheet",
+    "description": "An informational sheet on the federal Speak Out Act (42 U.S.C. §§ 19401-19404): the statutory definitions of \"sexual assault dispute,\" \"sexual harassment dispute,\" \"nondisclosure clause,\" and \"nondisparagement clause,\" the rule voiding judicial enforcement of a predispute nondisclosure/nondisparagement clause relating to such a dispute, the carve-out leaving post-dispute settlement agreements outside the bar, the preserved state-law/pseudonym/trade-secret carve-outs, and the December 7, 2022 applicability date. Distinguishes this federal predispute-clause rule from the corpus's existing Non-Disparagement Agreement document, which covers different California and NLRA topics.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "speakoutact_intro",
+      "speakoutact_definitions_disputes",
+      "speakoutact_definitions_clauses",
+      "speakoutact_predispute_only_voided",
+      "speakoutact_postdispute_settlements_not_covered",
+      "speakoutact_carveouts",
+      "speakoutact_applicability_date",
+      "speakoutact_closing"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      }
+    ]
   }
 ]
