@@ -23939,5 +23939,50 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "real_estate_broker_salesperson_licensing_info_sheet",
+    "title": "Real Estate Broker and Salesperson Licensing Law — Information Sheet",
+    "description": "Explains California's statutory licensing requirement for acting as a real estate broker or salesperson under Business & Professions Code § 10130 et seq.: what activities require a license, the broker/salesperson distinction, compensation-flow and supervision rules, statutory exemptions, the bar on suing for unlicensed compensation, and the criminal penalty for unlicensed activity.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "relicense_intro",
+      "relicense_licensing_requirement",
+      "relicense_broker_definition",
+      "relicense_broker_salesperson_distinction",
+      "relicense_supervision_and_compensation_flow",
+      "relicense_exemptions",
+      "relicense_unlicensed_compensation_bar",
+      "relicense_criminal_penalties",
+      "relicense_ack"
+    ],
+    "fields": [
+      {
+        "id": "brokerName",
+        "label": "Broker's name",
+        "placeholder": "e.g., Jane Doe Realty, Inc.",
+        "required": true
+      },
+      {
+        "id": "salespersonName",
+        "label": "Salesperson's name (if applicable)",
+        "placeholder": "e.g., John Smith",
+        "required": false
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date prepared",
+        "placeholder": "e.g., January 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, State",
+        "placeholder": "e.g., Sacramento, California",
+        "required": true
+      }
+    ]
   }
 ]
