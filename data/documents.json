@@ -27255,5 +27255,46 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "subdivided_lands_law_info_sheet",
+    "title": "California Subdivided Lands Law — Information Sheet",
+    "description": "Explains California's Subdivided Lands Law (Bus. & Prof. Code § 11000 et seq.), the Department of Real Estate's public-report regime for offering qualifying subdivided land for sale or lease — distinct from the Subdivision Map Act's local map-approval process. Covers the five-or-more-lot definition and its carve-outs, the statutory expansion to planned developments/condominiums/cooperatives, the \"blanket encumbrance\" definition, the notice-of-intention application requirement, the commissioner's examination and nine statutory grounds for denying a public report, the requirement to deliver the report before a binding contract and make it available to the public, the additional disclosure statement required for common interest development subdivisions, the criminal penalties attached to specific enumerated violations, and the required contents of a subdivision sales contract.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "subdivland_intro",
+      "subdivland_definition_core",
+      "subdivland_expanded_definition",
+      "subdivland_blanket_encumbrance_definition",
+      "subdivland_public_report_application_requirement",
+      "subdivland_commissioner_examination_and_denial_grounds",
+      "subdivland_report_delivery_and_availability",
+      "subdivland_cid_disclosure_statement",
+      "subdivland_criminal_penalties",
+      "subdivland_sales_contract_content_requirement",
+      "subdivland_ack"
+    ],
+    "fields": [
+      {
+        "id": "ownerName",
+        "label": "Owner/subdivider's name",
+        "placeholder": "Acme Land Development, LLC",
+        "required": true
+      },
+      {
+        "id": "buyerName",
+        "label": "Prospective purchaser's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "propertyDescription",
+        "label": "Description of the subdivided land",
+        "placeholder": "Sunrise Meadows Subdivision, Lots 1–24, Placer County, California",
+        "required": true
+      }
+    ]
   }
 ]
