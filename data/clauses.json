@@ -71535,6 +71535,143 @@
       "title": "Acknowledgment",
       "kind": "drafting",
       "body": "Prepared by {{preparerName}} regarding the estate of {{decedentName}} (date of death: {{dateOfDeath}}; character and estimated value of estate property: {{estimatedEstateValue}}).\n\nSigned: _______________________________\nDate: {{dateSigned}}\nLocation: {{cityState}}"
+    },
+    {
+      "id": "designpat_declaration",
+      "title": "Declaration",
+      "kind": "drafting",
+      "body": "This information sheet describes the basics of a design patent under 35 U.S.C. §§ 171-173 and 289 — the distinct category of U.S. patent protecting the ornamental appearance of an article of manufacture, as opposed to a utility patent, which protects how an article is made or used. It is prepared with reference to {{patentDescription}}, held by or applied for by {{patentHolderName}}, with an application filing date of {{filingDate}}. This sheet describes the general statutory subject-matter requirement in § 171(a), the applicability of the rest of Title 35 to design applications under § 171(b)-(c), the 15-year term measured from grant under § 173, the shortened 6-month foreign priority period under § 172, and the design-specific infringement remedy in § 289; it does not evaluate whether {{patentDescription}} qualifies for design patent protection, draft or file any application, or calculate any specific term, priority date, or damages figure. This document is distinct from the corpus's existing Provisional Patent Application, Patent Assignment, Patent License, Patent Infringement, False Patent Marking, and Patent Term Adjustment documents, all of which either focus on utility patents or, in the case of the Patent Term Adjustment sheet, mention design patent term only to distinguish it from § 154(b) adjustment without describing design patent's own statutory framework. This sheet is educational only; it is not a substitute for consulting a licensed patent attorney or registered patent practitioner, and it does not itself request, prosecute, or enforce any design patent before the Patent and Trademark Office."
+    },
+    {
+      "id": "designpat_statutory_subject_matter",
+      "title": "Statutory Subject Matter — New, Original, and Ornamental",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "A design patent is available for a \"new, original and ornamental design for an article of manufacture,\" subject to the general conditions and requirements that apply to patents under Title 35. This is a narrower subject-matter category than a utility patent: a utility patent protects a new and useful process, machine, manufacture, or composition of matter, while a design patent protects the way a manufactured article looks. The statute's own text supplies the three adjectives — new, original, and ornamental — but does not itself define any of them or state what makes a design \"primarily ornamental\" as opposed to \"primarily functional.\"",
+      "gap": "The statutory text of § 171(a) supplies only the bare words \"new, original and ornamental\" and does not define them; the substantial body of case law working out where the ornamental/functional line falls (for example, distinguishing a design dictated by function from one with ornamental alternatives) is not covered here because a CourtListener case-law search for this topic returned a 429 rate-limit error (125/day quota exhausted) during this research session, and no case citation is included as a result.",
+      "citations": [
+        {
+          "case": "35 U.S.C. § 171(a) (Cornell LII text)",
+          "cite": "U.S. Code, patents for designs — subject-matter requirement",
+          "url": "https://www.law.cornell.edu/uscode/text/35/171",
+          "quote": "Whoever invents any new, original and ornamental design for an article of manufacture may obtain a patent therefor, subject to the conditions and requirements of this title."
+        }
+      ]
+    },
+    {
+      "id": "designpat_general_title_35_applies",
+      "title": "General Patent Provisions Apply Except as Otherwise Provided",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Design applications are not governed by a wholly separate statutory scheme. The provisions of Title 35 that apply to utility patents — covering matters such as novelty, obviousness, specification and claim requirements, examination procedure, and ownership and assignment — apply equally to design patents, except where a specific design-patent provision (such as § 172's shortened priority period or § 173's 15-year term) displaces the general rule.",
+      "gap": "This clause states only the general incorporation rule of § 171(b); it does not catalog which specific utility-patent provisions in Title 35 have been held or interpreted to apply differently, or not at all, to design applications (for example, the differing treatment of obviousness analysis for designs), which is developed through Patent and Trademark Office guidance and case law not included in this sheet.",
+      "citations": [
+        {
+          "case": "35 U.S.C. § 171(b) (Cornell LII text)",
+          "cite": "U.S. Code, patents for designs — applicability of general Title 35 provisions",
+          "url": "https://www.law.cornell.edu/uscode/text/35/171",
+          "quote": "The provisions of this title relating to patents for inventions shall apply to patents for designs, except as otherwise provided."
+        }
+      ]
+    },
+    {
+      "id": "designpat_filing_date_rule",
+      "title": "Filing Date — Specification and Drawings",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "A design application's filing date is fixed by statute: it is the date on which the specification required under 35 U.S.C. § 112 and any required drawings are filed with the Patent and Trademark Office. Because a design's protected subject matter is its visual appearance, the drawings (or photographs) are typically what defines the scope of what is claimed, and the statute ties the filing date directly to their submission along with the specification.",
+      "gap": "This clause states only the filing-date rule itself; it does not describe the Patent and Trademark Office's formal drawing standards (such as shading and view requirements under Patent and Trademark Office regulations rather than Title 35 itself), which this sheet does not address because they are set by regulation, not by the statute quoted here.",
+      "citations": [
+        {
+          "case": "35 U.S.C. § 171(c) (Cornell LII text)",
+          "cite": "U.S. Code, patents for designs — filing date",
+          "url": "https://www.law.cornell.edu/uscode/text/35/171",
+          "quote": "The filing date of an application for patent for design shall be the date on which the specification as prescribed by section 112 and any required drawings are filed."
+        }
+      ]
+    },
+    {
+      "id": "designpat_term_fifteen_years_from_grant",
+      "title": "Term — 15 Years From Grant, Not From Filing",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "A design patent's term runs 15 years from the date the patent is granted. This differs in kind from a utility patent's term, which under a separate statute runs 20 years from the application's earliest effective U.S. filing date rather than from the date of grant. Because a design patent's term is measured from grant rather than filing, the length of time an application spends in examination does not shorten the eventual term the way it can, absent adjustment, for a utility patent measured from filing.",
+      "gap": "This clause covers only the length and measurement point of the design patent term; it does not address maintenance fees (design patents, unlike utility patents, are not subject to periodic maintenance fee requirements under Title 35 to keep the patent in force for its term) or any transitional term rules for design patents that issued from applications filed before the December 18, 2013 effective date of the 15-year term (which were granted a 14-year term under the prior version of § 173), neither of which is addressed here.",
+      "citations": [
+        {
+          "case": "35 U.S.C. § 173 (Cornell LII text)",
+          "cite": "U.S. Code, term of design patent",
+          "url": "https://www.law.cornell.edu/uscode/text/35/173",
+          "quote": "Patents for designs shall be granted for the term of 15 years from the date of grant."
+        },
+        {
+          "case": "35 U.S.C. § 154(a)(2) (Cornell LII text)",
+          "cite": "U.S. Code, contents and term of patent — utility patent term, for contrast with § 173's design patent term",
+          "url": "https://www.law.cornell.edu/uscode/text/35/154",
+          "quote": "such grant shall be for a term beginning on the date on which the patent issues and ending 20 years from the date on which the application for the patent was filed in the United States"
+        }
+      ]
+    },
+    {
+      "id": "designpat_priority_six_months",
+      "title": "Foreign Priority — Six Months, Not Twelve",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "When an applicant claims the right of priority from an earlier-filed foreign application, the priority period for a design application is shortened to six months, rather than the twelve-month period that applies to most utility applications under the general priority statute. A separate right of priority available for certain later-filed international applications does not apply to designs at all.",
+      "gap": "This clause states only the length of the design priority period and the inapplicability of the later-filed-international-application priority right; it does not describe the separate, alternative six-month priority period available to a design applicant claiming priority from an earlier international design application filed under the Hague Agreement, which is governed by a different statute (35 U.S.C. § 386) not quoted here.",
+      "citations": [
+        {
+          "case": "35 U.S.C. § 172 (Cornell LII text)",
+          "cite": "U.S. Code, right of priority for designs — both quoted sentences are from the same section of the statute and are not independent sources of each other",
+          "url": "https://www.law.cornell.edu/uscode/text/35/172",
+          "quote": "The right of priority provided for by subsections (a) through (d) of section 119 shall be six months in the case of designs. The right of priority provided for by section 119(e) shall not apply to designs."
+        }
+      ]
+    },
+    {
+      "id": "designpat_infringement_remedy_total_profit",
+      "title": "Infringement Remedy — Liable to the Extent of Total Profit",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Design patent infringement carries its own statutory remedy, separate from the general patent damages statute. A person who, during the term of a design patent and without the owner's license, applies the patented design (or a colorable imitation of it) to an article of manufacture for sale, or who sells or offers for sale an article to which the design or a colorable imitation has been applied, is liable to the design patent owner \"to the extent of his total profit\" from that infringement, with a statutory floor of not less than $250, recoverable in a United States district court with jurisdiction over the parties.",
+      "gap": "This clause states only the total-profit remedy and its $250 statutory minimum; it does not describe how \"total profit\" is calculated where an infringing article combines a patented design with other unpatented features or components (an apportionment question that has been the subject of substantial litigation), because a CourtListener search on this topic returned a 429 rate-limit error during this session and no case law is cited here as a result.",
+      "citations": [
+        {
+          "case": "35 U.S.C. § 289 (Cornell LII text)",
+          "cite": "U.S. Code, additional remedy for infringement of design patent — first paragraph",
+          "url": "https://www.law.cornell.edu/uscode/text/35/289",
+          "quote": "Whoever during the term of a patent for a design, without license of the owner, (1) applies the patented design, or any colorable imitation thereof, to any article of manufacture for the purpose of sale, or (2) sells or exposes for sale any article of manufacture to which such design or colorable imitation has been applied shall be liable to the owner to the extent of his total profit, but not less than $250, recoverable in any United States district court having jurisdiction of the parties."
+        }
+      ]
+    },
+    {
+      "id": "designpat_no_double_recovery",
+      "title": "Cumulative With Other Remedies, but No Double Recovery",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "The § 289 total-profit remedy does not replace or foreclose other remedies a design patent owner may have under Title 35, such as the general patent damages provision. The statute states that nothing in § 289 prevents, lessens, or impeaches any other remedy an infringed patent owner has under Title 35's other provisions — but it also states expressly that the owner may not recover the infringer's profit twice for the same infringement.",
+      "gap": "This is the second paragraph of the same statutory section (35 U.S.C. § 289) quoted in this sheet's infringement-remedy clause, not an independent source confirming the total-profit rule stated there; this clause does not describe how a design patent owner elects between, or combines, the § 289 profit remedy and general damages under the separate general patent damages statute (35 U.S.C. § 284) in a specific case, which depends on litigation strategy and proof this sheet does not address.",
+      "citations": [
+        {
+          "case": "35 U.S.C. § 289 (Cornell LII text)",
+          "cite": "U.S. Code, additional remedy for infringement of design patent — second paragraph, from the same section as this sheet's infringement-remedy clause and not independent of it",
+          "url": "https://www.law.cornell.edu/uscode/text/35/289",
+          "quote": "Nothing in this section shall prevent, lessen, or impeach any other remedy which an owner of an infringed patent has under the provisions of this title, but he shall not twice recover the profit made from the infringement."
+        }
+      ]
+    },
+    {
+      "id": "designpat_signature_block",
+      "title": "Signature",
+      "kind": "drafting",
+      "body": "Prepared by {{preparerName}} on behalf of {{companyName}} in {{cityState}} on {{dateSigned}}. This information sheet does not constitute legal advice, does not evaluate whether {{patentDescription}} is eligible for design patent protection or infringes any existing design patent, and is not a substitute for consulting a licensed patent attorney or registered patent practitioner.\n\n_____________________________\n{{preparerName}}\nDate: {{dateSigned}}"
     }
   ]
 }

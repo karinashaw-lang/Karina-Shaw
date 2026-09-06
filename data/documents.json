@@ -25920,5 +25920,68 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "design_patent_basics_info_sheet",
+    "title": "Design Patent Basics — Information Sheet",
+    "description": "Explains the basics of a U.S. design patent under 35 U.S.C. §§171-173 and 289: the ornamental-design subject-matter requirement, how general Title 35 patent provisions apply, the filing-date rule, the 15-year-from-grant term (contrasted with a utility patent's 20-year-from-filing term), the shortened 6-month foreign priority period, and the design-specific total-profit infringement remedy with its no-double-recovery rule.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "designpat_declaration",
+      "designpat_statutory_subject_matter",
+      "designpat_general_title_35_applies",
+      "designpat_filing_date_rule",
+      "designpat_term_fifteen_years_from_grant",
+      "designpat_priority_six_months",
+      "designpat_infringement_remedy_total_profit",
+      "designpat_no_double_recovery",
+      "designpat_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "patentDescription",
+        "label": "Description of the design/invention",
+        "placeholder": "Ornamental design for a beverage bottle",
+        "required": true
+      },
+      {
+        "id": "patentHolderName",
+        "label": "Patent holder/applicant name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "filingDate",
+        "label": "Filing date",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      }
+    ]
   }
 ]
