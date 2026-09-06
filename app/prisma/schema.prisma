@@ -27,6 +27,7 @@ model User {
   wallCards        WallCard[]
   dailyActivity    DailyActivity[]
   guestFollows     GuestFollow[]
+  recapReels       RecapReel[]
 }
 
 model CreatorProfile {
@@ -304,6 +305,24 @@ model WallCard {
   createdAt DateTime @default(now())
 
   @@unique([userId, month])
+}
+
+/// Records that a viewer generated their weekly Recap Reel — a habit/identity
+/// image (see the business plan's "recap reels") summarizing that week's
+/// activity: streak, active days, comments, follows, saves. Rendered on
+/// demand (src/app/api/recap/[userId]/route.tsx) from live activity data,
+/// not stored; this row just tracks the weekly-drop cadence, same pattern
+/// as WallCard's monthly one. Distinct from WallCard: this is about the
+/// viewer's own habit/activity, not their saved wall.
+model RecapReel {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  /// Monday of the recapped week, UTC, e.g. "2026-09-01".
+  weekStart String
+  createdAt DateTime @default(now())
+
+  @@unique([userId, weekStart])
 }
 
 /// One row per (user, calendar day) they visited a video or clip — the

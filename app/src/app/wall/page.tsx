@@ -7,7 +7,8 @@ import RemoveFromWallButton from "@/components/remove-from-wall-button";
 import GenerateBriefingButton from "@/components/generate-briefing-button";
 import WallItemNote from "@/components/wall-item-note";
 import WallCardPanel from "@/components/wall-card-panel";
-import { currentMonthKey } from "@/lib/time";
+import RecapPanel from "@/components/recap-panel";
+import { currentMonthKey, currentWeekStartKey } from "@/lib/time";
 
 export default async function WallPage() {
   const user = await getCurrentUser();
@@ -25,7 +26,7 @@ export default async function WallPage() {
     );
   }
 
-  const [items, briefings, wallCards] = await Promise.all([
+  const [items, briefings, wallCards, recapReels] = await Promise.all([
     prisma.wallItem.findMany({
       where: { userId: user.id },
       orderBy: { createdAt: "desc" },
@@ -44,10 +45,18 @@ export default async function WallPage() {
       orderBy: { month: "desc" },
       select: { month: true },
     }),
+    prisma.recapReel.findMany({
+      where: { userId: user.id },
+      orderBy: { weekStart: "desc" },
+      select: { weekStart: true },
+    }),
   ]);
 
   const currentMonth = currentMonthKey();
   const pastMonths = wallCards.map((c) => c.month).filter((m) => m !== currentMonth);
+
+  const currentWeek = currentWeekStartKey();
+  const pastWeeks = recapReels.map((r) => r.weekStart).filter((w) => w !== currentWeek);
 
   return (
     <div className="mx-auto max-w-3xl px-6 py-10">
@@ -57,6 +66,7 @@ export default async function WallPage() {
       </p>
 
       <WallCardPanel userId={user.id} pastMonths={pastMonths} />
+      <RecapPanel userId={user.id} pastWeeks={pastWeeks} />
 
       <div className="mt-4">
         {isOpenAIConfigured() ? (

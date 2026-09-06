@@ -86,6 +86,13 @@ infrastructure, build differentiation" philosophy:
   episodes and fans can follow the person rather than just the show. A creator re-tags a video's
   full guest list at once (`GuestEditor`); each guest gets a profile page aggregating every
   episode they appear in, across creators, with a follower count and follow button.
+- **Recap Reels** — a weekly "habit" image on the wall page, distinct from the Wall Card: it's
+  about how active the viewer was (streak, active days, comments posted, items saved, new
+  follows, who they engaged with most), not what they chose to save and share. Built entirely
+  from tables that already exist for other features (`DailyActivity`, `Comment`, `Follow`,
+  `GuestFollow`, `WallItem`) — no new tracking added just for this — and rendered the same way
+  as the Wall Card, via `next/og`'s `ImageResponse`. One drop per calendar week
+  (`RecapReel` row, unique per user+week).
 
 ## Stack
 
@@ -173,4 +180,6 @@ infrastructure, build differentiation" philosophy:
   `src/components/wall-card-panel.tsx`
 - **Guest-following** — `src/app/guests/[id]` (guest profile), `src/lib/actions/guest.ts`,
   `src/components/guest-editor.tsx` (creator tagging), `src/components/guest-follow-button.tsx`
+- **Recap Reels** — `src/app/api/recap/[userId]` (PNG rendering), `src/lib/recap.ts`
+  (stats aggregation), `src/components/recap-panel.tsx`, surfaced on `src/app/wall`
 - **Creator dashboard** — `src/app/creator/dashboard`
