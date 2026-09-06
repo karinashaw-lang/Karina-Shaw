@@ -69514,6 +69514,213 @@
       "title": "Acknowledgment -- Not a Facilitator Appointment or Court Order",
       "kind": "drafting",
       "body": "I, {{petitionerName}}, and I, {{respondentName}}, each acknowledge that I have reviewed this information sheet describing California's Family Law Facilitator Act in connection with case number {{courtCaseNumber}} pending in {{countyOfFiling}}.\n\nExecuted on {{dateSigned}}.\n\n☐ _________________________ {{petitionerName}}, signature\n\n☐ _________________________ {{respondentName}}, signature\n\n{{cityState}}\n\n[This information sheet is prepared for use alongside an actual filing or proceeding in the appropriate California superior court. It does not itself appoint, engage, or request the services of a family law facilitator, does not determine which local-rule duties the office of the family law facilitator performs in {{countyOfFiling}}, and does not create any attorney-client relationship or privilege. Only the family law facilitator's office and the local rules applicable in {{countyOfFiling}} determine what services are actually available in a specific case, and this is not a substitute for consulting a licensed attorney.]"
+    },
+    {
+      "id": "benacct_declaration",
+      "title": "Purpose of This Beneficiary's Right to a Trust Accounting Information Sheet",
+      "kind": "drafting",
+      "body": "This information sheet describes California's statutory framework governing a trust beneficiary's right to receive a formal accounting from a trustee, as background in connection with {{trustName}}, executed {{originalTrustDate}}, for which {{trusteeName}} serves or has been asked to serve as trustee. {{beneficiaryName}} is referenced for identification only. This document covers when a trustee's duty to account arises, what a compliant account must contain, the limited circumstances in which that duty does not apply or can be waived, and how a beneficiary may seek court enforcement of the duty. It does not itself constitute an accounting, does not itself satisfy any trustee's duty to account for any specific trust, and does not evaluate whether accounting has been properly given or waived for {{trustName}} or any other trust. This is not a substitute for consulting a licensed attorney about a specific trust's accounting obligations."
+    },
+    {
+      "id": "benacct_general_duty_informed",
+      "title": "The Baseline Duty to Keep Beneficiaries Reasonably Informed",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Separate from any specific formal accounting, California law imposes a general duty on a trustee of {{trustName}} to keep the trust's beneficiaries reasonably informed of the trust and its administration. This general duty is the statutory backdrop for the more specific rules elsewhere in this document — the periodic formal account, its required contents, and the circumstances in which the duty to account does or does not apply.",
+      "gap": "This single sentence states a general standard (\"reasonably informed\") without itself defining what specific disclosures satisfy it in a given situation; the more detailed rules on formal accounting content and timing appear in the separate sections addressed elsewhere in this document. No case law identifying how California courts have applied this general standard could be verified here — a CourtListener search for relevant authority returned a rate-limit error (HTTP 429, daily quota of 125 exhausted) rather than results, so this clause relies on the statutory text alone.",
+      "citations": [
+        {
+          "case": "Cal. Prob. Code § 16060 (California Legislative Information text)",
+          "cite": "the trustee's general duty to keep beneficiaries reasonably informed",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=16060.",
+          "quote": "The trustee has a duty to keep the beneficiaries of the trust reasonably informed of the trust and its administration."
+        }
+      ]
+    },
+    {
+      "id": "benacct_triggering_events",
+      "title": "When a Formal Account Is Required, and Which Beneficiaries Are Entitled to One",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Subject to the exceptions addressed elsewhere in this document, a trustee of {{trustName}} must furnish a formal account at least annually, at the trust's termination, and upon any change of trustee. That duty runs only to each beneficiary to whom income or principal is currently required or authorized, in the trustee's discretion, to be distributed — a narrower group than every person named or contingently interested in {{trustName}}.",
+      "gap": "The statute conditions the accounting duty on the beneficiary being one to whom a distribution is \"currently\" required or authorized; it does not itself define that term for every fact pattern (for example, a beneficiary with only a future or contingent remainder interest and no current distribution right is not, by this provision alone, entitled to an account). The statute also does not specify what counts as the trust's \"annual\" accounting period when a trust's fiscal year changes or is irregular.",
+      "citations": [
+        {
+          "case": "Cal. Prob. Code § 16062(a) (California Legislative Information text)",
+          "cite": "the annual/termination/change-of-trustee triggers and which beneficiaries are entitled to an account",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=16062.",
+          "quote": "the trustee shall account at least annually, at the termination of the trust, and upon a change of trustee, to each beneficiary to whom income or principal is required or authorized in the trustee’s discretion to be currently distributed."
+        }
+      ]
+    },
+    {
+      "id": "benacct_legacy_trust_exception",
+      "title": "A Narrow Exception for Certain Pre-1987 Trusts",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "California's statutory accounting duty does not apply to every trust. A trustee of a living trust created by an instrument executed before July 1, 1987, is not subject to that duty, and the same is true of a trustee of a testamentary trust created by a will executed before July 1, 1987, unless that testamentary trust has since been removed from continuing court jurisdiction, in which case the accounting duty applies after all.",
+      "gap": "Cal. Prob. Code § 16062(b) and § 16062(c) are both cited here as subdivisions of the same section, so they are not independent sources of each other — both come from the same 1990-enacted statute. This exception is date-limited and narrows over time: it applies only to instruments executed before a fixed 1987 cutoff, so it has no bearing on any trust created or restated on or after that date, and the statute does not address how an amendment or restatement of a pre-1987 instrument after that date affects the exception.",
+      "citations": [
+        {
+          "case": "Cal. Prob. Code § 16062(b) (California Legislative Information text)",
+          "cite": "exception for living trusts created by pre-July 1987 instruments — a subdivision of the same section as the § 16062(c) citation below, not an independent source of it",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=16062.",
+          "quote": "A trustee of a living trust created by an instrument executed before July 1, 1987, is not subject to the duty to account provided by subdivision (a)."
+        },
+        {
+          "case": "Cal. Prob. Code § 16062(c) (California Legislative Information text)",
+          "cite": "exception for testamentary trusts created by pre-July 1987 wills, and its own exception for trusts removed from continuing court jurisdiction — a subdivision of the same section as the § 16062(b) citation above, not an independent source of it",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=16062.",
+          "quote": "A trustee of a trust created by a will executed before July 1, 1987, is not subject to the duty to account provided by subdivision (a), except that if the trust is removed from continuing court jurisdiction pursuant to Article 2 (commencing with Section 17350) of Chapter 4 of Part 5, the duty to account provided by subdivision (a) applies to the trustee."
+        }
+      ]
+    },
+    {
+      "id": "benacct_required_contents",
+      "title": "What a Compliant Account Must Contain",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "A formal account furnished under California's trustee-accounting statute must include financial content — receipts and disbursements of principal and income, a statement of assets and liabilities, the trustee's compensation, and the trustee's paid agents and their compensation, each for the last complete fiscal year or since the last account — as well as two specific statutory notices that alert the recipient to legal rights and deadlines: that the recipient may petition the court under Probate Code § 17200 for court review of the account and the trustee's acts, and that a claim against the trustee for breach of trust is barred if not brought within three years of receiving an account or report that discloses the facts giving rise to it.",
+      "gap": "This clause quotes two separate portions of the same subdivision, § 16063(a) — the financial-content requirement in paragraph (1) and the two mandatory notices in paragraphs (5) and (6) — so the two citations below are not independent sources of each other. The statute prescribes required content but does not prescribe a required format, medium (paper versus electronic), or independent audit or CPA review, and it does not itself state what happens if an account omits one of the two mandatory notices short of the separate consequences addressed elsewhere in this document.",
+      "citations": [
+        {
+          "case": "Cal. Prob. Code § 16063(a)(1) (California Legislative Information text)",
+          "cite": "the financial-content requirement — a paragraph of the same subdivision as the § 16063(a)(5)-(6) citation below, not an independent source of it",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=16063.",
+          "quote": "shall contain the following information: (1) A statement of receipts and disbursements of principal and income that have occurred during the last complete fiscal year of the trust or since the last account."
+        },
+        {
+          "case": "Cal. Prob. Code § 16063(a)(5)-(6) (California Legislative Information text)",
+          "cite": "the two mandatory statutory notices an account must contain — paragraphs of the same subdivision as the § 16063(a)(1) citation above, not an independent source of it",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=16063.",
+          "quote": "(5) A statement that the recipient of the account may petition the court pursuant to Section 17200 to obtain a court review of the account and of the acts of the trustee. (6) A statement that claims against the trustee for breach of trust may not be made after the expiration of three years from the date the beneficiary receives an account or report disclosing facts giving rise to the claim."
+        }
+      ]
+    },
+    {
+      "id": "benacct_waiver_limits",
+      "title": "Waiving the Duty to Account, and the Limits on That Waiver",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "The duty to account can be limited in two ways: the trust instrument itself can waive it, or an individual beneficiary can waive the right to an account in writing (a waiver that beneficiary may later withdraw in writing as to future transactions). Neither form of waiver is absolute. Regardless of either kind of waiver, a court may compel the trustee to account upon a showing that it is reasonably likely a material breach of trust has occurred. And a trust instrument's waiver of accounting is void outright — without regard to any court showing — as to a sole trustee who is a disqualified person under the donative-transfer disqualification statutes, a separate protection aimed at self-dealing or undue-influence risk.",
+      "gap": "The § 16064(a) and § 16064(b) citations below are both subdivisions of the same section and are not independent sources of each other; the § 16062(e) citation is from a different section and is included for the disqualified-trustee limit on waiver. The \"reasonably likely\" material-breach standard that lets a court override a waiver is not itself defined by this statute, and § 16062(e)'s disqualified-person trigger depends on separate statutory definitions (former § 21350.5 and current §§ 21380/21382) that are not reproduced or independently verified in this document. No case law applying either standard could be verified here — a CourtListener search returned a rate-limit error rather than results.",
+      "citations": [
+        {
+          "case": "Cal. Prob. Code § 16064(a) (California Legislative Information text)",
+          "cite": "trust-instrument waiver of accounting, and the court's power to compel an account despite a waiver upon a showing of likely material breach — a subdivision of the same section as the § 16064(b) citation below, not an independent source of it",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=16064.",
+          "quote": "To the extent the trust instrument waives the account, except that no waiver described in subdivision (e) of Section 16062 shall be valid or enforceable. Regardless of a waiver of accounting in the trust instrument, upon a showing that it is reasonably likely that a material breach of the trust has occurred, the court may compel the trustee to account."
+        },
+        {
+          "case": "Cal. Prob. Code § 16064(b) (California Legislative Information text)",
+          "cite": "an individual beneficiary's written waiver of the right to an account, and its written revocability — a subdivision of the same section as the § 16064(a) citation above, not an independent source of it",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=16064.",
+          "quote": "As to a beneficiary who has waived in writing the right to an account. A waiver of rights under this subdivision may be withdrawn in writing at any time as to accounts for transactions occurring after the date of the written withdrawal."
+        },
+        {
+          "case": "Cal. Prob. Code § 16062(e) (California Legislative Information text)",
+          "cite": "a trust instrument's waiver of accounting is void as to certain disqualified sole trustees",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=16062.",
+          "quote": "Any limitation or waiver in a trust instrument of the obligation to account is against public policy and shall be void as to any sole trustee who is either of the following: (1) A disqualified person as defined in former Section 21350.5 (as repealed by Chapter 620 of the Statutes of 2010). (2) Described in subdivision (a) of Section 21380, but not described in Section 21382."
+        }
+      ]
+    },
+    {
+      "id": "benacct_no_duty_exceptions",
+      "title": "Further Circumstances Where No Accounting Duty Runs to a Beneficiary",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Beyond the revocable-trust rule addressed elsewhere in this document, California law excuses a trustee of {{trustName}} from accounting to a beneficiary who is also the trustee — there being no one else to whom that duty could meaningfully run in that capacity. Separately, if a revocable trust's settlor loses the capacity needed to exercise the power to revoke and no one else holds that power, the trustee's accounting duty shifts away from the settlor to the beneficiaries the statute identifies for that situation, rather than remaining suspended.",
+      "gap": "The § 16069(a)(2) and § 16069(b) citations below are both subdivisions of the same section and are not independent sources of each other. The incapacity rule in subdivision (b) depends on a cross-reference to Probate Code § 15800(b)(2) to identify exactly which beneficiaries then become entitled to an accounting — that cross-referenced provision was not independently fetched or verified for this document.",
+      "citations": [
+        {
+          "case": "Cal. Prob. Code § 16069(a)(2) (California Legislative Information text)",
+          "cite": "no duty to account where beneficiary and trustee are the same person — a subdivision of the same section as the § 16069(b) citation below, not an independent source of it",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=16069.",
+          "quote": "(2) If the beneficiary and the trustee are the same person."
+        },
+        {
+          "case": "Cal. Prob. Code § 16069(b) (California Legislative Information text)",
+          "cite": "the accounting duty shifts to specified beneficiaries if no one competent holds the power to revoke — a subdivision of the same section as the § 16069(a)(2) citation above, not an independent source of it",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=16069.",
+          "quote": "Notwithstanding subdivision (a), in the case of a revocable trust, if no person holding the power to revoke the trust, in whole or in part, is competent, the trustee’s duties to account shall be owed to those beneficiaries specified in paragraph (2) of subdivision (b) of Section 15800."
+        }
+      ]
+    },
+    {
+      "id": "benacct_petition_to_compel",
+      "title": "Court Enforcement: Petitioning to Compel an Account",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "A trustee or beneficiary of a trust may petition the court concerning the trust's internal affairs, and the statute specifically lists compelling the trustee to account, subject to the waiver provisions addressed elsewhere in this document, among the purposes such a petition can serve — available once the trustee has failed to provide a requested account within 60 days of a beneficiary's written request, and no account has otherwise been furnished within the six months preceding that request.",
+      "gap": "The § 17200(a) and § 17200(b)(7)(C) citations below are both subdivisions of the same section and are not independent sources of each other. The statute makes filing such a petition available (\"may petition\") but does not itself guarantee any particular outcome or timeline for the court's ruling once a petition is filed, and it does not address what happens if the trustee provides a facially compliant but substantively deficient account in response to the 60-day request.",
+      "citations": [
+        {
+          "case": "Cal. Prob. Code § 17200(a) (California Legislative Information text)",
+          "cite": "a trustee or beneficiary may petition the court on the trust's internal affairs — a subdivision of the same section as the § 17200(b)(7)(C) citation below, not an independent source of it",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=17200.",
+          "quote": "a trustee or beneficiary of a trust may petition the court under this chapter concerning the internal affairs of the trust or to determine the existence of the trust."
+        },
+        {
+          "case": "Cal. Prob. Code § 17200(b)(7)(C) (California Legislative Information text)",
+          "cite": "compelling the trustee to account after a 60-day/six-month unanswered written request — a subdivision of the same section as the § 17200(a) citation above, not an independent source of it",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=17200.",
+          "quote": "(C) Account to the beneficiary, subject to the provisions of Section 16064, if the trustee has failed to submit a requested account within 60 days after written request of the beneficiary and no account has been made within six months preceding the request."
+        }
+      ]
+    },
+    {
+      "id": "benacct_limitations_period",
+      "title": "The Three-Year Deadline to Sue the Trustee for Breach After Receiving an Account",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Once a beneficiary receives a written account or report that adequately discloses a claim against the trustee for breach of trust, California law bars that claim unless the beneficiary begins a proceeding to assert it within three years of receiving the account or report. If the account or report does not adequately disclose the claim, or if the beneficiary never received any written account or report at all, the same three-year period instead runs from when the beneficiary actually discovered, or reasonably should have discovered, the subject of the claim.",
+      "gap": "This single quote spans both paragraph (1) and paragraph (2) of Probate Code § 16460(a), which are contiguous in the statutory text, so this is presented as one citation rather than two. The statute's \"adequately discloses\" standard is defined only in general terms (\"sufficient information so that the beneficiary knows of the claim or reasonably should have inquired\") and its application to any specific account's contents is a fact-specific determination the statute leaves to the courts; no case law on how that standard has been applied could be verified here — a CourtListener search returned a rate-limit error (daily quota exhausted) rather than results.",
+      "citations": [
+        {
+          "case": "Cal. Prob. Code § 16460(a)(1)-(2) (California Legislative Information text)",
+          "cite": "the three-year limitations period, running from receipt of an adequately disclosing account or, otherwise, from actual or constructive discovery",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=16460.",
+          "quote": "If a beneficiary has received an interim or final account in writing, or other written report, that adequately discloses the existence of a claim against the trustee for breach of trust, the claim is barred as to that beneficiary unless a proceeding to assert the claim is commenced within three years after receipt of the account or report. An account or report adequately discloses existence of a claim if it provides sufficient information so that the beneficiary knows of the claim or reasonably should have inquired into the existence of the claim. (2) If an interim or final account in writing or other written report does not adequately disclose the existence of a claim against the trustee for breach of trust or if a beneficiary does not receive any written account or report, the claim is barred as to that beneficiary unless a proceeding to assert the claim is commenced within three years after the beneficiary discovered, or reasonably should have discovered, the subject of the claim."
+        }
+      ]
+    },
+    {
+      "id": "benacct_shortened_objection_notice",
+      "title": "A Trust Instrument's Shortened Objection Period, and Its Required Boldface Notice",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "A trust instrument may go further than the general three-year rule and release the trustee from liability if a beneficiary fails to object to an item in an account within a specified period — but only if the account sets forth the item, the objection period is at least 180 days (or the trustee otherwise follows the statute's alternative procedure), and the account is accompanied by a specific written notice, printed in 12-point boldface type, in the exact form the statute prescribes, telling the beneficiary how long they have to object and what happens if they do not. Where that notice and timing are used correctly, a beneficiary who fails to object in writing within the period is barred from later asserting any claim about an item the account adequately disclosed.",
+      "gap": "The § 16461(c) and § 16461(e) citations below are both subdivisions of the same section and are not independent sources of each other; § 16461 also contains subdivisions (a), (b), (d), (f), (g), (h), (i), and (j) not quoted in this clause, including the rule that a trust instrument cannot use this procedure to relieve a trustee of liability for intentional, grossly negligent, bad-faith, or recklessly indifferent breaches. This procedure operates only when a trust instrument actually adopts it with the statute's exact required elements; the statute does not address the consequence of a notice that substantially, but not exactly, matches the prescribed boldface language, and no case law on that question could be verified here — a CourtListener search returned a rate-limit error rather than results.",
+      "citations": [
+        {
+          "case": "Cal. Prob. Code § 16461(c) (California Legislative Information text)",
+          "cite": "the conditions for a valid shortened-objection-period provision, including the 180-day minimum and required boldface notice — a subdivision of the same section as the § 16461(e) citation below, not an independent source of it",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=16461.",
+          "quote": "a provision in a trust instrument that releases the trustee from liability if a beneficiary fails to object to an item in an interim or final account or other written report within a specified time period is effective only if all of the following conditions are met"
+        },
+        {
+          "case": "Cal. Prob. Code § 16461(e) (California Legislative Information text)",
+          "cite": "the effect of a beneficiary's failure to timely object under a compliant shortened-objection-period provision — a subdivision of the same section as the § 16461(c) citation above, not an independent source of it",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=16461.",
+          "quote": "a beneficiary who fails to object in writing to an account or report that complies with the requirements of subdivision (c) within the specified, valid period shall be barred from asserting any claim against the trustee regarding an item that is adequately disclosed in the account or report."
+        }
+      ]
+    },
+    {
+      "id": "benacct_signature_block",
+      "title": "Signature and Acknowledgment Block — Beneficiary's Right to a Trust Accounting Information Sheet",
+      "kind": "drafting",
+      "body": "I declare under penalty of perjury under the laws of the State of California that the foregoing background information is true and correct to the best of my knowledge.\n\nExecuted on {{dateSigned}} at {{cityState}}.\n\nSignature of {{trusteeName}}, as trustee of {{trustName}}: ☐ _________________________\n\n[This information sheet is prepared as background regarding the accounting rights and duties described in California Probate Code §§ 16060-16064, 16069, 16460-16461, and 17200. It does not itself constitute a trust accounting, does not itself satisfy any trustee's duty to account for {{trustName}} or any other trust, and does not itself constitute or replace a court petition under § 17200. This is not a substitute for consulting a licensed attorney about a specific trust's accounting rights or obligations.]"
     }
   ]
 }

@@ -25413,5 +25413,64 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "beneficiary_right_to_trust_accounting_info_sheet",
+    "title": "Beneficiary's Right to a Trust Accounting — Information Sheet",
+    "description": "Explains California Probate Code §§16060-16064, 16069, 16460-16461, and 17200: when a trustee's duty to account arises and to which beneficiaries, what a compliant account must contain, the limited circumstances where the duty does not apply or can be waived, the three-year limitations period, a trust instrument's optional shortened-objection procedure, and how a beneficiary may petition the court to compel an account.",
+    "categories": [
+      "Estate Planning"
+    ],
+    "clauseOrder": [
+      "benacct_declaration",
+      "benacct_general_duty_informed",
+      "benacct_triggering_events",
+      "benacct_legacy_trust_exception",
+      "benacct_required_contents",
+      "benacct_waiver_limits",
+      "benacct_no_duty_exceptions",
+      "benacct_petition_to_compel",
+      "benacct_limitations_period",
+      "benacct_shortened_objection_notice",
+      "benacct_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "trustName",
+        "label": "Name of this trust",
+        "placeholder": "The Jordan Alex Lee Revocable Living Trust",
+        "required": true
+      },
+      {
+        "id": "originalTrustDate",
+        "label": "Date the original trust was created",
+        "placeholder": "March 14, 2020",
+        "required": true
+      },
+      {
+        "id": "trusteeName",
+        "label": "Initial trustee name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "beneficiaryName",
+        "label": "Residuary beneficiary",
+        "placeholder": "Jordan Alex Lee's children, in equal shares",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
