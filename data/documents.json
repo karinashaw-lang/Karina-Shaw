@@ -28230,5 +28230,51 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "fmcsa_clearinghouse_pre_employment_query_info_sheet",
+    "title": "FMCSA Drug and Alcohol Clearinghouse Pre-Employment Query — Information Sheet",
+    "description": "Explains the federal Commercial Driver's License Drug and Alcohol Clearinghouse under 49 CFR Part 382, Subpart G — a database of verified drug and alcohol testing violations for drivers subject to DOT testing rules — and the query duties it places on an employer: the mandatory pre-employment full query before a covered driver performs any safety-sensitive function, the driver-consent requirements for both full and limited queries, the annual query requirement for continuing drivers, the general prohibition on using a driver with an unresolved violation and its SAP/return-to-duty exception, the three-year query recordkeeping duty, and the federal penalty cross-reference. Distinct from this corpus's California DMV Employer Pull Notice Program (a state driving-record system) and Transportation Network Company Driver Background Check Requirements (a California rideshare-specific screening statute) — this is a federal regulatory framework addressing a driver's own record of drug and alcohol testing violations, not a driving record or a state background-check statute.",
+    "categories": [
+      "Hiring"
+    ],
+    "clauseOrder": [
+      "cdlch_scope",
+      "cdlch_applicability",
+      "cdlch_definitions",
+      "cdlch_preemployment_query",
+      "cdlch_driver_consent",
+      "cdlch_annual_query",
+      "cdlch_prohibition_return_to_duty",
+      "cdlch_recordkeeping",
+      "cdlch_penalties",
+      "cdlch_acknowledgment"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme Trucking, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Driver / applicant name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "jobTitle",
+        "label": "Position",
+        "placeholder": "Commercial Driver",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 6, 2026",
+        "required": true
+      }
+    ]
   }
 ]
