@@ -22892,5 +22892,49 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "safe_at_home_address_confidentiality_program_info_sheet",
+    "title": "Safe at Home Address Confidentiality Program — Information Sheet",
+    "description": "An informational sheet on California's Secretary-of-State-administered Safe at Home Address Confidentiality Program (Government Code §§ 6205-6210.7 and §§ 6215-6216.6): the two chapters' distinct eligibility categories (domestic violence/sexual assault/stalking/human trafficking/child abduction/elder abuse under Chapter 3.1, and reproductive/gender-affirming health care and public entity workers under Chapter 3.2), the application and certification process, agency use of the substitute address, confidentiality and discovery protections, and how fees and certification length differ between the two chapters. Explains how this administrative program differs from a court-ordered restraining order.",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "safeathome_intro_and_distinction",
+      "safeathome_chapter31_eligibility_categories",
+      "safeathome_chapter32_eligibility_categories",
+      "safeathome_application_process",
+      "safeathome_agency_use_of_substitute_address",
+      "safeathome_confidentiality_and_disclosure_limits",
+      "safeathome_fees_and_duration_differ_by_chapter",
+      "safeathome_acknowledgment_and_signature"
+    ],
+    "fields": [
+      {
+        "id": "applicantName",
+        "label": "Applicant's name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "eligibilityCategory",
+        "label": "Eligibility category being claimed",
+        "placeholder": "Victim of domestic violence",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
