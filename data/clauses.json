@@ -78496,6 +78496,172 @@
       "title": "Acknowledgment of Receipt",
       "kind": "drafting",
       "body": "Please sign below to acknowledge that you received this Emergency Action Plan Information Sheet.\n\nEmployee: {{employeeName}}\nSignature: _______________  Date: _______________\n\nContact for questions about the plan: {{programAdministratorName}}\nSignature: _______________  Date: _______________\n\nOn behalf of {{companyName}}:\nSignature: _______________  Date: _______________"
+    },
+    {
+      "id": "solarshade_intro",
+      "title": "California Solar Shade Control Act — Introduction and Scope",
+      "kind": "drafting",
+      "body": "This information sheet describes, in general terms, California's Solar Shade Control Act, Public Resources Code §§ 25980–25986, in connection with the solar collector described below and located at {{party1PropertyAddress}} (owned or controlled by {{party1Name}}), and the tree or shrub described below and located at {{party2PropertyAddress}} (owned or controlled by {{party2Name}}).\n\nSolar collector at issue: {{solarCollectorDescription}}\n\nTree or shrub at issue: {{treeShrubDescription}}\n\nThe Solar Shade Control Act addresses shading of a solar collector by a tree or shrub on another person's property, planted or grown after the collector's installation. It covers the statute's own name and legislative policy statement; its definition of \"solar collector\" and the siting rules a collector itself must meet; the statutory 10-percent shading restriction and the hours to which it applies; the private-nuisance status a violating tree or shrub can acquire, and the written-notice step the statute makes a prerequisite to that status; the statute's own listed exemptions; the authority a city or county has to opt out of, or supersede, the statute locally; and a separate statutory exemption procedure for a passive or natural solar system impacted by another, active solar system. This topic is distinct from Civil Code §§ 714 and 714.1 (the California Solar Rights Act, addressed in this corpus's own information sheet), which void certain restrictions on installing or using a solar energy system in the first place, and from Civil Code § 841 (the Good Neighbor Fence Act, also addressed in this corpus), which concerns cost-sharing for a boundary fence between adjoining landowners, not shading of a solar collector by vegetation. This sheet is informational only. It does not itself measure any shadow, determine whether any specific tree or shrub violates Public Resources Code § 25982, determine whether any exemption in § 25984 applies, determine whether {{party1PropertyAddress}} or {{party2PropertyAddress}} lies within a city or county that has adopted an ordinance under § 25985, or resolve any actual dispute between {{party1Name}} and {{party2Name}}."
+    },
+    {
+      "id": "solarshade_act_name_and_policy",
+      "title": "The Statute's Name and Legislative Policy Statement",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "California's Public Resources Code states that Chapter 12 of Division 15 (Public Resources Code §§ 25980–25986) \"shall be known and may be cited as the Solar Shade Control Act.\" The same section states it is the policy of the state to promote all feasible means of energy conservation and all feasible uses of alternative energy supply sources, and that the state, in particular, encourages the planting and maintenance of trees and shrubs to create shading, moderate outdoor temperatures, and provide various economic and aesthetic benefits. The same section also states that there are certain situations in which the need for widespread use of alternative energy devices, such as solar collectors, requires specific and limited controls on trees and shrubs. This section is the chapter's own name and policy statement; it does not itself impose the shading restriction, define \"solar collector,\" or state the exemptions, each of which appear in other sections of the same chapter described elsewhere in this document.",
+      "gap": "Public Resources Code § 25980 is a legislative policy and findings statement, not an operative restriction on any specific tree, shrub, or solar collector; it does not, by its own text, prohibit or require anything with respect to any particular property. Its reference to \"alternative energy devices, such as solar collectors\" is general language in a policy statement, not the statute's own operative definition of \"solar collector,\" which appears only in Section 25981 and is quoted in a companion clause of this document.",
+      "citations": [
+        {
+          "case": "Cal. Pub. Res. Code § 25980",
+          "cite": "California Public Resources Code, Solar Shade Control Act, statutory name and legislative policy statement",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PRC&sectionNum=25980.",
+          "quote": "This chapter shall be known and may be cited as the Solar Shade Control Act. It is the policy of the state to promote all feasible means of energy conservation and all feasible uses of alternative energy supply sources. In particular, the state encourages the planting and maintenance of trees and shrubs to create shading, moderate outdoor temperatures, and provide various economic and aesthetic benefits. However, there are certain situations in which the need for widespread use of alternative energy devices, such as solar collectors, requires specific and limited controls on trees and shrubs."
+        }
+      ]
+    },
+    {
+      "id": "solarshade_solar_collector_definition",
+      "title": "Statutory Definition of \"Solar Collector\"",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "For purposes of the Solar Shade Control Act, California's Public Resources Code defines \"solar collector\" as a fixed device, structure, or part of a device or structure, on the roof of a building, that is used primarily to transform solar energy into thermal, chemical, or electrical energy; the solar collector must be used as part of a system that makes use of solar energy for any or all of three listed purposes: water heating; space heating or cooling; or power generation. Notwithstanding that roof-mounted definition, the statute separately provides that \"solar collector\" also includes a fixed device, structure, or part of a device or structure used primarily for that same energy transformation that is installed on the ground, where a solar collector cannot be installed on the roof of the building receiving the energy due to inappropriate roofing material, slope of the roof, structural shading, or orientation of the building. The statute also states an exclusion: \"solar collector\" does not include a solar collector that is designed and intended to offset more than the building's electricity demand.",
+      "gap": "Public Resources Code § 25981(a), (b), and (c) are all subsections of the same statutory section and are treated here as one source, not as independent sources corroborating one another. The three listed purposes in subdivision (a) are \"water heating,\" \"space heating or cooling,\" and \"power generation\"; the statute's own text, as fetched and reviewed in full, does not use the word \"pool\" or the phrase \"pool heating\" anywhere in Section 25981, unlike Civil Code § 714 (the separate California Solar Rights Act, addressed in this corpus's own information sheet), which does set a distinct cost-and-efficiency threshold specifically for solar pool-heating systems. This clause does not evaluate whether any specific device or structure in fact meets this definition.",
+      "citations": [
+        {
+          "case": "Cal. Pub. Res. Code § 25981(a)",
+          "cite": "California Public Resources Code, roof-mounted definition of \"solar collector\" and its three listed purposes",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PRC&sectionNum=25981.",
+          "quote": "As used in this chapter, “solar collector” means a fixed device, structure, or part of a device or structure, on the roof of a building, that is used primarily to transform solar energy into thermal, chemical, or electrical energy. The solar collector shall be used as part of a system that makes use of solar energy for any or all of the following purposes:(1) Water heating.(2) Space heating or cooling.(3) Power generation."
+        },
+        {
+          "case": "Cal. Pub. Res. Code § 25981(b)",
+          "cite": "California Public Resources Code, ground-mounted extension of the definition, treated as one source with § 25981(a) above, not an independent source",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PRC&sectionNum=25981.",
+          "quote": "Notwithstanding subdivision (a), for the purpose of this chapter, “solar collector” includes a fixed device, structure, or part of a device or structure that is used primarily to transform solar energy into thermal, chemical, or electrical energy and that is installed on the ground because a solar collector cannot be installed on the roof of the building receiving the energy due to inappropriate roofing material, slope of the roof, structural shading, or orientation of the building."
+        },
+        {
+          "case": "Cal. Pub. Res. Code § 25981(c)",
+          "cite": "California Public Resources Code, exclusion for a collector designed to offset more than the building's electricity demand, treated as one source with § 25981(a)-(b) above, not an independent source",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PRC&sectionNum=25981.",
+          "quote": "For the purposes of this chapter, “solar collector” does not include a solar collector that is designed and intended to offset more than the building’s electricity demand."
+        }
+      ]
+    },
+    {
+      "id": "solarshade_collector_siting_requirements",
+      "title": "Siting Requirements a Solar Collector Itself Must Meet",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "California's Public Resources Code states that, for purposes of the Solar Shade Control Act, the location of a solar collector is required to comply with local building and setback regulations, and to be set back not less than five feet from the property line, and not less than 10 feet above the ground. The statute allows a solar collector to be less than 10 feet in height only if, in addition to the five-foot setback, the collector is set back three times the amount its height is lowered below 10 feet.",
+      "gap": "Public Resources Code § 25981(d)'s own text, as fetched and reviewed in full, states these siting requirements without stating what legal consequence follows if a solar collector does not meet them — in particular, it does not itself state whether a noncompliantly sited collector remains an \"affected solar collector\" entitled to the shading restriction and private-nuisance provisions described elsewhere in this document, or the written-notice procedure tied to them. This clause does not evaluate whether any specific installed collector in fact meets these siting requirements.",
+      "citations": [
+        {
+          "case": "Cal. Pub. Res. Code § 25981(d)",
+          "cite": "California Public Resources Code, setback and height requirements for a solar collector's location",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PRC&sectionNum=25981.",
+          "quote": "For purposes of this chapter, the location of a solar collector is required to comply with the local building and setback regulations, and to be set back not less than five feet from the property line, and not less than 10 feet above the ground. A solar collector may be less than 10 feet in height only if, in addition to the five-foot setback, the solar collector is set back three times the amount lowered."
+        }
+      ]
+    },
+    {
+      "id": "solarshade_shading_restriction",
+      "title": "The Statutory 10-Percent Shading Restriction",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "California's Public Resources Code states the Solar Shade Control Act's core restriction: after the installation of a solar collector, a person owning or in control of another property shall not allow a tree or shrub to be placed or, if placed, to grow on that property so as to cast a shadow greater than 10 percent of the collector absorption area upon that solar collector surface at any one time between the hours of 10 a.m. and 2 p.m., local standard time. By its own terms, the restriction applies only after the solar collector's installation, to a tree or shrub on another person's property (not the solar collector owner's own property), and only during the specified four-hour window.",
+      "gap": "Public Resources Code § 25982's own text, as fetched and reviewed in full, does not define \"collector absorption area\" or state a required measurement method, instrument, season, or date for determining whether a shadow exceeds 10 percent of it — the statute states a percentage and a time window, not a testing protocol. The statute's own phrase \"local standard time\" is not further defined in the text and, on its face, does not itself state whether or how it accounts for daylight saving time. This clause does not evaluate whether any specific tree or shrub in fact casts a shadow meeting or exceeding this statutory threshold on any specific solar collector.",
+      "citations": [
+        {
+          "case": "Cal. Pub. Res. Code § 25982",
+          "cite": "California Public Resources Code, the 10-percent shadow restriction between 10 a.m. and 2 p.m.",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PRC&sectionNum=25982.",
+          "quote": "After the installation of a solar collector, a person owning or in control of another property shall not allow a tree or shrub to be placed or, if placed, to grow on that property so as to cast a shadow greater than 10 percent of the collector absorption area upon that solar collector surface at any one time between the hours of 10 a.m. and 2 p.m., local standard time."
+        }
+      ]
+    },
+    {
+      "id": "solarshade_nuisance_status_and_notice_prerequisite",
+      "title": "Private-Nuisance Status and the Written-Notice Prerequisite",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "California's Public Resources Code states that a tree or shrub maintained in violation of the shading restriction described elsewhere in this document is a private nuisance, as defined in Civil Code § 3481, but only if the person who maintains or permits the tree or shrub to be maintained fails to remove or alter it after receiving a written notice from the owner or agent of the affected solar collector requesting compliance with the shading restriction. Private-nuisance status under this statute is therefore conditioned on two things happening in sequence: a written notice requesting compliance, and a subsequent failure to remove or alter the tree or shrub.",
+      "gap": "Public Resources Code § 25983's own text, as fetched and reviewed in full, does not itself state any required content, format, delivery method (such as personal delivery or mail), or waiting period for the written notice it makes a prerequisite to private-nuisance status — unlike, for example, Civil Code § 841(b)(2) (the separate Good Neighbor Fence Act, addressed in this corpus's own information sheet), which itemizes specific required content for its own 30-day notice. Civil Code § 3481, cross-referenced by this section for the definition of \"private nuisance,\" was not independently fetched or verified in this research session; this clause relies on Section 25983's own cross-reference to it, not on Section 3481's fetched text. This clause does not evaluate whether any specific notice sent regarding any specific tree or shrub in fact satisfies Section 25983, or whether that tree or shrub has in fact been removed or altered after any such notice.",
+      "citations": [
+        {
+          "case": "Cal. Pub. Res. Code § 25983",
+          "cite": "California Public Resources Code, private-nuisance status for a violating tree or shrub, conditioned on written notice and failure to remove or alter",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PRC&sectionNum=25983.",
+          "quote": "A tree or shrub that is maintained in violation of Section 25982 is a private nuisance, as defined in Section 3481 of the Civil Code, if the person who maintains or permits the tree or shrub to be maintained fails to remove or alter the tree or shrub after receiving a written notice from the owner or agent of the affected solar collector requesting compliance with the requirements of Section 25982."
+        }
+      ]
+    },
+    {
+      "id": "solarshade_statutory_exemptions",
+      "title": "The Statute's Own Listed Exemptions",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "California's Public Resources Code states that the Solar Shade Control Act does not apply to any of four listed situations: a tree or shrub planted prior to the installation of a solar collector; a tree planted, grown, or harvested on timberland as defined in Public Resources Code § 4526 or on land devoted to the production of commercial agricultural crops; the replacement of a tree or shrub that had been growing prior to the installation of a solar collector and that, subsequent to the collector's installation, dies or is removed for the protection of public health, safety, or the environment; and a tree or shrub that is subject to a city or county ordinance.",
+      "gap": "Public Resources Code § 25984's cross-reference to the definition of \"timberland\" in Section 4526 was not independently fetched or verified in this research session; this clause relies on Section 25984's own cross-reference, not on Section 4526's fetched text. The fourth exemption, for \"a tree or shrub that is subject to a city or county ordinance,\" is stated broadly in the statute's own text — it is not, on its face, limited to an ordinance that itself regulates solar shading, tree preservation, or the same subject matter as this chapter; this clause does not evaluate whether any specific city or county ordinance in fact makes any particular tree or shrub \"subject to\" it within the meaning of this subdivision. This clause does not evaluate whether any of the four exemptions in fact applies to any specific tree or shrub.",
+      "citations": [
+        {
+          "case": "Cal. Pub. Res. Code § 25984",
+          "cite": "California Public Resources Code, the chapter's four listed exemptions",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PRC&sectionNum=25984.",
+          "quote": "This chapter does not apply to any of the following:(a) A tree or shrub planted prior to the installation of a solar collector.(b) A tree planted, grown, or harvested on timberland as defined in Section 4526 or on land devoted to the production of commercial agricultural crops.(c) The replacement of a tree or shrub that had been growing prior to the installation of a solar collector and that, subsequent to the installation of the solar collector, dies, or is removed for the protection of public health, safety, or the environment.(d) A tree or shrub that is subject to a city or county ordinance."
+        }
+      ]
+    },
+    {
+      "id": "solarshade_local_ordinance_authority",
+      "title": "Local Opt-Out and Superseding Local Ordinance Authority",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "California's Public Resources Code gives cities and counties two distinct forms of local authority over the Solar Shade Control Act. First, a city, or for unincorporated areas a county, may adopt, by majority vote of its governing body, an ordinance exempting its jurisdiction from the chapter's provisions altogether; the statute states that adopting that ordinance is not itself subject to the California Environmental Quality Act (Public Resources Code § 21000 and following). Second, and notwithstanding the chapter's requirements, the statute states that a city or county ordinance specifying requirements for tree preservation or solar shade control shall govern within the jurisdiction of the city or county that adopted it.",
+      "gap": "Public Resources Code § 25985(a) and (b) are both subsections of the same statutory section and are treated here as one source, not as independent sources corroborating one another. Subdivisions (a) and (b) describe what appear to be two different mechanisms — a full opt-out ordinance under (a), and a substantively different local ordinance that \"shall govern\" under (b) — and the statute's own text, as fetched and reviewed in full, does not state whether a governing ordinance under (b) must first be adopted as, or accompanied by, an exemption ordinance under (a), or is independent authority. The statute's own text also does not state, in subdivision (b), that the CEQA exemption stated for subdivision (a)'s ordinance extends to a subdivision (b) ordinance. This clause does not evaluate whether any particular city or county has in fact adopted an ordinance under either subdivision.",
+      "citations": [
+        {
+          "case": "Cal. Pub. Res. Code § 25985(a)",
+          "cite": "California Public Resources Code, local ordinance exempting a jurisdiction from the chapter, and CEQA inapplicability to its adoption",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PRC&sectionNum=25985.",
+          "quote": "A city, or for unincorporated areas, a county, may adopt, by majority vote of the governing body, an ordinance exempting their jurisdiction from the provisions of this chapter. The adoption of the ordinance shall not be subject to the California Environmental Quality Act (commencing with Section 21000)."
+        },
+        {
+          "case": "Cal. Pub. Res. Code § 25985(b)",
+          "cite": "California Public Resources Code, a superseding local ordinance on tree preservation or solar shade control, treated as one source with § 25985(a) above, not an independent source",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PRC&sectionNum=25985.",
+          "quote": "Notwithstanding the requirements of this chapter, a city or a county ordinance specifying requirements for tree preservation or solar shade control shall govern within the jurisdiction of the city or county that adopted the ordinance."
+        }
+      ]
+    },
+    {
+      "id": "solarshade_passive_solar_system_relief",
+      "title": "Equitable Relief for a Passive or Natural Solar System",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "California's Public Resources Code provides a separate exemption mechanism for a person who plans a passive or natural solar heating system, cooling system, or heating and cooling system that would impact an adjacent active solar system: that person may seek equitable relief in a court of competent jurisdiction to exempt the passive or natural system from the chapter's provisions. The statute states that the court may grant that exemption based on a finding that the passive or natural system would provide a demonstrably greater net energy savings than the active system that would be impacted.",
+      "gap": "Public Resources Code § 25986's own text, as fetched and reviewed in full, does not define \"passive or natural solar heating system,\" does not name the specific court or type of civil action in which this relief is to be sought beyond \"a court of competent jurisdiction,\" and does not further specify how \"demonstrably greater net energy savings\" is to be calculated or proven. No case law construing this section could be located and verified in this research session: a CourtListener search for \"Solar Shade Control Act\" returned a rate-limit error (HTTP 429, \"Rate limit exceeded: 125/day\") before any result could be reviewed, so this clause is based on the statute's own text alone, not on any judicial interpretation of it.",
+      "citations": [
+        {
+          "case": "Cal. Pub. Res. Code § 25986",
+          "cite": "California Public Resources Code, equitable-relief exemption for a passive or natural solar system impacted by an active solar system",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PRC&sectionNum=25986.",
+          "quote": "Any person who plans a passive or natural solar heating system or cooling system or heating and cooling system which would impact on an adjacent active solar system may seek equitable relief in a court of competent jurisdiction to exempt such system from the provisions of this chapter. The court may grant such an exemption based on a finding that the passive or natural system would provide a demonstrably greater net energy savings than the active system which would be impacted."
+        }
+      ]
+    },
+    {
+      "id": "solarshade_notice_and_signature",
+      "title": "Written Notice Requesting Compliance, and Acknowledgment",
+      "kind": "drafting",
+      "body": "WRITTEN NOTICE REGARDING PUBLIC RESOURCES CODE SECTION 25982\n\nDate of this notice: {{noticeDate}}\n\nFrom: {{party1Name}}, owner or person in control of the solar collector at {{party1PropertyAddress}}\nTo: {{party2Name}}, owner or person in control of the property at {{party2PropertyAddress}}\n\nSolar collector at issue: {{solarCollectorDescription}}\n\nTree or shrub at issue: {{treeShrubDescription}}\n\nThis notice references Public Resources Code § 25982, which restricts a tree or shrub from casting a shadow greater than 10 percent of a solar collector's absorption area upon the collector surface at any one time between 10 a.m. and 2 p.m., local standard time, and Public Resources Code § 25983, under which a tree or shrub maintained in violation of Section 25982 is a private nuisance if it is not removed or altered after a written notice such as this one requesting compliance with Section 25982.\n\nThis notice states facts about Public Resources Code §§ 25982 and 25983; it does not itself determine that {{treeShrubDescription}} in fact violates Section 25982, does not itself determine that any exemption under Section 25984 or any local ordinance under Section 25985 does not apply, and does not itself determine that a private nuisance under Section 25983 has in fact arisen.\n\nSignature of {{party1Name}}: _________________________ Date: _______________\n\nACKNOWLEDGMENT — INFORMATION SHEET ONLY\n\nI have reviewed this information sheet describing the California Solar Shade Control Act, Public Resources Code §§ 25980–25986, in connection with the solar collector at {{party1PropertyAddress}} and the tree or shrub at {{party2PropertyAddress}}. I understand that this document is informational only: it does not measure any shadow or determine whether any shading threshold has been met; it does not determine whether any exemption, local opt-out ordinance, or superseding local ordinance applies; it does not determine whether any tree or shrub is or is not a private nuisance under Section 25983; and it does not resolve any actual dispute between {{party1Name}} and {{party2Name}}.\n\nExecuted on {{dateSigned}} at {{cityState}}.\n\nSignature: ☐ _________________________\nPrint name: _________________________\n\n[This information sheet is prepared for general reference concerning the Solar Shade Control Act as it may apply to {{party1PropertyAddress}} and {{party2PropertyAddress}}. It does not constitute legal advice about any specific tree, shrub, solar collector, notice, exemption, ordinance, or dispute, and it does not itself approve, deny, waive, measure, or take any action with respect to any actual shading claim.]"
     }
   ]
 }

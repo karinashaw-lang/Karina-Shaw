@@ -27967,5 +27967,81 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "solar_shade_control_act_info_sheet",
+    "title": "California Solar Shade Control Act — Information Sheet",
+    "description": "Explains California's Solar Shade Control Act, Public Resources Code sections 25980 through 25986: the statute's name and legislative policy statement, its definition of 'solar collector' and the siting rules a collector must meet, the 10-percent shading restriction between 10 a.m. and 2 p.m., the private-nuisance status a violating tree or shrub can acquire and the written-notice step that is a prerequisite to it, the statute's own listed exemptions, a city or county's authority to opt out of or supersede the statute locally, and a separate court-relief exemption for a passive or natural solar system impacted by an active one. A separate statute from this project's California Solar Rights Act information sheet, which addresses restrictions on installing or using a solar energy system rather than shading of one by vegetation.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "solarshade_intro",
+      "solarshade_act_name_and_policy",
+      "solarshade_solar_collector_definition",
+      "solarshade_collector_siting_requirements",
+      "solarshade_shading_restriction",
+      "solarshade_nuisance_status_and_notice_prerequisite",
+      "solarshade_statutory_exemptions",
+      "solarshade_local_ordinance_authority",
+      "solarshade_passive_solar_system_relief",
+      "solarshade_notice_and_signature"
+    ],
+    "fields": [
+      {
+        "id": "party1Name",
+        "label": "Solar collector owner's full name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "party1PropertyAddress",
+        "label": "Solar collector owner's property address",
+        "placeholder": "123 Main St., Fresno, CA 93701",
+        "required": true
+      },
+      {
+        "id": "party2Name",
+        "label": "Adjoining property owner's full name",
+        "placeholder": "Morgan Casey",
+        "required": true
+      },
+      {
+        "id": "party2PropertyAddress",
+        "label": "Adjoining property owner's property address",
+        "placeholder": "125 Main St., Fresno, CA 93701",
+        "required": true
+      },
+      {
+        "id": "solarCollectorDescription",
+        "label": "Description and location of the solar collector",
+        "placeholder": "Roof-mounted photovoltaic array, south-facing rear roof slope",
+        "required": true
+      },
+      {
+        "id": "treeShrubDescription",
+        "label": "Description and location of the tree or shrub at issue",
+        "placeholder": "Coast redwood near the shared rear property line",
+        "required": true
+      },
+      {
+        "id": "noticeDate",
+        "label": "Date of this notice",
+        "placeholder": "September 6, 2026",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 6, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Fresno, California",
+        "required": true
+      }
+    ]
   }
 ]
