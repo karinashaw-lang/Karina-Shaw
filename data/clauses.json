@@ -77351,6 +77351,208 @@
       "title": "Signature and Acknowledgment",
       "kind": "drafting",
       "body": "Please sign below to indicate receipt and review of this information sheet.\n\nApplicant/Employee: {{employeeName}}\nPosition: {{jobTitle}}\nDate: _______________\n\n{{companyName}} certifies that this information sheet was provided to {{employeeName}}.\n\nCompany representative: _______________\nDate: _______________"
+    },
+    {
+      "id": "waterrights_intro",
+      "title": "California Water Rights — Introduction and Scope",
+      "kind": "drafting",
+      "body": "This information sheet describes, in general terms, the California statutory framework governing rights to use water in connection with real property, in connection with the property located at {{propertyAddress}} and owned by {{ownerName}}. California recognizes several distinct, overlapping legal bases for using water: a riparian right tied to land bordering a watercourse, an appropriative right acquired through the state permit system administered by the State Water Resources Control Board, and a groundwater right in water pumped from beneath the land. This sheet covers the state's foundational declaration that all water within the State is public property subject to a reasonable-and-beneficial-use limitation; the statutory line between water subject to the state's surface-water appropriation permit system and other water; the priority Water Code § 1201 gives to riparian use over appropriation; the 2014 Sustainable Groundwater Management Act's (SGMA) stated intent to preserve existing water rights while regulating groundwater sustainability; SGMA's express statement that it does not itself alter surface water or groundwater rights, together with its narrower rule tolling the use of certain extractions as evidence of a prescription claim; a groundwater sustainability agency's statutory authority to regulate well spacing and extraction (as distinct from well-construction permitting, which remains a county function); the statutory \"de minimis extractor\" exemption for small-volume domestic groundwater pumping; and the requirement that certain water diverters file a statement of diversion and use with the State Water Resources Control Board. This topic is distinct from this corpus's other Real Estate documents addressing land-use approvals, easements, and habitability, none of which address water-rights priority or groundwater regulation. This sheet is informational only. It does not itself determine, adjudicate, quantify, or resolve any riparian, appropriative, or groundwater right affecting {{propertyAddress}} or the {{groundwaterBasinName}} groundwater basin, and it does not determine whether {{propertyAddress}} lies within the jurisdiction of any groundwater sustainability agency or groundwater sustainability plan."
+    },
+    {
+      "id": "waterrights_state_ownership_reasonable_use",
+      "title": "All Water Is Public Property, Subject to a Reasonable-and-Beneficial-Use Limitation",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "California's Water Code opens with two foundational declarations about the legal nature of water rights in the state. Water Code § 102 provides: \"All water within the State is the property of the people of the State, but the right to the use of water may be acquired by appropriation in the manner provided by law.\" Water Code § 100 then ties every right to use water to a reasonable-and-beneficial-use limitation: \"It is hereby declared that because of the conditions prevailing in this State the general welfare requires that the water resources of the State be put to beneficial use to the fullest extent of which they are capable, and that the waste or unreasonable use or unreasonable method of use of water be prevented, and that the conservation of such water is to be exercised with a view to the reasonable and beneficial use thereof in the interest of the people and for the public welfare.\" Section 100 applies that limitation specifically to a stream-based right: \"The right to water or to the use or flow of water in or from any natural stream or watercourse in this State is and shall be limited to such water as shall be reasonably required for the beneficial use to be served, and such right does not and shall not extend to the waste or unreasonable use or unreasonable method of use or unreasonable method of diversion of water.\" Together, these sections establish that no water right in California — riparian, appropriative, or otherwise — is an unconditional property right in a fixed quantity of water; every such right is limited to what is reasonably required for the beneficial use served. This description concerns these two statutory declarations generally; it does not determine what quantity or method of use is \"reasonable\" or \"beneficial\" for any specific use of water at {{propertyAddress}}.",
+      "gap": "Sections 100 and 102 are both original 1943 enactments in the same chapter (Division 1, Chapter 1) of the Water Code, so they are not independent sources of each other. The reasonable-and-beneficial-use standard these sections state is famously fact-intensive and has been given content mainly through decades of judicial decisions and California Constitution Article X, Section 2 (added 1928) — none of which were fetched or quoted for this clause; CourtListener's case-law search returned a rate-limit error (HTTP 429, daily quota exhausted) when queried for this topic, so no judicial gloss on \"reasonable and beneficial use\" is cited anywhere in this document. This clause states the general statutory rule only; it does not evaluate any specific use.",
+      "citations": [
+        {
+          "case": "Cal. Water Code § 102 (California Legislative Information text)",
+          "cite": "Wat. C. § 102",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=WAT&sectionNum=102.",
+          "quote": "All water within the State is the property of the people of the State, but the right to the use of water may be acquired by appropriation in the manner provided by law."
+        },
+        {
+          "case": "Cal. Water Code § 100 (California Legislative Information text)",
+          "cite": "Wat. C. § 100",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=WAT&sectionNum=100.",
+          "quote": "It is hereby declared that because of the conditions prevailing in this State the general welfare requires that the water resources of the State be put to beneficial use to the fullest extent of which they are capable, and that the waste or unreasonable use or unreasonable method of use of water be prevented, and that the conservation of such water is to be exercised with a view to the reasonable and beneficial use thereof in the interest of the people and for the public welfare."
+        },
+        {
+          "case": "Cal. Water Code § 100 (California Legislative Information text)",
+          "cite": "Wat. C. § 100",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=WAT&sectionNum=100.",
+          "quote": "The right to water or to the use or flow of water in or from any natural stream or watercourse in this State is and shall be limited to such water as shall be reasonably required for the beneficial use to be served, and such right does not and shall not extend to the waste or unreasonable use or unreasonable method of use or unreasonable method of diversion of water."
+        }
+      ]
+    },
+    {
+      "id": "waterrights_appropriation_scope_surface_only",
+      "title": "The State Appropriation Permit System Reaches Surface Water and Known Subterranean Streams — Not Percolating Groundwater",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "California operates a permit system for a new appropriative right to use water, administered by the State Water Resources Control Board, but that permit system's statutory scope is limited to a defined category of water. Water Code § 1200 provides: \"Whenever the terms stream, lake or other body of water, or water occurs in relation to applications to appropriate water or permits or licenses issued pursuant to such applications, such term refers only to surface water, and to subterranean streams flowing through known and definite channels.\" By its terms, this definition excludes ordinary percolating groundwater — water beneath the surface that is not flowing through a known and definite channel — from the category of water for which the Board's appropriation-permit application and licensing process applies. This description concerns this single statutory definition generally; it does not determine whether water present at or beneath {{propertyAddress}} is surface water, a subterranean stream flowing through a known and definite channel, or percolating groundwater.",
+      "gap": "This clause quotes a single statutory definition, Water Code § 1200; it is one source, not independently corroborated by a second source. Whether specific subsurface water is flowing through a \"known and definite channel\" (and therefore within the appropriation-permit system) or is instead percolating groundwater (and therefore governed by the separate groundwater-rights and Sustainable Groundwater Management Act framework addressed elsewhere in this corpus) is a fact- and hydrology-specific determination that California courts have historically made case by case; no such judicial decision was fetched or cited for this clause because CourtListener's case-law search returned a rate-limit error (HTTP 429, daily quota exhausted) when queried for this topic.",
+      "citations": [
+        {
+          "case": "Cal. Water Code § 1200 (California Legislative Information text)",
+          "cite": "Wat. C. § 1200",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=WAT&sectionNum=1200.",
+          "quote": "Whenever the terms stream, lake or other body of water, or water occurs in relation to applications to appropriate water or permits or licenses issued pursuant to such applications, such term refers only to surface water, and to subterranean streams flowing through known and definite channels."
+        }
+      ]
+    },
+    {
+      "id": "waterrights_riparian_priority_over_appropriation",
+      "title": "Riparian Use Is Excluded From — and Takes Priority Over — the Water Available for Appropriation",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Water Code § 1201 defines the pool of water the state may make available to a new appropriative permit applicant by carving riparian use out of it first. Section 1201 provides: \"All water flowing in any natural channel, excepting so far as it has been or is being applied to useful and beneficial purposes upon, or in so far as it is or may be reasonably needed for useful and beneficial purposes upon lands riparian thereto, or otherwise appropriated, is hereby declared to be public water of the State and subject to appropriation in accordance with the provisions of this code.\" By its terms, this section declares water in a natural channel to be public water \"subject to appropriation\" only to the extent that water has not already been applied, or is not reasonably needed, for beneficial use on riparian land, and has not otherwise already been appropriated. In this way, § 1201 reflects — without itself defining the elements of — a riparian right's traditionally recognized priority over a later-acquired appropriative right in California's dual water-rights system. This description concerns this single statutory declaration generally; it does not determine whether {{propertyAddress}} is riparian to any watercourse, or the scope of any riparian use reasonably needed there.",
+      "gap": "This clause quotes a single statutory section, Water Code § 1201; it is one source, not independently corroborated by a second source. Section 1201 does not itself define what makes land \"riparian,\" what quantity of use is \"reasonably needed,\" or the other doctrinal elements of a riparian right (for example, that a riparian right is generally unquantified, correlative among riparian owners, and does not extend to land outside the watershed) — those elements have been developed primarily through California case law, none of which was fetched or cited for this clause because CourtListener's case-law search returned a rate-limit error (HTTP 429, daily quota exhausted) when queried for this topic.",
+      "citations": [
+        {
+          "case": "Cal. Water Code § 1201 (California Legislative Information text)",
+          "cite": "Wat. C. § 1201",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=WAT&sectionNum=1201.",
+          "quote": "All water flowing in any natural channel, excepting so far as it has been or is being applied to useful and beneficial purposes upon, or in so far as it is or may be reasonably needed for useful and beneficial purposes upon lands riparian thereto, or otherwise appropriated, is hereby declared to be public water of the State and subject to appropriation in accordance with the provisions of this code."
+        }
+      ]
+    },
+    {
+      "id": "waterrights_sgma_intent_preserve_rights",
+      "title": "The Sustainable Groundwater Management Act's Stated Intent to Preserve Existing Water Rights",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "In 2014, the Legislature enacted the Sustainable Groundwater Management Act (SGMA), Water Code § 10720 et seq., to require local, sustainable management of the state's groundwater basins. The Legislature's statement of intent addresses the relationship between that new regulatory framework and existing water rights directly. Water Code § 10720.1(b) provides that in enacting SGMA, it is the intent of the Legislature: \"To enhance local management of groundwater consistent with rights to use or store groundwater and Section 2 of Article X of the California Constitution. It is the intent of the Legislature to preserve the security of water rights in the state to the greatest extent possible consistent with the sustainable management of groundwater.\" This description concerns this single statement of legislative intent; it is not itself the operative rule limiting SGMA's effect on existing rights, which is addressed by a separate Water Code section covered in another clause in this corpus, and it does not determine how SGMA affects any specific water right at {{propertyAddress}} or in the {{groundwaterBasinName}} groundwater basin.",
+      "gap": "This clause quotes a single subdivision, Water Code § 10720.1(b); it is one source, not independently corroborated by a second source. A legislative statement of intent is not itself a self-executing operative rule of law the way an operative subdivision is; this clause does not by itself establish what SGMA does or does not do to a specific water right — that operative language is addressed in a separate clause in this corpus quoting Water Code § 10720.5. This clause also does not address SGMA's remaining findings in § 10720.1(a) and (c) through (i), which concern basin sustainability, state intervention, and adjudication-process goals not directly tied to preserving existing water rights.",
+      "citations": [
+        {
+          "case": "Cal. Water Code § 10720.1(b) (California Legislative Information text)",
+          "cite": "Wat. C. § 10720.1(b)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=WAT&sectionNum=10720.1.",
+          "quote": "To enhance local management of groundwater consistent with rights to use or store groundwater and Section 2 of Article X of the California Constitution. It is the intent of the Legislature to preserve the security of water rights in the state to the greatest extent possible consistent with the sustainable management of groundwater."
+        }
+      ]
+    },
+    {
+      "id": "waterrights_sgma_no_alteration_of_existing_rights",
+      "title": "SGMA Does Not Itself Determine or Alter Surface Water or Groundwater Rights",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Beyond its statement of intent, SGMA contains an operative subdivision limiting the statute's effect on existing water rights. Water Code § 10720.5(b) provides: \"Nothing in this part, or in any groundwater management plan adopted pursuant to this part, determines or alters surface water rights or groundwater rights under common law or any provision of law that determines or grants surface water rights.\" Section 10720.5(a) states a related but narrower rule limited to certain designated basins: \"Groundwater management pursuant to this part shall be consistent with Section 2 of Article X of the California Constitution. Nothing in this part modifies rights or priorities to use or store groundwater consistent with Section 2 of Article X of the California Constitution, except that in basins designated medium- or high-priority basins by the department, no extraction of groundwater between January 1, 2015, and the date of adoption of a groundwater sustainability plan pursuant to this part or the approval by the department of an alternative submitted under Section 10733.6, whichever is sooner, may be used as evidence of, or to establish or defend against, any claim of prescription.\" Together, these subdivisions state that SGMA regulation and any resulting groundwater sustainability plan do not themselves determine or alter a specific water right, while separately tolling the evidentiary use of extractions during a defined interim window in medium- or high-priority basins for purposes of a prescription claim. This description concerns these statutory subdivisions generally; it does not determine the water-rights priority of, or the medium-/high-priority basin designation applicable to, any water right at {{propertyAddress}} or in the {{groundwaterBasinName}} groundwater basin.",
+      "gap": "The citations to § 10720.5(a) and (b) are to subdivisions of the same statutory section and are not independent of each other. Section 10720.5(a)'s prescription-tolling rule applies only in a basin the Department of Water Resources has designated \"medium-\" or \"high-priority\"; this clause does not identify or verify that designation for any specific groundwater basin, because the Department's basin-prioritization bulletin was not fetched for this clause. Section 10720.5(c)'s cross-reference to a Code of Civil Procedure adjudication action (Chapter 7, commencing with Section 830, of Title 10 of Part 2) was not independently fetched or verified for this clause.",
+      "citations": [
+        {
+          "case": "Cal. Water Code § 10720.5(b) (California Legislative Information text)",
+          "cite": "Wat. C. § 10720.5(b)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=WAT&sectionNum=10720.5.",
+          "quote": "Nothing in this part, or in any groundwater management plan adopted pursuant to this part, determines or alters surface water rights or groundwater rights under common law or any provision of law that determines or grants surface water rights."
+        },
+        {
+          "case": "Cal. Water Code § 10720.5(a) (California Legislative Information text)",
+          "cite": "Wat. C. § 10720.5(a)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=WAT&sectionNum=10720.5.",
+          "quote": "Groundwater management pursuant to this part shall be consistent with Section 2 of Article X of the California Constitution. Nothing in this part modifies rights or priorities to use or store groundwater consistent with Section 2 of Article X of the California Constitution, except that in basins designated medium- or high-priority basins by the department, no extraction of groundwater between January 1, 2015, and the date of adoption of a groundwater sustainability plan pursuant to this part or the approval by the department of an alternative submitted under Section 10733.6, whichever is sooner, may be used as evidence of, or to establish or defend against, any claim of prescription."
+        }
+      ]
+    },
+    {
+      "id": "waterrights_gsa_extraction_regulation_authority",
+      "title": "A Groundwater Sustainability Agency's Statutory Authority to Regulate Extraction and Wells",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Where a groundwater sustainability agency (GSA) has been formed and is regulating a basin under SGMA, the statute grants it specific extraction-regulation authority distinct from — and narrower than — well-construction permitting. Water Code § 10726.4(a)(1) authorizes a GSA \"[t]o impose spacing requirements on new groundwater well construction to minimize well interference and impose reasonable operating regulations on existing groundwater wells to minimize well interference, including requiring extractors to operate on a rotation basis.\" Section 10726.4(a)(2) further authorizes a GSA \"[t]o control groundwater extractions by regulating, limiting, or suspending extractions from individual groundwater wells or extractions from groundwater wells in the aggregate, construction of new groundwater wells, enlargement of existing groundwater wells, or reactivation of abandoned groundwater wells, or otherwise establishing groundwater extraction allocations.\" That same subdivision expressly limits the legal effect of such a limitation: \"A limitation on extractions by a groundwater sustainability agency shall not be construed to be a final determination of rights to extract groundwater from the basin or any portion of the basin.\" The statute separately makes clear that this extraction-control authority is not a well-construction-permitting authority. Section 10726.4(b) provides: \"This section does not authorize a groundwater sustainability agency to issue permits for the construction, modification, or abandonment of groundwater wells, except as authorized by a county with authority to issue those permits.\" This description concerns this statutory authority generally; it does not determine whether {{propertyAddress}} lies within the jurisdiction of any groundwater sustainability agency, or how any specific agency has exercised or not exercised this authority in the {{groundwaterBasinName}} groundwater basin.",
+      "gap": "The citations to § 10726.4(a)(1), (a)(2), and (b) are to subdivisions of the same statutory section and are not independent of each other. This authority exists only where a GSA has been formed for the relevant basin and has adopted rules exercising it; not every California groundwater basin has a designated GSA or adopted groundwater sustainability plan, and this clause does not determine whether one exists for any specific basin. This clause also does not address § 10726.4(a)(3) and (a)(4), governing temporary and permanent transfers and carryover of groundwater extraction allocations, which were fetched but not selected for a dedicated quotation in this clause because they concern allocation trading mechanics rather than the underlying extraction-control and well-permitting authority this clause addresses.",
+      "citations": [
+        {
+          "case": "Cal. Water Code § 10726.4(a)(1) (California Legislative Information text)",
+          "cite": "Wat. C. § 10726.4(a)(1)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=WAT&sectionNum=10726.4.",
+          "quote": "To impose spacing requirements on new groundwater well construction to minimize well interference and impose reasonable operating regulations on existing groundwater wells to minimize well interference, including requiring extractors to operate on a rotation basis."
+        },
+        {
+          "case": "Cal. Water Code § 10726.4(a)(2) (California Legislative Information text)",
+          "cite": "Wat. C. § 10726.4(a)(2)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=WAT&sectionNum=10726.4.",
+          "quote": "To control groundwater extractions by regulating, limiting, or suspending extractions from individual groundwater wells or extractions from groundwater wells in the aggregate, construction of new groundwater wells, enlargement of existing groundwater wells, or reactivation of abandoned groundwater wells, or otherwise establishing groundwater extraction allocations."
+        },
+        {
+          "case": "Cal. Water Code § 10726.4(a)(2) (California Legislative Information text)",
+          "cite": "Wat. C. § 10726.4(a)(2)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=WAT&sectionNum=10726.4.",
+          "quote": "A limitation on extractions by a groundwater sustainability agency shall not be construed to be a final determination of rights to extract groundwater from the basin or any portion of the basin."
+        },
+        {
+          "case": "Cal. Water Code § 10726.4(b) (California Legislative Information text)",
+          "cite": "Wat. C. § 10726.4(b)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=WAT&sectionNum=10726.4.",
+          "quote": "This section does not authorize a groundwater sustainability agency to issue permits for the construction, modification, or abandonment of groundwater wells, except as authorized by a county with authority to issue those permits."
+        }
+      ]
+    },
+    {
+      "id": "waterrights_de_minimis_domestic_extractor_definition",
+      "title": "The \"De Minimis Extractor\" Exemption for Small-Volume Domestic Groundwater Pumping",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "SGMA's definitions section sets a specific, numeric threshold distinguishing an ordinary small household well owner from the groundwater extractors its regulatory provisions primarily target. Water Code § 10721(e) defines the term used throughout the statute: \"'De minimis extractor' means a person who extracts, for domestic purposes, two acre-feet or less per year.\" The same section defines the resource being regulated. Water Code § 10721(g) provides: \"'Groundwater' means water beneath the surface of the earth within the zone below the water table in which the soil is completely saturated with water, but does not include water that flows in known and definite channels unless included pursuant to Section 10722.5.\" This description concerns these two statutory definitions generally; it does not calculate or determine whether extraction at {{propertyAddress}} is, or is not, at or below the two-acre-foot-per-year de minimis threshold, and it does not determine whether de minimis-extractor status by itself exempts a particular well from any other regulatory, permitting, or fee requirement.",
+      "gap": "The citations to § 10721(e) and (g) are to subdivisions of the same definitions section and are not independent of each other. This clause quotes the definition of \"de minimis extractor\" only; it does not quote or verify the operative provisions elsewhere in SGMA (not fetched for this clause) that describe what regulatory consequences, if any, follow from having — or not having — de minimis-extractor status, such as any monitoring, reporting, or fee exemption a groundwater sustainability plan may or may not extend to a de minimis extractor. This clause also does not address Water Code § 10722.5, cross-referenced in the \"groundwater\" definition, which was not independently fetched or verified for this clause.",
+      "citations": [
+        {
+          "case": "Cal. Water Code § 10721(e) (California Legislative Information text)",
+          "cite": "Wat. C. § 10721(e)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=WAT&sectionNum=10721.",
+          "quote": "\"De minimis extractor\" means a person who extracts, for domestic purposes, two acre-feet or less per year."
+        },
+        {
+          "case": "Cal. Water Code § 10721(g) (California Legislative Information text)",
+          "cite": "Wat. C. § 10721(g)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=WAT&sectionNum=10721.",
+          "quote": "\"Groundwater\" means water beneath the surface of the earth within the zone below the water table in which the soil is completely saturated with water, but does not include water that flows in known and definite channels unless included pursuant to Section 10722.5."
+        }
+      ]
+    },
+    {
+      "id": "waterrights_statement_of_diversion_and_use_filing",
+      "title": "The Statement of Water Diversion and Use Filing Requirement",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Separately from the state appropriation-permit system, California requires certain water diverters — including many riparian and pre-1914 appropriative right holders who do not hold a Board-issued permit or license — to file a periodic statement of diversion and use with the State Water Resources Control Board. Water Code § 5101(a) states the general filing rule and its exceptions: \"Each person who, after December 31, 1965, diverts water shall file with the board a statement of their diversion and use, as provided in subdivision (b), except that a statement is not required to be filed if the diversion is any of the following:\" The statute then lists several categories exempt from the filing requirement, including one aimed at small-scale use: Water Code § 5101(a)(1) exempts a diversion \"[f]rom a spring that does not flow off the property on which it is located and from which the person's aggregate diversions do not exceed 25 acre-feet in any year.\" For a diverter who must file, the statute sets a recurring deadline tied to the water year. Water Code § 5101(b)(3) provides: \"For diversions after September 30, 2021, the statement shall include diversions during the one-year period from October 1 of each year through September 30, inclusive, of the following year, and shall be filed before February 1 of the year after that one-year period.\" This description concerns this statutory filing requirement generally; it does not determine whether any diversion at {{propertyAddress}} is or is not subject to the filing requirement, or has been timely filed.",
+      "gap": "This clause quotes § 5101(a)'s general rule, one of its seven listed exemption categories (subdivision (a)(1)), and the current filing-deadline rule in subdivision (b)(3); it does not quote the other six exemption categories in § 5101(a)(2) through (a)(7) — covering, among other things, diversions already covered by a small-use registration, permit, or license on file with the Board, diversions administered by a court- or department-appointed watermaster, and certain pre-2009 diversions — all of which were fetched but not block-quoted for this clause. It also does not quote the now-superseded filing deadlines in § 5101(b)(1) and (b)(2), which applied to diversions occurring before October 1, 2021. The definitions this section relies on, in Water Code § 5100, were fetched but are not independently quoted in this clause.",
+      "citations": [
+        {
+          "case": "Cal. Water Code § 5101(a) (California Legislative Information text)",
+          "cite": "Wat. C. § 5101(a)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=WAT&sectionNum=5101.",
+          "quote": "Each person who, after December 31, 1965, diverts water shall file with the board a statement of their diversion and use, as provided in subdivision (b), except that a statement is not required to be filed if the diversion is any of the following:"
+        },
+        {
+          "case": "Cal. Water Code § 5101(a)(1) (California Legislative Information text)",
+          "cite": "Wat. C. § 5101(a)(1)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=WAT&sectionNum=5101.",
+          "quote": "From a spring that does not flow off the property on which it is located and from which the person's aggregate diversions do not exceed 25 acre-feet in any year."
+        },
+        {
+          "case": "Cal. Water Code § 5101(b)(3) (California Legislative Information text)",
+          "cite": "Wat. C. § 5101(b)(3)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=WAT&sectionNum=5101.",
+          "quote": "For diversions after September 30, 2021, the statement shall include diversions during the one-year period from October 1 of each year through September 30, inclusive, of the following year, and shall be filed before February 1 of the year after that one-year period."
+        }
+      ]
+    },
+    {
+      "id": "waterrights_ack",
+      "title": "Acknowledgment — California Water Rights Information Sheet Only",
+      "kind": "drafting",
+      "body": "I have reviewed this information sheet describing California's statutory water-rights framework — including the reasonable-and-beneficial-use limitation, the scope of the state appropriation permit system, riparian-use priority, the Sustainable Groundwater Management Act, a groundwater sustainability agency's extraction-regulation authority, the de minimis extractor exemption, and the statement of diversion and use filing requirement — in connection with the property located at {{propertyAddress}}, owned by {{ownerName}}, and (where applicable) the {{groundwaterBasinName}} groundwater basin. I understand that this document is informational only: it does not itself determine, quantify, adjudicate, register, or file any riparian, appropriative, or groundwater right; it does not determine whether {{propertyAddress}} is riparian to any watercourse, overlies any particular groundwater basin, or falls within the jurisdiction of any groundwater sustainability agency; and it does not determine whether any specific use, diversion, or extraction at {{propertyAddress}} complies — or fails to comply — with the statutory requirements it describes.\n\nExecuted on {{dateSigned}} at {{cityState}}.\n\nSignature: ☐ _________________________\nPrint name: _________________________\n\n[This information sheet is prepared for general reference concerning California water-rights statutes as they may apply to {{propertyAddress}}. It does not constitute legal advice about any specific water right, diversion, extraction, agency jurisdiction, or dispute, and it does not file, register, adjudicate, or take any action with respect to any actual water right.]"
     }
   ]
 }

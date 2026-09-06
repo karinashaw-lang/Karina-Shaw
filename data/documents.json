@@ -27636,5 +27636,57 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "california_water_rights_info_sheet",
+    "title": "California Water Rights — Information Sheet",
+    "description": "Background information on the statutory framework governing rights to use water in connection with California real property: the state's reasonable-and-beneficial-use limitation (Water Code §§ 100, 102), the surface-water/known-channel scope of the state appropriation permit system (§ 1200), riparian use's statutory priority over appropriation (§ 1201), the Sustainable Groundwater Management Act's stated intent and express non-alteration of existing water rights (§§ 10720.1, 10720.5), a groundwater sustainability agency's extraction-regulation authority as distinct from county well-construction permitting (§ 10726.4), the de minimis domestic extractor exemption (§ 10721), and the statement of water diversion and use filing requirement (§ 5101).",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "waterrights_intro",
+      "waterrights_state_ownership_reasonable_use",
+      "waterrights_appropriation_scope_surface_only",
+      "waterrights_riparian_priority_over_appropriation",
+      "waterrights_sgma_intent_preserve_rights",
+      "waterrights_sgma_no_alteration_of_existing_rights",
+      "waterrights_gsa_extraction_regulation_authority",
+      "waterrights_de_minimis_domestic_extractor_definition",
+      "waterrights_statement_of_diversion_and_use_filing",
+      "waterrights_ack"
+    ],
+    "fields": [
+      {
+        "id": "propertyAddress",
+        "label": "Property address",
+        "placeholder": "123 Main St, Apt 4, Springfield",
+        "required": true
+      },
+      {
+        "id": "ownerName",
+        "label": "Property owner's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "groundwaterBasinName",
+        "label": "Groundwater basin name (if applicable)",
+        "placeholder": "Paso Robles Subbasin",
+        "required": false
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 6, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Paso Robles, California",
+        "required": true
+      }
+    ]
   }
 ]
