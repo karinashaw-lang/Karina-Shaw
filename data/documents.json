@@ -25354,5 +25354,64 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "family_law_facilitator_act_info_sheet",
+    "title": "Family Law Facilitator Act — Information Sheet",
+    "description": "Explains California's Family Law Facilitator Act (Fam. Code §§10000-10015): the required office and attorney staffing, the categories of support/custody-related proceedings it reaches, its core services and optional local-rule duties (including facilitator-conducted mediation and a domestic-violence meeting safeguard), the no-cost and hearing-access requirements, its interaction with local child support agency cases, and the facilitator's no-representation/no-privilege limits.",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "famfacilitator_intro",
+      "famfacilitator_legislative_purpose",
+      "famfacilitator_office_and_staffing",
+      "famfacilitator_scope_of_matters",
+      "famfacilitator_core_services",
+      "famfacilitator_additional_local_rule_duties",
+      "famfacilitator_dv_mediation_safeguard",
+      "famfacilitator_no_cost_and_hearing_access",
+      "famfacilitator_ivd_agency_interaction",
+      "famfacilitator_no_attorney_client_relationship",
+      "famfacilitator_signature_ack"
+    ],
+    "fields": [
+      {
+        "id": "petitionerName",
+        "label": "Petitioner's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "respondentName",
+        "label": "Respondent's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "courtCaseNumber",
+        "label": "Court case number",
+        "placeholder": "CGC-26-123456",
+        "required": true
+      },
+      {
+        "id": "countyOfFiling",
+        "label": "County of filing",
+        "placeholder": "Sacramento County",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
