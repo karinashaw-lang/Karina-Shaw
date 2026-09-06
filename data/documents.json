@@ -25861,5 +25861,64 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "escheat_of_decedent_estate_info_sheet",
+    "title": "Escheat of a Decedent's Estate to the State — Information Sheet",
+    "description": "Explains California's escheat statute for a decedent's estate, Probate Code §§6800-6806 and related Code of Civil Procedure Title 10 provisions: the general trigger (no taker by will or intestate succession), the separate real-property, tangible-property, and intangible-property (domicile-based) tests, the employee-benefit-plan carve-out, the Attorney General's escheat proceeding and its interaction with a pending probate administration, uncollected known-heir shares, the five-year window before escheat becomes permanent, and final disposition to the General Fund.",
+    "categories": [
+      "Estate Planning"
+    ],
+    "clauseOrder": [
+      "escheat_intro",
+      "escheat_general_rule",
+      "escheat_real_and_tangible_property",
+      "escheat_intangible_property",
+      "escheat_benefit_plan_carveout",
+      "escheat_attorney_general_proceeding",
+      "escheat_effect_on_pending_administration",
+      "escheat_uncollected_known_heir_shares",
+      "escheat_permanent_escheat_and_claim_window",
+      "escheat_disposition_to_general_fund",
+      "escheat_ack"
+    ],
+    "fields": [
+      {
+        "id": "decedentName",
+        "label": "Decedent's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "dateOfDeath",
+        "label": "Date of death",
+        "placeholder": "March 14, 2026",
+        "required": true
+      },
+      {
+        "id": "estimatedEstateValue",
+        "label": "Character and estimated value of estate property",
+        "placeholder": "Approximately $85,000 in bank accounts and personal property",
+        "required": true
+      },
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
