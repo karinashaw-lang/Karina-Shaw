@@ -26089,5 +26089,58 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "public_works_contractor_registration_info_sheet",
+    "title": "Public Works Contractor Registration — Information Sheet",
+    "description": "Explains California's DIR public-works contractor registration requirement, Labor Code §§1725.5, 1725.6, and 1771.1: who must register to bid, be listed, or perform on a public works contract, the qualification requirements, the 12-month lookback disqualification and its fee cure, renewal-lapse consequences, the small-project dollar-threshold exemption, applicability/operative dates, the parallel registration track for certain housing-streamlining projects, the awarding body's notice and bid-rejection duties, and civil penalties for unregistered performance.",
+    "categories": [
+      "Hiring"
+    ],
+    "clauseOrder": [
+      "pwcr_intro",
+      "pwcr_registration_required",
+      "pwcr_qualification_requirements",
+      "pwcr_prior_unregistered_activity_disqualification",
+      "pwcr_renewal_lapse",
+      "pwcr_small_project_exemption",
+      "pwcr_applicability_dates",
+      "pwcr_parallel_1725_6_registration",
+      "pwcr_awarding_body_bid_rejection_duty",
+      "pwcr_civil_penalties_for_unregistered_performance",
+      "pwcr_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "publicWorksContractingDescription",
+        "label": "Company's involvement in public works contracting, if any",
+        "placeholder": "We bid on and perform road construction contracts for local municipalities",
+        "required": true
+      },
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      }
+    ]
   }
 ]
