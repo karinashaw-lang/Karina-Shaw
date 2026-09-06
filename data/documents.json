@@ -28108,5 +28108,63 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "exempt_final_week_salary_info_sheet",
+    "title": "Exempt Employee's Pay in the Final (and First) Week of Employment — Information Sheet",
+    "description": "Describes the federal salary-basis regulation (29 C.F.R. § 541.602) that lets an employer pay a salaried, overtime-exempt employee only a proportionate part of salary for time actually worked in the initial or terminal week of an employment relationship without losing the exemption for that week, the general full-week no-deduction rule this is an exception to, the narrow occasional-employment limit on it, and how it fits into California law — including DLSE's Enforcement Manual policy of following federal salary-basis guidance, a reproduction of the identical rule under the regulation's pre-2004 numbering in that same manual, the Industrial Welfare Commission Wage Order's narrower incorporation by reference (which does not reach this regulation), and Labor Code section 515.7's direct statutory cross-reference to it for adjunct faculty.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "fwksalary_declaration",
+      "fwksalary_general_full_salary_rule",
+      "fwksalary_initial_terminal_week_exception",
+      "fwksalary_not_occasional_employment_limit",
+      "fwksalary_calculation_method",
+      "fwksalary_wage_order_incorporation_narrower",
+      "fwksalary_dlse_follows_federal_guidelines",
+      "fwksalary_dlse_manual_reproduces_rule",
+      "fwksalary_labor_code_515_7_incorporates_541602",
+      "fwksalary_signature"
+    ],
+    "fields": [
+      {
+        "id": "employeeName",
+        "label": "Employee/former employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "terminationDate",
+        "label": "Last day of work / termination date",
+        "placeholder": "October 1, 2026",
+        "required": true
+      },
+      {
+        "id": "salary",
+        "label": "Weekly salary before termination",
+        "placeholder": "$1,500 per week",
+        "required": true
+      },
+      {
+        "id": "finalWeekDaysWorked",
+        "label": "Days actually worked in the final week",
+        "placeholder": "3 of 5 scheduled workdays",
+        "required": false
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 6, 2026",
+        "required": true
+      }
+    ]
   }
 ]
