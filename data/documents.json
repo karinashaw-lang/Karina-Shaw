@@ -22053,5 +22053,41 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "hoa_member_discipline_and_fines_info_sheet",
+    "title": "HOA Member Discipline and Fines — Information Sheet",
+    "description": "The Davis-Stirling Act's procedural due-process requirements before a homeowners association board may fine or otherwise discipline a member: the penalty schedule and statutory fine cap, the pre-discipline notice-and-meeting procedure, the written-decision requirement, and internal dispute resolution.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "hoadiscipline_intro",
+      "hoadiscipline_penalty_schedule_and_cap",
+      "hoadiscipline_notice_and_hearing",
+      "hoadiscipline_outcome_and_written_decision",
+      "hoadiscipline_idr",
+      "hoadiscipline_ack"
+    ],
+    "fields": [
+      {
+        "id": "hoaName",
+        "label": "HOA / association name",
+        "placeholder": "Maple Grove Homeowners Association",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
