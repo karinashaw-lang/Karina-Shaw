@@ -72844,6 +72844,52 @@
       "title": "Certification",
       "kind": "drafting",
       "body": "The undersigned, {{preparerName}}, certifies that the information above regarding the recall offer to {{employeeName}} accurately describes, to the best of the undersigned's knowledge, {{companyName}}'s actions under California Labor Code Section 2810.8 as of the date signed below.\n\nSignature: ☐ _________________________ Date: {{dateSigned}}\n\n{{preparerName}}\nOn behalf of {{companyName}}\n{{cityState}}"
+    },
+    {
+      "id": "wagededuct_intro",
+      "title": "Purpose and Scope of This Information Sheet",
+      "kind": "drafting",
+      "body": "{{companyName}} maintains this information sheet to describe two specific and narrower California wage-deduction rules: the IWC Wage Order restriction on deducting wages for a cash shortage, breakage, or loss of equipment, and the separate civil penalty California law imposes for certain kinds of unlawful wage withholding. This is a narrower topic than this corpus's existing Wage Repayment / Clawback information sheet, which addresses an employer collecting back a bonus, relocation payment, or similar sum already paid to {{employeeName}}, and its existing Wage Statement Itemization Policy document, which addresses how a deduction, once taken, must be disclosed on the wage statement. This document addresses only the cash-shortage/breakage/equipment-loss deduction rule and the separate civil-penalty statute."
+    },
+    {
+      "id": "wagededuct_cash_shortage_breakage",
+      "title": "Cash Shortages, Breakage, and Equipment Loss: A Deduction Requires Dishonesty, Willfulness, or Gross Negligence",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Under the applicable California IWC Wage Order, no employer may make any deduction from wages, or require any reimbursement from an employee, for a cash shortage, breakage, or loss of equipment, unless it can be shown that the shortage, breakage, or loss was caused by a dishonest or willful act, or by the gross negligence, of the employee.",
+      "gap": "This is a single regulatory subdivision (Section 8, \"Cash Shortage and Breakage\") within IWC Wage Order No. 4-2001 (\"Professional, Technical, Clerical, Mechanical and Similar Occupations\"), fetched directly from the Department of Industrial Relations at https://www.dir.ca.gov/IWC/IWCArticle04.pdf. This document did not independently fetch or confirm whether other numbered wage orders (for example, Wage Order 5 for public housekeeping or Wage Order 7 for mercantile employees) contain the identical Section 8 language -- it verifies Wage Order 4-2001 only. The source PDF's own text extraction hyphenates \"breakage\" across a line break (\"break-\" followed by \"age\" on the next line); the quotation below preserves that line break exactly as extracted, consistent with this corpus's established practice of quoting PDF-extracted wage-order text exactly rather than silently repairing extraction artifacts. The provision states that a deduction requires a showing of dishonesty, willfulness, or gross negligence, but does not itself specify who must make that showing, in what forum, or under what evidentiary standard. This is one state's regulatory text; not a claim about which jurisdiction's law, or which industry's wage order, governs a specific employment relationship.",
+      "citations": [
+        {
+          "case": "IWC Wage Order No. 4-2001, § 8",
+          "cite": "Cal. Code Regs., tit. 8, § 11040, subd. 8",
+          "url": "https://www.dir.ca.gov/IWC/IWCArticle04.pdf",
+          "quote": "No employer shall make any deduction from the wage or require any reimbursement from an employee for any cash shortage, break- \nage, or loss of equipment, unless it can be shown that the shortage, breakage, or loss is caused by a dishonest or willful act, or by the gross \nnegligence of the employee."
+        }
+      ]
+    },
+    {
+      "id": "wagededuct_civil_penalty",
+      "title": "Civil Penalties for Unlawfully Withholding Wages Under Sections 221, 222, or 223",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "In addition to, and independent of, any other penalty, California law subjects a person who unlawfully withholds wages due an employee in violation of Section 212, 216, 221, 222, or 223 to a civil penalty for each failure to pay each employee: one hundred dollars for an initial violation, and two hundred dollars for each subsequent violation or any willful or intentional violation, plus twenty-five percent of the amount unlawfully withheld. This penalty is recovered by the Labor Commissioner as part of a hearing to recover unpaid wages and penalties, or in an independent civil action brought in the name of the People of the State of California.",
+      "gap": "This is one state's statute (Cal. Labor Code § 225.5). Its text cross-references Labor Code sections 212 and 216 as additional grounds for the same penalty; this document does not independently fetch, quote, or verify the text of either of those sections. This document does not state whether, or under what circumstances, an unlawful cash-shortage or breakage deduction addressed elsewhere in this document would itself amount to a violation of Section 221, 222, or 223 for purposes of this penalty -- that connection is not addressed by either statute's own text and is not asserted here. This penalty is a public civil penalty recovered by the Labor Commissioner or the State, not a payment made directly to the underpaid employee, and this document does not address a private right of action or PAGA civil-penalty procedure, covered separately in this corpus's existing PAGA Pre-Suit Notice Letter document. The source text's \"Amended by\" line shows an effective date of January 1, 2004; this session did not independently search for any more recent amendment beyond what leginfo's own currently displayed statutory text shows as of the fetch date. This is one state's statute; not a claim about which jurisdiction's law governs a specific employment relationship.",
+      "citations": [
+        {
+          "case": "Cal. Labor Code § 225.5",
+          "cite": "Cal. Lab. Code § 225.5, subds. (a)-(b)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=225.5.",
+          "quote": "every person who unlawfully withholds wages due any employee in violation of Section 212, 216, 221, 222, or 223 shall be subject to a civil penalty as follows: (a) For any initial violation, one hundred dollars ($100) for each failure to pay each employee. (b) For each subsequent violation, or any willful or intentional violation, two hundred dollars ($200) for each failure to pay each employee, plus 25 percent of the amount unlawfully withheld."
+        }
+      ]
+    },
+    {
+      "id": "wagededuct_ack",
+      "title": "Signature and Receipt",
+      "kind": "drafting",
+      "body": "Employee Signature: ☐ _________________________ Date: {{dateSigned}}\n\n{{employeeName}} (print name)\n\nEmployer Representative Signature: ☐ _________________________ Date: {{dateSigned}}\n\n{{companyName}} (print name and title)"
     }
   ]
 }

@@ -26347,5 +26347,39 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "cash_shortage_breakage_wage_deductions_info_sheet",
+    "title": "Cash Shortage, Breakage, and Equipment Loss Wage Deductions — Information Sheet",
+    "description": "An informational sheet on the IWC Wage Order restriction on deducting wages for a cash shortage, breakage, or loss of equipment (Wage Order No. 4-2001, § 8), and on the separate civil penalty California law imposes for certain kinds of unlawful wage withholding (Lab. Code § 225.5) — distinct from this corpus's existing Wage Repayment / Clawback information sheet, which addresses an employer collecting back a bonus, relocation payment, or similar sum already paid to an employee, and from its Wage Statement Itemization Policy document, which addresses how a deduction must be disclosed on the wage statement once taken.",
+    "categories": [
+      "During employment"
+    ],
+    "clauseOrder": [
+      "wagededuct_intro",
+      "wagededuct_cash_shortage_breakage",
+      "wagededuct_civil_penalty",
+      "wagededuct_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "2026-09-06",
+        "required": true
+      }
+    ]
   }
 ]
