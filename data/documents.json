@@ -21854,5 +21854,48 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "spousal_community_debt_liability_info_sheet",
+    "title": "Spousal / Community Liability for Debts — Information Sheet",
+    "description": "California's default statutory rules under Family Code sections 910-916 on when community property, a spouse's earnings, or separate property can be used to satisfy a debt the other spouse incurred, absent a contrary agreement.",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "spousaldebt_intro",
+      "spousaldebt_general_community_liability",
+      "spousaldebt_separate_property_liability",
+      "spousaldebt_nondebtor_earnings_protection",
+      "spousaldebt_necessaries_exception",
+      "spousaldebt_postdivision_property",
+      "spousaldebt_ack"
+    ],
+    "fields": [
+      {
+        "id": "party1Name",
+        "label": "First party's full legal name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "party2Name",
+        "label": "Second party's full legal name",
+        "placeholder": "Morgan Casey Lee",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
