@@ -23083,5 +23083,55 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "time_of_hire_workers_compensation_rights_notice_info_sheet",
+    "title": "Time-of-Hire Workers' Compensation Rights Notice — Information Sheet",
+    "description": "An informational sheet on California Labor Code §§ 3550-3551's time-of-hire written notice duty: the notice's required content (including the incorporated § 3550 list), the bilingual requirement, how it differs from the separate workplace-posted notice and from the EDD's unemployment-insurance separation pamphlet, and the implementing regulations (8 CCR §§ 9880, 9883) governing notice content and employer/insurer-published versions.",
+    "categories": [
+      "Hiring"
+    ],
+    "clauseOrder": [
+      "wcnotice_intro",
+      "wcnotice_time_of_hire_duty",
+      "wcnotice_additional_content_and_language",
+      "wcnotice_incorporated_3550_content",
+      "wcnotice_posted_notice_distinguished",
+      "wcnotice_regulatory_content_list",
+      "wcnotice_insurer_or_employer_published_version",
+      "wcnotice_signature_certification"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "startDate",
+        "label": "Start date",
+        "placeholder": "September 15, 2026",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
