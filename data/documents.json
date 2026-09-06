@@ -24048,5 +24048,73 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "trade_secret_pre_discovery_identification_info_sheet",
+    "title": "Trade Secret Pre-Discovery Identification — Information Sheet",
+    "description": "Explains California Code of Civil Procedure § 2019.210, which requires a party alleging trade secret misappropriation under the Uniform Trade Secrets Act to identify the claimed trade secret with reasonable particularity before beginning discovery, and the companion secrecy-preservation measures available under Civil Code § 3426.5.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "ts2019210_intro",
+      "ts2019210_applies_to_cutsa_actions",
+      "ts2019210_identification_before_discovery",
+      "ts2019210_reasonable_particularity_undefined",
+      "ts2019210_no_consequence_specified",
+      "ts2019210_protective_order_secrecy_preservation",
+      "ts2019210_relationship_to_other_trade_secret_authorities",
+      "ts2019210_closing_signature"
+    ],
+    "fields": [
+      {
+        "id": "preparerName",
+        "label": "Preparer's name",
+        "placeholder": "e.g., Jane Doe",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "e.g., Acme Inc.",
+        "required": true
+      },
+      {
+        "id": "adversePartyName",
+        "label": "Adverse party's name",
+        "placeholder": "e.g., John Smith",
+        "required": true
+      },
+      {
+        "id": "tradeSecretDescription",
+        "label": "Description of the alleged trade secret",
+        "placeholder": "e.g., the proprietary formulation described in the complaint",
+        "required": true
+      },
+      {
+        "id": "courtCaseNumber",
+        "label": "Court case number",
+        "placeholder": "e.g., 24CV012345",
+        "required": true
+      },
+      {
+        "id": "courtName",
+        "label": "Court name",
+        "placeholder": "e.g., Superior Court of California, County of Santa Clara",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date prepared",
+        "placeholder": "e.g., January 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, State",
+        "placeholder": "e.g., San Jose, California",
+        "required": true
+      }
+    ]
   }
 ]
