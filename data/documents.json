@@ -21804,5 +21804,55 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "client_employer_labor_contractor_liability_info_sheet",
+    "title": "Client Employer / Labor Contractor Liability (Labor Code § 2810.3) — Information Sheet",
+    "description": "California Labor Code section 2810.3's shared civil liability scheme between a business that obtains workers through a staffing agency or other labor contractor and that labor contractor.",
+    "categories": [
+      "Hiring"
+    ],
+    "clauseOrder": [
+      "clientemployer2810_intro",
+      "clientemployer2810_definitions",
+      "clientemployer2810_exclusions",
+      "clientemployer2810_liability_scope",
+      "clientemployer2810_special_carveouts",
+      "clientemployer2810_enforcement",
+      "clientemployer2810_indemnification_waiver",
+      "clientemployer2810_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "laborContractorUseDescription",
+        "label": "Use of labor contractors, if any",
+        "placeholder": "We use a staffing agency to supply approximately 20 warehouse workers",
+        "required": true
+      },
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      }
+    ]
   }
 ]
