@@ -76443,6 +76443,201 @@
       "title": "Acknowledgment",
       "kind": "drafting",
       "body": "This information sheet regarding California's Private Investigator Act, Business and Professions Code Sections 7512 through 7573.5, was prepared by {{preparerName}} for {{companyName}} and reviewed in {{cityState}} on {{dateSigned}}. It reflects the statutory text as of the date checked in each authority section below and does not reflect any amendments made after that date, and it is not a substitute for consulting a licensed attorney.\n\nReviewed by (on behalf of {{companyName}}): ______________________\nDate: {{dateSigned}}"
+    },
+    {
+      "id": "electrepair_intro",
+      "title": "Introduction and Identification",
+      "kind": "drafting",
+      "body": "This Right to Repair Act — Trade Secret, Intellectual Property, and Source Code Disclosure Limits Information Sheet is prepared by {{preparerName}} concerning {{manufacturerName}}'s obligations under California's Right to Repair Act (Public Resources Code §§ 42488–42488.3) with respect to {{productDescription}}. The Right to Repair Act requires a manufacturer of a covered electronic or appliance product to make documentation, functional parts, and tools available, on fair and reasonable terms, so that product owners, service and repair facilities, and service dealers can diagnose, maintain, or repair the product. This Information Sheet focuses specifically on what that mandate does not reach: the Act's own textual limits on trade secrets, other intellectual property, source code, and antitheft security measures. This document is distinct from this corpus's existing Right to Repair Act — Information Sheet document, which describes an entirely different California statute — the Civil Code §§ 895–945.5 construction-defect prelitigation and performance-standards law enacted by Senate Bill 800 in 2002 — that shares only a common short title with the electronics- and appliance-repair statute described here. This Information Sheet is a general informational reference. It does not itself determine that {{manufacturerName}} has, or has not, complied with the Right to Repair Act with respect to {{productDescription}}, and it does not determine whether any specific material a manufacturer withholds actually qualifies as a trade secret, other protected intellectual property, or source code within the meaning of the Act."
+    },
+    {
+      "id": "electrepair_legislative_purpose",
+      "title": "The Right to Repair Act's Stated Legislative Purpose",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "California's Right to Repair Act is codified at Public Resources Code §§ 42488 through 42488.3, added by Senate Bill 244 (Stats. 2023, ch. 704) and operative, for its substantive documentation-and-parts mandate and its enforcement provision, as of July 1, 2024. The Legislature stated its purpose for the chapter directly in the statute's own text: to provide a fair marketplace for repair and to prohibit intentional barriers to third-party repair of covered electronic and appliance products.",
+      "gap": "This is California's own statute, used as real evidence of the Legislature's stated purpose for this chapter — not a claim about which jurisdiction's law governs any specific manufacturer, product, or repair relationship, and not a claim about how a court would weigh this purpose statement in construing any of the chapter's operative provisions, none of which is addressed by the statute's own text. This clause cites a single, undivided statutory section (§ 42488.1); no additional independent source was found for this. No case law construing this chapter has been located: a CourtListener case-law search attempted for this document returned a rate-limit error (HTTP 429, daily limit reported as exhausted) before any case could be retrieved, and independently, this chapter's substantive provisions only became operative July 1, 2024, so little published case law construing it would be expected to exist yet in any event. The full text of §§ 42488 through 42488.3 was retrieved twice directly from leginfo.legislature.ca.gov as separate HTTP requests using two different User-Agent headers; both retrievals returned byte-identical statutory text for each section.",
+      "citations": [
+        {
+          "case": "Cal. Pub. Resources Code § 42488.1 (official leginfo.legislature.ca.gov text)",
+          "cite": "Cal. Pub. Resources Code § 42488.1",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PRC&sectionNum=42488.1.",
+          "quote": "It is the intent of the Legislature to provide a fair marketplace for the repair of electronic and appliance products and to prohibit intentional barriers and limitations to third-party repair."
+        }
+      ]
+    },
+    {
+      "id": "electrepair_documentation_mandate_two_tiers",
+      "title": "The Underlying Mandate: Two Price-Tiered Documentation, Parts, and Tools Obligations",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "The Right to Repair Act's core obligation is stated in two parallel, price-tiered subdivisions of Public Resources Code § 42488.2, both beginning \"[n]otwithstanding any other law.\" For a covered electronic or appliance product with a wholesale price to the retailer (or to others outside direct retail sale) of not less than $50 and not more than $99.99, a manufacturer must make available to product owners, service and repair facilities, and service dealers sufficient documentation, functional parts, and tools — including updates — on fair and reasonable terms, to effect diagnosis, maintenance, or repair, for at least three years after the last date the product model or type was manufactured. For a covered product with a wholesale price of $100 or more, the same categories of materials must be made available on the same terms for at least seven years after the last date the product model or type was manufactured. In both tiers, the statute states this duration applies \"regardless of whether\" it exceeds the product's warranty period, and the trade secret, intellectual property, source code, and antitheft carve-outs described elsewhere in this document operate as express limits on this same underlying mandate — they do not create a separate or freestanding disclosure duty of their own.",
+      "gap": "This is California's own statute, used as real evidence of the specific price thresholds and durations the two documentation-and-parts tiers set — not a claim about which jurisdiction's law governs any specific manufacturer or product, and not a claim that any specific product's actual wholesale price places it in one tier, the other, or neither. This clause cites two subdivisions of the same statutory section, § 42488.2(a) and (b); they are not independent sources. This clause does not address the statute's own product-scope exclusions or its definition of a covered \"electronic or appliance product,\" addressed in a separate clause of this document, and does not evaluate whether the product identified on this sheet is a covered product or falls within either wholesale-price tier. No case law construing either subdivision's price thresholds or duration requirements has been located, for the reasons stated in the companion legislative-purpose clause of this document.",
+      "citations": [
+        {
+          "case": "Cal. Pub. Resources Code § 42488.2(a) (official leginfo.legislature.ca.gov text)",
+          "cite": "Cal. Pub. Resources Code § 42488.2(a)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PRC&sectionNum=42488.2.",
+          "quote": "every manufacturer of an electronic or appliance product with a wholesale price to the retailer, or to others outside of direct retail sale, of not less than fifty dollars ($50) and not more than ninety-nine dollars and ninety-nine cents ($99.99), shall make available to owners of the product, service and repair facilities, and service dealers, sufficient documentation and functional parts and tools, inclusive of any updates, on fair and reasonable terms, to effect the diagnosis, maintenance, or repair of a product for at least three years after the last date a product model or type was manufactured, regardless of whether the three-year period exceeds the warranty period for the product."
+        },
+        {
+          "case": "Cal. Pub. Resources Code § 42488.2(b) (official leginfo.legislature.ca.gov text)",
+          "cite": "Cal. Pub. Resources Code § 42488.2(b)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PRC&sectionNum=42488.2.",
+          "quote": "every manufacturer of an electronic or appliance product with a wholesale price to the retailer, or to others outside of direct retail sale, of one hundred dollars ($100) or more, shall make available to owners of the product, service and repair facilities, and service dealers sufficient documentation and functional parts and tools, inclusive of any updates, on fair and reasonable terms, to effect the diagnosis, maintenance, or repair of a product for at least seven years after the last date a product model or type was manufactured, regardless of whether the seven-year period exceeds the warranty period for the product."
+        }
+      ]
+    },
+    {
+      "id": "electrepair_trade_secret_ip_carveout",
+      "title": "The Act Does Not Require Divulging a Trade Secret or Licensing Intellectual Property",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Public Resources Code § 42488.2(c) places an express limit on the documentation-and-parts mandate described elsewhere in this document: except as necessary to comply with the mandate itself, the Right to Repair Act does not require a manufacturer to divulge a trade secret or to license any intellectual property, including copyrights or patents. This is the Act's central intellectual-property carve-out — it does not exempt a manufacturer from the underlying disclosure mandate altogether, but it does mean the mandate is not read to require crossing the specific line of divulging trade-secret-protected information or granting an intellectual-property license, beyond what is necessary to comply with the mandate in the first place.",
+      "gap": "This is California's own statute, used as real evidence of this specific, express carve-out's text — not a claim about which jurisdiction's law governs any specific manufacturer, product, or repair relationship, and not a claim that any specific material the manufacturer identified on this sheet withholds from a request concerning the product identified on this sheet actually qualifies as a trade secret or as licensable intellectual property within the meaning of this subdivision, which is a fact-specific question this clause does not resolve. This clause cites a single statutory subdivision, § 42488.2(c); no additional independent source was found for this. The subdivision's own opening clause — \"[e]xcept as necessary to comply with this section\" — is not itself defined anywhere in § 42488.2 as fetched and verified for this document, so this document does not state, and does not take a position on, how much disclosure of otherwise-protected material this opening clause requires in any specific case; that boundary is not addressed by the statute's own text. No case law construing this subdivision has been located, for the reasons stated in the companion legislative-purpose clause of this document; because the statute became operative only on July 1, 2024, this document does not represent that any body of judicial or administrative interpretation of this specific carve-out yet exists.",
+      "citations": [
+        {
+          "case": "Cal. Pub. Resources Code § 42488.2(c) (official leginfo.legislature.ca.gov text)",
+          "cite": "Cal. Pub. Resources Code § 42488.2(c)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PRC&sectionNum=42488.2.",
+          "quote": "Except as necessary to comply with this section, this section does not require a manufacturer to divulge a trade secret or license any intellectual property, including copyrights or patents."
+        }
+      ]
+    },
+    {
+      "id": "electrepair_source_code_carveout",
+      "title": "The Act Does Not Require Distribution of a Product's Source Code",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Separate from, and in addition to, the trade secret and intellectual property carve-out described elsewhere in this document, Public Resources Code § 42488.2(d) states its own limit in a single, unqualified sentence: the Right to Repair Act does not require the distribution of a product's source code. Unlike subdivision (c)'s trade secret and intellectual property carve-out, subdivision (d)'s source code carve-out contains no \"except as necessary to comply with this section\" qualifier in its own text — it is stated as an unconditional limit on the documentation-and-parts mandate.",
+      "gap": "This is California's own statute, used as real evidence of this specific, separately stated carve-out's text — not a claim about which jurisdiction's law governs any specific manufacturer, product, or repair relationship, and not a claim that any specific material withheld from a request concerning the product identified on this sheet actually constitutes \"source code\" within the meaning of this subdivision, a term the statute does not itself define anywhere in § 42488.2 as fetched and verified for this document. This clause cites a single statutory subdivision, § 42488.2(d); no additional independent source was found for this. The observation that subdivision (d) lacks the \"except as necessary to comply\" qualifier that appears in subdivision (c) is this researcher's own direct textual comparison of the two adjoining subdivisions as fetched from leginfo.legislature.ca.gov, not a holding from any case construing the difference between them; no case law on that comparison is included, for the reasons stated in the companion legislative-purpose clause of this document.",
+      "citations": [
+        {
+          "case": "Cal. Pub. Resources Code § 42488.2(d) (official leginfo.legislature.ca.gov text)",
+          "cite": "Cal. Pub. Resources Code § 42488.2(d)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PRC&sectionNum=42488.2.",
+          "quote": "This section does not require the distribution of a product’s source code."
+        }
+      ]
+    },
+    {
+      "id": "electrepair_trade_secret_definition_crossreference",
+      "title": "The Act Borrows, Rather Than Restates, an Independent Definition of \"Trade Secret\"",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "The Right to Repair Act does not define \"trade secret\" on its own terms. Instead, Public Resources Code § 42488.2(j)(8) states that, for purposes of this section, \"trade secret\" has the same meaning as set forth in Civil Code § 3426.1(d) — the definition used in California's Uniform Trade Secrets Act (CUTSA) — or, alternatively, in Penal Code § 499c(a)(9) — the definition used in California's criminal trade secret theft statute. By cross-referencing these two existing definitions rather than writing a new one, the Right to Repair Act's own trade secret carve-out, described elsewhere in this document, reaches only material that independently qualifies as a trade secret under one of those two, separately defined and separately litigated statutory frameworks.",
+      "gap": "This is California's own statute, used as real evidence that § 42488.2(j)(8) cross-references, rather than independently defines, \"trade secret\" — not a claim about which jurisdiction's law governs any specific manufacturer, product, or repair relationship, and not a claim that any specific material withheld from a request concerning the product identified on this sheet meets either cross-referenced definition, which this clause does not evaluate. This clause cites a single statutory paragraph, § 42488.2(j)(8); no additional independent source was found for this. This document does not separately quote or re-verify the underlying text of Civil Code § 3426.1(d) or Penal Code § 499c(a)(9) themselves — both are independently sourced and quoted elsewhere in this corpus's existing trade secret documents (for example, this corpus's Non-Disclosure Agreement and Trade Secret Misappropriation Cease and Desist Letter documents), and this clause does not repeat that verification here to avoid duplicating it; a reader applying this carve-out to specific material would need to consult one of those two underlying definitions directly. No case law construing this cross-reference, or applying it in the specific context of a Right to Repair Act dispute, has been located, for the reasons stated in the companion legislative-purpose clause of this document.",
+      "citations": [
+        {
+          "case": "Cal. Pub. Resources Code § 42488.2(j)(8) (official leginfo.legislature.ca.gov text)",
+          "cite": "Cal. Pub. Resources Code § 42488.2(j)(8)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PRC&sectionNum=42488.2.",
+          "quote": "“Trade secret” has the same meaning as set forth in subdivision (d) of Section 3426.1 of the Civil Code, or paragraph (9) of subdivision (a) of Section 499c of the Penal Code."
+        }
+      ]
+    },
+    {
+      "id": "electrepair_documentation_and_tool_scope",
+      "title": "What \"Documentation\" and \"Tools\" Mean Under the Act",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Public Resources Code § 42488.2(j) defines two of the categories the documentation-and-parts mandate reaches. \"Documentation\" means any electronic or appliance product manual, diagram, reporting output, service code description, schematic, or similar information that is provided by a manufacturer to an authorized repair provider, or that is for use by the manufacturer if the manufacturer does not have any authorized repair providers, for purposes of effecting diagnosis, maintenance, or repair of the product. \"Tool\" means any software program, hardware implement, or other apparatus made available by a manufacturer to an authorized repair provider for the diagnosis, maintenance, or repair of the product, including software or other mechanisms that provision, program, pair a part, or calibrate functionality, or perform any other function required to return the product or part to fully functional condition, including updates. These definitions describe what the underlying mandate reaches by its own terms; they do not, on their own text, resolve whether any specific manual, diagram, schematic, or software mechanism that also happens to embody a trade secret, other protected intellectual property, or source code falls inside the trade secret, intellectual property, and source code carve-outs described elsewhere in this document.",
+      "gap": "This is California's own statute, used as real evidence of these two definitions' text — not a claim about which jurisdiction's law governs any specific manufacturer, product, or repair relationship, and not a claim that any specific material associated with the product identified on this sheet does or does not fall within either definition, which this clause does not evaluate. This clause cites two paragraphs of the same statutory subdivision, § 42488.2(j)(2) and (j)(7); they are not independent sources. This clause does not restate § 42488.2(j)'s other definitions (for example, \"authorized repair provider,\" \"part,\" \"fair and reasonable terms,\" \"electronic or appliance product,\" or \"video game console\"), addressed only in part elsewhere in this document and otherwise not covered here. No case law construing either definition, including how it interacts with the trade secret, intellectual property, or source code carve-outs, has been located, for the reasons stated in the companion legislative-purpose clause of this document.",
+      "citations": [
+        {
+          "case": "Cal. Pub. Resources Code § 42488.2(j)(2) (official leginfo.legislature.ca.gov text)",
+          "cite": "Cal. Pub. Resources Code § 42488.2(j)(2)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PRC&sectionNum=42488.2.",
+          "quote": "“Documentation” means any electronic or appliance product manual, diagram, reporting output, service code description, schematic, or similar information that is provided by a manufacturer to an authorized repair provider, or that is for use by the manufacturer if the manufacturer does not have any authorized repair providers, for purposes of effecting the services of diagnosis, maintenance, or repair of the electronic or appliance product."
+        },
+        {
+          "case": "Cal. Pub. Resources Code § 42488.2(j)(7) (official leginfo.legislature.ca.gov text)",
+          "cite": "Cal. Pub. Resources Code § 42488.2(j)(7)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PRC&sectionNum=42488.2.",
+          "quote": "“Tool” means any software program, hardware implement, or other apparatus made available by a manufacturer of an electronic or appliance product to an authorized repair provider for the diagnosis, maintenance, or repair of the product, including software or other mechanisms that provision, program, pair a part, provide or calibrate functionality, or perform any other function required to repair the product or part back to fully functional condition, including any updates."
+        }
+      ]
+    },
+    {
+      "id": "electrepair_antitheft_security_carveout",
+      "title": "A Separate, Narrower Carve-Out for Owner-Set Antitheft Security Measures",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Public Resources Code § 42488.2(f) states a further, independent limit on the documentation-and-parts mandate, distinct from the trade secret, intellectual property, and source code carve-outs described elsewhere in this document: nothing in the section is construed to require a manufacturer to make available special documentation, tools, and parts that would disable or override antitheft security measures set by the owner of the product, without the owner's authorization. Unlike the trade secret and intellectual property carve-out, this antitheft carve-out is not framed around what the manufacturer itself owns or holds confidential — it is framed around protecting a security measure the product's owner set, from being disabled or overridden without that same owner's authorization.",
+      "gap": "This is California's own statute, used as real evidence of this specific, separately stated carve-out's text — not a claim about which jurisdiction's law governs any specific manufacturer, product, or repair relationship, and not a claim that any specific documentation, tool, or part associated with the product identified on this sheet would in fact disable or override an antitheft security measure, or that any specific owner has or has not authorized doing so, both fact-specific questions this clause does not resolve. This clause cites a single statutory subdivision, § 42488.2(f); no additional independent source was found for this. The statute's own text does not define \"antitheft security measures\" anywhere in § 42488.2 as fetched and verified for this document. No case law construing this subdivision has been located, for the reasons stated in the companion legislative-purpose clause of this document.",
+      "citations": [
+        {
+          "case": "Cal. Pub. Resources Code § 42488.2(f) (official leginfo.legislature.ca.gov text)",
+          "cite": "Cal. Pub. Resources Code § 42488.2(f)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PRC&sectionNum=42488.2.",
+          "quote": "Nothing in this section shall be construed to require a manufacturer to make available special documentation, tools, and parts that would disable or override antitheft security measures set by the owner of the product without the owner’s authorization."
+        }
+      ]
+    },
+    {
+      "id": "electrepair_scope_and_operative_date",
+      "title": "Covered Products and the Mandate's Operative Date",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Two further limits define when the Right to Repair Act's documentation-and-parts mandate, and the carve-outs from it described elsewhere in this document, actually apply. First, as to product scope, Public Resources Code § 42488.2(j)(3)(A) defines a covered \"electronic or appliance product\" as a product manufactured for the first time, and first sold or used in California, on or after July 1, 2021, that is described in subdivision (h), (i), (j), or (k) of Business and Professions Code § 9801, for which the manufacturer makes available tools, parts, and documentation to authorized repair providers — a definition that also reaches products sold to schools, businesses, or local governments, or by other methods outside direct retail sale, not only direct retail sales to individual consumers. Second, as to timing, § 42488.2(l) states plainly: this section shall become operative on July 1, 2024.",
+      "gap": "This is California's own statute, used as real evidence of the covered-product definition's cross-reference and the mandate's operative date — not a claim about which jurisdiction's law governs any specific manufacturer or product, and not a claim that the product identified on this sheet is, or is not, a covered \"electronic or appliance product\" within the meaning of § 42488.2(j)(3), which turns in part on Business and Professions Code § 9801(h) through (k) — a separate statutory section this document does not independently fetch, quote, or verify, so this clause does not describe what those subdivisions actually cover. This clause cites two provisions of the same statutory section, § 42488.2(j)(3)(A) and § 42488.2(l); they are not independent sources. This clause also does not restate § 42488.2(j)(3)(B)'s separate list of categories the definition expressly excludes (certain equipment and repair parts, alarm system components including fire protection systems, and video game consoles), which is not otherwise addressed in this document. No case law construing either provision has been located, for the reasons stated in the companion legislative-purpose clause of this document.",
+      "citations": [
+        {
+          "case": "Cal. Pub. Resources Code § 42488.2(j)(3)(A) (official leginfo.legislature.ca.gov text)",
+          "cite": "Cal. Pub. Resources Code § 42488.2(j)(3)(A)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PRC&sectionNum=42488.2.",
+          "quote": "“Electronic or appliance product” or “product” means a product, manufactured for the first time, and first sold or used in California, on or after July 1, 2021, described in subdivision (h), (i), (j), or (k) of Section 9801 of the Business and Professions Code for which the manufacturer makes available tools, parts, and documentation to authorized repair providers, and includes products described in those subdivisions that are sold to schools, businesses, local governments, or in other methods outside of direct retail sale."
+        },
+        {
+          "case": "Cal. Pub. Resources Code § 42488.2(l) (official leginfo.legislature.ca.gov text)",
+          "cite": "Cal. Pub. Resources Code § 42488.2(l)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PRC&sectionNum=42488.2.",
+          "quote": "This section shall become operative on July 1, 2024."
+        }
+      ]
+    },
+    {
+      "id": "electrepair_civil_enforcement",
+      "title": "Civil Enforcement Is Government-Initiated, With Escalating Per-Day Penalties",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-06",
+      "body": "Public Resources Code § 42488.3(a)(1) gives a city, a county, a city and county, or the state — not a private repair provider, product owner, or competitor — the authority to bring an action in superior court to impose civil liability on a person or entity that knowingly violated the chapter, or reasonably should have known that it violated the chapter. The statute sets escalating, per-day penalty amounts: $1,000 per day for a first violation, $2,000 per day for a second violation, and $5,000 per day for a third and subsequent violation. Any such action must be commenced within three years from the date of the alleged violation, and penalties collected are paid to the office of whichever governmental entity — city attorney, county counsel, district attorney, or Attorney General — brought the action, with penalties collected by the Attorney General specifically directed to the Public Rights Law Enforcement Special Fund.",
+      "gap": "This is California's own statute, used as real evidence of who may sue, the escalating per-day penalty structure, and the three-year limitations period under § 42488.3 — not a claim about which jurisdiction's law governs any specific manufacturer or dispute, and not a claim that any specific manufacturer's withholding of material under the trade secret, intellectual property, source code, or antitheft carve-outs described elsewhere in this document would, or would not, constitute a knowing or should-have-known violation exposing it to these penalties, which this clause does not evaluate. This clause cites three paragraphs and subdivisions of the same statutory section, § 42488.3(a)(1), (a)(2), and (b); they are not independent sources. As fetched and verified for this document, § 42488.3 states only this government-suit enforcement mechanism; its own text does not expressly state, one way or the other, whether a private person could separately pursue a claim arising from the same conduct under some other law, and this document takes no position on that question, which its own text does not address. No case law construing this enforcement provision, including how courts might apply the \"knowingly violated\" or \"reasonably should have known\" standards to a manufacturer's reliance on the Act's own carve-outs, has been located, for the reasons stated in the companion legislative-purpose clause of this document.",
+      "citations": [
+        {
+          "case": "Cal. Pub. Resources Code § 42488.3(a)(1) (official leginfo.legislature.ca.gov text)",
+          "cite": "Cal. Pub. Resources Code § 42488.3(a)(1)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PRC&sectionNum=42488.3.",
+          "quote": "A city, a county, a city and county, or the state may bring an action in superior court to impose civil liability on a person or entity that knowingly violated this chapter, or reasonably should have known that it violated this chapter, in the amount of one thousand dollars ($1,000) per day for the first violation of this chapter, two thousand dollars ($2,000) per day for the second violation, and five thousand dollars ($5,000) per day for the third and subsequent violations."
+        },
+        {
+          "case": "Cal. Pub. Resources Code § 42488.3(a)(2) (official leginfo.legislature.ca.gov text)",
+          "cite": "Cal. Pub. Resources Code § 42488.3(a)(2)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PRC&sectionNum=42488.3.",
+          "quote": "Any action described in paragraph (1) shall be commenced within three years from the date of the alleged violation."
+        },
+        {
+          "case": "Cal. Pub. Resources Code § 42488.3(b) (official leginfo.legislature.ca.gov text)",
+          "cite": "Cal. Pub. Resources Code § 42488.3(b)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PRC&sectionNum=42488.3.",
+          "quote": "Any civil penalties collected pursuant to subdivision (a) shall be paid to the office of the city attorney, county counsel, district attorney, or Attorney General, whichever office brought the action. The penalties collected pursuant to this section by the Attorney General shall be deposited into the Public Rights Law Enforcement Special Fund."
+        }
+      ]
+    },
+    {
+      "id": "electrepair_closing_signature",
+      "title": "Acknowledgment",
+      "kind": "drafting",
+      "body": "I have reviewed this information sheet describing California's Right to Repair Act (Public Resources Code §§ 42488–42488.3), including its documentation-and-parts mandate and its trade secret, intellectual property, source code, and antitheft security carve-outs, in connection with {{manufacturerName}} and {{productDescription}}.\n\nExecuted on {{dateSigned}} at {{cityState}}.\n\nSignature of {{preparerName}}: ☐ _________________________\n\n[This information sheet is a general reference describing the Right to Repair Act's disclosure mandate and its statutory limits as of the date reviewed above. It is not a determination that any specific material is, or is not, a trade secret, protected intellectual property, or source code within the meaning of the Act, and completing or signing it does not itself determine that outcome.]"
     }
   ]
 }

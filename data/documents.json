@@ -27406,5 +27406,58 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "electronics_right_to_repair_ip_disclosure_limits_info_sheet",
+    "title": "Right to Repair Act — Trade Secret, IP, and Source Code Disclosure Limits Information Sheet",
+    "description": "Explains California's electronics and appliance Right to Repair Act (Public Resources Code §§ 42488-42488.3, added by SB 244, operative July 1, 2024): its two price-tiered documentation, parts, and tools mandate, and — the document's focus — the Act's own express limits on that mandate for trade secrets, other intellectual property (including copyrights and patents), source code, and owner-set antitheft security measures, plus its cross-reference to CUTSA's and the Penal Code's existing trade secret definitions and its government-only civil enforcement mechanism. Distinct from this corpus's existing Right to Repair Act — Information Sheet document, which describes a different statute (the Civil Code §§ 895-945.5 construction-defect law).",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "electrepair_intro",
+      "electrepair_legislative_purpose",
+      "electrepair_documentation_mandate_two_tiers",
+      "electrepair_trade_secret_ip_carveout",
+      "electrepair_source_code_carveout",
+      "electrepair_trade_secret_definition_crossreference",
+      "electrepair_documentation_and_tool_scope",
+      "electrepair_antitheft_security_carveout",
+      "electrepair_scope_and_operative_date",
+      "electrepair_civil_enforcement",
+      "electrepair_closing_signature"
+    ],
+    "fields": [
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "manufacturerName",
+        "label": "Manufacturer's name",
+        "placeholder": "e.g., Acme Appliance Corp.",
+        "required": true
+      },
+      {
+        "id": "productDescription",
+        "label": "Description of the electronic or appliance product at issue",
+        "placeholder": "e.g., Model AC-200 countertop induction cooktop",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date prepared",
+        "placeholder": "e.g., January 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, State",
+        "placeholder": "e.g., San Jose, California",
+        "required": true
+      }
+    ]
   }
 ]
