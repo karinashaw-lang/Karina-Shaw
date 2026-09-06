@@ -26031,5 +26031,63 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "nonprofit_director_duty_of_care_info_sheet",
+    "title": "Nonprofit Corporation Director's Duty of Care — Information Sheet",
+    "description": "Explains the statutory standard of care for directors of California's three nonprofit corporation types — public benefit (Corp. Code §5231), mutual benefit (§7231), and religious (§9241) — including reliance rights, resulting liability protection, the self-dealing carve-outs, separate volunteer-director immunity statutes (§§5239 and 7231.5) and their differing scope, and standing to sue a public benefit corporation director for breach of charitable trust (§5142).",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "npdoc_intro",
+      "npdoc_standard_care_pb_mb",
+      "npdoc_reliance_liability_pb",
+      "npdoc_reliance_liability_mb",
+      "npdoc_standard_religious",
+      "npdoc_religious_compensation_liability",
+      "npdoc_volunteer_immunity_pb",
+      "npdoc_volunteer_immunity_mb_narrow",
+      "npdoc_enforcement_standing_pb",
+      "npdoc_signature"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "directorName",
+        "label": "Director's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "entityType",
+        "label": "Entity type",
+        "placeholder": "stock corporation",
+        "required": true
+      },
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
