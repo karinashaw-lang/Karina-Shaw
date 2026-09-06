@@ -22367,5 +22367,54 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "unincorporated_nonprofit_association_formation_liability_info_sheet",
+    "title": "Unincorporated Nonprofit Association — Formation and Member Liability Information Sheet",
+    "description": "California's statutory framework for unincorporated nonprofit associations (Corp. Code Title 3): the statutory definitions, the general shield from personal liability for members/directors/officers/agents, the narrower contract-liability exceptions, the association's capacity to hold property and sue or be sued in its own name, and the exhaustion requirement before a judgment against the association may be enforced against an individual member.",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "unincorpassoc_intro",
+      "unincorpassoc_definition",
+      "unincorpassoc_member_liability",
+      "unincorpassoc_contract_liability",
+      "unincorpassoc_property_and_capacity",
+      "unincorpassoc_judgment_enforcement",
+      "unincorpassoc_ack"
+    ],
+    "fields": [
+      {
+        "id": "associationName",
+        "label": "Association name",
+        "placeholder": "Sunset Terrace Owners Association",
+        "required": true
+      },
+      {
+        "id": "nonprofitPurpose",
+        "label": "Statement of purposes",
+        "placeholder": "providing after-school educational programs to underserved youth",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      },
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      }
+    ]
   }
 ]
