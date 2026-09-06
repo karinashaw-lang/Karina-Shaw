@@ -13,6 +13,8 @@ import VideoWithTranscript from "@/components/video-with-transcript";
 import TranscriptEditor from "@/components/transcript-editor";
 import RelatedMoments from "@/components/related-moments";
 import { findRelatedSegments } from "@/lib/recommendations";
+import HighlightMoments from "@/components/highlight-moments";
+import { getHighlightMoments } from "@/lib/highlights";
 import SchedulePartyForm from "@/components/schedule-party-form";
 import GuestEditor from "@/components/guest-editor";
 import { hoursAgo } from "@/lib/time";
@@ -69,6 +71,8 @@ export default async function VideoPage(props: PageProps<"/videos/[id]">) {
           seedText: video.transcript.map((s) => s.text).join(" "),
         })
       : [];
+
+  const highlights = isLocked ? [] : await getHighlightMoments(video.id);
 
   return (
     <div className="mx-auto max-w-3xl px-6 py-10">
@@ -142,6 +146,8 @@ export default async function VideoPage(props: PageProps<"/videos/[id]">) {
       )}
 
       {user && !isLocked && <ClipForm videoId={video.id} />}
+
+      <HighlightMoments videoId={video.id} highlights={highlights} />
 
       {!isLocked && video.listeningParties.length > 0 && (
         <div className="mt-4">

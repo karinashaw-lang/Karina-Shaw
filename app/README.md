@@ -25,6 +25,7 @@ real. This is the actual state of each:
 | Live chat + viewer clipping | same as above | N/A — both only exist once a stream can go live at all | Chat during the broadcast (polling, same pattern as listening parties) and a "Clip this moment" button that grabs the last 30s; once the stream ends, Mux's recording becomes a regular rewatchable video and pending clip requests become real clips against it |
 | Transcripts | `OPENAI_API_KEY` | Creator pastes manually | Auto-transcribed with Whisper on local file uploads |
 | Commute briefing | same as above | Button says it needs the key | Real GPT summary + TTS audio file |
+| Highlight detection | same as above | Crowd-sourced: moments 2+ viewers independently clipped near each other | A real GPT pass over the transcript, cached on the video until the transcript changes |
 
 See `src/lib/integrations/` for the client setup and `isXConfigured()` guards. Because I don't
 have accounts/keys for any of these, **the real-credential paths that call out to a provider's
@@ -46,9 +47,8 @@ verification), asserting on the actual Video/Clip rows it produced.
 origin from the incoming request, which is fine for local dev but should be set explicitly
 behind a proxy/CDN in production.
 
-Still not buildable without further infrastructure/product decisions: AI-automated
-clip/highlight detection and AI dubbing (voice cloning) — see the business plan's V2/V3
-roadmap.
+Still not buildable without further infrastructure/product decisions: AI dubbing (voice
+cloning) — see the business plan's V3 roadmap.
 
 ## Cheap-to-build differentiators (no new credentials needed)
 
@@ -64,6 +64,14 @@ infrastructure, build differentiation" philosophy:
   overlap against *other* videos' transcripts (including other creators'), not category tags.
 - **Auto-captioned clips** — every clip page shows a ready-to-paste caption built from whatever
   transcript text falls inside its time range, with a copy button.
+- **Highlight detection** (V2 "AI-automated clip/highlight detection") — with `OPENAI_API_KEY`
+  set, a real GPT pass over the transcript surfaces up to 3 highlight-worthy moments, cached on
+  the `Video` row (it fires passively on page view rather than from a user action, unlike every
+  other GPT call in this app, so re-running it on every load would be a real avoidable cost) and
+  invalidated when the transcript is re-saved. Without a key, or if the video has no transcript,
+  it degrades to a crowd-sourced signal instead of showing nothing: moments 2+ viewers
+  independently clipped near each other (`src/lib/highlights.ts`) — people already vote on
+  what's worth watching every time they make a clip.
 - **Personal notes on wall items** — a one-line "why I saved this" on anything in the wall.
 - **Scheduled listening parties** (V2 Tier 1 togetherness) — synchronized playback of an
   existing episode at a set time, with shared chat. Chat is DB-backed with client polling
@@ -166,6 +174,8 @@ infrastructure, build differentiation" philosophy:
 - **Moment-level recommendations** — `src/lib/recommendations.ts`,
   `src/components/related-moments.tsx`
 - **Auto-captioned clips** — `src/lib/caption.ts`, `src/components/copy-caption-button.tsx`
+- **Highlight detection** — `src/lib/highlights.ts` (GPT pass + cache, crowd-sourced fallback),
+  `src/components/highlight-moments.tsx`, surfaced on `src/app/videos/[id]`
 - **Search inside video** — `src/app/search`, `src/lib/transcript.ts`,
   `src/components/transcript-editor.tsx`, `src/components/video-with-transcript.tsx`
 - **Tips** — `src/components/tip-form.tsx`, `src/lib/actions/tip.ts`,

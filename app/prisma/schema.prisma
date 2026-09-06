@@ -63,31 +63,40 @@ enum VideoStatus {
 }
 
 model Video {
-  id               String              @id @default(cuid())
-  creatorId        String
-  creator          CreatorProfile      @relation(fields: [creatorId], references: [id])
-  title            String
-  description      String?
+  id                   String              @id @default(cuid())
+  creatorId            String
+  creator              CreatorProfile      @relation(fields: [creatorId], references: [id])
+  title                String
+  description          String?
   /// Null while a Mux-hosted upload is still processing (see `status`).
-  videoUrl         String?
+  videoUrl             String?
   /// Audio-only stream, so the platform works when someone is just
   /// listening (see the business plan's "audio-optional by default").
   /// Extracted with ffmpeg on local file uploads only — see
   /// src/lib/audio-extraction.ts. Null for pasted-URL and Mux uploads.
-  audioUrl         String?
-  status           VideoStatus         @default(READY)
+  audioUrl             String?
+  status               VideoStatus         @default(READY)
   /// Set for uploads routed through Mux (see src/lib/integrations/mux.ts).
-  muxUploadId      String?             @unique
-  muxAssetId       String?
-  muxPlaybackId    String?
-  subscriberOnly   Boolean             @default(false)
-  createdAt        DateTime            @default(now())
-  comments         Comment[]
-  clips            Clip[]
-  wallItems        WallItem[]
-  transcript       TranscriptSegment[]
-  listeningParties ListeningParty[]
-  guests           VideoGuest[]
+  muxUploadId          String?             @unique
+  muxAssetId           String?
+  muxPlaybackId        String?
+  subscriberOnly       Boolean             @default(false)
+  createdAt            DateTime            @default(now())
+  /// Cached result of the last AI highlight-detection pass (see
+  /// src/lib/highlights.ts) — GPT runs on page view otherwise, and this is
+  /// a passive, non-user-triggered call unlike the rest of the OpenAI
+  /// integrations, so it's worth not repeating on every load. Invalidated
+  /// whenever the transcript is re-saved (see highlightsComputedAt below).
+  highlightsJson       Json?
+  /// Set alongside highlightsJson; the cache is valid as long as no
+  /// transcript segment was (re)created after this.
+  highlightsComputedAt DateTime?
+  comments             Comment[]
+  clips                Clip[]
+  wallItems            WallItem[]
+  transcript           TranscriptSegment[]
+  listeningParties     ListeningParty[]
+  guests               VideoGuest[]
 }
 
 /// A guest featured on an episode — a distinct identity from the creator
