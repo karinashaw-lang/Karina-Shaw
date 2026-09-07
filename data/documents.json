@@ -29812,5 +29812,83 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "notice_of_belief_of_abandonment_info_sheet",
+    "title": "Notice of Belief of Abandonment (Real Property) — Information Sheet",
+    "description": "Explains California's statutory Notice of Belief of Abandonment procedure under Civil Code §§ 1951.3 (non-commercial real property) and 1951.35 (commercial real property) -- the threshold unpaid-rent and reasonable-belief conditions, required delivery methods and timing, the four statutory grounds a lessee can use to defeat a deemed-abandonment finding, and how the notice relates to (and does not substitute for) a pay-rent-or-quit notice. Distinct from this corpus's existing landlord-tenant documents: the mitigation-of-damages information sheet covers what happens to a landlord's damages claim after abandonment under §§ 1951.2/1951.4, and the abandoned personal property document covers a departed tenant's belongings -- neither states the § 1951.3/§ 1951.35 notice procedure itself.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "noba_intro",
+      "noba_general_effect",
+      "noba_noncommercial_scope_and_trigger",
+      "noba_commercial_real_property_definition",
+      "noba_delivery_methods",
+      "noba_termination_timing",
+      "noba_rebuttal_grounds",
+      "noba_not_exclusive_remedy",
+      "noba_commercial_variant",
+      "noba_noncommercial_notice_form",
+      "noba_commercial_notice_form",
+      "noba_recordkeeping_and_signature"
+    ],
+    "fields": [
+      {
+        "id": "landlordName",
+        "label": "Landlord/lessor's name",
+        "placeholder": "Acme Properties, LLC",
+        "required": true
+      },
+      {
+        "id": "tenantName",
+        "label": "Tenant/lessee's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "propertyAddress",
+        "label": "Leased property address",
+        "placeholder": "123 Main St., Apt. 4, Sacramento, CA 95814",
+        "required": true
+      },
+      {
+        "id": "landlordAddress",
+        "label": "Landlord's address for the tenant's response notice",
+        "placeholder": "123 Main St., Suite 100, Sacramento, CA 95814",
+        "required": true
+      },
+      {
+        "id": "rentUnpaidSinceDate",
+        "label": "Date rent first became due and unpaid",
+        "placeholder": "August 10, 2026",
+        "required": true
+      },
+      {
+        "id": "noticeDate",
+        "label": "Date of this notice",
+        "placeholder": "September 7, 2026",
+        "required": true
+      },
+      {
+        "id": "terminationDate",
+        "label": "Termination date stated in the notice",
+        "placeholder": "September 25, 2026",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 7, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Sacramento, California",
+        "required": true
+      }
+    ]
   }
 ]
