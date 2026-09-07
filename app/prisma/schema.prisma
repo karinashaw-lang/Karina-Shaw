@@ -30,6 +30,7 @@ model User {
   recapReels       RecapReel[]
   liveChatMessages LiveChatMessage[]
   liveClipRequests LiveClipRequest[]
+  dubsRequested    Dub[]
 }
 
 model CreatorProfile {
@@ -97,6 +98,35 @@ model Video {
   transcript           TranscriptSegment[]
   listeningParties     ListeningParty[]
   guests               VideoGuest[]
+  dubs                 Dub[]
+}
+
+enum DubStatus {
+  PROCESSING
+  READY
+  ERRORED
+}
+
+/// AI dubbing via ElevenLabs (V3 — "real-time or near-live AI dubbing with
+/// voice cloning, via third-party providers, not built in-house" per the
+/// business plan). Shared per video+language, not per viewer: once a dub
+/// is ready, every viewer reuses the same audio file instead of
+/// regenerating it. Only usable when ELEVENLABS_API_KEY is set.
+model Dub {
+  id                  String    @id @default(cuid())
+  videoId             String
+  video               Video     @relation(fields: [videoId], references: [id])
+  requestedById       String
+  requestedBy         User      @relation(fields: [requestedById], references: [id])
+  /// ISO-639-1 code, e.g. "es" — see DUB_LANGUAGES in src/lib/integrations/elevenlabs.ts.
+  targetLanguage      String
+  status              DubStatus @default(PROCESSING)
+  elevenLabsDubbingId String?   @unique
+  audioUrl            String?
+  error               String?
+  createdAt           DateTime  @default(now())
+
+  @@unique([videoId, targetLanguage])
 }
 
 /// A guest featured on an episode — a distinct identity from the creator

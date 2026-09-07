@@ -17,6 +17,8 @@ import HighlightMoments from "@/components/highlight-moments";
 import { getHighlightMoments } from "@/lib/highlights";
 import SchedulePartyForm from "@/components/schedule-party-form";
 import GuestEditor from "@/components/guest-editor";
+import DubPanel from "@/components/dub-panel";
+import { isElevenLabsConfigured } from "@/lib/integrations/elevenlabs";
 import { hoursAgo } from "@/lib/time";
 
 export default async function VideoPage(props: PageProps<"/videos/[id]">) {
@@ -37,6 +39,7 @@ export default async function VideoPage(props: PageProps<"/videos/[id]">) {
           orderBy: { scheduledAt: "asc" },
         },
         guests: { include: { guest: true } },
+        dubs: { orderBy: { createdAt: "asc" } },
       },
     }),
     getCurrentUser(),
@@ -148,6 +151,10 @@ export default async function VideoPage(props: PageProps<"/videos/[id]">) {
       {user && !isLocked && <ClipForm videoId={video.id} />}
 
       <HighlightMoments videoId={video.id} highlights={highlights} />
+
+      {!isLocked && user && video.videoUrl && (
+        <DubPanel videoId={video.id} dubs={video.dubs} elevenLabsConfigured={isElevenLabsConfigured()} />
+      )}
 
       {!isLocked && video.listeningParties.length > 0 && (
         <div className="mt-4">

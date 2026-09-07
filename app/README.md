@@ -26,29 +26,38 @@ real. This is the actual state of each:
 | Transcripts | `OPENAI_API_KEY` | Creator pastes manually | Auto-transcribed with Whisper on local file uploads |
 | Commute briefing | same as above | Button says it needs the key | Real GPT summary + TTS audio file |
 | Highlight detection | same as above | Crowd-sourced: moments 2+ viewers independently clipped near each other | A real GPT pass over the transcript, cached on the video until the transcript changes |
+| AI dubbing | `ELEVENLABS_API_KEY` | No "Dubbed audio" section at all | Real ElevenLabs dubbing (voice-preserving translation) into Spanish, French, German, Portuguese, Japanese, or Hindi |
 
 See `src/lib/integrations/` for the client setup and `isXConfigured()` guards. Because I don't
 have accounts/keys for any of these, **the real-credential paths that call out to a provider's
-API are implemented but not end-to-end verified against the live APIs** — only the fallback
-paths have been exercised in a real browser. Test each with its provider's local tooling before
-trusting it in production. One exception: the Mux webhook's live-recording-to-Video pipeline
-(`materializeLiveRecording` in `src/app/api/webhooks/mux/route.ts`) needed no outbound Mux call
-to verify, just a correctly-signed inbound webhook, so it *was* exercised end-to-end — a real
-HTTP POST with a hand-computed Mux webhook signature (HMAC-SHA256, matching `@mux/mux-node`'s own
-verification), asserting on the actual Video/Clip rows it produced.
+API are implemented but not end-to-end verified against a fully working live call** — only the
+fallback paths have been exercised in a real browser. Test each with its provider's local
+tooling before trusting it in production. Two exceptions:
+
+- The Mux webhook's live-recording-to-Video pipeline (`materializeLiveRecording` in
+  `src/app/api/webhooks/mux/route.ts`) needed no outbound Mux call to verify, just a
+  correctly-signed inbound webhook, so it *was* exercised end-to-end — a real HTTP POST with a
+  hand-computed Mux webhook signature (HMAC-SHA256, matching `@mux/mux-node`'s own
+  verification), asserting on the actual Video/Clip rows it produced.
+- ElevenLabs dubbing was tested with a deliberately invalid API key, which is as far as it's
+  possible to go without a real account — and it went further than expected: the SDK's requests
+  reached ElevenLabs' actual servers and came back with genuine structured API errors (not a
+  local/network failure), which `requestDub`/`checkDubStatus` catch and surface in the UI rather
+  than crashing. The success path (a real dub actually completing) is still unverified.
 
 - **Stripe**: `stripe listen --forward-to localhost:3000/api/webhooks/stripe` for local webhook
   delivery; use Stripe's test-mode keys and test card numbers first.
 - **Mux**: register `https://<your-tunnel>/api/webhooks/mux` in the Mux dashboard (or use their
   CLI tunneling) so `video.asset.ready` / `video.live_stream.*` events reach you locally.
 - **OpenAI**: no webhook needed — Whisper/TTS/chat calls are synchronous.
+- **ElevenLabs**: no webhook — dubbing status is polled on demand via a "Check status" button
+  (see below) rather than continuously, since each check is a real billable API call.
 
-`APP_URL` is optional (used for Stripe/Mux callback URLs); without it, the app derives its own
-origin from the incoming request, which is fine for local dev but should be set explicitly
-behind a proxy/CDN in production.
-
-Still not buildable without further infrastructure/product decisions: AI dubbing (voice
-cloning) — see the business plan's V3 roadmap.
+`APP_URL` is optional (used for Stripe/Mux/ElevenLabs callback URLs); without it, the app derives
+its own origin from the incoming request, which is fine for local dev but should be set
+explicitly behind a proxy/CDN in production. Note that ElevenLabs needs to fetch the source video
+from that URL, so it must be reachable from the public internet in production, not just
+localhost.
 
 ## Cheap-to-build differentiators (no new credentials needed)
 
@@ -115,7 +124,7 @@ infrastructure, build differentiation" philosophy:
 - Tailwind CSS
 - Auth: custom email/password with bcrypt + a JWT session cookie (no third-party auth
   provider yet)
-- Stripe, `@mux/mux-node`, OpenAI, hls.js — see the table above
+- Stripe, `@mux/mux-node`, OpenAI, `@elevenlabs/elevenlabs-js`, hls.js — see the table above
 - ffmpeg (system binary, for audio-only extraction — see below)
 
 ## Getting started
@@ -176,6 +185,9 @@ infrastructure, build differentiation" philosophy:
 - **Auto-captioned clips** — `src/lib/caption.ts`, `src/components/copy-caption-button.tsx`
 - **Highlight detection** — `src/lib/highlights.ts` (GPT pass + cache, crowd-sourced fallback),
   `src/components/highlight-moments.tsx`, surfaced on `src/app/videos/[id]`
+- **AI dubbing** (V3) — `src/lib/integrations/elevenlabs.ts`, `src/lib/actions/dub.ts`,
+  `src/components/dub-panel.tsx` + `dub-request-form.tsx` + `check-dub-status-button.tsx`,
+  surfaced on `src/app/videos/[id]`
 - **Search inside video** — `src/app/search`, `src/lib/transcript.ts`,
   `src/components/transcript-editor.tsx`, `src/components/video-with-transcript.tsx`
 - **Tips** — `src/components/tip-form.tsx`, `src/lib/actions/tip.ts`,
