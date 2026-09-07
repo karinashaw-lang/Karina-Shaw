@@ -29890,5 +29890,69 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "california_resale_royalties_act_info_sheet",
+    "title": "California Resale Royalties Act (Civil Code § 986) — Information Sheet",
+    "description": "Summarizes California Civil Code § 986, the 1976 statute that as written entitled a visual artist to a 5 percent royalty on specified California resales of a work of fine art, including its payment procedure, remedies, survival to heirs, exemptions, and definitions — and reports two Ninth Circuit decisions arising from the same litigation holding that the statute's regulation of out-of-state sales violates the dormant Commerce Clause and that, for in-state sales, the statute is expressly preempted by the federal Copyright Act as to any sale occurring on or after January 1, 1978.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "resaleroyalty986_declaration_and_purpose",
+      "resaleroyalty986_core_royalty_obligation",
+      "resaleroyalty986_withholding_and_payment_procedure",
+      "resaleroyalty986_remedies_and_time_limit",
+      "resaleroyalty986_artist_death_and_heirs",
+      "resaleroyalty986_statutory_exemptions",
+      "resaleroyalty986_definitions",
+      "resaleroyalty986_dormant_commerce_clause_limitation",
+      "resaleroyalty986_copyright_act_preemption",
+      "resaleroyalty986_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "workTitle",
+        "label": "Title of the artwork",
+        "placeholder": "Untitled No. 4",
+        "required": true
+      },
+      {
+        "id": "artistName",
+        "label": "Artist's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "sellerName",
+        "label": "Name of the seller reselling the work",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "purchasePrice",
+        "label": "Reported gross sale price of the work, if known",
+        "placeholder": "$45,000",
+        "required": false
+      },
+      {
+        "id": "saleDate",
+        "label": "Date of the resale, if known",
+        "placeholder": "September 2, 2026",
+        "required": false
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 6, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, state",
+        "placeholder": "San Francisco, California",
+        "required": true
+      }
+    ]
   }
 ]
