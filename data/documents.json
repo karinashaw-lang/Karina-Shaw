@@ -30026,5 +30026,74 @@
         "required": false
       }
     ]
+  },
+  {
+    "id": "limited_partnership_dissolution_winding_up_info_sheet",
+    "title": "Limited Partnership Dissolution and Winding-Up — Information Sheet",
+    "description": "How and when a California limited partnership dissolves and winds up under the California Revised Uniform Limited Partnership Act of 2008, Corp. Code §§ 15908.01-15908.09: the statutory list of dissolution-triggering events, the judicial-dissolution \"not reasonably practicable\" standard, winding-up authority (including appointment of a winding-up person when no general partner remains), a general partner's post-dissolution act liability, the known-claimant and published-notice procedures for barring claims against a dissolved limited partnership, and the creditor-first asset-distribution priority. Distinct from this project's California Limited Partnership Formation Information Sheet (formation under the same Act), Limited Partner Control Safe Harbor Information Sheet (a limited partner's participation in winding up without losing the liability shield), and General Partnership Dissolution and Winding-Up Information Sheet (a different entity type governed by a different statute).",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "lpdiss_intro",
+      "lpdiss_dissolution_events",
+      "lpdiss_judicial_dissolution",
+      "lpdiss_winding_up_authority",
+      "lpdiss_post_dissolution_binding_acts",
+      "lpdiss_known_claims_procedure",
+      "lpdiss_published_notice_claims",
+      "lpdiss_asset_priority",
+      "lpdiss_ack"
+    ],
+    "fields": [
+      {
+        "id": "partnershipName",
+        "label": "Limited partnership's name",
+        "placeholder": "Sequoia Ventures, LP",
+        "required": true
+      },
+      {
+        "id": "generalPartnerName",
+        "label": "General partner's name",
+        "placeholder": "Alex Rivera",
+        "required": true
+      },
+      {
+        "id": "limitedPartnerName",
+        "label": "Limited partner's name",
+        "placeholder": "Morgan Lee",
+        "required": true
+      },
+      {
+        "id": "dissolutionReason",
+        "label": "Reason/event triggering dissolution",
+        "placeholder": "Consent of all general partners and a majority-in-interest of the limited partners",
+        "required": true
+      },
+      {
+        "id": "dissolutionDate",
+        "label": "Dissolution date",
+        "placeholder": "October 1, 2026",
+        "required": true
+      },
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "October 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "San Diego, California",
+        "required": true
+      }
+    ]
   }
 ]

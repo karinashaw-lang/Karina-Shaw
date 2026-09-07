@@ -84131,6 +84131,155 @@
       "title": "Acknowledgment of Receipt",
       "kind": "drafting",
       "body": "Please sign below to indicate receipt and review of this information sheet.\n\nPublic entity: {{publicEntityName}}\nPosition: {{jobTitle}}\nApplicant (if applicable): {{applicantName}}\nDate: _______________\n\nEntity representative: _______________\nDate: _______________"
+    },
+    {
+      "id": "lpdiss_intro",
+      "title": "About This Information Sheet",
+      "kind": "drafting",
+      "body": "This document explains, using the statute's own text, how and when a California limited partnership such as {{partnershipName}} dissolves and winds up under Article 8, \"Dissolution,\" of the California Revised Uniform Limited Partnership Act of 2008 (Corp. Code §§ 15908.01–15908.09). It covers the statutory events that dissolve a limited partnership, the judicial-dissolution standard, winding-up authority, a general partner's power to bind the limited partnership after dissolution, the procedures for barring claims against a dissolved limited partnership, and the statutory priority for distributing assets during winding up. It is distinct from this project's California Limited Partnership Formation Information Sheet (formation under the same Act), Limited Partner Control Safe Harbor Information Sheet (a limited partner's participation in winding up without losing the liability shield), and General Partnership Dissolution and Winding-Up Information Sheet (a different entity type governed by the Uniform Partnership Act of 1994, Corp. Code §§ 16801-16807)."
+    },
+    {
+      "id": "lpdiss_dissolution_events",
+      "title": "The Statutory Events That Dissolve a Limited Partnership",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-07",
+      "body": "California's limited partnership statute dissolves a limited partnership, and requires its activities to be wound up, only on the occurrence of specific listed events (subject to the separate judicial-dissolution ground described elsewhere in the statute). Those listed events include an event the partnership agreement itself specifies, and the consent of all general partners together with limited partners owning a majority of the rights to receive distributions as limited partners. Two further events turn on a general partner's dissociation: if the limited partnership still has a remaining general partner, dissolution follows a majority-in-interest partner consent given within 90 days of that dissociation; if it does not, dissolution follows automatically 90 days after the dissociation unless the limited partners consent to continue the business and admit a new general partner within that period. A parallel 90-day rule applies to the dissociation of the limited partnership's last limited partner.",
+      "gap": "This clause quotes only the consent-based dissolution trigger of Corp. Code § 15908.01(b); the agreement-specified-event trigger of subdivision (a), the general-partner-dissociation timelines of subdivision (c), and the last-limited-partner-dissociation timeline of subdivision (d) are paraphrased in this clause's body from the same fetched statutory text but are not independently quoted here. This clause also does not state the judicial-dissolution ground of § 15908.02, which the statute's introductory clause carves out as a separate basis for dissolution.",
+      "citations": [
+        {
+          "case": "Cal. Corp. Code § 15908.01 (California Legislative Information text)",
+          "cite": "California Revised Uniform Limited Partnership Act of 2008, consent-based dissolution trigger",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=15908.01.",
+          "quote": "(b) the consent of all general partners and of limited partners owning a majority of the rights to receive distributions as limited partners at the time the consent is to be effective;"
+        }
+      ]
+    },
+    {
+      "id": "lpdiss_judicial_dissolution",
+      "title": "Judicial Dissolution: \"Not Reasonably Practicable\"",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-07",
+      "body": "A partner may ask a court to order a limited partnership's judicial dissolution. California's statute sets a single substantive standard for that relief: dissolution is available on application by a partner if it is not reasonably practicable to carry on the limited partnership's activities in conformity with the partnership agreement. This is a distinct dissolution pathway from the consent- and dissociation-based events described elsewhere in the statute, and it operates through a court of competent jurisdiction rather than partner action alone.",
+      "gap": "This clause states only the substantive standard of Corp. Code § 15908.02(a). The same section's subdivisions (b) through (g) — a buyout mechanism letting the other partners avoid dissolution by purchasing the moving party's partnership interest for cash at a court-determined fair market value, including an appraisal procedure and a bond requirement — were fetched but are not quoted or summarized in this clause. A CourtListener case-law search for judicial interpretation of the \"not reasonably practicable\" standard, attempted for this clause, returned an HTTP 429 daily rate-limit error (the tool's 125/day quota was already exhausted), so no case law was retrieved, reviewed, or relied on for this clause or any other clause in this document.",
+      "citations": [
+        {
+          "case": "Cal. Corp. Code § 15908.02 (California Legislative Information text)",
+          "cite": "California Revised Uniform Limited Partnership Act of 2008, judicial dissolution standard",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=15908.02.",
+          "quote": "(a) On application by a partner, a court of competent jurisdiction may order dissolution of a limited partnership if it is not reasonably practicable to carry on the activities of the limited partnership in conformity with the partnership agreement."
+        }
+      ]
+    },
+    {
+      "id": "lpdiss_winding_up_authority",
+      "title": "Continued Existence and Winding-Up Authority",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-07",
+      "body": "Once dissolved, a limited partnership does not simply cease to exist; California's statute continues it in existence for the sole purpose of winding up its activities. If a dissolved limited partnership has no general partner left to conduct that winding up, the statute lets the limited partners themselves fill the gap: a person to wind up the partnership's activities may be appointed by the consent of limited partners owning a majority of the rights to receive distributions as limited partners.",
+      "gap": "This clause states only Corp. Code § 15908.03(a) and (c). Subdivision (b)'s list of specific winding-up acts (amending the certificate of limited partnership to reflect dissolution, preserving the business as a going concern, prosecuting or defending actions, transferring property, mediating or arbitrating disputes, and filing a certificate of cancellation under Corp. Code § 15902.03), subdivision (c)'s further requirement that an appointed winding-up person promptly amend the certificate of limited partnership to disclose the appointment, subdivision (d)'s court-supervised winding-up procedure, and subdivision (e)'s reasonable-compensation entitlement for limited partners who wind up the partnership are not quoted or independently verified here.",
+      "citations": [
+        {
+          "case": "Cal. Corp. Code § 15908.03 (California Legislative Information text)",
+          "cite": "California Revised Uniform Limited Partnership Act of 2008, continued existence for winding up only",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=15908.03.",
+          "quote": "(a) A limited partnership continues after dissolution only for the purpose of winding up its activities."
+        },
+        {
+          "case": "Cal. Corp. Code § 15908.03 (California Legislative Information text)",
+          "cite": "California Revised Uniform Limited Partnership Act of 2008, appointment of a person to wind up absent a general partner",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=15908.03.",
+          "quote": "(c) If a dissolved limited partnership does not have a general partner, a person to wind up the dissolved limited partnership’s activities may be appointed by the consent of limited partners owning a majority of the rights to receive distributions as limited partners at the time the consent is to be effective."
+        }
+      ]
+    },
+    {
+      "id": "lpdiss_post_dissolution_binding_acts",
+      "title": "A General Partner's Power to Bind the Limited Partnership After Dissolution",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-07",
+      "body": "Dissolution does not immediately strip a general partner's power to bind the limited partnership. California's statute binds the limited partnership to a general partner's post-dissolution act if that act is appropriate for winding up the partnership's activities, or if it is an act that would have bound the partnership before dissolution under the statute's ordinary agency rule and the other party to the transaction had no notice of the dissolution at the time of the transaction.",
+      "gap": "This clause states only Corp. Code § 15908.04(a). Subdivision (b), which lets a person dissociated as a general partner similarly bind the limited partnership through a post-dissolution act for up to two years after the dissociation under stated notice conditions, and Corp. Code § 15908.05's rule making a general partner or dissociated general partner personally liable to the limited partnership (and to other obligated partners) for damage caused by an inappropriate post-dissolution obligation, are related provisions in the same fetched statutory article that are not quoted or summarized in this clause.",
+      "citations": [
+        {
+          "case": "Cal. Corp. Code § 15908.04 (California Legislative Information text)",
+          "cite": "California Revised Uniform Limited Partnership Act of 2008, a general partner's post-dissolution act binding the limited partnership",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=15908.04.",
+          "quote": "(a) A limited partnership is bound by a general partner’s act after dissolution which:(1) is appropriate for winding up the limited partnership’s activities; or(2) would have bound the limited partnership under Section 15904.02 before dissolution, if, at the time the other party enters into the transaction, the other party does not have notice of the dissolution."
+        }
+      ]
+    },
+    {
+      "id": "lpdiss_known_claims_procedure",
+      "title": "Cutting Off Known Creditors' Claims by Direct Notice",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-07",
+      "body": "California's statute gives a dissolved limited partnership a direct-notice procedure for cutting off claims from creditors it already knows about. The dissolved limited partnership may notify each known claimant of the dissolution in a record that specifies what the claim must contain, gives a mailing address for it, sets a deadline of at least 120 days from the claimant's receipt of the notice, and states that a late claim will be barred.",
+      "gap": "This clause states only Corp. Code § 15908.06(b), the content requirements for a known-claimant notice. Subdivision (a) (the general authorization to use this procedure), subdivision (c) (the two ways a claim is actually barred — missing the notice's deadline, or failing to sue within 90 days after the limited partnership rejects a timely claim in writing), and subdivision (d) (the carve-out for claims based on events after the dissolution's effective date, or contingent liabilities) are paraphrased in this document but not quoted or independently verified in this clause.",
+      "citations": [
+        {
+          "case": "Cal. Corp. Code § 15908.06 (California Legislative Information text)",
+          "cite": "California Revised Uniform Limited Partnership Act of 2008, known-claimant notice content requirements",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=15908.06.",
+          "quote": "(b) A dissolved limited partnership may notify its known claimants of the dissolution in a record. The notice must:(1) specify the information required to be included in a claim;(2) provide a mailing address to which the claim is to be sent;(3) state the deadline for receipt of the claim, which may not be less than 120 days after the date the notice is received by the claimant; and(4) state that the claim will be barred if not received by the deadline."
+        }
+      ]
+    },
+    {
+      "id": "lpdiss_published_notice_claims",
+      "title": "Cutting Off Unknown Claims by Published Notice",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-07",
+      "body": "Beyond notifying known claimants directly, a dissolved limited partnership may also publish notice of its dissolution and request persons having claims against it to present them in accordance with the notice. For a claimant who was not given direct notice, or whose claim was timely submitted but never acted on, or whose claim is contingent or based on a later event, published notice under the statute cuts off the claim unless the claimant sues to enforce it within four years after the notice's publication date.",
+      "gap": "This clause states only Corp. Code § 15908.07(a) (the authorization to publish notice) and (b)(3) (the four-year enforcement deadline the published notice must state). Subdivision (b)'s other required newspaper-notice contents, subdivision (c)'s full list of which claimant categories the bar reaches, subdivision (d)'s rule on how a non-barred claim may still be enforced (against the dissolved limited partnership's undistributed assets, or against a partner or transferee up to that person's proportionate share of assets received in liquidation), and subdivision (e)'s carve-out preserving the state's own tax-collection remedies are not quoted or independently verified here.",
+      "citations": [
+        {
+          "case": "Cal. Corp. Code § 15908.07 (California Legislative Information text)",
+          "cite": "California Revised Uniform Limited Partnership Act of 2008, authorization to publish notice of dissolution",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=15908.07.",
+          "quote": "(a) A dissolved limited partnership may publish notice of its dissolution and request persons having claims against the limited partnership to present them in accordance with the notice."
+        },
+        {
+          "case": "Cal. Corp. Code § 15908.07 (California Legislative Information text)",
+          "cite": "California Revised Uniform Limited Partnership Act of 2008, four-year enforcement deadline stated in published notice",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=15908.07.",
+          "quote": "(3) state that a claim against the limited partnership is barred unless an action to enforce the claim is commenced within four years after publication of the notice."
+        }
+      ]
+    },
+    {
+      "id": "lpdiss_asset_priority",
+      "title": "Creditor-First Priority for Distributing Assets During Winding Up",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-07",
+      "body": "California's statute fixes the order in which a dissolved limited partnership's assets must be applied during winding up. Creditors come first: the partnership's assets, including any contributions the statute requires, must be applied to satisfy the limited partnership's obligations to creditors — a category that reaches partners who are themselves creditors of the partnership, to the extent otherwise permitted by law. Only after those obligations are satisfied does any surplus return to the partners, in the shares they hold in distributions generally.",
+      "gap": "This clause states only Corp. Code § 15908.09(a) and (b). Subdivision (c)'s rules for what happens when the limited partnership's assets are insufficient to satisfy its obligations — requiring general partners who have not been released under Corp. Code § 15906.07 to contribute in proportion to their distribution rights, with further shortfall-sharing rules among those general partners — are not quoted or independently verified in this clause.",
+      "citations": [
+        {
+          "case": "Cal. Corp. Code § 15908.09 (California Legislative Information text)",
+          "cite": "California Revised Uniform Limited Partnership Act of 2008, creditors-first application of assets during winding up",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=15908.09.",
+          "quote": "In winding up a limited partnership’s activities, the assets of the limited partnership, including the contributions required by this section, must be applied to satisfy the limited partnership’s obligations to creditors, including, to the extent permitted by law, partners that are creditors."
+        },
+        {
+          "case": "Cal. Corp. Code § 15908.09 (California Legislative Information text)",
+          "cite": "California Revised Uniform Limited Partnership Act of 2008, surplus returned to partners after creditors are satisfied",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=15908.09.",
+          "quote": "Any surplus remaining after the limited partnership complies with subdivision (a) must be returned to the partners as they share in distributions."
+        }
+      ]
+    },
+    {
+      "id": "lpdiss_ack",
+      "title": "Acknowledgment and Signatures",
+      "kind": "drafting",
+      "body": "The undersigned acknowledge the foregoing statement of California law governing {{partnershipName}}'s dissolution and winding up.\n\n☐ _________________________ {{generalPartnerName}}, General Partner   Date: _______________\n\n☐ _________________________ {{limitedPartnerName}}, Limited Partner   Date: _______________\n\nDissolution event/reason on record: {{dissolutionReason}}\nDissolution date on record: {{dissolutionDate}}\n\nExecuted at {{cityState}} on {{dateSigned}}.\n\nPrepared by: {{preparerName}}"
     }
   ]
 }
