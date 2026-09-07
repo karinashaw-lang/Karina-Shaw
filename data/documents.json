@@ -29954,5 +29954,39 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "oil_drilling_final_wage_timing_info_sheet",
+    "title": "Oil Drilling Industry Final-Wage Timing (Labor Code § 201.7) — Information Sheet",
+    "description": "Explains, using the statute's own text, California's distinct final-wage timing rule for a layoff of an employee or group of employees engaged in the business of oil drilling (Labor Code § 201.7): the statute's 24-hour-excluding-weekends-and-holidays outer limit on the general immediate-payment-on-discharge rule, its mailing option, its own stated legislative purpose (remote drilling locations far from an employer's administrative offices), and the fact that Section 203's waiting-time-penalty list names Section 201 — to which Section 201.7 ties its own rule — without separately naming Section 201.7 itself.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "oildrillfinalwage_declaration",
+      "oildrillfinalwage_24hour_deeming_rule",
+      "oildrillfinalwage_legislative_purpose",
+      "oildrillfinalwage_penalty_crossref"
+    ],
+    "fields": [
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme Drilling Co.",
+        "required": true
+      },
+      {
+        "id": "terminationDate",
+        "label": "Termination date",
+        "placeholder": "October 1, 2026",
+        "required": true
+      }
+    ]
   }
 ]
