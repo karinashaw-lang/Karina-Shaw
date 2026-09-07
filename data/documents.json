@@ -30191,5 +30191,51 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "immigration_status_labor_rights_info_sheet",
+    "title": "Labor Rights Regardless of Immigration Status (Labor Code § 1171.5) — Information Sheet",
+    "description": "Explains Labor Code § 1171.5, which declares that all protections, rights, and remedies available under California labor and employment law — except any reinstatement remedy federal law prohibits — extend to every worker regardless of immigration status; that immigration status is irrelevant to liability under state labor, employment, civil rights, consumer protection, and housing laws, and that inquiry into it in a proceeding to enforce those laws is restricted absent a clear-and-convincing-evidence showing of federal-law necessity; and how the California Supreme Court in Salas v. Sierra Chemical Co. (2014) 59 Cal.4th 407 applied the statute's federal-preemption carve-out to a FEHA lost-pay claim. Distinct from this corpus's existing Immigrant Worker Protection Act information sheet, which addresses a different subject — restrictions on employer cooperation with federal immigration enforcement at the worksite — not the scope of the underlying labor-law protections themselves.",
+    "categories": [
+      "During employment"
+    ],
+    "clauseOrder": [
+      "immstatus_intro",
+      "immstatus_declaration",
+      "immstatus_liability_and_inquiry",
+      "immstatus_declaratory_severable",
+      "immstatus_legislative_background",
+      "immstatus_sister_statutes_wording",
+      "immstatus_reinstatement_preemption_limit",
+      "immstatus_relationship_to_other_docs",
+      "immstatus_scope_note",
+      "immstatus_ack"
+    ],
+    "fields": [
+      {
+        "id": "employeeName",
+        "label": "Employee's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme Corp.",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 7, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, state",
+        "placeholder": "Sacramento, California",
+        "required": true
+      }
+    ]
   }
 ]
