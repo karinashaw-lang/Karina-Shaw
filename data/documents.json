@@ -30095,5 +30095,46 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "end_of_life_option_act_info_sheet",
+    "title": "California End of Life Option Act (Medical Aid-in-Dying) — Information Sheet",
+    "description": "Background information on California's End of Life Option Act, Health & Safety Code sections 443-443.22 -- the statutory definitions of a \"qualified individual,\" \"terminal disease,\" and \"aid-in-dying drug\"; the eligibility conditions and the rule that a request cannot be made through a power of attorney, advance health care directive, or conservator; the two-oral-request-plus-witnessed-written-request procedure and witness qualification limits (including the estate-interest limit on witnesses); the statute's effect on life, health, and annuity policies; its limits on using a request as the sole basis for a conservatorship or an elder abuse claim, and its statement that a qualifying death is not suicide, homicide, or euthanasia; a governmental entity's claim against the estate for public-place death costs; and a published Court of Appeal decision addressing (on standing grounds only, without resolving the merits) a challenge to how the Act was enacted.",
+    "categories": [
+      "Estate Planning"
+    ],
+    "clauseOrder": [
+      "eola_intro",
+      "eola_statutory_definitions",
+      "eola_eligibility_requirements",
+      "eola_request_cannot_be_made_by_surrogate",
+      "eola_request_procedure",
+      "eola_witness_qualifications",
+      "eola_insurance_annuity_effect",
+      "eola_legal_characterization_safeguards",
+      "eola_estate_claim_public_place_death",
+      "eola_litigation_history",
+      "eola_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "patientName",
+        "label": "Your full legal name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "physicianName",
+        "label": "Attending physician's name (if applicable)",
+        "placeholder": "Dr. Taylor Morgan, M.D.",
+        "required": false
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date",
+        "placeholder": "September 7, 2026",
+        "required": true
+      }
+    ]
   }
 ]
