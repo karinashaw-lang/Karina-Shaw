@@ -1,119 +1,134 @@
-# Business Plan — [Working Name]
+# Business Plan
 
-## Executive Summary
-A real-time, video-first home for creators and their communities — built for people who want to watch, listen, and hang out live, then keep, search, and revisit what they've found. The platform combines the best of live streaming (better than Twitch, built for more than gaming), the growth engine of short-form clips (competing with TikTok on virality), and a genuinely new capability neither offers: the ability to search inside any video ever posted, turn what you've watched into a personal library, and get it summarized into an audio briefing for your commute. Every piece of content is video-first but audio-optional by default, so nothing requires a screen to enjoy.
+Working title: [Platform name]
+September 2026
 
-## Problem
-- Twitch is built for gaming culture — its tools, discovery, and audience don't serve talk, cooking, podcasting, or general creator content well.
-- YouTube is a general-purpose, VOD-first platform with live and shorts bolted on; it isn't built around real-time togetherness or personal curation.
-- TikTok is fundamentally short-form and asynchronous — it has no live-native culture and no way to search inside content.
-- No platform lets people search *inside* what they've watched — VODs and streams are effectively unsearchable once the moment passes.
-- No platform helps people keep and revisit what they've found; every major platform is built to feed you more, not help you hold on to what mattered.
-- Creators juggle separate tools for recording, hosting, clipping, monetization, and audience engagement — there's no single home for the full workflow.
+## 1. The Idea in One Line
 
-## Solution
-One platform covering the full creator and viewer loop:
-- **Live or recorded**: go live (multi-guest, camera-first) or upload a pre-recorded video — talk shows, podcasts, cooking streams, IRL content, anything.
-- **Audio-optional by default**: every piece of content automatically produces a video stream and an audio-only stream, so people can watch or just listen.
-- **Optional visual mode**: creators can choose a "Studio Look" — real-time cinematic lighting and visual treatment — when recording or going live, entirely opt-in, with a normal/unfiltered mode as the default.
-- **Clips, made two ways**: creators and viewers can both generate clips from any video or live stream, in real time during a broadcast or after the fact, built for easy external sharing.
-- **The personal wall**: viewers build a private, curated collection of saved episodes and self-made clips pulled from across different creators — a personal library, not a feed.
-- **Search inside everything**: transcript-powered search lets anyone find the exact moment something was said or shown, across a creator's entire back catalog of streams and episodes — then clip it instantly.
-- **Commute briefing**: viewers can queue up videos they want to watch, and AI generates a summarized audio briefing they can listen to on the go — turning the personal wall into an active daily tool, not just an archive.
-- **Community layer**: comments, follows, and posts attached to specific content keep engagement alive between live sessions.
-- **Ask the show**: viewers can ask a question and get an answer pulled from across a creator's entire back catalog, with links to the exact moments it came from.
-- **Moment-level recommendations**: surfaces related clips based on what was actually said or shown, not just show category or creator tags.
-- **Auto-captioned clips**: every clip is automatically captioned and formatted for external sharing, built on the same transcript data used for search.
-- **Scheduled listening parties**: viewers can synchronize playback of existing episodes at a set time with a shared chat, a low-cost way to get "watching together" before investing in full live infrastructure.
-- **Wall Cards**: a one-tap, shareable image/video card summarizing a slice of a viewer's personal wall — top saved moments, most-rewatched clip, taste-twin matches — designed to be posted externally to Instagram, TikTok, or X, turning the wall into the platform's core growth loop.
-- **Direct monetization**: tips and (later) subscriptions pay creators directly.
+Everything a creator already made — the best moments, the process, the raw footage that never shipped — is for sale per video, in ten minutes of work, paid straight to the creator. Nothing spreads unless the creator says so.
 
-## Target Market
-- **Primary users:** creators making live or recorded talk, podcast, cooking, and IRL-style content who are underserved by gaming-first (Twitch) or general-purpose (YouTube) platforms.
-- **Secondary users:** viewers who want to watch or listen live, discover and revisit content more easily than existing platforms allow, and search for specific moments across everything they follow.
-- **Wedge entry point:** professional and semi-professional podcasters currently juggling separate tools for recording, hosting, clipping, and monetization — the initial beachhead audience, with the platform designed from day one to serve a broader range of creators as it grows.
+## 2. The Problem
 
-## Product Differentiation
-1. **The personal wall** — a curated, private collection of saved and self-made clips from across different creators, closer to a personal media library than a content feed. The hardest feature for algorithm-first platforms to casually copy, since it works against their engagement-maximizing incentives.
-2. **Search inside video** — transcript-powered semantic search across a creator's full history of streams and episodes. Neither Twitch nor TikTok offer real search inside content; this makes every past stream permanently useful instead of disappearing after it airs.
-3. **Real-time togetherness, built for more than gaming** — live streaming and co-watching built around talk, cooking, and everyday content, not gaming culture — the "hang out and watch someone live their life" energy Twitch pioneered, extended to a wider audience.
-4. **Viewer-created clips + live clipping** — any viewer can clip a moment from a video or an in-progress live stream and save it privately or share it externally, always attributed back to the source. Solves the clip-supply problem for virality without requiring mature AI auto-clipping on day one.
-5. **Commute briefing** — AI-generated audio summaries of videos a viewer has queued, ready to listen to on the go. Turns curation into a daily-use habit rather than a passive archive, and is genuinely novel — no platform currently turns a personal video queue into a daily audio briefing.
-6. **Audio-optional by default** — every piece of talk-based content automatically produces a full audio-only stream, so the platform works whether someone is watching or just listening. (Inherently visual content like cooking or Studio Look streams remain video-first by nature.)
-7. **Optional "Studio Look"** — a real-time cinematic lighting/visual mode creators can toggle on when recording or going live, entirely opt-in. Authenticity stays the default; polish becomes a creative choice, not a platform-imposed identity.
-8. **Habit and identity features** — recap reels and streaks turn passive consumption into something personal and worth returning to.
-9. **Direct, creator-first monetization** — tips and subscriptions pay creators directly from the people who value them, rather than routing through an ad-share model.
-10. **Ask the show** — a question-answering layer over a creator's full catalog, built on transcript data already required for search. No major podcast or video platform offers this.
-11. **Moment-level recommendations** — content-based discovery driven by what was actually said, not show metadata, surfacing connections between creators that category tags would miss.
-12. **Personal notes on saved clips** — a one-line "why I saved this" on any wall item, turning the wall into something more personal and shareable, not just a bookmark list.
-13. **Wall Cards — the platform's viral mechanic** — a one-tap, personalized, shareable card generated from a viewer's wall (top moments, most-rewatched clip, taste-twin match), built for posting outside the app. Unlike streaks or in-app engagement features, this is designed to leave the platform and pull new users in, the same mechanism that made Spotify Wrapped one of the largest organic marketing moments in tech. A recurring monthly drop (rather than a once-a-year event) turns it into a habitual share instead of an annual novelty, creating a synchronized wave of external posts each time it lands.
+Creators do most of their work before a video ever posts: planning, shooting, reshooting, cutting hours of footage down to minutes. Platforms pay only for the finished piece, only while it is new, and only through ad revenue or channel-wide memberships the platform controls and takes a cut of.
 
-## Business Model
-- Tips on live streams, videos, and clips (creator-first, transaction-based)
-- Creator subscriptions for exclusive content or back-catalog access (added once the core loop is validated)
-- Longer-term: an ad marketplace using platform-wide viewing/listening data, and payment infrastructure for creators (advances, revenue-based tools) as scale increases
+Three things go unpaid on every platform today:
 
-## Go-to-Market Strategy
-- Start narrow: recruit a small group of professional podcasters directly (outreach, not paid acquisition) who are already frustrated with juggling separate tools.
-- Use their existing audiences as the initial user base — creators bring their listeners with them rather than the platform needing to generate demand from zero.
-- Lean on clips (creator-made and viewer-made, including real-time clipping during live streams) as one organic growth loop: clips shared externally drive new viewers back to full episodes, live streams, and creator profiles.
-- Lean on Wall Cards as the primary viral loop: a recurring, synchronized monthly drop encourages simultaneous external sharing, turning personal curation into visible, recurring word-of-mouth outside the platform.
-- Expand from professional podcasters to a broader range of creators — cooking streamers, IRL/talk streamers, semi-professional and hobbyist creators — once the core product and monetization are proven, without requiring a repositioning of the platform's identity.
+- **The back catalog.** Older episodes earn nothing after the first weeks, even though they contain the creator's best material.
+- **The process.** Raw footage, cut scenes, plans, and outtakes are deleted or given away, even though audiences consistently say they want to see how things were made.
+- **The audience's effort.** Viewers who share a creator's best moment drive real money and get nothing for it.
 
-## Build Philosophy: Rent Infrastructure, Build Differentiation
-Every major platform capability below has a cheap, off-the-shelf way to stand it up and an expensive, custom way to build it. The plan defaults to renting commodity infrastructure (video hosting, transcription, live delivery, payments) via existing APIs, and spending engineering time only on the pieces that are actually differentiated (the wall, search, ask-the-show, recommendations). This keeps V1 buildable by a small team or solo founder, and keeps each later stage's cost tied to usage rather than a large upfront infrastructure bill.
+Existing options are channel-wide (YouTube Memberships, Patreon), take a large cut, hold the creator's money, and are disconnected from the specific video someone just watched.
 
-- **Transcription**: off-the-shelf speech-to-text (e.g., Whisper), not custom-built.
-- **Search**: keyword/vector search on top of transcripts using standard tools (e.g., Postgres full-text search or a hosted vector database), not a custom search engine.
-- **Commute briefing**: transcript → LLM summary → text-to-speech, chained API calls, no new infrastructure beyond what search already requires.
-- **Payments**: a payments platform with built-in creator payouts and tax handling (e.g., Stripe Connect), not custom payment infrastructure.
-- **Live streaming**: a live-streaming API (ingest, transcoding, delivery) rather than in-house video infrastructure — see the tiered live rollout below.
-- **Real-time chat / listening parties**: a hosted real-time messaging service, not custom WebSocket infrastructure.
+## 3. The Product
 
-## Roadmap
+A video platform where every video comes with a set of things the creator can sell, each attached to that specific video, each priced by the creator, each paid directly to the creator's own Stripe account.
 
-**V1 — Prove the core loop (single content type, cheapest to build)**
-- Focus on one content type at launch (podcasts, the original wedge) rather than podcasts, cooking, and IRL content simultaneously — same infrastructure supports the others later, but scoping to one keeps V1 lean.
-- Creator profiles, upload/record flow (no live yet), automatic audio + video split, manual clipping, viewer-created private clips, auto-captioned clips.
-- Transcript-powered search and "ask the show," brought forward into V1 since both are built on transcription already required for the audio split — cheap to include early, and core to the differentiation.
-- Personal wall with notes on saved items, moment-level recommendations, comments and posts attached to content, follows, tips (via Stripe Connect), basic creator dashboard.
-- Wall Cards — shareable card generation from wall data, included in V1 since it's a templated export layer on data already being collected, and serves as the primary organic growth loop from day one.
+### Signature features
 
-**V2 — Live streaming and togetherness, rolled out in tiers**
-- **Tier 1 (near-zero cost):** scheduled listening parties — synchronized playback of existing episodes at a set time, with shared real-time chat. Validates demand for togetherness before spending on live infrastructure.
-- **Tier 2 (usage-based cost):** real one-to-many live broadcasting via a live-streaming API — creators go live, viewers watch and chat, real-time viewer clipping during the stream. Cost scales with actual streaming usage rather than requiring upfront infrastructure spend.
-- Subscriptions.
-- AI-automated clip/highlight detection layered on top of the existing transcript pipeline.
-- Commute briefing extended to include queued live-stream VODs, not just uploaded episodes.
-- Recap reels, streaks, guest-following.
-- Expansion to additional content types (cooking, IRL, talk) once the core loop and live tier 1/2 are validated — same infrastructure, broader creator base.
+**Curated Moments** — The creator marks which moments of a video are allowed to spread. Each becomes a permanent link and an embeddable card that plays anywhere on the web — newsletters, blogs, social — with a tip and subscribe button built in. An AI pass suggests candidate moments from the transcript so curation takes about a minute per episode. Nothing viewers do can make a moment public without the creator's approval.
 
-**V3 — Higher-cost, higher-risk additions (only after V1/V2 traction and revenue)**
-- **Tier 3 live (highest cost):** multi-guest "same room" native recording and low-latency interactive live, built on WebRTC infrastructure (e.g., LiveKit) — the most expensive live capability, pursued only once live tiers 1–2 have proven demand.
-- Real-time cinematic "Studio Look" relighting — deferred from earlier plans due to compute cost; a cheap client-side filter/color-grade can serve as a lightweight stand-in if visual differentiation is wanted sooner.
-- Real-time or near-live AI dubbing with voice cloning (via third-party providers, not built in-house).
-- Standalone open text/thought feed and full public/open social feed expansion beyond content-attached comments — held until moderation infrastructure and revenue justify the operational cost.
+**Distributor Payouts** — Any viewer can grab a personal share link for a curated moment. If their share leads to a tip or a new subscription, they automatically earn a cut. The audience becomes the creator's distribution, and it is paid for performance rather than asked to work for free.
 
-## Competitive Landscape
-- **Twitch:** dominant in live streaming, but gaming-first culture, tools, and discovery; VODs are largely unsearchable and disappear from relevance quickly; no personal curation layer.
-- **YouTube:** dominant in video and increasingly in podcasting, but general-purpose, VOD-first with live bolted on, algorithm-first discovery, and no meaningful in-video search or personal curation.
-- **TikTok:** dominant in short-form virality, but fundamentally asynchronous — no live-native culture, no search inside content, and no lasting personal archive.
-- **Spotify/Apple Podcasts:** dominant in audio distribution, weaker in video, live, and community/curation features.
-- **Patreon/Substack:** strong on creator monetization, weak or absent on native video, live, clipping, and discovery.
-- **Riverside/Squadcast:** strong on recording, but not a destination platform — no audience, discovery, or monetization layer.
-- **The opportunity:** the gap between these platforms — a single home combining real-time togetherness, searchable video archives, personal curation, short-form virality, and direct creator monetization — is not one any single incumbent is structurally positioned to fill without undermining their existing model.
+**Behind the Cut** — A per-video companion section with five fixed slots: the plan, the raw footage, the cut scenes, the kit, and the hard part. Any slot can be empty; the raw footage alone is enough to sell. Sold per video (default $3) or included with a subscription. A free "effort badge" on every public video — hours, reshoots, minutes cut — makes the paid section feel earned.
 
-## Key Risks
-- **Adoption risk:** creators may treat the platform as "one more place to crosspost" rather than their primary home, undermining the network effects the model depends on.
-- **Cold-start risk:** value depends on having both creators and engaged viewers early; viewer-created clips, live clipping, and direct outreach to creators are designed to mitigate this, but it remains the central early risk.
-- **Scope risk:** the platform now spans several major surfaces — live, on-demand video, search, clipping, a personal wall, and eventually an open text feed. Sequencing (V1 → V2 → V3) is designed to manage this, but scope must be actively guarded against, not just planned around.
-- **Technical/infra risk:** live streaming and AI dubbing remain the most complex and costly pieces to execute well even when rented rather than built in-house; the tiered live rollout and reliance on off-the-shelf transcription/search infrastructure reduce but don't eliminate this risk, particularly at the multi-guest, low-latency tier.
-- **Positioning risk:** blending "authentic, unedited" content with an optional polished "Studio Look" mode requires clear framing (opt-in, not platform-imposed) to avoid diluting the authenticity positioning that differentiates the platform from YouTube's polish-optimized culture.
-- **Competitive response:** incumbents (YouTube, Twitch, TikTok) are actively investing in live, video podcasting, and AI features, and could narrow the gaps this plan is built around; timing and depth of execution on search and the personal wall are the main defenses, since these are the features most misaligned with incumbents' existing business models.
-- **Moderation risk:** any open commenting, posting, live chat, or clipping feature introduces moderation needs that scale with usage. This grows substantially with live streaming (V2) and further with an open text feed (V3), and must be planned for at each stage, not bolted on after growth.
+### Additional per-video items (all near-zero effort)
 
-## Team & Execution Notes
-- V1, scoped to a single content type and built on rented infrastructure (transcription, search tooling, payments), is realistically buildable by a small team or a solo founder using AI-assisted development tools — this is a cost and time question, not a novel-technology question.
-- V2's tiered live rollout is designed to defer cost: tier 1 (listening parties) is cheap and validates demand; tier 2 (real live broadcast via a rented live-streaming API) only requires spend once tier 1 shows people want to watch together, and that spend scales with usage rather than requiring a large upfront build.
-- V3 features (multi-guest low-latency live, AI dubbing, real-time relighting, an open social feed) are both the most technically demanding and the most operationally demanding (moderation, community management) additions, and should only be pursued once the core loop, live tiers 1–2, and revenue are proven at V1/V2 scale.
-- Direct relationships with early creator users are the most important non-technical execution priority — the plan depends on real adoption, not just a working product.
+- Cleaned, timestamped transcript
+- Resource sheet: everything mentioned in the episode, pulled by AI, checked by the creator
+- Outtakes as a separate short unlock
+- Early access for subscribers
+- Paid attachment slot: project files, worksheets, recipe cards, templates
+- Paid questions: viewers pay to submit a question for the next episode
+
+### Foundation features (already built)
+
+Accounts and creator profiles, upload or paste a link, automatic transcription, search inside any video, "ask the show" answers drawn from the whole catalog with sources cited, tips, subscriptions, direct payouts via Stripe Connect.
+
+## 4. Why This Is Different and Hard to Copy
+
+Each individual perk exists somewhere. The combination does not, and the large platforms are structurally unable to build it:
+
+- **Per-video, not per-channel.** YouTube and Patreon monetize the relationship; you join a person. Selling one raw cut or one transcript for $2 to a non-subscriber fragments the membership funnel they depend on.
+- **Direct payouts.** Money goes to the creator's Stripe, not through the platform's balance sheet. Incumbents hold the money, take 30 percent, and pay monthly. That is their revenue model, not a missing feature.
+- **Paying outsiders to send money off-platform.** Distributor payouts reward people for taking attention and money away from the feed. No ad-funded platform can do this without undermining its own inventory.
+- **Transcript-native products.** Moments, resource sheets, ask pages, and transcripts all fall out of treating the video as text. Incumbent stacks are built around watch time; rebuilding around the transcript is a multi-year shift.
+- **Creator-gated virality.** Every recommendation engine is built to decide what spreads. Handing that decision to the creator is the opposite of their core mechanism.
+
+A competitor would have to become a different company to occupy this position.
+
+## 5. How the Platform Makes Money
+
+- 10 percent platform fee on all transactions: tips, subscriptions, per-video unlocks, attachments, paid questions.
+- Stripe fees are passed through and shown once.
+- The remainder goes directly to the creator (and, where attributed, the distributor). The platform never holds creator funds.
+
+### Illustrative unit economics
+
+A creator with 200 back-catalog videos and 5,000 engaged viewers:
+
+- 2 percent of viewers unlock one Behind the Cut per month at $3: $300
+- 1 percent subscribe at $5/month: $250
+- Tips on curated moments: $100–300
+
+Creator earns roughly $600–800/month on content already made; platform earns $60–80. At 500 such creators the platform is at $30–40k/month with a cost base in the low hundreds.
+
+## 6. Costs
+
+The build is designed to run for almost nothing until money moves.
+
+- Video and raw-footage storage and delivery: Cloudflare R2 (zero egress) and Cloudflare Stream
+- Transcription: Deepgram or Groq-hosted Whisper; reuse existing captions for pasted links
+- AI moment suggestions and ask pages: small hosted model, negligible per query
+- Moment rendering: ffmpeg on a small worker
+- App hosting: Vercel; database: Neon or Supabase Postgres
+- Payments: Stripe Connect — costs only when money moves
+
+Estimated run cost at 50 creators, 2,000 hours of catalog, 20,000 moment plays per month, a few terabytes of raw footage: $60–200 per month.
+
+Removed from the original build for cost and lack of differentiation: live streaming, AI dubbing, listening parties, streaks, recap reels, in-browser recording, and free-form viewer clipping.
+
+## 7. Go-to-Market
+
+**Wedge** — One vertical with deep back catalogs, real production effort, and creators underpaid by platforms: interview podcasts, independent educators, or documentary-style YouTubers. Recruit 10–20 creators by hand and ingest their entire catalog for free.
+
+**Pitch to creators** — "Your back catalog becomes searchable and quotable. You choose what spreads. Your raw footage and cut scenes — the stuff you'd delete — sell per video. Your audience gets paid to share you. Money goes to your Stripe, not ours."
+
+**Pitch to audiences** — "See how it was really made. Share the best 30 seconds and get paid if it lands."
+
+**Growth loop** — Curated moments travel off-platform through embeds and distributor links. Each one carries a tip button and a route back to the creator's catalog and ask page. Public ask pages capture long-tail search traffic. Every new creator brings a catalog, and every catalog produces hundreds of shareable, indexable pages on day one.
+
+## 8. Roadmap
+
+**Phase 1 — Prove the signature (first 8–12 weeks)**
+- Strip the build to the core; swap to the cheap stack
+- Curation UI with AI suggestions, moment pages, embeds
+- Tips and subscriptions on moment pages and embeds, guest checkout
+- Distributor share links, attribution, payouts
+- Behind the Cut with per-video unlocks and the effort badge
+- Public ask pages
+- Creator and distributor earnings pages
+- Launch with 10–20 hand-recruited creators in one vertical
+
+**Phase 2 — Expand what sells**
+- Resource sheets, transcripts, outtakes, paid attachments, paid questions, early access, private podcast feed for subscribers
+- Personal wall and saved moments for viewers
+
+**Phase 3 — Bring back the expensive features once revenue supports them**
+- Live streaming and live clipping
+- AI dubbing as a paid creator add-on
+- Weekly recaps and streaks
+
+## 9. Risks and How They Are Handled
+
+- **Rights.** Pasted links mean other people's content. DMCA agent registered, takedown form live, and only the verified owner of a channel can curate or sell from it. Unclaimed catalogs are searchable but earn nothing.
+- **Raw footage rights.** Raw cuts often contain guests and music removed from the final edit. Upload requires confirmation the creator has the right to sell the footage.
+- **Payout fraud.** No self-tipping (matched card fingerprints), attribution windows, click deduplication, refund clawbacks from the distributor ledger before payout.
+- **Curation effort.** If marking moments takes more than a minute, creators stop. AI suggestions are confirm-or-dismiss; five fixed slots keep Behind the Cut to ten minutes.
+- **Creator trust.** The promise "you're never surprised" — nothing spreads unless marked — is a product rule, not a setting.
+- **Production readiness.** Before real users: Stripe test-mode verification of every payout path including distributor transfers and refund clawbacks, object storage instead of local disk, and a security review of auth, payments, uploads, and the attribution webhook path.
+
+## 10. What We Are Asking For / Next Step
+
+[Fill in: bootstrapped, seeking a small round, or seeking design partners.]
+
+Immediate next step: finish Phase 1, sign the first ten creators, and put real money through the system in one vertical before building anything else.
