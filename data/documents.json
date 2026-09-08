@@ -30842,5 +30842,68 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "qtip_trust_info_sheet",
+    "title": "QTIP Trust (Qualified Terminable Interest Property) — Information Sheet",
+    "description": "The federal estate-tax structure of a QTIP trust under 26 U.S.C. §§ 2056(b)(7) and 2044 — the mandatory income interest, the election's effect, and inclusion in the surviving spouse's later estate — together with California's construction rules for marital deduction gifts under Probate Code §§ 21520-21526.",
+    "categories": [
+      "Estate Planning"
+    ],
+    "clauseOrder": [
+      "qtip_intro",
+      "qtip_federal_election_treated_as_passing",
+      "qtip_federal_qualifying_income_interest",
+      "qtip_federal_inclusion_second_estate",
+      "qtip_ca_construction_duty",
+      "qtip_ca_mandatory_income_beneficiary",
+      "qtip_ca_unproductive_property_conversion",
+      "qtip_ca_fiduciary_election_immunity",
+      "qtip_ack"
+    ],
+    "fields": [
+      {
+        "id": "settlorName",
+        "label": "Settlor name (you)",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "survivingSpouseName",
+        "label": "Surviving spouse or domestic partner's name",
+        "placeholder": "Casey Morgan Lee",
+        "required": true
+      },
+      {
+        "id": "trusteeName",
+        "label": "Initial trustee name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "beneficiaryName",
+        "label": "Residuary beneficiary",
+        "placeholder": "Jordan Alex Lee's children from a prior marriage, in equal shares",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 8, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      },
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      }
+    ]
   }
 ]
