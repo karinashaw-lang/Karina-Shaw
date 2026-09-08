@@ -30553,5 +30553,51 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "home_care_aide_registry_info_sheet",
+    "title": "Home Care Aide Registry — Information Sheet",
+    "description": "States California law on the Home Care Aide Registry under the Home Care Services Consumer Protection Act — the licensing, registry-listing, background-check, training, and tuberculosis-examination requirements that apply before an individual works as an affiliated home care aide.",
+    "clauseOrder": [
+      "hcareg_intro",
+      "hcareg_registry_listing_required",
+      "hcareg_no_unlicensed_arranging",
+      "hcareg_applicant_background_character_review",
+      "hcareg_organization_duty_clear_before_contact",
+      "hcareg_entry_level_training_before_service",
+      "hcareg_tuberculosis_exam_condition",
+      "hcareg_registration_biennial_renewal",
+      "hcareg_notify_department_employment_ends",
+      "hcareg_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "jobTitle",
+        "label": "Job title",
+        "placeholder": "Home Care Aide",
+        "required": true
+      },
+      {
+        "id": "applicantName",
+        "label": "Applicant's name",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 8, 2026",
+        "required": true
+      }
+    ],
+    "categories": [
+      "Hiring"
+    ]
   }
 ]
