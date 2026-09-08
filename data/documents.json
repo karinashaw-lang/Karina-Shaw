@@ -30905,5 +30905,41 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "sdi_new_hire_notice_info_sheet",
+    "title": "State Disability Insurance New-Hire Notice — Information Sheet",
+    "description": "An information sheet describing California Unemployment Insurance Code § 2613's requirement that the Director of Employment Development maintain a program of education about State Disability Insurance rights and benefits, and that every employer give each new employee a written notice of those rights at the time of hire -- including the original 1988 sickness/injury/pregnancy notice content, the 2004 expansion adding family-care and bonding-leave content tied to Paid Family Leave, and how this hiring-triggered notice differs from the separate time-of-hire workers' compensation notice, the Wage Theft Prevention Act notice, and the unemployment-benefits pamphlet given at separation.",
+    "categories": [
+      "Hiring"
+    ],
+    "clauseOrder": [
+      "sdinotice_intro",
+      "sdinotice_director_education_program",
+      "sdinotice_time_of_hire_duty",
+      "sdinotice_2004_expansion_family_bonding",
+      "sdinotice_distinguishing_other_notices",
+      "sdinotice_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "startDate",
+        "label": "Start date",
+        "placeholder": "September 15, 2026",
+        "required": true
+      }
+    ]
   }
 ]
