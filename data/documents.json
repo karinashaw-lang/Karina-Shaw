@@ -30457,5 +30457,69 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "life_estate_deed_info_sheet",
+    "title": "Life Estate Deed — Information Sheet",
+    "description": "Explains a deed reserving a life estate under California's Civil Code — a present conveyance that vests a remainder interest in a named remainderman now while the transferor retains exclusive lifetime possession and use — including how a life estate is classified and created, the life tenant's statutory duties to maintain the property and pay taxes, the statutory and judicial limit against injuring the remainder interest, how this instrument differs from a revocable transfer-on-death deed, its property-tax change-in-ownership treatment, and the affidavit-of-death mechanism used to reflect the life tenant's death of record.",
+    "categories": [
+      "Estate Planning"
+    ],
+    "clauseOrder": [
+      "lifeestatedeed_purpose",
+      "lifeestatedeed_estate_types",
+      "lifeestatedeed_freehold_classification",
+      "lifeestatedeed_express_reservation_required",
+      "lifeestatedeed_life_tenant_repair_tax_duty",
+      "lifeestatedeed_no_injury_to_inheritance",
+      "lifeestatedeed_distinct_from_tod_deed",
+      "lifeestatedeed_property_tax_change_ownership",
+      "lifeestatedeed_affidavit_of_death",
+      "lifeestatedeed_signature_ack"
+    ],
+    "fields": [
+      {
+        "id": "grantorName",
+        "label": "Grantor's name (life tenant)",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "granteeName",
+        "label": "Grantee's name (remainderman)",
+        "placeholder": "Jordan Morgan",
+        "required": true
+      },
+      {
+        "id": "propertyAddress",
+        "label": "Property address",
+        "placeholder": "123 Main St., Sacramento, CA 95814",
+        "required": true
+      },
+      {
+        "id": "legalDescription",
+        "label": "Legal description of the property",
+        "placeholder": "Lot 12, Block 3, Tract No. 4567, as per map recorded in Book 45, Page 12 of Maps, Sacramento County Records",
+        "required": true
+      },
+      {
+        "id": "recordingCounty",
+        "label": "County for recording",
+        "placeholder": "Sacramento County",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityOfExecution",
+        "label": "City where signed",
+        "placeholder": "Sacramento",
+        "required": true
+      }
+    ]
   }
 ]
