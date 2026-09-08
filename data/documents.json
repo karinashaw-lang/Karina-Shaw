@@ -30301,5 +30301,87 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "military_status_employment_discrimination_info_sheet",
+    "title": "Military Status Employment Discrimination Protection — Information Sheet",
+    "description": "Explains California Military and Veterans Code section 394: the general prohibition on discriminating against an employee because of membership in the military or naval forces (subdivisions (a)-(b)), the protection from discharge or hindrance for performing ordered military duty or seeking to enlist (subdivision (d)), the protection of collateral benefits during temporary incapacitation incident to duty (subdivision (e)), the misdemeanor penalty and civil damages/attorney's-fees remedy (subdivisions (g)-(h)), and Haligowski v. Superior Court's holding that only the employer, not an individual supervisor, may be held liable under this section. This is distinct from this corpus's existing USERRA information sheet (a federal statute covering reemployment after military service) and from the corpus's Servicemembers Civil Relief Act lease-termination document (an unrelated landlord-tenant statute that happens to share a nearby section number in a different code); it also discloses that the temporary military leave-of-absence and reinstatement provisions found in the same statutory chapter (Military and Veterans Code §§ 395-395.08, 395.1, 395.3) apply only to public employees, not private-sector employment.",
+    "categories": [
+      "During employment"
+    ],
+    "clauseOrder": [
+      "milstatusdiscrim_intro",
+      "milstatusdiscrim_general_prohibition",
+      "milstatusdiscrim_public_employer_prohibition",
+      "milstatusdiscrim_discharge_duty_protection",
+      "milstatusdiscrim_collateral_benefits_protection",
+      "milstatusdiscrim_remedies_and_penalty",
+      "milstatusdiscrim_employer_not_individual_liability",
+      "milstatusdiscrim_public_employee_leave_scope_limit",
+      "milstatusdiscrim_notice_or_incident_record",
+      "milstatusdiscrim_ack"
+    ],
+    "fields": [
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "jobTitle",
+        "label": "Job title",
+        "placeholder": "Software Engineer",
+        "required": true
+      },
+      {
+        "id": "serviceBranch",
+        "label": "Branch of service",
+        "placeholder": "California Army National Guard",
+        "required": true
+      },
+      {
+        "id": "serviceStartDate",
+        "label": "Service start date",
+        "placeholder": "September 8, 2026",
+        "required": true
+      },
+      {
+        "id": "serviceEndDate",
+        "label": "Service end date (if known)",
+        "placeholder": "September 12, 2026",
+        "required": false
+      },
+      {
+        "id": "allegedAdverseAction",
+        "label": "Adverse action believed connected to that activity",
+        "placeholder": "Describe the adverse action",
+        "required": true
+      },
+      {
+        "id": "adverseActionDate",
+        "label": "Date of the adverse action",
+        "placeholder": "August 15, 2026",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
