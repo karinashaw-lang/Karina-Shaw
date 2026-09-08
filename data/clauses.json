@@ -85057,6 +85057,144 @@
       "title": "Acknowledgment",
       "kind": "drafting",
       "body": "Please sign below to acknowledge receipt of this information sheet and the record above.\n\nEmployee: {{employeeName}}\nDate: {{dateSigned}}\n\nReceived on behalf of {{companyName}} by: _______________________________________________\nDate: _______________\nCity/State: {{cityState}}"
+    },
+    {
+      "id": "boundarytrees_purpose",
+      "title": "Purpose and Parties: Boundary Trees",
+      "kind": "drafting",
+      "body": "{{party1Name}}, the owner of the real property located at {{party1PropertyAddress}} (\"Party One\"), and {{party2Name}}, the owner of the adjoining real property located at {{party2PropertyAddress}} (\"Party Two\"), are owners of adjoining parcels of real property in {{county}}, California. This document concerns the following tree or trees: {{treeShrubDescription}}.\n\nThis document states facts about California law addressing who owns a tree growing on or near the boundary between two adjoining properties, the circumstances under which an adjoining landowner may trim back branches or roots that cross onto that landowner's own property, and the civil penalty California's Civil Code imposes for a wrongful injury to another's timber, trees, or underwood. It draws on Civil Code Sections 833, 834, and 3346, and on a published California Court of Appeal decision, Booska v. Patel (1994) 24 Cal.App.4th 1786, that discusses the scope of a landowner's right to trim encroaching growth. This document states facts about that law; it does not tell Party One or Party Two what to do about the specific tree or trees described above, and it does not evaluate whether either party's conduct toward those trees is or was reasonable, authorized, or a trespass."
+    },
+    {
+      "id": "boundarytrees_sole_ownership",
+      "title": "Ownership of a Tree Whose Trunk Stands Wholly on One Owner's Land",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-08",
+      "body": "California's Civil Code states a rule for trees whose trunk stands entirely within the boundary of a single owner's land: that owner owns the tree exclusively, even though the tree's roots may grow into a neighboring owner's land. The statute expresses this as a rule of exclusive ownership tied to the location of the trunk specifically, not the roots or any overhanging branches. This section has not been amended since its original enactment in 1872, and its text still uses the gender-specific pronoun \"him\" from that original enactment rather than gender-neutral language.",
+      "gap": "Civil Code Section 833 is a single, one-sentence statute; its fetched text does not itself define what counts as a tree's \"trunk,\" does not address a trunk that grows across a boundary line rather than standing wholly on one side of it (a circumstance the companion statute quoted in this document's next clause, Section 834, separately addresses), and does not itself state any remedy for wrongful injury to a tree it identifies as belonging to one owner (a separate topic addressed by Civil Code Section 3346, quoted elsewhere in this document). This clause states only what the statute's text says about ownership; it does not evaluate whether a specific tree's trunk in fact stands wholly on one side of a specific boundary.",
+      "citations": [
+        {
+          "case": "Cal. Civ. Code § 833",
+          "cite": "California Civil Code, ownership of a tree whose trunk stands wholly on one owner's land",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=833.",
+          "quote": "Trees whose trunks stand wholly upon the land of one owner belong exclusively to him, although their roots grow into the land of another."
+        }
+      ]
+    },
+    {
+      "id": "boundarytrees_common_ownership",
+      "title": "Common Ownership of a Tree Standing on the Boundary Itself",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-08",
+      "body": "A separate, adjoining Civil Code section addresses a different situation from the one described in this document's preceding clause: a tree whose trunk stands partly on the land of two or more adjoining (\"coterminous\") owners. For that situation, the statute states that the tree belongs to those owners in common, rather than exclusively to either one of them. A published California Court of Appeal decision, Booska v. Patel, later described this same basic distinction in its own words while resolving an unrelated dispute about root-cutting, characterizing boundary-line trees as \"jointly owned by the neighbors\" and contrasting that with a tree whose trunk stands solely on one owner's property.",
+      "gap": "Civil Code Section 834's text states that a boundary-line tree belongs to the coterminous owners \"in common\" but does not itself specify the proportion of that common ownership (for example, whether it is necessarily equal between two owners, or apportioned some other way), and does not define \"coterminous.\" The Booska v. Patel passage quoted here is the Court of Appeal's own paraphrase of a distinction it attributes to two older cases, Anderson v. Weiland (1936) 12 Cal.App.2d 730 and Scarborough v. Woodill (1907) 7 Cal.App. 39; neither of those two older cases was independently fetched or verified in this research, and Booska's own opinion text does not cite Civil Code Section 833 or Section 834 by number — this document treats the Booska passage as case-law corroboration of the same substantive distinction the statute draws, using different wording (\"jointly owned\" rather than the statute's \"belong to them in common\"), not as a citation to either statute. This clause does not evaluate whether a specific tree's trunk in fact stands on a boundary line.",
+      "citations": [
+        {
+          "case": "Cal. Civ. Code § 834",
+          "cite": "California Civil Code, common ownership of a tree whose trunk stands on the boundary between two or more owners' land",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=834.",
+          "quote": "Trees whose trunks stand partly on the land of two or more coterminous owners, belong to them in common."
+        },
+        {
+          "case": "Booska v. Patel (1994) 24 Cal.App.4th 1786, 1791, fn. 4",
+          "cite": "California Court of Appeal, First Appellate District, describing the boundary-tree/solely-owned-tree distinction",
+          "url": "https://www.courtlistener.com/opinion/2263644/booska-v-patel/",
+          "quote": "Patel notes a difference in the legal treatment of trees growing on a boundary line and trees entirely on the property of one owner which overhang the property of another. The only difference, however, seems to be that the boundary line trees are deemed to be jointly owned by the neighbors, while the tree with a trunk solely on the property of one belongs to that one."
+        }
+      ]
+    },
+    {
+      "id": "boundarytrees_right_to_trim_reasonableness",
+      "title": "The Right to Trim Encroaching Branches or Roots, and Its Limits",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-08",
+      "body": "In Booska v. Patel, the California Court of Appeal addressed a dispute in which one landowner had hired a contractor to sever the roots of a neighbor's tree that had grown into his yard, and the trial court had granted the landowner summary judgment on the theory that landowners have an unqualified, absolute right to sever any encroaching roots from their own property. The Court of Appeal described the origin of that \"absolute right\" language in an earlier case, Bonde v. Bishop (1952) 112 Cal.App.2d 1, which had stated that a landowner may remove encroaching portions of a neighbor's tree whether or not they cause damage, without first needing to sue and prove the encroachment is a nuisance. But the Booska court held that this right is not unlimited: after reviewing secondary authorities and other California cases addressing a landowner's duty to manage property reasonably, the court concluded that a landowner's rights in managing tree roots or branches on the landowner's own property are tempered by a duty to act reasonably, and it reversed the summary judgment because triable issues of fact existed about whether the specific conduct at issue had been reasonable.",
+      "gap": "Booska v. Patel is a published Court of Appeal (First Appellate District) decision; its own closing lines state that a petition for rehearing was denied and that the California Supreme Court denied a petition for review, meaning the decision became final without merits review by the Supreme Court. Booska reversed a summary judgment because triable issues of fact existed; it did not itself decide whether the defendant's actual conduct was or was not reasonable, and it does not state a numeric or bright-line test for what counts as reasonable management of encroaching roots or branches. The quoted \"absolute right\" language is Booska's own quotation of the earlier case Bonde v. Bishop (1952) 112 Cal.App.2d 1, 6; Bonde itself was not independently fetched or verified in this research, only Booska's verbatim quotation of it as it appears within Booska's own fetched opinion text. This case-law source was retrieved once via the CourtListener MCP tool (not the dual-User-Agent raw HTTP fetch method used elsewhere in this document for the leginfo.legislature.ca.gov statutory sources); CourtListener's plain_text field for this opinion was empty, so its html_with_citations field was used and searched directly for the quoted text.",
+      "citations": [
+        {
+          "case": "Booska v. Patel (1994) 24 Cal.App.4th 1786, 1789, quoting Bonde v. Bishop (1952) 112 Cal.App.2d 1, 6",
+          "cite": "California Court of Appeal, First Appellate District, on the scope of the right to remove encroaching tree growth",
+          "url": "https://www.courtlistener.com/opinion/2263644/booska-v-patel/",
+          "quote": "While it is the absolute right of a landowner to remove those portions of trees which encroach on his land whether they cause damage or not, it is rather anomalous that to obtain court help in the matter he must first prove that the encroachment constitutes a nuisance."
+        },
+        {
+          "case": "Booska v. Patel (1994) 24 Cal.App.4th 1786, 1791",
+          "cite": "California Court of Appeal, First Appellate District, holding the right to manage encroaching growth is tempered by a duty of reasonableness",
+          "url": "https://www.courtlistener.com/opinion/2263644/booska-v-patel/",
+          "quote": "Thus, whatever rights Patel has in the management of his own land, those rights are tempered by his duty to act reasonably."
+        }
+      ]
+    },
+    {
+      "id": "boundarytrees_coowner_destruction_limit",
+      "title": "A Co-Owner's Limits Regarding a Jointly Owned Boundary Tree",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-08",
+      "body": "Booska v. Patel's discussion of boundary-line trees, described elsewhere in this document, continues with a further point drawn from two older California cases: because a boundary-line tree is jointly owned by the adjoining owners, one of those co-owners does not have the unilateral right to destroy the tree. The Court of Appeal described this as subject to a duty on each of the joint owners to use their own part of the tree in a way that does not unreasonably injure or destroy the whole of it.",
+      "gap": "This clause quotes Booska v. Patel's own statement of this rule, drawn from footnote 4 of its opinion; that footnote in turn attributes the rule to two older California cases, Anderson v. Weiland (1936) 12 Cal.App.2d 730 and Scarborough v. Woodill (1907) 7 Cal.App. 39, neither of which was independently fetched or verified in this research — this clause relies only on Booska's own quotation and characterization of them. The raw HTML fetched from CourtListener for this passage contains an unusual character (an asterisk) immediately before the ellipsis in the sentence \"subject to the duty of both owners to ‘ *. . .so use his part as not unreasonably to injure or destroy the whole.’ ”\"; this was verified directly in the fetched html_with_citations field and appears to be a rendering or OCR artifact from the underlying source rather than a substantive part of the quoted sentence, so this clause's citation begins its quotation after that character and the ellipsis, from \"so use his part,\" rather than reproducing the ambiguous leading character. This passage is part of the Court of Appeal's published opinion responding to an argument the appellee made in that case; it is not part of the case's core holding, which concerned triable issues of fact on summary judgment over a different, solely-owned tree's roots. This clause does not evaluate what remedy (for example, an action for partition, injunction, or damages) is available to a co-owner of a jointly owned tree, or address Civil Code Section 3346's penal-damages provision, described in a separate clause, as applied to a dispute between co-owners of the same tree.",
+      "citations": [
+        {
+          "case": "Booska v. Patel (1994) 24 Cal.App.4th 1786, 1791, fn. 4",
+          "cite": "California Court of Appeal, First Appellate District, on a co-owner's lack of unilateral right to destroy a jointly owned boundary tree",
+          "url": "https://www.courtlistener.com/opinion/2263644/booska-v-patel/",
+          "quote": "The boundary line cases state that one co-owner does not have the right to destroy the trees"
+        },
+        {
+          "case": "Booska v. Patel (1994) 24 Cal.App.4th 1786, 1791, fn. 4, quoting Anderson v. Weiland (1936) 12 Cal.App.2d 730 and Scarborough v. Woodill (1907) 7 Cal.App. 39",
+          "cite": "California Court of Appeal, First Appellate District, on each co-owner's duty regarding a jointly owned boundary tree",
+          "url": "https://www.courtlistener.com/opinion/2263644/booska-v-patel/",
+          "quote": "so use his part as not unreasonably to injure or destroy the whole"
+        }
+      ]
+    },
+    {
+      "id": "boundarytrees_penal_damages_and_limitations",
+      "title": "Treble and Double Damages for Wrongful Injury to Trees, and the Five-Year Limitations Period",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-08",
+      "body": "California's Civil Code sets a specific, elevated measure of damages for a wrongful injury to \"timber, trees, or underwood\" on another person's land, or the wrongful removal of it. As a default rule, the statute sets the measure of damages at three times the sum that would compensate for the actual detriment. The statute reduces that multiplier in two specified situations: to twice the actual detriment where the trespass was casual or involuntary, or where the defendant had probable cause to believe the land was the defendant's own (or the land of a person the defendant was acting for); and, in a narrower situation involving wood taken by highway officers to repair a public highway or bridge, to a sum equal to the actual detriment only, with no multiplier. The same statute separately states that an action for these damages must be commenced within five years from the date of the trespass.",
+      "gap": "The raw HTML fetched from leginfo.legislature.ca.gov for this section contains a mid-phrase line wrap in two places, verified directly against the fetched HTML using two different User-Agent strings whose results matched exactly: within subdivision (a), between \"the authority of\" and \"highway officers,\" and within subdivision (c), between \"Any action\" and \"for the damages.\" Both are rendered here as ordinary single spaces rather than as the literal line breaks present in the source markup, consistent with this being a source formatting artifact rather than a substantive gap in the sentence. This clause quotes subdivisions (a) and (c) of Section 3346 as two citations from the same statutory section, not as independent sources. Section 3346(a) applies to \"timber, trees, or underwood\" generally; its own text is not limited to boundary trees specifically and does not cross-reference Civil Code Sections 833 or 834, and its own text does not define \"wrongful\" or address how it interacts with the encroachment-trimming right described elsewhere in this document. Section 3346(b), which reduces the damages multiplier in a specific boundary-survey situation, is addressed in a separate clause of this document. Section 3346(c)'s own text states that its five-year period runs \"from the date of the trespass\" but does not itself address any discovery-rule tolling or define what counts as the relevant trespass date where a tree's decline or death from a root- or branch-cutting event becomes apparent only sometime after the cutting itself. This clause does not evaluate whether a specific injury to a specific tree is \"wrongful,\" or whether any particular claim would be timely.",
+      "citations": [
+        {
+          "case": "Cal. Civ. Code § 3346(a)",
+          "cite": "California Civil Code, measure of damages for wrongful injury to timber, trees, or underwood",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=3346.",
+          "quote": "For wrongful injuries to timber, trees, or underwood upon the land of another, or removal thereof, the measure of damages is three times such sum as would compensate for the actual detriment, except that where the trespass was casual or involuntary, or that the defendant in any action brought under this section had probable cause to believe that the land on which the trespass was committed was his own or the land of the person in whose service or by whose direction the act was done, the measure of damages shall be twice the sum as would compensate for the actual detriment, and excepting further that where the wood was taken by the authority of highway officers for the purpose of repairing a public highway or bridge upon the land or adjoining it, in which case judgment shall only be given in a sum equal to the actual detriment."
+        },
+        {
+          "case": "Cal. Civ. Code § 3346(c)",
+          "cite": "California Civil Code, five-year limitations period for damages under this section",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=3346.",
+          "quote": "Any action for the damages specified by subdivisions (a) and (b) of this section must be commenced within five years from the date of the trespass."
+        }
+      ]
+    },
+    {
+      "id": "boundarytrees_survey_reliance_exception",
+      "title": "Reduced Damages Where a Trespass Relied on a Licensed Boundary Survey",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-08",
+      "body": "Civil Code Section 3346 states a further, separate exception from the treble- or double-damages measure described elsewhere in this document. Where a trespass onto another's land (including a trespass injuring trees) was committed in reliance on a survey of boundary lines that improperly fixed the location of a boundary, the statute limits the measure of damages to the actual detriment incurred, but only if two specific conditions both exist: the trespass must have been committed by a defendant who either personally procured the survey, or whose principal, lessor, or immediate predecessor in title procured it; and the survey itself must have been made by a person licensed under California law to practice land surveying.",
+      "gap": "This exception applies only if both of Section 3346(b)'s stated conditions are met; its own text does not define \"procured,\" does not address a survey performed by someone other than a person licensed to practice land surveying (for example, a civil engineer performing boundary-related work), and does not state what measure of damages applies if a trespass relied on an unlicensed or informal survey instead. This clause quotes the full text of subdivision (b) as fetched; it does not evaluate whether a specific survey or a specific party's reliance on it would satisfy either of the two stated conditions.",
+      "citations": [
+        {
+          "case": "Cal. Civ. Code § 3346(b)",
+          "cite": "California Civil Code, reduced damages where a trespass relied on a licensed boundary survey",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=3346.",
+          "quote": "The measure of damages to be assessed against a defendant for any trespass committed while acting in reliance upon a survey of boundary lines which improperly fixes the location of a boundary line, shall be the actual detriment incurred if both of the following conditions exist:(1) The trespass was committed by a defendant who either himself procured, or whose principal, lessor, or immediate predecessor in title procured the survey to be made; and(2) The survey was made by a person licensed under the laws of this State to practice land surveying."
+        }
+      ]
+    },
+    {
+      "id": "boundarytrees_record",
+      "title": "Boundary Tree Factual Record",
+      "kind": "drafting",
+      "body": "BOUNDARY TREE FACTUAL RECORD\n\nDate of this record: {{noticeDate}}\n\nParty One: {{party1Name}}, owner of the property at {{party1PropertyAddress}}\nParty Two: {{party2Name}}, owner of the adjoining property at {{party2PropertyAddress}}\nCounty: {{county}}\n\nTree or trees at issue (description and location relative to the boundary): {{treeShrubDescription}}\n\nDate of the incident or event this record concerns (for example, a cutting, trimming, or removal): {{incidentDate}}\n\nDescription of what occurred: {{incidentDescription}}\n\nThis record states facts about the tree or trees described above and about the dated event described above, for the parties' own reference. It does not itself determine, and is not a determination of, which of Civil Code Sections 833 or 834 applies to the tree described, whether any conduct described above was reasonable, or whether Civil Code Section 3346 applies to any injury described above.\n\nSignature of Party One: _________________________ Date: _______________\n\nSignature of Party Two: _________________________ Date: _______________"
     }
   ]
 }

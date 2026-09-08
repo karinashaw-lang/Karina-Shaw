@@ -30383,5 +30383,79 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "boundary_trees_info_sheet",
+    "title": "Boundary Trees — Information Sheet",
+    "description": "Explains California Civil Code Sections 833 and 834 (ownership of a tree whose trunk stands wholly on one owner's land versus a tree whose trunk stands on a boundary and is owned in common), the published Court of Appeal decision Booska v. Patel on an adjoining landowner's right to trim encroaching branches or roots and the reasonableness limit on that right, and Civil Code Section 3346's treble- or double-damages measure (and five-year limitations period) for wrongful injury to timber, trees, or underwood, including its reduced-damages exception for a trespass committed in reliance on a licensed boundary survey. A separate topic from this project's Good Neighbor Fence Act Information Sheet, which addresses boundary fences rather than trees.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "boundarytrees_purpose",
+      "boundarytrees_sole_ownership",
+      "boundarytrees_common_ownership",
+      "boundarytrees_right_to_trim_reasonableness",
+      "boundarytrees_coowner_destruction_limit",
+      "boundarytrees_penal_damages_and_limitations",
+      "boundarytrees_survey_reliance_exception",
+      "boundarytrees_record"
+    ],
+    "fields": [
+      {
+        "id": "party1Name",
+        "label": "First landowner's full name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "party1PropertyAddress",
+        "label": "First landowner's property address",
+        "placeholder": "123 Main St., Fresno, CA 93701",
+        "required": true
+      },
+      {
+        "id": "party2Name",
+        "label": "Second (adjoining) landowner's full name",
+        "placeholder": "Morgan Casey",
+        "required": true
+      },
+      {
+        "id": "party2PropertyAddress",
+        "label": "Second landowner's property address",
+        "placeholder": "125 Main St., Fresno, CA 93701",
+        "required": true
+      },
+      {
+        "id": "county",
+        "label": "County where the properties are located",
+        "placeholder": "Fresno County",
+        "required": true
+      },
+      {
+        "id": "treeShrubDescription",
+        "label": "Description and location of the tree or trees at issue relative to the boundary",
+        "placeholder": "40-year-old Monterey pine, trunk appears to stand within a few feet of the rear property line",
+        "required": true
+      },
+      {
+        "id": "incidentDate",
+        "label": "Date of the event this record concerns (e.g., a cutting, trimming, or removal)",
+        "placeholder": "August 15, 2026",
+        "required": false
+      },
+      {
+        "id": "incidentDescription",
+        "label": "Description of what occurred",
+        "placeholder": "Contractor excavated along the shared property line and cut roots to a depth of approximately three feet",
+        "required": false
+      },
+      {
+        "id": "noticeDate",
+        "label": "Date of this record",
+        "placeholder": "September 5, 2026",
+        "required": true
+      }
+    ]
   }
 ]
