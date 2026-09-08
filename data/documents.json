@@ -30732,5 +30732,64 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "calpers_golden_handshake_info_sheet",
+    "title": "CalPERS \"Golden Handshake\" Early Retirement Incentive (Government Code § 20903) — Information Sheet",
+    "description": "Describes California Government Code section 20903 — the Public Employees' Retirement Law provision that lets a CalPERS contracting agency offer eligible local members up to two years of additional retirement service credit (a \"golden handshake\") when the agency's governing body determines that an impending curtailment of, or change in the manner of performing, its services makes doing so in the agency's best interests: the statute's threshold trigger, its 90-to-180-day retirement-window condition, its 1 percent layoff-certification condition, its permanent-vacancy workforce-reduction condition, its flat two-years-of-credit rule, its unemployment-insurance disqualification rule, its reentry-forfeiture rule, and the contracting agency's own election and public-meeting prerequisites to adopting the section, together with a reported California decision's use of the colloquial term \"golden handshake\" in a different, non-CalPERS context.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "calpers_golden_handshake_intro",
+      "calpers_golden_handshake_trigger",
+      "calpers_golden_handshake_window_period",
+      "calpers_golden_handshake_layoff_certification",
+      "calpers_golden_handshake_workforce_reduction",
+      "calpers_golden_handshake_two_years_credit",
+      "calpers_golden_handshake_ui_disqualification",
+      "calpers_golden_handshake_reentry_forfeiture",
+      "calpers_golden_handshake_agency_election",
+      "calpers_golden_handshake_terminology_case",
+      "calpers_golden_handshake_ack"
+    ],
+    "fields": [
+      {
+        "id": "employeeName",
+        "label": "Public agency employee's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Public agency (CalPERS contracting agency) name",
+        "placeholder": "City of Example Public Works Department",
+        "required": true
+      },
+      {
+        "id": "jobTitle",
+        "label": "Job classification, department, or organizational unit designated by the agency, if known",
+        "placeholder": "Maintenance Worker II, Public Works Department",
+        "required": false
+      },
+      {
+        "id": "effectiveDate",
+        "label": "Effective date of the agency's contract amendment or resolution adopting this section, if known",
+        "placeholder": "January 1, 2027",
+        "required": false
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 8, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, state",
+        "placeholder": "Sacramento, California",
+        "required": true
+      }
+    ]
   }
 ]
