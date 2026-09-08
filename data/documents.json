@@ -30237,5 +30237,69 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "false_child_abuse_allegation_sanctions_info_sheet",
+    "title": "False Child Abuse Allegation Sanctions and Reporting Protections — Information Sheet",
+    "description": "Explains, using the statutes' own text, California Family Code sections 3027, 3027.1, and 3027.5: a family court's authority to take temporary protective steps and request an agency investigation when child abuse allegations arise in a custody proceeding, the monetary-sanctions remedy for an accusation later found false and knowingly so, and the statutory protections — and their limits — for a parent who lawfully reported or investigated suspected child sexual abuse.",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "falseabuseclaim_intro",
+      "falseabuseclaim_temporary_protective_steps",
+      "falseabuseclaim_agency_investigation_referral",
+      "falseabuseclaim_sanctions_elements",
+      "falseabuseclaim_sanctions_procedure",
+      "falseabuseclaim_case_law",
+      "falseabuseclaim_good_faith_reporting_protection",
+      "falseabuseclaim_knowing_false_report_limitation",
+      "falseabuseclaim_distinguishing_related_topics",
+      "falseabuseclaim_acknowledgment"
+    ],
+    "fields": [
+      {
+        "id": "party1Name",
+        "label": "First parent's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "party2Name",
+        "label": "Second parent's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "childName",
+        "label": "Child's name",
+        "placeholder": "Alex Morgan-Lee",
+        "required": true
+      },
+      {
+        "id": "courtCaseNumber",
+        "label": "Court case number",
+        "placeholder": "26FL00123",
+        "required": true
+      },
+      {
+        "id": "countyOfFiling",
+        "label": "County of filing",
+        "placeholder": "Sacramento County",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 7, 2026",
+        "required": true
+      }
+    ]
   }
 ]
