@@ -31080,5 +31080,44 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "pool_safety_act_info_sheet",
+    "title": "Swimming Pool Safety Act — Information Sheet",
+    "description": "Explains California's Swimming Pool Safety Act (Health & Safety Code §§ 115920-115929), which requires a new or remodeled residential swimming pool or spa built under a building permit to include at least two of seven listed drowning prevention safety features. Covers the statutory definitions, the two-of-seven feature list and the barred double-counting combinations, the separate structural specifications that apply if an enclosure is one of the chosen features, the article's exemptions (public pools, certain spas, and non-single-family residential settings), the reservation of certain interpretive authority to local jurisdictions, and a contractor's duty to notify the consumer of the article's requirements.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "poolsafety_declaration",
+      "poolsafety_definitions",
+      "poolsafety_two_of_seven_intro",
+      "poolsafety_two_of_seven_remainder",
+      "poolsafety_enclosure_specs",
+      "poolsafety_exemptions",
+      "poolsafety_local_authority_reserved",
+      "poolsafety_contractor_notice_duty",
+      "poolsafety_signature"
+    ],
+    "fields": [
+      {
+        "id": "homeownerName",
+        "label": "Homeowner's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "contractorName",
+        "label": "Contractor's name",
+        "placeholder": "Acme Pool Construction, Inc.",
+        "required": true
+      },
+      {
+        "id": "propertyAddress",
+        "label": "Property address",
+        "placeholder": "123 Main St, Springfield",
+        "required": true
+      }
+    ]
   }
 ]
