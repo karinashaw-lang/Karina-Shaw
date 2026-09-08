@@ -31233,5 +31233,65 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "firearm_transfer_operation_of_law_info_sheet",
+    "title": "Transfer of a Decedent's Firearm by Operation of Law — Information Sheet",
+    "description": "Explains California's statutory exemption letting a decedent's firearm pass to a personal representative, trustee, surviving spouse or registered domestic partner, or other successor without the transfer going through a licensed dealer (Penal Code §§ 16990, 27920, 27545) -- the baseline dealer-transfer rule the exemption departs from, which estate-related transfers the exemption's operation-of-law definition actually covers, the 30-day Department of Justice reporting condition attached to it, and the separate provision addressing an out-of-state decedent's firearm brought into California.",
+    "categories": [
+      "Estate Planning"
+    ],
+    "clauseOrder": [
+      "firearmopl_intro",
+      "firearmopl_general_dealer_rule",
+      "firearmopl_operation_of_law_categories",
+      "firearmopl_exemption_conditions_reporting",
+      "firearmopl_out_of_state_import",
+      "firearmopl_closing_limitations"
+    ],
+    "fields": [
+      {
+        "id": "decedentName",
+        "label": "Decedent's name",
+        "placeholder": "Pat Morgan Rivera",
+        "required": true
+      },
+      {
+        "id": "dateOfDeath",
+        "label": "Date of death",
+        "placeholder": "March 4, 2026",
+        "required": true
+      },
+      {
+        "id": "personalRepresentativeName",
+        "label": "Personal representative's name",
+        "placeholder": "Jordan Rivera",
+        "required": false
+      },
+      {
+        "id": "trusteeName",
+        "label": "Initial trustee name",
+        "placeholder": "Casey Rivera",
+        "required": false
+      },
+      {
+        "id": "survivingSpouseName",
+        "label": "Surviving spouse or domestic partner's name",
+        "placeholder": "Alex Rivera",
+        "required": false
+      },
+      {
+        "id": "relationshipToDecedent",
+        "label": "Relationship to decedent",
+        "placeholder": "Adult child",
+        "required": false
+      },
+      {
+        "id": "firearmDescription",
+        "label": "Description of the firearm(s) (make, model, serial number, if known)",
+        "placeholder": "Smith & Wesson Model 10 revolver, .38 Special, serial number ABC1234",
+        "required": false
+      }
+    ]
   }
 ]
