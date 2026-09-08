@@ -87245,6 +87245,166 @@
       "title": "Acknowledgment of Receipt and Review",
       "kind": "drafting",
       "body": "This information sheet regarding California's Electronic Communications Privacy Act (Penal Code §§ 1546-1546.4) was provided by {{companyName}} to {{personName}} on {{dateSigned}}, and was prepared by {{preparerName}}. Receipt and review of this information sheet does not itself constitute a request, consent, warrant, or legal process of any kind, and this information sheet does not itself determine whether any specific request, warrant, subpoena, or other demand for information concerning {{personName}} or {{companyName}} complies with this statute or any other law."
+    },
+    {
+      "id": "surplusproceeds_intro_scope",
+      "title": "Purpose and Scope — Informational Only",
+      "kind": "drafting",
+      "body": "This information sheet describes, in general terms, the California statutory procedure governing surplus proceeds from a nonjudicial (power-of-sale) trustee's sale of real property — that is, money the trustee's sale generates in excess of what is owed on the deed of trust and other obligations paid ahead of the trustor, under California Civil Code §§ 2924j and 2924k. It concerns a trustee's sale of the property commonly known as {{propertyAddress}}, conducted by {{trusteeName}} as trustee under a deed of trust naming {{beneficiaryName}} as beneficiary and {{trustorName}} as trustor, with a trustee's sale date of {{foreclosureSaleDate}}. This sheet summarizes, at a general level: the statutory order in which a trustee must distribute trustee's-sale proceeds; the trustee's fee for administering that distribution; the trustee's obligation to notify persons with recorded interests in the property before the sale that surplus proceeds may exist; the written-claim and due-diligence process for resolving competing claims to the surplus; the procedure for depositing disputed surplus with the clerk of the court when the trustee cannot resolve priority; the trustee's alternative option of filing an interpleader action; the Unclaimed Property Law's application to surplus the trustee is not required to deposit with a court; and California Court of Appeal authority describing the statute's scope and a trustee's duty to pay surplus to the trustor once senior claims are satisfied. It is distinct from — and does not duplicate — information sheets elsewhere in this corpus describing the general nonjudicial foreclosure process leading up to a trustee's sale (notice of default, notice of sale, reinstatement, and the anti-deficiency rule), the Homeowner Bill of Rights' servicer-conduct protections before a sale, the ninety-day notice protecting certain tenants after a foreclosure sale, and the separate regulation of \"foreclosure consultants\" who solicit a homeowner before a sale occurs; this sheet concerns only what happens to money left over after a completed trustee's sale. This sheet is informational only. It does not itself determine whether surplus proceeds exist or their amount, identify who is entitled to any surplus proceeds from the sale of {{propertyAddress}}, submit or evaluate a claim on behalf of {{trustorName}}, {{claimantName}}, or any other person, or otherwise resolve any actual dispute over surplus proceeds from this or any other trustee's sale."
+    },
+    {
+      "id": "surplusproceeds_priority_of_distribution",
+      "title": "Statutory Order of Priority for Distributing Trustee's-Sale Proceeds",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-08",
+      "body": "California Civil Code § 2924k(a) fixes the order in which a trustee (or the clerk of the court, once funds reach the court) must distribute the proceeds of a trustee's sale: first, to “the costs and expenses of exercising the power of sale and of sale, including the payment of the trustee’s fees and attorney’s fees” permitted under the statute; second, to “the payment of the obligations secured by the deed of trust or mortgage which is the subject of the trustee’s sale”; third, “to satisfy the outstanding balance of obligations secured by any junior liens or encumbrances in the order of their priority”; and fourth, “to the trustor or the trustor’s successor in interest,” or, if the property has since been sold or transferred, “to the vested owner of record at the time of the trustee’s sale.” Any money the sale of {{propertyAddress}} generated above what is required to satisfy the first three categories is, under this order, payable to {{trustorName}} (or that person's successor in interest) as the fourth-priority recipient. Whether any surplus exists from the {{foreclosureSaleDate}} sale, its amount, or whether all first-, second-, and third-priority obligations have in fact been satisfied is not addressed by this sheet.",
+      "gap": "This priority order tells a trustee whom to pay once it has determined the amount and validity of each category's claims, but it does not itself resolve competing claims among multiple junior lienholders, or between a lienholder and the trustor, when their relative priority or the validity of a claim is genuinely disputed — that determination is addressed separately by the due-diligence and court-deposit procedures of Civil Code § 2924j (described in other clauses of this sheet). Nor does this quoted subdivision restate the separate body of California recording-act law that generally governs the relative priority of recorded interests in real property; that subject is addressed in a separate information sheet in this corpus. Formatting note: the official leginfo.legislature.ca.gov HTML renders a non-breaking space between each enumerated paragraph number, (1) through (4), and the text that follows it, and inserts a line-wrap (a newline plus indentation spaces) in the middle of the phrase \"Section 2924d\" within paragraph (1). Both quoted here as ordinary single spaces. This normalization was confirmed by fetching the section twice with distinct User-Agent strings; the underlying text was identical both times.",
+      "citations": [
+        {
+          "case": "Cal. Civ. Code § 2924k(a) (California Legislative Information text)",
+          "cite": "Civ. C. § 2924k(a)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?sectionNum=2924k.&lawCode=CIV",
+          "quote": "The trustee, or the clerk of the court upon order to the clerk pursuant to subdivision (d) of Section 2924j, shall distribute the proceeds, or a portion of the proceeds, as the case may be, of the trustee’s sale conducted pursuant to Section 2924h in the following order of priority:(1) To the costs and expenses of exercising the power of sale and of sale, including the payment of the trustee’s fees and attorney’s fees permitted pursuant to subdivision (b) of Section 2924d and subdivision (b) of this section.(2) To the payment of the obligations secured by the deed of trust or mortgage which is the subject of the trustee’s sale.(3) To satisfy the outstanding balance of obligations secured by any junior liens or encumbrances in the order of their priority.(4) To the trustor or the trustor’s successor in interest. In the event the property is sold or transferred to another, to the vested owner of record at the time of the trustee’s sale."
+        }
+      ]
+    },
+    {
+      "id": "surplusproceeds_trustee_fee_cap",
+      "title": "Trustee's Fee for Administering the Surplus-Proceeds Distribution",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-08",
+      "body": "Civil Code § 2924k(b) authorizes a trustee to charge a fee, separate from the trustee's fee for conducting the sale itself, for the work of distributing surplus proceeds — including investigating the priority and validity of claims and disbursing the funds — and sets a safe-harbor amount: \"If the fee charged for services rendered pursuant to this subdivision does not exceed one hundred dollars ($100), or one hundred twenty-five dollars ($125) where there are obligations specified in paragraph (3) of subdivision (a), the fee is conclusively presumed to be reasonable.\" Whether {{trusteeName}} has charged, or intends to charge, a fee for distributing surplus proceeds from the sale of {{propertyAddress}}, or the amount of any such fee, is not addressed by this sheet.",
+      "gap": "The $100/$125 figures create only a conclusive presumption of reasonableness for a fee at or below that amount; the statute does not state that a fee above those amounts is unreasonable or improper, only that it loses the benefit of the conclusive presumption and would instead be evaluated for actual reasonableness on its own facts. These dollar amounts were last set by the Legislature effective January 1, 2000, and have not been adjusted for inflation since — a fee that was a small fraction of a typical surplus in 2000 is a smaller fraction still today, which this sheet does not evaluate for any specific fee.",
+      "citations": [
+        {
+          "case": "Cal. Civ. Code § 2924k(b) (California Legislative Information text)",
+          "cite": "Civ. C. § 2924k(b)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?sectionNum=2924k.&lawCode=CIV",
+          "quote": "If the fee charged for services rendered pursuant to this subdivision does not exceed one hundred dollars ($100), or one hundred twenty-five dollars ($125) where there are obligations specified in paragraph (3) of subdivision (a), the fee is conclusively presumed to be reasonable."
+        }
+      ]
+    },
+    {
+      "id": "surplusproceeds_notice_to_recorded_interest_holders",
+      "title": "Trustee's Duty to Notify Persons With Recorded Interests of Possible Surplus",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-08",
+      "body": "Civil Code § 2924j(a) requires a trustee holding surplus proceeds to notify certain persons before distributing the funds, unless an interpleader action has already been filed: \"Unless an interpleader action has been filed, within 30 days of the execution of the trustee’s deed resulting from a sale in which there are proceeds remaining after payment of the amounts required by paragraphs (1) and (2) of subdivision (a) of Section 2924k, the trustee shall send written notice to all persons with recorded interests in the real property as of the date immediately prior to the trustee’s sale who would be entitled to notice pursuant to subdivisions (b) and (c) of Section 2924b.\" The statute requires that notice to state that a trustee's sale occurred, that the recipient may have a claim to the remaining proceeds, how to contact the trustee, and that the recipient may need to submit proof of their interest along with a written, penalty-of-perjury claim itemizing the amount claimed, within 30 days of the trustee's notice. Whether {{trusteeName}} has sent this notice to any person with a recorded interest in {{propertyAddress}} as of immediately before the {{foreclosureSaleDate}} sale is not addressed by this sheet.",
+      "gap": "This notice duty is triggered only after the trustee has already paid the amounts required by Civil Code § 2924k(a)(1)-(2) — sale costs and the deed of trust being foreclosed — and reaches only persons with interests recorded \"as of the date immediately prior to the trustee's sale\" who would separately qualify for notice under Section 2924b(b)-(c); a person with an unrecorded or later-recorded interest is not described by this notice duty. The 30-day claim-submission period this notice starts runs from when the trustee sends the notice, not from the date of the sale itself, so the overall timeline from sale to final distribution can extend well beyond 30 days.",
+      "citations": [
+        {
+          "case": "Cal. Civ. Code § 2924j(a) (California Legislative Information text)",
+          "cite": "Civ. C. § 2924j(a)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?sectionNum=2924j.&lawCode=CIV",
+          "quote": "Unless an interpleader action has been filed, within 30 days of the execution of the trustee’s deed resulting from a sale in which there are proceeds remaining after payment of the amounts required by paragraphs (1) and (2) of subdivision (a) of Section 2924k, the trustee shall send written notice to all persons with recorded interests in the real property as of the date immediately prior to the trustee’s sale who would be entitled to notice pursuant to subdivisions (b) and (c) of Section 2924b."
+        }
+      ]
+    },
+    {
+      "id": "surplusproceeds_due_diligence_and_deadline",
+      "title": "Trustee's Due-Diligence Deadline for Resolving Claims to Surplus",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-08",
+      "body": "Civil Code § 2924j(b) sets the timeline for a trustee to act once written claims to surplus proceeds are received: \"The trustee shall exercise due diligence to determine the priority of the written claims received by the trustee to the trustee’s sale surplus proceeds from those persons to whom notice was sent pursuant to subdivision (a). In the event there is no dispute as to the priority of the written claims submitted to the trustee, proceeds shall be paid within 30 days after the conclusion of the notice period.\" If the trustee has not resolved priority within 90 days after that 30-day notice period, the statute requires the trustee, within 10 more days, to either deposit the funds with the clerk of the court or file an interpleader action. Whether {{trusteeName}} has received any written claim to surplus proceeds from the sale of {{propertyAddress}}, or where in this timeline any such claim currently stands, is not addressed by this sheet.",
+      "gap": "The statute's final sentence in this subdivision expressly preserves other avenues: \"Nothing in this section shall preclude any person from pursuing other remedies or claims as to surplus proceeds,\" meaning this notice-and-claim process is not necessarily the exclusive way a person can pursue a surplus-proceeds claim. Separately, Civil Code § 2924j(f) (not quoted in this clause) defines \"due diligence\" for this subdivision narrowly — as researching the written claims actually submitted and determining whether an unresolvable priority conflict exists among them — rather than as an open-ended duty to search for every possible claimant.",
+      "citations": [
+        {
+          "case": "Cal. Civ. Code § 2924j(b) (California Legislative Information text)",
+          "cite": "Civ. C. § 2924j(b)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?sectionNum=2924j.&lawCode=CIV",
+          "quote": "The trustee shall exercise due diligence to determine the priority of the written claims received by the trustee to the trustee’s sale surplus proceeds from those persons to whom notice was sent pursuant to subdivision (a). In the event there is no dispute as to the priority of the written claims submitted to the trustee, proceeds shall be paid within 30 days after the conclusion of the notice period."
+        }
+      ]
+    },
+    {
+      "id": "surplusproceeds_deposit_and_notice_procedure",
+      "title": "Depositing Disputed Surplus With the Court",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-08",
+      "body": "When the trustee cannot, after due diligence, determine the priority among competing written claims, Civil Code § 2924j(c) lets the trustee deposit the disputed portion of the proceeds with the superior court clerk for the county where the sale occurred: \"If, after due diligence, the trustee is unable to determine the priority of the written claims received by the trustee to the trustee’s sale surplus of multiple persons or if the trustee determines there is a conflict between potential claimants, the trustee may file a declaration of the unresolved claims and deposit with the clerk of the superior court of the county in which the sale occurred, that portion of the sales proceeds that cannot be distributed, less any fees charged by the clerk pursuant to this subdivision.\" Before making that deposit, § 2924j(d) separately requires the trustee to notify each previously-noticed person by first-class mail that the trustee intends to deposit the funds with the court and that any claim must be filed with the court within 30 days: \"Before the trustee deposits the funds with the clerk of the court pursuant to subdivision (c), the trustee shall send written notice by first-class mail, postage prepaid, to all persons described in subdivision (a) informing them that the trustee intends to deposit the funds with the clerk of the court and that a claim for the funds must be filed with the court within 30 days from the date of the notice, providing the address of the court in which the funds were deposited, and a telephone number for obtaining further information.\" Once deposited, the trustee is discharged from further responsibility for the funds, and the court resolves the competing claims. Whether any deposit with a court has occurred, or is contemplated, regarding surplus proceeds from the sale of {{propertyAddress}} is not addressed by this sheet.",
+      "gap": "Subdivision (c) makes deposit with the court permissive (\"the trustee may file a declaration ... and deposit\") once the statutory trigger is met, not automatic — the trustee could instead choose the interpleader-action alternative described in a separate clause of this sheet, and the statute does not itself compel the trustee to pick one path over the other. Subdivision (d) also provides that where the deposited amount is $35,000 or less, the resulting court proceeding is a \"limited civil case,\" which carries different procedural rules (including on discovery and appeal) than a general civil case; this sheet does not describe those limited-civil-case rules.",
+      "citations": [
+        {
+          "case": "Cal. Civ. Code § 2924j(c) (California Legislative Information text)",
+          "cite": "Civ. C. § 2924j(c)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?sectionNum=2924j.&lawCode=CIV",
+          "quote": "If, after due diligence, the trustee is unable to determine the priority of the written claims received by the trustee to the trustee’s sale surplus of multiple persons or if the trustee determines there is a conflict between potential claimants, the trustee may file a declaration of the unresolved claims and deposit with the clerk of the superior court of the county in which the sale occurred, that portion of the sales proceeds that cannot be distributed, less any fees charged by the clerk pursuant to this subdivision."
+        },
+        {
+          "case": "Cal. Civ. Code § 2924j(d) (California Legislative Information text)",
+          "cite": "Civ. C. § 2924j(d)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?sectionNum=2924j.&lawCode=CIV",
+          "quote": "Before the trustee deposits the funds with the clerk of the court pursuant to subdivision (c), the trustee shall send written notice by first-class mail, postage prepaid, to all persons described in subdivision (a) informing them that the trustee intends to deposit the funds with the clerk of the court and that a claim for the funds must be filed with the court within 30 days from the date of the notice, providing the address of the court in which the funds were deposited, and a telephone number for obtaining further information."
+        }
+      ]
+    },
+    {
+      "id": "surplusproceeds_interpleader_and_unclaimed_property",
+      "title": "Interpleader Alternative and Unclaimed Property Law",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-08",
+      "body": "Civil Code § 2924j(e) preserves a trustee's separate option to resolve a surplus-proceeds dispute through the courts by filing an interpleader action instead of following the notice-and-deposit procedure described elsewhere in this sheet: \"Nothing in this section restricts the ability of a trustee to file an interpleader action in order to resolve a dispute about the proceeds of a trustee’s sale. Once an interpleader action has been filed, thereafter the provisions of this section do not apply.\" Separately, § 2924j(g) addresses surplus the trustee is holding but is not required to deposit with a court: \"To the extent required by the Unclaimed Property Law, a trustee in possession of surplus proceeds not required to be deposited with the court pursuant to subdivision (b) shall comply with the Unclaimed Property Law (Chapter 7 (commencing with Section 1500) of Title 10 of Part 3 of the Code of Civil Procedure).\" Whether {{trusteeName}} has filed, or intends to file, an interpleader action concerning surplus proceeds from {{propertyAddress}}, or whether any such proceeds are or will become subject to the Unclaimed Property Law, is not addressed by this sheet.",
+      "gap": "Once a trustee files an interpleader action, § 2924j(e) states that the rest of Section 2924j's own procedure — the notice, due-diligence, and court-deposit steps described in this sheet's other clauses — \"do[es] not apply\"; a trustee that chooses interpleader is therefore not necessarily following the same timeline or steps this sheet otherwise describes. Subdivision (g)'s reference to the Unclaimed Property Law is limited to proceeds \"not required to be deposited with the court pursuant to subdivision (b)\" — a cross-reference this sheet does not resolve, since subdivision (b) itself does not independently require a court deposit (that trigger appears in subdivision (c)); this sheet does not attempt to reconcile that cross-reference or determine which regime governs any particular unclaimed surplus. Formatting note: the official leginfo.legislature.ca.gov HTML for subdivision (g) inserts a line-wrap (a newline plus indentation whitespace) between \"a trustee\" and \"in possession of surplus proceeds,\" quoted here as an ordinary single space; this normalization was confirmed by fetching the section twice with distinct User-Agent strings, with identical underlying text both times.",
+      "citations": [
+        {
+          "case": "Cal. Civ. Code § 2924j(e) (California Legislative Information text)",
+          "cite": "Civ. C. § 2924j(e)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?sectionNum=2924j.&lawCode=CIV",
+          "quote": "Nothing in this section restricts the ability of a trustee to file an interpleader action in order to resolve a dispute about the proceeds of a trustee’s sale. Once an interpleader action has been filed, thereafter the provisions of this section do not apply."
+        },
+        {
+          "case": "Cal. Civ. Code § 2924j(g) (California Legislative Information text)",
+          "cite": "Civ. C. § 2924j(g)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?sectionNum=2924j.&lawCode=CIV",
+          "quote": "To the extent required by the Unclaimed Property Law, a trustee in possession of surplus proceeds not required to be deposited with the court pursuant to subdivision (b) shall comply with the Unclaimed Property Law (Chapter 7 (commencing with Section 1500) of Title 10 of Part 3 of the Code of Civil Procedure)."
+        }
+      ]
+    },
+    {
+      "id": "surplusproceeds_case_2924j_scope_limited",
+      "title": "Case Law: Section 2924j's Dispute Procedure Reaches Only Pre-Sale Recorded Interests",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-08",
+      "body": "In Placer Foreclosure, Inc. v. Aflalo (2018) 23 Cal.App.5th 1109, the California Court of Appeal held that a foreclosure trustee holding surplus proceeds could not use an interpleader action to withhold payment from the trustor while the trustor's separate wrongful-foreclosure lawsuit against the property's third-party purchaser remained pending, because that dispute was not the kind of priority conflict Civil Code § 2924j addresses. The court explained: \"Section 2924j does not apply because the conflicting claims are not between parties who had recorded interests before the sale.\" The court held the purchaser's only interest was a contingent right to a refund from the trustor if the sale were later invalidated — not a claim to the surplus proceeds themselves — so the trustee had no valid basis to withhold the trustor's statutorily-required payment. Whether the facts of any dispute concerning surplus proceeds from {{propertyAddress}} resemble those in Placer Foreclosure is not addressed by this sheet.",
+      "gap": "This is a published California Court of Appeal decision (Second Appellate District), binding within that district and persuasive elsewhere in California, but it is not a California Supreme Court decision and does not bind every California trial court. The holding rests on the specific fact that the purchaser's claim ran against the trustor personally rather than against the surplus fund itself; the court did not decide how § 2924j applies to a dispute that does involve competing claims among persons who held recorded interests in the property before the sale — the scenario the notice-and-claim procedure in this sheet's other clauses is designed to address.",
+      "citations": [
+        {
+          "case": "Placer Foreclosure, Inc. v. Aflalo",
+          "cite": "23 Cal.App.5th 1109 (2018)",
+          "url": "https://www.courtlistener.com/opinion/6239671/placer-foreclosure-inc-v-aflalo/",
+          "quote": "Section 2924j does not apply because the conflicting claims are not between parties who had recorded interests before the sale."
+        }
+      ]
+    },
+    {
+      "id": "surplusproceeds_case_trustee_duty_priority_order",
+      "title": "Case Law: A Trustee's Duty to Pay Surplus Down the Section 2924k Priority Order",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-08",
+      "body": "The same decision, Placer Foreclosure, Inc. v. Aflalo (2018) 23 Cal.App.5th 1109, described the trustee's obligation under Civil Code § 2924k as a statutory duty rather than a matter of discretion once the higher-priority categories are paid: \"Section 2924k, subdivision (a) provides that a trustee \"shall distribute the proceeds\" in the following order of priority: (1) costs and expenses of the sale, (2) payment of the \"obligations secured by the deed of trust,\" (3) payment to any junior liens or encumbrances, and (4) payment \"to the trustor.\"\" Because the trustee in that case had already paid the first three categories and no lienholder had a claim standing between the trustor and the fourth-priority payment, the court held the trustee was statutorily required to pay the surplus to the trustor and could not use an unrelated dispute as a reason to withhold it. Whether {{trusteeName}} has completed payment of the first three priority categories for the {{foreclosureSaleDate}} sale of {{propertyAddress}}, such that a fourth-priority payment would be due, is not addressed by this sheet.",
+      "gap": "The court's holding addressed a case where the trustee itself asserted — and the record established — that no lienholder had any competing claim to the surplus; the decision does not establish what standard governs a trustee's conduct when a genuine, unresolved dispute exists among persons claiming priority under § 2924k(a)(3) or (4) themselves, since that different scenario is governed by the due-diligence and court-deposit procedures of § 2924j described in this sheet's other clauses, which this case did not need to apply.",
+      "citations": [
+        {
+          "case": "Placer Foreclosure, Inc. v. Aflalo",
+          "cite": "23 Cal.App.5th 1109 (2018)",
+          "url": "https://www.courtlistener.com/opinion/6239671/placer-foreclosure-inc-v-aflalo/",
+          "quote": "Section 2924k, subdivision (a) provides that a trustee \"shall distribute the proceeds\" in the following order of priority: (1) costs and expenses of the sale, (2) payment of the \"obligations secured by the deed of trust,\" (3) payment to any junior liens or encumbrances, and (4) payment \"to the trustor.\""
+        }
+      ]
+    },
+    {
+      "id": "surplusproceeds_closing_acknowledgment",
+      "title": "Acknowledgment — Informational Sheet Only",
+      "kind": "drafting",
+      "body": "I have reviewed this information sheet describing the California statutory procedure for distributing surplus proceeds from a trustee's sale under Civil Code §§ 2924j and 2924k, including its application to the trustee's sale of {{propertyAddress}} conducted by {{trusteeName}} on {{foreclosureSaleDate}} under a deed of trust naming {{beneficiaryName}} as beneficiary and {{trustorName}} as trustor. I understand that this document is informational only: it does not itself determine whether surplus proceeds exist or their amount; identify who is entitled to any surplus proceeds; submit, evaluate, or resolve any written claim by {{trustorName}}, {{claimantName}}, or any other person; calculate any fee, priority, or distribution amount; or otherwise resolve any actual dispute concerning surplus proceeds from this or any other trustee's sale. I further understand that this sheet is not a substitute for consulting a licensed attorney about any specific trustee's sale, claim, or dispute.\n\nExecuted on {{dateSigned}} at {{cityState}}.\n\nSignature: ☐ _________________________\nPrint name: _________________________\n\n[This information sheet is prepared for general reference concerning a trustee's sale of {{propertyAddress}}. It does not constitute legal advice about any specific sale, claim, or dispute, and it does not itself determine entitlement to, or distribute, any surplus proceeds.]"
     }
   ]
 }

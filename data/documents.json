@@ -31163,5 +31163,75 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "trustee_sale_surplus_proceeds_info_sheet",
+    "title": "Trustee's Sale Surplus Proceeds — Information Sheet",
+    "description": "Explains California's statutory procedure for distributing money left over after a nonjudicial trustee's sale of real property exceeds what is owed, under Civil Code §§ 2924j and 2924k: the priority order for paying sale costs, the deed of trust, junior lienholders, and finally the trustor; the trustee's fee for administering that distribution; the trustee's duty to notify persons with pre-sale recorded interests of a possible surplus; the written-claim and due-diligence process for resolving competing claims; the procedure for depositing disputed funds with the court; the trustee's alternative option to file an interpleader action; the Unclaimed Property Law's application to undeposited surplus; and Court of Appeal authority on the statute's scope and a trustee's duty to pay the trustor once senior obligations are satisfied.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "surplusproceeds_intro_scope",
+      "surplusproceeds_priority_of_distribution",
+      "surplusproceeds_trustee_fee_cap",
+      "surplusproceeds_notice_to_recorded_interest_holders",
+      "surplusproceeds_due_diligence_and_deadline",
+      "surplusproceeds_deposit_and_notice_procedure",
+      "surplusproceeds_interpleader_and_unclaimed_property",
+      "surplusproceeds_case_2924j_scope_limited",
+      "surplusproceeds_case_trustee_duty_priority_order",
+      "surplusproceeds_closing_acknowledgment"
+    ],
+    "fields": [
+      {
+        "id": "propertyAddress",
+        "label": "Property address",
+        "placeholder": "123 Main St., Sacramento, CA 95814",
+        "required": true
+      },
+      {
+        "id": "trustorName",
+        "label": "Trustor (borrower) name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "beneficiaryName",
+        "label": "Beneficiary (lender) name",
+        "placeholder": "Example Mortgage Lending, Inc.",
+        "required": true
+      },
+      {
+        "id": "trusteeName",
+        "label": "Foreclosure trustee's name",
+        "placeholder": "Statewide Trustee Services, Inc.",
+        "required": true
+      },
+      {
+        "id": "foreclosureSaleDate",
+        "label": "Foreclosure Sale Date",
+        "placeholder": "e.g., January 1, 2026",
+        "required": true
+      },
+      {
+        "id": "claimantName",
+        "label": "Claimant's name (person asserting a claim to the surplus proceeds, if other than the trustor)",
+        "placeholder": "Acme Second Mortgage, LLC",
+        "required": false
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, state",
+        "placeholder": "Sacramento, California",
+        "required": true
+      }
+    ]
   }
 ]
