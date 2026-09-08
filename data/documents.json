@@ -30791,5 +30791,56 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "certificated_teacher_dismissal_morrison_info_sheet",
+    "title": "Certificated Teacher Dismissal for Cause and the Morrison \"Fitness to Teach\" Standard — Information Sheet",
+    "description": "Explains the statutory scheme governing dismissal of a permanent (tenured) certificated employee of a California K-12 school district for cause -- Education Code section 44929.21 (how permanent status is acquired), section 44932's eleven enumerated causes for dismissal, section 44934's written-notice and statement-of-charges requirements, and section 44944's right to a hearing before a three-member Commission on Professional Competence and its binding, majority-vote decision -- together with Morrison v. State Board of Education (1969) 1 Cal.3d 214, the California Supreme Court decision holding that conduct-based dismissal causes such as immoral conduct, unprofessional conduct, and moral turpitude must be shown to indicate the employee's unfitness to teach, and identifying the non-exhaustive factors bearing on that showing. Distinct from this corpus's existing State Civil Service Disciplinary Due Process and Public Safety Officers Procedural Bill of Rights Act documents, neither of which addresses this Education Code chapter or Morrison's fitness-to-teach nexus doctrine, and from the general at-will and wrongful-termination documents, which do not apply to a permanent certificated public school employee's statutory dismissal rights.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "certdismiss_declaration",
+      "certdismiss_permanent_status",
+      "certdismiss_statutory_grounds",
+      "certdismiss_morrison_nexus_holding",
+      "certdismiss_morrison_factors",
+      "certdismiss_notice_and_charges",
+      "certdismiss_hearing_commission",
+      "certdismiss_decision_and_binding_effect",
+      "certdismiss_closing_signature"
+    ],
+    "fields": [
+      {
+        "id": "employeeName",
+        "label": "Certificated employee's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "School district name",
+        "placeholder": "Example Unified School District",
+        "required": true
+      },
+      {
+        "id": "jobTitle",
+        "label": "Position / teaching assignment",
+        "placeholder": "Grade 5 Classroom Teacher",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 8, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, state",
+        "placeholder": "Sacramento, California",
+        "required": true
+      }
+    ]
   }
 ]
