@@ -7,6 +7,7 @@ import { getAppUrl } from "@/lib/app-url";
 import { isStripeConfigured } from "@/lib/integrations/stripe";
 import { getPublicMoment } from "@/lib/curated-moments";
 import TipForm from "@/components/tip-form";
+import GuestTipForm from "@/components/guest-tip-form";
 import SubscribeButton from "@/components/subscribe-button";
 import SubscribeCheckoutForm from "@/components/subscribe-checkout-form";
 import CopyMomentLinks from "@/components/copy-moment-links";
@@ -82,6 +83,8 @@ export default async function MomentPage(props: PageProps<"/moments/[id]">) {
         <div className="mt-6 flex flex-col gap-4 rounded-lg border border-black/10 p-4 dark:border-white/10">
           {user ? (
             <TipForm creatorId={creator.id} handle={creator.handle} />
+          ) : isStripeConfigured() ? (
+            <GuestTipForm creatorId={creator.id} returnPath={`/moments/${moment.id}`} />
           ) : (
             <p className="text-sm text-zinc-500">
               <Link href="/login" className="underline">

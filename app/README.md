@@ -27,6 +27,7 @@ real. This is the actual state of each:
 | Feature | Env vars | Without keys | With keys |
 |---|---|---|---|
 | Tips | `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET` | Instant simulated ledger entry | Real Stripe Checkout, webhook-confirmed |
+| Guest tips (no account) | same as above | Not offered — "log in to tip" instead | On moment pages/embeds only: tip via Stripe Checkout with no sign-up, attributed by email |
 | Subscriptions | same as above | Instant simulated toggle | Real recurring Stripe subscription, webhook-confirmed, cancel-able |
 | Creator payouts | same as above (+ creator completes Connect onboarding) | Tips/subscriptions charge to the *platform's* Stripe account | Stripe Connect Express: funds route directly to the creator's own account (`transfer_data`), tracked via the `account.updated` webhook |
 | Video upload | `MUX_TOKEN_ID`, `MUX_TOKEN_SECRET`, `MUX_WEBHOOK_SECRET` | Saved to local disk (`public/uploads/`) | Uploaded direct-to-Mux, transcoded, HLS playback |
@@ -48,6 +49,13 @@ tooling before trusting it in production. Two exceptions:
   correctly-signed inbound webhook, so it *was* exercised end-to-end — a real HTTP POST with a
   hand-computed Mux webhook signature (HMAC-SHA256, matching `@mux/mux-node`'s own
   verification), asserting on the actual Video/Clip rows it produced.
+- Same trick for Stripe's `checkout.session.completed` webhook (identical `t=...,v1=...`
+  HMAC-SHA256 scheme to Mux's): a hand-signed guest-tip event was verified end-to-end against the
+  real handler, confirming the resulting `Tip` row has no `fromUserId`, the correct `guestEmail`
+  and amount, and that redelivery doesn't create a duplicate. Guest checkout's own outbound call
+  (`stripe.checkout.sessions.create`) was tested with a deliberately invalid key the same way as
+  ElevenLabs below — it reached Stripe's real servers, failed, and was caught cleanly rather than
+  crashing.
 - ElevenLabs dubbing was tested with a deliberately invalid API key, which is as far as it's
   possible to go without a real account — and it went further than expected: the SDK's requests
   reached ElevenLabs' actual servers and came back with genuine structured API errors (not a
@@ -95,15 +103,19 @@ convention.
   route group doesn't change any URL, so every existing page still lives at the same path.
 - **Copy link / copy embed code** — a small client component (`copy-moment-links.tsx`) used on
   both the creator's curation panel and the public moment page.
+- **Guest tipping** (`src/lib/actions/guest-tip.ts`, `src/components/guest-tip-form.tsx`) — a
+  signed-out visitor on a moment page or embed can tip via Stripe Checkout with no account, since
+  a genuine cross-site `<iframe>` embed almost never carries a signed-in session (third-party
+  cookie restrictions). Requires `STRIPE_SECRET_KEY` — there's no sensible simulated version of
+  "pay with no account," so without a key it falls back to the same "log in to tip" prompt used
+  everywhere else. `Tip.fromUserId` is now nullable, with `guestEmail` (from Stripe Checkout's own
+  email collection) as the only record of who a guest was; the creator dashboard's tip list
+  handles both.
 
-**Known gaps, called out rather than silently missing:** Distributor Payouts (referral share
-links with attribution/fraud prevention) and guest checkout (tipping/subscribing without an
-account) are both named in the plan alongside Curated Moments but aren't built yet — tips and
-subscriptions on a moment page currently require being signed in, same as everywhere else in the
-app. In a genuine cross-site `<iframe>` embed, third-party cookie restrictions mean a visitor is
-very unlikely to already be signed in, so the embed's tip form will usually show a "log in"
-prompt rather than a working form — that's the honest current behavior, not a bug, and it's
-exactly the gap guest checkout is meant to close next.
+**Known gap, called out rather than silently missing:** Distributor Payouts — referral share
+links with attribution windows, click dedup, and fraud prevention — is named in the plan
+alongside Curated Moments but isn't built yet. Right now sharing a moment link doesn't earn the
+sharer anything.
 
 ## Cheap-to-build differentiators (no new credentials needed)
 
@@ -268,3 +280,5 @@ infrastructure, build differentiation" philosophy:
   public-fetch), `src/lib/actions/curated-moment.ts`, `src/components/curated-moments-curator.tsx`
   + `published-moments-list.tsx` + `copy-moment-links.tsx`, public page at
   `src/app/(main)/moments/[id]`, embeddable card at `src/app/(embed)/embed/moments/[id]`
+- **Guest tipping** — `src/lib/actions/guest-tip.ts`, `src/components/guest-tip-form.tsx`,
+  handled in `src/app/api/webhooks/stripe` alongside signed-in tips

@@ -3,8 +3,10 @@ import { notFound } from "next/navigation";
 
 import { getCurrentUser } from "@/lib/auth";
 import { getAppUrl } from "@/lib/app-url";
+import { isStripeConfigured } from "@/lib/integrations/stripe";
 import { getPublicMoment } from "@/lib/curated-moments";
 import TipForm from "@/components/tip-form";
+import GuestTipForm from "@/components/guest-tip-form";
 
 /**
  * The embeddable card for a Curated Moment — meant to live in an <iframe>
@@ -12,11 +14,11 @@ import TipForm from "@/components/tip-form";
  * skips the site's nav/layout (see the (embed) route group) and keeps
  * itself to just the player, attribution, and a tip button.
  *
- * Tips/subscriptions here still require being signed in on this platform —
- * in a genuine cross-site iframe, third-party cookie restrictions mean
- * that will usually show the "log in" prompt rather than a signed-in tip
- * form. Guest checkout (no account needed) is the fix, and is planned but
- * not built yet.
+ * Third-party cookie restrictions mean a signed-in session rarely reaches
+ * a genuine cross-site iframe, so tipping here defaults to guest checkout
+ * (no account needed) whenever Stripe is configured, with the signed-in
+ * TipForm as a bonus for the rare visitor who is already logged in on
+ * this platform.
  */
 export default async function MomentEmbedPage(props: PageProps<"/embed/moments/[id]">) {
   const { id } = await props.params;
@@ -64,6 +66,8 @@ export default async function MomentEmbedPage(props: PageProps<"/embed/moments/[
       <div className="mt-2">
         {user ? (
           <TipForm creatorId={creator.id} handle={creator.handle} />
+        ) : isStripeConfigured() ? (
+          <GuestTipForm creatorId={creator.id} returnPath={`/embed/moments/${moment.id}`} />
         ) : (
           <p className="text-xs text-zinc-500">
             <Link href="/login" target="_blank" className="underline">

@@ -295,8 +295,13 @@ model Subscription {
 /// payment behind it, same as before.
 model Tip {
   id                      String         @id @default(cuid())
-  fromUserId              String
-  fromUser                User           @relation(fields: [fromUserId], references: [id])
+  /// Null for a guest tip (see src/lib/actions/guest-tip.ts) — guest
+  /// checkout, per the plan, tips without requiring a platform account.
+  fromUserId              String?
+  fromUser                User?          @relation(fields: [fromUserId], references: [id])
+  /// Set only for guest tips, from Stripe Checkout's own email collection —
+  /// the only record of who a guest was, since there's no User row.
+  guestEmail              String?
   toCreatorId             String
   toCreator               CreatorProfile @relation(fields: [toCreatorId], references: [id])
   amountCents             Int

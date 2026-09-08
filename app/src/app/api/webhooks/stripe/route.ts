@@ -48,6 +48,19 @@ export async function POST(request: Request) {
           },
           update: {},
         });
+      } else if (kind === "guest_tip") {
+        const { toCreatorId, message } = session.metadata!;
+        await prisma.tip.upsert({
+          where: { stripeCheckoutSessionId: session.id },
+          create: {
+            toCreatorId: toCreatorId!,
+            guestEmail: session.customer_details?.email ?? undefined,
+            amountCents: session.amount_total ?? 0,
+            message: message || undefined,
+            stripeCheckoutSessionId: session.id,
+          },
+          update: {},
+        });
       } else if (kind === "subscription") {
         const { subscriberId, creatorId } = session.metadata!;
         const subscriptionId =

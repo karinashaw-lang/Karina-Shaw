@@ -89,7 +89,7 @@ export default async function DashboardPage() {
         <ul className="mt-4 flex flex-col gap-2 text-sm">
           {tips.map((tip) => (
             <li key={tip.id}>
-              <span className="font-medium">{tip.fromUser.name}</span> sent $
+              <span className="font-medium">{tip.fromUser?.name ?? tip.guestEmail ?? "A guest"}</span> sent $
               {(tip.amountCents / 100).toFixed(2)}
               {tip.message && <> — &ldquo;{tip.message}&rdquo;</>}
             </li>
