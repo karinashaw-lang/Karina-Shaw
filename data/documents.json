@@ -31293,5 +31293,121 @@
         "required": false
       }
     ]
+  },
+  {
+    "id": "classified_school_employee_layoff_seniority_info_sheet",
+    "title": "Layoff and Reemployment Rights of Classified (Non-Certificated) School District Employees — Information Sheet",
+    "description": "Explains the statutory scheme governing layoff of classified (non-certificated) employees of California K-12 school districts: Education Code section 45308's seniority-based layoff-and-recall order and its \"length of service\" computation rules, section 45298's 39-month reemployment-list rights (and the parallel rights of an employee who takes a voluntary demotion in lieu of layoff), section 45117's annual March 15/hearing-request notice process and the non-binding nature of the resulting administrative hearing decision, and Short v. Nevada Joint Union High School District (1985) 163 Cal.App.3d 1087, which held a nominally budget-driven layoff unlawful where an impermissible reason was a but-for cause. Distinct from this corpus's existing Certificated Teacher Dismissal (Morrison) document, which covers tenured teachers dismissed for cause under a different Education Code chapter with a binding hearing decision, and from the general Layoff / Reduction-in-Force Selection Criteria document, which addresses ADEA/FEHA constraints applicable to employers generally rather than this school-district-specific seniority and reemployment scheme.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "classlayoff_declaration",
+      "classlayoff_scope",
+      "classlayoff_seniority_order",
+      "classlayoff_length_of_service_definition",
+      "classlayoff_leave_credit_rules",
+      "classlayoff_reemployment_list_rights",
+      "classlayoff_voluntary_demotion_rights",
+      "classlayoff_annual_notice_and_hearing_request",
+      "classlayoff_hearing_procedure_and_nonbinding_decision",
+      "classlayoff_dual_motive_case",
+      "classlayoff_closing"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "School district name",
+        "placeholder": "Example Unified School District",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Classified employee's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "jobTitle",
+        "label": "Job classification / position",
+        "placeholder": "Instructional Aide II",
+        "required": true
+      },
+      {
+        "id": "startDate",
+        "label": "Date of hire",
+        "placeholder": "August 15, 2019",
+        "required": true
+      },
+      {
+        "id": "terminationDate",
+        "label": "Stated effective date of layoff",
+        "placeholder": "June 30, 2027",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, state",
+        "placeholder": "Sacramento, California",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date",
+        "placeholder": "September 8, 2026",
+        "required": true
+      }
+    ]
+  },
+  {
+    "id": "qsbs_gain_exclusion_info_sheet",
+    "title": "Qualified Small Business Stock (QSBS) Gain Exclusion — Information Sheet",
+    "description": "Explains the federal partial gain exclusion for qualified small business stock under Internal Revenue Code section 1202 — the original-issue, C-corporation, gross-assets, and active-business eligibility conditions, the two-tier exclusion percentage and holding-period regime split by the 2025 statutory \"applicable date,\" and the per-issuer dollar caps — alongside California's separate, non-conforming treatment: the former state exclusion's 2013 statutory narrowing and repeal, and the Court of Appeal decision that found its California-only asset-and-payroll test unconstitutional.",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "qsbs_overview",
+      "qsbs_federal_eligibility_requirements",
+      "qsbs_federal_active_business_requirement",
+      "qsbs_federal_exclusion_percentage",
+      "qsbs_federal_2025_applicable_date",
+      "qsbs_federal_per_issuer_cap",
+      "qsbs_california_nonconformity",
+      "qsbs_cutler_commerce_clause_history",
+      "qsbs_closing_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company/entity name",
+        "placeholder": "Acme Innovations, Inc.",
+        "required": true
+      },
+      {
+        "id": "shareholderName",
+        "label": "Shareholder's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 8, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
