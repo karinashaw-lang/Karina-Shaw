@@ -31119,5 +31119,49 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "calecpa_info_sheet",
+    "title": "California Electronic Communications Privacy Act (CalECPA) — Information Sheet",
+    "description": "An informational sheet on California's Electronic Communications Privacy Act (Penal Code §§ 1546-1546.4): the statutory definitions of “electronic communication information” and “electronic device information,” the default prohibition on a government entity compelling or accessing either category without authorization, the enumerated warrant/order/subpoena pathways for compelling information from a service provider, the consent and emergency exceptions for physically accessing a device, the notice requirement and the court's power to delay it, and the suppression and void/modify/destroy remedies for a violation — including a published 2023 Court of Appeal decision (People v. Meza) illustrating that satisfying CalECPA's own particularity requirement does not itself establish Fourth Amendment compliance, and that even a Fourth Amendment violation may not result in suppression given the federal good-faith exception. Distinct from the corpus's existing California Invasion of Privacy Act (CIPA) Information Sheet, which covers a different Penal Code chapter (§§ 630-638.55) governing private-party wiretapping and recording, and from its existing Electronic Vehicle Tracking Device Privacy Information Sheet, which covers the separate offense of using a tracking device on a vehicle (Penal Code § 637.7).",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "calecpa_intro",
+      "calecpa_definitions",
+      "calecpa_general_prohibition",
+      "calecpa_warrant_and_order_pathways",
+      "calecpa_physical_device_access_exceptions",
+      "calecpa_notice_and_delay",
+      "calecpa_remedies",
+      "calecpa_closing"
+    ],
+    "fields": [
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Company or service provider name (if applicable)",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "personName",
+        "label": "Name of the person whose electronic information or device is at issue",
+        "placeholder": "Taylor Morgan",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 8, 2026",
+        "required": true
+      }
+    ]
   }
 ]
