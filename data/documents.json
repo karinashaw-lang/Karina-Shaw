@@ -30521,5 +30521,37 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "wage_working_conditions_disclosure_info_sheet",
+    "title": "Employee Wage and Working Conditions Disclosure Rights (Labor Code §§ 232, 232.5) — Information Sheet",
+    "description": "Explains California Labor Code §§ 232 and 232.5, which prohibit an employer from requiring an employee to keep the amount of the employee's wages or information about the employer's working conditions confidential, from requiring a waiver of that disclosure right, or from discharging or disciplining an employee who exercises it — and the statutes' own express carve-out preserving an employer's proprietary information, trade secrets, and privileged information. Also describes a California Court of Appeal decision recognizing a public-policy wrongful termination claim grounded in § 232 and construing \"wages\" to reach discretionary bonuses, not only base pay.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "wageconf_purpose",
+      "wageconf_wage_disclosure_prohibition",
+      "wageconf_workingconditions_disclosure_prohibition",
+      "wageconf_tradesecret_privilege_carveout",
+      "wageconf_public_policy_tort_recognition",
+      "wageconf_wages_broad_definition",
+      "wageconf_scope_note",
+      "wageconf_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      }
+    ]
   }
 ]
