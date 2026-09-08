@@ -8,29 +8,37 @@ datasource db {
 }
 
 model User {
-  id               String            @id @default(cuid())
-  email            String            @unique
-  passwordHash     String
-  name             String
-  stripeCustomerId String?           @unique
-  createdAt        DateTime          @default(now())
-  creatorProfile   CreatorProfile?
-  comments         Comment[]
-  follows          Follow[]
-  clips            Clip[]
-  wallItems        WallItem[]
-  tipsSent         Tip[]
-  subscriptions    Subscription[]
-  briefings        Briefing[]
-  partyMessages    PartyMessage[]
-  partyRsvps       PartyRsvp[]
-  wallCards        WallCard[]
-  dailyActivity    DailyActivity[]
-  guestFollows     GuestFollow[]
-  recapReels       RecapReel[]
-  liveChatMessages LiveChatMessage[]
-  liveClipRequests LiveClipRequest[]
-  dubsRequested    Dub[]
+  id                   String               @id @default(cuid())
+  email                String               @unique
+  passwordHash         String
+  name                 String
+  stripeCustomerId     String?              @unique
+  /// A distributor payout account (Stripe Connect Express) — separate from
+  /// CreatorProfile's own stripeAccountId, since any viewer can be a
+  /// distributor regardless of whether they're also a creator. See
+  /// src/lib/actions/distributor.ts.
+  stripeAccountId      String?              @unique
+  stripeChargesEnabled Boolean              @default(false)
+  createdAt            DateTime             @default(now())
+  creatorProfile       CreatorProfile?
+  comments             Comment[]
+  follows              Follow[]
+  clips                Clip[]
+  wallItems            WallItem[]
+  tipsSent             Tip[]
+  subscriptions        Subscription[]
+  briefings            Briefing[]
+  partyMessages        PartyMessage[]
+  partyRsvps           PartyRsvp[]
+  wallCards            WallCard[]
+  dailyActivity        DailyActivity[]
+  guestFollows         GuestFollow[]
+  recapReels           RecapReel[]
+  liveChatMessages     LiveChatMessage[]
+  liveClipRequests     LiveClipRequest[]
+  dubsRequested        Dub[]
+  distributorLinks     DistributorLink[]
+  distributorEarnings  DistributorEarning[]
 }
 
 model CreatorProfile {
@@ -131,16 +139,17 @@ enum MomentStatus {
 /// deliberate creator action — see the plan's "you're never surprised"
 /// rule.
 model CuratedMoment {
-  id           String       @id @default(cuid())
-  videoId      String
-  video        Video        @relation(fields: [videoId], references: [id])
-  title        String
-  startSeconds Int
-  endSeconds   Int
-  source       MomentSource
-  status       MomentStatus @default(SUGGESTED)
-  createdAt    DateTime     @default(now())
-  publishedAt  DateTime?
+  id               String            @id @default(cuid())
+  videoId          String
+  video            Video             @relation(fields: [videoId], references: [id])
+  title            String
+  startSeconds     Int
+  endSeconds       Int
+  source           MomentSource
+  status           MomentStatus      @default(SUGGESTED)
+  createdAt        DateTime          @default(now())
+  publishedAt      DateTime?
+  distributorLinks DistributorLink[]
 
   @@index([videoId])
 }
@@ -294,20 +303,61 @@ model Subscription {
 /// completed Checkout Session); otherwise a simulated ledger entry with no
 /// payment behind it, same as before.
 model Tip {
-  id                      String         @id @default(cuid())
+  id                      String              @id @default(cuid())
   /// Null for a guest tip (see src/lib/actions/guest-tip.ts) — guest
   /// checkout, per the plan, tips without requiring a platform account.
   fromUserId              String?
-  fromUser                User?          @relation(fields: [fromUserId], references: [id])
+  fromUser                User?               @relation(fields: [fromUserId], references: [id])
   /// Set only for guest tips, from Stripe Checkout's own email collection —
   /// the only record of who a guest was, since there's no User row.
   guestEmail              String?
   toCreatorId             String
-  toCreator               CreatorProfile @relation(fields: [toCreatorId], references: [id])
+  toCreator               CreatorProfile      @relation(fields: [toCreatorId], references: [id])
   amountCents             Int
   message                 String?
-  stripeCheckoutSessionId String?        @unique
-  createdAt               DateTime       @default(now())
+  stripeCheckoutSessionId String?             @unique
+  /// Set when this tip came through a distributor's share link — see
+  /// DistributorLink. The split payout it produced, if any, is recorded
+  /// separately as a DistributorEarning.
+  distributorLinkId       String?
+  distributorLink         DistributorLink?    @relation(fields: [distributorLinkId], references: [id])
+  earning                 DistributorEarning?
+  createdAt               DateTime            @default(now())
+}
+
+/// A viewer's personal share link for a Curated Moment — Distributor
+/// Payouts, per the plan: "any viewer can grab a personal share link... if
+/// their share leads to a tip... they automatically earn a cut." One link
+/// per (distributor, moment) — regenerating just returns the same one.
+/// Creating a link requires the distributor to have already completed
+/// Stripe Connect onboarding (see requireDistributorPayoutsReady in
+/// src/lib/actions/distributor.ts), so every link that exists is
+/// guaranteed payable — there's no "onboard later" state to handle at
+/// payout time.
+model DistributorLink {
+  id            String        @id @default(cuid())
+  distributorId String
+  distributor   User          @relation(fields: [distributorId], references: [id])
+  momentId      String
+  moment        CuratedMoment @relation(fields: [momentId], references: [id])
+  createdAt     DateTime      @default(now())
+  tips          Tip[]
+
+  @@unique([distributorId, momentId])
+}
+
+/// The ledger of what a distributor actually earned from one tip — created
+/// in the Stripe webhook once the split Transfer to their Connect account
+/// succeeds. A one-to-one record per Tip, not a running balance, so a
+/// future earnings page can just list/sum these directly.
+model DistributorEarning {
+  id            String   @id @default(cuid())
+  distributorId String
+  distributor   User     @relation(fields: [distributorId], references: [id])
+  tipId         String   @unique
+  tip           Tip      @relation(fields: [tipId], references: [id])
+  amountCents   Int
+  createdAt     DateTime @default(now())
 }
 
 enum LiveStreamStatus {

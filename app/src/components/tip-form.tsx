@@ -7,9 +7,11 @@ import { sendTip } from "@/lib/actions/tip";
 export default function TipForm({
   creatorId,
   handle,
+  distributorLinkId,
 }: {
   creatorId: string;
   handle: string;
+  distributorLinkId?: string;
 }) {
   const [state, formAction, pending] = useActionState(sendTip, null);
 
@@ -21,6 +23,7 @@ export default function TipForm({
     <form action={formAction} className="mt-4 flex flex-col gap-2">
       <input type="hidden" name="creatorId" value={creatorId} />
       <input type="hidden" name="handle" value={handle} />
+      {distributorLinkId && <input type="hidden" name="distributorLinkId" value={distributorLinkId} />}
       <div className="flex items-end gap-2">
         <label className="flex flex-col gap-1 text-sm">
           Tip amount (USD)

@@ -28,6 +28,7 @@ real. This is the actual state of each:
 |---|---|---|---|
 | Tips | `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET` | Instant simulated ledger entry | Real Stripe Checkout, webhook-confirmed |
 | Guest tips (no account) | same as above | Not offered — "log in to tip" instead | On moment pages/embeds only: tip via Stripe Checkout with no sign-up, attributed by email |
+| Distributor payouts | same as above (+ distributor completes Connect onboarding) | Not offered — no share-and-earn card on moment pages | A signed-in viewer earns 20% of any tip through their personal share link for a moment, paid via a separate Stripe Transfer |
 | Subscriptions | same as above | Instant simulated toggle | Real recurring Stripe subscription, webhook-confirmed, cancel-able |
 | Creator payouts | same as above (+ creator completes Connect onboarding) | Tips/subscriptions charge to the *platform's* Stripe account | Stripe Connect Express: funds route directly to the creator's own account (`transfer_data`), tracked via the `account.updated` webhook |
 | Video upload | `MUX_TOKEN_ID`, `MUX_TOKEN_SECRET`, `MUX_WEBHOOK_SECRET` | Saved to local disk (`public/uploads/`) | Uploaded direct-to-Mux, transcoded, HLS playback |
@@ -55,7 +56,13 @@ tooling before trusting it in production. Two exceptions:
   and amount, and that redelivery doesn't create a duplicate. Guest checkout's own outbound call
   (`stripe.checkout.sessions.create`) was tested with a deliberately invalid key the same way as
   ElevenLabs below — it reached Stripe's real servers, failed, and was caught cleanly rather than
-  crashing.
+  crashing. The same applies to distributor payouts: a hand-signed webhook for a
+  distributor-attributed tip confirms the `Tip` row records the `distributorLinkId` correctly
+  even when the downstream `stripe.transfers.create` call fails (bad key) — that failure is
+  caught and logged rather than losing the underlying payment record, and correctly produces no
+  `DistributorEarning` row, since a Transfer either succeeds or the earning isn't real yet. The
+  Transfer call itself, and Connect onboarding for a distributor account, are unverified against
+  a live account, same as creator payouts.
 - ElevenLabs dubbing was tested with a deliberately invalid API key, which is as far as it's
   possible to go without a real account — and it went further than expected: the SDK's requests
   reached ElevenLabs' actual servers and came back with genuine structured API errors (not a
@@ -112,10 +119,25 @@ convention.
   email collection) as the only record of who a guest was; the creator dashboard's tip list
   handles both.
 
-**Known gap, called out rather than silently missing:** Distributor Payouts — referral share
-links with attribution windows, click dedup, and fraud prevention — is named in the plan
-alongside Curated Moments but isn't built yet. Right now sharing a moment link doesn't earn the
-sharer anything.
+- **Distributor Payouts** (`src/lib/actions/distributor.ts`, `src/lib/distributor.ts`,
+  `src/components/distributor-share-card.tsx`) — any signed-in viewer (not just other creators)
+  can grab a personal share link for a published moment and earn a cut of tips that come through
+  it. Getting a link requires completing payout onboarding *first* (a separate Stripe Connect
+  Express account on the `User`, not the creator's own) — by construction, every `DistributorLink`
+  that exists is guaranteed payable, so there's no "link exists but no account behind it" state to
+  handle later. A distributor-attributed tip can't use `transfer_data` (it only supports one
+  destination), so the charge stays on the platform's balance and the split — a fixed 20% to the
+  distributor, the rest to the creator if they've onboarded — happens as two separate
+  `stripe.transfers.create` calls in the webhook after payment confirms, recorded as a
+  `DistributorEarning` row per tip (a running ledger, ready for a future earnings page). Scoped to
+  tips only, not subscriptions — splitting *recurring* revenue per-invoice indefinitely is a
+  meaningfully bigger problem than a one-time split. Self-referral is blocked by comparing the
+  distributor's own user id against the tipper's for signed-in tips; guest tips have no user id to
+  compare, and the plan's other mitigation for that case — matching Stripe card fingerprints —
+  isn't implemented. There's also no attribution *window*: a `?d=` link only attributes a tip made
+  in that same page visit (passed through as a hidden form field), not a persistent cookie that
+  survives leaving and coming back later, which the plan's risk section implies is the eventual
+  goal.
 
 ## Cheap-to-build differentiators (no new credentials needed)
 
@@ -282,3 +304,7 @@ infrastructure, build differentiation" philosophy:
   `src/app/(main)/moments/[id]`, embeddable card at `src/app/(embed)/embed/moments/[id]`
 - **Guest tipping** — `src/lib/actions/guest-tip.ts`, `src/components/guest-tip-form.tsx`,
   handled in `src/app/api/webhooks/stripe` alongside signed-in tips
+- **Distributor Payouts** — `src/lib/actions/distributor.ts`, `src/lib/distributor.ts` (split
+  math), `src/components/distributor-share-card.tsx`, payout onboarding via
+  `createDistributorOnboardingLink` in `src/lib/integrations/stripe.ts`, split handled in
+  `src/app/api/webhooks/stripe`

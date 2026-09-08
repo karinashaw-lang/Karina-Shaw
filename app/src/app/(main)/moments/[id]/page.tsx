@@ -11,9 +11,12 @@ import GuestTipForm from "@/components/guest-tip-form";
 import SubscribeButton from "@/components/subscribe-button";
 import SubscribeCheckoutForm from "@/components/subscribe-checkout-form";
 import CopyMomentLinks from "@/components/copy-moment-links";
+import DistributorShareCard from "@/components/distributor-share-card";
 
 export default async function MomentPage(props: PageProps<"/moments/[id]">) {
   const { id } = await props.params;
+  const searchParams = await props.searchParams;
+  const distributorLinkId = Array.isArray(searchParams.d) ? searchParams.d[0] : searchParams.d;
 
   const [moment, user] = await Promise.all([getPublicMoment(id), getCurrentUser()]);
 
@@ -82,9 +85,13 @@ export default async function MomentPage(props: PageProps<"/moments/[id]">) {
       {!isOwner && (
         <div className="mt-6 flex flex-col gap-4 rounded-lg border border-black/10 p-4 dark:border-white/10">
           {user ? (
-            <TipForm creatorId={creator.id} handle={creator.handle} />
+            <TipForm creatorId={creator.id} handle={creator.handle} distributorLinkId={distributorLinkId} />
           ) : isStripeConfigured() ? (
-            <GuestTipForm creatorId={creator.id} returnPath={`/moments/${moment.id}`} />
+            <GuestTipForm
+              creatorId={creator.id}
+              returnPath={`/moments/${moment.id}`}
+              distributorLinkId={distributorLinkId}
+            />
           ) : (
             <p className="text-sm text-zinc-500">
               <Link href="/login" className="underline">
@@ -113,6 +120,16 @@ export default async function MomentPage(props: PageProps<"/moments/[id]">) {
                 initialSubscribed={false}
               />
             ) : null)}
+        </div>
+      )}
+
+      {user && !isOwner && isStripeConfigured() && (
+        <div className="mt-4">
+          <DistributorShareCard
+            momentId={moment.id}
+            returnPath={`/moments/${moment.id}`}
+            payoutsReady={user.stripeChargesEnabled}
+          />
         </div>
       )}
     </div>

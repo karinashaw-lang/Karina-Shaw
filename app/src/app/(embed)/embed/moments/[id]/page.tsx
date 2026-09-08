@@ -22,6 +22,8 @@ import GuestTipForm from "@/components/guest-tip-form";
  */
 export default async function MomentEmbedPage(props: PageProps<"/embed/moments/[id]">) {
   const { id } = await props.params;
+  const searchParams = await props.searchParams;
+  const distributorLinkId = Array.isArray(searchParams.d) ? searchParams.d[0] : searchParams.d;
 
   const [moment, user, appUrl] = await Promise.all([getPublicMoment(id), getCurrentUser(), getAppUrl()]);
 
@@ -65,9 +67,13 @@ export default async function MomentEmbedPage(props: PageProps<"/embed/moments/[
 
       <div className="mt-2">
         {user ? (
-          <TipForm creatorId={creator.id} handle={creator.handle} />
+          <TipForm creatorId={creator.id} handle={creator.handle} distributorLinkId={distributorLinkId} />
         ) : isStripeConfigured() ? (
-          <GuestTipForm creatorId={creator.id} returnPath={`/embed/moments/${moment.id}`} />
+          <GuestTipForm
+            creatorId={creator.id}
+            returnPath={`/embed/moments/${moment.id}`}
+            distributorLinkId={distributorLinkId}
+          />
         ) : (
           <p className="text-xs text-zinc-500">
             <Link href="/login" target="_blank" className="underline">

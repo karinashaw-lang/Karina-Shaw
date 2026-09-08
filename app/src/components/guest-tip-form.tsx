@@ -7,9 +7,11 @@ import { sendGuestTip } from "@/lib/actions/guest-tip";
 export default function GuestTipForm({
   creatorId,
   returnPath,
+  distributorLinkId,
 }: {
   creatorId: string;
   returnPath: string;
+  distributorLinkId?: string;
 }) {
   const [state, formAction, pending] = useActionState(sendGuestTip, null);
 
@@ -17,6 +19,7 @@ export default function GuestTipForm({
     <form action={formAction} className="flex flex-col gap-2">
       <input type="hidden" name="creatorId" value={creatorId} />
       <input type="hidden" name="returnPath" value={returnPath} />
+      {distributorLinkId && <input type="hidden" name="distributorLinkId" value={distributorLinkId} />}
       <div className="flex items-end gap-2">
         <label className="flex flex-col gap-1 text-sm">
           Tip amount (USD)

@@ -83,3 +83,42 @@ export async function createConnectOnboardingLink(
 
   return accountLink.url;
 }
+
+/**
+ * Same as createConnectOnboardingLink, but for a distributor payout
+ * account on a User rather than a CreatorProfile — any viewer can earn
+ * from sharing a Curated Moment (see src/lib/actions/distributor.ts)
+ * regardless of whether they're also a creator, so this can't reuse the
+ * creator's own Connect account.
+ */
+export async function createDistributorOnboardingLink(
+  user: { id: string; stripeAccountId: string | null },
+  userEmail: string,
+  appUrl: string,
+  returnPath: string
+): Promise<string> {
+  const stripe = getStripe();
+
+  let accountId = user.stripeAccountId;
+  if (!accountId) {
+    const account = await stripe.accounts.create({
+      type: "express",
+      email: userEmail,
+      metadata: { distributorUserId: user.id },
+    });
+    accountId = account.id;
+    await prisma.user.update({
+      where: { id: user.id },
+      data: { stripeAccountId: accountId },
+    });
+  }
+
+  const accountLink = await stripe.accountLinks.create({
+    account: accountId,
+    type: "account_onboarding",
+    refresh_url: `${appUrl}${returnPath}`,
+    return_url: `${appUrl}${returnPath}`,
+  });
+
+  return accountLink.url;
+}

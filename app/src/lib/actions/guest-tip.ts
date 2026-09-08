@@ -6,12 +6,14 @@ import { z } from "zod";
 import prisma from "@/lib/prisma";
 import { getAppUrl } from "@/lib/app-url";
 import { getStripe, isStripeConfigured } from "@/lib/integrations/stripe";
+import { resolveDistributorLink } from "@/lib/actions/distributor";
 
 const guestTipSchema = z.object({
   creatorId: z.string().min(1),
   returnPath: z.string().min(1),
   amountDollars: z.coerce.number().positive().max(1000),
   message: z.string().max(280).optional(),
+  distributorLinkId: z.string().optional(),
 });
 
 export type GuestTipActionState = { error: string } | null;
@@ -38,14 +40,18 @@ export async function sendGuestTip(
     returnPath: formData.get("returnPath"),
     amountDollars: formData.get("amountDollars"),
     message: formData.get("message") || undefined,
+    distributorLinkId: formData.get("distributorLinkId") || undefined,
   });
   if (!parsed.success) {
     return { error: parsed.error.issues[0]?.message ?? "Invalid tip amount." };
   }
-  const { creatorId, returnPath, amountDollars, message } = parsed.data;
+  const { creatorId, returnPath, amountDollars, message, distributorLinkId } = parsed.data;
 
   const creator = await prisma.creatorProfile.findUnique({ where: { id: creatorId } });
   if (!creator) return { error: "That creator no longer exists." };
+
+  // No signed-in tipper id to check for self-referral — see resolveDistributorLink.
+  const resolvedLinkId = await resolveDistributorLink(distributorLinkId, creatorId, null);
 
   const amountCents = Math.round(amountDollars * 100);
   const stripe = getStripe();
@@ -69,13 +75,14 @@ export async function sendGuestTip(
         },
       ],
       payment_intent_data:
-        creator.stripeChargesEnabled && creator.stripeAccountId
+        !resolvedLinkId && creator.stripeChargesEnabled && creator.stripeAccountId
           ? { transfer_data: { destination: creator.stripeAccountId } }
           : undefined,
       metadata: {
         kind: "guest_tip",
         toCreatorId: creatorId,
         message: message ?? "",
+        distributorLinkId: resolvedLinkId ?? "",
       },
       success_url: `${appUrl}${returnPath}${returnPath.includes("?") ? "&" : "?"}tipped=1`,
       cancel_url: `${appUrl}${returnPath}`,
