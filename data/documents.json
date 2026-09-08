@@ -30657,5 +30657,80 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "nonprofit_public_benefit_merger_info_sheet",
+    "title": "Nonprofit Public Benefit Corporation Merger — Information Sheet",
+    "description": "Explains the statutory merger procedure specific to a California nonprofit public benefit corporation (Cal. Corp. Code §§ 6010-6022), separately codified from the General Corporation Law merger procedure used by for-profit corporations: the Attorney General consent requirement that applies unless the merger partner falls within an enumerated list of charitable-purpose entities, the 20-day advance Attorney General notice duty, the limit on what a member may receive in the surviving corporation, the required contents of the agreement of merger, the two-layer board-and-member approval requirement, the officers'-certificate filing mechanics, the cross-reference table governing a merger between a nonprofit and a business corporation, and the effect of merger on a disappearing corporation's rights, property, debts, and liabilities.",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "npmerger_recitals",
+      "npmerger_permitted_merger_partners",
+      "npmerger_ag_notice_and_membership_limit",
+      "npmerger_agreement_requirements",
+      "npmerger_member_approval",
+      "npmerger_certificate_filing",
+      "npmerger_business_corporation_hybrid",
+      "npmerger_effect_successor_liability",
+      "npmerger_record_and_signatures"
+    ],
+    "fields": [
+      {
+        "id": "constituentCorporationNames",
+        "label": "Names of the constituent nonprofit corporations",
+        "placeholder": "Acme Community Fund and Beta Community Trust",
+        "required": true
+      },
+      {
+        "id": "survivingCorporationName",
+        "label": "Name of the surviving corporation",
+        "placeholder": "Acme Community Fund",
+        "required": true
+      },
+      {
+        "id": "boardApprovalDate",
+        "label": "Date of board approval",
+        "placeholder": "September 5, 2026",
+        "required": true
+      },
+      {
+        "id": "requiredApprovalStatement",
+        "label": "Statement of member (or other required person's) approval obtained",
+        "placeholder": "approved by unanimous written consent of the members entitled to vote",
+        "required": true
+      },
+      {
+        "id": "noticeDate",
+        "label": "Date Attorney General notice was provided (if required)",
+        "placeholder": "August 10, 2026",
+        "required": false
+      },
+      {
+        "id": "shareholderApprovalDate",
+        "label": "Date of member approval (if required)",
+        "placeholder": "September 10, 2026",
+        "required": false
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date of this record",
+        "placeholder": "September 12, 2026",
+        "required": true
+      },
+      {
+        "id": "authorizedSignerName",
+        "label": "Name of person completing this record",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "authorizedSignerTitle",
+        "label": "Authorized signer's title",
+        "placeholder": "President",
+        "required": true
+      }
+    ]
   }
 ]
