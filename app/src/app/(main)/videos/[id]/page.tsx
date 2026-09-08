@@ -19,6 +19,10 @@ import SchedulePartyForm from "@/components/schedule-party-form";
 import GuestEditor from "@/components/guest-editor";
 import DubPanel from "@/components/dub-panel";
 import { isElevenLabsConfigured } from "@/lib/integrations/elevenlabs";
+import CuratedMomentsCurator from "@/components/curated-moments-curator";
+import PublishedMomentsList from "@/components/published-moments-list";
+import { ensureSuggestedMoments } from "@/lib/curated-moments";
+import { getAppUrl } from "@/lib/app-url";
 import { hoursAgo } from "@/lib/time";
 
 export default async function VideoPage(props: PageProps<"/videos/[id]">) {
@@ -76,6 +80,17 @@ export default async function VideoPage(props: PageProps<"/videos/[id]">) {
       : [];
 
   const highlights = isLocked ? [] : await getHighlightMoments(video.id);
+
+  if (isOwner && !isLocked) {
+    await ensureSuggestedMoments(video.id);
+  }
+  const curatedMoments = isLocked
+    ? []
+    : await prisma.curatedMoment.findMany({
+        where: { videoId: video.id, status: isOwner ? { in: ["SUGGESTED", "PUBLISHED"] } : "PUBLISHED" },
+        orderBy: { createdAt: "asc" },
+      });
+  const appUrl = await getAppUrl();
 
   return (
     <div className="mx-auto max-w-3xl px-6 py-10">
@@ -155,6 +170,11 @@ export default async function VideoPage(props: PageProps<"/videos/[id]">) {
       {!isLocked && user && video.videoUrl && (
         <DubPanel videoId={video.id} dubs={video.dubs} elevenLabsConfigured={isElevenLabsConfigured()} />
       )}
+
+      {!isLocked && isOwner && (
+        <CuratedMomentsCurator videoId={video.id} moments={curatedMoments} appUrl={appUrl} />
+      )}
+      {!isLocked && !isOwner && <PublishedMomentsList moments={curatedMoments} />}
 
       {!isLocked && video.listeningParties.length > 0 && (
         <div className="mt-4">

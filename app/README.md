@@ -8,6 +8,15 @@ subscription, get tipped and paid out directly via Stripe Connect, go live, keep
 and let viewers clip and save what they find into a personal wall — plus a commute briefing and
 a shareable monthly Wall Card generated from that wall.
 
+**Plan pivot (September 2026):** the business plan now centers on per-video monetization —
+Curated Moments, Distributor Payouts, and Behind the Cut — rather than the earlier real-time/live
+framing above. Live streaming, AI dubbing, listening parties, streaks, and Recap Reels are all
+still built (documented below) but are now Phase 3 items per the plan, not V1/V2. **Curated
+Moments** is the first piece of the new signature built so far — see its own section below. The
+rest of this document hasn't been fully rewritten for the pivot yet; treat the feature
+descriptions as accurate for what's built, but the framing/roadmap language as pre-pivot until
+noted otherwise.
+
 ## Real integrations, off by default
 
 Stripe, Mux, and OpenAI are fully wired up in code, but every one of them is **inert until you
@@ -58,6 +67,43 @@ its own origin from the incoming request, which is fine for local dev but should
 explicitly behind a proxy/CDN in production. Note that ElevenLabs needs to fetch the source video
 from that URL, so it must be reachable from the public internet in production, not just
 localhost.
+
+## Curated Moments (new plan's signature feature)
+
+The first piece of the per-video monetization pivot: a creator marks which moments of a video
+are allowed to spread, and only those become a permanent link and an embeddable card. Nothing a
+viewer does can make a moment public — the plan's "nothing spreads unless the creator says so"
+is enforced as a real status gate (`SUGGESTED` / `PUBLISHED` / `DISMISSED`), not just a UI
+convention.
+
+- **AI-suggested candidates** — reuses the existing highlight-detection pass
+  (`src/lib/highlights.ts`) rather than a second pipeline: a real GPT pass over the transcript
+  when `OPENAI_API_KEY` is set, or the crowd-sourced fallback (moments 2+ viewers independently
+  clipped) without one. Suggestions are labeled honestly in the UI — a crowd-sourced suggestion
+  is never shown as "AI suggestion." Dismissed suggestions are kept (not deleted) so they're
+  never regenerated.
+- **Manual moments** — a creator can add one directly with a title and start/end time; it
+  publishes immediately, since typing in the times is itself the approval (no suggest-then-approve
+  step needed).
+- **Public moment page** (`/moments/[id]`) — a permanent link with the trimmed clip, creator
+  attribution, a tip form, and a subscribe button if the creator has a subscription price.
+  404s for anything not `PUBLISHED`.
+- **Embeddable card** (`/embed/moments/[id]`) — the same content in a bare, nav-free layout
+  meant for an `<iframe>` on someone else's page. This required Next.js's "multiple root
+  layouts" pattern: existing routes moved into a `src/app/(main)/` route group (its layout still
+  renders the nav) alongside a new `src/app/(embed)/` group (a minimal layout with no nav) — a
+  route group doesn't change any URL, so every existing page still lives at the same path.
+- **Copy link / copy embed code** — a small client component (`copy-moment-links.tsx`) used on
+  both the creator's curation panel and the public moment page.
+
+**Known gaps, called out rather than silently missing:** Distributor Payouts (referral share
+links with attribution/fraud prevention) and guest checkout (tipping/subscribing without an
+account) are both named in the plan alongside Curated Moments but aren't built yet — tips and
+subscriptions on a moment page currently require being signed in, same as everywhere else in the
+app. In a genuine cross-site `<iframe>` embed, third-party cookie restrictions mean a visitor is
+very unlikely to already be signed in, so the embed's tip form will usually show a "log in"
+prompt rather than a working form — that's the honest current behavior, not a bug, and it's
+exactly the gap guest checkout is meant to close next.
 
 ## Cheap-to-build differentiators (no new credentials needed)
 
@@ -218,3 +264,7 @@ infrastructure, build differentiation" philosophy:
 - **Recap Reels** — `src/app/api/recap/[userId]` (PNG rendering), `src/lib/recap.ts`
   (stats aggregation), `src/components/recap-panel.tsx`, surfaced on `src/app/wall`
 - **Creator dashboard** — `src/app/creator/dashboard`
+- **Curated Moments** — `src/lib/curated-moments.ts` (AI/crowd suggestion seeding, shared
+  public-fetch), `src/lib/actions/curated-moment.ts`, `src/components/curated-moments-curator.tsx`
+  + `published-moments-list.tsx` + `copy-moment-links.tsx`, public page at
+  `src/app/(main)/moments/[id]`, embeddable card at `src/app/(embed)/embed/moments/[id]`

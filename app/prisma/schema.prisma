@@ -99,6 +99,50 @@ model Video {
   listeningParties     ListeningParty[]
   guests               VideoGuest[]
   dubs                 Dub[]
+  curatedMoments       CuratedMoment[]
+}
+
+enum MomentSource {
+  /// A real GPT pass over the transcript (OPENAI_API_KEY set) — see
+  /// src/lib/highlights.ts.
+  AI
+  /// The crowd-sourced fallback: moments 2+ viewers independently clipped
+  /// near each other. Kept distinct from AI so the UI never claims a model
+  /// suggested something it didn't.
+  CROWD
+  MANUAL
+}
+
+enum MomentStatus {
+  SUGGESTED
+  PUBLISHED
+  /// Rejected (an AI suggestion the creator passed on) or retracted (a
+  /// moment that was published and then pulled). Terminal either way —
+  /// dismissed moments are never re-suggested or made public again.
+  DISMISSED
+}
+
+/// A shareable, creator-approved clip of a video — the business plan's
+/// signature "Curated Moments" feature. AI-suggested moments (pulled from
+/// the transcript, see src/lib/curated-moments.ts) start as SUGGESTED and
+/// are invisible to everyone but the creator until explicitly published;
+/// a manually-added moment is published immediately since typing in the
+/// times is itself the approval. Nothing here is ever public without a
+/// deliberate creator action — see the plan's "you're never surprised"
+/// rule.
+model CuratedMoment {
+  id           String       @id @default(cuid())
+  videoId      String
+  video        Video        @relation(fields: [videoId], references: [id])
+  title        String
+  startSeconds Int
+  endSeconds   Int
+  source       MomentSource
+  status       MomentStatus @default(SUGGESTED)
+  createdAt    DateTime     @default(now())
+  publishedAt  DateTime?
+
+  @@index([videoId])
 }
 
 enum DubStatus {
