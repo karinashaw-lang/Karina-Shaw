@@ -557,6 +557,32 @@ document.getElementById('output-print').addEventListener('click', () => {
   window.print();
 });
 
+document.getElementById('output-copy').addEventListener('click', async () => {
+  const btn = document.getElementById('output-copy');
+  const text = buildPlainText();
+  try {
+    await navigator.clipboard.writeText(text);
+  } catch (err) {
+    // Fallback for browsers/contexts without Clipboard API permission.
+    const textarea = document.createElement('textarea');
+    textarea.value = text;
+    textarea.style.position = 'fixed';
+    textarea.style.opacity = '0';
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand('copy');
+    textarea.remove();
+  }
+  const original = btn.textContent;
+  btn.textContent = 'Copied!';
+  btn.classList.add('copied');
+  clearTimeout(btn._copyResetTimer);
+  btn._copyResetTimer = setTimeout(() => {
+    btn.textContent = original;
+    btn.classList.remove('copied');
+  }, 1800);
+});
+
 document.getElementById('output-download').addEventListener('click', () => {
   const text = buildPlainText();
   const slug = state.document.title.replace(/[^\w\- ]+/g, '').trim().replace(/\s+/g, '-');

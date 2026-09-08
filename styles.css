@@ -247,6 +247,12 @@ form.wizard{ display:flex; flex-direction:column; gap:20px; max-width:420px; }
 .field input::placeholder{ color:var(--ink-soft); opacity:.55; }
 
 .actions{ display:flex; gap:12px; margin-top:8px; align-items:center; }
+
+.output-header{ display:flex; align-items:flex-start; justify-content:space-between; gap:16px; }
+.output-header h1{ margin:0; }
+.copy-btn{ flex-shrink:0; white-space:nowrap; }
+.copy-btn.copied{ color:var(--accent); border-color:var(--accent); }
+
 button{
   font-family:'IBM Plex Mono', monospace;
   font-size:13px;
