@@ -86743,6 +86743,185 @@
       "title": "Acknowledgment",
       "kind": "drafting",
       "body": "Please sign below to acknowledge that you have received and read this document.\n\nEmployee: {{employeeName}}\nCompany: {{companyName}}\nDate: {{dateSigned}}\nCity, State: {{cityState}}"
+    },
+    {
+      "id": "readerprivacy_purpose",
+      "title": "Purpose",
+      "kind": "drafting",
+      "body": "This document describes California's Reader Privacy Act, Civil Code §§ 1798.90-1798.90.05, which restricts when a business that provides the rental, purchase, borrowing, browsing, or viewing of books may disclose a user's reading records and other personal information to a government entity, or be compelled to disclose that information to any person, private entity, or government entity. It is provided for information about {{businessName}}'s rights and obligations under this statute; it does not itself instruct {{businessName}} or any specific reader on what to do about a specific request, subpoena, or disclosure."
+    },
+    {
+      "id": "readerprivacy_definitions",
+      "title": "Who and What the Act Covers: \"Book,\" \"Book Service,\" \"Provider,\" and \"Personal Information\"",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-08",
+      "body": "The Act's protections turn on several defined terms. A \"book\" means paginated or similarly organized content in printed, audio, electronic, or other format -- fiction, nonfiction, academic, or other works of the type normally published in a volume or finite number of volumes -- but excludes serial publications such as a magazine or newspaper. A \"book service\" means a service that, as its primary purpose, provides the rental, purchase, borrowing, browsing, or viewing of books; a store that sells a variety of consumer products falls outside that definition if book-service sales do not exceed 2 percent of the store's total annual gross sales of consumer products sold in the United States. A \"provider\" -- the entity the Act's disclosure restrictions bind -- means any commercial entity offering a book service to the public. \"Personal information\" reaches beyond a reader's identity: it includes any information that identifies, relates to, describes, or is associated with a particular user; a unique identifier or IP address used to identify or associate a particular user or book; and any information relating to, or capable of being associated with, a particular user's access to or use of a book service or a book, in whole or in part.",
+      "gap": "The Act's \"provider\" definition is limited to a \"commercial entity\" -- this clause does not resolve whether, or under what circumstances, a public library, a nonprofit, or another noncommercial entity offering book borrowing or viewing services counts as a \"provider\" bound by this Act; if it does not, a different body of law (for example, this state's separate public-records exemption for library circulation records, which this document does not research or describe) may or may not supply comparable protection for that entity's users. The personal-information definition's subpart (A) cross-references \"the information specifically listed in Section 1798.80\" -- a different Civil Code section, from California's data breach notification chapter, already described in a separate document elsewhere in this corpus -- without restating that list; this clause does not independently verify that cross-reference's current text or scope. This clause omits two shorter definitions from the same subsection, § 1798.90(b)(3)-(4) (\"government entity\" and \"law enforcement entity\"), which are used in the disclosure-conditions clauses below without being separately quoted or verified here. All quoted text was retrieved directly from California's official Legislative Information website (leginfo.legislature.ca.gov) on 2026-09-08, and re-fetched a second time with a distinct User-Agent header; both retrievals were byte-identical. Retrieved text wraps mid-sentence for typesetting reasons (an HTML line-wrap inserting a line break and a leading space, for example, inside \"a volume or finite number of\\n volumes\"); the quotes above normalize that incidental whitespace to a single space, and that normalization was confirmed identical between both independently fetched copies before being applied.",
+      "citations": [
+        {
+          "case": "Cal. Civ. Code § 1798.90(b)(1) (Reader Privacy Act, official leginfo.legislature.ca.gov text)",
+          "cite": "Cal. Civ. Code § 1798.90(b)(1)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1798.90.",
+          "quote": "“Book” means paginated or similarly organized content in printed, audio, electronic, or other format, including fiction, nonfiction, academic, or other works of the type normally published in a volume or finite number of volumes, excluding serial publications such as a magazine or newspaper."
+        },
+        {
+          "case": "Cal. Civ. Code § 1798.90(b)(2) (Reader Privacy Act, official leginfo.legislature.ca.gov text)",
+          "cite": "Cal. Civ. Code § 1798.90(b)(2)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1798.90.",
+          "quote": "“Book service” means a service that, as its primary purpose, provides the rental, purchase, borrowing, browsing, or viewing of books. “Book service” does not include a store that sells a variety of consumer products when the book service sales do not exceed 2 percent of the store’s total annual gross sales of consumer products sold in the United States."
+        },
+        {
+          "case": "Cal. Civ. Code § 1798.90(b)(6) (Reader Privacy Act, official leginfo.legislature.ca.gov text)",
+          "cite": "Cal. Civ. Code § 1798.90(b)(6)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1798.90.",
+          "quote": "“Provider” means any commercial entity offering a book service to the public."
+        },
+        {
+          "case": "Cal. Civ. Code § 1798.90(b)(5) (Reader Privacy Act, official leginfo.legislature.ca.gov text)",
+          "cite": "Cal. Civ. Code § 1798.90(b)(5)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1798.90.",
+          "quote": "“Personal information” means all of the following:(A) Any information that identifies, relates to, describes, or is associated with a particular user, including, but not limited to, the information specifically listed in Section 1798.80.(B) A unique identifier or Internet Protocol address, when that identifier or address is used to identify, relate to, describe, or be associated with a particular user or book, in whole or in partial form.(C) Any information that relates to, or is capable of being associated with, a particular user’s access to or use of a book service or a book, in whole or in partial form."
+        }
+      ]
+    },
+    {
+      "id": "readerprivacy_general_prohibition",
+      "title": "The Baseline Rule: No Knowing Disclosure, No Compelled Disclosure",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-08",
+      "body": "Subject to the exceptions described in the following clauses, a provider is barred from two things at once: knowingly disclosing a user's personal information to any government entity, and being compelled to disclose that information to any person, private entity, or government entity. The rule is stated as a general prohibition with enumerated circumstances carved back out of it -- the structure of the statute is a default of confidentiality, not a default of disclosure.",
+      "gap": "This clause states only the statute's introductory prohibition, § 1798.90(c)'s opening sentence; the five numbered circumstances it introduces are described in the clauses that follow, each with its own citation and its own limitations -- none of those limitations is repeated here. The prohibition's \"knowingly\" qualifier for government-entity disclosure, and the absence of any comparable knowledge qualifier for compelled disclosure to a person or private entity, are both taken directly from the statute's text; this clause does not further interpret what showing of a provider's actual or constructive knowledge would be required to establish a \"knowing\" disclosure, since the statute's own text does not define that term and no case law construing it was located (see the acknowledgment clause's note on the absence of case law). Text retrieved from leginfo.legislature.ca.gov on 2026-09-08 and re-fetched with a distinct User-Agent header; both retrievals were byte-identical.",
+      "citations": [
+        {
+          "case": "Cal. Civ. Code § 1798.90(c) (Reader Privacy Act, official leginfo.legislature.ca.gov text)",
+          "cite": "Cal. Civ. Code § 1798.90(c)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1798.90.",
+          "quote": "A provider shall not knowingly disclose to any government entity, or be compelled to disclose to any person, private entity, or government entity, any personal information of a user, except under any of the following circumstances:"
+        }
+      ]
+    },
+    {
+      "id": "readerprivacy_law_enforcement_court_order",
+      "title": "Disclosure to Law Enforcement: The Court-Order Conditions",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-08",
+      "body": "A provider must disclose a user's personal information to a law enforcement entity only pursuant to a court order from a duly authorized court with jurisdiction over an offense under investigation, and only where all five conditions are met: the court finds probable cause that the personal information sought is relevant evidence to the investigation and that a Penal Code § 1524 warrant ground is satisfied; the court finds the law enforcement entity has a compelling interest in obtaining the information; the court finds the information cannot be obtained through less intrusive means; the law enforcement entity gave the provider reasonable advance notice of the proceeding so the provider could appear and contest the order; and the law enforcement entity has told the provider it gave the user notice of the order contemporaneously with its execution -- unless a court has found a strong showing of necessity to delay that user notice, for a period not to exceed 90 days.",
+      "gap": "This is a single statutory paragraph, § 1798.90(c)(1) with its five lettered subconditions (A)-(E), quoted here as one integrated source rather than as independent corroborating provisions. This track gives the provider itself a pre-disclosure opportunity to contest the order (subcondition (D)), but -- unlike the separate track described in the next clause for non-law-enforcement government entities and private civil litigants -- it does not on its own terms give the user a guaranteed pre-disclosure window to move to quash; user notice under subcondition (E) can be delayed up to 90 days and can arrive only after the order has already been executed. This clause does not independently research or verify the content of the Penal Code § 1524 warrant grounds it cross-references. Retrieved from leginfo.legislature.ca.gov on 2026-09-08 and re-fetched with a distinct User-Agent header; both retrievals were byte-identical, subject to the same incidental line-wrap whitespace normalization disclosed in this document's definitions clause.",
+      "citations": [
+        {
+          "case": "Cal. Civ. Code § 1798.90(c)(1) (Reader Privacy Act, official leginfo.legislature.ca.gov text)",
+          "cite": "Cal. Civ. Code § 1798.90(c)(1)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1798.90.",
+          "quote": "A provider shall disclose personal information of a user to a law enforcement entity only pursuant to a court order issued by a duly authorized court with jurisdiction over an offense that is under investigation and only if all of the following conditions are met:(A) The court issuing the order finds that probable cause exists to believe the personal information requested is relevant evidence to the investigation of an offense and any of the grounds in Section 1524 of the Penal Code is satisfied.(B) The court issuing the order finds that the law enforcement entity seeking disclosure has a compelling interest in obtaining the personal information sought.(C) The court issuing the order finds that the personal information sought cannot be obtained by the law enforcement entity seeking disclosure through less intrusive means.(D) Prior to issuance of the court order, the law enforcement entity seeking disclosure provides, in a timely manner, the provider with reasonable notice of the proceeding to allow the provider the opportunity to appear and contest issuance of the order.(E) The law enforcement entity seeking disclosure has informed the provider that it has given notice of the court order to the user contemporaneously with the execution of the order, unless there is a judicial determination of a strong showing of necessity to delay that notification for a reasonable period of time, not to exceed 90 days."
+        }
+      ]
+    },
+    {
+      "id": "readerprivacy_civil_litigant_court_order",
+      "title": "Disclosure to Other Government Entities or Civil Litigants: The User's Right to Quash",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-08",
+      "body": "A separate track applies to a government entity other than law enforcement, or to a person or private entity, seeking a user's personal information through a court order in a pending action. Disclosure on that track requires the court to find a compelling interest in the information and that it cannot be obtained through less intrusive means; requires the party seeking disclosure to give the provider timely, reasonable advance notice of the proceeding so the provider can appear and contest the order; and -- unlike the law-enforcement track -- requires the provider to withhold disclosure until it has given the user notice of the order and the user has had a minimum of 35 days to appear and move to quash it before the information is disclosed.",
+      "gap": "This clause quotes § 1798.90(c)(2)(B)'s conditions, the second half of a two-part paragraph; it does not separately quote subparagraph (A), which defines who may invoke this track (a non-law-enforcement government entity proceeding under a court order in an investigation it conducts, or a government entity, person, or private entity proceeding under a court order in a pending action it or the person or private entity has brought) -- that structure is paraphrased above rather than quoted verbatim. This track requires a \"pending action\" already exist; this clause does not address how early in that action's life a court order under this provision could issue, nor whether a request for personal information under this Act must itself be sought through ordinary discovery procedure or some other mechanism, since the statute's own text does not specify one. Retrieved from leginfo.legislature.ca.gov on 2026-09-08 and re-fetched with a distinct User-Agent header; both retrievals were byte-identical, subject to the same incidental line-wrap whitespace normalization disclosed in this document's definitions clause.",
+      "citations": [
+        {
+          "case": "Cal. Civ. Code § 1798.90(c)(2)(B) (Reader Privacy Act, official leginfo.legislature.ca.gov text)",
+          "cite": "Cal. Civ. Code § 1798.90(c)(2)(B)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1798.90.",
+          "quote": "A provider shall disclose personal information of a user pursuant to subparagraph (A) only if all of the following conditions are satisfied:(i) The court issuing the order finds that the person or entity seeking disclosure has a compelling interest in obtaining the personal information sought.(ii) The court issuing the order finds that the personal information sought cannot be obtained by the person or entity seeking disclosure through less intrusive means.(iii) Prior to issuance of the court order, the person or entity seeking disclosure provides, in a timely manner, the provider with reasonable notice of the proceeding to allow the provider the opportunity to appear and contest the issuance of the court order.(iv) The provider refrains from disclosing any personal information pursuant to the court order until it provides, in a timely manner, notice to the user about the issuance of the order and the ability to appear and quash the order, and the user has been given a minimum of 35 days prior to disclosure of the information within which to appear and quash the order."
+        }
+      ]
+    },
+    {
+      "id": "readerprivacy_consent_emergency_crime_exceptions",
+      "title": "Three Further Circumstances: Consent, Imminent Danger, and Crime Against the Provider",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-08",
+      "body": "Three further circumstances appear in the statute alongside the court-order tracks. First, a provider must disclose a user's personal information to any person, private entity, or government entity if the user has given informed, affirmative consent to that specific disclosure for a particular purpose. Second, a provider may -- the statute uses permissive, not mandatory, language -- disclose personal information to a government entity that asserts, and that the provider in good faith believes, that there is an imminent danger of death or serious physical injury requiring immediate disclosure and that there is insufficient time to obtain a court order; the entity seeking disclosure must give the provider a written statement of the facts giving rise to the emergency on request or within 48 hours. Third, a provider may disclose personal information to a government entity if the provider in good faith believes the information is evidence directly related and relevant to a crime against the provider or that user.",
+      "gap": "This clause covers three separate, independently worded provisions -- § 1798.90(c)(3), (c)(4), and (c)(5) -- treated together here as a set of alternative circumstances, not as one integrated rule. The consent exception is the only one of the three phrased as mandatory (\"shall disclose\"); the emergency and crime-against-the-provider exceptions are both phrased as permissive (\"may disclose\"), meaning the statute's text leaves a provider free to decline disclosure even where the predicate facts for either exception are met -- this clause does not resolve what, if anything, would obligate disclosure in that circumstance under some other body of law. The emergency exception's \"good faith\" standard is the provider's own belief, informed by but not simply identical to the government entity's assertion; the statute's text does not further define \"good faith\" for this purpose, and no case law construing it was located in this research. This clause does not separately quote the emergency exception's 48-hour written-statement requirement, § 1798.90(c)(4)'s second sentence, which is paraphrased above rather than quoted verbatim. Retrieved from leginfo.legislature.ca.gov on 2026-09-08 and re-fetched with a distinct User-Agent header; both retrievals were byte-identical.",
+      "citations": [
+        {
+          "case": "Cal. Civ. Code § 1798.90(c)(3) (Reader Privacy Act, official leginfo.legislature.ca.gov text)",
+          "cite": "Cal. Civ. Code § 1798.90(c)(3)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1798.90.",
+          "quote": "A provider shall disclose the personal information of a user to any person, private entity, or government entity if the user has given his or her informed, affirmative consent to the specific disclosure for a particular purpose."
+        },
+        {
+          "case": "Cal. Civ. Code § 1798.90(c)(4) (Reader Privacy Act, official leginfo.legislature.ca.gov text)",
+          "cite": "Cal. Civ. Code § 1798.90(c)(4)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1798.90.",
+          "quote": "A provider may disclose personal information of a user to a government entity, if the government entity asserts, and the provider in good faith believes, that there is an imminent danger of death or serious physical injury requiring the immediate disclosure of the requested personal information and there is insufficient time to obtain a court order."
+        },
+        {
+          "case": "Cal. Civ. Code § 1798.90(c)(5) (Reader Privacy Act, official leginfo.legislature.ca.gov text)",
+          "cite": "Cal. Civ. Code § 1798.90(c)(5)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1798.90.",
+          "quote": "A provider may disclose personal information of a user to a government entity if the provider in good faith believes that the personal information is evidence directly related and relevant to a crime against the provider or that user."
+        }
+      ]
+    },
+    {
+      "id": "readerprivacy_penalties_and_reliance_defense",
+      "title": "Civil Penalties, the Two-Year Filing Period, and the Reasonable-Reliance Defense",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-08",
+      "body": "A provider that knowingly discloses a user's personal information to a government entity in violation of the Act is subject to a civil penalty of up to $500 per violation, payable to the user in a civil action the user brings; the statute separately allows a parallel, additional penalty of up to $500 per violation recoverable by the Attorney General, a district attorney, a city attorney, or a city prosecutor, and states that these penalties are not the exclusive remedy for a violation. A civil action under the Act must be commenced within two years of the date the claimant first discovered the violation. Separately, the statute gives a provider a complete defense to civil liability where the provider objectively reasonably relied on a warrant or court order for the disclosure, or on any of the Act's enumerated exceptions.",
+      "gap": "This clause quotes three separate subsections -- § 1798.90(g)(1)(A) (the user-recoverable penalty), § 1798.90(g)(4) (the two-year discovery-based filing period), and § 1798.90(h) (the reasonable-reliance defense) -- as three distinct sources, not as parts of one rule. The parallel government-recoverable penalty described in the body's second sentence, § 1798.90(g)(1)(B), and the non-exclusivity statement in § 1798.90(g)(3), are paraphrased here rather than separately quoted and verified; a reader relying on the exact dollar caps, aggregate exposure, or non-exclusivity language for those provisions should consult the statute's current text directly rather than this clause. The reasonable-reliance defense's \"objectively reasonable\" standard is not further defined by the statute's own text, and no California case law construing it was located in this research; this clause does not resolve what would or would not qualify as objectively reasonable reliance in a specific circumstance. This clause also does not address the separate two-year filing period against the backdrop of any tolling doctrine that might extend or shorten it in a specific case. Retrieved from leginfo.legislature.ca.gov on 2026-09-08 and re-fetched with a distinct User-Agent header; both retrievals were byte-identical.",
+      "citations": [
+        {
+          "case": "Cal. Civ. Code § 1798.90(g)(1)(A) (Reader Privacy Act, official leginfo.legislature.ca.gov text)",
+          "cite": "Cal. Civ. Code § 1798.90(g)(1)(A)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1798.90.",
+          "quote": "Any provider that knowingly provides personal information about a user to a government entity in violation of this section shall be subject to a civil penalty not to exceed five hundred dollars ($500) for each violation, which shall be paid to the user in a civil action brought by the user."
+        },
+        {
+          "case": "Cal. Civ. Code § 1798.90(g)(4) (Reader Privacy Act, official leginfo.legislature.ca.gov text)",
+          "cite": "Cal. Civ. Code § 1798.90(g)(4)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1798.90.",
+          "quote": "A civil action brought pursuant to this section shall be commenced within two years after the date upon which the claimant first discovered the violation."
+        },
+        {
+          "case": "Cal. Civ. Code § 1798.90(h) (Reader Privacy Act, official leginfo.legislature.ca.gov text)",
+          "cite": "Cal. Civ. Code § 1798.90(h)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1798.90.",
+          "quote": "An objectively reasonable reliance by the provider on a warrant or court order for the disclosure of personal information of a user, or on any of the enumerated exceptions to the confidentiality of a user’s personal information set forth in this section, is a complete defense to any civil action for the violation of this section."
+        }
+      ]
+    },
+    {
+      "id": "readerprivacy_child_exploitation_warrant_exception",
+      "title": "A Separate Exception: Search Warrants in Child Exploitation Investigations",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-08",
+      "body": "A separate, narrower provision of the Act, § 1798.90.05, addresses a different disclosure mechanism from the court orders described above: a search warrant. It states that § 1798.90 does not make it unlawful for a law enforcement entity subject to the federal Privacy Protection Act (42 U.S.C. § 2000aa) to obtain a search warrant for a user's personal information, under otherwise applicable law, in connection with investigating or prosecuting a criminal offense where probable cause exists that the person possessing the information has committed or is committing a criminal offense involving the production, possession, receipt, mailing, sale, distribution, shipment, or transportation of child pornography, the sexual exploitation of children, or the sale or purchase of children under specified federal statutes. It further states that nothing in § 1798.90 prevents a provider from complying with a proper search warrant issued in connection with those offenses.",
+      "gap": "This exception is narrow on its face: it addresses only search warrants (not the court orders described in the earlier clauses of this document) obtained by a law enforcement entity investigating or prosecuting the specific, enumerated federal child-exploitation offenses it lists -- it does not create a general search-warrant pathway for other offenses. It cross-references the federal Privacy Protection Act of 1980, 42 U.S.C. § 2000aa, a separate body of federal law restricting government searches of \"documentary materials\" held by someone in the business of public communication; this clause does not independently research or describe that federal statute's own text, scope, or exceptions. This clause's title characterizes the underlying conduct using the statute's own wording; that wording, not any characterization by this document, is what governs. Retrieved from leginfo.legislature.ca.gov on 2026-09-08 and re-fetched with a distinct User-Agent header; both retrievals were byte-identical.",
+      "citations": [
+        {
+          "case": "Cal. Civ. Code § 1798.90.05 (Reader Privacy Act, official leginfo.legislature.ca.gov text)",
+          "cite": "Cal. Civ. Code § 1798.90.05",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1798.90.05.",
+          "quote": "Section 1798.90 does not make it unlawful for a law enforcement entity subject to Section 2000aa of Title 42 of the United States Code to obtain a search warrant for the personal information of a user pursuant to otherwise applicable law in connection with the investigation or prosecution of a criminal offense when probable cause exists to believe that the person possessing the personal information has committed, or is committing, a criminal offense involving the production, possession, receipt, mailing, sale, distribution, shipment, or transportation of child pornography, the sexual exploitation of children, or the sale or purchase of children prohibited by Sections 2251, 2251A, 2252, and 2252A of Title 18 of the United States Code."
+        }
+      ]
+    },
+    {
+      "id": "readerprivacy_scope_note",
+      "title": "What This Document Does Not Cover",
+      "kind": "drafting",
+      "body": "This document addresses only Civil Code §§ 1798.90 and 1798.90.05. It does not describe the Act's separate transparency-reporting scheme, § 1798.90(i)-(k), under which a qualifying provider that has made a threshold number of disclosures must prepare and publicly post an annual report of the categories and volume of demands it received and how it responded. It does not describe § 1798.90(d) (a court's authority to impose safeguards on, or to quash or modify, a disclosure order), § 1798.90(e) (a provider's duty to preserve records on a law enforcement entity's request pending a court order or warrant), or § 1798.90(f) (the exclusion of evidence obtained in violation of the Act from other civil or administrative proceedings). It does not research or describe the federal Privacy Protection Act of 1980 (42 U.S.C. § 2000aa et seq.) referenced in § 1798.90(l) and § 1798.90.05, the Penal Code § 1524 search-warrant grounds cross-referenced in § 1798.90(c)(1)(A), or the separate Civil Code § 1798.80 personal-information list cross-referenced in § 1798.90(b)(5)(A). It does not address whether or how a public library's circulation and reading records are separately protected under other California law, since the Reader Privacy Act's own \"provider\" definition is limited to a commercial entity. It also does not address this corpus's separate documents on the California Consumer Privacy Act, the California Online Privacy Protection Act, or California's \"Shine the Light\" law, each of which imposes different disclosure, notice, or opt-out obligations on businesses handling personal information generally, distinct from this Act's narrower rule for a reader's book-related records specifically. No California case law construing the Reader Privacy Act was located in a CourtListener search performed for this document on 2026-09-08; this document therefore describes the statutory text alone, without the benefit of any judicial gloss on it."
+    },
+    {
+      "id": "readerprivacy_ack",
+      "title": "Acknowledgment",
+      "kind": "drafting",
+      "body": "This information sheet regarding the California Reader Privacy Act (Civil Code §§ 1798.90-1798.90.05) was prepared for {{businessName}}.\n\nPrepared by: {{preparerName}}\nDate: {{signatureDate}}\nBusiness website (if applicable): {{websiteURL}}"
     }
   ]
 }

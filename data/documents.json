@@ -31034,5 +31034,51 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "reader_privacy_act_info_sheet",
+    "title": "California Reader Privacy Act (Civil Code §§ 1798.90-1798.90.05) — Information Sheet",
+    "description": "Explains California's Reader Privacy Act, which restricts when a business offering book rental, purchase, borrowing, browsing, or viewing services may knowingly disclose a user's reading records and other personal information to a government entity, or be compelled to disclose that information to any person, private entity, or government entity — the statute's definitions, its two separate court-order tracks (one for law enforcement, one for other government entities and civil litigants), its consent, emergency, and crime-against-the-provider exceptions, its civil penalties and two-year filing period, its reasonable-reliance defense, and its separate search-warrant exception for child exploitation investigations.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "readerprivacy_purpose",
+      "readerprivacy_definitions",
+      "readerprivacy_general_prohibition",
+      "readerprivacy_law_enforcement_court_order",
+      "readerprivacy_civil_litigant_court_order",
+      "readerprivacy_consent_emergency_crime_exceptions",
+      "readerprivacy_penalties_and_reliance_defense",
+      "readerprivacy_child_exploitation_warrant_exception",
+      "readerprivacy_scope_note",
+      "readerprivacy_ack"
+    ],
+    "fields": [
+      {
+        "id": "businessName",
+        "label": "Business name",
+        "placeholder": "Acme Books, Inc.",
+        "required": true
+      },
+      {
+        "id": "websiteURL",
+        "label": "Website URL",
+        "placeholder": "https://www.acmebooks.com",
+        "required": true
+      },
+      {
+        "id": "preparerName",
+        "label": "Name of person preparing this information sheet",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "signatureDate",
+        "label": "Date signed",
+        "placeholder": "September 8, 2026",
+        "required": true
+      }
+    ]
   }
 ]
