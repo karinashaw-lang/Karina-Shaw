@@ -31457,5 +31457,51 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "payday_pay_frequency_requirements_info_sheet",
+    "title": "Payday and Pay Frequency Requirements — Information Sheet",
+    "description": "An information sheet describing California's statutory payday-timing requirements under Labor Code sections 204, 204b, 205, and 210: the general twice-monthly payday rule and its two specific timing windows, the narrow monthly-payment option for certain FLSA-exempt executive, administrative, and professional salaries, the next-payroll-period timing rule for overtime wages and its related paystub-correction mechanism, the collective-bargaining-agreement override, the seven-calendar-day safe harbor for weekly, biweekly, or semimonthly payroll, the separate timing rule for weekly-paid employees under section 204b, the monthly-payday rule for certain boarded-and-lodged agricultural and household domestic employees and the weekly rule for farm labor contractors under section 205, and the civil penalty for a late or missed payday under section 210.",
+    "categories": [
+      "During employment"
+    ],
+    "clauseOrder": [
+      "payday_intro",
+      "payday_general_semimonthly_rule",
+      "payday_exempt_salaried_monthly_option",
+      "payday_overtime_next_period_payday",
+      "payday_cba_override",
+      "payday_weekly_biweekly_semimonthly_safe_harbor",
+      "payday_weekly_payroll_204b",
+      "payday_agricultural_domestic_monthly_rule",
+      "payday_late_payment_penalty",
+      "payday_ack"
+    ],
+    "fields": [
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 9, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
