@@ -6,6 +6,8 @@ import prisma from "@/lib/prisma";
 import { isStripeConfigured } from "@/lib/integrations/stripe";
 import SubscriptionPriceForm from "@/components/subscription-price-form";
 import StripeConnectButton from "@/components/stripe-connect-button";
+import QuestionPriceForm from "@/components/question-price-form";
+import PaidQuestionsInbox from "@/components/paid-questions-inbox";
 
 export default async function DashboardPage() {
   const user = await getCurrentUser();
@@ -14,7 +16,17 @@ export default async function DashboardPage() {
 
   const creatorId = user.creatorProfile.id;
 
-  const [videoCount, followerCount, subscriberCount, tips, distributorSplits, unlocks] = await Promise.all([
+  const [
+    videoCount,
+    followerCount,
+    subscriberCount,
+    tips,
+    distributorSplits,
+    unlocks,
+    extraUnlocks,
+    paidQuestions,
+    videos,
+  ] = await Promise.all([
     prisma.video.count({ where: { creatorId } }),
     prisma.follow.count({ where: { creatorId } }),
     prisma.subscription.count({ where: { creatorId } }),
@@ -31,11 +43,25 @@ export default async function DashboardPage() {
       include: { user: true, behindTheCut: { include: { video: true } } },
       take: 20,
     }),
+    prisma.videoExtraUnlock.findMany({
+      where: { videoExtra: { video: { creatorId } } },
+      orderBy: { createdAt: "desc" },
+      include: { user: true, videoExtra: { include: { video: true } } },
+      take: 20,
+    }),
+    prisma.paidQuestion.findMany({
+      where: { creatorId },
+      orderBy: { createdAt: "desc" },
+      include: { fromUser: true, answeredVideo: true },
+    }),
+    prisma.video.findMany({ where: { creatorId }, select: { id: true, title: true }, orderBy: { createdAt: "desc" } }),
   ]);
 
   const totalCents = tips.reduce((sum, tip) => sum + tip.amountCents, 0);
   const distributorSplitCents = distributorSplits.reduce((sum, earning) => sum + earning.amountCents, 0);
   const unlockCents = unlocks.reduce((sum, unlock) => sum + unlock.amountCents, 0);
+  const extraUnlockCents = extraUnlocks.reduce((sum, unlock) => sum + unlock.amountCents, 0);
+  const paidQuestionCents = paidQuestions.reduce((sum, q) => sum + q.amountCents, 0);
 
   return (
     <div className="mx-auto max-w-3xl px-6 py-10">
@@ -61,6 +87,14 @@ export default async function DashboardPage() {
         <div className="rounded-lg border border-black/10 p-4 dark:border-white/10">
           <p className="text-2xl font-semibold">${(unlockCents / 100).toFixed(2)}</p>
           <p className="text-sm text-zinc-500">Behind the Cut</p>
+        </div>
+        <div className="rounded-lg border border-black/10 p-4 dark:border-white/10">
+          <p className="text-2xl font-semibold">${(extraUnlockCents / 100).toFixed(2)}</p>
+          <p className="text-sm text-zinc-500">Extras</p>
+        </div>
+        <div className="rounded-lg border border-black/10 p-4 dark:border-white/10">
+          <p className="text-2xl font-semibold">${(paidQuestionCents / 100).toFixed(2)}</p>
+          <p className="text-sm text-zinc-500">Paid questions</p>
         </div>
       </div>
 
@@ -102,6 +136,14 @@ export default async function DashboardPage() {
       <h2 className="mt-8 text-lg font-medium">Subscription price</h2>
       <SubscriptionPriceForm currentPriceCents={user.creatorProfile.subscriptionPriceCents} />
 
+      <h2 className="mt-8 text-lg font-medium">Paid questions</h2>
+      <QuestionPriceForm currentPriceCents={user.creatorProfile.questionPriceCents} />
+      {user.creatorProfile.questionPriceCents !== null && (
+        <div className="mt-3">
+          <PaidQuestionsInbox questions={paidQuestions} videos={videos} />
+        </div>
+      )}
+
       <h2 className="mt-8 text-lg font-medium">Recent tips</h2>
       {tips.length === 0 ? (
         <p className="mt-2 text-sm text-zinc-500">No tips yet.</p>
@@ -129,6 +171,23 @@ export default async function DashboardPage() {
                 {unlock.behindTheCut.video.title}
               </Link>{" "}
               for ${(unlock.amountCents / 100).toFixed(2)}
+            </li>
+          ))}
+        </ul>
+      )}
+
+      <h2 className="mt-8 text-lg font-medium">Recent extra unlocks</h2>
+      {extraUnlocks.length === 0 ? (
+        <p className="mt-2 text-sm text-zinc-500">No unlocks yet.</p>
+      ) : (
+        <ul className="mt-4 flex flex-col gap-2 text-sm">
+          {extraUnlocks.map((unlock) => (
+            <li key={unlock.id}>
+              <span className="font-medium">{unlock.user.name}</span> unlocked{" "}
+              <Link href={`/videos/${unlock.videoExtra.videoId}`} className="underline">
+                {unlock.videoExtra.title}
+              </Link>{" "}
+              on {unlock.videoExtra.video.title} for ${(unlock.amountCents / 100).toFixed(2)}
             </li>
           ))}
         </ul>

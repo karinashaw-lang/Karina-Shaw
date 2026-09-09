@@ -39,6 +39,20 @@ export async function saveClipToWall(clipId: string, path: string) {
   revalidatePath("/wall");
 }
 
+export async function saveMomentToWall(momentId: string, path: string) {
+  const user = await requireUser();
+
+  const existing = await prisma.wallItem.findFirst({
+    where: { userId: user.id, momentId },
+  });
+  if (!existing) {
+    await prisma.wallItem.create({ data: { userId: user.id, momentId } });
+  }
+
+  revalidatePath(path);
+  revalidatePath("/wall");
+}
+
 export async function removeFromWall(wallItemId: string) {
   const user = await requireUser();
 

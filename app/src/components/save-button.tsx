@@ -2,14 +2,14 @@
 
 import { useState, useTransition } from "react";
 
-import { saveVideoToWall, saveClipToWall } from "@/lib/actions/wall";
+import { saveVideoToWall, saveClipToWall, saveMomentToWall } from "@/lib/actions/wall";
 
 export default function SaveButton({
   kind,
   itemId,
   path,
 }: {
-  kind: "video" | "clip";
+  kind: "video" | "clip" | "moment";
   itemId: string;
   path: string;
 }) {
@@ -24,8 +24,10 @@ export default function SaveButton({
         startTransition(async () => {
           if (kind === "video") {
             await saveVideoToWall(itemId, path);
-          } else {
+          } else if (kind === "clip") {
             await saveClipToWall(itemId, path);
+          } else {
+            await saveMomentToWall(itemId, path);
           }
           setSaved(true);
         });

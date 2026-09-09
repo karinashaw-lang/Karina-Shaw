@@ -11,11 +11,18 @@ a shareable monthly Wall Card generated from that wall.
 **Plan pivot (September 2026):** the business plan now centers on per-video monetization —
 Curated Moments, Distributor Payouts, and Behind the Cut — rather than the earlier real-time/live
 framing above. Live streaming, AI dubbing, listening parties, streaks, and Recap Reels are all
-still built (documented below) but are now Phase 3 items per the plan, not V1/V2. **Curated
-Moments** is the first piece of the new signature built so far — see its own section below. The
-rest of this document hasn't been fully rewritten for the pivot yet; treat the feature
-descriptions as accurate for what's built, but the framing/roadmap language as pre-pivot until
-noted otherwise.
+still built (documented below) but are now Phase 3 items per the plan, not V1/V2. The rest of this
+document hasn't been fully rewritten for the pivot yet; treat the feature descriptions as accurate
+for what's built, but the framing/roadmap language as pre-pivot until noted otherwise.
+
+**Phase 1 is now fully built**: Curated Moments, guest checkout, Distributor Payouts, Behind the
+Cut, creator/distributor earnings pages, and Public ask pages — see each feature's own section
+below. **Phase 2 is also built**: saved moments on the personal wall, early access for
+subscribers, Video Extras (resource sheets, outtakes, paid attachments), paid questions, and a
+private podcast feed for subscribers. Only Phase 3 (live streaming, AI dubbing, streaks, recaps —
+all pre-pivot work, still functional and documented below) and the plan's "swap to the cheap
+stack" line item remain, both deliberately deferred per an explicit call to keep the current
+infra providers (Mux/OpenAI/Stripe) rather than migrate for now.
 
 ## Real integrations, off by default
 
@@ -30,6 +37,8 @@ real. This is the actual state of each:
 | Guest tips (no account) | same as above | Not offered — "log in to tip" instead | On moment pages/embeds only: tip via Stripe Checkout with no sign-up, attributed by email |
 | Distributor payouts | same as above (+ distributor completes Connect onboarding) | Not offered — no share-and-earn card on moment pages | A signed-in viewer earns 20% of any tip through their personal share link for a moment, paid via a separate Stripe Transfer |
 | Behind the Cut unlock | same as above | Instant simulated unlock (no payment) | Real Stripe Checkout, webhook-confirmed, routed to the creator's Connect account if they've onboarded |
+| Video Extra unlock (resource sheet, outtakes, attachment) | same as above | Instant simulated unlock (no payment) | Real Stripe Checkout, webhook-confirmed, same routing as Behind the Cut |
+| Paid questions | same as above | Instant simulated record | Real Stripe Checkout, webhook-confirmed, routed to the creator's Connect account if they've onboarded |
 | Subscriptions | same as above | Instant simulated toggle | Real recurring Stripe subscription, webhook-confirmed, cancel-able |
 | Creator payouts | same as above (+ creator completes Connect onboarding) | Tips/subscriptions charge to the *platform's* Stripe account | Stripe Connect Express: funds route directly to the creator's own account (`transfer_data`), tracked via the `account.updated` webhook |
 | Video upload | `MUX_TOKEN_ID`, `MUX_TOKEN_SECRET`, `MUX_WEBHOOK_SECRET` | Saved to local disk (`public/uploads/`) | Uploaded direct-to-Mux, transcoded, HLS playback |
@@ -38,6 +47,8 @@ real. This is the actual state of each:
 | Transcripts | `OPENAI_API_KEY` | Creator pastes manually | Auto-transcribed with Whisper on local file uploads |
 | Commute briefing | same as above | Button says it needs the key | Real GPT summary + TTS audio file |
 | Highlight detection | same as above | Crowd-sourced: moments 2+ viewers independently clipped near each other | A real GPT pass over the transcript, cached on the video until the transcript changes |
+| Ask the show (synthesized answer) | same as above | Public ask page still created, showing only the matched transcript excerpts | A real GPT answer citing the excerpts inline |
+| Resource sheet AI draft | same as above | "AI drafting needs OPENAI_API_KEY — write it yourself for now" | A GPT pass over the transcript drafts a resource list the creator can accept or edit before saving |
 | AI dubbing | `ELEVENLABS_API_KEY` | No "Dubbed audio" section at all | Real ElevenLabs dubbing (voice-preserving translation) into Spanish, French, German, Portuguese, Japanese, or Hindi |
 
 See `src/lib/integrations/` for the client setup and `isXConfigured()` guards. Because I don't
@@ -239,6 +250,117 @@ convention.
     revenue tile and unlock list update correctly. The webhook's `amount_total`-based
     `amountCents` was verified directly with a hand-signed `checkout.session.completed` event.
 
+## Public ask pages (last Phase 1 item)
+
+Every "Ask the show" question is now persisted as a permanent, public, indexable page at
+`/ask/[id]` — the plan's growth-loop bet that "every new creator brings a catalog, and every
+catalog produces hundreds of shareable, indexable pages on day one." A permalink to the page
+appears right under the answer in the in-page widget, and a creator's profile page lists their 5
+most recent questions. Unlike Curated Moments, there's no creator approval step: a page is just a
+computed answer (or, without `OPENAI_API_KEY`, a list of matched transcript excerpts) over the
+creator's own already-public transcript — never a viewer editorial decision that could
+misrepresent the creator, so nothing here needs the "nothing spreads unless the creator says so"
+gate.
+
+- **Storage** — `AskedQuestion.sourcesJson` caches the matched excerpts (`AskSource[]`) as a
+  JSON blob rather than a separate relational table, since they're a snapshot of what search found
+  at that moment, not something ever queried independently — the same reasoning as `Video.highlightsJson`.
+- **Verification:** a real-browser flow — a creator adds a transcript, asks a question from their
+  own profile page, follows the permalink, and the page renders the correct title (also checked in
+  `<title>`/meta description via `generateMetadata`), the matched excerpt, and a working timestamped
+  link back to the source video.
+
+## Saved moments on the personal wall (Phase 2)
+
+`WallItem` gained a `momentId` alongside its existing `videoId`/`clipId`, so a viewer can save a
+Curated Moment to their wall the same way they already save videos and clips — a `SaveButton` on
+the moment page, a "Moment" entry in the wall list linking back to `/moments/[id]`. No new page or
+action pattern; this is a small, deliberate schema extension of infrastructure the wall already had.
+
+## Early access for subscribers (Phase 2)
+
+`Video.earlyAccessUntil`, set in days at upload time (or edited afterward by the owner): while set
+and in the future, the video is locked to everyone except subscribers and the owner — same lock
+screen as `subscriberOnly`, with different copy ("Early access for subscribers" vs "Subscribers
+only") — and once the date passes, it opens to *everyone*, subscribed or not. That's the
+distinction from `subscriberOnly`, which never expires. Only offered once a creator has a
+subscription price set, since early access without anything to be early *to* is meaningless.
+
+- **Bug found and fixed while building this:** `isSubscribed` used to only be computed when
+  `video.subscriberOnly` was true, so a subscriber would never register as subscribed on a
+  non-`subscriberOnly` video — harmless before this feature existed, but it would have silently
+  broken early access (a subscriber would see the same lock screen as everyone else). Fixed by
+  computing `isSubscribed` for any signed-in non-owner regardless of `subscriberOnly`, and using it
+  independently for each gate. *(Already fixed during Behind the Cut's build, for the same reason
+  — noted again here since early access depends on the same value.)*
+- **Verification:** a real-browser flow confirmed a non-subscriber sees the "Early access for
+  subscribers" lock screen and none of the video's other content (transcript, Behind the Cut,
+  Extras) while the window is open, and that a subscriber (given access by a database-inserted
+  `Subscription` row, the same simulated-Connect-onboarding pattern used throughout this doc) sees
+  the full page immediately, bypassing the lock entirely.
+
+## Video Extras: resource sheets, outtakes, and paid attachments (Phase 2)
+
+The plan's other "additional per-video items," beyond Behind the Cut's five fixed slots: a
+**resource sheet** (a written list of everything mentioned in the episode — tools, books, links,
+gear), **outtakes** (a separate short video unlock), and a **paid attachment** (project files,
+worksheets, templates — any file type, not just video). Unlike Behind the Cut's one-per-video
+bundle, a video can have any number of `VideoExtra` rows, each independently priced and unlocked —
+separate purchases, not a bundle. Subscribers get every extra on a creator's videos for free, same
+as Behind the Cut.
+
+- **AI-assisted resource sheets** — "pulled by AI, checked by the creator," per the plan: a
+  "Draft with AI" button runs one GPT pass over the video's transcript and fills the textarea for
+  the creator to edit or discard, never auto-publishing. Without `OPENAI_API_KEY` the button
+  explains the gap and the creator just writes it themselves.
+- **Bug found and fixed while building this — same class as Behind the Cut's leak:** the initial
+  version passed unlocked-or-not extras' full `text`/`fileUrl` to the client-side
+  `VideoExtrasList` regardless of viewer access, gating only the visible rendering. Fixed the same
+  way as Behind the Cut, before it ever shipped: content fields are nulled out server-side unless
+  the viewer actually has access, verified directly against the raw page HTML (not just the
+  visible DOM) in testing this time, specifically because the same mistake had already happened
+  once.
+- **Known gap** — same as Behind the Cut's raw footage: outtakes/attachment files sit at
+  unauthenticated `/uploads/video-extras/<uuid>` URLs. Consistent with the rest of the app's
+  storage model, not a new gap introduced here.
+- **Verification:** a real-browser flow — a creator adds all three extra types (with real file
+  uploads for outtakes/attachment via Playwright's file input support) and confirms all three
+  render on their own page; a separate viewer confirms the raw HTML doesn't leak the resource
+  sheet's text before paying, sees the correct per-extra price on the unlock button, unlocks it
+  (simulated, no Stripe key), and immediately sees the real content; the resulting
+  `VideoExtraUnlock.amountCents` was confirmed to match the extra's price exactly.
+
+## Paid questions (Phase 2)
+
+"Viewers pay to submit a question for the next episode," per the plan. A creator sets a price via
+`CreatorProfile.questionPriceCents` (null disables it, same pattern as the subscription price); a
+signed-in viewer submits a question and pays that price (real Stripe Checkout or an instant
+simulated record); the creator gets a dashboard inbox of pending questions with a button to mark
+one answered, optionally linking the video where they addressed it — the only way a viewer finds
+out where their paid-for question landed.
+
+- **Verification:** a real-browser flow — a creator sets a question price, a viewer submits and
+  pays (simulated), the creator's dashboard shows it pending with the right revenue total, marking
+  it answered and linking a video moves it to the "Answered" list with a link to that video.
+
+## Private podcast feed for subscribers (Phase 2)
+
+Each `Subscription` row gets an unguessable `feedToken` (a Prisma-generated `cuid()`, same shape as
+every other id in this schema) the moment it's created — a podcast app has no session cookie to
+check against, so the token in the URL *is* the access control, the same reasoning as a calendar
+app's private iCal feed URL. `GET /api/feed/[token]` returns a standard RSS 2.0 (with minimal
+iTunes-namespace tags for podcast-app compatibility) listing the creator's videos as episodes,
+audio-first (using the extracted `audioUrl` where one exists, per the "audio-optional by default"
+philosophy) but falling back to the video file itself so every episode can appear. A copyable feed
+link shows up on the creator's page for any subscriber. Regenerating a leaked link isn't built —
+would just mean updating the token on the `Subscription` row — but there's no UI for it yet.
+
+- **Verification:** confirmed the real (Prisma-driven, not database-simulated) subscribe action
+  actually populates `feedToken` on create; fetched a real subscriber's feed URL directly and
+  parsed the response as valid RSS with the correct `Content-Type`, a matching `<enclosure>` tag,
+  and the video's title correctly XML-escaped; confirmed an invalid/made-up token returns 404
+  rather than someone else's feed or a server error.
+
 ## Cheap-to-build differentiators (no new credentials needed)
 
 A few features from the latest plan revision are built entirely on infrastructure already
@@ -415,3 +537,21 @@ infrastructure, build differentiation" philosophy:
 - **Earnings pages** — `src/app/(main)/earnings` (distributor ledger, any signed-in user),
   `src/components/distributor-onboarding-form.tsx` (shared with the moment page's share card),
   Behind the Cut revenue + distributor split breakdown added to `src/app/(main)/creator/dashboard`
+- **Public ask pages** — `src/lib/actions/ask.ts` (persists `AskedQuestion`), public page at
+  `src/app/(main)/ask/[id]`, permalink + recent-questions list added to `ask-the-show.tsx` and the
+  creator profile page
+- **Saved moments on the wall** — `momentId` on `WallItem`, `saveMomentToWall` in
+  `src/lib/actions/wall.ts`, `SaveButton` extended in `src/components/save-button.tsx`
+- **Early access for subscribers** — `Video.earlyAccessUntil`, set at upload
+  (`src/components/upload-form.tsx`) or edited after
+  (`src/components/early-access-editor.tsx` + `setEarlyAccess` in `src/lib/actions/video.ts`),
+  gated in `src/app/(main)/videos/[id]/page.tsx`
+- **Video Extras** (resource sheet, outtakes, paid attachment) — `src/lib/actions/video-extra.ts`,
+  `src/components/video-extra-editor.tsx` + `video-extras-list.tsx`, unlock via Stripe Checkout
+  handled in `src/app/api/webhooks/stripe`, file storage in `src/lib/video-storage.ts`
+  (`saveOuttakesFile`, `saveAttachmentFile`)
+- **Paid questions** — `CreatorProfile.questionPriceCents`, `src/lib/actions/paid-question.ts`,
+  `src/components/question-price-form.tsx` + `paid-question-form.tsx` + `paid-questions-inbox.tsx`,
+  handled in `src/app/api/webhooks/stripe`
+- **Private podcast feed** — `Subscription.feedToken`, `src/app/api/feed/[token]/route.ts` (RSS
+  2.0), `src/components/podcast-feed-link.tsx` on the creator profile page

@@ -27,7 +27,10 @@ import EffortBadge from "@/components/effort-badge";
 import EffortBadgeEditor from "@/components/effort-badge-editor";
 import BehindTheCutEditor from "@/components/behind-the-cut-editor";
 import BehindTheCutPanel from "@/components/behind-the-cut-panel";
-import { hoursAgo } from "@/lib/time";
+import EarlyAccessEditor from "@/components/early-access-editor";
+import VideoExtraEditor from "@/components/video-extra-editor";
+import VideoExtrasList from "@/components/video-extras-list";
+import { hoursAgo, nowMs } from "@/lib/time";
 
 export default async function VideoPage(props: PageProps<"/videos/[id]">) {
   const { id } = await props.params;
@@ -49,6 +52,7 @@ export default async function VideoPage(props: PageProps<"/videos/[id]">) {
         guests: { include: { guest: true } },
         dubs: { orderBy: { createdAt: "asc" } },
         behindTheCut: true,
+        extras: { orderBy: { createdAt: "asc" } },
       },
     }),
     getCurrentUser(),
@@ -74,7 +78,8 @@ export default async function VideoPage(props: PageProps<"/videos/[id]">) {
         )
       : false;
 
-  const isLocked = video.subscriberOnly && !isOwner && !isSubscribed;
+  const inEarlyAccessWindow = Boolean(video.earlyAccessUntil && video.earlyAccessUntil > new Date());
+  const isLocked = (video.subscriberOnly || inEarlyAccessWindow) && !isOwner && !isSubscribed;
 
   const behindTheCutUnlock =
     user && video.behindTheCut && !isOwner
@@ -94,6 +99,16 @@ export default async function VideoPage(props: PageProps<"/videos/[id]">) {
         video.behindTheCut.cutScenesUrl ||
         video.behindTheCut.kitText ||
         video.behindTheCut.hardPartText)
+  );
+
+  const extraUnlocks =
+    user && video.extras.length > 0 && !isOwner
+      ? await prisma.videoExtraUnlock.findMany({
+          where: { userId: user.id, videoExtraId: { in: video.extras.map((e) => e.id) } },
+        })
+      : [];
+  const unlockedExtraIds = new Set(
+    isOwner || isSubscribed ? video.extras.map((e) => e.id) : extraUnlocks.map((u) => u.videoExtraId)
   );
 
   const relatedSegments =
@@ -122,12 +137,16 @@ export default async function VideoPage(props: PageProps<"/videos/[id]">) {
       {isLocked ? (
         <div className="flex aspect-video items-center justify-center rounded-lg bg-black text-center text-white">
           <div>
-            <p className="text-lg font-medium">Subscribers only</p>
+            <p className="text-lg font-medium">
+              {!video.subscriberOnly && inEarlyAccessWindow ? "Early access for subscribers" : "Subscribers only"}
+            </p>
             <p className="mt-1 text-sm text-zinc-300">
               <Link href={`/creators/${video.creator.handle}`} className="underline">
                 Subscribe to {video.creator.displayName}
               </Link>{" "}
-              to watch this video.
+              {!video.subscriberOnly && inEarlyAccessWindow
+                ? "to watch it now — everyone else can watch once early access ends."
+                : "to watch this video."}
             </p>
           </div>
         </div>
@@ -174,6 +193,17 @@ export default async function VideoPage(props: PageProps<"/videos/[id]">) {
           hours={video.effortHours}
           reshoots={video.effortReshoots}
           minutesCut={video.effortMinutesCut}
+        />
+      )}
+
+      {isOwner && video.creator.subscriptionPriceCents !== null && (
+        <EarlyAccessEditor
+          videoId={video.id}
+          daysRemaining={
+            video.earlyAccessUntil
+              ? Math.max(0, Math.ceil((video.earlyAccessUntil.getTime() - nowMs()) / (24 * 60 * 60 * 1000)))
+              : 0
+          }
         />
       )}
 
@@ -262,6 +292,33 @@ export default async function VideoPage(props: PageProps<"/videos/[id]">) {
                 }
           }
           hasAccess={hasBehindTheCutAccess}
+          isSubscribedIncluded={true}
+        />
+      )}
+
+      {!isLocked && isOwner && (
+        <VideoExtraEditor
+          videoId={video.id}
+          path={`/videos/${video.id}`}
+          extras={video.extras.map((e) => ({
+            id: e.id,
+            type: e.type,
+            title: e.title,
+            priceCents: e.priceCents,
+          }))}
+        />
+      )}
+      {!isLocked && !isOwner && (
+        <VideoExtrasList
+          extras={video.extras.map((e) => ({
+            id: e.id,
+            type: e.type,
+            title: e.title,
+            priceCents: e.priceCents,
+            text: unlockedExtraIds.has(e.id) ? e.text : null,
+            fileUrl: unlockedExtraIds.has(e.id) ? e.fileUrl : null,
+          }))}
+          unlockedIds={unlockedExtraIds}
           isSubscribedIncluded={true}
         />
       )}

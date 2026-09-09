@@ -11,6 +11,9 @@ import UnsubscribeButton from "@/components/unsubscribe-button";
 import TipForm from "@/components/tip-form";
 import LiveBadge from "@/components/live-badge";
 import AskTheShow from "@/components/ask-the-show";
+import PaidQuestionForm from "@/components/paid-question-form";
+import PodcastFeedLink from "@/components/podcast-feed-link";
+import { getAppUrl } from "@/lib/app-url";
 
 export default async function CreatorPage(props: PageProps<"/creators/[handle]">) {
   const { handle } = await props.params;
@@ -33,6 +36,15 @@ export default async function CreatorPage(props: PageProps<"/creators/[handle]">
   const isOwner = user?.creatorProfile?.id === creator.id;
   const stripeConfigured = isStripeConfigured();
 
+  const recentQuestions =
+    creator.videos.length > 0
+      ? await prisma.askedQuestion.findMany({
+          where: { creatorId: creator.id },
+          orderBy: { createdAt: "desc" },
+          take: 5,
+        })
+      : [];
+
   const [isFollowing, isSubscribed] = user
     ? await Promise.all([
         prisma.follow
@@ -47,6 +59,14 @@ export default async function CreatorPage(props: PageProps<"/creators/[handle]">
           .then(Boolean),
       ])
     : [false, false];
+
+  const subscriptionRow =
+    user && isSubscribed
+      ? await prisma.subscription.findUnique({
+          where: { subscriberId_creatorId: { subscriberId: user.id, creatorId: creator.id } },
+        })
+      : null;
+  const appUrl = await getAppUrl();
 
   return (
     <div className="mx-auto max-w-3xl px-6 py-10">
@@ -101,6 +121,8 @@ export default async function CreatorPage(props: PageProps<"/creators/[handle]">
 
       {creator.bio && <p className="mt-4">{creator.bio}</p>}
 
+      {subscriptionRow && <PodcastFeedLink feedUrl={`${appUrl}/api/feed/${subscriptionRow.feedToken}`} />}
+
       {creator.liveStream?.status === "ACTIVE" && (
         <div className="mt-4">
           <Link href={`/creators/${creator.handle}/live`} className="font-medium underline">
@@ -111,7 +133,26 @@ export default async function CreatorPage(props: PageProps<"/creators/[handle]">
 
       {user && !isOwner && <TipForm creatorId={creator.id} handle={creator.handle} />}
 
+      {user && !isOwner && creator.questionPriceCents !== null && (
+        <PaidQuestionForm creatorId={creator.id} handle={creator.handle} priceCents={creator.questionPriceCents} />
+      )}
+
       {creator.videos.length > 0 && <AskTheShow creatorId={creator.id} />}
+
+      {recentQuestions.length > 0 && (
+        <div className="mt-2">
+          <h3 className="text-sm font-medium text-zinc-500">Recently asked</h3>
+          <ul className="mt-1 flex flex-col gap-1 text-sm">
+            {recentQuestions.map((q) => (
+              <li key={q.id}>
+                <Link href={`/ask/${q.id}`} className="underline">
+                  {q.question}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
 
       <h2 className="mt-8 text-lg font-medium">Videos</h2>
       {creator.videos.length === 0 ? (

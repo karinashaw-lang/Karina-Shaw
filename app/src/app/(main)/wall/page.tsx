@@ -33,6 +33,7 @@ export default async function WallPage() {
       include: {
         video: { include: { creator: true } },
         clip: { include: { sourceVideo: { include: { creator: true } } } },
+        moment: { include: { video: { include: { creator: true } } } },
       },
     }),
     prisma.briefing.findMany({
@@ -121,12 +122,18 @@ export default async function WallPage() {
       ) : (
         <ul className="mt-6 flex flex-col gap-4">
           {items.map((item) => {
-            const isClip = Boolean(item.clip);
-            const href = isClip ? `/clips/${item.clipId}` : `/videos/${item.videoId}`;
-            const title = isClip ? item.clip!.title : item.video!.title;
-            const creator = isClip
-              ? item.clip!.sourceVideo.creator
-              : item.video!.creator;
+            const kind = item.clip ? "Clip" : item.moment ? "Moment" : "Video";
+            const href = item.clip
+              ? `/clips/${item.clipId}`
+              : item.moment
+                ? `/moments/${item.momentId}`
+                : `/videos/${item.videoId}`;
+            const title = item.clip ? item.clip.title : item.moment ? item.moment.title : item.video!.title;
+            const creator = item.clip
+              ? item.clip.sourceVideo.creator
+              : item.moment
+                ? item.moment.video.creator
+                : item.video!.creator;
 
             return (
               <li
@@ -134,9 +141,7 @@ export default async function WallPage() {
                 className="flex items-start justify-between gap-4 rounded-lg border border-black/10 p-4 dark:border-white/10"
               >
                 <div>
-                  <span className="text-xs uppercase tracking-wide text-zinc-500">
-                    {isClip ? "Clip" : "Video"}
-                  </span>
+                  <span className="text-xs uppercase tracking-wide text-zinc-500">{kind}</span>
                   <Link href={href} className="block text-lg font-medium">
                     {title}
                   </Link>

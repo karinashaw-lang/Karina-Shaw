@@ -12,6 +12,7 @@ import SubscribeButton from "@/components/subscribe-button";
 import SubscribeCheckoutForm from "@/components/subscribe-checkout-form";
 import CopyMomentLinks from "@/components/copy-moment-links";
 import DistributorShareCard from "@/components/distributor-share-card";
+import SaveButton from "@/components/save-button";
 
 export default async function MomentPage(props: PageProps<"/moments/[id]">) {
   const { id } = await props.params;
@@ -63,17 +64,22 @@ export default async function MomentPage(props: PageProps<"/moments/[id]">) {
         </div>
       )}
 
-      <h1 className="mt-4 text-2xl font-semibold tracking-tight">{moment.title}</h1>
-      <p className="mt-1 text-sm text-zinc-500">
-        A moment from{" "}
-        <Link href={`/videos/${video.id}`} className="underline">
-          {video.title}
-        </Link>{" "}
-        by{" "}
-        <Link href={`/creators/${creator.handle}`} className="underline">
-          {creator.displayName}
-        </Link>
-      </p>
+      <div className="mt-4 flex items-start justify-between gap-4">
+        <div>
+          <h1 className="text-2xl font-semibold tracking-tight">{moment.title}</h1>
+          <p className="mt-1 text-sm text-zinc-500">
+            A moment from{" "}
+            <Link href={`/videos/${video.id}`} className="underline">
+              {video.title}
+            </Link>{" "}
+            by{" "}
+            <Link href={`/creators/${creator.handle}`} className="underline">
+              {creator.displayName}
+            </Link>
+          </p>
+        </div>
+        {user && <SaveButton kind="moment" itemId={moment.id} path={`/moments/${moment.id}`} />}
+      </div>
 
       <div className="mt-4">
         <CopyMomentLinks

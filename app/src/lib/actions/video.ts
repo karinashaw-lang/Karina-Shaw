@@ -39,7 +39,12 @@ const uploadSchema = z.object({
   videoUrl: z.string().url().optional(),
   muxUploadId: z.string().optional(),
   subscriberOnly: z.coerce.boolean().optional(),
+  earlyAccessDays: z.coerce.number().int().min(0).max(365).optional(),
 });
+
+function earlyAccessUntilFromDays(days: number | undefined): Date | undefined {
+  return days && days > 0 ? new Date(Date.now() + days * 24 * 60 * 60 * 1000) : undefined;
+}
 
 export type UploadActionState = { error: string } | null;
 
@@ -58,13 +63,15 @@ export async function uploadVideo(
     videoUrl: formData.get("videoUrl") || undefined,
     muxUploadId: formData.get("muxUploadId") || undefined,
     subscriberOnly: formData.get("subscriberOnly") === "on" ? true : undefined,
+    earlyAccessDays: formData.get("earlyAccessDays") || undefined,
   });
 
   if (!parsed.success) {
     return { error: parsed.error.issues[0]?.message ?? "Invalid video details." };
   }
 
-  const { title, description, videoUrl, muxUploadId, subscriberOnly } = parsed.data;
+  const { title, description, videoUrl, muxUploadId, subscriberOnly, earlyAccessDays } = parsed.data;
+  const earlyAccessUntil = earlyAccessUntilFromDays(earlyAccessDays);
 
   const file = formData.get("videoFile");
   const hasFile = file instanceof File && file.size > 0;
@@ -78,6 +85,7 @@ export async function uploadVideo(
         muxUploadId,
         status: "PROCESSING",
         subscriberOnly: subscriberOnly ?? false,
+        earlyAccessUntil,
       },
     });
     redirect(`/videos/${video.id}`);
@@ -109,6 +117,7 @@ export async function uploadVideo(
       videoUrl: resolvedVideoUrl,
       audioUrl: resolvedAudioUrl,
       subscriberOnly: subscriberOnly ?? false,
+      earlyAccessUntil,
     },
   });
 
@@ -117,6 +126,50 @@ export async function uploadVideo(
   }
 
   redirect(`/videos/${video.id}`);
+}
+
+const earlyAccessSchema = z.object({
+  videoId: z.string().min(1),
+  earlyAccessDays: z.coerce.number().int().min(0).max(365).optional(),
+});
+
+export type EarlyAccessActionState = { error: string } | { success: true } | null;
+
+/**
+ * Sets or clears a video's early-access window after the fact — the
+ * upload form only sets it once, at posting time. Submitting 0 (or
+ * nothing) clears it, opening the video to everyone immediately.
+ */
+export async function setEarlyAccess(
+  _prevState: EarlyAccessActionState,
+  formData: FormData
+): Promise<EarlyAccessActionState> {
+  const user = await getCurrentUser();
+  if (!user?.creatorProfile) {
+    return { error: "You must be a creator to edit this." };
+  }
+
+  const parsed = earlyAccessSchema.safeParse({
+    videoId: formData.get("videoId"),
+    earlyAccessDays: formData.get("earlyAccessDays") || undefined,
+  });
+  if (!parsed.success) {
+    return { error: parsed.error.issues[0]?.message ?? "Invalid details." };
+  }
+  const { videoId, earlyAccessDays } = parsed.data;
+
+  const video = await prisma.video.findUnique({ where: { id: videoId } });
+  if (!video || video.creatorId !== user.creatorProfile.id) {
+    return { error: "You can only edit your own videos." };
+  }
+
+  await prisma.video.update({
+    where: { id: videoId },
+    data: { earlyAccessUntil: earlyAccessUntilFromDays(earlyAccessDays) ?? null },
+  });
+
+  revalidatePath(`/videos/${videoId}`);
+  return { success: true };
 }
 
 const commentSchema = z.object({

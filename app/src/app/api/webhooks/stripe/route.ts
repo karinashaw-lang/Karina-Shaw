@@ -139,6 +139,35 @@ export async function POST(request: Request) {
             update: {},
           });
         }
+      } else if (kind === "unlock_video_extra") {
+        const { videoExtraId, userId } = session.metadata!;
+        if (videoExtraId && userId) {
+          await prisma.videoExtraUnlock.upsert({
+            where: { videoExtraId_userId: { videoExtraId, userId } },
+            create: {
+              videoExtraId,
+              userId,
+              amountCents: session.amount_total ?? 0,
+              stripeCheckoutSessionId: session.id,
+            },
+            update: {},
+          });
+        }
+      } else if (kind === "paid_question") {
+        const { creatorId, fromUserId, question } = session.metadata!;
+        if (creatorId && fromUserId && question) {
+          await prisma.paidQuestion.upsert({
+            where: { stripeCheckoutSessionId: session.id },
+            create: {
+              creatorId,
+              fromUserId,
+              question,
+              amountCents: session.amount_total ?? 0,
+              stripeCheckoutSessionId: session.id,
+            },
+            update: {},
+          });
+        }
       } else if (kind === "subscription") {
         const { subscriberId, creatorId } = session.metadata!;
         const subscriptionId =

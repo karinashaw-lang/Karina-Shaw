@@ -70,6 +70,14 @@ export default function AskTheShow({ creatorId }: { creatorId: string }) {
               ))}
             </ul>
           )}
+
+          {state.id && (
+            <p className="mt-3 text-xs">
+              <Link href={`/ask/${state.id}`} className="underline">
+                Permanent link to this answer
+              </Link>
+            </p>
+          )}
         </div>
       )}
     </div>

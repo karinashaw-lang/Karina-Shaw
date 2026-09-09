@@ -88,3 +88,51 @@ export async function saveBehindTheCutFile(file: File): Promise<string> {
 
   return `/uploads/behind-the-cut/${filename}`;
 }
+
+const VIDEO_EXTRAS_DIR = path.join(UPLOAD_DIR, "video-extras");
+
+/** Saves an outtakes video file — same shape as saveBehindTheCutFile. */
+export async function saveOuttakesFile(file: File): Promise<string> {
+  if (!file.type.startsWith("video/")) {
+    throw new Error("That file doesn't look like a video.");
+  }
+  if (file.size === 0) {
+    throw new Error("The uploaded file is empty.");
+  }
+  if (file.size > MAX_BYTES) {
+    throw new Error("Files must be under 300MB for now.");
+  }
+
+  const extension = EXTENSION_BY_MIME[file.type] ?? "mp4";
+  const filename = `${randomUUID()}.${extension}`;
+
+  await mkdir(VIDEO_EXTRAS_DIR, { recursive: true });
+  const bytes = Buffer.from(await file.arrayBuffer());
+  await writeFile(path.join(VIDEO_EXTRAS_DIR, filename), bytes);
+
+  return `/uploads/video-extras/${filename}`;
+}
+
+/**
+ * Saves a paid attachment — project files, worksheets, templates, per the
+ * plan. Unlike every other upload in this file, not restricted to video:
+ * this slot is explicitly for arbitrary files.
+ */
+export async function saveAttachmentFile(file: File): Promise<string> {
+  if (file.size === 0) {
+    throw new Error("The uploaded file is empty.");
+  }
+  if (file.size > MAX_BYTES) {
+    throw new Error("Files must be under 300MB for now.");
+  }
+
+  const originalExtension = file.name.includes(".") ? file.name.split(".").pop() : undefined;
+  const extension = originalExtension && /^[a-zA-Z0-9]{1,10}$/.test(originalExtension) ? originalExtension : "bin";
+  const filename = `${randomUUID()}.${extension}`;
+
+  await mkdir(VIDEO_EXTRAS_DIR, { recursive: true });
+  const bytes = Buffer.from(await file.arrayBuffer());
+  await writeFile(path.join(VIDEO_EXTRAS_DIR, filename), bytes);
+
+  return `/uploads/video-extras/${filename}`;
+}

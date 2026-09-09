@@ -154,6 +154,19 @@ export default function UploadForm({
         </p>
       )}
 
+      <label className="flex flex-col gap-1 text-sm">
+        Early access for subscribers (days) — optional, opens to everyone after
+        <input
+          name="earlyAccessDays"
+          type="number"
+          min="0"
+          max="365"
+          placeholder="0"
+          disabled={!hasSubscriptionPrice}
+          className="w-24 rounded border border-black/20 px-2 py-1 dark:border-white/20"
+        />
+      </label>
+
       {(state?.error || muxError) && <p className="text-sm text-red-600">{state?.error ?? muxError}</p>}
 
       <button

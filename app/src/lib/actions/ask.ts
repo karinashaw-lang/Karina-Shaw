@@ -3,6 +3,7 @@
 import { z } from "zod";
 
 import prisma from "@/lib/prisma";
+import { getCurrentUser } from "@/lib/auth";
 import { extractKeywords } from "@/lib/recommendations";
 import { getOpenAI, isOpenAIConfigured } from "@/lib/integrations/openai";
 
@@ -16,7 +17,7 @@ export type AskSource = {
 
 export type AskTheShowState =
   | { error: string }
-  | { answer: string | null; sources: AskSource[] }
+  | { id: string | null; answer: string | null; sources: AskSource[] }
   | null;
 
 const questionSchema = z.object({
@@ -77,30 +78,47 @@ export async function askTheShow(
   }));
 
   if (sources.length === 0) {
-    return { answer: null, sources: [] };
+    return { id: null, answer: null, sources: [] };
   }
 
-  if (!isOpenAIConfigured()) {
-    return { answer: null, sources };
+  let answer: string | null = null;
+
+  if (isOpenAIConfigured()) {
+    const openai = getOpenAI();
+    const excerpts = sources
+      .map((s, i) => `[${i + 1}] (from "${s.videoTitle}") ${s.text}`)
+      .join("\n");
+
+    const response = await openai.chat.completions.create({
+      model: "gpt-4o-mini",
+      messages: [
+        {
+          role: "system",
+          content:
+            "You answer questions about a creator's video catalog using ONLY the numbered excerpts provided. Cite excerpts inline like [1]. If the excerpts don't actually answer the question, say so plainly rather than guessing. Keep it to 2-4 sentences.",
+        },
+        { role: "user", content: `Question: ${question}\n\nExcerpts:\n${excerpts}` },
+      ],
+    });
+
+    answer = response.choices[0]?.message?.content?.trim() ?? null;
   }
 
-  const openai = getOpenAI();
-  const excerpts = sources
-    .map((s, i) => `[${i + 1}] (from "${s.videoTitle}") ${s.text}`)
-    .join("\n");
-
-  const response = await openai.chat.completions.create({
-    model: "gpt-4o-mini",
-    messages: [
-      {
-        role: "system",
-        content:
-          "You answer questions about a creator's video catalog using ONLY the numbered excerpts provided. Cite excerpts inline like [1]. If the excerpts don't actually answer the question, say so plainly rather than guessing. Keep it to 2-4 sentences.",
-      },
-      { role: "user", content: `Question: ${question}\n\nExcerpts:\n${excerpts}` },
-    ],
+  // Persisted automatically, with no creator approval step — this is just
+  // a computed answer over the creator's own already-public transcript,
+  // not a viewer editorial decision the way a Curated Moment is. See the
+  // plan's growth loop: every answered question becomes a public,
+  // indexable page.
+  const user = await getCurrentUser();
+  const asked = await prisma.askedQuestion.create({
+    data: {
+      creatorId,
+      askedById: user?.id,
+      question,
+      answer,
+      sourcesJson: sources,
+    },
   });
 
-  const answer = response.choices[0]?.message?.content?.trim() ?? null;
-  return { answer, sources };
+  return { id: asked.id, answer, sources };
 }
