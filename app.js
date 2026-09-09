@@ -1,4 +1,4 @@
-const state = { documents: null, document: null, clauses: null, answers: {}, categoryFilter: null, edits: {}, editedClauseIds: new Set() };
+const state = { documents: null, document: null, clauses: null, answers: {}, categoryFilter: null, edits: {}, editedClauseIds: new Set(), currentEntryId: null };
 
 // Draft persistence. Local-only, one slot at a time — closing the tab
 // mid-wizard shouldn't lose someone's answers. localStorage can throw
@@ -77,20 +77,34 @@ function saveLibraryEntries(entries) {
 
 function addToLibrary(documentId, title, answers) {
   const entries = loadLibrary();
-  entries.push({
+  const entry = {
     id: `${documentId}-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`,
     documentId,
     title,
     answers: { ...answers },
     generatedAt: new Date().toISOString(),
-  });
+  };
+  entries.push(entry);
   saveLibraryEntries(entries);
   updateLibraryCount();
+  return entry;
 }
 
 function removeFromLibrary(entryId) {
   saveLibraryEntries(loadLibrary().filter(e => e.id !== entryId));
   updateLibraryCount();
+}
+
+// Patches one saved entry in place — used to attach a signature after
+// the document (and its library entry) already exist, without
+// disturbing anything else stored on it.
+function updateLibraryEntry(entryId, patch) {
+  const entries = loadLibrary();
+  const idx = entries.findIndex(e => e.id === entryId);
+  if (idx === -1) return null;
+  entries[idx] = { ...entries[idx], ...patch };
+  saveLibraryEntries(entries);
+  return entries[idx];
 }
 
 function clearLibrary() {
@@ -240,9 +254,128 @@ function viewLibraryEntry(entry) {
   if (!doc) return;
   state.document = doc;
   state.answers = { ...entry.answers };
+  state.currentEntryId = entry.id;
   renderOutput();
   showScreen('screen-output');
 }
+
+// ---------- signature ----------
+// A plain, honest capture — draw with a mouse or finger (Pointer
+// Events cover both without separate code paths) or just type a name
+// — kept with the library entry it belongs to. This makes no claim
+// about legal enforceability in either direction; it only records
+// that this mark was added, by whom it says, and when.
+const sigState = { ctx: null, hasStrokes: false, drawing: false };
+
+function initSignaturePad() {
+  const canvas = document.getElementById('signature-pad');
+  const ctx = canvas.getContext('2d');
+  ctx.strokeStyle = getComputedStyle(document.body).getPropertyValue('--ink').trim() || '#191D16';
+  ctx.lineWidth = 2.2;
+  ctx.lineCap = 'round';
+  ctx.lineJoin = 'round';
+  sigState.ctx = ctx;
+  sigState.hasStrokes = false;
+  sigState.drawing = false;
+
+  const pointerPos = e => {
+    const rect = canvas.getBoundingClientRect();
+    return { x: e.clientX - rect.left, y: e.clientY - rect.top };
+  };
+  canvas.onpointerdown = e => {
+    sigState.drawing = true;
+    sigState.hasStrokes = true;
+    const p = pointerPos(e);
+    ctx.beginPath();
+    ctx.moveTo(p.x, p.y);
+    canvas.setPointerCapture(e.pointerId);
+  };
+  canvas.onpointermove = e => {
+    if (!sigState.drawing) return;
+    const p = pointerPos(e);
+    ctx.lineTo(p.x, p.y);
+    ctx.stroke();
+  };
+  const stopDrawing = () => { sigState.drawing = false; };
+  canvas.onpointerup = stopDrawing;
+  canvas.onpointerleave = stopDrawing;
+  canvas.onpointercancel = stopDrawing;
+}
+
+function clearSignaturePad() {
+  const canvas = document.getElementById('signature-pad');
+  if (sigState.ctx) sigState.ctx.clearRect(0, 0, canvas.width, canvas.height);
+  sigState.hasStrokes = false;
+}
+
+function currentLibraryEntry() {
+  if (!state.currentEntryId) return null;
+  return loadLibrary().find(e => e.id === state.currentEntryId) || null;
+}
+
+function renderSignatureSection() {
+  const displayEl = document.getElementById('signature-display');
+  const inputArea = document.getElementById('signature-input-area');
+  const entry = currentLibraryEntry();
+
+  if (entry && entry.signature) {
+    displayEl.innerHTML = '';
+    if (entry.signature.type === 'drawn') {
+      const img = document.createElement('img');
+      img.src = entry.signature.dataUrl;
+      img.alt = 'Signature';
+      displayEl.appendChild(img);
+    } else {
+      const typed = document.createElement('div');
+      typed.className = 'signature-typed';
+      typed.textContent = entry.signature.name;
+      displayEl.appendChild(typed);
+    }
+    const meta = document.createElement('div');
+    meta.className = 'signature-meta';
+    meta.textContent = `Signed ${new Date(entry.signature.signedAt).toLocaleString()}`;
+    displayEl.appendChild(meta);
+
+    const removeBtn = document.createElement('button');
+    removeBtn.type = 'button';
+    removeBtn.className = 'secondary';
+    removeBtn.textContent = 'Remove signature';
+    removeBtn.addEventListener('click', () => {
+      updateLibraryEntry(state.currentEntryId, { signature: null });
+      renderSignatureSection();
+    });
+    displayEl.appendChild(removeBtn);
+
+    displayEl.hidden = false;
+    inputArea.hidden = true;
+  } else {
+    displayEl.hidden = true;
+    inputArea.hidden = false;
+    document.getElementById('signature-name').value = '';
+    initSignaturePad();
+  }
+}
+
+document.getElementById('signature-clear').addEventListener('click', () => {
+  clearSignaturePad();
+  document.getElementById('signature-name').value = '';
+});
+
+document.getElementById('signature-save').addEventListener('click', () => {
+  if (!state.currentEntryId) return;
+  const name = document.getElementById('signature-name').value.trim();
+  const canvas = document.getElementById('signature-pad');
+  let signature;
+  if (name) {
+    signature = { type: 'typed', name, signedAt: new Date().toISOString() };
+  } else if (sigState.hasStrokes) {
+    signature = { type: 'drawn', dataUrl: canvas.toDataURL('image/png'), signedAt: new Date().toISOString() };
+  } else {
+    return;
+  }
+  updateLibraryEntry(state.currentEntryId, { signature });
+  renderSignatureSection();
+});
 
 // ---------- inbox: cross-document dates ----------
 // A purely descriptive surface over dates already typed into saved
@@ -736,6 +869,8 @@ function renderOutput() {
 
     container.appendChild(block);
   });
+
+  renderSignatureSection();
 }
 
 // Flips a verified clause's badge to an "edited" state the first time
@@ -875,6 +1010,19 @@ function buildPlainText() {
     }
     lines.push('');
   });
+
+  const signedEntry = currentLibraryEntry();
+  if (signedEntry && signedEntry.signature) {
+    lines.push('SIGNATURE');
+    lines.push(
+      signedEntry.signature.type === 'typed'
+        ? `Signed: ${signedEntry.signature.name}`
+        : 'Signed: [drawn signature — see the on-screen or downloaded version to view it]'
+    );
+    lines.push(`Date: ${new Date(signedEntry.signature.signedAt).toLocaleString()}`);
+    lines.push('');
+  }
+
   lines.push('—');
   lines.push('Groundtruth v1 demo · every "Verified" citation links to a real, checked source.');
   return lines.join('\n');
@@ -938,10 +1086,11 @@ document.getElementById('wizard-form').addEventListener('submit', e => {
   state.document.fields.forEach(f => {
     state.answers[f.id] = (formData.get(f.id) || '').trim();
   });
+  const entry = addToLibrary(state.document.id, state.document.title, state.answers);
+  state.currentEntryId = entry.id;
   renderOutput();
   showScreen('screen-output');
   clearDraft();
-  addToLibrary(state.document.id, state.document.title, state.answers);
 });
 
 document.getElementById('inbox-link').addEventListener('click', () => {
@@ -977,11 +1126,13 @@ document.getElementById('incoming-form').addEventListener('submit', e => {
 // next to it is for a human, this is for a machine.
 document.getElementById('output-export').addEventListener('click', () => {
   const assembled = assembleDocument();
+  const signedEntry = currentLibraryEntry();
   const data = {
     documentId: state.document.id,
     title: state.document.title,
     generatedAt: new Date().toISOString(),
     answers: { ...state.answers },
+    signature: signedEntry ? signedEntry.signature || null : null,
     clauses: assembled.map(clause => ({
       id: clause.id,
       kind: clause.kind,

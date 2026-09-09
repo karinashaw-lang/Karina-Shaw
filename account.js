@@ -128,10 +128,12 @@ async function mergeOnSignIn() {
 function wrapLibraryFunctions() {
   const originalAdd = addToLibrary;
   addToLibrary = function (documentId, title, answers) {
-    originalAdd(documentId, title, answers);
-    if (!accountState.session) return;
-    const entries = loadLibrary();
-    const entry = entries[entries.length - 1];
+    const entry = originalAdd(documentId, title, answers);
+    if (accountState.session) syncEntryToCloud(entry);
+    return entry;
+  };
+
+  function syncEntryToCloud(entry) {
     accountState.client.from('agreements').upsert({
       id: entry.id,
       user_id: accountState.session.user.id,
