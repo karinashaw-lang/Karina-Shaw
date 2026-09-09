@@ -32171,5 +32171,62 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "copyright_preemption_doctrine_info_sheet",
+    "title": "Copyright Preemption Doctrine — Information Sheet",
+    "description": "Explains 17 U.S.C. § 301, the federal Copyright Act's preemption of state-law claims touching material within copyright's subject matter, and the two-condition threshold test and judicially developed \"extra element\" test California courts use to decide whether a particular state-law claim -- such as breach of contract or fraud -- survives alongside, or is instead displaced by, federal copyright law. A companion to this project's existing Trade Secret Preemption Doctrine Information Sheet, which addresses a different, state-law-internal preemption question under Civil Code section 3426.7.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "cpreempt_purpose",
+      "cpreempt_statute_301a",
+      "cpreempt_statute_301b",
+      "cpreempt_case_two_condition_test",
+      "cpreempt_case_equivalence_test",
+      "cpreempt_case_extra_element_test",
+      "cpreempt_case_breach_of_contract_rule",
+      "cpreempt_case_fraud_extra_element",
+      "cpreempt_signature"
+    ],
+    "fields": [
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "adversePartyName",
+        "label": "Adverse party's name",
+        "placeholder": "Beta Corp.",
+        "required": true
+      },
+      {
+        "id": "claimsAtIssueDescription",
+        "label": "State-law claims or rights under consideration",
+        "placeholder": "Breach of a music licensing agreement's payment terms; fraud in the inducement of a distribution agreement",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 9, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
