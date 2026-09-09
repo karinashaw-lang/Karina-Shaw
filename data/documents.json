@@ -32462,5 +32462,52 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "sb9_two_unit_lot_split_info_sheet",
+    "title": "SB 9 Two-Unit Housing Development and Urban Lot Split — Information Sheet",
+    "description": "Explains California's SB 9 statutes for ministerial local-agency approval of housing on single-family-zoned parcels: the two-unit housing development pathway (Government Code section 65852.21) and the urban lot split pathway (Government Code section 66411.7), including each pathway's ministerial-review mandate, urbanized-area location requirement, protected-housing and historic-property exclusions, the 800-square-foot/four-foot-setback development-standard ceiling, parking limits, the 60-day deemed-approval timeline, the 30-day minimum rental term, the urban lot split's owner-occupancy affidavit and prior-use restrictions, the combined two-unit-per-parcel cap, and the preservation of the California Coastal Act. Distinct from the corpus's existing Ellis Act, Subdivision Map Act, Density Bonus Law, and ADU/JADU Ministerial Approval information sheets, none of which address SB 9's two-unit-development or urban-lot-split ministerial-approval pathways.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "sb9_project_identification",
+      "sb9_two_unit_ministerial_approval",
+      "sb9_two_unit_exclusions",
+      "sb9_two_unit_development_standards",
+      "sb9_two_unit_parking_timeline_denial",
+      "sb9_two_unit_rental_term_and_adu_restriction",
+      "sb9_urban_lot_split_requirements",
+      "sb9_urban_lot_split_exclusions",
+      "sb9_urban_lot_split_owner_occupancy",
+      "sb9_urban_lot_split_standards_timeline_unit_cap",
+      "sb9_coastal_act_preserved"
+    ],
+    "fields": [
+      {
+        "id": "ownerName",
+        "label": "Property owner's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "propertyAddress",
+        "label": "Property address",
+        "placeholder": "123 Main St., Sacramento, CA 95814",
+        "required": true
+      },
+      {
+        "id": "parcelNumber",
+        "label": "Assessor's Parcel Number",
+        "placeholder": "123-456-789",
+        "required": false
+      },
+      {
+        "id": "localAgencyName",
+        "label": "Local agency (city, county, or city and county with permitting jurisdiction over the property)",
+        "placeholder": "City of Sacramento",
+        "required": true
+      }
+    ]
   }
 ]
