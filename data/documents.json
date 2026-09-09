@@ -32367,5 +32367,38 @@
         "required": false
       }
     ]
+  },
+  {
+    "id": "time_clock_rounding_info_sheet",
+    "title": "Time Clock Rounding Practices — Information Sheet",
+    "description": "Explains how California law treats employer time-punch rounding: the neutral, over-time standard adopted from a federal FLSA regulation for rounding used to calculate regular and overtime wages generally (See's Candy Shops, Inc. v. Superior Court), the California Supreme Court's holding that rounding may not be applied to time punches used to determine meal period compliance (Donohue v. AMN Services, LLC), and what the Supreme Court expressly left undecided about the general standard.",
+    "categories": [
+      "During employment"
+    ],
+    "clauseOrder": [
+      "timerounding_intro",
+      "timerounding_definition_and_meal_period_holding",
+      "timerounding_federal_regulatory_basis",
+      "timerounding_seescandy_neutral_standard",
+      "timerounding_neutrality_meaning",
+      "timerounding_meal_period_statutory_precision",
+      "timerounding_meal_period_reasoning_example",
+      "timerounding_scope_limitation",
+      "timerounding_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      }
+    ]
   }
 ]
