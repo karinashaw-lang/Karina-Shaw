@@ -23,6 +23,10 @@ import CuratedMomentsCurator from "@/components/curated-moments-curator";
 import PublishedMomentsList from "@/components/published-moments-list";
 import { ensureSuggestedMoments } from "@/lib/curated-moments";
 import { getAppUrl } from "@/lib/app-url";
+import EffortBadge from "@/components/effort-badge";
+import EffortBadgeEditor from "@/components/effort-badge-editor";
+import BehindTheCutEditor from "@/components/behind-the-cut-editor";
+import BehindTheCutPanel from "@/components/behind-the-cut-panel";
 import { hoursAgo } from "@/lib/time";
 
 export default async function VideoPage(props: PageProps<"/videos/[id]">) {
@@ -44,6 +48,7 @@ export default async function VideoPage(props: PageProps<"/videos/[id]">) {
         },
         guests: { include: { guest: true } },
         dubs: { orderBy: { createdAt: "asc" } },
+        behindTheCut: true,
       },
     }),
     getCurrentUser(),
@@ -59,7 +64,7 @@ export default async function VideoPage(props: PageProps<"/videos/[id]">) {
   const isOwner = user?.creatorProfile?.id === video.creatorId;
 
   const isSubscribed =
-    user && video.subscriberOnly && !isOwner
+    user && !isOwner
       ? Boolean(
           await prisma.subscription.findUnique({
             where: {
@@ -70,6 +75,26 @@ export default async function VideoPage(props: PageProps<"/videos/[id]">) {
       : false;
 
   const isLocked = video.subscriberOnly && !isOwner && !isSubscribed;
+
+  const behindTheCutUnlock =
+    user && video.behindTheCut && !isOwner
+      ? await prisma.behindTheCutUnlock.findUnique({
+          where: {
+            behindTheCutId_userId: { behindTheCutId: video.behindTheCut.id, userId: user.id },
+          },
+        })
+      : null;
+
+  const hasBehindTheCutAccess = isOwner || isSubscribed || Boolean(behindTheCutUnlock);
+
+  const behindTheCutHasContent = Boolean(
+    video.behindTheCut &&
+      (video.behindTheCut.planText ||
+        video.behindTheCut.rawFootageUrl ||
+        video.behindTheCut.cutScenesUrl ||
+        video.behindTheCut.kitText ||
+        video.behindTheCut.hardPartText)
+  );
 
   const relatedSegments =
     !isLocked && video.transcript.length > 0
@@ -132,11 +157,25 @@ export default async function VideoPage(props: PageProps<"/videos/[id]">) {
               {video.creator.displayName}
             </Link>
           </p>
+          <EffortBadge
+            hours={video.effortHours}
+            reshoots={video.effortReshoots}
+            minutesCut={video.effortMinutesCut}
+          />
         </div>
         {user && !isLocked && <SaveButton kind="video" itemId={video.id} path={`/videos/${video.id}`} />}
       </div>
 
       {video.description && <p className="mt-4">{video.description}</p>}
+
+      {isOwner && (
+        <EffortBadgeEditor
+          videoId={video.id}
+          hours={video.effortHours}
+          reshoots={video.effortReshoots}
+          minutesCut={video.effortMinutesCut}
+        />
+      )}
 
       {video.guests.length > 0 && (
         <p className="mt-2 text-sm text-zinc-500">
@@ -175,6 +214,57 @@ export default async function VideoPage(props: PageProps<"/videos/[id]">) {
         <CuratedMomentsCurator videoId={video.id} moments={curatedMoments} appUrl={appUrl} />
       )}
       {!isLocked && !isOwner && <PublishedMomentsList moments={curatedMoments} />}
+
+      {!isLocked && isOwner && (
+        <div className="mt-8 rounded-lg border border-black/10 p-4 dark:border-white/10">
+          <h2 className="text-lg font-medium">Behind the Cut</h2>
+          <p className="mt-1 text-sm text-zinc-500">
+            The plan, the raw footage, the cut scenes, the kit, the hard part — share as much or as
+            little as you want. Viewers pay to unlock it, or get it free with a subscription.
+          </p>
+          <BehindTheCutEditor
+            videoId={video.id}
+            existing={
+              video.behindTheCut
+                ? {
+                    planText: video.behindTheCut.planText,
+                    rawFootageUrl: video.behindTheCut.rawFootageUrl,
+                    cutScenesUrl: video.behindTheCut.cutScenesUrl,
+                    kitText: video.behindTheCut.kitText,
+                    hardPartText: video.behindTheCut.hardPartText,
+                    priceCents: video.behindTheCut.priceCents,
+                  }
+                : null
+            }
+          />
+        </div>
+      )}
+      {!isLocked && !isOwner && behindTheCutHasContent && video.behindTheCut && (
+        <BehindTheCutPanel
+          videoId={video.id}
+          content={
+            hasBehindTheCutAccess
+              ? {
+                  planText: video.behindTheCut.planText,
+                  rawFootageUrl: video.behindTheCut.rawFootageUrl,
+                  cutScenesUrl: video.behindTheCut.cutScenesUrl,
+                  kitText: video.behindTheCut.kitText,
+                  hardPartText: video.behindTheCut.hardPartText,
+                  priceCents: video.behindTheCut.priceCents,
+                }
+              : {
+                  planText: null,
+                  rawFootageUrl: null,
+                  cutScenesUrl: null,
+                  kitText: null,
+                  hardPartText: null,
+                  priceCents: video.behindTheCut.priceCents,
+                }
+          }
+          hasAccess={hasBehindTheCutAccess}
+          isSubscribedIncluded={true}
+        />
+      )}
 
       {!isLocked && video.listeningParties.length > 0 && (
         <div className="mt-4">

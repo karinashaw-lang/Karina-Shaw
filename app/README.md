@@ -29,6 +29,7 @@ real. This is the actual state of each:
 | Tips | `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET` | Instant simulated ledger entry | Real Stripe Checkout, webhook-confirmed |
 | Guest tips (no account) | same as above | Not offered — "log in to tip" instead | On moment pages/embeds only: tip via Stripe Checkout with no sign-up, attributed by email |
 | Distributor payouts | same as above (+ distributor completes Connect onboarding) | Not offered — no share-and-earn card on moment pages | A signed-in viewer earns 20% of any tip through their personal share link for a moment, paid via a separate Stripe Transfer |
+| Behind the Cut unlock | same as above | Instant simulated unlock (no payment) | Real Stripe Checkout, webhook-confirmed, routed to the creator's Connect account if they've onboarded |
 | Subscriptions | same as above | Instant simulated toggle | Real recurring Stripe subscription, webhook-confirmed, cancel-able |
 | Creator payouts | same as above (+ creator completes Connect onboarding) | Tips/subscriptions charge to the *platform's* Stripe account | Stripe Connect Express: funds route directly to the creator's own account (`transfer_data`), tracked via the `account.updated` webhook |
 | Video upload | `MUX_TOKEN_ID`, `MUX_TOKEN_SECRET`, `MUX_WEBHOOK_SECRET` | Saved to local disk (`public/uploads/`) | Uploaded direct-to-Mux, transcoded, HLS playback |
@@ -62,7 +63,13 @@ tooling before trusting it in production. Two exceptions:
   caught and logged rather than losing the underlying payment record, and correctly produces no
   `DistributorEarning` row, since a Transfer either succeeds or the earning isn't real yet. The
   Transfer call itself, and Connect onboarding for a distributor account, are unverified against
-  a live account, same as creator payouts.
+  a live account, same as creator payouts. The same pattern covers Behind the Cut's unlock: the
+  no-Stripe-key instant-unlock path was exercised end-to-end in a real browser (creator saves
+  content, a signed-out-then-signed-in viewer is paywalled, clicks unlock, and immediately gets
+  access), and a hand-signed `checkout.session.completed` webhook with `kind:
+  "unlock_behind_the_cut"` metadata was verified to create the `BehindTheCutUnlock` row directly
+  against the real handler. The real `stripe.checkout.sessions.create` call itself is unverified
+  against a live account, same as every other Stripe path here.
 - ElevenLabs dubbing was tested with a deliberately invalid API key, which is as far as it's
   possible to go without a real account — and it went further than expected: the SDK's requests
   reached ElevenLabs' actual servers and came back with genuine structured API errors (not a
@@ -138,6 +145,52 @@ convention.
   in that same page visit (passed through as a hidden form field), not a persistent cookie that
   survives leaving and coming back later, which the plan's risk section implies is the eventual
   goal.
+
+- **Behind the Cut** (`src/lib/actions/behind-the-cut.ts`, `src/components/behind-the-cut-editor.tsx`
+  + `behind-the-cut-panel.tsx`, `src/components/effort-badge.tsx` + `effort-badge-editor.tsx`) —
+  the paid per-video companion the plan describes: five fixed, independently-optional slots (the
+  plan, the raw footage, the cut scenes, the kit, the hard part) a creator fills in on their own
+  video, unlocked per-viewer for a one-time price they set, or free for subscribers. The free
+  **effort badge** (hours to make / reshoots / minutes cut) sits next to the video title for
+  everyone, unlocked content or not — it's what's meant to make the paid section feel earned
+  rather than arbitrary. Text slots are replaced wholesale on every save (an emptied textarea
+  clears that slot); the two file slots (raw footage, cut scenes) only change when a new file is
+  actually picked, so editing a text field doesn't force a re-upload.
+  - **Known gap — paywalled files aren't access-controlled at the storage layer.** Raw
+    footage/cut scenes are saved to `public/uploads/behind-the-cut/<uuid>.<ext>` just like a
+    regular video upload, and served as plain static files with no auth check of their own —
+    the same architecture regular subscriber-only videos already rely on (a locked video's
+    `videoUrl` is real, just never sent to the browser unless the viewer has access). Someone who
+    somehow obtained a raw-footage URL directly (not exposed anywhere in the UI or page source
+    for a non-paying viewer — see the fix below) could stream it without ever unlocking. A real
+    fix would put these behind a signed/expiring URL or an authenticated route; out of scope for
+    now, consistent with how the rest of the app already handles unauthenticated `/uploads/` URLs.
+  - **Bug found and fixed while building this:** the video page originally passed the *entire*
+    Behind the Cut content object as props to the (client-side) `BehindTheCutPanel` regardless of
+    whether the viewer had access, gating only the *visible* rendering inside that component. A
+    real-browser test caught this the hard way — the paywalled plan/kit text wasn't visible on
+    the rendered page, but it *was* present verbatim in the page's raw HTML (inside Next's RSC
+    hydration payload), readable by anyone via "view source" without paying. Fixed by nulling out
+    every content field server-side before it's ever handed to the client component when the
+    viewer lacks access, passing only `priceCents` (needed to render the unlock button's price) —
+    mirroring the existing pattern for locked subscriber-only videos, where `videoUrl` is simply
+    never passed to any client component at all unless the viewer can watch it.
+  - **Verification:** a full real-browser flow — creator signs up, creates a profile, posts a
+    video, fills in the effort badge and all five Behind the Cut slots; a separate signed-up
+    viewer sees the effort badge and the paywall (unlock button, no content) with the leak fix
+    confirmed by inspecting the raw page HTML, not just the visible DOM; clicking unlock (no
+    Stripe key configured) grants instant access and the content becomes visible on reload. A
+    third viewer's `Subscription` row (created directly in the database, the same way Stripe
+    Connect onboarding completion is simulated elsewhere in this doc, since there's no working
+    fake account to subscribe through) confirms the "free for subscribers" path, and that a
+    `subscriberOnly` video's lock still correctly overrides a paid Behind the Cut unlock — a
+    locked video hides everything, Behind the Cut included. The real-Stripe paths were also
+    verified: a hand-signed `checkout.session.completed` webhook with `kind:
+    "unlock_behind_the_cut"` metadata was POSTed directly at the real handler and confirmed to
+    create the `BehindTheCutUnlock` row (and not duplicate it on redelivery), and a real unlock
+    attempt with a deliberately invalid `STRIPE_SECRET_KEY` confirmed the outbound
+    `stripe.checkout.sessions.create` call reaches Stripe's real servers, fails with a genuine
+    "Invalid API Key" error, and is caught cleanly in the UI rather than crashing.
 
 ## Cheap-to-build differentiators (no new credentials needed)
 
@@ -308,3 +361,7 @@ infrastructure, build differentiation" philosophy:
   math), `src/components/distributor-share-card.tsx`, payout onboarding via
   `createDistributorOnboardingLink` in `src/lib/integrations/stripe.ts`, split handled in
   `src/app/api/webhooks/stripe`
+- **Behind the Cut** (plan, raw footage, cut scenes, kit, hard part) — `src/lib/actions/behind-the-cut.ts`,
+  `src/components/behind-the-cut-editor.tsx` + `behind-the-cut-panel.tsx`, unlock via Stripe
+  Checkout handled in `src/app/api/webhooks/stripe`; the free **effort badge** —
+  `src/components/effort-badge.tsx` + `effort-badge-editor.tsx` — surfaced on `src/app/videos/[id]`

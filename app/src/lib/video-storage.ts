@@ -59,3 +59,32 @@ export async function saveVideoFile(file: File): Promise<SavedVideo> {
     audioUrl: extracted ? `/uploads/${audioFilename}` : null,
   };
 }
+
+const BEHIND_THE_CUT_DIR = path.join(UPLOAD_DIR, "behind-the-cut");
+
+/**
+ * Saves a Behind the Cut raw-footage/cut-scenes file — same local-disk
+ * stand-in as saveVideoFile, but no audio extraction or transcription;
+ * this is paid bonus footage, not the primary video the rest of the app's
+ * search/transcript pipeline is built around.
+ */
+export async function saveBehindTheCutFile(file: File): Promise<string> {
+  if (!file.type.startsWith("video/")) {
+    throw new Error("That file doesn't look like a video.");
+  }
+  if (file.size === 0) {
+    throw new Error("The uploaded file is empty.");
+  }
+  if (file.size > MAX_BYTES) {
+    throw new Error("Files must be under 300MB for now.");
+  }
+
+  const extension = EXTENSION_BY_MIME[file.type] ?? "mp4";
+  const filename = `${randomUUID()}.${extension}`;
+
+  await mkdir(BEHIND_THE_CUT_DIR, { recursive: true });
+  const bytes = Buffer.from(await file.arrayBuffer());
+  await writeFile(path.join(BEHIND_THE_CUT_DIR, filename), bytes);
+
+  return `/uploads/behind-the-cut/${filename}`;
+}

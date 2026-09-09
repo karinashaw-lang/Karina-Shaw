@@ -125,6 +125,19 @@ export async function POST(request: Request) {
             console.error("Distributor payout split failed for tip", tip.id, err);
           }
         }
+      } else if (kind === "unlock_behind_the_cut") {
+        const { behindTheCutId, userId } = session.metadata!;
+        if (behindTheCutId && userId) {
+          await prisma.behindTheCutUnlock.upsert({
+            where: { behindTheCutId_userId: { behindTheCutId, userId } },
+            create: {
+              behindTheCutId,
+              userId,
+              stripeCheckoutSessionId: session.id,
+            },
+            update: {},
+          });
+        }
       } else if (kind === "subscription") {
         const { subscriberId, creatorId } = session.metadata!;
         const subscriptionId =

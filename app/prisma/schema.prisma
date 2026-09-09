@@ -39,6 +39,7 @@ model User {
   dubsRequested        Dub[]
   distributorLinks     DistributorLink[]
   distributorEarnings  DistributorEarning[]
+  behindTheCutUnlocks  BehindTheCutUnlock[]
 }
 
 model CreatorProfile {
@@ -90,6 +91,12 @@ model Video {
   muxAssetId           String?
   muxPlaybackId        String?
   subscriberOnly       Boolean             @default(false)
+  /// The free "effort badge" shown on every public video — makes the paid
+  /// Behind the Cut section feel earned. All optional and creator-entered;
+  /// the badge only renders if at least one is set.
+  effortHours          Float?
+  effortReshoots       Int?
+  effortMinutesCut     Int?
   createdAt            DateTime            @default(now())
   /// Cached result of the last AI highlight-detection pass (see
   /// src/lib/highlights.ts) — GPT runs on page view otherwise, and this is
@@ -108,6 +115,45 @@ model Video {
   guests               VideoGuest[]
   dubs                 Dub[]
   curatedMoments       CuratedMoment[]
+  behindTheCut         BehindTheCut?
+}
+
+/// The per-video paid companion section — the plan's "Behind the Cut."
+/// Five fixed slots (plan/rawFootage/cutScenes/kit/hardPart), every one
+/// optional: "any slot can be empty; the raw footage alone is enough to
+/// sell." Presence of any non-empty slot is what makes the section exist
+/// at all for viewers — there's no separate publish/draft flag. Unlocked
+/// per video (default $3) or included free with a subscription to the
+/// creator.
+model BehindTheCut {
+  id            String               @id @default(cuid())
+  videoId       String               @unique
+  video         Video                @relation(fields: [videoId], references: [id])
+  planText      String?
+  rawFootageUrl String?
+  cutScenesUrl  String?
+  kitText       String?
+  hardPartText  String?
+  priceCents    Int                  @default(300)
+  createdAt     DateTime             @default(now())
+  updatedAt     DateTime             @updatedAt
+  unlocks       BehindTheCutUnlock[]
+}
+
+/// One row per viewer who paid to unlock a video's Behind the Cut —
+/// permanent access, not time-limited. A subscriber gets the same access
+/// without needing one of these (checked directly against Subscription at
+/// render time), so this table only covers per-video purchases.
+model BehindTheCutUnlock {
+  id                      String       @id @default(cuid())
+  behindTheCutId          String
+  behindTheCut            BehindTheCut @relation(fields: [behindTheCutId], references: [id])
+  userId                  String
+  user                    User         @relation(fields: [userId], references: [id])
+  stripeCheckoutSessionId String?      @unique
+  createdAt               DateTime     @default(now())
+
+  @@unique([behindTheCutId, userId])
 }
 
 enum MomentSource {
