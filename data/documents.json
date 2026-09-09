@@ -31709,5 +31709,41 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "commercial_lease_assignment_subletting_info_sheet",
+    "title": "Commercial Lease Assignment and Subletting — Information Sheet",
+    "description": "An information sheet describing California statutory law (Civil Code §§ 1995.010-1995.270) and the Kendall v. Ernest Pestana case law on a commercial tenant's ability to assign or sublease its lease interest, the three kinds of transfer restriction a commercial lease may contain, the implied reasonableness standard and burden of proof that apply when a lease requires consent but states no standard, and the statute's retroactivity date boundary. This chapter applies only to nonresidential leases and is distinct from this corpus's Sublease Agreement document, which addresses a specific residential sublease relationship rather than the statutory consent-standard doctrine itself.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "commlease_assign_declaration",
+      "commlease_assign_restriction_types",
+      "commlease_assign_implied_standard",
+      "commlease_assign_kendall_standard",
+      "commlease_assign_retroactivity",
+      "commlease_assign_ack"
+    ],
+    "fields": [
+      {
+        "id": "landlordName",
+        "label": "Landlord name",
+        "placeholder": "Acme Properties, LLC",
+        "required": true
+      },
+      {
+        "id": "tenantName",
+        "label": "Tenant name",
+        "placeholder": "Jordan Lee Consulting, Inc.",
+        "required": true
+      },
+      {
+        "id": "propertyAddress",
+        "label": "Property address",
+        "placeholder": "500 Commerce Way, Suite 200, Springfield, CA",
+        "required": true
+      }
+    ]
   }
 ]
