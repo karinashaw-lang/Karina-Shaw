@@ -31602,5 +31602,73 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "agency_adoption_info_sheet",
+    "title": "Agency Adoption — Information Sheet",
+    "description": "Describes California's agency-adoption procedure under Family Code Division 13, Part 2, Chapter 2 (§§ 8700-8720) -- relinquishment of a child to the California Department of Social Services, a county adoption agency, or a licensed adoption agency, the relinquishment's finality timeline and its two distinct revocation windows, the agency's exclusive custody of the child pending an adoption order and the restriction on who may file the adoption petition, and the agency's report-to-the-court requirement -- distinct from the corpus's existing Independent Adoption and Stepparent Adoption documents' own statutory chapters.",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "agencyadopt_declaration",
+      "agencyadopt_definition_and_scope",
+      "agencyadopt_relinquishment_procedure",
+      "agencyadopt_revocation_period",
+      "agencyadopt_named_placement_rescission",
+      "agencyadopt_exclusive_custody_pending_order",
+      "agencyadopt_court_report_requirement",
+      "agencyadopt_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "birthParentName",
+        "label": "Birth parent's name",
+        "placeholder": "Casey Morgan",
+        "required": true
+      },
+      {
+        "id": "childName",
+        "label": "Child's name",
+        "placeholder": "Riley Lee",
+        "required": true
+      },
+      {
+        "id": "childDOB",
+        "label": "Child's date of birth",
+        "placeholder": "April 3, 2019",
+        "required": true
+      },
+      {
+        "id": "agencyName",
+        "label": "Agency name (Department of Social Services, county adoption agency, or licensed adoption agency)",
+        "placeholder": "Sacramento County Adoption Agency",
+        "required": true
+      },
+      {
+        "id": "prospectiveAdoptiveParentName",
+        "label": "Prospective adoptive parent's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "countyOfFiling",
+        "label": "County of filing",
+        "placeholder": "Sacramento County",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 9, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
