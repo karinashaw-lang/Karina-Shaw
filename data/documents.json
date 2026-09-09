@@ -31792,5 +31792,67 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "inevitable_disclosure_doctrine_info_sheet",
+    "title": "Inevitable Disclosure Doctrine in California — Information Sheet",
+    "description": "Explains why California courts do not recognize the 'inevitable disclosure doctrine' as a basis for enjoining a former employee's new job -- Whyte v. Schlage Lock Co. (2002) 101 Cal.App.4th 1443, tying that rejection to Business and Professions Code section 16600's general rule against restraints on lawful employment -- and the separate, surviving principle, clarified in Central Valley General Hospital v. Smith (2008) 162 Cal.App.4th 501, that an injunction based on actual or threatened misappropriation under Civil Code section 3426.2 remains available on ordinary evidence.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "inevdisc_purpose",
+      "inevdisc_doctrine_definition_and_no_precedent",
+      "inevdisc_ca_threatened_misappropriation_statute",
+      "inevdisc_whyte_rejection_holding",
+      "inevdisc_bpc16600_and_policy_rationale",
+      "inevdisc_scope_limits",
+      "inevdisc_central_valley_threatened_misappropriation_survives",
+      "inevdisc_signature"
+    ],
+    "fields": [
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Company name (trade secret owner)",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "tradeSecretDescription",
+        "label": "Description of the trade secret",
+        "placeholder": "Acme's proprietary customer-pricing algorithm and associated source code",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee's (or former employee's) name",
+        "placeholder": "Taylor Morgan",
+        "required": true
+      },
+      {
+        "id": "newEmployerName",
+        "label": "New employer's name",
+        "placeholder": "Beta Corp.",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 9, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
