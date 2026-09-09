@@ -31457,5 +31457,61 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "joint_bank_account_survivorship_info_sheet",
+    "title": "Joint Bank Accounts and Survivorship Rights — Information Sheet",
+    "description": "Explains California's Multiple-Party Accounts Law (Prob. Code §§ 5100-5305) as it applies specifically to a joint bank account — distinct from this corpus's existing Payable-on-Death (POD) Account Designation and Transfer-on-Death (TOD) Security Registration information sheets, which address different account types and assets under related statutes: what a \"joint account\" is under § 5130, the net-contribution rule governing ownership between the parties during their lifetimes (a separate question from what happens at death), the survivorship rule that lets a surviving joint owner take the balance without probate, why the account's actual form at death controls that outcome and how the terms can be changed beforehand, why a joint account's survivorship right does not have to meet a will's execution formalities to be valid, and community property's continuing effect on funds a married couple holds in a joint account.",
+    "categories": [
+      "Estate Planning"
+    ],
+    "clauseOrder": [
+      "jointaccount_declaration",
+      "jointaccount_definition",
+      "jointaccount_lifetime_ownership",
+      "jointaccount_survivorship_at_death",
+      "jointaccount_form_controls_modification",
+      "jointaccount_nontestamentary_transfer",
+      "jointaccount_community_property_note",
+      "jointaccount_signature_ack"
+    ],
+    "fields": [
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "partyOneName",
+        "label": "First account party's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "partyTwoName",
+        "label": "Second account party's name",
+        "placeholder": "Morgan Lee",
+        "required": true
+      },
+      {
+        "id": "financialInstitutionName",
+        "label": "Financial institution",
+        "placeholder": "First California Bank",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 9, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Sacramento, California",
+        "required": true
+      }
+    ]
   }
 ]
