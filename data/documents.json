@@ -31854,5 +31854,45 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "wildfire_smoke_protection_info_sheet",
+    "title": "Wildfire Smoke Protection — Information Sheet",
+    "description": "Information about California's Cal/OSHA wildfire smoke standard (8 Cal. Code Regs. § 5141.1) — when it applies based on the Air Quality Index for PM2.5, which workplaces and situations are exempt, the employer's duties to identify PM2.5 exposure and communicate hazards, training requirements, and the engineering, administrative, and respirator control measures required as air quality worsens.",
+    "categories": [
+      "During employment"
+    ],
+    "clauseOrder": [
+      "wildfiresmoke_declaration_and_scope",
+      "wildfiresmoke_applicability_threshold",
+      "wildfiresmoke_exemptions",
+      "wildfiresmoke_key_definitions",
+      "wildfiresmoke_exposure_identification",
+      "wildfiresmoke_communication_and_training",
+      "wildfiresmoke_engineering_and_administrative_controls",
+      "wildfiresmoke_respirator_requirements",
+      "wildfiresmoke_emergency_operations",
+      "wildfiresmoke_acknowledgment_signature"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme Corp",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "programAdministratorName",
+        "label": "Person or department who can be contacted about wildfire smoke protection",
+        "placeholder": "Taylor Morgan",
+        "required": true
+      }
+    ]
   }
 ]
