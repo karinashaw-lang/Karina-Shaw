@@ -229,6 +229,205 @@ async function init() {
   renderPicker();
   checkForDraft();
   updateLibraryCount();
+  buildClauseIndex();
+}
+
+// ---------- read a contract: clause-matching engine ----------
+// Everything below runs entirely in the browser against the clause
+// library already loaded into state.clauses — no server, no upload.
+// This only ever reports what a pasted passage textually resembles in
+// the library and, for a matched authority clause, the law it cites.
+// It never characterizes the passage as good, bad, enforceable, or
+// anything else that would require assessing the reader's situation —
+// that line matters here more than anywhere else in the app, because
+// reading someone else's contract back to them is exactly where an
+// "assessment" is most tempting to slip in.
+
+const STOPWORDS = new Set([
+  'the','and','for','that','this','with','from','shall','will','are','was',
+  'were','been','being','have','has','had','not','but','can','may','must',
+  'any','all','each','such','other','than','then','also','into','onto',
+  'upon','under','over','between','within','without','about','above',
+  'below','after','before','during','while','when','where','which','who',
+  'whom','whose','what','their','they','them','its','his','her','you',
+  'your','our','out','both','either','neither','more','most','some',
+  'these','those','there','here','only','same','own','per','pursuant',
+  'section','subsection','paragraph','article','agreement','party',
+  'parties','clause','provision','provisions','including','include',
+  'includes','provided','otherwise','herein','hereof','hereto',
+  'hereunder','thereof','thereto','whether','means','shall','would',
+  'could','should','does','did','doing','done','made','make','makes',
+]);
+
+function tokenize(text) {
+  return (text.toLowerCase().match(/[a-z][a-z'-]{2,}/g) || [])
+    .filter(w => !STOPWORDS.has(w));
+}
+
+// Builds an idf-weighted inverted index over every clause's title+body
+// once, at load time, so matching a pasted passage against 4,800+
+// clauses is a lookup over shared words rather than a full scan.
+// Common words (shared by hundreds of clauses, e.g. "employee",
+// "employer") get a low weight; distinctive words (shared by only a
+// handful of clauses) get a high weight — the same idea as search
+// engine relevance scoring, applied to a small, fixed corpus instead
+// of the web.
+function buildClauseIndex() {
+  const df = new Map();
+  const clauseTokenSets = state.clauses.map(c => {
+    const set = new Set(tokenize(`${c.title} ${c.body}`));
+    set.forEach(t => df.set(t, (df.get(t) || 0) + 1));
+    return set;
+  });
+
+  const N = state.clauses.length;
+  const idf = new Map();
+  df.forEach((count, token) => idf.set(token, Math.log(1 + N / count)));
+
+  const invertedIndex = new Map();
+  clauseTokenSets.forEach((set, idx) => {
+    set.forEach(t => {
+      if (!invertedIndex.has(t)) invertedIndex.set(t, []);
+      invertedIndex.get(t).push(idx);
+    });
+  });
+
+  state.clauseTokenSets = clauseTokenSets;
+  state.clauseIdf = idf;
+  state.clauseInvertedIndex = invertedIndex;
+}
+
+const MATCH_THRESHOLD = 0.22;
+const STRONG_MATCH_THRESHOLD = 0.4;
+
+// Scores one pasted passage against every clause that shares at least
+// one distinctive word with it, and returns the best match if it
+// clears a minimum confidence bar — otherwise null, which the caller
+// renders as "not recognized" rather than guessing.
+function matchPassage(passage) {
+  const tokens = tokenize(passage);
+  const tokenSet = new Set(tokens);
+  if (tokenSet.size < 5) return null;
+
+  let selfWeight = 0;
+  tokenSet.forEach(t => { selfWeight += (state.clauseIdf.get(t) || 0) ** 2; });
+  if (selfWeight === 0) return null;
+
+  const candidateScores = new Map();
+  tokenSet.forEach(t => {
+    const idf = state.clauseIdf.get(t);
+    if (!idf) return;
+    const clauseList = state.clauseInvertedIndex.get(t) || [];
+    clauseList.forEach(idx => {
+      candidateScores.set(idx, (candidateScores.get(idx) || 0) + idf * idf);
+    });
+  });
+
+  let best = null;
+  candidateScores.forEach((rawScore, idx) => {
+    let clauseWeight = 0;
+    state.clauseTokenSets[idx].forEach(t => { clauseWeight += (state.clauseIdf.get(t) || 0) ** 2; });
+    if (clauseWeight === 0) return;
+    const cosine = rawScore / (Math.sqrt(selfWeight) * Math.sqrt(clauseWeight));
+    if (!best || cosine > best.cosine) best = { idx, cosine };
+  });
+
+  if (!best || best.cosine < MATCH_THRESHOLD) return null;
+  return {
+    clause: state.clauses[best.idx],
+    confidence: best.cosine >= STRONG_MATCH_THRESHOLD ? 'strong' : 'weak',
+  };
+}
+
+// Splits pasted contract text into passages to match one at a time.
+// Contracts are usually already paragraph-separated by blank lines;
+// where they're not (a single unbroken block), falls back to
+// splitting before numbered or lettered clause markers, and if that
+// still yields one giant block, splits on sentence boundaries so a
+// 3,000-word paste doesn't get compared to the library as one unit.
+function splitPassages(text) {
+  let chunks = text.split(/\n\s*\n+/).map(s => s.trim()).filter(Boolean);
+
+  if (chunks.length <= 1) {
+    const bySingleNewline = text
+      .split(/\n(?=\s*(?:\(?[0-9]{1,3}[\.\)]|\(?[a-z]\)|[A-Z][A-Z \-]{4,}:|ARTICLE\b|SECTION\b))/)
+      .map(s => s.trim())
+      .filter(Boolean);
+    if (bySingleNewline.length > 1) chunks = bySingleNewline;
+  }
+
+  if (chunks.length === 1 && chunks[0].length > 900) {
+    chunks = chunks[0]
+      .split(/(?<=[.;])\s+(?=[A-Z])/)
+      .reduce((acc, sentence) => {
+        const last = acc[acc.length - 1];
+        if (last && last.length < 400) acc[acc.length - 1] = `${last} ${sentence}`;
+        else acc.push(sentence);
+        return acc;
+      }, [])
+      .map(s => s.trim())
+      .filter(Boolean);
+  }
+
+  return chunks.filter(c => c.length >= 20);
+}
+
+function renderIncomingResults(passages) {
+  const results = document.getElementById('incoming-results');
+  results.innerHTML = '';
+
+  if (passages.length === 0) {
+    results.innerHTML = '<p class="library-empty">Paste in some contract text above, then click "Read this contract."</p>';
+    return;
+  }
+
+  const matches = passages.map(p => ({ passage: p, match: matchPassage(p) }));
+  const matchedCount = matches.filter(m => m.match).length;
+
+  const summary = document.createElement('p');
+  summary.className = 'incoming-summary';
+  summary.textContent = `${matchedCount} of ${matches.length} passage${matches.length === 1 ? '' : 's'} resemble${matchedCount === 1 ? 's' : ''} something in Groundtruth's library.`;
+  results.appendChild(summary);
+
+  matches.forEach(({ passage, match }) => {
+    const item = document.createElement('div');
+    item.className = 'incoming-item';
+
+    const p = document.createElement('p');
+    p.className = 'incoming-passage';
+    p.textContent = passage;
+    item.appendChild(p);
+
+    if (!match) {
+      const note = document.createElement('p');
+      note.className = 'incoming-unmatched';
+      note.textContent = 'Not recognized in Groundtruth’s library yet.';
+      item.appendChild(note);
+      results.appendChild(item);
+      return;
+    }
+
+    const label = document.createElement('p');
+    label.className = 'incoming-match-label' + (match.confidence === 'weak' ? ' weak' : '');
+    label.textContent = match.confidence === 'strong' ? 'Resembles' : 'May resemble';
+    item.appendChild(label);
+
+    const h4 = document.createElement('h4');
+    h4.textContent = match.clause.title;
+    item.appendChild(h4);
+
+    const badge = renderBadge(match.clause);
+    if (badge) {
+      item.appendChild(badge);
+    } else {
+      const note = document.createElement('p');
+      note.className = 'incoming-unmatched';
+      note.textContent = 'This resembles standard structural language in our library — it doesn’t carry a legal citation of its own.';
+      item.appendChild(note);
+    }
+
+    results.appendChild(item);
+  });
 }
 
 function showScreen(id) {
@@ -617,6 +816,51 @@ document.getElementById('library-back').addEventListener('click', () => showScre
 document.getElementById('library-clear').addEventListener('click', () => {
   clearLibrary();
   renderLibrary();
+});
+
+document.getElementById('incoming-link').addEventListener('click', () => {
+  showScreen('screen-incoming');
+});
+document.getElementById('incoming-back').addEventListener('click', () => showScreen('screen-picker'));
+document.getElementById('incoming-form').addEventListener('submit', e => {
+  e.preventDefault();
+  const text = document.getElementById('incoming-text').value;
+  renderIncomingResults(splitPassages(text));
+});
+
+// Layer-2 "agreements as data" export: the same clause IDs, answers,
+// and structure the app assembled into prose — not the prose itself.
+// This is what a future consumer of the format (another tool, a
+// diff, a re-verification pass) would read; the plain-text download
+// next to it is for a human, this is for a machine.
+document.getElementById('output-export').addEventListener('click', () => {
+  const assembled = assembleDocument();
+  const data = {
+    documentId: state.document.id,
+    title: state.document.title,
+    generatedAt: new Date().toISOString(),
+    answers: { ...state.answers },
+    clauses: assembled.map(clause => ({
+      id: clause.id,
+      kind: clause.kind,
+      status: clause.status || null,
+      edited: state.editedClauseIds.has(clause.id),
+      body: state.editedClauseIds.has(clause.id) ? state.edits[clause.id] : clause.renderedBody,
+      citations: clause.kind === 'authority' ? (clause.citations || []) : undefined,
+      checkedDate: clause.checkedDate || undefined,
+      gap: clause.gap || undefined,
+    })),
+  };
+  const slug = state.document.title.replace(/[^\w\- ]+/g, '').trim().replace(/\s+/g, '-');
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `${slug}.json`;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
 });
 
 init();

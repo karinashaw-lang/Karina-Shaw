@@ -12,6 +12,7 @@
       <div class="wordmark">Ground<span>truth</span></div>
       <div class="topbar-right">
         <button type="button" class="topbar-link-btn" id="library-link">My Documents<span id="library-count"></span></button>
+        <button type="button" class="topbar-link-btn" id="incoming-link">Read a contract</button>
         <a href="methodology.html" class="topbar-link">Methodology</a>
         <a href="changelog.html" class="topbar-link">Changelog</a>
         <div class="tagline">Sourced, not asserted</div>
@@ -56,8 +57,22 @@
         <button type="button" class="secondary" id="output-back">Start over</button>
         <button type="button" class="secondary" id="output-print">Print / Save as PDF</button>
         <button type="button" class="secondary" id="output-download">Download as text</button>
+        <button type="button" class="secondary" id="output-export">Export data (JSON)</button>
       </div>
       <footer class="hint">Groundtruth v1 demo · every "Verified" badge links to a real, checked source — click one to see it.</footer>
+    </section>
+
+    <section id="screen-incoming" class="screen">
+      <h1>Read a contract</h1>
+      <p class="lede">Paste in a contract, offer letter, or agreement someone sent you. Each passage is compared against Groundtruth's clause library — where it resembles something already checked, you'll see the law it rests on; where it doesn't, that's shown plainly too. This describes what the text resembles. It doesn't assess your contract or tell you what to do about it.</p>
+      <form id="incoming-form" class="incoming-form">
+        <textarea id="incoming-text" class="incoming-text" rows="14" placeholder="Paste the text of a contract here..."></textarea>
+        <div class="actions">
+          <button type="button" class="secondary" id="incoming-back">Back</button>
+          <button type="submit" class="primary">Read this contract</button>
+        </div>
+      </form>
+      <div id="incoming-results"></div>
     </section>
 
     <section id="screen-library" class="screen">
