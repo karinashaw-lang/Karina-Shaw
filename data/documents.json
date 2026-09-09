@@ -31409,5 +31409,53 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "janitorial_employer_registration_info_sheet",
+    "title": "Property Service Workers Protection Act: Janitorial Employer Registration — Information Sheet",
+    "description": "Explains California's Property Service Workers Protection Act (Labor Code Part 4.2, Sections 1420-1434): the statutory definitions of “covered worker” and “employer” that trigger coverage, the annual registration requirement effective July 1, 2018, the prohibition on conducting janitorial business without registration, the $500 initial and annual registration fee, the written application and sexual violence and harassment prevention training attestation conditions for registration, the biennial in-person training requirement and its in-lieu-of relationship to the general FEHA training duty, the statutory grounds for denying registration or renewal, the civil fines for an unregistered employer and for a party that contracts with one, and the public database of registered employers.",
+    "categories": [
+      "Hiring"
+    ],
+    "clauseOrder": [
+      "propsvcreg_intro",
+      "propsvcreg_covered_worker_and_employer_defined",
+      "propsvcreg_annual_registration_required",
+      "propsvcreg_no_business_without_registration",
+      "propsvcreg_registration_fee",
+      "propsvcreg_application_training_attestation",
+      "propsvcreg_biennial_training_requirement",
+      "propsvcreg_training_relationship_to_general_training",
+      "propsvcreg_registration_denial_grounds",
+      "propsvcreg_civil_fines",
+      "propsvcreg_public_database",
+      "propsvcreg_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "jobTitle",
+        "label": "Job title",
+        "placeholder": "Janitor",
+        "required": true
+      },
+      {
+        "id": "applicantName",
+        "label": "Applicant's name",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 9, 2026",
+        "required": true
+      }
+    ]
   }
 ]
