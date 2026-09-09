@@ -31854,5 +31854,51 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "peace_officer_hiring_qualifications_info_sheet",
+    "title": "Peace Officer Hiring Qualifications and Disqualifications — Information Sheet",
+    "description": "Information about Government Code sections 1029, 1031, and 1031.1, and Penal Code section 830 — the statutory minimum standards a person must meet to be hired into a position declared by law to be a peace officer position in California, the criminal-conviction and POST-decertification categories that disqualify a person from such employment, and a former employer's conditional duty to disclose employment information for the required background investigation.",
+    "categories": [
+      "Hiring"
+    ],
+    "clauseOrder": [
+      "peaceofficer_intro",
+      "peaceofficer_definition",
+      "peaceofficer_minimum_standards_core",
+      "peaceofficer_education_standard",
+      "peaceofficer_medical_psych_standard",
+      "peaceofficer_federal_law_consistency",
+      "peaceofficer_felony_disqualification",
+      "peaceofficer_decertification_disqualification",
+      "peaceofficer_background_disclosure_duty",
+      "peaceofficer_ack"
+    ],
+    "fields": [
+      {
+        "id": "publicEntityName",
+        "label": "Hiring agency or public employer name",
+        "placeholder": "City of Springfield Police Department",
+        "required": true
+      },
+      {
+        "id": "jobTitle",
+        "label": "Position",
+        "placeholder": "Police Officer",
+        "required": true
+      },
+      {
+        "id": "applicantName",
+        "label": "Applicant's name",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 9, 2026",
+        "required": true
+      }
+    ]
   }
 ]
