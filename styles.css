@@ -495,6 +495,18 @@ footer.hint{
   letter-spacing:0.01em;
 }
 
+.inbox-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:6px;
+  padding:14px 18px;
+  margin:0 0 10px;
+}
+
 .library-empty{ color:var(--ink-soft); font-size:15px; }
 .library-row{
   display:flex;

@@ -204,6 +204,18 @@ function renderLibrary() {
       info.appendChild(dateEl);
       row.appendChild(info);
 
+      const btnGroup = document.createElement('div');
+      btnGroup.style.display = 'flex';
+      btnGroup.style.gap = '8px';
+      btnGroup.style.flex = 'none';
+
+      const viewBtn = document.createElement('button');
+      viewBtn.type = 'button';
+      viewBtn.className = 'secondary';
+      viewBtn.textContent = 'View';
+      viewBtn.addEventListener('click', () => viewLibraryEntry(entry));
+      btnGroup.appendChild(viewBtn);
+
       const removeBtn = document.createElement('button');
       removeBtn.type = 'button';
       removeBtn.className = 'secondary';
@@ -212,10 +224,134 @@ function renderLibrary() {
         removeFromLibrary(entry.id);
         renderLibrary();
       });
-      row.appendChild(removeBtn);
+      btnGroup.appendChild(removeBtn);
 
+      row.appendChild(btnGroup);
       listEl.appendChild(row);
     });
+}
+
+// Reopens a saved document exactly as it was filled in, using the
+// same render path the wizard's own submit handler uses — this does
+// not call addToLibrary again, so viewing a saved document never
+// duplicates it in the library.
+function viewLibraryEntry(entry) {
+  const doc = state.documents.find(d => d.id === entry.documentId);
+  if (!doc) return;
+  state.document = doc;
+  state.answers = { ...entry.answers };
+  renderOutput();
+  showScreen('screen-output');
+}
+
+// ---------- inbox: cross-document dates ----------
+// A purely descriptive surface over dates already typed into saved
+// documents — no new data entry, no schema change. Field ids already
+// follow a consistent *Date naming convention across the corpus
+// (dateSigned, noticeDate, leaseEndDate, ...), so this needs no
+// per-document configuration to work. Every date is reported the same
+// way regardless of what it is — "in 5 days" / "3 days ago" — the
+// same mirror-not-advisor stance as the rest of the app: it says what
+// was typed and how far away it is, never what that means or what to
+// do about it.
+
+function parseTypedDate(value) {
+  if (!value) return null;
+  const trimmed = value.trim();
+  if (!trimmed) return null;
+  const looksDateLike = /\d{1,2}[\/\-.]\d{1,2}[\/\-.]\d{2,4}/.test(trimmed)
+    || /^\d{4}-\d{2}-\d{2}/.test(trimmed)
+    || /[a-zA-Z]{3,}.*\d{1,4}/.test(trimmed);
+  if (!looksDateLike) return null;
+  const parsed = new Date(trimmed);
+  if (isNaN(parsed.getTime())) return null;
+  if (parsed.getFullYear() < 1900 || parsed.getFullYear() > 2200) return null;
+  return parsed;
+}
+
+function daysFromToday(date) {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const target = new Date(date);
+  target.setHours(0, 0, 0, 0);
+  return Math.round((target - today) / 86400000);
+}
+
+function collectDateEntries() {
+  const rows = [];
+  loadLibrary().forEach(entry => {
+    const doc = state.documents.find(d => d.id === entry.documentId);
+    if (!doc) return;
+    doc.fields.forEach(f => {
+      if (!/date/i.test(f.id)) return;
+      const raw = entry.answers[f.id];
+      const parsed = parseTypedDate(raw);
+      if (!parsed) return;
+      rows.push({ label: f.label, rawValue: raw.trim(), date: parsed, docTitle: entry.title, entry });
+    });
+  });
+  return rows;
+}
+
+function renderInbox() {
+  const container = document.getElementById('inbox-content');
+  container.innerHTML = '';
+  const rows = collectDateEntries();
+
+  if (rows.length === 0) {
+    container.innerHTML = '<p class="library-empty">No dates found yet. Dates typed into a saved document\'s fields — a start date, a notice date, an expiration date — show up here automatically.</p>';
+    return;
+  }
+
+  const upcoming = rows.filter(r => daysFromToday(r.date) >= 0).sort((a, b) => a.date - b.date);
+  const past = rows.filter(r => daysFromToday(r.date) < 0).sort((a, b) => b.date - a.date);
+
+  const renderSection = (title, list, describe) => {
+    if (list.length === 0) return;
+    const heading = document.createElement('p');
+    heading.className = 'consistency-heading';
+    heading.textContent = title;
+    container.appendChild(heading);
+
+    list.forEach(r => {
+      const row = document.createElement('div');
+      row.className = 'inbox-row';
+
+      const info = document.createElement('div');
+      const labelEl = document.createElement('div');
+      labelEl.className = 'library-row-title';
+      labelEl.textContent = `${r.label}: ${r.rawValue}`;
+      const metaEl = document.createElement('div');
+      metaEl.className = 'library-row-date';
+      metaEl.textContent = `${r.docTitle} · ${describe(r.date)}`;
+      info.appendChild(labelEl);
+      info.appendChild(metaEl);
+      row.appendChild(info);
+
+      const viewBtn = document.createElement('button');
+      viewBtn.type = 'button';
+      viewBtn.className = 'secondary';
+      viewBtn.textContent = 'View';
+      viewBtn.addEventListener('click', () => viewLibraryEntry(r.entry));
+      row.appendChild(viewBtn);
+
+      container.appendChild(row);
+    });
+  };
+
+  renderSection('Upcoming', upcoming, d => {
+    const n = daysFromToday(d);
+    if (n === 0) return 'Today';
+    if (n === 1) return 'In 1 day';
+    if (n <= 30) return `In ${n} days`;
+    return d.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
+  });
+  renderSection('Past', past, d => {
+    const n = -daysFromToday(d);
+    if (n === 1) return '1 day ago';
+    if (n <= 30) return `${n} days ago`;
+    return d.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
+  });
 }
 
 async function init() {
@@ -807,6 +943,12 @@ document.getElementById('wizard-form').addEventListener('submit', e => {
   clearDraft();
   addToLibrary(state.document.id, state.document.title, state.answers);
 });
+
+document.getElementById('inbox-link').addEventListener('click', () => {
+  renderInbox();
+  showScreen('screen-inbox');
+});
+document.getElementById('inbox-back').addEventListener('click', () => showScreen('screen-picker'));
 
 document.getElementById('library-link').addEventListener('click', () => {
   renderLibrary();
