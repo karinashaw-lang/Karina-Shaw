@@ -32032,5 +32032,68 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "llc_manager_member_fiduciary_duties_info_sheet",
+    "title": "LLC Member and Manager Fiduciary Duties — Information Sheet",
+    "description": "Explains, using the statute's own text, the fiduciary duties that California's Revised Uniform Limited Liability Company Act assigns to a member of a member-managed limited liability company or a manager of a manager-managed one — the duty of loyalty and duty of care defined in Corp. Code § 17704.09, the good-faith-and-fair-dealing obligation and self-interest carve-out in that same section, and how those duties reallocate between members and managers under subdivision (f). Also states the limits Corp. Code § 17701.10(c), (e), and (g) place on an operating agreement's power to modify those duties, including the informed-consent requirement for any modification and the statutory exceptions to a liability-limitation provision. A companion to, and does not restate, this project's LLC Operating Agreement, LLC Default Operating Rules Information Sheet, LLC Member Dissociation and Buyout Information Sheet, and General Partner Fiduciary Duties in a California Limited Partnership Information Sheet, which address other subjects or other entity types under different statutes.",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "llcduty_intro",
+      "llcduty_duty_source",
+      "llcduty_loyalty_accounting",
+      "llcduty_loyalty_adverse_interest",
+      "llcduty_loyalty_noncompete",
+      "llcduty_care_standard",
+      "llcduty_good_faith_fair_dealing",
+      "llcduty_manager_managed_reallocation",
+      "llcduty_agreement_cannot_eliminate_general",
+      "llcduty_agreement_loyalty_carveout",
+      "llcduty_agreement_care_carveout",
+      "llcduty_agreement_good_faith_carveout",
+      "llcduty_informed_consent_requirement",
+      "llcduty_liability_limitation",
+      "llcduty_ack"
+    ],
+    "fields": [
+      {
+        "id": "llcName",
+        "label": "Limited liability company's name",
+        "placeholder": "Acme Ventures, LLC",
+        "required": true
+      },
+      {
+        "id": "dutyBearerName",
+        "label": "Name of the member (member-managed LLC) or manager (manager-managed LLC) whose duties are addressed",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "otherMemberName",
+        "label": "Name of another member of the LLC",
+        "placeholder": "Casey Alex",
+        "required": true
+      },
+      {
+        "id": "authorizedSignerName",
+        "label": "Authorized signer's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 9, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Sacramento, California",
+        "required": true
+      }
+    ]
   }
 ]
