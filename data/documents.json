@@ -31944,5 +31944,47 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "advancement_against_intestate_share_info_sheet",
+    "title": "Advancements Against an Intestate Share (Prob. Code § 6409) — Information Sheet",
+    "description": "Explains, using the statute's own text, California's rule on when a lifetime gift from a decedent to an heir is treated as an \"advancement\" -- a credit against that heir's share of an intestate estate. Covers the contemporaneous-writing requirement that a lifetime gift alone never satisfies (a declaration by the decedent or a written acknowledgment by the heir, either one required), the default rule for when the advanced property is valued, the conclusive effect of a value stated in that writing, and the default (and overridable) rule for what happens to the advancement's effect if the recipient predeceases the decedent. A companion to this corpus's California Intestate Succession Distribution Shares information sheet, which covers who inherits and how much under Prob. Code §§ 6400-6402 but does not address how a lifetime gift can reduce an heir's share, and distinct from this corpus's Ademption and Abatement of Testamentary Gifts information sheet, which covers the separate \"satisfaction\" doctrine (Prob. Code § 21135) for lifetime gifts credited against a gift made in a will -- a testate-estate rule, not this intestate one.",
+    "categories": [
+      "Estate Planning"
+    ],
+    "clauseOrder": [
+      "advancement_declaration",
+      "advancement_writing_requirement",
+      "advancement_valuation_timing",
+      "advancement_conclusive_written_valuation",
+      "advancement_recipient_predeceases",
+      "advancement_certification"
+    ],
+    "fields": [
+      {
+        "id": "decedentName",
+        "label": "Decedent's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "heirName",
+        "label": "Name of the heir who received the lifetime gift in question",
+        "placeholder": "Taylor Morgan",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 9, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Sacramento, California",
+        "required": true
+      }
+    ]
   }
 ]
