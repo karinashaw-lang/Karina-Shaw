@@ -88174,6 +88174,166 @@
       "title": "Acknowledgment",
       "kind": "drafting",
       "body": "This information sheet regarding Government Code section 12940(d)'s restriction on discriminatory job advertisements and applicant inquiries was reviewed by {{companyName}} in connection with {{applicantName}}'s prospective position of {{jobTitle}} on {{dateSigned}}. It reflects the statutory text as of the date checked in each authority section above and does not reflect any amendments made after that date, and it is not a substitute for consulting a licensed attorney.\n\nReviewed by (on behalf of {{companyName}}): ______________________\nDate: {{dateSigned}}"
+    },
+    {
+      "id": "payday_intro",
+      "title": "About This Information Sheet",
+      "kind": "drafting",
+      "body": "This information sheet describes California Labor Code sections 204, 204b, 205, and 210 — the statutes that set the general rule for how often wages must be paid, the specific timing windows within each pay period, the narrower rules that apply to weekly-paid employees, to certain agricultural, viticultural, horticultural, stock/poultry-raising, and live-in household domestic employees, and to farm labor contractors, and the civil penalty that applies when an employer fails to pay wages on the applicable payday. It states facts about how these payday-timing requirements apply to {{employeeName}}'s employment with {{companyName}}. It does not restate the separate wage-statement itemization requirements of Labor Code section 226 or the separate final-pay-on-termination rules of Labor Code sections 201 and 202, both of which are addressed elsewhere in this corpus rather than repeated here."
+    },
+    {
+      "id": "payday_general_semimonthly_rule",
+      "title": "The General Rule: Wages Due Twice a Month, on Designated Regular Paydays",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-09",
+      "body": "Except for wages specifically covered by other Labor Code payday sections, all wages earned by {{employeeName}} are due and payable twice during each calendar month, on days {{companyName}} designates in advance as the regular paydays. Labor performed between the 1st and 15th days of a calendar month, inclusive, must be paid for between the 16th and the 26th day of the month in which the labor was performed. Labor performed between the 16th and the last day of a calendar month, inclusive, must be paid for between the 1st and the 10th day of the following month.",
+      "gap": "This clause quotes Labor Code section 204, subdivision (a), first two sentences — fetched twice, independently, directly from leginfo.legislature.ca.gov using two separate curl requests with distinct User-Agent strings (\"Groundtruth-Wave145-Agent-Alpha/1.0\" and a separate Mozilla-style string), both returning HTTP 200 with byte-identical statutory text for the quoted passage. This clause states the general twice-monthly rule and its two specific timing windows; it does not state the separate exception for certain executive, administrative, and professional employees paid monthly (covered in a separate clause of this document), the separate rule for overtime wages (also covered separately), or the specific wages this general rule excludes by cross-reference (Labor Code sections 201, 201.3, 202, 204.1, and 204.2 — final pay on discharge or quitting, wages of a deceased employee, and vehicle-dealer commission wages, none of which this clause independently verifies beyond confirming section 204(a)'s own cross-reference text).",
+      "citations": [
+        {
+          "case": "Cal. Labor Code § 204(a) (California Legislative Information text)",
+          "cite": "the general twice-monthly payday rule and its two timing windows",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=204.",
+          "quote": "All wages, other than those mentioned in Section 201, 201.3, 202, 204.1, or 204.2, earned by any person in any employment are due and payable twice during each calendar month, on days designated in advance by the employer as the regular paydays. Labor performed between the 1st and 15th days, inclusive, of any calendar month shall be paid for between the 16th and the 26th day of the month during which the labor was performed, and labor performed between the 16th and the last day, inclusive, of any calendar month, shall be paid for between the 1st and 10th day of the following month."
+        }
+      ]
+    },
+    {
+      "id": "payday_exempt_salaried_monthly_option",
+      "title": "The Narrow Monthly-Payment Option for Certain Exempt Salaried Employees",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-09",
+      "body": "Labor Code section 204 permits an exception to the twice-monthly rule for salaries of executive, administrative, and professional employees of employers covered by the federal Fair Labor Standards Act, as defined by the federal regulations implementing section 13(a)(1) of that Act: their salaries may instead be paid once a month, on or before the 26th day of the month in which the labor was performed, but only if the entire month's salary — including the portion not yet earned between the date of payment and the last day of the month — is paid at that time.",
+      "gap": "This clause quotes Labor Code section 204, subdivision (a), third sentence — fetched twice, independently, directly from leginfo.legislature.ca.gov using two separate curl requests with distinct User-Agent strings, both returning HTTP 200 with byte-identical statutory text for the quoted passage, including the source's own curly right-single-quotation-mark character in \"month’s salaries,\" preserved verbatim in this clause's quote rather than normalized to a straight apostrophe. This clause states that this monthly-payment option exists and its two conditions (the FLSA section 13(a)(1) exempt-status requirement and the full-month-including-unearned-portion payment requirement); it does not itself determine whether a specific employee qualifies as exempt executive, administrative, or professional personnel under 29 C.F.R. Part 541, which this clause does not independently restate or verify.",
+      "citations": [
+        {
+          "case": "Cal. Labor Code § 204(a) (California Legislative Information text)",
+          "cite": "the monthly-payment option for FLSA-exempt executive, administrative, and professional salaries",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=204.",
+          "quote": "salaries of executive, administrative, and professional employees of employers covered by the Fair Labor Standards Act, as set forth pursuant to Section 13(a)(1) of the Fair Labor Standards Act, as amended through March 1, 1969, in Part 541 of Title 29 of the Code of Federal Regulations, as that part now reads or may be amended to read at any time hereafter, may be paid once a month on or before the 26th day of the month during which the labor was performed if the entire month’s salaries, including the unearned portion between the date of payment and the last day of the month, are paid at that time."
+        }
+      ]
+    },
+    {
+      "id": "payday_overtime_next_period_payday",
+      "title": "Overtime Wages May Be Paid on the Next Regular Payroll Period's Payday",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-09",
+      "body": "As an exception to the ordinary payday timing that would otherwise apply, all wages earned by {{employeeName}} for labor in excess of the normal work period must be paid no later than the payday for the next regular payroll period. An employer is treated as complying with the separate requirement (Labor Code section 226, subdivision (a)) to state total hours worked on the wage statement if hours worked in excess of the normal work period during the current pay period are itemized as corrections on the paystub for the next regular pay period, and any such correction must state the inclusive dates of the pay period being corrected.",
+      "gap": "This clause quotes Labor Code section 204, subdivision (b), paragraphs (1) and (2) — fetched twice, independently, directly from leginfo.legislature.ca.gov using two separate curl requests with distinct User-Agent strings, both returning HTTP 200 with byte-identical statutory text for the quoted passage. This clause states the timing rule for overtime-wage payment and the related paystub-correction mechanism referencing section 226(a); it does not restate section 226(a)'s full wage-statement itemization content, which this corpus's separate Wage Statement Itemization Policy document addresses, and it does not state a specific overtime-rate calculation formula, which this corpus's separate California Daily/Weekly Overtime Pay Calculation Information Sheet addresses.",
+      "citations": [
+        {
+          "case": "Cal. Labor Code § 204(b) (California Legislative Information text)",
+          "cite": "the next-payroll-period payday rule for overtime wages and the related paystub-correction mechanism",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=204.",
+          "quote": "(1) Notwithstanding any other provision of this section, all wages earned for labor in excess of the normal work period shall be paid no later than the payday for the next regular payroll period. (2) An employer is in compliance with the requirements of subdivision (a) of Section 226 relating to total hours worked by the employee, if hours worked in excess of the normal work period during the current pay period are itemized as corrections on the paystub for the next regular pay period. Any corrections set out in a subsequently issued paystub shall state the inclusive dates of the pay period for which the employer is correcting its initial report of hours worked."
+        }
+      ]
+    },
+    {
+      "id": "payday_cba_override",
+      "title": "A Collective Bargaining Agreement's Different Pay Arrangements Control for Covered Employees",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-09",
+      "body": "When employees are covered by a collective bargaining agreement that provides different pay arrangements than those set out in Labor Code section 204, those collectively bargained arrangements apply to the covered employees instead of section 204's default timing rules.",
+      "gap": "This clause quotes Labor Code section 204, subdivision (c) — fetched twice, independently, directly from leginfo.legislature.ca.gov using two separate curl requests with distinct User-Agent strings, both returning HTTP 200 with byte-identical statutory text for the quoted passage. This clause states that a qualifying collective bargaining agreement's pay arrangements control; it does not state what makes a given agreement's arrangements qualify as \"different pay arrangements\" within the meaning of this subdivision, and does not determine whether a specific employee's employment is covered by such an agreement.",
+      "citations": [
+        {
+          "case": "Cal. Labor Code § 204(c) (California Legislative Information text)",
+          "cite": "the collective-bargaining-agreement override of the default payday timing rules",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=204.",
+          "quote": "However, when employees are covered by a collective bargaining agreement that provides different pay arrangements, those arrangements shall apply to the covered employees."
+        }
+      ]
+    },
+    {
+      "id": "payday_weekly_biweekly_semimonthly_safe_harbor",
+      "title": "The Seven-Calendar-Day Safe Harbor for Weekly, Biweekly, or Semimonthly Payroll",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-09",
+      "body": "Labor Code section 204's requirements are deemed satisfied by payment of wages on a weekly, biweekly, or semimonthly payroll schedule if the wages are paid not more than seven calendar days following the close of the payroll period.",
+      "gap": "This clause quotes Labor Code section 204, subdivision (d) — fetched twice, independently, directly from leginfo.legislature.ca.gov using two separate curl requests with distinct User-Agent strings, both returning HTTP 200 with byte-identical statutory text for the quoted passage. This clause states the seven-calendar-day safe-harbor rule for these three payroll schedules; it does not restate the separate, narrower timing rule that section 204b sets specifically for weekly-paid employees (covered in a separate clause of this document), and does not determine which of the two provisions controls in a specific case where both might arguably apply.",
+      "citations": [
+        {
+          "case": "Cal. Labor Code § 204(d) (California Legislative Information text)",
+          "cite": "the seven-calendar-day safe harbor for weekly, biweekly, or semimonthly payroll",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=204.",
+          "quote": "The requirements of this section shall be deemed satisfied by the payment of wages for weekly, biweekly, or semimonthly payroll if the wages are paid not more than seven calendar days following the close of the payroll period."
+        }
+      ]
+    },
+    {
+      "id": "payday_weekly_payroll_204b",
+      "title": "The Separate Timing Rule for Employees Paid Weekly",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-09",
+      "body": "Labor Code section 204 does not apply to employees paid on a weekly basis on a regular day {{companyName}} designates in advance as the regular payday. Instead, labor performed by a weekly-paid employee during a calendar week, and prior to or on the regular payday, must be paid for not later than the regular payday falling during the following calendar week; labor performed during a calendar week but after the regular payday must be paid for not later than seven days after the regular payday falling during the following calendar week.",
+      "gap": "This clause quotes Labor Code section 204b in full — fetched twice, independently, directly from leginfo.legislature.ca.gov using two separate curl requests with distinct User-Agent strings, both returning HTTP 200 with byte-identical statutory text for the quoted passage. This clause states section 204b's own timing rule for weekly-paid employees; it does not resolve how this section interacts with section 204(d)'s separate seven-calendar-day safe harbor for weekly payroll (covered in the preceding clause of this document) in a case where both provisions might arguably describe the same weekly payroll arrangement.",
+      "citations": [
+        {
+          "case": "Cal. Labor Code § 204b (California Legislative Information text)",
+          "cite": "the payday timing rule specific to weekly-paid employees",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=204b.",
+          "quote": "Section 204 shall be inapplicable to employees paid on a weekly basis on a regular day designated by the employer in advance of the rendition of services as the regular payday. Labor performed by a weekly-paid employee during any calendar week and prior to or on the regular payday shall be paid for not later than the regular payday of the employer for such weekly-paid employee falling during the following calendar week. Labor performed by a weekly-paid employee during any calendar week and subsequent to the regular payday shall be paid for not later than seven days after the regular payday of the employer for such weekly-paid employee falling during the following calendar week."
+        }
+      ]
+    },
+    {
+      "id": "payday_agricultural_domestic_monthly_rule",
+      "title": "The Monthly-Payday Rule for Certain Live-In Agricultural and Household Domestic Employees, and the Weekly Rule for Farm Labor Contractors",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-09",
+      "body": "In agricultural, viticultural, and horticultural pursuits, in stock or poultry raising, and in household domestic service, when the employee is boarded and lodged by the employer, wages due to an employee remaining in that employment become due and payable once each calendar month, on a day the employer designates in advance as the regular payday, with no two successive paydays more than 31 days apart, and each payment must include all wages up to the regular payday. Notwithstanding that rule, wages of workers employed by a farm labor contractor must instead be paid on payroll periods at least once every week, on a business day the farm labor contractor designates in advance, and each such payday's payment must include all wages earned up to and including the fourth day before that payday.",
+      "gap": "This clause quotes Labor Code section 205 in full — fetched twice, independently, directly from leginfo.legislature.ca.gov using two separate curl requests with distinct User-Agent strings, both returning HTTP 200 with byte-identical statutory text for the quoted passage. The two quotations in this clause's citations are two sentences from the same statutory section, not independent sources of one another. This clause states the boarded-and-lodged agricultural/domestic monthly-payday rule and the farm-labor-contractor weekly exception to it; it does not determine whether a specific worker or employer relationship falls within the boarded-and-lodged condition or qualifies as a \"farm labor contractor,\" terms this clause does not independently define beyond the statute's own text.",
+      "citations": [
+        {
+          "case": "Cal. Labor Code § 205 (California Legislative Information text)",
+          "cite": "the monthly payday rule for boarded-and-lodged agricultural, viticultural, horticultural, stock/poultry-raising, and household domestic employees",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=205.",
+          "quote": "In agricultural, viticultural, and horticultural pursuits, in stock or poultry raising, and in household domestic service, when the employees in such employments are boarded and lodged by the employer, the wages due any employee remaining in such employment shall become due and payable once in each calendar month on a day designated in advance by the employer as the regular payday. No two successive paydays shall be more than 31 days apart, and the payment shall include all wages up to the regular payday."
+        },
+        {
+          "case": "Cal. Labor Code § 205 (California Legislative Information text)",
+          "cite": "the weekly payday rule for workers employed by a farm labor contractor",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=205.",
+          "quote": "wages of workers employed by a farm labor contractor shall be paid on payroll periods at least once every week on a business day designated in advance by the farm labor contractor. Payment on such payday shall include all wages earned up to and including the fourth day before such payday."
+        }
+      ]
+    },
+    {
+      "id": "payday_late_payment_penalty",
+      "title": "The Civil Penalty for Failing to Pay Wages on the Applicable Payday",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-09",
+      "body": "In addition to, and independent of, any other penalty the Labor Code provides, a person who fails to pay an employee's wages as required by Labor Code sections 201.3, 204, 204b, 204.1, 204.2, 204.11, 205, 205.5, and 1197.5 is subject to a penalty of $100 for each employee for an initial violation, and $200 for each employee plus 25 percent of the amount unlawfully withheld for each subsequent violation or any willful or intentional violation. This penalty may be recovered by the employee as a statutory penalty under Labor Code section 98, or by the Labor Commissioner as a civil penalty through a citation or under Labor Code section 98.3, using the same citation issuance, contest, and enforcement procedures set out in Labor Code section 1197.1, subdivisions (b) through (k). An employee is only entitled to recover either this statutory penalty or a civil penalty under Labor Code section 2699, subdivision (a), for the same violation, not both.",
+      "gap": "This clause quotes Labor Code section 210 in full — fetched twice, independently, directly from leginfo.legislature.ca.gov using two separate curl requests with distinct User-Agent strings, both returning HTTP 200 with byte-identical statutory text for the quoted passage. This clause states the penalty amounts, the two recovery mechanisms, and the single-recovery election-of-remedies rule as section 210 itself states them; it does not independently restate or verify the separate procedural requirements of Labor Code sections 98, 98.3, or 1197.1 that section 210 cross-references, and it does not address whether a specific missed or late payday counts as an \"initial\" or a \"subsequent\" violation, which the quoted text does not itself define.",
+      "citations": [
+        {
+          "case": "Cal. Labor Code § 210 (California Legislative Information text)",
+          "cite": "the civil penalty for failing to pay wages on the applicable statutory payday",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=210.",
+          "quote": "In addition to, and entirely independent and apart from, any other penalty provided in this article, every person who fails to pay the wages of each employee as provided in Sections 201.3, 204, 204b, 204.1, 204.2, 204.11, 205, 205.5, and 1197.5, shall be subject to a penalty as follows: (1) For any initial violation, one hundred dollars ($100) for each failure to pay each employee. (2) For each subsequent violation, or any willful or intentional violation, two hundred dollars ($200) for each failure to pay each employee, plus 25 percent of the amount unlawfully withheld."
+        },
+        {
+          "case": "Cal. Labor Code § 210 (California Legislative Information text)",
+          "cite": "the recovery mechanisms and the single-recovery election-of-remedies rule",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=210.",
+          "quote": "The penalty shall either be recovered by the employee as a statutory penalty pursuant to Section 98 or by the Labor Commissioner as a civil penalty through the issuance of a citation or pursuant to Section 98.3. The procedures for issuing, contesting, and enforcing judgments for citations issued by the Labor Commissioner under this section shall be the same as those set forth in subdivisions (b) through (k), inclusive, of Section 1197.1. (c) An employee is only entitled to either recover the statutory penalty provided for in this section or to enforce a civil penalty as set forth in subdivision (a) of Section 2699, but not both, for the same violation."
+        }
+      ]
+    },
+    {
+      "id": "payday_ack",
+      "title": "Acknowledgment",
+      "kind": "drafting",
+      "body": "Please sign below to acknowledge receipt of this information sheet.\n\nEmployee: {{employeeName}}\nDate: {{dateSigned}}\n\nReceived on behalf of {{companyName}} by: _______________________________________________\nDate: _______________\nCity/State: {{cityState}}"
     }
   ]
 }
