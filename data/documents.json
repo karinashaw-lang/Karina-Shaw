@@ -31670,5 +31670,44 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "call_center_relocation_notice_info_sheet",
+    "title": "California Call Center Relocation Notice Law (Labor Code §§ 1409-1413) — Information Sheet",
+    "description": "Explains California's call-center-specific relocation statute -- a separate article of the Cal/WARN Act (Labor Code §§ 1409-1413) directed at employers moving a call center, or a substantial part of one, to a foreign country. Covers the call center and relocation definitions, the notice requirement and its required heading, the Employment Development Department's semiannual published list and workforce services, the five-year ineligibility for state grants, state-guaranteed loans, and tax credits that follows from appearing on that list, the good-cause waiver of that ineligibility, the statute's express preservation of unemployment compensation and other state benefits, and the Labor Commissioner's and EDD's rulemaking authority. Distinct from this project's existing California WARN Act (Cal/WARN) Information Sheet, which covers the Act's general mass-layoff, relocation, and termination provisions and expressly identifies this call-center article as out of scope.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "callcenterreloc_declaration",
+      "callcenterreloc_definitions",
+      "callcenterreloc_notice_requirement",
+      "callcenterreloc_edd_list_and_services",
+      "callcenterreloc_ineligibility_consequences",
+      "callcenterreloc_waiver_of_ineligibility",
+      "callcenterreloc_no_effect_on_other_benefits",
+      "callcenterreloc_rulemaking_authority",
+      "callcenterreloc_acknowledgment"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme Corp",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "relocationDate",
+        "label": "Anticipated effective date of the call center relocation",
+        "placeholder": "November 1, 2026",
+        "required": true
+      }
+    ]
   }
 ]
