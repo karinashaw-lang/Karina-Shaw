@@ -32228,5 +32228,41 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "right_of_representation_per_capita_info_sheet",
+    "title": "Right of Representation, Per Stirpes, and Per Capita at Each Generation (Prob. Code §§ 240, 245-246) — Information Sheet",
+    "description": "Explains, using the statutes' own text, California's default mechanical rules for dividing property among a class of descendants when a class member has died leaving living issue -- the rules behind the phrases \"by right of representation,\" \"per stirpes,\" and \"per capita at each generation.\" Covers the Prob. Code § 240 division method (dividing at the nearest living generation of issue, then re-dividing a deceased member's share among that member's own issue); the Prob. Code § 245 default that applies this method whenever a will, trust, or other instrument calls for it by cross-reference, or is simply silent on method as to issue or descendants, including which wording does not count as a contrary intention; the related but distinct Prob. Code § 246(a) formula for a gift to a designated ancestor's children; and the § 246(b)-(c) rule -- with its own, dated distinction in how strong the default is -- that the words \"per stirpes,\" \"by representation,\" or \"by right of representation\" call for the § 246(a) method. Distinct from this corpus's Ademption and Abatement of Testamentary Gifts and Advancements Against an Intestate Share information sheets, which address whether and how much a gift is reduced or credited, not how a share is subdivided among a deceased beneficiary's own descendants; and distinct from the California Intestate Succession Distribution Shares information sheet, which covers who inherits and in what shares under Prob. Code §§ 6400-6402 among surviving relatives generally, rather than the mechanical subdivision method those and other statutes and instruments invoke by cross-reference to § 240 or § 246.",
+    "categories": [
+      "Estate Planning"
+    ],
+    "clauseOrder": [
+      "rop_purpose",
+      "rop_per_capita_at_each_generation_method",
+      "rop_default_construction_issue_descendants",
+      "rop_class_gift_children_formula",
+      "rop_per_stirpes_language_triggers_246",
+      "rop_certification"
+    ],
+    "fields": [
+      {
+        "id": "testatorName",
+        "label": "Testator/settlor's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 9, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Sacramento, California",
+        "required": true
+      }
+    ]
   }
 ]
