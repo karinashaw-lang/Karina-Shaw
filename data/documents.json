@@ -31457,5 +31457,48 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "discriminatory_job_advertisements_info_sheet",
+    "title": "Discriminatory Job Advertisements and Applicant Inquiries (FEHA) — Information Sheet",
+    "description": "Explains, using the statute's own text, California's Fair Employment and Housing Act restriction (Gov. Code § 12940(d)) on printing or circulating a publication, or making a nonjob-related inquiry of an applicant or employee, that expresses a limitation, specification, or discrimination based on race, religious creed, color, national origin, ancestry, disability, medical condition, genetic information, marital status, sex, gender, gender identity, gender expression, age, sexual orientation, reproductive health decisionmaking, or veteran or military status; the statute's bona fide occupational qualification and security-regulation exceptions, its exception for age inquiries compelled or provided for by law, and the FEHA definitions of \"employer\" and \"employment agency\" that determine who is covered.",
+    "categories": [
+      "Hiring"
+    ],
+    "clauseOrder": [
+      "jobad_intro",
+      "jobad_bfoq_exception",
+      "jobad_core_prohibition",
+      "jobad_age_inquiry_exception",
+      "jobad_employer_definition",
+      "jobad_employment_agency_definition",
+      "jobad_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "jobTitle",
+        "label": "Job title",
+        "placeholder": "Marketing Coordinator",
+        "required": true
+      },
+      {
+        "id": "applicantName",
+        "label": "Applicant's name",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 9, 2026",
+        "required": true
+      }
+    ]
   }
 ]
