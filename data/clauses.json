@@ -90777,6 +90777,189 @@
       "title": "Acknowledgment",
       "kind": "drafting",
       "body": "Please sign below to indicate that you have received and reviewed this information sheet.\n\nEmployee/Applicant: {{applicantName}}\nPosition: {{jobTitle}}\nLicensee/Employer: {{companyName}}\nDate: {{dateSigned}}"
+    },
+    {
+      "id": "stockopt_declaration",
+      "title": "Purpose and Identification of Stock Option Interest",
+      "kind": "drafting",
+      "body": "This document addresses employer-granted stock options held by {{party1Name}} or {{party2Name}}, who married on {{marriageDate}} and separated on {{separationDate}}, arising in connection with the dissolution of their marriage. It concerns stock options granted by {{employerName}} that were granted before the date of separation but that were not, or are not, exercisable until on or after that date, or options granted at or after separation. It states legal background on how California courts have addressed the division of employer stock options between community and separate property when the options were granted during marriage but become exercisable over time. This document is not a court order, is not a stock option agreement or plan document, and does not state whether any specific option granted by {{employerName}} is community property, separate property, or a combination of both."
+    },
+    {
+      "id": "stockopt_general_community_property_rule",
+      "title": "General Rule: Property Acquired During Marriage Is Community Property",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-09",
+      "body": "As a general rule, property acquired by a married person during the marriage while domiciled in California is community property, except as otherwise provided by statute. This baseline rule is the starting point for characterizing any asset acquired during a marriage, including compensation-related assets such as employer stock options.",
+      "gap": "This is a single, general statutory rule (Cal. Fam. Code § 760) subject to numerous statutory exceptions (for example, for separate property acquired by gift, bequest, devise, or descent, or property whose character has been changed by agreement) that are outside the scope of this clause. It does not by itself resolve how a stock option granted during marriage but exercisable only after separation is characterized; that question is addressed by the case-law clauses elsewhere in this document.",
+      "citations": [
+        {
+          "case": "Cal. Fam. Code § 760 (California Legislative Information text)",
+          "cite": "the general definition of community property",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=760.",
+          "quote": "Except as otherwise provided by statute, all property, real or personal, wherever situated, acquired by a married person during the marriage while domiciled in this state is community property."
+        }
+      ]
+    },
+    {
+      "id": "stockopt_postseparation_earnings_separate",
+      "title": "Earnings and Accumulations After Separation Are Separate Property",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-09",
+      "body": "As a general rule, the earnings and accumulations of a spouse after the date of separation are that spouse's separate property, not community property. Where a stock option is granted before the date of separation but does not become exercisable, or does not yield a right the employee can act on, until after separation, this general rule creates the specific characterization question that is addressed by the case law in the remaining clauses of this document: whether the option represents compensation earned in part during the marriage (with a community property component) or is instead solely postseparation earnings (wholly separate property) because it did not become exercisable, or was not granted, until after separation.",
+      "gap": "This is a single statutory subdivision (Cal. Fam. Code § 771(a)); its companion subdivision (b), concerning an unemancipated minor child's earnings under certain contracts, is not relevant to stock option characterization and is omitted. The predecessor of this provision was codified at former Civil Code section 5118 at the time the Hug and Nelson decisions discussed elsewhere in this document were issued; the current codification is used here.",
+      "citations": [
+        {
+          "case": "Cal. Fam. Code § 771(a) (California Legislative Information text)",
+          "cite": "postseparation earnings and accumulations as separate property",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=771.",
+          "quote": "The earnings and accumulations of a spouse and the minor children living with, or in the custody of, the spouse, after the date of separation of the spouses, are the separate property of the spouse."
+        }
+      ]
+    },
+    {
+      "id": "stockopt_hug_holding_broad_discretion",
+      "title": "Case Law: Broad Trial Court Discretion to Allocate Stock Options Between Community and Separate Property",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-09",
+      "body": "In In re Marriage of Hug, a California Court of Appeal addressed employer stock options that were granted to a spouse before the date of separation but that became exercisable only after separation. The court held that a trial court has broad discretion to select an equitable method for allocating the community and separate property interests in such options, and that a trial court applying one equitable method -- a \"time rule\" apportionment -- is not thereby limited to that formula in every case.",
+      "gap": "This is a single published California Court of Appeal (First Appellate District) decision, not a California Supreme Court decision, and it states that no single formula is mandatory; it is real evidence of one court's approach to allocating stock options between community and separate property, not a claim about how any specific option, marriage, or dissolution proceeding will be characterized or divided. The opinion was retrieved via the CourtListener API (opinion id 2115889, cluster id 2115889, matching in this document's own search and the direct API item lookup) and fetched independently twice via two different CourtListener API call paths, with identical text returned both times.",
+      "citations": [
+        {
+          "case": "In re Marriage of Hug",
+          "cite": "154 Cal. App. 3d 780, 782 (1984)",
+          "url": "https://www.courtlistener.com/opinion/2115889/in-re-marriage-of-hug/",
+          "quote": "In this case we hold that in marital dissolution actions the trial court has broad discretion to select an equitable method of allocating community and separate property interests in stock options granted prior to the date of separation of the parties, which became exercisable after the date of separation."
+        },
+        {
+          "case": "In re Marriage of Hug",
+          "cite": "154 Cal. App. 3d 780, 782 (1984)",
+          "url": "https://www.courtlistener.com/opinion/2115889/in-re-marriage-of-hug/",
+          "quote": "we stress that trial courts, in the exercise of their discretion, are not limited to this formula in seeking to achieve an equitable allocation of separate and community interests in employee stock options."
+        }
+      ]
+    },
+    {
+      "id": "stockopt_hug_time_rule_formula",
+      "title": "Case Law: The Hug Time-Rule Apportionment Formula",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-09",
+      "body": "In the same case, the Court of Appeal described and affirmed the trial court's specific method of apportioning the disputed stock options: a \"time rule\" fraction. Under that formula, the community property share of the unexercised options is calculated as a fraction -- the numerator being the number of months of the employee spouse's service with the employer from the start of employment to the date of separation, and the denominator being the number of months from the start of employment to the date each option first becomes exercisable -- multiplied by the number of shares purchasable when the option first becomes exercisable.",
+      "gap": "This describes the specific fraction the trial court in Hug applied and that the Court of Appeal found was not an abuse of discretion on the facts of that case; the same opinion expressly states this formula is not mandatory in every case, and the companion case discussed elsewhere in this document (Nelson) applied a different formula on different facts. This clause does not state what formula, if any, a court would apply to a specific option grant.",
+      "citations": [
+        {
+          "case": "In re Marriage of Hug",
+          "cite": "154 Cal. App. 3d 780, 784 (1984)",
+          "url": "https://www.courtlistener.com/opinion/2115889/in-re-marriage-of-hug/",
+          "quote": "[t]he community property portion of the unexercised shares is the product of a fraction whose numerator is the length of service expressed in months by respondent [Paul] with Amdahl from the date of commencement of service to the date of separation of the parties and the denominator is the length of service expressed in months from the date of commencement of service to the date when an option could be first exercised, multiplied by the number of shares that could be purchased on the date of exercise."
+        }
+      ]
+    },
+    {
+      "id": "stockopt_no_single_formula_required",
+      "title": "Case Law: No Single Formula Applies to Every Stock Option Case",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-09",
+      "body": "The Hug court expressly declined to adopt a single, mandatory rule for allocating community and separate property interests in employer stock options, stressing that trial courts retain broad discretion to fashion the approach that achieves the most equitable result on the facts of each case. A later Court of Appeal decision, In re Marriage of Nelson, quoted this same statement when it upheld a different apportionment formula on different facts, rather than treating the Hug formula as binding in every case.",
+      "gap": "Both citations quote the identical sentence from the Hug opinion -- once as it originally appears in Hug, and once as it is quoted in the later Nelson opinion -- so this clause reflects one statement of law repeated in two opinions, not two independent legal sources.",
+      "citations": [
+        {
+          "case": "In re Marriage of Hug",
+          "cite": "154 Cal. App. 3d 780, 792 (1984)",
+          "url": "https://www.courtlistener.com/opinion/2115889/in-re-marriage-of-hug/",
+          "quote": "we stress that no single rule or formula is applicable to every dissolution case involving employee stock options. Trial courts should be vested with broad discretion to fashion approaches which will achieve the most equitable results under the facts of each case."
+        },
+        {
+          "case": "In re Marriage of Nelson",
+          "cite": "177 Cal. App. 3d 150, 155 (1986)",
+          "url": "https://www.courtlistener.com/opinion/2148554/in-re-marriage-of-nelson/",
+          "quote": "we stress that no single rule or formula is applicable to every dissolution case involving employee stock options. Trial courts should be vested with broad discretion to fashion approaches which will achieve the most equitable results under the facts of each case."
+        }
+      ]
+    },
+    {
+      "id": "stockopt_nelson_three_categories",
+      "title": "Case Law: Three Categories of Options Based on Timing of Grant and Exercisability",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-09",
+      "body": "In In re Marriage of Nelson, a later Court of Appeal decision applying Hug, the trial court had sorted the employee spouse's stock options into three categories based on the timing of the grant and the date the option became exercisable relative to the date of separation: options granted and already exercisable before separation, options granted before separation but not exercisable until afterward (\"intermediate\" options, apportioned partly community and partly separate under a time rule), and options granted after separation (treated as wholly the employee spouse's separate property). The Court of Appeal's review on appeal addressed the intermediate and postseparation categories; the characterization of the first category, options already exercisable before separation, was not disputed on appeal.",
+      "gap": "This describes the trial court's three-way categorization as recounted in the Nelson opinion; the appeal itself concerned only the intermediate-options apportionment formula (addressed in a separate clause) and the postseparation options and a postseparation bonus (also addressed in a separate clause). The opinion was retrieved via the CourtListener API (opinion id 2148554, cluster id 2148554, matching in this document's own search and the direct API item lookup) and fetched independently twice via two different CourtListener API call paths, with identical text returned both times.",
+      "citations": [
+        {
+          "case": "In re Marriage of Nelson",
+          "cite": "177 Cal. App. 3d 150, 153 (1986)",
+          "url": "https://www.courtlistener.com/opinion/2148554/in-re-marriage-of-nelson/",
+          "quote": "These fell into three separate categories: those that were granted and became exercisable before the parties separated; those that were granted before the parties separated but were not exercisable until after they separated (hereafter the intermediate options); and those that were granted after the parties separated (hereafter the postseparation options). The first group was characterized by the trial court as wholly community property, the second partly community property and partly Harold's separate property (using a time rule) and the third wholly Harold's separate property."
+        }
+      ]
+    },
+    {
+      "id": "stockopt_nelson_alternate_start_date",
+      "title": "Case Law: A Different Time-Rule Start Date, Depending on the Purpose of the Grant",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-09",
+      "body": "In Nelson, the trial court apportioned the \"intermediate\" options using a time-rule fraction that differed from the one described in Hug: rather than running the numerator and denominator from the start of the employee spouse's employment, it ran them from the date of each option grant -- the numerator being the months from each grant to the date of separation, and the denominator being the months from each grant to the date that option became exercisable. The Court of Appeal upheld this different starting point, reasoning that the purpose behind a particular company's option grants matters: it distinguished the options at issue, which it read as designed to reward future productivity, from the Hug options, which it read as also designed to attract new employees and to reward past service more generously.",
+      "gap": "This clause describes why the Nelson court accepted a formula measured from each option's grant date rather than from the start of employment, based on its reading of the purpose of the particular employer's option grants on the facts before it; it does not state which starting point, if either, a court would apply to any other option grant or employer plan.",
+      "citations": [
+        {
+          "case": "In re Marriage of Nelson",
+          "cite": "177 Cal. App. 3d 150, 154-155 (1986)",
+          "url": "https://www.courtlistener.com/opinion/2148554/in-re-marriage-of-nelson/",
+          "quote": "In contrast, the trial court here utilized a formula in which the numerator was the number of months from the date of grant of each block of options to the date of the couple's separation, while the denominator was the period from the time of each grant to its date of exercisability."
+        },
+        {
+          "case": "In re Marriage of Nelson",
+          "cite": "177 Cal. App. 3d 150, 156 fn. 4 (1986)",
+          "url": "https://www.courtlistener.com/opinion/2148554/in-re-marriage-of-nelson/",
+          "quote": "The major difference we discern between the Ampex options and those before the court in Hug is that while both reward future productivity, the Hug options appear to have been designed to attract new employees and/or more generously reward past services."
+        }
+      ]
+    },
+    {
+      "id": "stockopt_postseparation_grant_separate_property",
+      "title": "Case Law: Options Granted After Separation Affirmed as Separate Property",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-09",
+      "body": "In Nelson, the trial court found that a block of options granted to the employee spouse 25 days after the date of separation, along with a bonus paid about eight months after separation, were the employee spouse's separate property rather than community property, based on the trial court's factual findings that these items had not, even in part, accrued before the separation. The Court of Appeal affirmed this characterization, applying a substantial-evidence standard of review to the trial court's underlying factual findings.",
+      "gap": "This holding rests on the specific factual findings made by the trial court in Nelson about when a particular grant and a particular bonus were earned -- for example, that the option grant was contingent on board approval that had not been a foregone conclusion before separation, and that the bonus was discretionary and varied year to year -- and on the deferential substantial-evidence standard the Court of Appeal applied to those findings on appeal. It does not state that every option or bonus received after separation is necessarily separate property; a different factual record could support a different result.",
+      "citations": [
+        {
+          "case": "In re Marriage of Nelson",
+          "cite": "177 Cal. App. 3d 150, 158 (1986)",
+          "url": "https://www.courtlistener.com/opinion/2148554/in-re-marriage-of-nelson/",
+          "quote": "We therefore affirm the trial court's characterization of the 1,750 stock options granted October 29, 1980, and the $9,000 bonus paid in May 1981 as Harold's separate property."
+        }
+      ]
+    },
+    {
+      "id": "stockopt_equal_division_baseline",
+      "title": "Baseline Rule: Equal Division of the Community Estate",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-09",
+      "body": "Whatever portion of a stock option is characterized as community property, it becomes part of the community estate that is subject to California's general rule requiring equal division between the parties in a dissolution or legal separation proceeding, subject to the exceptions the statute itself lists (a written agreement of the parties, an oral stipulation in open court, or another provision of the same division of the Family Code).",
+      "gap": "This is a general division-of-property statute (Cal. Fam. Code § 2550); it does not itself address how to characterize or apportion a specific asset such as a stock option between community and separate property -- that characterization question is addressed by the case-law clauses elsewhere in this document -- nor does it address the separate mechanics of how an equal division of a non-transferable, non-divisible-in-kind asset like an unexercised stock option might be achieved (for example, an in-kind division, an offsetting award of other property, or a reserved-jurisdiction division as the options are later exercised).",
+      "citations": [
+        {
+          "case": "Cal. Fam. Code § 2550 (California Legislative Information text)",
+          "cite": "the general rule requiring equal division of the community estate",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=2550.",
+          "quote": "Except upon the written agreement of the parties, or on oral stipulation of the parties in open court, or as otherwise provided in this division, in a proceeding for dissolution of marriage or for legal separation of the parties, the court shall, either in its judgment of dissolution of the marriage, in its judgment of legal separation of the parties, or at a later time if it expressly reserves jurisdiction to make such a property division, divide the community estate of the parties equally."
+        }
+      ]
+    },
+    {
+      "id": "stockopt_worksheet_signature",
+      "title": "Stock Option Information and Signatures",
+      "kind": "drafting",
+      "body": "The following information relates to the stock option interest addressed by this document:\n\nEmployee spouse: ☐ {{party1Name}}  ☐ {{party2Name}}\n\nEmployer/grantor of the options: {{employerName}}\n\nDate(s) of grant of the option(s) at issue: {{optionGrantDates}}\n\n☐ Option(s) granted and already exercisable before the date of separation\n☐ Option(s) granted before separation but not exercisable, in whole or in part, until on or after the date of separation\n☐ Option(s) granted on or after the date of separation\n☐ Not yet determined\n\nThis information is provided to identify the option grant(s) under discussion. It is not a court order, does not modify any stock option plan or grant agreement, and does not determine the community or separate property character of any option listed above.\n\n{{party1Name}}: ☐ _________________________ Date: _________________________\n\n{{party2Name}}: ☐ _________________________ Date: _________________________"
     }
   ]
 }

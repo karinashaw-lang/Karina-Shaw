@@ -32308,5 +32308,64 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "employee_stock_options_hug_nelson_info_sheet",
+    "title": "Community Property Interest in Employer Stock Options (Hug/Nelson Time-Rule) — Information Sheet",
+    "description": "Background information on how California courts have characterized and apportioned employer-granted stock options between community and separate property in a marital dissolution when the options were granted during marriage but become exercisable, in whole or in part, after the date of separation -- including the general community-property and postseparation-earnings statutes, the In re Marriage of Hug and In re Marriage of Nelson decisions and their time-rule apportionment formulas, and the baseline rule requiring equal division of the community estate.",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "stockopt_declaration",
+      "stockopt_general_community_property_rule",
+      "stockopt_postseparation_earnings_separate",
+      "stockopt_hug_holding_broad_discretion",
+      "stockopt_hug_time_rule_formula",
+      "stockopt_no_single_formula_required",
+      "stockopt_nelson_three_categories",
+      "stockopt_nelson_alternate_start_date",
+      "stockopt_postseparation_grant_separate_property",
+      "stockopt_equal_division_baseline",
+      "stockopt_worksheet_signature"
+    ],
+    "fields": [
+      {
+        "id": "party1Name",
+        "label": "First party's full legal name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "party2Name",
+        "label": "Second party's full legal name",
+        "placeholder": "Morgan Casey Lee",
+        "required": true
+      },
+      {
+        "id": "marriageDate",
+        "label": "Date of marriage",
+        "placeholder": "June 14, 2015",
+        "required": true
+      },
+      {
+        "id": "separationDate",
+        "label": "Date of separation",
+        "placeholder": "March 2, 2026",
+        "required": true
+      },
+      {
+        "id": "employerName",
+        "label": "Employer that granted the stock options",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "optionGrantDates",
+        "label": "Date(s) the option(s) were granted (if known)",
+        "placeholder": "August 9, 2022; September 15, 2023",
+        "required": false
+      }
+    ]
   }
 ]
