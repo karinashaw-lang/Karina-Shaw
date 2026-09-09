@@ -32400,5 +32400,67 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "llc_judicial_dissolution_info_sheet",
+    "title": "Judicial Dissolution of a California LLC — Information Sheet",
+    "description": "Background information on Cal. Corp. Code § 17707.03 — the California Revised Uniform Limited Liability Company Act's judicial-dissolution statute -- the five statutory grounds on which a court may order an LLC's dissolution, who may petition (any manager or member, with no ownership-percentage threshold), and the buyout mechanism built into the same section that lets the other members avoid dissolution by purchasing the petitioning members' interests at fair market value -- a companion to this project's existing LLC Dissolution and Cancellation document, which covers only the non-judicial winding-up and cancellation-filing process.",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "llcjuddiss_purpose_declaration",
+      "llcjuddiss_standing",
+      "llcjuddiss_five_grounds",
+      "llcjuddiss_buyout_election",
+      "llcjuddiss_appraisal_and_decree",
+      "llcjuddiss_valuation_date_and_dismissal",
+      "llcjuddiss_court_remedies_preserved",
+      "llcjuddiss_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme Ventures, LLC",
+        "required": true
+      },
+      {
+        "id": "entityType",
+        "label": "Entity type",
+        "placeholder": "limited liability company",
+        "required": true
+      },
+      {
+        "id": "petitionerName",
+        "label": "Petitioner's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "groundsForProceeding",
+        "label": "Grounds for the proceeding",
+        "placeholder": "management deadlock",
+        "required": true
+      },
+      {
+        "id": "ownershipPercentage",
+        "label": "Approximate membership interest, if known",
+        "placeholder": "25%",
+        "required": false
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 9, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
