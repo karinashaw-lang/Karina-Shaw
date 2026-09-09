@@ -133,6 +133,7 @@ export async function POST(request: Request) {
             create: {
               behindTheCutId,
               userId,
+              amountCents: session.amount_total ?? 0,
               stripeCheckoutSessionId: session.id,
             },
             update: {},

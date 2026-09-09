@@ -1,27 +1,10 @@
 "use client";
 
-import { useActionState, useState, useTransition } from "react";
+import { useState, useTransition } from "react";
 
-import { startDistributorOnboarding, getOrCreateDistributorLink } from "@/lib/actions/distributor";
+import { getOrCreateDistributorLink } from "@/lib/actions/distributor";
 import { DISTRIBUTOR_SHARE } from "@/lib/distributor";
-
-function OnboardingForm({ returnPath }: { returnPath: string }) {
-  const [state, formAction, pending] = useActionState(startDistributorOnboarding, null);
-
-  return (
-    <form action={formAction}>
-      <input type="hidden" name="returnPath" value={returnPath} />
-      <button
-        type="submit"
-        disabled={pending}
-        className="rounded bg-black px-3 py-1.5 text-sm text-white disabled:opacity-50 dark:bg-white dark:text-black"
-      >
-        {pending ? "Redirecting…" : "Set up payouts to earn from sharing this"}
-      </button>
-      {state?.error && <p className="mt-1 text-xs text-red-600">{state.error}</p>}
-    </form>
-  );
-}
+import DistributorOnboardingForm from "@/components/distributor-onboarding-form";
 
 function ShareLinkButton({ momentId }: { momentId: string }) {
   const [pending, startTransition] = useTransition();
@@ -89,7 +72,11 @@ export default function DistributorShareCard({
         link for this moment.
       </p>
       <div className="mt-3">
-        {payoutsReady ? <ShareLinkButton momentId={momentId} /> : <OnboardingForm returnPath={returnPath} />}
+        {payoutsReady ? (
+          <ShareLinkButton momentId={momentId} />
+        ) : (
+          <DistributorOnboardingForm returnPath={returnPath} label="Set up payouts to earn from sharing this" />
+        )}
       </div>
     </div>
   );

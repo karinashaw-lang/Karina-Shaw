@@ -21,6 +21,7 @@ export default async function Nav() {
             <>
               {streak > 0 && <span title={`${streak}-day streak`}>🔥 {streak}</span>}
               <Link href="/wall">Wall</Link>
+              <Link href="/earnings">Earnings</Link>
               {user.creatorProfile ? (
                 <>
                   <Link href={`/creators/${user.creatorProfile.handle}`}>

@@ -150,6 +150,10 @@ model BehindTheCutUnlock {
   behindTheCut            BehindTheCut @relation(fields: [behindTheCutId], references: [id])
   userId                  String
   user                    User         @relation(fields: [userId], references: [id])
+  /// What was actually paid at unlock time — priceCents on BehindTheCut
+  /// can change later, so this is the only accurate record for a creator's
+  /// earnings history (same reasoning as Tip.amountCents).
+  amountCents             Int
   stripeCheckoutSessionId String?      @unique
   createdAt               DateTime     @default(now())
 

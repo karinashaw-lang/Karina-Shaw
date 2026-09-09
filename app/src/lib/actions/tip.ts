@@ -9,6 +9,7 @@ import prisma from "@/lib/prisma";
 import { getAppUrl } from "@/lib/app-url";
 import { getOrCreateStripeCustomer, getStripe, isStripeConfigured } from "@/lib/integrations/stripe";
 import { resolveDistributorLink } from "@/lib/actions/distributor";
+import { distributorCutCents } from "@/lib/distributor";
 
 const tipSchema = z.object({
   creatorId: z.string().min(1),
@@ -112,14 +113,27 @@ export async function sendTip(
     redirect(checkoutUrl);
   }
 
-  await prisma.tip.create({
+  const resolvedLinkId = await resolveDistributorLink(distributorLinkId, creatorId, user.id);
+
+  const tip = await prisma.tip.create({
     data: {
       fromUserId: user.id,
       toCreatorId: creatorId,
       amountCents,
       message,
+      distributorLinkId: resolvedLinkId ?? undefined,
     },
   });
+
+  // No real Stripe Transfer to wait on in simulated mode — the split is
+  // just another simulated ledger entry, recorded immediately, same as the
+  // tip itself.
+  if (resolvedLinkId) {
+    const link = await prisma.distributorLink.findUniqueOrThrow({ where: { id: resolvedLinkId } });
+    await prisma.distributorEarning.create({
+      data: { distributorId: link.distributorId, tipId: tip.id, amountCents: distributorCutCents(amountCents) },
+    });
+  }
 
   revalidatePath(`/creators/${handle}`);
   return { success: true };

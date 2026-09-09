@@ -14,7 +14,7 @@ export default async function DashboardPage() {
 
   const creatorId = user.creatorProfile.id;
 
-  const [videoCount, followerCount, subscriberCount, tips] = await Promise.all([
+  const [videoCount, followerCount, subscriberCount, tips, distributorSplits, unlocks] = await Promise.all([
     prisma.video.count({ where: { creatorId } }),
     prisma.follow.count({ where: { creatorId } }),
     prisma.subscription.count({ where: { creatorId } }),
@@ -24,9 +24,18 @@ export default async function DashboardPage() {
       include: { fromUser: true },
       take: 20,
     }),
+    prisma.distributorEarning.findMany({ where: { tip: { toCreatorId: creatorId } } }),
+    prisma.behindTheCutUnlock.findMany({
+      where: { behindTheCut: { video: { creatorId } } },
+      orderBy: { createdAt: "desc" },
+      include: { user: true, behindTheCut: { include: { video: true } } },
+      take: 20,
+    }),
   ]);
 
   const totalCents = tips.reduce((sum, tip) => sum + tip.amountCents, 0);
+  const distributorSplitCents = distributorSplits.reduce((sum, earning) => sum + earning.amountCents, 0);
+  const unlockCents = unlocks.reduce((sum, unlock) => sum + unlock.amountCents, 0);
 
   return (
     <div className="mx-auto max-w-3xl px-6 py-10">
@@ -49,7 +58,18 @@ export default async function DashboardPage() {
           <p className="text-2xl font-semibold">${(totalCents / 100).toFixed(2)}</p>
           <p className="text-sm text-zinc-500">Tips received</p>
         </div>
+        <div className="rounded-lg border border-black/10 p-4 dark:border-white/10">
+          <p className="text-2xl font-semibold">${(unlockCents / 100).toFixed(2)}</p>
+          <p className="text-sm text-zinc-500">Behind the Cut</p>
+        </div>
       </div>
+
+      {distributorSplitCents > 0 && (
+        <p className="mt-2 text-xs text-zinc-500">
+          ${(distributorSplitCents / 100).toFixed(2)} of the tips above went to viewers who shared your
+          moments through a distributor link.
+        </p>
+      )}
 
       {!isStripeConfigured() ? (
         <p className="mt-4 text-xs text-zinc-500">
@@ -92,6 +112,23 @@ export default async function DashboardPage() {
               <span className="font-medium">{tip.fromUser?.name ?? tip.guestEmail ?? "A guest"}</span> sent $
               {(tip.amountCents / 100).toFixed(2)}
               {tip.message && <> — &ldquo;{tip.message}&rdquo;</>}
+            </li>
+          ))}
+        </ul>
+      )}
+
+      <h2 className="mt-8 text-lg font-medium">Recent Behind the Cut unlocks</h2>
+      {unlocks.length === 0 ? (
+        <p className="mt-2 text-sm text-zinc-500">No unlocks yet.</p>
+      ) : (
+        <ul className="mt-4 flex flex-col gap-2 text-sm">
+          {unlocks.map((unlock) => (
+            <li key={unlock.id}>
+              <span className="font-medium">{unlock.user.name}</span> unlocked{" "}
+              <Link href={`/videos/${unlock.behindTheCut.videoId}`} className="underline">
+                {unlock.behindTheCut.video.title}
+              </Link>{" "}
+              for ${(unlock.amountCents / 100).toFixed(2)}
             </li>
           ))}
         </ul>

@@ -219,7 +219,7 @@ export async function unlockBehindTheCut(
   }
 
   await prisma.behindTheCutUnlock.create({
-    data: { behindTheCutId: behindTheCut.id, userId: user.id },
+    data: { behindTheCutId: behindTheCut.id, userId: user.id, amountCents: behindTheCut.priceCents },
   });
 
   revalidatePath(`/videos/${videoId}`);

@@ -192,6 +192,53 @@ convention.
     `stripe.checkout.sessions.create` call reaches Stripe's real servers, fails with a genuine
     "Invalid API Key" error, and is caught cleanly in the UI rather than crashing.
 
+- **Earnings pages** (`src/app/(main)/earnings`, additions to `src/app/(main)/creator/dashboard`)
+  — a real UI over ledgers that already existed in the database but had nowhere to be seen. Any
+  signed-in user (not just creators — a distributor doesn't have to be one) gets `/earnings`: a
+  running total and itemized history of `DistributorEarning` rows, plus payout-account status and
+  an onboarding button reused from the moment page's share card (now extracted into
+  `distributor-onboarding-form.tsx` so both places share one implementation). The creator
+  dashboard gained a Behind the Cut revenue tile (sum of `BehindTheCutUnlock.amountCents` across
+  a creator's videos), a recent-unlocks list alongside the existing recent-tips list, and a note
+  showing how much of their tip total was actually split off to distributors.
+  - **Schema change:** `BehindTheCutUnlock` didn't record how much was actually paid — only
+    `BehindTheCut.priceCents`, which the creator can change after the fact, existed. Added
+    `amountCents` to `BehindTheCutUnlock` (same reasoning as `Tip.amountCents`: a mutable price
+    elsewhere in the schema can't be trusted for historical earnings), set from the real
+    `session.amount_total` in the Stripe webhook or from `priceCents` at the moment of a
+    simulated unlock.
+  - **Bug found and fixed while building this:** the earnings pages are the first place in the
+    app that actually reads the `DistributorEarning` ledger, and building them surfaced that the
+    ledger could never contain anything without a live Stripe account. `DistributorEarning` rows
+    are only ever created inside the Stripe webhook's `splitDistributorPayout`, which the
+    *simulated* (no-Stripe-key) tip path never reaches — and that same simulated path also never
+    stored `distributorLinkId` on the `Tip` it created, silently dropping the attribution
+    entirely. In other words: distributor attribution was completely non-functional in the
+    default (no-Stripe-key) configuration, the one this whole app runs in without real credentials.
+    Fixed `sendTip`'s simulated branch to resolve and store the `distributorLinkId` like the real
+    path already does, and to write a `DistributorEarning` immediately as a second simulated
+    ledger entry (no real money moves either way in this mode, same as the tip itself) rather than
+    silently doing nothing.
+  - **Known gap, not fixed — pre-existing, just newly visible:** getting a distributor share link
+    at all still requires `isStripeConfigured()` to be true, purely because the moment page only
+    renders `DistributorShareCard` behind that check — `getOrCreateDistributorLink` itself has no
+    such requirement. This means the fix above (distributor earnings now work without Stripe) is
+    currently only reachable by creating a `DistributorLink` directly in the database, since the
+    UI to obtain one never appears without a key. Loosening that page-level gate so the share card
+    can appear once a distributor's `stripeChargesEnabled` is true — which, admittedly, still can't
+    happen without Stripe either — wouldn't actually unlock anything further without a live
+    account, so it's left as-is; noted here so the gap doesn't look like an oversight.
+  - **Verification:** a full real-browser flow — a creator publishes a moment and sets up Behind
+    the Cut; a distributor is given a `DistributorLink` directly in the database (the gap above
+    means the UI can't produce one here) and a `stripeChargesEnabled` flag, matching how Connect
+    onboarding completion is already simulated elsewhere in this doc; a separate tipper follows
+    the `?d=` link and sends a tip through the real, visible `TipForm`, confirmed to land as a
+    `Tip` with the correct `distributorLinkId` and a `DistributorEarning` for exactly 20% of the
+    tip; the distributor's `/earnings` page shows the correct running total and lists the moment
+    by name. Separately, a viewer unlocking Behind the Cut confirmed the creator dashboard's new
+    revenue tile and unlock list update correctly. The webhook's `amount_total`-based
+    `amountCents` was verified directly with a hand-signed `checkout.session.completed` event.
+
 ## Cheap-to-build differentiators (no new credentials needed)
 
 A few features from the latest plan revision are built entirely on infrastructure already
@@ -365,3 +412,6 @@ infrastructure, build differentiation" philosophy:
   `src/components/behind-the-cut-editor.tsx` + `behind-the-cut-panel.tsx`, unlock via Stripe
   Checkout handled in `src/app/api/webhooks/stripe`; the free **effort badge** —
   `src/components/effort-badge.tsx` + `effort-badge-editor.tsx` — surfaced on `src/app/videos/[id]`
+- **Earnings pages** — `src/app/(main)/earnings` (distributor ledger, any signed-in user),
+  `src/components/distributor-onboarding-form.tsx` (shared with the moment page's share card),
+  Behind the Cut revenue + distributor split breakdown added to `src/app/(main)/creator/dashboard`
