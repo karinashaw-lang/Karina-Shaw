@@ -31745,5 +31745,52 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "statement_of_partnership_authority_info_sheet",
+    "title": "Statement of Partnership Authority — Information Sheet",
+    "description": "Explains the optional Secretary of State filing by which a California general partnership can publicly identify its partners (or an authorized agent), name the partners authorized to transfer partnership real property, and grant or limit individual partners' authority (Corp. Code §§ 16105, 16301-16305): the default partner-agency rule it operates alongside, required filing content, the statement's conclusive effect on a good-faith third party's reliance, the narrower rules on constructive notice of limitations, the companion statement of denial, and general filing/execution mechanics.",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "sopa_intro",
+      "sopa_default_partner_agency",
+      "sopa_filing_and_required_content",
+      "sopa_agent_maintained_partner_list",
+      "sopa_conclusive_grant_of_authority",
+      "sopa_notice_of_limitations",
+      "sopa_statement_of_denial",
+      "sopa_execution_amendment_filing_mechanics",
+      "sopa_property_transfer_by_holding_form",
+      "sopa_ordinary_course_case_illustration",
+      "sopa_ack"
+    ],
+    "fields": [
+      {
+        "id": "partnershipName",
+        "label": "Partnership name",
+        "placeholder": "Morgan & Lee Consulting",
+        "required": true
+      },
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date prepared",
+        "placeholder": "September 9, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state",
+        "placeholder": "San Diego, California",
+        "required": true
+      }
+    ]
   }
 ]
