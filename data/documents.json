@@ -32264,5 +32264,49 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "alcohol_licensee_employment_restrictions_info_sheet",
+    "title": "Age and Anti-Solicitation Employment Restrictions for Alcoholic Beverage Licensees — Information Sheet",
+    "description": "Explains employment restrictions the Alcoholic Beverage Control Act imposes on a licensee, under Business and Professions Code sections 25657 and 25663 (Article 3, \"Women and Minors,\" of the Act's regulatory provisions): the on-sale prohibition against employing anyone under 21 to prepare or serve alcoholic beverages and its accompanying misdemeanor, the separate off-sale rule making it a license-suspension/revocation ground to employ anyone under 18 to sell alcohol (subject to a continuous-adult-supervision exception), the exception permitting 18-to-21-year-old employees of a bona fide public eating place to serve alcohol when service is incidental to their primary meal-service duties, the statutory definitions of \"bona fide public eating place\" in sections 23038 and 23038.1, and the separate section 25657 prohibitions on employing someone for a commission to procure or encourage alcohol sales and on employing or knowingly permitting loitering to solicit alcohol purchases, each punishable as a misdemeanor. Distinct from this corpus's existing Minor Work Permits information sheet (the Education Code's general school work-permit system).",
+    "categories": [
+      "Hiring"
+    ],
+    "clauseOrder": [
+      "alclic_intro",
+      "alclic_onsale_under21_prohibition",
+      "alclic_offsale_under18_restriction",
+      "alclic_public_eating_place_exception",
+      "alclic_public_eating_place_definition",
+      "alclic_commission_solicitation_prohibition",
+      "alclic_loitering_solicitation_prohibition",
+      "alclic_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Licensee / employer name",
+        "placeholder": "Acme Restaurant Group, Inc.",
+        "required": true
+      },
+      {
+        "id": "jobTitle",
+        "label": "Position",
+        "placeholder": "Server",
+        "required": true
+      },
+      {
+        "id": "applicantName",
+        "label": "Employee's or applicant's name",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 9, 2026",
+        "required": true
+      }
+    ]
   }
 ]
