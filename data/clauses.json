@@ -89878,6 +89878,137 @@
       "title": "Acknowledgment",
       "kind": "drafting",
       "body": "Please sign below to indicate that you have received and reviewed this information sheet.\n\nApplicant: {{applicantName}}\nPosition: {{jobTitle}}\nAgency/Employer: {{publicEntityName}}\nDate: {{dateSigned}}"
+    },
+    {
+      "id": "cpreempt_purpose",
+      "title": "Purpose of This Copyright Preemption Doctrine Information Sheet",
+      "kind": "drafting",
+      "body": "This Information Sheet describes federal copyright preemption under 17 U.S.C. § 301, part of the Copyright Act of 1976 — the statutory provision, and the California case law construing it, that determines whether a state-law claim touching material within copyright's subject matter is displaced by federal copyright law, or instead survives alongside or independent of it. It is prepared by {{preparerName}} concerning a situation involving {{companyName}} and {{adversePartyName}}. The state-law claims or rights under consideration are described as follows: {{claimsAtIssueDescription}}. This Information Sheet is a general informational reference describing what section 301 says and how published California case law has construed and applied it. It does not itself determine whether any specific claim described above is, or is not, preempted, and it is not a substitute for that case-specific legal determination. This document is distinct from, and is meant as a companion to, this project's existing Trade Secret Preemption Doctrine Information Sheet: that document addresses California Civil Code section 3426.7, a state statute that determines which other California civil claims may be brought alongside a trade secret misappropriation claim resting on the same facts. This document instead addresses a separate, federal question that can arise for any state-law claim touching material within copyright's subject matter, whether or not trade secrets are involved."
+    },
+    {
+      "id": "cpreempt_statute_301a",
+      "title": "Statutory Text: 17 U.S.C. § 301(a) — Rights Equivalent to Copyright Are Governed Exclusively by Federal Law",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-09",
+      "body": "Section 301(a) of the Copyright Act, codified at 17 United States Code section 301(a), provides that as of January 1, 1978, all legal or equitable rights equivalent to any of the exclusive rights within the general scope of copyright specified in 17 U.S.C. § 106, in works of authorship fixed in a tangible medium of expression and within copyright's subject matter as specified in 17 U.S.C. §§ 102-103, are governed exclusively by the Copyright Act — regardless of whether the work was created before or after that date, and regardless of whether it has been published. The subsection further states that after that date, no person is entitled to any such right, or equivalent right, in such a work under the common law or statutes of any state.",
+      "gap": "This section was independently fetched twice from the official U.S. Code website (uscode.house.gov), via curl with two different User-Agent strings, roughly ten minutes apart. The two raw HTML responses differed only in dynamically generated JSF session-state tokens (a hidden form field and a session-id URL fragment) that regenerate on every request to that site; after stripping HTML tags and that session-state noise, the two fetches produced byte-identical visible text, confirming this is not a caching or mirroring artifact. The quoted text was separately cross-confirmed as appearing verbatim, in both the two California Court of Appeal opinions cited elsewhere in this document (Fleet v. CBS, Inc. and Kabehie v. Zoland, each independently fetched from CourtListener), both of which quote this same subsection when explaining section 301. This document quotes the current, currently codified text of section 301(a); the statute has not been amended in the portion quoted here since the version those two courts quoted, although Congress has since added additional subsections to section 301 (for example, a subsection (c) concerning pre-1972 sound recordings, added in 2018) that are not addressed in this document because they concern a narrower subject not at issue here.",
+      "citations": [
+        {
+          "case": "17 U.S.C. § 301(a) (Copyright Act of 1976, official U.S. Code text)",
+          "cite": "Preemption with respect to other laws, subsection (a)",
+          "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title17-section301&num=0&edition=prelim",
+          "quote": "On and after January 1, 1978, all legal or equitable rights that are equivalent to any of the exclusive rights within the general scope of copyright as specified by section 106 in works of authorship that are fixed in a tangible medium of expression and come within the subject matter of copyright as specified by sections 102 and 103, whether created before or after that date and whether published or unpublished, are governed exclusively by this title. Thereafter, no person is entitled to any such right or equivalent right in any such work under the common law or statutes of any State."
+        }
+      ]
+    },
+    {
+      "id": "cpreempt_statute_301b",
+      "title": "Statutory Text: 17 U.S.C. § 301(b)(3) — Rights Not Equivalent to Copyright Are Not Preempted",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-09",
+      "body": "Section 301(b) is subsection (a)'s counterpart. It lists categories of state common-law or statutory rights and remedies that the Copyright Act does not annul or limit. Among them, 17 U.S.C. § 301(b)(3) preserves state-law rights and remedies for activities that violate legal or equitable rights not equivalent to any of the exclusive rights within the general scope of copyright specified in 17 U.S.C. § 106. Subsection (b) separately preserves, in three other paragraphs not quoted here, rights in subject matter outside copyright's scope, causes of action arising from undertakings commenced before January 1, 1978, and certain state and local landmark, historic-preservation, zoning, and building-code laws affecting architectural works.",
+      "gap": "Independently fetched twice from uscode.house.gov with two different User-Agent strings, confirmed byte-identical after normalizing dynamic session-state HTML noise (see the gap field on the companion § 301(a) clause in this document for the same fetch method and result). Only paragraph (3) of the four paragraphs in subsection (b) is quoted, because it is the paragraph that directly states the non-equivalence rule this document discusses; paragraphs (1), (2), and (4) address different, narrower subjects (non-copyrightable subject matter, pre-1978 undertakings, and architectural-work landmark and zoning laws, respectively) that this document does not otherwise discuss and were not independently researched beyond confirming their existence in the fetched statutory text.",
+      "citations": [
+        {
+          "case": "17 U.S.C. § 301(b)(3) (Copyright Act of 1976, official U.S. Code text)",
+          "cite": "Preemption with respect to other laws, subsection (b), paragraph (3)",
+          "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title17-section301&num=0&edition=prelim",
+          "quote": "activities violating legal or equitable rights that are not equivalent to any of the exclusive rights within the general scope of copyright as specified by section 106"
+        }
+      ]
+    },
+    {
+      "id": "cpreempt_case_two_condition_test",
+      "title": "Case Law: The Two-Condition Threshold Test for Copyright Preemption",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-09",
+      "body": "California Courts of Appeal, construing section 301, have held that for preemption to occur under the Copyright Act, two conditions must be met: first, the subject of the state-law claim must be a work fixed in a tangible medium of expression that comes within the subject matter or scope of copyright protection; second, the right asserted under state law must be equivalent to the exclusive rights contained in 17 U.S.C. § 106. This two-condition test was articulated in Fleet v. CBS, Inc. and has since been cited and applied by other California Courts of Appeal decisions, including Kabehie v. Zoland.",
+      "gap": "Fleet v. CBS, Inc., 50 Cal.App.4th 1911 (Cal. Ct. App., 2d Dist. 1996), is a published opinion, independently fetched in full from CourtListener's opinion database (opinion id 2292439). This is a genuinely independent second primary source from the Kabehie v. Zoland opinion cited elsewhere in this document — not a second query against the same document — and the quoted two-condition test was confirmed as an exact substring of that independently fetched opinion text. A CourtListener full-text search for the same quoted phrase was also run as a separate query path and confirmed the phrase traces to Fleet, and that Fleet's formulation is itself quoted or cited by at least three later published California Court of Appeal decisions (KNB Enterprises v. Matthews, Civic Partners Stockton v. Youssefi, and Kabehie v. Zoland). Kabehie v. Zoland's own opinion states that the California Supreme Court has not addressed the issue of federal copyright preemption of state actions, so this two-condition test rests on Court of Appeal authority, not a California Supreme Court holding. Fleet is a Second Appellate District decision; this document does not represent that every California appellate district uses identical language for this test.",
+      "citations": [
+        {
+          "case": "Fleet v. CBS, Inc.",
+          "cite": "50 Cal. App. 4th 1911, 1918-1919 (Cal. Ct. App., 2d Dist., Nov. 26, 1996)",
+          "url": "https://www.courtlistener.com/opinion/2292439/fleet-v-cbs-inc/",
+          "quote": "Thus, for preemption to occur under the Act, two conditions must be met: first, the subject of the claim must be a work fixed in a tangible medium of expression and come within the subject matter or scope of copyright protection as described in sections 102 and 103 of 17 United States Code, and second, the right asserted under state law must be equivalent to the exclusive rights contained in section 106."
+        }
+      ]
+    },
+    {
+      "id": "cpreempt_case_equivalence_test",
+      "title": "Case Law: When a State-Law Right Is “Equivalent” to a Copyright Right",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-09",
+      "body": "Fleet v. CBS, Inc. further held that a right is equivalent to a right within copyright's exclusive province when it is infringed by the mere act of reproducing, performing, distributing, or displaying the work at issue. Applying that rule to the facts before it — a claim under California's right-of-publicity statute, Civil Code section 3344, seeking only to prevent distribution of the plaintiffs' own copyrighted film performances — the court held the claim asserted nothing more than the reproduction, performance, distribution, or display of a dramatic performance captured on film, and that the claim was therefore preempted.",
+      "gap": "Quoted from the same independently fetched Fleet v. CBS, Inc. opinion (CourtListener opinion id 2292439) discussed in this document's clause on the two-condition threshold test; see that clause's gap field for fetch method. This clause describes Fleet's application of the equivalence test to its own facts — a right-of-publicity claim under Civil Code section 3344 aimed at a copyrighted film performance — not a general holding that right-of-publicity claims are always preempted; the same opinion elsewhere distinguishes several other right-of-publicity cases (concerning a person's name, voice, or likeness apart from any copyrightable performance) where no preemption applied, and this document does not address those distinctions further.",
+      "citations": [
+        {
+          "case": "Fleet v. CBS, Inc.",
+          "cite": "50 Cal. App. 4th 1911, 1922-1923 (Cal. Ct. App., 2d Dist., Nov. 26, 1996)",
+          "url": "https://www.courtlistener.com/opinion/2292439/fleet-v-cbs-inc/",
+          "quote": "a right is equivalent to rights within the exclusive province of copyright when it is infringed by the mere act of reproducing, performing, distributing, or displaying the work at issue. A claim asserted to prevent nothing more than the reproduction, performance, distribution, or display of a dramatic performance captured on film is subsumed by copyright law and preempted."
+        }
+      ]
+    },
+    {
+      "id": "cpreempt_case_extra_element_test",
+      "title": "Case Law: The “Extra Element” Test for Federal Copyright Preemption",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-09",
+      "body": "Applying section 301(b)'s equivalence inquiry to specific causes of action, California Courts of Appeal have developed what they call the “extra element” test: a state-law cause of action is not preempted if it requires proof of an element qualitatively different from the elements of a federal copyright infringement claim. In Kabehie v. Zoland, the Court of Appeal explained that California Courts of Appeal have generally adopted this test, while also noting that the California Supreme Court has not itself addressed the issue of federal copyright preemption of state actions.",
+      "gap": "Kabehie v. Zoland, 102 Cal.App.4th 513 (Cal. Ct. App., 2d Dist. 2002), is a published opinion, independently fetched in full from CourtListener's opinion database (opinion id 9745064, cluster id 2246073). The quoted sentences were confirmed as an exact substring of that fetched opinion text, and separately re-confirmed via an independent CourtListener full-text search for the same phrase, which returned this opinion as the only match — both checks query the same underlying CourtListener database rather than two independently hosted sources, so this is one primary source (the opinion) checked two different ways, disclosed on that basis, though it is corroborated by the independently fetched Fleet v. CBS, Inc. opinion cited elsewhere in this document for the closely related two-condition and equivalence tests. This is a single Second Appellate District decision; this document does not represent that every California appellate district has adopted identical language for the extra element test, and, as the quoted opinion itself states, the California Supreme Court has not addressed federal copyright preemption of state actions.",
+      "citations": [
+        {
+          "case": "Kabehie v. Zoland",
+          "cite": "102 Cal. App. 4th 513, 517 (Cal. Ct. App., 2d Dist., Sept. 26, 2002)",
+          "url": "https://www.courtlistener.com/opinion/2246073/kabehie-v-zoland/",
+          "quote": "State law causes of action are not preempted if they require elements that are qualitatively different from the elements of a federal copyright infringement action. This is the “extra element” test for federal copyright preemption."
+        }
+      ]
+    },
+    {
+      "id": "cpreempt_case_breach_of_contract_rule",
+      "title": "Case Law: Applying the Extra-Element Test to Breach of Contract Claims",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-09",
+      "body": "Addressing an issue no prior published California Court of Appeal decision had reached, Kabehie v. Zoland held that in a breach of contract action concerning material within copyright's subject matter, the mere breach of the promise inherent in every contract does not, by itself, supply the extra element needed to avoid preemption unless the promise creates a right qualitatively different from copyright. The court held that a right to payment, a right to royalties, or any other independent covenant is qualitatively different from copyright and constitutes the requisite extra element, so that a breach of contract action asserting that kind of right is not preempted by federal copyright law.",
+      "gap": "Quoted from the same independently fetched Kabehie v. Zoland opinion (CourtListener opinion id 9745064) discussed in this document's clause on the extra element test; see that clause's gap field for fetch method and the same disclosed limitation (single Court of Appeal district; no California Supreme Court authority directly on point). The opinion notes that federal and other California courts have disagreed on this specific question, with a minority position holding that breach of contract actions are never preempted because a contractual promise is itself always an extra element; Kabehie v. Zoland expressly rejects that minority position and adopts the majority, promise-must-be-qualitatively-different approach quoted here.",
+      "citations": [
+        {
+          "case": "Kabehie v. Zoland",
+          "cite": "102 Cal. App. 4th 513, 527 (Cal. Ct. App., 2d Dist., Sept. 26, 2002)",
+          "url": "https://www.courtlistener.com/opinion/2246073/kabehie-v-zoland/",
+          "quote": "The mere breach of the promise inherent in every contract does not constitute the requisite extra element unless the promise creates a right qualitatively different from copyright. A right that is qualitatively different from copyright includes a right to payment, a right to royalties, or any other independent covenant. These qualitatively different rights constitute the requisite extra element. These breach of contract actions are not preempted by federal copyright law."
+        }
+      ]
+    },
+    {
+      "id": "cpreempt_case_fraud_extra_element",
+      "title": "Case Law: Fraud Claims and the Extra Element of Misrepresentation",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-09",
+      "body": "Kabehie v. Zoland also addressed a fraud cause of action arising from the same underlying facts as the breach of contract claims at issue. Citing Gladstone v. Hillel, the court stated that under the extra element test, federal copyright law does not preempt state causes of action alleging fraud, because fraud involves the extra element of misrepresentation. Applying that principle to the specific fraud claim before it — which alleged that the defendant misrepresented its ownership of the rights to certain music compositions and falsely promised to deliver master recordings — the court held the claim was not preempted because it contained those extra elements.",
+      "gap": "Quoted from the same independently fetched Kabehie v. Zoland opinion (CourtListener opinion id 9745064) discussed in this document's other Kabehie clauses; see the extra-element-test clause's gap field for fetch method and disclosed limitations. The quoted sentence is Kabehie's own application of the rule to its facts, not a direct quotation of Gladstone v. Hillel, 203 Cal.App.3d 977 (1988), which Kabehie cites for the general “fraud involves the extra element of misrepresentation” proposition; Gladstone v. Hillel was not independently fetched or verified for this document, so this clause states only what Kabehie itself held on its own facts, not an independently confirmed holding of Gladstone.",
+      "citations": [
+        {
+          "case": "Kabehie v. Zoland",
+          "cite": "102 Cal. App. 4th 513, 529-530 (Cal. Ct. App., 2d Dist., Sept. 26, 2002)",
+          "url": "https://www.courtlistener.com/opinion/2246073/kabehie-v-zoland/",
+          "quote": "The fraud cause of action in this case is not preempted, because it contains extra elements including the allegations that Avang misrepresented its ownership of the rights to the music compositions and falsely promised to deliver master recordings."
+        }
+      ]
+    },
+    {
+      "id": "cpreempt_signature",
+      "title": "Signature and Acknowledgment Block — Copyright Preemption Doctrine Information Sheet",
+      "kind": "drafting",
+      "body": "I declare under penalty of perjury under the laws of the State of California that the foregoing is true and correct.\n\nExecuted on {{dateSigned}} at {{cityState}}.\n\nSignature of {{preparerName}}: ☐ _________________________\n\n[This Information Sheet is a general reference describing federal copyright preemption under 17 U.S.C. § 301 and how published California case law has construed and applied it. It is not a court filing, a pleading, or legal advice about whether any specific claim described above is preempted, and completing or signing it does not itself determine that outcome.]"
     }
   ]
 }
