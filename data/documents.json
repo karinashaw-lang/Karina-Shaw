@@ -32095,5 +32095,44 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "home_inspector_standards_info_sheet",
+    "title": "Home Inspector Standards of Practice and Liability — Information Sheet",
+    "description": "Explains, using the statute's own text, California's home inspector chapter (Business and Professions Code §§ 7195-7199): the statutory definitions of \"home inspection,\" \"material defect,\" \"home inspection report,\" \"home inspector,\" and \"transfer\"; the § 7196 standard of care for inspectors who are not licensed contractors, pest control operators, architects, or registered engineers; the § 7197 unfair-business-practice prohibitions on self-dealing repairs, referral compensation, and contingent-fee inspections, along with the home-protection-company, roofing-contractor, and plumbing-contractor exceptions; the § 7198 rule that contractual waivers of the duty of care or caps on liability are invalid; and the § 7199 four-year statute of limitations for claims arising from a home inspection report.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "homeinspect_declaration",
+      "homeinspect_definitions",
+      "homeinspect_report_and_scope",
+      "homeinspect_standard_of_care",
+      "homeinspect_conflict_of_interest",
+      "homeinspect_contractor_exceptions",
+      "homeinspect_waiver_invalid",
+      "homeinspect_statute_of_limitations",
+      "homeinspect_ack"
+    ],
+    "fields": [
+      {
+        "id": "propertyAddress",
+        "label": "Property address",
+        "placeholder": "123 Main St., Sacramento, CA 95814",
+        "required": true
+      },
+      {
+        "id": "clientName",
+        "label": "Client's name (person who ordered the inspection)",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "homeInspectorName",
+        "label": "Home inspector's name or company",
+        "placeholder": "Bay Area Home Inspections, Inc.",
+        "required": false
+      }
+    ]
   }
 ]
