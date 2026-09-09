@@ -106,7 +106,18 @@
     <section id="screen-inbox" class="screen">
       <h1>Inbox</h1>
       <p class="lede">Every date typed into a saved document, gathered in one place — a start date, a notice date, an expiration date. This reports what's there and how far away it is. It doesn't flag anything as urgent or say what to do about it.</p>
+
+      <h3 class="section-heading">Promises</h3>
+      <p class="signature-note">A quick, informal commitment made or received — not a document, just something worth not forgetting. Typed in here, kept on this device.</p>
+      <form id="promise-form" class="promise-form">
+        <input type="text" id="promise-text" placeholder="&#8220;Friday, the deck, to Marcus&#8221;" />
+        <button type="submit" class="primary">Add</button>
+      </form>
+      <div id="promise-list"></div>
+
+      <h3 class="section-heading">Dates</h3>
       <div id="inbox-content"></div>
+
       <div class="actions">
         <button type="button" class="secondary" id="inbox-back">Back</button>
       </div>

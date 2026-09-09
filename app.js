@@ -487,6 +487,109 @@ function renderInbox() {
   });
 }
 
+// ---------- lightweight promises ----------
+// The other half of Layer 6: not every commitment becomes a document.
+// This is deliberately just a flat, typed-in list — no parsing, no
+// inferred due dates, no reminders (that would need something to
+// deliver them outside the browser). It exists so a promise made in
+// passing isn't only as durable as memory.
+const PROMISES_KEY = 'groundtruth-promises';
+
+function loadPromises() {
+  try {
+    const raw = localStorage.getItem(PROMISES_KEY);
+    return raw ? JSON.parse(raw) : [];
+  } catch (e) {
+    return [];
+  }
+}
+
+function savePromises(list) {
+  try { localStorage.setItem(PROMISES_KEY, JSON.stringify(list)); } catch (e) { /* not fatal */ }
+}
+
+function addPromise(text) {
+  const list = loadPromises();
+  list.push({
+    id: `p-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`,
+    text,
+    createdAt: new Date().toISOString(),
+    done: false,
+  });
+  savePromises(list);
+}
+
+function togglePromise(id) {
+  const list = loadPromises();
+  const item = list.find(p => p.id === id);
+  if (item) item.done = !item.done;
+  savePromises(list);
+}
+
+function removePromise(id) {
+  savePromises(loadPromises().filter(p => p.id !== id));
+}
+
+function renderPromises() {
+  const container = document.getElementById('promise-list');
+  container.innerHTML = '';
+  const list = loadPromises().slice().sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
+  if (list.length === 0) {
+    container.innerHTML = '<p class="library-empty">Nothing captured yet — a quick promise made or received, typed in above, shows up here.</p>';
+    return;
+  }
+
+  const renderRow = p => {
+    const row = document.createElement('div');
+    row.className = 'inbox-row' + (p.done ? ' promise-done' : '');
+
+    const info = document.createElement('div');
+    const textEl = document.createElement('div');
+    textEl.className = 'library-row-title';
+    textEl.textContent = p.text;
+    const metaEl = document.createElement('div');
+    metaEl.className = 'library-row-date';
+    metaEl.textContent = new Date(p.createdAt).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
+    info.appendChild(textEl);
+    info.appendChild(metaEl);
+    row.appendChild(info);
+
+    const btnGroup = document.createElement('div');
+    btnGroup.style.display = 'flex';
+    btnGroup.style.gap = '8px';
+    btnGroup.style.flex = 'none';
+
+    const toggleBtn = document.createElement('button');
+    toggleBtn.type = 'button';
+    toggleBtn.className = 'secondary';
+    toggleBtn.textContent = p.done ? 'Mark open' : 'Mark done';
+    toggleBtn.addEventListener('click', () => { togglePromise(p.id); renderPromises(); });
+    btnGroup.appendChild(toggleBtn);
+
+    const removeBtn = document.createElement('button');
+    removeBtn.type = 'button';
+    removeBtn.className = 'secondary';
+    removeBtn.textContent = 'Remove';
+    removeBtn.addEventListener('click', () => { removePromise(p.id); renderPromises(); });
+    btnGroup.appendChild(removeBtn);
+
+    row.appendChild(btnGroup);
+    container.appendChild(row);
+  };
+
+  const open = list.filter(p => !p.done);
+  const done = list.filter(p => p.done);
+  open.forEach(renderRow);
+  if (done.length) {
+    const heading = document.createElement('p');
+    heading.className = 'consistency-heading';
+    heading.textContent = 'Done';
+    container.appendChild(heading);
+    done.forEach(renderRow);
+  }
+}
+
 async function init() {
   const [docs, clauseData] = await Promise.all([
     fetch('data/documents.json').then(r => r.json()),
@@ -1095,9 +1198,20 @@ document.getElementById('wizard-form').addEventListener('submit', e => {
 
 document.getElementById('inbox-link').addEventListener('click', () => {
   renderInbox();
+  renderPromises();
   showScreen('screen-inbox');
 });
 document.getElementById('inbox-back').addEventListener('click', () => showScreen('screen-picker'));
+
+document.getElementById('promise-form').addEventListener('submit', e => {
+  e.preventDefault();
+  const input = document.getElementById('promise-text');
+  const text = input.value.trim();
+  if (!text) return;
+  addPromise(text);
+  input.value = '';
+  renderPromises();
+});
 
 document.getElementById('library-link').addEventListener('click', () => {
   renderLibrary();
