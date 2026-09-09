@@ -32134,5 +32134,42 @@
         "required": false
       }
     ]
+  },
+  {
+    "id": "events_employee_baseball_venue_final_wage_info_sheet",
+    "title": "Final Wage Payment for Events Employees at Professional Baseball Venues (Labor Code § 201.8) — Information Sheet",
+    "description": "Explains, using the statute's own text, California's distinct final-wage timing rule for an \"events employee\" working at a professional baseball venue (Labor Code § 201.8): the statutory definitions of \"events employee,\" \"event,\" and \"professional baseball venue,\" the next-regular-payday rule that applies only when the work relationship ends other than by a discharge or a quit (which instead revert to the general Sections 201 and 202 rules), the mail/direct-deposit/on-site payment options, the continuous-employment deeming rule under which the end of a single game, homestand, or season does not by itself count as a discharge or layoff, the collective-bargaining carve-out and non-effect on unemployment insurance law, and Section 203's explicit inclusion of Section 201.8 in its waiting-time-penalty list.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "eventsemp_finalwage_declaration",
+      "eventsemp_finalwage_definitions",
+      "eventsemp_finalwage_core_rule",
+      "eventsemp_finalwage_payment_methods",
+      "eventsemp_finalwage_continuous_employment",
+      "eventsemp_finalwage_cba_and_ui_savings",
+      "eventsemp_finalwage_penalty_crossref"
+    ],
+    "fields": [
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Ballpark Concessions Co.",
+        "required": true
+      },
+      {
+        "id": "terminationDate",
+        "label": "Termination date",
+        "placeholder": "October 1, 2026",
+        "required": true
+      }
+    ]
   }
 ]
