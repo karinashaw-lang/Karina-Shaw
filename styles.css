@@ -87,7 +87,7 @@ a{ color:var(--accent-ink); }
   text-transform:uppercase;
   color:var(--ink-soft);
 }
-.topbar-right{ display:flex; align-items:baseline; gap:18px; }
+.topbar-right{ display:flex; flex-wrap:wrap; align-items:baseline; gap:12px 18px; row-gap:10px; }
 .topbar-link{
   font-family:'IBM Plex Mono', ui-monospace, monospace;
   font-size:11.5px;
@@ -599,6 +599,31 @@ footer.hint{
   border-color:var(--accent);
 }
 .promise-done .library-row-title{ text-decoration:line-through; color:var(--ink-soft); }
+
+.relationship-block{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:6px;
+  padding:16px 18px;
+  margin:0 0 14px;
+}
+.relationship-name{
+  font-family:'Fraunces', Georgia, serif;
+  font-weight:600;
+  font-size:17px;
+  margin:0 0 10px;
+}
+.relationship-doc-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:8px 0;
+  border-top:1px solid var(--line);
+}
+.relationship-doc-row:first-of-type{ border-top:none; padding-top:0; }
+.relationship-doc-info{ font-size:14.5px; }
+.relationship-doc-role{ color:var(--ink-soft); font-size:13px; }
 
 .inbox-row{
   display:flex;

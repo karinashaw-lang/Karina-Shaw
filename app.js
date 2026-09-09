@@ -590,6 +590,89 @@ function renderPromises() {
   }
 }
 
+// ---------- relationships: per-counterparty history ----------
+// Groups saved documents by the value of every *Name field, the same
+// reliable naming convention the Inbox's date detection relies on
+// (companyName, landlordName, tenantName, ...). This can't know which
+// name is "you" versus a counterparty — there's no account layer to
+// tell it that yet — so it just shows every name and where it
+// appears, exactly as typed, and lets whoever's looking make sense of
+// it. A name spelled two different ways across documents shows up as
+// two separate entries here, same as the consistency checker already
+// treats that as worth a second look rather than something to guess
+// about.
+function collectRelationships() {
+  const byName = new Map();
+  loadLibrary().forEach(entry => {
+    const doc = state.documents.find(d => d.id === entry.documentId);
+    if (!doc) return;
+    const rolesByName = new Map();
+    doc.fields.forEach(f => {
+      if (!/name$/i.test(f.id)) return;
+      const val = (entry.answers[f.id] || '').trim();
+      if (!val) return;
+      if (!rolesByName.has(val)) rolesByName.set(val, []);
+      rolesByName.get(val).push(f.label);
+    });
+    rolesByName.forEach((roles, val) => {
+      if (!byName.has(val)) byName.set(val, []);
+      byName.get(val).push({ entry, docTitle: entry.title, roles, generatedAt: entry.generatedAt });
+    });
+  });
+  return byName;
+}
+
+function renderRelationships() {
+  const container = document.getElementById('relationships-content');
+  container.innerHTML = '';
+  const byName = collectRelationships();
+
+  if (byName.size === 0) {
+    container.innerHTML = '<p class="library-empty">No names found yet. A company, landlord, tenant, or other name typed into a saved document shows up here automatically.</p>';
+    return;
+  }
+
+  [...byName.entries()]
+    .sort((a, b) => b[1].length - a[1].length || a[0].localeCompare(b[0]))
+    .forEach(([name, appearances]) => {
+      const block = document.createElement('div');
+      block.className = 'relationship-block';
+
+      const nameEl = document.createElement('div');
+      nameEl.className = 'relationship-name';
+      nameEl.textContent = `${name} — ${appearances.length} document${appearances.length === 1 ? '' : 's'}`;
+      block.appendChild(nameEl);
+
+      appearances
+        .slice()
+        .sort((a, b) => new Date(b.generatedAt) - new Date(a.generatedAt))
+        .forEach(a => {
+          const row = document.createElement('div');
+          row.className = 'relationship-doc-row';
+
+          const info = document.createElement('div');
+          info.className = 'relationship-doc-info';
+          info.textContent = a.docTitle;
+          const role = document.createElement('div');
+          role.className = 'relationship-doc-role';
+          role.textContent = `${a.roles.join(', ')} · ${new Date(a.generatedAt).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' })}`;
+          info.appendChild(role);
+          row.appendChild(info);
+
+          const viewBtn = document.createElement('button');
+          viewBtn.type = 'button';
+          viewBtn.className = 'secondary';
+          viewBtn.textContent = 'View';
+          viewBtn.addEventListener('click', () => viewLibraryEntry(a.entry));
+          row.appendChild(viewBtn);
+
+          block.appendChild(row);
+        });
+
+      container.appendChild(block);
+    });
+}
+
 async function init() {
   const [docs, clauseData] = await Promise.all([
     fetch('data/documents.json').then(r => r.json()),
@@ -1202,6 +1285,12 @@ document.getElementById('inbox-link').addEventListener('click', () => {
   showScreen('screen-inbox');
 });
 document.getElementById('inbox-back').addEventListener('click', () => showScreen('screen-picker'));
+
+document.getElementById('relationships-link').addEventListener('click', () => {
+  renderRelationships();
+  showScreen('screen-relationships');
+});
+document.getElementById('relationships-back').addEventListener('click', () => showScreen('screen-picker'));
 
 document.getElementById('promise-form').addEventListener('submit', e => {
   e.preventDefault();
