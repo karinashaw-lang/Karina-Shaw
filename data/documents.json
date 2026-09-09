@@ -32400,5 +32400,41 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "real_estate_broker_termination_notice_dre_info_sheet",
+    "title": "Real Estate Broker's Duty to Notify the DRE of a Salesperson's Termination — Information Sheet",
+    "description": "Explains the notice duty California real estate law places on a responsible broker when a real estate salesperson's (or a broker acting as a salesperson's) affiliation ends: the Business and Professions Code section 10161.8 duty to notify the Real Estate Commissioner, the parallel notice duty when a broker retains a new salesperson or broker, the implementing regulation's ten-day mailing deadline for a broker-to-broker termination (and a disclosed internal cross-reference discrepancy in that regulation's text), and the separate section 10137 restriction on paying or accepting compensation for licensed activity outside the current broker relationship.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "realestatetermnotice_intro",
+      "realestatetermnotice_core_duty",
+      "realestatetermnotice_hiring_symmetry",
+      "realestatetermnotice_regulation_timing",
+      "realestatetermnotice_no_compensation_outside_broker",
+      "realestatetermnotice_ack"
+    ],
+    "fields": [
+      {
+        "id": "responsibleBrokerName",
+        "label": "Responsible broker name",
+        "placeholder": "Golden State Realty Group, Inc.",
+        "required": true
+      },
+      {
+        "id": "salespersonName",
+        "label": "Salesperson name",
+        "placeholder": "Dana R. Whitfield",
+        "required": true
+      },
+      {
+        "id": "terminationDate",
+        "label": "Date the affiliation was terminated",
+        "placeholder": "September 9, 2026",
+        "required": true
+      }
+    ]
   }
 ]
