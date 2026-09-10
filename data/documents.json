@@ -32858,5 +32858,45 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "meth_fentanyl_contaminated_property_disclosure_info_sheet",
+    "title": "Methamphetamine or Fentanyl Contaminated Property Disclosure — Information Sheet",
+    "description": "Explains, using the statute's own text, California's Methamphetamine or Fentanyl Contaminated Property Cleanup Act (Health & Safety Code §§ 25400.10-25400.47): the chapter's short title and legislative findings, key definitions, the local health officer's contamination order and lien process, the property owner's duty to vacate a hazardous zone and retain an authorized remediation contractor, when the chapter's disclosure duties run and how they end, and the separate written-disclosure-and-acknowledgment duties owed to a prospective buyer, a prospective tenant, and a prospective buyer or tenant of an affected mobilehome, manufactured home, or recreational vehicle.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "methfent_declaration",
+      "methfent_act_framework",
+      "methfent_definitions",
+      "methfent_order_and_lien",
+      "methfent_vacate_and_remediation",
+      "methfent_disclosure_duration_release",
+      "methfent_buyer_disclosure",
+      "methfent_tenant_disclosure",
+      "methfent_mobilehome_disclosure",
+      "methfent_ack"
+    ],
+    "fields": [
+      {
+        "id": "propertyAddress",
+        "label": "Property address",
+        "placeholder": "123 Main St., Sacramento, CA 95814",
+        "required": true
+      },
+      {
+        "id": "sellerLandlordName",
+        "label": "Seller/landlord's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "buyerTenantName",
+        "label": "Buyer/tenant's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      }
+    ]
   }
 ]
