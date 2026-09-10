@@ -32898,5 +32898,50 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "ca_s_corporation_tax_info_sheet",
+    "title": "California's S Corporation Franchise Tax — Information Sheet",
+    "description": "Explains how California taxes a corporation that has made a federal S election, under Rev. & Tax. Code § 23802: California does not follow the federal rule exempting an S corporation from entity-level tax, instead taxing it at a reduced 1½ percent rate (higher for a financial corporation) on top of the same $800 minimum franchise tax that applies to corporations generally, with offsetting deductions for built-in gains, passive investment income, and net operating losses from S-corporation years.",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "scorptax_declaration",
+      "scorptax_federal_rule_inapplicable",
+      "scorptax_continues_subject_to_corporate_tax",
+      "scorptax_reduced_rate",
+      "scorptax_financial_corp_rate_increase",
+      "scorptax_minimum_tax_still_applies",
+      "scorptax_built_in_gains_passive_income_deduction",
+      "scorptax_nol_deduction_s_years_only",
+      "scorptax_ack"
+    ],
+    "fields": [
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Business name under consideration (if applicable)",
+        "placeholder": "Acme, Inc.",
+        "required": false
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 10, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "San Jose, California",
+        "required": true
+      }
+    ]
   }
 ]
