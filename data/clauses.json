@@ -92626,6 +92626,143 @@
       "title": "Signature Block for a Renewal Request",
       "kind": "drafting",
       "body": "I declare under penalty of perjury under the laws of the State of California that the foregoing is true and correct. Executed on {{signatureDate}}, at {{signatureCity}}, California.\n\n☐ _________________________ {{petitionerName}}, Protected Party (signature)\n\nThis document, including this signature block, does not itself renew, extend, or modify any restraining order -- only a court, after applying the statutory process described in this document, can grant or deny a request to renew a protective order."
+    },
+    {
+      "id": "scorptax_declaration",
+      "title": "Purpose and Scope of This Information Sheet",
+      "kind": "drafting",
+      "body": "This information sheet, prepared by {{preparerName}}, states what California's Revenue and Taxation Code provides about how California itself taxes a corporation that has made a federal S corporation election — a separate question from the federal eligibility rules for making that election in the first place, addressed by this project's S Corporation Election Overview document. Where a specific business name is named below, that is {{companyName}}; this sheet can also be read on its own, without it filled in, as a general reference to what the statute says. This sheet states the law; it does not calculate, estimate, or evaluate what any particular corporation owes, and it is not a substitute for individualized legal or tax advice."
+    },
+    {
+      "id": "scorptax_federal_rule_inapplicable",
+      "title": "California Does Not Follow the Federal Rule That an S Corporation Pays No Entity-Level Tax",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-10",
+      "body": "Under federal law, an S corporation generally pays no federal corporate income tax itself — its income, deductions, and credits pass through to its shareholders instead. California's Revenue and Taxation Code expressly declines to follow that federal rule: the Internal Revenue Code section that makes a federal S corporation nontaxable at the entity level does not apply for California purposes. A corporation that has made a valid federal S election is not, by virtue of that election alone, exempt from California's own corporate-level tax.",
+      "gap": "This clause states only that the federal nontaxability rule does not apply; the following clauses describe what California imposes on an S corporation instead.",
+      "citations": [
+        {
+          "case": "Cal. Rev. & Tax. Code § 23802(a)",
+          "cite": "Tax Treatment of S Corporations and Their Shareholders, nonapplication of the federal S corporation nontaxability rule",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=RTC&sectionNum=23802.",
+          "quote": "Section 1363(a) of the Internal Revenue Code, relating to the taxability of an “S” corporation does not apply."
+        }
+      ]
+    },
+    {
+      "id": "scorptax_continues_subject_to_corporate_tax",
+      "title": "An S Corporation Remains Subject to California's Corporate Tax, Subject to Modifications",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-10",
+      "body": "California's statute affirmatively states that a corporation that is an S corporation for California purposes continues to be subject to the same two chapters of tax that apply to corporations generally — the doing-business corporate franchise tax (Chapter 2, beginning with § 23101) and the corporate income tax (Chapter 3, beginning with § 23501) — but with a specific, named set of exceptions that modify how those taxes apply to it. Those exceptions, including a reduced tax rate, are addressed in the clauses that follow.",
+      "gap": "This clause states the general continuing-liability rule and identifies the two chapters it references by their own opening section numbers; it does not restate the full text of either Chapter 2 or Chapter 3.",
+      "citations": [
+        {
+          "case": "Cal. Rev. & Tax. Code § 23802(b)",
+          "cite": "Tax Treatment of S Corporations and Their Shareholders, continuing general subjection to corporate tax",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=RTC&sectionNum=23802.",
+          "quote": "Corporations that are “S” corporations under this chapter shall continue to be subject to the taxes imposed under Chapter 2 (commencing with Section 23101) and Chapter 3 (commencing with Section 23501), except as follows:"
+        }
+      ]
+    },
+    {
+      "id": "scorptax_reduced_rate",
+      "title": "The Rate Is Reduced to 1½ Percent Instead of the Regular Corporate Rate",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-10",
+      "body": "In place of the regular corporate tax rate that would otherwise apply under § 23151 or § 23501, an S corporation's California tax under those sections is imposed at a rate of 1½ percent.",
+      "gap": "A genuine source-formatting correction: the statute's official published text renders this fraction as a stacked HTML construction (the digit \"1\" followed by a superscript \"1\" over a subscript \"2\"), which a plain text-extraction of the page's markup can misread as the character sequence \"11/2\" rather than the intended fraction \"1½\" (one and one-half). This clause's quote reflects the corrected reading, confirmed by inspecting the underlying HTML markup directly rather than relying on stripped plain text; the numeric rate is 1.5 percent, not 11.5, 1/12, or any other reading of the raw character sequence. This clause does not restate the regular corporate rates set by § 23151 or § 23501 themselves, so it does not state the dollar difference between the regular rate and this reduced rate.",
+      "citations": [
+        {
+          "case": "Cal. Rev. & Tax. Code § 23802(b)(1)",
+          "cite": "Tax Treatment of S Corporations and Their Shareholders, reduced 1½ percent tax rate",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=RTC&sectionNum=23802.",
+          "quote": "The tax imposed under Section 23151 or 23501 shall be imposed at a rate of 1½ percent rather than the rate specified in those sections."
+        }
+      ]
+    },
+    {
+      "id": "scorptax_financial_corp_rate_increase",
+      "title": "A Higher Rate Applies to an S Corporation That Is Also a Financial Corporation",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-10",
+      "body": "The 1½ percent rate is not the final rate for every S corporation. Where the S corporation is also a financial corporation, the statute increases that rate by the excess of the rate imposed under § 23183 over the rate imposed under § 23151 — that is, by whatever additional amount the general financial-corporation tax rate exceeds the general corporate tax rate.",
+      "gap": "This clause states the rate-adjustment mechanism as the statute describes it, by cross-reference to §§ 23183 and 23151; it does not independently verify the current text of either of those two sections or state the resulting combined percentage, because doing so would require fetching and verifying those sections separately, which this research did not do.",
+      "citations": [
+        {
+          "case": "Cal. Rev. & Tax. Code § 23802(b)(2)",
+          "cite": "Tax Treatment of S Corporations and Their Shareholders, increased rate for a financial corporation that is also an S corporation",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=RTC&sectionNum=23802.",
+          "quote": "In the case of an “S” corporation that is also a financial corporation, the rate of tax specified in paragraph (1) shall be increased by the excess of the rate imposed under Section 23183 over the rate imposed under Section 23151."
+        }
+      ]
+    },
+    {
+      "id": "scorptax_minimum_tax_still_applies",
+      "title": "An S Corporation Is Still Subject to the $800 Minimum Franchise Tax",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-10",
+      "body": "Beyond the 1½ percent (or, for a financial corporation, higher) rate on its net income, an S corporation remains subject to California's minimum franchise tax under § 23153 — the same flat minimum tax, currently $800 annually, that applies to corporations generally, as this project's other Business Formation documents describe in more detail.",
+      "gap": "This clause quotes § 23802(c)'s cross-reference confirming that an S corporation is subject to § 23153; it does not restate § 23153's own text, current dollar amount, or first-year exemption, all addressed in this project's Articles of Incorporation document.",
+      "citations": [
+        {
+          "case": "Cal. Rev. & Tax. Code § 23802(c)",
+          "cite": "Tax Treatment of S Corporations and Their Shareholders, continued subjection to the minimum franchise tax",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=RTC&sectionNum=23802.",
+          "quote": "An “S” corporation is subject to the minimum franchise tax imposed under Section 23153."
+        }
+      ]
+    },
+    {
+      "id": "scorptax_built_in_gains_passive_income_deduction",
+      "title": "A Deduction Offsets Income Already Taxed as Built-In Gains or Passive Investment Income",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-10",
+      "body": "To avoid taxing the same income twice, California allows an S corporation a deduction, for purposes of computing the taxes described above, for built-in gains and passive investment income on which a tax has already been imposed under the Corporation Tax Law, computed in accordance with Internal Revenue Code § 1374 (tax on certain built-in gains) or § 1375 (tax on passive investment income).",
+      "gap": "This clause states that the deduction exists and the federal provisions it is computed in accordance with; it does not independently restate or verify the text of IRC §§ 1374 or 1375 themselves, or calculate any specific corporation's built-in-gains or passive-investment-income tax exposure.",
+      "citations": [
+        {
+          "case": "Cal. Rev. & Tax. Code § 23802(e)",
+          "cite": "Tax Treatment of S Corporations and Their Shareholders, deduction for built-in gains and passive investment income already taxed",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=RTC&sectionNum=23802.",
+          "quote": "an “S” corporation shall be allowed a deduction from income for built-in gains and passive investment income for which a tax has been imposed under this part in accordance with the provisions of Section 1374 of the Internal Revenue Code, relating to tax imposed on certain built-in gains, or Section 1375 of the Internal Revenue Code, relating to tax imposed on passive investment income."
+        }
+      ]
+    },
+    {
+      "id": "scorptax_nol_deduction_s_years_only",
+      "title": "A Net Operating Loss Deduction Is Allowed, But Only for Losses From S-Corporation Years",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-10",
+      "body": "An S corporation is allowed California's net operating loss deduction under § 24416 or § 24416.1, but only with respect to losses incurred during the periods when the corporation was an S corporation for California purposes. Consistent with this limitation, the federal rule denying carryovers of losses and other items between a corporation's \"C\" years and its \"S\" years — Internal Revenue Code § 1371(b) — also applies for purposes of this California tax.",
+      "gap": "This clause states the S-years-only limitation and the federal nonapplication-of-carryovers rule it tracks; it does not independently restate or verify the text of IRC § 1371(b), or California Rev. & Tax. Code §§ 24416 or 24416.1, themselves.",
+      "citations": [
+        {
+          "case": "Cal. Rev. & Tax. Code § 23802(d)(1)",
+          "cite": "Tax Treatment of S Corporations and Their Shareholders, net operating loss deduction limited to S-corporation-year losses",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=RTC&sectionNum=23802.",
+          "quote": "an “S” corporation shall be allowed a deduction under Section 24416 or 24416.1 (relating to net operating loss deductions), but only with respect to losses incurred during periods in which the corporation is an “S” corporation for purposes of this part."
+        },
+        {
+          "case": "Cal. Rev. & Tax. Code § 23802(d)(2)",
+          "cite": "Tax Treatment of S Corporations and Their Shareholders, denial of carryovers between C years and S years",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=RTC&sectionNum=23802.",
+          "quote": "Section 1371(b) of the Internal Revenue Code, relating to denial of carryovers between “C” years and “S” years, applies for purposes of the tax imposed under subdivision (b), except as provided in paragraph (1)."
+        }
+      ]
+    },
+    {
+      "id": "scorptax_ack",
+      "title": "Signature and Certification",
+      "kind": "drafting",
+      "body": "I, {{preparerName}}, certify that I prepared this information sheet as a summary of Cal. Rev. & Tax. Code § 23802, for informational reference only. This information sheet does not calculate any amount owed, does not evaluate {{companyName}}'s tax obligations, and is not a substitute for consulting a person licensed to practice law or provide tax advice in the relevant jurisdiction.\n\nBusiness name under consideration, if applicable: {{companyName}}\n\nExecuted on {{dateSigned}} at {{cityState}}.\n\nSignature of {{preparerName}}: ☐ _________________________"
     }
   ]
 }
