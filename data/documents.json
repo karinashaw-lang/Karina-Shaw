@@ -33205,5 +33205,42 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "erisa_section_510_benefit_interference_discharge_info_sheet",
+    "title": "ERISA Section 510 — Discharge or Discrimination to Interfere With Employee-Benefit Rights (29 U.S.C. § 1140) — Information Sheet",
+    "description": "Explains, using the statute's own text and three controlling decisions, the federal rule that makes it unlawful to discharge, fine, suspend, expel, discipline, or discriminate against a participant or beneficiary of an employee benefit plan for exercising a plan right or for the purpose of interfering with the attainment of a right under the plan (ERISA § 510, 29 U.S.C. § 1140): the statute's two prohibitions and its separate protection for people who give information or testify; the Supreme Court's holding in Inter-Modal Rail Employees Assn. v. Atchison, Topeka & Santa Fe Ry. Co. (1997) that § 510 reaches non-vested welfare benefits such as health coverage and not only pension vesting; the Ninth Circuit's specific-intent element (Dytrt v. Mountain State Telephone & Telegraph Co., 1990) under which an incidental loss of benefits is not enough; the Supreme Court's holding in Ingersoll-Rand Co. v. McClendon (1990) that a state-law wrongful-discharge claim premised on benefit interference is preempted because ERISA § 502(a) is the exclusive remedy; and the enforcement mechanics of § 502(a)(3), (e)(1), and (g)(1) (equitable relief, exclusive federal jurisdiction, discretionary attorney's fees). Distinct from this corpus's 401(k)/retirement distribution notice, COBRA documents, and deferred-compensation vesting information sheet, none of which address the § 510 anti-interference cause of action, and from the wrongful-termination-in-violation-of-public-policy information sheet, which addresses California's Tameny tort rather than the federal ERISA claim that displaces state-law theories in this area.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "erisa510_declaration",
+      "erisa510_statutory_prohibitions",
+      "erisa510_witness_protection_and_enforcement_crossref",
+      "erisa510_welfare_benefits_covered",
+      "erisa510_specific_intent_element",
+      "erisa510_state_claims_preempted",
+      "erisa510_enforcement_mechanics"
+    ],
+    "fields": [
+      {
+        "id": "employeeName",
+        "label": "Employee (plan participant) name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Employer / plan sponsor name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "terminationDate",
+        "label": "Separation date",
+        "placeholder": "October 1, 2026",
+        "required": true
+      }
+    ]
   }
 ]
