@@ -33205,5 +33205,70 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "controlling_shareholder_fiduciary_duty_info_sheet",
+    "title": "Controlling Shareholder Fiduciary Duty to Minority Shareholders — Information Sheet",
+    "description": "Background information on the fiduciary duty California case law imposes on majority or controlling shareholders of a corporation toward minority shareholders and the corporation — the Jones v. H. F. Ahmanson & Co. (1969) 1 Cal.3d 93 rule that control may not be used to benefit the controllers alone or to the minority's detriment, the \"inherent fairness\" standard and burden of proof, the reach of the duty to statutory powers and to dealings in the controlling block itself, the Jones \"gravamen\" test distinguishing a minority shareholder's individual claim from a derivative claim and its application in Jara v. Suprema Meats, Inc. (2004) and Sheley v. Harrop (2017), the remedy Jones fashioned, and the related statutory grounds in Corporations Code §§ 309 and 1800 -- a companion to this project's existing director duty-of-care, self-dealing, derivative-lawsuit, and involuntary-dissolution documents.",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "ctrlsh_purpose_declaration",
+      "ctrlsh_fiduciary_duty_rule",
+      "ctrlsh_inherent_fairness_standard",
+      "ctrlsh_scope_of_the_duty",
+      "ctrlsh_jones_holding_on_its_facts",
+      "ctrlsh_individual_vs_derivative",
+      "ctrlsh_jara_applying_the_test",
+      "ctrlsh_elements_and_director_overlap",
+      "ctrlsh_remedy_in_jones",
+      "ctrlsh_statutory_backdrop_1800",
+      "ctrlsh_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Corporation name",
+        "placeholder": "Acme Widgets, Inc.",
+        "required": true
+      },
+      {
+        "id": "entityType",
+        "label": "Entity type",
+        "placeholder": "corporation",
+        "required": true
+      },
+      {
+        "id": "shareholderName",
+        "label": "Shareholder's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "transactionDescription",
+        "label": "Transaction or conduct at issue, if applicable",
+        "placeholder": "officer compensation increases approved by the two majority shareholders",
+        "required": false
+      },
+      {
+        "id": "ownershipPercentage",
+        "label": "Approximate percentage of shares held, if known",
+        "placeholder": "25%",
+        "required": false
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 10, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
