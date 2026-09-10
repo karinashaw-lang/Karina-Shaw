@@ -32820,5 +32820,43 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "temp_services_employer_final_wage_timing_info_sheet",
+    "title": "Temporary Services Employer Final-Wage Timing (Labor Code § 201.3) — Information Sheet",
+    "description": "Explains, using the statute's own text, California's distinct wage-timing rules for an employee of a \"temporary services employer\" (Labor Code § 201.3): the statute's own seven-function definition of a covered employer and its nonprofit/farm-labor-contractor/garment-manufacturer exclusions, the general no-less-than-weekly payday rule that applies throughout an assignment regardless of when it ends (and its narrower security-guard/private-patrol-operator variant), the faster day-to-day and trade-dispute daily-pay rules, how a discharge or a quit reverts to the general Sections 201 and 202 rules that apply to employees generally, the 90-consecutive-day limitation on the section's own special timing rules, and the Section 203 waiting-time-penalty cross-reference. Distinct from this corpus's industry-specific final-wage-timing documents for the motion-picture/broadcasting, oil-drilling, and baseball-venue industries, none of which address temporary staffing assignments, and from the Final Wage Payment / Waiting-Time Penalty Demand Letter document, which addresses the general Section 203 penalty mechanics rather than Section 201.3's own assignment-based timing rules.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "tempsvcwage_declaration",
+      "tempsvcwage_employer_definition",
+      "tempsvcwage_exclusions_and_terms",
+      "tempsvcwage_weekly_payday_rule",
+      "tempsvcwage_daily_pay_rules",
+      "tempsvcwage_discharge_quit_crossref",
+      "tempsvcwage_90day_exception",
+      "tempsvcwage_penalty_and_savings"
+    ],
+    "fields": [
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Company (temporary services employer) name",
+        "placeholder": "Acme Staffing, Inc.",
+        "required": true
+      },
+      {
+        "id": "terminationDate",
+        "label": "Assignment end / termination date",
+        "placeholder": "October 1, 2026",
+        "required": true
+      }
+    ]
   }
 ]
