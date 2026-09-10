@@ -91115,6 +91115,161 @@
       "title": "Signature and Receipt",
       "kind": "drafting",
       "body": "Employee Signature: ☐ _________________________ Date: _______________\n\n{{employeeName}} (print name)\n\nEmployer Representative Signature: ☐ _________________________ Date: _______________\n\n{{companyName}} (print name and title)"
+    },
+    {
+      "id": "cfsale_intro",
+      "title": "Purpose of This Copyright First Sale Doctrine Information Sheet",
+      "kind": "drafting",
+      "body": "This Information Sheet describes the federal copyright \"first sale\" doctrine, codified at 17 U.S.C. § 109 -- the statutory limit on a copyright owner's exclusive distribution right that, once a particular copy or phonorecord of a copyrighted work has been lawfully made and its ownership lawfully transferred, generally allows the person who owns that particular copy to sell, lend, give away, or otherwise dispose of it without needing the copyright owner's further permission. It is prepared by {{preparerName}} concerning the following copyrighted work and copy: {{workDescription}}, in connection with the following transaction or proposed transaction involving that copy: {{transactionDescription}}. This Information Sheet describes the statutory text of 17 U.S.C. § 109's core rule and its stated exceptions (for certain rental and lending of phonorecords and computer programs, for public display, and for persons who never acquired ownership of the copy), and two federal appellate decisions applying the doctrine -- one addressing whether the doctrine applies to copies manufactured outside the United States, the other addressing when a distribution described as a \"license\" is nonetheless a transfer of ownership for purposes of the doctrine. It does not itself determine whether the first sale doctrine applies to, or provides a defense for, any specific copy, transaction, or dispute described above, and it is not a substitute for that case-specific legal determination."
+    },
+    {
+      "id": "cfsale_description",
+      "title": "Description of the Copy and the Transaction at Issue",
+      "kind": "drafting",
+      "body": "Copyrighted work and particular copy or phonorecord at issue: {{workDescription}}. Transaction or proposed transaction involving that copy: {{transactionDescription}}. This description is provided by {{preparerName}} for reference in connection with the statutory text and case law described in this Information Sheet. Listing a work, copy, and transaction here does not itself establish how that copy was made, how its ownership was transferred (if at all), or whether any statutory exception in 17 U.S.C. § 109 applies to it."
+    },
+    {
+      "id": "cfsale_statute_core_right",
+      "title": "17 U.S.C. § 109(a): The Core First Sale Rule",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-10",
+      "body": "The Copyright Act grants a copyright owner the exclusive right, under 17 U.S.C. § 106(3), to distribute copies or phonorecords of the copyrighted work to the public by sale or other transfer of ownership. A separate provision of the same Act, 17 U.S.C. § 109(a), limits that exclusive distribution right once a particular copy has been lawfully made and its ownership transferred: notwithstanding § 106(3), the owner of a particular copy or phonorecord lawfully made under Title 17 -- or any person that owner authorizes -- is entitled, without needing the copyright owner's authority, to sell or otherwise dispose of possession of that particular copy or phonorecord. This is the provision courts and commentators refer to as the \"first sale\" doctrine: it limits the copyright owner's distribution right to the first transfer of ownership of a given copy, leaving the owner of that particular copy free to sell, lend, or give it away afterward.",
+      "gap": "This is the current, officially codified text of 17 U.S.C. § 109(a), independently fetched twice from the official U.S. Code website (uscode.house.gov), via curl with two different User-Agent strings, several minutes apart. The two raw HTML responses differed only in dynamically generated session-state tokens that regenerate on every request to that site; after stripping HTML tags and that session-state noise, the two fetches produced byte-identical visible text. The quoted sentence was confirmed as an exact substring of both normalized fetches. Section 109(a)'s full text also contains a second sentence (not quoted here) concerning copies or phonorecords of works subject to restored copyright under 17 U.S.C. § 104A that were manufactured before restoration -- a narrow, separate rule this document does not address because it concerns a distinct category of works (foreign works whose U.S. copyright was restored under the Uruguay Round Agreements Act) not at issue in the general first-sale scenario this document describes.",
+      "citations": [
+        {
+          "case": "17 U.S.C. § 109(a) (Copyright Act, official U.S. Code text)",
+          "cite": "Limitations on exclusive rights: Effect of transfer of particular copy or phonorecord, subsection (a)",
+          "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title17-section109&num=0&edition=prelim",
+          "quote": "Notwithstanding the provisions of section 106(3), the owner of a particular copy or phonorecord lawfully made under this title, or any person authorized by such owner, is entitled, without the authority of the copyright owner, to sell or otherwise dispose of the possession of that copy or phonorecord."
+        }
+      ]
+    },
+    {
+      "id": "cfsale_statute_rental_exception",
+      "title": "17 U.S.C. § 109(b)(1)(A): The Record and Computer Program Rental Exception, and Its Nonprofit Library Carve-Out",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-10",
+      "body": "The first sale doctrine described above does not extend to certain rental, lease, or lending transactions involving sound recordings and computer programs. Under 17 U.S.C. § 109(b)(1)(A), unless authorized by the relevant copyright owner (the owner of copyright in the sound recording, or the owner of copyright in the computer program, and, for a sound recording, the owner of copyright in the musical work embodied in it), neither the owner of a particular phonorecord nor a person in possession of a particular copy of a computer program may, for purposes of direct or indirect commercial advantage, dispose of possession of that phonorecord or computer program by rental, lease, or lending, or by any other act or practice in the nature of rental, lease, or lending. The same subsection then states its own carve-out from that restriction: the restriction does not apply to the rental, lease, or lending of a phonorecord for nonprofit purposes by a nonprofit library or nonprofit educational institution.",
+      "gap": "This is the current, officially codified text of 17 U.S.C. § 109(b)(1)(A), independently fetched twice from uscode.house.gov via curl with two different User-Agent strings; the two fetches were confirmed byte-identical after normalizing HTML markup and session-state noise, using the same dual-fetch method described in the cfsale_statute_core_right clause. Both quoted sentences come from the same statutory paragraph, § 109(b)(1)(A), and are not independent sources of each other; they are grouped in one clause because the nonprofit library carve-out is, on the statute's own terms, an exception to the immediately preceding restriction rather than a free-standing rule. This document does not address § 109(b)(1)(B) (which further exempts certain computer programs embodied in machines or products, and programs used only in limited-purpose video game equipment) or § 109(b)(2) (a separate, narrower nonprofit-library lending provision for computer programs conditioned on an affixed copyright warning), both of which are outside the general rental-exception scope this clause describes.",
+      "citations": [
+        {
+          "case": "17 U.S.C. § 109(b)(1)(A) (Copyright Act, official U.S. Code text)",
+          "cite": "Limitations on exclusive rights: Effect of transfer of particular copy or phonorecord, subsection (b)(1)(A) -- rental restriction",
+          "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title17-section109&num=0&edition=prelim",
+          "quote": "Notwithstanding the provisions of subsection (a), unless authorized by the owners of copyright in the sound recording or the owner of copyright in a computer program (including any tape, disk, or other medium embodying such program), and in the case of a sound recording in the musical works embodied therein, neither the owner of a particular phonorecord nor any person in possession of a particular copy of a computer program (including any tape, disk, or other medium embodying such program), may, for the purposes of direct or indirect commercial advantage, dispose of, or authorize the disposal of, the possession of that phonorecord or computer program (including any tape, disk, or other medium embodying such program) by rental, lease, or lending, or by any other act or practice in the nature of rental, lease, or lending."
+        },
+        {
+          "case": "17 U.S.C. § 109(b)(1)(A) (Copyright Act, official U.S. Code text)",
+          "cite": "Limitations on exclusive rights: Effect of transfer of particular copy or phonorecord, subsection (b)(1)(A) -- nonprofit library and educational institution carve-out",
+          "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title17-section109&num=0&edition=prelim",
+          "quote": "Nothing in the preceding sentence shall apply to the rental, lease, or lending of a phonorecord for nonprofit purposes by a nonprofit library or nonprofit educational institution."
+        }
+      ]
+    },
+    {
+      "id": "cfsale_statute_display_right",
+      "title": "17 U.S.C. § 109(c): The Public Display Exception",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-10",
+      "body": "A parallel provision applies the same ownership-based logic to the copyright owner's exclusive public display right. Under 17 U.S.C. § 106(5), a copyright owner generally has the exclusive right to display a copyrighted work publicly. Section 109(c) limits that right for a particular lawfully made copy: notwithstanding § 106(5), the owner of a particular copy lawfully made under Title 17 -- or any person that owner authorizes -- is entitled, without the copyright owner's authority, to display that copy publicly, either directly or by projecting no more than one image at a time, to viewers present at the place where the copy is located.",
+      "gap": "This is the current, officially codified text of 17 U.S.C. § 109(c), independently fetched twice from uscode.house.gov via curl with two different User-Agent strings and confirmed byte-identical after normalization, using the same dual-fetch method described in the cfsale_statute_core_right clause. This clause describes § 109(c)'s in-person display exception only; it does not address the separate limits in § 109(c) on projecting more than one image at a time or to viewers not present at the copy's location, both of which fall outside the scope of the quoted sentence and are not addressed further in this document.",
+      "citations": [
+        {
+          "case": "17 U.S.C. § 109(c) (Copyright Act, official U.S. Code text)",
+          "cite": "Limitations on exclusive rights: Effect of transfer of particular copy or phonorecord, subsection (c)",
+          "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title17-section109&num=0&edition=prelim",
+          "quote": "Notwithstanding the provisions of section 106(5), the owner of a particular copy lawfully made under this title, or any person authorized by such owner, is entitled, without the authority of the copyright owner, to display that copy publicly, either directly or by the projection of no more than one image at a time, to viewers present at the place where the copy is located."
+        }
+      ]
+    },
+    {
+      "id": "cfsale_statute_nonowner_exclusion",
+      "title": "17 U.S.C. § 109(d): The Privilege Belongs Only to an Owner, Not a Renter, Lessee, or Borrower",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-10",
+      "body": "The first-sale and public-display privileges described above are limited, by the statute's own terms, to a person who owns the particular copy in question. Under 17 U.S.C. § 109(d), the privileges described in § 109(a) (the first sale right to sell or otherwise dispose of a copy) and § 109(c) (the public display right) do not, unless the copyright owner authorizes it, extend to a person who acquired possession of the copy or phonorecord from the copyright owner by rental, lease, loan, or otherwise, without acquiring ownership of it. On the statute's own terms, then, a renter, lessee, bailee, or borrower of a copy does not, by virtue of that possession alone, acquire the § 109(a) or § 109(c) privileges that belong to an owner of the copy.",
+      "gap": "This is the current, officially codified text of 17 U.S.C. § 109(d), independently fetched twice from uscode.house.gov via curl with two different User-Agent strings and confirmed byte-identical after normalization, using the same dual-fetch method described in the cfsale_statute_core_right clause.",
+      "citations": [
+        {
+          "case": "17 U.S.C. § 109(d) (Copyright Act, official U.S. Code text)",
+          "cite": "Limitations on exclusive rights: Effect of transfer of particular copy or phonorecord, subsection (d)",
+          "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title17-section109&num=0&edition=prelim",
+          "quote": "The privileges prescribed by subsections (a) and (c) do not, unless authorized by the copyright owner, extend to any person who has acquired possession of the copy or phonorecord from the copyright owner, by rental, lease, loan, or otherwise, without acquiring ownership of it."
+        }
+      ]
+    },
+    {
+      "id": "cfsale_case_kirtsaeng_holding",
+      "title": "Kirtsaeng v. John Wiley & Sons, Inc.: The First Sale Doctrine Applies to Copies Lawfully Made Abroad",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-10",
+      "body": "The U.S. Supreme Court has described what the first sale doctrine accomplishes in § 106(3) exhaustion terms: once a copy of a copyrighted work has been lawfully sold, or its ownership otherwise lawfully transferred, the \"first sale\" is said to have \"exhausted\" the copyright owner's exclusive distribution right under § 106(3) as to that particular copy, leaving the buyer and subsequent owners of that copy free to dispose of it as they wish. In Kirtsaeng v. John Wiley & Sons, Inc., the Court addressed whether this doctrine applies only to copies manufactured within the United States, or also to copies of a copyrighted work that were manufactured abroad and imported into the United States after a lawful sale overseas. The Court held that the first sale doctrine applies to copies of a copyrighted work lawfully made abroad -- rejecting a geographical limitation on the phrase \"lawfully made under this title\" in § 109(a).",
+      "gap": "This is a real U.S. Supreme Court holding, used as evidence of the Court's own explanation of how the first sale doctrine operates and of its specific holding that the doctrine is not limited to copies manufactured in the United States -- not a claim that every copy manufactured abroad was necessarily \"lawfully made,\" which remains a separate, fact-specific question the Kirtsaeng holding does not resolve for any particular copy. Both quotes below come from the majority opinion in Kirtsaeng v. John Wiley & Sons, Inc., 568 U.S. 519 (2013), and were independently fetched twice: once via CourtListener's html_with_citations field for the opinion object (opinion id 9812706, the lead/majority opinion, distinct from the combined-opinion object whose id happens to coincide with the cluster id, 2959744 -- checked carefully per the required pipeline), and a second, independent time via CourtListener's plain_text field for the combined-opinion object (id 2959744). Both fetches contained both quoted passages verbatim, after normalizing benign line-wrap artifacts: the plain_text fetch renders § 106(3) without an internal space (\"§106(3)\") where the html_with_citations fetch renders it with one (\"§ 106(3)\"), and the plain_text fetch's original line-wrapped text used soft hyphens (e.g., \"subse­quent\") that were stripped for comparison -- both are benign source-formatting differences between CourtListener's two text representations of the same opinion, not a defect in the quoted text itself, and this document's quotes use the html_with_citations rendering (\"§ 106(3)\", with a space) for consistency with this project's existing citations to the same subsection.",
+      "citations": [
+        {
+          "case": "Kirtsaeng v. John Wiley & Sons, Inc.",
+          "cite": "568 U.S. 519, 524 (2013)",
+          "url": "https://www.courtlistener.com/opinion/2959744/kirtsaeng-v-john-wiley-sons-inc/",
+          "quote": "In copyright jargon, the “first sale” has “exhausted” the copyright owner’s § 106(3) exclusive distribution right."
+        },
+        {
+          "case": "Kirtsaeng v. John Wiley & Sons, Inc.",
+          "cite": "568 U.S. 519, 525 (2013)",
+          "url": "https://www.courtlistener.com/opinion/2959744/kirtsaeng-v-john-wiley-sons-inc/",
+          "quote": "We hold that the “first sale” doctrine applies to copies of a copyrighted work lawfully made abroad."
+        }
+      ]
+    },
+    {
+      "id": "cfsale_case_augusto_transfer_of_title",
+      "title": "UMG Recordings, Inc. v. Augusto: A Distribution Labeled a \"License\" Can Still Be a Transfer of Title",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-10",
+      "body": "In UMG Recordings, Inc. v. Augusto, the Ninth Circuit addressed whether promotional compact discs a record company mailed, unsolicited, to music critics and radio programmers -- marked with a statement describing the discs as the company's property, \"licensed\" to the recipient, with resale said to be prohibited -- were nonetheless transferred in ownership to the recipients for first-sale purposes, notwithstanding that label. On the record before it, the court found no evidence that any recipient had agreed to the stated license terms, and held that the distributor's transfer of possession -- made without retaining meaningful control over the discs or any knowledge of their status after shipment -- accomplished a transfer of title rather than a license. The court concluded that the distribution of the promotional discs, under those circumstances, effected a sale (a transfer of title) of the discs to the recipients, so that a subsequent sale of those particular discs by someone who acquired them from a recipient did not require the distributor's authorization.",
+      "gap": "This is a real Ninth Circuit holding, used as evidence of how that court analyzed and resolved the specific licensing statement and distribution practice before it -- not a claim that every promotional or complimentary distribution of a copyrighted work, or every statement labeled a \"license,\" produces the same result; the court's analysis turned on the specific, undisputed facts of that distribution (no prior request from recipients, no numbering or tracking of individual discs, no requirement that discs be returned, and no evidence any recipient assented to the stated terms). Both quotes below come from UMG Recordings, Inc. v. Augusto, 628 F.3d 1175 (9th Cir. 2011), and were independently fetched twice: once via CourtListener's html_with_citations field, and a second, independent time via CourtListener's plain_text field (both under opinion id 182134, which coincides with the cluster id for this single-opinion decision). Both fetches contained both quoted passages verbatim, after normalizing the plain_text fetch's line-wrap hyphenation (e.g., \"sup-port\" and \"con-clude\" as line breaks) -- a benign source-formatting artifact, not a defect in the quoted text. This document was unable to confirm a reporter (F.3d) pinpoint page for either quote: the page markers embedded in the plain_text fetch (a self-contained sequence beginning at page 323) do not correspond to the 628 F.3d 1175 volume-and-page citation reported for this case, so the citations below cite the case generally rather than to a specific reporter page, to avoid citing an unconfirmed pinpoint.",
+      "citations": [
+        {
+          "case": "UMG Recordings, Inc. v. Augusto",
+          "cite": "628 F.3d 1175 (9th Cir. 2011)",
+          "url": "https://www.courtlistener.com/opinion/182134/umg-recordings-inc-v-augusto/",
+          "quote": "Because the record here is devoid of any indication that the recipients agreed to a license, there is no evidence to support a conclusion that licenses were established under the terms of the promotional statement. Accordingly, we conclude that UMG’s transfer of possession to the recipients, without meaningful control or even knowledge of the status of the CDs after shipment, accomplished a transfer of title."
+        },
+        {
+          "case": "UMG Recordings, Inc. v. Augusto",
+          "cite": "628 F.3d 1175 (9th Cir. 2011)",
+          "url": "https://www.courtlistener.com/opinion/182134/umg-recordings-inc-v-augusto/",
+          "quote": "UMG’s distribution of the promotional CDs under the circumstances effected a sale (transfer of title) of the CDs to the recipients. Further sale of those copies was therefore permissible without UMG’s authorization."
+        }
+      ]
+    },
+    {
+      "id": "cfsale_case_augusto_labeling_not_dispositive",
+      "title": "UMG Recordings, Inc. v. Augusto: Calling an Arrangement a \"License\" Is a Factor, Not the Deciding Factor",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-10",
+      "body": "Separate from the specific facts of the promotional-CD distribution before it, the Ninth Circuit stated a general principle drawn from its own prior software-licensing decisions: in deciding whether an arrangement transferring a copy of a copyrighted work is a sale or a license for first-sale purposes, a party's own labeling of the arrangement as a \"license\" is a factor a court considers, but that labeling is not, by itself, the deciding factor.",
+      "gap": "This is a real Ninth Circuit statement of a general principle (summarizing the court's own prior decisions on software licensing, including Vernor v. Autodesk, Inc., Wall Data Inc. v. Los Angeles County Sheriff's Department, Triad Systems Corp. v. Southeastern Express Co., and MAI Systems Corp. v. Peak Computer, Inc.), used as evidence of that stated principle -- not a claim about how any of those four cited decisions individually applied it, none of which was independently fetched or verified for this document. The quote comes from UMG Recordings, Inc. v. Augusto, 628 F.3d 1175 (9th Cir. 2011), fetched via the same two independent CourtListener retrievals (html_with_citations and plain_text) described in the cfsale_case_augusto_transfer_of_title clause; the quote was confirmed verbatim in both. As with that clause's citations, no reporter pinpoint page could be confirmed from the available text, so the citation below cites the case generally.",
+      "citations": [
+        {
+          "case": "UMG Recordings, Inc. v. Augusto",
+          "cite": "628 F.3d 1175 (9th Cir. 2011)",
+          "url": "https://www.courtlistener.com/opinion/182134/umg-recordings-inc-v-augusto/",
+          "quote": "They recognized that the mere labeling of an arrangement as a license rather than a sale, although it was a factor to be considered, was not by itself dispositive of the issue."
+        }
+      ]
+    },
+    {
+      "id": "cfsale_signature",
+      "title": "Signature and Acknowledgment Block -- Copyright First Sale Doctrine Information Sheet",
+      "kind": "drafting",
+      "body": "I declare under penalty of perjury under the laws of the State of California that the foregoing is true and correct.\n\nExecuted on {{dateSigned}} at {{cityState}}.\n\nSignature of {{preparerName}}: ☐ _________________________\n\n[This Information Sheet is a general reference describing 17 U.S.C. § 109 and two federal appellate decisions applying it -- Kirtsaeng v. John Wiley & Sons, Inc., 568 U.S. 519 (2013), and UMG Recordings, Inc. v. Augusto, 628 F.3d 1175 (9th Cir. 2011). It is not a court filing, a pleading, or legal advice about whether the first sale doctrine applies to, or provides a defense concerning, the copy or transaction described above, and completing or signing it does not itself determine that outcome.]"
     }
   ]
 }
