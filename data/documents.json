@@ -32597,5 +32597,64 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "spendthrift_trust_creditor_protection_info_sheet",
+    "title": "Spendthrift Trust Provisions and Creditor Protection — Information Sheet",
+    "description": "Explains California Probate Code §§ 15300-15307: when a trust instrument's restraint on voluntary or involuntary transfer of a beneficiary's income or principal interest is valid and enforceable against the beneficiary's creditors and transferees, how the rule differs for support trusts and purely discretionary trusts, the statutory rule invalidating a self-settled restraint against the settlor's own creditors, and the further statutory exceptions — for spousal/child support judgments, public-benefits reimbursement, a general 25%-of-payment judgment-creditor cap, and amounts exceeding the beneficiary's education and support needs — letting certain creditors reach a beneficiary's interest despite an otherwise valid restraint.",
+    "categories": [
+      "Estate Planning"
+    ],
+    "clauseOrder": [
+      "spend_declaration",
+      "spend_income_restraint",
+      "spend_principal_restraint",
+      "spend_support_trust",
+      "spend_discretionary_trust",
+      "spend_self_settled_trust",
+      "spend_support_judgment_exception",
+      "spend_public_benefits_reimbursement",
+      "spend_general_creditor_25pct_cap",
+      "spend_excess_over_needs",
+      "spend_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "trustName",
+        "label": "Name of this trust",
+        "placeholder": "The Jordan Alex Lee Revocable Living Trust",
+        "required": true
+      },
+      {
+        "id": "settlorName",
+        "label": "Settlor's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "trusteeName",
+        "label": "Trustee's name",
+        "placeholder": "Taylor Morgan",
+        "required": true
+      },
+      {
+        "id": "beneficiaryName",
+        "label": "Beneficiary's name",
+        "placeholder": "Casey Lee",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 10, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
