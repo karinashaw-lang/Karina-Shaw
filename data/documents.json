@@ -33205,5 +33205,62 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "joint_authorship_copyright_coownership_info_sheet",
+    "title": "Joint Authorship and Copyright Co-Ownership — Information Sheet",
+    "description": "Explains the federal rules on joint authorship and co-ownership of copyright: the statutory definition of a \"joint work\" (17 U.S.C. § 101), the rule that the authors of a joint work are co-owners of its copyright (§ 201(a)), the Ninth Circuit's test for who is an \"author\" of a joint work under Aalmuhammed v. Lee (independently copyrightable contribution is necessary but not sufficient; control, objective manifestations of shared intent, and audience appeal as factors; a contract as the best evidence of intent), the default rules that a co-owner cannot infringe the co-owned copyright, may independently use or nonexclusively license it, and must account to the other co-owners for profits under a duty that arises from state law rather than the Copyright Act (Oddo v. Ries), the extension of those rules to partners and other co-owners who are not joint authors, the limit that a single co-owner cannot grant an exclusive license or convey more than its own interest (Sybersound Records, Inc. v. UAV Corp.), the written-instrument requirement for transfers (§ 204(a)), the work-made-for-hire ownership rule (§ 201(b)), and the copyright term for joint works (§ 302(b)). Distinct from this project's existing Work Made for Hire Agreement, Copyright Assignment Agreement, Copyright Registration Information Sheet, and Copyright Termination Right Information Sheet documents.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "jointauth_intro",
+      "jointauth_statutory_definition",
+      "jointauth_initial_ownership",
+      "jointauth_three_elements_copyrightable_contribution",
+      "jointauth_authorship_not_same_as_contribution",
+      "jointauth_aalmuhammed_factors",
+      "jointauth_contract_as_best_evidence_and_application",
+      "jointauth_coowner_independent_use_no_infringement",
+      "jointauth_duty_to_account_state_law",
+      "jointauth_coownership_without_joint_authorship_partnership",
+      "jointauth_exclusive_license_requires_all_coowners",
+      "jointauth_work_for_hire_distinction",
+      "jointauth_duration_302b",
+      "jointauth_relationship_to_sibling_docs",
+      "jointauth_ack"
+    ],
+    "fields": [
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "workDescription",
+        "label": "Description of the work",
+        "placeholder": "A feature-length documentary film titled \"Harbor Lights\" (working title)",
+        "required": true
+      },
+      {
+        "id": "contributorsDescription",
+        "label": "Persons who contributed to the work and what each contributed",
+        "placeholder": "Maria Chen (directed and edited the film); Devon Okafor (wrote the narration script); Sam Patel (composed the original score)",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 10, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
