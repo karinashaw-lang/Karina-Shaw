@@ -92626,6 +92626,219 @@
       "title": "Signature Block for a Renewal Request",
       "kind": "drafting",
       "body": "I declare under penalty of perjury under the laws of the State of California that the foregoing is true and correct. Executed on {{signatureDate}}, at {{signatureCity}}, California.\n\n☐ _________________________ {{petitionerName}}, Protected Party (signature)\n\nThis document, including this signature block, does not itself renew, extend, or modify any restraining order -- only a court, after applying the statutory process described in this document, can grant or deny a request to renew a protective order."
+    },
+    {
+      "id": "dmca512c_intro",
+      "title": "Purpose of This DMCA § 512(c) Safe Harbor Information Sheet",
+      "kind": "drafting",
+      "body": "This Information Sheet describes the federal Digital Millennium Copyright Act's \"safe harbor\" for online service providers under 17 U.S.C. § 512(c), § 512(i), § 512(k), and § 512(m) -- the statutory conditions a service provider must satisfy to limit its own monetary and injunctive-relief exposure for copyright infringement by reason of material a user stored on the provider's system or network. It is prepared by {{preparerName}} concerning {{companyName}}'s online service, described as follows: {{serviceDescription}}. This Information Sheet addresses the eligibility conditions themselves, from the service provider's own perspective -- it is a companion to, and does not repeat, this project's existing DMCA Takedown Notice document (which covers a copyright owner's required notice elements), DMCA Counter-Notification Information Sheet (which covers a user's put-back procedure once content is removed), and DMCA Anti-Circumvention and Reverse-Engineering Exemptions Information Sheet (which addresses the separate anticircumvention provisions of 17 U.S.C. § 1201). It is a general informational reference describing what the statute says and does not itself determine whether any particular service provider's conduct in fact satisfies these conditions in any specific case."
+    },
+    {
+      "id": "dmca512c_general_limitation",
+      "title": "The § 512(c) Limitation for User-Stored Material",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-10",
+      "body": "Section 512(c) of the Copyright Act limits a service provider's liability for infringement of copyright by reason of the storage, at the direction of a user, of material that resides on a system or network the service provider controls or operates (or that is controlled or operated for it). The statute limits liability for monetary relief entirely, and limits liability for injunctive or other equitable relief to the narrower forms of relief described in a separate subsection of the statute. This limitation is conditional: it applies only if the service provider satisfies each of the three conditions the statute lists, which are addressed in this Information Sheet's companion clauses.",
+      "gap": "This is federal statutory law, used as real evidence of what 17 U.S.C. section 512(c)(1)'s introductory clause says on its face -- not a claim about whether any particular website, app, or platform in fact qualifies as a \"service provider\" storing material \"at the direction of a user,\" both of which are addressed by separate clauses below (the statutory definition) and are ultimately fact-specific determinations this Information Sheet does not resolve. The narrower forms of injunctive relief available against a qualifying service provider (17 U.S.C. section 512(j)) are not detailed in this document.",
+      "citations": [
+        {
+          "case": "17 U.S.C. § 512(c)(1) (Cornell LII text)",
+          "cite": "U.S. Code, Copyright Act, limitation for information residing on systems or networks at direction of users -- introductory clause",
+          "url": "https://www.law.cornell.edu/uscode/text/17/512",
+          "quote": "A service provider shall not be liable for monetary relief, or, except as provided in subsection (j), for injunctive or other equitable relief, for infringement of copyright by reason of the storage at the direction of a user of material that resides on a system or network controlled or operated by or for the service provider, if the service provider—"
+        }
+      ]
+    },
+    {
+      "id": "dmca512c_knowledge_condition",
+      "title": "First Condition: No Actual or 'Red Flag' Knowledge, or Expeditious Removal Once Aware",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-10",
+      "body": "The first of the three conditions a service provider must satisfy is a knowledge condition, stated as three alternative circumstances: the provider does not have actual knowledge that material or an activity using material on its system is infringing; in the absence of actual knowledge, the provider is not aware of facts or circumstances from which infringing activity is apparent (sometimes called \"red flag\" knowledge); or, upon obtaining such knowledge or awareness, the provider acts expeditiously to remove or disable access to the material. A service provider that has neither form of knowledge satisfies this condition without having to act; a service provider that gains either form of knowledge satisfies this condition only by acting expeditiously once it does.",
+      "gap": "This is federal statutory law, used as real evidence of what 17 U.S.C. section 512(c)(1)(A)'s three alternative circumstances say on their face -- not a claim about how much specificity is required before a fact or circumstance makes infringing activity \"apparent\" to a reasonable service provider, nor about what counts as acting \"expeditiously\" on any particular set of facts, both of which are fact-specific determinations this Information Sheet does not resolve. This clause does not address the separate rule, stated elsewhere in the statute, for when a takedown notification that does not substantially comply with the statute's required elements may or may not be considered in determining whether this knowledge condition is met.",
+      "citations": [
+        {
+          "case": "17 U.S.C. § 512(c)(1)(A) (Cornell LII text)",
+          "cite": "U.S. Code, Copyright Act, knowledge condition for the storage safe harbor",
+          "url": "https://www.law.cornell.edu/uscode/text/17/512",
+          "quote": "does not have actual knowledge that the material or an activity using the material on the system or network is infringing"
+        },
+        {
+          "case": "17 U.S.C. § 512(c)(1)(A) (Cornell LII text)",
+          "cite": "U.S. Code, Copyright Act, 'red flag' awareness alternative",
+          "url": "https://www.law.cornell.edu/uscode/text/17/512",
+          "quote": "in the absence of such actual knowledge, is not aware of facts or circumstances from which infringing activity is apparent"
+        },
+        {
+          "case": "17 U.S.C. § 512(c)(1)(A) (Cornell LII text)",
+          "cite": "U.S. Code, Copyright Act, expeditious-removal-upon-knowledge alternative",
+          "url": "https://www.law.cornell.edu/uscode/text/17/512",
+          "quote": "upon obtaining such knowledge or awareness, acts expeditiously to remove, or disable access to, the material"
+        }
+      ]
+    },
+    {
+      "id": "dmca512c_financial_benefit_condition",
+      "title": "Second Condition: No Financial Benefit Directly Tied to Infringement Where the Provider Can Control It",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-10",
+      "body": "The second condition is that the service provider must not receive a financial benefit directly attributable to the infringing activity, in a case in which the service provider has the right and ability to control that activity. The Ninth Circuit has construed the \"right and ability to control\" half of this condition to require something more than the general ability to locate infringing material and terminate a user's access (the standard that governs traditional vicarious copyright liability): the service provider must exert substantial influence on the activities of its users.",
+      "gap": "This clause draws on two independent sources: the statutory text of 17 U.S.C. section 512(c)(1)(B), and the Ninth Circuit's construction of the statute's \"right and ability to control\" language in UMG Recordings, Inc. v. Shelter Capital Partners LLC. That decision is a single federal circuit's holding, not a decision of the U.S. Supreme Court, and it expressly agreed with -- rather than independently derived from a different source than -- similar reasoning the Second Circuit had offered shortly before in a different case (Viacom Int'l, Inc. v. YouTube, Inc.), which is not independently cited or quoted here. This clause does not state what dollar amount or business-model structure counts as a \"financial benefit,\" what makes that benefit \"directly attributable\" to infringement rather than to a service generally, or whether any particular platform's advertising, subscription, or transaction-fee structure in fact ties a financial benefit to specific infringing activity -- those remain fact-specific determinations this Information Sheet does not resolve.",
+      "citations": [
+        {
+          "case": "17 U.S.C. § 512(c)(1)(B) (Cornell LII text)",
+          "cite": "U.S. Code, Copyright Act, financial-benefit/control condition for the storage safe harbor",
+          "url": "https://www.law.cornell.edu/uscode/text/17/512",
+          "quote": "does not receive a financial benefit directly attributable to the infringing activity, in a case in which the service provider has the right and ability to control such activity"
+        },
+        {
+          "case": "UMG Recordings, Inc. v. Shelter Capital Partners LLC, 718 F.3d 1006 (9th Cir. 2013)",
+          "cite": "Ninth Circuit construction of the DMCA § 512(c)(1)(B) 'right and ability to control' requirement",
+          "url": "https://www.courtlistener.com/opinion/855221/umg-recordings-inc-v-shelter-capital-partners-llc/",
+          "quote": "We agree with the Second Circuit and hold that, in order to have the “right and ability to control,” the service provider must “exert[] substantial influence on the activities of users.”"
+        }
+      ]
+    },
+    {
+      "id": "dmca512c_notice_response_condition",
+      "title": "Third Condition: Expeditious Response Upon a Qualifying Takedown Notification",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-10",
+      "body": "The third condition is that, upon notification of claimed infringement meeting the statute's required elements, the service provider responds expeditiously to remove or disable access to the material claimed to be infringing or to be the subject of infringing activity. This is the condition that connects a service provider's own safe-harbor eligibility to the takedown-notification mechanism.",
+      "gap": "This is federal statutory law, used as real evidence of what 17 U.S.C. section 512(c)(1)(C) says on its face -- not a claim about what counts as \"expeditious\" on any particular set of facts. This document does not restate the required elements of an effective notification of claimed infringement (physical or electronic signature, identification of the copyrighted work and the allegedly infringing material, contact information, the good-faith-belief statement, and the accuracy/authority statement made under penalty of perjury), which this project's existing DMCA Takedown Notice document already addresses from the notice-sender's perspective.",
+      "citations": [
+        {
+          "case": "17 U.S.C. § 512(c)(1)(C) (Cornell LII text)",
+          "cite": "U.S. Code, Copyright Act, notice-and-takedown condition for the storage safe harbor",
+          "url": "https://www.law.cornell.edu/uscode/text/17/512",
+          "quote": "upon notification of claimed infringement as described in paragraph (3), responds expeditiously to remove, or disable access to, the material that is claimed to be infringing or to be the subject of infringing activity"
+        }
+      ]
+    },
+    {
+      "id": "dmca512c_designated_agent_duty",
+      "title": "The Service Provider's Own Duty to Designate and Register an Agent",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-10",
+      "body": "Independent of the three conditions above, the § 512(c) limitations on liability apply to a service provider only if it has designated an agent to receive notifications of claimed infringement. The service provider must make the agent's contact information available through its own service, including in a location on its website accessible to the public, and must also provide that information to the Copyright Office. The Register of Copyrights maintains a current public directory of designated agents, and may charge service providers a fee to cover the cost of maintaining that directory.",
+      "gap": "This is federal statutory law, used as real evidence of what 17 U.S.C. section 512(c)(2) requires of a service provider seeking the safe harbor -- not a description of the required contents of a notification once it reaches that agent (covered by this project's existing DMCA Takedown Notice document) nor of how the Copyright Office's online directory registration process itself works procedurally, which this Information Sheet does not detail. This clause does not address what happens to a service provider's safe-harbor eligibility for conduct occurring before it designates an agent, or during a period when its designation has lapsed or is out of date.",
+      "citations": [
+        {
+          "case": "17 U.S.C. § 512(c)(2) (Cornell LII text)",
+          "cite": "U.S. Code, Copyright Act, designated-agent condition for the storage safe harbor",
+          "url": "https://www.law.cornell.edu/uscode/text/17/512",
+          "quote": "The limitations on liability established in this subsection apply to a service provider only if the service provider has designated an agent to receive notifications of claimed infringement described in paragraph (3), by making available through its service, including on its website in a location accessible to the public, and by providing to the Copyright Office, substantially the following information"
+        },
+        {
+          "case": "17 U.S.C. § 512(c)(2) (Cornell LII text)",
+          "cite": "U.S. Code, Copyright Act, Copyright Office public directory of designated agents",
+          "url": "https://www.law.cornell.edu/uscode/text/17/512",
+          "quote": "The Register of Copyrights shall maintain a current directory of agents available to the public for inspection, including through the Internet, and may require payment of a fee by service providers to cover the costs of maintaining the directory."
+        }
+      ]
+    },
+    {
+      "id": "dmca512c_repeat_infringer_policy",
+      "title": "Threshold Condition Applicable to Every § 512 Safe Harbor: A Repeat-Infringer Termination Policy",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-10",
+      "body": "Before any of the four separate § 512 safe harbors -- including the § 512(c) storage limitation addressed elsewhere in this Information Sheet -- can apply at all, the service provider must satisfy a threshold eligibility condition set out in a separate subsection: it must have adopted and reasonably implemented a policy providing for the termination, in appropriate circumstances, of subscribers and account holders who are repeat infringers, and it must have informed its subscribers and account holders of that policy.",
+      "gap": "This is federal statutory law, used as real evidence of what 17 U.S.C. section 512(i)(1)(A) requires as a threshold condition for every subsection of section 512, not only subsection (c) -- not a claim about what makes a particular policy's implementation \"reasonable,\" how many instances of alleged infringement make a subscriber a \"repeat infringer,\" or what circumstances are \"appropriate\" for termination on any particular set of facts, all of which are fact-specific determinations this Information Sheet does not resolve. This clause does not address the separate 'standard technical measures' half of the same threshold condition, covered in a companion clause.",
+      "citations": [
+        {
+          "case": "17 U.S.C. § 512(i)(1)(A) (Cornell LII text)",
+          "cite": "U.S. Code, Copyright Act, repeat-infringer termination policy threshold condition",
+          "url": "https://www.law.cornell.edu/uscode/text/17/512",
+          "quote": "has adopted and reasonably implemented, and informs subscribers and account holders of the service provider’s system or network of, a policy that provides for the termination in appropriate circumstances of subscribers and account holders of the service provider’s system or network who are repeat infringers"
+        }
+      ]
+    },
+    {
+      "id": "dmca512c_standard_technical_measures",
+      "title": "Threshold Condition: Accommodating Standard Technical Measures",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-10",
+      "body": "The same threshold subsection that requires a repeat-infringer policy also requires that a service provider accommodate, and not interfere with, \"standard technical measures\" -- technical measures used by copyright owners to identify or protect copyrighted works that meet three statutory criteria: they must have been developed under a broad, open, fair, voluntary, multi-industry standards-process consensus of copyright owners and service providers; they must be available to any person on reasonable and nondiscriminatory terms; and they must not impose substantial costs on service providers or substantial burdens on their systems or networks.",
+      "gap": "This is federal statutory law, used as real evidence of what 17 U.S.C. section 512(i)(1)(B) and section 512(i)(2) say on their face -- not a claim that any particular content-identification technology (for example, a specific fingerprinting or filtering system) has in fact been developed through the required multi-industry consensus process or otherwise meets this statutory definition, which this Information Sheet does not evaluate. No case law was researched identifying a technology found to qualify (or not qualify) as a 'standard technical measure' under this definition.",
+      "citations": [
+        {
+          "case": "17 U.S.C. § 512(i)(1)(B) (Cornell LII text)",
+          "cite": "U.S. Code, Copyright Act, standard-technical-measures accommodation condition",
+          "url": "https://www.law.cornell.edu/uscode/text/17/512",
+          "quote": "accommodates and does not interfere with standard technical measures"
+        },
+        {
+          "case": "17 U.S.C. § 512(i)(2) (Cornell LII text)",
+          "cite": "U.S. Code, Copyright Act, statutory definition of 'standard technical measures'",
+          "url": "https://www.law.cornell.edu/uscode/text/17/512",
+          "quote": "have been developed pursuant to a broad consensus of copyright owners and service providers in an open, fair, voluntary, multi-industry standards process"
+        }
+      ]
+    },
+    {
+      "id": "dmca512c_service_provider_definitions",
+      "title": "Two Different Statutory Definitions of 'Service Provider'",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-10",
+      "body": "Section 512 uses the term \"service provider\" in two different senses. For the separate conduit safe harbor in subsection (a) -- transmitting, routing, or providing connections for digital online communications -- \"service provider\" means an entity offering the transmission, routing, or providing of connections for digital online communications, between or among points specified by a user, of material of the user's choosing, without modification to the content of the material as sent or received. For every other use of the term in section 512, including the storage safe harbor in subsection (c) that is this Information Sheet's main subject, the definition is broader: a provider of online services or network access, or the operator of facilities therefor, which also includes any entity meeting the narrower subsection (a) definition.",
+      "gap": "This is federal statutory law, used as real evidence of what 17 U.S.C. section 512(k)(1)(A) and section 512(k)(1)(B) say on their face -- not a claim about whether any particular business (for example, one that provides both network transmission and separately hosts user-uploaded content) in fact meets either statutory definition for a specific safe harbor it is claiming, which is a fact-specific determination this Information Sheet does not resolve. This clause does not address the statute's separate definition of 'monetary relief' in the same subsection.",
+      "citations": [
+        {
+          "case": "17 U.S.C. § 512(k)(1)(A) (Cornell LII text)",
+          "cite": "U.S. Code, Copyright Act, narrower 'service provider' definition for the conduit safe harbor",
+          "url": "https://www.law.cornell.edu/uscode/text/17/512",
+          "quote": "As used in subsection (a), the term “service provider” means an entity offering the transmission, routing, or providing of connections for digital online communications, between or among points specified by a user, of material of the user’s choosing, without modification to the content of the material as sent or received."
+        },
+        {
+          "case": "17 U.S.C. § 512(k)(1)(B) (Cornell LII text)",
+          "cite": "U.S. Code, Copyright Act, broader 'service provider' definition applicable elsewhere in the section",
+          "url": "https://www.law.cornell.edu/uscode/text/17/512",
+          "quote": "As used in this section, other than subsection (a), the term “service provider” means a provider of online services or network access, or the operator of facilities therefor, and includes an entity described in subparagraph (A)."
+        }
+      ]
+    },
+    {
+      "id": "dmca512c_no_monitoring_duty",
+      "title": "No Affirmative Duty to Monitor or Seek Out Infringement",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-10",
+      "body": "The statute expressly provides that qualifying for the § 512(a) through § 512(d) safe harbors -- including the § 512(c) storage limitation -- is not conditioned on a service provider monitoring its service or affirmatively seeking out facts indicating infringing activity, except to the extent consistent with a standard technical measure. It is likewise not conditioned on a service provider gaining access to, or removing or disabling access to, material where doing so is otherwise prohibited by law.",
+      "gap": "This is federal statutory law, used as real evidence of what 17 U.S.C. section 512(m) says on its face -- not a claim about how this no-monitoring rule interacts with the separate 'red flag' awareness knowledge condition on any particular set of facts (a service provider's decision not to look for infringement does not, by this provision alone, immunize it from liability for infringing activity it does become aware of). The Ninth Circuit has read this provision as cutting against imposing a duty to 'police' a service 'to the fullest extent possible,' and as informing how far the separate right-and-ability-to-control condition can be read, but that judicial gloss is addressed in this Information Sheet's companion clause on the financial-benefit/control condition rather than restated here.",
+      "citations": [
+        {
+          "case": "17 U.S.C. § 512(m) (Cornell LII text)",
+          "cite": "U.S. Code, Copyright Act, no monitoring obligation",
+          "url": "https://www.law.cornell.edu/uscode/text/17/512",
+          "quote": "Nothing in this section shall be construed to condition the applicability of subsections (a) through (d) on"
+        },
+        {
+          "case": "17 U.S.C. § 512(m)(1) (Cornell LII text)",
+          "cite": "U.S. Code, Copyright Act, no duty to affirmatively seek out infringing facts",
+          "url": "https://www.law.cornell.edu/uscode/text/17/512",
+          "quote": "a service provider monitoring its service or affirmatively seeking facts indicating infringing activity, except to the extent consistent with a standard technical measure complying with the provisions of subsection (i)"
+        }
+      ]
+    },
+    {
+      "id": "dmca512c_distinction_from_sibling_docs",
+      "title": "How This Document Relates to This Project's Other DMCA Documents",
+      "kind": "drafting",
+      "body": "This Information Sheet describes the conditions a service provider must satisfy under 17 U.S.C. § 512(c), § 512(i), § 512(k), and § 512(m) to limit its own liability for copyright infringement by material a user stored on its system -- the safe-harbor eligibility framework itself. It is distinct from this project's existing DMCA Takedown Notice document, which is a notification a copyright owner sends to invoke that framework; its existing DMCA Counter-Notification Information Sheet, which is the put-back procedure available to the person whose content was removed; and its existing DMCA Anti-Circumvention and Reverse-Engineering Exemptions Information Sheet, which addresses the separate technological-access-control provisions of 17 U.S.C. § 1201. None of those other documents states the three eligibility conditions of § 512(c)(1), the designated-agent duty of § 512(c)(2), the repeat-infringer and standard-technical-measures threshold conditions of § 512(i), the two statutory definitions of 'service provider' in § 512(k), or the no-monitoring rule of § 512(m) -- this Information Sheet is what fills that gap."
+    },
+    {
+      "id": "dmca512c_ack",
+      "title": "Signature and Acknowledgment",
+      "kind": "drafting",
+      "body": "Prepared by {{preparerName}} on behalf of {{companyName}} regarding the online service described above.\n\nSigned: ______________________\n\nDate: {{dateSigned}}\n\nCity/State: {{cityState}}\n\nThis Information Sheet is a general informational reference about the DMCA's § 512(c) safe-harbor eligibility conditions for online service providers. It is not a designated-agent registration, a takedown notice, a counter-notification, or any other filing, and it is not a substitute for consulting a licensed attorney about whether a particular service provider's policies and practices in fact satisfy these statutory conditions."
     }
   ]
 }

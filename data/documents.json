@@ -32820,5 +32820,59 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "dmca_512c_safe_harbor_info_sheet",
+    "title": "DMCA § 512(c) Safe Harbor for Online Service Providers — Information Sheet",
+    "description": "Explains the federal DMCA safe harbor for online service providers under 17 U.S.C. § 512(c), § 512(i), § 512(k), and § 512(m): the three conditions a service provider must satisfy to limit its liability for copyright infringement by material a user stored on its system (no actual or 'red flag' knowledge or expeditious removal upon learning of it; no financial benefit directly attributable to infringement the provider can control; expeditious response to a qualifying takedown notification), the provider's own duty to designate and register an agent with the Copyright Office, the threshold repeat-infringer-policy and standard-technical-measures conditions applicable to every § 512 safe harbor, the two statutory definitions of 'service provider,' and the statute's express no-monitoring rule. Addresses safe-harbor eligibility from the service provider's own perspective, distinct from this project's existing DMCA Takedown Notice, DMCA Counter-Notification Information Sheet, and DMCA Anti-Circumvention and Reverse-Engineering Exemptions Information Sheet documents.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "dmca512c_intro",
+      "dmca512c_general_limitation",
+      "dmca512c_knowledge_condition",
+      "dmca512c_financial_benefit_condition",
+      "dmca512c_notice_response_condition",
+      "dmca512c_designated_agent_duty",
+      "dmca512c_repeat_infringer_policy",
+      "dmca512c_standard_technical_measures",
+      "dmca512c_service_provider_definitions",
+      "dmca512c_no_monitoring_duty",
+      "dmca512c_distinction_from_sibling_docs",
+      "dmca512c_ack"
+    ],
+    "fields": [
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "serviceDescription",
+        "label": "Description of the online service",
+        "placeholder": "Acme Community, a website allowing registered users to upload and share photos and video clips",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 10, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
