@@ -32997,5 +32997,65 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "lost_or_destroyed_will_info_sheet",
+    "title": "Lost or Destroyed Will — Presumption of Revocation and Proof — Information Sheet",
+    "description": "Explains California's rules when a decedent's original will cannot be found after death: revocation by physical act (Prob. Code § 6120), the parallel rule for wills executed in duplicate (§ 6121), the statutory presumption that a will last in the testator's possession and missing at death was destroyed with intent to revoke it (§ 6124), the Evidence Code § 604 effect of that presumption as one affecting only the burden of producing evidence, how the Court of Appeal in Estate of Trikha (2013) described the substantial-evidence showing that dispels the presumption and the contestant's burden of proving revocation under § 8252, and the proof requirements for probating a lost or destroyed will — the petition's written statement of the testamentary words or their substance (§ 8223), proof of execution by subscribing-witness affidavit with a photographic copy (§ 8220), and preservation of witness testimony (§ 8224).",
+    "categories": [
+      "Estate Planning"
+    ],
+    "clauseOrder": [
+      "lostwill_declaration",
+      "lostwill_revocation_by_physical_act",
+      "lostwill_duplicate_original_rule",
+      "lostwill_presumption_elements",
+      "lostwill_presumption_effect_evidence_code",
+      "lostwill_rebuttal_substantial_evidence",
+      "lostwill_burden_of_proof_on_contestant",
+      "lostwill_weighing_evidence_error",
+      "lostwill_petition_statement_of_terms",
+      "lostwill_proof_of_execution_photocopy",
+      "lostwill_preserving_witness_testimony",
+      "lostwill_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "decedentName",
+        "label": "Decedent's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "originalWillDate",
+        "label": "Date of the original will",
+        "placeholder": "January 15, 2024",
+        "required": true
+      },
+      {
+        "id": "dateOfDeath",
+        "label": "Date of death",
+        "placeholder": "March 15, 2026",
+        "required": true
+      },
+      {
+        "id": "petitionerName",
+        "label": "Petitioner's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 10, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
