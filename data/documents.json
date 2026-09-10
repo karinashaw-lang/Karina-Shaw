@@ -33166,5 +33166,44 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "employer_controlled_time_exit_searches_travel_info_sheet",
+    "title": "Employer-Controlled Time: Exit Searches, Mandatory Transportation, and Off-the-Clock Minutes — Information Sheet",
+    "description": "An informational sheet on how California's control-based \"hours worked\" definition applies to time outside an hourly employee's scheduled work: required exit searches of bags and personal devices (Frlekin v. Apple Inc.), employer-mandated bus transportation and the ordinary-commute distinction (Morillion v. Royal Packing Co.), vehicle security-gate inspections, onsite driving under ordinary workplace rules, and confined unpaid meal periods (Huerta v. CSI Electrical Contractors), the rejection of the federal de minimis doctrine for routine off-the-clock minutes (Troester v. Starbucks Corp.), and recovery under Labor Code section 1194.",
+    "categories": [
+      "During employment"
+    ],
+    "clauseOrder": [
+      "controltime_intro",
+      "controltime_hours_worked_definition",
+      "controltime_control_clause_independent",
+      "controltime_compulsory_travel_morillion",
+      "controltime_ordinary_commute_distinguished",
+      "controltime_exit_search_frlekin",
+      "controltime_frlekin_control_factors",
+      "controltime_frlekin_retroactivity_and_open_question",
+      "controltime_huerta_vehicle_exit_inspection",
+      "controltime_huerta_onsite_driving_and_workplace_rules",
+      "controltime_huerta_confined_meal_period",
+      "controltime_troester_no_de_minimis",
+      "controltime_troester_open_question_and_alternatives",
+      "controltime_recovery_under_1194",
+      "controltime_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      }
+    ]
   }
 ]
