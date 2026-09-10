@@ -32545,5 +32545,57 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "copyright_first_sale_doctrine_info_sheet",
+    "title": "Copyright First Sale Doctrine — Information Sheet",
+    "description": "Explains the federal copyright \"first sale\" doctrine under 17 U.S.C. § 109 — the statutory limit on a copyright owner's exclusive distribution right once a particular copy has been lawfully made and its ownership transferred, its rental/lending exception for sound recordings and computer programs with the nonprofit library carve-out, its public display exception, and its limit to owners rather than renters, lessees, or borrowers — together with Kirtsaeng v. John Wiley & Sons, Inc. (holding the doctrine applies to copies lawfully made abroad) and UMG Recordings, Inc. v. Augusto (holding a distribution labeled a \"license\" can still be a transfer of title, and that labeling alone is not dispositive) — and generates a reference sheet describing the copy and transaction at issue.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "cfsale_intro",
+      "cfsale_description",
+      "cfsale_statute_core_right",
+      "cfsale_statute_rental_exception",
+      "cfsale_statute_display_right",
+      "cfsale_statute_nonowner_exclusion",
+      "cfsale_case_kirtsaeng_holding",
+      "cfsale_case_augusto_transfer_of_title",
+      "cfsale_case_augusto_labeling_not_dispositive",
+      "cfsale_signature"
+    ],
+    "fields": [
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "workDescription",
+        "label": "Description of the copyrighted work and the particular copy or phonorecord at issue",
+        "placeholder": "a hardcover copy of a textbook, originally sold by the publisher",
+        "required": true
+      },
+      {
+        "id": "transactionDescription",
+        "label": "Description of the transaction or proposed transaction involving that copy",
+        "placeholder": "resale of the used textbook through an online marketplace",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 10, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
