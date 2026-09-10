@@ -352,14 +352,72 @@ app's private iCal feed URL. `GET /api/feed/[token]` returns a standard RSS 2.0 
 iTunes-namespace tags for podcast-app compatibility) listing the creator's videos as episodes,
 audio-first (using the extracted `audioUrl` where one exists, per the "audio-optional by default"
 philosophy) but falling back to the video file itself so every episode can appear. A copyable feed
-link shows up on the creator's page for any subscriber. Regenerating a leaked link isn't built —
-would just mean updating the token on the `Subscription` row — but there's no UI for it yet.
+link shows up on the creator's page for any subscriber, next to a "URL leaked? Regenerate it" button
+that rotates `feedToken` and immediately kills the old URL.
 
 - **Verification:** confirmed the real (Prisma-driven, not database-simulated) subscribe action
   actually populates `feedToken` on create; fetched a real subscriber's feed URL directly and
   parsed the response as valid RSS with the correct `Content-Type`, a matching `<enclosure>` tag,
   and the video's title correctly XML-escaped; confirmed an invalid/made-up token returns 404
-  rather than someone else's feed or a server error.
+  rather than someone else's feed or a server error; confirmed the old token 404s and the new one
+  works immediately after clicking regenerate.
+
+## Security pass: four gaps closed after a manual review (September 2026)
+
+A manual review of auth, payments, uploads, and the attribution webhook path — the four areas the
+plan's risk section calls out by name before real users — turned up one real vulnerability and
+closed three of the disclosed gaps from earlier in this document. `git diff` against this repo's
+actual default branch wasn't usable for an automated review (the remote's default branch is
+unrelated to this one), so this was a manual pass over those four areas specifically, not a
+line-by-line diff review.
+
+- **Fixed — stored XSS via paid attachments.** `saveAttachmentFile` (the paid-attachment slot in
+  Video Extras) accepted *any* file extension, including `.html`, `.svg`, and `.js`. Files land at
+  a public, unauthenticated `/uploads/video-extras/<uuid>.<ext>` URL served as a plain static file
+  with no `Content-Disposition` control — so a `.html` attachment would execute as a full page,
+  same-origin, with whatever session the person who clicked "Download attachment" was carrying.
+  Any signed-in creator could have planted one on their own video. Fixed with an explicit
+  extension safelist (documents, spreadsheets, images, archives, common media) that excludes
+  everything a browser will run as active content; anything else is rejected at upload with a
+  clear error rather than silently renamed. Verified in a real browser: an `.html` attachment is
+  rejected with the new error message, a `.pdf` with identical content otherwise succeeds.
+- **Fixed — distributor attribution was same-visit-only.** The plan's risk section specifically
+  flags this as not the real goal. A `?d=` link now also sets a 30-day cookie
+  (`DistributorAttributionCookie`, `dlink_<creatorId>`) the moment it's clicked; both the moment
+  page and the creator's own profile page fall back to it when a visit doesn't carry a fresh `?d=`
+  — covering exactly the case the plan describes: a viewer clicks a share link, leaves, and comes
+  back later to tip from the creator's page directly. Non-httpOnly is a deliberate choice, not an
+  oversight: the value is just a link id, re-validated (self-referral checked, creator matched)
+  server-side every time it's actually used, so there's nothing sensitive a script could steal by
+  reading it. Verified in a real browser: visiting a moment's `?d=` link sets the cookie, and a tip
+  made minutes later from the plain creator profile page — no `?d=` in that URL at all — still
+  lands with the correct `distributorLinkId`.
+- **Fixed — no self-referral check for guest tips.** A signed-in tipper self-referring through
+  their own distributor link was already blocked (no `distributorLinkId` is ever attached), but a
+  guest tip has no `fromUserId` to compare against. `Tip.cardFingerprint` now records Stripe's card
+  fingerprint from the confirmed charge on every distributor-attributed tip, signed-in or guest;
+  before paying out a split, the webhook checks whether that same fingerprint already paid a tip
+  the distributor sent while signed in, and skips only the distributor's cut if so — the creator
+  still gets the full amount, since the tip itself is real money regardless of who gets credited
+  for it. Disclosed honestly: this is a best-effort signal, not a guarantee (a distributor's
+  first-ever payment on a given card can't be caught this way), matching the plan's own framing.
+  **Unverified against a live account** — the fingerprint comes from a real
+  `stripe.paymentIntents.retrieve` call, which needs a working Stripe key to succeed; what *was*
+  verified is that a hand-signed webhook with a deliberately invalid key still returns
+  `{received: true}` and records the Tip correctly, with no `DistributorEarning` created — the
+  same graceful-failure behavior every other Stripe-dependent path in this app already has.
+- **Fixed — no self-serve fix for a leaked podcast feed URL.** Covered above.
+- **Reviewed, not a bug:** the Wall Card and Recap Reel image routes
+  (`/api/wall-card/[userId]`, `/api/recap/[userId]`) take a bare `userId` with no auth check. This
+  is intentional, not an oversight — a Wall Card's entire purpose, per the plan, is to be a
+  shareable image with no login required to view someone else's; the stats it exposes (streak,
+  saves, top creator, a "taste twin" name) are aggregate engagement data, not account details.
+  **Reviewed, not fixed:** login/signup have no rate limiting, so credential brute-forcing is
+  possible in principle (though bcrypt's cost factor and the identical "Invalid email or password"
+  message for both a wrong password and a nonexistent account already remove the cheapest version
+  of this — user enumeration). A real fix needs shared state across server instances (Redis or
+  similar) that this app's "run for almost nothing" infra doesn't have yet; noted here rather than
+  built, since an in-memory limiter would only work per-instance and give false confidence.
 
 ## Cheap-to-build differentiators (no new credentials needed)
 
@@ -554,4 +612,9 @@ infrastructure, build differentiation" philosophy:
   `src/components/question-price-form.tsx` + `paid-question-form.tsx` + `paid-questions-inbox.tsx`,
   handled in `src/app/api/webhooks/stripe`
 - **Private podcast feed** — `Subscription.feedToken`, `src/app/api/feed/[token]/route.ts` (RSS
-  2.0), `src/components/podcast-feed-link.tsx` on the creator profile page
+  2.0), `src/components/podcast-feed-link.tsx` on the creator profile page (copy + regenerate),
+  `regenerateFeedToken` in `src/lib/actions/subscription.ts`
+- **Security fixes** — attachment extension safelist in `src/lib/video-storage.ts`, 30-day
+  distributor attribution cookie in `src/components/distributor-attribution-cookie.tsx` (read as a
+  fallback on both the moment page and the creator profile page), guest-tip self-referral check via
+  `Tip.cardFingerprint` in `src/app/api/webhooks/stripe`

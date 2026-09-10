@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { cookies } from "next/headers";
 
 import prisma from "@/lib/prisma";
 import { getCurrentUser } from "@/lib/auth";
@@ -68,6 +69,13 @@ export default async function CreatorPage(props: PageProps<"/creators/[handle]">
       : null;
   const appUrl = await getAppUrl();
 
+  // A distributor's share link points at a moment page, but the plan's
+  // growth loop expects a viewer to wander back to the creator's own page
+  // later and tip from there — the same 30-day attribution cookie set on
+  // the moment page (see DistributorAttributionCookie) covers that.
+  const cookieStore = await cookies();
+  const distributorLinkId = cookieStore.get(`dlink_${creator.id}`)?.value;
+
   return (
     <div className="mx-auto max-w-3xl px-6 py-10">
       {searchParams.tipped && (
@@ -121,7 +129,13 @@ export default async function CreatorPage(props: PageProps<"/creators/[handle]">
 
       {creator.bio && <p className="mt-4">{creator.bio}</p>}
 
-      {subscriptionRow && <PodcastFeedLink feedUrl={`${appUrl}/api/feed/${subscriptionRow.feedToken}`} />}
+      {subscriptionRow && (
+        <PodcastFeedLink
+          feedUrl={`${appUrl}/api/feed/${subscriptionRow.feedToken}`}
+          creatorId={creator.id}
+          handle={creator.handle}
+        />
+      )}
 
       {creator.liveStream?.status === "ACTIVE" && (
         <div className="mt-4">
@@ -131,7 +145,9 @@ export default async function CreatorPage(props: PageProps<"/creators/[handle]">
         </div>
       )}
 
-      {user && !isOwner && <TipForm creatorId={creator.id} handle={creator.handle} />}
+      {user && !isOwner && (
+        <TipForm creatorId={creator.id} handle={creator.handle} distributorLinkId={distributorLinkId} />
+      )}
 
       {user && !isOwner && creator.questionPriceCents !== null && (
         <PaidQuestionForm creatorId={creator.id} handle={creator.handle} priceCents={creator.questionPriceCents} />

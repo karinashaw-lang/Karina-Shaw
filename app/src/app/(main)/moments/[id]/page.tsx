@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { cookies } from "next/headers";
 
 import prisma from "@/lib/prisma";
 import { getCurrentUser } from "@/lib/auth";
@@ -13,11 +14,12 @@ import SubscribeCheckoutForm from "@/components/subscribe-checkout-form";
 import CopyMomentLinks from "@/components/copy-moment-links";
 import DistributorShareCard from "@/components/distributor-share-card";
 import SaveButton from "@/components/save-button";
+import DistributorAttributionCookie from "@/components/distributor-attribution-cookie";
 
 export default async function MomentPage(props: PageProps<"/moments/[id]">) {
   const { id } = await props.params;
   const searchParams = await props.searchParams;
-  const distributorLinkId = Array.isArray(searchParams.d) ? searchParams.d[0] : searchParams.d;
+  const clickedDistributorLinkId = Array.isArray(searchParams.d) ? searchParams.d[0] : searchParams.d;
 
   const [moment, user] = await Promise.all([getPublicMoment(id), getCurrentUser()]);
 
@@ -25,6 +27,13 @@ export default async function MomentPage(props: PageProps<"/moments/[id]">) {
 
   const { video } = moment;
   const creator = video.creator;
+
+  // Falls back to a 30-day attribution cookie (see
+  // DistributorAttributionCookie) when this visit didn't arrive via a
+  // fresh `?d=` link — a viewer who clicks a share link today and tips
+  // days later should still count.
+  const cookieStore = await cookies();
+  const distributorLinkId = clickedDistributorLinkId ?? cookieStore.get(`dlink_${creator.id}`)?.value;
   const isOwner = user?.creatorProfile?.id === creator.id;
   const isHls = Boolean(video.videoUrl?.endsWith(".m3u8"));
 
@@ -41,6 +50,9 @@ export default async function MomentPage(props: PageProps<"/moments/[id]">) {
 
   return (
     <div className="mx-auto max-w-2xl px-6 py-10">
+      {clickedDistributorLinkId && (
+        <DistributorAttributionCookie creatorId={creator.id} linkId={clickedDistributorLinkId} />
+      )}
       {video.videoUrl ? (
         isHls ? (
           <>

@@ -114,9 +114,45 @@ export async function saveOuttakesFile(file: File): Promise<string> {
 }
 
 /**
+ * Extensions a paid attachment is allowed to have. Deliberately excludes
+ * anything a browser will execute as active content if someone navigates
+ * straight to its /uploads/ URL (html, svg, js, xml, ...) — uploads here
+ * are served as plain static files with no Content-Disposition control,
+ * so an unrestricted extension would let any signed-in creator plant a
+ * same-origin stored-XSS page that runs with a downloader's session.
+ */
+const ATTACHMENT_EXTENSION_SAFELIST = new Set([
+  "pdf",
+  "doc",
+  "docx",
+  "odt",
+  "xls",
+  "xlsx",
+  "ods",
+  "ppt",
+  "pptx",
+  "odp",
+  "rtf",
+  "txt",
+  "csv",
+  "zip",
+  "png",
+  "jpg",
+  "jpeg",
+  "gif",
+  "webp",
+  "mp3",
+  "wav",
+  "mp4",
+  "mov",
+  "m4a",
+]);
+
+/**
  * Saves a paid attachment — project files, worksheets, templates, per the
  * plan. Unlike every other upload in this file, not restricted to video:
- * this slot is explicitly for arbitrary files.
+ * this slot is explicitly for arbitrary files, but see
+ * ATTACHMENT_EXTENSION_SAFELIST for why "arbitrary" still has a limit.
  */
 export async function saveAttachmentFile(file: File): Promise<string> {
   if (file.size === 0) {
@@ -126,8 +162,13 @@ export async function saveAttachmentFile(file: File): Promise<string> {
     throw new Error("Files must be under 300MB for now.");
   }
 
-  const originalExtension = file.name.includes(".") ? file.name.split(".").pop() : undefined;
-  const extension = originalExtension && /^[a-zA-Z0-9]{1,10}$/.test(originalExtension) ? originalExtension : "bin";
+  const extension = file.name.includes(".") ? file.name.split(".").pop()!.toLowerCase() : "";
+  if (!ATTACHMENT_EXTENSION_SAFELIST.has(extension)) {
+    throw new Error(
+      "That file type isn't supported for attachments — try a document, spreadsheet, image, archive, or media file."
+    );
+  }
+
   const filename = `${randomUUID()}.${extension}`;
 
   await mkdir(VIDEO_EXTRAS_DIR, { recursive: true });

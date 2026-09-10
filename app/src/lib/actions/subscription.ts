@@ -1,5 +1,7 @@
 "use server";
 
+import { randomUUID } from "node:crypto";
+
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
@@ -111,6 +113,29 @@ export async function unsubscribeFromCreator(creatorId: string, handle: string) 
 
   await prisma.subscription.deleteMany({
     where: { subscriberId: user.id, creatorId },
+  });
+
+  revalidatePath(`/creators/${handle}`);
+}
+
+/**
+ * Rotates a subscriber's private podcast feed token — the self-serve fix
+ * for a leaked feed URL, since the token itself is the only access
+ * control (see src/app/api/feed/[token]/route.ts). The old URL stops
+ * working the moment this runs.
+ */
+export async function regenerateFeedToken(creatorId: string, handle: string) {
+  const user = await getCurrentUser();
+  if (!user) throw new Error("You must be signed in to do this.");
+
+  const subscription = await prisma.subscription.findUnique({
+    where: { subscriberId_creatorId: { subscriberId: user.id, creatorId } },
+  });
+  if (!subscription) throw new Error("You're not subscribed to this creator.");
+
+  await prisma.subscription.update({
+    where: { id: subscription.id },
+    data: { feedToken: randomUUID() },
   });
 
   revalidatePath(`/creators/${handle}`);

@@ -441,7 +441,15 @@ model Tip {
   distributorLinkId       String?
   distributorLink         DistributorLink?    @relation(fields: [distributorLinkId], references: [id])
   earning                 DistributorEarning?
+  /// Stripe's card fingerprint for the payment method used — the only
+  /// signal available to catch a guest tip that's really the distributor
+  /// self-tipping through their own share link with no signed-in
+  /// fromUserId to compare against directly. See splitDistributorPayout
+  /// in the Stripe webhook.
+  cardFingerprint         String?
   createdAt               DateTime            @default(now())
+
+  @@index([cardFingerprint])
 }
 
 /// A viewer's personal share link for a Curated Moment — Distributor

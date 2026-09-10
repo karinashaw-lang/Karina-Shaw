@@ -32,24 +32,55 @@ async function splitDistributorPayout(
   if (!link || !link.distributor.stripeChargesEnabled || !link.distributor.stripeAccountId) return;
 
   const paymentIntent = await stripe.paymentIntents.retrieve(paymentIntentId, {
-    expand: ["latest_charge"],
+    expand: ["latest_charge", "latest_charge.payment_method_details"],
   });
   const charge = paymentIntent.latest_charge;
   const chargeId = typeof charge === "string" ? charge : charge?.id;
   if (!chargeId) return;
 
-  const distributorCut = distributorCutCents(amountCents);
+  // Recorded regardless of what happens below — it's the running history
+  // the self-referral check compares future tips against, signed-in or guest.
+  const fingerprint =
+    charge && typeof charge === "object" ? (charge.payment_method_details?.card?.fingerprint ?? null) : null;
+  if (fingerprint) {
+    await prisma.tip.update({ where: { id: tipId }, data: { cardFingerprint: fingerprint } });
+  }
 
-  await stripe.transfers.create({
-    amount: distributorCut,
-    currency: "usd",
-    destination: link.distributor.stripeAccountId,
-    source_transaction: chargeId,
-  });
+  // A signed-in self-tip is already blocked in resolveDistributorLink (no
+  // distributorLinkId is ever attached to it), but a guest tip has no
+  // fromUserId to compare — this is the fallback: has this exact card
+  // already paid a tip the distributor sent while signed in? Best-effort,
+  // per the plan's risk section, not a guarantee (their very first-ever
+  // payment on a given card can't be caught this way). Self-referral
+  // cancels the distributor's cut, not the creator's — the tip itself is
+  // still real money that should still reach the creator in full.
+  let selfReferral = false;
+  if (fingerprint) {
+    const priorOwnTip = await prisma.tip.findFirst({
+      where: { fromUserId: link.distributorId, cardFingerprint: fingerprint },
+    });
+    if (priorOwnTip) {
+      selfReferral = true;
+      console.warn(
+        `Blocked distributor payout for tip ${tipId}: card fingerprint matches distributor ${link.distributorId}'s own past tip ${priorOwnTip.id} (self-referral).`
+      );
+    }
+  }
 
-  await prisma.distributorEarning.create({
-    data: { distributorId: link.distributorId, tipId, amountCents: distributorCut },
-  });
+  const distributorCut = selfReferral ? 0 : distributorCutCents(amountCents);
+
+  if (!selfReferral) {
+    await stripe.transfers.create({
+      amount: distributorCut,
+      currency: "usd",
+      destination: link.distributor.stripeAccountId,
+      source_transaction: chargeId,
+    });
+
+    await prisma.distributorEarning.create({
+      data: { distributorId: link.distributorId, tipId, amountCents: distributorCut },
+    });
+  }
 
   const creator = link.moment.video.creator;
   if (creator.stripeChargesEnabled && creator.stripeAccountId) {
