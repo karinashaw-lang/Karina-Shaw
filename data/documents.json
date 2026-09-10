@@ -32710,5 +32710,54 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "hospital_nurse_patient_staffing_ratio_info_sheet",
+    "title": "Hospital Nurse-to-Patient Staffing Ratios — Information Sheet",
+    "description": "An information sheet describing California Health and Safety Code section 1276.4 — the statute directing the State Department of Public Health to adopt minimum, specific, numerical licensed nurse-to-patient staffing ratios for California hospitals by nurse classification and hospital unit, the separate, later rollout timeline and emergency-regulation deadline for facilities licensed under subdivision (b) of Health and Safety Code section 1250 (the 'acute psychiatric hospital' license category), the statutory definitions of 'hospital unit' and 'critical care unit,' the rule that adopted ratios are a minimum floor requiring additional acuity-based staffing, the nursing-staff orientation and competency-demonstration requirement, the limited rural general acute care hospital waiver, the rule that scope-of-practice provisions control in a conflict, the rule that new regulations augment rather than replace existing ICU/NICU/OR and state-hospital ratios, the special-needs consideration for psychiatric-unit regulations, and the University of California teaching hospital consideration.",
+    "categories": [
+      "During employment"
+    ],
+    "clauseOrder": [
+      "nursestaffing_intro",
+      "nursestaffing_dph_mandate",
+      "nursestaffing_psychiatric_facility_rollout_timeline",
+      "nursestaffing_hospital_unit_definition",
+      "nursestaffing_minimum_floor_and_acuity_staffing",
+      "nursestaffing_critical_care_unit_definition",
+      "nursestaffing_orientation_training_requirement",
+      "nursestaffing_rural_hospital_waiver",
+      "nursestaffing_scope_of_practice_conflict_rule",
+      "nursestaffing_no_replace_stricter_existing_ratios",
+      "nursestaffing_psychiatric_unit_special_needs_consideration",
+      "nursestaffing_uc_teaching_hospital_consideration",
+      "nursestaffing_ack"
+    ],
+    "fields": [
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Company (hospital) name",
+        "placeholder": "Acme General Hospital",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 10, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
