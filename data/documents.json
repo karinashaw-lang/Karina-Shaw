@@ -33404,5 +33404,39 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "makeup_time_personal_obligations_info_sheet",
+    "title": "Makeup Time for Personal Obligations (Lab. Code § 513) — Information Sheet",
+    "description": "Explains California's \"makeup work time\" exception to daily overtime: when an employer approves an employee's signed written request to make up work time lost to a personal obligation within the same workweek, the makeup hours are not counted toward daily overtime up to 11 hours in a day and 40 in the workweek (Lab. Code § 513; IWC Wage Order 4-2001, § 3(M)); the per-occasion written-request rule, the four-weeks-in-advance option for recurring obligations, the prohibition on employers soliciting makeup-time requests, the DLSE's stated enforcement positions, and how makeup time differs from \"compensating time off\" under Lab. Code § 204.3.",
+    "categories": [
+      "During employment"
+    ],
+    "clauseOrder": [
+      "makeuptime_intro",
+      "makeuptime_daily_overtime_baseline",
+      "makeuptime_statutory_exception",
+      "makeuptime_written_request_no_solicitation",
+      "makeuptime_recurring_obligation_advance_request",
+      "makeuptime_workweek_definition",
+      "makeuptime_dlse_enforcement_positions",
+      "makeuptime_distinguished_from_compensating_time_off",
+      "makeuptime_coverage_limits",
+      "makeuptime_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      }
+    ]
   }
 ]
