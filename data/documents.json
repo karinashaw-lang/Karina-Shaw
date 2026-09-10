@@ -32997,5 +32997,60 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "employee_cash_bond_photograph_restrictions_info_sheet",
+    "title": "Employer-Required Cash Bonds, Deposits, and Photographs (Labor Code §§ 400–410) — Information Sheet",
+    "description": "An information sheet describing Article 2 (Bonds and Photographs) of the California Labor Code, Sections 400 through 410: the employer's obligation to pay for any bond or photograph it requires of an employee or applicant, the prohibition on demanding or accepting a cash bond except where the worker is entrusted with property of equivalent value or regularly advanced goods for sale, the joint-signature savings-account and written-agreement requirements, the shield from third-party judgments and the duty to return bond money with interest, the trust status of bond property and the theft consequence of commingling it, the rule that notes, loans, and investments tied to employment are deemed bonds, the public-policy bar on selling stock or investments as a condition of getting a job, and the misdemeanor penalties and Labor Commissioner enforcement that back the article.",
+    "categories": [
+      "Hiring"
+    ],
+    "clauseOrder": [
+      "ecb_intro",
+      "ecb_applicant_scope",
+      "ecb_employer_pays_cost",
+      "ecb_cash_bond_restriction",
+      "ecb_deposit_and_written_agreement",
+      "ecb_judgment_protection_and_return",
+      "ecb_trust_and_theft",
+      "ecb_disguised_bonds",
+      "ecb_investment_for_position",
+      "ecb_penalties_and_enforcement",
+      "ecb_quillian_shortage_bonus",
+      "ecb_uss_posco_training_reimbursement",
+      "ecb_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company/employer name",
+        "placeholder": "Acme Route Sales, Inc.",
+        "required": true
+      },
+      {
+        "id": "bondPracticeDescription",
+        "label": "Company's practices, if any, regarding bonds, deposits, photographs, or investments required of employees or applicants",
+        "placeholder": "Route drivers who take consigned merchandise are asked to post a $500 deposit; no photographs or investments are required",
+        "required": true
+      },
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Sacramento, California",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 10, 2026",
+        "required": true
+      }
+    ]
   }
 ]
