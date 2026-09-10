@@ -92080,6 +92080,213 @@
       "title": "Acknowledgment",
       "kind": "drafting",
       "body": "This information sheet regarding California's contractor licensing requirement, Business and Professions Code Sections 7028, 7031, and 7048, and Labor Code Section 2750.5, was prepared by {{preparerName}} for {{companyName}} and reviewed in {{cityState}} on {{dateSigned}}. It reflects the statutory and case-law text as of the date checked above and does not reflect any amendments or decisions issued after that date, and it is not a substitute for consulting a licensed attorney."
+    },
+    {
+      "id": "spend_declaration",
+      "title": "Purpose of This Spendthrift Trust Provisions and Creditor Protection Information Sheet",
+      "kind": "drafting",
+      "body": "This information sheet describes California's statutory restrictions on voluntary and involuntary transfers of a trust beneficiary's interest — commonly called a trust's \"spendthrift\" provisions — as background in connection with {{trustName}}, of which {{settlorName}} is settlor, {{trusteeName}} serves or has been asked to serve as trustee, and {{beneficiaryName}} is a beneficiary. This document covers when a restraint on transfer in a trust instrument is valid and enforceable against a beneficiary's creditors and transferees, how that rule applies to income interests, principal interests, support trusts, and discretionary trusts, the statutory rule that invalidates a self-settled restraint against the settlor's own creditors, and the further statutory exceptions letting certain creditors reach a beneficiary's interest despite an otherwise valid restraint — for support judgments, public-benefits reimbursement, general money judgments up to a statutory percentage cap, and amounts exceeding the beneficiary's education and support needs. It does not itself determine whether any restraint in {{trustName}} is valid, whether any specific creditor of {{beneficiaryName}} or {{settlorName}} may reach any specific trust interest, or how a court would apply these exceptions to particular facts. This is not a substitute for consulting a licensed attorney about a specific trust's spendthrift provisions or a specific creditor claim."
+    },
+    {
+      "id": "spend_income_restraint",
+      "title": "The General Rule Restraining Transfer of a Beneficiary's Income Interest",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-10",
+      "body": "If the trust instrument for {{trustName}} provides that a beneficiary's interest in income is not subject to voluntary or involuntary transfer, California law makes that restraint effective: the beneficiary's interest in income may not be transferred, and it is not subject to enforcement of a money judgment until it is paid to the beneficiary. This baseline rule for income interests is subject to the further exceptions addressed elsewhere in this document.",
+      "gap": "This section states the rule only for income interests where the trust instrument itself contains the restraint language; it does not create a restraint in a trust instrument that lacks one, and it does not by itself address principal interests, support trusts, or discretionary trusts, each of which is governed by a separate provision addressed elsewhere in this document.",
+      "citations": [
+        {
+          "case": "Cal. Prob. Code § 15300 (California Legislative Information text)",
+          "cite": "the general rule restraining transfer of a beneficiary's income interest subject to a valid spendthrift provision",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=15300.",
+          "quote": "if the trust instrument provides that a beneficiary’s interest in income is not subject to voluntary or involuntary transfer, the beneficiary’s interest in income under the trust may not be transferred and is not subject to enforcement of a money judgment until paid to the beneficiary."
+        }
+      ]
+    },
+    {
+      "id": "spend_principal_restraint",
+      "title": "The Parallel Rule for a Beneficiary's Principal Interest, and Its Due-and-Payable Limit",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-10",
+      "body": "California extends the same restraint rule to principal: if the trust instrument for {{trustName}} provides that a beneficiary's interest in principal is not subject to voluntary or involuntary transfer, that interest likewise may not be transferred and is not subject to enforcement of a money judgment until paid to the beneficiary. That protection is not indefinite. Once an amount of principal has actually become due and payable to the beneficiary under the trust instrument, a judgment creditor who petitions the court under Code of Civil Procedure § 709.010 may obtain an order directing the trustee to satisfy the judgment, in whole or in part, out of that due-and-payable principal amount, at the court's discretion.",
+      "gap": "The statute does not itself define what makes a principal amount \"due and payable\" for every trust instrument's distribution terms.",
+      "citations": [
+        {
+          "case": "Cal. Prob. Code § 15301(a) (California Legislative Information text)",
+          "cite": "the general rule restraining transfer of a beneficiary's principal interest subject to a valid spendthrift provision",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=15301.",
+          "quote": "if the trust instrument provides that a beneficiary’s interest in principal is not subject to voluntary or involuntary transfer, the beneficiary’s interest in principal may not be transferred and is not subject to enforcement of a money judgment until paid to the beneficiary."
+        },
+        {
+          "case": "Cal. Prob. Code § 15301(b) (California Legislative Information text)",
+          "cite": "the exception once principal has become due and payable to the beneficiary",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=15301.",
+          "quote": "After an amount of principal has become due and payable to the beneficiary under the trust instrument, upon petition to the court under Section 709.010 of the Code of Civil Procedure by a judgment creditor, the court may make an order directing the trustee to satisfy the money judgment out of that principal amount."
+        }
+      ]
+    },
+    {
+      "id": "spend_support_trust",
+      "title": "Protection for a \"Support Trust\" Even Without an Express Restraint Clause",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-10",
+      "body": "A separate rule protects what is sometimes called a \"support trust\" for {{beneficiaryName}}, without regard to whether the trust instrument for {{trustName}} contains an express restraint-on-transfer clause: if the instrument directs the trustee to pay income or principal, or both, for the beneficiary's education or support, the beneficiary's interest — to the extent it is necessary for that education or support — may not be transferred and is not subject to enforcement of a money judgment until it is paid to the beneficiary.",
+      "gap": "The statute protects only the portion of income or principal that is \"necessary\" for the beneficiary's education or support; it does not itself quantify that amount for any particular beneficiary or trust.",
+      "citations": [
+        {
+          "case": "Cal. Prob. Code § 15302 (California Legislative Information text)",
+          "cite": "the support-trust protection for the portion of income or principal necessary for the beneficiary's education or support",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=15302.",
+          "quote": "if the trust instrument provides that the trustee shall pay income or principal or both for the education or support of a beneficiary, the beneficiary’s interest in income or principal or both under the trust, to the extent the income or principal or both is necessary for the education or support of the beneficiary, may not be transferred and is not subject to the enforcement of a money judgment until paid to the beneficiary."
+        }
+      ]
+    },
+    {
+      "id": "spend_discretionary_trust",
+      "title": "A Purely Discretionary Trust: No Right to Compel Payment, and Trustee Liability for Paying With Notice",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-10",
+      "body": "A trustee's purely discretionary power over distributions to {{beneficiaryName}} carries its own rule under California law. If the trust instrument for {{trustName}} lets the trustee pay income or principal, or both, to or for the beneficiary's benefit in the trustee's discretion, a transferee or creditor of the beneficiary may not compel the trustee to pay any amount that may be paid only in the trustee's discretion. If the trustee has knowledge of a transfer of the beneficiary's interest, or has been served with process in a creditor's proceeding to reach that interest, and the trustee nonetheless pays the beneficiary an amount that could only be paid in the trustee's discretion, the trustee becomes liable to the transferee or creditor to the extent that payment impairs their rights.",
+      "gap": "This liability rule does not apply if the beneficiary's interest is independently subject to a valid restraint under § 15300 or § 15301, addressed elsewhere in this document; the statute also does not require the trust instrument to state any standard governing the trustee's discretion for this protection to apply.",
+      "citations": [
+        {
+          "case": "Cal. Prob. Code § 15303(a) (California Legislative Information text)",
+          "cite": "no right of a transferee or creditor to compel payment of a purely discretionary distribution",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=15303.",
+          "quote": "If the trust instrument provides that the trustee shall pay to or for the benefit of a beneficiary so much of the income or principal or both as the trustee in the trustee’s discretion sees fit to pay, a transferee or creditor of the beneficiary may not compel the trustee to pay any amount that may be paid only in the exercise of the trustee’s discretion."
+        },
+        {
+          "case": "Cal. Prob. Code § 15303(b) (California Legislative Information text)",
+          "cite": "trustee liability for paying a discretionary distribution with knowledge of a transfer or pending creditor proceeding",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=15303.",
+          "quote": "If the trustee has knowledge of the transfer of the beneficiary’s interest or has been served with process in a proceeding under Section 709.010 of the Code of Civil Procedure by a judgment creditor seeking to reach the beneficiary’s interest, and the trustee pays to or for the benefit of the beneficiary any part of the income or principal that may be paid only in the exercise of the trustee’s discretion, the trustee is liable to the transferee or creditor to the extent that the payment to or for the benefit of the beneficiary impairs the right of the transferee or creditor."
+        }
+      ]
+    },
+    {
+      "id": "spend_self_settled_trust",
+      "title": "A Self-Settled Trust: The Restraint Is Invalid Against the Settlor's Own Creditors",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-10",
+      "body": "California's restraint rules do not protect a settlor who is also a beneficiary of their own trust. If {{settlorName}} is a beneficiary of a trust {{settlorName}} created and that interest is subject to a provision restraining voluntary or involuntary transfer, the restraint is invalid against {{settlorName}}'s own transferees or creditors — though the trust itself remains valid. Where such a trust instead directs the trustee to pay income or principal, or both, for the settlor-beneficiary's education or support, or gives the trustee discretion over the amount to pay the settlor-beneficiary, a transferee or creditor of the settlor may reach the maximum amount the trustee could pay to or for the settlor's benefit under the trust instrument — capped at the amount of the settlor's own proportionate contribution to the trust.",
+      "gap": "§ 15304(c) contains a further carve-out under which a settlor is not treated as a beneficiary solely because the trustee has discretionary authority to pay or reimburse the settlor's income tax on trust income or principal, and a transferee or creditor cannot reach any amount solely by reason of that discretionary authority; that carve-out is not separately quoted in this clause.",
+      "citations": [
+        {
+          "case": "Cal. Prob. Code § 15304(a) (California Legislative Information text)",
+          "cite": "a restraint on transfer is invalid against the settlor's own transferees or creditors when the settlor is also a beneficiary",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=15304.",
+          "quote": "If the settlor is a beneficiary of a trust created by the settlor and the settlor’s interest is subject to a provision restraining the voluntary or involuntary transfer of the settlor’s interest, the restraint is invalid against transferees or creditors of the settlor."
+        },
+        {
+          "case": "Cal. Prob. Code § 15304(b) (California Legislative Information text)",
+          "cite": "the amount a settlor-beneficiary's transferee or creditor may reach, capped at the settlor's proportionate contribution",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=15304.",
+          "quote": "If the settlor is the beneficiary of a trust created by the settlor and the trust instrument provides that the trustee shall pay income or principal or both for the education or support of the beneficiary or gives the trustee discretion to determine the amount of income or principal or both to be paid to or for the benefit of the settlor, a transferee or creditor of the settlor may reach the maximum amount that the trustee could pay to or for the benefit of the settlor under the trust instrument, not exceeding the amount of the settlor’s proportionate contribution to the trust."
+        }
+      ]
+    },
+    {
+      "id": "spend_support_judgment_exception",
+      "title": "The Spousal, Former-Spousal, and Minor-Child Support Judgment Exception",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-10",
+      "body": "A \"support judgment\" — defined by California law as a money judgment for support of a trust beneficiary's spouse, former spouse, or minor child — can reach {{beneficiaryName}}'s trust interest despite an otherwise valid restraint. If {{beneficiaryName}} has the right under {{trustName}} to compel the trustee to pay income or principal, or both, the court may, to the extent it determines equitable and reasonable under the circumstances of the particular case, order the trustee to satisfy all or part of a support judgment out of those payments as they become due and payable, presently or in the future. This exception applies to a support judgment notwithstanding any contrary provision in the trust instrument.",
+      "gap": "A parallel provision in § 15305(c), not separately quoted in this clause, extends the same equitable, case-by-case authority to future discretionary payments even where the beneficiary has no right to compel payment.",
+      "citations": [
+        {
+          "case": "Cal. Prob. Code § 15305(a) (California Legislative Information text)",
+          "cite": "the definition of a \"support judgment\" for purposes of this exception",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=15305.",
+          "quote": "As used in this section, “support judgment” means a money judgment for support of the trust beneficiary’s spouse or former spouse or minor child."
+        },
+        {
+          "case": "Cal. Prob. Code § 15305(b) (California Legislative Information text)",
+          "cite": "the court's equitable authority to order satisfaction of a support judgment where the beneficiary can compel payment",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=15305.",
+          "quote": "If the beneficiary has the right under the trust to compel the trustee to pay income or principal or both to or for the benefit of the beneficiary, the court may, to the extent that the court determines it is equitable and reasonable under the circumstances of the particular case, order the trustee to satisfy all or part of the support judgment out of all or part of those payments as they become due and payable, presently or in the future."
+        },
+        {
+          "case": "Cal. Prob. Code § 15305(d) (California Legislative Information text)",
+          "cite": "this exception overrides any contrary provision in the trust instrument",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=15305.",
+          "quote": "This section applies to a support judgment notwithstanding any provision in the trust instrument."
+        }
+      ]
+    },
+    {
+      "id": "spend_public_benefits_reimbursement",
+      "title": "The Public-Support Reimbursement Exception, and Its Disability-Trust Carve-Out",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-10",
+      "body": "Where a California statute makes a beneficiary liable to reimburse the state or a local public entity for public support furnished to the beneficiary or the beneficiary's spouse or minor child, the appropriate state or local public entity or official may petition the court to order {{trustName}}'s trustee to satisfy all or part of that reimbursement liability out of payments as they become due, to the extent the court finds it equitable and reasonable under the circumstances — notwithstanding any contrary provision in the trust instrument. This reimbursement exception does not apply, however, to a trust established for the benefit of an individual who has a disability that substantially impairs that individual's ability to provide for their own care or custody and constitutes a substantial handicap.",
+      "gap": "§ 15306(a)(2) and (a)(3), not separately quoted in this clause, extend the same reimbursement remedy to future discretionary payments and, for a settlor's own trust, to payments the trustee has discretion to make regardless of whether that discretion has yet been exercised. § 15306(b) also provides that the disability carve-out itself stops applying — restoring the reimbursement remedy — if the trust would otherwise make the individual ineligible for needed public social services under the Welfare and Institutions Code; that proviso is not separately quoted in this clause.",
+      "citations": [
+        {
+          "case": "Cal. Prob. Code § 15306(a) (California Legislative Information text)",
+          "cite": "the public-support reimbursement exception where the beneficiary can compel payment",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=15306.",
+          "quote": "Notwithstanding any provision in the trust instrument, if a statute of this state makes the beneficiary liable for reimbursement of this state or a local public entity in this state for public support furnished to the beneficiary or to the beneficiary’s spouse or minor child, upon petition to the court under Section 709.010 of the Code of Civil Procedure by the appropriate state or local public entity or public official, to the extent the court determines it is equitable and reasonable under the circumstances of the particular case, the court may do the following: (1) If the beneficiary has the right under the trust to compel the trustee to pay income or principal or both to or for the benefit of the beneficiary, order the trustee to satisfy all or part of the liability out of all or part of the payments as they become due, presently or in the future."
+        },
+        {
+          "case": "Cal. Prob. Code § 15306(b) (California Legislative Information text)",
+          "cite": "the carve-out for a trust established for the benefit of a person with a substantially handicapping disability",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=15306.",
+          "quote": "Subdivision (a) does not apply to any trust that is established for the benefit of an individual who has a disability that substantially impairs the individual’s ability to provide for his or her own care or custody and constitutes a substantial handicap."
+        }
+      ]
+    },
+    {
+      "id": "spend_general_creditor_25pct_cap",
+      "title": "The General Judgment-Creditor Exception, Capped at 25 Percent of the Payment",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-10",
+      "body": "Apart from the support-judgment and public-benefits exceptions addressed elsewhere in this document, California law lets a judgment creditor of {{beneficiaryName}} petition the court for an order directing {{trustName}}'s trustee to satisfy all or part of the judgment out of the payments the beneficiary is entitled to receive, or that the trustee has determined or will determine to pay in the trustee's discretion — notwithstanding a restraint on transfer valid under § 15300 or § 15301. That order is capped: it may not require the trustee to pay more than 25 percent of the payment that otherwise would be made to or for the beneficiary.",
+      "gap": "§ 15306.5 also provides, in subdivisions not separately quoted in this clause, that an order to satisfy a support judgment under § 15305 has priority over an order under this section and reduces what this section's order may reach; that the aggregate of all orders under this section may not exceed the same 25 percent cap; and that a trustee has no duty to oppose such a petition or to claim an exemption on the beneficiary's behalf, and is not liable for complying with a court order made under this section.",
+      "citations": [
+        {
+          "case": "Cal. Prob. Code § 15306.5(a) (California Legislative Information text)",
+          "cite": "a judgment creditor's petition and the court's authority to order satisfaction out of the beneficiary's payments",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=15306.5.",
+          "quote": "Notwithstanding a restraint on transfer of the beneficiary’s interest in the trust under Section 15300 or 15301, and subject to the limitations of this section, upon a judgment creditor’s petition under Section 709.010 of the Code of Civil Procedure, the court may make an order directing the trustee to satisfy all or part of the judgment out of the payments to which the beneficiary is entitled under the trust instrument or that the trustee, in the exercise of the trustee’s discretion, has determined or determines in the future to pay to the beneficiary."
+        },
+        {
+          "case": "Cal. Prob. Code § 15306.5(b) (California Legislative Information text)",
+          "cite": "the 25 percent cap on the amount an order under this section may reach",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=15306.5.",
+          "quote": "An order under this section may not require that the trustee pay in satisfaction of the judgment an amount exceeding 25 percent of the payment that otherwise would be made to, or for the benefit of, the beneficiary."
+        }
+      ]
+    },
+    {
+      "id": "spend_excess_over_needs",
+      "title": "The Amount Exceeding Education-and-Support Needs Is Reachable Regardless of a Restraint",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-10",
+      "body": "Regardless of a restraint on transfer valid under § 15300 or § 15301, California law lets a money judgment against {{beneficiaryName}} reach the portion of a trust distribution that exceeds what is or will be necessary for the beneficiary's education and support — whether that amount is one the beneficiary is entitled to under {{trustName}}'s instrument or one the trustee has decided, in the trustee's discretion, to pay. A judgment creditor who petitions the court under Code of Civil Procedure § 709.010 may obtain an order directing the trustee to satisfy all or part of the judgment out of that excess.",
+      "gap": "The statute does not itself quantify what amount is \"necessary\" for a given beneficiary's education and support; that determination is left to the case-by-case application described in the statute's text.",
+      "citations": [
+        {
+          "case": "Cal. Prob. Code § 15307 (California Legislative Information text)",
+          "cite": "a money judgment may reach the portion of a distribution exceeding the beneficiary's education and support needs, despite an otherwise valid restraint",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=15307.",
+          "quote": "Notwithstanding a restraint on transfer of a beneficiary’s interest in the trust under Section 15300 or 15301, any amount to which the beneficiary is entitled under the trust instrument or that the trustee, in the exercise of the trustee’s discretion, has determined to pay to the beneficiary in excess of the amount that is or will be necessary for the education and support of the beneficiary may be applied to the satisfaction of a money judgment against the beneficiary."
+        }
+      ]
+    },
+    {
+      "id": "spend_signature_block",
+      "title": "Signature and Acknowledgment Block — Spendthrift Trust Provisions and Creditor Protection Information Sheet",
+      "kind": "drafting",
+      "body": "I declare under penalty of perjury under the laws of the State of California that the foregoing background information is true and correct to the best of my knowledge.\n\nExecuted on {{dateSigned}} at {{cityState}}.\n\nSignature of {{trusteeName}}, as trustee of {{trustName}}: ☐ _________________________\n\n[This information sheet is prepared as background regarding the spendthrift and creditor-protection rules described in California Probate Code §§ 15300-15307. It does not itself determine whether any restraint in {{trustName}} is valid or enforceable against any transferee or creditor of {{settlorName}} or {{beneficiaryName}}. This is not a substitute for consulting a licensed attorney about a specific trust's spendthrift provisions or a specific creditor claim.]"
     }
   ]
 }
