@@ -32597,5 +32597,59 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "unlicensed_contractor_hiring_info_sheet",
+    "title": "Hiring an Unlicensed Contractor — Information Sheet",
+    "description": "An information sheet describing California's contractor's license requirement for work covered by Business and Professions Code Chapter 9, the Labor Code Section 2750.5 rebuttable presumption that an unlicensed worker performing such work is an employee rather than an independent contractor, the criminal penalties and compensation-forfeiture consequences of proceeding without a license under Sections 7028 and 7031 (including the California Supreme Court's Hydrotech decision on the policy behind strict enforcement), restitution rights for a person who used an unlicensed contractor's services, and the narrow casual/minor-work exemption under Section 7048.",
+    "categories": [
+      "Hiring"
+    ],
+    "clauseOrder": [
+      "ulc_intro",
+      "ulc_bp_license_crime",
+      "ulc_bp_license_penalties",
+      "ulc_bp_restitution",
+      "ulc_labor_presumption",
+      "ulc_labor_rebuttal_factors",
+      "ulc_labor_license_condition",
+      "ulc_labor_workers_comp_supplement",
+      "ulc_bp_compensation_forfeiture",
+      "ulc_hydrotech_policy",
+      "ulc_small_job_exemption",
+      "ulc_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company/employer name",
+        "placeholder": "Acme Construction Services, Inc.",
+        "required": true
+      },
+      {
+        "id": "contractingActivityDescription",
+        "label": "Company's use of, or engagement with, contractors performing work that may require a California contractor's license, if any",
+        "placeholder": "We hire subcontractors for electrical and plumbing work on renovation projects",
+        "required": true
+      },
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Sacramento, California",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 10, 2026",
+        "required": true
+      }
+    ]
   }
 ]
