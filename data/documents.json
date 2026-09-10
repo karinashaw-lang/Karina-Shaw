@@ -33205,5 +33205,45 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "self_help_eviction_lockout_prohibition_info_sheet",
+    "title": "Self-Help Eviction and Lockout Prohibition (Civ. Code § 789.3) — Information Sheet",
+    "description": "Explains, using the statute's own text and California appellate decisions, the prohibition on residential \"self-help\" eviction in Civil Code § 789.3: the ban on willful utility shutoffs, lock changes, removal of doors or windows, and removal of a tenant's belongings done with intent to end an occupancy; who the statute protects (residential use, not full-time or physical occupancy) and who can be liable (the landlord, including for a managing agent's acts); the actual-damages, daily-amount, attorney's-fee, and injunctive remedies; how the Supreme Court measures the daily amount per rental unit and the constitutional limits it has discussed; and the related forcible-entry (Code Civ. Proc. § 1159), Penal Code § 418, and tenant-harassment (Civ. Code § 1940.2) provisions.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "selfhelp_declaration",
+      "selfhelp_utility_interruption_prohibition",
+      "selfhelp_lockout_doors_property_prohibition",
+      "selfhelp_who_is_protected",
+      "selfhelp_who_is_liable",
+      "selfhelp_civil_remedies",
+      "selfhelp_penalty_construction",
+      "selfhelp_forcible_entry_and_penal",
+      "selfhelp_related_1940_2",
+      "selfhelp_ack"
+    ],
+    "fields": [
+      {
+        "id": "propertyAddress",
+        "label": "Rental property address",
+        "placeholder": "123 Main St., Apt. 4, Sacramento, CA 95814",
+        "required": true
+      },
+      {
+        "id": "landlordName",
+        "label": "Landlord's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "tenantName",
+        "label": "Tenant's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      }
+    ]
   }
 ]
