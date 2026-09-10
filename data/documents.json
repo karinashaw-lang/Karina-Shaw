@@ -33571,5 +33571,47 @@
         "required": false
       }
     ]
+  },
+  {
+    "id": "domestic_violence_survivor_tenant_protections_info_sheet",
+    "title": "Tenant Protections for Survivors of Domestic Violence, Sexual Assault, Stalking, Human Trafficking, and Abuse — Information Sheet",
+    "description": "Explains, using the statutes' own text and one published California appellate decision, the protections California gives a residential tenant when the tenant, a household member, or an immediate family member has been the victim of domestic violence, sexual assault, stalking, human trafficking, elder or dependent adult abuse, or certain violent crimes: the right to terminate a lease early on written notice with documentation and owe no more than 14 days' rent without forfeiting the deposit (Civ. Code § 1946.7); the landlord's 24-hour duty to change the locks, whether the alleged perpetrator is an outsider (§ 1941.5) or a restrained co-tenant (§ 1941.6); the bar on evicting based on abuse or violence against the tenant, its exceptions, the unlawful detainer affirmative defense, and the court's power to partially evict the perpetrator alone (Code Civ. Proc. §§ 1161.3, 1174.27); how Elmassian v. Flores (2021) read the eviction defense; and the right to summon police or emergency help without penalty (Civ. Code § 1946.8).",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "dvtenant_declaration",
+      "dvtenant_covered_acts_and_persons",
+      "dvtenant_termination_notice_and_documentation",
+      "dvtenant_termination_rent_deposit_effect",
+      "dvtenant_termination_confidentiality_nonretaliation_remedies",
+      "dvtenant_lock_change_nontenant_perpetrator",
+      "dvtenant_lock_change_cotenant_perpetrator",
+      "dvtenant_eviction_prohibition",
+      "dvtenant_ud_affirmative_defense_partial_eviction",
+      "dvtenant_elmassian_based_upon_and_documentation",
+      "dvtenant_right_to_summon_help",
+      "dvtenant_ack"
+    ],
+    "fields": [
+      {
+        "id": "propertyAddress",
+        "label": "Rental property address",
+        "placeholder": "123 Main St., Apt. 4, Sacramento, CA 95814",
+        "required": true
+      },
+      {
+        "id": "landlordName",
+        "label": "Landlord's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "tenantName",
+        "label": "Tenant's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      }
+    ]
   }
 ]
