@@ -33438,5 +33438,73 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "dependent_relative_revocation_info_sheet",
+    "title": "Dependent Relative Revocation of a Will — Information Sheet",
+    "description": "Explains California's judge-made doctrine of dependent relative revocation, under which an earlier will that was revoked only to give effect to a later will remains in effect to the extent the later will proves ineffective: the statutory revocation rules the doctrine operates on (Prob. Code § 6120), the Supreme Court's formulation of the doctrine and its 'same dispositive plan' rule in Estate of Kaufman (1945), the conditional-intent requirement and the treatment of a testator's mistake in Estate of Cuneo (1963), the doctrine's limits where a revocation is unconnected to a new will, the Court of Appeal's holdings in Estate of Anderson (1997) that an express revocation clause does not defeat the doctrine, that the doctrine is not limited to cases of intestacy, that extrinsic evidence of the testator's intent may be considered, and that only the ineffective portion of the earlier will is preserved, the separate statutory revival rule (§ 6123), and the allocation of the burden of proving revocation in a will contest (§ 8252).",
+    "categories": [
+      "Estate Planning"
+    ],
+    "clauseOrder": [
+      "drr_declaration",
+      "drr_statutory_revocation_framework",
+      "drr_doctrine_defined",
+      "drr_same_dispositive_plan",
+      "drr_kaufman_application",
+      "drr_conditional_intent_and_mistake",
+      "drr_limits_unconnected_revocation",
+      "drr_express_revocation_clause",
+      "drr_not_limited_to_intestacy",
+      "drr_extrinsic_evidence",
+      "drr_partial_preservation",
+      "drr_revival_statute_distinguished",
+      "drr_burden_of_proof",
+      "drr_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "decedentName",
+        "label": "Decedent's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "earlierWillDate",
+        "label": "Date of the earlier will",
+        "placeholder": "January 15, 2019",
+        "required": true
+      },
+      {
+        "id": "laterWillDate",
+        "label": "Date of the later will",
+        "placeholder": "June 3, 2024",
+        "required": true
+      },
+      {
+        "id": "dateOfDeath",
+        "label": "Date of death",
+        "placeholder": "March 15, 2026",
+        "required": true
+      },
+      {
+        "id": "petitionerName",
+        "label": "Petitioner's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 10, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]

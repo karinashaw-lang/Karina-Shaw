@@ -95707,6 +95707,294 @@
       "title": "Signature and Receipt",
       "kind": "drafting",
       "body": "Employee Signature: ☐ _________________________ Date: _______________\n\n{{employeeName}} (print name)\n\nEmployer Representative Signature: ☐ _________________________ Date: _______________\n\n{{companyName}} (print name and title)"
+    },
+    {
+      "id": "drr_declaration",
+      "title": "Purpose of This Dependent Relative Revocation Information Sheet",
+      "kind": "drafting",
+      "body": "This information sheet describes California's doctrine of dependent relative revocation — the judge-made rule under which an earlier will that was revoked only to give effect to a later will remains in effect to the extent the later will proves ineffective — as background in connection with the earlier will of {{decedentName}} dated {{earlierWillDate}}, the later will of {{decedentName}} dated {{laterWillDate}}, {{decedentName}}'s death on {{dateOfDeath}}, and a petition by {{petitionerName}} concerning those instruments. This document covers the statutory revocation rules the doctrine operates on, the California Supreme Court's formulation of the doctrine and its rule for a testator who repeats the same dispositive plan in a new will, the conditional-intent requirement and the treatment of a testator's mistake, the doctrine's limits where a revocation is not connected to the making of a new will, the Court of Appeal's holdings that an express revocation clause does not defeat the doctrine, that the doctrine is not limited to cases that would otherwise end in intestacy, that extrinsic evidence of the testator's intent may be considered, and that only the ineffective portion of the earlier will is preserved, the separate statutory rule on revival of a revoked will, and the allocation of the burden of proving revocation in a will contest. It does not itself determine whether the doctrine applies to the wills of {{decedentName}}, what {{decedentName}} intended when executing the later will, or how a court would rule on any petition or contest. This is not a substitute for consulting a licensed attorney about a specific will or probate proceeding."
+    },
+    {
+      "id": "drr_statutory_revocation_framework",
+      "title": "The Statutory Revocation Rules the Doctrine Operates On",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-10",
+      "body": "Dependent relative revocation is not itself a statute; it is a judicially developed rule about the intent behind a revocation. The revocation it operates on is governed by the Probate Code, which provides that a will, or any part of it, is revoked in either of two ways: by a subsequent will that revokes the prior will or part expressly or by inconsistency, or by being burned, torn, canceled, obliterated, or destroyed with the intent and for the purpose of revoking it, by the testator or by another person in the testator's presence and at the testator's direction. When the later will of {{decedentName}} dated {{laterWillDate}} contains a clause revoking all prior wills, or disposes of property inconsistently with the earlier will dated {{earlierWillDate}}, subdivision (a) is the provision under which the earlier will is, on its face, revoked; the doctrine described in the remaining clauses of this document concerns whether that revocation was intended to be unconditional.",
+      "gap": "§ 6120 states the acts that revoke a will and the intent required for revocation by physical act; it does not mention dependent relative revocation, conditional revocation, or mistake, all of which come from case law addressed in later clauses of this document. § 6121 (wills executed in duplicate) and § 6122 (revocation by dissolution of marriage) are not quoted.",
+      "citations": [
+        {
+          "case": "Cal. Prob. Code § 6120 (California Legislative Information text)",
+          "cite": "the two statutory methods of revoking a will — a subsequent will, or a physical act done with intent to revoke",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=6120.",
+          "quote": "A will or any part thereof is revoked by any of the following: (a) A subsequent will which revokes the prior will or part expressly or by inconsistency. (b) Being burned, torn, canceled, obliterated, or destroyed, with the intent and for the purpose of revoking it, by either (1) the testator or (2) another person in the testator’s presence and by the testator’s direction."
+        }
+      ]
+    },
+    {
+      "id": "drr_doctrine_defined",
+      "title": "What the Doctrine Provides — Estate of Kaufman (1945)",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-10",
+      "body": "The California Supreme Court's leading statement of the doctrine is Estate of Kaufman (1945). Writing for a unanimous court, Justice Traynor described dependent relative revocation as the rule that an earlier will, revoked only to give effect to a later one on the supposition that the later one will become effective, remains in effect to the extent that the later will proves ineffective. The court explained that the doctrine is designed to carry out the probable intention of the testator when there is no reason to suppose that the testator intended to revoke the earlier will if the later will became inoperative. The court noted that the doctrine had previously been invoked in California in Estate of Marx (1917) and Estate of Thompson (1921) and was sustained by the weight of authority in other states. Applied to the wills of {{decedentName}}, the doctrine's premise is that the revocation of the will dated {{earlierWillDate}} may have been conditioned — in {{decedentName}}'s probable intention — on the will dated {{laterWillDate}} actually taking effect.",
+      "gap": "The first quote is the portion of the Kaufman court's defining sentence that follows a page break in the reported opinion; the sentence in full begins \"Under the doctrine of dependent relative revocation,\" and the opening words are omitted from the quote only because the CourtListener text interposes the page marker \"*859\" between them and the remainder of the sentence. Estate of Marx (1917) 174 Cal. 762 and Estate of Thompson (1921) 185 Cal. 763 are described only as Kaufman cites them; they were not independently fetched for this document.",
+      "citations": [
+        {
+          "case": "Estate of Kaufman (1945) 25 Cal.2d 854 (Supreme Court of California, Traynor, J.)",
+          "cite": "definition of dependent relative revocation — an earlier will revoked only to give effect to a later one remains in effect to the extent the later one proves ineffective",
+          "url": "https://www.courtlistener.com/opinion/1164184/second-church-of-christ-scientist-of-new-york-city-v-kaufman/",
+          "quote": "an earlier will, revoked only to give effect to a later one on the supposition that the later one will become effective, remains in effect to the extent that the latter proves ineffective."
+        },
+        {
+          "case": "Estate of Kaufman (1945) 25 Cal.2d 854 (Supreme Court of California, Traynor, J.)",
+          "cite": "the doctrine's purpose — carrying out the testator's probable intention",
+          "url": "https://www.courtlistener.com/opinion/1164184/second-church-of-christ-scientist-of-new-york-city-v-kaufman/",
+          "quote": "The doctrine is designed to carry out the probable intention of the testator when there is no reason to suppose that he intended to revoke his earlier will if the later will became inoperative."
+        }
+      ]
+    },
+    {
+      "id": "drr_same_dispositive_plan",
+      "title": "A Testator Who Repeats the Same Dispositive Plan Is Deemed to Revoke Conditionally",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-10",
+      "body": "Kaufman states a specific rule for the common situation in which a later will repeats the earlier will's plan of distribution. When a testator repeats the same dispositive plan in a new will, the revocation of the old will by the new one is deemed inseparably related to and dependent upon the legal effectiveness of the new will. The court reasoned that if the new will fails to give effect to the twice-declared purpose of the testator, its revocatory clause falls, because a testator who repeats a purpose intends to confirm and not revoke it, and does not intend the new will to operate as a revocation independently of its operation as a will. Under this rule, the degree to which the will of {{decedentName}} dated {{laterWillDate}} duplicates the dispositive provisions of the will dated {{earlierWillDate}} is central to whether the earlier will's revocation is treated as conditional.",
+      "gap": "The CourtListener text of the first quoted sentence renders the word \"dispositive\" as \"dis-positive\" (a line-break hyphenation artifact in the scanned reporter); the quote below begins after that word so that no character of the quote departs from the source. The Supreme Court's own later quotation of the same sentence in Estate of Cuneo (1963), also fetched for this document, reads \"dispositive\" without the hyphen.",
+      "citations": [
+        {
+          "case": "Estate of Kaufman (1945) 25 Cal.2d 854 (Supreme Court of California, Traynor, J.)",
+          "cite": "revocation by a new will repeating the same dispositive plan is dependent on the new will's legal effectiveness",
+          "url": "https://www.courtlistener.com/opinion/1164184/second-church-of-christ-scientist-of-new-york-city-v-kaufman/",
+          "quote": "revocation of the old one by the new is deemed inseparably related to and dependent upon the legal effectiveness of the new."
+        },
+        {
+          "case": "Estate of Kaufman (1945) 25 Cal.2d 854 (Supreme Court of California, Traynor, J.)",
+          "cite": "if the new will fails to carry out the twice-declared purpose, its revocatory clause falls",
+          "url": "https://www.courtlistener.com/opinion/1164184/second-church-of-christ-scientist-of-new-york-city-v-kaufman/",
+          "quote": "If the new will fails to give effect to the twice declared purpose of the testator, its revocatory clause falls, for a testator who repeats his purpose intends to confirm and not revoke it, and does not intend to have the new will operate as a revocation independently of its operation as a will."
+        }
+      ]
+    },
+    {
+      "id": "drr_kaufman_application",
+      "title": "How Kaufman Applied the Doctrine — Two Nearly Identical Wills and a Failed Charitable Gift",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-10",
+      "body": "The facts of Kaufman illustrate the doctrine's operation. The testator executed a will in New York in 1940 and, after moving to California, executed a new will in 1941 that revoked all former wills but named the same legatees for the same cash bequests and the same church as residuary beneficiary; the principal change was the naming of a California executor. He died two days after signing the 1941 will — within the period that, under the charitable-bequest restriction then in force, made the residuary gift to the church in the 1941 will ineffective. The trial court found that the testator intended to revoke the 1940 will unconditionally and denied it probate. The Supreme Court held that finding unsupported by the evidence: since the second will was virtually identical with the first in the disposition of the testator's estate, it was clear that the first will was revoked only because the second duplicated its purpose, and that the testator would have preferred the first will to intestacy as to a substantial part of his estate. The court reversed with directions to admit the 1940 will to probate together with the 1941 will and its codicil, so that both instruments operated and the charitable gift was preserved under the earlier one.",
+      "gap": "The charitable-bequest restriction that made the 1941 residuary gift ineffective was a former statute invalidating charitable gifts in a will executed within thirty days of death; the opinion refers to it only as the requirement that the testator live thirty days, and that former statute is not quoted or fetched for this document and has since been repealed. Whether the wills of {{decedentName}} are 'virtually identical' in disposition is a question of fact that the opinion leaves to the evidence in each case.",
+      "citations": [
+        {
+          "case": "Estate of Kaufman (1945) 25 Cal.2d 854 (Supreme Court of California, Traynor, J.)",
+          "cite": "where the second will duplicated the first, the first was revoked only because the second duplicated its purpose",
+          "url": "https://www.courtlistener.com/opinion/1164184/second-church-of-christ-scientist-of-new-york-city-v-kaufman/",
+          "quote": "Since the second will was virtually identical with the first in the disposition of the testator’s estate, it is clear that the first will was revoked only because the second duplicated its purpose and that the testator would have preferred the first will to intestacy as to a substantial part of his estate."
+        },
+        {
+          "case": "Estate of Kaufman (1945) 25 Cal.2d 854 (Supreme Court of California, Traynor, J.)",
+          "cite": "disposition — both wills admitted to probate",
+          "url": "https://www.courtlistener.com/opinion/1164184/second-church-of-christ-scientist-of-new-york-city-v-kaufman/",
+          "quote": "The judgment is reversed with directions to admit the 1940 will to probate with the 1941 will and codicil."
+        }
+      ]
+    },
+    {
+      "id": "drr_conditional_intent_and_mistake",
+      "title": "The Conditional-Intent Requirement and the Testator's Mistake — Estate of Cuneo (1963)",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-10",
+      "body": "In Estate of Cuneo (1963), the Supreme Court restated what the doctrine requires: that, in revoking a prior will and executing a subsequent one, the testator specifically intended certain provisions of the former will to have a continuing effect, either through similar provisions in the new will or because only conditional changes were intended and the conditions on which they depended failed to come into being. In Cuneo, the testatrix had a 1954 attorney-drafted will, added a 1956 handwritten codicil, and in 1957 retrieved and destroyed the 1954 will, saying it was 'not what I want,' while keeping the codicil, which she modified to stand alone. Standing alone, the 1956 instrument omitted four of her six children and would have triggered the pretermitted-heir statute. The court held that the 1954 will as modified by the 1956 codicil was preserved under the doctrine. It explained that it was not significant that the testatrix evidently misunderstood the effect of the 1956 codicil on her will and was under the impression that the will's dispositive provisions continued to be effective; her conclusions had to be judged in light of her knowledge at the time. The judgment was reversed with directions to admit the 1954 will to probate with the 1956 codicil as republished in 1957.",
+      "gap": "The Cuneo court's sentence stating the requirement is quoted beginning after its opening clause because the CourtListener text renders the word \"will\" in that clause as \"mil\" (an optical-character-recognition artifact); the quoted portion matches the source exactly. Former Probate Code § 90, the pretermitted-heir statute the court applied, has been superseded by the current omitted-child provisions (Prob. Code § 21620 et seq.), which are addressed in a separate document in this corpus and are not quoted here.",
+      "citations": [
+        {
+          "case": "Estate of Cuneo (1963) 60 Cal.2d 196 (Supreme Court of California, Peek, J.)",
+          "cite": "what the doctrine requires — a specific intent that provisions of the former will continue, through similar provisions or conditional changes",
+          "url": "https://www.courtlistener.com/opinion/2609207/cuneo-v-mondani/",
+          "quote": "it be specifically intended that certain provisions in the former testament have a continuing effect, either through similar provisions in the new will or because it is intended to make only conditional changes which subsequently do not become effective for the reason that the conditions on which predicated fail to come into being."
+        },
+        {
+          "case": "Estate of Cuneo (1963) 60 Cal.2d 196 (Supreme Court of California, Peek, J.)",
+          "cite": "the testatrix's misunderstanding of the legal effect of her instruments did not defeat the doctrine",
+          "url": "https://www.courtlistener.com/opinion/2609207/cuneo-v-mondani/",
+          "quote": "It is not significant that the testatrix evidently misunderstood the effect of the 1956 codicil on her will and was thus under an impression that the dispositive provisions of the will continued to be effective."
+        },
+        {
+          "case": "Estate of Cuneo (1963) 60 Cal.2d 196 (Supreme Court of California, Peek, J.)",
+          "cite": "disposition — the destroyed 1954 will admitted to probate with the 1956 codicil",
+          "url": "https://www.courtlistener.com/opinion/2609207/cuneo-v-mondani/",
+          "quote": "The judgment is reversed with directions to admit the 1954 will to probate with the 1956 codicil as republished in 1957."
+        }
+      ]
+    },
+    {
+      "id": "drr_limits_unconnected_revocation",
+      "title": "Limits of the Doctrine — A Revocation Not Connected to a New Will",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-10",
+      "body": "The doctrine does not convert every revocation into a conditional one. Kaufman distinguished earlier California decisions in which the doctrine was held inapplicable. In Estate of Olmstead (1898), as Kaufman described it, the revocation of the will was not connected with the making of another will, so it could not be held that the testator intended the revocation to depend upon the legal effectiveness of a new will. In Estate of Martens (1937), as Kaufman described it, the doctrine did not apply because the testator had made clear, by revoking the paragraph naming his executors and attempting to substitute his son and daughter, that he did not want the originally named persons to serve. Cuneo applied the same limit: although the 1954 will as modified was preserved, the court refused to revive a still-earlier 1951 will, finding no substantial evidence that its revocation by the 1954 will had been conditionally dependent on the sufficiency of the 1954 will. These decisions treat the connection between the revocation and the new instrument, and evidence of an actual intent to abandon the earlier provision, as the boundaries of the doctrine.",
+      "gap": "Estate of Olmstead (1898) 122 Cal. 224 and Estate of Martens (1937) 10 Cal.2d 395 are described only as the Kaufman court characterized them; neither was independently fetched for this document. The first quote is Kaufman's description of Olmstead, not language from the Olmstead opinion itself.",
+      "citations": [
+        {
+          "case": "Estate of Kaufman (1945) 25 Cal.2d 854 (Supreme Court of California, Traynor, J.), describing Estate of Olmstead (1898) 122 Cal. 224",
+          "cite": "the doctrine does not apply where the revocation is not connected with the making of another will",
+          "url": "https://www.courtlistener.com/opinion/1164184/second-church-of-christ-scientist-of-new-york-city-v-kaufman/",
+          "quote": "the revocation of the will was not connected with the making of another will, so it could not be held that the testator intended the revocation of the will to depend upon the legal effectiveness of a new will."
+        },
+        {
+          "case": "Estate of Cuneo (1963) 60 Cal.2d 196 (Supreme Court of California, Peek, J.)",
+          "cite": "refusal to revive the 1951 will for want of evidence that its revocation was conditional",
+          "url": "https://www.courtlistener.com/opinion/2609207/cuneo-v-mondani/",
+          "quote": "there is no substantial evidence which requires a conclusion that at such time the revocation was conditionally dependent upon the sufficiency of the 1954 will."
+        }
+      ]
+    },
+    {
+      "id": "drr_express_revocation_clause",
+      "title": "An Express 'Revoke All Prior Wills' Clause Does Not Defeat the Doctrine — Estate of Anderson (1997)",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-10",
+      "body": "In Estate of Anderson (1997), the Court of Appeal addressed a 1993 will that expressly revoked all former wills and, through a drafting oversight, failed to re-exercise a testamentary power of appointment that the testatrix's 1982 will had exercised in favor of her only daughter. The court first held that a general revocation clause is ordinarily sufficient to revoke an earlier will's exercise of a power of appointment, just as it revokes any other provision: the revocation clause in the second will, which revoked all former wills, was sufficient to revoke the relevant article of the first will unless the doctrine of dependent relative revocation applied. The court then explained that the doctrine is an exception to the general rule that a revoking clause is conclusive proof of an intent to nullify the earlier instrument; were it otherwise, the doctrine would never apply where the last will contains an express revocation clause, and that is not the law. A revocation clause in the will of {{decedentName}} dated {{laterWillDate}} therefore does not, by itself, foreclose the question whether the revocation of the will dated {{earlierWillDate}} was conditional.",
+      "gap": "The second quote is from footnote 6 of the Anderson opinion. Anderson's holding on the general revocation clause concerned a power of appointment created by the testatrix's husband's will that required exercise by specific reference; the court's statement that no specific reference is needed to revoke such an exercise is summarized in the body but not quoted.",
+      "citations": [
+        {
+          "case": "Estate of Anderson (1997) 56 Cal.App.4th 235 (California Court of Appeal, Second Appellate District, Division One)",
+          "cite": "a general revocation clause revokes the earlier will's provision unless the doctrine applies",
+          "url": "https://www.courtlistener.com/opinion/2251543/estate-of-anderson/",
+          "quote": "The revocation clause in the second will, which revoked all former wills, was sufficient to revoke article eighth of the first will, unless the doctrine of dependent relative revocation applies."
+        },
+        {
+          "case": "Estate of Anderson (1997) 56 Cal.App.4th 235 (California Court of Appeal, Second Appellate District, Division One), footnote 6",
+          "cite": "the doctrine is an exception to the rule that a revocation clause is conclusive; it applies notwithstanding an express revocation clause",
+          "url": "https://www.courtlistener.com/opinion/2251543/estate-of-anderson/",
+          "quote": "Were it otherwise, the doctrine would never be applicable where the last will contains an express revocation clause. That is not the law."
+        }
+      ]
+    },
+    {
+      "id": "drr_not_limited_to_intestacy",
+      "title": "The Doctrine Is Not Limited to Cases That Would Otherwise End in Intestacy",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-10",
+      "body": "The contestant in Anderson argued that the doctrine applies only where the last will is wholly or partly invalid so that intestacy would result. The Court of Appeal rejected that limit. Relying on the Supreme Court's statement in Estate of Salmonski (1951) that the doctrine applies where a question arises as to the effectiveness of the second instrument 'for want of proper execution or other cause,' the court reasoned that intestacy is one way a will may prove ineffective but not the only one: a will may also be ineffective if, as a result of a mistake on the testator's part, it purports to revoke a prior will and fails in a material way to distribute the estate in accordance with the testator's intent. In Anderson itself, the second will's failure to exercise the power of appointment would have sent five-sixths of a roughly $500,000 trust share to step-relatives whom the testatrix had chosen to give $1,000 each, at the expense of her daughter. The court concluded that the doctrine may be used to effectuate a testator's intent even if the last will would not otherwise result in total or partial intestacy.",
+      "gap": "Estate of Salmonski (1951) 38 Cal.2d 199 is described only as Anderson quotes it; it was not independently fetched for this document. Anderson also cited a treatise (Page on Wills) for the proposition that the doctrine should not be applied where intestacy would better serve the testator's intent; that treatise passage is not quoted.",
+      "citations": [
+        {
+          "case": "Estate of Anderson (1997) 56 Cal.App.4th 235 (California Court of Appeal, Second Appellate District, Division One)",
+          "cite": "a will may be 'ineffective' through a material mistake, not only through invalidity producing intestacy",
+          "url": "https://www.courtlistener.com/opinion/2251543/estate-of-anderson/",
+          "quote": "A will may also be ineffective if, as a result of a mistake on the testator's part, it purports to revoke a prior will and fails in a material way to distribute the estate in accordance with the testator's intent."
+        },
+        {
+          "case": "Estate of Anderson (1997) 56 Cal.App.4th 235 (California Court of Appeal, Second Appellate District, Division One)",
+          "cite": "holding — the doctrine applies even where no intestacy would result",
+          "url": "https://www.courtlistener.com/opinion/2251543/estate-of-anderson/",
+          "quote": "we conclude that the doctrine of dependent relative revocation may be used to effectuate a testator's intent even if the last will would not otherwise result in total or partial intestacy."
+        }
+      ]
+    },
+    {
+      "id": "drr_extrinsic_evidence",
+      "title": "Extrinsic Evidence of the Testator's Intent May Be Considered",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-10",
+      "body": "The contestant in Anderson also argued that the doctrine applies only if the last will shows on its face that the revocation was conditional. The Court of Appeal disagreed, holding that in determining whether a will has been revoked, courts may consider extrinsic evidence of the testator's intent, and concluding that such evidence could be considered in deciding whether the testatrix intended to revoke the relevant article of her 1982 will. The court pointed out that the Supreme Court in Kaufman had itself relied on the testimony of the testator's trust officer, attorney, and the attorney's secretary, and Kaufman states the governing principle: any conclusion as to the testator's intention must be considered in the light of the testator's knowledge at the time the will was executed. Anderson also noted that a former statute making the testator's oral declarations of intention inadmissible was repealed effective January 1, 1985, so that, in the words of the treatise the court quoted, admissibility of the testator's oral declarations is now governed by general rules of evidence. Evidence of what {{decedentName}} knew and said when executing the will dated {{laterWillDate}} is, under these decisions, the kind of evidence a court may weigh in deciding whether the revocation of the will dated {{earlierWillDate}} was conditional.",
+      "gap": "The third quote is language from Witkin's Summary of California Law as quoted in footnote 10 of the Anderson opinion, not the court's own words. Anderson's separate discussion of the ambiguity rules of Estate of Russell (1968) 69 Cal.2d 200 is not quoted; Russell was not independently fetched.",
+      "citations": [
+        {
+          "case": "Estate of Anderson (1997) 56 Cal.App.4th 235 (California Court of Appeal, Second Appellate District, Division One)",
+          "cite": "courts may consider extrinsic evidence of intent in deciding whether a will was revoked",
+          "url": "https://www.courtlistener.com/opinion/2251543/estate-of-anderson/",
+          "quote": "In determining whether a will has been revoked, courts may consider extrinsic evidence of the testator's intent."
+        },
+        {
+          "case": "Estate of Kaufman (1945) 25 Cal.2d 854 (Supreme Court of California, Traynor, J.)",
+          "cite": "intent is judged in light of the testator's knowledge at execution",
+          "url": "https://www.courtlistener.com/opinion/1164184/second-church-of-christ-scientist-of-new-york-city-v-kaufman/",
+          "quote": "Any conclusion as to the testator’s intention must be considered in the light of his knowledge at the time he executed the will."
+        },
+        {
+          "case": "Estate of Anderson (1997) 56 Cal.App.4th 235 (California Court of Appeal, Second Appellate District, Division One), footnote 10, quoting 12 Witkin, Summary of Cal. Law (9th ed. 1990) Wills and Probate, § 246",
+          "cite": "after repeal of former Prob. Code § 105, the testator's oral declarations are governed by general evidence rules",
+          "url": "https://www.courtlistener.com/opinion/2251543/estate-of-anderson/",
+          "quote": "With the removal of the statutory prohibition, admissibility of the testator's oral declarations is now governed by general rules of evidence."
+        }
+      ]
+    },
+    {
+      "id": "drr_partial_preservation",
+      "title": "Only the Portion of the Earlier Will Needed to Cure the Ineffectiveness Is Preserved",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-10",
+      "body": "Because the doctrine keeps the earlier will in effect only 'to the extent' the later will proves ineffective, a court applying it may admit to probate only the affected portion of the earlier will rather than the whole instrument. In Anderson, the trial court admitted the 1993 will together with only article eighth of the 1982 will — the provision exercising the power of appointment. The contestant argued that both wills should have been admitted in their entirety. The Court of Appeal rejected that argument: because the second will did not effectively exercise the power of appointment, article eighth of the first will remained in effect under the doctrine, and since the sole claim of ineffectiveness concerned whether the testatrix intended to revoke article eighth, the trial court did not err in admitting only that portion of the first will. The court contrasted Kaufman, where the first and last wills were virtually identical and both were admitted in full.",
+      "gap": "The second quote is from footnote 11 of the Anderson opinion. The court also observed that the contestant had not shown prejudice from the failure to admit the first will in its entirety; that alternative ground is not quoted.",
+      "citations": [
+        {
+          "case": "Estate of Anderson (1997) 56 Cal.App.4th 235 (California Court of Appeal, Second Appellate District, Division One)",
+          "cite": "holding — the earlier will's exercise of the power of appointment remained in effect",
+          "url": "https://www.courtlistener.com/opinion/2251543/estate-of-anderson/",
+          "quote": "Because the second will did not effectively exercise the power of appointment, article eighth of the first will remained in effect under the doctrine of dependent relative revocation."
+        },
+        {
+          "case": "Estate of Anderson (1997) 56 Cal.App.4th 235 (California Court of Appeal, Second Appellate District, Division One), footnote 11",
+          "cite": "admitting only the affected portion of the earlier will was not error",
+          "url": "https://www.courtlistener.com/opinion/2251543/estate-of-anderson/",
+          "quote": "In the present case, the sole claim of ineffectiveness concerns whether Anderson intended to revoke article eighth. Accordingly, the trial court did not err in admitting only that portion of the first will."
+        }
+      ]
+    },
+    {
+      "id": "drr_revival_statute_distinguished",
+      "title": "The Separate Statutory Rule on Revival When the Later Will Is Itself Revoked",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-10",
+      "body": "Dependent relative revocation is distinct from the Probate Code's revival statute, although both concern whether an earlier will comes back into effect. The revival statute addresses a second will that would have revoked the first will and is itself thereafter revoked. If the second will is revoked by a physical act under § 6120 or § 6121, the first will remains revoked unless it is evident from the circumstances of the second will's revocation, or from the testator's contemporary or subsequent declarations, that the testator intended the first will to take effect as executed. If the second will is revoked by a third will, the first will remains revoked except to the extent it appears from the terms of the third will that the testator intended the first will to take effect. The doctrine described in this document, by contrast, asks whether the original revocation of the earlier will was itself conditional on the later will's effectiveness; it is applied by the courts under the case law addressed above rather than under this section. Where the will of {{decedentName}} dated {{laterWillDate}} was itself later revoked, § 6123 supplies the governing statutory rule on revival of the will dated {{earlierWillDate}}.",
+      "gap": "§ 6123 addresses only the revival of a first will after the second will's revocation; it does not mention dependent relative revocation and does not address the situation in which the second will remains unrevoked but is ineffective in whole or in part, which is the situation in Kaufman and Anderson. The relationship between § 6123 and the doctrine has not been the subject of a decision fetched for this document.",
+      "citations": [
+        {
+          "case": "Cal. Prob. Code § 6123(a) (California Legislative Information text)",
+          "cite": "revival of the first will after the second is revoked by physical act — only if the testator's intent to revive is evident",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=6123.",
+          "quote": "If a second will which, had it remained effective at death, would have revoked the first will in whole or in part, is thereafter revoked by acts under Section 6120 or 6121, the first will is revoked in whole or in part unless it is evident from the circumstances of the revocation of the second will or from the testator’s contemporary or subsequent declarations that the testator intended the first will to take effect as executed."
+        },
+        {
+          "case": "Cal. Prob. Code § 6123(b) (California Legislative Information text)",
+          "cite": "revival of the first will after the second is revoked by a third will — only as the third will's terms show",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=6123.",
+          "quote": "If a second will which, had it remained effective at death, would have revoked the first will in whole or in part, is thereafter revoked by a third will, the first will is revoked in whole or in part, except to the extent it appears from the terms of the third will that the testator intended the first will to take effect."
+        }
+      ]
+    },
+    {
+      "id": "drr_burden_of_proof",
+      "title": "Burden of Proof on Revocation in a Will Contest, and Priority of the Later Will",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-10",
+      "body": "When the earlier will is offered for probate and contested, the Probate Code allocates the burdens of proof at trial. The proponents of a will have the burden of proving due execution. The contestants have the burden of proving lack of testamentary intent or capacity, undue influence, fraud, duress, mistake, or revocation. The statute also provides that if a will is opposed by a petition for probate of a later will revoking the former, the court first determines whether the later will is entitled to probate. In Kaufman and Anderson the later will had already been admitted or was admitted together with the earlier one; the doctrine operated to decide how much of the earlier will survived the later will's revocation clause. A contest of the will of {{decedentName}} dated {{earlierWillDate}} on the ground that it was revoked by the will dated {{laterWillDate}} is subject to this allocation of the burden of proof.",
+      "gap": "§ 8252 allocates burdens of proof generally; it does not state which party bears the burden of establishing the conditional intent on which dependent relative revocation depends, and no decision fetched for this document addresses that specific allocation. § 8252(b), directing the court to try and determine any contested issue of fact affecting the will's validity, is not quoted.",
+      "citations": [
+        {
+          "case": "Cal. Prob. Code § 8252(a) (California Legislative Information text)",
+          "cite": "allocation of the burdens of proof, including the contestant's burden of proving revocation, and priority of a later revoking will",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=8252.",
+          "quote": "At the trial, the proponents of the will have the burden of proof of due execution. The contestants of the will have the burden of proof of lack of testamentary intent or capacity, undue influence, fraud, duress, mistake, or revocation. If the will is opposed by the petition for probate of a later will revoking the former, it shall be determined first whether the later will is entitled to probate."
+        }
+      ]
+    },
+    {
+      "id": "drr_signature_block",
+      "title": "Signature and Acknowledgment Block — Dependent Relative Revocation Information Sheet",
+      "kind": "drafting",
+      "body": "I declare under penalty of perjury under the laws of the State of California that the foregoing background information is true and correct to the best of my knowledge.\n\nExecuted on {{dateSigned}} at {{cityState}}.\n\nSignature of {{petitionerName}}: ☐ _________________________\n\n[This information sheet is prepared as background regarding the California doctrine of dependent relative revocation as stated in Estate of Kaufman (1945) 25 Cal.2d 854, Estate of Cuneo (1963) 60 Cal.2d 196, and Estate of Anderson (1997) 56 Cal.App.4th 235, and the related rules in Probate Code §§ 6120, 6123, and 8252. It does not itself determine whether the doctrine applies to the will of {{decedentName}} dated {{earlierWillDate}} or the will dated {{laterWillDate}}, what {{decedentName}} intended, or how a court would rule on any petition or contest following {{decedentName}}'s death on {{dateOfDeath}}. This is not a substitute for consulting a licensed attorney about a specific will or probate proceeding.]"
     }
   ]
 }
