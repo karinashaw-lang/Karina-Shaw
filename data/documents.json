@@ -32597,5 +32597,66 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "dvro_renewal_info_sheet",
+    "title": "Renewal of a Domestic Violence Restraining Order — Information Sheet",
+    "description": "Explains California's statutory process for renewing a domestic violence restraining order under Family Code section 6345 — the five-year cap on order duration, the three-month filing window before expiration, the default three-year duration when no expiration date is stated, notice protections before an order can be terminated or modified early, and the \"reasonable apprehension of future abuse\" standard California courts apply on a renewal request under Ritchie v. Konrad, including what evidence a court may consider and the limits on relitigating the truth of the original order's findings. Distinct from this project's Domestic Violence Restraining Order (Request for Order) Information Sheet, which addresses the initial petition process.",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "dvrorenew_declaration",
+      "dvrorenew_scope_distinction",
+      "dvrorenew_duration_and_renewal_without_further_abuse",
+      "dvrorenew_default_duration_notice",
+      "dvrorenew_reasonable_apprehension_standard",
+      "dvrorenew_evidentiary_factors_and_estoppel",
+      "dvrorenew_signature"
+    ],
+    "fields": [
+      {
+        "id": "petitionerName",
+        "label": "Protected party's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "respondentName",
+        "label": "Restrained party's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "courtCaseNumber",
+        "label": "Court case number",
+        "placeholder": "26FL001234",
+        "required": true
+      },
+      {
+        "id": "countyOfFiling",
+        "label": "County where the existing order was issued",
+        "placeholder": "Sacramento County",
+        "required": true
+      },
+      {
+        "id": "originalOrderExpirationDate",
+        "label": "Expiration date of the existing order",
+        "placeholder": "March 15, 2027",
+        "required": true
+      },
+      {
+        "id": "signatureDate",
+        "label": "Signature date",
+        "placeholder": "September 10, 2026",
+        "required": true
+      },
+      {
+        "id": "signatureCity",
+        "label": "City where signed",
+        "placeholder": "Sacramento",
+        "required": true
+      }
+    ]
   }
 ]
