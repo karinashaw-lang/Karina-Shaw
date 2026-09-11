@@ -34223,5 +34223,71 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "joint_tenancy_severance_info_sheet",
+    "title": "Severance of a Joint Tenancy (Civ. Code §§ 683, 683.2; Prob. Code § 5042; Riddle v. Harmon; Tenhet v. Boswell; Estate of Propst) — Information Sheet",
+    "description": "Explains, using the statutes' own text and the published decisions in Riddle v. Harmon (1980), Tenhet v. Boswell (1976), and Estate of Propst (1990), what California law provides about ending the right of survivorship in property held in joint tenancy: the definition of a joint tenancy, the express-declaration requirement, and the four unities (Civ. Code § 683; Tenhet); the right of survivorship as a mere expectancy and each joint tenant's power to sever unilaterally, converting the estate into a tenancy in common without disturbing the co-owners' fractional shares (Tenhet; Riddle; Propst); the statutory means of severing a real-property joint tenancy without the other tenants' consent — a deed to a third person, a written instrument evidencing intent to sever including a deed to oneself, or a written declaration — and the statute's non-exclusive character (§ 683.2(a)); Riddle's holding that a joint tenant may sever by deeding the interest to himself or herself without a strawman; the limit that no severance may be made contrary to a written agreement of the joint tenants, and the good-faith purchaser protection (§ 683.2(b)); the recording requirement for a severance of record — recording before death, or notarization within three days before death and recording within seven days after — with the exceptions for instruments of all joint tenants and deeds between joint tenants, and the section's effective dates (§ 683.2(c)-(e)); Tenhet's holdings that a lease by one joint tenant does not sever the tenancy, that severance requires a clear and unambiguous act, and that leases, liens, and mortgages placed by a deceased joint tenant do not bind the survivor; Propst's holding that a joint tenancy in personal property may likewise be unilaterally severed absent contrary agreement, with its reliance-based exception to retroactivity; and the Probate Code rule that dissolution or annulment severs a joint tenancy (including community property with right of survivorship) between former spouses as to the decedent's interest, subject to two exceptions (§ 5042). A companion to the corpus's Joint Bank Accounts and Survivorship Rights, Transfer-on-Death Deed, and Uniform Simultaneous Death Act sheets, which address adjacent questions this sheet does not repeat. Informational only; it does not determine whether any particular joint tenancy has been severed.",
+    "clauseOrder": [
+      "jtsever_declaration",
+      "jtsever_joint_tenancy_defined_four_unities",
+      "jtsever_survivorship_expectancy_unilateral_right",
+      "jtsever_statutory_means_of_severance",
+      "jtsever_riddle_deed_to_self_no_strawman",
+      "jtsever_written_agreement_limitation",
+      "jtsever_recording_requirement",
+      "jtsever_lease_does_not_sever_tenhet",
+      "jtsever_encumbrances_expire_with_deceased_tenant",
+      "jtsever_personal_property_propst",
+      "jtsever_dissolution_severs_former_spouses",
+      "jtsever_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "propertyDescription",
+        "label": "Property held in joint tenancy (address or description)",
+        "placeholder": "the residence at 1234 Elm Street, Sacramento, California",
+        "required": true
+      },
+      {
+        "id": "jointTenant1Name",
+        "label": "Name of the first joint tenant",
+        "placeholder": "Frances P. Riddle",
+        "required": true
+      },
+      {
+        "id": "jointTenant2Name",
+        "label": "Name of the other joint tenant",
+        "placeholder": "Jack C. Riddle",
+        "required": true
+      },
+      {
+        "id": "countyName",
+        "label": "County where the real property is located",
+        "placeholder": "Sacramento",
+        "required": true
+      },
+      {
+        "id": "petitionerName",
+        "label": "Name of the person preparing this sheet",
+        "placeholder": "Valerie Lee Parish Harmon",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 11, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state where signed",
+        "placeholder": "Sacramento, California",
+        "required": true
+      }
+    ],
+    "categories": [
+      "Estate Planning"
+    ]
   }
 ]
