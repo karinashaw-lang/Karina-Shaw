@@ -34380,5 +34380,46 @@
         "required": false
       }
     ]
+  },
+  {
+    "id": "rental_application_screening_fee_info_sheet",
+    "title": "Rental Application Screening Fees and Reusable Tenant Screening Reports (Civ. Code §§ 1950.6, 1950.1) — Information Sheet",
+    "description": "Explains, using the statutes' own text, California's rules on residential rental application screening fees: the statutory authorization and cap in Civil Code § 1950.6 (actual out-of-pocket cost plus reasonable time, never more than $30 as adjusted annually for CPI since 1998); the no-vacancy prohibition and the two permitted screening-process structures (first-qualified-in-order with written criteria, or full refund to every non-selected applicant); the itemized-receipt, unused-fee-return, and credit-report-copy duties; the definitions of 'applicant' (including guarantors and cosignors) and 'application screening fee'; the reusable tenant screening report rules of § 1950.1 (contents, 30-day currency, no fee when a landlord that accepts such reports receives one); the Supreme Court's pre-statute treatment of a nonrefundable 'TIER' fee in Kraus v. Trinity Management Services; the adverse-action notice duties under Civil Code § 1785.20 and the federal Fair Credit Reporting Act; the notice and copy duties for investigative consumer reports sought for a dwelling (Civ. Code § 1786.16); and the FEHA rule on credit history where a government rent subsidy is involved (Gov. Code § 12955(o)).",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "screenfee_declaration",
+      "screenfee_authorization_and_cap",
+      "screenfee_vacancy_and_process_conditions",
+      "screenfee_receipt_refund_and_report_copy",
+      "screenfee_definitions_and_character",
+      "screenfee_reusable_tenant_screening_report",
+      "screenfee_kraus_pre_statute_history",
+      "screenfee_credit_report_adverse_action_notice",
+      "screenfee_investigative_consumer_report_dwelling",
+      "screenfee_rent_subsidy_credit_history",
+      "screenfee_ack"
+    ],
+    "fields": [
+      {
+        "id": "propertyAddress",
+        "label": "Rental unit address",
+        "placeholder": "123 Main St., Apt. 4, Sacramento, CA 95814",
+        "required": true
+      },
+      {
+        "id": "landlordName",
+        "label": "Landlord's (or landlord's agent's) name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "applicantName",
+        "label": "Applicant's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      }
+    ]
   }
 ]
