@@ -33613,5 +33613,61 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "customer_lists_as_trade_secrets_info_sheet",
+    "title": "Customer Lists as Trade Secrets Under CUTSA — Information Sheet",
+    "description": "Explains how California courts apply the Uniform Trade Secrets Act's definition of a trade secret (Civ. Code § 3426.1(d)) to a business's customer list: the baseline rule that a former employee may compete for former customers but may not use trade secrets to do so (Morlife, Inc. v. Perry, quoting Continental Car-Na-Var Corp. v. Moseley); the three elements of the definition and the rule that a customer list can qualify (ABBA Rubber Co. v. Seaquist); the requirement that the list's economic value derive from competitors not knowing which businesses buy the product, illustrated by ABBA Rubber's widget hypothetical; the distinction between lists built through time and effort and lists anyone could assemble from directories (Morlife); ABBA Rubber's holding that California deleted the uniform act's \"readily ascertainable\" language from the definition, so that ready ascertainability is a defense to misappropriation rather than an element of the definition; the evidence courts have treated as reasonable efforts to maintain secrecy (restricted access, confidentiality provisions, handbook statements, and information held in an employee's memory); the statutory definitions of misappropriation and improper means (§ 3426.1(a)-(b)); the distinction between solicitation and merely announcing a new affiliation (Aetna Building Maintenance Co. v. West and American Credit Indemnity Co. v. Sacks as described in Morlife); the rejection of a personal-relationship exception; and the boundary with Business and Professions Code § 16600 and the scope of injunctive relief. Distinct from this project's existing Non-Disclosure Agreement, Employee Non-Solicitation Agreement, Trade Secret Misappropriation Cease and Desist Letter, Trade Secret Injunctive Relief Standards, Trade Secret Pre-Discovery Identification, Inevitable Disclosure Doctrine, and Trade Secret Preemption Doctrine documents.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "custlist_intro",
+      "custlist_general_rule_former_employee_competition",
+      "custlist_statutory_definition",
+      "custlist_three_elements_lists_can_qualify",
+      "custlist_economic_value_from_secrecy",
+      "custlist_effort_and_difficulty_of_compilation",
+      "custlist_readily_ascertainable_defense_not_element",
+      "custlist_reasonable_efforts_evidence",
+      "custlist_misappropriation_use_and_improper_means",
+      "custlist_solicitation_versus_announcement",
+      "custlist_personal_relationship_no_exception",
+      "custlist_section_16600_boundary_and_injunction_scope",
+      "custlist_relationship_to_sibling_docs",
+      "custlist_ack"
+    ],
+    "fields": [
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Bayline Roofing Services, Inc.",
+        "required": true
+      },
+      {
+        "id": "customerInformationDescription",
+        "label": "Description of the customer information",
+        "placeholder": "A database of approximately 400 commercial property managers who have purchased roof maintenance services since 2019, including contact persons, pricing history, and service notes",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 11, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]

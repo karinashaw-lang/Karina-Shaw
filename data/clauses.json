@@ -96774,6 +96774,325 @@
       "title": "Acknowledgment",
       "kind": "drafting",
       "body": "This information sheet regarding California's protections for residential tenants who are, or whose household members or immediate family members are, victims of domestic violence, sexual assault, stalking, human trafficking, elder or dependent adult abuse, or the listed violent crimes (Civil Code §§ 1941.5, 1941.6, 1946.7, and 1946.8; Code of Civil Procedure §§ 1161.3 and 1174.27), concerning the property at {{propertyAddress}} as between {{landlordName}} and {{tenantName}}, states California law as of the date below. It does not constitute legal advice about, and does not resolve, any specific situation concerning the property.\n\nPrepared: _______________________ Date: _______________"
+    },
+    {
+      "id": "custlist_intro",
+      "title": "Purpose of This Customer Lists as Trade Secrets Information Sheet",
+      "kind": "drafting",
+      "body": "This Information Sheet describes how California law treats a business's customer list -- the names, contact information, and related data about the customers it has developed -- as a potential trade secret under the California Uniform Trade Secrets Act (Civ. Code, § 3426 et seq.). It sets out the statutory definition of a trade secret in Civil Code section 3426.1, subdivision (d), and the definition of misappropriation in subdivision (b); the California Court of Appeal's explanations of when a customer list derives independent economic value from not being generally known (ABBA Rubber Co. v. Seaquist; Morlife, Inc. v. Perry); the rule that ease of ascertainability is not part of California's statutory definition but remains available as a defense (ABBA Rubber); the kinds of evidence courts have treated as reasonable efforts to maintain secrecy (Morlife); the distinction between soliciting a former employer's customers and merely announcing a new affiliation; and the boundary between trade secret protection and the general rule against contractual restraints on competition in Business and Professions Code section 16600. It is prepared by {{preparerName}} concerning the customer information of {{companyName}}, described as follows: {{customerInformationDescription}}. This Information Sheet describes what the statutes and cited decisions say; it does not itself determine whether the customer information described above is a trade secret, whether any person has misappropriated it, or what remedies would be available in any specific dispute, and it is not a substitute for that case-specific legal determination."
+    },
+    {
+      "id": "custlist_general_rule_former_employee_competition",
+      "title": "The Baseline Rule: A Former Employee May Compete for Former Customers, but May Not Use Trade Secrets to Do So",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-11",
+      "body": "California law starts from the premise that a former employee may go into business in competition with a former employer and may compete for the business of that employer's customers. In Morlife, Inc. v. Perry, the Court of Appeal quoted the California Supreme Court's statement in Continental Car-Na-Var Corp. v. Moseley that a former employee has the right to engage in a competitive business and to compete with the former employer even for the business of its former customers, provided the competition is fairly and legally conducted. The same court framed the limit on that freedom in a single sentence: a former employee may use the general knowledge, skill, and experience acquired in the former employment, but may not use confidential information or trade secrets in doing so. The customer-list cases described in this Information Sheet are about where that line falls.",
+      "gap": "This is California appellate case law, used as real evidence of how the Court of Appeal stated the general rule and its limit -- not a claim about whether any particular former employee's conduct falls on one side of the line or the other, which depends on facts about the information used and how it was used. The first quote is the Court of Appeal's quotation of a 1944 California Supreme Court decision (Continental Car-Na-Var Corp. v. Moseley (1944) 24 Cal.2d 104, 110); this document did not separately retrieve that Supreme Court opinion and relies on the Court of Appeal's quotation of it. The opinion's full text was retrieved via the CourtListener API (cluster id 2251515; the lead opinion carries opinion id 9745568 and a separately numbered combined-opinion record carries id 2251515, so the cluster id and lead-opinion id differ), and each quoted passage was then independently re-checked by a second, separate request to CourtListener's public search feed, which returned this opinion as an exact-phrase match for the quoted words (with negative-control queries confirming that altered phrases return no match). The text carries reporter star-pagination markers and editorial citation markup, which the quotes below omit by ending or beginning at sentence boundaries rather than spanning a page break.",
+      "citations": [
+        {
+          "case": "Morlife, Inc. v. Perry (1997) 56 Cal.App.4th 1514",
+          "cite": "California Court of Appeal, First District, Division Two (1997), quoting Continental Car-Na-Var Corp. v. Moseley (1944) 24 Cal.2d 104, 110",
+          "url": "https://www.courtlistener.com/opinion/2251515/morlife-inc-v-perry/",
+          "quote": "A former employee has the right to engage in a competitive business for himself and to enter into competition with his former employer, even for the business of those who had formerly been the customers of his former employer, provided such competition is fairly and legally conducted."
+        },
+        {
+          "case": "Morlife, Inc. v. Perry (1997) 56 Cal.App.4th 1514",
+          "cite": "California Court of Appeal, First District, Division Two (1997) -- the limit on the general rule",
+          "url": "https://www.courtlistener.com/opinion/2251515/morlife-inc-v-perry/",
+          "quote": "While it has been legally recognized that a former employee may use general knowledge, skill, and experience acquired in his or her former employment in competition with a former employer, the former employee may not use confidential information or trade secrets in doing so."
+        }
+      ]
+    },
+    {
+      "id": "custlist_statutory_definition",
+      "title": "The Statutory Definition of a Trade Secret (Civil Code § 3426.1(d))",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-11",
+      "body": "The California Uniform Trade Secrets Act defines a trade secret as information -- the statute lists a formula, pattern, compilation, program, device, method, technique, or process as examples -- that satisfies two requirements: it derives independent economic value, actual or potential, from not being generally known to the public or to other persons who can obtain economic value from its disclosure or use, and it is the subject of efforts that are reasonable under the circumstances to maintain its secrecy. A customer list is not named in the statute's list of examples, but the list is introduced by the word \"including\" and the courts have treated a compilation of customer information as a kind of information that can meet the definition, as described in the clauses that follow. The definition also uses the phrase \"generally known,\" and does not use the phrase \"readily ascertainable\"; the significance of that omission is addressed in a separate clause.",
+      "gap": "This is California statutory law, used as real evidence of what Civil Code section 3426.1, subdivision (d), says on its face -- not a claim that any particular customer list satisfies either requirement, which depends on facts about the information's value, its secrecy, and the efforts made to protect it. The observation that the statute does not use the phrase \"readily ascertainable\" is drawn from the statutory text itself and is explained further by the ABBA Rubber decision quoted in a later clause. The quoted subdivision was retrieved as part of the whole section; the other subdivisions of the same section are quoted in a separate clause below, and those quotes are not independent of this one because they come from the same statutory section. The statutory text was retrieved twice from the California Legislative Information site (leginfo.legislature.ca.gov), as two separate HTTP requests using different User-Agent headers; after stripping page markup and normalizing whitespace, the two retrievals were identical for the whole section.",
+      "citations": [
+        {
+          "case": "Cal. Civ. Code § 3426.1(d) (leginfo.legislature.ca.gov text)",
+          "cite": "California Uniform Trade Secrets Act -- definition of \"trade secret\"",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=3426.1.",
+          "quote": "“Trade secret” means information, including a formula, pattern, compilation, program, device, method, technique, or process, that: (1) Derives independent economic value, actual or potential, from not being generally known to the public or to other persons who can obtain economic value from its disclosure or use; and (2) Is the subject of efforts that are reasonable under the circumstances to maintain its secrecy."
+        }
+      ]
+    },
+    {
+      "id": "custlist_three_elements_lists_can_qualify",
+      "title": "A Customer List Can Qualify as a Trade Secret; the Three Elements",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-11",
+      "body": "In ABBA Rubber Co. v. Seaquist, the Court of Appeal read the statutory definition as consisting of three elements: information, which is valuable because it is unknown to others, and which the owner has attempted to keep secret. The court stated that a customer list is one of the types of information which can qualify as a trade secret, and noted that the defendants in that case did not claim otherwise. In the case before it -- a preliminary injunction obtained by a manufacturer of rubber rollers against a former manager who had gone to work for a competitor -- the defendants conceded that substantial evidence supported the finding that the plaintiff took reasonable steps to keep its customer information secret, so the dispute centered on the second element: whether the list's value derived from the fact that it was not generally known to competitors.",
+      "gap": "This is California appellate case law, used as real evidence of how the Court of Appeal organized the statutory definition and of its statement that a customer list is a type of information that can qualify -- not a claim that every customer list does qualify (the same decision explains at length why some lists do not, as described in the next clause), and not a claim about the ultimate outcome of that case, which reversed the preliminary injunction on an unrelated ground (an inadequate undertaking) while addressing the trade-secret question for the guidance of the trial court. The retrieved text contains an optical-character-recognition artifact in an unrelated sentence (\"ITiey\" for \"They\"); nothing quoted here is affected. The opinion's full text was retrieved via the CourtListener API (opinion id 2119830, cluster id 2119830 -- no mismatch) and each quoted passage was confirmed as an exact substring of the retrieved text after stripping markup and normalizing whitespace; each passage was then independently re-checked by a second, separate request to CourtListener's public search feed, which returned this opinion as an exact-phrase match for the quoted words. Parts C and D of the opinion (concerning the form and scope of the injunction) were not certified for publication, and this document quotes nothing from them; the trade-secret analysis quoted here is from the published portion.",
+      "citations": [
+        {
+          "case": "ABBA Rubber Co. v. Seaquist (1991) 235 Cal.App.3d 1",
+          "cite": "California Court of Appeal, Fourth District, Division Two (1991) -- the three elements",
+          "url": "https://www.courtlistener.com/opinion/2119830/abba-rubber-co-v-seaquist/",
+          "quote": "Thus, the definition consists of three elements: (a) information (b) which is valuable because unknown to others and (c) which the owner has attempted to keep secret."
+        },
+        {
+          "case": "ABBA Rubber Co. v. Seaquist (1991) 235 Cal.App.3d 1",
+          "cite": "California Court of Appeal, Fourth District, Division Two (1991) -- customer lists as a qualifying type of information",
+          "url": "https://www.courtlistener.com/opinion/2119830/abba-rubber-co-v-seaquist/",
+          "quote": "A customer list is one of the types of information which can qualify as a trade secret."
+        }
+      ]
+    },
+    {
+      "id": "custlist_economic_value_from_secrecy",
+      "title": "Economic Value Must Come From Secrecy: Value to the Owner Alone Is Not Enough",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-11",
+      "body": "The ABBA Rubber court explained that showing a customer list is valuable to the business that owns it does not by itself satisfy the statute, because a list of the persons who have paid for a business's goods or services will always have value to that business. The statute instead requires that the information have value to competitors who do not know it and could put it to use. The court illustrated the point with a hypothetical widget market: a seller's list of 500 businesses that have bought widgets is a protectable trade secret if competitors do not know which of the 100,000 businesses in widget-using industries actually buy widgets, because the list tells competitors where to target their sales efforts; but if competitors already know that those 500 businesses are widget consumers (even without knowing that they buy from that particular seller), the list has no independent economic value. As the court put it, in both situations the identities of the seller's own customers are unknown, and the distinguishing factor is whether it is also unknown that those businesses buy the product at all. Morlife, Inc. v. Perry made the same point in different words: a customer list can be found to have economic value because its disclosure would let a competitor direct its sales efforts to customers who have already shown a willingness to use a particular type of service or product, rather than to people who only might be interested.",
+      "gap": "This is California appellate case law from two districts of the Court of Appeal, used as real evidence of how those courts have explained the \"independent economic value\" requirement as applied to customer lists -- not a claim about whether the customers of any particular business are or are not already known to its competitors, which is a factual question the ABBA Rubber court described as \"the critical factual issue\" and left to the evidence in each case. The widget hypothetical is the court's own illustration and is summarized rather than quoted in full. The two decisions are independent sources of the point, though the later (Morlife) cites the earlier (ABBA Rubber) on a related proposition. The opinion's full text was retrieved via the CourtListener API (opinion id 2119830, cluster id 2119830 -- no mismatch) and each quoted passage was confirmed as an exact substring of the retrieved text after stripping markup and normalizing whitespace; each passage was then independently re-checked by a second, separate request to CourtListener's public search feed, which returned this opinion as an exact-phrase match for the quoted words. Parts C and D of the opinion (concerning the form and scope of the injunction) were not certified for publication, and this document quotes nothing from them; the trade-secret analysis quoted here is from the published portion. The opinion's full text was retrieved via the CourtListener API (cluster id 2251515; the lead opinion carries opinion id 9745568 and a separately numbered combined-opinion record carries id 2251515, so the cluster id and lead-opinion id differ), and each quoted passage was then independently re-checked by a second, separate request to CourtListener's public search feed, which returned this opinion as an exact-phrase match for the quoted words (with negative-control queries confirming that altered phrases return no match). The text carries reporter star-pagination markers and editorial citation markup, which the quotes below omit by ending or beginning at sentence boundaries rather than spanning a page break.",
+      "citations": [
+        {
+          "case": "ABBA Rubber Co. v. Seaquist (1991) 235 Cal.App.3d 1",
+          "cite": "California Court of Appeal, Fourth District, Division Two (1991) -- value alone is insufficient",
+          "url": "https://www.courtlistener.com/opinion/2119830/abba-rubber-co-v-seaquist/",
+          "quote": "The defendants are correct in pointing out that a showing of value, by itself, is not sufficient to satisfy the statutory definition. A list of those persons who have demonstrated a willingness to order and pay for the goods or services of a particular business will always have value to that business. However, the statute also requires that the information have value to other businesses which are unaware of the information and which could put that information, if known, to beneficial use."
+        },
+        {
+          "case": "ABBA Rubber Co. v. Seaquist (1991) 235 Cal.App.3d 1",
+          "cite": "California Court of Appeal, Fourth District, Division Two (1991) -- the distinguishing factor",
+          "url": "https://www.courtlistener.com/opinion/2119830/abba-rubber-co-v-seaquist/",
+          "quote": "In both situations, the identities of the businesses which bought widgets from Seller A are unknown. The distinguishing factor is whether it is also unknown that those businesses bought widgets at all."
+        },
+        {
+          "case": "Morlife, Inc. v. Perry (1997) 56 Cal.App.4th 1514",
+          "cite": "California Court of Appeal, First District, Division Two (1997) -- why a customer list can have economic value",
+          "url": "https://www.courtlistener.com/opinion/2251515/morlife-inc-v-perry/",
+          "quote": "a customer list can be found to have economic value because its disclosure would allow a competitor to direct its sales efforts to those customers who have already shown a willingness to use a unique type of service or product as opposed to a list of people who only might be interested."
+        }
+      ]
+    },
+    {
+      "id": "custlist_effort_and_difficulty_of_compilation",
+      "title": "Lists Built Through Time and Effort Versus Lists Anyone Could Assemble",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-11",
+      "body": "The Morlife court described a general pattern in the California decisions: courts are reluctant to protect customer lists to the extent they embody information that is readily ascertainable through public sources such as business directories, but where the employer has expended time and effort identifying customers with particular needs or characteristics, courts will prohibit former employees from using that information to capture a share of the market. The court distinguished such lists from mere identities and locations of customers that anyone could easily identify as potential customers, and stated as a general principle that the more difficult the information is to obtain, and the more time and resources the employer expended in gathering it, the more likely a court will find that it constitutes a trade secret. In the case before it, the court relied on testimony that the roofing company's customers were discoverable only with great effort, that it built its customer base through telemarketing, sales visits, mailings, advertising, trade-association membership, referrals, and research, and that only about 10 of every 100 telemarketing contacts produced a lead. The court also noted, in a footnote, that the customer information at issue was not a physical list but a compilation of names, addresses, and data derived from business cards removed from the employer's premises and from the former employee's memory.",
+      "gap": "This is California appellate case law, used as real evidence of the factors the Court of Appeal identified and the evidence it found sufficient in that case -- not a claim that any particular quantum of effort is required or sufficient, and not a claim about the customer information of any specific business. The court's phrase \"readily ascertainable\" describes a pattern in the case law about which lists courts have been reluctant to protect; a separate clause below describes the ABBA Rubber court's holding that ready ascertainability is not part of the statutory definition itself but operates as a defense, and the Morlife court cited ABBA Rubber in the same passage. The sentence distinguishing protected lists from \"mere identities and locations of customers\" spans a reporter page break in the retrieved text (a \"*1522\" marker appears mid-sentence), so it is summarized above rather than quoted. The opinion's full text was retrieved via the CourtListener API (cluster id 2251515; the lead opinion carries opinion id 9745568 and a separately numbered combined-opinion record carries id 2251515, so the cluster id and lead-opinion id differ), and each quoted passage was then independently re-checked by a second, separate request to CourtListener's public search feed, which returned this opinion as an exact-phrase match for the quoted words (with negative-control queries confirming that altered phrases return no match). The text carries reporter star-pagination markers and editorial citation markup, which the quotes below omit by ending or beginning at sentence boundaries rather than spanning a page break.",
+      "citations": [
+        {
+          "case": "Morlife, Inc. v. Perry (1997) 56 Cal.App.4th 1514",
+          "cite": "California Court of Appeal, First District, Division Two (1997) -- reluctance to protect readily ascertainable information; protection for lists built through effort",
+          "url": "https://www.courtlistener.com/opinion/2251515/morlife-inc-v-perry/",
+          "quote": "With respect to the general availability of customer information, courts are reluctant to protect customer lists to the extent they embody information which is “readily ascertainable” through public sources, such as business directories."
+        },
+        {
+          "case": "Morlife, Inc. v. Perry (1997) 56 Cal.App.4th 1514",
+          "cite": "California Court of Appeal, First District, Division Two (1997) -- the general principle",
+          "url": "https://www.courtlistener.com/opinion/2251515/morlife-inc-v-perry/",
+          "quote": "As a general principle, the more difficult information is to obtain, and the more time and resources expended by an employer in gathering it, the more likely a court will find such information constitutes a trade secret."
+        },
+        {
+          "case": "Morlife, Inc. v. Perry (1997) 56 Cal.App.4th 1514",
+          "cite": "California Court of Appeal, First District, Division Two (1997), footnote 4 -- the list need not be a physical document",
+          "url": "https://www.courtlistener.com/opinion/2251515/morlife-inc-v-perry/",
+          "quote": "The customer information at issue is not a physical list per se, but a compilation of names, addresses, and data derived both from business cards removed from Morlife’s premises, and from the memory of Mr. Perry."
+        }
+      ]
+    },
+    {
+      "id": "custlist_readily_ascertainable_defense_not_element",
+      "title": "\"Readily Ascertainable\" Is Not Part of California's Definition, but Remains a Defense",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-11",
+      "body": "In ABBA Rubber Co. v. Seaquist, the defendants argued that the identities of the plaintiff's customers could not be a trade secret because they were readily ascertainable from trade directories, telephone books, and similar sources. The Court of Appeal rejected the argument as a matter of statutory text. The Uniform Trade Secrets Act as proposed by the National Conference of Commissioners on Uniform State Laws defines a trade secret as information deriving value from not being generally known to, \"and not being readily ascertainable by proper means by,\" others; when the California Legislature enacted the definition as Civil Code section 3426.1, subdivision (d)(1), it deleted that phrase. The court read the deletion to mean that the Legislature chose to exclude from the definition only information the industry already knows, as opposed to information the industry could easily discover, so that under California law information can be a trade secret even though it is readily ascertainable, so long as it has not yet been ascertained by others in the industry. The court declined to follow an earlier decision (American Paper & Packaging Products, Inc. v. Kirgan) to the extent it suggested otherwise. In a footnote, however, the court explained -- citing the Legislature's committee comment -- that the assertion that a matter is readily ascertainable by proper means remains available as a defense to a claim of misappropriation: if the defendants could show that the customers were easily identifiable and that their knowledge of the plaintiff's customers came from that identification process rather than from the plaintiff's records, the defense would rest on the absence of misappropriation rather than the absence of a trade secret.",
+      "gap": "This is California appellate case law, used as real evidence of the ABBA Rubber court's reading of the statutory text and its legislative history -- not a claim about how the defense would be resolved on any particular facts, which the court itself left to the finder of fact at trial. The court's description of the uniform act's text and of the Senate Judiciary Committee analysis is relied on as the court stated it; this document did not separately retrieve the uniform act or the committee materials. The final quote is from footnote 9 of the opinion. The interior quotation marks in the first quote appear in the source as typographic (curly) quotation marks and are reproduced as such. The opinion's full text was retrieved via the CourtListener API (opinion id 2119830, cluster id 2119830 -- no mismatch) and each quoted passage was confirmed as an exact substring of the retrieved text after stripping markup and normalizing whitespace; each passage was then independently re-checked by a second, separate request to CourtListener's public search feed, which returned this opinion as an exact-phrase match for the quoted words. Parts C and D of the opinion (concerning the form and scope of the injunction) were not certified for publication, and this document quotes nothing from them; the trade-secret analysis quoted here is from the published portion.",
+      "citations": [
+        {
+          "case": "ABBA Rubber Co. v. Seaquist (1991) 235 Cal.App.3d 1",
+          "cite": "California Court of Appeal, Fourth District, Division Two (1991) -- ready ascertainability is not part of the definition",
+          "url": "https://www.courtlistener.com/opinion/2119830/abba-rubber-co-v-seaquist/",
+          "quote": "This contention must fail, because whether a fact is “readily ascertainable” is not part of the definition of a trade secret in California."
+        },
+        {
+          "case": "ABBA Rubber Co. v. Seaquist (1991) 235 Cal.App.3d 1",
+          "cite": "California Court of Appeal, Fourth District, Division Two (1991) -- the Legislature's choice and its consequence",
+          "url": "https://www.courtlistener.com/opinion/2119830/abba-rubber-co-v-seaquist/",
+          "quote": "In short, our Legislature chose to exclude from the definition only that information which the industry already knows, as opposed to that which the industry could easily discover. Therefore, under California law, information can be a trade secret even though it is readily ascertainable, so long as it has not yet been ascertained by others in the industry."
+        },
+        {
+          "case": "ABBA Rubber Co. v. Seaquist (1991) 235 Cal.App.3d 1",
+          "cite": "California Court of Appeal, Fourth District, Division Two (1991), footnote 9 -- ready ascertainability as a defense",
+          "url": "https://www.courtlistener.com/opinion/2119830/abba-rubber-co-v-seaquist/",
+          "quote": "That defense, however, will be based upon an absence of misappropriation, rather than the absence of a trade secret."
+        }
+      ]
+    },
+    {
+      "id": "custlist_reasonable_efforts_evidence",
+      "title": "Evidence of Reasonable Efforts to Maintain Secrecy",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-11",
+      "body": "The second statutory requirement is that the information be the subject of efforts that are reasonable under the circumstances to maintain its secrecy. In Morlife, Inc. v. Perry, the Court of Appeal found substantial evidence of such efforts where the company's president described the customer information as its main asset, the information was stored on a computer with restricted access, the sales representative's employment contract contained a confidentiality provision expressly referring to customer names and telephone numbers, and the employee handbook stated that employees were not to use or disclose the company's confidential information after their employment, expressly including lists of present and future customers. The court cautioned that labeling information a trade secret or confidential does not conclusively establish that it is one, but treated such labeling as an important factor in showing the value the employer placed on the information and that it could not be readily derived from public sources. The court also repeated an earlier holding that, to afford protection to the employer, the information need not be in writing but may be in the employee's memory.",
+      "gap": "This is California appellate case law, used as real evidence of the kinds of protective measures the Court of Appeal found sufficient on the record before it -- not a claim that any particular measure is required, or that the measures described would be reasonable under different circumstances, which the statute makes a contextual question. The point about information held in an employee's memory is the Morlife court's quotation of an earlier decision (Greenly v. Cooper (1978) 77 Cal.App.3d 382, 392), which this document did not separately retrieve; the quote below reproduces only the words of that proposition as they appear inside the Morlife court's quotation. The \"labeling\" sentence is interrupted in the source by a parenthetical string of citations, so its two halves are quoted separately. The opinion's full text was retrieved via the CourtListener API (cluster id 2251515; the lead opinion carries opinion id 9745568 and a separately numbered combined-opinion record carries id 2251515, so the cluster id and lead-opinion id differ), and each quoted passage was then independently re-checked by a second, separate request to CourtListener's public search feed, which returned this opinion as an exact-phrase match for the quoted words (with negative-control queries confirming that altered phrases return no match). The text carries reporter star-pagination markers and editorial citation markup, which the quotes below omit by ending or beginning at sentence boundaries rather than spanning a page break.",
+      "citations": [
+        {
+          "case": "Morlife, Inc. v. Perry (1997) 56 Cal.App.4th 1514",
+          "cite": "California Court of Appeal, First District, Division Two (1997) -- the protective measures found sufficient",
+          "url": "https://www.courtlistener.com/opinion/2251515/morlife-inc-v-perry/",
+          "quote": "For this reason customer information was stored on computer with restricted access. Moreover, in its employment contract signed by Perry, Morlife included a confidentiality provision expressly referring to its customer names and telephone numbers."
+        },
+        {
+          "case": "Morlife, Inc. v. Perry (1997) 56 Cal.App.4th 1514",
+          "cite": "California Court of Appeal, First District, Division Two (1997) -- labeling is not conclusive",
+          "url": "https://www.courtlistener.com/opinion/2251515/morlife-inc-v-perry/",
+          "quote": "While labeling information “trade secret” or “confidential information” does not conclusively establish that the information fits this description"
+        },
+        {
+          "case": "Morlife, Inc. v. Perry (1997) 56 Cal.App.4th 1514",
+          "cite": "California Court of Appeal, First District, Division Two (1997) -- but labeling is an important factor",
+          "url": "https://www.courtlistener.com/opinion/2251515/morlife-inc-v-perry/",
+          "quote": "it is nonetheless an important factor in establishing the value which was placed on the information and that it could not be readily derived from publicly available sources."
+        },
+        {
+          "case": "Morlife, Inc. v. Perry (1997) 56 Cal.App.4th 1514",
+          "cite": "California Court of Appeal, First District, Division Two (1997), quoting Greenly v. Cooper (1978) 77 Cal.App.3d 382, 392",
+          "url": "https://www.courtlistener.com/opinion/2251515/morlife-inc-v-perry/",
+          "quote": "the information need not be in writing but may be in the employee’s memory"
+        }
+      ]
+    },
+    {
+      "id": "custlist_misappropriation_use_and_improper_means",
+      "title": "Misappropriation: Disclosure or Use, and What Counts as Improper Means (Civil Code § 3426.1(a)-(b))",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-11",
+      "body": "Proving that a customer list is a trade secret is only the first step; the owner must also prove misappropriation. The statute defines misappropriation to include acquisition of a trade secret by a person who knows or has reason to know it was acquired by improper means, and disclosure or use of a trade secret without express or implied consent by a person who, among other alternatives, used improper means to acquire it, or who at the time of disclosure or use knew or had reason to know that his or her knowledge of it was acquired under circumstances giving rise to a duty to maintain its secrecy or limit its use. \"Improper means\" is defined to include theft, bribery, misrepresentation, breach or inducement of a breach of a duty to maintain secrecy, or espionage through electronic or other means -- but the statute expressly provides that reverse engineering or independent derivation alone is not improper means. The Morlife court observed that under this statutory definition, simple disclosure or use may suffice to create liability, and that it is no longer necessary to show that the purpose to which the information was put outweighs the interests of the trade secret holder.",
+      "gap": "This is California statutory law together with the Court of Appeal's reading of it, used as real evidence of what the definitions of \"misappropriation\" and \"improper means\" say on their face -- not a claim that any particular person's acquisition, disclosure, or use of customer information was or was not misappropriation. The statutory quotes below are from subdivisions (a) and (b) of the same section quoted in the definition clause above and are not independent of that clause's quote. The definition of misappropriation is summarized in part rather than quoted in full; the full text contains additional alternatives (including acquisition by accident or mistake) not restated here. The Morlife quote is the court's contrast between the current statutory definition and a pre-statute decision it declined to follow. The statutory text was retrieved twice from the California Legislative Information site (leginfo.legislature.ca.gov), as two separate HTTP requests using different User-Agent headers; after stripping page markup and normalizing whitespace, the two retrievals were identical for the whole section. The opinion's full text was retrieved via the CourtListener API (cluster id 2251515; the lead opinion carries opinion id 9745568 and a separately numbered combined-opinion record carries id 2251515, so the cluster id and lead-opinion id differ), and each quoted passage was then independently re-checked by a second, separate request to CourtListener's public search feed, which returned this opinion as an exact-phrase match for the quoted words (with negative-control queries confirming that altered phrases return no match). The text carries reporter star-pagination markers and editorial citation markup, which the quotes below omit by ending or beginning at sentence boundaries rather than spanning a page break.",
+      "citations": [
+        {
+          "case": "Cal. Civ. Code § 3426.1(a) (leginfo.legislature.ca.gov text)",
+          "cite": "California Uniform Trade Secrets Act -- definition of \"improper means\"",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=3426.1.",
+          "quote": "“Improper means” includes theft, bribery, misrepresentation, breach or inducement of a breach of a duty to maintain secrecy, or espionage through electronic or other means. Reverse engineering or independent derivation alone shall not be considered improper means."
+        },
+        {
+          "case": "Cal. Civ. Code § 3426.1(b)(2) (leginfo.legislature.ca.gov text)",
+          "cite": "California Uniform Trade Secrets Act -- misappropriation by disclosure or use",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=3426.1.",
+          "quote": "Disclosure or use of a trade secret of another without express or implied consent by a person who: (A) Used improper means to acquire knowledge of the trade secret; or (B) At the time of disclosure or use, knew or had reason to know that his or her knowledge of the trade secret was: (i) Derived from or through a person who had utilized improper means to acquire it; (ii) Acquired under circumstances giving rise to a duty to maintain its secrecy or limit its use; or (iii) Derived from or through a person who owed a duty to the person seeking relief to maintain its secrecy or limit its use"
+        },
+        {
+          "case": "Morlife, Inc. v. Perry (1997) 56 Cal.App.4th 1514",
+          "cite": "California Court of Appeal, First District, Division Two (1997) -- use alone may suffice under the statute",
+          "url": "https://www.courtlistener.com/opinion/2251515/morlife-inc-v-perry/",
+          "quote": "Under the UTSA, simple disclosure or use may suffice to create liability."
+        }
+      ]
+    },
+    {
+      "id": "custlist_solicitation_versus_announcement",
+      "title": "Solicitation Is \"Use\"; Merely Announcing a New Affiliation Is Not Solicitation",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-11",
+      "body": "The California decisions have treated a former employee's solicitation of customers with the aid of a trade-secret customer list as a \"use\" of the trade secret. In Morlife, Inc. v. Perry, the Court of Appeal observed that while California courts have been reluctant to impose an unconditional prohibition on doing business with a former employer's customers, they have prohibited the use of trade secrets to solicit those customers, and that decisions both before and after the statute have equated acts of solicitation with use or misappropriation of protected information. The court drew the definition of solicitation from the California Supreme Court's decision in Aetna Building Maintenance Co. v. West -- to appeal to, apply to for obtaining something, ask earnestly, or ask for the purpose of receiving -- and repeated that court's contrasting statement that merely informing a former employer's customers of a change in employment, without more, is not solicitation. The Morlife court then described American Credit Indemnity Co. v. Sacks, in which a former sales employee's letter to about 50 policyholders announcing her new agency, inviting them to learn more about its policy, and followed by telephone calls, was held to go beyond a professional announcement and to amount to solicitation. In Morlife itself, a letter that promised to continue solving the customers' roofing problems and urged them to talk soon, followed by telephone calls and personal visits, was likewise found to be solicitation. The court noted in a footnote that, because the conduct before it was solicitation, it did not need to decide whether the professional-announcement exception has continued vitality under the statute's expansive definition of misappropriation.",
+      "gap": "This is California appellate case law, used as real evidence of how the Court of Appeal has distinguished solicitation from announcement and of the facts it treated as solicitation -- not a claim that any particular communication is or is not solicitation, which depends on its content and context, and not a claim that an announcement can never amount to use of a trade secret (the Morlife court expressly left open whether the announcement exception survives the statutory definition, as the footnote quoted below states). The definition of solicitation and the announcement principle are the Morlife court's quotations of Aetna Building Maintenance Co. v. West (1952) 39 Cal.2d 198, and the description of the letter in American Credit Indemnity Co. v. Sacks (1989) 213 Cal.App.3d 622 is the Morlife court's account; this document did not separately retrieve either of those opinions and relies on the Morlife court's description of them. The footnote quote is from footnote 8 of the opinion; in the source the case names within it carry editorial citation markup that has been stripped. The opinion's full text was retrieved via the CourtListener API (cluster id 2251515; the lead opinion carries opinion id 9745568 and a separately numbered combined-opinion record carries id 2251515, so the cluster id and lead-opinion id differ), and each quoted passage was then independently re-checked by a second, separate request to CourtListener's public search feed, which returned this opinion as an exact-phrase match for the quoted words (with negative-control queries confirming that altered phrases return no match). The text carries reporter star-pagination markers and editorial citation markup, which the quotes below omit by ending or beginning at sentence boundaries rather than spanning a page break.",
+      "citations": [
+        {
+          "case": "Morlife, Inc. v. Perry (1997) 56 Cal.App.4th 1514",
+          "cite": "California Court of Appeal, First District, Division Two (1997) -- courts prohibit use of trade secrets to solicit customers",
+          "url": "https://www.courtlistener.com/opinion/2251515/morlife-inc-v-perry/",
+          "quote": "While California courts have shown a reluctance to impose an unconditional prohibition on doing business with customers of the former employer, they have prohibited the unlawful use of trade secrets to solicit those customers."
+        },
+        {
+          "case": "Morlife, Inc. v. Perry (1997) 56 Cal.App.4th 1514",
+          "cite": "California Court of Appeal, First District, Division Two (1997), quoting Aetna Building Maintenance Co. v. West (1952) 39 Cal.2d 198, 204",
+          "url": "https://www.courtlistener.com/opinion/2251515/morlife-inc-v-perry/",
+          "quote": "[m]erely informing customers of one’s former employer of a change in employment, without more, is not solicitation."
+        },
+        {
+          "case": "Morlife, Inc. v. Perry (1997) 56 Cal.App.4th 1514",
+          "cite": "California Court of Appeal, First District, Division Two (1997) -- describing American Credit Indemnity Co. v. Sacks",
+          "url": "https://www.courtlistener.com/opinion/2251515/morlife-inc-v-perry/",
+          "quote": "Sacks’ letter and follow-up telephone calls to clients went beyond a professional announcement and amounted to “solicitation.”"
+        },
+        {
+          "case": "Morlife, Inc. v. Perry (1997) 56 Cal.App.4th 1514",
+          "cite": "California Court of Appeal, First District, Division Two (1997), footnote 8 -- the announcement exception left open",
+          "url": "https://www.courtlistener.com/opinion/2251515/morlife-inc-v-perry/",
+          "quote": "we need not decide whether the “professional announcement” exception recognized in both Moss, Adams and Sacks has continued vitality in light of the expansive definition of misappropriation under the UTSA."
+        }
+      ]
+    },
+    {
+      "id": "custlist_personal_relationship_no_exception",
+      "title": "Personally Serving a Customer Does Not Make That Customer \"Fair Game\"",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-11",
+      "body": "An earlier decision, Moss, Adams & Co. v. Shilling, had held that an employee largely responsible for securing a former employer's customers could solicit their continued patronage after leaving, reasoning that the employee's personal relationship with the customer negated the information's trade secret status because the employee could not be made to wipe his or her memory clean. The Morlife court rejected that reasoning on two grounds. First, on the merits, it agreed with American Credit Indemnity Co. v. Sacks that the distinction between former employees who personally dealt with customers and those who did not rests on an unsound premise: there is no legitimate reason to treat differently a former employee who uses customer information he or she personally developed for the employer and a coworker who uses the same information without ever having had customer contact, and the information developed by an employee about the employer's customers represents an investment of time and money on the part of the employer. Second, and independently, the court held that Moss, Adams was decided on events predating the Uniform Trade Secrets Act and was unencumbered by the statute's definition of misappropriation, so that its premise is inapposite to conduct occurring after the statute's effective date.",
+      "gap": "This is California appellate case law, used as real evidence of the Morlife court's rejection of the personal-relationship rationale and its reasons -- not a claim about whether any particular former employee's relationship with customers affects the trade-secret status of information about them. The court's description of Moss, Adams & Co. v. Shilling (1986) 179 Cal.App.3d 124 and of the Sacks decision's disagreement with it is relied on as the Morlife court stated it; neither of those opinions was separately retrieved for this document. The Morlife court itself noted that its own view and that of the Sacks court need not be accepted to reach its result, because the pre-statute timing of Moss, Adams independently distinguishes it. The opinion's full text was retrieved via the CourtListener API (cluster id 2251515; the lead opinion carries opinion id 9745568 and a separately numbered combined-opinion record carries id 2251515, so the cluster id and lead-opinion id differ), and each quoted passage was then independently re-checked by a second, separate request to CourtListener's public search feed, which returned this opinion as an exact-phrase match for the quoted words (with negative-control queries confirming that altered phrases return no match). The text carries reporter star-pagination markers and editorial citation markup, which the quotes below omit by ending or beginning at sentence boundaries rather than spanning a page break.",
+      "citations": [
+        {
+          "case": "Morlife, Inc. v. Perry (1997) 56 Cal.App.4th 1514",
+          "cite": "California Court of Appeal, First District, Division Two (1997) -- no distinction between employees who dealt with customers and those who did not",
+          "url": "https://www.courtlistener.com/opinion/2251515/morlife-inc-v-perry/",
+          "quote": "There is no legitimate reason for characterizing differently the conduct of a former employee who uses customer information personally developed for the employer during the period of employment from the use of the very same information developed by a coworker who had no customer contact."
+        },
+        {
+          "case": "Morlife, Inc. v. Perry (1997) 56 Cal.App.4th 1514",
+          "cite": "California Court of Appeal, First District, Division Two (1997) -- Moss, Adams predates the statute",
+          "url": "https://www.courtlistener.com/opinion/2251515/morlife-inc-v-perry/",
+          "quote": "That court was unencumbered by the legislatively mandated definition of misappropriation now contained in the UTSA."
+        }
+      ]
+    },
+    {
+      "id": "custlist_section_16600_boundary_and_injunction_scope",
+      "title": "The Boundary With Section 16600: Trade Secret Protection Versus Contractual Restraints, and the Scope of Injunctive Relief",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-11",
+      "body": "Business and Professions Code section 16600 provides that, except as otherwise provided in its chapter, every contract by which anyone is restrained from engaging in a lawful profession, trade, or business of any kind is to that extent void, and directs that the section be read broadly to void any noncompete clause in an employment contract, no matter how narrowly tailored, that does not satisfy a statutory exception. The customer-list decisions operate on a different footing: the relief described in Morlife rested on the statutory prohibition of trade secret misappropriation, not on a contractual promise not to compete. The Morlife court described the resulting line in the injunction it affirmed: the former employees were enjoined from doing business with the 32 customers they had unlawfully solicited and from soliciting any customer of whom they acquired knowledge while employed, but the injunction did not cover potential customers with whom they had no contact and about whom they acquired no information while employed, and it left them free to solicit customers whose identities were not the former employer's trade secrets. The court also noted that under Civil Code section 3426.2, subdivision (a), an injunction's duration is not necessarily forever and that its termination could be sought under that provision.",
+      "gap": "This is California statutory law together with California appellate case law, used as real evidence of what section 16600 says on its face and of how the Morlife court described the scope of the injunction it affirmed -- not a claim that any particular contractual customer non-solicitation clause is or is not enforceable, and not a claim about the scope of relief appropriate in any specific dispute. This document does not retrieve or quote Civil Code section 3426.2 itself; the reference to it is the Morlife court's. Section 16600's application to customer non-solicitation clauses and the statutory exceptions to it are addressed in other documents in this project and are not restated here. The statutory text of section 16600 reflects its amendment by Stats. 2023, ch. 828 (AB 1076), effective January 1, 2024. The statutory text was retrieved twice from the California Legislative Information site (leginfo.legislature.ca.gov), as two separate HTTP requests using different User-Agent headers; after stripping page markup and normalizing whitespace, the two retrievals were identical for the whole section. The opinion's full text was retrieved via the CourtListener API (cluster id 2251515; the lead opinion carries opinion id 9745568 and a separately numbered combined-opinion record carries id 2251515, so the cluster id and lead-opinion id differ), and each quoted passage was then independently re-checked by a second, separate request to CourtListener's public search feed, which returned this opinion as an exact-phrase match for the quoted words (with negative-control queries confirming that altered phrases return no match). The text carries reporter star-pagination markers and editorial citation markup, which the quotes below omit by ending or beginning at sentence boundaries rather than spanning a page break.",
+      "citations": [
+        {
+          "case": "Cal. Bus. & Prof. Code § 16600(a) (leginfo.legislature.ca.gov text)",
+          "cite": "California general rule against contractual restraints on a lawful profession, trade, or business",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&sectionNum=16600.",
+          "quote": "Except as provided in this chapter, every contract by which anyone is restrained from engaging in a lawful profession, trade, or business of any kind is to that extent void."
+        },
+        {
+          "case": "Morlife, Inc. v. Perry (1997) 56 Cal.App.4th 1514",
+          "cite": "California Court of Appeal, First District, Division Two (1997) -- what the injunction did not cover",
+          "url": "https://www.courtlistener.com/opinion/2251515/morlife-inc-v-perry/",
+          "quote": "The injunction does not cover potential customers with whom appellants had no contact and as to whom they acquired no information while at Morlife."
+        },
+        {
+          "case": "Morlife, Inc. v. Perry (1997) 56 Cal.App.4th 1514",
+          "cite": "California Court of Appeal, First District, Division Two (1997) -- the line the injunction drew",
+          "url": "https://www.courtlistener.com/opinion/2251515/morlife-inc-v-perry/",
+          "quote": "In view of the clearly established violation of the UTSA, the injunction correctly draws the line, and leaves Burlingame free to solicit customers whose identities are not the trade secrets of Morlife."
+        }
+      ]
+    },
+    {
+      "id": "custlist_relationship_to_sibling_docs",
+      "title": "Relationship to Other Documents in This Project",
+      "kind": "drafting",
+      "body": "This Information Sheet is a companion to, and does not repeat, several existing documents in this project. The Non-Disclosure Agreement, Mutual Non-Disclosure Agreement, and Invention Assignment & Confidentiality Agreement documents address how confidential information, including customer information, can be defined and protected by contract. The Employee Non-Solicitation Agreement and Non-Compete Agreement documents, together with the Noncompete Void Notification and Sale-of-Business and Dissolution Noncompete Exceptions Information Sheets, address Business and Professions Code section 16600 and the enforceability of contractual restraints. The Trade Secret Misappropriation Cease and Desist Letter, Trade Secret Injunctive Relief Standards, Trade Secret Pre-Discovery Identification, Trade Secret Preemption Doctrine, Inevitable Disclosure Doctrine, and Criminal Trade Secret Theft documents address other aspects of trade secret law. This Information Sheet is limited to how the statutory definition of a trade secret and of misappropriation has been applied to customer lists; it does not address the measure of damages or unjust enrichment under Civil Code section 3426.3, the duration or termination of injunctions under section 3426.2, attorney's fees under section 3426.4, the federal Defend Trade Secrets Act, or the treatment of customer information under the California Consumer Privacy Act."
+    },
+    {
+      "id": "custlist_ack",
+      "title": "Signature and Acknowledgment",
+      "kind": "drafting",
+      "body": "Prepared by {{preparerName}} concerning the customer information of {{companyName}} described above.\n\nSigned: ______________________\n\nDate: {{dateSigned}}\n\nCity/State: {{cityState}}\n\nThis Information Sheet is a general informational reference about how California law treats customer lists under the Uniform Trade Secrets Act. It is not a confidentiality agreement, a non-solicitation agreement, a demand letter, or a court filing, and it is not a substitute for consulting a licensed attorney about whether particular customer information is a trade secret, whether any conduct amounts to misappropriation, or what relief may be available in a specific situation."
     }
   ]
 }
