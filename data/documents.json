@@ -33978,5 +33978,72 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "moore_marsden_separate_property_residence_apportionment_info_sheet",
+    "title": "Apportionment of a Separate-Property Residence Paid Down with Community Funds (Moore/Marsden) — Information Sheet",
+    "description": "Background information on how California courts apportion, between the community and the owning spouse's separate estate, the equity and appreciation in a residence one spouse owned before marriage whose purchase-money loan was paid down with community funds -- the statutory baselines in Family Code sections 760, 770, and 2550; the California Supreme Court's pro tanto interest rule and purchase-price formula in In re Marriage of Moore (1980), including the exclusion of interest, taxes, and insurance; the Court of Appeal's refinement in In re Marriage of Marsden (1982) crediting pre-marital appreciation to the separate owner; and the later published decisions in Mohler (2020) (the community's percentage stops growing at separation but shares in appreciation through trial, and Watts charges apply to a partial community interest) and Bonvino (2015) (property bought during marriage with a separate down payment and community loan proceeds takes proportionate interests absent a written transmutation, and section 2640 reimbursement applies only to community property) -- a companion to this project's existing section 2640 reimbursement, joint-title presumption, Watts/Epstein, and Pereira/Van Camp business-apportionment documents.",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "mmapp_declaration",
+      "mmapp_separate_property_owned_before_marriage",
+      "mmapp_community_property_baseline",
+      "mmapp_equal_division_of_community_estate",
+      "mmapp_moore_pro_tanto_community_interest",
+      "mmapp_moore_formula_and_exclusion_of_interest_taxes_insurance",
+      "mmapp_marsden_prenuptial_appreciation_to_separate_estate",
+      "mmapp_mohler_summary_of_the_rule",
+      "mmapp_mohler_post_separation_payments",
+      "mmapp_mohler_watts_charges_partial_interest",
+      "mmapp_mohler_refinance_and_improvements",
+      "mmapp_bonvino_property_acquired_during_marriage_mixed_funds",
+      "mmapp_worksheet_signature"
+    ],
+    "fields": [
+      {
+        "id": "party1Name",
+        "label": "First party's full legal name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "party2Name",
+        "label": "Second party's full legal name",
+        "placeholder": "Morgan Casey Lee",
+        "required": true
+      },
+      {
+        "id": "marriageDate",
+        "label": "Date of marriage",
+        "placeholder": "June 14, 2015",
+        "required": true
+      },
+      {
+        "id": "separationDate",
+        "label": "Date of separation",
+        "placeholder": "March 2, 2026",
+        "required": true
+      },
+      {
+        "id": "propertyAddress",
+        "label": "Address of the residence",
+        "placeholder": "1234 Elm Street, Sacramento, CA 95814",
+        "required": true
+      },
+      {
+        "id": "purchaseDate",
+        "label": "Date the residence was purchased (if known)",
+        "placeholder": "August 20, 2012",
+        "required": false
+      },
+      {
+        "id": "purchasePrice",
+        "label": "Original purchase price of the residence (if known)",
+        "placeholder": "$168,000",
+        "required": false
+      }
+    ]
   }
 ]
