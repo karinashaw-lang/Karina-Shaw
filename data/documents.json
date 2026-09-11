@@ -34176,5 +34176,52 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "successor_liability_asset_purchase_info_sheet",
+    "title": "Successor Liability When Buying a Business's Assets (Ray v. Alad Corp.; Corp. Code § 1107; Rev. & Tax. Code §§ 6811–6814; Unemp. Ins. Code §§ 1731–1732; Lab. Code § 200.3) — Information Sheet",
+    "description": "Explains, using the courts' and statutes' own words, when a buyer of a California business's assets becomes answerable for the seller's pre-existing debts and liabilities: the general rule of non-liability stated by the California Supreme Court in Ray v. Alad Corp. (1977) and its four traditional exceptions — express or implied assumption (with Ray's and Franklin v. USX Corp.'s readings of the purchase agreements before them), de facto merger and mere continuation (including the Court of Appeal's differing statements in Franklin and Cleveland v. Johnson on whether inadequate consideration is essential, and the Beatrice rule where recourse to the seller remains available), and transfers made for the fraudulent purpose of escaping the seller's debts; Cleveland's holding that the doctrine is equitable and is not confined to corporation-to-corporation transfers; the product-line exception Ray created for strict products liability and Franklin's refusal to extend it beyond product liability actions; the contrasting statutory succession to all debts and liabilities in a merger under Corporations Code section 1107; and three statutory successor-liability regimes that operate independently of the case law — the Sales and Use Tax Law's withholding, clearance-certificate, 60-day notice, and three-year enforcement provisions (Rev. & Tax. Code §§ 6811–6814), the Unemployment Insurance Code's withholding-in-trust and 30-day certificate provisions for employer contributions (§§ 1731–1732), and Labor Code section 200.3's four-criteria successorship rule for final wage judgments. A companion to this corpus's statutory merger, Uniform Voidable Transactions Act, alter ego, and corporate dissolution sheets, which address the neighboring questions of how a merger is carried out, when a transfer can be avoided by creditors, when an owner is liable for an entity's debts, and what happens to a dissolved seller's obligations.",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "succliab_declaration",
+      "succliab_general_rule_and_four_exceptions",
+      "succliab_express_or_implied_assumption",
+      "succliab_de_facto_merger_and_mere_continuation",
+      "succliab_equitable_doctrine_not_confined_to_corporations",
+      "succliab_fraudulent_transfer_ground",
+      "succliab_product_line_exception",
+      "succliab_statutory_merger_contrast",
+      "succliab_sales_and_use_tax_successor_withholding",
+      "succliab_unemployment_insurance_contributions_successor",
+      "succliab_wage_judgment_successor_labor_code_200_3"
+    ],
+    "fields": [
+      {
+        "id": "buyerName",
+        "label": "Buyer's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "sellerName",
+        "label": "Seller's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "businessName",
+        "label": "Business name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "closingDate",
+        "label": "Closing date",
+        "placeholder": "November 15, 2026",
+        "required": true
+      }
+    ]
   }
 ]
