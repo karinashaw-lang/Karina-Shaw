@@ -34661,5 +34661,39 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "commissioned_employee_overtime_exemption_info_sheet",
+    "title": "Commissioned Employee (\"Inside Sales\") Overtime Exemption (Wage Orders 4 and 7, § 3(D); Peabody v. Time Warner Cable) — Information Sheet",
+    "description": "Describes California's wage-order overtime exemption for commissioned employees — the provision in section 3(D) of IWC Wage Orders 4-2001 and 7-2001 under which the daily and weekly overtime rules do not apply to an employee whose earnings exceed one and one-half times the minimum wage if more than half of the employee's compensation represents commissions: the exemption's two prongs and the employer's burden of proof (Ramirez v. Yosemite Water Co.); the current minimum-wage figure the earnings prong is measured against; the California Supreme Court's holding in Peabody v. Time Warner Cable that the earnings prong is satisfied only in pay periods in which the required earnings are actually paid, so commissions paid in one pay period cannot be reassigned to earlier pay periods; what counts as a \"commission\" under Labor Code section 204.1 and the Keyes Motors / Ramirez two-part test, as applied in Areso v. CarMax (uniform per-unit payments) and Muldrow v. Surrex Solutions (percentage of adjusted gross profit); the DLSE's published enforcement positions (workweek-by-workweek compliance, draws, the representative period, and records); and what the exemption does not reach (minimum wage, the written commission contract requirement of Labor Code section 2751, and employees under other wage orders). A companion to this corpus's Commission Agreement, Wage Advances and Draws Against Commission, and Computer Software Employee Overtime Exemption documents.",
+    "categories": [
+      "During employment"
+    ],
+    "clauseOrder": [
+      "commsalesexempt_intro",
+      "commsalesexempt_overtime_default_and_wage_order_source",
+      "commsalesexempt_exemption_text_and_covered_wage_orders",
+      "commsalesexempt_two_prongs_and_employer_burden",
+      "commsalesexempt_minimum_earnings_prong_current_rate",
+      "commsalesexempt_pay_period_attribution_peabody",
+      "commsalesexempt_what_counts_as_commission",
+      "commsalesexempt_dlse_enforcement_positions",
+      "commsalesexempt_what_the_exemption_does_not_reach",
+      "commsalesexempt_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      }
+    ]
   }
 ]
