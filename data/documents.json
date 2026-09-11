@@ -33571,5 +33571,82 @@
         "required": false
       }
     ]
+  },
+  {
+    "id": "corporate_opportunity_doctrine_info_sheet",
+    "title": "Corporate Opportunity Doctrine — Information Sheet",
+    "description": "Background information on California's corporate opportunity doctrine -- the rule that a director, officer, or other corporate fiduciary may not acquire for personal benefit, in opposition to the corporation, a business opportunity in which the corporation has an interest or tangible expectancy -- as stated in Thompson v. Price (1967) 251 Cal.App.2d 182 (reproducing New v. New and Industrial Indemnity Co. v. Golden State Co.) and Kelegian v. Mgrdichian (1995) 33 Cal.App.4th 982: the line-of-business, interest-or-expectancy, and fairness tests; the \"beachhead,\" interference-with-corporate-plans, and financial-resources considerations; the qualification that the doctrine does not bar all outside business activity short of competing to the corporation's detriment; the rule that these questions are primarily factual; the Kelegian holding that a director's purchase of the corporation's own shares is not a corporate opportunity absent a corporate repurchase policy or formal action; the remedy of accounting to the corporation for the benefits obtained; and the statutory duty to account for the appropriation of an entity opportunity in Corporations Code §§ 17704.09(b)(1) (LLCs), 16404(b)(1) (general partnerships), and 15904.08(b)(1) (limited partnerships), with § 309 as the backdrop for directors -- a companion to this project's self-dealing, duty-of-care, controlling-shareholder, derivative-lawsuit, and LLC and partnership fiduciary-duty documents.",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "corpopp_purpose_declaration",
+      "corpopp_doctrine_stated",
+      "corpopp_three_tests",
+      "corpopp_interest_or_expectancy_factors",
+      "corpopp_fairness_and_question_of_fact",
+      "corpopp_permitted_outside_activity",
+      "corpopp_director_purchase_of_shares",
+      "corpopp_remedy_accounting",
+      "corpopp_statutory_llc_partnership_opportunity",
+      "corpopp_director_standard_309",
+      "corpopp_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Corporation or entity name",
+        "placeholder": "Acme Widgets, Inc.",
+        "required": true
+      },
+      {
+        "id": "entityType",
+        "label": "Entity type",
+        "placeholder": "corporation",
+        "required": true
+      },
+      {
+        "id": "fiduciaryName",
+        "label": "Name of the director, officer, member, manager, or partner",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "fiduciaryRole",
+        "label": "That person's role with the entity",
+        "placeholder": "director and chief operating officer",
+        "required": true
+      },
+      {
+        "id": "transactionDescription",
+        "label": "Opportunity or transaction at issue, if applicable",
+        "placeholder": "purchase of the adjacent parcel the company had been negotiating to lease",
+        "required": false
+      },
+      {
+        "id": "businessActivityDescription",
+        "label": "Line of business of the entity, in a few words",
+        "placeholder": "commercial real estate leasing and management",
+        "required": false
+      },
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Casey Nguyen",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 11, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Sacramento, California",
+        "required": true
+      }
+    ]
   }
 ]
