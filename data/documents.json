@@ -34223,5 +34223,40 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "form_of_wage_payment_checks_scrip_payroll_cards_info_sheet",
+    "title": "Form of Wage Payment: Checks, Scrip, Direct Deposit, and Payroll Cards (Lab. Code §§ 212–213) — Information Sheet",
+    "description": "Explains California's rules on the form in which wages may be paid: Labor Code section 212's requirement that any check or other wage instrument be negotiable and payable in cash, on demand, without discount, at an established place of business in the state, backed by sufficient funds for at least 30 days; its ban on scrip, coupons, and cards redeemable in merchandise; the presumption arising from a dishonored paycheck; the misdemeanor (§ 215) and civil-penalty (§ 225.5) enforcement provisions; the section 213 exceptions, including voluntarily authorized direct deposit; the treatment of out-of-state paychecks (Solis v. Regis Corp.) and payroll debit cards (DLSE Opinion Letter 2008.07.07; Marenco v. DirecTV); and the federal Regulation E rule against requiring an account at a particular institution as a condition of employment.",
+    "categories": [
+      "During employment"
+    ],
+    "clauseOrder": [
+      "wagepayform_intro",
+      "wagepayform_negotiable_instrument_rule",
+      "wagepayform_scrip_merchandise_prohibition",
+      "wagepayform_in_state_place_of_business_out_of_state_checks",
+      "wagepayform_sufficient_funds_dishonor_presumption",
+      "wagepayform_criminal_civil_penalties",
+      "wagepayform_direct_deposit_exception",
+      "wagepayform_payroll_debit_cards",
+      "wagepayform_federal_regulation_e_compulsory_use",
+      "wagepayform_exclusions_public_employers",
+      "wagepayform_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      }
+    ]
   }
 ]
