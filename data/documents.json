@@ -34544,5 +34544,71 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "cutsa_bad_faith_attorney_fees_info_sheet",
+    "title": "CUTSA Bad-Faith Attorney's Fee Awards (Civil Code § 3426.4) — Information Sheet",
+    "description": "Explains the attorney's fee and cost provision of the California Uniform Trade Secrets Act, Civil Code § 3426.4: the three statutory triggers (a misappropriation claim made in bad faith, a motion to terminate an injunction made or resisted in bad faith, and willful and malicious misappropriation), the discretionary award to the prevailing party, and the 2006 addition of expert witness costs; the two-part definition of \"bad faith\" adopted in Gemini Aluminum Corp. v. California Custom Shapes, Inc., requiring objective speciousness (not frivolousness) plus subjective bad faith; FLIR Systems, Inc. v. Parrish's definition of objective speciousness as a complete lack of evidence and its affirmance of a $1.64 million award against a suit built on an anticompetitive motive and the rejected inevitable disclosure theory; SASCO v. Rosendin Electric, Inc.'s holdings that a defendant need not prove a negative, that general sanctions statutes are not imported, that the objective inquiry does not ask why evidence is missing, and that subjective bad faith means an improper purpose such as harassment, delay, or thwarting competition; Cypress Semiconductor Corp. v. Maxim Integrated Products, Inc.'s treatment of prevailing-party status after a voluntary dismissal, of purpose rather than belief as the subjective test, and of a suit aimed at deterring lawful employee recruiting; CytoDyn of New Mexico, Inc. v. Amerimmune Pharmaceuticals, Inc.'s holding that the provision reaches only trade secret claims and not patent or trademark claims; the procedural rules on burden, findings, posttrial evidence, appellate review, apportionment, and fees on appeal; and the parallel federal provision, 18 U.S.C. § 1836(b)(3)(D). Distinct from this project's existing Trade Secret Misappropriation Cease and Desist Letter, Trade Secret Injunctive Relief Standards, Inevitable Disclosure Doctrine, Trade Secret Pre-Discovery Identification, Customer Lists as Trade Secrets, CUTSA Statute of Limitations, and DTSA Civil Seizure Remedy documents.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "cutsafee_intro",
+      "cutsafee_statutory_text_three_triggers",
+      "cutsafee_deterrent_purpose_and_sanction_character",
+      "cutsafee_two_prong_standard_speciousness_not_frivolousness",
+      "cutsafee_objective_speciousness_complete_lack_of_evidence",
+      "cutsafee_sasco_no_import_of_pleading_sanction_standards",
+      "cutsafee_subjective_bad_faith_improper_purpose",
+      "cutsafee_inferences_timing_ignored_warnings_maintenance",
+      "cutsafee_flir_anticompetitive_motive_inevitable_disclosure",
+      "cutsafee_denial_of_summary_judgment_no_bar",
+      "cutsafee_prevailing_party_after_voluntary_dismissal",
+      "cutsafee_cypress_maxim_recruiting_suit_improper_purpose",
+      "cutsafee_cytodyn_only_trade_secret_claims",
+      "cutsafee_burden_findings_hearing_and_review",
+      "cutsafee_apportionment_and_fees_on_appeal",
+      "cutsafee_dtsa_parallel_fee_provision",
+      "cutsafee_relationship_to_sibling_docs",
+      "cutsafee_ack"
+    ],
+    "fields": [
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Bayline Roofing Services, Inc.",
+        "required": true
+      },
+      {
+        "id": "adverseParty",
+        "label": "Other party to the actual or potential trade secret dispute",
+        "placeholder": "Crestline Commercial Roofing, LLC and two former Bayline estimators",
+        "required": true
+      },
+      {
+        "id": "tradeSecretDescription",
+        "label": "Description of the trade secret",
+        "placeholder": "The proprietary pricing model and supplier cost database used to prepare commercial roofing bids",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 11, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
