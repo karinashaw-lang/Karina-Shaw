@@ -34812,5 +34812,66 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "family_law_judgment_set_aside_info_sheet",
+    "title": "Relief From a Family Law Judgment After Six Months (Family Code Sections 2120-2129; Varner; Rubenstein; Brewer & Federici; Kieturakis; Georgiou & Leslie; Binette) — Information Sheet",
+    "description": "Background information on the California statutes that govern when a court may relieve a spouse from a judgment adjudicating support or the division of property after the six-month period of Code of Civil Procedure section 473 has run: the legislative findings of Family Code section 2120; the authorization and two materiality findings of section 2121; the six exclusive grounds and their time limits in section 2122 (actual fraud and perjury within one year of discovery; duress and mental incapacity within two years of entry; mistake in a stipulated or uncontested judgment within one year of entry; failure to comply with the disclosure requirements within one year of discovery); section 2123's rule that inequity alone is not a ground; the mechanics of relief in sections 2124 through 2127; the remedies preserved by section 2128; and the Courts of Appeal's applications of the chapter in In re Marriage of Varner (1997) (nondisclosure of an asset's existence or value as a \"mistake\"), Rubenstein v. Rubenstein (2000) (accrual on discovery of the facts; the remedy is a set-aside, not a tort action), In re Marriage of Brewer & Federici (2001) (unilateral mistake without wrongdoing; an \"unknown\" valuation of a major asset), In re Marriage of Kieturakis (2006) (the moving party bears the burden of proof; no presumption of undue influence for mediated settlements), In re Marriage of Georgiou & Leslie (2013) (a section 1101 action cannot bypass the section 2122 deadline), and In re Marriage of Binette (2018) (a defective waiver of final disclosure) -- a companion to this project's Preliminary and Final Declarations of Disclosure, Section 2556 Omitted Community Property, and Section 1101 Fiduciary-Breach documents.",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "fljsa_declaration",
+      "fljsa_section_2120_legislative_findings",
+      "fljsa_section_2121_relief_after_473_and_materiality",
+      "fljsa_section_2122_fraud_and_perjury_discovery_rule",
+      "fljsa_section_2122_duress_and_mental_incapacity",
+      "fljsa_section_2122e_mistake_varner_nondisclosure",
+      "fljsa_brewer_federici_unilateral_mistake_unknown_valuation",
+      "fljsa_section_2122f_disclosure_noncompliance_georgiou_binette",
+      "fljsa_section_2123_inequity_alone_not_a_ground",
+      "fljsa_kieturakis_burden_of_proof_mediated_settlements",
+      "fljsa_sections_2124_2127_scope_of_relief_mechanics",
+      "fljsa_rubenstein_georgiou_exclusive_remedy_no_tort_section_2128",
+      "fljsa_worksheet_signature"
+    ],
+    "fields": [
+      {
+        "id": "party1Name",
+        "label": "First spouse's full legal name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "party2Name",
+        "label": "Second spouse's full legal name",
+        "placeholder": "Morgan Casey Lee",
+        "required": true
+      },
+      {
+        "id": "proceedingType",
+        "label": "Type of proceeding (dissolution of marriage, legal separation, or nullity)",
+        "placeholder": "dissolution of marriage",
+        "required": true
+      },
+      {
+        "id": "judgmentDate",
+        "label": "Date the judgment was entered",
+        "placeholder": "March 3, 2025",
+        "required": true
+      },
+      {
+        "id": "provisionsAtIssue",
+        "label": "Provisions of the judgment at issue (for example, the division of a particular asset or the spousal support award)",
+        "placeholder": "the award of the employer pension plan and the equalizing payment",
+        "required": true
+      },
+      {
+        "id": "circumstanceDescription",
+        "label": "Description of the circumstance said to bear on the judgment (or \"none identified\")",
+        "placeholder": "A retirement account not listed on either party's declaration of disclosure, first learned of on June 1, 2026",
+        "required": false
+      }
+    ]
   }
 ]
