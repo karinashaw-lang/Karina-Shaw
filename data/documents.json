@@ -33669,5 +33669,64 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "negligent_hiring_supervision_retention_info_sheet",
+    "title": "Employer Liability for Negligent Hiring, Supervision, and Retention — Information Sheet",
+    "description": "An information sheet describing the California common-law doctrine under which an employer may be directly liable to a third person for its own negligence in hiring, supervising, or retaining an incompetent or unfit employee: the general duty of ordinary care in Civil Code Section 1714, the Restatement (Second) of Agency Section 213 rule that California follows and its knew-or-should-have-known standard (Evan F. v. Hughson United Methodist Church), the requirement that the employer's knowledge relate to the particular risk that materialized (Doe v. Capital Cities), the measurement of unfitness against the specific work to be performed (Federico v. Superior Court), the direct rather than vicarious character of the liability and its knowledge and causation elements (Delfino v. Agilent Technologies), the end of the duty when employment ends (Phillips v. TLC Plumbing), the effect of an employer's admission of vicarious liability (Diaz v. Carcamo), public-entity liability through Government Code Section 815.2 (C.A. v. William S. Hart Union High School District), and the two-year limitations period of Code of Civil Procedure Section 335.1.",
+    "categories": [
+      "Hiring"
+    ],
+    "clauseOrder": [
+      "nh_intro",
+      "nh_general_duty_civ_1714",
+      "nh_doctrine_recognized_evan_f",
+      "nh_particular_risk_doe",
+      "nh_specific_work_federico",
+      "nh_direct_not_vicarious_delfino",
+      "nh_ends_at_termination_phillips",
+      "nh_admission_vicarious_diaz",
+      "nh_public_entity_ca_hart",
+      "nh_limitations_ccp_335_1",
+      "nh_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company/employer name",
+        "placeholder": "Acme Home Services, Inc.",
+        "required": true
+      },
+      {
+        "id": "hiringRoleDescription",
+        "label": "Position(s) this sheet relates to, including the degree of contact the work involves with customers, clients, minors, patients, or other third persons",
+        "placeholder": "In-home repair technicians who enter customers' residences unaccompanied",
+        "required": true
+      },
+      {
+        "id": "preHireScreeningDescription",
+        "label": "Company's pre-hire screening and post-hire supervision practices, if any",
+        "placeholder": "Reference checks and a consumer-report background check after a conditional offer; ride-along supervision during the first 30 days",
+        "required": true
+      },
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Sacramento, California",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 11, 2026",
+        "required": true
+      }
+    ]
   }
 ]
