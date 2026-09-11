@@ -33571,5 +33571,49 @@
         "required": false
       }
     ]
+  },
+  {
+    "id": "at_will_presumption_implied_contract_guz_info_sheet",
+    "title": "At-Will Employment Presumption and Implied-in-Fact Contract Limits on Termination (Labor Code § 2922; Guz v. Bechtel) — Information Sheet",
+    "description": "Explains, using the statute's own text and the California Supreme Court's decisions in Guz v. Bechtel National, Inc. (2000) and Foley v. Interactive Data Corp. (1988), the default rule that employment with no specified term is terminable at the will of either party (Labor Code section 2922) and how that default can be displaced by an express or implied-in-fact agreement limiting the employer's right to terminate: the strength of the presumption and the employer's latitude under it; the parties' freedom to agree to any otherwise-lawful limit, including a good-cause requirement and its meaning; the Foley/Pugh factors (personnel policies and practices, longevity of service, employer assurances of continued employment, and industry practice) that bear on whether an implied-in-fact contract exists; Guz's clarification that those factors are weighed for what they show about the parties' actual mutual understanding rather than \"shaken together in a bag\"; Guz's holding that longevity, raises, promotions, and good reviews cannot alone create an implied contract not to terminate at will; the evidentiary treatment of handbook at-will disclaimers and written personnel policies; and the rule that the implied covenant of good faith and fair dealing imposes no termination limits beyond the contract itself and yields only contract remedies, with no tort of bad-faith discharge. A companion to this corpus's fixed-term employment contract information sheet (which addresses employment for a specified term under sections 2922-2925) and its wrongful-termination-in-violation-of-public-policy information sheet (which addresses statutory and public-policy limits on discharge rather than contractual ones).",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "atwillguz_declaration",
+      "atwillguz_statutory_presumption",
+      "atwillguz_freedom_to_contract_around_default",
+      "atwillguz_implied_in_fact_contract_and_foley_factors",
+      "atwillguz_totality_not_factors_in_a_bag",
+      "atwillguz_longevity_raises_promotions_alone_insufficient",
+      "atwillguz_handbook_disclaimers_and_personnel_policies",
+      "atwillguz_implied_covenant_no_independent_limit_no_tort"
+    ],
+    "fields": [
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Employer name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "startDate",
+        "label": "Employment start date",
+        "placeholder": "March 3, 2014",
+        "required": true
+      },
+      {
+        "id": "terminationDate",
+        "label": "Separation date",
+        "placeholder": "August 28, 2026",
+        "required": true
+      }
+    ]
   }
 ]
