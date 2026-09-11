@@ -33772,5 +33772,46 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "repetitive_motion_injury_ergonomics_standard_info_sheet",
+    "title": "Repetitive Motion Injury (Ergonomics) Standard — Information Sheet",
+    "description": "Information about California's Cal/OSHA ergonomics regulation, 8 Cal. Code Regs. § 5110 — the Labor Code § 6357 mandate behind it, the four-part trigger (more than one physician-diagnosed, work-related repetitive motion injury among employees doing identical work activity, reported within 12 months), the required program of worksite evaluation, exposure control, and training, the regulation's \"satisfaction of an employer's obligation\" provision, and the Pulaski decision that reviewed the standard.",
+    "categories": [
+      "During employment"
+    ],
+    "clauseOrder": [
+      "rmiergo_intro",
+      "rmiergo_statutory_mandate",
+      "rmiergo_scope_more_than_one_employee",
+      "rmiergo_medical_and_time_requirements",
+      "rmiergo_program_requirement",
+      "rmiergo_worksite_evaluation",
+      "rmiergo_control_of_exposures",
+      "rmiergo_training",
+      "rmiergo_satisfaction_of_obligation",
+      "rmiergo_pulaski_judicial_review",
+      "rmiergo_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme Corp",
+        "required": true
+      },
+      {
+        "id": "employeeName",
+        "label": "Employee's name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "programAdministratorName",
+        "label": "Person or department who can be contacted about the repetitive motion injury program",
+        "placeholder": "Taylor Morgan",
+        "required": true
+      }
+    ]
   }
 ]
