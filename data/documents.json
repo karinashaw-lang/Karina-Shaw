@@ -34380,5 +34380,70 @@
         "required": false
       }
     ]
+  },
+  {
+    "id": "corporate_signing_authority_section_313_info_sheet",
+    "title": "Who Can Sign for a Corporation or LLC: Officer Signatures, Corporations Code § 313, and Snukal v. Flightways (with § 17703.01 for LLCs) — Information Sheet",
+    "description": "Explains, using the statutes' and the California Supreme Court's own words, when a signature binds a California entity to a written instrument: the officers a corporation must have and the rule that one person may hold any number of offices (Corp. Code § 312); the rule that an instrument signed by an officer from each of two categories — chairperson, president, or vice president on one side; secretary, assistant secretary, chief financial officer, or assistant treasurer on the other — is not invalidated as to the corporation by the signers' lack of authority unless the other party actually knew of it (§ 313); the Supreme Court's construction of that section in Snukal v. Flightways Manufacturing, Inc. (2000) 23 Cal.4th 754 — its purpose as a safe harbor for third parties, its conclusive rather than rebuttable presumption, its actual-knowledge standard that dispenses with proof of justifiable reliance, its preservation of defenses such as fraud or mistake, its two-category requirement, and its holding that one person who in fact holds an office in each category satisfies the statute by signing alone even if the instrument lists only one title; the common-law doctrines of express and ostensible authority that remain available when the signer is not one of the specified officers, with their heavier burden of proof (Snukal; Civ. Code §§ 2317, 2334); Corporations Code § 208's rule that internal limits on corporate powers cannot be asserted against third parties and that contracts within actual or apparent authority bind the corporation; and the LLC counterpart in § 17703.01 — member agency in member-managed companies, manager agency in manager-managed companies, restrictions known to the other party, and the two-manager or sole-manager signing rule. A companion to this corpus's Corporate Bylaws, Board Resolution / Action by Written Consent, Officer Removal, and LLC Default Operating Rules documents, which address the neighboring questions of how officers and managers are appointed, how the board authorizes action, and how an LLC's management is structured.",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "signauth_declaration",
+      "signauth_section_312_required_officers_one_person_many_offices",
+      "signauth_section_313_instruments_signed_by_specified_officers",
+      "signauth_snukal_purpose_safe_harbor_for_third_parties",
+      "signauth_snukal_conclusive_presumption_and_actual_knowledge_standard",
+      "signauth_snukal_two_categories_operational_and_financial_officer",
+      "signauth_snukal_one_person_holding_both_offices_signing_alone",
+      "signauth_common_law_express_and_ostensible_authority_when_313_does_not_apply",
+      "signauth_section_208_internal_limits_not_asserted_against_third_parties",
+      "signauth_llc_member_manager_agency_and_two_manager_rule_17703_01",
+      "signauth_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Corporation or LLC name",
+        "placeholder": "Acme Widgets, Inc.",
+        "required": true
+      },
+      {
+        "id": "signerName",
+        "label": "Name of the person whose signature is under consideration",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "signerTitle",
+        "label": "That person's office or title with the entity",
+        "placeholder": "President, Chief Financial Officer, and Secretary",
+        "required": true
+      },
+      {
+        "id": "instrumentDescription",
+        "label": "Instrument at issue, if applicable",
+        "placeholder": "two-year lease of 123 Main Street, signed March 1, 2026",
+        "required": false
+      },
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Casey Nguyen",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 11, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Sacramento, California",
+        "required": true
+      }
+    ]
   }
 ]
