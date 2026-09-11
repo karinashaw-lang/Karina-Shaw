@@ -34472,5 +34472,77 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "cutsa_statute_of_limitations_info_sheet",
+    "title": "CUTSA Statute of Limitations and Continuing Misappropriation — Information Sheet",
+    "description": "Explains the time limit for bringing a trade secret misappropriation claim under the California Uniform Trade Secrets Act: the three-year period and built-in discovery rule of Civil Code § 3426.6; the statutory rule that a continuing misappropriation constitutes a single claim; the California Supreme Court's holding in Cadence Design Systems, Inc. v. Avant! Corp. that a claim against a given defendant arises only once, at the initial misappropriation, with each later use or disclosure augmenting that claim rather than starting a new one; the Uniform Act comment rejecting the continuing-wrong approach in favor of a delayed start (as quoted in Glue-Fold, Inc. v. Slautterback Corp.); Glue-Fold's holding that a pause in the misappropriator's conduct does not restart the period and that a known breach with one secret puts the owner on notice as to others; Cypress Semiconductor Corp. v. Superior Court's rulings that discovery means the plaintiff's reason to suspect wrongdoing (not the defendant's state of mind or identity), that separate defendants can carry separate claims with separate periods, and that § 3426.6 imposes no duty to notify third parties; Cadence's explanation that the single-claim concept reaches releases without shrinking remedies; the four-year periods and plaintiff's discovery-rule burden for companion contract and unfair competition claims (Glue-Fold); and the parallel three-year, discovery-based, single-claim provision of the federal Defend Trade Secrets Act, 18 U.S.C. § 1836(d). Distinct from this project's existing Non-Disclosure Agreement, Trade Secret Misappropriation Cease and Desist Letter, Trade Secret Injunctive Relief Standards, Trade Secret Pre-Discovery Identification, Trade Secret Preemption Doctrine, Inevitable Disclosure Doctrine, Customer Lists as Trade Secrets, and DTSA Civil Seizure Remedy documents.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "cutsasol_intro",
+      "cutsasol_three_year_period_and_discovery_rule",
+      "cutsasol_continuing_misappropriation_single_claim_statute",
+      "cutsasol_cadence_holding_claim_arises_once",
+      "cutsasol_cadence_misappropriation_versus_claim",
+      "cutsasol_uniform_act_comment_rejects_continuing_wrong",
+      "cutsasol_first_discovered_misappropriation_starts_clock",
+      "cutsasol_gluefold_pause_does_not_restart_period",
+      "cutsasol_one_breach_puts_other_secrets_at_risk",
+      "cutsasol_cypress_plaintiff_suspicion_standard",
+      "cutsasol_cypress_defendant_identity_not_required",
+      "cutsasol_separate_claims_against_separate_defendants",
+      "cutsasol_no_notice_duty_but_other_defenses",
+      "cutsasol_single_claim_beyond_limitations_releases_remedies",
+      "cutsasol_companion_contract_and_ucl_claims_discovery_burden",
+      "cutsasol_dtsa_parallel_period",
+      "cutsasol_relationship_to_sibling_docs",
+      "cutsasol_ack"
+    ],
+    "fields": [
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Bayline Roofing Services, Inc.",
+        "required": true
+      },
+      {
+        "id": "tradeSecretDescription",
+        "label": "Description of the trade secret",
+        "placeholder": "The proprietary pricing model and supplier cost database used to prepare commercial roofing bids",
+        "required": true
+      },
+      {
+        "id": "suspectedMisappropriationDate",
+        "label": "Date the suspected misappropriation is believed to have begun (write 'unknown' if not known)",
+        "placeholder": "March 2024",
+        "required": true
+      },
+      {
+        "id": "discoveryDate",
+        "label": "Date the company first learned of facts suggesting misappropriation",
+        "placeholder": "January 15, 2026",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 11, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
