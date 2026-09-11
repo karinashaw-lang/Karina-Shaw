@@ -33927,5 +33927,56 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "fraudulent_inducement_of_employment_info_sheet",
+    "title": "Fraudulent Inducement of Employment (Promissory Fraud in Hiring) — Information Sheet",
+    "description": "An information sheet describing California law on fraudulent inducement of employment — a job accepted in reliance on a prospective employer's representations that were false when made: the Civil Code's codification of deceit and promissory fraud (Civil Code sections 1709, 1710, and 1572); the California Supreme Court's holding in Lazar v. Superior Court (Rykoff-Sexton, Inc.) that a traditional promissory-fraud claim for inducing an employment contract remains available in the employment setting, the recruiting representations held sufficient to plead it, its distinction from a misrepresentation used to carry out a termination (Hunter v. Up-Right), the absence of any employer exemption from ordinary fraud rules and the particularity required to plead fraud against a corporate employer, and the damages such a claim reaches (relocation costs and the loss of security and income from former employment) versus those that must be sought in contract; and Civil Code section 3294's exemplary-damages standard, including its rule for when an employer answers for its employees' fraud. A companion to this corpus's information sheets on Labor Code sections 970-972 and on the at-will presumption.",
+    "categories": [
+      "Hiring"
+    ],
+    "clauseOrder": [
+      "fraudhire_declaration",
+      "fraudhire_deceit_statutes_civ_1709_1710_1572",
+      "fraudhire_lazar_elements_and_promissory_fraud",
+      "fraudhire_lazar_recruiting_representations_stated_claim",
+      "fraudhire_lazar_hunter_termination_distinguished",
+      "fraudhire_lazar_no_employer_exemption_and_pleading_specificity",
+      "fraudhire_lazar_damages_scope",
+      "fraudhire_exemplary_damages_civ_3294",
+      "fraudhire_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Employer name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "jobseekerName",
+        "label": "Jobseeker's name",
+        "placeholder": "Casey Alex",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 11, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
