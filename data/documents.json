@@ -34045,5 +34045,50 @@
         "required": false
       }
     ]
+  },
+  {
+    "id": "wrongful_discharge_mitigation_of_damages_parker_info_sheet",
+    "title": "Duty to Mitigate Damages After Wrongful Discharge (Civ. Code § 3300; Parker v. Twentieth Century-Fox; CACI No. 3963) — Information Sheet",
+    "description": "Explains, using the statute's own text, the California Supreme Court's decision in Parker v. Twentieth Century-Fox Film Corp. (1970), later Court of Appeal decisions, and the Judicial Council's civil jury instructions, how a wrongfully discharged employee's lost-earnings damages are measured and reduced for earnings the employee received or could have received from other work: the Civil Code section 3300 contract-damages baseline and Parker's formula (agreed salary for the period of service, less what the employer affirmatively proves the employee earned or with reasonable effort might have earned); the employer's burden to prove failure to mitigate as an affirmative defense and the three elements of CACI No. 3963; the rule that only comparable or substantially similar employment counts and that the employee need not seek or accept different or inferior work, with the CACI factor list and Parker's own application to the \"Bloomer Girl\"/\"Big Country, Big Man\" facts; the treatment of earnings actually received, including Rabago-Alvarez and the unresolved Villacorta/Martinez split over wages earned in an inferior job; Stanchfield's rule when a comparable replacement job is lost for cause; the collateral-source treatment of unemployment insurance benefits, retirement benefits, and an employer's offer to continue at lower pay; self-employment as mitigation; the claims the defense reaches; and whether similarity is decided as a question of fact or law. A companion to this corpus's at-will presumption and implied-contract sheet, its fixed-term employment contract sheet, and its wrongful-termination-in-violation-of-public-policy sheet, which address whether a discharge was wrongful rather than how the resulting damages are reduced.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "mitigparker_declaration",
+      "mitigparker_general_measure_of_recovery",
+      "mitigparker_employer_burden_affirmative_defense",
+      "mitigparker_comparable_or_substantially_similar_standard",
+      "mitigparker_parker_application_bloomer_girl_big_country",
+      "mitigparker_actual_earnings_inferior_job_split",
+      "mitigparker_losing_replacement_job_stanchfield",
+      "mitigparker_collateral_sources_ui_pension_lower_wage_offer",
+      "mitigparker_self_employment_scope_and_who_decides"
+    ],
+    "fields": [
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Employer name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "positionTitle",
+        "label": "Position held at separation",
+        "placeholder": "Regional Sales Manager",
+        "required": true
+      },
+      {
+        "id": "terminationDate",
+        "label": "Separation date",
+        "placeholder": "August 28, 2026",
+        "required": true
+      }
+    ]
   }
 ]
