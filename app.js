@@ -1011,7 +1011,13 @@ function assembleDocument() {
   return state.document.clauseOrder
     .map(id => state.clauses.find(c => c.id === id))
     .filter(Boolean)
-    .map(clause => ({ ...clause, renderedBody: substitute(clause.body, state.answers) }));
+    .map(clause => ({
+      ...clause,
+      renderedBody: substitute(clause.body, state.answers),
+      // Gap notes may refer to the same fields as the body (e.g. "{{companyName}}'s
+      // board"), so they get the same substitution instead of showing raw braces.
+      gap: clause.gap ? substitute(clause.gap, state.answers) : clause.gap,
+    }));
 }
 
 function renderOutput() {
