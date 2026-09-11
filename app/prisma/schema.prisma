@@ -447,6 +447,16 @@ model Tip {
   /// fromUserId to compare against directly. See splitDistributorPayout
   /// in the Stripe webhook.
   cardFingerprint         String?
+  /// IP address the checkout was started from — the other self-referral
+  /// signal alongside cardFingerprint, compared against
+  /// DistributorLink.createdIp. Captured at checkout-creation time (the
+  /// only point with a real browser request to read it from), for both
+  /// the real and simulated tip paths.
+  ipAddress               String?
+  /// Stripe's PaymentIntent id for this tip's charge — how the webhook
+  /// finds this Tip again when the charge is later refunded (see
+  /// `charge.refunded` handling). Only ever set for real Stripe tips.
+  stripePaymentIntentId   String?             @unique
   createdAt               DateTime            @default(now())
 
   @@index([cardFingerprint])
@@ -467,6 +477,11 @@ model DistributorLink {
   distributor   User          @relation(fields: [distributorId], references: [id])
   momentId      String
   moment        CuratedMoment @relation(fields: [momentId], references: [id])
+  /// IP address of the request that generated this link — one of the
+  /// self-referral signals in splitDistributorPayout, alongside
+  /// Tip.ipAddress and Tip.cardFingerprint. Best-effort like the others:
+  /// shared networks (offices, NAT, VPNs) can share an IP legitimately.
+  createdIp     String?
   createdAt     DateTime      @default(now())
   tips          Tip[]
 
@@ -478,13 +493,21 @@ model DistributorLink {
 /// succeeds. A one-to-one record per Tip, not a running balance, so a
 /// future earnings page can just list/sum these directly.
 model DistributorEarning {
-  id            String   @id @default(cuid())
-  distributorId String
-  distributor   User     @relation(fields: [distributorId], references: [id])
-  tipId         String   @unique
-  tip           Tip      @relation(fields: [tipId], references: [id])
-  amountCents   Int
-  createdAt     DateTime @default(now())
+  id               String    @id @default(cuid())
+  distributorId    String
+  distributor      User      @relation(fields: [distributorId], references: [id])
+  tipId            String    @unique
+  tip              Tip       @relation(fields: [tipId], references: [id])
+  amountCents      Int
+  /// The Transfer that actually paid the distributor — needed to reverse
+  /// it if the underlying tip is later refunded. Null in simulated mode,
+  /// where no real Transfer exists.
+  stripeTransferId String?
+  /// Set when the underlying tip's charge was refunded — the clawback.
+  /// Kept as a row (not deleted) so the ledger still shows what happened;
+  /// excluded from running totals wherever earnings are summed.
+  refundedAt       DateTime?
+  createdAt        DateTime  @default(now())
 }
 
 enum LiveStreamStatus {

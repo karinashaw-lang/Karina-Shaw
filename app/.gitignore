@@ -52,3 +52,9 @@ skills-lock.json
 # Locally uploaded video files (dev-only storage stand-in for real blob storage)
 /public/uploads/*
 !/public/uploads/.gitkeep
+
+# Paid files (Behind the Cut, Video Extras) — outside public/, served only
+# through signed URLs. See src/lib/file-signing.ts.
+/private-uploads/*
+!/private-uploads/.gitkeep
+backups/

@@ -7,6 +7,7 @@ import prisma from "@/lib/prisma";
 import { getAppUrl } from "@/lib/app-url";
 import { getStripe, isStripeConfigured } from "@/lib/integrations/stripe";
 import { resolveDistributorLink } from "@/lib/actions/distributor";
+import { getRequestIp } from "@/lib/request-ip";
 
 const guestTipSchema = z.object({
   creatorId: z.string().min(1),
@@ -83,6 +84,7 @@ export async function sendGuestTip(
         toCreatorId: creatorId,
         message: message ?? "",
         distributorLinkId: resolvedLinkId ?? "",
+        ipAddress: (await getRequestIp()) ?? "",
       },
       success_url: `${appUrl}${returnPath}${returnPath.includes("?") ? "&" : "?"}tipped=1`,
       cancel_url: `${appUrl}${returnPath}`,

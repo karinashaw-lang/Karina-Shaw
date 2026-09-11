@@ -10,6 +10,7 @@ import { getAppUrl } from "@/lib/app-url";
 import { getOrCreateStripeCustomer, getStripe, isStripeConfigured } from "@/lib/integrations/stripe";
 import { resolveDistributorLink } from "@/lib/actions/distributor";
 import { distributorCutCents } from "@/lib/distributor";
+import { getRequestIp } from "@/lib/request-ip";
 
 const tipSchema = z.object({
   creatorId: z.string().min(1),
@@ -100,6 +101,7 @@ export async function sendTip(
           toCreatorId: creatorId,
           message: message ?? "",
           distributorLinkId: resolvedLinkId ?? "",
+          ipAddress: (await getRequestIp()) ?? "",
         },
         success_url: `${appUrl}/creators/${handle}?tipped=1`,
         cancel_url: `${appUrl}/creators/${handle}`,
@@ -122,6 +124,7 @@ export async function sendTip(
       amountCents,
       message,
       distributorLinkId: resolvedLinkId ?? undefined,
+      ipAddress: await getRequestIp(),
     },
   });
 

@@ -6,6 +6,15 @@ import { getCurrentUser } from "@/lib/auth";
 import { getAppUrl } from "@/lib/app-url";
 import prisma from "@/lib/prisma";
 import { createDistributorOnboardingLink, isStripeConfigured } from "@/lib/integrations/stripe";
+import { getRequestIp } from "@/lib/request-ip";
+
+/** New-link creations allowed per distributor in NEW_LINK_WINDOW_MINUTES —
+ * generating a link is free and instant, so nothing else naturally limits
+ * how many a script could churn out. Existing links (the common case,
+ * revisiting a moment you already have a link for) never count against
+ * this. */
+const NEW_LINK_RATE_LIMIT = 20;
+const NEW_LINK_WINDOW_MINUTES = 10;
 
 export type DistributorOnboardingState = { error: string } | null;
 
@@ -64,9 +73,22 @@ export async function getOrCreateDistributorLink(momentId: string): Promise<Shar
     return { error: "Set up payouts first." };
   }
 
+  const existingLink = await prisma.distributorLink.findUnique({
+    where: { distributorId_momentId: { distributorId: user.id, momentId } },
+  });
+  if (!existingLink) {
+    const windowStart = new Date(Date.now() - NEW_LINK_WINDOW_MINUTES * 60 * 1000);
+    const recentCount = await prisma.distributorLink.count({
+      where: { distributorId: user.id, createdAt: { gte: windowStart } },
+    });
+    if (recentCount >= NEW_LINK_RATE_LIMIT) {
+      return { error: "You're creating share links too quickly — try again in a few minutes." };
+    }
+  }
+
   const link = await prisma.distributorLink.upsert({
     where: { distributorId_momentId: { distributorId: user.id, momentId } },
-    create: { distributorId: user.id, momentId },
+    create: { distributorId: user.id, momentId, createdIp: await getRequestIp() },
     update: {},
   });
 
@@ -79,9 +101,11 @@ export async function getOrCreateDistributorLink(momentId: string): Promise<Shar
  * enough to put in Stripe metadata. Returns null (silently, not an error —
  * a stale/invalid/self-referral link shouldn't block a genuine tip) unless
  * the link is for this exact creator and the tipper isn't the distributor
- * themselves. Guest tips (tipperUserId null) skip the self-referral check
- * — there's no user id to compare, and card-fingerprint matching for that
- * case isn't implemented (see README).
+ * themselves. Guest tips (tipperUserId null) skip this specific check —
+ * there's no user id to compare — but still go through the card
+ * fingerprint / email / IP checks in splitDistributorPayout once the
+ * payment confirms, which is the only point a guest tip's real identity
+ * signals exist at all.
  */
 export async function resolveDistributorLink(
   distributorLinkId: string | null | undefined,

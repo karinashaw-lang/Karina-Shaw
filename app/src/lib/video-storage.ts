@@ -7,6 +7,15 @@ import path from "node:path";
 import { extractAudioTrack } from "@/lib/audio-extraction";
 
 const UPLOAD_DIR = path.join(process.cwd(), "public", "uploads");
+/// Paid files (Behind the Cut's raw footage/cut scenes, Video Extras'
+/// outtakes/attachments) live here instead — outside `public/`, so
+/// Next.js's static file server can never serve them directly by path.
+/// The only way to reach one is a signed URL from src/lib/file-signing.ts,
+/// resolved through src/app/api/files/[token]. Regular videos still use
+/// UPLOAD_DIR: a locked video's videoUrl is already withheld from the
+/// client entirely when the viewer lacks access (see videos/[id]/page.tsx),
+/// so it doesn't need this treatment.
+const PRIVATE_UPLOAD_DIR = path.join(process.cwd(), "private-uploads");
 const MAX_BYTES = 300 * 1024 * 1024; // 300MB
 
 const EXTENSION_BY_MIME: Record<string, string> = {
@@ -60,13 +69,16 @@ export async function saveVideoFile(file: File): Promise<SavedVideo> {
   };
 }
 
-const BEHIND_THE_CUT_DIR = path.join(UPLOAD_DIR, "behind-the-cut");
+const BEHIND_THE_CUT_DIR = path.join(PRIVATE_UPLOAD_DIR, "behind-the-cut");
 
 /**
  * Saves a Behind the Cut raw-footage/cut-scenes file — same local-disk
  * stand-in as saveVideoFile, but no audio extraction or transcription;
  * this is paid bonus footage, not the primary video the rest of the app's
- * search/transcript pipeline is built around.
+ * search/transcript pipeline is built around. Returns a relative path
+ * under PRIVATE_UPLOAD_DIR (e.g. "behind-the-cut/<uuid>.mp4"), not a
+ * public URL — callers sign it (src/lib/file-signing.ts) before ever
+ * handing it to a browser.
  */
 export async function saveBehindTheCutFile(file: File): Promise<string> {
   if (!file.type.startsWith("video/")) {
@@ -86,12 +98,13 @@ export async function saveBehindTheCutFile(file: File): Promise<string> {
   const bytes = Buffer.from(await file.arrayBuffer());
   await writeFile(path.join(BEHIND_THE_CUT_DIR, filename), bytes);
 
-  return `/uploads/behind-the-cut/${filename}`;
+  return `behind-the-cut/${filename}`;
 }
 
-const VIDEO_EXTRAS_DIR = path.join(UPLOAD_DIR, "video-extras");
+const VIDEO_EXTRAS_DIR = path.join(PRIVATE_UPLOAD_DIR, "video-extras");
 
-/** Saves an outtakes video file — same shape as saveBehindTheCutFile. */
+/** Saves an outtakes video file — same shape as saveBehindTheCutFile,
+ * including returning a relative path rather than a public URL. */
 export async function saveOuttakesFile(file: File): Promise<string> {
   if (!file.type.startsWith("video/")) {
     throw new Error("That file doesn't look like a video.");
@@ -110,7 +123,7 @@ export async function saveOuttakesFile(file: File): Promise<string> {
   const bytes = Buffer.from(await file.arrayBuffer());
   await writeFile(path.join(VIDEO_EXTRAS_DIR, filename), bytes);
 
-  return `/uploads/video-extras/${filename}`;
+  return `video-extras/${filename}`;
 }
 
 /**
@@ -153,6 +166,8 @@ const ATTACHMENT_EXTENSION_SAFELIST = new Set([
  * plan. Unlike every other upload in this file, not restricted to video:
  * this slot is explicitly for arbitrary files, but see
  * ATTACHMENT_EXTENSION_SAFELIST for why "arbitrary" still has a limit.
+ * Returns a relative path, not a public URL — same reasoning as
+ * saveBehindTheCutFile.
  */
 export async function saveAttachmentFile(file: File): Promise<string> {
   if (file.size === 0) {
@@ -175,5 +190,5 @@ export async function saveAttachmentFile(file: File): Promise<string> {
   const bytes = Buffer.from(await file.arrayBuffer());
   await writeFile(path.join(VIDEO_EXTRAS_DIR, filename), bytes);
 
-  return `/uploads/video-extras/${filename}`;
+  return `video-extras/${filename}`;
 }

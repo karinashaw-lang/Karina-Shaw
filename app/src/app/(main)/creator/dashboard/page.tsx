@@ -58,7 +58,9 @@ export default async function DashboardPage() {
   ]);
 
   const totalCents = tips.reduce((sum, tip) => sum + tip.amountCents, 0);
-  const distributorSplitCents = distributorSplits.reduce((sum, earning) => sum + earning.amountCents, 0);
+  const distributorSplitCents = distributorSplits
+    .filter((earning) => !earning.refundedAt)
+    .reduce((sum, earning) => sum + earning.amountCents, 0);
   const unlockCents = unlocks.reduce((sum, unlock) => sum + unlock.amountCents, 0);
   const extraUnlockCents = extraUnlocks.reduce((sum, unlock) => sum + unlock.amountCents, 0);
   const paidQuestionCents = paidQuestions.reduce((sum, q) => sum + q.amountCents, 0);
@@ -193,10 +195,18 @@ export default async function DashboardPage() {
         </ul>
       )}
 
-      <p className="mt-8">
+      <p className="mt-8 flex flex-wrap gap-4">
         <Link href={`/creators/${user.creatorProfile.handle}`} className="underline">
           View your public profile
         </Link>
+        <a href="/api/creator/export" className="underline">
+          Export your data
+        </a>
+      </p>
+      <p className="-mt-2 text-xs text-zinc-500">
+        Downloads everything you have here — videos, transcripts, moments, your buyer list, and
+        earnings history — as one file, plus 24-hour download links for any raw footage, outtakes,
+        or attachments you&apos;ve uploaded.
       </p>
     </div>
   );

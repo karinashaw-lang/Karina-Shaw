@@ -419,6 +419,88 @@ line-by-line diff review.
   similar) that this app's "run for almost nothing" infra doesn't have yet; noted here rather than
   built, since an in-memory limiter would only work per-instance and give false confidence.
 
+## Launch blockers, part one (September 2026)
+
+A follow-up pass on a refined launch checklist — four of six items, scoped to what's actually
+buildable and verifiable in this environment: real object storage (needs R2 credentials this
+environment doesn't have) and live verification against a funded Stripe account are explicitly
+held for later, since neither can be meaningfully tested without real infrastructure. The other
+four are built and verified below.
+
+- **Signed, expiring URLs for paid files.** Behind the Cut's raw footage/cut scenes and Video
+  Extras' outtakes/attachments moved off `public/uploads/` entirely, into `private-uploads/` (see
+  `PRIVATE_UPLOAD_DIR` in `src/lib/video-storage.ts`) — a directory Next's static file server
+  never touches. The only way to reach one of these files at all is `GET /api/files/[token]`
+  (`src/app/api/files/[token]/route.ts`), where the token is an HMAC-signed, 1-hour-expiring
+  reference (`src/lib/file-signing.ts`) minted server-side, at render time, only for a viewer who
+  already passed the real access check — never stored, never handed to a client component that
+  doesn't already have access. Includes HTTP Range support so video scrubbing still works.
+  Regular videos (even locked ones) deliberately keep the existing pattern — a locked video's
+  `videoUrl` is simply never sent to the browser at all unless the viewer can watch it — since
+  moving those to private serving too is a much larger change than this pass (see the still-open
+  "real object storage" item, which would need to happen at the same time to be worth doing).
+  - **Known scope boundary — not fixed here:** the private podcast feed's episode media
+    (`audioUrl`/`videoUrl`) still points at public files, unlike the paid files above. Actually
+    protecting it would mean moving *regular* video storage off public disk — the deferred
+    object-storage item — not something this pass's file-type-focused fix could do honestly
+    without pretending a link "expires" when the underlying public URL still works forever.
+  - **Verification:** a real-browser flow — a creator uploads real raw footage bytes, a viewer
+    unlocks it and the rendered `<video>` src is confirmed to be `/api/files/...`, not the old
+    `/uploads/...` path (checked in the raw HTML before unlock, too — no leak); fetching the signed
+    URL directly returns the actual file bytes; a tampered token and a garbage token both come back
+    403 rather than serving anything or crashing.
+- **Payout-fraud minimums.** Three more self-referral signals alongside the card fingerprint from
+  the security pass: a guest tip's email matching the distributor's own account email, and the
+  tip's IP address matching the IP the share link was generated from (`DistributorLink.createdIp`,
+  `Tip.ipAddress`) — captured at checkout-creation time, the only point with a real request to
+  read either from. Each is best-effort alone (shared networks share IPs; a first-ever card or a
+  never-before-used email has no history to match) but harder to fake all at once. The attribution
+  cookie's window tightened from 30 days to 7, matching the spec, and last-click-wins falls out
+  naturally from the cookie being overwritten on every fresh `?d=` visit. **Refund clawback**:
+  `DistributorEarning` gained `stripeTransferId` (so a refund can find the specific Transfer to
+  reverse) and `refundedAt` (excluded from every running total, shown struck-through with a note
+  rather than silently deleted, so a distributor sees *why* their total dropped); a new
+  `charge.refunded` webhook case reverses the Transfer and marks the ledger row. **Rate limiting**
+  on share-link generation: capped at 20 new links per distributor per 10-minute window, backed
+  directly by counting recent `DistributorLink` rows — no new infra needed, and unlike an
+  in-memory limiter this is naturally correct across multiple server instances since it's just a
+  database query.
+  - **Verification:** a real-browser flow confirmed the cookie's actual `Max-Age` resolves to 7
+    days; a distributor with 20 links already (backfilled directly, since obtaining a
+    real link still requires `isStripeConfigured()` — see the security pass's disclosed gap on
+    that) hit the rate limit on a 21st and no row was created. The refund clawback was verified
+    with a hand-signed `charge.refunded` webhook: `DistributorEarning.refundedAt` was set
+    correctly, and the reversal attempt (with a fake transfer ID against a fake key) reached
+    Stripe's real servers, got a genuine 401, and was caught without crashing the webhook — the
+    clawback still applied to the ledger regardless, matching the "money movement can fail, the
+    record still reflects reality" pattern used everywhere else in this app. The email/IP
+    self-referral checks themselves share the same real-account limitation as the card
+    fingerprint check in the security pass above — they only run after a real
+    `stripe.paymentIntents.retrieve` call succeeds.
+- **Database backup & restore.** `scripts/backup-db.sh` (a plain `pg_dump --format=custom`,
+  timestamped, with retention pruning) and `scripts/restore-db.sh` (`pg_restore --clean`, with a
+  confirmation prompt when no explicit target is given). In production this needs a daily cron
+  entry (`0 3 * * * /path/to/scripts/backup-db.sh` — see the scripts for `DATABASE_URL`/
+  `BACKUP_DIR`/`BACKUP_RETENTION_DAYS` env vars) or, more simply, whatever automated-backup feature
+  the actual hosting/database provider offers; no scheduler exists in this dev environment to wire
+  one up to.
+  - **Verification — an actual restore drill, not just a script that looks right:** ran a real
+    backup of the working local database, restored it into a freshly created scratch database, and
+    confirmed row counts matched exactly across every table (71 users, 37 videos, 5 tips, all 34
+    tables present) before tearing the scratch database down.
+- **Creator data export.** `GET /api/creator/export` — auth-gated to the signed-in creator's own
+  data — returns one JSON file with every video (plus its transcript, Behind the Cut, and Extras
+  metadata), every Curated Moment, a deduplicated buyer list with total spend per buyer across
+  tips/unlocks/paid questions/subscriptions, and the full earnings history. Paid-file downloads are
+  included as 24-hour signed links (see the signed-URL work above) rather than the files
+  themselves — bundling arbitrarily large video files into one JSON response isn't practical, and
+  the creator already owns these outright regardless. A link on the creator dashboard triggers the
+  download via `Content-Disposition: attachment`.
+  - **Verification:** a real-browser flow confirmed the export contains the right video (with a
+    transcript array), the moments, a well-formed buyers array, an earnings-history object, and a
+    working 24-hour Behind the Cut download link; confirmed an unauthenticated request is rejected
+    with 401 rather than leaking anyone's data.
+
 ## Cheap-to-build differentiators (no new credentials needed)
 
 A few features from the latest plan revision are built entirely on infrastructure already
@@ -614,7 +696,16 @@ infrastructure, build differentiation" philosophy:
 - **Private podcast feed** — `Subscription.feedToken`, `src/app/api/feed/[token]/route.ts` (RSS
   2.0), `src/components/podcast-feed-link.tsx` on the creator profile page (copy + regenerate),
   `regenerateFeedToken` in `src/lib/actions/subscription.ts`
-- **Security fixes** — attachment extension safelist in `src/lib/video-storage.ts`, 30-day
+- **Security fixes** — attachment extension safelist in `src/lib/video-storage.ts`, 7-day
   distributor attribution cookie in `src/components/distributor-attribution-cookie.tsx` (read as a
   fallback on both the moment page and the creator profile page), guest-tip self-referral check via
   `Tip.cardFingerprint` in `src/app/api/webhooks/stripe`
+- **Signed, expiring file URLs** — `src/lib/file-signing.ts`, `src/app/api/files/[token]/route.ts`,
+  private storage in `src/lib/video-storage.ts` (`PRIVATE_UPLOAD_DIR`)
+- **Payout-fraud minimums** — `DistributorLink.createdIp` + `Tip.ipAddress` (IP self-referral
+  check), guest-email self-referral check, refund clawback (`DistributorEarning.stripeTransferId` +
+  `refundedAt`, `charge.refunded` handling) all in `src/app/api/webhooks/stripe`; share-link rate
+  limiting in `src/lib/actions/distributor.ts`; IP capture via `src/lib/request-ip.ts`
+- **Database backup & restore** — `scripts/backup-db.sh`, `scripts/restore-db.sh`
+- **Creator data export** — `src/app/api/creator/export/route.ts`, linked from
+  `src/app/(main)/creator/dashboard`

@@ -30,6 +30,7 @@ import BehindTheCutPanel from "@/components/behind-the-cut-panel";
 import EarlyAccessEditor from "@/components/early-access-editor";
 import VideoExtraEditor from "@/components/video-extra-editor";
 import VideoExtrasList from "@/components/video-extras-list";
+import { signFileUrl } from "@/lib/file-signing";
 import { hoursAgo, nowMs } from "@/lib/time";
 
 export default async function VideoPage(props: PageProps<"/videos/[id]">) {
@@ -276,8 +277,12 @@ export default async function VideoPage(props: PageProps<"/videos/[id]">) {
             hasBehindTheCutAccess
               ? {
                   planText: video.behindTheCut.planText,
-                  rawFootageUrl: video.behindTheCut.rawFootageUrl,
-                  cutScenesUrl: video.behindTheCut.cutScenesUrl,
+                  rawFootageUrl: video.behindTheCut.rawFootageUrl
+                    ? signFileUrl(video.behindTheCut.rawFootageUrl)
+                    : null,
+                  cutScenesUrl: video.behindTheCut.cutScenesUrl
+                    ? signFileUrl(video.behindTheCut.cutScenesUrl)
+                    : null,
                   kitText: video.behindTheCut.kitText,
                   hardPartText: video.behindTheCut.hardPartText,
                   priceCents: video.behindTheCut.priceCents,
@@ -316,7 +321,7 @@ export default async function VideoPage(props: PageProps<"/videos/[id]">) {
             title: e.title,
             priceCents: e.priceCents,
             text: unlockedExtraIds.has(e.id) ? e.text : null,
-            fileUrl: unlockedExtraIds.has(e.id) ? e.fileUrl : null,
+            fileUrl: unlockedExtraIds.has(e.id) && e.fileUrl ? signFileUrl(e.fileUrl) : null,
           }))}
           unlockedIds={unlockedExtraIds}
           isSubscribedIncluded={true}

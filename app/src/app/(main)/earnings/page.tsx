@@ -24,7 +24,9 @@ export default async function EarningsPage() {
     },
   });
 
-  const totalCents = earnings.reduce((sum, earning) => sum + earning.amountCents, 0);
+  const totalCents = earnings
+    .filter((earning) => !earning.refundedAt)
+    .reduce((sum, earning) => sum + earning.amountCents, 0);
 
   return (
     <div className="mx-auto max-w-3xl px-6 py-10">
@@ -82,7 +84,10 @@ export default async function EarningsPage() {
           {earnings.map((earning) => {
             const moment = earning.tip.distributorLink?.moment;
             return (
-              <li key={earning.id} className="flex items-center justify-between gap-4">
+              <li
+                key={earning.id}
+                className={`flex items-center justify-between gap-4 ${earning.refundedAt ? "opacity-50" : ""}`}
+              >
                 <span>
                   {moment ? (
                     <>
@@ -94,8 +99,13 @@ export default async function EarningsPage() {
                   ) : (
                     <span className="text-zinc-500">A moment that&apos;s since been removed</span>
                   )}
+                  {earning.refundedAt && (
+                    <span className="ml-2 text-xs text-zinc-500">(refunded — not counted above)</span>
+                  )}
                 </span>
-                <span className="font-medium">${(earning.amountCents / 100).toFixed(2)}</span>
+                <span className={earning.refundedAt ? "line-through" : "font-medium"}>
+                  ${(earning.amountCents / 100).toFixed(2)}
+                </span>
               </li>
             );
           })}

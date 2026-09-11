@@ -42,35 +42,50 @@ async function splitDistributorPayout(
   // the self-referral check compares future tips against, signed-in or guest.
   const fingerprint =
     charge && typeof charge === "object" ? (charge.payment_method_details?.card?.fingerprint ?? null) : null;
-  if (fingerprint) {
-    await prisma.tip.update({ where: { id: tipId }, data: { cardFingerprint: fingerprint } });
-  }
+  const tip = await prisma.tip.update({
+    where: { id: tipId },
+    data: { cardFingerprint: fingerprint ?? undefined, stripePaymentIntentId: paymentIntentId },
+  });
 
   // A signed-in self-tip is already blocked in resolveDistributorLink (no
   // distributorLinkId is ever attached to it), but a guest tip has no
-  // fromUserId to compare — this is the fallback: has this exact card
-  // already paid a tip the distributor sent while signed in? Best-effort,
-  // per the plan's risk section, not a guarantee (their very first-ever
-  // payment on a given card can't be caught this way). Self-referral
+  // fromUserId to compare — these three are the fallback, each best-effort
+  // on its own (per the plan's risk section, not a guarantee — a shared
+  // network can share an IP, a first-ever card has no history to match)
+  // but meaningfully harder to fake all three at once. Self-referral
   // cancels the distributor's cut, not the creator's — the tip itself is
   // still real money that should still reach the creator in full.
   let selfReferral = false;
+  let reason: string | null = null;
+
   if (fingerprint) {
     const priorOwnTip = await prisma.tip.findFirst({
       where: { fromUserId: link.distributorId, cardFingerprint: fingerprint },
     });
     if (priorOwnTip) {
       selfReferral = true;
-      console.warn(
-        `Blocked distributor payout for tip ${tipId}: card fingerprint matches distributor ${link.distributorId}'s own past tip ${priorOwnTip.id} (self-referral).`
-      );
+      reason = `card fingerprint matches distributor's own past tip ${priorOwnTip.id}`;
     }
+  }
+
+  if (!selfReferral && tip.guestEmail && link.distributor.email.toLowerCase() === tip.guestEmail.toLowerCase()) {
+    selfReferral = true;
+    reason = "guest tip email matches the distributor's own account email";
+  }
+
+  if (!selfReferral && tip.ipAddress && link.createdIp && tip.ipAddress === link.createdIp) {
+    selfReferral = true;
+    reason = "tip's IP address matches the IP the share link was generated from";
+  }
+
+  if (selfReferral) {
+    console.warn(`Blocked distributor payout for tip ${tipId}: ${reason} (self-referral).`);
   }
 
   const distributorCut = selfReferral ? 0 : distributorCutCents(amountCents);
 
   if (!selfReferral) {
-    await stripe.transfers.create({
+    const transfer = await stripe.transfers.create({
       amount: distributorCut,
       currency: "usd",
       destination: link.distributor.stripeAccountId,
@@ -78,7 +93,12 @@ async function splitDistributorPayout(
     });
 
     await prisma.distributorEarning.create({
-      data: { distributorId: link.distributorId, tipId, amountCents: distributorCut },
+      data: {
+        distributorId: link.distributorId,
+        tipId,
+        amountCents: distributorCut,
+        stripeTransferId: transfer.id,
+      },
     });
   }
 
@@ -91,6 +111,37 @@ async function splitDistributorPayout(
       source_transaction: chargeId,
     });
   }
+}
+
+/**
+ * Claws back a distributor's cut when the underlying tip is refunded —
+ * reverses the actual Transfer (pulling the money back out of their
+ * Connect balance) where one exists, and marks the ledger row so it drops
+ * out of running totals either way. Simulated-mode earnings have no
+ * stripeTransferId, so only the ledger side applies there.
+ */
+async function clawBackRefundedTip(stripe: Stripe, paymentIntentId: string) {
+  const tip = await prisma.tip.findUnique({
+    where: { stripePaymentIntentId: paymentIntentId },
+    include: { earning: true },
+  });
+  if (!tip?.earning || tip.earning.refundedAt) return;
+
+  if (tip.earning.stripeTransferId) {
+    try {
+      await stripe.transfers.createReversal(tip.earning.stripeTransferId);
+    } catch (err) {
+      console.error(
+        `Failed to reverse distributor transfer ${tip.earning.stripeTransferId} for refunded tip ${tip.id}`,
+        err
+      );
+    }
+  }
+
+  await prisma.distributorEarning.update({
+    where: { id: tip.earning.id },
+    data: { refundedAt: new Date() },
+  });
 }
 
 /**
@@ -126,7 +177,7 @@ export async function POST(request: Request) {
       const kind = session.metadata?.kind;
 
       if (kind === "tip" || kind === "guest_tip") {
-        const { fromUserId, toCreatorId, message, distributorLinkId } = session.metadata!;
+        const { fromUserId, toCreatorId, message, distributorLinkId, ipAddress } = session.metadata!;
         const amountCents = session.amount_total ?? 0;
 
         const tip = await prisma.tip.upsert({
@@ -138,6 +189,7 @@ export async function POST(request: Request) {
             amountCents,
             message: message || undefined,
             distributorLinkId: distributorLinkId || undefined,
+            ipAddress: ipAddress || undefined,
             stripeCheckoutSessionId: session.id,
           },
           update: {},
@@ -209,6 +261,20 @@ export async function POST(request: Request) {
             create: { subscriberId, creatorId, stripeSubscriptionId: subscriptionId },
             update: { stripeSubscriptionId: subscriptionId },
           });
+        }
+      }
+      break;
+    }
+
+    case "charge.refunded": {
+      const charge = event.data.object;
+      const paymentIntentId =
+        typeof charge.payment_intent === "string" ? charge.payment_intent : charge.payment_intent?.id;
+      if (paymentIntentId) {
+        try {
+          await clawBackRefundedTip(stripe, paymentIntentId);
+        } catch (err) {
+          console.error("Refund clawback failed for payment intent", paymentIntentId, err);
         }
       }
       break;
