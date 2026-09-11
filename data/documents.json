@@ -34223,5 +34223,61 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "transmutation_express_declaration_requirement_info_sheet",
+    "title": "Transmutation of Marital Property and the Express Declaration Requirement (MacDonald/Benson/Valli/Brace) — Information Sheet",
+    "description": "Background information on how California law treats a change in the character of property between spouses during marriage (a transmutation) -- the authorization in Family Code section 850; the requirement in section 852(a) that a transmutation be made in writing by an express declaration accepted by the adversely affected spouse; the California Supreme Court's construction of that requirement in Estate of MacDonald (1990) (the writing itself must state that the character or ownership of the property is being changed, and extrinsic evidence cannot supply what the writing lacks), In re Marriage of Benson (2005) (no part-performance or reliance exception, and the spousal fiduciary duty does not substitute for compliance), In re Marriage of Valli (2014) (purchases from third parties with community funds in one spouse's name are subject to the requirement, and the form-of-title presumption yields to it), and In re Brace (2020) (joint tenancy titling alone does not transmute community funds, in disputes with a bankruptcy trustee as well); and section 852's own limits for inexpensive personal gifts, commingled property, and transmutations made before January 1, 1985 -- a companion to this project's Postnuptial Agreement, Section 2581 joint-title presumption, and Moore/Marsden and Pereira/Van Camp apportionment documents.",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "txm_declaration",
+      "txm_section_850_transmutation_authorized",
+      "txm_section_852a_writing_and_express_declaration_requirement",
+      "txm_macdonald_legislative_purpose_easy_transmutation",
+      "txm_macdonald_express_declaration_test_no_extrinsic_evidence",
+      "txm_macdonald_no_particular_words_ira_consent_example",
+      "txm_benson_no_part_performance_exception",
+      "txm_benson_later_decisions_title_changes_and_reliance",
+      "txm_benson_fiduciary_duty_not_a_substitute",
+      "txm_valli_third_party_purchases_subject_to_transmutation_statutes",
+      "txm_valli_form_of_title_presumption_yields",
+      "txm_brace_joint_tenancy_title_not_an_express_declaration",
+      "txm_section_852_gift_exception_commingling_and_1985_cutoff",
+      "txm_worksheet_signature"
+    ],
+    "fields": [
+      {
+        "id": "party1Name",
+        "label": "First spouse's full legal name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "party2Name",
+        "label": "Second spouse's full legal name",
+        "placeholder": "Morgan Casey Lee",
+        "required": true
+      },
+      {
+        "id": "marriageDate",
+        "label": "Date of marriage",
+        "placeholder": "June 14, 2015",
+        "required": true
+      },
+      {
+        "id": "propertyDescription",
+        "label": "Description of the property whose character is in question",
+        "placeholder": "Life insurance policy no. 12345 issued by ABC Life, or the residence at 1234 Elm Street, Sacramento, CA 95814",
+        "required": true
+      },
+      {
+        "id": "writingDescription",
+        "label": "Description of any writing claimed to change the property's character (or \"none\")",
+        "placeholder": "Interspousal transfer grant deed dated March 3, 2021, signed by both spouses",
+        "required": false
+      }
+    ]
   }
 ]
