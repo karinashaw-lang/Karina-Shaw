@@ -36966,5 +36966,61 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "workers_comp_exclusivity_emotional_distress_termination_info_sheet",
+    "title": "Emotional-Distress Claims Arising From a Termination and the Workers’ Compensation Exclusive Remedy (Lab. Code §§ 3600, 3601, 3602, 3208.3; Cole v. Fair Oaks Fire Protection Dist.; Shoemaker v. Myers; Livitsanos v. Superior Court; Miklosy v. Regents; City of Moorpark v. Superior Court; Light v. Department of Parks & Recreation) — Information Sheet",
+    "description": "Explains how California law routes a claim for emotional-distress damages arising out of the end of an employment. Covers the compensation bargain and the exclusive remedy provisions of Labor Code sections 3600 and 3602; Cole v. Fair Oaks Fire Protection Dist. (1987), which held that conduct forming a normal part of the employment relationship — demotions, criticism of work practices, friction over grievances — cannot be pleaded around by calling it outrageous; Shoemaker v. Myers (1990), which extended that reasoning to the discharge itself and held that disabling injuries arising from termination are generally within workers’ compensation coverage unless the discharge falls within a statutory exception or outside the compensation bargain; Livitsanos v. Superior Court (1992), which rejected the physical-versus-emotional distinction and stated the two recognized exceptions; Miklosy v. Regents (2008), which held that a surviving wrongful-discharge theory does not carry a separate distress claim past the bar; the Court of Appeal line, collected in Light v. Department of Parks & Recreation (2017), holding that distress claims founded on conduct prohibited by the Fair Employment and Housing Act fall outside the compensation bargain, and its acknowledged conflict with Yau v. Santa Margarita Ford; City of Moorpark v. Superior Court (1998), which read the exclusive remedy provisions as limited to division 4 remedies; and the separate Labor Code section 3208.3 thresholds for psychiatric injury, including the predominant-cause standard, the six-month employment requirement, the good-faith personnel action defense in subdivision (h), and the post-notice claim rules in section 3600, subdivision (a)(10) and section 3208.3, subdivisions (e) and (g). Also covers Labor Code section 3601 on suing a coworker individually. A companion to this corpus’s sheets on wrongful termination in violation of public policy, workers’ compensation retaliation under section 132a, and constructive discharge, none of which addresses whether an emotional-distress claim survives the exclusive remedy bar.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "wcxemo_declaration",
+      "wcxemo_compensation_bargain",
+      "wcxemo_normal_part_cole",
+      "wcxemo_termination_itself",
+      "wcxemo_emotional_only_livitsanos",
+      "wcxemo_outside_the_bargain",
+      "wcxemo_miklosy_iied_not_tameny",
+      "wcxemo_feha_based_distress_light",
+      "wcxemo_moorpark_division_four",
+      "wcxemo_psychiatric_compensability",
+      "wcxemo_good_faith_personnel_action",
+      "wcxemo_post_notice_claim_bar",
+      "wcxemo_coemployee_3601",
+      "wcxemo_boundaries"
+    ],
+    "fields": [
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Employer name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "positionTitle",
+        "label": "Position held at separation",
+        "placeholder": "Field Technician",
+        "required": true
+      },
+      {
+        "id": "noticeDate",
+        "label": "Date notice of termination or layoff was given",
+        "placeholder": "June 12, 2026",
+        "required": false
+      },
+      {
+        "id": "separationDate",
+        "label": "Date the employment ended",
+        "placeholder": "July 10, 2026",
+        "required": true
+      }
+    ]
   }
 ]
