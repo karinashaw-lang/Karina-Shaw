@@ -35910,5 +35910,48 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "antideficiency_protections_info_sheet",
+    "title": "Anti-Deficiency Protections After Foreclosure or Short Sale (Code Civ. Proc. §§ 726, 580a, 580b, 580d, 580e) — Information Sheet",
+    "description": "Explains, in the statutes' and the California Supreme Court's own words, the California rules that limit or bar a lender's personal money judgment for the unpaid balance of a real property secured debt: the one-form-of-action and security-first requirements of Code of Civil Procedure section 726(a) and the consequence of violating them under Security Pacific National Bank v. Wozab; the absolute purchase money bar of section 580b, including its extension to refinances and its guarantor carve-out, and the purposes Roseleaf Corp. v. Chierighino and DeBerard Properties, Ltd. v. Lim ascribe to it; the rule of Civil Code section 2953 voiding waivers made in connection with a loan and the holdings of DeBerard and Coker v. JPMorgan Chase Bank, N.A. that section 580b cannot be waived after the sale or in exchange for short sale approval; the short sale bar of section 580e; Coker's holding that section 580b reaches short sales as well as foreclosure sales; the fair value measure and three-month deadline of section 580a; the fair value hearing, deficiency decree, and redemption rules for judicial foreclosures under section 726(b) and (e); section 580d's bar after a power-of-sale foreclosure, the parity rationale, and Roseleaf's holding that a sold-out junior lienholder may still sue on its note; and the limits Cornelison v. Kornbluth places on post-sale claims for waste and the effect of a full credit bid.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "antidef_declaration",
+      "antidef_one_action_and_security_first",
+      "antidef_section_726_sanction",
+      "antidef_purchase_money_bar_580b",
+      "antidef_purposes_of_580b",
+      "antidef_waiver_of_antideficiency_protection",
+      "antidef_short_sale_bar_580e",
+      "antidef_coker_short_sale_of_purchase_money_loan",
+      "antidef_fair_value_limit_580a",
+      "antidef_judicial_foreclosure_deficiency_726b",
+      "antidef_580d_parity_and_sold_out_juniors",
+      "antidef_waste_claims_and_the_full_credit_bid",
+      "antidef_ack"
+    ],
+    "fields": [
+      {
+        "id": "propertyAddress",
+        "label": "Address or description of the real property securing the loan",
+        "placeholder": "742 Oak St., Fresno, CA 93721 (APN 123-456-789)",
+        "required": true
+      },
+      {
+        "id": "borrowerName",
+        "label": "Name of the borrower, trustor, or mortgagor",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "lenderName",
+        "label": "Name of the lender, beneficiary, or mortgagee",
+        "placeholder": "Valley Coast Bank, N.A.",
+        "required": true
+      }
+    ]
   }
 ]
