@@ -35589,5 +35589,50 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "lis_pendens_notice_of_pendency_info_sheet",
+    "title": "Notice of Pendency of Action (Lis Pendens), Expungement, and Withdrawal — Information Sheet",
+    "description": "Explains, in the statutes' and courts' own words, California's lis pendens scheme in Title 4.5 of Part 2 of the Code of Civil Procedure (§§ 405-405.61): the definitions of \"notice of pendency of action,\" \"claimant,\" \"real property claim,\" and \"probable validity\"; who may record a notice, what it must contain, and the attorney-signature or judicial-approval requirement of § 405.21; the registered or certified mailing required before recording, the filing with the court required immediately after, and § 405.23's rule voiding a notice as to any party for whom § 405.22 was not satisfied and a proof of service not recorded; the constructive notice and relation-back effect of § 405.24; the motion to expunge under § 405.30 and its reversal of the ordinary burden of proof; the two mandatory grounds for expungement — a pleading containing no real property claim (§ 405.31, and Kirkeby v. Superior Court's demurrer-like analysis) and a failure to prove probable validity by a preponderance (§ 405.32); undertakings under §§ 405.33, 405.34, and 405.37, including the inapplicability of Civil Code § 3387's uniqueness presumption; the bar on appeal and the 20-day writ of mandate under § 405.39, the delayed effectiveness of an expungement order under § 405.35, and the leave-of-court requirement for re-recording under § 405.36; prevailing-party attorney's fees under § 405.38; withdrawal under § 405.50 and the free-transferability provisions of §§ 405.60 and 405.61; and when a recorded lis pendens is a privileged publication under Civil Code § 47(b)(4), as applied in Park 100 Investment Group II, LLC v. Ryan.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "lispendens_declaration",
+      "lispendens_definitions_and_scope",
+      "lispendens_real_property_claim_definition",
+      "lispendens_signing_requirement",
+      "lispendens_mailing_service_and_proof_of_service",
+      "lispendens_constructive_notice_and_relation_back",
+      "lispendens_motion_to_expunge_and_burden_of_proof",
+      "lispendens_expungement_no_real_property_claim",
+      "lispendens_expungement_probable_validity",
+      "lispendens_undertakings",
+      "lispendens_order_effect_writ_review_and_refiling",
+      "lispendens_attorney_fees_on_the_motion",
+      "lispendens_withdrawal_and_free_transferability",
+      "lispendens_litigation_privilege",
+      "lispendens_ack"
+    ],
+    "fields": [
+      {
+        "id": "propertyAddress",
+        "label": "Address or description of the real property",
+        "placeholder": "742 Oak St., Fresno, CA 93721 (APN 123-456-789)",
+        "required": true
+      },
+      {
+        "id": "countyName",
+        "label": "County in which the property is situated",
+        "placeholder": "Fresno",
+        "required": true
+      },
+      {
+        "id": "partyName",
+        "label": "Name of the person or entity this sheet concerns",
+        "placeholder": "Jordan Lee",
+        "required": true
+      }
+    ]
   }
 ]
