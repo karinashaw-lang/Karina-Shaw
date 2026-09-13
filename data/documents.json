@@ -36114,5 +36114,60 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "personal_injury_recovery_characterization_info_sheet",
+    "title": "Characterization and Division of a Personal Injury Recovery in Marriage — Information Sheet",
+    "description": "Explains how California law characterizes and divides money received for personal injuries when the injured person is married: the general rule of Family Code section 780 (community property if the cause of action arose during the marriage), the separate-property exceptions and reimbursement rule of section 781, the definition and commingling limit in section 2603(a), and the special assignment rule of section 2603(b) — assignment to the injured party unless the interests of justice require otherwise, with a one-half floor. Adds four published decisions: Morris (the assignment rule is an exception to equal division, not an offset), Klug (the characterization date is when the cause of action AROSE, not when it accrued for limitations purposes), Jackson (uninsured motorist proceeds counted as community estate personal injury damages), and Fisk (a workers’ compensation permanent disability award is not a personal injury recovery under these sections). Also covers sections 782 and 783, which govern which property answers for a liability when one spouse injures the other and when a spouse’s concurring negligence is not a defense.",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "pirecovery_declaration",
+      "pirecovery_general_rule_780",
+      "pirecovery_separate_property_781",
+      "pirecovery_781_reimbursement_and_interspousal",
+      "pirecovery_2603_definition",
+      "pirecovery_2603_assignment",
+      "pirecovery_morris_exception_equal_division",
+      "pirecovery_klug_arose_not_accrued",
+      "pirecovery_jackson_uninsured_motorist",
+      "pirecovery_fisk_workers_comp_boundary",
+      "pirecovery_782_tortfeasor_spouse_liability",
+      "pirecovery_783_concurring_negligence",
+      "pirecovery_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "party1Name",
+        "label": "First party's full legal name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "party2Name",
+        "label": "Second party's full legal name",
+        "placeholder": "Morgan Casey Lee",
+        "required": true
+      },
+      {
+        "id": "countyOfFiling",
+        "label": "County of filing",
+        "placeholder": "Sacramento County",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
