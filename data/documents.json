@@ -37244,5 +37244,53 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "unqualified_securities_sale_info_sheet",
+    "title": "Selling Stock, LLC Interests, or Investor Notes Without Qualifying — Corporations Code § 25110 and the Buyer's Rescission Remedy — Information Sheet",
+    "description": "Explains California's requirement that an issuer qualify a security before offering or selling it in this state (Corp. Code § 25110), what the statute counts as a “security” (§ 25019, including the limited liability company active-management exception), the risk capital and Howey tests California courts use for an investment contract (Silver Hills Country Club v. Sobieski; Consolidated Management Group; People v. Figueroa), when partnership, joint venture, and membership interests are treated as securities, when an offer or sale is made “in this state” (§ 25008), who bears the burden of proving an exemption (§ 25163), and the consequences of an unqualified sale — the buyer's rescission-or-damages remedy (§ 25503), joint and several liability of controlling persons and those who materially aid (§§ 25504, 25504.1), the two-year/one-year limitations period and the Commissioner-approved rescission offer (§ 25507), and criminal penalties for a willful violation (§ 25540).",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "unqualsec_declaration",
+      "unqualsec_qualification_requirement",
+      "unqualsec_what_counts_as_a_security",
+      "unqualsec_risk_capital_and_howey_tests",
+      "unqualsec_partnership_and_llc_interests",
+      "unqualsec_offer_or_sale_in_this_state",
+      "unqualsec_exemption_burden_of_proof",
+      "unqualsec_buyer_rescission_remedy",
+      "unqualsec_who_else_is_liable",
+      "unqualsec_limitations_and_rescission_offer",
+      "unqualsec_criminal_exposure",
+      "unqualsec_ack"
+    ],
+    "fields": [
+      {
+        "id": "preparerName",
+        "label": "Preparer's Name",
+        "placeholder": "e.g., Jane Doe",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Company Name",
+        "placeholder": "e.g., Acme, Inc.",
+        "required": false
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date Signed",
+        "placeholder": "e.g., January 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, State",
+        "placeholder": "e.g., Los Angeles, California",
+        "required": true
+      }
+    ]
   }
 ]
