@@ -37729,5 +37729,55 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "contested_director_election_709_info_sheet",
+    "title": "Contested Director Elections — Court Determination of the Validity of an Election or Appointment (Corp. Code §§ 709, 305(c), 600(c), 601, 5617, 7616; Code Civ. Proc. §§ 389, 803; Lawrence v. I. N. Parlier Estate Co.; Columbia Engineering Co. v. Joiner; Shahin v. Wawro; Spencer v. Older; Haah v. Kim; Morrical v. Rogers) — Information Sheet",
+    "description": "Explains the California action to determine who holds a disputed board seat: who may file under Corporations Code § 709 and against which corporations, the five-day hearing and service rules of § 709(b) and what Morrical v. Rogers said about their speed and due process, the relief § 709(c) authorizes, the equitable and quo-warranto-replacing character of the proceeding (Lawrence v. I. N. Parlier Estate Co.; Shahin v. Wawro; Code Civ. Proc. § 803), the grounds that may be raised and the matters that may not (Morrical; Columbia Engineering Co. v. Joiner), standing for subscribers who hold no shares of record (Haah v. Kim; § 185), defective notice of an adjourned meeting as a ground of invalidity (Spencer v. Older; § 601), compulsory joinder of absent shareholders (Code Civ. Proc. § 389), the nonprofit counterparts at §§ 5617 and 7616 (Stevens v. Perkins), court-ordered meetings under §§ 600(c) and 305(c), and the anti-SLAPP treatment of a § 709 claim (Clapkin v. Levin).",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "elect709_declaration",
+      "elect709_who_may_sue",
+      "elect709_expedited_hearing",
+      "elect709_relief_available",
+      "elect709_equitable_and_summary",
+      "elect709_grounds_not_limited",
+      "elect709_limits_on_scope",
+      "elect709_standing_beneficial_holders",
+      "elect709_meeting_notice_defects",
+      "elect709_joinder_of_absent_parties",
+      "elect709_nonprofit_counterparts",
+      "elect709_court_ordered_meetings",
+      "elect709_anti_slapp_interaction",
+      "elect709_ack"
+    ],
+    "fields": [
+      {
+        "id": "preparerName",
+        "label": "Preparer's Name",
+        "placeholder": "e.g., Jane Doe",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Corporation Name",
+        "placeholder": "e.g., Acme, Inc.",
+        "required": false
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date Signed",
+        "placeholder": "e.g., January 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, State",
+        "placeholder": "e.g., Los Angeles, California",
+        "required": true
+      }
+    ]
   }
 ]
