@@ -37495,5 +37495,69 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "support_of_parents_info_sheet",
+    "title": "Support of Parents by an Adult Child (Family Code Sections 4400-4414) — Information Sheet",
+    "description": "Information about California's filial responsibility statutes: the Family Code duty of an adult child to support a parent in need, who may sue and the county's reimbursement right, the factors that set the amount, the misdemeanor counterpart in Penal Code section 270c, the Welfare and Institutions Code provision that displaces the duty for certain public-aid recipients, and the petition by which an adult child may seek relief from the duty on the ground that the parent abandoned the child — with the California opinions that construe them, from Duffy v. Yordi (1906) through Marriage of Cady & Gamick (2024).",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "parentsupp_declaration",
+      "parentsupp_statutory_duty",
+      "parentsupp_no_common_law_duty",
+      "parentsupp_public_charge_purpose",
+      "parentsupp_who_may_sue",
+      "parentsupp_amount_and_jurisdiction",
+      "parentsupp_criminal_counterpart",
+      "parentsupp_public_benefits_carveout",
+      "parentsupp_cady_construction",
+      "parentsupp_abandonment_relief",
+      "parentsupp_abandonment_procedure",
+      "parentsupp_community_obligation",
+      "parentsupp_constitutional_challenge",
+      "parentsupp_wrongful_death_distinction",
+      "parentsupp_information_to_gather",
+      "parentsupp_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "adultChildName",
+        "label": "Adult child's full legal name",
+        "placeholder": "Rowan Avery Ellison",
+        "required": true
+      },
+      {
+        "id": "parentName",
+        "label": "Parent's full legal name",
+        "placeholder": "Marguerite Ellison",
+        "required": true
+      },
+      {
+        "id": "parentCounty",
+        "label": "County in which the parent resides (blank if the parent does not reside in California)",
+        "placeholder": "Fresno County",
+        "required": false
+      },
+      {
+        "id": "countyOfFiling",
+        "label": "County of the superior court in which the proceeding is pending or would be filed",
+        "placeholder": "Fresno County",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 13, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state where signed",
+        "placeholder": "Fresno, California",
+        "required": true
+      }
+    ]
   }
 ]
