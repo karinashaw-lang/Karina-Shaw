@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { cookies } from "next/headers";
 
@@ -15,6 +16,35 @@ import AskTheShow from "@/components/ask-the-show";
 import PaidQuestionForm from "@/components/paid-question-form";
 import PodcastFeedLink from "@/components/podcast-feed-link";
 import { getAppUrl } from "@/lib/app-url";
+import JsonLd from "@/components/json-ld";
+
+export async function generateMetadata(props: PageProps<"/creators/[handle]">): Promise<Metadata> {
+  const { handle } = await props.params;
+  const creator = await prisma.creatorProfile.findUnique({ where: { handle } });
+  if (!creator) return {};
+
+  const appUrl = await getAppUrl();
+  const url = `${appUrl}/creators/${creator.handle}`;
+  const description = creator.bio || `${creator.displayName} on Creator Platform.`;
+
+  return {
+    title: creator.displayName,
+    description,
+    alternates: { canonical: url },
+    openGraph: {
+      title: creator.displayName,
+      description,
+      url,
+      siteName: "Creator Platform",
+      type: "profile",
+    },
+    twitter: {
+      card: "summary",
+      title: creator.displayName,
+      description,
+    },
+  };
+}
 
 export default async function CreatorPage(props: PageProps<"/creators/[handle]">) {
   const { handle } = await props.params;
@@ -78,6 +108,15 @@ export default async function CreatorPage(props: PageProps<"/creators/[handle]">
 
   return (
     <div className="mx-auto max-w-3xl px-6 py-10">
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "Person",
+          name: creator.displayName,
+          url: `${appUrl}/creators/${creator.handle}`,
+          ...(creator.bio ? { description: creator.bio } : {}),
+        }}
+      />
       {searchParams.tipped && (
         <p className="mb-4 rounded bg-green-50 px-3 py-2 text-sm text-green-800 dark:bg-green-950 dark:text-green-400">
           Thanks for the tip! It may take a few seconds to appear below.

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { after } from "next/server";
 
@@ -32,6 +33,35 @@ import VideoExtraEditor from "@/components/video-extra-editor";
 import VideoExtrasList from "@/components/video-extras-list";
 import { signFileUrl } from "@/lib/file-signing";
 import { hoursAgo, nowMs } from "@/lib/time";
+import JsonLd from "@/components/json-ld";
+
+export async function generateMetadata(props: PageProps<"/videos/[id]">): Promise<Metadata> {
+  const { id } = await props.params;
+  const video = await prisma.video.findUnique({ where: { id }, include: { creator: true } });
+  if (!video) return {};
+
+  const appUrl = await getAppUrl();
+  const url = `${appUrl}/videos/${video.id}`;
+  const description = video.description || `${video.title} — a video by ${video.creator.displayName}.`;
+
+  return {
+    title: `${video.title} — ${video.creator.displayName}`,
+    description,
+    alternates: { canonical: url },
+    openGraph: {
+      title: video.title,
+      description,
+      url,
+      siteName: "Creator Platform",
+      type: "video.other",
+    },
+    twitter: {
+      card: "summary",
+      title: video.title,
+      description,
+    },
+  };
+}
 
 export default async function VideoPage(props: PageProps<"/videos/[id]">) {
   const { id } = await props.params;
@@ -133,8 +163,25 @@ export default async function VideoPage(props: PageProps<"/videos/[id]">) {
       });
   const appUrl = await getAppUrl();
 
+  // Structured data is public and crawlable regardless of who's viewing,
+  // so contentUrl only appears when the video is unlocked for *everyone*
+  // — never gated on this particular viewer's access, since that would
+  // hand a crawler a direct link to a subscriber-only file.
+  const publiclyUnlocked =
+    !video.subscriberOnly && !(video.earlyAccessUntil && video.earlyAccessUntil > new Date());
+
   return (
     <div className="mx-auto max-w-3xl px-6 py-10">
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "VideoObject",
+          name: video.title,
+          description: video.description || `${video.title} — a video by ${video.creator.displayName}.`,
+          uploadDate: video.createdAt.toISOString(),
+          ...(publiclyUnlocked && video.videoUrl ? { contentUrl: video.videoUrl } : {}),
+        }}
+      />
       {isLocked ? (
         <div className="flex aspect-video items-center justify-center rounded-lg bg-black text-center text-white">
           <div>

@@ -501,6 +501,49 @@ four are built and verified below.
     working 24-hour Behind the Cut download link; confirmed an unauthenticated request is rejected
     with 401 rather than leaking anyone's data.
 
+## Growth-loop plumbing: sitemaps, share previews, oEmbed (September 2026)
+
+The first slice of Phase 5 ("moat builds") — the two items that needed no new credentials or
+infrastructure decision, just code. Neither existed before this pass: no page had `generateMetadata`
+except `/ask/[id]`, and there was no `sitemap.ts`/`robots.ts` at all.
+
+- **Sitemap + robots.** `src/app/sitemap.ts` lists every public, indexable page — creator profiles,
+  published Curated Moments, public ask pages, and videos, filtered to exclude anything currently
+  gated (`subscriberOnly`, or inside its early-access window) since a locked page is thin/paywalled
+  content not worth indexing until it opens up. `src/app/robots.ts` allows everything and points at
+  it. Both fall back to `http://localhost:3000` if `APP_URL` isn't set, since sitemap/robots routes
+  have no incoming request to derive an origin from the way other pages do (see `getAppUrl`) — set
+  `APP_URL` in production for this to emit real URLs.
+- **Open Graph + Twitter Card metadata + JSON-LD** on moment, video, creator, and ask pages
+  (`src/components/json-ld.tsx` is just a `<script type="application/ld+json">` wrapper — not worth
+  a library). VideoObject on moment/video pages, Person on creator pages, QAPage on ask pages
+  (only when there's a real synthesized answer — never fabricated for a page that only shows matched
+  excerpts). **Security-relevant guard:** a video's `contentUrl` only appears in its JSON-LD when the
+  video is unlocked for *everyone* (not subscriber-only, not inside an early-access window) —
+  structured data is public and crawlable regardless of who's viewing the page, so gating it on the
+  current viewer's access the way the rendered page does would still hand a crawler a direct link to
+  a subscriber-only file. Verified directly: a locked video's JSON-LD omits `contentUrl` entirely,
+  while an unlocked one includes it.
+- **A real share-preview image.** `src/app/api/og/moment/[id]/route.tsx` renders a 1200×630 PNG per
+  published moment (creator name, duration, title) via `next/og`'s `ImageResponse` — the same
+  Satori+resvg approach Wall Cards and Recap Reels already use, so no new dependency. Used as the
+  `og:image`/`twitter:image` on moment pages. Video and creator pages intentionally ship without a
+  custom image this round (text-only Open Graph/Twitter cards) — same rendering approach would work
+  for them too, just scoped out to keep this pass small; moments are the actual shareable unit the
+  plan cares about.
+- **oEmbed** (`src/app/api/oembed/route.ts`) for moments only, since that's the only content type
+  with a dedicated embed target (`/embed/moments/[id]`). Implements the required `json` format per
+  the oEmbed spec; `xml` isn't implemented (optional per spec, nothing in this app's audience needs
+  it) and returns 501. A moment page links to it via `<link rel="alternate" type="application/json+oembed">`
+  so oEmbed-aware consumers (Discord, Notion, WordPress) discover it automatically from the page URL.
+  - **Verification:** a real HTTP round-trip against the dev server for a real published moment
+    confirmed the OG/Twitter meta tags, canonical link, and oEmbed `<link>` all render with correct
+    content; the JSON-LD block parses and matches the moment; the OG image endpoint returns a real
+    1200×630 PNG; the oEmbed endpoint returns spec-shaped JSON with a working iframe `html` field; a
+    malformed oEmbed `url`, an unsupported `format=xml`, and a nonexistent moment ID all return the
+    correct error status instead of a crash; the sitemap excludes a known subscriber-only video and
+    includes public pages with correct `lastmod` timestamps.
+
 ## Cheap-to-build differentiators (no new credentials needed)
 
 A few features from the latest plan revision are built entirely on infrastructure already
@@ -709,3 +752,10 @@ infrastructure, build differentiation" philosophy:
 - **Database backup & restore** — `scripts/backup-db.sh`, `scripts/restore-db.sh`
 - **Creator data export** — `src/app/api/creator/export/route.ts`, linked from
   `src/app/(main)/creator/dashboard`
+- **Sitemap + robots** — `src/app/sitemap.ts`, `src/app/robots.ts`
+- **Open Graph, Twitter Cards, JSON-LD** — `generateMetadata` + `JsonLd` in
+  `src/app/(main)/moments/[id]/page.tsx`, `src/app/(main)/videos/[id]/page.tsx`,
+  `src/app/(main)/creators/[handle]/page.tsx`, `src/app/(main)/ask/[id]/page.tsx`;
+  shared `src/components/json-ld.tsx`
+- **Moment share-preview image + oEmbed** — `src/app/api/og/moment/[id]/route.tsx`,
+  `src/app/api/oembed/route.ts`

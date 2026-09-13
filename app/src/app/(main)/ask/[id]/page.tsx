@@ -4,6 +4,8 @@ import { notFound } from "next/navigation";
 
 import prisma from "@/lib/prisma";
 import type { AskSource } from "@/lib/actions/ask";
+import { getAppUrl } from "@/lib/app-url";
+import JsonLd from "@/components/json-ld";
 
 function formatTime(totalSeconds: number) {
   const minutes = Math.floor(totalSeconds / 60);
@@ -22,9 +24,27 @@ export async function generateMetadata(props: PageProps<"/ask/[id]">): Promise<M
   const { id } = await props.params;
   const asked = await getAskedQuestion(id);
   if (!asked) return {};
+
+  const appUrl = await getAppUrl();
+  const url = `${appUrl}/ask/${asked.id}`;
+  const description = asked.answer ?? asked.question;
+
   return {
     title: `${asked.question} — ${asked.creator.displayName}`,
-    description: asked.answer ?? asked.question,
+    description,
+    alternates: { canonical: url },
+    openGraph: {
+      title: asked.question,
+      description,
+      url,
+      siteName: "Creator Platform",
+      type: "article",
+    },
+    twitter: {
+      card: "summary",
+      title: asked.question,
+      description,
+    },
   };
 }
 
@@ -37,6 +57,23 @@ export default async function AskedQuestionPage(props: PageProps<"/ask/[id]">) {
 
   return (
     <div className="mx-auto max-w-2xl px-6 py-10">
+      {asked.answer && (
+        <JsonLd
+          data={{
+            "@context": "https://schema.org",
+            "@type": "QAPage",
+            mainEntity: {
+              "@type": "Question",
+              name: asked.question,
+              answerCount: 1,
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: asked.answer,
+              },
+            },
+          }}
+        />
+      )}
       <p className="text-sm text-zinc-500">
         Asked of{" "}
         <Link href={`/creators/${asked.creator.handle}`} className="underline">

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { cookies } from "next/headers";
 
@@ -15,6 +16,45 @@ import CopyMomentLinks from "@/components/copy-moment-links";
 import DistributorShareCard from "@/components/distributor-share-card";
 import SaveButton from "@/components/save-button";
 import DistributorAttributionCookie from "@/components/distributor-attribution-cookie";
+import JsonLd from "@/components/json-ld";
+
+export async function generateMetadata(props: PageProps<"/moments/[id]">): Promise<Metadata> {
+  const { id } = await props.params;
+  const moment = await getPublicMoment(id);
+  if (!moment) return {};
+
+  const { video } = moment;
+  const creator = video.creator;
+  const appUrl = await getAppUrl();
+  const url = `${appUrl}/moments/${moment.id}`;
+  const imageUrl = `${appUrl}/api/og/moment/${moment.id}`;
+  const description = `A moment from ${video.title} by ${creator.displayName} on Creator Platform.`;
+
+  return {
+    title: `${moment.title} — ${creator.displayName}`,
+    description,
+    alternates: {
+      canonical: url,
+      types: {
+        "application/json+oembed": `${appUrl}/api/oembed?url=${encodeURIComponent(url)}&format=json`,
+      },
+    },
+    openGraph: {
+      title: moment.title,
+      description,
+      url,
+      siteName: "Creator Platform",
+      type: "video.other",
+      images: [{ url: imageUrl, width: 1200, height: 630, alt: moment.title }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: moment.title,
+      description,
+      images: [imageUrl],
+    },
+  };
+}
 
 export default async function MomentPage(props: PageProps<"/moments/[id]">) {
   const { id } = await props.params;
@@ -50,6 +90,19 @@ export default async function MomentPage(props: PageProps<"/moments/[id]">) {
 
   return (
     <div className="mx-auto max-w-2xl px-6 py-10">
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "VideoObject",
+          name: moment.title,
+          description: `A moment from ${video.title} by ${creator.displayName} on Creator Platform.`,
+          thumbnailUrl: [`${appUrl}/api/og/moment/${moment.id}`],
+          uploadDate: moment.createdAt.toISOString(),
+          duration: `PT${Math.max(0, moment.endSeconds - moment.startSeconds)}S`,
+          embedUrl: `${appUrl}/embed/moments/${moment.id}`,
+          ...(video.videoUrl ? { contentUrl: video.videoUrl } : {}),
+        }}
+      />
       {clickedDistributorLinkId && (
         <DistributorAttributionCookie creatorId={creator.id} linkId={clickedDistributorLinkId} />
       )}
