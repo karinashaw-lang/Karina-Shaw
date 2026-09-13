@@ -36764,5 +36764,80 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "consideration_for_shares_and_capital_contributions_info_sheet",
+    "title": "What Counts as Payment for an Ownership Stake — Consideration for Corporate Shares and Contributions to an LLC, Limited Partnership, or General Partnership (Corp. Code §§ 152, 408–412, 15905.01–15905.02, 16401, 17704.01–17704.03, 25110; Lab. Code §§ 406–407) — Information Sheet",
+    "description": "Explains, in the statutes’ own words, what California law permits a business entity to accept in exchange for an ownership interest: the five categories of consideration for corporate shares listed in Corporations Code section 409(a)(1) — money paid, labor done, services actually rendered, debts or securities canceled, and tangible or intangible property actually received — and that subdivision’s statement that neither promissory notes of the purchaser (unless adequately secured by collateral other than the shares acquired or unless permitted by section 408) nor future services constitute payment for shares; the employee and director stock purchase and option plan provisions of section 408, which permit a corporation to aid those persons in paying by compensation for services rendered, promissory notes or otherwise; Labor Code sections 406 and 407 on property put up by an employee or applicant and on the sale of stock or an interest in a business in connection with securing a position, together with the carve-outs in Corporations Code sections 408(c) and 17704.01(e); the board’s duty under section 409(e) to state by resolution the fair value in monetary terms of non-money consideration and the rule in section 409(b) that shares so issued are fully paid and that, absent fraud, the directors’ judgment of value is conclusive; the timing rule of section 410(b) and the partly paid share mechanism of section 409(d); liability for unpaid consideration under sections 410(a), 411, and 412; the shareholder vote route of section 409(c) with the definition in section 152; the contrasting LLC and limited partnership provisions permitting promissory notes, services performed, and contracts for services to be performed as contributions (sections 17704.02 and 15905.01), the rule that an LLC member need not contribute at all (section 17704.01(d)), and the enforcement provisions of sections 17704.03 and 15905.02 including the limited partnership act’s express menu of default remedies; the general partnership default rules of section 16401 on capital accounts, equal profit shares, and no remuneration for services; and the separate qualification requirement of section 25110. A companion to this corpus’s Articles of Incorporation, Founders’ Agreement, stock certificates, compensatory equity plan exemption, California limited offering exemption, LLC operating agreement, limited partnership formation, and general partnership documents.",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "payforshares_declaration",
+      "payforshares_corporate_permitted_consideration",
+      "payforshares_notes_and_future_services_excluded",
+      "payforshares_section_408_plans",
+      "payforshares_labor_code_bond_and_carveouts",
+      "payforshares_board_valuation_and_fully_paid",
+      "payforshares_timing_and_partly_paid_shares",
+      "payforshares_who_owes_unpaid_consideration",
+      "payforshares_shareholder_determination_of_consideration",
+      "payforshares_llc_contributions_are_broader",
+      "payforshares_llc_contribution_obligations_enforced",
+      "payforshares_limited_partnership_contributions",
+      "payforshares_general_partnership_default_rules",
+      "payforshares_securities_qualification_is_separate",
+      "payforshares_ack"
+    ],
+    "fields": [
+      {
+        "id": "entityName",
+        "label": "Name of the corporation, LLC, or partnership issuing the interest",
+        "placeholder": "e.g., Harbor Lane Coffee, Inc.",
+        "required": true
+      },
+      {
+        "id": "entityType",
+        "label": "Type of entity",
+        "placeholder": "e.g., California corporation; California LLC; California limited partnership",
+        "required": true
+      },
+      {
+        "id": "recipientName",
+        "label": "Name of the person receiving the shares or other ownership interest",
+        "placeholder": "e.g., Dana Ruiz",
+        "required": true
+      },
+      {
+        "id": "considerationDescription",
+        "label": "What is being given for the interest, as the parties describe it",
+        "placeholder": "e.g., $10,000 in cash; a promissory note; design work already performed",
+        "required": true
+      },
+      {
+        "id": "transactionDate",
+        "label": "Date of the issuance or contribution (planned or actual)",
+        "placeholder": "e.g., March 4, 2026",
+        "required": false
+      },
+      {
+        "id": "preparerName",
+        "label": "Name of the person preparing this information sheet",
+        "placeholder": "e.g., Dana Ruiz",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date this information sheet is completed",
+        "placeholder": "e.g., March 4, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state where this information sheet is completed",
+        "placeholder": "e.g., Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
