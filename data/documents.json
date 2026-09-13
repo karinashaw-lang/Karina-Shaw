@@ -36076,5 +36076,59 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "labor_services_contract_sufficient_funds_info_sheet",
+    "title": "Labor or Services Contracts Without Funds Sufficient for Legal Compliance (Labor Code § 2810) — Information Sheet",
+    "description": "California Labor Code section 2810's prohibition on entering a contract for labor or services with a construction, farm labor, garment, janitorial, security guard, port drayage motor carrier, or warehouse contractor when the hiring party knows or should know the contract does not include funds sufficient for the contractor to comply with applicable laws, including the covered-contractor definitions, the three exceptions, the rebuttable presumption for a complete single-document written contract, the four-year retention duty, the employee damages and injunctive remedies, the statutory knowledge definitions, and Castillo v. Toll Bros., Inc.'s two-part liability showing and minimum-wage measure of sufficiency.",
+    "categories": [
+      "Hiring"
+    ],
+    "clauseOrder": [
+      "lc2810_intro",
+      "lc2810_core_prohibition",
+      "lc2810_covered_contractors",
+      "lc2810_exceptions",
+      "lc2810_written_contract_presumption",
+      "lc2810_material_changes_and_estimates",
+      "lc2810_recordkeeping_and_labor_commissioner",
+      "lc2810_employee_remedies",
+      "lc2810_knowledge_standard",
+      "lc2810_castillo_two_part_test",
+      "lc2810_measure_of_sufficiency",
+      "lc2810_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme Builders, Inc.",
+        "required": true
+      },
+      {
+        "id": "contractDescription",
+        "label": "Labor or services contracts at issue",
+        "placeholder": "Framing and drywall subcontracts on two residential projects",
+        "required": true
+      },
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 13, 2026",
+        "required": true
+      }
+    ]
   }
 ]
