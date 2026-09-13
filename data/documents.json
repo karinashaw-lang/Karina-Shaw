@@ -37022,5 +37022,65 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "will_witnesses_attestation_info_sheet",
+    "title": "Witnesses to a Will — Attestation, Interested Witnesses, and the Harmless-Error Rule (Prob. Code §§ 6104, 6110-6113, 8220-8221, 8252-8253; Evid. Code §§ 605-606; Estate of Saueressig; Estate of Stoker; Estate of Ben-Ali) — Information Sheet",
+    "description": "Explains, using the text of Probate Code sections 6104, 6110, 6111, 6112 and 6113, Probate Code sections 8220, 8221, 8252 and 8253, Evidence Code sections 605 and 606, and the published California decisions in Estate of Saueressig (2006), Estate of Stoker (2011) and Estate of Ben-Ali (2013), what California law provides about the witnesses to a will: the writing and signature requirements of section 6110(a)-(b) and the three ways a will may be signed; the requirement in section 6110(c)(1) that at least two persons sign during the testator's lifetime, each present at the same time at the signing or acknowledgment and each understanding the instrument to be the testator's will; the formalities the 1983 revision removed, as the Supreme Court recounted them; section 6112(a)'s rule that any person generally competent to be a witness may witness a will; the Supreme Court's holding that a witness signature affixed after the testator's death does not satisfy the statute, and the words 'during the testator's lifetime' now in the section; the harmless-error alternative in section 6110(c)(2) and the clear and convincing standard it sets, as applied in Estate of Ben-Ali; Estate of Stoker's holdings that the paragraph is not limited to typewritten wills and governs the standard used at trials on validity; section 6112(b)'s rule that a will is not invalid because an interested witness signed it; the presumption of procurement by duress, menace, fraud or undue influence that section 6112(c) attaches to a devise to a subscribing witness, the two-other-disinterested-witnesses condition, the fiduciary-capacity exception, and what Evidence Code sections 605 and 606 say about a presumption affecting the burden of proof; the ceiling section 6112(d) places on what an interested witness takes when the presumption is not rebutted; section 6104's rule that an execution procured by duress, menace, fraud or undue influence is ineffective to that extent; section 6111(a)'s holographic will, valid whether or not witnessed; the three alternative ways section 6113 says a written will may be validly executed; proof of an uncontested will by one subscribing witness or by affidavit under section 8220; proof when no subscribing witness is available under section 8221; the burdens of proof and the production of subscribing witnesses at the trial of a contest under sections 8252(a) and 8253; and what Estate of Ben-Ali says the presumption of due execution rests on.",
+    "categories": [
+      "Estate Planning"
+    ],
+    "clauseOrder": [
+      "wilwit_declaration",
+      "wilwit_two_witness_requirement",
+      "wilwit_formalities_not_required",
+      "wilwit_who_may_witness",
+      "wilwit_signing_during_lifetime",
+      "wilwit_harmless_error",
+      "wilwit_harmless_error_reach",
+      "wilwit_interested_witness_validity",
+      "wilwit_interested_witness_presumption",
+      "wilwit_interested_witness_share_cap",
+      "wilwit_procured_execution",
+      "wilwit_holographic_no_witnesses",
+      "wilwit_choice_of_law",
+      "wilwit_proof_uncontested",
+      "wilwit_no_subscribing_witness_available",
+      "wilwit_contest_burden_and_witnesses",
+      "wilwit_presumption_of_due_execution",
+      "wilwit_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "testatorName",
+        "label": "Name of the person whose will is described",
+        "placeholder": "Harold P. Nakamura",
+        "required": true
+      },
+      {
+        "id": "countyName",
+        "label": "County whose superior court would hear a probate proceeding",
+        "placeholder": "Alameda",
+        "required": true
+      },
+      {
+        "id": "preparerName",
+        "label": "Name of the person preparing this sheet",
+        "placeholder": "Alicia Romero",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 13, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state where signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
