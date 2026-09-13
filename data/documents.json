@@ -35687,5 +35687,78 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "separate_writing_tangible_personal_property_info_sheet",
+    "title": "Separate Writing Disposing of Tangible Personal Property (Prob. Code §§ 6130-6132; Simon v. Grayson; Estate of Smith) — Information Sheet",
+    "description": "Explains, using the statutes' own text and the published California Supreme Court decisions in Simon v. Grayson (1940) and Estate of Smith (1948), what California law provides about a separate writing — the list or memorandum a will refers to but that is not itself executed as a will — that disposes of a testator's tangible personal property: the permission in Probate Code § 6132(a) for a will to refer to such a writing, the carve-outs for common coin or currency and for property used primarily in a trade or business, and the three conditions the writing must satisfy (an unrevoked will refers to it; it is dated and either handwritten or signed by the testator; and it describes the items and recipients with reasonable certainty); the § 6132(h) definitions of \"tangible personal property\" and \"common coin or currency\" and what they exclude, including real property, a mobilehome, bank accounts, documents of title, and securities; the § 6132(g) dollar limits of $25,000 in total and $5,000 for any one item, and the rule that an item above the per-item limit passes under the will's remainder clause and is not counted toward the total; § 6132(c)'s rules that the writing may be made before or after the will, need not have significance apart from its effect on the will's dispositions, and is given effect as if contained in the will itself; § 6132(d)'s rule that later handwritten or signed changes are permitted and that the most recent writing controls an inconsistency; § 6132(e)'s treatment of an undated writing, both where the omission creates doubt about which of two writings controls and where testamentary capacity is in question, and the parallel rule § 6111(b) applies to an undated holographic will; § 6132(b)'s rule that a failure to meet the handwriting-or-signature condition does not preclude evidence of the testator's intent, and § 6111.5's admission of extrinsic evidence as to wills; § 6132(c)'s provision that a gift to a person who dies before the testator passes as the writing further directs and otherwise lapses, set beside the text of the anti-lapse statute, § 21110; the personal representative's duty under § 6132(f) to file the writing with the inventory and appraisal or, failing that, no later than 60 days before the petition for final distribution; and how § 6132 sits alongside the two older doctrines in the same chapter — incorporation by reference under § 6130, which Simon v. Grayson describes as requiring a document already in existence, identified with reasonable certainty, and which cannot reach a future document, and dispositions by reference to acts and events of independent significance under § 6131 — and alongside the execution formalities §§ 6110 and 6111 require of a will itself, which Estate of Smith confirms a testamentary instrument may refer to an informal or unattested document. It states what the statutes and the opinions say; it does not evaluate any particular writing, value any property, or advise on any course of action.",
+    "categories": [
+      "Estate Planning"
+    ],
+    "clauseOrder": [
+      "sepwrit_declaration",
+      "sepwrit_what_the_statute_allows",
+      "sepwrit_what_is_tangible_personal_property",
+      "sepwrit_value_limits",
+      "sepwrit_form_and_timing",
+      "sepwrit_undated_writings",
+      "sepwrit_handwriting_or_signature_defect",
+      "sepwrit_recipient_predeceases",
+      "sepwrit_filing_in_probate",
+      "sepwrit_incorporation_by_reference",
+      "sepwrit_acts_of_independent_significance",
+      "sepwrit_relationship_to_will_formalities",
+      "sepwrit_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "testatorName",
+        "label": "Name of the testator",
+        "placeholder": "Katherine A. Seeligsohn",
+        "required": true
+      },
+      {
+        "id": "willDate",
+        "label": "Date of the will that refers to the writing",
+        "placeholder": "March 25, 2019",
+        "required": true
+      },
+      {
+        "id": "writingDate",
+        "label": "Date of the separate writing",
+        "placeholder": "July 3, 2023",
+        "required": true
+      },
+      {
+        "id": "personalRepresentativeName",
+        "label": "Name of the executor or administrator of the estate",
+        "placeholder": "Martin E. Green",
+        "required": true
+      },
+      {
+        "id": "countyName",
+        "label": "County whose superior court would administer the estate",
+        "placeholder": "Alameda",
+        "required": true
+      },
+      {
+        "id": "preparerName",
+        "label": "Name of the person preparing this sheet",
+        "placeholder": "Joanne M. Reyes",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 13, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state where signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
