@@ -34,6 +34,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       where: {
         status: "READY",
         subscriberOnly: false,
+        removedAt: null,
         OR: [{ earlyAccessUntil: null }, { earlyAccessUntil: { lte: now } }],
       },
       select: { id: true, createdAt: true },

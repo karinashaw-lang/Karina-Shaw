@@ -71,6 +71,8 @@ model CreatorProfile {
   liveStream             LiveStream?
   askedQuestions         AskedQuestion[]
   paidQuestions          PaidQuestion[]
+  takedownRequests       TakedownRequest[]
+  emailSubscribers       EmailSubscriber[]
 }
 
 enum VideoStatus {
@@ -110,6 +112,11 @@ model Video {
   effortHours           Float?
   effortReshoots        Int?
   effortMinutesCut      Int?
+  /// Set when a rights/DMCA takedown request against this video is
+  /// actioned (see TakedownRequest) — the video page shows a removal
+  /// notice instead of content, and it drops out of the sitemap. Kept as
+  /// a row, not deleted, for the same reason DISMISSED moments are kept.
+  removedAt             DateTime?
   createdAt             DateTime            @default(now())
   /// Cached result of the last AI highlight-detection pass (see
   /// src/lib/highlights.ts) — GPT runs on page view otherwise, and this is
@@ -719,5 +726,57 @@ model PaidQuestion {
   stripeCheckoutSessionId String?            @unique
   createdAt               DateTime           @default(now())
 
+  @@index([creatorId])
+}
+
+enum TakedownTargetType {
+  VIDEO
+  MOMENT
+}
+
+enum TakedownStatus {
+  PENDING
+  REMOVED
+  DISMISSED
+}
+
+/// A rights/copyright complaint against a specific video or Curated
+/// Moment. Routed straight to the content's own creator to act on —
+/// this app has no platform admin/moderation role yet, so there's no
+/// separate trust-and-safety queue to route it to instead. Disclosed as a
+/// known gap in the README: this is the in-app "someone flagged this, the
+/// owner can act on it" mechanism, not a substitute for a real DMCA
+/// designated-agent registration or a counter-notice process.
+model TakedownRequest {
+  id              String             @id @default(cuid())
+  targetType      TakedownTargetType
+  targetId        String
+  creatorId       String
+  creator         CreatorProfile     @relation(fields: [creatorId], references: [id])
+  reporterName    String
+  reporterEmail   String
+  workDescription String
+  infringingUrl   String
+  status          TakedownStatus     @default(PENDING)
+  resolutionNote  String?
+  createdAt       DateTime           @default(now())
+  resolvedAt      DateTime?
+
+  @@index([creatorId, status])
+}
+
+/// A viewer's email captured directly on a creator's public page — the
+/// plan's "creator-owned audience," independent of a platform account so
+/// a creator keeps this list even if the viewer never signs up. Simple
+/// opt-in (one form submit); no confirmation/double-opt-in flow, since
+/// there's no email-sending integration in this app to confirm through.
+model EmailSubscriber {
+  id        String         @id @default(cuid())
+  creatorId String
+  creator   CreatorProfile @relation(fields: [creatorId], references: [id])
+  email     String
+  createdAt DateTime       @default(now())
+
+  @@unique([creatorId, email])
   @@index([creatorId])
 }

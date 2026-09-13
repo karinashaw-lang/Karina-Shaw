@@ -544,6 +544,46 @@ except `/ask/[id]`, and there was no `sitemap.ts`/`robots.ts` at all.
     correct error status instead of a crash; the sitemap excludes a known subscriber-only video and
     includes public pages with correct `lastmod` timestamps.
 
+## Rights reporting and creator-owned audience (September 2026)
+
+The rest of what was buildable without new credentials — a rights/takedown flow (pulled forward
+from Phase 6's "before public launch" list) and the first of Phase 5's audience-ownership items.
+
+- **Rights/DMCA reporting.** `/report` is a public form (no account needed, matching how a real
+  DMCA notice works) where anyone can flag a video or moment by pasting its link, plus the standard
+  good-faith and accuracy statements. It's stored as a `TakedownRequest` and routed straight to the
+  content's own creator — **not a platform moderation queue**, because this app has no admin/role
+  system at all yet. That's a disclosed gap, not an oversight: at this scale, routing to the content
+  owner is the only mechanism buildable without inventing a whole admin layer first, and it's stated
+  plainly on the report page that this doesn't replace filing a real notice with a hosting provider
+  if the creator doesn't resolve it. A creator sees open reports in a new "Content reports" section
+  on their dashboard and can **take down** (sets `Video.removedAt`, or flips a moment back to
+  `DISMISSED` — reusing the same field a creator's own retract button already uses) or **dismiss**
+  each one. A removed video shows a plain notice instead of its content to everyone, including the
+  owner, and drops out of the sitemap.
+  - **Security-relevant fix caught while building this:** the removed-video branch had to be the
+    very first check on the video page, before any transcript/Behind the Cut/extras logic runs —
+    otherwise a removed video's file URL would still be computable and embeddable elsewhere on the
+    same render.
+  - **Verification:** a full real-browser flow — a creator posts a video, a reporter (logged out)
+    submits a report against it via a prefilled `/report?url=...` link, the creator logs in and sees
+    the report with the reporter's name and description, clicks "Take down," the report disappears
+    from the pending queue, the video's own page now shows only the removal notice (confirmed the
+    original file URL isn't present anywhere in the rendered HTML), and the video no longer appears
+    in `sitemap.xml`.
+- **Creator-owned email capture (Phase 5.4).** A plain opt-in form (`EmailSubscriber`) on every
+  creator's public page — "Get notified about new videos from {name}" — independent of a platform
+  account, so a creator keeps this list even if a viewer never signs up. No confirmation/double
+  opt-in flow, since this app has no email-sending integration to confirm through; re-submitting the
+  same email is a silent no-op rather than an error. The creator dashboard shows a running count and
+  an "Export email list (CSV)" link a creator can import into any real mailing list tool — this app
+  doesn't send email itself, only captures addresses.
+  - **Verification:** a real-browser flow — a logged-out viewer submits an email on a creator's
+    page and sees the confirmation; submitting the same email again is silently accepted, not an
+    error; the creator's dashboard shows the correct count and a working CSV export (verified the
+    exact header row and that the captured email appears in it); confirmed the export endpoint
+    rejects an unauthenticated request with 401 rather than leaking another creator's list.
+
 ## Cheap-to-build differentiators (no new credentials needed)
 
 A few features from the latest plan revision are built entirely on infrastructure already
@@ -759,3 +799,10 @@ infrastructure, build differentiation" philosophy:
   shared `src/components/json-ld.tsx`
 - **Moment share-preview image + oEmbed** — `src/app/api/og/moment/[id]/route.tsx`,
   `src/app/api/oembed/route.ts`
+- **Rights/DMCA reporting** — `src/lib/actions/takedown.ts`, public form at
+  `src/app/(main)/report/page.tsx` + `src/components/report-content-form.tsx`, creator review
+  queue via `src/components/takedown-inbox.tsx` on `src/app/(main)/creator/dashboard/page.tsx`,
+  `Video.removedAt` gating in `src/app/(main)/videos/[id]/page.tsx`
+- **Creator email capture** — `src/lib/actions/email-capture.ts`,
+  `src/components/email-capture-form.tsx` on `src/app/(main)/creators/[handle]/page.tsx`, CSV
+  export at `src/app/api/creator/subscribers/export/route.ts`

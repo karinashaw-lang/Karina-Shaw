@@ -203,6 +203,12 @@ export default async function MomentPage(props: PageProps<"/moments/[id]">) {
           />
         </div>
       )}
+
+      <p className="mt-8 text-xs text-zinc-500">
+        <Link href={`/report?url=${encodeURIComponent(`${appUrl}/moments/${moment.id}`)}`} className="underline">
+          Report this content
+        </Link>
+      </p>
     </div>
   );
 }

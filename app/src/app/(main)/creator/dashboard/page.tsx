@@ -8,6 +8,7 @@ import SubscriptionPriceForm from "@/components/subscription-price-form";
 import StripeConnectButton from "@/components/stripe-connect-button";
 import QuestionPriceForm from "@/components/question-price-form";
 import PaidQuestionsInbox from "@/components/paid-questions-inbox";
+import TakedownInbox from "@/components/takedown-inbox";
 
 export default async function DashboardPage() {
   const user = await getCurrentUser();
@@ -20,6 +21,7 @@ export default async function DashboardPage() {
     videoCount,
     followerCount,
     subscriberCount,
+    emailSubscriberCount,
     tips,
     distributorSplits,
     unlocks,
@@ -30,6 +32,7 @@ export default async function DashboardPage() {
     prisma.video.count({ where: { creatorId } }),
     prisma.follow.count({ where: { creatorId } }),
     prisma.subscription.count({ where: { creatorId } }),
+    prisma.emailSubscriber.count({ where: { creatorId } }),
     prisma.tip.findMany({
       where: { toCreatorId: creatorId },
       orderBy: { createdAt: "desc" },
@@ -57,6 +60,11 @@ export default async function DashboardPage() {
     prisma.video.findMany({ where: { creatorId }, select: { id: true, title: true }, orderBy: { createdAt: "desc" } }),
   ]);
 
+  const takedownRequests = await prisma.takedownRequest.findMany({
+    where: { creatorId, status: "PENDING" },
+    orderBy: { createdAt: "desc" },
+  });
+
   const totalCents = tips.reduce((sum, tip) => sum + tip.amountCents, 0);
   const distributorSplitCents = distributorSplits
     .filter((earning) => !earning.refundedAt)
@@ -81,6 +89,10 @@ export default async function DashboardPage() {
         <div className="rounded-lg border border-black/10 p-4 dark:border-white/10">
           <p className="text-2xl font-semibold">{subscriberCount}</p>
           <p className="text-sm text-zinc-500">Subscribers</p>
+        </div>
+        <div className="rounded-lg border border-black/10 p-4 dark:border-white/10">
+          <p className="text-2xl font-semibold">{emailSubscriberCount}</p>
+          <p className="text-sm text-zinc-500">Email list</p>
         </div>
         <div className="rounded-lg border border-black/10 p-4 dark:border-white/10">
           <p className="text-2xl font-semibold">${(totalCents / 100).toFixed(2)}</p>
@@ -133,6 +145,15 @@ export default async function DashboardPage() {
             </>
           )}
         </div>
+      )}
+
+      {takedownRequests.length > 0 && (
+        <>
+          <h2 className="mt-8 text-lg font-medium">Content reports</h2>
+          <TakedownInbox
+            requests={takedownRequests.map((r) => ({ ...r, createdAt: r.createdAt.toISOString() }))}
+          />
+        </>
       )}
 
       <h2 className="mt-8 text-lg font-medium">Subscription price</h2>
@@ -202,6 +223,11 @@ export default async function DashboardPage() {
         <a href="/api/creator/export" className="underline">
           Export your data
         </a>
+        {emailSubscriberCount > 0 && (
+          <a href="/api/creator/subscribers/export" className="underline">
+            Export email list (CSV)
+          </a>
+        )}
       </p>
       <p className="-mt-2 text-xs text-zinc-500">
         Downloads everything you have here — videos, transcripts, moments, your buyer list, and

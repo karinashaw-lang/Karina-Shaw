@@ -91,6 +91,18 @@ export default async function VideoPage(props: PageProps<"/videos/[id]">) {
 
   if (!video) notFound();
 
+  if (video.removedAt) {
+    return (
+      <div className="mx-auto max-w-3xl px-6 py-10">
+        <h1 className="text-2xl font-semibold tracking-tight">This video was removed</h1>
+        <p className="mt-2 text-sm text-zinc-500">
+          It was taken down following a content report. If you believe this was a mistake, contact{" "}
+          {video.creator.displayName} directly.
+        </p>
+      </div>
+    );
+  }
+
   if (user) {
     after(() => recordWallItemView(user.id, { videoId: video.id }));
     after(() => recordDailyActivity(user.id));
@@ -417,6 +429,12 @@ export default async function VideoPage(props: PageProps<"/videos/[id]">) {
           to leave a comment, save this video, or make a clip.
         </p>
       )}
+
+      <p className="mt-8 text-xs text-zinc-500">
+        <Link href={`/report?url=${encodeURIComponent(`${appUrl}/videos/${video.id}`)}`} className="underline">
+          Report this content
+        </Link>
+      </p>
     </div>
   );
 }

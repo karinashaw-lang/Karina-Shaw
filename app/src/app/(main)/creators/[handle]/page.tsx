@@ -17,6 +17,7 @@ import PaidQuestionForm from "@/components/paid-question-form";
 import PodcastFeedLink from "@/components/podcast-feed-link";
 import { getAppUrl } from "@/lib/app-url";
 import JsonLd from "@/components/json-ld";
+import EmailCaptureForm from "@/components/email-capture-form";
 
 export async function generateMetadata(props: PageProps<"/creators/[handle]">): Promise<Metadata> {
   const { handle } = await props.params;
@@ -167,6 +168,12 @@ export default async function CreatorPage(props: PageProps<"/creators/[handle]">
       </div>
 
       {creator.bio && <p className="mt-4">{creator.bio}</p>}
+
+      {!isOwner && (
+        <div className="mt-4">
+          <EmailCaptureForm creatorId={creator.id} displayName={creator.displayName} />
+        </div>
+      )}
 
       {subscriptionRow && (
         <PodcastFeedLink
