@@ -36584,5 +36584,60 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "garment_manufacturing_registration_info_sheet",
+    "title": "Garment Manufacturing Registration and Brand Guarantor Wage Liability — Information Sheet",
+    "description": "Explains California's garment manufacturing statutes, Labor Code §§ 2670-2680: the statutory definitions of \"garment manufacturing,\" \"contractor,\" and \"brand guarantor\"; the duty of every garment manufacturing business to register with the Labor Commissioner and the application, examination, workers' compensation, fee, bond, and posting conditions; the misdemeanor and per-affected-employee civil penalties for operating unregistered (C & C Partners v. Department of Industrial Relations); deemed-employer liability for contracting with an unregistered business; the joint and several wage liability of manufacturers, contractors, and brand guarantors under § 2673.1 and its Labor Commissioner claim procedure and label presumption; four-year recordkeeping duties; the ban on piece-rate pay; and the registration-fee wage fund and confiscation remedies.",
+    "categories": [
+      "Hiring"
+    ],
+    "clauseOrder": [
+      "garmreg_intro",
+      "garmreg_definitions",
+      "garmreg_registration_requirement",
+      "garmreg_examination_and_posting",
+      "garmreg_bond_conditions",
+      "garmreg_unregistered_consequences",
+      "garmreg_contracting_with_unregistered",
+      "garmreg_joint_and_several_wage_liability",
+      "garmreg_claim_procedure",
+      "garmreg_recordkeeping",
+      "garmreg_piece_rate_prohibition",
+      "garmreg_fund_and_confiscation",
+      "garmreg_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme Apparel, Inc.",
+        "required": true
+      },
+      {
+        "id": "garmentOperationsDescription",
+        "label": "Garment manufacturing or garment contracting activity, if any",
+        "placeholder": "We design apparel under our own label and contract with two Los Angeles sewing shops",
+        "required": true
+      },
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Los Angeles, California",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 13, 2026",
+        "required": true
+      }
+    ]
   }
 ]

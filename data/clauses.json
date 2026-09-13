@@ -116154,6 +116154,445 @@
       "title": "Signature and Receipt",
       "kind": "drafting",
       "body": "Employee Signature: ☐ _________________________ Date: _______________\n\n{{employeeName}} (print name)\n\nEmployer Representative Signature: ☐ _________________________ Date: _______________\n\n{{companyName}} (print name and title)"
+    },
+    {
+      "id": "garmreg_intro",
+      "title": "About This Garment Manufacturing Registration Information Sheet",
+      "kind": "drafting",
+      "body": "This information sheet describes California's garment manufacturing statutes, Labor Code Part 11 of Division 2 (Sections 2670 through 2693.1), which require every person engaged in the business of garment manufacturing to register with the Labor Commissioner, impose recordkeeping and hourly-pay rules on that industry, and make garment manufacturers, contractors, and \"brand guarantors\" jointly and severally liable for the unpaid wages of the workers who make their garments. {{companyName}} has described its garment manufacturing or garment contracting activity, if any, as follows: {{garmentOperationsDescription}}. This document states the content of the statutes and of one published California appellate decision construing them; it does not determine whether any particular business, product line, or contracting arrangement falls within the statutory definitions, and it is not a substitute for individualized legal advice or for consulting a licensed attorney."
+    },
+    {
+      "id": "garmreg_definitions",
+      "title": "Who the Garment Manufacturing Statutes Cover: \"Garment Manufacturing,\" \"Contractor,\" and \"Brand Guarantor\"",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-13",
+      "body": "Labor Code Section 2671 supplies the definitions used throughout Part 11. \"Garment manufacturing\" is defined expansively to include sewing, cutting, making, processing, repairing, finishing, assembling, dyeing, altering a garment's design, causing another person to alter a garment's design, affixing a label to a garment, or otherwise preparing any garment or article of wearing apparel or accessories intended to be worn, including clothing, hats, gloves, handbags, hosiery, ties, scarfs, and belts, for sale or resale. A \"garment manufacturer\" is any person engaged in garment manufacturing who is not a contractor; a \"contractor\" is a person who, with the assistance of employees or others, is engaged in garment manufacturing by primarily performing those operations for another person, and includes a subcontractor primarily engaged in those operations. A \"brand guarantor\" is any person contracting for the performance of garment manufacturing, whether or not the person it contracts with performs the operations itself or hires contractors or subcontractors to do so, and the statute states that contracts for the performance of garment manufacturing include the licensing of a brand or name. Section 2671(a) also excludes from the defined term \"person\" anyone who manufactures garments alone without the assistance of a contractor, employee, or others, anyone engaged solely in cleaning, alteration, or tailoring, and anyone engaged in the regulated activities as an employee whose sole compensation is wages.",
+      "gap": "Section 2671 authorizes the Labor Commissioner to adopt and amend regulations refining the definitions of \"garment manufacturing,\" \"brand guarantor,\" and \"contractor\" to track current and future industry practices, and Section 2671(a) also excludes from \"person\" anyone excluded \"by regulation\"; this sheet states only the statutory text and does not reproduce or track any implementing regulation, so it does not resolve how a regulation might classify a particular product, operation, or licensing arrangement. The statute also does not state how the \"primarily engaging\" qualifier in the \"contractor\" definition is measured.",
+      "citations": [
+        {
+          "case": "Cal. Labor Code § 2671(c) (California Legislative Information text)",
+          "cite": "California Labor Code, definition of \"garment manufacturing\"",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=2671.",
+          "quote": "“Garment manufacturing” means sewing, cutting, making, processing, repairing, finishing, assembling, dyeing, altering a garment’s design, causing another person to alter a garment’s design, affixing a label to a garment, or otherwise preparing any garment or any article of wearing apparel or accessories designed or intended to be worn by any individual, including, but not limited to, clothing, hats, gloves, handbags, hosiery, ties, scarfs, and belts, for sale or resale by any person or any persons contracting to have those operations performed"
+        },
+        {
+          "case": "Cal. Labor Code § 2671(b) (California Legislative Information text; same section as the preceding citation, not an independent source of it)",
+          "cite": "California Labor Code, definition of \"garment manufacturer\"",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=2671.",
+          "quote": "“Garment manufacturer” or “manufacturer” means any person who is engaged in garment manufacturing who is not a contractor."
+        },
+        {
+          "case": "Cal. Labor Code § 2671(d) (California Legislative Information text; same section as the preceding citations, not an independent source of them)",
+          "cite": "California Labor Code, definition of \"brand guarantor\"",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=2671.",
+          "quote": "“Brand guarantor” means any person contracting for the performance of garment manufacturing, regardless of whether the person with whom they contract performs the manufacturing operations or hires contractors or subcontractors to perform the manufacturing operations"
+        },
+        {
+          "case": "Cal. Labor Code § 2671(d) (California Legislative Information text; same section and subdivision as the preceding citation, not an independent source of it)",
+          "cite": "California Labor Code, brand licensing treated as contracting for garment manufacturing",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=2671.",
+          "quote": "Contracts for the performance of garment manufacturing include licensing of a brand or name."
+        },
+        {
+          "case": "Cal. Labor Code § 2671(f) (California Legislative Information text; same section as the preceding citations, not an independent source of them)",
+          "cite": "California Labor Code, definition of \"contractor\"",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=2671.",
+          "quote": "“Contractor” means any person who, with the assistance of employees or others, is engaged in garment manufacturing by primarily engaging in sewing, cutting, making, processing, repairing, finishing, assembling, dyeing, altering a garment’s design, causing another person to alter a garment’s design, affixing a label on a garment, or otherwise preparing any garment or any article of wearing apparel or accessories designed or intended to be worn by any individual, including, but not limited to, clothing, hats, gloves, handbags, hosiery, ties, scarfs, and belts, for another person, including, but not limited to, another contractor, garment manufacturer, or brand guarantor. “Contractor” includes a subcontractor that is primarily engaged in those operations."
+        },
+        {
+          "case": "Cal. Labor Code § 2671(a) (California Legislative Information text; same section as the preceding citations, not an independent source of them)",
+          "cite": "California Labor Code, exclusions from the defined term \"person\"",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=2671.",
+          "quote": "“Person” does not include any person who manufactures garments by oneself, without the assistance of a contractor, employee, or others; any person who engages solely in that part of the business engaged solely in cleaning, alteration, or tailoring; any person who engages in the activities herein regulated as an employee with wages as their sole compensation; or any person as provided by regulation."
+        }
+      ]
+    },
+    {
+      "id": "garmreg_registration_requirement",
+      "title": "The Registration Requirement and Its Conditions (Labor Code Section 2675)",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-13",
+      "body": "Labor Code Section 2675(a) requires every person engaged in the business of garment manufacturing to register with the Labor Commissioner, and states that the Commissioner may neither permit registration nor allow renewal until each of the listed conditions is satisfied. Those conditions include a written application in the form the Commissioner prescribes, subscribed and sworn by the applicant, stating the facts the Commissioner requires about the applicant's character, competency, and responsibility and the manner and method by which the applicant proposes to engage in the business, together with the names, addresses, and interests of all persons financially interested in the proposed business other than bona fide salaried employees (a listing of principal officers suffices for a publicly traded corporation); an investigation leaving the Commissioner satisfied as to the applicant's character, competency, and responsibility; documentation that a current workers' compensation insurance policy is in effect for the applicant's employees; and payment of an initial or renewal registration fee set by the Labor Commissioner based on the applicant's annual volume, with a statutory floor of $250 and ceilings of $1,000 for contractors and $2,500 for all other registrants.",
+      "gap": "The statute states the floor and ceiling of the registration fee but leaves the actual amount to the Labor Commissioner's volume-based schedule, which this sheet does not reproduce; the dollar figures stated here are the statutory bounds as of the date checked and this sheet does not track later amendments or the current fee schedule. Section 2675 also does not itself state the consequences of a registration application that the Commissioner neither grants nor denies, and it sets no deadline for the Commissioner's investigation.",
+      "citations": [
+        {
+          "case": "Cal. Labor Code § 2675(a) (California Legislative Information text)",
+          "cite": "California Labor Code, duty of every garment manufacturing business to register",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=2675.",
+          "quote": "For purposes of enforcing this part and Sections 204, 209, 212, 221, 222, 222.5, 223, 226, 227, and 227.5, Chapter 2 (commencing with Section 300) and Article 2 (commencing with Section 400) of Chapter 3 of Part 1 of this division, Sections 1195.5, 1197, 1197.5, and 1198, Division 4 (commencing with Section 3200) and Division 4.7 (commencing with Section 6200), every person engaged in the business of garment manufacturing, shall register with the commissioner."
+        },
+        {
+          "case": "Cal. Labor Code § 2675(a) (California Legislative Information text; same section and subdivision as the preceding citation, not an independent source of it)",
+          "cite": "California Labor Code, conditions precedent to registration and renewal",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=2675.",
+          "quote": "The commissioner shall not permit any person to register, nor shall the commissioner allow any person to renew registration, until all the following conditions are satisfied:"
+        },
+        {
+          "case": "Cal. Labor Code § 2675(a)(1)(A) (California Legislative Information text; same section as the preceding citations, not an independent source of them)",
+          "cite": "California Labor Code, sworn application and character statement",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=2675.",
+          "quote": "A statement by the person of all facts required by the commissioner concerning the applicant’s character, competency, responsibility, and the manner and method by which the person proposes to engage in the business of garment manufacturing if the registration is issued."
+        },
+        {
+          "case": "Cal. Labor Code § 2675(a)(4) (California Legislative Information text; same section as the preceding citations, not an independent source of them)",
+          "cite": "California Labor Code, workers' compensation documentation condition",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=2675.",
+          "quote": "The person has documented that a current workers’ compensation insurance policy is in effect for the employees of the person seeking registration."
+        },
+        {
+          "case": "Cal. Labor Code § 2675(a)(5) (California Legislative Information text; same section as the preceding citations, not an independent source of them)",
+          "cite": "California Labor Code, registration fee floor and ceilings",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=2675.",
+          "quote": "The fee for initial registration and for each registration renewal shall be established in an amount determined by the Labor Commissioner to be sufficient to defray the costs of administering this part and shall be based on the applicant’s annual volume, but shall be not less than two hundred fifty dollars ($250) and shall be not more than one thousand dollars ($1,000) for contractors and two thousand five hundred dollars ($2,500) for all other registrants."
+        }
+      ]
+    },
+    {
+      "id": "garmreg_examination_and_posting",
+      "title": "Examination, Safety Attestation, Renewal, and Posting of the Registration Form",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-13",
+      "body": "Labor Code Section 2675(c) conditions first-time registration and renewal on demonstrating, by oral or written examination or both, knowledge of the laws and administrative regulations concerning garment manufacturing that the Labor Commissioner deems necessary for the safety and protection of garment workers, and knowledge of state occupational safety and health laws, which the statute specifies as including the Title 8 regulations on the Injury Prevention Program, Emergency Action Plan, Fire Prevention Plan, and portable fire extinguishers. The applicant must also sign a statement committing to comply with those safety regulations, to ensure employees are made aware of them and instructed in implementing the three plans, to ensure employees are instructed in the use of portable fire extinguishers, and to post the three plans prominently in the workplace. Section 2675(f) requires a person seeking renewal to take both examinations and sign the statement, but provides that once a renewal has been granted on that basis, further examinations are required only at the Commissioner's discretion and only if the registrant was found in the preceding year to have violated subdivision (a) or a section enumerated in it. Section 2675(g) provides that proof of registration is an official Division of Labor Standards Enforcement registration form, which must be posted where employees can read it during the workday.",
+      "gap": "Section 2675(b) directs the Commissioner to supply supplemental business-administration and labor-law information at issuance or renewal, \"as much as reasonably possible\" in the registrant's primary language, and subdivision (e) authorizes a separate examination fee; this sheet does not state the content of that supplemental material, the examination fee amount, or the passing standard, none of which the statute specifies. Section 2675(h) requires a renewal notice at least 90 days before expiration but expressly provides that the Commissioner's omission to give notice neither excuses a late renewal nor supplies a defense, a point this sheet notes but does not elaborate.",
+      "citations": [
+        {
+          "case": "Cal. Labor Code § 2675(c)(1) (California Legislative Information text)",
+          "cite": "California Labor Code, examination on garment manufacturing laws",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=2675.",
+          "quote": "Demonstrate, by an oral or written examination, or both, knowledge of the pertinent laws and administrative regulations concerning garment manufacturing as the commissioner deems necessary for the safety and protection of garment workers."
+        },
+        {
+          "case": "Cal. Labor Code § 2675(c)(2) (California Legislative Information text; same section as the preceding citation, not an independent source of it)",
+          "cite": "California Labor Code, examination on occupational safety and health law",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=2675.",
+          "quote": "Demonstrate, by an oral or written examination, or both, knowledge of state laws and regulations relating to occupational safety and health which shall include, but not be limited to, the following:"
+        },
+        {
+          "case": "Cal. Labor Code § 2675(f) (California Legislative Information text; same section as the preceding citations, not an independent source of them)",
+          "cite": "California Labor Code, renewal examination requirement and its discretionary repetition",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=2675.",
+          "quote": "A person seeking renewal of registration shall be required to take both of the examinations, and sign the statement, specified in subdivision (c)."
+        },
+        {
+          "case": "Cal. Labor Code § 2675(g) (California Legislative Information text; same section as the preceding citations, not an independent source of them)",
+          "cite": "California Labor Code, proof of registration and workplace posting duty",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=2675.",
+          "quote": "Proof of registration shall be by an official Division of Labor Standards Enforcement registration form. Every person, as set forth in Section 2671, shall post the registration form where it may be read by employees during the workday."
+        }
+      ]
+    },
+    {
+      "id": "garmreg_bond_conditions",
+      "title": "When a Bond Is a Condition of Registration or of Continued Registration",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-13",
+      "body": "Labor Code Section 2675(a)(3) makes a surety bond a condition of registration for a person who has been cited and penalized within the prior three years under Part 11: the bond is in the sum and form the Commissioner deems sufficient and adequate to ensure future compliance, may not exceed $5,000, is payable to the people of California, and benefits employees of the registrant damaged by a failure to pay wages and fringe benefits or by a violation of Section 2677.5. In C & C Partners, Ltd. v. Department of Industrial Relations, the Court of Appeal held that this bond requirement is mandatory for all manufacturers who have violated the statute within three years, and rejected the argument that a bond may be required only where employees have already been damaged. Separately, Labor Code Section 2679(a) authorizes the Commissioner, in addition to any civil penalty, to require as a condition of continued registration that an employer deposit a bond within 10 days to ensure payment of wages and benefits, in an amount not exceeding $10,000, or to accept other evidence of financial security in lieu of a bond; subdivision (b) makes that bond mandatory on a second or subsequent violation within any two-year period and permits revocation of registration for 30 days to one year on a third or subsequent violation within a two-year period.",
+      "gap": "Section 2679(a) as published refers to a civil penalty \"imposed pursuant to Section 2679\" — that is, to the same section in which the phrase appears — while the penalty provision for this part is Section 2678; the quoted text is reproduced exactly as it appears in the published statute, and this sheet does not resolve whether that internal cross-reference is a drafting error. The statute also does not state the standards governing the Commissioner's choice of bond amount within the $5,000 and $10,000 ceilings, and C & C Partners construed the version of Section 2675(a)(3) then in effect.",
+      "citations": [
+        {
+          "case": "Cal. Labor Code § 2675(a)(3) (California Legislative Information text)",
+          "cite": "California Labor Code, surety bond condition after a citation and penalty within three years",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=2675.",
+          "quote": "In the case of a person who has been cited and penalized within the prior three years under this part, the person has deposited or has on file a surety bond in the sum and form that the commissioner deems sufficient and adequate to ensure future compliance, not to exceed five thousand dollars ($5,000)."
+        },
+        {
+          "case": "C & C Partners, Ltd. v. Department of Industrial Relations (1999) 70 Cal.App.4th 603",
+          "cite": "70 Cal.App.4th 603, 610",
+          "url": "https://www.courtlistener.com/opinion/2258475/c-c-partners-ltd-v-department-of-industrial-relations/",
+          "quote": "The statute mandates that a bond be imposed for all manufacturers who have violated the statute within three years."
+        },
+        {
+          "case": "C & C Partners, Ltd. v. Department of Industrial Relations (1999) 70 Cal.App.4th 603 (same opinion as the preceding citation, not an independent source of it)",
+          "cite": "70 Cal.App.4th 603, 610, fn. 7",
+          "url": "https://www.courtlistener.com/opinion/2258475/c-c-partners-ltd-v-department-of-industrial-relations/",
+          "quote": "However, section 2675, subdivision (a)(3) does not require a showing of past damage before a bond is required."
+        },
+        {
+          "case": "Cal. Labor Code § 2679(a) (California Legislative Information text)",
+          "cite": "California Labor Code, bond as a condition of continued registration",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=2679.",
+          "quote": "The commissioner, in addition to any civil penalty imposed pursuant to Section 2679, may require that as a condition of continued registration, such employer deposit with him or her within 10 days a bond to ensure payment of wages and benefits in such sum and form as the commissioner may deem sufficient and adequate in the circumstances but not to exceed ten thousand dollars ($10,000)."
+        },
+        {
+          "case": "Cal. Labor Code § 2679(b) (California Legislative Information text; same section as the preceding citation, not an independent source of it)",
+          "cite": "California Labor Code, mandatory bond on repeat violations and revocation authority",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=2679.",
+          "quote": "The commissioner, in addition to any civil penalty imposed, shall require a bond as set forth in subdivision (a) upon any second or subsequent violation within any two-year period."
+        }
+      ]
+    },
+    {
+      "id": "garmreg_unregistered_consequences",
+      "title": "Consequences of Operating Without Registration: Misdemeanor and Per-Employee Civil Penalties",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-13",
+      "body": "Labor Code Section 2676 makes any person engaged in the business of garment manufacturing who is not registered guilty of a misdemeanor, except as provided in Section 2678(d). Section 2678(a) authorizes a civil penalty for failing to comply with the registration requirements of Part 11, for failing to comply with Section 2673 or any section enumerated in Section 2675, and for failing to comply within 15 days of any judgment due for violation of labor laws applicable to garment industry workers; the order imposing the penalty must be in writing and describe the nature of the violation with reference to the provisions alleged to have been violated. Under Section 2678(c) the penalty is $100 for each affected employee for an initial violation and $200 for each affected employee for a second or subsequent violation, and under Section 2678(d) a violator who does not employ one or more workers is instead subject to a $500 civil penalty and is not guilty of the Section 2676 misdemeanor. In C & C Partners, Ltd. v. Department of Industrial Relations, the Court of Appeal held as a matter of first impression that when a garment manufacturer operates without a registration certificate all of its employees are \"affected\" for purposes of the per-employee penalty, and it rejected the contention that a penalty may not be assessed while a registration application is pending.",
+      "gap": "C & C Partners construed the statutory phrase \"affected employee\" in the context of a complete failure to register; the opinion does not address how that term applies to the other violations listed in Section 2678(a), such as a failure to comply with the recordkeeping requirements of Section 2673, and this sheet does not extend the holding to them. Section 2678 also does not state the procedure for contesting a penalty order, which appears elsewhere in Part 11, and the misdemeanor exposure under Section 2676 is stated by the statute without a specified fine or jail term.",
+      "citations": [
+        {
+          "case": "Cal. Labor Code § 2676 (California Legislative Information text)",
+          "cite": "California Labor Code, misdemeanor for unregistered garment manufacturing",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=2676.",
+          "quote": "Any person engaged in the business of garment manufacturing who is not registered is guilty of a misdemeanor, except as provided in subdivision (d) of Section 2678."
+        },
+        {
+          "case": "Cal. Labor Code § 2678(a)(2) (California Legislative Information text)",
+          "cite": "California Labor Code, penalty for failure to comply with registration requirements",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=2678.",
+          "quote": "Failure to comply with the registration requirements of this part."
+        },
+        {
+          "case": "Cal. Labor Code § 2678(c) (California Legislative Information text; same section as the preceding citation, not an independent source of it)",
+          "cite": "California Labor Code, per-affected-employee civil penalty amounts",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=2678.",
+          "quote": "The penalties shall be a civil penalty of one hundred dollars ($100) for each affected employee for the initial violation and a civil penalty of two hundred dollars ($200) for each affected employee for the second or subsequent violation."
+        },
+        {
+          "case": "Cal. Labor Code § 2678(d) (California Legislative Information text; same section as the preceding citations, not an independent source of them)",
+          "cite": "California Labor Code, flat penalty where the violator employs no workers",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=2678.",
+          "quote": "If a person is subject to civil penalties for a violation described in subdivision (a), but does not employ one or more workers, the civil penalty shall be five hundred dollars ($500), and the person shall not be guilty of a misdemeanor as specified in Section 2676."
+        },
+        {
+          "case": "C & C Partners, Ltd. v. Department of Industrial Relations (1999) 70 Cal.App.4th 603",
+          "cite": "70 Cal.App.4th 603, 606",
+          "url": "https://www.courtlistener.com/opinion/2258475/c-c-partners-ltd-v-department-of-industrial-relations/",
+          "quote": "In this case of first impression, we decide: (1) when a garment manufacturer operates without a registration certificate, all of its employees are affected and a penalty of $100 per employee for a first violation is proper under Labor Code section 2678"
+        },
+        {
+          "case": "C & C Partners, Ltd. v. Department of Industrial Relations (1999) 70 Cal.App.4th 603 (same opinion as the preceding citation, not an independent source of it)",
+          "cite": "70 Cal.App.4th 603, 610, fn. 8",
+          "url": "https://www.courtlistener.com/opinion/2258475/c-c-partners-ltd-v-department-of-industrial-relations/",
+          "quote": "C & C was responsible for obtaining a registration certificate before it engaged in garment manufacturing. Section 2675 contains no exception for violations occurring while registration applications are pending."
+        }
+      ]
+    },
+    {
+      "id": "garmreg_contracting_with_unregistered",
+      "title": "Contracting With an Unregistered or Unbonded Garment Business (Labor Code Section 2677)",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-13",
+      "body": "Labor Code Section 2677(a) provides that a person engaged in the business of garment manufacturing who contracts with another person similarly engaged who has not registered with the Commissioner, or who does not have a valid bond on file as Section 2675 requires, is deemed an employer and is jointly liable with that other person for any violation of Section 2675 and of the sections enumerated in it. Subdivision (b) permits an employee of an unregistered garment manufacturing business to bring a civil action against a person deemed an employer under subdivision (a) to recover wages, damages, or penalties owed because of the unregistered person's violation of any provision specified in Section 2675(a), or instead to file a claim with the Labor Commissioner under Section 2673.1, and it directs the court to award a prevailing plaintiff reasonable attorney's fees and costs. Labor Code Section 2677.5 separately makes it illegal for a registrant contracting with another registrant to engage in any business practice that causes or is likely to cause a violation of the chapter.",
+      "gap": "Section 2677 makes the contracting party \"deemed an employer\" for the enumerated statutory violations, but the statute does not state whether that deemed-employer status carries over to other bodies of law that turn on employer status, such as the Fair Employment and Housing Act, unemployment insurance, or common-law tort doctrines; nor does it state what inquiry, if any, satisfies a contracting party that its counterparty is registered and bonded. Section 2677.5 does not define \"business practice which causes or is likely to cause a violation,\" and this sheet does not resolve what conduct falls within it.",
+      "citations": [
+        {
+          "case": "Cal. Labor Code § 2677(a) (California Legislative Information text)",
+          "cite": "California Labor Code, deemed-employer joint liability for contracting with an unregistered garment business",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=2677.",
+          "quote": "Any person engaged in the business of garment manufacturing who contracts with any other person similarly engaged who has not registered with the commissioner or does not have a valid bond on file with the commissioner, as required by Section 2675, shall be deemed an employer, and shall be jointly liable with such other person for any violation of Section 2675 and the sections enumerated in that section."
+        },
+        {
+          "case": "Cal. Labor Code § 2677(b) (California Legislative Information text; same section as the preceding citation, not an independent source of it)",
+          "cite": "California Labor Code, employee's fee-shifting civil action against a deemed employer",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=2677.",
+          "quote": "In any civil action brought pursuant to this subdivision, the court shall grant a prevailing plaintiff’s reasonable attorney’s fees and costs."
+        },
+        {
+          "case": "Cal. Labor Code § 2677.5 (California Legislative Information text)",
+          "cite": "California Labor Code, prohibition on business practices causing chapter violations",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=2677.5.",
+          "quote": "It shall be illegal for any person registered pursuant to this chapter and contracting with another registrant to engage in any business practice which causes or is likely to cause a violation of this chapter."
+        }
+      ]
+    },
+    {
+      "id": "garmreg_joint_and_several_wage_liability",
+      "title": "Joint and Several Wage Liability of Manufacturers, Contractors, and Brand Guarantors (Labor Code Section 2673.1)",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-13",
+      "body": "Labor Code Section 2673.1(a)(1) makes a garment manufacturer, contractor, or brand guarantor that contracts with another person for the performance of garment manufacturing operations jointly and severally liable with any manufacturer and contractor performing those operations for the full amount of unpaid minimum, regular, overtime, and other premium wages, reimbursement for expenses, and any other compensation including interest due to the employees who performed the operations for any violation of the Labor Code; for the employee's reasonable attorney's fees and costs under subdivision (e); and for civil penalties for failure to secure valid workers' compensation coverage as required by Section 3700. Subdivision (a)(2) preserves the parties' ability to establish, exercise, or enforce contribution and indemnity remedies against each other after a final judgment. Subdivision (b) adds that garment manufacturers and contractors are liable for the full amount of damages and penalties due to employees for a Labor Code violation, including liquidated damages equal to the wages unlawfully withheld under Section 1194.2 and liquidated damages equal to unpaid overtime compensation. Subdivision (k) provides that payment of the wages described in the section is not to be used as a basis for finding that the paying brand guarantor or registered garment manufacturer is a joint employer, coemployer, or single employer of a registered garment manufacturing contractor's employees. The Legislature stated in Section 2670(a) that this structure was intended to restore the purpose of Assembly Bill 633 (Stats. 1999, ch. 554) after manufacturers added layers of contracting to avoid guarantor liability.",
+      "gap": "Section 2673.1(j) states that, except as expressly provided in the section, it does not create any new right to bring a civil action for the listed categories of recovery against a brand guarantor, garment manufacturer, or contractor, and subdivision (c) channels employee enforcement to a Labor Commissioner claim; this sheet states those limits but does not resolve how they interact with claims brought under other statutes, which subdivision (h) preserves. Section 2673.1 also does not state how proportionate shares are allocated beyond directing the Labor Commissioner to determine them.",
+      "citations": [
+        {
+          "case": "Cal. Labor Code § 2673.1(a)(1) (California Legislative Information text)",
+          "cite": "California Labor Code, joint and several liability of manufacturers, contractors, and brand guarantors",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=2673.1.",
+          "quote": "To ensure that employees are paid for all hours worked, a garment manufacturer, contractor, or brand guarantor, who contracts with another person for the performance of garment manufacturing operations, shall be jointly and severally liable with any manufacturer and contractor who performs those operations for the garment manufacturer or brand guarantor, for all of the following:"
+        },
+        {
+          "case": "Cal. Labor Code § 2673.1(a)(1)(A) (California Legislative Information text; same section as the preceding citation, not an independent source of it)",
+          "cite": "California Labor Code, scope of the wages and compensation covered",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=2673.1.",
+          "quote": "The full amount of unpaid minimum, regular, overtime, and other premium wages, reimbursement for expenses, and any other compensation, including interest, due to any and all employees who performed the manufacturing operations for any violation of this code."
+        },
+        {
+          "case": "Cal. Labor Code § 2673.1(b) (California Legislative Information text; same section as the preceding citations, not an independent source of them)",
+          "cite": "California Labor Code, liquidated damages exposure of manufacturers and contractors",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=2673.1.",
+          "quote": "Damages shall include liquidated damages in an amount equal to the wages unlawfully withheld, as set forth in Section 1194.2, and liquidated damages in an amount equal to unpaid overtime compensation due."
+        },
+        {
+          "case": "Cal. Labor Code § 2673.1(k) (California Legislative Information text; same section as the preceding citations, not an independent source of them)",
+          "cite": "California Labor Code, payment not a basis for a joint employer finding",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=2673.1.",
+          "quote": "The payment of the wages provided in this section shall not be used as a basis for finding that the brand guarantor or registered garment manufacturer making the payment is a joint employer, coemployer, or single employer of any employees of a contractor that is also a registered garment manufacturer."
+        },
+        {
+          "case": "Cal. Labor Code § 2670(a) (California Legislative Information text)",
+          "cite": "California Labor Code, legislative statement on layered contracting and guarantor liability",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=2670.",
+          "quote": "This act, therefore, revises this part to make clear that a person contracting to have garments made is liable for the full amount of unpaid minimum, regular, overtime, and other premium wages, as well as reimbursement for expenses owed to the workers who manufacture those garments regardless of how many layers of contracting that person may use."
+        }
+      ]
+    },
+    {
+      "id": "garmreg_claim_procedure",
+      "title": "The Labor Commissioner Claim Procedure, the Label Presumption, and Appeal Bonds",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-13",
+      "body": "Labor Code Section 2673.1(c) provides that employees enforce the section solely by filing a claim with the Labor Commissioner against the contractor, the garment manufacturer, and the brand guarantor, if known, and permits manufacturers and brand guarantors whose identity or existence is unknown at filing to be added later. Subdivision (d) sets mandatory deadlines: written notice and a subpoena duces tecum for books and records within 10 business days of the claim, notice to other potential manufacturers or brand guarantors within 30 days, a meet-and-confer conference within 60 days preceded by a completed investigation and assessment, a hearing commencing within 30 days and completed within 45 days of that conference, and an order, decision, or award within 15 days of the hearing's completion. Compliance with the records request within 10 days of the mailing of the notice is a condition of continued registration under Section 2675. If the employee supplies labels or equivalent items, or other information the Commissioner finds credible identifying a brand guarantor or garment manufacturer, the statute creates a presumption that the brand guarantor or garment manufacturer is liable with the contractor, and the employee's claim of hours and amounts due is presumed valid unless rebutted by specific, compelling, and reliable written evidence including contemporaneous records. Subdivision (f) requires a contractor, garment manufacturer, or brand guarantor that appeals to post a bond equal to one and one-half times the award as a condition precedent, while no bond is required of an appealing employee.",
+      "gap": "The statute's deadlines are stated as mandatory and enforceable by writ of mandate, and subdivision (h) permits an employee to bring a civil action if a finding and assessment is not timely issued unless a writ petition is first filed; this sheet states those provisions but does not describe how a court has applied them. A search of the case-law database consulted for decisions citing Section 2673.1 returned a single published opinion, decided in 2004 and addressing the version of the section then in effect rather than the substantially rewritten version operative since 2022, so no judicial construction of the current text is stated here. The statute also does not define what makes information about a brand guarantor's identity \"credible.\"",
+      "citations": [
+        {
+          "case": "Cal. Labor Code § 2673.1(c) (California Legislative Information text)",
+          "cite": "California Labor Code, exclusive Labor Commissioner claim route for employees",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=2673.1.",
+          "quote": "Employees may enforce this section solely by filing a claim with the Labor Commissioner against the contractor, the garment manufacturer, and the brand guarantor, if known, to recover unpaid wages and associated penalties."
+        },
+        {
+          "case": "Cal. Labor Code § 2673.1(d)(1) (California Legislative Information text; same section as the preceding citation, not an independent source of it)",
+          "cite": "California Labor Code, records compliance as a condition of continued registration",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=2673.1.",
+          "quote": "Compliance with a request for books and records, within 10 days of the mailing of the notice, shall be a condition of continued registration pursuant to Section 2675."
+        },
+        {
+          "case": "Cal. Labor Code § 2673.1(d)(3) (California Legislative Information text; same section as the preceding citations, not an independent source of them)",
+          "cite": "California Labor Code, presumption of brand guarantor liability from labels or credible information",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=2673.1.",
+          "quote": "If an employee provides the Labor Commissioner with labels, or the equivalent thereto, from a brand guarantor or garment manufacturer, or other information that the commissioner finds credible relating to the identity of any brand guarantor or garment manufacturer for whom the employee performed garment manufacturing operations, there shall be a presumption that the brand guarantor or garment manufacturer is liable with the contractor for any amounts found to be due to the employee, as set forth in paragraph (1) of subdivision (a)."
+        },
+        {
+          "case": "Cal. Labor Code § 2673.1(d)(3) (California Legislative Information text; same section and paragraph as the preceding citation, not an independent source of it)",
+          "cite": "California Labor Code, presumed validity of the employee's claim and the rebuttal standard",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=2673.1.",
+          "quote": "An employee’s claim of hours worked, and wages, damages, penalties, expenses, and other compensation due, including the claim of liability of a brand guarantor or garment manufacturer upon provision by the employee of labels or other credible information about work performed for any person, shall be presumed valid and shall be the Labor Commissioner’s assessment, unless the brand guarantor, garment manufacturer, or contractor provides specific, compelling, and reliable written evidence to the contrary."
+        },
+        {
+          "case": "Cal. Labor Code § 2673.1(f) (California Legislative Information text; same section as the preceding citations, not an independent source of them)",
+          "cite": "California Labor Code, appeal bond of one and one-half times the award",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=2673.1.",
+          "quote": "As a condition precedent to filing an appeal, the contractor, garment manufacturer, or brand guarantor, whichever appeals, shall post a bond with the Labor Commissioner in an amount equal to one and one-half times the amount of the award. No bond shall be required of an employee filing an appeal pursuant to Section 98.2."
+        }
+      ]
+    },
+    {
+      "id": "garmreg_recordkeeping",
+      "title": "Four-Year Recordkeeping Duties of Employers and Brand Guarantors (Labor Code Section 2673)",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-13",
+      "body": "Labor Code Section 2673(a) requires every employer engaged in the business of garment manufacturing to keep accurate records for four years showing the names and addresses of all garment workers directly employed; daily hours worked including the beginning and ending times of each work period; daily production sheets including piece rates; the wages and wage rates paid each payroll period; contract worksheets indicating the price per unit agreed between contractor and manufacturer; all contracts, invoices, purchase orders, work or job orders, and style or cut sheets, including the contracting parties' business names, addresses, and contact information; a copy of the garment license of every person required to register under Section 2675 with whom the employer has contracted for garment manufacturing; the ages of all minor employees; and any other conditions of employment. Subdivision (b) imposes a parallel four-year retention duty on brand guarantors for contract worksheets showing the agreed price per unit, the same categories of contracts and related documents, and a copy of each contracting registrant's garment license. Subdivision (c) states that these requirements are in addition to the recordkeeping requirements found elsewhere in the Labor Code, in the California Code of Regulations, and in the Industrial Welfare Commission wage orders.",
+      "gap": "Section 2673 requires retention of the counterparty's \"garment license\" while Section 2675 speaks of registration and an official registration form; the statute does not reconcile the two terms, and this sheet does not resolve whether they refer to the same document. The section also states no separate penalty of its own for a recordkeeping failure — exposure instead arises through Section 2678 and, in a wage claim, through the evidentiary consequences described in Section 2673.1(d).",
+      "citations": [
+        {
+          "case": "Cal. Labor Code § 2673(a) (California Legislative Information text)",
+          "cite": "California Labor Code, four-year recordkeeping duty of garment manufacturing employers",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=2673.",
+          "quote": "Every employer engaged in the business of garment manufacturing shall keep accurate records for four years which show all of the following:"
+        },
+        {
+          "case": "Cal. Labor Code § 2673(a)(7) (California Legislative Information text; same section as the preceding citation, not an independent source of it)",
+          "cite": "California Labor Code, duty to retain a copy of each contracting registrant's garment license",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=2673.",
+          "quote": "A copy of the garment license of every person engaged in garment manufacturing who is required to register with the Labor Commissioner pursuant to Section 2675, and with whom the employer has entered into a contract for the performance of garment manufacturing."
+        },
+        {
+          "case": "Cal. Labor Code § 2673(b) (California Legislative Information text; same section as the preceding citations, not an independent source of them)",
+          "cite": "California Labor Code, four-year recordkeeping duty of brand guarantors",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=2673.",
+          "quote": "Brand guarantors shall keep accurate records for four years that show all of the following:"
+        },
+        {
+          "case": "Cal. Labor Code § 2673(c) (California Legislative Information text; same section as the preceding citations, not an independent source of them)",
+          "cite": "California Labor Code, cumulative nature of these recordkeeping duties",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=2673.",
+          "quote": "The recordkeeping requirements in this section are in addition to the recordkeeping requirements set forth in this code, the California Code of Regulations, and in the Industrial Welfare Commission wage orders."
+        }
+      ]
+    },
+    {
+      "id": "garmreg_piece_rate_prohibition",
+      "title": "Prohibition on Piece-Rate Pay for Garment Manufacturing Work (Labor Code Section 2673.2)",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-13",
+      "body": "Labor Code Section 2673.2(a) provides that an employee engaged in the performance of garment manufacturing shall not be paid by the piece or unit, or by the piece rate, and that such employees shall be paid an hourly rate not less than the applicable minimum wage. Subdivision (b) states that the section does not prohibit incentive-based bonuses. Subdivision (c) exempts workplaces where employees are covered by a bona fide collective bargaining agreement that expressly provides for wages, hours, and working conditions; premium overtime rates and a regular hourly rate at least 30 percent above the state minimum wage; stewards or monitors; and a process to resolve nonpayment disputes. Subdivisions (d) and (f) provide compensatory damages of $200 per employee for each pay period in which an employee is paid by the piece rate, recoverable through a claim filed with the Labor Commissioner against the contractor or garment manufacturer, through a Labor Commissioner action under Section 98.3, or through a citation issued under the procedures of Section 1197.1, and subdivision (g) makes statutory damages or penalties recovered under the section payable to the employee.",
+      "gap": "Section 2673.2 preserves \"incentive-based bonuses\" without defining that term or stating how it is distinguished from a prohibited piece or unit rate, and subdivision (e) states the section may be enforced \"solely\" by a Labor Commissioner claim while subdivision (f) also authorizes Labor Commissioner actions and citations; this sheet reproduces both provisions without resolving how they interact. The section applies to \"an employee engaged in the performance of garment manufacturing\" but does not state how it applies to an employee who performs garment manufacturing operations for only part of a pay period, and no judicial construction of the section, which was added effective January 1, 2022, is stated here.",
+      "citations": [
+        {
+          "case": "Cal. Labor Code § 2673.2(a) (California Legislative Information text)",
+          "cite": "California Labor Code, ban on piece-rate pay in garment manufacturing",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=2673.2.",
+          "quote": "To ensure that employees are paid for all hours worked, an employee engaged in the performance of garment manufacturing shall not be paid by the piece or unit, or by the piece rate. Employees engaged in the performance of garment manufacturing shall be paid at an hourly rate not less than the applicable minimum wage."
+        },
+        {
+          "case": "Cal. Labor Code § 2673.2(b) (California Legislative Information text; same section as the preceding citation, not an independent source of it)",
+          "cite": "California Labor Code, incentive-based bonuses not prohibited",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=2673.2.",
+          "quote": "Nothing in this section shall be deemed to prohibit incentive-based bonuses."
+        },
+        {
+          "case": "Cal. Labor Code § 2673.2(c) (California Legislative Information text; same section as the preceding citations, not an independent source of them)",
+          "cite": "California Labor Code, collective bargaining agreement exemption",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=2673.2.",
+          "quote": "This section shall not apply to workplaces where employees are covered by a bona fide collective bargaining agreement, if the agreement expressly provides for wages, hours of work, and working conditions of the employees; premium wage rates for all overtime hours worked and a regular hourly rate of pay for those employees of not less than 30 percent more than the state minimum wage; stewards or monitors; and a process to resolve disputes concerning nonpayment of wages."
+        },
+        {
+          "case": "Cal. Labor Code § 2673.2(d) (California Legislative Information text; same section as the preceding citations, not an independent source of them)",
+          "cite": "California Labor Code, $200 per employee per pay period compensatory damages",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=2673.2.",
+          "quote": "In addition to, and entirely independent and apart from, any other damages or penalties provided in this code, any garment manufacturer or contractor who violates subdivision (a) shall be subject to compensatory damages of two hundred dollars ($200) per employee for each pay period in which each employee is paid by the piece rate."
+        }
+      ]
+    },
+    {
+      "id": "garmreg_fund_and_confiscation",
+      "title": "The Registration-Fee Wage Fund and Confiscation of Goods and Equipment",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-13",
+      "body": "Labor Code Section 2675.5(a) directs the Labor Commissioner to deposit $75 of each registrant's annual registration fee into a separate account, disbursed only to persons the Commissioner determines were damaged by a garment manufacturer's, brand guarantor's, or contractor's failure to pay wages and benefits, including interest, damages, and statutory penalties recoverable by an employee, and whether the business that owes them was registered or unregistered; recovered funds, including recovery from a surety bond, return to the account, and the remainder of each fee funds administration of Sections 2673.1, 2675, and 2675.5. Labor Code Section 2680(a) permits the Division of Labor Standards Enforcement to confiscate garments or wearing apparel assembled or partially assembled by or on behalf of a person who has not complied with the registration requirements, to hold them in custody for destruction or disposal outside the stream of commerce, and requires notice of the removal and custody location to the known manufacturer and contractor. Subdivision (b) permits the Labor Commissioner, where a contractor has had goods confiscated within the preceding five years, also to confiscate the means of production, including manufacturing equipment and the property where the unregistered operations took place, except where nonregistration resulted from delayed renewal; subdivision (c) directs sale proceeds into the Back Wages and Taxes Account in the General Fund for payment of back wages and taxes upon appropriation.",
+      "gap": "Disbursements from the Section 2675.5 account are made \"in accordance with procedures prescribed by the Labor Commissioner,\" which the statute does not set out and which this sheet does not describe; the statute likewise does not state what happens if claims on the account exceed its balance, although the Legislature's findings in Section 2670(a) describe workers having waited years for payment from the predecessor fund. Section 2680 does not state the procedure for contesting a confiscation or for the return of goods beyond the notice provision in subdivision (a) and the garment-owner return provision in Section 2679(b).",
+      "citations": [
+        {
+          "case": "Cal. Labor Code § 2675.5(a) (California Legislative Information text)",
+          "cite": "California Labor Code, $75 per registration fee deposited for damaged workers",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=2675.5.",
+          "quote": "The commissioner shall deposit seventy-five dollars ($75) of each registrant’s annual registration fee, required pursuant to paragraph (5) of subdivision (a) of Section 2675, into one separate account. Funds from the separate account shall be disbursed by the commissioner only to persons determined by the commissioner to have been damaged by the failure to pay wages and benefits by any garment manufacturer, brand guarantor, or contractor."
+        },
+        {
+          "case": "Cal. Labor Code § 2680(a) (California Legislative Information text)",
+          "cite": "California Labor Code, confiscation of goods made by an unregistered person",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=2680.",
+          "quote": "Any garment or wearing apparel, assembled or partially assembled by or on behalf of any person who has not complied with the registration requirements of this part, may be confiscated by the Division of Labor Standards Enforcement."
+        },
+        {
+          "case": "Cal. Labor Code § 2680(b) (California Legislative Information text; same section as the preceding citation, not an independent source of it)",
+          "cite": "California Labor Code, confiscation of the means of production on a repeat confiscation",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=2680.",
+          "quote": "If the person from whom garments or wearing apparel are confiscated pursuant to subdivision (a) was providing the confiscated garments or wearing apparel as a contractor and has previously, within the immediately preceding five-year period, had garments or wearing apparel confiscated pursuant to subdivision (a), the Labor Commissioner may, in addition to the remedies set forth in subdivision (a), confiscate the means of production, including all manufacturing equipment and the property where the current unregistered garment manufacturing operations have taken place."
+        },
+        {
+          "case": "Cal. Labor Code § 2680(c) (California Legislative Information text; same section as the preceding citations, not an independent source of them)",
+          "cite": "California Labor Code, Back Wages and Taxes Account",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=2680.",
+          "quote": "The proceeds from the sale of any equipment or property under subdivision (b) shall be deposited into a single account in the General Fund, to be known as the Back Wages and Taxes Account."
+        }
+      ]
+    },
+    {
+      "id": "garmreg_ack",
+      "title": "Acknowledgment",
+      "kind": "drafting",
+      "body": "This information sheet regarding California's garment manufacturing registration, recordkeeping, hourly-pay, and brand guarantor liability statutes, Labor Code Sections 2670 through 2693.1, was prepared by {{preparerName}} for {{companyName}} and reviewed in {{cityState}} on {{dateSigned}}. It reflects the statutory text and the published decision cited above as of the date checked and does not reflect any amendments or later decisions after that date, and it is not a substitute for consulting a licensed attorney."
     }
   ]
 }
