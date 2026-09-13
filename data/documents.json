@@ -34873,5 +34873,70 @@
         "required": false
       }
     ]
+  },
+  {
+    "id": "officer_director_personal_tort_liability_info_sheet",
+    "title": "Personal Liability of Directors, Officers, Shareholders, and LLC Members for Torts They Personally Commit — Information Sheet",
+    "description": "Explains the California rule that forming a corporation or LLC does not make the people who run it liable for the entity's torts, and does not shield them from liability for tortious conduct in which they personally participate: the Supreme Court's statement in Frances T. v. Village Green Owners Assn. (1986) 42 Cal.3d 490 that director status neither immunizes a person from individual liability nor subjects the person to vicarious liability; what participation means, including directing, authorizing, or knowingly consenting (PMC, Inc. v. Kadisha (2000) 78 Cal.App.4th 1368; Michaelis v. Benavides (1998) 61 Cal.App.4th 681); why this is not alter ego or veil-piercing liability; the requirement that the act breach a duty owed to the injured third person rather than to the entity alone, and the traditional restriction of such liability to physical rather than pecuniary harm; the two-part showing the Supreme Court requires against a director individually, with its reasonable-reliance defense; why the statutory business judgment rule does not govern an outsider's tort claim; the rule's agency-law roots and Civil Code section 2343; the LLC counterpart in Corporations Code section 17703.04, subdivisions (a) and (c); and the treatment of shareholders and investors who direct or authorize wrongful acts. A companion to this corpus's alter ego, director duty of care and business judgment rule, and director and officer indemnification information sheets, each of which addresses a neighboring question.",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "dirtort_declaration",
+      "dirtort_status_alone_neither_liability_nor_immunity",
+      "dirtort_participation_authorization_or_knowing_consent",
+      "dirtort_distinct_from_alter_ego_veil_piercing",
+      "dirtort_duty_owed_to_the_third_person_requirement",
+      "dirtort_what_a_plaintiff_must_show_negligence",
+      "dirtort_business_judgment_rule_does_not_govern_third_party_claims",
+      "dirtort_agency_roots_civil_code_2343",
+      "dirtort_llc_members_managers_17703_04",
+      "dirtort_shareholders_investors_and_control_persons",
+      "dirtort_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "entityName",
+        "label": "Corporation or LLC name",
+        "placeholder": "Acme Widgets, Inc.",
+        "required": true
+      },
+      {
+        "id": "personName",
+        "label": "Name of the person whose potential personal liability is under consideration",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "personRole",
+        "label": "That person's position with the entity",
+        "placeholder": "president, director, and majority shareholder",
+        "required": true
+      },
+      {
+        "id": "conductDescription",
+        "label": "Conduct at issue, if any has been identified",
+        "placeholder": "supervision of the March 2026 roof installation at 123 Main Street",
+        "required": false
+      },
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Casey Nguyen",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 13, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Sacramento, California",
+        "required": true
+      }
+    ]
   }
 ]
