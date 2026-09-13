@@ -36010,5 +36010,71 @@
         "required": false
       }
     ]
+  },
+  {
+    "id": "preorganization_contracts_info_sheet",
+    "title": "Contracts Signed Before the Corporation or LLC Exists — Preorganization Contracts, Adoption, and Ratification (Corp. Code §§ 200, 17702.01, 25019; Civ. Code §§ 1530–1532, 1589, 2307–2313, 2342–2343; 02 Development, LLC v. 607 South Park, LLC; El Rio Oils, Ltd. v. Pacific Coast Asphalt Co.; Cleveland v. Johnson) — Information Sheet",
+    "description": "Explains, in the statutes' and the courts' own words, what California law says about an agreement signed in the name of a corporation or limited liability company before that entity exists: the filing-based moment of formation fixed by Corporations Code section 200(a) and (c) for corporations and section 17702.01(a), (d), and (e) for limited liability companies; the Court of Appeal's statement in 02 Development, LLC v. 607 South Park, LLC that a nonexistent business entity is not a party to a contract signed in its name — a contention the court called true but irrelevant — and its holding that once the entity comes into existence it may enforce a preorganization contract made on its behalf if it adopts or ratifies it, with no different rule for limited liability companies; the same principle stated in El Rio Oils, Ltd. v. Pacific Coast Asphalt Co. (1949); the Civil Code's general ratification provisions, including ratification by accepting or retaining the benefit of the act with notice (sections 2307, 2310, 2312, 2313) and section 1589's rule that voluntary acceptance of the benefit of a transaction is consent to its obligations; Cleveland v. Johnson's treatment of the evidence supporting a later-formed corporation's ratification of a preincorporation contract, including the actual-knowledge language of Commercial Lumber Co. v. Ukiah Lumber Mills, the rule that an interested director's or promoter's knowledge is not imputed to the corporation, and the court's refusal to apply that limit absent self-dealing; the Civil Code provisions on a person who assumes to act as an agent (sections 2342 and 2343) and the absence of any located California holding stating the treatise rule of promoter liability; the definition and forms of novation (sections 1530 through 1532); the fiduciary position California courts assign to promoters, quoted through Cleveland from California-Calaveras Mining Co. v. Walls; the inclusion of a “preorganization certificate or subscription” in the statutory definition of a security at Corporations Code section 25019; and the limits both Court of Appeal decisions placed on their own holdings. A companion to this corpus's Founders' Agreement, Articles of Incorporation, LLC Articles of Organization, alter ego, corporate signing authority, and California limited offering exemption documents.",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "preorgcontract_declaration",
+      "preorgcontract_when_entity_begins_to_exist",
+      "preorgcontract_entity_not_a_party_before_formation",
+      "preorgcontract_entity_may_adopt_after_formation",
+      "preorgcontract_civil_code_ratification_rules",
+      "preorgcontract_ratification_knowledge_and_self_dealing",
+      "preorgcontract_position_of_the_person_who_signed",
+      "preorgcontract_novation",
+      "preorgcontract_promoter_fiduciary_position",
+      "preorgcontract_preorganization_subscription_is_a_security",
+      "preorgcontract_what_these_authorities_do_not_decide",
+      "preorgcontract_ack"
+    ],
+    "fields": [
+      {
+        "id": "entityName",
+        "label": "Name of the corporation or LLC (as intended or as later formed)",
+        "placeholder": "e.g., Harbor Lane Coffee, LLC",
+        "required": true
+      },
+      {
+        "id": "signerName",
+        "label": "Name of the person who signed",
+        "placeholder": "e.g., Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "otherPartyName",
+        "label": "Name of the other party to the agreement",
+        "placeholder": "e.g., Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "contractDate",
+        "label": "Date the agreement was signed",
+        "placeholder": "e.g., March 3, 2026",
+        "required": true
+      },
+      {
+        "id": "preparerName",
+        "label": "Preparer's name",
+        "placeholder": "e.g., Jane Doe",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "e.g., January 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, State",
+        "placeholder": "e.g., Los Angeles, California",
+        "required": true
+      }
+    ]
   }
 ]
