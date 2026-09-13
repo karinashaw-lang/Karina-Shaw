@@ -36428,5 +36428,66 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "arbitration_wrongful_termination_armendariz_info_sheet",
+    "title": "Enforceability of an Arbitration Agreement Covering a Wrongful-Termination Claim: the Armendariz Minimum Requirements, Unconscionability, and Severance (Code Civ. Proc. §§ 1281.2, 1281.97, 1281.98; Civ. Code § 1670.5; Armendariz v. Foundation Health Psychcare Services; Little v. Auto Stiegler; OTO, L.L.C. v. Kho; Ramirez v. Charter Communications) — Information Sheet",
+    "description": "Explains the standards a California court applies when an employer asks it to enforce a pre-dispute arbitration agreement against a former employee’s wrongful-termination or discrimination claim. Covers the two statutes the analysis runs through — Code of Civil Procedure section 1281.2, which directs a court to compel arbitration where an agreement exists unless waiver or rescission grounds are shown, and Civil Code section 1670.5, which supplies the unconscionability defense and the court’s three possible responses to it; the five minimum requirements Armendariz v. Foundation Health Psychcare Services, Inc. (2000) adopted for the arbitration of unwaivable rights (neutral arbitrator, adequate discovery, written award, full statutory relief, and no unreasonable costs or arbitrator fees), including the holdings that a remedies limitation is unlawful, that adequate discovery and a written decision are read into the agreement, and that the employer impliedly must pay all costs unique to arbitration; Little v. Auto Stiegler, Inc. (2003), extending those requirements to a common law Tameny wrongful-discharge claim and treating them as unpreempted state contract law; the unconscionability framework as restated in OTO, L.L.C. v. Kho (2019), with its procedural and substantive elements, sliding scale, and burden of proof; Armendariz’s adhesion analysis and its requirement of a modicum of bilaterality; and the severance question — Armendariz’s permeation analysis and Ramirez v. Charter Communications, Inc. (2024), which held there is no bright line rule tied to the number of unconscionable terms and set out the qualitative inquiry. Also covers the Code of Civil Procedure section 1281.97 and 1281.98 rule that a drafting party’s failure to pay arbitration fees within 30 days is a material breach that waives the right to compel arbitration. A companion to this corpus’s sheets on the Labor Code section 432.6 restriction on requiring arbitration, on PAGA representative claims and arbitration, and on wrongful termination in violation of public policy, none of which addresses whether an existing arbitration agreement is enforceable.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "armenmin_declaration",
+      "armenmin_statutory_frame",
+      "armenmin_five_minimum_requirements",
+      "armenmin_remedies_may_not_be_limited",
+      "armenmin_discovery_and_written_award",
+      "armenmin_forum_costs",
+      "armenmin_tameny_claims_little",
+      "armenmin_unconscionability_elements",
+      "armenmin_adhesion_and_bilaterality",
+      "armenmin_severance_or_refusal",
+      "armenmin_severance_ramirez",
+      "armenmin_fee_payment_default",
+      "armenmin_boundaries"
+    ],
+    "fields": [
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Employer name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "positionTitle",
+        "label": "Position held at separation",
+        "placeholder": "Field Technician",
+        "required": true
+      },
+      {
+        "id": "separationDate",
+        "label": "Date the employment ended",
+        "placeholder": "July 10, 2026",
+        "required": true
+      },
+      {
+        "id": "agreementDate",
+        "label": "Date the arbitration agreement was signed",
+        "placeholder": "January 8, 2024",
+        "required": false
+      },
+      {
+        "id": "arbitrationProvider",
+        "label": "Arbitration provider named in the agreement",
+        "placeholder": "American Arbitration Association",
+        "required": false
+      }
+    ]
   }
 ]
