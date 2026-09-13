@@ -36295,5 +36295,58 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "copyright_claims_board_info_sheet",
+    "title": "Copyright Claims Board (CASE Act, 17 U.S.C. §§ 1501-1511) — Information Sheet",
+    "description": "An informational sheet on the Copyright Claims Board, the small-claims copyright tribunal Congress created in the Copyright Office through the CASE Act of 2020, covering the claims the Board may and may not decide under 17 U.S.C. § 1504, the § 1505 registration requirement, the three-year limitations period and tolling of the court deadline, filing and the 90-day service rule, the respondent's 60-day opt-out right and the preemptive opt-out for libraries and archives, the $30,000 recovery ceiling and the $15,000/$7,500 statutory damages caps, limited discovery and the $5,000 smaller claims track, default determinations, reconsideration and Register review, the non-precedential effect of determinations under § 1507, confirmation of an unpaid award as a court judgment under § 1508(a) as applied in In re Bronner v. Essayzoo, the three grounds for court review under § 1508(c) as described in Santora v. Copyright Claims Board, and the bad-faith fee award and twelve-month bar in § 1506(y).",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "ccb_intro",
+      "ccb_relationship_to_other_documents",
+      "ccb_establishment_and_voluntary_forum",
+      "ccb_permissible_claims",
+      "ccb_excluded_claims",
+      "ccb_registration_requirement",
+      "ccb_limitations_period_and_tolling",
+      "ccb_commencement_and_service",
+      "ccb_opt_out_procedure",
+      "ccb_monetary_limits_and_relief",
+      "ccb_discovery_smaller_claims_and_default",
+      "ccb_reconsideration_and_register_review",
+      "ccb_effect_of_determination",
+      "ccb_district_court_confirmation",
+      "ccb_limited_judicial_review",
+      "ccb_bad_faith_conduct",
+      "ccb_ack"
+    ],
+    "fields": [
+      {
+        "id": "partyName",
+        "label": "Name of the person or business this information sheet concerns",
+        "placeholder": "Acme Illustration, LLC",
+        "required": true
+      },
+      {
+        "id": "workDescription",
+        "label": "Description of the work at issue",
+        "placeholder": "A set of registered digital illustrations posted on the company website",
+        "required": true
+      },
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 13, 2026",
+        "required": true
+      }
+    ]
   }
 ]
