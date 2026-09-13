@@ -35328,5 +35328,80 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "creditor_claims_revocable_trust_info_sheet",
+    "title": "Creditors' Claims Against a Deceased Settlor's Revocable Trust (Prob. Code § 19000 et seq.; Code Civ. Proc. § 366.2; Arluk Medical Center v. Dobler; Embree v. Embree) — Information Sheet",
+    "description": "Explains, using the statutes' own text and the published decisions in Arluk Medical Center Industrial Group, Inc. v. Dobler (2004) and Embree v. Embree (2004), what California law provides about the claims of a deceased settlor's creditors against the property of that settlor's revocable trust: the rule of Probate Code § 19001(a) that property subject to the power of revocation at death is answerable for the claims of the creditors of the settlor's probate estate and the expenses of administering it, to the extent the probate estate is inadequate, and § 19002's preservation of other creditor rights and of the separate probate claims procedure; the Part 8 definitions of \"claim,\" \"creditor,\" \"trust,\" \"deceased settlor,\" and \"trust estate\" in § 19000, including the exclusion of disputes over title to specific property; the one-year outside limitations period of Code of Civil Procedure § 366.2 for an action on a liability of a person who has died, its short list of exceptions, and the two Probate Code sections (§§ 19100(c), 19103(b)) that decline to extend it; the fact that the trust claims proceeding of § 19003 is optional, that § 19010 imposes no duty to begin it and no liability for not beginning it, and that § 19008 leaves the trust's liability \"as otherwise provided by law\" when it is not begun; what changes when a trustee does begin it — §§ 19004 and 19006's barring of unfiled claims and extension of the protection to the settlor's other trusts; the publication requirements of § 19040 and the duty under § 19050 to notify a creditor the trustee knows of; the filing deadline of § 19100 (the later of four months after first publication or 60 days after actual notice) and the narrow late-claim petition of § 19103 with its one-year ceiling; how a claim is filed and what affidavit and attachments it needs (§§ 19150-19152), and the trustee's § 19154 election to treat a written demand as a claim by paying it; the trustee's allowance or rejection under §§ 19250-19253, and § 19254's rule that 30 days of silence may be treated as a rejection; the 90-day period under § 19255 for an action on a rejected claim, the notice of pendency, the 120-day rule protecting later distributions, and the prevailing-party costs provision; how money judgments are paid in the course of administration rather than enforced under the Enforcement of Judgments Law (§§ 19300-19303); the personal liability of trust beneficiaries who received distributions where neither a probate nor a trust claims proceeding was begun (§§ 19400-19403), limited pro rata and capped at the value distributed; and how a pending probate of the settlor's estate bars the trust claims proceeding while extending the personal representative's creditor protection to the trustee and beneficiaries (§§ 19003(a), 19006(b)). A companion to the corpus's Creditor's Claim Against a Decedent's Estate sheet, which covers the separate probate procedure under Probate Code § 9000 et seq. Informational only; it does not determine whether any claim is timely, valid, or collectible.",
+    "categories": [
+      "Estate Planning"
+    ],
+    "clauseOrder": [
+      "trustcred_declaration",
+      "trustcred_trust_property_liable",
+      "trustcred_what_is_a_claim",
+      "trustcred_one_year_outside_limit",
+      "trustcred_procedure_is_optional",
+      "trustcred_effect_of_electing",
+      "trustcred_notice_to_creditors",
+      "trustcred_time_to_file",
+      "trustcred_filing_and_contents",
+      "trustcred_allowance_or_rejection",
+      "trustcred_action_on_rejected_claim",
+      "trustcred_judgments",
+      "trustcred_distributee_liability",
+      "trustcred_probate_interaction",
+      "trustcred_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "settlorName",
+        "label": "Name of the deceased settlor",
+        "placeholder": "Alvin R. Embree",
+        "required": true
+      },
+      {
+        "id": "trustName",
+        "label": "Name of the revocable trust",
+        "placeholder": "The Embree Family Revocable Trust dated March 4, 2014",
+        "required": true
+      },
+      {
+        "id": "trusteeName",
+        "label": "Name of the trustee",
+        "placeholder": "Dana R. Dobler",
+        "required": true
+      },
+      {
+        "id": "creditorName",
+        "label": "Name of the creditor asserting or considering a claim",
+        "placeholder": "Arluk Medical Center",
+        "required": true
+      },
+      {
+        "id": "countyName",
+        "label": "County whose superior court has jurisdiction over the trust",
+        "placeholder": "San Diego",
+        "required": true
+      },
+      {
+        "id": "preparerName",
+        "label": "Name of the person preparing this sheet",
+        "placeholder": "Joanne M. Reyes",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 13, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state where signed",
+        "placeholder": "San Diego, California",
+        "required": true
+      }
+    ]
   }
 ]
