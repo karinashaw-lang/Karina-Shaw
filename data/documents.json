@@ -35403,5 +35403,75 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "bulk_sale_notice_info_sheet",
+    "title": "Bulk Sale Notice When a Business's Inventory Is Sold (Cal. U. Com. Code §§ 6101–6111; Gifford v. J & A Holdings; Monastra v. Konica Business Machines; Bus. & Prof. Code § 24074) — Information Sheet",
+    "description": "Explains, in the statutes' and the courts' own words, California's bulk sale law — Division 6 of the Commercial Code, sections 6101 through 6111 — which requires the buyer of more than half of a business's inventory and equipment, where the seller's principal business is selling inventory from stock or running a restaurant, to record, publish, and mail a public notice at least 12 business days before the sale, and, in sales of $2,000,000 or less that are substantially all cash, to route the purchase money through a claims procedure for the seller's creditors: the statutory definition of a bulk sale and of the \"date of the bulk sale\"; the two conditions in section 6103(a); the sixteen excluded categories, including the $10,000 floor, the $5,000,000 ceiling, and the debt-assumption exclusions; the narrow definition of \"claimant\"; the buyer's three duties under section 6104; the required contents, recording, publication, and tax-collector delivery of the notice under section 6105, with the Court of Appeal's holding in Gifford v. J & A Holdings (1997) that the 12 business days run from the anticipated sale date stated in the notice; the escrow claims machinery of sections 6106.2 and 6106.4, including the 125 percent withholding for disputed claims, the 45-day pay-or-interplead duty, and the six-step priority order when the money runs short; section 6107's damages remedy, its burden allocation, its cap at twice the net contract price, and its statement that noncompliance does not void the sale or impair the buyer's title; the good-faith, commercially-reasonable-effort defense and Gifford's refusal to find it satisfied; the modified rules for auctions and liquidators under section 6108; the one-year limitation period and concealment tolling under section 6110; Monastra v. Konica Business Machines (1996), holding that the bulk sale law and the fraudulent transfer laws are cumulative independent schemes so that compliance with one does not satisfy the other; and the separate alcoholic-beverage-license escrow and eight-step creditor priority of Business and Professions Code section 24074, which section 6103(c)(15) makes an alternative route. A companion to this corpus's successor-liability, Uniform Voidable Transactions Act, and UCC-1 financing statement sheets.",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "bulksale_declaration",
+      "bulksale_what_is_a_bulk_sale",
+      "bulksale_excluded_transactions",
+      "bulksale_who_is_a_claimant",
+      "bulksale_buyer_three_duties",
+      "bulksale_notice_contents_and_timing",
+      "bulksale_gifford_12_business_days",
+      "bulksale_escrow_claims_procedure",
+      "bulksale_insufficient_consideration_priorities",
+      "bulksale_noncompliance_liability",
+      "bulksale_good_faith_defense",
+      "bulksale_auctions_and_liquidators",
+      "bulksale_limitation_period",
+      "bulksale_fraudulent_transfer_independent",
+      "bulksale_liquor_license_escrow",
+      "bulksale_ack"
+    ],
+    "fields": [
+      {
+        "id": "buyerName",
+        "label": "Buyer's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "sellerName",
+        "label": "Seller's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "businessName",
+        "label": "Business name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "closingDate",
+        "label": "Closing date",
+        "placeholder": "November 15, 2026",
+        "required": true
+      },
+      {
+        "id": "preparerName",
+        "label": "Preparer's name",
+        "placeholder": "e.g., Jane Doe",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "e.g., January 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, State",
+        "placeholder": "e.g., Los Angeles, California",
+        "required": true
+      }
+    ]
   }
 ]
