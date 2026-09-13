@@ -34873,5 +34873,46 @@
         "required": false
       }
     ]
+  },
+  {
+    "id": "residential_late_fee_liquidated_damages_info_sheet",
+    "title": "Late Fees on Residential Rent as Liquidated Damages (Civ. Code §§ 1671(d), 1951.5) — Information Sheet",
+    "description": "Explains, using the statutes' and courts' own words, how California law treats a late fee charged on residential rent: Civil Code § 1951.5 applying the liquidated damages statute to leases of real property; § 1671(c)(2)-(d) making a liquidated damages provision in a dwelling lease void unless it was impracticable or extremely difficult to fix the actual damage; the allocation of the burden of pleading and proof to the landlord in Orozco v. Casimiro and Del Monte Properties v. Dolan; the two-element test (impracticability plus a reasonable endeavor to estimate fair average compensation) and the rejection of percentage-of-rent pricing and post-hoc rationalization; the rule that a lease recital is not itself proof; the Supreme Court's penalty analysis in Garrett v. Coast & Southern Federal Sav. & Loan Assn.; what a landlord's actual loss from late rent consists of; the absence of any statutory dollar or percentage ceiling for rent late fees, contrasted with the express ceiling for common interest development assessments in § 5650(b)(2); the effect of an invalid late fee on a three-day notice under Code of Civil Procedure § 1161(2) and the bar on charging a fee to serve a notice under § 1161(6); and the separate dishonored-check service charge scheme of Civil Code § 1719.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "latefee_declaration",
+      "latefee_1671_dwelling_lease_rule",
+      "latefee_orozco_burden_of_proof",
+      "latefee_two_element_test",
+      "latefee_contract_recital_not_conclusive",
+      "latefee_garrett_penalty_principle",
+      "latefee_measure_of_actual_loss",
+      "latefee_no_statutory_amount_for_rent",
+      "latefee_three_day_notice_and_notice_fees",
+      "latefee_returned_check_service_charge",
+      "latefee_ack"
+    ],
+    "fields": [
+      {
+        "id": "propertyAddress",
+        "label": "Rental property address",
+        "placeholder": "123 Main St., Apt. 4, Sacramento, CA 95814",
+        "required": true
+      },
+      {
+        "id": "landlordName",
+        "label": "Landlord's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "tenantName",
+        "label": "Tenant's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      }
+    ]
   }
 ]
