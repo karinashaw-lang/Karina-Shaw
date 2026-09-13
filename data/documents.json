@@ -37120,5 +37120,69 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "professional_practice_goodwill_info_sheet",
+    "title": "Goodwill of a Professional Practice or Business in a Marital Dissolution — Information Sheet",
+    "description": "Explains what California law says about the goodwill of a professional practice or business as a divisible item of the community estate: Business and Professions Code sections 14100 and 14102, which define the good will of a business as the expectation of continued public patronage and make it transferable property; Golden v. Golden (1969) 270 Cal.App.2d 401, holding that a sole practitioner's professional goodwill is taken into account in dividing the community; In re Marriage of Foster (1974) 42 Cal.App.3d 577, holding that the value must exist at dissolution, must not depend on the practitioner's continuing net income or post-marital efforts, and is not limited to what a willing buyer would pay; In re Marriage of Watts (1985) 171 Cal.App.3d 366, holding that the court must determine whether goodwill exists and that an unsalable practice is not automatically without goodwill; In re Marriage of McTiernan & Dubrow (2005) 133 Cal.App.4th 1090, holding that goodwill attaches to a business with assets rather than to a natural person's skill and reputation; In re Marriage of Garrity & Bishton (1986) 181 Cal.App.3d 675, describing the excess-earnings method and holding that a practice's other assets must also be valued; In re Marriage of Rosen (2002) 105 Cal.App.4th 808, directing a goodwill value of zero where the excess-earnings analysis was flawed; and In re Marriage of Ackerman (2006) 146 Cal.App.4th 191, treating goodwill value as a question of fact reviewed for substantial evidence. Also covers the valuation-date rule of Family Code section 2552, the equal-division mandate of section 2550, and the power under section 2601 to award an asset to one spouse.",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "profgw_declaration",
+      "profgw_bpc_14100_14102_statutory_definition",
+      "profgw_golden_sole_practitioner_goodwill",
+      "profgw_foster_value_must_exist_at_dissolution",
+      "profgw_foster_market_price_and_post_marital_efforts",
+      "profgw_watts_must_determine_and_unsalable_practice",
+      "profgw_mctiernan_goodwill_requires_a_business",
+      "profgw_garrity_excess_earnings_steps",
+      "profgw_garrity_practice_has_assets_beyond_goodwill",
+      "profgw_rosen_goodwill_value_of_zero",
+      "profgw_ackerman_question_of_fact_substantial_evidence",
+      "profgw_fam2552_valuation_date",
+      "profgw_fam2550_2601_equal_division_and_award_of_asset",
+      "profgw_boundaries",
+      "profgw_related_sheets",
+      "profgw_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "party1Name",
+        "label": "First party's full legal name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "party2Name",
+        "label": "Second party's full legal name",
+        "placeholder": "Morgan Casey Lee",
+        "required": true
+      },
+      {
+        "id": "practiceDescription",
+        "label": "Short description of the practice or business at issue",
+        "placeholder": "a solo dental practice in Sacramento",
+        "required": true
+      },
+      {
+        "id": "countyOfFiling",
+        "label": "County of filing",
+        "placeholder": "Sacramento County",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 13, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Sacramento, California",
+        "required": true
+      }
+    ]
   }
 ]
