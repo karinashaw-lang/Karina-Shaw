@@ -35953,5 +35953,62 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "feha_continuing_violation_and_accrual_info_sheet",
+    "title": "When the Clock Starts on a FEHA or Wrongful-Termination Claim: Accrual at Actual Termination and the Continuing Violation Doctrine (Gov. Code §§ 12960, 12993; Romano v. Rockwell Internat.; Richards v. CH2M Hill; Yanowitz v. L’Oreal USA) — Information Sheet",
+    "description": "Explains, using the statutory text and three California Supreme Court decisions, when the filing period on a Fair Employment and Housing Act claim and on a wrongful-termination claim begins to run, and when conduct occurring before that point can still be part of the claim: the Government Code section 12960 administrative filing deadline (three years today, one year when these cases were decided) and the section 12993, subdivision (a) liberal-construction rule; Romano v. Rockwell Internat., Inc. (1996), holding that a discharge claim accrues at the actual termination rather than at the advance notice of it, and applying the same accrual date to the implied-contract claim and to the Tameny public-policy tort claim; Richards v. CH2M Hill, Inc. (2001), defining the continuing violation doctrine, separating its evidentiary question from its remedial one, adopting the modified three-factor test (similar in kind, reasonable frequency, no degree of permanence) and redefining “permanence” as the point at which the employer makes clear that further informal conciliation would be futile; and Yanowitz v. L’Oreal USA, Inc. (2005), extending the doctrine to retaliation claims, holding that a series of retaliatory acts may be considered collectively even though no single act would be actionable alone, stating the materially-affects standard for an adverse employment action, and declining to follow the federal discrete-acts rule of National Railroad Passenger Corp. v. Morgan. A companion to this corpus’s FEHA administrative complaint sheet, which covers the Civil Rights Department process and the right-to-sue notice rather than accrual, and to its constructive discharge, wrongful-termination-in-violation-of-public-policy, at-will presumption, and mixed-motive sheets, none of which addresses when a limitations period begins to run.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "contviol_declaration",
+      "contviol_feha_filing_deadline",
+      "contviol_accrual_at_actual_termination_romano",
+      "contviol_romano_contract_and_public_policy_claims",
+      "contviol_doctrine_defined_richards",
+      "contviol_three_part_test_and_permanence",
+      "contviol_when_the_clock_starts_richards",
+      "contviol_retaliation_and_collective_acts_yanowitz",
+      "contviol_federal_discrete_acts_contrast"
+    ],
+    "fields": [
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Employer name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "positionTitle",
+        "label": "Position held at separation",
+        "placeholder": "Project Engineer",
+        "required": true
+      },
+      {
+        "id": "separationNoticeDate",
+        "label": "Date the employer said the employment would end",
+        "placeholder": "March 2, 2026",
+        "required": false
+      },
+      {
+        "id": "separationDate",
+        "label": "Date the employment actually ended",
+        "placeholder": "August 28, 2026",
+        "required": true
+      },
+      {
+        "id": "earliestConductDate",
+        "label": "Date of the earliest workplace conduct described",
+        "placeholder": "November 14, 2022",
+        "required": false
+      }
+    ]
   }
 ]
