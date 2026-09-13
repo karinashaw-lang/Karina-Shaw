@@ -37022,5 +37022,57 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "car_wash_employer_registration_info_sheet",
+    "title": "Car Wash Employer Registration, Bonding, and Successor Liability (Labor Code §§ 2050–2066) — Information Sheet",
+    "description": "Explains California's regulation of the car washing and polishing industry under Labor Code Part 8.5: the Section 2051 definitions of “car washing and polishing,” “employer,” and “employee” and the businesses excluded from coverage, the annual registration required by Section 2054 and the Section 2060 bar on operating without registration and bond, the Section 2055 conditions including the $150,000 surety bond and workers' compensation documentation, the sworn application and disclosure items of Section 2061, the Section 2062 grounds for denial, the Section 2059 fees and the Car Wash Worker Restitution Fund of Section 2065, the proof-of-registration posting and renewal notice, the three-year recordkeeping duty of Section 2052, the public list of registrants, the $100-per-day civil fine of Section 2064, and the four-part successor liability rule of Section 2066 as construed in People ex rel. Harris v. Sunset Car Wash, LLC.",
+    "categories": [
+      "Hiring"
+    ],
+    "clauseOrder": [
+      "carwashreg_intro",
+      "carwashreg_covered_business_and_employee_defined",
+      "carwashreg_employer_exclusions",
+      "carwashreg_annual_registration_required",
+      "carwashreg_registration_conditions",
+      "carwashreg_surety_bond",
+      "carwashreg_written_application",
+      "carwashreg_denial_grounds",
+      "carwashreg_fees_and_restitution_fund",
+      "carwashreg_proof_posting_and_renewal",
+      "carwashreg_recordkeeping",
+      "carwashreg_public_list_and_enforcement",
+      "carwashreg_civil_fine_unregistered",
+      "carwashreg_successor_liability_statute",
+      "carwashreg_sunset_car_wash_construction",
+      "carwashreg_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme Car Wash, LLC",
+        "required": true
+      },
+      {
+        "id": "jobTitle",
+        "label": "Job title",
+        "placeholder": "Car wash attendant",
+        "required": true
+      },
+      {
+        "id": "applicantName",
+        "label": "Applicant's name",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 13, 2026",
+        "required": true
+      }
+    ]
   }
 ]
