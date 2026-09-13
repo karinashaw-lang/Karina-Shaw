@@ -34873,5 +34873,64 @@
         "required": false
       }
     ]
+  },
+  {
+    "id": "punitive_damages_employer_wrongful_termination_info_sheet",
+    "title": "Punitive Damages Against an Employer in a Wrongful-Termination Case (Civ. Code §§ 3294, 3295; Gov. Code § 818; White v. Ultramar; College Hospital; Adams v. Murakami; Roby v. McKesson) — Information Sheet",
+    "description": "Explains, using the statutes' own text and four California Supreme Court decisions, when punitive (exemplary) damages may be assessed against an employer on account of a termination: Civil Code section 3294(a)'s limitation to actions for breach of an obligation not arising from contract and its clear-and-convincing standard; the subdivision (c) definitions of malice, oppression, and fraud and the “despicable conduct” requirement the 1987 Civil Liability Reform Act added, as construed in College Hospital Inc. v. Superior Court; the separate limits subdivision (b) places on an employer's liability for an employee's acts (advance knowledge of unfitness with conscious disregard, authorization, ratification, or the employer's own oppression, fraud, or malice) and the requirement that, for a corporate employer, the conduct be that of an officer, director, or managing agent; White v. Ultramar, Inc.'s construction of “managing agent” as an employee exercising substantial discretionary authority over decisions that ultimately determine corporate policy, and Roby v. McKesson Corp.'s explanation that this means formal policies affecting a substantial portion of the company; what ratification requires; Adams v. Murakami's rule that the record must contain meaningful evidence of the defendant's financial condition and that the plaintiff must introduce it; Civil Code section 3295's rules against pleading an amount, against pretrial discovery of financial condition absent a court order, and for bifurcation on a defendant's application; the federal constitutional guideposts and Roby's one-to-one ratio holding; and Government Code section 818's rule that a public entity is not liable for punitive damages. A companion to this corpus's wrongful-termination-in-violation-of-public-policy, mixed-motive, at-will presumption, and mitigation-of-damages sheets, none of which addresses punitive damages, and to the Hiring-category fraudulent-inducement-of-employment sheet, whose single section 3294 clause quotes subdivisions (a), (b), and (c)(3) for a recruiting-fraud claim and expressly leaves the case law construing “managing agent” uncovered.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "punidam_declaration",
+      "punidam_statutory_basis_3294a_noncontract_clear_and_convincing",
+      "punidam_definitions_malice_oppression_fraud_despicable",
+      "punidam_employer_liability_3294b_routes",
+      "punidam_managing_agent_white_ultramar",
+      "punidam_managing_agent_corporate_policy_roby",
+      "punidam_ratification_college_hospital",
+      "punidam_financial_condition_evidence_adams",
+      "punidam_procedure_3295_pleading_discovery_bifurcation",
+      "punidam_constitutional_limits_ratio_roby",
+      "punidam_public_entity_employers_gov_818"
+    ],
+    "fields": [
+      {
+        "id": "employeeName",
+        "label": "Employee name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Employer name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "positionTitle",
+        "label": "Position held at separation",
+        "placeholder": "Assistant Store Manager",
+        "required": true
+      },
+      {
+        "id": "terminationDate",
+        "label": "Separation date",
+        "placeholder": "August 28, 2026",
+        "required": true
+      },
+      {
+        "id": "decisionMakerTitle",
+        "label": "Title of the person who made the separation decision",
+        "placeholder": "Zone Manager",
+        "required": false
+      },
+      {
+        "id": "employerForm",
+        "label": "Form of the employer (corporation, LLC, partnership, public entity, individual)",
+        "placeholder": "California corporation",
+        "required": false
+      }
+    ]
   }
 ]
