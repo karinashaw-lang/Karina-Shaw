@@ -111617,6 +111617,255 @@
       "title": "Signature and Receipt",
       "kind": "drafting",
       "body": "Employee Signature: ☐ _________________________ Date: _______________\n\n{{employeeName}} (print name)\n\nEmployer Representative Signature: ☐ _________________________ Date: _______________\n\n{{companyName}} (print name and title)"
+    },
+    {
+      "id": "dmca1202_intro",
+      "title": "Purpose and Scope of This Copyright Management Information Sheet",
+      "kind": "drafting",
+      "body": "This Information Sheet describes 17 U.S.C. § 1202, the Digital Millennium Copyright Act section titled “Integrity of copyright management information,” which prohibits providing or distributing false copyright management information (“CMI”) and prohibits removing or altering CMI in the circumstances the statute specifies, together with the civil remedies for a violation set out in 17 U.S.C. § 1203 and the criminal penalties set out in 17 U.S.C. § 1204. It is prepared by {{preparerName}} concerning {{companyName}}'s {{workDescription}}. Section 1202 concerns the identifying information carried with a work — the information set out in a copyright notice, the title, the name of the author or copyright owner, terms and conditions for use, and identifying numbers or links referring to that information, including when such information travels with a digital file as metadata — rather than the creative content of the work itself. A claim under § 1202 is therefore a different claim from copyright infringement under 17 U.S.C. § 501: the statutory elements of § 1202 turn on the handling of CMI and on the actor's state of mind with respect to infringement, and the section is enforced through the separate civil action created by § 1203. This document is a general informational reference describing what the statute and the published decisions say; it is not a court filing, a demand letter, a compliance certification, or legal advice about whether any particular handling of {{workDescription}} does or does not violate 17 U.S.C. § 1202."
+    },
+    {
+      "id": "dmca1202_relationship_to_other_documents",
+      "title": "How This Information Sheet Relates to This Project's Other Copyright Documents",
+      "kind": "drafting",
+      "body": "Section 1202 sits beside several other parts of Title 17 that this project covers in separate documents, and this Information Sheet does not restate them. 17 U.S.C. § 512, the notice-and-takedown safe harbor addressed by this project's DMCA Takedown Notice, DMCA Counter-Notification, and § 512(c) safe harbor documents, concerns an online service provider's liability for material stored or transmitted at a user's direction and the notice procedure for removing or restoring it. 17 U.S.C. § 1201, addressed by this project's DMCA Anti-Circumvention and Reverse-Engineering Exemptions Information Sheet, concerns circumventing technological measures that control access to a work and trafficking in circumvention tools; § 1201 and § 1202 are separate prohibitions that share the single civil-remedies section, § 1203, and the single criminal-penalties section, § 1204. Registration of a copyright claim with the U.S. Copyright Office, addressed by this project's copyright registration document, is a separate subject from the CMI conveyed with copies of a work. The attribution and integrity rights of visual artists under the federal Visual Artists Rights Act and the California Art Preservation Act, addressed by this project's documents on those statutes, are separate rights that attach to certain works of visual art and are not the subject of § 1202. This Information Sheet concerning {{workDescription}} addresses §§ 1202–1204 only."
+    },
+    {
+      "id": "dmca1202_false_cmi",
+      "title": "Section 1202(a): Providing or Distributing False Copyright Management Information",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-13",
+      "body": "17 U.S.C. § 1202(a) prohibits two acts involving false CMI: providing copyright management information that is false (§ 1202(a)(1)), and distributing or importing for distribution copyright management information that is false (§ 1202(a)(2)). Both acts are governed by a single mental-state phrase placed at the front of the subsection: the person must act “knowingly and with the intent to induce, enable, facilitate, or conceal infringement.” Subsection (a) states that intent requirement in one form only; unlike subsection (b), which is addressed in a separate clause of this document, subsection (a) contains no alternative “reasonable grounds to know” standard for civil cases. A person injured by a violation of § 1202 may bring a civil action under 17 U.S.C. § 1203(a).",
+      "gap": "The statute does not define “false” in § 1202(a), does not state whose infringement the actor must intend to induce, enable, facilitate, or conceal, and does not say how CMI must be “provide[d]” for the subsection to apply; those questions are resolved by case law that this clause does not summarize. The Ninth Circuit decision cited elsewhere in this document (Stevens v. Corelogic) construes § 1202(b), not § 1202(a), and no case-law citation is offered here for subsection (a): CourtListener's public search index, the only case-law retrieval path available in this environment, is rate-limited and shared, and the research for this document budgeted its queries to the § 1202(b) decision rather than relying on unverified recollection of other holdings. This clause also does not address the limitations in § 1202(d) and § 1202(e) or the criminal provision in § 1204, each of which is described in a separate clause, and it does not state whether any particular labeling, credit, or watermark practice involving {{workDescription}} is or is not false CMI. The statutory text quoted here is taken from the Cornell Legal Information Institute rendering of the U.S. Code; the same section was independently retrieved from the Office of the Law Revision Counsel (uscode.house.gov, prelim edition, text current through laws in effect on September 11, 2026), whose rendering carries the identical statutory words and differs only in typography (straight quotation marks and apostrophes and a hyphen where Cornell prints curly marks and an em dash).",
+      "citations": [
+        {
+          "case": "17 U.S.C. § 1202(a) (Cornell LII text)",
+          "cite": "U.S. Code, prohibition on false copyright management information",
+          "url": "https://www.law.cornell.edu/uscode/text/17/1202",
+          "quote": "No person shall knowingly and with the intent to induce, enable, facilitate, or conceal infringement— (1) provide copyright management information that is false, or (2) distribute or import for distribution copyright management information that is false."
+        },
+        {
+          "case": "17 U.S.C. § 1203(a) (Cornell LII text)",
+          "cite": "U.S. Code, civil action for a violation of section 1201 or 1202",
+          "url": "https://www.law.cornell.edu/uscode/text/17/1203",
+          "quote": "Any person injured by a violation of section 1201 or 1202 may bring a civil action in an appropriate United States district court for such violation."
+        }
+      ]
+    },
+    {
+      "id": "dmca1202_removal_or_alteration",
+      "title": "Section 1202(b): Removal or Alteration of Copyright Management Information",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-13",
+      "body": "17 U.S.C. § 1202(b) prohibits three acts, each only when done “without the authority of the copyright owner or the law”: intentionally removing or altering any CMI (§ 1202(b)(1)); distributing or importing for distribution CMI knowing that it has been removed or altered without that authority (§ 1202(b)(2)); and distributing, importing for distribution, or publicly performing works, copies of works, or phonorecords, knowing that CMI has been removed or altered without that authority (§ 1202(b)(3)). A single concluding clause applies to all three paragraphs and adds a second knowledge requirement: the actor must know, or — for civil remedies under § 1203 — have reasonable grounds to know, that the act “will induce, enable, facilitate, or conceal an infringement of any right under this title.” Subsection (b) thus states two distinct mental-state elements: the one attached to the prohibited act itself (intentional removal or alteration under (b)(1); knowledge that CMI was removed or altered under (b)(2) and (b)(3)), and the separate forward-looking one in the concluding clause.",
+      "gap": "This clause states the statutory elements only. It does not resolve what counts as authority “of the copyright owner or the law,” whether an automated process that discards metadata is an “intentional” removal, or whether CMI must have been removed from the same copy that is later distributed — questions on which published district court decisions have divided and which this document does not survey. The meaning of the concluding knowledge clause in the Ninth Circuit, the federal circuit that includes California, is addressed in a separate clause of this document. This clause does not address § 1202(a) (false CMI), the definition in § 1202(c), or the limitations in § 1202(d) and (e), each described in a separate clause, and it does not state whether any handling of {{workDescription}} falls within the subsection. The statutory text quoted here is taken from the Cornell Legal Information Institute rendering of the U.S. Code; the same section was independently retrieved from the Office of the Law Revision Counsel (uscode.house.gov, prelim edition, text current through laws in effect on September 11, 2026), whose rendering carries the identical statutory words and differs only in typography (straight quotation marks and apostrophes and a hyphen where Cornell prints curly marks and an em dash).",
+      "citations": [
+        {
+          "case": "17 U.S.C. § 1202(b)(1) (Cornell LII text)",
+          "cite": "U.S. Code, prohibition on intentional removal or alteration of CMI",
+          "url": "https://www.law.cornell.edu/uscode/text/17/1202",
+          "quote": "No person shall, without the authority of the copyright owner or the law— (1) intentionally remove or alter any copyright management information,"
+        },
+        {
+          "case": "17 U.S.C. § 1202(b)(3) (Cornell LII text)",
+          "cite": "U.S. Code, prohibition on distributing works whose CMI has been removed",
+          "url": "https://www.law.cornell.edu/uscode/text/17/1202",
+          "quote": "distribute, import for distribution, or publicly perform works, copies of works, or phonorecords, knowing that copyright management information has been removed or altered without authority of the copyright owner or the law,"
+        },
+        {
+          "case": "17 U.S.C. § 1202(b) (concluding clause) (Cornell LII text)",
+          "cite": "U.S. Code, knowledge that the act will induce, enable, facilitate, or conceal infringement",
+          "url": "https://www.law.cornell.edu/uscode/text/17/1202",
+          "quote": "knowing, or, with respect to civil remedies under section 1203, having reasonable grounds to know, that it will induce, enable, facilitate, or conceal an infringement of any right under this title."
+        }
+      ]
+    },
+    {
+      "id": "dmca1202_cmi_defined",
+      "title": "What the Statute Defines as “Copyright Management Information”",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-13",
+      "body": "17 U.S.C. § 1202(c) defines “copyright management information” as any of eight listed categories of information “conveyed in connection with copies or phonorecords of a work or performances or displays of a work, including in digital form,” and expressly excludes from the term any personally identifying information about a user of a work or of a copy, phonorecord, performance, or display of a work. The listed categories are: the title and other information identifying the work, including the information set forth on a notice of copyright (§ 1202(c)(1)); the name of, and other identifying information about, the author (§ 1202(c)(2)); the name of, and other identifying information about, the copyright owner, including the information set forth in a notice of copyright (§ 1202(c)(3)); with an exception for public performances of works by radio and television broadcast stations, identifying information about a performer whose performance is fixed in a work other than an audiovisual work (§ 1202(c)(4)) and, for an audiovisual work, about a writer, performer, or director credited in it (§ 1202(c)(5)); terms and conditions for use of the work (§ 1202(c)(6)); identifying numbers or symbols referring to such information or links to such information (§ 1202(c)(7)); and such other information as the Register of Copyrights may prescribe by regulation, except that the Register may not require the provision of any information concerning the user of a copyrighted work (§ 1202(c)(8)).",
+      "gap": "The definition is a closed list subject only to expansion by regulation under § 1202(c)(8); this clause does not report whether the Register of Copyrights has prescribed any such regulation. The statute does not say in what form the listed information must appear, and it does not state which fields of a digital file's metadata qualify; the Ninth Circuit decision described in a separate clause of this document involved EXIF and IPTC photograph metadata and proceeded on the premise that such metadata can contain CMI, but this clause does not state that any particular metadata field in {{workDescription}} is or is not CMI, which depends on the content of the field and on whether it is “conveyed in connection with” copies, performances, or displays of the work. The statutory text quoted here is taken from the Cornell Legal Information Institute rendering of the U.S. Code; the same section was independently retrieved from the Office of the Law Revision Counsel (uscode.house.gov, prelim edition, text current through laws in effect on September 11, 2026), whose rendering carries the identical statutory words and differs only in typography (straight quotation marks and apostrophes and a hyphen where Cornell prints curly marks and an em dash).",
+      "citations": [
+        {
+          "case": "17 U.S.C. § 1202(c) (Cornell LII text)",
+          "cite": "U.S. Code, definition of “copyright management information”",
+          "url": "https://www.law.cornell.edu/uscode/text/17/1202",
+          "quote": "As used in this section, the term “copyright management information” means any of the following information conveyed in connection with copies or phonorecords of a work or performances or displays of a work, including in digital form, except that such term does not include any personally identifying information about a user of a work or of a copy, phonorecord, performance, or display of a work:"
+        },
+        {
+          "case": "17 U.S.C. § 1202(c)(1)-(3) (Cornell LII text)",
+          "cite": "U.S. Code, title, author, and copyright owner information",
+          "url": "https://www.law.cornell.edu/uscode/text/17/1202",
+          "quote": "(1) The title and other information identifying the work, including the information set forth on a notice of copyright. (2) The name of, and other identifying information about, the author of a work. (3) The name of, and other identifying information about, the copyright owner of the work, including the information set forth in a notice of copyright."
+        },
+        {
+          "case": "17 U.S.C. § 1202(c)(6)-(7) (Cornell LII text)",
+          "cite": "U.S. Code, terms and conditions of use; identifying numbers, symbols, and links",
+          "url": "https://www.law.cornell.edu/uscode/text/17/1202",
+          "quote": "(6) Terms and conditions for use of the work. (7) Identifying numbers or symbols referring to such information or links to such information."
+        }
+      ]
+    },
+    {
+      "id": "dmca1202_stevens_mental_state",
+      "title": "Ninth Circuit: Section 1202(b) Requires an Affirmative Showing About Future Infringement",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-13",
+      "body": "In Stevens v. Corelogic, Inc., 899 F.3d 666 (9th Cir. 2018), real estate photographers alleged that a multiple-listing-service software vendor's image-resizing software stripped EXIF and IPTC metadata from their photographs, in violation of 17 U.S.C. § 1202(b)(1) and (b)(3). The Ninth Circuit affirmed summary judgment for the software vendor, holding that both paragraphs require the defendant to have the mental state described in subsection (b)'s concluding clause, and that the plaintiff must make an affirmative showing — the court gave a past “pattern of conduct” or “modus operandi” as examples — that the defendant was aware, or had reasonable grounds to be aware, of the probable future impact of its actions. The court reasoned that the generic assertion that removing CMI makes infringement harder to detect “identifies a general possibility that exists whenever CMI is removed” and would render the statutory clause superfluous. At the same time, the court stated that because the statute is written in the future tense, a plaintiff need not show that a specific infringement has already occurred; the plaintiff must instead provide evidence from which future infringement can be inferred to be likely, though not certain, as a result of the removal or alteration. On the record there, neither photographer had used the metadata to detect infringement, and the court concluded the vendor was not liable under § 1202(b).",
+      "gap": "Stevens is a Ninth Circuit decision, binding federal precedent in the circuit that includes California but not a national rule; other circuits and district courts have described the § 1202(b) knowledge requirement in their own terms, and this clause does not survey them. The decision construes § 1202(b) only and says nothing about the distinct intent element of § 1202(a). It also does not decide whether the software's automated stripping of metadata was an “intentional” removal, because the case was resolved on the concluding-clause mental state. The opinion quoted here is the amended opinion reported at 899 F.3d 666, which superseded the panel's earlier opinion at 893 F.3d 648; the quotations are taken from CourtListener's rendering of the reported opinion, which that site labels as derived from a scanned document and therefore capable of containing typographical errors. Because the Ninth Circuit's own PDF host (cdn.ca9.uscourts.gov) is unreachable from this environment (the egress proxy refuses the connection with a 403) and CourtListener's authenticated API endpoints require credentials that are not available here, the second, independent verification for these three quotations was performed by querying CourtListener's public search index for each quoted phrase restricted to this opinion's cluster id (cluster_id:9022953), each of which returned exactly one matching opinion; the opinion page itself was also retrieved twice under two different browser header sets, and the two extractions were character-identical. This clause does not state whether any handling of {{workDescription}} would satisfy or fail the showing the court described.",
+      "citations": [
+        {
+          "case": "Stevens v. Corelogic, Inc.",
+          "cite": "899 F.3d 666, 673-675 (9th Cir. 2018)",
+          "url": "https://www.courtlistener.com/opinion/9022953/stevens-v-corelogic-inc/",
+          "quote": "Both provisions thus require the defendant to possess the mental state of knowing, or having a reasonable basis to know, that his actions \"will induce, enable, facilitate, or conceal\" infringement."
+        },
+        {
+          "case": "Stevens v. Corelogic, Inc.",
+          "cite": "899 F.3d 666, 673-675 (9th Cir. 2018)",
+          "url": "https://www.courtlistener.com/opinion/9022953/stevens-v-corelogic-inc/",
+          "quote": "Applying that concept here, we hold that a plaintiff bringing a Section 1202(b) claim must make an affirmative showing, such as by demonstrating a past \"pattern of conduct\" or \"modus operandi\", that the defendant was aware or had reasonable grounds to be aware of the probable future impact of its actions."
+        },
+        {
+          "case": "Stevens v. Corelogic, Inc.",
+          "cite": "899 F.3d 666, 673-675 (9th Cir. 2018)",
+          "url": "https://www.courtlistener.com/opinion/9022953/stevens-v-corelogic-inc/",
+          "quote": "Instead, the plaintiff must provide evidence from which one can infer that future infringement is likely, albeit not certain, to occur as a result of the removal or alteration of CMI."
+        }
+      ]
+    },
+    {
+      "id": "dmca1202_civil_action_and_court_powers",
+      "title": "Section 1203: Who May Sue and What the Court May Order",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-13",
+      "body": "17 U.S.C. § 1203(a) provides that any person injured by a violation of § 1201 or § 1202 may bring a civil action in an appropriate United States district court. Section 1203(b) lists the powers of the court in such an action: it may grant temporary and permanent injunctions on terms it deems reasonable to prevent or restrain a violation, but in no event may impose a prior restraint on speech or press protected by the First Amendment (§ 1203(b)(1)); it may order impounding of any device or product in the alleged violator's custody or control that the court has reasonable cause to believe was involved in a violation (§ 1203(b)(2)); it may award damages under § 1203(c) (§ 1203(b)(3)); it may in its discretion allow recovery of costs by or against any party other than the United States or an officer of the United States (§ 1203(b)(4)); it may in its discretion award reasonable attorney's fees to the prevailing party (§ 1203(b)(5)); and it may, as part of a final judgment or decree finding a violation, order the remedial modification or destruction of any device or product involved in the violation that is in the violator's custody or control or has been impounded (§ 1203(b)(6)).",
+      "gap": "Each of the powers in § 1203(b) other than the damages award is stated in the statute as discretionary (“may”), and the statute supplies no standard governing how that discretion is exercised — for example, what showing supports an injunction or an attorney's fee award under this section; case law supplies those standards and this clause does not summarize it. Section 1203 governs claims under both § 1201 and § 1202, so not every authority applying it arises from a CMI claim. This clause does not address the damages provisions of § 1203(c), which are described in separate clauses, the statute of limitations for a civil action under § 1203 (which § 1203 does not itself state), or whether any court would order any of these remedies with respect to {{workDescription}}. The statutory text quoted here is taken from the Cornell Legal Information Institute rendering of the U.S. Code; the same section was independently retrieved from the Office of the Law Revision Counsel (uscode.house.gov, prelim edition, text current through laws in effect on September 11, 2026), whose rendering carries the identical statutory words and differs only in typography (straight quotation marks and apostrophes and a hyphen where Cornell prints curly marks and an em dash).",
+      "citations": [
+        {
+          "case": "17 U.S.C. § 1203(b)(1) (Cornell LII text)",
+          "cite": "U.S. Code, injunctions, with a prior-restraint limitation",
+          "url": "https://www.law.cornell.edu/uscode/text/17/1203",
+          "quote": "may grant temporary and permanent injunctions on such terms as it deems reasonable to prevent or restrain a violation, but in no event shall impose a prior restraint on free speech or the press protected under the 1st amendment to the Constitution;"
+        },
+        {
+          "case": "17 U.S.C. § 1203(b)(5) (Cornell LII text)",
+          "cite": "U.S. Code, discretionary award of attorney’s fees to the prevailing party",
+          "url": "https://www.law.cornell.edu/uscode/text/17/1203",
+          "quote": "in its discretion may award reasonable attorney’s fees to the prevailing party; and"
+        }
+      ]
+    },
+    {
+      "id": "dmca1202_damages_election",
+      "title": "Section 1203(c): Electing Actual Damages or Statutory Damages",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-13",
+      "body": "Under 17 U.S.C. § 1203(c)(1), a person committing a violation of § 1201 or § 1202 is liable for either actual damages and any additional profits of the violator, as provided in § 1203(c)(2), or statutory damages, as provided in § 1203(c)(3). Section 1203(c)(2) directs the court to award the complaining party the actual damages it suffered as a result of the violation, plus any profits of the violator attributable to the violation and not taken into account in computing actual damages, if the complaining party elects those damages at any time before final judgment is entered. Section 1203(c)(3) sets two different statutory-damages ranges: for each violation of § 1201, not less than $200 or more than $2,500 per act of circumvention, device, product, component, offer, or performance of service; and for each violation of § 1202, not less than $2,500 or more than $25,000. The election, like the election of actual damages, may be made at any time before final judgment is entered.",
+      "gap": "The statute sets the $2,500 to $25,000 range “for each violation of section 1202” but does not define what constitutes one violation — for example, whether removal of CMI from each of several files, or each act of distribution, is a separate violation; courts have addressed that counting question and this clause does not summarize those decisions. The statute gives no factors for selecting an amount within the range beyond the adjustments described in a separate clause of this document. The dollar amounts quoted are the amounts in the statutory text as retrieved on the date shown; § 1203 contains no inflation-adjustment mechanism. This clause does not state what damages, if any, would be available in any dispute involving {{workDescription}}. The statutory text quoted here is taken from the Cornell Legal Information Institute rendering of the U.S. Code; the same section was independently retrieved from the Office of the Law Revision Counsel (uscode.house.gov, prelim edition, text current through laws in effect on September 11, 2026), whose rendering carries the identical statutory words and differs only in typography (straight quotation marks and apostrophes and a hyphen where Cornell prints curly marks and an em dash).",
+      "citations": [
+        {
+          "case": "17 U.S.C. § 1203(c)(2) (Cornell LII text)",
+          "cite": "U.S. Code, actual damages and the violator’s additional profits",
+          "url": "https://www.law.cornell.edu/uscode/text/17/1203",
+          "quote": "The court shall award to the complaining party the actual damages suffered by the party as a result of the violation, and any profits of the violator that are attributable to the violation and are not taken into account in computing the actual damages, if the complaining party elects such damages at any time before final judgment is entered."
+        },
+        {
+          "case": "17 U.S.C. § 1203(c)(3)(B) (Cornell LII text)",
+          "cite": "U.S. Code, statutory damages for each violation of section 1202",
+          "url": "https://www.law.cornell.edu/uscode/text/17/1203",
+          "quote": "At any time before final judgment is entered, a complaining party may elect to recover an award of statutory damages for each violation of section 1202 in the sum of not less than $2,500 or more than $25,000."
+        }
+      ]
+    },
+    {
+      "id": "dmca1202_damages_adjustments",
+      "title": "Section 1203(c)(4)-(5): Repeat Violations, Innocent Violations, and Nonprofit Remission",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-13",
+      "body": "Section 1203(c) contains three adjustments to the damages otherwise awarded. Under § 1203(c)(4), if the injured party sustains the burden of proving, and the court finds, that a person violated § 1201 or § 1202 within three years after a final judgment was entered against that person for another such violation, the court may increase the award up to triple the amount otherwise awarded, as the court considers just. Under § 1203(c)(5)(A), the court in its discretion may reduce or remit the total award where the violator sustains the burden of proving, and the court finds, that the violator was not aware and had no reason to believe its acts constituted a violation. Under § 1203(c)(5)(B)(ii), that reduction is mandatory rather than discretionary for a nonprofit library, archives, educational institution, or public broadcasting entity: the court “shall remit damages” where such an entity carries the same burden of proving it was not aware and had no reason to believe its acts constituted a violation. Section 1203(c)(5)(B)(i) gives “public broadcasting entity” the meaning it has under 17 U.S.C. § 118(f).",
+      "gap": "The treble-damages provision in § 1203(c)(4) is keyed to a prior final judgment for a § 1201 or § 1202 violation; the statute does not address prior settlements, consent judgments, or foreign judgments, and it does not say whether the three years run from entry of the prior judgment to the new violation or to the filing of the new action. The innocent-violation provisions turn on the violator's own proof of its state of mind, which the statute does not further define. This clause does not address the terms “nonprofit library,” “archives,” or “educational institution,” which § 1203 does not define, and it does not quote 17 U.S.C. § 118(f), which supplies the definition of “public broadcasting entity” and was not separately retrieved for this document. It does not state whether any party involved with {{workDescription}} would qualify for any of these adjustments. The statutory text quoted here is taken from the Cornell Legal Information Institute rendering of the U.S. Code; the same section was independently retrieved from the Office of the Law Revision Counsel (uscode.house.gov, prelim edition, text current through laws in effect on September 11, 2026), whose rendering carries the identical statutory words and differs only in typography (straight quotation marks and apostrophes and a hyphen where Cornell prints curly marks and an em dash).",
+      "citations": [
+        {
+          "case": "17 U.S.C. § 1203(c)(4) (Cornell LII text)",
+          "cite": "U.S. Code, increased damages for repeated violations",
+          "url": "https://www.law.cornell.edu/uscode/text/17/1203",
+          "quote": "In any case in which the injured party sustains the burden of proving, and the court finds, that a person has violated section 1201 or 1202 within 3 years after a final judgment was entered against the person for another such violation, the court may increase the award of damages up to triple the amount that would otherwise be awarded, as the court considers just."
+        },
+        {
+          "case": "17 U.S.C. § 1203(c)(5)(A) (Cornell LII text)",
+          "cite": "U.S. Code, discretionary reduction or remission for innocent violations",
+          "url": "https://www.law.cornell.edu/uscode/text/17/1203",
+          "quote": "The court in its discretion may reduce or remit the total award of damages in any case in which the violator sustains the burden of proving, and the court finds, that the violator was not aware and had no reason to believe that its acts constituted a violation."
+        },
+        {
+          "case": "17 U.S.C. § 1203(c)(5)(B)(ii) (Cornell LII text)",
+          "cite": "U.S. Code, mandatory remission for nonprofit and public broadcasting entities",
+          "url": "https://www.law.cornell.edu/uscode/text/17/1203",
+          "quote": "In the case of a nonprofit library, archives, educational institution, or public broadcasting entity, the court shall remit damages in any case in which the library, archives, educational institution, or public broadcasting entity sustains the burden of proving, and the court finds, that the library, archives, educational institution, or public broadcasting entity was not aware and had no reason to believe that its acts constituted a violation."
+        }
+      ]
+    },
+    {
+      "id": "dmca1202_statutory_limitations",
+      "title": "Section 1202(d)-(e): Government Activities and Broadcast Transmission Limitations",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-13",
+      "body": "Section 1202 contains two express limitations. Section 1202(d) states that the section does not prohibit any lawfully authorized investigative, protective, information security, or intelligence activity of an officer, agent, or employee of the United States, a State, or a political subdivision of a State, or of a person acting under contract with any of them, and defines “information security” for that subsection as activities carried out to identify and address the vulnerabilities of a government computer, computer system, or computer network. Section 1202(e) limits liability under subsection (b) for broadcast stations, cable systems, and their programming suppliers. For analog transmissions, § 1202(e)(1) removes liability where avoiding the violating activity is not technically feasible or would create an undue financial hardship on the person, and the person did not intend by the activity to induce, enable, facilitate, or conceal infringement. For digital transmissions, § 1202(e)(2) provides parallel protection tied to whether a voluntary consensus standard for placement of CMI has been set, again only where the activity is not intended to induce, enable, facilitate, or conceal infringement. Section 1202(e)(3) takes the definitions of “broadcast station” and “cable system” from sections 3 and 602 of the Communications Act of 1934.",
+      "gap": "The § 1202(e) limitations by their terms apply only to violations of subsection (b) and only to the transmitting entities the subsection identifies; they are not general defenses, and this clause does not quote the full text of § 1202(e)(2), whose conditions concerning consensus standard-setting, signal degradation, and conflicting regulations or industry standards are summarized rather than reproduced. This clause does not quote the referenced definitions in the Communications Act of 1934 (47 U.S.C. §§ 153, 522), which were not separately retrieved for this document. Section 1202 contains no general fair-use-style exception, and this clause does not address whether any doctrine outside the section's text limits liability. It does not state whether any activity involving {{workDescription}} falls within either limitation. The statutory text quoted here is taken from the Cornell Legal Information Institute rendering of the U.S. Code; the same section was independently retrieved from the Office of the Law Revision Counsel (uscode.house.gov, prelim edition, text current through laws in effect on September 11, 2026), whose rendering carries the identical statutory words and differs only in typography (straight quotation marks and apostrophes and a hyphen where Cornell prints curly marks and an em dash).",
+      "citations": [
+        {
+          "case": "17 U.S.C. § 1202(d) (Cornell LII text)",
+          "cite": "U.S. Code, law enforcement, intelligence, and other government activities",
+          "url": "https://www.law.cornell.edu/uscode/text/17/1202",
+          "quote": "This section does not prohibit any lawfully authorized investigative, protective, information security, or intelligence activity of an officer, agent, or employee of the United States, a State, or a political subdivision of a State, or a person acting pursuant to a contract with the United States, a State, or a political subdivision of a State."
+        },
+        {
+          "case": "17 U.S.C. § 1202(e)(1) (Cornell LII text)",
+          "cite": "U.S. Code, limitation on liability for analog transmissions",
+          "url": "https://www.law.cornell.edu/uscode/text/17/1202",
+          "quote": "In the case of an analog transmission, a person who is making transmissions in its capacity as a broadcast station, or as a cable system, or someone who provides programming to such station or system, shall not be liable for a violation of subsection (b) if— (A) avoiding the activity that constitutes such violation is not technically feasible or would create an undue financial hardship on such person; and (B) such person did not intend, by engaging in such activity, to induce, enable, facilitate, or conceal infringement of a right under this title."
+        }
+      ]
+    },
+    {
+      "id": "dmca1202_criminal_penalties",
+      "title": "Section 1204: Criminal Offenses and Penalties for Willful Commercial Violations",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-13",
+      "body": "17 U.S.C. § 1204(a) makes a violation of § 1201 or § 1202 a federal crime, but only where the violation is committed “willfully and for purposes of commercial advantage or private financial gain.” The penalties are a fine of not more than $500,000 or imprisonment of not more than 5 years, or both, for a first offense, and a fine of not more than $1,000,000 or imprisonment of not more than 10 years, or both, for a subsequent offense. Section 1204(b) states that subsection (a) does not apply to a nonprofit library, archives, educational institution, or public broadcasting entity as defined under 17 U.S.C. § 118(f). Section 1204(c) sets a five-year statute of limitations, providing that no criminal proceeding may be brought under the section unless commenced within 5 years after the cause of action arose.",
+      "gap": "Criminal proceedings under § 1204 are brought by the United States; the section creates no private right to initiate a prosecution, and the civil action in § 1203 is independent of it. The statute does not define “willfully” or “commercial advantage or private financial gain” for this section, and this clause does not summarize the case law construing those terms in the copyright context. This clause does not quote 17 U.S.C. § 118(f), which supplies the “public broadcasting entity” definition and was not separately retrieved for this document, and it takes no position on whether conduct involving {{workDescription}} could be charged under this section. The statutory text quoted here is taken from the Cornell Legal Information Institute rendering of the U.S. Code; the same section was independently retrieved from the Office of the Law Revision Counsel (uscode.house.gov, prelim edition, text current through laws in effect on September 11, 2026), whose rendering carries the identical statutory words and differs only in typography (straight quotation marks and apostrophes and a hyphen where Cornell prints curly marks and an em dash).",
+      "citations": [
+        {
+          "case": "17 U.S.C. § 1204(a) (Cornell LII text)",
+          "cite": "U.S. Code, criminal offenses and penalties",
+          "url": "https://www.law.cornell.edu/uscode/text/17/1204",
+          "quote": "Any person who violates section 1201 or 1202 willfully and for purposes of commercial advantage or private financial gain— (1) shall be fined not more than $500,000 or imprisoned for not more than 5 years, or both, for the first offense; and (2) shall be fined not more than $1,000,000 or imprisoned for not more than 10 years, or both, for any subsequent offense."
+        },
+        {
+          "case": "17 U.S.C. § 1204(c) (Cornell LII text)",
+          "cite": "U.S. Code, five-year limitations period for criminal proceedings",
+          "url": "https://www.law.cornell.edu/uscode/text/17/1204",
+          "quote": "No criminal proceeding shall be brought under this section unless such proceeding is commenced within 5 years after the cause of action arose."
+        }
+      ]
+    },
+    {
+      "id": "dmca1202_ack",
+      "title": "Acknowledgment — Copyright Management Information Sheet",
+      "kind": "drafting",
+      "body": "Prepared by {{preparerName}} on {{dateSigned}} concerning {{companyName}}'s {{workDescription}}.\n\nSignature of {{preparerName}}: ☐ _________________________\n\n[This Information Sheet is a general reference describing 17 U.S.C. § 1202's prohibitions on false copyright management information and on the removal or alteration of copyright management information, the civil remedies in 17 U.S.C. § 1203, the criminal penalties in 17 U.S.C. § 1204, and the Ninth Circuit's construction of the § 1202(b) knowledge requirement. It is not a court filing, a demand letter, a compliance certification, or legal advice about whether any handling of {{workDescription}} violates or complies with those sections, and completing or signing it does not itself determine that outcome.]"
     }
   ]
 }

@@ -35862,5 +35862,53 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "copyright_management_information_info_sheet",
+    "title": "Copyright Management Information (17 U.S.C. § 1202) — Information Sheet",
+    "description": "An informational sheet on 17 U.S.C. § 1202, which prohibits providing or distributing false copyright management information and the unauthorized removal or alteration of copyright management information (including information carried as file metadata), covering the statutory definition of CMI in § 1202(c), the two mental-state elements of § 1202(b) as construed by the Ninth Circuit in Stevens v. Corelogic, the government and broadcast-transmission limitations in § 1202(d)-(e), the civil remedies and statutory damages of $2,500 to $25,000 per violation in § 1203, and the criminal penalties in § 1204.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "dmca1202_intro",
+      "dmca1202_relationship_to_other_documents",
+      "dmca1202_false_cmi",
+      "dmca1202_removal_or_alteration",
+      "dmca1202_cmi_defined",
+      "dmca1202_stevens_mental_state",
+      "dmca1202_civil_action_and_court_powers",
+      "dmca1202_damages_election",
+      "dmca1202_damages_adjustments",
+      "dmca1202_statutory_limitations",
+      "dmca1202_criminal_penalties",
+      "dmca1202_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "workDescription",
+        "label": "Description of the work",
+        "placeholder": "A series of digital photographs distributed with embedded EXIF and IPTC metadata",
+        "required": true
+      },
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 13, 2026",
+        "required": true
+      }
+    ]
   }
 ]
