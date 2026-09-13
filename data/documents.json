@@ -3,6 +3,10 @@
     "id": "handbook",
     "title": "Employee Handbook (excerpt)",
     "description": "A short handbook excerpt demonstrating sourced-clause assembly — not a complete handbook.",
+    "categories": [
+      "Hiring",
+      "During employment"
+    ],
     "clauseOrder": [
       "welcome",
       "at_will",
@@ -25,16 +29,15 @@
         "placeholder": "Jordan Lee",
         "required": true
       }
-    ],
-    "categories": [
-      "Hiring",
-      "During employment"
     ]
   },
   {
     "id": "offer",
     "title": "Offer Letter",
     "description": "A short employment offer letter — position, compensation, at-will status, and overtime.",
+    "categories": [
+      "Hiring"
+    ],
     "clauseOrder": [
       "offer_position",
       "offer_compensation",
@@ -79,15 +82,16 @@
         "placeholder": "$95,000 per year",
         "required": true
       }
-    ],
-    "categories": [
-      "Hiring"
     ]
   },
   {
     "id": "ip_agreement",
     "title": "Invention Assignment & Confidentiality Agreement",
     "description": "Ownership of work product and a note on when a separate assignment or extra consideration may be needed.",
+    "categories": [
+      "Hiring",
+      "Confidentiality & IP"
+    ],
     "clauseOrder": [
       "ip_assignment",
       "ip_consideration",
@@ -106,16 +110,15 @@
         "placeholder": "Jordan Lee",
         "required": true
       }
-    ],
-    "categories": [
-      "Hiring",
-      "Confidentiality & IP"
     ]
   },
   {
     "id": "independent_contractor",
     "title": "Independent Contractor Agreement",
     "description": "A short freelance/contractor engagement — scope of work, payment, and a note on misclassification risk.",
+    "categories": [
+      "Hiring"
+    ],
     "clauseOrder": [
       "ic_scope",
       "ic_payment",
@@ -147,15 +150,15 @@
         "placeholder": "$75 per hour, invoiced monthly",
         "required": true
       }
-    ],
-    "categories": [
-      "Hiring"
     ]
   },
   {
     "id": "termination_letter",
     "title": "Termination / Separation Letter",
     "description": "Notice of termination — final pay timing, COBRA continuation coverage, and accrued vacation/PTO, each flagged for how much depends on the state.",
+    "categories": [
+      "Ending employment"
+    ],
     "clauseOrder": [
       "term_notice",
       "term_final_pay",
@@ -182,15 +185,15 @@
         "placeholder": "September 30, 2026",
         "required": true
       }
-    ],
-    "categories": [
-      "Ending employment"
     ]
   },
   {
     "id": "nda",
     "title": "Non-Disclosure Agreement",
     "description": "A one-way confidentiality agreement — what counts as confidential, standard exclusions, and the whistleblower notice federal law requires.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
     "clauseOrder": [
       "nda_definition",
       "nda_obligations",
@@ -211,15 +214,16 @@
         "placeholder": "Jordan Lee",
         "required": true
       }
-    ],
-    "categories": [
-      "Confidentiality & IP"
     ]
   },
   {
     "id": "noncompete",
     "title": "Non-Compete Agreement",
     "description": "A restriction on competing after employment ends — with the state-by-state enforceability question front and center, not buried.",
+    "categories": [
+      "Hiring",
+      "Confidentiality & IP"
+    ],
     "clauseOrder": [
       "nc_scope",
       "nc_enforceability",
@@ -257,16 +261,15 @@
         "placeholder": "50 miles of Springfield, Illinois",
         "required": true
       }
-    ],
-    "categories": [
-      "Hiring",
-      "Confidentiality & IP"
     ]
   },
   {
     "id": "severance",
     "title": "Severance Agreement",
     "description": "Severance pay in exchange for a release of claims — including the specific federal requirements for a valid release of age-discrimination claims.",
+    "categories": [
+      "Ending employment"
+    ],
     "clauseOrder": [
       "sev_terms",
       "sev_release",
@@ -292,15 +295,15 @@
         "placeholder": "$10,000, paid in a lump sum",
         "required": true
       }
-    ],
-    "categories": [
-      "Ending employment"
     ]
   },
   {
     "id": "background_check",
     "title": "Background Check Disclosure & Authorization",
     "description": "The federal disclosure and authorization required before running a job applicant's consumer report, and what happens if it leads to a negative decision.",
+    "categories": [
+      "Hiring"
+    ],
     "clauseOrder": [
       "bgc_disclosure",
       "bgc_authorization",
@@ -320,15 +323,15 @@
         "placeholder": "Jordan Lee",
         "required": true
       }
-    ],
-    "categories": [
-      "Hiring"
     ]
   },
   {
     "id": "arbitration",
     "title": "Employment Arbitration Agreement",
     "description": "A binding, individual-arbitration agreement for employment disputes — including the federal carve-out for sexual assault and sexual harassment claims, and what this agreement doesn't limit.",
+    "categories": [
+      "Hiring"
+    ],
     "clauseOrder": [
       "arb_agreement",
       "arb_sexual_harassment_carveout",
@@ -348,15 +351,15 @@
         "placeholder": "Jordan Lee",
         "required": true
       }
-    ],
-    "categories": [
-      "Hiring"
     ]
   },
   {
     "id": "warn_notice",
     "title": "WARN Act Layoff Notice",
     "description": "The federal 60-day advance-notice requirement for a covered plant closing or mass layoff — who it applies to, when less notice is allowed, and what happens if it isn't given.",
+    "categories": [
+      "Ending employment"
+    ],
     "clauseOrder": [
       "warn_coverage",
       "warn_notice_requirement",
@@ -383,15 +386,15 @@
         "placeholder": "November 15, 2026",
         "required": true
       }
-    ],
-    "categories": [
-      "Ending employment"
     ]
   },
   {
     "id": "property_return",
     "title": "Company Property & Equipment Return Acknowledgment",
     "description": "What has to come back before a departing employee's last day, and the federal limit on deducting its cost from final pay.",
+    "categories": [
+      "Ending employment"
+    ],
     "clauseOrder": [
       "prop_return_list",
       "prop_return_deduction_limit",
@@ -416,15 +419,16 @@
         "placeholder": "September 30, 2026",
         "required": true
       }
-    ],
-    "categories": [
-      "Ending employment"
     ]
   },
   {
     "id": "direct_deposit",
     "title": "Direct Deposit Authorization",
     "description": "A simple payroll direct-deposit authorization, with account details filled in by hand.",
+    "categories": [
+      "Hiring",
+      "During employment"
+    ],
     "clauseOrder": [
       "dd_authorization",
       "dd_revocation",
@@ -443,16 +447,15 @@
         "placeholder": "Jordan Lee",
         "required": true
       }
-    ],
-    "categories": [
-      "Hiring",
-      "During employment"
     ]
   },
   {
     "id": "referral_bonus",
     "title": "Employee Referral Bonus Agreement",
     "description": "The terms of a referral bonus — amount, eligibility, and who doesn't qualify.",
+    "categories": [
+      "Hiring"
+    ],
     "clauseOrder": [
       "referral_terms",
       "referral_eligibility",
@@ -477,15 +480,15 @@
         "placeholder": "$1,500",
         "required": true
       }
-    ],
-    "categories": [
-      "Hiring"
     ]
   },
   {
     "id": "written_warning",
     "title": "Written Warning / Corrective Action Notice",
     "description": "Documents a performance or conduct issue, sets expectations going forward, and confirms this notice doesn't change at-will status.",
+    "categories": [
+      "During employment"
+    ],
     "clauseOrder": [
       "warning_description",
       "warning_expectations",
@@ -505,15 +508,15 @@
         "placeholder": "Jordan Lee",
         "required": true
       }
-    ],
-    "categories": [
-      "During employment"
     ]
   },
   {
     "id": "onboarding_checklist",
     "title": "New Hire Onboarding Checklist",
     "description": "What gets completed before or on a new hire's start date, including Form I-9 work-authorization verification.",
+    "categories": [
+      "Hiring"
+    ],
     "clauseOrder": [
       "onboarding_items",
       "work_auth",
@@ -538,15 +541,15 @@
         "placeholder": "September 15, 2026",
         "required": true
       }
-    ],
-    "categories": [
-      "Hiring"
     ]
   },
   {
     "id": "exit_interview",
     "title": "Exit Interview Form",
     "description": "A short set of standard departure-feedback questions.",
+    "categories": [
+      "Ending employment"
+    ],
     "clauseOrder": [
       "exit_interview_questions",
       "exit_interview_completion"
@@ -570,15 +573,15 @@
         "placeholder": "September 30, 2026",
         "required": true
       }
-    ],
-    "categories": [
-      "Ending employment"
     ]
   },
   {
     "id": "employment_verification",
     "title": "Employment Verification Letter",
     "description": "A short letter confirming someone's employment — the classic \"proof of employment\" letter requested by landlords, lenders, and others.",
+    "categories": [
+      "During employment"
+    ],
     "clauseOrder": [
       "verification_statement",
       "verification_signature"
@@ -608,15 +611,15 @@
         "placeholder": "September 15, 2026",
         "required": true
       }
-    ],
-    "categories": [
-      "During employment"
     ]
   },
   {
     "id": "timesheet",
     "title": "Timesheet / Time Records",
     "description": "A weekly time record, plus the federal recordkeeping rule behind why non-exempt hours have to be tracked.",
+    "categories": [
+      "During employment"
+    ],
     "clauseOrder": [
       "timesheet_entry",
       "timekeeping",
@@ -635,15 +638,15 @@
         "placeholder": "Jordan Lee",
         "required": true
       }
-    ],
-    "categories": [
-      "During employment"
     ]
   },
   {
     "id": "overtime_authorization",
     "title": "Overtime Authorization Form",
     "description": "A simple advance-approval request for overtime hours, plus the federal rule on paying for overtime an employer knew about even without pre-approval.",
+    "categories": [
+      "During employment"
+    ],
     "clauseOrder": [
       "overtime_request",
       "offer_overtime",
@@ -662,15 +665,15 @@
         "placeholder": "Jordan Lee",
         "required": true
       }
-    ],
-    "categories": [
-      "During employment"
     ]
   },
   {
     "id": "pto_request",
     "title": "PTO / Vacation Request Form",
     "description": "A simple paid-time-off request and approval form.",
+    "categories": [
+      "During employment"
+    ],
     "clauseOrder": [
       "pto_request_details",
       "overtime_approval"
@@ -688,15 +691,15 @@
         "placeholder": "Jordan Lee",
         "required": true
       }
-    ],
-    "categories": [
-      "During employment"
     ]
   },
   {
     "id": "expense_reimbursement",
     "title": "Business Expense Reimbursement Form",
     "description": "An itemized expense list with an employee certification and manager approval.",
+    "categories": [
+      "During employment"
+    ],
     "clauseOrder": [
       "expense_details",
       "expense_certification"
@@ -714,15 +717,15 @@
         "placeholder": "Jordan Lee",
         "required": true
       }
-    ],
-    "categories": [
-      "During employment"
     ]
   },
   {
     "id": "salary_change",
     "title": "Salary Change / Promotion Notice",
     "description": "A short notice documenting a title or salary change.",
+    "categories": [
+      "During employment"
+    ],
     "clauseOrder": [
       "salary_change_details",
       "salary_change_ack"
@@ -758,15 +761,15 @@
         "placeholder": "October 1, 2026",
         "required": true
       }
-    ],
-    "categories": [
-      "During employment"
     ]
   },
   {
     "id": "job_description",
     "title": "Job Description Template",
     "description": "A simple fill-in template for a job posting or internal job description.",
+    "categories": [
+      "Hiring"
+    ],
     "clauseOrder": [
       "job_description_details"
     ],
@@ -783,15 +786,15 @@
         "placeholder": "Software Engineer",
         "required": true
       }
-    ],
-    "categories": [
-      "Hiring"
     ]
   },
   {
     "id": "interview_scorecard",
     "title": "Interview Scorecard",
     "description": "A short candidate-evaluation form for interviewers to fill out after each interview.",
+    "categories": [
+      "Hiring"
+    ],
     "clauseOrder": [
       "interview_scorecard_details"
     ],
@@ -814,15 +817,15 @@
         "placeholder": "Software Engineer",
         "required": true
       }
-    ],
-    "categories": [
-      "Hiring"
     ]
   },
   {
     "id": "anti_harassment_policy",
     "title": "Anti-Harassment & Non-Discrimination Policy",
     "description": "The federal prohibition on workplace harassment and discrimination, how it's reported and investigated, the real legal reason a written policy and prompt response matter, and the separate protection against retaliation.",
+    "categories": [
+      "During employment"
+    ],
     "clauseOrder": [
       "harassment_prohibition",
       "harassment_reporting",
@@ -843,15 +846,15 @@
         "placeholder": "Jordan Lee",
         "required": true
       }
-    ],
-    "categories": [
-      "During employment"
     ]
   },
   {
     "id": "fmla_leave",
     "title": "FMLA Leave Request & Employer Notice",
     "description": "Who's eligible for FMLA leave, what it covers (including the separate military-family leave categories), the leave request itself, restoration rights on return, and the separate protection against interference or retaliation.",
+    "categories": [
+      "During employment"
+    ],
     "clauseOrder": [
       "fmla_eligibility",
       "fmla_entitlement",
@@ -874,15 +877,15 @@
         "placeholder": "Jordan Lee",
         "required": true
       }
-    ],
-    "categories": [
-      "During employment"
     ]
   },
   {
     "id": "ada_accommodation_request",
     "title": "ADA Reasonable Accommodation Request Form",
     "description": "A request for a workplace accommodation, the employer's duty to engage in the interactive process in good faith, the undue-hardship limit on that duty, and the confidentiality of any medical information shared to support the request.",
+    "categories": [
+      "During employment"
+    ],
     "clauseOrder": [
       "accommodation_request_details",
       "accommodation",
@@ -903,15 +906,16 @@
         "placeholder": "Jordan Lee",
         "required": true
       }
-    ],
-    "categories": [
-      "During employment"
     ]
   },
   {
     "id": "flsa_classification",
     "title": "Exempt / Non-Exempt Classification Notice",
     "description": "The federal overtime default, the actual three-part test a position has to meet to be classified exempt, and the classification decision itself.",
+    "categories": [
+      "Hiring",
+      "During employment"
+    ],
     "clauseOrder": [
       "classification_default_rule",
       "classification_exemption_test",
@@ -937,16 +941,15 @@
         "placeholder": "Software Engineer",
         "required": true
       }
-    ],
-    "categories": [
-      "Hiring",
-      "During employment"
     ]
   },
   {
     "id": "pwfa_accommodation",
     "title": "Pregnant Workers Fairness Act Accommodation Request",
     "description": "A pregnancy-related accommodation request under a 2023 federal law distinct from the ADA — it doesn't require the limitation to rise to the level of a disability.",
+    "categories": [
+      "During employment"
+    ],
     "clauseOrder": [
       "pwfa_coverage",
       "pwfa_accommodation_duty",
@@ -966,15 +969,16 @@
         "placeholder": "Jordan Lee",
         "required": true
       }
-    ],
-    "categories": [
-      "During employment"
     ]
   },
   {
     "id": "employee_nonsolicit",
     "title": "Employee Non-Solicitation Agreement",
     "description": "A restriction on recruiting a former employer's other employees after leaving — a narrower, distinct question from a noncompete, and one where courts genuinely disagree.",
+    "categories": [
+      "Hiring",
+      "Confidentiality & IP"
+    ],
     "clauseOrder": [
       "nonsolicit_scope",
       "nonsolicit_employee_split",
@@ -1001,16 +1005,15 @@
         "placeholder": "12 months",
         "required": true
       }
-    ],
-    "categories": [
-      "Hiring",
-      "Confidentiality & IP"
     ]
   },
   {
     "id": "whistleblower_policy",
     "title": "Whistleblower Policy",
     "description": "States the federal anti-retaliation protections that apply to reports of securities fraud and related misconduct — Sarbanes-Oxley and, separately, Dodd-Frank — and sets an internal reporting channel.",
+    "categories": [
+      "During employment"
+    ],
     "clauseOrder": [
       "whistleblower_coverage",
       "whistleblower_protected_activity",
@@ -1033,15 +1036,15 @@
         "placeholder": "Jordan Lee",
         "required": true
       }
-    ],
-    "categories": [
-      "During employment"
     ]
   },
   {
     "id": "llc_operating_agreement_single_member",
     "title": "Single-Member LLC Operating Agreement",
     "description": "The internal governance document for a one-owner LLC — states the default federal tax treatment, what it actually takes to elect a different one, the real, sourced limits of the liability shield, records access rights, and what actually happens to the company when its sole member dies.",
+    "categories": [
+      "Business Formation"
+    ],
     "clauseOrder": [
       "llc_formation_statement",
       "llc_tax_classification",
@@ -1074,15 +1077,15 @@
         "placeholder": "Delaware",
         "required": true
       }
-    ],
-    "categories": [
-      "Business Formation"
     ]
   },
   {
     "id": "llc_operating_agreement_multi_member",
     "title": "Multi-Member LLC Operating Agreement",
     "description": "Governance for a multi-owner LLC — membership, contributions, and voting, plus the real, sourced default rules on tax treatment (including how and when to elect a different one), liability, member fiduciary duties, records access, and the actual statutory dissolution triggers that apply if the members don't spell out their own.",
+    "categories": [
+      "Business Formation"
+    ],
     "clauseOrder": [
       "llc_mm_formation_statement",
       "llc_mm_members",
@@ -1110,15 +1113,15 @@
         "placeholder": "Delaware",
         "required": true
       }
-    ],
-    "categories": [
-      "Business Formation"
     ]
   },
   {
     "id": "corporate_bylaws",
     "title": "Corporate Bylaws",
     "description": "Internal governance for a corporation — shareholder and board meeting defaults, written consent, cumulative voting, director removal, officer roles, and indemnification, with the real statutory floors and ceilings under quorum and voting thresholds, board meeting notice requirements, and when indemnification stops being optional — not just fill-in-the-blank numbers.",
+    "categories": [
+      "Business Formation"
+    ],
     "clauseOrder": [
       "bylaws_purpose",
       "bylaws_shareholder_meetings",
@@ -1149,15 +1152,15 @@
         "placeholder": "Delaware",
         "required": true
       }
-    ],
-    "categories": [
-      "Business Formation"
     ]
   },
   {
     "id": "s_corp_election_overview",
     "title": "S Corporation Election Overview",
     "description": "The federal eligibility test, unanimous shareholder consent requirement, filing deadline, revocation, and the ways S status can be lost or restored — including the family-attribution rule for counting shareholders and what doesn't count as a second class of stock — closes the loop the LLC and Bylaws documents leave open.",
+    "categories": [
+      "Business Formation"
+    ],
     "clauseOrder": [
       "scorp_eligibility",
       "scorp_family_attribution",
@@ -1177,15 +1180,15 @@
         "placeholder": "Acme, Inc.",
         "required": true
       }
-    ],
-    "categories": [
-      "Business Formation"
     ]
   },
   {
     "id": "buy_sell_agreement",
     "title": "Buy-Sell Agreement",
     "description": "What happens to an owner's interest on death, disability, divorce, or departure — a rider to an LLC operating agreement or corporate bylaws, with the real default rules that apply if this gap is left open, and what it actually takes to make the restriction enforceable against an outside transferee.",
+    "categories": [
+      "Business Formation"
+    ],
     "clauseOrder": [
       "buysell_purpose",
       "buysell_triggering_events",
@@ -1205,15 +1208,15 @@
         "placeholder": "Acme, Inc.",
         "required": true
       }
-    ],
-    "categories": [
-      "Business Formation"
     ]
   },
   {
     "id": "residential_lease",
     "title": "Residential Lease Agreement",
     "description": "A lease with the real, sourced specifics on what a landlord can do — down to the exact tenantability checklist, the pre-move-out inspection right, the 2025 photo-documentation law, and the specific notice required before entering.",
+    "categories": [
+      "Real Estate"
+    ],
     "clauseOrder": [
       "lease_parties_property",
       "lease_rent",
@@ -1266,15 +1269,15 @@
         "placeholder": "August 31, 2027",
         "required": true
       }
-    ],
-    "categories": [
-      "Real Estate"
     ]
   },
   {
     "id": "last_will_testament",
     "title": "Last Will and Testament",
     "description": "A will with the real, sourced specifics on what makes one legally valid — the two-part capacity test, the exact signing requirements, the handwritten-will fallback, what a later divorce or a child born afterward does to it, and the statutory fallback for who administers an estate with no executor named.",
+    "categories": [
+      "Estate Planning"
+    ],
     "clauseOrder": [
       "will_declaration",
       "will_testamentary_capacity",
@@ -1339,15 +1342,15 @@
         "placeholder": "Jordan Alex Lee's spouse, Morgan Lee",
         "required": true
       }
-    ],
-    "categories": [
-      "Estate Planning"
     ]
   },
   {
     "id": "financial_power_of_attorney",
     "title": "Financial Power of Attorney",
     "description": "A durable power of attorney with the real, sourced specifics on when it takes effect, what a general grant of authority actually covers, the powers that need express authorization even under a broad grant, and how a bank or other third party is required to treat an agent acting under it.",
+    "categories": [
+      "Estate Planning"
+    ],
     "clauseOrder": [
       "poa_appointment_declaration",
       "poa_execution_formalities",
@@ -1382,15 +1385,15 @@
         "placeholder": "Casey Lee",
         "required": false
       }
-    ],
-    "categories": [
-      "Estate Planning"
     ]
   },
   {
     "id": "advance_health_care_directive",
     "title": "Advance Health Care Directive",
     "description": "A health care directive with the real, sourced specifics on who can and can't witness it, when an agent's authority actually takes effect, the real limits on what an agent can decide, how revocation works differently for the agent designation than for everything else, and a provider's duty to comply or transfer care.",
+    "categories": [
+      "Estate Planning"
+    ],
     "clauseOrder": [
       "ahcd_declaration_appointment",
       "ahcd_two_components",
@@ -1446,15 +1449,15 @@
         "placeholder": "None.",
         "required": false
       }
-    ],
-    "categories": [
-      "Estate Planning"
     ]
   },
   {
     "id": "revocable_living_trust",
     "title": "Revocable Living Trust",
     "description": "A revocable living trust with the real, sourced specifics on how it's created, revoked, and administered — and a fact this document puts up front rather than burying: a trust holds only the property actually, correctly transferred into it. Real property needs its own recorded deed into the trustee's name; property never transferred stays outside the trust and subject to probate, which is why this document is typically paired with a pour-over will (this corpus's own Last Will and Testament) rather than relied on alone.",
+    "categories": [
+      "Estate Planning"
+    ],
     "clauseOrder": [
       "trust_declaration",
       "trust_property_formality",
@@ -1507,15 +1510,15 @@
         "placeholder": "Jordan Alex Lee's children, in equal shares",
         "required": true
       }
-    ],
-    "categories": [
-      "Estate Planning"
     ]
   },
   {
     "id": "hipaa_authorization",
     "title": "HIPAA Authorization",
     "description": "A standalone medical-information release authorization, with the real, sourced specifics on the exact statements and elements federal law requires it to contain, how revocation works, and what makes a signed authorization invalid — distinct from naming a health care decision-making agent.",
+    "categories": [
+      "Estate Planning"
+    ],
     "clauseOrder": [
       "hipaa_auth_declaration",
       "hipaa_auth_general_rule",
@@ -1546,15 +1549,15 @@
         "placeholder": "One year from the date of signing",
         "required": true
       }
-    ],
-    "categories": [
-      "Estate Planning"
     ]
   },
   {
     "id": "codicil",
     "title": "Codicil to a Will",
     "description": "A narrow, sourced amendment to an existing will — what makes a codicil legally distinct from a new will, why it must independently satisfy the same signing formalities, and the real, honest gap in California's statute on republication and multi-document revocation.",
+    "categories": [
+      "Estate Planning"
+    ],
     "clauseOrder": [
       "codicil_declaration",
       "codicil_definition",
@@ -1589,15 +1592,15 @@
         "placeholder": "September 1, 2026",
         "required": true
       }
-    ],
-    "categories": [
-      "Estate Planning"
     ]
   },
   {
     "id": "guardianship_nomination",
     "title": "Nomination of Guardian for Minor Children",
     "description": "A standalone guardian nomination separate from a will, with the real, sourced specifics on how a nomination can be timed or conditioned, a minor's own statutory role, and California's no-court Caregiver's Authorization Affidavit mechanism — what it allows, what it doesn't, and when it stops being valid.",
+    "categories": [
+      "Estate Planning"
+    ],
     "clauseOrder": [
       "guardian_nom_declaration",
       "guardian_nom_standalone_writing",
@@ -1647,15 +1650,15 @@
         "placeholder": "Oakland, California",
         "required": true
       }
-    ],
-    "categories": [
-      "Estate Planning"
     ]
   },
   {
     "id": "premarital_agreement",
     "title": "Premarital Agreement",
     "description": "A prenup with the real, sourced specifics on what it can and can't control — the spousal-support waiver's actual conditions, the two-part test that can unwind the whole agreement, and the specific seven-day and independent-counsel rules that determine whether it was signed voluntarily in the eyes of a court.",
+    "categories": [
+      "Family Law"
+    ],
     "clauseOrder": [
       "prenup_declaration_and_intent",
       "prenup_definition_and_effective_date",
@@ -1691,15 +1694,15 @@
         "placeholder": "June 14, 2027",
         "required": true
       }
-    ],
-    "categories": [
-      "Family Law"
     ]
   },
   {
     "id": "marital_settlement_agreement",
     "title": "Marital Settlement Agreement",
     "description": "A divorce settlement with the real, sourced specifics on the equal-division default rule and its written-agreement exception, the community-vs-separate property line, the date-of-separation test that decides which earnings count, the actual spousal-support factor list, and the 10-year rule that keeps a court's jurisdiction over support open indefinitely.",
+    "categories": [
+      "Family Law"
+    ],
     "clauseOrder": [
       "msa_declaration",
       "msa_equal_division_default",
@@ -1738,15 +1741,15 @@
         "placeholder": "March 2, 2026",
         "required": true
       }
-    ],
-    "categories": [
-      "Family Law"
     ]
   },
   {
     "id": "postnuptial_agreement",
     "title": "Postnuptial Agreement",
     "description": "A property agreement between spouses already married, with the real, sourced specifics on the interspousal fiduciary duty, the transmutation writing requirement that actually controls whether it works, the personal-gift exception, and the real, disclosed gap between this and a premarital agreement's spousal-support waiver rules.",
+    "categories": [
+      "Family Law"
+    ],
     "clauseOrder": [
       "postnup_declaration",
       "postnup_fiduciary_duty",
@@ -1785,15 +1788,15 @@
         "placeholder": "September 1, 2026",
         "required": true
       }
-    ],
-    "categories": [
-      "Family Law"
     ]
   },
   {
     "id": "parenting_plan",
     "title": "Parenting Plan",
     "description": "A custody and visitation agreement with the real, sourced specifics on the difference between legal and physical custody, the actual best-interest factor list, the state's stated priority when child safety and frequent contact conflict, the domestic-violence rebuttable presumption, and why a parents' own agreement is evidence for a court, not a self-executing order.",
+    "categories": [
+      "Family Law"
+    ],
     "clauseOrder": [
       "parenting_plan_declaration",
       "parenting_custody_definitions",
@@ -1827,15 +1830,15 @@
         "placeholder": "Riley Lee",
         "required": true
       }
-    ],
-    "categories": [
-      "Family Law"
     ]
   },
   {
     "id": "child_support_agreement",
     "title": "Child Support Agreement",
     "description": "A child support agreement with the real, sourced specifics on the guideline formula that makes an amount presumptively correct, the enumerated grounds for departing from it, the exact conditions required for a valid below-guideline stipulation, the mandatory-vs-discretionary add-on expense distinction, and the automatic earnings assignment that attaches to a court-ordered amount.",
+    "categories": [
+      "Family Law"
+    ],
     "clauseOrder": [
       "childsupport_declaration",
       "childsupport_guideline_presumption",
@@ -1923,15 +1926,15 @@
         "placeholder": "Each parent pays their own",
         "required": false
       }
-    ],
-    "categories": [
-      "Family Law"
     ]
   },
   {
     "id": "domestic_partnership_declaration",
     "title": "Domestic Partnership Declaration",
     "description": "A domestic partnership declaration with the real, sourced specifics on the current eligibility requirements (updated by a 2020 law that removed the old same-sex-only and age-62 restrictions), the sweeping same-rights-as-spouses statute, the two ways to end a partnership, and how a later marriage between the same partners is actually handled.",
+    "categories": [
+      "Family Law"
+    ],
     "clauseOrder": [
       "dp_recitals",
       "dp_eligibility",
@@ -1965,15 +1968,15 @@
         "placeholder": "September 1, 2026",
         "required": true
       }
-    ],
-    "categories": [
-      "Family Law"
     ]
   },
   {
     "id": "voluntary_declaration_of_parentage",
     "title": "Voluntary Declaration of Parentage",
     "description": "A voluntary parentage declaration with the real, sourced specifics on its judgment-equivalent legal effect, the exact signing and witnessing requirements, the 60-day rescission window, the narrower two-year outer deadline for a later challenge, and what the declaration does and doesn't establish beyond parentage itself.",
+    "categories": [
+      "Family Law"
+    ],
     "clauseOrder": [
       "parentage_declaration_statement",
       "parentage_legislative_basis",
@@ -2006,15 +2009,16 @@
         "placeholder": "Riley Lee",
         "required": true
       }
-    ],
-    "categories": [
-      "Family Law"
     ]
   },
   {
     "id": "commission_agreement",
     "title": "Commission Agreement",
     "description": "A written agreement documenting how commission wages are computed and paid, as California law requires for commission-based employment.",
+    "categories": [
+      "Hiring",
+      "During employment"
+    ],
     "clauseOrder": [
       "commission_agreement_declaration",
       "commission_writing_requirement",
@@ -2062,16 +2066,15 @@
         "placeholder": "October 1, 2026",
         "required": true
       }
-    ],
-    "categories": [
-      "Hiring",
-      "During employment"
     ]
   },
   {
     "id": "small_estate_affidavit",
     "title": "Small Estate Affidavit",
     "description": "A sworn affidavit a successor uses to collect a decedent's personal property without a full probate proceeding, when the estate is small enough to qualify under California's no-probate small-estate procedure.",
+    "categories": [
+      "Estate Planning"
+    ],
     "clauseOrder": [
       "smallestate_declaration",
       "smallestate_threshold_mechanism",
@@ -2122,15 +2125,15 @@
         "placeholder": "Sacramento",
         "required": true
       }
-    ],
-    "categories": [
-      "Estate Planning"
     ]
   },
   {
     "id": "partnership_agreement",
     "title": "General Partnership Agreement",
     "description": "An agreement between two partners forming a California general partnership, documenting formation, capital contributions, profit/loss sharing, management, and dissolution alongside the statutory default rules that apply either way.",
+    "categories": [
+      "Business Formation"
+    ],
     "clauseOrder": [
       "partnership_formation_statement",
       "partnership_formation_default",
@@ -2176,15 +2179,15 @@
         "placeholder": "$25,000 cash",
         "required": true
       }
-    ],
-    "categories": [
-      "Business Formation"
     ]
   },
   {
     "id": "residential_purchase_agreement",
     "title": "Residential Purchase Agreement",
     "description": "An agreement for the sale of a single-family residential property, covering the statutory disclosure requirements that apply to a California residential purchase alongside the deal terms. Also covers the Mello-Roos special tax notice/disclosure requirements (subdivider notice under Gov. Code § 53341.5 and the general resale disclosure mechanism under Civ. Code § 1102.6b).",
+    "categories": [
+      "Real Estate"
+    ],
     "clauseOrder": [
       "purchase_parties_property",
       "purchase_tds_requirement",
@@ -2240,15 +2243,15 @@
         "placeholder": "November 15, 2026",
         "required": true
       }
-    ],
-    "categories": [
-      "Real Estate"
     ]
   },
   {
     "id": "cohabitation_agreement",
     "title": "Cohabitation Agreement",
     "description": "An agreement between two unmarried adults sharing a household, documenting property, expenses, and financial expectations, and disclosing how California's courts have and haven't addressed contracts between unmarried cohabitants.",
+    "categories": [
+      "Family Law"
+    ],
     "clauseOrder": [
       "cohab_recitals",
       "cohab_marvin_doctrine",
@@ -2290,15 +2293,15 @@
         "placeholder": "Rent and utilities split equally; each partner covers their own individual expenses",
         "required": true
       }
-    ],
-    "categories": [
-      "Family Law"
     ]
   },
   {
     "id": "meal_rest_break_policy",
     "title": "Meal and Rest Break Policy",
     "description": "A policy describing California's meal and rest period requirements for non-exempt employees, including the waiver and on-duty-meal exceptions and the premium-pay remedy for a missed break.",
+    "categories": [
+      "During employment"
+    ],
     "clauseOrder": [
       "mealrest_policy_statement",
       "meal_period_requirement",
@@ -2323,15 +2326,15 @@
         "placeholder": "Jordan Lee",
         "required": true
       }
-    ],
-    "categories": [
-      "During employment"
     ]
   },
   {
     "id": "transfer_on_death_deed",
     "title": "Transfer-on-Death Deed",
     "description": "A revocable deed that transfers a qualifying residence to a named beneficiary automatically at death, without probate, while the owner retains full ownership and control during their lifetime.",
+    "categories": [
+      "Estate Planning"
+    ],
     "clauseOrder": [
       "tod_declaration",
       "tod_property_scope",
@@ -2376,15 +2379,15 @@
         "placeholder": "Lot 12, Block 3, Tract No. 4567, as per map recorded in Book 45, Page 12 of Maps, Sacramento County Records",
         "required": true
       }
-    ],
-    "categories": [
-      "Estate Planning"
     ]
   },
   {
     "id": "notice_to_pay_rent_or_quit",
     "title": "Notice to Pay Rent or Quit",
     "description": "The statutory three-day notice a California landlord serves on a tenant for nonpayment of rent, before an unlawful detainer (eviction) action for nonpayment can be filed.",
+    "categories": [
+      "Real Estate"
+    ],
     "clauseOrder": [
       "notice_pay_rent_details",
       "notice_pay_rent_3day_timing",
@@ -2451,15 +2454,15 @@
         "placeholder": "Monday-Friday, 9am-5pm",
         "required": false
       }
-    ],
-    "categories": [
-      "Real Estate"
     ]
   },
   {
     "id": "founders_agreement",
     "title": "Founders' Agreement",
     "description": "An agreement between startup co-founders documenting equity split and vesting, alongside the federal tax, IP-assignment, fiduciary-duty, and at-will employment rules that bear on a founder relationship.",
+    "categories": [
+      "Business Formation"
+    ],
     "clauseOrder": [
       "founders_equity_declaration",
       "founders_vesting_schedule_reference",
@@ -2521,15 +2524,15 @@
         "placeholder": "12",
         "required": false
       }
-    ],
-    "categories": [
-      "Business Formation"
     ]
   },
   {
     "id": "security_deposit_itemization",
     "title": "Security Deposit Itemization / Move-Out Statement",
     "description": "A landlord's itemized statement accounting for a tenant's security deposit after move-out — the statutory cap, permitted deductions, the 21-day return deadline and receipts threshold, the pre-move-out inspection right, and the bad-faith retention penalty.",
+    "categories": [
+      "Real Estate"
+    ],
     "clauseOrder": [
       "sdi_deposit_details",
       "sdi_deposit_cap",
@@ -2644,15 +2647,15 @@
         "placeholder": "1,850",
         "required": true
       }
-    ],
-    "categories": [
-      "Real Estate"
     ]
   },
   {
     "id": "wage_statement_itemization_policy",
     "title": "Wage Statement Itemization Policy",
     "description": "A policy describing California's itemized wage statement requirements, the statutory penalty for a knowing and intentional violation, the employee records-inspection right, and how a wage-statement violation fits into PAGA enforcement.",
+    "categories": [
+      "During employment"
+    ],
     "clauseOrder": [
       "wagestmt_policy_statement",
       "wagestmt_nine_items",
@@ -2677,15 +2680,15 @@
         "placeholder": "Jordan Lee",
         "required": true
       }
-    ],
-    "categories": [
-      "During employment"
     ]
   },
   {
     "id": "safe_note",
     "title": "SAFE (Simple Agreement for Future Equity) Note",
     "description": "An early-stage financing instrument where an investor pays a company cash now in exchange for the right to future equity, alongside the federal and California securities law that governs how such an offering may be made.",
+    "categories": [
+      "Business Formation"
+    ],
     "clauseOrder": [
       "safe_investment_terms",
       "safe_conversion_trigger",
@@ -2746,15 +2749,15 @@
         "placeholder": "This provision terminates upon the closing of the next Equity Financing",
         "required": false
       }
-    ],
-    "categories": [
-      "Business Formation"
     ]
   },
   {
     "id": "disposition_of_remains_instructions",
     "title": "Disposition of Remains Instructions",
     "description": "A designation of who has the right to control disposition of your remains after death, and your specific burial/cremation instructions, under California's statutory framework for this decision.",
+    "categories": [
+      "Estate Planning"
+    ],
     "clauseOrder": [
       "remains_agent_designation_declaration",
       "remains_priority_order",
@@ -2798,15 +2801,15 @@
         "placeholder": "Prepaid funeral contract #1234 with Acme Mortuary",
         "required": false
       }
-    ],
-    "categories": [
-      "Estate Planning"
     ]
   },
   {
     "id": "civil_harassment_restraining_order",
     "title": "Civil Harassment Restraining Order",
     "description": "An informational document describing California's civil harassment restraining order process under CCP § 527.6 -- for harassment outside a family, dating, or cohabitant relationship -- including the harassment definition, the temporary and permanent order mechanisms, and how this differs from a domestic violence restraining order.",
+    "categories": [
+      "Family Law"
+    ],
     "clauseOrder": [
       "harassment_incident_declaration",
       "harassment_definition",
@@ -2868,15 +2871,15 @@
         "placeholder": "Sacramento",
         "required": true
       }
-    ],
-    "categories": [
-      "Family Law"
     ]
   },
   {
     "id": "paga_notice_letter",
     "title": "PAGA Pre-Suit Notice Letter",
     "description": "The written pre-suit notice California's Private Attorneys General Act requires before an aggrieved employee may bring a civil action for Labor Code violations -- notice content, the LWDA's response window, 2024-reform employer cure rights, standing, penalty defaults, allocation, and the limitations period.",
+    "categories": [
+      "During employment"
+    ],
     "clauseOrder": [
       "paga_notice_details",
       "paga_notice_requirement",
@@ -2938,15 +2941,15 @@
         "placeholder": "123 Main St., Suite 100, Sacramento, CA 95814",
         "required": true
       }
-    ],
-    "categories": [
-      "During employment"
     ]
   },
   {
     "id": "special_needs_trust",
     "title": "Special Needs Trust",
     "description": "A trust holding assets for the benefit of a person with a disability without disqualifying that person from means-tested government benefits, alongside the federal Medicaid/SSI rules and the California-specific statute that actually govern it.",
+    "categories": [
+      "Estate Planning"
+    ],
     "clauseOrder": [
       "snt_declaration",
       "snt_first_party_statutory_basis",
@@ -2995,15 +2998,15 @@
         "placeholder": "None",
         "required": false
       }
-    ],
-    "categories": [
-      "Estate Planning"
     ]
   },
   {
     "id": "quitclaim_deed",
     "title": "Quitclaim Deed",
     "description": "A deed transferring whatever interest a grantor has in real property, without any warranty of title -- commonly used between family members, to clear a title cloud, or to add or remove a spouse from title.",
+    "categories": [
+      "Real Estate"
+    ],
     "clauseOrder": [
       "qcd_parties_property_declaration",
       "qcd_no_warranty_title",
@@ -3047,15 +3050,15 @@
         "placeholder": "123-456-789",
         "required": false
       }
-    ],
-    "categories": [
-      "Real Estate"
     ]
   },
   {
     "id": "individual_health_care_instruction",
     "title": "Individual Health Care Instruction",
     "description": "A stand-alone statement of your health care wishes given directly, without naming any health care agent -- a lighter-weight alternative to a full Advance Health Care Directive with an appointed agent.",
+    "categories": [
+      "Estate Planning"
+    ],
     "clauseOrder": [
       "ihci_declaration",
       "ihci_statutory_basis",
@@ -3097,15 +3100,15 @@
         "placeholder": "Immediately upon execution",
         "required": false
       }
-    ],
-    "categories": [
-      "Estate Planning"
     ]
   },
   {
     "id": "llc_articles_of_organization",
     "title": "LLC Articles of Organization",
     "description": "The formation filing document itself -- filed with the California Secretary of State to legally create an LLC -- distinct from the internal governance covered by this project's LLC Operating Agreement documents.",
+    "categories": [
+      "Business Formation"
+    ],
     "clauseOrder": [
       "llc_articles_declaration",
       "llc_articles_filing_requirement",
@@ -3148,15 +3151,15 @@
         "placeholder": "Jordan Lee",
         "required": true
       }
-    ],
-    "categories": [
-      "Business Formation"
     ]
   },
   {
     "id": "commercial_lease",
     "title": "Commercial Lease Agreement",
     "description": "A commercial (non-residential) lease built on the actually-different statutory baseline that applies to commercial space — the CASp accessibility disclosure, the thinner commercial security-deposit statute, and the notice-to-terminate rules that diverge from residential law.",
+    "categories": [
+      "Real Estate"
+    ],
     "clauseOrder": [
       "commlease_parties_premises_rent",
       "commlease_permitted_use",
@@ -3212,15 +3215,15 @@
         "placeholder": "General office use",
         "required": true
       }
-    ],
-    "categories": [
-      "Real Estate"
     ]
   },
   {
     "id": "trust_amendment",
     "title": "Trust Amendment",
     "description": "A standalone amendment to an existing revocable living trust, built on the actual statutory modification power (Probate Code § 15402) rather than treated as identical to revoking and re-creating the trust — distinct from this project's Revocable Living Trust (creation) and Codicil to a Will (will amendment) documents.",
+    "categories": [
+      "Estate Planning"
+    ],
     "clauseOrder": [
       "trustamend_declaration",
       "trustamend_statutory_basis",
@@ -3269,15 +3272,15 @@
         "placeholder": "September 1, 2026",
         "required": true
       }
-    ],
-    "categories": [
-      "Estate Planning"
     ]
   },
   {
     "id": "grant_deed",
     "title": "Grant Deed",
     "description": "A deed that conveys real property with California's statutory implied covenants — that the grantor hasn't already conveyed the same interest to someone else, and that the property is free of encumbrances the grantor made — unlike a quitclaim deed, which carries no such covenants.",
+    "categories": [
+      "Real Estate"
+    ],
     "clauseOrder": [
       "grantdeed_granting_clause",
       "grantdeed_legal_description_and_apn",
@@ -3322,15 +3325,15 @@
         "placeholder": "123-456-789",
         "required": false
       }
-    ],
-    "categories": [
-      "Real Estate"
     ]
   },
   {
     "id": "guardianship_petition",
     "title": "Guardianship of the Person (Petition Information Sheet)",
     "description": "Explains the actual California court process for appointing a guardian of a minor's person — petition, notice, investigation, and court order — as distinct from a parent's advance guardian nomination. This document is informational and does not itself appoint a guardian; only a court order can do that.",
+    "categories": [
+      "Family Law"
+    ],
     "clauseOrder": [
       "guardianpet_declaration",
       "guardianpet_scope_vs_nomination",
@@ -3390,15 +3393,15 @@
         "placeholder": "Oakland, California",
         "required": true
       }
-    ],
-    "categories": [
-      "Family Law"
     ]
   },
   {
     "id": "articles_of_incorporation",
     "title": "Articles of Incorporation (California Corporation)",
     "description": "The actual formation filing with the California Secretary of State that legally creates a corporation — distinct from this project's Corporate Bylaws document, which covers internal governance after incorporation.",
+    "categories": [
+      "Business Formation"
+    ],
     "clauseOrder": [
       "articlesinc_declaration",
       "articlesinc_formation_and_existence",
@@ -3450,15 +3453,15 @@
         "placeholder": "Jordan Alex Lee",
         "required": true
       }
-    ],
-    "categories": [
-      "Business Formation"
     ]
   },
   {
     "id": "unemployment_change_notice",
     "title": "Notice to Employee as to Change in Relationship",
     "description": "California's separate, often-overlooked requirement to notify a departing employee of a change in their employment relationship and to supply the EDD's unemployment-benefits pamphlet — distinct from this project's Termination/Separation Letter and WARN Act Layoff Notice documents.",
+    "categories": [
+      "Ending employment"
+    ],
     "clauseOrder": [
       "unemploynotice_intro",
       "unemploynotice_pamphlet_requirement",
@@ -3486,15 +3489,15 @@
         "placeholder": "September 1, 2026",
         "required": true
       }
-    ],
-    "categories": [
-      "Ending employment"
     ]
   },
   {
     "id": "mutual_nda",
     "title": "Mutual Non-Disclosure Agreement",
     "description": "A two-way confidentiality agreement for two businesses exchanging information in both directions -- for example, exploring a partnership or evaluating a deal -- distinct from this project's one-way, employer-to-employee Non-Disclosure Agreement.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
     "clauseOrder": [
       "mutualnda_definitions",
       "mutualnda_obligations",
@@ -3529,15 +3532,15 @@
         "placeholder": "three (3) years",
         "required": true
       }
-    ],
-    "categories": [
-      "Confidentiality & IP"
     ]
   },
   {
     "id": "cobra_election_notice",
     "title": "COBRA Election Notice",
     "description": "The actual federal COBRA continuation-coverage election notice and election form -- qualifying events, notice timing, the 60-day election period, coverage duration, and the premium cap -- distinct from this project's Termination/Separation Letter, which only references the general COBRA obligation.",
+    "categories": [
+      "Ending employment"
+    ],
     "clauseOrder": [
       "cobra_election_notice_letter",
       "cobra_qualifying_events",
@@ -3627,15 +3630,15 @@
         "placeholder": "September 15, 2026",
         "required": true
       }
-    ],
-    "categories": [
-      "Ending employment"
     ]
   },
   {
     "id": "dvro_petition_information",
     "title": "Domestic Violence Restraining Order (Request for Order) Information Sheet",
     "description": "Explains California's Domestic Violence Prevention Act restraining order process (Family Code § 6200 et seq.) -- qualifying relationships, the statutory definition of abuse, the standard of proof, order duration, and firearm relinquishment -- distinct from this project's Civil Harassment Restraining Order, which applies only between people without a qualifying domestic relationship. This document is informational and does not itself grant a restraining order; only a court order can do that.",
+    "categories": [
+      "Family Law"
+    ],
     "clauseOrder": [
       "dvro_incident_and_relationship_declaration",
       "dvro_scope_and_distinction",
@@ -3702,15 +3705,15 @@
         "placeholder": "Sacramento",
         "required": true
       }
-    ],
-    "categories": [
-      "Family Law"
     ]
   },
   {
     "id": "sublease_agreement",
     "title": "Sublease Agreement",
     "description": "A sublease between an existing tenant and a new subtenant -- distinguishing assignment from sublease, confirming the sublessor's continuing liability to the original landlord, and explaining that California's statutory landlord-consent-to-transfer chapter applies only to nonresidential leases, so a residential sublease's rights turn on the master lease's own terms.",
+    "categories": [
+      "Real Estate"
+    ],
     "clauseOrder": [
       "sublease_parties_property",
       "sublease_rent",
@@ -3764,15 +3767,15 @@
         "placeholder": "February 28, 2027",
         "required": true
       }
-    ],
-    "categories": [
-      "Real Estate"
     ]
   },
   {
     "id": "copyright_assignment",
     "title": "Copyright Assignment Agreement",
     "description": "An independent creator or freelancer's assignment of copyright ownership in a specific work to the hiring party -- distinct from this project's employment-context Invention Assignment & Confidentiality Agreement, since most freelance work is not automatically \"work made for hire\" and requires a signed assignment to actually transfer ownership.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
     "clauseOrder": [
       "copyrightassign_grant",
       "copyrightassign_initial_ownership",
@@ -3801,15 +3804,15 @@
         "placeholder": "Logo design and brand style guide delivered August 2026",
         "required": true
       }
-    ],
-    "categories": [
-      "Confidentiality & IP"
     ]
   },
   {
     "id": "waiting_time_penalty_demand",
     "title": "Final Wage Payment / Waiting-Time Penalty Demand Letter",
     "description": "An employee-side demand letter for unpaid final wages and California's waiting-time penalty -- the statutory deadlines for final pay, how the penalty accrues and its 30-day cap, the 'willful' standard courts apply, and the filing deadline -- distinct from this project's employer-facing Termination/Separation Letter.",
+    "categories": [
+      "Ending employment"
+    ],
     "clauseOrder": [
       "waitingtime_demand_letter_body",
       "waitingtime_final_wages_due",
@@ -3856,15 +3859,15 @@
         "placeholder": "$200.00",
         "required": true
       }
-    ],
-    "categories": [
-      "Ending employment"
     ]
   },
   {
     "id": "llc_dissolution_cancellation",
     "title": "LLC Dissolution and Cancellation",
     "description": "The actual statutory winding-up and cancellation filing process that formally terminates an LLC's existence with the California Secretary of State -- distinct from this project's LLC Operating Agreement documents, which cover only the contractual/statutory triggers for dissolution, not the winding-up conduct or the cancellation filings themselves.",
+    "categories": [
+      "Business Formation"
+    ],
     "clauseOrder": [
       "llcdiss_recitals",
       "llcdiss_winding_up_duty",
@@ -3894,15 +3897,15 @@
         "placeholder": "Unanimous vote of the members",
         "required": true
       }
-    ],
-    "categories": [
-      "Business Formation"
     ]
   },
   {
     "id": "tenant_notice_to_vacate",
     "title": "Tenant's Notice of Intent to Vacate",
     "description": "A tenant-initiated notice ending a periodic (month-to-month) tenancy -- the two-way 30-day default, why a fixed-term lease that simply expires needs no statutory notice at all, and what giving this notice triggers on the landlord's side for the pre-move-out inspection right.",
+    "categories": [
+      "Real Estate"
+    ],
     "clauseOrder": [
       "vacatenotice_notice_details",
       "vacatenotice_periodic_30day_default",
@@ -3954,15 +3957,15 @@
         "placeholder": "456 Oak Ave, Springfield",
         "required": true
       }
-    ],
-    "categories": [
-      "Real Estate"
     ]
   },
   {
     "id": "trademark_license",
     "title": "Trademark License Agreement",
     "description": "A trademark owner's license permitting another party to use a mark -- built on the Lanham Act's related-company inurement rule and the real risk of \"naked licensing\": a license granted without real quality control can result in the trademark being deemed abandoned, exposing the registration to cancellation at any time.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
     "clauseOrder": [
       "tmlicense_grant",
       "tmlicense_what_is_a_trademark",
@@ -3991,15 +3994,15 @@
         "placeholder": "The word mark \"ACME\" and associated logo, U.S. Reg. No. 1,234,567",
         "required": true
       }
-    ],
-    "categories": [
-      "Confidentiality & IP"
     ]
   },
   {
     "id": "neutral_reference_policy",
     "title": "Neutral Reference / Employment Verification Policy",
     "description": "The actual California legal framework around what an employer can say when asked for a reference about a former employee -- the blacklisting prohibition, the truthful-statement safe harbor, the civil treble-damages remedy, and the qualified privilege for good-faith performance communications -- distinct from this project's Employment Verification Letter and Termination/Separation Letter documents.",
+    "categories": [
+      "Ending employment"
+    ],
     "clauseOrder": [
       "reference_intro",
       "reference_blacklisting_prohibition",
@@ -4028,15 +4031,15 @@
         "placeholder": "Beta Corp Hiring Manager",
         "required": true
       }
-    ],
-    "categories": [
-      "Ending employment"
     ]
   },
   {
     "id": "grandparent_visitation_petition",
     "title": "Grandparent Visitation (Petition Information Sheet)",
     "description": "Explains California's three distinct statutory pathways for a grandparent to petition for court-ordered visitation (Family Code §§ 3102-3104) -- the deceased-parent pathway, the pending-custody-proceeding pathway, and the general freestanding petition, including the filing restriction and rebuttable presumptions confirmed constitutional under Troxel v. Granville. This document is informational and does not itself grant visitation; only a court order can do that.",
+    "categories": [
+      "Family Law"
+    ],
     "clauseOrder": [
       "grandvis_declaration",
       "grandvis_scope_informational",
@@ -4096,15 +4099,15 @@
         "placeholder": "Oakland, California",
         "required": true
       }
-    ],
-    "categories": [
-      "Family Law"
     ]
   },
   {
     "id": "lead_based_paint_disclosure",
     "title": "Lead-Based Paint Disclosure",
     "description": "The federal disclosure requirement for the sale or lease of housing built before 1978 -- target-housing scope and exemptions, the EPA pamphlet and known-hazard disclosure duties, the 10-day inspection opportunity for a sale, and the treble-damages/civil-penalty consequences of noncompliance -- covering both sale and lease transactions, including the separate, shorter lease-side Lead Warning Statement not previously in this project's corpus.",
+    "categories": [
+      "Real Estate"
+    ],
     "clauseOrder": [
       "leadpaint_certification_acknowledgment",
       "leadpaint_target_housing_scope",
@@ -4132,15 +4135,15 @@
         "placeholder": "123 Main St, Springfield",
         "required": true
       }
-    ],
-    "categories": [
-      "Real Estate"
     ]
   },
   {
     "id": "patent_assignment",
     "title": "Patent Assignment Agreement",
     "description": "The assignment of an issued patent, pending application, or not-yet-filed invention -- built on Stanford v. Roche's holding that patent rights vest initially in the individual inventor, not an employer, absent an actual signed assignment, and the present-tense assignment language courts require for an automatic transfer.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
     "clauseOrder": [
       "patentassign_grant",
       "patentassign_initial_ownership",
@@ -4169,15 +4172,15 @@
         "placeholder": "U.S. Patent No. 10,123,456, \"Widget Fastening Mechanism\"",
         "required": true
       }
-    ],
-    "categories": [
-      "Confidentiality & IP"
     ]
   },
   {
     "id": "board_written_consent",
     "title": "Corporate Board Resolution / Action by Written Consent",
     "description": "The actual statutory mechanics for a corporation's board (or shareholders) to act without holding a meeting -- unanimous written consent for the board, versus a meeting-equivalent (not unanimous) vote count for most shareholder action, plus the meeting-notice-and-waiver alternative and the limits on delegating authority to a committee. Distinct from this project's Corporate Bylaws and Articles of Incorporation documents, which don't cover the mechanics of taking a specific action.",
+    "categories": [
+      "Business Formation"
+    ],
     "clauseOrder": [
       "boardconsent_consent_heading",
       "boardconsent_resolution",
@@ -4219,15 +4222,15 @@
         "placeholder": "Jordan Alex Lee, Morgan Lee",
         "required": true
       }
-    ],
-    "categories": [
-      "Business Formation"
     ]
   },
   {
     "id": "mechanics_lien_preliminary_notice",
     "title": "Mechanics Lien Preliminary Notice",
     "description": "A contractor's, subcontractor's, or supplier's statutory preliminary notice -- the mandatory prerequisite (with narrow exceptions) to recording a mechanics lien, giving a stop payment notice, or asserting a payment bond claim -- covering who must give notice, the 20-day deadline and its partial-recovery rule for a late notice, required content and service, and the lien-recording deadlines that follow.",
+    "categories": [
+      "Real Estate"
+    ],
     "clauseOrder": [
       "mechlien_notice_parties_and_work",
       "mechlien_who_may_claim",
@@ -4275,15 +4278,15 @@
         "placeholder": "August 1, 2026",
         "required": true
       }
-    ],
-    "categories": [
-      "Real Estate"
     ]
   },
   {
     "id": "employer_ui_claim_response",
     "title": "Employer's Response to Unemployment Insurance Claim",
     "description": "The distinct, later process of an employer responding to the EDD when a former employee actually files an unemployment insurance claim -- the 10-day window to submit facts, the misconduct/voluntary-quit disqualification standard EDD applies, and the reserve-account charging and contribution-rate consequences of a timely or untimely response. Distinct from this project's Notice to Employee as to Change in Relationship document, which covers the employer's earlier duty at separation.",
+    "categories": [
+      "Ending employment"
+    ],
     "clauseOrder": [
       "uiresponse_intro",
       "uiresponse_notice_and_deadline",
@@ -4329,15 +4332,15 @@
         "placeholder": "Describe the relevant facts known to the employer",
         "required": true
       }
-    ],
-    "categories": [
-      "Ending employment"
     ]
   },
   {
     "id": "software_license",
     "title": "Software License Agreement",
     "description": "A license granting permission to use software under copyright, rather than assigning ownership -- the license/sale distinction and the Ninth Circuit's three-factor test for which one a transaction actually is (Vernor v. Autodesk), clickwrap vs. browsewrap enforceability (Nguyen v. Barnes & Noble), the writing requirement that attaches to an exclusive license, and an honest disclosure that whether an implied merchantability warranty applies to licensed software is a genuinely unsettled question.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
     "clauseOrder": [
       "swlicense_grant",
       "swlicense_license_vs_sale",
@@ -4366,15 +4369,15 @@
         "placeholder": "Acme Widget Manager, version 3.2",
         "required": true
       }
-    ],
-    "categories": [
-      "Confidentiality & IP"
     ]
   },
   {
     "id": "home_improvement_contract",
     "title": "Home Improvement Contract",
     "description": "The underlying contract between a homeowner and a licensed contractor for home improvement work -- the mandatory written terms and disclosures under California's Contractors State License Law, the down-payment cap and progress-payment rule, the three-day right to cancel, the mechanics lien warning, and the real consequences of using an unlicensed contractor. Distinct from this project's Mechanics Lien Preliminary Notice document, which covers a contractor's lien rights for nonpayment rather than the underlying contract.",
+    "categories": [
+      "Real Estate"
+    ],
     "clauseOrder": [
       "homeimprove_parties_and_project_terms",
       "homeimprove_contract_required_and_writing",
@@ -4428,15 +4431,15 @@
         "placeholder": "November 15, 2026",
         "required": true
       }
-    ],
-    "categories": [
-      "Real Estate"
     ]
   },
   {
     "id": "paternity_action_petition",
     "title": "Paternity Action (Petition to Establish Parental Relationship) Information Sheet",
     "description": "Explains California's contested court process for establishing or disestablishing a parent-child relationship under the Uniform Parentage Act (Fam. Code §§ 7630, 7540-7541, 7551, 7555, 7611-7612) -- standing, the marital presumption and its two-year disestablishment deadline, genetic testing, competing presumptions, and the varied timing rules. Distinct from this project's Voluntary Declaration of Parentage document, which covers the out-of-court, agreed, signed-form process. This document is informational and does not itself establish or disestablish parentage; only a court judgment can do that. Also covers the genetic-testing methodology standard, how a genetic-parent identification may be challenged, the consequence of declining a court-ordered test, and how testing costs are allocated.",
+    "categories": [
+      "Family Law"
+    ],
     "clauseOrder": [
       "paternity_declaration",
       "paternity_scope_vs_voluntary_declaration",
@@ -4494,15 +4497,15 @@
         "placeholder": "Oakland, California",
         "required": true
       }
-    ],
-    "categories": [
-      "Family Law"
     ]
   },
   {
     "id": "nonprofit_articles_of_incorporation",
     "title": "Nonprofit Public Benefit Corporation Articles of Incorporation",
     "description": "The formation filing for a California nonprofit public benefit corporation under the state's separate Nonprofit Corporation Law -- distinct from this project's for-profit Articles of Incorporation, with its own required purpose statement, naming rules, and statutory prohibition on distributions, plus an honest, load-bearing distinction between what California's own statute requires and what a separate federal 501(c)(3) tax-exemption layer additionally requires.",
+    "categories": [
+      "Business Formation"
+    ],
     "clauseOrder": [
       "nonprofit_purpose_declaration",
       "nonprofit_required_content",
@@ -4550,15 +4553,15 @@
         "placeholder": "Jordan Alex Lee",
         "required": true
       }
-    ],
-    "categories": [
-      "Business Formation"
     ]
   },
   {
     "id": "hoa_ccr_disclosure",
     "title": "HOA / CC&R Disclosure (Davis-Stirling Common Interest Development Disclosure)",
     "description": "An informational disclosure package describing the governing documents, financial statements, assessment status, and other Civil Code § 4525 items a seller of a home in a California common-interest development (HOA) must provide to a buyer, separate from the standard Transfer Disclosure Statement.",
+    "categories": [
+      "Real Estate"
+    ],
     "clauseOrder": [
       "hoadisc_intro",
       "hoadisc_document_list",
@@ -4599,15 +4602,15 @@
         "placeholder": "350",
         "required": true
       }
-    ],
-    "categories": [
-      "Real Estate"
     ]
   },
   {
     "id": "ccpa_service_provider_agreement",
     "title": "CCPA Service Provider Data Processing Agreement",
     "description": "A data processing agreement establishing the contract terms California's Consumer Privacy Act (as amended by the CPRA) requires between a business and a vendor processing personal information on its behalf, so the vendor qualifies as a \"service provider\" and the disclosure is not treated as a \"sale\" or \"share\" of personal information.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
     "clauseOrder": [
       "ccpasp_recitals",
       "ccpasp_definitions_business_and_service_provider",
@@ -4636,15 +4639,15 @@
         "placeholder": "processing customer support tickets and providing technical support services",
         "required": true
       }
-    ],
-    "categories": [
-      "Confidentiality & IP"
     ]
   },
   {
     "id": "commission_payout_statement",
     "title": "Commission Payout Upon Termination — Statement of Earned but Unpaid Commissions",
     "description": "An informational statement identifying a commission a former employee contends was already earned, under the terms of the commission agreement, before employment ended — as distinct from a commission that was merely anticipated or still contingent — and that remains unpaid.",
+    "categories": [
+      "Ending employment"
+    ],
     "clauseOrder": [
       "commpayout_declaration",
       "commpayout_wages_include_commissions",
@@ -4697,15 +4700,15 @@
         "placeholder": "5% of net sales revenue, earned upon the customer's countersignature of the contract, paid on the next regular payday",
         "required": true
       }
-    ],
-    "categories": [
-      "Ending employment"
     ]
   },
   {
     "id": "adult_conservatorship_petition_info",
     "title": "Conservatorship of an Adult — Petition Information Sheet",
     "description": "An informational sheet describing California's court process for appointing a conservator of the person, the estate, or both, for an adult who cannot care for themself or manage their finances — distinct from guardianship (for minors) or a power of attorney (a private designation made while still competent). Does not itself establish a conservatorship; only a court order does.",
+    "categories": [
+      "Estate Planning"
+    ],
     "clauseOrder": [
       "conserv_scope_and_petitioners",
       "conserv_two_types_and_standard",
@@ -4753,9 +4756,6 @@
         "placeholder": "Sacramento, California",
         "required": true
       }
-    ],
-    "categories": [
-      "Estate Planning"
     ]
   },
   {
@@ -30558,6 +30558,9 @@
     "id": "home_care_aide_registry_info_sheet",
     "title": "Home Care Aide Registry — Information Sheet",
     "description": "States California law on the Home Care Aide Registry under the Home Care Services Consumer Protection Act — the licensing, registry-listing, background-check, training, and tuberculosis-examination requirements that apply before an individual works as an affiliated home care aide.",
+    "categories": [
+      "Hiring"
+    ],
     "clauseOrder": [
       "hcareg_intro",
       "hcareg_registry_listing_required",
@@ -30595,9 +30598,6 @@
         "placeholder": "September 8, 2026",
         "required": true
       }
-    ],
-    "categories": [
-      "Hiring"
     ]
   },
   {
@@ -34263,6 +34263,9 @@
     "id": "joint_tenancy_severance_info_sheet",
     "title": "Severance of a Joint Tenancy (Civ. Code §§ 683, 683.2; Prob. Code § 5042; Riddle v. Harmon; Tenhet v. Boswell; Estate of Propst) — Information Sheet",
     "description": "Explains, using the statutes' own text and the published decisions in Riddle v. Harmon (1980), Tenhet v. Boswell (1976), and Estate of Propst (1990), what California law provides about ending the right of survivorship in property held in joint tenancy: the definition of a joint tenancy, the express-declaration requirement, and the four unities (Civ. Code § 683; Tenhet); the right of survivorship as a mere expectancy and each joint tenant's power to sever unilaterally, converting the estate into a tenancy in common without disturbing the co-owners' fractional shares (Tenhet; Riddle; Propst); the statutory means of severing a real-property joint tenancy without the other tenants' consent — a deed to a third person, a written instrument evidencing intent to sever including a deed to oneself, or a written declaration — and the statute's non-exclusive character (§ 683.2(a)); Riddle's holding that a joint tenant may sever by deeding the interest to himself or herself without a strawman; the limit that no severance may be made contrary to a written agreement of the joint tenants, and the good-faith purchaser protection (§ 683.2(b)); the recording requirement for a severance of record — recording before death, or notarization within three days before death and recording within seven days after — with the exceptions for instruments of all joint tenants and deeds between joint tenants, and the section's effective dates (§ 683.2(c)-(e)); Tenhet's holdings that a lease by one joint tenant does not sever the tenancy, that severance requires a clear and unambiguous act, and that leases, liens, and mortgages placed by a deceased joint tenant do not bind the survivor; Propst's holding that a joint tenancy in personal property may likewise be unilaterally severed absent contrary agreement, with its reliance-based exception to retroactivity; and the Probate Code rule that dissolution or annulment severs a joint tenancy (including community property with right of survivorship) between former spouses as to the decedent's interest, subject to two exceptions (§ 5042). A companion to the corpus's Joint Bank Accounts and Survivorship Rights, Transfer-on-Death Deed, and Uniform Simultaneous Death Act sheets, which address adjacent questions this sheet does not repeat. Informational only; it does not determine whether any particular joint tenancy has been severed.",
+    "categories": [
+      "Estate Planning"
+    ],
     "clauseOrder": [
       "jtsever_declaration",
       "jtsever_joint_tenancy_defined_four_unities",
@@ -34320,9 +34323,6 @@
         "placeholder": "Sacramento, California",
         "required": true
       }
-    ],
-    "categories": [
-      "Estate Planning"
     ]
   },
   {
