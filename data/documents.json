@@ -34873,5 +34873,72 @@
         "required": false
       }
     ]
+  },
+  {
+    "id": "trustee_compensation_info_sheet",
+    "title": "Trustee Compensation and the Court's Review of It (Prob. Code §§ 15680-15688; Cal. Rules of Court, rule 7.776; Thorpe v. Reed; Scott v. McDonald; Estate of Gump) — Information Sheet",
+    "description": "Explains, using the statutes' and rule's own text and the published decisions in Thorpe v. Reed (2012), Scott v. McDonald (2018), and Estate of Gump (1991), what California law provides about how a trustee of a private express trust is compensated and how the probate court reviews that compensation: the rule that a trustee is entitled to be compensated in accordance with the trust instrument when the instrument provides for compensation (Prob. Code § 15680(a)), as applied in Thorpe v. Reed, where a trust clause denying compensation to a successor trustee barred a fee award and the court's general power to appoint a temporary trustee did not supply authority to pay one differently; the three circumstances in which a court may upon proper showing fix or allow greater or lesser compensation than the trust allows — substantially different duties, compensation that would be inequitable or unreasonably low or high, and extraordinary circumstances calling for equitable relief — and the prospective-only effect of such an order (§ 15680(b)-(c)); the default rule of reasonable compensation under the circumstances when the instrument is silent (§ 15681) and the court's power to fix periodic compensation (§ 15682); the eight factors California Rules of Court, rule 7.776, lists for determining or approving trustee compensation, including the success or failure of the administration and the custom in the community; apportionment among cotrustees according to services rendered (§ 15683); the separate rights to repayment of expenditures and to an equitable lien (§§ 15684, 15685); the 60 days' written notice required before a trustee charges an increased trustee's fee, and the effect of a beneficiary's petition within that period (§ 15686); the restriction on dual compensation where the trustee is an attorney, or where the trustee's relatives or law firm perform legal services, with the settlor-relative exception, the disclosure-and-approval routes, and the void-waiver rule (§ 15687; § 17200(b)(21)); the petition to fix, allow, or review the reasonableness of trustee compensation (§ 17200(a), (b)(9)) and the abuse-of-discretion standard on appeal; reduction or denial of compensation as a remedy for breach of trust (§ 16420(a)(7)), with Estate of Gump's limits where there was no loss, fraud, or personal benefit and Scott v. McDonald's affirmance of a total denial; and the carve-out for a public guardian or public administrator serving as trustee (§ 15688). A companion to the corpus's Statutory Compensation of the Personal Representative, Beneficiary's Right to a Trust Accounting, and Removal of a Trustee sheets, which address adjacent questions this sheet does not repeat. Informational only; it does not determine what any trustee may be paid.",
+    "categories": [
+      "Estate Planning"
+    ],
+    "clauseOrder": [
+      "trustcomp_declaration",
+      "trustcomp_trust_instrument_controls",
+      "trustcomp_court_may_fix_greater_or_lesser",
+      "trustcomp_reasonable_compensation_default",
+      "trustcomp_rule_7776_factors",
+      "trustcomp_cotrustee_apportionment",
+      "trustcomp_repayment_and_equitable_lien",
+      "trustcomp_fee_increase_notice",
+      "trustcomp_attorney_trustee_dual_compensation",
+      "trustcomp_petition_and_standard_of_review",
+      "trustcomp_reduction_or_denial_for_breach",
+      "trustcomp_public_guardian_trustee",
+      "trustcomp_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "trustName",
+        "label": "Name of the trust",
+        "placeholder": "The A. L. Gump Family Trust dated June 1, 2015",
+        "required": true
+      },
+      {
+        "id": "trusteeName",
+        "label": "Name of the trustee whose compensation is in question",
+        "placeholder": "Melodie Z. Scott",
+        "required": true
+      },
+      {
+        "id": "beneficiaryName",
+        "label": "Name of a beneficiary of the trust",
+        "placeholder": "Danny Reed",
+        "required": true
+      },
+      {
+        "id": "countyName",
+        "label": "County whose superior court has jurisdiction over the trust",
+        "placeholder": "Santa Clara",
+        "required": true
+      },
+      {
+        "id": "preparerName",
+        "label": "Name of the person preparing this sheet",
+        "placeholder": "Robert L. Gump",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 13, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state where signed",
+        "placeholder": "San Jose, California",
+        "required": true
+      }
+    ]
   }
 ]
