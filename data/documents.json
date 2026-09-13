@@ -36639,5 +36639,62 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "support_contempt_info_sheet",
+    "title": "Contempt for Failure to Pay Court-Ordered Support — Information Sheet",
+    "description": "Explains the California contempt process used to enforce an order for child, family, or spousal support: Family Code section 290, which lists contempt among the ways a Family Code order may be enforced; Code of Civil Procedure section 1209(a)(5), which makes disobedience of a lawful court order a contempt; section 1211, which requires an affidavit and treats a Judicial Council family law form as compliance; section 1209.5, which makes proof of the order, notice, and noncompliance prima facie evidence of contempt of a child support order; and Moss v. Superior Court (1998) 17 Cal.4th 396, in which the California Supreme Court held that the elements are a valid order, knowledge, and noncompliance proven beyond a reasonable doubt, that inability to comply is an affirmative defense the contemner must prove by a preponderance, and that contempt may rest on a willful failure to seek and accept available employment. Also covers the penalties in section 1218(a) and the escalating Family Code scheme in section 1218(c), the separate-count and limitations rules of section 1218.5, the enforcement bar in section 1218(b) and its support exception, the enforceable-until-paid rule of Family Code sections 4502 and 291, the separate criminal offense in Penal Code section 270, and section 1222's statement that contempt judgments are final and conclusive.",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "supportcontempt_declaration",
+      "supportcontempt_fam290_enforcement_by_contempt",
+      "supportcontempt_ccp1209_disobedience_of_order",
+      "supportcontempt_ccp1211_affidavit_and_family_law_form",
+      "supportcontempt_ccp1209_5_prima_facie_child_support",
+      "supportcontempt_moss_elements_and_affirmative_defense",
+      "supportcontempt_moss_willful_unemployment",
+      "supportcontempt_ccp1218a_penalties_and_fee_shifting",
+      "supportcontempt_ccp1218c_family_code_sentencing_ladder",
+      "supportcontempt_ccp1218_5_counts_and_limitations",
+      "supportcontempt_ccp1218b_contemnor_enforcement_bar_and_support_exception",
+      "supportcontempt_fam291_judgment_enforceable_until_paid",
+      "supportcontempt_pen270_criminal_nonsupport_boundary",
+      "supportcontempt_ccp1222_final_and_conclusive",
+      "supportcontempt_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "party1Name",
+        "label": "First party's full legal name",
+        "placeholder": "Jordan Alex Lee",
+        "required": true
+      },
+      {
+        "id": "party2Name",
+        "label": "Second party's full legal name",
+        "placeholder": "Morgan Casey Lee",
+        "required": true
+      },
+      {
+        "id": "countyOfFiling",
+        "label": "County of filing",
+        "placeholder": "Fresno County",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 13, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Fresno, California",
+        "required": true
+      }
+    ]
   }
 ]
