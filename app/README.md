@@ -584,6 +584,33 @@ from Phase 6's "before public launch" list) and the first of Phase 5's audience-
     exact header row and that the captured email appears in it); confirmed the export endpoint
     rejects an unauthenticated request with 401 rather than leaking another creator's list.
 
+## Bulk back-catalog import (September 2026)
+
+The plan's own note on Phase 5: "do first — changes the pitch to new creators." A creator with a
+back catalog already hosted somewhere (their own site, a CDN they already pay for, an old feed)
+pastes a spreadsheet-style list at `/creator/import` — one video per line, tab- or comma-separated
+title / video URL / optional description — and gets them all posted at once instead of one upload
+form submission per video.
+
+- **Deliberately URL-only.** Reuses the exact same "paste a URL" path the regular upload form
+  already has (`Video.videoUrl` set directly, `status` defaults to `READY`) — no file uploads, no
+  re-encoding, no Mux involved, so nothing new had to be built on the storage/processing side to
+  ship this. A creator whose catalog lives somewhere else is exactly who this is for; someone with
+  local files still uses the regular upload form per video (or waits for real object storage,
+  the still-blocked 4.1).
+- **Parsing that survives a real spreadsheet paste.** Detects a tab first (what pasting straight out
+  of Google Sheets/Excel produces) and falls back to comma; everything after the second field is
+  rejoined with the same delimiter to reconstruct the description, so a comma-containing description
+  survives intact even in comma mode. A pasted header row ("Title, URL, ...") is detected and
+  skipped automatically rather than erroring. Capped at 200 rows per submission — large enough for
+  a real back catalog, small enough to fail fast with a clear message rather than half-importing.
+- **Verification:** a real-browser flow — a creator pastes six rows (a header, two valid rows, and
+  three deliberately bad ones: no URL, no title, an invalid URL) and gets back "Imported 2 videos"
+  plus a skipped list naming the exact line number and reason for each bad row; both videos actually
+  appear on the creator's profile page, with a comma inside the description intact and the URL set
+  directly (no processing); submitting 201 rows is rejected outright with a clear message instead of
+  silently truncating.
+
 ## Cheap-to-build differentiators (no new credentials needed)
 
 A few features from the latest plan revision are built entirely on infrastructure already
@@ -806,3 +833,5 @@ infrastructure, build differentiation" philosophy:
 - **Creator email capture** — `src/lib/actions/email-capture.ts`,
   `src/components/email-capture-form.tsx` on `src/app/(main)/creators/[handle]/page.tsx`, CSV
   export at `src/app/api/creator/subscribers/export/route.ts`
+- **Bulk back-catalog import** — `src/lib/actions/bulk-import.ts`,
+  `src/components/bulk-import-form.tsx`, page at `src/app/(main)/creator/import/page.tsx`
