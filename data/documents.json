@@ -36295,5 +36295,83 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "private_nuisance_between_neighbors_info_sheet",
+    "title": "Private Nuisance Between Neighbors — Information Sheet",
+    "description": "Explains California's private nuisance law as it applies between neighboring property owners and occupants: the Civil Code's statutory definition of nuisance (Section 3479), the split between public and private nuisance and a private person's action for a public nuisance specially injurious to that person (Sections 3480, 3481, 3493), the two elements the California Supreme Court requires beyond interference — substantial harm judged objectively and unreasonableness measured by weighing the gravity of the harm against the social utility of the conduct (San Diego Gas & Electric Co. v. Superior Court (1996) 13 Cal.4th 893) — the statutory remedies of a civil action and abatement (Civil Code Sections 3501, 3502, 3503; Code of Civil Procedure Section 731), successive-owner liability (Section 3483), the rule that abatement does not bar damages for a nuisance's past existence (Section 3484), the statutory-authority limit (Section 3482), and the continuing-versus-permanent distinction that governs successive actions and limitations periods (Baker v. Burbank-Glendale-Pasadena Airport Authority (1985) 39 Cal.3d 862; Code of Civil Procedure Section 338(b)). A separate topic from this project's Boundary Trees, Good Neighbor Fence Act, and Solar Shade Control Act information sheets, each of which addresses one specific statutory neighbor dispute rather than general nuisance law.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "privnuis_purpose",
+      "privnuis_statutory_definition",
+      "privnuis_public_versus_private",
+      "privnuis_two_extra_elements_substantial",
+      "privnuis_two_extra_elements_unreasonable",
+      "privnuis_remedies_civil_action",
+      "privnuis_self_help_abatement",
+      "privnuis_successive_owner_liability",
+      "privnuis_abatement_does_not_bar_damages",
+      "privnuis_statutory_authority_limit",
+      "privnuis_continuing_versus_permanent",
+      "privnuis_record"
+    ],
+    "fields": [
+      {
+        "id": "party1Name",
+        "label": "Name of the person affected by the condition (owner or occupant)",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "party1PropertyAddress",
+        "label": "Address of the affected person's property",
+        "placeholder": "123 Main St., Fresno, CA 93701",
+        "required": true
+      },
+      {
+        "id": "party2Name",
+        "label": "Name of the neighboring owner or occupant whose property the condition is on or comes from",
+        "placeholder": "Morgan Casey",
+        "required": true
+      },
+      {
+        "id": "party2PropertyAddress",
+        "label": "Address of the neighboring property",
+        "placeholder": "125 Main St., Fresno, CA 93701",
+        "required": true
+      },
+      {
+        "id": "county",
+        "label": "County where the properties are located",
+        "placeholder": "Fresno County",
+        "required": true
+      },
+      {
+        "id": "conditionDescription",
+        "label": "Description of the condition or activity at issue",
+        "placeholder": "Outdoor machinery run nightly between 11 p.m. and 3 a.m. within 15 feet of the shared property line",
+        "required": true
+      },
+      {
+        "id": "firstObservedDate",
+        "label": "Date the condition or activity was first observed",
+        "placeholder": "March 2, 2026",
+        "required": false
+      },
+      {
+        "id": "effectDescription",
+        "label": "Description of the effect on the use or enjoyment of the affected property",
+        "placeholder": "Noise audible inside the bedrooms on the west side of the house throughout the night",
+        "required": false
+      },
+      {
+        "id": "recordDate",
+        "label": "Date of this record",
+        "placeholder": "September 13, 2026",
+        "required": true
+      }
+    ]
   }
 ]
