@@ -37811,5 +37811,74 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "exclusive_implied_easement_encroachment_info_sheet",
+    "title": "Exclusive Implied Easements Over an Encroaching Driveway or Wall (Civ. Code §§ 806, 1069, 1104; Code Civ. Proc. § 325; Romero v. Shih; Hirshfield v. Schwartz; Shoen v. Zacarias) — Information Sheet",
+    "description": "Describes what California law says about easements implied from the severance of two parcels, and specifically about an implied easement broad enough to leave the owner of the burdened land no practical use of the surface. Sets out the text of Civil Code section 1104, the implied easement statute unchanged since 1872, with Civil Code sections 806 and 1069 and Code of Civil Procedure section 325, subdivision (b); the three-element formulation California courts use, the rule that implied easements are not favored, and the clear-evidence standard; the Restatement account of exclusivity as a matter of degree that Romero v. Shih adopts; Romero’s holding that an effectively exclusive implied easement is not impermissible as a matter of law, and its reasoning that the Raab v. Casper line barring exclusive prescriptive easements protects the adverse possession tax requirement and has no application to easements implied from a transaction; the questions Romero expressly left undecided, including whether the exclusive prescriptive easement cases were rightly decided; the equitable easement and relative hardship doctrine as Hirshfield v. Schwartz and Shoen v. Zacarias state it, including the three prerequisites and the limits Shoen places on judicial discretion; the forfeited takings argument and the narrow remand; and what the owner of the burdened parcel retains. Records each point at which an opinion declined to decide a question, and each point at which the consulted sources disagreed or were damaged.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "implease_scope_and_use",
+      "implease_easement_and_estate",
+      "implease_section_1104_text",
+      "implease_elements",
+      "implease_not_favored",
+      "implease_exclusivity_spectrum",
+      "implease_romero_holding",
+      "implease_prescriptive_line",
+      "implease_express_easement_comparators",
+      "implease_questions_left_open",
+      "implease_equitable_easement_elements",
+      "implease_equitable_easement_limits",
+      "implease_takings_and_disposition",
+      "implease_servient_owner_retained_rights",
+      "implease_closing_notes"
+    ],
+    "fields": [
+      {
+        "id": "propertyDescription",
+        "label": "Property or parcels at issue",
+        "placeholder": "643 and 651 West Alegria Avenue",
+        "required": true
+      },
+      {
+        "id": "countyName",
+        "label": "County",
+        "placeholder": "Los Angeles",
+        "required": true
+      },
+      {
+        "id": "dominantParcel",
+        "label": "Parcel claiming the benefit of the easement",
+        "placeholder": "the easterly parcel",
+        "required": false
+      },
+      {
+        "id": "servientParcel",
+        "label": "Parcel said to be burdened",
+        "placeholder": "the westerly parcel",
+        "required": false
+      },
+      {
+        "id": "encroachmentDescription",
+        "label": "Encroachment or use at issue",
+        "placeholder": "a driveway, garden planter and block wall",
+        "required": false
+      },
+      {
+        "id": "preparerName",
+        "label": "Prepared by",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "preparedDate",
+        "label": "Date prepared",
+        "placeholder": "September 13, 2026",
+        "required": true
+      }
+    ]
   }
 ]
