@@ -117324,6 +117324,308 @@
       "title": "Signature",
       "kind": "drafting",
       "body": "I declare under penalty of perjury under the laws of the State of California that the foregoing background information is true and correct to the best of my knowledge.\n\nExecuted on {{dateSigned}} at {{cityState}}.\n\nSignature of {{preparerName}}: ☐ _________________________\n\n[This information sheet is prepared as background regarding California's substituted judgment procedure, as stated in Probate Code sections 2580 through 2586, in Probate Code sections 6100, 1301 and 1310, and in the published decisions cited above. It is not a petition, a court order, a will, a trust, or a notice, and filing or delivering it accomplishes nothing by itself. It states what the statutes and opinions say; it does not evaluate the conservatorship of {{conservateeName}}, the administration of that estate by {{conservatorName}}, or any action that might be proposed in it.]"
+    },
+    {
+      "id": "consevic_purpose",
+      "title": "What This Information Sheet Covers",
+      "kind": "drafting",
+      "body": "This information sheet describes two connected bodies of California law: the covenant of quiet enjoyment that is implied in every lease, and the doctrine of constructive eviction that California courts built on top of that covenant. It is being prepared in connection with the tenancy of {{tenantName}} at {{premisesAddress}} in {{county}}, under a rental agreement or lease with {{landlordName}}. The conduct or condition at issue is recorded as: {{interferenceDescription}}. Each clause below reports what a named Civil Code section or a named published California opinion says — what the implied covenant is, what kind of interference breaches it, who can commit the interference, what a tenant’s surrender of possession does to the obligation to pay rent, what measures of damages the authorities discuss, and where the doctrine sits next to other landlord-tenant statutes. This sheet does not evaluate the tenancy at {{premisesAddress}}, does not decide whether anything described above occurred or how serious it was, and does not tell anyone what to do."
+    },
+    {
+      "id": "consevic_statutory_covenant",
+      "title": "The Covenant Implied in Every Lease (Civ. Code § 1927)",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-13",
+      "body": "Civil Code section 1927, enacted in 1872 and never amended, is one sentence: \"An agreement to let upon hire binds the letter to secure to the hirer the quiet possession of the thing hired during the term of the hiring, against all persons lawfully claiming the same.\" It sits in the Civil Code’s chapter on hiring in general, so it speaks of a \"letter\" and a \"hirer\" rather than a landlord and a tenant. The Court of Appeal in Andrews v. Mobile Aire Estates (2005) 125 Cal.App.4th 578 described the relationship between that section and the broader covenant the courts apply: the implied covenant of quiet enjoyment is \"partially codified\" in section 1927, the statutory covenant guarantees the tenant against the rightful assertion of a paramount title, and \"Beyond the statutory covenant, the landlord is bound to refrain from action which interrupts the tenant’s beneficial enjoyment.\" Andrews also states the rule that the covenant is implied in the absence of contrary language, and Erlach v. Sierra Asset Servicing, LLC (2014) 226 Cal.App.4th 1281 states that the covenant \"is breached upon actual or constructive eviction of the tenant.\" Nativi v. Deutsche Bank National Trust Co. (2014) 223 Cal.App.4th 261 describes how the covenant grew: it once protected the lessee against physical interference only, and in more recent years it has been read to insulate the tenant against acts or omissions of the landlord, or of anyone claiming under the landlord, that interfere with the tenant’s use and enjoyment of the premises for the purposes contemplated by the tenancy. Nothing in these authorities is specific to the lease between {{tenantName}} and {{landlordName}}.",
+      "gap": "Every Civil Code section quoted in this clause was fetched twice from leginfo.legislature.ca.gov by two independent paths — the individual section page (codes_displaySection.xhtml) requested with a Chrome User-Agent, and the page for the whole chapter or article containing that section (codes_displayText.xhtml) requested with a Firefox User-Agent — and the text extracted from the two responses was identical after conversion of non-breaking spaces and collapsing of the line wrapping leginfo inserts. Each published opinion quoted in this clause was fetched twice from CourtListener’s opinion page with two different browser User-Agent and Accept header sets, and each quotation was then confirmed a third time through CourtListener’s public search API, which returned the opinion’s own cluster as the single hit for a phrase query restricted to that cluster. CourtListener’s text of these opinions is a scan-derived reproduction of the official reports; quotations here were taken only from passages that contain no scanning artifacts, and page markers embedded in the running text were avoided rather than edited out. Section 1927 speaks of securing quiet possession \"against all persons lawfully claiming the same,\" and the opinions quoted here say that the covenant the courts apply is broader than that statutory text; this clause reports both and does not attempt to state where the statutory covenant ends and the judicially expanded covenant begins. The Andrews sentence about paramount title is that court’s paraphrase of Guntert v. City of Stockton (1976) 55 Cal.App.3d 131, which was not separately fetched for this sheet, so the quotation used here is the Andrews sentence that contains no internal quotation. Whether the lease or rental agreement between {{tenantName}} and {{landlordName}} contains language addressing quiet enjoyment is a question of that document’s own terms, which this sheet does not review.",
+      "citations": [
+        {
+          "case": "Cal. Civ. Code § 1927 (California Legislative Information text)",
+          "cite": "the lessor’s statutory obligation to secure the tenant’s quiet possession",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1927.",
+          "quote": "An agreement to let upon hire binds the letter to secure to the hirer the quiet possession of the thing hired during the term of the hiring, against all persons lawfully claiming the same."
+        },
+        {
+          "case": "Andrews v. Mobile Aire Estates (2005) 125 Cal.App.4th 578, 588 (CourtListener text)",
+          "cite": "the covenant is implied in every lease absent contrary language",
+          "url": "https://www.courtlistener.com/opinion/2248922/andrews-v-mobile-aire-estates/",
+          "quote": "In the absence of language to the contrary, every lease contains an implied covenant of quiet enjoyment, whereby the landlord impliedly covenants that the tenant shall have quiet enjoyment and possession of the premises."
+        },
+        {
+          "case": "Andrews v. Mobile Aire Estates (2005) 125 Cal.App.4th 578, 589 (CourtListener text)",
+          "cite": "the judicially recognized covenant reaches beyond the statutory one",
+          "url": "https://www.courtlistener.com/opinion/2248922/andrews-v-mobile-aire-estates/",
+          "quote": "Beyond the statutory covenant, the landlord is bound to refrain from action which interrupts the tenant’s beneficial enjoyment."
+        },
+        {
+          "case": "Erlach v. Sierra Asset Servicing, LLC (2014) 226 Cal.App.4th 1281, 1299 (CourtListener text)",
+          "cite": "the covenant is breached upon actual or constructive eviction",
+          "url": "https://www.courtlistener.com/opinion/2677838/erlach-v-sierra-asset-servicing-llc/",
+          "quote": "every lease includes a covenant of quiet possession and enjoyment. (Civ. Code, § 1927.) This covenant is breached upon actual or constructive eviction of the tenant."
+        },
+        {
+          "case": "Nativi v. Deutsche Bank National Trust Co. (2014) 223 Cal.App.4th 261, 291 (CourtListener text)",
+          "cite": "the covenant’s original, narrower scope",
+          "url": "https://www.courtlistener.com/opinion/2650742/nativi-v-deutsche-bank-national-trust-co/",
+          "quote": "Initially, the covenant related solely to the right of possession and only protected the lessee against any act of molestation committed by the landlord or anyone claiming under him, or by someone with paramount title, which directly affected the tenant’s use and possession of the leased premises; the covenant was construed to protect the lessee against physical interference only."
+        }
+      ]
+    },
+    {
+      "id": "consevic_substantial_interference",
+      "title": "The Threshold: Substantial Interference, Not Minor Annoyance",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-13",
+      "body": "The published decisions draw a line between interference that breaches the covenant and interference that does not. Andrews v. Mobile Aire Estates states: \"Minor inconveniences and annoyances are not actionable breaches of the implied covenant of quiet enjoyment. To be actionable, the landlord’s act or omission must substantially interfere with a tenant’s right to use and enjoy the premises for the purposes contemplated by the tenancy.\" The phrase \"for the purposes contemplated by the tenancy\" ties the standard to what the particular premises were let for; the examples Andrews collects include a landlord who installed interior building supports that interfered with a tenant’s billiards business and a landlord who denied a retail tenant the adjoining parking spaces essential to its use of the property. Andrews also states, in a footnote, that because the covenant is present in every lease absent contrary language, cases involving commercial tenants apply equally to residential tenancies. Whether the conduct or condition recorded for {{premisesAddress}} — {{interferenceDescription}} — crosses that threshold is a question of fact this sheet does not answer.",
+      "gap": "Each published opinion quoted in this clause was fetched twice from CourtListener’s opinion page with two different browser User-Agent and Accept header sets, and each quotation was then confirmed a third time through CourtListener’s public search API, which returned the opinion’s own cluster as the single hit for a phrase query restricted to that cluster. CourtListener’s text of these opinions is a scan-derived reproduction of the official reports; quotations here were taken only from passages that contain no scanning artifacts, and page markers embedded in the running text were avoided rather than edited out. Andrews states the substantiality standard; it does not supply a numerical or durational test, and this clause does not add one. The examples named in the body are the Court of Appeal’s own parenthetical descriptions of Pierce v. Nash (1954) 126 Cal.App.2d 606 and Sierad v. Lilly (1962) 204 Cal.App.2d 770, neither of which was separately fetched for this sheet, so those two cases are described rather than quoted. Nativi v. Deutsche Bank National Trust Co. (2014) 223 Cal.App.4th 261, 292, notes that whether there has been a breach generally depends on the facts of the particular case. This clause states the standard the opinions announce and does not apply it to {{tenantName}}, {{landlordName}}, or the condition recorded above.",
+      "citations": [
+        {
+          "case": "Andrews v. Mobile Aire Estates (2005) 125 Cal.App.4th 578, 589 (CourtListener text)",
+          "cite": "minor annoyances are not breaches; substantial interference is required",
+          "url": "https://www.courtlistener.com/opinion/2248922/andrews-v-mobile-aire-estates/",
+          "quote": "Minor inconveniences and annoyances are not actionable breaches of the implied covenant of quiet enjoyment. To be actionable, the landlord’s act or omission must substantially interfere with a tenant’s right to use and enjoy the premises for the purposes contemplated by the tenancy."
+        }
+      ]
+    },
+    {
+      "id": "consevic_intent_not_required",
+      "title": "The Landlord’s Subjective Intent Is Not an Element",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-13",
+      "body": "Nativi v. Deutsche Bank National Trust Co. (2014) 223 Cal.App.4th 261 states that \"It is not necessary to show that the landlord acted with the subjective intent to compel the tenant to leave the property or deprive the tenant of quiet enjoyment.\" The same passage describes a presumption that a landlord intends the natural and probable consequences of the landlord’s acts, so that where those acts effectively deprive the tenant of the use and enjoyment of the premises, an intent to evict is implied from the character of the acts done. That rule matters for how a claimed constructive eviction is proved: under these authorities the inquiry is directed at the effect of the landlord’s acts or omissions rather than at the landlord’s state of mind. This sheet reports the rule and does not characterize anything {{landlordName}} did or did not do.",
+      "gap": "Each published opinion quoted in this clause was fetched twice from CourtListener’s opinion page with two different browser User-Agent and Accept header sets, and each quotation was then confirmed a third time through CourtListener’s public search API, which returned the opinion’s own cluster as the single hit for a phrase query restricted to that cluster. CourtListener’s text of these opinions is a scan-derived reproduction of the official reports; quotations here were taken only from passages that contain no scanning artifacts, and page markers embedded in the running text were avoided rather than edited out. The presumption language Nativi uses is itself a quotation from Pierce v. Nash (1954) 126 Cal.App.2d 606, which was not separately fetched for this sheet; the body therefore paraphrases that nested quotation and quotes only the Nativi sentence that stands on its own. A separate line of authority, described in this sheet’s clause on good-faith resort to legal process, treats a landlord’s good faith as significant in the narrower situation where the landlord has served a notice to quit without physically interfering with possession; this clause does not address that situation. Nothing here states which party bears the burden of proof on any issue in any particular proceeding.",
+      "citations": [
+        {
+          "case": "Nativi v. Deutsche Bank National Trust Co. (2014) 223 Cal.App.4th 261, 292 (CourtListener text)",
+          "cite": "subjective intent to oust the tenant need not be shown",
+          "url": "https://www.courtlistener.com/opinion/2650742/nativi-v-deutsche-bank-national-trust-co/",
+          "quote": "It is not necessary to show that the landlord acted with the subjective intent to compel the tenant to leave the property or deprive the tenant of quiet enjoyment."
+        }
+      ]
+    },
+    {
+      "id": "consevic_who_can_interfere",
+      "title": "Who Can Commit the Interference — and Whose Conduct Falls Outside the Covenant",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-13",
+      "body": "Andrews v. Mobile Aire Estates states: \"The perpetrator of the interference with the tenant’s quiet enjoyment need not be the landlord personally. There may be an actionable breach where the interference is caused by a neighbor or tenant claiming under the landlord.\" The same opinion marks the outer edge of that principle in a footnote: the covenant runs between the tenant and the landlord from whom the tenant rents, so nuisance activities on neighboring premises \"not owned or controlled by the aggrieved tenant’s landlord\" may interfere with a tenant’s quiet enjoyment without amounting to a breach of the covenant as between tenant and landlord. Nativi v. Deutsche Bank National Trust Co. collects the same distinction from older authority, quoting the rule that a lessor \"is responsible upon the covenant for his own acts, and for the acts of others claiming by title paramount to the lease, but he is not responsible for the acts of a mere trespasser.\" The same passage also quotes the California Supreme Court for the proposition that \"a landowner cannot interfere with his tenant’s possession or enjoyment by allowing others to enter upon the land.\" Who owns or controls the property from which the conduct recorded above originates is a factual question about {{premisesAddress}} that this sheet does not resolve.",
+      "gap": "Each published opinion quoted in this clause was fetched twice from CourtListener’s opinion page with two different browser User-Agent and Accept header sets, and each quotation was then confirmed a third time through CourtListener’s public search API, which returned the opinion’s own cluster as the single hit for a phrase query restricted to that cluster. CourtListener’s text of these opinions is a scan-derived reproduction of the official reports; quotations here were taken only from passages that contain no scanning artifacts, and page markers embedded in the running text were avoided rather than edited out. The Andrews footnote quoted here is footnote 9 of that opinion, and its own support is a practice treatise rather than a decision. The two sentences quoted from Nativi are that court’s quotations of Playter v. Cunningham (1862) 21 Cal. 229 and of Brown Derby Hollywood Corp. v. Hatton (1964) 61 Cal.2d 855 respectively; neither of those older opinions was separately fetched, so each quotation is attributed here to the Nativi opinion in which it was read and verified. Andrews itself held only that a duty exists and that whether the landlord breached it by failing to act against another tenant was a triable question of fact, so the case does not establish what response any landlord owes in any particular dispute. Whether anyone involved in the events recorded for {{tenantName}} was a tenant of {{landlordName}}, someone claiming under {{landlordName}}, or a stranger to the tenancy is not addressed here.",
+      "citations": [
+        {
+          "case": "Andrews v. Mobile Aire Estates (2005) 125 Cal.App.4th 578, 590 (CourtListener text)",
+          "cite": "interference by a neighbor or tenant claiming under the landlord can breach the covenant",
+          "url": "https://www.courtlistener.com/opinion/2248922/andrews-v-mobile-aire-estates/",
+          "quote": "The perpetrator of the interference with the tenant’s quiet enjoyment need not be the landlord personally. There may be an actionable breach where the interference is caused by a neighbor or tenant claiming under the landlord."
+        },
+        {
+          "case": "Andrews v. Mobile Aire Estates (2005) 125 Cal.App.4th 578, 590, fn. 9 (CourtListener text)",
+          "cite": "conduct on premises the landlord neither owns nor controls is outside the covenant",
+          "url": "https://www.courtlistener.com/opinion/2248922/andrews-v-mobile-aire-estates/",
+          "quote": "The implied covenant of quiet enjoyment runs between the tenants and the landlord from whom they are renting the property. Therefore, while nuisance activities on neighboring premises, not owned or controlled by the aggrieved tenant’s landlord, may interfere with a tenant’s quiet enjoyment, such conduct does not amount to a breach of the covenant of quiet enjoyment as between tenant and landlord."
+        },
+        {
+          "case": "Nativi v. Deutsche Bank National Trust Co. (2014) 223 Cal.App.4th 261, 307 (CourtListener text)",
+          "cite": "the lessor is not answerable for the acts of a mere trespasser",
+          "url": "https://www.courtlistener.com/opinion/2650742/nativi-v-deutsche-bank-national-trust-co/",
+          "quote": "The lessor is responsible upon the covenant for his own acts, and for the acts of others claiming by title paramount to the lease, but he is not responsible for the acts of a mere trespasser."
+        },
+        {
+          "case": "Nativi v. Deutsche Bank National Trust Co. (2014) 223 Cal.App.4th 261, 307 (CourtListener text)",
+          "cite": "a landlord may not interfere by allowing others onto the land",
+          "url": "https://www.courtlistener.com/opinion/2650742/nativi-v-deutsche-bank-national-trust-co/",
+          "quote": "a landowner cannot interfere with his tenant’s possession or enjoyment by allowing others to enter upon the land."
+        }
+      ]
+    },
+    {
+      "id": "consevic_vacating_requirement",
+      "title": "What Makes an Interference a Constructive Eviction: Surrender of Possession",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-13",
+      "body": "Constructive eviction is the label the cases give to a breach of the covenant that the tenant answers by giving up the premises. The California Supreme Court stated the rule in Kulawitz v. Pacific Woodenware & Paper Co. (1944) 25 Cal.2d 664: \"Any interference by the landlord by which the tenant is deprived of the beneficial enjoyment of the premises amounts to a constructive eviction if the tenant so elects and surrenders possession, and the tenant will not be liable for rentals for the portion of the term following his eviction.\" Nativi v. Deutsche Bank National Trust Co. quotes the same doctrine in the form that a disturbance depriving the tenant of beneficial enjoyment amounts to a constructive eviction \"provided the tenant vacates the premises within a reasonable time.\" Erlach v. Sierra Asset Servicing, LLC states the rule with the same timing element. The Supreme Court had earlier said in Standard Livestock Co. v. Pentz (1928) 204 Cal. 618 that \"the covenant of quiet possession in a lease is not breached until there has been an actual or constructive eviction.\" Nativi quotes that statement while noting that some authorities recognize that a tenant may sue for breach of the covenant while remaining in possession. Green v. Superior Court (1974) 10 Cal.3d 616 describes the practical consequence of the surrender requirement in the residential context: the doctrine \"gives little help to the typical low income tenant today because to avail himself of the doctrine a tenant must vacate the premises.\" Whether {{tenantName}} has surrendered possession of {{premisesAddress}}, and when, are facts this sheet does not establish.",
+      "gap": "Each published opinion quoted in this clause was fetched twice from CourtListener’s opinion page with two different browser User-Agent and Accept header sets, and each quotation was then confirmed a third time through CourtListener’s public search API, which returned the opinion’s own cluster as the single hit for a phrase query restricted to that cluster. CourtListener’s text of these opinions is a scan-derived reproduction of the official reports; quotations here were taken only from passages that contain no scanning artifacts, and page markers embedded in the running text were avoided rather than edited out. The authorities quoted here are not uniform on whether a tenant who stays in possession can sue on the covenant: Standard Livestock states that the covenant is not breached until there has been an actual or constructive eviction, while Nativi expressly notes contrary authority, and Andrews v. Mobile Aire Estates (2005) 125 Cal.App.4th 578, 590-591, describes an election to stand on the lease, remain in possession, and sue for damages. This clause reports that divergence rather than resolving it. The sentence Nativi quotes about vacating \"within a reasonable time\" is that court’s quotation of Pierce v. Nash (1954) 126 Cal.App.2d 606, which was not separately fetched, so the body paraphrases it and the verbatim quotations below come from opinions read in full. No authority quoted here defines \"a reasonable time\" in days or weeks, and this sheet does not supply a figure for {{tenantName}} or for any other tenancy.",
+      "citations": [
+        {
+          "case": "Kulawitz v. Pacific Woodenware & Paper Co. (1944) 25 Cal.2d 664, 670 (CourtListener text)",
+          "cite": "surrender of possession converts the interference into a constructive eviction and ends liability for later rent",
+          "url": "https://www.courtlistener.com/opinion/1164210/kulawitz-v-pacific-woodenware-paper-co/",
+          "quote": "Any interference by the landlord by which the tenant is deprived of the beneficial enjoyment of the premises amounts to a constructive eviction if the tenant so elects and surrenders possession, and the tenant will not be liable for rentals for the portion of the term following his eviction."
+        },
+        {
+          "case": "Standard Livestock Co. v. Pentz (1928) 204 Cal. 618, 625 (CourtListener text)",
+          "cite": "no breach of the covenant of quiet possession until an actual or constructive eviction",
+          "url": "https://www.courtlistener.com/opinion/3306923/standard-livestock-co-v-pentz/",
+          "quote": "The law is too well settled to require extensive comment or citation of authority that the covenant of quiet possession in a lease is not breached until there has been an actual or constructive eviction."
+        },
+        {
+          "case": "Green v. Superior Court (1974) 10 Cal.3d 616, 625, fn. 10 (CourtListener text)",
+          "cite": "the doctrine’s practical limit for a residential tenant who cannot leave",
+          "url": "https://www.courtlistener.com/opinion/1182285/green-v-superior-court/",
+          "quote": "gives little help to the typical low income tenant today because to avail himself of the doctrine a tenant must vacate the premises."
+        }
+      ]
+    },
+    {
+      "id": "consevic_effect_and_remedies",
+      "title": "What the Cases Say Follows a Surrender — and the Alternative of Staying",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-13",
+      "body": "Andrews v. Mobile Aire Estates sets out the consequences the decisions attach to each path. Where the tenant surrenders possession: \"Upon surrendering possession of the premises, the tenant is relieved of the obligation to pay rent and may sue for damages, or may plead damages by way of offset in an action brought by the landlord to recover any unpaid rent that accrued prior to the surrender of the premises.\" Andrews describes the alternative as an election to stand upon the lease, remain in possession, and sue for breach of contract damages as well as for injunctive relief, citing Guntert v. City of Stockton (1976) 55 Cal.App.3d 131 and Petroleum Collections Inc. v. Swords (1975) 48 Cal.App.3d 841. Kulawitz v. Pacific Woodenware & Paper Co. states the rent consequence of the first path in the same terms: the tenant \"will not be liable for rentals for the portion of the term following his eviction.\" These statements describe what the opinions say a tenant may do; they are not a list of steps for {{tenantName}} and say nothing about the strength of any claim arising from {{interferenceDescription}}.",
+      "gap": "Each published opinion quoted in this clause was fetched twice from CourtListener’s opinion page with two different browser User-Agent and Accept header sets, and each quotation was then confirmed a third time through CourtListener’s public search API, which returned the opinion’s own cluster as the single hit for a phrase query restricted to that cluster. CourtListener’s text of these opinions is a scan-derived reproduction of the official reports; quotations here were taken only from passages that contain no scanning artifacts, and page markers embedded in the running text were avoided rather than edited out. The description of the second path — standing on the lease and remaining in possession — is Andrews’s characterization of Guntert and Petroleum Collections; neither of those opinions was separately fetched for this sheet, and as the preceding clause notes, Standard Livestock Co. v. Pentz (1928) 204 Cal. 618, 625, states that the covenant is not breached until there has been an actual or constructive eviction. The body therefore quotes verbatim only the surrender path and describes the other as the Andrews court described it. Rent that accrued before a surrender, the landlord’s remedies on a tenant’s abandonment, the notice and filing rules of an unlawful detainer action, and any local just-cause ordinance are separate subjects governed by other authorities and are not covered here.",
+      "citations": [
+        {
+          "case": "Andrews v. Mobile Aire Estates (2005) 125 Cal.App.4th 578, 590 (CourtListener text)",
+          "cite": "effect of surrender on the rent obligation, and the damages and offset remedies",
+          "url": "https://www.courtlistener.com/opinion/2248922/andrews-v-mobile-aire-estates/",
+          "quote": "Upon surrendering possession of the premises, the tenant is relieved of the obligation to pay rent and may sue for damages, or may plead damages by way of offset in an action brought by the landlord to recover any unpaid rent that accrued prior to the surrender of the premises."
+        }
+      ]
+    },
+    {
+      "id": "consevic_damages_measures",
+      "title": "The Measure of Damages: Civil Code Sections 3300 and 3304, and a Disagreement About Section 3304",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-13",
+      "body": "Two Civil Code sections are named in the decisions on this subject. Section 3300 provides that \"For the breach of an obligation arising from contract, the measure of damages, except where otherwise expressly provided by this Code, is the amount which will compensate the party aggrieved for all the detriment proximately caused thereby, or which, in the ordinary course of things, would be likely to result therefrom.\" Section 3304 prescribes a specific measure — the price paid to the grantor or a proportion of it, interest for the period the grantee derived no benefit, and expenses properly incurred in defending possession — for breach of a covenant of \"seizin,\" \"right to convey,\" \"warranty,\" or \"quiet enjoyment\" in a grant of an estate in real property. The authorities do not line up on whether section 3304 reaches leases. In Standard Livestock Co. v. Pentz (1928) 204 Cal. 618 the California Supreme Court concluded that section 3304 \"was never intended to have reference to leases of real estate or to the detriment caused by breaches of covenants for the peaceable possession of leased premises.\" Nativi v. Deutsche Bank National Trust Co. (2014) 223 Cal.App.4th 261 states that section 3300 supplies the measure of contract damages for breach of the covenant implied in a lease, citing Standard Livestock. Andrews v. Mobile Aire Estates (2005) 125 Cal.App.4th 578, by contrast, states in the text that section 3304 prescribes the measure of damages for breach of the covenant of quiet enjoyment and adds that case law allows a tenant to recover contract damages under section 3300, listing lost profits, lost business goodwill, and moving expenses as possible recoveries in an appropriate case. This sheet reports what each source says and calculates nothing for {{tenantName}}.",
+      "gap": "Every Civil Code section quoted in this clause was fetched twice from leginfo.legislature.ca.gov by two independent paths — the individual section page (codes_displaySection.xhtml) requested with a Chrome User-Agent, and the page for the whole chapter or article containing that section (codes_displayText.xhtml) requested with a Firefox User-Agent — and the text extracted from the two responses was identical after conversion of non-breaking spaces and collapsing of the line wrapping leginfo inserts. Each published opinion quoted in this clause was fetched twice from CourtListener’s opinion page with two different browser User-Agent and Accept header sets, and each quotation was then confirmed a third time through CourtListener’s public search API, which returned the opinion’s own cluster as the single hit for a phrase query restricted to that cluster. CourtListener’s text of these opinions is a scan-derived reproduction of the official reports; quotations here were taken only from passages that contain no scanning artifacts, and page markers embedded in the running text were avoided rather than edited out. The tension described in the body is real and is disclosed rather than smoothed over: Standard Livestock is a California Supreme Court decision holding section 3304 inapplicable to leases, while the later Court of Appeal opinion in Andrews states in its text that section 3304 prescribes the measure for breach of the covenant of quiet enjoyment and reproduces the section in its footnote 10 without discussing Standard Livestock. This sheet does not say which statement governs a given case. The examples of recoverable items named in Andrews come from its discussion of Guntert v. City of Stockton (1976) 55 Cal.App.3d 131 and Johnson v. Snyder (1950) 99 Cal.App.2d 86, neither separately fetched here, so they are described rather than quoted. Section 3304 is quoted below from the leginfo text of the section itself rather than from the Andrews footnote, because the footnote reproduces it with bracketed paragraph markers. Punitive damages, emotional distress damages, statutory penalties, and attorney’s fees are governed by other provisions and are not addressed in this clause.",
+      "citations": [
+        {
+          "case": "Cal. Civ. Code § 3300 (California Legislative Information text)",
+          "cite": "the general contract measure of damages",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=3300.",
+          "quote": "For the breach of an obligation arising from contract, the measure of damages, except where otherwise expressly provided by this Code, is the amount which will compensate the party aggrieved for all the detriment proximately caused thereby, or which, in the ordinary course of things, would be likely to result therefrom."
+        },
+        {
+          "case": "Cal. Civ. Code § 3304 (California Legislative Information text)",
+          "cite": "the specific measure for breach of a covenant of quiet enjoyment in a grant of an estate in real property",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=3304.",
+          "quote": "The detriment caused by the breach of a covenant of “seizin,” of “right to convey,” of “warranty,” or of “quiet enjoyment,” in a grant of an estate in real property, is deemed to be:"
+        },
+        {
+          "case": "Standard Livestock Co. v. Pentz (1928) 204 Cal. 618, 638 (CourtListener text)",
+          "cite": "section 3304 held not to reach leases of real estate",
+          "url": "https://www.courtlistener.com/opinion/3306923/standard-livestock-co-v-pentz/",
+          "quote": "We conclude that, judged by the context thereof and of its accompanying sections of the Civil Code, section 3304 thereof was never intended to have reference to leases of real estate or to the detriment caused by breaches of covenants for the peaceable possession of leased premises."
+        },
+        {
+          "case": "Nativi v. Deutsche Bank National Trust Co. (2014) 223 Cal.App.4th 261, 293 (CourtListener text)",
+          "cite": "section 3300 as the measure for breach of the covenant implied in a lease",
+          "url": "https://www.courtlistener.com/opinion/2650742/nativi-v-deutsche-bank-national-trust-co/",
+          "quote": "Civil Code section 3300 provides the measure of contract damages for breach of the covenant of quiet enjoyment implied in a lease."
+        },
+        {
+          "case": "Andrews v. Mobile Aire Estates (2005) 125 Cal.App.4th 578, 591 (CourtListener text)",
+          "cite": "the Court of Appeal’s statement that section 3304 supplies the measure",
+          "url": "https://www.courtlistener.com/opinion/2248922/andrews-v-mobile-aire-estates/",
+          "quote": "Civil Code section 3304 prescribes the measure of damages for breach of the covenant of quiet enjoyment."
+        },
+        {
+          "case": "Andrews v. Mobile Aire Estates (2005) 125 Cal.App.4th 578, 591 (CourtListener text)",
+          "cite": "contract damages under section 3300 as an additional measure",
+          "url": "https://www.courtlistener.com/opinion/2248922/andrews-v-mobile-aire-estates/",
+          "quote": "Additionally, case law holds a tenant suing for breach of the covenant of quiet enjoyment may recover contract damages in accordance with Civil Code section 3300—an amount that will compensate the aggrieved party for all the detriment caused by the breach or which in the ordinary course would be a likely result."
+        }
+      ]
+    },
+    {
+      "id": "consevic_statutory_termination_right",
+      "title": "The Statutory Right to Terminate (Civ. Code § 1932) and the Doctrine’s Independence From the Repair Statutes",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-13",
+      "body": "Alongside the judicially developed doctrine, the Civil Code contains its own termination provision. Section 1932 provides that the hirer of a thing may terminate the hiring before the end of the agreed term in two situations. The first is \"When the letter does not, within a reasonable time after request, fulfill his obligations, if any, as to placing and securing the hirer in the quiet possession of the thing hired, or putting it into good condition, or repairing\". The second is when the greater part of the thing hired, or the part that was the material inducement to the contract, perishes other than through the hirer’s want of ordinary care. The section is worded in terms of a request followed by a reasonable time. The California Supreme Court in Green v. Superior Court (1974) 10 Cal.3d 616 described the relationship between the common law doctrine and the Civil Code’s repair provisions: California courts \"have evolved the “constructive eviction” doctrine as a common law remedy completely independent of this statutory framework\"; under the modern decisions, the same opinion says, a tenant’s right to terminate has been measured not by the standards of sections 1941 or 1942 but by a developing standard keyed to whether the landlord’s acts or omissions rendered the premises unfit for the purposes for which they were leased. Whether any request was made to {{landlordName}}, and what followed, are facts outside this sheet.",
+      "gap": "Every Civil Code section quoted in this clause was fetched twice from leginfo.legislature.ca.gov by two independent paths — the individual section page (codes_displaySection.xhtml) requested with a Chrome User-Agent, and the page for the whole chapter or article containing that section (codes_displayText.xhtml) requested with a Firefox User-Agent — and the text extracted from the two responses was identical after conversion of non-breaking spaces and collapsing of the line wrapping leginfo inserts. Each published opinion quoted in this clause was fetched twice from CourtListener’s opinion page with two different browser User-Agent and Accept header sets, and each quotation was then confirmed a third time through CourtListener’s public search API, which returned the opinion’s own cluster as the single hit for a phrase query restricted to that cluster. CourtListener’s text of these opinions is a scan-derived reproduction of the official reports; quotations here were taken only from passages that contain no scanning artifacts, and page markers embedded in the running text were avoided rather than edited out. Section 1932 is part of the Civil Code’s chapter on hiring in general, so like section 1927 it speaks of a \"letter\" and a \"hirer\"; its application to any particular tenancy, and its interaction with the notice and termination provisions governing residential tenancies, are not addressed here. The Green quotation reflects the law as the Supreme Court described it in 1974; the implied warranty of habitability that Green went on to recognize, the repair-and-deduct remedy of Civil Code section 1942, the untenantability standards of section 1941.1, and the statewide just-cause and rent-cap rules are each separate subjects covered, where the corpus covers them, by other documents. The clause reports the independence of the two bodies of law and does not say which, if either, applies to the tenancy of {{tenantName}}.",
+      "citations": [
+        {
+          "case": "Cal. Civ. Code § 1932(1) (California Legislative Information text)",
+          "cite": "the hirer’s statutory right to terminate for failure to secure quiet possession, good condition, or repair",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1932.",
+          "quote": "When the letter does not, within a reasonable time after request, fulfill his obligations, if any, as to placing and securing the hirer in the quiet possession of the thing hired, or putting it into good condition, or repairing; or,"
+        },
+        {
+          "case": "Green v. Superior Court (1974) 10 Cal.3d 616, 630 (CourtListener text)",
+          "cite": "constructive eviction as a common law remedy independent of the repair statutes",
+          "url": "https://www.courtlistener.com/opinion/1182285/green-v-superior-court/",
+          "quote": "In the century since the statutes were first enacted, for example, California courts have evolved the “constructive eviction” doctrine as a common law remedy completely independent of this statutory framework"
+        },
+        {
+          "case": "Green v. Superior Court (1974) 10 Cal.3d 616, 630 (CourtListener text)",
+          "cite": "the termination standard under the modern constructive eviction decisions",
+          "url": "https://www.courtlistener.com/opinion/1182285/green-v-superior-court/",
+          "quote": "under the modern constructive eviction decisions, a tenant’s right to terminate his lease has not been measured by the standards of sections 1941 or 1942"
+        }
+      ]
+    },
+    {
+      "id": "consevic_good_faith_legal_process",
+      "title": "Good-Faith Resort to Legal Process, and the Malice Rule for a Wrongful Notice to Quit",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-13",
+      "body": "The decisions treat a landlord’s use of legal process differently from physical interference. Nativi v. Deutsche Bank National Trust Co. states: \"Where a landlord does not physically interfere with tenants’ possession and merely wrongfully serves a notice to quit, tenants can recover damages for a wrongful eviction only if the landlord acted with malice.\" The same passage states that a mere threat to resort to legal process, made in good faith, \"cannot amount to a constructive eviction.\" Nativi takes that phrase from the California Supreme Court’s decision in Lindenberg v. MacDonald (1950) 34 Cal.2d 678. Nativi nonetheless held that a triable issue of fact existed as to whether the letter threatening an unlawful detainer action in that case was issued in good faith or was part of a larger course of conduct amounting to constructive eviction. Whether any notice or letter directed to {{tenantName}} was served, and with what state of mind, are questions of fact this sheet does not reach.",
+      "gap": "Each published opinion quoted in this clause was fetched twice from CourtListener’s opinion page with two different browser User-Agent and Accept header sets, and each quotation was then confirmed a third time through CourtListener’s public search API, which returned the opinion’s own cluster as the single hit for a phrase query restricted to that cluster. CourtListener’s text of these opinions is a scan-derived reproduction of the official reports; quotations here were taken only from passages that contain no scanning artifacts, and page markers embedded in the running text were avoided rather than edited out. The phrase quoted from Lindenberg v. MacDonald appears here inside the Nativi sentence that quotes it; the Lindenberg opinion itself was not separately fetched for this sheet, so the quotation is attributed to the Nativi text in which it was verified. The malice rule Nativi states rests on Asell v. Rodrigues (1973) 32 Cal.App.3d 817, likewise not fetched here. This clause addresses only the covenant and constructive eviction analysis; the separate statutory prohibitions on self-help lockouts and utility shutoffs, the forcible entry and detainer statutes, and the litigation privilege are governed by other authorities not quoted here.",
+      "citations": [
+        {
+          "case": "Nativi v. Deutsche Bank National Trust Co. (2014) 223 Cal.App.4th 261, 312 (CourtListener text)",
+          "cite": "malice required where the landlord only wrongfully serves a notice to quit",
+          "url": "https://www.courtlistener.com/opinion/2650742/nativi-v-deutsche-bank-national-trust-co/",
+          "quote": "Where a landlord does not physically interfere with tenants’ possession and merely wrongfully serves a notice to quit, tenants can recover damages for a wrongful eviction only if the landlord acted with malice."
+        },
+        {
+          "case": "Nativi v. Deutsche Bank National Trust Co. (2014) 223 Cal.App.4th 261, 312 (CourtListener text)",
+          "cite": "a good-faith threat to resort to legal process is not a constructive eviction",
+          "url": "https://www.courtlistener.com/opinion/2650742/nativi-v-deutsche-bank-national-trust-co/",
+          "quote": "The mere threat to resort to legal process, made in good faith, “cannot amount to a constructive eviction.”"
+        }
+      ]
+    },
+    {
+      "id": "consevic_related_penalty_statute",
+      "title": "A Related Statute That Does Not Require an Eviction (Civ. Code § 1940.2)",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-13",
+      "body": "Civil Code section 1940.2 makes certain landlord conduct unlawful when done \"for the purpose of influencing a tenant to vacate a dwelling.\" One listed item ties directly to the covenant discussed in this sheet: it is unlawful to \"Use, or threaten to use, force, willful threats, or menacing conduct constituting a course of conduct that interferes with the tenant’s quiet enjoyment of the premises in violation of Section 1927 that would create an apprehension of harm in a reasonable person. Nothing in this paragraph requires a tenant to be actually or constructively evicted in order to obtain relief.\" A tenant who prevails in a civil action, including one in small claims court, to enforce rights under the section is entitled to a civil penalty of up to $2,000 for each violation. The section also provides that a good-faith oral or written warning notice about conduct that violates or may violate the rental agreement, rules, or laws is not a violation of the section, and that the section neither enlarges nor diminishes a landlord’s right to terminate a tenancy under existing state or local law. The section therefore describes a statutory penalty that operates without the surrender of possession the constructive eviction doctrine requires; it does not describe anything about the tenancy of {{tenantName}}.",
+      "gap": "Every Civil Code section quoted in this clause was fetched twice from leginfo.legislature.ca.gov by two independent paths — the individual section page (codes_displaySection.xhtml) requested with a Chrome User-Agent, and the page for the whole chapter or article containing that section (codes_displayText.xhtml) requested with a Firefox User-Agent — and the text extracted from the two responses was identical after conversion of non-breaking spaces and collapsing of the line wrapping leginfo inserts. Section 1940.2 applies to a \"dwelling,\" and its remaining paragraphs reach conduct violating Penal Code sections 484 and 518, significant and intentional violations of Civil Code section 1954, and threats to disclose immigration or citizenship status; those paragraphs are outside this clause, and this project’s separate information sheets on self-help evictions and on a landlord’s right of entry address them. The clause states what the section provides and does not say whether the penalty is available in any particular dispute, whether any conduct was undertaken for the purpose of influencing {{tenantName}} to vacate, or how the section interacts with a local harassment ordinance.",
+      "citations": [
+        {
+          "case": "Cal. Civ. Code § 1940.2(a)(3) (California Legislative Information text)",
+          "cite": "menacing conduct interfering with quiet enjoyment in violation of section 1927; no eviction required for relief",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1940.2.",
+          "quote": "Use, or threaten to use, force, willful threats, or menacing conduct constituting a course of conduct that interferes with the tenant’s quiet enjoyment of the premises in violation of Section 1927 that would create an apprehension of harm in a reasonable person. Nothing in this paragraph requires a tenant to be actually or constructively evicted in order to obtain relief."
+        },
+        {
+          "case": "Cal. Civ. Code § 1940.2(c) (California Legislative Information text)",
+          "cite": "good-faith warning notices and explanations are not violations",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1940.2.",
+          "quote": "An oral or written warning notice, given in good faith, regarding conduct by a tenant, occupant, or guest that violates, may violate, or violated the applicable rental agreement, rules, regulations, lease, or laws, is not a violation of this section."
+        },
+        {
+          "case": "Cal. Civ. Code § 1940.2(b) (California Legislative Information text)",
+          "cite": "civil penalty of up to $2,000 per violation for a prevailing tenant",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1940.2.",
+          "quote": "A tenant who prevails in a civil action, including an action in small claims court, to enforce his or her rights under this section is entitled to a civil penalty in an amount not to exceed two thousand dollars ($2,000) for each violation."
+        },
+        {
+          "case": "Cal. Civ. Code § 1940.2(d) (California Legislative Information text)",
+          "cite": "the section neither enlarges nor diminishes termination rights or local harassment regulation",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1940.2.",
+          "quote": "This section does not enlarge or diminish a landlord’s right to terminate a tenancy pursuant to existing state or local law; nor does this section enlarge or diminish any ability of local government to regulate or enforce a prohibition against a landlord’s harassment of a tenant."
+        }
+      ]
+    },
+    {
+      "id": "consevic_record",
+      "title": "Record of the Facts This Sheet Was Prepared Around",
+      "kind": "drafting",
+      "body": "This record accompanies the clauses above and fixes the facts they were assembled around. Tenant: {{tenantName}}. Landlord or other party to the rental agreement: {{landlordName}}. Premises: {{premisesAddress}}, {{county}}. Conduct or condition recorded: {{interferenceDescription}}. Date the conduct or condition was first observed: {{firstObservedDate}}. Date the landlord was first told of it, if the tenant recorded one: {{noticeToLandlordDate}}. Date possession of the premises was given up, if it was: {{vacatedDate}}. Date of this record: {{recordDate}}. Entries left blank are simply not recorded here. The legal authorities quoted above are stated as of the checked date shown on each clause, and nothing in this sheet establishes that any event listed in this record occurred or that any rule quoted above applies to it."
     }
   ]
 }

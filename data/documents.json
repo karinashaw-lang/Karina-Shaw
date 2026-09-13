@@ -36764,5 +36764,83 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "constructive_eviction_quiet_enjoyment_info_sheet",
+    "title": "Constructive Eviction and the Covenant of Quiet Enjoyment — Information Sheet",
+    "description": "Explains the covenant of quiet enjoyment implied in every California lease and the constructive eviction doctrine built on it: the statutory covenant of Civil Code section 1927 and the broader judicial covenant (Andrews v. Mobile Aire Estates (2005) 125 Cal.App.4th 578; Nativi v. Deutsche Bank National Trust Co. (2014) 223 Cal.App.4th 261; Erlach v. Sierra Asset Servicing, LLC (2014) 226 Cal.App.4th 1281), the substantial-interference threshold, the rule that the landlord’s subjective intent need not be shown, whose conduct the covenant reaches, the surrender-of-possession requirement that turns a breach into a constructive eviction (Kulawitz v. Pacific Woodenware & Paper Co. (1944) 25 Cal.2d 664; Standard Livestock Co. v. Pentz (1928) 204 Cal. 618; Green v. Superior Court (1974) 10 Cal.3d 616), the effect of surrender on the rent obligation and the damages measures discussed under Civil Code sections 3300 and 3304, the statutory termination right of section 1932, the good-faith-legal-process limit, and the section 1940.2 penalty that requires no eviction at all. A separate topic from this project’s information sheets on self-help evictions and lockouts, on a landlord’s right of entry, and on habitability remedies such as repair-and-deduct and retaliation protection.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "consevic_purpose",
+      "consevic_statutory_covenant",
+      "consevic_substantial_interference",
+      "consevic_intent_not_required",
+      "consevic_who_can_interfere",
+      "consevic_vacating_requirement",
+      "consevic_effect_and_remedies",
+      "consevic_damages_measures",
+      "consevic_statutory_termination_right",
+      "consevic_good_faith_legal_process",
+      "consevic_related_penalty_statute",
+      "consevic_record"
+    ],
+    "fields": [
+      {
+        "id": "tenantName",
+        "label": "Name of the tenant",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "landlordName",
+        "label": "Name of the landlord or other party to the rental agreement",
+        "placeholder": "Riverbend Properties, LLC",
+        "required": true
+      },
+      {
+        "id": "premisesAddress",
+        "label": "Address of the rented premises",
+        "placeholder": "742 Alder St., Apt. 3, Sacramento, CA 95814",
+        "required": true
+      },
+      {
+        "id": "county",
+        "label": "County where the premises are located",
+        "placeholder": "Sacramento County",
+        "required": true
+      },
+      {
+        "id": "interferenceDescription",
+        "label": "Description of the conduct or condition at issue",
+        "placeholder": "Heating shut off building-wide from December 3 onward, and a locked stairwell blocking the only entrance to the unit",
+        "required": true
+      },
+      {
+        "id": "firstObservedDate",
+        "label": "Date the conduct or condition was first observed",
+        "placeholder": "December 3, 2025",
+        "required": false
+      },
+      {
+        "id": "noticeToLandlordDate",
+        "label": "Date the landlord was first told of it, if recorded",
+        "placeholder": "December 5, 2025",
+        "required": false
+      },
+      {
+        "id": "vacatedDate",
+        "label": "Date possession of the premises was given up, if it was",
+        "placeholder": "January 15, 2026",
+        "required": false
+      },
+      {
+        "id": "recordDate",
+        "label": "Date of this record",
+        "placeholder": "September 13, 2026",
+        "required": true
+      }
+    ]
   }
 ]
