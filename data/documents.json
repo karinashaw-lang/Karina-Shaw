@@ -37292,5 +37292,77 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "broker_visual_inspection_duty_info_sheet",
+    "title": "A Seller-Side Broker’s Duty to Inspect and Disclose (Civ. Code §§ 2079-2079.7; Easton v. Strassburger) — Information Sheet",
+    "description": "Explains the duty California places on the real estate broker or salesperson on the selling side of a home sale to conduct a reasonably competent and diligent visual inspection of the property and disclose what it would reveal: the statutory duty of Civil Code section 2079, its origin in Easton v. Strassburger (1984) 152 Cal.App.3d 90 and the Legislature’s statement of intent in section 2079.12, the transactions the article reaches (§§ 2079.1, 2079.6), the standard of care (§ 2079.2), the exclusions for inaccessible areas, off-site areas, public records and permits (§ 2079.3; Wilson v. Century 21 Great Western Realty (1993) 15 Cal.App.4th 298), what an agent must do with the seller’s own representations (Robinson v. Grossman (1997) 57 Cal.App.4th 634), the buyer’s continuing duty of care (§ 2079.5), the two-year outside limit measured from possession (§ 2079.4; Field v. Century 21 Klowden-Forness Realty (1998) 63 Cal.App.4th 18), the broader fiduciary duty of a buyer’s own broker, and the disclosure duties the article leaves untouched (§ 2079.7; Holmes v. Summer (2010) 188 Cal.App.4th 1510). A separate topic from this project’s information sheets on agency-relationship disclosure, on the Real Estate Transfer Disclosure Statement, and on home inspector standards of practice.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "brokerinsp_purpose",
+      "brokerinsp_statutory_duty",
+      "brokerinsp_easton_origin",
+      "brokerinsp_covered_transactions",
+      "brokerinsp_standard_of_care",
+      "brokerinsp_inspection_limits",
+      "brokerinsp_seller_supplied_information",
+      "brokerinsp_buyer_own_care",
+      "brokerinsp_two_year_limit",
+      "brokerinsp_buyers_own_broker",
+      "brokerinsp_other_duties_untouched",
+      "brokerinsp_record"
+    ],
+    "fields": [
+      {
+        "id": "propertyAddress",
+        "label": "Address of the property",
+        "placeholder": "318 Lark Hill Rd., Diablo, CA 94528",
+        "required": true
+      },
+      {
+        "id": "county",
+        "label": "County where the property is located",
+        "placeholder": "Contra Costa County",
+        "required": true
+      },
+      {
+        "id": "buyerName",
+        "label": "Name of the buyer or prospective buyer",
+        "placeholder": "Leticia Marks",
+        "required": true
+      },
+      {
+        "id": "sellerName",
+        "label": "Name of the seller",
+        "placeholder": "Dana and Paul Reyes",
+        "required": false
+      },
+      {
+        "id": "brokerName",
+        "label": "Name of the broker or salesperson on the selling side",
+        "placeholder": "Valley Ridge Realty, Inc.",
+        "required": true
+      },
+      {
+        "id": "conditionDescription",
+        "label": "Condition or fact at issue",
+        "placeholder": "Cracked slab and sloping floors in the rear addition, and earth movement on the downhill slope",
+        "required": true
+      },
+      {
+        "id": "possessionDate",
+        "label": "Date of possession (recordation, close of escrow, or occupancy, whichever came first), if known",
+        "placeholder": "July 14, 2025",
+        "required": false
+      },
+      {
+        "id": "recordDate",
+        "label": "Date of this record",
+        "placeholder": "September 13, 2026",
+        "required": true
+      }
+    ]
   }
 ]
