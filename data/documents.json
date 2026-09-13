@@ -35634,5 +35634,64 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "joint_employer_status_info_sheet",
+    "title": "Joint Employer Status in Staffing, Franchise, and Payroll Arrangements — Information Sheet",
+    "description": "Explains, in the wage orders’ and courts’ own words, when California law treats a second business as an employer of the same worker: the Industrial Welfare Commission wage order definitions of “employ,” “employee” and “employer” and Labor Code section 18; Martinez v. Combs’s three alternative definitions of “to employ” (control over wages, hours or working conditions; suffer or permit to work; engage, creating a common law relationship), its statement that the wage orders impose liability on multiple entities who divide control among themselves, and its refusal to import the federal “economic reality” test; Patterson v. Domino’s Pizza’s retained-or-assumed general right of control standard for franchisors; Curry v. Equilon Enterprises’s conclusion that the Dynamex “ABC” test is directed at independent-contractor misclassification rather than joint employment; Futrell v. Payday California and Goonewardene v. ADP on outside payroll companies; Labor Code section 2810.3’s statement that its shared liability is supplemental to other theories; and Government Code section 12926(d) with Raines v. U.S. Healthworks Medical Group on direct FEHA liability of a business-entity agent that screens applicants.",
+    "categories": [
+      "Hiring"
+    ],
+    "clauseOrder": [
+      "jointemp_declaration",
+      "jointemp_wage_order_definitions",
+      "jointemp_martinez_three_definitions",
+      "jointemp_martinez_multiple_entities",
+      "jointemp_martinez_suffer_or_permit",
+      "jointemp_patterson_franchise_control",
+      "jointemp_curry_abc_not_joint_employment",
+      "jointemp_payroll_company_not_employer",
+      "jointemp_section_2810_3_supplemental",
+      "jointemp_feha_agent_liability",
+      "jointemp_ack"
+    ],
+    "fields": [
+      {
+        "id": "companyName",
+        "label": "Company name",
+        "placeholder": "Acme, Inc.",
+        "required": true
+      },
+      {
+        "id": "secondBusinessName",
+        "label": "Other business in the arrangement",
+        "placeholder": "Bayline Staffing Services, LLC",
+        "required": true
+      },
+      {
+        "id": "arrangementDescription",
+        "label": "Description of the arrangement",
+        "placeholder": "Bayline supplies approximately 30 warehouse workers who work at our Oakland facility under our shift schedules",
+        "required": true
+      },
+      {
+        "id": "preparerName",
+        "label": "Name of person completing this information sheet",
+        "placeholder": "Jordan T. Reyes",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Oakland, California",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 13, 2026",
+        "required": true
+      }
+    ]
   }
 ]
