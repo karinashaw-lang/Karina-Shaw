@@ -36373,5 +36373,60 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "doing_business_in_california_tax_definition_info_sheet",
+    "title": "When California Treats a Business as “Doing Business” Here for Tax Purposes (Rev. & Tax. Code §§ 23101, 23102, 23104, 23114, 23151, 23153, 17941; Corp. Code § 191; 15 U.S.C. §§ 381, 383; Swart Enterprises, Inc. v. Franchise Tax Board) — Information Sheet",
+    "description": "Explains, in the statutes' and the court's own words, the test California tax law uses to decide whether a business — wherever it was formed — is “doing business” in California: the definition in Revenue and Taxation Code section 23101, subdivision (a) (actively engaging in any transaction for the purpose of financial or pecuniary gain or profit); the bright-line conditions added for taxable years beginning on or after January 1, 2011, in subdivision (b) (organization or commercial domicile here, or California sales, property, or compensation above the lesser of the stated dollar amount or 25 percent of the taxpayer's total), the annual inflation indexing of those amounts in subdivision (c), and the attribution of a pass-through entity's sales, property, and payroll to its owners in subdivision (d); the franchise tax of section 23151 and the three independent routes by which the $800 minimum franchise tax of section 23153 reaches a corporation (incorporation here, qualification here, or doing business here), with the first-taxable-year exemption of section 23153, subdivision (f)(1), and the 15-day rule of section 23114; the same definition carried into the limited liability company annual tax by section 17941, which adds a separate filing-based trigger; the statutory carve-outs for passive stock-and-bond holding companies (section 23102) and seven-day convention and trade show activity (section 23104); the federal limit of Public Law 86-272 on state net income taxes (15 U.S.C. §§ 381, 383); the Fifth District's holding in Swart Enterprises, Inc. v. Franchise Tax Board (2017) 7 Cal.App.5th 497 that an out-of-state corporation passively holding a 0.2 percent interest in a manager-managed California LLC was not doing business here, together with the limits the opinion placed on itself; and the separate “transact intrastate business” test of Corporations Code section 191 that governs Secretary of State registration rather than tax. A companion to this corpus's minimum franchise tax, California LLC Annual Fee, S corporation franchise tax, foreign qualification, and § 2115 documents.",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "cadoingbiz_declaration",
+      "cadoingbiz_statutory_definition",
+      "cadoingbiz_bright_line_thresholds",
+      "cadoingbiz_indexing_and_passthrough_attribution",
+      "cadoingbiz_minimum_franchise_tax_reach",
+      "cadoingbiz_first_year_and_fifteen_day_rules",
+      "cadoingbiz_llc_annual_tax_same_definition",
+      "cadoingbiz_statutory_carveouts",
+      "cadoingbiz_public_law_86_272_federal_limit",
+      "cadoingbiz_swart_passive_llc_member",
+      "cadoingbiz_swart_limits",
+      "cadoingbiz_registration_test_is_different",
+      "cadoingbiz_ack"
+    ],
+    "fields": [
+      {
+        "id": "entityName",
+        "label": "Name of the business entity this sheet concerns",
+        "placeholder": "e.g., Harbor Lane Holdings, Inc.",
+        "required": true
+      },
+      {
+        "id": "homeState",
+        "label": "State or country under whose law the entity is organized",
+        "placeholder": "e.g., Nevada",
+        "required": true
+      },
+      {
+        "id": "preparerName",
+        "label": "Preparer's name",
+        "placeholder": "e.g., Jane Doe",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "e.g., January 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, State",
+        "placeholder": "e.g., Sacramento, California",
+        "required": true
+      }
+    ]
   }
 ]
