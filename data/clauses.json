@@ -126352,6 +126352,335 @@
       "title": "Questions This Information Sheet Does Not Address",
       "kind": "drafting",
       "body": "The authorities described above concern covert visual monitoring and recording of employees. They do not settle a number of adjacent questions, and {{companyName}} records here that this sheet says nothing about them.\n\nThe sheet does not describe the monitoring of e-mail, files, network traffic, or website use; the recording or interception of telephone or electronic communications, which California addresses through separate statutes covered elsewhere in this corpus; location or vehicle tracking; audio recording outside the rooms named in Labor Code section 435; searches of desks, lockers, bags, or devices; biometric or genetic information; or the notice obligations a California employer may owe about personal information it collects.\n\nIt also does not decide anything about the arrangement described in this document. Whether the observation or recording of {{workAreaDescription}} intrudes upon a reasonable expectation of privacy of {{employeeName}} or anyone else, whether any such intrusion would be highly offensive or an egregious breach of social norms, and how a court would weigh any countervailing interest, are questions the authorities above frame rather than answer. Nothing in this sheet is a legal opinion about the position of {{positionTitle}} or about any monitoring {{companyName}} conducts or contemplates."
+    },
+    {
+      "id": "yvvoid_intro_scope",
+      "title": "Purpose and Scope — Informational Only",
+      "kind": "drafting",
+      "body": "This sheet states what California law provides on one narrow question that can arise after a nonjudicial foreclosure sale: whether a borrower who was not a party to an assignment of the note and deed of trust may base an action for wrongful foreclosure on the contention that the assignment was void. It is prepared with reference to {{borrowerName}}, the property at {{propertyAddress}}, the trustee's sale said to have taken place on or about {{trusteeSaleDate}}, and the foreclosing entity identified as {{foreclosingEntity}}. The clauses that follow reproduce the governing statutory text and the holdings of the California courts that have construed it, together with the questions those courts expressly declined to decide. Nothing here evaluates any document in the chain of title to {{propertyAddress}}, states whether any cause of action exists, or predicts how a court would rule. This is an information sheet, not legal advice, and it creates no attorney-client relationship."
+    },
+    {
+      "id": "yvvoid_question_presented",
+      "title": "The Single Question the California Supreme Court Agreed to Decide",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-14",
+      "body": "In Yvanova v. New Century Mortgage Corp. (2016) 62 Cal.4th 919, the California Supreme Court granted review on one question only, and it recited the terms of that limited grant in the opinion. The Court framed the issue as whether a borrower on a home loan secured by a deed of trust may base an action for wrongful foreclosure on allegations that a purported assignment of the note and deed of trust to the foreclosing party bore defects rendering the assignment void. The scope of that grant governs how the rest of the opinion reads: the Court repeatedly identified adjacent questions as outside the limited grant and declined to reach them. Several of the clauses that follow record those declinations.",
+      "gap": "The quote is the text of the order limiting review as the opinion reproduces it. It was verified against two independent publishers of the same opinion: the Judicial Council of California's official slip opinion PDF for docket S218973 on courts.ca.gov (extracted twice, with pdfminer.six and with pypdf, which agreed on all body prose and differed only in how they interleaved the caption block and the marginal line numbers), and the Official Reports text as republished by CourtListener. Those two publications are not identical throughout. In the opinion's opening paragraph the slip PDF begins the same question with a lowercase \"whether\" while the Official Reports text begins it with a capital \"Whether\"; the quote given here is drawn from the later passage reciting the order itself, where the two publications agree character for character. Quotes were normalized only for benign extraction artifacts before comparison: non-breaking spaces, line-wrap hyphenation, ligatures, and the curly quotation marks and dashes that the two sources encode differently (the courts.ca.gov slip PDF renders opening and closing double quotation marks through a font mapping that extracts as U+2015 and U+2016, and em dashes extract as a double hyphen). No word, number or punctuation mark was changed. The pin cite was read off the star pagination in the CourtListener text, not from memory.",
+      "citations": [
+        {
+          "case": "Yvanova v. New Century Mortgage Corp.",
+          "cite": "62 Cal.4th 919, 926 (2016)",
+          "url": "https://www.courtlistener.com/opinion/3178579/yvanova-v-new-century-mortgage-corp/",
+          "quote": "In an action for wrongful foreclosure on a deed of trust securing a home loan, does the borrower have standing to challenge an assignment of the note and deed of trust on the basis of defects allegedly rendering the assignment void?"
+        }
+      ]
+    },
+    {
+      "id": "yvvoid_holding",
+      "title": "What the Court Held: a Void Assignment, Not a Merely Voidable One",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-14",
+      "body": "The Court held that because in a nonjudicial foreclosure only the original beneficiary of a deed of trust, its assignee, or an agent of one of these may direct the trustee to sell the property, an allegation that an assignment in that chain was void rather than merely voidable will support an action for wrongful foreclosure. The Court restated the same holding in its concluding paragraph, describing the consequence of a void assignment as depriving the foreclosing party of any legitimate authority to order a trustee's sale. The distinction the holding turns on — void versus voidable — is set out in a separate clause of this sheet. Whether any assignment affecting {{propertyAddress}} falls on either side of that line is not addressed here.",
+      "gap": "Both quotes were verified against the courts.ca.gov official slip PDF for S218973 (extracted with pdfminer.six and with pypdf) and, independently, against the Official Reports text republished by CourtListener. The CourtListener text is an optical scan of the bound reports and carries scan damage at several points that this sheet does not quote across: it prints \"Lebruary 28, 2012\" where the slip PDF reads \"February 28, 2012\", \"dishnct\" for \"distinct\", and braces in place of parentheses in citation signals such as \"{Jenkins)\" and \"{Id. at p. 514.)\". A CourtListener index query restricted to this opinion's cluster returned zero results for the exact phrase \"dated February 28, 2012\", confirming the defect is in that publication's text and not in this extraction. Each quoted span here was checked to be free of such damage in both publications. Quotes were normalized only for benign extraction artifacts before comparison: non-breaking spaces, line-wrap hyphenation, ligatures, and the curly quotation marks and dashes that the two sources encode differently (the courts.ca.gov slip PDF renders opening and closing double quotation marks through a font mapping that extracts as U+2015 and U+2016, and em dashes extract as a double hyphen). No word, number or punctuation mark was changed. The second quote begins mid-sentence because the sentence straddles the break between pages 942 and 943 of the Official Reports; the page range in the cite reflects that.",
+      "citations": [
+        {
+          "case": "Yvanova v. New Century Mortgage Corp.",
+          "cite": "62 Cal.4th 919, 923 (2016)",
+          "url": "https://www.courtlistener.com/opinion/3178579/yvanova-v-new-century-mortgage-corp/",
+          "quote": "because in a nonjudicial foreclosure only the original beneficiary of a deed of trust or its assignee or agent may direct the trustee to sell the property, an allegation that the assignment was void, and not merely voidable at the behest of the parties to the assignment, will support an action for wrongful foreclosure"
+        },
+        {
+          "case": "Yvanova v. New Century Mortgage Corp.",
+          "cite": "62 Cal.4th 919, 942-943 (2016)",
+          "url": "https://www.courtlistener.com/opinion/3178579/yvanova-v-new-century-mortgage-corp/",
+          "quote": "party purportedly took a beneficial interest in the deed of trust was not merely voidable but void, depriving the foreclosing party of any legitimate authority to order a trustee's sale."
+        }
+      ]
+    },
+    {
+      "id": "yvvoid_narrow_ruling",
+      "title": "The Limits the Court Placed on Its Own Ruling",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-14",
+      "body": "Before reaching the facts, the Court described its ruling as a narrow one and stated three things it was not holding. It held only that a borrower who has suffered a nonjudicial foreclosure does not lack standing to sue for wrongful foreclosure on an allegedly void assignment merely because the borrower was in default and was not a party to the assignment. It did not hold or suggest that a borrower may preempt a threatened nonjudicial foreclosure by a suit questioning the foreclosing party's right to proceed. It did not hold that the plaintiff before it had alleged facts showing a void assignment or could prove them. And it did not address any of the substantive elements of the wrongful foreclosure tort or the factual showing needed to meet them.",
+      "gap": "These are express self-limitations stated by the Court, and they are recorded here as negative results: the opinion resolves standing and nothing else. Because the Court declined to address the elements of the tort, this sheet cannot state what a wrongful foreclosure plaintiff must plead or prove beyond standing; a later Court of Appeal decision addressing the prejudice element is described in a separate clause and is not Supreme Court authority. All three quotes were verified against the courts.ca.gov slip PDF for S218973 (two extractors) and against the Official Reports text republished by CourtListener; all three sit on page 924 of the Official Reports by star pagination. Quotes were normalized only for benign extraction artifacts before comparison: non-breaking spaces, line-wrap hyphenation, ligatures, and the curly quotation marks and dashes that the two sources encode differently (the courts.ca.gov slip PDF renders opening and closing double quotation marks through a font mapping that extracts as U+2015 and U+2016, and em dashes extract as a double hyphen). No word, number or punctuation mark was changed.",
+      "citations": [
+        {
+          "case": "Yvanova v. New Century Mortgage Corp.",
+          "cite": "62 Cal.4th 919, 924 (2016)",
+          "url": "https://www.courtlistener.com/opinion/3178579/yvanova-v-new-century-mortgage-corp/",
+          "quote": "Our ruling in this case is a narrow one. We hold only that a borrower who has suffered a nonjudicial foreclosure does not lack standing to sue for wrongful foreclosure based on an allegedly void assignment merely because he or she was in default on the loan and was not a party to the challenged assignment."
+        },
+        {
+          "case": "Yvanova v. New Century Mortgage Corp.",
+          "cite": "62 Cal.4th 919, 924 (2016)",
+          "url": "https://www.courtlistener.com/opinion/3178579/yvanova-v-new-century-mortgage-corp/",
+          "quote": "We do not hold or suggest that a borrower may attempt to preempt a threatened nonjudicial foreclosure by a suit questioning the foreclosing party's right to proceed."
+        },
+        {
+          "case": "Yvanova v. New Century Mortgage Corp.",
+          "cite": "62 Cal.4th 919, 924 (2016)",
+          "url": "https://www.courtlistener.com/opinion/3178579/yvanova-v-new-century-mortgage-corp/",
+          "quote": "Nor, finally, in rejecting defendants' arguments on standing do we address any of the substantive elements of the wrongful foreclosure tort or the factual showing necessary to meet those elements."
+        }
+      ]
+    },
+    {
+      "id": "yvvoid_who_may_direct_sale",
+      "title": "Who May Direct a Trustee to Begin and Complete a Nonjudicial Foreclosure",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-14",
+      "body": "The reasoning rests on a proposition the Court treated as settled: although the trustee formally initiates a nonjudicial foreclosure by recording a notice of default and then a notice of sale, the trustee may take those steps only at the direction of the entity that currently holds the note and the beneficial interest under the deed of trust, or that entity's agent. The Court restated the point when it turned to the standing question, describing the entity holding the beneficial interest — the original lender, its assignee, or an agent of one of these — as the only one that may instruct the trustee to commence and complete a nonjudicial foreclosure. The Court also noted the general rules that a borrower can raise no objection to an assignment of the note, that a promissory note may be sold without notice to the borrower, and that the deed of trust follows the note even without a separate assignment.",
+      "gap": "Both quoted passages are from the Court's own text rather than from any authority it was reproducing. They were verified against the courts.ca.gov slip PDF for S218973 (pdfminer.six and pypdf) and against the Official Reports text republished by CourtListener. Quotes were normalized only for benign extraction artifacts before comparison: non-breaking spaces, line-wrap hyphenation, ligatures, and the curly quotation marks and dashes that the two sources encode differently (the courts.ca.gov slip PDF renders opening and closing double quotation marks through a font mapping that extracts as U+2015 and U+2016, and em dashes extract as a double hyphen). No word, number or punctuation mark was changed. In particular, the double hyphens inside the first quote correspond to em dashes in the Official Reports and to literal double hyphens in the slip PDF. This clause does not quote the opinion's sentence containing the phrase \"well-established\", because the slip PDF wraps that word across a line and de-hyphenation makes the two extractions disagree on it; the surrounding proposition is paraphrased instead. Pin cites were read off star pagination.",
+      "citations": [
+        {
+          "case": "Yvanova v. New Century Mortgage Corp.",
+          "cite": "62 Cal.4th 919, 927 (2016)",
+          "url": "https://www.courtlistener.com/opinion/3178579/yvanova-v-new-century-mortgage-corp/",
+          "quote": "the trustee may take these steps only at the direction of the person or entity that currently holds the note and the beneficial interest under the deed of trust--the original beneficiary or its assignee--or that entity's agent"
+        },
+        {
+          "case": "Yvanova v. New Century Mortgage Corp.",
+          "cite": "62 Cal.4th 919, 935 (2016)",
+          "url": "https://www.courtlistener.com/opinion/3178579/yvanova-v-new-century-mortgage-corp/",
+          "quote": "only the entity holding the beneficial interest under the deed of trust--the original lender, its assignee, or an agent of one of these--may instruct the trustee to commence and complete a nonjudicial foreclosure."
+        }
+      ]
+    },
+    {
+      "id": "yvvoid_statute_2924_a6",
+      "title": "The Statutory Provisions the Court Identified but Did Not Rely On",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-14",
+      "body": "The plaintiff pointed to provisions added by the 2012 legislation known as the California Homeowner Bill of Rights. Civil Code section 2924, subdivision (a)(6) prohibits an entity from recording or causing the recording of a notice of default, or otherwise initiating the foreclosure process, unless it is the holder of the beneficial interest, the original or substituted trustee, or the designated agent of the holder of the beneficial interest. Civil Code section 2924.17, subdivision (b) requires a mortgage servicer, before recording or filing the documents listed in subdivision (a), to have reviewed competent and reliable evidence substantiating the borrower's default and the right to foreclose. The Court recorded that those provisions took effect only after the trustee's sale in that case and, having reached its conclusion without reference to the legislation, declined to decide whether they furnish additional support for it.",
+      "gap": "The statutory quotes were verified against two independent publishers: the Legislative Counsel's official text at leginfo.legislature.ca.gov and california.public.law. The two agree word for word on both provisions; they differ only in whitespace around the subdivision markers, which normalization collapses. Civil Code section 2924 has been amended since Yvanova was decided, most recently by Stats. 2024, ch. 142 (AB 295), and the subdivision (a)(6) language quoted here is the current text; it matches the language Yvanova quoted in its footnote 14. This clause also records a defect in the official publication of that footnote: the courts.ca.gov slip PDF for S218973 cites \"Leuras v. BAC Home Loans Servicing, LP (2013) 221 Cal.App.4th 49\", while the Official Reports text republished by CourtListener reads \"Lueras\". A CourtListener index query restricted to this opinion's cluster returned one result for the exact phrase \"Lueras v. BAC Home Loans Servicing\" and zero for \"Leuras\", and a search of California Court of Appeal decisions returns the case under the name Lueras — so the misspelling is in the official slip opinion, not in this extraction, and the Reporter of Decisions corrected it. Both PDF extractors read the slip the same way. The Yvanova quote in this clause is from the body of the opinion at page 942 and carries a page pin cite; the footnote itself does not, for the reason given in the clause on tender and prejudice. Quotes were normalized only for benign extraction artifacts before comparison: non-breaking spaces, line-wrap hyphenation, ligatures, and the curly quotation marks and dashes that the two sources encode differently (the courts.ca.gov slip PDF renders opening and closing double quotation marks through a font mapping that extracts as U+2015 and U+2016, and em dashes extract as a double hyphen). No word, number or punctuation mark was changed.",
+      "citations": [
+        {
+          "case": "Cal. Civ. Code § 2924(a)(6)",
+          "cite": "Cal. Civ. Code § 2924, subd. (a)(6)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=2924.",
+          "quote": "An entity shall not record or cause a notice of default to be recorded or otherwise initiate the foreclosure process unless it is the holder of the beneficial interest under the mortgage or deed of trust, the original trustee or the substituted trustee under the deed of trust, or the designated agent of the holder of the beneficial interest."
+        },
+        {
+          "case": "Cal. Civ. Code § 2924.17(b)",
+          "cite": "Cal. Civ. Code § 2924.17, subd. (b)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=2924.17.",
+          "quote": "Before recording or filing any of the documents described in subdivision (a), a mortgage servicer shall ensure that it has reviewed competent and reliable evidence to substantiate the borrower's default and the right to foreclose, including the borrower's loan status and loan information."
+        },
+        {
+          "case": "Yvanova v. New Century Mortgage Corp.",
+          "cite": "62 Cal.4th 919, 942 (2016)",
+          "url": "https://www.courtlistener.com/opinion/3178579/yvanova-v-new-century-mortgage-corp/",
+          "quote": "Having concluded without reference to this legislation that borrowers do have standing to challenge an assignment as void, we need not decide whether the new provisions provide additional support for that holding."
+        }
+      ]
+    },
+    {
+      "id": "yvvoid_void_vs_voidable",
+      "title": "How the Court Defined Void and Voidable",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-14",
+      "body": "The Court reviewed the distinction on which its holding turns. A void contract, it said, is without legal effect; it binds no one and is a mere nullity, and neither action nor inaction of a party to it can validate it. A voidable transaction, by contrast, is one where one or more parties have the power, by a manifestation of election to do so, to avoid the legal relations created by the contract, or by ratification to extinguish the power of avoidance; it may be declared void but is not void in itself. The Court drew the consequence that matters for standing: unlike a voidable transaction, a void one cannot be ratified or validated by the parties to it even if they so desire.",
+      "gap": "The definition of a voidable transaction is quoted as the Court reproduced it from the Restatement Second of Contracts, section 7; this sheet does not quote the Restatement directly and does not treat it as California authority. The sentences attributed to Little v. CFS Service Corp. (1987) 188 Cal.App.3d 1354 and Colby v. Title Ins. and Trust Co. (1911) 160 Cal. 632 are likewise described only as the Yvanova Court reproduced them, and the Court of Appeal decision among them is not quoted independently. All quoted spans were verified against the courts.ca.gov slip PDF for S218973 (two extractors) and against the Official Reports text republished by CourtListener. Quotes were normalized only for benign extraction artifacts before comparison: non-breaking spaces, line-wrap hyphenation, ligatures, and the curly quotation marks and dashes that the two sources encode differently (the courts.ca.gov slip PDF renders opening and closing double quotation marks through a font mapping that extracts as U+2015 and U+2016, and em dashes extract as a double hyphen). No word, number or punctuation mark was changed. The sentence stating that a voidable transaction is subject to ratification is paraphrased rather than quoted because it straddles a page break in the slip PDF, where the page number is extracted into the middle of the sentence.",
+      "citations": [
+        {
+          "case": "Yvanova v. New Century Mortgage Corp.",
+          "cite": "62 Cal.4th 919, 929 (2016)",
+          "url": "https://www.courtlistener.com/opinion/3178579/yvanova-v-new-century-mortgage-corp/",
+          "quote": "A void contract is without legal effect."
+        },
+        {
+          "case": "Yvanova v. New Century Mortgage Corp.",
+          "cite": "62 Cal.4th 919, 930 (2016)",
+          "url": "https://www.courtlistener.com/opinion/3178579/yvanova-v-new-century-mortgage-corp/",
+          "quote": "is one where one or more parties have the power, by a manifestation of election to do so, to avoid the legal relations created by the contract, or by ratification of the contract to extinguish the power of avoidance."
+        },
+        {
+          "case": "Yvanova v. New Century Mortgage Corp.",
+          "cite": "62 Cal.4th 919, 936 (2016)",
+          "url": "https://www.courtlistener.com/opinion/3178579/yvanova-v-new-century-mortgage-corp/",
+          "quote": "Unlike a voidable transaction, a void one cannot be ratified or validated by the parties to it even if they so desire."
+        }
+      ]
+    },
+    {
+      "id": "yvvoid_nonparty_and_prejudice_objections",
+      "title": "Why the Nonparty and No-Prejudice Objections Did Not Defeat Standing",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-14",
+      "body": "Two objections were pressed against borrower standing, and the Court answered both. The first was that a borrower who is neither a party to nor a third party beneficiary of an assignment cannot enforce its terms. The Court answered that a borrower alleging a void assignment is not attempting to enforce the instrument at all but urging that it is void ab initio, and is therefore asserting an interest of the borrower's own — an interest in limiting foreclosure on the property to those with legal authority to order a sale — rather than the interests of the parties to the assignment. The second objection was that a defaulting borrower suffers no prejudice, because the true beneficiary could equally have foreclosed. The Court answered that a foreclosed-upon borrower meets the general standard for standing by showing an invasion of legally protected interests, and that a borrower owes money not to the world at large but to a particular person or institution, only that person or institution being entitled to enforce the debt against the security.",
+      "gap": "The phrase about not attempting to enforce the instruments of assignment appears twice in the opinion — first where the Court summarizes the Fifth Circuit's decision in Reinagel v. Deutsche Bank Nat. Trust Co. (5th Cir. 2013) 735 F.3d 220 at page 933, and again at page 936 where the Court adopts it as its own reasoning. The pin cite given is to the second occurrence; the quote is offered only as the California Supreme Court reproduced it, and this sheet does not quote the federal decision independently or treat it as California authority. All quotes were verified against the courts.ca.gov slip PDF for S218973 (pdfminer.six and pypdf) and against the Official Reports text republished by CourtListener. Quotes were normalized only for benign extraction artifacts before comparison: non-breaking spaces, line-wrap hyphenation, ligatures, and the curly quotation marks and dashes that the two sources encode differently (the courts.ca.gov slip PDF renders opening and closing double quotation marks through a font mapping that extracts as U+2015 and U+2016, and em dashes extract as a double hyphen). No word, number or punctuation mark was changed. What counts as prejudice for purposes of the tort itself, as opposed to standing, was expressly left open; see the following clause.",
+      "citations": [
+        {
+          "case": "Yvanova v. New Century Mortgage Corp.",
+          "cite": "62 Cal.4th 919, 936 (2016)",
+          "url": "https://www.courtlistener.com/opinion/3178579/yvanova-v-new-century-mortgage-corp/",
+          "quote": "are not attempting to enforce the terms of the instruments of assignment; to the contrary, they urge that the assignments are void ab initio."
+        },
+        {
+          "case": "Yvanova v. New Century Mortgage Corp.",
+          "cite": "62 Cal.4th 919, 937 (2016)",
+          "url": "https://www.courtlistener.com/opinion/3178579/yvanova-v-new-century-mortgage-corp/",
+          "quote": "she is asserting her own interest in limiting foreclosure on her property to those with legal authority to order a foreclosure sale."
+        },
+        {
+          "case": "Yvanova v. New Century Mortgage Corp.",
+          "cite": "62 Cal.4th 919, 937 (2016)",
+          "url": "https://www.courtlistener.com/opinion/3178579/yvanova-v-new-century-mortgage-corp/",
+          "quote": "A foreclosed-upon borrower clearly meets the general standard for standing to sue by showing an invasion of his or her legally protected interests"
+        },
+        {
+          "case": "Yvanova v. New Century Mortgage Corp.",
+          "cite": "62 Cal.4th 919, 938 (2016)",
+          "url": "https://www.courtlistener.com/opinion/3178579/yvanova-v-new-century-mortgage-corp/",
+          "quote": "The borrower owes money not to the world at large but to a particular person or institution, and only the person or institution entitled to payment may enforce the debt by foreclosing on the security."
+        }
+      ]
+    },
+    {
+      "id": "yvvoid_tender_and_prejudice_reserved",
+      "title": "Tender and Prejudice as Elements: Expressly Left Undecided",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-14",
+      "body": "The Court separated two senses of prejudice. In the body of the opinion it said it was concerned only with prejudice in the sense of an injury sufficiently concrete and personal to provide standing, and not with prejudice as a possible element of the wrongful foreclosure tort. In a footnote it noted that it has been held that a plaintiff seeking to set aside a foreclosure sale must also show prejudice and a tender of the amount of the secured indebtedness, or an excuse of tender, and that tender has been excused where the foreclosure deed is alleged to be facially void. The Court then expressly declined to say whether the plaintiff before it had to allege tender, and declined to address prejudice as an element of the tort. Whether tender or its excuse would be required of anyone with respect to {{propertyAddress}} is therefore not answered by this decision.",
+      "gap": "Two of the three quotes are from footnote 4 of the opinion, and no page pin cite is given for them. The CourtListener mirror relocates all of the opinion's footnotes into a block after the end of the main text, so the star page markers inside that block no longer track the sequence of the main text — the marker preceding footnote 4 there reads 943, which is the last page of the opinion rather than the page on which footnote 4 is printed in the bound reports. The slip PDF is not star-paginated at all. Rather than infer a page, this sheet cites the footnote by number, as the opinion itself does when it refers back to it. The body-text quote carries a page pin cite read off star pagination. All three quotes were verified against the courts.ca.gov slip PDF for S218973 (two extractors) and against the Official Reports text republished by CourtListener. Quotes were normalized only for benign extraction artifacts before comparison: non-breaking spaces, line-wrap hyphenation, ligatures, and the curly quotation marks and dashes that the two sources encode differently (the courts.ca.gov slip PDF renders opening and closing double quotation marks through a font mapping that extracts as U+2015 and U+2016, and em dashes extract as a double hyphen). No word, number or punctuation mark was changed.",
+      "citations": [
+        {
+          "case": "Yvanova v. New Century Mortgage Corp.",
+          "cite": "62 Cal.4th 919, 937 (2016)",
+          "url": "https://www.courtlistener.com/opinion/3178579/yvanova-v-new-century-mortgage-corp/",
+          "quote": "In deciding the limited question on review, we are concerned only with prejudice in the sense of an injury sufficiently concrete and personal to provide standing, not with prejudice as a possible element of the wrongful foreclosure tort."
+        },
+        {
+          "case": "Yvanova v. New Century Mortgage Corp.",
+          "cite": "62 Cal.4th 919, fn. 4 (2016) (no page pin cite; see gap)",
+          "url": "https://www.courtlistener.com/opinion/3178579/yvanova-v-new-century-mortgage-corp/",
+          "quote": "Our review being limited to the standing question, we express no opinion as to whether plaintiff Yvanova must allege tender to state a cause of action for wrongful foreclosure under the circumstances of this case."
+        },
+        {
+          "case": "Yvanova v. New Century Mortgage Corp.",
+          "cite": "62 Cal.4th 919, fn. 4 (2016) (no page pin cite; see gap)",
+          "url": "https://www.courtlistener.com/opinion/3178579/yvanova-v-new-century-mortgage-corp/",
+          "quote": "As to prejudice, we do not address it as an element of wrongful foreclosure."
+        }
+      ]
+    },
+    {
+      "id": "yvvoid_presale_reserved",
+      "title": "Suits Brought Before a Sale: Outside the Scope of the Decision",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-14",
+      "body": "The Court of Appeal decision the Supreme Court disapproved, Jenkins v. JPMorgan Chase Bank, N.A. (2013) 216 Cal.App.4th 497, had rested on two grounds. One was that California law does not permit a preemptive judicial action to challenge the authority of a foreclosing beneficiary or its agent to initiate and pursue foreclosure. The Supreme Court stated that this aspect of Jenkins was not within the scope of its review, which was limited to a borrower's standing to challenge an assignment in an action seeking remedies for wrongful foreclosure, and that the concrete question before it concerned a trustee's sale that had already taken place. It expressly did not address whether, or under what circumstances, a borrower may bring an action for injunctive or declaratory relief to prevent a foreclosure sale from going forward.",
+      "gap": "The quote is shortened at its start, and deliberately so. The full sentence in the opinion begins \"We do not address the distinct question of whether...\", but the Official Reports text republished by CourtListener prints \"dishnct\" for \"distinct\" — scan damage in that publication, which the courts.ca.gov slip PDF for S218973 does not share. Rather than silently correct the word or quote a span that is not verbatim in both publications, the quote begins after it and the defect is disclosed here. The remainder of the quoted span is verbatim in the slip PDF (both extractors) and in the CourtListener text. Quotes were normalized only for benign extraction artifacts before comparison: non-breaking spaces, line-wrap hyphenation, ligatures, and the curly quotation marks and dashes that the two sources encode differently (the courts.ca.gov slip PDF renders opening and closing double quotation marks through a font mapping that extracts as U+2015 and U+2016, and em dashes extract as a double hyphen). No word, number or punctuation mark was changed. Jenkins is a Court of Appeal decision and is described here only as the Supreme Court characterized it; this sheet does not quote it independently.",
+      "citations": [
+        {
+          "case": "Yvanova v. New Century Mortgage Corp.",
+          "cite": "62 Cal.4th 919, 934 (2016)",
+          "url": "https://www.courtlistener.com/opinion/3178579/yvanova-v-new-century-mortgage-corp/",
+          "quote": "whether, or under what circumstances, a borrower may bring an action for injunctive or declaratory relief to prevent a foreclosure sale from going forward."
+        }
+      ]
+    },
+    {
+      "id": "yvvoid_closing_date_reserved",
+      "title": "Post-Closing-Date Transfers into a Securitized Trust: Expressly Not Decided",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-14",
+      "body": "Glaski v. Bank of America (2013) 218 Cal.App.4th 1079 had held both that a borrower may challenge an assignment as void and, separately, that allegations of a transfer into a securitized investment trust after the trust's closing date sufficed to plead a void assignment. The Supreme Court took up only the first holding. It stated that on granting review it had limited the question to borrower standing, that it did not include the question whether a post-closing date transfer into a New York securitized trust is void or merely voidable, and that although the parties' briefs addressed the point it expressed no opinion on it. It repeated that reservation when distinguishing the Second Circuit's contrary view of New York law in Rajamin v. Deutsche Bank Nat. Trust Co. (2d Cir. 2014) 757 F.3d 79.",
+      "gap": "This clause records an express reservation, not a holding. The consequence is that Yvanova does not decide whether the kind of defect most often alleged in securitization cases renders an assignment void or merely voidable; a later published Court of Appeal decision answering that question under New York law is described in a separate clause of this sheet and is not Supreme Court authority. The quoted sentence contains the word \"postclosing\" without a hyphen, which is how both publications print it — this is not a de-hyphenation artifact; the slip PDF sets the word on a single line. The quote was verified against the courts.ca.gov slip PDF for S218973 (pdfminer.six and pypdf) and against the Official Reports text republished by CourtListener, and the pin cite was read off star pagination. Quotes were normalized only for benign extraction artifacts before comparison: non-breaking spaces, line-wrap hyphenation, ligatures, and the curly quotation marks and dashes that the two sources encode differently (the courts.ca.gov slip PDF renders opening and closing double quotation marks through a font mapping that extracts as U+2015 and U+2016, and em dashes extract as a double hyphen). No word, number or punctuation mark was changed.",
+      "citations": [
+        {
+          "case": "Yvanova v. New Century Mortgage Corp.",
+          "cite": "62 Cal.4th 919, 931 (2016)",
+          "url": "https://www.courtlistener.com/opinion/3178579/yvanova-v-new-century-mortgage-corp/",
+          "quote": "We did not include in our order the question of whether a postclosing date transfer into a New York securitized trust is void or merely voidable, and though the parties' briefs address it, we express no opinion on the question here."
+        }
+      ]
+    },
+    {
+      "id": "yvvoid_disapproved_decisions",
+      "title": "Which Court of Appeal Decisions Were Approved and Which Were Disapproved",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-14",
+      "body": "The Court resolved a split among Court of Appeal decisions. It concluded that Glaski was correct to hold that a wrongful foreclosure plaintiff has standing to claim that the foreclosing entity's purported authority to order a trustee's sale rested on a void assignment of the note and deed of trust, and that Jenkins had spoken too broadly in holding that a borrower lacks standing to challenge an assignment to which the borrower was neither a party nor a third party beneficiary. In a footnote the Court disapproved four decisions — Jenkins, Siliga v. Mortgage Electronic Registration Systems, Inc. (2013) 219 Cal.App.4th 75, Fontenot v. Wells Fargo Bank, N.A. (2011) 198 Cal.App.4th 256, and Herrera v. Federal National Mortgage Assn. (2012) 205 Cal.App.4th 1495 — to the extent stated in the quoted language. The Court added that Jenkins's rule may still hold as to claimed defects that would make an assignment merely voidable.",
+      "gap": "The disapproval quote is deliberately confined to the closing clause of footnote 13 and omits the list of case names, because the Official Reports text republished by CourtListener carries scan damage through that list: it prints \"Wells Fargo Batik, N.A..\" for \"Wells Fargo Bank, N.A.,\" and substitutes periods for commas in \"Mortgage Electronic Registration Systems. Inc.\" and \"Federal National Mortgage Assn., supra.\". The courts.ca.gov slip PDF for S218973 prints all four names correctly. The case names are therefore given in the body from the slip PDF and are not presented as a quotation from either publication. No page pin cite is given for the footnote quote, for the reason recorded in the clause on tender and prejudice: the CourtListener mirror relocates footnotes into a block where the star markers no longer track the main text. The two body-text quotes carry pin cites read off star pagination. Quotes were normalized only for benign extraction artifacts before comparison: non-breaking spaces, line-wrap hyphenation, ligatures, and the curly quotation marks and dashes that the two sources encode differently (the courts.ca.gov slip PDF renders opening and closing double quotation marks through a font mapping that extracts as U+2015 and U+2016, and em dashes extract as a double hyphen). No word, number or punctuation mark was changed.",
+      "citations": [
+        {
+          "case": "Yvanova v. New Century Mortgage Corp.",
+          "cite": "62 Cal.4th 919, 939 (2016)",
+          "url": "https://www.courtlistener.com/opinion/3178579/yvanova-v-new-century-mortgage-corp/",
+          "quote": "we conclude Glaski, supra, 218 Cal.App.4th 1079, was correct to hold a wrongful foreclosure plaintiff has standing to claim the foreclosing entity's purported authority to order a trustee's sale was based on a void assignment of the note and deed of trust."
+        },
+        {
+          "case": "Yvanova v. New Century Mortgage Corp.",
+          "cite": "62 Cal.4th 919, 939 (2016)",
+          "url": "https://www.courtlistener.com/opinion/3178579/yvanova-v-new-century-mortgage-corp/",
+          "quote": "spoke too broadly in holding a borrower lacks standing to challenge an assignment of the note and deed of trust to which the borrower was neither a party nor a third party beneficiary."
+        },
+        {
+          "case": "Yvanova v. New Century Mortgage Corp.",
+          "cite": "62 Cal.4th 919, fn. 13 (2016) (no page pin cite; see gap)",
+          "url": "https://www.courtlistener.com/opinion/3178579/yvanova-v-new-century-mortgage-corp/",
+          "quote": "to the extent they held borrowers lack standing to challenge an assignment of the deed of trust as void."
+        }
+      ]
+    },
+    {
+      "id": "yvvoid_post_sciarratta",
+      "title": "A Court of Appeal Answer to the Prejudice Question Yvanova Left Open",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-14",
+      "body": "Three months after Yvanova, the Court of Appeal in Sciarratta v. U.S. Bank National Assn. (2016) 247 Cal.App.4th 552 took up the prejudice question the Supreme Court had reserved. The court framed the issue as whether allegations of foreclosure by one with no right to do so establish by themselves the prejudice or harm needed to state a wrongful foreclosure cause of action, or whether the plaintiff must additionally allege that the wrongful foreclosure interfered with the ability to pay the debt or produced a foreclosure that would not otherwise have occurred. It concluded that such allegations suffice on their own, reasoning that a homeowner is harmed by losing the home to an entity with no legal right to take it, and reversed a judgment of dismissal entered after a demurrer was sustained without leave to amend.",
+      "gap": "Sciarratta is a published decision of the Court of Appeal, Fourth Appellate District, Division Two. It is not a California Supreme Court decision, it does not bind courts in other districts, and it addresses a question Yvanova expressly declined to decide — so it does not carry the authority of the holding described elsewhere in this sheet. The quotes were verified against two independent publishers: the Judicial Council of California's official slip opinion PDF for docket D069439 on courts.ca.gov, extracted twice with pdfminer.six and pypdf, and the Official Reports text republished by CourtListener. No discrepancy was found between those two publications in the quoted passages. Quotes were normalized only for benign extraction artifacts before comparison: non-breaking spaces, line-wrap hyphenation, ligatures, and the curly quotation marks and dashes that the two sources encode differently (the courts.ca.gov slip PDF renders opening and closing double quotation marks through a font mapping that extracts as U+2015 and U+2016, and em dashes extract as a double hyphen). No word, number or punctuation mark was changed. The pin cite was read off the star pagination in the CourtListener text.",
+      "citations": [
+        {
+          "case": "Sciarratta v. U.S. Bank National Assn.",
+          "cite": "247 Cal.App.4th 552, 555 (2016)",
+          "url": "https://www.courtlistener.com/opinion/3204604/sciarratta-v-us-bank-national-assn/",
+          "quote": "a homeowner who has been foreclosed on by one with no right to do so--by those facts alone--sustains prejudice or harm sufficient to constitute a cause of action for wrongful foreclosure."
+        },
+        {
+          "case": "Sciarratta v. U.S. Bank National Assn.",
+          "cite": "247 Cal.App.4th 552, 555 (2016)",
+          "url": "https://www.courtlistener.com/opinion/3204604/sciarratta-v-us-bank-national-assn/",
+          "quote": "When a non-debtholder forecloses, a homeowner is harmed by losing her home to an entity with no legal right to take it."
+        }
+      ]
+    },
+    {
+      "id": "yvvoid_post_yhudai",
+      "title": "A Court of Appeal Answer to the Closing-Date Question Yvanova Left Open",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-14",
+      "body": "In Yhudai v. Impac Funding Corp. (2016) 1 Cal.App.5th 1252, the Court of Appeal addressed the securitization question Yvanova had reserved. The borrower's sole theory was that an assignment recorded more than two years after the investment trust's closing date was void. The court noted that the New York trial court decision on which Glaski had relied, Wells Fargo Bank, N.A. v. Erobobo, had since been reversed on appeal, and concluded that under New York law a transfer into an investment trust in violation of the trust's terms renders the assignment voidable rather than void. It affirmed the judgment of dismissal. The court also recorded that Yvanova had approved Glaski's standing holding while expressing no opinion on Glaski's closing-date holding.",
+      "gap": "Yhudai is a published decision of the Court of Appeal, Second Appellate District, Division One; it is not Supreme Court authority and does not bind other districts. Its conclusion rests on New York law as construed by New York and federal courts, which this sheet describes only as the California Court of Appeal reproduced it and does not quote independently. Verification disclosed a genuine discrepancy between the two publications of this opinion. The courts.ca.gov official slip opinion PDF for docket B262509 reads \"Based on the authorities cited above indicate, a postclosing assignment...\", an ungrammatical sentence that both pdfminer.six and pypdf extract identically; the Official Reports text republished by CourtListener reads \"Based on the authorities cited above, a postclosing assignment...\", without the word \"indicate\". A CourtListener index query restricted to this opinion's cluster returned one result for the exact phrase \"Based on the authorities cited above, a postclosing assignment\", confirming the corrected reading is what that publication carries. The quote given here begins after the point of divergence and is verbatim in both. The same CourtListener text separately prints \"Embobo\" once for \"Erobobo\", which the slip PDF spells correctly throughout. Quotes were normalized only for benign extraction artifacts before comparison: non-breaking spaces, line-wrap hyphenation, ligatures, and the curly quotation marks and dashes that the two sources encode differently (the courts.ca.gov slip PDF renders opening and closing double quotation marks through a font mapping that extracts as U+2015 and U+2016, and em dashes extract as a double hyphen). No word, number or punctuation mark was changed. The pin cite was read off star pagination in the CourtListener text.",
+      "citations": [
+        {
+          "case": "Yhudai v. Impac Funding Corp.",
+          "cite": "1 Cal.App.5th 1252, 1259 (2016)",
+          "url": "https://www.courtlistener.com/opinion/4242947/yhudai-v-impac-funding-corp/",
+          "quote": "a postclosing assignment of a loan to an investment trust that violates the terms of the trust renders the assignment voidable, not void, under New York law."
+        }
+      ]
+    },
+    {
+      "id": "yvvoid_acknowledgment",
+      "title": "Acknowledgment — Information Sheet Only",
+      "kind": "drafting",
+      "body": "The reader acknowledges that this sheet summarizes published California statutes and appellate decisions concerning borrower standing to challenge an assignment as void after a nonjudicial foreclosure sale, and nothing more. It does not establish that any assignment affecting {{propertyAddress}} is void, voidable, or valid; it does not state that {{borrowerName}} has or lacks any cause of action against {{foreclosingEntity}} or anyone else; and it takes no position on the effect of the sale said to have occurred on or about {{trusteeSaleDate}}. Statutes are amended and decisions are superseded; the clauses above state the sources consulted and the dates on which they were checked. Any claim of this kind is subject to statutes of limitation and to procedural requirements this sheet does not describe."
     }
   ]
 }

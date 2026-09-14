@@ -38232,5 +38232,56 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "wrongful_foreclosure_void_assignment",
+    "title": "Wrongful Foreclosure and the Void-Assignment Standing Rule",
+    "description": "What Yvanova v. New Century Mortgage Corp. (2016) 62 Cal.4th 919 decided about a borrower's standing to attack an assignment of the note and deed of trust as void after a nonjudicial foreclosure sale, what the California Supreme Court expressly refused to decide in the same opinion, and how two published Court of Appeal decisions answered two of the reserved questions.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "yvvoid_intro_scope",
+      "yvvoid_question_presented",
+      "yvvoid_holding",
+      "yvvoid_narrow_ruling",
+      "yvvoid_who_may_direct_sale",
+      "yvvoid_statute_2924_a6",
+      "yvvoid_void_vs_voidable",
+      "yvvoid_nonparty_and_prejudice_objections",
+      "yvvoid_tender_and_prejudice_reserved",
+      "yvvoid_presale_reserved",
+      "yvvoid_closing_date_reserved",
+      "yvvoid_disapproved_decisions",
+      "yvvoid_post_sciarratta",
+      "yvvoid_post_yhudai",
+      "yvvoid_acknowledgment"
+    ],
+    "fields": [
+      {
+        "id": "borrowerName",
+        "label": "Borrower name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "propertyAddress",
+        "label": "Property address",
+        "placeholder": "123 Main St., Woodland Hills, CA 91367",
+        "required": true
+      },
+      {
+        "id": "foreclosingEntity",
+        "label": "Entity that initiated or conducted the foreclosure",
+        "placeholder": "Western Progressive, LLC, as trustee",
+        "required": true
+      },
+      {
+        "id": "trusteeSaleDate",
+        "label": "Date of the trustee's sale",
+        "placeholder": "September 14, 2026",
+        "required": false
+      }
+    ]
   }
 ]
