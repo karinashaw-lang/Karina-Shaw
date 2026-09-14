@@ -38424,5 +38424,80 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "probate_sale_real_property_confirmation_info_sheet",
+    "title": "Court Confirmation of the Sale of Estate Real Property and the Overbid Procedure — Information Sheet",
+    "description": "Explains how real property of a California decedent's estate is sold under court supervision (Prob. Code §§ 10000, 10150, 10160-10165, 10300-10314, 10350, 10503, 1300): the four grounds for a sale, the published notice, the requirement that every sale be reported and confirmed before title passes, the 90-percent-of-appraised-value floor on a private sale, the in-court 10-percent/5-percent overbid formula and the rule of Estate of Sampo and Estate of Barthelmess that an increased bid must be a written signed offer, the findings in the confirming order, the conveyance and a defaulting purchaser's liability, how a broker's commission is earned and divided under Estate of Lopez, the Independent Administration of Estates Act exception, and appealability.",
+    "categories": [
+      "Estate Planning"
+    ],
+    "clauseOrder": [
+      "saleconf_intro_purpose",
+      "saleconf_when_sale_authorized",
+      "saleconf_published_notice",
+      "saleconf_confirmation_required",
+      "saleconf_ninety_percent_appraisal",
+      "saleconf_hearing_inquiry",
+      "saleconf_overbid_formula",
+      "saleconf_written_offer_requirement",
+      "saleconf_cash_versus_credit",
+      "saleconf_order_confirming_findings",
+      "saleconf_conveyance_recording_and_purchaser_default",
+      "saleconf_broker_compensation",
+      "saleconf_iaea_full_authority_exception",
+      "saleconf_appealability",
+      "saleconf_acknowledgment"
+    ],
+    "fields": [
+      {
+        "id": "decedentName",
+        "label": "Decedent's name",
+        "placeholder": "Rosalind M. Okafor",
+        "required": true
+      },
+      {
+        "id": "personalRepresentativeName",
+        "label": "Personal representative's name",
+        "placeholder": "Daniel Okafor",
+        "required": true
+      },
+      {
+        "id": "courtName",
+        "label": "Court name",
+        "placeholder": "Superior Court of California",
+        "required": true
+      },
+      {
+        "id": "countyOfFiling",
+        "label": "County of filing",
+        "placeholder": "San Diego County",
+        "required": true
+      },
+      {
+        "id": "courtCaseNumber",
+        "label": "Probate case number",
+        "placeholder": "37-2026-00012345-PR-LA-CTL",
+        "required": true
+      },
+      {
+        "id": "propertyAddress",
+        "label": "Address of the estate real property",
+        "placeholder": "1418 Juniper Street, San Diego, CA 92101",
+        "required": true
+      },
+      {
+        "id": "recipientName",
+        "label": "Name of the person receiving this sheet",
+        "placeholder": "Daniel Okafor",
+        "required": true
+      },
+      {
+        "id": "acknowledgmentDate",
+        "label": "Date of acknowledgment",
+        "placeholder": "March 3, 2026",
+        "required": true
+      }
+    ]
   }
 ]

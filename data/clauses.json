@@ -127635,6 +127635,485 @@
       "title": "Signature and Receipt",
       "kind": "drafting",
       "body": "Employee Signature: ☐ _________________________ Date: _______________\n\n{{employeeName}} (print name)\n\nEmployer Representative Signature: ☐ _________________________ Date: _______________\n\n{{companyName}} (print name and title)"
+    },
+    {
+      "id": "saleconf_intro_purpose",
+      "title": "Purpose of This Court-Confirmation-of-Sale Information Sheet",
+      "kind": "drafting",
+      "body": "This information sheet states general facts about the California statutory procedure by which real property of a decedent's estate is sold under court supervision — Probate Code Chapter 18 of Part 5 of Division 7 (commencing with § 10000), and in particular Article 6 (§§ 10300–10316), which governs sales of real property — as those provisions bear on the administration of {{decedentName}}'s estate before {{courtName}} in {{countyOfFiling}}, case number {{courtCaseNumber}}, in which {{personalRepresentativeName}} serves as personal representative and in which the real property at {{propertyAddress}} is or may be offered for sale. It describes the grounds on which a sale may be made, the published notice of sale, the requirement of a reported sale and a court confirmation hearing, the 90-percent-of-appraised-value floor on a private sale, the in-court increased-bid (overbid) formula and the requirement that an increased bid be a written offer, the findings the court makes in the order confirming sale, the conveyance that follows and the consequences of a purchaser's default, how an agent's or broker's compensation is fixed and divided, the exception for a personal representative acting with full authority under the Independent Administration of Estates Act, and the appealability of an order confirming a sale. It is a description of statutes and published opinions. It does not petition for or confirm any sale, does not set a price or a bid, does not appraise anything, and does not tell {{personalRepresentativeName}}, any beneficiary, or any bidder what to do in this estate."
+    },
+    {
+      "id": "saleconf_when_sale_authorized",
+      "title": "The Four Statutory Grounds on Which Estate Property May Be Sold",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-14",
+      "body": "Probate Code § 10000 opens Chapter 18 by listing the circumstances in which the personal representative may sell estate property at all: where the sale is necessary to pay debts, devises, family allowance, expenses of administration, or taxes; where the sale is to the advantage of the estate and in the best interest of the interested persons; where the property is directed by the will to be sold; and where authority to sell is given in the will. The section makes that power expressly 'Subject to the limitations, conditions, and requirements of this chapter,' so the remaining articles of Chapter 18 supply the procedure for any sale resting on one of those four grounds. Where the will itself directs a sale or gives authority to sell, Probate Code § 10303 provides that the real property may be sold with or without notice as the personal representative may determine — an exception to the published-notice requirement, not to the requirement of court confirmation, which § 10308(a) states applies 'notwithstanding that the property is directed by the will to be sold or authority is given in the will to sell the property.'",
+      "gap": "This clause states the statutory grounds; it does not say which ground, if any, fits the property at {{propertyAddress}} or the circumstances of {{decedentName}}'s estate. It does not address Probate Code §§ 10001–10006 (including the court's power to order a sale on petition of an interested person), the special provisions in Article 4 (§§ 10200–10207) for particular kinds of property, or the sale of personal property under Article 5. No case law construing the post-1990 text of § 10000 was located and quoted for this clause. Both statutory texts were fetched twice: from the Legislative Counsel's leginfo service and from california.public.law. Those two are not fully independent publishers — each california.public.law page prints a 'Source:' line naming the corresponding leginfo URL — and the gap for each clause says so. The only normalization applied when comparing the two was benign: collapsing runs of whitespace and treating the subdivision-marker line breaks that leginfo runs together (for example 'satisfied:(1) The') as equivalent to the spaced form california.public.law renders. Quotes below are stored exactly as the leginfo text prints them, including its curly apostrophes.",
+      "citations": [
+        {
+          "case": "Cal. Prob. Code § 10000 (California Legislative Information text)",
+          "cite": "Prob. Code § 10000",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=10000.",
+          "quote": "the personal representative may sell real or personal property of the estate in any of the following cases"
+        },
+        {
+          "case": "Cal. Prob. Code § 10000(b) (california.public.law text)",
+          "cite": "Prob. Code § 10000(b)",
+          "url": "https://california.public.law/codes/probate_code_section_10000",
+          "quote": "Where the sale is to the advantage of the estate and in the best interest of the interested persons."
+        },
+        {
+          "case": "Cal. Prob. Code § 10303 (California Legislative Information text)",
+          "cite": "Prob. Code § 10303",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=10303.",
+          "quote": "Real property may be sold with or without notice, as the personal representative may determine, in either of the following cases"
+        }
+      ]
+    },
+    {
+      "id": "saleconf_published_notice",
+      "title": "Published Notice of Sale, the Small-Value Posting Alternative, and the Conduct of a Public Auction",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-14",
+      "body": "Probate Code § 10300(a) conditions a sale of estate real property on prior publication of a notice of sale under Government Code § 6063a, in a newspaper published in the county where the property or some portion of it is located, or, if there is none, in the newspaper the court or judge directs. Section 10300(b) requires that publication be completed before the day specified in the notice as the day on or after which a private sale is to be made, or before the day of a public auction. Section 10301(a) permits the personal representative, where the inventory and appraisal show the real property to be sold does not exceed five thousand dollars, to dispense with publication and post the notice at the courthouse instead, for at least 15 days under § 10301(b). Section 10305 governs the mechanics of a public auction: it must be held in the county where the property is located, between 9 a.m. and 9 p.m., on the day specified in the notice unless postponed, and postponements are limited by § 10305(c) to those the personal representative believes advantageous, declared publicly at the appointed time and place, and not exceeding three months in all.",
+      "gap": "Disclosed textual defect: the two publications of § 10300(a) do not read alike. The Legislative Counsel's leginfo text begins 'Except as provided in Sections 10301 to 10303, inclusive'; the rendered body of the california.public.law page for the same section reads 'Except as provided in Section 10301 to 10303, inclusive' (singular), because that publisher converts the cross-reference into a hyperlink and drops the plural 's'. The same california.public.law page contradicts itself: its own HTML <meta> description, which is generated from the unlinked text, prints 'Sections'. The defect is in that derivative publication, not in the extraction — it was confirmed by reading the raw HTML of the page. This clause therefore quotes § 10300(a) only from a stretch of the subdivision that both publications render identically, and the affected words are not quoted. This clause does not address Government Code § 6063a itself (the three-week, three-insertion publication period), which was not independently fetched, nor § 10302 (shortened posting where the court so orders), § 10304, or §§ 10306–10307. No case law construing the post-1990 text of §§ 10300, 10301 or 10305 was located and quoted. Both statutory texts were fetched twice: from the Legislative Counsel's leginfo service and from california.public.law. Those two are not fully independent publishers — each california.public.law page prints a 'Source:' line naming the corresponding leginfo URL — and the gap for each clause says so. The only normalization applied when comparing the two was benign: collapsing runs of whitespace and treating the subdivision-marker line breaks that leginfo runs together (for example 'satisfied:(1) The') as equivalent to the spaced form california.public.law renders. Quotes below are stored exactly as the leginfo text prints them, including its curly apostrophes.",
+      "citations": [
+        {
+          "case": "Cal. Prob. Code § 10300(a) (California Legislative Information text)",
+          "cite": "Prob. Code § 10300(a)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=10300.",
+          "quote": "real property of the estate may be sold only after notice of sale has been published pursuant to Section 6063a of the Government Code"
+        },
+        {
+          "case": "Cal. Prob. Code § 10301(a) (california.public.law text)",
+          "cite": "Prob. Code § 10301(a)",
+          "url": "https://california.public.law/codes/probate_code_section_10301",
+          "quote": "the personal representative may in his or her discretion dispense with publication of notice of sale and, in lieu of publication, post the notice of sale at the courthouse of the county in which the real property or some portion thereof is located."
+        },
+        {
+          "case": "Cal. Prob. Code § 10305(b) (California Legislative Information text)",
+          "cite": "Prob. Code § 10305(b)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=10305.",
+          "quote": "A sale of real property at public auction shall be made between 9 a.m. and 9 p.m., and the sale shall be made on the day specified in the notice of sale unless the sale is postponed."
+        }
+      ]
+    },
+    {
+      "id": "saleconf_confirmation_required",
+      "title": "Every Sale of Estate Real Property Must Be Reported to and Confirmed by the Court Before Title Passes",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-14",
+      "body": "Probate Code § 10308(a) is the rule that gives this procedure its name: except as provided in § 10503 (the Independent Administration of Estates Act provision addressed separately below), all sales of real property must be reported to and confirmed by the court before title passes to the purchaser, whether the sale was private or at public auction, and even where the will directs or authorizes the sale. Section 10308(b) supplies a remedy for delay that runs in the purchaser's favor: if the personal representative does not file the report and a petition for confirmation within 30 days after the sale, the purchaser at the sale may file them. Under § 10308(c), notice of the hearing on a petition for confirmation filed by either the personal representative or the purchaser is given as provided in Probate Code § 1220, to the persons that section designates and to the purchasers named in the petition, and posted as provided in § 1230.",
+      "gap": "This clause does not set out the contents of Probate Code § 1220 (the 15-day mailed-notice provision) or § 1230 (posting), neither of which was independently fetched for this document; the corpus's separate information sheet on the Notice of Proposed Action procedure addresses § 1220 notice in a different context. Section 10308 was amended by Stats. 1992, ch. 871, § 11, effective January 1, 1993 — after Estate of Sampo (1985) and Estate of Barthelmess (1988), both quoted elsewhere in this document, were decided under the former Probate Code. No case law construing the current text of § 10308 was located and quoted here. This clause does not say whether any sale in {{decedentName}}'s estate has been reported or confirmed. Both statutory texts were fetched twice: from the Legislative Counsel's leginfo service and from california.public.law. Those two are not fully independent publishers — each california.public.law page prints a 'Source:' line naming the corresponding leginfo URL — and the gap for each clause says so. The only normalization applied when comparing the two was benign: collapsing runs of whitespace and treating the subdivision-marker line breaks that leginfo runs together (for example 'satisfied:(1) The') as equivalent to the spaced form california.public.law renders. Quotes below are stored exactly as the leginfo text prints them, including its curly apostrophes.",
+      "citations": [
+        {
+          "case": "Cal. Prob. Code § 10308(a) (California Legislative Information text)",
+          "cite": "Prob. Code § 10308(a)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=10308.",
+          "quote": "all sales of real property shall be reported to and be confirmed by the court before title to the property passes to the purchaser, whether the sale is a private sale or a public auction sale and notwithstanding that the property is directed by the will to be sold or authority is given in the will to sell the property."
+        },
+        {
+          "case": "Cal. Prob. Code § 10308(b) (california.public.law text)",
+          "cite": "Prob. Code § 10308(b)",
+          "url": "https://california.public.law/codes/probate_code_section_10308",
+          "quote": "If the personal representative fails to file the report and a petition for confirmation of the sale within 30 days after the sale, the purchaser at the sale may file the report and petition for confirmation of the sale."
+        }
+      ]
+    },
+    {
+      "id": "saleconf_ninety_percent_appraisal",
+      "title": "The 90-Percent-of-Appraised-Value Floor and the One-Year Appraisal Window on a Private Sale",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-14",
+      "body": "Probate Code § 10309(a) bars confirmation of a private sale of real property unless three conditions are all met: the property has been appraised within one year before the date of the confirmation hearing; the valuation date used in that appraisal is also within one year before that date; and the sum offered is at least 90 percent of the appraised value as determined by that appraisal. Section 10309(b) permits a fresh appraisal at any time before the sale or its confirmation where the property has not been appraised, where the appraisal or its valuation date falls outside the one-year window, or where the court is satisfied the latest appraisal is too high or too low. Section 10309(c) addresses who performs the new appraisal: it need not be a probate referee if the original appraisal was made by someone else, and where a probate referee made the original appraisal that same referee may make the new one without further order, with a new referee appointed only if the original referee is dead, has been removed, is otherwise unable to act, or there is other reason to appoint another.",
+      "gap": "By its terms § 10309(a) governs a private sale; the 90-percent floor is not stated by that subdivision as a condition on confirming a public auction sale, and this clause does not assert that it is. The section opens 'Except as provided in Section 10207,' a narrow provision for sales of grazing or pasture land to an association under the federal Consolidated Farm and Rural Development Act, which is not described here. This clause does not state the appraised value of {{propertyAddress}} or whether any offer meets the floor. The corpus's separate Probate Referee and Inventory and Appraisal information sheet addresses the referee appointment machinery that § 10309(c) refers to; that machinery is not re-verified here. No case law construing the post-1990 text of § 10309 was located and quoted. Both statutory texts were fetched twice: from the Legislative Counsel's leginfo service and from california.public.law. Those two are not fully independent publishers — each california.public.law page prints a 'Source:' line naming the corresponding leginfo URL — and the gap for each clause says so. The only normalization applied when comparing the two was benign: collapsing runs of whitespace and treating the subdivision-marker line breaks that leginfo runs together (for example 'satisfied:(1) The') as equivalent to the spaced form california.public.law renders. Quotes below are stored exactly as the leginfo text prints them, including its curly apostrophes.",
+      "citations": [
+        {
+          "case": "Cal. Prob. Code § 10309(a)(3) (California Legislative Information text)",
+          "cite": "Prob. Code § 10309(a)(3)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=10309.",
+          "quote": "The sum offered for the property is at least 90 percent of the appraised value of the property as determined by the appraisal described in paragraph (1)."
+        },
+        {
+          "case": "Cal. Prob. Code § 10309(a)(1) (california.public.law text)",
+          "cite": "Prob. Code § 10309(a)(1)",
+          "url": "https://california.public.law/codes/probate_code_section_10309",
+          "quote": "The real property has been appraised within one year prior to the date of the confirmation hearing."
+        }
+      ]
+    },
+    {
+      "id": "saleconf_hearing_inquiry",
+      "title": "What the Court Examines at the Confirmation Hearing, and Who May Object",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-14",
+      "body": "Probate Code § 10310(a) directs the court at the confirmation hearing to examine into the necessity for the sale or the advantage to the estate and the benefit to the interested persons in making it, with the qualification that no such showing is needed where the will authorizes or directs the property to be sold. Section 10310(b) adds a second and separate inquiry — into the efforts of the personal representative to obtain the highest and best price for the property reasonably attainable — and § 10310(c) gives any interested person the right to file written objections at or before the hearing and to testify and produce witnesses in support of them. Construing the corresponding former provision (§ 785), Estate of Barthelmess (1988) 198 Cal.App.3d 728 affirmed an order confirming a sale over a beneficiary's objection, treating the best-interest determination as one committed to the probate court's discretion and reviewed for support in the evidence; the opinion quotes Estate of Kay (1947) 30 Cal.2d 215, 218 for the proposition that whether there was sufficient evidence on which to base the order 'lies within the discretion of the probate court.' On what the court may consider, Barthelmess quotes Estate of George (1932) 123 Cal.App. 733, 737, which had allowed the probate record itself — the inventory and appraisement, claims presented, and anticipated costs of administration — to be consulted on the propriety of a sale.",
+      "gap": "Barthelmess, Kay and George were decided under the former Probate Code; Barthelmess construes former § 785, not § 10310, and this clause does not assert that the 1990 recodification carried every aspect of that case law forward unchanged. Estate of Kay and Estate of George are quoted only as Barthelmess reproduces them; neither opinion was independently fetched. No pin cite is given for the Barthelmess sentence on discretion beyond the star page noted in the cite field. Disclosed textual defects in the case record: CourtListener holds two separately sourced renderings of 198 Cal.App.3d 728 under different case names (Estate of Barthelmess and Wetzel v. Mallette), and the citation lookup for that volume and page returns HTTP 300 because of it. Diffing the two word by word shows the Harvard-sourced rendering carries scan damage the Lawbox/Columbia rendering does not: it prints 'If was within the court's discretion' for 'It was within the court's discretion', 'section 110-3' for 'section 1103', 'elfect' for 'effect', '[sz'c]' for '[sic]' and '[fl]' for the paragraph mark. The quotes below were checked against both renderings and none of them touches a damaged passage; the comparison normalized only curly quotation marks and apostrophes to straight ones, em/en dashes, and reporter-citation spacing ('Cal. App.3d' versus 'Cal.App.3d'), and each quote is stored exactly as the rendering named in its own citation prints it, including that rendering's quotation-mark and apostrophe glyphs. For California Court of Appeal opinions no second free publisher was reachable from this environment: casetext returned HTTP 410, Justia returned HTTP 403, and anylaw, openjurist, static.case.law and lawserver were all refused at the egress proxy. 'Fetched twice' for this case therefore means two separately sourced renderings hosted by the same publisher (CourtListener), not two publishers.",
+      "citations": [
+        {
+          "case": "Cal. Prob. Code § 10310(b) (California Legislative Information text)",
+          "cite": "Prob. Code § 10310(b)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=10310.",
+          "quote": "The court shall examine into the efforts of the personal representative to obtain the highest and best price for the property reasonably attainable."
+        },
+        {
+          "case": "Cal. Prob. Code § 10310(c) (california.public.law text)",
+          "cite": "Prob. Code § 10310(c)",
+          "url": "https://california.public.law/codes/probate_code_section_10310",
+          "quote": "Any interested person may file written objections to the confirmation of the sale at or before the hearing and may testify and produce witnesses in support of the objections."
+        },
+        {
+          "case": "Cal. Prob. Code § 10310(a) (California Legislative Information text)",
+          "cite": "Prob. Code § 10310(a)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=10310.",
+          "quote": "at the hearing on the petition for confirmation of the sale of the real property, the court shall examine into the necessity for the sale or the advantage to the estate and the benefit to the interested persons in making the sale."
+        },
+        {
+          "case": "Estate of Barthelmess (Cal. Ct. App. 1988) (CourtListener, Lawbox/Columbia rendering)",
+          "cite": "198 Cal.App.3d 728, 736",
+          "url": "https://www.courtlistener.com/opinion/2135836/estate-of-barthelmess/",
+          "quote": "The determination was within the court's discretion and supported by the evidence."
+        },
+        {
+          "case": "Estate of Kay (1947) 30 Cal.2d 215, 218, as quoted in Estate of Barthelmess (CourtListener, Harvard rendering under the name Wetzel v. Mallette)",
+          "cite": "198 Cal.App.3d 728, 735 (quoting 30 Cal.2d at p. 218)",
+          "url": "https://www.courtlistener.com/opinion/5807310/wetzel-v-mallette/",
+          "quote": "the determination whether there was sufficient evidence upon which to base the order lies within the discretion of the probate court."
+        },
+        {
+          "case": "Estate of George (1932) 123 Cal.App. 733, 737, as quoted in Estate of Barthelmess (CourtListener, Lawbox/Columbia rendering)",
+          "cite": "198 Cal.App.3d 728, 737–738 (quoting 123 Cal.App. at p. 737)",
+          "url": "https://www.courtlistener.com/opinion/2135836/estate-of-barthelmess/",
+          "quote": "Obviously the only test of the reasonable exercise of this discretion rests in the probate record, including the inventory and appraisement, claims presented and anticipated costs of administration."
+        }
+      ]
+    },
+    {
+      "id": "saleconf_overbid_formula",
+      "title": "The In-Court Increased Bid: the 10-Percent/5-Percent Formula and the Court’s Power to Decline It",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-14",
+      "body": "Probate Code § 10311(a) is the overbid provision. If a written offer to purchase the real property is made to the court at the confirmation hearing, the court is directed to accept the offer and confirm the sale to the offeror when three conditions are satisfied: the offer exceeds the original bid by at least 10 percent more on the first ten thousand dollars of that bid and 5 percent more on the amount of the bid above ten thousand dollars; the offer is made by a responsible person; and it complies with all provisions of law. Where more than one qualifying offer is made, § 10311(b) directs the court to accept the highest. Section 10311(c) preserves a discretion that cuts the other way: the court may decline to accept even a qualifying highest offer, and in that case must order a new sale. Section 10311(e) removes commissions from the arithmetic — the amount of the original bid and of any higher offer is determined without regard to any commission an agent or broker may be entitled to under a contract with the personal representative, or to any condition of the bid that part of it be paid to an agent or broker.",
+      "gap": "The figures are statutory and are stated here only as the statute states them; this clause does not compute a minimum overbid for any bid on {{propertyAddress}}, and does not say what the original bid in {{decedentName}}'s estate is. Section 10311 opens 'Subject to subdivisions (b), (c), (d), and (e), and except as provided in Section 10207'; subdivision (d) is addressed in a separate clause of this document and § 10207 is not described here. Probate Code § 10313(a)(6) states a parallel test that operates on confirmation to the original bidder rather than on an offer actually made, and it is quoted in a later clause. No case law construing the post-1990 text of § 10311 was located and quoted for this clause; the two published decisions quoted elsewhere in this document construe the former counterpart sections §§ 785 and 785.1. Both statutory texts were fetched twice: from the Legislative Counsel's leginfo service and from california.public.law. Those two are not fully independent publishers — each california.public.law page prints a 'Source:' line naming the corresponding leginfo URL — and the gap for each clause says so. The only normalization applied when comparing the two was benign: collapsing runs of whitespace and treating the subdivision-marker line breaks that leginfo runs together (for example 'satisfied:(1) The') as equivalent to the spaced form california.public.law renders. Quotes below are stored exactly as the leginfo text prints them, including its curly apostrophes.",
+      "citations": [
+        {
+          "case": "Cal. Prob. Code § 10311(a) (California Legislative Information text)",
+          "cite": "Prob. Code § 10311(a)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=10311.",
+          "quote": "if a written offer to purchase the real property is made to the court at the hearing on the petition for confirmation of the sale, the court shall accept the offer and confirm the sale to the offeror if all of the following conditions are satisfied"
+        },
+        {
+          "case": "Cal. Prob. Code § 10311(a)(1) (california.public.law text)",
+          "cite": "Prob. Code § 10311(a)(1)",
+          "url": "https://california.public.law/codes/probate_code_section_10311",
+          "quote": "The offer is for an amount at least 10 percent more on the first ten thousand dollars ($10,000) of the original bid and 5 percent more on the amount of the original bid in excess of ten thousand dollars ($10,000)."
+        },
+        {
+          "case": "Cal. Prob. Code § 10311(c) (California Legislative Information text)",
+          "cite": "Prob. Code § 10311(c)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=10311.",
+          "quote": "The court may, in its discretion, decline to accept the offer that satisfies the requirements of subdivisions (a) and (b); and, in such case, the court shall order a new sale."
+        },
+        {
+          "case": "Cal. Prob. Code § 10311(e) (california.public.law text)",
+          "cite": "Prob. Code § 10311(e)",
+          "url": "https://california.public.law/codes/probate_code_section_10311",
+          "quote": "the amount of the original bid and any higher offer shall be determined by the court without regard to any of the following"
+        }
+      ]
+    },
+    {
+      "id": "saleconf_written_offer_requirement",
+      "title": "An Increased Bid Must Be a Written, Signed Offer — Oral Bidding in Open Court Is Preliminary Only",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-14",
+      "body": "Probate Code § 10311(a) speaks of 'a written offer to purchase the real property' made to the court at the hearing. Construing the identically worded former § 785, Estate of Sampo (1985) 171 Cal.App.3d 767 framed and answered the question directly: whether the section requires that any overbid be in writing before it may be finally confirmed — 'Yes.' The court recorded that the established practice is to conduct overbidding orally with the judge acting as auctioneer and then reduce the highest bid to a signed writing, and it quoted Estate of Greer (1968) 261 Cal.App.2d 827, 829–830 for the rule that oral bidding in court can only be preliminary to the submission of a written, signed offer. Sampo reversed an order confirming a sale where the successful oral overbidder refused, minutes later, to sign the court's 'Increased bid in open court' form, reasoning that the powers and jurisdiction of the probate courts are wholly statutory and that all persons who appear in probate court are entitled to rely on those procedures. Estate of Barthelmess (1988) 198 Cal.App.3d 728, 740 restated the point, citing Sampo at page 774: only a written, signed offer can be the basis of a confirmed sale.",
+      "gap": "Sampo and Barthelmess construe former Probate Code § 785, the predecessor of § 10311; the recodification is not re-argued here and no post-1990 decision applying § 10311's 'written offer' language was located. Estate of Greer is quoted only as Sampo reproduces it; the Greer opinion itself was not fetched for this document, although the quoted sentence was independently confirmed to appear in CourtListener's separate Greer cluster by an exact-phrase index query (count 4, covering both Sampo clusters, Greer, and one later case). Sampo also reserved a question rather than deciding it, in a footnote: it declined to opine on the propriety of an order confirming a sale of undivided interests in property not subject to the court's jurisdiction. No pin cite is given for that footnote quotation, because in this rendering the footnotes are relocated into a block after the end of the opinion where the star-pagination markers stop tracking, so the printed page on which the footnote appeared cannot be read off the text. Disclosed textual defects in the case record: CourtListener holds two separately sourced renderings of 171 Cal.App.3d 767 under different case names (Estate of Sampo and Sampo v. Frankfurt Group, U.S.A.), and the citation lookup for that volume and page returns HTTP 300 because of it. A word-by-word diff shows the two disagree in both directions: the Harvard-sourced rendering carries scan damage ('Perrero' for 'Ferrero' twice, 'I960)' for '1960)', 'Cal.App. 2d' for 'Cal.App.2d'), while the Lawbox/Columbia rendering names the original purchaser 'Appeal Development Corporation (Appel)' where the Harvard rendering reads 'Appel Development Corporation (Appel)' — the short form used throughout the rest of both texts is 'Appel', so the Lawbox/Columbia reading of that party name appears to be the erroneous one, but with no third copy reachable this was not resolved and neither reading is quoted. The quotes below were checked against both renderings and none touches a damaged passage; the comparison normalized only curly quotation marks and apostrophes, dashes, and reporter-citation spacing, and each quote is stored exactly as the rendering named in its own citation prints it. For California Court of Appeal opinions no second free publisher was reachable from this environment: casetext returned HTTP 410, Justia returned HTTP 403, and anylaw, openjurist, static.case.law and lawserver were all refused at the egress proxy. 'Fetched twice' for this case therefore means two separately sourced renderings hosted by the same publisher (CourtListener), not two publishers.",
+      "citations": [
+        {
+          "case": "Estate of Sampo (Cal. Ct. App. 1985) (CourtListener, Lawbox/Columbia rendering)",
+          "cite": "171 Cal.App.3d 767, 771",
+          "url": "https://www.courtlistener.com/opinion/2127277/estate-of-sampo/",
+          "quote": "Does section 785 require that any overbid be in writing before it may be finally confirmed? Yes."
+        },
+        {
+          "case": "Estate of Sampo (Cal. Ct. App. 1985) (CourtListener, Harvard rendering under the name Sampo v. Frankfurt Group, U.S.A.)",
+          "cite": "171 Cal.App.3d 767, 772",
+          "url": "https://www.courtlistener.com/opinion/5806995/sampo-v-frankfurt-group-usa/",
+          "quote": "Section 785 specifically requires a “written offer.” However, it is apparently the established practice to conduct all overbidding orally, with the judge acting as auctioneer. The highest bid is then put in writing and signed by the buyer."
+        },
+        {
+          "case": "Estate of Greer (1968) 261 Cal.App.2d 827, 829–830, as quoted in Estate of Sampo (CourtListener, Lawbox/Columbia rendering)",
+          "cite": "171 Cal.App.3d 767, 773 (quoting 261 Cal.App.2d at pp. 829–830)",
+          "url": "https://www.courtlistener.com/opinion/2127277/estate-of-sampo/",
+          "quote": "Any oral bidding in court can only be preliminary to the submission of a written, signed offer."
+        },
+        {
+          "case": "Estate of Sampo (Cal. Ct. App. 1985) (CourtListener, Harvard rendering under the name Sampo v. Frankfurt Group, U.S.A.)",
+          "cite": "171 Cal.App.3d 767, 774",
+          "url": "https://www.courtlistener.com/opinion/5806995/sampo-v-frankfurt-group-usa/",
+          "quote": "The powers and jurisdiction of the probate courts are wholly statutory and a probate court must look to express statutes for its procedures."
+        },
+        {
+          "case": "Estate of Sampo (Cal. Ct. App. 1985) — question expressly reserved (CourtListener, Lawbox/Columbia rendering); footnote text, no pin cite available",
+          "cite": "171 Cal.App.3d 767, fn. 3 (no reporter page available; see gap)",
+          "url": "https://www.courtlistener.com/opinion/2127277/estate-of-sampo/",
+          "quote": "We query, but do not opine with respect to, the propriety of an order confirming a sale of undivided interests in property which are not subject to the jurisdiction of the court"
+        },
+        {
+          "case": "Estate of Barthelmess (Cal. Ct. App. 1988) (CourtListener, Lawbox/Columbia rendering)",
+          "cite": "198 Cal.App.3d 728, 740",
+          "url": "https://www.courtlistener.com/opinion/2135836/estate-of-barthelmess/",
+          "quote": "Finally, the law is clear that only a written, signed offer can be the basis of a confirmed sale"
+        }
+      ]
+    },
+    {
+      "id": "saleconf_cash_versus_credit",
+      "title": "When a Higher Offer on Different Cash or Credit Terms May Not Be Considered",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-14",
+      "body": "Probate Code § 10311(d) limits which higher offers the court may look at when the terms differ from those of the sale returned for confirmation. Where the returned sale is on credit and the higher offer is for cash or on credit (whether on the same or different credit terms), or where the returned sale is for cash and the higher offer is on credit, the court may not consider the higher offer unless the personal representative informs the court, in person or by counsel and before confirmation, that the higher offer is acceptable. Estate of Barthelmess (1988) 198 Cal.App.3d 728 applied the identically structured former § 785.1 to a beneficiary who overbid at the hearing in the minimum statutory amount but whose bid was not accompanied by the deposit the notice of sale called for and was conditioned on a continuance to raise the funds; the executor declined the offer, and the Court of Appeal held there was no abuse of discretion in confirming the sale to the third party purchasers. The opinion also treats the notice of sale's own conditions as part of what a bid must comply with.",
+      "gap": "Barthelmess construes former § 785.1, which the opinion sets out in a footnote; § 10311(d) reorganizes that material into a single subdivision and this clause does not assert the two are identical in every respect. The Barthelmess result turned on several grounds at once — the missing deposit, the conditional nature of the bid, the denial of a continuance, the personal representative's refusal, and the absence of any written offer — and this clause does not say which was dispositive or how a court would treat any bid on {{propertyAddress}}. The Harvard-sourced rendering of Barthelmess carries the scan damage described in the confirmation-hearing clause of this document, including 'If was within the court's discretion' for 'It was within the court's discretion' in the same paragraph as the quotation below; the quoted sentences themselves are identical in both renderings after normalizing only curly apostrophes and quotation marks, dashes and reporter-citation spacing. For California Court of Appeal opinions no second free publisher was reachable from this environment: casetext returned HTTP 410, Justia returned HTTP 403, and anylaw, openjurist, static.case.law and lawserver were all refused at the egress proxy. 'Fetched twice' for this case therefore means two separately sourced renderings hosted by the same publisher (CourtListener), not two publishers. Both statutory texts were fetched twice: from the Legislative Counsel's leginfo service and from california.public.law. Those two are not fully independent publishers — each california.public.law page prints a 'Source:' line naming the corresponding leginfo URL — and the gap for each clause says so. The only normalization applied when comparing the two was benign: collapsing runs of whitespace and treating the subdivision-marker line breaks that leginfo runs together (for example 'satisfied:(1) The') as equivalent to the spaced form california.public.law renders. Quotes below are stored exactly as the leginfo text prints them, including its curly apostrophes.",
+      "citations": [
+        {
+          "case": "Cal. Prob. Code § 10311(d) (California Legislative Information text)",
+          "cite": "Prob. Code § 10311(d)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=10311.",
+          "quote": "the court may not consider the higher offer unless the personal representative informs the court in person or by counsel prior to confirmation of sale that the higher offer is acceptable."
+        },
+        {
+          "case": "Estate of Barthelmess (Cal. Ct. App. 1988) (CourtListener, Lawbox/Columbia rendering)",
+          "cite": "198 Cal.App.3d 728, 740",
+          "url": "https://www.courtlistener.com/opinion/2135836/estate-of-barthelmess/",
+          "quote": "Perhaps more important, Wetzel did not accept the overbid as was the personal representative's right under section 785.1."
+        },
+        {
+          "case": "Estate of Barthelmess (Cal. Ct. App. 1988) (CourtListener, Harvard rendering under the name Wetzel v. Mallette)",
+          "cite": "198 Cal.App.3d 728, 740",
+          "url": "https://www.courtlistener.com/opinion/5807310/wetzel-v-mallette/",
+          "quote": "oral bid unaccompanied by the 10 percent deposit did not comport with the conditions of the notice of sale."
+        },
+        {
+          "case": "Estate of Barthelmess (Cal. Ct. App. 1988) (CourtListener, Lawbox/Columbia rendering)",
+          "cite": "198 Cal.App.3d 728, 741",
+          "url": "https://www.courtlistener.com/opinion/2135836/estate-of-barthelmess/",
+          "quote": "In light of these considerations, there was no abuse of discretion in confirming the sale to the third party purchasers."
+        }
+      ]
+    },
+    {
+      "id": "saleconf_order_confirming_findings",
+      "title": "The Findings the Court Must Make in the Order Confirming Sale — and When It Must Order a New Sale Instead",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-14",
+      "body": "Probate Code § 10312 requires, where notice of sale was required, that proof the notice was given be made to the court's satisfaction before a confirming order issues, and that the order itself show the proof was made. Probate Code § 10313(a) then lists six requirements, all of which must appear before the court makes an order confirming the sale to the person making the highest qualifying offer and directing conveyances or assignments: that the will authorized or directed the sale or good reason existed for it; that the § 10312 proof has been made; that the sale was legally made and fairly conducted; that the amount for which the sale is to be confirmed is not disproportionate to the value of the property; that a private sale complied with § 10309; and, where the sale is confirmed to the original bidder, that it does not appear a sum exceeding the original bid by the same 10-percent/5-percent margin, exclusive of the expenses of a new sale, may be obtained. Section 10313(b) provides that the court fixes the agent's or broker's compensation under Article 3 on its own motion or on request. Under § 10313(c), if the subdivision (a) requirements are not satisfied the court shall vacate the sale and order a new sale; and § 10313(d) provides that where a new sale is ordered under § 10313(c) or § 10311(c), notice is given and the new sale conducted in all respects as if no previous sale had taken place.",
+      "gap": "This clause describes what the statute requires of the order; it does not evaluate any petition or predict how {{courtName}} would rule on a sale of {{propertyAddress}}. The § 10313(a)(6) test asks whether a higher sum 'may be obtained' — a forward-looking inquiry distinct from § 10311's response to an offer actually made at the hearing — and no case law construing that phrase in the post-1990 text was located and quoted. Section 10313(a)(1)'s 'good reason existed for the sale' is likewise left unglossed. Probate Code §§ 10315 and 10316 were not fetched or described. Both statutory texts were fetched twice: from the Legislative Counsel's leginfo service and from california.public.law. Those two are not fully independent publishers — each california.public.law page prints a 'Source:' line naming the corresponding leginfo URL — and the gap for each clause says so. The only normalization applied when comparing the two was benign: collapsing runs of whitespace and treating the subdivision-marker line breaks that leginfo runs together (for example 'satisfied:(1) The') as equivalent to the spaced form california.public.law renders. Quotes below are stored exactly as the leginfo text prints them, including its curly apostrophes.",
+      "citations": [
+        {
+          "case": "Cal. Prob. Code § 10313(a) (California Legislative Information text)",
+          "cite": "Prob. Code § 10313(a)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=10313.",
+          "quote": "The court shall make an order confirming the sale to the person making the highest offer that satisfies the requirements of this article, and directing conveyances or assignments or both to be executed, if it appears to the court that all of the following requirements are satisfied"
+        },
+        {
+          "case": "Cal. Prob. Code § 10313(a)(3) (california.public.law text)",
+          "cite": "Prob. Code § 10313(a)(3)",
+          "url": "https://california.public.law/codes/probate_code_section_10313",
+          "quote": "The sale was legally made and fairly conducted."
+        },
+        {
+          "case": "Cal. Prob. Code § 10313(a)(6) (California Legislative Information text)",
+          "cite": "Prob. Code § 10313(a)(6)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=10313.",
+          "quote": "If the sale is confirmed to the original bidder, it does not appear that a sum exceeding the original bid by at least 10 percent more on the first ten thousand dollars ($10,000) of the original bid and 5 percent more on the amount of the original bid in excess of ten thousand dollars ($10,000), exclusive of the expenses of a new sale, may be obtained."
+        },
+        {
+          "case": "Cal. Prob. Code § 10313(c) (california.public.law text)",
+          "cite": "Prob. Code § 10313(c)",
+          "url": "https://california.public.law/codes/probate_code_section_10313",
+          "quote": "If it appears to the court that the requirements of subdivision (a) are not satisfied, the court shall vacate the sale and order a new sale."
+        },
+        {
+          "case": "Cal. Prob. Code § 10312 (California Legislative Information text)",
+          "cite": "Prob. Code § 10312",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=10312.",
+          "quote": "If notice of the sale was required, before an order is made confirming the sale it shall be proved to the satisfaction of the court that notice of the sale was given as required by this article, and the order of confirmation shall show that the proof was made."
+        },
+        {
+          "case": "Cal. Prob. Code § 10313(d) (california.public.law text)",
+          "cite": "Prob. Code § 10313(d)",
+          "url": "https://california.public.law/codes/probate_code_section_10313",
+          "quote": "notice of the new sale shall be given and the new sale shall in all respects be conducted as if no previous sale had taken place."
+        }
+      ]
+    },
+    {
+      "id": "saleconf_conveyance_recording_and_purchaser_default",
+      "title": "The Conveyance That Follows Confirmation, What It Vests, and What Happens If the Purchaser Defaults",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-14",
+      "body": "Probate Code § 10314(a) provides that on confirmation the personal representative executes a conveyance to the purchaser referring to the order confirming the sale and directing the conveyance, and that a certified copy of the order is recorded in the office of the recorder of the county where the property or some portion of it is located. Under § 10314(c), a conveyance made in compliance with that order vests in the purchaser all the right, title and interest the decedent had in the property at death, together with any other or additional interest the estate acquired before the sale by operation of law or otherwise. Where the decedent held a contract to purchase real property rather than title, § 10314(b) and (d) substitute an assignment of the contract. If the purchaser does not perform, Probate Code § 10350(a) allows the court, on the personal representative's petition, to vacate the order of confirmation, order a resale, and award damages to the estate against the purchaser; notice goes to the persons designated by § 1220 and to the buyers and brokers named in the confirming order, except a defaulting purchaser whose written consent is filed first. Section 10350(e) fixes the measure of damages on a resale as the sum of the difference between the contract price of the first sale and the amount paid by the purchaser at the resale, the expenses made necessary by the breach, and other consequential damages.",
+      "gap": "Estate of Sampo (1985) 171 Cal.App.3d 767 arose on the former counterpart of § 10350 (former § 788, quoted in that opinion), and the Court of Appeal held the appeal was not moot notwithstanding that the order of confirmation had been vacated and the property resold, because the estate retained a claim against the defaulting bidder; that mootness holding is noted here without being quoted, and the differences between former § 788's deficiency measure and the three-part measure now in § 10350(e) are not analyzed. This clause does not address Probate Code § 10351, § 10206 (the bond a purchaser of a contract interest may be required to give, referred to in § 10314(b)), recording fees or documentary transfer tax, or title insurance. It does not say what interest {{decedentName}} held in {{propertyAddress}}. Both statutory texts were fetched twice: from the Legislative Counsel's leginfo service and from california.public.law. Those two are not fully independent publishers — each california.public.law page prints a 'Source:' line naming the corresponding leginfo URL — and the gap for each clause says so. The only normalization applied when comparing the two was benign: collapsing runs of whitespace and treating the subdivision-marker line breaks that leginfo runs together (for example 'satisfied:(1) The') as equivalent to the spaced form california.public.law renders. Quotes below are stored exactly as the leginfo text prints them, including its curly apostrophes.",
+      "citations": [
+        {
+          "case": "Cal. Prob. Code § 10314(a) (California Legislative Information text)",
+          "cite": "Prob. Code § 10314(a)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=10314.",
+          "quote": "upon confirmation of the sale, the personal representative shall execute a conveyance to the purchaser which shall refer to the order confirming the sale and directing the conveyance to be executed. A certified copy of the order shall be recorded in the office of the recorder of the county in which the real property or some portion thereof is located."
+        },
+        {
+          "case": "Cal. Prob. Code § 10314(c) (california.public.law text)",
+          "cite": "Prob. Code § 10314(c)",
+          "url": "https://california.public.law/codes/probate_code_section_10314",
+          "quote": "A conveyance made in compliance with the court order confirming the sale and directing the conveyance to be executed vests in the purchaser both of the following"
+        },
+        {
+          "case": "Cal. Prob. Code § 10350(a) (California Legislative Information text)",
+          "cite": "Prob. Code § 10350(a)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=10350.",
+          "quote": "If after court confirmation of sale of real or personal property the purchaser fails to comply with the terms of sale, the court may, on petition of the personal representative, vacate the order of confirmation, order a resale of the property, and award damages to the estate against the purchaser."
+        },
+        {
+          "case": "Cal. Prob. Code § 10350(e)(1) (california.public.law text)",
+          "cite": "Prob. Code § 10350(e)(1)",
+          "url": "https://california.public.law/codes/probate_code_section_10350",
+          "quote": "The difference between the contract price of the first sale and the amount paid by the purchaser at the resale."
+        }
+      ]
+    },
+    {
+      "id": "saleconf_broker_compensation",
+      "title": "How an Agent’s or Broker’s Compensation on a Probate Sale Is Earned, Fixed, and Divided",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-14",
+      "body": "Probate Code § 10150(a) permits the personal representative to contract in writing with a licensed real estate broker to secure a purchaser for estate real property; § 10150(b) makes any such contract binding on the estate only for the amount the court allows under Article 3, and § 10150(c) allows an exclusive right to sell only for periods not exceeding 90 days, each requiring the court's permission on a showing of necessity and advantage to the estate. Probate Code § 10160 conditions the estate's liability for any commission on three things: an actual sale, court confirmation or approval where it is required, and consummation of the sale. Under § 10161(a) the amount is what the court in its discretion determines to be reasonable compensation for the agent's or broker's services to the estate, whether or not there is a contract, and under § 10161(c) it may not exceed any contract amount; § 10161(b) denies compensation altogether to an agent or broker without an exclusive contract unless that agent or broker produced the original bid returned for confirmation or procured the purchaser on a successful increased bid. Sections 10162 and 10165 then divide the compensation: § 10165(b) gives the agent or broker who procured the confirmed purchaser one-half of the compensation on the original bid plus all of it on the increase, with § 10165(c) allocating the other half; and § 10162(a) caps the compensation of the overbidder's broker, where the original bidder was unrepresented, at one-half of the difference between the original and successful bids. Estate of Lopez (1992) 8 Cal.App.4th 317 construed § 10160's consummation requirement, holding that under it a broker's work is not done and the commission is not earned until the transaction is consummated — and therefore that a broker whose license had lapsed when the buyer was procured and the sale confirmed, but was renewed before the sale closed, was licensed when his cause of action arose.",
+      "gap": "Estate of Lopez is a Court of Appeal decision on the licensing question presented by Business and Professions Code § 10136 as applied through Probate Code § 10160; it is quoted here only for what § 10160's consummation condition means, and the Business and Professions Code was not independently fetched for this document. CourtListener holds only one cluster for 8 Cal.App.4th 317, so unlike the two other opinions used in this document there is no second rendering to diff; the three Lopez quotations were instead each confirmed present by exact-phrase index queries against that cluster (cluster_id:2277222), each returning a count of 1, and no query had to be shortened and re-run. That single rendering does carry visible optical-character errors elsewhere in the text — for example 'procures a successful overbidden Probate Code sections 10162-10165' where the sentence plainly ended at 'overbid', and '106 Cal.App, 542' for '106 Cal.App. 542' — and no passage containing one is quoted. Sections 10163, 10164, 10162.5, 10162.6, 10166, 10167 and 10168 were not fetched and are not described; § 10165(a) is subject to § 10162.6, which is not described here. This clause does not say what compensation any agent or broker may claim in {{decedentName}}'s estate. For California Court of Appeal opinions no second free publisher was reachable from this environment: casetext returned HTTP 410, Justia returned HTTP 403, and anylaw, openjurist, static.case.law and lawserver were all refused at the egress proxy. 'Fetched twice' for this case therefore means two separately sourced renderings hosted by the same publisher (CourtListener), not two publishers. Both statutory texts were fetched twice: from the Legislative Counsel's leginfo service and from california.public.law. Those two are not fully independent publishers — each california.public.law page prints a 'Source:' line naming the corresponding leginfo URL — and the gap for each clause says so. The only normalization applied when comparing the two was benign: collapsing runs of whitespace and treating the subdivision-marker line breaks that leginfo runs together (for example 'satisfied:(1) The') as equivalent to the spaced form california.public.law renders. Quotes below are stored exactly as the leginfo text prints them, including its curly apostrophes.",
+      "citations": [
+        {
+          "case": "Cal. Prob. Code § 10160 (California Legislative Information text)",
+          "cite": "Prob. Code § 10160",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=10160.",
+          "quote": "The estate is not liable to an agent, broker, or auctioneer under a contract for the sale of property or for any fee, commission, or other compensation or expenses in connection with a sale of property unless the following requirements are satisfied"
+        },
+        {
+          "case": "Cal. Prob. Code § 10161(a) (california.public.law text)",
+          "cite": "Prob. Code § 10161(a)",
+          "url": "https://california.public.law/codes/probate_code_section_10161",
+          "quote": "whether or not the agent or broker has a contract with the personal representative, the fee, commission, or other compensation of an agent or broker in connection with a sale of property shall be the amount the court, in its discretion, determines to be a reasonable compensation for the services of the agent or broker to the estate."
+        },
+        {
+          "case": "Cal. Prob. Code § 10161(b) (California Legislative Information text)",
+          "cite": "Prob. Code § 10161(b)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=10161.",
+          "quote": "Unless the agent or broker holds a contract granting an exclusive right to sell the property, an agent or broker is not entitled to any fee, commission, or other compensation for services to the estate in connection with a sale except in the following cases"
+        },
+        {
+          "case": "Cal. Prob. Code § 10165(b) (california.public.law text)",
+          "cite": "Prob. Code § 10165(b)",
+          "url": "https://california.public.law/codes/probate_code_section_10165",
+          "quote": "The agent or broker who procured the purchaser to whom the sale is confirmed shall be paid one-half of the compensation on the amount of the original bid and all of the compensation on the difference between the original bid and the amount for which the sale is confirmed."
+        },
+        {
+          "case": "Cal. Prob. Code § 10162(a) (California Legislative Information text)",
+          "cite": "Prob. Code § 10162(a)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=10162.",
+          "quote": "where the bid returned to the court for confirmation is made by a person who is not represented by an agent or broker and the successful bidder is represented by an agent or broker, the compensation of the agent or broker who procured the purchaser to whom the sale is confirmed shall not exceed one-half of the difference between the amount of the bid in the original return and the amount of the successful bid."
+        },
+        {
+          "case": "Cal. Prob. Code § 10150(c) (california.public.law text)",
+          "cite": "Prob. Code § 10150(c)",
+          "url": "https://california.public.law/codes/probate_code_section_10150",
+          "quote": "The contract may grant an exclusive right to sell property for a period not in excess of 90 days if, prior to execution of the contract granting an exclusive right to sell, the personal representative obtains permission of the court to enter into the contract upon a showing of necessity and advantage to the estate."
+        },
+        {
+          "case": "Estate of Lopez (Cal. Ct. App. 1992) (CourtListener)",
+          "cite": "8 Cal.App.4th 317, 323",
+          "url": "https://www.courtlistener.com/opinion/2277222/estate-of-lopez/",
+          "quote": "Under Probate Code section 10160, a broker’s work is not done, and his or her commission is not earned, until the transaction is consummated."
+        },
+        {
+          "case": "Estate of Lopez (Cal. Ct. App. 1992) (CourtListener)",
+          "cite": "8 Cal.App.4th 317, 319",
+          "url": "https://www.courtlistener.com/opinion/2277222/estate-of-lopez/",
+          "quote": "We hold Tong is entitled to the commission because his broker’s license, although lapsed at the time the buyer was procured and the sale confirmed, had been renewed before the sale was consummated."
+        },
+        {
+          "case": "Estate of Lopez (Cal. Ct. App. 1992) (CourtListener)",
+          "cite": "8 Cal.App.4th 317, 322",
+          "url": "https://www.courtlistener.com/opinion/2277222/estate-of-lopez/",
+          "quote": "unless its requirements, including consummation of the sale, were met, Tong was not entitled to a commission from the estate."
+        }
+      ]
+    },
+    {
+      "id": "saleconf_iaea_full_authority_exception",
+      "title": "The Independent Administration of Estates Act Exception: When None of This Applies",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-14",
+      "body": "Probate Code § 10503 is the reason many California estates never see a confirmation hearing. Where the personal representative exercises the authority to sell estate property under the Independent Administration of Estates Act, § 10503 permits sale at public auction or private sale, with or without notice, for such price, for cash or on credit, and on such terms as the personal representative determines — and it states that the requirements applicable to court confirmation of sales of real property do not apply, listing among them publication of notice of sale, court approval of agents' and brokers' commissions, sale at not less than 90 percent of appraised value, and the court's examination into the necessity for the sale, the advantage to the estate and benefit to interested persons, and the personal representative's efforts to obtain the highest and best price reasonably attainable. Both § 10300(a) and § 10308(a), the publication and confirmation provisions, carry an express 'except as provided in Section 10503' carve-out on their face.",
+      "gap": "Section 10503 is expressly 'Subject to the limitations and requirements of this part' — Part 6, the Independent Administration of Estates Act — and this clause does not set out those limitations. In particular it does not address Probate Code § 10501, which lists the actions that still require a court order even under independent administration, the difference between full authority and limited authority (a personal representative with limited authority does not have the power to sell real property under Part 6), or the Notice of Proposed Action machinery in §§ 10580–10592, which the corpus covers in a separate information sheet and which was not re-verified here. Whether {{personalRepresentativeName}} holds any independent administration authority, and of what kind, is not stated by this clause. No case law construing § 10503 was located and quoted. Both statutory texts were fetched twice: from the Legislative Counsel's leginfo service and from california.public.law. Those two are not fully independent publishers — each california.public.law page prints a 'Source:' line naming the corresponding leginfo URL — and the gap for each clause says so. The only normalization applied when comparing the two was benign: collapsing runs of whitespace and treating the subdivision-marker line breaks that leginfo runs together (for example 'satisfied:(1) The') as equivalent to the spaced form california.public.law renders. Quotes below are stored exactly as the leginfo text prints them, including its curly apostrophes.",
+      "citations": [
+        {
+          "case": "Cal. Prob. Code § 10503 (California Legislative Information text)",
+          "cite": "Prob. Code § 10503",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=10503.",
+          "quote": "the requirements applicable to court confirmation of sales of real property (including, but not limited to, publication of notice of sale, court approval of agents’ and brokers’ commissions, sale at not less than 90 percent of appraised value, and court examination into the necessity for the sale, advantage to the estate and benefit to interested persons, and efforts of the personal representative to obtain the highest and best price for the property reasonably attainable), and the requirements applicable to court confirmation of sales of personal property, do not apply to the sale."
+        },
+        {
+          "case": "Cal. Prob. Code § 10300(a) (california.public.law text)",
+          "cite": "Prob. Code § 10300(a)",
+          "url": "https://california.public.law/codes/probate_code_section_10300",
+          "quote": "real property of the estate may be sold only after notice of sale has been published pursuant to Section 6063a of the Government Code"
+        },
+        {
+          "case": "Cal. Prob. Code § 10308(a) (California Legislative Information text)",
+          "cite": "Prob. Code § 10308(a)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=10308.",
+          "quote": "all sales of real property shall be reported to and be confirmed by the court before title to the property passes to the purchaser, whether the sale is a private sale or a public auction sale and notwithstanding that the property is directed by the will to be sold or authority is given in the will to sell the property."
+        }
+      ]
+    },
+    {
+      "id": "saleconf_appealability",
+      "title": "An Order Confirming or Refusing to Confirm a Sale Is Appealable",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-14",
+      "body": "Probate Code § 1300 lists the orders from whose making, or refusal to make, an appeal may be taken in all proceedings governed by the Probate Code. Subdivision (a) covers orders directing, authorizing, approving or confirming the sale, lease, encumbrance, grant of an option, purchase, conveyance or exchange of property; other subdivisions reach orders settling a fiduciary's account, fixing or allowing a fiduciary's or an attorney's compensation, and surcharging, removing or discharging a fiduciary. Estate of Sampo (1985) 171 Cal.App.3d 767 relied on the corresponding former provision, § 1240, subdivision (g), which the opinion sets out as authorizing an appeal from an order 'Directing or authorizing the sale or conveyance or confirming the sale of property,' and held that an appeal from an order of confirmation was not made moot by the later vacation of that order and resale of the property, because a finding that a confirmation of sale had occurred would be binding by way of res judicata in the estate's claim against the defaulting bidder.",
+      "gap": "Probate Code § 1300 in its present form was added by Stats. 1997, ch. 724, § 11 and last amended by Stats. 2001, ch. 417, § 4, effective January 1, 2002 — a decade after Estate of Sampo was decided under former § 1240(g). The Sampo mootness holding is described, not quoted, and this clause does not assert that former § 1240(g) and current § 1300(a) are coextensive. This clause does not address the time to appeal, the effect of an appeal on a confirmed sale or on a purchaser's title, Probate Code §§ 1301–1304 or §§ 1310–1312 (including the power to direct that an order be carried out notwithstanding an appeal), or Code of Civil Procedure provisions on appellate procedure, none of which were fetched. Note that the corpus contains many references to 'Section 1300' that belong to the Corporations Code dissenters'-rights chapter; nothing in those clauses concerns this Probate Code section. Both statutory texts were fetched twice: from the Legislative Counsel's leginfo service and from california.public.law. Those two are not fully independent publishers — each california.public.law page prints a 'Source:' line naming the corresponding leginfo URL — and the gap for each clause says so. The only normalization applied when comparing the two was benign: collapsing runs of whitespace and treating the subdivision-marker line breaks that leginfo runs together (for example 'satisfied:(1) The') as equivalent to the spaced form california.public.law renders. Quotes below are stored exactly as the leginfo text prints them, including its curly apostrophes.",
+      "citations": [
+        {
+          "case": "Cal. Prob. Code § 1300 (California Legislative Information text)",
+          "cite": "Prob. Code § 1300",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PROB&sectionNum=1300.",
+          "quote": "In all proceedings governed by this code, an appeal may be taken from the making of, or the refusal to make, any of the following orders"
+        },
+        {
+          "case": "Cal. Prob. Code § 1300(a) (california.public.law text)",
+          "cite": "Prob. Code § 1300(a)",
+          "url": "https://california.public.law/codes/probate_code_section_1300",
+          "quote": "Directing, authorizing, approving, or confirming the sale, lease, encumbrance, grant of an option, purchase, conveyance, or exchange of property."
+        }
+      ]
+    },
+    {
+      "id": "saleconf_acknowledgment",
+      "title": "Acknowledgment — Court Confirmation of Sale Reference",
+      "kind": "drafting",
+      "body": "I, {{recipientName}}, acknowledge that on {{acknowledgmentDate}} I received this information sheet describing the California statutes and published opinions that govern the court-confirmed sale of real property from a decedent's estate, in connection with the estate of {{decedentName}}, case number {{courtCaseNumber}} in {{courtName}}, {{countyOfFiling}}. I understand that it is a general description of Probate Code Chapter 18 and related provisions, that it has not been prepared with reference to the facts of the sale of {{propertyAddress}} or to my own position in this estate, that it does not tell me what to do, and that it is not a substitute for advice from a lawyer licensed in California.\n\nSignature: ______________________________    Date: {{acknowledgmentDate}}\n\nPrinted name: {{recipientName}}"
     }
   ]
 }
