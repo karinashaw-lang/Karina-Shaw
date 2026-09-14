@@ -126352,6 +126352,300 @@
       "title": "Questions This Information Sheet Does Not Address",
       "kind": "drafting",
       "body": "The authorities described above concern covert visual monitoring and recording of employees. They do not settle a number of adjacent questions, and {{companyName}} records here that this sheet says nothing about them.\n\nThe sheet does not describe the monitoring of e-mail, files, network traffic, or website use; the recording or interception of telephone or electronic communications, which California addresses through separate statutes covered elsewhere in this corpus; location or vehicle tracking; audio recording outside the rooms named in Labor Code section 435; searches of desks, lockers, bags, or devices; biometric or genetic information; or the notice obligations a California employer may owe about personal information it collects.\n\nIt also does not decide anything about the arrangement described in this document. Whether the observation or recording of {{workAreaDescription}} intrudes upon a reasonable expectation of privacy of {{employeeName}} or anyone else, whether any such intrusion would be highly offensive or an egregious breach of social norms, and how a court would weigh any countervailing interest, are questions the authorities above frame rather than answer. Nothing in this sheet is a legal opinion about the position of {{positionTitle}} or about any monitoring {{companyName}} conducts or contemplates."
+    },
+    {
+      "id": "tuse_purpose_and_scope",
+      "title": "Purpose and Scope of This Information Sheet",
+      "kind": "drafting",
+      "body": "This sheet describes the First Amendment defense that California courts apply to a right of publicity claim: the transformative use test announced by the California Supreme Court in Comedy III Productions, Inc. v. Gary Saderup, Inc. (2001) 25 Cal.4th 387 and applied by that court in Winter v. DC Comics (2003) 30 Cal.4th 881, together with the two earlier decisions on which Comedy III built, Zacchini v. Scripps-Howard Broadcasting Co. (1977) 433 U.S. 562 and Guglielmi v. Spelling-Goldberg Productions (1979) 25 Cal.3d 860.\n\nIt is a survey of what those opinions say. It sets out the elements of the publicity claim itself only so far as the constitutional decisions describe them; this project's separate information sheets on Civil Code sections 3344 and 3344.1 and on model and publicity releases cover the statutory claim, its exceptions, its remedies, and consent.\n\nThis sheet does not evaluate {{workDescription}}, does not say whether the use of the identity of {{personDepicted}} in that work is or is not transformative, and does not predict how any court would rule. It records the authorities and stops there. It is prepared by {{preparerName}} as of {{reviewDate}} for reference only, and it is not legal advice."
+    },
+    {
+      "id": "tuse_work_at_issue",
+      "title": "Recording the Work and the Identity at Issue",
+      "kind": "drafting",
+      "body": "For reference alongside the authorities set out below, this sheet records the following, as supplied by {{preparerName}}.\n\nThe work said to be at issue: {{workDescription}}.\n\nThe person whose name, voice, signature, photograph, or likeness is said to appear in or on that work: {{personDepicted}}.\n\nDate of this reference copy: {{reviewDate}}.\n\nNothing in this description is a finding. The cases described below turn on the content of the work as the court views it, and the descriptions recorded here have not been tested against any of those authorities."
+    },
+    {
+      "id": "tuse_zacchini_federal_baseline",
+      "title": "The Federal Baseline: Zacchini and the Performer's Entire Act",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-14",
+      "body": "The United States Supreme Court has decided one right of publicity case. In Zacchini v. Scripps-Howard Broadcasting Co. (1977) 433 U.S. 562, a television station filmed a human cannonball act at a county fair and broadcast the whole of it on a news program. The Ohio Supreme Court had held the broadcast privileged; the United States Supreme Court reversed.\n\nThe Court described the state interest behind a right of publicity as an interest in the performer's proprietary stake in the act, and distinguished it from the reputational interest that underlies a false light claim. It reasoned that broadcasting the entire act threatened the economic value of the performance, and it held that the First and Fourteenth Amendments do not immunize a broadcaster who airs a performer's entire act without consent.\n\nThe Court described its own holding narrowly, and the case concerned the appropriation of a complete performance rather than the use of a name or likeness in an expressive work. Comedy III later cited Zacchini for the proposition that a literal depiction or imitation of a celebrity for commercial gain, adding no significant expression, does not displace the state's interest.",
+      "gap": "Zacchini was fetched from two genuinely independent publishers plus a third: the Government Publishing Office's scan of the bound United States Reports (govinfo, collection USREPORTS, volume 433, granule 433-562), Cornell University's Legal Information Institute, and CourtListener. The govinfo PDF was extracted twice, with pypdf and with pdfminer.six, and the quoted spans are identical in both extractions. One artifact was normalized: the Cornell rendering wraps lines inside the first quoted sentence and uses straight rather than typographic apostrophes, so the match there required collapsing whitespace and folding apostrophe glyphs; the govinfo and CourtListener renderings match the quote exactly as written.\n\nA defect in the official scan is disclosed rather than corrected. In the govinfo bound-volume PDF the majority's own statement of the holding is split across the 574/575 page break by the running head 'ZACCHINI v. SCRIPPS-HOWARD BROADCASTING CO. 575 562 Opinion of the Court', so no contiguous verbatim copy of that sentence exists in the majority opinion as that file extracts. The contiguous copy quoted here appears in the same file in Justice Powell's dissent, which reproduces the sentence in full and pin cites it as 'Ante, at 574-575'; the pin cite given here follows the dissent's own citation. The same govinfo scan carries visible optical-character-recognition damage elsewhere in the case ('cert, denied' for 'cert. denied', 'a, decidedly beneficial effect', 'Pow el l, J., dissenting', 'lastminute'), none of it inside the spans quoted here.\n\nZacchini construes the First and Fourteenth Amendments, not California's statutes. It does not decide what the California right of publicity covers, and it does not decide any question about a work that is less than a performer's whole act.",
+      "citations": [
+        {
+          "case": "Zacchini v. Scripps-Howard Broadcasting Co.",
+          "cite": "433 U.S. 562, 573 (1977)",
+          "url": "https://www.govinfo.gov/content/pkg/USREPORTS-433/pdf/USREPORTS-433-562.pdf",
+          "quote": "is in protecting the proprietary interest of the individual in his act in part to encourage such entertainment"
+        },
+        {
+          "case": "Zacchini v. Scripps-Howard Broadcasting Co.",
+          "cite": "433 U.S. 562, 574-575 (1977)",
+          "url": "https://www.law.cornell.edu/supremecourt/text/433/562",
+          "quote": "Wherever the line in particular situations is to be drawn between media reports that are protected and those that are not, we are quite sure that the First and Fourteenth Amendments do not immunize the media when they broadcast a performer’s entire act without his consent."
+        },
+        {
+          "case": "Zacchini v. Scripps-Howard Broadcasting Co.",
+          "cite": "433 U.S. 562, 575 (1977)",
+          "url": "https://www.govinfo.gov/content/pkg/USREPORTS-433/pdf/USREPORTS-433-562.pdf",
+          "quote": "The broadcast of a film of petitioner’s entire act poses a substantial threat to the economic value of that performance."
+        }
+      ]
+    },
+    {
+      "id": "tuse_guglielmi_expressive_works",
+      "title": "Guglielmi: A Fictionalized Portrayal, and the Status of Chief Justice Bird's Concurrence",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-14",
+      "body": "Two years after Zacchini, the California Supreme Court decided Guglielmi v. Spelling-Goldberg Productions (1979) 25 Cal.3d 860, which concerned a television film about Rudolph Valentino presented as a romantic fiction. Chief Justice Bird, concurring, surveyed the decisions that had considered the right of publicity against expressive activity and wrote that, whether the publication was factual and biographical or fictional, the right of publicity had not been held to outweigh the value of free expression. The concurrence added that where the underlying work was protected, it was of no moment that advertising for the film may have increased its profitability.\n\nComedy III treated that concurrence, and not the Guglielmi majority, as the controlling statement of California law on the point. A footnote in Comedy III explains that the concurrence was signed by two other justices and that its principles were endorsed by a fourth who declined to join the opinion on a separate ground, and states that Chief Justice Bird's views in Guglielmi commanded the support of a majority of the court; Comedy III then says that all its later references to Guglielmi are to the Chief Justice's opinion.",
+      "gap": "The sentence describing the survey of decisions was fetched from CourtListener and independently confirmed in a federal district court opinion published by govinfo, MPS Entertainment, LLC v. Abercrombie & Fitch Stores, Inc. (S.D. Fla.), package USCOURTS-flsd-1_11-cv-24110, which reproduces the span verbatim; that PDF was extracted with pypdf and with pdfminer.six and both extractions contain it. That is a reproduction by an out-of-state federal district court, not a second publication of Guglielmi itself, and it is offered only as independent corroboration of the words.\n\nThe second Guglielmi quotation, about advertising for the film, and the Comedy III footnote quotation about the concurrence's support, were each found in only one reachable publisher, CourtListener. Every non-CourtListener free publisher of California case law reachable from this environment was tried; Justia, FindLaw, Google Scholar, case.law, Casetext, Leagle, the Internet Archive and vLex are all blocked at the network layer, the California Courts opinion archive returns HTTP 404 for a 2001 docket number, and govinfo full-text searches for both phrases returned zero results. So for those two quotations 'fetched twice' means two fetches of one publisher's text, and nothing more.\n\nThe Comedy III footnote is quoted without a page pin cite. CourtListener relocates the opinion's footnotes into a block after the disposition, and the star pagination inside that block marks where the footnote was called rather than where the footnote text sits, so this sheet gives no page for it. Guglielmi itself is an opinion of the California Supreme Court, but the language quoted is from a concurring opinion, and Comedy III's characterization of that concurrence's support is the basis on which it is described here as controlling.",
+      "citations": [
+        {
+          "case": "Guglielmi v. Spelling-Goldberg Productions",
+          "cite": "25 Cal.3d 860, 872 (1979) (conc. opn. of Bird, C. J.)",
+          "url": "https://www.courtlistener.com/opinion/1431474/guglielmi-v-spelling-goldberg-productions/",
+          "quote": "the right of publicity has not been held to outweigh the value of free expression"
+        },
+        {
+          "case": "Guglielmi v. Spelling-Goldberg Productions",
+          "cite": "25 Cal.3d 860, 873 (1979) (conc. opn. of Bird, C. J.)",
+          "url": "https://www.courtlistener.com/opinion/1431474/guglielmi-v-spelling-goldberg-productions/",
+          "quote": "it is of no moment that the advertisements may have increased the profitability of the film"
+        },
+        {
+          "case": "Comedy III Productions, Inc. v. Gary Saderup, Inc.",
+          "cite": "25 Cal.4th 387, fn. 7 (2001) (no page pin cite given; see gap)",
+          "url": "https://www.courtlistener.com/opinion/2570714/comedy-iii-productions-inc-v-gary-saderup-inc/",
+          "quote": "commanded the support of the majority of the court"
+        }
+      ]
+    },
+    {
+      "id": "tuse_comedy3_posture_former_section_990",
+      "title": "The Statute Comedy III Construed Was Former Civil Code Section 990, Renumbered as Section 3344.1 While Review Was Pending",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-14",
+      "body": "Comedy III arose from charcoal drawings of The Three Stooges, reproduced on lithographs and on T-shirts and sold by the artist. The Three Stooges were deceased personalities, so the claim was brought under the descendible statutory right of publicity enacted in 1984, which at the time of trial and of the appeal was numbered Civil Code section 990.\n\nA footnote in the opinion records that after review was granted the Legislature renumbered that statute as Civil Code section 3344.1, and amended its wording in several respects, and that the court was interpreting the former statute and would refer to it throughout as section 990. The trial court and the Court of Appeal had ruled for the right of publicity holder, and the California Supreme Court affirmed.\n\nThe constitutional analysis that follows in the opinion is framed against that statute. The companion statute for living persons, Civil Code section 3344, is described in the opinion as the model on which the 1984 statute was based, and the opinion notes that many key provisions of the two schemes were identical.",
+      "gap": "The footnote quoted here was found in only one reachable publisher, CourtListener; a govinfo full-text search for the sentence returned zero results, and no other free publisher of California case law was reachable from this environment. It is quoted without a page pin cite because CourtListener relocates the opinion's footnotes into a block after the disposition and the star markers inside that block no longer track the page on which the footnote text appears.\n\nThe CourtListener rendering of Comedy III carries visible optical-character-recognition damage, disclosed here rather than corrected: it prints 'violation of section 990 arid related business torts' for 'and', 'Kennard, I.,' for 'Kennard, J.,' in the concurrence line, and 'subd. (n)(l)' with a lowercase letter l for the numeral 1. None of that damage is inside any span quoted in this sheet.\n\nWhat the court said about the renumbering is a statement about the statute as it stood before the 1999 amendments. This sheet does not carry forward any holding about the current text of section 3344.1, and it says nothing about whether the transformative use analysis applies in the same terms to a claim under section 3344 for a living person; Comedy III did not decide that question, and no case deciding it was retrieved for this sheet.",
+      "citations": [
+        {
+          "case": "Comedy III Productions, Inc. v. Gary Saderup, Inc.",
+          "cite": "25 Cal.4th 387, fn. 1 (2001) (no page pin cite given; see gap)",
+          "url": "https://www.courtlistener.com/opinion/2570714/comedy-iii-productions-inc-v-gary-saderup-inc/",
+          "quote": "After we granted review, the Legislature renumbered the statute as section 3344.1 of the Civil Code."
+        }
+      ]
+    },
+    {
+      "id": "tuse_comedy3_economic_right_not_censorship",
+      "title": "Comedy III's Starting Premise: The Right of Publicity Is an Economic Right, Not a Right of Censorship",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-14",
+      "body": "Before announcing a test, Comedy III set out a premise it said any test must incorporate: that the right of publicity cannot, consistent with the First Amendment, be a right to control a celebrity's image by censoring disagreeable portrayals. Once a person has come forward into the limelight, the opinion states, the First Amendment dictates that the right to comment on, parody, lampoon, and make other expressive uses of the celebrity image must be given broad scope.\n\nFrom that the court drew what it called the necessary implication: that the right of publicity is essentially an economic right. What the holder possesses, the opinion says, is not a right of censorship but a right to prevent others from misappropriating the economic value generated by the celebrity's fame through the merchandising of the name, voice, signature, photograph, or likeness of the celebrity.\n\nThat framing governs the rest of the opinion. The question the court then asks is not whether a depiction is flattering or unflattering, but whether the value the defendant captures is the celebrity's or the defendant's own.",
+      "gap": "The quoted span was fetched from CourtListener and independently confirmed in the Third Circuit's published opinion in Hart v. Electronic Arts, Inc., 717 F.3d 141 (3d Cir. 2013), as published by govinfo (package USCOURTS-ca3-11-03750), which reproduces it and pin cites it as Comedy III, 21 P.3d at 807. Two normalizations were applied to reach the match and are disclosed here: the pypdf extraction of that PDF inserts a space inside the word 'economic', which pdfminer.six does not, so whitespace was collapsed and interior spaces disregarded; and the font in that PDF maps the apostrophe to a double-low-reversed-comma glyph, so apostrophe glyphs were folded before comparison. The CourtListener text matches the quote exactly as written.\n\nHart is a federal court of appeals opinion applying California law, and it is used here only as an independent publisher's reproduction of the words of a California Supreme Court opinion, not as authority on what California law is.\n\nThis clause states a premise, not a rule of decision. Comedy III's premise about censorship does not itself resolve any case, and the opinion says so by immediately asking how courts may distinguish protected from unprotected expression.",
+      "citations": [
+        {
+          "case": "Comedy III Productions, Inc. v. Gary Saderup, Inc.",
+          "cite": "25 Cal.4th 387, 403 (2001)",
+          "url": "https://www.courtlistener.com/opinion/2570714/comedy-iii-productions-inc-v-gary-saderup-inc/",
+          "quote": "not a right of censorship, but a right to prevent others from misappropriating the economic value generated by the celebrity’s fame"
+        }
+      ]
+    },
+    {
+      "id": "tuse_comedy3_borrowing_copyright_factor_one",
+      "title": "Where the Test Came From: One Factor of the Copyright Fair Use Analysis, Not the Whole of It",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-14",
+      "body": "Comedy III considered and rejected the wholesale importation of the copyright fair use defense into right of publicity law, but took from it the first statutory factor, the purpose and character of the use, and in particular the Campbell v. Acuff-Rose Music, Inc. formulation asking whether and to what extent a new work is transformative. The opinion states that the inquiry into whether a work is transformative is necessarily at the heart of any judicial attempt to square the right of publicity with the First Amendment.\n\nThe court gave a reason grounded in the interest the right of publicity protects. Where a work contains significant transformative elements, the opinion says, it is not only especially worthy of First Amendment protection but is also less likely to interfere with the economic interest the right of publicity protects, because parodies and other distortions of a celebrity figure are not good substitutes, from the fan's viewpoint, for conventional depictions.\n\nThe borrowing is partial by design. The opinion declines to carry over the fourth fair use factor, the effect of the use on the potential market, on the ground that a separate market inquiry would not usefully supplement the test it was announcing.",
+      "gap": "The quotation beginning 'when a work contains significant transformative elements' was fetched from CourtListener and independently confirmed in the Ninth Circuit's en banc-panel opinion in In re NCAA Student-Athlete Name & Likeness Licensing Litigation (Keller), as published by govinfo (package USCOURTS-ca9-10-15387), which reproduces it verbatim and pin cites it as Comedy III, 21 P.3d at 808; that PDF was extracted with pypdf and with pdfminer.six and both extractions contain the span exactly. No normalization was needed.\n\nThe sentence about the inquiry being at the heart of the attempt to square the two bodies of law was found in only one reachable publisher, CourtListener. A govinfo full-text search for that sentence returned zero results, and no other free publisher of California case law was reachable from this environment, so for that quotation 'fetched twice' means two fetches of a single publisher.\n\nA scope warning belongs here. The transformative use inquiry described in this sheet is a First Amendment defense to a right of publicity claim. It is not the copyright fair use analysis, and this project's separate copyright fair use information sheet describes that statutory analysis, including the Supreme Court's 2023 treatment of the first fair use factor in Andy Warhol Foundation for the Visual Arts, Inc. v. Goldsmith. No decision applying Warhol to a California right of publicity claim was retrieved or read for this sheet, and nothing here should be read as saying how the two lines of authority interact.",
+      "citations": [
+        {
+          "case": "Comedy III Productions, Inc. v. Gary Saderup, Inc.",
+          "cite": "25 Cal.4th 387, 404 (2001) (no pin cite verified against a second publisher; see gap)",
+          "url": "https://www.courtlistener.com/opinion/2570714/comedy-iii-productions-inc-v-gary-saderup-inc/",
+          "quote": "This inquiry into whether a work is “transformative” appears to us to be necessarily at the heart of any judicial attempt to square the right of publicity with the First Amendment."
+        },
+        {
+          "case": "Comedy III Productions, Inc. v. Gary Saderup, Inc.",
+          "cite": "25 Cal.4th 387, 405 (2001)",
+          "url": "https://www.courtlistener.com/opinion/2570714/comedy-iii-productions-inc-v-gary-saderup-inc/",
+          "quote": "when a work contains significant transformative elements, it is not only especially worthy of First Amendment protection, but it is also less likely to interfere with the economic interest protected by the right of publicity"
+        }
+      ]
+    },
+    {
+      "id": "tuse_comedy3_core_inquiry",
+      "title": "The Core Inquiry: Raw Material or Sum and Substance",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-14",
+      "body": "Comedy III states the inquiry in two ways. One asks whether the celebrity likeness is one of the raw materials from which an original work is synthesized, or whether the depiction or imitation of the celebrity is the very sum and substance of the work in question. The other asks whether a product containing a celebrity's likeness is so transformed that it has become primarily the defendant's own expression rather than the celebrity's likeness. The opinion adds that by expression it means expression of something other than the likeness of the celebrity.\n\nThe opinion is explicit that the transformative elements or creative contributions that earn First Amendment protection are not confined to parody, and that they can take many forms, from factual reporting to fictionalized portrayal and from heavy-handed lampooning to subtle social criticism.\n\nWinter later quoted both formulations as the statement of the test and applied them.",
+      "gap": "The 'raw materials' span was fetched from CourtListener's copy of Comedy III and independently confirmed in the federal district court opinion in Hart v. Electronic Arts, Inc. (D.N.J.) as published by govinfo (package USCOURTS-njd-3_09-cv-05990, granule 1), which reproduces the full sentence; both pypdf and pdfminer.six extractions of that PDF contain it exactly. It is also reproduced verbatim in CourtListener's separate copy of Winter, a different opinion from the same publisher.\n\nA genuine defect in the reported federal case law is disclosed here rather than passed over. Comedy III reads 'whether a product containing a celebrity's likeness is so transformed'. The Third Circuit's published opinion in Hart v. Electronic Arts, Inc. (govinfo package USCOURTS-ca3-11-03750) block quotes the passage as 'whether the product containing a celebrity's likeness is so transformed' - one word different from the opinion it is quoting. Both extractions of the Hart PDF carry 'the'. A govinfo full-text search of the United States Courts Opinions collection returns four documents containing the phrase 'whether a product containing a celebrity' and three containing 'whether the product containing a celebrity'; the four with 'a' include the Sixth Circuit's opinion in Moore v. The Weinstein Company, LLC and the Northern District of California's opinion in Keller v. Electronic Arts Inc., while the three with 'the' are Hart itself and two later Eastern District of Pennsylvania decisions, Hamilton v. Speight and MLB Players Inc. v. DraftKings, Inc. The reading that matches the California Supreme Court's own text is 'a', and the variant appears to have propagated from Hart within the Third Circuit. The quotation given below is taken with 'a' and is confirmed against govinfo's copy of the Sixth Circuit's opinion in Moore, an independent publisher.\n\nNo normalization was applied to either quoted span; both match their sources exactly as written.",
+      "citations": [
+        {
+          "case": "Comedy III Productions, Inc. v. Gary Saderup, Inc.",
+          "cite": "25 Cal.4th 387, 406 (2001)",
+          "url": "https://www.courtlistener.com/opinion/2570714/comedy-iii-productions-inc-v-gary-saderup-inc/",
+          "quote": "from which an original work is synthesized, or whether the depiction or imitation of the celebrity is the very sum and substance of the work in question"
+        },
+        {
+          "case": "Comedy III Productions, Inc. v. Gary Saderup, Inc.",
+          "cite": "25 Cal.4th 387, 406 (2001), quoted in Moore v. The Weinstein Co., LLC (6th Cir.)",
+          "url": "https://www.govinfo.gov/content/pkg/USCOURTS-ca6-12-05715/pdf/USCOURTS-ca6-12-05715-0.pdf",
+          "quote": "whether a product containing a celebrity’s likeness is so transformed that it has become primarily the defendant’s own expression rather than the celebrity’s likeness"
+        },
+        {
+          "case": "Hart v. Electronic Arts, Inc. (3d Cir.)",
+          "cite": "717 F.3d 141 (3d Cir. 2013) (slip op. as published by govinfo; no reporter pin cite given, see gap)",
+          "url": "https://www.govinfo.gov/content/pkg/USCOURTS-ca3-11-03750/pdf/USCOURTS-ca3-11-03750-0.pdf",
+          "quote": "whether the product containing a celebrity’s likeness is so transformed"
+        }
+      ]
+    },
+    {
+      "id": "tuse_comedy3_quality_and_quantity",
+      "title": "Two Cautions: Artistic Quality Is Not the Measure, and Skill Does Not Save a Literal Depiction",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-14",
+      "body": "Comedy III attached two cautions to the inquiry. The first is that in deciding whether a work is transformative, courts are not to be concerned with the quality of the artistic contribution, because vulgar forms of expression fully qualify for First Amendment protection. The second runs the other way: a literal depiction of a celebrity, even if accomplished with great skill, may still be subject to a right of publicity challenge.\n\nThe opinion then characterizes the inquiry as in a sense more quantitative than qualitative, asking whether the literal and imitative elements or the creative elements predominate in the work.\n\nWinter reproduced both cautions and the quantitative-qualitative sentence as part of its summary of the Comedy III test.",
+      "gap": "The sentence about a literal depiction was fetched from CourtListener's copy of Comedy III and from CourtListener's copy of Winter, which reproduces it verbatim. Those are two different opinions but a single publisher, and a govinfo full-text search for the sentence returned zero results, so no genuinely independent publisher was reached for it.\n\nA defect in the publisher's copy of Comedy III is disclosed rather than silently corrected. CourtListener's Comedy III text prints 'even if -accomplished with great skill', with a stray hyphen, and elsewhere prints 'significant trans-formative elements'; both are line-wrap hyphenation artifacts that survived into the running text. CourtListener's copy of Winter, quoting the same sentence of Comedy III, prints 'even if accomplished with great skill' without the hyphen. The quotation given below removes those two hyphens; that is the only normalization applied, and the unhyphenated reading is the one confirmed in Winter.\n\nThe 'more quantitative than qualitative' sentence was independently confirmed in the Third Circuit's opinion in Hart v. Electronic Arts, Inc. as published by govinfo, in both the pypdf and the pdfminer.six extractions, with no normalization. The first caution, about artistic quality, is described in the body but is not quoted, because the only reachable verbatim source for it is CourtListener.",
+      "citations": [
+        {
+          "case": "Comedy III Productions, Inc. v. Gary Saderup, Inc.",
+          "cite": "25 Cal.4th 387, 407 (2001)",
+          "url": "https://www.courtlistener.com/opinion/2570714/comedy-iii-productions-inc-v-gary-saderup-inc/",
+          "quote": "a literal depiction of a celebrity, even if accomplished with great skill, may still be subject to a right of publicity challenge"
+        },
+        {
+          "case": "Comedy III Productions, Inc. v. Gary Saderup, Inc.",
+          "cite": "25 Cal.4th 387, 407 (2001)",
+          "url": "https://www.courtlistener.com/opinion/2570714/comedy-iii-productions-inc-v-gary-saderup-inc/",
+          "quote": "The inquiry is in a sense more quantitative than qualitative, asking whether the literal and imitative or the creative elements predominate in the work."
+        }
+      ]
+    },
+    {
+      "id": "tuse_comedy3_subsidiary_inquiry",
+      "title": "The Subsidiary Inquiry for Close Cases: Where the Work's Value Comes From",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-14",
+      "body": "Comedy III offers a further question that it says courts may find useful in determining whether a work is sufficiently transformative, particularly in close cases: whether the marketability and economic value of the challenged work derive primarily from the fame of the celebrity depicted.\n\nThe opinion states the consequence in one direction only. If that question is answered in the negative, there would generally be no actionable right of publicity, and where the value of the work comes principally from some source other than the celebrity's fame - from the creativity, skill, and reputation of the artist - sufficient transformative elements may be presumed. If the question is answered in the affirmative, the opinion says, it does not follow that the work is without First Amendment protection, because it may still be a transformative work.\n\nWinter restated that asymmetry in the same terms.",
+      "gap": "The quoted question was fetched from CourtListener and independently confirmed in the Third Circuit's opinion in Hart v. Electronic Arts, Inc. as published by govinfo (package USCOURTS-ca3-11-03750), which reproduces it in a footnote and pin cites it as Comedy III, 21 P.3d at 810; both the pypdf and the pdfminer.six extractions of that PDF contain the span exactly. No normalization was applied.\n\nThe consequences described in the second paragraph of the body are drawn from the sentences that follow in the same passage of CourtListener's Comedy III text and from CourtListener's Winter, and are stated in the body rather than quoted, because no independent publisher's reproduction of those particular sentences was reached.\n\nThe opinion calls this a subsidiary inquiry and confines it to close cases. It does not state a threshold, a percentage, or any method for determining where a work's value comes from, and no case supplying one was retrieved for this sheet.",
+      "citations": [
+        {
+          "case": "Comedy III Productions, Inc. v. Gary Saderup, Inc.",
+          "cite": "25 Cal.4th 387, 407 (2001)",
+          "url": "https://www.courtlistener.com/opinion/2570714/comedy-iii-productions-inc-v-gary-saderup-inc/",
+          "quote": "does the marketability and economic value of the challenged work derive primarily from the fame of the celebrity depicted?"
+        }
+      ]
+    },
+    {
+      "id": "tuse_comedy3_affirmative_defense",
+      "title": "How the Court Summarized the Rule: An Affirmative Defense Stated in the Alternative",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-14",
+      "body": "Comedy III closes its statement of the test by summarizing it. When an artist is faced with a right of publicity challenge to his or her work, the opinion says, the artist may raise as an affirmative defense that the work is protected by the First Amendment inasmuch as it contains significant transformative elements, or that the value of the work does not derive primarily from the celebrity's fame.\n\nTwo features of that sentence are on its face. The defense is described as an affirmative defense, and it is stated in the alternative, so that either branch is offered as sufficient.\n\nWinter quoted this summary as the rule and then applied it.",
+      "gap": "The quoted span was fetched from CourtListener's Comedy III and independently confirmed in the Northern District of California's opinion in Davis v. Electronic Arts, Inc. as published by govinfo (package USCOURTS-cand-3_10-cv-03328, granule 6), which reproduces it and pin cites it as Comedy III, 25 Cal. 4th 387, 407 (2001); both the pypdf and the pdfminer.six extractions of that PDF contain the span exactly. It is also reproduced verbatim in CourtListener's copy of Winter.\n\nOne normalization is disclosed. CourtListener's Comedy III text prints 'significant trans-formative elements' with a line-wrap hyphen inside the word; the hyphen was removed to produce the quotation, and the unhyphenated reading is the one carried by both the govinfo reproduction and CourtListener's Winter.\n\nA related textual point is recorded rather than smoothed over. The Comedy III sentence as CourtListener prints it reads 'he or she may raise as affirmative defense', without the article 'an'. CourtListener's Winter quotes the same sentence with a bracketed insertion, 'may raise as [an] affirmative defense', which is how a later opinion signals that it is supplying a word the original omits. The quotation below begins after that point and so takes no position on the article; the body supplies 'an' in its own prose, not inside the quotation.",
+      "citations": [
+        {
+          "case": "Comedy III Productions, Inc. v. Gary Saderup, Inc.",
+          "cite": "25 Cal.4th 387, 407 (2001)",
+          "url": "https://www.courtlistener.com/opinion/2570714/comedy-iii-productions-inc-v-gary-saderup-inc/",
+          "quote": "protected by the First Amendment inasmuch as it contains significant transformative elements or that the value of the work does not derive primarily from the celebrity’s fame"
+        }
+      ]
+    },
+    {
+      "id": "tuse_comedy3_three_stooges_result",
+      "title": "How Comedy III Came Out: Charcoal Drawings of The Three Stooges",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-14",
+      "body": "Applying its own test, the Comedy III court examined the drawings and could discern no significant transformative or creative contribution. The artist's skill, the opinion says, was manifestly subordinated to the overall goal of creating literal, conventional depictions of The Three Stooges so as to exploit their fame. Turning to the subsidiary inquiry, the court found that the marketability and economic value of the work derived primarily from the fame of the celebrities depicted, and that it could perceive no transformative elements that would require protection.\n\nThe opinion is careful about what that result does not mean. It states that the court does not hold that all reproductions of celebrity portraits are unprotected, and it gives Andy Warhol's silkscreens of celebrity images as an example of work that, through distortion and manipulation of context, may well be entitled to First Amendment protection. It also rejects the trial court's and the Court of Appeal's rationale that reproductions made to be sold for profit are categorically outside the First Amendment, observing that a published book does not receive less protection than the original manuscript because it is one of many copies.\n\nThe judgment of the Court of Appeal was affirmed.",
+      "gap": "The phrase 'discern no significant transformative or creative contribution' was fetched from CourtListener and independently confirmed in the Third Circuit's opinion in Hart v. Electronic Arts, Inc. as published by govinfo, in both the pypdf and pdfminer.six extractions, with no normalization. The second quotation, naming Saderup, was found in only one reachable publisher, CourtListener; a govinfo full-text search for 'the marketability and economic value of Saderup' returned zero results, so for that quotation 'fetched twice' means two fetches of one publisher's text.\n\nThe statements in the second paragraph of the body about Warhol, about reproductions, and about the published book are drawn from CourtListener's Comedy III text and are described rather than quoted, because no independent publisher's reproduction of those sentences was reached.\n\nThis is the disposition of one record on stipulated facts. The parties waived a jury and waived the right to put on evidence, and the case was submitted on a stipulation. The opinion resolves the constitutional question for those drawings on that record, and it says nothing about any other work.",
+      "citations": [
+        {
+          "case": "Comedy III Productions, Inc. v. Gary Saderup, Inc.",
+          "cite": "25 Cal.4th 387, 409 (2001)",
+          "url": "https://www.courtlistener.com/opinion/2570714/comedy-iii-productions-inc-v-gary-saderup-inc/",
+          "quote": "discern no significant transformative or creative contribution"
+        },
+        {
+          "case": "Comedy III Productions, Inc. v. Gary Saderup, Inc.",
+          "cite": "25 Cal.4th 387, 409 (2001)",
+          "url": "https://www.courtlistener.com/opinion/2570714/comedy-iii-productions-inc-v-gary-saderup-inc/",
+          "quote": "the marketability and economic value of Saderup’s work derives primarily from the fame of the celebrities depicted"
+        }
+      ]
+    },
+    {
+      "id": "tuse_winter_application",
+      "title": "Winter v. DC Comics: The Same Test, the Opposite Result",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-14",
+      "body": "Winter v. DC Comics (2003) 30 Cal.4th 881 applied Comedy III to comic books featuring two villainous half-human, half-worm characters named Johnny and Edgar Autumn, drawn with long white hair and pale features, which the musicians Johnny and Edgar Winter said evoked them.\n\nThe court reviewed the comic books, attached a representative page to the opinion, and said it could readily ascertain that they were not just conventional depictions of the plaintiffs but contained significant expressive content other than the plaintiffs' mere likenesses. The books did not depict the plaintiffs literally; the plaintiffs were merely part of the raw materials from which the comic books were synthesized; to the extent the drawings resembled them at all, they were distorted for purposes of lampoon, parody, or caricature; and the characters were cartoon figures in a larger story that was itself quite expressive.\n\nThe court added that the portrayals did not greatly threaten the plaintiffs' right of publicity, because fans who wanted pictures of the Winters would find the drawings of the Autumn brothers unsatisfactory as a substitute for conventional depictions. It concluded that the comic books were transformative and entitled to First Amendment protection, and that the Court of Appeal had erred in finding triable issues of fact.",
+      "gap": "Both quoted spans were fetched from CourtListener's copy of Winter and independently confirmed in the Third Circuit's opinion in Hart v. Electronic Arts, Inc. as published by govinfo (package USCOURTS-ca3-11-03750), which block quotes the passage and pin cites it as Winter, 69 P.3d at 479; both the pypdf and pdfminer.six extractions of that PDF contain both spans exactly. The first span is additionally reproduced verbatim in the Ninth Circuit's Keller opinion and in the District of New Jersey's Hart opinion, both as published by govinfo. No normalization was applied to either quotation.\n\nThose federal reproductions cite the Pacific Reporter. The pin cites given here are to the official California Reports and were read off the star pagination in CourtListener's text: the quoted passage falls between the markers for pages 890 and 891.\n\nWinter is a decision about particular comic books on a particular record, reached by the court's own inspection of the work. It does not hold that comic books, or drawings, or works of fiction generally, are transformative, and the opinion's reasoning is tied to what the court saw on the page.",
+      "citations": [
+        {
+          "case": "Winter v. DC Comics",
+          "cite": "30 Cal.4th 881, 890 (2003)",
+          "url": "https://www.courtlistener.com/opinion/2595311/winter-v-dc-comics/",
+          "quote": "not just conventional depictions of plaintiffs but contain significant expressive content other than plaintiffs’ mere likenesses"
+        },
+        {
+          "case": "Winter v. DC Comics",
+          "cite": "30 Cal.4th 881, 890 (2003)",
+          "url": "https://www.courtlistener.com/opinion/2595311/winter-v-dc-comics/",
+          "quote": "plaintiffs are merely part of the raw materials from which the comic books were synthesized. To the extent the drawings of the Autumn brothers resemble plaintiffs at all, they are distorted for purposes of lampoon, parody, or caricature."
+        }
+      ]
+    },
+    {
+      "id": "tuse_winter_form_marketing_and_matter_of_law",
+      "title": "Three Things Winter Said Do Not Matter: Literary Category, Marketing, and the Need for a Trial",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-14",
+      "body": "Winter addressed and rejected three arguments about how the test should be run.\n\nFirst, literary category. The plaintiffs argued that the comic books did not technically qualify as a parody of them. The court answered that the distinction between parody and other forms of literary expression is irrelevant to the Comedy III transformative test, that it does not matter what precise literary category the work falls into, and that what matters is whether the work is transformative, not whether it is parody or satire or caricature or serious social commentary or any other specific form of expression.\n\nSecond, marketing. The plaintiffs pointed to evidence that the defendants had traded on their likenesses and reputations to generate interest in the series. The court called that irrelevant to whether the comic books were constitutionally protected, stating that the question is whether the work is transformative, not how it is marketed, and citing Guglielmi for the proposition that where the work itself is protected, advertising that increases its profitability is of no moment.\n\nThird, the need for a trial. Noting that protracted litigation would chill the exercise of First Amendment rights, the court stated that, as in Comedy III, courts can often resolve the question as a matter of law simply by viewing the work in question and, if necessary, comparing it to an actual likeness of the person portrayed.",
+      "gap": "The sentence about literary category was fetched from CourtListener's Winter and independently confirmed in the Third Circuit's opinion in Hamilton v. Speight as published by govinfo (package USCOURTS-ca3-19-03495), in both the pypdf and pdfminer.six extractions, with no normalization; that opinion is marked 'NOT PRECEDENTIAL' on its face and is used here only as an independent publisher's reproduction of the words of a California Supreme Court opinion, not as authority.\n\nThe span about marketing was independently confirmed in the Third Circuit's Hart opinion as published by govinfo, in both extractions, with no normalization; it is quoted here beginning at 'whether', because Hart's reproduction begins mid-sentence and the capitalized opening word of Winter's own sentence is therefore not a common substring.\n\nThe sentence about resolving the question as a matter of law was found in only one reachable publisher, CourtListener; a govinfo full-text search for it returned zero results, so for that quotation 'fetched twice' means two fetches of one publisher's text. What the court said is that courts can often resolve the question that way, not that they must or always may; the opinion states it as an observation about the cases, in a passage about the chilling effect of protracted litigation.\n\nA negative result is recorded here. A CourtListener search restricted to the California Supreme Court for the phrase 'Comedy III Productions' returned five opinions: Comedy III itself, Winter, DVD Copy Control Ass'n, Inc. v. Bunner (2003), Lyle v. Warner Brothers Television Productions (2006), and Serova v. Sony Music Entertainment (2022). Only Comedy III and Winter were retrieved and read for this sheet; what the other three say about Comedy III was not examined, and that search is not a substitute for a citator.",
+      "citations": [
+        {
+          "case": "Winter v. DC Comics",
+          "cite": "30 Cal.4th 881, 891 (2003)",
+          "url": "https://www.courtlistener.com/opinion/2595311/winter-v-dc-comics/",
+          "quote": "What matters is whether the work is transformative, not whether it is parody or satire or caricature or serious social commentary or any other specific form of expression."
+        },
+        {
+          "case": "Winter v. DC Comics",
+          "cite": "30 Cal.4th 881, 891 (2003)",
+          "url": "https://www.courtlistener.com/opinion/2595311/winter-v-dc-comics/",
+          "quote": "whether the work is transformative, not how it is marketed"
+        },
+        {
+          "case": "Winter v. DC Comics",
+          "cite": "30 Cal.4th 881, 891 (2003)",
+          "url": "https://www.courtlistener.com/opinion/2595311/winter-v-dc-comics/",
+          "quote": "courts can often resolve the question as a matter of law simply by viewing the work in question"
+        }
+      ]
+    },
+    {
+      "id": "tuse_questions_not_addressed",
+      "title": "Questions This Information Sheet Does Not Address",
+      "kind": "drafting",
+      "body": "The authorities above concern one defense to one kind of claim. {{preparerName}} records here that this sheet says nothing about a number of adjacent questions.\n\nIt does not describe the elements, exceptions, remedies, or limitation periods of the statutory right of publicity under Civil Code sections 3344 and 3344.1, or of the California common law right of publicity; it does not describe consent or releases; it does not address trademark, false endorsement, or Lanham Act claims; it does not address copyright, copyright preemption, or the separate transformative use question that arises under the copyright fair use statute; it does not address the anti-SLAPP statute, which is frequently the procedural vehicle in which the defense described here is raised; it does not address defamation, false light, or misappropriation of trade secrets; and it does not address the digital replica and artificial intelligence statutes enacted in California in recent sessions. Several of those subjects are covered by this project's other information sheets.\n\nIt also decides nothing about {{workDescription}} or about the identity of {{personDepicted}}. Whether that work contains significant transformative elements, whether the likeness is raw material or the sum and substance of it, where the work's marketability and economic value come from, and how a court would weigh any of that, are questions the authorities above do not answer for any particular work, and this sheet does not answer them either. As of {{reviewDate}} the cases described here are the ones that were retrieved, read, and verified; later authority may exist that was not."
     }
   ]
 }
