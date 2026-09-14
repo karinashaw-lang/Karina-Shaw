@@ -38424,5 +38424,74 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "third_party_joinder_family_law_info_sheet",
+    "title": "Joinder of a Third Party (Claimant) in a California Family Law Case — Information Sheet",
+    "description": "Information about who other than the two parties may be made a party to a California family law case: Family Code section 2021 and its delegation to the Judicial Council, rule 5.24 of the California Rules of Court (claimant definition, who may seek joinder, form FL-371, mandatory and permissive standards, summons FL-375), Bianka M. v. Superior Court (2018) 5 Cal.5th 1004 placing the rule inside Code of Civil Procedure section 389, Glade v. Glade (1995) and Babcock v. Superior Court (1994) on joining people who hold or claim community property, and the separate clerk-entered track for employee benefit plans under Family Code sections 2060 through 2074 and rule 5.29.",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "joinclm_declaration",
+      "joinclm_section_2021",
+      "joinclm_rule_524_scope_and_claimant",
+      "joinclm_who_may_seek",
+      "joinclm_application_and_forms",
+      "joinclm_mandatory_joinder",
+      "joinclm_permissive_joinder",
+      "joinclm_procedure_after_order",
+      "joinclm_bianka_joinder_framework",
+      "joinclm_property_claimant_glade",
+      "joinclm_babcock_gift_of_community_funds",
+      "joinclm_plan_joinder_statutes",
+      "joinclm_plan_after_joinder",
+      "joinclm_open_questions_and_renumbering",
+      "joinclm_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "partyOneName",
+        "label": "First party's full legal name",
+        "placeholder": "e.g., Rosalind Amaya Okonkwo",
+        "required": true
+      },
+      {
+        "id": "partyTwoName",
+        "label": "Other party's full legal name",
+        "placeholder": "e.g., Teodoro Okonkwo",
+        "required": true
+      },
+      {
+        "id": "claimantName",
+        "label": "Name of the nonparty (claimant) whose joinder is in question",
+        "placeholder": "e.g., Okonkwo Family Revocable Trust",
+        "required": true
+      },
+      {
+        "id": "matterDescription",
+        "label": "The proceeding this sheet accompanies",
+        "placeholder": "e.g., the pending dissolution proceeding and the division of the community estate",
+        "required": true
+      },
+      {
+        "id": "countyOfFiling",
+        "label": "County of the superior court",
+        "placeholder": "e.g., Sacramento County",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date Signed",
+        "placeholder": "e.g., January 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, State",
+        "placeholder": "e.g., Sacramento, California",
+        "required": true
+      }
+    ]
   }
 ]
