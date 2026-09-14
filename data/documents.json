@@ -38424,5 +38424,61 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "state_civil_service_appointment_info_sheet",
+    "title": "State Civil Service Appointment: Merit Examinations, Eligible Lists, Certification, and Probation — Information Sheet",
+    "description": "Explains how a position in the California state civil service is filled: the Article VII merit-and-competitive-examination mandate and its reproduction by the Supreme Court in Professional Engineers v. Department of Transportation; the State Civil Service Act's purpose section; the free competitive examination and eligible-list provisions of Government Code sections 18900 and 18930; the grounds in section 18935 for refusing to examine an applicant or withdrawing a name from an eligible list; appointment from employment lists and certification of the three highest ranks under sections 19050 and 19057.1; the veterans' preference top-rank rule of section 18973.1; the constitutional nine-month ceiling on temporary appointment; the probationary period and rejection during it under sections 19170 and 19173; Ferdig v. State Personnel Board on an appointment made contrary to the civil service laws and the statute enacted after it, section 19257.5; and Miller v. State of California on public employment being held by statute rather than by contract. This corpus's existing state civil service document covers disciplinary proceedings and separation, not appointment, and no existing document addresses examinations, eligible lists, certification, veterans' preference, or probation.",
+    "categories": [
+      "Hiring"
+    ],
+    "clauseOrder": [
+      "civsvcapt_declaration",
+      "civsvcapt_constitutional_merit_mandate",
+      "civsvcapt_act_purpose_and_equitable_treatment",
+      "civsvcapt_examinations_and_eligible_lists",
+      "civsvcapt_withholding_and_withdrawal_from_the_list",
+      "civsvcapt_certification_and_the_three_ranks",
+      "civsvcapt_veterans_preference",
+      "civsvcapt_temporary_appointment_limits",
+      "civsvcapt_probationary_period",
+      "civsvcapt_appointment_contrary_to_the_civil_service_laws_ferdig",
+      "civsvcapt_good_faith_mistake_statute",
+      "civsvcapt_statutory_not_contractual",
+      "civsvcapt_scope_note",
+      "civsvcapt_closing_signature"
+    ],
+    "fields": [
+      {
+        "id": "applicantName",
+        "label": "Applicant's or appointee's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "classTitle",
+        "label": "Civil service class or examination title",
+        "placeholder": "Associate Governmental Program Analyst",
+        "required": true
+      },
+      {
+        "id": "appointingAgency",
+        "label": "Appointing agency, board, or department",
+        "placeholder": "California Department of Example Services",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 14, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, state",
+        "placeholder": "Sacramento, California",
+        "required": true
+      }
+    ]
   }
 ]
