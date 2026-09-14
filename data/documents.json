@@ -38119,5 +38119,68 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "live_testimony_family_law_hearings_info_sheet",
+    "title": "Live Testimony at Family Law Hearings (Family Code Section 217; Elkins v. Superior Court) — Information Sheet",
+    "description": "Information about when a California family court must receive live testimony: the text of Family Code section 217 and the bill that added it, the civil-procedure baseline of section 210, the California Supreme Court's decision in Elkins v. Superior Court (2007) 41 Cal.4th 1337 that prompted the statute, California Rules of Court, rule 5.113 and its six good-cause factors, and the two published Court of Appeal decisions construing section 217 — In re Marriage of Swain (2018) and In re Marriage of George & Deamon (2019) — including the question they left open.",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "livetest_declaration",
+      "livetest_section_217_text",
+      "livetest_ab939_digest",
+      "livetest_family_code_210",
+      "livetest_elkins_hearsay_holding",
+      "livetest_elkins_trial_vs_postjudgment",
+      "livetest_elkins_policy_and_task_force",
+      "livetest_rule_5113_purpose_and_factors",
+      "livetest_rule_5113_findings_children_witness_lists",
+      "livetest_swain_legislative_history_and_holding",
+      "livetest_swain_open_question",
+      "livetest_george_deamon_securing_live_testimony",
+      "livetest_george_deamon_good_cause_finding",
+      "livetest_information_to_gather",
+      "livetest_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "partyOneName",
+        "label": "First party's full legal name",
+        "placeholder": "e.g., Dana Aoki Whitfield",
+        "required": true
+      },
+      {
+        "id": "partyTwoName",
+        "label": "Other party's full legal name",
+        "placeholder": "e.g., Marcus Ellery Whitfield",
+        "required": true
+      },
+      {
+        "id": "hearingMatter",
+        "label": "The proceeding or hearing this sheet accompanies",
+        "placeholder": "e.g., the request for order on child support set for hearing",
+        "required": true
+      },
+      {
+        "id": "countyOfFiling",
+        "label": "County of the superior court",
+        "placeholder": "e.g., Alameda County",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date Signed",
+        "placeholder": "e.g., January 1, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City, State",
+        "placeholder": "e.g., Oakland, California",
+        "required": true
+      }
+    ]
   }
 ]
