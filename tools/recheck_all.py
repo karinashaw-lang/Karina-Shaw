@@ -114,10 +114,12 @@ def extract_pdf(path):
     # MARK, as well as a plain straight quote). A real double quote does not
     # appear silently inside one word with no space around it, so this is a
     # safe, narrow substitution: any double-quote-family character sitting
-    # word-internal -> straight apostrophe.
+    # word-internal -> straight apostrophe. The character before it can be a
+    # digit, not just a letter: a statute-section possessive like "662's"
+    # hits this the same way a word like "court's" does.
     dq = '"“”‟„'
     for t in texts:
-        v = re.sub(rf'(?<=[a-zA-Z])[{dq}](?=[a-zA-Z])', "'", t)
+        v = re.sub(rf'(?<=[a-zA-Z0-9])[{dq}](?=[a-zA-Z])', "'", t)
         if v not in variants: variants.append(v)
     return variants
 
