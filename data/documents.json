@@ -39135,5 +39135,68 @@
         "required": false
       }
     ]
+  },
+  {
+    "id": "tax_defaulted_property_sale_info_sheet",
+    "title": "Tax-Defaulted Property Sales and the Tax Collector's Deed (Rev. & Tax. Code §§ 3691-3731, 4674-4675) — Information Sheet",
+    "description": "An informational sheet on California's sale of tax-defaulted real property under Part 6 of Division 1 of the Revenue and Taxation Code: when the tax collector's power of sale arises under Sections 3691 and 3692, the notice required by Sections 3701 and 3702, the redemption cutoff in Section 3707, the deed and its conclusive-evidence effect under Sections 3708 and 3711, what Section 3712 conveys and the encumbrances it excepts, Leiper v. Gallegos on a recorded oil and gas lease as a restriction of record, the excess proceeds fund and claim procedure in Sections 4674 and 4675 with Marion Drive and Carloss, the one-year limits in Sections 3725 and 3726 as construed in Mayer v. L&B Real Estate, and rescission by a board of supervisors under Section 3731.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "taxdefsale_about",
+      "taxdefsale_power_of_sale",
+      "taxdefsale_notice_of_sale",
+      "taxdefsale_redemption_cutoff",
+      "taxdefsale_deed_and_conclusive_effect",
+      "taxdefsale_free_of_encumbrances",
+      "taxdefsale_exceptions_to_3712",
+      "taxdefsale_leiper_restrictions",
+      "taxdefsale_excess_proceeds_statute",
+      "taxdefsale_marion_drive_priority",
+      "taxdefsale_carloss_title_of_record",
+      "taxdefsale_limitations",
+      "taxdefsale_mayer_undisturbed_possession",
+      "taxdefsale_rescission",
+      "taxdefsale_ack"
+    ],
+    "fields": [
+      {
+        "id": "propertyAddress",
+        "label": "Property address",
+        "placeholder": "123 Main St, Springfield, CA",
+        "required": true
+      },
+      {
+        "id": "assessorParcelNumber",
+        "label": "Assessor's parcel number",
+        "placeholder": "063-0-190-045",
+        "required": true
+      },
+      {
+        "id": "countyName",
+        "label": "County",
+        "placeholder": "Ventura",
+        "required": true
+      },
+      {
+        "id": "recordOwnerName",
+        "label": "Name of the person of interest or record owner",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date prepared",
+        "placeholder": "September 15, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state",
+        "placeholder": "Sacramento, California",
+        "required": true
+      }
+    ]
   }
 ]
