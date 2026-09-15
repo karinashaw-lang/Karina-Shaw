@@ -39135,5 +39135,62 @@
         "required": false
       }
     ]
+  },
+  {
+    "id": "purported_partner_liability_info_sheet",
+    "title": "Liability of a Purported Partner — When Someone Who Is Not a Partner Is Held Liable as One (Corp. Code §§ 16306(a), 16307(c)–(e), 16308; Armato v. Baden; J. C. Wattenbarger & Sons v. Sanders; Moen v. Art’s Cafe; Inglewood Teachers Assn. v. PERB) — Information Sheet",
+    "description": "Background information on Cal. Corp. Code § 16308, the purported-partner section of the California Uniform Partnership Act of 1994 — the statute that imposes partner-like liability on a person who is not a partner at all, because a representation of partnership was made or consented to and someone relied on it. Covers the three elements on the face of subdivision (a), the broader rule for representations made “in a public manner”, the two different measures of liability, the agency effect on those who consented under subdivision (b), the two filing-based carve-outs in subdivisions (c) and (d), the closing negative rule in subdivision (e), the contrast with actual-partner liability under § 16306(a), the judgment-enforcement rules § 16307(e) expressly extends to purported-partner obligations, and the California decisions on ostensible partnership — including Armato v. Baden, the only published California appellate opinion located that cites § 16308, and two misquotations found in the published record. A companion to this project's General Partnership Agreement, Joint Ventures and Statement of Partnership Authority documents, which address partnerships formed by actual co-owners rather than liability imposed on non-partners.",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "purpart_purpose_declaration",
+      "purpart_statutory_rule",
+      "purpart_public_manner",
+      "purpart_measure_of_liability",
+      "purpart_agency_effect",
+      "purpart_filings_do_not_create_liability",
+      "purpart_negative_rule_and_enactment",
+      "purpart_neighbouring_sections",
+      "purpart_armato_the_one_case",
+      "purpart_armato_holding",
+      "purpart_the_test_and_a_misquotation",
+      "purpart_names_listed_insufficient",
+      "purpart_equitable_estoppel_roots",
+      "purpart_worksheet",
+      "purpart_closing_note"
+    ],
+    "fields": [
+      {
+        "id": "personName",
+        "label": "Name of the person said to have been held out as a partner",
+        "placeholder": "Dana Ruiz",
+        "required": true
+      },
+      {
+        "id": "businessName",
+        "label": "Name of the business or firm involved",
+        "placeholder": "Harbor Lane Builders",
+        "required": true
+      },
+      {
+        "id": "representationDescribed",
+        "label": "The representation of partnership, described",
+        "placeholder": "name listed on the shop door and on invoices",
+        "required": true
+      },
+      {
+        "id": "claimantName",
+        "label": "Name of the person who dealt with the business",
+        "placeholder": "Coastal Supply Co.",
+        "required": false
+      },
+      {
+        "id": "preparedDate",
+        "label": "Date this sheet was prepared",
+        "placeholder": "January 5, 2027",
+        "required": false
+      }
+    ]
   }
 ]
