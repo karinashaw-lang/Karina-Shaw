@@ -38946,5 +38946,68 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "estate_tax_proration_beneficiaries_info_sheet",
+    "title": "Proration of Estate Taxes Among Beneficiaries (Prob. Code §§ 20100–20125, 20210–20211; Estate of Armstrong; Estate of Malpas; Estate of Wathen; Estate of Hughes) — Information Sheet",
+    "description": "Explains who bears the estate tax once its amount is known: Probate Code Division 10's default rule of equitable proration among all persons interested in the estate, the definitions that tie that class to the federal gross estate rather than the probate estate, the value-received formula, the two exceptions for a specific direction in a written instrument and for contrary federal law, the rule of construction that ambiguities are resolved in favor of apportionment and the admissibility of extrinsic evidence, the corpus rule for life estates and other temporary interests, the personal representative's duty to recover from recipients of non-probate property and the reproration of what cannot be collected, the right of reimbursement and subrogation between recipients, the optional judicial proration proceeding and its notice and summons requirements, the exclusion of beneficiaries' future income taxes, and the parallel chapter for generation-skipping transfer taxes.",
+    "categories": [
+      "Estate Planning"
+    ],
+    "clauseOrder": [
+      "taxpro_scope_and_limits",
+      "taxpro_default_rule_equitable_proration",
+      "taxpro_persons_interested_defined",
+      "taxpro_proration_formula",
+      "taxpro_specific_direction_exception",
+      "taxpro_ambiguity_and_extrinsic_evidence",
+      "taxpro_federal_law_exception",
+      "taxpro_credits_deductions_interest",
+      "taxpro_temporary_interests_corpus_rule",
+      "taxpro_recovery_from_nonprobate_recipients",
+      "taxpro_reimbursement_and_subrogation",
+      "taxpro_court_determination_optional",
+      "taxpro_modification_and_income_tax_exclusion",
+      "taxpro_gst_parallel_chapter",
+      "taxpro_recorded_negatives_and_limits"
+    ],
+    "fields": [
+      {
+        "id": "decedentName",
+        "label": "Name of the decedent whose estate tax is being allocated",
+        "placeholder": "Margaret C. Alvarado",
+        "required": true
+      },
+      {
+        "id": "countyOfFiling",
+        "label": "County whose superior court is administering (or could administer) the estate",
+        "placeholder": "Alameda County",
+        "required": false
+      },
+      {
+        "id": "personalRepresentativeName",
+        "label": "Executor or administrator charged with paying the estate tax",
+        "placeholder": "Dana Okonkwo",
+        "required": false
+      },
+      {
+        "id": "nonprobateRecipientName",
+        "label": "Person or entity receiving property outside probate that is in the federal gross estate",
+        "placeholder": "the trustee of the Alvarado Family Trust",
+        "required": false
+      },
+      {
+        "id": "preparerName",
+        "label": "Name of the person completing this information sheet",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "preparationDate",
+        "label": "Date this information sheet was completed",
+        "placeholder": "September 15, 2026",
+        "required": true
+      }
+    ]
   }
 ]
