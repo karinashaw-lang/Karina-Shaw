@@ -38833,5 +38833,62 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "ip_security_interest_perfection_info_sheet",
+    "title": "Security Interests in Intellectual Property — Where a Lien on a Patent or Copyright Is Perfected — Information Sheet",
+    "description": "Explains which recording system governs a security interest in intellectual property: California Commercial Code Division 9’s treatment of intellectual property as a general intangible and its default financing-statement rule; the federal-preemption step-back in section 9109(c)(1) and the substitute-compliance rule in section 9311; the Copyright Act’s treatment of a mortgage or hypothecation as a transfer of copyright ownership, its recordation and constructive-notice provisions, and its priority rules for conflicting transfers; the Ninth Circuit’s split between registered copyrights (Copyright Office) and unregistered copyrights (state filing) in In re World Auxiliary Power Co.; its holding in In re Cybernetic Services that a patent security interest is perfected by state filing rather than PTO recording; the debtor-location rule for where to file; section 9408’s override of anti-assignment terms and its protection of the counterparty’s trade secrets; and the bankruptcy trustee’s status as a hypothetical lien creditor.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "ipsec_scope_and_limits",
+      "ipsec_general_intangible_category",
+      "ipsec_default_rule_file_a_financing_statement",
+      "ipsec_federal_preemption_stepback",
+      "ipsec_compliance_with_federal_statute_substitutes",
+      "ipsec_copyright_security_interest_is_a_transfer",
+      "ipsec_copyright_recordation_constructive_notice",
+      "ipsec_copyright_conflicting_transfers_priority",
+      "ipsec_registered_and_unregistered_copyrights",
+      "ipsec_patent_register_and_recording_clause",
+      "ipsec_patent_security_interest_not_an_assignment",
+      "ipsec_where_to_file_debtor_location",
+      "ipsec_anti_assignment_terms_and_confidential_information",
+      "ipsec_bankruptcy_hypothetical_lien_creditor",
+      "ipsec_not_covered_and_acknowledgment"
+    ],
+    "fields": [
+      {
+        "id": "debtorName",
+        "label": "Intellectual property owner granting the security interest (debtor)",
+        "placeholder": "Northsound Avionics, Inc.",
+        "required": true
+      },
+      {
+        "id": "securedPartyName",
+        "label": "Lender or other secured party",
+        "placeholder": "Harbor Line Capital, LLC",
+        "required": true
+      },
+      {
+        "id": "ipDescription",
+        "label": "Intellectual property offered as collateral",
+        "placeholder": "U.S. Patent No. 7,123,456 and the software copyrights in the FlightLog source code",
+        "required": true
+      },
+      {
+        "id": "preparerName",
+        "label": "Name of the person completing this information sheet",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "March 4, 2026",
+        "required": true
+      }
+    ]
   }
 ]
