@@ -65,6 +65,20 @@ them yields ";4. Names". The script now accepts a quote if either spelling
 matches. Retry with a fresh session and check normalization before reporting
 a defect.
 
+## wave_agent_prompt.md
+
+The canonical prompt for a corpus-expansion worker, one per category per wave.
+Was previously retyped from memory into every `Agent` call, which is exactly
+the drift risk `validate_corpus.py` exists to prevent for the corpus itself —
+so it is versioned here instead. Notably fixes the shared-scratchpad
+collision: earlier waves told each agent to "use a private directory named
+for yourself," which is a convention, not a guarantee, and one agent's
+`build.py` was in fact overwritten mid-run by another agent's file of the
+same name in the shared session scratchpad. The fix is structural rather than
+a naming rule: every agent already has its own git worktree that no other
+agent can see, so the template now says to use that, not the scratchpad, for
+every temporary file.
+
 ## recheck_all.py
 
 ```

@@ -97,19 +97,55 @@ def extract_pdf(path):
     return texts + [t for t in stripped if t not in texts]
 
 
-def fetch(url, host):
-    """Candidate texts for a URL. A list, because a PDF yields two."""
-    cmd = ['curl', '-s', '-L', '--max-time', '90', '-A', UA]
+def fetch(url, host, retries=3):
+    """Candidate texts for a URL. A list, because a PDF yields two.
+
+    CourtListener rate-limits anonymous requests and returns 429, or an empty
+    202 while a page is being generated. Every wave-expansion agent this
+    project has run has had to ride these out with a sleep-and-retry loop;
+    treating a 429 body as "the page has no statutory text" would report a
+    rate limit as a broken citation, which is exactly the kind of tool bug
+    this script exists to avoid inflicting on the corpus. On repeated 429s
+    this gives up and returns the sentinel ['__RATE_LIMITED__'] rather than
+    an empty list, so the caller can record an honest "untested", not a
+    false EMPTY or MISMATCH.
+    """
+    cmd = ['curl', '-s', '-o', '/dev/null', '-w', '%{http_code}', '-A', UA]
     if 'leginfo' in host:
         cmd += ['-b', JAR, '-c', JAR]
     if 'courtlistener' in host:
         cmd += ['-H', 'Referer: https://www.courtlistener.com/',
                 '-H', 'Accept: text/html,application/xhtml+xml']
+
+    def status_of(target_cmd):
+        try:
+            return subprocess.run(target_cmd, capture_output=True, text=True,
+                                  timeout=90).stdout.strip()
+        except Exception:
+            return ''
+
+    if 'courtlistener' in host:
+        backoff = [30, 90, 180]
+        for attempt in range(retries + 1):
+            code = status_of(cmd + ['-L', '--max-time', '90', url])
+            if code == '429':
+                if attempt < retries:
+                    time.sleep(backoff[min(attempt, len(backoff) - 1)])
+                    continue
+                return ['__RATE_LIMITED__']
+            break  # any other status: fall through to the real fetch below
+
+    fetch_cmd = ['curl', '-s', '-L', '--max-time', '90', '-A', UA]
+    if 'leginfo' in host:
+        fetch_cmd += ['-b', JAR, '-c', JAR]
+    if 'courtlistener' in host:
+        fetch_cmd += ['-H', 'Referer: https://www.courtlistener.com/',
+                      '-H', 'Accept: text/html,application/xhtml+xml']
     if url.lower().endswith('.pdf') or 'pdf' in url.lower():
         tmp = '/tmp/recheck_fetch.pdf'
         subprocess.run(['rm', '-f', tmp])
         try:
-            subprocess.run(cmd + ['-o', tmp, url], capture_output=True, timeout=180)
+            subprocess.run(fetch_cmd + ['-o', tmp, url], capture_output=True, timeout=180)
         except Exception:
             return []
         if not os.path.exists(tmp) or os.path.getsize(tmp) < 1000:
@@ -120,7 +156,7 @@ def fetch(url, host):
             return [open(tmp, 'rb').read().decode('utf-8', 'replace')]
         return extract_pdf(tmp)
     try:
-        return [subprocess.run(cmd + [url], capture_output=True, text=True,
+        return [subprocess.run(fetch_cmd + [url], capture_output=True, text=True,
                                timeout=90).stdout]
     except Exception:
         return []
@@ -175,10 +211,15 @@ def main():
             seed_leginfo()
             time.sleep(1)
             bodies = fetch(url, host)
-        best = max((len(b) for b in bodies), default=0)
-        joined = '\n'.join(bodies)
+        rate_limited = bodies == ['__RATE_LIMITED__']
+        best = 0 if rate_limited else max((len(b) for b in bodies), default=0)
+        joined = '' if rate_limited else '\n'.join(bodies)
         for cid, quote, cite in by_url[url]:
-            if best < 500:
+            if rate_limited:
+                # A 429 that survived backoff is not evidence about the
+                # citation either way — record it as untested, not failed.
+                status = 'RATE_LIMITED'
+            elif best < 500:
                 status = 'EMPTY'
             elif 'Please Select from the List below' in joined:
                 # No statutory text on the page at all: the citation does not
