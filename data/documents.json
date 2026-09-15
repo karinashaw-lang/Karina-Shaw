@@ -38676,6 +38676,57 @@
     ]
   },
   {
+    "id": "responsible_person_tax_liability_info_sheet",
+    "title": "Personal Liability of Owners, Officers, and Managers for a Business’s Unpaid Sales, Payroll, and Federal Trust Fund Taxes (Rev. & Tax. Code § 6829; Unemp. Ins. Code § 1735; 26 U.S.C. §§ 6671–6672; State Bd. of Equalization v. Wirick; Cavanagh v. California Unemployment Ins. Appeals Bd.) — Information Sheet",
+    "description": "States what California and federal law provide about the statutory route — distinct from alter ego liability and from a buyer’s successor withholding duty — by which individuals become personally liable for taxes a business collected or withheld and failed to pay over: Revenue and Taxation Code § 6829 for sales and use tax (who it reaches, the termination/dissolution/abandonment trigger, the period-of-control limit and the tax-reimbursement precondition, the statutory definition of willfulness, and the three-year and eight-year deadlines, including the changes made by Stats. 2024, ch. 499, § 15 (SB 1528)); State Board of Equalization v. Wirick (2001) 93 Cal.App.4th 411 holding that former officers are covered, identifying the limitation periods that apply, rejecting a vagueness challenge, and contrasting the sales-tax and payroll-tax statutes; Unemployment Insurance Code § 1735, which is not conditioned on the end of the business; Cavanagh v. California Unemployment Insurance Appeals Board (2004) 118 Cal.App.4th 83 on how such an assessment becomes final and when a lien arises; and the federal trust fund recovery penalty of 26 U.S.C. § 6672 with the “person” definition of § 6671(b) and the preliminary notice requirement.",
+    "categories": [
+      "Business Formation"
+    ],
+    "clauseOrder": [
+      "resptax_purpose",
+      "resptax_6829_core_rule",
+      "resptax_6829_two_limits",
+      "resptax_6829_willfulness_defined",
+      "resptax_6829_collection_and_deadline",
+      "resptax_wirick_former_officers",
+      "resptax_wirick_limitations",
+      "resptax_wirick_vagueness",
+      "resptax_boundary_buyer_vs_owner",
+      "resptax_uic1735_text",
+      "resptax_wirick_contrast_1735",
+      "resptax_cavanagh_assessment_review",
+      "resptax_federal_6672_penalty",
+      "resptax_federal_6672_notice",
+      "resptax_closing"
+    ],
+    "fields": [
+      {
+        "id": "preparerName",
+        "label": "Preparer’s Name",
+        "placeholder": "e.g., Jane Doe",
+        "required": true
+      },
+      {
+        "id": "companyName",
+        "label": "Business Name",
+        "placeholder": "e.g., Acme Retail, LLC",
+        "required": false
+      },
+      {
+        "id": "cityState",
+        "label": "City, State",
+        "placeholder": "e.g., Sacramento, California",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date",
+        "placeholder": "e.g., January 1, 2026",
+        "required": true
+      }
+    ]
+  },
+  {
     "id": "title_insurance_preliminary_report_info_sheet",
     "title": "Title Insurance and the Preliminary Report — Information Sheet",
     "description": "An informational sheet on California title insurance law (Insurance Code §§ 12340.1-12414.26): what the code means by title insurance, a title policy, an underwritten title company and an abstract of title; why Section 12340.11 makes a preliminary report an offer to insure rather than a representation about title; the decisions in Southland, Siegel, Soifer, Lawrence and White on reliance and abstractor liability; Quelimane on whether an insurer must agree to insure and on how far the Insurance Code displaces other state law; and the statutory rules on filed rates, referral inducements and escrow disbursement.",
