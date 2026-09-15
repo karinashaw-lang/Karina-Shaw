@@ -39198,5 +39198,62 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "bayh_dole_federally_funded_inventions_info_sheet",
+    "title": "Bayh-Dole Act — Inventions Made With Federal Funding (35 U.S.C. §§ 200-212) — Information Sheet",
+    "description": "States the federal scheme that attaches to a patentable invention conceived or first actually reduced to practice under a federal funding agreement: the definitions of funding agreement, contractor and subject invention in 35 U.S.C. § 201; the contractor’s election of title and the disclosure, election and filing deadlines in § 202(a) and (c)(1)-(3); the government’s standing paid-up licence and the government-support statement in § 202(c)(4) and (c)(6); the confidential treatment of utilization reports under § 202(c)(5) and the agency withholding authority in § 205; the nonprofit-only conditions in § 202(c)(7) including inventor royalty sharing; the inventor’s retention requests under § 202(d); march-in rights and Court of Federal Claims review under § 203; the United States manufacture preference and its waiver under § 204; the precedence rule in § 210 and the educational-award carve-out in § 212; the standard patent rights clause at 37 C.F.R. § 401.14; and the Supreme Court’s holding in Stanford v. Roche that the Act does not vest title in the contractor, together with the questions it expressly left open.",
+    "categories": [
+      "Confidentiality & IP"
+    ],
+    "clauseOrder": [
+      "bayhdole_scope_and_limits",
+      "bayhdole_congressional_policy",
+      "bayhdole_when_the_chapter_attaches",
+      "bayhdole_election_of_title_and_deadlines",
+      "bayhdole_government_license_and_marking",
+      "bayhdole_reporting_and_confidentiality",
+      "bayhdole_nonprofit_conditions",
+      "bayhdole_inventor_retention_requests",
+      "bayhdole_march_in_rights",
+      "bayhdole_us_manufacture_preference",
+      "bayhdole_precedence_and_educational_awards",
+      "bayhdole_standard_patent_rights_clause",
+      "bayhdole_no_automatic_vesting",
+      "bayhdole_questions_left_open",
+      "bayhdole_record_worksheet"
+    ],
+    "fields": [
+      {
+        "id": "contractorName",
+        "label": "Contractor that performed the federally funded work",
+        "placeholder": "Cascade Biophysics Institute",
+        "required": true
+      },
+      {
+        "id": "fundingAgency",
+        "label": "Federal agency that provided the funding",
+        "placeholder": "National Institutes of Health",
+        "required": true
+      },
+      {
+        "id": "fundingAgreementId",
+        "label": "Funding agreement number or identifier",
+        "placeholder": "R01 GM000000",
+        "required": false
+      },
+      {
+        "id": "inventionDescription",
+        "label": "Invention or discovery in question",
+        "placeholder": "a method of stabilizing lyophilized enzyme assays",
+        "required": true
+      },
+      {
+        "id": "inventorName",
+        "label": "Named inventor or inventors",
+        "placeholder": "Dr. Priya Venkataraman",
+        "required": true
+      }
+    ]
   }
 ]
