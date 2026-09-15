@@ -129164,6 +129164,335 @@
       "title": "Closing and Signature Block — State Civil Service Appointment Information Sheet",
       "kind": "drafting",
       "body": "I have read this information sheet about appointment to a position in the California state civil service. I understand that it describes statutes, constitutional provisions, and published court decisions, that it is a general description and not a statement about any particular examination, eligible list, certification, appointment, or probationary period, and that it does not create or preserve any right, rank, eligibility, or deadline.\n\nSignature: ____________________________\n\nPrinted name: {{applicantName}}\n\nClass or examination: {{classTitle}}\n\nAppointing agency: {{appointingAgency}}\n\nDate: {{dateSigned}}\n\nExecuted at: {{cityState}}"
+    },
+    {
+      "id": "ipsec_scope_and_limits",
+      "title": "Security Interests in Intellectual Property — What This Information Sheet Covers",
+      "kind": "drafting",
+      "body": "This information sheet describes the law that decides where a lien on intellectual property has to be recorded, and what happens between two people who claim the same intellectual property. It is written for a transaction in which {{debtorName}} grants {{securedPartyName}} a security interest in {{ipDescription}}.\n\nThe question it addresses is a narrow one, and it is not the question most intellectual-property material asks. The usual question is who owns a patent, a copyright, a mark or a trade secret, and what the owner can do about a copier. The question here is different: intellectual property is also personal property that can be pledged to a lender, and two separate recording systems — California’s Division 9 filing system run by the Secretary of State, and the federal registers kept by the United States Copyright Office and the United States Patent and Trademark Office — each claim some part of the subject. Which one governs is not the same answer for patents, for registered copyrights, and for unregistered copyrights.\n\nWhat follows states the statutory text of California Commercial Code Division 9 and of the federal Copyright, Patent and Bankruptcy Acts, and the holdings of the two published Ninth Circuit opinions that construe them. It does not evaluate {{debtorName}}’s or {{securedPartyName}}’s transaction, does not say where any particular filing should be made, and does not predict how a court would rule on any set of facts."
+    },
+    {
+      "id": "ipsec_general_intangible_category",
+      "title": "Intellectual Property Sits in Article 9’s Residual Collateral Category (Cal. Com. Code § 9102(a)(42))",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-15",
+      "body": "California’s Division 9 sorts personal-property collateral into named types, and defines the residual type, \"general intangible,\" by subtraction rather than by description. Section 9102(a)(42) says the term means any personal property, including things in action, other than a closed list of other collateral types — accounts, chattel paper, commercial tort claims, deposit accounts, documents, goods, instruments, investment property, letter-of-credit rights, letters of credit, money, and oil, gas or other minerals before extraction — and adds that the term includes payment intangibles and software. Patents, copyrights, trademarks and trade secrets appear nowhere on the list of exclusions. Construing the predecessor of this definition, the Ninth Circuit stated flatly that Article 9 applies to general intangibles, a term that includes intellectual property. That categorisation is what brings {{ipDescription}} within Division 9 in the first place, and it is why the rest of this sheet is about which filing office applies rather than whether Division 9 applies at all.",
+      "gap": "The statutory definition is quoted as it now stands. Section 9102 was amended by Stats. 2023, ch. 210 (SB 95), the California enactment of the 2022 Uniform Commercial Code amendments, which is later than the 2017 snapshot that onecle publishes; the paragraph (a)(42) sentence quoted here is nonetheless byte-identical in the onecle 2017 text, in the current leginfo section page, and in the Legislative Counsel’s chaptered text of SB 95 itself, so the sentence is one the amendment left alone. The definition is quoted for what it excludes; the statute does not name intellectual property, and this clause does not claim that it does. The Ninth Circuit sentence quoted alongside it is an interpretation of the pre-2001 California Commercial Code § 9106, not of § 9102(a)(42), and the renumbering is not addressed by the court. A second free publisher for this Ninth Circuit opinion was not reachable from this session: the free case-law sites that would supply one (Justia, FindLaw, Google Scholar, case.law, casetext, leagle, openjurist and the Ninth Circuit’s own server) are all blocked here, and the F.3d reporter is not in govinfo. So this quote was not confirmed against two independent publishers. What was done instead is described below, and it is not the same thing. CourtListener hosts two separate clusters for this one opinion, built from two different underlying texts, and this session fetched and diffed both word by word. They are two renderings by one publisher, not two publishers. For this sentence the two renderings differ only in curly versus straight quotation marks, which this session normalized; but immediately after the quoted words one rendering prints the statutory citation as \"Cal. ConxCode § 9106\" — plain optical-character-recognition damage — where the other prints \"Cal. Com. Code §§ 9106\", itself wrong in the opposite direction because that rendering doubles every section symbol in the opinion. The quote taken here stops before that citation for exactly that reason. This session did not resolve which spelling the printed Federal Reporter carries.",
+      "citations": [
+        {
+          "case": "Cal. Com. Code § 9102(a)(42)",
+          "cite": "definition of \"general intangible\" (leginfo current text; corroborated in onecle 2017 and in the chaptered text of SB 95)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=COM&sectionNum=9102.",
+          "quote": "means any personal property, including things in action, other than accounts, chattel paper, commercial tort claims, deposit accounts, documents, goods, instruments, investment property, letter-of-credit rights, letters of credit, money, and oil, gas, or other minerals before extraction. The term includes payment intangibles and software."
+        },
+        {
+          "case": "Moldo v. Matsco, Inc. (In re Cybernetic Services, Inc.) (9th Cir. 2001) 252 F.3d 1039",
+          "cite": "252 F.3d at p. 1045 (nearest preceding star marker in the only rendering that carries star pagination)",
+          "url": "https://www.courtlistener.com/opinion/7093613/petitioning-creditors-v-matsco-inc/",
+          "quote": "Article 9 applies to “general intangibles,” a term that includes intellectual property."
+        }
+      ]
+    },
+    {
+      "id": "ipsec_default_rule_file_a_financing_statement",
+      "title": "The Default: a Financing Statement Must Be Filed (Cal. Com. Code § 9310(a))",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-15",
+      "body": "Division 9’s starting point is that perfection requires a filing. Section 9310(a) provides that, except as otherwise provided in subdivision (b) and in subdivision (b) of section 9312, a financing statement must be filed to perfect all security interests and agricultural liens. Every departure from that rule for intellectual property has to be found somewhere else — in section 9310(b)’s own list, in the federal-preemption provision of section 9109, or in section 9311, which is where a federal filing system enters the analysis. Nothing in section 9310 itself carves out patents, copyrights, trademarks or trade secrets.",
+      "gap": "Section 9310 was amended by Stats. 2023, ch. 210 (SB 95), later than onecle’s 2017 snapshot. The subdivision (a) sentence quoted here is identical in three places: the current leginfo section page, the onecle 2017 text, and the Legislative Counsel’s chaptered text of SB 95 — the last of which is the same publisher as leginfo in a different document, and so is corroboration of currency rather than an independent publisher. The clause states the default and the existence of exceptions; it does not enumerate the eleven conditions listed in section 9310(b), and it does not decide whether any of them reaches intellectual property. Section 9310(b)(3) does cross-refer to property subject to a statute, regulation or treaty described in section 9311(a), which is the route the following clauses follow.",
+      "citations": [
+        {
+          "case": "Cal. Com. Code § 9310(a)",
+          "cite": "financing statement required to perfect (leginfo current text; corroborated in onecle 2017 and in the chaptered text of SB 95)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=COM&sectionNum=9310.",
+          "quote": "Except as otherwise provided in subdivision (b) and in subdivision (b) of Section 9312, a financing statement must be filed to perfect all security interests and agricultural liens."
+        }
+      ]
+    },
+    {
+      "id": "ipsec_federal_preemption_stepback",
+      "title": "Division 9 Steps Back Where Federal Law Preempts It (Cal. Com. Code § 9109(c)(1))",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-15",
+      "body": "Division 9 contains its own instruction about when it yields to federal law. Section 9109(c) states that the division does not apply to the extent that either of two conditions is satisfied, the first being that a statute, regulation or treaty of the United States preempts the division. This is the provision that opens the question this sheet is about: whether the Copyright Act or the Patent Act is such a statute, and if so how far the step-back reaches. The section supplies the trigger; it does not itself identify any federal statute as preemptive, and it leaves the scope of any step-back — \"to the extent that\" — to be worked out statute by statute.",
+      "gap": "Section 9109 was last amended by Stats. 2014, ch. 482 (SB 936), which predates onecle’s 2017 snapshot, so the quoted subdivision was confirmed against two genuinely independent publishers — the Legislative Counsel’s leginfo section page and onecle — with the amendment history line matching in both. This clause deliberately stops at the trigger. It does not state that the Copyright Act or the Patent Act preempts anything; the two clauses below on the Ninth Circuit decisions record what those courts held, and the answers are not the same for the two statutes. This session located no California appellate decision construing section 9109(c)(1) as applied to intellectual property collateral — the governing authority on that question is federal, which is itself a limitation on how far a California-law source can be taken here. The older numbering of this step-back provision, former section 9104(a), appears in both of the opinions discussed below; that renumbering is not addressed by either court.",
+      "citations": [
+        {
+          "case": "Cal. Com. Code § 9109(c)(1)",
+          "cite": "Division 9 inapplicable to the extent federal law preempts",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=COM&sectionNum=9109.",
+          "quote": "This division does not apply to the extent that either of the following conditions is satisfied: (1) A statute, regulation, or treaty of the United States preempts this division."
+        }
+      ]
+    },
+    {
+      "id": "ipsec_compliance_with_federal_statute_substitutes",
+      "title": "Compliance With a Qualifying Federal Statute Replaces the Financing Statement (Cal. Com. Code § 9311(a)(1), (b))",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-15",
+      "body": "Section 9311 supplies the narrower of Division 9’s two deferrals. Subdivision (a) provides that, except as otherwise provided in subdivision (d), the filing of a financing statement is not necessary or effective to perfect a security interest in property subject to a statute, regulation or treaty of the United States whose requirements for a security interest obtaining priority over the rights of a lien creditor with respect to the property preempt section 9310(a). Subdivision (b) then states the consequence: compliance with the requirements of such a statute for obtaining priority over the rights of a lien creditor is equivalent to the filing of a financing statement under the division, and a security interest in property subject to such a statute may be perfected only by compliance with those requirements. Two features of the text do the work in intellectual-property disputes. The federal statute must speak to priority over a lien creditor, not merely provide a place to record something; and where it does, the state filing is not merely unnecessary but ineffective.",
+      "gap": "Section 9311 was last amended by Stats. 2013, ch. 531 (AB 502), which predates onecle’s 2017 snapshot, so both quoted passages were confirmed against two genuinely independent publishers — leginfo and onecle — with matching amendment history lines. The quoted portion of subdivision (b) is its first sentence and part of its second; the remainder of subdivision (b), the certificate-of-title provisions of subdivisions (c) and (d), and the vehicle, mobilehome and emission-reduction categories in subdivision (a)(2)-(3) are outside what is quoted and are not described here. The clause does not decide whether the Copyright Act or the Patent Act satisfies subdivision (a)(1); that is the question the two Ninth Circuit decisions below answer, and they answer it differently for the two statutes and differently for registered and unregistered copyrights.",
+      "citations": [
+        {
+          "case": "Cal. Com. Code § 9311(a)(1)",
+          "cite": "financing statement neither necessary nor effective for property subject to a preemptive federal statute",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=COM&sectionNum=9311.",
+          "quote": "the filing of a financing statement is not necessary or effective to perfect a security interest in property subject to any of the following: (1) A statute, regulation, or treaty of the United States whose requirements for a security interest’s obtaining priority over the rights of a lien creditor with respect to the property preempt subdivision (a) of Section 9310."
+        },
+        {
+          "case": "Cal. Com. Code § 9311(b)",
+          "cite": "compliance with the federal statute is equivalent to filing",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=COM&sectionNum=9311.",
+          "quote": "Compliance with the requirements of a statute, regulation, or treaty described in subdivision (a) for obtaining priority over the rights of a lien creditor is equivalent to the filing of a financing statement under this division."
+        }
+      ]
+    },
+    {
+      "id": "ipsec_copyright_security_interest_is_a_transfer",
+      "title": "A Copyright Security Interest Is a \"Transfer of Copyright Ownership\" (17 U.S.C. § 101)",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-15",
+      "body": "The Copyright Act’s definitional section is what connects a lender’s lien to the Act’s recording machinery. Section 101 defines a transfer of copyright ownership as an assignment, mortgage, exclusive license, or any other conveyance, alienation, or hypothecation of a copyright or of any of the exclusive rights comprised in a copyright, whether or not it is limited in time or place of effect, but not including a nonexclusive license. The words \"mortgage\" and \"hypothecation\" are the ones that matter here: a security interest granted by {{debtorName}} to {{securedPartyName}} in a copyright is a transfer of copyright ownership as the Act uses that phrase, which is why the Act’s recordation section, section 205, reaches it at all. The Patent Act contains no comparable definitional sentence.",
+      "gap": "This definition was confirmed against two genuinely independent federal publishers, the Office of the Law Revision Counsel’s uscode.house.gov and Cornell’s Legal Information Institute. One rendering artifact was disclosed rather than silently smoothed over: Cornell sets off defined terms with spaces inside the quotation marks (it prints the opening words as “ transfer of copyright ownership ”), so the quote taken here begins after the closing quotation mark, at \"is an assignment,\" rather than spanning it. The quoted text is the complete definition from that point. The clause states what the statutory definition covers; it does not state that a security interest in a copyright is created, is enforceable, or attaches, all of which are governed elsewhere, and the definition says nothing about where anything must be recorded. Note also that the corpus quotes this same definition in a different document for a different purpose; it is one source, not two.",
+      "citations": [
+        {
+          "case": "17 U.S.C. § 101",
+          "cite": "definition of \"transfer of copyright ownership\"",
+          "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title17-section101&num=0&edition=prelim",
+          "quote": "is an assignment, mortgage, exclusive license, or any other conveyance, alienation, or hypothecation of a copyright or of any of the exclusive rights comprised in a copyright, whether or not it is limited in time or place of effect, but not including a nonexclusive license."
+        }
+      ]
+    },
+    {
+      "id": "ipsec_copyright_recordation_constructive_notice",
+      "title": "Recordation in the Copyright Office, and Why Registration Is a Precondition to Constructive Notice (17 U.S.C. § 205(a), (c))",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-15",
+      "body": "Section 205(a) provides that any transfer of copyright ownership or other document pertaining to a copyright may be recorded in the Copyright Office if the document filed for recordation bears the actual signature of the person who executed it, or if it is accompanied by a sworn or official certification that it is a true copy of the original, signed document. Recording is permitted, not commanded. What recording accomplishes is set out in subdivision (c): recordation of a document in the Copyright Office gives all persons constructive notice of the facts stated in the recorded document, but only if two conditions are met — the document or material attached to it specifically identifies the work so that, after indexing by the Register of Copyrights, it would be revealed by a reasonable search under the title or registration number of the work, and registration has been made for the work. The second condition is the one that splits this area in two. Where the underlying work is unregistered, recording a document about it in the Copyright Office produces no constructive notice at all.",
+      "gap": "Both quoted passages were confirmed against two genuinely independent federal publishers, uscode.house.gov and Cornell. The two renderings differ in how they print the subdivision headings — uscode.house.gov produces \"Conditions for Recordation .-\" where Cornell produces \"Conditions for Recordation.—\" — so the quotes taken here begin after the heading rather than spanning the dash. The subdivision (c) quote deliberately stops at \"but only if\" for the same reason: the numbered conditions that follow are laid out differently by the two publishers, and the condition that does the work in this clause is described in the body rather than quoted. Subdivision (b), on the certificate of recordation and the section 708 fee, is not quoted. This clause does not state what a reasonable search would reveal in any case, and does not address the Copyright Office’s regulations or practices for accepting documents.",
+      "citations": [
+        {
+          "case": "17 U.S.C. § 205(a)",
+          "cite": "conditions for recordation",
+          "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title17-section205&num=0&edition=prelim",
+          "quote": "Any transfer of copyright ownership or other document pertaining to a copyright may be recorded in the Copyright Office if the document filed for recordation bears the actual signature of the person who executed it, or if it is accompanied by a sworn or official certification that it is a true copy of the original, signed document."
+        },
+        {
+          "case": "17 U.S.C. § 205(c)",
+          "cite": "recordation as constructive notice",
+          "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title17-section205&num=0&edition=prelim",
+          "quote": "Recordation of a document in the Copyright Office gives all persons constructive notice of the facts stated in the recorded document, but only if"
+        }
+      ]
+    },
+    {
+      "id": "ipsec_copyright_conflicting_transfers_priority",
+      "title": "Priority Between Two Conflicting Copyright Transfers, and the Nonexclusive Licensee’s Immunity (17 U.S.C. § 205(d), (e))",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-15",
+      "body": "Section 205(d) states a race-notice rule built on the constructive-notice mechanism of subdivision (c). As between two conflicting transfers, the one executed first prevails if it is recorded, in the manner required to give constructive notice under subsection (c), within one month after its execution in the United States or within two months after its execution outside the United States, or at any time before recordation in such manner of the later transfer; otherwise the later transfer prevails if recorded first in such manner, and if taken in good faith, for valuable consideration or on the basis of a binding promise to pay royalties, and without notice of the earlier transfer. Because a security interest in a copyright is a transfer of copyright ownership under section 101, two lenders taking liens on the same copyright, or a lender and a later assignee, are two conflicting transfers within this subdivision. Subdivision (e) stands outside the race entirely: a nonexclusive license, whether recorded or not, prevails over a conflicting transfer of copyright ownership if the license is evidenced by a written instrument signed by the owner of the rights licensed or that owner’s duly authorized agent, and if the license was taken before execution of the transfer, or was taken in good faith before recordation of the transfer and without notice of it.",
+      "gap": "Both subdivisions were confirmed against two genuinely independent federal publishers, uscode.house.gov and Cornell. The subdivision (e) quote stops at \"and if\" because the two publishers lay out the following numbered conditions differently; those two conditions are described in the body rather than quoted. uscode.house.gov prints a straight apostrophe in \"owner’s\" where Cornell prints a curly one; that typographic difference was normalized, and it is the only difference between the two texts of this section that this session found. The whole of subdivision (d) depends on subdivision (c), and so, for an unregistered work, on nothing: the one-month and two-month windows measure recording \"in the manner required to give constructive notice under subsection (c)\", a manner that is unavailable where no registration exists. This clause states the rule and does not apply it. It also records a negative: former section 205(d) of the 1976 Act, which made recordation a precondition to an infringement suit, is no longer in the section as enacted — the credits printed under the section show amendments by Pub. L. 100-568 (1988) and Pub. L. 111-295 (2010) — and this session did not separately verify the content of either amendment beyond the text of the section as it now stands.",
+      "citations": [
+        {
+          "case": "17 U.S.C. § 205(d)",
+          "cite": "priority between conflicting transfers",
+          "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title17-section205&num=0&edition=prelim",
+          "quote": "As between two conflicting transfers, the one executed first prevails if it is recorded, in the manner required to give constructive notice under subsection (c), within one month after its execution in the United States or within two months after its execution outside the United States, or at any time before recordation in such manner of the later transfer. Otherwise the later transfer prevails if recorded first in such manner, and if taken in good faith, for valuable consideration or on the basis of a binding promise to pay royalties, and without notice of the earlier transfer."
+        },
+        {
+          "case": "17 U.S.C. § 205(e)",
+          "cite": "priority between conflicting transfer of ownership and nonexclusive license",
+          "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title17-section205&num=0&edition=prelim",
+          "quote": "A nonexclusive license, whether recorded or not, prevails over a conflicting transfer of copyright ownership if the license is evidenced by a written instrument signed by the owner of the rights licensed or such owner's duly authorized agent, and if"
+        }
+      ]
+    },
+    {
+      "id": "ipsec_registered_and_unregistered_copyrights",
+      "title": "Registered Copyrights Go to the Copyright Office, Unregistered Copyrights to the State Filing Office (In re World Auxiliary Power Co.)",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-15",
+      "body": "The Ninth Circuit answered the question of where a copyright lien belongs by splitting it. Applying California’s two step-back provisions, the court stated that under those provisions there can be no question that, when a copyright has been registered, a security interest can be perfected only by recording the transfer in the Copyright Office, and that for registered copyrights the only proper place to file is the Copyright Office. For unregistered copyrights the court reached the opposite result, reasoning that there just is not any way for a secured creditor to preserve a priority in an unregistered copyright by recording anything in the Copyright Office. Its conclusion was that, regarding perfection and priority of security interests in unregistered copyrights, the California Uniform Commercial Code has not stepped back in deference to federal law, and federal law has not preempted the Uniform Commercial Code. The practical shape of the holding is that a single copyright portfolio can require filings in two different offices, and that the line between them moves whenever a work is registered.",
+      "gap": "A defect in the opinion as published is disclosed here rather than corrected. Between the two passages quoted from page 1128, the opinion prints a sentence that, read literally, contradicts both of them: \"Thus, under these step-back provisions, if a borrower’s collateral is a registered copyright, the secured party cannot perfect by filing a financing statement under the U.C.C. in the appropriate state office, or alternatively by recording a transfer in the Copyright Office.\" The sentence immediately before it says a security interest in a registered copyright \"can be perfected only by recording the transfer in the Copyright Office,\" and the sentence immediately after it says \"For registered copyrights, the only proper place to file is the Copyright Office\" — so the clause \"or alternatively by recording a transfer in the Copyright Office,\" governed by \"cannot perfect,\" states the opposite of its own neighbours on both sides. This session confirmed the sentence is in the record and not an extraction error: it appears identically in both of CourtListener’s independently built renderings of the opinion, and an exact-phrase index query for \"or alternatively by recording a transfer in the Copyright Office\" returned a count of 2, which is those same two renderings and nothing else — meaning the sentence has not been quoted by any later opinion in that database. A first, longer phrase query returned HTTP 429 rather than a count; it was re-run shorter, as \"cannot perfect by filing a financing statement under the U.C.C.\", after an in-turn wait, and also returned 2. Because the defective sentence is the one a reader would most want quoted, it is quoted in full here in the gap and excluded from the citations. A second free publisher for this Ninth Circuit opinion was not reachable from this session: the free case-law sites that would supply one (Justia, FindLaw, Google Scholar, case.law, casetext, leagle, openjurist and the Ninth Circuit’s own server) are all blocked here, and the F.3d reporter is not in govinfo. So this quote was not confirmed against two independent publishers. What was done instead is described below, and it is not the same thing. CourtListener hosts two separate clusters for this one opinion, built from two different underlying texts, and this session fetched and diffed both word by word. They are two renderings by one publisher, not two publishers. The two disagree throughout: one prints straight quotation marks, numbered paragraphs and no star pagination; the other prints curly quotation marks, star pagination, and optical-character-recognition damage including \"World Aer-otechnology\" and \"Petalu-ma\" for \"World Aerotechnology\" and \"Petaluma\". Every quote used here was checked against both and normalized only for curly versus straight quotation marks and apostrophes. Pin cites are taken from the star markers of the one rendering that carries them; in that rendering the footnote text is relocated to the end, after the last body star marker, which is why nothing from a footnote is quoted or pin cited in this clause. This is a decision of the United States Court of Appeals for the Ninth Circuit, binding on the federal courts within that circuit and not on California state courts; this session located no California appellate decision reaching the same question. The opinion construes the pre-2001 California provisions, former sections 9104(a) and 9302(3), not the renumbered sections 9109(c)(1) and 9311 quoted above, and the court does not address the renumbering.",
+      "citations": [
+        {
+          "case": "Aerocon Engineering, Inc. v. Silicon Valley Bank (In re World Auxiliary Power Co.) (9th Cir. 2002) 303 F.3d 1120",
+          "cite": "303 F.3d at p. 1128 (nearest preceding star marker)",
+          "url": "https://www.courtlistener.com/opinion/7107960/aerocon-engineering-inc-v-silicon-valley-bank-in-re-world-auxiliary/",
+          "quote": "Under the U.C.C.'s two step-back provisions, there can be no question that, when a copyright has been registered, a security interest can be perfected only by recording the transfer in the Copyright Office."
+        },
+        {
+          "case": "Aerocon Engineering, Inc. v. Silicon Valley Bank (In re World Auxiliary Power Co.) (9th Cir. 2002) 303 F.3d 1120",
+          "cite": "303 F.3d at p. 1128 (nearest preceding star marker)",
+          "url": "https://www.courtlistener.com/opinion/7107960/aerocon-engineering-inc-v-silicon-valley-bank-in-re-world-auxiliary/",
+          "quote": "For registered copyrights, the only proper place to file is the Copyright Office."
+        },
+        {
+          "case": "Aerocon Engineering, Inc. v. Silicon Valley Bank (In re World Auxiliary Power Co.) (9th Cir. 2002) 303 F.3d 1120",
+          "cite": "303 F.3d at p. 1126 (nearest preceding star marker)",
+          "url": "https://www.courtlistener.com/opinion/7107960/aerocon-engineering-inc-v-silicon-valley-bank-in-re-world-auxiliary/",
+          "quote": "There just isn't any way for a secured creditor to preserve a priority in an unregistered copyright by recording anything in the Copyright Office."
+        },
+        {
+          "case": "Aerocon Engineering, Inc. v. Silicon Valley Bank (In re World Auxiliary Power Co.) (9th Cir. 2002) 303 F.3d 1120",
+          "cite": "303 F.3d at p. 1132 (nearest preceding star marker; concluding paragraph)",
+          "url": "https://www.courtlistener.com/opinion/7107960/aerocon-engineering-inc-v-silicon-valley-bank-in-re-world-auxiliary/",
+          "quote": "Regarding perfection and priority of security interests in unregistered copyrights, the California U.C.C. has not stepped back in deference to federal law, and federal law has not preempted the U.C.C."
+        }
+      ]
+    },
+    {
+      "id": "ipsec_patent_register_and_recording_clause",
+      "title": "The Patent Act’s Register and Its Recording Rule (35 U.S.C. § 261)",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-15",
+      "body": "The Patent Act maintains a register but describes it in terms that are wider than the rule attached to it. Section 261 provides that the Patent and Trademark Office shall maintain a register of interests in patents and applications for patents and shall record any document related thereto upon request, and may require a fee therefor. That sentence permits the recording of a security interest; it attaches no consequence to doing so. The consequence appears in a separate, narrower sentence: an interest that constitutes an assignment, grant or conveyance shall be void as against any subsequent purchaser or mortgagee for a valuable consideration, without notice, unless it is recorded in the Patent and Trademark Office within three months from its date or prior to the date of such subsequent purchase or mortgage. The gap between the two sentences — a register open to any document, and a voiding rule that runs only against an \"assignment, grant or conveyance\" and only in favour of a subsequent \"purchaser or mortgagee\" — is the whole of the patent question in this area.",
+      "gap": "Both sentences were confirmed against two genuinely independent federal publishers, uscode.house.gov and Cornell, and are identical in both. Section 261 has been amended since the decision discussed in the next clause, most recently by Pub. L. 112-211 (2012), which added the apostille language to the acknowledgment paragraph; this clause quotes the register sentence and the voiding sentence, neither of which that amendment touched, but this session did not separately verify the text of the amendment itself. The voiding sentence is also quoted elsewhere in this corpus, in a patent assignment document, for the different purpose of an outright assignment; it is one source, not two. Deliberately not addressed here: whether a security interest is an \"assignment, grant or conveyance\", whether a lien creditor or bankruptcy trustee is a \"purchaser or mortgagee\", and what the three-month window does where neither term is satisfied. Those are the questions the following clause records an answer to. Nothing in the sentences quoted mentions lien creditors, perfection, or state law.",
+      "citations": [
+        {
+          "case": "35 U.S.C. § 261",
+          "cite": "ownership; assignment — the PTO register of interests",
+          "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title35-section261&num=0&edition=prelim",
+          "quote": "The Patent and Trademark Office shall maintain a register of interests in patents and applications for patents and shall record any document related thereto upon request, and may require a fee therefor."
+        },
+        {
+          "case": "35 U.S.C. § 261",
+          "cite": "ownership; assignment — unrecorded interest void against a subsequent purchaser or mortgagee",
+          "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title35-section261&num=0&edition=prelim",
+          "quote": "An interest that constitutes an assignment, grant or conveyance shall be void as against any subsequent purchaser or mortgagee for a valuable consideration, without notice, unless it is recorded in the Patent and Trademark Office within three months from its date or prior to the date of such subsequent purchase or mortgage."
+        }
+      ]
+    },
+    {
+      "id": "ipsec_patent_security_interest_not_an_assignment",
+      "title": "A Patent Security Interest Is Perfected by State Filing, Not PTO Recording (In re Cybernetic Services, Inc.)",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-15",
+      "body": "The Ninth Circuit framed the patent question as whether the Patent Act or Article 9 as adopted in California requires the holder of a security interest in a patent to record that interest with the federal Patent and Trademark Office in order to perfect the interest as against a subsequent lien creditor, and answered that neither the Patent Act nor Article 9 so requires, affirming the Bankruptcy Appellate Panel. The reasoning ran through the two limits in the statutory sentence quoted above. On the first, the court concluded that the statute’s text, context and structure, read in the light of Supreme Court precedent, compel the conclusion that a security interest in a patent that does not involve a transfer of the rights of ownership is a \"mere license\" and is not an \"assignment, grant or conveyance\" within the meaning of section 261. On the second, the court concluded that the historical definitions of \"purchaser or mortgagee,\" taken in context, establish that Congress was concerned only with providing constructive notice to subsequent parties who take an ownership interest in the patent in question. The disposition followed: the secured parties perfected their security interest in the debtor’s patent by recording it with the California Secretary of State, and had priority over the trustee’s claim because they recorded before the bankruptcy petition was filed. Set against the preceding clause on copyrights, the result is that federal and state filing offices divide the field differently for patents than for registered copyrights.",
+      "gap": "One quote was shortened because of a defect in the record rather than in this session’s extraction. In the CourtListener rendering without star pagination, the sentence beginning \"In summary\" prints as \"...is a“mere license”...\" with no space between \"a\" and the opening quotation mark, while the other rendering prints the space; so the quotation here is split into two fragments that straddle the damaged point rather than spanning it, and neither fragment includes it. That same rendering doubles every section symbol in the opinion, printing \"35 U.S.C. §§ 261\", \"11 U.S.C. §§ 544 (a)(1)\" and \"Cal. Com. Code§§ 9104(a)\" where the other prints single symbols; every quote used here was chosen to avoid a section symbol for that reason, and none was corrected. A second free publisher for this Ninth Circuit opinion was not reachable from this session: the free case-law sites that would supply one (Justia, FindLaw, Google Scholar, case.law, casetext, leagle, openjurist and the Ninth Circuit’s own server) are all blocked here, and the F.3d reporter is not in govinfo. So this quote was not confirmed against two independent publishers. What was done instead is described below, and it is not the same thing. CourtListener hosts two separate clusters for this one opinion, built from two different underlying texts, and this session fetched and diffed both word by word. They are two renderings by one publisher, not two publishers. Quotes were normalized only for curly versus straight quotation marks and apostrophes. No pin cite is given for the first two quotes: they fall in the opinion’s introduction, before the first star marker that the paginated rendering carries, so the page cannot be determined from what was fetched. In that rendering the footnote text is relocated to the end of the document, after the last body star marker and out of page order, so nothing from a footnote is quoted or pin cited here — which is worth recording because one of the opinion’s footnotes states that \"Although no circuit court has yet resolved the issue that we face, there exists quite a bit of academic debate on the subject of whether the Patent Act preempts Article 9,\" a negative that was accurate in 2001 and that this session did not attempt to update. This is a Ninth Circuit decision, binding on the federal courts within that circuit and not on California state courts; this session located no California appellate decision reaching the question. The court expressly reserved two points, each in a footnote: that the trustee did not argue below that he was a subsequent \"purchaser,\" so the court did not consider that question, and that no party challenged the validity of the PTO’s regulations, on which the court expressed no opinion. The opinion construes the pre-2001 California sections 9104(a) and 9302(3), not the renumbered sections quoted above.",
+      "citations": [
+        {
+          "case": "Moldo v. Matsco, Inc. (In re Cybernetic Services, Inc.) (9th Cir. 2001) 252 F.3d 1039",
+          "cite": "no pin cite — the passage precedes the first star marker in the only rendering carrying star pagination, so the page cannot be fixed",
+          "url": "https://www.courtlistener.com/opinion/7093613/petitioning-creditors-v-matsco-inc/",
+          "quote": "requires the holder of a security interest in a patent to record that interest with the federal Patent and Trademark Office (PTO) in order to perfect the interest as against a subsequent lien creditor."
+        },
+        {
+          "case": "Moldo v. Matsco, Inc. (In re Cybernetic Services, Inc.) (9th Cir. 2001) 252 F.3d 1039",
+          "cite": "no pin cite — same reason; the holding sentence precedes the first star marker",
+          "url": "https://www.courtlistener.com/opinion/7093613/petitioning-creditors-v-matsco-inc/",
+          "quote": "neither the Patent Act nor Article 9 so requires. We therefore affirm the decision of the Bankruptcy Appellate Panel (BAP)."
+        },
+        {
+          "case": "Moldo v. Matsco, Inc. (In re Cybernetic Services, Inc.) (9th Cir. 2001) 252 F.3d 1039",
+          "cite": "252 F.3d at p. 1052 (nearest preceding star marker); quote truncated before a spacing defect in one rendering",
+          "url": "https://www.courtlistener.com/opinion/7093613/petitioning-creditors-v-matsco-inc/",
+          "quote": "In summary, the statute’s text, context, and structure, when read in the light of Supreme Court precedent, compel the conclusion that a security interest in a patent that does not involve a transfer of the rights of ownership is a"
+        },
+        {
+          "case": "Moldo v. Matsco, Inc. (In re Cybernetic Services, Inc.) (9th Cir. 2001) 252 F.3d 1039",
+          "cite": "252 F.3d at p. 1052 (same page; resumes after the defect)",
+          "url": "https://www.courtlistener.com/opinion/7093613/petitioning-creditors-v-matsco-inc/",
+          "quote": "and is not an “assignment, grant or conveyance” within the meaning of"
+        },
+        {
+          "case": "Moldo v. Matsco, Inc. (In re Cybernetic Services, Inc.) (9th Cir. 2001) 252 F.3d 1039",
+          "cite": "252 F.3d at p. 1054 (nearest preceding star marker)",
+          "url": "https://www.courtlistener.com/opinion/7093613/petitioning-creditors-v-matsco-inc/",
+          "quote": "establish that Congress was concerned only with providing constructive notice to subsequent parties who take an ownership interest in the patent in question."
+        },
+        {
+          "case": "Moldo v. Matsco, Inc. (In re Cybernetic Services, Inc.) (9th Cir. 2001) 252 F.3d 1039",
+          "cite": "252 F.3d at p. 1059 (nearest preceding star marker; concluding paragraph)",
+          "url": "https://www.courtlistener.com/opinion/7093613/petitioning-creditors-v-matsco-inc/",
+          "quote": "Consequently, Petitioners perfected their security interest in Debtor's patent by recording it with the California Secretary of State."
+        }
+      ]
+    },
+    {
+      "id": "ipsec_where_to_file_debtor_location",
+      "title": "Where the State Filing Goes: the Debtor’s Location Governs (Cal. Com. Code § 9301(1))",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-15",
+      "body": "Where a state filing is the right filing — for a patent, and for an unregistered copyright — Division 9 still has to say which state’s filing office. Section 9301 provides that, except as otherwise provided in sections 9303 to 9306.2, while a debtor is located in a jurisdiction, the local law of that jurisdiction governs perfection, the effect of perfection or nonperfection, and the priority of a security interest in collateral. Intellectual property has no physical situs, so the possessory and location-based rules in the remaining paragraphs of the section do not reach it; the debtor-location rule is the operative one. The place where {{ipDescription}} was created, registered, or is used does not, under this paragraph, determine where a financing statement belongs.",
+      "gap": "Section 9301 was amended by Stats. 2023, ch. 210 (SB 95), later than onecle’s 2017 snapshot, and the amendment is visible in the section’s opening words: the current text refers to \"Sections 9303 to 9306.2\" where the 2017 text reads \"Sections 9303 to 9306.\" The paragraph (1) sentence quoted here is nonetheless identical in the current leginfo section page, in onecle’s 2017 text, and in the Legislative Counsel’s chaptered text of SB 95 — the last being the same publisher as leginfo in a different document, so it corroborates currency rather than serving as an independent publisher. Only paragraph (1) is quoted; paragraphs (2) through (4), on possessory security interests, fixture filings, timber and as-extracted collateral, are not, and the exceptions in sections 9303 to 9306.2 are named in the quoted text but not described. The body’s statement that intellectual property has no physical situs is a characterisation, not a quotation, and is not supported by a citation here. The section does not define where a debtor is located; that is section 9307, which this clause does not reach.",
+      "citations": [
+        {
+          "case": "Cal. Com. Code § 9301(1)",
+          "cite": "law governing perfection — debtor’s location (leginfo current text; corroborated in onecle 2017 and in the chaptered text of SB 95)",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=COM&sectionNum=9301.",
+          "quote": "while a debtor is located in a jurisdiction, the local law of that jurisdiction governs perfection, the effect of perfection or nonperfection, and the priority of a security interest in collateral"
+        }
+      ]
+    },
+    {
+      "id": "ipsec_anti_assignment_terms_and_confidential_information",
+      "title": "License Terms Forbidding Assignment, and the Limit That Protects the Other Party’s Trade Secrets (Cal. Com. Code § 9408)",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-15",
+      "body": "Intellectual property is frequently held under a licence that forbids assignment. Section 9408(a) provides that, subject to subdivisions (b) and (f), a term in an agreement between an account debtor and a debtor relating to a general intangible — including a contract, permit, license, or franchise — which prohibits, restricts, or requires consent to the assignment or transfer of, or the creation, attachment, or perfection of a security interest in, that general intangible is ineffective to the stated extent. Subdivision (d) then narrows what the secured party gains from that override. Where such a term would have been effective under other law but is ineffective under subdivision (a) or (c), the creation, attachment or perfection of the security interest is subject to a list of rules, two of which bear directly on confidential information: it does not entitle the secured party to use, assign, possess, or have access to any trade secrets or confidential information of the person obligated on the promissory note or the account debtor, and it does not entitle the secured party to enforce the security interest in the general intangible. The lien can attach and be perfected over a contractual prohibition; it does not thereby open the counterparty’s secrets to the lender.",
+      "gap": "Section 9408 was amended by Stats. 2023, ch. 210 (SB 95), later than onecle’s 2017 snapshot. All three quoted passages are identical in the current leginfo section page, in onecle’s 2017 text, and in the Legislative Counsel’s chaptered text of SB 95; leginfo and the chaptered bill are the same publisher in different documents, so the genuinely independent pair here is leginfo and onecle, with the chaptered bill confirming that the amendment left these passages alone. One benign extraction artifact was normalized and is disclosed: the leginfo page breaks the phrase \"the promissory note\" across a line in subdivision (d)(1), producing a double space, which was collapsed. Only subdivisions (a) introductory text and (d)(5) and (d)(6) are quoted; paragraphs (a)(1) and (a)(2), which state the extent of the ineffectiveness, and paragraphs (d)(1) through (d)(4) are not, nor are the exceptions in subdivisions (b), (c), (e) and (f). The clause does not state whether any particular licence term falls within subdivision (a) or within one of the exceptions, and this session located no California appellate decision applying section 9408 to an intellectual property licence.",
+      "citations": [
+        {
+          "case": "Cal. Com. Code § 9408(a)",
+          "cite": "restrictions on assignment of general intangibles ineffective",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=COM&sectionNum=9408.",
+          "quote": "a term in a promissory note or in an agreement between an account debtor and a debtor that relates to a health care insurance receivable or a general intangible, including a contract, permit, license, or franchise, and which term prohibits, restricts, or requires the consent of the person obligated on the promissory note or the account debtor to, the assignment or transfer of, or the creation, attachment, or perfection of a security interest in, the promissory note, health care insurance receivable, or general intangible, is ineffective to the extent that the term does, or would do, either of the following"
+        },
+        {
+          "case": "Cal. Com. Code § 9408(d)(5)",
+          "cite": "secured party gains no access to the account debtor’s trade secrets or confidential information",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=COM&sectionNum=9408.",
+          "quote": "It does not entitle the secured party to use, assign, possess, or have access to any trade secrets or confidential information of the person obligated on the promissory note or the account debtor."
+        },
+        {
+          "case": "Cal. Com. Code § 9408(d)(6)",
+          "cite": "secured party not entitled to enforce the security interest in the general intangible",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=COM&sectionNum=9408.",
+          "quote": "It does not entitle the secured party to enforce the security interest in the promissory note, health care insurance receivable, or general intangible."
+        }
+      ]
+    },
+    {
+      "id": "ipsec_bankruptcy_hypothetical_lien_creditor",
+      "title": "Why the Filing Office Matters: the Bankruptcy Trustee as Hypothetical Lien Creditor (11 U.S.C. § 544(a)(1))",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-09-15",
+      "body": "The reason the choice of filing office is litigated at all is that an unperfected security interest loses to the debtor’s bankruptcy trustee. Section 544(a) provides that the trustee shall have, as of the commencement of the case, and without regard to any knowledge of the trustee or of any creditor, the rights and powers of, or may avoid any transfer of property of the debtor or any obligation incurred by the debtor that is voidable by, the persons described in its three paragraphs. The first of those is a creditor that extends credit to the debtor at the time of the commencement of the case, and that obtains, at such time and with respect to such credit, a judicial lien on all property on which a creditor on a simple contract could have obtained such a judicial lien, whether or not such a creditor exists. That hypothetical lien creditor is the party against whom the California provisions quoted above measure priority — section 9311(a)(1) turns on a federal statute’s requirements for \"obtaining priority over the rights of a lien creditor\" — and it is the party who appeared, in the trustee’s shoes, in both of the Ninth Circuit cases described in this sheet.",
+      "gap": "Both passages were confirmed against two genuinely independent federal publishers, uscode.house.gov and Cornell, and are identical in both. The subdivision (a) quote stops at \"voidable by\" because the two publishers render the dash introducing the paragraph list differently (uscode.house.gov prints a hyphen, Cornell an em dash); the paragraph quoted separately is (a)(1). Paragraphs (a)(2) and (a)(3), on an unsatisfied execution and on a bona fide purchaser of real property, and the whole of subdivision (b), are not quoted or described. This clause states what the trustee’s status is; it does not state what the trustee would recover in any case, and the Ninth Circuit opinion on patents expressly declined to consider whether the trustee there was also a subsequent \"purchaser,\" because the point was not argued below.",
+      "citations": [
+        {
+          "case": "11 U.S.C. § 544(a)",
+          "cite": "trustee as lien creditor and as successor to certain creditors and purchasers",
+          "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title11-section544&num=0&edition=prelim",
+          "quote": "The trustee shall have, as of the commencement of the case, and without regard to any knowledge of the trustee or of any creditor, the rights and powers of, or may avoid any transfer of property of the debtor or any obligation incurred by the debtor that is voidable by"
+        },
+        {
+          "case": "11 U.S.C. § 544(a)(1)",
+          "cite": "the hypothetical judicial lien creditor",
+          "url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title11-section544&num=0&edition=prelim",
+          "quote": "a creditor that extends credit to the debtor at the time of the commencement of the case, and that obtains, at such time and with respect to such credit, a judicial lien on all property on which a creditor on a simple contract could have obtained such a judicial lien, whether or not such a creditor exists"
+        }
+      ]
+    },
+    {
+      "id": "ipsec_not_covered_and_acknowledgment",
+      "title": "What This Sheet Does Not Cover, and Acknowledgment",
+      "kind": "drafting",
+      "body": "Several things this subject contains are outside what has been verified above, and are named here rather than left to be inferred.\n\nTrademarks. The two published appellate holdings described above are about patents and about copyrights. Neither decides where a security interest in a registered or unregistered trademark is perfected, and no clause above states an answer for marks or quotes the Lanham Act’s recording provision.\n\nTrade secrets. No federal register for trade secrets is identified anywhere above, and no clause above states where a security interest in a trade secret is perfected. The only trade-secret rule quoted above is the one in Commercial Code section 9408(d)(5), which keeps the counterparty’s secrets away from the secured party.\n\nForeclosure. Nothing above concerns what happens when a lender enforces — the conduct of a disposition, what a buyer at a foreclosure sale acquires, or whether a trademark can be transferred at such a sale separately from the goodwill the Lanham Act requires to accompany it.\n\nAttachment, description, and the security agreement itself. The clauses above are about perfection and priority. They do not state what makes a security interest attach, what description of intellectual property collateral is sufficient, or what a financing statement must contain.\n\nCurrency. The California provisions are quoted as amended through Stats. 2023, chapter 210. The two Ninth Circuit opinions were decided in 2001 and 2002 and construe the California Commercial Code as it was numbered before 2001; neither court has been asked, in any decision located here, to revisit its holding under the renumbered provisions.\n\nI have read this information sheet. I understand that it describes statutes and published federal appellate decisions, that it is a general description and not a statement about the transaction between {{debtorName}} and {{securedPartyName}} or about {{ipDescription}}, and that it does not create, preserve, perfect, or determine the priority of any security interest.\n\nSignature: ____________________________\n\nPrinted name: {{preparerName}}\n\nDate: {{dateSigned}}"
     }
   ]
 }
