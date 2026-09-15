@@ -71,10 +71,18 @@ def extract_pdf(path):
     California slip opinions also carry marginal line numbers, which
     extraction interleaves into the prose: a quote spanning a line break reads
     "what should 20 happen" in the extracted text and matches neither
-    extractor. The extractors do not even agree on which number lands where.
-    So a third candidate is offered with standalone one- and two-digit numbers
-    removed. It is an extra way to match, never a replacement: the unmodified
-    texts are still checked first.
+    extractor. A candidate with standalone one- and two-digit numbers removed
+    covers that.
+
+    A separate PDF-font quirk shows up as a "fontTools ... CFF Type1 font"
+    warning during extraction: some scanned slip opinions use a font whose
+    apostrophe glyph both extractors decode as a straight double quote, so
+    "court's" comes out as 'court"s'. A candidate with word-internal double
+    quotes folded to apostrophes covers that.
+
+    All of these are extra ways to match, never a replacement: the unmodified
+    texts are still checked first, so none of this can turn a genuinely wrong
+    quote into a false pass.
     """
     texts = []
     size = os.path.getsize(path)
@@ -93,8 +101,25 @@ def extract_pdf(path):
         except Exception:
             pass
     texts = [t for t in texts if t]
-    stripped = [re.sub(r'(?<=\s)\d{1,2}(?=\s)', ' ', t) for t in texts]
-    return texts + [t for t in stripped if t not in texts]
+    variants = list(texts)
+    # Marginal line numbers in California slip opinions get interleaved into
+    # the prose: "what should 20 happen" matches neither extractor.
+    for t in texts:
+        v = re.sub(r'(?<=\s)\d{1,2}(?=\s)', ' ', t)
+        if v not in variants: variants.append(v)
+    # Some scanned slip PDFs use a Type1 font whose apostrophe glyph both
+    # extractors decode as a double-quote-family character — "fontTools ...
+    # CFF Type1 font" warnings during extraction are the tell, and the
+    # specific glyph varies (seen: U+201F DOUBLE HIGH-REVERSED-9 QUOTATION
+    # MARK, as well as a plain straight quote). A real double quote does not
+    # appear silently inside one word with no space around it, so this is a
+    # safe, narrow substitution: any double-quote-family character sitting
+    # word-internal -> straight apostrophe.
+    dq = '"“”‟„'
+    for t in texts:
+        v = re.sub(rf'(?<=[a-zA-Z])[{dq}](?=[a-zA-Z])', "'", t)
+        if v not in variants: variants.append(v)
+    return variants
 
 
 def fetch(url, host, retries=3):
