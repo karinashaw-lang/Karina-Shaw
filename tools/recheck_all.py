@@ -61,26 +61,40 @@ def seed_leginfo():
 
 
 def extract_pdf(path):
-    """Every text layer we can get from a PDF, not just the first.
+    """Every text layer we can get from a PDF, plus a line-number-stripped one.
 
     The two extractors disagree — one inserts mid-word spaces, the other
     preserves justified spacing — so a quote verified against one can fail
     against the other. Returning both and accepting either keeps that
     disagreement from being reported as a corpus defect.
+
+    California slip opinions also carry marginal line numbers, which
+    extraction interleaves into the prose: a quote spanning a line break reads
+    "what should 20 happen" in the extracted text and matches neither
+    extractor. The extractors do not even agree on which number lands where.
+    So a third candidate is offered with standalone one- and two-digit numbers
+    removed. It is an extra way to match, never a replacement: the unmodified
+    texts are still checked first.
     """
     texts = []
+    size = os.path.getsize(path)
     try:
         import pypdf
         r = pypdf.PdfReader(path)
         texts.append('\n'.join((pg.extract_text() or '') for pg in r.pages))
     except Exception:
         pass
-    try:
-        from pdfminer.high_level import extract_text
-        texts.append(extract_text(path) or '')
-    except Exception:
-        pass
-    return [t for t in texts if t]
+    # pdfminer holds the whole page tree in memory; on a multi-megabyte
+    # volume that is enough to get the process killed. pypdf alone will do.
+    if size < 12_000_000:
+        try:
+            from pdfminer.high_level import extract_text
+            texts.append(extract_text(path) or '')
+        except Exception:
+            pass
+    texts = [t for t in texts if t]
+    stripped = [re.sub(r'(?<=\s)\d{1,2}(?=\s)', ' ', t) for t in texts]
+    return texts + [t for t in stripped if t not in texts]
 
 
 def fetch(url, host):

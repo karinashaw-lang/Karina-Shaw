@@ -101,8 +101,20 @@ corpus.** The first full run reported 159 EMPTY and 51 MISMATCH in its first
   other — one inserts mid-word spaces, the other preserves justified spacing.
   It now returns both texts and accepts a quote found in either.
 
-After the fix the same population came back 1,315 PASS to 1 MISMATCH. A
-failure rate above a percent or so is a signal to debug the checker, not to
+After that fix the same population came back 1,315 PASS to 1 MISMATCH — and
+the one remaining mismatch was also this script. California slip opinions
+carry marginal line numbers, which extraction interleaves into the prose, so
+a quote spanning a line break reads "what should 20 happen" and matches
+neither extractor (they do not even agree on which number lands where).
+`extract_pdf` now offers a third candidate with standalone one- and two-digit
+numbers removed — an extra way to match, never a replacement, since the
+unmodified texts are still checked first.
+
+A long run was also killed outright, almost certainly for memory: pdfminer
+holds a whole page tree at once, and doing that on a multi-megabyte volume is
+enough to lose the process. Files over 12 MB now go through pypdf only.
+
+A failure rate above a percent or so is a signal to debug this script, not to
 start writing up findings.
 
 Run `--hosts courtlistener` only when no expansion workers are running: they
