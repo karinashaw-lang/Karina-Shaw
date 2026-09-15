@@ -39066,5 +39066,74 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "child_medical_support_health_insurance_assignment_info_sheet",
+    "title": "Medical Support: Health Insurance Coverage Orders and Assignments in a California Child Support Case — Information Sheet",
+    "description": "Information about the health insurance half of a California child support order: Family Code sections 3750 through 3773, including the requirement in section 3751 that a support order require coverage by either or both parents, the rebuttable 5 percent of gross income test for reasonable cost and the low-income adjustment override, the enrollment duties section 3751.5 places on employers and insurers, the health insurance coverage assignment served on an employer under sections 3761 through 3767, the obligor's motion to quash under section 3765 and the grounds the mandatory Judicial Council form FL-478 lists that the statute does not, the employer instructions on form FL-470 and where they depart from section 3766, termination and employer liability under sections 3768 through 3771, and the national medical support notice used in Title IV-D cases under section 3773, 42 U.S.C. section 666(a)(19) and 29 U.S.C. section 1169(a)(5)(C).",
+    "categories": [
+      "Family Law"
+    ],
+    "clauseOrder": [
+      "medsupp_declaration",
+      "medsupp_mandatory_medical_support_provision",
+      "medsupp_reasonable_cost_five_percent",
+      "medsupp_contingent_order_and_continuation",
+      "medsupp_cost_is_additional_to_guideline",
+      "medsupp_insurer_enrollment_rules",
+      "medsupp_assignment_application_and_notice",
+      "medsupp_good_cause_binding_effect_and_service",
+      "medsupp_employer_commencement_and_plan_selection",
+      "medsupp_motion_to_quash",
+      "medsupp_fl478_grounds_diverge_from_statute",
+      "medsupp_fl470_and_section_3772_forms",
+      "medsupp_termination_liability_and_information_duties",
+      "medsupp_national_medical_support_notice",
+      "medsupp_boundaries_and_signature"
+    ],
+    "fields": [
+      {
+        "id": "partyOneName",
+        "label": "First parent's full legal name",
+        "placeholder": "e.g., Marisol Iyabo Ferreira",
+        "required": true
+      },
+      {
+        "id": "partyTwoName",
+        "label": "Other parent's full legal name",
+        "placeholder": "e.g., Dmitri Anselm Ferreira",
+        "required": true
+      },
+      {
+        "id": "childrenNames",
+        "label": "Name or names of the supported child or children",
+        "placeholder": "e.g., Ilse Ferreira and Caspian Ferreira",
+        "required": true
+      },
+      {
+        "id": "matterDescription",
+        "label": "The proceeding this sheet accompanies",
+        "placeholder": "e.g., the pending child support proceeding and the health insurance provisions of any support order made in it",
+        "required": true
+      },
+      {
+        "id": "countyOfFiling",
+        "label": "County of the superior court where the matter is or will be filed",
+        "placeholder": "e.g., Stanislaus",
+        "required": true
+      },
+      {
+        "id": "preparedByName",
+        "label": "Name of the person preparing this sheet",
+        "placeholder": "e.g., Marisol Iyabo Ferreira",
+        "required": false
+      },
+      {
+        "id": "preparedDate",
+        "label": "Date this sheet was prepared",
+        "placeholder": "e.g., September 15, 2026",
+        "required": false
+      }
+    ]
   }
 ]
