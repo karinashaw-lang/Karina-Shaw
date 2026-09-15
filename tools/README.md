@@ -54,10 +54,16 @@ file and the publisher disambiguates them only through a form submission.
 Defaults to statutory publishers. Pass `courtlistener` deliberately and only
 when no expansion workers are running, since they share that quota.
 
-Read failures sceptically: in the first run, three "empty" results and one
-"mismatch" were defects in the script — a reused session that expired, and a
-normalizer that inserted a space where markup was stripped — not in the
-corpus. Retry with a fresh session and check normalization before reporting.
+Read failures sceptically. Every failure investigated so far but one has
+been a defect in the checker rather than in the corpus: a leginfo session
+reused across a long run and silently expiring, and tag-stripping in both
+directions. Neither way of stripping tags is right for every publisher —
+dropping them joins words that markup merely wrapped (Cornell puts a defined
+term in its own element mid-sentence), while replacing them with a space is
+what separates list items that leginfo puts one per element, where dropping
+them yields ";4. Names". The script now accepts a quote if either spelling
+matches. Retry with a fresh session and check normalization before reporting
+a defect.
 
 ## regression.js
 

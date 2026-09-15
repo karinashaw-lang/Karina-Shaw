@@ -21,18 +21,30 @@ UA = ('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 '
 DEFAULT_HOSTS = ('leginfo.legislature.ca.gov', 'law.onecle.com',
                  'www.law.cornell.edu', 'uscode.house.gov')
 
-def norm(t):
+def norm(t, tag_repl=''):
     t = html.unescape(t)
     t = unicodedata.normalize('NFKC', t)
     for a, b in [('\u2018', "'"), ('\u2019', "'"), ('\u201c', '"'), ('\u201d', '"'),
                  ('\u201f', '"'), ('\u201e', '"'), ('\u2013', '-'), ('\u2014', '-'),
                  ('\u00a0', ' '), ('\u00ad', '')]:
         t = t.replace(a, b)
-    # Strip tags to nothing, not to a space: inserting a space splits words
-    # that markup had merely wrapped, and produces false mismatches.
-    t = re.sub(r'<[^>]+>', '', t)
+    t = re.sub(r'<[^>]+>', tag_repl, t)
     t = re.sub(r'\s+', ' ', t)
     return t.strip()
+
+def quote_present(body, quote):
+    """Neither way of stripping tags is right for every publisher.
+
+    Dropping them joins words that markup had merely wrapped — Cornell puts a
+    defined term in its own element mid-sentence, so a space would split it.
+    Replacing them with a space is what separates list items that leginfo puts
+    in one element each, where dropping them yields ";4. Names". Both spellings
+    have produced a false mismatch, so accept the quote if either matches.
+    """
+    for repl in ('', ' '):
+        if norm(quote, repl) in norm(body, repl):
+            return True
+    return False
 
 def seed_leginfo(jar):
     subprocess.run(['curl', '-s', '-c', jar, '-A', UA, '-o', '/dev/null',
@@ -69,8 +81,7 @@ def main():
         if len(body) < 500:
             results.append((cid, host, url, quote, 'EMPTY', f'{len(body)} bytes'))
             continue
-        nb, nq = norm(body), norm(quote)
-        status = 'PASS' if nq and nq in nb else 'MISMATCH'
+        status = 'PASS' if quote.strip() and quote_present(body, quote) else 'MISMATCH'
         # A page with no statutory text at all is a broken citation, not a bad quote.
         if status == 'MISMATCH' and 'Please Select from the List below' in body:
             status = 'UNRESOLVED_URL'
