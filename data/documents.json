@@ -38674,5 +38674,50 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "public_entity_employer_claim_presentation_info_sheet",
+    "title": "Presenting a Claim to a Public-Entity Employer Before Suing Over a Termination (Government Claims Act, Gov. Code §§ 905, 905.2, 910, 911.2, 911.4, 913, 915, 935, 945.4, 945.6, 950.2; State of California v. Superior Court (Bodde); City of Stockton v. Superior Court; DiCampli-Mintz v. County of Santa Clara; Williams v. Horvath) — Information Sheet",
+    "description": "How the California Government Claims Act's written-claim requirement operates in front of a suit for money against a public-entity employer arising out of a separation — which claims must be presented, to whom, by when, the wage exception in section 905, subdivision (c), late-claim relief, the deadline to sue, and the reach of the bar to individually named public employees.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "gcapres_scope_and_use",
+      "gcapres_prerequisite_to_suit_945_4",
+      "gcapres_which_claims_must_be_presented_905_905_2",
+      "gcapres_contents_of_the_claim_910",
+      "gcapres_deadlines_911_2",
+      "gcapres_delivery_915_and_registry_wording",
+      "gcapres_late_claim_relief_911_4_946_6",
+      "gcapres_rejection_notice_and_suit_deadline_913_945_6",
+      "gcapres_reaches_individual_public_employees_950_2",
+      "gcapres_local_charter_procedures_935",
+      "gcapres_element_of_the_cause_of_action_bodde",
+      "gcapres_contract_claims_city_of_stockton",
+      "gcapres_designated_recipient_dicampli_mintz",
+      "gcapres_federal_civil_rights_claims_williams_horvath",
+      "gcapres_limits_and_no_advice"
+    ],
+    "fields": [
+      {
+        "id": "employeeName",
+        "label": "Former public employee's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "publicEntityName",
+        "label": "Public entity employer name",
+        "placeholder": "County of Example",
+        "required": true
+      },
+      {
+        "id": "separationDate",
+        "label": "Date employment ended",
+        "placeholder": "March 3, 2026",
+        "required": true
+      }
+    ]
   }
 ]
