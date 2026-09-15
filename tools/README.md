@@ -88,6 +88,23 @@ no statutory text at all — a broken citation, not a wrong quote. `EMPTY`
 usually means a session expired or a fetch failed. Only `MISMATCH` is a claim
 about the quote, and even then check normalization first.
 
+**Assume a high failure rate is this script before you assume it is the
+corpus.** The first full run reported 159 EMPTY and 51 MISMATCH in its first
+1,631 checks. Every one was a bug here:
+
+- All 159 EMPTY were leginfo at exactly 0 bytes. The JSF session had expired
+  and the re-seed only fired on a loop counter, so once a session died every
+  later fetch failed the same way. It now re-seeds and retries the moment a
+  leginfo body comes back empty.
+- The mismatches were PDF extractor disagreement. `extract_pdf` returned the
+  first extractor that succeeded, while a quote had been verified against the
+  other — one inserts mid-word spaces, the other preserves justified spacing.
+  It now returns both texts and accepts a quote found in either.
+
+After the fix the same population came back 1,315 PASS to 1 MISMATCH. A
+failure rate above a percent or so is a signal to debug the checker, not to
+start writing up findings.
+
 Run `--hosts courtlistener` only when no expansion workers are running: they
 share that quota, and exhausting it stops their research mid-document.
 

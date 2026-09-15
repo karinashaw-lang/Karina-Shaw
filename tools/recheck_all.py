@@ -61,53 +61,55 @@ def seed_leginfo():
 
 
 def extract_pdf(path):
-    """Text layer of a PDF, via whichever extractor works.
+    """Every text layer we can get from a PDF, not just the first.
 
-    Returns '' if neither does. A slip opinion or a rules volume fetched as
-    text looks like an empty page, so without this every PDF citation reports
-    a false EMPTY.
+    The two extractors disagree — one inserts mid-word spaces, the other
+    preserves justified spacing — so a quote verified against one can fail
+    against the other. Returning both and accepting either keeps that
+    disagreement from being reported as a corpus defect.
     """
-    for mod, fn in (('pypdf', 'pypdf'), ('pdfminer.high_level', 'pdfminer')):
-        try:
-            if fn == 'pypdf':
-                import pypdf
-                r = pypdf.PdfReader(path)
-                return '\n'.join((pg.extract_text() or '') for pg in r.pages)
-            from pdfminer.high_level import extract_text
-            return extract_text(path) or ''
-        except Exception:
-            continue
-    return ''
+    texts = []
+    try:
+        import pypdf
+        r = pypdf.PdfReader(path)
+        texts.append('\n'.join((pg.extract_text() or '') for pg in r.pages))
+    except Exception:
+        pass
+    try:
+        from pdfminer.high_level import extract_text
+        texts.append(extract_text(path) or '')
+    except Exception:
+        pass
+    return [t for t in texts if t]
 
 
 def fetch(url, host):
+    """Candidate texts for a URL. A list, because a PDF yields two."""
     cmd = ['curl', '-s', '-L', '--max-time', '90', '-A', UA]
     if 'leginfo' in host:
         cmd += ['-b', JAR, '-c', JAR]
     if 'courtlistener' in host:
         cmd += ['-H', 'Referer: https://www.courtlistener.com/',
                 '-H', 'Accept: text/html,application/xhtml+xml']
-    is_pdf = url.lower().endswith('.pdf') or 'pdf' in url.lower()
-    if is_pdf:
+    if url.lower().endswith('.pdf') or 'pdf' in url.lower():
         tmp = '/tmp/recheck_fetch.pdf'
         subprocess.run(['rm', '-f', tmp])
         try:
             subprocess.run(cmd + ['-o', tmp, url], capture_output=True, timeout=180)
         except Exception:
-            return ''
+            return []
         if not os.path.exists(tmp) or os.path.getsize(tmp) < 1000:
-            return ''
+            return []
         with open(tmp, 'rb') as f:
             head = f.read(5)
         if head[:4] != b'%PDF':
-            # Served something other than a PDF; read it as text instead.
-            return open(tmp, 'rb').read().decode('utf-8', 'replace')
+            return [open(tmp, 'rb').read().decode('utf-8', 'replace')]
         return extract_pdf(tmp)
     try:
-        return subprocess.run(cmd + [url], capture_output=True, text=True,
-                              timeout=90).stdout
+        return [subprocess.run(cmd + [url], capture_output=True, text=True,
+                               timeout=90).stdout]
     except Exception:
-        return ''
+        return []
 
 
 def main():
@@ -152,24 +154,29 @@ def main():
     counts = collections.Counter()
     for n, url in enumerate(todo, 1):
         host = urlparse(url).netloc
-        # One JSF session does not survive a long run; re-seed periodically.
-        if 'leginfo' in host and n % 50 == 0:
+        bodies = fetch(url, host)
+        if 'leginfo' in host and not any(len(b) >= 500 for b in bodies):
+            # An empty body here means the JSF session expired, not that the
+            # section is gone — and every later fetch would fail the same way.
             seed_leginfo()
-        body = fetch(url, host)
+            time.sleep(1)
+            bodies = fetch(url, host)
+        best = max((len(b) for b in bodies), default=0)
+        joined = '\n'.join(bodies)
         for cid, quote, cite in by_url[url]:
-            if len(body) < 500:
+            if best < 500:
                 status = 'EMPTY'
-            elif 'Please Select from the List below' in body:
+            elif 'Please Select from the List below' in joined:
                 # No statutory text on the page at all: the citation does not
                 # resolve. That is a broken link, not a wrong quote.
                 status = 'UNRESOLVED_URL'
-            elif quote_present(body, quote):
+            elif any(quote_present(b, quote) for b in bodies):
                 status = 'PASS'
             else:
                 status = 'MISMATCH'
             counts[status] += 1
             fh.write(json.dumps({'clause': cid, 'url': url, 'cite': cite,
-                                 'status': status, 'bytes': len(body),
+                                 'status': status, 'bytes': best,
                                  'quote': quote[:400]}) + '\n')
         fh.flush()
         if n % 100 == 0:
