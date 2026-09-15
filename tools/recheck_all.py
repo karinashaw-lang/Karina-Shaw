@@ -38,6 +38,15 @@ def norm(t, tag_repl=''):
                  ('‟', '"'), ('„', '"'), ('–', '-'), ('—', '-'),
                  (' ', ' '), ('­', '')]:
         t = t.replace(a, b)
+    # A footnote-marker superscript like <sup>[10]</sup> sits inline right
+    # after the word it follows, with no separating space. Stripping only
+    # the <sup> tags (the general case below) leaves its content -- "[10]"
+    # -- as literal text in the middle of otherwise-continuous prose, which
+    # a clean stored quote never contains. This is narrow on purpose: it
+    # only removes a sup element whose content is a bare or bracketed
+    # number, the recognizable shape of a footnote reference, not a sup
+    # tag that contains something else.
+    t = re.sub(r'<sup>\s*\[?\d+\]?\s*</sup>', '', t)
     t = re.sub(r'<[^>]+>', tag_repl, t)
     t = re.sub(r'\s+', ' ', t)
     return t.strip()
