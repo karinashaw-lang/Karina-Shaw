@@ -134,6 +134,54 @@ start writing up findings.
 Run `--hosts courtlistener` only when no expansion workers are running: they
 share that quota, and exhausting it stops their research mid-document.
 
+As of the session that added `courtlistener_recheck_results.jsonl` below,
+`--hosts courtlistener` no longer works at all: CourtListener's AWS WAF
+returns a JavaScript bot-challenge page to `curl` for that host, even on a
+single isolated request, so every result in a curl-based run against it is a
+false MISMATCH (the "body" fetched is a ~2.4 KB challenge stub, not the
+opinion). Statutory hosts are unaffected. Verifying CourtListener-hosted
+citations now goes through the CourtListener MCP tools instead (see below),
+not this script.
+
+## courtlistener_recheck_results.jsonl / courtlistener_recheck_todo.json
+
+A from-scratch re-verification of every CourtListener-hosted citation in the
+corpus (`opinion_id`s extracted from stored URLs), run via the CourtListener
+MCP tools (`read_document`, `call_endpoint`) rather than curl, since those
+tools use CourtListener's real API and are not WAF-gated the way `curl`
+against `www.courtlistener.com` is.
+
+`courtlistener_recheck_results.jsonl` accumulates one JSON line per citation
+already checked (`clause`, `url`, `cite`, `case`, `status`, `quote`).
+`courtlistener_recheck_todo.json` lists the opinion URLs (grouped, with their
+citing clauses) not yet checked. A firing pulls a batch off the todo file,
+appends confirmed results to the results file, and commits both — so the
+work resumes exactly where it left off across sessions and container
+restarts, the same resumability pattern as `recheck_all.py`'s own JSONL, just
+split into two files because the MCP tools can only be called from an agent
+turn, not from a standalone Python subprocess the way curl can.
+
+The binding constraint is CourtListener's own account-wide API quota (50
+requests/hour, 125/day, shared across every tool that hits it — check with
+`get_api_usage` before a run) — not compute. Running many verification agents
+in parallel against it does not go faster; it just contends for the same
+budget and produces a wall of quota-exhaustion errors instead of results,
+which is what happened the first time this was tried (parallel batches, most
+of it wasted). One agent, one opinion at a time, checking quota headroom
+first, is the only version of this that actually makes progress.
+
+A MISMATCH from this pass is not automatically a corpus defect — the same
+false-failure sources documented above for `recheck_all.py` apply (PDF
+extraction quirks, line-number noise), plus a class specific to RECAP
+federal-pleading text: every line is numbered 1-28, and that can collide
+with a real short number sitting next to one (e.g. "9 U.S.C." wrapped across
+a line boundary reads as two adjacent stray digits). Investigate before
+concluding the corpus is wrong; two confirmed real defects this way
+(`patentassign_hired_to_invent`'s Standard Parts quote — wrong quote-mark
+style, then a separately-discovered silent truncation — and
+`mandatoryarb_current_status`'s citation URL pointing at a docket listing
+page instead of the actual order) are already fixed as of this writing.
+
 ## regression.js
 
 Headless browser check of the application against the current corpus.
