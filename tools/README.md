@@ -65,6 +65,32 @@ them yields ";4. Names". The script now accepts a quote if either spelling
 matches. Retry with a fresh session and check normalization before reporting
 a defect.
 
+## recheck_all.py
+
+```
+python3 tools/recheck_all.py [--hosts statutory|courtlistener|all] [--out PATH] [--delay SECONDS]
+```
+
+The whole-corpus version of the sampler. Two things make a full pass
+practical: citations share URLs (about 2.7 quotes per unique URL), so each
+URL is fetched once and every quote citing it is checked against that one
+fetch; and results are appended to a JSONL as they are produced, so a
+container restart resumes rather than starting over — pass the same `--out`
+and it skips URLs already recorded.
+
+Handles PDFs, which matters more than it sounds: a slip opinion or the CACI
+volume fetched as text looks like an empty page, so without extraction every
+PDF citation reports a false `EMPTY`. A smoke run before that was added
+produced 48 of them.
+
+Statuses are deliberately distinct. `UNRESOLVED_URL` means the page carried
+no statutory text at all — a broken citation, not a wrong quote. `EMPTY`
+usually means a session expired or a fetch failed. Only `MISMATCH` is a claim
+about the quote, and even then check normalization first.
+
+Run `--hosts courtlistener` only when no expansion workers are running: they
+share that quota, and exhausting it stops their research mid-document.
+
 ## regression.js
 
 Headless browser check of the application against the current corpus.
