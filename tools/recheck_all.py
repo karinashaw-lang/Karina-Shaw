@@ -43,13 +43,40 @@ def norm(t, tag_repl=''):
     return t.strip()
 
 
+def _segments_in_order(body, segments):
+    pos = 0
+    for seg in segments:
+        idx = body.find(seg, pos)
+        if idx == -1:
+            return False
+        pos = idx + len(seg)
+    return True
+
+
 def quote_present(body, quote):
     """Accept either way of stripping tags.
 
     Dropping them joins words that markup merely wrapped; replacing them with
     a space separates list items a publisher puts one per element. Both
     spellings have produced a false mismatch against a quote that was correct.
+
+    A quote containing an explicit ellipsis ("..." or "…") is a deliberate,
+    honest signal that the author skipped intervening text -- a normal way to
+    quote a long passage accurately, not an error. Such a quote is checked as
+    an ordered sequence of segments that must each appear in the body, in
+    order, rather than as one contiguous substring. This only ever accepts
+    quotes the author explicitly marked as elided; a quote with no ellipsis
+    is unaffected and still requires an exact contiguous match.
     """
+    has_ellipsis = bool(re.search(r'\.\s*\.\s*\.|…', quote))
+    segments = [s for s in re.split(r'\s*(?:\.\s*\.\s*\.|…)\s*', quote) if s.strip()]
+    if has_ellipsis and segments:
+        # An ellipsis at either end (an open-ended prefix or suffix quote)
+        # produces just one segment here -- still segment mode, since the
+        # alternative is testing the literal "..." characters against the
+        # body, which is exactly the bug this exists to avoid.
+        return any(_segments_in_order(norm(body, r), [norm(s, r) for s in segments])
+                   for r in ('', ' '))
     return any(norm(quote, r) in norm(body, r) for r in ('', ' '))
 
 
