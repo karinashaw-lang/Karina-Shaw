@@ -38674,5 +38674,68 @@
         "required": true
       }
     ]
+  },
+  {
+    "id": "title_insurance_preliminary_report_info_sheet",
+    "title": "Title Insurance and the Preliminary Report — Information Sheet",
+    "description": "An informational sheet on California title insurance law (Insurance Code §§ 12340.1-12414.26): what the code means by title insurance, a title policy, an underwritten title company and an abstract of title; why Section 12340.11 makes a preliminary report an offer to insure rather than a representation about title; the decisions in Southland, Siegel, Soifer, Lawrence and White on reliance and abstractor liability; Quelimane on whether an insurer must agree to insure and on how far the Insurance Code displaces other state law; and the statutory rules on filed rates, referral inducements and escrow disbursement.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "titleins_recitals",
+      "titleins_what_title_insurance_is",
+      "titleins_who_may_transact",
+      "titleins_preliminary_report_statute",
+      "titleins_southland_abstract_distinction",
+      "titleins_siegel_purpose_of_the_search",
+      "titleins_soifer_two_routes",
+      "titleins_policy_alone_no_negligence",
+      "titleins_white_pre1982_reports",
+      "titleins_no_duty_to_issue",
+      "titleins_code_not_blanket_immunity",
+      "titleins_rate_filing",
+      "titleins_referral_inducements",
+      "titleins_escrow_disbursement_timing",
+      "titleins_ack"
+    ],
+    "fields": [
+      {
+        "id": "propertyAddress",
+        "label": "Property address",
+        "placeholder": "123 Main St, Springfield, CA",
+        "required": true
+      },
+      {
+        "id": "sellerName",
+        "label": "Seller's name",
+        "placeholder": "Pat Morgan",
+        "required": true
+      },
+      {
+        "id": "buyerName",
+        "label": "Buyer's name",
+        "placeholder": "Jordan Lee",
+        "required": true
+      },
+      {
+        "id": "titleCompanyName",
+        "label": "Title company or underwritten title company",
+        "placeholder": "Valley Title Company",
+        "required": true
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "placeholder": "September 15, 2026",
+        "required": true
+      },
+      {
+        "id": "cityState",
+        "label": "City and state signed",
+        "placeholder": "Sacramento, California",
+        "required": true
+      }
+    ]
   }
 ]
