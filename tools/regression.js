@@ -11,17 +11,22 @@ const { chromium } = require('playwright');
 
   const cats = ['Hiring','During employment','Confidentiality & IP','Ending employment',
                 'Business Formation','Real Estate','Estate Planning','Family Law'];
+  const counts = [];
   for (const c of cats) {
     const n = await p.evaluate(c => state.documents.filter(d => d.categories.includes(c)).length, c);
-    console.log(`${n === 92 ? 'OK  ' : 'FAIL'} ${c}: ${n}`);
+    // Categories are kept level by the wave rotation, so they may differ by at
+    // most one. Deriving the floor keeps this from needing an edit every wave.
+    counts.push([c, n]);
   }
+  const lo = Math.min(...counts.map(x => x[1])), hi = Math.max(...counts.map(x => x[1]));
+  for (const [c, n] of counts) console.log(`${hi - lo <= 1 ? 'OK  ' : 'FAIL'} ${c}: ${n}`);
+  if (hi - lo > 1) console.log(`FAIL categories are not level: spread ${lo}..${hi}`);
   console.log(await p.evaluate(() => `corpus: ${state.documents.length} documents / ${state.clauses.length} clauses`));
 
-  // The five newest documents, assembled end to end
-  const newest = ['probate_sale_real_property_confirmation_info_sheet',
-                  'third_party_joinder_family_law_info_sheet',
-                  'employee_obligations_labor_code_article_3_info_sheet',
-                  'state_civil_service_appointment_info_sheet'];
+  // The most recently added documents, assembled end to end. Documents are
+  // appended, so the tail of the array is the newest wave — derived rather
+  // than hardcoded so this needs no edit as the corpus grows.
+  const newest = await p.evaluate(() => state.documents.slice(-4).map(d => d.id));
   for (const id of newest) {
     const r = await p.evaluate(id => {
       const doc = state.documents.find(d => d.id === id);
@@ -40,7 +45,7 @@ const { chromium } = require('playwright');
 
   // Full render through the real output path
   await p.evaluate(() => {
-    state.document = state.documents.find(d => d.id === 'state_civil_service_appointment_info_sheet');
+    state.document = state.documents[state.documents.length - 1];
     state.answers = {}; state.document.fields.forEach(f => { state.answers[f.id] = 'Acme Holdings LLC'; });
     renderOutput(); showScreen('screen-output');
   });

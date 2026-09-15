@@ -68,9 +68,15 @@ python3 -m http.server 8933 &
 NODE_PATH="$(npm root -g)" node tools/regression.js
 ```
 
-Confirms the per-category document counts, that the newest documents
+Confirms that the per-category document counts are level (the wave rotation
+keeps them within one of each other), that the most recently added documents
 assemble with no raw `{{field}}` placeholders in body or gap, that the output
 screen renders clause blocks and badges, and times the contract reader.
+
+It derives both the expected category spread and the documents to exercise
+from the corpus itself — documents are appended, so the tail of the array is
+the newest wave — rather than naming them, so it does not need editing as the
+corpus grows.
 
 Three console errors are expected and are artifacts of the sandbox, not
 defects: the Google Fonts stylesheet is deliberately aborted because the host
