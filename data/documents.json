@@ -39312,5 +39312,56 @@
         "required": false
       }
     ]
+  },
+  {
+    "id": "deceased_party_survival_termination_claim_info_sheet",
+    "title": "Death of a Party While a Termination Claim Is Alive: Survival of the Cause of Action, Who May Prosecute It, and the Damages That Remain (Code Civ. Proc. §§ 366.1, 377.11, 377.20, 377.21, 377.30-377.34, 377.40, 377.41; Prob. Code §§ 9351, 9370; County of Los Angeles v. Superior Court; Rubio v. CIA Wheel Group; Quiroz v. Seventh Avenue Center; Prilliman v. United Air Lines) — Information Sheet",
+    "description": "What the California survival statutes and published California opinions say when a former employee, or an individual employer, dies while a wrongful-termination, discrimination or unpaid-wage claim is alive: whether the claim is lost, who may commence or continue it, the declaration a successor in interest must file, the six-month filing extension, the damages that survive and the emotional-distress damages that do not, the pain-and-suffering window that closed on January 1, 2026, and the creditor-claim step when it is the employer who died.",
+    "categories": [
+      "Ending employment"
+    ],
+    "clauseOrder": [
+      "survclaim_scope_and_use",
+      "survclaim_not_lost_by_death_377_20_377_21",
+      "survclaim_who_takes_the_claim_377_30_377_11",
+      "survclaim_continuing_a_pending_action_377_31_377_33",
+      "survclaim_successor_declaration_377_32",
+      "survclaim_limitations_366_1",
+      "survclaim_damages_377_34a",
+      "survclaim_pain_and_suffering_window_377_34b",
+      "survclaim_enacted_text_spelling_defect",
+      "survclaim_county_of_los_angeles_harassment_estate",
+      "survclaim_rubio_punitive_damages_wrongful_termination",
+      "survclaim_survival_is_not_wrongful_death_quiroz",
+      "survclaim_prilliman_substitution_on_appeal",
+      "survclaim_when_the_employer_dies_377_40_377_41",
+      "survclaim_limits_and_no_advice"
+    ],
+    "fields": [
+      {
+        "id": "employeeName",
+        "label": "Former employee's name",
+        "placeholder": "Maria Delgado",
+        "required": true
+      },
+      {
+        "id": "employerName",
+        "label": "Employer name",
+        "placeholder": "Northgate Components, Inc.",
+        "required": true
+      },
+      {
+        "id": "dateOfDeath",
+        "label": "Date of death",
+        "placeholder": "February 11, 2026",
+        "required": false
+      },
+      {
+        "id": "successorName",
+        "label": "Personal representative or successor in interest",
+        "placeholder": "Luis Delgado",
+        "required": false
+      }
+    ]
   }
 ]
