@@ -1,0 +1,79 @@
+# tools
+
+Maintenance scripts for the corpus. All are run from the repository root.
+
+## validate_corpus.py
+
+Corpus-wide integrity check. **Run after every merge, before committing.**
+
+```
+python3 tools/validate_corpus.py
+```
+
+Checks unique clause and document ids, unique document titles, that every
+`clauseOrder` id resolves, that no clause is orphaned, that every authority
+clause has a non-empty gap and at least one citation, that every citation has
+a url and a quote, that key order matches the documented schema for clauses,
+citations and documents, and that every `{{field}}` used in a body or gap is
+declared by each document that includes the clause. Every one of these has
+caught a real defect at least once.
+
+## merge_guard.py
+
+```
+python3 tools/merge_guard.py <pre-merge-commit>
+```
+
+Compares a pre-merge snapshot against the working tree and fails if any
+pre-existing clause or document was **modified or dropped**.
+
+This exists because merging a worker branch resolves conflicts in the two
+large JSON arrays by union — appending items whose ids are new and otherwise
+keeping the current copy. That is correct for additions, which is all a
+worker normally produces, but it silently reverts *edits to clauses that
+already existed on both sides*, with no conflict reported. A gap note added
+during expansion was lost that way once. Run this whenever an edit to an
+existing clause is in flight, and prefer to make corpus-wide corrections
+while no workers are running.
+
+## recheck_citations.py
+
+```
+python3 tools/recheck_citations.py [N] [host-substring ...]
+```
+
+Re-fetches stored citation URLs and re-checks that each quote is still a
+verbatim substring of what comes back.
+
+Quote verification at write time proves a quote was in text the author
+fetched; it cannot tell you whether the stored URL still returns that text.
+The first sampled run found a citation whose URL resolves to a version-picker
+rather than to statutory text, because two versions of the section are on
+file and the publisher disambiguates them only through a form submission.
+
+Defaults to statutory publishers. Pass `courtlistener` deliberately and only
+when no expansion workers are running, since they share that quota.
+
+Read failures sceptically: in the first run, three "empty" results and one
+"mismatch" were defects in the script — a reused session that expired, and a
+normalizer that inserted a space where markup was stripped — not in the
+corpus. Retry with a fresh session and check normalization before reporting.
+
+## regression.js
+
+Headless browser check of the application against the current corpus.
+
+```
+python3 -m http.server 8933 &
+NODE_PATH="$(npm root -g)" node tools/regression.js
+```
+
+Confirms the per-category document counts, that the newest documents
+assemble with no raw `{{field}}` placeholders in body or gap, that the output
+screen renders clause blocks and badges, and times the contract reader.
+
+Three console errors are expected and are artifacts of the sandbox, not
+defects: the Google Fonts stylesheet is deliberately aborted because the host
+is blocked, `config.js` is absent by design (it is gitignored so keys never
+enter the repository), and the Supabase client on jsDelivr is unreachable —
+it would only be loaded if `config.js` existed.
