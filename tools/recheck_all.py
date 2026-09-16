@@ -89,6 +89,45 @@ def _segments_in_order(body, segments):
     return True
 
 
+def _bracket_case_variants(quote):
+    """A legal quote often brackets a single letter to show it was
+    recapitalized to fit the quoting sentence, e.g. "[W]e are committed"
+    where the source reads "we are committed" mid-sentence (or the reverse,
+    lowercasing a letter that was capitalized in the source). Both spellings
+    -- the bracketed letter kept as-is, and its case flipped -- are
+    legitimate; this returns every variant worth trying, not a single guess.
+    """
+    variants = [quote]
+    if '[' not in quote:
+        return variants
+    for flip in (str.upper, str.lower):
+        v = re.sub(r'\[([A-Za-z])\]', lambda m: flip(m.group(1)), quote)
+        if v not in variants:
+            variants.append(v)
+    return variants
+
+
+def _quote_present_one(body, quote):
+    # The three dots must be strictly contiguous (no whitespace between
+    # them). A looser pattern that tolerated whitespace between dots could
+    # greedily match a real sentence-ending period plus two dots of an
+    # adjacent ellipsis ("...unexpired term. ... We are..." -> matches
+    # "term[.] [.][.]", leaving a stray dot stuck to the next segment) --
+    # confirmed on Hartman Ranch Co. v. Associated Oil Co. Tight dots avoid
+    # that ambiguity entirely, since a lone sentence period never has two
+    # more dots immediately attached to it.
+    has_ellipsis = bool(re.search(r'\.\.\.|…', quote))
+    segments = [s for s in re.split(r'\s*(?:\.\.\.|…)\s*', quote) if s.strip()]
+    if has_ellipsis and segments:
+        # An ellipsis at either end (an open-ended prefix or suffix quote)
+        # produces just one segment here -- still segment mode, since the
+        # alternative is testing the literal "..." characters against the
+        # body, which is exactly the bug this exists to avoid.
+        return any(_segments_in_order(norm(body, r), [norm(s, r) for s in segments])
+                   for r in ('', ' '))
+    return any(norm(quote, r) in norm(body, r) for r in ('', ' '))
+
+
 def quote_present(body, quote):
     """Accept either way of stripping tags.
 
@@ -103,17 +142,11 @@ def quote_present(body, quote):
     order, rather than as one contiguous substring. This only ever accepts
     quotes the author explicitly marked as elided; a quote with no ellipsis
     is unaffected and still requires an exact contiguous match.
+
+    A bracketed single letter (see _bracket_case_variants) is tried both
+    ways too, on top of whichever of the above applies.
     """
-    has_ellipsis = bool(re.search(r'\.\s*\.\s*\.|…', quote))
-    segments = [s for s in re.split(r'\s*(?:\.\s*\.\s*\.|…)\s*', quote) if s.strip()]
-    if has_ellipsis and segments:
-        # An ellipsis at either end (an open-ended prefix or suffix quote)
-        # produces just one segment here -- still segment mode, since the
-        # alternative is testing the literal "..." characters against the
-        # body, which is exactly the bug this exists to avoid.
-        return any(_segments_in_order(norm(body, r), [norm(s, r) for s in segments])
-                   for r in ('', ' '))
-    return any(norm(quote, r) in norm(body, r) for r in ('', ' '))
+    return any(_quote_present_one(body, v) for v in _bracket_case_variants(quote))
 
 
 def seed_leginfo():
