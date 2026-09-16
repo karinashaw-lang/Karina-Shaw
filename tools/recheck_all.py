@@ -74,6 +74,11 @@ def norm(t, tag_repl=''):
     # just a third HTML shape for the same kind of page-break marker, so it
     # gets the same treatment: drop the whole element, not just its tags.
     t = re.sub(r'<span[^>]*class="star-pagination"[^>]*>[\s\S]*?</span>', '', t)
+    # Some opinions mark footnote references with a <footnotemark> element
+    # instead of <sup>, e.g. "lawful expectations.<footnotemark>24</footnotemark>
+    # The courts..." -- same problem, same fix: the content is always a bare
+    # footnote number, never prose, so drop the whole element.
+    t = re.sub(r'<footnotemark>[\s\S]*?</footnotemark>', '', t)
     t = re.sub(r'<[^>]+>', tag_repl, t)
     t = re.sub(r'\s+', ' ', t)
     return t.strip()
