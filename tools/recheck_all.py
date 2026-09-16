@@ -61,6 +61,13 @@ def norm(t, tag_repl=''):
     # so dropping that whole span removes the injected header without
     # touching anything else.
     t = re.sub(r'\x0c[^\n]*\n', ' ', t)
+    # Some opinions mark star-pagination with a <page-number> element instead
+    # of the more common <span class="star-pagination">, e.g.
+    # "plaintiff has<page-number ...>*484</page-number>alleged" -- no space
+    # on either side, so stripping just the tags (the general case below)
+    # leaves "*484" splicing into the middle of a word boundary. Its content
+    # is always a page marker, never prose, so the whole element goes.
+    t = re.sub(r'<page-number[^>]*>.*?</page-number>', '', t)
     t = re.sub(r'<[^>]+>', tag_repl, t)
     t = re.sub(r'\s+', ' ', t)
     return t.strip()
