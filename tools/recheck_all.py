@@ -67,7 +67,13 @@ def norm(t, tag_repl=''):
     # on either side, so stripping just the tags (the general case below)
     # leaves "*484" splicing into the middle of a word boundary. Its content
     # is always a page marker, never prose, so the whole element goes.
-    t = re.sub(r'<page-number[^>]*>.*?</page-number>', '', t)
+    t = re.sub(r'<page-number[^>]*>[\s\S]*?</page-number>', '', t)
+    # The most common star-pagination marker is a <span class="star-pagination">
+    # wrapping the page number, e.g. "...instructing<span class="star-pagination">
+    # *483</span>the jury..." -- same problem as <sup> and <page-number> above,
+    # just a third HTML shape for the same kind of page-break marker, so it
+    # gets the same treatment: drop the whole element, not just its tags.
+    t = re.sub(r'<span[^>]*class="star-pagination"[^>]*>[\s\S]*?</span>', '', t)
     t = re.sub(r'<[^>]+>', tag_repl, t)
     t = re.sub(r'\s+', ' ', t)
     return t.strip()
