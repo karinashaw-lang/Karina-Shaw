@@ -38,6 +38,12 @@ def norm(t, tag_repl=''):
                  ('‟', '"'), ('„', '"'), ('–', '-'), ('—', '-'),
                  (' ', ' '), ('­', '')]:
         t = t.replace(a, b)
+    # A parenthetical dash is sometimes written with surrounding spaces
+    # ("time — for example") and sometimes as a bare hyphen with none
+    # ("time-for example") -- the same punctuation, a formatting choice, not
+    # a difference in what was said. Collapsing any whitespace that sits
+    # right against a hyphen makes both spellings compare equal.
+    t = re.sub(r'\s*-\s*', '-', t)
     # A footnote-marker superscript like <sup>[10]</sup> sits inline right
     # after the word it follows, with no separating space. Stripping only
     # the <sup> tags (the general case below) leaves its content -- "[10]"
@@ -47,6 +53,14 @@ def norm(t, tag_repl=''):
     # number, the recognizable shape of a footnote reference, not a sup
     # tag that contains something else.
     t = re.sub(r'<sup>\s*\[?\d+\]?\s*</sup>', '', t)
+    # A PDF-to-text page break leaves a form-feed character immediately
+    # followed by that page's running header (page number and case name,
+    # e.g. "\x0c6                 NETCHOICE, LLC V. BONTA"), which then
+    # splices into the sentence straddling the page boundary. The header
+    # line is exactly the text between the form feed and the next newline,
+    # so dropping that whole span removes the injected header without
+    # touching anything else.
+    t = re.sub(r'\x0c[^\n]*\n', ' ', t)
     t = re.sub(r'<[^>]+>', tag_repl, t)
     t = re.sub(r'\s+', ' ', t)
     return t.strip()
