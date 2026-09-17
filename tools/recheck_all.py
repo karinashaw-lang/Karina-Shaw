@@ -44,6 +44,13 @@ def norm(t, tag_repl=''):
     # a difference in what was said. Collapsing any whitespace that sits
     # right against a hyphen makes both spellings compare equal.
     t = re.sub(r'\s*-\s*', '-', t)
+    # When a quotation ends right where an outer quotation also closes, some
+    # sources render the two closing marks flush against each other
+    # ("faith.'\"") while others (and our own stored quotes) insert a thin
+    # space for readability ("faith.' \""). Same punctuation either way, so
+    # collapsing whitespace strictly between two quote characters makes both
+    # spellings compare equal.
+    t = re.sub(r'''(?<=['"])\s+(?=['"])''', '', t)
     # A footnote-marker superscript like <sup>[10]</sup> sits inline right
     # after the word it follows, with no separating space. Stripping only
     # the <sup> tags (the general case below) leaves its content -- "[10]"
