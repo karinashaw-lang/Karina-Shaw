@@ -94,6 +94,15 @@ def norm(t, tag_repl=''):
     t = re.sub(r'<a[^>]*class="page-label"[^>]*>[\s\S]*?</a>', '', t)
     t = re.sub(r'<[^>]+>', tag_repl, t)
     t = re.sub(r'\s+', ' ', t)
+    # An inline emphasis element sitting flush against trailing punctuation
+    # ("...overtime hours</em>; (2)...") leaves the source's indentation
+    # whitespace stranded between the word and the punctuation once tags are
+    # stripped ("hours ; (2)"), even though the rendered prose never has a
+    # space before a semicolon, comma, period, colon, closing paren or
+    # bracket. Unlike a mid-word line-wrap hyphen, there's no ambiguity here:
+    # real prose never puts whitespace directly before this punctuation, so
+    # collapsing it is always correct.
+    t = re.sub(r'\s+([;:,.)\]])', r'\1', t)
     return t.strip()
 
 
