@@ -86,6 +86,12 @@ def norm(t, tag_repl=''):
     # The courts..." -- same problem, same fix: the content is always a bare
     # footnote number, never prose, so drop the whole element.
     t = re.sub(r'<footnotemark>[\s\S]*?</footnotemark>', '', t)
+    # A fourth HTML shape for the same star-pagination/page-break marker:
+    # some opinions use an anchor like <a class="page-label" ...>*668</a>
+    # dropped inline mid-sentence ("...very<a class="page-label" ...>*668</a>
+    # threshold..."), no space on either side. Same treatment as the other
+    # three shapes above: its content is always a page marker, never prose.
+    t = re.sub(r'<a[^>]*class="page-label"[^>]*>[\s\S]*?</a>', '', t)
     t = re.sub(r'<[^>]+>', tag_repl, t)
     t = re.sub(r'\s+', ' ', t)
     return t.strip()
