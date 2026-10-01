@@ -207,6 +207,35 @@ h1{
   font-size:19px;
   margin:0 0 6px;
 }
+/* Discloses which law a document's citations actually rest on — most of
+   this corpus is California, some is federal, a handful mixes both.
+   Neutral styling on purpose: this isn't a quality signal like the
+   verified/unverified badges below, just a fact about sourcing. */
+.jurisdiction-pill{
+  display:inline-block;
+  font-family:'IBM Plex Mono', monospace;
+  font-size:10.5px;
+  letter-spacing:0.04em;
+  text-transform:uppercase;
+  color:var(--ink-soft);
+  background:var(--surface-2);
+  border:1px solid var(--line);
+  border-radius:999px;
+  padding:2px 9px;
+  margin-left:9px;
+  vertical-align:middle;
+  cursor:help;
+}
+.jurisdiction-notice{
+  font-size:13.5px;
+  color:var(--ink-soft);
+  background:var(--surface);
+  border-left:3px solid var(--line);
+  border-radius:0 5px 5px 0;
+  padding:10px 14px;
+  margin:-8px 0 20px;
+  max-width:560px;
+}
 .doc-card p{
   margin:0;
   font-size:14.5px;

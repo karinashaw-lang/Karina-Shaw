@@ -1,4 +1,4 @@
-const state = { documents: null, document: null, clauses: null, answers: {}, categoryFilter: null, edits: {}, editedClauseIds: new Set(), currentEntryId: null };
+const state = { documents: null, document: null, clauses: null, answers: {}, categoryFilter: null, edits: {}, editedClauseIds: new Set(), currentEntryId: null, jurisdictionByDoc: null };
 
 // Draft persistence. Local-only, one slot at a time — closing the tab
 // mid-wizard shouldn't lose someone's answers. localStorage can throw
@@ -680,6 +680,7 @@ async function init() {
   ]);
   state.documents = docs;
   state.clauses = clauseData.clauses;
+  buildJurisdictionIndex();
   renderCategoryFilter();
   renderPicker();
   checkForDraft();
@@ -895,6 +896,96 @@ function showScreen(id) {
 // a reader's specific situation or suggest which document fits it;
 // every chip just shows or hides documents whose own, already-written
 // description already puts them in that category.
+// Most of this corpus is California law with federal law woven in where
+// the subject is federal (copyright, FLSA, I-9, CFAA, and the like) —
+// true of the library as a whole, but a reader looking at one document
+// has no way to tell which this one is. This derives it, per document,
+// from the same citations already shown on each clause's badge — never a
+// separate claim that could drift from what's actually cited.
+//
+// Classification rule, applied per citation on a document's authority
+// clauses: a citation counts as California if its case or cite text names
+// "Cal." or "California", or its url is a californa.gov legislative/court
+// host; it counts as federal if its text names a federal reporter (U.S.C.,
+// C.F.R., a federal circuit's "F.2d/3d/4th", a Supreme Court "U.S." cite,
+// "S. Ct.") or its url is a federal statutory/regulatory host (Cornell
+// LII, eCFR, govinfo, uscode.house.gov, supremecourt.gov). A citation
+// hosted on courtlistener.com is deliberately NOT treated as a federal
+// signal by itself — CourtListener hosts state and federal case law
+// alike, so the host says nothing about jurisdiction on its own; only the
+// reporter named in the citation text does. A document's overall label is
+// then: "CA" if every classified citation is California, "FED" if every
+// one is federal, "MIXED" if both appear, "OTHER" if none of its
+// citations matched either pattern (a document built entirely from
+// out-of-state case law used to illustrate a general doctrine — true
+// today only of the At-Will Employment clause's Toussaint/Lincoln
+// citations), or "NONE" if the document has no authority clauses to
+// classify at all (a plain form with no legal claim in it, like an
+// interview scorecard).
+const JURISDICTION_CA_RE = /\bCal\.|\bCalifornia\b/i;
+const JURISDICTION_CA_URL_RE = /leginfo\.legislature\.ca\.gov|courts\.ca\.gov/i;
+const JURISDICTION_FED_RE = /\bU\.S\.C\.|\bC\.F\.R\.|\bF\.\s*(?:2d|3d|4th|Supp)|\b\d+\s+U\.S\.\s+\d|\bCir\.\)|\bS\.\s*Ct\.|U\.S\. Const|\bFed\.\s*R\.|\bPub\.\s*L\.\s*No/i;
+const JURISDICTION_FED_URL_RE = /law\.cornell\.edu|ecfr\.gov|govinfo\.gov|uscode\.house\.gov|supremecourt\.gov/i;
+
+function classifyCitationJurisdiction(cit) {
+  const text = `${cit.case || ''} ${cit.cite || ''}`;
+  const url = cit.url || '';
+  const isCA = JURISDICTION_CA_RE.test(text) || JURISDICTION_CA_URL_RE.test(url);
+  const isFed = JURISDICTION_FED_RE.test(text) || JURISDICTION_FED_URL_RE.test(url);
+  if (isCA && !isFed) return 'CA';
+  if (isFed && !isCA) return 'FED';
+  if (isCA && isFed) return 'BOTH';
+  return 'OTHER';
+}
+
+function classifyDocumentJurisdiction(doc) {
+  const byId = new Map(state.clauses.map(c => [c.id, c]));
+  let hasAuthority = false, hasCA = false, hasFed = false, hasOther = false;
+  doc.clauseOrder.forEach(id => {
+    const clause = byId.get(id);
+    if (!clause || clause.kind !== 'authority') return;
+    hasAuthority = true;
+    (clause.citations || []).forEach(cit => {
+      const k = classifyCitationJurisdiction(cit);
+      if (k === 'CA') hasCA = true;
+      else if (k === 'FED') hasFed = true;
+      else if (k === 'BOTH') { hasCA = true; hasFed = true; }
+      else hasOther = true;
+    });
+  });
+  if (!hasAuthority) return 'NONE';
+  if (hasCA && hasFed) return 'MIXED';
+  if (hasCA) return 'CA';
+  if (hasFed) return 'FED';
+  return hasOther ? 'OTHER' : 'NONE';
+}
+
+const JURISDICTION_LABEL = {
+  CA: 'California',
+  FED: 'Federal',
+  MIXED: 'California & federal',
+  OTHER: 'General — not state-specific',
+};
+
+const JURISDICTION_NOTICE = {
+  CA: "This document's legal clauses are sourced primarily to California law. Outside California, some of what it cites may not apply.",
+  FED: "This document's legal clauses are sourced to federal law, which applies the same way in every state.",
+  MIXED: "This document's legal clauses are sourced to a mix of California and federal law. Outside California, the California-specific parts may not apply.",
+  OTHER: "This document's legal clauses illustrate a general doctrine using out-of-state case law as examples, not a California-specific rule.",
+};
+
+function buildJurisdictionIndex() {
+  state.jurisdictionByDoc = new Map(
+    state.documents.map(d => [d.id, classifyDocumentJurisdiction(d)])
+  );
+}
+
+function jurisdictionBadgeHTML(doc) {
+  const key = state.jurisdictionByDoc.get(doc.id);
+  if (!key || key === 'NONE') return '';
+  return `<span class="jurisdiction-pill" title="${JURISDICTION_NOTICE[key]}">${JURISDICTION_LABEL[key]}</span>`;
+}
+
 function renderCategoryFilter() {
   const el = document.getElementById('category-filter');
   el.innerHTML = '';
@@ -929,7 +1020,7 @@ function renderPicker() {
     card.type = 'button';
     card.innerHTML = `
       <div>
-        <h3>${doc.title}</h3>
+        <h3>${doc.title}${jurisdictionBadgeHTML(doc)}</h3>
         <p>${doc.description}</p>
       </div>
       <span class="go">START &rarr;</span>
@@ -949,6 +1040,15 @@ function renderWizard() {
   document.getElementById('wizard-title').textContent = state.document.title;
   document.getElementById('wizard-lede').textContent =
     "Fill in a few details — nothing here is legal advice, just fields the document needs.";
+
+  const jKey = state.jurisdictionByDoc.get(state.document.id);
+  const noticeEl = document.getElementById('wizard-jurisdiction');
+  if (jKey && jKey !== 'NONE') {
+    noticeEl.textContent = JURISDICTION_NOTICE[jKey];
+    noticeEl.hidden = false;
+  } else {
+    noticeEl.hidden = true;
+  }
 
   const fieldsEl = document.getElementById('wizard-fields');
   fieldsEl.innerHTML = '';
@@ -1026,6 +1126,15 @@ function renderOutput() {
   state.editedClauseIds = new Set();
 
   document.getElementById('output-meta').textContent = preparedForLine(state.answers);
+
+  const jKey = state.jurisdictionByDoc.get(state.document.id);
+  const jEl = document.getElementById('output-jurisdiction');
+  if (jKey && jKey !== 'NONE') {
+    jEl.textContent = JURISDICTION_NOTICE[jKey];
+    jEl.hidden = false;
+  } else {
+    jEl.hidden = true;
+  }
 
   const container = document.getElementById('output-clauses');
   container.innerHTML = '';
