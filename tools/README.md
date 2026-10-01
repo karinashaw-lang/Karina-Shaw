@@ -18,6 +18,28 @@ citations and documents, and that every `{{field}}` used in a body or gap is
 declared by each document that includes the clause. Every one of these has
 caught a real defect at least once.
 
+Also checks that every document has one or two categories (never zero, never
+three — the picker's filter is built on documents being in a small, known
+set of categories) and that every category name is one of the eight declared
+in the script. It then prints an explicit reconciliation: per-category counts
+sum to more than the document count whenever a document carries two
+categories (several "Hiring" documents are also "During employment", for
+instance) — real, not a bug, but easy to misread as one if the two numbers
+are quoted without the reason they differ.
+
+It also reports (does not fail on) coverage of `verification/*.md` against
+current document ids. That folder is **not** 1:1 with `documents.json` and
+its file count should never be quoted as a document-count proxy: most files
+are one per-document build note, but roughly twenty are batch or process
+notes — a wave's `granularity-pass-*`, a `checklist-audit-phase*`, a
+`nine-item-audit-*`, an N`th-document-*` milestone note, a `*-gap-fix` — that
+were never about a single document, and a further ~60 per-document notes
+predate a later id or filename change and no longer match by exact id. The
+report lists current documents with no matching note under any `_`/`-`
+normalization of their id, so that real gap (as of this writing, 57
+documents) stays visible instead of being masked by the folder's total count
+looking close enough to 740 to seem fine.
+
 ## merge_guard.py
 
 ```

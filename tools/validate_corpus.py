@@ -11,6 +11,19 @@ DRAFT = ['id', 'title', 'kind', 'body']
 CIT = ['case', 'cite', 'url', 'quote']
 DOC = ['id', 'title', 'description', 'categories', 'clauseOrder', 'fields']
 
+# The app has no other declaration of this list — renderCategoryFilter() in
+# app.js just derives categories live from documents.json. A category name
+# here that no longer matches any document's categories[] means a category
+# was renamed or dropped and this list went stale; a document carrying a
+# category not in this list means a typo or an undeclared 9th category, both
+# silent in the UI (the picker's filter just grows or shrinks a chip) and
+# both worth a deliberate decision rather than a silent commit.
+CATEGORIES = {
+    'Business Formation', 'Confidentiality & IP', 'During employment',
+    'Ending employment', 'Estate Planning', 'Family Law', 'Hiring',
+    'Real Estate',
+}
+
 def main():
     clauses = json.load(open('data/clauses.json'))['clauses']
     docs = json.load(open('data/documents.json'))
@@ -68,11 +81,61 @@ def main():
         undeclared = set(re.findall(r'\{\{(\w+)\}\}', text)) - declared
         check(not undeclared, f'{d["id"]} uses undeclared fields {sorted(undeclared)}')
 
+    # A document's categories[] drives both the picker's category filter and
+    # every "N documents across M categories" count anyone quotes about this
+    # project. Three things have to hold for those counts to mean what they
+    # say: every document is filed under at least one category (an empty
+    # list makes it unreachable from the filtered picker), under at most two
+    # (a guard against a data-entry slip, not a product decision — raise
+    # this deliberately, in this file, if a document ever needs three), and
+    # every category it names is one of the ones declared above.
+    check(not [d['id'] for d in docs if not d.get('categories')],
+          f'documents with no category: {[d["id"] for d in docs if not d.get("categories")][:5]}')
+    check(not [d['id'] for d in docs if len(d.get('categories', [])) > 2],
+          f'documents in more than two categories: {[d["id"] for d in docs if len(d.get("categories", [])) > 2][:5]}')
+    unknown_cats = {cat for d in docs for cat in d['categories']} - CATEGORIES
+    check(not unknown_cats, f'categories not in the declared list: {sorted(unknown_cats)}')
+
     cats = collections.Counter(cat for d in docs for cat in d['categories'])
+    multi = [d['id'] for d in docs if len(d.get('categories', [])) > 1]
     print(f'{len(docs)} documents / {len(clauses)} clauses '
           f'({len(auth)} authority, {len(clauses) - len(auth)} drafting), '
           f'{sum(len(c["citations"]) for c in auth)} citations')
     print(dict(sorted(cats.items())))
+    # The per-category counts above sum to more than len(docs) whenever a
+    # document carries two categories (handbook-style documents that are
+    # genuinely both "Hiring" and "During employment", for example) — that's
+    # expected, not a discrepancy, but it reads as one unless the gap is
+    # spelled out every time these numbers get quoted, so spell it out here.
+    check(sum(cats.values()) - len(docs) == len(multi),
+          'category-tag sum does not reconcile with document count + multi-category documents '
+          '(the two checks above should have already caught why)')
+    if multi:
+        print(f'({sum(cats.values())} category tags across {len(docs)} documents: '
+              f'{len(multi)} documents carry two categories — {", ".join(sorted(multi))})')
+
+    # verification/*.md holds free-form build notes, most but not all one
+    # per document, written over months of renames and batch/process audits
+    # (a "granularity-pass-*" or "checklist-audit-*" note isn't about any
+    # single document, and isn't meant to be). Its file count has never been
+    # a document-count proxy and asserting it against len(docs) would be
+    # asserting something false — so this reports coverage instead of
+    # failing the build: which current documents have no note under any
+    # normalization of their id, so a real gap stays visible without
+    # pretending the folder is 1:1 with documents.json.
+    import os
+    vdir = 'verification'
+    if os.path.isdir(vdir):
+        def norm(s):
+            return re.sub(r'[-_]', '', s.lower())
+        notes = {norm(f[:-3]) for f in os.listdir(vdir) if f.endswith('.md')}
+        uncovered = [d['id'] for d in docs if norm(d['id']) not in notes
+                     and norm(d['id'] + '_info_sheet') not in notes]
+        print(f'{len(notes)} files in {vdir}/ (not 1:1 with documents — see tools/README.md); '
+              f'{len(docs) - len(uncovered)}/{len(docs)} documents have a matching note by id')
+        if uncovered:
+            print(f'  documents with no matching note: {uncovered[:10]}'
+                  + (f' (+{len(uncovered) - 10} more)' if len(uncovered) > 10 else ''))
 
     if fails:
         print('\nFAILED:', file=sys.stderr)
