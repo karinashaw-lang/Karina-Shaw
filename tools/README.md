@@ -18,6 +18,18 @@ citations and documents, and that every `{{field}}` used in a body or gap is
 declared by each document that includes the clause. Every one of these has
 caught a real defect at least once.
 
+Also checks every verified authority clause's `checkedDate`: that it's
+present, a real calendar date, and not in the future (the key-order check
+above only catches the field missing entirely, not present-but-empty or
+garbage). And it enforces a recheck cadence — a verified clause whose
+`checkedDate` is 24+ months old fails the build, since "verified" against a
+source checked two years ago isn't the same claim as verified now; a
+non-fatal heads-up prints for anything 18–24 months out so a clause due for
+recheck shows up before it turns into a hard failure. Nothing in the corpus
+trips either check today (everything was checked within the last couple of
+months), but both are real, tested gates — see the script's own comments
+for the reasoning behind the two thresholds.
+
 Also checks that every document has one or two categories (never zero, never
 three — the picker's filter is built on documents being in a small, known
 set of categories) and that every category name is one of the eight declared

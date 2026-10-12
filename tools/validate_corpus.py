@@ -5,6 +5,7 @@ Exits non-zero and names the first failure. Everything here has caught a
 real defect at least once during corpus expansion.
 """
 import json, re, sys, collections
+from datetime import date
 
 AUTH = ['id', 'title', 'kind', 'status', 'checkedDate', 'body', 'gap', 'citations']
 DRAFT = ['id', 'title', 'kind', 'body']
@@ -56,6 +57,50 @@ def main():
     check(not [c['id'] for c in auth if not c.get('citations')],
           f'authority clauses with no citation: {[c["id"] for c in auth if not c.get("citations")][:5]}')
 
+    # A clause isn't "verified" because it has a citation — it's verified
+    # because that citation was actually checked, on an actual date. The
+    # AUTH key-order check above already catches a missing checkedDate key;
+    # this catches the key present but empty, malformed, or dated in the
+    # future, which that check can't see.
+    verified = [c for c in auth if c.get('status') == 'verified']
+    bad_date = []
+    for c in verified:
+        raw = (c.get('checkedDate') or '').strip()
+        try:
+            if date.fromisoformat(raw) > date.today():
+                bad_date.append(c['id'])
+        except ValueError:
+            bad_date.append(c['id'])
+    check(not bad_date,
+          f'verified clauses with a missing, malformed, or future checkedDate: {bad_date[:5]}')
+
+    # "Verified" doesn't mean verified forever. A citation checked two years
+    # ago could rest on a statute that's since been amended or a case that's
+    # since been limited or overruled, and nothing short of re-checking it
+    # catches that — so a clause's checkedDate has to actually stay recent,
+    # not just exist. STALE_MONTHS is a hard gate: past it, the commit
+    # fails until the clause is re-verified (even just confirming the
+    # source still reads the same way) and checkedDate is bumped.
+    # WARN_MONTHS is a non-fatal heads-up printed below, so a clause due
+    # for recheck shows up before the day it turns into a hard failure.
+    STALE_MONTHS = 24
+    WARN_MONTHS = 18
+
+    def months_old(checked_date):
+        today = date.today()
+        checked = date.fromisoformat(checked_date)
+        months = (today.year - checked.year) * 12 + (today.month - checked.month)
+        if today.day < checked.day:
+            months -= 1
+        return months
+
+    dated = [c for c in verified if c['id'] not in bad_date]
+    stale = [c['id'] for c in dated if months_old(c['checkedDate']) >= STALE_MONTHS]
+    check(not stale,
+          f'verified clauses last checked {STALE_MONTHS}+ months ago — due for recheck: {stale[:5]}')
+    approaching = [c['id'] for c in dated
+                   if WARN_MONTHS <= months_old(c['checkedDate']) < STALE_MONTHS]
+
     # Key order is part of the documented schema, so drift is a defect.
     check(all(list(c.keys()) == AUTH for c in auth),
           f'authority clauses with non-canonical key order: {[c["id"] for c in auth if list(c.keys()) != AUTH][:5]}')
@@ -101,6 +146,10 @@ def main():
     print(f'{len(docs)} documents / {len(clauses)} clauses '
           f'({len(auth)} authority, {len(clauses) - len(auth)} drafting), '
           f'{sum(len(c["citations"]) for c in auth)} citations')
+    if approaching:
+        print(f'{len(approaching)} verified clauses are {WARN_MONTHS}-{STALE_MONTHS} months since last '
+              f'check (not failing yet, but due for recheck soon): {approaching[:5]}'
+              + (f' (+{len(approaching) - 5} more)' if len(approaching) > 5 else ''))
     print(dict(sorted(cats.items())))
     # The per-category counts above sum to more than len(docs) whenever a
     # document carries two categories (handbook-style documents that are
