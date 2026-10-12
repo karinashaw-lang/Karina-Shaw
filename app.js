@@ -227,6 +227,7 @@ function renderLibrary() {
       viewBtn.type = 'button';
       viewBtn.className = 'secondary';
       viewBtn.textContent = 'View';
+      viewBtn.setAttribute('aria-label', `View ${entry.title}`);
       viewBtn.addEventListener('click', () => viewLibraryEntry(entry));
       btnGroup.appendChild(viewBtn);
 
@@ -234,6 +235,7 @@ function renderLibrary() {
       removeBtn.type = 'button';
       removeBtn.className = 'secondary';
       removeBtn.textContent = 'Remove';
+      removeBtn.setAttribute('aria-label', `Remove ${entry.title}`);
       removeBtn.addEventListener('click', () => {
         removeFromLibrary(entry.id);
         renderLibrary();
@@ -465,6 +467,7 @@ function renderInbox() {
       viewBtn.type = 'button';
       viewBtn.className = 'secondary';
       viewBtn.textContent = 'View';
+      viewBtn.setAttribute('aria-label', `View ${r.docTitle}`);
       viewBtn.addEventListener('click', () => viewLibraryEntry(r.entry));
       row.appendChild(viewBtn);
 
@@ -564,6 +567,7 @@ function renderPromises() {
     toggleBtn.type = 'button';
     toggleBtn.className = 'secondary';
     toggleBtn.textContent = p.done ? 'Mark open' : 'Mark done';
+    toggleBtn.setAttribute('aria-label', `${p.done ? 'Mark open' : 'Mark done'}: ${p.text}`);
     toggleBtn.addEventListener('click', () => { togglePromise(p.id); renderPromises(); });
     btnGroup.appendChild(toggleBtn);
 
@@ -571,6 +575,7 @@ function renderPromises() {
     removeBtn.type = 'button';
     removeBtn.className = 'secondary';
     removeBtn.textContent = 'Remove';
+    removeBtn.setAttribute('aria-label', `Remove: ${p.text}`);
     removeBtn.addEventListener('click', () => { removePromise(p.id); renderPromises(); });
     btnGroup.appendChild(removeBtn);
 
@@ -663,6 +668,7 @@ function renderRelationships() {
           viewBtn.type = 'button';
           viewBtn.className = 'secondary';
           viewBtn.textContent = 'View';
+          viewBtn.setAttribute('aria-label', `View ${a.docTitle}`);
           viewBtn.addEventListener('click', () => viewLibraryEntry(a.entry));
           row.appendChild(viewBtn);
 
@@ -886,9 +892,16 @@ function renderIncomingResults(passages) {
   });
 }
 
+// Moves focus to the new screen's heading on every navigation — without
+// this, a screen reader keeps announcing whatever was focused on the
+// screen that just disappeared, and a keyboard user's next Tab resumes
+// from that same stale spot instead of the top of what's now visible.
 function showScreen(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
+  const screen = document.getElementById(id);
+  screen.classList.add('active');
+  const heading = screen.querySelector('h1');
+  if (heading) heading.focus();
 }
 
 // Filter chips let someone narrow the list by category — a self-select
@@ -995,6 +1008,7 @@ function renderCategoryFilter() {
     const chip = document.createElement('button');
     chip.type = 'button';
     chip.className = 'chip' + (state.categoryFilter === value ? ' active' : '');
+    chip.setAttribute('aria-pressed', state.categoryFilter === value ? 'true' : 'false');
     chip.textContent = label;
     chip.addEventListener('click', () => {
       state.categoryFilter = value;
@@ -1023,7 +1037,7 @@ function renderPicker() {
         <h3>${doc.title}${jurisdictionBadgeHTML(doc)}</h3>
         <p>${doc.description}</p>
       </div>
-      <span class="go">START &rarr;</span>
+      <span class="go">START <span aria-hidden="true">&rarr;</span></span>
     `;
     card.addEventListener('click', () => {
       state.document = doc;
@@ -1059,7 +1073,7 @@ function renderWizard() {
     wrap.innerHTML = `
       <label for="field-${f.id}">${f.label}</label>
       <input id="field-${f.id}" name="${f.id}" placeholder="${f.placeholder || ''}"
-             ${f.required ? 'required' : ''} value="${existing}" />
+             ${f.required ? 'required aria-required="true"' : ''} value="${existing}" />
     `;
     fieldsEl.appendChild(wrap);
   });
@@ -1157,6 +1171,9 @@ function renderOutput() {
     body.className = 'body-text';
     body.contentEditable = 'true';
     body.spellcheck = false;
+    body.setAttribute('role', 'textbox');
+    body.setAttribute('aria-multiline', 'true');
+    body.setAttribute('aria-label', `Edit text of ${clause.title}`);
     body.textContent = clause.renderedBody;
     body.addEventListener('input', () => {
       state.edits[clause.id] = body.textContent;
@@ -1213,6 +1230,7 @@ function renderBadge(clause) {
   const chev = document.createElement('span');
   chev.className = 'chev';
   chev.textContent = '▸';
+  chev.setAttribute('aria-hidden', 'true');
   summary.appendChild(chev);
   el.appendChild(summary);
 

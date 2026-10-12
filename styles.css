@@ -9,7 +9,12 @@
   --line:#C6CBBA;
   --accent:#2B6E4F;
   --accent-ink:#0F3B29;
+  /* --flag is for dots/borders only — as text on --flag-soft or the page
+     background it's under 4.5:1 in light mode, same reason accent has its
+     own -ink shade. --flag-ink is that text-safe shade; dark mode's --flag
+     already clears 4.5:1 as text, so its -ink is just itself. */
   --flag:#AD5F27;
+  --flag-ink:#8A4015;
   --flag-soft:#F0DFCB;
   --accent-soft:#DCE8DE;
   --shadow: 0 1px 0 rgba(25,29,22,0.06);
@@ -25,6 +30,7 @@
     --accent:#59B183;
     --accent-ink:#BFE9CF;
     --flag:#E0975A;
+    --flag-ink:#E0975A;
     --flag-soft:#3A2A1B;
     --accent-soft:#1E2E22;
     --shadow: 0 1px 0 rgba(0,0,0,0.3);
@@ -40,12 +46,20 @@
   --accent:#59B183;
   --accent-ink:#BFE9CF;
   --flag:#E0975A;
+  --flag-ink:#E0975A;
   --flag-soft:#3A2A1B;
   --accent-soft:#1E2E22;
   --shadow: 0 1px 0 rgba(0,0,0,0.3);
 }
 
 *{ box-sizing:border-box; }
+.visually-hidden{
+  position:absolute;
+  width:1px; height:1px;
+  overflow:hidden;
+  clip:rect(0,0,0,0);
+  white-space:nowrap;
+}
 body{
   margin:0;
   background:var(--ground);
@@ -371,9 +385,9 @@ button:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
 }
 .badge.verified summary{ background:var(--accent-soft); color:var(--accent-ink); }
 .badge.verified summary::before{ background:var(--accent); }
-.badge.unverified summary{ background:var(--flag-soft); color:var(--flag); }
+.badge.unverified summary{ background:var(--flag-soft); color:var(--flag-ink); }
 .badge.unverified summary::before{ background:var(--flag); }
-.badge.edited summary{ background:var(--flag-soft); color:var(--flag); }
+.badge.edited summary{ background:var(--flag-soft); color:var(--flag-ink); }
 .badge.edited summary::before{ background:var(--flag); }
 .badge summary .chev{ margin-left:auto; opacity:.6; font-size:11px; }
 .badge[open] summary .chev{ transform:rotate(90deg); }
@@ -405,7 +419,7 @@ button:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
   font-size:13.5px;
   color:var(--ink-soft);
 }
-.badge .detail .gap b{ color:var(--flag); font-weight:600; }
+.badge .detail .gap b{ color:var(--flag-ink); font-weight:600; }
 .badge .detail a{ text-decoration-color:var(--accent); text-underline-offset:3px; }
 
 /* ---------- signature ---------- */
@@ -506,7 +520,7 @@ footer.hint{
   font-size:12px;
   letter-spacing:0.03em;
   text-transform:uppercase;
-  color:var(--flag);
+  color:var(--flag-ink);
   margin:0 0 14px;
 }
 .consistency-block{
@@ -520,7 +534,7 @@ footer.hint{
   font-family:'IBM Plex Mono', monospace;
   font-size:12.5px;
   letter-spacing:0.02em;
-  color:var(--flag);
+  color:var(--flag-ink);
   margin:0 0 8px;
   text-transform:uppercase;
 }

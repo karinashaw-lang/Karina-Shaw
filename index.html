@@ -23,9 +23,9 @@
     </div>
 
     <section id="screen-picker" class="screen active">
-      <h1>Choose a document</h1>
+      <h1 tabindex="-1">Choose a document</h1>
       <p class="lede">Every clause below either links to a real source, or says plainly that it hasn't been checked yet.</p>
-      <div id="draft-banner" class="draft-banner" hidden>
+      <div id="draft-banner" class="draft-banner" hidden aria-live="polite">
         <span id="draft-banner-text"></span>
         <div class="draft-banner-actions">
           <button type="button" class="secondary" id="draft-resume">Resume</button>
@@ -37,7 +37,7 @@
     </section>
 
     <section id="screen-wizard" class="screen">
-      <h1 id="wizard-title"></h1>
+      <h1 id="wizard-title" tabindex="-1"></h1>
       <p class="lede" id="wizard-lede"></p>
       <p class="jurisdiction-notice" id="wizard-jurisdiction" hidden></p>
       <form class="wizard" id="wizard-form">
@@ -51,8 +51,8 @@
 
     <section id="screen-output" class="screen">
       <div class="output-header">
-        <h1>Your document</h1>
-        <button type="button" class="secondary copy-btn" id="output-copy">Copy</button>
+        <h1 tabindex="-1">Your document</h1>
+        <button type="button" class="secondary copy-btn" id="output-copy" aria-live="polite">Copy</button>
       </div>
       <div class="doc-meta" id="output-meta"></div>
       <p class="jurisdiction-notice" id="output-jurisdiction" hidden></p>
@@ -61,13 +61,14 @@
 
       <div class="signature-section" id="signature-section">
         <h3>Signature</h3>
-        <p class="signature-note">A plain visual signature kept with this document, on this device — draw it below or just type your name. This isn't a certified e-signature service, and doesn't determine whether or how a signature here is legally binding.</p>
+        <p class="signature-note" id="signature-note">A plain visual signature kept with this document, on this device — draw it below or just type your name. This isn't a certified e-signature service, and doesn't determine whether or how a signature here is legally binding.</p>
         <div id="signature-display" class="signature-display" hidden></div>
         <div id="signature-input-area">
           <div class="signature-pad-wrap">
-            <canvas id="signature-pad" width="420" height="130"></canvas>
+            <canvas id="signature-pad" width="420" height="130" aria-label="Draw your signature" aria-describedby="signature-note"></canvas>
           </div>
           <div class="signature-controls">
+            <label for="signature-name" class="visually-hidden">Type your name as a signature</label>
             <input type="text" id="signature-name" placeholder="Or type your name instead" />
             <button type="button" class="secondary" id="signature-clear">Clear</button>
             <button type="button" class="primary" id="signature-save">Add signature</button>
@@ -85,9 +86,10 @@
     </section>
 
     <section id="screen-incoming" class="screen">
-      <h1>Read a contract</h1>
+      <h1 tabindex="-1">Read a contract</h1>
       <p class="lede">Paste in a contract, offer letter, or agreement someone sent you. Each passage is compared against Groundtruth's clause library — where it resembles something already checked, you'll see the law it rests on; where it doesn't, that's shown plainly too. This describes what the text resembles. It doesn't assess your contract or tell you what to do about it.</p>
       <form id="incoming-form" class="incoming-form">
+        <label for="incoming-text" class="visually-hidden">Contract text to read</label>
         <textarea id="incoming-text" class="incoming-text" rows="14" placeholder="Paste the text of a contract here..."></textarea>
         <div class="actions">
           <button type="button" class="secondary" id="incoming-back">Back</button>
@@ -98,7 +100,7 @@
     </section>
 
     <section id="screen-account" class="screen">
-      <h1>Account</h1>
+      <h1 tabindex="-1">Account</h1>
       <p class="lede">Signing in is optional. Nothing about generating or saving a document requires it — this only adds syncing your saved documents to other devices.</p>
       <div id="account-content"></div>
       <div class="actions">
@@ -107,12 +109,13 @@
     </section>
 
     <section id="screen-inbox" class="screen">
-      <h1>Inbox</h1>
+      <h1 tabindex="-1">Inbox</h1>
       <p class="lede">Every date typed into a saved document, gathered in one place — a start date, a notice date, an expiration date. This reports what's there and how far away it is. It doesn't flag anything as urgent or say what to do about it.</p>
 
       <h3 class="section-heading">Promises</h3>
       <p class="signature-note">A quick, informal commitment made or received — not a document, just something worth not forgetting. Typed in here, kept on this device.</p>
       <form id="promise-form" class="promise-form">
+        <label for="promise-text" class="visually-hidden">Promise or commitment to remember</label>
         <input type="text" id="promise-text" placeholder="&#8220;Friday, the deck, to Marcus&#8221;" />
         <button type="submit" class="primary">Add</button>
       </form>
@@ -127,7 +130,7 @@
     </section>
 
     <section id="screen-relationships" class="screen">
-      <h1>Relationships</h1>
+      <h1 tabindex="-1">Relationships</h1>
       <p class="lede">Every name typed into a saved document, gathered by who it is — so a company, landlord, employee, or counterparty who shows up in more than one place is easy to see, together.</p>
       <div id="relationships-content"></div>
       <div class="actions">
@@ -136,7 +139,7 @@
     </section>
 
     <section id="screen-library" class="screen">
-      <h1>My documents</h1>
+      <h1 tabindex="-1">My documents</h1>
       <p class="lede">Every document you generate is saved here automatically, in your browser only — nothing is sent anywhere. Use it to check whether a value you typed the same way across documents (a company name, a restriction period, a person's name) actually matches everywhere it appears.</p>
       <div id="library-sync-status"></div>
       <div id="library-consistency"></div>
