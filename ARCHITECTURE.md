@@ -1,0 +1,218 @@
+# Architecture
+
+Phase 0.1 orientation. Every path and schema below was confirmed by opening
+the real file, not inferred.
+
+## Repo map
+
+```
+index.html          App shell — 8 screens (picker, wizard, output, incoming,
+                     account, inbox, relationships, library), all in one
+                     page, switched by app.js's showScreen().
+app.js               All rendering, state, and feature logic (56.8K). No
+                     framework, no build step, no modules — one script tag.
+account.js           Optional cloud-sync layer, loaded after app.js. Wraps
+                     (not replaces) app.js's library functions so sync is
+                     purely additive. No-ops entirely when config.js absent.
+config.js            Gitignored. window.GROUNDTRUTH_CONFIG = {supabaseUrl,
+                     supabaseAnonKey}. Absent by default; see config.example.js.
+styles.css           All styling. CSS custom properties on :root for theming
+                     (light default, dark via prefers-color-scheme or
+                     [data-theme]).
+methodology.html     Static page documenting the 9-item verification check.
+changelog.html       Static page listing real defects caught and fixed (14
+                     entries as of this writing).
+data/documents.json  Array of 740 document definitions (1.6 MB).
+data/clauses.json    {"clauses": [...]} — 6,610 clause definitions (20.4 MB).
+supabase/schema.sql  One table (public.agreements) + 4 RLS policies + 1
+                     updated_at trigger. Run manually in the Supabase SQL
+                     editor; nothing in this repo applies it automatically.
+verification/*.md    744 free-form build notes. NOT 1:1 with documents.json
+                     — see tools/README.md. 683/740 documents have a note
+                     matching by id as of this writing.
+tools/               Maintenance scripts — see "Tooling" below.
+```
+
+No `package.json`, no bundler, no test runner, no CI config. `tools/*.py`
+run directly with system Python 3; `tools/regression.js` and
+`tools/fetch_via_browser.js` run with Node + a global Playwright install
+(`NODE_PATH="$(npm root -g)" node tools/regression.js`).
+
+## Data flow
+
+```
+data/documents.json ─┐
+data/clauses.json  ──┼─► app.js init() ─► state.documents, state.clauses
+                      │                 ─► buildJurisdictionIndex()
+                      │                 ─► buildClauseIndex() (TF-IDF, for
+                      │                    the contract reader)
+                      │
+                      ▼
+            renderPicker() / renderCategoryFilter()
+                      │ click a doc-card
+                      ▼
+            renderWizard() ──(submit)──► assembleDocument()
+                      │                    │ substitute({{field}}, answers)
+                      │                    ▼
+                      │              renderOutput() ──► addToLibrary()
+                      │                                    │
+                      │                                    ▼
+                      │                          localStorage["groundtruth-library"]
+                      │                                    │
+                      ▼                                    ▼
+            account.js wraps addToLibrary ──(if signed in)──► Supabase
+                                                              public.agreements
+```
+
+Clauses are never embedded in documents — `document.clauseOrder` is a list
+of clause ids resolved against `state.clauses` at render time
+(`assembleDocument()` in app.js). A clause used by zero documents, or a
+`clauseOrder` id that resolves to nothing, is a validate_corpus.py failure
+(orphan / dangling reference checks).
+
+## State: where things actually live
+
+| What | Where | Key | Notes |
+|---|---|---|---|
+| In-progress wizard answers | localStorage | `groundtruth-draft` | One slot. Wrapped in try/catch everywhere — a convenience, not a dependency. |
+| Saved/generated documents | localStorage | `groundtruth-library` | Array of `{id, documentId, title, answers, generatedAt, signature?}`. |
+| Lightweight promises (Inbox) | localStorage | `groundtruth-promises` | Flat list, no parsing, no reminders. |
+| Cloud mirror of the library | Supabase | `public.agreements` | Only exists when `config.js` is present and the user is signed in. RLS: `auth.uid() = user_id` on select/insert/update/delete. |
+| In-memory render state | JS | `state` object (app.js:1) | `documents`, `document` (current), `clauses`, `answers`, `categoryFilter`, `edits`, `editedClauseIds`, `currentEntryId`, `jurisdictionByDoc`, `clauseTokenSets`/`clauseIdf`/`clauseInvertedIndex` (contract-reader index). |
+
+Nothing server-side stores field *values* except the optional Supabase
+`agreements.answers` jsonb column, itself gated by RLS to its owning user.
+
+## Clause/document schema (confirmed by example)
+
+Canonical key order is enforced by validate_corpus.py (`AUTH`, `DRAFT`,
+`CIT`, `DOC` constants) — drift fails the build.
+
+**Document** (`data/documents.json`, flat array):
+```json
+{
+  "id": "nda",
+  "title": "Non-Disclosure Agreement",
+  "description": "A one-way confidentiality agreement — ...",
+  "categories": ["Confidentiality & IP"],
+  "clauseOrder": ["nda_definition", "nda_obligations", "nda_carveouts", "..."],
+  "fields": [
+    {"id": "companyName", "label": "Company name", "placeholder": "Acme, Inc.", "required": true}
+  ]
+}
+```
+`categories`: 1 or 2 entries, each one of the 8 names hardcoded in
+`validate_corpus.py`'s `CATEGORIES` set (not read from anywhere else —
+`renderCategoryFilter()` in app.js derives the picker's chips live from
+every document's `categories[]`, so this list and that derivation must be
+kept in sync by hand today). `fields`: today's field schema is exactly
+`{id, label, placeholder, required}` — flat, no types, no validation rules,
+no conditionals. This is the gap Phase 2's field schema closes.
+
+**Authority clause** (asserts a legal claim — citation, checked-date, badge):
+```json
+{
+  "id": "nda_definition",
+  "title": "What Counts as Confidential",
+  "kind": "authority",
+  "status": "verified",
+  "checkedDate": "2026-08-29",
+  "body": "This agreement can define {{companyName}}'s confidential information broadly — ...",
+  "gap": "This describes the federal Defend Trade Secrets Act's definition specifically. ...",
+  "citations": [
+    {
+      "case": "18 U.S.C. § 1839(3) (Cornell LII text)",
+      "cite": "U.S. Code, Defend Trade Secrets Act, definition of \"trade secret\"",
+      "url": "https://www.law.cornell.edu/uscode/text/18/1839",
+      "quote": "the term \"trade secret\" means all forms and types of financial, business ..."
+    }
+  ]
+}
+```
+Every authority clause currently has `status: "verified"` — the corpus has
+zero unverified authority clauses as of this writing. `status` is still a
+real field in the schema (the UI renders a distinct "Not yet verified"
+badge for anything else), it's just unused today.
+
+**Drafting clause** (no legal claim, no badge):
+```json
+{
+  "id": "nda_obligations",
+  "title": "Confidentiality Obligations",
+  "kind": "drafting",
+  "body": "{{employeeName}} will keep {{companyName}}'s confidential information private, ..."
+}
+```
+
+`{{fieldId}}` placeholders in `body` or `gap` are substituted at render time
+(`substitute()` in app.js) and must be declared in every document's
+`fields[]` that includes the clause — validate_corpus.py checks this per
+document, not per clause, since the same clause can be reused by documents
+with different field sets.
+
+## Jurisdiction badges (derived, never stored)
+
+`classifyCitationJurisdiction()` / `classifyDocumentJurisdiction()` in
+app.js pattern-match each authority clause's citation text/url against
+California vs. federal signals (see the long comment block above them in
+app.js for the exact regexes and the deliberate exclusion of
+`courtlistener.com` as a jurisdiction signal). Result: CA / FED / MIXED /
+OTHER / NONE per document, computed once at `init()` into
+`state.jurisdictionByDoc`, read by the picker badge, the wizard notice, and
+the output-screen line. There is no stored jurisdiction field anywhere in
+the data — this is intentional, so the label can never drift from what a
+document actually cites.
+
+## Verification & staleness gate
+
+`validate_corpus.py` (run manually today, see Phase 1.1 for CI) is the
+single source of truth for "is this corpus internally consistent and
+current":
+- Structural: unique clause/document ids and document titles, every
+  `clauseOrder` id resolves, no orphan clauses, canonical key order,
+  non-empty citation `url`/`quote`, every `{{field}}` declared.
+- Content requirements: every authority clause has a non-empty `gap` and
+  ≥1 citation.
+- Checked-date validity: every `status: "verified"` clause's `checkedDate`
+  must parse as a real ISO date and not be in the future.
+- Staleness: a verified clause last checked 24+ months ago fails the build;
+  18–24 months prints a non-fatal heads-up. Single global thresholds today
+  (Phase 4.3 makes these per-category).
+- Category reconciliation: every document has 1–2 categories, every
+  category name is in the hardcoded set, and the "748 tags across 740
+  docs" kind of number is asserted to reconcile, not just printed.
+- `verification/*.md` coverage is reported, not enforced (that folder was
+  never meant to be 1:1 with documents.json).
+
+## Tooling
+
+| Script | Does |
+|---|---|
+| `validate_corpus.py` | The gate above. Exit 1 on any failure. |
+| `regression.js` | Headless-browser (Playwright) smoke test: category counts balanced, no leaked `{{field}}` text in the newest documents, output screen actually renders clause blocks/badges, contract-reader match timing. Needs a local static server (`python3 -m http.server 8933`) and `NODE_PATH="$(npm root -g)"`. |
+| `merge_guard.py <base-ref>` | Diffs `data/*.json` in the working tree against a given git ref; fails if any *pre-existing* clause/document was modified or dropped (catches union-merge silently reverting an edit — additions are fine, mutations/drops are not). Defaults `base-ref` to `HEAD`, which is a no-op unless called with the actual pre-merge ref. |
+| `recheck_citations.py [N] [host...]` | Samples stored citation URLs, re-fetches, re-checks the quote is still a verbatim substring of the live page. |
+| `recheck_all.py` | Same, whole-corpus, resumable JSONL output, handles PDFs, falls back to `fetch_via_browser.js` when a host (CourtListener) serves a JS bot-challenge to plain `curl`. |
+| `fetch_via_browser.js <url>` | Headless-Chromium fetch that solves CourtListener's AWS WAF JS challenge; prints rendered HTML. Used only as `recheck_all.py`'s fallback. |
+| `courtlistener_recheck_{results.jsonl,todo.json}` | Resumable state for a from-scratch recheck of every CourtListener-hosted citation, run through the CourtListener MCP tools (not curl — WAF-gated). `todo.json` is currently `[]` — that pass is complete. |
+| `wave_agent_prompt.md` | Versioned prompt template for a corpus-expansion worker agent, one per category per wave. |
+
+## Supabase
+
+`supabase/schema.sql`: `public.agreements(id, user_id, document_id, title,
+answers jsonb, generated_at, updated_at)`, RLS enabled, 4 policies
+(select/insert/update/delete) each scoped to `auth.uid() = user_id`, one
+`updated_at` trigger. Applied manually to the live project
+(`impurvwwjdgurbjbnydu`) — no migration tooling, no `supabase/migrations/`
+directory exists yet (Phase 7.1 introduces one). RLS correctness was
+verified directly against Postgres via role/claim impersonation in this
+session; the HTTP round trip through Supabase Auth was not (see
+BASELINE.md and the open items in the Build Status doc).
+
+## What Phase 2+ will change here
+
+The field schema above (`{id, label, placeholder, required}`) and the
+one-screen-per-wizard renderer are the two things most of Phases 2–3
+restructure. Any task touching `fields[]`, `renderWizard()`, or
+`assembleDocument()` should re-read this file first — it will be stale the
+moment that work starts.
