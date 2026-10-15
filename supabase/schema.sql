@@ -45,13 +45,18 @@ create policy "Users can delete their own agreements"
 
 -- Keeps updated_at honest on every write, so "last synced" can be
 -- shown accurately without the client having to set it itself.
+-- search_path is pinned rather than left to resolve at call time —
+-- Supabase's linter flags a mutable search_path on a SECURITY DEFINER-
+-- adjacent trigger function as a privilege-escalation surface (a
+-- malicious schema earlier in an unpinned path could shadow `now()`).
 create or replace function public.set_updated_at()
 returns trigger as $$
 begin
   new.updated_at = now();
   return new;
 end;
-$$ language plpgsql;
+$$ language plpgsql
+set search_path = public, pg_temp;
 
 drop trigger if exists agreements_set_updated_at on public.agreements;
 create trigger agreements_set_updated_at
