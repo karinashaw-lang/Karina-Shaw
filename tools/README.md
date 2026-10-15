@@ -235,8 +235,43 @@ from the corpus itself — documents are appended, so the tail of the array is
 the newest wave — rather than naming them, so it does not need editing as the
 corpus grows.
 
-Three console errors are expected and are artifacts of the sandbox, not
-defects: the Google Fonts stylesheet is deliberately aborted because the host
-is blocked, `config.js` is absent by design (it is gitignored so keys never
-enter the repository), and the Supabase client on jsDelivr is unreachable —
-it would only be loaded if `config.js` existed.
+Two console errors are expected in this sandbox and are not defects: the
+Google Fonts stylesheet is deliberately aborted by the script itself
+(`page.route(...).abort()`, so this one happens in any environment, CI
+included), and the Supabase client on jsDelivr is unreachable through this
+sandbox's egress proxy. Neither fails the run — only real structural
+problems (category imbalance, a document that fails to assemble, a leaked
+`{{field}}` placeholder anywhere including the final rendered output) set
+the exit code, which is what CI (`.github/workflows/ci.yml`) actually
+gates on. In an unrestricted environment (CI included) the Supabase error
+won't happen at all, since jsDelivr is reachable — console-error count is
+reported but never asserted against, precisely because it legitimately
+differs by environment.
+
+## tests/auth_roundtrip.js
+
+```
+SUPABASE_URL=https://xxxx.supabase.co \
+SUPABASE_ANON_KEY=sb_publishable_... \
+node tests/auth_roundtrip.js
+```
+
+A real HTTP round trip through Supabase Auth and the PostgREST API — the
+one thing the cloud-sync feature's RLS verification could not cover from
+inside this sandbox, since its egress policy blocks the project's domain
+(see `DECISIONS.md`). Run it from anywhere that isn't this sandbox.
+
+With just the two env vars above (the same ones `config.js` needs), it
+confirms an unauthenticated client reads zero rows from
+`public.agreements` and that requesting a magic link succeeds over HTTP.
+Add `SUPABASE_SERVICE_ROLE_KEY` (server-side only — never in `config.js`)
+to run the complete two-user test: real sessions for two throwaway users
+via Supabase's admin `generate_link` (no inbox needed), one user's insert,
+and confirmation that the other user's read, update, and delete of that
+row each affect zero rows over the real REST API — then deletes the test
+row and both test users itself, since a direct REST call with the service
+role key isn't subject to the MCP tool gate `DECISIONS.md` describes.
+
+Exits 0 immediately with a clear message if `SUPABASE_URL` /
+`SUPABASE_ANON_KEY` aren't set, so it's safe to add to CI later without
+breaking a run that has no project configured.
