@@ -1,0 +1,8 @@
+{
+  "name": "groundtruth",
+  "private": true,
+  "description": "No build step for the app itself — this exists only to pin the Playwright version tools/regression.js needs, so CI installs the same browser version a local run would.",
+  "devDependencies": {
+    "playwright": "1.56.1"
+  }
+}

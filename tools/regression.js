@@ -1,6 +1,20 @@
+const fs = require('fs');
 const { chromium } = require('playwright');
 (async () => {
-  const b = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium' });
+  // Tracks real structural failures only (category balance, a document that
+  // fails to assemble) — not console-error count, which legitimately differs
+  // between this sandbox (two expected, proxy-blocked resources) and CI
+  // (real internet, so neither is expected there). A script that only logs
+  // "FAIL" without ever exiting nonzero can't gate anything, which defeats
+  // the point of running it in CI at all.
+  let ok = true;
+  // This sandbox pre-installs Chromium at a fixed path and skips Playwright's
+  // own browser download; CI runs `playwright install chromium` instead, which
+  // puts it in Playwright's normal managed location. Use the sandbox path only
+  // when it's actually there, so the same script works in both.
+  const SANDBOX_CHROMIUM = '/opt/pw-browsers/chromium';
+  const launchOpts = fs.existsSync(SANDBOX_CHROMIUM) ? { executablePath: SANDBOX_CHROMIUM } : {};
+  const b = await chromium.launch(launchOpts);
   const p = await b.newPage();
   const errs = [];
   p.on('console', m => { if (m.type() === 'error') errs.push(m.text()); });
@@ -20,7 +34,7 @@ const { chromium } = require('playwright');
   }
   const lo = Math.min(...counts.map(x => x[1])), hi = Math.max(...counts.map(x => x[1]));
   for (const [c, n] of counts) console.log(`${hi - lo <= 1 ? 'OK  ' : 'FAIL'} ${c}: ${n}`);
-  if (hi - lo > 1) console.log(`FAIL categories are not level: spread ${lo}..${hi}`);
+  if (hi - lo > 1) { console.log(`FAIL categories are not level: spread ${lo}..${hi}`); ok = false; }
   console.log(await p.evaluate(() => `corpus: ${state.documents.length} documents / ${state.clauses.length} clauses`));
 
   // The most recently added documents, assembled end to end. Documents are
@@ -40,7 +54,9 @@ const { chromium } = require('playwright');
         rawInBody: asm.filter(c => /\{\{\w+\}\}/.test(c.renderedBody)).length,
         rawInGap: asm.filter(c => c.gap && /\{\{\w+\}\}/.test(c.gap)).length };
     }, id);
-    console.log((r.MISSING ? 'FAIL ' : 'OK   ') + JSON.stringify(r));
+    const bad = r.MISSING || r.rawInBody > 0 || r.rawInGap > 0;
+    if (bad) ok = false;
+    console.log((bad ? 'FAIL ' : 'OK   ') + JSON.stringify(r));
   }
 
   // Full render through the real output path
@@ -49,11 +65,13 @@ const { chromium } = require('playwright');
     state.answers = {}; state.document.fields.forEach(f => { state.answers[f.id] = 'Acme Holdings LLC'; });
     renderOutput(); showScreen('screen-output');
   });
-  console.log('rendered: ' + JSON.stringify(await p.evaluate(() => ({
+  const rendered = await p.evaluate(() => ({
     blocks: document.querySelectorAll('#output-clauses .clause').length,
     badges: document.querySelectorAll('#output-clauses [class*="badge"]').length,
     rawBraces: (document.getElementById('output-clauses').textContent.match(/\{\{\w+\}\}/g) || []).length,
-  }))));
+  }));
+  if (rendered.blocks === 0 || rendered.rawBraces > 0) ok = false;
+  console.log((rendered.blocks === 0 || rendered.rawBraces > 0 ? 'FAIL ' : 'OK   ') + 'rendered: ' + JSON.stringify(rendered));
 
   console.log('contract reader: ' + JSON.stringify(await p.evaluate(() => {
     const t0 = performance.now();
@@ -64,4 +82,6 @@ const { chromium } = require('playwright');
   console.log('console errors: ' + errs.length);
   errs.forEach(e => console.log('  ' + e));
   await b.close();
+  if (!ok) { console.log('\nFAILED'); process.exit(1); }
+  console.log('\nregression passed');
 })();

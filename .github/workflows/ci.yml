@@ -1,0 +1,88 @@
+name: CI
+
+on:
+  push:
+    branches: ['**']
+  pull_request:
+
+jobs:
+  validate-corpus:
+    name: Corpus validation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python3 tools/validate_corpus.py
+
+  merge-guard:
+    name: Merge guard
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      # merge_guard.py's base-ref argument defaults to HEAD, which is a
+      # no-op unless given the actual pre-merge/base commit explicitly
+      # (confirmed in BASELINE.md). On a pull request that's the base
+      # branch tip; on a direct push it's the commit the push moved from
+      # — "before" is all-zeros on a brand new branch's first push, which
+      # has nothing to compare against, so that case is skipped rather
+      # than failing on a guard that can't do its job yet.
+      - name: Resolve base ref
+        id: base
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            git fetch origin "${{ github.base_ref }}" --depth=1
+            echo "ref=origin/${{ github.base_ref }}" >> "$GITHUB_OUTPUT"
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          elif [ "${{ github.event.before }}" = "0000000000000000000000000000000000000000" ]; then
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "ref=${{ github.event.before }}" >> "$GITHUB_OUTPUT"
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+      - if: steps.base.outputs.skip != 'true'
+        run: python3 tools/merge_guard.py "${{ steps.base.outputs.ref }}"
+      - if: steps.base.outputs.skip == 'true'
+        run: echo "First push on a new branch — nothing to compare against yet, skipping."
+
+  regression:
+    name: Browser regression
+    runs-on: ubuntu-latest
+    needs: validate-corpus
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - name: Start static server
+        run: |
+          nohup python3 -m http.server 8933 > server.log 2>&1 &
+          disown
+      - name: Wait for server
+        run: |
+          for i in $(seq 1 20); do
+            curl -sf http://localhost:8933/ > /dev/null && exit 0
+            sleep 0.5
+          done
+          echo "server never came up" >&2
+          exit 1
+      - name: Run regression.js
+        run: set -o pipefail; node tools/regression.js | tee regression.log
+      - name: Upload regression log on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: regression-log
+          path: regression.log
