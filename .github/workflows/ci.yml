@@ -20,6 +20,28 @@ jobs:
 
   merge-guard:
     name: Merge guard
+    # Pull requests only. merge_guard.py exists for one specific failure
+    # mode, documented in tools/README.md: a union-merge of a worker
+    # branch resolves conflicts in the two large JSON arrays by keeping
+    # "ours" for anything with a matching id, which silently reverts an
+    # edit to a pre-existing clause/document that happened on the other
+    # side, with no conflict reported. That is a question about merging
+    # two branches, so it's only meaningful comparing a PR's branch
+    # against the base it would merge into.
+    #
+    # A direct push is not a merge, and this project's own history is
+    # full of legitimate direct commits that edit existing clause or
+    # document content on purpose (every citation fix is exactly that) —
+    # tools/README.md itself describes making corpus-wide corrections via
+    # direct push as the normal, preferred path. Running this guard
+    # against "the previous commit" on every push would flag every one of
+    # those as a failure, which is the guard correctly doing its literal
+    # job on a question CI should not have been asking it on a push.
+    # (Found exactly this gap when a legitimate single-field fix in the
+    # commit that added this job tripped the push-triggered version of
+    # this check — see git history around that commit for the real
+    # example.)
+    if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -28,30 +50,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      # merge_guard.py's base-ref argument defaults to HEAD, which is a
-      # no-op unless given the actual pre-merge/base commit explicitly
-      # (confirmed in BASELINE.md). On a pull request that's the base
-      # branch tip; on a direct push it's the commit the push moved from
-      # — "before" is all-zeros on a brand new branch's first push, which
-      # has nothing to compare against, so that case is skipped rather
-      # than failing on a guard that can't do its job yet.
-      - name: Resolve base ref
-        id: base
-        run: |
-          if [ "${{ github.event_name }}" = "pull_request" ]; then
-            git fetch origin "${{ github.base_ref }}" --depth=1
-            echo "ref=origin/${{ github.base_ref }}" >> "$GITHUB_OUTPUT"
-            echo "skip=false" >> "$GITHUB_OUTPUT"
-          elif [ "${{ github.event.before }}" = "0000000000000000000000000000000000000000" ]; then
-            echo "skip=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "ref=${{ github.event.before }}" >> "$GITHUB_OUTPUT"
-            echo "skip=false" >> "$GITHUB_OUTPUT"
-          fi
-      - if: steps.base.outputs.skip != 'true'
-        run: python3 tools/merge_guard.py "${{ steps.base.outputs.ref }}"
-      - if: steps.base.outputs.skip == 'true'
-        run: echo "First push on a new branch — nothing to compare against yet, skipping."
+      - run: git fetch origin "${{ github.base_ref }}" --depth=1
+      - run: python3 tools/merge_guard.py "origin/${{ github.base_ref }}"
 
   regression:
     name: Browser regression

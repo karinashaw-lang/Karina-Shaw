@@ -70,6 +70,15 @@ during expansion was lost that way once. Run this whenever an edit to an
 existing clause is in flight, and prefer to make corpus-wide corrections
 while no workers are running.
 
+In CI (`.github/workflows/ci.yml`) this only runs on pull requests, against
+the PR's actual base branch — never on a direct push. A direct push isn't a
+merge, and this project's own history is full of legitimate direct commits
+that edit existing content on purpose (every citation fix is one); gating
+every push on "did anything change since the last commit" would fail on
+every one of those. First version of the CI job got this wrong and failed
+its own author's next commit over a one-field placeholder fix — fixed by
+scoping the job to `pull_request` only.
+
 ## recheck_citations.py
 
 ```
