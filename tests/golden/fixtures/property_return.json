@@ -1,0 +1,45 @@
+{
+  "docId": "property_return",
+  "inputs": {
+    "companyName": "Acme, Inc.",
+    "employeeName": "Jordan Lee",
+    "terminationDate": "September 30, 2026"
+  },
+  "expectedText": "COMPANY PROPERTY & EQUIPMENT RETURN ACKNOWLEDGMENT\nPrepared for Jordan Lee · Acme, Inc.\n\nPROPERTY TO BE RETURNED\nBy September 30, 2026, Jordan Lee must return all Acme, Inc. property still in Jordan Lee's possession, including: keys, access cards, and badges; laptops, phones, and other equipment; company credit cards; and any documents, files, or materials — physical or electronic — containing Acme, Inc.'s confidential or proprietary information.\n\nLIMITS ON DEDUCTING FOR UNRETURNED PROPERTY\nAcme, Inc. may ask Jordan Lee to pay for property that isn't returned, but can't simply withhold its estimated value from Jordan Lee's wages if doing so would cut into the minimum wage or overtime pay Jordan Lee is otherwise owed. Federal law treats that kind of deduction the same as requiring an employee to hand wages back to the employer, which isn't allowed once those wages have actually been paid.\n\n[Verified — checked 2026-08-29]\n  \"Whether in cash or in facilities, “wages” cannot be considered to have been paid by the employer and received by the employee unless they are paid finally and unconditionally or “free and clear.” The wage requirements of the Act will not be met where the employee “kicks-back” directly or indirectly to the employer or to another person for the employer's benefit the whole or part of the wage delivered to the employee.\"\n  — 29 C.F.R. § 531.35 (Cornell LII text), Code of Federal Regulations, \"free and clear\" wage payment rule (https://www.law.cornell.edu/cfr/text/29/531.35)\n  \"This aspect of the policy does violate the “free and clear” regulation, because it requires a repayment of wages ... Under these circumstances, we cannot say that the minimum wage is provided “free and clear.”\"\n  — Stein v. hhgregg, Inc., 873 F.3d 523 (6th Cir. 2017) (https://www.courtlistener.com/opinion/4433946/robert-stein-v-hhgregg-inc/)\n  Known gap: This is a federal wage-and-hour floor, not a full answer for every situation — many states go further and restrict or ban deductions for unreturned property entirely, or require the employee's written authorization first, regardless of whether minimum wage is affected. This document doesn't catalog those stricter state rules.\n\nACKNOWLEDGMENT\nPlease sign below to acknowledge receipt of this list and your obligation to return the property described above.\n\nEmployee: Jordan Lee\nDate: _______________\n\n—\nGroundtruth v1 demo · every \"Verified\" citation links to a real, checked source.",
+  "expectedJSON": [
+    {
+      "id": "prop_return_list",
+      "kind": "drafting",
+      "status": null,
+      "body": "By September 30, 2026, Jordan Lee must return all Acme, Inc. property still in Jordan Lee's possession, including: keys, access cards, and badges; laptops, phones, and other equipment; company credit cards; and any documents, files, or materials — physical or electronic — containing Acme, Inc.'s confidential or proprietary information."
+    },
+    {
+      "id": "prop_return_deduction_limit",
+      "kind": "authority",
+      "status": "verified",
+      "body": "Acme, Inc. may ask Jordan Lee to pay for property that isn't returned, but can't simply withhold its estimated value from Jordan Lee's wages if doing so would cut into the minimum wage or overtime pay Jordan Lee is otherwise owed. Federal law treats that kind of deduction the same as requiring an employee to hand wages back to the employer, which isn't allowed once those wages have actually been paid.",
+      "citations": [
+        {
+          "case": "29 C.F.R. § 531.35 (Cornell LII text)",
+          "cite": "Code of Federal Regulations, \"free and clear\" wage payment rule",
+          "url": "https://www.law.cornell.edu/cfr/text/29/531.35",
+          "quote": "Whether in cash or in facilities, “wages” cannot be considered to have been paid by the employer and received by the employee unless they are paid finally and unconditionally or “free and clear.” The wage requirements of the Act will not be met where the employee “kicks-back” directly or indirectly to the employer or to another person for the employer's benefit the whole or part of the wage delivered to the employee."
+        },
+        {
+          "case": "Stein v. hhgregg, Inc.",
+          "cite": "873 F.3d 523 (6th Cir. 2017)",
+          "url": "https://www.courtlistener.com/opinion/4433946/robert-stein-v-hhgregg-inc/",
+          "quote": "This aspect of the policy does violate the “free and clear” regulation, because it requires a repayment of wages ... Under these circumstances, we cannot say that the minimum wage is provided “free and clear.”"
+        }
+      ],
+      "checkedDate": "2026-08-29",
+      "gap": "This is a federal wage-and-hour floor, not a full answer for every situation — many states go further and restrict or ban deductions for unreturned property entirely, or require the employee's written authorization first, regardless of whether minimum wage is affected. This document doesn't catalog those stricter state rules."
+    },
+    {
+      "id": "prop_return_ack",
+      "kind": "drafting",
+      "status": null,
+      "body": "Please sign below to acknowledge receipt of this list and your obligation to return the property described above.\n\nEmployee: Jordan Lee\nDate: _______________"
+    }
+  ]
+}

@@ -82,9 +82,14 @@ jobs:
           exit 1
       - name: Run regression.js
         run: set -o pipefail; node tools/regression.js | tee regression.log
-      - name: Upload regression log on failure
+      - name: Run golden.js
+        run: set -o pipefail; node tests/golden/golden.js | tee golden.log
+      - name: Upload logs on failure
         if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: regression-log
-          path: regression.log
+          name: regression-and-golden-logs
+          path: |
+            regression.log
+            golden.log
+          if-no-files-found: warn

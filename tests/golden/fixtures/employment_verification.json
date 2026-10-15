@@ -1,0 +1,24 @@
+{
+  "docId": "employment_verification",
+  "inputs": {
+    "companyName": "Acme, Inc.",
+    "employeeName": "Jordan Lee",
+    "jobTitle": "Software Engineer",
+    "startDate": "September 15, 2026"
+  },
+  "expectedText": "EMPLOYMENT VERIFICATION LETTER\nPrepared for Jordan Lee · Acme, Inc.\n\nVERIFICATION OF EMPLOYMENT\nThis letter confirms that Jordan Lee is employed by Acme, Inc. in the position of Software Engineer, with an employment start date of September 15, 2026. Please contact Acme, Inc. directly with any questions about this verification.\n\nSIGNATURE\nSincerely,\n\n_______________________________________________\nOn behalf of Acme, Inc.\n\n—\nGroundtruth v1 demo · every \"Verified\" citation links to a real, checked source.",
+  "expectedJSON": [
+    {
+      "id": "verification_statement",
+      "kind": "drafting",
+      "status": null,
+      "body": "This letter confirms that Jordan Lee is employed by Acme, Inc. in the position of Software Engineer, with an employment start date of September 15, 2026. Please contact Acme, Inc. directly with any questions about this verification."
+    },
+    {
+      "id": "verification_signature",
+      "kind": "drafting",
+      "status": null,
+      "body": "Sincerely,\n\n_______________________________________________\nOn behalf of Acme, Inc."
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "docId": "pto_request",
+  "inputs": {
+    "companyName": "Acme, Inc.",
+    "employeeName": "Jordan Lee"
+  },
+  "expectedText": "PTO / VACATION REQUEST FORM\nPrepared for Jordan Lee · Acme, Inc.\n\nTIME OFF REQUESTED\nJordan Lee requests the following paid time off:\n\nStart date: _______________\nEnd date: _______________\nTotal days requested: _______________\nReason (optional): _______________________________________________\n\nAPPROVAL\nApproved by: _______________________________________________ (name/title)\nSignature: _______________________________________________\nDate: _______________\n\n—\nGroundtruth v1 demo · every \"Verified\" citation links to a real, checked source.",
+  "expectedJSON": [
+    {
+      "id": "pto_request_details",
+      "kind": "drafting",
+      "status": null,
+      "body": "Jordan Lee requests the following paid time off:\n\nStart date: _______________\nEnd date: _______________\nTotal days requested: _______________\nReason (optional): _______________________________________________"
+    },
+    {
+      "id": "overtime_approval",
+      "kind": "drafting",
+      "status": null,
+      "body": "Approved by: _______________________________________________ (name/title)\nSignature: _______________________________________________\nDate: _______________"
+    }
+  ]
+}

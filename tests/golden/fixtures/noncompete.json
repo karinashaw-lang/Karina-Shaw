@@ -1,0 +1,87 @@
+{
+  "docId": "noncompete",
+  "inputs": {
+    "companyName": "Acme, Inc.",
+    "employeeName": "Jordan Lee",
+    "restrictionPeriod": "12 months",
+    "restrictedActivity": "work for or start a competing commercial HVAC installation business",
+    "geographicScope": "50 miles of Springfield, Illinois"
+  },
+  "expectedText": "NON-COMPETE AGREEMENT\nPrepared for Jordan Lee · Acme, Inc.\n\nRESTRICTION\nFor 12 months after Jordan Lee's employment with Acme, Inc. ends, Jordan Lee will not work for or start a competing commercial HVAC installation business within 50 miles of Springfield, Illinois.\n\nENFORCEABILITY VARIES BY STATE\nWhether this restriction is enforceable at all depends heavily on the state whose law governs it. Some states void nearly any contract restraining someone from a lawful profession, trade, or business, with only narrow exceptions like a sale of a business — a few have gone further and made it unlawful for an employer to even include a noncompete clause that doesn't fit one of those exceptions. Most other states instead ask whether the restriction is reasonable: no broader than necessary to protect the employer's legitimate interests, not an undue hardship on Jordan Lee, and not injurious to the public. Which approach applies, and how strictly, depends on the state.\n\n[Verified — checked 2026-08-29]\n  \"Except as provided in this chapter, every contract by which anyone is restrained from engaging in a lawful profession, trade, or business of any kind is to that extent void.\"\n  — Cal. Bus. & Prof. Code § 16600(a) (California Legislative Information text), California Business and Professions Code (https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&sectionNum=16600.)\n  \"This section shall be read broadly, in accordance with Edwards v. Arthur Andersen LLP (2008) 44 Cal.4th 937, to void the application of any noncompete agreement in an employment context, or any noncompete clause in an employment contract, no matter how narrowly tailored, that does not satisfy an exception in this chapter.\"\n  — Cal. Bus. & Prof. Code § 16600(b)(1) (California Legislative Information text), California Business and Professions Code, narrow-tailoring not a defense (https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&sectionNum=16600.)\n  \"It shall be unlawful to include a noncompete clause in an employment contract, or to require an employee to enter a noncompete agreement, that does not satisfy an exception in this chapter.\"\n  — Cal. Bus. & Prof. Code § 16600.1(a) (California Legislative Information text), California Business and Professions Code (https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&sectionNum=16600.1.)\n  \"A covenant restraining an employee from competing with his former employer upon termination of employment is reasonable if it is no greater than is required for the protection of the employer, does not impose undue hardship on the employee, and is not injurious to the public.\"\n  — Raimonde v. Van Vlerah, 42 Ohio St. 2d 21 (1975) (https://www.courtlistener.com/opinion/6865409/raimonde-v-van-vlerah/)\n  \"We hold that a covenant not to compete which imposes unreasonable restrictions upon an employee will be enforced to the extent necessary to protect the employer’s legitimate interests. ... Courts are empowered to modify or amend employment agreements to achieve such results.\"\n  — Raimonde v. Van Vlerah, 42 Ohio St. 2d 21 (1975) — the blue-pencil remedy (https://www.courtlistener.com/opinion/6865409/raimonde-v-van-vlerah/)\n  Known gap: This clause draws on one state's verified statutes as real evidence that an outright ban approach exists — not a claim about which state's law actually governs this agreement. Several states restrict or ban most employee noncompetes by statute to varying degrees, and this document doesn't catalog them. In at least one such ban-state, the statute is explicit that narrow drafting doesn't save a noncompete from the ban — a restriction void under this approach stays void \"no matter how narrowly tailored,\" so tightening the scope of a restricted clause isn't a workaround where this approach applies. Even in reasonableness-test states, courts differ on the remedy for a restriction that turns out to be broader than reasonable: some will narrow (\"blue pencil\") it down to what's enforceable — as the case below did — while others will void the whole clause and refuse to rewrite it. Which approach a given state's courts take isn't addressed here.\n\nIF THIS IS SIGNED AFTER EMPLOYMENT BEGINS\nIf Jordan Lee is asked to sign this agreement after employment with Acme, Inc. has already started, rather than at hiring, some states require something of value beyond continued employment for the agreement to be enforceable — and courts around the country don't agree on this. Some courts have held that continuing to employ an at-will employee is itself enough consideration to support a noncompete agreement signed later. Other courts have held the opposite: that continued at-will employment alone isn't enough, and something further — a raise, a bonus, a new role — is needed for the later agreement to be enforceable. Which rule applies depends on the state whose law governs this agreement.\n\n[Verified — checked 2026-08-29]\n  \"We conclude that forbearance on the part of an at-will employer from discharging an at-will employee serves as consideration to support a noncompetition agreement.\"\n  — Lake Land Employment Group of Akron, LLC v. Columber, 101 Ohio St. 3d 242 (2004) (https://www.courtlistener.com/opinion/6892723/lake-land-employment-group-of-akron-llc-v-columber/)\n  \"A noncompete agreement entered into after employment has commenced is validly formed only when there is independent consideration at the time the agreement is reached. Finding that there was no independent consideration at the time of the 2002 noncompete agreement, we reverse the trial court's summary judgment ruling.\"\n  — Labriola v. Pollard Group, Inc., 100 P.3d 791 (Wash. 2004) (https://www.courtlistener.com/opinion/2634466/labriola-v-pollard-group-inc/)\n  Known gap: This document doesn't collect a governing-state field, so which side of this split applies can't be resolved automatically here. Courts have gone both ways on this exact question, and this document doesn't take a position on which rule applies to any specific agreement. One more limit worth naming: even in a state that follows the continued-employment-is-enough rule, that court's own opinion is explicit that finding consideration doesn't by itself make the noncompete enforceable — a noncompetition agreement still separately has to satisfy whatever reasonableness or statutory test the state applies. Consideration and enforceability are two different questions, and satisfying one doesn't answer the other.\n\nACKNOWLEDGMENT\nPlease sign below to indicate your agreement to the terms above.\n\nEmployee: Jordan Lee\nDate: _______________\n\n—\nGroundtruth v1 demo · every \"Verified\" citation links to a real, checked source.",
+  "expectedJSON": [
+    {
+      "id": "nc_scope",
+      "kind": "drafting",
+      "status": null,
+      "body": "For 12 months after Jordan Lee's employment with Acme, Inc. ends, Jordan Lee will not work for or start a competing commercial HVAC installation business within 50 miles of Springfield, Illinois."
+    },
+    {
+      "id": "nc_enforceability",
+      "kind": "authority",
+      "status": "verified",
+      "body": "Whether this restriction is enforceable at all depends heavily on the state whose law governs it. Some states void nearly any contract restraining someone from a lawful profession, trade, or business, with only narrow exceptions like a sale of a business — a few have gone further and made it unlawful for an employer to even include a noncompete clause that doesn't fit one of those exceptions. Most other states instead ask whether the restriction is reasonable: no broader than necessary to protect the employer's legitimate interests, not an undue hardship on Jordan Lee, and not injurious to the public. Which approach applies, and how strictly, depends on the state.",
+      "citations": [
+        {
+          "case": "Cal. Bus. & Prof. Code § 16600(a) (California Legislative Information text)",
+          "cite": "California Business and Professions Code",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&sectionNum=16600.",
+          "quote": "Except as provided in this chapter, every contract by which anyone is restrained from engaging in a lawful profession, trade, or business of any kind is to that extent void."
+        },
+        {
+          "case": "Cal. Bus. & Prof. Code § 16600(b)(1) (California Legislative Information text)",
+          "cite": "California Business and Professions Code, narrow-tailoring not a defense",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&sectionNum=16600.",
+          "quote": "This section shall be read broadly, in accordance with Edwards v. Arthur Andersen LLP (2008) 44 Cal.4th 937, to void the application of any noncompete agreement in an employment context, or any noncompete clause in an employment contract, no matter how narrowly tailored, that does not satisfy an exception in this chapter."
+        },
+        {
+          "case": "Cal. Bus. & Prof. Code § 16600.1(a) (California Legislative Information text)",
+          "cite": "California Business and Professions Code",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=BPC&sectionNum=16600.1.",
+          "quote": "It shall be unlawful to include a noncompete clause in an employment contract, or to require an employee to enter a noncompete agreement, that does not satisfy an exception in this chapter."
+        },
+        {
+          "case": "Raimonde v. Van Vlerah",
+          "cite": "42 Ohio St. 2d 21 (1975)",
+          "url": "https://www.courtlistener.com/opinion/6865409/raimonde-v-van-vlerah/",
+          "quote": "A covenant restraining an employee from competing with his former employer upon termination of employment is reasonable if it is no greater than is required for the protection of the employer, does not impose undue hardship on the employee, and is not injurious to the public."
+        },
+        {
+          "case": "Raimonde v. Van Vlerah",
+          "cite": "42 Ohio St. 2d 21 (1975) — the blue-pencil remedy",
+          "url": "https://www.courtlistener.com/opinion/6865409/raimonde-v-van-vlerah/",
+          "quote": "We hold that a covenant not to compete which imposes unreasonable restrictions upon an employee will be enforced to the extent necessary to protect the employer’s legitimate interests. ... Courts are empowered to modify or amend employment agreements to achieve such results."
+        }
+      ],
+      "checkedDate": "2026-08-29",
+      "gap": "This clause draws on one state's verified statutes as real evidence that an outright ban approach exists — not a claim about which state's law actually governs this agreement. Several states restrict or ban most employee noncompetes by statute to varying degrees, and this document doesn't catalog them. In at least one such ban-state, the statute is explicit that narrow drafting doesn't save a noncompete from the ban — a restriction void under this approach stays void \"no matter how narrowly tailored,\" so tightening the scope of a restricted clause isn't a workaround where this approach applies. Even in reasonableness-test states, courts differ on the remedy for a restriction that turns out to be broader than reasonable: some will narrow (\"blue pencil\") it down to what's enforceable — as the case below did — while others will void the whole clause and refuse to rewrite it. Which approach a given state's courts take isn't addressed here."
+    },
+    {
+      "id": "nc_consideration",
+      "kind": "authority",
+      "status": "verified",
+      "body": "If Jordan Lee is asked to sign this agreement after employment with Acme, Inc. has already started, rather than at hiring, some states require something of value beyond continued employment for the agreement to be enforceable — and courts around the country don't agree on this. Some courts have held that continuing to employ an at-will employee is itself enough consideration to support a noncompete agreement signed later. Other courts have held the opposite: that continued at-will employment alone isn't enough, and something further — a raise, a bonus, a new role — is needed for the later agreement to be enforceable. Which rule applies depends on the state whose law governs this agreement.",
+      "citations": [
+        {
+          "case": "Lake Land Employment Group of Akron, LLC v. Columber",
+          "cite": "101 Ohio St. 3d 242 (2004)",
+          "url": "https://www.courtlistener.com/opinion/6892723/lake-land-employment-group-of-akron-llc-v-columber/",
+          "quote": "We conclude that forbearance on the part of an at-will employer from discharging an at-will employee serves as consideration to support a noncompetition agreement."
+        },
+        {
+          "case": "Labriola v. Pollard Group, Inc.",
+          "cite": "100 P.3d 791 (Wash. 2004)",
+          "url": "https://www.courtlistener.com/opinion/2634466/labriola-v-pollard-group-inc/",
+          "quote": "A noncompete agreement entered into after employment has commenced is validly formed only when there is independent consideration at the time the agreement is reached. Finding that there was no independent consideration at the time of the 2002 noncompete agreement, we reverse the trial court's summary judgment ruling."
+        }
+      ],
+      "checkedDate": "2026-08-29",
+      "gap": "This document doesn't collect a governing-state field, so which side of this split applies can't be resolved automatically here. Courts have gone both ways on this exact question, and this document doesn't take a position on which rule applies to any specific agreement. One more limit worth naming: even in a state that follows the continued-employment-is-enough rule, that court's own opinion is explicit that finding consideration doesn't by itself make the noncompete enforceable — a noncompetition agreement still separately has to satisfy whatever reasonableness or statutory test the state applies. Consideration and enforceability are two different questions, and satisfying one doesn't answer the other."
+    },
+    {
+      "id": "nc_ack",
+      "kind": "drafting",
+      "status": null,
+      "body": "Please sign below to indicate your agreement to the terms above.\n\nEmployee: Jordan Lee\nDate: _______________"
+    }
+  ]
+}

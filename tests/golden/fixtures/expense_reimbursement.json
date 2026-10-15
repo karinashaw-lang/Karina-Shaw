@@ -1,0 +1,22 @@
+{
+  "docId": "expense_reimbursement",
+  "inputs": {
+    "companyName": "Acme, Inc.",
+    "employeeName": "Jordan Lee"
+  },
+  "expectedText": "BUSINESS EXPENSE REIMBURSEMENT FORM\nPrepared for Jordan Lee · Acme, Inc.\n\nEXPENSES\nDate | Description | Amount\n_______________________________________________\n_______________________________________________\n_______________________________________________\n\nTotal amount requested: _______________\n\nReceipts attached: ☐ Yes  ☐ No\n\nCERTIFICATION AND APPROVAL\nJordan Lee certifies that these expenses were incurred for legitimate business purposes on behalf of Acme, Inc. and have not been previously reimbursed.\n\nEmployee: Jordan Lee\nDate: _______________\n\nApproved by: _______________________________________________\nDate: _______________\n\n—\nGroundtruth v1 demo · every \"Verified\" citation links to a real, checked source.",
+  "expectedJSON": [
+    {
+      "id": "expense_details",
+      "kind": "drafting",
+      "status": null,
+      "body": "Date | Description | Amount\n_______________________________________________\n_______________________________________________\n_______________________________________________\n\nTotal amount requested: _______________\n\nReceipts attached: ☐ Yes  ☐ No"
+    },
+    {
+      "id": "expense_certification",
+      "kind": "drafting",
+      "status": null,
+      "body": "Jordan Lee certifies that these expenses were incurred for legitimate business purposes on behalf of Acme, Inc. and have not been previously reimbursed.\n\nEmployee: Jordan Lee\nDate: _______________\n\nApproved by: _______________________________________________\nDate: _______________"
+    }
+  ]
+}

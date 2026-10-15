@@ -1,0 +1,29 @@
+{
+  "docId": "referral_bonus",
+  "inputs": {
+    "companyName": "Acme, Inc.",
+    "employeeName": "Jordan Lee",
+    "referralBonusAmount": "$1,500"
+  },
+  "expectedText": "EMPLOYEE REFERRAL BONUS AGREEMENT\nPrepared for Jordan Lee · Acme, Inc.\n\nREFERRAL BONUS\nAcme, Inc. will pay Jordan Lee a referral bonus of $1,500 if a candidate Jordan Lee refers is hired into an eligible role and both the new hire and Jordan Lee remain employed with Acme, Inc. through the payment date described below.\n\nWHO DOESN'T QUALIFY\nThis bonus isn't available for referring an immediate family member, a current Acme, Inc. contractor or contingent worker, or anyone Jordan Lee is directly involved in interviewing or hiring for the referred role. Acme, Inc. decides in its discretion whether a candidate counts as Jordan Lee's referral, including when more than one employee refers the same candidate.\n\nACKNOWLEDGMENT\nPlease sign below to indicate your agreement to the terms above.\n\nEmployee: Jordan Lee\nDate: _______________\n\n—\nGroundtruth v1 demo · every \"Verified\" citation links to a real, checked source.",
+  "expectedJSON": [
+    {
+      "id": "referral_terms",
+      "kind": "drafting",
+      "status": null,
+      "body": "Acme, Inc. will pay Jordan Lee a referral bonus of $1,500 if a candidate Jordan Lee refers is hired into an eligible role and both the new hire and Jordan Lee remain employed with Acme, Inc. through the payment date described below."
+    },
+    {
+      "id": "referral_eligibility",
+      "kind": "drafting",
+      "status": null,
+      "body": "This bonus isn't available for referring an immediate family member, a current Acme, Inc. contractor or contingent worker, or anyone Jordan Lee is directly involved in interviewing or hiring for the referred role. Acme, Inc. decides in its discretion whether a candidate counts as Jordan Lee's referral, including when more than one employee refers the same candidate."
+    },
+    {
+      "id": "referral_ack",
+      "kind": "drafting",
+      "status": null,
+      "body": "Please sign below to indicate your agreement to the terms above.\n\nEmployee: Jordan Lee\nDate: _______________"
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "docId": "ada_accommodation_request",
+  "inputs": {
+    "companyName": "Acme, Inc.",
+    "employeeName": "Jordan Lee"
+  },
+  "expectedText": "ADA REASONABLE ACCOMMODATION REQUEST FORM\nPrepared for Jordan Lee · Acme, Inc.\n\nACCOMMODATION REQUESTED\nJordan Lee requests a reasonable accommodation as described below.\n\nNature of the limitation: _______________________________________________\nRequested accommodation: _______________________________________________\nHow the accommodation would help: _______________________________________________\n\nREASONABLE ACCOMMODATION\nIf you request a reasonable accommodation, Acme, Inc. will engage with you in good faith to identify one. If Acme, Inc. fails to do so in good faith, that failure can be a basis for liability — but generally only where a reasonable accommodation was actually available and the lack of good faith is what kept it from being identified, not merely because the process itself broke down.\n\n[Verified — checked 2026-08-29]\n  \"To determine the appropriate reasonable accommodation it may be necessary for the covered entity to initiate an informal, interactive process with the individual with a disability in need of the accommodation.\"\n  — 29 C.F.R. § 1630.2(o)(3) (Cornell LII text), Electronic Code of Federal Regulations (https://www.law.cornell.edu/cfr/text/29/1630.2)\n  \"she raised genuine factual disputes on whether the school district participated in good faith in the interactive process required by the ADA.\"\n  — Taylor v. Phoenixville School District, 184 F.3d 296 (3d Cir. 1999) (https://www.courtlistener.com/opinion/765245/katherine-l-taylor-v-phoenixville-school-district/)\n  \"A party that obstructs or delays the interactive process is not acting in good faith. A party that fails to communicate, by way of initiation or response, may also be acting in bad faith.\"\n  — Bultemeyer v. Fort Wayne Community Schools, 100 F.3d 1281 (7th Cir. 1996) (https://www.courtlistener.com/opinion/729768/robert-e-bultemeyer-v-fort-wayne-community-schools/)\n  \"To show that an employer failed to participate in the interactive process, a disabled employee must demonstrate: 1) the employer knew about the employee's disability; 2) the employee requested accommodations or assistance for his or her disability; 3) the employer did not make a good faith effort to assist the employee in seeking accommodations; and 4) the employee could have been reasonably accommodated but for the employer's lack of good faith.\"\n  — Taylor v. Phoenixville School District, 184 F.3d 296 (3d Cir. 1999) (https://www.courtlistener.com/opinion/765245/katherine-l-taylor-v-phoenixville-school-district/)\n  Known gap: The cited cases require more than a bare failure to engage in good faith: the employee generally still has to show that a reasonable accommodation could have been identified but for the employer's lack of good faith — not that the failure alone is automatically actionable regardless of whether any accommodation was actually possible. An earlier version of this clause stated the rule more broadly than that; it's been corrected to match what the cited cases actually hold.\n\nTHE DUTY TO ACCOMMODATE, AND ITS LIMIT\nFederal law requires Acme, Inc. to make reasonable accommodations for the known physical or mental limitations of a qualified employee with a disability, unless doing so would impose an undue hardship on Acme, Inc.'s operations.\n\n[Verified — checked 2026-08-30]\n  \"not making reasonable accommodations to the known physical or mental limitations of an otherwise qualified individual with a disability who is an applicant or employee, unless such covered entity can demonstrate that the accommodation would impose an undue hardship on the operation of the business of such covered entity\"\n  — 42 U.S.C. § 12112(b)(5)(A) (Cornell LII text), U.S. Code, Americans with Disabilities Act, reasonable-accommodation duty (https://www.law.cornell.edu/uscode/text/42/12112)\n  \"The term “undue hardship” means an action requiring significant difficulty or expense, when considered in light of the factors set forth in subparagraph (B). ... factors to be considered include— (i) the nature and cost of the accommodation needed under this chapter; (ii) the overall financial resources of the facility or facilities involved in the provision of the reasonable accommodation; the number of persons employed at such facility; the effect on expenses and resources, or the impact otherwise of such accommodation upon the operation of the facility; (iii) the overall financial resources of the covered entity; the overall size of the business of a covered entity with respect to the number of its employees; the number, type, and location of its facilities; and (iv) the type of operation or operations of the covered entity, including the composition, structure, and functions of the workforce of such entity; the geographic separateness, administrative, or fiscal relationship of the facility or facilities in question to the covered entity.\"\n  — 42 U.S.C. § 12111(10) (Cornell LII text), U.S. Code, Americans with Disabilities Act, undue-hardship definition and factors (https://www.law.cornell.edu/uscode/text/42/12111)\n  Known gap: Undue hardship isn't just about cost in isolation — the law weighs the accommodation's cost and nature against the size, financial resources, and structure of the specific employer and facility involved. The same accommodation can be reasonable for one employer and an undue hardship for a much smaller one; this document states the legal standard, not how it applies to any specific accommodation request.\n\nCONFIDENTIALITY OF MEDICAL INFORMATION\nMedical information Jordan Lee shares to support this request must be collected and kept on separate forms, in separate files from Jordan Lee's regular personnel file, and treated as confidential.\n\n[Verified — checked 2026-08-30]\n  \"Information obtained under subparagraph (B) regarding the medical condition or history of any employee are subject to the requirements of subparagraphs (B) and (C) of paragraph (3).\"\n  — 42 U.S.C. § 12112(d)(4)(C) (Cornell LII text), U.S. Code, Americans with Disabilities Act, confidentiality for current employees (https://www.law.cornell.edu/uscode/text/42/12112)\n  \"information obtained regarding the medical condition or history of the applicant is collected and maintained on separate forms and in separate medical files and is treated as a confidential medical record, except that— (i) supervisors and managers may be informed regarding necessary restrictions on the work or duties of the employee and necessary accommodations; (ii) first aid and safety personnel may be informed, when appropriate, if the disability might require emergency treatment; and (iii) government officials investigating compliance with this chapter shall be provided relevant information on request\"\n  — 42 U.S.C. § 12112(d)(3)(B) (Cornell LII text), U.S. Code, Americans with Disabilities Act, confidentiality requirements and exceptions (https://www.law.cornell.edu/uscode/text/42/12112)\n  Known gap: This confidentiality duty has specific, narrow exceptions written into the same law: supervisors and managers may be told about necessary work restrictions and accommodations, safety personnel may be told if the condition might require emergency treatment, and government officials investigating compliance can get the relevant information on request. Confidential doesn't mean nobody involved can ever know anything about it — it means the underlying medical details stay restricted to those specific, limited circumstances, not shared freely.\n\nACKNOWLEDGMENT\nPlease sign below to acknowledge this request.\n\nEmployee: Jordan Lee\nDate: _______________\n\n—\nGroundtruth v1 demo · every \"Verified\" citation links to a real, checked source.",
+  "expectedJSON": [
+    {
+      "id": "accommodation_request_details",
+      "kind": "drafting",
+      "status": null,
+      "body": "Jordan Lee requests a reasonable accommodation as described below.\n\nNature of the limitation: _______________________________________________\nRequested accommodation: _______________________________________________\nHow the accommodation would help: _______________________________________________"
+    },
+    {
+      "id": "accommodation",
+      "kind": "authority",
+      "status": "verified",
+      "body": "If you request a reasonable accommodation, Acme, Inc. will engage with you in good faith to identify one. If Acme, Inc. fails to do so in good faith, that failure can be a basis for liability — but generally only where a reasonable accommodation was actually available and the lack of good faith is what kept it from being identified, not merely because the process itself broke down.",
+      "citations": [
+        {
+          "case": "29 C.F.R. § 1630.2(o)(3) (Cornell LII text)",
+          "cite": "Electronic Code of Federal Regulations",
+          "url": "https://www.law.cornell.edu/cfr/text/29/1630.2",
+          "quote": "To determine the appropriate reasonable accommodation it may be necessary for the covered entity to initiate an informal, interactive process with the individual with a disability in need of the accommodation."
+        },
+        {
+          "case": "Taylor v. Phoenixville School District",
+          "cite": "184 F.3d 296 (3d Cir. 1999)",
+          "url": "https://www.courtlistener.com/opinion/765245/katherine-l-taylor-v-phoenixville-school-district/",
+          "quote": "she raised genuine factual disputes on whether the school district participated in good faith in the interactive process required by the ADA."
+        },
+        {
+          "case": "Bultemeyer v. Fort Wayne Community Schools",
+          "cite": "100 F.3d 1281 (7th Cir. 1996)",
+          "url": "https://www.courtlistener.com/opinion/729768/robert-e-bultemeyer-v-fort-wayne-community-schools/",
+          "quote": "A party that obstructs or delays the interactive process is not acting in good faith. A party that fails to communicate, by way of initiation or response, may also be acting in bad faith."
+        },
+        {
+          "case": "Taylor v. Phoenixville School District",
+          "cite": "184 F.3d 296 (3d Cir. 1999)",
+          "url": "https://www.courtlistener.com/opinion/765245/katherine-l-taylor-v-phoenixville-school-district/",
+          "quote": "To show that an employer failed to participate in the interactive process, a disabled employee must demonstrate: 1) the employer knew about the employee's disability; 2) the employee requested accommodations or assistance for his or her disability; 3) the employer did not make a good faith effort to assist the employee in seeking accommodations; and 4) the employee could have been reasonably accommodated but for the employer's lack of good faith."
+        }
+      ],
+      "checkedDate": "2026-08-29",
+      "gap": "The cited cases require more than a bare failure to engage in good faith: the employee generally still has to show that a reasonable accommodation could have been identified but for the employer's lack of good faith — not that the failure alone is automatically actionable regardless of whether any accommodation was actually possible. An earlier version of this clause stated the rule more broadly than that; it's been corrected to match what the cited cases actually hold."
+    },
+    {
+      "id": "accommodation_undue_hardship",
+      "kind": "authority",
+      "status": "verified",
+      "body": "Federal law requires Acme, Inc. to make reasonable accommodations for the known physical or mental limitations of a qualified employee with a disability, unless doing so would impose an undue hardship on Acme, Inc.'s operations.",
+      "citations": [
+        {
+          "case": "42 U.S.C. § 12112(b)(5)(A) (Cornell LII text)",
+          "cite": "U.S. Code, Americans with Disabilities Act, reasonable-accommodation duty",
+          "url": "https://www.law.cornell.edu/uscode/text/42/12112",
+          "quote": "not making reasonable accommodations to the known physical or mental limitations of an otherwise qualified individual with a disability who is an applicant or employee, unless such covered entity can demonstrate that the accommodation would impose an undue hardship on the operation of the business of such covered entity"
+        },
+        {
+          "case": "42 U.S.C. § 12111(10) (Cornell LII text)",
+          "cite": "U.S. Code, Americans with Disabilities Act, undue-hardship definition and factors",
+          "url": "https://www.law.cornell.edu/uscode/text/42/12111",
+          "quote": "The term “undue hardship” means an action requiring significant difficulty or expense, when considered in light of the factors set forth in subparagraph (B). ... factors to be considered include— (i) the nature and cost of the accommodation needed under this chapter; (ii) the overall financial resources of the facility or facilities involved in the provision of the reasonable accommodation; the number of persons employed at such facility; the effect on expenses and resources, or the impact otherwise of such accommodation upon the operation of the facility; (iii) the overall financial resources of the covered entity; the overall size of the business of a covered entity with respect to the number of its employees; the number, type, and location of its facilities; and (iv) the type of operation or operations of the covered entity, including the composition, structure, and functions of the workforce of such entity; the geographic separateness, administrative, or fiscal relationship of the facility or facilities in question to the covered entity."
+        }
+      ],
+      "checkedDate": "2026-08-30",
+      "gap": "Undue hardship isn't just about cost in isolation — the law weighs the accommodation's cost and nature against the size, financial resources, and structure of the specific employer and facility involved. The same accommodation can be reasonable for one employer and an undue hardship for a much smaller one; this document states the legal standard, not how it applies to any specific accommodation request."
+    },
+    {
+      "id": "accommodation_confidentiality",
+      "kind": "authority",
+      "status": "verified",
+      "body": "Medical information Jordan Lee shares to support this request must be collected and kept on separate forms, in separate files from Jordan Lee's regular personnel file, and treated as confidential.",
+      "citations": [
+        {
+          "case": "42 U.S.C. § 12112(d)(4)(C) (Cornell LII text)",
+          "cite": "U.S. Code, Americans with Disabilities Act, confidentiality for current employees",
+          "url": "https://www.law.cornell.edu/uscode/text/42/12112",
+          "quote": "Information obtained under subparagraph (B) regarding the medical condition or history of any employee are subject to the requirements of subparagraphs (B) and (C) of paragraph (3)."
+        },
+        {
+          "case": "42 U.S.C. § 12112(d)(3)(B) (Cornell LII text)",
+          "cite": "U.S. Code, Americans with Disabilities Act, confidentiality requirements and exceptions",
+          "url": "https://www.law.cornell.edu/uscode/text/42/12112",
+          "quote": "information obtained regarding the medical condition or history of the applicant is collected and maintained on separate forms and in separate medical files and is treated as a confidential medical record, except that— (i) supervisors and managers may be informed regarding necessary restrictions on the work or duties of the employee and necessary accommodations; (ii) first aid and safety personnel may be informed, when appropriate, if the disability might require emergency treatment; and (iii) government officials investigating compliance with this chapter shall be provided relevant information on request"
+        }
+      ],
+      "checkedDate": "2026-08-30",
+      "gap": "This confidentiality duty has specific, narrow exceptions written into the same law: supervisors and managers may be told about necessary work restrictions and accommodations, safety personnel may be told if the condition might require emergency treatment, and government officials investigating compliance can get the relevant information on request. Confidential doesn't mean nobody involved can ever know anything about it — it means the underlying medical details stay restricted to those specific, limited circumstances, not shared freely."
+    },
+    {
+      "id": "accommodation_ack",
+      "kind": "drafting",
+      "status": null,
+      "body": "Please sign below to acknowledge this request.\n\nEmployee: Jordan Lee\nDate: _______________"
+    }
+  ]
+}

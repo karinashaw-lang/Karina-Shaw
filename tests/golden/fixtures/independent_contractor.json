@@ -1,0 +1,52 @@
+{
+  "docId": "independent_contractor",
+  "inputs": {
+    "companyName": "Acme, Inc.",
+    "employeeName": "Taylor Reyes",
+    "scopeOfWork": "Freelance graphic design services for marketing materials",
+    "paymentTerms": "$75 per hour, invoiced monthly"
+  },
+  "expectedText": "INDEPENDENT CONTRACTOR AGREEMENT\nPrepared for Taylor Reyes · Acme, Inc.\n\nSCOPE OF WORK\nAcme, Inc. is engaging Taylor Reyes to perform the following: Freelance graphic design services for marketing materials. Taylor Reyes determines the manner and means of performing this work, provided the results meet the specifications above.\n\nPAYMENT\nAcme, Inc. will pay Taylor Reyes $75 per hour, invoiced monthly for the services described above. Taylor Reyes is responsible for their own tax withholding and reporting; Acme, Inc. will not withhold income or payroll taxes from these payments.\n\nINDEPENDENT CONTRACTOR STATUS\nCalling Taylor Reyes an “independent contractor” in this agreement doesn't by itself make that legally true. Courts and agencies look past the label to the actual working relationship — the same common-law factors used to decide who counts as an “employee” under federal statutes as different as copyright law and retirement-benefit law: who controls how the work gets done, who supplies the tools and workspace, how the person is paid, whether they receive employee benefits, and how they're treated for tax purposes. No single factor controls on its own. If the actual relationship looks more like employment than an independent engagement, Acme, Inc. may owe the obligations that come with employee status regardless of what this agreement calls Taylor Reyes.\n\n[Verified — checked 2026-08-29]\n  \"In determining whether a hired party is an employee under the general common law of agency, we consider the hiring party's right to control the manner and means by which the product is accomplished.\"\n  — Community for Creative Non-Violence v. Reid, 490 U.S. 730 (1989) (https://www.courtlistener.com/opinion/112273/community-for-creative-non-violence-v-reid/)\n  \"In this case we construe the term “employee” as it appears in §3(6) of the Employee Retirement Income Security Act of 1974 (ERISA), 88 Stat. 834, 29 U.S.C. §1002(6), and read it to incorporate traditional agency law criteria for identifying master-servant relationships.\"\n  — Nationwide Mutual Insurance Co. v. Darden, 503 U.S. 318 (1992) (https://www.courtlistener.com/opinion/112710/nationwide-mutual-insurance-v-darden/)\n  Known gap: This clause states the federal common-law default, which several federal statutes (copyright, retirement-benefit law, and others) apply the same way. It does not by itself resolve any state-law test — some states use a different or stricter standard for specific purposes, particularly wage-and-hour law and unemployment insurance. Which test applies, and how strictly, depends on the state and the specific law in question; that wasn't resolved here.\n\nACKNOWLEDGMENT\nPlease sign below to indicate your agreement to the terms above.\n\nContractor: Taylor Reyes\nDate: _______________\n\n—\nGroundtruth v1 demo · every \"Verified\" citation links to a real, checked source.",
+  "expectedJSON": [
+    {
+      "id": "ic_scope",
+      "kind": "drafting",
+      "status": null,
+      "body": "Acme, Inc. is engaging Taylor Reyes to perform the following: Freelance graphic design services for marketing materials. Taylor Reyes determines the manner and means of performing this work, provided the results meet the specifications above."
+    },
+    {
+      "id": "ic_payment",
+      "kind": "drafting",
+      "status": null,
+      "body": "Acme, Inc. will pay Taylor Reyes $75 per hour, invoiced monthly for the services described above. Taylor Reyes is responsible for their own tax withholding and reporting; Acme, Inc. will not withhold income or payroll taxes from these payments."
+    },
+    {
+      "id": "ic_classification",
+      "kind": "authority",
+      "status": "verified",
+      "body": "Calling Taylor Reyes an “independent contractor” in this agreement doesn't by itself make that legally true. Courts and agencies look past the label to the actual working relationship — the same common-law factors used to decide who counts as an “employee” under federal statutes as different as copyright law and retirement-benefit law: who controls how the work gets done, who supplies the tools and workspace, how the person is paid, whether they receive employee benefits, and how they're treated for tax purposes. No single factor controls on its own. If the actual relationship looks more like employment than an independent engagement, Acme, Inc. may owe the obligations that come with employee status regardless of what this agreement calls Taylor Reyes.",
+      "citations": [
+        {
+          "case": "Community for Creative Non-Violence v. Reid",
+          "cite": "490 U.S. 730 (1989)",
+          "url": "https://www.courtlistener.com/opinion/112273/community-for-creative-non-violence-v-reid/",
+          "quote": "In determining whether a hired party is an employee under the general common law of agency, we consider the hiring party's right to control the manner and means by which the product is accomplished."
+        },
+        {
+          "case": "Nationwide Mutual Insurance Co. v. Darden",
+          "cite": "503 U.S. 318 (1992)",
+          "url": "https://www.courtlistener.com/opinion/112710/nationwide-mutual-insurance-v-darden/",
+          "quote": "In this case we construe the term “employee” as it appears in §3(6) of the Employee Retirement Income Security Act of 1974 (ERISA), 88 Stat. 834, 29 U.S.C. §1002(6), and read it to incorporate traditional agency law criteria for identifying master-servant relationships."
+        }
+      ],
+      "checkedDate": "2026-08-29",
+      "gap": "This clause states the federal common-law default, which several federal statutes (copyright, retirement-benefit law, and others) apply the same way. It does not by itself resolve any state-law test — some states use a different or stricter standard for specific purposes, particularly wage-and-hour law and unemployment insurance. Which test applies, and how strictly, depends on the state and the specific law in question; that wasn't resolved here."
+    },
+    {
+      "id": "ic_ack",
+      "kind": "drafting",
+      "status": null,
+      "body": "Please sign below to indicate your agreement to the terms above.\n\nContractor: Taylor Reyes\nDate: _______________"
+    }
+  ]
+}

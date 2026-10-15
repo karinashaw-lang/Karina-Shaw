@@ -1,0 +1,17 @@
+{
+  "docId": "interview_scorecard",
+  "inputs": {
+    "companyName": "Acme, Inc.",
+    "employeeName": "Jordan Lee",
+    "jobTitle": "Software Engineer"
+  },
+  "expectedText": "INTERVIEW SCORECARD\nPrepared for Jordan Lee · Acme, Inc.\n\nCANDIDATE EVALUATION\nCandidate: Jordan Lee\nPosition: Software Engineer\nInterviewer: _______________________________________________\nDate: _______________\n\nRatings (1-5, 5 highest):\nRelevant experience: _______\nRole-specific skills: _______\nCommunication: _______\nOverall fit for the role: _______\n\nStrengths:\n_______________________________________________\n\nConcerns:\n_______________________________________________\n\nRecommendation: ☐ Strong yes  ☐ Yes  ☐ No  ☐ Strong no\n\n—\nGroundtruth v1 demo · every \"Verified\" citation links to a real, checked source.",
+  "expectedJSON": [
+    {
+      "id": "interview_scorecard_details",
+      "kind": "drafting",
+      "status": null,
+      "body": "Candidate: Jordan Lee\nPosition: Software Engineer\nInterviewer: _______________________________________________\nDate: _______________\n\nRatings (1-5, 5 highest):\nRelevant experience: _______\nRole-specific skills: _______\nCommunication: _______\nOverall fit for the role: _______\n\nStrengths:\n_______________________________________________\n\nConcerns:\n_______________________________________________\n\nRecommendation: ☐ Strong yes  ☐ Yes  ☐ No  ☐ Strong no"
+    }
+  ]
+}

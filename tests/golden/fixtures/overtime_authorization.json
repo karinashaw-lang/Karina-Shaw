@@ -1,0 +1,62 @@
+{
+  "docId": "overtime_authorization",
+  "inputs": {
+    "companyName": "Acme, Inc.",
+    "employeeName": "Jordan Lee"
+  },
+  "expectedText": "OVERTIME AUTHORIZATION FORM\nPrepared for Jordan Lee · Acme, Inc.\n\nOVERTIME REQUEST\nJordan Lee requests approval to work overtime hours as described below.\n\nDate(s): _______________\nEstimated overtime hours: _______________\nReason: _______________________________________________\n\nOVERTIME\nIf you are a non-exempt employee, Acme, Inc. requires advance approval before working overtime. Even so, the law requires Acme, Inc. to pay for overtime it actually knew about, or should have known about, whether or not it was pre-approved. Acme, Inc. is not liable for overtime hours it had no way of knowing about because they were never reported.\n\n[Verified — checked 2026-08-29]\n  \"Except as otherwise provided in this section, no employer shall employ any of his employees who in any workweek is engaged in commerce or in the production of goods for commerce ... for a workweek longer than forty hours unless such employee receives compensation for his employment in excess of the hours above specified at a rate not less than one and one-half times the regular rate at which he is employed.\"\n  — 29 U.S.C. § 207(a)(1) (Cornell LII text), U.S. Code (https://www.law.cornell.edu/uscode/text/29/207)\n  \"an employer who knows or should have known that an employee is or was working overtime must comply with the provisions of § 207. An employer who is armed with this knowledge cannot stand idly by and allow an employee to perform overtime work without proper compensation, even if the employee does not make a claim for the overtime compensation.\"\n  — Forrester v. Roth's I.G.A. Foodliner, Inc., 646 F.2d 413 (9th Cir. 1981) (https://www.courtlistener.com/opinion/389336/billy-h-forrester-v-roths-i-g-a-foodliner-incorporated-an-oregon/)\n  \"where an employer has no knowledge that an employee is engaging in overtime work and that employee fails to notify the employer or deliberately prevents the employer from acquiring knowledge of the overtime work, the employer's failure to pay for the overtime hours is not a violation of § 207.\"\n  — Forrester v. Roth's I.G.A. Foodliner, Inc., 646 F.2d 413 (9th Cir. 1981) (https://www.courtlistener.com/opinion/389336/billy-h-forrester-v-roths-i-g-a-foodliner-incorporated-an-oregon/)\n  \"He was employed during those hours if the City had knowledge, actual or constructive, that he was working.\"\n  — Newton v. City of Henderson, 47 F.3d 746 (5th Cir. 1995) (https://www.courtlistener.com/opinion/689147/stephen-r-newton-v-city-of-henderson/)\n  \"An employer must have an opportunity to comply with the provisions of the FLSA. This is not to say that an employer may escape responsibility by negligently maintaining records required by the FLSA, or by deliberately turning its back on a situation.\"\n  — Forrester v. Roth's I.G.A. Foodliner, Inc., 646 F.2d 413 (9th Cir. 1981) (https://www.courtlistener.com/opinion/389336/billy-h-forrester-v-roths-i-g-a-foodliner-incorporated-an-oregon/)\n  Known gap: Both cases cited here address the federal floor under the FLSA. Whether a specific state's overtime law imposes a stricter or different rule was not checked — this clause names no state and defers to federal law only. The non-reporting safe harbor in the third sentence has its own limit, stated in Forrester itself: an employer can still be liable if it negligently maintains the records the FLSA requires, or deliberately turns its back on a situation rather than genuinely having no way to know — a company doesn't get the safe harbor just by not asking questions.\n\nAPPROVAL\nApproved by: _______________________________________________ (name/title)\nSignature: _______________________________________________\nDate: _______________\n\n—\nGroundtruth v1 demo · every \"Verified\" citation links to a real, checked source.",
+  "expectedJSON": [
+    {
+      "id": "overtime_request",
+      "kind": "drafting",
+      "status": null,
+      "body": "Jordan Lee requests approval to work overtime hours as described below.\n\nDate(s): _______________\nEstimated overtime hours: _______________\nReason: _______________________________________________"
+    },
+    {
+      "id": "offer_overtime",
+      "kind": "authority",
+      "status": "verified",
+      "body": "If you are a non-exempt employee, Acme, Inc. requires advance approval before working overtime. Even so, the law requires Acme, Inc. to pay for overtime it actually knew about, or should have known about, whether or not it was pre-approved. Acme, Inc. is not liable for overtime hours it had no way of knowing about because they were never reported.",
+      "citations": [
+        {
+          "case": "29 U.S.C. § 207(a)(1) (Cornell LII text)",
+          "cite": "U.S. Code",
+          "url": "https://www.law.cornell.edu/uscode/text/29/207",
+          "quote": "Except as otherwise provided in this section, no employer shall employ any of his employees who in any workweek is engaged in commerce or in the production of goods for commerce ... for a workweek longer than forty hours unless such employee receives compensation for his employment in excess of the hours above specified at a rate not less than one and one-half times the regular rate at which he is employed."
+        },
+        {
+          "case": "Forrester v. Roth's I.G.A. Foodliner, Inc.",
+          "cite": "646 F.2d 413 (9th Cir. 1981)",
+          "url": "https://www.courtlistener.com/opinion/389336/billy-h-forrester-v-roths-i-g-a-foodliner-incorporated-an-oregon/",
+          "quote": "an employer who knows or should have known that an employee is or was working overtime must comply with the provisions of § 207. An employer who is armed with this knowledge cannot stand idly by and allow an employee to perform overtime work without proper compensation, even if the employee does not make a claim for the overtime compensation."
+        },
+        {
+          "case": "Forrester v. Roth's I.G.A. Foodliner, Inc.",
+          "cite": "646 F.2d 413 (9th Cir. 1981)",
+          "url": "https://www.courtlistener.com/opinion/389336/billy-h-forrester-v-roths-i-g-a-foodliner-incorporated-an-oregon/",
+          "quote": "where an employer has no knowledge that an employee is engaging in overtime work and that employee fails to notify the employer or deliberately prevents the employer from acquiring knowledge of the overtime work, the employer's failure to pay for the overtime hours is not a violation of § 207."
+        },
+        {
+          "case": "Newton v. City of Henderson",
+          "cite": "47 F.3d 746 (5th Cir. 1995)",
+          "url": "https://www.courtlistener.com/opinion/689147/stephen-r-newton-v-city-of-henderson/",
+          "quote": "He was employed during those hours if the City had knowledge, actual or constructive, that he was working."
+        },
+        {
+          "case": "Forrester v. Roth's I.G.A. Foodliner, Inc.",
+          "cite": "646 F.2d 413 (9th Cir. 1981)",
+          "url": "https://www.courtlistener.com/opinion/389336/billy-h-forrester-v-roths-i-g-a-foodliner-incorporated-an-oregon/",
+          "quote": "An employer must have an opportunity to comply with the provisions of the FLSA. This is not to say that an employer may escape responsibility by negligently maintaining records required by the FLSA, or by deliberately turning its back on a situation."
+        }
+      ],
+      "checkedDate": "2026-08-29",
+      "gap": "Both cases cited here address the federal floor under the FLSA. Whether a specific state's overtime law imposes a stricter or different rule was not checked — this clause names no state and defers to federal law only. The non-reporting safe harbor in the third sentence has its own limit, stated in Forrester itself: an employer can still be liable if it negligently maintains the records the FLSA requires, or deliberately turns its back on a situation rather than genuinely having no way to know — a company doesn't get the safe harbor just by not asking questions."
+    },
+    {
+      "id": "overtime_approval",
+      "kind": "drafting",
+      "status": null,
+      "body": "Approved by: _______________________________________________ (name/title)\nSignature: _______________________________________________\nDate: _______________"
+    }
+  ]
+}

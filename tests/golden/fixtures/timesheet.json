@@ -1,0 +1,56 @@
+{
+  "docId": "timesheet",
+  "inputs": {
+    "companyName": "Acme, Inc.",
+    "employeeName": "Jordan Lee"
+  },
+  "expectedText": "TIMESHEET / TIME RECORDS\nPrepared for Jordan Lee · Acme, Inc.\n\nHOURS WORKED\nWeek of: _______________\n\nMonday: _______________ hours\nTuesday: _______________ hours\nWednesday: _______________ hours\nThursday: _______________ hours\nFriday: _______________ hours\nSaturday: _______________ hours\nSunday: _______________ hours\n\nTotal hours for the week: _______________\n\nTIMEKEEPING\nFederal law requires Acme, Inc. — not the employee directly — to make and keep accurate records of the hours worked by non-exempt employees. In practice, that means non-exempt employees are expected to record their own time accurately, since it's what the company's own recordkeeping duty depends on. If Acme, Inc.'s records are incomplete anyway, an employee may still recover unpaid wages by showing the amount of work performed as a matter of just and reasonable inference — an estimate that still has to be reasonably reliable, not any guess — and Acme, Inc. then has the chance to rebut that estimate with its own evidence.\n\n[Verified — checked 2026-09-01]\n  \"Every employer subject to any provision of this chapter or of any order issued under this chapter shall make, keep, and preserve such records of the persons employed by him and of the wages, hours, and other conditions and practices of employment maintained by him, and shall preserve such records for such periods of time, and shall make such reports therefrom to the Administrator as he shall prescribe by regulation or order as necessary or appropriate for the enforcement of the provisions of this chapter or the regulations or orders thereunder.\"\n  — 29 U.S.C. § 211(c) (Cornell LII text), U.S. Code, FLSA recordkeeping duty (https://www.law.cornell.edu/uscode/text/29/211)\n  \"Except as otherwise provided in this section, no employer shall employ any of his employees who in any workweek is engaged in commerce or in the production of goods for commerce ... for a workweek longer than forty hours unless such employee receives compensation for his employment in excess of the hours above specified at a rate not less than one and one-half times the regular rate at which he is employed.\"\n  — 29 U.S.C. § 207(a)(1) (Cornell LII text), U.S. Code (https://www.law.cornell.edu/uscode/text/29/207)\n  \"an employee has carried out his burden if he proves that he has in fact performed work for which he was improperly compensated and if he produces sufficient evidence to show the amount and extent of that work as a matter of just and reasonable inference. The burden then shifts to the employer to come forward with evidence of the precise amount of work performed or with evidence to negative the reasonableness of the inference to be drawn from the employee's evidence.\"\n  — Anderson v. Mt. Clemens Pottery Co., 328 U.S. 680 (1946) (https://www.courtlistener.com/opinion/104318/anderson-v-mt-clemens-pottery-co/)\n  \"The problem was one of degree, not kind — the methods Plaintiffs used to estimate worktime were simply too unreliable to permit a factfinder to draw a 'just and reasonable inference.'\"\n  — Mazurek v. Metalcraft of Mayville, Inc., 111 F.4th 748 (7th Cir. 2024) (https://www.courtlistener.com/opinion/10495444/richard-mazurek-v-metalcraft-of-mayville-inc/)\n  Known gap: The recordkeeping duty quoted below is imposed on the employer by statute, not directly on the employee — an employee's own habit of recording time is how the employer's policy typically satisfies that duty, not a separate statutory obligation in its own right. Separately, the just-and-reasonable-inference doctrine has a real limit: a court can reject an estimate as too unreliable to support that inference at all, rather than simply discounting it, if the estimation method itself was too imprecise.\n\nCERTIFICATION\nBy signing below, Jordan Lee certifies that the hours recorded above are accurate.\n\nEmployee: Jordan Lee\nDate: _______________\n\n—\nGroundtruth v1 demo · every \"Verified\" citation links to a real, checked source.",
+  "expectedJSON": [
+    {
+      "id": "timesheet_entry",
+      "kind": "drafting",
+      "status": null,
+      "body": "Week of: _______________\n\nMonday: _______________ hours\nTuesday: _______________ hours\nWednesday: _______________ hours\nThursday: _______________ hours\nFriday: _______________ hours\nSaturday: _______________ hours\nSunday: _______________ hours\n\nTotal hours for the week: _______________"
+    },
+    {
+      "id": "timekeeping",
+      "kind": "authority",
+      "status": "verified",
+      "body": "Federal law requires Acme, Inc. — not the employee directly — to make and keep accurate records of the hours worked by non-exempt employees. In practice, that means non-exempt employees are expected to record their own time accurately, since it's what the company's own recordkeeping duty depends on. If Acme, Inc.'s records are incomplete anyway, an employee may still recover unpaid wages by showing the amount of work performed as a matter of just and reasonable inference — an estimate that still has to be reasonably reliable, not any guess — and Acme, Inc. then has the chance to rebut that estimate with its own evidence.",
+      "citations": [
+        {
+          "case": "29 U.S.C. § 211(c) (Cornell LII text)",
+          "cite": "U.S. Code, FLSA recordkeeping duty",
+          "url": "https://www.law.cornell.edu/uscode/text/29/211",
+          "quote": "Every employer subject to any provision of this chapter or of any order issued under this chapter shall make, keep, and preserve such records of the persons employed by him and of the wages, hours, and other conditions and practices of employment maintained by him, and shall preserve such records for such periods of time, and shall make such reports therefrom to the Administrator as he shall prescribe by regulation or order as necessary or appropriate for the enforcement of the provisions of this chapter or the regulations or orders thereunder."
+        },
+        {
+          "case": "29 U.S.C. § 207(a)(1) (Cornell LII text)",
+          "cite": "U.S. Code",
+          "url": "https://www.law.cornell.edu/uscode/text/29/207",
+          "quote": "Except as otherwise provided in this section, no employer shall employ any of his employees who in any workweek is engaged in commerce or in the production of goods for commerce ... for a workweek longer than forty hours unless such employee receives compensation for his employment in excess of the hours above specified at a rate not less than one and one-half times the regular rate at which he is employed."
+        },
+        {
+          "case": "Anderson v. Mt. Clemens Pottery Co.",
+          "cite": "328 U.S. 680 (1946)",
+          "url": "https://www.courtlistener.com/opinion/104318/anderson-v-mt-clemens-pottery-co/",
+          "quote": "an employee has carried out his burden if he proves that he has in fact performed work for which he was improperly compensated and if he produces sufficient evidence to show the amount and extent of that work as a matter of just and reasonable inference. The burden then shifts to the employer to come forward with evidence of the precise amount of work performed or with evidence to negative the reasonableness of the inference to be drawn from the employee's evidence."
+        },
+        {
+          "case": "Mazurek v. Metalcraft of Mayville, Inc.",
+          "cite": "111 F.4th 748 (7th Cir. 2024)",
+          "url": "https://www.courtlistener.com/opinion/10495444/richard-mazurek-v-metalcraft-of-mayville-inc/",
+          "quote": "The problem was one of degree, not kind — the methods Plaintiffs used to estimate worktime were simply too unreliable to permit a factfinder to draw a 'just and reasonable inference.'"
+        }
+      ],
+      "checkedDate": "2026-09-01",
+      "gap": "The recordkeeping duty quoted below is imposed on the employer by statute, not directly on the employee — an employee's own habit of recording time is how the employer's policy typically satisfies that duty, not a separate statutory obligation in its own right. Separately, the just-and-reasonable-inference doctrine has a real limit: a court can reject an estimate as too unreliable to support that inference at all, rather than simply discounting it, if the estimation method itself was too imprecise."
+    },
+    {
+      "id": "timesheet_ack",
+      "kind": "drafting",
+      "status": null,
+      "body": "By signing below, Jordan Lee certifies that the hours recorded above are accurate.\n\nEmployee: Jordan Lee\nDate: _______________"
+    }
+  ]
+}

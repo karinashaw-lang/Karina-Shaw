@@ -1,0 +1,16 @@
+{
+  "docId": "job_description",
+  "inputs": {
+    "companyName": "Acme, Inc.",
+    "jobTitle": "Software Engineer"
+  },
+  "expectedText": "JOB DESCRIPTION TEMPLATE\nPrepared for Acme, Inc.\n\nJOB DESCRIPTION\nJob Title: Software Engineer\nCompany: Acme, Inc.\n\nJob Summary:\n_______________________________________________\n_______________________________________________\n\nKey Responsibilities:\n_______________________________________________\n_______________________________________________\n_______________________________________________\n\nRequired Qualifications:\n_______________________________________________\n_______________________________________________\n\nPreferred Qualifications:\n_______________________________________________\n\n—\nGroundtruth v1 demo · every \"Verified\" citation links to a real, checked source.",
+  "expectedJSON": [
+    {
+      "id": "job_description_details",
+      "kind": "drafting",
+      "status": null,
+      "body": "Job Title: Software Engineer\nCompany: Acme, Inc.\n\nJob Summary:\n_______________________________________________\n_______________________________________________\n\nKey Responsibilities:\n_______________________________________________\n_______________________________________________\n_______________________________________________\n\nRequired Qualifications:\n_______________________________________________\n_______________________________________________\n\nPreferred Qualifications:\n_______________________________________________"
+    }
+  ]
+}

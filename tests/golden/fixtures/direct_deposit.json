@@ -1,0 +1,28 @@
+{
+  "docId": "direct_deposit",
+  "inputs": {
+    "companyName": "Acme, Inc.",
+    "employeeName": "Jordan Lee"
+  },
+  "expectedText": "DIRECT DEPOSIT AUTHORIZATION\nPrepared for Jordan Lee · Acme, Inc.\n\nAUTHORIZATION\nJordan Lee authorizes Acme, Inc. to deposit Jordan Lee's pay directly into the account described below, instead of by paper check, until this authorization is changed or revoked.\n\nBank name: _______________\nRouting number: _______________\nAccount number: _______________\nAccount type: ☐ Checking  ☐ Savings\n\nCHANGING OR REVOKING THIS AUTHORIZATION\nJordan Lee may change or revoke this authorization at any time by submitting a new form in writing to Acme, Inc. Acme, Inc. will apply the change beginning with the next pay period for which there's enough time to process it.\n\nACKNOWLEDGMENT\nPlease sign below to indicate your agreement to the terms above.\n\nEmployee: Jordan Lee\nDate: _______________\n\n—\nGroundtruth v1 demo · every \"Verified\" citation links to a real, checked source.",
+  "expectedJSON": [
+    {
+      "id": "dd_authorization",
+      "kind": "drafting",
+      "status": null,
+      "body": "Jordan Lee authorizes Acme, Inc. to deposit Jordan Lee's pay directly into the account described below, instead of by paper check, until this authorization is changed or revoked.\n\nBank name: _______________\nRouting number: _______________\nAccount number: _______________\nAccount type: ☐ Checking  ☐ Savings"
+    },
+    {
+      "id": "dd_revocation",
+      "kind": "drafting",
+      "status": null,
+      "body": "Jordan Lee may change or revoke this authorization at any time by submitting a new form in writing to Acme, Inc. Acme, Inc. will apply the change beginning with the next pay period for which there's enough time to process it."
+    },
+    {
+      "id": "dd_ack",
+      "kind": "drafting",
+      "status": null,
+      "body": "Please sign below to indicate your agreement to the terms above.\n\nEmployee: Jordan Lee\nDate: _______________"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "docId": "salary_change",
+  "inputs": {
+    "companyName": "Acme, Inc.",
+    "employeeName": "Jordan Lee",
+    "jobTitle": "Senior Software Engineer",
+    "salary": "$110,000 per year",
+    "effectiveDate": "October 1, 2026"
+  },
+  "expectedText": "SALARY CHANGE / PROMOTION NOTICE\nPrepared for Jordan Lee · Acme, Inc.\n\nCHANGE IN COMPENSATION\nEffective October 1, 2026, Jordan Lee's title will change to Senior Software Engineer and base salary will change to $110,000 per year. All other terms of Jordan Lee's employment remain the same.\n\nACKNOWLEDGMENT\nPlease sign below to acknowledge this change.\n\nEmployee: Jordan Lee\nDate: _______________\n\n—\nGroundtruth v1 demo · every \"Verified\" citation links to a real, checked source.",
+  "expectedJSON": [
+    {
+      "id": "salary_change_details",
+      "kind": "drafting",
+      "status": null,
+      "body": "Effective October 1, 2026, Jordan Lee's title will change to Senior Software Engineer and base salary will change to $110,000 per year. All other terms of Jordan Lee's employment remain the same."
+    },
+    {
+      "id": "salary_change_ack",
+      "kind": "drafting",
+      "status": null,
+      "body": "Please sign below to acknowledge this change.\n\nEmployee: Jordan Lee\nDate: _______________"
+    }
+  ]
+}

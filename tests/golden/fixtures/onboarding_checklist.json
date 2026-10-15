@@ -1,0 +1,69 @@
+{
+  "docId": "onboarding_checklist",
+  "inputs": {
+    "companyName": "Acme, Inc.",
+    "employeeName": "Jordan Lee",
+    "startDate": "September 15, 2026"
+  },
+  "expectedText": "NEW HIRE ONBOARDING CHECKLIST\nPrepared for Jordan Lee · Acme, Inc.\n\nBEFORE YOUR START DATE\nBefore or on September 15, 2026, Acme, Inc. will complete the following for Jordan Lee: collect Form W-4 and any required state tax withholding forms; issue any company equipment, credentials, and system access; provide a copy of the employee handbook; and confirm Jordan Lee's emergency contact information.\n\nWORK AUTHORIZATION\nAcme, Inc. completes Form I-9 for every employee within three business days of their first day of work and applies the same documentary requirements to every employee, regardless of national origin or citizenship status.\n\n[Verified — checked 2026-08-29]\n  \"an employer, his or her agent, or anyone acting directly or indirectly in the interest thereof, must within three business days of the hire: (A) Physically examine ... the documentation presented by the individual establishing identity and employment authorization\"\n  — 8 C.F.R. § 274a.2(b)(1)(ii) (Cornell LII text), Electronic Code of Federal Regulations (https://www.law.cornell.edu/cfr/text/8/274a.2)\n  \"A person's or other entity's request, for purposes of satisfying the requirements of section 1324a(b) of this title, for more or different documents than are required under such section or refusing to honor documents tendered that on their face reasonably appear to be genuine shall be treated as an unfair immigration-related employment practice if made for the purpose or with the intent of discriminating against an individual in violation of paragraph (1).\"\n  — 8 U.S.C. § 1324b(a)(6) (Cornell LII text), U.S. Code (https://www.law.cornell.edu/uscode/text/8/1324b)\n  \"an employer \"must within three business days of hire … [c]omplete [S]ection 2\"\"\n  — Split Rail Fence Co. v. United States, 852 F.3d 1228 (10th Cir. 2017) (https://www.courtlistener.com/opinion/4153671/split-rail-fence-co-inc-v-united-states/)\n  \"The evidence unquestionably shows that the employment practices in this case did not create additional burdens to any class of applicants or constitute differential treatment of authorized aliens and citizens. There could have been no discrimination, and the petition for review must be granted.\"\n  — Robison Fruit Ranch, Inc. v. United States, 154 F.3d 807 (9th Cir. 1998) (https://www.courtlistener.com/opinion/755475/robison-fruit-ranch-inc-petitioner-v-united-states-of-america/)\n  \"An employer who hires an individual for employment for a duration of less than three business days must comply with paragraphs (b)(1)(ii)(A) and (b)(1)(ii)(B) of this section at the time of the hire.\"\n  — 8 C.F.R. § 274a.2(b)(1)(iii) (Cornell LII text), Electronic Code of Federal Regulations (https://www.law.cornell.edu/cfr/text/8/274a.2)\n  \"Paragraph (1) shall not apply to— (A) a person or other entity that employs three or fewer employees\"\n  — 8 U.S.C. § 1324b(a)(2)(A) (Cornell LII text), U.S. Code, small-employer exception (https://www.law.cornell.edu/uscode/text/8/1324b)\n  Known gap: This clause's documentary-uniformity claim is grounded in 8 U.S.C. §1324b(a)(6), not §1324a — confirmed directly against the statute's own text, not just a case quoting it, so this is no longer an open miscitation, just a citation this clause's single §1324a reference doesn't fully cover. The separate claim that I-9 forms must be kept apart from personnel files is not in the regulation itself — the full text of 8 C.F.R. §274a.2 was checked directly and contains no mention of personnel files. That instruction comes from USCIS's Handbook for Employers (Form M-274), which is agency guidance, not a codified requirement — a real distinction if the reader is deciding how strictly to treat it. Two further qualifiers, found by reading past the already-quoted fragments of both sources: first, the “three business days” timing itself isn't universal — 8 C.F.R. §274a.2(b)(1)(iii) requires an employer who hires someone for less than three business days to complete verification the same day, not within three business days. Second, and more substantial: 8 U.S.C. §1324b(a)(2)(A) exempts any employer with three or fewer employees from this anti-discrimination protection entirely — the documentary-uniformity claim in this clause's body doesn't apply to the smallest employers at all, a real limit this clause didn't previously disclose.\n\nACKNOWLEDGMENT\nPlease sign below to confirm you've completed new-hire orientation and received the items described above.\n\nEmployee: Jordan Lee\nDate: _______________\n\n—\nGroundtruth v1 demo · every \"Verified\" citation links to a real, checked source.",
+  "expectedJSON": [
+    {
+      "id": "onboarding_items",
+      "kind": "drafting",
+      "status": null,
+      "body": "Before or on September 15, 2026, Acme, Inc. will complete the following for Jordan Lee: collect Form W-4 and any required state tax withholding forms; issue any company equipment, credentials, and system access; provide a copy of the employee handbook; and confirm Jordan Lee's emergency contact information."
+    },
+    {
+      "id": "work_auth",
+      "kind": "authority",
+      "status": "verified",
+      "body": "Acme, Inc. completes Form I-9 for every employee within three business days of their first day of work and applies the same documentary requirements to every employee, regardless of national origin or citizenship status.",
+      "citations": [
+        {
+          "case": "8 C.F.R. § 274a.2(b)(1)(ii) (Cornell LII text)",
+          "cite": "Electronic Code of Federal Regulations",
+          "url": "https://www.law.cornell.edu/cfr/text/8/274a.2",
+          "quote": "an employer, his or her agent, or anyone acting directly or indirectly in the interest thereof, must within three business days of the hire: (A) Physically examine ... the documentation presented by the individual establishing identity and employment authorization"
+        },
+        {
+          "case": "8 U.S.C. § 1324b(a)(6) (Cornell LII text)",
+          "cite": "U.S. Code",
+          "url": "https://www.law.cornell.edu/uscode/text/8/1324b",
+          "quote": "A person's or other entity's request, for purposes of satisfying the requirements of section 1324a(b) of this title, for more or different documents than are required under such section or refusing to honor documents tendered that on their face reasonably appear to be genuine shall be treated as an unfair immigration-related employment practice if made for the purpose or with the intent of discriminating against an individual in violation of paragraph (1)."
+        },
+        {
+          "case": "Split Rail Fence Co. v. United States",
+          "cite": "852 F.3d 1228 (10th Cir. 2017)",
+          "url": "https://www.courtlistener.com/opinion/4153671/split-rail-fence-co-inc-v-united-states/",
+          "quote": "an employer \"must within three business days of hire … [c]omplete [S]ection 2\""
+        },
+        {
+          "case": "Robison Fruit Ranch, Inc. v. United States",
+          "cite": "154 F.3d 807 (9th Cir. 1998)",
+          "url": "https://www.courtlistener.com/opinion/755475/robison-fruit-ranch-inc-petitioner-v-united-states-of-america/",
+          "quote": "The evidence unquestionably shows that the employment practices in this case did not create additional burdens to any class of applicants or constitute differential treatment of authorized aliens and citizens. There could have been no discrimination, and the petition for review must be granted."
+        },
+        {
+          "case": "8 C.F.R. § 274a.2(b)(1)(iii) (Cornell LII text)",
+          "cite": "Electronic Code of Federal Regulations",
+          "url": "https://www.law.cornell.edu/cfr/text/8/274a.2",
+          "quote": "An employer who hires an individual for employment for a duration of less than three business days must comply with paragraphs (b)(1)(ii)(A) and (b)(1)(ii)(B) of this section at the time of the hire."
+        },
+        {
+          "case": "8 U.S.C. § 1324b(a)(2)(A) (Cornell LII text)",
+          "cite": "U.S. Code, small-employer exception",
+          "url": "https://www.law.cornell.edu/uscode/text/8/1324b",
+          "quote": "Paragraph (1) shall not apply to— (A) a person or other entity that employs three or fewer employees"
+        }
+      ],
+      "checkedDate": "2026-08-29",
+      "gap": "This clause's documentary-uniformity claim is grounded in 8 U.S.C. §1324b(a)(6), not §1324a — confirmed directly against the statute's own text, not just a case quoting it, so this is no longer an open miscitation, just a citation this clause's single §1324a reference doesn't fully cover. The separate claim that I-9 forms must be kept apart from personnel files is not in the regulation itself — the full text of 8 C.F.R. §274a.2 was checked directly and contains no mention of personnel files. That instruction comes from USCIS's Handbook for Employers (Form M-274), which is agency guidance, not a codified requirement — a real distinction if the reader is deciding how strictly to treat it. Two further qualifiers, found by reading past the already-quoted fragments of both sources: first, the “three business days” timing itself isn't universal — 8 C.F.R. §274a.2(b)(1)(iii) requires an employer who hires someone for less than three business days to complete verification the same day, not within three business days. Second, and more substantial: 8 U.S.C. §1324b(a)(2)(A) exempts any employer with three or fewer employees from this anti-discrimination protection entirely — the documentary-uniformity claim in this clause's body doesn't apply to the smallest employers at all, a real limit this clause didn't previously disclose."
+    },
+    {
+      "id": "onboarding_ack",
+      "kind": "drafting",
+      "status": null,
+      "body": "Please sign below to confirm you've completed new-hire orientation and received the items described above.\n\nEmployee: Jordan Lee\nDate: _______________"
+    }
+  ]
+}

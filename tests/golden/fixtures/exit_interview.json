@@ -1,0 +1,23 @@
+{
+  "docId": "exit_interview",
+  "inputs": {
+    "companyName": "Acme, Inc.",
+    "employeeName": "Jordan Lee",
+    "terminationDate": "September 30, 2026"
+  },
+  "expectedText": "EXIT INTERVIEW FORM\nPrepared for Jordan Lee · Acme, Inc.\n\nEXIT INTERVIEW QUESTIONS\nAs part of Jordan Lee's departure from Acme, Inc., effective September 30, 2026, please answer the following:\n\n1. What was your primary reason for leaving?\n2. What did you like most about working here?\n3. What could Acme, Inc. have done differently?\n4. Would you recommend Acme, Inc. as a place to work? Why or why not?\n5. Any other feedback you'd like to share:\n\nCOMPLETION\nCompleted by: Jordan Lee\nDate: _______________\n\n—\nGroundtruth v1 demo · every \"Verified\" citation links to a real, checked source.",
+  "expectedJSON": [
+    {
+      "id": "exit_interview_questions",
+      "kind": "drafting",
+      "status": null,
+      "body": "As part of Jordan Lee's departure from Acme, Inc., effective September 30, 2026, please answer the following:\n\n1. What was your primary reason for leaving?\n2. What did you like most about working here?\n3. What could Acme, Inc. have done differently?\n4. Would you recommend Acme, Inc. as a place to work? Why or why not?\n5. Any other feedback you'd like to share:"
+    },
+    {
+      "id": "exit_interview_completion",
+      "kind": "drafting",
+      "status": null,
+      "body": "Completed by: Jordan Lee\nDate: _______________"
+    }
+  ]
+}
