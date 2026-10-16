@@ -97,7 +97,10 @@ Canonical key order is enforced by validate_corpus.py (`AUTH`, `DRAFT`,
   "categories": ["Confidentiality & IP"],
   "clauseOrder": ["nda_definition", "nda_obligations", "nda_carveouts", "..."],
   "fields": [
-    {"id": "companyName", "label": "Company name", "placeholder": "Acme, Inc.", "required": true}
+    {
+      "id": "companyName", "label": "Company name", "type": "entity-name",
+      "required": true, "placeholder": "Acme, Inc.", "example": "Acme, Inc."
+    }
   ]
 }
 ```
@@ -105,9 +108,18 @@ Canonical key order is enforced by validate_corpus.py (`AUTH`, `DRAFT`,
 `validate_corpus.py`'s `CATEGORIES` set (not read from anywhere else —
 `renderCategoryFilter()` in app.js derives the picker's chips live from
 every document's `categories[]`, so this list and that derivation must be
-kept in sync by hand today). `fields`: today's field schema is exactly
-`{id, label, placeholder, required}` — flat, no types, no validation rules,
-no conditionals. This is the gap Phase 2's field schema closes.
+kept in sync by hand today). `fields`: as of Phase 2.1, every field matches
+`schema/field.schema.json` — `id`, `label`, `type`, `required` always
+present; `placeholder` (unchanged UI hint), `example` (a realistic literal
+value, machine-derived from `placeholder` by `tools/migrate_fields.py`),
+and optionally `sensitive` follow when present. `whyWeAsk`, `helpText`,
+`default`, `validation`, `showIf`, and `sharedFieldId` are real,
+schema-supported properties nothing has populated yet — each is a later
+phase's job (2.2, 2.2b, 2.4), deliberately left for those passes rather
+than guessed at here. Neither `app.js`'s renderer nor `assembleDocument()`
+reads `type` or `example` yet — they exist for Phase 2.3's renderer and for
+`tests/golden/golden.js`'s fixture generation (which now reads `example`
+directly instead of re-deriving it) to use, not for anything live today.
 
 **Authority clause** (asserts a legal claim — citation, checked-date, badge):
 ```json
@@ -183,6 +195,16 @@ current":
   docs" kind of number is asserted to reconcile, not just printed.
 - `verification/*.md` coverage is reported, not enforced (that folder was
   never meant to be 1:1 with documents.json).
+- Field schema (Phase 2.1): every field's keys, in order, and `type` match
+  `schema/field.schema.json` (loaded, not re-typed, so the two can't drift);
+  every `{{field}}` a clause body/gap uses is declared by the document, and
+  — the reverse, added in this phase — every declared field is actually
+  used by some clause (caught 4 real pre-existing dead fields the first
+  time this ran; fixed, see tools/migrate_fields.py's commit); any `showIf`
+  references a real field in the same document with no cycles (nothing
+  uses `showIf` yet — Phase 2.4 — so this path has its own direct unit
+  test, `tests/validate_corpus/test_showif.py`, rather than real corpus
+  data to exercise it).
 
 ## Tooling
 
@@ -196,6 +218,9 @@ current":
 | `fetch_via_browser.js <url>` | Headless-Chromium fetch that solves CourtListener's AWS WAF JS challenge; prints rendered HTML. Used only as `recheck_all.py`'s fallback. |
 | `courtlistener_recheck_{results.jsonl,todo.json}` | Resumable state for a from-scratch recheck of every CourtListener-hosted citation, run through the CourtListener MCP tools (not curl — WAF-gated). `todo.json` is currently `[]` — that pass is complete. |
 | `wave_agent_prompt.md` | Versioned prompt template for a corpus-expansion worker agent, one per category per wave. |
+| `migrate_fields.py [--write]` | Phase 2.1's one-time migration from the old flat field shape to `schema/field.schema.json` — infers `type` from camelCase word patterns in each field id (not a lookup table) and derives `example` from `placeholder`. Dry-run by default (prints a type-assignment report); `--write` applies it. Already run once; stays in the repo as the record of how the migration worked and as a template if a bulk re-classification is ever needed. |
+| `tests/golden/golden.js` | Covered in GOLDEN_REVIEW.md — not a `tools/` script, but the other headless-browser gate alongside `regression.js`, checking one fixture per document's exact rendered output rather than just structural counts. |
+| `tests/merge_guard/`, `tests/validate_corpus/` | Unit tests for the gate scripts themselves, run as a CI step (`Test the tooling itself`) in the `validate-corpus` job — not fixtures *in* the corpus, tests *of* the checker. `tests/validate_corpus/test_showif.py` exists because `showIf`'s cycle detector (Phase 2.1) has no real corpus data to exercise it yet (Phase 2.4 adds the first real `showIf`), so it gets a throwaway-corpus unit test instead of relying on the live data to prove it works. |
 
 ## Supabase
 
@@ -209,10 +234,15 @@ verified directly against Postgres via role/claim impersonation in this
 session; the HTTP round trip through Supabase Auth was not (see
 BASELINE.md and the open items in the Build Status doc).
 
-## What Phase 2+ will change here
+## What Phase 2+ will still change here
 
-The field schema above (`{id, label, placeholder, required}`) and the
-one-screen-per-wizard renderer are the two things most of Phases 2–3
-restructure. Any task touching `fields[]`, `renderWizard()`, or
-`assembleDocument()` should re-read this file first — it will be stale the
-moment that work starts.
+Phase 2.1 (the field schema above) is done. What's still ahead and will
+make this section stale again: `schema/fields/`, a shared-field library
+keyed by `sharedFieldId` (Phase 2.2); real `whyWeAsk` text per field
+(2.2b); a schema-driven wizard renderer replacing `renderWizard()`'s
+current one-screen-of-plain-inputs approach (2.3); and the first real
+`showIf`/`includeIf` conditionals, which is also the day the cycle-check
+added in 2.1 starts being exercised by live data instead of only by
+`tests/validate_corpus/test_showif.py` (2.4). Any task touching
+`fields[]`, `renderWizard()`, or `assembleDocument()` should re-read this
+file first — it will be stale the moment that work starts.

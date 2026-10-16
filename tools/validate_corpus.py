@@ -118,13 +118,87 @@ def main():
 
     # A {{field}} used in a body or gap must be declared by every document
     # that includes the clause, or it renders as raw braces to the reader.
+    # The reverse also has to hold — a declared field nothing substitutes is
+    # either dead data or a clause that forgot to use it — so both
+    # directions are checked from the same per-document text, once.
     by_id = {c['id']: c for c in clauses}
     for d in docs:
         declared = {f['id'] for f in d.get('fields', [])}
         text = ' '.join((by_id[r].get('body', '') + ' ' + (by_id[r].get('gap') or ''))
                         for r in d['clauseOrder'] if r in by_id)
-        undeclared = set(re.findall(r'\{\{(\w+)\}\}', text)) - declared
+        used = set(re.findall(r'\{\{(\w+)\}\}', text))
+        undeclared = used - declared
         check(not undeclared, f'{d["id"]} uses undeclared fields {sorted(undeclared)}')
+        unused = declared - used
+        check(not unused, f'{d["id"]} declares fields no clause substitutes: {sorted(unused)}')
+
+    # Field schema (schema/field.schema.json) — loaded, not re-typed here,
+    # so the enum of valid types and the set of required/orderable keys
+    # can't quietly drift from the schema file itself. Phase 2.1 migrated
+    # every document's fields[] to this shape (tools/migrate_fields.py);
+    # this is what keeps it that way on every future edit.
+    field_schema = json.load(open('schema/field.schema.json'))
+    FIELD_KEY_ORDER = list(field_schema['properties'].keys())
+    FIELD_REQUIRED_KEYS = set(field_schema['required'])
+    FIELD_TYPES = set(field_schema['properties']['type']['enum'])
+    FIELD_ID_RE = re.compile(field_schema['properties']['id']['pattern'])
+
+    bad_keys, bad_order, bad_required, bad_type, bad_id, bad_label = [], [], [], [], [], []
+    showif_edges = []  # (doc_id, field_id, target_id) for the cycle check below
+    for d in docs:
+        field_ids = {f['id'] for f in d.get('fields', [])}
+        for f in d.get('fields', []):
+            tag = f'{d["id"]}.{f.get("id", "?")}'
+            keys = list(f.keys())
+            unknown = set(keys) - set(FIELD_KEY_ORDER)
+            if unknown:
+                bad_keys.append(f'{tag} has unknown keys {sorted(unknown)}')
+                continue
+            if [k for k in FIELD_KEY_ORDER if k in f] != keys:
+                bad_order.append(tag)
+            if not FIELD_REQUIRED_KEYS <= set(keys):
+                bad_required.append(f'{tag} missing {sorted(FIELD_REQUIRED_KEYS - set(keys))}')
+            if f.get('type') not in FIELD_TYPES:
+                bad_type.append(f'{tag}: {f.get("type")!r}')
+            if not isinstance(f.get('required'), bool):
+                bad_required.append(f'{tag}.required is not a bool')
+            if not FIELD_ID_RE.match(f.get('id', '')):
+                bad_id.append(tag)
+            if not (f.get('label') or '').strip():
+                bad_label.append(tag)
+            show_if = f.get('showIf')
+            if show_if:
+                target = show_if.get('field')
+                if target not in field_ids or target == f['id']:
+                    check(False, f'{tag}.showIf references {target!r}, not another field in the same document')
+                else:
+                    showif_edges.append((d['id'], f['id'], target))
+
+    check(not bad_keys, f'fields with keys outside schema/field.schema.json: {bad_keys[:5]}')
+    check(not bad_order, f'fields with non-canonical key order (schema/field.schema.json order): {bad_order[:5]}')
+    check(not bad_required, f'fields missing a required property or with the wrong type for one: {bad_required[:5]}')
+    check(not bad_type, f'fields with a type outside schema/field.schema.json\'s enum: {bad_type[:5]}')
+    check(not bad_id, f'field ids not matching schema/field.schema.json\'s id pattern: {bad_id[:5]}')
+    check(not bad_label, f'fields with an empty label: {bad_label[:5]}')
+
+    # No document has a real showIf yet (Phase 2.4), but the cycle check is
+    # written generically now so it's already correct the day one exists,
+    # rather than being added under time pressure alongside the first real
+    # conditional field.
+    by_doc_edges = collections.defaultdict(dict)
+    for doc_id, src, dst in showif_edges:
+        by_doc_edges[doc_id][src] = dst
+    cyclic = []
+    for doc_id, edges in by_doc_edges.items():
+        for start in edges:
+            seen, cur = set(), start
+            while cur in edges:
+                if cur in seen:
+                    cyclic.append(f'{doc_id}: showIf cycle involving {start}')
+                    break
+                seen.add(cur)
+                cur = edges[cur]
+    check(not cyclic, f'showIf cycles: {cyclic[:5]}')
 
     # A document's categories[] drives both the picker's category filter and
     # every "N documents across M categories" count anyone quotes about this

@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://groundtruth.internal/schema/field.schema.json",
+  "title": "Document field",
+  "description": "One entry in a document's fields[] array in data/documents.json. Replaces the old flat {id, label, placeholder, required} shape with enough structure to drive a schema-aware wizard (Phase 2.3) instead of one generic text-input renderer for every field regardless of what it actually asks for.",
+  "type": "object",
+  "required": ["id", "label", "type", "required"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-zA-Z][a-zA-Z0-9]*$",
+      "description": "camelCase, unique within the document. Also the {{placeholder}} name substituted into clause bodies/gaps."
+    },
+    "label": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Short label shown above the input."
+    },
+    "type": {
+      "enum": [
+        "text", "longtext", "date", "money", "integer", "percent",
+        "address", "person-name", "entity-name", "county", "state",
+        "phone", "email", "select", "multiselect", "boolean", "signature"
+      ],
+      "description": "Drives both the input control Phase 2.3's renderer shows and any type-appropriate validation. 'select'/'multiselect'/'boolean'/'signature' aren't produced by the automated migration (tools/migrate_fields.py) — nothing in the current flat text-field corpus justifies inferring them — but are real, supported types for later hand-curation or Phase 2.4's clause-level conditionals."
+    },
+    "required": {
+      "type": "boolean"
+    },
+    "placeholder": {
+      "type": "string",
+      "description": "The input's placeholder-attribute hint, shown grayed-out before the user types. May legitimately be phrased as a format hint rather than a literal example (\"e.g., Jane Doe\") — that distinction is exactly why 'example' exists as a separate property. Unchanged by the Phase 2.1 migration."
+    },
+    "example": {
+      "type": "string",
+      "description": "A realistic, literal value for this field — safe to drop directly into a rendered document or a test fixture and have it read sensibly, unlike 'placeholder' which may be instructional copy. Derived from 'placeholder' by tools/migrate_fields.py using the same e.g.-prefix-stripping and instruction-phrase override logic tests/golden/golden.js already used and validated for fixture generation (see GOLDEN_REVIEW.md) — this migration is what makes that logic a first-class part of the data instead of test-only."
+    },
+    "whyWeAsk": {
+      "type": "string",
+      "description": "Plain-language explanation of why the document needs this field. Not populated by the Phase 2.1 migration — that's Phase 2.2b, deliberately a separate pass so every one gets real drafted text instead of a placeholder sentence."
+    },
+    "helpText": {
+      "type": "string",
+      "description": "Optional longer-form help shown on request (not populated by the Phase 2.1 migration)."
+    },
+    "default": {
+      "type": "string",
+      "description": "Optional pre-filled value when the wizard first renders (not populated by the Phase 2.1 migration — no current field has an evident universal default)."
+    },
+    "validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "pattern": {"type": "string", "description": "A regex the value must match."},
+        "minLength": {"type": "integer", "minimum": 0},
+        "maxLength": {"type": "integer", "minimum": 0},
+        "min": {"type": "number", "description": "Numeric/date lower bound, for money/integer/percent/date types."},
+        "max": {"type": "number", "description": "Numeric/date upper bound, for money/integer/percent/date types."}
+      },
+      "description": "Not populated by the Phase 2.1 migration. Left for hand-curation once Phase 2.3's renderer actually enforces these — writing constraints nothing checks yet would just be unverified guesses."
+    },
+    "showIf": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "field": {"type": "string", "description": "Another field's id in the same document."},
+        "equals": {"type": "string"},
+        "notEquals": {"type": "string"}
+      },
+      "required": ["field"],
+      "description": "Conditional visibility based on another field's answer. Nothing in the current schema has this yet — no document has conditional fields — so this is Phase 2.4's job, not the 2.1 migration's. Defined here now so validate_corpus.py's Phase 2.1 extension can check referenced ids exist and there are no cycles, ready for when real showIf values appear."
+    },
+    "sensitive": {
+      "type": "boolean",
+      "description": "True for data sensitive enough to exclude from analytics (Phase 8.1) or optionally skip syncing (Phase 7.4) — the migration marks this confidently only for unambiguous identifiers (SSN/ITIN, a trust's taxpayer ID); a fuller privacy-sensitivity audit of all 822 field ids is real future work, not something a migration script should guess at broadly."
+    },
+    "sharedFieldId": {
+      "type": "string",
+      "description": "Links to a canonical definition in schema/fields/ (Phase 2.2). Not populated by the Phase 2.1 migration — the shared library doesn't exist yet, this migration is what it gets built against next."
+    }
+  }
+}

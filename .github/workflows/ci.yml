@@ -16,7 +16,9 @@ jobs:
           python-version: '3.12'
       - run: python3 tools/validate_corpus.py
       - name: Test the tooling itself
-        run: python3 tests/merge_guard/test_merge_guard.py -v
+        run: |
+          python3 tests/merge_guard/test_merge_guard.py -v
+          python3 tests/validate_corpus/test_showif.py -v
 
   merge-guard:
     name: Merge guard

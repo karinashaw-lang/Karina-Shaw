@@ -63,7 +63,14 @@ const INSTRUCTION_FIELD_OVERRIDES = {
   workDescription: 'A bronze sculpture titled ‘Pacific Light,’ installed in the plaza in 2015.',
 };
 
+// Phase 2.1's migration (tools/migrate_fields.py) made this exact logic a
+// real, persisted `example` property on every field in data/documents.json
+// — so every field created going forward prefers that over recomputing it
+// here. The fallback below stays only so a field added without running the
+// migration (or before it existed) still gets a sane fixture value instead
+// of failing outright.
 function sampleValueFor(field) {
+  if (field.example) return field.example;
   if (INSTRUCTION_FIELD_OVERRIDES[field.id]) return INSTRUCTION_FIELD_OVERRIDES[field.id];
   const placeholder = (field.placeholder || '').trim();
   if (!placeholder) return 'Sample Value';

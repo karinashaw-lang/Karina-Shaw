@@ -52,6 +52,57 @@ normalization of their id, so that real gap (as of this writing, 57
 documents) stays visible instead of being masked by the folder's total count
 looking close enough to 740 to seem fine.
 
+Since Phase 2.1, it also validates every document's `fields[]` against
+`schema/field.schema.json` — loaded at runtime rather than re-typed here, so
+the schema file stays the single source of truth. Checks per field: key
+order, that all required keys (`id`, `label`, `type`, `required`) are
+present, that `type` is one of the schema's enum values, that `id` matches
+the schema's id pattern, and that `label` is non-empty. It also runs the
+`{{field}}`-usage check in the other direction — a field a document declares
+but no clause body or gap ever substitutes is just as much a defect as an
+undeclared field being used, and this direction caught 4 real ones on the
+corpus the day it was added (`pto_request`, `salary_change`, and
+`interview_scorecard` each had a dead `companyName`; `testamentary_trust_info_sheet`
+had a dead `testatorCounty` — see git history around the Phase 2.1 migration
+commit). Finally, it validates `showIf` (present on no field in the corpus
+yet, but exercised by `tests/validate_corpus/test_showif.py` against a
+synthetic corpus): a field's `showIf.field` must name another field in the
+same document, never itself, and the full set of `showIf` edges across a
+document must not contain a cycle (checked via DFS from every field that has
+one).
+
+## migrate_fields.py
+
+```
+python3 tools/migrate_fields.py        # dry run — prints a report, writes nothing
+python3 tools/migrate_fields.py --write  # applies the migration to data/documents.json
+```
+
+One-time migration from the old field shape (`id`, `label`, `placeholder`,
+`required`) to the one `schema/field.schema.json` now requires (adds `type`
+and, where derivable, `example`). It infers each field's `type` from its id
+alone, by splitting the camelCase id into lowercase words (keeping an
+all-caps acronym like `DOB` or `SSN` as a single token) and matching against
+curated word sets — some types match on *any* word in the id (`date`,
+`email`, `phone`, `county`, `percent`, `address`), others only on the *last*
+word, i.e. the head noun (`money`, `integer`, `longtext`), specifically
+because matching anywhere produces real false positives in this corpus:
+`payPeriodType` contains "pay" only as a modifier, not as the field's actual
+meaning, and `mandateBasis` contains the substring "date" without being a
+date. `example` is derived with the same e.g.-prefix-stripping and
+instruction-field-override logic `tests/golden/golden.js` already used to
+build fixtures, so the two stay in sync rather than drifting.
+
+Before writing anything, it round-trips the untouched corpus through
+`json.dump(..., indent=2, ensure_ascii=False)` plus a trailing newline and
+confirms the result is byte-identical to the file on disk — a dump without
+those exact settings reformats the entire 1.6MB file into a 39,000+ line
+diff, which happened once during manual edits (see `GOLDEN_REVIEW.md`) and
+is exactly the kind of mistake a migration touching every field in the
+corpus can't afford to repeat. Already run once, for the full migration
+(3,975 fields across 740 documents); re-running it now against the
+post-migration file is a no-op, since every field already has a `type`.
+
 ## merge_guard.py
 
 ```
