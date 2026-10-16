@@ -181,6 +181,59 @@ def main():
     check(not bad_id, f'field ids not matching schema/field.schema.json\'s id pattern: {bad_id[:5]}')
     check(not bad_label, f'fields with an empty label: {bad_label[:5]}')
 
+    # Shared field library (schema/fields/*.json, Phase 2.2) — loaded the
+    # same way as field.schema.json above, not re-typed. Every entry must
+    # be individually valid against schema/shared_field.schema.json's
+    # required keys/type enum, every id must be unique across all library
+    # files (two conflicting canonical definitions for the same id would
+    # defeat the point), and every document field that links to one via
+    # sharedFieldId must resolve to a real entry whose type actually
+    # matches — drift here means the library and the corpus disagree
+    # about what a field id means.
+    import glob
+    shared_fields = {}
+    dup_shared_ids = []
+    bad_shared_entry = []
+    for path in sorted(glob.glob('schema/fields/*.json')):
+        for entry in json.load(open(path)):
+            eid = entry.get('id')
+            if eid in shared_fields:
+                dup_shared_ids.append(eid)
+            shared_fields[eid] = entry
+            missing = {'id', 'label', 'type'} - set(entry.keys())
+            if missing:
+                bad_shared_entry.append(f'{path}:{eid} missing {sorted(missing)}')
+            elif entry.get('type') not in FIELD_TYPES:
+                bad_shared_entry.append(f'{path}:{eid} has type {entry.get("type")!r} outside the schema enum')
+            elif not FIELD_ID_RE.match(eid or ''):
+                bad_shared_entry.append(f'{path}:{eid} does not match the field id pattern')
+    check(not dup_shared_ids, f'field ids defined more than once across schema/fields/*.json: {sorted(set(dup_shared_ids))[:5]}')
+    check(not bad_shared_entry, f'invalid entries in schema/fields/*.json: {bad_shared_entry[:5]}')
+
+    unresolved_shared = []
+    type_mismatch = []
+    linked_count = 0
+    total_field_instances = 0
+    for d in docs:
+        for f in d.get('fields', []):
+            total_field_instances += 1
+            shared_id = f.get('sharedFieldId')
+            if not shared_id:
+                continue
+            linked_count += 1
+            entry = shared_fields.get(shared_id)
+            if entry is None:
+                unresolved_shared.append(f'{d["id"]}.{f["id"]} -> {shared_id!r}')
+            elif entry.get('type') != f.get('type'):
+                type_mismatch.append(f'{d["id"]}.{f["id"]}: field type {f.get("type")!r} vs shared {entry.get("type")!r}')
+    check(not unresolved_shared, f'sharedFieldId references no entry in schema/fields/*.json: {unresolved_shared[:5]}')
+    check(not type_mismatch, f'sharedFieldId type mismatch against the library: {type_mismatch[:5]}')
+
+    if total_field_instances:
+        print(f'{len(shared_fields)} shared field definitions in schema/fields/; '
+              f'{linked_count}/{total_field_instances} field instances ({linked_count/total_field_instances:.1%}) '
+              f'resolve to one (target: 80%)')
+
     # No document has a real showIf yet (Phase 2.4), but the cycle check is
     # written generically now so it's already correct the day one exists,
     # rather than being added under time pressure alongside the first real

@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://groundtruth.internal/schema/shared_field.schema.json",
+  "title": "Shared field definition",
+  "description": "One entry in schema/fields/*.json — the canonical definition a document field links to via its own sharedFieldId (see field.schema.json). Phase 2.2 populates id/label/type/sensitive by analyzing the corpus; whyWeAsk and helpText are deliberately left unset here until Phase 2.2b drafts real plain-language text for each one (writing placeholder text now would just be guessing, and the whole point of doing this at the library level instead of per document is that each one gets written once, carefully).",
+  "type": "object",
+  "required": ["id", "label", "type"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-zA-Z][a-zA-Z0-9]*$",
+      "description": "Matches the document field id(s) this definition covers. A field id already determines its meaning consistently across the corpus (verified: no reused field id maps to more than one type), so sharedFieldId reuses the same string rather than inventing a second naming scheme."
+    },
+    "label": {
+      "type": "string",
+      "minLength": 1,
+      "description": "The most common label used for this field id across the documents that declare it. Not a hard override — each document field keeps its own literal label, which may legitimately read differently in context (\"Buyer's name\" vs \"Seller's name\" both link to a shared person-name definition, each keeping its own label)."
+    },
+    "type": {
+      "enum": [
+        "text", "longtext", "date", "money", "integer", "percent",
+        "address", "person-name", "entity-name", "county", "state",
+        "phone", "email", "select", "multiselect", "boolean", "signature"
+      ],
+      "description": "Must match the type every linking document field already declares for this id (validate_corpus.py checks this)."
+    },
+    "sensitive": {
+      "type": "boolean",
+      "description": "True if any document field linking to this id is marked sensitive."
+    },
+    "whyWeAsk": {
+      "type": "string",
+      "description": "Plain-language, non-advisory explanation of why the document needs this field. Phase 2.2b."
+    },
+    "helpText": {
+      "type": "string",
+      "description": "Optional longer-form help shown on request. Phase 2.2b."
+    },
+    "validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "pattern": {"type": "string"},
+        "minLength": {"type": "integer", "minimum": 0},
+        "maxLength": {"type": "integer", "minimum": 0},
+        "min": {"type": "number"},
+        "max": {"type": "number"}
+      },
+      "description": "Not populated yet — left for hand-curation once Phase 2.3's renderer enforces it."
+    }
+  }
+}

@@ -112,14 +112,39 @@ kept in sync by hand today). `fields`: as of Phase 2.1, every field matches
 `schema/field.schema.json` — `id`, `label`, `type`, `required` always
 present; `placeholder` (unchanged UI hint), `example` (a realistic literal
 value, machine-derived from `placeholder` by `tools/migrate_fields.py`),
-and optionally `sensitive` follow when present. `whyWeAsk`, `helpText`,
-`default`, `validation`, `showIf`, and `sharedFieldId` are real,
+and optionally `sensitive` follow when present. As of Phase 2.2, a field
+whose id is one of the 172 reused often enough to cover 80% of all field
+instances also carries `sharedFieldId` — the same string as its own `id`,
+linking it to a canonical definition in `schema/fields/` (see below).
+`whyWeAsk`, `helpText`, `default`, and `validation` are real,
 schema-supported properties nothing has populated yet — each is a later
-phase's job (2.2, 2.2b, 2.4), deliberately left for those passes rather
-than guessed at here. Neither `app.js`'s renderer nor `assembleDocument()`
-reads `type` or `example` yet — they exist for Phase 2.3's renderer and for
-`tests/golden/golden.js`'s fixture generation (which now reads `example`
-directly instead of re-deriving it) to use, not for anything live today.
+phase's job (2.2b, hand-curation after 2.3), deliberately left for those
+passes rather than guessed at here. `showIf` likewise has no real data
+until Phase 2.4. Neither `app.js`'s renderer nor `assembleDocument()` reads
+`type`, `example`, or `sharedFieldId` yet — they exist for Phase 2.3's
+renderer and for `tests/golden/golden.js`'s fixture generation (which now
+reads `example` directly instead of re-deriving it) to use, not for
+anything live today.
+
+**Shared field library** (`schema/fields/*.json`, Phase 2.2) — one JSON
+array per type bucket (`people.json`, `entities.json`, `dates.json`,
+`money.json`, `addresses.json`, `locations.json`, `text.json`), each entry
+matching `schema/shared_field.schema.json`:
+```json
+{"id": "employeeName", "label": "Employee name", "type": "person-name"}
+```
+`tools/build_field_library.py` built these 172 entries by analyzing which
+field ids are reused across the corpus and how often — not a fixed count
+chosen in advance, but exactly as many, ranked by frequency, as it takes
+to clear the 80%-of-all-field-instances bar (the real acceptance
+criterion; "40 most frequently reused fields" in the master plan is a
+starting point, not the total). This only works because a field id
+already determines its meaning consistently everywhere it's used in this
+corpus — verified mechanically (no reused id maps to more than one
+`type`) before trusting that as the join key, rather than inventing a
+second id scheme. `whyWeAsk`/`helpText` are deliberately unset on every
+entry — Phase 2.2b's job, specifically so each gets real drafted text
+once at the library level instead of a placeholder repeated per document.
 
 **Authority clause** (asserts a legal claim — citation, checked-date, badge):
 ```json
@@ -205,6 +230,15 @@ current":
   uses `showIf` yet — Phase 2.4 — so this path has its own direct unit
   test, `tests/validate_corpus/test_showif.py`, rather than real corpus
   data to exercise it).
+- Shared field library (Phase 2.2): every entry in `schema/fields/*.json`
+  matches `schema/shared_field.schema.json` (required keys, valid `type`,
+  unique `id` across all library files), and every document field's
+  `sharedFieldId` resolves to a real entry whose `type` agrees with the
+  field's own — drift here means the library and the corpus disagree
+  about what a field id means. Reports (does not fail on) what percentage
+  of all field instances resolve to a shared definition, against the 80%
+  target; currently 80.0% (3,177/3,971), covered by
+  `tests/validate_corpus/test_shared_fields.py`.
 
 ## Tooling
 
@@ -219,8 +253,9 @@ current":
 | `courtlistener_recheck_{results.jsonl,todo.json}` | Resumable state for a from-scratch recheck of every CourtListener-hosted citation, run through the CourtListener MCP tools (not curl — WAF-gated). `todo.json` is currently `[]` — that pass is complete. |
 | `wave_agent_prompt.md` | Versioned prompt template for a corpus-expansion worker agent, one per category per wave. |
 | `migrate_fields.py [--write]` | Phase 2.1's one-time migration from the old flat field shape to `schema/field.schema.json` — infers `type` from camelCase word patterns in each field id (not a lookup table) and derives `example` from `placeholder`. Dry-run by default (prints a type-assignment report); `--write` applies it. Already run once; stays in the repo as the record of how the migration worked and as a template if a bulk re-classification is ever needed. |
+| `build_field_library.py [--write]` | Phase 2.2's one-time build of `schema/fields/*.json` from the corpus: ranks field ids by reuse frequency, takes as many as it takes to cover 80% of all field instances (172, as of this writing), and links each one into `data/documents.json` via `sharedFieldId`. Dry-run by default (prints the coverage report and per-file counts); `--write` applies it. Stays in the repo as the record of how the library was built and as the tool to re-run if the corpus grows enough to justify adding more shared definitions. |
 | `tests/golden/golden.js` | Covered in GOLDEN_REVIEW.md — not a `tools/` script, but the other headless-browser gate alongside `regression.js`, checking one fixture per document's exact rendered output rather than just structural counts. |
-| `tests/merge_guard/`, `tests/validate_corpus/` | Unit tests for the gate scripts themselves, run as a CI step (`Test the tooling itself`) in the `validate-corpus` job — not fixtures *in* the corpus, tests *of* the checker. `tests/validate_corpus/test_showif.py` exists because `showIf`'s cycle detector (Phase 2.1) has no real corpus data to exercise it yet (Phase 2.4 adds the first real `showIf`), so it gets a throwaway-corpus unit test instead of relying on the live data to prove it works. |
+| `tests/merge_guard/`, `tests/validate_corpus/` | Unit tests for the gate scripts themselves, run as a CI step (`Test the tooling itself`) in the `validate-corpus` job — not fixtures *in* the corpus, tests *of* the checker. `tests/validate_corpus/test_showif.py` exists because `showIf`'s cycle detector (Phase 2.1) has no real corpus data to exercise it yet (Phase 2.4 adds the first real `showIf`), so it gets a throwaway-corpus unit test instead of relying on the live data to prove it works. `test_shared_fields.py` does the same for the Phase 2.2 library checks (duplicate/invalid library entries, unresolved or type-mismatched `sharedFieldId`), which the real corpus is currently too clean to exercise. |
 
 ## Supabase
 
@@ -236,13 +271,14 @@ BASELINE.md and the open items in the Build Status doc).
 
 ## What Phase 2+ will still change here
 
-Phase 2.1 (the field schema above) is done. What's still ahead and will
-make this section stale again: `schema/fields/`, a shared-field library
-keyed by `sharedFieldId` (Phase 2.2); real `whyWeAsk` text per field
-(2.2b); a schema-driven wizard renderer replacing `renderWizard()`'s
-current one-screen-of-plain-inputs approach (2.3); and the first real
-`showIf`/`includeIf` conditionals, which is also the day the cycle-check
-added in 2.1 starts being exercised by live data instead of only by
-`tests/validate_corpus/test_showif.py` (2.4). Any task touching
-`fields[]`, `renderWizard()`, or `assembleDocument()` should re-read this
-file first — it will be stale the moment that work starts.
+Phase 2.1 (the field schema) and 2.2 (the shared field library above) are
+done. What's still ahead and will make this section stale again: real
+`whyWeAsk` text for every field in `schema/fields/`, plus a lint rule
+rejecting advisory phrasing in it (2.2b); a schema-driven wizard renderer
+replacing `renderWizard()`'s current one-screen-of-plain-inputs approach
+(2.3); and the first real `showIf`/`includeIf` conditionals, which is
+also the day the cycle-check added in 2.1 starts being exercised by live
+data instead of only by `tests/validate_corpus/test_showif.py` (2.4). Any
+task touching `fields[]`, `schema/fields/`, `renderWizard()`, or
+`assembleDocument()` should re-read this file first — it will be stale
+the moment that work starts.

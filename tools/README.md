@@ -71,6 +71,17 @@ same document, never itself, and the full set of `showIf` edges across a
 document must not contain a cycle (checked via DFS from every field that has
 one).
 
+Since Phase 2.2, it also validates `schema/fields/*.json` (the shared field
+library — see `build_field_library.py` below): every entry has the required
+`id`/`label`/`type`, a valid `type`, and a unique `id` across all library
+files; every document field's `sharedFieldId`, when present, resolves to a
+real entry whose `type` agrees with the field's own. It reports (does not
+fail on) what percentage of all field instances resolve to a shared
+definition, against the 80% target set by the master plan — currently
+80.0%. Exercised by `tests/validate_corpus/test_shared_fields.py` against a
+synthetic corpus, since the real one is currently too clean to trigger any
+of these on its own.
+
 ## migrate_fields.py
 
 ```
@@ -102,6 +113,40 @@ is exactly the kind of mistake a migration touching every field in the
 corpus can't afford to repeat. Already run once, for the full migration
 (3,975 fields across 740 documents); re-running it now against the
 post-migration file is a no-op, since every field already has a `type`.
+
+## build_field_library.py
+
+```
+python3 tools/build_field_library.py         # dry run — prints the coverage report, writes nothing
+python3 tools/build_field_library.py --write  # writes schema/fields/*.json and links documents.json
+```
+
+Phase 2.2's one-time build of the shared field library. Ranks every
+reused field id (appears in 2+ documents) by frequency and takes as many
+as it takes — not a fixed count picked up front — to cover 80% of all
+field instances in the corpus, since that's the actual acceptance bar
+(the master plan's "40 most frequently reused fields" is a starting
+point, not the total; the real long tail needs 172 ids to clear 80%).
+Before trusting a field id as the join key between a document field and
+its shared definition, it asserts the one thing this whole approach
+depends on: no field id maps to more than one `type` anywhere in the
+corpus (true today — checked, not assumed). Writes one JSON file per
+type bucket under `schema/fields/` (`people.json`, `entities.json`,
+`dates.json`, `money.json`, `addresses.json`, `locations.json`,
+`text.json` — grouping by type rather than the plan's illustrative
+semantic categories because type is objective and already verified
+consistent, where a hand-picked category couldn't be checked for
+correctness at this scale), then adds `sharedFieldId` (same string as the
+field's own `id`) to every linked field in `data/documents.json`,
+appended last since that's where the schema puts it — inserting it
+anywhere else would silently violate validate_corpus.py's canonical key
+order check, which is exactly what the first version of this script did
+before being caught and fixed. Same before-writing round-trip safety
+check as `migrate_fields.py`. Deliberately leaves `whyWeAsk`/`helpText`
+unset on every entry — that's Phase 2.2b.
+
+Already run once: 172 definitions, 3,177/3,971 field instances (80.0%)
+linked.
 
 ## merge_guard.py
 
