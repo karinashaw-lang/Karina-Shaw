@@ -21,6 +21,7 @@ import unittest
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 VALIDATE_CORPUS = os.path.join(REPO_ROOT, 'tools', 'validate_corpus.py')
 REAL_SCHEMA = os.path.join(REPO_ROOT, 'schema', 'field.schema.json')
+REAL_PHRASES = os.path.join(REPO_ROOT, 'lint', 'advisory_phrases.json')
 
 BASE_CLAUSE = {
     "id": "test_clause",
@@ -59,6 +60,7 @@ def build_corpus_dir(fields, library_entries):
     os.makedirs(os.path.join(d, 'data'))
     os.makedirs(os.path.join(d, 'schema'))
     os.makedirs(os.path.join(d, 'schema', 'fields'))
+    os.makedirs(os.path.join(d, 'lint'))
     doc = dict(BASE_DOC)
     doc['fields'] = fields
     with open(os.path.join(d, 'data', 'documents.json'), 'w') as f:
@@ -68,6 +70,7 @@ def build_corpus_dir(fields, library_entries):
     with open(os.path.join(d, 'data', 'clauses.json'), 'w') as f:
         json.dump({"clauses": [clause]}, f)
     shutil.copy(REAL_SCHEMA, os.path.join(d, 'schema', 'field.schema.json'))
+    shutil.copy(REAL_PHRASES, os.path.join(d, 'lint', 'advisory_phrases.json'))
     with open(os.path.join(d, 'schema', 'fields', 'test.json'), 'w') as f:
         json.dump(library_entries, f)
     return d

@@ -145,6 +145,14 @@ corpus — verified mechanically (no reused id maps to more than one
 second id scheme. `whyWeAsk`/`helpText` are deliberately unset on every
 entry — Phase 2.2b's job, specifically so each gets real drafted text
 once at the library level instead of a placeholder repeated per document.
+As of Phase 2.2b, every one of the 172 entries has real `whyWeAsk` text
+(`tools/add_why_we_ask.py`) — plain, factual, non-advisory by construction
+and checked by a lint rule (`lint/advisory_phrases.json`,
+`validate_corpus.py`) that rejects phrasing like "you should" or "we
+recommend" wherever `whyWeAsk`/`helpText` can appear. The ~650 field ids
+outside the library still have no `whyWeAsk` — a deliberate scoping
+decision for this pass, recorded in `DECISIONS.md`, not an oversight.
+`helpText` remains unset everywhere (optional, for later hand-curation).
 
 **Authority clause** (asserts a legal claim — citation, checked-date, badge):
 ```json
@@ -239,6 +247,12 @@ current":
   of all field instances resolve to a shared definition, against the 80%
   target; currently 80.0% (3,177/3,971), covered by
   `tests/validate_corpus/test_shared_fields.py`.
+- Advisory-phrase lint (Phase 2.2b): every `whyWeAsk`/`helpText` string,
+  wherever it appears (library entry or document field), is checked
+  against `lint/advisory_phrases.json` — a build fails if any contains a
+  phrase like "you should" or "we recommend". This is the one place
+  "inform, never advise" is enforced mechanically instead of by review
+  alone. Covered by `tests/validate_corpus/test_advisory_lint.py`.
 
 ## Tooling
 
@@ -254,8 +268,9 @@ current":
 | `wave_agent_prompt.md` | Versioned prompt template for a corpus-expansion worker agent, one per category per wave. |
 | `migrate_fields.py [--write]` | Phase 2.1's one-time migration from the old flat field shape to `schema/field.schema.json` — infers `type` from camelCase word patterns in each field id (not a lookup table) and derives `example` from `placeholder`. Dry-run by default (prints a type-assignment report); `--write` applies it. Already run once; stays in the repo as the record of how the migration worked and as a template if a bulk re-classification is ever needed. |
 | `build_field_library.py [--write]` | Phase 2.2's one-time build of `schema/fields/*.json` from the corpus: ranks field ids by reuse frequency, takes as many as it takes to cover 80% of all field instances (172, as of this writing), and links each one into `data/documents.json` via `sharedFieldId`. Dry-run by default (prints the coverage report and per-file counts); `--write` applies it. Stays in the repo as the record of how the library was built and as the tool to re-run if the corpus grows enough to justify adding more shared definitions. |
+| `add_why_we_ask.py [--write]` | Phase 2.2b's one-time write of `whyWeAsk` text into every entry in `schema/fields/*.json`, from a hardcoded dict covering exactly the 172 library ids (aborts if the library and the dict ever disagree on which ids exist, rather than silently skipping or guessing). Dry-run by default; `--write` applies it. Does not touch the ~650 field ids outside the library — see `DECISIONS.md` for why that's a deliberate scope decision, not a gap to quietly close later with generic text. |
 | `tests/golden/golden.js` | Covered in GOLDEN_REVIEW.md — not a `tools/` script, but the other headless-browser gate alongside `regression.js`, checking one fixture per document's exact rendered output rather than just structural counts. |
-| `tests/merge_guard/`, `tests/validate_corpus/` | Unit tests for the gate scripts themselves, run as a CI step (`Test the tooling itself`) in the `validate-corpus` job — not fixtures *in* the corpus, tests *of* the checker. `tests/validate_corpus/test_showif.py` exists because `showIf`'s cycle detector (Phase 2.1) has no real corpus data to exercise it yet (Phase 2.4 adds the first real `showIf`), so it gets a throwaway-corpus unit test instead of relying on the live data to prove it works. `test_shared_fields.py` does the same for the Phase 2.2 library checks (duplicate/invalid library entries, unresolved or type-mismatched `sharedFieldId`), which the real corpus is currently too clean to exercise. |
+| `tests/merge_guard/`, `tests/validate_corpus/` | Unit tests for the gate scripts themselves, run as a CI step (`Test the tooling itself`) in the `validate-corpus` job — not fixtures *in* the corpus, tests *of* the checker. `tests/validate_corpus/test_showif.py` exists because `showIf`'s cycle detector (Phase 2.1) has no real corpus data to exercise it yet (Phase 2.4 adds the first real `showIf`), so it gets a throwaway-corpus unit test instead of relying on the live data to prove it works. `test_shared_fields.py` does the same for the Phase 2.2 library checks (duplicate/invalid library entries, unresolved or type-mismatched `sharedFieldId`), which the real corpus is currently too clean to exercise. `test_advisory_lint.py` does the same for the Phase 2.2b lint rule. |
 
 ## Supabase
 
@@ -271,14 +286,16 @@ BASELINE.md and the open items in the Build Status doc).
 
 ## What Phase 2+ will still change here
 
-Phase 2.1 (the field schema) and 2.2 (the shared field library above) are
-done. What's still ahead and will make this section stale again: real
-`whyWeAsk` text for every field in `schema/fields/`, plus a lint rule
-rejecting advisory phrasing in it (2.2b); a schema-driven wizard renderer
-replacing `renderWizard()`'s current one-screen-of-plain-inputs approach
-(2.3); and the first real `showIf`/`includeIf` conditionals, which is
-also the day the cycle-check added in 2.1 starts being exercised by live
-data instead of only by `tests/validate_corpus/test_showif.py` (2.4). Any
-task touching `fields[]`, `schema/fields/`, `renderWizard()`, or
-`assembleDocument()` should re-read this file first — it will be stale
-the moment that work starts.
+Phase 2.1 (the field schema), 2.2 (the shared field library), and 2.2b
+(`whyWeAsk` text + the advisory-phrase lint) are done for the 172
+library-covered field ids. What's still ahead and will make this section
+stale again: `whyWeAsk` for the ~650 field ids outside the library
+(deliberately out of scope for 2.2b — see `DECISIONS.md`); a
+schema-driven wizard renderer replacing `renderWizard()`'s current
+one-screen-of-plain-inputs approach (2.3); and the first real
+`showIf`/`includeIf` conditionals, which is also the day the cycle-check
+added in 2.1 starts being exercised by live data instead of only by
+`tests/validate_corpus/test_showif.py` (2.4). Any task touching
+`fields[]`, `schema/fields/`, `renderWizard()`, or `assembleDocument()`
+should re-read this file first — it will be stale the moment that work
+starts.

@@ -82,6 +82,14 @@ definition, against the 80% target set by the master plan — currently
 synthetic corpus, since the real one is currently too clean to trigger any
 of these on its own.
 
+Since Phase 2.2b, it also lints every `whyWeAsk`/`helpText` string —
+wherever one can appear, a shared field library entry or a document
+field's own — against `lint/advisory_phrases.json` (phrases like "you
+should", "we recommend", "make sure to"), case-insensitively. This is the
+one place the project's "inform, never advise" rule is checked
+mechanically rather than relying on review alone. Exercised by
+`tests/validate_corpus/test_advisory_lint.py`.
+
 ## migrate_fields.py
 
 ```
@@ -147,6 +155,27 @@ unset on every entry — that's Phase 2.2b.
 
 Already run once: 172 definitions, 3,177/3,971 field instances (80.0%)
 linked.
+
+## add_why_we_ask.py
+
+```
+python3 tools/add_why_we_ask.py         # dry run
+python3 tools/add_why_we_ask.py --write  # writes whyWeAsk into schema/fields/*.json
+```
+
+Phase 2.2b's one-time write of `whyWeAsk` text into the shared field
+library — plain, factual, non-advisory sentences, one per library id,
+from a hardcoded dict in the script. Aborts instead of guessing if the
+library and the dict ever disagree on which ids exist (missing text for
+a real id, or drafted text for an id no longer in the library), so a
+future library change can't silently go undocumented. Deliberately
+covers only the 172 ids in `schema/fields/`, not the ~650 field ids
+outside it — see `DECISIONS.md` for why that's a scope decision made on
+purpose, not a gap to close later by generating something generic for
+the rest. Every string it writes is checked against
+`lint/advisory_phrases.json` before being trusted (both by hand before
+the first `--write`, and by `validate_corpus.py` on every run after).
+Already run once: 172/172 entries.
 
 ## merge_guard.py
 

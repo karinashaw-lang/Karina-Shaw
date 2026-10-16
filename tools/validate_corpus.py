@@ -234,6 +234,32 @@ def main():
               f'{linked_count}/{total_field_instances} field instances ({linked_count/total_field_instances:.1%}) '
               f'resolve to one (target: 80%)')
 
+    # Advisory-phrase lint (Phase 2.2b) — "inform, never advise" is the
+    # project's core rule, and whyWeAsk/helpText are exactly the kind of
+    # free-form prose where that's easiest to slip on. Checked wherever
+    # either property can appear: shared field library entries (the
+    # primary source as of Phase 2.2b) and any document field that sets
+    # its own (none do yet, but the check has to hold there too, not just
+    # where today's data happens to live).
+    banned_phrases = json.load(open('lint/advisory_phrases.json'))
+    advisory_hits = []
+    def lint_text(tag, text):
+        if not text:
+            return
+        low = text.lower()
+        for phrase in banned_phrases:
+            if phrase in low:
+                advisory_hits.append(f'{tag}: contains banned phrase {phrase!r}')
+    for path in sorted(glob.glob('schema/fields/*.json')):
+        for entry in json.load(open(path)):
+            lint_text(f'{path}:{entry.get("id")}.whyWeAsk', entry.get('whyWeAsk'))
+            lint_text(f'{path}:{entry.get("id")}.helpText', entry.get('helpText'))
+    for d in docs:
+        for f in d.get('fields', []):
+            lint_text(f'{d["id"]}.{f["id"]}.whyWeAsk', f.get('whyWeAsk'))
+            lint_text(f'{d["id"]}.{f["id"]}.helpText', f.get('helpText'))
+    check(not advisory_hits, f'advisory phrasing (lint/advisory_phrases.json) found in whyWeAsk/helpText: {advisory_hits[:5]}')
+
     # No document has a real showIf yet (Phase 2.4), but the cycle check is
     # written generically now so it's already correct the day one exists,
     # rather than being added under time pressure alongside the first real
