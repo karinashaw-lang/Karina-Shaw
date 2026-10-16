@@ -40,11 +40,18 @@
       <h1 id="wizard-title" tabindex="-1"></h1>
       <p class="lede" id="wizard-lede"></p>
       <p class="jurisdiction-notice" id="wizard-jurisdiction" hidden></p>
-      <form class="wizard" id="wizard-form">
+      <div class="wizard-progress" aria-hidden="true">
+        <div class="wizard-progress-bar"><div class="wizard-progress-fill" id="wizard-progress-fill"></div></div>
+      </div>
+      <h2 id="wizard-step-heading" class="wizard-step-heading" tabindex="-1"></h2>
+      <form class="wizard" id="wizard-form" novalidate>
         <div id="wizard-fields"></div>
+        <div id="wizard-review" class="wizard-review" hidden></div>
         <div class="actions">
-          <button type="button" class="secondary" id="wizard-back">Back</button>
-          <button type="submit" class="primary">Generate document</button>
+          <button type="button" class="secondary" id="wizard-back">Back to documents</button>
+          <button type="button" class="secondary" id="wizard-prev" hidden>Previous</button>
+          <button type="button" class="primary" id="wizard-next" hidden>Next</button>
+          <button type="submit" class="primary" id="wizard-submit" hidden>Generate document</button>
         </div>
       </form>
     </section>

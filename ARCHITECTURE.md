@@ -51,7 +51,12 @@ data/clauses.json  ──┼─► app.js init() ─► state.documents, state.c
             renderPicker() / renderCategoryFilter()
                       │ click a doc-card
                       ▼
-            renderWizard() ──(submit)──► assembleDocument()
+            renderWizard() ──► renderWizardStep() (sectioned, one step
+                      │          at a time; Next/Previous re-render it,
+                      │          Review lists every visible answer)
+                      │                    │ submit (review stage only)
+                      │                    ▼
+                      │              assembleDocument()
                       │                    │ substitute({{field}}, answers)
                       │                    ▼
                       │              renderOutput() ──► addToLibrary()
@@ -74,7 +79,7 @@ of clause ids resolved against `state.clauses` at render time
 
 | What | Where | Key | Notes |
 |---|---|---|---|
-| In-progress wizard answers | localStorage | `groundtruth-draft` | One slot. Wrapped in try/catch everywhere — a convenience, not a dependency. |
+| In-progress wizard answers | localStorage | `groundtruth-draft` | One slot: `{documentId, answers, step, savedAt}`. `step` (added Phase 2.3) is the wizard step index, so resuming a draft reopens on the step the person was on, not always step 0. Wrapped in try/catch everywhere — a convenience, not a dependency. |
 | Saved/generated documents | localStorage | `groundtruth-library` | Array of `{id, documentId, title, answers, generatedAt, signature?}`. |
 | Lightweight promises (Inbox) | localStorage | `groundtruth-promises` | Flat list, no parsing, no reminders. |
 | Cloud mirror of the library | Supabase | `public.agreements` | Only exists when `config.js` is present and the user is signed in. RLS: `auth.uid() = user_id` on select/insert/update/delete. |
@@ -116,15 +121,17 @@ and optionally `sensitive` follow when present. As of Phase 2.2, a field
 whose id is one of the 172 reused often enough to cover 80% of all field
 instances also carries `sharedFieldId` — the same string as its own `id`,
 linking it to a canonical definition in `schema/fields/` (see below).
-`whyWeAsk`, `helpText`, `default`, and `validation` are real,
-schema-supported properties nothing has populated yet — each is a later
-phase's job (2.2b, hand-curation after 2.3), deliberately left for those
-passes rather than guessed at here. `showIf` likewise has no real data
-until Phase 2.4. Neither `app.js`'s renderer nor `assembleDocument()` reads
-`type`, `example`, or `sharedFieldId` yet — they exist for Phase 2.3's
-renderer and for `tests/golden/golden.js`'s fixture generation (which now
-reads `example` directly instead of re-deriving it) to use, not for
-anything live today.
+`helpText`, `default`, and `validation` (the regex/min/max shape) are real,
+schema-supported properties nothing has populated yet — each is left for
+hand-curation after Phase 2.3's renderer can actually enforce them,
+deliberately rather than guessed at here. `showIf` likewise has no real
+data until Phase 2.4, though the renderer built in 2.3 already acts on it
+correctly where it's set (see below). As of Phase 2.3, `app.js`'s wizard
+renderer does read `type` (picks the input control and the per-type
+validator), `example` (nothing live reads this one yet outside
+`tests/golden/golden.js`'s fixture generation), and `sharedFieldId`
+(resolves to the field library for `whyWeAsk` help text shown under the
+label).
 
 **Shared field library** (`schema/fields/*.json`, Phase 2.2) — one JSON
 array per type bucket (`people.json`, `entities.json`, `dates.json`,
@@ -194,6 +201,72 @@ badge for anything else), it's just unused today.
 `fields[]` that includes the clause — validate_corpus.py checks this per
 document, not per clause, since the same clause can be reused by documents
 with different field sets.
+
+## The wizard renderer (Phase 2.3)
+
+`renderWizard()` no longer puts every field on one screen. It chunks
+`state.document.fields` into fixed-size steps (`WIZARD_STEP_SIZE = 4`,
+by existing field order — there's no per-document section metadata to
+group by more meaningfully, and curating one by hand for 740 documents
+isn't what this phase is for) and `renderWizardStep()` renders one step
+at a time: a progress bar, a `Step N of M` heading (`tabindex="-1"`,
+focused on every step change — the same pattern `showScreen()` already
+uses for whole-screen transitions, just applied one level down), the
+step's visible fields, and Next/Previous controls. The last stage is a
+review screen (`renderReview()`) listing every visible answer with an
+Edit button that jumps back to the owning step and focuses that field;
+only the review stage shows the real "Generate document" submit button.
+
+Per-field behavior:
+- **Visibility** (`fieldIsVisible()`): a field with `showIf` is shown
+  only when the named field's answer matches `equals`/`notEquals`. A
+  step whose fields are all hidden is skipped in both directions
+  (`nextVisibleStepIndex()`/`prevVisibleStepIndex()`). No field in the
+  corpus sets `showIf` yet (Phase 2.4), so this path is exercised by
+  `tests/wizard/wizard_unit.js` against a synthetic document, not live
+  data.
+- **Input control**: `type: "longtext"` gets a `<textarea>`; `email`/
+  `phone` get the matching `<input type>`; everything else (including
+  `select`/`multiselect`/`boolean`/`signature`, which nothing uses yet)
+  falls back to plain text rather than failing to render.
+- **Validation** (`validateField()`/`FIELD_VALIDATORS`): required-ness
+  plus a per-type check. `email`/`phone` check a real, narrow shape.
+  `money`/`integer`/`percent` only check that a digit is present — a
+  stricter format check was tried first and rejected real corpus
+  examples like `"$25,000 cash"` and `"10,000,000 shares of common
+  stock"` (caught by running `tools/wizard_regression.js` against the
+  real corpus before trusting the stricter version), so a validator a
+  real document's own example can fail isn't one a real person's answer
+  should have to pass either. Errors render as a `role="alert"` message
+  tied to the input via `aria-describedby`, and focus moves to the first
+  invalid field.
+- **Help text**: `fieldWhyWeAsk()` resolves a field's own `whyWeAsk` if
+  ever set directly, otherwise its `sharedFieldId` into `state.sharedFields`
+  (the field library, fetched at `init()` from `schema/fields/*.json`
+  alongside `data/documents.json`/`clauses.json`) — this is the first
+  place Phase 2.2b's library text actually reaches the UI. Shown under
+  the label, also wired into `aria-describedby`.
+- **Sensitive fields**: get `data-sensitive="true"` on the field wrapper
+  and a plain-language note under the input. This is marking only, per
+  this phase's own acceptance line — it deliberately does *not* exclude
+  sensitive answers from `localStorage` draft/library persistence the
+  way "excluded from analytics and optionally never synced" might
+  suggest, because today's local draft/library has no analytics or
+  remote-sync consumer at all; stripping it there would only break
+  reopening a saved document from "My Documents" (which reads the
+  answer straight back out of that same storage) for no present benefit.
+  Real exclusion belongs with Phase 8.1 (analytics) and Phase 7.4
+  ("never synced"), once something actually consumes this flag — see
+  `DECISIONS.md`.
+
+`tools/wizard_regression.js` drives every one of the 740 documents
+through the real renderer end to end (fill each visible field with its
+own `example`, Next through every step, reach review, submit, check for
+leaked `{{field}}` braces) — the Phase 2.3 acceptance line this is
+checking. `tests/wizard/wizard_unit.js` checks the specific behaviors
+above individually (showIf visibility and step-skipping, validation
+actually blocking, sensitive marking, review Edit-and-focus, draft
+resume restoring the step).
 
 ## Jurisdiction badges (derived, never stored)
 
@@ -269,7 +342,9 @@ current":
 | `migrate_fields.py [--write]` | Phase 2.1's one-time migration from the old flat field shape to `schema/field.schema.json` — infers `type` from camelCase word patterns in each field id (not a lookup table) and derives `example` from `placeholder`. Dry-run by default (prints a type-assignment report); `--write` applies it. Already run once; stays in the repo as the record of how the migration worked and as a template if a bulk re-classification is ever needed. |
 | `build_field_library.py [--write]` | Phase 2.2's one-time build of `schema/fields/*.json` from the corpus: ranks field ids by reuse frequency, takes as many as it takes to cover 80% of all field instances (172, as of this writing), and links each one into `data/documents.json` via `sharedFieldId`. Dry-run by default (prints the coverage report and per-file counts); `--write` applies it. Stays in the repo as the record of how the library was built and as the tool to re-run if the corpus grows enough to justify adding more shared definitions. |
 | `add_why_we_ask.py [--write]` | Phase 2.2b's one-time write of `whyWeAsk` text into every entry in `schema/fields/*.json`, from a hardcoded dict covering exactly the 172 library ids (aborts if the library and the dict ever disagree on which ids exist, rather than silently skipping or guessing). Dry-run by default; `--write` applies it. Does not touch the ~650 field ids outside the library — see `DECISIONS.md` for why that's a deliberate scope decision, not a gap to quietly close later with generic text. |
+| `wizard_regression.js` | Phase 2.3's full-corpus acceptance check: drives all 740 documents through the real `renderWizard()`/`renderWizardStep()` path (fill every visible field with its own `example`, Next through every step, review, submit) and fails on a stuck step, a step never reached, or leaked `{{field}}` braces. Same local-server requirement as `regression.js`. Caught the first version of the money/integer/percent validators being too strict for real corpus examples before it shipped. |
 | `tests/golden/golden.js` | Covered in GOLDEN_REVIEW.md — not a `tools/` script, but the other headless-browser gate alongside `regression.js`, checking one fixture per document's exact rendered output rather than just structural counts. |
+| `tests/wizard/wizard_unit.js` | Phase 2.3's behavioral checks: showIf visibility/step-skipping, per-field validation actually blocking (and not over-blocking), sensitive-field marking, review-screen Edit-and-focus, and draft resume restoring the step — against synthetic documents and `ein_info_sheet` (the one document with a `sensitive` field), not the full corpus walk `wizard_regression.js` already covers. |
 | `tests/merge_guard/`, `tests/validate_corpus/` | Unit tests for the gate scripts themselves, run as a CI step (`Test the tooling itself`) in the `validate-corpus` job — not fixtures *in* the corpus, tests *of* the checker. `tests/validate_corpus/test_showif.py` exists because `showIf`'s cycle detector (Phase 2.1) has no real corpus data to exercise it yet (Phase 2.4 adds the first real `showIf`), so it gets a throwaway-corpus unit test instead of relying on the live data to prove it works. `test_shared_fields.py` does the same for the Phase 2.2 library checks (duplicate/invalid library entries, unresolved or type-mismatched `sharedFieldId`), which the real corpus is currently too clean to exercise. `test_advisory_lint.py` does the same for the Phase 2.2b lint rule. |
 
 ## Supabase
@@ -286,16 +361,17 @@ BASELINE.md and the open items in the Build Status doc).
 
 ## What Phase 2+ will still change here
 
-Phase 2.1 (the field schema), 2.2 (the shared field library), and 2.2b
-(`whyWeAsk` text + the advisory-phrase lint) are done for the 172
-library-covered field ids. What's still ahead and will make this section
-stale again: `whyWeAsk` for the ~650 field ids outside the library
-(deliberately out of scope for 2.2b — see `DECISIONS.md`); a
-schema-driven wizard renderer replacing `renderWizard()`'s current
-one-screen-of-plain-inputs approach (2.3); and the first real
-`showIf`/`includeIf` conditionals, which is also the day the cycle-check
-added in 2.1 starts being exercised by live data instead of only by
-`tests/validate_corpus/test_showif.py` (2.4). Any task touching
-`fields[]`, `schema/fields/`, `renderWizard()`, or `assembleDocument()`
-should re-read this file first — it will be stale the moment that work
-starts.
+Phase 2.1 (the field schema), 2.2 (the shared field library), 2.2b
+(`whyWeAsk` text + the advisory-phrase lint), and 2.3 (the sectioned,
+validating wizard renderer above) are done. What's still ahead and will
+make this section stale again: `whyWeAsk` for the ~650 field ids outside
+the library (deliberately out of scope for 2.2b — see `DECISIONS.md`);
+hand-curated `validation`/`default`/`helpText` now that the renderer can
+actually act on them; and the first real `showIf`/`includeIf`
+conditionals, which is also the day the visibility logic and the
+cycle-check added in 2.1/2.3 start being exercised by live data instead
+of only by `tests/validate_corpus/test_showif.py` and
+`tests/wizard/wizard_unit.js`'s synthetic documents (2.4). Any task
+touching `fields[]`, `schema/fields/`, `renderWizard()`, or
+`assembleDocument()` should re-read this file first — it will be stale
+the moment that work starts.

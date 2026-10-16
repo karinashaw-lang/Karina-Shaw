@@ -142,3 +142,34 @@ non-shared field ids. Whoever picks this up next should decide then
 whether any of those 126 "reused but below the 80% cutoff" ids (out of
 the 650) are worth promoting into the shared library instead of writing
 near-duplicate text per document for them.
+
+## Phase 2.3 scope: "mark sensitive fields" ships marking only, not
+## storage exclusion
+
+The master plan's 2.3 acceptance line reads "Mark `sensitive` fields so
+they are excluded from analytics and optionally never synced." This
+pass marks them: a `sensitive: true` field gets `data-sensitive="true"`
+on its wrapper in the wizard DOM and a plain-language note under the
+input.
+
+It deliberately does not go further and strip sensitive answers out of
+what `saveDraft()`/`addToLibrary()` write to `localStorage`. The reason:
+there is no analytics system yet (Phase 8.1 doesn't exist) and no remote
+sync of documents yet (Phase 7.4 doesn't exist) for "excluded from" or
+"never synced" to actually mean anything today — the only thing reading
+`localStorage['groundtruth-library']` back is `viewLibraryEntry()`,
+reopening a document the person already filled in and saw rendered on
+screen in this same browser. Stripping the sensitive answer from that
+storage wouldn't exclude it from any real analytics or sync pipeline
+(none exists); it would just make reopening a saved document from "My
+Documents" show a broken, unsubstituted `{{fieldId}}` for exactly the
+field that mattered enough to mark sensitive in the first place — a real
+regression with no present offsetting benefit. (Checked directly: only
+one field in the whole corpus is marked sensitive today —
+`ein_info_sheet.ssnOrItin` — so the blast radius of getting this wrong
+would have been small, but the reasoning holds regardless of count.)
+
+Decision: ship the marking now; wire real exclusion into
+`saveDraft()`/`addToLibrary()` once Phase 7.4 or 8.1 actually builds a
+consumer for the flag, at which point there's a real system to exclude
+sensitive data *from* rather than a speculative one.

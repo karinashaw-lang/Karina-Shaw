@@ -1,4 +1,4 @@
-const state = { documents: null, document: null, clauses: null, answers: {}, categoryFilter: null, edits: {}, editedClauseIds: new Set(), currentEntryId: null, jurisdictionByDoc: null };
+const state = { documents: null, document: null, clauses: null, answers: {}, categoryFilter: null, edits: {}, editedClauseIds: new Set(), currentEntryId: null, jurisdictionByDoc: null, sharedFields: null, wizardSteps: [], wizardStepIndex: 0, wizardReviewing: false };
 
 // Draft persistence. Local-only, one slot at a time — closing the tab
 // mid-wizard shouldn't lose someone's answers. localStorage can throw
@@ -11,6 +11,7 @@ function saveDraft() {
     localStorage.setItem(DRAFT_KEY, JSON.stringify({
       documentId: state.document.id,
       answers: state.answers,
+      step: state.wizardStepIndex,
       savedAt: new Date().toISOString(),
     }));
   } catch (e) { /* not fatal — drafting is a convenience, not a requirement */ }
@@ -43,7 +44,7 @@ function checkForDraft() {
   document.getElementById('draft-resume').onclick = () => {
     state.document = doc;
     state.answers = { ...draft.answers };
-    renderWizard();
+    renderWizard(draft.step || 0);
     showScreen('screen-wizard');
     banner.hidden = true;
   };
@@ -679,13 +680,34 @@ function renderRelationships() {
     });
 }
 
+// The shared field library (schema/fields/*.json, Phase 2.2) — one file
+// per type bucket, listed explicitly rather than discovered, since
+// adding a new bucket is a deliberate code change (build_field_library.py
+// would need updating too) not something that should silently expand
+// what the client fetches.
+const SHARED_FIELD_FILES = [
+  'people.json', 'entities.json', 'dates.json', 'money.json',
+  'addresses.json', 'locations.json', 'text.json',
+];
+
+async function loadSharedFields() {
+  const files = await Promise.all(
+    SHARED_FIELD_FILES.map(f => fetch(`schema/fields/${f}`).then(r => r.json()))
+  );
+  const byId = {};
+  files.flat().forEach(entry => { byId[entry.id] = entry; });
+  return byId;
+}
+
 async function init() {
-  const [docs, clauseData] = await Promise.all([
+  const [docs, clauseData, sharedFields] = await Promise.all([
     fetch('data/documents.json').then(r => r.json()),
     fetch('data/clauses.json').then(r => r.json()),
+    loadSharedFields(),
   ]);
   state.documents = docs;
   state.clauses = clauseData.clauses;
+  state.sharedFields = sharedFields;
   buildJurisdictionIndex();
   renderCategoryFilter();
   renderPicker();
@@ -1050,7 +1072,269 @@ function renderPicker() {
   });
 }
 
-function renderWizard() {
+// ---------- schema-driven wizard (Phase 2.3) ----------
+// Replaces one flat screen of every field at once with sectioned steps,
+// a review screen, and per-field validation specific to each field's
+// `type` — reading the document's own field schema instead of assuming
+// every field is a plain text input. Grouping fields into fixed-size
+// steps by their existing order (rather than any hand-picked per-document
+// sectioning, which isn't data this corpus has) is a deliberate
+// simplification: it's objective, needs no per-document curation across
+// 740 documents, and still delivers the real win — a long document no
+// longer dumps 15+ inputs on one screen.
+const WIZARD_STEP_SIZE = 4;
+
+function computeWizardSteps(fields) {
+  const steps = [];
+  for (let i = 0; i < fields.length; i += WIZARD_STEP_SIZE) {
+    steps.push(fields.slice(i, i + WIZARD_STEP_SIZE));
+  }
+  return steps.length ? steps : [[]];
+}
+
+// showIf support (Phase 2.4 is what gives this real data to act on — no
+// field in the corpus sets one yet — but the renderer has to be correct
+// the day one exists, not patched in under pressure alongside it).
+function fieldIsVisible(field, answers) {
+  const cond = field.showIf;
+  if (!cond) return true;
+  const val = answers[cond.field] || '';
+  if (cond.equals !== undefined) return val === cond.equals;
+  if (cond.notEquals !== undefined) return val !== cond.notEquals;
+  return true;
+}
+
+function visibleFieldsInStep(step) {
+  return step.filter(f => fieldIsVisible(f, state.answers));
+}
+
+function nextVisibleStepIndex(from) {
+  for (let i = from + 1; i < state.wizardSteps.length; i++) {
+    if (visibleFieldsInStep(state.wizardSteps[i]).length) return i;
+  }
+  return state.wizardSteps.length; // sentinel: past the last step is the review screen
+}
+
+function prevVisibleStepIndex(from) {
+  for (let i = from - 1; i >= 0; i--) {
+    if (visibleFieldsInStep(state.wizardSteps[i]).length) return i;
+  }
+  return -1; // sentinel: no earlier step has anything visible
+}
+
+// whyWeAsk lives on the field itself if a document ever sets one
+// directly, otherwise resolved through sharedFieldId into the library
+// loaded at init() — most fields get it this way today (Phase 2.2b
+// wrote whyWeAsk for the 172 library entries, not per document).
+function fieldWhyWeAsk(f) {
+  if (f.whyWeAsk) return f.whyWeAsk;
+  const shared = f.sharedFieldId && state.sharedFields && state.sharedFields[f.sharedFieldId];
+  return (shared && shared.whyWeAsk) || null;
+}
+
+function inputTypeFor(field) {
+  if (field.type === 'email') return 'email';
+  if (field.type === 'phone') return 'tel';
+  return 'text'; // every other type (including select/multiselect/boolean/
+                 // signature, none of which any field uses yet) falls back
+                 // to a plain text input rather than failing to render.
+}
+
+// Validators beyond "is it present" — the schema's own `validation`
+// property (regex/min/max) isn't populated yet (left for hand-curation,
+// see field.schema.json), so these are sane per-type defaults. email and
+// phone have one real, narrow shape, so those are checked structurally.
+// money/integer/percent turned out NOT to: the corpus's own real
+// examples legitimately mix formats no single strict pattern accepts —
+// "$25,000 cash", "$2.50 per unit", "10,000,000 shares of common
+// stock" — found by running this corpus's own example values through
+// the first, stricter version of this check (tools/wizard_regression.js)
+// before trusting it, which is exactly what caught these. A validator
+// that rejects a document's own real example would reject a real
+// person's real answer just as easily, so these three just confirm a
+// number is present at all, not any particular format around it.
+const HAS_DIGIT = { test: v => /\d/.test(v), message: 'This field should include a number.' };
+const FIELD_VALIDATORS = {
+  email: { test: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v), message: 'This doesn’t look like a complete email address.' },
+  phone: { test: v => v.replace(/\D/g, '').length >= 7, message: 'This doesn’t look like a complete phone number.' },
+  integer: HAS_DIGIT,
+  percent: HAS_DIGIT,
+  money: HAS_DIGIT,
+};
+
+function validateField(f, rawValue) {
+  const value = (rawValue || '').trim();
+  if (f.required && !value) return 'This field is required.';
+  if (!value) return null;
+  const validator = FIELD_VALIDATORS[f.type];
+  if (validator && !validator.test(value)) return validator.message;
+  return null;
+}
+
+function renderStepFields(step) {
+  const fieldsEl = document.getElementById('wizard-fields');
+  fieldsEl.innerHTML = '';
+  visibleFieldsInStep(step).forEach(f => {
+    const wrap = document.createElement('div');
+    wrap.className = 'field';
+    if (f.sensitive) wrap.dataset.sensitive = 'true';
+
+    const label = document.createElement('label');
+    label.setAttribute('for', `field-${f.id}`);
+    label.textContent = f.label;
+    wrap.appendChild(label);
+
+    const describedBy = [];
+    const why = fieldWhyWeAsk(f);
+    if (why) {
+      const helpEl = document.createElement('p');
+      helpEl.className = 'field-help';
+      helpEl.id = `field-${f.id}-help`;
+      helpEl.textContent = why;
+      wrap.appendChild(helpEl);
+      describedBy.push(helpEl.id);
+    }
+
+    let sensitiveNoteEl = null;
+    if (f.sensitive) {
+      sensitiveNoteEl = document.createElement('p');
+      sensitiveNoteEl.className = 'field-sensitive-note';
+      sensitiveNoteEl.id = `field-${f.id}-sensitive`;
+      sensitiveNoteEl.textContent = 'This is used to fill in your document on this screen.';
+      describedBy.push(sensitiveNoteEl.id);
+    }
+
+    const existing = state.answers[f.id] || '';
+    const input = f.type === 'longtext' ? document.createElement('textarea') : document.createElement('input');
+    if (f.type === 'longtext') {
+      input.rows = 4;
+    } else {
+      input.type = inputTypeFor(f);
+    }
+    input.id = `field-${f.id}`;
+    input.name = f.id;
+    if (f.placeholder) input.placeholder = f.placeholder;
+    input.value = existing;
+    if (f.required) {
+      input.required = true;
+      input.setAttribute('aria-required', 'true');
+    }
+    const errorId = `field-${f.id}-error`;
+    describedBy.push(errorId);
+    input.setAttribute('aria-describedby', describedBy.join(' '));
+    wrap.appendChild(input);
+
+    const errorEl = document.createElement('p');
+    errorEl.className = 'field-error';
+    errorEl.id = errorId;
+    errorEl.setAttribute('role', 'alert');
+    errorEl.hidden = true;
+    wrap.appendChild(errorEl);
+
+    if (sensitiveNoteEl) wrap.appendChild(sensitiveNoteEl);
+
+    fieldsEl.appendChild(wrap);
+  });
+}
+
+function validateStep(step) {
+  let firstInvalid = null;
+  visibleFieldsInStep(step).forEach(f => {
+    const input = document.getElementById(`field-${f.id}`);
+    const errorEl = document.getElementById(`field-${f.id}-error`);
+    const message = validateField(f, input.value);
+    if (message) {
+      errorEl.textContent = message;
+      errorEl.hidden = false;
+      input.setAttribute('aria-invalid', 'true');
+      if (!firstInvalid) firstInvalid = input;
+    } else {
+      errorEl.hidden = true;
+      errorEl.textContent = '';
+      input.removeAttribute('aria-invalid');
+    }
+  });
+  if (firstInvalid) firstInvalid.focus();
+  return !firstInvalid;
+}
+
+// Lists every currently-visible answer with a jump-back-and-focus Edit
+// link, grouped by nothing in particular — one flat list in field
+// order, since there's no section metadata to group it by any more
+// meaningfully than the steps already impose.
+function renderReview() {
+  const reviewEl = document.getElementById('wizard-review');
+  reviewEl.innerHTML = '';
+  const list = document.createElement('dl');
+  list.className = 'review-list';
+  state.wizardSteps.forEach((step, stepIdx) => {
+    visibleFieldsInStep(step).forEach(f => {
+      const item = document.createElement('div');
+      item.className = 'review-item';
+      const dt = document.createElement('dt');
+      dt.textContent = f.label;
+      const dd = document.createElement('dd');
+      dd.textContent = state.answers[f.id] || '(left blank)';
+      const editBtn = document.createElement('button');
+      editBtn.type = 'button';
+      editBtn.className = 'secondary review-edit';
+      editBtn.textContent = 'Edit';
+      editBtn.addEventListener('click', () => {
+        state.wizardStepIndex = stepIdx;
+        renderWizardStep();
+        const target = document.getElementById(`field-${f.id}`);
+        if (target) target.focus();
+      });
+      item.appendChild(dt);
+      item.appendChild(dd);
+      item.appendChild(editBtn);
+      list.appendChild(item);
+    });
+  });
+  reviewEl.appendChild(list);
+}
+
+function renderWizardStep() {
+  const total = state.wizardSteps.length;
+  const idx = state.wizardStepIndex;
+  const reviewing = idx >= total;
+  state.wizardReviewing = reviewing;
+
+  const totalStages = total + 1; // the review screen is its own stage
+  const stage = reviewing ? totalStages : idx + 1;
+  document.getElementById('wizard-progress-fill').style.width = `${Math.round((stage / totalStages) * 100)}%`;
+
+  const headingEl = document.getElementById('wizard-step-heading');
+  const fieldsEl = document.getElementById('wizard-fields');
+  const reviewEl = document.getElementById('wizard-review');
+  const prevBtn = document.getElementById('wizard-prev');
+  const nextBtn = document.getElementById('wizard-next');
+  const submitBtn = document.getElementById('wizard-submit');
+
+  if (reviewing) {
+    headingEl.textContent = 'Review your answers';
+    fieldsEl.hidden = true;
+    fieldsEl.innerHTML = '';
+    reviewEl.hidden = false;
+    renderReview();
+    nextBtn.hidden = true;
+    submitBtn.hidden = false;
+    prevBtn.hidden = prevVisibleStepIndex(total) === -1;
+  } else {
+    headingEl.textContent = `Step ${idx + 1} of ${total}`;
+    reviewEl.hidden = true;
+    reviewEl.innerHTML = '';
+    fieldsEl.hidden = false;
+    renderStepFields(state.wizardSteps[idx]);
+    nextBtn.hidden = false;
+    submitBtn.hidden = true;
+    prevBtn.hidden = prevVisibleStepIndex(idx) === -1;
+  }
+  headingEl.focus();
+  saveDraft();
+}
+
+function renderWizard(resumeStep) {
   document.getElementById('wizard-title').textContent = state.document.title;
   document.getElementById('wizard-lede').textContent =
     "Fill in a few details — nothing here is legal advice, just fields the document needs.";
@@ -1064,19 +1348,9 @@ function renderWizard() {
     noticeEl.hidden = true;
   }
 
-  const fieldsEl = document.getElementById('wizard-fields');
-  fieldsEl.innerHTML = '';
-  state.document.fields.forEach(f => {
-    const wrap = document.createElement('div');
-    wrap.className = 'field';
-    const existing = state.answers[f.id] || '';
-    wrap.innerHTML = `
-      <label for="field-${f.id}">${f.label}</label>
-      <input id="field-${f.id}" name="${f.id}" placeholder="${f.placeholder || ''}"
-             ${f.required ? 'required aria-required="true"' : ''} value="${existing}" />
-    `;
-    fieldsEl.appendChild(wrap);
-  });
+  state.wizardSteps = computeWizardSteps(state.document.fields || []);
+  state.wizardStepIndex = Math.min(resumeStep || 0, state.wizardSteps.length);
+  renderWizardStep();
 }
 
 // Builds the "Prepared for X · Y" line without assuming every document
@@ -1278,6 +1552,18 @@ function renderBadge(clause) {
 }
 
 document.getElementById('wizard-back').addEventListener('click', () => showScreen('screen-picker'));
+document.getElementById('wizard-next').addEventListener('click', () => {
+  const idx = state.wizardStepIndex;
+  if (!validateStep(state.wizardSteps[idx])) return;
+  state.wizardStepIndex = nextVisibleStepIndex(idx);
+  renderWizardStep();
+});
+document.getElementById('wizard-prev').addEventListener('click', () => {
+  const idx = prevVisibleStepIndex(state.wizardStepIndex);
+  if (idx === -1) return;
+  state.wizardStepIndex = idx;
+  renderWizardStep();
+});
 document.getElementById('output-back').addEventListener('click', () => {
   state.answers = {};
   clearDraft();
@@ -1401,9 +1687,17 @@ document.getElementById('output-download').addEventListener('click', () => {
 
 document.getElementById('wizard-form').addEventListener('submit', e => {
   e.preventDefault();
-  const formData = new FormData(e.target);
+  // Only the review stage shows the submit button, but guard anyway —
+  // a stray Enter keypress on an earlier step's input submits the form
+  // natively unless something stops it.
+  if (!state.wizardReviewing) return;
+  // Answers already live in state.answers from every step's own input
+  // listener (the fields themselves aren't all in the DOM at once
+  // anymore to collect via FormData, the way the old one-screen wizard
+  // did). Trim once here, not on every keystroke, so a trailing space
+  // typed mid-word doesn't vanish while the field still has focus.
   state.document.fields.forEach(f => {
-    state.answers[f.id] = (formData.get(f.id) || '').trim();
+    if (typeof state.answers[f.id] === 'string') state.answers[f.id] = state.answers[f.id].trim();
   });
   const entry = addToLibrary(state.document.id, state.document.title, state.answers);
   state.currentEntryId = entry.id;

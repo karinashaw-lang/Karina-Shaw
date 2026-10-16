@@ -382,6 +382,53 @@ won't happen at all, since jsDelivr is reachable — console-error count is
 reported but never asserted against, precisely because it legitimately
 differs by environment.
 
+## wizard_regression.js
+
+```
+python3 -m http.server 8933 &
+node tools/wizard_regression.js
+```
+
+Phase 2.3's full-corpus acceptance check for the generic wizard renderer
+(`renderWizard()`/`renderWizardStep()` in app.js). Drives all 740
+documents through the real step-by-step path: fills every currently
+visible field with its own `example` value, clicks Next through every
+step, reaches the review screen, submits, and fails on a step that never
+advances, a document that never reaches review, or a leaked `{{field}}`
+brace in the review screen or the final rendered output. Companion to
+`regression.js`, which exercises `assembleDocument()`/`renderOutput()`
+directly and was and still is unaffected by this phase, since it never
+goes through the wizard UI at all.
+
+This is what caught the first version of the money/integer/percent
+validators being too strict: a stricter full-format regex rejected real
+corpus examples like `"$25,000 cash"` and `"10,000,000 shares of common
+stock"` on 15 real documents, found by running this script against the
+real corpus before trusting the validator, not by guessing what formats
+to allow.
+
+## tests/wizard/wizard_unit.js
+
+```
+python3 -m http.server 8933 &
+node tests/wizard/wizard_unit.js
+```
+
+Phase 2.3's behavioral checks for the specific claims `wizard_regression.js`'s
+happy-path walk doesn't exercise: a field with `showIf` actually hides/
+shows and an all-hidden step is actually skipped (against a synthetic
+document — no field in the corpus sets `showIf` yet, Phase 2.4's job);
+validation actually blocks on an empty required field and a malformed
+email, and does *not* block on a blank optional field or a realistic
+money value; a `sensitive` field gets `data-sensitive` and a note in the
+DOM (against `ein_info_sheet`, the one document with a sensitive field);
+the review screen's Edit button jumps back to the right step and focuses
+the right input; and draft resume restores the step the person was on,
+not always step 0. Each check failed once for a real reason while this
+was being written (a validator too strict, a test that forgot
+`showScreen()` so nothing could receive real DOM focus) before being
+fixed — not written blind and trusted.
+
 ## tests/auth_roundtrip.js
 
 ```

@@ -88,6 +88,10 @@ jobs:
         run: set -o pipefail; node tools/regression.js | tee regression.log
       - name: Run golden.js
         run: set -o pipefail; node tests/golden/golden.js | tee golden.log
+      - name: Run wizard_regression.js
+        run: set -o pipefail; node tools/wizard_regression.js | tee wizard-regression.log
+      - name: Run wizard_unit.js
+        run: set -o pipefail; node tests/wizard/wizard_unit.js | tee wizard-unit.log
       - name: Upload logs on failure
         if: failure()
         uses: actions/upload-artifact@v4
@@ -96,4 +100,6 @@ jobs:
           path: |
             regression.log
             golden.log
+            wizard-regression.log
+            wizard-unit.log
           if-no-files-found: warn
