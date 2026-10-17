@@ -1,0 +1,69 @@
+[
+  {
+    "clauseId": "adverseaction_relationship_fcra_ca",
+    "findings": []
+  },
+  {
+    "clauseId": "deployedparent_uccjea_jurisdiction_retention",
+    "findings": []
+  },
+  {
+    "clauseId": "homeinspect_waiver_invalid",
+    "findings": [
+      {
+        "severity": "minor",
+        "category": "unverifiable",
+        "summary": "No case law on how courts construe or apply the § 7198 waiver/liability-cap invalidity rule (e.g., interaction with arbitration clauses, severability of an invalid waiver from the rest of a home-inspection contract) was checked for this clause, and the document's own gap text does not disclose whether such a search was attempted.",
+        "evidence": "Clause body: 'Contractual provisions that purport to waive the duty owed pursuant to Section 7196, or limit the liability of the home inspector to the cost of the home inspection report, are contrary to public policy and invalid.' No citing case was located because CourtListener's search API returned '{\"detail\":\"Request was throttled. Rate limit exceeded: 125/day.\"}' for every query attempted during this review.",
+        "sourceChecked": "https://www.courtlistener.com/api/rest/v4/search/?type=o&q=... (throttled)",
+        "suggestedFix": "n/a - recommend a case-law pass on Bus. & Prof. Code § 7198 once CourtListener quota resets, rather than a wording change."
+      }
+    ]
+  },
+  {
+    "clauseId": "lactation_small_employer_exemption",
+    "findings": [
+      {
+        "severity": "minor",
+        "category": "unverifiable",
+        "summary": "The current text of Cal. Lab. Code § 1031(i) was confirmed against only one, non-independent source (california.public.law); leginfo.legislature.ca.gov was Cloudflare-blocked for the entire session, and the one truly independent secondary publisher checked (law.onecle.com) returned a stale pre-2020 version of § 1031 that has no subdivision (i) at all, so it could not corroborate the quote.",
+        "evidence": "law.onecle.com's full text of 'CA Labor Code § 1031 (2017)' reads in its entirety: 'The employer shall make reasonable efforts to provide the employee with the use of a room or other location, other than a toilet stall, in close proximity to the employee's work area... (Added by Stats. 2001, Ch. 821, Sec. 1. Effective January 1, 2002.)' - a single sentence, with no undue-hardship/50-employee exemption. California.public.law's current page instead confirmed the clause's quoted opening clause verbatim: 'An employer that employs fewer than 50 employees may be exempt from a requirement of this section' and listed subdivision (i) as existing, marked 'Up to date' as of a Jan. 1, 2020 restatement.",
+        "sourceChecked": "https://law.onecle.com/california/labor/1031.html ; https://california.public.law/codes/ca_lab_code_section_1031",
+        "suggestedFix": "n/a - recommend re-fetching leginfo.legislature.ca.gov directly once it is reachable (or trying a second independent publisher) to get a genuine second-source confirmation of the full § 1031(i) text; no wording change is indicated by what was found."
+      }
+    ]
+  },
+  {
+    "clauseId": "pwcr_small_project_exemption",
+    "findings": []
+  },
+  {
+    "clauseId": "aae_murillo_employer_proof_and_claims_during_employment",
+    "findings": []
+  },
+  {
+    "clauseId": "minormarriage_required_disclosures_to_minor",
+    "findings": [
+      {
+        "severity": "minor",
+        "category": "unverifiable",
+        "summary": "The current text of Family Code § 304(e) was confirmed against only one, non-independent source (california.public.law); the independent secondary publisher checked (law.onecle.com) returned a stale, pre-2020 single-paragraph version of the entire section (just the premarital-counseling content now found in subdivision (c)), with no subdivision (e) at all, so it could not corroborate the quote.",
+        "evidence": "law.onecle.com's full text of 'CA Fam Code § 304 (2017)' is a single paragraph: 'As part of the court order granting permission to marry under Section 302 or 303, the court shall, if it considers it necessary, require the parties to the prospective marriage of a minor to participate in premarital counseling... (Amended by Stats. 2016, Ch. 474, Sec. 2. (AB 2882) Effective January 1, 2017.)' - no interview/report, 30-day-wait, documentation, disclosure, or exceptions subdivisions exist in that snapshot. California.public.law's current page instead confirmed the clause's quoted text verbatim, including 'Upon issuance of the order granting permission to marry, the minor shall be provided with the following information:' and the National Domestic Violence/Sexual Assault Hotline item, marked 'Up to date' as of a Jan. 1, 2020 restatement.",
+        "sourceChecked": "https://law.onecle.com/california/family/304.html ; https://california.public.law/codes/ca_fam_code_section_304",
+        "suggestedFix": "n/a - recommend re-fetching leginfo.legislature.ca.gov directly once it is reachable (or trying a second independent publisher) to get a genuine second-source confirmation of § 304(e); no wording change is indicated by what was found."
+      }
+    ]
+  },
+  {
+    "clauseId": "corpdiss_grounds_for_dissolution",
+    "findings": []
+  },
+  {
+    "clauseId": "trustmodconsent_disposition_on_termination",
+    "findings": []
+  },
+  {
+    "clauseId": "designpat_priority_six_months",
+    "findings": []
+  }
+]
