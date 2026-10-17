@@ -27,6 +27,7 @@ jobs:
           python3 tests/tiering/test_tiering.py -v
           python3 tests/tiering/test_promotion_report.py -v
           python3 tests/verifier/test_verifier.py -v
+          python3 tests/verifier/test_triage.py -v
       - name: Promotion report
         run: python3 tools/promotion_report.py --markdown >> "$GITHUB_STEP_SUMMARY"
 

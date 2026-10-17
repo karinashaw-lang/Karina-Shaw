@@ -302,6 +302,60 @@ genuinely adversarial pass, and not alarming either. Per the master
 plan's own acceptance line, a full-corpus run is a separate decision
 for later, not something this result on its own triggers.
 
-Not yet done: Phase 4.2's triage workflow (accept/reject/fixed per
-finding) — these 18 findings sit in `verifier/findings.jsonl`
-unactioned, exactly as the plan intends ("do not auto-edit clauses").
+## Phase 4.2: triage outcome for all 18 findings
+
+Built `verifier/triage.py` (lists open findings by severity; records
+accepted/rejected/fixed; a rejected decision feeds its reason back into
+`verifier/prompt.md`'s "Known false positives" section; a fixed decision
+appends a real `changelog.html` entry in the project's existing format
+— never auto-edits a clause itself, only records that an edit already
+happened). Tested against a synthetic corpus
+(`tests/verifier/test_triage.py`).
+
+Triaged all 18 findings from the sample report: **8 fixed, 10 accepted,
+0 rejected.**
+
+**Fixed** (data/clauses.json edited directly, golden fixtures for the 8
+affected documents regenerated, validate_corpus.py/regression/wizard
+suites re-run clean, each with its own changelog.html entry dated
+2026-10-17):
+- The major finding (`electrepair_documentation_mandate_two_tiers`):
+  disclosed the two additional § 42488.2 carve-outs, sourced to the
+  official BHGS industry advisory (fetched and extracted directly with
+  pdftotext, since WebFetch couldn't parse the PDF's binary stream).
+- `crt_payout_and_remainder_tests`: added the two missing citations for
+  the 5%/50% payout test (26 U.S.C. § 664(d)(1)(A)/(d)(2)(A)), fetched
+  fresh from Cornell LII.
+- `sdi_interest_status`: extended a spliced quote to include the
+  transitional sentence it had silently dropped, confirmed verbatim via
+  a fresh fetch.
+- `ein_how_to_apply`: narrowed an overclaimed daily-limit scope to what
+  its own cited source actually supports.
+- `mutualbenefit_dissolution_distribution_to_members`: removed an
+  uncited comparison to a different corporate category rather than
+  chasing down and freshly verifying two new citations for a tangential
+  point — the more conservative fix given the finding was only minor.
+- `fdo_who_may_sue`: corrected a pin cite that spanned a page boundary
+  the quoted text never reached.
+- `ulc_labor_rebuttal_factors`: corrected a gap note's misattribution of
+  which part of a statute a list comes from.
+- `founders_ip_preincorporation_gap`: clarified that the illustrative
+  case is a patent case (patent law has no work-for-hire doctrine), not
+  a parallel to the copyright rule it was illustrating.
+
+**Accepted, no clause edit** (all 10 of the "unverifiable" findings):
+every one of these reflects a real research-access limitation this
+session — `leginfo.legislature.ca.gov` was Cloudflare-blocked
+essentially throughout the whole verification run, and two findings
+(`epnp_covered_vehicles`, `arrestrecord_marijuana`) surfaced a genuine
+discrepancy between secondary mirrors that only the primary source
+could resolve. None of these were rejected as false positives — the
+findings are accurate statements of what couldn't be confirmed this
+session — but none warranted guessing at a fix either. Each is recorded
+in `verifier/triage.jsonl` with a reason noting it's flagged for
+re-verification once `leginfo` (or another independent source) is
+reachable, not silently dropped.
+
+**Nothing was rejected**, so `verifier/prompt.md`'s "Known false
+positives" section does not exist yet — correctly, since nothing in
+this round turned out to be a false positive to record.

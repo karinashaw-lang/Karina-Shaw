@@ -511,12 +511,23 @@ Roughly half the findings are sourcing-access gaps caused by
 run rather than content errors; the rest are genuine small defects
 (a spliced quote dropping an intervening sentence, a citation that
 doesn't itself support an independently-true claim, a stale pin cite,
-one real overclaiming gap). None of the 18 findings have been
-triaged yet — that's Phase 4.2, and `verifier/findings.jsonl` holds
-them exactly as the plan intends until then. Whether to run the
-verifier against the full corpus (thousands of authority clauses, not
-100) is a separate decision this sample result doesn't make on its
-own — the master plan reserves it for after this sample is reviewed.
+one real overclaiming gap).
+
+As of Phase 4.2, all 18 findings are triaged (`verifier/triage.py`;
+`verifier/triage.jsonl`): **8 fixed, 10 accepted, 0 rejected.** The 8
+real defects (including the one major finding) were corrected directly
+in `data/clauses.json`, each with its own `changelog.html` entry in the
+project's existing format; the 10 "unverifiable" sourcing-access
+findings were accepted with no clause edit — they're accurate
+statements of what this session couldn't confirm, not false positives,
+so nothing was rejected and `verifier/prompt.md`'s "Known false
+positives" section (fed by a rejected decision's reason) doesn't exist
+yet. Full breakdown of every decision in `DECISIONS.md`.
+
+Whether to run the verifier against the full corpus (thousands of
+authority clauses, not 100) is a separate decision this sample and its
+triage don't make on their own — the master plan reserves it for after
+the sample is reviewed.
 
 ## Where Phase 2/3 (and beyond) will change this next
 

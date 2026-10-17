@@ -11,7 +11,12 @@ This directory is **read-only with respect to the corpus**: nothing
 here ever edits `data/clauses.json` or `data/documents.json`.
 `suggestedFix` in a finding is a proposed replacement string for a human
 (Phase 4.2's triage workflow) to apply later, never something applied
-automatically.
+automatically. The actual edit — when a finding is real enough to
+fix — happens as a normal, direct edit outside this directory, checked
+the same way every other corpus fix is (validate_corpus.py, golden
+fixture regeneration); `triage.py --status fixed` records that it
+already happened and writes the changelog entry, it doesn't perform
+the edit itself.
 
 ## Pipeline
 
@@ -44,6 +49,15 @@ verifier/findings.jsonl       one line per finding (severity, category,
 python3 verifier/report.py
     finding rate, severity/category breakdown, example findings — the
     "sample report" the master plan's acceptance line asks for
+    │
+    ▼
+python3 verifier/triage.py --list / --decide <id> --status ...
+    Phase 4.2: accepted (stands, no edit), rejected (false positive,
+    --reason required, fed back into prompt.md's "Known false
+    positives" section), or fixed (the clause was already edited
+    directly; this appends the changelog.html entry) — appends to:
+    ▼
+verifier/triage.jsonl         one line per finding, final disposition
 ```
 
 ## Why the orchestrator is split from the worker
@@ -68,8 +82,15 @@ asks a worker to look at clauses nobody has looked at yet.
 
 ## Status so far
 
-See `DECISIONS.md` for the scope of the first real sample run (size,
-and when/whether the full-corpus run described in the master plan
-should be attempted) — a deliberate checkpoint given how much real,
-slow, external-API-dependent work a 100-clause sample represents
-compared to everything else built so far.
+The first real sample is complete and fully triaged: 100/100 authority
+clauses checked, 18 findings (1 major, 17 minor, 0 blockers), 8 fixed
+(with changelog.html entries), 10 accepted with no clause edit (all
+sourcing-access limitations, not false positives), 0 rejected. Full
+breakdown of every finding and decision in `DECISIONS.md`.
+
+Whether and when to run the verifier at full-corpus scale (thousands of
+authority clauses, not 100) is a separate decision this sample and its
+triage don't make on their own — the master plan reserves it for after
+the sample is reviewed, and it's recorded as its own checkpoint in
+`DECISIONS.md` given how much real, slow, external-API-dependent work
+that would represent compared to everything else built so far.
