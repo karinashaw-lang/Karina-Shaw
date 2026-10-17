@@ -1,0 +1,60 @@
+[
+  {
+    "clauseId": "paydatareport_report_contents",
+    "findings": [
+      {
+        "severity": "minor",
+        "category": "unverifiable",
+        "summary": "Primary source (leginfo.legislature.ca.gov) was unreachable in this session (Cloudflare bot-challenge blocked every fetch attempt), so the seven Gov. Code § 12999(b) quotes were cross-checked against a secondary mirror (california.public.law) and multiple independent secondary summaries (CalCivilRights.ca.gov deadline page, law-firm bill summaries) rather than re-fetched from the Legislative Counsel's own site.",
+        "evidence": "california.public.law confirmed, character-for-character, the (b)(1) preamble quote (\"The number of employees by race, ethnicity, and sex in each of the following job categories:\") and the (b)(7) NAICS quote (\"The report shall include the employer's North American Industry Classification System (NAICS) code.\"); CalCivilRights.ca.gov independently states \"Pay data reports for Reporting Year 2025 are due May 13, 2026\" which is the second Wednesday of May 2026, matching the clause's deadline rule; multiple law-firm summaries confirm SB 464 (Stats. 2025, Ch. 760) is \"an act to amend, repeal, and add Section 12999\" with the 10-category list continuing through 2026 and a 23-category list operative January 1, 2027 -- all consistent with the clause and its sibling clauses.",
+        "sourceChecked": "https://california.public.law/codes/government_code_section_12999; https://calcivilrights.ca.gov/paydatareporting/",
+        "suggestedFix": "n/a -- recheck the remaining five quoted paragraphs ((b)(2) through (b)(6)) directly against leginfo.legislature.ca.gov once that site is reachable, as a belt-and-suspenders step; no wording change is indicated by anything found."
+      }
+    ]
+  },
+  {
+    "clauseId": "ccb_discovery_smaller_claims_and_default",
+    "findings": []
+  },
+  {
+    "clauseId": "piecerate_safe_harbor_expired",
+    "findings": []
+  },
+  {
+    "clauseId": "subjudg_what_it_is",
+    "findings": []
+  },
+  {
+    "clauseId": "sdi_interest_status",
+    "findings": [
+      {
+        "severity": "minor",
+        "category": "quote_drift",
+        "summary": "Citation #1's quote splices together Civil Code § 1950.5(b) paragraphs (3) and (4) as if directly contiguous, silently omitting a sentence that sits between them in the live statute.",
+        "evidence": "Clause's quote reads: \"...(3) The cleaning of the premises upon termination of the tenancy necessary to return the unit to the same level of cleanliness it was in at the inception of the tenancy. (4) To remedy future defaults...\" The live text (confirmed both via law.onecle.com's archived text and via california.public.law's current, Jan.-1-2026-updated text) actually reads: \"...(3) The cleaning of the premises upon termination of the tenancy necessary to return the unit to the same level of cleanliness it was in at the inception of the tenancy. The amendments to this paragraph enacted by the act adding this sentence shall apply only to tenancies for which the tenant's right to occupy begins after January 1, 2003. (4) To remedy future defaults...\" -- an intervening sentence is omitted without any ellipsis or bracket marking the elision.",
+        "sourceChecked": "https://law.onecle.com/california/civil/1950.5.html; https://california.public.law/codes/ca_civ_code_section_1950.5",
+        "suggestedFix": "Either insert an ellipsis marker where the transitional sentence is omitted (\"...inception of the tenancy. [...] (4) To remedy future defaults...\") or extend the quote to include the full transitional sentence verbatim."
+      }
+    ]
+  },
+  {
+    "clauseId": "confmarriage_issuance_methods",
+    "findings": []
+  },
+  {
+    "clauseId": "taxpro_proration_formula",
+    "findings": []
+  },
+  {
+    "clauseId": "uas_scope_of_what_separability_protects",
+    "findings": []
+  },
+  {
+    "clauseId": "wageconf_workingconditions_disclosure_prohibition",
+    "findings": []
+  },
+  {
+    "clauseId": "domaindispute_acpa_cause_of_action",
+    "findings": []
+  }
+]
