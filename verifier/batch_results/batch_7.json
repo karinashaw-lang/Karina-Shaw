@@ -1,0 +1,51 @@
+[
+  {
+    "clauseId": "bonuspay_employment_on_payment_date_unsettled",
+    "findings": []
+  },
+  {
+    "clauseId": "hoaelection_secret_ballot_scope",
+    "findings": []
+  },
+  {
+    "clauseId": "callcenterreloc_notice_requirement",
+    "findings": []
+  },
+  {
+    "clauseId": "trustremv_interim_protective_relief",
+    "findings": []
+  },
+  {
+    "clauseId": "parentsupp_no_common_law_duty",
+    "findings": []
+  },
+  {
+    "clauseId": "ulc_labor_rebuttal_factors",
+    "findings": [
+      {
+        "severity": "minor",
+        "category": "other",
+        "summary": "The clause's gap text misattributes the list of 'additional cumulative factors' to Labor Code § 2750.5 subdivision (c) itself, when in the current statute that list is a separate, unlettered paragraph that follows lettered subdivisions (a)-(c), not part of (c).",
+        "evidence": "Current text (fetched): '(c) That the individual’s independent contractor status is bona fide and not a subterfuge to avoid employee status. A bona fide independent contractor status is further evidenced by the presence of cumulative factors such as substantial investment other than personal services in the business, holding out to be in business for oneself, bargaining for a contract to complete a specific project for compensation by project rather than by time, control over the time and place the work is performed, supplying the tools or instrumentalities used in the work other than tools and instrumentalities normally and customarily provided by employees, hiring employees, performing work that is not ordinarily in the course of the principal's work, performing work that requires a particular skill, holding a license pursuant to the Business and Professions Code, the intent by the parties that the work relationship is of an independent contractor status, or that the relationship is not severable or terminable at will...' -- the cumulative-factors sentence begins a new unlettered paragraph after subdivision (c), not a continuation of (c). The clause's gap states: 'Section 2750.5(c) lists additional cumulative factors evidencing bona fide independent contractor status beyond the lead sentence quoted here...' which treats that unlettered paragraph as if it were part of lettered subdivision (c).",
+        "sourceChecked": "https://california.public.law/codes/ca_lab_code_section_2750.5 (mirrors https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=2750.5, confirmed 'up to date' as of Oct. 12, 2026, unchanged since 1979)",
+        "suggestedFix": "Change 'Section 2750.5(c) lists additional cumulative factors evidencing bona fide independent contractor status beyond the lead sentence quoted here' to 'Section 2750.5 lists additional cumulative factors evidencing bona fide independent contractor status, in an unlettered paragraph following subdivisions (a)-(c), beyond the lead sentence quoted here.'"
+      }
+    ]
+  },
+  {
+    "clauseId": "profgw_rosen_goodwill_value_of_zero",
+    "findings": []
+  },
+  {
+    "clauseId": "stockopt_postseparation_earnings_separate",
+    "findings": []
+  },
+  {
+    "clauseId": "wilwit_proof_uncontested",
+    "findings": []
+  },
+  {
+    "clauseId": "txm_benson_fiduciary_duty_not_a_substitute",
+    "findings": []
+  }
+]
