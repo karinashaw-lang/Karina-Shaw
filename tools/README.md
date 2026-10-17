@@ -90,6 +90,22 @@ one place the project's "inform, never advise" rule is checked
 mechanically rather than relying on review alone. Exercised by
 `tests/validate_corpus/test_advisory_lint.py`.
 
+Since Phase 2.4, it also validates clause-level `includeIf`: a
+`clauseOrder` entry can now be `{id, includeIf}` instead of a bare
+clause id, and every `includeIf.field` must name a field the document
+declares, with exactly one of `equals`/`notEquals` set (both or neither
+is a condition nothing can execute). Beyond per-entry shape, it
+enumerates every real combination of a document's conditional fields
+(each one contributing a binary "condition holds / doesn't" split —
+enumerated exactly up to 64 branches, sampled beyond that rather than
+skipped) and fails if any branch would render zero clauses. It also
+extends the existing "every declared field is used" check: a field
+referenced only by a `showIf` or `includeIf` condition, with no literal
+`{{field}}` anywhere, still counts as used — it changes what the
+assembled document looks like even without ever appearing in its text.
+Exercised by `tests/validate_corpus/test_include_if.py` against a
+synthetic corpus, since nothing in the real one uses `includeIf` yet.
+
 ## migrate_fields.py
 
 ```
@@ -414,20 +430,25 @@ python3 -m http.server 8933 &
 node tests/wizard/wizard_unit.js
 ```
 
-Phase 2.3's behavioral checks for the specific claims `wizard_regression.js`'s
+Phase 2.3/2.4 behavioral checks for the specific claims `wizard_regression.js`'s
 happy-path walk doesn't exercise: a field with `showIf` actually hides/
 shows and an all-hidden step is actually skipped (against a synthetic
-document — no field in the corpus sets `showIf` yet, Phase 2.4's job);
-validation actually blocks on an empty required field and a malformed
-email, and does *not* block on a blank optional field or a realistic
-money value; a `sensitive` field gets `data-sensitive` and a note in the
-DOM (against `ein_info_sheet`, the one document with a sensitive field);
-the review screen's Edit button jumps back to the right step and focuses
-the right input; and draft resume restores the step the person was on,
-not always step 0. Each check failed once for a real reason while this
-was being written (a validator too strict, a test that forgot
-`showScreen()` so nothing could receive real DOM focus) before being
-fixed — not written blind and trusted.
+document — no field in the corpus sets `showIf` yet); validation
+actually blocks on an empty required field and a malformed email, and
+does *not* block on a blank optional field or a realistic money value; a
+`sensitive` field gets `data-sensitive` and a note in the DOM (against
+`ein_info_sheet`, the one document with a sensitive field); the review
+screen's Edit button jumps back to the right step and focuses the right
+input; draft resume restores the step the person was on, not always
+step 0; and a clause with `includeIf` is actually included/excluded from
+`assembleDocument()` and described correctly in both the output
+screen's conditional-clauses note and the plain-text export (against a
+synthetic document and clauses pushed into `state.documents`/
+`state.clauses` — no clause in the corpus sets `includeIf` yet). Each
+check failed once for a real reason while this was being written (a
+validator too strict, a test that forgot `showScreen()` so nothing could
+receive real DOM focus) before being fixed — not written blind and
+trusted.
 
 ## tests/auth_roundtrip.js
 

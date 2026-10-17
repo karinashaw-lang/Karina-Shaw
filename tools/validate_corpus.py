@@ -4,7 +4,7 @@
 Exits non-zero and names the first failure. Everything here has caught a
 real defect at least once during corpus expansion.
 """
-import json, re, sys, collections
+import json, re, sys, collections, itertools, random
 from datetime import date
 
 AUTH = ['id', 'title', 'kind', 'status', 'checkedDate', 'body', 'gap', 'citations']
@@ -44,12 +44,101 @@ def main():
     check(not [k for k, v in titles.items() if v > 1],
           f'duplicate document titles: {[k for k, v in titles.items() if v > 1][:3]}')
 
+    # A clauseOrder entry is either a bare clause id (always included) or
+    # {id, includeIf} (Phase 2.4 — conditionally included based on a
+    # field answer; see app.js's clauseEntryId()/assembleDocument()).
+    # Every check below that cares about *which clause* an entry names
+    # goes through this helper so it doesn't matter which shape it's in.
+    def entry_id(entry):
+        return entry if isinstance(entry, str) else entry.get('id')
+
+    def entry_include_if(entry):
+        return None if isinstance(entry, str) else entry.get('includeIf')
+
     cid = set(ids)
-    dangling = [(d['id'], r) for d in docs for r in d['clauseOrder'] if r not in cid]
+    dangling = [(d['id'], entry_id(r)) for d in docs for r in d['clauseOrder'] if entry_id(r) not in cid]
     check(not dangling, f'clauseOrder ids that resolve to nothing: {dangling[:5]}')
 
-    used = {r for d in docs for r in d['clauseOrder']}
+    used = {entry_id(r) for d in docs for r in d['clauseOrder']}
     check(not (cid - used), f'orphan clauses referenced by no document: {sorted(cid - used)[:5]}')
+
+    # includeIf (Phase 2.4): same shape as a field's showIf — must name a
+    # field actually declared by the document, and have exactly one of
+    # equals/notEquals (both or neither is a condition that can never
+    # resolve meaningfully, not something a working renderer can execute).
+    bad_include_if = []
+    for d in docs:
+        field_ids = {f['id'] for f in d.get('fields', [])}
+        for r in d['clauseOrder']:
+            cond = entry_include_if(r)
+            if cond is None:
+                continue
+            tag = f'{d["id"]}.{entry_id(r)}'
+            target = cond.get('field')
+            if target not in field_ids:
+                bad_include_if.append(f'{tag}.includeIf references {target!r}, not a field declared by this document')
+            elif ('equals' in cond) == ('notEquals' in cond):
+                bad_include_if.append(f'{tag}.includeIf must set exactly one of equals/notEquals')
+    check(not bad_include_if, f'invalid includeIf: {bad_include_if[:5]}')
+
+    # Acceptance (Phase 2.4): every document must render at least one
+    # clause across every real combination of its conditional answers,
+    # not just the combination whoever wrote it happened to test. Each
+    # conditional field contributes one binary split (condition holds /
+    # doesn't — a free-text field has no enumerable value set beyond
+    # that), so a document with k distinct conditional fields has 2**k
+    # branches; enumerated exactly up to BRANCH_CAP, sampled beyond it
+    # rather than skipped, since skipping the check entirely above the
+    # cap would quietly stop verifying the documents most likely to have
+    # a real gap.
+    BRANCH_CAP = 64
+    empty_branches = []
+    for d in docs:
+        conditions = []
+        for r in d['clauseOrder']:
+            cond = entry_include_if(r)
+            if cond is not None:
+                conditions.append(cond)
+        cond_fields = sorted({c['field'] for c in conditions})
+        if not cond_fields:
+            continue  # no conditionals: the one real branch is already
+                      # covered by every other check in this file.
+
+        def included_count(matches):
+            # matches: {field_id: bool} — whether that field's answer
+            # satisfies whichever single condition the entries check it
+            # against (a document only ever has one include/exclude
+            # question per conditional field in this corpus's design).
+            count = 0
+            for r in d['clauseOrder']:
+                cond = entry_include_if(r)
+                if cond is None:
+                    count += 1
+                    continue
+                holds = matches[cond['field']]
+                condition_true = holds if 'equals' in cond else not holds
+                if condition_true:
+                    count += 1
+            return count
+
+        n = len(cond_fields)
+        if 2 ** n <= BRANCH_CAP:
+            branch_iter = (
+                dict(zip(cond_fields, bits))
+                for bits in itertools.product([False, True], repeat=n)
+            )
+        else:
+            rng = random.Random(f'{d["id"]}-branches')  # deterministic across runs
+            branch_iter = (
+                dict(zip(cond_fields, (rng.random() < 0.5 for _ in cond_fields)))
+                for _ in range(BRANCH_CAP)
+            )
+        for matches in branch_iter:
+            if included_count(matches) == 0:
+                empty_branches.append((d['id'], matches))
+                break
+    check(not empty_branches,
+          f'documents with a branch that includes zero clauses: {empty_branches[:5]}')
 
     auth = [c for c in clauses if c['kind'] == 'authority']
     check(not [c['id'] for c in auth if not (c.get('gap') or '').strip()],
@@ -124,13 +213,22 @@ def main():
     by_id = {c['id']: c for c in clauses}
     for d in docs:
         declared = {f['id'] for f in d.get('fields', [])}
-        text = ' '.join((by_id[r].get('body', '') + ' ' + (by_id[r].get('gap') or ''))
-                        for r in d['clauseOrder'] if r in by_id)
+        text = ' '.join((by_id[entry_id(r)].get('body', '') + ' ' + (by_id[entry_id(r)].get('gap') or ''))
+                        for r in d['clauseOrder'] if entry_id(r) in by_id)
         used = set(re.findall(r'\{\{(\w+)\}\}', text))
         undeclared = used - declared
         check(not undeclared, f'{d["id"]} uses undeclared fields {sorted(undeclared)}')
-        unused = declared - used
-        check(not unused, f'{d["id"]} declares fields no clause substitutes: {sorted(unused)}')
+
+        # A field with no effect on anything would be dead data, but a
+        # field is not dead just because it's never literally substituted
+        # into text — it can instead gate a field's showIf or a clause's
+        # includeIf (Phase 2.4), which is a real effect on the assembled
+        # document even though no {{field}} for it ever appears.
+        conditioned_on = {f['showIf']['field'] for f in d.get('fields', []) if f.get('showIf')}
+        conditioned_on |= {entry_include_if(r)['field'] for r in d['clauseOrder'] if entry_include_if(r)}
+        referenced = used | conditioned_on
+        unused = declared - referenced
+        check(not unused, f'{d["id"]} declares fields nothing substitutes or conditions on: {sorted(unused)}')
 
     # Field schema (schema/field.schema.json) — loaded, not re-typed here,
     # so the enum of valid types and the set of required/orderable keys

@@ -21,6 +21,7 @@ jobs:
           python3 tests/validate_corpus/test_showif.py -v
           python3 tests/validate_corpus/test_shared_fields.py -v
           python3 tests/validate_corpus/test_advisory_lint.py -v
+          python3 tests/validate_corpus/test_include_if.py -v
 
   merge-guard:
     name: Merge guard

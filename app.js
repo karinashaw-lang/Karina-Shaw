@@ -1395,9 +1395,64 @@ function substitute(text, answers) {
 // and substitute this run's answers into its body. Clauses with no
 // match are dropped rather than throwing, so a typo in clauseOrder
 // fails quietly instead of breaking the whole render.
+// Clause-level conditionals (Phase 2.4). A clauseOrder entry is either a
+// bare clause id (always included, the only shape that existed before
+// this phase and still what almost every document uses) or
+// {id, includeIf} — includeIf has the same {field, equals?, notEquals?}
+// shape as a field's own showIf (field.schema.json), evaluated against
+// the current answers. No document in the corpus uses this yet; the
+// real case is a document family sharing one clauseOrder that genuinely
+// differs by an answer (an optional arbitration clause, a
+// jurisdiction-specific one), which doesn't exist here today, so this
+// is exercised by tests/wizard/wizard_unit.js against a synthetic
+// document rather than live data — same situation field-level showIf
+// was in after Phase 2.1/2.3.
+function clauseEntryId(entry) {
+  return typeof entry === 'string' ? entry : entry.id;
+}
+
+function clauseIncludeIf(entry) {
+  return typeof entry === 'string' ? null : entry.includeIf || null;
+}
+
+function conditionMatches(cond, answers) {
+  const val = answers[cond.field] || '';
+  if (cond.equals !== undefined) return val === cond.equals;
+  if (cond.notEquals !== undefined) return val !== cond.notEquals;
+  return true;
+}
+
+// Plain-language record of every conditional clause's inclusion
+// decision, for the output screen's transparency note — states what was
+// assembled and why, never whether that was the right call. Clauses
+// with no includeIf at all aren't conditional and never appear here.
+function describeConditionalClauses() {
+  return state.document.clauseOrder
+    .filter(entry => clauseIncludeIf(entry))
+    .map(entry => {
+      const id = clauseEntryId(entry);
+      const cond = clauseIncludeIf(entry);
+      const clause = state.clauses.find(c => c.id === id);
+      const fieldDef = (state.document.fields || []).find(f => f.id === cond.field);
+      const fieldLabel = fieldDef ? fieldDef.label : cond.field;
+      const expected = cond.equals !== undefined ? cond.equals : cond.notEquals;
+      const relation = cond.equals !== undefined ? 'is' : 'is not';
+      return {
+        id,
+        title: clause ? clause.title : id,
+        included: conditionMatches(cond, state.answers),
+        reason: `"${fieldLabel}" ${relation} "${expected}"`,
+      };
+    });
+}
+
 function assembleDocument() {
   return state.document.clauseOrder
-    .map(id => state.clauses.find(c => c.id === id))
+    .filter(entry => {
+      const cond = clauseIncludeIf(entry);
+      return !cond || conditionMatches(cond, state.answers);
+    })
+    .map(entry => state.clauses.find(c => c.id === clauseEntryId(entry)))
     .filter(Boolean)
     .map(clause => ({
       ...clause,
@@ -1422,6 +1477,22 @@ function renderOutput() {
     jEl.hidden = false;
   } else {
     jEl.hidden = true;
+  }
+
+  const conditional = describeConditionalClauses();
+  const condEl = document.getElementById('output-conditional-notes');
+  const condList = document.getElementById('output-conditional-list');
+  condList.innerHTML = '';
+  if (conditional.length) {
+    conditional.forEach(c => {
+      const li = document.createElement('li');
+      li.className = c.included ? 'included' : 'excluded';
+      li.textContent = `${c.included ? 'Included' : 'Not included'}: ${c.title} — because ${c.reason}`;
+      condList.appendChild(li);
+    });
+    condEl.hidden = false;
+  } else {
+    condEl.hidden = true;
   }
 
   const container = document.getElementById('output-clauses');
@@ -1588,6 +1659,14 @@ function buildPlainText() {
   const lines = [];
   lines.push(state.document.title.toUpperCase());
   lines.push(preparedForLine(state.answers));
+  const conditional = describeConditionalClauses();
+  if (conditional.length) {
+    lines.push('');
+    lines.push('OPTIONAL CLAUSES IN THIS DOCUMENT:');
+    conditional.forEach(c => {
+      lines.push(`  ${c.included ? 'Included' : 'Not included'}: ${c.title} — because ${c.reason}`);
+    });
+  }
   lines.push('');
   assembled.forEach(clause => {
     const edited = state.editedClauseIds.has(clause.id);

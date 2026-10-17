@@ -1,13 +1,16 @@
-// Behavioral checks for the Phase 2.3 generic wizard renderer that
-// tools/wizard_regression.js's 740-document happy-path walk can't
-// cover on its own: validation actually blocking an invalid step,
-// showIf hiding/revealing fields and skipping an all-hidden step,
-// sensitive fields getting marked in the DOM, the review screen's
-// Edit links jumping back and focusing the right field, and draft
-// resume restoring the step the person was actually on (not always
-// step 0). Each one is a specific claim this phase's acceptance
-// criteria make; this is what checks the claim is true, not just that
-// every document happens to make it through once.
+// Behavioral checks for the Phase 2.3 generic wizard renderer and
+// Phase 2.4 clause-level conditionals that tools/wizard_regression.js's
+// 740-document happy-path walk can't cover on its own: validation
+// actually blocking an invalid step, showIf hiding/revealing fields and
+// skipping an all-hidden step, sensitive fields getting marked in the
+// DOM, the review screen's Edit links jumping back and focusing the
+// right field, draft resume restoring the step the person was actually
+// on (not always step 0), and includeIf actually including/excluding a
+// clause from the assembled document and being described correctly in
+// the output screen's and plain-text export's "optional clauses" note.
+// Each one is a specific claim a phase's acceptance criteria make; this
+// is what checks the claim is true, not just that every document
+// happens to make it through once.
 //
 // Needs a local static server, same as regression.js/golden.js:
 //   python3 -m http.server 8933 &
@@ -197,6 +200,55 @@ function check(name, cond, detail) {
   check('draft resume: banner appears after reload', resumeResult.bannerVisible);
   check('draft resume: restores the step the user was on (not step 0)', resumeResult.stepAfterResume === 1, JSON.stringify(resumeResult));
   check('draft resume: restores the answers', resumeResult.answersRestored);
+
+  // ---- Phase 2.4: clause-level includeIf ----
+  const includeIfResult = await page.evaluate(() => {
+    const floorClause = { id: 'synthetic_c1', title: 'Floor Clause', kind: 'drafting', body: 'This always appears.' };
+    const conditionalClause = { id: 'synthetic_c2', title: 'Arbitration Clause', kind: 'drafting', body: 'This is the optional arbitration clause.' };
+    state.clauses.push(floorClause, conditionalClause);
+    const fakeDoc = {
+      id: 'synthetic_includeif_doc',
+      title: 'Synthetic IncludeIf Test',
+      fields: [{ id: 'wantsArbitration', label: 'Include an arbitration clause?', type: 'text', required: true }],
+      clauseOrder: ['synthetic_c1', { id: 'synthetic_c2', includeIf: { field: 'wantsArbitration', equals: 'yes' } }],
+    };
+    state.documents.push(fakeDoc);
+    state.jurisdictionByDoc.set(fakeDoc.id, 'NONE');
+    state.document = fakeDoc;
+
+    state.answers = { wantsArbitration: 'no' };
+    const excludedAssembled = assembleDocument().map(c => c.id);
+
+    state.answers = { wantsArbitration: 'yes' };
+    const includedAssembled = assembleDocument().map(c => c.id);
+
+    renderOutput();
+    showScreen('screen-output');
+    const noteVisible = !document.getElementById('output-conditional-notes').hidden;
+    const noteText = document.getElementById('output-conditional-list').textContent;
+    const plainText = buildPlainText();
+
+    state.answers = { wantsArbitration: 'no' };
+    renderOutput();
+    const noteTextExcludedCase = document.getElementById('output-conditional-list').textContent;
+
+    return {
+      excludedAssembled, includedAssembled, noteVisible, noteText, plainText, noteTextExcludedCase,
+    };
+  });
+  check('includeIf: conditional clause excluded when condition fails',
+    !includeIfResult.excludedAssembled.includes('synthetic_c2') && includeIfResult.excludedAssembled.includes('synthetic_c1'),
+    JSON.stringify(includeIfResult.excludedAssembled));
+  check('includeIf: conditional clause included when condition matches',
+    includeIfResult.includedAssembled.includes('synthetic_c2') && includeIfResult.includedAssembled.includes('synthetic_c1'),
+    JSON.stringify(includeIfResult.includedAssembled));
+  check('includeIf: output screen shows the conditional-clauses note', includeIfResult.noteVisible);
+  check('includeIf: note says the clause was Included when the condition matched',
+    includeIfResult.noteText.includes('Included: Arbitration Clause'), includeIfResult.noteText);
+  check('includeIf: note says Not included when the condition failed',
+    includeIfResult.noteTextExcludedCase.includes('Not included: Arbitration Clause'), includeIfResult.noteTextExcludedCase);
+  check('includeIf: plain-text export includes the optional-clauses note',
+    includeIfResult.plainText.includes('OPTIONAL CLAUSES IN THIS DOCUMENT') && includeIfResult.plainText.includes('Arbitration Clause'));
 
   await browser.close();
 

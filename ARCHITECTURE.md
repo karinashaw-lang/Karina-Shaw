@@ -70,10 +70,21 @@ data/clauses.json  ──┼─► app.js init() ─► state.documents, state.c
 ```
 
 Clauses are never embedded in documents — `document.clauseOrder` is a list
-of clause ids resolved against `state.clauses` at render time
+of entries resolved against `state.clauses` at render time
 (`assembleDocument()` in app.js). A clause used by zero documents, or a
 `clauseOrder` id that resolves to nothing, is a validate_corpus.py failure
 (orphan / dangling reference checks).
+
+An entry is either a bare clause id (always included — still what almost
+every clauseOrder in the corpus uses) or, as of Phase 2.4,
+`{id, includeIf}` — a clause included only when `includeIf` (the same
+`{field, equals?, notEquals?}` shape as a field's `showIf`) matches the
+current answers. No document uses this yet (see "What Phase 2+ will
+still change here" below); the renderer and `validate_corpus.py` are
+both already correct against it, exercised by
+`tests/validate_corpus/test_include_if.py` and
+`tests/wizard/wizard_unit.js` against synthetic data, the same position
+field-level `showIf` was in after Phase 2.1/2.3.
 
 ## State: where things actually live
 
@@ -259,6 +270,16 @@ Per-field behavior:
   ("never synced"), once something actually consumes this flag — see
   `DECISIONS.md`.
 
+As of Phase 2.4, `renderOutput()`/`buildPlainText()` both also show a
+plain-language record of every conditional clause's inclusion decision
+(`describeConditionalClauses()`) — "Included: X — because ..." or "Not
+included: X — because ..." — on screen in a notice above the clause list
+(`#output-conditional-notes`, hidden when a document has no conditional
+clauses, which is every document today) and as an "OPTIONAL CLAUSES IN
+THIS DOCUMENT" section in the plain-text export. States what was
+assembled and why, never whether that was the right call — the same
+register as everything else this app says about its own output.
+
 `tools/wizard_regression.js` drives every one of the 740 documents
 through the real renderer end to end (fill each visible field with its
 own `example`, Next through every step, reach review, submit, check for
@@ -326,6 +347,20 @@ current":
   phrase like "you should" or "we recommend". This is the one place
   "inform, never advise" is enforced mechanically instead of by review
   alone. Covered by `tests/validate_corpus/test_advisory_lint.py`.
+- Clause-level `includeIf` (Phase 2.4): every `includeIf.field` names a
+  field the document actually declares, and sets exactly one of
+  `equals`/`notEquals` (a condition with both or neither can never
+  resolve). Beyond per-entry shape, every document's conditional fields
+  are enumerated across every real branch (every field's condition
+  holding or not — enumerated exactly up to 64 combinations, sampled
+  beyond that rather than skipped) and each branch must still include at
+  least one clause; a document whose conditionals can combine to render
+  nothing fails the build. Also extends the existing "declared field
+  must be used" check: a field referenced only by a `showIf` or
+  `includeIf` condition, never substituted into clause text, still
+  counts as used — it has a real effect on the assembled document even
+  with no literal `{{field}}` anywhere. Covered by
+  `tests/validate_corpus/test_include_if.py`.
 
 ## Tooling
 
@@ -344,8 +379,8 @@ current":
 | `add_why_we_ask.py [--write]` | Phase 2.2b's one-time write of `whyWeAsk` text into every entry in `schema/fields/*.json`, from a hardcoded dict covering exactly the 172 library ids (aborts if the library and the dict ever disagree on which ids exist, rather than silently skipping or guessing). Dry-run by default; `--write` applies it. Does not touch the ~650 field ids outside the library — see `DECISIONS.md` for why that's a deliberate scope decision, not a gap to quietly close later with generic text. |
 | `wizard_regression.js` | Phase 2.3's full-corpus acceptance check: drives all 740 documents through the real `renderWizard()`/`renderWizardStep()` path (fill every visible field with its own `example`, Next through every step, review, submit) and fails on a stuck step, a step never reached, or leaked `{{field}}` braces. Same local-server requirement as `regression.js`. Caught the first version of the money/integer/percent validators being too strict for real corpus examples before it shipped. |
 | `tests/golden/golden.js` | Covered in GOLDEN_REVIEW.md — not a `tools/` script, but the other headless-browser gate alongside `regression.js`, checking one fixture per document's exact rendered output rather than just structural counts. |
-| `tests/wizard/wizard_unit.js` | Phase 2.3's behavioral checks: showIf visibility/step-skipping, per-field validation actually blocking (and not over-blocking), sensitive-field marking, review-screen Edit-and-focus, and draft resume restoring the step — against synthetic documents and `ein_info_sheet` (the one document with a `sensitive` field), not the full corpus walk `wizard_regression.js` already covers. |
-| `tests/merge_guard/`, `tests/validate_corpus/` | Unit tests for the gate scripts themselves, run as a CI step (`Test the tooling itself`) in the `validate-corpus` job — not fixtures *in* the corpus, tests *of* the checker. `tests/validate_corpus/test_showif.py` exists because `showIf`'s cycle detector (Phase 2.1) has no real corpus data to exercise it yet (Phase 2.4 adds the first real `showIf`), so it gets a throwaway-corpus unit test instead of relying on the live data to prove it works. `test_shared_fields.py` does the same for the Phase 2.2 library checks (duplicate/invalid library entries, unresolved or type-mismatched `sharedFieldId`), which the real corpus is currently too clean to exercise. `test_advisory_lint.py` does the same for the Phase 2.2b lint rule. |
+| `tests/wizard/wizard_unit.js` | Phase 2.3/2.4 behavioral checks: showIf visibility/step-skipping, per-field validation actually blocking (and not over-blocking), sensitive-field marking, review-screen Edit-and-focus, draft resume restoring the step, and includeIf actually including/excluding a clause and being described correctly on the output screen and in the plain-text export — against synthetic documents and `ein_info_sheet` (the one document with a `sensitive` field), not the full corpus walk `wizard_regression.js` already covers. |
+| `tests/merge_guard/`, `tests/validate_corpus/` | Unit tests for the gate scripts themselves, run as a CI step (`Test the tooling itself`) in the `validate-corpus` job — not fixtures *in* the corpus, tests *of* the checker. `tests/validate_corpus/test_showif.py` exists because `showIf`'s cycle detector (Phase 2.1) has no real corpus data to exercise it yet, so it gets a throwaway-corpus unit test instead of relying on live data to prove it works. `test_shared_fields.py` does the same for the Phase 2.2 library checks (duplicate/invalid library entries, unresolved or type-mismatched `sharedFieldId`), and `test_advisory_lint.py` for the Phase 2.2b lint rule — both currently too clean to exercise on the real corpus. `test_include_if.py` does the same for the Phase 2.4 `includeIf` checks (bad condition shape, undeclared target field, a branch across conditional fields that renders zero clauses) — no clause in the corpus uses `includeIf` yet either. |
 
 ## Supabase
 
@@ -359,19 +394,28 @@ verified directly against Postgres via role/claim impersonation in this
 session; the HTTP round trip through Supabase Auth was not (see
 BASELINE.md and the open items in the Build Status doc).
 
-## What Phase 2+ will still change here
+## Where Phase 2 (and Phase 3+) will change this next
 
-Phase 2.1 (the field schema), 2.2 (the shared field library), 2.2b
-(`whyWeAsk` text + the advisory-phrase lint), and 2.3 (the sectioned,
-validating wizard renderer above) are done. What's still ahead and will
-make this section stale again: `whyWeAsk` for the ~650 field ids outside
-the library (deliberately out of scope for 2.2b — see `DECISIONS.md`);
-hand-curated `validation`/`default`/`helpText` now that the renderer can
-actually act on them; and the first real `showIf`/`includeIf`
-conditionals, which is also the day the visibility logic and the
-cycle-check added in 2.1/2.3 start being exercised by live data instead
-of only by `tests/validate_corpus/test_showif.py` and
-`tests/wizard/wizard_unit.js`'s synthetic documents (2.4). Any task
-touching `fields[]`, `schema/fields/`, `renderWizard()`, or
+Phase 2 (2.1 field schema, 2.2 shared field library, 2.2b `whyWeAsk` text
++ advisory lint, 2.3 the sectioned/validating wizard renderer, 2.4
+clause-level `includeIf`) is done, end to end. Everything describing
+`showIf`/`includeIf` above — the visibility logic, the renderer, the
+validate_corpus.py checks — is real and tested, but against synthetic
+data only: no field or clause in the real corpus sets either one yet.
+The day a real one is added is the day that live data starts exercising
+this instead of `tests/validate_corpus/test_showif.py`,
+`test_include_if.py`, and `tests/wizard/wizard_unit.js`'s synthetic
+documents — worth re-reading this file at that point, since a gap
+between "tested against a hand-built example" and "tested against the
+real thing" tends to be exactly where a real document's actual shape
+turns out to need something the synthetic case didn't.
+
+What's left that Phase 2 deliberately didn't do: `whyWeAsk` for the ~650
+field ids outside the shared library (out of scope for 2.2b — see
+`DECISIONS.md`); hand-curated `validation`/`default`/`helpText` now that
+the renderer can actually act on them; and real exclusion of `sensitive`
+answers from local storage once Phase 7.4/8.1 gives that flag an actual
+consumer (also `DECISIONS.md`). Any task touching `fields[]`,
+`schema/fields/`, `clauseOrder`, `renderWizard()`, or
 `assembleDocument()` should re-read this file first — it will be stale
 the moment that work starts.

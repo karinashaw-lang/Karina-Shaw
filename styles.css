@@ -250,6 +250,32 @@ h1{
   margin:-8px 0 20px;
   max-width:560px;
 }
+
+/* Plain-language record of which optional (includeIf, Phase 2.4)
+   clauses made it into this specific document and why — a fact about
+   what was assembled, never a judgment about whether that was the
+   right call. */
+.conditional-notice[hidden]{ display:none; }
+.conditional-notice{
+  font-size:13.5px;
+  color:var(--ink-soft);
+  background:var(--surface);
+  border-left:3px solid var(--line);
+  border-radius:0 5px 5px 0;
+  padding:10px 14px;
+  margin:-8px 0 20px;
+  max-width:560px;
+}
+.conditional-notice-title{
+  margin:0 0 6px;
+  font-family:'IBM Plex Mono', monospace;
+  font-size:11px;
+  letter-spacing:0.05em;
+  text-transform:uppercase;
+}
+.conditional-notice ul{ margin:0; padding-left:18px; }
+.conditional-notice li{ margin:2px 0; }
+.conditional-notice li.excluded{ text-decoration:line-through; opacity:.7; }
 .doc-card p{
   margin:0;
   font-size:14.5px;
