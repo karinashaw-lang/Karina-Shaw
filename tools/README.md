@@ -450,6 +450,56 @@ validator too strict, a test that forgot `showScreen()` so nothing could
 receive real DOM focus) before being fixed — not written blind and
 trusted.
 
+## tiering.py
+
+```
+python3 tools/tiering.py           # recompute, write tiers.json, print summary
+python3 tools/tiering.py --check   # recompute in memory, exit 1 if tiers.json on
+                                    # disk doesn't match (the CI staleness gate)
+```
+
+Phase 3.1's tier computation — every document gets Tier A/B/C from
+objective, already-real signals, never assigned by hand. Tier B needs a
+complete field schema (every field has `type` and a resolvable
+`whyWeAsk`, directly or via `sharedFieldId`), every authority clause
+verified and within the staleness window, and at least one golden
+fixture. Tier A needs all of that plus a clean adversarial-verifier run
+(master plan Phase 4.1) and a passed accessibility check (Phase 9.1) —
+**neither exists yet**, and a missing signal is treated as not met, not
+assumed passing, so Tier A is honestly 0/740 right now. See
+`DECISIONS.md` for why that's the deliberate, conservative reading
+rather than a bug, and why "complete field schema" is defined by
+`whyWeAsk` coverage rather than by `type` (which every field already
+has, so it wouldn't distinguish anything). `--check` is what keeps
+`tiers.json` — committed, fetched by the app like `documents.json` — from
+silently drifting out of sync with the corpus; wired into CI right
+after `validate_corpus.py`. Tested by `tests/tiering/test_tiering.py`.
+
+## promotion_report.py
+
+```
+python3 tools/promotion_report.py                 # print the report
+python3 tools/promotion_report.py --markdown       # GFM output, for a CI job summary
+python3 tools/promotion_report.py --write-history  # also append today's snapshot to
+                                                    # tiers_history.jsonl (idempotent,
+                                                    # once per calendar day — a developer
+                                                    # action, never something CI does)
+```
+
+Phase 3.3's promotion report: per-category tier counts straight from
+`tiers.json` (doesn't recompute — run `tiering.py` first), the 20 Tier C
+documents closest to Tier B ranked by fewest blocking gates, and
+week-over-week change against `tiers_history.jsonl` once a baseline
+entry is genuinely 7+ days old (never against yesterday's entry, and
+never fabricated when no history exists yet). Deliberately only ranks
+Tier C→B: every Tier B document is blocked from Tier A by the exact
+same two missing systems (Phase 4.1/9.1), so ranking them against each
+other would report a difference that doesn't exist. CI runs the
+default, read-only invocation and pipes `--markdown` into
+`$GITHUB_STEP_SUMMARY`; it never writes history itself — see
+`DECISIONS.md` for why that's deliberately a developer action. Tested
+by `tests/tiering/test_promotion_report.py`.
+
 ## tests/auth_roundtrip.js
 
 ```

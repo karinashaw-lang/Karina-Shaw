@@ -173,3 +173,46 @@ Decision: ship the marking now; wire real exclusion into
 `saveDraft()`/`addToLibrary()` once Phase 7.4 or 8.1 actually builds a
 consumer for the flag, at which point there's a real system to exclude
 sensitive data *from* rather than a speculative one.
+
+## Phase 3.1 scope: Tier A is honestly empty; "field schema complete"
+## means whyWeAsk-resolvable
+
+Two decisions made computing `tools/tiering.py`, both already explained
+in the script's own comments and in `ARCHITECTURE.md`, recorded here
+too since both were genuinely ambiguous calls, not mechanical ones.
+
+**Tier A is always 0/740 right now, on purpose.** The master plan's
+Tier A definition includes "passed adversarial verifier with no open
+findings" and "accessibility checks passed" — Phase 4.1 and Phase 9.1,
+neither of which exists yet. Taken literally, there's no real signal to
+check at all. Two ways to handle that: treat the missing signal as
+"vacuously true" (nothing has failed it, so let it pass) or as "not
+met" (nothing has verified it, so it hasn't been shown to pass).
+Picked the second, conservative option — vacuous-true would hand every
+document meeting Tier B's bar a Tier A label that asserts two reviews
+happened when they didn't, which is exactly the kind of overclaiming
+this whole project exists to avoid making about the underlying legal
+content, and would be a strange thing to do to the project's own
+quality metric. `ADVERSARIAL_VERIFIER_EXISTS`/`ACCESSIBILITY_CHECK_EXISTS`
+in `tools/tiering.py` are `False` until Phase 4.1/9.1 give them a real
+per-document result to check.
+
+**"Complete field schema" for Tier B means every field resolves a real
+`whyWeAsk`** (directly, or via `sharedFieldId` into the Phase 2.2
+library), not merely "has a `type`." Every field in the corpus already
+has `type` (Phase 2.1), so using that alone as the bar would make every
+one of the 740 documents trivially qualify — a tier gate that nothing
+can fail isn't measuring anything. `whyWeAsk` coverage, by contrast, is
+real and currently split close to evenly (382 documents where every
+field resolves one, 358 where at least one doesn't), which is both an
+honest signal and a direct, visible payoff for Phase 2.2/2.2b's own
+work: a document only reaches Tier B once its fields are actually
+explained to the person filling it in, not just typed.
+
+**CI reads `tiers_history.jsonl`, never writes it.** `promotion_report.py
+--write-history` appends a day's snapshot; CI's job-summary step runs
+the script without that flag. Keeping CI read-only here avoids a bot
+commit flow (and its failure modes — races, merge conflicts, permission
+scope) for a file that only needs one entry a day and is cheap for a
+developer to update as part of a normal commit, the same way `tiers.json`
+itself is generated locally and committed rather than written by CI.

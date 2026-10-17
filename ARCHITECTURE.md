@@ -24,6 +24,16 @@ changelog.html       Static page listing real defects caught and fixed (14
                      entries as of this writing).
 data/documents.json  Array of 740 document definitions (1.6 MB).
 data/clauses.json    {"clauses": [...]} — 6,610 clause definitions (20.4 MB).
+schema/               field.schema.json, shared_field.schema.json, and
+                     fields/*.json (the shared field library, Phase 2.2).
+lint/advisory_phrases.json  Banned-phrase list for the Phase 2.2b lint.
+tiers.json           Every document's quality tier (Phase 3.1), computed
+                     by tools/tiering.py, committed, fetched by app.js
+                     at init() like documents.json/clauses.json.
+tiers_history.jsonl  One JSON line per day tiers.json was snapshotted
+                     (Phase 3.3), for promotion_report.py's
+                     week-over-week comparison. Developer-written via
+                     `tiering.py --write-history`; CI only reads it.
 supabase/schema.sql  One table (public.agreements) + 4 RLS policies + 1
                      updated_at trigger. Run manually in the Supabase SQL
                      editor; nothing in this repo applies it automatically.
@@ -31,24 +41,30 @@ verification/*.md    744 free-form build notes. NOT 1:1 with documents.json
                      — see tools/README.md. 683/740 documents have a note
                      matching by id as of this writing.
 tools/               Maintenance scripts — see "Tooling" below.
+tests/               golden/, wizard/, merge_guard/, validate_corpus/,
+                     tiering/ — browser and unit tests for the gate
+                     scripts and the rendered app, run in CI.
 ```
 
-No `package.json`, no bundler, no test runner, no CI config. `tools/*.py`
-run directly with system Python 3; `tools/regression.js` and
-`tools/fetch_via_browser.js` run with Node + a global Playwright install
-(`NODE_PATH="$(npm root -g)" node tools/regression.js`).
+`tools/*.py` run directly with system Python 3; `tools/regression.js`
+and the other browser-driven scripts run with Node + Playwright
+(`.github/workflows/ci.yml` installs it; this sandbox pre-installs
+Chromium at a fixed path each script checks for before falling back to
+Playwright's own managed install).
 
 ## Data flow
 
 ```
 data/documents.json ─┐
 data/clauses.json  ──┼─► app.js init() ─► state.documents, state.clauses
+schema/fields/*.json ─┤                 ─► state.sharedFields
+tiers.json         ───┘                 ─► state.tiers
                       │                 ─► buildJurisdictionIndex()
                       │                 ─► buildClauseIndex() (TF-IDF, for
                       │                    the contract reader)
                       │
                       ▼
-            renderPicker() / renderCategoryFilter()
+      renderPicker() / renderCategoryFilter() / renderTierFilter()
                       │ click a doc-card
                       ▼
             renderWizard() ──► renderWizardStep() (sectioned, one step
@@ -362,6 +378,66 @@ current":
   with no literal `{{field}}` anywhere. Covered by
   `tests/validate_corpus/test_include_if.py`.
 
+## Quality tiers (Phase 3)
+
+`tools/tiering.py` computes every document's tier — never hand-assigned
+— and writes `tiers.json` (committed, read statically by the picker UI,
+the same no-backend pattern as everything else in this app):
+
+- **Tier B** requires all three of: a complete field schema (every
+  field has `type` — all 3,975 do, Phase 2.1 — and a resolvable
+  `whyWeAsk`, either directly or via `sharedFieldId` into the Phase 2.2
+  library); every authority clause it uses is `verified` and within the
+  same 24-month staleness window `validate_corpus.py` already enforces;
+  and at least one golden fixture exists. As of this writing: 382/740
+  documents (every document already passes the clause-freshness and
+  golden-fixture gates — the real differentiator is field-schema
+  completeness, i.e. whether every one of a document's fields is covered
+  by the 172-id shared library or has its own `whyWeAsk`).
+- **Tier A** requires everything Tier B does, plus a clean
+  adversarial-verifier run (master plan Phase 4.1) and a passed
+  per-document accessibility check (Phase 9.1). **Neither system
+  exists yet**, and `tiering.py` treats an absent signal as *not met*,
+  never as assumed passing — so Tier A is honestly, deliberately empty
+  today (0/740). This is the direct consequence of "computed, never
+  hand-assigned": no document gets credit for a check nothing has run.
+  `ADVERSARIAL_VERIFIER_EXISTS`/`ACCESSIBILITY_CHECK_EXISTS` in
+  `tools/tiering.py` are where those real per-document results plug in
+  once Phase 4.1/9.1 exist.
+- **Tier C** is everything else that passes `validate_corpus.py` (true
+  for the whole corpus, since CI runs that gate first).
+
+`python3 tools/tiering.py --check` (wired into CI) fails if `tiers.json`
+on disk doesn't match a fresh computation — the same staleness-gate
+pattern as everything else that's computed once and committed rather
+than derived live in the browser.
+
+**In the UI** (Phase 3.2): `tierBadgeHTML()` adds a pill next to the
+jurisdiction badge on every picker card, reading `state.tiers` (fetched
+from `tiers.json` at `init()`, alongside `documents.json`/`clauses.json`
+and the field library). Every explanation (`TIER_EXPLANATION`) states
+what was checked, never whether it's enough for any reader's situation —
+the same discipline as every other piece of copy in this app. The
+explanation is real text (`.visually-hidden`), not just a `title`
+tooltip, so it's available to more than mouse-hover sighted users. A
+tier filter (`#tier-filter`, mirroring the category filter) and a
+`#tier-sort-toggle` button (stable sort by tier rank, ties keep their
+existing order) both live in `renderPicker()`. Covered by
+`tools/regression.js`'s `tiers` check (pill count, filter narrows to
+exactly that tier's documents, sort groups A before B before C).
+
+**Promotion report** (Phase 3.3): `tools/promotion_report.py` reads
+`tiers.json` (doesn't recompute) and prints per-category tier counts,
+the 20 Tier C documents closest to Tier B ranked by fewest blocking
+gates (never Tier B→A, which has no actionable ranking yet — every
+Tier B document is blocked by the exact same two missing systems), and
+week-over-week change against `tiers_history.jsonl`, a baseline only
+used once it's 7+ real days old. `--write-history` appends today's
+snapshot (idempotent — once per calendar day); CI never writes it,
+only reads it with the default (no-flag) invocation and posts the
+`--markdown` form as the job summary. Covered by
+`tests/tiering/test_promotion_report.py`.
+
 ## Tooling
 
 | Script | Does |
@@ -381,6 +457,8 @@ current":
 | `tests/golden/golden.js` | Covered in GOLDEN_REVIEW.md — not a `tools/` script, but the other headless-browser gate alongside `regression.js`, checking one fixture per document's exact rendered output rather than just structural counts. |
 | `tests/wizard/wizard_unit.js` | Phase 2.3/2.4 behavioral checks: showIf visibility/step-skipping, per-field validation actually blocking (and not over-blocking), sensitive-field marking, review-screen Edit-and-focus, draft resume restoring the step, and includeIf actually including/excluding a clause and being described correctly on the output screen and in the plain-text export — against synthetic documents and `ein_info_sheet` (the one document with a `sensitive` field), not the full corpus walk `wizard_regression.js` already covers. |
 | `tests/merge_guard/`, `tests/validate_corpus/` | Unit tests for the gate scripts themselves, run as a CI step (`Test the tooling itself`) in the `validate-corpus` job — not fixtures *in* the corpus, tests *of* the checker. `tests/validate_corpus/test_showif.py` exists because `showIf`'s cycle detector (Phase 2.1) has no real corpus data to exercise it yet, so it gets a throwaway-corpus unit test instead of relying on live data to prove it works. `test_shared_fields.py` does the same for the Phase 2.2 library checks (duplicate/invalid library entries, unresolved or type-mismatched `sharedFieldId`), and `test_advisory_lint.py` for the Phase 2.2b lint rule — both currently too clean to exercise on the real corpus. `test_include_if.py` does the same for the Phase 2.4 `includeIf` checks (bad condition shape, undeclared target field, a branch across conditional fields that renders zero clauses) — no clause in the corpus uses `includeIf` yet either. |
+| `tiering.py [--check]` | Phase 3.1: computes every document's quality tier (never by hand) and writes `tiers.json`. `--check` (wired into CI) recomputes in memory and fails if it doesn't match what's on disk, so `tiers.json` can't silently go stale against a changed corpus. Tier A is always empty today — see "Quality tiers" above for why that's a deliberate, honest result rather than a bug. Tested by `tests/tiering/test_tiering.py` (each of Tier B's three gates individually blocking, a drafting clause needing no verification, Tier A never assigned, `--check` catching staleness). |
+| `promotion_report.py [--markdown] [--write-history]` | Phase 3.3: reads `tiers.json` (doesn't recompute) and prints per-category tier counts, the 20 Tier C documents closest to Tier B by fewest blocking gates, and week-over-week change against `tiers_history.jsonl` once a baseline is 7+ days old. `--markdown` produces the GFM table CI posts as the job summary; `--write-history` is a developer action (idempotent per day) — CI never writes history, only reads it. Tested by `tests/tiering/test_promotion_report.py`. |
 
 ## Supabase
 
@@ -394,28 +472,41 @@ verified directly against Postgres via role/claim impersonation in this
 session; the HTTP round trip through Supabase Auth was not (see
 BASELINE.md and the open items in the Build Status doc).
 
-## Where Phase 2 (and Phase 3+) will change this next
+## Where Phase 2/3 (and beyond) will change this next
 
 Phase 2 (2.1 field schema, 2.2 shared field library, 2.2b `whyWeAsk` text
 + advisory lint, 2.3 the sectioned/validating wizard renderer, 2.4
-clause-level `includeIf`) is done, end to end. Everything describing
-`showIf`/`includeIf` above — the visibility logic, the renderer, the
-validate_corpus.py checks — is real and tested, but against synthetic
-data only: no field or clause in the real corpus sets either one yet.
-The day a real one is added is the day that live data starts exercising
-this instead of `tests/validate_corpus/test_showif.py`,
+clause-level `includeIf`) and Phase 3 (3.1 tiering, 3.2 tiers in the UI,
+3.3 the promotion report) are both done, end to end. Everything
+describing `showIf`/`includeIf` above — the visibility logic, the
+renderer, the validate_corpus.py checks — is real and tested, but
+against synthetic data only: no field or clause in the real corpus sets
+either one yet. The day a real one is added is the day that live data
+starts exercising this instead of `tests/validate_corpus/test_showif.py`,
 `test_include_if.py`, and `tests/wizard/wizard_unit.js`'s synthetic
 documents — worth re-reading this file at that point, since a gap
 between "tested against a hand-built example" and "tested against the
 real thing" tends to be exactly where a real document's actual shape
 turns out to need something the synthetic case didn't.
 
-What's left that Phase 2 deliberately didn't do: `whyWeAsk` for the ~650
-field ids outside the shared library (out of scope for 2.2b — see
+Tier A is empty for a similar reason, but a bigger one: it isn't
+waiting on real data, it's waiting on two entire systems (Phase 4.1's
+adversarial verifier, Phase 9.1's accessibility checks) that don't exist
+yet at all. The day either one ships is the day `tools/tiering.py`'s
+`ADVERSARIAL_VERIFIER_EXISTS`/`ACCESSIBILITY_CHECK_EXISTS` constants
+stop being `False`, and this file's "0/740 in Tier A" claim goes stale —
+along with `promotion_report.py`'s "Tier B→A has no actionable path
+yet" framing, which will need its own ranking logic once there's a real
+per-document signal to rank by.
+
+What's left that Phase 2/3 deliberately didn't do: `whyWeAsk` for the
+~650 field ids outside the shared library (out of scope for 2.2b — see
 `DECISIONS.md`); hand-curated `validation`/`default`/`helpText` now that
-the renderer can actually act on them; and real exclusion of `sensitive`
+the renderer can actually act on them; real exclusion of `sensitive`
 answers from local storage once Phase 7.4/8.1 gives that flag an actual
-consumer (also `DECISIONS.md`). Any task touching `fields[]`,
-`schema/fields/`, `clauseOrder`, `renderWizard()`, or
-`assembleDocument()` should re-read this file first — it will be stale
-the moment that work starts.
+consumer (also `DECISIONS.md`); and, per-category staleness thresholds
+instead of the single global one `tiering.py` currently mirrors from
+`validate_corpus.py` (Phase 4.3's job). Any task touching `fields[]`,
+`schema/fields/`, `clauseOrder`, `renderWizard()`, `assembleDocument()`,
+or `tiers.json`/`tiering.py` should re-read this file first — it will be
+stale the moment that work starts.

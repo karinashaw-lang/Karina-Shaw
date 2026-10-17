@@ -251,6 +251,45 @@ h1{
   max-width:560px;
 }
 
+/* Quality tier (Phase 3.2) — a fact about what's been checked, styled
+   like jurisdiction-pill (same shape, same cursor:help convention) but
+   with its own color per tier so the three read apart at a glance.
+   Never color alone: TIER_LABEL's text ("Tier A/B/C") is always
+   present, and tierBadgeHTML() adds a full explanation both as the
+   hover title and as real (not just visual) text via .visually-hidden. */
+.tier-pill{
+  display:inline-block;
+  font-family:'IBM Plex Mono', monospace;
+  font-size:10.5px;
+  letter-spacing:0.04em;
+  text-transform:uppercase;
+  background:var(--surface-2);
+  border:1px solid var(--line);
+  border-radius:999px;
+  padding:2px 9px;
+  margin-left:6px;
+  vertical-align:middle;
+  cursor:help;
+}
+.tier-pill.tier-A{ color:#1f7a3f; border-color:#1f7a3f; }
+.tier-pill.tier-B{ color:var(--accent-ink); border-color:var(--accent); }
+.tier-pill.tier-C{ color:var(--ink-soft); }
+
+.picker-controls{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  flex-wrap:wrap;
+  margin:-4px 0 16px;
+}
+.picker-controls .category-filter{ margin:0; }
+#tier-sort-toggle[aria-pressed="true"]{
+  background:var(--accent-soft);
+  border-color:var(--accent);
+  color:var(--accent-ink);
+}
+
 /* Plain-language record of which optional (includeIf, Phase 2.4)
    clauses made it into this specific document and why — a fact about
    what was assembled, never a judgment about whether that was the

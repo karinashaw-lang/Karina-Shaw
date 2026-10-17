@@ -15,6 +15,8 @@ jobs:
         with:
           python-version: '3.12'
       - run: python3 tools/validate_corpus.py
+      - name: Check tiers.json is up to date
+        run: python3 tools/tiering.py --check
       - name: Test the tooling itself
         run: |
           python3 tests/merge_guard/test_merge_guard.py -v
@@ -22,6 +24,10 @@ jobs:
           python3 tests/validate_corpus/test_shared_fields.py -v
           python3 tests/validate_corpus/test_advisory_lint.py -v
           python3 tests/validate_corpus/test_include_if.py -v
+          python3 tests/tiering/test_tiering.py -v
+          python3 tests/tiering/test_promotion_report.py -v
+      - name: Promotion report
+        run: python3 tools/promotion_report.py --markdown >> "$GITHUB_STEP_SUMMARY"
 
   merge-guard:
     name: Merge guard

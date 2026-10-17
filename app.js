@@ -1,4 +1,4 @@
-const state = { documents: null, document: null, clauses: null, answers: {}, categoryFilter: null, edits: {}, editedClauseIds: new Set(), currentEntryId: null, jurisdictionByDoc: null, sharedFields: null, wizardSteps: [], wizardStepIndex: 0, wizardReviewing: false };
+const state = { documents: null, document: null, clauses: null, answers: {}, categoryFilter: null, edits: {}, editedClauseIds: new Set(), currentEntryId: null, jurisdictionByDoc: null, sharedFields: null, wizardSteps: [], wizardStepIndex: 0, wizardReviewing: false, tiers: null, tierFilter: null, tierSortEnabled: false };
 
 // Draft persistence. Local-only, one slot at a time — closing the tab
 // mid-wizard shouldn't lose someone's answers. localStorage can throw
@@ -700,16 +700,19 @@ async function loadSharedFields() {
 }
 
 async function init() {
-  const [docs, clauseData, sharedFields] = await Promise.all([
+  const [docs, clauseData, sharedFields, tiers] = await Promise.all([
     fetch('data/documents.json').then(r => r.json()),
     fetch('data/clauses.json').then(r => r.json()),
     loadSharedFields(),
+    fetch('tiers.json').then(r => r.json()),
   ]);
   state.documents = docs;
   state.clauses = clauseData.clauses;
   state.sharedFields = sharedFields;
+  state.tiers = tiers.documents;
   buildJurisdictionIndex();
   renderCategoryFilter();
+  renderTierFilter();
   renderPicker();
   checkForDraft();
   updateLibraryCount();
@@ -1021,6 +1024,53 @@ function jurisdictionBadgeHTML(doc) {
   return `<span class="jurisdiction-pill" title="${JURISDICTION_NOTICE[key]}">${JURISDICTION_LABEL[key]}</span>`;
 }
 
+// Quality tier (Phase 3.1 — tools/tiering.py computes tiers.json offline;
+// nothing here re-derives a tier, only displays one). Every explanation
+// states what was checked, never whether the result is enough for any
+// particular reader's situation — the same "inform, never advise" line
+// every other piece of UI copy in this app holds to. Tier A is included
+// for when a document eventually reaches it (tools/tiering.py's own
+// comments explain why none does yet); showing copy for a tier that's
+// currently empty isn't a bug, it's the tier scale being honestly
+// visible before anything has earned the top of it.
+const TIER_LABEL = { A: 'Tier A', B: 'Tier B', C: 'Tier C' };
+const TIER_EXPLANATION = {
+  A: 'Meets every Tier B check, plus an independent adversarial review and an automated accessibility check, both with no open issues.',
+  B: 'Every field explains why it is asked, every citation has been checked and is still current, and a sample has been generated and reviewed.',
+  C: 'Passed the corpus’s structural and citation checks. Some fields may not yet explain why they are asked, or a citation check may be incomplete.',
+};
+
+function tierBadgeHTML(doc) {
+  const info = state.tiers && state.tiers[doc.id];
+  if (!info) return '';
+  const tier = info.tier;
+  return `<span class="tier-pill tier-${tier}" title="${TIER_EXPLANATION[tier]}">` +
+    `${TIER_LABEL[tier]}<span class="visually-hidden">: ${TIER_EXPLANATION[tier]}</span></span>`;
+}
+
+function renderTierFilter() {
+  const el = document.getElementById('tier-filter');
+  if (!el) return;
+  el.innerHTML = '';
+
+  const makeChip = (label, value) => {
+    const chip = document.createElement('button');
+    chip.type = 'button';
+    chip.className = 'chip' + (state.tierFilter === value ? ' active' : '');
+    chip.setAttribute('aria-pressed', state.tierFilter === value ? 'true' : 'false');
+    chip.textContent = label;
+    chip.addEventListener('click', () => {
+      state.tierFilter = value;
+      renderTierFilter();
+      renderPicker();
+    });
+    el.appendChild(chip);
+  };
+
+  makeChip('All tiers', null);
+  ['A', 'B', 'C'].forEach(t => makeChip(TIER_LABEL[t], t));
+}
+
 function renderCategoryFilter() {
   const el = document.getElementById('category-filter');
   el.innerHTML = '';
@@ -1044,19 +1094,38 @@ function renderCategoryFilter() {
   categories.forEach(c => makeChip(c, c));
 }
 
+const TIER_SORT_RANK = { A: 0, B: 1, C: 2 };
+
 function renderPicker() {
   const list = document.getElementById('doc-list');
   list.innerHTML = '';
-  const docs = state.categoryFilter
+  let docs = state.categoryFilter
     ? state.documents.filter(d => (d.categories || []).includes(state.categoryFilter))
     : state.documents;
+  if (state.tierFilter) {
+    docs = docs.filter(d => state.tiers && state.tiers[d.id] && state.tiers[d.id].tier === state.tierFilter);
+  }
+  if (state.tierSortEnabled) {
+    // A stable sort by tier rank only — ties keep their existing
+    // relative order rather than being re-shuffled, so toggling this on
+    // and off doesn't scramble the list beyond what the tier itself
+    // explains.
+    docs = docs
+      .map((d, i) => ({ d, i }))
+      .sort((a, b) => {
+        const ra = TIER_SORT_RANK[(state.tiers && state.tiers[a.d.id] && state.tiers[a.d.id].tier) || 'C'];
+        const rb = TIER_SORT_RANK[(state.tiers && state.tiers[b.d.id] && state.tiers[b.d.id].tier) || 'C'];
+        return ra - rb || a.i - b.i;
+      })
+      .map(x => x.d);
+  }
   docs.forEach(doc => {
     const card = document.createElement('button');
     card.className = 'doc-card';
     card.type = 'button';
     card.innerHTML = `
       <div>
-        <h3>${doc.title}${jurisdictionBadgeHTML(doc)}</h3>
+        <h3>${doc.title}${jurisdictionBadgeHTML(doc)}${tierBadgeHTML(doc)}</h3>
         <p>${doc.description}</p>
       </div>
       <span class="go">START <span aria-hidden="true">&rarr;</span></span>
@@ -1806,6 +1875,12 @@ document.getElementById('promise-form').addEventListener('submit', e => {
   addPromise(text);
   input.value = '';
   renderPromises();
+});
+
+document.getElementById('tier-sort-toggle').addEventListener('click', () => {
+  state.tierSortEnabled = !state.tierSortEnabled;
+  document.getElementById('tier-sort-toggle').setAttribute('aria-pressed', state.tierSortEnabled ? 'true' : 'false');
+  renderPicker();
 });
 
 document.getElementById('library-link').addEventListener('click', () => {

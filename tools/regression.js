@@ -79,6 +79,46 @@ const { chromium } = require('playwright');
     return { ms: Math.round(performance.now() - t0) };
   })));
 
+  // Quality tiers (Phase 3.2): every document gets a tier pill on the
+  // picker, filtering by tier narrows to exactly that tier's documents,
+  // and sorting by tier groups A before B before C.
+  const tierCheck = await p.evaluate(() => {
+    showScreen('screen-picker');
+    state.categoryFilter = null;
+    state.tierFilter = null;
+    state.tierSortEnabled = false;
+    renderCategoryFilter();
+    renderTierFilter();
+    renderPicker();
+    const pillCount = document.querySelectorAll('.doc-card .tier-pill').length;
+    const docCount = state.documents.length;
+
+    const bCount = Object.values(state.tiers).filter(t => t.tier === 'B').length;
+    state.tierFilter = 'B';
+    renderPicker();
+    const filteredCount = document.querySelectorAll('.doc-card').length;
+    const allFilteredAreB = Array.from(document.querySelectorAll('.doc-card'))
+      .every(card => card.querySelector('.tier-pill.tier-B'));
+    state.tierFilter = null;
+
+    state.tierSortEnabled = true;
+    renderPicker();
+    const order = Array.from(document.querySelectorAll('.doc-card .tier-pill'))
+      .map(pill => pill.className.match(/tier-([ABC])/)[1]);
+    const rank = { A: 0, B: 1, C: 2 };
+    const sorted = order.every((t, i) => i === 0 || rank[order[i - 1]] <= rank[t]);
+    state.tierSortEnabled = false;
+    renderPicker();
+
+    return { pillCount, docCount, bCount, filteredCount, allFilteredAreB, sorted };
+  });
+  const tierOk = tierCheck.pillCount === tierCheck.docCount
+    && tierCheck.filteredCount === tierCheck.bCount
+    && tierCheck.allFilteredAreB
+    && tierCheck.sorted;
+  if (!tierOk) ok = false;
+  console.log((tierOk ? 'OK   ' : 'FAIL ') + 'tiers: ' + JSON.stringify(tierCheck));
+
   console.log('console errors: ' + errs.length);
   errs.forEach(e => console.log('  ' + e));
   await b.close();
