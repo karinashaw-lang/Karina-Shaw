@@ -249,3 +249,59 @@ stalling on the whole phase or committing to 100 real clauses' worth of
 external research without a check-in. This is offered as a question,
 not treated as self-evidently requiring one — if directed to just
 proceed, the infrastructure above is already built to do exactly that.
+
+## Phase 4.1 sample report (the master plan's acceptance deliverable)
+
+Directed to run the full 100-clause sample now rather than pilot
+smaller first. Dispatched 10 parallel `Agent`-tool workers (10 clauses
+each) against `verifier/prompt.md`'s rubric; each did real research
+(CourtListener, Cornell LII, law.onecle.com, california.public.law,
+official agency PDFs, and others per the clause) and wrote its batch's
+results, recorded via `verifier/record_result.py` as each completed.
+
+**Result: 100/100 clauses checked, 18 with at least one finding
+(18.0%), 18 total findings — 1 major, 17 minor, 0 blockers.**
+
+By category: unverifiable 10, other 3, citation_mismatch 2,
+overclaiming 2, quote_drift 1.
+
+The one major finding: `electrepair_documentation_mandate_two_tiers`
+(Right to Repair Act documentation mandate) frames three disclosed
+carve-outs as the complete set of statutory limits on the mandate, but
+Civ. Code § 42488.2 has at least one more (subd. (g), a manufacturer
+excused from selling service parts it no longer offers) plus a
+free-equivalent-replacement exception, confirmed via a direct-fetched
+official CA Bureau of Household Goods and Services advisory — neither
+appears anywhere in that document's clause set.
+
+Everything else is minor: a handful of genuine small defects (a quote
+silently splicing two statutory paragraphs together and dropping the
+sentence between them; a citation that doesn't itself support a claim
+the clause body makes, even though the claim is independently true; a
+stale pin cite split across two pages when the quote is wholly on one;
+a gap note misattributing which part of a statute a list comes from)
+and — the largest single category by far — 10 "unverifiable" findings
+that are sourcing-access problems, not content errors: this session's
+`leginfo.legislature.ca.gov` access was Cloudflare-blocked essentially
+the entire run (confirmed independently by multiple workers, not one
+agent's fluke), which repeatedly forced reliance on
+`california.public.law` alone — a mirror the project's own sourcing
+rules (`tools/wave_agent_prompt.md`) already treat as non-independent
+corroboration. Every one of those 10 still had its substance checked
+against *something* live; none surfaced an actual accuracy problem,
+they're flagged because the independence bar wasn't clearly met this
+session, which is exactly the conservative call the evidence standard
+in `verifier/prompt.md` asks a worker to make rather than silently
+passing or silently failing a clause over infrastructure flakiness.
+
+This finding rate (18%, with 1 major and 0 blockers across a real,
+cold, no-prior-context adversarial pass on content the corpus already
+calls "verified") reads as a reasonably healthy result for a
+first-of-its-kind check — not zero, which would be suspicious for a
+genuinely adversarial pass, and not alarming either. Per the master
+plan's own acceptance line, a full-corpus run is a separate decision
+for later, not something this result on its own triggers.
+
+Not yet done: Phase 4.2's triage workflow (accept/reject/fixed per
+finding) — these 18 findings sit in `verifier/findings.jsonl`
+unactioned, exactly as the plan intends ("do not auto-edit clauses").

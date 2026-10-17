@@ -502,12 +502,21 @@ edits `data/clauses.json`/`documents.json`: a `suggestedFix` is a
 proposed string for Phase 4.2's triage workflow to apply by hand later,
 never applied automatically.
 
-As of this writing the infrastructure is built and tested
-(`tests/verifier/test_verifier.py`) but no real sample has been run yet
-— drawing the sample and dispatching real verification work is a
-separate, deliberate step (see `DECISIONS.md`) given how much slower
-and more expensive 100 real external-research tasks are than anything
-else built so far in this project.
+As of this writing the first real sample is complete: 100/100 authority
+clauses checked (10 parallel `Agent`-tool workers, 10 clauses each),
+18 findings on 18 distinct clauses (1 major, 17 minor, 0 blockers) —
+full breakdown and the one major finding's detail in `DECISIONS.md`.
+Roughly half the findings are sourcing-access gaps caused by
+`leginfo.legislature.ca.gov` being Cloudflare-blocked for the entire
+run rather than content errors; the rest are genuine small defects
+(a spliced quote dropping an intervening sentence, a citation that
+doesn't itself support an independently-true claim, a stale pin cite,
+one real overclaiming gap). None of the 18 findings have been
+triaged yet — that's Phase 4.2, and `verifier/findings.jsonl` holds
+them exactly as the plan intends until then. Whether to run the
+verifier against the full corpus (thousands of authority clauses, not
+100) is a separate decision this sample result doesn't make on its
+own — the master plan reserves it for after this sample is reviewed.
 
 ## Where Phase 2/3 (and beyond) will change this next
 
