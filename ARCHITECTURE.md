@@ -472,6 +472,43 @@ verified directly against Postgres via role/claim impersonation in this
 session; the HTTP round trip through Supabase Auth was not (see
 BASELINE.md and the open items in the Build Status doc).
 
+## Adversarial verifier (Phase 4.1)
+
+`verifier/` is the infrastructure for an independent, after-the-fact
+review of clauses already marked `status: "verified"` — looking for
+citation mismatch, quote drift against the live source, silent
+overclaiming, wrong/undisclosed jurisdiction, advisory language,
+superseded law, and internal contradiction with a sibling clause in the
+same document. Full pipeline and rationale in `verifier/README.md`;
+the rubric a review worker follows is `verifier/prompt.md`.
+
+The split mirrors `tools/wave_agent_prompt.md`'s existing pattern for
+corpus-expansion work: the actual judgment (does this citation really
+say that; is this quote still live) requires real research against
+external legal sources and has to be done by an `Agent`-tool worker
+following the versioned prompt, while `verifier/sample.py` (draws and
+reuses a random sample of authority clauses, builds each one's review
+packet), `record_result.py` (validates a worker's output, appends to
+`checked.jsonl`/`findings.jsonl`, refuses to re-record an already-done
+clause), and `report.py` (finding rate, severity breakdown, examples —
+the master plan's "sample report" deliverable) are plain, deterministic
+Python around that judgment, not a replacement for it.
+
+A review packet deliberately omits `verification/<doc-id>.md` — the
+point of an adversarial pass is reaching an independent conclusion, not
+confirming the original justification — and `prompt.md` tells the
+worker not to go looking for it either. Nothing in this directory ever
+edits `data/clauses.json`/`documents.json`: a `suggestedFix` is a
+proposed string for Phase 4.2's triage workflow to apply by hand later,
+never applied automatically.
+
+As of this writing the infrastructure is built and tested
+(`tests/verifier/test_verifier.py`) but no real sample has been run yet
+— drawing the sample and dispatching real verification work is a
+separate, deliberate step (see `DECISIONS.md`) given how much slower
+and more expensive 100 real external-research tasks are than anything
+else built so far in this project.
+
 ## Where Phase 2/3 (and beyond) will change this next
 
 Phase 2 (2.1 field schema, 2.2 shared field library, 2.2b `whyWeAsk` text

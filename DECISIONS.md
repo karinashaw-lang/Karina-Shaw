@@ -216,3 +216,36 @@ commit flow (and its failure modes — races, merge conflicts, permission
 scope) for a file that only needs one entry a day and is cheap for a
 developer to update as part of a normal commit, the same way `tiers.json`
 itself is generated locally and committed rather than written by CI.
+
+## Phase 4.1 scope: infrastructure built now, the real sample run is a
+## separate checkpoint
+
+Built in this pass: `verifier/{prompt.md,sample.py,record_result.py,
+report.py,README.md}` and `tests/verifier/test_verifier.py`, wired into
+CI. All of it tested against synthetic data, same as every other
+phase's mechanical infrastructure.
+
+Not done in this pass, on purpose: actually drawing the 100-clause
+sample and dispatching real verification work against it. Every prior
+phase's "figure out how to execute" judgment calls were about
+engineering decisions inside this sandbox — schema shape, validator
+strictness, tier definitions — reversible by editing a file and
+re-running a script. Running the sample means spending a large amount
+of real, slow, external-API-dependent research (CourtListener,
+Lawstronaut, live web fetches against statute/case-law publishers)
+re-examining content the corpus currently calls "verified," at a scale
+(100 clauses, each potentially needing several source fetches) an order
+of magnitude past anything else this project has done in one sitting.
+That's a genuine resourcing/pacing decision, not a design decision the
+master plan or prior instructions already settled — the plan fixes the
+SIZE of the first sample (100) but says nothing about how to pace
+dispatching it, and "go ahead start phase 4" authorized starting the
+phase, not implicitly authorizing every downstream resource commitment
+within it at once.
+
+Decision: build and verify the infrastructure fully (done), then ask
+before spending the research budget on a real run, rather than either
+stalling on the whole phase or committing to 100 real clauses' worth of
+external research without a check-in. This is offered as a question,
+not treated as self-evidently requiring one — if directed to just
+proceed, the infrastructure above is already built to do exactly that.
