@@ -1,0 +1,69 @@
+[
+  {
+    "clauseId": "incapchildsupport_statutory_placement_and_recency",
+    "findings": [
+      {
+        "severity": "minor",
+        "category": "unverifiable",
+        "summary": "The cited leginfo.legislature.ca.gov page could not be fetched directly this session (persistent Cloudflare block), so the exact article-heading bracket text and the literal \"(Amended by Stats. 2024, Ch. 25, Sec. 1. (AB 2397) Effective January 1, 2025.)\" history-note string were not confirmed against a live or independent full-text copy character-for-character.",
+        "evidence": "Repeated curl and WebFetch attempts against https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=3910. returned HTTP 403 with a Cloudflare \"Just a moment...\" challenge page every time. A secondary search independently confirms the substance (LegiScan: \"chaptered by the Secretary of State on June 26, 2024 as Chapter 25, Statutes of 2024... amends Section 3910 of the Family Code\"), and california.public.law's current mirror (non-independent per project rules) shows the same (a)-(c) text described in the clause, but the precise history-note string itself was not matched against any fetched source.",
+        "sourceChecked": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=FAM&sectionNum=3910. (403/blocked); https://california.public.law/codes/ca_fam_code_section_3910; https://law.onecle.com/california/family/3910.html (2017 snapshot, pre-amendment)",
+        "suggestedFix": "n/a - recommend rechecking the exact history-note wording directly against leginfo once it is reachable, or against the chaptered bill text for AB 2397 (2024 Ch. 25)."
+      }
+    ]
+  },
+  {
+    "clauseId": "nilathlete_no_restriction_by_association",
+    "findings": [
+      {
+        "severity": "minor",
+        "category": "unverifiable",
+        "summary": "leginfo.legislature.ca.gov (the cited URL) was unreachable this session; the quoted text of Educ. Code § 67456(a)(2)-(3) was confirmed only against california.public.law, which the project's own sourcing rules treat as a non-independent mirror of leginfo, not as corroboration.",
+        "evidence": "curl to https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=EDC&sectionNum=67456. returned HTTP 403 (Cloudflare challenge) on every attempt. law.onecle.com has no page for this section (HTTP 404). california.public.law/codes/ca_educ_code_section_67456 reproduces subdivisions (a)(2) and (a)(3) in text that is word-for-word identical to both citations' quotes, and its \"Source\" line attributes the text to leginfo, \"updated Aug. 31, 2021.\"",
+        "sourceChecked": "https://california.public.law/codes/ca_educ_code_section_67456; https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=EDC&sectionNum=67456. (403/blocked); https://law.onecle.com/california/education/67456.html (404)",
+        "suggestedFix": "n/a - no drift found in the mirror actually checked; recommend a direct leginfo re-check when the site is reachable, or finding a second independent full-text publisher for Education Code § 67456."
+      }
+    ]
+  },
+  {
+    "clauseId": "uiclaimant_eligibility_conditions",
+    "findings": []
+  },
+  {
+    "clauseId": "ptadj_determination_and_appeal_procedure",
+    "findings": []
+  },
+  {
+    "clauseId": "furlough_ui_partial_benefits",
+    "findings": []
+  },
+  {
+    "clauseId": "eee_hsc17973_penalties_liens_responsibility",
+    "findings": [
+      {
+        "severity": "minor",
+        "category": "unverifiable",
+        "summary": "leginfo.legislature.ca.gov (the cited URL) was unreachable this session; the quoted text of Health & Saf. Code § 17973(i)-(l) was confirmed only against california.public.law, a non-independent mirror of leginfo per the project's own sourcing rules, with no independent second publisher reachable for this section.",
+        "evidence": "curl to https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=HSC&sectionNum=17973. returned HTTP 403 (Cloudflare challenge) on every attempt. law.onecle.com has no page for this section (HTTP 404, consistent with onecle's index not having been updated to include this 2018-enacted statute). california.public.law/codes/health_and_safety_code_section_17973 reproduces subdivisions (i)(1)-(3), (j)(1)-(4), (k) and (l) in text that is word-for-word identical to all four of the clause's quotes, labeled \"(2025)\" and sourced to leginfo.",
+        "sourceChecked": "https://california.public.law/codes/health_and_safety_code_section_17973; https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=HSC&sectionNum=17973. (403/blocked); https://law.onecle.com/california/health/17973.html (404)",
+        "suggestedFix": "n/a - no drift found in the mirror actually checked; recommend a direct leginfo re-check when reachable, or finding a second independent full-text publisher for this section."
+      }
+    ]
+  },
+  {
+    "clauseId": "creditorclaim_deadline_to_sue_after_rejection",
+    "findings": []
+  },
+  {
+    "clauseId": "ueta_agreement_to_conduct_electronically",
+    "findings": []
+  },
+  {
+    "clauseId": "makeuptime_distinguished_from_compensating_time_off",
+    "findings": []
+  },
+  {
+    "clauseId": "succliab_product_line_exception",
+    "findings": []
+  }
+]
