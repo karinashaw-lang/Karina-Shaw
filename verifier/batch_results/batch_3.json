@@ -1,0 +1,51 @@
+[
+  {
+    "clauseId": "dmca512c_repeat_infringer_policy",
+    "findings": []
+  },
+  {
+    "clauseId": "llcfee_addition_to_franchise_tax",
+    "findings": []
+  },
+  {
+    "clauseId": "cbpexempt_ccr_option_plan_terms",
+    "findings": []
+  },
+  {
+    "clauseId": "statconv_securities_and_interests",
+    "findings": []
+  },
+  {
+    "clauseId": "compsoftexempt_duties_test",
+    "findings": []
+  },
+  {
+    "clauseId": "mutualbenefit_dissolution_distribution_to_members",
+    "findings": [
+      {
+        "severity": "minor",
+        "category": "citation_mismatch",
+        "summary": "The body's comparison to a nonprofit public benefit corporation's dissolution procedure (superior-court decree with the Attorney General as a party) and to a federal tax 'organizational test' regulation is not supported by either citation in citations[]; both citations (§ 8713(a) and § 8717(a)-(b)) are purely mutual-benefit-corporation provisions and say nothing about public benefit corporations or federal tax law.",
+        "evidence": "Clause body: \"A nonprofit public benefit corporation's remaining assets, by contrast, are disposed of in conformity with its own articles or bylaws too, but subject to any charitable trust under which the assets are held and ordinarily only by a superior court decree in a proceeding to which the California Attorney General is a party -- and a related federal tax regulation treats an organization's assets as failing the federal tax-exemption \\\"organizational test\\\" if dissolution assets could go to the organization's own members.\" No citation in citations[] covers either half of this sentence; the gap paragraph discusses only §§ 8713/8717 and never mentions Cal. Corp. Code § 6716 or the federal regulation by name. (The underlying claim checks out: Cal. Corp. Code § 6716(b) provides \"the disposition required in subdivision (a) shall be made by decree of the superior court of the proper county in proceedings to which the Attorney General is a party\" (subject to a § 6716(c) AG-waiver exception), and 26 C.F.R. § 1.501(c)(3)-1(b)(4) states an organization \"does not meet the organizational test if its articles or the law of the State in which it was created provide that its assets would, upon dissolution, be distributed to its members or shareholders.\" So the comparison is accurate, but it rests on two sources this clause never cites or discloses as additional sources, unlike the rest of this document's consistent practice of flagging every source it relies on.)",
+        "sourceChecked": "https://california.public.law/codes/ca_corp_section_6716 ; https://www.law.cornell.edu/cfr/text/26/1.501(c)(3)-1",
+        "suggestedFix": "Add a third and fourth citations[] entry for Cal. Corp. Code § 6716(b)-(c) and for 26 C.F.R. § 1.501(c)(3)-1(b)(4), each with its own quote, or shorten the body sentence to the bare fact already covered by the two cited sections and move the public-benefit/federal-tax comparison into the gap text as an acknowledged, separately-sourced aside."
+      }
+    ]
+  },
+  {
+    "clauseId": "lostwill_proof_of_execution_photocopy",
+    "findings": []
+  },
+  {
+    "clauseId": "cutsapreempt_no_supersession_other_ts_statutes",
+    "findings": []
+  },
+  {
+    "clauseId": "quiettitle_verification_mechanics",
+    "findings": []
+  },
+  {
+    "clauseId": "decanting_tax_and_charitable_limitations",
+    "findings": []
+  }
+]
