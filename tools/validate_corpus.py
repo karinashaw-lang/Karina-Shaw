@@ -167,13 +167,40 @@ def main():
     # ago could rest on a statute that's since been amended or a case that's
     # since been limited or overruled, and nothing short of re-checking it
     # catches that — so a clause's checkedDate has to actually stay recent,
-    # not just exist. STALE_MONTHS is a hard gate: past it, the commit
-    # fails until the clause is re-verified (even just confirming the
-    # source still reads the same way) and checkedDate is bumped.
-    # WARN_MONTHS is a non-fatal heads-up printed below, so a clause due
-    # for recheck shows up before the day it turns into a hard failure.
-    STALE_MONTHS = 24
-    WARN_MONTHS = 18
+    # not just exist. Past the fatal threshold the build fails until the
+    # clause is re-verified (even just confirming the source still reads the
+    # same way) and checkedDate is bumped. The warn threshold is a
+    # non-fatal heads-up printed below, so a clause due for recheck shows
+    # up before the day it turns into a hard failure.
+    #
+    # Phase 4.3 replaces the single global 24-month/18-month window with
+    # per-category thresholds from config/staleness.json — law in a
+    # faster-moving category (Hiring, During employment, Ending
+    # employment, Real Estate) goes stale sooner than law in a slower one
+    # (Confidentiality & IP, Estate Planning). A clause used by documents
+    # in more than one category (true of 12 clauses in this corpus, as of
+    # the migration that added this) is held to the strictest — the
+    # lowest fatal/warn pair — of every category any of those documents
+    # carries, never the most lenient: a clause a fast-moving document
+    # depends on doesn't get a slow-moving document's extra runway just
+    # because it's shared.
+    staleness_config = json.load(open('config/staleness.json'))
+    DEFAULT_FATAL = staleness_config['defaultFatalMonths']
+    DEFAULT_WARN = staleness_config['defaultWarnMonths']
+    CATEGORY_THRESHOLDS = staleness_config['categories']
+
+    clause_categories = collections.defaultdict(set)
+    for d in docs:
+        for r in d['clauseOrder']:
+            clause_categories[entry_id(r)].update(d.get('categories', []))
+
+    def thresholds_for(clause_id):
+        cats = clause_categories.get(clause_id)
+        if not cats:
+            return DEFAULT_FATAL, DEFAULT_WARN
+        fatal = min(CATEGORY_THRESHOLDS.get(c, {}).get('fatalMonths', DEFAULT_FATAL) for c in cats)
+        warn = min(CATEGORY_THRESHOLDS.get(c, {}).get('warnMonths', DEFAULT_WARN) for c in cats)
+        return fatal, warn
 
     def months_old(checked_date):
         today = date.today()
@@ -184,21 +211,66 @@ def main():
         return months
 
     dated = [c for c in verified if c['id'] not in bad_date]
-    stale = [c['id'] for c in dated if months_old(c['checkedDate']) >= STALE_MONTHS]
+    stale = [c['id'] for c in dated if months_old(c['checkedDate']) >= thresholds_for(c['id'])[0]]
     check(not stale,
-          f'verified clauses last checked {STALE_MONTHS}+ months ago — due for recheck: {stale[:5]}')
+          f'verified clauses past their category\'s fatal staleness threshold — due for recheck: {stale[:5]}')
     approaching = [c['id'] for c in dated
-                   if WARN_MONTHS <= months_old(c['checkedDate']) < STALE_MONTHS]
+                   if thresholds_for(c['id'])[1] <= months_old(c['checkedDate']) < thresholds_for(c['id'])[0]]
+
+    # Acceptance (Phase 4.3): report how many clauses these new,
+    # category-specific thresholds flag (fatal or warn) that the old
+    # single global 24/18-month window would not have — the real,
+    # measurable effect of tightening the window for faster-moving
+    # categories, not just an assertion that it was tightened.
+    newly_fatal_under_new = [c['id'] for c in dated
+                              if months_old(c['checkedDate']) >= thresholds_for(c['id'])[0]
+                              and months_old(c['checkedDate']) < 24]
+    newly_warn_under_new = [c['id'] for c in dated
+                             if thresholds_for(c['id'])[1] <= months_old(c['checkedDate']) < 18]
 
     # Key order is part of the documented schema, so drift is a defect.
-    check(all(list(c.keys()) == AUTH for c in auth),
-          f'authority clauses with non-canonical key order: {[c["id"] for c in auth if list(c.keys()) != AUTH][:5]}')
+    # effectiveCycleChecked (below) is optional and, when present, must be
+    # the last key — added by a one-time migration to the clauses it
+    # applies to, not every authority clause.
+    AUTH_WITH_CYCLE = AUTH + ['effectiveCycleChecked']
+    check(all(list(c.keys()) in (AUTH, AUTH_WITH_CYCLE) for c in auth),
+          f'authority clauses with non-canonical key order: {[c["id"] for c in auth if list(c.keys()) not in (AUTH, AUTH_WITH_CYCLE)][:5]}')
     check(all(list(c.keys()) == DRAFT for c in clauses if c['kind'] == 'drafting'),
           'drafting clauses with non-canonical key order')
     check(all(list(ct.keys()) == CIT for c in auth for ct in c['citations']),
           'citations with non-canonical key order')
     check(all(list(d.keys()) == DOC for d in docs),
           f'documents with non-canonical key order: {[d["id"] for d in docs if list(d.keys()) != DOC][:5]}')
+
+    # Annual California-statute recheck rule (Phase 4.3). California
+    # statutes amended during a legislative session generally take effect
+    # the following January 1 — a per-category window of 12/18/24 months
+    # isn't the right cadence for that specifically, because it can let a
+    # clause in a slow-moving category go up to two full Jan-1 cycles
+    # without a recheck. Any verified authority clause citing
+    # leginfo.legislature.ca.gov (this project's own convention for a
+    # primary-source statute citation — never used for case law, which
+    # cites courtlistener.com or courts.ca.gov instead) must carry
+    # effectiveCycleChecked >= the current year, confirming it's been
+    # reconfirmed current as of this year's January 1 cycle. A missing or
+    # outdated value fails regardless of how recent checkedDate otherwise
+    # is.
+    CA_STATUTE_URL_RE = re.compile(r'leginfo\.legislature\.ca\.gov', re.IGNORECASE)
+    current_year = date.today().year
+    missing_cycle, outdated_cycle = [], []
+    for c in verified:
+        cites_ca_statute = any(CA_STATUTE_URL_RE.search(ct.get('url') or '') for ct in c.get('citations', []))
+        if not cites_ca_statute:
+            continue
+        cycle = c.get('effectiveCycleChecked')
+        if cycle is None:
+            missing_cycle.append(c['id'])
+        elif not isinstance(cycle, int) or cycle < current_year:
+            outdated_cycle.append(c['id'])
+    check(not missing_cycle,
+          f'verified clauses citing a CA statute with no effectiveCycleChecked: {missing_cycle[:5]}')
+    check(not outdated_cycle,
+          f'verified clauses citing a CA statute not yet reconfirmed for the {current_year} Jan 1 cycle: {outdated_cycle[:5]}')
 
     check(not [c['id'] for c in auth for ct in c['citations'] if not (ct.get('url') or '').strip()],
           'citations missing a url')
@@ -398,9 +470,16 @@ def main():
           f'({len(auth)} authority, {len(clauses) - len(auth)} drafting), '
           f'{sum(len(c["citations"]) for c in auth)} citations')
     if approaching:
-        print(f'{len(approaching)} verified clauses are {WARN_MONTHS}-{STALE_MONTHS} months since last '
-              f'check (not failing yet, but due for recheck soon): {approaching[:5]}'
+        print(f'{len(approaching)} verified clauses are within their category\'s warn window '
+              f'(not failing yet, but due for recheck soon): {approaching[:5]}'
               + (f' (+{len(approaching) - 5} more)' if len(approaching) > 5 else ''))
+    # Phase 4.3 acceptance: the real, measured effect of per-category
+    # thresholds replacing the single global 24-month/18-month window —
+    # how many clauses these tighter, category-specific windows flag
+    # that the old uniform window would not have flagged yet.
+    print(f'Per-category staleness thresholds (config/staleness.json) newly flag '
+          f'{len(newly_fatal_under_new)} clause(s) fatal and {len(newly_warn_under_new)} '
+          f'clause(s) warn that the old single 24-month/18-month window did not.')
     print(dict(sorted(cats.items())))
     # The per-category counts above sum to more than len(docs) whenever a
     # document carries two categories (handbook-style documents that are

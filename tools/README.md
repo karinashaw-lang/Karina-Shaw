@@ -21,14 +21,39 @@ caught a real defect at least once.
 Also checks every verified authority clause's `checkedDate`: that it's
 present, a real calendar date, and not in the future (the key-order check
 above only catches the field missing entirely, not present-but-empty or
-garbage). And it enforces a recheck cadence — a verified clause whose
-`checkedDate` is 24+ months old fails the build, since "verified" against a
-source checked two years ago isn't the same claim as verified now; a
-non-fatal heads-up prints for anything 18–24 months out so a clause due for
-recheck shows up before it turns into a hard failure. Nothing in the corpus
-trips either check today (everything was checked within the last couple of
-months), but both are real, tested gates — see the script's own comments
-for the reasoning behind the two thresholds.
+garbage). And it enforces a recheck cadence — since Phase 4.3, a
+per-category one, not a single global window. `config/staleness.json`
+gives each of the eight categories its own fatal/warn month pair (law
+in a faster-moving category — Hiring, During employment, Ending
+employment, Real Estate — goes stale sooner than Confidentiality & IP
+or Estate Planning); a clause used by documents in more than one
+category (12 clauses, as of the migration that added this) is held to
+the strictest — lowest — fatal/warn pair among every category any of
+those documents carries, never the most lenient. A verified clause past
+its fatal threshold fails the build, since "verified" against a source
+checked that long ago isn't the same claim as verified now; a non-fatal
+heads-up prints for anything in the warn window so a clause due for
+recheck shows up before it turns into a hard failure. The script also
+prints how many clauses these category-specific thresholds newly flag
+(fatal or warn) that the old single 24-month/18-month window would not
+have — the real, measured effect of tightening the window, not just an
+assertion that it's tighter (0 today, since the whole corpus is recent).
+Exercised by `tests/validate_corpus/test_staleness.py` against a
+synthetic corpus with its own small fixture config, independent of
+whatever month values `config/staleness.json` actually holds.
+
+Also, since Phase 4.3, every verified authority clause citing a
+California statute (a citation whose `url` is `leginfo.legislature.ca.gov`
+— this project's own convention for a primary-source statute citation;
+case law cites `courtlistener.com` or `courts.ca.gov` instead, never
+`leginfo`) must carry `effectiveCycleChecked >=` the current year. CA
+statutory amendments generally take effect each January 1, a cadence a
+12/18/24-month window doesn't track on its own — a clause in a
+slow-moving category could otherwise go up to two Jan-1 cycles without a
+recheck. `effectiveCycleChecked` is an optional key, present only on the
+authority clauses it applies to, and when present must be the last key
+(`AUTH` plus one trailing key) — see `add_effective_cycle_checked.py`
+below for the one-time backfill.
 
 Also checks that every document has one or two categories (never zero, never
 three — the picker's filter is built on documents being in a small, known
@@ -192,6 +217,24 @@ the rest. Every string it writes is checked against
 `lint/advisory_phrases.json` before being trusted (both by hand before
 the first `--write`, and by `validate_corpus.py` on every run after).
 Already run once: 172/172 entries.
+
+## add_effective_cycle_checked.py
+
+```
+python3 tools/add_effective_cycle_checked.py          # dry run — prints a report, writes nothing
+python3 tools/add_effective_cycle_checked.py --write   # writes effectiveCycleChecked into data/clauses.json
+```
+
+Phase 4.3's one-time backfill of `effectiveCycleChecked` onto every
+verified authority clause that cites a California statute (same
+`leginfo.legislature.ca.gov` detection `validate_corpus.py` uses).
+Backfills the value from the year of the clause's own `checkedDate`,
+which is always a correct starting point — checking a clause in, say,
+September of a given year inherently happens after that year's own
+January 1, so the check already reflects anything that took effect on
+that cycle. Same before-writing round-trip safety check as
+`migrate_fields.py`/`build_field_library.py`. Already run once: 3,568
+verified authority clauses cite a CA statute; all 3,568 backfilled.
 
 ## merge_guard.py
 

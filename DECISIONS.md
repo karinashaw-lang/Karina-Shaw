@@ -359,3 +359,51 @@ reachable, not silently dropped.
 **Nothing was rejected**, so `verifier/prompt.md`'s "Known false
 positives" section does not exist yet — correctly, since nothing in
 this round turned out to be a false positive to record.
+
+Separately, after this triage, bumped `checkedDate` to 2026-10-17 for
+the 8 fixed clauses (the project's own rule: never bump it *without*
+real re-verification, but *do* bump it when real re-verification
+genuinely happened — all 8 fixes rested on fresh research, not just a
+rephrasing). Golden fixtures for the 8 affected documents regenerated;
+committed as its own dedicated commit, separate from the triage commits
+themselves, with a message explaining why.
+
+## Phase 4.3: per-category staleness thresholds — acceptance report
+
+Replaced `validate_corpus.py`'s single global 24-month fatal / 18-month
+warn staleness window with per-category thresholds from the new
+`config/staleness.json`: Hiring, During employment, Ending employment,
+and Real Estate (faster-moving law) get 12/9; Business Formation and
+Family Law get 18/12; Confidentiality & IP and Estate Planning keep the
+original 24/18. A clause used by documents spanning more than one
+category — confirmed empirically to be 12 clauses in the corpus — is
+held to the strictest (lowest) fatal/warn pair among every category any
+of those documents carries, never the most lenient; `thresholds_for()`
+in `validate_corpus.py` implements this directly off `documents.json`'s
+`categories[]`, with no separate mapping to keep in sync.
+
+Also added the annual California-statute recheck rule: any verified
+authority clause citing a statute via `leginfo.legislature.ca.gov` (this
+project's own citation convention — never used for case law, which
+cites `courtlistener.com`/`courts.ca.gov`) must carry
+`effectiveCycleChecked >=` the current year, since CA statutory
+amendments generally take effect each January 1 and a 12/18/24-month
+window doesn't track that cadence on its own. Backfilled once via
+`tools/add_effective_cycle_checked.py`, seeded from each clause's own
+`checkedDate` year (always a safe starting point — a clause checked in,
+say, September of a year is necessarily checked after that year's own
+January 1). 3,568 of the corpus's 4,980 authority clauses cite a CA
+statute and were backfilled; none required special-casing.
+
+**Acceptance (the master plan's literal line — "the number of clauses
+newly flagged is reported"):** `validate_corpus.py` now prints how many
+clauses the new, tighter per-category thresholds flag (fatal or warn)
+that the old single 24/18-month window did not. As of this migration:
+**0 fatal, 0 warn** — expected, since the whole corpus was checked or
+re-verified within roughly the last month, well inside even the
+tightest (12/9) category window. The gate is real and tested
+(`tests/validate_corpus/test_staleness.py` builds a synthetic corpus old
+enough to trip it, both for the per-category thresholds and the new
+annual-cycle rule), it simply has nothing to catch in the current corpus
+yet — the same pattern as every other new `validate_corpus.py` check
+added so far in this project.

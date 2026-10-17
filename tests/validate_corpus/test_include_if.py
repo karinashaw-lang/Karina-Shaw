@@ -17,11 +17,13 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from datetime import date
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 VALIDATE_CORPUS = os.path.join(REPO_ROOT, 'tools', 'validate_corpus.py')
 REAL_SCHEMA = os.path.join(REPO_ROOT, 'schema', 'field.schema.json')
 REAL_PHRASES = os.path.join(REPO_ROOT, 'lint', 'advisory_phrases.json')
+TEST_STALENESS_CONFIG = {"defaultFatalMonths": 24, "defaultWarnMonths": 18, "categories": {}}
 
 BASE_FIELDS = [
     {"id": "wantsArbitration", "label": "Include arbitration clause?", "type": "text", "required": True},
@@ -40,7 +42,7 @@ BASE_DOC = {
 def authority_clause(cid):
     return {
         "id": cid, "title": cid, "kind": "authority", "status": "verified",
-        "checkedDate": "2026-01-01", "body": f"Body of {cid}.", "gap": "Test gap.",
+        "checkedDate": date.today().isoformat(), "body": f"Body of {cid}.", "gap": "Test gap.",
         "citations": [{"case": "Test v. Case", "cite": "1 Test 1",
                        "url": "https://example.com/1", "quote": "test quote"}],
     }
@@ -51,6 +53,7 @@ def build_corpus_dir(clause_order, clauses, fields=None):
     os.makedirs(os.path.join(d, 'data'))
     os.makedirs(os.path.join(d, 'schema'))
     os.makedirs(os.path.join(d, 'lint'))
+    os.makedirs(os.path.join(d, 'config'))
     doc = dict(BASE_DOC)
     doc['clauseOrder'] = clause_order
     if fields is not None:
@@ -61,6 +64,8 @@ def build_corpus_dir(clause_order, clauses, fields=None):
         json.dump({"clauses": clauses}, f)
     shutil.copy(REAL_SCHEMA, os.path.join(d, 'schema', 'field.schema.json'))
     shutil.copy(REAL_PHRASES, os.path.join(d, 'lint', 'advisory_phrases.json'))
+    with open(os.path.join(d, 'config', 'staleness.json'), 'w') as f:
+        json.dump(TEST_STALENESS_CONFIG, f)
     return d
 
 

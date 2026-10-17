@@ -330,9 +330,29 @@ current":
   ≥1 citation.
 - Checked-date validity: every `status: "verified"` clause's `checkedDate`
   must parse as a real ISO date and not be in the future.
-- Staleness: a verified clause last checked 24+ months ago fails the build;
-  18–24 months prints a non-fatal heads-up. Single global thresholds today
-  (Phase 4.3 makes these per-category).
+- Staleness (per-category since Phase 4.3): `config/staleness.json`
+  gives each of the eight categories its own fatal/warn month pair
+  (Hiring, During employment, Ending employment, Real Estate: 12/9 —
+  faster-moving law; Business Formation, Family Law: 18/12; Confidentiality
+  & IP, Estate Planning: 24/18, the original window). A verified clause
+  past its fatal threshold fails the build; inside its warn window prints
+  a non-fatal heads-up. A clause shared by documents in more than one
+  category (12 clauses) is held to the strictest — lowest — fatal/warn
+  pair of every category any of those documents carries, never the most
+  lenient. The build also prints how many clauses the new thresholds
+  newly flag that the old single 24/18-month window would not have (0
+  today). Covered by `tests/validate_corpus/test_staleness.py` against a
+  synthetic corpus with its own fixture config.
+- Annual CA-statute recheck (Phase 4.3): every verified authority clause
+  citing a California statute (a citation whose `url` is
+  `leginfo.legislature.ca.gov` — never used for case law, which cites
+  `courtlistener.com`/`courts.ca.gov` instead) must carry
+  `effectiveCycleChecked >=` the current year — an optional, when-present
+  trailing key confirming the clause has been reconfirmed current as of
+  that year's January 1 cycle, a cadence the month-based thresholds above
+  don't track on their own. Backfilled once by
+  `tools/add_effective_cycle_checked.py` (3,568 clauses). Covered by the
+  same `tests/validate_corpus/test_staleness.py`.
 - Category reconciliation: every document has 1–2 categories, every
   category name is in the hardcoded set, and the "748 tags across 740
   docs" kind of number is asserted to reconcile, not just printed.
@@ -555,6 +575,15 @@ stop being `False`, and this file's "0/740 in Tier A" claim goes stale —
 along with `promotion_report.py`'s "Tier B→A has no actionable path
 yet" framing, which will need its own ranking logic once there's a real
 per-document signal to rank by.
+
+Phase 4.3 (per-category staleness thresholds + the annual CA-statute
+recheck rule) is also done, end to end — see "Verification & staleness
+gate" above. Two phases in this same part of the plan are still open:
+4.4's law-change watcher (a scheduled job mapping Lawstronaut/CourtListener
+changes to affected clause ids via a citation index, flagging each for
+review rather than ever auto-editing legal text) and 4.5 (putting
+`recheck_all.py` on a schedule and surfacing dead-link/quote-drift counts
+in the promotion report).
 
 What's left that Phase 2/3 deliberately didn't do: `whyWeAsk` for the
 ~650 field ids outside the shared library (out of scope for 2.2b — see

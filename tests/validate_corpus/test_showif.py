@@ -22,11 +22,13 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from datetime import date
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 VALIDATE_CORPUS = os.path.join(REPO_ROOT, 'tools', 'validate_corpus.py')
 REAL_SCHEMA = os.path.join(REPO_ROOT, 'schema', 'field.schema.json')
 REAL_PHRASES = os.path.join(REPO_ROOT, 'lint', 'advisory_phrases.json')
+TEST_STALENESS_CONFIG = {"defaultFatalMonths": 24, "defaultWarnMonths": 18, "categories": {}}
 
 # A minimal but fully valid authority clause — same shape validate_corpus.py
 # requires: non-empty gap, at least one citation with url/quote, a verified
@@ -36,7 +38,7 @@ BASE_CLAUSE = {
     "title": "Test Clause",
     "kind": "authority",
     "status": "verified",
-    "checkedDate": "2026-01-01",
+    "checkedDate": date.today().isoformat(),
     "body": "Test body.",
     "gap": "Test gap.",
     "citations": [
@@ -72,6 +74,7 @@ def build_corpus_dir(fields):
     os.makedirs(os.path.join(d, 'data'))
     os.makedirs(os.path.join(d, 'schema'))
     os.makedirs(os.path.join(d, 'lint'))
+    os.makedirs(os.path.join(d, 'config'))
     doc = dict(BASE_DOC)
     doc['fields'] = fields
     with open(os.path.join(d, 'data', 'documents.json'), 'w') as f:
@@ -82,6 +85,8 @@ def build_corpus_dir(fields):
         json.dump({"clauses": [clause]}, f)
     shutil.copy(REAL_SCHEMA, os.path.join(d, 'schema', 'field.schema.json'))
     shutil.copy(REAL_PHRASES, os.path.join(d, 'lint', 'advisory_phrases.json'))
+    with open(os.path.join(d, 'config', 'staleness.json'), 'w') as f:
+        json.dump(TEST_STALENESS_CONFIG, f)
     return d
 
 
