@@ -1,0 +1,69 @@
+[
+  {
+    "clauseId": "llcjuddiss_court_remedies_preserved",
+    "findings": []
+  },
+  {
+    "clauseId": "exch1031_boot_and_basis",
+    "findings": []
+  },
+  {
+    "clauseId": "punidam_managing_agent_white_ultramar",
+    "findings": [
+      {
+        "severity": "minor",
+        "category": "unverifiable",
+        "summary": "Could not check CourtListener's citing-opinions/negative-treatment data for White v. Ultramar because the CourtListener REST search API returned a daily rate-limit error, so later limitation or disapproval of White's managing-agent holding (beyond the already-disclosed Roby gloss) could not be independently confirmed in this session.",
+        "evidence": "{\"detail\":\"Request was throttled. Rate limit exceeded: 125/day. Expected available in 9111 seconds.\"}",
+        "sourceChecked": "https://www.courtlistener.com/api/rest/v4/search/?type=o&q=%22managing%20agent%22%20%22White%20v.%20Ultramar%22%20overruled",
+        "suggestedFix": "n/a - recheck CourtListener citing-opinions for White v. Ultramar (21 Cal.4th 563) once the API quota resets, to confirm no later Court of Appeal or Supreme Court decision has limited or disapproved the managing-agent test beyond Roby's gloss on 'corporate policy', which is already addressed in the sibling clause."
+      }
+    ]
+  },
+  {
+    "clauseId": "lifeestatedeed_life_tenant_repair_tax_duty",
+    "findings": []
+  },
+  {
+    "clauseId": "arrestrecord_marijuana",
+    "findings": [
+      {
+        "severity": "minor",
+        "category": "unverifiable",
+        "summary": "One secondary mirror of current Labor Code § 432.8 (california.public.law, which prints a leginfo source line and claims 'Verified Oct. 12, 2026') gives the cross-reference as 'subdivision (a) of Section 11360' rather than 'subdivision (c) of Section 11360' as quoted in the clause; the official leginfo.legislature.ca.gov page itself could not be reached directly (Cloudflare bot-challenge blocks both curl and WebFetch) to resolve the conflict.",
+        "evidence": "california.public.law text: \"...or subdivision (a) of Section 11360 of the Health and Safety Code, or Section 11364, 11365, or 11550...\" -- compare law.onecle.com and the clause's own quote, both of which read \"...or subdivision (c) of Section 11360 of the Health and Safety Code...\", and FindLaw's codes.findlaw.com page (per search-engine snippet, described there as current through Jan. 1, 2026) which likewise reads \"(c)\".",
+        "sourceChecked": "https://law.onecle.com/california/labor/432.8.html ; https://california.public.law/codes/ca_lab_code_section_432.8 ; https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=432.8. (blocked, HTTP 403 Cloudflare challenge, both via curl and WebFetch)",
+        "suggestedFix": "n/a - the weight of independent mirrors (onecle, FindLaw) supports the clause's existing '(c)' quote as correct and california.public.law's '(a)' appears to be an isolated rendering error, but this should be re-verified directly against leginfo.legislature.ca.gov when that site is reachable, since this specific cross-reference is the one part of this clause that could not be confirmed against the authoritative source in this session."
+      }
+    ]
+  },
+  {
+    "clauseId": "warnsale_parttime_employee_exclusion",
+    "findings": []
+  },
+  {
+    "clauseId": "electrepair_documentation_mandate_two_tiers",
+    "findings": [
+      {
+        "severity": "major",
+        "category": "overclaiming",
+        "summary": "The clause's body describes the trade-secret/IP, source-code, and antitheft carve-outs as the express limits on the documentation-and-parts mandate, but Public Resources Code § 42488.2 contains at least one more express carve-out -- subdivision (g), excusing a manufacturer from selling service parts it no longer provides or makes available to authorized repair providers -- plus a further 'equivalent-or-better free replacement product' exception, neither of which appears anywhere in this document's clause set, so a reader of this 'Disclosure Limits Information Sheet' is left believing the four described carve-outs are the complete set of statutory limits on the mandate.",
+        "evidence": "Clause body: \"...the trade secret, intellectual property, source code, and antitheft carve-outs described elsewhere in this document operate as express limits on this same underlying mandate -- they do not create a separate or freestanding disclosure duty of their own.\" Contrast the statute itself (per search-engine-surfaced quote of § 42488.2(g)): \"Nothing in this section shall be construed to require a manufacturer to sell service parts if the service parts are no longer provided by the manufacturer or made available to an authorized repair provider.\" The California Bureau of Household Goods and Services' official June 15, 2024 Right to Repair Act Industry Advisory independently confirms both omitted limitations: \"Manufacturers DO NOT have to sell service parts if they no longer provide the service parts or make them available to authorized repair providers,\" and \"Manufacturers DO NOT have to comply with SB 244 if they provide, at no charge to the consumer, a replacement product that is equivalent or better and is readily available.\"",
+        "sourceChecked": "https://bhgs.dca.ca.gov/forms_pubs/sb_244_industry_advisory_english.pdf (fetched directly); § 42488.2(g) text surfaced via search engine snippet of codes.findlaw.com/law.justia.com (leginfo.legislature.ca.gov itself unreachable, Cloudflare 403 on both curl and WebFetch, and the section postdates the law.onecle.com mirror's 2017/2018 snapshot)",
+        "suggestedFix": "Add a sibling clause (or expand this clause's gap text) disclosing § 42488.2(g)'s 'no-longer-provided service parts' carve-out and the separate free-equivalent-replacement-product exception, and revise this clause's body so it no longer reads as if the trade secret/IP, source code, and antitheft carve-outs are the only express limits on the mandate -- e.g., 'among other express carve-outs described in § 42488.2, not all of which are addressed in this document.'"
+      }
+    ]
+  },
+  {
+    "clauseId": "pc499c_prohibited_theft_acts",
+    "findings": []
+  },
+  {
+    "clauseId": "qcd_documentary_transfer_tax",
+    "findings": []
+  },
+  {
+    "clauseId": "lab925_remedies",
+    "findings": []
+  }
+]
