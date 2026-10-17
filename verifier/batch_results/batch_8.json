@@ -1,0 +1,60 @@
+[
+  {
+    "clauseId": "fraudhire_lazar_recruiting_representations_stated_claim",
+    "findings": []
+  },
+  {
+    "clauseId": "bbp_exposure_control_plan_requirement",
+    "findings": []
+  },
+  {
+    "clauseId": "inventionlimits_2872_notice",
+    "findings": []
+  },
+  {
+    "clauseId": "crt_payout_and_remainder_tests",
+    "findings": [
+      {
+        "severity": "minor",
+        "category": "other",
+        "summary": "The clause's title and body foreground a 5%/50% annual-payout test as well as the 10% remainder test, but citations[] contains no quoted source for the 5%/50% payout test — only the two 10%-remainder-value citations (664(d)(1)(D) and 664(d)(2)(D)) are present.",
+        "evidence": "Clause title: 'The 5%/50% Payout Limits and the 10% Minimum Remainder Value'; body: 'the annual payout ... must be at least 5 percent and not more than 50 percent of the relevant trust value'; citations[] contains only two entries, both quoting the (d)(1)(D)/(d)(2)(D) remainder-value subparagraphs. Independently fetched text (law.cornell.edu/uscode/text/26/664) confirms 664(d)(1)(A) reads a payout 'sum certain (which is not less than 5 percent nor more than 50 percent)' and 664(d)(2)(A) reads a 'fixed percentage (which is not less than 5 percent nor more than 50 percent)', so the underlying claim is accurate — but the citations array supplied with this clause does not document it.",
+        "sourceChecked": "https://www.law.cornell.edu/uscode/text/26/664 ; https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title26-section664&num=0&edition=prelim (page did not render statutory text for this session)",
+        "suggestedFix": "Add citations[] entries quoting 26 U.S.C. § 664(d)(1)(A) and § 664(d)(2)(A) verbatim for the 5%/50% payout-percentage test, parallel to the existing (d)(1)(D)/(d)(2)(D) remainder-value citations already in the array, so every numeric claim in the body has a matching quoted source."
+      }
+    ]
+  },
+  {
+    "clauseId": "epnp_covered_vehicles",
+    "findings": [
+      {
+        "severity": "minor",
+        "category": "unverifiable",
+        "summary": "The clause's quoted text of Vehicle Code § 1808.1(k) ends '...a permitted taxicab company as described in Section 53075.5 of the Government Code,' but the only independent live secondary source reachable this session (law.onecle.com) renders the same cross-reference as 'Section 53075.51' — a one-digit discrepancy that would point to a different Government Code section — and the primary source (leginfo.legislature.ca.gov) could not be reached at all (persistent HTTP 403) to resolve it directly.",
+        "evidence": "law.onecle.com (fetched verbatim via curl): '...or a permitted taxicab company as described in Section 53075.51 of the Government Code.' Clause citation quote: '...or a permitted taxicab company as described in Section 53075.5 of the Government Code.' california.public.law (not an independent publisher per sourcing rules, mirrors leginfo) agrees with the clause's '53075.5,' and a real municipal ordinance (San Luis Obispo) cites 'Government Code Section 53075.5(h)(1) through (9)' for 'permitted taxicab company' duties, which favors the clause's reading, but this could not be confirmed against leginfo itself this session.",
+        "sourceChecked": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?sectionNum=1808.1.&lawCode=VEH (HTTP 403, unreachable all session); https://law.onecle.com/california/vehicle/1808.1.html; https://california.public.law/codes/vehicle_code_section_1808.1",
+        "suggestedFix": "Re-fetch leginfo.legislature.ca.gov directly once reachable to confirm whether the final cross-reference in subdivision (k) reads 'Section 53075.5' or 'Section 53075.51' of the Government Code, and correct the quote if it is the latter."
+      }
+    ]
+  },
+  {
+    "clauseId": "probateinv_referee_qualification",
+    "findings": []
+  },
+  {
+    "clauseId": "brtrust_remedies_available",
+    "findings": []
+  },
+  {
+    "clauseId": "confintermediary_confidentiality_protection",
+    "findings": []
+  },
+  {
+    "clauseId": "latefee_returned_check_service_charge",
+    "findings": []
+  },
+  {
+    "clauseId": "medsupp_termination_liability_and_information_duties",
+    "findings": []
+  }
+]
