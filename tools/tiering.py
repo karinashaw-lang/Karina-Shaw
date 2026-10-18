@@ -10,8 +10,9 @@ Tier B requires all three of:
     2.2/2.2b). A document with any field outside the 172-id shared
     library and no whyWeAsk of its own fails this today.
   - every authority clause it uses is `status: "verified"` and within
-    the same 24-month staleness window validate_corpus.py already
-    enforces corpus-wide (mirrored here, not re-derived differently).
+    the same per-category fatal staleness threshold (Phase 4.3,
+    config/staleness.json) validate_corpus.py already enforces
+    corpus-wide (mirrored here, not re-derived differently).
   - at least one golden fixture exists (tests/golden/fixtures/<id>.json).
 
 Tier A requires everything Tier B does, plus a clean adversarial-verifier
@@ -35,12 +36,11 @@ blockingA}}, summary: {category: {A,B,C,total}, ALL: {...}}}.
                                          # on disk doesn't match (CI staleness gate)
 """
 import glob
+import collections
 import json
 import os
 import sys
 from datetime import date
-
-STALE_MONTHS = 24  # must match tools/validate_corpus.py's constant
 
 # Phase 4.1 (adversarial verifier) and Phase 9.1 (accessibility checks)
 # don't exist yet. These are the two places their real per-document
@@ -84,7 +84,14 @@ def field_schema_complete(doc, shared_fields):
     return all(f.get('type') and field_has_why_we_ask(f, shared_fields) for f in fields)
 
 
-def clauses_verified_and_fresh(doc, clauses_by_id):
+def fatal_threshold_for(clause_id, clause_categories, default_fatal, category_thresholds):
+    cats = clause_categories.get(clause_id)
+    if not cats:
+        return default_fatal
+    return min(category_thresholds.get(c, {}).get('fatalMonths', default_fatal) for c in cats)
+
+
+def clauses_verified_and_fresh(doc, clauses_by_id, clause_categories, default_fatal, category_thresholds):
     for entry in doc['clauseOrder']:
         clause = clauses_by_id.get(entry_id(entry))
         if clause is None:
@@ -93,8 +100,9 @@ def clauses_verified_and_fresh(doc, clauses_by_id):
             continue
         if clause.get('status') != 'verified':
             return False
+        fatal = fatal_threshold_for(clause['id'], clause_categories, default_fatal, category_thresholds)
         try:
-            if months_old((clause.get('checkedDate') or '').strip()) >= STALE_MONTHS:
+            if months_old((clause.get('checkedDate') or '').strip()) >= fatal:
                 return False
         except ValueError:
             return False
@@ -105,11 +113,11 @@ def has_golden_fixture(doc_id):
     return os.path.exists(os.path.join('tests', 'golden', 'fixtures', f'{doc_id}.json'))
 
 
-def compute_tier(doc, clauses_by_id, shared_fields):
+def compute_tier(doc, clauses_by_id, shared_fields, clause_categories, default_fatal, category_thresholds):
     blocking_b = []
     if not field_schema_complete(doc, shared_fields):
         blocking_b.append('incomplete field schema (a field is missing type or whyWeAsk)')
-    if not clauses_verified_and_fresh(doc, clauses_by_id):
+    if not clauses_verified_and_fresh(doc, clauses_by_id, clause_categories, default_fatal, category_thresholds):
         blocking_b.append('not every authority clause is verified and within the staleness window')
     if not has_golden_fixture(doc['id']):
         blocking_b.append('no golden fixture')
@@ -134,10 +142,19 @@ def compute_tiers():
     clauses_by_id = {c['id']: c for c in json.load(open('data/clauses.json'))['clauses']}
     shared_fields = load_shared_fields()
 
+    staleness_config = json.load(open('config/staleness.json'))
+    default_fatal = staleness_config['defaultFatalMonths']
+    category_thresholds = staleness_config['categories']
+    clause_categories = collections.defaultdict(set)
+    for d in docs:
+        for r in d['clauseOrder']:
+            clause_categories[entry_id(r)].update(d.get('categories', []))
+
     documents = {}
     summary = {}
     for doc in docs:
-        tier, blocking_b, blocking_a = compute_tier(doc, clauses_by_id, shared_fields)
+        tier, blocking_b, blocking_a = compute_tier(
+            doc, clauses_by_id, shared_fields, clause_categories, default_fatal, category_thresholds)
         documents[doc['id']] = {'tier': tier, 'blockingB': blocking_b, 'blockingA': blocking_a}
         for cat in doc.get('categories', []):
             bucket = summary.setdefault(cat, {'A': 0, 'B': 0, 'C': 0, 'total': 0})

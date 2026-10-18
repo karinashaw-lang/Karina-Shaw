@@ -46,17 +46,23 @@ def make_field(fid, why_we_ask=None, shared_field_id=None):
     return f
 
 
-def build_corpus_dir(documents, clauses, shared_library=None, fixtures_for=()):
+TEST_STALENESS_CONFIG = {"defaultFatalMonths": 24, "defaultWarnMonths": 18, "categories": {}}
+
+
+def build_corpus_dir(documents, clauses, shared_library=None, fixtures_for=(), staleness_config=None):
     d = tempfile.mkdtemp(prefix='tiering_test_')
     os.makedirs(os.path.join(d, 'data'))
     os.makedirs(os.path.join(d, 'schema', 'fields'))
     os.makedirs(os.path.join(d, 'tests', 'golden', 'fixtures'))
+    os.makedirs(os.path.join(d, 'config'))
     with open(os.path.join(d, 'data', 'documents.json'), 'w') as f:
         json.dump(documents, f)
     with open(os.path.join(d, 'data', 'clauses.json'), 'w') as f:
         json.dump({"clauses": clauses}, f)
     with open(os.path.join(d, 'schema', 'fields', 'test.json'), 'w') as f:
         json.dump(shared_library or [], f)
+    with open(os.path.join(d, 'config', 'staleness.json'), 'w') as f:
+        json.dump(staleness_config or TEST_STALENESS_CONFIG, f)
     for doc_id in fixtures_for:
         with open(os.path.join(d, 'tests', 'golden', 'fixtures', f'{doc_id}.json'), 'w') as f:
             json.dump({"docId": doc_id}, f)
@@ -78,8 +84,8 @@ class TieringTests(unittest.TestCase):
         for d in self._dirs:
             shutil.rmtree(d, ignore_errors=True)
 
-    def make_dir(self, documents, clauses, shared_library=None, fixtures_for=()):
-        d = build_corpus_dir(documents, clauses, shared_library, fixtures_for)
+    def make_dir(self, documents, clauses, shared_library=None, fixtures_for=(), staleness_config=None):
+        d = build_corpus_dir(documents, clauses, shared_library, fixtures_for, staleness_config)
         self._dirs.append(d)
         return d
 
@@ -132,6 +138,27 @@ class TieringTests(unittest.TestCase):
             "clauseOrder": ["c1"], "fields": [],
         }
         d = self.make_dir([doc], [authority_clause("c1", checked_date=STALE_DATE)], fixtures_for=["doc1"])
+        run_tiering(d)
+        tiers = self.load_tiers(d)
+        self.assertEqual(tiers['documents']['doc1']['tier'], 'C')
+        self.assertTrue(any('staleness' in r for r in tiers['documents']['doc1']['blockingB']))
+
+    def test_per_category_threshold_used_not_flat_default(self):
+        # Phase 4.3: Tier B's staleness gate must use the clause's own
+        # category's fatal threshold from config/staleness.json, not a
+        # flat default -- a clause checked 10 months ago is fine against
+        # the 24-month default but must fail Tier B once its document's
+        # category ("Hiring" here) has its own, tighter 6-month fatal
+        # threshold.
+        doc = {
+            "id": "doc1", "title": "Doc 1", "description": "d", "categories": ["Hiring"],
+            "clauseOrder": ["c1"], "fields": [],
+        }
+        ten_months_ago = (date.today() - timedelta(days=305)).isoformat()
+        tight_config = {"defaultFatalMonths": 24, "defaultWarnMonths": 18,
+                         "categories": {"Hiring": {"fatalMonths": 6, "warnMonths": 4}}}
+        d = self.make_dir([doc], [authority_clause("c1", checked_date=ten_months_ago)],
+                           fixtures_for=["doc1"], staleness_config=tight_config)
         run_tiering(d)
         tiers = self.load_tiers(d)
         self.assertEqual(tiers['documents']['doc1']['tier'], 'C')
