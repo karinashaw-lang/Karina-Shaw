@@ -17,6 +17,8 @@ jobs:
       - run: python3 tools/validate_corpus.py
       - name: Check tiers.json is up to date
         run: python3 tools/tiering.py --check
+      - name: Check the citation index is up to date
+        run: python3 tools/build_citation_index.py --check
       - name: Test the tooling itself
         run: |
           python3 tests/merge_guard/test_merge_guard.py -v
@@ -29,6 +31,8 @@ jobs:
           python3 tests/tiering/test_promotion_report.py -v
           python3 tests/verifier/test_verifier.py -v
           python3 tests/verifier/test_triage.py -v
+          python3 tests/tools/test_build_citation_index.py -v
+          python3 tests/watcher/test_watcher.py -v
       - name: Promotion report
         run: python3 tools/promotion_report.py --markdown >> "$GITHUB_STEP_SUMMARY"
 

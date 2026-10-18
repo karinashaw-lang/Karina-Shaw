@@ -505,8 +505,12 @@ Phase 3.1's tier computation — every document gets Tier A/B/C from
 objective, already-real signals, never assigned by hand. Tier B needs a
 complete field schema (every field has `type` and a resolvable
 `whyWeAsk`, directly or via `sharedFieldId`), every authority clause
-verified and within the staleness window, and at least one golden
-fixture. Tier A needs all of that plus a clean adversarial-verifier run
+verified and within its category's fatal staleness threshold (Phase
+4.3's `config/staleness.json`, mirrored here via `thresholds_for()` so
+this can't silently drift from `validate_corpus.py`'s own definition
+the way it briefly did the day 4.3 shipped — see `DECISIONS.md`), and
+at least one golden fixture. Tier A needs all of that plus a clean
+adversarial-verifier run
 (master plan Phase 4.1) and a passed accessibility check (Phase 9.1) —
 **neither exists yet**, and a missing signal is treated as not met, not
 assumed passing, so Tier A is honestly 0/740 right now. See
@@ -517,6 +521,29 @@ has, so it wouldn't distinguish anything). `--check` is what keeps
 `tiers.json` — committed, fetched by the app like `documents.json` — from
 silently drifting out of sync with the corpus; wired into CI right
 after `validate_corpus.py`. Tested by `tests/tiering/test_tiering.py`.
+
+## build_citation_index.py
+
+```
+python3 tools/build_citation_index.py           # recompute, write index/citation_to_clauses.json, print summary
+python3 tools/build_citation_index.py --check    # recompute in memory, exit 1 if the file on disk doesn't match
+```
+
+Phase 4.4's reverse index from every citation in the corpus to the
+authority clause id(s) that cite it, grouped by `url` first (what a
+real-world change is actually matched against — a changed leginfo
+page, a CourtListener opinion) and then kept distinct by each citation's
+own `(case, cite)` pair, since the same statute page is routinely
+pin-cited at many different subsections across different clauses, each
+a legally distinct proposition. 11,665 citations across 3,897 unique
+urls as of this writing; "100% coverage" (the master plan's literal
+4.4 acceptance line) holds by construction, since every citation in
+`data/clauses.json` produces exactly one index entry. `--check` is the
+same staleness gate as `tiering.py --check`, wired into CI right after
+it. Tested by `tests/tools/test_build_citation_index.py`.
+
+The watcher that actually uses this index to find real-world changes
+lives in `watcher/`, not here — see `watcher/README.md`.
 
 ## promotion_report.py
 

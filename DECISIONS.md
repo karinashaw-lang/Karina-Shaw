@@ -407,3 +407,68 @@ enough to trip it, both for the per-category thresholds and the new
 annual-cycle rule), it simply has nothing to catch in the current corpus
 yet — the same pattern as every other new `validate_corpus.py` check
 added so far in this project.
+
+## Follow-up: tiering.py's staleness gate had drifted from validate_corpus.py
+
+Discovered while starting Phase 4.4: `tools/tiering.py`'s Tier B gate
+still compared a clause's `checkedDate` against a hardcoded
+`STALE_MONTHS = 24`, left over from before Phase 4.3 replaced
+`validate_corpus.py`'s single global threshold with per-category ones.
+Its own comment said it "must match validate_corpus.py's constant" —
+which no longer existed, so the two scripts had silently disagreed
+since the Phase 4.3 commit: a document with a Hiring clause 15 months
+stale would already fail `validate_corpus.py`'s real 12-month fatal
+threshold (blocking the build) while `tiering.py`'s flat 24-month check
+would still have called it fresh. Fixed to mirror
+`validate_corpus.py`'s `thresholds_for()` exactly (the strictest fatal
+month-count among every category a clause's documents carry), with a
+new test (`test_per_category_threshold_used_not_flat_default`) proving
+the per-category value is actually used, not just present. Committed
+and pushed separately from the Phase 4.3 commit, once CI was already
+green on it, since this was found only after that work shipped.
+
+## Phase 4.4: law-change watcher — scope decisions
+
+Two decisions made while building this, both before any real scan was
+run:
+
+**Architecture: an agent-run pipeline, not a GitHub Actions cron job.**
+The master plan calls this "a scheduled task," but the actual research
+step — Lawstronaut's `horizon_scan`, CourtListener's search/citation
+tools — only exists as MCP tools inside an agent session. CI has
+neither, and even quota-free `curl` against CourtListener is blocked by
+their AWS WAF bot challenge (documented in `tools/README.md`'s
+`recheck_all.py` section already, for the exact same reason). So the
+watcher is split the same way `verifier/` is: deterministic pieces
+(`tools/build_citation_index.py`, `watcher/scan_batch.py`,
+`record_changes.py`, `report.py`, `flag_for_review.py`) run anywhere,
+including CI's `--check` gate on the citation index; the real judgment
+runs through the `Agent` tool following `watcher/prompt.md`, invoked
+periodically by a human or a Claude Code scheduled task — not a
+`ci.yml` `schedule:` trigger.
+
+**`flag_for_review.py` never pushes or opens a PR.** The plan's own
+wording — "open a draft branch or PR" — gives a local-branch reading
+room, and this project's standing rule (independent of this phase) is
+never to create a pull request unless a human explicitly asks for one.
+An unattended scheduled job automatically opening PRs is exactly the
+case that rule exists to prevent. The script creates the branch
+**locally only**, with exactly one new file (the flag + evidence, never
+a clause edit), and returns to the branch it started on; pushing it or
+opening a PR is left as a separate, deliberate action for a human (or
+an agent explicitly told to do so) to take after reading the flag.
+
+**Citation index key granularity.** Grouping strictly by bare `url`
+would have conflated unrelated citations: a single statute page (e.g.
+8 U.S.C. § 1324b) is pin-cited at many different subsections across
+different clauses, each a legally distinct, independently-affected
+proposition — 1,958 urls in the real corpus have more than one distinct
+`(case, cite)` pair attached. The index groups by `url` first (the
+thing an external change is actually matched against) and keeps each
+distinct `(case, cite)` pair underneath it, so two different pin-cites
+sharing a page don't share a `clauseIds` list.
+
+**Infrastructure built, no real scan run yet.** Same reasoning as Phase
+4.1's 100-clause sample: an actual dry run spends a real, slow,
+external-research budget, which is a separate checkpoint from building
+and testing the pipeline that would run it.

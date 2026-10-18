@@ -549,6 +549,52 @@ authority clauses, not 100) is a separate decision this sample and its
 triage don't make on their own — the master plan reserves it for after
 the sample is reviewed.
 
+## Law-change watcher (Phase 4.4)
+
+`watcher/` is the infrastructure for periodically checking whether a
+source already cited in the corpus has *changed* — a statute amended,
+a case limited or overruled — as opposed to `verifier/`'s "was this
+ever right?" Full pipeline and rationale in `watcher/README.md`; the
+rubric a scan worker follows is `watcher/prompt.md`.
+
+The reverse index it depends on, `index/citation_to_clauses.json`
+(built by `tools/build_citation_index.py`, `--check`-gated in CI right
+after `tiers.json`), maps every citation's `url` to the authority
+clause id(s) that cite it — grouped by `url`, kept distinct by each
+citation's own `(case, cite)` pair underneath, since one statute page
+is routinely pin-cited at several different, independently-affected
+subsections across different clauses. 11,665 citations, 3,897 unique
+urls as of this writing; 100% coverage holds by construction, not by
+assertion — every citation in `data/clauses.json` produces exactly one
+entry.
+
+Same split as the verifier, for the same reason: the real research
+(querying Lawstronaut's `horizon_scan` and CourtListener for actual
+changes in a date window) only exists as MCP tools inside an agent
+session — nothing a GitHub Actions runner can reach, the same
+CourtListener-WAF constraint `tools/README.md`'s `recheck_all.py`
+section already documents. So "a scheduled task" here means an
+`Agent`-tool worker run periodically (by a human, or a Claude Code
+scheduled task a human sets up), following `watcher/prompt.md`, not a
+`ci.yml` cron step — only the deterministic pieces
+(`scan_batch.py`/`record_changes.py`/`report.py`/`flag_for_review.py`,
+and the citation-index staleness check) are things CI, or anything
+else, can run unattended.
+
+`flag_for_review.py` is the one place this differs on purpose from the
+master plan's literal wording ("open a draft branch or PR"): it
+creates a **local-only** git branch with one new file (the evidence,
+never a clause edit) and returns to the starting branch — it never
+pushes or opens a PR. This project's standing rule, independent of this
+phase, is never to create a pull request unless a human explicitly
+asks; an unattended scheduled job is exactly the case that rule exists
+for. See `watcher/README.md` and `DECISIONS.md` for the reasoning.
+
+As of this writing the infrastructure is built and tested but no real
+scan has been run — like Phase 4.1's 100-clause sample, spending the
+real external-research budget needed for an actual dry run is held as
+its own checkpoint rather than folded into building the pipeline.
+
 ## Where Phase 2/3 (and beyond) will change this next
 
 Phase 2 (2.1 field schema, 2.2 shared field library, 2.2b `whyWeAsk` text
@@ -578,12 +624,12 @@ per-document signal to rank by.
 
 Phase 4.3 (per-category staleness thresholds + the annual CA-statute
 recheck rule) is also done, end to end — see "Verification & staleness
-gate" above. Two phases in this same part of the plan are still open:
-4.4's law-change watcher (a scheduled job mapping Lawstronaut/CourtListener
-changes to affected clause ids via a citation index, flagging each for
-review rather than ever auto-editing legal text) and 4.5 (putting
-`recheck_all.py` on a schedule and surfacing dead-link/quote-drift counts
-in the promotion report).
+gate" above. Phase 4.4's law-change watcher is built and tested (see
+"Law-change watcher (Phase 4.4)" above) but has not yet run a real
+scan — that's a deliberate, separate checkpoint, the same reasoning as
+Phase 4.1's 100-clause sample. One phase in this part of the plan is
+still fully open: 4.5 (putting `recheck_all.py` on a schedule and
+surfacing dead-link/quote-drift counts in the promotion report).
 
 What's left that Phase 2/3 deliberately didn't do: `whyWeAsk` for the
 ~650 field ids outside the shared library (out of scope for 2.2b — see
