@@ -99,7 +99,21 @@ nobody has checked yet in this window.
 
 ## Status so far
 
-Infrastructure only. No real scan has been run yet — doing so spends a
-real, slow, external-research budget the same way the verifier's
-100-clause sample did (see `DECISIONS.md`'s Phase 4.1 entry), so it's
-held as its own checkpoint rather than run as part of building this.
+The first real dry run is complete: 100 distinct citations scanned
+(2026-07-01 to 2026-10-01, "last quarter" relative to when this ran),
+split across 5 parallel `Agent`-tool workers. 1 real finding: Cal. Bus.
+& Prof. Code § 22757.2 (the AI Transparency Act's detection-tool
+requirement, clause `aitransparency_detection_tool`) shows a current-text
+update date inside the scan window. Full report in
+`watcher/reports/2026-10-01.md`; full writeup (including a worker
+output defect caught and fixed before recording — an HTML-entity-escaped
+`&amp;` in a returned url) in `DECISIONS.md`.
+
+Nobody has reviewed that finding or run `flag_for_review.py` against it
+yet — recording a change and deciding what, if anything, to do about it
+are different steps, the same way `verifier/`'s triage is separate from
+its sample report.
+
+The remaining 10,331 of the corpus's 10,431 distinct citations have not
+been scanned. Whether and when to run the watcher at full-corpus scale
+is a separate decision, same reasoning as the verifier's.

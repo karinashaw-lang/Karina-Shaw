@@ -590,10 +590,15 @@ phase, is never to create a pull request unless a human explicitly
 asks; an unattended scheduled job is exactly the case that rule exists
 for. See `watcher/README.md` and `DECISIONS.md` for the reasoning.
 
-As of this writing the infrastructure is built and tested but no real
-scan has been run — like Phase 4.1's 100-clause sample, spending the
-real external-research budget needed for an actual dry run is held as
-its own checkpoint rather than folded into building the pipeline.
+As of this writing the first real dry run is complete: 100 distinct
+citations scanned (5 parallel `Agent`-tool workers, 20 each) for the
+2026-07-01 to 2026-10-01 window, 1 real finding (Cal. Bus. & Prof. Code
+§ 22757.2, affecting clause `aitransparency_detection_tool`) — the
+master plan's literal 4.4 acceptance line ("a dry run ... produces a
+report"). Full report in `watcher/reports/2026-10-01.md`; full writeup
+in `DECISIONS.md`. The remaining ~10,300 of the corpus's 10,431 distinct
+citations haven't been scanned; running the watcher at full-corpus
+scale is a separate decision, same reasoning as the verifier's.
 
 ## Where Phase 2/3 (and beyond) will change this next
 
@@ -624,12 +629,12 @@ per-document signal to rank by.
 
 Phase 4.3 (per-category staleness thresholds + the annual CA-statute
 recheck rule) is also done, end to end — see "Verification & staleness
-gate" above. Phase 4.4's law-change watcher is built and tested (see
-"Law-change watcher (Phase 4.4)" above) but has not yet run a real
-scan — that's a deliberate, separate checkpoint, the same reasoning as
-Phase 4.1's 100-clause sample. One phase in this part of the plan is
-still fully open: 4.5 (putting `recheck_all.py` on a schedule and
-surfacing dead-link/quote-drift counts in the promotion report).
+gate" above. Phase 4.4's law-change watcher is built, tested, and has now run its
+first real dry run (see "Law-change watcher (Phase 4.4)" above) — done,
+end to end, for the scope the master plan's acceptance line asks for.
+One phase in this part of the plan is still fully open: 4.5 (putting
+`recheck_all.py` on a schedule and surfacing dead-link/quote-drift
+counts in the promotion report).
 
 What's left that Phase 2/3 deliberately didn't do: `whyWeAsk` for the
 ~650 field ids outside the shared library (out of scope for 2.2b — see

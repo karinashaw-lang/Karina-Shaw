@@ -472,3 +472,50 @@ sharing a page don't share a `clauseIds` list.
 4.1's 100-clause sample: an actual dry run spends a real, slow,
 external-research budget, which is a separate checkpoint from building
 and testing the pipeline that would run it.
+
+## Phase 4.4: first real dry run
+
+Before running it, fixed a real gap `watcher/scan_batch.py` had:
+`index/citation_to_clauses.json` sorts by url, and leginfo.legislature.ca.gov
+alone is ~73% of distinct citations but sorts late among the corpus's
+hosts, so handing out the index's raw order would have given an early
+batch nothing but rare agency-guidance hosts and zero leginfo or
+CourtListener citations -- not a representative scan of anything.
+Fixed to shuffle deterministically, seeded from the scan window, before
+slicing a batch.
+
+Ran the dry run: 100 distinct citations (81 statute, 19 case; the
+window's own random seed), 2026-07-01 through 2026-10-01 ("last
+quarter" relative to when this ran), split into 5 batches of 20 and
+dispatched to 5 parallel `Agent`-tool workers following
+`watcher/prompt.md`. All 5 completed; 4 returned a clean `[]`, 1
+returned a real finding.
+
+**The one finding:** Cal. Bus. & Prof. Code § 22757.2(a) -- the
+California AI Transparency Act's AI-detection-tool requirement, cited
+by clause `aitransparency_detection_tool` -- shows a current-text
+update date of September 30, 2026 (confirmed via a california.public.law
+mirror, which itself attributes the date to leginfo), inside the scan
+window. Recorded, not yet triaged: deciding whether the clause's body
+text needs a real edit, and running `flag_for_review.py` to create the
+local needs-review branch, are separate steps nobody has taken yet --
+recording a change and acting on it are different the same way
+`verifier/`'s triage is separate from its sample report.
+
+**A worker-output defect caught before recording, not silently
+patched:** worker 2's returned JSON had the finding's `url` with an
+HTML entity (`&amp;`) instead of a literal `&`, almost certainly from
+copying text off a rendered web page rather than the raw citation.
+`record_changes.py`'s strict url-match check against the scanned batch
+caught this immediately (the entity-encoded url matched nothing in the
+batch). Rather than loosening that check -- which exists specifically
+to catch a worker fabricating or misattributing a result -- the one
+character was corrected by hand before recording, since the batch file
+itself proved unambiguously what the real url was.
+
+**Acceptance, read literally:** "a dry run against last quarter's
+changes produces a report" -- `watcher/reports/2026-10-01.md` is that
+report. 100/10,431 distinct citations have been scanned; the remaining
+~10,300 and whether to scan them are a separate, later decision, not
+something this dry run resolves on its own (same reasoning as the
+verifier's full-corpus-run question).
