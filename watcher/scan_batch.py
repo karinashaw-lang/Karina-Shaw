@@ -13,17 +13,25 @@ statutes, and none of them are CourtListener case law, so the only
 real split that matters for which tool a worker reaches for is
 case-law-or-not.
 
-Like verifier/sample.py, a batch isn't drawn fresh each call -- the
-full, deterministic list of every distinct citation in the index is
-always the same (barring a corpus change), so "the next batch" just
-means "the next slice of it a worker hasn't scanned yet" --
-`watcher/record_changes.py` is what actually marks a citation scanned.
+Order matters here: urls sort overwhelmingly by publisher host (almost
+three quarters of distinct citations are leginfo.legislature.ca.gov,
+which sorts late among the corpus's hosts), so handing out the index's
+raw, alphabetical order would give early batches nothing but the rare
+agency-guidance hosts and no leginfo or CourtListener citations at all
+-- not a representative dry run of the pipeline. Entries are shuffled
+instead, deterministically seeded from (sinceDate, throughDate) so the
+same window always produces the same order (repeatable, and stable
+under --remaining) without needing a separately saved sample file the
+way verifier/sample.py does -- the index itself is the whole,
+unchanging population for a given corpus state, so there's nothing to
+persist beyond the scan window already determining the seed.
 
     python3 watcher/scan_batch.py --since 2026-07-01 --through 2026-10-01 --batch-size 50
     python3 watcher/scan_batch.py --since ... --through ... --batch-size 50 --remaining
     python3 watcher/scan_batch.py --since ... --through ... --status
 """
 import json
+import random
 import sys
 from urllib.parse import urlparse
 
@@ -77,6 +85,8 @@ def main():
         batch_size = int(args[args.index('--batch-size') + 1])
 
     entries = flatten(load_index())
+    rng = random.Random(f'watcher-scan-{since}-{through}')
+    rng.shuffle(entries)
     done = already_scanned()
     remaining = [e for e in entries if scan_key(e) not in done]
 

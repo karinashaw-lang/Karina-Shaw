@@ -100,6 +100,34 @@ class ScanBatchTests(unittest.TestCase):
         self.assertIn('Total distinct citations: 2', r.stdout)
         self.assertIn('Remaining: 2', r.stdout)
 
+    def test_batch_order_is_deterministic_for_same_window(self):
+        by_url = {f'https://example.com/{i}': [{'case': f'Case {i}', 'cite': f'{i}', 'clauseIds': [f'c{i}']}]
+                  for i in range(20)}
+        d = self.make_dir(by_url)
+        r1 = run(SCAN_BATCH_PY, d, '--since', '2026-07-01', '--through', '2026-10-01', '--batch-size', '20')
+        r2 = run(SCAN_BATCH_PY, d, '--since', '2026-07-01', '--through', '2026-10-01', '--batch-size', '20')
+        self.assertEqual(r1.stdout, r2.stdout)
+        # A different window is free to shuffle differently -- not asserted
+        # equal or unequal here, just that the SAME window is reproducible,
+        # which is the property --remaining depends on across repeated calls.
+
+    def test_batch_is_not_dominated_by_alphabetically_early_hosts(self):
+        # Regression guard: urls sort overwhelmingly by host, so taking
+        # the index's raw order would give an early batch nothing but
+        # the alphabetically-first host and never reach the others.
+        by_url = {}
+        for i in range(30):
+            by_url[f'https://aaa-early-host.example.com/{i}'] = [
+                {'case': f'Early {i}', 'cite': f'{i}', 'clauseIds': [f'early{i}']}]
+        by_url['https://zzz-late-host.example.com/1'] = [
+            {'case': 'Late', 'cite': '1', 'clauseIds': ['late1']}]
+        d = self.make_dir(by_url)
+        r = run(SCAN_BATCH_PY, d, '--since', '2026-07-01', '--through', '2026-10-01', '--batch-size', '10')
+        self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+        batch = json.loads(r.stdout)
+        all_urls = [e['url'] for e in batch['statuteCitations'] + batch['caseCitations']]
+        self.assertFalse(all(u.startswith('https://aaa-early-host') for u in all_urls))
+
 
 class RecordChangesTests(unittest.TestCase):
     def setUp(self):
