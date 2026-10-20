@@ -40,10 +40,21 @@ supabase/schema.sql  One table (public.agreements) + 4 RLS policies + 1
 verification/*.md    744 free-form build notes. NOT 1:1 with documents.json
                      — see tools/README.md. 683/740 documents have a note
                      matching by id as of this writing.
+search/lay_terms.json  Plain-language phrasings per document (Phase 5.1),
+                     fetched by app.js at init() and indexed into the
+                     document search engine; see search/README.md.
+index/citation_to_clauses.json  Citation url -> affected clause ids
+                     (Phase 4.4), built by tools/build_citation_index.py.
+recheck/             history.jsonl (every recheck_all.py run, Phase 4.5)
+                     and findings.json (the latest run's dead
+                     links/mismatches) — see tools/README.md.
 tools/               Maintenance scripts — see "Tooling" below.
+watcher/             Law-change watcher (Phase 4.4) — see watcher/README.md.
+verifier/            Adversarial verifier (Phase 4.1) — see verifier/README.md.
 tests/               golden/, wizard/, merge_guard/, validate_corpus/,
-                     tiering/ — browser and unit tests for the gate
-                     scripts and the rendered app, run in CI.
+                     tiering/, search/, tools/, watcher/, verifier/ —
+                     browser and unit tests for the gate scripts and
+                     the rendered app, run in CI.
 ```
 
 `tools/*.py` run directly with system Python 3; `tools/regression.js`
@@ -651,6 +662,52 @@ clean result: 265 citations checked, 134 `PASS`, 131 `BLOCKED`, 0
 report both correctly show 0 dead links / 0 mismatches. Full writeup in
 `DECISIONS.md`. A full ~3,400-URL statutory sweep is a separate, later
 decision, same reasoning as the verifier's and watcher's.
+
+## Plain-language document search (Phase 5.1)
+
+`buildDocumentIndex()`/`searchDocuments()` in `app.js` reuse the same
+tf-idf/cosine-similarity machinery the clause-matching "read a
+contract" engine already built (`buildClauseIndex()`/`matchPassage()`
+above) — but over documents instead of clauses, and over a different
+text source per document: title + description + categories + that
+document's `search/lay_terms.json` phrasings. The lay terms ARE the
+master plan's "synonyms and lay-term mapping" requirement, baked
+directly into the index rather than a separate query-time substitution
+layer — a search for "deposit back" matches the security-deposit
+document because that exact phrase is literally indexed against it.
+
+Typo tolerance (`resolveTypo()`) is a small Levenshtein-distance
+nearest-vocabulary-token lookup, applied per query token before
+scoring, tight enough (1 edit for a ≤4-character word, 2 otherwise)
+that it corrects a real misspelling without quietly substituting a
+different word.
+
+The UI (`index.html`'s `#doc-search`, debounced 150ms) replaces the
+document list with ranked results when a query is active — including
+an honest empty state rather than silently falling back to the
+unfiltered list — composable with the existing category/tier filters
+and sort, and shows which terms matched each result card.
+
+`search/lay_terms.json` was generated across all 740 documents by
+parallel `Agent`-tool workers, grounded only in each document's own
+title/description/categories (no external research — pure
+paraphrasing), validated against `lint/advisory_phrases.json` (0 hits
+— "inform, never advise" applies to search phrasings too), and
+backfilled where a first pass fell short of the master plan's 5-phrase
+floor. See `search/README.md` for the full generation process and
+`DECISIONS.md` for a real precision bug this surfaced and fixed: a
+common filler word ("got") happened to be rarer than "fired" in this
+specific lay-term corpus, so it was weighted *more* heavily despite
+carrying no real signal — fixed by extending the shared `STOPWORDS` set
+(used by both the clause and document indexes).
+
+`tests/search/golden_queries.json` + `golden_search.js` are the master
+plan's literal 5.1 acceptance line: 100 lay queries, each verified
+(by `tests/search/generate_golden_queries.js`, not run by CI) against
+the real engine to confirm its expected document actually lands in the
+top 3 before being committed to the fixture — so a later CI failure
+means the engine's behavior changed, not that the fixture was ever
+aspirational.
 
 ## Where Phase 2/3 (and beyond) will change this next
 

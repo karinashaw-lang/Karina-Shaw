@@ -592,3 +592,76 @@ separate, later decision — same reasoning as the verifier's and
 watcher's full-corpus-run questions, and this one's quicker to resume
 any time since it's a deterministic curl loop, not an LLM research
 task.
+
+## Phase 5.1: plain-language search
+
+**"The existing TF-IDF engine" the master plan refers to didn't exist
+for documents** — it exists for *clauses*, built for the "read a
+contract" clause-matching feature (`buildClauseIndex()`/`matchPassage()`
+in `app.js`). Read literally, 5.1 would need to "use" something that
+isn't there; read as intended, it's clearly asking to reuse that same
+tf-idf/cosine-similarity approach for a new purpose. Built
+`buildDocumentIndex()`/`searchDocuments()` as the document-level
+counterpart rather than a new search implementation from scratch —
+same math, same resumability pattern (indexed once at load), applied
+to documents' title/description/categories/lay-terms instead of
+clauses' title/body.
+
+**Lay-term generation (`search/lay_terms.json`) was treated as content
+generation, not research**, and built directly rather than through the
+verifier/watcher's prompt-plus-harness split: a lay phrasing has no
+external, fact-checkable answer to get right or wrong the way a
+citation does, it's paraphrasing from a document's own
+title/description/categories, already fully available. Dispatched to
+10 parallel `Agent`-tool fork workers (74 documents each) rather than
+done by hand, purely for throughput — not because it needed research
+tools. Validated against `lint/advisory_phrases.json` across all
+~4,170 generated phrasings: 0 hits. Manually spot-checked 50 random
+entries against their real title/description for relevance and
+tone — all good.
+
+**183 of 740 documents initially fell short of the master plan's
+"5 to 10" floor** (as low as 3) — caught by a full-corpus count, not
+just the 50-entry spot check (which happened not to sample any of
+them). Rather than accept the shortfall or pad with filler, dispatched
+a second, smaller wave of parallel workers with explicit instructions
+to add non-duplicate phrasings reaching the floor for exactly those
+183 documents. Final distribution: 313 documents with 5, 304 with 6,
+123 with 7 — every document now meets the floor.
+
+**A concurrent-write scare, resolved cleanly:** one of the first-wave
+fork workers (tasked with only its own 74-document batch) independently
+noticed the other 9 batches' output files already existed on disk,
+consolidated all 10 itself, and wrote directly to the real
+`search/lay_terms.json` — at the same time this session was doing the
+same consolidation from the same source files. Checked the file
+immediately after: 740/740 entries, matching the corpus exactly, no
+corruption, including the one single-entry fix that fork had made on
+its own initiative. No data was lost or duplicated, but it's worth
+recording as a reason to prefer one clear owner for a merge step next
+time a wave of workers might independently reach for the same output
+path.
+
+**A real precision bug, found by testing the engine against the real
+corpus, not assumed correct on arrival:** the query "i got fired"
+ranked on "got," not "fired" — "got" happened to appear in only 8 of
+740 lay-term sets (versus 37 for "fired"), so its idf weight came out
+*higher* despite carrying no real signal as a common filler verb. Fixed
+by adding `got`/`get`/`gets`/`getting`/`im`/`my`/`mine`/`myself` to the
+shared `STOPWORDS` set used by both the clause index and the new
+document index — harmless for the clause corpus's third-person contract
+text, which essentially never uses first-person casual filler words,
+confirmed by re-running `tools/regression.js`'s "read a contract"
+check clean after the change.
+
+**Golden search queries are verified against the live engine before
+being committed, not hand-guessed.** `generate_golden_queries.js`
+(not run by CI) picks ~13 documents per category, tries each one's own
+lay-term phrasings against the real `searchDocuments()`, and only
+keeps a (query, expectedDocId) pair once it's confirmed the expected
+document actually lands in the top 3 — skipping a document entirely
+rather than forcing in a query that doesn't verify. All 100 queries in
+the committed fixture pass today, by construction; `golden_search.js`
+(the one CI actually runs) re-checks all 100 against the live engine
+on every run, so a future regression in the engine — not just a typo
+in the fixture — is what a red CI run here would mean.

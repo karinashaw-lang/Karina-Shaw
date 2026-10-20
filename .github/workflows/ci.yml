@@ -108,6 +108,8 @@ jobs:
         run: set -o pipefail; node tools/wizard_regression.js | tee wizard-regression.log
       - name: Run wizard_unit.js
         run: set -o pipefail; node tests/wizard/wizard_unit.js | tee wizard-unit.log
+      - name: Run golden_search.js
+        run: set -o pipefail; node tests/search/golden_search.js | tee golden-search.log
       - name: Upload logs on failure
         if: failure()
         uses: actions/upload-artifact@v4
@@ -118,4 +120,5 @@ jobs:
             golden.log
             wizard-regression.log
             wizard-unit.log
+            golden-search.log
           if-no-files-found: warn
