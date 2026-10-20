@@ -1,4 +1,4 @@
-const state = { documents: null, document: null, clauses: null, answers: {}, categoryFilter: null, edits: {}, editedClauseIds: new Set(), currentEntryId: null, jurisdictionByDoc: null, sharedFields: null, wizardSteps: [], wizardStepIndex: 0, wizardReviewing: false, tiers: null, tierFilter: null, tierSortEnabled: false };
+const state = { documents: null, document: null, clauses: null, answers: {}, categoryFilter: null, edits: {}, editedClauseIds: new Set(), currentEntryId: null, jurisdictionByDoc: null, sharedFields: null, wizardSteps: [], wizardStepIndex: 0, wizardReviewing: false, tiers: null, tierFilter: null, tierSortEnabled: false, layTerms: null, searchQuery: '', searchResults: null };
 
 // Draft persistence. Local-only, one slot at a time — closing the tab
 // mid-wizard shouldn't lose someone's answers. localStorage can throw
@@ -700,23 +700,31 @@ async function loadSharedFields() {
 }
 
 async function init() {
-  const [docs, clauseData, sharedFields, tiers] = await Promise.all([
+  const [docs, clauseData, sharedFields, tiers, layTerms] = await Promise.all([
     fetch('data/documents.json').then(r => r.json()),
     fetch('data/clauses.json').then(r => r.json()),
     loadSharedFields(),
     fetch('tiers.json').then(r => r.json()),
+    // search/lay_terms.json is additive, not load-bearing -- search
+    // still works off title/description/category alone without it, so
+    // a fetch failure degrades the lay-synonym layer rather than the
+    // whole app.
+    fetch('search/lay_terms.json').then(r => r.json()).catch(() => ({})),
   ]);
   state.documents = docs;
   state.clauses = clauseData.clauses;
   state.sharedFields = sharedFields;
   state.tiers = tiers.documents;
+  state.layTerms = layTerms;
   buildJurisdictionIndex();
   renderCategoryFilter();
   renderTierFilter();
   renderPicker();
+  renderDocSearch();
   checkForDraft();
   updateLibraryCount();
   buildClauseIndex();
+  buildDocumentIndex();
 }
 
 // ---------- read a contract: clause-matching engine ----------
@@ -744,6 +752,15 @@ const STOPWORDS = new Set([
   'includes','provided','otherwise','herein','hereof','hereto',
   'hereunder','thereof','thereto','whether','means','shall','would',
   'could','should','does','did','doing','done','made','make','makes',
+  // The clause corpus below is third-person contract text, where none of
+  // these come up meaningfully — but Phase 5.1's document search indexes
+  // first-person, casual lay phrasings ("i got fired"), where a filler
+  // verb like "got" is common enough in everyday speech to be
+  // meaningless, yet rare enough in this specific corpus to earn an
+  // inflated idf weight that outweighs the actually distinctive word in
+  // the same query (confirmed: "got" out-weighted "fired" itself,
+  // because "got" happens to appear in fewer lay-term entries here).
+  'got','get','gets','getting','im','my','mine','myself',
 ]);
 
 function tokenize(text) {
@@ -1071,6 +1088,128 @@ function renderTierFilter() {
   ['A', 'B', 'C'].forEach(t => makeChip(TIER_LABEL[t], t));
 }
 
+// ---------- document search (Phase 5.1) ----------
+// A second idf-weighted inverted index, parallel to buildClauseIndex()
+// above but over DOCUMENTS instead of clauses: each document's title +
+// description + category names + its lay-term phrasings
+// (search/lay_terms.json, loaded at init) are tokenized and indexed the
+// same way clause text is. The lay terms ARE the synonym/lay-term
+// mapping the master plan asks for -- a search for "deposit back" finds
+// the security-deposit document because that phrase is literally
+// indexed against it, not because of a separate synonym-substitution
+// pass at query time.
+function buildDocumentIndex() {
+  const df = new Map();
+  const docTokenSets = state.documents.map(d => {
+    const layTerms = (state.layTerms && state.layTerms[d.id]) || [];
+    const text = [d.title, d.description, ...(d.categories || []), ...layTerms].join(' ');
+    const set = new Set(tokenize(text));
+    set.forEach(t => df.set(t, (df.get(t) || 0) + 1));
+    return set;
+  });
+
+  const N = state.documents.length;
+  const idf = new Map();
+  df.forEach((count, token) => idf.set(token, Math.log(1 + N / count)));
+
+  const invertedIndex = new Map();
+  docTokenSets.forEach((set, idx) => {
+    set.forEach(t => {
+      if (!invertedIndex.has(t)) invertedIndex.set(t, []);
+      invertedIndex.get(t).push(idx);
+    });
+  });
+
+  state.docTokenSets = docTokenSets;
+  state.docIdf = idf;
+  state.docInvertedIndex = invertedIndex;
+  state.docVocabulary = [...idf.keys()];
+}
+
+// Plain Levenshtein edit distance. `max` is a short-circuit budget, not
+// a precision loss -- callers only care whether a candidate is within
+// a small typo-sized threshold, never the exact distance to a
+// completely unrelated word, so bailing out once both strings' lengths
+// already rule out a match within budget is always safe.
+function editDistance(a, b, max) {
+  if (Math.abs(a.length - b.length) > max) return max + 1;
+  const dp = new Array(b.length + 1);
+  for (let j = 0; j <= b.length; j++) dp[j] = j;
+  for (let i = 1; i <= a.length; i++) {
+    let prev = dp[0];
+    dp[0] = i;
+    for (let j = 1; j <= b.length; j++) {
+      const temp = dp[j];
+      dp[j] = a[i - 1] === b[j - 1] ? prev : 1 + Math.min(prev, dp[j], dp[j - 1]);
+      prev = temp;
+    }
+  }
+  return dp[b.length];
+}
+
+// A query token with no exact match in the index might just be a typo
+// -- find the closest real vocabulary token within a small edit-distance
+// budget (tighter for short words, where a 2-character change is really
+// a different word, not a typo of the same one) and search for that
+// instead. Returns the original token unchanged if nothing close enough
+// exists, so an unresolvable token simply contributes no match rather
+// than a wrong one.
+function resolveTypo(token) {
+  if (state.docIdf.has(token)) return token;
+  const maxDist = token.length <= 4 ? 1 : 2;
+  let best = token;
+  let bestDist = maxDist + 1;
+  for (const candidate of state.docVocabulary) {
+    if (Math.abs(candidate.length - token.length) > maxDist) continue;
+    const dist = editDistance(token, candidate, maxDist);
+    if (dist < bestDist) { bestDist = dist; best = candidate; }
+  }
+  return bestDist <= maxDist ? best : token;
+}
+
+const DOC_SEARCH_LIMIT = 24;
+
+// Ranks every document against a free-text query by cosine similarity
+// over the tf-idf vectors buildDocumentIndex() built, after resolving
+// each query token against the vocabulary for typo tolerance. Returns
+// [] for a query with no recognizable terms at all, rather than every
+// document in an arbitrary order -- the caller (renderPicker) is what
+// decides how to render "no results" versus "no search active."
+function searchDocuments(query) {
+  const rawTokens = tokenize(query);
+  if (rawTokens.length === 0) return [];
+  const resolvedTokens = rawTokens.map(resolveTypo);
+
+  const scores = new Map();
+  const matchedTermsByDoc = new Map();
+  resolvedTokens.forEach(t => {
+    const idf = state.docIdf.get(t);
+    if (!idf) return;
+    const docList = state.docInvertedIndex.get(t) || [];
+    docList.forEach(idx => {
+      scores.set(idx, (scores.get(idx) || 0) + idf * idf);
+      if (!matchedTermsByDoc.has(idx)) matchedTermsByDoc.set(idx, new Set());
+      matchedTermsByDoc.get(idx).add(t);
+    });
+  });
+
+  let queryWeight = 0;
+  resolvedTokens.forEach(t => { const idf = state.docIdf.get(t); if (idf) queryWeight += idf * idf; });
+  if (queryWeight === 0) return [];
+
+  const results = [];
+  scores.forEach((rawScore, idx) => {
+    let docWeight = 0;
+    state.docTokenSets[idx].forEach(t => { docWeight += (state.docIdf.get(t) || 0) ** 2; });
+    if (docWeight === 0) return;
+    const cosine = rawScore / (Math.sqrt(queryWeight) * Math.sqrt(docWeight));
+    results.push({ document: state.documents[idx], score: cosine, matchedTerms: [...matchedTermsByDoc.get(idx)] });
+  });
+
+  results.sort((a, b) => b.score - a.score);
+  return results.slice(0, DOC_SEARCH_LIMIT);
+}
+
 function renderCategoryFilter() {
   const el = document.getElementById('category-filter');
   el.innerHTML = '';
@@ -1099,9 +1238,22 @@ const TIER_SORT_RANK = { A: 0, B: 1, C: 2 };
 function renderPicker() {
   const list = document.getElementById('doc-list');
   list.innerHTML = '';
-  let docs = state.categoryFilter
-    ? state.documents.filter(d => (d.categories || []).includes(state.categoryFilter))
-    : state.documents;
+  const searchActive = state.searchQuery.trim().length >= 2;
+  let docs;
+  let matchedTermsById = null;
+  if (searchActive) {
+    // A real, active search always replaces the full document list
+    // with its ranked results -- including an empty list when nothing
+    // matches, so "no results" reads as no results, not as search
+    // being silently ignored in favor of everything.
+    docs = (state.searchResults || []).map(r => r.document);
+    matchedTermsById = new Map((state.searchResults || []).map(r => [r.document.id, r.matchedTerms]));
+  } else {
+    docs = state.documents;
+  }
+  docs = state.categoryFilter
+    ? docs.filter(d => (d.categories || []).includes(state.categoryFilter))
+    : docs;
   if (state.tierFilter) {
     docs = docs.filter(d => state.tiers && state.tiers[d.id] && state.tiers[d.id].tier === state.tierFilter);
   }
@@ -1119,14 +1271,26 @@ function renderPicker() {
       })
       .map(x => x.d);
   }
+  if (searchActive && docs.length === 0) {
+    const empty = document.createElement('p');
+    empty.className = 'search-empty';
+    empty.textContent = 'No documents match that search.';
+    list.appendChild(empty);
+    return;
+  }
   docs.forEach(doc => {
     const card = document.createElement('button');
     card.className = 'doc-card';
     card.type = 'button';
+    const matched = matchedTermsById && matchedTermsById.get(doc.id);
+    const matchedHTML = matched && matched.length
+      ? `<p class="search-matched">Matched: ${matched.join(', ')}</p>`
+      : '';
     card.innerHTML = `
       <div>
         <h3>${doc.title}${jurisdictionBadgeHTML(doc)}${tierBadgeHTML(doc)}</h3>
         <p>${doc.description}</p>
+        ${matchedHTML}
       </div>
       <span class="go">START <span aria-hidden="true">&rarr;</span></span>
     `;
@@ -1138,6 +1302,22 @@ function renderPicker() {
       document.getElementById('draft-banner').hidden = true;
     });
     list.appendChild(card);
+  });
+}
+
+function renderDocSearch() {
+  const input = document.getElementById('doc-search');
+  if (!input) return;
+  let debounceTimer = null;
+  input.addEventListener('input', () => {
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(() => {
+      state.searchQuery = input.value;
+      state.searchResults = state.searchQuery.trim().length >= 2
+        ? searchDocuments(state.searchQuery)
+        : null;
+      renderPicker();
+    }, 150);
   });
 }
 
