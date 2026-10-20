@@ -309,7 +309,8 @@ every temporary file.
 ## recheck_all.py
 
 ```
-python3 tools/recheck_all.py [--hosts statutory|courtlistener|all] [--out PATH] [--delay SECONDS]
+python3 tools/recheck_all.py [--hosts statutory|courtlistener|all] [--out PATH]
+                              [--delay SECONDS] [--run-date YYYY-MM-DD] [--limit N]
 ```
 
 The whole-corpus version of the sampler. Two things make a full pass
@@ -318,6 +319,67 @@ URL is fetched once and every quote citing it is checked against that one
 fetch; and results are appended to a JSONL as they are produced, so a
 container restart resumes rather than starting over — pass the same `--out`
 and it skips URLs already recorded.
+
+Since Phase 4.5, results go to `recheck/history.jsonl` by default (not a
+root-level file), and "already recorded" means "already recorded *in this
+run*" (same `checkedAt` date), not "ever" — a later scheduled run
+re-checks every URL from scratch instead of skipping it forever after its
+first pass, which is what makes this schedulable at all. `--run-date`
+overrides the run's own date (default: today); `--limit N` caps how many
+URLs one invocation checks, for spreading a full sweep across several
+scheduled runs instead of doing all ~3,400 statutory URLs in one sitting.
+`done_for_run()` — the pure function behind this — is tested directly
+(no network) in `tests/tools/test_recheck_all_resume.py`, since exercising
+`main()` for real would mean live network requests in a test. The
+per-citation status decision itself (`RATE_LIMITED`/`EMPTY`/
+`UNRESOLVED_URL`/`BLOCKED`/`PASS`/`MISMATCH`) is its own pure function,
+`classify_status()`, for the same reason — same test file.
+
+`BLOCKED` (added validating Phase 4.5 against the real corpus) means a
+leginfo page came back as a >500-byte Cloudflare JS bot-challenge page
+(`<title>Just a moment...</title>`, referencing
+`challenges.cloudflare.com`) instead of real content — confirmed live on
+`billTextClient.xhtml` (enrolled bill text) URLs. curl can't execute the
+challenge, so this is recorded as honestly untested, same reasoning as
+`RATE_LIMITED`, instead of reporting a false `MISMATCH` on every quote
+checked against it (131 of them, in the validation run, before this
+status existed).
+
+**PDF extraction is environment-dependent — verify it before trusting
+an `EMPTY`/`MISMATCH` on a PDF-hosted citation.** `extract_pdf()` needs
+`pypdf` and `pdfminer.six` importable under whichever `python3` runs this
+script; if neither is, every PDF citation reports a false `EMPTY`, silently
+(an `ImportError` inside `except Exception: pass` looks identical to a
+real, empty extraction). This is not theoretical: it happened validating
+this phase (8 `courts.ca.gov` PDF URLs, 52 citations, all false — one
+confirmed directly as a real, live, 254,886-byte, 17-page PDF). `pip
+install pypdf pdfminer.six` is not automatically safe either — in that
+same environment it fixed the import but then crashed the whole script
+outright with a native ABI conflict against the pre-installed system
+`cryptography` package. There is no requirements-pinning setup in this
+project to fix this into; treat any PDF-hosted citation's result with
+suspicion until you've confirmed `extract_pdf()` actually returns text
+for a known-good PDF in the environment you're running from. See
+`DECISIONS.md`'s Phase 4.5 entry for the full writeup.
+
+Only `--hosts statutory` is actually schedulable unattended: the
+CourtListener curl path is WAF-blocked (see the
+`courtlistener_recheck_results.jsonl` section below) and always produces a
+false `MISMATCH`, so `--hosts courtlistener`/`all` now prints a loud
+warning and should only ever be run through the CourtListener MCP tools in
+an agent session instead — the same split `watcher/README.md` documents
+for the same underlying constraint.
+
+After a run, `tools/recheck_findings.py` turns the latest run's `EMPTY`
+(dead link), `UNRESOLVED_URL` (dead link), and `MISMATCH` (quote no longer
+matches) statuses into `recheck/findings.json` — a single JSON object
+(`runDate`, `totalChecked`, `findings[]`), not JSONL, specifically so a
+fully clean run still records that a run happened rather than looking
+identical to "never run." `RATE_LIMITED` is deliberately not a finding —
+it's untested, not failed, same reasoning as `recheck_all.py` itself.
+`tools/promotion_report.py` reads this file and surfaces a dead-link/quote-
+mismatch count — the Phase 4.5 deliverable. Tested against a synthetic
+`recheck/history.jsonl` in `tests/tools/test_recheck_findings.py`.
 
 Handles PDFs, which matters more than it sounds: a slip opinion or the CACI
 volume fetched as text looks like an empty page, so without extraction every
@@ -545,6 +607,19 @@ it. Tested by `tests/tools/test_build_citation_index.py`.
 The watcher that actually uses this index to find real-world changes
 lives in `watcher/`, not here — see `watcher/README.md`.
 
+## recheck_findings.py
+
+```
+python3 tools/recheck_findings.py                      # use the latest run date in recheck/history.jsonl
+python3 tools/recheck_findings.py --run-date 2026-10-20  # a specific earlier run instead
+```
+
+Phase 4.5: turns one run's bad statuses from `recheck/history.jsonl`
+into `recheck/findings.json`. Fully overwritten each time it runs — it
+always reflects what's currently broken as of that run, not an
+accumulating list that would keep flagging a URL long after it started
+working again. Tested by `tests/tools/test_recheck_findings.py`.
+
 ## promotion_report.py
 
 ```
@@ -567,8 +642,14 @@ same two missing systems (Phase 4.1/9.1), so ranking them against each
 other would report a difference that doesn't exist. CI runs the
 default, read-only invocation and pipes `--markdown` into
 `$GITHUB_STEP_SUMMARY`; it never writes history itself — see
-`DECISIONS.md` for why that's deliberately a developer action. Tested
-by `tests/tiering/test_promotion_report.py`.
+`DECISIONS.md` for why that's deliberately a developer action.
+
+Since Phase 4.5, also surfaces `recheck/findings.json` (written by
+`tools/recheck_findings.py`): the dead-link count (`EMPTY` +
+`UNRESOLVED_URL`) and quote-mismatch count (`MISMATCH`) from the most
+recent `recheck_all.py` run. Reports "no recheck has been run yet" when
+the file doesn't exist at all, rather than reading that absence as zero
+problems found. Tested by `tests/tiering/test_promotion_report.py`.
 
 ## tests/auth_roundtrip.js
 

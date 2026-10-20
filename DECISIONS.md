@@ -519,3 +519,76 @@ report. 100/10,431 distinct citations have been scanned; the remaining
 ~10,300 and whether to scan them are a separate, later decision, not
 something this dry run resolves on its own (same reasoning as the
 verifier's full-corpus-run question).
+
+## Phase 4.5: citation recheck integration
+
+Extended `tools/recheck_all.py` to be schedulable: results go to
+`recheck/history.jsonl`, tagged with the run's own `checkedAt` date,
+and "already done" (for resume purposes) means "already done in THIS
+run," not "ever" — a container restart resuming mid-run skips what
+today's run already finished, but a later scheduled run re-checks
+every URL from scratch rather than skipping it forever after its first
+pass. `--limit N` caps one invocation's URL count, for spreading a
+full sweep across several scheduled runs. Only `--hosts statutory` is
+actually schedulable unattended; `--hosts courtlistener`/`all` now
+print a loud warning, since the CourtListener curl path is WAF-blocked
+and always produces a false `MISMATCH` (same constraint that keeps the
+Phase 4.4 watcher off a `ci.yml` schedule). `tools/recheck_findings.py`
+turns the latest run's bad statuses into `recheck/findings.json`;
+`tools/promotion_report.py` surfaces a dead-link/mismatch count from
+it — the master plan's literal 4.5 deliverable.
+
+**Validating this against the real corpus found two real defects in
+`recheck_all.py` itself**, both corrected before trusting any of its
+output, per this project's own standing rule for this script
+("assume a high failure rate is this script before you assume it is
+the corpus"):
+
+1. **PDF text extraction silently failed in this session's
+   environment.** `pypdf` and `pdfminer.six` were not importable under
+   the `python3` this script runs as (they exist only under a
+   different Python installation's site-packages in this container).
+   `extract_pdf()`'s `except Exception: pass` around each extractor
+   swallowed the `ImportError` the same way it would swallow a genuine
+   per-PDF extraction failure, so every PDF citation (8 `courts.ca.gov`
+   URLs, 52 citations) came back a false `EMPTY` — confirmed false by
+   fetching one of the 8 URLs directly: a real, 254,886-byte, 17-page
+   PDF, not a dead link. `pip install pypdf pdfminer.six` fixed the
+   import in this environment but then crashed the whole script with
+   a Rust/PyO3 panic from a native ABI conflict with the
+   already-installed system `cryptography` package — worse than the
+   silent failure, so that install was reverted. This is recorded as a
+   known environment limitation (not a code fix made here, since
+   there's no requirements-pinning setup in this project to fix it
+   into), and the 52 contaminated `EMPTY` records were removed from
+   `recheck/history.jsonl` before committing rather than kept as
+   data — they say nothing true about the citations themselves. A
+   future run from an environment with a working PDF stack should
+   recheck these 8 URLs for real.
+2. **leginfo's `billTextClient.xhtml` (enrolled bill text) pages
+   return a Cloudflare JS bot-challenge page**, not the real content —
+   confirmed by fetching one directly: a 5,888-byte `<title>Just a
+   moment...</title>` page referencing `challenges.cloudflare.com`.
+   That's well over the script's 500-byte EMPTY threshold, so every
+   quote checked against it reported a false `MISMATCH` — 131 of them,
+   across 61 distinct bill-text URLs, in the validation run. Added a
+   new `BLOCKED` status (checked before the quote-match attempt, same
+   "untested, not failed" reasoning as `RATE_LIMITED`) so this is
+   recorded honestly instead of looking like 131 real citation
+   mismatches. Extracted the per-citation classification logic into a
+   standalone `classify_status()` so this exact regression — and the
+   `UNRESOLVED_URL` one already in the code — has a direct,
+   network-free unit test (`tests/tools/test_recheck_all_resume.py`)
+   instead of only being catchable by a live run.
+
+**The validation run itself, after both fixes**: 265 citations checked
+across 150 statutory URLs (a `--limit` sample, not the full ~3,400-URL
+population) — 134 `PASS`, 131 `BLOCKED` (not a finding — untested, not
+failed), 0 `MISMATCH`, 0 `EMPTY`. `recheck/findings.json` and the
+promotion report both correctly show 0 dead links / 0 mismatches for
+this run. A full statutory sweep (and periodically re-running it on a
+schedule, the way this phase's whole design is meant to support) is a
+separate, later decision — same reasoning as the verifier's and
+watcher's full-corpus-run questions, and this one's quicker to resume
+any time since it's a deterministic curl loop, not an LLM research
+task.

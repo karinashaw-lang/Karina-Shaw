@@ -26,9 +26,11 @@ from datetime import date, timedelta
 
 TIERS_PATH = 'tiers.json'
 HISTORY_PATH = 'tiers_history.jsonl'
+RECHECK_FINDINGS_PATH = os.path.join('recheck', 'findings.json')
 TOP_N = 20
 TIER_KEYS = ('A', 'B', 'C', 'total')
 EMPTY_COUNTS = {'A': 0, 'B': 0, 'C': 0, 'total': 0}
+DEAD_LINK_STATUSES = {'EMPTY', 'UNRESOLVED_URL'}
 
 
 def load_tiers():
@@ -84,6 +86,19 @@ def week_over_week_deltas(tiers, baseline):
     return deltas
 
 
+def load_recheck_findings():
+    """Phase 4.5: tools/recheck_findings.py's output -- the latest
+    recheck_all.py run's dead links (EMPTY/UNRESOLVED_URL) and quote
+    mismatches (MISMATCH), plus the run's date and total citations
+    checked. Returns None when no recheck has ever been run, so the
+    report can say that plainly instead of reading an absent recheck
+    as a clean result."""
+    if not os.path.exists(RECHECK_FINDINGS_PATH):
+        return None
+    with open(RECHECK_FINDINGS_PATH, encoding='utf-8') as f:
+        return json.load(f)
+
+
 def closest_to_b(tiers):
     docs = tiers['documents']
     c_docs = [(doc_id, info) for doc_id, info in docs.items() if info['tier'] == 'C']
@@ -91,7 +106,7 @@ def closest_to_b(tiers):
     return c_docs[:TOP_N]
 
 
-def format_text(tiers, history):
+def format_text(tiers, history, recheck_findings):
     lines = [f"Promotion report — {tiers['generated_at']}", '']
 
     lines.append(f"{'Category':<24} {'A':>5} {'B':>5} {'C':>5} {'Total':>7}")
@@ -122,11 +137,23 @@ def format_text(tiers, history):
         lines.append('  (no Tier C documents)')
     for doc_id, info in top:
         lines.append(f"  {doc_id}: {'; '.join(info['blockingB'])}")
+    lines.append('')
+
+    lines.append('Citation recheck (Phase 4.5):')
+    if recheck_findings is None:
+        lines.append('  No recheck has been run yet (tools/recheck_all.py / recheck_findings.py).')
+    else:
+        findings = recheck_findings['findings']
+        dead = sum(1 for f in findings if f['status'] in DEAD_LINK_STATUSES)
+        mismatch = sum(1 for f in findings if f['status'] == 'MISMATCH')
+        lines.append(f"  {dead} dead link(s), {mismatch} quote mismatch(es) "
+                      f"out of {recheck_findings['totalChecked']} citations checked "
+                      f"(run {recheck_findings['runDate']})")
 
     return '\n'.join(lines)
 
 
-def format_markdown(tiers, history):
+def format_markdown(tiers, history, recheck_findings):
     lines = [f"## Promotion report — {tiers['generated_at']}", '']
 
     lines.append('| Category | A | B | C | Total |')
@@ -168,6 +195,18 @@ def format_markdown(tiers, history):
         lines.append('|---|---|')
         for doc_id, info in top:
             lines.append(f"| `{doc_id}` | {'; '.join(info['blockingB'])} |")
+    lines.append('')
+
+    lines.append('### Citation recheck (Phase 4.5)')
+    if recheck_findings is None:
+        lines.append('No recheck has been run yet (`tools/recheck_all.py` / `recheck_findings.py`).')
+    else:
+        findings = recheck_findings['findings']
+        dead = sum(1 for f in findings if f['status'] in DEAD_LINK_STATUSES)
+        mismatch = sum(1 for f in findings if f['status'] == 'MISMATCH')
+        lines.append(f"**{dead}** dead link(s), **{mismatch}** quote mismatch(es) out of "
+                      f"{recheck_findings['totalChecked']} citations checked "
+                      f"(run {recheck_findings['runDate']}).")
 
     return '\n'.join(lines)
 
@@ -178,8 +217,10 @@ def main():
 
     tiers = load_tiers()
     history = load_history()
+    recheck_findings = load_recheck_findings()
 
-    print(format_markdown(tiers, history) if markdown else format_text(tiers, history))
+    print(format_markdown(tiers, history, recheck_findings) if markdown
+          else format_text(tiers, history, recheck_findings))
 
     if write_history:
         wrote = append_history(tiers)

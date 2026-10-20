@@ -600,6 +600,58 @@ in `DECISIONS.md`. The remaining ~10,300 of the corpus's 10,431 distinct
 citations haven't been scanned; running the watcher at full-corpus
 scale is a separate decision, same reasoning as the verifier's.
 
+## Citation recheck integration (Phase 4.5)
+
+Extends `tools/recheck_all.py` (write-time verification proves a quote
+was in text the author fetched; it cannot tell you whether the stored
+URL still returns that text — `recheck_all.py` re-fetches every stored
+citation URL and re-checks the quote against what comes back today)
+into something schedulable: results go to `recheck/history.jsonl`, one
+line per citation per run, tagged with that run's own `checkedAt` date.
+"Already done" for resume purposes means "already done in THIS run,"
+never "ever" — a container restart resuming mid-run skips what today's
+run already finished, but a later scheduled run re-checks every URL
+from scratch rather than skipping it forever after its first pass.
+`--limit N` caps one invocation's URL count, for spreading a full sweep
+across several scheduled runs.
+
+Only `--hosts statutory` is actually schedulable unattended: the
+CourtListener curl path is WAF-blocked (always a false `MISMATCH` — see
+`tools/README.md`), the same constraint that keeps the Phase 4.4
+watcher off a `ci.yml` schedule. `--hosts courtlistener`/`all` now
+prints a loud warning; verifying CourtListener-hosted citations still
+goes through the CourtListener MCP tools in an agent session (already
+done once, in full, before this phase — `tools/courtlistener_recheck_results.jsonl`'s
+1,656 entries, 0 remaining in its todo file).
+
+`tools/recheck_findings.py` turns the latest run's `EMPTY`/
+`UNRESOLVED_URL` (dead link) and `MISMATCH` (quote no longer matches)
+statuses into `recheck/findings.json` — a single JSON object
+(`runDate`, `totalChecked`, `findings[]`), not JSONL, so a fully clean
+run still records that a run happened rather than looking identical to
+"never run." `RATE_LIMITED` and `BLOCKED` are deliberately excluded
+(both untested, not failed — see below). `tools/promotion_report.py`
+reads this and surfaces a dead-link/mismatch count in both its text and
+`--markdown` output — the master plan's literal 4.5 deliverable.
+
+Validating this against the real corpus (a 150-URL `--limit` sample)
+found two real defects in `recheck_all.py` itself, both fixed before
+trusting any output: leginfo's `billTextClient.xhtml` bill-text pages
+return a Cloudflare JS challenge page that's long enough to pass the
+`EMPTY` check, which used to report a false `MISMATCH` on every quote
+checked against it (131 of them) — now a distinct `BLOCKED` status; and
+PDF extraction (`courts.ca.gov`) silently fails in an environment
+missing `pypdf`/`pdfminer.six`, producing a false `EMPTY` — a known
+environment limitation, documented in `tools/README.md`, not something
+fixed in code. The 52 contaminated `EMPTY` records from that second
+issue were removed before committing `recheck/history.jsonl`, rather
+than kept as data that says nothing true about the citations. The
+clean result: 265 citations checked, 134 `PASS`, 131 `BLOCKED`, 0
+`MISMATCH`, 0 `EMPTY` — `recheck/findings.json` and the promotion
+report both correctly show 0 dead links / 0 mismatches. Full writeup in
+`DECISIONS.md`. A full ~3,400-URL statutory sweep is a separate, later
+decision, same reasoning as the verifier's and watcher's.
+
 ## Where Phase 2/3 (and beyond) will change this next
 
 Phase 2 (2.1 field schema, 2.2 shared field library, 2.2b `whyWeAsk` text
@@ -628,13 +680,12 @@ yet" framing, which will need its own ranking logic once there's a real
 per-document signal to rank by.
 
 Phase 4.3 (per-category staleness thresholds + the annual CA-statute
-recheck rule) is also done, end to end — see "Verification & staleness
-gate" above. Phase 4.4's law-change watcher is built, tested, and has now run its
-first real dry run (see "Law-change watcher (Phase 4.4)" above) — done,
-end to end, for the scope the master plan's acceptance line asks for.
-One phase in this part of the plan is still fully open: 4.5 (putting
-`recheck_all.py` on a schedule and surfacing dead-link/quote-drift
-counts in the promotion report).
+recheck rule), 4.4 (the law-change watcher, including its first real
+dry run), and 4.5 (citation recheck integration, including its own
+first real validation run) are all done, end to end — see "Verification
+& staleness gate," "Law-change watcher (Phase 4.4)," and "Citation
+recheck integration (Phase 4.5)" above. All of Phase 4 as the master
+plan scopes it is now complete.
 
 What's left that Phase 2/3 deliberately didn't do: `whyWeAsk` for the
 ~650 field ids outside the shared library (out of scope for 2.2b — see

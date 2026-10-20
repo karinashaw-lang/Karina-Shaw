@@ -11,14 +11,36 @@ cites it is checked against that one fetch. And results are appended to a
 JSONL as they are produced, so a container restart resumes where it stopped
 instead of starting over.
 
+Phase 4.5 makes this schedulable: results go to recheck/history.jsonl (not
+a root-level file), one line per citation per run, tagged with the run's
+own `checkedAt` date -- "already done" for resume purposes means "already
+checked in THIS run" (same checkedAt), never "ever checked at all," so a
+later scheduled run re-checks everything again rather than skipping a URL
+forever after its first pass. `--limit N` caps how many URLs one invocation
+checks, for a scheduled sweep that spreads a full pass across several runs
+rather than doing all ~3,400 statutory URLs in one sitting.
+
 Usage:
   python3 tools/recheck_all.py [--hosts statutory|courtlistener|all]
                                [--out PATH] [--delay SECONDS]
+                               [--run-date YYYY-MM-DD] [--limit N]
 
 Run the courtlistener set only when no expansion workers are running: they
-share that quota, and exhausting it stops their research mid-document.
+share that quota, and exhausting it stops their research mid-document --
+and only via the CourtListener MCP tools in an agent session, never via
+this script's curl path: CourtListener's AWS WAF returns a JavaScript
+bot-challenge page to curl for that host (confirmed, not theoretical --
+see tools/README.md's courtlistener_recheck_results.jsonl section), so
+every `--hosts courtlistener`/`all` result from this script is a false
+MISMATCH. Only `--hosts statutory` is safe to actually schedule.
+
+After a run, `tools/recheck_findings.py` turns the latest run's bad
+statuses into recheck/findings.jsonl -- the "open a finding when a URL
+dies or a quote no longer matches" half of Phase 4.5 -- which
+tools/promotion_report.py then surfaces a dead-link/mismatch count from.
 """
 import json, re, subprocess, time, html, unicodedata, sys, os, collections
+from datetime import date
 from urllib.parse import urlparse
 
 UA = ('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 '
@@ -312,11 +334,71 @@ def fetch(url, host, retries=3):
         return []
 
 
+def classify_status(bodies, rate_limited, quote):
+    """A citation's status given its url's already-fetched candidate
+    bodies -- pure and network-free, so it's directly unit-testable
+    (tests/tools/test_recheck_all_resume.py) rather than only
+    exercisable by making a live request.
+
+    Order matters: each check below is a real failure mode found live
+    against the corpus (see the comments on each one), and a body can
+    satisfy more than one superficially -- a Cloudflare challenge page
+    is also "not a statutory page," for instance -- so the more
+    specific, more informative status has to be checked first or it
+    never gets reported."""
+    if rate_limited:
+        # A 429 that survived backoff is not evidence about the
+        # citation either way — record it as untested, not failed.
+        return 'RATE_LIMITED'
+    best = max((len(b) for b in bodies), default=0)
+    if best < 500:
+        return 'EMPTY'
+    joined = '\n'.join(bodies)
+    if 'Please Select from the List below' in joined:
+        # No statutory text on the page at all: the citation does not
+        # resolve. That is a broken link, not a wrong quote.
+        return 'UNRESOLVED_URL'
+    if 'challenges.cloudflare.com' in joined or 'Just a moment' in joined:
+        # Found live, during Phase 4.5: leginfo's billTextClient.xhtml
+        # (enrolled bill text, as opposed to codes_displaySection.xhtml
+        # statute pages) returns a Cloudflare JS bot-challenge page --
+        # well over 500 bytes, so it passes the EMPTY check, but it is
+        # not the real content either; checking the quote against it
+        # would report a false MISMATCH on every single one. curl can't
+        # execute the JS challenge, and re-seeding the JSF session (the
+        # leginfo-empty-body retry in main()'s loop) doesn't bypass a
+        # Cloudflare challenge either, so this is recorded as an honest
+        # "blocked", not retried.
+        return 'BLOCKED'
+    if any(quote_present(b, quote) for b in bodies):
+        return 'PASS'
+    return 'MISMATCH'
+
+
+def done_for_run(out_path, run_date):
+    """Urls already checked in the run dated `run_date` -- not ever, just
+    this run -- so resuming after a container restart skips what today's
+    run already finished, while a later scheduled run (a different date)
+    re-checks every url from scratch."""
+    done = set()
+    if os.path.exists(out_path):
+        for line in open(out_path):
+            try:
+                rec = json.loads(line)
+                if rec.get('checkedAt') == run_date:
+                    done.add(rec['url'])
+            except Exception:
+                pass
+    return done
+
+
 def main():
     args = sys.argv[1:]
     which = 'statutory'
-    out = 'recheck_results.jsonl'
+    out = os.path.join('recheck', 'history.jsonl')
     delay = 1.2
+    run_date = date.today().isoformat()
+    limit = None
     for i, a in enumerate(args):
         if a == '--hosts' and i + 1 < len(args):
             which = args[i + 1]
@@ -324,6 +406,16 @@ def main():
             out = args[i + 1]
         if a == '--delay' and i + 1 < len(args):
             delay = float(args[i + 1])
+        if a == '--run-date' and i + 1 < len(args):
+            run_date = args[i + 1]
+        if a == '--limit' and i + 1 < len(args):
+            limit = int(args[i + 1])
+
+    if 'courtlistener' in which:
+        print('WARNING: curl-based CourtListener fetches are WAF-blocked (always a false '
+              'MISMATCH) -- see tools/README.md. Use the CourtListener MCP tools in an agent '
+              'session instead; this script should only be scheduled with --hosts statutory.',
+              file=sys.stderr)
 
     hosts = {'statutory': STATUTORY, 'courtlistener': COURTLISTENER,
              'all': STATUTORY + COURTLISTENER}[which]
@@ -337,18 +429,15 @@ def main():
             if urlparse(ct['url']).netloc in hosts:
                 by_url[ct['url']].append((c['id'], ct['quote'], ct['cite']))
 
-    done = set()
-    if os.path.exists(out):
-        for line in open(out):
-            try:
-                done.add(json.loads(line)['url'])
-            except Exception:
-                pass
+    done = done_for_run(out, run_date)
     todo = [u for u in sorted(by_url) if u not in done]
+    if limit is not None:
+        todo = todo[:limit]
     total_q = sum(len(by_url[u]) for u in by_url)
     print(f'{total_q} citations across {len(by_url)} unique URLs; '
-          f'{len(done)} URLs already done, {len(todo)} to go', flush=True)
+          f'{len(done)} URLs already done for {run_date}, {len(todo)} in this run', flush=True)
 
+    os.makedirs(os.path.dirname(out) or '.', exist_ok=True)
     seed_leginfo()
     fh = open(out, 'a')
     counts = collections.Counter()
@@ -363,33 +452,19 @@ def main():
             bodies = fetch(url, host)
         rate_limited = bodies == ['__RATE_LIMITED__']
         best = 0 if rate_limited else max((len(b) for b in bodies), default=0)
-        joined = '' if rate_limited else '\n'.join(bodies)
         for cid, quote, cite in by_url[url]:
-            if rate_limited:
-                # A 429 that survived backoff is not evidence about the
-                # citation either way — record it as untested, not failed.
-                status = 'RATE_LIMITED'
-            elif best < 500:
-                status = 'EMPTY'
-            elif 'Please Select from the List below' in joined:
-                # No statutory text on the page at all: the citation does not
-                # resolve. That is a broken link, not a wrong quote.
-                status = 'UNRESOLVED_URL'
-            elif any(quote_present(b, quote) for b in bodies):
-                status = 'PASS'
-            else:
-                status = 'MISMATCH'
+            status = classify_status(bodies, rate_limited, quote)
             counts[status] += 1
             fh.write(json.dumps({'clause': cid, 'url': url, 'cite': cite,
                                  'status': status, 'bytes': best,
-                                 'quote': quote[:400]}) + '\n')
+                                 'quote': quote[:400], 'checkedAt': run_date}) + '\n')
         fh.flush()
         if n % 100 == 0:
             print(f'  {n}/{len(todo)} URLs  {dict(counts)}', file=sys.stderr, flush=True)
         time.sleep(delay)
     fh.close()
     print('\n' + json.dumps(dict(counts)))
-    print(f'results in {out}')
+    print(f'results in {out} (run date {run_date})')
     return 0
 
 

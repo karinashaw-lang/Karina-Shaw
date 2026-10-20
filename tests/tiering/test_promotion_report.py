@@ -103,6 +103,44 @@ class PromotionReportTests(unittest.TestCase):
         self.assertIn('| Category | A | B | C | Total |', r.stdout)
         self.assertIn('## Promotion report', r.stdout)
 
+    def test_no_recheck_findings_file_reports_never_run(self):
+        write_tiers(self.d, {}, {'ALL': {'A': 0, 'B': 0, 'C': 0, 'total': 0}})
+        r = run_report(self.d)
+        self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+        self.assertIn('No recheck has been run yet', r.stdout)
+
+    def test_recheck_findings_counts_surfaced(self):
+        write_tiers(self.d, {}, {'ALL': {'A': 0, 'B': 0, 'C': 0, 'total': 0}})
+        os.makedirs(os.path.join(self.d, 'recheck'))
+        findings = {
+            'runDate': '2026-10-20', 'totalChecked': 4,
+            'findings': [
+                {'clause': 'c1', 'url': 'https://example.com/1', 'cite': 'x', 'status': 'EMPTY', 'bytes': 0, 'quote': 'q', 'checkedAt': '2026-10-20'},
+                {'clause': 'c2', 'url': 'https://example.com/2', 'cite': 'x', 'status': 'UNRESOLVED_URL', 'bytes': 900, 'quote': 'q', 'checkedAt': '2026-10-20'},
+                {'clause': 'c3', 'url': 'https://example.com/3', 'cite': 'x', 'status': 'MISMATCH', 'bytes': 900, 'quote': 'q', 'checkedAt': '2026-10-20'},
+            ],
+        }
+        with open(os.path.join(self.d, 'recheck', 'findings.json'), 'w') as f:
+            json.dump(findings, f)
+        r = run_report(self.d)
+        self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+        self.assertIn('2 dead link(s), 1 quote mismatch(es)', r.stdout)
+        self.assertIn('4 citations checked', r.stdout)
+        self.assertIn('run 2026-10-20', r.stdout)
+
+    def test_recheck_findings_in_markdown(self):
+        write_tiers(self.d, {}, {'ALL': {'A': 0, 'B': 0, 'C': 0, 'total': 0}})
+        os.makedirs(os.path.join(self.d, 'recheck'))
+        findings = {'runDate': '2026-10-20', 'totalChecked': 1,
+                     'findings': [{'clause': 'c1', 'url': 'https://example.com/1', 'cite': 'x',
+                                   'status': 'MISMATCH', 'bytes': 900, 'quote': 'q', 'checkedAt': '2026-10-20'}]}
+        with open(os.path.join(self.d, 'recheck', 'findings.json'), 'w') as f:
+            json.dump(findings, f)
+        r = run_report(self.d, '--markdown')
+        self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+        self.assertIn('### Citation recheck (Phase 4.5)', r.stdout)
+        self.assertIn('**0** dead link(s), **1** quote mismatch(es)', r.stdout)
+
 
 if __name__ == '__main__':
     unittest.main()

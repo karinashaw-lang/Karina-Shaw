@@ -33,6 +33,8 @@ jobs:
           python3 tests/verifier/test_triage.py -v
           python3 tests/tools/test_build_citation_index.py -v
           python3 tests/watcher/test_watcher.py -v
+          python3 tests/tools/test_recheck_all_resume.py -v
+          python3 tests/tools/test_recheck_findings.py -v
       - name: Promotion report
         run: python3 tools/promotion_report.py --markdown >> "$GITHUB_STEP_SUMMARY"
 
