@@ -113,6 +113,8 @@ jobs:
         run: set -o pipefail; node tests/search/golden_search.js | tee golden-search.log
       - name: Run intake_coverage.js
         run: set -o pipefail; node tests/search/intake_coverage.js | tee intake-coverage.log
+      - name: Run related_coverage.js
+        run: set -o pipefail; node tests/search/related_coverage.js | tee related-coverage.log
       - name: Upload logs on failure
         if: failure()
         uses: actions/upload-artifact@v4
@@ -125,4 +127,5 @@ jobs:
             wizard-unit.log
             golden-search.log
             intake-coverage.log
+            related-coverage.log
           if-no-files-found: warn

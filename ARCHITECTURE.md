@@ -739,6 +739,41 @@ its narrowing questions do nothing. All 88 currently pass for real.
 Full writeup, including why this reuses the search engine instead of a
 hand-authored mapping, in `search/README.md` and `DECISIONS.md`.
 
+## Related-document suggestions (Phase 5.3)
+
+Every output screen (`#screen-output`) now shows a "related documents"
+section below the signature area, populated by `relatedDocuments(doc)`.
+Relatedness is computed purely from structure already in the corpus —
+shared clauses (via `clauseEntryId()`), shared fields (via
+`sharedFieldId`), and category adjacency — never from usage telemetry,
+since this static, no-backend app collects none. Both shared-clause and
+shared-field overlap are weighted by rarity with the same idf idea
+Phase 5.1's search engine uses (`idfWeight()` in `app.js`): a field like
+`companyName`, shared by 409 of 740 documents, says almost nothing about
+two specific documents being related, where a field or clause shared by
+only a handful of documents says a great deal. `buildRelatedDocsIndex()`
+(called once from `init()`, alongside `buildDocumentIndex()`) precomputes
+`state.clauseDocCount`/`state.sharedFieldDocCount` so every candidate
+document's score is a cheap lookup rather than a corpus-wide scan.
+
+The heading shown is one of the two exact strings the master plan
+specifies: "Documents often used alongside" only when at least one of
+the top-ranked results is backed by a real shared clause or a
+genuinely rare (≤10-document) shared field; "Related documents"
+otherwise, covering the honest case where only category adjacency or
+near-universal field sharing links two documents. Clicking a related
+card starts that document's wizard directly (same as clicking it from
+the picker), with a fresh answer set — it doesn't carry over the
+document just finished.
+
+`tests/search/related_coverage.js` runs `relatedDocuments()` against
+every real document in the corpus and checks: suggestions are non-empty
+for all but a small fraction (today, 0/740), the label is always one of
+the two allowed strings, no document ever suggests itself, and both
+labels are genuinely exercised above a floor (today, 343 "often used
+alongside" / 397 "Related documents") rather than one being only
+theoretically reachable. Full writeup in `DECISIONS.md`.
+
 ## Where Phase 2/3 (and beyond) will change this next
 
 Phase 2 (2.1 field schema, 2.2 shared field library, 2.2b `whyWeAsk` text

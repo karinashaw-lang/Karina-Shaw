@@ -98,3 +98,16 @@ described," never framed as a recommendation — the master plan's own
 required wording for exactly this reason: every result still carries
 its own real title and description for the reader to judge, the same
 as the ordinary picker.
+
+## Related documents (Phase 5.3) — no data file here
+
+Phase 5.3's "related documents" feature (shown on the output screen)
+has no data file under this directory: it's computed entirely from
+structure already in `data/documents.json`/`data/clauses.json` (shared
+clauses, shared fields, category adjacency), not from any precomputed
+or generated content. The logic (`relatedDocuments()`, `idfWeight()`,
+`buildRelatedDocsIndex()`) lives in `app.js` next to the other two
+search engines this directory's data feeds, and its CI test,
+`tests/search/related_coverage.js`, lives alongside `golden_search.js`
+and `intake_coverage.js` for the same reason. Full writeup in
+`ARCHITECTURE.md`'s and `DECISIONS.md`'s Phase 5.3 entries.

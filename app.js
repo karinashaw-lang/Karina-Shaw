@@ -727,6 +727,7 @@ async function init() {
   updateLibraryCount();
   buildClauseIndex();
   buildDocumentIndex();
+  buildRelatedDocsIndex();
 }
 
 // ---------- read a contract: clause-matching engine ----------
@@ -1881,6 +1882,132 @@ function assembleDocument() {
     }));
 }
 
+// ---------- related-document suggestions (Phase 5.3) ----------
+// Computed entirely from structural overlap already in the corpus --
+// shared clauses, shared fields (via sharedFieldId), and category
+// adjacency -- never from usage telemetry, since this static,
+// no-backend app has none to collect. Both shared-clause and
+// shared-field overlap are weighted by rarity (the same idf idea
+// Phase 5.1's search engine uses): companyName is shared by 409 of
+// 740 documents and says almost nothing about two specific documents
+// being related, where a field or clause shared by only 2-3 documents
+// says a great deal. Raw, unweighted counting would treat those the
+// same.
+function buildRelatedDocsIndex() {
+  const clauseDocCount = new Map();
+  const sharedFieldDocCount = new Map();
+  state.documents.forEach(d => {
+    new Set(d.clauseOrder.map(clauseEntryId)).forEach(id => {
+      clauseDocCount.set(id, (clauseDocCount.get(id) || 0) + 1);
+    });
+    new Set((d.fields || []).map(f => f.sharedFieldId).filter(Boolean)).forEach(id => {
+      sharedFieldDocCount.set(id, (sharedFieldDocCount.get(id) || 0) + 1);
+    });
+  });
+  state.clauseDocCount = clauseDocCount;
+  state.sharedFieldDocCount = sharedFieldDocCount;
+}
+
+const RELATED_DOC_LIMIT = 5;
+const RELATED_CLAUSE_WEIGHT = 5;
+const RELATED_FIELD_WEIGHT = 2;
+const RELATED_CATEGORY_WEIGHT = 1;
+// A shared field used by more than this many documents (companyName,
+// employeeName, dateSigned...) is common enough that sharing it says
+// nothing specific about these two documents being related -- it
+// still counts (weighted low by idf below), but never on its own
+// earns the stronger "often used alongside" label.
+const RARE_FIELD_DOC_LIMIT = 10;
+
+function idfWeight(docCount) {
+  const n = state.documents.length;
+  return Math.log(1 + n / docCount);
+}
+
+// For one candidate document against the one being viewed: an idf-
+// weighted relatedness score plus the raw signal counts the label
+// decision in renderRelatedDocuments() needs (a real shared clause, or
+// a genuinely rare shared field, is what justifies "often used
+// alongside" over the plainer "related documents").
+function scoreRelatedCandidate(doc, candidate, docClauseIds, docSharedFieldIds, docCategories) {
+  const candidateClauseIds = new Set(candidate.clauseOrder.map(clauseEntryId));
+  let sharedClauses = 0;
+  let clauseScore = 0;
+  candidateClauseIds.forEach(id => {
+    if (docClauseIds.has(id)) {
+      sharedClauses++;
+      clauseScore += idfWeight(state.clauseDocCount.get(id) || 1);
+    }
+  });
+
+  const candidateSharedFieldIds = new Set((candidate.fields || []).map(f => f.sharedFieldId).filter(Boolean));
+  let rareSharedFields = 0;
+  let fieldScore = 0;
+  candidateSharedFieldIds.forEach(id => {
+    if (docSharedFieldIds.has(id)) {
+      const count = state.sharedFieldDocCount.get(id) || 1;
+      if (count <= RARE_FIELD_DOC_LIMIT) rareSharedFields++;
+      fieldScore += idfWeight(count);
+    }
+  });
+
+  const sharedCategories = (candidate.categories || []).filter(c => docCategories.has(c)).length;
+
+  const score = clauseScore * RELATED_CLAUSE_WEIGHT
+              + fieldScore * RELATED_FIELD_WEIGHT
+              + sharedCategories * RELATED_CATEGORY_WEIGHT;
+  return { document: candidate, score, sharedClauses, rareSharedFields };
+}
+
+function relatedDocuments(doc) {
+  const docClauseIds = new Set(doc.clauseOrder.map(clauseEntryId));
+  const docSharedFieldIds = new Set((doc.fields || []).map(f => f.sharedFieldId).filter(Boolean));
+  const docCategories = new Set(doc.categories || []);
+
+  const scored = state.documents
+    .filter(d => d.id !== doc.id)
+    .map(d => scoreRelatedCandidate(doc, d, docClauseIds, docSharedFieldIds, docCategories))
+    .filter(r => r.score > 0)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, RELATED_DOC_LIMIT);
+
+  // "Often used alongside" is only used when at least one shown result
+  // is backed by a real shared clause or a genuinely rare shared
+  // field -- never earned by category adjacency or a handful of
+  // near-universal fields alone, which "related documents" (the
+  // master plan's own fallback) already covers honestly.
+  const strong = scored.some(r => r.sharedClauses > 0 || r.rareSharedFields > 0);
+  return { items: scored, label: strong ? 'Documents often used alongside' : 'Related documents' };
+}
+
+function renderRelatedDocuments() {
+  const section = document.getElementById('output-related');
+  const heading = document.getElementById('output-related-heading');
+  const list = document.getElementById('output-related-list');
+  const { items, label } = relatedDocuments(state.document);
+
+  if (items.length === 0) {
+    section.hidden = true;
+    return;
+  }
+  section.hidden = false;
+  heading.textContent = label;
+  list.innerHTML = '';
+  items.forEach(({ document: d }) => {
+    const card = document.createElement('button');
+    card.type = 'button';
+    card.className = 'related-doc-card';
+    card.innerHTML = `<h4>${d.title}</h4><p>${d.description}</p>`;
+    card.addEventListener('click', () => {
+      state.document = d;
+      state.answers = {};
+      renderWizard();
+      showScreen('screen-wizard');
+    });
+    list.appendChild(card);
+  });
+}
+
 function renderOutput() {
   const assembled = assembleDocument();
   state.edits = {};
@@ -1952,6 +2079,7 @@ function renderOutput() {
   });
 
   renderSignatureSection();
+  renderRelatedDocuments();
 }
 
 // Flips a verified clause's badge to an "edited" state the first time

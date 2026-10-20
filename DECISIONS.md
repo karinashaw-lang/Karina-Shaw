@@ -722,3 +722,62 @@ before its original import line ever ran. Moved the import to the
 module level rather than adding a second local one, which would have
 just hidden the same fragility from the next person who needed `os`
 earlier in the function.
+
+## Phase 5.3: related-document suggestions
+
+**Weighted shared signals by rarity before writing any scoring code,**
+not after finding a bug. Checked the real corpus distributions first:
+clause sharing is rare in absolute terms (17 of 6610 clauses are ever
+reused across documents at all) so any shared clause is inherently
+meaningful, but shared-field usage via `sharedFieldId` ranges from 3
+documents up to 409 (`companyName`). Raw, unweighted counting would
+have treated a shared `companyName` field as equally significant as a
+shared field used by only 3 documents, which is exactly the kind of
+false-signal bug Phase 5.1's search engine hit with the stopword "got"
+outweighing "fired" — so this phase applied the same idf-weighting fix
+proactively, before implementing the naive version at all, rather than
+discovering the flaw in production. `idfWeight()` reuses the identical
+log-scaled formula Phase 5.1 already uses for query-term weighting.
+
+**Never considered usage telemetry**, despite the master plan listing
+it as one of three possible signals ("related documents computed from
+shared clauses, shared fields, and category adjacency"). This is a
+static, no-backend app with no server and no analytics pipeline — there
+is no usage data to compute from, and adding one to support this one
+feature would be a far larger architectural change than the feature
+itself justifies. The three signals actually used (shared clauses,
+shared fields, category adjacency) are exactly the three the master
+plan names; nothing was dropped, just nothing was invented to stand in
+for telemetry that doesn't exist.
+
+**The "often used alongside" vs. "Related documents" label decision is
+a threshold on real signal strength, not a vibe.** The stronger label
+only appears when at least one shown result shares a real clause or a
+genuinely rare (≤10-document) field with the document being viewed —
+never earned by category adjacency alone or by sharing only
+near-universal fields, both of which still contribute to ranking (at
+low weight) but never unlock the stronger wording on their own. This
+mirrors how Phase 5.1/5.2's "never advise" principle extends past literal
+recommendation language into labels that could themselves overstate
+confidence: "often used alongside" is a claim about real overlap, so it
+only appears when the overlap is real and specific.
+
+**Verified full-corpus coverage against the live app before writing the
+CI test**, the same way Phase 5.1's golden queries and Phase 5.2's
+intake branches were verified against the real engine before being
+frozen into a fixture: 740/740 documents produce at least one related
+suggestion (0 empty), with both labels genuinely exercised (343 "often
+used alongside," 397 "Related documents") rather than one being only
+theoretically reachable. `tests/search/related_coverage.js` encodes this
+as a CI gate with slack for corpus growth (≤2% empty, ≥10% floor on each
+label) rather than hardcoding the exact counts, so the test stays
+meaningful as documents are added rather than becoming a brittle
+snapshot.
+
+**No new free-text content needed authoring, and no new advisory-lint
+coverage was needed either.** Unlike 5.1 (`lay_terms.json`) and 5.2
+(`intake_flow.json`), this phase introduces no new user-facing strings
+beyond the two fixed, master-plan-specified labels — related documents
+are presented using their own already-existing, already-linted titles
+and descriptions. There was nothing new for `validate_corpus.py`'s
+advisory lint to check.
