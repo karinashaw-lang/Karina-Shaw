@@ -1,4 +1,4 @@
-const state = { documents: null, document: null, clauses: null, answers: {}, categoryFilter: null, edits: {}, editedClauseIds: new Set(), currentEntryId: null, jurisdictionByDoc: null, sharedFields: null, wizardSteps: [], wizardStepIndex: 0, wizardReviewing: false, tiers: null, tierFilter: null, tierSortEnabled: false, layTerms: null, searchQuery: '', searchResults: null };
+const state = { documents: null, document: null, clauses: null, answers: {}, categoryFilter: null, edits: {}, editedClauseIds: new Set(), currentEntryId: null, jurisdictionByDoc: null, sharedFields: null, wizardSteps: [], wizardStepIndex: 0, wizardReviewing: false, tiers: null, tierFilter: null, tierSortEnabled: false, layTerms: null, searchQuery: '', searchResults: null, intakeFlow: null, intakeCategory: null, intakeStep: 0, intakeAnswers: [] };
 
 // Draft persistence. Local-only, one slot at a time — closing the tab
 // mid-wizard shouldn't lose someone's answers. localStorage can throw
@@ -700,22 +700,24 @@ async function loadSharedFields() {
 }
 
 async function init() {
-  const [docs, clauseData, sharedFields, tiers, layTerms] = await Promise.all([
+  const [docs, clauseData, sharedFields, tiers, layTerms, intakeFlow] = await Promise.all([
     fetch('data/documents.json').then(r => r.json()),
     fetch('data/clauses.json').then(r => r.json()),
     loadSharedFields(),
     fetch('tiers.json').then(r => r.json()),
-    // search/lay_terms.json is additive, not load-bearing -- search
-    // still works off title/description/category alone without it, so
-    // a fetch failure degrades the lay-synonym layer rather than the
-    // whole app.
+    // search/lay_terms.json and intake_flow.json are additive, not
+    // load-bearing -- search and the category-filter picker still work
+    // without either, so a fetch failure degrades the lay-synonym
+    // layer / disables the intake flow link rather than the whole app.
     fetch('search/lay_terms.json').then(r => r.json()).catch(() => ({})),
+    fetch('search/intake_flow.json').then(r => r.json()).catch(() => ({})),
   ]);
   state.documents = docs;
   state.clauses = clauseData.clauses;
   state.sharedFields = sharedFields;
   state.tiers = tiers.documents;
   state.layTerms = layTerms;
+  state.intakeFlow = intakeFlow;
   buildJurisdictionIndex();
   renderCategoryFilter();
   renderTierFilter();
@@ -1175,10 +1177,16 @@ const DOC_SEARCH_LIMIT = 24;
 // [] for a query with no recognizable terms at all, rather than every
 // document in an arbitrary order -- the caller (renderPicker) is what
 // decides how to render "no results" versus "no search active."
-function searchDocuments(query) {
+// The scoring core behind searchDocuments(), factored out so Phase
+// 5.2's intake flow can rank within one category's documents only
+// (`allowedIndices`) rather than the whole corpus -- the same
+// cosine-similarity math either way, just over a restricted candidate
+// pool instead of every document's inverted-index entry.
+function scoreDocuments(query, allowedIndices) {
   const rawTokens = tokenize(query);
   if (rawTokens.length === 0) return [];
   const resolvedTokens = rawTokens.map(resolveTypo);
+  const allowed = allowedIndices ? new Set(allowedIndices) : null;
 
   const scores = new Map();
   const matchedTermsByDoc = new Map();
@@ -1187,6 +1195,7 @@ function searchDocuments(query) {
     if (!idf) return;
     const docList = state.docInvertedIndex.get(t) || [];
     docList.forEach(idx => {
+      if (allowed && !allowed.has(idx)) return;
       scores.set(idx, (scores.get(idx) || 0) + idf * idf);
       if (!matchedTermsByDoc.has(idx)) matchedTermsByDoc.set(idx, new Set());
       matchedTermsByDoc.get(idx).add(t);
@@ -1207,7 +1216,11 @@ function searchDocuments(query) {
   });
 
   results.sort((a, b) => b.score - a.score);
-  return results.slice(0, DOC_SEARCH_LIMIT);
+  return results;
+}
+
+function searchDocuments(query) {
+  return scoreDocuments(query, null).slice(0, DOC_SEARCH_LIMIT);
 }
 
 function renderCategoryFilter() {
@@ -1319,6 +1332,162 @@ function renderDocSearch() {
       renderPicker();
     }, 150);
   });
+}
+
+// ---------- "which document do I need?" intake (Phase 5.2) ----------
+// A short, guided alternative to search/browse: pick a situation
+// category, answer 2 narrowing questions built from
+// search/intake_flow.json, and get a ranked list scored by the same
+// document search engine above -- restricted to that category's
+// documents, with each narrowing answer's keywords folded into the
+// query alongside the category name itself. This never tells anyone
+// which document is "the" answer: every result is presented with its
+// own real title and description, headed by "Documents that match
+// what you described" -- a description of the match, not a
+// recommendation. intakeStep 0 is the category picker; 1..N are that
+// category's narrowing questions; N+1 is the results screen.
+function startIntake() {
+  state.intakeCategory = null;
+  state.intakeStep = 0;
+  state.intakeAnswers = [];
+  renderIntakeStep();
+  showScreen('screen-intake');
+}
+
+function chooseIntakeCategory(category) {
+  state.intakeCategory = category;
+  state.intakeStep = 1;
+  state.intakeAnswers = [];
+  renderIntakeStep();
+}
+
+function answerIntakeQuestion(option) {
+  state.intakeAnswers.push(option);
+  state.intakeStep += 1;
+  renderIntakeStep();
+}
+
+function intakeBack() {
+  if (state.intakeStep === 0) {
+    showScreen('screen-picker');
+    return;
+  }
+  if (state.intakeStep === 1) {
+    state.intakeCategory = null;
+    state.intakeStep = 0;
+  } else {
+    state.intakeAnswers.pop();
+    state.intakeStep -= 1;
+  }
+  renderIntakeStep();
+}
+
+function intakeQuestionsForCategory(category) {
+  return (state.intakeFlow && state.intakeFlow[category]) || [];
+}
+
+function renderIntakeResults() {
+  const container = document.getElementById('intake-results');
+  const category = state.intakeCategory;
+  const categoryIndices = state.documents
+    .map((d, idx) => ((d.categories || []).includes(category) ? idx : -1))
+    .filter(idx => idx !== -1);
+
+  const keywordParts = [category, ...state.intakeAnswers.map(a => a.keywords).filter(Boolean)];
+  let scored = scoreDocuments(keywordParts.join(' '), categoryIndices);
+  if (scored.length === 0) {
+    // Every narrowing answer's keywords came up empty (e.g. "not sure
+    // / none of these"), or matched nothing -- fall back to the whole
+    // category rather than showing nothing after a real conversation.
+    scored = categoryIndices.map(idx => ({ document: state.documents[idx], matchedTerms: [] }));
+  }
+  const top = scored.slice(0, 10);
+
+  container.innerHTML = '';
+  const heading = document.createElement('p');
+  heading.className = 'intake-results-heading';
+  heading.textContent = 'Documents that match what you described';
+  container.appendChild(heading);
+
+  if (top.length === 0) {
+    const empty = document.createElement('p');
+    empty.className = 'search-empty';
+    empty.textContent = 'No documents matched. Try browsing by category instead.';
+    container.appendChild(empty);
+    return;
+  }
+
+  top.forEach(({ document: doc }) => {
+    const card = document.createElement('button');
+    card.className = 'doc-card';
+    card.type = 'button';
+    card.innerHTML = `
+      <div>
+        <h3>${doc.title}${jurisdictionBadgeHTML(doc)}${tierBadgeHTML(doc)}</h3>
+        <p>${doc.description}</p>
+      </div>
+      <span class="go">START <span aria-hidden="true">&rarr;</span></span>
+    `;
+    card.addEventListener('click', () => {
+      state.document = doc;
+      state.answers = {};
+      renderWizard();
+      showScreen('screen-wizard');
+      document.getElementById('draft-banner').hidden = true;
+    });
+    container.appendChild(card);
+  });
+}
+
+function renderIntakeStep() {
+  const prompt = document.getElementById('intake-prompt');
+  const options = document.getElementById('intake-options');
+  const results = document.getElementById('intake-results');
+  options.innerHTML = '';
+  results.innerHTML = '';
+
+  if (state.intakeStep === 0) {
+    prompt.textContent = "What's this about?";
+    options.hidden = false;
+    results.hidden = true;
+    // Derived live from the documents themselves, same as
+    // renderCategoryFilter() -- this app has no other declaration of
+    // the category list.
+    const categories = [...new Set(state.documents.flatMap(d => d.categories || []))];
+    categories.forEach(category => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'intake-option';
+      btn.textContent = category;
+      btn.addEventListener('click', () => chooseIntakeCategory(category));
+      options.appendChild(btn);
+    });
+    return;
+  }
+
+  const questions = intakeQuestionsForCategory(state.intakeCategory);
+  const questionIndex = state.intakeStep - 1;
+  if (questionIndex < questions.length) {
+    const q = questions[questionIndex];
+    prompt.textContent = q.prompt;
+    options.hidden = false;
+    results.hidden = true;
+    q.options.forEach(option => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'intake-option';
+      btn.textContent = option.label;
+      btn.addEventListener('click', () => answerIntakeQuestion(option));
+      options.appendChild(btn);
+    });
+    return;
+  }
+
+  // Past the last narrowing question: show the ranked results.
+  prompt.textContent = '';
+  options.hidden = true;
+  results.hidden = false;
+  renderIntakeResults();
 }
 
 // ---------- schema-driven wizard (Phase 2.3) ----------
@@ -2076,6 +2245,10 @@ document.getElementById('library-clear').addEventListener('click', () => {
 document.getElementById('incoming-link').addEventListener('click', () => {
   showScreen('screen-incoming');
 });
+document.getElementById('intake-link').addEventListener('click', () => {
+  startIntake();
+});
+document.getElementById('intake-back').addEventListener('click', () => intakeBack());
 document.getElementById('incoming-back').addEventListener('click', () => showScreen('screen-picker'));
 document.getElementById('incoming-form').addEventListener('submit', e => {
   e.preventDefault();

@@ -1,0 +1,168 @@
+{
+  "Business Formation": [
+    {
+      "id": "what",
+      "prompt": "What's this about?",
+      "options": [
+        {"id": "starting", "label": "Starting or structuring a new business", "keywords": "formation articles of organization incorporation starting a new business entity"},
+        {"id": "running", "label": "Running or governing an existing business", "keywords": "bylaws resolution operating agreement buy-sell board officer governance"},
+        {"id": "raising_money", "label": "Raising money or bringing in investors", "keywords": "safe note convertible investor equity offering exemption financing"},
+        {"id": "closing", "label": "Closing or dissolving a business", "keywords": "dissolution cancellation winding up terminate business"}
+      ]
+    },
+    {
+      "id": "entity",
+      "prompt": "What kind of entity, if you know?",
+      "options": [
+        {"id": "llc", "label": "LLC", "keywords": "llc limited liability company"},
+        {"id": "corporation", "label": "Corporation", "keywords": "corporation corporate shareholder"},
+        {"id": "partnership", "label": "Partnership", "keywords": "partnership general partnership limited partnership"},
+        {"id": "not_sure", "label": "Not sure / none of these", "keywords": ""}
+      ]
+    }
+  ],
+  "Confidentiality & IP": [
+    {
+      "id": "what",
+      "prompt": "What's this about?",
+      "options": [
+        {"id": "confidential", "label": "Keeping information confidential", "keywords": "nondisclosure confidentiality agreement confidential information"},
+        {"id": "restricting", "label": "Restricting a former employee or contractor from competing or soliciting", "keywords": "non-compete non-solicitation restrictive covenant"},
+        {"id": "ownership", "label": "Who owns something created at work", "keywords": "invention assignment work for hire ownership"},
+        {"id": "licensing", "label": "Licensing or transferring trademark, copyright, or patent rights", "keywords": "trademark license copyright assignment patent assignment"}
+      ]
+    },
+    {
+      "id": "parties",
+      "prompt": "Who's involved?",
+      "options": [
+        {"id": "employee", "label": "Me and an employee or contractor", "keywords": "employee contractor employment"},
+        {"id": "businesses", "label": "Two businesses or companies", "keywords": "business company vendor mutual"},
+        {"id": "idea", "label": "Me and someone I'm sharing an idea with", "keywords": "idea pitch disclosure"}
+      ]
+    }
+  ],
+  "During employment": [
+    {
+      "id": "what",
+      "prompt": "What's going on?",
+      "options": [
+        {"id": "onboarding", "label": "Onboarding or new-hire paperwork", "keywords": "new hire onboarding direct deposit handbook acknowledgment"},
+        {"id": "pay_time", "label": "Pay, overtime, or timekeeping", "keywords": "timesheet overtime pay wage reimbursement expense"},
+        {"id": "performance", "label": "Performance review or discipline", "keywords": "written warning corrective action performance review discipline"},
+        {"id": "leave", "label": "Leave, accommodation, or a workplace policy", "keywords": "leave accommodation policy pto vacation request"}
+      ]
+    },
+    {
+      "id": "form",
+      "prompt": "What kind of document are you picturing?",
+      "options": [
+        {"id": "form", "label": "A form to fill out or sign", "keywords": "form authorization request acknowledgment"},
+        {"id": "letter", "label": "A letter", "keywords": "letter notice"},
+        {"id": "policy", "label": "A policy or handbook", "keywords": "policy handbook"}
+      ]
+    }
+  ],
+  "Ending employment": [
+    {
+      "id": "what",
+      "prompt": "What's going on?",
+      "options": [
+        {"id": "let_go", "label": "Being let go or laid off", "keywords": "termination separation layoff warn act severance"},
+        {"id": "resigning", "label": "Resigning or leaving voluntarily", "keywords": "resignation exit interview"},
+        {"id": "wrapping_up", "label": "Wrapping up pay, benefits, or property", "keywords": "final wage cobra property return equipment return"},
+        {"id": "dispute", "label": "A dispute about the termination", "keywords": "wrongful termination retaliation waiting time penalty"}
+      ]
+    },
+    {
+      "id": "side",
+      "prompt": "Which side are you on?",
+      "options": [
+        {"id": "employee", "label": "I'm the employee", "keywords": "employee"},
+        {"id": "employer", "label": "I'm the employer", "keywords": "employer company"}
+      ]
+    }
+  ],
+  "Estate Planning": [
+    {
+      "id": "what",
+      "prompt": "What's going on?",
+      "options": [
+        {"id": "planning_ahead", "label": "Planning ahead for myself", "keywords": "will trust power of attorney advance health care directive estate plan"},
+        {"id": "someone_died", "label": "Someone died and I'm dealing with their estate", "keywords": "probate affidavit estate administration"},
+        {"id": "changing_plan", "label": "Changing an existing plan", "keywords": "codicil amendment revocation trust amendment"},
+        {"id": "minors", "label": "Providing for minor children or dependents", "keywords": "guardian minor children custodial trust"}
+      ]
+    },
+    {
+      "id": "doctype",
+      "prompt": "What kind of document?",
+      "options": [
+        {"id": "will_trust", "label": "A will or trust", "keywords": "will trust"},
+        {"id": "healthcare_poa", "label": "Healthcare directive or power of attorney", "keywords": "power of attorney advance health care directive hipaa"},
+        {"id": "probate", "label": "A probate or estate-administration document", "keywords": "probate affidavit small estate"}
+      ]
+    }
+  ],
+  "Family Law": [
+    {
+      "id": "what",
+      "prompt": "What's going on?",
+      "options": [
+        {"id": "getting_married", "label": "Getting married or partnered", "keywords": "premarital prenuptial domestic partnership declaration"},
+        {"id": "during_marriage", "label": "During a marriage or partnership", "keywords": "postnuptial transmutation property agreement"},
+        {"id": "separating", "label": "Separating or divorcing", "keywords": "marital settlement agreement divorce dissolution"},
+        {"id": "children", "label": "Custody, support, or parentage of children", "keywords": "custody parenting plan child support parentage"}
+      ]
+    },
+    {
+      "id": "who",
+      "prompt": "Who's involved?",
+      "options": [
+        {"id": "spouse", "label": "Me and my spouse or partner", "keywords": "spouse partner marital"},
+        {"id": "children", "label": "Me and my child or children", "keywords": "child children custody support"}
+      ]
+    }
+  ],
+  "Hiring": [
+    {
+      "id": "what",
+      "prompt": "What's going on?",
+      "options": [
+        {"id": "offer", "label": "Making a job offer", "keywords": "offer letter job offer"},
+        {"id": "background", "label": "Background checks or screening", "keywords": "background check disclosure authorization"},
+        {"id": "classification", "label": "Deciding employee vs. contractor", "keywords": "independent contractor classification"},
+        {"id": "onboarding_agreements", "label": "Onboarding agreements (confidentiality, arbitration, etc.)", "keywords": "invention assignment confidentiality arbitration non-compete handbook"}
+      ]
+    },
+    {
+      "id": "doctype",
+      "prompt": "What kind of document?",
+      "options": [
+        {"id": "letter", "label": "A letter", "keywords": "letter offer"},
+        {"id": "agreement", "label": "An agreement to sign", "keywords": "agreement contract"},
+        {"id": "form", "label": "A form or disclosure", "keywords": "form disclosure authorization"}
+      ]
+    }
+  ],
+  "Real Estate": [
+    {
+      "id": "what",
+      "prompt": "What's going on?",
+      "options": [
+        {"id": "renting", "label": "Renting (as tenant or landlord)", "keywords": "lease rental agreement tenant landlord"},
+        {"id": "buying_selling", "label": "Buying or selling property", "keywords": "purchase agreement deed grant deed quitclaim"},
+        {"id": "dispute_notice", "label": "A dispute or a notice", "keywords": "notice to pay rent or quit eviction security deposit itemization"},
+        {"id": "moving_out", "label": "Moving out or ending a tenancy", "keywords": "move out security deposit return sublease"}
+      ]
+    },
+    {
+      "id": "side",
+      "prompt": "Which side are you on?",
+      "options": [
+        {"id": "tenant_buyer", "label": "Tenant or buyer", "keywords": "tenant buyer renter purchaser"},
+        {"id": "landlord_seller", "label": "Landlord or seller", "keywords": "landlord seller lessor"}
+      ]
+    }
+  ]
+}

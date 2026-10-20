@@ -665,3 +665,60 @@ the committed fixture pass today, by construction; `golden_search.js`
 (the one CI actually runs) re-checks all 100 against the live engine
 on every run, so a future regression in the engine — not just a typo
 in the fixture — is what a red CI run here would mean.
+
+## Phase 5.2: "which document do I need?" intake
+
+**Reused the search engine for ranking, rather than hand-authoring a
+decision tree.** The master plan asks for "situation category, then 2
+to 4 narrowing questions" that "route to a ranked list of documents."
+A literal decision tree — a hand-written mapping from every possible
+combination of category + narrowing answers to a specific document
+list — would mean curating well over 100 cases (8 categories × up to
+16 answer combinations each) by hand, with no principled way to check
+any of them stayed correct as documents, lay terms, or the category
+list changed later. Instead, each answer option carries a `keywords`
+string; selecting one folds those keywords into a query alongside the
+category name and runs it through `scoreDocuments()` — Phase 5.1's
+real search-engine scoring function, restricted to that category's
+documents via its new `allowedIndices` parameter. The "ranked list" a
+reader sees is the same tf-idf/cosine ranking free-text search already
+uses, not a second, separately-maintained ranking mechanism.
+
+**Narrowing questions were written by hand, not generated.** Only 8
+categories exist — nowhere near `lay_terms.json`'s 740-document scale
+— and getting a narrowing question right (genuinely useful, grounded
+in what's actually in that category, carefully neutral in wording) is
+closer to the kind of editorial judgment this project reserves for
+direct authorship than to bulk paraphrasing. Grounded each category's
+questions in a real sample of its documents' actual titles (pulled
+before writing anything), not guessed in the abstract.
+
+**Every real path is checked for whether its narrowing questions
+actually do anything**, not just whether the screen shows something.
+`renderIntakeResults()` has a deliberate fallback — if the
+keyword-scored search comes back empty, show the whole category rather
+than nothing — which is the right UX call, but would make a trivial
+"does it show results" test pass even for a narrowing question whose
+keywords share no vocabulary with anything in its own category (i.e.,
+a question that does nothing). `tests/search/intake_coverage.js`
+instead checks the pre-fallback, keyword-scored result for every one
+of the 88 real combinations across all 8 categories' flows. All 88
+pass on real matches today — the hand-written keywords turned out to
+be well-aligned with the real corpus on the first attempt, verified
+rather than assumed.
+
+**Extended the advisory-phrase lint and added structural validation
+to `validate_corpus.py`** for both `search/lay_terms.json` and the new
+`search/intake_flow.json`, rather than treating the one-time checks
+already run during Phase 5.1/5.2's own build as sufficient forever: a
+lay phrasing or an intake prompt/label is exactly the kind of
+user-facing prose "inform, never advise" has to hold for on every
+future edit, not just the day it was written. Caught a real scoping
+bug in the process — `validate_corpus.py` already had a local
+`import os` deep inside `main()` for the `verification/*.md` coverage
+check; adding an earlier `os.path.exists()` call made Python treat
+`os` as local to the whole function and crash on the earlier reference
+before its original import line ever ran. Moved the import to the
+module level rather than adding a second local one, which would have
+just hidden the same fragility from the next person who needed `os`
+earlier in the function.

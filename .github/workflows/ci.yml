@@ -35,6 +35,7 @@ jobs:
           python3 tests/watcher/test_watcher.py -v
           python3 tests/tools/test_recheck_all_resume.py -v
           python3 tests/tools/test_recheck_findings.py -v
+          python3 tests/validate_corpus/test_search_data.py -v
       - name: Promotion report
         run: python3 tools/promotion_report.py --markdown >> "$GITHUB_STEP_SUMMARY"
 
@@ -110,6 +111,8 @@ jobs:
         run: set -o pipefail; node tests/wizard/wizard_unit.js | tee wizard-unit.log
       - name: Run golden_search.js
         run: set -o pipefail; node tests/search/golden_search.js | tee golden-search.log
+      - name: Run intake_coverage.js
+        run: set -o pipefail; node tests/search/intake_coverage.js | tee intake-coverage.log
       - name: Upload logs on failure
         if: failure()
         uses: actions/upload-artifact@v4
@@ -121,4 +124,5 @@ jobs:
             wizard-regression.log
             wizard-unit.log
             golden-search.log
+            intake-coverage.log
           if-no-files-found: warn

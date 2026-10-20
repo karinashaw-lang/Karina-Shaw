@@ -4,7 +4,7 @@
 Exits non-zero and names the first failure. Everything here has caught a
 real defect at least once during corpus expansion.
 """
-import json, re, sys, collections, itertools, random
+import json, re, sys, os, collections, itertools, random
 from datetime import date
 
 AUTH = ['id', 'title', 'kind', 'status', 'checkedDate', 'body', 'gap', 'citations']
@@ -430,6 +430,33 @@ def main():
             lint_text(f'{d["id"]}.{f["id"]}.helpText', f.get('helpText'))
     check(not advisory_hits, f'advisory phrasing (lint/advisory_phrases.json) found in whyWeAsk/helpText: {advisory_hits[:5]}')
 
+    # Same lint, extended to Phase 5.1/5.2's search-facing copy: a lay
+    # phrasing or an intake question/option label is just as much
+    # user-facing prose as whyWeAsk/helpText, and just as easy to slip
+    # advisory language into (a lay phrasing in particular is written
+    # to sound like something a person would say, which is exactly the
+    # register advisory language also lives in). Collected into its own
+    # list so a hit here is reported distinctly from a whyWeAsk/helpText
+    # hit, even though both go through the same lint_text() helper.
+    search_advisory_hits = []
+    def lint_search_text(tag, text):
+        before = len(advisory_hits)
+        lint_text(tag, text)
+        search_advisory_hits.extend(advisory_hits[before:])
+    if os.path.exists('search/lay_terms.json'):
+        lay_terms = json.load(open('search/lay_terms.json'))
+        for doc_id, phrases in lay_terms.items():
+            for i, phrase in enumerate(phrases):
+                lint_search_text(f'search/lay_terms.json:{doc_id}[{i}]', phrase)
+    if os.path.exists('search/intake_flow.json'):
+        intake_flow = json.load(open('search/intake_flow.json'))
+        for category, questions in intake_flow.items():
+            for q in questions:
+                lint_search_text(f'search/intake_flow.json:{category}.{q["id"]}.prompt', q.get('prompt'))
+                for opt in q.get('options', []):
+                    lint_search_text(f'search/intake_flow.json:{category}.{q["id"]}.{opt["id"]}.label', opt.get('label'))
+    check(not search_advisory_hits, f'advisory phrasing (lint/advisory_phrases.json) found in search copy: {search_advisory_hits[:5]}')
+
     # No document has a real showIf yet (Phase 2.4), but the cycle check is
     # written generically now so it's already correct the day one exists,
     # rather than being added under time pressure alongside the first real
@@ -463,6 +490,49 @@ def main():
           f'documents in more than two categories: {[d["id"] for d in docs if len(d.get("categories", [])) > 2][:5]}')
     unknown_cats = {cat for d in docs for cat in d['categories']} - CATEGORIES
     check(not unknown_cats, f'categories not in the declared list: {sorted(unknown_cats)}')
+
+    # Phase 5.1's lay-term data: every document should have a non-empty
+    # list of non-empty phrasings, kept in sync with the corpus itself
+    # (a document added or removed without updating lay_terms.json
+    # would otherwise go unnoticed until someone searched for it).
+    if os.path.exists('search/lay_terms.json'):
+        lay_terms = json.load(open('search/lay_terms.json'))
+        doc_ids = {d['id'] for d in docs}
+        missing_lay = sorted(doc_ids - set(lay_terms.keys()))
+        extra_lay = sorted(set(lay_terms.keys()) - doc_ids)
+        check(not missing_lay, f'documents with no entry in search/lay_terms.json: {missing_lay[:5]}')
+        check(not extra_lay, f'search/lay_terms.json entries for documents no longer in the corpus: {extra_lay[:5]}')
+        bad_lay = [doc_id for doc_id, phrases in lay_terms.items()
+                   if not phrases or not all(isinstance(p, str) and p.strip() for p in phrases)]
+        check(not bad_lay, f'search/lay_terms.json entries that are empty or contain a blank phrase: {bad_lay[:5]}')
+
+    # Phase 5.2's intake flow: every declared category needs 2-4
+    # narrowing questions, each with 2-4 options carrying a real label
+    # and a string (possibly empty) keywords field -- the shape
+    # app.js's renderIntakeStep()/renderIntakeResults() assume.
+    if os.path.exists('search/intake_flow.json'):
+        intake_flow = json.load(open('search/intake_flow.json'))
+        missing_intake = sorted(CATEGORIES - set(intake_flow.keys()))
+        unknown_intake = sorted(set(intake_flow.keys()) - CATEGORIES)
+        check(not missing_intake, f'categories with no entry in search/intake_flow.json: {missing_intake}')
+        check(not unknown_intake, f'search/intake_flow.json entries for unknown categories: {unknown_intake}')
+        bad_intake = []
+        for category, questions in intake_flow.items():
+            if not (2 <= len(questions) <= 4):
+                bad_intake.append(f'{category}: {len(questions)} questions (need 2-4)')
+                continue
+            for q in questions:
+                if not (q.get('id') and (q.get('prompt') or '').strip()):
+                    bad_intake.append(f'{category}.{q.get("id")}: missing id or prompt')
+                if not (2 <= len(q.get('options', [])) <= 4):
+                    bad_intake.append(f'{category}.{q.get("id")}: {len(q.get("options", []))} options (need 2-4)')
+                    continue
+                for opt in q['options']:
+                    if not (opt.get('id') and (opt.get('label') or '').strip()):
+                        bad_intake.append(f'{category}.{q["id"]}.{opt.get("id")}: missing id or label')
+                    if not isinstance(opt.get('keywords'), str):
+                        bad_intake.append(f'{category}.{q["id"]}.{opt.get("id")}: keywords is not a string')
+        check(not bad_intake, f'invalid search/intake_flow.json entries: {bad_intake[:5]}')
 
     cats = collections.Counter(cat for d in docs for cat in d['categories'])
     multi = [d['id'] for d in docs if len(d.get('categories', [])) > 1]
@@ -502,7 +572,6 @@ def main():
     # failing the build: which current documents have no note under any
     # normalization of their id, so a real gap stays visible without
     # pretending the folder is 1:1 with documents.json.
-    import os
     vdir = 'verification'
     if os.path.isdir(vdir):
         def norm(s):

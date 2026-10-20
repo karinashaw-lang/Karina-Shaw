@@ -709,6 +709,36 @@ top 3 before being committed to the fixture — so a later CI failure
 means the engine's behavior changed, not that the fixture was ever
 aspirational.
 
+## "Which document do I need?" intake (Phase 5.2)
+
+A short, guided alternative to search/browse: `#screen-intake`'s flow
+is category (the same 8 categories `renderCategoryFilter()` already
+derives) → 2 narrowing questions from `search/intake_flow.json` → a
+ranked results screen. Each answer option carries a `keywords` string
+that gets folded into a query alongside the category name and scored
+by `scoreDocuments()` — the same engine Phase 5.1's free-text search
+uses, just restricted to that category's documents — rather than a
+hand-built decision tree mapping specific answer combinations to
+specific documents, which would mean hand-curating well over 100 cases
+with no way to check they stayed right as the corpus changes.
+
+Written by hand, not generated: only 8 categories exist, and getting
+narrowing questions right (useful, grounded, carefully neutral) is
+closer to an editorial judgment call than to `lay_terms.json`'s bulk
+paraphrasing. The results screen is always headed "Documents that
+match what you described" — the master plan's own required wording —
+and every result still carries its own real title and description,
+the same as the ordinary picker; nothing here ever characterizes one
+document as the right choice.
+
+`tests/search/intake_coverage.js` checks every real path through every
+category's flow (88 combinations today) produces actual keyword-scored
+matches within its own category, not a silent fallback to "show the
+whole category" — a path that only ever hit the fallback would mean
+its narrowing questions do nothing. All 88 currently pass for real.
+Full writeup, including why this reuses the search engine instead of a
+hand-authored mapping, in `search/README.md` and `DECISIONS.md`.
+
 ## Where Phase 2/3 (and beyond) will change this next
 
 Phase 2 (2.1 field schema, 2.2 shared field library, 2.2b `whyWeAsk` text

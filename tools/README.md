@@ -131,6 +131,20 @@ assembled document looks like even without ever appearing in its text.
 Exercised by `tests/validate_corpus/test_include_if.py` against a
 synthetic corpus, since nothing in the real one uses `includeIf` yet.
 
+Since Phase 5.1/5.2, also validates `search/lay_terms.json` and
+`search/intake_flow.json` when either exists: every document needs a
+non-empty, non-blank `lay_terms.json` entry kept in sync with the
+corpus (no missing or extra ids — a document added or removed without
+updating this file would otherwise go unnoticed until someone
+searched for it); every declared category needs an `intake_flow.json`
+entry with 2-4 narrowing questions, each with 2-4 options carrying a
+real id/label and a string `keywords` field. The advisory-phrase lint
+above extends to both files' user-facing text (a lay phrasing or an
+intake prompt/option label is exactly the kind of prose "inform, never
+advise" has to hold for, same as `whyWeAsk`/`helpText`). Exercised by
+`tests/validate_corpus/test_search_data.py` against a synthetic
+corpus.
+
 ## migrate_fields.py
 
 ```
