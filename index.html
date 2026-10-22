@@ -104,6 +104,7 @@
       <div class="actions">
         <button type="button" class="secondary" id="output-back">Start over</button>
         <button type="button" class="secondary" id="output-print">Print / Save as PDF</button>
+        <button type="button" class="secondary" id="output-download-pdf">Download as PDF</button>
         <button type="button" class="secondary" id="output-download">Download as text</button>
         <button type="button" class="secondary" id="output-export">Export data (JSON)</button>
       </div>
@@ -186,6 +187,11 @@
       </div>
     </section>
   </div>
+  <!-- Vendored, not CDN-loaded: PDF export is a core output path, and
+       zero-config must keep working offline, not just when a CDN is
+       reachable. See lib/README.md. -->
+  <script src="lib/pdfmake.min.js"></script>
+  <script src="lib/vfs_fonts.js"></script>
   <script src="app.js"></script>
   <!-- Optional cloud accounts: config.js doesn't exist by default (see
        config.example.js) and 404s harmlessly when absent — the app

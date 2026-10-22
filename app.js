@@ -2243,40 +2243,76 @@ document.getElementById('wizard-form').addEventListener('input', e => {
   saveDraft();
 });
 
+// ---------- shared document content model (Phase 6.1) ----------
+// What's actually in the assembled document, independent of how it's
+// formatted for display. buildPlainText() and the PDF exporter
+// (buildPdfDocDefinition()) both render from this single model rather
+// than each re-deriving it from assembleDocument()/describeConditional
+// Clauses()/currentLibraryEntry() independently -- so the two export
+// formats can never silently drift into describing two different
+// documents, and a golden test comparing PDF-extracted text against
+// buildPlainText()'s output is actually comparing two renderings of
+// one source, not two separately hand-maintained ones.
+function buildDocumentContent() {
+  const assembled = assembleDocument();
+  const jKey = state.jurisdictionByDoc.get(state.document.id);
+  const signedEntry = currentLibraryEntry();
+  return {
+    title: state.document.title,
+    documentId: state.document.id,
+    preparedFor: preparedForLine(state.answers),
+    jurisdictionNotice: jKey && jKey !== 'NONE' ? JURISDICTION_NOTICE[jKey] : null,
+    conditional: describeConditionalClauses(),
+    clauses: assembled.map(clause => {
+      const edited = state.editedClauseIds.has(clause.id);
+      return {
+        id: clause.id,
+        title: clause.title,
+        body: edited ? state.edits[clause.id] : clause.renderedBody,
+        kind: clause.kind,
+        status: clause.status,
+        edited,
+        checkedDate: clause.checkedDate,
+        citations: clause.citations || [],
+        gap: clause.gap || null,
+      };
+    }),
+    signature: signedEntry ? signedEntry.signature || null : null,
+  };
+}
+
 // Builds a readable plain-text export of the assembled document,
 // including the same citations and gaps the on-screen badges show —
 // the text file should carry the same receipts the page does, not
 // just the fill-in-the-blank prose.
 function buildPlainText() {
-  const assembled = assembleDocument();
+  const content = buildDocumentContent();
   const lines = [];
-  lines.push(state.document.title.toUpperCase());
-  lines.push(preparedForLine(state.answers));
-  const conditional = describeConditionalClauses();
-  if (conditional.length) {
+  lines.push(content.title.toUpperCase());
+  lines.push(content.preparedFor);
+  if (content.conditional.length) {
     lines.push('');
     lines.push('OPTIONAL CLAUSES IN THIS DOCUMENT:');
-    conditional.forEach(c => {
+    content.conditional.forEach(c => {
       lines.push(`  ${c.included ? 'Included' : 'Not included'}: ${c.title} — because ${c.reason}`);
     });
   }
   lines.push('');
-  assembled.forEach(clause => {
-    const edited = state.editedClauseIds.has(clause.id);
+  content.clauses.forEach(clause => {
     lines.push(clause.title.toUpperCase());
-    lines.push(edited ? state.edits[clause.id] : clause.renderedBody);
+    lines.push(clause.body);
     if (clause.kind !== 'drafting') {
       lines.push('');
-      if (clause.status === 'verified' && edited) {
+      if (clause.status === 'verified' && clause.edited) {
         lines.push(`[Edited since verified on ${clause.checkedDate} — check the citation below still fits this wording]`);
-        (clause.citations || []).forEach(c => {
+        clause.citations.forEach(c => {
           lines.push(`  "${c.quote}"`);
           lines.push(`  — ${c.case}, ${c.cite} (${c.url})`);
         });
         if (clause.gap) lines.push(`  Known gap: ${clause.gap}`);
       } else if (clause.status === 'verified') {
         lines.push(`[Verified — checked ${clause.checkedDate}]`);
-        (clause.citations || []).forEach(c => {
+        clause.citations.forEach(c => {
           lines.push(`  "${c.quote}"`);
           lines.push(`  — ${c.case}, ${c.cite} (${c.url})`);
         });
@@ -2288,21 +2324,143 @@ function buildPlainText() {
     lines.push('');
   });
 
-  const signedEntry = currentLibraryEntry();
-  if (signedEntry && signedEntry.signature) {
+  if (content.signature) {
     lines.push('SIGNATURE');
     lines.push(
-      signedEntry.signature.type === 'typed'
-        ? `Signed: ${signedEntry.signature.name}`
+      content.signature.type === 'typed'
+        ? `Signed: ${content.signature.name}`
         : 'Signed: [drawn signature — see the on-screen or downloaded version to view it]'
     );
-    lines.push(`Date: ${new Date(signedEntry.signature.signedAt).toLocaleString()}`);
+    lines.push(`Date: ${new Date(content.signature.signedAt).toLocaleString()}`);
     lines.push('');
   }
 
   lines.push('—');
   lines.push('Groundtruth v1 demo · every "Verified" citation links to a real, checked source.');
   return lines.join('\n');
+}
+
+// ---------- native PDF export (Phase 6.1) ----------
+// pdfmake (vendored in lib/, see lib/README.md) is given a declarative
+// "document definition" built from the exact same buildDocumentContent()
+// model buildPlainText() uses -- same title, body text, citations, gap
+// notes, and signature data, just laid out as styled blocks instead of
+// joined lines. pdfmake renders real selectable text with an embedded
+// font (Roboto, bundled via lib/vfs_fonts.js), not a rasterized image of
+// the page -- unlike the existing #output-print button, which hands the
+// browser's own print-to-PDF whatever the on-screen CSS happens to
+// produce. This library doesn't expose a documented tagged-PDF/
+// structure-tree option (checked before building this), so real,
+// embedded-font, selectable text is what's delivered; full PDF/UA
+// tagging falls under the master plan's own "if the library supports
+// it" allowance.
+const PDF_STYLES = {
+  docTitle: { fontSize: 16, bold: true },
+  preparedFor: { fontSize: 10, color: '#4B5245' },
+  jurisdictionNotice: { fontSize: 9.5, italics: true, color: '#4B5245' },
+  sectionLabel: { fontSize: 10.5, bold: true },
+  conditionalLine: { fontSize: 9.5, margin: [0, 2, 0, 0] },
+  clauseTitle: { fontSize: 12, bold: true },
+  clauseBody: { fontSize: 10.5, lineHeight: 1.3 },
+  verificationNote: { fontSize: 9, italics: true, color: '#2B6E4F' },
+  quote: { fontSize: 9, italics: true, margin: [10, 3, 0, 0] },
+  citeLine: { fontSize: 9, margin: [10, 0, 0, 0] },
+  gapLine: { fontSize: 9, margin: [10, 2, 0, 0] },
+  signatureName: { fontSize: 14, bold: true },
+  signatureMeta: { fontSize: 9, color: '#4B5245' },
+  closingNote: { fontSize: 8.5, color: '#4B5245', margin: [0, 16, 0, 0] },
+  footerText: { fontSize: 8, color: '#4B5245' },
+};
+
+// pdfmake's embedded default font (Roboto, via lib/vfs_fonts.js) turned
+// out not to cover every character this corpus actually uses --
+// confirmed by generating a test PDF with each special character this
+// corpus contains and extracting it back: these seven came back as a
+// literal \u0000 (pdf.js's signature for "no glyph"), not themselves,
+// while every accented letter, curly quote/apostrophe, dash, and the
+// section/paragraph/registered-mark symbols this corpus also uses all
+// came back correctly and needed no fallback. Swapped for plain-ASCII
+// equivalents in the PDF only -- the on-screen, plain-text, and JSON
+// exports keep the real character unchanged.
+const PDF_GLYPH_FALLBACKS = {
+  '☐': '[ ]', '◻': '[ ]', '‖': '||', '‟': '"', '℠': '(SM)', '⅓': '1/3', 'Ⓜ': '(M)',
+};
+function sanitizeForPdf(text) {
+  if (!text) return text;
+  return text.replace(/[☐◻‖‟℠⅓Ⓜ]/g, ch => PDF_GLYPH_FALLBACKS[ch]);
+}
+
+function buildPdfDocDefinition() {
+  const content = buildDocumentContent();
+  const generatedOn = new Date().toISOString().slice(0, 10);
+  const body = [];
+
+  body.push({ text: sanitizeForPdf(content.title.toUpperCase()), style: 'docTitle' });
+  body.push({ text: sanitizeForPdf(content.preparedFor), style: 'preparedFor', margin: [0, 2, 0, 0] });
+
+  if (content.jurisdictionNotice) {
+    body.push({ text: sanitizeForPdf(content.jurisdictionNotice), style: 'jurisdictionNotice', margin: [0, 10, 0, 0] });
+  }
+
+  if (content.conditional.length) {
+    body.push({ text: 'OPTIONAL CLAUSES IN THIS DOCUMENT', style: 'sectionLabel', margin: [0, 16, 0, 2] });
+    content.conditional.forEach(c => {
+      body.push({ text: sanitizeForPdf(`${c.included ? 'Included' : 'Not included'}: ${c.title} — because ${c.reason}`), style: 'conditionalLine' });
+    });
+  }
+
+  content.clauses.forEach(clause => {
+    body.push({ text: sanitizeForPdf(clause.title.toUpperCase()), style: 'clauseTitle', margin: [0, 16, 0, 4] });
+    body.push({ text: sanitizeForPdf(clause.body), style: 'clauseBody' });
+    if (clause.kind !== 'drafting') {
+      if (clause.status === 'verified' && clause.edited) {
+        body.push({ text: `Edited since verified on ${clause.checkedDate} — check the citation below still fits this wording`, style: 'verificationNote', margin: [0, 5, 0, 0] });
+        clause.citations.forEach(c => {
+          body.push({ text: sanitizeForPdf(`"${c.quote}"`), style: 'quote' });
+          body.push({ text: sanitizeForPdf(`— ${c.case}, ${c.cite} (${c.url})`), style: 'citeLine' });
+        });
+        if (clause.gap) body.push({ text: sanitizeForPdf(`Known gap: ${clause.gap}`), style: 'gapLine' });
+      } else if (clause.status === 'verified') {
+        body.push({ text: `Verified — checked ${clause.checkedDate}`, style: 'verificationNote', margin: [0, 5, 0, 0] });
+        clause.citations.forEach(c => {
+          body.push({ text: sanitizeForPdf(`"${c.quote}"`), style: 'quote' });
+          body.push({ text: sanitizeForPdf(`— ${c.case}, ${c.cite} (${c.url})`), style: 'citeLine' });
+        });
+        if (clause.gap) body.push({ text: sanitizeForPdf(`Known gap: ${clause.gap}`), style: 'gapLine' });
+      } else {
+        body.push({ text: 'Not yet verified against a primary source or case law. Treat as a starting point, not a confirmed fact.', style: 'verificationNote', margin: [0, 5, 0, 0] });
+      }
+    }
+  });
+
+  if (content.signature) {
+    body.push({ text: 'SIGNATURE', style: 'sectionLabel', margin: [0, 22, 0, 8] });
+    if (content.signature.type === 'drawn') {
+      body.push({ text: 'Signed:', style: 'signatureMeta', margin: [0, 0, 0, 2] });
+      body.push({ image: content.signature.dataUrl, width: 180, margin: [0, 0, 0, 4] });
+    } else {
+      body.push({ text: `Signed: ${sanitizeForPdf(content.signature.name)}`, style: 'signatureName', margin: [0, 0, 0, 4] });
+    }
+    body.push({ text: `Date: ${new Date(content.signature.signedAt).toLocaleString()}`, style: 'signatureMeta' });
+  }
+
+  body.push({ text: 'Groundtruth v1 demo · every "Verified" citation links to a real, checked source.', style: 'closingNote' });
+
+  return {
+    pageSize: 'LETTER',
+    pageMargins: [56, 56, 56, 64],
+    info: { title: content.title, subject: 'Generated by Groundtruth' },
+    content: body,
+    styles: PDF_STYLES,
+    defaultStyle: { font: 'Roboto', fontSize: 10.5, lineHeight: 1.3 },
+    footer: (currentPage, pageCount) => ({
+      margin: [56, 0, 56, 26],
+      columns: [
+        { text: `${content.documentId} · generated ${generatedOn}`, style: 'footerText' },
+        { text: `Page ${currentPage} of ${pageCount}`, style: 'footerText', alignment: 'right' },
+      ],
+    }),
+  };
 }
 
 document.getElementById('output-print').addEventListener('click', () => {
@@ -2343,18 +2501,36 @@ document.getElementById('output-copy').addEventListener('click', async () => {
   }, 1800);
 });
 
+function documentSlug() {
+  return state.document.title.replace(/[^\w\- ]+/g, '').trim().replace(/\s+/g, '-');
+}
+
 document.getElementById('output-download').addEventListener('click', () => {
   const text = buildPlainText();
-  const slug = state.document.title.replace(/[^\w\- ]+/g, '').trim().replace(/\s+/g, '-');
   const blob = new Blob([text], { type: 'text/plain' });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
-  a.download = `${slug}.txt`;
+  a.download = `${documentSlug()}.txt`;
   document.body.appendChild(a);
   a.click();
   a.remove();
   URL.revokeObjectURL(url);
+});
+
+document.getElementById('output-download-pdf').addEventListener('click', () => {
+  const btn = document.getElementById('output-download-pdf');
+  const original = btn.textContent;
+  btn.disabled = true;
+  btn.textContent = 'Generating…';
+  pdfMake.createPdf(buildPdfDocDefinition()).download(`${documentSlug()}.pdf`)
+    .then(() => { btn.textContent = original; })
+    .catch(err => {
+      console.error('PDF generation failed:', err);
+      btn.textContent = "Couldn't generate PDF — try Print instead";
+      setTimeout(() => { btn.textContent = original; }, 2500);
+    })
+    .finally(() => { btn.disabled = false; });
 });
 
 document.getElementById('wizard-form').addEventListener('submit', e => {

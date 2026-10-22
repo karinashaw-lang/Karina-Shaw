@@ -834,3 +834,93 @@ master plan's own number, applied as a hard ceiling since the measured
 cost (under 2ms) already clears it with enormous margin — slower
 device or larger future corpus would have to grow search time by
 roughly 50x before this test would ever need revisiting.
+
+## Phase 6.1: native PDF export
+
+**Vendored pdfmake into the repo instead of loading it from a CDN.**
+The one precedent for an external script (`@supabase/supabase-js`) is
+explicitly optional — the app works identically if that request 404s.
+PDF export is a core output path next to "Download as text" and
+"Export data (JSON)," so "zero-config must keep working" applies
+literally here: generating a PDF needs no network request, to any
+host. Pulled the library via `npm pack pdfmake` (registry.npmjs.org
+isn't blocked the way the CDN hosts this environment's network policy
+covers are) and copied pdfmake's own official standalone browser build
+(`build/pdfmake.min.js` + `build/vfs_fonts.js`) verbatim — not a
+custom build, not hand-picked files.
+
+**Checked pdfmake's actual font coverage against this corpus's real
+text before trusting it, rather than assuming Unicode support.**
+Generated a test PDF containing every non-ASCII character this corpus
+actually uses (found by scanning `data/clauses.json`/`data/documents.json`
+directly) and extracted it back out. Seven characters — ☐, ◻ (both
+checkbox markers; ☐ alone appears 633 times, mostly in "Check one"
+style drafting clauses), ‖, ‟, ℠, ⅓, Ⓜ — came back as a literal
+`\u0000`, pdf.js's signature for "no glyph in this font," while every
+accented letter, curly quote/apostrophe, en/em dash, and the section/
+paragraph/registered-mark symbols this corpus also uses came back
+correctly and needed no fix. `sanitizeForPdf()` swaps just those seven
+for plain-ASCII equivalents (`☐`/`◻` → `[ ]`, `‖` → `||`, `‟` → `"`,
+`℠` → `(SM)`, `⅓` → `1/3`, `Ⓜ` → `(M)`) before the text reaches
+pdfmake — only in the PDF; the on-screen page, plain-text export, and
+JSON export are untouched and keep every real character. Finding this
+before shipping, rather than after someone opened a generated PDF and
+found a null glyph in a checkbox clause, is the same "verify against
+real behavior before trusting it" discipline this project has applied
+at every phase (Phase 5.1's STOPWORDS bug, Phase 4.5's two false-
+positive bugs) — just applied to a new kind of real behavior (font
+glyph coverage) this project hadn't needed to check before.
+
+**Did not implement tagged-PDF / PDF-UA accessibility structure,
+and said so plainly rather than silently skipping it.** The master
+plan allows this explicitly ("tagged PDF if the library supports it").
+Checked pdfmake's documentation and source for a tagging or structure-
+tree option before writing any code; found none. What's delivered
+instead — real, embedded-font, selectable text (verified by actually
+extracting it back out in `tests/pdf/pdf_golden.js`, not assumed) — is
+a genuine, meaningful piece of PDF accessibility (a screen reader can
+read selectable text; it cannot read a rasterized image), just not the
+full structure-tree tagging PDF/UA calls for. `lib/README.md` and the
+ARCHITECTURE.md entry both say this directly instead of letting
+"embed fonts; ensure text is selectable" read as a claim of full
+accessibility compliance it doesn't make.
+
+**Built one shared content model (`buildDocumentContent()`) that both
+exports render from, instead of letting `buildPdfDocDefinition()`
+re-derive the same facts from `assembleDocument()` independently.**
+Two formats describing one document from two independent code paths
+is exactly the kind of drift this project avoids elsewhere (Phase 5.3
+computing relatedness once and reusing it for both the label and the
+ranking, Phase 5.1's search engine reused instead of re-implemented for
+5.2's intake flow). This also made the golden test meaningfully
+possible: comparing the PDF's extracted text against `buildPlainText()`
+is comparing two renderings of one source, not independently checking
+whether two unrelated implementations happen to agree.
+
+**A real test-writing finding, not assumed:** per-page footers
+interrupt concatenated multi-page text. A PDF's text, read in document
+order, is grouped page by page; a footer sits at the bottom of each
+page's content, so when a paragraph spans a page break, the next
+page's continuation text comes immediately after that page's own
+footer in reading order — concatenating all pages' extracted text for
+a simple substring comparison would make a footer's own words appear
+spliced into the middle of an unrelated sentence. This isn't lost or
+corrupted content; it's a property of any paginated footer.
+`tests/pdf/pdf_golden.js`'s `stripFooterLines()` removes recognizable
+footer/page-number lines (known exactly, since the footer's own format
+is this project's code) before comparing, and the test also separately
+asserts the footer's presence (document id, generated-on date, and
+"Page N of M") directly against the raw, un-stripped text — so the
+test both correctly ignores the footer as a formatting artifact and
+still genuinely checks that the master plan's "footer carrying a
+document id and generated-on date" and "page numbers" requirements
+are real, not merely assumed un-testable.
+
+**Derived "1-page, 10-page, very long" from the live corpus's own
+clause counts (shortest/median/longest), not three hardcoded document
+ids.** Same reasoning as `tools/regression.js`'s category-balance and
+newest-documents checks: a hardcoded id stops testing the intended
+*shape* of document the moment the corpus changes around it. At the
+time this was written the three were a 1-clause/1-page document, an
+8-clause/6-page document, and a 20-clause/20-page document — all real,
+verified page counts, not guessed.

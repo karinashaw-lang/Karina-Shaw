@@ -43,6 +43,9 @@ verification/*.md    744 free-form build notes. NOT 1:1 with documents.json
 search/lay_terms.json  Plain-language phrasings per document (Phase 5.1),
                      fetched by app.js at init() and indexed into the
                      document search engine; see search/README.md.
+lib/                 Third-party browser libraries vendored (not
+                     CDN-loaded) into the repo — pdfmake, for Phase
+                     6.1's native PDF export; see lib/README.md.
 index/citation_to_clauses.json  Citation url -> affected clause ids
                      (Phase 4.4), built by tools/build_citation_index.py.
 recheck/             history.jsonl (every recheck_all.py run, Phase 4.5)
@@ -52,9 +55,9 @@ tools/               Maintenance scripts — see "Tooling" below.
 watcher/             Law-change watcher (Phase 4.4) — see watcher/README.md.
 verifier/            Adversarial verifier (Phase 4.1) — see verifier/README.md.
 tests/               golden/, wizard/, merge_guard/, validate_corpus/,
-                     tiering/, search/, tools/, watcher/, verifier/ —
-                     browser and unit tests for the gate scripts and
-                     the rendered app, run in CI.
+                     tiering/, search/, tools/, watcher/, verifier/,
+                     performance/, pdf/ — browser and unit tests for
+                     the gate scripts and the rendered app, run in CI.
 ```
 
 `tools/*.py` run directly with system Python 3; `tools/regression.js`
@@ -799,6 +802,61 @@ numbers (first page ~5ms, full unpaginated 740-card render ~85ms,
 search under 2ms) with headroom for a slower CI runner or a real
 mid-range phone. Full writeup, including why pagination rather than
 true DOM virtualization, in `DECISIONS.md`.
+
+## Native PDF export (Phase 6.1)
+
+A new "Download as PDF" button on the output screen (`#output-download-pdf`)
+generates a real PDF client-side, via [pdfmake](https://pdfmake.github.io/)
+vendored into `lib/` (`lib/pdfmake.min.js` + `lib/vfs_fonts.js`, see
+`lib/README.md`) rather than loaded from a CDN — PDF export sits
+alongside "Download as text" and "Export data (JSON)" as a core output
+path, not an opt-in extra like the Supabase cloud-account script, so
+it follows "zero-config must keep working" literally: no network
+request is needed to generate one. This is a different thing from the
+existing `#output-print` button, which hands the browser's own
+print-to-PDF whatever the on-screen CSS happens to produce; pdfmake
+renders real, selectable text with an embedded font (Roboto, bundled
+in `vfs_fonts.js`), satisfying the master plan's "embed fonts" and
+"ensure text is selectable" requirements directly.
+
+`buildDocumentContent()` (`app.js`) is a new shared content model —
+title, prepared-for line, jurisdiction notice, the per-clause body/
+verification-note/citations/gap data, and signature — that both
+`buildPlainText()` and the new `buildPdfDocDefinition()` render from,
+so the plain-text and PDF exports can't silently describe two
+different documents. `buildPdfDocDefinition()` lays that model out as
+a pdfmake document definition: a title block, the jurisdiction notice,
+the optional-clauses note, each clause's title/body/verification note/
+citations/gap, and a signature block (an embedded image for a drawn
+signature, styled text for a typed one) — plus a `footer` callback
+pdfmake calls per page with `(currentPage, pageCount)`, carrying the
+document id, a generated-on date, and "Page N of M."
+
+`sanitizeForPdf()` swaps seven characters this corpus actually uses
+(☐, ◻, ‖, ‟, ℠, ⅓, Ⓜ) for plain-ASCII equivalents before they reach
+pdfmake — confirmed by testing, not assumed, that pdfmake's bundled
+Roboto font has no glyph for any of the seven (each came back as a
+literal `\u0000`, pdf.js's signature for "no glyph," when extracted
+from a test PDF), while every accented letter, curly quote/apostrophe,
+dash, and the section/paragraph/registered-mark symbols this corpus
+also uses needed no fallback. This only affects the PDF; the on-screen
+page, plain-text export, and JSON export keep the real character.
+
+`tests/pdf/pdf_golden.js` is the master plan's literal 6.1 deliverable:
+it generates a real PDF for the corpus's shortest, median, and longest
+document (by clause count — derived from the live corpus rather than
+hardcoded document ids), extracts each one's text back out with
+`pdf-parse` (a devDependency added for exactly this, installed the
+same way Playwright already is), and checks it against that same
+document's `buildPlainText()` output. Two real findings from building
+this against the live engine: a per-page footer's own text sits, in
+PDF reading order, between content that ends at the bottom of one page
+and content that continues on the next, so naively concatenating all
+pages' text literally interrupts a paragraph that spans a page break
+with the footer's words (the test strips recognizable footer lines
+before comparing); and the font-coverage gap `sanitizeForPdf()` fixes,
+found by this same test-writing process. Full writeup in
+`DECISIONS.md`.
 
 ## Where Phase 2/3 (and beyond) will change this next
 
