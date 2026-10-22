@@ -81,7 +81,12 @@ const { chromium } = require('playwright');
 
   // Quality tiers (Phase 3.2): every document gets a tier pill on the
   // picker, filtering by tier narrows to exactly that tier's documents,
-  // and sorting by tier groups A before B before C.
+  // and sorting by tier groups A before B before C. Since Phase 5.4,
+  // renderPicker() only ever puts one page's worth of cards in the DOM
+  // (see PICKER_PAGE_SIZE) -- "every document" is checked against
+  // getPickerDocs()'s full filtered list, not a DOM query, and the DOM
+  // checks instead confirm the rendered page itself is correct and
+  // correctly capped at PICKER_PAGE_SIZE.
   const tierCheck = await p.evaluate(() => {
     showScreen('screen-picker');
     state.categoryFilter = null;
@@ -90,13 +95,17 @@ const { chromium } = require('playwright');
     renderCategoryFilter();
     renderTierFilter();
     renderPicker();
+    const docCount = getPickerDocs().docs.length;
     const pillCount = document.querySelectorAll('.doc-card .tier-pill').length;
-    const docCount = state.documents.length;
+    const renderedCount = document.querySelectorAll('.doc-card').length;
+    const expectedPage = Math.min(PICKER_PAGE_SIZE, docCount);
 
     const bCount = Object.values(state.tiers).filter(t => t.tier === 'B').length;
     state.tierFilter = 'B';
     renderPicker();
-    const filteredCount = document.querySelectorAll('.doc-card').length;
+    const filteredDocCount = getPickerDocs().docs.length;
+    const filteredRenderedCount = document.querySelectorAll('.doc-card').length;
+    const expectedFilteredPage = Math.min(PICKER_PAGE_SIZE, filteredDocCount);
     const allFilteredAreB = Array.from(document.querySelectorAll('.doc-card'))
       .every(card => card.querySelector('.tier-pill.tier-B'));
     state.tierFilter = null;
@@ -110,10 +119,13 @@ const { chromium } = require('playwright');
     state.tierSortEnabled = false;
     renderPicker();
 
-    return { pillCount, docCount, bCount, filteredCount, allFilteredAreB, sorted };
+    return { docCount, pillCount, renderedCount, expectedPage, bCount, filteredDocCount,
+      filteredRenderedCount, expectedFilteredPage, allFilteredAreB, sorted };
   });
-  const tierOk = tierCheck.pillCount === tierCheck.docCount
-    && tierCheck.filteredCount === tierCheck.bCount
+  const tierOk = tierCheck.pillCount === tierCheck.renderedCount
+    && tierCheck.renderedCount === tierCheck.expectedPage
+    && tierCheck.filteredDocCount === tierCheck.bCount
+    && tierCheck.filteredRenderedCount === tierCheck.expectedFilteredPage
     && tierCheck.allFilteredAreB
     && tierCheck.sorted;
   if (!tierOk) ok = false;

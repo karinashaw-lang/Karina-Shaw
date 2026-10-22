@@ -774,6 +774,32 @@ labels are genuinely exercised above a floor (today, 343 "often used
 alongside" / 397 "Related documents") rather than one being only
 theoretically reachable. Full writeup in `DECISIONS.md`.
 
+## Picker performance (Phase 5.4)
+
+`renderPicker()` no longer puts every matching document into the DOM
+at once. `getPickerDocs()` still computes the full filtered/sorted
+list (search, category filter, tier filter, tier sort) exactly as
+before — filtering 740 plain objects is cheap — but `renderPickerPage()`
+only ever turns `PICKER_PAGE_SIZE` (60) of them into actual `.doc-card`
+DOM nodes. A "Show more" button (`#picker-show-more`) appends the next
+page on demand rather than re-rendering what's already shown; clicking
+it repeatedly reaches every document, same as before pagination
+existed. Any state change that changes which documents match
+(`renderPicker()` itself, called from every filter/search/sort
+listener) resets back to the first page — there's no meaning to
+"page 3" of a filter that no longer applies.
+
+`tests/performance/performance_budget.js` is the master plan's literal
+5.4 deliverable ("a performance budget test: first render under a
+threshold, and search response under 100 ms for the full corpus"). It
+drives the real `renderPicker()`/`searchDocuments()` in a headless
+browser, same approach as every other browser test in this project,
+timing both against thresholds set from this sandbox's own measured
+numbers (first page ~5ms, full unpaginated 740-card render ~85ms,
+search under 2ms) with headroom for a slower CI runner or a real
+mid-range phone. Full writeup, including why pagination rather than
+true DOM virtualization, in `DECISIONS.md`.
+
 ## Where Phase 2/3 (and beyond) will change this next
 
 Phase 2 (2.1 field schema, 2.2 shared field library, 2.2b `whyWeAsk` text

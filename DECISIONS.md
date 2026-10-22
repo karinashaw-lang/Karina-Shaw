@@ -781,3 +781,56 @@ beyond the two fixed, master-plan-specified labels — related documents
 are presented using their own already-existing, already-linted titles
 and descriptions. There was nothing new for `validate_corpus.py`'s
 advisory lint to check.
+
+## Phase 5.4: picker performance
+
+**Chose pagination ("Show more") over true DOM virtualization.** The
+master plan allows either ("virtualize or paginate"). Virtualization —
+recycling a fixed window of DOM nodes as the list scrolls — is the
+more sophisticated answer, but needs a fixed or measured row height
+and scroll-position bookkeeping, and this picker's cards aren't a
+fixed height (description length varies, as does whether a jurisdiction
+or tier badge is present). Pagination needed none of that: render a
+page, append another page on a button click, done. It's also the same
+pattern this project already uses for "more than you need right now"
+(`DOC_SEARCH_LIMIT = 24` caps free-text search results) rather than a
+new mechanism introduced just for this. Measured why it matters before
+writing it: rendering all 740 cards at once costs ~85ms in this
+sandbox; a first page of 60 costs ~5ms. A real mid-range phone, slower
+than this sandbox, is exactly the case the master plan names.
+
+**Resetting to page one is keyed off "the filtered list changed," not
+off time or a page counter.** `renderPicker()` — called from every
+place that can change which documents match (category filter, tier
+filter, tier-sort toggle, search input, initial load) — always resets
+`state.pickerVisibleCount` to one page. Only the "Show more" button's
+own handler extends it without resetting. This means a filter change
+mid-scroll always starts the new, different list from its own
+beginning, never showing "page 3" of a list that no longer applies.
+
+**Fixed a real test assumption pagination broke, rather than loosening
+the test it broke.** `tools/regression.js`'s tier check asserted
+`pillCount === docCount` (every one of 740 documents gets a tier pill)
+and `filteredCount === bCount` (filtering to tier B shows exactly the
+382 tier-B documents) by counting `.doc-card` nodes in the DOM — both
+assumptions pagination breaks on purpose, since the DOM now only ever
+holds one page. Rewrote the check to verify "every document" against
+`getPickerDocs()`'s full filtered list (the data-level claim that was
+actually being tested) while still asserting the DOM itself is capped
+at exactly `PICKER_PAGE_SIZE` — so the test now checks both the
+original claim and the new pagination behavior, instead of silently
+checking less than it used to.
+
+**Set performance thresholds from this sandbox's own measured
+numbers, with headroom, not from a guess.** Measured first-page render
+(~5ms), full unpaginated render (~85ms), and `searchDocuments()` across
+ten representative queries (under 2ms, worst case) before writing
+`tests/performance/performance_budget.js`'s thresholds. The first-render
+budget (50ms) sits well above the measured first-page cost but well
+below the measured full-render cost, so a regression back to rendering
+everything upfront fails the test even on this fast sandbox, let alone
+a slower CI runner or a real phone. The search budget (100ms) is the
+master plan's own number, applied as a hard ceiling since the measured
+cost (under 2ms) already clears it with enormous margin — slower
+device or larger future corpus would have to grow search time by
+roughly 50x before this test would ever need revisiting.

@@ -1,4 +1,4 @@
-const state = { documents: null, document: null, clauses: null, answers: {}, categoryFilter: null, edits: {}, editedClauseIds: new Set(), currentEntryId: null, jurisdictionByDoc: null, sharedFields: null, wizardSteps: [], wizardStepIndex: 0, wizardReviewing: false, tiers: null, tierFilter: null, tierSortEnabled: false, layTerms: null, searchQuery: '', searchResults: null, intakeFlow: null, intakeCategory: null, intakeStep: 0, intakeAnswers: [] };
+const state = { documents: null, document: null, clauses: null, answers: {}, categoryFilter: null, edits: {}, editedClauseIds: new Set(), currentEntryId: null, jurisdictionByDoc: null, sharedFields: null, wizardSteps: [], wizardStepIndex: 0, wizardReviewing: false, tiers: null, tierFilter: null, tierSortEnabled: false, layTerms: null, searchQuery: '', searchResults: null, intakeFlow: null, intakeCategory: null, intakeStep: 0, intakeAnswers: [], pickerVisibleCount: 0 };
 
 // Draft persistence. Local-only, one slot at a time — closing the tab
 // mid-wizard shouldn't lose someone's answers. localStorage can throw
@@ -1249,9 +1249,17 @@ function renderCategoryFilter() {
 
 const TIER_SORT_RANK = { A: 0, B: 1, C: 2 };
 
-function renderPicker() {
-  const list = document.getElementById('doc-list');
-  list.innerHTML = '';
+// ---------- picker pagination (Phase 5.4) ----------
+// Rendering all 740 cards at once is the slow part on a mid-range
+// phone, not computing which 740 cards to show -- filtering/sorting
+// 740 plain objects is cheap, building and attaching 740 DOM nodes
+// with listeners is not. So the full filtered/sorted list is still
+// computed every time (getPickerDocs()), but only a page of it is
+// ever turned into DOM nodes; "Show more" appends another page to the
+// same list rather than re-rendering everything already shown.
+const PICKER_PAGE_SIZE = 60;
+
+function getPickerDocs() {
   const searchActive = state.searchQuery.trim().length >= 2;
   let docs;
   let matchedTermsById = null;
@@ -1285,38 +1293,77 @@ function renderPicker() {
       })
       .map(x => x.d);
   }
+  return { docs, matchedTermsById, searchActive };
+}
+
+function makeDocCard(doc, matchedTermsById) {
+  const card = document.createElement('button');
+  card.className = 'doc-card';
+  card.type = 'button';
+  const matched = matchedTermsById && matchedTermsById.get(doc.id);
+  const matchedHTML = matched && matched.length
+    ? `<p class="search-matched">Matched: ${matched.join(', ')}</p>`
+    : '';
+  card.innerHTML = `
+    <div>
+      <h3>${doc.title}${jurisdictionBadgeHTML(doc)}${tierBadgeHTML(doc)}</h3>
+      <p>${doc.description}</p>
+      ${matchedHTML}
+    </div>
+    <span class="go">START <span aria-hidden="true">&rarr;</span></span>
+  `;
+  card.addEventListener('click', () => {
+    state.document = doc;
+    state.answers = {};
+    renderWizard();
+    showScreen('screen-wizard');
+    document.getElementById('draft-banner').hidden = true;
+  });
+  return card;
+}
+
+// The only part of the picker that touches the DOM. Renders exactly
+// one page (docs[0..visibleCount)) plus a "Show more" button appending
+// the next page, rather than ever building nodes for documents that
+// aren't shown yet.
+function renderPickerPage(docs, matchedTermsById, visibleCount) {
+  const list = document.getElementById('doc-list');
+  list.innerHTML = '';
+  docs.slice(0, visibleCount).forEach(doc => {
+    list.appendChild(makeDocCard(doc, matchedTermsById));
+  });
+  const remaining = docs.length - visibleCount;
+  if (remaining > 0) {
+    const more = document.createElement('button');
+    more.type = 'button';
+    more.id = 'picker-show-more';
+    more.className = 'secondary picker-show-more';
+    more.textContent = `Show ${Math.min(PICKER_PAGE_SIZE, remaining)} more (${remaining} left)`;
+    more.addEventListener('click', () => {
+      state.pickerVisibleCount = visibleCount + PICKER_PAGE_SIZE;
+      renderPickerPage(docs, matchedTermsById, state.pickerVisibleCount);
+    });
+    list.appendChild(more);
+  }
+}
+
+// The entry point used whenever the underlying document list itself
+// changes (search, category/tier filter, tier sort, initial load) --
+// always resets back to the first page, since "page 3 of the old
+// filter" has no meaning against a new one.
+function renderPicker() {
+  const list = document.getElementById('doc-list');
+  const { docs, matchedTermsById, searchActive } = getPickerDocs();
   if (searchActive && docs.length === 0) {
+    list.innerHTML = '';
     const empty = document.createElement('p');
     empty.className = 'search-empty';
     empty.textContent = 'No documents match that search.';
     list.appendChild(empty);
     return;
   }
-  docs.forEach(doc => {
-    const card = document.createElement('button');
-    card.className = 'doc-card';
-    card.type = 'button';
-    const matched = matchedTermsById && matchedTermsById.get(doc.id);
-    const matchedHTML = matched && matched.length
-      ? `<p class="search-matched">Matched: ${matched.join(', ')}</p>`
-      : '';
-    card.innerHTML = `
-      <div>
-        <h3>${doc.title}${jurisdictionBadgeHTML(doc)}${tierBadgeHTML(doc)}</h3>
-        <p>${doc.description}</p>
-        ${matchedHTML}
-      </div>
-      <span class="go">START <span aria-hidden="true">&rarr;</span></span>
-    `;
-    card.addEventListener('click', () => {
-      state.document = doc;
-      state.answers = {};
-      renderWizard();
-      showScreen('screen-wizard');
-      document.getElementById('draft-banner').hidden = true;
-    });
-    list.appendChild(card);
-  });
+  state.pickerVisibleCount = Math.min(PICKER_PAGE_SIZE, docs.length);
+  renderPickerPage(docs, matchedTermsById, state.pickerVisibleCount);
 }
 
 function renderDocSearch() {
