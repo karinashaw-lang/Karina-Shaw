@@ -17,6 +17,11 @@
 // shape of document as the corpus grows instead of silently testing
 // three documents that used to be short/medium/long and no longer are.
 //
+// The median document also exercises Phase 6.2's "sources and checked-
+// dates appendix" toggle (state.includeSourcesAppendix), checking both
+// that enabling it adds the appendix and that leaving it off (the
+// other two documents) doesn't add it anyway.
+//
 // Two real findings from building this against the live engine, not
 // assumed:
 //   - A per-page footer's text sits, in PDF reading order, between
@@ -82,8 +87,8 @@ function normalize(s) {
 
   const failures = [];
 
-  async function checkDocument(docId, { withSignature } = {}) {
-    const result = await page.evaluate(async ({ id, withSignature }) => {
+  async function checkDocument(docId, { withSignature, withAppendix } = {}) {
+    const result = await page.evaluate(async ({ id, withSignature, withAppendix }) => {
       const doc = state.documents.find(d => d.id === id);
       state.document = doc;
       state.answers = {};
@@ -93,6 +98,7 @@ function normalize(s) {
       state.edits = {};
       state.editedClauseIds = new Set();
       state.currentEntryId = null;
+      state.includeSourcesAppendix = !!withAppendix;
 
       if (withSignature) {
         const entry = addToLibrary(doc.id, doc.title, state.answers);
@@ -106,8 +112,9 @@ function normalize(s) {
       const sanitizedPlainText = sanitizeForPdf(plainText);
       const docDef = buildPdfDocDefinition();
       const base64 = await pdfMake.createPdf(docDef).getBase64();
+      state.includeSourcesAppendix = false;
       return { sanitizedPlainText, base64, documentId: doc.id };
-    }, { id: docId, withSignature });
+    }, { id: docId, withSignature, withAppendix });
 
     const buffer = Buffer.from(result.base64, 'base64');
     const parser = new PDFParse({ data: buffer });
@@ -138,6 +145,12 @@ function normalize(s) {
     if (withSignature && !normalize(rawText).includes(normalize('Jane Q. Doe'))) {
       docFailures.push('Signed name was not found in the extracted PDF text.');
     }
+    if (withAppendix && !rawText.includes('SOURCES AND CHECKED DATES')) {
+      docFailures.push('Sources appendix was enabled but its heading was not found in the extracted PDF text.');
+    }
+    if (!withAppendix && rawText.includes('SOURCES AND CHECKED DATES')) {
+      docFailures.push('Sources appendix was NOT enabled but its heading appeared anyway -- the toggle leaked across documents.');
+    }
 
     console.log(`${docFailures.length === 0 ? 'OK  ' : 'FAIL'} ${docId}: ${parsed.total} page(s), ${plainLines.length} line(s) checked, ${missing.length} missing`);
     docFailures.forEach(f => console.error(`  - ${f}`));
@@ -146,7 +159,7 @@ function normalize(s) {
   }
 
   const shortestPages = await checkDocument(shortest.id);
-  const medianPages = await checkDocument(median.id, { withSignature: true });
+  const medianPages = await checkDocument(median.id, { withSignature: true, withAppendix: true });
   const longestPages = await checkDocument(longest.id);
 
   if (shortestPages !== 1) failures.push(`Expected the shortest document (${shortest.id}, ${shortest.count} clauses) to fit on 1 page, got ${shortestPages}.`);

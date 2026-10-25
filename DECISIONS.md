@@ -924,3 +924,58 @@ newest-documents checks: a hardcoded id stops testing the intended
 time this was written the three were a 1-clause/1-page document, an
 8-clause/6-page document, and a 20-clause/20-page document — all real,
 verified page counts, not guessed.
+
+## Phase 6.2: export polish (DOCX + sources appendix)
+
+**Chose `docx`'s own official standalone browser build for the same
+reason pdfmake's was chosen in 6.1: a real, self-contained, pre-built
+file this project's no-build-step app can load with a plain `<script>`
+tag.** `npm pack docx` and inspecting `dist/` turned up
+`dist/index.iife.js` — a single-global (`docx`) bundle with no further
+build step needed, the same shape as pdfmake's `pdfmake.min.js`.
+Copied verbatim, not hand-built, same as 6.1's library.
+
+**Generating a `.docx` needed none of Phase 6.1's font-glyph
+sanitizing, and checked that rather than assuming it.** A `.docx`'s
+body is plain XML text (`word/document.xml`); Word supplies whatever
+installed font covers a given character when the file is opened,
+unlike a PDF's embedded, subsetted font. Ran the same corpus-wide
+character scan from Phase 6.1 against a generated `.docx` containing
+the heaviest real test case (the 633-occurrence checkbox marker, ☐)
+and extracted it back out clean — no `sanitizeForPdf()`-style fallback
+needed here. `buildDocxDocument()` passes every string through
+untouched.
+
+**A real test-writing finding: `mammoth` (the library chosen to
+extract a generated `.docx`'s text back out, for the golden test)
+doesn't read header/footer parts at all — by design, since it
+converts the main document body.** First pass of
+`tests/docx/docx_golden.js` reported 0 missing plain-text lines for
+every document (correct) but also failed every footer assertion
+(because the assertion was checking mammoth's extracted body text,
+which structurally never contains footer content). Verified directly,
+not assumed, that the footer really was in the generated file by
+unzipping it and reading `word/footer1.xml` — it was. Added `jszip` as
+a second new devDependency specifically to read that part directly,
+rather than dropping the footer check or claiming "not testable."
+
+**The "sources and checked-dates appendix" is one new piece of shared
+logic (`buildSourcesAppendix()`), used identically by all four
+exports, not four separate re-derivations of the same list.** Same
+reasoning as `buildDocumentContent()` in 6.1: one function answering
+"what are this document's sources" that `buildPlainText()`,
+`buildPdfDocDefinition()`, `buildDocxDocument()`, and the JSON export
+handler all call, rather than four places that could each decide
+differently what counts as a citation worth listing.
+
+**Off by default, in every export, deliberately.** The master plan
+calls it an "appendix option," not a requirement — and defaulting it
+on would have meant re-verifying (and likely updating) `golden.js`'s
+frozen `buildPlainText()` fixture across all 740 documents for a
+feature that's explicitly optional. Defaulting
+`state.includeSourcesAppendix` to `false` means every export keeps
+its pre-6.2 shape until a reader deliberately checks the box — verified
+directly: `golden.js` still passes against its existing fixture with
+zero changes needed, and both new golden test files assert the
+appendix heading does *not* leak into a document where the toggle
+wasn't turned on, not just that it appears when it was.

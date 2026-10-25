@@ -119,6 +119,8 @@ jobs:
         run: set -o pipefail; node tests/performance/performance_budget.js | tee performance-budget.log
       - name: Run pdf_golden.js
         run: set -o pipefail; node tests/pdf/pdf_golden.js | tee pdf-golden.log
+      - name: Run docx_golden.js
+        run: set -o pipefail; node tests/docx/docx_golden.js | tee docx-golden.log
       - name: Upload logs on failure
         if: failure()
         uses: actions/upload-artifact@v4
@@ -134,4 +136,5 @@ jobs:
             performance-budget.log
             related-coverage.log
             pdf-golden.log
+            docx-golden.log
           if-no-files-found: warn

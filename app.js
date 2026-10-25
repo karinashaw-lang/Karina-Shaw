@@ -1,4 +1,4 @@
-const state = { documents: null, document: null, clauses: null, answers: {}, categoryFilter: null, edits: {}, editedClauseIds: new Set(), currentEntryId: null, jurisdictionByDoc: null, sharedFields: null, wizardSteps: [], wizardStepIndex: 0, wizardReviewing: false, tiers: null, tierFilter: null, tierSortEnabled: false, layTerms: null, searchQuery: '', searchResults: null, intakeFlow: null, intakeCategory: null, intakeStep: 0, intakeAnswers: [], pickerVisibleCount: 0 };
+const state = { documents: null, document: null, clauses: null, answers: {}, categoryFilter: null, edits: {}, editedClauseIds: new Set(), currentEntryId: null, jurisdictionByDoc: null, sharedFields: null, wizardSteps: [], wizardStepIndex: 0, wizardReviewing: false, tiers: null, tierFilter: null, tierSortEnabled: false, layTerms: null, searchQuery: '', searchResults: null, intakeFlow: null, intakeCategory: null, intakeStep: 0, intakeAnswers: [], pickerVisibleCount: 0, includeSourcesAppendix: false };
 
 // Draft persistence. Local-only, one slot at a time — closing the tab
 // mid-wizard shouldn't lose someone's answers. localStorage can throw
@@ -2061,6 +2061,7 @@ function renderOutput() {
   state.editedClauseIds = new Set();
 
   document.getElementById('output-meta').textContent = preparedForLine(state.answers);
+  document.getElementById('include-sources-appendix').checked = state.includeSourcesAppendix;
 
   const jKey = state.jurisdictionByDoc.get(state.document.id);
   const jEl = document.getElementById('output-jurisdiction');
@@ -2234,6 +2235,15 @@ document.getElementById('output-back').addEventListener('click', () => {
   showScreen('screen-picker');
 });
 
+// Off by default (set in state's initial value) so every export keeps
+// its existing shape unless a reader deliberately opts into the extra
+// section -- checked here at download time by buildPlainText(),
+// buildPdfDocDefinition(), buildDocxDocument(), and the JSON export
+// handler, not re-rendered into the page itself.
+document.getElementById('include-sources-appendix').addEventListener('change', e => {
+  state.includeSourcesAppendix = e.target.checked;
+});
+
 // Save on every keystroke rather than on blur/submit — a tab closed
 // mid-field shouldn't lose more than the current character.
 document.getElementById('wizard-form').addEventListener('input', e => {
@@ -2279,6 +2289,19 @@ function buildDocumentContent() {
     }),
     signature: signedEntry ? signedEntry.signature || null : null,
   };
+}
+
+// ---------- sources & checked-dates appendix (Phase 6.2) ----------
+// A consolidated reference list of every citation already shown
+// inline, per clause, throughout the document -- gathered into one
+// place at the end for a reader who wants a quick source list without
+// reading the whole document. Off by default (state.includeSourcesAppendix)
+// in every export, so turning it on is a deliberate choice rather than
+// a surprise addition to a file whose shape someone already relies on.
+function buildSourcesAppendix(content) {
+  return content.clauses
+    .filter(c => c.status === 'verified' && c.citations.length > 0)
+    .map(c => ({ clauseTitle: c.title, checkedDate: c.checkedDate, citations: c.citations }));
 }
 
 // Builds a readable plain-text export of the assembled document,
@@ -2335,6 +2358,20 @@ function buildPlainText() {
     lines.push('');
   }
 
+  if (state.includeSourcesAppendix) {
+    const appendix = buildSourcesAppendix(content);
+    if (appendix.length) {
+      lines.push('SOURCES AND CHECKED DATES');
+      appendix.forEach(entry => {
+        lines.push(`${entry.clauseTitle} — checked ${entry.checkedDate}`);
+        entry.citations.forEach(c => {
+          lines.push(`  ${c.case}, ${c.cite} (${c.url})`);
+        });
+      });
+      lines.push('');
+    }
+  }
+
   lines.push('—');
   lines.push('Groundtruth v1 demo · every "Verified" citation links to a real, checked source.');
   return lines.join('\n');
@@ -2367,6 +2404,7 @@ const PDF_STYLES = {
   citeLine: { fontSize: 9, margin: [10, 0, 0, 0] },
   gapLine: { fontSize: 9, margin: [10, 2, 0, 0] },
   signatureName: { fontSize: 14, bold: true },
+  appendixClauseLabel: { fontSize: 10, bold: true },
   signatureMeta: { fontSize: 9, color: '#4B5245' },
   closingNote: { fontSize: 8.5, color: '#4B5245', margin: [0, 16, 0, 0] },
   footerText: { fontSize: 8, color: '#4B5245' },
@@ -2444,6 +2482,19 @@ function buildPdfDocDefinition() {
     body.push({ text: `Date: ${new Date(content.signature.signedAt).toLocaleString()}`, style: 'signatureMeta' });
   }
 
+  if (state.includeSourcesAppendix) {
+    const appendix = buildSourcesAppendix(content);
+    if (appendix.length) {
+      body.push({ text: 'SOURCES AND CHECKED DATES', style: 'sectionLabel', margin: [0, 22, 0, 8], pageBreak: 'before' });
+      appendix.forEach(entry => {
+        body.push({ text: sanitizeForPdf(`${entry.clauseTitle} — checked ${entry.checkedDate}`), style: 'appendixClauseLabel', margin: [0, 8, 0, 2] });
+        entry.citations.forEach(c => {
+          body.push({ text: sanitizeForPdf(`${c.case}, ${c.cite} (${c.url})`), style: 'citeLine' });
+        });
+      });
+    }
+  }
+
   body.push({ text: 'Groundtruth v1 demo · every "Verified" citation links to a real, checked source.', style: 'closingNote' });
 
   return {
@@ -2461,6 +2512,102 @@ function buildPdfDocDefinition() {
       ],
     }),
   };
+}
+
+// ---------- native DOCX export (Phase 6.2) ----------
+// docx (vendored in lib/, see lib/README.md) builds a real .docx file
+// from the same buildDocumentContent() model the plain-text and PDF
+// exports use -- "so users can edit in Word" means handing Word actual
+// editable paragraphs and headings, not a converted PDF or an HTML
+// file renamed .doc. Unlike the PDF path, plain Unicode text needs no
+// font-glyph sanitizing here: a .docx's body text is XML, and Word
+// supplies whatever font covers a given character at open time, so
+// there's no embedded-glyph-subset to come up short the way pdfmake's
+// bundled Roboto did.
+function buildDocxDocument() {
+  const content = buildDocumentContent();
+  const generatedOn = new Date().toISOString().slice(0, 10);
+  const { Document, Paragraph, TextRun, ImageRun, Footer, HeadingLevel } = docx;
+  const GRAY = '4B5245';
+  const children = [];
+
+  children.push(new Paragraph({ text: content.title.toUpperCase(), heading: HeadingLevel.TITLE }));
+  children.push(new Paragraph({ children: [new TextRun({ text: content.preparedFor, color: GRAY })] }));
+
+  if (content.jurisdictionNotice) {
+    children.push(new Paragraph({ children: [new TextRun({ text: content.jurisdictionNotice, italics: true, color: GRAY })] }));
+  }
+
+  if (content.conditional.length) {
+    children.push(new Paragraph({ text: 'OPTIONAL CLAUSES IN THIS DOCUMENT', heading: HeadingLevel.HEADING_3 }));
+    content.conditional.forEach(c => {
+      children.push(new Paragraph({ children: [new TextRun(`${c.included ? 'Included' : 'Not included'}: ${c.title} — because ${c.reason}`)] }));
+    });
+  }
+
+  function pushCitations(citations) {
+    citations.forEach(c => {
+      children.push(new Paragraph({ children: [new TextRun({ text: `"${c.quote}"`, italics: true })] }));
+      children.push(new Paragraph({ children: [new TextRun(`— ${c.case}, ${c.cite} (${c.url})`)] }));
+    });
+  }
+
+  content.clauses.forEach(clause => {
+    children.push(new Paragraph({ text: clause.title.toUpperCase(), heading: HeadingLevel.HEADING_2 }));
+    children.push(new Paragraph({ children: [new TextRun(clause.body)] }));
+    if (clause.kind !== 'drafting') {
+      if (clause.status === 'verified' && clause.edited) {
+        children.push(new Paragraph({ children: [new TextRun({ text: `Edited since verified on ${clause.checkedDate} — check the citation below still fits this wording`, italics: true, color: '2B6E4F' })] }));
+        pushCitations(clause.citations);
+        if (clause.gap) children.push(new Paragraph({ children: [new TextRun(`Known gap: ${clause.gap}`)] }));
+      } else if (clause.status === 'verified') {
+        children.push(new Paragraph({ children: [new TextRun({ text: `Verified — checked ${clause.checkedDate}`, italics: true, color: '2B6E4F' })] }));
+        pushCitations(clause.citations);
+        if (clause.gap) children.push(new Paragraph({ children: [new TextRun(`Known gap: ${clause.gap}`)] }));
+      } else {
+        children.push(new Paragraph({ children: [new TextRun({ text: 'Not yet verified against a primary source or case law. Treat as a starting point, not a confirmed fact.', italics: true, color: '2B6E4F' })] }));
+      }
+    }
+  });
+
+  if (content.signature) {
+    children.push(new Paragraph({ text: 'SIGNATURE', heading: HeadingLevel.HEADING_3 }));
+    if (content.signature.type === 'drawn') {
+      children.push(new Paragraph({ children: [new TextRun({ text: 'Signed:', color: GRAY })] }));
+      // The canvas is 420x130; keep that aspect ratio at a smaller size
+      // rather than a fixed box that would stretch a drawn signature.
+      children.push(new Paragraph({ children: [new ImageRun({ type: 'png', data: content.signature.dataUrl, transformation: { width: 240, height: 74 } })] }));
+    } else {
+      children.push(new Paragraph({ children: [new TextRun({ text: `Signed: ${content.signature.name}`, bold: true })] }));
+    }
+    children.push(new Paragraph({ children: [new TextRun({ text: `Date: ${new Date(content.signature.signedAt).toLocaleString()}`, color: GRAY })] }));
+  }
+
+  if (state.includeSourcesAppendix) {
+    const appendix = buildSourcesAppendix(content);
+    if (appendix.length) {
+      children.push(new Paragraph({ text: 'SOURCES AND CHECKED DATES', heading: HeadingLevel.HEADING_2, pageBreakBefore: true }));
+      appendix.forEach(entry => {
+        children.push(new Paragraph({ children: [new TextRun({ text: `${entry.clauseTitle} — checked ${entry.checkedDate}`, bold: true })] }));
+        entry.citations.forEach(c => {
+          children.push(new Paragraph({ children: [new TextRun(`${c.case}, ${c.cite} (${c.url})`)] }));
+        });
+      });
+    }
+  }
+
+  children.push(new Paragraph({ children: [new TextRun({ text: 'Groundtruth v1 demo · every "Verified" citation links to a real, checked source.', size: 16, color: GRAY })] }));
+
+  return new Document({
+    sections: [{
+      children,
+      footers: {
+        default: new Footer({
+          children: [new Paragraph({ children: [new TextRun({ text: `${content.documentId} · generated ${generatedOn}`, size: 16, color: GRAY })] })],
+        }),
+      },
+    }],
+  });
 }
 
 document.getElementById('output-print').addEventListener('click', () => {
@@ -2528,6 +2675,31 @@ document.getElementById('output-download-pdf').addEventListener('click', () => {
     .catch(err => {
       console.error('PDF generation failed:', err);
       btn.textContent = "Couldn't generate PDF — try Print instead";
+      setTimeout(() => { btn.textContent = original; }, 2500);
+    })
+    .finally(() => { btn.disabled = false; });
+});
+
+document.getElementById('output-download-docx').addEventListener('click', () => {
+  const btn = document.getElementById('output-download-docx');
+  const original = btn.textContent;
+  btn.disabled = true;
+  btn.textContent = 'Generating…';
+  docx.Packer.toBlob(buildDocxDocument())
+    .then(blob => {
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `${documentSlug()}.docx`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+      btn.textContent = original;
+    })
+    .catch(err => {
+      console.error('DOCX generation failed:', err);
+      btn.textContent = "Couldn't generate the Word file — try Download as text instead";
       setTimeout(() => { btn.textContent = original; }, 2500);
     })
     .finally(() => { btn.disabled = false; });
@@ -2631,13 +2803,13 @@ document.getElementById('output-export').addEventListener('click', () => {
       checkedDate: clause.checkedDate || undefined,
       gap: clause.gap || undefined,
     })),
+    sourcesAppendix: state.includeSourcesAppendix ? buildSourcesAppendix(buildDocumentContent()) : undefined,
   };
-  const slug = state.document.title.replace(/[^\w\- ]+/g, '').trim().replace(/\s+/g, '-');
   const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
-  a.download = `${slug}.json`;
+  a.download = `${documentSlug()}.json`;
   document.body.appendChild(a);
   a.click();
   a.remove();

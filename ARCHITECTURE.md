@@ -44,8 +44,9 @@ search/lay_terms.json  Plain-language phrasings per document (Phase 5.1),
                      fetched by app.js at init() and indexed into the
                      document search engine; see search/README.md.
 lib/                 Third-party browser libraries vendored (not
-                     CDN-loaded) into the repo — pdfmake, for Phase
-                     6.1's native PDF export; see lib/README.md.
+                     CDN-loaded) into the repo — pdfmake (Phase 6.1's
+                     PDF export) and docx (Phase 6.2's Word export);
+                     see lib/README.md.
 index/citation_to_clauses.json  Citation url -> affected clause ids
                      (Phase 4.4), built by tools/build_citation_index.py.
 recheck/             history.jsonl (every recheck_all.py run, Phase 4.5)
@@ -56,8 +57,9 @@ watcher/             Law-change watcher (Phase 4.4) — see watcher/README.md.
 verifier/            Adversarial verifier (Phase 4.1) — see verifier/README.md.
 tests/               golden/, wizard/, merge_guard/, validate_corpus/,
                      tiering/, search/, tools/, watcher/, verifier/,
-                     performance/, pdf/ — browser and unit tests for
-                     the gate scripts and the rendered app, run in CI.
+                     performance/, pdf/, docx/ — browser and unit
+                     tests for the gate scripts and the rendered app,
+                     run in CI.
 ```
 
 `tools/*.py` run directly with system Python 3; `tools/regression.js`
@@ -857,6 +859,44 @@ with the footer's words (the test strips recognizable footer lines
 before comparing); and the font-coverage gap `sanitizeForPdf()` fixes,
 found by this same test-writing process. Full writeup in
 `DECISIONS.md`.
+
+## Export polish: DOCX + sources appendix (Phase 6.2)
+
+A new "Download as Word (.docx)" button (`#output-download-docx`)
+generates a real, editable Word document client-side via
+[docx](https://docx.js.org/), vendored into `lib/` the same way
+pdfmake is (`lib/docx.iife.js`, see `lib/README.md`) — no CDN, no
+backend, zero-config stays offline-safe. `buildDocxDocument()` renders
+the same `buildDocumentContent()` model the plain-text and PDF
+exporters use into `docx.Paragraph`/`TextRun`/`ImageRun` nodes (a
+title heading, prepared-for line, jurisdiction notice, each clause
+with its verification note/citations/gap, a signature block, and a
+footer carrying the document id and generated-on date). Unlike the PDF
+path, no font-glyph sanitizing is needed: a `.docx`'s body is XML
+text, and Word supplies whatever font covers a character at open time,
+so there's no embedded-glyph-subset to fall outside of.
+
+A new checkbox on the output screen (`#include-sources-appendix`,
+`state.includeSourcesAppendix`, off by default) adds a consolidated
+"SOURCES AND CHECKED DATES" section — every verified clause's
+citations, gathered into one place — to whichever export is downloaded
+next: `buildPlainText()`, `buildPdfDocDefinition()`, `buildDocxDocument()`,
+and the JSON export's new `sourcesAppendix` field all check it via the
+shared `buildSourcesAppendix()` helper. Off by default means every
+export keeps its pre-6.2 shape unless a reader deliberately opts in —
+confirmed by `tests/golden/golden.js`'s existing fixture still matching
+`buildPlainText()`'s output byte-for-byte with no changes needed.
+
+`tests/docx/docx_golden.js` mirrors `tests/pdf/pdf_golden.js`'s
+approach (same corpus-derived shortest/median/longest documents,
+same `buildPlainText()` comparison) but needed a different footer
+check: `mammoth` (the Node-side `.docx`-to-text library used to
+extract a generated file's real content back out) doesn't read
+header/footer parts at all, so the footer is instead verified by
+reading `word/footer1.xml` directly with `jszip` — found by checking
+directly, not assuming, that mammoth's clean body-text match didn't
+also mean the footer was present anywhere mammoth looks. Full writeup
+in `DECISIONS.md`.
 
 ## Where Phase 2/3 (and beyond) will change this next
 
