@@ -57,8 +57,8 @@ watcher/             Law-change watcher (Phase 4.4) — see watcher/README.md.
 verifier/            Adversarial verifier (Phase 4.1) — see verifier/README.md.
 tests/               golden/, wizard/, merge_guard/, validate_corpus/,
                      tiering/, search/, tools/, watcher/, verifier/,
-                     performance/, pdf/, docx/ — browser and unit
-                     tests for the gate scripts and the rendered app,
+                     performance/, pdf/, docx/, library/ — browser and
+                     unit tests for the gate scripts and the rendered app,
                      run in CI.
 ```
 
@@ -896,6 +896,60 @@ header/footer parts at all, so the footer is instead verified by
 reading `word/footer1.xml` directly with `jszip` — found by checking
 directly, not assuming, that mammoth's clean body-text match didn't
 also mean the footer was present anywhere mammoth looks. Full writeup
+in `DECISIONS.md`.
+
+## Document lifecycle and versioning (Phase 6.3)
+
+Every saved document (`loadLibrary()`/`addToLibrary()` in `app.js`)
+now also carries `schemaVersion` (the shape of the saved-entry record
+itself, not the corpus or a document's own field schema), `corpusVersion`
+(a content hash over the clauses this specific document used, via
+`hashString()` — a plain FNV-1a fingerprint, not a cryptographic one;
+nothing here needs tamper-resistance, only "changed vs. didn't"), and
+`clauseSnapshots` — enough of each used clause's own content (not just
+its id and checked date) to later show a real diff, since a checked
+date or a hash alone says *that* something changed, never *what*.
+`buildClauseSnapshot(doc, answers)` is the one function both
+`addToLibrary()` (at creation) and `regenerateLibraryEntry()` (at
+refresh) call to build this, resolving `clauseOrder` against Phase
+2.4's `includeIf` the same way `assembleDocument()` does.
+
+`detectDrift(entry)` compares a saved entry's frozen `clauseSnapshots`
+against the live `state.clauses` and reports, per clause, exactly
+which fields differ now (`checkedDate`, `status`, `body`, `gap`,
+`citations`) — or that the clause no longer exists in the corpus at
+all. `renderLibrary()` (My Documents) shows a banner for any entry
+with real drift, worded exactly to the master plan's own required
+framing ("A clause used in this document has changed since you
+created it," pluralized when more than one did) — stating only facts,
+never whether the reader needs to act. An expandable detail shows
+`diffWords()`'s word-level diff (a classic LCS over whitespace-split
+tokens) for a changed body, and a plain before/after line for
+everything else.
+
+"Regenerate" (`regenerateLibraryEntry()`) is the one-click action the
+master plan asks for, and it does less than it might sound like: the
+rendered document (`renderOutput()`, `buildPlainText()`, and every
+export) already always recomputes from the live corpus plus the
+entry's stored `answers` — nothing about what a reader sees was ever
+frozen except `detectDrift()`'s comparison baseline. Regenerating just
+refreshes that baseline to the current corpus, which is what
+"preserves inputs" means here: `answers`, `signature`, `title`, and
+`documentId` are untouched. The snapshot being replaced is pushed onto
+the entry's `versions` array first, with a `generatedAt`/`replacedAt`
+pair, so nothing is lost — `restoreLibraryVersion()` makes a prior
+version current again (and keeps whatever was current before the
+restore in `versions` too, rather than discarding it), satisfying
+"keep prior versions with timestamps and allow restore."
+
+An entry saved before this phase existed has no `clauseSnapshots` at
+all; `detectDrift()` reports no drift for it rather than guessing,
+since the information needed to say anything true was never captured
+— the same backward-compatibility stance as every other optional field
+this app has added to localStorage-stored records before (a missing
+tier falls back to `'C'`, a missing signature just doesn't render).
+Full writeup, including the `schemaVersion` naming judgment call and
+why the snapshot stores more than the master plan's literal minimum,
 in `DECISIONS.md`.
 
 ## Where Phase 2/3 (and beyond) will change this next

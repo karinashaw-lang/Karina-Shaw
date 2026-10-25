@@ -63,6 +63,12 @@ function checkForDraft() {
 // requirement the app depends on.
 const LIBRARY_KEY = 'groundtruth-library';
 
+// The shape of a saved library entry itself (Phase 6.3) — bumped only
+// when that shape changes, so a future migration can tell an old
+// entry (no schemaVersion at all, or a lower number) from a current
+// one. Unrelated to the corpus or to any document's own field schema.
+const SCHEMA_VERSION = 1;
+
 function loadLibrary() {
   try {
     const raw = localStorage.getItem(LIBRARY_KEY);
@@ -76,14 +82,67 @@ function saveLibraryEntries(entries) {
   try { localStorage.setItem(LIBRARY_KEY, JSON.stringify(entries)); } catch (e) { /* not fatal */ }
 }
 
+// A plain, non-cryptographic content fingerprint (FNV-1a) -- all this
+// needs to do is change when the input changes and stay stable when it
+// doesn't, not resist tampering, so there's no reason to pull in a
+// crypto library for it.
+function hashString(str) {
+  let hash = 0x811c9dc5;
+  for (let i = 0; i < str.length; i++) {
+    hash ^= str.charCodeAt(i);
+    hash = Math.imul(hash, 0x01000193);
+  }
+  return (hash >>> 0).toString(16).padStart(8, '0');
+}
+
+// What a saved document actually used, frozen at generation time (or
+// at regenerateLibraryEntry()'s refresh): every clause this document's
+// clauseOrder resolves to for these particular answers (respecting
+// Phase 2.4's includeIf), with enough of each clause's own content
+// (not just its id and checkedDate) to later show a real diff of what
+// changed -- a checkedDate or a hash alone would say THAT something
+// changed, not what. corpusVersion is a single rolled-up fingerprint
+// over the same snapshot, for the master plan's own literal field;
+// detectDrift() below compares the richer per-clause fields directly,
+// since that's what can actually describe a change.
+function buildClauseSnapshot(doc, answers) {
+  const clauseSnapshots = doc.clauseOrder
+    .filter(entry => {
+      const cond = clauseIncludeIf(entry);
+      return !cond || conditionMatches(cond, answers);
+    })
+    .map(entry => state.clauses.find(c => c.id === clauseEntryId(entry)))
+    .filter(Boolean)
+    .map(c => ({
+      id: c.id,
+      title: c.title,
+      kind: c.kind,
+      status: c.status || null,
+      checkedDate: c.checkedDate || null,
+      body: c.body,
+      gap: c.gap || null,
+      citations: c.citations || [],
+    }))
+    .sort((a, b) => a.id.localeCompare(b.id));
+  return { clauseSnapshots, corpusVersion: hashString(JSON.stringify(clauseSnapshots)) };
+}
+
 function addToLibrary(documentId, title, answers) {
   const entries = loadLibrary();
+  const doc = state.documents.find(d => d.id === documentId);
+  const { clauseSnapshots, corpusVersion } = doc
+    ? buildClauseSnapshot(doc, answers)
+    : { clauseSnapshots: [], corpusVersion: null };
   const entry = {
     id: `${documentId}-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`,
     documentId,
     title,
     answers: { ...answers },
     generatedAt: new Date().toISOString(),
+    schemaVersion: SCHEMA_VERSION,
+    corpusVersion,
+    clauseSnapshots,
+    versions: [],
   };
   entries.push(entry);
   saveLibraryEntries(entries);
@@ -120,6 +179,130 @@ function updateLibraryCount() {
   el.textContent = count ? ` (${count})` : '';
 }
 
+// ---------- document lifecycle & versioning (Phase 6.3) ----------
+// Compares a saved entry's frozen clauseSnapshots against the live
+// corpus (state.clauses) and reports, per clause, exactly which fields
+// differ now -- not just that something does. An entry saved before
+// this phase existed has no clauseSnapshots at all; there is nothing
+// true to say about whether its clauses have changed (the information
+// needed to say so was never captured), so it reports no drift rather
+// than guessing.
+function detectDrift(entry) {
+  if (!entry.clauseSnapshots || entry.clauseSnapshots.length === 0) return [];
+  return entry.clauseSnapshots
+    .map(snap => {
+      const current = state.clauses.find(c => c.id === snap.id);
+      if (!current) return { id: snap.id, title: snap.title, removed: true, old: snap, current: null, changedFields: [] };
+      const changedFields = ['checkedDate', 'status', 'body', 'gap']
+        .filter(f => (current[f] || null) !== (snap[f] || null));
+      if (JSON.stringify(current.citations || []) !== JSON.stringify(snap.citations || [])) {
+        changedFields.push('citations');
+      }
+      if (changedFields.length === 0) return null;
+      return { id: snap.id, title: current.title, removed: false, old: snap, current, changedFields };
+    })
+    .filter(Boolean);
+}
+
+// A plain word-level diff (classic LCS, splitting on whitespace so
+// whitespace itself survives as its own token) -- enough to show
+// *what* changed in a clause's wording, not just *that* it changed.
+// Clause bodies are at most a few hundred words, so the O(n*m) table
+// this builds is cheap even for the corpus's longest clauses.
+function diffWords(oldText, newText) {
+  const a = (oldText || '').split(/(\s+)/).filter(Boolean);
+  const b = (newText || '').split(/(\s+)/).filter(Boolean);
+  const n = a.length, m = b.length;
+  const dp = Array.from({ length: n + 1 }, () => new Array(m + 1).fill(0));
+  for (let i = n - 1; i >= 0; i--) {
+    for (let j = m - 1; j >= 0; j--) {
+      dp[i][j] = a[i] === b[j] ? dp[i + 1][j + 1] + 1 : Math.max(dp[i + 1][j], dp[i][j + 1]);
+    }
+  }
+  const spans = [];
+  let i = 0, j = 0;
+  while (i < n && j < m) {
+    if (a[i] === b[j]) { spans.push({ type: 'same', text: a[i] }); i++; j++; }
+    else if (dp[i + 1][j] >= dp[i][j + 1]) { spans.push({ type: 'removed', text: a[i] }); i++; }
+    else { spans.push({ type: 'added', text: b[j] }); j++; }
+  }
+  while (i < n) { spans.push({ type: 'removed', text: a[i] }); i++; }
+  while (j < m) { spans.push({ type: 'added', text: b[j] }); j++; }
+  const merged = [];
+  spans.forEach(span => {
+    const last = merged[merged.length - 1];
+    if (last && last.type === span.type) last.text += span.text;
+    else merged.push({ ...span });
+  });
+  return merged;
+}
+
+// The one-click regenerate the master plan asks for: refreshes a
+// saved entry's clauseSnapshots/corpusVersion to match the live
+// corpus, leaving documentId/title/answers/signature untouched -- this
+// is what "preserves inputs" means here, since the rendered document
+// itself (renderOutput()/buildPlainText()/etc.) already always
+// recomputes from the live corpus plus the stored answers; nothing
+// about what a reader sees was ever frozen except this comparison
+// baseline. The snapshot being replaced is pushed onto `versions`
+// first, so regenerating doesn't lose it.
+function regenerateLibraryEntry(entryId) {
+  const entries = loadLibrary();
+  const idx = entries.findIndex(e => e.id === entryId);
+  if (idx === -1) return;
+  const entry = entries[idx];
+  const doc = state.documents.find(d => d.id === entry.documentId);
+  if (!doc) return;
+  const { clauseSnapshots, corpusVersion } = buildClauseSnapshot(doc, entry.answers);
+  const versions = (entry.versions || []).concat([{
+    schemaVersion: entry.schemaVersion,
+    corpusVersion: entry.corpusVersion,
+    clauseSnapshots: entry.clauseSnapshots,
+    generatedAt: entry.generatedAt,
+    replacedAt: new Date().toISOString(),
+  }]);
+  entries[idx] = {
+    ...entry,
+    schemaVersion: SCHEMA_VERSION,
+    corpusVersion,
+    clauseSnapshots,
+    generatedAt: new Date().toISOString(),
+    versions,
+  };
+  saveLibraryEntries(entries);
+}
+
+// Makes a prior version current again. Whatever was current before
+// the restore is itself kept in `versions` (not discarded), so
+// restoring never loses information -- it only changes which snapshot
+// is the one detectDrift() compares against.
+function restoreLibraryVersion(entryId, versionIndex) {
+  const entries = loadLibrary();
+  const idx = entries.findIndex(e => e.id === entryId);
+  if (idx === -1) return;
+  const entry = entries[idx];
+  const versions = entry.versions || [];
+  const target = versions[versionIndex];
+  if (!target) return;
+  const currentAsVersion = {
+    schemaVersion: entry.schemaVersion,
+    corpusVersion: entry.corpusVersion,
+    clauseSnapshots: entry.clauseSnapshots,
+    generatedAt: entry.generatedAt,
+    replacedAt: new Date().toISOString(),
+  };
+  const remainingVersions = versions.filter((_, i) => i !== versionIndex).concat([currentAsVersion]);
+  entries[idx] = {
+    ...entry,
+    schemaVersion: target.schemaVersion,
+    corpusVersion: target.corpusVersion,
+    clauseSnapshots: target.clauseSnapshots,
+    generatedAt: target.generatedAt,
+    versions: remainingVersions,
+  };
+  saveLibraryEntries(entries);
+}
+
 // Compares the same field id across every saved document. A field id
 // carrying two different values isn't necessarily a mistake — the
 // same field can legitimately hold a different real value in a
@@ -149,6 +332,143 @@ function computeConsistency(entries) {
   return Object.entries(byField)
     .map(([fieldId, occurrences]) => ({ fieldId, occurrences }))
     .filter(({ occurrences }) => new Set(occurrences.map(o => o.value)).size > 1);
+}
+
+function formatDriftValue(v) {
+  return v === null || v === undefined || v === '' ? 'none' : v;
+}
+
+// Renders one changed-clause's detail: which fields differ, and for
+// the body specifically, a word-level diff rather than just "the body
+// changed" -- states what changed, nothing about whether it matters.
+function renderDriftClauseDetail(change) {
+  const block = document.createElement('div');
+  block.className = 'drift-clause';
+
+  const title = document.createElement('div');
+  title.className = 'drift-clause-title';
+  title.textContent = change.title;
+  block.appendChild(title);
+
+  if (change.removed) {
+    const p = document.createElement('p');
+    p.className = 'drift-field';
+    p.textContent = "This clause is no longer in Groundtruth's library.";
+    block.appendChild(p);
+    return block;
+  }
+
+  change.changedFields.forEach(field => {
+    if (field === 'body') {
+      const p = document.createElement('p');
+      p.className = 'drift-diff';
+      diffWords(change.old.body, change.current.body).forEach(span => {
+        if (span.type === 'same') {
+          p.appendChild(document.createTextNode(span.text));
+        } else {
+          const el = document.createElement(span.type === 'removed' ? 'del' : 'ins');
+          el.textContent = span.text;
+          p.appendChild(el);
+        }
+      });
+      block.appendChild(p);
+      return;
+    }
+    if (field === 'citations') {
+      const oldNames = (change.old.citations || []).map(c => c.case).join('; ') || 'none';
+      const newNames = (change.current.citations || []).map(c => c.case).join('; ') || 'none';
+      const p = document.createElement('p');
+      p.className = 'drift-field';
+      p.textContent = `Citations: ${oldNames} → ${newNames}`;
+      block.appendChild(p);
+      return;
+    }
+    const label = { checkedDate: 'Checked date', status: 'Status', gap: 'Known gap' }[field] || field;
+    const p = document.createElement('p');
+    p.className = 'drift-field';
+    p.textContent = `${label}: ${formatDriftValue(change.old[field])} → ${formatDriftValue(change.current[field])}`;
+    block.appendChild(p);
+  });
+
+  return block;
+}
+
+// The master plan's own required framing: state what changed, never
+// whether the reader needs to do anything about it. "Regenerate"
+// updates this entry's comparison baseline to the current corpus,
+// keeping the answers exactly as they were -- see
+// regenerateLibraryEntry()'s own comment for why that's enough.
+function renderDriftBanner(entry) {
+  const changes = detectDrift(entry);
+  if (changes.length === 0) return null;
+
+  const banner = document.createElement('div');
+  banner.className = 'drift-banner';
+
+  const summary = document.createElement('p');
+  summary.className = 'drift-summary';
+  summary.textContent = changes.length === 1
+    ? 'A clause used in this document has changed since you created it.'
+    : `${changes.length} clauses used in this document have changed since you created it.`;
+  banner.appendChild(summary);
+
+  const details = document.createElement('details');
+  details.className = 'drift-detail';
+  const detailsSummary = document.createElement('summary');
+  detailsSummary.textContent = 'Show what changed';
+  details.appendChild(detailsSummary);
+  changes.forEach(change => details.appendChild(renderDriftClauseDetail(change)));
+  banner.appendChild(details);
+
+  const regenBtn = document.createElement('button');
+  regenBtn.type = 'button';
+  regenBtn.className = 'secondary';
+  regenBtn.textContent = 'Regenerate (keeps your answers)';
+  regenBtn.addEventListener('click', () => {
+    regenerateLibraryEntry(entry.id);
+    renderLibrary();
+  });
+  banner.appendChild(regenBtn);
+
+  return banner;
+}
+
+// Prior snapshots, each with the timestamp it was generated and the
+// timestamp it was replaced -- restoring one makes it current again
+// without discarding whatever was current before (see
+// restoreLibraryVersion()).
+function renderVersionHistory(entry) {
+  const versions = entry.versions || [];
+  if (versions.length === 0) return null;
+
+  const details = document.createElement('details');
+  details.className = 'version-history';
+  const summary = document.createElement('summary');
+  summary.textContent = `Version history (${versions.length})`;
+  details.appendChild(summary);
+
+  versions
+    .map((v, i) => ({ v, i }))
+    .sort((a, b) => new Date(b.v.replacedAt) - new Date(a.v.replacedAt))
+    .forEach(({ v, i }) => {
+      const row = document.createElement('div');
+      row.className = 'version-row';
+      const label = document.createElement('span');
+      label.textContent = `Generated ${new Date(v.generatedAt).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' })} — replaced ${new Date(v.replacedAt).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' })}`;
+      row.appendChild(label);
+      const restoreBtn = document.createElement('button');
+      restoreBtn.type = 'button';
+      restoreBtn.className = 'secondary';
+      restoreBtn.textContent = 'Restore this version';
+      restoreBtn.addEventListener('click', () => {
+        restoreLibraryVersion(entry.id, i);
+        renderLibrary();
+      });
+      row.appendChild(restoreBtn);
+      details.appendChild(row);
+    });
+
+  return details;
 }
 
 function renderLibrary() {
@@ -244,7 +564,15 @@ function renderLibrary() {
       btnGroup.appendChild(removeBtn);
 
       row.appendChild(btnGroup);
-      listEl.appendChild(row);
+
+      const wrap = document.createElement('div');
+      wrap.className = 'library-entry';
+      wrap.appendChild(row);
+      const driftBanner = renderDriftBanner(entry);
+      if (driftBanner) wrap.appendChild(driftBanner);
+      const versionHistory = renderVersionHistory(entry);
+      if (versionHistory) wrap.appendChild(versionHistory);
+      listEl.appendChild(wrap);
     });
 }
 

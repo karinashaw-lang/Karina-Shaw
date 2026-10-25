@@ -968,6 +968,51 @@ footer.hint{
 .library-row-title{ font-family:'Fraunces', Georgia, serif; font-weight:600; font-size:16px; }
 .library-row-date{ font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:var(--ink-soft); margin-top:2px; }
 
+/* ---------- document lifecycle & versioning (Phase 6.3) ---------- */
+.library-entry{ margin:0 0 16px; }
+.library-entry .library-row{ margin:0 0 8px; }
+.drift-banner{
+  background:var(--flag-soft);
+  border:1px solid var(--flag);
+  border-radius:6px;
+  padding:14px 18px;
+  margin:0 0 8px;
+}
+.drift-summary{ font-size:14.5px; color:var(--flag-ink); margin:0 0 10px; }
+.drift-detail summary{
+  cursor:pointer;
+  font-family:'IBM Plex Mono', monospace;
+  font-size:12px;
+  letter-spacing:0.02em;
+  color:var(--flag-ink);
+  margin:0 0 4px;
+}
+.drift-clause{ margin:10px 0 0; padding-top:10px; border-top:1px dashed var(--flag); }
+.drift-clause-title{ font-weight:600; font-size:13.5px; margin:0 0 4px; }
+.drift-field{ font-size:13.5px; color:var(--ink-soft); margin:0 0 4px; }
+.drift-diff{ font-size:13.5px; line-height:1.6; margin:0 0 4px; }
+.drift-diff del{ background:var(--flag-soft); color:var(--flag-ink); text-decoration:line-through; }
+.drift-diff ins{ background:var(--accent-soft); color:var(--accent-ink); text-decoration:none; }
+.drift-banner > button{ margin-top:4px; }
+
+.version-history summary{
+  cursor:pointer;
+  font-family:'IBM Plex Mono', monospace;
+  font-size:12px;
+  letter-spacing:0.02em;
+  color:var(--ink-soft);
+}
+.version-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  font-size:13.5px;
+  color:var(--ink-soft);
+  padding:8px 0;
+  border-top:1px solid var(--line);
+}
+
 @media (max-width:520px){
   .doc-card{ flex-direction:column; }
   form.wizard{ max-width:none; }

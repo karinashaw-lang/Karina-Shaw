@@ -121,6 +121,8 @@ jobs:
         run: set -o pipefail; node tests/pdf/pdf_golden.js | tee pdf-golden.log
       - name: Run docx_golden.js
         run: set -o pipefail; node tests/docx/docx_golden.js | tee docx-golden.log
+      - name: Run versioning.js
+        run: set -o pipefail; node tests/library/versioning.js | tee versioning.log
       - name: Upload logs on failure
         if: failure()
         uses: actions/upload-artifact@v4
@@ -137,4 +139,5 @@ jobs:
             related-coverage.log
             pdf-golden.log
             docx-golden.log
+            versioning.log
           if-no-files-found: warn

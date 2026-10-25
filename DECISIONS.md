@@ -979,3 +979,85 @@ directly: `golden.js` still passes against its existing fixture with
 zero changes needed, and both new golden test files assert the
 appendix heading does *not* leak into a document where the toggle
 wasn't turned on, not just that it appears when it was.
+
+## Phase 6.3: document lifecycle and versioning
+
+**`schemaVersion` names the saved-entry record's own shape, not the
+corpus's or a document's field schema.** The master plan lists
+`schemaVersion` and `corpusVersion` side by side without defining the
+first one, and this project has no other existing notion of a
+"schema version" to borrow from field.schema.json or
+shared_field.schema.json. The only thing that's actually useful to
+version-stamp here, for a future migration to check, is the shape of
+the JSON object stored in `localStorage` itself — so `SCHEMA_VERSION`
+is a single constant bumped only when that record's own fields
+change, independent of anything about the corpus.
+
+**Stored more per clause than the master plan's literal minimum
+("clause ids and clause checkedDates"), because the next sentence of
+the same requirement — "a diff of what changed" — is undeliverable
+without it.** By the time a clause drifts, the corpus's old state is
+gone (nothing else in this repo keeps a general history of every
+clause edit); the only place "what it looked like when this document
+was generated" can live is on the document record itself. So
+`buildClauseSnapshot()` keeps each used clause's title, kind, status,
+checkedDate, body, gap, and citations — not just id and checkedDate —
+and `corpusVersion` is still computed and stored exactly as the plan
+describes (a single content hash over that snapshot), for the literal
+requirement; `detectDrift()` just doesn't rely on the hash alone to
+describe a change, since a hash can only say *that* something
+differs, never *what*.
+
+**Chose a plain FNV-1a string hash over anything cryptographic.**
+`corpusVersion`'s only job is to change when the input changes and
+stay stable when it doesn't — there's no adversary to resist, no
+signature to verify, so pulling in a hashing library (or the Web
+Crypto API's async `SubtleCrypto`, which would turn a currently
+synchronous save into an async one for no real benefit) would be
+solving a problem that doesn't exist here.
+
+**Built a real word-level diff (classic LCS over whitespace-split
+tokens) rather than just showing old-text-then-new-text.** The master
+plan says "a diff of what changed," which a simple before/after
+display technically shows but doesn't actually highlight — a reader
+would have to spot the difference themselves in two paragraphs of
+legal drafting prose. `diffWords()` is a few dozen lines and cheap
+even for the corpus's longest clauses (at most a few hundred words,
+so the O(n·m) table it builds is trivial), and it's what the banner
+in `renderLibrary()` actually renders, as real `<ins>`/`<del>` markup.
+
+**"Regenerate" turns out to do less than it sounds like, once the
+existing render path is understood, and that's correct rather than a
+shortcut.** `renderOutput()`, `buildPlainText()`, and every export
+already always recompute from `state.clauses` (live) plus the entry's
+stored `answers` — nothing about a saved document's displayed content
+was ever frozen before this phase, so there is no "stale rendering" to
+fix. The only thing that *was* frozen, and needed refreshing, is
+`detectDrift()`'s comparison baseline. Realizing this kept
+`regenerateLibraryEntry()` to exactly that: replace
+`clauseSnapshots`/`corpusVersion`/`schemaVersion`, touch nothing else
+— which is also exactly what "preserves inputs" asks for, verified
+directly in `tests/library/versioning.js` (the stored `answers` object
+is checked byte-for-byte identical before and after regenerating).
+
+**Restoring a prior version keeps what it replaces, rather than
+discarding it.** "Keep prior versions... and allow restore" could have
+meant a one-way pop (restore removes the version from history once
+it's back in use), but that would mean a restore immediately followed
+by another corpus change could silently lose the version that was
+current a moment ago. `restoreLibraryVersion()` instead pushes
+whatever was current onto `versions` before replacing it with the
+target — version history only ever grows by one per regenerate-or-
+restore action, never shrinks, which is the more conservative reading
+of "keep."
+
+**An entry saved before this phase has no `clauseSnapshots` at all,
+and `detectDrift()` says so by reporting no drift, not by guessing.**
+There's no way to know whether a pre-6.3 saved document's clauses have
+since changed, because nothing was ever captured to compare against —
+reporting a false "no changes" would overclaim certainty, but so would
+inventing a generic "we can't tell" banner the master plan never asked
+for. Silently reporting zero drift for these is the same backward-
+compatibility stance already used elsewhere for an optional field
+added after other data already existed (an undated tier falling back
+to `'C'`, a document with no signature simply not rendering one).
