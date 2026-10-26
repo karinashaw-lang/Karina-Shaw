@@ -28,6 +28,7 @@ CATEGORIES = {
 def main():
     clauses = json.load(open('data/clauses.json'))['clauses']
     docs = json.load(open('data/documents.json'))
+    filing_next_steps = json.load(open('filing/next_steps.json')) if os.path.exists('filing/next_steps.json') else {}
     fails = []
 
     def check(cond, msg):
@@ -295,9 +296,13 @@ def main():
         # field is not dead just because it's never literally substituted
         # into text — it can instead gate a field's showIf or a clause's
         # includeIf (Phase 2.4), which is a real effect on the assembled
-        # document even though no {{field}} for it ever appears.
+        # document even though no {{field}} for it ever appears. Phase
+        # 6.4's filing/next_steps.json reminders are a third such case: a
+        # date field that drives a computed due date/.ics export, never
+        # substituted into clause prose at all.
         conditioned_on = {f['showIf']['field'] for f in d.get('fields', []) if f.get('showIf')}
         conditioned_on |= {entry_include_if(r)['field'] for r in d['clauseOrder'] if entry_include_if(r)}
+        conditioned_on |= {step['reminder']['dateFieldId'] for step in filing_next_steps.get(d['id'], []) if step.get('reminder')}
         referenced = used | conditioned_on
         unused = declared - referenced
         check(not unused, f'{d["id"]} declares fields nothing substitutes or conditions on: {sorted(unused)}')
@@ -533,6 +538,74 @@ def main():
                     if not isinstance(opt.get('keywords'), str):
                         bad_intake.append(f'{category}.{q["id"]}.{opt.get("id")}: keywords is not a string')
         check(not bad_intake, f'invalid search/intake_flow.json entries: {bad_intake[:5]}')
+
+    # Phase 6.4's "what happens after this document" packets. Unlike
+    # lay_terms.json/intake_flow.json, coverage is deliberately sparse —
+    # only a document with a real filing or follow-on step gets an
+    # entry, so there's no "every document must have one" check here,
+    # only "every entry that exists is real and sourced": a known
+    # document id, at least one citation per step with no citation
+    # field left blank, a real checkedDate, and -- for a step with a
+    # computed reminder -- a dateFieldId that actually names a real
+    # date field on that same document, not a typo the unused-fields
+    # check above would otherwise have caught as a dead field instead.
+    if os.path.exists('filing/next_steps.json'):
+        doc_ids = {d['id'] for d in docs}
+        docs_by_id = {d['id']: d for d in docs}
+        unknown_filing_docs = sorted(set(filing_next_steps.keys()) - doc_ids)
+        check(not unknown_filing_docs, f'filing/next_steps.json entries for unknown documents: {unknown_filing_docs[:5]}')
+
+        filing_advisory_hits = []
+        def lint_filing_text(tag, text):
+            before = len(advisory_hits)
+            lint_text(tag, text)
+            filing_advisory_hits.extend(advisory_hits[before:])
+
+        bad_filing = []
+        for doc_id, steps in filing_next_steps.items():
+            doc = docs_by_id.get(doc_id)
+            seen_ids = set()
+            for step in steps:
+                tag = f'filing/next_steps.json:{doc_id}.{step.get("id")}'
+                if not step.get('id') or step['id'] in seen_ids:
+                    bad_filing.append(f'{tag}: missing or duplicate step id')
+                seen_ids.add(step.get('id'))
+                if not (step.get('title') or '').strip():
+                    bad_filing.append(f'{tag}: missing title')
+                if not (step.get('body') or '').strip():
+                    bad_filing.append(f'{tag}: missing body')
+                lint_filing_text(f'{tag}.title', step.get('title'))
+                lint_filing_text(f'{tag}.body', step.get('body'))
+
+                raw_date = (step.get('checkedDate') or '').strip()
+                try:
+                    if date.fromisoformat(raw_date) > date.today():
+                        bad_filing.append(f'{tag}: future checkedDate')
+                except ValueError:
+                    bad_filing.append(f'{tag}: missing or malformed checkedDate')
+
+                citations = step.get('citations') or []
+                if not citations:
+                    bad_filing.append(f'{tag}: no citations')
+                for ct in citations:
+                    for field in ('case', 'cite', 'url', 'quote'):
+                        if not (ct.get(field) or '').strip():
+                            bad_filing.append(f'{tag}: citation missing {field}')
+
+                reminder = step.get('reminder')
+                if reminder:
+                    field_id = reminder.get('dateFieldId')
+                    field_def = next((f for f in (doc or {}).get('fields', []) if f['id'] == field_id), None)
+                    if not field_def:
+                        bad_filing.append(f'{tag}: reminder.dateFieldId {field_id!r} is not a field on {doc_id}')
+                    elif field_def.get('type') != 'date':
+                        bad_filing.append(f'{tag}: reminder.dateFieldId {field_id!r} is not a date-type field')
+                    if not isinstance(reminder.get('offsetDays'), int) or reminder.get('offsetDays') < 0:
+                        bad_filing.append(f'{tag}: reminder.offsetDays must be a non-negative integer')
+                    if not (reminder.get('label') or '').strip():
+                        bad_filing.append(f'{tag}: reminder missing label')
+        check(not bad_filing, f'invalid filing/next_steps.json entries: {bad_filing[:5]}')
+        check(not filing_advisory_hits, f'advisory phrasing (lint/advisory_phrases.json) found in filing/next_steps.json: {filing_advisory_hits[:5]}')
 
     cats = collections.Counter(cat for d in docs for cat in d['categories'])
     multi = [d['id'] for d in docs if len(d.get('categories', [])) > 1]

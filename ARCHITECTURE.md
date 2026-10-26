@@ -47,6 +47,9 @@ lib/                 Third-party browser libraries vendored (not
                      CDN-loaded) into the repo — pdfmake (Phase 6.1's
                      PDF export) and docx (Phase 6.2's Word export);
                      see lib/README.md.
+filing/next_steps.json  "What happens after this document" packets
+                     (Phase 6.4 pilot), keyed by document id and
+                     deliberately sparse; see filing/README.md.
 index/citation_to_clauses.json  Citation url -> affected clause ids
                      (Phase 4.4), built by tools/build_citation_index.py.
 recheck/             history.jsonl (every recheck_all.py run, Phase 4.5)
@@ -57,8 +60,8 @@ watcher/             Law-change watcher (Phase 4.4) — see watcher/README.md.
 verifier/            Adversarial verifier (Phase 4.1) — see verifier/README.md.
 tests/               golden/, wizard/, merge_guard/, validate_corpus/,
                      tiering/, search/, tools/, watcher/, verifier/,
-                     performance/, pdf/, docx/, library/ — browser and
-                     unit tests for the gate scripts and the rendered app,
+                     performance/, pdf/, docx/, library/, filing/ —
+                     browser and unit tests for the gate scripts and the rendered app,
                      run in CI.
 ```
 
@@ -951,6 +954,42 @@ tier falls back to `'C'`, a missing signature just doesn't render).
 Full writeup, including the `schemaVersion` naming judgment call and
 why the snapshot stores more than the master plan's literal minimum,
 in `DECISIONS.md`.
+
+## Filing and next-steps packets (Phase 6.4 — pilot)
+
+A new `filing/next_steps.json` (see `filing/README.md`), keyed by
+document id and deliberately sparse — only a document with a real
+filing or follow-on step gets an entry, unlike `search/lay_terms.json`'s
+universal coverage. Each step is sourced exactly like a clause
+(citations + checkedDate), surfaced in a new "What happens after this
+document" section rendered on the output screen (`renderNextSteps()`)
+and in every prose export (`buildPlainText()`, `buildPdfDocDefinition()`,
+`buildDocxDocument()`, all reading from `buildDocumentContent()`'s new
+`nextSteps` field via the shared `resolveNextSteps()`). A step can
+optionally carry a `reminder` — a `dateFieldId` naming a real date
+field the document already collects, plus an `offsetDays` — and
+`resolveNextSteps()` computes the actual due date from whatever the
+reader entered there, or reports plainly (never guesses) when that
+field was left blank or couldn't be parsed as a date.
+
+A computed due date comes with a "Add to calendar (.ics)" button
+(`buildIcsForStep()`) generating a minimal, real RFC 5545
+VCALENDAR/VEVENT with the rule's own citation folded into its
+`DESCRIPTION` — the master plan's "with the rule's citation shown,"
+not a bare date with no source. `validate_corpus.py` gained a matching
+check block: every `next_steps.json` entry names a real document,
+every step has real citations and a non-future checkedDate, and a
+`reminder.dateFieldId` must name an actual `type: "date"` field on
+that document (extending the pre-existing "declares fields nothing
+substitutes or conditions on" check, which otherwise has no way to
+know a next-steps reminder is a legitimate use of a field, and would
+either wrongly flag it as dead data or silently accept a typo).
+
+This phase is explicitly a small, fully real pilot — one document
+(`llc_articles_of_organization`), not category-wide coverage, and the
+master plan's separate pre-filled-official-form sub-requirement wasn't
+attempted at all. `filing/README.md` says plainly what's covered and
+what's deliberately deferred; full design reasoning in `DECISIONS.md`.
 
 ## Where Phase 2/3 (and beyond) will change this next
 

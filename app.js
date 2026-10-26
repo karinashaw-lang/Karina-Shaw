@@ -1,4 +1,4 @@
-const state = { documents: null, document: null, clauses: null, answers: {}, categoryFilter: null, edits: {}, editedClauseIds: new Set(), currentEntryId: null, jurisdictionByDoc: null, sharedFields: null, wizardSteps: [], wizardStepIndex: 0, wizardReviewing: false, tiers: null, tierFilter: null, tierSortEnabled: false, layTerms: null, searchQuery: '', searchResults: null, intakeFlow: null, intakeCategory: null, intakeStep: 0, intakeAnswers: [], pickerVisibleCount: 0, includeSourcesAppendix: false };
+const state = { documents: null, document: null, clauses: null, answers: {}, categoryFilter: null, edits: {}, editedClauseIds: new Set(), currentEntryId: null, jurisdictionByDoc: null, sharedFields: null, wizardSteps: [], wizardStepIndex: 0, wizardReviewing: false, tiers: null, tierFilter: null, tierSortEnabled: false, layTerms: null, searchQuery: '', searchResults: null, intakeFlow: null, intakeCategory: null, intakeStep: 0, intakeAnswers: [], pickerVisibleCount: 0, includeSourcesAppendix: false, nextSteps: null };
 
 // Draft persistence. Local-only, one slot at a time — closing the tab
 // mid-wizard shouldn't lose someone's answers. localStorage can throw
@@ -1028,17 +1028,20 @@ async function loadSharedFields() {
 }
 
 async function init() {
-  const [docs, clauseData, sharedFields, tiers, layTerms, intakeFlow] = await Promise.all([
+  const [docs, clauseData, sharedFields, tiers, layTerms, intakeFlow, nextSteps] = await Promise.all([
     fetch('data/documents.json').then(r => r.json()),
     fetch('data/clauses.json').then(r => r.json()),
     loadSharedFields(),
     fetch('tiers.json').then(r => r.json()),
-    // search/lay_terms.json and intake_flow.json are additive, not
-    // load-bearing -- search and the category-filter picker still work
-    // without either, so a fetch failure degrades the lay-synonym
-    // layer / disables the intake flow link rather than the whole app.
+    // search/lay_terms.json, intake_flow.json, and filing/next_steps.json
+    // are all additive, not load-bearing -- search, the intake flow, and
+    // the output screen's "what happens after this document" section
+    // still work without any of them (the last one just never has
+    // anything to show), so a fetch failure degrades one feature rather
+    // than the whole app.
     fetch('search/lay_terms.json').then(r => r.json()).catch(() => ({})),
     fetch('search/intake_flow.json').then(r => r.json()).catch(() => ({})),
+    fetch('filing/next_steps.json').then(r => r.json()).catch(() => ({})),
   ]);
   state.documents = docs;
   state.clauses = clauseData.clauses;
@@ -1046,6 +1049,7 @@ async function init() {
   state.tiers = tiers.documents;
   state.layTerms = layTerms;
   state.intakeFlow = intakeFlow;
+  state.nextSteps = nextSteps;
   buildJurisdictionIndex();
   renderCategoryFilter();
   renderTierFilter();
@@ -2383,6 +2387,101 @@ function renderRelatedDocuments() {
   });
 }
 
+// ---------- filing & next-steps packets, on-screen (Phase 6.4) ----------
+// Mirrors the signature/related-documents sections' render-once
+// pattern: every field answer, including the date a reminder is
+// computed from, is already fixed by the time the output screen
+// renders (only clause body text stays contenteditable here), so this
+// never needs to re-run except alongside the rest of renderOutput().
+function renderNextSteps() {
+  const section = document.getElementById('output-next-steps');
+  const list = document.getElementById('output-next-steps-list');
+  const steps = buildDocumentContent().nextSteps;
+
+  if (steps.length === 0) {
+    section.hidden = true;
+    return;
+  }
+  section.hidden = false;
+  list.innerHTML = '';
+
+  steps.forEach(step => {
+    const block = document.createElement('div');
+    block.className = 'next-step';
+
+    const title = document.createElement('h4');
+    title.textContent = step.title;
+    block.appendChild(title);
+
+    const body = document.createElement('p');
+    body.textContent = step.body;
+    block.appendChild(body);
+
+    const details = document.createElement('details');
+    details.className = 'badge verified';
+    const summary = document.createElement('summary');
+    const label = document.createElement('span');
+    label.className = 'badge-label';
+    label.textContent = `Sourced · checked ${step.checkedDate}`;
+    summary.appendChild(label);
+    const chev = document.createElement('span');
+    chev.className = 'chev';
+    chev.textContent = '▸';
+    chev.setAttribute('aria-hidden', 'true');
+    summary.appendChild(chev);
+    details.appendChild(summary);
+    const detail = document.createElement('div');
+    detail.className = 'detail';
+    step.citations.forEach(c => {
+      const srcLine = document.createElement('p');
+      srcLine.className = 'src-line';
+      const link = document.createElement('a');
+      link.href = c.url;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = `${c.case} — ${c.cite}`;
+      srcLine.appendChild(link);
+      detail.appendChild(srcLine);
+    });
+    details.appendChild(detail);
+    block.appendChild(details);
+
+    if (step.reminder) {
+      const reminderEl = document.createElement('p');
+      reminderEl.className = 'next-step-reminder';
+      if (step.reminder.dueDate) {
+        reminderEl.textContent = `${step.reminder.label}: ${step.reminder.dueDate.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' })}`;
+        block.appendChild(reminderEl);
+        const icsBtn = document.createElement('button');
+        icsBtn.type = 'button';
+        icsBtn.className = 'secondary';
+        icsBtn.textContent = 'Add to calendar (.ics)';
+        icsBtn.addEventListener('click', () => {
+          const icsText = buildIcsForStep(step, state.document.title);
+          const blob = new Blob([icsText], { type: 'text/calendar' });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = `${documentSlug()}-${step.id}.ics`;
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+          URL.revokeObjectURL(url);
+        });
+        block.appendChild(icsBtn);
+      } else if (step.reminder.dateInvalid) {
+        reminderEl.textContent = `${step.reminder.label}: not shown — "${step.reminder.enteredDate}" couldn't be read as a calendar date.`;
+        block.appendChild(reminderEl);
+      } else {
+        reminderEl.textContent = `${step.reminder.label}: not shown — "${step.reminder.fieldLabel}" wasn't entered above.`;
+        block.appendChild(reminderEl);
+      }
+    }
+
+    list.appendChild(block);
+  });
+}
+
 function renderOutput() {
   const assembled = assembleDocument();
   state.edits = {};
@@ -2455,6 +2554,7 @@ function renderOutput() {
   });
 
   renderSignatureSection();
+  renderNextSteps();
   renderRelatedDocuments();
 }
 
@@ -2591,6 +2691,85 @@ document.getElementById('wizard-form').addEventListener('input', e => {
 // documents, and a golden test comparing PDF-extracted text against
 // buildPlainText()'s output is actually comparing two renderings of
 // one source, not two separately hand-maintained ones.
+// ---------- filing & next-steps packets (Phase 6.4) ----------
+// filing/next_steps.json is keyed by document id, sparse by design --
+// only a document with a real filing or follow-on step has an entry
+// at all (see filing/README.md for how small a pilot this is today).
+// Each step is sourced exactly like a clause (citations + checkedDate),
+// but lives outside data/clauses.json since it's a fact about what
+// happens after the document, not part of the document's own prose.
+function resolveNextSteps(doc, answers) {
+  const steps = (state.nextSteps && state.nextSteps[doc.id]) || [];
+  return steps.map(step => {
+    let reminder = null;
+    if (step.reminder) {
+      const field = (doc.fields || []).find(f => f.id === step.reminder.dateFieldId);
+      const raw = (answers[step.reminder.dateFieldId] || '').trim();
+      let dueDate = null;
+      let dateInvalid = false;
+      if (raw) {
+        const parsed = new Date(raw);
+        if (isNaN(parsed.getTime())) {
+          dateInvalid = true;
+        } else {
+          dueDate = new Date(parsed.getTime());
+          dueDate.setDate(dueDate.getDate() + step.reminder.offsetDays);
+        }
+      }
+      reminder = {
+        label: step.reminder.label,
+        fieldLabel: field ? field.label : step.reminder.dateFieldId,
+        enteredDate: raw,
+        dueDate,
+        dateInvalid,
+      };
+    }
+    return {
+      id: step.id,
+      title: step.title,
+      body: step.body,
+      checkedDate: step.checkedDate,
+      citations: step.citations || [],
+      reminder,
+    };
+  });
+}
+
+function formatIcsDate(d) {
+  return `${d.getFullYear()}${String(d.getMonth() + 1).padStart(2, '0')}${String(d.getDate()).padStart(2, '0')}`;
+}
+
+function escapeIcsText(text) {
+  return String(text).replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g, '\\,').replace(/\n/g, '\\n');
+}
+
+// A minimal, valid VCALENDAR/VEVENT -- an all-day reminder on the
+// computed due date, with the rule's own citation folded into the
+// description (the master plan's own "with the rule's citation
+// shown" requirement), not just a bare date with no source attached.
+function buildIcsForStep(step, documentTitle) {
+  const citation = step.citations[0];
+  const descriptionParts = [
+    step.body,
+    citation ? `Rule: ${citation.case}, ${citation.cite} (${citation.url})` : null,
+  ].filter(Boolean);
+  const uid = `${hashString(step.id + documentTitle + step.reminder.dueDate.toISOString())}@groundtruth.v1`;
+  const lines = [
+    'BEGIN:VCALENDAR',
+    'VERSION:2.0',
+    'PRODID:-//Groundtruth//Next Steps//EN',
+    'BEGIN:VEVENT',
+    `UID:${uid}`,
+    `DTSTAMP:${formatIcsDate(new Date())}T000000Z`,
+    `DTSTART;VALUE=DATE:${formatIcsDate(step.reminder.dueDate)}`,
+    `SUMMARY:${escapeIcsText(`${step.reminder.label} \u2014 ${documentTitle}`)}`,
+    `DESCRIPTION:${escapeIcsText(descriptionParts.join('\n\n'))}`,
+    'END:VEVENT',
+    'END:VCALENDAR',
+  ];
+  return lines.join('\r\n') + '\r\n';
+}
+
 function buildDocumentContent() {
   const assembled = assembleDocument();
   const jKey = state.jurisdictionByDoc.get(state.document.id);
@@ -2616,6 +2795,7 @@ function buildDocumentContent() {
       };
     }),
     signature: signedEntry ? signedEntry.signature || null : null,
+    nextSteps: resolveNextSteps(state.document, state.answers),
   };
 }
 
@@ -2684,6 +2864,28 @@ function buildPlainText() {
     );
     lines.push(`Date: ${new Date(content.signature.signedAt).toLocaleString()}`);
     lines.push('');
+  }
+
+  if (content.nextSteps.length) {
+    lines.push('WHAT HAPPENS AFTER THIS DOCUMENT');
+    content.nextSteps.forEach(step => {
+      lines.push(step.title);
+      lines.push(step.body);
+      lines.push(`[checked ${step.checkedDate}]`);
+      step.citations.forEach(c => {
+        lines.push(`  ${c.case}, ${c.cite} (${c.url})`);
+      });
+      if (step.reminder) {
+        if (step.reminder.dueDate) {
+          lines.push(`${step.reminder.label}: ${step.reminder.dueDate.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' })}`);
+        } else if (step.reminder.dateInvalid) {
+          lines.push(`${step.reminder.label}: not shown — "${step.reminder.enteredDate}" couldn't be read as a calendar date.`);
+        } else {
+          lines.push(`${step.reminder.label}: not shown — "${step.reminder.fieldLabel}" wasn't entered above.`);
+        }
+      }
+      lines.push('');
+    });
   }
 
   if (state.includeSourcesAppendix) {
@@ -2810,6 +3012,29 @@ function buildPdfDocDefinition() {
     body.push({ text: `Date: ${new Date(content.signature.signedAt).toLocaleString()}`, style: 'signatureMeta' });
   }
 
+  if (content.nextSteps.length) {
+    body.push({ text: 'WHAT HAPPENS AFTER THIS DOCUMENT', style: 'sectionLabel', margin: [0, 22, 0, 8] });
+    content.nextSteps.forEach(step => {
+      body.push({ text: sanitizeForPdf(step.title), style: 'appendixClauseLabel', margin: [0, 8, 0, 2] });
+      body.push({ text: sanitizeForPdf(step.body), style: 'clauseBody' });
+      body.push({ text: `Checked ${step.checkedDate}`, style: 'verificationNote', margin: [0, 3, 0, 0] });
+      step.citations.forEach(c => {
+        body.push({ text: sanitizeForPdf(`${c.case}, ${c.cite} (${c.url})`), style: 'citeLine' });
+      });
+      if (step.reminder) {
+        let reminderText;
+        if (step.reminder.dueDate) {
+          reminderText = `${step.reminder.label}: ${step.reminder.dueDate.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' })}`;
+        } else if (step.reminder.dateInvalid) {
+          reminderText = `${step.reminder.label}: not shown — "${step.reminder.enteredDate}" couldn't be read as a calendar date.`;
+        } else {
+          reminderText = `${step.reminder.label}: not shown — "${step.reminder.fieldLabel}" wasn't entered above.`;
+        }
+        body.push({ text: sanitizeForPdf(reminderText), style: 'signatureMeta', margin: [0, 3, 0, 0] });
+      }
+    });
+  }
+
   if (state.includeSourcesAppendix) {
     const appendix = buildSourcesAppendix(content);
     if (appendix.length) {
@@ -2909,6 +3134,27 @@ function buildDocxDocument() {
       children.push(new Paragraph({ children: [new TextRun({ text: `Signed: ${content.signature.name}`, bold: true })] }));
     }
     children.push(new Paragraph({ children: [new TextRun({ text: `Date: ${new Date(content.signature.signedAt).toLocaleString()}`, color: GRAY })] }));
+  }
+
+  if (content.nextSteps.length) {
+    children.push(new Paragraph({ text: 'WHAT HAPPENS AFTER THIS DOCUMENT', heading: HeadingLevel.HEADING_2 }));
+    content.nextSteps.forEach(step => {
+      children.push(new Paragraph({ children: [new TextRun({ text: step.title, bold: true })] }));
+      children.push(new Paragraph({ children: [new TextRun(step.body)] }));
+      children.push(new Paragraph({ children: [new TextRun({ text: `Checked ${step.checkedDate}`, italics: true, color: '2B6E4F' })] }));
+      pushCitations(step.citations);
+      if (step.reminder) {
+        let reminderText;
+        if (step.reminder.dueDate) {
+          reminderText = `${step.reminder.label}: ${step.reminder.dueDate.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' })}`;
+        } else if (step.reminder.dateInvalid) {
+          reminderText = `${step.reminder.label}: not shown — "${step.reminder.enteredDate}" couldn't be read as a calendar date.`;
+        } else {
+          reminderText = `${step.reminder.label}: not shown — "${step.reminder.fieldLabel}" wasn't entered above.`;
+        }
+        children.push(new Paragraph({ children: [new TextRun({ text: reminderText, color: GRAY })] }));
+      }
+    });
   }
 
   if (state.includeSourcesAppendix) {

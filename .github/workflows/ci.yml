@@ -36,6 +36,7 @@ jobs:
           python3 tests/tools/test_recheck_all_resume.py -v
           python3 tests/tools/test_recheck_findings.py -v
           python3 tests/validate_corpus/test_search_data.py -v
+          python3 tests/validate_corpus/test_filing_next_steps.py -v
       - name: Promotion report
         run: python3 tools/promotion_report.py --markdown >> "$GITHUB_STEP_SUMMARY"
 
@@ -123,6 +124,8 @@ jobs:
         run: set -o pipefail; node tests/docx/docx_golden.js | tee docx-golden.log
       - name: Run versioning.js
         run: set -o pipefail; node tests/library/versioning.js | tee versioning.log
+      - name: Run filing next_steps.js
+        run: set -o pipefail; node tests/filing/next_steps.js | tee filing-next-steps.log
       - name: Upload logs on failure
         if: failure()
         uses: actions/upload-artifact@v4
@@ -140,4 +143,5 @@ jobs:
             pdf-golden.log
             docx-golden.log
             versioning.log
+            filing-next-steps.log
           if-no-files-found: warn

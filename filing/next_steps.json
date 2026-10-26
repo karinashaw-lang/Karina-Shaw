@@ -1,0 +1,43 @@
+{
+  "llc_articles_of_organization": [
+    {
+      "id": "llc_soi_initial_filing",
+      "title": "File an initial Statement of Information",
+      "body": "California requires every LLC to file an initial statement of information with the Secretary of State within 90 days after its articles of organization are filed, then again every two years during the LLC's assigned filing period. This project's own Statement of Information document covers that filing.",
+      "checkedDate": "2026-09-02",
+      "citations": [
+        {
+          "case": "Cal. Corp. Code § 17702.09(a)",
+          "cite": "California Revised Uniform Limited Liability Company Act, initial and biennial statement of information",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=17702.09.",
+          "quote": "Every limited liability company and every foreign limited liability company registered to transact intrastate business in this state shall deliver to the Secretary of State for filing within 90 days after the filing of its original articles of organization or registering to transact intrastate business and biennially thereafter during the applicable filing period, on a form prescribed by the Secretary of State, a statement of information containing: (1) The name of the limited liability company and the Secretary of State's file number... (2) The name and street address of the agent in this state for service of process required to be maintained pursuant to Section 17701.13. If a corporate agent is designated, only the name of the agent shall be set forth. (3) The street address of its principal office... (4) The mailing address of the limited liability company or foreign limited liability company, if different from the street address of its principal office... (5) The name and complete business or residence addresses of any manager or managers and the chief executive officer, if any, appointed or elected in accordance with the articles of organization or operating agreement or, if no manager has been so elected or appointed, the name and business or residence address of each member. (6) If the limited liability company or foreign limited liability company chooses to receive renewal notices and any other notifications from the Secretary of State by electronic mail instead of by United States mail, the limited liability company or foreign limited liability company shall include a valid electronic mail address... (7) The general type of business that constitutes the principal business activity of the limited liability company or foreign limited liability company, such as, for example, manufacturer of aircraft, wholesale liquor distributor, or retail department store. (8) ...a statement indicating whether any manager [or member] has an outstanding final judgment issued by the Division of Labor Standards Enforcement or a court of law, for which no appeal therefrom is pending, for the violation of any wage order or provision of the Labor Code..."
+        }
+      ],
+      "reminder": {
+        "dateFieldId": "articlesFiledDate",
+        "offsetDays": 90,
+        "label": "Statement of Information due"
+      }
+    },
+    {
+      "id": "llc_annual_franchise_tax",
+      "title": "Pay California's $800 annual LLC tax",
+      "body": "Beyond the Secretary of State's filing fee, California's Revenue and Taxation Code requires every LLC whose articles of organization have been accepted by the Secretary of State to pay an annual tax equal to the state's minimum franchise tax, currently $800, due by the 15th day of the fourth month of the LLC's taxable year. This project doesn't collect enough information to compute that date reliably -- it depends on the LLC's own taxable year, not simply its filing date -- so no reminder is offered for it here.",
+      "checkedDate": "2026-09-01",
+      "citations": [
+        {
+          "case": "Cal. Rev. & Tax. Code § 17941(a)",
+          "cite": "Tax and Fees on Limited Liability Companies, the annual tax for doing business in the state",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=RTC&sectionNum=17941.",
+          "quote": "Except as provided in subdivision (g), for each taxable year beginning on or after January 1, 1997, a limited liability company doing business in this state (as defined in Section 23101) shall pay annually to this state a tax for the privilege of doing business in this state in an amount equal to the applicable amount specified in subdivision (d) of Section 23153 for the taxable year."
+        },
+        {
+          "case": "Cal. Rev. & Tax. Code § 23153(d)(1)",
+          "cite": "The Corporation Franchise Tax, the $800 minimum franchise tax amount cross-referenced for LLCs",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=RTC&sectionNum=23153.",
+          "quote": "Except as provided in paragraph (2), paragraph (1) of subdivision (f) of Section 23151, paragraph (1) of subdivision (f) of Section 23181, and paragraph (1) of subdivision (c) of Section 23183, corporations subject to the minimum franchise tax shall pay annually to the state a minimum franchise tax of eight hundred dollars ($800)."
+        }
+      ]
+    }
+  ]
+}

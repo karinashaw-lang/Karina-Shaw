@@ -1061,3 +1061,84 @@ for. Silently reporting zero drift for these is the same backward-
 compatibility stance already used elsewhere for an optional field
 added after other data already existed (an undated tier falling back
 to `'C'`, a document with no signature simply not rendering one).
+
+## Phase 6.4: filing and next-steps packets (pilot scope)
+
+**Asked the user how to scope this before writing anything, rather
+than guessing or quietly doing less than asked.** Every phase before
+this one built app logic on top of corpus content this project had
+already verified. 6.4's full scope asks for new sourced content —
+real California SOS/FTB/county-recorder/court-forms citations — across
+potentially dozens of documents in four categories, plus a separate,
+heavier sub-requirement (pre-filled official government forms with a
+verified field mapping and a test per field) that's its own
+undertaking before a line of code is written. Fabricating any of that
+would violate this project's one load-bearing rule, and guessing at
+the right scope unilaterally risked either wildly over-committing or
+under-delivering relative to what was actually wanted. Presented the
+real tradeoff (infrastructure + a small real pilot vs. zero content
+vs. a full multi-category research effort vs. skipping the phase) and
+built to the answer, rather than picking one silently.
+
+**Found the pilot's entire source material already verified elsewhere
+in this corpus, and reused it instead of fetching anything new.**
+Before treating this as new research, checked whether
+`llc_articles_of_organization` or any of its sibling documents already
+covered the relevant rules — they did:
+`llc_articles_statement_of_information`/`llc_articles_annual_tax` (on
+the pilot document itself) and `statement_of_information`'s own
+clauses, all `status: verified` with real checkedDates from the prior
+corpus-build work. Reusing already-checked facts in a new structure is
+categorically different from, and far safer than, fetching and
+verifying new ones under time pressure — and it meant the pilot could
+be built with zero new verification risk while still being completely
+real, not a placeholder.
+
+**Didn't compute a due date for the $800 annual LLC tax, even though a
+reminder for it would have been the more complete-looking feature.**
+The statutory due date (15th day of the fourth month of the LLC's
+*taxable year*) depends on the LLC's own elected taxable year, which
+this document doesn't collect — approximating it from the filing date
+alone would silently assume a calendar-year election that isn't always
+true, which is exactly the kind of invented precision this project's
+"state facts only" rule exists to prevent. The step still appears,
+fully cited, with its body stating plainly why no reminder is offered
+for it — the honest version of "no computable date," not a missing
+feature or a silently wrong one.
+
+**Added `articlesFiledDate` as a new, optional field — not required —
+on the existing `llc_articles_of_organization` document**, since
+nothing in its schema previously collected any date and a next-steps
+reminder needs one. Optional because a person drafting these articles
+before actually filing them has no true answer yet; the reminder
+degrades to a plain, factual "wasn't entered above" note rather than
+blocking the wizard or inventing a date. The field is never
+substituted into any clause body (an LLC's articles don't need to
+state when they were filed, inside the filing itself) — extended
+`validate_corpus.py`'s existing "declares fields nothing substitutes
+or conditions on" check to also recognize a `filing/next_steps.json`
+reminder's `dateFieldId` as a real use, the same way it already
+recognizes a field gating a `showIf`/`includeIf`, rather than either
+wrongly flagging the field as dead or leaving a typo'd reference
+silently unchecked.
+
+**Built a real RFC 5545 calendar file, not a bare date string, and
+verified it by extracting it back out in the test, not by inspecting
+the generation code and assuming it's right.** `tests/filing/next_steps.js`
+downloads the actual `.ics` the
+real "Add to calendar" button produces and checks its `DTSTART`
+matches the computed due date, its `DESCRIPTION` contains the rule's
+own citation (case, cite, and URL — the master plan's "with the
+rule's citation shown"), and it uses CRLF line terminators per the
+spec — the same "exercise the real render path, verify by extracting
+real output" discipline `tests/pdf/pdf_golden.js`/`tests/docx/docx_golden.js`
+already established for the PDF/.docx exports.
+
+**Extended all three prose exports (plain text, PDF, .docx) through
+the same shared `buildDocumentContent()`/`resolveNextSteps()` path
+Phase 6.1/6.2 already built, rather than writing the next-steps
+section four separate times.** This did mean regenerating one entry
+in `tests/golden/golden.js`'s frozen fixture (`llc_articles_of_organization`,
+via its own `--update` mode) — checked the diff directly before
+trusting it, and it changed exactly the one document this phase
+touched, nothing else.
