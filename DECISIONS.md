@@ -1833,3 +1833,65 @@ there). All harmless, none tied to a real person.
 ```sql
 delete from public.feedback where message in ('test anon feedback', 'test confusing');
 ```
+
+## Phase 8.3: programmatic SEO pages
+
+**Reused an already-verified dataset for "one page per specific
+California question" rather than inventing new questions.**
+`tests/search/golden_queries.json` is 100 real plain-language queries
+Phase 5.1 already built and verified map to a real document through
+the live search engine — not written for this phase, just reused as
+the question set. 99 produced a page; 1 was skipped because its
+matching document has no authority clause with a real citation to
+answer the question with — "do not publish thin or unsupported pages"
+applied as a hard filter, not a suggestion. No new research, no new
+citations, nothing beyond what the corpus already carries.
+
+**Generated output is gitignored, not committed.** `build/seo/` (840
+HTML files + a sitemap) is a pure, deterministic function of
+`data/documents.json`, `data/clauses.json`, `config/seo.json`, and
+`tests/search/golden_queries.json` — committing it would mean 840
+files' worth of diff noise on every unrelated corpus change, for
+content that regenerates identically from what's already tracked. "Add
+the page generation to CI" is read as "CI runs the generator and
+validates its output," not "CI commits generated files" — the master
+plan's own phrasing doesn't say to commit them, and this project
+already treats `tiers.json`/the citation index as the one kind of
+generated artifact worth committing (because *those* feed back into
+the live app and have their own `--check` drift guard); SEO pages feed
+nothing else in this repo and have no such role.
+
+**Jurisdiction classification is reimplemented in Python, not shared
+with `app.js`.** Same tradeoff `tools/tiering.py`/`build_citation_index.py`
+already made for this same corpus data — there's no realistic way to
+share a six-line pure function between a browser script and a Python
+one here, so it's kept in sync by eye. Checked directly
+(`test_jurisdiction_classification_matches_app_js_logic`) against a
+synthetic California citation rather than assumed to match.
+
+**Found and fixed a real XSS-shaped bug via the test that was written
+to catch something else.** `test_html_escaping_prevents_injection_from_corpus_text`
+was meant to confirm HTML-escaping in ordinary page text; it caught
+that the JSON-LD `<script type="application/ld+json">` block embedded
+`json.dumps()`'s output directly, which escapes for JSON syntax only —
+a corpus title or case name containing `</script` would prematurely
+close the tag and leak raw text into the page. Fixed by escaping `<`
+as `<` (valid inside a JSON string, invisible to a JSON parser,
+the standard technique for this exact situation) before embedding.
+The corpus is this project's own, curated content today, so the
+practical exposure is low — but the fix makes the generator correct
+regardless of what the corpus ever contains, rather than correct only
+because today's content happens to be safe.
+
+**Similarity checking is scoped to same-category document pairs (and
+question pages as their own group), not every pair.** Comparing all
+~840 pages against each other is ~350K pairs for zero added safety —
+two pages about unrelated legal topics were never going to collide on
+a word-shingle Jaccard score. Scoping by shared category still checks
+every pair that could plausibly be too similar (39,438 of them, ~3.6s)
+while making the check cheap enough to run on every push.
+
+**No new corpus research, no new RLS, no Supabase involvement at
+all** — this phase is pure static-site generation from data already
+in the repo, the first Phase 8.x item with no live-credentials gap to
+document.

@@ -4,3 +4,8 @@ config.js
 .claude/worktrees/
 tools/__pycache__/
 node_modules/
+
+# Phase 8.3: tools/generate_seo_pages.py's output. Deterministic and
+# regenerated from the corpus, not hand-authored -- a build artifact,
+# not project content (see DECISIONS.md).
+build/

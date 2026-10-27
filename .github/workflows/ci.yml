@@ -37,6 +37,11 @@ jobs:
           python3 tests/tools/test_recheck_findings.py -v
           python3 tests/validate_corpus/test_search_data.py -v
           python3 tests/validate_corpus/test_filing_next_steps.py -v
+          python3 tests/tools/test_generate_seo_pages.py -v
+      - name: Generate and validate SEO pages
+        run: |
+          python3 tools/generate_seo_pages.py
+          python3 tools/validate_seo_pages.py
       - name: Promotion report
         run: python3 tools/promotion_report.py --markdown >> "$GITHUB_STEP_SUMMARY"
 

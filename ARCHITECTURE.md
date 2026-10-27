@@ -744,6 +744,29 @@ clause id that no longer exists, which get marked routed either way)
 is unit-tested against synthetic rows
 (`tests/tools/test_ingest_feedback_findings.js`, in CI).
 
+## Programmatic SEO pages (Phase 8.3)
+
+`tools/generate_seo_pages.py` builds one page per document (what it
+is, jurisdiction, clauses with citations, fields it asks for, related
+documents) and one per real question
+`tests/search/golden_queries.json` (Phase 5.1's 100 verified
+query-to-document mappings) already confirms the corpus can answer —
+skipped outright when the matching document has no authority clause
+with a real citation, so every published question page has a real,
+cited answer behind it. Output (`build/seo/`, gitignored — a pure,
+deterministic function of already-tracked corpus data, not new
+content worth committing) includes a sitemap and per-page
+`schema.org` JSON-LD (`Article` for documents, `FAQPage` for
+questions).
+
+`tools/validate_seo_pages.py` enforces the master plan's own rule —
+every title/description unique, a minimum word count, no two
+same-category pages too similar (word-shingle Jaccard, scoped by
+category so ~840 pages stay a ~3.6s check, not an O(n²) one) — and
+both scripts are wired into CI (`tests/tools/test_generate_seo_pages.py`,
+12 checks including a determinism check and the real JSON-LD
+HTML-escaping bug it caught, documented in DECISIONS.md).
+
 ## Adversarial verifier (Phase 4.1)
 
 `verifier/` is the infrastructure for an independent, after-the-fact
