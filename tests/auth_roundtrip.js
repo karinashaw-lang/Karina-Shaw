@@ -233,19 +233,42 @@ async function main() {
   });
   check(aInsertsOrder.status >= 400 && aInsertsOrder.status < 500, `owner's own insert into orders is rejected — no insert policy for anyone (status ${aInsertsOrder.status})`);
 
+  // --- Phase 7.4 edge functions: list-sessions and delete-account ---
+  // Both need a real signed-in user's own access token (not the anon
+  // key, not the service role key) to call, same as account.js does.
+
+  const sessionsRes = await restFetch('/functions/v1/list-sessions', { token: userA.accessToken });
+  const sessionsOk = sessionsRes.status === 200 && Array.isArray(sessionsRes.json && sessionsRes.json.sessions);
+  check(sessionsOk, `list-sessions returns user A's own sessions (status ${sessionsRes.status})`);
+  if (sessionsOk) {
+    check(sessionsRes.json.sessions.some(s => s.current), 'list-sessions marks the calling session as current');
+  }
+
+  const bSessionsRes = await restFetch('/functions/v1/list-sessions', { token: userB.accessToken });
+  const bSessionsOk = bSessionsRes.status === 200 && Array.isArray(bSessionsRes.json && bSessionsRes.json.sessions);
+  check(
+    bSessionsOk && !sessionsRes.json.sessions.some(aS => bSessionsRes.json.sessions.some(bS => bS.id === aS.id)),
+    "list-sessions for user B never returns user A's session ids"
+  );
+
+  // delete-account, called last, as user A: relies on every table's
+  // user_id -> auth.users(id) on delete cascade (Phase 7.1) to clean up
+  // everything A created above in one call, instead of deleting each
+  // row individually.
+  const deleteRes = await restFetch('/functions/v1/delete-account', { token: userA.accessToken, method: 'POST' });
+  check(deleteRes.status === 200 && deleteRes.json && deleteRes.json.deleted === true, `delete-account deletes user A's account (status ${deleteRes.status})`);
+
+  const aGoneCheck = await restFetch(`/rest/v1/agreements?id=eq.${rowId}&select=id`, { token: SERVICE_KEY, extraHeaders: { apikey: SERVICE_KEY } });
+  check(Array.isArray(aGoneCheck.json) && aGoneCheck.json.length === 0, "user A's agreements row is gone after account deletion (cascade, not a separate delete)");
+
   // --- Cleanup: this script has the service role key, so it can actually
   // finish what it starts — unlike the MCP-based investigation recorded in
   // DECISIONS.md, a direct REST call with the service role key is not
-  // subject to that tool's destructive-statement gate.
-  await restFetch(`/rest/v1/agreements?id=eq.${rowId}`, { token: SERVICE_KEY, method: 'DELETE', extraHeaders: { apikey: SERVICE_KEY } });
-  if (auditId) await restFetch(`/rest/v1/audit_log?id=eq.${auditId}`, { token: SERVICE_KEY, method: 'DELETE', extraHeaders: { apikey: SERVICE_KEY } });
-  if (feedbackId) await restFetch(`/rest/v1/feedback?id=eq.${feedbackId}`, { token: SERVICE_KEY, method: 'DELETE', extraHeaders: { apikey: SERVICE_KEY } });
-  if (dvId) await restFetch(`/rest/v1/document_versions?id=eq.${dvId}`, { token: SERVICE_KEY, method: 'DELETE', extraHeaders: { apikey: SERVICE_KEY } });
-  if (orderId) await restFetch(`/rest/v1/orders?id=eq.${orderId}`, { token: SERVICE_KEY, method: 'DELETE', extraHeaders: { apikey: SERVICE_KEY } });
-  for (const u of [userA, userB]) {
-    await restFetch(`/auth/v1/admin/users/${u.userId}`, { token: SERVICE_KEY, method: 'DELETE', extraHeaders: { apikey: SERVICE_KEY } });
-  }
-  console.log('\nCleaned up: all test rows and both test users deleted.');
+  // subject to that tool's destructive-statement gate. User A's account
+  // (and everything it owned) is already gone via delete-account above;
+  // only user B is left to remove here.
+  await restFetch(`/auth/v1/admin/users/${userB.userId}`, { token: SERVICE_KEY, method: 'DELETE', extraHeaders: { apikey: SERVICE_KEY } });
+  console.log("\nCleaned up: user A's account self-deleted via delete-account; user B removed directly.");
 
   finish();
 }

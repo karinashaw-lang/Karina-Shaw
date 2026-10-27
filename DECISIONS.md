@@ -1441,3 +1441,96 @@ pattern the Phase 7.1 adversarial test should have extended from the
 start, rather than reaching for a new `@supabase/supabase-js`-based
 script that had to be written and then deleted once the same network
 block was discovered the hard way a second time.
+
+## Phase 7.4: account basics (recovery note, sessions, data export,
+## account deletion) — deferred E2E encryption
+
+**Passwordless recovery is a factual statement, not a flow, because
+there's no password to reset.** Added one line to the sign-in form:
+losing access to the email address means losing access to the synced
+account, full stop — nothing in `account.js` or Supabase changes this,
+so the honest thing is to say so plainly rather than design a
+"recovery" UI around a mechanism (password reset) this app doesn't
+have. The local-only "My Documents" copy is unaffected either way,
+which the same note says.
+
+**Session revocation needed no new backend at all.** `signOut({scope:
+'others'})` is a documented capability of the plain anon-key client,
+callable by a user on their own session with no elevated privilege —
+added as a button in the new "Sessions" section of the Account screen.
+
+**Session listing needed a real edge function, for a reason specific
+to this table, not a general rule.** `auth.sessions` isn't reachable
+through PostgREST at any privilege level (anon or service-role) —
+Supabase's REST API only exposes the `public` schema, and `auth` isn't
+in it. A direct Postgres connection is the only way to read it, so
+`supabase/functions/list-sessions` uses the `SUPABASE_DB_URL` every
+edge function gets by default (the `postgres` npm driver, standard for
+this kind of direct-DB access in a Deno function) rather than going
+through `supabase-js`. The caller's identity is established by
+verifying their own access token with `auth.getUser()` against the
+Auth server — not by trusting a user id the client could claim to be
+anyone's; the token's `session_id` claim (already verified, just read
+a second time) marks which row is "this device."
+
+**Data export needed no edge function either.** Every table a signed-in
+user can read is already readable through their own select policy
+(Phase 7.1) — `fetchAllUserData()` just fetches from all 6 tables plus
+the browser-only `loadLibrary()` copy and bundles them, the same
+`Blob`/`createObjectURL` download pattern the per-document JSON export
+in `app.js` already uses.
+
+**Account deletion needed an edge function because deleting a row from
+`auth.users` is admin-only — no self-service path exists for a user to
+delete their own auth record with just the anon key.** Checked, rather
+than assumed, that this is otherwise sufficient on its own:
+`pg_constraint` confirms every one of the 6 tables' `user_id` columns
+is `references auth.users(id) on delete cascade`, so
+`supabase/functions/delete-account` deleting the auth user via
+`auth.admin.deleteUser()` (service role) removes every row that user
+ever wrote in one step — no separate per-table deletes needed, and
+none are done. There's no file storage in this project (no Supabase
+Storage bucket exists), so the master plan's "removes rows, versions,
+**and files**" is fully covered by rows alone here; noted rather than
+silently assumed equivalent. A typed `DELETE` confirmation (not a
+single click, not a native `confirm()` dialog) gates the button, and
+the deletion receipt (what was deleted, when, row counts per table) is
+built from a fetch that runs *before* calling the edge function, since
+there's nothing left to query — and no session left to be signed out
+of — once the account is actually gone.
+
+**Neither edge function was invoked from this sandbox, for the same
+reason `tests/auth_roundtrip.js` already can't be run here.** This
+sandbox's egress policy blocks `impurvwwjdgurbjbnydu.supabase.co`
+entirely (Phase 7.1/7.3's entries above). What *was* verified from
+here: both functions deployed successfully (`ACTIVE`, confirmed via
+the deploy response) and passed `get_advisors` with no new finding;
+the `list-sessions` function's exact SQL was run directly via
+`execute_sql` against the real `auth.sessions` table and returned
+without error (empty result, since no real browser session exists for
+the SQL-impersonation test users — but the query itself, its column
+names, and the `ip::text` cast are all confirmed valid against the
+live schema, not guessed). Extended `tests/auth_roundtrip.js` with
+real HTTP calls to both functions (`list-sessions` for both test
+users, confirming the current-session flag and that neither user's
+session ids leak to the other; `delete-account` for user A, then
+confirming the cascade actually removed A's `agreements` row rather
+than trusting the function's own "deleted: true" response) — unrun
+from here, run manually, exactly like the rest of that file.
+
+**End-to-end encryption (the one line in 7.4 the master plan itself
+marks "optional," unlike every other imperative "Add:" in the same
+section) is deliberately not built this pass.** Everything else in 7.4
+is now real and working end-to-end (session revoke is live and
+testable right now; listing/export/deletion are deployed and
+SQL/HTTP-verified per above). A passphrase-derived WebCrypto scheme
+touches every place a document's answers get synced or read back
+(`account.js`'s sync/merge paths, the export above, the audit-log
+write) and is the one piece of this phase where getting a subtle
+detail wrong (salt handling, key derivation parameters, where
+plaintext can leak) has real security consequences — it deserves a
+pass of its own rather than being the last thing squeezed into a
+session that's already moving on to 7.5 and the much larger Phase
+8-11 backlog. Recorded here as a conscious deferral, not silently
+dropped; `ROADMAP.md` (Phase 11) is the right place to scope it
+properly when it's actually taken up.

@@ -588,9 +588,42 @@ manually outside this sandbox) was extended instead, covering the same
 per-table RLS matrix DECISIONS.md verified at the SQL level for all 5
 Phase 7.1 tables, not just `agreements`.
 
+## Account basics (Phase 7.4)
+
+Account screen additions, all signed-in-only:
+- **Sessions** — "sign out of other devices" is a plain
+  `signOut({scope: 'others'})` call, no backend needed. Listing
+  sessions needs `supabase/functions/list-sessions`, a real edge
+  function: `auth.sessions` isn't exposed through PostgREST at any
+  privilege level, so it connects directly to Postgres via
+  `SUPABASE_DB_URL` (an edge function default secret) instead.
+- **Export your data** — fetches the signed-in user's own rows from
+  all 6 Supabase tables (already readable via their own select
+  policies) plus the local-only library, bundles as one JSON download.
+  No edge function needed.
+- **Delete my account** — `supabase/functions/delete-account` calls
+  `auth.admin.deleteUser()` with the service role key (the one
+  genuinely admin-only operation in this phase). Every table's
+  `user_id` is `references auth.users(id) on delete cascade` (checked
+  against `pg_constraint`, not assumed), so this one call removes
+  every row the account ever wrote. Gated by a typed `DELETE`
+  confirmation; the deletion receipt is built from a pre-delete fetch,
+  since nothing can be queried afterward.
+- A plain-language note on the sign-in form that there's no password
+  to reset — the email address itself is the only recovery path.
+
+Neither edge function has been invoked from this sandbox (same egress
+block as everything else Supabase-HTTP-shaped here); both deployed
+successfully and passed `get_advisors` clean. `tests/auth_roundtrip.js`
+was extended to call both over real HTTP, run manually. Full reasoning
+and the exact verification done from this sandbox in DECISIONS.md.
+
+**Not built this pass:** optional end-to-end encryption (the one line
+in 7.4 the master plan itself marks optional) — deferred deliberately,
+reasoning in DECISIONS.md.
+
 Not touched this pass: Stripe/payments (7.2 — skipped by explicit user
-choice, no Stripe credentials exist), account basics (7.4),
-e-signature (7.5).
+choice, no Stripe credentials exist), e-signature (7.5).
 
 ## Adversarial verifier (Phase 4.1)
 

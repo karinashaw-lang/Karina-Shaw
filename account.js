@@ -266,6 +266,239 @@ function renderAuditLog(container) {
     });
 }
 
+// Phase 7.4: session management. "Sign out of other devices" needs no
+// edge function — it's the documented signOut({scope:'others'}) call,
+// made with the signed-in user's own session, no elevated privilege
+// involved. Listing *which* devices needs an edge function instead:
+// individual sessions (auth.sessions) aren't exposed through the
+// public-schema REST API at any privilege level, only through a
+// direct Postgres connection — see supabase/functions/list-sessions.
+function renderSessionManagement(container) {
+  const section = document.createElement('div');
+  section.style.marginTop = '32px';
+
+  const heading = document.createElement('h2');
+  heading.textContent = 'Sessions';
+  heading.style.fontSize = '1.1rem';
+  section.appendChild(heading);
+
+  const listEl = document.createElement('div');
+  listEl.textContent = 'Loading your signed-in devices…';
+  section.appendChild(listEl);
+
+  const revokeBtn = document.createElement('button');
+  revokeBtn.type = 'button';
+  revokeBtn.className = 'secondary';
+  revokeBtn.textContent = 'Sign out of all other devices';
+  revokeBtn.style.marginTop = '12px';
+  revokeBtn.addEventListener('click', async () => {
+    revokeBtn.disabled = true;
+    revokeBtn.textContent = 'Signing out other devices…';
+    const { error } = await accountState.client.auth.signOut({ scope: 'others' });
+    revokeBtn.disabled = false;
+    revokeBtn.textContent = error ? `Couldn’t do that: ${error.message}` : 'Signed out of all other devices.';
+  });
+  section.appendChild(revokeBtn);
+  container.appendChild(section);
+
+  callEdgeFunction('list-sessions', { method: 'GET' }).then(({ data, error }) => {
+    if (error) {
+      listEl.textContent = `Couldn’t load your sessions: ${error}`;
+      return;
+    }
+    const sessions = (data && data.sessions) || [];
+    if (sessions.length === 0) {
+      listEl.textContent = 'No other session information available yet.';
+      return;
+    }
+    listEl.innerHTML = '';
+    sessions.forEach(s => {
+      const row = document.createElement('div');
+      row.className = 'library-row';
+      const info = document.createElement('div');
+      const titleEl = document.createElement('div');
+      titleEl.className = 'library-row-title';
+      titleEl.textContent = (s.current ? 'This device — ' : '') + (s.user_agent || 'Unknown device');
+      const dateEl = document.createElement('div');
+      dateEl.className = 'library-row-date';
+      const last = s.refreshed_at || s.created_at;
+      dateEl.textContent = `Last active ${new Date(last).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' })}`;
+      info.appendChild(titleEl);
+      info.appendChild(dateEl);
+      row.appendChild(info);
+      listEl.appendChild(row);
+    });
+  });
+}
+
+// Thin wrapper around calling an edge function with the signed-in
+// user's own access token — every edge function this app calls checks
+// that token itself (supabase.auth.getUser()), so the anon key alone
+// would not be enough to prove who's asking.
+async function callEdgeFunction(name, { method = 'POST', body } = {}) {
+  try {
+    const res = await fetch(`${window.GROUNDTRUTH_CONFIG.supabaseUrl}/functions/v1/${name}`, {
+      method,
+      headers: {
+        'Content-Type': 'application/json',
+        apikey: window.GROUNDTRUTH_CONFIG.supabaseAnonKey,
+        Authorization: `Bearer ${accountState.session.access_token}`,
+      },
+      body: body ? JSON.stringify(body) : undefined,
+    });
+    const json = await res.json().catch(() => null);
+    if (!res.ok) return { data: null, error: (json && json.error) || `HTTP ${res.status}` };
+    return { data: json, error: null };
+  } catch (e) {
+    return { data: null, error: e.message };
+  }
+}
+
+// Phase 7.4: "data export (all user data as JSON)." Every table a
+// signed-in user can read is already readable through their own
+// select policy (Phase 7.1) — no edge function needed, this is a
+// plain fetch-everything-and-bundle, the same pattern the per-document
+// JSON export in app.js already uses for the download itself.
+const EXPORTABLE_TABLES = ['agreements', 'document_versions', 'audit_log', 'feedback', 'orders', 'order_items'];
+
+async function fetchAllUserData() {
+  const userId = accountState.session.user.id;
+  const result = { exportedAt: new Date().toISOString(), email: accountState.session.user.email };
+  for (const table of EXPORTABLE_TABLES) {
+    const { data, error } = await accountState.client.from(table).select('*').eq('user_id', userId);
+    result[table] = error ? { error: error.message } : data;
+  }
+  result.localLibrary = loadLibrary();
+  return result;
+}
+
+function renderDataExport(container) {
+  const section = document.createElement('div');
+  section.style.marginTop = '32px';
+
+  const heading = document.createElement('h2');
+  heading.textContent = 'Export your data';
+  heading.style.fontSize = '1.1rem';
+  section.appendChild(heading);
+
+  const desc = document.createElement('p');
+  desc.className = 'lede';
+  desc.textContent = 'Everything stored under your account — every synced document, activity log entry, and order — as one JSON file, plus whatever is saved only in this browser.';
+  section.appendChild(desc);
+
+  const exportBtn = document.createElement('button');
+  exportBtn.type = 'button';
+  exportBtn.className = 'secondary';
+  exportBtn.textContent = 'Export all my data';
+  exportBtn.addEventListener('click', async () => {
+    exportBtn.disabled = true;
+    exportBtn.textContent = 'Gathering your data…';
+    const data = await fetchAllUserData();
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'groundtruth-account-data.json';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+    exportBtn.disabled = false;
+    exportBtn.textContent = 'Export all my data';
+  });
+  section.appendChild(exportBtn);
+  container.appendChild(section);
+}
+
+// Phase 7.4: full account deletion. Requires an edge function
+// (supabase/functions/delete-account) because deleting a row from
+// auth.users is an admin-only operation — no anon-key client call can
+// do it to its own account. Every other table's user_id column was
+// built with `references auth.users(id) on delete cascade` (Phase
+// 7.1), so deleting the auth user is genuinely sufficient to remove
+// every row this account ever wrote — confirmed directly against
+// pg_constraint, not assumed.
+//
+// The receipt is built from a count fetched *before* calling the edge
+// function, since there is nothing left to query once the account (and
+// the session itself) is gone. A typed confirmation, not a single
+// click, is the one real check against an accidental press — the same
+// bar GitHub's own "type the repo name" pattern sets for this kind of
+// irreversible action.
+function renderAccountDeletion(container) {
+  const section = document.createElement('div');
+  section.style.marginTop = '32px';
+
+  const heading = document.createElement('h2');
+  heading.textContent = 'Delete my account';
+  heading.style.fontSize = '1.1rem';
+  section.appendChild(heading);
+
+  const desc = document.createElement('p');
+  desc.className = 'lede';
+  desc.textContent = 'Permanently deletes your account and every row synced to it (documents, versions, activity log, orders). This cannot be undone. Type DELETE below to confirm.';
+  section.appendChild(desc);
+
+  const confirmInput = document.createElement('input');
+  confirmInput.type = 'text';
+  confirmInput.placeholder = 'Type DELETE to confirm';
+  confirmInput.id = 'account-delete-confirm';
+  section.appendChild(confirmInput);
+
+  const deleteBtn = document.createElement('button');
+  deleteBtn.type = 'button';
+  deleteBtn.className = 'secondary';
+  deleteBtn.style.marginTop = '12px';
+  deleteBtn.style.marginLeft = '8px';
+  deleteBtn.textContent = 'Permanently delete my account';
+  deleteBtn.disabled = true;
+  confirmInput.addEventListener('input', () => {
+    deleteBtn.disabled = confirmInput.value.trim() !== 'DELETE';
+  });
+
+  const statusEl = document.createElement('p');
+  statusEl.className = 'library-row-date';
+  section.appendChild(deleteBtn);
+  section.appendChild(statusEl);
+  container.appendChild(section);
+
+  deleteBtn.addEventListener('click', async () => {
+    deleteBtn.disabled = true;
+    statusEl.textContent = 'Gathering what will be deleted…';
+    const summary = await fetchAllUserData();
+    const receipt = {
+      deletedAt: new Date().toISOString(),
+      email: summary.email,
+      rowsDeleted: Object.fromEntries(
+        EXPORTABLE_TABLES.map(t => [t, Array.isArray(summary[t]) ? summary[t].length : 0])
+      ),
+    };
+
+    statusEl.textContent = 'Deleting your account…';
+    const { error } = await callEdgeFunction('delete-account', { method: 'POST' });
+    if (error) {
+      statusEl.textContent = `Couldn’t delete your account: ${error}`;
+      deleteBtn.disabled = false;
+      return;
+    }
+
+    const blob = new Blob([JSON.stringify(receipt, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'groundtruth-deletion-receipt.json';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+
+    await accountState.client.auth.signOut({ scope: 'local' });
+    accountState.session = null;
+    statusEl.textContent = '';
+    renderAccountScreen();
+  });
+}
+
 function renderAccountScreen() {
   const el = document.getElementById('account-content');
   el.innerHTML = '';
@@ -294,7 +527,10 @@ function renderAccountScreen() {
     });
     el.appendChild(signOutBtn);
 
+    renderSessionManagement(el);
     renderAuditLog(el);
+    renderDataExport(el);
+    renderAccountDeletion(el);
     return;
   }
 
@@ -302,6 +538,16 @@ function renderAccountScreen() {
   p.className = 'lede';
   p.textContent = 'Sign in to sync your saved documents across devices. No password — we’ll email you a one-time link.';
   el.appendChild(p);
+
+  // Phase 7.4: "account recovery path appropriate for passwordless."
+  // There's no password to reset, so the honest answer is to say what
+  // actually happens rather than imply a recovery flow that doesn't
+  // exist — the same inform-never-advise standard this project holds
+  // for legal content, applied to its own account copy.
+  const recoveryNote = document.createElement('p');
+  recoveryNote.className = 'library-row-date';
+  recoveryNote.textContent = 'There’s no password, so there’s nothing to reset: this email address is the only way back into your synced account. If you lose access to it, your synced documents can’t be recovered. Anything saved in this browser under "My Documents" is unaffected either way.';
+  el.appendChild(recoveryNote);
 
   const form = document.createElement('form');
   form.className = 'field';
