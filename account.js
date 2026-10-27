@@ -129,7 +129,10 @@ function wrapLibraryFunctions() {
   const originalAdd = addToLibrary;
   addToLibrary = function (documentId, title, answers) {
     const entry = originalAdd(documentId, title, answers);
-    if (accountState.session) syncEntryToCloud(entry);
+    if (accountState.session) {
+      syncEntryToCloud(entry);
+      writeAuditLogEntry(entry);
+    }
     return entry;
   };
 
@@ -143,6 +146,29 @@ function wrapLibraryFunctions() {
       generated_at: entry.generatedAt,
     }).then(({ error }) => { if (error) console.error('Groundtruth: cloud save failed', error); });
   };
+
+  // Phase 7.3: one append-only audit_log row per generated document —
+  // never the field answers themselves (the schema has no column for
+  // them), only what the master plan's 7.3 asks for: which document,
+  // which corpus snapshot it used, and a fingerprint of the rendered
+  // output. Logged once, at the moment a document is first generated
+  // (addToLibrary) — not again on regenerateLibraryEntry()'s snapshot
+  // refresh, which updates the same saved document rather than
+  // generating a new one.
+  function writeAuditLogEntry(entry) {
+    let outputHash = 'unavailable';
+    try { outputHash = hashString(buildPlainText()); } catch (e) { /* best-effort only */ }
+    accountState.client.from('audit_log').insert({
+      user_id: accountState.session.user.id,
+      document_id: entry.documentId,
+      corpus_version: entry.corpusVersion || null,
+      clause_ids: (entry.clauseSnapshots || []).map(c => c.id),
+      clause_checked_dates: Object.fromEntries(
+        (entry.clauseSnapshots || []).map(c => [c.id, c.checkedDate || null])
+      ),
+      output_hash: outputHash,
+    }).then(({ error }) => { if (error) console.error('Groundtruth: audit log write failed', error); });
+  }
 
   const originalRemove = removeFromLibrary;
   removeFromLibrary = function (entryId) {
@@ -165,6 +191,79 @@ function wrapLibraryFunctions() {
     originalRenderLibrary();
     renderLibrarySyncStatus();
   };
+}
+
+// Phase 7.3: "make the log viewable and exportable by the user." A
+// fresh fetch every time the Account screen is shown, rather than a
+// client-side cache — this is the one place the log is read back, so
+// there's no staleness to manage by keeping a second copy around.
+function renderAuditLog(container) {
+  const section = document.createElement('div');
+  section.style.marginTop = '32px';
+
+  const heading = document.createElement('h2');
+  heading.textContent = 'Activity log';
+  heading.style.fontSize = '1.1rem';
+  section.appendChild(heading);
+
+  const desc = document.createElement('p');
+  desc.className = 'lede';
+  desc.textContent = 'One entry per document you’ve generated while signed in: which document, which version of the corpus it used, and a fingerprint of the output. Never your answers to any field.';
+  section.appendChild(desc);
+
+  const listEl = document.createElement('div');
+  listEl.textContent = 'Loading…';
+  section.appendChild(listEl);
+  container.appendChild(section);
+
+  accountState.client
+    .from('audit_log')
+    .select('*')
+    .eq('user_id', accountState.session.user.id)
+    .order('created_at', { ascending: false })
+    .then(({ data, error }) => {
+      if (error) { listEl.textContent = `Couldn't load the activity log: ${error.message}`; return; }
+      listEl.innerHTML = '';
+      if (!data || data.length === 0) {
+        listEl.innerHTML = '<p class="library-empty">Nothing logged yet.</p>';
+        return;
+      }
+
+      const exportBtn = document.createElement('button');
+      exportBtn.type = 'button';
+      exportBtn.className = 'secondary';
+      exportBtn.textContent = 'Export log as JSON';
+      exportBtn.style.marginBottom = '12px';
+      exportBtn.addEventListener('click', () => {
+        const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'groundtruth-activity-log.json';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        URL.revokeObjectURL(url);
+      });
+      listEl.appendChild(exportBtn);
+
+      data.forEach(row => {
+        const doc = (state.documents || []).find(d => d.id === row.document_id);
+        const rowEl = document.createElement('div');
+        rowEl.className = 'library-row';
+        const info = document.createElement('div');
+        const titleEl = document.createElement('div');
+        titleEl.className = 'library-row-title';
+        titleEl.textContent = (doc && doc.title) || row.document_id;
+        const dateEl = document.createElement('div');
+        dateEl.className = 'library-row-date';
+        dateEl.textContent = `Generated ${new Date(row.created_at).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' })} — corpus ${row.corpus_version || 'n/a'}, output ${row.output_hash}`;
+        info.appendChild(titleEl);
+        info.appendChild(dateEl);
+        rowEl.appendChild(info);
+        listEl.appendChild(rowEl);
+      });
+    });
 }
 
 function renderAccountScreen() {
@@ -194,6 +293,8 @@ function renderAccountScreen() {
       renderAccountScreen();
     });
     el.appendChild(signOutBtn);
+
+    renderAuditLog(el);
     return;
   }
 

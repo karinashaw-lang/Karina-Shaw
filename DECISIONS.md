@@ -1377,3 +1377,67 @@ for the adversarial test script above, then removed again
 it left in `package.json`. The shipped app still talks to Supabase only
 via the plain `fetch`-based REST/Auth calls `app.js` already had;
 nothing in this phase changed that.
+
+## Phase 7.2: skipped, by the user's own explicit choice
+
+Asked directly whether to (a) get real Stripe test keys, (b) write the
+edge function/webhook code without being able to deploy or verify it
+against real Stripe, or (c) skip this phase and keep going. The user
+chose (c). No Stripe-related code, `config/pricing.json`, or edge
+function exists from this pass. Continued straight to 7.3.
+
+## Phase 7.3: audit trail (log + viewer/export; table itself was
+## already built in 7.1)
+
+**Logs once, at the moment a document is first generated, not again on
+regenerate.** `addToLibrary()` (app.js) is the one call site that
+creates a new saved document; `account.js`'s existing wrap-not-replace
+pattern around it (the same one that already syncs to `agreements`)
+now also writes one `audit_log` row, only when signed in — there's no
+server-side anything for a signed-out user, so there's nowhere to log
+to, consistent with this app's "fully functional without an account"
+architecture. `regenerateLibraryEntry()` (Phase 6.3) refreshes an
+*existing* saved document's drift baseline; it isn't a new generation
+event, so it isn't logged again — recorded as a real choice, not left
+ambiguous, since the master plan's wording ("per generated document")
+doesn't force a reading that includes a refresh of something already
+logged once.
+
+**Never logs field answers, by construction, not just by discipline.**
+The `audit_log` table (Phase 7.1) has no column that could even hold
+them. What's written: `document_id`, `corpus_version` (already
+computed by Phase 6.3's `buildClauseSnapshot()`), `clause_ids` and
+`clause_checked_dates` (derived from the same `clauseSnapshots` that
+already exist on the saved entry — nothing new computed), and
+`output_hash` — a fingerprint of the actual rendered plain-text output
+(`hashString(buildPlainText())`, the same non-cryptographic FNV-1a hash
+Phase 6.3 already uses for `corpusVersion`, reused rather than adding a
+second hashing scheme for the same purpose).
+
+**Viewer + export added to the existing Account screen, not a new
+screen.** The log only exists for a signed-in user, and the Account
+screen was already the one place that distinguishes signed-in from
+not; a separate "Activity log" screen would need its own signed-out
+state to handle for no real benefit. Fetches fresh from `audit_log`
+each time Account is opened (no local cache to keep in sync with the
+server) and offers "Export log as JSON" — a plain client-side
+`Blob`/`URL.createObjectURL` download of exactly the rows just
+fetched, the same download mechanism the app already uses for PDF/.docx/
+raw-JSON document exports, not a new one.
+
+**Not tested by the browser gate suite, for the same already-documented
+reason the rest of `account.js` isn't** — this sandbox's egress policy
+blocks the live Supabase domain (BASELINE.md, Phase 1.3), and there's
+no config.js in CI either, so `supabaseConfigured()` is false in every
+environment this suite actually runs in and the new code never
+executes there. **Extended `tests/auth_roundtrip.js` instead** — the
+file this project already uses for exactly this situation (a real HTTP
+round trip against Supabase Auth/PostgREST, written to be run from an
+unrestricted machine, no-ops cleanly here) — adding the same RLS matrix
+already verified at the SQL level in the Phase 7.1 entry above, but now
+over real HTTP for all 5 new tables, closing the gap that entry's
+`agreements`-only coverage left open. In retrospect this is also the
+pattern the Phase 7.1 adversarial test should have extended from the
+start, rather than reaching for a new `@supabase/supabase-js`-based
+script that had to be written and then deleted once the same network
+block was discovered the hard way a second time.

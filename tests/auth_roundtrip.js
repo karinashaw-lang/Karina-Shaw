@@ -18,7 +18,9 @@
 // which needs either a real inbox or the service role key (below).
 //
 // For the full round trip — two real sessions, one user's insert, the
-// other user's blocked read/update/delete — also set:
+// other user's blocked read/update/delete, now extended (Phase 7.1) to
+// also cover orders/order_items/audit_log/document_versions/feedback —
+// also set:
 //   SUPABASE_SERVICE_ROLE_KEY=...   (Project Settings -> API -> service_role.
 //                                    Never put this in config.js or anywhere
 //                                    client-side — it bypasses RLS entirely.
@@ -164,15 +166,86 @@ async function main() {
   const bDeleteRows = Array.isArray(bDeletesA.json) ? bDeletesA.json.length : -1;
   check(bDeleteRows === 0, `user B's delete of A's row affects zero rows (status ${bDeletesA.status}, ${bDeleteRows} rows)`);
 
+  // --- Phase 7.1 tables: the same RLS matrix DECISIONS.md verified at
+  // the SQL level (role/claim impersonation through execute_sql, since
+  // this sandbox's egress policy blocks this exact HTTP path) — this is
+  // that matrix's HTTP-level counterpart, the thing Phase 7.1 recorded
+  // as unverified for the same network reason. Reuses userA/userB above.
+
+  const auditInsert = await restFetch('/rest/v1/audit_log', {
+    token: userA.accessToken, method: 'POST',
+    body: { user_id: userA.userId, document_id: 'nda', output_hash: 'deadbeef' },
+    extraHeaders: { Prefer: 'return=representation' },
+  });
+  check(auditInsert.status >= 200 && auditInsert.status < 300, `user A inserts an audit_log row over REST (status ${auditInsert.status})`);
+  const auditId = auditInsert.json && auditInsert.json[0] && auditInsert.json[0].id;
+
+  const bReadsAuditA = await restFetch(`/rest/v1/audit_log?id=eq.${auditId}&select=id`, { token: userB.accessToken });
+  check(Array.isArray(bReadsAuditA.json) && bReadsAuditA.json.length === 0, "user B's read of A's audit_log row returns zero rows");
+
+  const bForgesAudit = await restFetch('/rest/v1/audit_log', {
+    token: userB.accessToken, method: 'POST',
+    body: { user_id: userA.userId, document_id: 'nda', output_hash: 'forged' },
+  });
+  check(bForgesAudit.status >= 400 && bForgesAudit.status < 500, `user B's forged audit_log insert as A is rejected (status ${bForgesAudit.status})`);
+
+  const feedbackInsert = await restFetch('/rest/v1/feedback', {
+    token: userA.accessToken, method: 'POST',
+    body: { user_id: userA.userId, message: 'auth round-trip test' },
+    extraHeaders: { Prefer: 'return=representation' },
+  });
+  check(feedbackInsert.status >= 200 && feedbackInsert.status < 300, `user A inserts a feedback row over REST (status ${feedbackInsert.status})`);
+  const feedbackId = feedbackInsert.json && feedbackInsert.json[0] && feedbackInsert.json[0].id;
+  const bReadsFeedbackA = await restFetch(`/rest/v1/feedback?id=eq.${feedbackId}&select=id`, { token: userB.accessToken });
+  check(Array.isArray(bReadsFeedbackA.json) && bReadsFeedbackA.json.length === 0, "user B's read of A's feedback row returns zero rows");
+
+  const dvInsert = await restFetch('/rest/v1/document_versions', {
+    token: userA.accessToken, method: 'POST',
+    body: { user_id: userA.userId, agreement_id: rowId, schema_version: 1, clause_snapshots: [], generated_at: new Date().toISOString() },
+    extraHeaders: { Prefer: 'return=representation' },
+  });
+  check(dvInsert.status >= 200 && dvInsert.status < 300, `user A inserts a document_versions row over REST (status ${dvInsert.status})`);
+  const dvId = dvInsert.json && dvInsert.json[0] && dvInsert.json[0].id;
+  const bReadsDvA = await restFetch(`/rest/v1/document_versions?id=eq.${dvId}&select=id`, { token: userB.accessToken });
+  check(Array.isArray(bReadsDvA.json) && bReadsDvA.json.length === 0, "user B's read of A's document_versions row returns zero rows");
+
+  // orders/order_items: select-only for the owner, no write path from
+  // either user at all (by design — see DECISIONS.md) — seeded here via
+  // the service role, standing in for the Phase 7.2 edge function that
+  // doesn't exist yet.
+  const orderSeed = await restFetch('/rest/v1/orders', {
+    token: SERVICE_KEY, method: 'POST',
+    body: { user_id: userA.userId, amount_cents: 2500, status: 'paid' },
+    extraHeaders: { apikey: SERVICE_KEY, Prefer: 'return=representation' },
+  });
+  check(orderSeed.status >= 200 && orderSeed.status < 300, `service role seeds an orders row for A (status ${orderSeed.status})`);
+  const orderId = orderSeed.json && orderSeed.json[0] && orderSeed.json[0].id;
+
+  const aReadsOwnOrder = await restFetch(`/rest/v1/orders?id=eq.${orderId}&select=id`, { token: userA.accessToken });
+  check(Array.isArray(aReadsOwnOrder.json) && aReadsOwnOrder.json.length === 1, "user A reads back their own seeded order");
+
+  const bReadsOrderA = await restFetch(`/rest/v1/orders?id=eq.${orderId}&select=id`, { token: userB.accessToken });
+  check(Array.isArray(bReadsOrderA.json) && bReadsOrderA.json.length === 0, "user B's read of A's order returns zero rows");
+
+  const aInsertsOrder = await restFetch('/rest/v1/orders', {
+    token: userA.accessToken, method: 'POST',
+    body: { user_id: userA.userId, amount_cents: 1 },
+  });
+  check(aInsertsOrder.status >= 400 && aInsertsOrder.status < 500, `owner's own insert into orders is rejected — no insert policy for anyone (status ${aInsertsOrder.status})`);
+
   // --- Cleanup: this script has the service role key, so it can actually
   // finish what it starts — unlike the MCP-based investigation recorded in
   // DECISIONS.md, a direct REST call with the service role key is not
   // subject to that tool's destructive-statement gate.
   await restFetch(`/rest/v1/agreements?id=eq.${rowId}`, { token: SERVICE_KEY, method: 'DELETE', extraHeaders: { apikey: SERVICE_KEY } });
+  if (auditId) await restFetch(`/rest/v1/audit_log?id=eq.${auditId}`, { token: SERVICE_KEY, method: 'DELETE', extraHeaders: { apikey: SERVICE_KEY } });
+  if (feedbackId) await restFetch(`/rest/v1/feedback?id=eq.${feedbackId}`, { token: SERVICE_KEY, method: 'DELETE', extraHeaders: { apikey: SERVICE_KEY } });
+  if (dvId) await restFetch(`/rest/v1/document_versions?id=eq.${dvId}`, { token: SERVICE_KEY, method: 'DELETE', extraHeaders: { apikey: SERVICE_KEY } });
+  if (orderId) await restFetch(`/rest/v1/orders?id=eq.${orderId}`, { token: SERVICE_KEY, method: 'DELETE', extraHeaders: { apikey: SERVICE_KEY } });
   for (const u of [userA, userB]) {
     await restFetch(`/auth/v1/admin/users/${u.userId}`, { token: SERVICE_KEY, method: 'DELETE', extraHeaders: { apikey: SERVICE_KEY } });
   }
-  console.log('\nCleaned up: test row and both test users deleted.');
+  console.log('\nCleaned up: all test rows and both test users deleted.');
 
   finish();
 }

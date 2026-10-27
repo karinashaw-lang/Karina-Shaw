@@ -561,8 +561,36 @@ table-by-table results, the DELETE testing gap (same destructive-SQL
 gate, not skipped), and cleanup SQL for the test rows left behind are in
 DECISIONS.md's Phase 7.1 entry.
 
-Not touched this pass: Stripe/payments (7.2), an audit-log viewer UI
-(7.3), account basics (7.4), e-signature (7.5).
+## Audit trail (Phase 7.3)
+
+`account.js` writes one `audit_log` row per document, at the moment
+it's generated (`addToLibrary`, wrapped the same way `agreements`
+syncing already was) — only when signed in, since there's no
+server-side anything otherwise. Fields: `document_id`, `corpus_version`
+and `clause_ids`/`clause_checked_dates` (all already computed by Phase
+6.3's `buildClauseSnapshot()`, nothing new derived), and `output_hash`
+(`hashString(buildPlainText())`, reusing Phase 6.3's existing FNV-1a
+hash rather than adding a second one). Never the field answers — the
+table has no column for them. `regenerateLibraryEntry()` doesn't log
+again; it refreshes an existing entry's drift baseline, not a new
+generation event.
+
+Viewable and exportable from the Account screen's signed-in state
+(`renderAuditLog()`): fetched fresh each time, with an "Export log as
+JSON" button using the same `Blob`/`createObjectURL` download the
+app's other exports already use.
+
+Not covered by the browser gate suite — same reason the rest of
+`account.js`'s Supabase calls aren't (BASELINE.md, Phase 1.3): this
+sandbox's egress policy blocks the live project's domain, and CI has
+no `config.js` either. `tests/auth_roundtrip.js` (real HTTP, run
+manually outside this sandbox) was extended instead, covering the same
+per-table RLS matrix DECISIONS.md verified at the SQL level for all 5
+Phase 7.1 tables, not just `agreements`.
+
+Not touched this pass: Stripe/payments (7.2 — skipped by explicit user
+choice, no Stripe credentials exist), account basics (7.4),
+e-signature (7.5).
 
 ## Adversarial verifier (Phase 4.1)
 
