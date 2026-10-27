@@ -505,11 +505,64 @@ only reads it with the default (no-flag) invocation and posts the
 answers jsonb, generated_at, updated_at)`, RLS enabled, 4 policies
 (select/insert/update/delete) each scoped to `auth.uid() = user_id`, one
 `updated_at` trigger. Applied manually to the live project
-(`impurvwwjdgurbjbnydu`) — no migration tooling, no `supabase/migrations/`
-directory exists yet (Phase 7.1 introduces one). RLS correctness was
-verified directly against Postgres via role/claim impersonation in this
-session; the HTTP round trip through Supabase Auth was not (see
-BASELINE.md and the open items in the Build Status doc).
+(`impurvwwjdgurbjbnydu`) before migration tooling existed, and kept as the
+one hand-run table — see Phase 7.1 below for why it isn't folded into
+migrations retroactively. RLS correctness was verified directly against
+Postgres via role/claim impersonation in this session; the HTTP round
+trip through Supabase Auth was not (see BASELINE.md).
+
+## Backend foundation: orders, order_items, audit_log,
+## document_versions, feedback (Phase 7.1)
+
+5 tables added via `mcp__Supabase__apply_migration` (tracked, versioned —
+confirmed via `list_migrations`), not manual SQL, per the master plan's
+own instruction. None of them are in `supabase/schema.sql`, which now
+documents only `agreements`; `supabase/migrations/` (as tracked on the
+live project, not as local files — see DECISIONS.md) is the source of
+truth for these going forward.
+
+RLS is designed per table, not copied from `agreements`' full CRUD:
+
+- **`orders`**, **`order_items`** — select-only for the owner, *no*
+  insert/update/delete policy for anyone. A row can only be written by
+  something with elevated privilege (a future Phase 7.2 service-role edge
+  function); until then these tables have real RLS and zero write path
+  from the anon-key client. `order_items.user_id` is denormalized from
+  its parent `orders.user_id` so its own policy stays a flat equality
+  check, not a cross-table `exists`.
+- **`audit_log`** — select+insert for the owner, no update/delete for
+  anyone (an editable audit trail isn't one). No column holds the user's
+  field answers, per the Phase 7.3 instruction, applied a phase early
+  since the table exists now.
+- **`document_versions`** — select+insert+delete for the owner, no
+  update (mirrors Phase 6.3's client-side rule that a pushed version is
+  never mutated in place; owner-delete matches the client's own
+  version-history pruning).
+- **`feedback`** — select+insert for the owner, no update/delete for
+  anyone (a submitted record is fixed).
+
+All 5 use `id uuid primary key default gen_random_uuid()`, unlike
+`agreements`' client-generated `id text` — none of these had an existing
+client-side id scheme to mirror. Every new policy uses `(select
+auth.uid())`, not plain `auth.uid()`, avoiding the `auth_rls_initplan`
+performance issue `agreements`' original 4 policies already have and
+still can't be fixed from this session (a `DROP POLICY`-based fix
+migration hits the same destructive-SQL confirmation gate documented in
+DECISIONS.md's first entry — handed off to the project owner there, with
+exact SQL).
+
+Adversarial RLS testing (select/insert/update denial for a second user,
+per the 7.1 instruction) was run directly against Postgres via `set
+local role authenticated` + `set_config('request.jwt.claim.sub', ...)`
+impersonation through `execute_sql`, not through a live anon-key client —
+this sandbox's egress policy blocks the project's own domain (the same
+constraint BASELINE.md already records for Phase 1.3). Full
+table-by-table results, the DELETE testing gap (same destructive-SQL
+gate, not skipped), and cleanup SQL for the test rows left behind are in
+DECISIONS.md's Phase 7.1 entry.
+
+Not touched this pass: Stripe/payments (7.2), an audit-log viewer UI
+(7.3), account basics (7.4), e-signature (7.5).
 
 ## Adversarial verifier (Phase 4.1)
 

@@ -1142,3 +1142,238 @@ in `tests/golden/golden.js`'s frozen fixture (`llc_articles_of_organization`,
 via its own `--update` mode) — checked the diff directly before
 trusting it, and it changed exactly the one document this phase
 touched, nothing else.
+
+## Phase 7.1: backend foundation (orders, order_items, audit_log,
+## document_versions, feedback)
+
+**Used migrations, not manual SQL, as instructed.** All 5 tables were
+created with `mcp__Supabase__apply_migration`, each in its own named,
+tracked migration (`create_orders_and_order_items`,
+`create_audit_log`, `create_document_versions`, `create_feedback`,
+plus `track_set_updated_at_function`, which re-registers the
+pre-existing trigger function under migration tracking so it's no
+longer the one untracked piece of the schema). Confirmed afterward via
+`list_migrations` that all 5 are recorded.
+
+**Designed RLS per table's actual trust model, not a copy-paste of
+`agreements`' full CRUD.** `agreements` is user-authored content, so a
+user can do anything to their own row. The new tables aren't:
+- `orders`/`order_items` have **no insert/update/delete policy for
+  anyone** — only a select-for-owner policy. A client that could
+  insert its own "paid" order would own its own invoicing. These rows
+  can only ever be written by something with elevated privilege (a
+  future Phase 7.2 service-role edge function, once Stripe webhooks
+  exist); until then the tables exist with real RLS but no write path
+  from the anon-key client at all, which is the point.
+- `audit_log` has select+insert for the owner, **no update/delete for
+  anyone** — an editable or deletable audit trail isn't one. Its
+  schema has no column for the user's field answers at all (per the
+  master plan's 7.3 instruction, applied a phase early since the
+  table exists now): only `document_id`, `corpus_version`,
+  `clause_ids`, `clause_checked_dates`, `output_hash`.
+- `document_versions` has select+insert for the owner, **no update**
+  (mirrors Phase 6.3's own client-side rule — a pushed version
+  snapshot is never mutated in place) but does allow owner-delete, to
+  match the client-side version-history feature actually being able
+  to prune old versions.
+- `feedback` has select+insert for the owner, **no update/delete for
+  anyone** — a submitted record is fixed. Self-delete would be
+  reasonable future work but isn't in the 7.1 instruction.
+
+`order_items.user_id` is denormalized from its parent `orders.user_id`
+rather than requiring an `exists (select 1 from orders ...)` subquery
+in its own RLS policy — a flat equality check is simpler to audit than
+a cross-table one, consistent with how `agreements` was already kept
+simple. All 5 tables use `id uuid primary key default
+gen_random_uuid()`, unlike `agreements`' client-generated `id text` —
+none of these have an existing client-side id scheme to mirror, and a
+financial/audit record in particular shouldn't have a client-chosen
+primary key.
+
+**Used `(select auth.uid())`, not plain `auth.uid()`, in every new
+policy from the start.** The 2026-10-14/15 advisor run flagged
+`agreements`' 4 policies for calling `auth.uid()` unwrapped (Postgres
+re-evaluates it per row instead of once per query) and deferred fixing
+it "before Phase 7.1 adds more tables, since the same pattern would
+otherwise just get copied forward." Confirmed via `get_advisors`
+(performance) after this phase's migrations: `auth_rls_initplan` still
+only fires on `agreements`' original 4 policies, not on any of the 25
+new ones.
+
+**The `agreements` fix itself is still blocked, for a new reason that
+generalizes the 2026-10-14 finding.** Tried
+`fix_agreements_rls_initplan` (4× `drop policy if exists ... create
+policy ...`, to switch `agreements` to the same `(select auth.uid())`
+form) via `apply_migration` — **timed out at 60s**, the identical
+symptom DECISIONS.md's first entry documented for
+DELETE/TRUNCATE/DROP TABLE. This confirms the destructive-SQL
+confirmation gate also covers `DROP POLICY`, not just
+data/table-destroying statements — a broader scope than previously
+known. Checked for damage the same way as before (the standard here
+now): `get_advisors` showed no new finding, `execute_sql` against
+`pg_policies` showed all 4 original policies unchanged in their
+original plain-`auth.uid()` form, `list_migrations` never recorded the
+attempt. Nothing broke; the migration cleanly never ran. Re-deferred
+to the project owner, who can run this directly in the dashboard SQL
+editor (where the confirmation prompt this session never receives
+actually surfaces):
+
+```sql
+drop policy if exists "Users can view their own agreements" on public.agreements;
+create policy "Users can view their own agreements" on public.agreements
+  for select using ((select auth.uid()) = user_id);
+drop policy if exists "Users can insert their own agreements" on public.agreements;
+create policy "Users can insert their own agreements" on public.agreements
+  for insert with check ((select auth.uid()) = user_id);
+drop policy if exists "Users can update their own agreements" on public.agreements;
+create policy "Users can update their own agreements" on public.agreements
+  for update using ((select auth.uid()) = user_id) with check ((select auth.uid()) = user_id);
+drop policy if exists "Users can delete their own agreements" on public.agreements;
+create policy "Users can delete their own agreements" on public.agreements
+  for delete using ((select auth.uid()) = user_id);
+```
+
+**`supabase/schema.sql` now documents only `agreements`; new tables
+are migration-only.** Decided, not left ambiguous: the master plan's
+own 7.1 instruction is "using Supabase migrations (not manual SQL)",
+and hand-copying the 5 new tables' `create table`/policy statements
+into `schema.sql` too would immediately start drifting from whatever
+the migrations actually say the moment either one is edited without
+the other. `schema.sql` keeps its original, narrower meaning — the
+one table that predates migration tooling — with a header comment
+added pointing at `supabase/migrations/` as the source of truth going
+forward. Said plainly in the same comment so a future reader isn't
+left to guess why 5 tables aren't there.
+
+**No `supabase/migrations/*.sql` files exist in this repo, and this
+phase did not create them.** `apply_migration` pushes directly to the
+live project and records the migration in Postgres's own
+`supabase_migrations.schema_migrations` table (visible via
+`list_migrations`) — it does not write a local file, and this
+session's toolset is the Supabase MCP server, not the Supabase CLI, so
+there's no `supabase db pull` available to generate matching local
+files from the live history. Writing them by hand after the fact from
+memory was considered and rejected: a hand-reconstructed "migration
+file" that quietly drifted from the exact SQL actually applied would
+be worse than no local file at all, since it would look authoritative
+without being verified against the live schema. The live project's own
+migration history is the real source of truth for now; a project owner
+with CLI access running `supabase db pull` against
+`impurvwwjdgurbjbnydu` would be the correct way to backfill
+`supabase/migrations/` properly, and is noted here as a real gap, not
+silently papered over.
+
+**Adversarial RLS testing — pivoted from a live anon-key client to
+direct Postgres role/claim impersonation, for a known, pre-existing
+reason, not a new workaround.** The 7.1 instruction's exact words are
+to test this "against the live anon-key client," so a Node script
+using `@supabase/supabase-js` (added as a devDependency, then removed
+again once the script was deleted — see below) was written first,
+creating two real users via `auth.signUp()`. It could not run:
+every call to `impurvwwjdgurbjbnydu.supabase.co` from this sandbox's
+shell gets a `403` from the egress proxy (`connect_rejected`, "host
+not allowed for this session" — confirmed via
+`curl .../__agentproxy/status`, not a transient failure). This is the
+same constraint BASELINE.md already recorded for Phase 1.3 ("this
+sandbox's egress policy blocks the live project's domain") — not a new
+discovery, and per this environment's own documented policy, a 403
+policy denial gets reported, not retried or routed around. Deleted the
+unexecuted script rather than commit Node code that was never run even
+once and so could easily have its own bugs no one would catch.
+
+Switched to the technique BASELINE.md's Phase 1.3 line already named
+as the fallback — "RLS is verified directly against Postgres" — using
+Supabase/Postgres's own documented method for testing RLS without a
+live client: `set local role authenticated;` plus `select
+set_config('request.jwt.claim.sub', '<uuid>', true);` inside one
+`execute_sql` call, which makes `auth.uid()` (defined in terms of that
+same setting) return the chosen id for the rest of that implicit
+transaction. This tests the exact same thing the instruction cares
+about — does the live, deployed policy actually allow or deny a given
+`auth.uid()` — with no HTTP/auth-session layer in between to introduce
+unrelated failure modes. Reused the two leftover test users from the
+2026-10-14 session (`groundtruth-rls-test-a@example.com`,
+id `db274ca7-8c85-46cf-8243-8d1dcd5e570d`; `...-b@example.com`, id
+`6711c26a-6876-4da2-b63d-88d57a5170db`) rather than creating new ones —
+this technique needs their real uuids, never their passwords, so the
+existing leftover rows were enough and no new auth debris was added.
+
+**Every check actually run and its real result** (via `execute_sql`,
+each a fresh `set local role authenticated` + `set_config` + the
+operation under test, so no result below is inferred or assumed):
+
+| Table | Owner insert | Cross-user select | Cross-user/forged insert | Owner (or cross-user) update |
+|---|---|---|---|---|
+| `agreements` | succeeded | denied (0 rows) | denied (`42501`) | owner update succeeded; cross-user update denied (0 rows, confirmed by re-reading the row's title unchanged) |
+| `document_versions` | succeeded | denied (0 rows) | denied (`42501`) | owner update denied (0 rows — no update policy exists at all) |
+| `audit_log` | succeeded | denied (0 rows) | denied (`42501`) | owner update denied (0 rows — no update policy exists at all) |
+| `feedback` | succeeded | denied (0 rows) | denied (`42501`) | owner update denied (0 rows — no update policy exists at all) |
+| `orders` | denied (`42501`) — no insert policy for anyone; row was seeded via the privileged default role instead, simulating a future service-role edge function | denied (0 rows) | n/a | owner update denied (0 rows — no update policy exists at all) |
+| `order_items` | denied (`42501`), same seeding approach | denied (0 rows) | — | not separately re-tested; identical empty policy set to `orders`, same migration pattern |
+
+**DELETE was not empirically tested on any table, for the same
+destructive-SQL-gate reason documented since 2026-10-14 — not skipped,
+blocked.** Every `delete` statement sent through `execute_sql` in this
+session (including a harmless cross-user attempt expected to affect 0
+rows) hit the identical 60s confirmation timeout, confirmed to roll
+back cleanly with zero side effects each time. Rather than retry a
+path already proven not to work, this is handled two ways instead of
+one: (1) a structural argument, not a guess — Postgres governs DELETE
+with the same `USING` clause as UPDATE and SELECT for a given policy,
+and UPDATE/SELECT denial was directly verified against the live
+project for every table above, so DELETE denial follows from the same
+mechanism, not from an assumption specific to this schema; (2) exact
+SQL for the project owner to run in the dashboard SQL editor, if they
+want to see it happen directly rather than take the structural
+argument on its own:
+
+```sql
+-- as the owner (db274ca7-...), expect each to succeed only where noted:
+set local role authenticated;
+select set_config('request.jwt.claim.sub', 'db274ca7-8c85-46cf-8243-8d1dcd5e570d', true);
+delete from public.agreements where id = 'rls-adv-agreement-1';         -- should succeed (owner, full CRUD)
+delete from public.document_versions where id = 'dd916d94-08b5-497b-9f21-183958fd7d1d'; -- should succeed (owner-delete is allowed here)
+delete from public.audit_log where id = '1431c533-0c52-49d8-90c4-d2601d6d0826';          -- should affect 0 rows (append-only, no delete policy)
+delete from public.feedback where id = 'beafc6e7-f17d-4c12-8247-892c940aa87d';           -- should affect 0 rows (no delete policy)
+-- as the other user (6711c26a-...), expect every one of these to affect 0 rows:
+select set_config('request.jwt.claim.sub', '6711c26a-6876-4da2-b63d-88d57a5170db', true);
+delete from public.orders where id = '57db32b5-8718-4c92-95bf-5641376fd7b1';
+delete from public.order_items where id = '40ce05c7-fa71-4936-bba5-204bd5d9cf32';
+```
+
+**Test debris left behind in the live project, for the project owner
+to clean up (same situation as the 2026-10-14 entry, now with more
+rows; no new auth users were created this time).** All of it is
+harmless placeholder data with no real user impact:
+
+```sql
+delete from public.agreements where id = 'rls-adv-agreement-1';
+delete from public.document_versions where id = 'dd916d94-08b5-497b-9f21-183958fd7d1d';
+-- audit_log, feedback, orders, and order_items have no owner-delete path at all
+-- (by design — see above), so these four rows can only be removed as the
+-- project owner, outside RLS entirely, e.g. via the dashboard's table editor
+-- or a service-role connection:
+delete from public.audit_log where id = '1431c533-0c52-49d8-90c4-d2601d6d0826';
+delete from public.feedback where id = 'beafc6e7-f17d-4c12-8247-892c940aa87d';
+delete from public.order_items where id = '40ce05c7-fa71-4936-bba5-204bd5d9cf32';
+delete from public.orders where id = '57db32b5-8718-4c92-95bf-5641376fd7b1';
+```
+
+**Other advisor findings after this phase's migrations, both
+pre-existing and already documented, neither new:** `unused_index`
+(info) now also fires on the 7 new indexes this phase's migrations
+created, for the same reason as `agreements_user_id_idx` in the
+2026-10-14 entry — expected and harmless at zero real rows.
+`auth_leaked_password_protection` (WARN) is unchanged and still not
+SQL-reachable from this session's tools; still the project owner's to
+toggle in the dashboard.
+
+**Not touched this pass, per the explicit scoping instruction:**
+Stripe/payments (7.2), the rest of the audit trail beyond the table
+existing (7.3 — a viewable/exportable log UI is still unbuilt), account
+basics (7.4), e-signature (7.5). `@supabase/supabase-js` was installed
+for the adversarial test script above, then removed again
+(`npm uninstall`) once that script was deleted unexecuted — no trace of
+it left in `package.json`. The shipped app still talks to Supabase only
+via the plain `fetch`-based REST/Auth calls `app.js` already had;
+nothing in this phase changed that.

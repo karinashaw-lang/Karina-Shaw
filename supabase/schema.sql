@@ -11,6 +11,19 @@
 -- own and never will for this piece — Supabase's own auth and
 -- database are the entire backend, reached directly from the
 -- browser with the anon key.
+--
+-- Scope, decided in Phase 7.1 (see DECISIONS.md): this file documents
+-- only `agreements`, the one table set up by hand before this project
+-- had migration tooling. Every table added from Phase 7.1 onward
+-- (orders, order_items, audit_log, document_versions, feedback, ...)
+-- lives in `supabase/migrations/` instead and is applied with
+-- `mcp__Supabase__apply_migration`, not pasted here — the master
+-- plan's own 7.1 instruction is "using Supabase migrations (not
+-- manual SQL)", and folding new tables into this hand-run script
+-- would recreate the exact manual-SQL drift that instruction exists
+-- to get away from. `supabase/migrations/` is the source of truth for
+-- the live schema going forward; this file is not kept in sync with
+-- it and should not be treated as a full dump of the database.
 
 create table if not exists public.agreements (
   id text primary key,
