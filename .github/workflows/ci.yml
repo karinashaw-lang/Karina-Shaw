@@ -89,6 +89,8 @@ jobs:
           node-version: '20'
           cache: 'npm'
       - run: npm ci
+      - name: Run test_analytics_report.js
+        run: node tests/tools/test_analytics_report.js
       - run: npx playwright install --with-deps chromium
       - name: Start static server
         run: |

@@ -39,6 +39,7 @@ function initAccount() {
   );
 
   wrapLibraryFunctions();
+  wrapAnalyticsHooks();
 
   accountState.client.auth.getSession().then(({ data }) => {
     accountState.session = data.session;
@@ -56,6 +57,140 @@ function initAccount() {
 
 function updateAccountNav() {
   renderLibrarySyncStatus();
+}
+
+// ---------- analytics (Phase 8.1) ----------
+// "First-party, cookieless event tracking... opt-out honored, no IP
+// storage. Never record any field values or sensitive fields." Fires
+// regardless of sign-in state -- most usage of this app has no
+// account at all, and analytics_events carries no user_id (see its
+// migration) for exactly that reason. A no-op whenever cloud accounts
+// aren't configured (nowhere to send an event to) or the visitor has
+// opted out -- fails closed on a localStorage read error too, since
+// "can't tell if they opted out" should mean "don't track," not the
+// opposite.
+const ANALYTICS_OPT_OUT_KEY = 'groundtruth-analytics-opt-out';
+
+function analyticsOptedOut() {
+  try { return localStorage.getItem(ANALYTICS_OPT_OUT_KEY) === 'true'; } catch (e) { return true; }
+}
+
+function setAnalyticsOptOut(optOut) {
+  try {
+    if (optOut) localStorage.setItem(ANALYTICS_OPT_OUT_KEY, 'true');
+    else localStorage.removeItem(ANALYTICS_OPT_OUT_KEY);
+  } catch (e) { /* best-effort only */ }
+}
+
+// A random id scoped to sessionStorage, not localStorage -- gone the
+// moment the tab closes, generated fresh on the next visit, never sent
+// anywhere but this table. It groups one visit's own events together
+// (so "slowest screens"/abandonment can be computed from real step
+// sequences, not just aggregate counts) without identifying who made
+// the visit, which is the whole point of keeping it tab-scoped rather
+// than persistent.
+function clientSessionId() {
+  try {
+    let id = sessionStorage.getItem('groundtruth-analytics-session');
+    if (!id) {
+      id = crypto.randomUUID();
+      sessionStorage.setItem('groundtruth-analytics-session', id);
+    }
+    return id;
+  } catch (e) {
+    return null;
+  }
+}
+
+// Deliberately no .select() chained onto this insert: analytics_events
+// has no SELECT policy for anyone via the anon-key client (by design —
+// its migration's own comment explains why), and Postgres requires a
+// readable row for a RETURNING-equivalent request even when the
+// INSERT's own WITH CHECK passes. Confirmed directly against the live
+// project before writing this, not assumed — see DECISIONS.md.
+function trackEvent(eventType, fields) {
+  if (!accountState.configured || analyticsOptedOut()) return;
+  accountState.client.from('analytics_events').insert({ event_type: eventType, client_session_id: clientSessionId(), ...fields })
+    .then(({ error }) => { if (error) console.error('Groundtruth: analytics event failed', error); });
+}
+
+// Phase 8.1's funnel events, wrapped onto the exact app.js functions
+// that are each event's one real trigger point -- renderWizard() is
+// the single function every "open a document" path (picker card,
+// search result, related-document card) already calls; renderWizardStep()
+// is the single function every step transition (first step, Next,
+// Back) already calls; renderOutput() is what actually assembles a
+// finished document. The 4 export buttons have no named function to
+// wrap (each is an anonymous click listener in app.js) -- adding a
+// second listener to the same button is simpler and less invasive
+// than refactoring four export paths just to make them wrappable.
+function wrapAnalyticsHooks() {
+  const originalRenderWizard = renderWizard;
+  renderWizard = function (resumeStep) {
+    originalRenderWizard(resumeStep);
+    trackEvent('opened', { document_id: state.document.id });
+  };
+
+  const originalRenderWizardStep = renderWizardStep;
+  renderWizardStep = function () {
+    originalRenderWizardStep();
+    trackEvent('step_reached', {
+      document_id: state.document.id,
+      step_id: state.wizardReviewing ? 'review' : String(state.wizardStepIndex),
+    });
+  };
+
+  const originalRenderOutput = renderOutput;
+  renderOutput = function () {
+    originalRenderOutput();
+    trackEvent('completed', { document_id: state.document.id });
+  };
+
+  // search_query is the one exception to "never record field values" --
+  // it's what someone typed into the document search box, never a
+  // wizard field's answer, which is exactly the master plan's own
+  // "search query text with no field values" wording.
+  const originalSearchDocuments = searchDocuments;
+  searchDocuments = function (query) {
+    const results = originalSearchDocuments(query);
+    trackEvent('search', { search_query: query, search_result_count: results.length });
+    return results;
+  };
+
+  const EXPORT_FORMATS = { 'output-download': 'txt', 'output-download-pdf': 'pdf', 'output-download-docx': 'docx', 'output-export': 'json' };
+  Object.keys(EXPORT_FORMATS).forEach(id => {
+    const btn = document.getElementById(id);
+    if (btn) btn.addEventListener('click', () => trackEvent('exported', { document_id: state.document.id, export_format: EXPORT_FORMATS[id] }));
+  });
+}
+
+// Shown on the Account screen whenever cloud accounts are configured,
+// signed in or not -- analytics isn't tied to an account, so the
+// opt-out shouldn't be either.
+function renderAnalyticsOptOut(container) {
+  const section = document.createElement('div');
+  section.style.marginTop = '32px';
+
+  const heading = document.createElement('h2');
+  heading.textContent = 'Usage analytics';
+  heading.style.fontSize = '1.1rem';
+  section.appendChild(heading);
+
+  const desc = document.createElement('p');
+  desc.className = 'lede';
+  desc.textContent = 'This deployment records which documents and steps get used, so the project can see what’s confusing or missing — never your answers to any field. Opt out any time; it takes effect immediately, on this device.';
+  section.appendChild(desc);
+
+  const label = document.createElement('label');
+  const checkbox = document.createElement('input');
+  checkbox.type = 'checkbox';
+  checkbox.checked = analyticsOptedOut();
+  checkbox.addEventListener('change', () => setAnalyticsOptOut(checkbox.checked));
+  label.appendChild(checkbox);
+  label.appendChild(document.createTextNode(' Don’t record my usage'));
+  section.appendChild(label);
+
+  container.appendChild(section);
 }
 
 // A one-line status at the top of "My Documents" — the same three
@@ -744,6 +879,7 @@ function renderAccountScreen() {
     renderAuditLog(el);
     renderSharedDocuments(el);
     renderDataExport(el);
+    renderAnalyticsOptOut(el);
     renderAccountDeletion(el);
     return;
   }
@@ -803,6 +939,7 @@ function renderAccountScreen() {
   });
 
   el.appendChild(form);
+  renderAnalyticsOptOut(el);
 }
 
 document.getElementById('account-link').addEventListener('click', () => {

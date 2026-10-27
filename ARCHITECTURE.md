@@ -678,6 +678,42 @@ choice, no Stripe credentials exist).
 user's own choice; everything else — 7.1, 7.3, 7.4, 7.5 — built,
 RLS-verified at the SQL level, and documented). Continuing to Phase 8.
 
+## Privacy-friendly analytics (Phase 8.1)
+
+`analytics_events` has no `user_id` — most usage has no account, and
+the events exist to measure the app, not a person. Columns: `event_type`
+(`opened`/`step_reached`/`completed`/`exported`/`search`), `document_id`,
+`step_id`, `export_format`, `search_query`, `search_result_count`, and
+`client_session_id` — a random id in `sessionStorage` (gone when the
+tab closes) that groups one visit's own events so the dashboard script
+can compute real step-to-step timing, without identifying who made the
+visit. No IP column exists at all. RLS: INSERT allowed for any role
+(`anon` included — most visitors never sign in), no SELECT policy for
+anyone via the client; the project owner reads it only with the
+service role key, via `tools/analytics_report.js` (manual, same
+pattern as `tests/auth_roundtrip.js`).
+
+`account.js` wraps `renderWizard()` ("opened"), `renderWizardStep()`
+("step_reached"), `renderOutput()` ("completed"), and `searchDocuments()`
+("search" — query text and result count, the master plan's own named
+exception to never recording field values), and attaches a second
+click listener to each of the four export buttons ("exported"). A
+plain `localStorage` opt-out flag is checked before every event (fails
+closed on a storage error) and is toggleable from the Account screen
+regardless of sign-in state. `trackEvent()` deliberately never chains
+`.select()` onto its insert — see DECISIONS.md for the empirical
+reason: `RETURNING` on a table with no SELECT policy for the calling
+role raises the same RLS error a genuinely blocked insert would, even
+though the row is written either way.
+
+`tools/analytics_report.js` computes completion/abandonment per
+document and step, top no-result searches, and median time-to-next-step
+per `client_session_id` — its aggregation logic is unit-tested against
+synthetic events (`tests/tools/test_analytics_report.js`, in CI), since
+that's the part with real risk of being wrong; the live-data path
+(needs the service role key) is a manual, no-op-without-credentials
+script like `tests/auth_roundtrip.js`.
+
 ## Adversarial verifier (Phase 4.1)
 
 `verifier/` is the infrastructure for an independent, after-the-fact

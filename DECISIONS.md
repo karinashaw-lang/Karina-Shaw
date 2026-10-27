@@ -1654,3 +1654,98 @@ delete from public.document_shares where token in ('rls-adv-share-token');
 -- (every insert attempt into it was correctly rejected -- that was the
 -- point) -- nothing to clean up there.
 ```
+
+## Phase 8.1: privacy-friendly analytics
+
+**`analytics_events` has no `user_id` at all, by design, not as a
+privacy afterthought.** Most usage of this app has no account — tying
+analytics to one would make it analytics about the minority who sign
+in. The table carries only `event_type`, `document_id`, `step_id`,
+`export_format`, `search_query`, `search_result_count`, and a
+`client_session_id` (added below), nothing that identifies a person,
+and no IP column at all — the master plan's own "no IP storage" is
+true structurally, not just by convention, since there's no column to
+put one in even by accident.
+
+**Discovered, empirically, that `anon`-role INSERT needs the client to
+never request the row back.** The planned policy — permissive INSERT
+for everyone, no SELECT policy for anyone — looked right on paper but
+failed in testing: `insert ... returning id` as `anon` raised the
+*same* `42501 row-level security` error a genuinely blocked insert
+would, even though the row was never written (confirmed: a plain
+`insert` with no `returning` succeeded and left exactly one row;
+`count(*)` after the earlier `returning`-shaped attempts confirmed
+zero of those had landed). Postgres treats `RETURNING` as needing the
+inserted row to be independently readable, which a table with no
+SELECT policy for the inserting role can never satisfy — this is
+documented Postgres/PostgREST behavior, not a bug in this table's
+policy. Fixed in the one place it actually matters: `trackEvent()` in
+`account.js` calls plain `.insert(...)` with no `.select()` chained,
+which `supabase-js` sends as `Prefer: return=minimal` by default — no
+`RETURNING`-equivalent request, no conflict. Verified directly via
+`execute_sql` role impersonation before writing the client code, not
+discovered the hard way after shipping it.
+
+**Added `client_session_id` as a second migration, after noticing the
+table as first designed couldn't actually deliver "slowest screens."**
+The master plan's own 8.1 line asks for four things; a table with no
+correlation key between a visit's own events can report aggregate
+counts (completion rate, search misses) but not sequencing (how long
+someone spent before moving on, which needs *this* person's step 1
+timestamped after *their own* step 0, not just "some step 0 happened
+and some step 1 happened"). `client_session_id` is a random id
+generated into `sessionStorage` (not `localStorage` — gone when the
+tab closes, regenerated the next visit, never sent anywhere outside
+this one table) specifically to make that computation possible without
+identifying who made the visit; it groups one visit's events, nothing
+more. Caught before shipping, not after — checked what the dashboard
+script could actually compute from the originally-planned columns
+before writing it, rather than writing the script first and
+discovering the gap in its output.
+
+**Opt-out is a plain `localStorage` flag, checked in `trackEvent()`
+before anything is sent, and fails closed.** If reading the flag
+throws (storage blocked, private browsing, whatever), `trackEvent()`
+treats that as opted-out rather than opted-in — "can't tell" should
+default to not tracking, not the opposite. The toggle lives on the
+Account screen, shown whenever cloud accounts are configured,
+**signed in or not** — analytics isn't tied to an account, so gating
+its toggle behind having one would be backwards.
+
+**Instrumentation wraps the five real trigger points, not five new
+ones invented for this phase.** `renderWizard()` is the one function
+every "open a document" path (picker card, search result, intake
+result, related-document card) already calls — wrapped once there
+covers "document opened" everywhere it happens. `renderWizardStep()`
+is the one function every step transition (first step, Next, Back)
+already calls. `renderOutput()` is what actually assembles a finished
+document. The four export buttons have no named function to wrap —
+each is an anonymous click listener already in `app.js` — so `account.js`
+attaches a *second* listener to the same four buttons rather than
+refactoring four working export paths just to make them wrappable.
+`searchDocuments()` is wrapped to log the query text and result count
+— the master plan's own exception to "never record field values" is
+"search query text," since a document search isn't a wizard field.
+
+**Not tested by the browser gate suite, for the same reason the rest
+of `account.js`'s Supabase-touching code isn't** (egress block, no
+`config.js` in CI). `tools/analytics_report.js`'s actual aggregation
+logic — the part with real risk of being wrong — is tested directly
+with synthetic events
+(`tests/tools/test_analytics_report.js`, 8 checks, wired into CI): a
+known completion rate, a known step drop-off, `"review"` ordered last
+rather than sorted as a string before numeric steps, case-folded
+no-result search counting, and a verified median computed from two
+same-session step pairs while a cross-document jump and a
+session-less event are correctly excluded rather than guessed at.
+
+**Test debris left behind in the live project this pass:** one
+`analytics_events` row (`document_id = 'nda_test4'`, from confirming
+the RETURNING/RLS interaction above) and one more
+(`document_id = 'nda_test'`, confirming `client_session_id` inserts
+cleanly). Harmless by construction — this table was designed to carry
+nothing identifying in the first place.
+
+```sql
+delete from public.analytics_events where document_id in ('nda_test', 'nda_test4');
+```
