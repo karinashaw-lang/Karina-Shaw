@@ -251,6 +251,39 @@ async function main() {
   const bReadsFeedbackA = await restFetch(`/rest/v1/feedback?id=eq.${feedbackId}&select=id`, { token: userB.accessToken });
   check(Array.isArray(bReadsFeedbackA.json) && bReadsFeedbackA.json.length === 0, "user B's read of A's feedback row returns zero rows");
 
+  // Phase 8.2: anonymous feedback (no session at all) and the
+  // clause-id-required-for-wrong_or_outdated constraint.
+  const anonFeedback = await restFetch('/rest/v1/feedback', {
+    method: 'POST',
+    body: { category: 'confusing_question', message: 'anon feedback round trip', document_id: 'nda' },
+    extraHeaders: { Prefer: 'return=representation' },
+  });
+  check(anonFeedback.status >= 200 && anonFeedback.status < 300, `anonymous (no session) feedback insert succeeds (status ${anonFeedback.status})`);
+  const anonFeedbackId = anonFeedback.json && anonFeedback.json[0] && anonFeedback.json[0].id;
+
+  const missingClauseId = await restFetch('/rest/v1/feedback', {
+    method: 'POST',
+    body: { category: 'wrong_or_outdated', message: 'should fail, no clause id', document_id: 'nda' },
+  });
+  check(missingClauseId.status >= 400 && missingClauseId.status < 500, `wrong_or_outdated with no clause_id is rejected by the check constraint (status ${missingClauseId.status})`);
+
+  const withClauseId = await restFetch('/rest/v1/feedback', {
+    method: 'POST',
+    body: { category: 'wrong_or_outdated', message: 'has a clause id', document_id: 'nda', clause_id: 'some_clause_id' },
+    extraHeaders: { Prefer: 'return=representation' },
+  });
+  check(withClauseId.status >= 200 && withClauseId.status < 300, `wrong_or_outdated with a clause_id succeeds (status ${withClauseId.status})`);
+  const withClauseIdFeedbackId = withClauseId.json && withClauseId.json[0] && withClauseId.json[0].id;
+
+  // Phase 8.1: anonymous analytics insert, the same no-.select() shape
+  // account.js's trackEvent() uses (see DECISIONS.md for why RETURNING
+  // and a no-SELECT-policy table don't mix).
+  const anonAnalytics = await restFetch('/rest/v1/analytics_events', {
+    method: 'POST',
+    body: { event_type: 'opened', document_id: 'nda', client_session_id: '00000000-0000-0000-0000-000000000000' },
+  });
+  check(anonAnalytics.status >= 200 && anonAnalytics.status < 300, `anonymous analytics event insert succeeds (status ${anonAnalytics.status})`);
+
   const dvInsert = await restFetch('/rest/v1/document_versions', {
     token: userA.accessToken, method: 'POST',
     body: { user_id: userA.userId, agreement_id: rowId, schema_version: 1, clause_snapshots: [], generated_at: new Date().toISOString() },
@@ -323,7 +356,12 @@ async function main() {
   // (and everything it owned) is already gone via delete-account above;
   // only user B is left to remove here.
   await restFetch(`/auth/v1/admin/users/${userB.userId}`, { token: SERVICE_KEY, method: 'DELETE', extraHeaders: { apikey: SERVICE_KEY } });
-  console.log("\nCleaned up: user A's account self-deleted via delete-account; user B removed directly.");
+  // Anonymous feedback/analytics rows have no owner to cascade through,
+  // so they need their own explicit cleanup here.
+  if (anonFeedbackId) await restFetch(`/rest/v1/feedback?id=eq.${anonFeedbackId}`, { token: SERVICE_KEY, method: 'DELETE', extraHeaders: { apikey: SERVICE_KEY } });
+  if (withClauseIdFeedbackId) await restFetch(`/rest/v1/feedback?id=eq.${withClauseIdFeedbackId}`, { token: SERVICE_KEY, method: 'DELETE', extraHeaders: { apikey: SERVICE_KEY } });
+  await restFetch(`/rest/v1/analytics_events?document_id=eq.nda&client_session_id=eq.00000000-0000-0000-0000-000000000000`, { token: SERVICE_KEY, method: 'DELETE', extraHeaders: { apikey: SERVICE_KEY } });
+  console.log("\nCleaned up: user A's account self-deleted via delete-account; user B removed directly; anonymous feedback/analytics rows removed explicitly.");
 
   finish();
 }

@@ -1749,3 +1749,87 @@ nothing identifying in the first place.
 ```sql
 delete from public.analytics_events where document_id in ('nda_test', 'nda_test4');
 ```
+
+## Phase 8.2: in-app feedback, routed into the verifier findings queue
+
+**Widened the Phase 7.1 `feedback` table rather than building a second
+one.** `user_id` is now nullable (same reasoning as `analytics_events`
+— most usage has no account, and "on every output screen" means every
+visitor, not just signed-in ones), with a second permissive INSERT
+policy (`with check (user_id is null)`) added alongside the existing
+owner-scoped one — adding, not replacing, since replacing would mean a
+`DROP POLICY` and this project doesn't route around that gate (see the
+first DECISIONS.md entry). Added `document_id`, `clause_id`, and
+`routed_at` columns, since the original table had nowhere to record
+which document/clause feedback was *about* at all.
+
+**The clause-id requirement for "wrong or outdated information" is a
+database constraint, not just a UI rule.** `feedback_clause_id_required_for_wrong_or_outdated`
+(`check (category <> 'wrong_or_outdated' or clause_id is not null)`)
+means a malformed or buggy client can't submit that category without
+a clause id even if the UI's own validation is bypassed or has a bug
+— confirmed directly: an anon insert of `wrong_or_outdated` with no
+`clause_id` is rejected (`23514`), the same category with a real
+`clause_id` succeeds, and `confusing_question`/`missing_document`
+(which don't need one) succeed with none.
+
+**"Route ... directly into the verifier findings queue" can't mean a
+literal live write from a visitor's browser — there is no server of
+this app's own that could do that, and `verifier/findings.jsonl` is a
+git-tracked file, not a database row.** The real pipeline, built to
+match that constraint rather than pretend around it: feedback lands in
+Supabase (written by anyone, read only with the service role key, same
+as `analytics_events`); `tools/ingest_feedback_findings.js` (manual,
+run by the project owner, same no-op-without-credentials shape as
+every other Supabase-reading tool in this project) pulls unrouted
+`wrong_or_outdated` rows, appends each to `findings.jsonl`, and marks
+the row routed so a re-run doesn't duplicate it.
+
+**Deliberately does not call `verifier/record_result.py`.** That
+script enforces "never re-record an already-checked clause id" — a
+rule written for the *sampling* pipeline, to stop it double-processing
+a clause, which has nothing to do with whether a user can report an
+issue on a clause the adversarial verifier has (or hasn't) already
+sampled. Writes directly to `findings.jsonl` instead, in the exact key
+shape `record_result.py` itself writes (`clauseId`, `foundAt`,
+`severity`, `category`, `summary`, `evidence`, `sourceChecked`,
+`suggestedFix`) so `triage.py`/`report.py` — both fully generic over
+`category`, confirmed by reading them rather than assumed — keep
+working on it unchanged. `category: 'user_reported'` is a new value,
+not one of the verifier's own research categories (`citation_mismatch`,
+`overclaiming`, etc.) — it's a different kind of entry and says so.
+
+**Never fabricates verification work that wasn't done.** A user's
+report is not independently checked against any source — `evidence`
+says plainly "not independently verified," `sourceChecked` says "n/a
+— not yet researched," `suggestedFix` says a human/verifier still
+needs to look at it. Writing a finding that read like genuine research
+when none happened would be exactly the kind of fabrication this
+project's one load-bearing rule exists to prevent, regardless of how
+literally the master plan's "route into the findings queue" phrasing
+could otherwise be read.
+
+**A clause id that no longer exists in `data/clauses.json` (the corpus
+changed since the report was filed) is skipped, not written as a
+finding, but still marked routed** — so it's not silently lost from
+the record (the ingestion script prints which rows it skipped and
+why) but also doesn't get retried forever or produce a finding against
+something that isn't there to fix.
+
+**Tested the same way as Phase 8.1's dashboard script**: the real
+decision logic (`buildFindingLines()`) against synthetic feedback rows
+— a valid report, a missing-message report, an unknown-clause-id
+report, and a mixed batch — not just that the script runs
+(`tests/tools/test_ingest_feedback_findings.js`, 15 checks, in CI).
+The live-credentials path is the same manual, no-op-without-them shape
+as `tools/analytics_report.js`.
+
+**Test debris left behind in the live project this pass:** three
+`feedback` rows from confirming the new constraint/policy behavior
+directly (`'test anon feedback'`, `'test confusing'`, both anonymous;
+`beafc6e7-f17d-4c12-8247-892c940aa87d` from Phase 7.1, already noted
+there). All harmless, none tied to a real person.
+
+```sql
+delete from public.feedback where message in ('test anon feedback', 'test confusing');
+```

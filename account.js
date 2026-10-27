@@ -40,6 +40,7 @@ function initAccount() {
 
   wrapLibraryFunctions();
   wrapAnalyticsHooks();
+  wrapFeedbackHooks();
 
   accountState.client.auth.getSession().then(({ data }) => {
     accountState.session = data.session;
@@ -336,6 +337,118 @@ function wrapLibraryFunctions() {
     originalRenderSignatureSection();
     renderShareSection();
   };
+}
+
+// ---------- feedback (Phase 8.2) ----------
+// "A feedback control on every output screen" means every visitor,
+// signed in or not — feedback.user_id is nullable for exactly this
+// reason (see its migration). Wrapped onto renderOutput() the same
+// way Phase 8.1's "completed" event is, in its own function so the
+// two phases' hooks stay easy to tell apart in the diff/history even
+// though both end up chained onto the same call.
+function wrapFeedbackHooks() {
+  const originalRenderOutput = renderOutput;
+  renderOutput = function () {
+    originalRenderOutput();
+    const container = document.getElementById('feedback-section');
+    if (container) renderFeedbackSection(container);
+  };
+}
+
+const FEEDBACK_CATEGORIES = [
+  ['confusing_question', 'A question was confusing'],
+  ['wrong_or_outdated', 'Something looks wrong or outdated'],
+  ['missing_document', 'I was looking for a different document'],
+];
+
+function renderFeedbackSection(container) {
+  container.innerHTML = '';
+  if (!accountState.configured) return;
+
+  const section = document.createElement('div');
+  section.className = 'signature-section';
+
+  const heading = document.createElement('h3');
+  heading.textContent = 'Was anything unclear?';
+  section.appendChild(heading);
+
+  const categorySelect = document.createElement('select');
+  FEEDBACK_CATEGORIES.forEach(([value, label]) => {
+    const opt = document.createElement('option');
+    opt.value = value;
+    opt.textContent = label;
+    categorySelect.appendChild(opt);
+  });
+  section.appendChild(categorySelect);
+
+  // Only shown for "wrong or outdated" — the master plan's own "route
+  // ... as a minor finding with the clause id" needs a real clause id
+  // to route to, which the database itself now enforces (see the
+  // migration's feedback_clause_id_required_for_wrong_or_outdated
+  // check) rather than trusting this UI alone to get it right.
+  const clauseSelect = document.createElement('select');
+  const placeholderOpt = document.createElement('option');
+  placeholderOpt.value = '';
+  placeholderOpt.textContent = 'Which clause?';
+  clauseSelect.appendChild(placeholderOpt);
+  (state.document.clauseOrder || []).forEach(entry => {
+    const id = clauseEntryId(entry);
+    const clause = state.clauses.find(c => c.id === id);
+    if (!clause) return;
+    const opt = document.createElement('option');
+    opt.value = id;
+    opt.textContent = clause.title;
+    clauseSelect.appendChild(opt);
+  });
+  clauseSelect.hidden = categorySelect.value !== 'wrong_or_outdated';
+  section.appendChild(clauseSelect);
+
+  categorySelect.addEventListener('change', () => {
+    clauseSelect.hidden = categorySelect.value !== 'wrong_or_outdated';
+  });
+
+  const textarea = document.createElement('textarea');
+  textarea.placeholder = 'Say more (optional)';
+  textarea.rows = 3;
+  textarea.style.display = 'block';
+  textarea.style.width = '100%';
+  textarea.style.margin = '10px 0';
+  section.appendChild(textarea);
+
+  const submitBtn = document.createElement('button');
+  submitBtn.type = 'button';
+  submitBtn.className = 'secondary';
+  submitBtn.textContent = 'Send feedback';
+  section.appendChild(submitBtn);
+
+  const statusEl = document.createElement('p');
+  statusEl.className = 'library-row-date';
+  section.appendChild(statusEl);
+
+  submitBtn.addEventListener('click', async () => {
+    if (categorySelect.value === 'wrong_or_outdated' && !clauseSelect.value) {
+      statusEl.textContent = 'Pick which clause first.';
+      return;
+    }
+    submitBtn.disabled = true;
+    statusEl.textContent = 'Sending…';
+    const { error } = await accountState.client.from('feedback').insert({
+      user_id: accountState.session ? accountState.session.user.id : null,
+      category: categorySelect.value,
+      message: textarea.value.trim() || null,
+      document_id: state.document.id,
+      clause_id: categorySelect.value === 'wrong_or_outdated' ? clauseSelect.value : null,
+    });
+    submitBtn.disabled = false;
+    if (error) {
+      statusEl.textContent = `Couldn’t send that: ${error.message}`;
+      return;
+    }
+    statusEl.textContent = 'Thanks — sent.';
+    textarea.value = '';
+  });
+
+  container.appendChild(section);
 }
 
 function generateShareToken() {

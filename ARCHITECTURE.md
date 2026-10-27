@@ -714,6 +714,36 @@ that's the part with real risk of being wrong; the live-data path
 (needs the service role key) is a manual, no-op-without-credentials
 script like `tests/auth_roundtrip.js`.
 
+## In-app feedback (Phase 8.2)
+
+The Phase 7.1 `feedback` table is widened, not replaced: `user_id` is
+now nullable (every output screen needs this, signed in or not),
+`document_id`/`clause_id`/`routed_at` are new columns, and a second
+INSERT policy permits `user_id is null` alongside the existing
+owner-scoped one. A `check` constraint
+(`feedback_clause_id_required_for_wrong_or_outdated`) enforces that
+the `wrong_or_outdated` category always carries a `clause_id`, in the
+database, not only in the UI.
+
+`account.js`'s `renderFeedbackSection()` (wrapped onto `renderOutput()`,
+same pattern as the Phase 8.1 analytics hook) renders a category
+select, a clause picker shown only for "wrong or outdated," and a
+message field.
+
+Routing a `wrong_or_outdated` report into `verifier/findings.jsonl` is
+a manual pipeline, not a live write — this app has no server that
+could write to a git-tracked file on a client's request.
+`tools/ingest_feedback_findings.js` (run by the project owner,
+no-op without the service role key) pulls unrouted reports, appends
+each as a `category: 'user_reported'` finding in the exact shape
+`verifier/record_result.py` itself writes (so `triage.py`/`report.py`
+read it unchanged), explicitly marked as an unverified report rather
+than researched findings — and marks the row routed. Its real decision
+logic (which rows become findings, which are skipped for referencing a
+clause id that no longer exists, which get marked routed either way)
+is unit-tested against synthetic rows
+(`tests/tools/test_ingest_feedback_findings.js`, in CI).
+
 ## Adversarial verifier (Phase 4.1)
 
 `verifier/` is the infrastructure for an independent, after-the-fact

@@ -91,6 +91,8 @@ jobs:
       - run: npm ci
       - name: Run test_analytics_report.js
         run: node tests/tools/test_analytics_report.js
+      - name: Run test_ingest_feedback_findings.js
+        run: node tests/tools/test_ingest_feedback_findings.js
       - run: npx playwright install --with-deps chromium
       - name: Start static server
         run: |
