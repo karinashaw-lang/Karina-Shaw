@@ -3,6 +3,7 @@
   "private": true,
   "description": "No build step for the app itself — this exists only to pin the Playwright version the browser tests need (so CI installs the same version a local run would) and the Node-side packages the golden tests use to extract real content back out of generated files: pdf-parse for tests/pdf/pdf_golden.js, and mammoth + jszip (body text and header/footer XML, respectively) for tests/docx/docx_golden.js.",
   "devDependencies": {
+    "axe-core": "^4.14.0",
     "jszip": "^3.10.2",
     "mammoth": "^1.13.0",
     "pdf-parse": "^2.4.5",

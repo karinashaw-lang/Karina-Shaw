@@ -744,6 +744,21 @@ clause id that no longer exists, which get marked routed either way)
 is unit-tested against synthetic rows
 (`tests/tools/test_ingest_feedback_findings.js`, in CI).
 
+## Accessibility in CI (Phase 9.1)
+
+`tests/accessibility/axe_check.js` (in CI) injects real `axe-core`
+into the real app and scans all 9 screens plus 50 sampled documents'
+output screens, under both the light and dark theme (`styles.css`'s
+real `prefers-color-scheme` support). Fails only on serious/critical
+violations; lower-impact findings are logged but don't fail the
+build — covered instead by `A11Y_CHECKLIST.md`'s manual keyboard-only
+and screen-reader pass, which this automated check structurally can't
+perform. A first run's 3 moderate landmark findings were fixed
+directly (`<header>`/`<nav>`/`<main>`, pure semantic tag swaps against
+class-only CSS); a heading-order finding was left for a deliberate
+later fix since correcting it touches tag-selector CSS with real
+visual-regression risk — see DECISIONS.md.
+
 ## Programmatic SEO pages (Phase 8.3)
 
 `tools/generate_seo_pages.py` builds one page per document (what it

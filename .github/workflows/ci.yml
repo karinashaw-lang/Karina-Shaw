@@ -137,6 +137,8 @@ jobs:
         run: set -o pipefail; node tests/filing/next_steps.js | tee filing-next-steps.log
       - name: Run sign_page.js
         run: set -o pipefail; node tests/share/sign_page.js | tee sign-page.log
+      - name: Run axe_check.js
+        run: set -o pipefail; node tests/accessibility/axe_check.js | tee axe-check.log
       - name: Upload logs on failure
         if: failure()
         uses: actions/upload-artifact@v4
@@ -151,6 +153,7 @@ jobs:
             intake-coverage.log
             performance-budget.log
             related-coverage.log
+            axe-check.log
             pdf-golden.log
             docx-golden.log
             sign-page.log

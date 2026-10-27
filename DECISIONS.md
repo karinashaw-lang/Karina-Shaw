@@ -1895,3 +1895,62 @@ while making the check cheap enough to run on every push.
 all** — this phase is pure static-site generation from data already
 in the repo, the first Phase 8.x item with no live-credentials gap to
 document.
+
+## Phase 9.1: accessibility in CI
+
+**A real `axe-core` run, not a hand-rolled approximation of one.**
+`tests/accessibility/axe_check.js` injects the real `axe-core` library
+into the real, live page (same "drive the real app" discipline every
+other browser test in this project already follows) and scans every
+one of the app's 9 screens plus 50 sampled documents' output screens
+(every ~15th document id, for an even spread, the same sampling shape
+`tools/wizard_regression.js`'s full 740-document walk already proved
+safe to reuse), each under both the light and dark theme — this app
+has a real `prefers-color-scheme` dark mode (`styles.css`), so "across
+both themes" names something concrete rather than a hypothetical.
+
+**Fails only on serious/critical, by the master plan's own wording —
+not zero-tolerance on every axe rule.** A first real run found 3
+moderate violations (a missing `<main>` landmark, a heading-level skip,
+page content not contained by a landmark) and 0 serious/critical ones.
+Printed, not hidden: every scan logs its lower-impact count even when
+it passes, so a moderate finding is visible in CI output without
+failing the build over it — that gap between "automated catches" and
+"everything a screen reader or keyboard-only user would notice" is
+exactly what `A11Y_CHECKLIST.md`'s manual pass exists to cover, per the
+master plan's own two-part instruction.
+
+**Fixed the landmark issues directly — safe, structural, zero visual
+risk; left the heading-order issue for later, on purpose.** Wrapping
+the topbar in `<header>` and `<nav aria-label="Main">`, and the screen
+sections in `<main>`, are pure semantic tag swaps against
+class-only CSS selectors (checked `styles.css` directly: nothing
+selects `div.topbar` or similar by tag) — re-ran `tools/regression.js`/
+`wizard_regression.js`/`golden.js` after to confirm nothing rendering-
+or logic-visible changed, and re-ran `axe_check.js` to confirm the
+count dropped from 3 moderate findings to 1. The remaining one
+(`<h3>` directly under `<h1>` on the output screen, skipping `<h2>`)
+needs touching tag-selector CSS (`.signature-section h3`,
+`.next-steps-section h3`, `.related-section h3`) across several
+sections — real visual-regression risk this pass has no way to verify
+by screenshot, so it's recorded in `A11Y_CHECKLIST.md` as a known,
+deliberate deferral rather than fixed as a drive-by HTML change.
+
+**A separate file, not folded into `tools/regression.js` itself**,
+despite the master plan's literal "add axe-core checks to
+regression.js" — each scan is a real DOM/AX-tree walk, and running
+~20 of them (9 screens × 2 themes + 50 documents) is slow enough to
+want its own CI step and its own log on failure, the same reasoning
+`tests/pdf/pdf_golden.js`/`tests/docx/docx_golden.js` already got
+their own files instead of being folded into `golden.js`.
+
+**`A11Y_CHECKLIST.md` is honest that no real pass has happened yet.**
+A keyboard-only or screen-reader pass needs a person's actual hands on
+an actual keyboard or actual screen reader — this session has neither,
+so the checklist's own "Pass log" says so plainly rather than
+fabricating a pass that didn't happen. Written specifically for this
+app's own real screens and real behaviors (e.g. "confirm the draft-
+resume banner's `aria-live="polite"` is actually announced,"
+"confirm the signature pad's typed-name alternative is clearly
+presented, not silently skipped"), not a generic accessibility
+checklist copied in from elsewhere.

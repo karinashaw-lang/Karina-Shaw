@@ -8,9 +8,9 @@
 </head>
 <body>
   <div class="app">
-    <div class="topbar">
+    <header class="topbar">
       <div class="wordmark">Ground<span>truth</span></div>
-      <div class="topbar-right">
+      <nav class="topbar-right" aria-label="Main">
         <button type="button" class="topbar-link-btn" id="inbox-link">Inbox</button>
         <button type="button" class="topbar-link-btn" id="relationships-link">Relationships</button>
         <button type="button" class="topbar-link-btn" id="library-link">My Documents<span id="library-count"></span></button>
@@ -20,9 +20,10 @@
         <a href="methodology.html" class="topbar-link">Methodology</a>
         <a href="changelog.html" class="topbar-link">Changelog</a>
         <div class="tagline">Sourced, not asserted</div>
-      </div>
-    </div>
+      </nav>
+    </header>
 
+    <main>
     <section id="screen-picker" class="screen active">
       <h1 tabindex="-1">Choose a document</h1>
       <p class="lede">Every clause below either links to a real source, or says plainly that it hasn't been checked yet.</p>
@@ -201,6 +202,7 @@
         <button type="button" class="secondary" id="library-clear">Clear all</button>
       </div>
     </section>
+    </main>
   </div>
   <!-- Vendored, not CDN-loaded: PDF/Word export are core output paths,
        and zero-config must keep working offline, not just when a CDN
