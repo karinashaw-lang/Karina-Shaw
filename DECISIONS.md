@@ -1954,3 +1954,76 @@ resume banner's `aria-live="polite"` is actually announced,"
 "confirm the signature pad's typed-name alternative is clearly
 presented, not silently skipped"), not a generic accessibility
 checklist copied in from elsewhere.
+
+## Phase 9.2: performance budgets, and a real web-worker fix the
+## profiling itself called for
+
+**Extended `tests/performance/performance_budget.js` rather than
+starting a second budget file** — same file, same conventions
+(measured-numbers-with-headroom, not aspirational targets), three new
+budgets: initial load size (~5.6MB measured on this sandbox's
+uncompressed, uncached static server — mostly real sourced clause
+text in `data/clauses.json`, not something a "slim the bundle" pass
+should or could shrink), time to interactive (from navigation start to
+`state.documents`/`clauses`/`sharedFields` all ready — the actual
+moment this app becomes usable, not a generic browser metric), and
+contract-reader timing on a realistic ~20-page synthetic paste (60
+paragraphs, ~165 words each, separated by blank lines the way a real
+contract's sections actually are — not 20 pages of random characters,
+since `splitPassages()`'s paragraph-boundary logic behaves differently
+on each).
+
+**Profiling the contract-reader budget found a real ~1.9-2.1s
+synchronous main-thread block — exactly the scenario the master plan
+named by name ("move heavy work (TF-IDF indexing...) off the main
+thread with web workers if profiling shows jank").** Not hypothetical:
+measured directly, on the real `matchPassage()` TF-IDF scoring a
+realistic paste's 60 passages against the full clause corpus with no
+cross-passage caching. Given explicit instruction plus concrete
+evidence, fixed it rather than only budgeting around the slowness —
+unlike the heading-order finding in 9.1 (a side discovery, not
+explicitly named, with real fix-side risk this pass couldn't verify),
+this was named outright and the profiling data to act on it was
+already in hand.
+
+**`contract_worker.js` duplicates `tokenize()`/`buildClauseIndex()`/
+`matchPassage()` rather than sharing code with `app.js`.** Same
+tradeoff `sign.js` already made for `substitute()`: `app.js`'s top
+level runs `document.getElementById(...)` calls immediately on load,
+which throw in a Worker's global scope (no `document` there), so
+`importScripts('app.js')` was never viable — a small, pure, easy-to-
+keep-in-sync duplication (STOPWORDS, `tokenize`, the index-build, and
+the scoring function, ~115 lines) was the actual tradeoff, not a
+restructuring of `app.js` around a Worker's constraints just to avoid
+it.
+
+**The main thread hands the worker plain data (`state.clauses`) and
+gets back plain data (`{clauseIndex, confidence}`), never clause
+objects.** The worker only ever sees a scoring-sized copy of the
+corpus; resolving `clauseIndex` back to the real `state.clauses[idx]`
+object happens on the main thread, in `matchPassages()` — keeping the
+worker's own responsibility to exactly "score passages against an
+index," nothing about rendering or the app's broader state.
+
+**Verified correctness, not just "doesn't crash."** Ran the real
+worker against a passage taken verbatim from the `at_will` clause's
+own body and confirmed it resolves to "At-Will Employment" at
+`strong` confidence; ran a full real form submission (typed into
+`#incoming-text`, the real submit button, the real DOM) end to end and
+confirmed the rendered result includes the real citation badge. The
+full gate suite (`tools/regression.js`, `wizard_regression.js`,
+`golden.js`, every search/performance/export/signing test) was re-run
+after removing `buildClauseIndex()`/`matchPassage()` from `app.js`
+entirely — nothing else in the codebase called either function
+outside `tools/regression.js`'s own contract-reader smoke check,
+confirmed by grepping for every reference before deleting them, and
+that one call site was updated to the new async
+`matchPassages()` + `await` shape rather than left calling a function
+that no longer exists.
+
+**Added a visible "Reading…" state while the worker runs** — now that
+the main thread genuinely isn't blocked, the screen would otherwise
+show nothing changing for up to ~2 seconds on a long paste, which
+reads as broken even though it isn't. A plain text swap in
+`#incoming-results`, replaced once the real results arrive; no new
+CSS, no spinner.

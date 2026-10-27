@@ -1057,7 +1057,7 @@ async function init() {
   renderDocSearch();
   checkForDraft();
   updateLibraryCount();
-  buildClauseIndex();
+  initContractWorker();
   buildDocumentIndex();
   buildRelatedDocsIndex();
 }
@@ -1103,79 +1103,44 @@ function tokenize(text) {
     .filter(w => !STOPWORDS.has(w));
 }
 
-// Builds an idf-weighted inverted index over every clause's title+body
-// once, at load time, so matching a pasted passage against 4,800+
-// clauses is a lookup over shared words rather than a full scan.
-// Common words (shared by hundreds of clauses, e.g. "employee",
-// "employer") get a low weight; distinctive words (shared by only a
-// handful of clauses) get a high weight — the same idea as search
-// engine relevance scoring, applied to a small, fixed corpus instead
-// of the web.
-function buildClauseIndex() {
-  const df = new Map();
-  const clauseTokenSets = state.clauses.map(c => {
-    const set = new Set(tokenize(`${c.title} ${c.body}`));
-    set.forEach(t => df.set(t, (df.get(t) || 0) + 1));
-    return set;
+// Phase 9.2: the actual TF-IDF indexing and per-passage scoring moved
+// to contract_worker.js (a real, measured ~1.9s of synchronous
+// main-thread work for a realistic 20-page paste, profiled in
+// tests/performance/performance_budget.js, not assumed) — this is now
+// just the main thread's side of that handoff: start the worker once
+// at load time, hand it the clause data, and keep a ready-promise so
+// a passage match request issued before the worker finishes indexing
+// waits for it instead of racing it.
+let contractWorker = null;
+let contractWorkerReady = null;
+let contractWorkerRequestId = 0;
+const contractWorkerPending = new Map();
+
+function initContractWorker() {
+  contractWorker = new Worker('contract_worker.js');
+  contractWorkerReady = new Promise(resolve => {
+    contractWorker.onmessage = e => {
+      if (e.data.type === 'ready') { resolve(); return; }
+      if (e.data.type === 'matches') {
+        const pending = contractWorkerPending.get(e.data.id);
+        if (pending) { contractWorkerPending.delete(e.data.id); pending(e.data.results); }
+      }
+    };
+    contractWorker.postMessage({ type: 'init', clauses: state.clauses });
   });
-
-  const N = state.clauses.length;
-  const idf = new Map();
-  df.forEach((count, token) => idf.set(token, Math.log(1 + N / count)));
-
-  const invertedIndex = new Map();
-  clauseTokenSets.forEach((set, idx) => {
-    set.forEach(t => {
-      if (!invertedIndex.has(t)) invertedIndex.set(t, []);
-      invertedIndex.get(t).push(idx);
-    });
-  });
-
-  state.clauseTokenSets = clauseTokenSets;
-  state.clauseIdf = idf;
-  state.clauseInvertedIndex = invertedIndex;
 }
 
-const MATCH_THRESHOLD = 0.22;
-const STRONG_MATCH_THRESHOLD = 0.4;
-
-// Scores one pasted passage against every clause that shares at least
-// one distinctive word with it, and returns the best match if it
-// clears a minimum confidence bar — otherwise null, which the caller
-// renders as "not recognized" rather than guessing.
-function matchPassage(passage) {
-  const tokens = tokenize(passage);
-  const tokenSet = new Set(tokens);
-  if (tokenSet.size < 5) return null;
-
-  let selfWeight = 0;
-  tokenSet.forEach(t => { selfWeight += (state.clauseIdf.get(t) || 0) ** 2; });
-  if (selfWeight === 0) return null;
-
-  const candidateScores = new Map();
-  tokenSet.forEach(t => {
-    const idf = state.clauseIdf.get(t);
-    if (!idf) return;
-    const clauseList = state.clauseInvertedIndex.get(t) || [];
-    clauseList.forEach(idx => {
-      candidateScores.set(idx, (candidateScores.get(idx) || 0) + idf * idf);
-    });
-  });
-
-  let best = null;
-  candidateScores.forEach((rawScore, idx) => {
-    let clauseWeight = 0;
-    state.clauseTokenSets[idx].forEach(t => { clauseWeight += (state.clauseIdf.get(t) || 0) ** 2; });
-    if (clauseWeight === 0) return;
-    const cosine = rawScore / (Math.sqrt(selfWeight) * Math.sqrt(clauseWeight));
-    if (!best || cosine > best.cosine) best = { idx, cosine };
-  });
-
-  if (!best || best.cosine < MATCH_THRESHOLD) return null;
-  return {
-    clause: state.clauses[best.idx],
-    confidence: best.cosine >= STRONG_MATCH_THRESHOLD ? 'strong' : 'weak',
-  };
+// Scores every passage against the clause corpus off the main thread
+// and resolves clauseIndex back to the real clause object — the one
+// thing the worker can't do itself, since it only has a scoring-sized
+// copy of the clause data, not app.js's own state.
+async function matchPassages(passages) {
+  await contractWorkerReady;
+  const id = ++contractWorkerRequestId;
+  const resultsPromise = new Promise(resolve => contractWorkerPending.set(id, resolve));
+  contractWorker.postMessage({ type: 'match', id, passages });
+  const results = await resultsPromise;
+  return results.map(r => r && { clause: state.clauses[r.clauseIndex], confidence: r.confidence });
 }
 
 // Splits pasted contract text into passages to match one at a time.
@@ -1211,7 +1176,7 @@ function splitPassages(text) {
   return chunks.filter(c => c.length >= 20);
 }
 
-function renderIncomingResults(passages) {
+async function renderIncomingResults(passages) {
   const results = document.getElementById('incoming-results');
   results.innerHTML = '';
 
@@ -1220,7 +1185,14 @@ function renderIncomingResults(passages) {
     return;
   }
 
-  const matches = passages.map(p => ({ passage: p, match: matchPassage(p) }));
+  // The actual scoring now happens off the main thread (Phase 9.2) —
+  // this message round trip is the one part of reading a long paste
+  // that still takes real wall-clock time, so it gets a visible state
+  // instead of the screen looking frozen while nothing changes.
+  results.innerHTML = '<p class="library-empty">Reading…</p>';
+  const matchResults = await matchPassages(passages);
+  const matches = passages.map((p, i) => ({ passage: p, match: matchResults[i] }));
+  results.innerHTML = '';
   const matchedCount = matches.filter(m => m.match).length;
 
   const summary = document.createElement('p');
@@ -1424,8 +1396,10 @@ function renderTierFilter() {
 }
 
 // ---------- document search (Phase 5.1) ----------
-// A second idf-weighted inverted index, parallel to buildClauseIndex()
-// above but over DOCUMENTS instead of clauses: each document's title +
+// A second idf-weighted inverted index, the same technique
+// contract_worker.js now uses over clauses (Phase 9.2 moved that one
+// off the main thread) but over DOCUMENTS instead: each document's
+// title +
 // description + category names + its lay-term phrasings
 // (search/lay_terms.json, loaded at init) are tokenized and indexed the
 // same way clause text is. The lay terms ARE the synonym/lay-term
@@ -3414,6 +3388,16 @@ document.getElementById('incoming-form').addEventListener('submit', e => {
   e.preventDefault();
   const text = document.getElementById('incoming-text').value;
   renderIncomingResults(splitPassages(text));
+});
+
+// Thrown rather than silently started over if the worker itself never
+// loads (CSP blocking Workers, an ancient browser) -- the console
+// error at least gives a real diagnosis instead of a feature that
+// just quietly never finishes "Reading…".
+window.addEventListener('error', e => {
+  if (e.filename && e.filename.includes('contract_worker.js')) {
+    console.error('Groundtruth: contract reader worker failed to load', e.message);
+  }
 });
 
 // Layer-2 "agreements as data" export: the same clause IDs, answers,

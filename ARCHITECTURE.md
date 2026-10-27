@@ -759,6 +759,29 @@ class-only CSS); a heading-order finding was left for a deliberate
 later fix since correcting it touches tag-selector CSS with real
 visual-regression risk — see DECISIONS.md.
 
+## Performance budgets and the contract-reader worker (Phase 9.2)
+
+`tests/performance/performance_budget.js` now checks initial load size,
+time to interactive, picker render, search, and contract-reader timing
+on a realistic ~20-page synthetic paste — all measured-number-plus-
+headroom budgets, consistent with the file's existing picker/search
+checks.
+
+Profiling that last one found a real ~2s synchronous main-thread block
+in the old `matchPassage()` TF-IDF scoring — the exact scenario the
+master plan names ("move heavy work ... off the main thread with web
+workers if profiling shows jank"). `contract_worker.js` is the fix: it
+duplicates `tokenize()`/`buildClauseIndex()`/`matchPassage()` from
+`app.js` (same tradeoff `sign.js` made for `substitute()` — a Worker's
+global scope has no `document`, so sharing `app.js` directly was never
+an option) and does the actual scoring off the main thread.
+`initContractWorker()` starts it once at load time and hands it
+`state.clauses`; `matchPassages()` is the async main-thread call that
+posts passages to it and resolves `clauseIndex` back to the real
+clause object. `renderIncomingResults()` (now async) shows a plain
+"Reading…" state while it awaits the round trip, since the main thread
+no longer blocks visibly the way it used to.
+
 ## Programmatic SEO pages (Phase 8.3)
 
 `tools/generate_seo_pages.py` builds one page per document (what it

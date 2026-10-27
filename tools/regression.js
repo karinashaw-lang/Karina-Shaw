@@ -73,10 +73,14 @@ const { chromium } = require('playwright');
   if (rendered.blocks === 0 || rendered.rawBraces > 0) ok = false;
   console.log((rendered.blocks === 0 || rendered.rawBraces > 0 ? 'FAIL ' : 'OK   ') + 'rendered: ' + JSON.stringify(rendered));
 
-  console.log('contract reader: ' + JSON.stringify(await p.evaluate(() => {
+  // Phase 9.2: the actual scoring now runs in contract_worker.js, off
+  // the main thread -- matchPassages() is the async main-thread call
+  // that hands a passage to it and waits for the real result, not a
+  // direct call into the (now worker-only) scoring function.
+  console.log('contract reader: ' + JSON.stringify(await p.evaluate(async () => {
     const t0 = performance.now();
-    matchPassage('Employer may monitor employee activity by video recording in work areas.');
-    return { ms: Math.round(performance.now() - t0) };
+    const [match] = await matchPassages(['Employer may monitor employee activity by video recording in work areas.']);
+    return { ms: Math.round(performance.now() - t0), matched: !!match };
   })));
 
   // Quality tiers (Phase 3.2): every document gets a tier pill on the
