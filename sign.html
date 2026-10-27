@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sign — Groundtruth</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <div class="topbar">
+      <div class="wordmark">Ground<span>truth</span></div>
+    </div>
+    <section class="screen active" id="screen-sign">
+      <h1 tabindex="-1">Review and sign</h1>
+      <div id="sign-content">Loading…</div>
+    </section>
+  </div>
+  <!-- A deliberately small, separate page: a signer has no account and
+       no reason to load the full 740-document corpus app.js pulls in
+       just to see one document someone shared with them. See
+       DECISIONS.md, Phase 7.5. -->
+  <script src="config.js"></script>
+  <script src="sign.js"></script>
+</body>
+</html>

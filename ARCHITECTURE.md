@@ -622,8 +622,61 @@ and the exact verification done from this sandbox in DECISIONS.md.
 in 7.4 the master plan itself marks optional) — deferred deliberately,
 reasoning in DECISIONS.md.
 
+## E-signature and sharing (Phase 7.5)
+
+Two new tables, both owner-select-only, written only by two public
+(no-session) edge functions — see DECISIONS.md for the full RLS
+rationale and why these two tables have no anon-facing policy at all:
+- `document_shares` — a frozen snapshot (title, answers,
+  clauseSnapshots, corpusVersion — the same shape Phase 6.3 already
+  freezes onto a saved library entry), a random token, and an
+  `expires_at`.
+- `document_signatures` — `owner_id` denormalized from the parent
+  share; exactly one signature per share, inserted only by
+  `share-sign`.
+
+`supabase/functions/share-view` (GET, token in the query string) and
+`supabase/functions/share-sign` (POST, rejects a second signature on
+the same share with `409`) are both deployed with `verify_jwt: false`
+— the only two edge functions in this project that are, since the
+signer has no Supabase session to verify at all.
+
+`sign.html`/`sign.js` is a second, deliberately standalone page — not
+a screen inside the main app, since a signer has no reason to load
+the full 740-document corpus. It talks to the two edge functions with
+plain `fetch()`, duplicates `substitute()` from `app.js` (six pure
+lines) rather than loading `app.js` for it, and renders a frozen
+share's clauses the same way the output screen renders live ones.
+Account.js adds "Share for signature" (next to the existing local
+signature section, wrapping `renderSignatureSection()` the same way
+`renderLibrary()` is already wrapped) and a "Shared for signature"
+section on the Account screen — the signing audit page, listing every
+share and, once signed, a "Download sealed PDF" button.
+
+The sealed PDF reuses `buildPdfDocDefinition()` (now takes optional
+`content`/`certificate` params, defaulting to the existing
+zero-arg behavior — `tests/pdf/pdf_golden.js` confirms every existing
+PDF is unaffected) fed `buildDocumentContentFromSnapshot()`'s output
+plus a certificate page (signer, timestamps, a `hashString()`
+fingerprint of the frozen content, the same "not a certified
+e-signature service" line the existing local signature feature uses).
+
+`tests/share/sign_page.js` (14 checks, in CI) is the one piece of this
+phase's Supabase-shaped work that gets a real, run-right-now browser
+test — `sign.js`'s plain-`fetch()` surface is small and stable enough
+for `page.route()` to stand in for the live edge functions
+convincingly, unlike `account.js`'s `supabase-js`-based surface (see
+DECISIONS.md for why that distinction is drawn here and not
+elsewhere). `tests/auth_roundtrip.js` was extended with the real HTTP
+round trip for manual verification outside this sandbox, same as
+Phase 7.1/7.3/7.4.
+
 Not touched this pass: Stripe/payments (7.2 — skipped by explicit user
-choice, no Stripe credentials exist), e-signature (7.5).
+choice, no Stripe credentials exist).
+
+**Phase 7 is now fully addressed** (7.2 explicitly skipped by the
+user's own choice; everything else — 7.1, 7.3, 7.4, 7.5 — built,
+RLS-verified at the SQL level, and documented). Continuing to Phase 8.
 
 ## Adversarial verifier (Phase 4.1)
 

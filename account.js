@@ -191,6 +191,219 @@ function wrapLibraryFunctions() {
     originalRenderLibrary();
     renderLibrarySyncStatus();
   };
+
+  // Phase 7.5: the "share for signature" controls live on the output
+  // screen, next to the existing local signature section -- wrapped
+  // the same way renderLibrary already is, rather than app.js knowing
+  // anything about Supabase.
+  const originalRenderSignatureSection = renderSignatureSection;
+  renderSignatureSection = function () {
+    originalRenderSignatureSection();
+    renderShareSection();
+  };
+}
+
+function generateShareToken() {
+  const bytes = new Uint8Array(24);
+  crypto.getRandomValues(bytes);
+  return Array.from(bytes, b => b.toString(16).padStart(2, '0')).join('');
+}
+
+// Phase 7.5: "share a document by expiring link." Freezes exactly what
+// Phase 6.3 already freezes onto a library entry (clauseSnapshots,
+// corpusVersion) onto the share row too, so a later corpus change or
+// edit to the saved entry never retroactively changes what a signer
+// already looked at or signed.
+function renderShareSection() {
+  const container = document.getElementById('share-section');
+  if (!container) return;
+  container.innerHTML = '';
+  if (!accountState.session) return;
+  const entry = currentLibraryEntry();
+  if (!entry) return;
+
+  const section = document.createElement('div');
+  section.className = 'signature-section';
+
+  const heading = document.createElement('h3');
+  heading.textContent = 'Share for signature';
+  section.appendChild(heading);
+
+  const desc = document.createElement('p');
+  desc.className = 'signature-note';
+  desc.textContent = 'Create a link someone else can open to review this document and add their own signature — no account needed on their end. Anyone with the link can sign it once, until it expires. This isn’t a certified e-signature service, and doesn’t determine whether or how a signature is legally binding.';
+  section.appendChild(desc);
+
+  const controls = document.createElement('div');
+  controls.className = 'signature-controls';
+
+  const expirySelect = document.createElement('select');
+  [1, 7, 30].forEach(days => {
+    const opt = document.createElement('option');
+    opt.value = String(days);
+    opt.textContent = `Expires in ${days} day${days === 1 ? '' : 's'}`;
+    if (days === 7) opt.selected = true;
+    expirySelect.appendChild(opt);
+  });
+  controls.appendChild(expirySelect);
+
+  const createBtn = document.createElement('button');
+  createBtn.type = 'button';
+  createBtn.className = 'secondary';
+  createBtn.textContent = 'Create share link';
+  controls.appendChild(createBtn);
+  section.appendChild(controls);
+
+  const resultEl = document.createElement('p');
+  resultEl.className = 'library-row-date';
+  section.appendChild(resultEl);
+
+  createBtn.addEventListener('click', async () => {
+    createBtn.disabled = true;
+    resultEl.textContent = 'Creating link…';
+    const days = parseInt(expirySelect.value, 10);
+    const token = generateShareToken();
+    const expiresAt = new Date(Date.now() + days * 24 * 60 * 60 * 1000).toISOString();
+    const { error } = await accountState.client.from('document_shares').insert({
+      owner_id: accountState.session.user.id,
+      token,
+      document_id: entry.documentId,
+      title: entry.title,
+      answers: entry.answers,
+      clause_snapshots: entry.clauseSnapshots || [],
+      schema_version: entry.schemaVersion,
+      corpus_version: entry.corpusVersion,
+      expires_at: expiresAt,
+    });
+    createBtn.disabled = false;
+    if (error) {
+      resultEl.textContent = `Couldn’t create that link: ${error.message}`;
+      return;
+    }
+    const base = window.location.pathname.replace(/index\.html$/, '');
+    const link = `${window.location.origin}${base}sign.html?token=${token}`;
+    resultEl.innerHTML = '';
+    const linkInput = document.createElement('input');
+    linkInput.type = 'text';
+    linkInput.readOnly = true;
+    linkInput.value = link;
+    linkInput.style.width = '100%';
+    linkInput.addEventListener('click', () => linkInput.select());
+    resultEl.appendChild(linkInput);
+  });
+
+  container.appendChild(section);
+}
+
+// Phase 7.5: "a signing audit page." Lists every share this owner has
+// created, whether it's been signed, and offers a sealed PDF download
+// for the ones that have -- or a revoke (delete) for the ones that
+// haven't, early-ending a link rather than waiting out its expiry.
+function renderSharedDocuments(container) {
+  const section = document.createElement('div');
+  section.style.marginTop = '32px';
+
+  const heading = document.createElement('h2');
+  heading.textContent = 'Shared for signature';
+  heading.style.fontSize = '1.1rem';
+  section.appendChild(heading);
+
+  const listEl = document.createElement('div');
+  listEl.textContent = 'Loading…';
+  section.appendChild(listEl);
+  container.appendChild(section);
+
+  accountState.client
+    .from('document_shares')
+    .select('id, document_id, title, expires_at, created_at')
+    .eq('owner_id', accountState.session.user.id)
+    .order('created_at', { ascending: false })
+    .then(async ({ data: shares, error }) => {
+      if (error) { listEl.textContent = `Couldn’t load shared documents: ${error.message}`; return; }
+      if (!shares || shares.length === 0) { listEl.innerHTML = '<p class="library-empty">Nothing shared yet.</p>'; return; }
+
+      const { data: signatures } = await accountState.client
+        .from('document_signatures')
+        .select('share_id, signer_name, signature_type, signature_data, signed_at')
+        .eq('owner_id', accountState.session.user.id);
+      const signatureByShare = new Map((signatures || []).map(s => [s.share_id, s]));
+
+      listEl.innerHTML = '';
+      shares.forEach(share => {
+        const signature = signatureByShare.get(share.id);
+        const expired = new Date(share.expires_at).getTime() < Date.now();
+        const row = document.createElement('div');
+        row.className = 'library-row';
+
+        const info = document.createElement('div');
+        const titleEl = document.createElement('div');
+        titleEl.className = 'library-row-title';
+        titleEl.textContent = share.title;
+        const dateEl = document.createElement('div');
+        dateEl.className = 'library-row-date';
+        dateEl.textContent = signature
+          ? `Signed by ${signature.signer_name} on ${new Date(signature.signed_at).toLocaleDateString()}`
+          : expired
+            ? `Expired ${new Date(share.expires_at).toLocaleDateString()}`
+            : `Awaiting signature — expires ${new Date(share.expires_at).toLocaleDateString()}`;
+        info.appendChild(titleEl);
+        info.appendChild(dateEl);
+        row.appendChild(info);
+
+        const btnGroup = document.createElement('div');
+        btnGroup.style.display = 'flex';
+        btnGroup.style.gap = '8px';
+
+        if (signature) {
+          const pdfBtn = document.createElement('button');
+          pdfBtn.type = 'button';
+          pdfBtn.className = 'secondary';
+          pdfBtn.textContent = 'Download sealed PDF';
+          pdfBtn.addEventListener('click', () => downloadSealedPdf(share, signature));
+          btnGroup.appendChild(pdfBtn);
+        } else {
+          const revokeBtn = document.createElement('button');
+          revokeBtn.type = 'button';
+          revokeBtn.className = 'secondary';
+          revokeBtn.textContent = 'Revoke';
+          revokeBtn.addEventListener('click', async () => {
+            await accountState.client.from('document_shares').delete().eq('id', share.id);
+            renderAccountScreen();
+          });
+          btnGroup.appendChild(revokeBtn);
+        }
+        row.appendChild(btnGroup);
+        listEl.appendChild(row);
+      });
+    });
+}
+
+// Re-fetches the share's full row (the list above only selects enough
+// to render the summary) and renders the same buildPdfDocDefinition()
+// pdfmake already uses for the live output screen, just fed a snapshot-
+// built content object and a certificate page instead of live state.
+async function downloadSealedPdf(share, signature) {
+  const { data: full, error } = await accountState.client
+    .from('document_shares')
+    .select('*')
+    .eq('id', share.id)
+    .single();
+  if (error || !full) return;
+
+  const content = buildDocumentContentFromSnapshot({
+    title: full.title,
+    documentId: full.document_id,
+    answers: full.answers,
+    clauseSnapshots: full.clause_snapshots,
+  });
+  const certificate = {
+    documentId: full.document_id,
+    documentHash: hashString(JSON.stringify(full.clause_snapshots) + JSON.stringify(full.answers)),
+    createdAt: full.created_at,
+    expiresAt: full.expires_at,
+    signature,
+  };
+  pdfMake.createPdf(buildPdfDocDefinition(content, certificate)).download(`${full.document_id}-signed.pdf`);
 }
 
 // Phase 7.3: "make the log viewable and exportable by the user." A
@@ -529,6 +742,7 @@ function renderAccountScreen() {
 
     renderSessionManagement(el);
     renderAuditLog(el);
+    renderSharedDocuments(el);
     renderDataExport(el);
     renderAccountDeletion(el);
     return;

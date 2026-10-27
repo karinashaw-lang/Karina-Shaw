@@ -1534,3 +1534,123 @@ session that's already moving on to 7.5 and the much larger Phase
 8-11 backlog. Recorded here as a conscious deferral, not silently
 dropped; `ROADMAP.md` (Phase 11) is the right place to scope it
 properly when it's actually taken up.
+
+## Phase 7.5: e-signature and sharing
+
+**Two new tables, both owner-select-only from the anon key, written
+only by two public (no-session) edge functions.** `document_shares`
+freezes exactly what Phase 6.3 already freezes onto a saved library
+entry (`clauseSnapshots`, `answers`, `corpusVersion`) onto the share
+row at creation time, plus a random token and an `expires_at` — so a
+later edit to the saved document, or a corpus update, never
+retroactively changes what a signer already looked at or signed.
+`document_signatures` has `owner_id` denormalized from the parent
+share (same reasoning as `order_items.user_id` in Phase 7.1) so its
+one policy stays a flat equality check. Verified directly, not
+assumed: owner insert/select on `document_shares` succeeds; a second
+user's select of it returns zero rows; a second user's insert
+claiming to own it is rejected (`42501`); **and an insert into
+`document_signatures` is rejected for every role, including the
+owner** — not even the document's own owner can write a signature row
+directly, which is the whole point: a signing record a client could
+fabricate wouldn't be one.
+
+**The signer has no Supabase session, by design — not an oversight
+that needs patching later.** Requiring an account to sign a document
+someone sent you would defeat the point of a share link. This is why
+`document_shares`/`document_signatures` have *no* RLS policy at all
+for an anonymous or even cross-owner reader: there's no safe way to
+write "the bearer of this token" as an RLS `USING` clause without
+exposing the token to a timing or enumeration side channel, so the
+only path in is two edge functions —
+`supabase/functions/share-view` (GET, returns the frozen document plus
+any existing signature) and `supabase/functions/share-sign` (POST,
+records exactly one signature, rejecting a second attempt on the same
+share with `409` rather than overwriting it) — both deployed with
+`verify_jwt: false`, since there's no JWT to verify. Every other edge
+function this project has (`list-sessions`, `delete-account`) keeps
+`verify_jwt: true`; this pair is a deliberate, narrow exception, not a
+general relaxation.
+
+**A second, genuinely standalone page (`sign.html`/`sign.js`), not a
+new screen inside the main app.** A signer clicking a link has no
+account and no reason to download `data/documents.json`/`clauses.json`
+(the whole corpus) just to see the one document shared with them.
+`sign.js` duplicates `substitute()` from `app.js` (six pure lines)
+rather than loading `app.js` to get it — pulling in the full app would
+defeat the point of keeping this page light. Every network call in it
+is wrapped so a thrown fetch (not just a non-2xx response) becomes the
+same plain on-page message instead of a silently stuck "Loading…" —
+checked by intentionally never mocking the network in one of this
+phase's own test cases and confirming the page still says something
+useful.
+
+**This is the one piece of Phase 7.1/7.3/7.4/7.5's Supabase-shaped work
+that got a real, run-right-now browser test, and it's worth saying
+why the others didn't.** `account.js` talks to Supabase through the
+`supabase-js` client; `sign.js` talks to it through plain `fetch()` to
+exactly two URLs. That's a small enough, stable enough surface that
+`page.route()` can stand in for the live edge functions convincingly —
+`tests/share/sign_page.js` (14 checks, wired into CI) drives the real
+`sign.html`/`sign.js` against scripted `share-view`/`share-sign`
+responses and checks the actual rendered DOM: the no-token message,
+the not-configured message, an invalid token's 404, real `{{field}}`
+substitution into real clause text, the signing-form-vs-already-signed
+switch, a full typed-signature submission reaching the real submit
+handler, and a `409` on a second signing attempt surfacing the
+server's own message. `account.js`'s equivalent surface (session
+listing, data export, account deletion, share creation) stays
+unverified from this sandbox for the reason already on record
+(BASELINE.md, Phase 1.3) — the `supabase-js` client itself would need
+mocking, not just two URLs, which is a bigger and more fragile stub to
+build and trust than this page's genuinely small fetch surface
+justified building here.
+
+**The sealed PDF reuses `buildPdfDocDefinition()` rather than a second
+PDF builder.** Gave it two optional parameters, `content` and
+`certificate`, both defaulting to the existing zero-arg behavior
+(`content = buildDocumentContent()`, `certificate = null`) — confirmed
+`tests/pdf/pdf_golden.js` still passes byte-for-byte, so every PDF this
+function has ever produced is unaffected. `buildDocumentContentFromSnapshot()`
+builds the same shape `buildDocumentContent()` returns, but from a
+frozen share's `clauseSnapshots`/`answers` instead of live `state` —
+`jurisdictionNotice`/`conditional`/`nextSteps` are left empty rather
+than guessed, since recomputing them needs the live document's
+`clauseOrder`/fields that a frozen share doesn't carry, and inventing
+them from a snapshot would be exactly the kind of fabricated content
+this project doesn't do. The certificate page itself (signer, signed-at,
+link created/expires, a `hashString()` fingerprint of the frozen
+clauses+answers — reusing the same FNV-1a function Phase 6.3/7.3
+already use rather than adding a second hashing scheme) carries the
+same "not a certified e-signature service" line the existing local
+signature feature already uses, word for word where it still applies.
+
+**Revoking an unsigned share is a delete, not a status flag** — Owners
+can delete their own `document_shares` row (no `document_signatures`
+row exists yet to cascade), ending the link immediately rather than
+waiting out its expiry. A signed share has nothing to revoke; the
+signing audit page offers "Download sealed PDF" for those instead.
+
+**Not invoked from this sandbox**, same reason as every edge function
+in this project: the egress block on this project's own domain. What
+*was* verified from here: both functions deploy `ACTIVE`; `get_advisors`
+shows no new finding; the RLS matrix above was run directly via
+`execute_sql` role/claim impersonation; `tests/auth_roundtrip.js` was
+extended with a full real-HTTP round trip (create a share as user A,
+fetch it with **no** auth header at all via `share-view`, sign it via
+`share-sign`, confirm a second signature attempt gets `409`, confirm
+user B's REST reads of both tables return zero rows, confirm the share
+is gone after `delete-account`'s cascade) — written, not run, for
+manual verification outside this sandbox, consistent with the rest of
+that file.
+
+**Test debris left behind in the live project this pass, for the
+project owner (same situation as every prior Phase 7.x entry — no new
+delete path from this session for these two rows either):**
+
+```sql
+delete from public.document_shares where token in ('rls-adv-share-token');
+-- document_signatures has no rows from this session's SQL-level testing
+-- (every insert attempt into it was correctly rejected -- that was the
+-- point) -- nothing to clean up there.
+```

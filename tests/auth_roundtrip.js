@@ -166,6 +166,58 @@ async function main() {
   const bDeleteRows = Array.isArray(bDeletesA.json) ? bDeletesA.json.length : -1;
   check(bDeleteRows === 0, `user B's delete of A's row affects zero rows (status ${bDeletesA.status}, ${bDeleteRows} rows)`);
 
+  // --- Phase 7.5: document_shares/document_signatures, plus the two
+  // public (no-session) edge functions a signer actually uses. ---
+
+  const shareToken = `roundtrip-${RUN_ID}`;
+  const shareExpires = new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString();
+  const shareInsert = await restFetch('/rest/v1/document_shares', {
+    token: userA.accessToken, method: 'POST',
+    body: {
+      owner_id: userA.userId, token: shareToken, document_id: 'nda', title: 'Round-trip share',
+      answers: { party_name: 'Acme Co' }, clause_snapshots: [{ id: 'c1', title: 'Clause One', body: 'Hello {{party_name}}.', kind: 'drafting' }],
+      schema_version: 1, expires_at: shareExpires,
+    },
+    extraHeaders: { Prefer: 'return=representation' },
+  });
+  check(shareInsert.status >= 200 && shareInsert.status < 300, `user A creates a document_shares row over REST (status ${shareInsert.status})`);
+  const shareId = shareInsert.json && shareInsert.json[0] && shareInsert.json[0].id;
+
+  const bReadsShareA = await restFetch(`/rest/v1/document_shares?id=eq.${shareId}&select=id`, { token: userB.accessToken });
+  check(Array.isArray(bReadsShareA.json) && bReadsShareA.json.length === 0, "user B's read of A's document_shares row returns zero rows");
+
+  // The signer has no session at all -- these two calls use only the
+  // anon key, same as sign.js does.
+  const viewBeforeSigning = await restFetch(`/functions/v1/share-view?token=${shareToken}`);
+  check(
+    viewBeforeSigning.status === 200 && viewBeforeSigning.json && viewBeforeSigning.json.signature === null && !viewBeforeSigning.json.expired,
+    `share-view (no session) returns the unsigned document (status ${viewBeforeSigning.status})`
+  );
+
+  const badTokenView = await restFetch(`/functions/v1/share-view?token=not-a-real-token`);
+  check(badTokenView.status === 404, `share-view rejects an invalid token (status ${badTokenView.status})`);
+
+  const signRes = await restFetch('/functions/v1/share-sign', {
+    method: 'POST',
+    body: { token: shareToken, signerName: 'Jane Signer', signatureType: 'typed', signatureData: 'Jane Signer' },
+  });
+  check(signRes.status === 200 && signRes.json && signRes.json.signature, `share-sign (no session) records a signature (status ${signRes.status})`);
+
+  const signAgainRes = await restFetch('/functions/v1/share-sign', {
+    method: 'POST',
+    body: { token: shareToken, signerName: 'Someone Else', signatureType: 'typed', signatureData: 'Someone Else' },
+  });
+  check(signAgainRes.status === 409, `share-sign rejects a second signature on the same share (status ${signAgainRes.status})`);
+
+  const viewAfterSigning = await restFetch(`/functions/v1/share-view?token=${shareToken}`);
+  check(
+    viewAfterSigning.status === 200 && viewAfterSigning.json && viewAfterSigning.json.signature && viewAfterSigning.json.signature.signer_name === 'Jane Signer',
+    'share-view now returns the recorded signature'
+  );
+
+  const bReadsSignatureA = await restFetch(`/rest/v1/document_signatures?share_id=eq.${shareId}&select=id`, { token: userB.accessToken });
+  check(Array.isArray(bReadsSignatureA.json) && bReadsSignatureA.json.length === 0, "user B's read of A's document_signatures row returns zero rows");
+
   // --- Phase 7.1 tables: the same RLS matrix DECISIONS.md verified at
   // the SQL level (role/claim impersonation through execute_sql, since
   // this sandbox's egress policy blocks this exact HTTP path) — this is
@@ -260,6 +312,9 @@ async function main() {
 
   const aGoneCheck = await restFetch(`/rest/v1/agreements?id=eq.${rowId}&select=id`, { token: SERVICE_KEY, extraHeaders: { apikey: SERVICE_KEY } });
   check(Array.isArray(aGoneCheck.json) && aGoneCheck.json.length === 0, "user A's agreements row is gone after account deletion (cascade, not a separate delete)");
+
+  const shareGoneCheck = await restFetch(`/rest/v1/document_shares?id=eq.${shareId}&select=id`, { token: SERVICE_KEY, extraHeaders: { apikey: SERVICE_KEY } });
+  check(Array.isArray(shareGoneCheck.json) && shareGoneCheck.json.length === 0, "user A's document_shares row (and its signature) is gone after account deletion too");
 
   // --- Cleanup: this script has the service role key, so it can actually
   // finish what it starts — unlike the MCP-based investigation recorded in

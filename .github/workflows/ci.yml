@@ -126,6 +126,8 @@ jobs:
         run: set -o pipefail; node tests/library/versioning.js | tee versioning.log
       - name: Run filing next_steps.js
         run: set -o pipefail; node tests/filing/next_steps.js | tee filing-next-steps.log
+      - name: Run sign_page.js
+        run: set -o pipefail; node tests/share/sign_page.js | tee sign-page.log
       - name: Upload logs on failure
         if: failure()
         uses: actions/upload-artifact@v4
@@ -142,6 +144,7 @@ jobs:
             related-coverage.log
             pdf-golden.log
             docx-golden.log
+            sign-page.log
             versioning.log
             filing-next-steps.log
           if-no-files-found: warn

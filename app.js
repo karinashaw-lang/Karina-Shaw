@@ -2799,6 +2799,40 @@ function buildDocumentContent() {
   };
 }
 
+// Phase 7.5: the same buildDocumentContent() shape, built from a
+// frozen share snapshot (clauseSnapshots + answers, exactly what Phase
+// 6.3 already freezes onto a library entry) instead of live state --
+// so the sealed-PDF path below can reuse buildPdfDocDefinition() as-is
+// rather than a second, parallel PDF builder. jurisdictionNotice,
+// conditional, and nextSteps are empty/null here: recomputing them
+// needs the live document's clauseOrder/fields, which a frozen share
+// doesn't carry, and guessing at them from a snapshot would be exactly
+// the kind of invented content this project doesn't do. The signed
+// document's actual clause text and citations -- the part that
+// matters for a certificate -- are complete either way.
+function buildDocumentContentFromSnapshot(snapshot) {
+  return {
+    title: snapshot.title,
+    documentId: snapshot.documentId,
+    preparedFor: '',
+    jurisdictionNotice: null,
+    conditional: [],
+    clauses: (snapshot.clauseSnapshots || []).map(snap => ({
+      id: snap.id,
+      title: snap.title,
+      body: substitute(snap.body, snapshot.answers || {}),
+      kind: snap.kind,
+      status: snap.status,
+      edited: false,
+      checkedDate: snap.checkedDate,
+      citations: snap.citations || [],
+      gap: snap.gap || null,
+    })),
+    signature: null,
+    nextSteps: [],
+  };
+}
+
 // ---------- sources & checked-dates appendix (Phase 6.2) ----------
 // A consolidated reference list of every citation already shown
 // inline, per clause, throughout the document -- gathered into one
@@ -2958,8 +2992,11 @@ function sanitizeForPdf(text) {
   return text.replace(/[☐◻‖‟℠⅓Ⓜ]/g, ch => PDF_GLYPH_FALLBACKS[ch]);
 }
 
-function buildPdfDocDefinition() {
-  const content = buildDocumentContent();
+// content/certificate are optional so every existing call site
+// (buildPdfDocDefinition() with no args, from the live wizard output
+// screen) is unaffected -- only Phase 7.5's sealed-PDF download passes
+// both, built from a frozen share snapshot instead of live state.
+function buildPdfDocDefinition(content = buildDocumentContent(), certificate = null) {
   const generatedOn = new Date().toISOString().slice(0, 10);
   const body = [];
 
@@ -3050,6 +3087,33 @@ function buildPdfDocDefinition() {
 
   body.push({ text: 'Groundtruth v1 demo · every "Verified" citation links to a real, checked source.', style: 'closingNote' });
 
+  // Phase 7.5: "a final sealed PDF with a certificate page (signer,
+  // timestamps, document hash)." Only present for a signed share's
+  // sealed download -- the regular wizard output screen never passes
+  // a certificate, so every other PDF this function has ever produced
+  // is byte-for-byte unaffected by this block existing at all.
+  if (certificate) {
+    body.push({ text: 'CERTIFICATE OF SIGNING', style: 'sectionLabel', margin: [0, 24, 0, 8], pageBreak: 'before' });
+    body.push({ text: sanitizeForPdf(content.title), style: 'docTitle' });
+    body.push({ text: `Document id: ${certificate.documentId}`, style: 'signatureMeta', margin: [0, 8, 0, 0] });
+    body.push({ text: `Document fingerprint: ${certificate.documentHash}`, style: 'signatureMeta' });
+    body.push({ text: `Link created: ${new Date(certificate.createdAt).toLocaleString()}`, style: 'signatureMeta' });
+    body.push({ text: `Link expires: ${new Date(certificate.expiresAt).toLocaleString()}`, style: 'signatureMeta' });
+    body.push({ text: 'Signer', style: 'sectionLabel', margin: [0, 16, 0, 4] });
+    if (certificate.signature.signature_type === 'drawn') {
+      body.push({ image: certificate.signature.signature_data, width: 180, margin: [0, 0, 0, 4] });
+    } else {
+      body.push({ text: sanitizeForPdf(certificate.signature.signature_data), style: 'signatureName', margin: [0, 0, 0, 4] });
+    }
+    body.push({ text: `Signed as: ${sanitizeForPdf(certificate.signature.signer_name)}`, style: 'signatureMeta' });
+    body.push({ text: `Signed at: ${new Date(certificate.signature.signed_at).toLocaleString()}`, style: 'signatureMeta' });
+    body.push({
+      text: 'This isn’t a certified e-signature service, and this certificate doesn’t determine whether or how the signature above is legally binding.',
+      style: 'verificationNote',
+      margin: [0, 16, 0, 0],
+    });
+  }
+
   return {
     pageSize: 'LETTER',
     pageMargins: [56, 56, 56, 64],
@@ -3077,8 +3141,7 @@ function buildPdfDocDefinition() {
 // supplies whatever font covers a given character at open time, so
 // there's no embedded-glyph-subset to come up short the way pdfmake's
 // bundled Roboto did.
-function buildDocxDocument() {
-  const content = buildDocumentContent();
+function buildDocxDocument(content = buildDocumentContent()) {
   const generatedOn = new Date().toISOString().slice(0, 10);
   const { Document, Paragraph, TextRun, ImageRun, Footer, HeadingLevel } = docx;
   const GRAY = '4B5245';
