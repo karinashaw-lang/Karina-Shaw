@@ -98,6 +98,8 @@ jobs:
         run: node tests/tools/test_analytics_report.js
       - name: Run test_ingest_feedback_findings.js
         run: node tests/tools/test_ingest_feedback_findings.js
+      - name: Run test_error_report_summary.js
+        run: node tests/tools/test_error_report_summary.js
       - run: npx playwright install --with-deps chromium
       - name: Start static server
         run: |
@@ -139,6 +141,8 @@ jobs:
         run: set -o pipefail; node tests/share/sign_page.js | tee sign-page.log
       - name: Run axe_check.js
         run: set -o pipefail; node tests/accessibility/axe_check.js | tee axe-check.log
+      - name: Run error_reporting.js
+        run: set -o pipefail; node tests/error_reporting/error_reporting.js | tee error-reporting.log
       - name: Upload logs on failure
         if: failure()
         uses: actions/upload-artifact@v4
@@ -159,4 +163,47 @@ jobs:
             sign-page.log
             versioning.log
             filing-next-steps.log
+            error-reporting.log
           if-no-files-found: warn
+
+  deploy-staging:
+    name: Deploy to staging (Supabase)
+    runs-on: ubuntu-latest
+    needs: validate-corpus
+    # Phase 9.3: "CI deploys to staging on merge; production deploy is
+    # manual." Only on a push to the repo's actual default branch, not
+    # every feature-branch push -- a merge, not every commit on the way
+    # to one. Does nothing (and doesn't fail) until the project owner
+    # adds SUPABASE_ACCESS_TOKEN and SUPABASE_STAGING_PROJECT_REF as
+    # repo secrets -- neither exists yet, since a Supabase personal
+    # access token isn't something this session can generate or should
+    # hold; see DECISIONS.md for exactly what to add and why. This
+    # entire job is therefore unverified from this sandbox: written and
+    # reasoned through, not run, same as every secrets-gated step in
+    # this project (tests/auth_roundtrip.js and friends).
+    if: github.event_name == 'push' && github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check staging credentials are configured
+        id: check
+        run: |
+          if [ -z "${{ secrets.SUPABASE_ACCESS_TOKEN }}" ] || [ -z "${{ secrets.SUPABASE_STAGING_PROJECT_REF }}" ]; then
+            echo "configured=false" >> "$GITHUB_OUTPUT"
+            echo "SUPABASE_ACCESS_TOKEN/SUPABASE_STAGING_PROJECT_REF not set -- staging deploy skipped. See DECISIONS.md, Phase 9.3, for what to add."
+          else
+            echo "configured=true" >> "$GITHUB_OUTPUT"
+          fi
+      - uses: supabase/setup-cli@v1
+        if: steps.check.outputs.configured == 'true'
+        with:
+          version: latest
+      - name: Push migrations to staging
+        if: steps.check.outputs.configured == 'true'
+        run: supabase db push --project-ref "${{ secrets.SUPABASE_STAGING_PROJECT_REF }}"
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+      - name: Deploy edge functions to staging
+        if: steps.check.outputs.configured == 'true'
+        run: supabase functions deploy --project-ref "${{ secrets.SUPABASE_STAGING_PROJECT_REF }}"
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}

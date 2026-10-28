@@ -2027,3 +2027,147 @@ show nothing changing for up to ~2 seconds on a long paste, which
 reads as broken even though it isn't. A plain text swap in
 `#incoming-results`, replaced once the real results arrive; no new
 CSS, no spinner.
+
+## Phase 9.3: error monitoring, and a real staging environment
+
+**Created a second Supabase project for staging** (`groundtruth-staging`,
+`ihlszzsnlcmtmuydkkpk`), per the user's own earlier answer to exactly
+this question ("yes, create what's needed") when Phase 9.3 was first
+scoped. Checked the organization's plan and existing project count
+first (free tier, 1 existing project) rather than assuming headroom —
+this is the account's second project, within the free tier.
+
+**Reversed the Phase 7.1 decision not to mirror migrations into local
+files — for a concrete, new reason, not a change of heart on the old
+one.** That decision was right for what it was deciding: this
+session's only tool is the Supabase MCP server, not the CLI, so there
+was no way to *pull* migrations down faithfully, and reconstructing
+them from memory risked drifting from what's actually live. What's
+different now: making staging a real mirror of production, and
+giving CI a real "deploy to staging" step, both need a *local* file —
+`supabase db push` has nothing to push without one. So
+`supabase/migrations/20261028000000_baseline.sql` was generated the
+safe way the earlier decision anticipated: from the production
+project's own live `information_schema`/`pg_constraint`/`pg_policies`/
+`pg_indexes` (introspected directly, not recalled), so it's verified
+accurate to what's actually live, not a guess at history. Applied
+line-for-line to staging and confirmed via `list_tables` (all 9
+tables present) and `get_advisors` (security: clean — even cleaner
+than production, which still carries `_scratch_probe` and the
+leaked-password-protection finding from before this session).
+`supabase/schema.sql`'s `agreements` table was applied to staging too
+(adjusted to drop the `drop trigger if exists` line schema.sql itself
+has, since a fresh project has nothing to drop and that text hits the
+same destructive-SQL gate; and written with `(select auth.uid())`
+from the start, since staging has no history forcing the older plain
+form the way production's `agreements` does).
+
+**Found a second pre-existing, DROP-POLICY-gate-blocked performance
+finding by actually checking, instead of assuming the last check still
+covers everything.** Running `get_advisors` (performance) on the new
+staging project surfaced `multiple_permissive_policies` on
+`feedback` INSERT (`"Anyone can submit anonymous feedback"` and
+`"Users can insert their own feedback"` both apply to the same
+role/action) — then confirmed via the same check against *production*
+that this has been there since Phase 8.2 added the second policy,
+simply never re-checked (Phase 8.2's own entry only ran the security
+advisor, not performance — a real gap in that pass, recorded here
+rather than quietly fixed in place). Same structural block as the
+`agreements` `auth_rls_initplan` finding: combining the two policies
+into one needs `drop policy`, which hits the same gate. Left
+identical on both staging and production (consistent with each other
+being more valuable here than fixing one and drifting from the
+other), handed off with exact SQL:
+
+```sql
+drop policy if exists "Anyone can submit anonymous feedback" on public.feedback;
+drop policy if exists "Users can insert their own feedback" on public.feedback;
+create policy "Users can insert their own or anonymous feedback" on public.feedback
+  for insert with check (user_id is null or (select auth.uid()) = user_id);
+```
+
+**Edge functions deployed identically to staging** (`list-sessions`,
+`delete-account`, `share-view`, `share-sign`) — same code, same
+`verify_jwt` settings, confirmed via each function's deploy response.
+
+**`error_reports` (new): "a lightweight self-hosted or
+privacy-respecting service, scrubbing field values."** Self-hosted
+means this project's own Supabase, the same choice already made for
+`analytics_events`/`feedback`, not a third-party SaaS (Sentry and
+similar were never seriously considered — this app already has a
+backend-of-sorts, and introducing a second one for one feature would
+contradict the whole architecture). No `user_id` (same reasoning as
+`analytics_events`), anon-insertable, no SELECT policy for anyone via
+the client — read only by the project owner via
+`tools/error_report_summary.js`.
+
+**Scrubbing happens client-side, before anything is sent, and is
+tested directly against synthetic errors — not trusted to "error
+messages probably don't contain user data."** `account.js`'s
+`scrubErrorText()` redacts anything email-shaped and any quoted string
+over 15 characters (long enough to plausibly be a pasted field value,
+short enough that real error-message phrasing mostly survives) before
+a message is ever sent; `parseStackFrames()` keeps only structural
+location info (function/file/line/column) from a stack trace,
+discarding its first line entirely (which just repeats the
+already-separately-scrubbed message) and never the inline source
+snippet some browsers append.
+`tests/error_reporting/error_reporting.js` (16 checks, in CI) verifies
+this directly: dispatches a real `ErrorEvent` and a real
+`unhandledrejection` whose message/reason text contains a
+long-quoted-string "field value," and confirms the row a stubbed
+Supabase client actually receives has it redacted — not just that the
+scrub function returns a redacted string in isolation, but that the
+real capture pipeline (the `window.addEventListener('error'/
+'unhandledrejection')` handlers in `app.js`, routed through the
+optional `groundtruthReportError` hook, reaching
+`window.groundtruthReportErrorImpl` in `account.js`) actually uses it.
+
+**`app.js` calls a plain function (`groundtruthReportError`), not
+`window.reportError`** — that name collides with a real, standard Web
+API (`reportError()`, which surfaces to the browser's own error
+console) that already existed before this phase touched anything;
+using it as a custom hook name would have shadowed a built-in global
+with app-specific behavior, a real bug caught by checking the name
+against MDN before writing it, not by trial and error.
+
+**Fixed a mistaken diagnostic from the Phase 9.2 commit along the
+way**: that commit added `window.addEventListener('error', ...)` to
+catch `contract_worker.js` failing to load, but a Worker's own errors
+never reach the main `window`'s `'error'` listener at all — the
+Worker instance's own `.onerror` is the real hook. Caught while
+building this phase's real error-reporting pipeline (which needed to
+route Worker errors into `error_reports` too), not left in place as
+silently-dead code; `initContractWorker()` now sets
+`contractWorker.onerror` directly.
+
+**Real-time alerting is a documented recipe, not a built feature** —
+same category of gap as Stripe (7.2): it needs a destination (an
+email service, a Slack incoming webhook) this project has no
+credentials for, and fabricating one would be pointless. Once the
+project owner has a destination, turning this on is a Database
+Webhook in the Supabase dashboard (Database → Webhooks → Create a new
+hook): table `error_reports`, event `INSERT`, HTTP target the
+destination's own webhook URL, with the webhook's own payload-shape
+requirements (many email/Slack webhook providers expect a specific
+JSON shape, not Supabase's raw row payload) handled by either the
+destination's own webhook-transform feature or a thin edge function
+in between — not something to design abstractly here without a real
+destination to build against.
+
+**Source maps are a non-issue, not a silently-skipped requirement** —
+`app.js`/`account.js`/`contract_worker.js` ship unminified, exactly as
+written (`package.json`'s own description: "no build step for the app
+itself"). A source map exists to map minified/bundled output back to
+real source; there is no minification step here for one to map back
+*from*. Stated plainly rather than either building a fake source map
+for a build step that doesn't exist, or silently dropping this part
+of the instruction.
+
+**Not done this pass**: enabling the staging deploy job for real (it's
+written and reasoned through, but genuinely needs the two repo
+secrets only the project owner can add — see `tools/README.md`);
+turning on the production project's leaked-password-protection
+setting (same no-tool-for-it gap as every prior phase); the
+`multiple_permissive_policies`/`auth_rls_initplan` fixes above
+(DROP-POLICY-gated, handed off with exact SQL).

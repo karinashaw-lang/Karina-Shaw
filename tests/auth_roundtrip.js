@@ -284,6 +284,13 @@ async function main() {
   });
   check(anonAnalytics.status >= 200 && anonAnalytics.status < 300, `anonymous analytics event insert succeeds (status ${anonAnalytics.status})`);
 
+  // Phase 9.3: same anonymous-insert, no-.select() shape as analytics_events.
+  const anonErrorReport = await restFetch('/rest/v1/error_reports', {
+    method: 'POST',
+    body: { error_name: 'TypeError', message: 'auth round-trip test error', page: '/index.html' },
+  });
+  check(anonErrorReport.status >= 200 && anonErrorReport.status < 300, `anonymous error report insert succeeds (status ${anonErrorReport.status})`);
+
   const dvInsert = await restFetch('/rest/v1/document_versions', {
     token: userA.accessToken, method: 'POST',
     body: { user_id: userA.userId, agreement_id: rowId, schema_version: 1, clause_snapshots: [], generated_at: new Date().toISOString() },
@@ -361,6 +368,7 @@ async function main() {
   if (anonFeedbackId) await restFetch(`/rest/v1/feedback?id=eq.${anonFeedbackId}`, { token: SERVICE_KEY, method: 'DELETE', extraHeaders: { apikey: SERVICE_KEY } });
   if (withClauseIdFeedbackId) await restFetch(`/rest/v1/feedback?id=eq.${withClauseIdFeedbackId}`, { token: SERVICE_KEY, method: 'DELETE', extraHeaders: { apikey: SERVICE_KEY } });
   await restFetch(`/rest/v1/analytics_events?document_id=eq.nda&client_session_id=eq.00000000-0000-0000-0000-000000000000`, { token: SERVICE_KEY, method: 'DELETE', extraHeaders: { apikey: SERVICE_KEY } });
+  await restFetch(`/rest/v1/error_reports?message=eq.auth%20round-trip%20test%20error`, { token: SERVICE_KEY, method: 'DELETE', extraHeaders: { apikey: SERVICE_KEY } });
   console.log("\nCleaned up: user A's account self-deleted via delete-account; user B removed directly; anonymous feedback/analytics rows removed explicitly.");
 
   finish();

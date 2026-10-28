@@ -451,6 +451,60 @@ function renderFeedbackSection(container) {
   container.appendChild(section);
 }
 
+// ---------- client error reporting (Phase 9.3) ----------
+// "A lightweight self-hosted or privacy-respecting service, scrubbing
+// field values" -- self-hosted means this project's own Supabase, not
+// a third-party SaaS; scrubbing happens here, before anything leaves
+// the browser, not trusted to the server side. app.js's
+// groundtruthReportError() calls window.groundtruthReportErrorImpl,
+// which this file defines -- the same "app.js stays Supabase-unaware,
+// account.js is the only thing that talks to it" split as everywhere
+// else, and a no-op whenever cloud accounts aren't configured, same as
+// analytics/feedback.
+//
+// A real wizard field value could, in principle, end up inside a JS
+// error's message (a thrown validation message that happened to
+// interpolate user input, for instance) -- this can't prove a given
+// message never does, so it redacts anything shaped like one rather
+// than trusting every call site upstream to never pass one through:
+// quoted strings over 15 characters and anything email-shaped.
+function scrubErrorText(text) {
+  if (!text) return text;
+  return String(text)
+    .replace(/[\w.+-]+@[\w-]+\.[\w.-]+/g, '[redacted-email]')
+    .replace(/"[^"]{15,}"/g, '"[redacted]"')
+    .replace(/'[^']{15,}'/g, '\'[redacted]\'')
+    .slice(0, 500);
+}
+
+// Keeps only structural location info (function name, file, line,
+// column) from a stack trace -- never the inline source-line context
+// some browsers append, and never the trace's own first line, which
+// just repeats the (already separately scrubbed) error message.
+function parseStackFrames(stack) {
+  if (!stack) return [];
+  return stack.split('\n').slice(1).map(line => {
+    const m = line.match(/at\s+(?:(.+?)\s+\()?(.*?):(\d+):(\d+)\)?/);
+    if (!m) return null;
+    return { fn: m[1] || '(anonymous)', file: (m[2] || '').split('/').pop(), line: Number(m[3]), col: Number(m[4]) };
+  }).filter(Boolean).slice(0, 10);
+}
+
+window.groundtruthReportErrorImpl = function (details) {
+  if (!accountState.configured) return;
+  accountState.client.from('error_reports').insert({
+    error_name: details.errorName || 'Error',
+    message: scrubErrorText(details.message) || '(no message)',
+    source_file: details.sourceFile ? details.sourceFile.split('/').pop() : null,
+    line_number: details.lineNumber || null,
+    column_number: details.columnNumber || null,
+    stack_frames: parseStackFrames(details.stack),
+    user_agent: navigator.userAgent,
+    page: window.location.pathname,
+    client_session_id: clientSessionId(),
+  }).then(({ error }) => { if (error) console.error('Groundtruth: error report failed to send', error); });
+};
+
 function generateShareToken() {
   const bytes = new Uint8Array(24);
   crypto.getRandomValues(bytes);

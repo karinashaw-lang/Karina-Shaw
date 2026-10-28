@@ -1118,6 +1118,14 @@ const contractWorkerPending = new Map();
 
 function initContractWorker() {
   contractWorker = new Worker('contract_worker.js');
+  // A Worker's own errors (a load failure -- CSP blocking Workers, an
+  // ancient browser -- or a throw inside contract_worker.js itself)
+  // never reach window's 'error' listener; the Worker instance's own
+  // onerror is the real way to catch them.
+  contractWorker.onerror = e => {
+    console.error('Groundtruth: contract reader worker error', e.message);
+    groundtruthReportError({ errorName: 'ContractWorkerError', message: e.message, sourceFile: e.filename, lineNumber: e.lineno });
+  };
   contractWorkerReady = new Promise(resolve => {
     contractWorker.onmessage = e => {
       if (e.data.type === 'ready') { resolve(); return; }
@@ -3390,14 +3398,38 @@ document.getElementById('incoming-form').addEventListener('submit', e => {
   renderIncomingResults(splitPassages(text));
 });
 
-// Thrown rather than silently started over if the worker itself never
-// loads (CSP blocking Workers, an ancient browser) -- the console
-// error at least gives a real diagnosis instead of a feature that
-// just quietly never finishes "Reading…".
-window.addEventListener('error', e => {
-  if (e.filename && e.filename.includes('contract_worker.js')) {
-    console.error('Groundtruth: contract reader worker failed to load', e.message);
+// Phase 9.3: "client error reporting... scrubbing field values."
+// app.js stays Supabase-unaware, same as everywhere else in this
+// project -- it only ever calls this optional, always-safe-to-call
+// hook (a plain function, not window.reportError: that name collides
+// with a real built-in Web API that reports to the browser's own
+// error console, a different thing entirely). account.js defines the
+// real version when Supabase is configured; this is a no-op otherwise,
+// which is also the entire behavior in CI (no config.js there).
+function groundtruthReportError(details) {
+  if (typeof window.groundtruthReportErrorImpl === 'function') {
+    window.groundtruthReportErrorImpl(details);
   }
+}
+
+window.addEventListener('error', e => {
+  groundtruthReportError({
+    errorName: e.error ? e.error.name : 'Error',
+    message: e.message,
+    sourceFile: e.filename,
+    lineNumber: e.lineno,
+    columnNumber: e.colno,
+    stack: e.error ? e.error.stack : null,
+  });
+});
+
+window.addEventListener('unhandledrejection', e => {
+  const reason = e.reason;
+  groundtruthReportError({
+    errorName: (reason && reason.name) || 'UnhandledRejection',
+    message: (reason && reason.message) || String(reason),
+    stack: (reason && reason.stack) || null,
+  });
 });
 
 // Layer-2 "agreements as data" export: the same clause IDs, answers,

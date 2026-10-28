@@ -692,3 +692,95 @@ role key isn't subject to the MCP tool gate `DECISIONS.md` describes.
 Exits 0 immediately with a clear message if `SUPABASE_URL` /
 `SUPABASE_ANON_KEY` aren't set, so it's safe to add to CI later without
 breaking a run that has no project configured.
+
+Since Phase 7.1, also covers the same per-table RLS matrix for `orders`,
+`order_items`, `audit_log`, `document_versions`, `feedback` (including
+Phase 8.2's anonymous-insert and clause-id-required behavior),
+`document_shares`/`document_signatures` and the `share-view`/`share-sign`
+edge functions (Phase 7.5), `list-sessions`/`delete-account` (Phase 7.4),
+and anonymous inserts into `analytics_events` (Phase 8.1) and
+`error_reports` (Phase 9.3) — the SQL-level version of each check already
+ran during this session via `execute_sql` role/claim impersonation; this
+file is the real-HTTP counterpart, for manual verification outside the
+sandbox.
+
+## tools/analytics_report.js
+
+```
+SUPABASE_URL=https://xxxx.supabase.co \
+SUPABASE_SERVICE_ROLE_KEY=... \
+node tools/analytics_report.js
+```
+
+Phase 8.1's dashboard script: completion/abandonment per document and
+step, top no-result searches, and median time-to-next-step per
+`client_session_id`, read from `analytics_events` (no SELECT policy for
+anyone via the anon key — the service role key is required, and must
+never live in `config.js` or this sandbox). No-ops with a clear message
+if the env vars aren't set.
+
+## tools/ingest_feedback_findings.js
+
+```
+SUPABASE_URL=https://xxxx.supabase.co \
+SUPABASE_SERVICE_ROLE_KEY=... \
+node tools/ingest_feedback_findings.js [--dry-run]
+```
+
+Phase 8.2: pulls unrouted `wrong_or_outdated` rows from the `feedback`
+table and appends each as a `category: 'user_reported'` entry in
+`verifier/findings.jsonl` (the same key shape `record_result.py` writes,
+honestly worded as an unverified report rather than researched
+findings), then marks the row routed. Skips (and reports why) a row
+whose `clause_id` no longer exists in `data/clauses.json`, rather than
+writing a finding against a clause that isn't there. `--dry-run` prints
+what would be written without touching `findings.jsonl` or Supabase.
+
+## tools/error_report_summary.js
+
+```
+SUPABASE_URL=https://xxxx.supabase.co \
+SUPABASE_SERVICE_ROLE_KEY=... \
+node tools/error_report_summary.js [--since 24h]
+```
+
+Phase 9.3: groups and counts client-side error reports from
+`error_reports` (scrubbed before they were ever sent — see
+`account.js`'s `scrubErrorText()`/`parseStackFrames()`), most frequent
+first, with which pages each occurred on and the first few stack frames.
+Real-time alerting is a Supabase Database Webhook, not this script — see
+`DECISIONS.md`'s Phase 9.3 entry for the exact recipe once the project
+owner has a destination (email/Slack) to point it at.
+
+## tools/generate_seo_pages.py / tools/validate_seo_pages.py
+
+```
+python3 tools/generate_seo_pages.py        # writes build/seo/ (gitignored)
+python3 tools/validate_seo_pages.py        # generates into a temp dir and checks it
+```
+
+Phase 8.3: one page per document and one per real, already-verified
+question (`tests/search/golden_queries.json`) the corpus can answer with
+a cited authority clause. `validate_seo_pages.py` fails on a duplicate
+title/description, a too-thin page, or two same-category pages too
+similar — wired into CI on every push.
+
+## Staging and production deploys (Phase 9.3)
+
+`supabase/migrations/` is this project's source of truth for the schema
+going forward (see that directory's own `20261028000000_baseline.sql`
+header for why it exists now and didn't before). CI's `deploy-staging`
+job runs `supabase db push` + `supabase functions deploy` against the
+staging project (`ihlszzsnlcmtmuydkkpk`) on every push to the repo's
+default branch — but only once the project owner adds two repository
+secrets, `SUPABASE_ACCESS_TOKEN` (Account → Access Tokens in the
+Supabase dashboard) and `SUPABASE_STAGING_PROJECT_REF`
+(`ihlszzsnlcmtmuydkkpk`); neither exists yet, so that job currently
+no-ops on every run. Production deploy is deliberately not automated —
+run the same two commands by hand, with the production ref
+(`impurvwwjdgurbjbnydu`), after reviewing what's about to ship:
+
+```
+supabase db push --project-ref impurvwwjdgurbjbnydu
+supabase functions deploy --project-ref impurvwwjdgurbjbnydu
+```
