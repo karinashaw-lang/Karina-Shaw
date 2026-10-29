@@ -765,6 +765,28 @@ a cited authority clause. `validate_seo_pages.py` fails on a duplicate
 title/description, a too-thin page, or two same-category pages too
 similar — wired into CI on every push.
 
+## tools/generate_data_inventory.py (Phase 9.5)
+
+`python3 tools/generate_data_inventory.py` writes
+`PRIVACY_DATA_INVENTORY.md` by parsing the real
+`supabase/schema.sql`/`supabase/migrations/*.sql` table and policy
+definitions and the real `localStorage`/`sessionStorage` key constants
+in `app.js`/`account.js`/`sign.js` — the factual source
+`privacy.html`/`storage-notice.html` are written against. `--check`
+(wired into CI) fails if the committed file is stale. A table or
+storage key the script doesn't recognize is a hard error — add an
+entry to that script's own `TABLE_NOTES`/`LOCAL_KEY_NOTES` dict first.
+
+## lint/copy_lint.py (Phase 9.5)
+
+`python3 lint/copy_lint.py` scans `index.html`, `sign.html`, `app.js`,
+`account.js`, and `sign.js` — deliberately not `privacy.html`/
+`terms.html`/`storage-notice.html`, which correctly use ordinary legal
+language — against `lint/advisory_phrases.json` (the same list
+`tools/validate_corpus.py` already checks corpus text against) and the
+new `lint/enforcement_phrases.json`. Wired into CI; fails on any
+match, with the file and line number.
+
 ## Staging and production deploys (Phase 9.3)
 
 `supabase/migrations/` is this project's source of truth for the schema
@@ -783,4 +805,56 @@ run the same two commands by hand, with the production ref
 ```
 supabase db push --project-ref impurvwwjdgurbjbnydu
 supabase functions deploy --project-ref impurvwwjdgurbjbnydu
+```
+
+## Backup and restore (Phase 9.6)
+
+`.github/workflows/backup.yml` runs daily (and on demand via
+`workflow_dispatch`): `tools/backup_supabase.sh` dumps the production
+database with `supabase db dump`, then `tools/restore_test.sh` restores
+that exact dump into a disposable Postgres container the job itself
+provisions (never a real Supabase project) and confirms every table
+this project owns comes back. The dump is uploaded as a 14-day CI
+artifact, never committed — see `backups/` in `.gitignore`.
+
+Both steps no-op (not fail) until the project owner adds two more
+repository secrets: `SUPABASE_ACCESS_TOKEN` (the same one
+`deploy-staging` uses, if already added) and `SUPABASE_PROD_PROJECT_REF`
+(`impurvwwjdgurbjbnydu`). Until then, the restore-test half of the job
+still runs on every trigger with nothing to restore, which is expected.
+
+To back up or restore by hand:
+
+```
+SUPABASE_ACCESS_TOKEN=... ./tools/backup_supabase.sh production impurvwwjdgurbjbnydu
+# or: ./tools/backup_supabase.sh staging ihlszzsnlcmtmuydkkpk
+
+RESTORE_DB_URL=postgresql://postgres:postgres@localhost:5432/postgres \
+  ./tools/restore_test.sh backups/production_<timestamp>.sql
+```
+
+`RESTORE_DB_URL` must point at a disposable Postgres instance with no
+tables of its own yet — never a real project's database; the script
+replays the dump's `CREATE TABLE` statements directly.
+
+## Corpus snapshots (Phase 9.6)
+
+`tools/corpus_snapshot.py --tag <name>` writes
+`corpus_snapshots/<name>.json`: a SHA-256 hash of every corpus source
+file (`data/`, `schema/`, `config/staleness.json`, `config/seo.json`,
+`search/`, `filing/next_steps.json`, `index/citation_to_clauses.json`,
+`tiers.json`), the current git commit, and the document/clause/
+citation counts. Unlike `tiers.json` or the citation index, a snapshot
+is a permanent record — the tool refuses to overwrite one that already
+exists under the same tag — so running it without `--tag` only prints
+a preview and writes nothing.
+
+Tag a real release by running this right before (or right after)
+tagging it in git, and commit the resulting file alongside:
+
+```
+python3 tools/corpus_snapshot.py --tag v1
+git add corpus_snapshots/v1.json
+git commit -m "Corpus snapshot for v1"
+git tag -a v1 -m "v1"
 ```

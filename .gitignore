@@ -9,3 +9,12 @@ node_modules/
 # regenerated from the corpus, not hand-authored -- a build artifact,
 # not project content (see DECISIONS.md).
 build/
+
+# Phase 9.6: tools/backup_supabase.sh's output. A real database dump
+# can contain real user emails, signatures, and document contents --
+# this must never land in the repository, gitignore or not that's not
+# a line of defense to rely on alone, but it's the first one. Real
+# backups live as short-retention CI artifacts (.github/workflows/backup.yml)
+# or wherever the project owner's own backup storage is, never in git.
+backups/
+

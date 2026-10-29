@@ -44,6 +44,7 @@ jobs:
           python3 tests/tools/test_generate_seo_pages.py -v
           python3 tests/lint/test_copy_lint.py -v
           python3 tests/tools/test_generate_data_inventory.py -v
+          python3 tests/tools/test_corpus_snapshot.py -v
       - name: Generate and validate SEO pages
         run: |
           python3 tools/generate_seo_pages.py

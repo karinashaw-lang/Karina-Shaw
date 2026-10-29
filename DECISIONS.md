@@ -2443,3 +2443,94 @@ notice and add it, same limitation `lint/advisory_phrases.json`
 already had for corpus text. The `[contact email]` placeholders in
 `privacy.html`/`terms.html` need the project owner to fill in before
 either page is actually published.
+
+## Phase 9.6: backup and recovery
+
+**Backup uses the Supabase CLI's own `db dump`, not raw `pg_dump`
+against a direct connection string.** This sandbox genuinely has
+`pg_dump`/`psql` installed (confirmed by checking directly — unlike
+most of this project's credential gaps, this one wasn't assumed), but
+using them from here would mean either fabricating a direct Postgres
+connection string this session was never given, or violating the
+project's own standing rule against a direct psql/raw-TCP connection
+from this sandbox. `supabase db dump --project-ref <ref>` authenticates
+with the same `SUPABASE_ACCESS_TOKEN` the existing `deploy-staging`
+job already uses — one consistent credential shape across every
+Supabase CLI operation in this project, not a second one invented for
+this phase. `tools/backup_supabase.sh` no-ops cleanly (exit 0) without
+that token or the CLI itself, same shape as every other credentials-
+gated script here.
+
+**The restore test runs for real in CI, not just as a documented,
+unverified recipe — because it's the one piece of this phase that
+doesn't need Supabase credentials at all.** `tools/restore_test.sh`
+takes a plain Postgres connection string to restore *into*, and
+`.github/workflows/backup.yml`'s job provisions that target itself
+(a `services: postgres:16` container — Docker, which this project
+would otherwise reach for here, has no running daemon in this
+sandbox, but a GitHub Actions service container needs none of that
+locally; it's the runner's own job, not this sandbox's). That means
+the restore-and-verify half of the pipeline is real, CI-executed, and
+checked on every scheduled run (and every `workflow_dispatch`), even
+though the backup-*creation* half still can't be exercised from this
+sandbox and stays credentials-gated like everything else Supabase-
+shaped here. Verified the script's own argument/credential-checking
+paths directly in this sandbox (missing args, missing
+`RESTORE_DB_URL`) since those don't need a real Postgres server to
+exercise.
+
+**`EXPECTED_TABLES` in `restore_test.sh` is a second, hand-copied
+list of the same 11 table names `tools/generate_data_inventory.py`
+already parses out of the SQL files — a deliberate, acknowledged
+duplication, not an oversight.** Sharing one source of truth across a
+bash script and a Python tool for one short list wasn't worth adding
+a cross-language dependency (having the bash script shell out to the
+Python tool just to get a list, or having the Python tool emit a
+bash-sourceable file) over. If the two ever drift, `tools/
+generate_data_inventory.py --check` (already in CI) will catch a new
+table missing its privacy annotation long before anyone notices
+`restore_test.sh`'s copy is stale — not a complete substitute for one
+shared list, but a real backstop, recorded here so the duplication is
+a decision, not a trap for later.
+
+**Backups are a short-retention CI artifact, never a git-committed
+file — this isn't a style preference, it's the one mistake in this
+whole phase that would actually be bad.** A real database dump can
+contain real user emails (`auth.users`), real signature images and
+IPs, real document contents. `backups/` is in `.gitignore`, the
+workflow uploads the dump only to GitHub Actions' own 14-day
+artifact storage (access-controlled the same way this repository's
+other Actions runs already are), and nothing in this phase writes a
+dump anywhere git would ever see it. Long-term backup retention
+beyond that 14-day window needs a real destination (encrypted cloud
+storage, specifically) this project has no credentials for — same
+"documented recipe once there's a real destination, not a
+fabricated one" shape as the error-reporting alerting recipe in
+Phase 9.3.
+
+**Corpus snapshots are a permanent archive, not a regenerated single
+source of truth — the opposite shape from `tiers.json`/the citation
+index/the SEO pages.** `tools/corpus_snapshot.py --tag <name>`
+refuses to overwrite a snapshot that already exists under that tag,
+on purpose: the entire point is an exact, independently verifiable
+(SHA-256 per file) record of what the corpus looked like at a past
+release, which a `--check`/regenerate-in-place tool would defeat.
+Deliberately did not cut a real tagged snapshot (or a real git tag)
+this session — there's no actual release happening right now, this
+is ongoing development on a feature branch, and fabricating a `v1`
+with no real release behind it would misrepresent the project's
+actual release history to whoever reads `corpus_snapshots/` later.
+Built and tested the tool itself (5 checks against a synthetic
+corpus dir, verifying both the permanent-write and refuse-to-
+overwrite behavior) and documented the exact procedure for the
+project owner's first real release in `tools/README.md`, same
+treatment as every other "real tool, no real event to run it against
+yet" piece of this phase.
+
+**Not done this pass**: the two new backup secrets
+(`SUPABASE_ACCESS_TOKEN` — likely already added for `deploy-staging`
+— and `SUPABASE_PROD_PROJECT_REF`) aren't set, so `backup.yml`'s
+dump step has never actually run against the real production
+project; cutting the project's first real version tag and corpus
+snapshot is a release decision for the project owner, not something
+to simulate here.

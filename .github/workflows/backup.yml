@@ -1,0 +1,73 @@
+name: Backup
+
+on:
+  # Phase 9.6: "document and script a backup of the Supabase table(s),
+  # a restore test...". Daily, offset off the hour (GitHub's own
+  # guidance: schedules at common times like :00 queue behind
+  # everyone else's). Also runnable on demand via workflow_dispatch.
+  schedule:
+    - cron: '17 9 * * *'
+  workflow_dispatch: {}
+
+jobs:
+  backup-and-restore-test:
+    name: Backup production and verify it restores
+    runs-on: ubuntu-latest
+    # A real, disposable Postgres this job restores into -- never the
+    # Supabase project itself. Needs no Supabase credentials at all,
+    # so the restore-test half of this job can run even before the
+    # project owner has added the backup secrets below (it just has
+    # nothing to restore yet in that case -- see the credentials check).
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_PASSWORD: postgres
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check backup credentials are configured
+        id: check
+        run: |
+          if [ -z "${{ secrets.SUPABASE_ACCESS_TOKEN }}" ] || [ -z "${{ secrets.SUPABASE_PROD_PROJECT_REF }}" ]; then
+            echo "configured=false" >> "$GITHUB_OUTPUT"
+            echo "SUPABASE_ACCESS_TOKEN/SUPABASE_PROD_PROJECT_REF not set -- backup skipped. See tools/README.md."
+          else
+            echo "configured=true" >> "$GITHUB_OUTPUT"
+          fi
+      - uses: supabase/setup-cli@v1
+        if: steps.check.outputs.configured == 'true'
+        with:
+          version: latest
+      - name: Back up production
+        if: steps.check.outputs.configured == 'true'
+        run: ./tools/backup_supabase.sh production "${{ secrets.SUPABASE_PROD_PROJECT_REF }}"
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+      - name: Restore test
+        if: steps.check.outputs.configured == 'true'
+        run: |
+          DUMP_FILE=$(ls -t backups/*.sql | head -1)
+          ./tools/restore_test.sh "$DUMP_FILE"
+        env:
+          RESTORE_DB_URL: postgresql://postgres:postgres@localhost:5432/postgres
+      - name: Upload backup artifact
+        if: steps.check.outputs.configured == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: supabase-backup
+          # Never committed to the repository (see backups/ in
+          # .gitignore) -- a short-retention CI artifact only,
+          # access-controlled the same way the rest of this repo's
+          # Actions runs are. Long-term backup storage is the project
+          # owner's own call once they have a real destination for it,
+          # same "documented recipe, not a built feature" shape as the
+          # error-reporting alerting recipe in DECISIONS.md.
+          path: backups/*.sql
+          retention-days: 14

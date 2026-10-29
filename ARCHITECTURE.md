@@ -911,6 +911,32 @@ caught one genuine issue: the cross-document consistency checker's
 note telling a user a mismatch was "worth a second look" — a "what to
 do" nudge, not a description — now reworded to state only the fact.
 
+## Backup and recovery (Phase 9.6)
+
+`.github/workflows/backup.yml` runs daily (and on demand):
+`tools/backup_supabase.sh` dumps production via the Supabase CLI's own
+`db dump` (the same `SUPABASE_ACCESS_TOKEN` credential `deploy-staging`
+already uses, not a raw Postgres connection string this project has
+never held), then `tools/restore_test.sh` restores that exact dump
+into a disposable Postgres service container the job provisions
+itself and confirms every table this project owns comes back. The
+restore-and-verify half needs no Supabase credentials and already
+runs for real on every trigger; the dump-creation half is gated behind
+two repo secrets (`SUPABASE_ACCESS_TOKEN`, `SUPABASE_PROD_PROJECT_REF`)
+the project owner hasn't added yet. Dumps are never committed —
+uploaded only as a 14-day CI artifact (`backups/` is gitignored),
+since a real dump can contain real emails, signatures, and document
+content.
+
+`tools/corpus_snapshot.py --tag <name>` writes a permanent, never-
+overwritten manifest (`corpus_snapshots/<name>.json`): a SHA-256 hash
+of every corpus source file, the git commit, and the document/clause/
+citation counts — the opposite shape from `tiers.json`/the citation
+index, which are single, regenerated-in-place files `--check` keeps
+current. No real snapshot has been cut yet, since no real release has
+happened; the procedure for the project's first one is in
+`tools/README.md`.
+
 ## Programmatic SEO pages (Phase 8.3)
 
 `tools/generate_seo_pages.py` builds one page per document (what it
