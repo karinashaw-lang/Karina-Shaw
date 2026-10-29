@@ -2704,3 +2704,52 @@ library yet." — never a least-bad guess — and a matched clause always
 shows "Resembles"/"May resemble" based on `confidence`, never a
 stronger claim. Nothing needed to change here; stated plainly rather
 than silently re-doing already-correct work.
+
+## Phase 11: ROADMAP.md
+
+**Scoped, did not build, per the master plan's own explicit
+instruction.** `ROADMAP.md` covers all four named items (PWA/mobile,
+multi-language, password sign-in, admin tooling) with real effort
+estimates and dependencies grounded in this project's actual
+architecture (what's already vendored/offline-capable for the PWA
+note, what RLS/role concepts don't exist yet for the admin-tooling
+note), not generic boilerplate that would read the same for any
+project.
+
+**Password-based sign-in gets an explicit "no," since the master
+plan asks for a decision, not a neutral scope note.** The reasoning
+(in `ROADMAP.md` itself) leans on two facts already established
+elsewhere in this project, not assumed: `auth_leaked_password_protection`
+is a vendor-recommended safeguard this project has *already* flagged
+as unconfigured for the Auth system it has today (see this file's
+earliest entries), and a password reset flow would still need the
+same email-based recovery channel magic-link sign-in already uses —
+so passwords would add a second credential without removing the one
+dependency (email access) they'd be working around. Framed as
+reversible: revisit if real user feedback gives a concrete reason,
+not treated as a permanent decision made unilaterally here.
+
+**Multi-language's biggest real finding: the corpus, not the UI, is
+almost the entire cost, and it's the one place a bad translation is
+actively dangerous, not just imperfect.** Checked this directly
+rather than assuming proportions — the UI chrome is a few hundred
+short strings; the corpus is 740 documents' worth of titles/
+descriptions plus 6,610 clauses' titles/bodies/gaps plus ~4,000 field
+`whyWeAsk`/`helpText` instances, nearly all of it legal text. The
+recommendation (start with UI + a small, verified pilot of 10-20
+documents, not the full corpus at once) deliberately mirrors this
+project's own wave-based, verified-growth history rather than
+proposing a method the project itself doesn't already practice.
+
+**Admin tooling's real blocking dependency, stated plainly: there is
+no admin-role concept anywhere in this project today.** Every
+signed-in user is just "a user" under today's RLS policies — building
+any of the four named admin screens (tier dashboard, feedback inbox,
+findings queue, clause takedown) means building that foundation
+first, with the same adversarial-RLS-testing discipline this project
+already applies to every other table (Phase 7.1 onward), not skipping
+it because this is "just an internal tool."
+
+**Not done this pass, by design**: nothing in `ROADMAP.md` was
+implemented — scoping and estimating is the entire deliverable for
+Phase 11, exactly as the master plan states.
