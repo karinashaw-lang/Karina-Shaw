@@ -152,6 +152,25 @@ const { chromium } = require('playwright');
     console.log('OK   no CSP violations');
   }
 
+  // Phase 9.5: the standalone legal-notice pages. No app state to
+  // wait on -- just confirm each one loads clean (no console errors,
+  // no CSP violations under its own, tighter policy) and actually
+  // carries the draft-review notice the master plan requires, rather
+  // than silently becoming a real, no-longer-draft policy by omission.
+  for (const file of ['privacy.html', 'terms.html', 'storage-notice.html']) {
+    const before = errs.length;
+    await p.goto(`http://localhost:8933/${file}`, { waitUntil: 'networkidle' });
+    const hasDraftNotice = await p.evaluate(() => !!document.querySelector('.legal-draft-notice'));
+    const newErrs = errs.slice(before);
+    // Same sandbox-vs-CI distinction as the top-level CSP check above:
+    // a blocked Google Fonts request is expected here (route() aborts
+    // it on purpose), a CSP violation is not, in either environment.
+    const newCspViolations = newErrs.filter(e => /Content Security Policy|Refused to/i.test(e));
+    const bad = !hasDraftNotice || newCspViolations.length > 0;
+    if (bad) ok = false;
+    console.log((bad ? 'FAIL ' : 'OK   ') + `${file}: draft notice present: ${hasDraftNotice}, CSP violations: ${newCspViolations.length}`);
+  }
+
   await b.close();
   if (!ok) { console.log('\nFAILED'); process.exit(1); }
   console.log('\nregression passed');

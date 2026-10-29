@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self'; base-uri 'self';" />
+  <title>Cookie/Storage Notice — Groundtruth</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app legal">
+    <div class="topbar">
+      <div class="wordmark">Ground<span>truth</span></div>
+    </div>
+    <h1 tabindex="-1">Cookie/Storage notice</h1>
+
+    <div class="legal-draft-notice">
+      <strong>Draft — not yet reviewed by an attorney or published as final.</strong>
+      This is not legal advice. It describes what the product actually stores in your browser
+      today, kept in sync with the code by <code>tools/generate_data_inventory.py</code>.
+    </div>
+
+    <h2>Groundtruth does not use cookies</h2>
+    <p>Nothing on this site sets a cookie — not for tracking, not for preferences, not for
+    anything else. Everything below is <code>localStorage</code> or <code>sessionStorage</code>,
+    which work differently from cookies in one important way: they are never sent to a server
+    automatically. A site can only read its own storage when you're actually on that site, and
+    nothing here is shared with any other site.</p>
+
+    <h2>What's stored in localStorage</h2>
+    <ul>
+      <li><code>groundtruth-draft</code> — your in-progress answers for whichever document
+      you're currently filling out.</li>
+      <li><code>groundtruth-library</code> — every document you've saved, with its answers and
+      version history.</li>
+      <li><code>groundtruth-promises</code> — the free-text list you've typed into the
+      "Promises" tracker.</li>
+      <li><code>groundtruth-analytics-opt-out</code> — whether you've turned off analytics from
+      the Account screen.</li>
+      <li><code>sb-&lt;project-ref&gt;-auth-token</code> — if you sign in, your current login
+      session, written by the Supabase client library itself rather than this project's own code.</li>
+    </ul>
+    <p>All of these persist until you remove them (either from within the app, where each
+    feature has its own delete action, or by clearing this site's data in your browser) or until
+    you clear your browser's storage yourself. None of them are sent anywhere unless the
+    specific feature they back is one that syncs to an account you've created — see the
+    <a href="privacy.html">Privacy Policy</a> for which features do.</p>
+
+    <h2>What's stored in sessionStorage</h2>
+    <ul>
+      <li><code>groundtruth-analytics-session</code> — a random id grouping this browser tab's
+      own analytics events together. It is not a persistent identifier: it's generated fresh
+      and disappears the moment you close the tab, and nothing about it lets a later visit be
+      connected back to this one.</li>
+    </ul>
+
+    <h2>The full, current list</h2>
+    <p>The exact list above is generated from the real app code, not maintained separately from
+    it — see <code>PRIVACY_DATA_INVENTORY.md</code> in the project repository for the
+    always-current version, including what's additionally stored in the database if you create
+    an account.</p>
+
+    <h2>No third-party trackers</h2>
+    <p>This site loads no third-party analytics, advertising, or tracking script of any kind.
+    The only third-party network requests it makes at all are to Google Fonts (for the
+    typefaces used on this page) and, for app pages, to Supabase (only if you've created an
+    account and are signed in).</p>
+
+    <h2>Controlling this</h2>
+    <p>Most browsers let you clear a single site's storage from their settings, or block it
+    entirely for sites you choose. Clearing it here removes your local drafts, library, and
+    promises permanently — anything not also synced to an account cannot be recovered afterward.</p>
+
+    <nav class="legal-footer-nav" aria-label="Legal pages">
+      <a href="index.html">Groundtruth</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+    </nav>
+  </div>
+</body>
+</html>

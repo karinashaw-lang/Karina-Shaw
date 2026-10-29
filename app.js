@@ -514,7 +514,7 @@ function renderLibrary() {
 
       const note = document.createElement('p');
       note.className = 'consistency-note';
-      note.textContent = 'This might be intentional — the same field can reasonably hold different values in different documents. Worth a second look if it was meant to be the same.';
+      note.textContent = 'This might be intentional — the same field can hold a different value in each document.';
       block.appendChild(note);
 
       consistencyEl.appendChild(block);
@@ -933,8 +933,8 @@ function renderPromises() {
 // appears, exactly as typed, and lets whoever's looking make sense of
 // it. A name spelled two different ways across documents shows up as
 // two separate entries here, same as the consistency checker already
-// treats that as worth a second look rather than something to guess
-// about.
+// just reports a difference rather than guessing which value is
+// right.
 function collectRelationships() {
   const byName = new Map();
   loadLibrary().forEach(entry => {

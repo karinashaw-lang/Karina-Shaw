@@ -164,6 +164,46 @@ h1{
 .draft-banner-actions{ display:flex; gap:8px; flex:none; }
 .draft-banner-actions button{ padding:7px 14px; font-size:12px; }
 
+/* ---------- legal-notice pages (Phase 9.5): privacy / terms / storage ---------- */
+.legal-draft-notice{
+  background:var(--flag-soft);
+  border:1px solid var(--flag);
+  border-radius:6px;
+  padding:14px 18px;
+  margin:0 0 32px;
+  font-size:14.5px;
+  color:var(--flag-ink);
+}
+.legal h2{
+  font-family:'Fraunces', Georgia, serif;
+  font-weight:600;
+  font-size:22px;
+  margin:36px 0 10px;
+}
+.legal h3{
+  font-size:16.5px;
+  font-weight:600;
+  margin:22px 0 8px;
+}
+.legal p, .legal li{ margin:0 0 10px; }
+.legal ul, .legal ol{ padding-left:22px; }
+.legal code{
+  font-family:'IBM Plex Mono', ui-monospace, monospace;
+  font-size:0.9em;
+  background:var(--surface-2);
+  padding:1px 5px;
+  border-radius:4px;
+}
+.legal-footer-nav{
+  margin-top:40px;
+  padding-top:16px;
+  border-top:1px solid var(--line);
+  font-family:'IBM Plex Mono', ui-monospace, monospace;
+  font-size:12px;
+  display:flex;
+  gap:16px;
+}
+
 /* ---------- category filter ----------
    Self-select browsing by category — not a "describe your situation"
    input. This filters existing, plainly-described documents; it

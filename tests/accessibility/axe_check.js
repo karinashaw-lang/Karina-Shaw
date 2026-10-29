@@ -130,6 +130,12 @@ async function forEachTheme(page, fn) {
     await scan(page, `screen-output: ${docId}`);
   }
 
+  // ---- Phase 9.5: the new standalone legal-notice pages ----
+  for (const file of ['privacy.html', 'terms.html', 'storage-notice.html']) {
+    await page.goto(`http://localhost:8933/${file}`, { waitUntil: 'networkidle' });
+    await forEachTheme(page, async theme => { await scan(page, `${file} (${theme})`); });
+  }
+
   await browser.close();
 
   console.log(`\n${failures.length === 0 ? 'OK' : 'FAIL'}: ${failures.length} serious/critical violation(s) across every screen + ${sampledIds.length} sampled documents, both themes.`);

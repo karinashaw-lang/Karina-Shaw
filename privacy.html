@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Phase 9.5. This page loads no script of any kind and makes no
+       network request beyond the stylesheet's own font import, so its
+       CSP is tighter than either index.html's or sign.html's. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self'; base-uri 'self';" />
+  <title>Privacy Policy — Groundtruth</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app legal">
+    <div class="topbar">
+      <div class="wordmark">Ground<span>truth</span></div>
+    </div>
+    <h1 tabindex="-1">Privacy Policy</h1>
+
+    <div class="legal-draft-notice">
+      <strong>Draft — not yet reviewed by an attorney or published as final.</strong>
+      This describes what the product actually does today, generated in part from
+      <code>PRIVACY_DATA_INVENTORY.md</code>, which is itself generated from the real
+      database schema and app code rather than written by hand. It is not legal advice,
+      and it is not yet the project's final, in-effect policy.
+    </div>
+
+    <p class="lede">Groundtruth is a document-assembly tool. Most of what it does happens
+    entirely in your browser, with no account and no data sent anywhere. This page
+    describes the small amount of information involved when you do create an account,
+    submit feedback, or use the sharing/signing feature.</p>
+
+    <h2>What stays only in your browser</h2>
+    <p>Filling out a document, saving it to your library, and tracking "promises" all work
+    with no account at all, stored in your browser's own <code>localStorage</code>. Nothing
+    about this reaches Groundtruth or anyone else unless you choose to create an account and
+    sync. See <code>PRIVACY_DATA_INVENTORY.md</code> for the exact list of what's stored this
+    way and how to delete each piece.</p>
+
+    <h2>What we collect if you create an account</h2>
+    <p>An account needs only an email address, used to send you a one-time sign-in link —
+    there is no password to set or to be compromised elsewhere. Supabase, the database
+    and authentication service this project runs on, stores that email address and basic
+    session metadata (when you signed in, your session's expiry) in its own <code>auth.users</code>
+    table.</p>
+    <p>Signing in additionally mirrors your saved documents, their version history, and a
+    record of each document you generate (which clauses it used and when, never your
+    answers) to the database, so they sync across devices and so you have an audit trail.
+    The full table-by-table list — every column, who can read it, and how it's deleted — is
+    in <code>PRIVACY_DATA_INVENTORY.md</code>.</p>
+
+    <h2>What we collect without an account</h2>
+    <ul>
+      <li><strong>Usage analytics</strong> (which step of a wizard was reached, which document
+      was opened or exported, what was searched) — carries no name, email, or account link
+      of any kind, and no IP address. Turned off entirely from the Account screen's analytics
+      toggle.</li>
+      <li><strong>Error reports</strong> (a JavaScript error and its stack trace) — scrubbed in
+      your browser before it's ever sent, to strip anything that looks like an email address
+      or a long quoted value, before it leaves your device.</li>
+      <li><strong>Feedback</strong> you type into the in-app feedback form — usable without
+      signing in.</li>
+      <li><strong>A signature</strong>, if someone signs a document you share with them — their
+      typed or drawn signature and the IP address they signed from, visible only to the
+      document's owner.</li>
+    </ul>
+
+    <h2>What we never collect</h2>
+    <ul>
+      <li>No cookies of any kind (see the <a href="storage-notice.html">Cookie/Storage notice</a>).</li>
+      <li>No third-party analytics, advertising, or tracking script.</li>
+      <li>No IP address stored anywhere except the one signature case above, and a short-lived
+      internal counter that exists only to slow down abusive request bursts.</li>
+      <li>We do not sell personal information, and do not share it with third parties for
+      advertising.</li>
+    </ul>
+
+    <h2>How long we keep it, and how to delete it</h2>
+    <p>The Account screen has two self-service tools that cover most of this: "export all my
+    data" (every row associated with your account, in one file) and "delete my account" (which
+    removes your account and, through the database's own cascading-delete rules, every row
+    tied to it — documents, versions, audit entries, shares, and signatures on shares you
+    created). Analytics events, error reports, and anonymously submitted feedback carry no
+    identifier connecting them back to you in the first place, so there is nothing to locate
+    by request there — not because it is deleted on request, but because it was never tied to
+    an identifiable person to begin with. Full retention detail, table by table, is in
+    <code>PRIVACY_DATA_INVENTORY.md</code>.</p>
+
+    <h2>Your California privacy rights (CCPA/CPRA)</h2>
+    <p>If you are a California resident, the categories below describe how each right maps
+    onto the real tools this product has today — not a generic list copied from elsewhere.</p>
+    <ul>
+      <li><strong>Right to know / access</strong> — the Account screen's "export all my data"
+      gives you everything tied to your account, in one request, with no waiting period.</li>
+      <li><strong>Right to delete</strong> — the Account screen's "delete my account" removes
+      your account and everything tied to it, immediately. As above, analytics/error/anonymous
+      feedback data has no identifier to delete by, since it was never linked to you.</li>
+      <li><strong>Right to correct</strong> — you can edit and regenerate any document in your
+      library yourself at any time. There is currently no separate tool to edit a past audit-log
+      entry or a signature record (both exist specifically as a historical record of what was
+      generated or signed at the time, which correcting after the fact would undermine the
+      purpose of); contact us if one of those needs correcting for a specific reason.</li>
+      <li><strong>Right to opt out of sale or sharing</strong> — we do not sell or share personal
+      information with third parties, so there is nothing to opt out of in that sense. The
+      separate analytics toggle on the Account screen controls whether usage events are
+      recorded at all, which is a different thing and is on by default.</li>
+      <li><strong>Non-discrimination</strong> — exercising any of the above never changes what
+      the product costs or what it does for you.</li>
+    </ul>
+    <p>To exercise any right not covered by the in-app tools above, contact
+    <code>[project owner's contact email — to be added before this page is published]</code>.</p>
+
+    <h2>Children's privacy</h2>
+    <p>Groundtruth is not directed to children, and we do not knowingly collect personal
+    information from anyone under 13.</p>
+
+    <h2>Changes to this policy</h2>
+    <p>If this product's real data practices change, this page will change to describe them
+    accurately — that is the entire reason it is generated against the actual schema and app
+    code rather than written once and left to drift.</p>
+
+    <nav class="legal-footer-nav" aria-label="Legal pages">
+      <a href="index.html">Groundtruth</a>
+      <a href="terms.html">Terms of Service</a>
+      <a href="storage-notice.html">Cookie/Storage notice</a>
+    </nav>
+  </div>
+</body>
+</html>

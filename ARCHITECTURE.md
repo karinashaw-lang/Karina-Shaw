@@ -872,6 +872,45 @@ an unauthenticated caller at the gateway before the function body
 ever runs — a materially higher bar than the two public, token-only
 functions this is actually protecting.
 
+## Privacy and legal-copy surfaces (Phase 9.5)
+
+`PRIVACY_DATA_INVENTORY.md` is generated, not hand-written:
+`tools/generate_data_inventory.py` parses every `create table`/`create
+policy` in `supabase/schema.sql` and `supabase/migrations/*.sql`, and
+every `localStorage`/`sessionStorage` key constant in `app.js`/
+`account.js`/`sign.js`, so it can never silently drift from what the
+code actually does. A table or key the script doesn't recognize is a
+hard error (`TABLE_NOTES`/`LOCAL_KEY_NOTES` in that file), not a gap
+that ships quietly. `--check` (wired into CI) detects staleness the
+same way `tools/tiering.py --check` does for `tiers.json`.
+
+`privacy.html`, `terms.html`, and `storage-notice.html` are new,
+standalone pages (same pattern as `sign.html` — no account, and here
+no JavaScript at all, so their CSP is the tightest in the project:
+`default-src 'none'`). Each opens with a `.legal-draft-notice` banner
+stating plainly it hasn't been reviewed by an attorney — a real
+requirement from the master plan, not an afterthought — and is linked
+from a new footer on `index.html` (every screen) and `sign.html` (a
+signer's own signature/IP is personal data too). `privacy.html`'s
+CCPA/CPRA section maps each right to a mechanism that already exists
+(data export, account deletion, editing/regenerating your own saved
+documents) rather than generic boilerplate, including the honest
+point that anonymous analytics/error/feedback rows have no identifier
+to locate a deletion request *by* — not a gap, the actual design.
+
+`lint/copy_lint.py` is the UI-copy half of "inform, never advise";
+`tools/validate_corpus.py`'s existing check against
+`lint/advisory_phrases.json` already covered corpus text (whyWeAsk,
+search copy, filing/next_steps.json) and wasn't touched. The new
+script scans `index.html`/`sign.html`/`app.js`/`account.js`/`sign.js`
+(deliberately not the three legal pages above, which correctly use
+ordinary contract language like "you must") against both that list
+and a new `lint/enforcement_phrases.json` (claims like "complies
+with", "is enforceable in court"). Running it against the real app
+caught one genuine issue: the cross-document consistency checker's
+note telling a user a mismatch was "worth a second look" — a "what to
+do" nudge, not a description — now reworded to state only the fact.
+
 ## Programmatic SEO pages (Phase 8.3)
 
 `tools/generate_seo_pages.py` builds one page per document (what it

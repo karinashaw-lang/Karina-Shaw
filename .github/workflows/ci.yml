@@ -19,6 +19,10 @@ jobs:
         run: python3 tools/tiering.py --check
       - name: Check the citation index is up to date
         run: python3 tools/build_citation_index.py --check
+      - name: Check the data inventory is up to date
+        run: python3 tools/generate_data_inventory.py --check
+      - name: Copy lint (advisory/enforcement-claim phrasing in app copy)
+        run: python3 lint/copy_lint.py
       - name: Test the tooling itself
         run: |
           python3 tests/merge_guard/test_merge_guard.py -v
@@ -38,6 +42,8 @@ jobs:
           python3 tests/validate_corpus/test_search_data.py -v
           python3 tests/validate_corpus/test_filing_next_steps.py -v
           python3 tests/tools/test_generate_seo_pages.py -v
+          python3 tests/lint/test_copy_lint.py -v
+          python3 tests/tools/test_generate_data_inventory.py -v
       - name: Generate and validate SEO pages
         run: |
           python3 tools/generate_seo_pages.py

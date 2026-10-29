@@ -2290,3 +2290,156 @@ don't compound (the account either still exists or it doesn't).
 Scoped the new work to the two functions actually exposed to
 anonymous abuse rather than adding rate limiting everywhere on
 principle.
+
+## Phase 9.5: privacy and legal-copy surfaces
+
+**The data inventory is generated from the real schema and app code,
+not retyped independently of it, and fails loudly on anything it
+doesn't recognize.** `tools/generate_data_inventory.py` parses every
+`create table`/`create policy` statement in `supabase/schema.sql` and
+`supabase/migrations/*.sql`, and every `localStorage`/`sessionStorage`
+key constant in `app.js`/`account.js`/`sign.js`, into
+`PRIVACY_DATA_INVENTORY.md`. The one thing that can't come from
+parsing SQL — what a table is actually *for*, in plain language, and
+its retention/deletion story — is a small hand-written
+`TABLE_NOTES`/`LOCAL_KEY_NOTES` dict in the script; a table or key
+with no entry there is a hard `SystemExit`, not a warning, so nothing
+touching user data can ship without a human having written down what
+it is. `--check` detects staleness the same way `tools/tiering.py
+--check` does for `tiers.json`, wired into CI right after the
+citation-index check. Confirmed accurate against the live schema by
+cross-checking: Supabase's `createClient()` call in `account.js` sets
+no custom `storage`/`auth` option, so its session token lives in
+`localStorage` under the key the `@supabase/supabase-js` library
+names itself (`sb-<project-ref>-auth-token`) — documented in the
+generated file as a fact about the library's own default, since it's
+never written by this project's own code and so can't be extracted
+the same mechanical way.
+
+**Found and fixed one real "what to do" nudge while auditing the
+contract reader and cross-document consistency wording, as the
+master plan specifically asked.** The contract reader's own wording
+(`app.js`'s `renderIncomingResults()`) was already exactly right —
+"Resembles"/"May resemble"/"Not recognized... yet", and an explicit
+comment stating it must never characterize a passage as good, bad, or
+enforceable. The cross-document consistency checker
+(`computeConsistency()`, flagging the same field id holding two
+different values across saved documents — this *is* the feature
+Phase 10.2 will later expand with dedicated checks for dates/party
+names/amounts/governing law) was almost right: its note read "This
+might be intentional... **Worth a second look if it was meant to be
+the same.**" That closing clause tells the reader what to do about
+the mismatch, not just what it is. Reworded to state only the fact:
+"This might be intentional — the same field can hold a different
+value in each document." Also rewrote a nearby code comment that
+independently used the same banned phrase to describe this behavior
+(`lint/copy_lint.py` scans comments too — see below — so this wasn't
+optional cleanup, the build would have failed on it).
+
+**`lint/copy_lint.py` is new, `lint/advisory_phrases.json` already
+existed.** `tools/validate_corpus.py` already lints *corpus* text
+(whyWeAsk/helpText, search copy, filing/next_steps.json) against
+`lint/advisory_phrases.json` — that coverage predates this phase and
+wasn't touched. What was missing is Groundtruth's *own* voice: the
+literal UI copy in `index.html`, `sign.html`, `app.js`, `account.js`,
+`sign.js`. Added `lint/enforcement_phrases.json` (claims like "is
+enforceable in court", "complies with", "fully compliant") alongside
+the existing advisory list, and `lint/copy_lint.py` to scan the 5 app
+files against both. Deliberately excludes the three new legal pages
+(privacy.html/terms.html/storage-notice.html): a Terms of Service
+correctly says "you must be 18" and "you agree" as ordinary contract
+language, which isn't Groundtruth personally advising a reader about
+*their* situation — the actual thing "inform, never advise" governs.
+Mixing the two scopes would either force a ToS into unnatural English
+or collapse the phrase lists to nothing.
+
+**Dropped "legally binding" from the enforcement list after it
+flagged the app's own correct disclaimers.** A first draft of
+`enforcement_phrases.json` included the bare phrase "legally
+binding". Running the lint against the real files immediately caught
+it hitting `index.html`/`account.js`/`sign.js`'s existing e-signature
+disclaimer — "We make no determination of whether or how a signature
+here is legally binding" — which is the *opposite* of an enforcement
+claim; it's the app correctly declining to make one. A substring lint
+can't tell "X is legally binding" from "we don't determine whether X
+is legally binding" apart, so rather than keep a banned phrase that
+would permanently false-positive on the app's own best practice,
+removed it and kept only unambiguous affirmative-claim phrases that
+have no legitimate disclaiming use in this app's text ("this is
+legally binding", "guarantees compliance", "complies with", and
+similar) — verified each has zero existing hits before committing the
+list. `copy_lint.py` scans raw file text, comments included, on
+purpose (its own module docstring explains why: a comment describing
+real UI wording tends to echo it, which is exactly what happened with
+the "worth a second look" phrase above) — a known, accepted tradeoff
+over building a real JS/HTML tokenizer this project has no other
+need for.
+
+**Privacy Policy, Terms of Service, and Cookie/Storage notice are
+real pages, explicitly marked as drafts.** `privacy.html`,
+`terms.html`, and `storage-notice.html` are standalone pages (same
+"small, separate page" pattern as `sign.html` — no account, no JS at
+all, so their CSP is tighter than either `index.html`'s or
+`sign.html`'s: `default-src 'none'`, nothing but the stylesheet and
+its font import). Each opens with a `.legal-draft-notice` banner
+(new CSS, reusing the `--flag`/`--flag-soft` tokens already used
+elsewhere for attention states) stating plainly that it hasn't been
+reviewed by an attorney and isn't yet the project's in-effect policy
+— the master plan's own instruction, not a hedge added on top of it.
+Linked from a new footer on `index.html` (visible on every screen,
+not just one) and `sign.html` (a signer's signature/IP is personal
+data too, so they get a path to the Privacy Policy without needing
+an account). `privacy.html`'s CCPA/CPRA section maps each right to a
+real, already-built mechanism rather than generic boilerplate:
+access → the Account screen's data export; deletion → account
+deletion (with the honest caveat that anonymous analytics/error/
+feedback rows have no identifier to delete *by*, since they were
+never linked to a person to begin with — not a loophole, the actual
+privacy-protective design); correction → editing and regenerating
+your own library documents, with an honest note that there's no
+separate tool to edit a past audit-log or signature record, since
+both exist specifically as a historical record; opt-out of sale →
+stated plainly that we don't sell or share personal information, so
+there's nothing to opt out of in that specific sense, distinct from
+the pre-existing analytics toggle. The owner-contact email is left as
+an explicit `[to be added before this page is published]` placeholder
+rather than guessed — nothing requires a specific contact address to
+exist for the app's own tools to work, and it's not this session's
+call to publish an address on the project owner's behalf.
+
+**Both new checks verified against the real app, not just written
+and trusted.** Ran `lint/copy_lint.py` against the real files before
+committing (clean) and `tools/generate_data_inventory.py --check`
+(clean). Added the three new pages to `tests/accessibility/
+axe_check.js`'s existing scan (0 serious/critical violations, both
+themes — these are plain static pages, but accessibility matters as
+much here as anywhere, maybe more, since they're the one place a
+visitor reads what the product actually does with their data) and a
+focused check in `tools/regression.js` confirming each page's own
+CSP is violation-free and the draft banner is actually present in
+the DOM (not just in the source, in case a future edit accidentally
+removed the element while leaving the text elsewhere).
+
+**Noted, not fixed: `_scratch_probe`.** `get_advisors` on production
+still shows a stray `public._scratch_probe` table (2 rows, each just
+an integer id, created while probing the destructive-SQL
+confirmation gate's behavior early in this project — see this file's
+very first entries) with RLS enabled and no policies. Checked its
+actual contents directly (`select * from public._scratch_probe`) to
+confirm before writing this: it holds no personal data of any kind
+and is written to by zero app code, so it has no privacy-inventory
+impact and wasn't added to `TABLE_NOTES`. Left in place rather than
+pulled into this phase's scope — the DROP TABLE that would remove it
+hits the same confirmation gate as every other destructive statement
+in this project, so removing it needs the project owner, the same
+handoff already recorded for the `auth_rls_initplan`/
+`multiple_permissive_policies` fixes.
+
+**Not done this pass**: `lint/copy_lint.py`'s phrase lists are a
+reasonable, verified-against-the-real-app starting set, not an
+exhaustive one — a future UI string using different advisory/
+enforcement phrasing than anything seen so far would need a human to
+notice and add it, same limitation `lint/advisory_phrases.json`
+already had for corpus text. The `[contact email]` placeholders in
+`privacy.html`/`terms.html` need the project owner to fill in before
+either page is actually published.
