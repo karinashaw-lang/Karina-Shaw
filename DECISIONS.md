@@ -2753,3 +2753,47 @@ it because this is "just an internal tool."
 **Not done this pass, by design**: nothing in `ROADMAP.md` was
 implemented — scoping and estimating is the entire deliverable for
 Phase 11, exactly as the master plan states.
+
+## Final wrap-up: BUILD_STATUS.md and the mission metrics
+
+**Every number in `BUILD_STATUS.md` was measured by actually running
+the relevant tool against the real repository state, not recalled,
+estimated, or carried forward from an earlier claim.** Re-ran
+`tools/validate_corpus.py`, `tools/tiering.py`, `verifier/report.py`,
+and `node tools/wizard_regression.js` fresh, specifically for this
+document, rather than trusting earlier-session numbers that could
+have drifted as the corpus grew. The exact commands are listed in the
+doc itself so the project owner (or a future session) can reproduce
+every figure independently.
+
+**Trust's verifier-findings figure is reported with its real
+denominator, not just the raw count.** 18 open findings (0 blocker,
+1 major, 17 minor) sounds like a small, reassuring number in
+isolation — stated alongside the fact that it's from a 100-clause
+sample out of 4,980 authority clauses (2.0% of the authority corpus),
+since reporting "18 findings" without that denominator would read as
+far more reassuring than it should.
+
+**Freshness is reported as a real, open, slightly uncomfortable
+finding, not rounded up to "the pipeline works."** The law-change
+watcher's one real detection (Cal. Bus. & Prof. Code § 22757.2,
+discovered 2026-10-01, recorded 2026-10-19) has NOT been reviewed or
+resolved — checked the flagged clause's own `checkedDate` directly
+(still 2026-09-04, predating the detected change) rather than assuming
+a flagged change gets closed out automatically. Reported the real
+elapsed time (10 days since recording, 28 since the statute's own
+update date) and the specific reason it's still open: the same
+`leginfo.legislature.ca.gov` Cloudflare-403 access block already on
+record in `verifier/findings.jsonl`'s own evidence field for an
+unrelated finding, not a new problem invented for this one. Did not
+attempt to force a fix through a network path already known to be
+blocked from this sandbox — handed off explicitly instead, the same
+treatment as every other sandbox-network-limited item in this project.
+
+**Experience and Reach are reported as "not yet measurable," not
+estimated or extrapolated from anything.** Both genuinely require
+real user traffic or a real public deployment, neither of which
+exists. Fabricating a plausible-sounding completion rate or search-
+traffic number would be a worse failure than stating plainly that
+the measurement tools exist and are ready, but have nothing real to
+measure yet.
