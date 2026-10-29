@@ -771,16 +771,45 @@ Profiling that last one found a real ~2s synchronous main-thread block
 in the old `matchPassage()` TF-IDF scoring — the exact scenario the
 master plan names ("move heavy work ... off the main thread with web
 workers if profiling shows jank"). `contract_worker.js` is the fix: it
-duplicates `tokenize()`/`buildClauseIndex()`/`matchPassage()` from
-`app.js` (same tradeoff `sign.js` made for `substitute()` — a Worker's
-global scope has no `document`, so sharing `app.js` directly was never
-an option) and does the actual scoring off the main thread.
-`initContractWorker()` starts it once at load time and hands it
-`state.clauses`; `matchPassages()` is the async main-thread call that
-posts passages to it and resolves `clauseIndex` back to the real
-clause object. `renderIncomingResults()` (now async) shows a plain
+duplicated `tokenize()`/`buildClauseIndex()`/`matchPassage()` from
+`app.js` at the time (same tradeoff `sign.js` made for `substitute()` —
+a Worker's global scope has no `document`, so sharing `app.js`
+directly was never an option) and does the actual scoring off the
+main thread. `initContractWorker()` starts it once at load time and
+hands it `state.clauses`; `matchPassages()` is the async main-thread
+call that posts passages to it and resolves `clauseIndex` back to the
+real clause object. `renderIncomingResults()` (now async) shows a plain
 "Reading…" state while it awaits the round trip, since the main thread
 no longer blocks visibly the way it used to.
+
+### Matching algorithm, eval, and what didn't improve it (Phase 10.1)
+
+The matching algorithm itself (`tokenize`/`buildClauseIndex`/
+`rankPassage`/`matchPassage`, TF-IDF cosine similarity over
+`title + body`) now lives in its own `contract_matcher.js`, loaded by
+`contract_worker.js` via `importScripts()` — pulled out of the Worker
+file so `tools/eval_contract_reader.js` measures the exact algorithm
+that ships, not a second copy. `rankPassage(index, passage, topK)`
+returns every candidate ranked best-first; `matchPassage()` is just
+`rankPassage(..., 1)` with the production threshold
+(`MATCH_THRESHOLD = 0.22`) and confidence label
+(`STRONG_MATCH_THRESHOLD = 0.4`) applied on top.
+
+`tools/eval_contract_reader.js` runs `tests/contract_reader_eval/
+eval_set.json` (55 real-style paraphrased contract passages — 50 with
+a verified-real expected clause, 5 deliberate distractors expecting
+no match) through it and reports top-1/top-3/top-5 accuracy and the
+false-positive rate, gated by measured-baseline-plus-headroom budgets
+the same way `performance_budget.js`'s are. Measured baseline:
+78.0% top-1, 98.0% top-3/top-5, 0/5 false positives. Two candidate
+improvements (bigram features; lowering `MATCH_THRESHOLD`) were
+tried and both made things worse or hit a hard precision/recall
+tradeoff — see `DECISIONS.md` for the actual numbers — so
+`contract_matcher.js`'s scoring is unchanged from Phase 9.2. An
+embedding-based re-rank (the master plan's own "optional" suggestion)
+would be a materially bigger lift this project has no infrastructure
+for yet, and is the most promising real next step given where the
+remaining misses actually sit.
 
 ## Error monitoring and staging (Phase 9.3)
 
@@ -1403,6 +1432,44 @@ tier falls back to `'C'`, a missing signature just doesn't render).
 Full writeup, including the `schemaVersion` naming judgment call and
 why the snapshot stores more than the master plan's literal minimum,
 in `DECISIONS.md`.
+
+## Cross-document consistency (Phase 10.2)
+
+`computeConsistency(entries)` (`app.js`) backs the "My Documents"
+screen's consistency banner: it groups every saved document's field
+answers by field id, and flags any id where more than one distinct
+non-blank value appears across the set. It's deliberately generic
+rather than hand-coded per field type — a mismatched date, a
+mismatched party name, and a mismatched dollar amount are all just
+"the same field id, two different values," which is also how the
+real corpus's own naming convention (`*Date`, `*Name`, shared field
+ids like `companyName`) already works, the same convention `app.js`'s
+Inbox (date detection) and Relationships (per-counterparty history)
+features rely on elsewhere. It reports both differing values
+verbatim and which documents they came from, and nothing more — never
+which value is "right," since nothing in the values themselves can
+tell you that.
+
+It does **not** cover "conflicting governing law," the one example
+the master plan names that genuinely doesn't fit: there is no
+governing-law field anywhere in `schema/fields/` for a user to answer,
+and the corpus is single-jurisdiction by its own foundational scope
+(every citation is California law) — there is structurally nothing
+varying across documents for this check to compare yet. See
+`DECISIONS.md` for why this is a documented gap tied to a real
+precondition (the corpus covering more than one state), not a
+missing feature to build against today's data.
+
+`tests/library/consistency.js` (9 checks, in CI) is this function's
+first dedicated test suite — it had none before this phase. Covers
+the real positive cases (an independent mismatch per field, reported
+with both real values) and the negative ones a shallower test would
+miss (identical values across a shared field, a field only one
+document has, a single saved document, blank/whitespace-only
+answers) — plus one deliberately-kept behavior: a case or whitespace
+difference ("Acme LLC" vs. "acme llc") counts as a real mismatch,
+since normalizing it away would hide exactly the kind of typo this
+feature exists to catch.
 
 ## Filing and next-steps packets (Phase 6.4 — pilot)
 

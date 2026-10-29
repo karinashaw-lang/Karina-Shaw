@@ -765,6 +765,34 @@ a cited authority clause. `validate_seo_pages.py` fails on a duplicate
 title/description, a too-thin page, or two same-category pages too
 similar — wired into CI on every push.
 
+## contract_matcher.js / eval_contract_reader.js (Phase 10.1)
+
+`contract_matcher.js` is the one real copy of the "Read a contract"
+feature's TF-IDF matching algorithm (`tokenize`/`buildClauseIndex`/
+`rankPassage`/`matchPassage`) — pure, DOM-free JavaScript loaded three
+ways: `importScripts()` from `contract_worker.js` (the production
+path, off the main thread), `require()` from Node (this tool and its
+own unit tests, `tests/contract_matcher/test_contract_matcher.js`),
+or a plain `<script>` tag, were one ever needed. It used to be
+duplicated directly inside `contract_worker.js`; pulling it out means
+an eval or an algorithm experiment measures the exact code that ships,
+not a second copy that could quietly drift from it.
+
+```
+node tools/eval_contract_reader.js
+```
+
+Runs `tests/contract_reader_eval/eval_set.json` (55 real-style
+contract passages — 50 with a known-correct expected clause, 5
+deliberate distractors expecting no match) through the real matcher
+and reports top-1/top-3/top-5 ranking accuracy and the false-positive
+rate (a distractor the matcher confidently matched to something
+anyway). Fails CI if any metric drops below the measured-baseline-
+plus-headroom budgets at the top of the file — the same style as
+`tests/performance/performance_budget.js`'s budgets. See
+`DECISIONS.md` for the actual measured numbers these were set against
+and what was tried to improve them.
+
 ## tools/generate_data_inventory.py (Phase 9.5)
 
 `python3 tools/generate_data_inventory.py` writes

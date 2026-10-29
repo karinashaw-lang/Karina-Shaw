@@ -2534,3 +2534,173 @@ dump step has never actually run against the real production
 project; cutting the project's first real version tag and corpus
 snapshot is a release decision for the project owner, not something
 to simulate here.
+
+## Phase 10.2: cross-document consistency — a real test suite, and an honest gap
+
+**`computeConsistency()` (Phase 6.3/the "My Documents" screen) had
+zero dedicated tests before this phase — confirmed by grepping for
+its name across `tests/` and `tools/` before writing any, not
+assumed.** It's already generic over every shared field id rather
+than hand-coded per field type, which means it already covers three
+of the master plan's four named examples (conflicting dates,
+mismatched party names, inconsistent amounts) for free, exactly
+whenever two saved documents share a field id — which is how the
+real corpus actually models all three (the same `*Date`/`*Name`
+naming convention `app.js`'s Inbox and Relationships features already
+rely on). `tests/library/consistency.js` is the dedicated seeded-
+inconsistency suite that gap needed: 9 checks against synthetic
+documents injected into real `state.documents`, run through the
+actual live `computeConsistency()` — not a reimplementation. Covers
+the positive case (a mismatch is flagged, with both real values
+reported verbatim) and, as importantly, the negative cases a naive
+test suite skips: identical values across every shared field are
+never flagged; a field only one document has is never flagged; a
+single saved document never trips it (nothing to compare against);
+a blank or whitespace-only answer is skipped rather than compared as
+a real value.
+
+**One behavior was tested and *kept* on purpose, not fixed: a case or
+whitespace difference ("Acme LLC" vs. "acme llc") counts as a real
+mismatch.** Normalizing case/whitespace before comparing would be an
+easy, tempting change — but it would also silently hide exactly the
+kind of real typo (a company name capitalized differently across two
+documents because someone fat-fingered it) this feature exists to
+surface in the first place. Wrote a test that locks in today's
+behavior precisely so a future change to "helpfully" normalize values
+is a deliberate, recorded decision rather than an accidental side
+effect of some unrelated refactor.
+
+**"Conflicting governing law" is the one named example this phase
+does *not* implement, and that's a finding, not an oversight left
+unstated.** Checked directly rather than assuming: there is no
+governing-law *field* anywhere in `schema/fields/` for a user to
+answer in the first place (only 2 of 6610 clauses in the whole corpus
+are even titled "governing law"/"choice of law," both narrow statutory
+provisions, not a generic per-document boilerplate clause), and every
+citation in this corpus is California law by the project's own
+explicit, foundational scope (see the master plan's "California-
+weighted" framing). There is structurally nothing to compare across a
+user's saved documents here — not "two documents might disagree and
+we're not checking," but "every document in this corpus already
+agrees, because there's only one jurisdiction in play." Building a
+comparison mechanism against data that cannot currently vary would
+be building something to test against a condition the corpus can't
+produce. Revisit this the day the corpus ever covers more than one
+state's law for the same document type — that's the actual
+precondition for this check meaning anything, not a matter of writing
+more code against today's data.
+
+## Phase 10.1: contract reader quality
+
+**Pulled the matching algorithm out of `contract_worker.js` into its
+own `contract_matcher.js` before building anything else, because an
+eval is worthless against a copy of the code that doesn't actually
+ship.** Phase 9.2 duplicated `tokenize()`/`buildClauseIndex()`/
+`matchPassage()` directly inside the Worker file, for a real reason
+(a Worker's global scope has no `document`, so `importScripts`-ing
+`app.js` itself was never viable) — but an eval harness needs to run
+this logic from plain Node, and reimplementing the algorithm a third
+time for the eval, or hand-copying it in and hoping it stays in sync,
+would measure something other than what users actually experience.
+`contract_matcher.js` is pure, DOM-free, Worker-API-free JavaScript
+with no import of its own (a small IIFE that attaches its exports to
+`self`/`global` directly, or to `module.exports` when `module` exists
+— so it works unmodified via `importScripts()`, `require()`, or a
+plain `<script>` tag). `contract_worker.js` now just `importScripts`
+it and wires up `self.onmessage`; verified via the full browser gate
+suite (`regression.js`'s contract-reader smoke check,
+`performance_budget.js`'s timing budget, zero CSP violations) that
+the refactor changed nothing observable.
+
+**Also split `rankPassage()` (returns every candidate, ranked, for any
+`topK`) out from `matchPassage()` (the production function:
+`topK=1`, thresholded, confidence-labeled)** — `matchPassage()` is now
+built directly on top of `rankPassage()`, so there's one real
+implementation, not two that could drift. The eval harness needs the
+full ranked list for a real top-3/top-5 metric; production only ever
+needed the single best guess. `tests/contract_matcher/test_contract_matcher.js`
+(13 checks against a tiny synthetic clause set) locks in both
+functions' contracts — ranking order, the `topK` cutoff, the
+too-short/irrelevant-passage empty-result case, and that `matchPassage`
+never returns a least-bad guess below threshold.
+
+**The 55-case eval set (`tests/contract_reader_eval/eval_set.json`)
+was built by a subagent, with an explicit, checked quality bar: real
+paraphrased prose, not lightly-reworded copies of the clause body.**
+50 passages map to a real, verified-to-exist clause id (spread
+across all 8 document categories, ~6-7 each); 5 are deliberate
+distractors (foreign-jurisdiction arbitration, out-of-corpus
+subject matter) expecting no match at all, specifically to measure
+false positives rather than just ranking quality. Verified every
+`expectedClauseId` actually exists in `data/clauses.json` and is a
+`kind: "authority"` clause before trusting the file, rather than
+taking the agent's own verification claim as sufficient on its own.
+
+**Measured real numbers, then tried two improvements against them —
+both honestly rejected.** First run of `tools/eval_contract_reader.js`
+against the real matcher: **78.0% top-1, 98.0% top-3/top-5, 0/5 false
+positives.** Per the master plan's own instruction ("try
+improvements... keep a change only if it improves the eval"), tried:
+- **Bigrams** (adding consecutive-token-pair features alongside
+  unigrams, the master plan's own first suggestion): top-1 dropped to
+  **30.0%** — a large regression, not a wash. Paraphrased passages
+  rarely share exact consecutive word pairs with a clause's own body
+  even when the underlying vocabulary clearly overlaps (different
+  sentence structure is the whole point of a paraphrase), so bigram
+  features mostly added noise to the cosine denominator without
+  adding real matching signal. Rejected; not applied to
+  `contract_matcher.js`.
+- **Threshold tuning**: diagnosed every miss by its actual cosine
+  score (not guessed at). Of the 11 real misses, most (`eval_07`,
+  `eval_10`, `eval_28`, `eval_36`, `eval_47`, `eval_03`) are genuine
+  *ranking* errors — a different, genuinely closely-related real
+  clause (e.g. a mutual-NDA trade-secret definition outscoring the
+  plain NDA definition clause it's paired with in the same document)
+  outranks the expected one, which no threshold change touches at
+  all. Of the two true below-threshold misses (`eval_29` at cosine
+  0.200, `eval_44` at 0.155), lowering `MATCH_THRESHOLD` enough to
+  catch either one also drops it below at least one of the 5
+  distractors' own top cosine scores (0.126–0.199) — the genuine-but-
+  weak-paraphrase band and the no-real-match band overlap in this
+  exact cosine range, so there is no single threshold that improves
+  recall without a proportional loss of precision. Rejected; kept
+  `MATCH_THRESHOLD`/`STRONG_MATCH_THRESHOLD` exactly as Phase 9.2 set
+  them.
+- **Section-aware chunking** (the master plan's third suggestion) is
+  a different axis — it's about how a large pasted document gets
+  *split* into passages (`splitPassages()` in `app.js`), not about
+  clause-to-clause ranking, which is what this eval set (already
+  well-formed, single passages) measures. Not applicable to this
+  eval; noted rather than silently skipped.
+- **Embedding re-rank** (the master plan's fourth, explicitly
+  "optional" suggestion): not attempted. It's a materially bigger
+  lift than the other three — loading a real embedding model
+  client-side (e.g. via a WASM/ONNX runtime) where this project
+  currently has none — and the measured ceiling above (two genuine
+  below-threshold misses whose own scores sit inside the same range
+  as real distractors, plus several ranking confusions between
+  legitimately similar real clauses) suggests the actual limiting
+  factor is TF-IDF's lack of semantic understanding, exactly the gap
+  an embedding re-rank exists to close. A real candidate for future
+  work, scoped honestly as unattempted rather than faked with a
+  token gesture toward it.
+
+**Calibrated `tools/eval_contract_reader.js`'s pass/fail budgets to
+the measured baseline, with headroom — not to a number that would
+have made the first real run look better or worse than it was.**
+`MIN_TOP1_ACCURACY` 0.70 (8 points under the measured 78.0%),
+`MIN_TOP5_ACCURACY` 0.90 (8 points under 98.0%), `MAX_FALSE_POSITIVE_RATE`
+0.20 (allows 1 of the 5 distractors, since the measured 0/5 is a
+small enough sample that treating it as a hard zero-tolerance gate
+would make the eval needlessly fragile to a single borderline case).
+Same "measured-number-plus-headroom" style `tests/performance/
+performance_budget.js` already established.
+
+**Confirmed, not assumed, that the "no close match found" display
+requirement was already satisfied before this phase.** Re-read
+`app.js`'s `renderIncomingResults()` directly: a `null` match (below
+`MATCH_THRESHOLD`) already renders "Not recognized in Groundtruth's
+library yet." — never a least-bad guess — and a matched clause always
+shows "Resembles"/"May resemble" based on `confidence`, never a
+stronger claim. Nothing needed to change here; stated plainly rather
+than silently re-doing already-correct work.

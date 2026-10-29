@@ -114,6 +114,10 @@ jobs:
         run: node tests/tools/test_ingest_feedback_findings.js
       - name: Run test_error_report_summary.js
         run: node tests/tools/test_error_report_summary.js
+      - name: Run contract_matcher unit tests
+        run: node tests/contract_matcher/test_contract_matcher.js
+      - name: Run eval_contract_reader.js
+        run: node tools/eval_contract_reader.js
       - run: npx playwright install --with-deps chromium
       - name: Start static server
         run: |
@@ -149,6 +153,8 @@ jobs:
         run: set -o pipefail; node tests/docx/docx_golden.js | tee docx-golden.log
       - name: Run versioning.js
         run: set -o pipefail; node tests/library/versioning.js | tee versioning.log
+      - name: Run consistency.js
+        run: set -o pipefail; node tests/library/consistency.js | tee consistency.log
       - name: Run filing next_steps.js
         run: set -o pipefail; node tests/filing/next_steps.js | tee filing-next-steps.log
       - name: Run sign_page.js
@@ -176,6 +182,7 @@ jobs:
             docx-golden.log
             sign-page.log
             versioning.log
+            consistency.log
             filing-next-steps.log
             error-reporting.log
           if-no-files-found: warn
