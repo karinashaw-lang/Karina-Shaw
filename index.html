@@ -3,6 +3,16 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Phase 9.4: a real Content-Security-Policy, built from what this
+       page actually loads, not a copy-pasted boilerplate policy. The
+       jsdelivr/fonts.gstatic/googleapis allowances are the real
+       external dependencies (the Supabase SDK, Google Fonts);
+       connect-src's https://*.supabase.co covers whatever project a
+       deployment's own config.js points at, since that's configured
+       per-deployment, not fixed at build time. See DECISIONS.md for
+       what this can't cover (X-Frame-Options and friends need the
+       hosting layer, not a <meta> tag) and how it was verified. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://*.supabase.co; worker-src 'self'; base-uri 'self'; form-action 'self';" />
   <title>Groundtruth</title>
   <link rel="stylesheet" href="styles.css" />
 </head>

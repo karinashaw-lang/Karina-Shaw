@@ -2171,3 +2171,122 @@ turning on the production project's leaked-password-protection
 setting (same no-tool-for-it gap as every prior phase); the
 `multiple_permissive_policies`/`auth_rls_initplan` fixes above
 (DROP-POLICY-gated, handed off with exact SQL).
+
+## Phase 9.4: security review
+
+**CSP construction was verified empirically, not copy-pasted.** Added
+a real `Content-Security-Policy` `<meta>` tag to `index.html`
+(allowing exactly the origins the app actually loads from: the
+jsDelivr CDN the PDF/DOCX export libraries pull from, Google Fonts'
+two origins, `worker-src 'self'` for `contract_worker.js`, `connect-
+src ... https://*.supabase.co`) and a narrower one to `sign.html`
+(same base policy, minus `cdn.jsdelivr.net` script-src and `worker-
+src`, since `sign.js` has neither a vendored library nor a Worker).
+Both tested via real Playwright navigation before being trusted —
+`index.html` initially logged a harmless "`frame-ancestors` is
+ignored when delivered via `<meta>`" warning, which is the browser
+telling the truth: that directive only works as a real HTTP response
+header, so it was removed from the tag entirely (with a comment
+pointing at the hosting layer for where it'd actually need to live)
+rather than kept in as dead configuration that looks like protection
+but isn't. Added a dedicated check to `tools/regression.js` that
+fails the build on any `Content Security Policy|Refused to` console
+message — deliberately separate from, and zero-tolerance unlike, the
+file's pre-existing informational total-console-error count (which
+legitimately differs between this sandbox and real CI; a CSP
+violation does not — the policy either blocks something the app
+needs or it doesn't, in every environment equally).
+
+**XSS audit found one real gap, closed with a corpus-level check.**
+Re-read every clause/citation render path in `app.js`: all of them
+use `textContent`/`createElement`, never `innerHTML` with untrusted
+input. The one place that doesn't go through text-content assignment
+is citation links, which set `.href` directly from `c.url` (corpus
+data) with no scheme check — meaning a `javascript:`/`data:` URL in
+the corpus would execute on click. Rather than add a runtime check
+for something that should never be possible to author in the first
+place, added two new checks to `tools/validate_corpus.py` (the
+authority-clause citations loop and the `filing/next_steps.json`
+citations loop) requiring every citation URL to start with
+`https://` — confirmed zero existing violations before adding either
+check, so this is a new hard constraint, not a retroactive cleanup.
+
+**Full git-history secret scan, two independent tools, cross-
+checked.** Ran `gitleaks detect --source . --log-opts="--all"`
+(1085 commits, ~101MB, "no leaks found") and `detect-secrets scan
+--all-files` (6 hits) against the same history. `go install
+github.com/gitleaks/gitleaks/v8@latest` fails with a module-path
+conflict (the module's real declared path is
+`github.com/zricethezav/gitleaks/v8`); fixed by installing the
+correct path. Read all 6 `detect-secrets` hits individually rather
+than dismissing them as "probably fine": 4 are in
+`tests/golden/fixtures/*.json` fixtures for real documents about
+trade-secret law (CUTSA, economic espionage) tripping the "Secret
+Keyword" heuristic on the word "secret"; 1 is
+`tools/add_why_we_ask.py`'s `tradeSecretDescription` field-
+explanation string (same cause); 1 is `tools/fetch_via_browser.js`'s
+`PROXY_CA_SPKI` constant, which is a *public* TLS certificate SPKI
+pin hash — not a secret by definition, since certificate pinning
+only works if the pinned hash is known in advance. Separately
+confirmed via `git log --all --full-history -- config.js` (empty)
+that the gitignored file holding real Supabase keys was never
+committed. Added `gitleaks/gitleaks-action@v2` as a new CI job
+(`secret-scan`, `fetch-depth: 0`) and `npm audit --audit-level=high`
+as a new step in the regression job, so both checks run on every
+future push rather than being one-time.
+
+**Rate limiting: built the half that needed building, documented the
+half that didn't.** Supabase Auth's magic-link rate limiting is a
+dashboard-configurable platform setting (Authentication → Rate
+Limits), on by default — same "no MCP tool to toggle it, nothing to
+build" shape as `auth_leaked_password_protection` in this file's
+earliest entries. What a magic-link setting can't cover is
+`share-view`/`share-sign`: the only two edge functions with no
+Supabase session at all (`verify_jwt: false`), so there's no
+authenticated caller for the platform's own per-session throttling
+to apply to. Built `supabase/functions/_shared/rate_limit.ts`: a
+single atomic `INSERT ... ON CONFLICT ... DO UPDATE` against a new
+`rate_limits` table, keyed by caller IP, that resets the count when
+the stored window is more than a minute old and increments it
+otherwise — one SQL statement, so Postgres's own per-row lock makes
+the read-reset-or-increment atomic without needing a transaction or
+`SELECT ... FOR UPDATE`. Wired into `share-view` (60 req/min — a page
+a real signer might reload or poll a few times) and `share-sign` (10
+req/min — tighter, since it writes; ten is retry headroom, not an
+invitation). Deployed to both production and staging, with the
+`rate_limits` table added to both (migration
+`20261029000000_rate_limits.sql`, applied directly to staging too).
+
+**`rate_limits` gets RLS enabled with zero policies, by design, not
+as an oversight.** `get_advisors` correctly flags this as
+`rls_enabled_no_policy` (INFO) on both projects — the expected
+result, not a gap to close. The table must never be reachable
+through the public REST API in either direction: reading it would
+expose rate-limit state to probing, and writing it would let a
+caller reset their own counter and defeat the entire mechanism. Both
+edge functions reach it only through a direct Postgres connection
+(`SUPABASE_DB_URL`), the same privileged, RLS-bypassing path
+`list-sessions` already uses for `auth.sessions`.
+
+**Fails open, deliberately.** If the rate-limit check itself errors
+(the DB connection fails, say), `withinRateLimit()` logs and returns
+`true` rather than blocking the request. A rate limiter that takes
+real signers offline when the database hiccups is a worse outcome
+than occasionally letting a burst of requests through — especially
+given what this limiter is actually defending: a share token is 192
+bits of randomness, not brute-forceable at any rate limit this could
+plausibly set, so its job is bounding abuse/cost and slowing a
+signing race, not standing as the only real barrier between an
+attacker and a document.
+
+**`list-sessions`/`delete-account` deliberately excluded.** Both
+have `verify_jwt: true`, so Supabase's platform gateway rejects an
+unauthenticated or forged-token caller before the function body runs
+at all — a materially higher bar than `share-view`/`share-sign`'s
+token-only trust model. An attacker who already holds a valid,
+unexpired access token for a real account has a much bigger problem
+than an unthrottled `delete-account` call, and repeated calls to it
+don't compound (the account either still exists or it doesn't).
+Scoped the new work to the two functions actually exposed to
+anonymous abuse rather than adding rate limiting everywhere on
+principle.

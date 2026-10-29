@@ -811,6 +811,67 @@ is the manual review side (same no-op-without-credentials shape as
 Database Webhook recipe, not a built feature, since it needs a
 destination this project has no credentials for.
 
+## Security review (Phase 9.4)
+
+A real `Content-Security-Policy` `<meta>` tag on both `index.html`
+(allows the Google-Fonts stylesheet/font origins, the jsDelivr script
+origin the PDF/DOCX libraries load from, and `worker-src 'self'` for
+`contract_worker.js`) and `sign.html` (narrower — no jsDelivr, no
+worker-src, since `sign.js` is plain fetch only), both verified via
+real Playwright navigation rather than copied boilerplate. No
+`frame-ancestors` directive: that's a no-op when set via `<meta>`
+(it only works as a real HTTP response header), so it's left out of
+the tag with a comment pointing at the hosting layer instead of kept
+as dead, misleading configuration. `tools/regression.js` now fails
+the build on any `Content Security Policy|Refused to` console
+message, separate from (and zero-tolerance unlike) its informational
+total-console-error count.
+
+XSS: clause/citation rendering in `app.js` already used
+`textContent`/`createElement` exclusively — confirmed by re-reading
+every render path, not assumed. The one real gap found was citation
+links setting `.href` directly from a corpus-controlled URL with no
+scheme check; `tools/validate_corpus.py` now requires every citation
+URL (both the authority-clause loop and `filing/next_steps.json`'s)
+to start with `https://`, closing off `javascript:`/`data:` as a
+citation value before it can ever reach the DOM. Zero existing
+citations violated this when added.
+
+Git history: a one-time full scan (`gitleaks detect --source . --log-
+opts="--all"`, 1085 commits/~101MB, and `detect-secrets scan --all-
+files` as an independent cross-check) found zero real secrets — six
+`detect-secrets` heuristic hits, individually read and confirmed as
+either legal corpus text about trade-secret law or a public TLS SPKI
+pin (meant to be shared, not a secret by definition). `config.js`
+itself was confirmed never committed (`git log --all --full-history
+-- config.js` is empty). CI's new `secret-scan` job
+(`gitleaks/gitleaks-action@v2`) and `npm audit --audit-level=high`
+step (regression job) carry this forward on every future push, rather
+than this being a one-time check with no ongoing gate.
+
+Rate limiting: Supabase Auth's own magic-link rate limit is a
+platform setting, on by default — nothing to build. The piece that
+did need building is `supabase/functions/_shared/rate_limit.ts`, a
+small shared helper used by `share-view`/`share-sign` (the two edge
+functions with no Supabase session at all, so the platform's own
+per-session throttling never applies to their callers). It's backed
+by a `rate_limits` table reached only through a direct Postgres
+connection (`SUPABASE_DB_URL`, the same privileged path
+`list-sessions` uses for `auth.sessions`) — RLS is enabled on it with
+*no* policies at all, on purpose, so it's unreachable through the
+public REST API in either direction; a client that could read or
+reset its own counter would defeat the point. A single atomic
+upsert-with-conditional-reset statement keys the window by caller IP
+(60 req/min for the read-only `share-view`, 10 req/min for the
+write `share-sign`) and fails *open* on any database error, since a
+rate limiter that takes the page down on a DB hiccup is worse than
+one that occasionally lets a burst through. `list-sessions`/
+`delete-account` deliberately aren't included: both require
+`verify_jwt: true`, so the Supabase platform itself already rejects
+an unauthenticated caller at the gateway before the function body
+ever runs — a materially higher bar than the two public, token-only
+functions this is actually protecting.
+
 ## Programmatic SEO pages (Phase 8.3)
 
 `tools/generate_seo_pages.py` builds one page per document (what it

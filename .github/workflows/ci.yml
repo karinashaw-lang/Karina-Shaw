@@ -94,6 +94,13 @@ jobs:
           node-version: '20'
           cache: 'npm'
       - run: npm ci
+      - name: Dependency vulnerability scan
+        # Phase 9.4. high/critical only -- a moderate finding in a
+        # devDependency used only to run tests (axe-core, playwright,
+        # jszip, mammoth, pdf-parse -- none of them ship to a real
+        # visitor's browser) isn't worth blocking every push over; a
+        # real exploitable one is.
+        run: npm audit --audit-level=high
       - name: Run test_analytics_report.js
         run: node tests/tools/test_analytics_report.js
       - name: Run test_ingest_feedback_findings.js
@@ -207,3 +214,22 @@ jobs:
         run: supabase functions deploy --project-ref "${{ secrets.SUPABASE_STAGING_PROJECT_REF }}"
         env:
           SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+
+  secret-scan:
+    name: Secret scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      # Phase 9.4: "confirm no secrets in git history." A one-time full
+      # scan of all 1085 commits (gitleaks + detect-secrets,
+      # cross-checked, zero real findings -- see DECISIONS.md for the
+      # 6 heuristic false positives both tools raised and why each one
+      # is clearly not a secret) already confirmed the history is
+      # clean as of this phase. This job is the ongoing half: catches
+      # a NEW secret in any future push, same gate every other check
+      # in this file already runs on every commit.
+      - uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

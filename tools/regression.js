@@ -137,6 +137,21 @@ const { chromium } = require('playwright');
 
   console.log('console errors: ' + errs.length);
   errs.forEach(e => console.log('  ' + e));
+
+  // Phase 9.4: unlike the total console-error count above (which
+  // legitimately differs between this sandbox and real CI -- see the
+  // comment at the top of this file), a CSP violation means the real
+  // policy in index.html's own <meta> tag actually blocked something
+  // the app needs, in every environment equally. Zero tolerance,
+  // not just logged.
+  const cspViolations = errs.filter(e => /Content Security Policy|Refused to/i.test(e));
+  if (cspViolations.length > 0) {
+    ok = false;
+    console.log('FAIL CSP violations: ' + JSON.stringify(cspViolations));
+  } else {
+    console.log('OK   no CSP violations');
+  }
+
   await b.close();
   if (!ok) { console.log('\nFAILED'); process.exit(1); }
   console.log('\nregression passed');

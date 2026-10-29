@@ -7,10 +7,19 @@
 // every other edge function in this project (see DECISIONS.md).
 
 import { createClient } from 'npm:@supabase/supabase-js@2';
+import { withinRateLimit, callerKey } from '../_shared/rate_limit.ts';
 
 Deno.serve(async req => {
   if (req.method !== 'POST') {
     return new Response(JSON.stringify({ error: 'Method not allowed' }), { status: 405 });
+  }
+
+  // Phase 9.4: 10 requests/min per caller IP -- tighter than
+  // share-view, since this one writes. A real signer submits once;
+  // ten is headroom for a mis-click/retry, not an invitation to spam.
+  const allowed = await withinRateLimit(Deno.env.get('SUPABASE_DB_URL')!, callerKey(req, 'share-sign'), 10);
+  if (!allowed) {
+    return new Response(JSON.stringify({ error: 'Too many requests. Please wait a moment and try again.' }), { status: 429 });
   }
 
   let body: { token?: string; signerName?: string; signatureType?: string; signatureData?: string };

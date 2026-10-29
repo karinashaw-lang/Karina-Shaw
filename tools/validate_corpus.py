@@ -277,6 +277,17 @@ def main():
           'citations missing a url')
     check(not [c['id'] for c in auth for ct in c['citations'] if not (ct.get('quote') or '').strip()],
           'citations with an empty quote')
+    # Phase 9.4 security review: app.js sets a citation link's href
+    # directly from this field (document.createElement('a').href =
+    # c.url). Every real citation in this corpus already uses a real
+    # https source -- confirmed before adding this, not assumed -- so
+    # requiring the scheme here costs nothing today and rules out a
+    # javascript: URL (or any other scheme the browser would actually
+    # follow) ever reaching a rendered link, defense in depth against a
+    # corrupted or malicious corpus edit rather than a response to any
+    # citation that's ever actually needed a different scheme.
+    check(not [c['id'] for c in auth for ct in c['citations'] if ct.get('url') and not ct['url'].startswith('https://')],
+          'citations with a url that is not https://')
 
     # A {{field}} used in a body or gap must be declared by every document
     # that includes the clause, or it renders as raw braces to the reader.
@@ -591,6 +602,8 @@ def main():
                     for field in ('case', 'cite', 'url', 'quote'):
                         if not (ct.get(field) or '').strip():
                             bad_filing.append(f'{tag}: citation missing {field}')
+                    if ct.get('url') and not ct['url'].startswith('https://'):
+                        bad_filing.append(f'{tag}: citation url is not https://')
 
                 reminder = step.get('reminder')
                 if reminder:

@@ -13,12 +13,21 @@
 // every other edge function in this project (see DECISIONS.md).
 
 import { createClient } from 'npm:@supabase/supabase-js@2';
+import { withinRateLimit, callerKey } from '../_shared/rate_limit.ts';
 
 Deno.serve(async req => {
   const url = new URL(req.url);
   const token = url.searchParams.get('token');
   if (!token) {
     return new Response(JSON.stringify({ error: 'Missing token' }), { status: 400 });
+  }
+
+  // Phase 9.4: 60 requests/min per caller IP. Generous -- this is a
+  // page a real signer may reload or poll a few times, not a login
+  // form -- but still bounds a script hammering the endpoint.
+  const allowed = await withinRateLimit(Deno.env.get('SUPABASE_DB_URL')!, callerKey(req, 'share-view'), 60);
+  if (!allowed) {
+    return new Response(JSON.stringify({ error: 'Too many requests. Please wait a moment and try again.' }), { status: 429 });
   }
 
   const admin = createClient(
