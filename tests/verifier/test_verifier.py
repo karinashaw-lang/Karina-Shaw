@@ -124,6 +124,34 @@ class SampleTests(unittest.TestCase):
         ids = [p['clause']['id'] for p in packets]
         self.assertEqual(ids, ['c2'])
 
+    def test_sample_path_writes_a_separate_file(self):
+        # Phase 12 Step 3: a second checkpoint's draw must not touch the
+        # original sample.json, so it needs its own --sample-path.
+        clauses = [authority_clause(f'c{i}') for i in range(10)]
+        doc = {"id": "doc1", "title": "Doc 1", "description": "d", "categories": ["Hiring"],
+               "clauseOrder": [c['id'] for c in clauses], "fields": []}
+        d = self.make_dir(clauses, [doc])
+        r = run(SAMPLE_PY, d, '--n', '3', '--sample-path', 'verifier/checkpoint_a.json')
+        self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+        self.assertFalse(os.path.exists(os.path.join(d, 'verifier', 'sample.json')))
+        self.assertTrue(os.path.exists(os.path.join(d, 'verifier', 'checkpoint_a.json')))
+
+    def test_fresh_draw_excludes_already_checked_clauses(self):
+        # A clause checked under an earlier sample must never be redrawn
+        # into a later checkpoint's fresh sample.
+        clauses = [authority_clause(f'c{i}') for i in range(5)]
+        doc = {"id": "doc1", "title": "Doc 1", "description": "d", "categories": ["Hiring"],
+               "clauseOrder": [c['id'] for c in clauses], "fields": []}
+        d = self.make_dir(clauses, [doc])
+        with open(os.path.join(d, 'verifier', 'checked.jsonl'), 'w') as f:
+            for cid in ('c0', 'c1', 'c2', 'c3'):
+                f.write(json.dumps({"clauseId": cid, "checkedAt": "x", "findingCount": 0}) + '\n')
+        r = run(SAMPLE_PY, d, '--n', '5', '--sample-path', 'verifier/checkpoint_b.json')
+        self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+        packets = json.loads(r.stdout)
+        ids = [p['clause']['id'] for p in packets]
+        self.assertEqual(ids, ['c4'])
+
 
 class RecordResultTests(unittest.TestCase):
     def setUp(self):

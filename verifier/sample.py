@@ -20,6 +20,18 @@ silently redrawing a new set — resuming an interrupted run has to mean
     python3 verifier/sample.py --n 100 --remaining   # same, but only the clauses not yet
                                                       # in verifier/checked.jsonl (resume)
     python3 verifier/sample.py --status              # how many of the current sample are done
+
+Phase 12 Step 3 checkpoint: a second (or later) call needs its own,
+disjoint sample rather than reusing or re-drawing from the original
+100-clause population — `--sample-path <file>` points a draw at a new
+file instead of the default `verifier/sample.json`, so the original
+Phase 4.1 sample stays an untouched historical record. A fresh draw
+(no file yet at that path) now also excludes every clause id already
+in `verifier/checked.jsonl`, regardless of which sample file it came
+from, so a second checkpoint can never redraw a clause the first one
+already covered:
+
+    python3 verifier/sample.py --n 500 --sample-path verifier/sample_checkpoint500.json
 """
 import json
 import random
@@ -50,9 +62,9 @@ def checked_clause_ids():
         return set()
 
 
-def draw_or_load_sample(n):
+def draw_or_load_sample(n, sample_path=SAMPLE_PATH):
     try:
-        with open(SAMPLE_PATH, encoding='utf-8') as f:
+        with open(sample_path, encoding='utf-8') as f:
             saved = json.load(f)
         print(f"Reusing existing sample from {saved['drawnAt']} "
               f"({len(saved['clauseIds'])} clauses, seed {saved['seed']}).", file=sys.stderr)
@@ -61,16 +73,19 @@ def draw_or_load_sample(n):
         pass
 
     clauses = load_clauses()
-    authority_ids = [c['id'] for c in clauses if c['kind'] == 'authority']
+    already_checked = checked_clause_ids()
+    authority_ids = [c['id'] for c in clauses if c['kind'] == 'authority' and c['id'] not in already_checked]
     seed = random.randrange(2**31)
     rng = random.Random(seed)
     sample = rng.sample(authority_ids, min(n, len(authority_ids)))
-    with open(SAMPLE_PATH, 'w', encoding='utf-8') as f:
+    with open(sample_path, 'w', encoding='utf-8') as f:
         json.dump({'drawnAt': date.today().isoformat(), 'seed': seed,
-                    'populationSize': len(authority_ids), 'clauseIds': sample}, f, indent=2)
+                    'populationSize': len(authority_ids), 'excludedAlreadyChecked': len(already_checked),
+                    'clauseIds': sample}, f, indent=2)
         f.write('\n')
     print(f"Drew a new sample of {len(sample)} authority clauses "
-          f"(population {len(authority_ids)}, seed {seed}). Saved to {SAMPLE_PATH}.", file=sys.stderr)
+          f"(population {len(authority_ids)} after excluding {len(already_checked)} already-checked, "
+          f"seed {seed}). Saved to {sample_path}.", file=sys.stderr)
     return sample
 
 
@@ -130,8 +145,11 @@ def main():
     n = 100
     if '--n' in args:
         n = int(args[args.index('--n') + 1])
+    sample_path = SAMPLE_PATH
+    if '--sample-path' in args:
+        sample_path = args[args.index('--sample-path') + 1]
 
-    clause_ids = draw_or_load_sample(n)
+    clause_ids = draw_or_load_sample(n, sample_path)
 
     if '--status' in args:
         print_status(clause_ids)
