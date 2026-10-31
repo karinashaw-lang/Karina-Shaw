@@ -2819,3 +2819,47 @@ the 23 approved clauses and nothing else, and proceeded to commit rather
 than treating the non-zero exit as a gate failure under Global Rule 4.
 `validate_corpus.py` and `node tools/regression.js` both passed clean
 with no caveat.
+
+## 2026-10-31 — Phase 12 Step 5: AI Transparency Act freshness item closed, not re-opened with a fresh flag
+
+**Task:** resolve the one open finding from `watcher/`'s first dry run
+(`watcher/changes.jsonl`: Bus. & Prof. Code § 22757.2 showed a
+current-text update date inside the July-October 2026 scan window,
+affecting `aitransparency_detection_tool`), which `watcher/README.md`
+had explicitly left as "nobody has reviewed... yet."
+
+**What happened in between:** the Phase 12 Step 3 adversarial verifier
+checkpoint — a separate process that samples clauses without reading
+the watcher's own output — independently flagged the same clause twice
+(two findings, one per defect) and, unlike the watcher's own generic
+"something changed" signal, pinned down the actual substance: the tool
+was renamed "disclosure verification tool," gained a "minor
+modification" carve-out, and the personal-information-output ban
+became consent-based. Step 4 fixed the clause to match, with the
+owner's prior batch approval, and bumped its `checkedDate` to
+2026-10-31.
+
+**Decision:** treat this as the watcher's open item now closed, rather
+than running `flag_for_review.py` to raise a fresh review branch for a
+clause that has already been corrected and whose correction has already
+been reviewed (via the Step 4 patch-review approval). Running
+`flag_for_review.py` now would ask the owner to review something
+already resolved — the opposite of what that script exists for.
+Documented the resolution in `watcher/README.md`'s own status section
+instead, with a pointer to the specific `verifier/findings.jsonl` /
+`verifier/triage.jsonl` / `changelog.html` records so the actual
+evidence trail stays auditable rather than just asserting "fixed."
+`leginfo.legislature.ca.gov` remained unreachable (Cloudflare) for a
+direct primary-source recheck in this session, the same access
+limitation on record elsewhere in this project; `california.public.law`
+(the same mirror the watcher's own finding cited) was the corroborating
+source again.
+
+**Not done, and not needed for this item:** no new `OWNER_TODO.md`
+entry. The intro to that file said Phase 5 (now Step 5) "may append one
+more item here if the AI Transparency Act re-verification is still
+blocked after a fresh attempt" — it wasn't; the mirror was reachable
+and the fix is in. The remaining 10,331 of 10,431 distinct citations in
+the corpus the watcher has never scanned are a separate, larger
+decision (same shape as the verifier's full-corpus-run question) and
+are not addressed by closing this one item.

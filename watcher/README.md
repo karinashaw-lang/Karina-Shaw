@@ -109,10 +109,27 @@ update date inside the scan window. Full report in
 output defect caught and fixed before recording — an HTML-entity-escaped
 `&amp;` in a returned url) in `DECISIONS.md`.
 
-Nobody has reviewed that finding or run `flag_for_review.py` against it
-yet — recording a change and deciding what, if anything, to do about it
-are different steps, the same way `verifier/`'s triage is separate from
-its sample report.
+**Resolved, 2026-10-31 (Phase 12 Step 5).** This finding is no longer
+open. A later, independent review — the Phase 12 Step 3 adversarial
+verifier checkpoint, which samples clauses without reading this
+watcher's own output — separately flagged `aitransparency_detection_tool`
+and, this time, pinned down exactly what changed: effective September
+30, 2026, Bus. & Prof. Code § 22757.2 renamed the required tool a
+"disclosure verification tool" (from "AI detection tool"), added a
+"minor modification" carve-out to the created-or-altered trigger, and
+replaced the flat ban on outputting personal information with a
+consent-based exception. The clause was corrected to match (title,
+body, and gap) and its `checkedDate` moved to 2026-10-31 in the Step 4
+fix commit; see `verifier/findings.jsonl` (`aitransparency_detection_tool#0`
+and `#1`), `verifier/triage.jsonl`, and `changelog.html` for the fix
+record. `flag_for_review.py` was not run for this clause, since the
+underlying question it exists to raise — does a human need to look at
+this before anything changes? — was already answered by the time this
+was written: the clause has already been fixed and the fix already
+reviewed in the Step 4 patch-review approval. `leginfo.legislature.ca.gov`
+remained Cloudflare-blocked throughout; the corroborating source was
+the same `california.public.law` mirror this watcher's own finding
+used, cross-referenced against its own "updated Sep. 30, 2026" stamp.
 
 The remaining 10,331 of the corpus's 10,431 distinct citations have not
 been scanned. Whether and when to run the watcher at full-corpus scale
