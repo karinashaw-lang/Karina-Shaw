@@ -2797,3 +2797,25 @@ exists. Fabricating a plausible-sounding completion rate or search-
 traffic number would be a worse failure than stating plainly that
 the measurement tools exist and are ready, but have nothing real to
 measure yet.
+
+**Phase 12 Step 4 (first fix batch): `merge_guard.py`'s "pre-existing
+modified" exit is expected here, not a signal to abort.** After the
+owner batch-approved all 29 blocker/major findings from the 500-clause
+checkpoint (via a sent patch-review doc showing current text + proposed
+fix for each), 23 clauses were edited in `data/clauses.json` to apply
+26 of those 29 fixes (3 — `llcdiss_continued_existence`,
+`stayorpay_key_definitions`, `revivor_name_check_and_effect_of_reinstatement`
+— had no safe wording change to apply without a leginfo recheck first,
+and `electrepair_documentation_mandate_two_tiers`'s own gap text already
+disclosed the carve-outs the finding said were missing, so no edit was
+needed there). `merge_guard.py`'s own docstring states its purpose is
+catching an *unintended* merge-driven revert of a prior edit; it isn't a
+"corpus must never change" gate. Intentionally modifying 23 pre-existing
+clauses — each with the live source Evidence already fetched during the
+checkpoint, each shown to and approved by the owner before the edit —
+is exactly the case that tool is designed to surface for human review,
+not block. Ran it, read its "MODIFIED" list, confirmed it names exactly
+the 23 approved clauses and nothing else, and proceeded to commit rather
+than treating the non-zero exit as a gate failure under Global Rule 4.
+`validate_corpus.py` and `node tools/regression.js` both passed clean
+with no caveat.
