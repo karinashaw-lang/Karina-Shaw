@@ -2,9 +2,15 @@
 """Tests for tools/tiering.py: Tier B is reached only when all three
 real gates (complete field schema, every authority clause verified and
 fresh, a golden fixture exists) hold; missing any one keeps a document
-at Tier C; Tier A is never assigned today (no adversarial-verifier or
-accessibility signal exists yet); and --check correctly detects a
-tiers.json that no longer matches a fresh computation.
+at Tier C; Tier A additionally needs every authority clause to carry a
+clean adversarial-verifier result (verifier/checked.jsonl + no open
+blocker/major finding in verifier/findings.jsonl + verifier/triage.jsonl)
+and a passed per-document accessibility check (accessibility.json) --
+an absent record for either is "not met," not "assumed met," which is
+why a document with no such files in its corpus directory (every test
+below except the two Tier-A-specific ones) can reach Tier B but never
+Tier A; and --check correctly detects a tiers.json that no longer
+matches a fresh computation.
 
 Builds a minimal, otherwise-valid corpus in a throwaway directory and
 runs the real tiering.py against it as a subprocess — what's tested is
@@ -67,6 +73,25 @@ def build_corpus_dir(documents, clauses, shared_library=None, fixtures_for=(), s
         with open(os.path.join(d, 'tests', 'golden', 'fixtures', f'{doc_id}.json'), 'w') as f:
             json.dump({"docId": doc_id}, f)
     return d
+
+
+def write_jsonl(path, rows):
+    with open(path, 'w') as f:
+        for row in rows:
+            f.write(json.dumps(row) + '\n')
+
+
+def write_verifier_state(d, checked_clause_ids=(), findings=(), triage=()):
+    os.makedirs(os.path.join(d, 'verifier'), exist_ok=True)
+    write_jsonl(os.path.join(d, 'verifier', 'checked.jsonl'),
+                [{"clauseId": cid} for cid in checked_clause_ids])
+    write_jsonl(os.path.join(d, 'verifier', 'findings.jsonl'), findings)
+    write_jsonl(os.path.join(d, 'verifier', 'triage.jsonl'), triage)
+
+
+def write_accessibility(d, results):
+    with open(os.path.join(d, 'accessibility.json'), 'w') as f:
+        json.dump({"generatedAt": "2026-11-02", "documents": results}, f)
 
 
 def run_tiering(dirpath, *args):
@@ -188,11 +213,11 @@ class TieringTests(unittest.TestCase):
         tiers = self.load_tiers(d)
         self.assertEqual(tiers['documents']['doc1']['tier'], 'B')
 
-    def test_tier_a_never_assigned(self):
-        # Even a document meeting every Tier B gate cannot reach Tier A,
-        # because the adversarial-verifier and accessibility signals
-        # don't exist yet (ADVERSARIAL_VERIFIER_EXISTS /
-        # ACCESSIBILITY_CHECK_EXISTS are both False in tiering.py).
+    def test_tier_a_blocked_with_no_verifier_or_accessibility_records(self):
+        # A document meeting every Tier B gate still can't reach Tier A
+        # when neither verifier/ nor accessibility.json exists in the
+        # corpus directory at all -- an absent record is "not met," not
+        # "assumed met," for both signals independently.
         doc = {
             "id": "doc1", "title": "Doc 1", "description": "d", "categories": ["Hiring"],
             "clauseOrder": ["c1"], "fields": [],
@@ -201,7 +226,119 @@ class TieringTests(unittest.TestCase):
         run_tiering(d)
         tiers = self.load_tiers(d)
         self.assertEqual(tiers['documents']['doc1']['tier'], 'B')
-        self.assertTrue(len(tiers['documents']['doc1']['blockingA']) >= 2)
+        self.assertEqual(len(tiers['documents']['doc1']['blockingA']), 2)
+
+    def test_tier_a_reached_when_both_real_signals_are_clean(self):
+        doc = {
+            "id": "doc1", "title": "Doc 1", "description": "d", "categories": ["Hiring"],
+            "clauseOrder": ["c1"], "fields": [],
+        }
+        d = self.make_dir([doc], [authority_clause("c1")], fixtures_for=["doc1"])
+        write_verifier_state(d, checked_clause_ids=["c1"])
+        write_accessibility(d, {"doc1": {"passed": True, "violations": []}})
+        run_tiering(d)
+        tiers = self.load_tiers(d)
+        self.assertEqual(tiers['documents']['doc1']['tier'], 'A')
+        self.assertEqual(tiers['documents']['doc1']['blockingA'], [])
+
+    def test_tier_a_blocked_by_unchecked_authority_clause(self):
+        # c1 is verified/fresh enough for Tier B, but the adversarial
+        # checkpoint has never actually reached it -- "verified" is a
+        # drafting-time self-assessment, not the same thing.
+        doc = {
+            "id": "doc1", "title": "Doc 1", "description": "d", "categories": ["Hiring"],
+            "clauseOrder": ["c1"], "fields": [],
+        }
+        d = self.make_dir([doc], [authority_clause("c1")], fixtures_for=["doc1"])
+        write_verifier_state(d, checked_clause_ids=[])  # never checked
+        write_accessibility(d, {"doc1": {"passed": True, "violations": []}})
+        run_tiering(d)
+        tiers = self.load_tiers(d)
+        self.assertEqual(tiers['documents']['doc1']['tier'], 'B')
+        self.assertTrue(any('adversarial-verifier' in r for r in tiers['documents']['doc1']['blockingA']))
+
+    def test_tier_a_blocked_by_open_unreviewed_finding(self):
+        doc = {
+            "id": "doc1", "title": "Doc 1", "description": "d", "categories": ["Hiring"],
+            "clauseOrder": ["c1"], "fields": [],
+        }
+        d = self.make_dir([doc], [authority_clause("c1")], fixtures_for=["doc1"])
+        write_verifier_state(d, checked_clause_ids=["c1"], findings=[
+            {"clauseId": "c1", "severity": "major", "category": "overclaiming",
+             "summary": "s", "evidence": "e", "sourceChecked": "u", "suggestedFix": "f"},
+        ])  # no triage.jsonl entry at all -- nobody has reviewed it yet
+        write_accessibility(d, {"doc1": {"passed": True, "violations": []}})
+        run_tiering(d)
+        tiers = self.load_tiers(d)
+        self.assertEqual(tiers['documents']['doc1']['tier'], 'B')
+
+    def test_tier_a_blocked_by_accepted_finding(self):
+        # "accepted" means the defect stands, just not corrected -- it
+        # blocks Tier A exactly like an untriaged finding does.
+        doc = {
+            "id": "doc1", "title": "Doc 1", "description": "d", "categories": ["Hiring"],
+            "clauseOrder": ["c1"], "fields": [],
+        }
+        d = self.make_dir([doc], [authority_clause("c1")], fixtures_for=["doc1"])
+        write_verifier_state(
+            d, checked_clause_ids=["c1"],
+            findings=[{"clauseId": "c1", "severity": "blocker", "category": "superseded_law",
+                       "summary": "s", "evidence": "e", "sourceChecked": "u", "suggestedFix": "f"}],
+            triage=[{"findingId": "c1#0", "clauseId": "c1", "status": "accepted"}],
+        )
+        write_accessibility(d, {"doc1": {"passed": True, "violations": []}})
+        run_tiering(d)
+        tiers = self.load_tiers(d)
+        self.assertEqual(tiers['documents']['doc1']['tier'], 'B')
+
+    def test_tier_a_not_blocked_by_rejected_finding(self):
+        # A false positive, once triaged "rejected," doesn't block
+        # Tier A -- combined with a clean accessibility result this
+        # document reaches Tier A.
+        doc = {
+            "id": "doc1", "title": "Doc 1", "description": "d", "categories": ["Hiring"],
+            "clauseOrder": ["c1"], "fields": [],
+        }
+        d = self.make_dir([doc], [authority_clause("c1")], fixtures_for=["doc1"])
+        write_verifier_state(
+            d, checked_clause_ids=["c1"],
+            findings=[{"clauseId": "c1", "severity": "major", "category": "overclaiming",
+                       "summary": "s", "evidence": "e", "sourceChecked": "u", "suggestedFix": "f"}],
+            triage=[{"findingId": "c1#0", "clauseId": "c1", "status": "rejected", "reason": "false positive"}],
+        )
+        write_accessibility(d, {"doc1": {"passed": True, "violations": []}})
+        run_tiering(d)
+        tiers = self.load_tiers(d)
+        self.assertEqual(tiers['documents']['doc1']['tier'], 'A')
+
+    def test_tier_a_blocked_by_failed_accessibility_check(self):
+        doc = {
+            "id": "doc1", "title": "Doc 1", "description": "d", "categories": ["Hiring"],
+            "clauseOrder": ["c1"], "fields": [],
+        }
+        d = self.make_dir([doc], [authority_clause("c1")], fixtures_for=["doc1"])
+        write_verifier_state(d, checked_clause_ids=["c1"])
+        write_accessibility(d, {"doc1": {"passed": False, "violations": [
+            {"id": "color-contrast", "impact": "serious", "help": "h", "nodeCount": 1, "theme": "light"},
+        ]}})
+        run_tiering(d)
+        tiers = self.load_tiers(d)
+        self.assertEqual(tiers['documents']['doc1']['tier'], 'B')
+        self.assertTrue(any('accessibility' in r for r in tiers['documents']['doc1']['blockingA']))
+
+    def test_tier_a_blocked_by_missing_accessibility_entry(self):
+        # accessibility.json exists but has no entry for this document
+        # -- same "absent is not met" rule as an unchecked clause.
+        doc = {
+            "id": "doc1", "title": "Doc 1", "description": "d", "categories": ["Hiring"],
+            "clauseOrder": ["c1"], "fields": [],
+        }
+        d = self.make_dir([doc], [authority_clause("c1")], fixtures_for=["doc1"])
+        write_verifier_state(d, checked_clause_ids=["c1"])
+        write_accessibility(d, {})  # no entry for doc1
+        run_tiering(d)
+        tiers = self.load_tiers(d)
+        self.assertEqual(tiers['documents']['doc1']['tier'], 'B')
 
     def test_check_passes_right_after_generation(self):
         doc = {

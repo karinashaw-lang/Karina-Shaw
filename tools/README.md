@@ -586,17 +586,46 @@ verified and within its category's fatal staleness threshold (Phase
 this can't silently drift from `validate_corpus.py`'s own definition
 the way it briefly did the day 4.3 shipped — see `DECISIONS.md`), and
 at least one golden fixture. Tier A needs all of that plus a clean
-adversarial-verifier run
-(master plan Phase 4.1) and a passed accessibility check (Phase 9.1) —
-**neither exists yet**, and a missing signal is treated as not met, not
-assumed passing, so Tier A is honestly 0/740 right now. See
-`DECISIONS.md` for why that's the deliberate, conservative reading
-rather than a bug, and why "complete field schema" is defined by
-`whyWeAsk` coverage rather than by `type` (which every field already
-has, so it wouldn't distinguish anything). `--check` is what keeps
+adversarial-verifier run and a passed accessibility check — both are
+real as of Phase 12 Step 6: every authority clause the document uses
+must appear in `verifier/checked.jsonl` with no open (not "fixed" or
+"rejected" in `verifier/triage.jsonl` — "accepted" still counts as
+open) blocker/major finding, and the document id must have
+`"passed": true` in `accessibility.json` (`tools/accessibility_scan.js`,
+a real per-document, both-themes axe-core scan — distinct from
+`tests/accessibility/axe_check.js`'s 50-document CI sample). A missing
+record for either signal is treated as not met, not assumed passing,
+so Tier A tracks the checkpoint's real coverage (12% of authority
+clauses as of this writing) rather than jumping to "done" the moment
+the two systems exist — see `DECISIONS.md`'s Phase 12 Step 6 entry for
+the current count and why it's small. `--check` is what keeps
 `tiers.json` — committed, fetched by the app like `documents.json` — from
 silently drifting out of sync with the corpus; wired into CI right
 after `validate_corpus.py`. Tested by `tests/tiering/test_tiering.py`.
+
+## accessibility_scan.js
+
+```
+python3 -m http.server 8933 &
+node tools/accessibility_scan.js             # scan all documents, write accessibility.json
+node tools/accessibility_scan.js --limit=10   # scan only the first N (manual spot-check)
+```
+
+Phase 9.1's per-document accessibility signal for `tiering.py` — not a
+CI gate itself (that's `tests/accessibility/axe_check.js`'s job, over
+every shared screen plus a 50-document sample, fast enough to run on
+every push). This one renders every document's output screen directly
+(`state.document`/`state.answers`/`renderOutput()`, the same faster
+path `tools/regression.js` uses, rather than clicking through each
+document's wizard) and runs a real axe-core scan under both light and
+dark theme, since a color-contrast violation can be theme-specific.
+Only serious/critical violations fail a document, the same bar
+`axe_check.js` and `A11Y_CHECKLIST.md` use; moderate/minor findings are
+recorded in `accessibility.json` but don't block. Takes roughly 12-15
+minutes for the full corpus (~1s/document); not wired into CI — like
+the watcher and the verifier's full-corpus run, the judgment of when to
+re-run it at full scale is a separate decision, not something to force
+on every push.
 
 ## build_citation_index.py
 

@@ -1,7 +1,7 @@
 # Build status
 
-Last updated: 2026-10-29, against commit `a72d1b5` (branch
-`claude/new-session-palh5c`). This reflects the actual state of the
+Last updated: 2026-11-02, against branch `claude/new-session-palh5c`
+(Phase 12, Steps 1-6). This reflects the actual state of the
 repository right now — every number below was measured by running the
 project's own tools, not recalled or estimated, and is reproducible
 by running the same command.
@@ -58,27 +58,42 @@ engineering from this session:**
   placeholder, and neither page has been reviewed by an attorney —
   both say so plainly on the page itself.
 - One real California law change (Cal. Bus. & Prof. Code § 22757.2,
-  the AI Transparency Act's detection-tool requirement) was flagged
-  by the law-change watcher on 2026-10-01 and is still open — see
-  "Freshness" below.
+  the AI Transparency Act's detection-tool requirement), flagged by
+  the law-change watcher on 2026-10-01, was resolved 2026-10-31 — the
+  Phase 12 Step 3 checkpoint independently re-flagged the same clause
+  with the specific amendment, and the clause was corrected. See
+  `watcher/README.md`'s "Status so far" and `DECISIONS.md`.
 
 ## Mission metrics (as defined in `MASTER_BUILD_PLAN.md`)
 
 ### 1. Trust
 
-- **Tier A or B:** 382 of 740 documents (51.6%) — all at Tier B; Tier
-  A is empty by design, since it requires the adversarial verifier
-  and accessibility checks to have run against a document's full
-  clause set, and the verifier has so far sampled 100 of 4,980
-  authority clauses (2.0% of the authority corpus), not the full
-  corpus. `python3 tools/tiering.py` to reproduce.
+- **Tier A or B:** 382 of 740 documents (51.6%) — 8 at Tier A, 374 at
+  Tier B. Tier A now has a real per-document adversarial-verifier
+  signal (every authority clause checked, no open blocker/major
+  finding) and a real per-document accessibility signal
+  (`accessibility.json`, all 740/740 documents pass with 0 serious/
+  critical axe-core violations across both themes) — see
+  `tools/tiering.py` and `tools/accessibility_scan.js`. The 8 current
+  Tier A documents are all drafting-only forms with zero authority
+  clauses (nothing for the adversarial pass to find wrong); no
+  document with any authority clause has reached Tier A yet, because
+  the verifier checkpoint has so far reached 600 of 4,980 authority
+  clauses (12.0%), not the full corpus, and Tier A needs every one of
+  a document's authority clauses checked and clean, not a sample.
+  `python3 tools/tiering.py` to reproduce.
 - **Verified clauses within staleness thresholds:** 4,980 of 4,980
   authority clauses (100%) are marked `verified` and sit inside their
   category's fatal staleness window; 0 are even at the warn
   threshold. `python3 tools/validate_corpus.py` to reproduce.
-- **Open verifier findings by severity:** 0 blocker, 1 major, 17
-  minor (18 total, from the 100-clause sample verified so far).
-  `python3 verifier/report.py` to reproduce.
+- **Open verifier findings by severity:** 0 blocker, 3 major, 88
+  minor (124 total findings from the 600-clause checkpoint so far; 33
+  findings — all 3 blockers and 23 of 26 majors — have been triaged
+  fixed, and 13 more (3 major, 10 minor) accepted as real but
+  deliberately not auto-edited). The 3 open majors are each deferred
+  pending a direct leginfo recheck (see `DECISIONS.md`'s Phase 12 Step
+  4 entry), not unreviewed. `python3 verifier/triage.py --summary` to
+  reproduce.
 
 ### 2. Breadth
 

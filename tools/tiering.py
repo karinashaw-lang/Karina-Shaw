@@ -17,13 +17,31 @@ Tier B requires all three of:
 
 Tier A requires everything Tier B does, plus a clean adversarial-verifier
 run (master plan Phase 4.1) and a passed per-document accessibility check
-(Phase 9.1). Neither of those systems is built yet, so neither signal
-exists to check — and an absent signal is treated as "not met," not
-"assumed met." That makes Tier A correctly, honestly empty right now:
-not a bug, and exactly what "computed, never hand-assigned" requires.
-When Phase 4.1 and 9.1 exist and produce real per-document results, this
-script is where they plug in (see the two `False` constants below) —
-nothing about the rest of the tiering logic should need to change.
+(Phase 9.1):
+
+  - clean adversarial-verifier run: every authority clause the document
+    uses has actually been checked (appears in verifier/checked.jsonl —
+    the Phase 12 Step 3 checkpoint, not just "status: verified", which
+    is a drafting-time self-assessment the adversarial pass exists to
+    stress-test) AND carries no open blocker/major finding. "Open" means
+    verifier/triage.jsonl has no "fixed" or "rejected" disposition for
+    it — an "accepted" finding (the defect stands, just not corrected)
+    still blocks Tier A, same as a finding nobody has triaged yet. A
+    clause the checkpoint hasn't reached at all blocks Tier A the same
+    way an unchecked clause always has — "not yet known to be clean" is
+    not "clean."
+  - accessibility check: the document's rendered output screen passed
+    tools/accessibility_scan.js (accessibility.json) — a real, per-
+    document, both-themes axe-core scan, not the 50-document sample
+    tests/accessibility/axe_check.js runs as a CI regression gate.
+
+An absent signal (a clause the checkpoint hasn't reached yet, or a
+document accessibility.json has no entry for) is treated as "not met,"
+never "assumed met" — see the two `_EXISTS` constants below, and
+DECISIONS.md's Phase 12 Step 6 entry for why Tier A can come out
+honestly empty, or near-empty, given how little of the corpus the
+checkpoint has reached (12% of authority clauses as of this writing),
+rather than a sign something is broken.
 
 Tier C is everything else that passes validate_corpus.py (true for the
 whole corpus by the time this runs, since CI runs that gate first).
@@ -43,10 +61,18 @@ import sys
 from datetime import date
 
 # Phase 4.1 (adversarial verifier) and Phase 9.1 (accessibility checks)
-# don't exist yet. These are the two places their real per-document
-# results plug in once they do.
-ADVERSARIAL_VERIFIER_EXISTS = False
-ACCESSIBILITY_CHECK_EXISTS = False
+# now both exist and produce real per-document results (Phase 12 Steps
+# 3-4 and 6); see adversarial_verifier_clean() and
+# accessibility_check_passed() for what each actually checks.
+ADVERSARIAL_VERIFIER_EXISTS = True
+ACCESSIBILITY_CHECK_EXISTS = True
+
+CHECKED_PATH = 'verifier/checked.jsonl'
+FINDINGS_PATH = 'verifier/findings.jsonl'
+TRIAGE_PATH = 'verifier/triage.jsonl'
+ACCESSIBILITY_PATH = 'accessibility.json'
+OPEN_BLOCKING_SEVERITIES = {'blocker', 'major'}
+CLOSED_TRIAGE_STATUSES = {'fixed', 'rejected'}  # "accepted" still blocks -- the defect stands
 
 
 def entry_id(entry):
@@ -113,7 +139,73 @@ def has_golden_fixture(doc_id):
     return os.path.exists(os.path.join('tests', 'golden', 'fixtures', f'{doc_id}.json'))
 
 
-def compute_tier(doc, clauses_by_id, shared_fields, clause_categories, default_fatal, category_thresholds):
+def load_jsonl(path):
+    try:
+        with open(path, encoding='utf-8') as f:
+            return [json.loads(line) for line in f if line.strip()]
+    except FileNotFoundError:
+        return []
+
+
+def load_verifier_state():
+    """checkedClauseIds: clause ids the adversarial checkpoint has
+    actually reached. openBlockingClauseIds: clause ids carrying at
+    least one blocker/major finding whose triage disposition isn't
+    "fixed" or "rejected" -- includes a finding nobody has triaged yet
+    (not in triage.jsonl at all) and one explicitly "accepted" (the
+    defect stands, uncorrected). Both treat an absent record as the
+    non-passing case, per this module's own governing rule."""
+    checked_ids = {c['clauseId'] for c in load_jsonl(CHECKED_PATH)}
+
+    findings = []
+    counts = {}
+    for entry in load_jsonl(FINDINGS_PATH):
+        cid = entry['clauseId']
+        n = counts.get(cid, 0)
+        entry['findingId'] = f'{cid}#{n}'
+        counts[cid] = n + 1
+        findings.append(entry)
+
+    triage_status = {t['findingId']: t['status'] for t in load_jsonl(TRIAGE_PATH)}
+
+    open_blocking_ids = set()
+    for f in findings:
+        if f['severity'] not in OPEN_BLOCKING_SEVERITIES:
+            continue
+        if triage_status.get(f['findingId']) in CLOSED_TRIAGE_STATUSES:
+            continue
+        open_blocking_ids.add(f['clauseId'])
+
+    return checked_ids, open_blocking_ids
+
+
+def adversarial_verifier_clean(doc, clauses_by_id, checked_ids, open_blocking_ids):
+    for entry in doc['clauseOrder']:
+        clause = clauses_by_id.get(entry_id(entry))
+        if clause is None or clause['kind'] != 'authority':
+            continue
+        if clause['id'] not in checked_ids:
+            return False  # not yet reached by the checkpoint -- unknown, not clean
+        if clause['id'] in open_blocking_ids:
+            return False
+    return True
+
+
+def load_accessibility_results():
+    try:
+        with open(ACCESSIBILITY_PATH, encoding='utf-8') as f:
+            return json.load(f).get('documents', {})
+    except FileNotFoundError:
+        return {}
+
+
+def accessibility_check_passed(doc_id, accessibility_results):
+    result = accessibility_results.get(doc_id)
+    return bool(result) and result.get('passed') is True
+
+
+def compute_tier(doc, clauses_by_id, shared_fields, clause_categories, default_fatal, category_thresholds,
+                  checked_ids, open_blocking_ids, accessibility_results):
     blocking_b = []
     if not field_schema_complete(doc, shared_fields):
         blocking_b.append('incomplete field schema (a field is missing type or whyWeAsk)')
@@ -123,10 +215,11 @@ def compute_tier(doc, clauses_by_id, shared_fields, clause_categories, default_f
         blocking_b.append('no golden fixture')
 
     blocking_a = list(blocking_b)
-    if not ADVERSARIAL_VERIFIER_EXISTS:
-        blocking_a.append('no adversarial-verifier run exists yet (Phase 4.1)')
-    if not ACCESSIBILITY_CHECK_EXISTS:
-        blocking_a.append('no per-document accessibility check exists yet (Phase 9.1)')
+    if not adversarial_verifier_clean(doc, clauses_by_id, checked_ids, open_blocking_ids):
+        blocking_a.append('not every authority clause has a clean adversarial-verifier result '
+                           '(unchecked, or an open blocker/major finding)')
+    if not accessibility_check_passed(doc['id'], accessibility_results):
+        blocking_a.append('no passed per-document accessibility check on record (accessibility.json)')
 
     if not blocking_a:
         tier = 'A'
@@ -141,6 +234,8 @@ def compute_tiers():
     docs = json.load(open('data/documents.json'))
     clauses_by_id = {c['id']: c for c in json.load(open('data/clauses.json'))['clauses']}
     shared_fields = load_shared_fields()
+    checked_ids, open_blocking_ids = load_verifier_state() if ADVERSARIAL_VERIFIER_EXISTS else (set(), set())
+    accessibility_results = load_accessibility_results() if ACCESSIBILITY_CHECK_EXISTS else {}
 
     staleness_config = json.load(open('config/staleness.json'))
     default_fatal = staleness_config['defaultFatalMonths']
@@ -154,7 +249,8 @@ def compute_tiers():
     summary = {}
     for doc in docs:
         tier, blocking_b, blocking_a = compute_tier(
-            doc, clauses_by_id, shared_fields, clause_categories, default_fatal, category_thresholds)
+            doc, clauses_by_id, shared_fields, clause_categories, default_fatal, category_thresholds,
+            checked_ids, open_blocking_ids, accessibility_results)
         documents[doc['id']] = {'tier': tier, 'blockingB': blocking_b, 'blockingA': blocking_a}
         for cat in doc.get('categories', []):
             bucket = summary.setdefault(cat, {'A': 0, 'B': 0, 'C': 0, 'total': 0})

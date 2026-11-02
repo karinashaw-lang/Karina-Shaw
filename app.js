@@ -1360,11 +1360,14 @@ function jurisdictionBadgeHTML(doc) {
 // nothing here re-derives a tier, only displays one). Every explanation
 // states what was checked, never whether the result is enough for any
 // particular reader's situation — the same "inform, never advise" line
-// every other piece of UI copy in this app holds to. Tier A is included
-// for when a document eventually reaches it (tools/tiering.py's own
-// comments explain why none does yet); showing copy for a tier that's
-// currently empty isn't a bug, it's the tier scale being honestly
-// visible before anything has earned the top of it.
+// every other piece of UI copy in this app holds to. Tier A is real as
+// of Phase 12 Step 6: tools/tiering.py now has an actual per-document
+// adversarial-verifier signal and a real per-document accessibility
+// signal (tools/accessibility_scan.js), and a document reaches Tier A
+// only once both are genuinely clean for every authority clause it
+// uses — see tools/tiering.py's own docstring for exactly what that
+// requires, and BUILD_STATUS.md for how many documents currently
+// qualify and why most don't yet.
 const TIER_LABEL = { A: 'Tier A', B: 'Tier B', C: 'Tier C' };
 const TIER_EXPLANATION = {
   A: 'Meets every Tier B check, plus an independent adversarial review and an automated accessibility check, both with no open issues.',

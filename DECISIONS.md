@@ -2863,3 +2863,81 @@ and the fix is in. The remaining 10,331 of 10,431 distinct citations in
 the corpus the watcher has never scanned are a separate, larger
 decision (same shape as the verifier's full-corpus-run question) and
 are not addressed by closing this one item.
+
+## 2026-11-02 — Phase 12 Step 6: built the missing accessibility signal, then let the real numbers decide Tier A
+
+**Task:** "Promote Tier A" per the Phase 12 plan, which explicitly
+expects a candidate list to present for approval. `tools/tiering.py`
+requires two signals for Tier A — a clean adversarial-verifier run and
+a passed accessibility check — and the second did not exist in any
+form the tiering script could read: `ACCESSIBILITY_CHECK_EXISTS` was
+hardcoded `False`, and axe-core was pinned in `package.json` but never
+wired to a per-document result. Asked the user how to proceed given
+that; they chose to build the real signal rather than defer Step 6 or
+settle for wiring up only the verifier side.
+
+**What already existed vs. what was built:** `tests/accessibility/
+axe_check.js` (Phase 9.1's original CI deliverable) already scans every
+shared screen plus a 50-document sample under both themes and fails on
+serious/critical violations — but it's a fast regression gate, not a
+corpus-wide certification, and writes no persisted per-document result.
+Tier A asks "has *this* document passed," not "was it one of the 50
+sampled this run," so a new script, `tools/accessibility_scan.js`, was
+added: renders every one of the 740 documents' output screens directly
+(the same `state.document`/`state.answers`/`renderOutput()` path
+`tools/regression.js`'s own full-render check uses, not a per-document
+wizard click-through, which would be far slower at this scale with
+nothing gained for an output-screen accessibility check), runs a real
+axe-core scan under both themes, and writes `accessibility.json` — one
+`{passed, violations}` entry per document, same serious/critical bar as
+the existing CI gate. Took about 13 minutes end to end. Result: **740
+of 740 documents pass with zero serious/critical violations**, in both
+themes — this project's shared rendering template turned out to be
+accessible across the board, not something that needed fixing first.
+
+**The other signal** (`adversarial_verifier_clean()`, new in
+`tools/tiering.py`) required a real design decision `tiering.py`'s own
+docstring didn't spell out: what exactly counts as "clean"? Decided
+that every authority clause a document uses must (a) actually appear in
+`verifier/checked.jsonl` — "status: verified" is a drafting-time
+self-assessment the adversarial pass exists to stress-test, not the
+same thing as having been stress-tested — and (b) carry no open
+blocker/major finding, where "open" means `verifier/triage.jsonl` has
+no "fixed" or "rejected" disposition for it. An "accepted" finding (the
+defect stands, just not corrected — Step 4's three deferred items:
+`llcdiss_continued_existence`, `stayorpay_key_definitions`,
+`revivor_name_check_and_effect_of_reinstatement`) blocks Tier A exactly
+like an untriaged one, since the document genuinely still has a known,
+unresolved accuracy question either way. Both `_EXISTS` constants
+flipped from `False` to `True`; `tests/tiering/test_tiering.py` gained
+seven new cases covering the real pass/block logic for both signals
+(unchecked clause, open/accepted/rejected findings, failed/missing
+accessibility entry, and the genuine Tier-A-reached case), and the one
+existing test asserting Tier A could never be assigned was rewritten to
+assert it's blocked only when no supporting records exist for a given
+test corpus, not that it's structurally impossible.
+
+**The result, run for real:** 8 of 740 documents reach Tier A. All
+eight — `direct_deposit`, `employment_verification`, `exit_interview`,
+`expense_reimbursement`, `interview_scorecard`, `job_description`,
+`pto_request`, `salary_change` — have **zero authority clauses**: pure
+drafting-only HR forms with no legal citation to get wrong, so the
+adversarial-verifier gate holds vacuously true for them and they
+clear it the moment accessibility does too. No document with even one
+authority clause has reached Tier A yet, because the Step 3 checkpoint
+has so far reached 600 of 4,980 authority clauses (12%), and Tier A
+needs every one of a document's authority clauses checked and clean,
+not a sample of them — the same reasoning `tiering.py`'s own docstring
+already applied to the pre-Phase-12 state, now backed by a real number
+instead of "neither signal exists." This is the honest, computed
+answer, not a loophole: a document that makes no legal claims has
+nothing for an adversarial review to find wrong, and `TIER_EXPLANATION.A`
+in `app.js` ("an independent adversarial review... with no open
+issues") is literally true for all eight, not overstated for them.
+
+**Not done:** no attempt to lower either bar (e.g., scoring a
+non-authority clause's "no legal claims" absence as somehow a stronger
+signal, or treating "accepted" as non-blocking) to produce a larger or
+more impressive-looking candidate list. The list is 8 because 8 is
+what's actually earned the label today; growing it is Step 7's and
+future checkpoint waves' job, not this step's.
