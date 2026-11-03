@@ -1,7 +1,7 @@
 # Build status
 
-Last updated: 2026-11-02, against branch `claude/new-session-palh5c`
-(Phase 12, Steps 1-6). This reflects the actual state of the
+Last updated: 2026-11-03, against branch `claude/new-session-palh5c`
+(Phase 12, Steps 1-7). This reflects the actual state of the
 repository right now — every number below was measured by running the
 project's own tools, not recalled or estimated, and is reproducible
 by running the same command.
@@ -78,22 +78,38 @@ engineering from this session:**
   Tier A documents are all drafting-only forms with zero authority
   clauses (nothing for the adversarial pass to find wrong); no
   document with any authority clause has reached Tier A yet, because
-  the verifier checkpoint has so far reached 600 of 4,980 authority
-  clauses (12.0%), not the full corpus, and Tier A needs every one of
+  the verifier checkpoint has so far reached 1,100 of 4,980 authority
+  clauses (22.1%), not the full corpus, and Tier A needs every one of
   a document's authority clauses checked and clean, not a sample.
   `python3 tools/tiering.py` to reproduce.
 - **Verified clauses within staleness thresholds:** 4,980 of 4,980
   authority clauses (100%) are marked `verified` and sit inside their
   category's fatal staleness window; 0 are even at the warn
   threshold. `python3 tools/validate_corpus.py` to reproduce.
-- **Open verifier findings by severity:** 0 blocker, 3 major, 88
-  minor (124 total findings from the 600-clause checkpoint so far; 33
-  findings — all 3 blockers and 23 of 26 majors — have been triaged
-  fixed, and 13 more (3 major, 10 minor) accepted as real but
-  deliberately not auto-edited). The 3 open majors are each deferred
-  pending a direct leginfo recheck (see `DECISIONS.md`'s Phase 12 Step
-  4 entry), not unreviewed. `python3 verifier/triage.py --summary` to
-  reproduce.
+- **Open verifier findings by severity:** 4 blocker, 27 major, 148
+  minor (225 total findings from the 1,100-clause checkpoint so far;
+  33 findings — all 3 of checkpoint-A's blockers and 23 of 26
+  checkpoint-A majors — have been triaged fixed, and 13 more (3
+  major, 10 minor, all from checkpoint-A) accepted as real but
+  deliberately not auto-edited). All 179 open findings were found in
+  Phase 12 Step 7's second checkpoint ("checkpoint-B", clauses 601-
+  1,100) and have not yet been triaged — that is a separate step, the
+  same as checkpoint-A's findings were before Step 4. The 4 open
+  blockers are, in order found: `stayorpay_core_prohibition` (states
+  a Bus. & Prof. Code §16608 prohibition is in force when AB 1697
+  pushed its operative date to Jan. 1, 2027), `smallestate_real_property_affidavit`
+  (states a superseded $166,250 small-estate ceiling; the current
+  figure is $208,850, and two sibling clauses already disagree with
+  each other on this point), `llcdefault_management_and_voting`
+  (states LLC default voting is flatly "equal per member," omitting
+  Corp. Code §17704.07(r)'s profit-interest-proportional default for
+  the no-agreement case this clause itself describes), and
+  `aitransparency_disclosure_requirements` (superseded by SB 1000,
+  signed with an urgency clause Sept. 30, 2026, which deleted the
+  manifest-disclosure option this clause's central holding rests on).
+  `python3 verifier/triage.py --summary` to reproduce the open/fixed/
+  accepted/rejected counts; `verifier/findings.jsonl` holds the full
+  detail.
 
 ### 2. Breadth
 
