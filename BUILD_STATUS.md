@@ -160,13 +160,22 @@ network access) needs to complete this one.
 
 ### 5. Reach
 
-**Not yet measurable.** `tools/generate_seo_pages.py` produces ~840
-programmatic pages (one per document, one per already-verified
-search question) and `tools/validate_seo_pages.py` checks them for
+**Not yet measurable.** `tools/generate_seo_pages.py` produces 839
+programmatic pages (740 documents + 99 already-verified search
+questions) and `tools/validate_seo_pages.py` checks them for
 uniqueness and thinness — both pass in CI on every push — but the
 output (`build/seo/`) is gitignored and has never been published to a
 live, indexed site. There is no real organic search traffic to report
 because there is nothing publicly live to receive it yet.
+
+Phase 12 Step 8 added a staging mechanism (`--stage N`, computed from
+`tiers.json` + open verifier findings — see `SEO_LAUNCH_PLAN.md`) and
+a concrete rollout plan: stage 1 (Tier A, zero open findings) = 8
+pages ready; stage 2 (+ Tier B, zero open findings) = 369; stage 3
+(all of today's Tier A+B) = 442. None of this is published — the plan
+also lists exactly what the project owner still needs to decide
+(domain, hosting, deploy path, Search Console) before any stage could
+go live.
 
 ### 6. Revenue
 
