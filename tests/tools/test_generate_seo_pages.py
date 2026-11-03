@@ -83,6 +83,50 @@ class TestGenerateSeoPages(unittest.TestCase):
         self.assertNotIn('<script>alert(1)</script>', page['html'])
         self.assertIn('&lt;script&gt;', page['html'])
 
+    def test_no_stage_means_no_noindex_and_full_sitemap(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            pages = gen.generate(tmp, stage=None)
+            self.assertFalse(any(p.get('noindex') for p in pages))
+            with open(os.path.join(tmp, 'sitemap.xml'), encoding='utf-8') as f:
+                sitemap = f.read()
+            self.assertEqual(sitemap.count('<url>'), len(pages))
+
+    def test_stage_marks_lower_tier_docs_noindex_and_shrinks_sitemap(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            all_pages = gen.generate(tmp, stage=None)
+            staged_pages = gen.generate(tmp, stage=1)
+            noindexed = [p for p in staged_pages if p.get('noindex')]
+            indexable = [p for p in staged_pages if not p.get('noindex')]
+            # Every document still gets a page either way -- staging
+            # changes indexability, not existence.
+            self.assertEqual(len(staged_pages), len(all_pages))
+            self.assertTrue(noindexed)  # stage 1 is narrow; something is withheld
+            self.assertTrue(indexable)  # but not everything
+            for page in noindexed:
+                self.assertIn('<meta name="robots" content="noindex">', page['html'])
+            for page in indexable:
+                self.assertNotIn('noindex', page['html'])
+            with open(os.path.join(tmp, 'sitemap.xml'), encoding='utf-8') as f:
+                sitemap = f.read()
+            self.assertEqual(sitemap.count('<url>'), len(indexable))
+
+    def test_higher_stage_number_indexes_at_least_as_much(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            stage1 = gen.generate(tmp, stage=1)
+            stage4 = gen.generate(tmp, stage=4)
+            indexable1 = {p['path'] for p in stage1 if not p.get('noindex')}
+            indexable4 = {p['path'] for p in stage4 if not p.get('noindex')}
+            self.assertTrue(indexable1.issubset(indexable4))
+
+    def test_compute_doc_stage_gates_on_tier_and_open_findings(self):
+        doc = {'id': 'd1', 'clauseOrder': ['c1']}
+        clauses_by_id = {'c1': {'id': 'c1'}}
+        self.assertEqual(gen.compute_doc_stage(doc, clauses_by_id, 'A', {}), 1)
+        self.assertEqual(gen.compute_doc_stage(doc, clauses_by_id, 'B', {}), 2)
+        self.assertEqual(gen.compute_doc_stage(doc, clauses_by_id, 'B', {'c1': ['minor']}), 3)
+        self.assertEqual(gen.compute_doc_stage(doc, clauses_by_id, 'B', {'c1': ['major']}), 4)
+        self.assertEqual(gen.compute_doc_stage(doc, clauses_by_id, 'C', {}), 4)
+
 
 class TestValidateSeoPages(unittest.TestCase):
     def test_body_text_strips_head_and_tags(self):

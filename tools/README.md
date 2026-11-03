@@ -784,8 +784,9 @@ owner has a destination (email/Slack) to point it at.
 ## tools/generate_seo_pages.py / tools/validate_seo_pages.py
 
 ```
-python3 tools/generate_seo_pages.py        # writes build/seo/ (gitignored)
-python3 tools/validate_seo_pages.py        # generates into a temp dir and checks it
+python3 tools/generate_seo_pages.py              # writes build/seo/ (gitignored)
+python3 tools/generate_seo_pages.py --stage 2    # same, but marks lower-stage pages noindex and shrinks sitemap.xml
+python3 tools/validate_seo_pages.py              # generates into a temp dir and checks it (always the full, unstaged set)
 ```
 
 Phase 8.3: one page per document and one per real, already-verified
@@ -793,6 +794,19 @@ question (`tests/search/golden_queries.json`) the corpus can answer with
 a cited authority clause. `validate_seo_pages.py` fails on a duplicate
 title/description, a too-thin page, or two same-category pages too
 similar — wired into CI on every push.
+
+Phase 12 Step 8 added `--stage N`: every document still gets exactly
+one page regardless of stage (staging controls indexability, not
+existence), but a page outside stage `N` gets
+`<meta name="robots" content="noindex">` and is left out of
+`sitemap.xml`. A document's stage is computed fresh from `tiers.json`
+and `verifier/findings.jsonl`/`triage.jsonl` (`compute_doc_stage()`)
+— not a hardcoded list — so it tracks the corpus's real, current
+quality signals. See `SEO_LAUNCH_PLAN.md` for what each stage number
+means, today's real page counts per stage, and what's still needed
+(domain, hosting, Search Console, analytics — all project-owner
+items) before any stage could actually be deployed; nothing has been
+published anywhere by this mechanism or that plan.
 
 ## contract_matcher.js / eval_contract_reader.js (Phase 10.1)
 

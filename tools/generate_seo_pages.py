@@ -19,16 +19,40 @@ isn't committed):
     content the master plan's own instruction says not to publish.
 
 Deterministic: every byte of every page is a pure function of
-data/documents.json, data/clauses.json, config/seo.json, and
-tests/search/golden_queries.json -- no timestamps, no randomness, no
-network access. Running this twice on the same corpus produces
-byte-identical output (tests/tools/test_generate_seo_pages.py checks
-this directly), which is what makes tools/validate_seo_pages.py's
-"fails CI if a page is thin or two pages are too similar" check mean
-anything: a flaky generator would make that check unfalsifiable.
+data/documents.json, data/clauses.json, config/seo.json,
+tests/search/golden_queries.json, tiers.json, verifier/findings.jsonl,
+and verifier/triage.jsonl -- no timestamps, no randomness, no network
+access. Running this twice on the same corpus produces byte-identical
+output (tests/tools/test_generate_seo_pages.py checks this directly),
+which is what makes tools/validate_seo_pages.py's "fails CI if a page
+is thin or two pages are too similar" check mean anything: a flaky
+generator would make that check unfalsifiable.
+
+Phase 12 Step 8: a staged launch needs a way to generate every page
+(for internal QA and so validate_seo_pages.py keeps checking the full
+set) while only a subset is actually meant to be indexed by a search
+engine if this output were ever deployed. `--stage N` (or `stage=N`
+to generate()) does not remove any page -- every document still gets
+exactly one page, so test_every_document_gets_a_page and the
+determinism test are unaffected by the default (stage=None, meaning
+"no restriction", identical to pre-Step-8 behavior). What changes:
+- A page whose document doesn't qualify for stage N gets
+  `<meta name="robots" content="noindex">` added to its <head>, so a
+  search engine that somehow crawled it anyway would not index it.
+- sitemap.xml lists only the in-stage, indexable pages -- a sitemap
+  is an invitation to crawl, and a withheld page shouldn't be in it.
+A document's own stage (see `compute_doc_stage()`) is purely a
+function of its current Tier (tiers.json) and whether any of its
+clauses carry an open verifier finding (verifier/findings.jsonl minus
+whatever verifier/triage.jsonl has already closed) -- not a hardcoded
+list, so it tracks the corpus's real, current quality signals instead
+of going stale the moment another checkpoint wave runs.
+See SEO_LAUNCH_PLAN.md for what each stage means and the actual
+rollout recommendation; this module only computes the mechanism.
 
     python3 tools/generate_seo_pages.py
     python3 tools/generate_seo_pages.py --out /tmp/some/dir
+    python3 tools/generate_seo_pages.py --stage 2
 """
 import html
 import json
@@ -65,6 +89,72 @@ def load_seo_config():
         return load_json('config/seo.json')
     except FileNotFoundError:
         return {'baseUrl': ''}
+
+
+def load_tiers():
+    try:
+        return load_json('tiers.json')['documents']
+    except FileNotFoundError:
+        return {}
+
+
+# findingId is <clauseId>#<n>, n counting that clause's findings in
+# the order they appear in findings.jsonl -- the same convention
+# verifier/triage.py and verifier/record_result.py already use.
+def load_open_severities_by_clause():
+    triaged = set()
+    try:
+        with open(os.path.join(ROOT, 'verifier', 'triage.jsonl'), encoding='utf-8') as f:
+            for line in f:
+                line = line.strip()
+                if line:
+                    triaged.add(json.loads(line)['findingId'])
+    except FileNotFoundError:
+        pass
+
+    open_by_clause = {}
+    seen_count = {}
+    try:
+        with open(os.path.join(ROOT, 'verifier', 'findings.jsonl'), encoding='utf-8') as f:
+            for line in f:
+                line = line.strip()
+                if not line:
+                    continue
+                finding = json.loads(line)
+                cid = finding['clauseId']
+                idx = seen_count.get(cid, 0)
+                seen_count[cid] = idx + 1
+                if f"{cid}#{idx}" not in triaged:
+                    open_by_clause.setdefault(cid, []).append(finding['severity'])
+    except FileNotFoundError:
+        pass
+    return open_by_clause
+
+
+# Stage 1: narrowest and safest -- Tier A, nothing open against it at
+#   all (today's Tier A is almost entirely drafting-only forms with no
+#   authority clause to get wrong, so this is close to zero-risk).
+# Stage 2: adds Tier B documents with zero open findings of any
+#   severity -- every authority clause checked clean, no lingering
+#   advisory-tone/unverifiable-source minor either.
+# Stage 3: all of today's Tier A + Tier B, including the ones that
+#   still carry an open *minor* finding -- acceptable per this
+#   project's own severity definitions (advisory-tone drift, an
+#   unverifiable source, a stylistic overclaim a careful reader would
+#   still read correctly), not a wrong statement of law.
+# Stage 4: everything, including Tier C -- not a real recommendation
+#   today (verifier coverage is only 22% of the corpus), but the
+#   mechanism supports it once coverage grows.
+def compute_doc_stage(doc, clauses_by_id, tier, open_by_clause):
+    open_severities = set()
+    for entry in doc['clauseOrder']:
+        open_severities.update(open_by_clause.get(clause_entry_id(entry), []))
+    has_blocker_or_major = bool(open_severities & {'blocker', 'major'})
+    if tier == 'C' or has_blocker_or_major:
+        return 4
+    if not open_severities:
+        return 1 if tier == 'A' else 2
+    return 3
 
 
 def esc(s):
@@ -166,19 +256,21 @@ def schema_script_json(schema):
     return json.dumps(schema, sort_keys=True).replace('<', '\\u003c')
 
 
-def page_shell(title, description, url, schema, body_html):
+def page_shell(title, description, url, schema, body_html, noindex=False):
+    robots_tag = '<meta name="robots" content="noindex">\n' if noindex else ''
     return (
         '<!doctype html>\n<html lang="en">\n<head>\n'
         '<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1">\n'
         f'<title>{esc(title)}</title>\n'
         f'<meta name="description" content="{esc(description)}">\n'
         f'<link rel="canonical" href="{esc(url)}">\n'
+        + robots_tag +
         f'<script type="application/ld+json">{schema_script_json(schema)}</script>\n'
         '</head>\n<body>\n' + body_html + '\n</body>\n</html>\n'
     )
 
 
-def render_document_page(doc, clauses_by_id, all_docs, base_url):
+def render_document_page(doc, clauses_by_id, all_docs, base_url, noindex=False):
     jkey = classify_document_jurisdiction(doc, clauses_by_id)
     title = f"{doc['title']} — California | Groundtruth"
     description = doc['description'][:300]
@@ -229,10 +321,14 @@ def render_document_page(doc, clauses_by_id, all_docs, base_url):
 <p>This page describes what the document's sourced clauses say — it isn't legal advice about any particular situation.</p>
 <p><a href="{esc(page_url(base_url, ''))}">Build this document with Groundtruth</a></p>"""
 
-    return {'title': title, 'description': description, 'url': url, 'path': f"documents/{doc['id']}.html", 'html': page_shell(title, description, url, schema, body)}
+    return {
+        'title': title, 'description': description, 'url': url,
+        'path': f"documents/{doc['id']}.html", 'noindex': noindex,
+        'html': page_shell(title, description, url, schema, body, noindex),
+    }
 
 
-def render_question_page(query_entry, doc, clauses_by_id, base_url):
+def render_question_page(query_entry, doc, clauses_by_id, base_url, noindex=False):
     query = query_entry['query']
     supporting = [c for c in doc_clauses(doc, clauses_by_id) if c.get('kind') == 'authority' and c.get('citations')]
     if not supporting:
@@ -268,15 +364,20 @@ def render_question_page(query_entry, doc, clauses_by_id, base_url):
 <p>This describes what the sourced clauses say — it isn't legal advice about your situation.</p>
 <p><a href="{esc(page_url(base_url, f"documents/{doc['id']}.html"))}">See the full {esc(doc['title'])}</a></p>"""
 
-    return {'title': title, 'description': description, 'url': url, 'path': f"questions/{slugify(query)}.html", 'html': page_shell(title, description, url, schema, body)}
+    return {
+        'title': title, 'description': description, 'url': url,
+        'path': f"questions/{slugify(query)}.html", 'noindex': noindex,
+        'html': page_shell(title, description, url, schema, body, noindex),
+    }
 
 
 def build_sitemap(pages, base_url):
-    urls = ''.join(f"<url><loc>{esc(p['url'])}</loc></url>\n" for p in pages)
+    indexable = [p for p in pages if not p.get('noindex')]
+    urls = ''.join(f"<url><loc>{esc(p['url'])}</loc></url>\n" for p in indexable)
     return f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{urls}</urlset>\n'
 
 
-def generate(out_dir=DEFAULT_OUT_DIR):
+def generate(out_dir=DEFAULT_OUT_DIR, stage=None):
     docs = load_json('data/documents.json')
     clauses_by_id = {c['id']: c for c in load_json('data/clauses.json')['clauses']}
     seo_config = load_seo_config()
@@ -284,9 +385,20 @@ def generate(out_dir=DEFAULT_OUT_DIR):
     golden_queries = load_json('tests/search/golden_queries.json')
     docs_by_id = {d['id']: d for d in docs}
 
+    doc_stage = {}
+    if stage is not None:
+        tiers = load_tiers()
+        open_by_clause = load_open_severities_by_clause()
+        for doc in docs:
+            tier = (tiers.get(doc['id']) or {}).get('tier', 'C')
+            doc_stage[doc['id']] = compute_doc_stage(doc, clauses_by_id, tier, open_by_clause)
+
+    def is_noindex(doc_id):
+        return stage is not None and doc_stage.get(doc_id, 4) > stage
+
     pages = []
     for doc in docs:
-        pages.append(render_document_page(doc, clauses_by_id, docs, base_url))
+        pages.append(render_document_page(doc, clauses_by_id, docs, base_url, noindex=is_noindex(doc['id'])))
 
     # Dedupe by slug — two different queries can slugify to the same
     # string (e.g. punctuation-only differences), and the last one
@@ -296,7 +408,7 @@ def generate(out_dir=DEFAULT_OUT_DIR):
         doc = docs_by_id.get(entry['expectedDocId'])
         if not doc:
             continue
-        page = render_question_page(entry, doc, clauses_by_id, base_url)
+        page = render_question_page(entry, doc, clauses_by_id, base_url, noindex=is_noindex(doc['id']))
         if not page or page['path'] in seen_slugs:
             continue
         seen_slugs.add(page['path'])
@@ -319,10 +431,15 @@ def main():
     out_dir = DEFAULT_OUT_DIR
     if '--out' in sys.argv:
         out_dir = sys.argv[sys.argv.index('--out') + 1]
-    pages = generate(out_dir)
+    stage = None
+    if '--stage' in sys.argv:
+        stage = int(sys.argv[sys.argv.index('--stage') + 1])
+    pages = generate(out_dir, stage=stage)
     doc_count = sum(1 for p in pages if p['path'].startswith('documents/'))
     question_count = sum(1 for p in pages if p['path'].startswith('questions/'))
-    print(f'Generated {doc_count} document pages and {question_count} question pages to {out_dir}.')
+    noindex_count = sum(1 for p in pages if p.get('noindex'))
+    stage_note = f' (stage {stage}: {len(pages) - noindex_count} indexable, {noindex_count} noindex)' if stage is not None else ''
+    print(f'Generated {doc_count} document pages and {question_count} question pages to {out_dir}.{stage_note}')
     return 0
 
 
