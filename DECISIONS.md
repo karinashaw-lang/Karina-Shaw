@@ -2941,3 +2941,71 @@ signal, or treating "accepted" as non-blocking) to produce a larger or
 more impressive-looking candidate list. The list is 8 because 8 is
 what's actually earned the label today; growing it is Step 7's and
 future checkpoint waves' job, not this step's.
+
+## 2026-11-03 — Phase 12 Step 7: checkpoint-B triage, and the `aitransparency_disclosure_requirements` checkedDate exception
+
+**Task:** Checkpoint-B (the second 500-clause adversarial verifier
+checkpoint, clauses 601–1,100) found 225 total findings, including 4
+blockers and 27 majors. Per the user's explicit approval ("Triage
+checkpoint-B's blockers + majors now"), these 31 findings (29 primary
+clauses + 1 sibling, `smallestate_threshold_mechanism`, that
+independently repeated the same error) were triaged and fixed the same
+way Step 4 handled checkpoint-A's findings: a patch-review document was
+drafted, sent to the user, approved as a batch, then applied via a
+verified-anchor script (every old-text anchor confirmed to occur
+exactly once in the live `data/clauses.json` before any write) and
+recorded in `verifier/triage.jsonl` with full `changelog.html` entries.
+
+**The one judgment call:** `aitransparency_disclosure_requirements`'s
+fix (removing the manifest-disclosure option, which SB 1000 deleted
+effective September 30, 2026, and broadening the latent-disclosure
+trigger per the same bill) is sourced from the Assembly Privacy and
+Consumer Protection Committee's official bill analysis and corroborating
+law-firm alerts — not from a direct fetch of the amended, chaptered text
+of Bus. & Prof. Code § 22757.3 itself. `leginfo.legislature.ca.gov`
+returned a Cloudflare bot-challenge on every attempt across this entire
+session, for every subagent, with no exception found. Global Rule 3
+("never mark a clause Verified or change a checkedDate unless it was
+actually re-verified against the primary source") is read literally
+here: the primary source for *this specific statutory text* is the
+hosted, chaptered § 22757.3 page, not the committee analysis describing
+it, however reliable that analysis is as an official legislative
+document. Accordingly:
+
+- The clause's `body` and `gap` text WAS corrected (leaving clearly
+  superseded, false statutory text in place is worse than a
+  substance-correct fix that honestly flags its own sourcing
+  limitation — the new gap text says so explicitly, in the same spirit
+  as every other clause in this corpus that discloses an unreachable
+  source rather than guessing).
+- The clause's `checkedDate` was deliberately left at `2026-09-04`,
+  **not** bumped to `2026-11-03` like the other 29 clauses this triage
+  pass touched. This mirrors the distinction this project's own
+  law-change watcher (Phase 4.4) already draws between "flagged" and
+  "re-verified": a law-change signal moves a clause's content, but only
+  a genuine primary-source recheck is allowed to move its checkedDate.
+- The corpus schema has only one `status` value ("verified") for
+  authority clauses — there's no "needs recheck" status to flag this
+  with instead, so the gap text's explicit sourcing-limitation sentence
+  is the only machine- and human-readable record of this clause's
+  special state until someone with working access to leginfo can
+  independently confirm § 22757.3's exact post-SB-1000 wording and
+  bump the date for real.
+
+**Not done:** no attempt to backdate a leginfo fetch that didn't happen,
+no attempt to invent a plausible-looking verbatim quote for the amended
+statute (the existing, pre-amendment `citations[].quote` fields were
+left untouched — they're accurate to what they quote, just no longer
+descriptive of current law, which the gap now says outright), and no
+silent skip of the substance fix just because the sourcing wasn't
+ideal. The `stayorpay_core_prohibition` fix (AB 1697's January 1, 2027
+operative date) rests on the same kind of secondary-source confirmation
+(a Senate Judiciary Committee analysis, not leginfo) but its
+`checkedDate` WAS bumped — the distinguishing fact is that
+`stayorpay_core_prohibition`'s substantive correction is a single,
+narrow, unambiguous fact (an amended effective date, confirmed by
+multiple independent law-firm alerts in addition to the committee
+analysis) rather than a multi-part rewrite of operative statutory
+requirements resting on one source's paraphrase of the bill text; this
+is itself a judgment call about where the Rule 3 line falls, recorded
+here rather than applied silently.
