@@ -63,6 +63,12 @@ engineering from this session:**
   Phase 12 Step 3 checkpoint independently re-flagged the same clause
   with the specific amendment, and the clause was corrected. See
   `watcher/README.md`'s "Status so far" and `DECISIONS.md`.
+- `aitransparency_disclosure_requirements`'s `checkedDate` is
+  intentionally frozen at 2026-09-04 even though its body/gap text was
+  corrected on 2026-11-03 (SB 1000's manifest-disclosure deletion) —
+  a direct leginfo fetch of the amended § 22757.3 text is still needed
+  before that date can be bumped for real. See `DECISIONS.md`'s
+  2026-11-03 entry.
 
 ## Mission metrics (as defined in `MASTER_BUILD_PLAN.md`)
 
@@ -86,30 +92,31 @@ engineering from this session:**
   authority clauses (100%) are marked `verified` and sit inside their
   category's fatal staleness window; 0 are even at the warn
   threshold. `python3 tools/validate_corpus.py` to reproduce.
-- **Open verifier findings by severity:** 4 blocker, 27 major, 148
+- **Open verifier findings by severity:** 0 blocker, 0 major, 148
   minor (225 total findings from the 1,100-clause checkpoint so far;
-  33 findings — all 3 of checkpoint-A's blockers and 23 of 26
-  checkpoint-A majors — have been triaged fixed, and 13 more (3
-  major, 10 minor, all from checkpoint-A) accepted as real but
-  deliberately not auto-edited). All 179 open findings were found in
-  Phase 12 Step 7's second checkpoint ("checkpoint-B", clauses 601-
-  1,100) and have not yet been triaged — that is a separate step, the
-  same as checkpoint-A's findings were before Step 4. The 4 open
-  blockers are, in order found: `stayorpay_core_prohibition` (states
-  a Bus. & Prof. Code §16608 prohibition is in force when AB 1697
-  pushed its operative date to Jan. 1, 2027), `smallestate_real_property_affidavit`
-  (states a superseded $166,250 small-estate ceiling; the current
-  figure is $208,850, and two sibling clauses already disagree with
-  each other on this point), `llcdefault_management_and_voting`
-  (states LLC default voting is flatly "equal per member," omitting
-  Corp. Code §17704.07(r)'s profit-interest-proportional default for
-  the no-agreement case this clause itself describes), and
-  `aitransparency_disclosure_requirements` (superseded by SB 1000,
-  signed with an urgency clause Sept. 30, 2026, which deleted the
-  manifest-disclosure option this clause's central holding rests on).
+  64 fixed — all 7 blockers and 53 of 53 majors found across both
+  checkpoints — and 13 more, all minors or majors already fixed
+  elsewhere, accepted as real but deliberately not auto-edited). Every
+  checkpoint-B blocker and major (31 findings across 30 clauses — 29
+  primary + 1 sibling) was triaged and fixed in a single batch-approved
+  pass: the user reviewed a 30-clause patch document and approved it
+  wholesale, then every fix was applied via a script that verified each
+  old-text anchor matched the live corpus exactly once before writing.
+  The 4 fixed blockers were `stayorpay_core_prohibition` (AB 1697
+  pushed the statute's operative date to Jan. 1, 2027),
+  `smallestate_real_property_affidavit` (corrected $166,250 to
+  $208,850, also resolving its contradiction with sibling clauses),
+  `llcdefault_management_and_voting` (added Corp. Code §17704.07(r)'s
+  profit-interest-proportional voting default for the no-agreement
+  case), and `aitransparency_disclosure_requirements` (SB 1000 deleted
+  the manifest-disclosure option and broadened the latent-disclosure
+  trigger — see `DECISIONS.md`'s 2026-11-03 entry for why this one
+  clause's `checkedDate` was deliberately *not* bumped, unlike the
+  other 29). All 148 open findings are minor-severity, from
+  checkpoint-B, and have not yet been triaged — a future pass.
   `python3 verifier/triage.py --summary` to reproduce the open/fixed/
-  accepted/rejected counts; `verifier/findings.jsonl` holds the full
-  detail.
+  accepted/rejected counts; `verifier/findings.jsonl` and
+  `changelog.html` hold the full detail.
 
 ### 2. Breadth
 
