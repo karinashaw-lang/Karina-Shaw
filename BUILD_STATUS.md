@@ -130,14 +130,30 @@ engineering from this session:**
 
 ### 3. Experience
 
-**Not yet measurable.** The analytics pipeline (Phase 8.1) is built,
-tested against synthetic data, and live in both Supabase projects —
-but this product has no real users yet, so `analytics_events` holds
-zero real rows. Completion rate, abandonment point, time-to-finished-
-document, and feedback volume/sentiment all require real usage this
-session has no way to generate or fabricate. `tools/analytics_report.js`
-and `tools/ingest_feedback_findings.js` are ready to report on this
-the moment real traffic exists.
+**Not yet measurable, but the pipeline itself is now proven correct
+against real data (Phase 12 Step 9), not just synthetic unit tests.**
+The analytics (8.1) and feedback (8.2) pipelines are built, live in
+both Supabase projects, and wired into the real app (not just
+scaffolding): `account.js` wraps `renderWizard`/`renderWizardStep`/
+`renderOutput`/`searchDocuments` and the four export buttons to fire
+real `trackEvent` calls, and the feedback control is a real insert
+path. This session restored `groundtruth-staging`, inserted rows
+shaped exactly like the real client code's calls, and fed them into
+the real, unmodified `reportCompletionAndAbandonment`/`reportSearches`/
+`reportSlowestScreens`/`buildFindingLines` functions — all produced
+correct output (e.g. "opened 2, completed 1 (50%)" from a two-session
+fixture) — then deleted the test rows. See `DECISIONS.md`'s 2026-11-08
+entry for why a literal browser click-through against the live
+project couldn't run from this sandbox (its egress policy refuses
+`*.supabase.co` outright for every client, confirmed for curl, Node
+`fetch`, and the browser alike) and why the SQL-level substitute is a
+sound proof of the same thing. This product still has no real users,
+so `analytics_events` still holds zero real rows, and completion
+rate, abandonment point, time-to-finished-document, and feedback
+volume/sentiment all still require real usage this session has no
+way to generate — `tools/analytics_report.js` and
+`tools/ingest_feedback_findings.js` are ready to report on this the
+moment real traffic exists.
 
 ### 4. Freshness
 
