@@ -116,3 +116,74 @@ substrings of the verified text.
   HOA Assessment Lien document below was also merged in the same
   session pass — see that document's net-change line for the combined
   total).
+
+## Addendum, 2026-11-09 (Phase 12 Step 10)
+
+This document was recategorized from `["Family Law"]` to
+`["Consumer & Civil Court"]` (the new 9th category added this step —
+see `DECISIONS.md`'s 2026-11-09 entry) and one clause was added to
+close a coverage gap found while scoping Step 10's planned documents.
+
+- **Gap found:** no clause anywhere in the corpus discussed
+  California's separate, newer process for a name change that conforms
+  to the petitioner's gender identity (confirmed by grepping
+  `data/clauses.json` for "1277.5", "103437", "gender identity", and
+  "gender identifier" — the only hits were unrelated FEHA/housing
+  protected-characteristic clauses). This was a pure coverage gap, not
+  an existing error.
+- **New clause:** `namechange_gender_identity_conforming_process`,
+  inserted into `clauseOrder` right after
+  `namechange_confidential_name_change`. It covers two already-enacted
+  statutes, both operative July 1, 2026 (already past as of this
+  addendum's date): Health & Safety Code § 103437(b)(1), (c)(1), (3)
+  (Senate Bill 59, Stats. 2025, ch. 738 — confidentiality of records in
+  a gender-identity/gender-and-sex-identifier name-change proceeding,
+  and when that confidentiality attaches) and Code of Civil Procedure
+  § 1277.5(a)-(b)(1) (Assembly Bill 1084, Stats. 2025, ch. 723 — no
+  order-to-show-cause, no-hearing, six-week process for an adult's or a
+  fully-parent-consented minor's gender-identity-conforming name
+  change).
+- **Why `status: "unverified"`, not `"verified"`:** every other
+  authority clause in this corpus is `"verified"` against a direct
+  fetch of the actual statutory text (almost always from
+  `leginfo.legislature.ca.gov`). For this clause, every such direct
+  fetch failed: `leginfo.legislature.ca.gov` returned a Cloudflare 403
+  for both § 103437 and § 1277.5 (the same sandbox limitation already
+  on record elsewhere in this corpus for leginfo generally);
+  `law.onecle.com` returned 404 for § 103437; and several guessed
+  `california.public.law` URL slugs for both sections returned 404,
+  including after confirming the site's working slug pattern against a
+  known-good reference section already cited elsewhere in this
+  document (CCP § 1277). Rather than mark this clause `"verified"` on
+  the strength of a secondary source, or skip the clause and leave the
+  gap undisclosed, it is included with real citations and quotes, each
+  attributed to its actual source — the Judicial Council's Invitation
+  to Comment W26-03 ("Civil Practice and Procedure: Name Change and
+  Gender Change Rules and Forms," `courts.ca.gov`) — and marked with a
+  status value, `"unverified"`, not otherwise used anywhere in this
+  corpus. `tools/tiering.py` and `tools/add_effective_cycle_checked.py`
+  both already key off `status == "verified"` specifically, so this
+  clause is automatically excluded from Tier A/B eligibility and from
+  the effective-cycle/staleness machinery that applies to `"verified"`
+  clauses — it will not silently count toward either until someone
+  re-checks it against the statute's actual text and bumps its status.
+- **What the source actually supports:** the Judicial Council document
+  describes the effect of two bills the Legislature already enacted
+  (Stats. 2025, chs. 723 and 738); its own "not yet approved by the
+  Judicial Council ... circulated for comment" disclaimer is about the
+  specific *rules and forms* (a proposed NC-200 form series, comment
+  period closed January 7, 2026) the committee was proposing to
+  implement those bills, not about whether the bills themselves are
+  law — they already are. Accordingly the clause describes only the
+  statutory confidentiality and no-hearing requirements and names no
+  specific form number.
+- **Not covered by the new clause:** CCP § 1277.5(b)(2)(A)-(C)'s
+  retained order-to-show-cause process for a minor's petition where
+  not all living parents sign; § 1279.5(e)'s sex-offender-registrant
+  bar (already in `namechange_hearing_standard_and_denial_grounds`);
+  and the related but distinct "recognition of a change in gender and
+  sex identifier" petition track under Health & Safety Code §§ 103430
+  and 103435, which this document does not address at all.
+- **Checks run:** `python3 tools/validate_corpus.py` passes (4,981
+  authority clauses, up from 4,980; 0 newly flagged fatal/warn; no
+  duplicate-id or key-order failures).

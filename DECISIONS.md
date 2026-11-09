@@ -3133,3 +3133,83 @@ entry instead:
 This commit adds the category infrastructure only — no documents yet.
 Each of the 5 documents is being built and reported on separately per
 the user's own "one at a time, stop and report after each" framing.
+
+## 2026-11-09 — Phase 12 Step 10, document 1 of 5: name change — already existed; added one clause and a new `"unverified"` status value
+
+The first of the 5 planned documents, name change, turned out to
+already exist in the corpus: `name_change_petition_info_sheet`, found
+at `data/documents.json` by grepping its id (an earlier keyword search
+for "name change" had missed it because its title says "Change of
+Name" — a direct lesson that substring search on title text isn't a
+reliable way to check "does an equivalent already exist," per Global
+Rule 7). It was dual-tagged into the new "Consumer & Civil Court"
+category (kept "Family Law" too, since both are genuinely accurate)
+in a separate commit (`8fb411c`).
+
+Before accepting "already exists, nothing to do," the corpus was
+checked for a real coverage gap: grepping `data/clauses.json` for
+"1277.5", "103437", "gender identity", and "gender identifier" found
+no clause anywhere discussing California's separate, newer process for
+a name change that conforms to the petitioner's gender identity (two
+statutes operative July 1, 2026 — Senate Bill 59 and Assembly Bill
+1084 — a date already past as of this entry). This was a genuine gap,
+not an existing error, so one clause was added:
+`namechange_gender_identity_conforming_process`.
+
+**Every attempt to verify this clause against the actual statutory
+text failed**, and that failure is the real decision recorded here.
+`leginfo.legislature.ca.gov` returned a Cloudflare 403 for both Health
+& Safety Code § 103437 and Code of Civil Procedure § 1277.5 (same
+sandbox limitation already on record for leginfo elsewhere in this
+corpus); `law.onecle.com` 404'd; several guessed
+`california.public.law` URL slugs 404'd for both sections, including
+after confirming that site's working slug pattern against a
+known-good reference section (CCP § 1277, already cited elsewhere in
+this document) that itself also 404'd once retried with the "fixed"
+pattern. One source did come through: the Judicial Council's
+Invitation to Comment W26-03 ("Civil Practice and Procedure: Name
+Change and Gender Change Rules and Forms," `courts.ca.gov`), an
+official committee document describing the effect of these two
+already-enacted statutes, fetched successfully and read via
+`pdftotext`.
+
+Per Global Rule 2 (never mark Verified/change checkedDate without
+actual primary-source re-verification) and the explicit instruction
+that "a scoped-down, honest clause beats a confident but unverified
+one, every time," this clause was **not** marked `"verified"` — every
+other authority clause in the corpus (4,980 of them before this one)
+carries that status backed by a direct fetch of the statute text
+itself, and this one isn't. Instead it introduces a new status value,
+`"unverified"`, not used anywhere else in this corpus, with its
+citations and quotes honestly attributed to the Judicial Council
+document rather than presented as if they were leginfo text. This was
+checked to be safe before adopting it: `tools/validate_corpus.py` only
+imposes its checkedDate-staleness and effective-cycle checks on
+clauses where `status == 'verified'`, and `tools/tiering.py` and
+`tools/add_effective_cycle_checked.py` both explicitly key off that
+same string — so an `"unverified"` clause is automatically excluded
+from Tier A/B eligibility and from the staleness/cycle machinery that
+applies to verified clauses, rather than silently miscounted as either
+reliable or stale. The alternative — omitting the clause entirely and
+just disclosing the gap in prose — was considered and rejected,
+because a properly-sourced, honestly-labeled clause gives a reader
+more real information than silence, provided it is never confused with
+this corpus's actual verification bar.
+
+The source's own cover page says the proposal "has not been approved
+by the Judicial Council ... circulated for comment purposes only" —
+that disclaimer is about the specific rules and forms the committee
+was proposing (a new NC-200 form series; comment period closed January
+7, 2026), not about the underlying statutes, which the Legislature
+already enacted (Stats. 2025, chs. 723 and 738) independent of
+whatever forms get adopted. The clause is scoped accordingly: it
+states only the statutory confidentiality and no-hearing requirements,
+names no specific form number, and its `gap` field spells out exactly
+what it doesn't cover. Full detail is in
+`verification/name-change-petition-info-sheet.md`'s 2026-11-09
+addendum. `python3 tools/validate_corpus.py` and
+`node tools/wizard_regression.js` both pass with this change (4,981
+authority clauses, up from 4,980).
+
+The other 4 planned documents (small claims, unlawful detainer, debt
+collection, bankruptcy-scoping) have not been started.
