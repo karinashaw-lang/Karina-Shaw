@@ -50470,5 +50470,86 @@
         "example": "Luis Delgado"
       }
     ]
+  },
+  {
+    "id": "small_claims_info_sheet",
+    "title": "Small Claims Court — Information Sheet",
+    "description": "An informational sheet describing California's small claims court process under Code of Civil Procedure §§ 116.110 et seq.: the jurisdictional dollar limit ($12,500 for an individual plaintiff, $6,250 for others), the prohibition on attorney representation at the hearing, service of the claim, the defendant's option to file a claim back against the plaintiff, the judgment and its asymmetric appeal right (generally available only to a losing defendant, not a losing plaintiff), the two-claims-over-$2,500-per-year filing limit, collecting a judgment, and the free small claims advisor service every county must provide. Most clauses are verified against the actual statutory text; one (judgment collection/enforcement) remains sourced only to the Judicial Council's self-help website and is marked unverified -- see verification/small-claims-info-sheet.md.",
+    "categories": [
+      "Consumer & Civil Court"
+    ],
+    "clauseOrder": [
+      "smallclaims_declaration",
+      "smallclaims_jurisdiction_and_dollar_limits",
+      "smallclaims_no_attorney_at_hearing",
+      "smallclaims_service_of_the_claim",
+      "smallclaims_defendants_claim_option",
+      "smallclaims_judgment_and_asymmetric_appeal",
+      "smallclaims_vexatious_filer_limit",
+      "smallclaims_judgment_enforcement",
+      "smallclaims_advisor_services",
+      "smallclaims_signature_block"
+    ],
+    "fields": [
+      {
+        "id": "plaintiffName",
+        "label": "Your name (the person or business filing the claim)",
+        "type": "person-name",
+        "required": true,
+        "placeholder": "Jordan Lee",
+        "example": "Jordan Lee"
+      },
+      {
+        "id": "defendantName",
+        "label": "The other side's name (the person, business, or government agency you are suing)",
+        "type": "person-name",
+        "required": true,
+        "placeholder": "Riverside Movers LLC",
+        "example": "Riverside Movers LLC"
+      },
+      {
+        "id": "claimAmount",
+        "label": "Amount you are suing for",
+        "type": "money",
+        "required": true,
+        "placeholder": "$1,850",
+        "example": "$1,850"
+      },
+      {
+        "id": "basisOfClaim",
+        "label": "What the other side owes you money for",
+        "type": "text",
+        "required": true,
+        "placeholder": "An unpaid refund for a canceled moving service, as itemized in the attached invoice",
+        "example": "An unpaid refund for a canceled moving service, as itemized in the attached invoice"
+      },
+      {
+        "id": "countyOfFiling",
+        "label": "County of filing",
+        "type": "county",
+        "required": true,
+        "placeholder": "Sacramento County",
+        "example": "Sacramento County",
+        "sharedFieldId": "countyOfFiling"
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "type": "date",
+        "required": true,
+        "placeholder": "November 9, 2026",
+        "example": "November 9, 2026",
+        "sharedFieldId": "dateSigned"
+      },
+      {
+        "id": "cityState",
+        "label": "City, state",
+        "type": "text",
+        "required": true,
+        "placeholder": "Sacramento, California",
+        "example": "Sacramento, California",
+        "sharedFieldId": "cityState"
+      }
+    ]
   }
 ]

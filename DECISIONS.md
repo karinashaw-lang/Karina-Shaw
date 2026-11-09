@@ -3213,3 +3213,76 @@ authority clauses, up from 4,980).
 
 The other 4 planned documents (small claims, unlawful detainer, debt
 collection, bankruptcy-scoping) have not been started.
+
+## 2026-11-09 — Phase 12 Step 10, document 2 of 5: small claims — built unverified, then re-verified against the actual statute
+
+The second of the 5 planned documents, small claims, had no equivalent
+anywhere in the corpus (confirmed by grepping `data/documents.json` and
+`data/clauses.json` for "small claim"/"sc-100" — the only hits were
+other documents that mention small claims court as a side venue or
+remedy, none about the process itself). Built as a new document,
+`small_claims_info_sheet`, category `["Consumer & Civil Court"]` only
+(a genuinely new topic, not a near-miss retag like name change was).
+
+**First draft:** a delegated subagent built all 8 authority clauses as
+`"status": "unverified"`, sourced only to the Judicial Council of
+California's statewide self-help website (`selfhelp.courts.ca.gov`),
+after `leginfo.legislature.ca.gov` (403, Cloudflare), `law.onecle.com`
+(404), `law.justia.com` (403), `www.lawserver.com` (unresolvable), and
+`codes.findlaw.com` (reachable but its summarizer wouldn't quote
+verbatim) all failed. That subagent correctly did not commit or push
+(unlike two earlier subagents this session on the name-change document
+and the Step-7 checkpoint, which did despite the same instruction), so
+the review below happened before anything reached the branch.
+
+**Review finding:** an entirely-unverified new document is a bigger
+departure from this corpus's normal verification bar than the
+name-change document's single unverified clause, so before accepting
+it, `california.public.law` — already a precedented source in this
+corpus (139 existing citations, e.g. the clauses citing Probate Code
+§§ 15800, 15802, 16069, 17200) — was tried directly via `curl` rather
+than the WebFetch tool (whose own summarizing model truncates quotes).
+It worked: direct fetches retrieved the real, full text of Code of
+Civil Procedure §§ 116.220, 116.221, 116.231, 116.260, 116.340,
+116.360, 116.530, 116.610, and 116.710, each page sourced from and
+checked against `leginfo.legislature.ca.gov` (which itself still 403s
+from this sandbox). This was a successful, careful re-verification,
+not a shortcut — each fetch was inspected for the actual quoted text
+before use.
+
+**Result: 7 of the original 8 clauses were rewritten against the real
+statutory text and promoted to `"status": "verified"`.** A new clause,
+`smallclaims_vexatious_filer_limit` (Code Civ. Proc. § 116.231's
+two-claims-over-$2,500-per-calendar-year filing limit), was added using
+the same real text — this had been one of three topics the first draft
+identified as a gap and dropped; it is no longer a gap. A second
+original clause, `smallclaims_who_may_sue_and_be_sued`, was dropped
+rather than rewritten: no single fetched statutory provision states
+"who may be sued" as a general matter, and keeping a weak,
+self-help-paraphrased clause next to six newly-verified ones was the
+less honest choice — per Global Rule 10, dropping a thin claim beats
+keeping it once better-sourced neighbors exist.
+
+**One clause remains `"status": "unverified"`: `smallclaims_judgment_enforcement`.**
+Judgment collection is governed by the general Enforcement of
+Judgments Law (Code Civ. Proc. §§ 680.010 et seq.), not a section
+within the Small Claims Act's own article, and no specific section of
+that law was fetched this session, so this clause stays sourced to the
+Judicial Council self-help site and stays unverified — consistent with
+this corpus's rule never to mark a clause verified without an actual
+primary-source check. Venue/filing-county rules, filing fees and fee
+waivers, and § 116.220(c)'s guarantor/assignee sub-limit remain out of
+scope entirely, for lack of a fetched source. Full clause-by-clause
+detail is in `verification/small-claims-info-sheet.md`.
+
+A new entry was added to `search/lay_terms.json` (required by
+`validate_corpus.py` for every document); `search/intake_flow.json`'s
+existing "Consumer & Civil Court" → "small_claims" intake option
+(added in the category-infrastructure commit) needed no change.
+`python3 tools/validate_corpus.py`, the full `node tools/regression.js`
+(not just `wizard_regression.js`), `node tools/wizard_regression.js`,
+and `python3 tools/merge_guard.py HEAD` all pass — see this entry's
+commit for the exact counts.
+
+The other 3 planned documents (unlawful detainer, debt collection,
+bankruptcy-scoping) have not been started.
