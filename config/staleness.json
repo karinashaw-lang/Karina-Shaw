@@ -1,5 +1,5 @@
 {
-  "description": "Per-category staleness thresholds (Phase 4.3), replacing the single global 24-month fatal / 18-month warn limit tools/validate_corpus.py used before this file existed. Values are the master plan's own suggestion: categories with faster-moving law (Hiring, During employment, Ending employment, Real Estate) get the tightest window; Business Formation and Family Law sit in the middle; Confidentiality & IP and Estate Planning keep the original, slower-moving window. A clause used by documents in more than one category (including documents that themselves carry two categories) is held to the strictest (lowest) threshold among all of them -- see tools/validate_corpus.py.",
+  "description": "Per-category staleness thresholds (Phase 4.3), replacing the single global 24-month fatal / 18-month warn limit tools/validate_corpus.py used before this file existed. Values are the master plan's own suggestion: categories with faster-moving law (Hiring, During employment, Ending employment, Real Estate) get the tightest window; Business Formation and Family Law sit in the middle; Confidentiality & IP and Estate Planning keep the original, slower-moving window. A clause used by documents in more than one category (including documents that themselves carry two categories) is held to the strictest (lowest) threshold among all of them -- see tools/validate_corpus.py. Consumer & Civil Court (Phase 12 Step 10) is held to the tightest window alongside Hiring/During employment/Ending employment/Real Estate: its content is dominated by procedural deadlines and dollar thresholds (small claims jurisdictional limits, exemption amounts) that move on the same kind of regular legislative/Judicial Council adjustment cycle as landlord-tenant law.",
   "defaultFatalMonths": 24,
   "defaultWarnMonths": 18,
   "categories": {
@@ -7,6 +7,7 @@
     "During employment": {"fatalMonths": 12, "warnMonths": 9},
     "Ending employment": {"fatalMonths": 12, "warnMonths": 9},
     "Real Estate": {"fatalMonths": 12, "warnMonths": 9},
+    "Consumer & Civil Court": {"fatalMonths": 12, "warnMonths": 9},
     "Business Formation": {"fatalMonths": 18, "warnMonths": 12},
     "Family Law": {"fatalMonths": 18, "warnMonths": 12},
     "Confidentiality & IP": {"fatalMonths": 24, "warnMonths": 18},

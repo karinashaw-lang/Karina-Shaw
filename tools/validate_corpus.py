@@ -23,6 +23,12 @@ CATEGORIES = {
     'Business Formation', 'Confidentiality & IP', 'During employment',
     'Ending employment', 'Estate Planning', 'Family Law', 'Hiring',
     'Real Estate',
+    # Added Phase 12 Step 10: the first 8 categories are all
+    # employment/business/estate/family/real-estate oriented, and
+    # several high-demand consumer documents (name change, small
+    # claims, unlawful detainer response, debt collection, bankruptcy
+    # scoping) don't honestly fit any of them -- see DECISIONS.md.
+    'Consumer & Civil Court',
 }
 
 def main():

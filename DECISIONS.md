@@ -3089,3 +3089,47 @@ names honestly: there is no real user traffic yet, and this sandbox
 cannot generate any by actually browsing to a live project — that
 requires either a real visitor or a session with normal internet
 access.
+
+## 2026-11-09 — Phase 12 Step 10: a 9th category, "Consumer & Civil Court"
+
+**Task:** Step 10 asks for 5 specific high-demand consumer documents
+(name change, small claims, unlawful detainer, debt collection,
+bankruptcy-scoping). Before building any of them, I checked whether
+they fit the corpus's existing 8 categories (`Business Formation`,
+`Confidentiality & IP`, `During employment`, `Ending employment`,
+`Estate Planning`, `Family Law`, `Hiring`, `Real Estate`) — all 8 are
+employment/business/estate/family/real-estate oriented. Name change
+could stretch into `Family Law` and an unlawful-detainer response
+into `Real Estate`, but small claims, debt collection, and bankruptcy
+scoping don't honestly fit any of them.
+
+**Decision, with the user's explicit approval ("Add one new category
+for all 5"):** added a 9th category, `Consumer & Civil Court`,
+covering all 5 documents, rather than force-fitting three of them
+into a category that doesn't describe them. This was a small, low-risk
+change because `app.js`'s `renderCategoryFilter()` already derives
+the category list live from `data/documents.json` — nothing in the
+app itself needed to change. Three places needed an explicit new
+entry instead:
+- `tools/validate_corpus.py`'s `CATEGORIES` set (the one place this
+  list is hardcoded, by the file's own comment, specifically so an
+  undeclared category is never silent).
+- `config/staleness.json` — given the tightest existing window
+  (12mo fatal / 9mo warn, same as Hiring/During employment/Ending
+  employment/Real Estate), since this category's content is
+  dominated by procedural deadlines and dollar thresholds (small
+  claims jurisdictional limits, exemption amounts) that move on the
+  same kind of regular adjustment cycle as landlord-tenant law.
+- `search/intake_flow.json` — a 2-question guided-intake flow (what
+  this is about; what stage you're at), following the same pattern
+  every other category already uses. The "what" step is capped at 4
+  options by the corpus's own validation rule (2-4 per step), so debt
+  collection and bankruptcy scoping share one combined option ("A
+  debt collector, or considering bankruptcy") rather than getting
+  split into a 5th — intake is a narrowing aid for the real search
+  engine, not an exclusive filter, so the combined option's broader
+  keyword set still lets the right specific document surface.
+
+This commit adds the category infrastructure only — no documents yet.
+Each of the 5 documents is being built and reported on separately per
+the user's own "one at a time, stop and report after each" framing.
