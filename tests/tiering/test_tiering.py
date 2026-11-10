@@ -2,15 +2,22 @@
 """Tests for tools/tiering.py: Tier B is reached only when all three
 real gates (complete field schema, every authority clause verified and
 fresh, a golden fixture exists) hold; missing any one keeps a document
-at Tier C; Tier A additionally needs every authority clause to carry a
-clean adversarial-verifier result (verifier/checked.jsonl + no open
-blocker/major finding in verifier/findings.jsonl + verifier/triage.jsonl)
-and a passed per-document accessibility check (accessibility.json) --
-an absent record for either is "not met," not "assumed met," which is
-why a document with no such files in its corpus directory (every test
-below except the two Tier-A-specific ones) can reach Tier B but never
-Tier A; and --check correctly detects a tiers.json that no longer
-matches a fresh computation.
+at Tier C. CA Wedge Plan Step 2.3: "verified" now means status ==
+"verified" AND every citation's sourceClass is primary-official/
+court-opinion/agency, never mirror/secondary (tools/clause_levels.py) --
+a mirror-sourced clause keeps a document at Tier C even with an
+old-style "verified" status. Tier A additionally needs at least one
+authority clause (a drafting-only document can never be Tier A, and
+carries draftingOnly: true regardless of its actual tier) and every
+authority clause to be "adversarially checked": appears in
+verifier/checked.jsonl AND carries no finding of ANY severity (not just
+blocker/major) whose triage disposition isn't "fixed", plus a passed
+per-document accessibility check (accessibility.json). An absent record
+for either is "not met," not "assumed met," which is why a document
+with no such files in its corpus directory (every test below except the
+Tier-A-specific ones) can reach Tier B but never Tier A; and --check
+correctly detects a tiers.json that no longer matches a fresh
+computation.
 
 Builds a minimal, otherwise-valid corpus in a throwaway directory and
 runs the real tiering.py against it as a subprocess — what's tested is
@@ -34,12 +41,13 @@ RECENT_DATE = (date.today() - timedelta(days=30)).isoformat()
 STALE_DATE = (date.today() - timedelta(days=900)).isoformat()  # well past 24 months
 
 
-def authority_clause(cid, status='verified', checked_date=RECENT_DATE):
+def authority_clause(cid, status='verified', checked_date=RECENT_DATE, source_class='primary-official'):
     return {
         "id": cid, "title": cid, "kind": "authority", "status": status,
         "checkedDate": checked_date, "body": f"Body of {cid}.", "gap": "Test gap.",
         "citations": [{"case": "Test v. Case", "cite": "1 Test 1",
-                       "url": "https://example.com/1", "quote": "test quote"}],
+                       "url": "https://example.com/1", "quote": "test quote",
+                       "sourceClass": source_class}],
     }
 
 
@@ -255,7 +263,7 @@ class TieringTests(unittest.TestCase):
         run_tiering(d)
         tiers = self.load_tiers(d)
         self.assertEqual(tiers['documents']['doc1']['tier'], 'B')
-        self.assertTrue(any('adversarial-verifier' in r for r in tiers['documents']['doc1']['blockingA']))
+        self.assertTrue(any('adversarially checked' in r for r in tiers['documents']['doc1']['blockingA']))
 
     def test_tier_a_blocked_by_open_unreviewed_finding(self):
         doc = {
@@ -271,6 +279,69 @@ class TieringTests(unittest.TestCase):
         run_tiering(d)
         tiers = self.load_tiers(d)
         self.assertEqual(tiers['documents']['doc1']['tier'], 'B')
+
+    def test_mirror_sourced_clause_keeps_tier_c(self):
+        # Global Rule 4: "A mirror is not primary." status: "verified"
+        # alone is no longer enough -- a clause whose only citation is
+        # mirror-sourced can't reach Tier B's "verified" bar at all.
+        doc = {
+            "id": "doc1", "title": "Doc 1", "description": "d", "categories": ["Hiring"],
+            "clauseOrder": ["c1"], "fields": [],
+        }
+        d = self.make_dir([doc], [authority_clause("c1", source_class="mirror")], fixtures_for=["doc1"])
+        run_tiering(d)
+        tiers = self.load_tiers(d)
+        self.assertEqual(tiers['documents']['doc1']['tier'], 'C')
+        self.assertTrue(any('mirror' in r for r in tiers['documents']['doc1']['blockingB']))
+
+    def test_drafting_only_document_never_reaches_tier_a(self):
+        # A document with zero authority clauses has no legal-authority
+        # claim to adversarially check in the first place -- it can
+        # reach Tier B (nothing to verify, nothing to leave stale) but
+        # never Tier A, and carries draftingOnly: true regardless.
+        doc = {
+            "id": "doc1", "title": "Doc 1", "description": "d", "categories": ["Hiring"],
+            "clauseOrder": ["c1"], "fields": [],
+        }
+        drafting = {"id": "c1", "title": "c1", "kind": "drafting", "body": "No citation needed."}
+        d = self.make_dir([doc], [drafting], fixtures_for=["doc1"])
+        write_verifier_state(d, checked_clause_ids=[])
+        write_accessibility(d, {"doc1": {"passed": True, "violations": []}})
+        run_tiering(d)
+        tiers = self.load_tiers(d)
+        self.assertEqual(tiers['documents']['doc1']['tier'], 'B')
+        self.assertTrue(tiers['documents']['doc1']['draftingOnly'])
+        self.assertTrue(any('no authority clause at all' in r for r in tiers['documents']['doc1']['blockingA']))
+
+    def test_authority_document_is_not_drafting_only(self):
+        doc = {
+            "id": "doc1", "title": "Doc 1", "description": "d", "categories": ["Hiring"],
+            "clauseOrder": ["c1"], "fields": [],
+        }
+        d = self.make_dir([doc], [authority_clause("c1")], fixtures_for=["doc1"])
+        run_tiering(d)
+        tiers = self.load_tiers(d)
+        self.assertFalse(tiers['documents']['doc1']['draftingOnly'])
+
+    def test_tier_a_blocked_by_minor_severity_finding(self):
+        # Step 2.1's "Adversarially checked (survived the verifier with
+        # no open findings)" carries no severity qualifier -- unlike the
+        # pre-Wedge-Plan gate, even a minor, never-triaged finding now
+        # blocks Tier A, not just an open blocker/major.
+        doc = {
+            "id": "doc1", "title": "Doc 1", "description": "d", "categories": ["Hiring"],
+            "clauseOrder": ["c1"], "fields": [],
+        }
+        d = self.make_dir([doc], [authority_clause("c1")], fixtures_for=["doc1"])
+        write_verifier_state(d, checked_clause_ids=["c1"], findings=[
+            {"clauseId": "c1", "severity": "minor", "category": "citation_mismatch",
+             "summary": "s", "evidence": "e", "sourceChecked": "u", "suggestedFix": "f"},
+        ])  # minor, and nobody has triaged it
+        write_accessibility(d, {"doc1": {"passed": True, "violations": []}})
+        run_tiering(d)
+        tiers = self.load_tiers(d)
+        self.assertEqual(tiers['documents']['doc1']['tier'], 'B')
+        self.assertTrue(any('adversarially checked' in r for r in tiers['documents']['doc1']['blockingA']))
 
     def test_tier_a_blocked_by_accepted_finding(self):
         # "accepted" means the defect stands, just not corrected -- it

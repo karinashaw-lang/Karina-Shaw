@@ -3474,3 +3474,121 @@ Next within Step 2: the three visible levels themselves (Cited /
 Verified / Adversarially checked), the tier redefinition, and the
 `methodology.html` / `tiering.py` / picker / sourcing-UI updates that
 display them -- not started yet.
+
+## 2026-11-10 — CA Wedge Plan Step 2.1/2.3/2.4: three honest levels, the tier redefinition, and the UI that shows both
+
+Built `tools/clause_levels.py` as the single source of truth for a
+clause's level, imported by both `tools/tiering.py` (document tiers)
+and the new `tools/build_verification_levels.py` (the client-facing
+`verification_levels.json`), so a "Verified" badge and a "Tier A"
+label can never quietly disagree about the same clause the way two
+independent re-derivations could. Three levels, each strictly
+containing the ones before it: `cited` (has a citation/quote/date --
+the floor every authority clause already clears); `verified`
+(`status: "verified"` AND every citation's `sourceClass` is
+primary-official/court-opinion/agency, never mirror/secondary);
+`adversarially_checked` (verified, plus actually run through the
+adversarial verifier with zero findings of *any* severity not marked
+fixed or rejected -- stricter than the pre-Wedge-Plan Tier A gate,
+which only blocked on an open blocker/major; Step 2.1's own wording
+carries no severity qualifier).
+
+**Caught and fixed a real bug before it shipped:** the first draft of
+`citations_are_all_primary` checked "not mirror/secondary" rather than
+a positive allowlist, so a citation with no `sourceClass` at all would
+have silently counted as primary. Fixed to a positive allowlist
+(`{primary-official, court-opinion, agency}`), consistent with this
+codebase's own "absent is not met, never assumed met" rule. Confirmed
+it doesn't change any real-corpus count (every real citation already
+has a valid `sourceClass` from the Step 2.2 backfill) -- only the test
+suite's synthetic fixtures, which needed a `sourceClass` added to stay
+meaningful.
+
+**Result on the real corpus:** 580 clauses at `cited`, 3,586 at
+`verified`, 823 at `adversarially_checked` (4,989 total, matches
+exactly). Tiers recomputed with the new, stricter gates: **Tier A
+drops from 9 to 0** -- every one of the old 9 was a drafting-only
+document, which can never be Tier A under the new "at least one
+authority clause" requirement; Tier B drops from 373 to 324, since a
+mirror-sourced clause no longer counts as "verified" regardless of its
+old status field. Both drops are the honest, intended effect of this
+step, not a bug -- see `tools/tiering.py`'s own updated docstring for
+the full new definition.
+
+Rewrote `tools/tiering.py`'s clause-checking functions on top of
+`clause_levels.py` rather than re-deriving the rule a second time, and
+added `draftingOnly`/`DRAFTING_ONLY_LABEL` so a document with zero
+authority clauses carries "Drafting only (no legal authority claimed)"
+regardless of which tier it lands on. Extended
+`tests/tiering/test_tiering.py` with new cases for the behaviors this
+step actually changes (a mirror-sourced clause keeping Tier C, a
+drafting-only document never reaching Tier A, a minor-severity
+untriaged finding blocking Tier A where the old rule wouldn't have) and
+fixed one real bug the existing suite caught immediately: `rejected`
+findings need to count as resolved alongside `fixed` ones (a confirmed
+false positive isn't a live defect) -- missed in the first draft of
+`load_verifier_state`, since the real corpus currently has zero
+`rejected` findings to have exposed it otherwise. All 22 tests pass.
+
+**UI, Step 2.4:** `app.js`'s sourcing badge (`renderBadge`) now shows
+one of the three levels instead of a binary verified/unverified split,
+loading `verification_levels.json` alongside the existing
+`tiers.json`/`data/clauses.json` fetches. Citations and quotes now
+render for every authority clause regardless of level (previously the
+old binary badge hid them entirely for anything short of "verified,"
+including this corpus's two honestly-`"unverified"` clauses, which do
+have real, disclosed citations worth showing). A new `--accent-strong`
+color token gives `adversarially_checked` its own visual weight rather
+than repeating "verified"'s green. The picker's tier pill gets a
+second, neutral "Drafting only" pill alongside a drafting-only
+document's real tier badge -- a distinct fact, never styled as a
+fourth tier. All three export builders (plain text, PDF, .docx) and
+the sources-and-checked-dates appendix now share one
+`clauseVerificationNoteText()` helper instead of three independently-
+maintained copies of the same three-way branch, and their closing
+taglines no longer say "every 'Verified' citation" (now
+accurate for all three levels, not just one).
+
+Caught one more real inconsistency while making this change: a
+`markClauseEdited` helper that flips a clause's badge to "edited" the
+first time its text changes was still hardcoded to the old `'verified'`
+class name and status check -- fixed to use the real level and only
+fire above `cited` (editing a clause that was never fully verified in
+the first place doesn't need a separate "edited" warning on top of its
+existing cited-level note).
+
+`tools/regression.js`'s own tier-picker check broke the moment a
+drafting-only card rendered its second pill -- two existing DOM
+queries (`'.doc-card .tier-pill'`, used for both the total-pill-count
+check and the tier-sort-order check) silently started counting a pill
+with no `tier-A/B/C` class in it, and the sort-order check's
+`.match(/tier-([ABC])/)[1]` threw outright on the resulting `null`.
+Fixed both queries to exclude `.drafting-only` explicitly and added a
+new `draftingOnlyMatches` check confirming the pill appears exactly
+where (and only where) `state.tiers` says `draftingOnly` is true for
+the rendered page -- this is exactly the kind of DOM-query assumption
+("every `.tier-pill` is an A/B/C pill") that a UI change can quietly
+invalidate without a test confirming it this directly.
+
+Regenerated all 741 golden fixtures again (every clause's rendered
+badge text changed a second time this step, on top of Step 2.2's
+`sourceClass` regeneration) -- read the diffs, confirmed every change
+either reflects the new three-level text or correctly downgrades a
+clause that was shown as "Verified" under the old binary system but is
+actually `cited`-level (mirror-sourced) under the honest one; that
+second case is this step doing exactly its job, not a regression.
+
+All checks pass: `validate_corpus.py`, the full `regression.js`,
+`merge_guard.py HEAD` (0 modified -- this round touched only
+`app.js`/`styles.css`/`tools/`/`tests/`/golden fixtures, not
+`data/*.json`), `golden.js` (741/741), `wizard_regression.js`
+(741/741), `wizard_unit.js` (22/22), `axe_check.js` (0 serious/critical
+across 50 sampled documents + all 3 legal pages, both themes),
+`tools/build_verification_levels.py --check`, `tools/tiering.py
+--check`.
+
+Still open within Step 2: `methodology.html` hasn't been updated yet
+to describe the three levels and the new tier definitions in the
+plain-language methodology page itself (Step 2.4's other named
+target) -- the in-app badge/tier text is done, the standalone
+methodology page is not.

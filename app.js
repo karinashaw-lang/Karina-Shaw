@@ -1,4 +1,4 @@
-const state = { documents: null, document: null, clauses: null, answers: {}, categoryFilter: null, edits: {}, editedClauseIds: new Set(), currentEntryId: null, jurisdictionByDoc: null, sharedFields: null, wizardSteps: [], wizardStepIndex: 0, wizardReviewing: false, tiers: null, tierFilter: null, tierSortEnabled: false, layTerms: null, searchQuery: '', searchResults: null, intakeFlow: null, intakeCategory: null, intakeStep: 0, intakeAnswers: [], pickerVisibleCount: 0, includeSourcesAppendix: false, nextSteps: null };
+const state = { documents: null, document: null, clauses: null, answers: {}, categoryFilter: null, edits: {}, editedClauseIds: new Set(), currentEntryId: null, jurisdictionByDoc: null, sharedFields: null, wizardSteps: [], wizardStepIndex: 0, wizardReviewing: false, tiers: null, verificationLevels: null, tierFilter: null, tierSortEnabled: false, layTerms: null, searchQuery: '', searchResults: null, intakeFlow: null, intakeCategory: null, intakeStep: 0, intakeAnswers: [], pickerVisibleCount: 0, includeSourcesAppendix: false, nextSteps: null };
 
 // Draft persistence. Local-only, one slot at a time — closing the tab
 // mid-wizard shouldn't lose someone's answers. localStorage can throw
@@ -1028,11 +1028,12 @@ async function loadSharedFields() {
 }
 
 async function init() {
-  const [docs, clauseData, sharedFields, tiers, layTerms, intakeFlow, nextSteps] = await Promise.all([
+  const [docs, clauseData, sharedFields, tiers, verificationLevels, layTerms, intakeFlow, nextSteps] = await Promise.all([
     fetch('data/documents.json').then(r => r.json()),
     fetch('data/clauses.json').then(r => r.json()),
     loadSharedFields(),
     fetch('tiers.json').then(r => r.json()),
+    fetch('verification_levels.json').then(r => r.json()),
     // search/lay_terms.json, intake_flow.json, and filing/next_steps.json
     // are all additive, not load-bearing -- search, the intake flow, and
     // the output screen's "what happens after this document" section
@@ -1047,6 +1048,7 @@ async function init() {
   state.clauses = clauseData.clauses;
   state.sharedFields = sharedFields;
   state.tiers = tiers.documents;
+  state.verificationLevels = verificationLevels.levels;
   state.layTerms = layTerms;
   state.intakeFlow = intakeFlow;
   state.nextSteps = nextSteps;
@@ -1360,27 +1362,34 @@ function jurisdictionBadgeHTML(doc) {
 // nothing here re-derives a tier, only displays one). Every explanation
 // states what was checked, never whether the result is enough for any
 // particular reader's situation — the same "inform, never advise" line
-// every other piece of UI copy in this app holds to. Tier A is real as
-// of Phase 12 Step 6: tools/tiering.py now has an actual per-document
-// adversarial-verifier signal and a real per-document accessibility
-// signal (tools/accessibility_scan.js), and a document reaches Tier A
-// only once both are genuinely clean for every authority clause it
-// uses — see tools/tiering.py's own docstring for exactly what that
-// requires, and BUILD_STATUS.md for how many documents currently
-// qualify and why most don't yet.
+// every other piece of UI copy in this app holds to. Redefined by CA
+// Wedge Plan Step 2.3: Tier B's "verified" now means every citation is
+// primary-sourced (not a mirror — tools/clause_levels.py), and Tier A
+// additionally requires at least one authority clause (a drafting-only
+// document can never be Tier A, however clean its drafting text is) and
+// every authority clause to be adversarially checked with zero findings
+// of any severity, not just blocker/major — see tools/tiering.py's own
+// docstring for exactly what that requires, and MVP_BASELINE.md for how
+// many documents currently qualify and why most don't yet.
 const TIER_LABEL = { A: 'Tier A', B: 'Tier B', C: 'Tier C' };
 const TIER_EXPLANATION = {
-  A: 'Meets every Tier B check, plus an independent adversarial review and an automated accessibility check, both with no open issues.',
-  B: 'Every field explains why it is asked, every citation has been checked and is still current, and a sample has been generated and reviewed.',
+  A: 'Has at least one legal-authority clause, meets every Tier B check, and every one of those clauses has passed an independent adversarial review and an automated accessibility check, both with no open issues of any severity.',
+  B: 'Every field explains why it is asked, every citation has been checked against a primary source (not a secondhand copy) and is still current, and a sample has been generated and reviewed.',
   C: 'Passed the corpus’s structural and citation checks. Some fields may not yet explain why they are asked, or a citation check may be incomplete.',
 };
+const DRAFTING_ONLY_EXPLANATION =
+  'This document is built entirely from drafting language — it makes no legal-authority claim for the adversarial verifier or a citation check to confirm, so it can never reach Tier A regardless of its tier badge above.';
 
 function tierBadgeHTML(doc) {
   const info = state.tiers && state.tiers[doc.id];
   if (!info) return '';
   const tier = info.tier;
-  return `<span class="tier-pill tier-${tier}" title="${TIER_EXPLANATION[tier]}">` +
+  const tierPill = `<span class="tier-pill tier-${tier}" title="${TIER_EXPLANATION[tier]}">` +
     `${TIER_LABEL[tier]}<span class="visually-hidden">: ${TIER_EXPLANATION[tier]}</span></span>`;
+  if (!info.draftingOnly) return tierPill;
+  return tierPill +
+    `<span class="tier-pill drafting-only" title="${DRAFTING_ONLY_EXPLANATION}">` +
+    `Drafting only<span class="visually-hidden">: ${DRAFTING_ONLY_EXPLANATION}</span></span>`;
 }
 
 function renderTierFilter() {
@@ -2548,36 +2557,83 @@ function renderOutput() {
 // they're still real — but the label stops implying this exact
 // wording was the wording that got checked.
 function markClauseEdited(clause, block) {
-  if (clause.status !== 'verified') return;
+  const level = clauseLevel(clause);
+  if (level === 'cited') return;
   const badge = block.querySelector('details.badge');
   if (!badge || badge.classList.contains('edited')) return;
-  badge.classList.remove('verified');
+  badge.classList.remove('level-' + level);
   badge.classList.add('edited');
   const label = badge.querySelector('.badge-label');
-  if (label) label.textContent = 'Edited since verified — check the citation below still fits';
+  if (label) label.textContent = `Edited since ${LEVEL_LABEL[level].toLowerCase()} — check the citation below still fits`;
 }
 
-// The centerpiece: builds the sourcing badge for one clause. Returns
-// null for drafting content (no legal claim, nothing to source), an
-// expandable green badge for verified content (case, date, quote,
-// link — and a visible gap if one was found), or a plain, honest
-// "not yet verified" badge otherwise. This is what makes the
+// CA Wedge Plan Step 2.1: the three honest levels, computed offline by
+// tools/clause_levels.py and shipped as verification_levels.json — this
+// only displays a level, never re-derives one. Each strictly contains
+// the ones before it (tools/clause_levels.py's own docstring has the
+// full definition):
+//   cited                 Has a real citation/quote/check date, but
+//                         either hasn't been marked verified at all, or
+//                         its only source is a mirror/secondary copy of
+//                         the primary text (Global Rule 4: "a mirror is
+//                         not primary") rather than the government's
+//                         own publication.
+//   verified              Checked against a primary source directly.
+//   adversarially_checked Verified, AND survived an independent
+//                         adversarial review with no open finding of
+//                         any severity.
+const LEVEL_LABEL = {
+  adversarially_checked: 'Adversarially checked',
+  verified: 'Verified',
+  cited: 'Cited',
+};
+const LEVEL_NOTE = {
+  adversarially_checked: null,
+  verified: null,
+  cited: "This clause's source hasn't been independently confirmed against the government's own primary text yet " +
+    "(it's sourced to a secondary copy, or hasn't been checked at all). Treat the quote below as a starting point, " +
+    'not a confirmed fact, until it is.',
+};
+
+function clauseLevel(clause) {
+  return (state.verificationLevels && state.verificationLevels[clause.id]) || 'cited';
+}
+
+// The one line every export (plain text, PDF, .docx) shows alongside a
+// clause's citations — shared so the three builders can't quietly say
+// different things about the same clause's level.
+function clauseVerificationNoteText(clause) {
+  const level = clauseLevel(clause);
+  if (level === 'cited') return LEVEL_NOTE.cited;
+  if (clause.edited) {
+    return `Edited since ${LEVEL_LABEL[level].toLowerCase()} on ${clause.checkedDate} — ` +
+      'check the citation below still fits this wording';
+  }
+  return `${LEVEL_LABEL[level]} — checked ${clause.checkedDate}`;
+}
+
+// Builds the sourcing badge for one clause. Returns null for drafting
+// content (no legal claim, nothing to source) or an expandable badge at
+// one of the three levels above (case, date, quote, link, a visible gap
+// if one was found, and — for the "cited" level only — a plain note
+// about what hasn't been confirmed yet). This is what makes the
 // difference between checked and unchecked content visible to the
 // person reading the document, instead of it only living in the data
 // file where nobody sees it.
 function renderBadge(clause) {
   if (clause.kind === 'drafting') return null;
 
+  const level = (state.verificationLevels && state.verificationLevels[clause.id]) || 'cited';
+
   const el = document.createElement('details');
-  el.className = 'badge ' + (clause.status === 'verified' ? 'verified' : 'unverified');
+  el.className = 'badge level-' + level;
 
   const summary = document.createElement('summary');
   const label = document.createElement('span');
   label.className = 'badge-label';
-  label.textContent =
-    clause.status === 'verified'
-      ? `Verified · checked ${clause.checkedDate}`
-      : 'Not yet verified';
+  label.textContent = clause.checkedDate
+    ? `${LEVEL_LABEL[level]} · checked ${clause.checkedDate}`
+    : LEVEL_LABEL[level];
   summary.appendChild(label);
   const chev = document.createElement('span');
   chev.className = 'chev';
@@ -2589,40 +2645,42 @@ function renderBadge(clause) {
   const detail = document.createElement('div');
   detail.className = 'detail';
 
-  if (clause.status === 'verified') {
-    (clause.citations || []).forEach(c => {
-      const quote = document.createElement('p');
-      quote.className = 'quote';
-      quote.textContent = `"${c.quote}"`;
-      detail.appendChild(quote);
+  // Every authority clause carries a real citation/quote regardless of
+  // level (validate_corpus.py requires one) — show it always, rather
+  // than hiding the evidence for a "cited"-level clause the way the old
+  // binary badge used to for anything short of "verified".
+  (clause.citations || []).forEach(c => {
+    const quote = document.createElement('p');
+    quote.className = 'quote';
+    quote.textContent = `"${c.quote}"`;
+    detail.appendChild(quote);
 
-      const srcLine = document.createElement('p');
-      srcLine.className = 'src-line';
-      const link = document.createElement('a');
-      link.href = c.url;
-      link.target = '_blank';
-      link.rel = 'noopener noreferrer';
-      link.textContent = `${c.case} — ${c.cite}`;
-      srcLine.appendChild(link);
-      detail.appendChild(srcLine);
-    });
+    const srcLine = document.createElement('p');
+    srcLine.className = 'src-line';
+    const link = document.createElement('a');
+    link.href = c.url;
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    link.textContent = `${c.case} — ${c.cite}`;
+    srcLine.appendChild(link);
+    detail.appendChild(srcLine);
+  });
 
-    if (clause.gap) {
-      const gap = document.createElement('p');
-      gap.className = 'gap';
-      const b = document.createElement('b');
-      b.textContent = 'Known gap: ';
-      gap.appendChild(b);
-      gap.appendChild(document.createTextNode(clause.gap));
-      detail.appendChild(gap);
-    }
-  } else {
+  if (LEVEL_NOTE[level]) {
     const note = document.createElement('p');
     note.className = 'src-line';
-    note.textContent =
-      "This clause hasn't been checked against a primary source or case law yet. " +
-      'Treat it as a starting point, not a confirmed fact, until it is.';
+    note.textContent = LEVEL_NOTE[level];
     detail.appendChild(note);
+  }
+
+  if (clause.gap) {
+    const gap = document.createElement('p');
+    gap.className = 'gap';
+    const b = document.createElement('b');
+    b.textContent = 'Known gap: ';
+    gap.appendChild(b);
+    gap.appendChild(document.createTextNode(clause.gap));
+    detail.appendChild(gap);
   }
 
   el.appendChild(detail);
@@ -2827,8 +2885,13 @@ function buildDocumentContentFromSnapshot(snapshot) {
 // a surprise addition to a file whose shape someone already relies on.
 function buildSourcesAppendix(content) {
   return content.clauses
-    .filter(c => c.status === 'verified' && c.citations.length > 0)
-    .map(c => ({ clauseTitle: c.title, checkedDate: c.checkedDate, citations: c.citations }));
+    .filter(c => c.kind === 'authority' && c.citations.length > 0)
+    .map(c => ({
+      clauseTitle: c.title,
+      checkedDate: c.checkedDate,
+      level: clauseLevel(c),
+      citations: c.citations,
+    }));
 }
 
 // Builds a readable plain-text export of the assembled document,
@@ -2853,23 +2916,12 @@ function buildPlainText() {
     lines.push(clause.body);
     if (clause.kind !== 'drafting') {
       lines.push('');
-      if (clause.status === 'verified' && clause.edited) {
-        lines.push(`[Edited since verified on ${clause.checkedDate} — check the citation below still fits this wording]`);
-        clause.citations.forEach(c => {
-          lines.push(`  "${c.quote}"`);
-          lines.push(`  — ${c.case}, ${c.cite} (${c.url})`);
-        });
-        if (clause.gap) lines.push(`  Known gap: ${clause.gap}`);
-      } else if (clause.status === 'verified') {
-        lines.push(`[Verified — checked ${clause.checkedDate}]`);
-        clause.citations.forEach(c => {
-          lines.push(`  "${c.quote}"`);
-          lines.push(`  — ${c.case}, ${c.cite} (${c.url})`);
-        });
-        if (clause.gap) lines.push(`  Known gap: ${clause.gap}`);
-      } else {
-        lines.push("[Not yet verified against a primary source or case law. Treat as a starting point, not a confirmed fact.]");
-      }
+      lines.push(`[${clauseVerificationNoteText(clause)}]`);
+      clause.citations.forEach(c => {
+        lines.push(`  "${c.quote}"`);
+        lines.push(`  — ${c.case}, ${c.cite} (${c.url})`);
+      });
+      if (clause.gap) lines.push(`  Known gap: ${clause.gap}`);
     }
     lines.push('');
   });
@@ -2912,7 +2964,7 @@ function buildPlainText() {
     if (appendix.length) {
       lines.push('SOURCES AND CHECKED DATES');
       appendix.forEach(entry => {
-        lines.push(`${entry.clauseTitle} — checked ${entry.checkedDate}`);
+        lines.push(`${entry.clauseTitle} — ${LEVEL_LABEL[entry.level]}, checked ${entry.checkedDate}`);
         entry.citations.forEach(c => {
           lines.push(`  ${c.case}, ${c.cite} (${c.url})`);
         });
@@ -2922,7 +2974,7 @@ function buildPlainText() {
   }
 
   lines.push('—');
-  lines.push('Groundtruth v1 demo · every "Verified" citation links to a real, checked source.');
+  lines.push('Groundtruth v1 demo · every citation shown links to a real source, labeled Cited, Verified, or Adversarially checked.');
   return lines.join('\n');
 }
 
@@ -3003,23 +3055,12 @@ function buildPdfDocDefinition(content = buildDocumentContent(), certificate = n
     body.push({ text: sanitizeForPdf(clause.title.toUpperCase()), style: 'clauseTitle', margin: [0, 16, 0, 4] });
     body.push({ text: sanitizeForPdf(clause.body), style: 'clauseBody' });
     if (clause.kind !== 'drafting') {
-      if (clause.status === 'verified' && clause.edited) {
-        body.push({ text: `Edited since verified on ${clause.checkedDate} — check the citation below still fits this wording`, style: 'verificationNote', margin: [0, 5, 0, 0] });
-        clause.citations.forEach(c => {
-          body.push({ text: sanitizeForPdf(`"${c.quote}"`), style: 'quote' });
-          body.push({ text: sanitizeForPdf(`— ${c.case}, ${c.cite} (${c.url})`), style: 'citeLine' });
-        });
-        if (clause.gap) body.push({ text: sanitizeForPdf(`Known gap: ${clause.gap}`), style: 'gapLine' });
-      } else if (clause.status === 'verified') {
-        body.push({ text: `Verified — checked ${clause.checkedDate}`, style: 'verificationNote', margin: [0, 5, 0, 0] });
-        clause.citations.forEach(c => {
-          body.push({ text: sanitizeForPdf(`"${c.quote}"`), style: 'quote' });
-          body.push({ text: sanitizeForPdf(`— ${c.case}, ${c.cite} (${c.url})`), style: 'citeLine' });
-        });
-        if (clause.gap) body.push({ text: sanitizeForPdf(`Known gap: ${clause.gap}`), style: 'gapLine' });
-      } else {
-        body.push({ text: 'Not yet verified against a primary source or case law. Treat as a starting point, not a confirmed fact.', style: 'verificationNote', margin: [0, 5, 0, 0] });
-      }
+      body.push({ text: clauseVerificationNoteText(clause), style: 'verificationNote', margin: [0, 5, 0, 0] });
+      clause.citations.forEach(c => {
+        body.push({ text: sanitizeForPdf(`"${c.quote}"`), style: 'quote' });
+        body.push({ text: sanitizeForPdf(`— ${c.case}, ${c.cite} (${c.url})`), style: 'citeLine' });
+      });
+      if (clause.gap) body.push({ text: sanitizeForPdf(`Known gap: ${clause.gap}`), style: 'gapLine' });
     }
   });
 
@@ -3062,7 +3103,7 @@ function buildPdfDocDefinition(content = buildDocumentContent(), certificate = n
     if (appendix.length) {
       body.push({ text: 'SOURCES AND CHECKED DATES', style: 'sectionLabel', margin: [0, 22, 0, 8], pageBreak: 'before' });
       appendix.forEach(entry => {
-        body.push({ text: sanitizeForPdf(`${entry.clauseTitle} — checked ${entry.checkedDate}`), style: 'appendixClauseLabel', margin: [0, 8, 0, 2] });
+        body.push({ text: sanitizeForPdf(`${entry.clauseTitle} — ${LEVEL_LABEL[entry.level]}, checked ${entry.checkedDate}`), style: 'appendixClauseLabel', margin: [0, 8, 0, 2] });
         entry.citations.forEach(c => {
           body.push({ text: sanitizeForPdf(`${c.case}, ${c.cite} (${c.url})`), style: 'citeLine' });
         });
@@ -3070,7 +3111,7 @@ function buildPdfDocDefinition(content = buildDocumentContent(), certificate = n
     }
   }
 
-  body.push({ text: 'Groundtruth v1 demo · every "Verified" citation links to a real, checked source.', style: 'closingNote' });
+  body.push({ text: 'Groundtruth v1 demo · every citation shown links to a real source, labeled Cited, Verified, or Adversarially checked.', style: 'closingNote' });
 
   // Phase 7.5: "a final sealed PDF with a certificate page (signer,
   // timestamps, document hash)." Only present for a signed share's
@@ -3157,17 +3198,9 @@ function buildDocxDocument(content = buildDocumentContent()) {
     children.push(new Paragraph({ text: clause.title.toUpperCase(), heading: HeadingLevel.HEADING_2 }));
     children.push(new Paragraph({ children: [new TextRun(clause.body)] }));
     if (clause.kind !== 'drafting') {
-      if (clause.status === 'verified' && clause.edited) {
-        children.push(new Paragraph({ children: [new TextRun({ text: `Edited since verified on ${clause.checkedDate} — check the citation below still fits this wording`, italics: true, color: '2B6E4F' })] }));
-        pushCitations(clause.citations);
-        if (clause.gap) children.push(new Paragraph({ children: [new TextRun(`Known gap: ${clause.gap}`)] }));
-      } else if (clause.status === 'verified') {
-        children.push(new Paragraph({ children: [new TextRun({ text: `Verified — checked ${clause.checkedDate}`, italics: true, color: '2B6E4F' })] }));
-        pushCitations(clause.citations);
-        if (clause.gap) children.push(new Paragraph({ children: [new TextRun(`Known gap: ${clause.gap}`)] }));
-      } else {
-        children.push(new Paragraph({ children: [new TextRun({ text: 'Not yet verified against a primary source or case law. Treat as a starting point, not a confirmed fact.', italics: true, color: '2B6E4F' })] }));
-      }
+      children.push(new Paragraph({ children: [new TextRun({ text: clauseVerificationNoteText(clause), italics: true, color: '2B6E4F' })] }));
+      pushCitations(clause.citations);
+      if (clause.gap) children.push(new Paragraph({ children: [new TextRun(`Known gap: ${clause.gap}`)] }));
     }
   });
 
@@ -3210,7 +3243,7 @@ function buildDocxDocument(content = buildDocumentContent()) {
     if (appendix.length) {
       children.push(new Paragraph({ text: 'SOURCES AND CHECKED DATES', heading: HeadingLevel.HEADING_2, pageBreakBefore: true }));
       appendix.forEach(entry => {
-        children.push(new Paragraph({ children: [new TextRun({ text: `${entry.clauseTitle} — checked ${entry.checkedDate}`, bold: true })] }));
+        children.push(new Paragraph({ children: [new TextRun({ text: `${entry.clauseTitle} — ${LEVEL_LABEL[entry.level]}, checked ${entry.checkedDate}`, bold: true })] }));
         entry.citations.forEach(c => {
           children.push(new Paragraph({ children: [new TextRun(`${c.case}, ${c.cite} (${c.url})`)] }));
         });
@@ -3218,7 +3251,7 @@ function buildDocxDocument(content = buildDocumentContent()) {
     }
   }
 
-  children.push(new Paragraph({ children: [new TextRun({ text: 'Groundtruth v1 demo · every "Verified" citation links to a real, checked source.', size: 16, color: GRAY })] }));
+  children.push(new Paragraph({ children: [new TextRun({ text: 'Groundtruth v1 demo · every citation shown links to a real source, labeled Cited, Verified, or Adversarially checked.', size: 16, color: GRAY })] }));
 
   return new Document({
     sections: [{

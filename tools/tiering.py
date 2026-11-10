@@ -1,35 +1,50 @@
 #!/usr/bin/env python3
-"""Phase 3.1: computes each document's quality tier from objective
-signals that already exist — never assigned by hand, and never assumed
-true for a signal that has no real implementation yet.
+"""Phase 3.1, redefined by CA Wedge Plan Step 2.3: computes each
+document's quality tier from objective signals that already exist —
+never assigned by hand, and never assumed true for a signal that has no
+real implementation yet.
 
-Tier B requires all three of:
+Tier B requires all of:
   - field schema complete: every field has a `type` (all 3,975 already
     do, Phase 2.1) AND a resolvable `whyWeAsk` — either set directly on
     the field, or via `sharedFieldId` into schema/fields/*.json (Phase
     2.2/2.2b). A document with any field outside the 172-id shared
     library and no whyWeAsk of its own fails this today.
-  - every authority clause it uses is `status: "verified"` and within
-    the same per-category fatal staleness threshold (Phase 4.3,
-    config/staleness.json) validate_corpus.py already enforces
-    corpus-wide (mirrored here, not re-derived differently).
+  - every authority clause it uses is at least at the `verified` level —
+    `tools/clause_levels.py`'s honest meaning: `status: "verified"` AND
+    every citation's `sourceClass` is primary-official/court-opinion/
+    agency, never `mirror` or `secondary` (Global Rule 4: "A mirror is
+    not primary") — and within the same per-category fatal staleness
+    threshold (Phase 4.3, config/staleness.json) validate_corpus.py
+    already enforces corpus-wide (mirrored here, not re-derived
+    differently). This is stricter than the pre-Wedge-Plan check, which
+    only read the old single-value `status` field and had no way to
+    tell a mirror-sourced "verified" clause from a leginfo-sourced one.
   - at least one golden fixture exists (tests/golden/fixtures/<id>.json).
 
-Tier A requires everything Tier B does, plus a clean adversarial-verifier
-run (master plan Phase 4.1) and a passed per-document accessibility check
-(Phase 9.1):
+Tier A requires everything Tier B does, plus three more things CA Wedge
+Plan Step 2.3 adds:
 
-  - clean adversarial-verifier run: every authority clause the document
-    uses has actually been checked (appears in verifier/checked.jsonl —
-    the Phase 12 Step 3 checkpoint, not just "status: verified", which
-    is a drafting-time self-assessment the adversarial pass exists to
-    stress-test) AND carries no open blocker/major finding. "Open" means
-    verifier/triage.jsonl has no "fixed" or "rejected" disposition for
-    it — an "accepted" finding (the defect stands, just not corrected)
-    still blocks Tier A, same as a finding nobody has triaged yet. A
-    clause the checkpoint hasn't reached at all blocks Tier A the same
-    way an unchecked clause always has — "not yet known to be clean" is
-    not "clean."
+  - at least one authority clause. A document built entirely from
+    drafting clauses has no legal-authority claim to adversarially check
+    or verify in the first place, so it can never be Tier A under the
+    new definition — see has_authority_clause() and
+    drafting_only_label() below. (Every one of this corpus's 9
+    pre-Wedge-Plan Tier A documents was exactly this case; none of them
+    stay Tier A under the redefinition.)
+  - every authority clause the document uses is at the
+    `adversarially_checked` level — `tools/clause_levels.py` again: the
+    clause has actually been checked (appears in verifier/checked.jsonl,
+    the Phase 12 Step 3/7 checkpoints — not just "status: verified",
+    which is a drafting-time self-assessment the adversarial pass exists
+    to stress-test) AND carries no finding of ANY severity whose triage
+    disposition isn't "fixed". This is stricter than the pre-Wedge-Plan
+    gate, which only blocked on an open blocker/major — Step 2's own
+    wording ("adversarially checked ... with no open findings") carries
+    no severity qualifier, so a single open minor finding now blocks
+    Tier A too, same as an open blocker would. A clause the checkpoint
+    hasn't reached at all blocks Tier A the same way an unchecked clause
+    always has — "not yet known to be clean" is not "clean."
   - accessibility check: the document's rendered output screen passed
     tools/accessibility_scan.js (accessibility.json) — a real, per-
     document, both-themes axe-core scan, not the 50-document sample
@@ -40,14 +55,18 @@ document accessibility.json has no entry for) is treated as "not met,"
 never "assumed met" — see the two `_EXISTS` constants below, and
 DECISIONS.md's Phase 12 Step 6 entry for why Tier A can come out
 honestly empty, or near-empty, given how little of the corpus the
-checkpoint has reached (12% of authority clauses as of this writing),
-rather than a sign something is broken.
+checkpoint has reached, rather than a sign something is broken.
 
 Tier C is everything else that passes validate_corpus.py (true for the
 whole corpus by the time this runs, since CI runs that gate first).
 
-Writes tiers.json: {generated_at, documents: {id: {tier, blockingB,
-blockingA}}, summary: {category: {A,B,C,total}, ALL: {...}}}.
+A document with zero authority clauses also carries
+`"draftingOnly": true` and the label "Drafting only (no legal authority
+claimed)" regardless of which tier (B or C) it lands in on the other
+gates — Step 2.3's label, not a tier of its own.
+
+Writes tiers.json: {generated_at, documents: {id: {tier, draftingOnly,
+blockingB, blockingA}}, summary: {category: {A,B,C,total}, ALL: {...}}}.
 
     python3 tools/tiering.py            # recompute, write tiers.json, print summary
     python3 tools/tiering.py --check    # recompute in memory, exit 1 if tiers.json
@@ -60,6 +79,8 @@ import os
 import sys
 from datetime import date
 
+from clause_levels import load_verifier_state, clause_level
+
 # Phase 4.1 (adversarial verifier) and Phase 9.1 (accessibility checks)
 # now both exist and produce real per-document results (Phase 12 Steps
 # 3-4 and 6); see adversarial_verifier_clean() and
@@ -67,12 +88,7 @@ from datetime import date
 ADVERSARIAL_VERIFIER_EXISTS = True
 ACCESSIBILITY_CHECK_EXISTS = True
 
-CHECKED_PATH = 'verifier/checked.jsonl'
-FINDINGS_PATH = 'verifier/findings.jsonl'
-TRIAGE_PATH = 'verifier/triage.jsonl'
 ACCESSIBILITY_PATH = 'accessibility.json'
-OPEN_BLOCKING_SEVERITIES = {'blocker', 'major'}
-CLOSED_TRIAGE_STATUSES = {'fixed', 'rejected'}  # "accepted" still blocks -- the defect stands
 
 
 def entry_id(entry):
@@ -117,14 +133,25 @@ def fatal_threshold_for(clause_id, clause_categories, default_fatal, category_th
     return min(category_thresholds.get(c, {}).get('fatalMonths', default_fatal) for c in cats)
 
 
-def clauses_verified_and_fresh(doc, clauses_by_id, clause_categories, default_fatal, category_thresholds):
+def authority_clauses_of(doc, clauses_by_id):
+    out = []
     for entry in doc['clauseOrder']:
         clause = clauses_by_id.get(entry_id(entry))
         if clause is None:
             continue  # a dangling reference is validate_corpus.py's gate, not ours to re-check
-        if clause['kind'] != 'authority':
-            continue
-        if clause.get('status') != 'verified':
+        if clause['kind'] == 'authority':
+            out.append(clause)
+    return out
+
+
+def has_authority_clause(doc, clauses_by_id):
+    return bool(authority_clauses_of(doc, clauses_by_id))
+
+
+def clauses_verified_and_fresh(doc, clauses_by_id, clause_categories, default_fatal, category_thresholds,
+                                checked_ids, unclean_ids):
+    for clause in authority_clauses_of(doc, clauses_by_id):
+        if clause_level(clause, checked_ids, unclean_ids) not in ('verified', 'adversarially_checked'):
             return False
         fatal = fatal_threshold_for(clause['id'], clause_categories, default_fatal, category_thresholds)
         try:
@@ -139,54 +166,9 @@ def has_golden_fixture(doc_id):
     return os.path.exists(os.path.join('tests', 'golden', 'fixtures', f'{doc_id}.json'))
 
 
-def load_jsonl(path):
-    try:
-        with open(path, encoding='utf-8') as f:
-            return [json.loads(line) for line in f if line.strip()]
-    except FileNotFoundError:
-        return []
-
-
-def load_verifier_state():
-    """checkedClauseIds: clause ids the adversarial checkpoint has
-    actually reached. openBlockingClauseIds: clause ids carrying at
-    least one blocker/major finding whose triage disposition isn't
-    "fixed" or "rejected" -- includes a finding nobody has triaged yet
-    (not in triage.jsonl at all) and one explicitly "accepted" (the
-    defect stands, uncorrected). Both treat an absent record as the
-    non-passing case, per this module's own governing rule."""
-    checked_ids = {c['clauseId'] for c in load_jsonl(CHECKED_PATH)}
-
-    findings = []
-    counts = {}
-    for entry in load_jsonl(FINDINGS_PATH):
-        cid = entry['clauseId']
-        n = counts.get(cid, 0)
-        entry['findingId'] = f'{cid}#{n}'
-        counts[cid] = n + 1
-        findings.append(entry)
-
-    triage_status = {t['findingId']: t['status'] for t in load_jsonl(TRIAGE_PATH)}
-
-    open_blocking_ids = set()
-    for f in findings:
-        if f['severity'] not in OPEN_BLOCKING_SEVERITIES:
-            continue
-        if triage_status.get(f['findingId']) in CLOSED_TRIAGE_STATUSES:
-            continue
-        open_blocking_ids.add(f['clauseId'])
-
-    return checked_ids, open_blocking_ids
-
-
-def adversarial_verifier_clean(doc, clauses_by_id, checked_ids, open_blocking_ids):
-    for entry in doc['clauseOrder']:
-        clause = clauses_by_id.get(entry_id(entry))
-        if clause is None or clause['kind'] != 'authority':
-            continue
-        if clause['id'] not in checked_ids:
-            return False  # not yet reached by the checkpoint -- unknown, not clean
-        if clause['id'] in open_blocking_ids:
+def adversarial_verifier_clean(doc, clauses_by_id, checked_ids, unclean_ids):
+    for clause in authority_clauses_of(doc, clauses_by_id):
+        if clause_level(clause, checked_ids, unclean_ids) != 'adversarially_checked':
             return False
     return True
 
@@ -204,20 +186,29 @@ def accessibility_check_passed(doc_id, accessibility_results):
     return bool(result) and result.get('passed') is True
 
 
+DRAFTING_ONLY_LABEL = 'Drafting only (no legal authority claimed)'
+
+
 def compute_tier(doc, clauses_by_id, shared_fields, clause_categories, default_fatal, category_thresholds,
-                  checked_ids, open_blocking_ids, accessibility_results):
+                  checked_ids, unclean_ids, accessibility_results):
+    drafting_only = not has_authority_clause(doc, clauses_by_id)
+
     blocking_b = []
     if not field_schema_complete(doc, shared_fields):
         blocking_b.append('incomplete field schema (a field is missing type or whyWeAsk)')
-    if not clauses_verified_and_fresh(doc, clauses_by_id, clause_categories, default_fatal, category_thresholds):
-        blocking_b.append('not every authority clause is verified and within the staleness window')
+    if not clauses_verified_and_fresh(doc, clauses_by_id, clause_categories, default_fatal, category_thresholds,
+                                       checked_ids, unclean_ids):
+        blocking_b.append('not every authority clause is verified (primary-sourced, not a mirror) '
+                           'and within the staleness window')
     if not has_golden_fixture(doc['id']):
         blocking_b.append('no golden fixture')
 
     blocking_a = list(blocking_b)
-    if not adversarial_verifier_clean(doc, clauses_by_id, checked_ids, open_blocking_ids):
-        blocking_a.append('not every authority clause has a clean adversarial-verifier result '
-                           '(unchecked, or an open blocker/major finding)')
+    if drafting_only:
+        blocking_a.append('no authority clause at all -- "' + DRAFTING_ONLY_LABEL + '" can never be Tier A')
+    elif not adversarial_verifier_clean(doc, clauses_by_id, checked_ids, unclean_ids):
+        blocking_a.append('not every authority clause is adversarially checked '
+                           '(unchecked, or a finding of any severity not yet fixed)')
     if not accessibility_check_passed(doc['id'], accessibility_results):
         blocking_a.append('no passed per-document accessibility check on record (accessibility.json)')
 
@@ -227,14 +218,14 @@ def compute_tier(doc, clauses_by_id, shared_fields, clause_categories, default_f
         tier = 'B'
     else:
         tier = 'C'
-    return tier, blocking_b, blocking_a
+    return tier, drafting_only, blocking_b, blocking_a
 
 
 def compute_tiers():
     docs = json.load(open('data/documents.json'))
     clauses_by_id = {c['id']: c for c in json.load(open('data/clauses.json'))['clauses']}
     shared_fields = load_shared_fields()
-    checked_ids, open_blocking_ids = load_verifier_state() if ADVERSARIAL_VERIFIER_EXISTS else (set(), set())
+    checked_ids, unclean_ids = load_verifier_state() if ADVERSARIAL_VERIFIER_EXISTS else (set(), set())
     accessibility_results = load_accessibility_results() if ACCESSIBILITY_CHECK_EXISTS else {}
 
     staleness_config = json.load(open('config/staleness.json'))
@@ -248,17 +239,24 @@ def compute_tiers():
     documents = {}
     summary = {}
     for doc in docs:
-        tier, blocking_b, blocking_a = compute_tier(
+        tier, drafting_only, blocking_b, blocking_a = compute_tier(
             doc, clauses_by_id, shared_fields, clause_categories, default_fatal, category_thresholds,
-            checked_ids, open_blocking_ids, accessibility_results)
-        documents[doc['id']] = {'tier': tier, 'blockingB': blocking_b, 'blockingA': blocking_a}
+            checked_ids, unclean_ids, accessibility_results)
+        documents[doc['id']] = {
+            'tier': tier,
+            'draftingOnly': drafting_only,
+            'blockingB': blocking_b,
+            'blockingA': blocking_a,
+        }
         for cat in doc.get('categories', []):
-            bucket = summary.setdefault(cat, {'A': 0, 'B': 0, 'C': 0, 'total': 0})
+            bucket = summary.setdefault(cat, {'A': 0, 'B': 0, 'C': 0, 'total': 0, 'draftingOnly': 0})
             bucket[tier] += 1
             bucket['total'] += 1
-        allb = summary.setdefault('ALL', {'A': 0, 'B': 0, 'C': 0, 'total': 0})
+            bucket['draftingOnly'] += drafting_only
+        allb = summary.setdefault('ALL', {'A': 0, 'B': 0, 'C': 0, 'total': 0, 'draftingOnly': 0})
         allb[tier] += 1
         allb['total'] += 1
+        allb['draftingOnly'] += drafting_only
 
     return {
         'generated_at': date.today().isoformat(),
@@ -269,13 +267,13 @@ def compute_tiers():
 
 def print_summary(result):
     print(f"Tiers computed {result['generated_at']}")
-    print(f"{'Category':<24} {'A':>5} {'B':>5} {'C':>5} {'Total':>7}")
+    print(f"{'Category':<24} {'A':>5} {'B':>5} {'C':>5} {'Total':>7} {'DraftOnly':>10}")
     for cat, counts in result['summary'].items():
         if cat == 'ALL':
             continue
-        print(f"{cat:<24} {counts['A']:>5} {counts['B']:>5} {counts['C']:>5} {counts['total']:>7}")
+        print(f"{cat:<24} {counts['A']:>5} {counts['B']:>5} {counts['C']:>5} {counts['total']:>7} {counts['draftingOnly']:>10}")
     allb = result['summary']['ALL']
-    print(f"{'ALL':<24} {allb['A']:>5} {allb['B']:>5} {allb['C']:>5} {allb['total']:>7}")
+    print(f"{'ALL':<24} {allb['A']:>5} {allb['B']:>5} {allb['C']:>5} {allb['total']:>7} {allb['draftingOnly']:>10}")
 
 
 def main():

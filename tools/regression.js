@@ -100,8 +100,20 @@ const { chromium } = require('playwright');
     renderTierFilter();
     renderPicker();
     const docCount = getPickerDocs().docs.length;
-    const pillCount = document.querySelectorAll('.doc-card .tier-pill').length;
+    // CA Wedge Plan Step 2.3: a drafting-only card carries a second,
+    // non-tier ".tier-pill.drafting-only" pill alongside its real A/B/C
+    // one -- excluded here so "one tier pill per rendered card" still
+    // holds. draftingOnlyMatches compares the rendered count of that
+    // pill against how many of the first-page docs state.tiers actually
+    // marks draftingOnly (renderPicker's first page is getPickerDocs()'s
+    // own first `renderedCount` docs, the same assumption expectedPage
+    // already relies on below).
+    const pillCount = document.querySelectorAll('.doc-card .tier-pill:not(.drafting-only)').length;
     const renderedCount = document.querySelectorAll('.doc-card').length;
+    const renderedDraftingOnlyCount = getPickerDocs().docs.slice(0, renderedCount)
+      .filter(d => state.tiers[d.id] && state.tiers[d.id].draftingOnly).length;
+    const draftingOnlyMatches =
+      document.querySelectorAll('.doc-card .tier-pill.drafting-only').length === renderedDraftingOnlyCount;
     const expectedPage = Math.min(PICKER_PAGE_SIZE, docCount);
 
     const bCount = Object.values(state.tiers).filter(t => t.tier === 'B').length;
@@ -116,7 +128,7 @@ const { chromium } = require('playwright');
 
     state.tierSortEnabled = true;
     renderPicker();
-    const order = Array.from(document.querySelectorAll('.doc-card .tier-pill'))
+    const order = Array.from(document.querySelectorAll('.doc-card .tier-pill:not(.drafting-only)'))
       .map(pill => pill.className.match(/tier-([ABC])/)[1]);
     const rank = { A: 0, B: 1, C: 2 };
     const sorted = order.every((t, i) => i === 0 || rank[order[i - 1]] <= rank[t]);
@@ -124,14 +136,15 @@ const { chromium } = require('playwright');
     renderPicker();
 
     return { docCount, pillCount, renderedCount, expectedPage, bCount, filteredDocCount,
-      filteredRenderedCount, expectedFilteredPage, allFilteredAreB, sorted };
+      filteredRenderedCount, expectedFilteredPage, allFilteredAreB, sorted, draftingOnlyMatches };
   });
   const tierOk = tierCheck.pillCount === tierCheck.renderedCount
     && tierCheck.renderedCount === tierCheck.expectedPage
     && tierCheck.filteredDocCount === tierCheck.bCount
     && tierCheck.filteredRenderedCount === tierCheck.expectedFilteredPage
     && tierCheck.allFilteredAreB
-    && tierCheck.sorted;
+    && tierCheck.sorted
+    && tierCheck.draftingOnlyMatches;
   if (!tierOk) ok = false;
   console.log((tierOk ? 'OK   ' : 'FAIL ') + 'tiers: ' + JSON.stringify(tierCheck));
 
