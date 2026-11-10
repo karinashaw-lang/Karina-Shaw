@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-03",
+  "generated_at": "2026-11-10",
   "documents": {
     "abandoned_personal_property_disposition_info_sheet": {
       "tier": "C",
@@ -3608,10 +3608,12 @@
     "name_change_petition_info_sheet": {
       "tier": "C",
       "blockingB": [
-        "incomplete field schema (a field is missing type or whyWeAsk)"
+        "incomplete field schema (a field is missing type or whyWeAsk)",
+        "not every authority clause is verified and within the staleness window"
       ],
       "blockingA": [
         "incomplete field schema (a field is missing type or whyWeAsk)",
+        "not every authority clause is verified and within the staleness window",
         "not every authority clause has a clean adversarial-verifier result (unchecked, or an open blocker/major finding)"
       ]
     },
@@ -5001,6 +5003,21 @@
         "not every authority clause has a clean adversarial-verifier result (unchecked, or an open blocker/major finding)"
       ]
     },
+    "small_claims_info_sheet": {
+      "tier": "C",
+      "blockingB": [
+        "incomplete field schema (a field is missing type or whyWeAsk)",
+        "not every authority clause is verified and within the staleness window",
+        "no golden fixture"
+      ],
+      "blockingA": [
+        "incomplete field schema (a field is missing type or whyWeAsk)",
+        "not every authority clause is verified and within the staleness window",
+        "no golden fixture",
+        "not every authority clause has a clean adversarial-verifier result (unchecked, or an open blocker/major finding)",
+        "no passed per-document accessibility check on record (accessibility.json)"
+      ]
+    },
     "small_estate_affidavit": {
       "tier": "C",
       "blockingB": [
@@ -6241,8 +6258,8 @@
     "ALL": {
       "A": 9,
       "B": 373,
-      "C": 358,
-      "total": 740
+      "C": 359,
+      "total": 741
     },
     "Business Formation": {
       "A": 0,
@@ -6255,6 +6272,12 @@
       "B": 38,
       "C": 56,
       "total": 94
+    },
+    "Consumer & Civil Court": {
+      "A": 0,
+      "B": 0,
+      "C": 2,
+      "total": 2
     },
     "During employment": {
       "A": 5,
