@@ -3342,3 +3342,28 @@ validate_corpus.py`, `node tools/regression.js`, and `python3 tools/
 merge_guard.py HEAD` all still pass (neither new file touches
 `data/documents.json` or `data/clauses.json`). Waiting on the owner's
 decision before starting Step B.
+
+## 2026-11-10 — MVP amendment: owner chose the subscription model
+
+The owner answered Step A directly: **subscription model**, overriding
+the per-document recommendation above. `config/pricing.json`'s `model`
+is now `"subscription"` (`unlimitedDocuments: true`, `monthlyPriceUsd`/
+`annualPriceUsd` still `null` placeholders); `perDocument` stays in the
+file as `active: false` rather than deleted, in case a one-time option
+is ever added alongside the subscription later. `PRICING_OPTIONS.md`
+gets an "Owner decision" section at the top recording the choice and
+what it changes about the steps that follow, rather than being rewritten
+to pretend Option B was the plan all along.
+
+The concrete consequences, carried forward into Steps B and C: every
+`entitlements` row this builds is `type='subscription'`,
+`document_id` null, `ends_at` tracking the current billing period --
+not one row per document. The 3-re-exports/30-day default proposed
+for a one-time purchase doesn't apply to continuous subscription
+access and is dropped; a grace period after cancellation/failed
+payment is the open question in its place. Step C.7's California
+Automatic Renewal Law compliance is now mandatory for the whole
+product, not a conditional add-on tier, and a subscription customer
+portal is needed from the start.
+
+Proceeding to Step B (entitlement schema + server-side delivery) next.

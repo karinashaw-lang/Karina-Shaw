@@ -1,22 +1,21 @@
 {
-  "description": "Pricing for the paid launch (MVP amendment, Step A). Every price point below is a null placeholder for the owner to fill in -- see PRICING_OPTIONS.md for the full comparison and reasoning. 'model' is set to the recommended option (per-document only, for the first paid launch); 'hybridSubscriptionAddOn' is left in the shape for later, not active, since the entitlements schema (Step B.1) already has room for it (nullable documentId) without a redesign. No price here has been picked from memory of competitors -- every priceUsd is null until the owner sets it.",
-  "model": "per_document",
+  "description": "Pricing for the paid launch (MVP amendment). Step A proposed per-document purchase; the owner decided 2026-11-10 on the subscription model instead (Option B in PRICING_OPTIONS.md, unlimited documents) -- see PRICING_OPTIONS.md's 'Owner decision' section for what that changes. Every price point below is still a null placeholder for the owner to fill in. No price here has been picked from memory of competitors -- every priceUsd is null until the owner sets it.",
+  "model": "subscription",
   "currency": "usd",
-  "perDocument": {
-    "priceUsd": null,
-    "includedReexports": 3,
-    "includedEditWindowDays": 30,
-    "_note": "includedReexports/includedEditWindowDays are a concrete default proposed in PRICING_OPTIONS.md's 'What this leaves for the owner' section, not a pricing recommendation -- change freely."
-  },
-  "hybridSubscriptionAddOn": {
-    "_note": "Not active at launch. Reserved for a later phase if usage data justifies it -- see PRICING_OPTIONS.md's recommendation. Sells continuity (cloud save, version history, law-change alerts), never additional document access.",
-    "active": false,
+  "subscription": {
+    "unlimitedDocuments": true,
     "monthlyPriceUsd": null,
     "annualPriceUsd": null,
-    "includes": ["cloud_save", "version_history", "law_change_alerts"]
+    "includes": ["all_export_formats", "cloud_save", "version_history", "law_change_alerts", "e_signature", "sharing"],
+    "_note": "Unlocks all 8 paywalled actions (PDF/.docx/plain text/JSON export, sources appendix, cloud save, e-signature, sharing) for every document for as long as the subscription is active. Triggers California's Automatic Renewal Law in full (Bus. & Prof. Code SS 17600 et seq.) -- renewal-compliance copy, acknowledgment email, and an easy-as-signup cancellation path are mandatory for this model, built in Step C.7, not optional."
+  },
+  "perDocument": {
+    "_note": "Not offered at launch under the subscription-only decision. Left in the file, inactive, in case the owner later wants a one-time option alongside the subscription -- not built unless asked.",
+    "active": false,
+    "priceUsd": null
   },
   "refundPolicy": {
-    "_note": "Owner decision -- Step E. Not yet written.",
+    "_note": "Owner decision -- Step E. For a subscription, this also covers partial-period refunds on cancellation. Not yet written.",
     "windowDays": null,
     "summary": null
   }

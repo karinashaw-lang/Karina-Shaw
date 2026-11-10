@@ -1,5 +1,38 @@
 # Pricing options for the paid launch
 
+## Owner decision (2026-11-10)
+
+**The owner chose Option B — subscription, unlimited documents —
+overriding this document's recommendation of per-document purchase.**
+The comparison and reasoning below stand as the record of what was
+weighed, but Steps B onward now build the subscription model, not
+per-document purchase. The practical differences this decision makes,
+carried into `config/pricing.json` and the steps that follow:
+
+- `config/pricing.json`'s `model` is `"subscription"`; `perDocument` is
+  left in the file but `active: false`, in case a one-time option is
+  ever added alongside the subscription later.
+- Step B's entitlement rows are `type='subscription'`, `document_id`
+  null, `ends_at` tracking the current billing period — not one row
+  per document.
+- Step B.5 (edit-after-purchase policy: how many re-exports a purchase
+  includes) does not apply the same way under a subscription — access
+  is continuous for as long as the subscription is active, so there is
+  no re-export count to cap. The 3-re-exports/30-day default proposed
+  below is dropped; what still needs an owner decision is the
+  **grace period after a canceled or failed-payment subscription**
+  before entitlement actually ends (see Step B/C work).
+- Step C.7's California Automatic Renewal Law compliance (clear and
+  conspicuous renewal terms, affirmative consent, an acknowledgment
+  email, and a cancellation path as easy as sign-up) is now mandatory
+  for every subscriber, not a conditional "if any subscription is
+  offered" — this is the whole product now, not an add-on tier.
+- A customer portal for subscription management (Step C.4) and full
+  dunning handling for failed renewals are needed from the start, not
+  deferred.
+
+---
+
 Written for the MVP amendment ("the MVP is not free; it launches with
 payments"), Step A. This is a proposal, not a decision — no price has
 been picked, and `config/pricing.json` ships with every price point as
