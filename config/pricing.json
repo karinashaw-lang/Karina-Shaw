@@ -1,0 +1,23 @@
+{
+  "description": "Pricing for the paid launch (MVP amendment, Step A). Every price point below is a null placeholder for the owner to fill in -- see PRICING_OPTIONS.md for the full comparison and reasoning. 'model' is set to the recommended option (per-document only, for the first paid launch); 'hybridSubscriptionAddOn' is left in the shape for later, not active, since the entitlements schema (Step B.1) already has room for it (nullable documentId) without a redesign. No price here has been picked from memory of competitors -- every priceUsd is null until the owner sets it.",
+  "model": "per_document",
+  "currency": "usd",
+  "perDocument": {
+    "priceUsd": null,
+    "includedReexports": 3,
+    "includedEditWindowDays": 30,
+    "_note": "includedReexports/includedEditWindowDays are a concrete default proposed in PRICING_OPTIONS.md's 'What this leaves for the owner' section, not a pricing recommendation -- change freely."
+  },
+  "hybridSubscriptionAddOn": {
+    "_note": "Not active at launch. Reserved for a later phase if usage data justifies it -- see PRICING_OPTIONS.md's recommendation. Sells continuity (cloud save, version history, law-change alerts), never additional document access.",
+    "active": false,
+    "monthlyPriceUsd": null,
+    "annualPriceUsd": null,
+    "includes": ["cloud_save", "version_history", "law_change_alerts"]
+  },
+  "refundPolicy": {
+    "_note": "Owner decision -- Step E. Not yet written.",
+    "windowDays": null,
+    "summary": null
+  }
+}

@@ -3286,3 +3286,59 @@ commit for the exact counts.
 
 The other 3 planned documents (unlawful detainer, debt collection,
 bankruptcy-scoping) have not been started.
+
+## 2026-11-10 — MVP amendment: paid launch, Step A (pricing decision proposal)
+
+The user replaced the "free launch" assumption with a paid-launch
+amendment (Steps A-F, with 5 additional global rules -- no stored card
+data, test-mode-only until explicit live-mode approval, server-side
+paywall enforcement only, the free tier keeps the full trust story
+visible, and pricing/billing copy stays inform-never-advise). Step A
+explicitly says to propose and wait, not to decide or build -- Steps
+B-F are blocked on this decision and have not been started.
+
+Wrote `PRICING_OPTIONS.md` comparing three models -- per-document
+one-time purchase, unlimited-document subscription, and a hybrid
+(per-document purchase plus an optional subscription add-on for
+cloud save/version history/law-change alerts only, never for more
+document access) -- with pros, cons, and exact technical needs for
+each, and the free/paid action split per the amendment's own Global
+Rule 4 (browsing, search, interview, and the full on-screen preview
+with every sourcing badge stay free in every model; the 8 named
+actions -- PDF, .docx, plain text, JSON, sources appendix, cloud save,
+e-signature, sharing -- sit on the paid side in all three, differing
+only in how access is sold).
+
+**Recommendation: launch with per-document purchase only.** Reasoning
+recorded in the document itself: this is the product's first-ever
+payment, and the conservative choice for a first paid launch is to
+prove one real transaction end to end before adding a second, legally
+heavier product type (a subscription triggers California's Automatic
+Renewal Law in full -- clear-and-conspicuous terms, affirmative
+consent, an acknowledgment email, an easy-as-signup cancellation path
+-- for every subscriber, including ones who'd have been happy with a
+single purchase). The hybrid model is judged the better long-run fit
+for this product's actual usage pattern and its transparency-first
+positioning, and the `entitlements` schema the amendment's own Step
+B.1 specifies (nullable `document_id`) already has room for a
+subscription row without a redesign -- but that is a reason to design
+for it, not a reason to ship it before a single document has ever
+actually sold.
+
+Created `config/pricing.json` with every price point (`perDocument.
+priceUsd`, both `hybridSubscriptionAddOn` prices, `refundPolicy`) as a
+`null` placeholder -- none picked from memory of competitors, per the
+amendment's own instruction. One concrete, non-pricing default is
+proposed for the owner to react to rather than invent from scratch:
+3 included re-exports or 30 days from purchase, whichever comes first,
+chosen only because it's simple to explain and enforce. `model` is
+set to `"per_document"` (the recommendation) and
+`hybridSubscriptionAddOn.active` is `false` -- reserved for a later
+phase, not built now.
+
+No entitlements migration, edge function, or Stripe code was written
+-- Step A is proposal-only, exactly as instructed. `python3 tools/
+validate_corpus.py`, `node tools/regression.js`, and `python3 tools/
+merge_guard.py HEAD` all still pass (neither new file touches
+`data/documents.json` or `data/clauses.json`). Waiting on the owner's
+decision before starting Step B.
