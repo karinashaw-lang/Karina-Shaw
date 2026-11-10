@@ -3367,3 +3367,110 @@ product, not a conditional add-on tier, and a subscription customer
 portal is needed from the start.
 
 Proceeding to Step B (entitlement schema + server-side delivery) next.
+
+## 2026-11-10 — The plan was superseded twice more in the same session: "Complete MVP Build Plan" (20 steps), then "California MVP Build Plan (paid, proof-first, single wedge)" (25 steps)
+
+Mid-work on the above "MVP amendment" Step B, the user replaced it
+with a much larger "Complete MVP Build Plan" (Part 1: make the trust
+claim true -- baseline, honest labels/tiers, mechanical branch
+controls, launch-set definition, launch-set verification -- before
+Part 2: payments). No Supabase writes had been made under the old
+plan (only read-only `list_tables`/`execute_sql` SELECTs), so nothing
+needed to be rolled back; the task list was re-mapped to the new
+step numbers and Step 1 (baseline) was completed as `MVP_BASELINE.md`
+(commit `1312f22`).
+
+Before Step 2 could start, the user uploaded a further-refined,
+authoritative final plan, "GROUNDTRUTH: CALIFORNIA MVP BUILD PLAN
+(PAID, PROOF-FIRST, SINGLE WEDGE)" -- same Part 1 structure, same
+Step 1 (content-identical, already satisfied), but inserting a new
+Step 3 (a `state` field on every record, defaulting `"CA"`, so a
+future state expansion is a data load, not a schema migration) and,
+in Part 3, three new differentiator steps the earlier plan didn't
+have: filing instruction sheets, a Statement of Information reminder
+for LLC/corp buyers, and referral links (registered agent, attorney
+review) with a day-7 review-request email -- all organized around a
+named go-to-market wedge, California single-member LLC formation,
+that Wave 1 marketing and SEO point at. The task list was re-mapped
+again to this plan's step numbers (the authoritative ones going
+forward); every task tracked under the prior two numbering schemes
+was marked resolved/superseded rather than left stale. The already-
+answered pricing decision (subscription model) carries forward to
+this plan's Step 7 unchanged, except Step 7 adds one new requirement
+not previously addressed: a 30-day money-back guarantee, marketed as
+a feature, with its exact copy flagged for owner approval -- still
+open, tracked as part of Step 7's remaining work.
+
+## 2026-11-10 — CA Wedge Plan Step 2.2: sourceClass backfilled on every citation; 578 clauses flagged as non-primary
+
+Global Rule 4: "Record sourceClass on every citation: primary-official,
+court-opinion, agency, mirror, secondary. A mirror is not primary."
+Wrote `tools/backfill_source_class.py` (dry-run by default, in the
+same style as this corpus's other one-time migrations --
+`migrate_fields.py`, `build_field_library.py`, `add_why_we_ask.py`).
+Only 28 distinct domains exist across all 11,688 citations in the
+whole corpus, so every one was classified by hand from its actual
+role (the government's own publication of the codified text vs. a
+court's own opinion vs. an agency's guidance vs. a third-party mirror
+of primary text), not guessed at or pattern-matched loosely. Ran the
+dry run first (zero unrecognized domains), then `--write`.
+
+**Result: 578 of 4,989 authority clauses (11.6%) carry at least one
+`mirror`-class citation** and so cannot honestly claim "Verified"
+under Step 2's coming three-level system, no matter what their old
+single-value `status` field says. `MVP_BASELINE.md`'s Step 1 estimate
+of "96" was a real undercount -- that domain-pattern guess only
+caught explicit California-statute mirrors (`california.public.law`,
+`law.onecle.com`) and missed a much larger group citing only a
+federal-statute mirror (`www.law.cornell.edu`, 482 clauses). Both
+groups, and why they're triaged at different priority (California
+statutory law is this product's actual trust claim and the one
+Global Rule 4 is really protecting; federal-statute mirror reliance
+on a well-established LII mirror is a real but lower-priority gap),
+are written up in the new `verifier/NON_PRIMARY_SOURCES.md`, with the
+96 California-mirror clauses listed individually -- the 9 small-claims
+CCP citations named by Step 2.2 and Step 6.3 are among them, seven
+clauses, exactly as expected from this session's own earlier work on
+that document. This step only labels; it does not re-verify anything
+or change any clause's `status` -- that's Step 6's job, scoped to
+whichever of these end up in the approved launch set.
+
+Added `sourceClass` to `tools/validate_corpus.py`'s `CIT` key-order
+list and a new check requiring every citation's `sourceClass` to be
+one of the five valid values. `validate_corpus.py` passes.
+`merge_guard.py HEAD` reports exactly 4,989 "pre-existing modified"
+clauses -- read the full list and confirmed it is precisely the set
+of authority clauses (every clause with `kind: "authority"`, no more
+and no fewer; 0 drafting clauses touched, 0 dropped). This is the
+same pattern already on record from Phase 12 Step 4: an intentional,
+reviewed, corpus-wide schema addition is exactly what this gate is
+built to surface for a human to confirm, not a signal to abort, per
+the tool's own docstring.
+
+**Side effect, not a new problem:** adding `sourceClass` to every
+citation changed the rendered JSON of nearly every document with
+authority clauses, which made `MVP_BASELINE.md`'s already-reported
+golden-fixture staleness (50/741 failing) balloon to 732/741 failing
+-- entirely as an expected, mechanical consequence of this specific
+schema change, not new corpus drift. Ran `node tests/golden/golden.js
+--update`, read every printed diff, confirmed each one was either the
+new `sourceClass` field or an already-known, already-approved prior
+content fix (never something unexpected), and it now reports 741/741
+passing -- which also incidentally closes the 50-fixture gap
+`MVP_BASELINE.md` flagged, as a side effect of this commit rather
+than a separate fix. Regenerating a test fixture to match already-
+approved, already-committed clause content is routine test-artifact
+maintenance, not an edit to legal clause text (Global Rule 7 doesn't
+apply) and not one of the destructive/irreversible actions Global
+Rule 8 lists (DROP, DELETE, force-push, deploy, publish, live-mode
+Stripe, real charges) -- it's git-tracked and fully reversible, so it
+proceeded without a separate wait-for-approval gate.
+
+All 5 checks pass on the combined change: `validate_corpus.py`,
+`regression.js`, `merge_guard.py HEAD` (4,989 modified, confirmed
+exact), `golden.js` (741/741), `wizard_regression.js` (741/741).
+
+Next within Step 2: the three visible levels themselves (Cited /
+Verified / Adversarially checked), the tier redefinition, and the
+`methodology.html` / `tiering.py` / picker / sourcing-UI updates that
+display them -- not started yet.

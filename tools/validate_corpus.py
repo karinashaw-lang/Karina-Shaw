@@ -9,7 +9,12 @@ from datetime import date
 
 AUTH = ['id', 'title', 'kind', 'status', 'checkedDate', 'body', 'gap', 'citations']
 DRAFT = ['id', 'title', 'kind', 'body']
-CIT = ['case', 'cite', 'url', 'quote']
+CIT = ['case', 'cite', 'url', 'quote', 'sourceClass']
+# CA Wedge Plan Step 2.2: a mirror is not primary, so every citation must
+# say plainly which of these five it is. See tools/backfill_source_class.py
+# for the one-time migration that assigned sourceClass by URL domain, and
+# verifier/NON_PRIMARY_SOURCES.md for the clauses this flags as non-primary.
+SOURCE_CLASSES = {'primary-official', 'court-opinion', 'agency', 'mirror', 'secondary'}
 DOC = ['id', 'title', 'description', 'categories', 'clauseOrder', 'fields']
 
 # The app has no other declaration of this list — renderCategoryFilter() in
@@ -246,6 +251,10 @@ def main():
           'drafting clauses with non-canonical key order')
     check(all(list(ct.keys()) == CIT for c in auth for ct in c['citations']),
           'citations with non-canonical key order')
+    bad_source_class = [c['id'] for c in auth for ct in c['citations']
+                        if ct.get('sourceClass') not in SOURCE_CLASSES]
+    check(not bad_source_class,
+          f'citations with a missing or invalid sourceClass: {bad_source_class[:5]}')
     check(all(list(d.keys()) == DOC for d in docs),
           f'documents with non-canonical key order: {[d["id"] for d in docs if list(d.keys()) != DOC][:5]}')
 
