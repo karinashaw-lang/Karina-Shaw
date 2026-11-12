@@ -929,3 +929,33 @@ git add corpus_snapshots/v1.json
 git commit -m "Corpus snapshot for v1"
 git tag -a v1 -m "v1"
 ```
+
+## Branch and commit discipline (CA Wedge Plan Step 4)
+
+Global Rule 12: "Agent work goes on child branches or worktrees and is
+handed over for review. Do not commit directly to the main working
+branch." Global Rule 7: "Never auto-edit legal clause text from
+verifier output. Write patch files, show me the diff, wait for
+approval." Both are mechanically checked now, not just written down —
+`tools/check_commit_discipline.py` (tested by
+`tests/tools/test_check_commit_discipline.py`) requires:
+
+- Every commit landing directly on the branch named in
+  `.claude-protected-branch` to carry a `Reviewed-By:` trailer in its
+  message. A delegated subagent's own prompt never tells it to add
+  this, so a plain `git commit` from one fails here — this is the
+  actual, repeated failure mode this session hit three times before
+  this step existed (a subagent told not to commit, committing
+  anyway), not a hypothetical to guard against speculatively.
+- Any commit that changes the legal text of an already-existing
+  clause (its `body`, `gap`, or a citation's `case`/`cite`/`url`/
+  `quote` — not `status`, `checkedDate`, `sourceClass`, or `state`,
+  which routine re-verification legitimately touches without
+  rewriting the text) to also carry a `Patch-ID:` trailer.
+
+Run `bash tools/install_hooks.sh` once per clone (`core.hooksPath` is
+a local git setting, never cloned with the repo) to wire these into
+real `.githooks/commit-msg` and `.githooks/pre-push` hooks. The
+`branch-discipline` CI job is the server-side backstop for a clone
+that never ran that script, or a hook bypassed with `--no-verify` —
+it re-checks every commit a push actually introduces.

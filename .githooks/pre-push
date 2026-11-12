@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+# CA Wedge Plan Step 4: re-checks every commit about to be pushed that
+# isn't already on the remote, not just the single commit the
+# commit-msg hook already saw -- a backstop for a commit made before
+# the hook was installed, or landed by some other path (cherry-pick,
+# rebase, a commit made in a worktree that got merged in locally).
+set -euo pipefail
+cd "$(git rev-parse --show-toplevel)"
+
+zero='0000000000000000000000000000000000000000'
+failed=0
+
+while read -r local_ref local_sha remote_ref remote_sha; do
+  [ "$local_sha" = "$zero" ] && continue  # a delete -- nothing to check
+  if [ "$remote_sha" = "$zero" ]; then
+    range="$local_sha"  # new branch/ref: check every commit it has
+    revs=$(git rev-list "$range")
+  else
+    revs=$(git rev-list "$remote_sha..$local_sha")
+  fi
+  for rev in $revs; do
+    if ! python3 tools/check_commit_discipline.py --rev "$rev"; then
+      failed=1
+    fi
+  done
+done
+
+exit $failed

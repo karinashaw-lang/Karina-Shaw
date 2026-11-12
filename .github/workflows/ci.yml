@@ -45,12 +45,42 @@ jobs:
           python3 tests/lint/test_copy_lint.py -v
           python3 tests/tools/test_generate_data_inventory.py -v
           python3 tests/tools/test_corpus_snapshot.py -v
+          python3 tests/tools/test_check_commit_discipline.py -v
       - name: Generate and validate SEO pages
         run: |
           python3 tools/generate_seo_pages.py
           python3 tools/validate_seo_pages.py
       - name: Promotion report
         run: python3 tools/promotion_report.py --markdown >> "$GITHUB_STEP_SUMMARY"
+
+  branch-discipline:
+    name: Branch and commit discipline
+    # CA Wedge Plan Step 4 (Global Rules 7 and 12). Pushes only -- a PR's
+    # commits get checked when the branch itself is pushed, same as every
+    # other push-triggered job here. This is the server-side backstop for
+    # whoever didn't run tools/install_hooks.sh (a fresh clone, a worktree
+    # an agent was handed without that one-time setup step) -- the local
+    # commit-msg/pre-push hooks are the first line, this is the one that
+    # can't be skipped with --no-verify.
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check every newly-pushed commit
+        run: |
+          zero='0000000000000000000000000000000000000000'
+          if [ "${{ github.event.before }}" = "$zero" ]; then
+            # A brand-new branch's first push -- nothing to diff against,
+            # so check only the commit(s) this push actually introduced.
+            python3 tools/check_commit_discipline.py --rev "${{ github.sha }}"
+          else
+            python3 tools/check_commit_discipline.py --rev-range "${{ github.event.before }}..${{ github.sha }}"
+          fi
 
   merge-guard:
     name: Merge guard

@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# CA Wedge Plan Step 4: installed via `tools/install_hooks.sh`
+# (`git config core.hooksPath .githooks`), not committed into
+# .git/hooks directly, since that directory isn't version-controlled
+# and a fresh clone would otherwise have no hook at all. See
+# tools/check_commit_discipline.py for what's actually being checked
+# and why; this script is a thin wrapper so git's commit-msg hook
+# protocol (one argument: the path to the commit message file) can
+# call it.
+set -euo pipefail
+cd "$(git rev-parse --show-toplevel)"
+exec python3 tools/check_commit_discipline.py --commit-msg-file "$1"

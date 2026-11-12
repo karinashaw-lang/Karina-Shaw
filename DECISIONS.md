@@ -3685,3 +3685,66 @@ All checks pass: `validate_corpus.py`, the full `regression.js`,
 (741/741), `wizard_unit.js` (22/22), `axe_check.js` (0 serious/critical).
 
 Moving to Step 4 (mechanical branch/commit controls) next.
+
+## 2026-11-12 — CA Wedge Plan Step 4: branch/commit discipline is now mechanical, not just written down
+
+This is the structural fix for the specific, repeated failure this
+session has hit three separate times: a delegated subagent, explicitly
+told not to commit or push, committing and pushing anyway with an
+ordinary commit message. Writing the instruction more firmly each time
+hasn't worked; this step makes the instruction self-enforcing instead.
+
+Built `tools/check_commit_discipline.py`, two checks against
+`.claude-protected-branch` (currently `claude/new-session-palh5c`):
+
+1. Any commit landing directly on that branch must carry a
+   `Reviewed-By:` trailer. A subagent's own prompt never tells it to
+   add this, so an unreviewed `git commit` fails here -- exactly the
+   real failure mode, not a hypothetical one.
+2. Any commit changing the legal text of an already-existing clause
+   (`body`/`gap`, or a citation's `case`/`cite`/`url`/`quote` --
+   `status`/`checkedDate`/`sourceClass`/`state` don't count, since
+   routine re-verification legitimately touches those without
+   rewriting text) must also carry a `Patch-ID:` trailer (Global Rule
+   7).
+
+Wired into real hooks (`.githooks/commit-msg`, `.githooks/pre-push`,
+installed via `tools/install_hooks.sh` -- run now in this session's
+own repo, live immediately) and a new `branch-discipline` CI job (the
+backstop for a clone that never ran the install script, or a hook
+bypassed with `--no-verify`).
+
+**Proved it live, not just by running the script in isolation:**
+staged a real throwaway file change, ran `git commit` with no trailer
+through the actual installed hook -- rejected. Added the trailer --
+succeeded. Discarded that test commit immediately after (`git reset
+--hard`, confirmed clean). Did the same for the Patch-ID path: edited
+a real clause's body, confirmed `git commit` was rejected without a
+Patch-ID trailer and succeeded with one, then discarded that test
+commit too and confirmed `data/clauses.json` came back byte-identical
+to before the test.
+
+**Found and fixed a real bug while proving it, not a hypothetical
+edge case:** the first draft paired citations by URL to detect a text
+change, which breaks the moment a clause cites the same source twice
+for two different quotes (common in this corpus -- `at_will` is a real
+example). A citation with that URL could get paired against the wrong
+sibling, flagging an untouched quote as "changed." Fixed by comparing
+the full set of (case, cite, url, quote) tuples instead of pairing at
+all: every old citation's exact text must still appear somewhere in
+the new list; a new citation being added is fine, one going missing or
+changing is what actually matters. Added
+`tests/tools/test_check_commit_discipline.py` (11 tests, run as real
+git repos + real subprocess calls to the real script, same convention
+as `test_merge_guard.py`) including a regression test for this exact
+bug and its fix.
+
+Documented the setup in `tools/README.md` alongside this project's
+other tooling. No corpus changes this step -- `.github/workflows/
+ci.yml`, `tools/README.md`, and the new hook/check/test files only.
+`validate_corpus.py`, the full `regression.js`, `merge_guard.py HEAD`
+(clean), and `golden.js` (741/741, unaffected) all pass.
+
+This commit itself carries the first real `Reviewed-By:` trailer under
+the new rule -- eating the same discipline being imposed on everything
+else, not just on delegated subagents.
