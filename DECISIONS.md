@@ -3748,3 +3748,58 @@ ci.yml`, `tools/README.md`, and the new hook/check/test files only.
 This commit itself carries the first real `Reviewed-By:` trailer under
 the new rule -- eating the same discipline being imposed on everything
 else, not just on delegated subagents.
+
+## 2026-11-12 -- CA Wedge Plan Step 5: launch set proposal (PROPOSED, awaiting owner approval)
+
+Produced `LAUNCH_SET_PROPOSAL.md`: 128 documents out of the 741-document
+corpus, proposed as the paid/published launch set, with the single-member
+LLC formation wedge cluster (7 documents) marked.
+
+Selection method, in brief: the corpus splits cleanly into 122 "fillable"
+documents (real forms/agreements with at least one fillable field -- leases,
+wills, operating agreements, offer letters, notices, deeds) and 619
+`*_info_sheet` records (narrow single-topic explainers backing the citation
+index and contract reader, almost none with fillable fields). Took all 122
+fillable documents unconditionally as the product, then added exactly 6
+named info sheets that the plan's own text calls for or that are load-bearing
+for the wedge cluster (`ein_info_sheet`, `llc_annual_fee_info_sheet`,
+`agent_for_service_of_process_info_sheet`,
+`llc_default_operating_rules_info_sheet`, `small_claims_info_sheet`,
+`name_change_petition_info_sheet`). 122 + 6 = 128, inside the plan's
+100-150 target without trimming or padding to hit a rounder number.
+
+This is a data-driven cut, not a hand-ranked "most common" guess -- the 122
+fillable documents already span all 8 substantive categories at 12-20 each,
+so no category is starved or over-represented by construction. Also checked
+every example document the plan names by name (operating agreement, offer
+letter, independent contractor agreement, handbook, NDA, residential lease,
+demand letter, will, advance health care directive, small claims, name
+change) and confirmed each is present in the set -- except a generic civil
+demand letter, which doesn't exist in the corpus at all
+(`waiting_time_penalty_demand` only covers the employment final-wages
+scenario). Per Global Rule 15, logged as a known Wave 2 gap rather than
+inventing a substitute document to paper over it.
+
+Confirmed via `tiers.json` that 0 documents in the whole corpus currently
+reach Tier A (0 Tier A / 324 Tier B / 417 Tier C corpus-wide, unchanged
+within the 128-document launch set) -- Tier A requires every authority
+clause to be `adversarially_checked`, and the adversarial-verifier pass
+hasn't run against most of the corpus yet. Expected, not a defect: this is
+exactly why Step 6 (verify the launch set) comes next and is scoped to these
+128 documents specifically, not all 741 -- narrowing the verifier's work to
+what's actually going to be sold is the point of doing Step 5 first.
+
+9 of the 128 are drafting-only (plain administrative templates like a
+timesheet or interview scorecard, with no legal-authority citation at all --
+nothing for Step 6 to verify, nothing to mislabel). Included them anyway
+since the drafting-only label is itself an honest, already-visible UI fact
+from Step 2's tiering work, not a gap being hidden.
+
+The excluded 591 info sheets stay in the corpus for the free contract reader
+(Step 13) and citation/search index -- nothing here deletes or hides them,
+only excludes them from the paid document list, SEO publishing (Step 22),
+and the `/trust` page's document count.
+
+**Per the plan's own instruction for this step: stopping here. No further
+step (Step 6 verification, Step 8 entitlements, Step 22 publishing) proceeds
+until the owner approves this list or sends back amendments.**
