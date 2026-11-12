@@ -3592,3 +3592,46 @@ to describe the three levels and the new tier definitions in the
 plain-language methodology page itself (Step 2.4's other named
 target) -- the in-app badge/tier text is done, the standalone
 methodology page is not.
+
+## 2026-11-12 — CA Wedge Plan Step 2.4 (finished): methodology.html updated, and a real self-contradiction fixed along the way
+
+Added a "Three levels, not one" explanation right after the lede,
+replacing the old single-claim framing ("every 'Verified' badge...
+means a clause was run through the same nine checks") with the honest
+relationship: the nine items below are what "Verified" means (a
+primary-sourced clause that cleared all nine); "Cited" is the floor
+every authority clause already clears; "Adversarially checked" is a
+separate, independent re-audit most "Verified" clauses haven't been
+through yet (823 of 4,989, per Step 2.1's real count).
+
+**Found and fixed a real, pre-existing self-contradiction while
+updating this page, not something this step introduced:** item 2's
+own title and body ("The actual statute or case — not a summary, not
+a mirror" / "this project fetches the rule's own text directly") used
+`timekeeping`'s recordkeeping-duty clause as its "in practice" example
+— sourced to Cornell's Legal Information Institute, which Step 2.2's
+own `sourceClass` backfill classifies as `mirror`, not primary. The
+methodology page's own flagship example of "not a mirror" was, under
+the standard this project now actually enforces, exactly a mirror —
+and that clause now correctly sits at the Cited level, not Verified,
+confirmed in `verification_levels.json`. Swapped the example to
+`wagestmt_nine_items` (Cal. Lab. Code § 226(a), fetched directly from
+`leginfo.legislature.ca.gov`) — verified this is genuinely at the
+`verified` level before using it, not assumed.
+
+Updated the standing caveat to name Cornell LII specifically and say
+plainly that a clause relying on it stays at Cited rather than
+Verified; updated item 9 and the footer to speak of "every level," not
+just "Verified," and to describe the adversarial pass as the separate
+thing it actually is rather than implying the nine items already cover
+it.
+
+No corpus or app-code changes -- `methodology.html` only.
+`validate_corpus.py`, the full `regression.js`, `merge_guard.py HEAD`
+(clean, additions only), and `golden.js` (741/741, unaffected since
+this page isn't part of any document's rendered output) all pass.
+
+**Step 2 is now complete**: honest three-level labels, the tier
+redefinition (Tier A 9->0, Tier B 373->324), the sourcing-UI update,
+and the methodology page all landed and gate-clean. Moving to Step 3
+(the `state` field) next.

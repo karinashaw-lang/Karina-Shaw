@@ -68,7 +68,13 @@
     </div>
 
     <h1>How a clause actually gets checked</h1>
-    <p class="lede">Every "Verified" badge in this project means a clause was run through the same nine checks below — not a general promise of accuracy, a specific, repeatable process. This page states the process; the <a href="changelog.html">changelog</a> shows what it actually caught. <a href="index.html">&larr; Back to Groundtruth</a></p>
+    <p class="lede">Every clause's sourcing badge shows one of three levels, not a single pass/fail. The nine checks below are what "Verified" means — a specific, repeatable process, not a general promise of accuracy. This page states that process; the <a href="changelog.html">changelog</a> shows what it actually caught. <a href="index.html">&larr; Back to Groundtruth</a></p>
+
+    <div class="item" style="padding-top:0;">
+      <span class="item-num">Three levels, not one</span>
+      <h3>Cited, Verified, Adversarially checked</h3>
+      <p><b>Cited</b> means a clause has a real citation, a real quote, and a checked-date — true of every authority clause in this corpus, the floor, not an achievement on its own. A clause stays at Cited, regardless of how carefully it was written, if its only source is a mirror or secondary copy rather than the government's own publication of the text — a case that quotes a statute, or a well-regarded third-party site that reproduces it, is still not the same thing as the statute's own official source. <b>Verified</b> means the clause cleared the nine items below against that primary source directly. <b>Adversarially checked</b> means a separate, independent reviewer — with no access to the original author's reasoning — re-examined the clause from scratch afterward and found no open issue, of any severity. Most "Verified" clauses in this corpus have not yet been through that second, independent pass; the sourcing badge always says which of the three a given clause has actually earned, never the strongest-sounding one.</p>
+    </div>
 
     <div id="items">
 
@@ -85,10 +91,10 @@
       <div class="item">
         <span class="item-num">2 — Primary source, reliable method</span>
         <h3>The actual statute or case — not a summary, not a mirror</h3>
-        <p>A case that quotes a statute is not the same as the statute. A blog post describing a regulation is not the regulation. Wherever a codified rule exists, this project fetches the rule's own text directly, rather than settling for something that merely describes it.</p>
+        <p>A case that quotes a statute is not the same as the statute. A blog post describing a regulation is not the regulation. Wherever a codified rule exists, this project fetches the rule's own text directly, rather than settling for something that merely describes it — and records which kind of source each citation actually is (the government's own publication, a court's own opinion, an agency's own guidance, or a third-party mirror of one of those), so a clause sourced only to a mirror is labeled accordingly rather than presented the same way as one sourced to the primary text.</p>
         <div class="item-example">
           <b>In practice</b>
-          The Timekeeping clause's recordkeeping duty is sourced to <a href="https://www.law.cornell.edu/uscode/text/29/211" target="_blank" rel="noopener noreferrer">29 U.S.C. § 211(c)</a>, fetched directly from the U.S. Code — not inferred from a case that happens to mention it.
+          The Wage Statement document's nine-required-items clause is sourced to <a href="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&amp;sectionNum=226." target="_blank" rel="noopener noreferrer">California Labor Code § 226(a)</a>, fetched directly from the Legislature's own site — not from a secondhand copy of it, and not inferred from a case that happens to mention it.
         </div>
       </div>
 
@@ -154,21 +160,21 @@
 
       <div class="item">
         <span class="item-num">9 — Staleness tracked</span>
-        <h3>A checked-date is recorded, and "verified" is a claim about a point in time</h3>
-        <p>Law changes. A citation confirmed accurate today isn't guaranteed accurate indefinitely. Every verified clause carries the date it was actually checked, visible on its badge — not to imply the check expires on a schedule, but so nobody mistakes a snapshot for a permanent guarantee.</p>
+        <h3>A checked-date is recorded, and every level is a claim about a point in time</h3>
+        <p>Law changes. A citation confirmed accurate today isn't guaranteed accurate indefinitely. Every authority clause carries the date it was actually checked, visible on its badge at whichever of the three levels it earned — not to imply the check expires on a schedule, but so nobody mistakes a snapshot for a permanent guarantee.</p>
         <div class="item-example">
           <b>In practice</b>
-          Click any "Verified" badge in a generated document — the checked-date is right there next to the citation, not buried in a file nobody reads.
+          Click any sourcing badge in a generated document — the checked-date is right there next to the citation and the level, not buried in a file nobody reads.
         </div>
       </div>
 
     </div>
 
     <div class="caveat">
-      <b>One standing caveat, stated here rather than left implicit:</b> primary-source fetches in this project generally use direct requests against sites like Cornell's Legal Information Institute, CourtListener, and individual state legislature sites. That's worked reliably every time it's been used, but it's still not a stable, schema-backed integration — a source's own page structure could change in a way that breaks a future fetch. Treat each citation as verified for the day it was checked, which is exactly what item 9 exists to make visible.
+      <b>Two standing caveats, stated here rather than left implicit:</b> first, fetches against a primary source generally use direct requests against sites like individual state legislature sites, the U.S. Code, and CourtListener for case law. That's worked reliably every time it's been used, but it's still not a stable, schema-backed integration — a source's own page structure could change in a way that breaks a future fetch. Second, Cornell's Legal Information Institute is a well-established, generally reliable mirror of federal statutory text, used in this corpus where a direct U.S. Code fetch wasn't available — but it is still recorded and treated as a mirror, not a primary source, so a clause relying on it stays at the Cited level rather than Verified until it's rechecked directly. Treat each citation as current for the day it was checked, which is exactly what item 9 exists to make visible.
     </div>
 
-    <footer class="hint">Nine items, applied to every authority clause in every document — not a summary of good intentions, the actual checklist used session over session. <a href="changelog.html">The changelog</a> is what it caught.</footer>
+    <footer class="hint">Nine items define what "Verified" means, applied to every authority clause in every document — not a summary of good intentions, the actual checklist used session over session. A separate, independent adversarial pass is what "Adversarially checked" means on top of that. <a href="changelog.html">The changelog</a> is what both have caught.</footer>
   </div>
 </body>
 </html>
