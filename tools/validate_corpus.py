@@ -7,15 +7,24 @@ real defect at least once during corpus expansion.
 import json, re, sys, os, collections, itertools, random
 from datetime import date
 
-AUTH = ['id', 'title', 'kind', 'status', 'checkedDate', 'body', 'gap', 'citations']
-DRAFT = ['id', 'title', 'kind', 'body']
-CIT = ['case', 'cite', 'url', 'quote', 'sourceClass']
+AUTH = ['id', 'title', 'kind', 'status', 'checkedDate', 'body', 'gap', 'citations', 'state']
+DRAFT = ['id', 'title', 'kind', 'body', 'state']
+CIT = ['case', 'cite', 'url', 'quote', 'sourceClass', 'state']
 # CA Wedge Plan Step 2.2: a mirror is not primary, so every citation must
 # say plainly which of these five it is. See tools/backfill_source_class.py
 # for the one-time migration that assigned sourceClass by URL domain, and
 # verifier/NON_PRIMARY_SOURCES.md for the clauses this flags as non-primary.
 SOURCE_CLASSES = {'primary-official', 'court-opinion', 'agency', 'mirror', 'secondary'}
-DOC = ['id', 'title', 'description', 'categories', 'clauseOrder', 'fields']
+DOC = ['id', 'title', 'description', 'categories', 'clauseOrder', 'fields', 'state']
+
+# CA Wedge Plan Step 3: every document, clause, and citation carries a
+# `state` field so a future state expansion is a data load against an
+# already-existing field, not a corpus-wide schema migration a second
+# time. Every record in this corpus is California content today -- see
+# tools/backfill_state_field.py for the one-time migration that added
+# it. Not yet a set of multiple values, because there isn't yet a
+# second state's content for it to distinguish.
+VALID_STATES = {'CA'}
 
 # The app has no other declaration of this list — renderCategoryFilter() in
 # app.js just derives categories live from documents.json. A category name
@@ -257,6 +266,18 @@ def main():
           f'citations with a missing or invalid sourceClass: {bad_source_class[:5]}')
     check(all(list(d.keys()) == DOC for d in docs),
           f'documents with non-canonical key order: {[d["id"] for d in docs if list(d.keys()) != DOC][:5]}')
+
+    # CA Wedge Plan Step 3: every document/clause/citation must carry a
+    # valid `state` -- just "CA" today, but the field and the check both
+    # exist now so a second state's content is a data load this gate
+    # already enforces, not a schema change made under launch pressure.
+    bad_doc_state = [d['id'] for d in docs if d.get('state') not in VALID_STATES]
+    check(not bad_doc_state, f'documents with a missing or invalid state: {bad_doc_state[:5]}')
+    bad_clause_state = [c['id'] for c in clauses if c.get('state') not in VALID_STATES]
+    check(not bad_clause_state, f'clauses with a missing or invalid state: {bad_clause_state[:5]}')
+    bad_citation_state = [c['id'] for c in auth for ct in c['citations']
+                          if ct.get('state') not in VALID_STATES]
+    check(not bad_citation_state, f'citations with a missing or invalid state: {bad_citation_state[:5]}')
 
     # Annual California-statute recheck rule (Phase 4.3). California
     # statutes amended during a legislative session generally take effect

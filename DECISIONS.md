@@ -3635,3 +3635,53 @@ this page isn't part of any document's rendered output) all pass.
 redefinition (Tier A 9->0, Tier B 373->324), the sourcing-UI update,
 and the methodology page all landed and gate-clean. Moving to Step 3
 (the `state` field) next.
+
+## 2026-11-12 — CA Wedge Plan Step 3: a `state` field on every document, clause, and citation
+
+Added `"state": "CA"` to all 741 documents, 6,621 clauses, and 11,688
+citations via `tools/backfill_state_field.py` (dry-run by default,
+same convention as the other `tools/backfill_*.py` scripts). Purpose
+stated in the plan itself: a future state expansion becomes a data
+load against an already-existing, already-validated field, not a
+corpus-wide schema migration run under launch pressure a second time.
+Every record is `"CA"` today, honestly, since no non-California
+content exists.
+
+Key order needed care, not a blind append: a handful of authority
+clauses already carry a trailing `effectiveCycleChecked` key (Phase
+4.3) after `citations`. Appending `state` naively would have put it
+after `effectiveCycleChecked`, the wrong order for
+`tools/validate_corpus.py`'s `AUTH_WITH_CYCLE` check. The backfill
+script rebuilds each clause dict explicitly, inserting `state`
+immediately after `citations` and before `effectiveCycleChecked`
+where that key exists -- verified directly against one clause of each
+shape (drafting, authority without cycle, authority with cycle,
+citation, document) before trusting the bulk run.
+
+Extended `tools/validate_corpus.py`: `state` added to the `AUTH`/
+`DRAFT`/`CIT`/`DOC` key-order lists, plus three explicit value checks
+(`VALID_STATES = {'CA'}` today) so a missing or invalid `state` fails
+loudly regardless of key order. Verified the acceptance criterion
+directly, not just assumed: deleted `state` from one clause, confirmed
+`validate_corpus.py` actually fails (caught by both the key-order
+check and the new explicit state check independently), then restored
+the clause and re-confirmed a clean pass.
+
+Adding `state` to every citation object changed the exported JSON of
+every document a second time this phase (citations pass through
+`buildDocumentContent()`'s whitelist unchanged, carrying the new key
+with them) -- regenerated all 741 golden fixtures again, same
+pattern, same justification as Step 2.2's regeneration.
+`merge_guard.py HEAD` reports exactly 741 documents and exactly 6,621
+clauses modified -- the entire corpus, matching the totals exactly,
+confirming nothing was missed and nothing extra was touched.
+
+`filing/next_steps.json` (the other place Step 3 names) doesn't exist
+yet -- it's Step 12's job to build, and will carry `state` from its
+own creation, not backfilled here.
+
+All checks pass: `validate_corpus.py`, the full `regression.js`,
+`merge_guard.py HEAD`, `golden.js` (741/741), `wizard_regression.js`
+(741/741), `wizard_unit.js` (22/22), `axe_check.js` (0 serious/critical).
+
+Moving to Step 4 (mechanical branch/commit controls) next.
