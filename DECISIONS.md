@@ -3803,3 +3803,53 @@ and the `/trust` page's document count.
 **Per the plan's own instruction for this step: stopping here. No further
 step (Step 6 verification, Step 8 entitlements, Step 22 publishing) proceeds
 until the owner approves this list or sends back amendments.**
+
+## 2026-11-13 -- CA Wedge Plan Step 6: wave 1 triage complete, first Tier A documents
+
+Triaged all 56 findings from wave 1's 180-clause verification run (see the
+per-batch DECISIONS.md entries above for what each of the 9 workers
+actually fetched and found). All 56 recorded as `accepted` via
+`verifier/triage.py` -- none rejected (every finding was evidence-backed,
+not a guess), none `fixed` (no corpus edit has been made; Global Rule 7
+requires a reviewed Patch-ID fix first). "Accepted" is correct here per the
+tool's own semantics ("the finding stands, whether or not a clause edit
+follows") and matches the Phase 4.1 precedent for sourcing-access-limitation
+findings already recorded in `verifier/README.md`.
+
+Wrote `LAUNCH_SET_VERIFICATION_WAVE1.md`: the 10 major and 8 non-
+"unverifiable" minor findings, each with its evidence and a suggested fix,
+for owner review before any Patch-ID edit is made. Highlights: a real
+internal contradiction in the shared `llc_tax_election_mechanics` clause
+(wrong for the multi-member case), a missed 2025 statutory amendment in
+`homeimprove_contract_required_and_writing` (SB 517 subcontractor
+disclosure) and in `sdi_deposit_cap` (Civ. Code Sec. 1950.5(c)(4) service-
+member exception), a real California-law gap in `arb_agreement` (PAGA
+representative-action standing survives arbitration per Adolph v. Uber),
+a citation-support gap in `waitingtime_willful_standard` (Amaral v. Cintas
+already resolves what the gap calls open), a wrong case-to-quote
+attribution in `at_will` (Lincoln v. Wackenhut's quote is actually
+McDonald's facts), a mis-cited case in `notice_pay_rent_required_contents`
+(Kwok v. Bergren doesn't support the overstated-rent-amount rule;
+Bevill v. Zoura does), and a recurring CourtListener URL bug across three
+clauses (`nonsolicit_employee_split`, `nonsolicit_customer_distinction`,
+`work_auth`) where the citation URL uses an opinion_id in the cluster_id
+route slot and resolves to an unrelated case -- the quoted text itself is
+accurate in all three, only the public link is broken.
+
+Ran `tools/build_verification_levels.py` and `tools/tiering.py` to pick up
+the 180 newly-checked clauses. Corpus-wide Tier A went from 0 to **6**
+documents -- all six inside the approved 128-document launch set, two
+inside the 7-document wedge cluster itself (`llc_annual_fee_info_sheet`,
+`llc_default_operating_rules_info_sheet`). The other four:
+`buy_sell_agreement`, `commission_agreement`, `quitclaim_deed`,
+`wage_statement_itemization_policy`.
+
+Regenerated golden fixtures for the 33 documents whose rendered badge text
+changed as a direct, honest consequence (`Verified` to `Adversarially
+checked` on specific clauses) -- read every diff before accepting; all were
+upgrades reflecting the new real verification data, nothing else changed.
+`validate_corpus.py`, `merge_guard.py HEAD`, `regression.js`, `golden.js`
+(741/741), and the full tiering/verifier test suites all pass.
+
+521 - 180 = 341 launch-set authority clauses remain for future waves, same
+hand-ordered priority and process.
