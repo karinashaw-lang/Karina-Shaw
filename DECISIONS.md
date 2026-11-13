@@ -3938,3 +3938,39 @@ separate, owner-approved step. Next per the plan's own sequencing: Step 7
 (pricing -- the 30-day money-back guarantee copy, still outstanding) and
 Step 8 (entitlements and server-side release, scoped to the approved
 128-document launch set).
+
+## 2026-11-13 -- CA Wedge Plan Step 7: 30-day money-back guarantee proposed (PROPOSED, awaiting owner approval)
+
+Wrote `PRICING_STEP7_GUARANTEE_PROPOSAL.md`. The pricing model itself
+(subscription, unlimited documents) was already decided 2026-11-10; this
+step's remaining deliverable is the 30-day money-back guarantee the plan
+calls for.
+
+Proposed: an unconditional, self-service, 30-day-from-first-charge refund,
+one per customer per 12-month period (disclosed up front, to deter
+buy-export-refund-repeat abuse of the unlimited-documents model without
+hiding the limit). Per Global Rule 15, the unconditional/self-service
+shape is the most conservative choice between a narrower "defect-only"
+refund and an open-ended one -- the 30-day window itself isn't ambiguous,
+the plan specifies it.
+
+Also documented, since `config/pricing.json`'s own note already flags it
+as mandatory: the 5 California Automatic Renewal Law (Bus. & Prof. Code
+Sec. 17600 et seq.) requirements a subscription-with-auto-renewal must
+meet regardless of the refund window (clear pre-purchase disclosure,
+affirmative consent, an acknowledgment email restating the terms, easy
+self-service cancellation, and a renewal notice after any free trial) --
+with proposed public-facing copy and proposed acknowledgment-email copy
+(template fields for price/billing period/next billing date, since no
+price is being guessed here).
+
+Did NOT touch `config/pricing.json` -- `monthlyPriceUsd`/`annualPriceUsd`
+stay null (a separate owner decision this proposal doesn't make), and
+`refundPolicy` stays null pending approval of this proposal, same
+discipline as Step 5's launch-set proposal (propose first, wait, only
+then write the approved value into the file actually used downstream).
+
+**Per the plan's own instruction for this step: stopping here, waiting
+for the owner to approve or amend this guarantee copy before it's wired
+into `config/pricing.json`, Step 9's Stripe checkout copy, or Step 20's
+terms-of-service draft.**
