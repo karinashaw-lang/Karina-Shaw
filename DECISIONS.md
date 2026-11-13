@@ -4176,3 +4176,37 @@ to `SUPABASE_ACCESS_TOKEN`/`SUPABASE_STAGING_PROJECT_REF` in
 
 `validate_corpus.py`, `merge_guard.py HEAD`, `copy_lint.py`,
 `regression.js`, and `error_reporting.js` all pass.
+
+## 2026-11-13 -- CA Wedge Plan Step 10: show-your-work document view
+
+Most of this step was already built in earlier phases, not new to this
+plan: every clause in the free, in-browser, no-account document preview
+(`renderOutput()`) already shows an expandable badge at one of the three
+honest levels (Cited/Verified/Adversarially checked) with its quote and
+a clickable link to the real primary source, plus a visible gap note
+where one exists -- exactly the per-clause "show its proof" mechanism
+the mission statement names as the product's actual differentiator.
+Confirmed this is genuinely unconditional and free (no paywall gate
+anywhere in the wizard-to-output path, consistent with Global Rule 3).
+
+**What was actually missing, and the one real gap this step closed:**
+the SAME tier pill and level breakdown a picker card already showed
+before a document was ever opened never appeared again once you were
+actually reading the document -- someone who opened a direct link, or
+scrolled past the card days ago, had no at-a-glance trust signal without
+expanding every clause's badge individually. Added
+`renderOutputTierSummary()` to app.js: the document's existing tier pill
+(reusing `tierBadgeHTML()`, no new logic duplicating what tiering.py
+already computed) plus a plain-language count -- "8 legal-authority
+clauses in this document: 5 adversarially checked, 3 verified" -- right
+at the top of the output screen, above the clause-by-clause detail.
+Drafting-only documents get just the pill (no authority-clause count to
+report, consistent with the existing drafting-only label's own
+reasoning). Verified in a real browser (not just the existing test
+suite) against three real documents spanning all three cases: a Tier C
+cited-only document, a Tier A fully-adversarially-checked document, and
+a drafting-only document.
+
+`validate_corpus.py`, `copy_lint.py`, `regression.js`, and `golden.js`
+(741/741, unaffected -- this only touches the live DOM, not any export
+builder) all pass.

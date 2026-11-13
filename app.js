@@ -2476,6 +2476,45 @@ function renderNextSteps() {
   });
 }
 
+// CA Wedge Plan Step 10: the same tier pill and per-clause badges
+// already shown on a picker card are the whole "show your work"
+// differentiator this product is built around — but until now they
+// only appeared on the card you clicked before opening a document,
+// not on the document itself once you're actually reading it. This
+// puts the same tier pill, plus a plain-language count of how many of
+// THIS document's own legal-authority clauses sit at each of the
+// three levels, right at the top of the free, in-browser preview
+// (Global Rule 3: every sourcing badge stays free, no account) —
+// visible to a reader who opened a direct link or is mid-document,
+// not just someone who scrolled past its card first.
+function renderOutputTierSummary(assembled) {
+  const el = document.getElementById('output-tier-summary');
+  if (!el) return;
+  const doc = state.document;
+  const info = state.tiers && state.tiers[doc.id];
+  if (!info) { el.hidden = true; return; }
+
+  const authorityClauses = assembled.filter(c => c.kind === 'authority');
+  if (authorityClauses.length === 0) {
+    el.innerHTML = tierBadgeHTML(doc);
+    el.hidden = false;
+    return;
+  }
+
+  const counts = { adversarially_checked: 0, verified: 0, cited: 0 };
+  authorityClauses.forEach(c => { counts[clauseLevel(c)] += 1; });
+  const total = authorityClauses.length;
+  const parts = [];
+  if (counts.adversarially_checked) parts.push(`${counts.adversarially_checked} adversarially checked`);
+  if (counts.verified) parts.push(`${counts.verified} verified`);
+  if (counts.cited) parts.push(`${counts.cited} cited only`);
+
+  el.innerHTML = `${tierBadgeHTML(doc)}<p class="output-tier-summary-line">` +
+    `${total} legal-authority ${total === 1 ? 'clause' : 'clauses'} in this document: ${parts.join(', ')}. ` +
+    `Expand any clause below to see its citation and quote.</p>`;
+  el.hidden = false;
+}
+
 function renderOutput() {
   const assembled = assembleDocument();
   state.edits = {};
@@ -2483,6 +2522,7 @@ function renderOutput() {
 
   document.getElementById('output-meta').textContent = preparedForLine(state.answers);
   document.getElementById('include-sources-appendix').checked = state.includeSourcesAppendix;
+  renderOutputTierSummary(assembled);
 
   const jKey = state.jurisdictionByDoc.get(state.document.id);
   const jEl = document.getElementById('output-jurisdiction');

@@ -616,6 +616,17 @@ button:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
   margin:-6px 0 28px;
 }
 
+/* CA Wedge Plan Step 10: the same tier pill a picker card already
+   shows, now also at the top of the document someone is actually
+   reading -- tier-pill's own styles (below) handle the pill itself;
+   this is just the plain-language count line underneath it. */
+.output-tier-summary{ margin:-16px 0 20px; }
+.output-tier-summary-line{
+  font-size:13.5px;
+  color:var(--ink-soft);
+  margin:8px 0 0;
+}
+
 .clause{
   padding:22px 0;
   border-bottom:1px solid var(--line);
