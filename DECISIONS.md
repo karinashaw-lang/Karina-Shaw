@@ -3887,3 +3887,54 @@ amendments the mirror predates) -- a real false-positive risk this wave's
 workers caught, worth keeping as explicit guidance.
 
 161 launch-set authority clauses remain for a third wave.
+
+## 2026-11-13 -- CA Wedge Plan Step 6 complete: wave 3 triaged, Tier A 14, full launch set verified
+
+Triaged all 22 wave-3 findings (1 major, 21 minor, 0 blockers) as
+`accepted`. Wrote `LAUNCH_SET_VERIFICATION_WAVE3.md`. This closes out Step
+6: every one of the launch set's 670 authority clauses has now been
+through a real, sourced adversarial-verifier pass at least once (521
+clauses checked for the first time across 3 waves, 93 total findings --
+13 major, 80 minor, 0 blockers -- all `accepted`, none rejected as false
+positives, none yet fixed per Global Rule 7).
+
+Ran `tools/build_verification_levels.py` and `tools/tiering.py`. Tier A
+goes from 11 to **14** documents, all inside the approved launch set (3
+new: `financial_power_of_attorney`, `guardianship_petition`,
+`postnuptial_agreement`). Cumulative Step 6 result: Tier A 0 -> 14, all
+within the 128-document launch set, 2 within the 7-document wedge
+cluster. Regenerated 18 golden fixtures (same honest upgrade pattern,
+every diff read). `validate_corpus.py`, `merge_guard.py HEAD`,
+`regression.js`, `golden.js` (741/741), and the tiering test suite all
+pass.
+
+The one major finding: `purchase_tds_requirement`'s exemption list omits
+Civ. Code Sec. 1102.2(c) (the non-judicial/power-of-sale foreclosure
+exemption -- the dominant CA foreclosure mechanism), which could lead a
+reader to wrongly conclude a TDS is required for an exempt transfer.
+
+Two findings worth flagging despite "minor" severity: (1)
+`purchase_natural_hazard_disclosure`'s gap attributes a sentence to
+"Stats. 2024, Ch. 80" amending Civ. Code Sec. 1103.2 -- the quote is
+accurate but no such chapter touching that section could be found by the
+reviewing worker; this is a different failure mode than anything found in
+this project's verification history so far (an apparently fabricated or
+misattributed amendment citation, not a stale mirror or broken URL) and
+deserves direct owner attention. (2) `will_executor_appointment` and
+`will_executor_bond` both have gap text that crosses from informing into
+recommending a course of action -- a direct hit on Global Rule 1
+("inform, never advise"), the project's own architectural principle, so
+these two deserve a fix regardless of their minor label.
+
+Consistent with waves 1-2: several wave-3 workers again correctly
+declined to flag quote drift against the stale `onecle` mirror after
+confirming the clause reflected a real, later amendment (SB 343/2023,
+Stats. 2019 ch. 115, Stats. 2018 ch. 504, among others) -- this
+calibration has now held up across all three waves, not just once.
+
+**Step 6 (verify the launch set) is complete** as the plan defines it. No
+corpus edits have been made from any of these findings -- that is a
+separate, owner-approved step. Next per the plan's own sequencing: Step 7
+(pricing -- the 30-day money-back guarantee copy, still outstanding) and
+Step 8 (entitlements and server-side release, scoped to the approved
+128-document launch set).
