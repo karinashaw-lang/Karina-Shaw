@@ -832,6 +832,50 @@ function renderAuditLog(container) {
     });
 }
 
+// CA Wedge Plan Step 9: Upgrade / Manage subscription, backed by the
+// create-checkout-session and create-portal-session edge functions
+// (test mode only -- Global Rule 9; which Stripe key those functions
+// hold decides that, not anything here). Both just redirect to the
+// URL Stripe hands back; accountState.entitled only decides which
+// button to show, never grants access itself -- the real gate is the
+// RLS policies in supabase/migrations/20261113000000_entitlements.sql.
+function renderSubscriptionSection(container) {
+  const section = document.createElement('div');
+  section.style.margin = '16px 0 24px';
+
+  const statusEl = document.createElement('p');
+  statusEl.className = 'library-row-date';
+  statusEl.textContent = accountState.entitled
+    ? 'Subscription: active.'
+    : 'Subscription: none. Upgrade to sync documents, create share links, and collect e-signatures.';
+  section.appendChild(statusEl);
+
+  const btn = document.createElement('button');
+  btn.type = 'button';
+  btn.className = accountState.entitled ? 'secondary' : 'primary';
+  btn.textContent = accountState.entitled ? 'Manage subscription' : 'Upgrade';
+  section.appendChild(btn);
+
+  const errEl = document.createElement('p');
+  errEl.className = 'incoming-unmatched';
+  section.appendChild(errEl);
+
+  btn.addEventListener('click', async () => {
+    btn.disabled = true;
+    errEl.textContent = '';
+    const fnName = accountState.entitled ? 'create-portal-session' : 'create-checkout-session';
+    const { data, error } = await accountState.client.functions.invoke(fnName, { body: {} });
+    btn.disabled = false;
+    if (error || !data?.url) {
+      errEl.textContent = (data && data.error) || error?.message || 'Something went wrong. Please try again.';
+      return;
+    }
+    window.location.href = data.url;
+  });
+
+  container.appendChild(section);
+}
+
 // Phase 7.4: session management. "Sign out of other devices" needs no
 // edge function — it's the documented signOut({scope:'others'}) call,
 // made with the signed-in user's own session, no elevated privilege
@@ -1080,8 +1124,12 @@ function renderAccountScreen() {
   if (accountState.session) {
     const p = document.createElement('p');
     p.className = 'lede';
-    p.textContent = `Signed in as ${accountState.session.user.email}. Documents you generate sync to your account automatically, and will show up in "My Documents" on any device you sign in from.`;
+    p.textContent = accountState.entitled
+      ? `Signed in as ${accountState.session.user.email}. Documents you generate sync to your account automatically, and will show up in "My Documents" on any device you sign in from.`
+      : `Signed in as ${accountState.session.user.email}. Cloud sync, sharing, and e-signature need an active subscription — nothing you generate leaves this browser until you subscribe below. Browsing, search, and filling out documents stay free either way.`;
     el.appendChild(p);
+
+    renderSubscriptionSection(el);
 
     const signOutBtn = document.createElement('button');
     signOutBtn.type = 'button';

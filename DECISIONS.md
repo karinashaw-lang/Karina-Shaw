@@ -4089,3 +4089,90 @@ exercises account.js's init path with a fake Supabase client) all pass.
 `mcp__Supabase__get_advisors` (security and performance) show nothing
 new beyond the one intentional, documented warning above and pre-existing
 findings this migration didn't touch.
+
+## 2026-11-13 -- CA Wedge Plan Step 9: Stripe integration, test mode only
+
+Three edge functions, deployed to the `groundtruth` Supabase project
+(impurvwwjdgurbjbnydu), following this project's existing edge-function
+conventions (user-scoped client for the auth check, service-role/direct-
+Postgres only for privileged writes, `verify_jwt` matching whether the
+caller carries a Supabase session at all):
+
+- **`create-checkout-session`** (verify_jwt: true) -- authenticated,
+  starts a Stripe Checkout session in subscription mode. Reuses an
+  existing Stripe customer id from a prior entitlements row if one
+  exists, rather than creating a duplicate customer on a resubscribe.
+  Sets `subscription_data.metadata.user_id` so every subsequent
+  subscription event carries this app's own user id without a second
+  lookup. Enables Stripe Checkout's built-in `consent_collection` (terms
+  acceptance), the mechanical piece of the California Automatic Renewal
+  Law's affirmative-consent requirement that lives in Stripe's own UI.
+- **`stripe-webhook`** (verify_jwt: false -- authenticated by Stripe's
+  signature instead, the one webhook pattern a Supabase JWT can't
+  apply to) -- the ONLY place `public.entitlements` is ever written
+  (its own RLS has no insert/update policy for anyone else). Verifies
+  the signature with `constructEventAsync` and Stripe's own
+  SubtleCrypto provider (Deno has WebCrypto, not Node's `crypto`
+  module, which the synchronous `constructEvent` needs). Acts only on
+  `customer.subscription.*` events -- the subscription object itself
+  carries status/current_period_end/cancel_at_period_end/customer id
+  and (via the metadata set above) the user id, so there's no need to
+  separately correlate a checkout session. Upserts via a direct
+  Postgres connection, not the supabase-js client, because the
+  conflict target (`entitlements_stripe_subscription_id_idx`) is a
+  PARTIAL unique index and PostgREST's upsert helper has no way to
+  express that predicate -- raw SQL states it exactly.
+- **`create-portal-session`** (verify_jwt: true) -- authenticated,
+  opens Stripe's own Billing Portal for the caller's Stripe customer.
+  This is the actual "at least as easy to cancel as to sign up" path
+  Step 7's guarantee proposal named as an Automatic Renewal Law
+  requirement: self-service, no email or call to anyone at this
+  company.
+
+**No price is written into any of this code.** `create-checkout-session`
+reads a `STRIPE_PRICE_ID` secret and 500s with a plain "pricing is not
+configured yet" message if it's unset, rather than falling back to any
+number -- `config/pricing.json`'s `monthlyPriceUsd`/`annualPriceUsd` stay
+the owner's own decision, untouched by this step, same discipline as
+every other pricing file in this project.
+
+Added `renderSubscriptionSection()` to account.js's Account screen: an
+honest "Subscription: active" / "Subscription: none" status line and
+an Upgrade/Manage-subscription button that calls the matching edge
+function and redirects to the URL Stripe returns. Fixed the pre-existing
+Account-screen lede, which claimed "documents sync to your account
+automatically" for every signed-in user -- no longer true since Step 8;
+it now says plainly that cloud sync/sharing/e-signature need an active
+subscription, and that browsing/search/filling out documents stay free
+either way.
+
+**Nothing here was invoked from this sandbox** -- no live Stripe
+test-mode API key or webhook secret exists in this environment, and the
+sandbox's egress policy blocks the project's own Supabase domain
+regardless (the same limitation every edge function in this project
+already has -- see Phase 7.1/7.3's notes above). All three functions
+deployed successfully (Supabase's own bundler accepted the TypeScript
+with no errors), which confirms syntax and imports resolve, but not that
+a real checkout/webhook/portal round trip works end to end. The webhook
+logic was traced by hand against Stripe's documented event shapes, the
+same "verified directly, not via the HTTP path" caveat `list-sessions`'s
+own header already carries for a different endpoint.
+
+**What the owner still needs to do before any of this is live, even in
+test mode** (for the eventual OWNER_TODO.md checklist): create a Stripe
+account if one doesn't exist; create one test-mode Product and Price
+for the subscription (the dollar amount is the owner's own pricing
+decision, not set here); add three Supabase Edge Function secrets to
+the `groundtruth` project -- `STRIPE_SECRET_KEY` (the test-mode secret
+key, `sk_test_...`), `STRIPE_PRICE_ID` (the test-mode Price id just
+created), and `STRIPE_WEBHOOK_SECRET` (from a webhook endpoint created
+in the Stripe test-mode dashboard pointing at this project's
+`stripe-webhook` function URL, subscribed to at minimum
+`customer.subscription.created/updated/deleted`). None of these were
+set by this session -- a live secret key isn't something this sandbox
+can generate or should hold, the same reasoning that's already applied
+to `SUPABASE_ACCESS_TOKEN`/`SUPABASE_STAGING_PROJECT_REF` in
+`.github/workflows/ci.yml`.
+
+`validate_corpus.py`, `merge_guard.py HEAD`, `copy_lint.py`,
+`regression.js`, and `error_reporting.js` all pass.
