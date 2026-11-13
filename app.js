@@ -1028,7 +1028,7 @@ async function loadSharedFields() {
 }
 
 async function init() {
-  const [docs, clauseData, sharedFields, tiers, verificationLevels, layTerms, intakeFlow, nextSteps] = await Promise.all([
+  const [docs, clauseData, sharedFields, tiers, verificationLevels, layTerms, intakeFlow, nextSteps, seoConfig] = await Promise.all([
     fetch('data/documents.json').then(r => r.json()),
     fetch('data/clauses.json').then(r => r.json()),
     loadSharedFields(),
@@ -1043,6 +1043,12 @@ async function init() {
     fetch('search/lay_terms.json').then(r => r.json()).catch(() => ({})),
     fetch('search/intake_flow.json').then(r => r.json()).catch(() => ({})),
     fetch('filing/next_steps.json').then(r => r.json()).catch(() => ({})),
+    // config/seo.json's baseUrl is "" until the owner picks a real
+    // domain (see DECISIONS.md, CA Wedge Plan Step 5/7's own "no price/
+    // domain invented" discipline) -- verifyPageUrl() falls back to a
+    // same-site relative link when it's unset, same as
+    // tools/generate_seo_pages.py's own page_url() already does.
+    fetch('config/seo.json').then(r => r.json()).catch(() => ({ baseUrl: '' })),
   ]);
   state.documents = docs;
   state.clauses = clauseData.clauses;
@@ -1052,6 +1058,7 @@ async function init() {
   state.layTerms = layTerms;
   state.intakeFlow = intakeFlow;
   state.nextSteps = nextSteps;
+  state.seoBaseUrl = seoConfig.baseUrl || '';
   buildJurisdictionIndex();
   renderCategoryFilter();
   renderTierFilter();
@@ -2487,6 +2494,18 @@ function renderNextSteps() {
 // (Global Rule 3: every sourcing badge stays free, no account) —
 // visible to a reader who opened a direct link or is mid-document,
 // not just someone who scrolled past its card first.
+// CA Wedge Plan Step 11: the same record tools/generate_verify_pages.py
+// publishes at a stable public URL — relative, same convention as this
+// page's own methodology.html/privacy.html links, so it resolves
+// correctly wherever the build is actually deployed. This is the
+// "verification stamp" link: it's the one proof URL that still works
+// after a document has left the browser (an exported PDF, a printed
+// page), independent of this site's own JS ever running again.
+function verifyPageUrl(doc) {
+  const base = (state.seoBaseUrl || '').replace(/\/$/, '');
+  return base ? `${base}/verify/${doc.id}.html` : `verify/${doc.id}.html`;
+}
+
 function renderOutputTierSummary(assembled) {
   const el = document.getElementById('output-tier-summary');
   if (!el) return;
@@ -2494,9 +2513,12 @@ function renderOutputTierSummary(assembled) {
   const info = state.tiers && state.tiers[doc.id];
   if (!info) { el.hidden = true; return; }
 
+  const verifyLink = `<p class="output-tier-summary-line"><a href="${verifyPageUrl(doc)}" target="_blank" rel="noopener noreferrer">` +
+    'View this document’s full verification record</a></p>';
+
   const authorityClauses = assembled.filter(c => c.kind === 'authority');
   if (authorityClauses.length === 0) {
-    el.innerHTML = tierBadgeHTML(doc);
+    el.innerHTML = tierBadgeHTML(doc) + verifyLink;
     el.hidden = false;
     return;
   }
@@ -2511,7 +2533,7 @@ function renderOutputTierSummary(assembled) {
 
   el.innerHTML = `${tierBadgeHTML(doc)}<p class="output-tier-summary-line">` +
     `${total} legal-authority ${total === 1 ? 'clause' : 'clauses'} in this document: ${parts.join(', ')}. ` +
-    `Expand any clause below to see its citation and quote.</p>`;
+    `Expand any clause below to see its citation and quote.</p>` + verifyLink;
   el.hidden = false;
 }
 
@@ -3015,6 +3037,14 @@ function buildPlainText() {
 
   lines.push('—');
   lines.push('Groundtruth v1 demo · every citation shown links to a real source, labeled Cited, Verified, or Adversarially checked.');
+  // CA Wedge Plan Step 11's "verification stamp." A relative link is
+  // useless once this file has left the browser, and config/seo.json's
+  // baseUrl is still unset (no domain decided yet -- see DECISIONS.md)
+  // -- rather than print a broken or confusing URL into a downloaded
+  // file, the line is simply left out until there's a real one to show.
+  if (state.seoBaseUrl) {
+    lines.push(`Verify this document's sourcing at: ${verifyPageUrl(state.document)}`);
+  }
   return lines.join('\n');
 }
 
@@ -3152,6 +3182,11 @@ function buildPdfDocDefinition(content = buildDocumentContent(), certificate = n
   }
 
   body.push({ text: 'Groundtruth v1 demo · every citation shown links to a real source, labeled Cited, Verified, or Adversarially checked.', style: 'closingNote' });
+  // CA Wedge Plan Step 11's "verification stamp" -- see buildPlainText()
+  // for why this is conditional on a real domain being configured.
+  if (state.seoBaseUrl) {
+    body.push({ text: `Verify this document's sourcing at: ${verifyPageUrl(state.document)}`, style: 'closingNote' });
+  }
 
   // Phase 7.5: "a final sealed PDF with a certificate page (signer,
   // timestamps, document hash)." Only present for a signed share's
@@ -3292,6 +3327,11 @@ function buildDocxDocument(content = buildDocumentContent()) {
   }
 
   children.push(new Paragraph({ children: [new TextRun({ text: 'Groundtruth v1 demo · every citation shown links to a real source, labeled Cited, Verified, or Adversarially checked.', size: 16, color: GRAY })] }));
+  // CA Wedge Plan Step 11's "verification stamp" -- see buildPlainText()
+  // for why this is conditional on a real domain being configured.
+  if (state.seoBaseUrl) {
+    children.push(new Paragraph({ children: [new TextRun({ text: `Verify this document's sourcing at: ${verifyPageUrl(state.document)}`, size: 16, color: GRAY })] }));
+  }
 
   return new Document({
     sections: [{

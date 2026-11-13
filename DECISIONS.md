@@ -4210,3 +4210,46 @@ a drafting-only document.
 `validate_corpus.py`, `copy_lint.py`, `regression.js`, and `golden.js`
 (741/741, unaffected -- this only touches the live DOM, not any export
 builder) all pass.
+
+## 2026-11-13 -- CA Wedge Plan Step 11: verification stamp and public /verify/<id> page
+
+New `tools/generate_verify_pages.py`: one deterministic, static page per
+document at `build/verify/<id>.html` (served at `/verify/<id>.html` once
+deployed), mirroring `tools/generate_seo_pages.py`'s own conventions
+(`esc()`, `page_shell()`, `page_url()`/baseUrl fallback, no timestamps,
+pure function of corpus data). Content: the document's tier badge, a
+plain-language count of its legal-authority clauses by verification
+level (the same figure Step 10's on-screen summary shows), and every one
+of those clauses with its level, citation, quote, and a live link to
+the primary source -- so a reader can independently check the claim
+against the government's own text, not just this product's word for
+it. Shares `tools/clause_levels.py` with `tiering.py` and
+`build_verification_levels.py` rather than re-deriving a level a fourth
+way. Added `tests/tools/test_generate_verify_pages.py` (6 tests:
+determinism, full coverage, real content, both the drafting-only and
+adversarially-checked branches, real citation URLs) and a CI step
+generating the pages alongside the existing SEO-page generation.
+
+Wired the actual "verification stamp": `verifyPageUrl(doc)` in app.js
+builds a link to this page -- relative (`verify/<id>.html`, same
+convention as the existing `methodology.html`/`privacy.html` links) when
+`config/seo.json`'s `baseUrl` is unset, absolute once it's set. app.js
+now fetches `config/seo.json` at init (additive, like `lay_terms.json`)
+to know which. The on-screen output screen's tier summary (Step 10)
+always shows the link, since a relative link works fine in-browser.
+The three export builders (`buildPlainText`/`buildPdfDocDefinition`/
+`buildDocxDocument`) only add the stamp line when `baseUrl` is actually
+set -- a relative link is meaningless once a file has left the browser
+(a downloaded PDF, a printed page), and printing a guessed domain into
+an exported, possibly-signed document would be worse than saying
+nothing. Confirmed this behaves correctly in a real browser: the
+on-screen link resolves correctly against the live server right now;
+simulating a configured domain produces the correct absolute stamp line
+in the plain-text export; an unset domain correctly omits it.
+
+`validate_corpus.py`, `merge_guard.py HEAD`, `copy_lint.py`,
+`regression.js`, `golden.js` (741/741), `pdf_golden.js`, and
+`docx_golden.js` all pass unchanged -- the export fixtures are
+byte-identical because `state.seoBaseUrl` is genuinely empty right now,
+exactly the case that was already true before this step and remains so
+until the owner picks a domain.
