@@ -3853,3 +3853,37 @@ upgrades reflecting the new real verification data, nothing else changed.
 
 521 - 180 = 341 launch-set authority clauses remain for future waves, same
 hand-ordered priority and process.
+
+## 2026-11-13 -- CA Wedge Plan Step 6: wave 2 triage complete, Tier A now 11
+
+Triaged all 15 wave-2 findings (2 major, 13 minor, 0 blockers) as
+`accepted` -- same reasoning as wave 1, none rejected, none fixed. Wrote
+`LAUNCH_SET_VERIFICATION_WAVE2.md`.
+
+The two major findings: `lease_security_deposit` independently reproduces
+the exact Civ. Code Sec. 1950.5(c)(4) gap wave 1 found in its sibling
+`sdi_deposit_cap` and explicitly flagged for this clause too -- confirms
+the original finding rather than duplicating a mistake, since this wave's
+packets never included wave 1's findings. `dp_eligibility` has a
+time-sensitive superseded-law finding: AB 1267 (signed 2026-09-30) repeals
+the Fam. Code Sec. 297.1 minor-registrant exception effective
+2027-01-01 -- not yet wrong, but flagged for a dated recheck rather than
+the normal annual cycle, plus a separate already-live overclaiming issue
+on the same clause (its own body already omits the still-live exception).
+
+Ran `tools/build_verification_levels.py` and `tools/tiering.py`. Tier A
+goes from 6 to **11** documents, all inside the approved launch set (5 new:
+`civil_harassment_restraining_order`, `corporate_dissolution`,
+`grant_deed`, `parenting_plan`, `wage_theft_prevention_notice`); no new
+wedge-cluster promotions this wave. Regenerated 37 golden fixtures
+(same honest Verified->Adversarially-checked pattern, every diff read).
+`validate_corpus.py`, `merge_guard.py HEAD`, `regression.js`, `golden.js`
+(741/741), and the tiering test suite all pass.
+
+Noted for future waves: several wave-2 workers correctly declined to flag
+quote drift against a stale `law.onecle.com` snapshot after independently
+confirming the clause was more current than the mirror (2022-2024
+amendments the mirror predates) -- a real false-positive risk this wave's
+workers caught, worth keeping as explicit guidance.
+
+161 launch-set authority clauses remain for a third wave.
