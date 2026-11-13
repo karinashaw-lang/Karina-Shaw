@@ -12,7 +12,7 @@
 // is what actually enforces that a user can only ever read or write
 // their own rows; the anon key here carries no elevated access.
 
-const accountState = { client: null, session: null, configured: false };
+const accountState = { client: null, session: null, configured: false, entitled: false };
 
 function supabaseConfigured() {
   const cfg = window.GROUNDTRUTH_CONFIG;
@@ -42,18 +42,48 @@ function initAccount() {
   wrapAnalyticsHooks();
   wrapFeedbackHooks();
 
-  accountState.client.auth.getSession().then(({ data }) => {
+  accountState.client.auth.getSession().then(async ({ data }) => {
     accountState.session = data.session;
+    if (accountState.session) await refreshEntitlement();
     updateAccountNav();
     if (accountState.session) mergeOnSignIn();
   });
 
-  accountState.client.auth.onAuthStateChange((event, session) => {
+  accountState.client.auth.onAuthStateChange(async (event, session) => {
     accountState.session = session;
+    accountState.entitled = false;
+    if (accountState.session) await refreshEntitlement();
     updateAccountNav();
     if (event === 'SIGNED_IN') mergeOnSignIn();
     if (document.getElementById('screen-account').classList.contains('active')) renderAccountScreen();
   });
+}
+
+// CA Wedge Plan Step 8: a signed-in session is no longer enough to use
+// cloud save/sharing/e-signature -- an active entitlements row is
+// (supabase/migrations/20261113000000_entitlements.sql). This reads
+// the user's own row, which RLS already permits regardless of status,
+// so the UI can say so up front instead of letting someone discover it
+// only when a save silently fails. The real enforcement is the RLS
+// policy on each write, not this read -- this is purely so the person
+// isn't left guessing.
+async function refreshEntitlement() {
+  if (!accountState.session) { accountState.entitled = false; return; }
+  const { data, error } = await accountState.client
+    .from('entitlements')
+    .select('status, current_period_end')
+    .eq('user_id', accountState.session.user.id)
+    .eq('status', 'active');
+  if (error) { console.error('Groundtruth: could not check subscription status', error); accountState.entitled = false; return; }
+  const now = Date.now();
+  accountState.entitled = (data || []).some(row => !row.current_period_end || new Date(row.current_period_end).getTime() > now);
+}
+
+const ENTITLEMENT_REQUIRED_MESSAGE =
+  'This needs an active subscription. Your document stays saved in this browser either way — see Upgrade in Account to sync it to the cloud.';
+
+function isEntitlementError(error) {
+  return !!error && typeof error.message === 'string' && error.message.toLowerCase().includes('row-level security');
 }
 
 function updateAccountNav() {
@@ -206,10 +236,12 @@ function renderLibrarySyncStatus() {
   p.style.margin = '0 0 20px';
   if (!accountState.configured) {
     p.textContent = 'Saved to this browser only.';
-  } else if (accountState.session) {
+  } else if (accountState.session && accountState.entitled) {
     p.textContent = `Synced to ${accountState.session.user.email}.`;
+  } else if (accountState.session) {
+    p.textContent = `Saved to this browser only — ${accountState.session.user.email} isn't subscribed, so nothing syncs to the cloud yet. See Upgrade in Account.`;
   } else {
-    p.textContent = 'Saved to this browser only — sign in under Account to sync across devices.';
+    p.textContent = 'Saved to this browser only — sign in and subscribe under Account to sync across devices.';
   }
   el.appendChild(p);
 }
@@ -273,6 +305,10 @@ function wrapLibraryFunctions() {
   };
 
   function syncEntryToCloud(entry) {
+    // Not entitled: skip the request entirely rather than let a write
+    // we already know will be rejected by RLS round-trip to the server
+    // first. renderLibrarySyncStatus() already told the person why.
+    if (!accountState.entitled) return;
     accountState.client.from('agreements').upsert({
       id: entry.id,
       user_id: accountState.session.user.id,
@@ -280,7 +316,18 @@ function wrapLibraryFunctions() {
       title: entry.title,
       answers: entry.answers,
       generated_at: entry.generatedAt,
-    }).then(({ error }) => { if (error) console.error('Groundtruth: cloud save failed', error); });
+    }).then(({ error }) => {
+      if (!error) return;
+      if (isEntitlementError(error)) {
+        // Entitlement lapsed between refreshEntitlement() and this write
+        // (e.g. a subscription expired mid-session) -- re-check so the
+        // status line catches up, rather than leaving it stale.
+        accountState.entitled = false;
+        renderLibrarySyncStatus();
+      } else {
+        console.error('Groundtruth: cloud save failed', error);
+      }
+    });
   };
 
   // Phase 7.3: one append-only audit_log row per generated document —
@@ -561,6 +608,10 @@ function renderShareSection() {
   section.appendChild(resultEl);
 
   createBtn.addEventListener('click', async () => {
+    if (!accountState.entitled) {
+      resultEl.textContent = ENTITLEMENT_REQUIRED_MESSAGE;
+      return;
+    }
     createBtn.disabled = true;
     resultEl.textContent = 'Creating link…';
     const days = parseInt(expirySelect.value, 10);
@@ -579,7 +630,7 @@ function renderShareSection() {
     });
     createBtn.disabled = false;
     if (error) {
-      resultEl.textContent = `Couldn’t create that link: ${error.message}`;
+      resultEl.textContent = isEntitlementError(error) ? ENTITLEMENT_REQUIRED_MESSAGE : `Couldn’t create that link: ${error.message}`;
       return;
     }
     const base = window.location.pathname.replace(/index\.html$/, '');

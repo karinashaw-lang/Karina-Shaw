@@ -29,7 +29,8 @@ SQL_FILES = ['supabase/schema.sql'] + sorted(
 OUT_PATH = 'PRIVACY_DATA_INVENTORY.md'
 
 TABLE_RE = re.compile(r'create table(?: if not exists)? public\.(\w+)\s*\(\n([\s\S]*?)\n\);')
-POLICY_RE = re.compile(r'create policy\s+"([^"]+)"\s+on\s+public\.(\w+)\s+for\s+(select|insert|update|delete)', re.IGNORECASE)
+POLICY_CREATE_RE = re.compile(r'create policy\s+"([^"]+)"\s+on\s+public\.(\w+)\s+for\s+(select|insert|update|delete)', re.IGNORECASE)
+POLICY_DROP_RE = re.compile(r'drop policy(?: if exists)?\s+"([^"]+)"\s+on\s+public\.(\w+)', re.IGNORECASE)
 SKIP_LINE_PREFIXES = ('constraint ', 'check ', 'check(', 'unique ', 'unique(', 'primary key (', 'foreign key')
 
 # What each table is for, in plain language, and how it's actually
@@ -107,6 +108,15 @@ TABLE_NOTES = {
         'Not personal data about any identifiable person (the key is an IP address, never an '
         'account); rows are overwritten in place every minute and never accumulate.',
     ),
+    'entitlements': (
+        'Whether your subscription is currently active: a status, the Stripe customer/subscription '
+        'ids, and the current billing period end. Written only by the Stripe webhook (the '
+        'service-role key, never your own session) -- you can read your own row but never write '
+        'one yourself, which is what actually enforces the paywall on cloud save, sharing, and '
+        'e-signature (see supabase/migrations/20261113000000_entitlements.sql). ',
+        'Kept until account deletion; a cancelled or expired subscription is not deleted, only '
+        'marked as such, so your billing history stays intact until you delete your account.',
+    ),
 }
 
 # localStorage/sessionStorage keys this app's own code writes, and
@@ -168,11 +178,31 @@ def extract_tables():
                 tokens = stripped.split()
                 if len(tokens) >= 2:
                     columns.append((tokens[0], tokens[1]))
-            tables[name] = {'columns': columns, 'policies': [], 'source': path}
-        for m in POLICY_RE.finditer(text):
-            policy_name, table, cmd = m.group(1), m.group(2), m.group(3).lower()
-            if table in tables:
-                tables[table]['policies'].append((cmd, policy_name))
+            tables.setdefault(name, {'columns': columns, 'policies': {}, 'source': path})
+
+        # A policy can be dropped and recreated under a new name later
+        # (a migration strengthening an existing policy's condition,
+        # since Postgres has no "create or replace policy") -- so
+        # create/drop events are collected with their position and
+        # replayed in actual document order, keyed by policy name,
+        # rather than treating every "create policy" ever written as
+        # still live. Processing this per file (not across the whole
+        # corpus with one global offset) is fine because SQL_FILES is
+        # already in migration-chronological order, so later files'
+        # events always apply after earlier files' regardless.
+        events = []
+        for m in POLICY_CREATE_RE.finditer(text):
+            events.append((m.start(), 'create', m.group(2), m.group(1), m.group(3).lower()))
+        for m in POLICY_DROP_RE.finditer(text):
+            events.append((m.start(), 'drop', m.group(2), m.group(1), None))
+        events.sort(key=lambda e: e[0])
+        for _, action, table, policy_name, cmd in events:
+            if table not in tables:
+                continue
+            if action == 'create':
+                tables[table]['policies'][policy_name] = cmd
+            else:
+                tables[table]['policies'].pop(policy_name, None)
     return tables
 
 
@@ -235,7 +265,7 @@ def render(tables, keys):
         lines.append(f'**Columns:** {cols}')
         lines.append('')
         if info['policies']:
-            pol = '; '.join(f'{cmd}: "{pname}"' for cmd, pname in sorted(info['policies']))
+            pol = '; '.join(f'{cmd}: "{pname}"' for pname, cmd in sorted(info['policies'].items(), key=lambda kv: (kv[1], kv[0])))
             lines.append(f'**Who can read/write it (database policy):** {pol}')
         else:
             lines.append('**Who can read/write it (database policy):** nobody, through the public API -- '

@@ -44,7 +44,7 @@ A cloud copy of one saved document (the same thing the local "library" already k
 
 **Columns:** `id` (text), `user_id` (uuid), `document_id` (text), `title` (text), `answers` (jsonb), `generated_at` (timestamptz), `updated_at` (timestamptz)
 
-**Who can read/write it (database policy):** delete: "Users can delete their own agreements"; insert: "Users can insert their own agreements"; select: "Users can view their own agreements"; update: "Users can update their own agreements"
+**Who can read/write it (database policy):** delete: "Users can delete their own agreements"; insert: "Entitled users can insert their own agreements"; select: "Users can view their own agreements"; update: "Entitled users can update their own agreements"
 
 **Retention and deletion:** Kept until you delete the document (from the Account/library screen) or delete your account.
 
@@ -74,7 +74,7 @@ The record behind an expiring "share for signature" link: which document, a rand
 
 **Columns:** `id` (uuid), `owner_id` (uuid), `token` (text), `document_id` (text), `title` (text), `answers` (jsonb), `clause_snapshots` (jsonb), `schema_version` (integer), `corpus_version` (text), `expires_at` (timestamptz), `created_at` (timestamptz)
 
-**Who can read/write it (database policy):** delete: "Owners can delete their own shares"; insert: "Owners can create their own shares"; select: "Owners can view their own shares"
+**Who can read/write it (database policy):** delete: "Owners can delete their own shares"; insert: "Entitled owners can create their own shares"; select: "Owners can view their own shares"
 
 **Retention and deletion:** You can delete a share yourself from the Account screen; any remaining ones go when you delete your account.
 
@@ -94,9 +94,19 @@ Keeps the previous version of a saved document on hand when you regenerate it, s
 
 **Columns:** `id` (uuid), `user_id` (uuid), `agreement_id` (text), `schema_version` (integer), `corpus_version` (text), `clause_snapshots` (jsonb), `generated_at` (timestamptz), `replaced_at` (timestamptz), `created_at` (timestamptz)
 
-**Who can read/write it (database policy):** delete: "Users can delete their own document versions"; insert: "Users can insert their own document versions"; select: "Users can view their own document versions"
+**Who can read/write it (database policy):** delete: "Users can delete their own document versions"; insert: "Entitled users can insert their own document versions"; select: "Users can view their own document versions"
 
 **Retention and deletion:** You can delete a specific saved version yourself; the rest goes when you delete your account.
+
+### `entitlements`
+
+Whether your subscription is currently active: a status, the Stripe customer/subscription ids, and the current billing period end. Written only by the Stripe webhook (the service-role key, never your own session) -- you can read your own row but never write one yourself, which is what actually enforces the paywall on cloud save, sharing, and e-signature (see supabase/migrations/20261113000000_entitlements.sql). 
+
+**Columns:** `id` (uuid), `user_id` (uuid), `type` (text), `document_id` (text), `status` (text), `stripe_customer_id` (text), `stripe_subscription_id` (text), `current_period_end` (timestamptz), `cancel_at_period_end` (boolean), `created_at` (timestamptz), `updated_at` (timestamptz)
+
+**Who can read/write it (database policy):** select: "Users can view their own entitlements"
+
+**Retention and deletion:** Kept until account deletion; a cancelled or expired subscription is not deleted, only marked as such, so your billing history stays intact until you delete your account.
 
 ### `error_reports`
 

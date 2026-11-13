@@ -134,6 +134,28 @@ async function main() {
     return;
   }
 
+  // CA Wedge Plan Step 8: agreements/document_versions/document_shares
+  // inserts below are now entitlement-gated (RLS), not just session-gated
+  // — see supabase/migrations/20261113000000_entitlements.sql. Seed an
+  // active entitlement for user A directly via the service-role key
+  // (bypasses RLS, same as generating the magic link above) so the rest
+  // of this round trip still tests what it always tested — ownership and
+  // cross-user isolation — rather than failing on the new paywall this
+  // test predates. User B deliberately gets none, so a later real test
+  // could extend this to assert B's own insert is rejected for lacking
+  // one; not added here since nothing below currently has B attempt a
+  // write of their own.
+  const entitlementInsert = await restFetch('/rest/v1/entitlements', {
+    token: SERVICE_KEY, method: 'POST',
+    body: { user_id: userA.userId, type: 'subscription', status: 'active' },
+    extraHeaders: { apikey: SERVICE_KEY, Prefer: 'return=representation' },
+  });
+  if (!check(entitlementInsert.status >= 200 && entitlementInsert.status < 300,
+    `seeded an active entitlement for user A (status ${entitlementInsert.status})`)) {
+    finish();
+    return;
+  }
+
   const rowId = `roundtrip-${RUN_ID}`;
   const insertRes = await restFetch('/rest/v1/agreements', {
     token: userA.accessToken,

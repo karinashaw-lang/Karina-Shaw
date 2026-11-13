@@ -3974,3 +3974,118 @@ then write the approved value into the file actually used downstream).
 for the owner to approve or amend this guarantee copy before it's wired
 into `config/pricing.json`, Step 9's Stripe checkout copy, or Step 20's
 terms-of-service draft.**
+
+## 2026-11-13 -- CA Wedge Plan Step 8: entitlements and server-side release
+
+Restored the paused `groundtruth` Supabase project (impurvwwjdgurbjbnydu)
+and built the `entitlements` table the subscription decision (2026-11-10)
+specified but never created (the old MVP Amendment's Step B.1 designed
+it -- nullable `document_id`, `type='subscription'` -- but stopped before
+any migration was written; see that entry above).
+
+`supabase/migrations/20261113000000_entitlements.sql`: one row per
+subscriber, written only by the Stripe webhook (Step 9, service-role
+key) -- no insert/update/delete policy exists for an authenticated user,
+only select-your-own, so a client can never grant itself access by
+writing the row directly. A shared `has_active_entitlement()` function
+backs both RLS policies and any future edge-function check, so "active"
+is defined once, not re-derived per call site (the same duplicated-logic
+risk `tools/clause_levels.py` already exists to avoid for clause
+verification levels).
+
+**Real bug caught by this migration's own security-advisor run,
+immediately after applying it, and fixed in a second migration
+(`20261113000001_entitlements_fix_function_scope.sql`) rather than
+silently rewriting the first:** the function originally took an
+arbitrary `check_user_id uuid` and was `SECURITY DEFINER`, granted to
+both `anon` and `authenticated` -- which let any caller, including a
+logged-out one, query whether ANY OTHER user currently has an active
+subscription via `/rest/v1/rpc/has_active_entitlement`, an
+enumeration/privacy leak with nothing to do with the RLS use the
+function exists for. Fixed by dropping the argument entirely and
+reading `(select auth.uid())` internally, so a caller can only ever
+learn their own status; revoked `anon` entirely. Confirmed via
+`mcp__Supabase__get_advisors` before and after -- the anon-specific
+warning is gone; the remaining `authenticated`-callable warning is
+intentional and documented in the migration's own comment (an
+authenticated writer needs EXECUTE for the RLS WITH CHECK clause to
+evaluate at all).
+
+**Server-side release, the actual Global Rule 10 compliance step:**
+extended the INSERT/UPDATE policies on `agreements`, `document_versions`,
+and `document_shares` to additionally require `has_active_entitlement()`
+-- cloud save, version history, and sharing (and, transitively,
+e-signature, since a signer never needs their own account or
+subscription -- `share-sign` writes `document_signatures` with the
+service-role key after checking the share itself, so gating share
+*creation* already covers it) now require a currently-active
+subscription, enforced by Postgres regardless of what client-side code
+does or doesn't check first. Browsing/search/interview/preview stay free
+with no account at all (Global Rule 3) -- none of that touches these
+tables.
+
+**Two decisions logged per Global Rule 15 (most conservative option):**
+1. Select/delete policies on all three tables are UNCHANGED -- a lapsed
+   or cancelled entitlement does not strand, hide, or delete a document
+   someone already saved or shared. The person can still read and
+   locally re-export anything they already have; they just can't create
+   NEW cloud-saved/shared content without an active subscription. Data
+   loss on lapse would be the harsher, less conservative choice.
+2. The remaining 4 paywalled actions (PDF/.docx/plain text/JSON export,
+   sources appendix) render entirely client-side with no server round
+   trip in this no-backend-per-document architecture, so they cannot be
+   enforced the same cryptographic way -- stated here honestly rather
+   than claimed otherwise. They stay UI-gated (shown locked without a
+   subscription) as a UX measure, not a guarantee; a determined visitor
+   editing their own browser's JS could bypass that gate, the same
+   inherent limit every static-page paywall has. What actually matters
+   (data that persists or leaves the browser) is the part genuinely
+   enforced above.
+
+Added client-side UX to account.js (not the enforcement -- the RLS
+policies are): `refreshEntitlement()` reads the signed-in user's own
+entitlements row (not a vote on the architecture, just the existing
+select-own policy, so this is safe to call) and the "My Documents" sync
+line and the share-link flow now say plainly when a save or share didn't
+happen because there's no active subscription, instead of the save
+silently vanishing to a console.error only a developer would ever see.
+
+Updated `tests/auth_roundtrip.js` (not run in this sandbox -- same
+egress-policy note as always) to seed user A an active entitlement via
+the service-role key before the now-gated agreements/document_shares/
+document_versions inserts, so the existing round-trip keeps testing what
+it always tested (ownership, cross-user isolation) instead of failing on
+the new paywall it predates.
+
+**A second real bug, found while updating `tools/generate_data_inventory.py`
+for the new `entitlements` table:** the script's policy-name extraction
+never accounted for `drop policy`, so renaming an existing policy (as
+this migration did, to `"Entitled users can insert..."` etc.) made the
+generated inventory list BOTH the old, now-dead policy name and the new
+one for the same action -- wrong, since the old one no longer exists in
+the live database. No prior migration had ever renamed a policy, so this
+gap was real but latent until now. Fixed by parsing `drop policy`
+statements too and replaying every create/drop event in actual document
+order (by source position, across migration files in their already-
+chronological filename order), keyed by policy name, instead of treating
+every `create policy` ever written as still live. Confirmed via
+`git diff` that the regenerated `PRIVACY_DATA_INVENTORY.md` now shows
+only the live policy names for `agreements`/`document_shares`/
+`document_versions`. All 6 of `tests/tools/test_generate_data_inventory.py`'s
+existing tests still pass.
+
+Also found, not fixed: a stray `public._scratch_probe` table (one
+`id integer` column, 0 rows, RLS enabled, no policies) exists in the live
+project that isn't in any committed migration -- clearly leftover scratch
+debris from an earlier ad-hoc connectivity check, not part of the real
+schema. Left untouched (zero rows, harmless, and Global Rule 8 says never
+run a destructive action, even a trivial DROP TABLE, without showing it
+and waiting for explicit yes) -- flagging here for the owner to delete or
+ignore as they prefer.
+
+`validate_corpus.py`, `merge_guard.py HEAD`, `copy_lint.py`,
+`regression.js`, and `tests/error_reporting/error_reporting.js` (which
+exercises account.js's init path with a fake Supabase client) all pass.
+`mcp__Supabase__get_advisors` (security and performance) show nothing
+new beyond the one intentional, documented warning above and pre-existing
+findings this migration didn't touch.
