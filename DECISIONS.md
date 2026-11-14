@@ -4253,3 +4253,97 @@ in the plain-text export; an unset domain correctly omits it.
 byte-identical because `state.seoBaseUrl` is genuinely empty right now,
 exactly the case that was already true before this step and remains so
 until the owner picks a domain.
+
+## 2026-11-14 — CA Wedge Plan Step 12: filing instruction sheets, extended to `articles_of_incorporation`
+
+**Task:** Extend `filing/next_steps.json` beyond its single pilot
+document (`llc_articles_of_organization`) to at least one more
+document, per the master plan's Step 12 and `filing/README.md`'s own
+invitation to extend "following the same pattern."
+
+**What was added, and why this document specifically:** picked
+`articles_of_incorporation` because this project already has two
+adversarially-verified, primary-official authority clauses on that
+document --`articlesinc_statement_of_information` (Cal. Corp. Code
+§ 1502(a)/(d)) and `articlesinc_annual_franchise_tax` (Cal. Rev. & Tax.
+Code § 23153(a)/(d)(1)/(f)(1)-(2)) -- whose exact quotes could be
+reused verbatim for the next-steps packet without any new, unverified
+research, consistent with global rule 11 (correctness beats breadth).
+Added one optional `articlesFiledDate` date field to the document
+(mirroring the LLC pilot's `articlesFiledDate` field exactly, reworded
+for a corporation), and two steps to `filing/next_steps.json`:
+1. `articlesinc_soi_initial_filing` -- the 90-day initial Statement of
+   Information, with a computed reminder (`offsetDays: 90`) off the new
+   date field.
+2. `articlesinc_annual_franchise_tax` -- the $800 minimum franchise
+   tax, informational only (no reminder, same reasoning as the LLC
+   pilot: the real due date depends on the corporation's own taxable
+   year, which this project doesn't collect).
+
+**A fact worth getting right, not glossed over:** the corporation's
+first-year exemption from the $800 tax (Cal. Rev. & Tax. Code
+§ 23153(f)(1)) is a *different, permanent* provision from the LLC's own
+*time-limited* first-year exemption (§ 17941(g), for LLCs organizing
+2021-2024) that the existing LLC pilot step describes. Both the new
+step's body and its citations state this distinction explicitly rather
+than letting a reader assume the two entity types share one rule --
+the underlying clause (`articlesinc_annual_franchise_tax`) already
+flags this exact gap, and the next-steps text doesn't contradict it.
+
+**A second, unrelated defect found and fixed in the same pass:**
+running the full tooling-test suite before committing (global rule 5)
+turned up that `test_filing_next_steps.py` was failing -- not because
+of anything added here, but because its own synthetic test fixtures
+(`BASE_DOC`/`BASE_CLAUSE`/citation dicts) predate CA Wedge Plan Step 3,
+which added required `state` fields (on documents, clauses, and
+citations), a required `sourceClass` on every citation, and canonical
+key-order checks for all three. Confirmed via `git stash` that this
+failure reproduces identically on the pre-existing committed `HEAD`,
+with no changes of mine applied -- i.e., this has been silently broken
+since Step 3's commit (`2badbc7`), and the same stale-fixture pattern
+turned out to affect five more files: `test_showif.py`,
+`test_shared_fields.py`, `test_advisory_lint.py`, `test_include_if.py`,
+and `test_staleness.py`. All six were fixed the same way: added
+`"state": "CA"` to every synthetic document/clause (in canonical
+position, after their other required keys) and `"sourceClass":
+"primary-official", "state": "CA"` to every synthetic citation.
+`test_search_data.py` had one further independent bug of its own: its
+local `ALL_CATEGORIES` list was still the pre-Phase-12-Step-10 set of 8
+categories, missing "Consumer & Civil Court" (the 9th category added
+in `bcf9125`), so it only accidentally passed before Step 3 made this
+exact check exercise-able by this test's corpus shape. Fixed by adding
+the missing category. None of these six files' *intent* changed --
+only their fixtures' shape, to match requirements this project already
+committed to enforcing. This means CI's "Test the tooling itself" job
+has been silently red on this branch since Step 3, for reasons
+unrelated to anything that job's own commits introduced; it is green
+again as of this commit.
+
+Gates run before commit: `validate_corpus.py` (741 docs, passed),
+`tools/build_citation_index.py` (regenerated, was stale), all 22
+Python tooling tests (including the six fixed above), `golden.js`
+(741/741, only `articles_of_incorporation`'s fixture changed, exactly
+as expected), `tests/filing/next_steps.js` (the LLC pilot's own
+browser-level checks, unaffected), `regression.js`, `wizard_regression.js`,
+`wizard_unit.js`, `golden_search.js`, `intake_coverage.js`,
+`related_coverage.js`, `performance_budget.js`, `pdf_golden.js`,
+`docx_golden.js`, `versioning.js`, `consistency.js`, `sign_page.js`,
+`error_reporting.js`, and the other Node tooling-test scripts in the
+regression CI job -- all passed. `merge_guard.py` against this
+branch's own upstream correctly flags `articles_of_incorporation` as
+"MODIFIED" (expected and fine: this is a direct-push field addition to
+an existing document, not a merge, and CI's own `merge_guard` job only
+runs on pull requests for exactly this reason -- see its comment in
+`.github/workflows/ci.yml`).
+
+**One pre-existing, unrelated defect found and deliberately left
+alone:** `tests/accessibility/axe_check.js` reports a serious
+color-contrast violation on the "screen-picker" screen in both themes.
+Confirmed via the same `git stash` check that this reproduces
+identically on `HEAD` with none of this commit's changes applied --
+pre-existing, unrelated to filing instruction sheets, and out of this
+step's scope. Logged here rather than fixed in passing (global rule 15
+-- most conservative option on an ambiguous scope call -- plus global
+rule 11, since silently bundling an unrelated CSS fix into this commit
+would make the diff harder to review for what it actually claims to
+do). Added to the owner-facing follow-up list.

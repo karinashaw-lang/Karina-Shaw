@@ -34,8 +34,12 @@ BASE_CLAUSE = {
     "body": "Test body.",
     "gap": "Test gap.",
     "citations": [
-        {"case": "Test v. Case", "cite": "1 Test 1", "url": "https://example.com/1", "quote": "test quote"},
+        {
+            "case": "Test v. Case", "cite": "1 Test 1", "url": "https://example.com/1", "quote": "test quote",
+            "sourceClass": "primary-official", "state": "CA",
+        },
     ],
+    "state": "CA",
 }
 
 BASE_FIELDS = [
@@ -50,6 +54,7 @@ BASE_DOC = {
     "categories": ["Hiring"],
     "clauseOrder": ["test_clause"],
     "fields": BASE_FIELDS,
+    "state": "CA",
 }
 
 BASE_LIBRARY = [

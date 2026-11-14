@@ -64,8 +64,12 @@ def make_clause(clause_id, checked_date, url='https://example.com/opinion', extr
         "body": "Test body.",
         "gap": "Test gap.",
         "citations": [
-            {"case": "Test v. Case", "cite": "1 Test 1", "url": url, "quote": "test quote"},
+            {
+                "case": "Test v. Case", "cite": "1 Test 1", "url": url, "quote": "test quote",
+                "sourceClass": "primary-official", "state": "CA",
+            },
         ],
+        "state": "CA",
     }
     if extra:
         c.update(extra)
@@ -80,6 +84,7 @@ def make_doc(doc_id, categories, clause_ids):
         "categories": categories,
         "clauseOrder": clause_ids,
         "fields": [],
+        "state": "CA",
     }
 
 

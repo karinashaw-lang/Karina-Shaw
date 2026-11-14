@@ -45,8 +45,12 @@ BASE_CLAUSE = {
     "body": "Test body.",
     "gap": "Test gap.",
     "citations": [
-        {"case": "Test v. Case", "cite": "1 Test 1", "url": "https://example.com/1", "quote": "test quote"},
+        {
+            "case": "Test v. Case", "cite": "1 Test 1", "url": "https://example.com/1", "quote": "test quote",
+            "sourceClass": "primary-official", "state": "CA",
+        },
     ],
+    "state": "CA",
 }
 
 # No extra fields by default -- a plain document with nothing for a
@@ -62,6 +66,7 @@ BASE_DOC = {
     "categories": ["Business Formation"],
     "clauseOrder": ["test_clause"],
     "fields": [],
+    "state": "CA",
 }
 
 

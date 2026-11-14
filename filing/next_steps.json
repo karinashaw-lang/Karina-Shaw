@@ -39,5 +39,58 @@
         }
       ]
     }
+  ],
+  "articles_of_incorporation": [
+    {
+      "id": "articlesinc_soi_initial_filing",
+      "title": "File an initial Statement of Information",
+      "body": "California requires every corporation to file an initial statement of information with the Secretary of State within 90 days after its articles of incorporation are filed, then again every year thereafter during the corporation's assigned filing period. This is an annual cadence -- not the every-two-years period this project's own LLC Articles of Organization document describes for LLCs, which is a different filing period set by a different statute.",
+      "checkedDate": "2026-09-01",
+      "citations": [
+        {
+          "case": "Cal. Corp. Code § 1502(a)",
+          "cite": "California General Corporation Law, initial and annual statement of information",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=1502.",
+          "quote": "Every corporation shall file, within 90 days after the filing of its original articles and annually thereafter during the applicable filing period, on a form prescribed by the Secretary of State, a statement containing all of the following: (1) The name of the corporation and the Secretary of State’s file number. (2) The names and complete business or residence addresses of its incumbent directors. (3) The number of vacancies on the board, if any. (4) The names and complete business or residence addresses of its chief executive officer, secretary, and chief financial officer. (5) The street address of its principal executive office."
+        },
+        {
+          "case": "Cal. Corp. Code § 1502(d)",
+          "cite": "California General Corporation Law, how the annual filing period is measured",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=1502.",
+          "quote": "For the purposes of this section, the applicable filing period for a corporation shall be the calendar month during which its original articles were filed and the immediately preceding five calendar months. The Secretary of State shall provide a notice to each corporation to comply with this section approximately three months prior to the close of the applicable filing period... The failure of the corporation to receive the notice is not an excuse for failure to comply with this section."
+        }
+      ],
+      "reminder": {
+        "dateFieldId": "articlesFiledDate",
+        "offsetDays": 90,
+        "label": "Statement of Information due"
+      }
+    },
+    {
+      "id": "articlesinc_annual_franchise_tax",
+      "title": "California's $800 minimum franchise tax -- and this corporation's first-year exemption",
+      "body": "Beyond the Secretary of State's filing fee, California's Revenue and Taxation Code subjects every corporation incorporated under California law to the state's minimum franchise tax -- currently $800 annually -- running from the earlier of the date of incorporation, qualification, or first doing business in the state. Separately, that same statute exempts a newly incorporated corporation from the minimum franchise tax for its first taxable year, with no stated end date, for any corporation that incorporates or qualifies to do business in California on or after January 1, 2000. That first-year exemption is specific to corporations: it does not extend to LLCs, limited partnerships, LLPs, or several other listed entity types, and it is a different, separately worded provision from the time-limited first-year exemption this project's own LLC Articles of Organization document describes for LLCs organizing between 2021 and 2024. This project doesn't collect enough information to compute the ongoing annual due date reliably -- it depends on the corporation's own taxable year -- so no reminder is offered for it here.",
+      "checkedDate": "2026-09-01",
+      "citations": [
+        {
+          "case": "Cal. Rev. & Tax. Code § 23153(a)",
+          "cite": "The Corporation Franchise Tax, when the minimum tax applies",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=RTC&sectionNum=23153.",
+          "quote": "Every corporation described in subdivision (b) shall be subject to the minimum franchise tax specified in subdivision (d) from the earlier of the date of incorporation, qualification, or commencing to do business within this state, until the effective date of dissolution or withdrawal as provided in Section 23331 or, if later, the date the corporation ceases to do business within the limits of this state."
+        },
+        {
+          "case": "Cal. Rev. & Tax. Code § 23153(d)(1)",
+          "cite": "The Corporation Franchise Tax, the $800 minimum franchise tax amount",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=RTC&sectionNum=23153.",
+          "quote": "Except as provided in paragraph (2), paragraph (1) of subdivision (f) of Section 23151, paragraph (1) of subdivision (f) of Section 23181, and paragraph (1) of subdivision (c) of Section 23183, corporations subject to the minimum franchise tax shall pay annually to the state a minimum franchise tax of eight hundred dollars ($800)."
+        },
+        {
+          "case": "Cal. Rev. & Tax. Code § 23153(f)(1)-(2)",
+          "cite": "The Corporation Franchise Tax, the permanent first-year exemption and its exclusions",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=RTC&sectionNum=23153.",
+          "quote": "(1) Notwithstanding subdivision (a), every corporation that incorporates or qualifies to do business in this state on or after January 1, 2000, shall not be subject to the minimum franchise tax for its first taxable year. (2) This subdivision shall not apply to limited partnerships, as defined in Section 17935, limited liability companies, as defined in Section 17941, limited liability partnerships, as described in Section 17948, charitable organizations, as described in Section 23703, regulated investment companies, as defined in Section 851 of the Internal Revenue Code, real estate investment trusts, as defined in Section 856 of the Internal Revenue Code, real estate mortgage investment conduits, as defined in Section 860D of the Internal Revenue Code, and qualified Subchapter S subsidiaries, as defined in Section 1361(b)(3) of the Internal Revenue Code, to the extent applicable."
+        }
+      ]
+    }
   ]
 }

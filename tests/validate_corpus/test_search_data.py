@@ -38,8 +38,12 @@ BASE_CLAUSE = {
     "body": "Test body.",
     "gap": "Test gap.",
     "citations": [
-        {"case": "Test v. Case", "cite": "1 Test 1", "url": "https://example.com/1", "quote": "test quote"},
+        {
+            "case": "Test v. Case", "cite": "1 Test 1", "url": "https://example.com/1", "quote": "test quote",
+            "sourceClass": "primary-official", "state": "CA",
+        },
     ],
+    "state": "CA",
 }
 
 BASE_DOC = {
@@ -49,17 +53,18 @@ BASE_DOC = {
     "categories": ["Hiring"],
     "clauseOrder": ["test_clause"],
     "fields": [],
+    "state": "CA",
 }
 
 VALID_LAY_TERMS = {"test_doc": ["need a job offer letter", "hiring paperwork template"]}
 
-# All 8 real categories need an entry whenever intake_flow.json is
+# All 9 real categories need an entry whenever intake_flow.json is
 # present at all (validate_corpus.py checks against its own CATEGORIES
 # set, not just the categories the synthetic doc happens to use).
 ALL_CATEGORIES = [
-    'Business Formation', 'Confidentiality & IP', 'During employment',
-    'Ending employment', 'Estate Planning', 'Family Law', 'Hiring',
-    'Real Estate',
+    'Business Formation', 'Confidentiality & IP', 'Consumer & Civil Court',
+    'During employment', 'Ending employment', 'Estate Planning', 'Family Law',
+    'Hiring', 'Real Estate',
 ]
 
 VALID_QUESTION = {

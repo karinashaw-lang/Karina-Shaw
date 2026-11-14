@@ -36,6 +36,7 @@ BASE_DOC = {
     "categories": ["Hiring"],
     "clauseOrder": [],
     "fields": BASE_FIELDS,
+    "state": "CA",
 }
 
 
@@ -43,8 +44,12 @@ def authority_clause(cid):
     return {
         "id": cid, "title": cid, "kind": "authority", "status": "verified",
         "checkedDate": date.today().isoformat(), "body": f"Body of {cid}.", "gap": "Test gap.",
-        "citations": [{"case": "Test v. Case", "cite": "1 Test 1",
-                       "url": "https://example.com/1", "quote": "test quote"}],
+        "citations": [{
+            "case": "Test v. Case", "cite": "1 Test 1",
+            "url": "https://example.com/1", "quote": "test quote",
+            "sourceClass": "primary-official", "state": "CA",
+        }],
+        "state": "CA",
     }
 
 
