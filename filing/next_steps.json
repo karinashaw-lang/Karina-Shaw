@@ -92,5 +92,45 @@
         }
       ]
     }
+  ],
+  "statement_of_information": [
+    {
+      "id": "soi_next_filing_corporation",
+      "title": "If this statement is for a corporation: your next one is due in one year",
+      "body": "California corporations refile their Statement of Information every year, not every two years -- that's a different, shorter cycle than the one that applies to an LLC's statement. The statutory filing period is actually measured as a six-month window around the anniversary month, not a fixed day, so this reminder is a conservative estimate of when that window opens, not the statute's own exact formula.",
+      "checkedDate": "2026-09-02",
+      "citations": [
+        {
+          "case": "Cal. Corp. Code § 1502(a)",
+          "cite": "California General Corporation Law, initial and annual statement of information",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=1502.",
+          "quote": "Every corporation shall file, within 90 days after the filing of its original articles and annually thereafter during the applicable filing period, on a form prescribed by the Secretary of State, a statement containing all of the following:"
+        }
+      ],
+      "reminder": {
+        "dateFieldId": "statementFiledDate",
+        "offsetDays": 365,
+        "label": "Next Statement of Information due (corporation, annual)"
+      }
+    },
+    {
+      "id": "soi_next_filing_llc",
+      "title": "If this statement is for an LLC: your next one is due in two years",
+      "body": "California LLCs refile their Statement of Information every two years, not every year -- that's a different, longer cycle than the one that applies to a corporation's statement. The statutory filing period is actually measured as a six-month window around the anniversary month, not a fixed day, so this reminder is a conservative estimate of when that window opens, not the statute's own exact formula.",
+      "checkedDate": "2026-09-02",
+      "citations": [
+        {
+          "case": "Cal. Corp. Code § 17702.09(a)",
+          "cite": "California Revised Uniform Limited Liability Company Act, initial and biennial statement of information",
+          "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=17702.09.",
+          "quote": "Every limited liability company and every foreign limited liability company registered to transact intrastate business in this state shall deliver to the Secretary of State for filing within 90 days after the filing of its original articles of organization or registering to transact intrastate business and biennially thereafter during the applicable filing period, on a form prescribed by the Secretary of State, a statement of information containing:"
+        }
+      ],
+      "reminder": {
+        "dateFieldId": "statementFiledDate",
+        "offsetDays": 730,
+        "label": "Next Statement of Information due (LLC, biennial)"
+      }
+    }
   ]
 }

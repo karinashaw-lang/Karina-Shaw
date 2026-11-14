@@ -6466,6 +6466,15 @@
         "placeholder": "Software as a service for small business accounting",
         "example": "Software as a service for small business accounting",
         "sharedFieldId": "businessActivityDescription"
+      },
+      {
+        "id": "statementFiledDate",
+        "label": "Date you're filing this statement (if already filed)",
+        "type": "date",
+        "required": false,
+        "placeholder": "January 15, 2026",
+        "example": "January 15, 2026",
+        "whyWeAsk": "The next Statement of Information is due on a recurring cycle measured from this filing — annually for a corporation, every two years for an LLC. This date is what the reminders below are measured from. Leave it blank if you haven't filed this statement yet."
       }
     ],
     "state": "CA"

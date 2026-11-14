@@ -4460,3 +4460,60 @@ defect (the new badge is hidden by default in that test's empty-
 library session, so it has no accessibility surface to check there
 yet -- left for a follow-up pass once a non-empty-library axe fixture
 exists, same as the existing badge-contrast gap).
+
+## 2026-11-14 — CA Wedge Plan Step 15: a refiling reminder on the `statement_of_information` document itself
+
+**Task:** add the plan's named Statement of Information reminder.
+Sequenced deliberately after Step 12 rather than alongside it, to
+reuse that step's just-confirmed filing/next_steps.json conventions
+instead of inventing a second pattern in the same session.
+
+**Why this document, and the cadence problem it has that
+`articles_of_incorporation`/`llc_articles_of_organization` don't:**
+`statement_of_information` (data/documents.json) is a single document
+covering *both* a corporation's and an LLC's periodic refiling in one
+form (its `clauseOrder` already carries both
+`soi_required_content_corporation` and `soi_required_content_llc`,
+unconditionally -- there's no entityType-gated `includeIf` splitting
+them, `entityType` is a free-text field, not a controlled value the
+schema could branch a reminder on). The two entity types' recurring
+cycles are genuinely different -- annual for a corporation (Cal.
+Corp. Code § 1502(a)), biennial for an LLC (Cal. Corp. Code
+§ 17702.09(a)) -- confirmed directly against `soi_filing_deadlines`,
+an already-verified authority clause on this same document that
+states the distinction explicitly and cites both sections.
+`filing/next_steps.json`'s schema has no per-step conditional (a
+`reminder` is just `{dateFieldId, offsetDays, label}`, checked in
+`tools/validate_corpus.py`), so rather than invent one, this follows
+the document's own existing pattern of showing both entity types'
+content side by side and letting the reader pick which applies: added
+two steps, `soi_next_filing_corporation` (every 1 year /
+`offsetDays: 365`) and `soi_next_filing_llc` (every 2 years /
+`offsetDays: 730`), each titled "If this statement is for a
+corporation/an LLC" and each reusing `soi_filing_deadlines`'s already-
+verified citation for its own entity type rather than re-deriving the
+distinction a third time. Both steps' bodies also flag plainly that
+the real statutory filing period is a six-month window around the
+anniversary month, not a fixed day (the same thing
+`soi_filing_deadlines` itself says) -- so a 365-or-730-day offset is
+stated as a conservative estimate, not represented as the statute's
+own exact formula.
+
+**What was added:** one new optional `statementFiledDate` field on
+`statement_of_information` (mirrors the `articlesFiledDate`/
+`articlesFiledDate`-shaped fields from the two prior filing-sheet
+documents), and the two next_steps.json entries above.
+
+**Verification:** `validate_corpus.py` (741 docs, passed; both
+steps' citations, checkedDate, and `reminder.dateFieldId` all
+checked), `tests/validate_corpus/test_filing_next_steps.py` (19/19,
+unaffected -- still exercises only its own synthetic fixture),
+`tests/filing/next_steps.js` (unaffected -- still pinned to the LLC
+pilot document it was written for), `tools/build_citation_index.py`
+(regenerated, confirmed up to date), `copy_lint.py`, `golden.js`
+(741/741, only `statement_of_information`'s fixture changed, exactly
+the new next-steps section), `regression.js`, `wizard_regression.js`,
+`wizard_unit.js`, and `merge_guard.py` against this branch's own
+upstream (flags `statement_of_information` as "MODIFIED", expected
+and fine for the same reason Step 12's commit already is: a direct-
+push field addition, not a merge) all pass.
