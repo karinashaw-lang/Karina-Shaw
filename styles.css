@@ -139,6 +139,10 @@ a{ color:var(--accent-ink); }
 .topbar-link-btn:hover{ opacity:.8; }
 .topbar-link-btn:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
 #library-count{ opacity:.7; }
+/* CA Wedge Plan Step 14: a law-change alert earns its own color, not
+   the same muted opacity as the plain saved-document count above. */
+.library-alert-count[hidden]{ display:none; }
+.library-alert-count{ color:var(--flag-ink); text-decoration-color:var(--flag); font-weight:600; }
 
 /* ---------- screens ---------- */
 .screen{ display:none; }

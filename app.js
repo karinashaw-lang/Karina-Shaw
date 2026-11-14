@@ -175,8 +175,25 @@ function clearLibrary() {
 function updateLibraryCount() {
   const el = document.getElementById('library-count');
   if (!el) return;
-  const count = loadLibrary().length;
-  el.textContent = count ? ` (${count})` : '';
+  const entries = loadLibrary();
+  el.textContent = entries.length ? ` (${entries.length})` : '';
+
+  // CA Wedge Plan Step 14: a law-change alert belongs in the nav, not
+  // only on the My Documents screen a visitor has to think to open --
+  // detectDrift() already knows, per saved entry, whether a clause it
+  // used has since changed; this just counts how many entries have at
+  // least one such clause, the same way updateLibraryCount() already
+  // runs on every library mutation and at init.
+  const alertEl = document.getElementById('library-alert-count');
+  if (!alertEl) return;
+  const driftedCount = entries.filter(e => detectDrift(e).length > 0).length;
+  if (driftedCount > 0) {
+    alertEl.textContent = ` · ${driftedCount} law change${driftedCount === 1 ? '' : 's'}`;
+    alertEl.hidden = false;
+  } else {
+    alertEl.textContent = '';
+    alertEl.hidden = true;
+  }
 }
 
 // ---------- document lifecycle & versioning (Phase 6.3) ----------
@@ -427,6 +444,7 @@ function renderDriftBanner(entry) {
   regenBtn.addEventListener('click', () => {
     regenerateLibraryEntry(entry.id);
     renderLibrary();
+    updateLibraryCount();
   });
   banner.appendChild(regenBtn);
 
@@ -463,6 +481,7 @@ function renderVersionHistory(entry) {
       restoreBtn.addEventListener('click', () => {
         restoreLibraryVersion(entry.id, i);
         renderLibrary();
+        updateLibraryCount();
       });
       row.appendChild(restoreBtn);
       details.appendChild(row);

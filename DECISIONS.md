@@ -4403,3 +4403,60 @@ prior step's check -- ran axe directly against the live page to get
 the violating elements' actual selectors (all five are
 `.tier-A.tier-pill`, none are the new callout) rather than assuming
 the count matched by coincidence.
+
+## 2026-11-14 — CA Wedge Plan Step 14: a law-change alert in the nav, not only on the My Documents screen
+
+**Task:** surface a law-change alert for saved documents, per the
+master plan.
+
+**What was already true before this step:** the actual law-change
+*detection* for a saved document already existed, built in Phase 6.3 --
+`detectDrift(entry)` compares a saved entry's frozen
+`clauseSnapshots` against the live corpus and reports, per clause,
+exactly which fields differ now (`checkedDate`, `status`, `body`,
+`gap`, `citations`), and `renderDriftBanner()` already renders a full
+word-level diff, a regenerate button, and version history -- all
+already covered by `tests/library/versioning.js`'s 17 checks. What
+this step changed is *where* that information surfaces: only ever on
+the "My Documents" screen itself, once a visitor thought to open it.
+The nav's existing `#library-count` badge showed only a plain saved-
+document count, with no signal that anything needed a look.
+
+**What was added:** `updateLibraryCount()` (app.js) now also counts,
+via the existing `detectDrift(e).length > 0` check across every saved
+entry, how many have at least one clause whose underlying source has
+changed since the document was saved, and renders that count in a new
+`#library-alert-count` span next to the existing one -- e.g. "My
+Documents (3) · 1 law change" -- styled with the same `--flag`/
+`--flag-ink` tokens the drift banner itself already uses (not a new
+color pairing to re-verify for contrast), hidden entirely when the
+count is zero. `updateLibraryCount()` already ran at init and on every
+library mutation (add/remove/clear); added two more call sites
+(`regenerateLibraryEntry`'s and `restoreLibraryVersion`'s click
+handlers) since both of those change an entry's drift status without
+otherwise being an add/remove/clear. This means a returning visitor
+with saved documents sees the alert the moment the app loads, from any
+screen, not only after navigating into My Documents -- the actual
+"alert" the plan's title asks for, versus the pre-existing but purely
+passive per-document banner.
+
+**Verification:** wrote a throwaway Playwright script (not committed)
+that saves a real document, confirms the badge starts hidden,
+mutates a live clause's `checkedDate` the same way
+`tests/library/versioning.js` already does to simulate a law change,
+confirms the badge then reads exactly "· 1 law change" and is no
+longer hidden, restores the clause and removes the entry, and
+confirms the badge hides again -- not just that the code compiles.
+Took a real screenshot of the rendered nav badge to confirm the
+visual result, not just the DOM state. `node --check app.js`,
+`copy_lint.py`, `regression.js`, `golden.js` (741/741, unaffected --
+no corpus data touched), `wizard_regression.js`, `wizard_unit.js`,
+`tests/library/versioning.js` (all 17 existing drift/regenerate/
+restore checks still pass unchanged), `tests/library/consistency.js`,
+and `merge_guard.py` against this branch's own upstream (clean:
+additions only) all pass. `axe_check.js`'s "screen-picker" failure is
+the same pre-existing, already-logged `.tier-A.tier-pill` contrast
+defect (the new badge is hidden by default in that test's empty-
+library session, so it has no accessibility surface to check there
+yet -- left for a follow-up pass once a non-empty-library axe fixture
+exists, same as the existing badge-contrast gap).
