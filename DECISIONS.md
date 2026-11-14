@@ -4517,3 +4517,78 @@ the new next-steps section), `regression.js`, `wizard_regression.js`,
 upstream (flags `statement_of_information` as "MODIFIED", expected
 and fine for the same reason Step 12's commit already is: a direct-
 push field addition, not a merge) all pass.
+
+## 2026-11-14 — CA Wedge Plan Step 16: referral-link infrastructure, no real partner picked
+
+**Task:** add referral links for a registered-agent service and an
+attorney-review service, per the master plan and Global Rule 14
+("Referral/partner links need a plain disclosure line and must never
+leak user data").
+
+**Why no real link exists yet:** picking a specific registered-agent
+company or attorney-referral service, and getting a real affiliate
+URL from them, is a business decision with real legal and financial
+consequences (an actual contract with a real company, actual money) --
+not something this session has any basis to invent from training
+data, and squarely the kind of placeholder this project already
+handles the same way everywhere else it comes up: `config/pricing.json`'s
+`priceUsd` fields are `null` until the owner decides, `config/seo.json`'s
+`baseUrl` is `""` until the owner has a domain. `config/referrals.json`
+follows the identical pattern: two slots, `registeredAgent` and
+`attorneyReview`, both `enabled: false` with `url: null` and
+`partnerName: null`. Nothing on the output screen renders until the
+owner sets a real `url` and flips `enabled` to `true` -- added to
+`OWNER_TODO.md` as item 6.
+
+**What was built instead -- the actual mechanism, fully working and
+tested against a simulated config:** `renderReferralLinks()` (app.js),
+called from `renderOutput()`, renders zero, one, or two referral
+blocks depending on which slots are enabled *and* relevant to the
+current document. `attorneyReview` is relevant to every document ("do
+you want a lawyer to look this over" is universal, so there's no
+document-specific claim to get wrong). `registeredAgent` is relevant
+only to a document that actually has a field with `sharedFieldId`
+`agentName` or `agentAddress` -- confirmed against the live corpus
+this correctly includes `articles_of_incorporation`,
+`llc_articles_of_organization`, and `statement_of_information` (the
+exact "registered agent" context the plan names) and excludes a
+document with no such field.
+
+**Global Rule 14, enforced in code, not config:** the disclosure line
+("Paid referral -- Groundtruth may earn a commission if you use this
+link. Nothing about you or this document is sent to them.") is a
+fixed constant in app.js, not a `config/referrals.json` value --
+an edit to that config file can change which partner is linked, but
+can never weaken or remove the disclosure itself. The link's `href`
+is always the configured `url` verbatim: never built from
+`state.answers`, the document id, or anything else specific to this
+user or document, so there is nothing for the link itself to leak --
+and `rel="nofollow sponsored noopener noreferrer"` marks it to search
+engines and the browser as exactly what it is, a paid, sponsored
+outbound link, not an editorial endorsement.
+
+**Verification:** wrote a throwaway Playwright script (not committed)
+that simulates the owner having configured both slots with a test
+partner and URL, confirms a document with an agent field shows both
+blocks with the right hrefs and `rel` attribute and the disclosure
+text present, confirms a document without an agent field shows only
+the attorney-review block, and confirms the section is fully hidden
+again once both slots are set back to disabled -- exercising the
+actual gating logic, not just that the code runs. Took a real
+screenshot of the rendered output screen to confirm the visual
+result (plain `--line`-bordered blocks, deliberately not styled like
+the `--accent`-bordered sourced-content cards elsewhere on the same
+screen, so a referral never reads as carrying the same authority as
+a cited clause) and caught one rough edge that screenshot surfaced --
+the link text originally repeated the block's own heading verbatim
+("Need a registered agent?" as both heading and link) -- fixed to
+"Visit <partner name>" (or "Visit this referral partner" when no
+name is set). `node --check app.js`, `copy_lint.py`, `validate_corpus.py`
+(unaffected -- no corpus data touched), `golden.js` (741/741,
+unaffected), `regression.js` (confirmed no new CSP violation from the
+new same-origin `config/referrals.json` fetch or the new outbound
+`<a>`), `wizard_regression.js`, `wizard_unit.js`, `axe_check.js` (same
+pre-existing `.tier-A.tier-pill` contrast defect, unaffected -- the
+new section is hidden by default in that test's unconfigured-referrals
+session), and `merge_guard.py` against this branch's own upstream
+(clean: additions only) all pass.

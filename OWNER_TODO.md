@@ -121,3 +121,28 @@ page/feature says so explicitly where relevant:
 
 None of these are blocked on engineering work — they're ready for
 review as they stand.
+
+## 6. Pick real referral partners (registered agent + attorney review)
+
+`config/referrals.json` has two slots — `registeredAgent` and
+`attorneyReview` — both `enabled: false` with `url: null` and
+`partnerName: null`. Nothing renders on the output screen until both
+`enabled` is `true` and `url` is a real link for a given slot; this
+session has no basis to pick a real company from training data, so
+it was left as a placeholder, same discipline as `config/pricing.json`'s
+`priceUsd` fields. To turn one on:
+1. Pick a real registered-agent service and/or attorney-referral
+   service (e.g. your state bar's own lawyer-referral service, or a
+   vetted legal marketplace) and get your actual affiliate/referral
+   URL from them.
+2. Set that slot's `enabled: true`, `url`, and (optional, but shown
+   in the on-screen copy if set) `partnerName` in `config/referrals.json`.
+3. Confirm the referral/affiliate agreement itself doesn't require
+   anything this project doesn't already do -- in particular, it must
+   never require sending a user's name, address, or document contents
+   to the partner (the link is always a plain, static URL with
+   nothing about the specific user or document appended; see
+   `renderReferralLinks()` in app.js and Global Rule 14).
+`registeredAgent` only ever shows on a document that actually asks for
+an agent for service of process; `attorneyReview` shows on every
+document's output screen once enabled.

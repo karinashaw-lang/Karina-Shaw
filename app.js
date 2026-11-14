@@ -1047,7 +1047,7 @@ async function loadSharedFields() {
 }
 
 async function init() {
-  const [docs, clauseData, sharedFields, tiers, verificationLevels, layTerms, intakeFlow, nextSteps, seoConfig] = await Promise.all([
+  const [docs, clauseData, sharedFields, tiers, verificationLevels, layTerms, intakeFlow, nextSteps, seoConfig, referrals] = await Promise.all([
     fetch('data/documents.json').then(r => r.json()),
     fetch('data/clauses.json').then(r => r.json()),
     loadSharedFields(),
@@ -1068,6 +1068,12 @@ async function init() {
     // same-site relative link when it's unset, same as
     // tools/generate_seo_pages.py's own page_url() already does.
     fetch('config/seo.json').then(r => r.json()).catch(() => ({ baseUrl: '' })),
+    // config/referrals.json (CA Wedge Plan Step 16): both slots start
+    // disabled with a null url -- same "nothing invented" discipline as
+    // seoConfig above -- so a fetch failure degrades to the same
+    // nothing-rendered state as the owner simply not having set one up
+    // yet, not a broken output screen.
+    fetch('config/referrals.json').then(r => r.json()).catch(() => ({})),
   ]);
   state.documents = docs;
   state.clauses = clauseData.clauses;
@@ -1078,6 +1084,7 @@ async function init() {
   state.intakeFlow = intakeFlow;
   state.nextSteps = nextSteps;
   state.seoBaseUrl = seoConfig.baseUrl || '';
+  state.referrals = referrals || {};
   buildJurisdictionIndex();
   renderCategoryFilter();
   renderTierFilter();
@@ -2407,6 +2414,93 @@ function renderRelatedDocuments() {
   });
 }
 
+// ---------- referral/partner links (CA Wedge Plan Step 16) ----------
+// Global Rule 14: "Referral/partner links need a plain disclosure
+// line and must never leak user data." Both are enforced here, not
+// left to config/referrals.json: the disclosure text below is a fixed
+// string, not something a config edit could weaken or drop, and the
+// link is always the configured url verbatim -- never built from
+// state.answers, the document id, or anything else about this
+// specific user or document, so there is nothing for the link itself
+// to leak. A slot renders only when it's both enabled and has a real
+// url; config/referrals.json ships with both null, so nothing shows
+// until the owner has actually picked a partner (same "nothing
+// invented" discipline as config/pricing.json/seo.json).
+const REFERRAL_DISCLOSURE = 'Paid referral -- Groundtruth may earn a commission if you use this link. Nothing about you or this document is sent to them.';
+
+function agentFieldDocument(doc) {
+  return (doc.fields || []).some(f => f.sharedFieldId === 'agentName' || f.sharedFieldId === 'agentAddress');
+}
+
+function activeReferralsFor(doc) {
+  const referrals = state.referrals || {};
+  const slots = [];
+  const registeredAgent = referrals.registeredAgent;
+  if (registeredAgent && registeredAgent.enabled && registeredAgent.url && agentFieldDocument(doc)) {
+    slots.push({
+      key: 'registeredAgent',
+      heading: 'Need a registered agent?',
+      body: registeredAgent.partnerName
+        ? `This document asks for an agent for service of process. ${registeredAgent.partnerName} is a referral partner that provides this service.`
+        : 'This document asks for an agent for service of process. The link below is to a referral partner that provides this service.',
+      linkText: registeredAgent.partnerName ? `Visit ${registeredAgent.partnerName}` : 'Visit this referral partner',
+      url: registeredAgent.url,
+    });
+  }
+  const attorneyReview = referrals.attorneyReview;
+  if (attorneyReview && attorneyReview.enabled && attorneyReview.url) {
+    slots.push({
+      key: 'attorneyReview',
+      heading: 'Want a lawyer to look this over?',
+      body: attorneyReview.partnerName
+        ? `${attorneyReview.partnerName} is a referral partner that can connect you with one.`
+        : 'The link below is to a referral partner that can connect you with one.',
+      linkText: attorneyReview.partnerName ? `Visit ${attorneyReview.partnerName}` : 'Visit this referral partner',
+      url: attorneyReview.url,
+    });
+  }
+  return slots;
+}
+
+function renderReferralLinks() {
+  const section = document.getElementById('output-referrals');
+  if (!section) return;
+  const slots = activeReferralsFor(state.document);
+  if (slots.length === 0) {
+    section.hidden = true;
+    return;
+  }
+  section.hidden = false;
+  section.innerHTML = '';
+  slots.forEach(slot => {
+    const block = document.createElement('div');
+    block.className = 'referral-block';
+
+    const h4 = document.createElement('h4');
+    h4.textContent = slot.heading;
+    block.appendChild(h4);
+
+    const body = document.createElement('p');
+    body.textContent = slot.body;
+    block.appendChild(body);
+
+    const link = document.createElement('a');
+    link.className = 'referral-link';
+    link.href = slot.url;
+    link.target = '_blank';
+    link.rel = 'nofollow sponsored noopener noreferrer';
+    link.textContent = slot.linkText;
+    block.appendChild(link);
+
+    const disclosure = document.createElement('p');
+    disclosure.className = 'referral-disclosure';
+    disclosure.textContent = REFERRAL_DISCLOSURE;
+    block.appendChild(disclosure);
+
+    section.appendChild(block);
+  });
+}
+
 // ---------- filing & next-steps packets, on-screen (Phase 6.4) ----------
 // Mirrors the signature/related-documents sections' render-once
 // pattern: every field answer, including the date a reminder is
@@ -2631,6 +2725,7 @@ function renderOutput() {
   renderSignatureSection();
   renderNextSteps();
   renderRelatedDocuments();
+  renderReferralLinks();
 }
 
 // Flips a verified clause's badge to an "edited" state the first time

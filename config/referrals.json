@@ -1,0 +1,15 @@
+{
+  "_note": "CA Wedge Plan Step 16: referral/partner links (Global Rule 14 -- a plain disclosure line and no user data ever leaked). Every url/partnerName below is a null placeholder, same discipline as config/pricing.json's priceUsd fields and config/seo.json's baseUrl: no real company has been picked from memory, and nothing renders until the owner sets both 'enabled' and a real 'url'. The disclosure line itself is NOT configurable here -- it's a fixed string in app.js (renderReferralLinks()) so an edit to this file can never accidentally weaken or remove it.",
+  "registeredAgent": {
+    "enabled": false,
+    "partnerName": null,
+    "url": null,
+    "_note": "Shown only on a document that actually asks for an agent for service of process (any field with sharedFieldId 'agentName' or 'agentAddress' -- confirmed against data/documents.json, e.g. articles_of_incorporation, llc_articles_of_organization, statement_of_information). Pick a real registered-agent service and its real affiliate/referral URL -- this project has no basis to recommend one from training data."
+  },
+  "attorneyReview": {
+    "enabled": false,
+    "partnerName": null,
+    "url": null,
+    "_note": "Shown on every document's output screen -- 'want a lawyer to look this over' is universally applicable, not specific to one document's content, so there's no document-specific claim to get wrong here. Pick a real attorney-referral service (e.g. a state bar lawyer-referral service or a vetted legal-marketplace partner) and its real affiliate/referral URL."
+  }
+}
