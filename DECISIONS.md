@@ -4347,3 +4347,59 @@ step's scope. Logged here rather than fixed in passing (global rule 15
 rule 11, since silently bundling an unrelated CSS fix into this commit
 would make the diff harder to review for what it actually claims to
 do). Added to the owner-facing follow-up list.
+
+## 2026-11-14 — CA Wedge Plan Step 13: the free contract reader as a front door, not a buried utility link
+
+**Task:** make the already-built, free, no-account contract reader
+("Read a contract": paste text, see what resembles something in
+Groundtruth's library) function as the plan's intended front door --
+a lead-generation hook anonymous visitors encounter immediately, not
+just one more item in a six-link utility nav.
+
+**What was already true before this step:** the matching engine
+(`contract_matcher.js`, run off the main thread in `contract_worker.js`)
+and its screen (`#screen-incoming` in index.html, wired in app.js)
+already existed from earlier Phase 9 work, already search the *entire*
+741-document corpus (not just the 128-document paid launch set --
+confirmed against `LAUNCH_SET_PROPOSAL.md`'s own description of Step
+13), and are already covered by `tools/regression.js`,
+`tests/performance/performance_budget.js`, and
+`tools/eval_contract_reader.js`. Confirmed `contract_worker.js` makes
+no network call of any kind (`importScripts('contract_matcher.js')`
+and `postMessage` only) -- the "nothing you paste here is sent
+anywhere" claim added to the screen's own copy is true, not aspirational.
+
+**What was missing, and what was added:** the reader was reachable
+only via a plain nav button ("Read a contract") with the same visual
+weight as "Inbox" or "Account" -- nothing on the actual landing screen
+(`#screen-picker`, "Choose a document") told a new visitor it existed,
+let alone that it's free and needs no account (Global Rule 3). Added
+a `.front-door-callout` block to `#screen-picker`, right after its
+lede and before the draft-resume banner -- the first interactive
+element a new visitor sees after the heading, not a late addition to
+scroll past. States plainly it's free, needs no account, describes
+only what the text resembles (never assesses the contract or advises
+on it), and that nothing pasted leaves the device. Styled to match the
+existing draft-banner's visual weight (`var(--surface-2)`/`var(--line)`
+tokens, already used elsewhere, so no new color pairs to re-verify for
+contrast). Stacks vertically under the existing 520px mobile
+breakpoint (same breakpoint `.doc-card` already uses) rather than
+letting text wrap around a fixed-width button -- caught by taking an
+actual 390px-viewport screenshot, not assumed. The original nav link
+stays, now a secondary path to the same screen.
+
+**Verification:** `copy_lint.py` (new copy, no advisory/enforcement
+phrasing), `node --check app.js`, `regression.js`, `golden.js`
+(741/741, unaffected -- this step touches no corpus data),
+`wizard_regression.js`, `wizard_unit.js`, `performance_budget.js`, and
+`merge_guard.py` against this branch's own upstream (clean: additions
+only) all pass. Took real Playwright screenshots at desktop (900px)
+and mobile (390px) width and confirmed clicking the new button
+actually navigates to `#screen-incoming`, rather than trusting the
+DOM wiring alone. Ran `axe_check.js` and confirmed its "screen-picker"
+color-contrast failure (both themes) is the same pre-existing,
+already-logged `.tier-A.tier-pill` badge-contrast defect from the
+prior step's check -- ran axe directly against the live page to get
+the violating elements' actual selectors (all five are
+`.tier-A.tier-pill`, none are the new callout) rather than assuming
+the count matched by coincidence.

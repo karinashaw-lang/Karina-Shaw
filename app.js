@@ -3503,6 +3503,9 @@ document.getElementById('library-clear').addEventListener('click', () => {
 document.getElementById('incoming-link').addEventListener('click', () => {
   showScreen('screen-incoming');
 });
+document.getElementById('front-door-incoming-link').addEventListener('click', () => {
+  showScreen('screen-incoming');
+});
 document.getElementById('intake-link').addEventListener('click', () => {
   startIntake();
 });

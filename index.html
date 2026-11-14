@@ -37,6 +37,13 @@
     <section id="screen-picker" class="screen active">
       <h1 tabindex="-1">Choose a document</h1>
       <p class="lede">Every clause below either links to a real source, or says plainly that it hasn't been checked yet.</p>
+      <div class="front-door-callout">
+        <div class="front-door-callout-text">
+          <strong>Already have a contract someone sent you?</strong>
+          <p>Paste it in and see which parts resemble something in Groundtruth's library, each with its own source. Free, no account needed — this describes what the text resembles, it doesn't assess your contract or tell you what to do about it.</p>
+        </div>
+        <button type="button" class="primary" id="front-door-incoming-link">Read a contract</button>
+      </div>
       <div id="draft-banner" class="draft-banner" hidden aria-live="polite">
         <span id="draft-banner-text"></span>
         <div class="draft-banner-actions">
@@ -140,7 +147,7 @@
 
     <section id="screen-incoming" class="screen">
       <h1 tabindex="-1">Read a contract</h1>
-      <p class="lede">Paste in a contract, offer letter, or agreement someone sent you. Each passage is compared against Groundtruth's clause library — where it resembles something already checked, you'll see the law it rests on; where it doesn't, that's shown plainly too. This describes what the text resembles. It doesn't assess your contract or tell you what to do about it.</p>
+      <p class="lede">Paste in a contract, offer letter, or agreement someone sent you. Each passage is compared against Groundtruth's clause library — where it resembles something already checked, you'll see the law it rests on; where it doesn't, that's shown plainly too. This describes what the text resembles. It doesn't assess your contract or tell you what to do about it. Free, no account needed — nothing you paste here is sent anywhere; the comparison runs on this device.</p>
       <form id="incoming-form" class="incoming-form">
         <label for="incoming-text" class="visually-hidden">Contract text to read</label>
         <textarea id="incoming-text" class="incoming-text" rows="14" placeholder="Paste the text of a contract here..."></textarea>
