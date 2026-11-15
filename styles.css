@@ -240,6 +240,43 @@ h1{
   gap:16px;
 }
 
+/* ---------- trust page (CA Wedge Plan Step 18) ---------- */
+.trust-lede{ max-width:62ch; }
+.trust-stats{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(150px, 1fr));
+  gap:14px;
+  margin:28px 0 36px;
+}
+.trust-stat{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:6px;
+  padding:16px 18px;
+}
+.trust-stat .num{
+  display:block;
+  font-family:'Fraunces', Georgia, serif;
+  font-weight:600;
+  font-size:28px;
+  line-height:1.1;
+  margin:0 0 4px;
+}
+.trust-stat .label{ font-size:13px; color:var(--ink-soft); }
+.trust-section{ margin:0 0 32px; }
+.trust-section h2{
+  font-family:'Fraunces', Georgia, serif;
+  font-weight:600;
+  font-size:21px;
+  margin:0 0 10px;
+}
+.trust-section p{ margin:0 0 10px; max-width:62ch; }
+.trust-stale-note{
+  font-size:13px;
+  color:var(--ink-soft);
+  font-family:'IBM Plex Mono', ui-monospace, monospace;
+}
+
 /* ---------- category filter ----------
    Self-select browsing by category — not a "describe your situation"
    input. This filters existing, plainly-described documents; it

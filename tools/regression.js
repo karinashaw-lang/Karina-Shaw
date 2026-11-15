@@ -184,6 +184,23 @@ const { chromium } = require('playwright');
     console.log((bad ? 'FAIL ' : 'OK   ') + `${file}: draft notice present: ${hasDraftNotice}, CSP violations: ${newCspViolations.length}`);
   }
 
+  // CA Wedge Plan Step 18: trust.html. Not a legal-notice page (no
+  // draft-notice requirement), but it does run its own external
+  // script (trust.js) under its own CSP, so worth the same
+  // loads-clean/no-CSP-violation check, plus confirming the live
+  // stats it computes from tiers.json/verification_levels.json
+  // actually rendered rather than silently staying empty.
+  {
+    const before = errs.length;
+    await p.goto('http://localhost:8933/trust.html', { waitUntil: 'networkidle' });
+    const statCardCount = await p.evaluate(() => document.querySelectorAll('.trust-stat').length);
+    const newErrs = errs.slice(before);
+    const newCspViolations = newErrs.filter(e => /Content Security Policy|Refused to/i.test(e));
+    const bad = statCardCount === 0 || newCspViolations.length > 0;
+    if (bad) ok = false;
+    console.log((bad ? 'FAIL ' : 'OK   ') + `trust.html: ${statCardCount} stat(s) rendered, CSP violations: ${newCspViolations.length}`);
+  }
+
   await b.close();
   if (!ok) { console.log('\nFAILED'); process.exit(1); }
   console.log('\nregression passed');

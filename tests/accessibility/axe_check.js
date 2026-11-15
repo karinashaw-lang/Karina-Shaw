@@ -130,8 +130,10 @@ async function forEachTheme(page, fn) {
     await scan(page, `screen-output: ${docId}`);
   }
 
-  // ---- Phase 9.5: the new standalone legal-notice pages ----
-  for (const file of ['privacy.html', 'terms.html', 'storage-notice.html']) {
+  // ---- Phase 9.5: the new standalone legal-notice pages, plus
+  // CA Wedge Plan Step 18's trust.html (not a legal-notice page, but
+  // the same "loads standalone, worth its own axe pass" reasoning) ----
+  for (const file of ['privacy.html', 'terms.html', 'storage-notice.html', 'trust.html']) {
     await page.goto(`http://localhost:8933/${file}`, { waitUntil: 'networkidle' });
     await forEachTheme(page, async theme => { await scan(page, `${file} (${theme})`); });
   }

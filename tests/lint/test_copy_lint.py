@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Tests for lint/copy_lint.py (Phase 9.5): the app's own UI copy
-(index.html, sign.html, app.js, account.js, sign.js) must not contain
-a banned advisory or enforcement-claim phrase. Builds a disposable
-directory with synthetic stand-ins for the 5 scanned files plus a real
-copy of both phrase lists, rather than mutating the real app files.
+(index.html, sign.html, app.js, account.js, sign.js, trust.html) must
+not contain a banned advisory or enforcement-claim phrase. Builds a
+disposable directory with synthetic stand-ins for the scanned files
+plus a real copy of both phrase lists, rather than mutating the real
+app files.
 
 Run directly: python3 tests/lint/test_copy_lint.py
 """
@@ -19,7 +20,7 @@ COPY_LINT = os.path.join(REPO_ROOT, 'lint', 'copy_lint.py')
 REAL_ADVISORY = os.path.join(REPO_ROOT, 'lint', 'advisory_phrases.json')
 REAL_ENFORCEMENT = os.path.join(REPO_ROOT, 'lint', 'enforcement_phrases.json')
 
-SCAN_FILES = ['index.html', 'sign.html', 'app.js', 'account.js', 'sign.js']
+SCAN_FILES = ['index.html', 'sign.html', 'app.js', 'account.js', 'sign.js', 'trust.html']
 
 
 def build_dir(contents_by_file):
@@ -80,6 +81,11 @@ class CopyLintTests(unittest.TestCase):
         r = self.run_with({'account.js': "const a = 1;\nconst b = 2;\nconst c = 'we advise waiting';"})
         self.assertEqual(r.returncode, 1, r.stdout + r.stderr)
         self.assertIn('account.js:3:', r.stderr)
+
+    def test_trust_page_is_scanned(self):
+        r = self.run_with({'trust.html': "<p>You should review this carefully.</p>"})
+        self.assertEqual(r.returncode, 1, r.stdout + r.stderr)
+        self.assertIn('trust.html', r.stderr)
 
     def test_privacy_and_terms_pages_are_not_scanned(self):
         # Scope decision recorded in copy_lint.py's docstring and

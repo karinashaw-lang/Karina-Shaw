@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- CA Wedge Plan Step 18. Needs script-src/connect-src 'self' --
+       unlike privacy.html/terms.html/storage-notice.html, this page
+       computes its own stats client-side from the same public JSON
+       files index.html already fetches (tiers.json,
+       verification_levels.json), rather than having a number typed
+       into the page by hand (Global Rule 13). No external script, no
+       Supabase call, no worker -- tighter than index.html's own CSP. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self'; connect-src 'self'; script-src 'self'; base-uri 'self'; form-action 'none';" />
+  <title>Trust — Groundtruth</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app legal">
+    <div class="topbar">
+      <div class="wordmark">Ground<span>truth</span></div>
+    </div>
+    <h1 tabindex="-1">Trust</h1>
+    <p class="lede trust-lede">Every number on this page is computed live from the same corpus
+    data the app itself runs on — not typed in by hand and not updated separately from reality.
+    If the underlying numbers change, this page changes with them.</p>
+
+    <div id="trust-stats" class="trust-stats" aria-live="polite"></div>
+    <p id="trust-stale-note" class="trust-stale-note" hidden>Stats couldn't load — the numbers
+    above may be missing. Nothing else on this page depends on them.</p>
+
+    <div class="trust-section">
+      <h2>What "Tier A/B/C" and "Cited/Verified/Adversarially checked" mean</h2>
+      <p>A document's tier and a clause's verification level are computed, never hand-assigned —
+      see <a href="methodology.html">methodology</a> for the exact, nine-item checklist a clause
+      has to pass to count as "Verified," and what "Adversarially checked" adds on top of that.
+      The counts above are the same figures that checklist produces, corpus-wide.</p>
+    </div>
+
+    <div class="trust-section">
+      <h2>Check it yourself, per document</h2>
+      <p>Every document has its own public verification record: every legal-authority clause it
+      uses, each with its level, its citation, the exact quote checked, and a live link to the
+      primary source — so a claim is checkable against the government's own text, not just this
+      product's say-so.</p>
+      <p id="trust-sample-link"></p>
+    </div>
+
+    <div class="trust-section">
+      <h2>What enforces the paywall</h2>
+      <p>Paid features (cloud save, sharing, e-signature, exports with a sources appendix) are
+      gated by a Postgres row-level-security policy on the server, not just hidden in the
+      browser's UI — a signed-in user without an active subscription cannot write those rows at
+      all, regardless of what the client-side code does or doesn't show. See
+      <a href="privacy.html">Privacy Policy</a> for what account data that involves.</p>
+    </div>
+
+    <div class="trust-section">
+      <h2>What this page doesn't claim</h2>
+      <p>A high tier or verification level describes how a clause's sourcing was checked — it is
+      not legal advice, and it is not a claim that a document is right for your situation. See
+      <a href="methodology.html">methodology</a> and each document's own notices for exactly what
+      is and isn't claimed.</p>
+    </div>
+
+    <footer class="hint">Computed from <code>tiers.json</code> and
+    <code>verification_levels.json</code> at the time this page loaded. See
+    <a href="changelog.html">the changelog</a> for defects found and fixed along the way.</footer>
+  </div>
+
+  <script src="trust.js" defer></script>
+</body>
+</html>

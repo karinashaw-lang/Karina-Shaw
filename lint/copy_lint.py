@@ -35,7 +35,7 @@ import sys
 # for the same reason: it's what lets tests/lint/test_copy_lint.py run
 # this against a disposable tmp directory via cwd=, instead of always
 # scanning the real repo regardless of what's being tested.
-SCAN_FILES = ['index.html', 'sign.html', 'app.js', 'account.js', 'sign.js']
+SCAN_FILES = ['index.html', 'sign.html', 'app.js', 'account.js', 'sign.js', 'trust.html']
 
 
 def load_phrases():

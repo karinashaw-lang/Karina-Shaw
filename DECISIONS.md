@@ -4677,3 +4677,78 @@ no live Resend account to send through regardless; its logic was
 traced by hand against Resend's documented API shape and this
 project's own live schema, and it deployed successfully (Supabase's
 own bundler accepted it), but no end-to-end send has actually run.
+
+## 2026-11-15 — CA Wedge Plan Step 18: a live, self-updating public /trust page
+
+**Task:** a public `/trust` page, per the master plan.
+
+**Design choice: computed client-side, not a Python generator.**
+Every other public-facing number this project ships is either
+generated at build time (`tools/generate_seo_pages.py`,
+`generate_verify_pages.py`) or computed in the browser from the same
+JSON the app already serves (`renderOutputTierSummary()` in app.js).
+A trust page's whole purpose is "this is honest, checkable proof," so
+its own numbers get the same treatment as every other on-screen claim
+(Global Rule 13) -- `trust.html` fetches `tiers.json` and
+`verification_levels.json` (both already-generated, already-committed
+aggregate files -- not `data/clauses.json`, which is 21MB and would
+be wasteful to ship to a lightweight public page just for a count)
+and renders six real numbers: total documents, Tier A/B document
+counts, and cited/verified/adversarially-checked clause counts across
+the whole corpus. There is no `--check`-staleness risk the way a
+generated static file would have, because the numbers are never
+frozen into the file at all -- they're computed the instant the page
+loads, every time, directly off whatever `tiers.json`/
+`verification_levels.json` currently say.
+
+**The sample verification-record link is picked live, not hand-typed:**
+`trust.js` finds the first Tier A document in the fetched `tiers.json`
+and links to its `/verify/<id>.html` record (Step 11), rather than a
+specific document id written into the HTML that could stop being
+Tier A, or stop existing, later without this page noticing.
+
+**What the page deliberately does not claim:** no review count or
+star rating -- Step 17's review-capture email only just started being
+able to generate real reviews, and there is no live integration
+reading them back yet, so showing a count or rating here would be
+exactly the kind of fabricated social proof Global Rule 13 exists to
+rule out. The page explicitly scopes what tier/verification-level
+claims do and don't mean ("not legal advice... not a claim that a
+document is right for your situation"), linking to `methodology.html`
+for the full nine-item checklist rather than re-summarizing it loosely
+here.
+
+**A real CSP mistake caught by actually loading the page, not
+assumed correct from reading the markup:** the first draft used an
+inline `<style>` block and an inline `<script>` block under a
+`script-src 'self'` policy -- `'self'` only covers *externally
+loaded* same-origin files, not inline tags, so both were silently
+blocked by the browser on the very first real load (caught via a
+Playwright console-error listener, not by reading the CSP spec and
+assuming it would work). Fixed the way `index.html`/`app.js` already
+do it: moved the style rules into `styles.css` and the script into a
+new external `trust.js`, loaded via `<script src="trust.js" defer>`,
+with no change to the CSP itself -- re-verified with a live load:
+zero console errors, zero CSP violations, all six stats render, and
+the sample link resolves to a real id.
+
+**Extended, not bypassed, three existing gates** rather than letting
+this new page go unchecked: added `trust.html` to `copy_lint.py`'s
+`SCAN_FILES` (it's Groundtruth's own voice making claims about itself,
+the same category `index.html`/`app.js` already are -- not a legal
+contract document like `privacy.html`/`terms.html`, which stay
+out of scope for the documented reason in `copy_lint.py`'s own
+docstring) and added `test_trust_page_is_scanned` to its test suite;
+added a `trust.html` check to `tools/regression.js` (loads clean, no
+CSP violations, confirms stats actually rendered -- not just that the
+page returns 200); added `trust.html` to `tests/accessibility/axe_check.js`'s
+legal-page-style scan loop (0 serious/critical violations in both
+themes -- a real pass, not an assumption).
+
+**Verification:** all of the above, plus `validate_corpus.py`
+(unaffected -- no corpus data touched), `node --check trust.js`, and
+`merge_guard.py` against this branch's own upstream (clean: additions
+only). `axe_check.js`'s overall run still fails on the same
+pre-existing `.tier-A.tier-pill` color-contrast defect logged in this
+file's Step 13/14/16/17 entries -- confirmed unrelated: `trust.html`
+itself reports 0 serious/critical violations in both themes.
