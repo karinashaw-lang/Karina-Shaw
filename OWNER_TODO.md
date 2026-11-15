@@ -146,3 +146,31 @@ it was left as a placeholder, same discipline as `config/pricing.json`'s
 `registeredAgent` only ever shows on a document that actually asks for
 an agent for service of process; `attorneyReview` shows on every
 document's output screen once enabled.
+
+## 7. Review-capture email: six secrets and a schedule, all dashboard-only
+
+The `send-review-requests` edge function (CA Wedge Plan Step 17) sends
+one honest, one-time "would you leave a review" email per subscriber,
+14 days after their subscription became active, and marks
+`entitlements.review_requested_at` so it never repeats for that
+subscription. It is deployed and fully written, but **refuses to send
+anything** until every one of these Supabase edge function secrets
+exists (**Supabase dashboard → this project → Edge Functions →
+send-review-requests → Secrets**, or `create_edge_function_secret`):
+
+| Secret | What it's for |
+| --- | --- |
+| `RESEND_API_KEY` | A [Resend](https://resend.com) API key (or swap the one `fetch('https://api.resend.com/emails', ...)` call in `supabase/functions/send-review-requests/index.ts` for whichever email provider you'd rather use). |
+| `RESEND_FROM_ADDRESS` | The "from" address Resend is allowed to send as (must be a domain you've verified with Resend). |
+| `REVIEW_EMAIL_CRON_SECRET` | A random string you make up. Whatever triggers this function on a schedule (see below) must send it back as the `X-Cron-Secret` request header, or the function returns 401. |
+| `OWNER_REPLY_TO_EMAIL` | Shown in the email as the reply-to address for feedback/opt-out requests. Can reuse the same address item 4 above asks for. |
+| `OWNER_MAILING_ADDRESS` | **Required by federal law** (CAN-SPAM, 15 U.S.C. § 7704) in every commercial email — a real postal address. This function will not send a single email without it; there's no "skip this" option. |
+| `REVIEW_LINK_URL` | Where the email actually sends people to leave a review (e.g. a Google Business Profile review link, a Trustpilot page). Nothing invented here either. |
+
+Once all six exist, you still need to make the function actually fire
+on a schedule — nothing calls it automatically. Easiest path:
+**Supabase dashboard → this project → Edge Functions → Cron** (or any
+external scheduler that can send an HTTP request), pointed at this
+function's URL, daily, with header `X-Cron-Secret: <the same value as
+the REVIEW_EMAIL_CRON_SECRET secret above>`. A run with nothing to do
+(no subscription has crossed 14 days yet) is a harmless no-op.

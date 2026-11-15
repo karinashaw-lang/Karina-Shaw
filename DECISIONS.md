@@ -4592,3 +4592,88 @@ pre-existing `.tier-A.tier-pill` contrast defect, unaffected -- the
 new section is hidden by default in that test's unconfigured-referrals
 session), and `merge_guard.py` against this branch's own upstream
 (clean: additions only) all pass.
+
+## 2026-11-14/15 — CA Wedge Plan Step 17: review-capture email, gated on six owner-supplied secrets
+
+**Task:** send subscribers a review-request email, per the master
+plan.
+
+**What was built:** `supabase/functions/send-review-requests/index.ts`
+(deployed, `verify_jwt: false`), triggered only by a shared
+`X-Cron-Secret` header (no user session exists in this context at
+all, same reasoning `stripe-webhook` already uses a signature instead
+of a JWT). Queries `public.entitlements` joined to `auth.users` for
+every `status = 'active'` row with `review_requested_at is null` and
+`created_at <= now() - interval '14 days'`, sends one email per match
+via Resend's API, and sets `review_requested_at = now()` only on a
+confirmed-successful send -- a send that succeeds but fails to record
+is logged loudly rather than silently risking a duplicate next run.
+Added `public.entitlements.review_requested_at` (nullable timestamptz)
+via `supabase/migrations/20261114000000_entitlements_review_requested_at.sql`,
+applied to the live project and confirmed via `get_advisors` that it
+introduced no new security finding.
+
+**Why it won't actually send anything yet -- six separate secrets,
+not one:** `RESEND_API_KEY`/`RESEND_FROM_ADDRESS` (the email
+provider), `REVIEW_EMAIL_CRON_SECRET` (who may trigger it). Two more
+are compliance requirements this session has no basis to fabricate:
+`OWNER_MAILING_ADDRESS` -- CAN-SPAM (15 U.S.C. § 7704) requires a
+real physical postal address in every commercial email, and rather
+than omit it (non-compliant) or invent one (dishonest), the function
+simply refuses to send anything at all until a real one exists; and
+`REVIEW_LINK_URL` -- nowhere to actually leave a review otherwise,
+same "don't invent a destination" discipline as `config/referrals.json`
+(Step 16) and `config/seo.json`'s `baseUrl`. All six are Supabase edge
+function secrets, not repo config -- unlike `config/referrals.json`'s
+slots, none of this is client-visible or fetched by the browser, so
+it belongs with the Stripe keys, not alongside `config/pricing.json`.
+Added to `OWNER_TODO.md` as item 7, including the one dashboard-only
+step nothing in this session can do -- actually scheduling the
+function to fire periodically (Supabase's own Edge Functions Cron UI,
+or any external scheduler that can send the shared-secret header).
+
+**The email itself:** no incentive, discount, or anything conditioned
+on a positive review -- the FTC's Consumer Review Fairness Act and
+California's own consumer-review protections both forbid exactly
+that. States plainly it's the only email of its kind for that
+subscription (true by construction: `review_requested_at` prevents a
+second one ever being sent for the same row) and that a critical
+review is just as useful as a positive one.
+
+**A real, mechanical gap found and fixed while verifying this, not
+worked around:** `tools/generate_data_inventory.py`'s `TABLE_RE` only
+ever parsed a table's columns from its original `CREATE TABLE`
+statement -- a column added later via `ALTER TABLE ... ADD COLUMN`
+(the normal way to extend a table that's already live; this project's
+own migrations never recreate a `CREATE TABLE` statement from
+scratch) was silently invisible to the generated doc. Caught because
+regenerating `PRIVACY_DATA_INVENTORY.md` after this migration showed
+`entitlements`'s prose correctly mentioning `review_requested_at` (a
+hand-written sentence) while its mechanically-extracted **Columns:**
+line still didn't list it -- a real drift between the doc's prose and
+its own "generated from the schema" column list, not a hypothetical
+one. Fixed by adding `ALTER_ADD_COLUMN_RE` and appending matched
+columns to the owning table's list in file order (same
+already-established reasoning as the policy create/drop replay this
+tool already does), confirmed the column no longer silently
+duplicates if some future migration's `ADD COLUMN IF NOT EXISTS`
+matches twice, and added
+`test_alter_table_add_column_appends_to_known_table` to
+`tests/tools/test_generate_data_inventory.py` (now 7/7) asserting both
+that the column appears and that it appears *after* the original
+columns, not interleaved with them.
+
+**Verification:** all 22 Python tooling tests (including the newly
+extended `test_generate_data_inventory.py`), `validate_corpus.py`
+(unaffected -- no corpus data touched), `python3
+tools/generate_data_inventory.py --check` (now up to date),
+`get_advisors(type: "security")` against the live project (no new
+finding beyond the three already-documented pre-existing ones), and
+`merge_guard.py` against this branch's own upstream (clean: additions
+only) all pass. The edge function itself is, like every other one in
+this project, **not invoked from this sandbox** -- this sandbox's
+egress policy blocks the project's own Supabase domain and there is
+no live Resend account to send through regardless; its logic was
+traced by hand against Resend's documented API shape and this
+project's own live schema, and it deployed successfully (Supabase's
+own bundler accepted it), but no end-to-end send has actually run.

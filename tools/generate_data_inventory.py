@@ -29,6 +29,8 @@ SQL_FILES = ['supabase/schema.sql'] + sorted(
 OUT_PATH = 'PRIVACY_DATA_INVENTORY.md'
 
 TABLE_RE = re.compile(r'create table(?: if not exists)? public\.(\w+)\s*\(\n([\s\S]*?)\n\);')
+ALTER_ADD_COLUMN_RE = re.compile(
+    r'alter table public\.(\w+)\s+add column(?: if not exists)?\s+(\w+)\s+([\w\[\]]+)', re.IGNORECASE)
 POLICY_CREATE_RE = re.compile(r'create policy\s+"([^"]+)"\s+on\s+public\.(\w+)\s+for\s+(select|insert|update|delete)', re.IGNORECASE)
 POLICY_DROP_RE = re.compile(r'drop policy(?: if exists)?\s+"([^"]+)"\s+on\s+public\.(\w+)', re.IGNORECASE)
 SKIP_LINE_PREFIXES = ('constraint ', 'check ', 'check(', 'unique ', 'unique(', 'primary key (', 'foreign key')
@@ -110,10 +112,13 @@ TABLE_NOTES = {
     ),
     'entitlements': (
         'Whether your subscription is currently active: a status, the Stripe customer/subscription '
-        'ids, and the current billing period end. Written only by the Stripe webhook (the '
-        'service-role key, never your own session) -- you can read your own row but never write '
-        'one yourself, which is what actually enforces the paywall on cloud save, sharing, and '
-        'e-signature (see supabase/migrations/20261113000000_entitlements.sql). ',
+        'ids, the current billing period end, and whether a review-request email has been sent to '
+        'you for this subscription. Written only by the Stripe webhook or the scheduled '
+        'send-review-requests function (both use the service-role key, never your own session) -- '
+        'you can read your own row but never write one yourself, which is what actually enforces '
+        'the paywall on cloud save, sharing, and e-signature (see '
+        'supabase/migrations/20261113000000_entitlements.sql and '
+        'supabase/migrations/20261114000000_entitlements_review_requested_at.sql). ',
         'Kept until account deletion; a cancelled or expired subscription is not deleted, only '
         'marked as such, so your billing history stays intact until you delete your account.',
     ),
@@ -179,6 +184,18 @@ def extract_tables():
                 if len(tokens) >= 2:
                     columns.append((tokens[0], tokens[1]))
             tables.setdefault(name, {'columns': columns, 'policies': {}, 'source': path})
+
+        # A column can also arrive later via ALTER TABLE ... ADD COLUMN
+        # (the normal way to extend a table that's already live --
+        # recreating its CREATE TABLE statement from scratch isn't how
+        # this project's migrations work). Appended in file order, same
+        # as the policy events below, so a later migration's added
+        # column always shows up after the ones the original CREATE
+        # TABLE statement declared.
+        for m in ALTER_ADD_COLUMN_RE.finditer(text):
+            table, col_name, col_type = m.group(1), m.group(2), m.group(3)
+            if table in tables and not any(c[0] == col_name for c in tables[table]['columns']):
+                tables[table]['columns'].append((col_name, col_type))
 
         # A policy can be dropped and recreated under a new name later
         # (a migration strengthening an existing policy's condition,

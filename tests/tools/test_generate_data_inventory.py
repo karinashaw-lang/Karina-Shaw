@@ -34,6 +34,11 @@ UNKNOWN_TABLE_SQL = """create table public.widgets (
 );
 """
 
+KNOWN_TABLE_WITH_LATER_ALTER_SQL = KNOWN_TABLE_SQL + """
+alter table public.agreements
+  add column if not exists archived_at timestamptz;
+"""
+
 
 def build_dir(schema_sql, app_js='', account_js=''):
     d = tempfile.mkdtemp(prefix='data_inventory_test_')
@@ -79,6 +84,21 @@ class GenerateDataInventoryTests(unittest.TestCase):
         self.assertIn('`id` (text)', out)
         self.assertIn('`user_id` (uuid)', out)
         self.assertIn('select: "Users can view their own agreements"', out)
+
+    def test_alter_table_add_column_appends_to_known_table(self):
+        # A column declared later via ALTER TABLE ... ADD COLUMN (the
+        # normal way to extend a table that's already live) must show
+        # up alongside the ones its original CREATE TABLE declared,
+        # not be silently missing from the generated doc.
+        d = self.mkdir(KNOWN_TABLE_WITH_LATER_ALTER_SQL)
+        r = run_generate(d)
+        self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+        with open(os.path.join(d, 'PRIVACY_DATA_INVENTORY.md')) as f:
+            out = f.read()
+        self.assertIn('`archived_at` (timestamptz)', out)
+        # And it comes after the original columns, not interleaved or
+        # ahead of them -- migration order should read as migration order.
+        self.assertLess(out.index('`title` (text)'), out.index('`archived_at` (timestamptz)'))
 
     def test_unknown_table_is_a_hard_error(self):
         d = self.mkdir(UNKNOWN_TABLE_SQL)
