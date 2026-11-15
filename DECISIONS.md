@@ -4883,3 +4883,39 @@ violations, both themes, both pages, unaffected), `copy_lint.py`
 (unaffected -- privacy.html/terms.html are deliberately out of its
 scope, per its own docstring), and `validate_corpus.py`/`merge_guard.py`
 (unaffected -- no corpus data touched) all pass.
+
+## 2026-11-15 — CA Wedge Plan Step 21: launch-critical checks, the actual user journey rather than another per-document gate
+
+**Task:** "launch-critical product checks," per the master plan.
+
+**Why this is a different question than the existing CI gates
+already answer:** `regression.js`/`wizard_regression.js`/`golden.js`/
+`axe_check.js` already run against all 741 documents on every push --
+real coverage, but document-by-document, not "does the specific path
+a paying user actually takes hold together end to end." Wrote (and
+ran, not committed -- same one-off-script convention as every other
+verification pass in this file) a Playwright script asking that
+narrower, more product-shaped question: picker screen → each of the 7
+wedge-cluster documents → wizard → output → all four export formats →
+save to library → reload the page from scratch → confirm the entry
+is still there; every topbar nav item and standalone page actually
+reachable (HTTP 200, no new console error) rather than assumed from
+the markup; the filing/next-steps section actually visible for the
+two wedge documents with a real entry (not just covered in isolation
+by `tests/filing/next_steps.js`); the referral section degrading to
+fully hidden, not partially broken, against `config/referrals.json`'s
+real as-shipped (both-disabled) state.
+
+**Result: 45/45 checks passed, 0 failures, no code changes needed.**
+Recorded in the new `LAUNCH_CRITICAL_CHECKS.md` -- what was checked,
+the exact result, and (per this project's standing honesty
+discipline) what this pass explicitly does *not* cover: the real
+Stripe checkout flow and server-side entitlement gating, which this
+sandbox cannot reach (same disclosed limitation as every edge
+function and `tests/auth_roundtrip.js`), and a second human's
+judgment on copy/pricing/design, which is Step 23's and the owner's
+job, not a mechanical pass's.
+
+**Verification:** `validate_corpus.py`/`merge_guard.py` against this
+branch's own upstream (unaffected -- no corpus or app code changed,
+only the new markdown file added; clean: additions only).
