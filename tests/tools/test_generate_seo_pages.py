@@ -127,6 +127,55 @@ class TestGenerateSeoPages(unittest.TestCase):
         self.assertEqual(gen.compute_doc_stage(doc, clauses_by_id, 'B', {'c1': ['major']}), 4)
         self.assertEqual(gen.compute_doc_stage(doc, clauses_by_id, 'C', {}), 4)
 
+    def test_wedge_first_promotes_tier_b_wedge_doc_to_stage_1(self):
+        # CA Wedge Plan Step 22: a wedge-cluster document is stage 1 under
+        # wedge_first=True even at Tier B -- the whole point of "wedge
+        # first, 2 waves" is that cluster membership, not corpus-wide
+        # tier ranking, decides Wave 1.
+        wedge_id = next(iter(gen.WEDGE_CLUSTER_DOC_IDS))
+        doc = {'id': wedge_id, 'clauseOrder': ['c1']}
+        clauses_by_id = {'c1': {'id': 'c1'}}
+        self.assertEqual(gen.compute_doc_stage(doc, clauses_by_id, 'B', {}, wedge_first=True), 1)
+        # Same document, same inputs, without wedge_first -- ordinary
+        # Tier B behavior (stage 2), confirming the override is additive,
+        # not a change to the non-wedge default.
+        self.assertEqual(gen.compute_doc_stage(doc, clauses_by_id, 'B', {}, wedge_first=False), 2)
+
+    def test_wedge_first_does_not_rescue_a_tier_c_wedge_doc(self):
+        # Business priority never overrides a real correctness gap
+        # (Global Rule 11) -- a wedge document still at Tier C stays
+        # excluded even with wedge_first=True.
+        wedge_id = next(iter(gen.WEDGE_CLUSTER_DOC_IDS))
+        doc = {'id': wedge_id, 'clauseOrder': ['c1']}
+        clauses_by_id = {'c1': {'id': 'c1'}}
+        self.assertEqual(gen.compute_doc_stage(doc, clauses_by_id, 'C', {}, wedge_first=True), 4)
+
+    def test_wedge_first_does_not_rescue_an_open_blocker(self):
+        wedge_id = next(iter(gen.WEDGE_CLUSTER_DOC_IDS))
+        doc = {'id': wedge_id, 'clauseOrder': ['c1']}
+        clauses_by_id = {'c1': {'id': 'c1'}}
+        self.assertEqual(gen.compute_doc_stage(doc, clauses_by_id, 'B', {'c1': ['blocker']}, wedge_first=True), 4)
+
+    def test_wedge_first_leaves_non_wedge_documents_unaffected(self):
+        doc = {'id': 'not_a_wedge_doc', 'clauseOrder': ['c1']}
+        clauses_by_id = {'c1': {'id': 'c1'}}
+        self.assertEqual(gen.compute_doc_stage(doc, clauses_by_id, 'B', {}, wedge_first=True), 2)
+
+    def test_wedge_first_stage_1_indexes_the_whole_live_wedge_cluster(self):
+        # Against the real, live corpus (not a synthetic fixture): every
+        # wedge-cluster document is indexable at stage 1 with
+        # wedge_first=True. This is the actual deliverable Step 22 asks
+        # for -- confirms it against real data, not just the unit-level
+        # compute_doc_stage() checks above.
+        with tempfile.TemporaryDirectory() as tmp:
+            pages = gen.generate(tmp, stage=1, wedge_first=True)
+            indexable_ids = {
+                p['path'].rsplit('/', 1)[-1][:-len('.html')]
+                for p in pages if p['path'].startswith('documents/') and not p.get('noindex')
+            }
+            missing = gen.WEDGE_CLUSTER_DOC_IDS - indexable_ids
+            self.assertEqual(missing, set(), f'wedge document(s) not indexable at wedge-first stage 1: {missing}')
+
 
 class TestValidateSeoPages(unittest.TestCase):
     def test_body_text_strips_head_and_tags(self):

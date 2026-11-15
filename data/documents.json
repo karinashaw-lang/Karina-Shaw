@@ -3957,7 +3957,8 @@
         "type": "text",
         "required": true,
         "placeholder": "member-managed",
-        "example": "member-managed"
+        "example": "member-managed",
+        "whyWeAsk": "The articles' own declaration states plainly whether members manage the LLC directly or delegate that to appointed managers. California's articles-of-organization statute doesn't itself require this statement, but leaving it blank would leave the declaration's own sentence incomplete."
       },
       {
         "id": "agentName",
@@ -3983,7 +3984,8 @@
         "type": "person-name",
         "required": true,
         "placeholder": "Jordan Lee",
-        "example": "Jordan Lee"
+        "example": "Jordan Lee",
+        "whyWeAsk": "The person signing these articles as the organizer -- the one who prepares and files them with the Secretary of State. California's articles-of-organization statute requires the document to be signed by an organizer; this is who that is."
       },
       {
         "id": "articlesFiledDate",
@@ -6456,7 +6458,8 @@
         "type": "text",
         "required": true,
         "placeholder": "Jordan Lee, CEO; Pat Morgan, Secretary and CFO",
-        "example": "Jordan Lee, CEO; Pat Morgan, Secretary and CFO"
+        "example": "Jordan Lee, CEO; Pat Morgan, Secretary and CFO",
+        "whyWeAsk": "California's Statement of Information statute requires naming the entity's managers (or, if none, its members) or a corporation's directors and officers by name and address -- see the required-content clauses above for exactly what's required for each entity type."
       },
       {
         "id": "businessActivityDescription",
@@ -15119,7 +15122,8 @@
         "type": "person-name",
         "required": true,
         "placeholder": "Jordan Lee",
-        "example": "Jordan Lee"
+        "example": "Jordan Lee",
+        "whyWeAsk": "The IRS's online EIN application requires naming a 'responsible party' -- the person who controls, manages, or owns the entity -- and, per the eligibility rule above, that person's own Social Security number or ITIN to actually submit an application."
       },
       {
         "id": "ssnOrItin",
@@ -15128,6 +15132,7 @@
         "required": false,
         "placeholder": "XXX-XX-XXXX",
         "example": "XXX-XX-XXXX",
+        "whyWeAsk": "The IRS's online EIN tool requires the responsible party's own SSN or ITIN to actually submit an application. This document never transmits anything to the IRS -- this field is here only so you have it on hand when you apply.",
         "sensitive": true
       },
       {
@@ -15201,7 +15206,8 @@
         "type": "person-name",
         "required": true,
         "placeholder": "Pat Morgan",
-        "example": "Pat Morgan"
+        "example": "Pat Morgan",
+        "whyWeAsk": "The agent currently on file with the Secretary of State who is being replaced -- naming them is what makes this a change, not a first-time designation."
       },
       {
         "id": "newAgentName",
@@ -15209,7 +15215,8 @@
         "type": "person-name",
         "required": true,
         "placeholder": "Jordan Lee",
-        "example": "Jordan Lee"
+        "example": "Jordan Lee",
+        "whyWeAsk": "The person or corporate agent taking over as agent for service of process. California only recognizes two eligible categories -- a California resident, or a corporation separately registered as a 1505 agent -- see the eligibility clause above."
       },
       {
         "id": "newAgentAddress",
@@ -15217,7 +15224,8 @@
         "type": "address",
         "required": false,
         "placeholder": "123 Main St., Sacramento, CA 95814",
-        "example": "123 Main St., Sacramento, CA 95814"
+        "example": "123 Main St., Sacramento, CA 95814",
+        "whyWeAsk": "Required only when the new agent is an individual, not a corporate agent -- a corporate agent's own address is already on file with the Secretary of State, which is why this field is optional here."
       },
       {
         "id": "authorizedSignerName",

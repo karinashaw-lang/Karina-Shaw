@@ -50,9 +50,18 @@ of going stale the moment another checkpoint wave runs.
 See SEO_LAUNCH_PLAN.md for what each stage means and the actual
 rollout recommendation; this module only computes the mechanism.
 
+CA Wedge Plan Step 22: `--wedge-first` makes the 7-document California
+single-member-LLC wedge cluster (WEDGE_CLUSTER_DOC_IDS below) count as
+stage 1 regardless of its own Tier A/B split, as long as it has no open
+blocker/major finding -- "wedge-first, 2 waves" means Wave 1 is this
+cluster, not just "whichever documents happen to be Tier A corpus-wide."
+A wedge document still at Tier C is still excluded outright; wedge
+membership overrides tier ranking, never a correctness gate.
+
     python3 tools/generate_seo_pages.py
     python3 tools/generate_seo_pages.py --out /tmp/some/dir
     python3 tools/generate_seo_pages.py --stage 2
+    python3 tools/generate_seo_pages.py --stage 1 --wedge-first
 """
 import html
 import json
@@ -145,12 +154,48 @@ def load_open_severities_by_clause():
 # Stage 4: everything, including Tier C -- not a real recommendation
 #   today (verifier coverage is only 22% of the corpus), but the
 #   mechanism supports it once coverage grows.
-def compute_doc_stage(doc, clauses_by_id, tier, open_by_clause):
+# CA Wedge Plan Step 22: the go-to-market wedge (California single-member
+# LLC formation). Exactly LAUNCH_SET_PROPOSAL.md's own wedge-cluster table
+# and app.js's own WEDGE_CLUSTER_DOC_IDS (Step 19) -- kept in sync by eye,
+# not shared source, same tradeoff this project already makes between its
+# browser and Python reimplementations of the same small fact elsewhere
+# (see classify_document_jurisdiction()'s own comment).
+WEDGE_CLUSTER_DOC_IDS = {
+    'llc_articles_of_organization',
+    'ein_info_sheet',
+    'llc_operating_agreement_single_member',
+    'llc_default_operating_rules_info_sheet',
+    'agent_for_service_of_process_info_sheet',
+    'statement_of_information',
+    'llc_annual_fee_info_sheet',
+}
+
+
+def compute_doc_stage(doc, clauses_by_id, tier, open_by_clause, wedge_first=False):
     open_severities = set()
     for entry in doc['clauseOrder']:
         open_severities.update(open_by_clause.get(clause_entry_id(entry), []))
     has_blocker_or_major = bool(open_severities & {'blocker', 'major'})
-    if tier == 'C' or has_blocker_or_major:
+    # A blocker/major finding excludes a document regardless of tier or
+    # wedge membership -- correctness beats breadth (Global Rule 11), and
+    # no amount of go-to-market priority overrides a known, open problem.
+    if has_blocker_or_major:
+        return 4
+    # wedge_first (SEO_LAUNCH_PLAN.md's "wedge-first, 2 waves" rollout):
+    # the wedge cluster is Wave 1 regardless of its own Tier A/B split --
+    # see SEO_LAUNCH_PLAN.md for why a document's tier alone doesn't
+    # answer "should this be in the first wave" for this specific,
+    # already-approved launch-set priority. Tier C still excludes a
+    # wedge document outright (an incomplete field schema or an
+    # unverified citation is a real correctness gap, not something
+    # business priority should paper over) -- as of this writing every
+    # wedge document has already reached Tier A or B, so this check is a
+    # safety net, not a current exception.
+    if wedge_first and doc['id'] in WEDGE_CLUSTER_DOC_IDS:
+        if tier == 'C':
+            return 4
+        return 1 if not open_severities else 3
+    if tier == 'C':
         return 4
     if not open_severities:
         return 1 if tier == 'A' else 2
@@ -377,7 +422,7 @@ def build_sitemap(pages, base_url):
     return f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{urls}</urlset>\n'
 
 
-def generate(out_dir=DEFAULT_OUT_DIR, stage=None):
+def generate(out_dir=DEFAULT_OUT_DIR, stage=None, wedge_first=False):
     docs = load_json('data/documents.json')
     clauses_by_id = {c['id']: c for c in load_json('data/clauses.json')['clauses']}
     seo_config = load_seo_config()
@@ -391,7 +436,7 @@ def generate(out_dir=DEFAULT_OUT_DIR, stage=None):
         open_by_clause = load_open_severities_by_clause()
         for doc in docs:
             tier = (tiers.get(doc['id']) or {}).get('tier', 'C')
-            doc_stage[doc['id']] = compute_doc_stage(doc, clauses_by_id, tier, open_by_clause)
+            doc_stage[doc['id']] = compute_doc_stage(doc, clauses_by_id, tier, open_by_clause, wedge_first=wedge_first)
 
     def is_noindex(doc_id):
         return stage is not None and doc_stage.get(doc_id, 4) > stage
@@ -434,11 +479,12 @@ def main():
     stage = None
     if '--stage' in sys.argv:
         stage = int(sys.argv[sys.argv.index('--stage') + 1])
-    pages = generate(out_dir, stage=stage)
+    wedge_first = '--wedge-first' in sys.argv
+    pages = generate(out_dir, stage=stage, wedge_first=wedge_first)
     doc_count = sum(1 for p in pages if p['path'].startswith('documents/'))
     question_count = sum(1 for p in pages if p['path'].startswith('questions/'))
     noindex_count = sum(1 for p in pages if p.get('noindex'))
-    stage_note = f' (stage {stage}: {len(pages) - noindex_count} indexable, {noindex_count} noindex)' if stage is not None else ''
+    stage_note = f' (stage {stage}{" wedge-first" if wedge_first else ""}: {len(pages) - noindex_count} indexable, {noindex_count} noindex)' if stage is not None else ''
     print(f'Generated {doc_count} document pages and {question_count} question pages to {out_dir}.{stage_note}')
     return 0
 

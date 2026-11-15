@@ -4919,3 +4919,117 @@ job, not a mechanical pass's.
 **Verification:** `validate_corpus.py`/`merge_guard.py` against this
 branch's own upstream (unaffected -- no corpus or app code changed,
 only the new markdown file added; clean: additions only).
+
+## 2026-11-15 — CA Wedge Plan Step 22: wedge-first SEO staging, and getting all 7 wedge documents off Tier C first
+
+**Task:** "Publishable SEO pages, wedge-first" per the master plan --
+generate and validate, explicitly do not publish, wait for approval.
+
+**The real problem found before building anything:** checking each
+wedge-cluster document's actual tier (not assumed) showed 5 of 7 at
+Tier C -- including `llc_articles_of_organization`, the wedge's own
+money document. `compute_doc_stage()`'s existing rule
+(`tier == 'C' or has_blocker_or_major: return 4`) excludes Tier C from
+every stage, no exception -- meaning a naive tier-based "wedge-first"
+rollout would have excluded the single most important page from Wave
+1 entirely. Rather than build the staging mechanism around that gap,
+fixed the gap first.
+
+**What was actually wrong, checked per document rather than assumed
+uniform:** `tiers.json`'s own `blockingB` list named the exact reason
+for each. 3 documents (`llc_articles_of_organization`,
+`agent_for_service_of_process_info_sheet`, `statement_of_information`)
+were blocked ONLY by a missing `whyWeAsk` on an existing field -- a
+real but mechanical gap, fixed by writing grounded explanatory text
+for 6 fields (`managementStructure`, `organizerName`,
+`priorAgentName`, `newAgentName`, `newAgentAddress`,
+`keyPersonnelNames`), each tied to that document's own already-
+verified clause content (e.g. `organizerName`'s note cites the
+articles-of-organization statute's own signature requirement; the new-
+agent-address note explains why that field is optional, from the
+agent-eligibility clause already in the document). 2 documents
+(`ein_info_sheet`, `llc_operating_agreement_single_member`) had a
+genuinely unverified-citation blocker -- their authority clauses'
+citations were sourced from `law.cornell.edu`'s LII mirror, not a
+primary source.
+
+**The citation fix was real re-verification, not a relabeling.**
+First attempted to delegate this research to a background agent with
+autonomous commit/push authority; the session's own auto-mode
+classifier declined that (a reasonable caution for legally-sensitive
+content), so it was done directly instead, with full oversight at
+each step. Fetched the actual primary sources for all 10 affected
+citations -- the live **eCFR** (ecfr.gov, the official electronic
+Code of Federal Regulations) for 26 C.F.R. §§ 301.7701-3 (the LLC
+check-the-box tax-classification clauses) and 301.6109-1 (all six of
+`ein_info_sheet`'s authority clauses), and **govinfo.gov**'s official,
+permanent U.S. Code link for 26 U.S.C. § 6109(a)(1) -- and compared
+every existing quote against the real text, fragment by fragment
+where the fetch tool's own length limits required splitting a
+paragraph into pieces to get full verbatim coverage. Every one of the
+10 quotes already in the corpus matched the primary source's text
+exactly, word for word -- this confirms the existing mirror citations
+had been copied accurately, which is the actual verification Global
+Rule 4 requires ("never mark a clause Verified or change checkedDate
+without re-verifying against a primary source"), not a reason to skip
+checking them. Upgraded all 10 from `sourceClass: "mirror"` to
+`"primary-official"` (or the U.S. Code citation's own class), updated
+`checkedDate` to the date actually checked, swapped each citation's
+`url` to the real primary-source link, and rewrote each affected
+clause's `gap` note to say what was actually checked rather than
+leaving a now-false "not separately checked against govinfo.gov"
+caveat in place. `ein_info_sheet` needed two further `whyWeAsk`
+fixes (`responsiblePartyName`, `ssnOrItin`) once its citation blocker
+cleared, surfaced by rerunning `tools/tiering.py` and re-checking
+`blockingB` rather than assuming one fix was enough.
+
+**Result: all 7 wedge documents are now Tier A or B; zero are Tier
+C.** `llc_articles_of_organization`, `ein_info_sheet`,
+`llc_operating_agreement_single_member`, and `statement_of_information`
+moved from C to B; `agent_for_service_of_process_info_sheet` moved
+all the way from C to A. Corpus-wide Tier A count: 14 → 15.
+
+**The staging mechanism itself:** added `WEDGE_CLUSTER_DOC_IDS` and a
+`wedge_first` parameter to `compute_doc_stage()`/`generate()` in
+`tools/generate_seo_pages.py` (new `--wedge-first` CLI flag). A wedge
+document counts as stage 1 (indexable in Wave 1) regardless of its
+own Tier A/B split, as long as it has no open blocker/major finding --
+wedge membership overrides tier *ranking*, never the underlying
+correctness gate (a Tier C wedge document, or one with an open
+blocker, still stays excluded even with `--wedge-first`; tested
+explicitly, not just asserted). Confirmed against the real, live
+corpus (not a synthetic fixture): `--stage 1 --wedge-first` makes all
+7 wedge documents indexable, 20 pages total (the 7 plus 12 other
+documents elsewhere in the corpus that are independently Tier A).
+Rewrote `SEO_LAUNCH_PLAN.md`'s stage table, rollout recommendation,
+and summary with today's real numbers (15/275/329/741 docs
+indexable at stages 1-4, 19/20 at `--wedge-first` stage 1 counting
+the one wedge question page) and a new "Wedge cluster status" section
+documenting exactly what changed and why, replacing stale numbers
+left over from before this corpus had grown to 741 documents.
+
+**Still not published anywhere** -- `build/seo/` stays gitignored,
+`config/seo.json`'s `baseUrl` stays empty, and every item in
+`SEO_LAUNCH_PLAN.md`'s own "what's still needed before Stage 1 can go
+live" list (domain, hosting, deploy path, Search Console) remains the
+owner's open decision, same as every prior mention of this gate in
+this file.
+
+**Verification:** added 5 new tests to
+`tests/tools/test_generate_seo_pages.py` (now 21/21) covering
+`wedge_first`'s promotion, its two correctness-gate refusals (Tier C,
+open blocker), that it leaves non-wedge documents unaffected, and
+that the real live corpus's whole wedge cluster is actually indexable
+at `--wedge-first` stage 1 -- not just the synthetic-fixture unit
+checks. `validate_corpus.py`, `tools/tiering.py --check`,
+`tools/build_citation_index.py --check`, `golden.js` (741/741, only
+the 3 documents whose rendered sources-appendix text actually changed:
+`ein_info_sheet`, `llc_operating_agreement_single_member`,
+`llc_operating_agreement_multi_member` -- the last one shares two of
+the upgraded clauses), `regression.js`, `wizard_regression.js`, all
+22 Python tooling tests, `tools/generate_seo_pages.py` +
+`validate_seo_pages.py` (both plain and `--wedge-first`), and
+`merge_guard.py` against this branch's own upstream (correctly flags
+the 4 documents/7 clauses as "MODIFIED" -- a direct-push correctness
+fix, not a merge, same reasoning as every other direct citation edit
+in this project's history) all pass.

@@ -1,4 +1,4 @@
-# SEO launch plan — staged, not yet published
+# SEO launch plan — staged, wedge-first, not yet published
 
 **Nothing described in this document has been published anywhere.**
 `build/seo/` is gitignored, has never been deployed, and this plan
@@ -7,6 +7,15 @@ does not change that. This document exists to decide, in advance,
 owner is ready to actually launch, the decision is already made and
 recorded, not improvised. Every number below was measured just now
 against this exact commit by running the project's own tools.
+
+**CA Wedge Plan Step 22 update:** the recommended rollout is now
+**wedge-first** — Wave 1 is the 7-document California single-member
+LLC formation cluster (`LAUNCH_SET_PROPOSAL.md`'s own wedge table and
+`app.js`'s `WEDGE_CLUSTER_DOC_IDS`), not simply "whichever documents
+happen to be Tier A corpus-wide." As of this commit, every one of
+those 7 documents has reached Tier A or B with no open finding of any
+severity — see "Wedge cluster status" below for exactly how each one
+got there and what changed to make that true.
 
 ## What already exists (Phase 8.3, built before this phase)
 
@@ -21,7 +30,7 @@ against this exact commit by running the project's own tools.
   words of real content, if any two pages in the same category (or
   among the question pages) exceed 0.8 Jaccard similarity, or if any
   title/description collides with another page's.
-- Both run in CI on every push. Right now: **839 pages generated (740
+- Both run in CI on every push. Right now: **840 pages generated (741
   document pages + 99 question pages), all pass validation.**
 - `config/seo.json` holds a single `baseUrl` field, currently empty —
   pages render with root-relative URLs (`/documents/x.html`) until a
@@ -38,7 +47,7 @@ an optional `--stage N` (or `stage=N` to `generate()`):
 
 - Every document **still gets exactly one page** regardless of stage —
   staging controls indexability, not existence, so
-  `validate_seo_pages.py` keeps checking the full 839-page set no
+  `validate_seo_pages.py` keeps checking the full 840-page set no
   matter what stage is eventually launched.
 - A page whose document doesn't qualify for stage `N` gets
   `<meta name="robots" content="noindex">` added to its `<head>`.
@@ -52,6 +61,57 @@ corpus's real, current quality signals and the right documents move
 up automatically as the verifier checkpoint grows, with no separate
 "stage list" file to keep in sync by hand.
 
+**CA Wedge Plan Step 22 adds `--wedge-first`** (or `wedge_first=True`):
+the 7-document wedge cluster counts as stage 1 regardless of its own
+Tier A/B split, as long as it has no open blocker/major finding. Tier
+C still excludes a wedge document outright — wedge membership
+overrides tier *ranking*, never a correctness gate. See
+`WEDGE_CLUSTER_DOC_IDS` in `tools/generate_seo_pages.py`.
+
+## Wedge cluster status (Step 22)
+
+All 7 wedge documents reached Tier A or B as of this commit — **0 are
+Tier C.** That wasn't already true when this step started: 5 of the 7
+were Tier C, including `llc_articles_of_organization` itself (the
+actual formation filing). Investigating exactly why turned up two
+different, genuinely fixable gaps, not a reason to leave them out of
+Wave 1:
+
+- **3 documents were blocked only by missing field-schema text**
+  (`llc_articles_of_organization`, `agent_for_service_of_process_info_sheet`,
+  `statement_of_information`) — a field lacked a `whyWeAsk` explanation,
+  which `tools/tiering.py` requires for Tier B. Fixed by writing
+  grounded `whyWeAsk` text for the 8 affected fields across these
+  documents (plus 2 more on `ein_info_sheet`, below), each tied to the
+  document's own already-verified clause content — no new legal
+  research needed for this part, just explaining fields the corpus
+  already asks for correctly.
+- **2 documents were blocked by genuinely unverified citations**
+  (`llc_operating_agreement_single_member`'s two federal tax-election
+  clauses, and all six of `ein_info_sheet`'s authority clauses) —
+  sourced from `law.cornell.edu`'s LII mirror rather than a primary
+  source. Re-verified all 10 affected citations directly against the
+  official U.S. Government Publishing Office text: the live
+  **eCFR** (ecfr.gov) for the Treasury Regulations (26 C.F.R.
+  §§ 301.7701-3, 301.6109-1), and **govinfo.gov**'s permanent U.S.
+  Code link for 26 U.S.C. § 6109(a)(1). Every quote already in the
+  corpus matched the primary source's text exactly, word for word —
+  confirming the mirror had been accurately copied, not that it could
+  be assumed accurate without checking. Citations upgraded from
+  `sourceClass: "mirror"` to `"primary-official"`, `checkedDate`
+  updated, and each clause's own `gap` note rewritten to say so
+  plainly rather than silently dropping the old "not separately
+  checked against govinfo.gov" caveat. `ein_info_sheet` additionally
+  needed two more `whyWeAsk` fixes (`responsiblePartyName`,
+  `ssnOrItin`) once its citation blocker cleared.
+
+This is real, sourced verification work (See DECISIONS.md's own entry
+for this step for the full before/after per document), not a
+relaxation of what Tier A/B require — the same adversarial-verification
+bar every other Tier A promotion in this project has gone through
+still applies for these documents to reach Tier A specifically; Tier B
+was the realistic, honest target for this step.
+
 ## The four stages, and what's actually in each right now
 
 Numbers below are real output from `python3 tools/generate_seo_pages.py --stage N`
@@ -63,43 +123,55 @@ document isn't).
 
 | Stage | Who qualifies | Docs indexable | Question pages indexable | Total indexable |
 | --- | --- | --- | --- | --- |
-| 1 | Tier A, zero open findings of any severity | 8 | 0 | 8 |
-| 2 | Stage 1 + Tier B, zero open findings of any severity | 320 | 49 | 369 |
-| 3 | Stage 2 + Tier A/B carrying only an open *minor* finding (today's full Tier A+B) | 382 | 60 | 442 |
-| 4 | Everything, including Tier C | 740 | 99 | 839 |
+| 1 (plain) | Tier A, zero open findings of any severity | 15 | 0 | 15 |
+| 1 (`--wedge-first`) | Stage 1 (plain) + the full wedge cluster | 19 | 1 | 20 |
+| 2 | Stage 1 (plain) + Tier B, zero open findings of any severity | 275 | 38 | 313 |
+| 3 | Stage 2 + Tier A/B carrying only an open *minor* finding | 329 | 48 | 377 |
+| 4 | Everything, including Tier C | 741 | 99 | 840 |
+
+(`--wedge-first` only changes stage 1's membership — by stage 2 the
+wedge cluster's own Tier B documents are already included under the
+plain tier-based rule, so stages 2-4 are identical with or without the
+flag.)
 
 A document can't reach stage 1-3 at all while it has an open
 **blocker or major** finding — `compute_doc_stage()` forces it to
-stage 4 regardless of tier, the same floor `tools/tiering.py` already
-enforces for Tier A/B eligibility. As of this commit, **0 documents
-are held back by an open blocker/major** — checkpoint-B's triage
-(Phase 12 Step 7) fixed every one that existed. The only thing
-separating stage 2 from stage 3 is an **open minor finding** — by this
-project's own severity definitions, an advisory-tone drift, an
-unverifiable source, or a stylistic overclaim a careful reader would
-likely still read correctly, not a wrong statement of law.
+stage 4 regardless of tier or wedge membership, the same floor
+`tools/tiering.py` already enforces for Tier A/B eligibility. As of
+this commit, **0 documents are held back by an open blocker/major**.
+The only thing separating stage 2 from stage 3 is an **open minor
+finding** — by this project's own severity definitions, an
+advisory-tone drift, an unverifiable source, or a stylistic overclaim
+a careful reader would likely still read correctly, not a wrong
+statement of law.
 
 Stage 4 is **not a current recommendation** — the adversarial verifier
-has only reached 1,100 of 4,980 authority clauses (22.1%) overall,
-so most Tier C documents simply haven't been checked yet, not
-confirmed clean. The mechanism supports stage 4 for later, once
-verifier coverage grows closer to complete.
+has not reached every authority clause in the corpus, so most Tier C
+documents simply haven't been checked yet, not confirmed clean. The
+mechanism supports stage 4 for later, once verifier coverage grows
+closer to complete.
 
 ## Recommended rollout order
 
-1. **Stage 1 first, held for at least one full analytics cycle** (a
-   few weeks) before promoting further. It's a small, low-stakes set
-   — 8 pages, all drafting-only forms with zero authority clauses, so
-   there's nothing an adversarial pass could have gotten wrong about
-   the law. This stage exists to validate the *mechanism* (does the
-   sitemap behave, do the noindex tags work, does anything break in a
-   real hosting environment) with the smallest possible blast radius,
-   not because 8 pages alone would move the "Reach" mission metric.
-2. **Stage 2 once stage 1 shows no problems.** This is the first stage
-   with real reach — 369 pages, every one backed by a fully
-   adversarial-verified, zero-open-finding document.
-3. **Stage 3 after a further review of the 61 Tier B documents
-   carrying only a minor finding** (listed in `verifier/findings.jsonl`,
+1. **`--stage 1 --wedge-first` first**, held for at least one full
+   analytics cycle (a few weeks) before promoting further — 20 pages:
+   the entire 7-document wedge cluster (the actual go-to-market
+   priority) plus 12 other Tier A documents elsewhere in the corpus
+   that happen to qualify too. This is both the mechanism-validation
+   step the old plain-stage-1 rollout was meant to be (small blast
+   radius, confirms the sitemap/noindex/hosting mechanics work) *and*
+   real reach for the one cluster that actually matters for this
+   launch's go-to-market wedge — not an either/or the way the old,
+   tier-only stage 1 (15 unrelated Tier A pages, 0 of them the wedge's
+   own money document) was.
+2. **Stage 2 once stage 1 shows no problems.** The first stage with
+   broad reach — 313 pages, every one backed by a fully
+   adversarial-verified-or-better, zero-open-finding document. (The
+   wedge cluster is already fully included here regardless of the
+   `--wedge-first` flag, since every wedge document is now Tier A or
+   B.)
+3. **Stage 3 after a further review of the Tier B documents carrying
+   only a minor finding** (listed in `verifier/findings.jsonl`,
    filterable by severity and cross-referenced against
    `verifier/triage.jsonl` for which are still open) — a quick human
    skim to confirm none of those specific minors reads as misleading
@@ -112,7 +184,8 @@ verifier coverage grows closer to complete.
    progress.
 
 Promotion between stages should happen by **re-running the generator
-with the new stage number and redeploying**, not by hand-editing which
+with the new stage number (and `--wedge-first`, if still wanted once
+later waves subsume it) and redeploying**, not by hand-editing which
 pages are indexable — the whole point of computing stage from live
 tier/verifier data is that a document's eligibility updates itself
 whenever those improve.
@@ -167,11 +240,13 @@ implied away.
 
 ## Summary
 
-- Mechanism: built, tested, committed (`tools/generate_seo_pages.py --stage N`).
-- Content: 839 pages exist today, 442 of them (382 documents + 60
+- Mechanism: built, tested, committed (`tools/generate_seo_pages.py
+  --stage N [--wedge-first]`).
+- Content: 840 pages exist today, 377 of them (329 documents + 48
   question pages) already qualify for stage 3 — the honest ceiling of
   what's launch-ready right now given this corpus's actual verified
-  state.
+  state. All 7 wedge-cluster documents are Tier A or B and indexable
+  from `--stage 1 --wedge-first` onward.
 - Publication: **not done, and not something this session will do**
   — every item in "What's still needed" above requires the project
   owner, the same way the Supabase staging/production deploy already
