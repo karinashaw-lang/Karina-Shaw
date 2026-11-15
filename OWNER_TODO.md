@@ -118,6 +118,17 @@ page/feature says so explicitly where relevant:
   its rendering) — states deadlines and procedural facts with
   citations; worth confirming none of it reads as instruction rather
   than information.
+- Two new sections added to `terms.html`/`privacy.html` for Steps
+  16/17: the referral/partner-link disclosure (FTC Endorsement Guide
+  material-connection disclosure) and the review-request email
+  section (CAN-SPAM, the FTC's Consumer Review Fairness Act). Worth a
+  specific look since these touch advertising/consumer-protection law
+  this project hasn't needed an attorney's eyes on before now.
+- `terms.html`'s "Payments" section is deliberately left incomplete
+  (see item 8's guarantee-copy approval, still pending) — once that's
+  approved, this section needs the final price/refund/Automatic
+  Renewal Law language actually written in, not just the honest
+  placeholder it has today.
 
 None of these are blocked on engineering work — they're ready for
 review as they stand.
@@ -174,3 +185,18 @@ external scheduler that can send an HTTP request), pointed at this
 function's URL, daily, with header `X-Cron-Secret: <the same value as
 the REVIEW_EMAIL_CRON_SECRET secret above>`. A run with nothing to do
 (no subscription has crossed 14 days yet) is a harmless no-op.
+
+## 8. Approve (or amend) the 30-day guarantee / Automatic Renewal Law copy
+
+`PRICING_STEP7_GUARANTEE_PROPOSAL.md` (Step 7) proposed a 30-day
+unconditional refund window plus the specific pre-purchase disclosure
+and acknowledgment-email copy California's Automatic Renewal Law
+requires for a subscription — still sitting unapproved. Nothing
+downstream has been written as if it were approved:
+`config/pricing.json`'s `refundPolicy` fields are still `null`, and
+`terms.html`'s "Payments" section (Step 20) deliberately stops short
+of final refund/renewal language, saying plainly that it's still
+pending. Read that proposal, approve it, amend it, or write your own;
+once you do, the refund window and renewal-disclosure copy need to
+actually go into `config/pricing.json` and `terms.html` before real
+payments go live.

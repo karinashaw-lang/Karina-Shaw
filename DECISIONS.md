@@ -4828,3 +4828,58 @@ pre-existing `.tier-A.tier-pill` defect, exact same 5-node count as
 before this change in both themes -- confirms the new callout
 introduced no new violation), and `merge_guard.py` against this
 branch's own upstream (clean: additions only) all pass.
+
+## 2026-11-15 — CA Wedge Plan Step 20: the legal pages had drifted behind three real features, not just attorney-review-pending
+
+**Task:** legal-page drafts for owner/attorney, per the master plan's
+"(+referral relationships)" note on this step.
+
+**A real, false statement found and fixed, not just a gap filled:**
+`terms.html`'s "Payments" section still read "Groundtruth does not
+currently charge for anything — payment processing is not yet
+built." That was true when it was written, but Steps 8-9 (entitlements,
+Stripe test-mode checkout, the subscription billing portal) have
+existed since well before this step -- the sentence was flatly false
+by the time anyone would read it. Rewrote it to state what's actually
+true today: a subscription model exists, billing runs through Stripe,
+cancellation is self-service -- while explicitly *not* inventing the
+specific price, refund window, or Automatic Renewal Law disclosure
+language, since `PRICING_STEP7_GUARANTEE_PROPOSAL.md`'s guarantee
+copy is still sitting unapproved (confirmed by re-reading Step 7's
+own closing note, which names `terms.html`'s draft specifically as
+one of the three places that proposal gates). The new section says so
+plainly rather than silently omitting the gap.
+
+**Two new, real disclosures for already-built, unblocked features --
+neither gated on anything:** added a "Referral and partner links"
+section to `terms.html` (what the relationship is, that Groundtruth
+may earn a commission, that no user/document data is ever sent to a
+partner -- matching exactly what Step 16's `renderReferralLinks()`
+actually does, not a generic boilerplate guess) and two new sections
+to `privacy.html` -- "Review-request emails" (discloses the one-time,
+no-incentive email Step 17 can send, and that sending it means
+sharing an email address with a third-party delivery processor,
+currently Resend, for that purpose only) and "Referral and partner
+links" (cross-references the `terms.html` section for the data-flow
+half specifically: nothing sent to a partner). Tightened the existing
+"we do not sell personal information... advertising" bullet to name
+the one real exception (the review-email processor) explicitly,
+rather than leaving it to silently contradict the new section above
+it.
+
+**Updated `OWNER_TODO.md`'s existing item 5 (attorney review)** to
+flag these two new sections by name, since they touch law this
+project hadn't needed an attorney's eyes on before (FTC Endorsement
+Guide material-connection disclosure, CAN-SPAM, the Consumer Review
+Fairness Act) -- and added a new item 8 recording that Step 7's
+guarantee/Automatic Renewal Law copy is still an open owner decision,
+which previously existed only as a closing note in this file's own
+Step 7 entry, not anywhere on the actual numbered owner checklist.
+
+**Verification:** `regression.js`'s existing privacy/terms/storage-
+notice loop (draft notice present, 0 CSP violations, both pages
+unchanged in that respect), `axe_check.js` (0 serious/critical
+violations, both themes, both pages, unaffected), `copy_lint.py`
+(unaffected -- privacy.html/terms.html are deliberately out of its
+scope, per its own docstring), and `validate_corpus.py`/`merge_guard.py`
+(unaffected -- no corpus data touched) all pass.
