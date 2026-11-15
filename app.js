@@ -1086,6 +1086,7 @@ async function init() {
   state.seoBaseUrl = seoConfig.baseUrl || '';
   state.referrals = referrals || {};
   buildJurisdictionIndex();
+  renderWedgeCallout();
   renderCategoryFilter();
   renderTierFilter();
   renderPicker();
@@ -1704,6 +1705,50 @@ function renderPickerPage(docs, matchedTermsById, visibleCount) {
     });
     list.appendChild(more);
   }
+}
+
+// ---------- wedge-focused home page (CA Wedge Plan Step 19) ----------
+// The go-to-market wedge: California single-member LLC formation.
+// This exact 7-document list and order is LAUNCH_SET_PROPOSAL.md's own
+// "wedge cluster" table -- a roughly chronological read (file the
+// articles, get an EIN, write the operating agreement and know what
+// happens without one, know the ongoing agent/filing/tax
+// obligations), not the table's own listing order. Titles are always
+// looked up live from state.documents, never hand-typed here, so a
+// corpus edit to a title can't silently drift from what this section
+// shows (Global Rule 13).
+const WEDGE_CLUSTER_DOC_IDS = [
+  'llc_articles_of_organization',
+  'ein_info_sheet',
+  'llc_operating_agreement_single_member',
+  'llc_default_operating_rules_info_sheet',
+  'agent_for_service_of_process_info_sheet',
+  'statement_of_information',
+  'llc_annual_fee_info_sheet',
+];
+
+function renderWedgeCallout() {
+  const list = document.getElementById('wedge-doc-list');
+  if (!list) return;
+  list.innerHTML = '';
+  WEDGE_CLUSTER_DOC_IDS.forEach(docId => {
+    const doc = state.documents.find(d => d.id === docId);
+    if (!doc) return; // corpus changed under us -- skip rather than show a broken row
+    const item = document.createElement('li');
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'wedge-doc-link';
+    button.textContent = doc.title;
+    button.addEventListener('click', () => {
+      state.document = doc;
+      state.answers = {};
+      renderWizard();
+      showScreen('screen-wizard');
+      document.getElementById('draft-banner').hidden = true;
+    });
+    item.appendChild(button);
+    list.appendChild(item);
+  });
 }
 
 // The entry point used whenever the underlying document list itself
@@ -2428,7 +2473,18 @@ function renderRelatedDocuments() {
 // invented" discipline as config/pricing.json/seo.json).
 const REFERRAL_DISCLOSURE = 'Paid referral -- Groundtruth may earn a commission if you use this link. Nothing about you or this document is sent to them.';
 
+// Also true for agent_for_service_of_process_info_sheet by id: it's
+// an info sheet explaining the requirement, not a form that collects
+// an agent's name/address, so it has neither shared field -- but it
+// is exactly where the wedge cluster's own definition
+// (LAUNCH_SET_PROPOSAL.md, "the agent-for-service-of-process
+// requirement that Step 16's registered-agent referral link sits
+// next to") says this referral belongs. Checking a field alone would
+// silently miss the one document the plan names for it.
+const REGISTERED_AGENT_REFERRAL_DOC_IDS = new Set(['agent_for_service_of_process_info_sheet']);
+
 function agentFieldDocument(doc) {
+  if (REGISTERED_AGENT_REFERRAL_DOC_IDS.has(doc.id)) return true;
   return (doc.fields || []).some(f => f.sharedFieldId === 'agentName' || f.sharedFieldId === 'agentAddress');
 }
 
@@ -3619,6 +3675,14 @@ document.getElementById('incoming-link').addEventListener('click', () => {
 });
 document.getElementById('front-door-incoming-link').addEventListener('click', () => {
   showScreen('screen-incoming');
+});
+document.getElementById('wedge-subscription-link').addEventListener('click', () => {
+  // renderAccountScreen() is defined in account.js, loaded after
+  // app.js -- safe to reference here since this only resolves at
+  // click time, long after both scripts have parsed, same as any
+  // other cross-file call in this app.
+  renderAccountScreen();
+  showScreen('screen-account');
 });
 document.getElementById('intake-link').addEventListener('click', () => {
   startIntake();

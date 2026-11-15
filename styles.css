@@ -163,6 +163,49 @@ h1{
   margin:0 0 32px;
 }
 
+/* ---------- wedge-focused home page (CA Wedge Plan Step 19) ----------
+   The actual go-to-market focus (California single-member LLC
+   formation), so it gets --accent treatment and comes first on the
+   picker screen -- the free contract-reader callout right after it
+   is a real, useful, free front door (Step 13), but a secondary one. */
+.wedge-callout{
+  background:var(--accent-soft);
+  border:1px solid var(--accent);
+  border-radius:6px;
+  padding:20px 22px;
+  margin:0 0 20px;
+}
+.wedge-callout h2{
+  font-family:'Fraunces', Georgia, serif;
+  font-weight:600;
+  font-size:19px;
+  margin:0 0 8px;
+  color:var(--accent-ink);
+}
+.wedge-callout p{ font-size:14.5px; color:var(--ink-soft); margin:0 0 14px; max-width:64ch; }
+.wedge-doc-list{
+  list-style:decimal;
+  padding-left:22px;
+  margin:0 0 16px;
+}
+.wedge-doc-list li{ margin:0 0 6px; }
+.wedge-doc-link{
+  font-family:inherit;
+  font-size:14.5px;
+  text-align:left;
+  background:none;
+  border:none;
+  padding:0;
+  color:var(--accent-ink);
+  text-decoration:underline;
+  text-decoration-color:var(--accent);
+  text-underline-offset:2px;
+  cursor:pointer;
+}
+.wedge-doc-link:hover{ opacity:.8; }
+.wedge-doc-link:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
+.wedge-callout-footer{ display:flex; }
+
 /* ---------- front-door contract-reader callout (CA Wedge Plan Step 13) ----------
    The free, no-account contract reader is the picker screen's lead-in,
    not a buried utility link -- same visual weight as the draft-resume

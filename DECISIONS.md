@@ -4752,3 +4752,79 @@ only). `axe_check.js`'s overall run still fails on the same
 pre-existing `.tier-A.tier-pill` color-contrast defect logged in this
 file's Step 13/14/16/17 entries -- confirmed unrelated: `trust.html`
 itself reports 0 serious/critical violations in both themes.
+
+## 2026-11-15 — CA Wedge Plan Step 19: the picker screen's own front door is now the wedge, not a neutral list
+
+**Task:** "paid experience and wedge-focused home page," per the
+master plan.
+
+**What changed, and why it outranks the Step 13 contract-reader
+callout:** `LAUNCH_SET_PROPOSAL.md`'s own wedge-cluster table (the
+7-document California single-member LLC formation path, already
+owner-approved as part of the launch set) says plainly: "Marketing
+(Step 19's home page...) points at this cluster first." Step 13's
+free contract reader is a real, useful front door, but a *secondary*
+one -- a lead magnet, not the actual go-to-market focus the whole MVP
+plan is built around. Added a `.wedge-callout` section to the picker
+screen, placed *above* the contract-reader callout (previously the
+first thing after the lede), styled with `--accent`/`--accent-soft`
+(the "this is the real focus" treatment already reserved for primary
+actions elsewhere) rather than the contract-reader callout's neutral
+`--surface-2`/`--line`.
+
+**The 7-document order is a real sequence, not the proposal table's
+listing order:** `WEDGE_CLUSTER_DOC_IDS` in app.js orders them
+chronologically-as-actually-experienced -- file the articles, get an
+EIN, understand the operating agreement (and what happens without
+one), know the ongoing agent/filing/tax obligations -- rather than
+mirroring `LAUNCH_SET_PROPOSAL.md`'s own table order, which groups by
+role in the wedge, not by when a reader would actually need each one.
+Every title shown is looked up live from `state.documents` by id,
+never hand-typed, so a future corpus edit to a document's title can't
+silently drift from what this section displays (Global Rule 13);
+a document id that stops existing is skipped rather than shown broken.
+
+**The "paid experience" half:** a "See subscription options" button
+inside the same callout calls the existing `renderAccountScreen()`/
+`showScreen('screen-account')` path (Step 9's own subscription UI,
+unchanged) -- no new pricing claim is made here, since
+`config/pricing.json`'s price fields are still the owner's to set
+(Step 7). The callout's own copy states plainly what's free (filling
+out and previewing) versus what a subscription adds (saving,
+exporting, signing), matching exactly what Steps 8-9's entitlements
+system actually enforces -- nothing new claimed, nothing already-built
+re-described inaccurately.
+
+**A real, specific gap in Step 16's registered-agent referral,
+caught by re-reading the wedge cluster's own definition, not by
+accident:** `LAUNCH_SET_PROPOSAL.md` names
+`agent_for_service_of_process_info_sheet` as exactly where "Step 16's
+registered-agent referral link sits next to." Step 16's
+`agentFieldDocument()` gated the referral on a document having a
+field with `sharedFieldId` `agentName`/`agentAddress` -- but this
+specific document is an info sheet *about* the requirement, not a
+form that collects an agent's name/address, so it has neither field
+and the referral was silently never showing up on the one document
+the plan itself names for it. Confirmed by checking the document's
+real `fields` array directly (`['companyName', 'entityType', None,
+None, None, 'authorizedSignerName', 'dateSigned', 'cityState']` --
+genuinely no agent field). Fixed by adding an explicit
+`REGISTERED_AGENT_REFERRAL_DOC_IDS` id-based check alongside the
+field-based one, rather than only ever trusting one detection method.
+
+**Verification:** `node --check app.js`, `copy_lint.py`, wrote a
+throwaway Playwright script (not committed) confirming all seven
+wedge links render with their correct live titles in the intended
+order, clicking the first one navigates to that exact document's
+wizard (`state.document.id === 'llc_articles_of_organization'`), and
+clicking "See subscription options" reaches the Account screen --
+took a real screenshot and caught one real layout bug from it (a
+two-column CSS grid made the `<ol>`'s numbering interact badly with
+item wrapping; simplified to a single column, re-screenshotted to
+confirm the fix). `regression.js`, `wizard_regression.js`,
+`wizard_unit.js`, `golden.js` (741/741, unaffected -- no corpus data
+touched), `validate_corpus.py` (unaffected), `axe_check.js` (same
+pre-existing `.tier-A.tier-pill` defect, exact same 5-node count as
+before this change in both themes -- confirms the new callout
+introduced no new violation), and `merge_guard.py` against this
+branch's own upstream (clean: additions only) all pass.
