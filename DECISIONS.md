@@ -5131,3 +5131,89 @@ confirmed clean after the tier-A contrast fix above) all pass.
 finding beyond the three already-documented pre-existing ones, and
 `merge_guard.py` against this branch's own upstream reports clean:
 additions only.
+
+## 2026-11-16 — CA Wedge Plan Step 24: launch-readiness review, and a BUILD_STATUS.md rewrite instead of another incremental patch
+
+**Task:** "launch-readiness review (LAUNCH_READINESS.md)" per the
+master plan, plus the comprehensive `BUILD_STATUS.md` truthfulness
+refresh flagged as overdue during Step 23 (it was last touched
+2026-11-03, before any of Steps 12-23 landed, and had drifted from
+true -- most visibly it still said "Payments... skipped, no Stripe
+credentials exist," which Steps 7-9, built *earlier* in this same
+plan, had already made false).
+
+**Why a rewrite instead of patching the one stale line:** once one
+claim in a status file is confirmed wrong, the rest of the file loses
+its claim to being checked rather than remembered. Every number in the
+new `BUILD_STATUS.md` was re-run today, not copied forward:
+`tools/validate_corpus.py` (741 documents/6621 clauses, confirmed
+against today's corpus), `tools/tiering.py` (15 Tier A / 314 Tier B /
+412 Tier C -- all 7 wedge documents off Tier C, confirmed), `verifier/
+triage.py --summary` (318 total findings: 148 open, 106 accepted, 64
+fixed, 0 rejected), `tests/accessibility/axe_check.js` and
+`tests/performance/performance_budget.js` (both re-run clean today),
+and `get_advisors` for both security and performance against the live
+production project.
+
+**A second real, pre-existing bug found and fixed while gathering
+these numbers, same pattern as Step 23's `generate_data_inventory.py`
+find:** `tools/promotion_report.py`'s "closest to Tier B" section
+carried a comment and two output lines claiming "Tier B→A has no
+actionable path yet -- Phase 4.1's adversarial verifier and Phase
+9.1's accessibility checks don't exist." Both systems do exist and
+run in CI on every push (confirmed directly: `node tests/
+accessibility/axe_check.js` just ran clean above, and `tools/
+tiering.py`'s own `adversarial_verifier_clean()`/
+`accessibility_check_passed()` functions implement exactly this
+check). Checked whether the report's actual *conclusion* (don't rank
+Tier B documents against each other) still held for a true reason:
+inspected `tiers.json`'s `blockingA` field directly and found 306 of
+314 Tier B documents share the single identical blocking reason
+("not every authority clause is adversarially checked"), with no
+per-document count of *how many* clauses are still unchecked exposed
+anywhere in the data -- so the conclusion was still correct, but for
+"there's no distance signal in the data yet," not "the systems don't
+exist." Rewrote both the file's header comment and its two output
+strings to say the true thing. `python3 tests/tiering/
+test_promotion_report.py` (10/10) still passes -- no test asserted the
+old, wrong wording.
+
+**`LAUNCH_READINESS.md`** -- scoped deliberately narrower than the
+whole 741-document corpus, to the one thing Steps 12-23 were actually
+built around: the 7-document wedge cluster, paid, single-wedge launch.
+States plainly (per Global Rule 1, applied to this project's own
+operators as much as its users) that it is a status report, not a
+recommendation to launch. Structure: (1) the wedge cluster itself is
+done -- tiers, rendering, accessibility, performance, all re-verified
+today; (2) six items that actually block charging anyone money, every
+one an owner decision or credential, not more engineering (price,
+guarantee/ARL approval, contact email, attorney review, leaked-
+password toggle, the two RLS/perf SQL fixes); (3) two pieces that are
+fully built but deliberately inert (referral links, review-request
+emails) until the owner acts, independent of the wedge launching;
+(4) SEO reach deliberately still unpublished, per Step 22's own WAIT
+gate, reconfirmed uncrossed today (`config/seo.json`'s `baseUrl` is
+still `""`); (5) Step 23's instrumentation is ready to observe a real
+launch the moment one happens; (6) Step 25 (optional minimal business
+profile) explicitly left undone -- its exact scope text isn't
+recoverable in this session's local context (a prior-turn detail, not
+a repository file), and Global Rule 15 (most conservative option on
+ambiguity, logged, keep going) says guessing unspecified scope and
+building something unasked-for is the wrong call here, not that the
+step itself is unimportant.
+
+**`tiers.json`** regenerated (only its `generated_at` date changed,
+from 2026-11-15 to 2026-11-16 -- no document's tier moved, confirmed
+via `git diff`); committed alongside, consistent with always
+committing a tool's regenerated output rather than leaving the
+working tree stale against a report that quotes it.
+
+**Verification:** `python3 tools/validate_corpus.py`,
+`python3 tools/tiering.py --check`, `python3 tests/tiering/
+test_promotion_report.py` (10/10), `python3 tests/tiering/
+test_tiering.py` (22/22), and a full re-read of `OWNER_TODO.md`
+against today's `get_advisors` output (confirmed every live finding
+is already tracked there or accepted by design in this file) all
+pass. No code path outside `tools/promotion_report.py`'s comments/
+strings changed -- `BUILD_STATUS.md` and `LAUNCH_READINESS.md` are
+documentation only.

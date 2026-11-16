@@ -1,204 +1,247 @@
 # Build status
 
-Last updated: 2026-11-03, against branch `claude/new-session-palh5c`
-(Phase 12, Steps 1-7). This reflects the actual state of the
-repository right now — every number below was measured by running the
-project's own tools, not recalled or estimated, and is reproducible
-by running the same command.
+Last updated: 2026-11-16, against branch `claude/new-session-palh5c`
+(CA Wedge Plan Steps 1-23 complete; Step 24, this refresh plus
+`LAUNCH_READINESS.md`, in progress; Step 25 optional). This reflects
+the actual state of the repository right now — every number below was
+measured by running the project's own tools today, not recalled or
+estimated from an earlier phase, and is reproducible by running the
+same command.
+
+**Why this file needed a full rewrite, not an incremental edit:** the
+previous version (dated 2026-11-03) predated the entire CA Wedge Plan
+(California single-member LLC formation as the go-to-market wedge —
+7 documents, no e-filing, no filing-on-behalf, no registered-agent
+service, no attorney marketplace). Several of its claims had gone
+stale without anyone updating them as Steps 12-23 landed — most
+visibly, it still said "Payments... skipped, no Stripe credentials
+exist," which stopped being true once Steps 7-9 (an earlier part of
+this same plan) built real Stripe test-mode checkout, webhook
+handling, and entitlement gating. Rather than patch that one line,
+this file is rewritten end to end so every claim in it is checked
+against today's code and tools, the same discipline the rest of this
+project holds its legal content to.
 
 ## Phase completion
 
 Every phase in `MASTER_BUILD_PLAN.md` (0 through 11) has real,
-working, tested implementation behind it, with reasoning for every
-judgment call in `DECISIONS.md` and the architecture in
-`ARCHITECTURE.md`. The gaps that remain are named explicitly below —
-this is not a claim that everything is finished, only that everything
-claimed as done has been verified, and everything not done is stated
-as such.
+working, tested implementation behind it; the CA Wedge Plan (Steps
+1-23) builds the paid, single-wedge launch on top of that foundation.
+Reasoning for every judgment call is in `DECISIONS.md`, architecture
+in `ARCHITECTURE.md`.
 
 **Fully built and gate-checked in CI on every push:** schema-driven
-interview engine and clause-level conditionals (Phase 2); computed
-quality tiers and promotion reporting (Phase 3); the adversarial
-verifier, triage workflow, per-category staleness thresholds, the
-law-change watcher, and citation-recheck integration (Phase 4);
-plain-language search, intake, related-document suggestions, and
-picker performance (Phase 5); native PDF/.docx export, document
-lifecycle/versioning, and filing packets (Phase 6); the Supabase
-backend, audit trail, account basics, and e-signature/sharing (Phase
-7, except payments — see below); privacy-friendly analytics, in-app
-feedback, and programmatic SEO (Phase 8); accessibility, performance
-budgets, error monitoring + a real staging environment, a security
-review (CSP, XSS audit, secret scanning, rate limiting), privacy/
-legal-copy pages, and backup-and-restore automation (Phase 9);
-contract-reader quality (an eval harness with a measured baseline)
-and a cross-document consistency test suite (Phase 10); `ROADMAP.md`
-scoping four not-yet-built initiatives without building them (Phase 11).
+interview engine and clause-level conditionals; computed quality
+tiers and promotion reporting; the adversarial verifier, triage
+workflow, per-category staleness thresholds, the law-change watcher,
+and citation-recheck integration; plain-language search, intake,
+related-document suggestions, and picker performance; native
+PDF/.docx export, document lifecycle/versioning, and filing packets;
+the Supabase backend, audit trail, account basics, e-signature/
+sharing, **and real Stripe test-mode subscription checkout, webhook
+handling, and entitlement gating** (see Revenue, below, for exactly
+what's still owner-gated); privacy-friendly analytics (now including
+Step 23's wedge-callout and referral-link click events), in-app
+feedback, and programmatic SEO; accessibility, performance budgets,
+error monitoring, a real staging environment, a security review,
+privacy/legal-copy pages (Steps 18/20), and backup-and-restore
+automation; contract-reader quality and a cross-document consistency
+test suite. CA Wedge Plan additions: a live public `/trust` page
+(Step 18); a wedge-focused home-page callout and front-door routing
+(Steps 13/19); registered-agent/attorney-review referral links with a
+plain disclosure (Step 16); filing next-steps reminders for Articles
+of Incorporation and the Statement of Information (Steps 12/15);
+wedge-first SEO staging (Step 22); and the user-test plan plus the two
+new analytics event types above (Step 23).
 
 **Deliberately not built, each with reasoning recorded in
 `DECISIONS.md`:**
-- **Payments (Phase 7.2)** — skipped by the user's own explicit
-  choice; no Stripe credentials exist anywhere in this project.
-- **Password-based sign-in, multi-language support, a mobile app,
-  and admin tooling** — all four are Phase 11's job to scope, not
-  build; see `ROADMAP.md`.
+- Password-based sign-in, multi-language support, a mobile app, and
+  admin tooling — `ROADMAP.md`'s job to scope, not build.
+- A registered-agent filing service, e-filing, filing-on-behalf, or an
+  attorney marketplace — explicitly out of scope for this wedge by the
+  plan's own scope lock, not a gap.
+- Step 25 (optional minimal business profile) — not started; see its
+  own section below.
 
 **Open, handed-off items that need the project owner, not more
-engineering from this session:**
-- Two pre-existing Postgres linter findings (`auth_rls_initplan` on
-  `agreements`, `multiple_permissive_policies` on `feedback`) are
-  blocked by this session's inability to run `DROP POLICY` — exact
-  fix SQL is in `DECISIONS.md`.
-- `auth_leaked_password_protection` (a Supabase Auth dashboard toggle)
-  has never been enabled — no MCP tool exists to toggle it.
-- CI's `deploy-staging` and `backup.yml` jobs are written and tested
-  but no-op until the project owner adds the repository secrets named
-  in `tools/README.md` (`SUPABASE_ACCESS_TOKEN`,
-  `SUPABASE_STAGING_PROJECT_REF`, `SUPABASE_PROD_PROJECT_REF`).
-- `privacy.html`/`terms.html` carry a `[contact email — to be added]`
-  placeholder, and neither page has been reviewed by an attorney —
-  both say so plainly on the page itself.
-- One real California law change (Cal. Bus. & Prof. Code § 22757.2,
-  the AI Transparency Act's detection-tool requirement), flagged by
-  the law-change watcher on 2026-10-01, was resolved 2026-10-31 — the
-  Phase 12 Step 3 checkpoint independently re-flagged the same clause
-  with the specific amendment, and the clause was corrected. See
-  `watcher/README.md`'s "Status so far" and `DECISIONS.md`.
-- `aitransparency_disclosure_requirements`'s `checkedDate` is
-  intentionally frozen at 2026-09-04 even though its body/gap text was
-  corrected on 2026-11-03 (SB 1000's manifest-disclosure deletion) —
-  a direct leginfo fetch of the amended § 22757.3 text is still needed
-  before that date can be bumped for real. See `DECISIONS.md`'s
-  2026-11-03 entry.
+engineering from this session** (the authoritative, current list is
+`OWNER_TODO.md`; summarized here):
+1. Three CI repository secrets (`SUPABASE_ACCESS_TOKEN`,
+   `SUPABASE_STAGING_PROJECT_REF`, `SUPABASE_PROD_PROJECT_REF`) so
+   `deploy-staging`/`backup.yml` stop being no-ops.
+2. Enable Supabase's "leaked password protection" toggle (dashboard-
+   only; confirmed still off via `get_advisors(type:"security")` today
+   — see Security, below).
+3. Two RLS/performance SQL fixes, blocked by a destructive-SQL
+   confirmation gate this session never receives; exact SQL is in
+   `OWNER_TODO.md`.
+4. A real contact email, replacing the placeholder in
+   `privacy.html`/`terms.html`.
+5. Attorney review of the privacy/terms/storage-notice pages, the
+   contract-reader wording, the filing next-steps copy, and the
+   referral-disclosure/review-email sections.
+6. Real referral partners for `config/referrals.json` (both slots
+   still `enabled: false`).
+7. Six Supabase edge function secrets plus a cron schedule, so
+   `send-review-requests` (Step 17) can actually send anything.
+8. Approval (or amendment) of `PRICING_STEP7_GUARANTEE_PROPOSAL.md`'s
+   30-day guarantee / Automatic Renewal Law copy — `config/
+   pricing.json`'s prices and refund policy are still `null`
+   placeholders until this happens, by design (Global Rule 13: never
+   hand-type a number a tool should generate, and a price is exactly
+   that kind of number here — a business decision, not a computed
+   fact).
+
+Two WAIT gates from earlier in the plan remain correctly un-crossed,
+not forgotten: Step 7's guarantee copy (item 8 above) and Step 22's
+"do not publish" gate — `build/seo/` stays gitignored and
+`config/seo.json`'s `baseUrl` is still `""`, confirmed again today.
 
 ## Mission metrics (as defined in `MASTER_BUILD_PLAN.md`)
 
 ### 1. Trust
 
-- **Tier A or B:** 382 of 740 documents (51.6%) — 8 at Tier A, 374 at
-  Tier B. Tier A now has a real per-document adversarial-verifier
-  signal (every authority clause checked, no open blocker/major
-  finding) and a real per-document accessibility signal
-  (`accessibility.json`, all 740/740 documents pass with 0 serious/
-  critical axe-core violations across both themes) — see
-  `tools/tiering.py` and `tools/accessibility_scan.js`. The 8 current
-  Tier A documents are all drafting-only forms with zero authority
-  clauses (nothing for the adversarial pass to find wrong); no
-  document with any authority clause has reached Tier A yet, because
-  the verifier checkpoint has so far reached 1,100 of 4,980 authority
-  clauses (22.1%), not the full corpus, and Tier A needs every one of
-  a document's authority clauses checked and clean, not a sample.
-  `python3 tools/tiering.py` to reproduce.
-- **Verified clauses within staleness thresholds:** 4,980 of 4,980
-  authority clauses (100%) are marked `verified` and sit inside their
-  category's fatal staleness window; 0 are even at the warn
-  threshold. `python3 tools/validate_corpus.py` to reproduce.
+- **Tier A or B:** 329 of 741 documents (44.4%) — 15 at Tier A, 314 at
+  Tier B. `python3 tools/tiering.py` to reproduce. Tier A requires a
+  real per-document adversarial-verifier signal (every authority
+  clause checked, no open finding of any severity) and a real
+  per-document accessibility signal (0 serious/critical axe-core
+  violations, both themes) on top of everything Tier B requires.
+  All 7 of the wedge-cluster documents are now Tier A or B — 5 of
+  them were Tier C as recently as Step 19 and were promoted during
+  Step 22 through genuine fixes (missing `whyWeAsk` text on 3
+  documents; real primary-source re-verification against eCFR.gov and
+  govinfo.gov for 2 documents' mirror-sourced citations), not a
+  loosening of the Tier A/B bar.
+- **Verified clauses within staleness thresholds:** confirmed again
+  today via `python3 tools/validate_corpus.py` — 0 clauses newly flagged
+  fatal or warn by the per-category staleness thresholds.
 - **Open verifier findings by severity:** 0 blocker, 0 major, 148
-  minor (225 total findings from the 1,100-clause checkpoint so far;
-  64 fixed — all 7 blockers and 53 of 53 majors found across both
-  checkpoints — and 13 more, all minors or majors already fixed
-  elsewhere, accepted as real but deliberately not auto-edited). Every
-  checkpoint-B blocker and major (31 findings across 30 clauses — 29
-  primary + 1 sibling) was triaged and fixed in a single batch-approved
-  pass: the user reviewed a 30-clause patch document and approved it
-  wholesale, then every fix was applied via a script that verified each
-  old-text anchor matched the live corpus exactly once before writing.
-  The 4 fixed blockers were `stayorpay_core_prohibition` (AB 1697
-  pushed the statute's operative date to Jan. 1, 2027),
-  `smallestate_real_property_affidavit` (corrected $166,250 to
-  $208,850, also resolving its contradiction with sibling clauses),
-  `llcdefault_management_and_voting` (added Corp. Code §17704.07(r)'s
-  profit-interest-proportional voting default for the no-agreement
-  case), and `aitransparency_disclosure_requirements` (SB 1000 deleted
-  the manifest-disclosure option and broadened the latent-disclosure
-  trigger — see `DECISIONS.md`'s 2026-11-03 entry for why this one
-  clause's `checkedDate` was deliberately *not* bumped, unlike the
-  other 29). All 148 open findings are minor-severity, from
-  checkpoint-B, and have not yet been triaged — a future pass.
-  `python3 verifier/triage.py --summary` to reproduce the open/fixed/
-  accepted/rejected counts; `verifier/findings.jsonl` and
-  `changelog.html` hold the full detail.
+  minor open (318 total findings; 64 fixed, 106 accepted as real but
+  not auto-edited, 0 rejected). `python3 verifier/triage.py --summary`
+  to reproduce. The verifier checkpoint has not yet reached every
+  authority clause in the corpus — this is why the large majority of
+  Tier B documents (306 of 314) are blocked from Tier A by the same
+  single reason, "not every authority clause is adversarially
+  checked," not by any structural blocker.
+- **A real, pre-existing accessibility bug fixed today while verifying
+  Step 23:** `tier-A` pill text failed WCAG color contrast in both
+  themes (a hardcoded hex color never made theme-aware, unlike the
+  other two tier pills) — fixed by reusing the existing
+  `--accent-strong`/`--accent-strong-ink` tokens; `node tests/
+  accessibility/axe_check.js` now reports 0 serious/critical
+  violations across every screen and the 50-document sample, both
+  themes. See `DECISIONS.md`'s Step 23 entry.
 
 ### 2. Breadth
 
-- **Documents per category:** 740 total across 8 categories, level
-  to within 1 of each other (93–94 each) — Business Formation 94,
-  Confidentiality & IP 94, During employment 93, Ending employment
-  94, Estate Planning 93, Family Law 93, Hiring 93, Real Estate 94.
-- **Share rendering through the full interview engine:** 740/740
-  (100%) — every document completes the schema-driven wizard
-  end to end. `node tools/wizard_regression.js` to reproduce.
+- **Documents per category:** 741 total across 9 categories — 8 of
+  them level at 93-94 each, plus a 9th, "Consumer & Civil Court," at 2
+  (added since the last count; not yet built out to match the others
+  in depth — a known, honest gap, not a defect).
+- **Share rendering through the full interview engine:** 741/741
+  (100%). `node tools/wizard_regression.js` to reproduce.
+- **Golden-fixture match:** 741/741 documents match their golden
+  fixture exactly. `node tests/golden/golden.js` to reproduce.
 
 ### 3. Experience
 
-**Not yet measurable, but the pipeline itself is now proven correct
-against real data (Phase 12 Step 9), not just synthetic unit tests.**
 The analytics (8.1) and feedback (8.2) pipelines are built, live in
-both Supabase projects, and wired into the real app (not just
-scaffolding): `account.js` wraps `renderWizard`/`renderWizardStep`/
-`renderOutput`/`searchDocuments` and the four export buttons to fire
-real `trackEvent` calls, and the feedback control is a real insert
-path. This session restored `groundtruth-staging`, inserted rows
-shaped exactly like the real client code's calls, and fed them into
-the real, unmodified `reportCompletionAndAbandonment`/`reportSearches`/
-`reportSlowestScreens`/`buildFindingLines` functions — all produced
-correct output (e.g. "opened 2, completed 1 (50%)" from a two-session
-fixture) — then deleted the test rows. See `DECISIONS.md`'s 2026-11-08
-entry for why a literal browser click-through against the live
-project couldn't run from this sandbox (its egress policy refuses
-`*.supabase.co` outright for every client, confirmed for curl, Node
-`fetch`, and the browser alike) and why the SQL-level substitute is a
-sound proof of the same thing. This product still has no real users,
-so `analytics_events` still holds zero real rows, and completion
-rate, abandonment point, time-to-finished-document, and feedback
-volume/sentiment all still require real usage this session has no
-way to generate — `tools/analytics_report.js` and
-`tools/ingest_feedback_findings.js` are ready to report on this the
-moment real traffic exists.
+both Supabase projects, and wired into the real app — `account.js`
+wraps the wizard/output/search/export functions to fire real
+`trackEvent` calls, and Step 23 added two more event types
+(`wedge_link_clicked`, `referral_link_clicked`) wired into the wedge
+callout and referral links specifically. `tools/analytics_report.js`
+now reports on all of: completion/abandonment per document and step,
+top no-result searches, slowest screens, and the two new click
+events. This product still has no real users, so `analytics_events`
+still holds zero real rows in production — completion rate,
+abandonment point, and the wedge-callout/referral click-through rates
+all still require real usage this session has no way to generate.
+`USER_TEST_PLAN.md` (Step 23) is a concrete 6-task script for the
+project owner to run with 3-5 real people in the meantime, centered
+on the wedge cluster specifically.
 
 ### 4. Freshness
 
-The law-change watcher (Phase 4.4) is live and has run one real scan
-window (2026-07-01 to 2026-10-01 against the 100 citations scanned so
-far), which found one real change: Cal. Bus. & Prof. Code § 22757.2's
-operative text was updated 2026-09-30, flagging the
-`aitransparency_detection_tool` clause. That flag was recorded
-2026-10-19. As of this writing (2026-10-29), it has been open for 10
-days since recording (28 since the statute's own update date) without
-being reviewed or re-verified — the clause's `checkedDate` is still
-2026-09-04, before the flagged change. This is reported honestly
-rather than claimed closed: the full "flagged → reviewed → updated"
-cycle the metric asks about has not been demonstrated end to end yet,
-only the first step. Re-verifying it is additionally blocked right
-now by the same access issue already on record in `verifier/
-findings.jsonl` (leginfo.legislature.ca.gov returns a Cloudflare 403
-to this sandbox) — the project owner (or a session with different
-network access) needs to complete this one.
+The law-change watcher has run one real scan window (2026-07-01 to
+2026-10-01 against the 100 citations scanned so far; see
+`watcher/reports/2026-10-01.md`), which found and the project already
+resolved one real change (the AI Transparency Act's detection-tool
+requirement, Cal. Bus. & Prof. Code § 22757.2 — see `DECISIONS.md`'s
+2026-11-03 entry). No new scan window has run since; this remains
+honestly reported as the current state rather than re-asserted as
+ongoing.
 
 ### 5. Reach
 
-**Not yet measurable.** `tools/generate_seo_pages.py` produces 839
-programmatic pages (740 documents + 99 already-verified search
-questions) and `tools/validate_seo_pages.py` checks them for
-uniqueness and thinness — both pass in CI on every push — but the
-output (`build/seo/`) is gitignored and has never been published to a
-live, indexed site. There is no real organic search traffic to report
-because there is nothing publicly live to receive it yet.
+**Not yet measurable; nothing is published.** `tools/
+generate_seo_pages.py` produces up to 840 programmatic pages (741
+documents + 99 already-verified search questions); `tools/
+validate_seo_pages.py` checks them for uniqueness and thinness — both
+pass in CI on every push. The output (`build/seo/`) is gitignored and
+has never been published to a live, indexed site, per Step 22's WAIT
+gate. `SEO_LAUNCH_PLAN.md` (rewritten in Step 22) lays out a 4-stage
+rollout keyed to tier and open-finding severity, with a **wedge-first**
+override added in Step 22 so the 7-document wedge cluster can launch
+at stage 1 regardless of the plain tier split:
 
-Phase 12 Step 8 added a staging mechanism (`--stage N`, computed from
-`tiers.json` + open verifier findings — see `SEO_LAUNCH_PLAN.md`) and
-a concrete rollout plan: stage 1 (Tier A, zero open findings) = 8
-pages ready; stage 2 (+ Tier B, zero open findings) = 369; stage 3
-(all of today's Tier A+B) = 442. None of this is published — the plan
-also lists exactly what the project owner still needs to decide
-(domain, hosting, deploy path, Search Console) before any stage could
-go live.
+| Stage | Docs indexable | Question pages | Total |
+| --- | --- | --- | --- |
+| 1 (plain) | 15 | 0 | 15 |
+| 1 (`--wedge-first`) | 19 | 1 | 20 |
+| 2 | 275 | 38 | 313 |
+| 3 | 329 | 48 | 377 |
+| 4 (everything) | 741 | 99 | 840 |
+
+`SEO_LAUNCH_PLAN.md`'s rollout recommendation leads with
+`--stage 1 --wedge-first`. None of this is published — the plan also
+lists exactly what the project owner still needs to decide (domain,
+hosting, deploy path, Search Console) before any stage could go live.
 
 ### 6. Revenue
 
-**N/A.** Payments (Phase 7.2) were skipped this build by the user's
-own explicit choice — no Stripe credentials exist anywhere in this
-project, and nothing charges anyone for anything yet. Nothing to
-report until that changes.
+**Built, but not yet live.** Steps 7-9 built real Stripe test-mode
+subscription checkout (`supabase/functions/` includes a checkout-
+session function and `stripe-webhook`), webhook-driven entitlement
+updates (`has_active_entitlement()`, gating exports/cloud-save/
+e-signature/sharing — Global Rule 10, all server-side), and the
+client-side wiring in `account.js` (test mode only, per Global Rule
+9 — no card data is ever stored by this project). What's still
+missing is entirely an owner decision, not engineering: every price
+field in `config/pricing.json` is still `null` (the owner chose the
+subscription model on 2026-11-10 but hasn't set a number), and the
+30-day guarantee / Automatic Renewal Law copy
+(`PRICING_STEP7_GUARANTEE_PROPOSAL.md`) is still unapproved — see
+`OWNER_TODO.md` item 8. Nothing charges a real person anything yet.
+
+## Security and performance, checked live today
+
+`get_advisors(type:"security")` and `get_advisors(type:"performance")`
+against the production project (`impurvwwjdgurbjbnydu`) show no
+finding beyond what's already documented and either accepted by
+design or already tracked as an owner action:
+- `rate_limits` has RLS enabled with zero policies **by design** (see
+  `DECISIONS.md` around its migration) — not a gap.
+- `has_active_entitlement()` being callable via RPC by signed-in users
+  as `SECURITY DEFINER` is the intended, already-reasoned-through
+  design (see `DECISIONS.md`) — it's the one function that needs to
+  check entitlement status across row-level-security boundaries.
+- Leaked-password protection is still disabled (`OWNER_TODO.md` item
+  2) and the two `agreements`/`feedback` RLS/performance findings are
+  still open (`OWNER_TODO.md` item 3) — both already tracked, neither
+  new.
+- The lone unaddressed item not yet in `OWNER_TODO.md`: a leftover
+  `public._scratch_probe` table with RLS enabled and no policy —
+  already noted as a parenthetical in `OWNER_TODO.md` item 3's "drop
+  whenever convenient" aside, not a live risk (2 rows, no real data).
+
+`node tests/performance/performance_budget.js` passes today with
+headroom on every budget: 6.0MB initial transfer (budget 20MB), 1.9s
+time-to-interactive (budget 8s), 2.5ms first render for the default
+60-card page (budget 50ms), max 1.1ms search across 10 queries (budget
+100ms), 1.2s for a 20-page contract-reader paste (budget 5s).
 
 ## How to verify any of this yourself
 
@@ -208,9 +251,13 @@ exact commit:
 ```
 python3 tools/validate_corpus.py
 python3 tools/tiering.py
-python3 verifier/report.py
+python3 verifier/triage.py --summary
 node tools/wizard_regression.js
+node tests/golden/golden.js
+node tests/accessibility/axe_check.js
+node tests/performance/performance_budget.js
 cat watcher/reports/2026-10-01.md
+cat SEO_LAUNCH_PLAN.md
 ```
 
 The full CI gate suite (`.github/workflows/ci.yml`) runs all of the

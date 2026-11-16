@@ -7,10 +7,15 @@ Reads tiers.json (doesn't recompute tiers itself — run
 `python3 tools/tiering.py` first; tiering.py is the one place tiers are
 computed, consistent with "computed, never hand-assigned"). "Closest to
 the next tier" only covers Tier C documents' real, actionable distance
-to Tier B: Tier B documents are all equally blocked from Tier A by the
-same two missing systems (Phase 4.1's adversarial verifier, Phase 9.1's
-accessibility checks), so ranking them against each other today would
-report a difference that doesn't actually exist yet.
+to Tier B: Phase 4.1's adversarial verifier and Phase 9.1's accessibility
+checks both exist and run now (see tools/tiering.py's own
+blockingA/blockingB), but 306 of 314 Tier B documents share the exact
+same single blockingA reason ("not every authority clause is
+adversarially checked") with no per-document count of how many clauses
+are still unchecked exposed anywhere -- so there is no real distance
+signal to rank Tier B documents against each other by yet, only a
+single shared category. Ranking them today would report a difference
+that doesn't actually exist in the data.
 
     python3 tools/promotion_report.py                 # print the report
     python3 tools/promotion_report.py --markdown       # GFM output, for a CI job summary
@@ -131,7 +136,7 @@ def format_text(tiers, history, recheck_findings):
     lines.append('')
 
     lines.append(f"Top {TOP_N} documents closest to Tier B "
-                  f"(Tier B→A has no actionable path yet — Phase 4.1/9.1 don't exist):")
+                  f"(Tier B→A has no distance signal to rank by yet — see this file's header):")
     top = closest_to_b(tiers)
     if not top:
         lines.append('  (no Tier C documents)')
@@ -184,8 +189,7 @@ def format_markdown(tiers, history, recheck_findings):
     lines.append('')
 
     lines.append(f"### Top {TOP_N} documents closest to Tier B")
-    lines.append("(Tier B→A has no actionable path yet — Phase 4.1's adversarial verifier "
-                  "and Phase 9.1's accessibility checks don't exist.)")
+    lines.append("(Tier B→A has no distance signal to rank by yet — see this file's header.)")
     lines.append('')
     top = closest_to_b(tiers)
     if not top:
