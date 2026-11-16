@@ -5033,3 +5033,101 @@ the upgraded clauses), `regression.js`, `wizard_regression.js`, all
 the 4 documents/7 clauses as "MODIFIED" -- a direct-push correctness
 fix, not a merge, same reasoning as every other direct citation edit
 in this project's history) all pass.
+
+## 2026-11-16 — CA Wedge Plan Step 23: user test plan, and measuring the two features that could otherwise only be guessed at
+
+**Task:** "user test and instrumentation" per the master plan.
+
+**Instrumentation first, since the user test plan references it:**
+`public.analytics_events.event_type`'s CHECK constraint
+(`supabase/migrations/20261116000000_analytics_wedge_referral_events.sql`)
+now also allows `wedge_link_clicked` and `referral_link_clicked` --
+no new columns needed, since `document_id` and `step_id` (already
+free-text, already reused this way for `step_reached`'s step index)
+cover what each event needs: which wedge document got clicked from
+Step 19's callout, and which referral slot (`registeredAgent` /
+`attorneyReview`) got clicked and on which document. Wired
+`trackEvent()` calls into `renderWedgeCallout()`'s and
+`renderReferralLinks()`'s existing click handlers in app.js --
+confirmed live with a throwaway Playwright script (not committed)
+that intercepts `trackEvent` and asserts the exact event type and
+payload fire on a real click, not just that the code compiles.
+Extended `tools/analytics_report.js` with
+`reportWedgeAndReferralClicks()` (and 5 new tests in
+`tests/tools/test_analytics_report.js`, now 13/13) so these two new
+event types actually show up in the existing funnel report once
+there's real traffic, rather than being silently ignored by it (the
+report already didn't error on an unrecognized event type, but
+"doesn't crash" isn't the same as "is reported on").
+
+**A real, backwards documentation bug found while touching this
+file, not introduced by it:** `tools/generate_data_inventory.py`'s
+`analytics_events` note claimed usage tracking is "Off by default
+from the Account screen's analytics toggle." Checked the actual code
+(`account.js`'s `analyticsOptedOut()` returns `false` -- i.e.
+tracking is active -- whenever the opt-out key was never set, and
+`renderAnalyticsOptOut()`'s checkbox, labeled "Don't record my
+usage," starts unchecked) against `privacy.html`'s own already-
+correct line ("a different thing and is on by default") and confirmed
+the generated-doc note had it backwards -- the one place this project
+auto-generates privacy documentation from code was itself
+misrepresenting, in the reassuring-sounding direction, what the
+product actually does by default. Fixed the note and regenerated
+`PRIVACY_DATA_INVENTORY.md`.
+
+**`USER_TEST_PLAN.md`** -- a concrete script for the project owner to
+run with 3-5 real people, not a template. Centered on the wedge
+cluster since that's what Step 19's home page and Step 22's SEO
+staging are both built around: six ordered tasks (find the wedge path
+unprompted, fill out the Articles of Organization and see whether the
+new `whyWeAsk` text from Step 22 actually lands, find the filing
+next-steps section, use the free contract reader and check nobody
+reads it as the product reviewing their contract, understand the
+free/paid split, and the real question everything builds toward --
+would they trust this enough to use it for their own LLC, asked
+before and after they see `trust.html`/`methodology.html`). Says
+plainly what it isn't: not a substitute for Step 20's attorney review,
+not a statistically powered study -- 3-5 people catches obvious
+problems, not rare ones.
+
+**A real, pre-existing accessibility bug found by the gate suite
+itself, not introduced by this step, fixed before committing per
+Global Rule 5 (never commit on failure):** `node
+tests/accessibility/axe_check.js` failed on `screen-picker`, both
+themes, with a serious color-contrast violation on `.tier-pill.tier-A`
+-- 4.07:1 in light mode and 2.71:1 in dark mode against a 4.5:1
+requirement. Confirmed via `git stash` that this already failed on
+the committed HEAD (Step 22's commit) -- nothing in this step's own
+diff touches CSS or tier rendering, so this wasn't a regression this
+step caused, but it is a real defect on the one screen that now also
+carries Step 19's wedge callout and Step 13's front-door callout, and
+it had to be fixed, not shipped past, before this commit could go in
+clean. Root cause: `.tier-pill.tier-A` (`styles.css`) was the only one
+of the three tier pills hardcoded to a single hex color
+(`#1f7a3f`) instead of a theme-aware variable -- `.tier-B` already
+correctly used `var(--accent-ink)` and `.tier-C` used
+`var(--ink-soft)`, both of which track dark mode and both of which
+pass. Rather than invent a new variable, reused
+`--accent-strong-ink`/`--accent-strong` -- tokens already defined in
+`:root` for exactly this purpose ("a third, deeper tone for
+'adversarially checked' -- strictly above `--accent`") and already
+confirmed to clear 4.5:1 against the pill's `--surface-2` background
+in both themes by a margin (9.51:1 light, 10.57:1 dark; computed with
+the WCAG relative-luminance formula directly, not eyeballed) --
+following the same color/border pairing pattern tier-B already uses.
+Re-ran the full accessibility, regression, and golden suites after
+the fix: 0 serious/critical violations across every screen and the
+50-document sample, both themes; 741/741 golden fixtures and wizard
+walkthroughs still match.
+
+**Verification:** `node --check app.js`/`analytics_report.js`,
+`copy_lint.py`, `python3 tools/validate_corpus.py` (unaffected),
+the full 22-test Python tooling suite, `node tools/regression.js`,
+`node tests/golden/golden.js`, `node tools/wizard_regression.js`,
+`node tests/wizard/wizard_unit.js`, and `node
+tests/accessibility/axe_check.js` (0 serious/critical violations,
+confirmed clean after the tier-A contrast fix above) all pass.
+`get_advisors(type: "security")` against the live project shows no new
+finding beyond the three already-documented pre-existing ones, and
+`merge_guard.py` against this branch's own upstream reports clean:
+additions only.

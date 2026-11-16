@@ -119,6 +119,31 @@ function reportSlowestScreens(events) {
   medians.slice(0, 20).forEach(({ key, median, n }) => console.log(`  ${key}: ${median.toFixed(1)}s (n=${n})`));
 }
 
+// CA Wedge Plan Step 23: the two new event types added alongside the
+// wedge callout (Step 19) and referral links (Step 16) -- same
+// aggregation style as reportSearches() above (a simple count,
+// nothing fancier needed for two new, low-volume event types).
+function reportWedgeAndReferralClicks(events) {
+  console.log('\n=== Wedge-callout document clicks ===');
+  const wedgeClicks = new Map();
+  events.filter(e => e.event_type === 'wedge_link_clicked').forEach(e => {
+    wedgeClicks.set(e.document_id, (wedgeClicks.get(e.document_id) || 0) + 1);
+  });
+  const sortedWedge = [...wedgeClicks.entries()].sort((a, b) => b[1] - a[1]);
+  if (sortedWedge.length === 0) { console.log('(no data yet)'); }
+  sortedWedge.forEach(([docId, count]) => console.log(`  ${docId}: ${count} click${count === 1 ? '' : 's'}`));
+
+  console.log('\n=== Referral link clicks (by document and slot) ===');
+  const referralClicks = new Map();
+  events.filter(e => e.event_type === 'referral_link_clicked').forEach(e => {
+    const key = `${e.document_id} -- ${e.step_id}`;
+    referralClicks.set(key, (referralClicks.get(key) || 0) + 1);
+  });
+  const sortedReferral = [...referralClicks.entries()].sort((a, b) => b[1] - a[1]);
+  if (sortedReferral.length === 0) { console.log('(no data yet)'); }
+  sortedReferral.forEach(([key, count]) => console.log(`  ${key}: ${count} click${count === 1 ? '' : 's'}`));
+}
+
 async function main() {
   const supabaseUrl = process.env.SUPABASE_URL;
   const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
@@ -134,6 +159,7 @@ async function main() {
   reportCompletionAndAbandonment(events);
   reportSearches(events);
   reportSlowestScreens(events);
+  reportWedgeAndReferralClicks(events);
 }
 
 if (require.main === module) {
@@ -145,4 +171,4 @@ if (require.main === module) {
 // worth checking against synthetic events, independent of this file's
 // own no-credentials no-op path above, which is all a live run could
 // otherwise verify.
-module.exports = { reportCompletionAndAbandonment, reportSearches, reportSlowestScreens };
+module.exports = { reportCompletionAndAbandonment, reportSearches, reportSlowestScreens, reportWedgeAndReferralClicks };

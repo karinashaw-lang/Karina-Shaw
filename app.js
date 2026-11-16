@@ -1740,6 +1740,11 @@ function renderWedgeCallout() {
     button.className = 'wedge-doc-link';
     button.textContent = doc.title;
     button.addEventListener('click', () => {
+      // CA Wedge Plan Step 23: trackEvent() is defined in account.js,
+      // loaded after app.js -- safe here for the same reason
+      // wedge-subscription-link's renderAccountScreen() call already
+      // is (resolved at click time, long after both scripts parse).
+      trackEvent('wedge_link_clicked', { document_id: doc.id });
       state.document = doc;
       state.answers = {};
       renderWizard();
@@ -2546,6 +2551,12 @@ function renderReferralLinks() {
     link.target = '_blank';
     link.rel = 'nofollow sponsored noopener noreferrer';
     link.textContent = slot.linkText;
+    // target="_blank" means this tab never unloads, so there's no race
+    // with trackEvent()'s async insert the way there would be on a
+    // same-tab navigation.
+    link.addEventListener('click', () => {
+      trackEvent('referral_link_clicked', { document_id: state.document.id, step_id: slot.key });
+    });
     block.appendChild(link);
 
     const disclosure = document.createElement('p');

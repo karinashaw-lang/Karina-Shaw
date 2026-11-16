@@ -86,11 +86,12 @@ TABLE_NOTES = {
         'Deleted automatically when the share it belongs to is deleted (or when you delete your account).',
     ),
     'analytics_events': (
-        'A single event (a wizard step reached, a document opened or exported, a search run) with '
-        'no name, email, or account link of any kind, and no IP address column at all. A random, '
-        'non-persistent per-visit id groups one session\'s own events together; it resets every '
-        'time you close the tab and cannot be used to recognize you on a later visit. Off by '
-        'default from the Account screen\'s analytics toggle.',
+        'A single event (a wizard step reached, a document opened or exported, a search run, '
+        'clicking into the wedge-cluster callout or a referral link) with no name, email, or '
+        'account link of any kind, and no IP address column at all. A random, non-persistent '
+        'per-visit id groups one session\'s own events together; it resets every time you close '
+        'the tab and cannot be used to recognize you on a later visit. Recorded by default; opt '
+        'out any time from the Account screen\'s analytics toggle.',
         'There is no identifier connecting a row back to a person, so a deletion request has '
         'nothing to locate or delete here; rows are kept indefinitely for aggregate reporting '
         '(tools/analytics_report.js) and are never read individually.',

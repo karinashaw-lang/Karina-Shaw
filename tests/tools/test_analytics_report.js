@@ -4,7 +4,7 @@
 // (no credentials) is already covered just by running it. Captures
 // console.log output and checks the real computed numbers, not just
 // that the script runs without throwing.
-const { reportCompletionAndAbandonment, reportSearches, reportSlowestScreens } = require('../../tools/analytics_report.js');
+const { reportCompletionAndAbandonment, reportSearches, reportSlowestScreens, reportWedgeAndReferralClicks } = require('../../tools/analytics_report.js');
 
 const checks = [];
 function check(name, cond, detail) {
@@ -67,6 +67,27 @@ function captureLog(fn) {
   const out = captureLog(() => reportSlowestScreens(events));
   check('slowest screens: median of 10s/20s for nda step 0 is 20s (n=2)', /nda step 0: 20\.0s \(n=2\)/.test(out), out);
   check('slowest screens: a cross-document jump in the same session is not counted', !out.includes('nda step 1:'), out);
+}
+
+// ---- wedge-callout and referral-link clicks ----
+{
+  const events = [
+    { event_type: 'wedge_link_clicked', document_id: 'llc_articles_of_organization' },
+    { event_type: 'wedge_link_clicked', document_id: 'llc_articles_of_organization' },
+    { event_type: 'wedge_link_clicked', document_id: 'ein_info_sheet' },
+    { event_type: 'referral_link_clicked', document_id: 'llc_articles_of_organization', step_id: 'registeredAgent' },
+    { event_type: 'opened', document_id: 'llc_articles_of_organization' }, // unrelated event type, must not be counted
+  ];
+  const out = captureLog(() => reportWedgeAndReferralClicks(events));
+  check('wedge clicks: counts 2 for the most-clicked wedge document', /llc_articles_of_organization: 2 clicks/.test(out), out);
+  check('wedge clicks: counts a single click with singular wording', /ein_info_sheet: 1 click\b/.test(out), out);
+  check('wedge clicks: most-clicked document listed first', out.indexOf('llc_articles_of_organization: 2') < out.indexOf('ein_info_sheet: 1'), out);
+  check('referral clicks: reports document and slot together', /llc_articles_of_organization -- registeredAgent: 1 click\b/.test(out), out);
+}
+
+{
+  const out = captureLog(() => reportWedgeAndReferralClicks([]));
+  check('wedge/referral clicks: no data yet reported for both sections when empty', (out.match(/\(no data yet\)/g) || []).length === 2, out);
 }
 
 const failed = checks.filter(c => !c.ok);

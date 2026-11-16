@@ -50,7 +50,7 @@ A cloud copy of one saved document (the same thing the local "library" already k
 
 ### `analytics_events`
 
-A single event (a wizard step reached, a document opened or exported, a search run) with no name, email, or account link of any kind, and no IP address column at all. A random, non-persistent per-visit id groups one session's own events together; it resets every time you close the tab and cannot be used to recognize you on a later visit. Off by default from the Account screen's analytics toggle.
+A single event (a wizard step reached, a document opened or exported, a search run, clicking into the wedge-cluster callout or a referral link) with no name, email, or account link of any kind, and no IP address column at all. A random, non-persistent per-visit id groups one session's own events together; it resets every time you close the tab and cannot be used to recognize you on a later visit. Recorded by default; opt out any time from the Account screen's analytics toggle.
 
 **Columns:** `id` (uuid), `event_type` (text), `document_id` (text), `step_id` (text), `export_format` (text), `search_query` (text), `search_result_count` (integer), `created_at` (timestamptz), `client_session_id` (uuid)
 
