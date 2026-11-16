@@ -1,12 +1,18 @@
 # Owner to-do — things only you can do
 
-Nothing in this file has been applied. Each item is something this
-session genuinely cannot do itself (a credential, a dashboard-only
-toggle, a destructive SQL statement blocked by a confirmation gate
-this session never receives, or a decision that needs a human — a
-real contact address, an attorney's judgment). Phase 5 of this build
-phase may append one more item here if the AI Transparency Act
-re-verification is still blocked after a fresh attempt.
+**Final consolidation pass (CA Wedge Plan, 2026-11-16):** this is now
+the single, complete list — every item below was re-checked against
+today's live tools and the live Supabase project while writing
+`LAUNCH_READINESS.md`, and three items (9-11) were added that earlier
+individual steps had left undocumented here even though they're real,
+owner-only actions. Nothing in this file has been applied. Each item
+is something this session genuinely cannot do itself (a credential, a
+dashboard-only toggle, a destructive SQL statement blocked by a
+confirmation gate this session never receives, or a decision that
+needs a human — a real contact address, an attorney's judgment, a
+business decision about money). See `LAUNCH_READINESS.md` for which of
+these specifically block a real, paid launch of the wedge cluster
+versus which are independently switchable later.
 
 ## 1. Three CI repository secrets
 
@@ -200,3 +206,41 @@ pending. Read that proposal, approve it, amend it, or write your own;
 once you do, the refund window and renewal-disclosure copy need to
 actually go into `config/pricing.json` and `terms.html` before real
 payments go live.
+
+## 9. Run the Step 23 user test with real people
+
+`USER_TEST_PLAN.md` is a ready-to-run, 6-task script centered on the
+wedge cluster (find it unprompted, fill out the Articles of
+Organization, find the filing next-steps section, use the contract
+reader, understand the free/paid split, and the real question
+everything builds toward — would they trust this for their own LLC).
+This session can write the script but can't recruit or sit with 3-5
+real people — that's genuinely something only you can do. It doesn't
+need to wait on any other item in this file; running it now, before
+the owner-gated items below clear, would surface product-level
+problems earlier rather than later.
+
+## 10. Decide on SEO publishing (domain, hosting, Search Console)
+
+`build/seo/` stays gitignored and `config/seo.json`'s `baseUrl` is
+still `""` — Step 22's own "do not publish" gate, deliberately left
+uncrossed by this session. `SEO_LAUNCH_PLAN.md` recommends
+`python3 tools/generate_seo_pages.py --stage 1 --wedge-first`
+(20 pages: the 7-document wedge cluster plus 15 unrelated Tier A
+documents) as the first real publish, but that needs three things
+only you can set up: a real domain, hosting for the generated static
+pages, and a Google Search Console property pointed at it. None of
+this blocks the product being usable today — it only blocks organic
+search traffic finding it, which this plan always treated as later
+than the product itself being ready.
+
+## 11. Decide whether Step 25 (optional minimal business profile) happens at all
+
+The master plan marks this step optional, and this session's local
+context doesn't retain its exact scope text (it came from an earlier
+part of this long-running conversation, not a file in this repo) —
+see `LAUNCH_READINESS.md` and `DECISIONS.md`'s Step 24 entry for why
+guessing at unspecified scope and building something unasked-for was
+judged the wrong call under Global Rule 15. If you want this step
+done, the next session needs either the original plan's wording for
+it or a fresh, explicit scope from you.

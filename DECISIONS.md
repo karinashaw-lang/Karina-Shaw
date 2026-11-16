@@ -5217,3 +5217,53 @@ is already tracked there or accepted by design in this file) all
 pass. No code path outside `tools/promotion_report.py`'s comments/
 strings changed -- `BUILD_STATUS.md` and `LAUNCH_READINESS.md` are
 documentation only.
+
+## 2026-11-16 — CA Wedge Plan: final OWNER_TODO.md consolidation pass
+
+**Task:** "generate/update OWNER_TODO.md final pass," the last item
+on this plan's own list, once Steps 1-24 were done.
+
+Re-read the whole file against today's live `get_advisors` output
+and against `LAUNCH_READINESS.md` (written minutes earlier in this
+same review) and found it was already substantively accurate --
+items 1-8 (CI secrets, leaked-password protection, the two RLS/perf
+SQL fixes, contact email, attorney review, referral partners,
+review-email secrets, guarantee/ARL approval) all still match live
+reality, confirmed line by line. What it was missing were three real,
+owner-only action items that individual earlier steps had created
+without ever adding a line to this file for them:
+
+- **Item 9** -- actually running Step 23's `USER_TEST_PLAN.md` with
+  real people. That file existed and was correct; nothing in
+  `OWNER_TODO.md` told the owner it was theirs to run.
+- **Item 10** -- the SEO publish decision (domain, hosting, Search
+  Console) that `SEO_LAUNCH_PLAN.md` and this session's own
+  `LAUNCH_READINESS.md` both already named as blocking Step 22's
+  rollout, but which had never been written into the one file this
+  project uses specifically to collect owner-only action items.
+- **Item 11** -- an explicit record that Step 25 (optional) is
+  undone and why, so a future session (or the owner, reading this
+  file alone without `DECISIONS.md` open) doesn't mistake silence for
+  either "done" or "forgotten."
+
+Added a short framing note at the top marking this as the final
+consolidation pass for this plan, so a reader opening this file cold
+knows it was checked against live state today, not assembled
+piecemeal and never revisited. No item was removed -- every one of
+1-8 was re-verified true, not just left alone.
+
+**Verification:** `python3 tools/validate_corpus.py` passes
+(unaffected -- documentation only); confirmed no test or tool parses
+`OWNER_TODO.md` structurally (`grep -rn OWNER_TODO tests/ tools/`
+returns nothing), so this change carries no gate-suite risk beyond
+the correctness of its own prose, which was checked line by line
+against `get_advisors`, `config/seo.json`, `config/referrals.json`,
+and `USER_TEST_PLAN.md` directly rather than from memory.
+
+This closes CA Wedge Plan Steps 12-24 plus this final pass, continued
+across this session under a standing "keep going" instruction with no
+further user direction. The two still-open items predating this
+segment (Step 7's guarantee-copy approval, Step 22's SEO publish gate)
+remain exactly where this session left them -- both correctly
+require the project owner, not more autonomous engineering, to move
+forward.
