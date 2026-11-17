@@ -5267,3 +5267,93 @@ segment (Step 7's guarantee-copy approval, Step 22's SEO publish gate)
 remain exactly where this session left them -- both correctly
 require the project owner, not more autonomous engineering, to move
 forward.
+
+## 2026-11-17 — Full-corpus completion spec: WS0 baseline, review queue, and cost estimate
+
+**Task:** the owner handed over a new, much larger spec -- "GROUNDTRUTH:
+COMPLETION SPEC FOR ALL 741 DOCUMENTS (ENGINEER HANDOFF)" -- asking for
+every document and clause in the corpus brought to a verified,
+honestly labeled state, via five workstreams (WS0 baseline through
+WS4 triage) plus a WS5 and sections 7-10 this session never received:
+the message cut off mid-sentence in WS5's first bullet. WS0's own
+exit criteria requires a cost/time estimate and owner approval before
+any full run -- this entry covers WS0 only, nothing past it.
+
+**Confirmed, not assumed, every number the spec's own Section 2
+claimed:** ran `validate_corpus.py`, `tiering.py`, and a direct join
+of `findings.jsonl` against `triage.jsonl` (not just
+`triage.py --summary`, to get the open-findings-by-severity split the
+spec's own claim needed independently checked). Every claim matched
+exactly, including the open-findings severity split (0 blocker, 0
+major, 148 minor) -- the spec's authors had their own facts right.
+
+**Computed the new measures WS0 explicitly asks for, none of which
+existed as a single number anywhere before today:** adversarial
+verifier coverage (23.5% of authority clauses clean, 32.5% reached by
+the checkpoint at all, 67.5% never reached -- this is the real size of
+WS2), the full citation sourceClass breakdown (65% primary-official,
+0% secondary), the mirror-citing clause count (571, down from
+`NON_PRIMARY_SOURCES.md`'s 578 as of 2026-11-10 -- Step 22's own
+citation upgrades already moved this number), confirmed 0 clauses past
+any staleness threshold by direct computation (not by assuming
+`validate_corpus.py`'s silence meant zero -- read the code's
+`check(not stale, ...)` pattern to confirm silence *is* the zero-case
+output), and the 9 zero-authority-clause documents (matches
+`tiering.py`'s own DraftOnly count exactly).
+
+**A real, live finding that changes the WS1/WS2 cost picture, not
+assumed from memory:** tested reachability of every primary-source
+domain this corpus depends on, today, via both `curl` and `WebFetch`.
+`leginfo.legislature.ca.gov` and its mirror `california.public.law`
+are both still 403 -- no change from every prior finding on this.
+`www.courtlistener.com` is 403 as a raw URL fetch, but **the dedicated
+CourtListener MCP tool works** -- confirmed with a real query
+("Wasatch Property Management v. Degrate") returning a real
+`opinion_id`. This corrects one open finding's own text
+(`vexlit_prefiling_order#0`, which called the same case "auth-walled")
+-- that finding hit the raw REST endpoint directly, not the
+authenticated MCP tool; case-law verification in WS2 should route
+through the MCP tool instead. `ecfr.gov`, `govinfo.gov`,
+`law.cornell.edu`, and `oag.ca.gov` are all reachable.
+
+**`tools/build_review_queue.py`** (new, tested, `--check` mode like
+`tiering.py`'s own) builds `review/queue.jsonl` -- one row per clause
+(6,621) and one row per document (741), ranked by a priority score
+built only from objective signals already in the corpus: the wedge
+cluster's own real go-to-market priority (the *only* real demand
+signal that exists -- `analytics_events` holds zero production rows),
+mirror-citation presence, historical blocker/major finding history,
+citation count, and staleness fraction. Deliberately does NOT attempt
+a subjective "this category is legally riskier" score -- that
+judgment belongs to WS3's human-reviewed research or to an attorney
+under Level 2, not to a script's guess. Caught and fixed a real bug
+in my own first draft before committing: I misremembered two of the
+seven wedge-cluster document ids (wrote `articles_of_incorporation`
+and `llc_tax_classification_info_sheet`, neither of which exists in
+`data/documents.json`) instead of copying them from `app.js`'s own
+`WEDGE_CLUSTER_DOC_IDS` -- caught by a test
+(`test_all_seven_wedge_documents_flagged`) that checks the count
+rather than trusting the literal list I'd typed, then fixed by
+actually reading `app.js`'s array instead of recalling it.
+
+**`REVIEW_BASELINE.md`** (new) -- the baseline-plus-estimate WS0 asks
+for, including the cost/time estimate: roughly 400-950 hours of real
+tool-call/review time across WS1-WS4, with three named caveats (the
+auto-mode classifier's prior refusal of autonomous-commit research
+delegation, the leginfo blocker not resolving on its own, and WS4's
+148-finding floor being certain to grow once WS2 actually runs against
+the 3,368 never-checked clauses). Recommends a bounded first batch
+over authorizing all 4,989+741 units at once, but leaves that choice
+to the owner, per the spec's own WS0 exit gate.
+
+**Explicitly not started:** WS1 through WS4. The spec's own gate
+("get owner approval before any full run") plus the missing tail of
+the spec (WS5's remainder, sections 7-10, referenced but never sent)
+both independently call for stopping here.
+
+**Verification:** `python3 tools/validate_corpus.py`,
+`python3 tools/build_review_queue.py --check`,
+`python3 tests/tools/test_build_review_queue.py` (8/8), and
+`python3 tools/merge_guard.py origin/claude/new-session-palh5c`
+(clean: additions only) all pass. No existing file's content changed
+-- this entry's diff is three new files plus this entry.
