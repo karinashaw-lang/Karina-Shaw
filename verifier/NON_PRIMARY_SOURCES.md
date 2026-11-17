@@ -8,9 +8,14 @@ primary** (Global Rule 4): a clause with any `mirror`-class citation
 cannot honestly claim the "Verified" level under Step 2's three-level
 system, regardless of what its old single-value `status` field says.
 
-**578 of 4,989 authority clauses (11.6%) carry at least one
-`mirror`-class citation.** They split into two very different
-priority groups:
+**571 of 4,989 authority clauses (11.4%) carry at least one
+`mirror`-class citation, as of 2026-11-17** (down from 578 as of this
+file's original 2026-11-10 run — the 2026-11-16 wedge-cluster citation
+upgrades (Part A's launch wedge work) moved 7 clauses out of Priority
+2 below by upgrading their only mirror citation, Cornell LII, to a
+direct eCFR.gov/govinfo.gov cite; Priority 1's count is unchanged at
+96, since none of those upgrades touched a California-statute
+citation). They split into two very different priority groups:
 
 ## Priority 1 — 96 clauses citing a California-statute mirror
 
@@ -50,7 +55,7 @@ directly from leginfo (or another true primary source) and confirmed —
 this is Step 6's job, not this step's.** This step only identifies and
 labels them; it does not re-verify them.
 
-## Priority 2 — 482 clauses citing only a federal-statute mirror
+## Priority 2 — 475 clauses citing only a federal-statute mirror (was 482)
 
 These cite `www.law.cornell.edu` (Cornell's Legal Information
 Institute) for federal statutory text, with no California-statute

@@ -2831,8 +2831,11 @@ const LEVEL_LABEL = {
   cited: 'Cited',
 };
 const LEVEL_NOTE = {
-  adversarially_checked: null,
-  verified: null,
+  adversarially_checked: "This clause's citation has been checked directly against the government's own primary " +
+    'text, and has also been through a separate review built to look for mistakes, with no unresolved finding ' +
+    'left open.',
+  verified: "This clause's citation has been checked directly against the government's own primary text and the " +
+    "quote matches. It has not yet been through the separate review the level above requires.",
   cited: "This clause's source hasn't been independently confirmed against the government's own primary text yet " +
     "(it's sourced to a secondary copy, or hasn't been checked at all). Treat the quote below as a starting point, " +
     'not a confirmed fact, until it is.',

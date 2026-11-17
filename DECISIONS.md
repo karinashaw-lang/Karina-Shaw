@@ -5357,3 +5357,110 @@ both independently call for stopping here.
 `python3 tools/merge_guard.py origin/claude/new-session-palh5c`
 (clean: additions only) all pass. No existing file's content changed
 -- this entry's diff is three new files plus this entry.
+
+## 2026-11-17 — Complete build and review handoff: A0, A1, A2, and B1's bounded parts
+
+**Task:** the owner sent the full, un-truncated handoff spec (Part A:
+paid MVP launch, Part B: full review of all 741 documents). Section
+8's own sequencing says "A0, A1, A2 and B0, B1 first, in sequence."
+B0 was already done the prior turn under an earlier, truncated version
+of the same spec (`REVIEW_BASELINE.md`, `review/queue.jsonl`,
+`tools/build_review_queue.py`) -- this entry covers A0, A1, A2, and
+B1's bounded parts only. Nothing past B1, and nothing in A3+, was
+started -- A4 (launch set), A6 (pricing), and every B-cluster all
+carry their own explicit owner-approval gates in the spec itself.
+
+**A0 (baseline):** wrote `MVP_BASELINE.md`. Confirmed every Section 2
+claim again (all accurate, same numbers `REVIEW_BASELINE.md` already
+established). **A real mistake caught before it shipped:** this task
+is named identically to a file that already existed from an earlier
+plan iteration ("Complete MVP Build Plan," 2026-11-10) -- I used the
+Write tool directly without reading the existing file first, which is
+exactly the protocol violation the tool's own instructions warn
+against. Caught it via `git status` showing the file as modified
+rather than new, read the old version with `git show`, and decided
+deliberately rather than by accident: the file's own established
+purpose (a point-in-time snapshot taken at the start of whatever plan
+is currently active, refreshed rather than kept as a historical log --
+the same pattern `BUILD_STATUS.md`/`tiers.json` already follow) meant
+overwriting was the right call, but the old version held one fact my
+first draft had dropped entirely (2 clauses carry `"status":
+"unverified"`, a level below even `cited`) -- added it back, re-
+confirmed both are still exactly the same 2 clauses, unregressed:
+`namechange_gender_identity_conforming_process` and
+`smallclaims_judgment_enforcement`.
+
+**A1 (honest labels and tiers):** inspected `tools/tiering.py` before
+assuming anything needed building -- Tier A's gate already requires a
+golden fixture, non-stale check dates, zero open adversarial findings,
+and an accessibility pass, and already hard-blocks drafting-only
+documents from Tier A (confirmed: 0 of today's 15 Tier A documents are
+drafting-only). This was already fully built, from an earlier session
+segment. **One real gap found and fixed:** the clause badge's
+`LEVEL_NOTE` one-line explanation (`app.js`) existed only for the
+`cited` level; `verified` and `adversarially_checked` rendered no
+explanation at all in the live badge, failing the spec's own "badge
+shows level, check date, one-line explanation" for two of the three
+levels. Added accurate, non-advisory explanations for both (passed
+`copy_lint.py`), confirmed via `node tools/regression.js` and
+`node tests/golden/golden.js` (both still pass -- the badge's detail
+text isn't part of either golden fixture's comparison, confirmed by
+reading what each script actually extracts before assuming). Also
+refreshed `verifier/NON_PRIMARY_SOURCES.md`'s stale 2026-11-10 counts
+(578 mirror-citing clauses) to today's real number (571 -- Step 22's
+own citation upgrades already moved 7 of them, Priority 1 unchanged
+at 96).
+
+**A2 (mechanical controls):** inspected before building -- pre-commit/
+pre-push hooks and the `branch-discipline` CI job
+(`tools/check_commit_discipline.py`) already enforce both asks exactly
+("Reviewed-By:" trailer required on the protected branch;
+"Patch-ID:" trailer required specifically when a commit edits an
+existing clause's body/gap/citation fields, not on routine
+status/checkedDate changes), and `tests/tools/
+test_check_commit_discipline.py` already tests deliberately-violating
+commits directly (11/11 passing today). Nothing new needed.
+
+**B1 (source access and citation hygiene), bounded parts only:**
+- Tested all 29 cited domains live today (`curl` and `WebFetch`),
+  not just the 7 checked for the prior B0 entry. Found a third real
+  block beyond the already-known leginfo/california.public.law pair:
+  `law.onecle.com`'s TLS handshake never completes from this sandbox
+  (a proxy `CONNECT` tunnel opens, then nothing) -- a different
+  failure mode than a clean 403, logged honestly as "status unknown
+  from here," not claimed dead.
+- **A significant correction to the prior B0 entry's cost picture,
+  found while computing this properly rather than estimating from the
+  mirror-clause count alone:** `leginfo.legislature.ca.gov` alone
+  carries 62% of all 11,688 citations. Counting all three blocked
+  domains at the citation level (not the 96-clause mirror-citing
+  group), **7,434 of 11,688 citations (63.6%) sit on a blocked
+  domain, and 3,575 of 4,989 authority clauses (71.7%) cite at least
+  one of them.** Only 1,414 clauses (28.3%) can get a full citation-
+  match re-check from this sandbox today. This is a much larger
+  constraint than the previous estimate's language implied ("the 96
+  Priority-1 clauses stay at cited") -- corrected `REVIEW_BASELINE.md`
+  §3 and §5's WS1/WS2 rows and total, and `MVP_BASELINE.md`'s own
+  reachability section, rather than letting the understated version
+  stand uncorrected now that the real scale is known.
+- Wrote `review/NON_PRIMARY.md` (ranked by clauses affected -- caught
+  and fixed my own recalled-from-memory cluster counts against a
+  fresh computation before publishing: medsupp is 13 clauses not 11,
+  taxpro is Priority-1 not Priority-2 at 12 not 11, every number in
+  the published table is a fresh `data/clauses.json` query, not a
+  number carried over from reading the older `NON_PRIMARY_SOURCES.md`
+  table in context) and `review/SOURCE_BLOCKS.md` (the exact 3 blocked
+  URLs and the exact question for the owner on each, plus the
+  citation-level scale correction above).
+- Not done: the actual "re-check every citation URL and quote against
+  the live text" sweep for the reachable 4,254 citations. That's real
+  cost on the same order as B2's own per-clause estimate, and B0's own
+  exit gate ("WAIT for owner approval before any full run") reads as
+  covering this too, not just B2 -- flagged for the owner's next
+  message rather than started on an assumption.
+
+**Verification:** `python3 tools/validate_corpus.py`,
+`node --check app.js`, `python3 lint/copy_lint.py`,
+`node tools/regression.js`, `node tests/golden/golden.js` (741/741),
+and `python3 tools/merge_guard.py origin/claude/new-session-palh5c`
+(clean: additions only) all pass.
