@@ -5588,3 +5588,84 @@ mechanism, not started this turn. The `uscode.house.gov` dead-link
 fix and the `www.ecfr.gov`/`leginfo.legislature.ca.gov` access
 question are both now logged in `OWNER_TODO.md`, owner-only per Global
 Rule 5/6.
+
+## 2026-11-18 — CourtListener half of B1: parallel agents, a hard quota wall, and an undocumented prior effort already in the repo
+
+**Task:** B1's CourtListener-cited half (2,536 citations, ~496 unique
+opinions), left unstarted by the entry above.
+
+**What happened, in order:**
+
+1. Split the work into 7 batches by clause set and ran each as a
+   background agent calling the CourtListener MCP tool directly.
+2. Discovered mid-run that every citation URL's `/opinion/<N>/slug/`
+   number is that opinion's **cluster_id**, not its `opinion_id` --
+   two separate ID spaces that coincidentally collide. The batch
+   agents' input files mislabeled `<N>` as `opinion_id` and called
+   `read_document(opinion_id=N)` directly, which only works when the
+   two happen to coincide. Caught by personally verifying one case
+   both ways (`yvvoid_post_yhudai`, N=4242947: `opinion_id=4242947`
+   returns an unrelated 2018 FOIA case; `cluster_id=4242947` correctly
+   resolves to Yhudai v. Impac Funding Corp.) before writing anything
+   to `findings.jsonl` as a real defect. Sent an urgent correction to
+   all 7 agents to use `cluster_id=` going forward.
+3. Discovered the account's real quota is 5/min **and** 50/hour
+   **and** 125/day, shared across every concurrent call
+   (`get_api_usage`, which is itself free). Running 7 agents in
+   parallel against one shared budget did not give 7x throughput --
+   it exhausted the hourly and most of the daily allowance after only
+   405 of the needed ~2,536 citation-checks, the agents' own retries
+   made things worse under contention, and at least 3 of the 7 agents
+   stopped responding to a plain "stop now" instruction while waiting
+   on their own stuck background calls. Stopped all 7 with `TaskStop`
+   rather than continuing to feed a scarce, shared pool to a pattern
+   that was actively counterproductive, per the user's "you make the
+   call" on how to proceed.
+4. While scoping the remaining work, found that
+   `tools/courtlistener_recheck_results.jsonl` (1,656 lines) was
+   **already committed to the repo**, in commit `147d916` ("CA Wedge
+   Plan Step 22" -- a message that doesn't mention it), with no
+   surviving script and no `DECISIONS.md` entry. It already covers
+   941 of 949 currently-citing clauses (99.2%): 1,589 PASS, 57
+   MISMATCH (no root-cause note), 10 FIXED (genuine, specific defects,
+   two of which are this same cluster_id/opinion_id bug, independently
+   caught and fixed by whoever ran it before).
+
+**Decision:** given the quota wall, don't keep running parallel
+agents against it (counterproductive, confirmed above), and don't
+guess at what the 71 "discrepancy" verdicts or the old file's 57
+MISMATCH entries mean without re-fetching -- write up what's
+confirmed, flag what isn't, and leave `findings.jsonl` untouched for
+anything not independently confirmed as a real quote/content problem.
+All 71 of this session's "discrepancy" verdicts turned out, on
+inspection, to follow the exact same pattern as the Yhudai case above
+(claimed case entirely absent from a real, unrelated opinion) -- 19
+unique wrong IDs, zero of them written up as findings. The 313 exact
++ 21 cosmetic verdicts (334 citations, 172 clauses, 51 of them new
+coverage the old file lacked) are kept as real, trustworthy
+confirmations. Full writeup, numbers, and the priority order for
+finishing this once quota resets:
+`review/COURTLISTENER_RECHECK_B1.md` and
+`review/COURTLISTENER_OLD_MISMATCHES.md`. Raw new-session records:
+`review/courtlistener_recheck_batch_results.jsonl`.
+
+**Not touched:** the pre-existing `tools/courtlistener_recheck_results.jsonl`
+itself (left as-is -- it's a valid, if undocumented, baseline);
+`verifier/findings.jsonl` (0 new findings from this half of B1 --
+every discrepancy found had a non-content root cause, and the old
+file's MISMATCHes weren't re-confirmed this session).
+
+**Verification:** `python3 tools/validate_corpus.py`,
+`python3 verifier/triage.py --summary`, and
+`python3 tools/merge_guard.py origin/claude/new-session-palh5c` all
+pass -- this entry adds only `review/` files and this note, no
+`data/clauses.json`/`data/documents.json` or `verifier/findings.jsonl`
+change.
+
+**What's left**, in priority order, logged in `OWNER_TODO.md` as
+quota-gated: (1) re-check the 19 bugged opinion IDs with `cluster_id=`;
+(2) re-check the old file's 57 open MISMATCH entries against the
+normalization logic `tools/citation_recheck.py` already built; (3)
+cover the 8 clauses neither effort reached at all; (4) only after
+1-3, write any real findings for whatever turns out to be a genuine
+problem on actual re-fetch.

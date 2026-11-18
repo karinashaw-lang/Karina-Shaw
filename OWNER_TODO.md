@@ -269,3 +269,21 @@ Found during Part B's citation recheck (`review/CITATION_RECHECK_REPORT.md`,
   the 113 eCFR-cited and 7,281 leginfo-cited citations (73.1% of all
   authority clauses) could actually be re-verified instead of staying
   blocked indefinitely.
+
+## 13. CourtListener's own API quota is capping how fast B1's second half can finish
+
+Found 2026-11-18 (`review/COURTLISTENER_RECHECK_B1.md`,
+`DECISIONS.md`). The CourtListener MCP tool shares one account-wide
+budget across every call: **5/min, 50/hour, and 125/day**. A single
+session burns through the hourly and most of the daily allowance in
+well under an hour of real work, so finishing the remaining ~2,100
+CourtListener citation-checks (plus the 19 opinion-ID re-checks and 57
+old-file re-checks this session already identified as needed) will
+take several more sessions spread over several days at this account's
+current quota, not one sitting. This doesn't block anything else —
+it's not owner-only work — but if you have, or can get, a
+CourtListener account with a higher API tier, pointing this session's
+MCP connection at it would turn a multi-day task into an
+afternoon. Otherwise no action needed; future sessions will keep
+chipping away at `review/COURTLISTENER_RECHECK_B1.md`'s "What's left"
+list as quota allows.
