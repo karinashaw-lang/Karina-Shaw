@@ -5464,3 +5464,127 @@ commits directly (11/11 passing today). Nothing new needed.
 `node tools/regression.js`, `node tests/golden/golden.js` (741/741),
 and `python3 tools/merge_guard.py origin/claude/new-session-palh5c`
 (clean: additions only) all pass.
+
+## 2026-11-18 — Part B, Task B1: running the citation recheck for real (non-CourtListener half)
+
+**Task:** the owner said "start citation recheck" -- B1's own text
+("re-check every citation URL and quote against the live text; log
+dead links and quote drift as findings"), for the 1,718 of 11,688
+citations reachable from this sandbox on domains other than
+`courtlistener.com` (which needs the dedicated MCP tool, a separate
+piece of work -- see "What's left" below).
+
+**Built `tools/citation_recheck.py`** rather than a one-off script,
+consistent with Section 6 of the handoff spec asking for a recurring
+recheck schedule eventually -- fetches each of the 446 *unique* URLs
+once (many clauses cite the same page), extracts text (HTML or PDF,
+detected by the real `Content-Type` header, not the URL's own
+extension), and checks each citation's quote against it.
+
+**Seven real, generic text-extraction artifacts found and fixed in
+the normalization, each confirmed by direct inspection of a real
+example before being generalized, not guessed at:** spliced quotes
+with a disclosed ` ... ` marker (checking the whole string as one
+substring falsely flagged every one); HTML tag-boundary spacing
+before punctuation and around quote marks/apostrophes; an invisible
+soft hyphen (U+00AD) some pages embed mid-word; PDF line-wrap
+whitespace and inconsistent hyphenation (reported as a distinct
+`fuzzy` match, never silently merged with `exact`); a `dir.ca.gov`
+font-encoding quirk where quote-mark glyphs extract as U+2015/U+2016
+(confirmed by reading the raw extracted text: `―Employer‖
+means...`); an "fi" ligature some PDF fonts collapse into "fl"
+(confirmed on a Supreme Court opinion PDF extracting "filing" as
+"fling"); and an ASCII `--` em-dash convention disagreeing in dash
+*count* (not content) with a PDF's real em-dash. Getting from a 48%
+false-mismatch rate on the first 15-URL smoke test down to a genuine
+1% took iterating through all seven, each time confirming the actual
+live page content before writing the fix, never assuming the pattern.
+
+**A real tool-reliability finding, not a content one:** a handful of
+large PDFs (the full CACI jury-instructions volume, several
+`courts.ca.gov`/`supremecourt.gov` opinion PDFs) returned a shorter,
+truncated extraction inside the full 446-URL batch run but a clean,
+complete, consistent match on an isolated single fetch of the same
+URL -- reduced `MAX_WORKERS` from 8 to 1 (fully sequential) and added
+a 1-second per-domain pace, which didn't fully eliminate the
+discrepancy (one of these PDFs measurably returned a different
+extracted-text length on two separate isolated fetches minutes
+apart), pointing to server/CDN-side delivery variability for these
+specific large documents rather than a bug in this tool's own
+concurrency. Logged honestly in `review/CITATION_RECHECK_REPORT.md`
+rather than papered over: the committed `review/
+citation_recheck_results.jsonl` reflects the batch run's own (more
+conservative) numbers, with the individually-confirmed-clean result
+for these 8 citations recorded separately in the report.
+
+**2 real findings added to `verifier/findings.jsonl`** (major
+severity, `superseded_law`): `compsoftexempt_current_rate` and
+`licprofexempt_physician_current_published_rate` both quote a DIR
+CPI-indexed pay-exemption rate now superseded by a further annual
+adjustment on the clause's own cited page -- confirmed by fetching
+the live page and reading the actual current dollar figures, not
+inferred from a mismatch alone. The second of these was marked
+`adversarially_checked`, this corpus's highest trust level, until
+this finding correctly demoted it back to `verified` via the existing
+`tools/clause_levels.py` mechanism (no manual tier edit -- "tiers are
+computed, never hand-assigned" held even for this). First attempt at
+writing these two findings into `findings.jsonl` via an inline bash
+heredoc corrupted every dollar sign into a literal backslash-dollar
+(`\$103.75` instead of `$103.75`) from shell-escaping the Python
+string -- caught by reading the stored JSON back with `repr()` before
+moving on rather than trusting the append succeeded silently, deleted
+the two bad lines, and rewrote the append as a real script file
+instead of an inline heredoc to remove the shell-escaping risk
+entirely.
+
+**9 of the 18 "no exact match" citations are confirmed accurate by
+direct inspection, not real drift:** 7 are Cornell LII's own footnote-
+reference numbers and editorial cross-reference brackets (not part of
+the actual U.S. Code text the clause quotes), confirmed by reading the
+live page at each divergence point; 1 is a PDF table-extraction
+reordering (the quote's three dollar figures are genuinely present
+and correct for the right statute section, just no longer adjacent in
+`pdftotext`'s row-by-row extraction of a multi-column table); the
+remaining 8 are the tool-reliability cases above, confirmed exact in
+isolation.
+
+**A correction to this session's own earlier claim:** `REVIEW_BASELINE.md`,
+`MVP_BASELINE.md`, and `review/SOURCE_BLOCKS.md` all previously listed
+`www.ecfr.gov` as reachable, including citing it as "the working path
+used for Step 22's federal citation upgrades." Re-tested the exact
+same URL today via both `curl` and `WebFetch`: both now redirect to
+`unblock.federalregister.gov`, a bot-verification challenge page this
+sandbox's own egress proxy refuses to reach ("the host is not allowed
+for this session," confirmed via the proxy's own status endpoint).
+Per this environment's own documentation ("do not retry or route
+around" a policy refusal), this is reported, not worked around.
+Corrected all three files and `OWNER_TODO.md`; the blocked-domain
+count goes from 3 to 4, and the real citation-level scale from 63.6%
+to 64.6% of all 11,688 citations.
+
+**A real, confirmed dead-link pattern, separate from the "no match"
+review above:** all 53 unique `uscode.house.gov` URLs in the corpus
+(194 citations) return a genuine 404 -- confirmed not a sandbox
+artifact (the site's own homepage works; a browser User-Agent makes
+no difference; the 404 is a real, rendered "Page Not Found - US Code"
+page). Logged as its own item in `OWNER_TODO.md` rather than as 194
+individual findings, since the underlying `case`/`cite` citation text
+is unaffected -- only the clickable link's URL format is stale.
+
+**Verification:** `python3 tests/tools/test_citation_recheck.py`
+(20/20, the pure normalization/matching logic against synthetic text
+built from each real artifact above), `python3 tools/validate_corpus.py`,
+`python3 verifier/triage.py --summary` (320 total findings: 150 open,
+106 accepted, 64 fixed, 0 rejected -- the 2 new findings correctly
+counted), `python3 tools/tiering.py` (15/314/412/741, unchanged -- the
+demoted clause's document was already Tier B for other reasons), and
+`python3 tools/merge_guard.py origin/claude/new-session-palh5c`
+(clean: additions only -- no `data/clauses.json`/`data/documents.json`
+content changed, only `verifier/findings.jsonl` grew) all pass.
+
+**What's left:** CourtListener's 2,536 citations (~496 unique
+opinions) need the dedicated MCP tool, not this script -- a different
+mechanism, not started this turn. The `uscode.house.gov` dead-link
+fix and the `www.ecfr.gov`/`leginfo.legislature.ca.gov` access
+question are both now logged in `OWNER_TODO.md`, owner-only per Global
+Rule 5/6.

@@ -244,3 +244,28 @@ guessing at unspecified scope and building something unasked-for was
 judged the wrong call under Global Rule 15. If you want this step
 done, the next session needs either the original plan's wording for
 it or a fresh, explicit scope from you.
+
+## 12. A real dead-link pattern on uscode.house.gov, and whether leginfo/eCFR are reachable from your own network
+
+Found during Part B's citation recheck (`review/CITATION_RECHECK_REPORT.md`,
+2026-11-18):
+
+- **53 unique `uscode.house.gov` URLs (194 citations) return a
+  genuine 404** — confirmed not a sandbox issue: the site's own
+  homepage works, a real browser User-Agent makes no difference, and
+  the 404 is a real, rendered "Page Not Found - US Code" page. The
+  URL format this corpus uses (`edition=prelim` with no release
+  number) looks like a stale link scheme the site has since moved
+  past. This needs a real fix — a corrected URL format or a
+  different official source — through the normal patch-file process;
+  not fixed yet, since Global Rule 5 means an engineering session
+  doesn't rewrite a citation's URL without that review step.
+- **`www.ecfr.gov` is now confirmed blocked from this sandbox too** —
+  every real eCFR URL redirects to a bot-verification page
+  (`unblock.federalregister.gov`) this sandbox's own network policy
+  refuses to reach. Same question as `leginfo.legislature.ca.gov`
+  (item still open, not repeated here): can either be reached from
+  your own network, or from a session with different access? If so,
+  the 113 eCFR-cited and 7,281 leginfo-cited citations (73.1% of all
+  authority clauses) could actually be re-verified instead of staying
+  blocked indefinitely.

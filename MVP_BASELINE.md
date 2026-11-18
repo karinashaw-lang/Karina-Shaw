@@ -74,12 +74,19 @@ No mismatches. Section 2's numbers were accurate.
 Checked live today: `leginfo.legislature.ca.gov` and
 `california.public.law` both still return 403 (via `curl` and
 `WebFetch` alike), and `law.onecle.com`'s TLS connection doesn't
-complete at all. **This is not just the 96 Priority-1 mirror-citing
-clauses' problem** — `leginfo.legislature.ca.gov` alone carries 62%
-of all 11,688 citations, and a full count found 71.7% of authority
-clauses (3,575 of 4,989) cite at least one blocked domain. See
-`review/SOURCE_BLOCKS.md` for the exact URLs and the owner's
-questions, and `REVIEW_BASELINE.md` §3/§5 for how this changes the
-B1-B4 cost estimate. `www.courtlistener.com` is 403 as a raw fetch but
-the dedicated CourtListener MCP tool works. `ecfr.gov`, `govinfo.gov`,
-`law.cornell.edu`, and `oag.ca.gov` are all reachable.
+complete at all. **Updated 2026-11-18: `www.ecfr.gov` joins this list**
+— every real eCFR URL redirects to a bot-verification page this
+sandbox's own proxy refuses to reach; the earlier claim that this
+domain was reachable (based on a bare-root check that didn't follow
+the redirect) was wrong, corrected in `REVIEW_BASELINE.md` and
+`review/SOURCE_BLOCKS.md`. **This is not just the 96 Priority-1
+mirror-citing clauses' problem** — `leginfo.legislature.ca.gov` alone
+carries 62% of all 11,688 citations, and a full count found 73.1% of
+authority clauses (3,646 of 4,989) cite at least one of the four
+blocked domains. See `review/SOURCE_BLOCKS.md` for the exact URLs and
+the owner's questions, and `REVIEW_BASELINE.md` §3/§5 for how this
+changes the B1-B4 cost estimate. `www.courtlistener.com` is 403 as a
+raw fetch but the dedicated CourtListener MCP tool works. `govinfo.gov`,
+`law.cornell.edu`, and `oag.ca.gov` are all reachable. The reachable
+citations (35.4% of the corpus) have now actually been rechecked, not
+just estimated — see `review/CITATION_RECHECK_REPORT.md`.

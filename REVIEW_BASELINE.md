@@ -84,7 +84,7 @@ scope, overlaps, interview accuracy).
 | `leginfo.legislature.ca.gov` | **403**, confirmed via both `curl` and `WebFetch` | The single most important source (California statutes) is still blocked from this sandbox, exactly as every prior session segment found. This blocks direct re-verification of the 96 Priority-1 California-statute-mirror clauses `NON_PRIMARY_SOURCES.md` names, same as before. |
 | `california.public.law` (a mirror) | 403 | Also blocked — not a usable fallback either. |
 | `www.courtlistener.com` (raw web) | 403 | Blocked as a plain URL fetch, **but the dedicated CourtListener MCP tool works** — confirmed live today: a real query ("Wasatch Property Management v. Degrate") returned a real result with a usable `opinion_id`. This is better than one open finding's text assumed ("auth-walled") — that finding was hitting the raw REST URL directly, not the authenticated MCP tool. Case-law verification in WS2 should route through the CourtListener MCP tool, not a raw fetch. |
-| `www.ecfr.gov` | reachable (302 redirect, resolves) | Already the working path used for Step 22's federal citation upgrades. |
+| `www.ecfr.gov` | **Corrected 2026-11-18 -- blocked, not reachable.** Every real eCFR URL (including the exact 301.7701-3 path this session's own Step 22 entry claimed worked) now 302-redirects to `unblock.federalregister.gov`, a bot-verification challenge page, and that specific host is refused outright by this sandbox's own egress proxy ("the host is not allowed for this session"). Confirmed via both `curl` and `WebFetch` today -- see `review/SOURCE_BLOCKS.md`. | The earlier "reachable" note only checked the bare root URL's status code (302) without following where it led; this one did, and found a bot-wall, not real content. Whether eCFR's own bot-detection has tightened since Step 22 or that claim was never as solid as stated, today's result is reproducible across two independent tools and is treated as authoritative. |
 | `www.govinfo.gov` | 200 | Reachable, already used successfully this session. |
 | `www.law.cornell.edu` | 200 | Reachable — a legitimate secondary cross-check, though Global Rule 4 still means a clause citing only Cornell LII can't reach `verified`. |
 | `www.oag.ca.gov` | 200 | Reachable — a usable primary source for agency-class citations. |
@@ -94,9 +94,12 @@ appears.** Federal and case-law verification are both practically
 reachable at scale. But `leginfo.legislature.ca.gov` isn't just the
 96 Priority-1 mirror-citing clauses' problem — it's the primary
 source for 62% of all 11,688 citations in the corpus. A full citation-
-level reachability count (`review/SOURCE_BLOCKS.md`) found **7,434 of
-11,688 citations (63.6%) sit on a blocked domain**, and **3,575 of
-4,989 authority clauses (71.7%) cite at least one of them** — far
+level reachability count (`review/SOURCE_BLOCKS.md`, now updated
+2026-11-18 to also include `www.ecfr.gov` -- see Task B1's citation
+recheck report, `review/CITATION_RECHECK_REPORT.md`, for why) found
+**7,547 of 11,688 citations (64.6%) sit on a blocked domain**, and
+**3,646 of 4,989 authority clauses (73.1%) cite at least one of
+them** — far
 larger than this section first suggested from the mirror-clause count
 alone. Absent a different network path or the owner doing a manual
 leginfo check, most of the corpus's citation-match checks — not a
@@ -147,20 +150,24 @@ precise figure — treat it as a planning input, not a quote.**
 
 | Workstream | Units | Estimated effort per unit | Rough total |
 | --- | --- | --- | --- |
-| WS1 (citation hygiene, re-check 11,688 citations) | **Corrected 2026-11-17 (see `review/SOURCE_BLOCKS.md`): only 4,254 of 11,688 citations (36.4%) are reachable from this sandbox at all** — `leginfo.legislature.ca.gov` alone carries 7,281 (62%) and returns 403. The ~10-30s/citation fetch-and-compare estimate below only applies to the reachable 4,254; the other 7,434 need the owner's own network access or a different session before WS1 can touch them at all, not more time from this sandbox. | ~10-30s fetch + compare per reachable citation | ~12-35 hours for the 4,254 reachable citations; the remaining 7,434 are blocked, not merely slow, until source access changes |
-| WS2 (clause-level, 8-point test) | 4,989 authority clauses (3,368 never reached by the checkpoint at all) + 1,632 drafting-clause advisory-language scans. **Corrected 2026-11-17: only 1,414 of 4,989 authority clauses (28.3%) have every citation on a reachable domain; 3,575 (71.7%) cite at least one blocked domain (mostly `leginfo.legislature.ca.gov`) and can't have their "quote matches live source" check fully completed from this sandbox.** | ~2-5 minutes per fully-reachable authority clause (source fetch, quote compare, contradiction/advisory checks); the blocked-domain checks can still run every non-citation part of the 8-point test (contradiction, jurisdiction disclosure, threshold/date math, advisory language) but not the citation-match step itself; ~30s per drafting clause | ~47-118 hours for the 1,414 fully-reachable clauses' full 8-point test; a partial (non-citation) pass on the other 3,575 at a similar per-clause rate adds roughly as much again; ~14 hours (drafting) |
+| WS1 (citation hygiene, re-check 11,688 citations) | **Updated 2026-11-18 (see `review/SOURCE_BLOCKS.md` and `review/CITATION_RECHECK_REPORT.md`): only 4,141 of 11,688 citations (35.4%) are reachable from this sandbox at all**, now that `www.ecfr.gov` is confirmed blocked too (its own bot-redirect target is refused by this sandbox's egress proxy) — `leginfo.legislature.ca.gov` alone still carries 7,281 (62%) and returns 403. **The reachable 4,141 have actually been run** (not just estimated) — 1,352 exact matches, 49 PDF-artifact fuzzy matches, 18 individually reviewed (2 real findings logged, the rest confirmed accurate), and 194 (`uscode.house.gov`) confirmed as a real, separate dead-link pattern. The remaining 7,547 need the owner's own network access or a different session before WS1 can touch them at all. | done for the reachable set; ~10-30s fetch + compare per citation when it ran | ~27 minutes actual, for all 446 unique URLs behind the 1,718 non-CourtListener reachable citations (the other 2,423 reachable citations are CourtListener's — see below) |
+| WS2 (clause-level, 8-point test) | 4,989 authority clauses (3,368 never reached by the checkpoint at all) + 1,632 drafting-clause advisory-language scans. **Updated 2026-11-18: only 1,343 of 4,989 authority clauses (26.9%) have every citation on a reachable domain; 3,646 (73.1%) cite at least one blocked domain (mostly `leginfo.legislature.ca.gov`) and can't have their "quote matches live source" check fully completed from this sandbox.** | ~2-5 minutes per fully-reachable authority clause (source fetch, quote compare, contradiction/advisory checks); the blocked-domain checks can still run every non-citation part of the 8-point test (contradiction, jurisdiction disclosure, threshold/date math, advisory language) but not the citation-match step itself; ~30s per drafting clause | ~45-112 hours for the 1,343 fully-reachable clauses' full 8-point test; a partial (non-citation) pass on the other 3,646 at a similar per-clause rate adds roughly as much again; ~14 hours (drafting) |
+| WS1b (CourtListener citation recheck, 2,536 citations across ~496 unique opinions) | Not yet started -- needs the dedicated CourtListener MCP tool (`read_document`/`search_document`), not a raw fetch; `www.courtlistener.com` 403s a plain curl the same way eCFR's redirect target does, but the authenticated MCP tool works (confirmed with a real query last turn). A different mechanism than the rest of WS1, so a different script, not a bigger version of `tools/citation_recheck.py`. | Unknown -- one MCP tool call per unique opinion to fetch its full text, then a local substring check against each of that opinion's citing quotes (the same "fetch once per unique URL" economy `citation_recheck.py` already uses) | Order of magnitude: ~496 tool calls just to fetch; real wall-clock depends on whether this runs inline (one call at a time, slow) or through delegated research agents (unconfirmed whether a read-only version of that delegation is permitted -- see Section 5's caveat 1 below) |
 | WS3 (document-level research, 741 files) | 741 documents, all from zero today | ~15-30 minutes per document for the 8-point checklist, done honestly (real source checks, not templated prose) | ~185-370 hours |
 | WS4 (triage/patch the resulting findings) | Unknown until WS2 runs — this baseline's 148 pre-existing open minors are already a known lower bound | ~10-20 minutes per finding (patch-file discipline: diff, owner approval, re-verify, changelog) | At least 25-50 hours just for the 148 already open; WS2 will add more |
 
 **Total order of magnitude: roughly 335-685 hours of what this
-sandbox can actually run today, plus a second, currently-unbounded
-amount of work that is blocked on source access, not on time** —
-before Level 2 attorney review. The split matters more than the total:
-this isn't "do X hours of work and you're done" so much as "do
-~335-685 hours of the reachable 28-36% of the corpus, and the other
-64-72% stays stuck at `cited` or only partially re-checked until
-someone reaches leginfo.legislature.ca.gov from somewhere this sandbox
-can't." Four things change how this maps to wall-clock time:
+sandbox can actually run today (and, as of 2026-11-18, the first real
+slice of it -- WS1's non-CourtListener half -- has actually been run,
+not just estimated), plus a second, currently-unbounded amount of
+work that is blocked on source access, not on time** — before Level 2
+attorney review. The split matters more than the total: this isn't
+"do X hours of work and you're done" so much as "do ~335-685 hours of
+work on the reachable ~27-35% of the corpus, and the other ~65-73%
+stays stuck at `cited` or only partially re-checked until someone
+reaches leginfo.legislature.ca.gov (and now www.ecfr.gov) from
+somewhere this sandbox can't." Four things change how this maps to
+wall-clock time:
 
 1. **Parallelism helps, but has a known constraint.** Earlier in this
    project, two attempts to delegate autonomous, commit-authority
@@ -175,15 +182,17 @@ can't." Four things change how this maps to wall-clock time:
    supervised throughput, which is far slower than the hours above
    suggest if run one clause at a time in one conversation.
 2. **The leginfo blocker is much bigger than the 96 mirror-citing
-   clauses — it's most of the corpus.** `leginfo.legislature.ca.gov`
-   alone carries 62% of all 11,688 citations; 3,575 of 4,989 authority
-   clauses (71.7%) cite at least one blocked domain. This isn't a
-   96-clause edge case this session can route around — it's the
-   normal case. Every one of those clauses stays at its current level
-   under any amount of this session's own effort unless the owner can
-   reach leginfo.legislature.ca.gov (or california.public.law, or
-   law.onecle.com — see `review/SOURCE_BLOCKS.md`) from somewhere this
-   sandbox can't, or a different network path becomes available.
+   clauses — it's most of the corpus, and a fourth domain
+   (www.ecfr.gov) joined it 2026-11-18.** `leginfo.legislature.ca.gov`
+   alone carries 62% of all 11,688 citations; 3,646 of 4,989 authority
+   clauses (73.1%) cite at least one of the four blocked domains. This
+   isn't a 96-clause edge case this session can route around — it's
+   the normal case. Every one of those clauses stays at its current
+   level under any amount of this session's own effort unless the
+   owner can reach leginfo.legislature.ca.gov (or california.public.law,
+   law.onecle.com, or www.ecfr.gov — see `review/SOURCE_BLOCKS.md`)
+   from somewhere this sandbox can't, or a different network path
+   becomes available.
 3. **A partial pass is still worth doing on the blocked-domain
    clauses.** The citation-match step is blocked, but the rest of
    WS2's 8-point test (contradiction, jurisdiction disclosure,
@@ -207,7 +216,7 @@ throughput is known. Second, and independent of batch size, a source-
 access decision: without resolving at least `leginfo.legislature.ca.gov`
 (directly, or by confirming whether it's reachable from the owner's
 own network or a differently-configured session), **no batch size
-changes the fact that 71.7% of authority clauses can't get a real
+changes the fact that 73.1% of authority clauses can't get a real
 citation-match check from this sandbox**, no matter how small or
 large the approved batch is.
 
