@@ -1,21 +1,28 @@
 # Citation recheck report — Part B, Task B1 (first half: non-CourtListener domains)
 
 Run 2026-11-18, against branch `claude/new-session-palh5c`, via the new
-`tools/citation_recheck.py`. Covers the 1,718 reachable citations on
-every domain except `courtlistener.com` (2,536 citations — needs the
-dedicated CourtListener MCP tool, not a raw fetch; see "What's left,"
-below) and the three domains `review/SOURCE_BLOCKS.md` already found
-blocked (`leginfo.legislature.ca.gov`, `california.public.law`,
-`law.onecle.com`).
+`tools/citation_recheck.py`. Covers the 1,742 reachable citations on
+every domain except `www.courtlistener.com` specifically (2,507
+citations across ~494 unique opinions, plus 29 citations with no
+extractable opinion id — needs the dedicated CourtListener MCP tool,
+not a raw fetch; see "What's left," below) and the four domains
+`review/SOURCE_BLOCKS.md` already found blocked
+(`leginfo.legislature.ca.gov`, `california.public.law`,
+`law.onecle.com`, `www.ecfr.gov`). `storage.courtlistener.com` — a
+plain PDF file host, not the same web app as `www.courtlistener.com`
+and not blocked — was wrongly excluded in this file's first version
+(an overly broad `'courtlistener.com' in domain` check); caught while
+scoping the MCP-tool half of this task, fixed, and its 24 citations
+are included in the numbers below.
 
 ## Result
 
-| | Citations | % of 1,718 |
+| | Citations | % of 1,742 |
 | --- | --- | --- |
-| Exact match | 1,352 | 78.7% |
-| Fuzzy match (PDF text-extraction artifact only, not a real difference) | 49 | 2.9% |
-| No match — reviewed individually below | 18 | 1.0% |
-| Fetch failed | 299 | 17.4% |
+| Exact match | 1,377 | 79.0% |
+| Fuzzy match (PDF text-extraction artifact only, not a real difference) | 49 | 2.8% |
+| No match — reviewed individually below | 19 | 1.1% |
+| Fetch failed | 297 | 17.0% |
 
 **2 real findings added to `verifier/findings.jsonl`** (both `major`
 severity, `superseded_law`): `compsoftexempt_current_rate` and
@@ -75,31 +82,40 @@ normalization, never assumed:
    hyphens, a common plain-text em-dash convention) and a PDF whose
    real em-dash extracts as a single `-` disagree on dash *count*,
    not content.
+8. **A second font-encoding quirk**, this time in a
+   `storage.courtlistener.com`-hosted opinion PDF: its font
+   substitutes U+201F for an apostrophe (`"the trial court‟s
+   characterization"`), confirmed the same way as the dir.ca.gov quirk
+   above — by reading the raw extracted text directly, not guessed
+   from the pattern alone.
 
-None of these seven are legal-content findings — they're confirmed,
+None of these eight are legal-content findings — they're confirmed,
 narrow facts about how curl/pdftotext render specific sources, each
-verified on a real example before being generalized. After all seven,
-78.7% of citations match exactly and a further 2.9% match once PDF
-line-wrap noise is set aside — **97.3% total**, not 78.7%.
+verified on a real example before being generalized. After all eight,
+79.0% of citations match exactly and a further 2.8% match once PDF
+line-wrap noise is set aside — **97.8% total**, not 79.0%.
 
-## The 18 "no match" citations, reviewed individually
+## The 19 "no match" citations, reviewed individually
 
 Every one was read by hand, not left as an unresolved flag:
 
 - **2 real findings** (above): `compsoftexempt_current_rate`,
   `licprofexempt_physician_current_published_rate` — genuinely stale
   dollar figures, now logged.
-- **7 citations, confirmed accurate — Cornell LII's own footnote
-  markers and editorial cross-reference brackets, not part of the
-  actual U.S. Code text:** `bgc_adverse_action`, `cobra_election_period`,
-  `cobra_notice_timing`, `cobra_qualifying_events`, `safe_antifraud_persists`,
-  `safe_ca_blue_sky_notice_filing`, `snt_able_account_alternative`.
-  Cornell inserts a bare footnote number or `[N]` right after a
-  cross-reference (`"...1681g(c)(3) 1 of this title"`) and sometimes a
-  bracketed gloss (`"Social Security Act [ 42 U.S.C. 1395 et seq.]"`)
-  that the corpus's own quotes correctly don't include, since neither
-  is in the real statute. Confirmed by reading the live page at each
-  divergence point, not inferred from the pattern alone.
+- **8 citations, confirmed accurate — a bare footnote number inserted
+  right after a cross-reference, or an editorial cross-reference
+  bracket, neither part of the actual cited text:**
+  `bgc_adverse_action`, `cobra_election_period`, `cobra_notice_timing`,
+  `cobra_qualifying_events`, `safe_antifraud_persists`,
+  `safe_ca_blue_sky_notice_filing`, `snt_able_account_alternative`
+  (all Cornell LII, `"...1681g(c)(3) 1 of this title"` /
+  `"Social Security Act [ 42 U.S.C. 1395 et seq.]"`), and
+  `fljsa_section_2122f_disclosure_noncompliance_georgiou_binette`
+  (the same pattern on a `storage.courtlistener.com` opinion PDF:
+  `"the statutory 19 requirements"`, a footnote reference number, not
+  part of the court's actual sentence). Confirmed by reading the live
+  page or PDF at each divergence point, not inferred from the pattern
+  alone.
 - **1 citation, confirmed accurate — PDF table-extraction reorders
   columns, not the content:** `deceasedwages_core_authorization`.
   The quote (`"§§ 13600, 13601 $16,625 $18,450 $20,875"`) pulls one

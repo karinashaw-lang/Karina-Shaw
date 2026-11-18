@@ -38,6 +38,9 @@ class TestNormalize(unittest.TestCase):
     def test_quote_mark_font_substitution(self):
         self.assertEqual(cr.normalize('―Employer‖ means'), '"Employer"means')
 
+    def test_courtlistener_pdf_apostrophe_font_substitution(self):
+        self.assertEqual(cr.normalize('the court‟s view'), "the court's view")
+
     def test_collapses_hyphen_runs(self):
         self.assertEqual(cr.normalize('a--b'), 'a-b')
         self.assertEqual(cr.normalize('a—b'), 'a-b')

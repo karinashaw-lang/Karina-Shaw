@@ -4,13 +4,15 @@ and quote against the live text; log dead links and quote drift as
 findings."
 
 This file covers the directly-fetchable domains only -- every cited
-domain except the three `review/SOURCE_BLOCKS.md` already found
+domain except the four `review/SOURCE_BLOCKS.md` already found
 blocked from this sandbox (leginfo.legislature.ca.gov,
-california.public.law, law.onecle.com) and courtlistener.com, which
-returns 403 to a raw fetch but works through the dedicated
-CourtListener MCP tool instead -- a different mechanism, needing a
-different script, not yet written (see `review/CITATION_RECHECK_REPORT.md`,
-"What's left").
+california.public.law, law.onecle.com, www.ecfr.gov) and
+www.courtlistener.com specifically, which returns 403 to a raw fetch
+and needs the dedicated CourtListener MCP tool instead -- a different
+mechanism, handled by a separate process (see
+`review/CITATION_RECHECK_REPORT.md`). storage.courtlistener.com is a
+plain PDF file host with no such block and is covered here like any
+other reachable domain.
 
 Fetches each unique URL once (not once per citation -- many clauses
 cite the same statute or regulation page), extracts plain text (HTML
@@ -87,6 +89,10 @@ def normalize(text):
     # real quotation mark -- confirmed by inspecting the raw extracted
     # text directly (`―Employer‖ means any person...`), not guessed.
     text = text.replace('―', '"').replace('‖', '"')
+    # a CourtListener-hosted opinion PDF's own font substitutes U+201E
+    # for an apostrophe -- confirmed directly ("the trial court‟s
+    # characterization" for "the trial court's characterization").
+    text = text.replace('‟', "'")
     text = text.replace('–', '-').replace('—', '-')
     # a quote written with the ASCII "--" em-dash convention and a PDF
     # whose real em-dash extracts as a single "-" otherwise disagree
@@ -191,7 +197,13 @@ def build_targets():
         for i, ct in enumerate(c.get('citations') or []):
             url = ct.get('url', '')
             d = domain(url)
-            if d in BLOCKED_DOMAINS or 'courtlistener.com' in d:
+            # www.courtlistener.com 403s a raw fetch and needs the MCP
+            # tool instead, but storage.courtlistener.com is a plain
+            # PDF file host with no such block (confirmed: curl gets a
+            # clean 200) -- excluding it here too was this tool's own
+            # mistake, not a real block, caught while scoping the
+            # CourtListener-MCP half of this task.
+            if d in BLOCKED_DOMAINS or d == 'www.courtlistener.com':
                 continue
             by_url.setdefault(url, []).append({
                 'clauseId': c['id'], 'citationIndex': i, 'quote': ct.get('quote', ''),
