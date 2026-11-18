@@ -1,10 +1,13 @@
 # Launch Set Proposal — CA Wedge Plan Step 5
 
-Status: **PROPOSED — WAITING FOR OWNER APPROVAL.** Per the plan's own instruction
-for this step, no further step (Step 6 verification, Step 8 entitlements, Step 22
-publishing, etc.) proceeds until this list is approved or amended. Only documents
-on the approved launch set are published, promoted, or sold; everything else in
-the 741-document corpus stays out of the paid/public product for this launch.
+Status: **APPROVED** (owner, 2026-11-18, as Task A4 of the full-corpus
+completion spec — "Approve as proposed," no changes). This is the
+same 128-document list this file already proposed under the earlier
+CA Wedge Plan naming (its own Step 5/Step 6/Step 8/Step 22 are now
+this spec's A4/A5/A7/A17). Only documents on this list are published,
+promoted, or sold; everything else in the 741-document corpus stays
+out of the paid/public product for this launch. See `DECISIONS.md`'s
+2026-11-18 A4 entry.
 
 ## 1. Selection method
 

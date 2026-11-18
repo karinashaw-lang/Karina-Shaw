@@ -5669,3 +5669,45 @@ normalization logic `tools/citation_recheck.py` already built; (3)
 cover the 8 clauses neither effort reached at all; (4) only after
 1-3, write any real findings for whatever turns out to be a genuine
 problem on actual re-fetch.
+
+## 2026-11-18 — A4: owner approves the 128-document launch set; A5: cost/time estimate, waiting for approval
+
+**A4:** the owner approved `LAUNCH_SET_PROPOSAL.md`'s 128-document
+launch set exactly as proposed (122 fillable documents + 6 named info
+sheets), no changes. Updated that file's status line from "PROPOSED
+-- WAITING FOR OWNER APPROVAL" to "APPROVED." This is the same list
+the earlier CA Wedge Plan work (Step 5) already proposed; nothing
+about the list itself changed, only its approval status.
+
+**A5:** before running anything, measured the real remaining cost
+against the now-approved set. Found the launch set's 684 authority
+clauses already went through a full adversarial-verifier pass to
+completion under the earlier "CA Wedge Plan Step 6" naming
+(`LAUNCH_SET_VERIFICATION_WAVE1-3.md`) -- 460/684 (67%) are already
+`adversarially_checked`, another 99 (14%) are `verified` with only
+closed/accepted findings. The real remaining work is four bounded
+buckets, not a from-scratch 684-clause effort: 123 clauses citing a
+mirror instead of a primary source (needs re-sourcing, not
+re-research -- several of these exact clauses already had their
+mirror-sourced quotes confirmed accurate during this session's B1
+work); 2 clauses with `status: unverified` outright (the spec's own
+named small-claims judgment-enforcement and name-change SB 59/AB 1084
+clauses); 18 never-triaged open minor findings; and 332 drafting
+clauses that haven't had the drafting-clause check run at all yet.
+Also confirmed the spec's named "AI Transparency Act item" lives on a
+document (`california_ai_transparency_act_info_sheet`) that isn't in
+the approved launch set at all, and is already fully verified anyway
+-- correctly out of scope for A5, not a gap.
+
+Full estimate, per-bucket breakdown, and risk notes (mainly the
+already-documented leginfo Cloudflare block likely affecting some
+slice of bucket 1): `LAUNCH_SET_VERIFICATION_ESTIMATE.md`. Per the
+spec's own instruction for this task ("estimate cost and time and
+WAIT for approval") and Section 7 item 1 (owner approves cost
+estimates), no verification or patch work has started -- waiting for
+the owner's go-ahead before any bucket runs.
+
+**Verification:** `python3 tools/validate_corpus.py`,
+`python3 verifier/triage.py --summary` (320, unchanged -- this entry
+is estimation and documentation only, no corpus or findings change),
+`python3 tools/merge_guard.py origin/claude/new-session-palh5c`.
