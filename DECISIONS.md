@@ -5711,3 +5711,94 @@ the owner's go-ahead before any bucket runs.
 `python3 verifier/triage.py --summary` (320, unchanged -- this entry
 is estimation and documentation only, no corpus or findings change),
 `python3 tools/merge_guard.py origin/claude/new-session-palh5c`.
+
+## 2026-11-19 — A5 buckets 2 and 3: 2 from-scratch verifications, 15 real fixes, 7 accepted findings
+
+**Bucket 2** (2 clauses with `status: unverified`): fetched both
+primary sources live and confirmed every stored quote verbatim.
+`smallclaims_judgment_enforcement` against `selfhelp.courts.ca.gov`
+(all 3 quotes plus the body's 30-day figure match).
+`namechange_gender_identity_conforming_process` against the Judicial
+Council's Invitation to Comment W26-03 PDF (fetched via curl +
+pdftotext after `WebFetch` returned raw compressed PDF bytes it
+couldn't parse) -- all 3 quotes match exactly. Both moved to
+`status: "verified"`, `checkedDate: "2026-11-19"`, with their `gap`
+text rewritten to drop the stale "why this is unverified" framing
+while keeping the genuine scope-limitation notes.
+
+**Bucket 3** (22 open findings touching the launch set, not 18 --
+the estimate's count drifted as new findings landed between A5's
+estimate and execution): triaged every one individually, none in
+bulk.
+
+- **15 fixed**, each a direct, documented edit (not auto-applied from
+  a `suggestedFix` string -- each was independently re-derived from
+  the finding's own evidence before editing): 3 were gap/body text
+  drifting from informing into advising (`covenantnotice_no_cure_categories`,
+  `patentassign_present_assignment_language`, `will_omitted_spouse`);
+  the other 12 were real content gaps -- a missing statutory
+  cross-reference, an omitted exception, a case cited for the wrong
+  proposition, or a quote that didn't reach as far as the body's claim
+  (`ahcd_scope_of_authority`, `bylaws_director_removal`,
+  `lease_entry_notice`, `mechlien_who_may_claim`,
+  `namechange_minor_petition_and_parental_notice`, `nda_dtsa_notice`,
+  `patentlicense_right_to_exclude`, `prop_return_deduction_limit`,
+  `purchase_liquidated_damages`, `remains_priority_order`,
+  `tod_creditor_medical_recovery`, `tod_revocability`). Four of the 12
+  needed a new statutory cross-reference this session couldn't
+  confirm against `leginfo.legislature.ca.gov` directly (confirmed
+  blocked again via `WebFetch` on `§303`, `§8402`, `§1678`, and
+  `§7100(b)`) -- each was added as narrative gap text with an explicit
+  "confirmed via a mirror, not leginfo directly" disclosure instead of
+  a new citation object claiming `sourceClass: primary-official` from
+  evidence that doesn't actually support that claim. Two (the `tod_*`
+  sunset disclosures) matched an existing sibling clause's own
+  established convention of disclosing a sunset date in `gap` text
+  rather than as a formal citation. Each fix recorded via
+  `verifier/triage.py --decide ... --status fixed`, which wrote its
+  own `changelog.html` entry.
+- **6 accepted, no edit**: all "unverifiable" -- `leginfo.legislature.ca.gov`
+  blocked this session, but each clause's quote was independently
+  corroborated against at least one (often two) other sources with no
+  sign of drift (`dmca_misrepresentation_liability`,
+  `notice_pay_rent_covid_status`, `notice_pay_rent_just_cause_context`,
+  `parentage_minor_signer_timing`, `partnership_dissolution_not_automatic`,
+  `remains_priority_order#1`).
+- **1 accepted with an owner flag**: `homeimprove_right_to_cancel` --
+  pending CA legislation (SB 784, AB 2993) could extend this clause's
+  stated cancellation windows, and this session can't confirm whether
+  either bill was chaptered (`leginfo.legislature.ca.gov` and
+  `legiscan.com` both blocked). Added as `OWNER_TODO.md` item 14 rather
+  than guessed at either way.
+
+**A real integrity bug caught before it mattered:** the first attempt
+to fix `prop_return_deduction_limit`'s gap text used straight ASCII
+quotes (`"free and clear"`) inside a JSON string, which isn't valid
+JSON without escaping -- broke `data/clauses.json` entirely
+(`validate_corpus.py` failed with a `JSONDecodeError`). Caught
+immediately by running validation right after, not assumed clean;
+fixed by using the corpus's own curly-quote convention instead of a
+backslash-escape, consistent with every other in-text quotation mark
+already in this file.
+
+**Gate limitation, disclosed rather than skipped silently:**
+`node tools/regression.js` needs a local static server
+(`python3 -m http.server 8933`), and this session's auto-mode
+permission classifier blocked starting one twice -- both a
+background-shelled attempt and the sanctioned `run_in_background`
+Bash mechanism were refused as "Undermining Oversight." Did not
+attempt a further workaround per the harness's own instruction.
+`validate_corpus.py`, `verifier/triage.py --summary`, and
+`tools/tiering.py` all ran clean; the 15 fixes were text-only content
+edits (clause `body`/`gap`/`citations`), not template or `app.js`
+changes, which bounds the real risk `regression.js` would have been
+checking for, but this is a genuine gap, not a pass.
+
+**Verification:** `python3 tools/validate_corpus.py` (passed),
+`python3 verifier/triage.py --summary` (320 total: 128 open, 113
+accepted, 0 rejected, 79 fixed -- up from 150/106/0/64, exactly
+22 fewer open and the right split between fixed/accepted),
+`python3 tools/tiering.py` (Tier A 15 -> 16), `python3 tools/merge_guard.py
+origin/claude/new-session-palh5c` (flags the 17 intentional clause
+edits for review, as designed -- not a revert, every one independently
+documented above and in `changelog.html`).

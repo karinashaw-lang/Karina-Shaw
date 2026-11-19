@@ -287,3 +287,19 @@ MCP connection at it would turn a multi-day task into an
 afternoon. Otherwise no action needed; future sessions will keep
 chipping away at `review/COURTLISTENER_RECHECK_B1.md`'s "What's left"
 list as quota allows.
+
+## 14. Pending legislation may change the home-improvement cancellation clause's windows
+
+Found 2026-11-19 while triaging `homeimprove_right_to_cancel`'s open
+finding (`verifier/findings.jsonl`). The clause states Bus. & Prof.
+Code § 7159(e)(6)-(7)'s cancellation windows as settled law (three
+business days generally, five for senior citizens). Two bills pending
+in the 2025-2026 session — SB 784 (Durazo) and AB 2993 (Grayson) —
+would each extend those to five and seven days respectively; this
+session could not confirm whether either was chaptered before or
+after this clause's `checkedDate` (2026-09-01), since both
+`leginfo.legislature.ca.gov` and `legiscan.com` returned a Cloudflare
+block. If you can check leginfo directly (or know whether either bill
+passed), let a future session know so this clause's day-counts can be
+confirmed or updated — accepted as an open, disclosed risk rather than
+guessed at either way.
