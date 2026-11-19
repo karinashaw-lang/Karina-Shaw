@@ -5956,3 +5956,76 @@ sent a v2 revised build plan reprioritizing distribution
 with the owner which plan (v1's A6-next sequencing, or v2's
 Phase-1-distribution-first sequencing) governs before picking the
 next task, rather than assuming.
+
+## 2026-11-19 — v2 Task D1.1: a real mistake, caught before it was committed; D1.3 headlines
+
+Owner had no preference between v1's A6-next sequencing and v2's
+Phase-1-first sequencing, so proceeded with D1.1 and D1.3 (neither
+needs A5, already done, nor an owner-approval gate).
+
+**A real process failure, caught in time:** `PHASE1_WEDGE_DISTRIBUTION_PLAN.md`
+(written the previous entry) claimed "no `/verify/<id>` page exists at
+all" -- based on grepping `*.html` files and checking for a `verify/`
+directory on disk, neither of which would find a generator whose
+output goes to a gitignored `build/verify/` directory. That claim was
+wrong: `tools/generate_verify_pages.py` already existed, built and
+fully wired up in **CA Wedge Plan Step 11 (2026-11-13)** -- `app.js`'s
+`verifyPageUrl(doc)` already links to it from the plain-text, PDF, and
+DOCX export functions and the on-screen output-tier summary. Acting on
+the wrong claim, a second, redundant implementation was written
+(different output directory, different page design, same file names
+as the real `tools/generate_verify_pages.py` and
+`tests/tools/test_generate_verify_pages.py`) and the `Write` tool
+**overwrote both real, already-working files** without reading them
+first.
+
+Caught immediately after staging, before any commit: `git log --oneline
+-1 -- tools/generate_verify_pages.py` showed the file already had
+history, and `git show 147d916:tools/generate_verify_pages.py`
+recovered the original, complete implementation (schema.org
+`ClaimReview` markup, tier + per-clause level/citation/quote/
+checkedDate, a drafting-only document's own explanation of why it can
+never reach Tier A). Restored both files via `git checkout 147d916 --
+tools/generate_verify_pages.py tests/tools/test_generate_verify_pages.py`,
+confirmed zero diff from `HEAD` and all 6 of the real test file's
+tests pass, then reverted the orphaned CSS this mistake had added to
+`styles.css` (styled for the redundant page's own markup, not the real
+one's). Corrected `PHASE1_WEDGE_DISTRIBUTION_PLAN.md`'s wrong claim in
+place rather than leaving it to mislead a future session.
+
+**What was real, kept:** `verification_levels.json` genuinely was
+stale (generated 2026-11-13, predating this entire session's A5 work)
+-- regenerating it via `tools/build_verification_levels.py` was a real
+fix independent of the mistake above (580/3242/1167 ->
+459/3244/1286 cited/verified/adversarially-checked), and re-running
+the real `tools/generate_verify_pages.py` against the fresh file now
+produces 741 correctly-dated, correctly-counted pages. **D1.1 needed
+no new code at all** -- it was already done.
+
+**The lesson, stated plainly so it isn't repeated:** before writing
+what looks like new infrastructure in an established codebase,
+check whether it already exists -- `git log --oneline -- <path>`
+on the exact filename a plan proposes, or a `DECISIONS.md` grep for
+the feature name, costs a few seconds and would have caught this
+immediately. A shallow "I don't see it in a few greps" is not the
+same check, especially in a project whose generators write to
+gitignored `build/` directories by design.
+
+**D1.3:** three headline options in `HEADLINES.md`, each checked
+programmatically against `lint/advisory_phrases.json`'s actual
+blocklist (not just read for a similar feel) -- all three clean, none
+claim a guaranteed outcome, none say "AI-powered." Owner picks; none
+has been placed on `index.html`.
+
+**D1.2** (the interactive demo widget on `index.html`, linking via the
+real `verifyPageUrl(doc)`, plus the new `trackEvent()` calls D3 needs)
+is the natural next piece.
+
+**Verification:** `python3 tests/tools/test_generate_verify_pages.py`
+(6/6, the real test file), `python3 tools/generate_verify_pages.py`
+(741 pages, the real generator), `python3 tools/validate_corpus.py`
+(passed), `python3 lint/copy_lint.py` (OK), `git diff --stat
+tools/generate_verify_pages.py tests/tools/test_generate_verify_pages.py
+styles.css` against `HEAD` (empty -- confirmed nothing from the
+mistake survived), `python3 tools/merge_guard.py
+origin/claude/new-session-palh5c`.

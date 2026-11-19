@@ -6,15 +6,15 @@ work stops for owner approval. Phase 0 (A0/A1/A2) is already done
 (`MVP_BASELINE.md`, `review/A3_WEDGE_CONFIRMATION.md`, the commit-
 discipline hooks) — this file starts from there.
 
-**Hard dependency, not optional:** v2's own D2 text says Wave 1
-publishes "ONLY after they pass A5 verification." A5 (verifying the
-launch set, which the wedge is a subset of) is mid-flight in this
-session as of this writing: buckets 1–3 done and pushed (launch-set
-authority clauses: 575/684 adversarially checked, 102 verified, 7
-blocked on a disclosed leginfo access limit), bucket 4 (332 drafting-
-clause checks) running now. **D2 cannot start until A5 bucket 4
-finishes and lands** — D1 and D3 don't have that dependency and can
-start in parallel.
+**Dependency note (now cleared):** v2's own D2 text says Wave 1
+publishes "ONLY after they pass A5 verification." A5 is now complete
+(all 4 buckets, 2026-11-19): launch-set authority clauses 575/684
+adversarially checked, 102 verified, 7 blocked on a disclosed leginfo
+access limit; 332/332 drafting clauses screened, 9 real findings
+fixed. D2 can start — it still needs its own fresh page-count numbers
+(re-run `tools/generate_seo_pages.py --stage 1 --wedge-first` against
+today's tiers) and owner approval of the Wave 1 list before anything
+publishes.
 
 ---
 
@@ -35,39 +35,23 @@ app uses — the right pattern to copy, not reinvent.
 - No visible "verify-page promise" sentence above the fold.
 - `HEADLINES.md` does not exist — never written, despite being
   referenced as a v1 deliverable.
-- No `/verify/<id>` page exists at all (confirmed: nothing in the repo
-  implements it — this is A10 from v1, not yet built, and D1's "verify-
-  page promise" sentence is a promise about a page that doesn't exist
-  yet). **D1's above-the-fold sentence can't honestly ship before A10
-  exists**, even in skeleton form (the sentence can be true without
-  the whole QR/export pipeline working, but the page it points to has
-  to be real and live, not a 404).
 
-### D1.1 — Build a minimal `/verify/<id>` page (prerequisite, pulled in from A10)
+### D1.1 — ~~Build~~ **Already built**: `/verify/<id>` (CA Wedge Plan Step 11, 2026-11-13)
 
-Scope only what D1's promise needs, not all of A10's export/QR
-pipeline (that depends on A7's server-side release, Phase 2):
-- `verify.html` (or `verify/index.html` with query-param routing,
-  matching this project's existing static-page convention) — given a
-  document id, renders: title, corpus version/commit, each authority
-  clause's id, verification level, and check date, computed client-
-  side from the same public JSON `trust.html` already reads
-  (`tiers.json`, `verification_levels.json`) — no server call, no
-  account needed, same CSP discipline as `trust.html`.
-- Since no document has been *exported* yet (that needs A7, Phase 2),
-  this page works off a document id in the URL for now — "whether any
-  clause changed since generation" (the full A10 spec) waits for A7;
-  this skeleton only needs to prove the mechanism, matching D1's own
-  framing ("watch the trust mechanism work without signing up").
-- Files: `verify.html`, maybe a small `verify.js`; update
-  `tools/validate_corpus.py` or a new `tools/validate_static_pages.py`
-  check if this project's convention is to gate every new static page
-  (check `tools/README.md` for the existing pattern before adding a
-  new gate).
-- Gates: `node tools/regression.js` (needs a local server — note this
-  session's own sandbox blocks starting one; a future session or CI
-  will need to run this), accessibility check if one exists for static
-  pages, `python3 tools/validate_corpus.py`.
+**Correction to this file's own first draft**, which claimed no
+`/verify/<id>` page existed at all — wrong, caught only after nearly
+overwriting it. `tools/generate_verify_pages.py` already generates one
+static, deterministic page per document to `build/verify/<id>.html`
+(schema.org `ClaimReview` markup, tier + per-clause level/citation/
+quote/checkedDate, a drafting-only document's own explanation of why
+it can't reach Tier A), and `app.js`'s `verifyPageUrl(doc)` is already
+wired into the plain-text, PDF, and DOCX export functions plus the
+on-screen output-tier summary (`DECISIONS.md`'s 2026-11-13 Step 11
+entry). **D1's "above-the-fold verify-page promise" sentence can
+already ship truthfully** — the page it points to is real, not a gap.
+Nothing left to build here; `verification_levels.json` just needed a
+fresh regeneration (it was stale from before this session's A5 work)
+before re-running the generator, done 2026-11-19.
 
 ### D1.2 — Interactive demo widget on `index.html`
 
@@ -83,7 +67,8 @@ pipeline (that depends on A7's server-side release, Phase 2):
   `app.js` already has for the interview flow — do not build a second
   implementation of the same UI.
 - Add the one-sentence verify-page promise directly below it, linking
-  to `/verify/<id>` (D1.1).
+  via `verifyPageUrl(doc)` (already in `app.js`, D1.1) to the real,
+  already-built verify page.
 - New `trackEvent()` calls (D3 depends on these existing):
   `demo_clause_viewed`, `demo_source_panel_expanded`,
   `demo_to_interview_started` (fired when a visitor clicks from the
@@ -182,11 +167,11 @@ lands, so it isn't mistaken for complete.
 
 ## Sequencing within Phase 1
 
-1. D1.1 (verify page skeleton) and D1.3 (headlines, owner pick) can
-   start immediately — no A5 dependency.
-2. D1.2 (demo widget + analytics) can start immediately in parallel;
-   needs D1.1's `/verify/<id>` page to exist for its link to be real.
-3. D2 waits on A5 bucket 4 landing, then its own fresh numbers, then
-   owner approval of the Wave 1 list, then owner go to publish.
+1. D1.1 is already done (Step 11) — nothing to sequence.
+2. D1.2 (demo widget + analytics) and D1.3 (headlines, owner pick) can
+   both start immediately, independently of each other.
+3. D2 waits on A5 bucket 4 landing (done 2026-11-19), then its own
+   fresh numbers, then owner approval of the Wave 1 list, then owner
+   go to publish.
 4. D3 is folded into D1.2; its one real gap (verify-page-scan-from-QR)
-   waits on Phase 2's A7/A10.
+   waits on Phase 2's A7.
