@@ -5875,3 +5875,84 @@ A5 (all 4 buckets) is now complete. Final launch-set state:
 cited (blocked on leginfo, disclosed). Bucket 4 (332 drafting-clause
 checks) is the only piece of the original A5 estimate not yet run --
 next.
+
+## 2026-11-19 — A5 bucket 4: 332 drafting clauses screened, 9 real findings fixed; A5 complete
+
+Split the launch set's 332 drafting clauses into 6 batches by
+document and delegated to 6 parallel read-only agents, each screening
+for the four categories the spec names: advisory language, internal
+contradiction with a sibling clause, undisclosed jurisdiction
+assumption, and an embedded legal claim that should be a cited
+authority clause instead. Agents were told explicitly not to
+manufacture findings to fill a quota, and the results bear that out:
+**9 real findings across 332 clauses (2.7%)**, each independently
+re-verified against the actual current clause/sibling text before
+being accepted -- not trusted blind.
+
+All 9 fixed directly, each a small, targeted edit:
+
+- **1 advisory-language-adjacent / default-rule overclaim**
+  (`boardconsent_signatures`): a signature block stated an absolute
+  unanimity rule the corporation's own bylaws can actually override --
+  qualified it.
+- **5 internal contradictions with a sibling clause**: a wage demand
+  letter omitting the willfulness element its own sibling clause
+  exists to explain (`waitingtime_demand_letter_body`, major); a
+  Mello-Roos notice-delivery rule flattening two statutorily distinct
+  transaction types into one timing rule (`melloroos_notice_delivery`);
+  a deed of trust's recording clause reading as mandatory where its
+  own sibling discloses recording is permissive
+  (`deedoftrust_trustee_power_of_sale_and_reconveyance`); a severance
+  release omitting its own document's ADEA/OWBPA prerequisites
+  (`sev_release`, major); and one case where the *sibling's title*,
+  not the flagged clause, was the actually-incomplete half -- the
+  Cal-COBRA election form's 150%-for-disabled-beneficiaries language
+  was correct and already matched the sibling clause's own body text
+  and citation, so the fix was retitling the sibling
+  (`calcobra_premium_cap`) rather than rewriting the correct clause
+  that triggered the finding (`calcobra_election_form`) -- caught by
+  reading the sibling's full body and citation before editing either
+  one, not just comparing titles.
+- **3 should-be-authority duplications**: a quitclaim deed signature
+  block stating deed-validity law with no citation and no sibling
+  carrying it (`qcd_signature_notarization` -- trimmed to mechanics,
+  left as a documented future-authority-clause candidate rather than
+  inventing a new citation on the spot); a commercial lease signature
+  block and a TOD deed's beneficiary-designation clause each
+  duplicating a dedicated sibling authority clause's exact legal claim
+  (`commlease_ack`, `tod_beneficiary_designation`, both major) --
+  trimmed to mechanics and cross-referenced the sibling that already
+  carries the citation.
+
+Appended all 9 as new entries in `verifier/findings.jsonl` (this
+project's permanent record of every defect found, not just the ones
+from the authority-clause verifier), then triaged each `fixed` via
+`verifier/triage.py`, which wrote the matching `changelog.html`
+entries.
+
+**A5 is now complete** (all 4 buckets). Final state across the
+128-document, 684-authority-clause, 332-drafting-clause launch set:
+575 authority clauses adversarially checked, 102 verified, 7 cited
+(blocked on a disclosed leginfo access limit); 332 drafting clauses
+screened, 9 real defects found and fixed, 0 manufactured. Corpus-wide:
+329 total findings (150 -> 128 open over the whole A5 task, 106 -> 113
+accepted, 64 -> 88 fixed), Tier A 15 -> 29.
+
+**Verification:** `python3 tools/validate_corpus.py` (passed),
+`python3 verifier/triage.py --summary` (329 total: 128 open, 113
+accepted, 0 rejected, 88 fixed), `python3 tools/tiering.py` (Tier A
+29, unchanged from bucket 1-3's count -- drafting-clause fixes don't
+change authority-clause tier eligibility), `python3 tools/merge_guard.py
+origin/claude/new-session-palh5c` (flags the 9 modified clauses for
+review, as designed).
+
+**What's left of the original full handoff spec:** A5 done; A6
+(pricing options -- owner decision) is next per Section 8's
+sequencing ("A5, then A6"), followed by A7/A8 (owner-gated: Stripe
+account, Supabase CI secrets) and the rest of Part A, in parallel
+with Part B's Business Formation cluster. The user has since also
+sent a v2 revised build plan reprioritizing distribution
+(`PHASE1_WEDGE_DISTRIBUTION_PLAN.md`) -- next session should confirm
+with the owner which plan (v1's A6-next sequencing, or v2's
+Phase-1-distribution-first sequencing) governs before picking the
+next task, rather than assuming.

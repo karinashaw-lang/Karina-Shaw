@@ -758,7 +758,7 @@
       "id": "sev_release",
       "title": "General Release",
       "kind": "drafting",
-      "body": "In exchange for the severance payment above, {{employeeName}} releases {{companyName}} from all claims {{employeeName}} has or may have arising out of {{employeeName}}'s employment or its ending, to the fullest extent the law allows.",
+      "body": "In exchange for the severance payment above, {{employeeName}} releases {{companyName}} from all claims {{employeeName}} has or may have arising out of {{employeeName}}'s employment or its ending, to the fullest extent the law allows. If {{employeeName}} is 40 or older, this release includes a release of age-discrimination claims only if the additional requirements described below are met.",
       "state": "CA"
     },
     {
@@ -8879,7 +8879,7 @@
       "id": "tod_beneficiary_designation",
       "title": "Multiple-Beneficiary Designation",
       "kind": "drafting",
-      "body": "{{ownerName}} may name more than one beneficiary. If {{additionalBeneficiaryName}} is named as an additional beneficiary alongside {{beneficiaryName}}, the named beneficiaries take title to the property as tenants in common in equal shares on {{ownerName}}'s death. California's transfer-on-death deed statute does not provide a separate \"contingent\" or fallback beneficiary who stands in only if the primary beneficiary predeceases the owner; instead, if a named beneficiary does not survive {{ownerName}}, that beneficiary's share is redistributed among the other named beneficiaries who do survive. If no named beneficiary survives {{ownerName}}, this deed has no effect, and the property does not pass under it.",
+      "body": "{{ownerName}} may name more than one beneficiary. If {{additionalBeneficiaryName}} is named as an additional beneficiary alongside {{beneficiaryName}}, the named beneficiaries take title to the property as tenants in common in equal shares on {{ownerName}}'s death. See “Beneficiary Predeceasing the Owner” below for what happens if a named beneficiary does not survive {{ownerName}}, including the case where no named beneficiary survives.",
       "state": "CA"
     },
     {
@@ -10861,7 +10861,7 @@
       "id": "qcd_signature_notarization",
       "title": "Signature and Notarial Acknowledgment",
       "kind": "drafting",
-      "body": "SIGNATURE AND DATE: {{grantorName}} signs and dates this deed below; the name should exactly match the name shown on the property's current title documents.\n\nSignature of {{grantorName}}: _________________________ Date: _______________\n\nACKNOWLEDGMENT OF NOTARY: A notary public or other officer completing this certificate verifies only the identity of the individual who signed the document to which this certificate is attached, and not the truthfulness, accuracy, or validity of that document.\n\nState of California ) County of _________________________ )\n\nOn _________________________ before me, _________________________ (here insert name and title of the officer), personally appeared _________________________, who proved to me on the basis of satisfactory evidence to be the person(s) whose name(s) is/are subscribed to the within instrument and acknowledged to me that they executed the same in their authorized capacity(ies), and that by their signature(s) on the instrument the person(s), or the entity upon behalf of which the person(s) acted, executed the instrument. I certify under PENALTY OF PERJURY under the laws of the State of California that the foregoing paragraph is true and correct.\n\nWITNESS my hand and official seal.\n\nSignature: _________________________ (Seal)\n\nRECORDING: This deed transfers whatever interest {{grantorName}} has even if it is never recorded, but it is not recorded automatically upon signing. Recording is a separate step: presenting the signed, notarized deed to the county recorder in the county where the property is located, together with any required Preliminary Change of Ownership Report and any applicable documentary transfer tax.",
+      "body": "SIGNATURE AND DATE: {{grantorName}} signs and dates this deed below; the name should exactly match the name shown on the property's current title documents.\n\nSignature of {{grantorName}}: _________________________ Date: _______________\n\nACKNOWLEDGMENT OF NOTARY: A notary public or other officer completing this certificate verifies only the identity of the individual who signed the document to which this certificate is attached, and not the truthfulness, accuracy, or validity of that document.\n\nState of California ) County of _________________________ )\n\nOn _________________________ before me, _________________________ (here insert name and title of the officer), personally appeared _________________________, who proved to me on the basis of satisfactory evidence to be the person(s) whose name(s) is/are subscribed to the within instrument and acknowledged to me that they executed the same in their authorized capacity(ies), and that by their signature(s) on the instrument the person(s), or the entity upon behalf of which the person(s) acted, executed the instrument. I certify under PENALTY OF PERJURY under the laws of the State of California that the foregoing paragraph is true and correct.\n\nWITNESS my hand and official seal.\n\nSignature: _________________________ (Seal)\n\nRECORDING: This deed is not recorded automatically upon signing. Recording is a separate step: presenting the signed, notarized deed to the county recorder in the county where the property is located, together with any required Preliminary Change of Ownership Report and any applicable documentary transfer tax. See “Recording: Constructive Notice and California's Race-Notice Rule” above for what recording does and does not affect.",
       "state": "CA"
     },
     {
@@ -11518,7 +11518,7 @@
       "id": "commlease_ack",
       "title": "Signatures",
       "kind": "drafting",
-      "body": "Signed:\n\nLandlord: ☐ _________________________ Date: _______________\n\nTenant: ☐ _________________________ Date: _______________\n\nGuarantor (if applicable): ☐ _________________________ Date: _______________\n\nA personal guaranty of Tenant's obligations under this lease is a separate promise that California law requires to be set out in a signed writing of its own; an individual's signature on this lease in a representative capacity for a business-entity Tenant does not, by itself, create a personal guaranty of that entity's obligations.",
+      "body": "Signed:\n\nLandlord: ☐ _________________________ Date: _______________\n\nTenant: ☐ _________________________ Date: _______________\n\nGuarantor (if applicable): ☐ _________________________ Date: _______________\n\nSee “Personal Guaranties Are General Contract Law, Not a Commercial-Lease-Specific Statute” above for what is required to create an enforceable personal guaranty of Tenant's obligations under this lease.",
       "state": "CA"
     },
     {
@@ -13317,7 +13317,7 @@
       "id": "waitingtime_demand_letter_body",
       "title": "Demand for Payment of Final Wages and Waiting-Time Penalty",
       "kind": "drafting",
-      "body": "Re: Demand for Payment of Final Wages — {{employeeName}}\n\nTo {{companyName}}:\n\nThis letter concerns the employment of {{employeeName}}, whose employment with {{companyName}} ended on {{terminationDate}}. The separation is described here as: {{separationType}}.\n\nCalifornia Labor Code sections 201 and 202 set deadlines for paying an employee's final wages depending on how the employment ended. As of the date of this letter, {{employeeName}} has not received full payment of final wages owed, including all earned and unpaid wages and any accrued, unused vacation or paid time off required to be paid out as wages at termination. The unpaid amount is currently identified as approximately {{unpaidWagesAmount}}.\n\nBecause final wages were not paid by the applicable statutory deadline, California Labor Code section 203 provides that unpaid wages continue as a penalty at {{employeeName}}'s daily rate of pay — {{dailyWageRate}} per day — for each day payment remains outstanding, up to a maximum of 30 days.\n\nPayment in full of the unpaid final wages described above, together with all waiting-time penalties accrued as of the date payment is made, is demanded.",
+      "body": "Re: Demand for Payment of Final Wages — {{employeeName}}\n\nTo {{companyName}}:\n\nThis letter concerns the employment of {{employeeName}}, whose employment with {{companyName}} ended on {{terminationDate}}. The separation is described here as: {{separationType}}.\n\nCalifornia Labor Code sections 201 and 202 set deadlines for paying an employee's final wages depending on how the employment ended. As of the date of this letter, {{employeeName}} has not received full payment of final wages owed, including all earned and unpaid wages and any accrued, unused vacation or paid time off required to be paid out as wages at termination. The unpaid amount is currently identified as approximately {{unpaidWagesAmount}}.\n\nBecause final wages were not paid by the applicable statutory deadline, and this failure was willful within the meaning described below, California Labor Code section 203 provides that unpaid wages continue as a penalty at {{employeeName}}'s daily rate of pay — {{dailyWageRate}} per day — for each day payment remains outstanding, up to a maximum of 30 days.\n\nPayment in full of the unpaid final wages described above, together with all waiting-time penalties accrued as of the date payment is made, is demanded.",
       "state": "CA"
     },
     {
@@ -14597,7 +14597,7 @@
       "id": "boardconsent_signatures",
       "title": "Director Signatures",
       "kind": "drafting",
-      "body": "The undersigned directors of {{companyName}} — {{directorNames}} — each sign below to evidence their unanimous written consent:\n\nDirector: _______________________ Date: _______________\nDirector: _______________________ Date: _______________\n(Every director then serving must sign for this consent to be effective in place of a meeting. Add additional signature lines as needed.)",
+      "body": "The undersigned directors of {{companyName}} — {{directorNames}} — each sign below to evidence their unanimous written consent:\n\nDirector: _______________________ Date: _______________\nDirector: _______________________ Date: _______________\n(Under the default rule of California law, every director then serving must sign for this consent to be effective in place of a meeting, unless {{companyName}}'s articles of incorporation or bylaws provide otherwise. Add additional signature lines as needed.)",
       "state": "CA"
     },
     {
@@ -16425,7 +16425,7 @@
     },
     {
       "id": "calcobra_premium_cap",
-      "title": "Cal-COBRA Premium Cap — Up to 110% of Applicable Rate",
+      "title": "Cal-COBRA Premium Cap — Up to 110% of Applicable Rate (Up to 150% for a Disabled Qualified Beneficiary After 18 Months)",
       "kind": "authority",
       "status": "verified",
       "checkedDate": "2026-09-02",
@@ -63771,7 +63771,7 @@
       "id": "melloroos_notice_delivery",
       "title": "Mello-Roos / Special Tax Notice Delivery",
       "kind": "drafting",
-      "body": "If {{propertyAddress}} is subject to a special tax lien of the kind described in the Mello-Roos disclosure provisions below, Seller shall deliver to Buyer any Notice of Special Tax or other disclosure notice required by those provisions before Buyer signs a contract to purchase or a deposit receipt for the property, separately from the Transfer Disclosure Statement and Natural Hazard Disclosure Statement referenced elsewhere in this agreement.",
+      "body": "If {{propertyAddress}} is subject to a special tax lien of the kind described in the Mello-Roos disclosure provisions below, Seller shall deliver to Buyer the applicable Notice of Special Tax or other disclosure notice, separately from the Transfer Disclosure Statement and Natural Hazard Disclosure Statement referenced elsewhere in this agreement. For a new-subdivision sale, that notice is delivered before Buyer signs a contract to purchase or a deposit receipt, as described in the subdivision-sale timing provisions below. For a resale, the applicable special tax disclosure follows the timing and scope described in the general resale disclosure provisions below.",
       "state": "CA"
     },
     {
@@ -69571,7 +69571,7 @@
       "id": "deedoftrust_trustee_power_of_sale_and_reconveyance",
       "title": "Trustee's Power of Sale, Substitution, and Duty to Reconvey",
       "kind": "drafting",
-      "body": "Trustor grants Trustee the power to sell the Property, to be exercised only after a breach of an obligation this Deed of Trust secures and only in the manner California law prescribes for a nonjudicial foreclosure sale under a power of sale — a process this document does not itself describe. {{beneficiaryName}}, as Beneficiary, may substitute a new trustee in place of {{trusteeName}} at any time by recording a substitution in the county where the Property is located, without needing Trustee's consent. Once the obligations this Deed of Trust secures have been paid and performed in full, Beneficiary must request a reconveyance, and Trustee must reconvey the Property to the person or persons legally entitled to it, releasing this Deed of Trust's lien, as provided by law. This Deed of Trust is to be recorded in the office of the County Recorder of {{recordingCounty}} County, California.",
+      "body": "Trustor grants Trustee the power to sell the Property, to be exercised only after a breach of an obligation this Deed of Trust secures and only in the manner California law prescribes for a nonjudicial foreclosure sale under a power of sale — a process this document does not itself describe. {{beneficiaryName}}, as Beneficiary, may substitute a new trustee in place of {{trusteeName}} at any time by recording a substitution in the county where the Property is located, without needing Trustee's consent. Once the obligations this Deed of Trust secures have been paid and performed in full, Beneficiary must request a reconveyance, and Trustee must reconvey the Property to the person or persons legally entitled to it, releasing this Deed of Trust's lien, as provided by law. If this Deed of Trust is recorded, it is to be recorded in the office of the County Recorder of {{recordingCounty}} County, California. Recording is not required for this Deed of Trust to be valid between Trustor and Beneficiary, but it affects priority against later-recorded interests and is ordinarily necessary before the power of sale can be enforced against third parties.",
       "state": "CA"
     },
     {
