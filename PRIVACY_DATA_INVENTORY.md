@@ -102,7 +102,7 @@ Keeps the previous version of a saved document on hand when you regenerate it, s
 
 Whether your subscription is currently active: a status, the Stripe customer/subscription ids, the current billing period end, and whether a review-request email has been sent to you for this subscription. Written only by the Stripe webhook or the scheduled send-review-requests function (both use the service-role key, never your own session) -- you can read your own row but never write one yourself, which is what actually enforces the paywall on cloud save, sharing, and e-signature (see supabase/migrations/20261113000000_entitlements.sql and supabase/migrations/20261114000000_entitlements_review_requested_at.sql). 
 
-**Columns:** `id` (uuid), `user_id` (uuid), `type` (text), `document_id` (text), `status` (text), `stripe_customer_id` (text), `stripe_subscription_id` (text), `current_period_end` (timestamptz), `cancel_at_period_end` (boolean), `created_at` (timestamptz), `updated_at` (timestamptz), `review_requested_at` (timestamptz)
+**Columns:** `id` (uuid), `user_id` (uuid), `type` (text), `document_id` (text), `status` (text), `stripe_customer_id` (text), `stripe_subscription_id` (text), `current_period_end` (timestamptz), `cancel_at_period_end` (boolean), `created_at` (timestamptz), `updated_at` (timestamptz), `review_requested_at` (timestamptz), `source` (text), `starts_at` (timestamptz), `ends_at` (timestamptz), `exports_used` (integer), `exports_allowed` (integer), `stripe_checkout_session_id` (text), `stripe_payment_intent_id` (text)
 
 **Who can read/write it (database policy):** select: "Users can view their own entitlements"
 
