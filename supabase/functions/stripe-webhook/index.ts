@@ -1,24 +1,36 @@
-// CA Wedge Plan Step 9: the only place public.entitlements is ever
-// written (its own RLS has no insert/update policy for anyone else --
-// see supabase/migrations/20261113000000_entitlements.sql). Test mode
-// only (Global Rule 9) -- the STRIPE_SECRET_KEY/STRIPE_WEBHOOK_SECRET
-// secrets configured for this function are what decide that, never a
-// flag in this code.
+// Per-document one-time purchase (PRICING_OPTIONS.md Option A,
+// restored 2026-11-19 -- see DECISIONS.md and the entitlements
+// migration's own comment). The only place public.entitlements is
+// ever written (its own RLS has no insert/update policy for anyone
+// else). Test mode only (Global Rule 9) -- the STRIPE_SECRET_KEY/
+// STRIPE_WEBHOOK_SECRET secrets configured for this function are what
+// decide that, never a flag in this code.
 //
-// Acts only on customer.subscription.* events, never
-// checkout.session.completed -- a subscription object carries
-// status/current_period_end/cancel_at_period_end/customer id
-// directly, and (via subscription_data.metadata set in
-// create-checkout-session) this app's own user id, so there's no
-// need to separately correlate a checkout session with the
-// subscription it created.
+// Acts on three event types:
+//   checkout.session.completed -- grants the entitlement. Fires once
+//     per successful one-time-payment Checkout Session (mode:
+//     'payment'); this project no longer creates subscriptions, so
+//     there is no separate invoice.paid/customer.subscription.*
+//     lifecycle to track the way the old subscription model needed.
+//     invoice.paid and invoice.payment_failed are NOT handled here:
+//     Stripe does not generate an Invoice object for a plain one-time
+//     Checkout Session in payment mode (invoices are a
+//     subscription/Invoicing-API concept), so there is nothing for
+//     this project's purchase flow to listen for under those event
+//     names -- noted here rather than built as dead code for an event
+//     that structurally cannot fire for this flow.
+//   charge.refunded -- revokes the entitlement (status -> 'refunded').
+//   charge.dispute.created -- revokes the entitlement immediately
+//     (status -> 'disputed'), per MVP_SPEC.md's dispute-handling
+//     requirement: cut off access as soon as a dispute opens, not
+//     only once it resolves against the business.
 //
 // Signature verification uses constructEventAsync with Stripe's own
 // SubtleCrypto provider -- Deno's runtime has WebCrypto, not Node's
 // crypto module, which is what the synchronous constructEvent needs.
 // Skipping verification would let anyone who found this URL grant
-// themselves a subscription by POSTing a forged event -- this is the
-// one check this whole paywall design rests on not being bypassable.
+// themselves a document by POSTing a forged event -- this is the one
+// check this whole paywall design rests on not being bypassable.
 //
 // NOT invoked from this sandbox: no live Stripe webhook secret or
 // Stripe CLI exists here to send a real signed event, and this
@@ -32,23 +44,13 @@ import postgres from 'npm:postgres@3';
 
 const cryptoProvider = Stripe.createSubtleCryptoProvider();
 
-function mapStripeStatus(stripeStatus: string): 'active' | 'past_due' | 'canceled' | 'expired' {
-  switch (stripeStatus) {
-    case 'active':
-    case 'trialing':
-      return 'active';
-    case 'past_due':
-    case 'unpaid':
-      return 'past_due';
-    case 'canceled':
-      return 'canceled';
-    default:
-      // incomplete, incomplete_expired, paused, or any future Stripe
-      // status this project hasn't seen yet -- fails to the status
-      // that denies paid access rather than one that grants it.
-      return 'expired';
-  }
-}
+// PRICING_OPTIONS.md's own stated default: 30 days of access from
+// purchase. A concrete default to react to, not research-backed --
+// change it here (and in config/pricing.json's own note, which this
+// value must be kept in sync with by eye, same tradeoff this project
+// already accepts elsewhere between a JS/Python/TS reimplementation
+// of one small fact) if the owner picks a different window.
+const ACCESS_WINDOW_DAYS = 30;
 
 Deno.serve(async req => {
   if (req.method !== 'POST') {
@@ -77,63 +79,91 @@ Deno.serve(async req => {
     return new Response('Invalid signature', { status: 400 });
   }
 
-  if (!event.type.startsWith('customer.subscription.')) {
-    // Acknowledged, not acted on -- every other subscribed event
-    // (invoices, payment methods, etc.) is a 200 no-op rather than a
-    // webhook Stripe keeps retrying for nothing.
-    return new Response(JSON.stringify({ received: true, ignored: event.type }), {
-      headers: { 'Content-Type': 'application/json' },
-    });
-  }
-
-  const subscription = event.data.object as Stripe.Subscription;
-  const userId = subscription.metadata?.user_id;
-  if (!userId) {
-    // Shouldn't happen for a subscription this function's own
-    // checkout flow created, but a subscription created by hand in
-    // the Stripe Dashboard (e.g. while testing) would have no
-    // metadata at all -- log and acknowledge rather than 500, since
-    // retrying won't produce a user id that doesn't exist.
-    console.error('customer.subscription event with no user_id metadata:', subscription.id);
-    return new Response(JSON.stringify({ received: true, ignored: 'no user_id metadata' }), {
-      headers: { 'Content-Type': 'application/json' },
-    });
-  }
-
-  const status = event.type === 'customer.subscription.deleted' ? 'canceled' : mapStripeStatus(subscription.status);
-  const currentPeriodEnd = subscription.items.data[0]?.current_period_end;
-  const customerId = typeof subscription.customer === 'string' ? subscription.customer : subscription.customer.id;
-  const periodEndIso = currentPeriodEnd ? new Date(currentPeriodEnd * 1000).toISOString() : null;
-
-  // A direct Postgres connection, not the supabase-js client, because
-  // the upsert target is entitlements_stripe_subscription_id_idx -- a
-  // PARTIAL unique index (where stripe_subscription_id is not null),
-  // which PostgREST's upsert helper cannot be told to target; raw SQL
-  // can state that predicate exactly. Bypasses RLS the same way every
-  // other service-role write in this project does.
   const sql = postgres(Deno.env.get('SUPABASE_DB_URL')!);
   try {
-    await sql`
-      insert into public.entitlements
-        (user_id, type, status, stripe_customer_id, stripe_subscription_id, current_period_end, cancel_at_period_end)
-      values
-        (${userId}, 'subscription', ${status}, ${customerId}, ${subscription.id}, ${periodEndIso}, ${subscription.cancel_at_period_end})
-      on conflict (stripe_subscription_id) where stripe_subscription_id is not null
-      do update set
-        status = excluded.status,
-        stripe_customer_id = excluded.stripe_customer_id,
-        current_period_end = excluded.current_period_end,
-        cancel_at_period_end = excluded.cancel_at_period_end,
-        updated_at = now()
-    `;
+    if (event.type === 'checkout.session.completed') {
+      const session = event.data.object as Stripe.Checkout.Session;
+      if (session.mode !== 'payment') {
+        // This project no longer creates subscription-mode sessions;
+        // a stray one (created by hand in the Stripe Dashboard while
+        // testing, say) is acknowledged and ignored rather than
+        // acted on incorrectly.
+        return ack({ ignored: 'non-payment-mode session' });
+      }
+      const userId = session.metadata?.user_id || session.client_reference_id;
+      const documentId = session.metadata?.document_id;
+      if (!userId || !documentId) {
+        console.error('checkout.session.completed with no user_id/document_id metadata:', session.id);
+        return ack({ ignored: 'no user_id/document_id metadata' });
+      }
+      const customerId = typeof session.customer === 'string' ? session.customer : session.customer?.id ?? null;
+      const paymentIntentId =
+        typeof session.payment_intent === 'string' ? session.payment_intent : session.payment_intent?.id ?? null;
+      const startsAt = new Date();
+      const endsAt = new Date(startsAt.getTime() + ACCESS_WINDOW_DAYS * 24 * 60 * 60 * 1000);
+
+      await sql`
+        insert into public.entitlements
+          (user_id, document_id, status, source, stripe_customer_id,
+           stripe_checkout_session_id, stripe_payment_intent_id, starts_at, ends_at)
+        values
+          (${userId}, ${documentId}, 'active', 'stripe', ${customerId},
+           ${session.id}, ${paymentIntentId}, ${startsAt.toISOString()}, ${endsAt.toISOString()})
+        on conflict (stripe_checkout_session_id) where stripe_checkout_session_id is not null
+        do update set
+          status = 'active',
+          stripe_customer_id = excluded.stripe_customer_id,
+          stripe_payment_intent_id = excluded.stripe_payment_intent_id,
+          updated_at = now()
+      `;
+      return ack({ granted: true });
+    }
+
+    if (event.type === 'charge.refunded' || event.type === 'charge.dispute.created') {
+      const charge =
+        event.type === 'charge.dispute.created'
+          ? ((event.data.object as Stripe.Dispute).charge as Stripe.Charge | string)
+          : (event.data.object as Stripe.Charge);
+      const paymentIntentId =
+        typeof charge === 'string'
+          ? null
+          : typeof charge.payment_intent === 'string'
+            ? charge.payment_intent
+            : (charge.payment_intent?.id ?? null);
+      if (!paymentIntentId) {
+        console.error(`${event.type} with no resolvable payment_intent id`);
+        return ack({ ignored: 'no payment_intent id' });
+      }
+      const newStatus = event.type === 'charge.refunded' ? 'refunded' : 'disputed';
+      const result = await sql`
+        update public.entitlements
+        set status = ${newStatus}, updated_at = now()
+        where stripe_payment_intent_id = ${paymentIntentId}
+      `;
+      if (result.count === 0) {
+        // Not an error -- a refund/dispute on a charge this project
+        // never granted an entitlement for (a test charge created by
+        // hand, a charge that failed before checkout.session.completed
+        // ever fired) has nothing to revoke. Logged, not retried.
+        console.error(`${event.type}: no entitlement row found for payment_intent`, paymentIntentId);
+      }
+      return ack({ revoked: result.count > 0 });
+    }
+
+    // Every other subscribed event type (payment_intent.*, customer.*,
+    // the no-longer-relevant customer.subscription.*, etc.) is a 200
+    // no-op rather than a webhook Stripe keeps retrying for nothing.
+    return ack({ ignored: event.type });
   } catch (err) {
-    console.error('Failed to upsert entitlement:', err);
+    console.error('stripe-webhook: database error handling', event.type, err);
     return new Response('Database error', { status: 500 });
   } finally {
     await sql.end();
   }
+});
 
-  return new Response(JSON.stringify({ received: true }), {
+function ack(extra: Record<string, unknown>) {
+  return new Response(JSON.stringify({ received: true, ...extra }), {
     headers: { 'Content-Type': 'application/json' },
   });
-});
+}

@@ -1,21 +1,20 @@
 {
-  "description": "Pricing for the paid launch (MVP amendment). Step A proposed per-document purchase; the owner decided 2026-11-10 on the subscription model instead (Option B in PRICING_OPTIONS.md, unlimited documents) -- see PRICING_OPTIONS.md's 'Owner decision' section for what that changes. Every price point below is still a null placeholder for the owner to fill in. No price here has been picked from memory of competitors -- every priceUsd is null until the owner sets it.",
-  "model": "subscription",
+  "description": "Pricing for the paid launch. PRICING_OPTIONS.md's original recommendation was Option A (per-document, one-time purchase); the owner chose the subscription model instead on 2026-11-10, then reversed that decision on 2026-11-19 against MVP_SPEC.md, which puts a subscription tier in Phase 5+ -- see DECISIONS.md's 2026-11-19 entitlements-rebuild entry. Every price point below is still a null placeholder for the owner to fill in. No price here has been picked from memory of competitors -- every priceUsd is null until the owner sets it.",
+  "model": "per_document",
   "currency": "usd",
-  "subscription": {
-    "unlimitedDocuments": true,
-    "monthlyPriceUsd": null,
-    "annualPriceUsd": null,
-    "includes": ["all_export_formats", "cloud_save", "version_history", "law_change_alerts", "e_signature", "sharing"],
-    "_note": "Unlocks all 8 paywalled actions (PDF/.docx/plain text/JSON export, sources appendix, cloud save, e-signature, sharing) for every document for as long as the subscription is active. Triggers California's Automatic Renewal Law in full (Bus. & Prof. Code SS 17600 et seq.) -- renewal-compliance copy, acknowledgment email, and an easy-as-signup cancellation path are mandatory for this model, built in Step C.7, not optional."
-  },
   "perDocument": {
-    "_note": "Not offered at launch under the subscription-only decision. Left in the file, inactive, in case the owner later wants a one-time option alongside the subscription -- not built unless asked.",
-    "active": false,
-    "priceUsd": null
+    "active": true,
+    "priceUsd": null,
+    "editsIncluded": { "reExports": 3, "windowDays": 30 },
+    "includes": ["all_export_formats", "cloud_save", "version_history", "e_signature", "sharing"],
+    "_note": "Unlocks the paywalled actions (PDF/.docx/plain text/JSON export, sources appendix, cloud save, e-signature, sharing) for this one document only, for 3 re-exports or 30 days from purchase, whichever comes first (PRICING_OPTIONS.md's own stated default -- a concrete number chosen for being simple to explain and enforce, not pricing research; change both numbers freely). supabase/migrations/20261119000000_entitlements_per_document.sql sets ends_at to starts_at + windowDays at purchase time; reExports (exports_used/exports_allowed on the entitlements row) is schema-ready but NOT yet server-enforced -- no server-side export rendering exists yet to count against it (MVP_SPEC_STATUS.md Section 3)."
+  },
+  "subscription": {
+    "_note": "Deferred to Phase 5+ by MVP_SPEC.md's own exclusion list -- not offered at launch. PRICING_OPTIONS.md's Option C (a continuity add-on sold alongside per-document purchase, not instead of it) is the design to revisit if post-launch usage shows real demand from repeat buyers; the entitlements table's own `type` column exists so that addition would not need another schema redesign, per PRICING_OPTIONS.md's own reasoning. Not built.",
+    "active": false
   },
   "refundPolicy": {
-    "_note": "Owner decision -- Step E. For a subscription, this also covers partial-period refunds on cancellation. Not yet written.",
+    "_note": "Owner decision, PRICING_OPTIONS.md Step E. Not yet written.",
     "windowDays": null,
     "summary": null
   }

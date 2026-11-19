@@ -12,7 +12,17 @@
 // is what actually enforces that a user can only ever read or write
 // their own rows; the anon key here carries no elevated access.
 
-const accountState = { client: null, session: null, configured: false, entitled: false };
+// entitled is now per-document (Set of document ids with an active
+// entitlement), not a single account-wide boolean -- Step 8's
+// subscription model gave way to per-document purchase on 2026-11-19
+// (DECISIONS.md), so "is this account entitled" stopped being a
+// meaningful yes/no. isEntitledFor() below is the one place that
+// answers the question any call site actually needs.
+const accountState = { client: null, session: null, configured: false, entitledDocumentIds: new Set() };
+
+function isEntitledFor(documentId) {
+  return accountState.entitledDocumentIds.has(documentId);
+}
 
 function supabaseConfigured() {
   const cfg = window.GROUNDTRUTH_CONFIG;
@@ -51,7 +61,7 @@ function initAccount() {
 
   accountState.client.auth.onAuthStateChange(async (event, session) => {
     accountState.session = session;
-    accountState.entitled = false;
+    accountState.entitledDocumentIds = new Set();
     if (accountState.session) await refreshEntitlement();
     updateAccountNav();
     if (event === 'SIGNED_IN') mergeOnSignIn();
@@ -68,19 +78,24 @@ function initAccount() {
 // policy on each write, not this read -- this is purely so the person
 // isn't left guessing.
 async function refreshEntitlement() {
-  if (!accountState.session) { accountState.entitled = false; return; }
+  accountState.entitledDocumentIds = new Set();
+  if (!accountState.session) return;
   const { data, error } = await accountState.client
     .from('entitlements')
-    .select('status, current_period_end')
+    .select('document_id, status, ends_at')
     .eq('user_id', accountState.session.user.id)
     .eq('status', 'active');
-  if (error) { console.error('Groundtruth: could not check subscription status', error); accountState.entitled = false; return; }
+  if (error) { console.error('Groundtruth: could not check entitlement status', error); return; }
   const now = Date.now();
-  accountState.entitled = (data || []).some(row => !row.current_period_end || new Date(row.current_period_end).getTime() > now);
+  accountState.entitledDocumentIds = new Set(
+    (data || [])
+      .filter(row => !row.ends_at || new Date(row.ends_at).getTime() > now)
+      .map(row => row.document_id)
+  );
 }
 
 const ENTITLEMENT_REQUIRED_MESSAGE =
-  'This needs an active subscription. Your document stays saved in this browser either way — see Upgrade in Account to sync it to the cloud.';
+  'This needs a purchase of this document. Your document stays saved in this browser either way — see Buy this document in Account to sync it to the cloud.';
 
 function isEntitlementError(error) {
   return !!error && typeof error.message === 'string' && error.message.toLowerCase().includes('row-level security');
@@ -236,12 +251,12 @@ function renderLibrarySyncStatus() {
   p.style.margin = '0 0 20px';
   if (!accountState.configured) {
     p.textContent = 'Saved to this browser only.';
-  } else if (accountState.session && accountState.entitled) {
-    p.textContent = `Synced to ${accountState.session.user.email}.`;
+  } else if (accountState.session && accountState.entitledDocumentIds.size > 0) {
+    p.textContent = `Synced to ${accountState.session.user.email} for documents you've purchased. A document you haven't purchased stays saved in this browser only.`;
   } else if (accountState.session) {
-    p.textContent = `Saved to this browser only — ${accountState.session.user.email} isn't subscribed, so nothing syncs to the cloud yet. See Upgrade in Account.`;
+    p.textContent = `Saved to this browser only — ${accountState.session.user.email} hasn't purchased any document yet, so nothing syncs to the cloud.`;
   } else {
-    p.textContent = 'Saved to this browser only — sign in and subscribe under Account to sync across devices.';
+    p.textContent = 'Saved to this browser only — sign in and purchase a document to sync it across devices.';
   }
   el.appendChild(p);
 }
@@ -305,10 +320,11 @@ function wrapLibraryFunctions() {
   };
 
   function syncEntryToCloud(entry) {
-    // Not entitled: skip the request entirely rather than let a write
-    // we already know will be rejected by RLS round-trip to the server
-    // first. renderLibrarySyncStatus() already told the person why.
-    if (!accountState.entitled) return;
+    // Not entitled for this document: skip the request entirely rather
+    // than let a write we already know will be rejected by RLS
+    // round-trip to the server first. renderLibrarySyncStatus() already
+    // told the person why.
+    if (!isEntitledFor(entry.documentId)) return;
     accountState.client.from('agreements').upsert({
       id: entry.id,
       user_id: accountState.session.user.id,
@@ -320,9 +336,10 @@ function wrapLibraryFunctions() {
       if (!error) return;
       if (isEntitlementError(error)) {
         // Entitlement lapsed between refreshEntitlement() and this write
-        // (e.g. a subscription expired mid-session) -- re-check so the
-        // status line catches up, rather than leaving it stale.
-        accountState.entitled = false;
+        // (e.g. its 30-day window or re-export count ran out mid-session)
+        // -- re-check so the status line catches up, rather than leaving
+        // it stale.
+        accountState.entitledDocumentIds.delete(entry.documentId);
         renderLibrarySyncStatus();
       } else {
         console.error('Groundtruth: cloud save failed', error);
@@ -382,6 +399,7 @@ function wrapLibraryFunctions() {
   const originalRenderSignatureSection = renderSignatureSection;
   renderSignatureSection = function () {
     originalRenderSignatureSection();
+    renderPurchaseSection();
     renderShareSection();
   };
 }
@@ -608,7 +626,7 @@ function renderShareSection() {
   section.appendChild(resultEl);
 
   createBtn.addEventListener('click', async () => {
-    if (!accountState.entitled) {
+    if (!isEntitledFor(entry.documentId)) {
       resultEl.textContent = ENTITLEMENT_REQUIRED_MESSAGE;
       return;
     }
@@ -832,46 +850,135 @@ function renderAuditLog(container) {
     });
 }
 
-// CA Wedge Plan Step 9: Upgrade / Manage subscription, backed by the
-// create-checkout-session and create-portal-session edge functions
-// (test mode only -- Global Rule 9; which Stripe key those functions
-// hold decides that, not anything here). Both just redirect to the
-// URL Stripe hands back; accountState.entitled only decides which
-// button to show, never grants access itself -- the real gate is the
-// RLS policies in supabase/migrations/20261113000000_entitlements.sql.
-function renderSubscriptionSection(container) {
+// Per-document purchase history (restored 2026-11-19, see
+// DECISIONS.md -- this replaces the old single account-wide
+// "Upgrade / Manage subscription" section from CA Wedge Plan Step 9,
+// which no longer makes sense once entitlement is per document rather
+// than per account). There's no single "upgrade your account" product
+// anymore, so there's no button here that buys anything -- buying
+// happens from the output screen, where a specific document is in
+// scope (see renderPurchaseSection below). This section only lists
+// what's already been bought, plus a link into Stripe's portal for
+// receipts, same create-portal-session edge function as before
+// (test mode only -- Global Rule 9).
+function renderPurchasesSection(container) {
   const section = document.createElement('div');
   section.style.margin = '16px 0 24px';
 
-  const statusEl = document.createElement('p');
-  statusEl.className = 'library-row-date';
-  statusEl.textContent = accountState.entitled
-    ? 'Subscription: active.'
-    : 'Subscription: none. Upgrade to sync documents, create share links, and collect e-signatures.';
-  section.appendChild(statusEl);
+  const heading = document.createElement('h3');
+  heading.textContent = 'Your purchases';
+  section.appendChild(heading);
 
-  const btn = document.createElement('button');
-  btn.type = 'button';
-  btn.className = accountState.entitled ? 'secondary' : 'primary';
-  btn.textContent = accountState.entitled ? 'Manage subscription' : 'Upgrade';
-  section.appendChild(btn);
+  const listEl = document.createElement('div');
+  listEl.textContent = 'Loading…';
+  section.appendChild(listEl);
+
+  accountState.client
+    .from('entitlements')
+    .select('document_id, status, ends_at, created_at')
+    .eq('user_id', accountState.session.user.id)
+    .order('created_at', { ascending: false })
+    .then(({ data, error }) => {
+      if (error) { listEl.textContent = `Couldn't load your purchases: ${error.message}`; return; }
+      listEl.innerHTML = '';
+      if (!data || data.length === 0) {
+        listEl.innerHTML = '<p class="library-empty">Nothing purchased yet — buy a document from its output screen to sync it, share it, or collect a signature on it.</p>';
+        return;
+      }
+      data.forEach(row => {
+        const doc = (state.documents || []).find(d => d.id === row.document_id);
+        const rowEl = document.createElement('div');
+        rowEl.className = 'library-row';
+        const info = document.createElement('div');
+        const titleEl = document.createElement('div');
+        titleEl.className = 'library-row-title';
+        titleEl.textContent = (doc && doc.title) || row.document_id;
+        const dateEl = document.createElement('div');
+        dateEl.className = 'library-row-date';
+        const statusText = row.status === 'active'
+          ? (row.ends_at ? `active until ${new Date(row.ends_at).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' })}` : 'active')
+          : row.status;
+        dateEl.textContent = `Purchased ${new Date(row.created_at).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' })} — ${statusText}`;
+        info.appendChild(titleEl);
+        info.appendChild(dateEl);
+        rowEl.appendChild(info);
+        listEl.appendChild(rowEl);
+      });
+    });
 
   const errEl = document.createElement('p');
   errEl.className = 'incoming-unmatched';
-  section.appendChild(errEl);
 
-  btn.addEventListener('click', async () => {
-    btn.disabled = true;
+  const portalBtn = document.createElement('button');
+  portalBtn.type = 'button';
+  portalBtn.className = 'secondary';
+  portalBtn.textContent = 'Manage purchases / receipts';
+  portalBtn.style.marginTop = '8px';
+  portalBtn.addEventListener('click', async () => {
+    portalBtn.disabled = true;
     errEl.textContent = '';
-    const fnName = accountState.entitled ? 'create-portal-session' : 'create-checkout-session';
-    const { data, error } = await accountState.client.functions.invoke(fnName, { body: {} });
-    btn.disabled = false;
+    const { data, error } = await accountState.client.functions.invoke('create-portal-session', { body: {} });
+    portalBtn.disabled = false;
     if (error || !data?.url) {
       errEl.textContent = (data && data.error) || error?.message || 'Something went wrong. Please try again.';
       return;
     }
     window.location.href = data.url;
   });
+  section.appendChild(portalBtn);
+  section.appendChild(errEl);
+
+  container.appendChild(section);
+}
+
+// Phase 7.5 extension: the actual "buy this document" entry point,
+// with real document context in scope -- unlike the old account-wide
+// Upgrade button, create-checkout-session now requires a documentId.
+// Wrapped onto renderSignatureSection the same way renderShareSection
+// already is (wrapLibraryFunctions above), so it shows up on the
+// output screen next to the other signed-in-only controls.
+function renderPurchaseSection() {
+  const container = document.getElementById('purchase-section');
+  if (!container) return;
+  container.innerHTML = '';
+  if (!accountState.session) return;
+  const entry = currentLibraryEntry();
+  if (!entry || isEntitledFor(entry.documentId)) return;
+
+  const section = document.createElement('div');
+  section.className = 'signature-section';
+
+  const heading = document.createElement('h3');
+  heading.textContent = 'Buy this document';
+  section.appendChild(heading);
+
+  const desc = document.createElement('p');
+  desc.className = 'signature-note';
+  desc.textContent = 'A one-time purchase of this document unlocks cloud save, every export format, sharing, and e-signature for it — see Pricing for details. Browsing, search, and filling it out stay free either way.';
+  section.appendChild(desc);
+
+  const errEl = document.createElement('p');
+  errEl.className = 'incoming-unmatched';
+
+  const buyBtn = document.createElement('button');
+  buyBtn.type = 'button';
+  buyBtn.className = 'primary';
+  buyBtn.textContent = 'Buy this document';
+  buyBtn.addEventListener('click', async () => {
+    buyBtn.disabled = true;
+    errEl.textContent = '';
+    const { data, error } = await accountState.client.functions.invoke('create-checkout-session', {
+      body: { documentId: entry.documentId },
+    });
+    buyBtn.disabled = false;
+    if (error || !data?.url) {
+      errEl.textContent = (data && data.error) || error?.message || 'Something went wrong. Please try again.';
+      return;
+    }
+    window.location.href = data.url;
+  });
+  section.appendChild(buyBtn);
+  section.appendChild(errEl);
 
   container.appendChild(section);
 }
@@ -1124,12 +1231,12 @@ function renderAccountScreen() {
   if (accountState.session) {
     const p = document.createElement('p');
     p.className = 'lede';
-    p.textContent = accountState.entitled
-      ? `Signed in as ${accountState.session.user.email}. Documents you generate sync to your account automatically, and will show up in "My Documents" on any device you sign in from.`
-      : `Signed in as ${accountState.session.user.email}. Cloud sync, sharing, and e-signature need an active subscription — nothing you generate leaves this browser until you subscribe below. Browsing, search, and filling out documents stay free either way.`;
+    p.textContent = accountState.entitledDocumentIds.size > 0
+      ? `Signed in as ${accountState.session.user.email}. A document you've purchased syncs to your account automatically, and shows up in "My Documents" on any device you sign in from. A document you haven't purchased stays saved in this browser only.`
+      : `Signed in as ${accountState.session.user.email}. Cloud sync, sharing, and e-signature need a one-time purchase of that document — nothing you generate leaves this browser until you buy it, from the output screen. Browsing, search, and filling out documents stay free either way.`;
     el.appendChild(p);
 
-    renderSubscriptionSection(el);
+    renderPurchasesSection(el);
 
     const signOutBtn = document.createElement('button');
     signOutBtn.type = 'button';

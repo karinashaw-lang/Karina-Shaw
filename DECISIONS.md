@@ -6107,3 +6107,151 @@ list.
 `python3 tools/merge_guard.py origin/claude/new-session-palh5c`
 (clean, additions only), plus the live Playwright golden-path run
 described above.
+
+## 2026-11-19 — Entitlements/Stripe rebuilt for per-document purchase, reversing the 2026-11-10 subscription decision
+
+**Task:** the user pasted a third planning document, "GROUNDTRUTH —
+MVP SPEC" (10 sections, with a subscription tier and a compliance
+calendar explicitly pushed to Phase 5+). A background audit
+(`MVP_SPEC_STATUS.md`) found the real entitlements/Stripe
+infrastructure already built was subscription-only — the opposite of
+what `PRICING_OPTIONS.md` originally recommended (its own "Option A")
+and the opposite of what this spec now assumes. Asked the user
+directly which way to go rather than guess: rebuild for per-document
+purchase, or treat the spec's "no subscription" line as stale against
+the October decision. The user answered **"The former."** This entry
+records the full rebuild that answer required.
+
+**What changed, and why, piece by piece:**
+
+- `supabase/migrations/20261119000000_entitlements_per_document.sql`
+  — applied directly to the live `impurvwwjdgurbjbnydu` project (not
+  just committed to git) after first confirming 0 rows existed in
+  `entitlements` to lose. Makes `document_id` required (was nullable,
+  for a since-removed subscription row shape), drops the
+  subscription-only columns (`stripe_subscription_id`,
+  `current_period_end`, `cancel_at_period_end`), narrows `type` to the
+  single value `'document_purchase'`, and adds the columns a
+  one-time-purchase model actually needs: `source`, `starts_at`,
+  `ends_at` (the access window), `exports_used`/`exports_allowed`
+  (schema-ready, NOT server-enforced — no server-side export
+  rendering exists to count against, per `MVP_SPEC_STATUS.md` Section
+  3 — documented in the column's own `comment on column`, not left to
+  look finished), and `stripe_checkout_session_id` /
+  `stripe_payment_intent_id` as two separate keys (idempotency for the
+  grant vs. correlation for a later refund/dispute, since Stripe's
+  refund/dispute events carry a `payment_intent`, not the original
+  Checkout Session id). `has_active_entitlement()` was rewritten to
+  take a `document_id` parameter — but deliberately still takes no
+  `user_id` parameter, preserving the user-id-enumeration fix from the
+  original "CA Wedge Plan Step 8 follow-up"; it keeps reading
+  `auth.uid()` internally. Required reordering the migration (drop
+  the 4 dependent RLS policies before dropping the function, recreate
+  them after) after a first attempt failed on a dependency error.
+  Verified after applying: a direct `information_schema.columns`
+  query against the live schema, and `get_advisors(type: "security")`
+  showing only pre-existing/expected findings.
+- `supabase/functions/create-checkout-session/index.ts` — now
+  requires `documentId` in the POST body, uses `mode: 'payment'`
+  (was `'subscription'`), and stamps `document_id`/`user_id` into
+  both the Checkout Session's `metadata` and the resulting
+  PaymentIntent's `payment_intent_data.metadata`.
+- `supabase/functions/stripe-webhook/index.ts` — rewritten around
+  exactly 3 event types: `checkout.session.completed` (grants the
+  entitlement, `ends_at = starts_at + 30 days`),
+  `charge.refunded` and `charge.dispute.created` (both matched via
+  `stripe_payment_intent_id`, not the Checkout Session id). Everything
+  else, including `invoice.paid`/`invoice.payment_failed`, is a 200
+  no-op with an inline comment explaining that one-time
+  payment-mode Checkout Sessions never generate Invoice objects, so
+  those events can't fire for this flow — not silently dropped
+  without explanation.
+- `supabase/functions/admin-refund/index.ts` — new. MVP_SPEC.md
+  Section 3 calls for an admin refund action; no admin-role auth
+  system exists anywhere in this project (confirmed by the audit), so
+  this is deliberately the smallest thing that actually works: gated
+  by a shared `ADMIN_API_SECRET` header, not a signed-in admin
+  concept. It asks Stripe to refund the charge and nothing else —
+  the webhook's own `charge.refunded` handler remains the only writer
+  of `entitlements`, so there's exactly one code path that can mark a
+  row refunded, not two sources of truth for the same fact.
+- `supabase/functions/create-portal-session/index.ts` — comments and
+  one error string reworded for a purchase-history portal rather than
+  a subscription-management one; no schema-breaking change needed.
+- `config/pricing.json` — rewritten to `"model": "per_document"`,
+  matching `PRICING_OPTIONS.md` Option A, with every `priceUsd` still
+  a null placeholder (never guessed from memory of competitors) and
+  the subscription block marked `"active": false` with a note
+  pointing at Option C (a future continuity add-on, not a
+  replacement) as the thing to revisit only if real repeat-buyer
+  demand shows up post-launch.
+- `OWNER_TODO.md` — item 8 (Automatic Renewal Law copy) marked largely
+  moot; new item 8b added: the owner needs a one-time (not recurring)
+  Stripe Price and a new `ADMIN_API_SECRET` secret.
+- `account.js` — the client was the one place this was more than a
+  mechanical rename, because `accountState.entitled` had been a
+  single account-wide boolean and entitlement is now inherently
+  per-document:
+  - `accountState.entitledDocumentIds` (a `Set`) replaced
+    `accountState.entitled`; `isEntitledFor(documentId)` is the one
+    place that answers "can this account do X with this document."
+  - `refreshEntitlement()` was a real regression, not just a
+    rename-in-waiting: it still queried `current_period_end`, a
+    column the migration above had just dropped from the live
+    database, so every call would have hard-errored against
+    production. Rewritten to query `document_id, status, ends_at`
+    and populate the `Set` from rows that are `active` and not past
+    `ends_at`.
+  - `syncEntryToCloud()`'s guard and its lapsed-entitlement fallback,
+    and `renderShareSection()`'s create-link guard, both had a
+    specific `document_id` already in scope and became
+    `isEntitledFor(entry.documentId)` checks instead of a blanket
+    boolean.
+  - `renderSubscriptionSection()` (the old single "Upgrade / Manage
+    subscription" button, which called `create-checkout-session` with
+    an empty body — now invalid, since `documentId` is required, and
+    which no longer has a single "upgrade your account" product to
+    sell) was replaced by two separate, smaller pieces rather than
+    patched in place: `renderPurchasesSection()` on the Account screen
+    (lists what's actually been bought, per document, with status and
+    expiry, plus a link into Stripe's portal for receipts — no buy
+    button, because no single document is in scope on that screen),
+    and a new `renderPurchaseSection()` wired onto the output screen's
+    `renderSignatureSection` wrap, the same convention
+    `renderShareSection` already uses — this is where a specific
+    document actually is in scope, so it's where "buy this document"
+    belongs. Needed one new persistent container,
+    `#purchase-section`, added to `index.html` right before
+    `#share-section`, so repeated renders replace its contents instead
+    of stacking duplicates.
+  - The Account-screen lede text and the shared
+    `ENTITLEMENT_REQUIRED_MESSAGE` constant were reworded away from
+    "subscription"/"subscribe" to "purchase."
+
+**What this does not do:** server-side PDF/DOCX export rendering
+still doesn't exist (so `exports_used` is schema-ready but never
+incremented — unchanged from before this rebuild, and still the
+single largest gap `MVP_SPEC_STATUS.md` identified); there is still
+no real admin-role auth system, only `admin-refund`'s shared-secret
+stopgap; and the refund policy window/summary in `pricing.json`
+remains an explicit, unwritten owner decision (`PRICING_OPTIONS.md`
+Step E), not something guessed here.
+
+**Verification:** a hand-stubbed `tsc --project` compile (Deno/
+npm-specifier globals stubbed, since no `deno` binary exists in this
+sandbox) ran clean, 0 errors, against all 4 edge functions. The live
+Supabase schema was checked directly after applying the migration,
+and `get_advisors(type: "security")` showed only pre-existing/expected
+findings. `config/pricing.json` was checked as valid JSON. On the
+client: `node -c account.js` / `node -c app.js` (valid syntax),
+`python3 tools/validate_corpus.py` (passed, unaffected — this work
+touched no corpus data), `python3 lint/copy_lint.py` (OK), and
+`python3 tools/merge_guard.py origin/claude/new-session-palh5c`
+(clean, additions only).
+
+**Not yet done, deliberately out of this entry's scope:** nothing in
+this change has been exercised against a real Stripe test-mode
+checkout from the sandbox — this project's edge functions have never
+been invokable from here (see earlier entries), so, as with every
+other edge function in this repo, that verification is the owner's
+to do once deployed.

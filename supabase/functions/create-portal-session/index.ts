@@ -1,8 +1,13 @@
-// CA Wedge Plan Step 9 / Step 7's California Automatic Renewal Law
-// requirement: "at least as easy a path to cancel as it was to sign
-// up." Stripe's own Billing Portal is that self-service path --
-// change payment method, view invoices, and cancel, with no email or
-// phone call to anyone at this company required. Test mode only
+// Per-document one-time purchase (restored 2026-11-19, see
+// DECISIONS.md) -- no subscription to cancel, so the Automatic
+// Renewal Law "as easy to cancel as to sign up" requirement this
+// function originally existed for no longer applies. Kept because
+// MVP_SPEC.md's Section 3 still lists "customer portal" as an MVP
+// requirement: Stripe's Billing Portal also serves order/receipt
+// history for one-time payments when the portal configuration in the
+// Stripe Dashboard enables invoice history (a dashboard setting, not
+// something this code sets per-session) -- this function just opens
+// that portal for the caller's own Stripe customer. Test mode only
 // (Global Rule 9), same as create-checkout-session.
 //
 // NOT invoked from this sandbox, for the same reasons as every other
@@ -46,7 +51,7 @@ Deno.serve(async req => {
     .maybeSingle();
 
   if (lookupErr || !row?.stripe_customer_id) {
-    return new Response(JSON.stringify({ error: "You don't have a subscription to manage yet." }), { status: 404 });
+    return new Response(JSON.stringify({ error: "You don't have any purchase history yet." }), { status: 404 });
   }
 
   let body: { returnUrl?: string };

@@ -192,20 +192,36 @@ function's URL, daily, with header `X-Cron-Secret: <the same value as
 the REVIEW_EMAIL_CRON_SECRET secret above>`. A run with nothing to do
 (no subscription has crossed 14 days yet) is a harmless no-op.
 
-## 8. Approve (or amend) the 30-day guarantee / Automatic Renewal Law copy
+## 8. Approve (or amend) the refund-window copy — Automatic Renewal Law largely moot now
 
-`PRICING_STEP7_GUARANTEE_PROPOSAL.md` (Step 7) proposed a 30-day
-unconditional refund window plus the specific pre-purchase disclosure
-and acknowledgment-email copy California's Automatic Renewal Law
-requires for a subscription — still sitting unapproved. Nothing
-downstream has been written as if it were approved:
-`config/pricing.json`'s `refundPolicy` fields are still `null`, and
-`terms.html`'s "Payments" section (Step 20) deliberately stops short
-of final refund/renewal language, saying plainly that it's still
-pending. Read that proposal, approve it, amend it, or write your own;
-once you do, the refund window and renewal-disclosure copy need to
-actually go into `config/pricing.json` and `terms.html` before real
-payments go live.
+**Updated 2026-11-19**: the pricing model reverted from subscription
+back to per-document, one-time purchase (`DECISIONS.md`, MVP_SPEC.md
+Section 3) — California's Automatic Renewal Law mainly governs
+*recurring* charges, so most of `PRICING_STEP7_GUARANTEE_PROPOSAL.md`'s
+renewal-disclosure/acknowledgment-email copy no longer applies to what
+this project actually sells today. The 30-day refund-window half of
+that proposal is still relevant to any purchase model and still needs
+your approval or amendment — `config/pricing.json`'s `refundPolicy`
+fields are still `null`, and `terms.html`'s "Payments" section (Step
+20) still stops short of final refund language. If a subscription
+add-on (PRICING_OPTIONS.md's Option C) is ever revisited post-launch,
+the renewal-law copy becomes relevant again at that point, not before.
+
+## 8b. Stripe setup for the per-document purchase flow (new, 2026-11-19)
+
+Two things only you can do before `create-checkout-session` can run
+for real:
+- Create a **one-time** (not recurring) Stripe Price for the
+  per-document purchase amount once you've picked it, and set its id
+  as this project's `STRIPE_PRICE_ID` secret — the code reads the
+  price from this id, never a dollar amount written into the
+  codebase, so there's nothing else to change there once you do this.
+- Set a new `ADMIN_API_SECRET` secret (any long random string) for
+  the new `admin-refund` edge function (`supabase/functions/admin-refund/`)
+  — there's no admin-role login system built yet, so this function is
+  gated by a shared secret you keep private, called via curl/Postman
+  today, not from any page. Issuing a refund still also needs your
+  Stripe dashboard access or this function's secret either way.
 
 ## 9. Run the Step 23 user test with real people
 
