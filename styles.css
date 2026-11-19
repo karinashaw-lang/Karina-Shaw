@@ -168,6 +168,26 @@ h1{
    formation), so it gets --accent treatment and comes first on the
    picker screen -- the free contract-reader callout right after it
    is a real, useful, free front door (Step 13), but a secondary one. */
+/* ---------- home-page demo-clause widget (v2 Phase 1, Task D1.2) ----------
+   Deliberately plainer than .wedge-callout below it -- this is the
+   proof, not the pitch, so it shouldn't visually compete with the
+   wedge callout's own accent styling. */
+.demo-clause-widget{
+  border:1px solid var(--line);
+  border-radius:6px;
+  padding:20px 22px;
+  margin:0 0 20px;
+}
+.demo-clause-widget h2{
+  font-family:'Fraunces', Georgia, serif;
+  font-weight:600;
+  font-size:19px;
+  margin:0 0 10px;
+}
+.demo-clause-body{ font-size:15.5px; margin:0 0 12px; max-width:64ch; }
+.demo-clause-promise{ font-size:13px; color:var(--ink-soft); max-width:64ch; margin:14px 0; }
+.demo-clause-cta{ margin-top:4px; }
+
 .wedge-callout{
   background:var(--accent-soft);
   border:1px solid var(--accent);

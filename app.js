@@ -1086,6 +1086,7 @@ async function init() {
   state.seoBaseUrl = seoConfig.baseUrl || '';
   state.referrals = referrals || {};
   buildJurisdictionIndex();
+  renderDemoClauseWidget();
   renderWedgeCallout();
   renderCategoryFilter();
   renderTierFilter();
@@ -1754,6 +1755,87 @@ function renderWedgeCallout() {
     item.appendChild(button);
     list.appendChild(item);
   });
+}
+
+// v2 Phase 1, Task D1.2: the home page's self-demonstrating proof --
+// one real wedge clause, already at the strongest level this corpus
+// has, rendered live above the fold with its real sourcing badge
+// (renderBadge(), the exact same component the interview flow uses --
+// not a second implementation) so a visitor can watch the trust
+// mechanism work before signing up or starting an interview. Picked
+// llc_liability_shield for its short, immediately legible claim (a
+// single-member LLC's own liability shield) and its
+// adversarially_checked level -- the strongest level this corpus has,
+// so the demo shows the real ceiling, not a middling example.
+const DEMO_CLAUSE_ID = 'llc_liability_shield';
+// Illustrative values only, substitute()'s own existing mechanism for
+// an unanswered {{field}} (leaves it as literal text) is correct but
+// unreadable for a demo nobody has filled in yet -- these are a
+// generic stand-in, not a real company, and never written anywhere
+// but this one rendered demo block.
+const DEMO_CLAUSE_SAMPLE_ANSWERS = { companyName: 'Riverside Design Studio, LLC', memberName: 'Jamie Rivera' };
+
+// trackEvent() is defined in account.js, a later <script> tag with no
+// defer -- safe by the time a visitor clicks anything (long after
+// both scripts have parsed), but renderDemoClauseWidget()'s own
+// demo_clause_viewed fire happens inside init(), right after this
+// script's very first network round-trip, which is not guaranteed to
+// be slower than the rest of the document parsing. Guarded here
+// rather than assumed, unlike the click-time trackEvent calls
+// elsewhere in this file that don't need the guard.
+function safeTrackEvent(eventType, fields) {
+  if (typeof trackEvent === 'function') trackEvent(eventType, fields);
+}
+
+function renderDemoClauseWidget() {
+  const container = document.getElementById('demo-clause-widget');
+  if (!container) return;
+  const clause = (state.clauses || []).find(c => c.id === DEMO_CLAUSE_ID);
+  const doc = clause && state.documents.find(d => (d.clauseOrder || []).some(e => clauseEntryId(e) === DEMO_CLAUSE_ID));
+  if (!clause || !doc) { container.hidden = true; return; } // corpus changed under us -- hide, don't show a broken demo
+
+  container.innerHTML = '';
+  container.hidden = false;
+
+  const heading = document.createElement('h2');
+  heading.textContent = 'See the sourcing for yourself — before you sign up';
+  container.appendChild(heading);
+
+  const body = document.createElement('p');
+  body.className = 'demo-clause-body';
+  body.textContent = substitute(clause.body, DEMO_CLAUSE_SAMPLE_ANSWERS);
+  container.appendChild(body);
+
+  const badge = renderBadge(clause);
+  if (badge) {
+    badge.addEventListener('toggle', () => {
+      if (badge.open) safeTrackEvent('demo_source_panel_expanded', { document_id: doc.id, clause_id: clause.id });
+    });
+    container.appendChild(badge);
+  }
+
+  const promise = document.createElement('p');
+  promise.className = 'demo-clause-promise';
+  promise.innerHTML = 'Every document you build carries this same link: ' +
+    `<a href="${verifyPageUrl(doc)}" target="_blank" rel="noopener noreferrer">its own verification record</a>` +
+    ', showing every clause, its source, and its check date.';
+  container.appendChild(promise);
+
+  const cta = document.createElement('button');
+  cta.type = 'button';
+  cta.className = 'secondary demo-clause-cta';
+  cta.textContent = `Build ${doc.title}`;
+  cta.addEventListener('click', () => {
+    safeTrackEvent('demo_to_interview_started', { document_id: doc.id, clause_id: clause.id });
+    state.document = doc;
+    state.answers = {};
+    renderWizard();
+    showScreen('screen-wizard');
+    document.getElementById('draft-banner').hidden = true;
+  });
+  container.appendChild(cta);
+
+  safeTrackEvent('demo_clause_viewed', { document_id: doc.id, clause_id: clause.id });
 }
 
 // The entry point used whenever the underlying document list itself

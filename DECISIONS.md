@@ -6029,3 +6029,81 @@ tools/generate_verify_pages.py tests/tools/test_generate_verify_pages.py
 styles.css` against `HEAD` (empty -- confirmed nothing from the
 mistake survived), `python3 tools/merge_guard.py
 origin/claude/new-session-palh5c`.
+
+## 2026-11-19 — v2 Task D1.2: the interactive demo widget on index.html
+
+Before writing anything, checked whether this already existed too
+(the D1.1 lesson, applied immediately): `grep` across `DECISIONS.md`/
+`app.js`/`index.html`/`account.js` for `demo_clause_viewed` and
+related terms, and `git log --all -- "*demo*"` -- both came back
+empty. Genuinely new, confirmed before building.
+
+Added `renderDemoClauseWidget()` to `app.js`, called from `init()`
+alongside the existing `renderWedgeCallout()`. Picked
+`llc_liability_shield` (`llc_operating_agreement_single_member`'s
+own liability-shield clause) as the demo clause: short, immediately
+legible to a non-expert, and already `adversarially_checked` -- this
+corpus's strongest level, so the demo shows the real ceiling. Renders
+the clause body (through the existing `substitute()` helper with
+illustrative sample values, not a real company), its real sourcing
+badge via `renderBadge()` -- **the exact same component the interview
+flow uses, not a second implementation** -- the verify-page promise
+sentence linking to the clause's real `verifyPageUrl()` (Step 11,
+confirmed working again after the D1.1 near-miss above), and a button
+that starts the real interview flow for that document.
+
+**Adapted, not copied, one piece of v2's exact wording:** v2's D1 spec
+text says the promise sentence should read "Every export carries a QR
+code that shows every clause, its source, and its check date." That's
+not true yet -- the real export functions
+(`buildPlainText`/`buildPdfDocDefinition`/`buildDocxDocument`) already
+link to the verify page as plain text, but no QR code image exists in
+any export (that's A7/A10's fuller pipeline, Phase 2). Writing the
+exact v2 sentence would have been a false claim on a page whose whole
+point is sourced, checkable claims. Used "Every document you build
+carries this same link: its own verification record" instead --
+accurate to what's actually shipped today.
+
+**New analytics events**, each guarded by a new `safeTrackEvent()`
+wrapper rather than calling `trackEvent()` (defined in `account.js`,
+a later, non-deferred `<script>` tag) directly: `demo_clause_viewed`
+fires inside `init()`'s own render path, before account.js is
+guaranteed to have parsed, unlike every existing `trackEvent()` call
+in this codebase, which only ever fires from a click handler (long
+after both scripts have loaded) -- a real, if narrow, correctness gap
+the existing pattern didn't need to guard against. `demo_source_panel_expanded`
+fires on the badge `<details>` element's native `toggle` event;
+`demo_to_interview_started` fires on the "Build ⟨document⟩" button.
+
+**Tested the golden path directly**, since `node tools/regression.js`
+still can't run in this sandbox (permission-blocked local server, same
+limitation as the A5 buckets 2-3 entry): launched the real pre-installed
+Chromium via Playwright against `index.html` over `file://` with
+`--allow-file-access-from-files` (works for a static-asset app with no
+server-side logic; not a workaround for the blocked action, a
+different, unblocked way to open a browser) and drove it directly --
+confirmed the widget renders the real clause text, confirmed clicking
+the badge summary expands it to show the real statutory quote and the
+real `leginfo.legislature.ca.gov` link, confirmed the verify-page link
+points to a real path, and confirmed clicking the CTA button correctly
+navigates to `screen-wizard` with the right document loaded. Zero
+console errors beyond the two already-documented sandbox-proxy ones
+(Google Fonts, Supabase CDN). Screenshot taken and reviewed by eye for
+visual consistency with the rest of the page.
+
+Added matching CSS (`.demo-clause-widget` and children), deliberately
+plainer than `.wedge-callout`'s accent styling right below it -- this
+is the proof, not the pitch, so it shouldn't visually compete with the
+callout that follows it.
+
+**D1 is now fully done** (D1.1 confirmed already built, D1.2 built
+and tested this entry, D1.3 headlines drafted, D3's two buildable
+events folded into D1.2). What's left of Phase 1: D2 (SEO Wave 1),
+gated on fresh page-count numbers and owner approval of the Wave 1
+list.
+
+**Verification:** `python3 tools/validate_corpus.py` (passed),
+`python3 lint/copy_lint.py` (OK), `node -c app.js` (valid syntax),
+`python3 tools/merge_guard.py origin/claude/new-session-palh5c`
+(clean, additions only), plus the live Playwright golden-path run
+described above.
