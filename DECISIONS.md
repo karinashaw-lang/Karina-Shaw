@@ -5802,3 +5802,76 @@ accepted, 0 rejected, 79 fixed -- up from 150/106/0/64, exactly
 origin/claude/new-session-palh5c` (flags the 17 intentional clause
 edits for review, as designed -- not a revert, every one independently
 documented above and in `changelog.html`).
+
+## 2026-11-19 — A5 bucket 1: 207 of 231 mirror citations re-sourced to primary-official
+
+Split the launch set's 123 mirror-sourced authority clauses (38
+documents) into 5 batches by document and delegated research to 5
+parallel background agents (read-only: find the real primary-official
+or agency source for each mirror citation, confirm the stored quote
+verbatim, report structured JSON -- no agent touched
+`data/clauses.json` or git). Independently spot-checked 3 of their
+results myself before trusting the rest (17 U.S.C. § 203(a)(3), 17
+C.F.R. § 230.501's accredited-investor definition via the eCFR
+renderer API, and 17 U.S.C. § 101's work-made-for-hire definition via
+a direct `govinfo.gov` PDF fetch) -- all three matched exactly.
+
+**Result: 231 mirror citations checked, 215 resolved (verbatim match
+against a real primary-official or agency source), 16 blocked
+(leginfo Cloudflare block, same known limitation as elsewhere in this
+project), 0 quote mismatches, 0 "no primary source exists."** Applied
+all 215 resolved citations' new `url`/`sourceClass` (and `case` where
+the agent corrected a stale mirror-publisher annotation) directly to
+`data/clauses.json` -- 207 applied, 8 skipped as harmless duplicates
+(the same underlying clause shared across two documents' `clauseOrder`
+got queued twice in the original batch split, and the second
+application correctly no-opped once the first had already upgraded
+it).
+
+**Method the agents used, worth recording since it solves a
+limitation this project hit repeatedly before:** federal U.S. Code
+citations were re-sourced via `govinfo.gov`'s stable link service
+(`https://www.govinfo.gov/link/uscode/{title}/{section}`), fetched
+with `curl` and read with `pdftotext` -- reachable even though
+`uscode.house.gov`'s own bare `edition=prelim` links are the
+confirmed-dead pattern `review/CITATION_RECHECK_REPORT.md` already
+found. Federal CFR citations were re-sourced via eCFR's own
+JSON/XML/renderer API endpoints
+(`www.ecfr.gov/api/renderer/v1/content/enhanced/...` and
+`/api/versioner/v1/full/...`) rather than the plain `ecfr.gov` HTML
+pages, which redirect to the same `unblock.federalregister.gov`
+bot-challenge this sandbox's proxy refuses -- the API endpoints
+aren't behind that redirect. This is a real, reusable finding for any
+future federal-citation work in this corpus, not just this task.
+
+**Launch-set authority-clause levels after buckets 1-3 combined**
+(684 total): **575 adversarially_checked (84%), 102 verified (15%),
+only 7 still at cited (1%)** -- up from 460/460/99/125 before this
+task started. The upgrade also helped many non-launch-set documents
+sharing these same clause ids (`tools/tiering.py`: Tier A 16 -> 29
+corpus-wide), since `data/clauses.json` stores one clause object per
+id, reused across every document that cites it.
+
+**The 7 remaining `cited`-level clauses are all in `small_claims_info_sheet`**,
+citing Code of Civ. Proc. §§ 116.220, 116.221, 116.231, 116.360,
+116.530, 116.610, 116.710, 116.260 -- every one of these specific CCP
+sections was attempted against `leginfo.legislature.ca.gov` by at
+least one batch agent (2 attempts each, `curl` and `WebFetch`) and
+blocked every time. This is the same disclosed, sandbox-wide leginfo
+limitation already tracked in `OWNER_TODO.md` items 1 and 12 -- not a
+new item, since the fix (owner network access, or a higher-tier path
+to leginfo) is already requested there.
+
+**Verification:** `python3 tools/validate_corpus.py` (passed),
+`python3 verifier/triage.py --summary` (320, unchanged -- this bucket
+only changed citation sourcing, not findings), `python3 tools/tiering.py`
+(Tier A 16 -> 29), `python3 tools/merge_guard.py origin/claude/new-session-palh5c`
+(flags 207 modified clauses for review, as designed -- every one a
+mechanical sourceClass/url upgrade with a verbatim-confirmed quote,
+not a revert).
+
+A5 (all 4 buckets) is now complete. Final launch-set state:
+575/684 authority clauses adversarially checked, 102 verified, 7
+cited (blocked on leginfo, disclosed). Bucket 4 (332 drafting-clause
+checks) is the only piece of the original A5 estimate not yet run --
+next.
