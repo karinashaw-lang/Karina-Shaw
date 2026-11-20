@@ -6638,3 +6638,94 @@ pass -- `merge_guard` correctly reports zero new clause changes today,
 since every golden-fixture difference traces to `data/clauses.json`
 edits already pushed in earlier commits, not anything changed in this
 entry.
+
+## 2026-11-20 — The simple build: a real static-site deploy path, scoped deliberately narrow
+
+**Task:** the owner asked for "a simple build," clarified via
+`AskUserQuestion` as a minimal deployable version of Groundtruth --
+the smallest real, working slice that could actually go live today,
+deferring everything still unfinished or unverified (`release-document`'s
+real-world test, pricing, the webhook event-list question, the RLS
+re-test, the 128 research files).
+
+**What makes this genuinely simple, not a smaller version of a bigger
+plan:** this app has never had a build step (plain scripts, no
+bundler -- `package.json`'s own description says so), and its free
+tier already works with zero backend configured, today, in this very
+sandbox -- browsing, search, the interview, live preview, source
+panels, verify pages, and the contract reader all need no account
+(Global Rule 2). So "the simple build" is not new product work; it's
+just *assembling and shipping exactly that*, nothing more, with no
+`config.js` included on purpose -- the deployed site runs in the same
+"cloud accounts aren't turned on for this deployment yet" mode
+account.js already shows here. This is why it could be built and
+verified completely in one pass rather than staged across owner
+approvals the way the paid flow has had to be: there is no new
+capability being turned on, only an existing, already-free one being
+made reachable outside this sandbox for the first time.
+
+**`tools/build_site.py`** (new): copies exactly what app.js's own
+`fetch()` calls and every page's `<script src>`/`<link href>` actually
+reference (enumerated by grep, not guessed) into `build/site/` --
+the app pages, `app.js`/`account.js`/`sign.js`/`trust.js`/`contract_matcher.js`/
+`contract_worker.js`/`styles.css`, `lib/`, and the `data/schema/search/
+filing/config` directories -- then regenerates `build/verify/`'s pages
+straight into `build/site/verify/` so `verifyPageUrl(doc)`'s relative
+links resolve correctly wherever the directory ends up served from.
+Two things deliberately left out, not missed: `config.js`/
+`config.example.js` (shipping either would mean either a real secret,
+never, or a non-functional placeholder masquerading as a real config,
+worse than the honest "not configured" state with neither file
+present) and `config/pricing.json` (real pricing-strategy content
+nothing in the free tier's own code reads, not something to publish
+by accident). Verified by actually running the build and loading its
+output in a real browser context (Playwright, `file://`, the same
+workaround used throughout this session): 741 documents loaded, a
+real document's own `verifyPageUrl()` call produced a link that
+`fetch()`'d a real 200 from the build's own `verify/` directory --
+proving the generated output is actually self-consistent, not just
+that files landed on disk.
+
+**`.github/workflows/deploy-pages.yml`** (new): builds via
+`tools/build_site.py` and publishes to GitHub Pages using this repo's
+own built-in `GITHUB_TOKEN` -- no new secret, no domain purchase, no
+owner credential of any kind, which is what makes this fundamentally
+different from `SEO_LAUNCH_PLAN.md`'s and `OWNER_TODO.md` item 10's
+still-open "real domain and hosting decision": that's a bigger,
+separate, deliberately-deferred choice about the SEO wave pages and a
+production domain; this is the smallest possible "put the existing
+free product somewhere a stranger can actually open it" step, on a
+`*.github.io` URL. Gated the same way the existing Supabase
+`deploy-staging` job already is -- only on a push to the repo's real
+default branch, not every commit on this feature branch -- so merging
+this branch to `main` remains the owner's own decision and action,
+never something this session did itself (Global Rule 8). The one
+remaining manual step (`OWNER_TODO.md` item 15) is a single repo
+Settings toggle (Pages source: GitHub Actions) that only a repo admin
+can flip, not anything a workflow file can do for itself.
+
+**Also fixed in passing:** `tools/build_release_bundle.py --check`
+(written when `release-document` was built, but never actually wired
+into CI -- a real gap, caught while adding this build's own CI
+validation step alongside it) and `python3 tools/build_site.py` itself
+are now both steps in `validate-corpus`'s job, so a future break in
+either is caught on every push, not just discovered by chance the way
+the 56 stale golden fixtures were.
+
+**Verification:** `python3 tools/build_site.py` ran clean locally
+(781 files, including 741 regenerated verify pages); the Playwright
+smoke check above confirmed the output is actually loadable and self-
+consistent, not just non-empty. `python3 tools/build_release_bundle.py
+--check` passes. Both new/changed workflow YAML files parse
+(`python3 -c "import yaml; yaml.safe_load(...)"`). The full standing
+gate suite (`validate_corpus.py`, `tiering.py --check`,
+`build_citation_index.py --check`, `generate_data_inventory.py --check`,
+`copy_lint.py`, `merge_guard.py origin/claude/new-session-palh5c`) all
+pass. The GitHub Actions deploy itself is not verified end-to-end from
+this sandbox -- it cannot run until the branch is merged and the Pages
+setting is flipped, both owner actions; `actions/upload-pages-artifact@v3`
+and `actions/deploy-pages@v4` are well-established, current actions,
+not guessed-at syntax, but their actual execution is the owner's first
+real confirmation, the same disclosed-limitation pattern as every
+other piece of this project that needs a merge or a secret this
+sandbox doesn't have.

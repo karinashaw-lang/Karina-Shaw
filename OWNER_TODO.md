@@ -350,3 +350,32 @@ block. If you can check leginfo directly (or know whether either bill
 passed), let a future session know so this clause's day-counts can be
 confirmed or updated — accepted as an open, disclosed risk rather than
 guessed at either way.
+
+## 15. One click to actually turn on the simple build (`.github/workflows/deploy-pages.yml`)
+
+This is a different, smaller thing than item 10's SEO/domain/hosting
+decision — it publishes just the free, no-backend tier of the main
+app (browsing, search, interview, live preview, source panels, verify
+pages, the contract reader) to a `*.github.io` URL, no domain purchase
+and no new credentials needed, via `tools/build_site.py`. It stays
+completely dormant — the workflow exists but never fires — until two
+things happen, both already true of normal project workflow except
+the very last step:
+
+1. This branch gets merged to `main` (the workflow only runs on a push
+   to the repo's actual default branch, same gate as the existing
+   Supabase `deploy-staging` job).
+2. In this repo's own GitHub Settings -> Pages, set **Source: GitHub
+   Actions** (currently unset, since no deploy workflow existed to
+   point at before this). This is the one step only you can do -- a
+   repo-admin setting, not something a workflow file can turn on for
+   itself. Until it's set, the workflow's build step still succeeds,
+   but the final deploy step fails with a clear, named error pointing
+   at this exact setting.
+
+No Stripe, no Supabase, no pricing decision, and no `config.js` are
+needed for this -- the deployed site runs in the same "cloud accounts
+aren't turned on for this deployment yet" mode as every environment
+this session has tested in. A custom domain can be layered on top
+later (a `CNAME` file plus a DNS record) without touching this
+workflow.

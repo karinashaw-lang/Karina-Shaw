@@ -1,0 +1,59 @@
+name: Deploy static site (GitHub Pages)
+
+# The simple build: publishes the free, no-backend tier of the app
+# (tools/build_site.py's own output) to GitHub Pages. Needs no secrets
+# and no domain decision -- it uses this repo's own built-in GITHUB_TOKEN
+# and a *.github.io URL, unlike the real domain/hosting decision
+# SEO_LAUNCH_PLAN.md and OWNER_TODO.md item 10 still flag as open. A
+# custom domain can be layered on top of this later (a CNAME file plus
+# DNS) without changing anything here.
+#
+# Same gate as the deploy-staging job elsewhere in this project: only
+# on a push to the repo's actual default branch (a merge, not every
+# feature-branch commit), plus workflow_dispatch for an on-demand
+# manual run. Until this branch is merged to main, this workflow exists
+# but never fires -- deploying is still the owner's own decision, made
+# by merging, not something this file does on its own.
+#
+# One remaining manual step this file can't do itself: GitHub Pages
+# must be switched to "Source: GitHub Actions" once, in this repo's
+# own Settings -> Pages. Until that's done, the deploy job's upload
+# succeeds but the final "deploy" step will fail with a clear error
+# naming that setting -- not a bug in this workflow.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python3 tools/build_site.py
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: build/site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
