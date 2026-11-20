@@ -6255,3 +6255,49 @@ checkout from the sandbox — this project's edge functions have never
 been invokable from here (see earlier entries), so, as with every
 other edge function in this repo, that verification is the owner's
 to do once deployed.
+
+## 2026-11-20 — No-guest-checkout, recorded as a decision rather than left implicit
+
+**Context:** `MVP_BUILD_INSTRUCTIONS.md` item 2.1 asks to "record the
+no-guest-checkout decision in DECISIONS.md." A background audit
+(`MVP_INSTRUCTIONS_STATUS.md`) found the decision had only ever been
+made *in effect*, by how the code is written — `account.js`'s
+`isEntitledFor()`/`refreshEntitlement()` and every entitlement-gated
+write already require `accountState.session` (a signed-in Supabase
+user) before checking entitlement at all, and
+`create-checkout-session`'s edge function requires the caller's own
+JWT to resolve `user_id` for the Checkout Session's metadata — there
+is no path through the current code that lets someone buy a document
+without an account. But nothing had actually written down *that this
+is deliberate*, as opposed to an accident of how the feature happened
+to get built.
+
+**Decision:** guest checkout is out of scope for launch, confirmed
+deliberate, for reasons already implicit in how the rest of this
+product works, made explicit here:
+- Every paid benefit (cloud save, export history, sharing, e-signature,
+  re-export within the purchase window) is inherently tied to a
+  returning user re-opening the same document later, on possibly a
+  different device — `account.js`'s whole cloud-sync model assumes a
+  stable `user_id` to key rows on. A guest purchase would need its own
+  separate "redeem by email/receipt" recovery path with no login at
+  all, which is real, unbuilt infrastructure, not a toggle.
+  `exports_allowed`/`ends_at` already gate re-export by row ownership
+  (`entitlements.user_id`), which has no meaning for a buyer who never
+  had an account.
+- The `admin-refund` and dispute-handling paths
+  (`stripe-webhook`'s `charge.refunded`/`charge.dispute.created`
+  handlers) correlate back to an `entitlements` row by
+  `stripe_payment_intent_id` today; that still works without an
+  account, but *acting* on the result (revoking access to something)
+  only means something if there's an account whose access to revoke.
+- This is the conservative option per Global Rule 15 — requiring an
+  account is reversible (guest checkout can be added later as new,
+  additive work) while shipping guest checkout first and retrofitting
+  account-linking onto real purchases later is not.
+
+**Not decided here, still open:** whether a future guest-checkout
+flow should exist post-launch is unaddressed — `MVP_BUILD_INSTRUCTIONS.md`'s
+own "Do Not Build" list already excludes it from this MVP, so this
+entry isn't proposing new scope, only documenting the choice the code
+already makes.

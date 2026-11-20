@@ -1,12 +1,20 @@
 # Build status
 
-Last updated: 2026-11-16, against branch `claude/new-session-palh5c`
-(CA Wedge Plan Steps 1-23 complete; Step 24, this refresh plus
-`LAUNCH_READINESS.md`, in progress; Step 25 optional). This reflects
-the actual state of the repository right now — every number below was
-measured by running the project's own tools today, not recalled or
-estimated from an earlier phase, and is reproducible by running the
-same command.
+Last updated: 2026-11-20, against branch `claude/new-session-palh5c`
+(CA Wedge Plan Steps 1-25 complete; the A0-A5/B0-B1 full-corpus
+completion tasks, the per-document entitlements/Stripe rebuild, and
+the `MVP_BUILD_INSTRUCTIONS.md` audit all complete or in progress on
+top of that — see `DECISIONS.md` and `MVP_INSTRUCTIONS_STATUS.md`).
+This reflects the actual state of the repository right now — every
+number below was measured by running the project's own tools today,
+not recalled or estimated from an earlier phase, and is reproducible
+by running the same command. The Tier A and open-findings numbers in
+this section were specifically corrected today (2026-11-20) after
+`MVP_INSTRUCTIONS_STATUS.md`'s re-baseline pass caught them stale
+against the 2026-11-16 version of this file; everything else below
+this point in the file has not been independently re-checked in this
+pass and may still reflect that date — treat any claim not updated
+above as needing its own re-verification before being relied on.
 
 **Why this file needed a full rewrite, not an incremental edit:** the
 previous version (dated 2026-11-03) predated the entire CA Wedge Plan
@@ -102,29 +110,42 @@ not forgotten: Step 7's guarantee copy (item 8 above) and Step 22's
 
 ### 1. Trust
 
-- **Tier A or B:** 329 of 741 documents (44.4%) — 15 at Tier A, 314 at
-  Tier B. `python3 tools/tiering.py` to reproduce. Tier A requires a
-  real per-document adversarial-verifier signal (every authority
-  clause checked, no open finding of any severity) and a real
-  per-document accessibility signal (0 serious/critical axe-core
-  violations, both themes) on top of everything Tier B requires.
-  All 7 of the wedge-cluster documents are now Tier A or B — 5 of
-  them were Tier C as recently as Step 19 and were promoted during
-  Step 22 through genuine fixes (missing `whyWeAsk` text on 3
-  documents; real primary-source re-verification against eCFR.gov and
-  govinfo.gov for 2 documents' mirror-sourced citations), not a
-  loosening of the Tier A/B bar.
+- **Tier A or B:** 351 of 741 documents (47.4%) — **29** at Tier A, 322
+  at Tier B (9 drafting-only, correctly never Tier A).
+  `python3 tools/tiering.py` to reproduce (regenerated 2026-11-20).
+  Tier A requires a real per-document adversarial-verifier signal
+  (every authority clause checked, no open finding of any severity)
+  and a real per-document accessibility signal (0 serious/critical
+  axe-core violations, both themes) on top of everything Tier B
+  requires. **This is a correction, not a new measurement:** the
+  prior version of this file (dated 2026-11-16) still said "15 at
+  Tier A" — stale since the A5 bucket-verification work completed
+  2026-11-18/19 (re-sourcing 207 mirror citations to primary/agency
+  sources, fixing 15+9 real content findings, verifying the corpus's
+  last 2 fully-unverified clauses), which is exactly the kind of
+  mismatch `MVP_BASELINE.md`/`MVP_INSTRUCTIONS_STATUS.md`'s 2026-11-20
+  re-baseline pass exists to catch. All 7 of the wedge-cluster
+  documents are Tier A or B, unchanged by this correction.
 - **Verified clauses within staleness thresholds:** confirmed again
   today via `python3 tools/validate_corpus.py` — 0 clauses newly flagged
   fatal or warn by the per-category staleness thresholds.
-- **Open verifier findings by severity:** 0 blocker, 0 major, 148
-  minor open (318 total findings; 64 fixed, 106 accepted as real but
+- **Open verifier findings by severity:** 0 blocker, **2 major**, 126
+  minor open (329 total findings; 88 fixed, 113 accepted as real but
   not auto-edited, 0 rejected). `python3 verifier/triage.py --summary`
-  to reproduce. The verifier checkpoint has not yet reached every
-  authority clause in the corpus — this is why the large majority of
-  Tier B documents (306 of 314) are blocked from Tier A by the same
-  single reason, "not every authority clause is adversarially
-  checked," not by any structural blocker.
+  to reproduce. **Both open majors are outside the approved 128-
+  document launch set** (`compsoftexempt_current_rate` and
+  `licprofexempt_physician_current_published_rate`, on two standalone
+  employment-exemption info sheets not in `LAUNCH_SET_PROPOSAL.md`) —
+  stale California DIR-published pay-rate thresholds (2025/2026
+  figures that DIR has since adjusted), a real, legitimate, non-
+  launch-blocking gap logged for a future corpus-wide pass, not
+  silently dropped from this count the way the prior version of this
+  file's "0 major" line had been. Within the launch set itself, A3/A5
+  confirmed 0 open blocker or major — unchanged. The verifier
+  checkpoint has not yet reached every authority clause in the full
+  741-document corpus — this is why most Tier B documents outside the
+  launch set are still blocked from Tier A by "not every authority
+  clause is adversarially checked," not by any structural blocker.
 - **A real, pre-existing accessibility bug fixed today while verifying
   Step 23:** `tier-A` pill text failed WCAG color contrast in both
   themes (a hardcoded hex color never made theme-aware, unlike the
