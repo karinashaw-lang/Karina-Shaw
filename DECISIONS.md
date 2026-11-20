@@ -6491,3 +6491,67 @@ the same pre-existing/expected findings as before (`_scratch_probe`/
 `rate_limits` RLS-no-policy, `has_active_entitlement`'s already-
 accepted `SECURITY DEFINER` WARN, leaked-password-protection in
 `OWNER_TODO.md` item 12) -- nothing new.
+
+## 2026-11-20 — Found and fixed: CI's entire "Browser regression" job had been silently failing
+
+**How this was found:** checking the previous entry's own commit
+(`f0b84f3`) against GitHub's real CI status, not just the local gate
+suite, since the CI-red investigation two entries back had already
+established that local gates passing doesn't mean CI is actually
+green. The "Branch and commit discipline" failure was expected
+(deliberate, see that entry); the "Browser regression" job showing
+`failure` too was not expected, since every local gate had passed.
+
+**Root cause, from the job's own log:** `npx playwright install
+--with-deps chromium` failed with `ERROR: Playwright does not support
+chromium on ubuntu26.04-x64`. GitHub's `ubuntu-latest` runner label
+now resolves to Ubuntu 26.04; this project's pinned Playwright
+(1.56.1, `package.json`) doesn't yet support installing browser
+dependencies on that OS. Because this step has no `continue-on-error`,
+every later step in the same job -- `regression.js`, `golden.js`,
+`wizard_unit.js`, `pdf_golden.js`, `docx_golden.js`, `axe_check.js`,
+`sign_page.js`, `versioning.js`, `consistency.js`, `filing/next_steps.js`,
+`error_reporting.js`, `golden_search.js`, `intake_coverage.js`,
+`related_coverage.js`, `performance_budget.js` -- was skipped, not
+run, meaning **every browser-based regression, golden-content, and
+accessibility check in this whole project has not actually executed
+in CI for however long this has been true** -- not caught sooner
+because the job's overall `failure` status looks, at a glance, like
+the kind of real-content failure these tests are supposed to catch,
+not an environment problem upstream of all of them ever starting. How
+far back this goes was not traced exhaustively (GitHub's own runner-
+image rollout timing, not this repo's history, decides that), but it
+is clearly unrelated to anything built this session -- the content
+these tests check was never the problem.
+
+**Fix:** pinned the `regression` job's `runs-on` to `ubuntu-24.04`
+(a real, currently-supported GitHub-hosted runner label) instead of
+`ubuntu-latest`, leaving every other job on `ubuntu-latest` since none
+of them install Playwright browsers. Chosen over bumping the pinned
+Playwright version because a newer Playwright would itself be an
+untested change -- this sandbox has no way to confirm a newer version
+actually works against this project's own test files without the
+same broken CI being the only way to find out. Pinning the OS is the
+smaller, safer, more reversible fix, and it respects (rather than
+overrides) `package.json`'s own existing reasoning for pinning
+Playwright at all -- "so CI installs the same version a local run
+would."
+
+**Not verified by actually re-running CI successfully from this
+session** -- this sandbox cannot trigger a GitHub Actions run outside
+of pushing a commit, and confirming the fix actually works end to end
+(not just that the YAML parses) is the next push's job, not something
+asserted here as already proven. `OWNER_TODO.md` does not need a new
+item for this -- unlike the Stripe/admin-secret items, there is
+nothing here that requires the owner's own credentials or judgment;
+it either works on the next push or it doesn't, and if it doesn't,
+that will show up the same way this problem did.
+
+**Verification:** `python3 -c "import yaml; yaml.safe_load(...)"`
+confirms valid YAML. `python3 tools/validate_corpus.py`,
+`python3 lint/copy_lint.py`, and
+`python3 tools/merge_guard.py origin/claude/new-session-palh5c` all
+pass (this change touches no corpus data, so none of these are
+expected to catch anything about it specifically -- they're run
+because they're the standing gate, not because they're relevant to a
+YAML change).

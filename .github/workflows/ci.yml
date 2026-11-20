@@ -122,7 +122,19 @@ jobs:
 
   regression:
     name: Browser regression
-    runs-on: ubuntu-latest
+    # Pinned, not ubuntu-latest, deliberately: GitHub moved ubuntu-latest
+    # to 26.04 and this repo's pinned Playwright (1.56.1, package.json --
+    # pinned on purpose, see package.json's own comment, so CI installs
+    # the same version a local run would) doesn't support installing
+    # browser deps on that OS yet ("ERROR: Playwright does not support
+    # chromium on ubuntu26.04-x64"), which was silently failing this
+    # entire job -- and every regression/golden/accessibility test in
+    # it -- found 2026-11-20 while auditing CI health for an unrelated
+    # reason (DECISIONS.md). ubuntu-24.04 is a real, still-supported
+    # GitHub-hosted runner label, not a guess -- bumping Playwright
+    # instead was the other option but risks a version this project
+    # hasn't tested against; pinning the OS is the smaller, safer fix.
+    runs-on: ubuntu-24.04
     needs: validate-corpus
     steps:
       - uses: actions/checkout@v4
