@@ -15,8 +15,14 @@
 // Needs a local static server, same as regression.js/golden.js:
 //   python3 -m http.server 8933 &
 //   node tests/wizard/wizard_unit.js
+//
+// GOLDEN_BASE_URL=file:///path/to/repo also works (same convention as
+// tests/golden/golden.js) for a sandbox that blocks starting a local
+// server -- see DECISIONS.md.
 const fs = require('fs');
 const { chromium } = require('playwright');
+
+const BASE_URL = process.env.GOLDEN_BASE_URL || 'http://localhost:8933';
 
 const checks = [];
 function check(name, cond, detail) {
@@ -25,11 +31,14 @@ function check(name, cond, detail) {
 
 (async () => {
   const SANDBOX_CHROMIUM = '/opt/pw-browsers/chromium';
-  const launchOpts = fs.existsSync(SANDBOX_CHROMIUM) ? { executablePath: SANDBOX_CHROMIUM } : {};
+  const launchOpts = {
+    ...(fs.existsSync(SANDBOX_CHROMIUM) ? { executablePath: SANDBOX_CHROMIUM } : {}),
+    args: ['--allow-file-access-from-files'],
+  };
   const browser = await chromium.launch(launchOpts);
   const page = await browser.newPage();
   await page.route('https://fonts.googleapis.com/**', r => r.abort());
-  await page.goto('http://localhost:8933/index.html', { waitUntil: 'networkidle' });
+  await page.goto(`${BASE_URL}/index.html`, { waitUntil: 'networkidle' });
   await page.waitForFunction(() => typeof state !== 'undefined' && state.documents && state.clauses && state.sharedFields);
 
   // ---- showIf: hides a field, skips an all-hidden step, blocks on a

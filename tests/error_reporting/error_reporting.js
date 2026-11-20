@@ -9,8 +9,17 @@
 //
 //   python3 -m http.server 8933 &
 //   node tests/error_reporting/error_reporting.js
+//
+// GOLDEN_BASE_URL=file:///path/to/repo also works (same convention as
+// tests/golden/golden.js) for a sandbox that blocks starting a local
+// server -- see DECISIONS.md. The hardcoded http://localhost:8933/app.js
+// strings further down are synthetic stack-trace fixture data, not a
+// real navigation target -- parseStackFrames() only extracts the
+// "app.js" basename from them, so they're left as-is regardless of
+// BASE_URL.
 const fs = require('fs');
 const { chromium } = require('playwright');
+const BASE_URL = process.env.GOLDEN_BASE_URL || 'http://localhost:8933';
 
 const checks = [];
 function check(name, cond, detail) {
@@ -41,13 +50,16 @@ window.supabase = {
 
 (async () => {
   const SANDBOX_CHROMIUM = '/opt/pw-browsers/chromium';
-  const launchOpts = fs.existsSync(SANDBOX_CHROMIUM) ? { executablePath: SANDBOX_CHROMIUM } : {};
+  const launchOpts = {
+    ...(fs.existsSync(SANDBOX_CHROMIUM) ? { executablePath: SANDBOX_CHROMIUM } : {}),
+    args: ['--allow-file-access-from-files'],
+  };
   const browser = await chromium.launch(launchOpts);
   const page = await browser.newPage();
   await page.route('https://fonts.googleapis.com/**', r => r.abort());
   await page.route('**/config.js', route => route.fulfill({ status: 200, contentType: 'application/javascript', body: FAKE_CONFIG }));
   await page.route('**/@supabase/supabase-js@2', route => route.fulfill({ status: 200, contentType: 'application/javascript', body: FAKE_SUPABASE_SDK }));
-  await page.goto('http://localhost:8933/index.html', { waitUntil: 'networkidle' });
+  await page.goto(`${BASE_URL}/index.html`, { waitUntil: 'networkidle' });
   await page.waitForFunction(() => typeof state !== 'undefined' && state.documents && state.clauses);
 
   // ---- scrubErrorText: always defined, testable directly ----

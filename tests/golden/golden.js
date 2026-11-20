@@ -111,7 +111,15 @@ function diffText(oldText, newText) {
 
 (async () => {
   const SANDBOX_CHROMIUM = '/opt/pw-browsers/chromium';
-  const launchOpts = fs.existsSync(SANDBOX_CHROMIUM) ? { executablePath: SANDBOX_CHROMIUM } : {};
+  // --allow-file-access-from-files is a no-op against the normal
+  // http://localhost BASE_URL this file documents at its own top, but
+  // it's what lets GOLDEN_BASE_URL be pointed at file:///... instead --
+  // this sandbox blocks starting a local http.server (DECISIONS.md),
+  // so that's the only way this file could be run here at all.
+  const launchOpts = {
+    ...(fs.existsSync(SANDBOX_CHROMIUM) ? { executablePath: SANDBOX_CHROMIUM } : {}),
+    args: ['--allow-file-access-from-files'],
+  };
   const browser = await chromium.launch(launchOpts);
   const page = await browser.newPage();
   await page.route('https://fonts.googleapis.com/**', r => r.abort());

@@ -29,7 +29,10 @@ function check(name, cond, detail) {
 
 (async () => {
   const SANDBOX_CHROMIUM = '/opt/pw-browsers/chromium';
-  const launchOpts = fs.existsSync(SANDBOX_CHROMIUM) ? { executablePath: SANDBOX_CHROMIUM } : {};
+  const launchOpts = {
+    ...(fs.existsSync(SANDBOX_CHROMIUM) ? { executablePath: SANDBOX_CHROMIUM } : {}),
+    args: ['--allow-file-access-from-files'],
+  };
   const browser = await chromium.launch(launchOpts);
   const page = await browser.newPage();
   await page.route('https://fonts.googleapis.com/**', r => r.abort());

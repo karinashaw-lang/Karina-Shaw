@@ -21,8 +21,13 @@
 //
 //   python3 -m http.server 8933 &
 //   node tests/accessibility/axe_check.js
+//
+// GOLDEN_BASE_URL=file:///path/to/repo also works (same convention as
+// tests/golden/golden.js) for a sandbox that blocks starting a local
+// server -- see DECISIONS.md.
 const fs = require('fs');
 const path = require('path');
+const BASE_URL = process.env.GOLDEN_BASE_URL || 'http://localhost:8933';
 const { chromium } = require('playwright');
 
 const AXE_SOURCE = fs.readFileSync(require.resolve('axe-core'), 'utf-8');
@@ -62,11 +67,14 @@ async function forEachTheme(page, fn) {
 
 (async () => {
   const SANDBOX_CHROMIUM = '/opt/pw-browsers/chromium';
-  const launchOpts = fs.existsSync(SANDBOX_CHROMIUM) ? { executablePath: SANDBOX_CHROMIUM } : {};
+  const launchOpts = {
+    ...(fs.existsSync(SANDBOX_CHROMIUM) ? { executablePath: SANDBOX_CHROMIUM } : {}),
+    args: ['--allow-file-access-from-files'],
+  };
   const browser = await chromium.launch(launchOpts);
   const page = await browser.newPage();
   await page.route('https://fonts.googleapis.com/**', r => r.abort());
-  await page.goto('http://localhost:8933/index.html', { waitUntil: 'networkidle' });
+  await page.goto(`${BASE_URL}/index.html`, { waitUntil: 'networkidle' });
   await page.waitForFunction(() => typeof state !== 'undefined' && state.documents && state.clauses && state.sharedFields);
 
   // ---- every screen, under both themes ----
@@ -134,7 +142,7 @@ async function forEachTheme(page, fn) {
   // CA Wedge Plan Step 18's trust.html (not a legal-notice page, but
   // the same "loads standalone, worth its own axe pass" reasoning) ----
   for (const file of ['privacy.html', 'terms.html', 'storage-notice.html', 'trust.html']) {
-    await page.goto(`http://localhost:8933/${file}`, { waitUntil: 'networkidle' });
+    await page.goto(`${BASE_URL}/${file}`, { waitUntil: 'networkidle' });
     await forEachTheme(page, async theme => { await scan(page, `${file} (${theme})`); });
   }
 

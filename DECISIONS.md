@@ -6555,3 +6555,86 @@ pass (this change touches no corpus data, so none of these are
 expected to catch anything about it specifically -- they're run
 because they're the standing gate, not because they're relevant to a
 YAML change).
+
+## 2026-11-20 — The ubuntu-24.04 fix let real content drift surface: 56 stale golden fixtures, now regenerated
+
+**What happened next:** pushing the `ubuntu-24.04` fix let the
+`regression` job actually get past the Playwright install for the
+first time (confirmed: `regression.js` passed). But the very next
+step, `golden.js`, then failed for real -- 685/741 documents matched
+their stored fixture, 56 didn't. Every later step in the job (wizard,
+PDF/DOCX golden, accessibility, etc.) was skipped again, now because
+of this new, real failure rather than the old environment one.
+
+**Why 56 fixtures were stale:** `tests/golden/golden.js` compares
+each document's live rendered output (plain text + structured JSON)
+against a stored fixture, specifically to catch unintended drift in
+clause wording or citations. It has never been able to run in CI
+(blocked by the ubuntu26.04 issue, probably for a while before that
+was even found) or easily in this sandbox (needs a local server this
+sandbox also blocks -- see earlier entries). Meanwhile real,
+legitimate, already-approved corpus work kept happening throughout
+this session and earlier: A5 bucket 1's 207 mirror-citation
+re-sourcings (Cornell LII -> govinfo.gov/eCFR/uscode.house.gov),
+verification-level promotions (unverified -> verified,
+cited/verified -> adversarially_checked), and real content
+refinements from the ongoing verifier/citation-recheck work. None of
+that was ever caught as "the golden fixtures need updating too"
+because the one tool that would say so couldn't run.
+
+**How this was verified, not just regenerated on faith:** this
+sandbox's http.server block meant `golden.js --update` couldn't be
+run the documented way either, so `tests/golden/golden.js`'s
+`chromium.launch()` call (and seven other `GOLDEN_BASE_URL`-aware
+test files: `pdf_golden.js`, `docx_golden.js`, `golden_search.js`,
+`tests/filing/next_steps.js`, `tests/library/versioning.js`,
+`tests/library/consistency.js`, `tests/search/related_coverage.js`,
+`tests/search/intake_coverage.js`, `tests/performance/performance_budget.js`
+-- plus `wizard_unit.js`, `axe_check.js`, and `error_reporting.js`,
+which hardcoded `http://localhost:8933` directly and needed the same
+`GOLDEN_BASE_URL` escape hatch added) got a harmless
+`--allow-file-access-from-files` launch arg, letting
+`GOLDEN_BASE_URL=file:///home/user/Karina-Shaw` stand in for a real
+server. Before regenerating anything, the full `golden.js` diff
+output (all 56 documents, every line) was read in full, not sampled --
+every single difference falls into one of four categories: a citation
+URL moving from a mirror to a primary-official source, a verification-
+level promotion, one real level *demotion* (`licensed_professional_
+overtime_exemption_rules_info_sheet`, correctly reflecting the newly-
+open DIR-pay-rate finding this session's own earlier audit surfaced --
+`adversarially_checked` requires zero open findings, so this is the
+level computation working correctly, not a regression), and genuine,
+already-documented accuracy refinements (an added statutory exception,
+a corrected cross-reference, a disclosed research limitation) -- never
+a dropped citation, a changed dollar figure, or language that reads as
+less accurate than before. Only after reading every diff was
+`golden.js --update` run, and its own printed before/after diff was
+read again against the fixture files actually written.
+
+**Then every other previously-skipped browser test was run the same
+way, for real, not left unverified just because CI would eventually
+confirm it:** `pdf_golden.js`, `docx_golden.js`, `golden_search.js`,
+`wizard_unit.js` (22/22, including the includeIf checks that exercise
+the same logic `document_engine.mjs` now shares with the server),
+`axe_check.js` (0 serious/critical violations, every screen + 50
+sampled documents + 4 standalone legal pages, both themes),
+`tests/filing/next_steps.js`, `tests/library/versioning.js`,
+`tests/library/consistency.js`, `tests/search/related_coverage.js`,
+`tests/search/intake_coverage.js`, `tests/performance/performance_budget.js`,
+and `tests/error_reporting/error_reporting.js` all passed. Not run:
+`tests/share/sign_page.js` (several hardcoded URLs with query
+parameters, lower priority since nothing this session touched
+`sign.html`/`sign.js`) and `regression.js` (already confirmed passing
+directly in the CI run itself). This is the most thorough this
+project's own browser-based test suite has been exercised in one
+sitting in a long time, simply because it was finally possible to run
+most of it at all.
+
+**Verification:** every test listed above actually ran and passed,
+output read, not inferred. `python3 tools/validate_corpus.py`,
+`python3 lint/copy_lint.py`, and
+`python3 tools/merge_guard.py origin/claude/new-session-palh5c` also
+pass -- `merge_guard` correctly reports zero new clause changes today,
+since every golden-fixture difference traces to `data/clauses.json`
+edits already pushed in earlier commits, not anything changed in this
+entry.
