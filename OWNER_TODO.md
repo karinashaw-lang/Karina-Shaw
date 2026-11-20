@@ -223,6 +223,37 @@ for real:
   today, not from any page. Issuing a refund still also needs your
   Stripe dashboard access or this function's secret either way.
 
+## 8c. Deploy and test `release-document` before trusting it with a real sale (new, 2026-11-20)
+
+This is the function that actually renders and paywall-gates PDF/DOCX/
+text export server-side (`supabase/functions/release-document/`) —
+before it existed, every export was free and unpaywalled for everyone,
+client-side only (confirmed by `MVP_INSTRUCTIONS_STATUS.md`'s audit).
+It needs:
+- `supabase functions deploy release-document` (and the new
+  `documents` Storage bucket, already created live via migration —
+  nothing to do there).
+- A real test-mode purchase, then a real export of that same document,
+  before this goes anywhere near a real customer. This is the single
+  least-verified piece of code in this whole project: this sandbox has
+  no `deno` binary (every edge function here is checked with `tsc`
+  against hand-written type stubs, never actually run), and on top of
+  that, the two libraries that actually render the PDF and DOCX bytes
+  (`pdf-lib`, `docx`) couldn't even be installed locally to check
+  against their real types — an autonomous `npm install` was refused
+  by this session's own safety controls. Please actually open a
+  rendered PDF and DOCX before trusting this with a real sale, not
+  just confirm the request succeeds.
+- If the PDF or DOCX comes back malformed or pdf-lib/docx's real npm
+  API shape differs from what `supabase/functions/_shared/document_engine.mjs`'s
+  callers assume, that is the first place to look — the clause-
+  assembly logic itself (title, prepared-for line, clause bodies,
+  citations, conditional-clause notes) is proven byte-identical to the
+  live client by `tests/release_document/test_document_engine_parity.js`,
+  which did run and pass in this sandbox, so a problem is far more
+  likely to be in the PDF/DOCX layout code than in which content got
+  selected.
+
 ## 9. Run the Step 23 user test with real people
 
 `USER_TEST_PLAN.md` is a ready-to-run, 6-task script centered on the

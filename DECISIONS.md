@@ -6301,3 +6301,193 @@ flow should exist post-launch is unaddressed — `MVP_BUILD_INSTRUCTIONS.md`'s
 own "Do Not Build" list already excludes it from this MVP, so this
 entry isn't proposing new scope, only documenting the choice the code
 already makes.
+
+## 2026-11-20 — Built `release-document`: the first real server-side export paywall
+
+**Task:** `MVP_INSTRUCTIONS_STATUS.md`'s audit found the single most
+urgent gap in the whole project: no paywall gating existed anywhere on
+document export. Every PDF/DOCX/text export rendered entirely client-
+side, with zero reference to the entitlements system -- the product
+could not actually charge for anything, regardless of how complete the
+Stripe/entitlements stack built the day before was. This entry covers
+closing that gap for real, not cosmetically (Global Rule 11).
+
+**Why a shared engine file, not a second implementation:**
+`MVP_BUILD_INSTRUCTIONS.md` item 2.3 asks the server to render "from
+the same clause set as the client." Two independently-written
+implementations of clause assembly (one in app.js, one in the edge
+function) could drift apart the moment either one was edited without
+the other being noticed -- exactly the kind of duplicated-logic risk
+`tools/clause_levels.py`'s own docstring already warns against
+elsewhere in this project. Instead, `app.js`'s pure, DOM-free
+assembly functions (`assembleDocument`, `substitute`,
+`conditionMatches`, `clauseEntryId`, `clauseIncludeIf`,
+`preparedForLine`, `clauseLevel`, `clauseVerificationNoteText`,
+`hashString`) were extracted verbatim, parameter-driven instead of
+reading the global `state` object, into
+`supabase/functions/_shared/document_engine.mjs` -- a plain ES module
+with zero DOM/Node/Deno-specific code, importable unmodified by a
+Deno edge function. `app.js` itself was **not** touched beyond the
+export-button handlers (see below) -- its own copies of these
+functions stay exactly as they were, so there was zero risk to
+already-tested client behavior from this refactor.
+
+**Proving parity, not asserting it:**
+`tests/release_document/test_document_engine_parity.js` loads
+`index.html` via `file://` (this sandbox blocks starting a local
+`http.server` -- see earlier entries -- so this reuses the same
+`--allow-file-access-from-files` Playwright workaround this session's
+own D1.2 testing used), reads the real, live `assembleDocument()` etc.
+straight off the page's global scope (app.js is a plain classic
+script, so its top-level `function`/`const` declarations are already
+real globals in that execution context, not something added to make
+this test possible), and diffs their output against
+`document_engine.mjs`'s output on the same real corpus data --
+`llc_operating_agreement_single_member`, `llc_articles_of_organization`,
+and a synthetic clauseOrder-level `includeIf` fixture (copied from
+`tests/wizard/wizard_unit.js`'s own Phase 2.4 fixture, since no real
+document in the corpus uses that shape yet -- confirmed by grepping
+`data/documents.json` before writing the test, not assumed). **This
+test actually ran and passed in this sandbox** (unlike every Deno-side
+check below, which could only be type-checked, never executed) --
+byte-identical output across every sample, including `hashString()`.
+
+**The data-bundling problem, and how it was scoped down:**
+`data/clauses.json` is ~21MB -- too large to want bundled into an edge
+function's deploy, and most of it is for documents that aren't even
+for sale yet (only the 128-document approved launch set is "published,
+promoted and sold," `LAUNCH_SET_PROPOSAL.md`). `tools/build_release_bundle.py`
+(new, same `--check`-gated staleness convention as
+`tools/build_citation_index.py`) filters `data/documents.json` +
+`data/clauses.json` + `verification_levels.json` down to just the
+launch set, writing `supabase/functions/release-document/data/
+launch_set_{documents,clauses,verification_levels}.json` (~2.9MB
+combined). `release-document` refuses any `documentId` outside that
+set with the same 404 message it gives a genuinely wrong id --
+deliberately not distinguishing the two in its response.
+
+**What the function actually does:** verifies the caller's session,
+calls `has_active_entitlement(documentId)` via RPC (the *same*
+Postgres function the RLS policies call -- not a parallel
+reimplementation that could disagree with them), reads the caller's
+own `agreements` row for that document's saved answers, assembles
+content via the shared engine, renders PDF (`npm:pdf-lib@1`) and DOCX
+(`npm:docx@9`), uploads to a new private `documents` Storage bucket
+(migration `20261120000000_release_document_storage.sql`, applied
+live -- deliberately no RLS policy on that bucket's objects, the same
+choice already made for `document_shares`/`document_signatures`: the
+signed URL itself is the only intended way in), returns a 5-minute
+signed URL, writes an `audit_log` row, and increments `exports_used`
+via a new `increment_exports_used(document_id, user_id)` Postgres
+function (migration `20261120000001_increment_exports_used.sql`,
+applied live, `service_role`-only) -- `has_active_entitlement()`
+already checked `exports_used < exports_allowed` before any of this
+ran, but checking alone never consumed anything; without this
+increment, `exports_allowed` would have stayed a column nothing ever
+touched, the exact gap `MVP_SPEC_STATUS.md`'s original audit flagged.
+Rate-limited (20/min/IP) by reusing `_shared/rate_limit.ts`, the same
+utility `share-view`/`share-sign` already use -- not a new mechanism.
+
+**Scope deliberately cut, stated plainly:** the rendered output omits
+a signature block, next-steps/filing content, a sources appendix, and
+the verify-page footer link that the client's own
+`buildPdfDocDefinition()`/`buildDocxDocument()` include -- each is a
+real, smaller enrichment left for a follow-up, not silently dropped
+(each is called out in `document_engine.mjs`'s and the function's own
+comments). The PDF layout is a simple top-to-bottom wrap (Helvetica,
+hand-rolled word-wrap against `pdf-lib`'s own text-width measurement,
+since `pdf-lib` -- unlike the client's `pdfmake` -- does not paginate
+running text automatically); it is not a pixel copy of the client's
+richer styling, but carries identical clause text, citations, gaps,
+and verification notes, which is what "golden text-parity" (item 2.4)
+actually asks for.
+
+**The one thing that could not be verified at all, stated as plainly
+as the "never invoked from this sandbox" note on every other edge
+function this session built:** installing `pdf-lib` and `docx` locally
+to check the function's rendering code against their real type
+definitions was refused by this sandbox's own safety controls (an
+autonomous dependency install is a different, larger-blast-radius
+action than running `tsc`, and was treated that way on purpose -- no
+attempt was made to route around that refusal). Their stubs in this
+session's hand-written `tsc` check config are from documented API
+shape, never cross-checked against the real packages the way
+`@supabase/supabase-js` and `stripe`'s stubs were for the other four
+functions. This makes the PDF/DOCX rendering calls specifically --
+not the auth/entitlement/assembly/storage/audit_log path around them,
+which is exactly as verified as every other edge function here -- the
+single least-verified code in this entire project. `OWNER_TODO.md`
+item 8c says so and asks the owner to actually open a rendered file
+before trusting this with a real sale.
+
+**The client-side gate, and why it has an escape hatch that is not a
+loophole:** `app.js`'s three real export buttons
+(`output-download`/`-pdf`/`-docx`) now call a new `gatedExport()`
+helper, which tries `account.js`'s new `releaseAndDownload()` first.
+That function returns `{ok: false, reason: 'unconfigured'}` when
+`accountState.configured` is false -- no backend wired up for this
+deployment at all, the static, no-account demo mode this app has
+always supported (its own header comment says so) -- and `gatedExport()`
+is the *only* outcome that falls back to the existing free client-side
+generation. Every other outcome (signed out, not entitled, a real
+error) blocks the export and shows a message instead, never falling
+through to local generation. This is the deliberate, conservative
+reading of Global Rule 2's "paid export needs the backend" for a
+deployment that has no backend to require anything from in the first
+place -- not a bypass of a real paywall, since there is no paywall to
+bypass when the backend enforcing it was never configured. Verified
+directly, not just reasoned about: `tests/release_document/`'s parity
+test aside, a separate Playwright smoke run against this sandbox's own
+actual (unconfigured) deployment confirmed all three buttons still
+fire a real download with no regression and no console error, exactly
+as before this change -- and confirmed `#output-download-pdf`/`-docx`'s
+button text correctly resets afterward rather than getting stuck on
+"Generating…".
+
+**Deliberately not wired:** `output-print` (browser print) and
+`output-copy` (clipboard) were left untouched. Both already show the
+exact same on-screen content the free live preview shows (Global Rule
+2's own free list), and pricing.json's "all_export_formats" refers to
+downloadable file formats, not to viewing or printing the same page
+that's already free -- a deliberate, logged line (Global Rule 15), not
+an oversight. No separate JSON document-export button exists anywhere
+in the UI today (only an unrelated JSON *audit-log* export in
+`account.js`), so `release-document`'s own `format: 'json'` support is
+unwired from any button for now -- ready for whenever one exists,
+not a gap in today's gating.
+
+**Verification:** `tests/release_document/test_document_engine_parity.js`
+ran and passed (real browser, real corpus data, synthetic includeIf
+fixture, hashString). `tools/build_release_bundle.py --check` passes.
+`tsc` against hand-written stubs (pdf-lib/docx added to the existing
+stub file) ran clean, 0 errors, for `release-document/index.ts`, and
+the earlier four edge functions were re-checked against the same
+stub file and are still clean. Two Playwright smoke runs (not
+committed as test files, run directly in this sandbox) confirmed the
+unconfigured fallback path: all three real export buttons still
+download successfully with zero console errors and correct button-
+text reset. `python3 tools/validate_corpus.py`,
+`python3 tools/build_citation_index.py --check`,
+`python3 tools/generate_data_inventory.py --check`,
+`python3 lint/copy_lint.py`,
+`python3 tests/merge_guard/test_merge_guard.py`,
+`python3 tests/validate_corpus/test_showif.py`, and
+`python3 tools/merge_guard.py origin/claude/new-session-palh5c` all
+pass. `node tests/wizard/wizard_unit.js` and `tests/pdf/pdf_golden.js`
+could not be run -- both hardcode `http://localhost:8933`, which needs
+the same blocked local server every other browser-based test in this
+project has needed all session; this is a pre-existing sandbox
+limitation unrelated to this change, not a new one, and this change
+did not touch `buildPdfDocDefinition()`/`buildDocxDocument()`
+themselves (only wrapped their call sites in `gatedExport()`), so the
+golden content those tests check is unaffected by anything in this
+entry.
+
+**Live Supabase changes in this entry:** the `documents` Storage
+bucket and the `increment_exports_used` function were both applied
+directly to the production-linked `impurvwwjdgurbjbnydu` project.
+`get_advisors(type: "security")` was re-run after each and showed only
+the same pre-existing/expected findings as before (`_scratch_probe`/
+`rate_limits` RLS-no-policy, `has_active_entitlement`'s already-
+accepted `SECURITY DEFINER` WARN, leaked-password-protection in
+`OWNER_TODO.md` item 12) -- nothing new.

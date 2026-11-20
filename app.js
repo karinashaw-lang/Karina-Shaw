@@ -3653,7 +3653,51 @@ function documentSlug() {
   return state.document.title.replace(/[^\w\- ]+/g, '').trim().replace(/\s+/g, '-');
 }
 
-document.getElementById('output-download').addEventListener('click', () => {
+// MVP_BUILD_INSTRUCTIONS.md items 2.3/2.4: the real paywall gate on
+// export. account.js's releaseAndDownload() (undefined if account.js
+// somehow hasn't loaded yet, the same defensive check safeTrackEvent()
+// already uses elsewhere in this file) is tried first; 'unconfigured'
+// is the one outcome that falls back to this function's own free,
+// client-side generation below it, for a deployment with no backend
+// at all (see releaseAndDownload's own comment for why that's the
+// deliberate reading of Global Rule 2, not a loophole in it). Every
+// other outcome -- blocked, errored, or genuinely released -- is
+// handled here and must NOT fall through to local generation, or the
+// gate would be cosmetic exactly the way Global Rule 11 says not to
+// build it.
+async function gatedExport(btn, format) {
+  if (typeof releaseAndDownload !== 'function') return 'unconfigured';
+  const original = btn.textContent;
+  btn.disabled = true;
+  btn.textContent = 'Generating…';
+  try {
+    const result = await releaseAndDownload(state.document.id, format, documentSlug());
+    if (result.ok) {
+      btn.textContent = original;
+      return 'released';
+    }
+    if (result.reason === 'unconfigured') {
+      btn.textContent = original;
+      return 'unconfigured';
+    }
+    const messages = {
+      signed_out: 'Sign in and buy this document first — see Account',
+      not_entitled: 'Buy this document first — see Account',
+      error: result.message || 'Something went wrong. Try again.',
+    };
+    btn.textContent = messages[result.reason] || messages.error;
+    setTimeout(() => { btn.textContent = original; }, 3000);
+    return 'blocked';
+  } finally {
+    btn.disabled = false;
+  }
+}
+
+document.getElementById('output-download').addEventListener('click', async () => {
+  const btn = document.getElementById('output-download');
+  const outcome = await gatedExport(btn, 'txt');
+  if (outcome !== 'unconfigured') return;
+
   const text = buildPlainText();
   const blob = new Blob([text], { type: 'text/plain' });
   const url = URL.createObjectURL(blob);
@@ -3666,8 +3710,11 @@ document.getElementById('output-download').addEventListener('click', () => {
   URL.revokeObjectURL(url);
 });
 
-document.getElementById('output-download-pdf').addEventListener('click', () => {
+document.getElementById('output-download-pdf').addEventListener('click', async () => {
   const btn = document.getElementById('output-download-pdf');
+  const outcome = await gatedExport(btn, 'pdf');
+  if (outcome !== 'unconfigured') return;
+
   const original = btn.textContent;
   btn.disabled = true;
   btn.textContent = 'Generating…';
@@ -3681,8 +3728,11 @@ document.getElementById('output-download-pdf').addEventListener('click', () => {
     .finally(() => { btn.disabled = false; });
 });
 
-document.getElementById('output-download-docx').addEventListener('click', () => {
+document.getElementById('output-download-docx').addEventListener('click', async () => {
   const btn = document.getElementById('output-download-docx');
+  const outcome = await gatedExport(btn, 'docx');
+  if (outcome !== 'unconfigured') return;
+
   const original = btn.textContent;
   btn.disabled = true;
   btn.textContent = 'Generating…';

@@ -101,6 +101,54 @@ function isEntitlementError(error) {
   return !!error && typeof error.message === 'string' && error.message.toLowerCase().includes('row-level security');
 }
 
+// MVP_BUILD_INSTRUCTIONS.md items 2.3/2.4: the real, server-side-
+// rendered export path. Called from app.js's output-download/-pdf/
+// -docx click handlers, which are app.js's own, unchanged client-side
+// generation -- this function is what they call FIRST when a backend
+// is configured, falling back to that free client-side path only when
+// `accountState.configured` is false (no account system at all for
+// this deployment -- the static, no-backend demo mode this app has
+// always supported, see this file's own header comment). That split,
+// not a blanket "always require the backend," is the deliberate,
+// logged reading of Global Rule 2 for a deployment where there is no
+// backend to require anything from in the first place -- see
+// DECISIONS.md.
+//
+// Returns { ok: true } after triggering a real browser download from
+// release-document's signed URL, or { ok: false, reason } for the
+// three distinct reasons app.js needs to tell apart to show the right
+// message: 'unconfigured' (caller should fall back to local
+// generation), 'signed_out', 'not_entitled', or 'error' (message is
+// release-document's own error text).
+async function releaseAndDownload(documentId, format, filenameBase) {
+  if (!accountState.configured) return { ok: false, reason: 'unconfigured' };
+  if (!accountState.session) return { ok: false, reason: 'signed_out' };
+  if (!isEntitledFor(documentId)) return { ok: false, reason: 'not_entitled' };
+
+  const { data, error } = await accountState.client.functions.invoke('release-document', {
+    body: { documentId, format },
+  });
+  if (error || !data?.url) {
+    return { ok: false, reason: 'error', message: (data && data.error) || error?.message || 'Something went wrong generating that file.' };
+  }
+
+  try {
+    const fileResponse = await fetch(data.url);
+    const blob = await fileResponse.blob();
+    const blobUrl = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = blobUrl;
+    a.download = `${filenameBase}.${format}`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(blobUrl);
+  } catch (err) {
+    return { ok: false, reason: 'error', message: 'Downloaded link could not be fetched -- try again.' };
+  }
+  return { ok: true };
+}
+
 function updateAccountNav() {
   renderLibrarySyncStatus();
 }
