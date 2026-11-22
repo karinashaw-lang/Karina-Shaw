@@ -219,5 +219,12 @@ export function buildPlainText(content) {
     }
     lines.push('');
   });
+  // MVP_FINISH_VERIFY_SHARPEN.md item 1.6: every export -- client or
+  // server-rendered -- carries its documentId and a generated-on date,
+  // the same shape app.js's buildPlainText()/buildPdfDocDefinition()/
+  // buildDocxDocument() all use, so a buyer can tell which run of
+  // which document any given file came from.
+  lines.push('—');
+  lines.push(`${content.documentId} · generated ${new Date().toISOString().slice(0, 10)}`);
   return lines.join('\n');
 }

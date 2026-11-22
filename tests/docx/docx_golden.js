@@ -115,7 +115,16 @@ async function readFooterText(buffer) {
     const extracted = await mammoth.extractRawText({ buffer });
     const rawText = extracted.value;
     const normalizedDocx = normalize(rawText);
-    const plainLines = result.plainText.split('\n').map(l => l.trim()).filter(l => l.length > 3 && l !== '—');
+    // MVP_FINISH_VERIFY_SHARPEN.md item 1.6 gave buildPlainText() its own
+    // "<id> · generated <date>" line -- but that's the .docx *footer*'s
+    // content, and mammoth's extractRawText() never reads header/footer
+    // parts at all (see this file's own docstring above), so this line
+    // can never be found in rawText no matter how correct the generated
+    // .docx is. readFooterText() below already checks the real thing
+    // (documentId + generated-date pattern, inside word/footer1.xml).
+    const footerLinePattern = new RegExp(`^${result.documentId.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\s*·\\s*generated\\s*\\d{4}-\\d{2}-\\d{2}$`);
+    const plainLines = result.plainText.split('\n').map(l => l.trim())
+      .filter(l => l.length > 3 && l !== '—' && !footerLinePattern.test(l));
     const missing = plainLines.filter(l => !normalizedDocx.includes(normalize(l)));
 
     const docFailures = [];

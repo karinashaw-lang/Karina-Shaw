@@ -3303,6 +3303,12 @@ function buildPlainText() {
 
   lines.push('—');
   lines.push('Groundtruth v1 demo · every citation shown links to a real source, labeled Cited, Verified, or Adversarially checked.');
+  // MVP_FINISH_VERIFY_SHARPEN.md item 1.6: the PDF and DOCX footers
+  // already carry "<documentId> · generated <date>" -- this format
+  // never had it, the one real gap that item's "confirm every export
+  // carries a generated-on date" found. Same documentId + date shape
+  // as the other two formats, so all three are comparable the same way.
+  lines.push(`${content.documentId} · generated ${new Date().toISOString().slice(0, 10)}`);
   // CA Wedge Plan Step 11's "verification stamp." A relative link is
   // useless once this file has left the browser, and config/seo.json's
   // baseUrl is still unset (no domain decided yet -- see DECISIONS.md)

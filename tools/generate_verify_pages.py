@@ -170,6 +170,11 @@ def render_verify_page(doc, clauses_by_id, checked_ids, unclean_ids, base_url):
     }
 
     body = f"""<h1>Verification record: {esc(doc['title'])}</h1>
+<p class="template-notice">This page describes the <strong>{esc(doc['title'])} template</strong> — the clauses,
+citations and verification levels every copy of this document is built from. It is not a record of any one
+buyer's finished document, which also carries their own filled-in answers, their chosen optional clauses and a
+"generated" date and document ID in its footer. To check a document you already have against this page, use the
+"checked" date on each clause below: your copy's export shows that same date next to each clause it included.</p>
 <p><strong>{esc(TIER_LABEL[tier])}</strong> — {esc(TIER_EXPLANATION[tier])}</p>
 {drafting_note}
 <p>{esc(count_line)}</p>

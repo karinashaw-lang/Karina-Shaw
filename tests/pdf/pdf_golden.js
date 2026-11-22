@@ -126,7 +126,16 @@ function normalize(s) {
     const rawText = parsed.text;
     const cleanedText = stripFooterLines(rawText, result.documentId);
     const normalizedPdf = normalize(cleanedText);
-    const plainLines = result.sanitizedPlainText.split('\n').map(l => l.trim()).filter(l => l.length > 3 && l !== '—');
+    // MVP_FINISH_VERIFY_SHARPEN.md item 1.6 gave buildPlainText() its own
+    // "<id> · generated <date>" line, the same one the PDF footer already
+    // had -- but cleanedText above has that exact line stripped out
+    // (same as every other footer line), so this generic per-line
+    // presence check would always report it "missing" even though the
+    // two already-separate checks below (documentId, generated-date
+    // pattern) already confirm the PDF carries the real thing.
+    const footerLinePattern = new RegExp(`^${result.documentId.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\s*·\\s*generated\\s*\\d{4}-\\d{2}-\\d{2}$`);
+    const plainLines = result.sanitizedPlainText.split('\n').map(l => l.trim())
+      .filter(l => l.length > 3 && l !== '—' && !footerLinePattern.test(l));
     const missing = plainLines.filter(l => !normalizedPdf.includes(normalize(l)));
 
     const docFailures = [];

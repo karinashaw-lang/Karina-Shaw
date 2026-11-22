@@ -94,6 +94,20 @@ function saveFixture(docId, data) {
 
 // A short, readable line-level diff — enough to see what changed without
 // dumping two entire documents into the log.
+// MVP_FINISH_VERIFY_SHARPEN.md item 1.6 gave buildPlainText() a
+// "<documentId> · generated <today's date>" footer line, matching the
+// one pdf_golden.js/docx_golden.js already strip out of their own
+// comparisons the same way (see those files' own `normalize`/footer
+// handling) for the same reason: a live date would make every fixture
+// fail the day after it's recorded, which isn't a real regression.
+// Stripping this one line, rather than regenerating all 741 fixtures
+// to include it, keeps the fixtures themselves still proving the one
+// thing they exist to prove -- that clause wording didn't change.
+function stripGeneratedFooterLine(text, docId) {
+  const escapedId = docId.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return text.replace(new RegExp(`\\n?${escapedId}\\s*·\\s*generated\\s*\\d{4}-\\d{2}-\\d{2}`), '');
+}
+
 function diffText(oldText, newText) {
   if (oldText === newText) return null;
   const oldLines = (oldText || '').split('\n');
@@ -143,7 +157,7 @@ function diffText(oldText, newText) {
   // a golden test that doesn't exercise the real render path would miss
   // exactly the regressions it exists to catch.
   async function renderDoc(docId, inputs) {
-    return page.evaluate(({ id, inputs }) => {
+    const result = await page.evaluate(({ id, inputs }) => {
       const doc = state.documents.find(d => d.id === id);
       if (!doc) return null;
       state.document = doc;
@@ -164,6 +178,10 @@ function diffText(oldText, newText) {
       const expectedText = buildPlainText();
       return { expectedText, expectedJSON };
     }, { id: docId, inputs });
+    if (!result) return null;
+    result.hasGeneratedFooter = /generated\s*\d{4}-\d{2}-\d{2}/.test(result.expectedText);
+    result.expectedText = stripGeneratedFooterLine(result.expectedText, docId);
+    return result;
   }
 
   const failures = [];
@@ -205,8 +223,8 @@ function diffText(oldText, newText) {
     }
     const textMatch = rendered.expectedText === fixture.expectedText;
     const jsonMatch = JSON.stringify(rendered.expectedJSON) === JSON.stringify(fixture.expectedJSON);
-    if (!textMatch || !jsonMatch) {
-      console.log(`FAIL ${docId}${!textMatch ? ' text differs' : ''}${!jsonMatch ? ' json differs' : ''}`);
+    if (!textMatch || !jsonMatch || !rendered.hasGeneratedFooter) {
+      console.log(`FAIL ${docId}${!textMatch ? ' text differs' : ''}${!jsonMatch ? ' json differs' : ''}${!rendered.hasGeneratedFooter ? ' missing generated-on footer line' : ''}`);
       if (!textMatch) console.log(diffText(fixture.expectedText, rendered.expectedText));
       failures.push(docId);
     }

@@ -6729,3 +6729,128 @@ not guessed-at syntax, but their actual execution is the owner's first
 real confirmation, the same disclosed-limitation pattern as every
 other piece of this project that needs a merge or a secret this
 sandbox doesn't have.
+
+## 2026-11-22 — MVP_FINISH_VERIFY_SHARPEN.md Part 1, items 1.2/1.3/1.4/1.6
+
+A fifth owner planning document (`MVP_FINISH_VERIFY_SHARPEN.md`,
+saved verbatim) asked for a set of closing-the-gaps checks before
+anything goes public. Four of Part 1's eight items are done; this
+entry covers all four together since none involved a code change big
+enough to need its own entry, and three of the four are audits with
+no production-code change at all.
+
+**1.2 — RLS adversarial retest.** Re-ran the same role/claim
+impersonation technique from an earlier session
+(`SET LOCAL ROLE authenticated; SET LOCAL request.jwt.claims = ...`)
+against every RLS-protected table (`entitlements`, `orders`,
+`order_items`, `agreements`, `document_shares`) on the live project,
+this time specifically trying to read, modify or delete another
+user's row by every angle tried before plus a few new ones. All 14
+adversarial attempts failed exactly as RLS should make them fail —
+full results and the "why this holds mechanically" reasoning in
+`review/RLS_ADVERSARIAL_RETEST.md`. Incidental finding: the
+destructive-SQL-timeout bug an earlier session hit while trying to
+clean up its own RLS test fixtures does not reproduce any more —
+`DELETE`s against the two leftover test users and the one leftover
+test order completed immediately, and that stale fixture data is now
+gone.
+
+**1.3 — Reviewed-By audit.** Every commit on this branch that touched
+`data/clauses.json` was checked for whether it changed a clause's
+*substance* (body/gap/citation quote — the thing `check_commit_discipline.py`
+itself gates on) versus only a citation's url/case/cite label or a
+clause's status/checkedDate/sourceClass (routine re-verification,
+correctly not gated). Full commit-by-commit table, the two
+substantive commits' complete before/after diffs (25 clauses across
+`e7978c2` and `cd2db28`), and a two-option recommendation for a
+go-forward `Reviewed-By:` policy are in `review/REVIEWED_BY_AUDIT.md`.
+The recommendation is not a decision — this session cannot self-attest
+a `Reviewed-By: coordinator` trailer (the sandbox's own oversight
+classifier refuses that, correctly, as undermining the point of the
+trailer), so which of the two options to adopt is left to the owner.
+
+**1.4 — Accepted findings are visibly disclosed.** A verifier finding
+marked `accepted` in triage is supposed to always show up as the
+affected clause's own `gap` text — that's the whole mechanism's point,
+disclosure instead of silent risk acceptance. A one-time manual check
+found this held for all 113 accepted findings in the corpus today.
+New standing CI gate, `tools/check_accepted_disclosure.py` (reuses
+`verifier/triage.py`'s own `load_findings()`/`load_triage()` rather
+than a second id-scheme implementation that could drift from it),
+wired into `ci.yml` right after the `release-document` bundle check;
+`tests/tools/test_check_accepted_disclosure.py` covers the no-gap,
+empty-gap, real-gap, open/rejected-not-flagged and
+second-finding-distinct-id cases.
+
+**1.6 — Verify-page honesty.** Two real, concrete gaps, both fixed:
+
+- `buildPlainText()` in `app.js` was the one export format missing the
+  `<documentId> · generated <date>` footer line `buildPdfDocDefinition()`
+  and `buildDocxDocument()` already had — added, same shape as the
+  other two. `supabase/functions/_shared/document_engine.mjs`'s own
+  `buildPlainText(content)` (the parity-tested server-side twin,
+  deliberately scoped down from day one to omit the whole
+  signature/next-steps/footer section — see the 2026-11-20
+  `release-document` entry) got the same line added too, so a
+  released, paywalled export carries the same provenance line a
+  browser-generated one does. This is additive to that file's
+  documented scope cut, not a reversal of it — the signature and
+  next-steps sections are still deliberately absent there.
+- `tools/generate_verify_pages.py`'s `render_verify_page()` had no
+  explicit "this describes the template, not your specific finished
+  document" wording — a buyer reading it had no way to know the page
+  describes every copy of the document, not theirs specifically. Added
+  a `template-notice` paragraph at the top of every verify page saying
+  so, and pointing at the mechanism that actually lets a buyer compare
+  their copy against the page: each clause's own "checked" date, which
+  the page already shows and which their export's footer note
+  (`clauseVerificationNoteText()`) already carries per clause.
+
+**Deliberately not done:** replicating `corpusVersion`
+(`hashString(JSON.stringify(clauseSnapshots))`, from
+`buildClauseSnapshot()`) in Python for the verify page, as a single
+page-wide fingerprint a buyer could check against their export. A
+JS-vs-Python reimplementation of the same hash carries real risk of a
+silent algorithmic mismatch (different JSON key ordering, different
+string handling) that would look exactly like proof of a real
+discrepancy when there isn't one — a worse failure mode for a page
+whose entire purpose is to be trustworthy evidence. The per-clause
+`checkedDate` comparison above does the same job (let a buyer confirm
+their copy matches what's claimed about it) without that risk, since
+it's already computed identically on both sides today — not a new
+mechanism invented for this.
+
+**A real, non-obvious bug found and fixed while verifying the
+`buildPlainText()` footer change:** adding a live `new Date()` call to
+a function three separate golden-fixture test files already compare
+byte-for-byte broke all 741 stored fixtures in `tests/golden/golden.js`
+(a generated-on date can never match a fixture recorded on an earlier
+date) and silently broke the per-line presence checks in
+`tests/pdf/pdf_golden.js` and `tests/docx/docx_golden.js` (both already
+strip footer date lines out of the *extracted* PDF/DOCX text before
+comparing, so the new line in `buildPlainText()`'s own output became
+permanently "missing" against text that never had it to find). Fixed
+by applying the same pattern those two files already used for their
+own footer lines — strip the `<id> · generated <date>` line out of the
+comparison text rather than regenerating 741 fixtures that would go
+stale again the next day — plus (`golden.js` only, since the other two
+already had this) a `hasGeneratedFooter` presence assertion so a
+future regression that drops the line entirely is still caught. No
+golden fixture file needed to change.
+
+**Verification:** `tests/tools/test_generate_verify_pages.py` (7
+tests, including a new one for the template-notice wording),
+`tests/tools/test_check_accepted_disclosure.py` (6 tests),
+`tests/release_document/test_document_engine_parity.js`,
+`tools/build_release_bundle.py --check`, `tests/golden/golden.js`
+(741/741), `tests/pdf/pdf_golden.js` and `tests/docx/docx_golden.js`
+(3/3 each), `tests/wizard/wizard_unit.js` (22/22) and
+`tests/filing/next_steps.js` all pass, run via this sandbox's
+`file://` + `--allow-file-access-from-files` workaround
+(`GOLDEN_BASE_URL="file://$(pwd)"`). The full Python tooling-test
+block from `ci.yml` (23 files) passes. Not re-verified here:
+`tools/regression.js`, `tools/wizard_regression.js`, and
+`tests/share/sign_page.js` still hardcode `http://localhost:8933` and
+this sandbox cannot start one — unaffected by anything in this entry
+(none of the three reference `buildPlainText`), and real CI runs them
+against a real `http.server` regardless.

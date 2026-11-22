@@ -66,6 +66,18 @@ class TestGenerateVerifyPages(unittest.TestCase):
             page = by_path['nda.html']
             self.assertIn('href="https://', page['html'])
 
+    def test_page_discloses_it_describes_the_template_not_a_buyers_copy(self):
+        # MVP_FINISH_VERIFY_SHARPEN.md item 1.6: a buyer reading this page
+        # needs to be told, in plain words, that it's a description of the
+        # template every copy is built from -- not their own finished
+        # document -- and told how to line the two up (the per-clause
+        # "checked" date, which their export's footer also carries).
+        with tempfile.TemporaryDirectory() as tmp:
+            pages = gen.generate(tmp)
+            page = pages[0]
+            self.assertIn('template-notice', page['html'])
+            self.assertIn('not a record of any one', page['html'])
+
 
 if __name__ == '__main__':
     unittest.main()
