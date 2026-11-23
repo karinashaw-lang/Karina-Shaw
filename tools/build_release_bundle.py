@@ -26,6 +26,7 @@ from datetime import date
 OUT_DOCS = 'supabase/functions/release-document/data/launch_set_documents.json'
 OUT_CLAUSES = 'supabase/functions/release-document/data/launch_set_clauses.json'
 OUT_LEVELS = 'supabase/functions/release-document/data/launch_set_verification_levels.json'
+OUT_META = 'supabase/functions/release-document/data/launch_set_meta.json'
 
 
 def launch_set_ids():
@@ -67,10 +68,29 @@ def build():
     clauses_out = {'generated_at': str(date.today()), 'clauses': sel_clauses}
 
     all_levels = json.load(open('verification_levels.json', encoding='utf-8'))['levels']
-    sel_levels = {cid: all_levels[cid] for cid in found_ids if cid in all_levels}
+    # Iterates sel_clauses (a list, insertion-ordered and stable across
+    # runs) rather than found_ids (a set) -- a set comprehension's
+    # iteration order depends on Python's per-process string hash seed,
+    # so building this dict from one produced a different, meaningless
+    # key order on every run, a spurious diff in the committed file
+    # that had nothing to do with any real change (caught by actually
+    # re-running this and diffing the result, not assumed).
+    sel_levels = {c['id']: all_levels[c['id']] for c in sel_clauses if c['id'] in all_levels}
     levels_out = {'generated_at': str(date.today()), 'levels': sel_levels}
 
-    return docs_out, clauses_out, levels_out
+    # MVP_FINISH_VERIFY_SHARPEN.md item 1.1: release-document's actual
+    # rendered PDF/DOCX had no verify-page link at all, unlike the
+    # client's own buildPdfDocDefinition()/buildDocxDocument() (which
+    # read state.seoBaseUrl, itself loaded from this same file) --
+    # bundling the same baseUrl here is what lets the server-rendered
+    # output match, not a second, independently-decided config.
+    try:
+        seo_config = json.load(open('config/seo.json', encoding='utf-8'))
+    except FileNotFoundError:
+        seo_config = {}
+    meta_out = {'generated_at': str(date.today()), 'baseUrl': seo_config.get('baseUrl', '')}
+
+    return docs_out, clauses_out, levels_out, meta_out
 
 
 def write_stable(path, payload):
@@ -89,8 +109,8 @@ def strip_date(payload):
 
 
 def main():
-    docs_out, clauses_out, levels_out = build()
-    outputs = [(OUT_DOCS, docs_out), (OUT_CLAUSES, clauses_out), (OUT_LEVELS, levels_out)]
+    docs_out, clauses_out, levels_out, meta_out = build()
+    outputs = [(OUT_DOCS, docs_out), (OUT_CLAUSES, clauses_out), (OUT_LEVELS, levels_out), (OUT_META, meta_out)]
     if '--check' in sys.argv[1:]:
         for path, expected in outputs:
             try:
@@ -111,6 +131,7 @@ def main():
     print(f'Wrote {OUT_DOCS}: {len(docs_out["documents"])} documents.')
     print(f'Wrote {OUT_CLAUSES}: {len(clauses_out["clauses"])} clauses.')
     print(f'Wrote {OUT_LEVELS}: {len(levels_out["levels"])} verification levels.')
+    print(f'Wrote {OUT_META}: baseUrl={meta_out["baseUrl"]!r}.')
     return 0
 
 

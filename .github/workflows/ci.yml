@@ -52,6 +52,7 @@ jobs:
           python3 tests/tools/test_check_commit_discipline.py -v
           python3 tests/tools/test_generate_verify_pages.py -v
           python3 tests/tools/test_check_accepted_disclosure.py -v
+          python3 tests/tools/test_build_release_bundle.py -v
       - name: Generate and validate SEO pages
         run: |
           python3 tools/generate_seo_pages.py

@@ -59,8 +59,16 @@ async function main() {
   const withConditional = await page.evaluate(() =>
     state.documents.find(d => (d.clauseOrder || []).some(e => typeof e !== 'string' && e.includeIf))?.id || null
   );
-  const candidates = ['llc_operating_agreement_single_member', 'llc_articles_of_organization', withConditional]
-    .filter(id => id && docIds.includes(id));
+  // noncompete/handbook/termination_letter added for MVP_FINISH_VERIFY_SHARPEN.md
+  // item 1.1's jurisdictionNotice parity coverage -- confirmed (by a
+  // one-off corpus scan, not guessed) to be the CA/FED/MIXED sample
+  // respectively, so this exercises all three non-empty notice variants,
+  // not just the "no notice" case llc_operating_agreement_single_member
+  // and llc_articles_of_organization both happen to be.
+  const candidates = [
+    'llc_operating_agreement_single_member', 'llc_articles_of_organization', withConditional,
+    'noncompete', 'handbook', 'termination_letter',
+  ].filter(id => id && docIds.includes(id));
   // Always exercise at least 3 documents even if the two named ones
   // somehow aren't in the corpus under those exact ids -- fall back to
   // the first few real ids rather than fail with an empty sample.
@@ -75,8 +83,10 @@ async function main() {
       state.document = state.documents.find(d => d.id === id);
       state.answers = answers;
       const assembled = assembleDocument();
+      const jKey = classifyDocumentJurisdiction(state.document);
       return {
         preparedFor: preparedForLine(answers),
+        jurisdictionNotice: jKey && jKey !== 'NONE' ? JURISDICTION_NOTICE[jKey] : null,
         conditional: describeConditionalClauses(),
         clauses: assembled.map(c => ({
           id: c.id,
@@ -91,8 +101,10 @@ async function main() {
     const allClauses = await page.evaluate(() => state.clauses);
     const serverAssembled = engine.assembleDocument(clientDoc, allClauses, answers);
     const verificationLevels = await page.evaluate(() => state.verificationLevels || {});
+    const serverJKey = engine.classifyDocumentJurisdiction(clientDoc, allClauses);
     const serverResult = {
       preparedFor: engine.preparedForLine(clientDoc, answers),
+      jurisdictionNotice: serverJKey && serverJKey !== 'NONE' ? engine.JURISDICTION_NOTICE[serverJKey] : null,
       conditional: engine.describeConditionalClauses(clientDoc, allClauses, answers),
       clauses: serverAssembled.map(c => ({
         id: c.id,
@@ -130,6 +142,31 @@ async function main() {
     }
   }
   if (hashSamples.length) console.log(`OK   hashString: ${hashSamples.length}/${hashSamples.length} sample(s) match`);
+
+  // verifyPageUrl parity -- app.js's own version reads state.seoBaseUrl
+  // directly rather than taking it as a parameter, so this sets that
+  // global before calling it, same shape the engine's parameter-driven
+  // version takes explicitly. Covers both the configured-baseUrl case
+  // and today's real "" case (config/seo.json has no baseUrl set yet),
+  // since release-document's actual verify-link line is conditional on
+  // exactly that still being empty.
+  const verifyUrlSamples = [{ baseUrl: '', docId: 'nda' }, { baseUrl: 'https://example.com', docId: 'nda' }];
+  for (const { baseUrl, docId } of verifyUrlSamples) {
+    const clientUrl = await page.evaluate(({ baseUrl, docId }) => {
+      const prior = state.seoBaseUrl;
+      state.seoBaseUrl = baseUrl;
+      const result = verifyPageUrl({ id: docId });
+      state.seoBaseUrl = prior;
+      return result;
+    }, { baseUrl, docId });
+    const serverUrl = engine.verifyPageUrl(baseUrl, docId);
+    if (clientUrl === serverUrl) {
+      console.log(`OK   verifyPageUrl(baseUrl=${JSON.stringify(baseUrl)}): matches ("${clientUrl}")`);
+    } else {
+      failures++;
+      console.log(`FAIL verifyPageUrl(baseUrl=${JSON.stringify(baseUrl)}): client="${clientUrl}" server="${serverUrl}"`);
+    }
+  }
 
   // No real document in the corpus uses a clauseOrder-level includeIf
   // yet (confirmed by grepping data/documents.json before writing this

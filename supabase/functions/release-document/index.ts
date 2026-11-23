@@ -23,10 +23,27 @@
 // Signature and next-steps sections are omitted from the rendered
 // output, the same cut document_engine.mjs's buildDocumentContent()
 // already documents, for the same reason (no server-side equivalent
-// of that client-only state exists yet). A sources appendix and the
-// verify-page footer link are not yet added to the server's own
-// render, unlike the client's buildPdfDocDefinition()/buildDocxDocument() --
-// a real, smaller gap than the ones above, left for a follow-up pass.
+// of that client-only state exists yet). The sources appendix is the
+// same kind of cut -- it's gated by state.includeSourcesAppendix, a
+// client-only UI toggle with no server equivalent, same as signature/
+// next-steps above.
+//
+// MVP_FINISH_VERIFY_SHARPEN.md item 1.1's PDF/DOCX-vs-on-screen-preview
+// comparison found this file's rendered output was missing three
+// things the client's own buildPdfDocDefinition()/buildDocxDocument()
+// already had, none of them disclosed above as an intentional cut --
+// a real gap, not a documented scope decision: the jurisdiction notice
+// (now classifyDocumentJurisdiction()/JURISDICTION_NOTICE, ported into
+// document_engine.mjs), a real per-page/footer-section document-id-
+// and-generated-date footer (this file's own renderPdf/renderDocx had
+// no footer at all, just a body line with different wording than the
+// client's), and the verify-page link (now verifyPageUrl(), reading
+// the same config/seo.json baseUrl the client does, bundled at build
+// time into data/launch_set_meta.json by build_release_bundle.py).
+// All three are fixed below. No QR code exists anywhere in this
+// product, client or server -- confirmed by grepping app.js, not
+// assumed -- so there is no QR-code gap to close here, only a verify
+// *link*, which is what both renderers actually produce.
 //
 // Verification note, stated as plainly as every other edge function's
 // own comment does: the auth/entitlement/assembly/storage/audit_log
@@ -56,6 +73,9 @@ import {
   preparedForLine,
   clauseLevel,
   clauseVerificationNoteText,
+  classifyDocumentJurisdiction,
+  JURISDICTION_NOTICE,
+  verifyPageUrl,
   buildPlainText,
   hashString,
   LEVEL_LABEL,
@@ -64,20 +84,24 @@ import {
 import launchSetDocuments from './data/launch_set_documents.json' with { type: 'json' };
 import launchSetClauses from './data/launch_set_clauses.json' with { type: 'json' };
 import launchSetLevels from './data/launch_set_verification_levels.json' with { type: 'json' };
+import launchSetMeta from './data/launch_set_meta.json' with { type: 'json' };
 
 const DOCS_BY_ID = new Map(launchSetDocuments.documents.map((d: any) => [d.id, d]));
 const ALL_CLAUSES: any[] = launchSetClauses.clauses;
 const LEVELS: Record<string, string> = launchSetLevels.levels;
+const BASE_URL: string = launchSetMeta.baseUrl || '';
 
 const SUPPORTED_FORMATS = ['pdf', 'docx', 'txt', 'json'] as const;
 type Format = typeof SUPPORTED_FORMATS[number];
 
 function buildContent(document: any, answers: Record<string, string>) {
   const assembled = assembleDocument(document, ALL_CLAUSES, answers);
+  const jKey = classifyDocumentJurisdiction(document, ALL_CLAUSES);
   return {
     title: document.title,
     documentId: document.id,
     preparedFor: preparedForLine(document, answers),
+    jurisdictionNotice: jKey && jKey !== 'NONE' ? JURISDICTION_NOTICE[jKey] : null,
     conditional: describeConditionalClauses(document, ALL_CLAUSES, answers),
     clauses: assembled.map((clause: any) => ({
       id: clause.id,
@@ -135,6 +159,17 @@ async function renderPdf(content: ReturnType<typeof buildContent>): Promise<Uint
 
   let page = pdf.addPage([PAGE_WIDTH, PAGE_HEIGHT]);
   let y = PAGE_HEIGHT - MARGIN;
+  // Real content never comes closer than this to the bottom edge, so a
+  // per-page footer drawn afterwards at FOOTER_Y (below this floor)
+  // can never collide with it -- see the footer-drawing pass at the
+  // end of this function, added for MVP_FINISH_VERIFY_SHARPEN.md item
+  // 1.1 (this file previously had no per-page footer at all, unlike
+  // app.js's own buildPdfDocDefinition(), which pdfmake renders from a
+  // declarative `footer` callback this hand-rolled renderer has no
+  // equivalent for -- pdf-lib doesn't know the final page count until
+  // every page already exists, so the footer is drawn in one pass over
+  // pdf.getPages() after the content loop below finishes, not inline).
+  const FOOTER_Y = 26;
 
   function ensureSpace(lineHeight: number) {
     if (y - lineHeight < MARGIN) {
@@ -155,6 +190,10 @@ async function renderPdf(content: ReturnType<typeof buildContent>): Promise<Uint
 
   writeLines(content.title.toUpperCase(), bold, 15, rgb(0, 0, 0), 2);
   writeLines(content.preparedFor, regular, 10, rgb(0.3, 0.32, 0.27), 10);
+
+  if (content.jurisdictionNotice) {
+    writeLines(content.jurisdictionNotice, italic, 9.5, rgb(0.3, 0.32, 0.27), 10);
+  }
 
   if (content.conditional.length) {
     writeLines('OPTIONAL CLAUSES IN THIS DOCUMENT', bold, 10, rgb(0, 0, 0), 2);
@@ -178,7 +217,19 @@ async function renderPdf(content: ReturnType<typeof buildContent>): Promise<Uint
     y -= 6;
   });
 
-  writeLines('Groundtruth · every citation shown links to a real source, labeled Cited, Verified, or Adversarially checked.', italic, 8, rgb(0.3, 0.32, 0.27));
+  writeLines('Groundtruth v1 demo · every citation shown links to a real source, labeled Cited, Verified, or Adversarially checked.', italic, 8, rgb(0.3, 0.32, 0.27));
+  if (BASE_URL) {
+    writeLines(`Verify this document's sourcing at: ${verifyPageUrl(BASE_URL, content.documentId)}`, italic, 8, rgb(0.3, 0.32, 0.27));
+  }
+
+  const generatedOn = new Date().toISOString().slice(0, 10);
+  const pages = pdf.getPages();
+  pages.forEach((pg, i) => {
+    pg.drawText(`${content.documentId} · generated ${generatedOn}`, { x: MARGIN, y: FOOTER_Y, size: 8, font: regular, color: rgb(0.3, 0.32, 0.27) });
+    const pageLabel = `Page ${i + 1} of ${pages.length}`;
+    const labelWidth = regular.widthOfTextAtSize(pageLabel, 8);
+    pg.drawText(pageLabel, { x: PAGE_WIDTH - MARGIN - labelWidth, y: FOOTER_Y, size: 8, font: regular, color: rgb(0.3, 0.32, 0.27) });
+  });
 
   return pdf.save();
 }
@@ -190,6 +241,10 @@ function buildDocxChildren(content: ReturnType<typeof buildContent>) {
 
   children.push(new Paragraph({ text: content.title.toUpperCase(), heading: HeadingLevel.TITLE }));
   children.push(new Paragraph({ children: [new TextRun({ text: content.preparedFor, color: GRAY })] }));
+
+  if (content.jurisdictionNotice) {
+    children.push(new Paragraph({ children: [new TextRun({ text: content.jurisdictionNotice, italics: true, color: GRAY })] }));
+  }
 
   if (content.conditional.length) {
     children.push(new Paragraph({ text: 'OPTIONAL CLAUSES IN THIS DOCUMENT', heading: HeadingLevel.HEADING_3 }));
@@ -211,13 +266,26 @@ function buildDocxChildren(content: ReturnType<typeof buildContent>) {
     }
   });
 
-  children.push(new Paragraph({ children: [new TextRun({ text: 'Groundtruth · every citation shown links to a real source, labeled Cited, Verified, or Adversarially checked.', size: 16, color: GRAY })] }));
+  children.push(new Paragraph({ children: [new TextRun({ text: 'Groundtruth v1 demo · every citation shown links to a real source, labeled Cited, Verified, or Adversarially checked.', size: 16, color: GRAY })] }));
+  if (BASE_URL) {
+    children.push(new Paragraph({ children: [new TextRun({ text: `Verify this document's sourcing at: ${verifyPageUrl(BASE_URL, content.documentId)}`, size: 16, color: GRAY })] }));
+  }
   return children;
 }
 
 async function renderDocx(content: ReturnType<typeof buildContent>): Promise<Uint8Array> {
-  const { Document, Packer } = docx;
-  const doc = new Document({ sections: [{ children: buildDocxChildren(content) }] });
+  const { Document, Packer, Footer, Paragraph, TextRun } = docx;
+  const generatedOn = new Date().toISOString().slice(0, 10);
+  const doc = new Document({
+    sections: [{
+      children: buildDocxChildren(content),
+      footers: {
+        default: new Footer({
+          children: [new Paragraph({ children: [new TextRun({ text: `${content.documentId} · generated ${generatedOn}`, size: 16, color: '4B5245' })] })],
+        }),
+      },
+    }],
+  });
   const buffer = await Packer.toBuffer(doc);
   return new Uint8Array(buffer);
 }

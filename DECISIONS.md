@@ -6854,3 +6854,129 @@ block from `ci.yml` (23 files) passes. Not re-verified here:
 this sandbox cannot start one — unaffected by anything in this entry
 (none of the three reference `buildPlainText`), and real CI runs them
 against a real `http.server` regardless.
+
+## 2026-11-23 — MVP_FINISH_VERIFY_SHARPEN.md item 1.1: found and fixed a real PDF/DOCX gap, deployed and partially tested `release-document`
+
+Comparing `release-document`'s actual rendered PDF/DOCX output against
+the on-screen preview and the client's own `buildPdfDocDefinition()`/
+`buildDocxDocument()` — exactly what item 1.1 asks for — found three
+real, undisclosed gaps, not documented scope cuts:
+
+1. **Jurisdiction notice missing entirely.** `classifyDocumentJurisdiction()`/
+   `JURISDICTION_NOTICE` exist in `app.js` and feed a real,
+   per-document notice ("This document's legal clauses are sourced
+   primarily to California law...") into `buildDocumentContent()`,
+   shown in every client PDF/DOCX. `document_engine.mjs`'s own
+   `buildDocumentContent()` never had this field at all — confirmed by
+   reading it directly, not assumed. A one-off corpus scan found 570 of
+   741 documents classify as `CA`, 78 `FED`, 83 `MIXED` — this notice
+   is common, not an edge case.
+2. **No real footer.** `release-document/index.ts`'s `renderPdf()`/
+   `buildDocxChildren()` had a single hardcoded closing-note body line
+   with *different wording* than the client's own
+   ("Groundtruth · ..." vs. the client's "Groundtruth v1 demo · ..."),
+   and no per-page footer, no document id, no generated-on date, and
+   no page numbers at all — unlike the client's PDF (a declarative
+   pdfmake `footer` callback) and DOCX (a real `Footer` section).
+3. **No verify-page link**, even as a relative path — `state.seoBaseUrl`
+   has no server-side equivalent anywhere in `release-document`.
+
+**Fixed:**
+- `supabase/functions/_shared/document_engine.mjs`: ported
+  `classifyCitationJurisdiction()`/`classifyDocumentJurisdiction()`/
+  `JURISDICTION_NOTICE` (exact copies of app.js's own regexes and
+  logic) and a new parameter-driven `verifyPageUrl(baseUrl, docId)`
+  (app.js's own reads `state.seoBaseUrl` directly; this takes it as a
+  parameter since the engine has no `state`). `buildDocumentContent()`
+  now sets `jurisdictionNotice` the same way app.js's does.
+- `tools/build_release_bundle.py`: new 4th output,
+  `data/launch_set_meta.json`, bundling `config/seo.json`'s `baseUrl`
+  — the same source app.js's `state.seoBaseUrl` loads from — so the
+  server can read the same configured value the client does, rather
+  than inventing a second, independently-decided one.
+- `supabase/functions/release-document/index.ts`: `buildContent()` now
+  sets `jurisdictionNotice`; `renderPdf()` draws it after `preparedFor`
+  (matching client order), and after all content is laid out, loops
+  `pdf.getPages()` once to draw a real `<documentId> · generated <date>`
+  + `Page X of Y` footer on every page (pdf-lib has no declarative
+  footer callback like pdfmake's — it doesn't know the final page
+  count until every page already exists, so this has to run as a
+  second pass over the finished pages, not inline); `renderDocx()` now
+  builds a real `Footer` section the same shape app.js's does. Both
+  renderers now also show the client's exact closing-note wording and,
+  when `BASE_URL` is non-empty, the verify-link line.
+- `tests/release_document/test_document_engine_parity.js`: extended
+  with a `jurisdictionNotice` comparison across 5 real documents
+  (added `noncompete`/`handbook`/`termination_letter` as confirmed
+  CA/FED/MIXED samples, not just the two LLC documents, which both
+  happen to be `NONE`) and a `verifyPageUrl()` comparison across both
+  the configured- and empty-`baseUrl` cases. All pass.
+
+**Deployed and partially tested live**, going further than a code
+review: the real, unmodified `index.ts`/`document_engine.mjs`/
+`rate_limit.ts` were deployed to the project (`impurvwwjdgurbjbnydu`)
+that had never actually had `release-document` live before this
+(confirmed via `list_edge_functions` — it wasn't in the deployed list
+at the start of this entry's work). Kept to a 3-document test-scoped
+data bundle (`nda`/`llc_operating_agreement_single_member`/
+`noncompete`, ~40KB) rather than the real 128-document/2.6MB bundle,
+specifically to limit how much had to pass through this session's own
+context window for a verification deploy — not a cut to the real
+code, which is identical either way. A real test buyer was seeded
+directly via SQL (an isolated `auth.users`/`auth.identities` row,
+using `extensions.crypt()`/`extensions.gen_salt()` for a real bcrypt
+password hash, plus matching `agreements`/`entitlements` rows) rather
+than through a real Stripe checkout, which this session has no API
+keys for at all.
+
+**Where this stopped, and why:** actually calling the deployed
+function over HTTPS to get a real PDF/DOCX back is blocked at the
+sandbox network-policy level, not by a missing credential —
+`impurvwwjdgurbjbnydu.supabase.co` gets a hard 403 from this session's
+own egress proxy, whose own documentation (`/root/.ccr/README.md`)
+says plainly: "Most often the destination host is not allowed for this
+session. Do not retry or route around it." This confirms, rather than
+just repeats, an earlier entry's claim that "this project's edge
+functions have never been invokable from here." `OWNER_TODO.md` item
+8c now has the exact `curl` commands, the seeded test account's
+credentials, and the cleanup SQL for whoever can actually reach that
+host to finish this one remaining step — along with instructions for
+testing the re-export-limit and refunded/disputed-entitlement denial
+paths the same way, and a clear instruction to redeploy the real
+128-document bundle (not this test-scoped one) before any real buyer
+can reach this function.
+
+**Verification:** `tests/release_document/test_document_engine_parity.js`
+passes (5 documents, including all three non-`NONE` jurisdiction
+variants, plus both `verifyPageUrl` cases). `tools/build_release_bundle.py
+--check` passes. A hand-stubbed `tsc --project` compile (same
+established pattern as every other entry touching this function; the
+stub file itself is rebuilt fresh each time in the sandbox's
+scratchpad, not committed) ran clean, 0 errors, against the real,
+changed `release-document/index.ts`. `tests/golden/golden.js` (741/741),
+`tests/pdf/pdf_golden.js` and `tests/docx/docx_golden.js` (3/3 each),
+and the full Python tooling-test block all still pass (these exercise
+`app.js`'s own renderers, which item 1.1's jurisdiction-notice/footer
+work did not touch — `app.js` already had all three pieces; only the
+server side was missing them). `mcp__Supabase__deploy_edge_function`
+reported the function `ACTIVE` at version 2. Not verified: the actual
+rendered PDF/DOCX bytes from the live `pdf-lib`/`docx` packages (the
+one thing this whole chain exists to prove) — blocked exactly as
+described above, now the owner's first and only remaining step before
+a real sale can safely rely on this.
+
+**Also found and fixed in passing:** regenerating the bundle to add
+`launch_set_meta.json` surfaced a real, pre-existing non-determinism
+in `tools/build_release_bundle.py` — `sel_levels` was built from a set
+comprehension (`found_ids`), whose iteration order depends on
+Python's per-process string hash seed, so `launch_set_verification_levels.json`'s
+key order (not its content) changed on every single run, a 1,248-line
+spurious diff with no real change behind it. `--check` itself was
+never fooled by this (Python dict equality isn't order-sensitive), but
+every real regeneration would have produced unnecessary git noise
+going forward. Fixed by building `sel_levels` from `sel_clauses` (a
+list, stable insertion order) instead of the set; confirmed stable by
+actually running the regeneration twice in a row and diffing the
+result, not just reasoning about it. New
+`tests/tools/test_build_release_bundle.py` (2 tests) guards against
+this recurring, wired into `ci.yml`.

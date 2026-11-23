@@ -96,6 +96,76 @@ export function preparedForLine(document, answers) {
   return 'Prepared for —';
 }
 
+// Exact port of app.js's JURISDICTION_CA_RE/JURISDICTION_FED_RE/
+// JURISDICTION_CA_URL_RE/JURISDICTION_FED_URL_RE and
+// classifyCitationJurisdiction()/classifyDocumentJurisdiction() --
+// MVP_FINISH_VERIFY_SHARPEN.md item 1.1's PDF/DOCX comparison against
+// the on-screen preview found that this whole jurisdiction-notice
+// concept was simply absent from buildDocumentContent() below (unlike
+// `signature`/`nextSteps`, never disclosed anywhere as an intentional
+// scope cut): a paying customer's actual released PDF/DOCX carried no
+// "this document's clauses are sourced to California/federal/mixed law"
+// notice at all, while the on-screen preview and client-side export of
+// the exact same document did. Ported rather than re-derived so a
+// future change to the classification rule can't silently drift
+// between the two the way nothing here enforced until now --
+// tests/release_document/test_document_engine_parity.js's jurisdiction
+// section is what actually proves that.
+const JURISDICTION_CA_RE = /\bCal\.|\bCalifornia\b/i;
+const JURISDICTION_CA_URL_RE = /leginfo\.legislature\.ca\.gov|courts\.ca\.gov/i;
+const JURISDICTION_FED_RE = /\bU\.S\.C\.|\bC\.F\.R\.|\bF\.\s*(?:2d|3d|4th|Supp)|\b\d+\s+U\.S\.\s+\d|\bCir\.\)|\bS\.\s*Ct\.|U\.S\. Const|\bFed\.\s*R\.|\bPub\.\s*L\.\s*No/i;
+const JURISDICTION_FED_URL_RE = /law\.cornell\.edu|ecfr\.gov|govinfo\.gov|uscode\.house\.gov|supremecourt\.gov/i;
+
+export function classifyCitationJurisdiction(cit) {
+  const text = `${cit.case || ''} ${cit.cite || ''}`;
+  const url = cit.url || '';
+  const isCA = JURISDICTION_CA_RE.test(text) || JURISDICTION_CA_URL_RE.test(url);
+  const isFed = JURISDICTION_FED_RE.test(text) || JURISDICTION_FED_URL_RE.test(url);
+  if (isCA && !isFed) return 'CA';
+  if (isFed && !isCA) return 'FED';
+  if (isCA && isFed) return 'BOTH';
+  return 'OTHER';
+}
+
+export function classifyDocumentJurisdiction(document, clauses) {
+  const byId = new Map(clauses.map(c => [c.id, c]));
+  let hasAuthority = false, hasCA = false, hasFed = false, hasOther = false;
+  document.clauseOrder.forEach(entry => {
+    const clause = byId.get(clauseEntryId(entry));
+    if (!clause || clause.kind !== 'authority') return;
+    hasAuthority = true;
+    (clause.citations || []).forEach(cit => {
+      const k = classifyCitationJurisdiction(cit);
+      if (k === 'CA') hasCA = true;
+      else if (k === 'FED') hasFed = true;
+      else if (k === 'BOTH') { hasCA = true; hasFed = true; }
+      else hasOther = true;
+    });
+  });
+  if (!hasAuthority) return 'NONE';
+  if (hasCA && hasFed) return 'MIXED';
+  if (hasCA) return 'CA';
+  if (hasFed) return 'FED';
+  return hasOther ? 'OTHER' : 'NONE';
+}
+
+export const JURISDICTION_NOTICE = {
+  CA: "This document's legal clauses are sourced primarily to California law. Outside California, some of what it cites may not apply.",
+  FED: "This document's legal clauses are sourced to federal law, which applies the same way in every state.",
+  MIXED: "This document's legal clauses are sourced to a mix of California and federal law. Outside California, the California-specific parts may not apply.",
+  OTHER: "This document's legal clauses illustrate a general doctrine using out-of-state case law as examples, not a California-specific rule.",
+};
+
+// Parameter-driven port of app.js's verifyPageUrl(doc), which reads
+// state.seoBaseUrl -- release-document has no `state`, so the caller
+// passes the same baseUrl (bundled from config/seo.json by
+// tools/build_release_bundle.py, same source app.js's own
+// state.seoBaseUrl is loaded from) explicitly instead.
+export function verifyPageUrl(baseUrl, docId) {
+  const base = (baseUrl || '').replace(/\/$/, '');
+  return base ? `${base}/verify/${docId}.html` : `verify/${docId}.html`;
+}
+
 // Builds the same content-model shape app.js's buildDocumentContent()
 // does, minus the two pieces that depend on purely client-side state
 // with no server equivalent today: `signature` (drawn/typed, kept in
@@ -105,10 +175,12 @@ export function preparedForLine(document, answers) {
 // guessed at -- release-document's own file says so.
 export function buildDocumentContent(document, clauses, answers, verificationLevels) {
   const assembled = assembleDocument(document, clauses, answers);
+  const jKey = classifyDocumentJurisdiction(document, clauses);
   return {
     title: document.title,
     documentId: document.id,
     preparedFor: preparedForLine(document, answers),
+    jurisdictionNotice: jKey && jKey !== 'NONE' ? JURISDICTION_NOTICE[jKey] : null,
     conditional: describeConditionalClauses(document, clauses, answers),
     clauses: assembled.map(clause => ({
       id: clause.id,

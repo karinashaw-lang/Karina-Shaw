@@ -223,36 +223,132 @@ for real:
   today, not from any page. Issuing a refund still also needs your
   Stripe dashboard access or this function's secret either way.
 
-## 8c. Deploy and test `release-document` before trusting it with a real sale (new, 2026-11-20)
+## 8c. Deploy and test `release-document` before trusting it with a real sale (updated 2026-11-23 — partially done, one step left only you can finish)
 
 This is the function that actually renders and paywall-gates PDF/DOCX/
 text export server-side (`supabase/functions/release-document/`) —
 before it existed, every export was free and unpaywalled for everyone,
 client-side only (confirmed by `MVP_INSTRUCTIONS_STATUS.md`'s audit).
-It needs:
-- `supabase functions deploy release-document` (and the new
-  `documents` Storage bucket, already created live via migration —
-  nothing to do there).
-- A real test-mode purchase, then a real export of that same document,
-  before this goes anywhere near a real customer. This is the single
-  least-verified piece of code in this whole project: this sandbox has
-  no `deno` binary (every edge function here is checked with `tsc`
-  against hand-written type stubs, never actually run), and on top of
-  that, the two libraries that actually render the PDF and DOCX bytes
-  (`pdf-lib`, `docx`) couldn't even be installed locally to check
-  against their real types — an autonomous `npm install` was refused
-  by this session's own safety controls. Please actually open a
-  rendered PDF and DOCX before trusting this with a real sale, not
-  just confirm the request succeeds.
-- If the PDF or DOCX comes back malformed or pdf-lib/docx's real npm
-  API shape differs from what `supabase/functions/_shared/document_engine.mjs`'s
-  callers assume, that is the first place to look — the clause-
-  assembly logic itself (title, prepared-for line, clause bodies,
-  citations, conditional-clause notes) is proven byte-identical to the
-  live client by `tests/release_document/test_document_engine_parity.js`,
-  which did run and pass in this sandbox, so a problem is far more
-  likely to be in the PDF/DOCX layout code than in which content got
-  selected.
+
+**Done this session (MVP_FINISH_VERIFY_SHARPEN.md item 1.1):**
+- Comparing the actual released PDF/DOCX against the on-screen preview
+  found three real, undisclosed gaps — the rendered output had no
+  jurisdiction notice, no real per-page/footer-section document-id-and-
+  date footer, and no verify-page link, unlike the client's own export.
+  All three are fixed (see `DECISIONS.md`'s 2026-11-23 entry) and
+  covered by a parity test across 5 real documents spanning every
+  jurisdiction-notice variant (CA/FED/MIXED/none).
+- The function (real, unmodified `index.ts`/`document_engine.mjs`/
+  `rate_limit.ts`) is **already deployed live** — but with a **test-only,
+  3-document data bundle** (`nda`, `llc_operating_agreement_single_member`,
+  `noncompete`) and a **fake `baseUrl`**
+  (`https://groundtruth-test.example.com`), not the real 128-document
+  launch set, kept small on purpose to limit how much had to pass
+  through this session's own context window. **Redeploy the real bundle
+  before any real customer can reach this** — from a machine with a
+  normal `supabase` CLI and network access:
+  ```
+  python3 tools/build_release_bundle.py   # regenerates the real data/launch_set_*.json files, baseUrl='' until a domain is set
+  supabase functions deploy release-document
+  ```
+- This session set up a throwaway test buyer for its own verification
+  attempt and asked to delete it again afterward — see the session's
+  own chat record for whether that cleanup was confirmed, since this
+  file can't track that after the fact. Either way, create your own
+  fresh one rather than reusing anything from this session (anyone
+  with normal network access to supabase.co can do this in a minute or
+  two; this sandbox's own egress policy hard-blocks that host,
+  confirmed by a 403 "do not route around it" from this session's
+  proxy, which is why this session couldn't finish the step itself):
+  ```sql
+  -- 1. Run in the SQL editor, with a password of your own choosing:
+  with new_user as (
+    insert into auth.users (
+      instance_id, id, aud, role, email, encrypted_password,
+      email_confirmed_at, raw_app_meta_data, raw_user_meta_data,
+      created_at, updated_at, confirmation_token, email_change,
+      email_change_token_new, recovery_token
+    ) values (
+      '00000000-0000-0000-0000-000000000000', gen_random_uuid(),
+      'authenticated', 'authenticated', 'release-document-test@example.com',
+      extensions.crypt('<choose a password>', extensions.gen_salt('bf')),
+      now(), '{"provider":"email","providers":["email"]}', '{}',
+      now(), now(), '', '', '', ''
+    ) returning id, email
+  )
+  insert into auth.identities (id, user_id, provider_id, identity_data, provider, last_sign_in_at, created_at, updated_at)
+  select gen_random_uuid(), id, id::text, jsonb_build_object('sub', id::text, 'email', email), 'email', now(), now(), now()
+  from new_user
+  returning user_id;  -- copy this id, you'll need it below
+
+  insert into public.agreements (id, user_id, document_id, title, answers)
+  values ('owner-test-nda', '<user_id from above>', 'nda', 'Non-Disclosure Agreement',
+    '{"companyName": "Test Co.", "employeeName": "Test Person"}'::jsonb);
+
+  insert into public.entitlements (user_id, document_id, status, exports_used, exports_allowed)
+  values ('<user_id from above>', 'nda', 'active', 0, 3);
+  ```
+  ```
+  # 2. Sign in to get a real access token:
+  curl -s -X POST 'https://impurvwwjdgurbjbnydu.supabase.co/auth/v1/token?grant_type=password' \
+    -H 'apikey: <the anon/publishable key from Project Settings -> API>' \
+    -H 'Content-Type: application/json' \
+    -d '{"email":"release-document-test@example.com","password":"<the password you chose above>"}'
+  # copy the "access_token" from the response
+
+  # 3. Call release-document for the nda/pdf agreement you just seeded:
+  curl -s -X POST 'https://impurvwwjdgurbjbnydu.supabase.co/functions/v1/release-document' \
+    -H 'Authorization: Bearer <access_token from step 2>' \
+    -H 'Content-Type: application/json' \
+    -d '{"documentId":"nda","format":"pdf"}'
+  # the response's "url" is a 5-minute signed download link -- open it
+  # and confirm: real text, the jurisdiction notice (nda has none, by
+  # design -- try llc_operating_agreement_single_member or noncompete,
+  # both of which do), a footer reading "nda · generated <today>" with
+  # page numbers, and a "Verify this document's sourcing at: ..." line
+  # (real, since this test deploy's baseUrl is set -- the real deploy's
+  # won't show one until a domain is configured, by the same design the
+  # client already uses).
+  # Repeat with "format":"docx" to check the .docx the same way.
+  ```
+  ```sql
+  -- 4. Once you're done, delete your test user and its data (replace
+  -- <user_id> with the id from step 1):
+  delete from public.entitlements where user_id = '<user_id>';
+  delete from public.agreements where user_id = '<user_id>';
+  delete from auth.identities where user_id = '<user_id>';
+  delete from auth.users where id = '<user_id>';
+  ```
+- Also worth testing the same way while you're in there, per
+  `MVP_FINISH_VERIFY_SHARPEN.md` item 1.1: a second real purchase of the
+  same document (confirm `exports_used` increments and a 4th export is
+  refused once `exports_allowed` is hit), and an entitlement row with
+  `status` set to `'refunded'` or `'disputed'` (confirm release is then
+  refused) — both easy to simulate by editing the seeded entitlement row
+  directly before step 2 above, without needing a real Stripe event.
+- What this session could *not* verify, and why: a real Stripe
+  test-mode checkout, webhook delivery, refund, dispute, or duplicate-
+  webhook replay. Not a sandbox limitation this time — this session has
+  no Stripe test-mode API keys at all, so the full money path from
+  checkout through to `stripe-webhook` writing the entitlement row has
+  never run anywhere in this project. Everything above tests the half
+  of the money path downstream of that write (entitlement check through
+  rendered bytes), which is the part this session could actually reach.
+- The PDF/DOCX rendering libraries (`pdf-lib`, `docx`) themselves remain
+  the single least-verified piece of code in this project in one
+  specific sense: their real npm API shape has still only been checked
+  against hand-written `tsc` stubs (no `deno` binary in this sandbox,
+  and an autonomous `npm install` to check against the real packages
+  was refused by this session's own safety controls) — never actually
+  executed anywhere until whoever runs the curl commands above does so.
+  If the PDF or DOCX comes back malformed, that is the first place to
+  look — the clause-assembly logic itself (title, prepared-for line,
+  clause bodies, citations, conditional-clause notes, jurisdiction
+  notice) is proven byte-identical to the live client by
+  `tests/release_document/test_document_engine_parity.js`, which did
+  run and pass in this sandbox across 5 real documents, so a problem is
+  far more likely to be in the PDF/DOCX layout code than in which
+  content got selected.
 
 ## 9. Run the Step 23 user test with real people
 
