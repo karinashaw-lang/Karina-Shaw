@@ -66,6 +66,20 @@ class TestGenerateVerifyPages(unittest.TestCase):
             page = by_path['nda.html']
             self.assertIn('href="https://', page['html'])
 
+    def test_structured_data_uses_webpage_not_claimreview(self):
+        # MVP_FINISH_VERIFY_SHARPEN.md item 1.7: ClaimReview is for a
+        # fact-checker rating one specific public claim, not a company
+        # describing its own product's sourcing -- this page never had
+        # most of ClaimReview's required properties (reviewRating,
+        # a fact-checker author) anyway. WebPage/about is what this
+        # page actually is.
+        with tempfile.TemporaryDirectory() as tmp:
+            pages = gen.generate(tmp)
+            page = pages[0]
+            self.assertNotIn('ClaimReview', page['html'])
+            self.assertIn('"@type": "WebPage"', page['html'])
+            self.assertIn('"about"', page['html'])
+
     def test_page_discloses_it_describes_the_template_not_a_buyers_copy(self):
         # MVP_FINISH_VERIFY_SHARPEN.md item 1.6: a buyer reading this page
         # needs to be told, in plain words, that it's a description of the

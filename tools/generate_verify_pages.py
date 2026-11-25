@@ -161,12 +161,26 @@ def render_verify_page(doc, clauses_by_id, checked_ids, unclean_ids, base_url):
         'tier badge above.</p>' if drafting_only else ''
     )
 
+    # MVP_FINISH_VERIFY_SHARPEN.md item 1.7: ClaimReview is for a fact-
+    # checking organization rating one specific, quotable public claim
+    # ("X said Y" -> True/False/Mixture), with required properties this
+    # page never had (reviewRating with a ratingValue/bestRating/
+    # worstRating, a fact-checker `author`) -- not for a company
+    # describing its own product's sourcing methodology across many
+    # clauses. Google's own guidance (developers.google.com/search/docs/
+    # appearance/structured-data/factcheck) also phased out the
+    # associated Search rich-result treatment for general sites around
+    # mid-2025, so there was no upside left to the misuse either way.
+    # WebPage -- the type this item's own text suggests -- is what this
+    # page actually is: a page about a CreativeWork (the document
+    # template), not a review of a specific claim.
     schema = {
         '@context': 'https://schema.org',
-        '@type': 'ClaimReview',
+        '@type': 'WebPage',
         'url': url,
-        'claimReviewed': f"{doc['title']}'s legal sourcing",
-        'itemReviewed': {'@type': 'CreativeWork', 'name': doc['title']},
+        'name': title,
+        'description': description,
+        'about': {'@type': 'CreativeWork', 'name': doc['title']},
     }
 
     body = f"""<h1>Verification record: {esc(doc['title'])}</h1>

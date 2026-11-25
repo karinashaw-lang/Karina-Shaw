@@ -6980,3 +6980,47 @@ actually running the regeneration twice in a row and diffing the
 result, not just reasoning about it. New
 `tests/tools/test_build_release_bundle.py` (2 tests) guards against
 this recurring, wired into `ci.yml`.
+
+## 2026-11-25 — MVP_FINISH_VERIFY_SHARPEN.md item 1.7: verify pages were using the wrong schema.org type
+
+`tools/generate_verify_pages.py`'s structured data markup was
+`ClaimReview` — wrong for two independent reasons, not just one.
+ClaimReview is for a fact-checking organization rating one specific,
+quotable public claim ("X said Y" → True/False/Mixture), with
+required properties (`reviewRating` carrying a `ratingValue`/
+`bestRating`/`worstRating`, a qualifying fact-checker `author`) this
+page never had — it was never a correct ClaimReview to begin with,
+just one missing most of its required fields. Separately, this isn't
+what the page actually is: it's a company describing its own
+product's sourcing methodology across many clauses, not an
+independent fact-check of a specific public statement. A web search
+plus a `web-fetch` attempt at Google's own current page
+(developers.google.com/.../structured-data/factcheck — blocked by
+this sandbox's network allowlist, `ENOTFOUND`, so not independently
+re-confirmed from the primary source this time) turned up multiple
+corroborating secondary sources reporting Google phased out the
+associated Search rich-result treatment for general (non-approved-
+fact-checker) sites around mid-2025 — so even on its own terms there
+was no upside left to keep using it, on top of the two reasons above.
+
+**Fixed:** replaced it with `WebPage` (the exact type this item's own
+instruction text suggested), with an `about` property pointing at the
+document template as a `CreativeWork` — an honest description of what
+the page is, not a claim to a rich-result treatment it was never truly
+eligible for. `PHASE1_WEDGE_DISTRIBUTION_PLAN.md`'s one stale
+reference to "ClaimReview markup" updated to match (a living reference
+doc about current file behavior, not an append-only decision log, so
+correcting it in place is appropriate, unlike this file's own past
+entries, which are never rewritten).
+
+**Verification:** `tests/tools/test_generate_verify_pages.py` (8
+tests now, including a new one confirming `ClaimReview` is gone and
+`WebPage`/`about` are present) passes.
+`python3 tools/generate_verify_pages.py` /
+`python3 tools/generate_seo_pages.py` / `python3 tools/validate_seo_pages.py`
+all ran clean against the new markup (840 pages, 0 similarity/
+structural failures). The standing gate suite
+(`validate_corpus.py`, `tiering.py --check`, `build_citation_index.py
+--check`, `generate_data_inventory.py --check`, `build_release_bundle.py
+--check`, `check_accepted_disclosure.py`, `copy_lint.py`,
+`merge_guard.py origin/claude/new-session-palh5c`) all pass.

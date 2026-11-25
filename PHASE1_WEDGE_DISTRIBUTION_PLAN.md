@@ -42,7 +42,9 @@ app uses — the right pattern to copy, not reinvent.
 `/verify/<id>` page existed at all — wrong, caught only after nearly
 overwriting it. `tools/generate_verify_pages.py` already generates one
 static, deterministic page per document to `build/verify/<id>.html`
-(schema.org `ClaimReview` markup, tier + per-clause level/citation/
+(schema.org `WebPage` markup as of 2026-11-25 -- see `DECISIONS.md`;
+`ClaimReview` was the wrong type for a page that isn't fact-checking
+one specific public claim -- plus tier + per-clause level/citation/
 quote/checkedDate, a drafting-only document's own explanation of why
 it can't reach Tier A), and `app.js`'s `verifyPageUrl(doc)` is already
 wired into the plain-text, PDF, and DOCX export functions plus the
