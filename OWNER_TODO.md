@@ -350,6 +350,89 @@ client-side only (confirmed by `MVP_INSTRUCTIONS_STATUS.md`'s audit).
   far more likely to be in the PDF/DOCX layout code than in which
   content got selected.
 
+## 8d. Approve or reject 5 patch proposals on wedge documents before publishing their pages (new, 2026-11-25)
+
+`MVP_FINISH_VERIFY_SHARPEN.md` item 1.5 asked for a `review/documents/<docId>.md`
+research file on every launch-set document, wedge first, with its own
+rule: "Any missing-element finding on a wedge document is a launch
+blocker... Do not publish a wedge page until its file is written and
+its blockers are resolved." All 7 wedge documents now have one
+(`review/documents/`) — real legal research against current CA/federal
+law, not a code-review pass, using CourtListener and web search, with
+every claim either citation-checked or explicitly flagged as not yet
+confirmed to this corpus's own primary-source standard. **5 of the 7
+found a real, sourced gap** — none of these are stylistic, all come
+with a concrete patch proposal (new or changed clause text, with
+citations) for you to approve or reject. None have been applied to
+`data/clauses.json` — that's your call, consistent with this project's
+Reviewed-By discipline for clause-text changes (see `review/REVIEWED_BY_AUDIT.md`
+and item 1.3 above).
+
+1. **`llc_articles_of_organization`** — its own `llc_articles_required_content`
+   clause already quotes Cal. Corp. Code § 17702.01(b)(3), which
+   requires stating the LLC's principal office street address — but no
+   field or clause in this document actually collects or states that
+   address (only the separate agent-for-service address is collected).
+   A buyer using this document today would file articles missing a
+   statutorily required element with nothing in the interview to catch
+   it. Patch: new `principalOfficeAddress` field + new drafting clause.
+   See `review/documents/llc_articles_of_organization.md` §2.
+2. **`llc_operating_agreement_single_member`** (the wedge's flagship
+   document) — no clause addresses RULLCA's § 17704.09 fiduciary duties
+   (loyalty/care/good-faith-fair-dealing — the last is statutorily
+   non-waivable), or what happens if the sole member later admits a
+   second member. Both are standard practice for this document type.
+   See `review/documents/llc_operating_agreement_single_member.md` §8
+   for the two patch proposals. That file also flags (non-blocking, but
+   worth your attention): the `stateOfFormation` field's own example
+   value is "Delaware," even though every authority clause cites
+   California law specifically — the jurisdiction-notice mechanism
+   built earlier this session (see `DECISIONS.md`'s 2026-11-23 entry)
+   partly covers this, but the file recommends tightening further.
+3. **`llc_default_operating_rules_info_sheet`** — covers the default
+   voting-threshold rule (§17704.07) but omits California's default
+   profit/loss/distribution rule (§17704.04 — split by relative
+   *contribution value*, not ownership percentage or equal shares, a
+   commonly-misassumed point). See
+   `review/documents/llc_default_operating_rules_info_sheet.md` §8.
+4. **`llc_annual_fee_info_sheet`** — its `llcfee_addition_to_franchise_tax`
+   clause says the § 17941 flat annual LLC tax is "currently $800" with
+   no qualification. That's no longer true for every LLC: § 17941(g)(2)
+   (added by Stats. 2026, ch. 85 (SB 180), effective July 13, 2026) sets
+   that first-year amount at **$400** for an LLC whose first taxable
+   year begins on or after January 1, 2027 and before January 1, 2030.
+   This was checked twice over in this session — once by the research
+   fork, then independently re-confirmed by fetching the current
+   codified § 17941(g)(2) text directly and quoting it verbatim — so
+   the citation and quote in the patch proposal are solid; one more
+   direct check against `leginfo.legislature.ca.gov` itself (blocked
+   from this sandbox, not from a normal connection) is still recommended
+   before committing it, per this corpus's own standard. See
+   `review/documents/llc_annual_fee_info_sheet.md` §2. (The sibling
+   `llc_articles_of_organization` document's own equivalent clause
+   already discloses this correctly — confirmed, not a gap there.)
+5. **`agent_for_service_of_process_info_sheet`** — no clause states that
+   an agent's address must be a physical California street address; a
+   P.O. box is rejected by the Secretary of State. Corroborated by
+   several independent secondary sources (commercial registered-agent
+   sites, not the Secretary of State's own page directly) both by the
+   research fork and by this session's own follow-up search — flagged
+   as needing a primary-source (the actual LLC-12/SI-550 form
+   instructions) confirmation before the patch's exact wording is
+   finalized. See `review/documents/agent_for_service_of_process_info_sheet.md`'s
+   own patch-proposal section.
+
+**Two wedge documents found no blocker**: `statement_of_information` and
+`ein_info_sheet` — both files say so explicitly, with what was checked
+and ruled out (including, for the Statement of Information, a dead bill
+that would have added a beneficial-owner disclosure, and confirming the
+current federal Corporate Transparency Act/FinCEN BOI exemption status
+doesn't change anything here).
+
+**The other 121 launch-set documents (item 1.5's second half) have not
+been started** — this session did the 7 wedge documents only, as the
+item's own "wedge first" instruction asks.
+
 ## 9. Run the Step 23 user test with real people
 
 `USER_TEST_PLAN.md` is a ready-to-run, 6-task script centered on the

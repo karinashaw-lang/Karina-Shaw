@@ -7024,3 +7024,96 @@ structural failures). The standing gate suite
 --check`, `generate_data_inventory.py --check`, `build_release_bundle.py
 --check`, `check_accepted_disclosure.py`, `copy_lint.py`,
 `merge_guard.py origin/claude/new-session-palh5c`) all pass.
+
+## 2026-11-25 — MVP_FINISH_VERIFY_SHARPEN.md item 1.5: research files for the 7 wedge documents, 5 real blockers found
+
+Wrote `review/documents/<docId>.md` for all 7 wedge documents (the
+single-member-LLC-formation cluster `LAUNCH_SET_PROPOSAL.md` names as
+Wave 1), per item 1.5's required structure (governing CA law, missing
+elements, restricted provisions, federal overlay, recency, scope,
+interview-capture check). Delegated as 7 parallel background forks,
+one per document, each doing real research with the CourtListener MCP
+tools and WebSearch/WebFetch — no fabricated citations — then
+reviewed and, where needed, corrected by this coordinating session
+before committing.
+
+**5 of 7 found a real, sourced gap** (full detail and patch proposals
+in `OWNER_TODO.md` item 8d, which lists each with a direct pointer to
+its review file — not duplicated here):
+- `llc_articles_of_organization`: the document's own existing clause
+  already cites the statute requiring a principal office street
+  address, but no field/clause actually collects or states one.
+- `llc_operating_agreement_single_member` (the wedge's flagship
+  document): no fiduciary-duties clause (§17704.09) and no
+  admission-of-additional-members provision — both standard practice
+  for this document type. Also flagged non-blocking: the
+  `stateOfFormation` field's own example value is "Delaware" even
+  though every clause is CA-specific.
+- `llc_default_operating_rules_info_sheet`: covers the default voting
+  threshold but omits the default profit/loss/distribution rule
+  (§17704.04 — split by contribution value, not ownership percentage).
+- `llc_annual_fee_info_sheet`: the flat $800 annual tax clause has no
+  qualifier for § 17941(g)(2)'s new $400 first-year rate (taxable years
+  2027-2029).
+- `agent_for_service_of_process_info_sheet`: no clause states the
+  agent's address must be a physical CA street address, not a P.O. box.
+
+**2 of 7 found no blocker** (`statement_of_information`, `ein_info_sheet`)
+— both review files say so explicitly and show what was checked and
+ruled out.
+
+**A real cross-check this coordinating session had to resolve, not
+just pass through:** two forks researching the $400-first-year-tax
+fact independently landed on different bill numbers — one said SB 122,
+the other SB 180 — for what turned out to be two different, both-real
+2026 California bills (SB 122: 2026 Budget Act trailer bill, signed
+June 29, 2026; SB 180: a separate taxation trailer bill, chaptered
+July 13, 2026 as Chapter 85). Neither fork could reach
+`leginfo.legislature.ca.gov` directly (403, confirmed again here — a
+recurring pattern across every fork and the coordinating session alike
+this entry and the 2026-11-23 entry both hit). Resolved by fetching a
+secondary mirror of the *current codified text* of § 17941(g)(2)
+directly (`california.public.law`, footer-dated "updated Jul. 13,
+2026" — matching SB 180's chaptering date exactly, not SB 122's) and
+quoting its operative language verbatim: "For taxable years beginning
+on or after January 1, 2027, and before January 1, 2030, every limited
+liability company required to file a return under Section 18633.5 ...
+[shall] pay the annual tax to this state in the amount of four hundred
+dollars ($400) for its first taxable year ... instead of the amount
+specified in Section 23153." **SB 180 is correct**; SB 122 may be a
+real, separate bill that is unrelated to this specific provision, or
+an earlier vehicle later superseded — that specific claim rests on
+secondary commentary only and was not itself independently confirmed,
+and is flagged as such in `llc_annual_fee_info_sheet.md` rather than
+asserted as settled. `llc_articles_of_organization`'s own existing
+`llc_articles_annual_tax` clause was checked directly against this same
+quote and found already correct (SB 180, § 18633.5 cross-reference) —
+no gap there, confirming that one fork's independent finding of "no
+blocker on this specific point" for that document was right.
+
+**Also independently corroborated** (not newly discovered, but
+specifically checked rather than taken on the fork's word alone): the
+CA agent-for-service-of-process physical-street-address/no-P.O.-box
+rule, via a separate web search finding the same conclusion across
+multiple independent sources — still not a primary-source (Secretary
+of State form instructions) confirmation, flagged as such in that
+file.
+
+**Scope of this entry**: the 7 wedge documents only, per item 1.5's own
+"wedge first" sequencing. The other 121 launch-set documents have not
+been started.
+
+**Verification:** each review file's factual claims were either
+checked directly against a fetched source (by the writing fork, or by
+this coordinating session for the two cross-checked facts above) or
+explicitly flagged as resting on secondary sources only, never
+asserted as settled without saying which. No `data/clauses.json` edits
+were made — every patch proposal is exactly that, pending owner
+approval, consistent with this project's Reviewed-By discipline for
+clause-text changes. The standing gate suite (`validate_corpus.py`,
+`tiering.py --check`, `build_citation_index.py --check`,
+`generate_data_inventory.py --check`, `build_release_bundle.py --check`,
+`check_accepted_disclosure.py`, `copy_lint.py`, `merge_guard.py
+origin/claude/new-session-palh5c`) all pass — this entry's files live
+entirely under `review/documents/`, outside anything those checks
+validate, by design (they're research/proposals, not corpus data).
