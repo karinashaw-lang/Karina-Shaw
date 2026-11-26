@@ -98,12 +98,18 @@ been run through the verifier at all.
 | mirror | 781 |
 | secondary | 0 |
 
-**781 citations currently carry `sourceClass: "mirror"`** — a real,
-sizable queue for this plan's own Step 2 instruction ("List every
-mirror or secondary clause in `verifier/NON_PRIMARY_SOURCES.md` ...
-and queue them for primary-source re-verification"). That file does
-not exist yet; this baseline only counts the queue, it does not build
-it — that's explicitly Step 2's work, not Step 1's.
+**781 citations currently carry `sourceClass: "mirror"`**, across 459
+authority clauses. **Correction to this file's own first pass**:
+`verifier/NON_PRIMARY_SOURCES.md` already exists (written 2026-11-17
+for an earlier plan's own Step 2.2) and already satisfies this plan's
+Step 2 instruction — it splits the queue into 96 California-statute
+mirrors (Priority 1, the ones that actually matter for Step 6's
+re-verification work) and 363 federal-statute mirrors (Priority 2,
+explicitly lower priority), re-confirmed directly against today's
+corpus rather than assumed stale. An earlier pass of this step briefly
+overwrote that file with a flatter, lower-quality regeneration before
+catching the mistake and reverting it — noted here so the mistake
+isn't silently repeated.
 
 No citation in the corpus currently carries `sourceClass: "secondary"`
 — either none exist, or (more likely, given the corpus's history of

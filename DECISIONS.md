@@ -7185,3 +7185,55 @@ unprompted.
 tools/merge_guard.py origin/claude/new-session-palh5c` both pass
 (additions only — no corpus data touched by saving a planning document
 or re-measuring an existing one).
+
+## 2026-11-26 — Master plan Part 1, Step 2 (honest labels and tiers): already built; a near-miss overwrite caught and reverted
+
+GROUNDTRUTH_MASTER_BUILD_PLAN.md's Step 2 ("replace the single
+'Verified' meaning with three visible levels... add sourceClass to all
+citations... redefine tiers... update methodology.html, tiering.py,
+validate_corpus.py") is **already fully built** — confirmed directly,
+not assumed:
+- Three verification levels (Cited/Verified/Adversarially checked)
+  already exist with exactly the step's own definitions, including the
+  sourcing badge's one-line explanation (`LEVEL_LABEL`/`LEVEL_NOTE` in
+  `app.js` and `document_engine.mjs`).
+- Every one of the corpus's 11,688 citations already carries a
+  `sourceClass` — 0 missing, confirmed by counting, not assumed.
+- `tools/tiering.py`'s Tier A definition already requires every
+  authority clause at `adversarially_checked` plus a passed
+  accessibility check, exactly matching this step's redefinition.
+- `methodology.html` already states the mirror-stays-at-Cited rule in
+  exactly the terms this step asks for.
+
+**A real mistake, caught before it was committed**: this step's own
+"list every mirror or secondary clause... queue for re-verification"
+instruction led me to write a new generator,
+`tools/generate_non_primary_sources.py`, assuming
+`verifier/NON_PRIMARY_SOURCES.md` didn't exist — it already did,
+written 2026-11-17 for an earlier plan's own Step 2.2, and was
+materially richer than what I generated: a California-statute-mirror
+vs. federal-statute-mirror priority split (the CA split is the one
+that actually matters, since this product's trust claim is CA
+statutory law specifically), document-cluster grouping, and
+historical count tracking. My flatter regeneration overwrote all of
+that with a single alphabetical list. Caught via `git status` showing
+the file as modified rather than new, read the prior version from git
+history, reverted with `git checkout HEAD --`, and discarded the new
+generator and its test entirely rather than keep a duplicate,
+lower-quality artifact alongside the real one. Re-derived today's real
+mirror counts directly against the existing file's own Priority 1/2
+split instead: Priority 1 (California-statute mirrors, the actionable
+number) is **unchanged at 96**; Priority 2 (federal-statute mirrors,
+explicitly lower priority in the file's own words) has genuinely
+improved, from 475 to 363. Added a short, dated addendum to the
+existing file recording this re-check rather than rewriting it.
+
+**Lesson applied going forward in this same pass**: before assuming a
+plan step's deliverable doesn't exist, check `git log -- <path>` (or
+just read the file) before writing to it, not just whether it currently
+exists on disk as of a half-remembered earlier grep. `MVP_BASELINE.md`'s
+own text was corrected in place to stop claiming the file "does not
+exist yet."
+
+**Verification:** `python3 tools/validate_corpus.py` and `python3
+tools/merge_guard.py origin/claude/new-session-palh5c` both pass.

@@ -1,5 +1,18 @@
 # Non-primary-sourced clauses — CA Wedge Plan Step 2.2
 
+**Re-checked 2026-11-26** against `GROUNDTRUTH_MASTER_BUILD_PLAN.md`
+Part 1, Step 2.2 (a newer plan restating this same requirement — this
+file already satisfies it, not rebuilt from scratch): re-derived
+Priority 1/2 directly from today's `data/clauses.json` rather than
+trusting the 2026-11-17 counts below. **Priority 1 (California-statute
+mirrors) is unchanged at 96** — the number that actually matters here,
+since it's the one Step 6 queues for re-verification. **Priority 2
+(federal-statute mirrors) has dropped from 475 to 363** — 112 clauses
+upgraded to a primary federal source since this file was last written,
+real progress, not drift to chase. No other citation domain appears
+as a mirror outside the two groups below. The write-up, clustering, and
+reasoning below are otherwise unchanged and still accurate.
+
 Every authority clause's citations now carry a `sourceClass`
 (`tools/backfill_source_class.py`, run 2026-11-10, classified by URL
 domain — only 28 domains exist across all 11,688 citations, so every
