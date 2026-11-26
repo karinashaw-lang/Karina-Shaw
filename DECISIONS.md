@@ -7307,3 +7307,123 @@ itself needs building or changing.
 **Verification:** `python3 tests/tools/test_check_commit_discipline.py
 -v` (11/11), `python3 tools/validate_corpus.py`, `python3
 tools/merge_guard.py origin/claude/new-session-palh5c` all pass.
+
+## 2026-11-26 — Master plan Part 1, Step 6 (verify the launch set): adversarial verifier already fully run; new drafting-clause lint built; one real gap left genuinely blocked
+
+**6.1, adversarial verifier on every launch-set authority clause**:
+already fully done, not new work needed. Cross-referenced the 128
+approved launch-set documents' (`LAUNCH_SET_PROPOSAL.md`, via
+`tools/build_release_bundle.py`'s own `launch_set_ids()`) 670 unique
+authority clauses against `verifier/checked.jsonl`: **670/670 have
+already been run through the independent adversarial verifier
+pipeline** (`verifier/sample.py`/`record_result.py`, the `prompt.md`
+rubric). No cost/time estimate or owner approval gate applies to work
+that's already complete — the step's own "WAIT for approval, then run
+in parallel batches with a resume file" governs the decision to run
+the (expensive, external-research-dependent) verifier at all, and that
+decision was already made and executed before this plan existed.
+
+**6.1, drafting-clause checks (advisory language, internal
+contradiction, jurisdiction disclosure)**: genuinely new — nothing
+before today checked a clause's own `body` text; the existing
+advisory-phrase lint only ever reached field metadata
+(whyWeAsk/helpText) and search copy. Added all three to
+`tools/validate_corpus.py`, scoped to `kind == 'drafting'` exactly as
+the step names it (authority clauses carry a sourced claim and are the
+verifier's job, not this lint's):
+- **Advisory language**: reuses `lint/advisory_phrases.json` against
+  `clause['body']`. First run found 3 real hits, all the same
+  category: a government-mandated notice reproduced verbatim for a
+  third party (a mechanics-lien warning to a property owner, a
+  Civil-Code right-to-cancel notice to a buyer, an Elections Code
+  voting-leave posting) — not Groundtruth's own voice advising its
+  user, and the statute itself requires the "you must"/"you may"
+  wording that would otherwise trip the lint. Built
+  `lint/statutory_notice_clauses.json`, a small hand-justified
+  allowlist (3 entries today) in the same spirit as
+  `advisory_phrases.json`'s own curated-list convention — each
+  exception named and reasoned about individually, not a blanket
+  carve-out for anything that looks like a notice.
+- **Internal contradiction**: `lint/contradiction_pairs.json`, a
+  curated list of phrase pairs that assert opposite things. First run
+  found one real-looking hit (`patentlicense_grant` contains both "is
+  exclusive" and "is non-exclusive") that turned out to be a
+  checkbox-style clause deliberately offering either as a selectable
+  option ("___ This license is exclusive: ... ___ This license is
+  non-exclusive: ..."), not a contradiction. Added a precise fix
+  (a phrase only counts as actually *asserted* when it isn't
+  immediately preceded by a blank checkbox marker), not a blanket
+  skip — a blanket "skip any clause with 2+ checkbox blanks" signal
+  would have gutted the check for 281 of 1,632 drafting clauses, most
+  of which are plain signature-line forms with nothing to do with
+  this pattern.
+- **Jurisdiction disclosure**: flags a drafting clause whose body
+  names a governing-law state other than its own `state` field. Had
+  to switch from a bare capitalized-word capture (which falsely
+  matched "the laws of intestate succession" and "California that")
+  to a curated 51-name US-state list matched case-insensitively — the
+  freeform version was not safe to ship. Zero real mismatches exist
+  today (1,632/1,632 drafting clauses either name no state or
+  correctly name California).
+- All three checks pass clean against the live 741-document corpus
+  with zero violations once the two lint-calibration fixes above were
+  made. 7 new regression tests
+  (`tests/validate_corpus/test_drafting_clause_lint.py`) prove each
+  check both catches a deliberate violation and correctly clears its
+  one identified false-positive pattern. Updated all 7 existing
+  `validate_corpus.py`-driving test files to also copy the two new
+  lint JSON files into their synthetic throwaway corpora (the new
+  checks' `json.load()` calls are unconditional, same convention as
+  the existing `advisory_phrases.json` load) — without this, every
+  one of those tests would have started failing on a missing file,
+  not a real defect.
+
+**6.2 / 6.7, open findings in the launch set**: already confirmed zero
+(see the 2026-11-26 Step 1 baseline entry's cross-reference of all 128
+open findings against launch-set clause ids) — re-confirmed, not
+re-derived, since nothing about the corpus's finding/triage state
+changed between that entry and this one.
+
+**6.3, re-verify from primary sources**: 2 of the 3 named items are
+genuinely done — `smallclaims_judgment_enforcement` and
+`namechange_gender_identity_conforming_process` both cite
+`selfhelp.courts.ca.gov`/`courts.ca.gov` directly (`sourceClass:
+"agency"`), not a mirror. The 9 small-claims CCP sections are not: 7
+of the `smallclaims_*` cluster's 9 clauses still cite
+`california.public.law` only (`sourceClass: "mirror"`) — part of
+`verifier/NON_PRIMARY_SOURCES.md`'s already-documented 96-clause
+Priority 1 list. Re-fetching the actual CCP text requires
+`leginfo.legislature.ca.gov`, a host this sandbox's network policy
+hard-blocks (confirmed, not assumed, multiple times earlier this
+session) — reported, not routed around, as a new concrete OWNER_TODO.md
+addendum under the existing item 12 (the generic leginfo/eCFR-access
+question), naming exactly these 7 clause ids so the owner doesn't have
+to re-derive which part of Step 6.3 is actually still open.
+
+**6.4, AI Transparency Act item**: already resolved before this plan
+existed — 4 findings against `aitransparency_detection_tool` and
+`aitransparency_disclosure_requirements`, triaged `"status": "fixed"`
+2026-10-31/2026-11-03, both clauses now `"status": "verified"`. The
+document they belong to
+(`california_ai_transparency_act_info_sheet`) is not in the current
+128-document launch set at all, so this item doesn't gate Step 6's
+acceptance criterion either way.
+
+**6.5, anything unconfirmable is labeled unverified**: nothing in the
+launch set is unconfirmable today (0 clauses at `"status":
+"unverified"` corpus-wide, confirmed in the Step 1 baseline) — the 7
+mirror-sourced small-claims clauses above are already honestly labeled
+at the "Cited" level, not silently shown as "Verified," so there's
+nothing left to re-label.
+
+**6.6, verifier/LAUNCH_SET_REPORT.md**: re-checked against today's
+corpus, not regenerated — every headline number (128 docs, 1,001
+unique clauses [670 authority/331 drafting], the same level
+breakdown, 0 unverified) matches exactly what the file already says,
+so the 2026-11-20 file is current, not stale, and needed no edit.
+
+**Verification:** `python3 tools/validate_corpus.py`, `python3
+tests/validate_corpus/test_drafting_clause_lint.py -v` (7/7), all 7
+pre-existing `tests/validate_corpus/test_*.py` files (unaffected), `python3
+tests/tools/test_corpus_snapshot.py` (5/5), and `python3
+tools/merge_guard.py origin/claude/new-session-palh5c` all pass.

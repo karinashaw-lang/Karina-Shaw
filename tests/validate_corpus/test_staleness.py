@@ -29,6 +29,8 @@ REPO_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fi
 VALIDATE_CORPUS = os.path.join(REPO_ROOT, 'tools', 'validate_corpus.py')
 REAL_SCHEMA = os.path.join(REPO_ROOT, 'schema', 'field.schema.json')
 REAL_PHRASES = os.path.join(REPO_ROOT, 'lint', 'advisory_phrases.json')
+REAL_CONTRADICTION_PAIRS = os.path.join(REPO_ROOT, 'lint', 'contradiction_pairs.json')
+REAL_STATUTORY_NOTICE_CLAUSES = os.path.join(REPO_ROOT, 'lint', 'statutory_notice_clauses.json')
 
 TEST_STALENESS_CONFIG = {
     "description": "test fixture, not the real project config",
@@ -100,6 +102,8 @@ def build_corpus_dir(clauses, docs, staleness_config=None):
         json.dump({"clauses": clauses}, f)
     shutil.copy(REAL_SCHEMA, os.path.join(d, 'schema', 'field.schema.json'))
     shutil.copy(REAL_PHRASES, os.path.join(d, 'lint', 'advisory_phrases.json'))
+    shutil.copy(REAL_CONTRADICTION_PAIRS, os.path.join(d, 'lint', 'contradiction_pairs.json'))
+    shutil.copy(REAL_STATUTORY_NOTICE_CLAUSES, os.path.join(d, 'lint', 'statutory_notice_clauses.json'))
     with open(os.path.join(d, 'config', 'staleness.json'), 'w') as f:
         json.dump(staleness_config or TEST_STALENESS_CONFIG, f)
     return d

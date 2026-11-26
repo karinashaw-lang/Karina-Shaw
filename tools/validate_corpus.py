@@ -25,6 +25,7 @@ DOC = ['id', 'title', 'description', 'categories', 'clauseOrder', 'fields', 'sta
 # it. Not yet a set of multiple values, because there isn't yet a
 # second state's content for it to distinguish.
 VALID_STATES = {'CA'}
+STATE_FULL_NAMES = {'CA': 'California'}
 
 # The app has no other declaration of this list — renderCategoryFilter() in
 # app.js just derives categories live from documents.json. A category name
@@ -508,6 +509,93 @@ def main():
                 for opt in q.get('options', []):
                     lint_search_text(f'search/intake_flow.json:{category}.{q["id"]}.{opt["id"]}.label', opt.get('label'))
     check(not search_advisory_hits, f'advisory phrasing (lint/advisory_phrases.json) found in search copy: {search_advisory_hits[:5]}')
+
+    # Master Plan Part 1, Step 6.1: "checks on drafting clauses for advisory
+    # language, internal contradiction, and jurisdiction disclosure." Scoped
+    # to kind == 'drafting' exactly as the step names it — authority clauses
+    # make a sourced legal claim and are the adversarial verifier's job, not
+    # this lint's. Everything above only ever checked field metadata
+    # (whyWeAsk/helpText) or search copy; this is the first check against a
+    # clause's own body text.
+    drafting_clauses = [c for c in clauses if c.get('kind') == 'drafting']
+
+    # A handful of drafting clauses are a government-mandated notice
+    # reproduced verbatim for a third party (the property owner, the
+    # buyer, the employee) -- not Groundtruth's own voice advising its
+    # user, and the statute itself often requires the exact wording
+    # ("you must...") that would otherwise trip this lint. Each exception
+    # is named and justified individually, not a blanket carve-out.
+    statutory_notice_clauses = json.load(open('lint/statutory_notice_clauses.json'))
+
+    drafting_advisory_hits = []
+    def lint_drafting_text(tag, text):
+        before = len(advisory_hits)
+        lint_text(tag, text)
+        drafting_advisory_hits.extend(advisory_hits[before:])
+    for c in drafting_clauses:
+        if c['id'] in statutory_notice_clauses:
+            continue
+        lint_drafting_text(f'clause:{c["id"]}.body', c.get('body'))
+    check(not drafting_advisory_hits, f'advisory phrasing (lint/advisory_phrases.json) found in a drafting clause body: {drafting_advisory_hits[:5]}')
+
+    # Internal contradiction: a curated list of phrase pairs that assert
+    # opposite things (lint/contradiction_pairs.json, same hand-curated-list
+    # convention as advisory_phrases.json/enforcement_phrases.json). A
+    # checkbox-style clause offering either phrase as a selectable option
+    # ("___ This license is exclusive: ... ___ This license is
+    # non-exclusive: ...") is not a contradiction, so a phrase only counts
+    # as actually *asserted* when it isn't immediately preceded by a blank
+    # checkbox marker.
+    contradiction_pairs = json.load(open('lint/contradiction_pairs.json'))
+    checkbox_re = re.compile(r'_{3,}\s*')
+    def asserted(body, phrase):
+        low, phrase_low = body.lower(), phrase.lower()
+        start = 0
+        while True:
+            i = low.find(phrase_low, start)
+            if i == -1:
+                return False
+            if not checkbox_re.search(body[max(0, i - 20):i]):
+                return True
+            start = i + 1
+    contradiction_hits = []
+    for c in drafting_clauses:
+        body = c.get('body') or ''
+        for a, b in contradiction_pairs:
+            if asserted(body, a) and asserted(body, b):
+                contradiction_hits.append(f'clause:{c["id"]} asserts both {a!r} and {b!r}')
+    check(not contradiction_hits, f'internal contradiction (lint/contradiction_pairs.json) found in a drafting clause body: {contradiction_hits[:5]}')
+
+    # Jurisdiction disclosure: a drafting clause's own `state` field is CA
+    # today (VALID_STATES), so a governing-law sentence naming a different
+    # state is leftover template boilerplate, not a real disclosure. Matched
+    # against a curated US-state-name list (not a bare capitalized-word
+    # capture) so a phrase like "the laws of intestate succession" is never
+    # mistaken for a jurisdiction claim in the first place.
+    us_state_names = sorted(set(STATE_FULL_NAMES.values()) | {
+        'Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado',
+        'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho',
+        'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana',
+        'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota',
+        'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada',
+        'New Hampshire', 'New Jersey', 'New Mexico', 'New York',
+        'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma', 'Oregon',
+        'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota',
+        'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington',
+        'West Virginia', 'Wisconsin', 'Wyoming', 'District of Columbia',
+    }, key=len, reverse=True)
+    governing_law_re = re.compile(
+        r'laws? of (?:the state of )?(' + '|'.join(re.escape(s) for s in us_state_names) + r')\b',
+        re.IGNORECASE)
+    jurisdiction_hits = []
+    for c in drafting_clauses:
+        body = c.get('body') or ''
+        expected = STATE_FULL_NAMES.get(c.get('state'))
+        for m in governing_law_re.finditer(body):
+            named_state = m.group(1)
+            if expected and named_state.lower() != expected.lower():
+                jurisdiction_hits.append(f'clause:{c["id"]} names {named_state!r} as governing law, but state field is {c.get("state")!r}')
+    check(not jurisdiction_hits, f'jurisdiction disclosure mismatch (clause body names a different state than its own state field): {jurisdiction_hits[:5]}')
 
     # No document has a real showIf yet (Phase 2.4), but the cycle check is
     # written generically now so it's already correct the day one exists,

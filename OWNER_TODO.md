@@ -495,6 +495,28 @@ Found during Part B's citation recheck (`review/CITATION_RECHECK_REPORT.md`,
   the 113 eCFR-cited and 7,281 leginfo-cited citations (73.1% of all
   authority clauses) could actually be re-verified instead of staying
   blocked indefinitely.
+- **Concrete work item blocked on this, found 2026-11-26**: Master plan
+  Step 6.3 asks to "re-verify from primary sources: the 9 small-claims
+  CCP sections, the small-claims judgment-enforcement clause, and the
+  name-change SB 59 / AB 1084 clause." The judgment-enforcement clause
+  (`smallclaims_judgment_enforcement`) and the name-change clause
+  (`namechange_gender_identity_conforming_process`) are both already
+  genuinely resolved — each cites `selfhelp.courts.ca.gov` /
+  `courts.ca.gov` directly, `sourceClass: "agency"`, not a mirror. The
+  7 small-claims CCP clauses are not:
+  `smallclaims_jurisdiction_and_dollar_limits`,
+  `smallclaims_no_attorney_at_hearing`, `smallclaims_service_of_the_claim`,
+  `smallclaims_defendants_claim_option`,
+  `smallclaims_judgment_and_asymmetric_appeal`,
+  `smallclaims_vexatious_filer_limit`, `smallclaims_advisor_services` —
+  all 7 still cite `california.public.law` only (`sourceClass: "mirror"`,
+  part of `verifier/NON_PRIMARY_SOURCES.md`'s 96-clause Priority 1
+  list), so under this corpus's own three-level system they display at
+  "Cited," not "Verified," until someone with leginfo access confirms
+  each CCP section's text directly. The launch set does not gate
+  purchase on citation level today, so this isn't a blocker to
+  publishing, but it's the one piece of Step 6.3 this sandbox cannot
+  finish on its own.
 
 ## 13. CourtListener's own API quota is capping how fast B1's second half can finish
 
