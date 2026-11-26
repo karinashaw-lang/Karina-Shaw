@@ -631,6 +631,16 @@ def main():
                 except ValueError:
                     bad_filing.append(f'{tag}: missing or malformed checkedDate')
 
+                # GROUNDTRUTH_MASTER_BUILD_PLAN.md Part 1, Step 3: the
+                # same `state` field required on every document/clause/
+                # citation also belongs on filing-instruction data —
+                # the plan names this file specifically ("filing-
+                # instruction data"), and it was the one real gap Step
+                # 3 found still unbackfilled (documents/clauses/
+                # citations already had 100% coverage).
+                if step.get('state') not in VALID_STATES:
+                    bad_filing.append(f'{tag}: missing or invalid state')
+
                 citations = step.get('citations') or []
                 if not citations:
                     bad_filing.append(f'{tag}: no citations')
@@ -640,6 +650,8 @@ def main():
                             bad_filing.append(f'{tag}: citation missing {field}')
                     if ct.get('url') and not ct['url'].startswith('https://'):
                         bad_filing.append(f'{tag}: citation url is not https://')
+                    if ct.get('state') not in VALID_STATES:
+                        bad_filing.append(f'{tag}: citation missing or invalid state')
 
                 reminder = step.get('reminder')
                 if reminder:

@@ -81,8 +81,9 @@ VALID_STEP = {
     "title": "File a follow-up form",
     "body": "A real agency requires a follow-up filing within a set window after this document is signed.",
     "checkedDate": date.today().isoformat(),
+    "state": "CA",
     "citations": [
-        {"case": "Test Agency Rule 1", "cite": "Test Code § 1", "url": "https://example.com/agency", "quote": "the filing must be made within the window"},
+        {"case": "Test Agency Rule 1", "cite": "Test Code § 1", "url": "https://example.com/agency", "quote": "the filing must be made within the window", "state": "CA"},
     ],
     "reminder": {"dateFieldId": "filedDate", "offsetDays": 90, "label": "Follow-up filing due"},
 }
@@ -187,6 +188,30 @@ class FilingNextStepsTests(unittest.TestCase):
         r = self.run_with(next_steps=steps, doc=doc_with_date_field())
         self.assertEqual(r.returncode, 1, r.stdout + r.stderr)
         self.assertIn('no citations', r.stderr)
+
+    def test_step_missing_state_caught(self):
+        # GROUNDTRUTH_MASTER_BUILD_PLAN.md Part 1, Step 3: filing-
+        # instruction data carries the same `state` field as every
+        # document/clause/citation, enforced the same way.
+        steps = valid_next_steps()
+        del steps['test_doc'][0]['state']
+        r = self.run_with(next_steps=steps, doc=doc_with_date_field())
+        self.assertEqual(r.returncode, 1, r.stdout + r.stderr)
+        self.assertIn('missing or invalid state', r.stderr)
+
+    def test_step_non_ca_state_caught(self):
+        steps = valid_next_steps()
+        steps['test_doc'][0]['state'] = 'NY'
+        r = self.run_with(next_steps=steps, doc=doc_with_date_field())
+        self.assertEqual(r.returncode, 1, r.stdout + r.stderr)
+        self.assertIn('missing or invalid state', r.stderr)
+
+    def test_citation_missing_state_caught(self):
+        steps = valid_next_steps()
+        del steps['test_doc'][0]['citations'][0]['state']
+        r = self.run_with(next_steps=steps, doc=doc_with_date_field())
+        self.assertEqual(r.returncode, 1, r.stdout + r.stderr)
+        self.assertIn('citation missing or invalid state', r.stderr)
 
     def test_citation_missing_quote_caught(self):
         steps = valid_next_steps()

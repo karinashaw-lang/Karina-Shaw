@@ -7237,3 +7237,35 @@ exist yet."
 
 **Verification:** `python3 tools/validate_corpus.py` and `python3
 tools/merge_guard.py origin/claude/new-session-palh5c` both pass.
+
+## 2026-11-26 — Master plan Part 1, Step 3 (state field schema future-proofing): mostly already built, one real gap closed
+
+Documents, clauses, and citations already carry a `state` field
+(default/only value `"CA"` today), already enforced by
+`tools/validate_corpus.py` (`VALID_STATES = {'CA'}`, checked against
+every document/clause/citation) — this was done under an earlier
+plan's own "CA Wedge Plan Step 3," confirmed by reading the code's own
+comment referencing it, not assumed from this new plan's "already
+built" claim.
+
+**One real gap found and closed**: `filing/next_steps.json` — named
+specifically in this step's own text ("filing-instruction data") — had
+no `state` field on its 6 step entries or their 10 citations, and
+`validate_corpus.py` didn't check this file for `state` at all. Backfilled
+`"state": "CA"` onto every step and citation in the file (all genuinely
+California content, consistent with every other record in the corpus),
+and added the same `VALID_STATES` check this file's other fields
+already get (`validate_corpus.py`'s existing filing/next_steps.json
+validation block). Updated `tests/validate_corpus/test_filing_next_steps.py`'s
+shared `VALID_STEP` fixture to include the new field (3 existing tests
+would otherwise have started failing, correctly, since the check is
+real) and added 3 new regression tests confirming a missing or
+non-`"CA"` state on either a step or its citation is actually caught.
+
+**Verification:** `python3 tools/validate_corpus.py`,
+`python3 tests/validate_corpus/test_filing_next_steps.py -v` (22/22),
+`python3 tests/tools/test_corpus_snapshot.py` (5/5),
+`GOLDEN_BASE_URL="file://$(pwd)" node tests/filing/next_steps.js`
+(all pass, confirming the new field doesn't break
+app.js's own next-steps rendering/export path), and `python3
+tools/merge_guard.py origin/claude/new-session-palh5c` all pass.
