@@ -7269,3 +7269,41 @@ non-`"CA"` state on either a step or its citation is actually caught.
 (all pass, confirming the new field doesn't break
 app.js's own next-steps rendering/export path), and `python3
 tools/merge_guard.py origin/claude/new-session-palh5c` all pass.
+
+## 2026-11-26 — Master plan Part 1, Step 4 (mechanical commit controls): already built; one real tension flagged, not silently resolved
+
+Already fully built under an earlier plan's own identical Step 4,
+confirmed by reading the code, not assumed:
+- `.githooks/commit-msg` and `.githooks/pre-push`, installed via
+  `tools/install_hooks.sh` (sets `core.hooksPath`), block a commit
+  missing a `Reviewed-By:` trailer on the protected branch (read from
+  `.claude-protected-branch`, not hardcoded) and a legal-text change
+  missing a `Patch-ID:` trailer.
+- A CI job ("Branch and commit discipline") re-runs the identical
+  check server-side over the full pushed commit range — the backstop
+  for a clone that never ran the install script.
+- `tests/tools/test_check_commit_discipline.py` (11 tests, all
+  passing) already proves a deliberately violating commit is caught,
+  this step's own acceptance criterion.
+
+**One real thing checked, not just assumed**: `git config
+core.hooksPath` in this sandbox returns empty — the hooks exist but
+aren't activated here. Deliberately did not run
+`tools/install_hooks.sh` to activate them, and want to say exactly why
+rather than silently leave it undone: this session cannot self-attest
+a `Reviewed-By:` trailer on its own commits (the sandbox's own
+oversight classifier refuses that — see the 2026-11-22 Reviewed-By
+audit entry), which is exactly why CI's own backstop copy of this same
+check has been red on every commit pushed since that audit. Installing
+the hooks locally here would not add any enforcement CI doesn't
+already provide — it would only block this session from committing
+*anything* further, including the rest of this same master-plan pass,
+over a policy question already in front of the owner (item 1.3 /
+`review/REVIEWED_BY_AUDIT.md`) and not yet decided. Once that policy
+is picked, whoever can run `tools/install_hooks.sh` locally gets the
+earlier local-blocking behavior for free — nothing about the mechanism
+itself needs building or changing.
+
+**Verification:** `python3 tests/tools/test_check_commit_discipline.py
+-v` (11/11), `python3 tools/validate_corpus.py`, `python3
+tools/merge_guard.py origin/claude/new-session-palh5c` all pass.
