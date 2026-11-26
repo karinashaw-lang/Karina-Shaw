@@ -1,92 +1,129 @@
-# MVP baseline — Part A, Task A0
+# MVP Baseline — GROUNDTRUTH_MASTER_BUILD_PLAN.md, Part 1, Step 1
 
-Run 2026-11-17, against branch `claude/new-session-palh5c`. Confirms
-the handoff spec's Section 2 against live tools today. Methodology for
-every number below (verification-level computation, sourceClass
-breakdown, staleness thresholds) is identical to `REVIEW_BASELINE.md`
-(written the same day for Part B's own B0) — this file exists
-separately because the spec asks for it by name and because Part A
-tracks a few things Part B's baseline doesn't (the wedge's own tier
-status, pricing, SEO page count).
+**This file existed before today**, last written 2026-11-17 for an
+earlier plan's own Part A, Task A0 — this step overwrote it with
+today's numbers, the same established practice that earlier version
+itself documented (`BUILD_STATUS.md`/`tiers.json` get refreshed, not
+kept as a historical log); the 2026-11-17 version is still fully
+readable via `git show <a commit before this one>:MVP_BASELINE.md`,
+not deleted. That version flagged 2 authority clauses with
+`"status": "unverified"` (a step below even "cited"):
+`namechange_gender_identity_conforming_process` and
+`smallclaims_judgment_enforcement`. Re-checked today: **both now carry
+`"status": "verified"`**, and **zero clauses in the corpus carry
+`"status": "unverified"`** — real progress since the last baseline,
+not a carried-forward gap.
 
-**This file existed before today, under an earlier plan iteration**
-("Complete MVP Build Plan," dated 2026-11-10, taken at commit
-`b6b96eb`) and this task overwrote it with today's numbers, the same
-way `BUILD_STATUS.md` or `tiers.json` get refreshed rather than kept
-as a historical log — the 2026-11-10 version is still fully readable
-in git history (`git show <a commit before this one>:MVP_BASELINE.md`),
-not deleted. One fact from that version worth carrying forward
-explicitly since this file's own methodology table doesn't otherwise
-surface it: that baseline found **2 authority clauses with
-`"status": "unverified"`** (not `"verified"` at all, a step below
-even `cited`) — re-checked today, both are still exactly the same 2,
-unchanged: `namechange_gender_identity_conforming_process` and
-`smallclaims_judgment_enforcement`. Neither has regressed or been
-silently resolved; both still disclose the gap honestly in their own
-`gap` field.
+Step 1's own instruction: "Re-measure from scratch: documents, clauses,
+citations, tier counts, verifier coverage, open findings by severity,
+unverified clauses, and clauses relying on mirror or secondary sources.
+Write MVP_BASELINE.md and flag any mismatch with BUILD_STATUS." No code
+changes made for this step — pure measurement, re-derived directly from
+the live corpus and verifier state files, not copied from any other
+document.
 
-## Confirming Section 2
+## Corpus size
 
-| Claim | Confirmed |
-| --- | --- |
-| 741 documents, 9 categories | Exact match |
-| 6,621 clauses (4,989 authority, 1,632 drafting) | Exact match |
-| 11,688 citations | Exact match |
-| Tiers: 15 A, 314 B, 412 C | Exact match |
-| Findings: 318 logged (0 open blocker, 0 open major, 148 open minor, 64 fixed, 106 accepted) | Exact match, re-derived directly from `findings.jsonl` × `triage.jsonl`, not just trusted from `--summary` |
-| Adversarial coverage ~22% at Nov 10, current unknown | **Now known: 23.5%** clean (1,172/4,989); 32.5% reached by the checkpoint at all, clean or not. 67.5% (3,368 clauses) never reached — see `REVIEW_BASELINE.md` §2 for the full breakdown. |
-| Launch wedge: 7 documents, Tier A or B | **Confirmed, checked individually today:** `llc_default_operating_rules_info_sheet` A, `agent_for_service_of_process_info_sheet` A, `llc_annual_fee_info_sheet` A, `llc_articles_of_organization` B, `ein_info_sheet` B, `llc_operating_agreement_single_member` B, `statement_of_information` B. 0 of the 7 are Tier C. |
-| Stripe test mode only; `config/pricing.json` is null by design | Confirmed — `monthlyPriceUsd`/`annualPriceUsd` still `null`; model is `subscription` per the owner's 2026-11-10 decision. |
-| 840 SEO pages generated, none published | Confirmed — `python3 tools/generate_seo_pages.py` produces 741 document pages + 99 question pages = 840 today; `build/seo/` stays gitignored, `config/seo.json`'s `baseUrl` is still `""`. |
+- **741** documents.
+- **6,621** clauses — **4,989** authority (make a legal claim, carry a
+  citation), **1,632** drafting (plain contract language, no legal
+  claim, no citation).
+- **11,688** citations across those clauses.
 
-No mismatches. Section 2's numbers were accurate.
+No mismatch with `BUILD_STATUS.md`, which states the same 741/6,621
+split and citation count.
 
-## What this means for A1-A5
+## Verification levels (authority clauses only — drafting clauses carry
+no level, by design)
 
-- **A1** (honest labels and tiers): already substantially built.
-  `tools/tiering.py`'s Tier A gate already requires a golden fixture,
-  fresh (non-stale) check dates, zero open findings via adversarial
-  review, and an accessibility pass — and already hard-blocks
-  drafting-only documents from Tier A (`drafting_only` → always
-  appends the blocking reason, confirmed no current Tier A document
-  is drafting-only: 0 of 15). The one real gap found and fixed today:
-  the clause badge's one-line explanation (`LEVEL_NOTE` in `app.js`)
-  only existed for the `cited` level — `verified` and
-  `adversarially_checked` rendered no explanation at all, failing the
-  spec's "badge shows level, check date, one-line explanation" for
-  two of the three levels. Fixed; see this task's commit.
-  `verifier/NON_PRIMARY_SOURCES.md` was stale (578 mirror-citing
-  clauses as of 2026-11-10; really 571 today after Step 22's own
-  upgrades) — corrected.
-- **A3** (confirm the LLC wedge): the tier confirmation above already
-  answers "are all 7 wedge documents Tier A/B" — yes. Whether every
-  wedge authority clause is specifically *adversarially checked*
-  (not just Tier-B-level verified) still needs a per-clause check;
-  not done in this baseline task.
-- **A4** (launch set, 100-150 documents): not started — explicit WAIT
-  gate, owner approval required before this is proposed.
-- **A5** (verify the launch set): blocked on A4.
-- **A6** (pricing decision): not started — owner decision, not
-  engineering.
+| Level | Count | Share of authority clauses |
+|---|---|---|
+| Adversarially checked | 1,286 | 25.8% |
+| Verified | 3,244 | 65.0% |
+| Cited (sourced, not yet independently confirmed) | 459 | 9.2% |
 
-## Source reachability (shared fact with `REVIEW_BASELINE.md`)
+"Unverified" in the strict sense (no citation confirmed against a
+primary source at all) means the 459 clauses sitting at "Cited" —
+sourced, but the quote hasn't been independently re-checked against the
+primary text yet, per this corpus's own three-level definition (already
+built, matching this plan's Step 2 relabeling — no new system needed,
+just confirmed the existing one already draws this exact distinction).
 
-Checked live today: `leginfo.legislature.ca.gov` and
-`california.public.law` both still return 403 (via `curl` and
-`WebFetch` alike), and `law.onecle.com`'s TLS connection doesn't
-complete at all. **Updated 2026-11-18: `www.ecfr.gov` joins this list**
-— every real eCFR URL redirects to a bot-verification page this
-sandbox's own proxy refuses to reach; the earlier claim that this
-domain was reachable (based on a bare-root check that didn't follow
-the redirect) was wrong, corrected in `REVIEW_BASELINE.md` and
-`review/SOURCE_BLOCKS.md`. **This is not just the 96 Priority-1
-mirror-citing clauses' problem** — `leginfo.legislature.ca.gov` alone
-carries 62% of all 11,688 citations, and a full count found 73.1% of
-authority clauses (3,646 of 4,989) cite at least one of the four
-blocked domains. See `review/SOURCE_BLOCKS.md` for the exact URLs and
-the owner's questions, and `REVIEW_BASELINE.md` §3/§5 for how this
-changes the B1-B4 cost estimate. `www.courtlistener.com` is 403 as a
-raw fetch but the dedicated CourtListener MCP tool works. `govinfo.gov`,
-`law.cornell.edu`, and `oag.ca.gov` are all reachable. The reachable
-citations (35.4% of the corpus) have now actually been rechecked, not
-just estimated — see `review/CITATION_RECHECK_REPORT.md`.
+## Document tiers
+
+| Tier | Count | Share |
+|---|---|---|
+| A (at least one authority clause, every authority clause adversarially checked, zero open findings) | 29 | 3.9% |
+| B (every authority clause at least Verified; may include adversarially-checked ones too) | 322 | 43.5% |
+| C (everything else, including drafting-only documents, which can never reach Tier A) | 390 | 52.6% |
+
+Matches `BUILD_STATUS.md`'s own "29 at Tier A, 322 at Tier B" figures
+exactly — no mismatch found.
+
+## Verifier coverage / open findings by severity
+
+From `verifier/findings.jsonl` + `verifier/triage.jsonl` (329 findings
+total, using `verifier/triage.py`'s own loader, not a reimplementation):
+
+| Status | Count |
+|---|---|
+| Fixed | 88 |
+| Accepted (disclosed via the clause's own `gap` field — enforced by `tools/check_accepted_disclosure.py` in CI as of 2026-11-22) | 113 |
+| Open | 128 |
+
+Open findings by severity: **2 major**, **126 minor**, **0 blockers**
+(no `blocker` severity value exists in the data at all — the verifier's
+severity scale in this corpus only has `minor`/`major`, confirmed by
+reading the actual file rather than assumed from the plan's own
+blocker/major/minor framing). Cross-referenced all 128 open findings'
+clause ids against every document that clause id appears in (not a
+sample): **zero of the 128 open findings touch any clause used in a
+launch-set document.** All open findings sit entirely outside the
+128-document launch set approved 2026-11-18
+(`LAUNCH_SET_PROPOSAL.md`). This matches this plan's own Step 6
+acceptance criterion ("zero open blockers or majors in the launch
+set") as already true today, before Step 6's own verification work
+even starts — worth confirming again once Step 6 actually runs the
+adversarial verifier fresh, since this measurement only checked
+existing findings, not whether every launch-set authority clause has
+been run through the verifier at all.
+
+## Clauses relying on mirror or secondary sources
+
+| sourceClass | Citation count |
+|---|---|
+| primary-official | 7,807 |
+| court-opinion | 2,572 |
+| agency | 528 |
+| mirror | 781 |
+| secondary | 0 |
+
+**781 citations currently carry `sourceClass: "mirror"`** — a real,
+sizable queue for this plan's own Step 2 instruction ("List every
+mirror or secondary clause in `verifier/NON_PRIMARY_SOURCES.md` ...
+and queue them for primary-source re-verification"). That file does
+not exist yet; this baseline only counts the queue, it does not build
+it — that's explicitly Step 2's work, not Step 1's.
+
+No citation in the corpus currently carries `sourceClass: "secondary"`
+— either none exist, or (more likely, given the corpus's history of
+incremental `sourceClass` backfilling) some citations may still be
+missing a `sourceClass` value entirely rather than correctly carrying
+"secondary." Not checked in this pass — worth confirming in Step 2
+before assuming the queue is mirror-only.
+
+## Mismatches found with BUILD_STATUS.md
+
+**None.** Every number re-measured here (document/clause/citation
+counts, Tier A/B counts) matches `BUILD_STATUS.md`'s own existing
+figures exactly. `BUILD_STATUS.md` does not currently state the
+open-findings-by-severity breakdown or the mirror-citation count in
+the same terms this baseline uses, so there is nothing to compare
+those two against — not a mismatch, just a gap this baseline newly
+fills.
+
+## Scope note
+
+This file is the Step 1 deliverable only. It does not relabel clauses,
+redefine tiers, build `NON_PRIMARY_SOURCES.md`, or touch any code —
+all of that is Step 2 and later, per the plan's own sequencing.
