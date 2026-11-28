@@ -51383,5 +51383,100 @@
       }
     ],
     "state": "CA"
+  },
+  {
+    "id": "roommate_agreement",
+    "title": "Roommate Agreement",
+    "description": "An agreement among roommates who share a rented residential unit -- splitting rent and utility costs, distinguishing shared from private space, recording house rules, setting move-out notice between roommates, and handling a shared security deposit contribution -- while explaining that this is a private contract among the roommates themselves, separate from the master lease: a roommate who is not named as a tenant on that lease has no direct legal relationship with the landlord by virtue of this Agreement alone, Civil Code § 1950.5's deposit rules run between the landlord and the tenant(s) named on the lease rather than between roommates, and co-tenants who sign the master lease together are generally presumed jointly and severally liable to the landlord for the whole rent regardless of how this Agreement divides it between them.",
+    "categories": [
+      "Real Estate"
+    ],
+    "clauseOrder": [
+      "roommate_parties_and_premises",
+      "roommate_landlord_relationship_and_deposit",
+      "roommate_rent_utility_split",
+      "roommate_joint_several_liability",
+      "roommate_shared_private_spaces_and_house_rules",
+      "roommate_move_out_notice",
+      "roommate_deposit_contribution",
+      "roommate_signatures"
+    ],
+    "fields": [
+      {
+        "id": "propertyAddress",
+        "label": "Rental unit address",
+        "type": "address",
+        "required": true,
+        "placeholder": "123 Main St, Apt 4, Springfield",
+        "example": "123 Main St, Apt 4, Springfield",
+        "whyWeAsk": "This is the address of the rental unit the Roommates share.",
+        "sharedFieldId": "propertyAddress"
+      },
+      {
+        "id": "roommate1Name",
+        "label": "First roommate's full name",
+        "type": "person-name",
+        "required": true,
+        "placeholder": "Jordan Alex Lee",
+        "example": "Jordan Alex Lee",
+        "whyWeAsk": "This field names one of the Roommates entering into this Agreement."
+      },
+      {
+        "id": "roommate2Name",
+        "label": "Second roommate's full name",
+        "type": "person-name",
+        "required": true,
+        "placeholder": "Morgan Lee",
+        "example": "Morgan Lee",
+        "whyWeAsk": "This field names another Roommate entering into this Agreement."
+      },
+      {
+        "id": "additionalRoommateNames",
+        "label": "Other roommates' names, if more than two (optional)",
+        "type": "longtext",
+        "required": false,
+        "placeholder": "Taylor Kim; Sam Rivera",
+        "example": "Taylor Kim; Sam Rivera",
+        "whyWeAsk": "This names any other Roommates sharing the Unit beyond the first two, if any."
+      },
+      {
+        "id": "masterLeaseTenantNames",
+        "label": "Name(s) exactly as listed as tenant(s) on the Master Lease with the landlord",
+        "type": "text",
+        "required": true,
+        "placeholder": "Jordan Alex Lee and Morgan Lee",
+        "example": "Jordan Alex Lee and Morgan Lee",
+        "whyWeAsk": "This is the name or names exactly as they appear as tenant(s) on the Master Lease with the landlord, since that is who has a direct legal relationship with the landlord."
+      },
+      {
+        "id": "totalMonthlyRent",
+        "label": "Total monthly rent for the Unit under the Master Lease",
+        "type": "money",
+        "required": true,
+        "placeholder": "3,600",
+        "example": "3,600",
+        "whyWeAsk": "This is the total monthly rent the tenant(s) owe the landlord under the Master Lease.",
+        "sharedFieldId": "monthlyRent"
+      },
+      {
+        "id": "securityDepositTotal",
+        "label": "Total security deposit already paid to the landlord",
+        "type": "money",
+        "required": true,
+        "placeholder": "3,600",
+        "example": "3,600",
+        "whyWeAsk": "This is the total security deposit already paid to the landlord for the Unit."
+      },
+      {
+        "id": "moveOutNoticeDays",
+        "label": "Days of notice a Roommate must give before moving out",
+        "type": "integer",
+        "required": true,
+        "placeholder": "30",
+        "example": "30",
+        "whyWeAsk": "This is how many days of notice a Roommate agrees to give the others before moving out."
+      }
+    ],
+    "state": "CA"
   }
 ]

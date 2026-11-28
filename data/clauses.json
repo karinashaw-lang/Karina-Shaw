@@ -168498,6 +168498,112 @@
       "kind": "drafting",
       "body": "Signed:\n\nSeller: _______________________ Date: _______________\nBuyer: _______________________ Date: _______________",
       "state": "CA"
+    },
+    {
+      "id": "roommate_parties_and_premises",
+      "title": "Parties and the Shared Unit",
+      "kind": "drafting",
+      "body": "This Roommate Agreement is entered into by and among {{roommate1Name}} and {{roommate2Name}} (together with any additional Roommates named below, the \"Roommates\"), who share occupancy of the residential unit located at {{propertyAddress}} (the \"Unit\"). Additional Roommates sharing the Unit under this Agreement, if any, beyond those named above: {{additionalRoommateNames}}. The Unit is rented from a landlord under a separate rental agreement or lease (the \"Master Lease\"), on which {{masterLeaseTenantNames}} is or are named as the tenant(s). This Roommate Agreement is a private agreement among the Roommates about how they will share the Unit and divide costs and responsibilities between themselves. It is separate from, and does not modify, the Master Lease or any Roommate's or the landlord's rights and obligations under it.",
+      "state": "CA"
+    },
+    {
+      "id": "roommate_landlord_relationship_and_deposit",
+      "title": "Roommates' Legal Relationship to the Landlord and the Security Deposit",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-11-28",
+      "body": "California's main statute governing residential security deposits, Civil Code § 1950.5, applies to “security for a rental agreement for residential property that is used as the dwelling of the tenant,” and provides that any such security “shall be held by the landlord for the tenant who is party to the lease or agreement,” with the tenant's claim to it prior to that of the landlord's creditors. {{masterLeaseTenantNames}} is or are named as the tenant(s) on the Master Lease for {{propertyAddress}}. A Roommate who signs this Agreement but is not named as a tenant on the Master Lease does not, by signing this Agreement alone, become a tenant under the Master Lease or acquire Civil Code § 1950.5's protections directly against the landlord. The reimbursement and contribution arrangement this Agreement describes for the security deposit (see “Security Deposit Contributions and Reimbursement” above) is a private promise among the Roommates about how they will divide money among themselves once the landlord accounts for and returns the deposit under Civil Code § 1950.5 -- it is not a claim that Civil Code § 1950.5 itself gives one Roommate against another, because that statute's deposit-handling duties run between the landlord and the tenant(s) who are party to the lease, not between roommates.",
+      "gap": "leginfo.legislature.ca.gov returned a Cloudflare interstitial challenge page (HTTP 403) on a direct fetch attempt for Civil Code § 1950.5, rather than the statute text, so this clause relies on law.onecle.com, a secondary mirror, disclosed here as sourceClass \"mirror\" rather than treated as primary. The onecle snapshot used for the verbatim quotes below is dated to a 2013-amended version of the statute (pre-dating the 2023-2024 amendments, AB 12, that lowered the deposit amount cap in subdivision (c)); this clause does not rely on or quote subdivision (c)'s dollar/month cap at all, only subdivisions (a) and (d), and a second, more current mirror (california.public.law, fetched through a different tool path that reached it where a direct terminal fetch was itself blocked) was used to cross-check that subdivision (d)'s \"held by the landlord for the tenant who is party to the lease or agreement\" language is unchanged in the current (2025-2026) text -- so the specific textual point this clause rests on has been corroborated against two independent mirror snapshots, even though neither is the official leginfo source. Both citations below are subdivisions of the same statutory section (§ 1950.5(a) and (d)), disclosed here as one section read twice rather than two independent sources. This clause also does not rest on any case law specifically adjudicating a dispute between roommates over a deposit-contribution promise -- no such case was located -- so the conclusion that § 1950.5 itself does not reach roommate-to-roommate reimbursement is drawn directly from the statute's own \"tenant who is party to the lease\" language rather than from a court applying it to a roommate scenario. Separately, this document does not assume that a Roommate who is not named on the Master Lease can never come to have a direct relationship with the landlord by some other route (for example, if the landlord later adds that person to the lease, accepts rent directly from them in a way that creates a new tenancy, or the Master Lease's own occupant provisions say otherwise) -- that depends on facts and documents outside this Agreement.",
+      "citations": [
+        {
+          "case": "Cal. Civ. Code § 1950.5(a) (text via law.onecle.com mirror; leginfo.legislature.ca.gov blocked a direct fetch attempt)",
+          "cite": "California Civil Code, the security-deposit statute applies to a residential tenant’s security",
+          "url": "https://law.onecle.com/california/civil/1950.5.html",
+          "quote": "This section applies to security for a rental agreement for residential property that is used as the dwelling of the tenant.",
+          "sourceClass": "mirror",
+          "state": "CA"
+        },
+        {
+          "case": "Cal. Civ. Code § 1950.5(d) (text via law.onecle.com mirror; leginfo.legislature.ca.gov blocked a direct fetch attempt)",
+          "cite": "California Civil Code, security is held by the landlord for the tenant who is party to the lease",
+          "url": "https://law.onecle.com/california/civil/1950.5.html",
+          "quote": "Any security shall be held by the landlord for the tenant who is party to the lease or agreement. The claim of a tenant to the security shall be prior to the claim of any creditor of the landlord.",
+          "sourceClass": "mirror",
+          "state": "CA"
+        }
+      ],
+      "state": "CA"
+    },
+    {
+      "id": "roommate_rent_utility_split",
+      "title": "Rent and Utility Cost-Splitting",
+      "kind": "drafting",
+      "body": "Total rent for the Unit under the Master Lease is ${{totalMonthlyRent}} per month. Unless the Roommates agree otherwise in writing, the Roommates will divide that amount, and the cost of shared utilities (such as electricity, gas, water, trash, and internet service), equally among themselves, due on the _______ day of each month. Each Roommate will pay their share to: _______________________________________________ (for example, the Roommate who pays the landlord directly, or a shared account). A Roommate's promise to the other Roommates to pay a share of rent or utilities under this section is a promise made to the other Roommates, separate from whatever each Roommate who is a tenant on the Master Lease separately owes the landlord under it.",
+      "state": "CA"
+    },
+    {
+      "id": "roommate_joint_several_liability",
+      "title": "Joint and Several Liability for Rent to the Landlord",
+      "kind": "authority",
+      "status": "verified",
+      "checkedDate": "2026-11-28",
+      "body": "Where {{masterLeaseTenantNames}} together sign the Master Lease as co-tenants and together promise to pay rent for {{propertyAddress}}, California contract law presumes that promise to be joint and several: Civil Code § 1659 provides that “[w]here all the parties who unite in a promise receive some benefit from the consideration, whether past or present, their promise is presumed to be joint and several,” and Civil Code § 1660 extends the same presumption to “a promise, made in the singular number, but executed by several persons.” A joint and several promise means each co-tenant can be held liable to the landlord for the entire rent, not merely an apportioned share, and the landlord may pursue any one, several, or all of the co-tenants for the full amount. This Agreement's division of rent among the Roommates (see “Rent and Utility Cost-Splitting” above) is an arrangement among the Roommates themselves; it does not change what any co-tenant owes the landlord under the Master Lease, because the landlord is not a party to this Agreement and is not bound by it.",
+      "gap": "leginfo.legislature.ca.gov again returned a Cloudflare interstitial challenge page (HTTP 403) rather than statute text for Civil Code §§ 1659 and 1660, so both statutory citations below rely on law.onecle.com, a secondary mirror, disclosed as sourceClass \"mirror\" rather than primary; both sections were enacted in 1872 and the onecle snapshot's own quoted text for § 1659 matches, word for word, the California Supreme Court's own 2015 quotation of the same section in the case cited below, which is some independent corroboration that the mirror's text is accurate notwithstanding that it is not the official source. The case citation -- DKN Holdings LLC v. Faerber -- is a real, important limitation rather than a clean fit: the lease in that case already said, in its own words, that multiple signing lessees “shall have joint and several responsibility,” so the California Supreme Court did not need to and did not apply § 1659's default presumption to facts where the lease was silent on the question; its discussion of § 1659 and § 1660 is doctrinal background explaining why California moved from common-law joint liability to joint-and-several liability by statute, not a holding that applies the presumption to an actual silent lease. This document does not know, and does not assume, whether a particular Master Lease is silent on apportionment, states joint-and-several liability expressly (as in DKN), or instead expressly limits each co-tenant's liability to a stated share -- the Master Lease's own text controls that question, and if it expressly limits liability, the default presumption described in this clause does not apply. DKN was also a commercial lease dispute, not a residential tenancy, but its discussion of §§ 1659 and 1660 and of joint-and-several contract liability generally is treated in the opinion as ordinary contract-law doctrine rather than something specific to commercial leases.",
+      "citations": [
+        {
+          "case": "Cal. Civ. Code § 1659 (text via law.onecle.com mirror; leginfo.legislature.ca.gov blocked a direct fetch attempt)",
+          "cite": "California Civil Code, a promise by multiple parties who all benefit is presumed joint and several",
+          "url": "https://law.onecle.com/california/civil/1659.html",
+          "quote": "Where all the parties who unite in a promise receive some benefit from the consideration, whether past or present, their promise is presumed to be joint and several.",
+          "sourceClass": "mirror",
+          "state": "CA"
+        },
+        {
+          "case": "Cal. Civ. Code § 1660 (text via law.onecle.com mirror; leginfo.legislature.ca.gov blocked a direct fetch attempt)",
+          "cite": "California Civil Code, a singular promise executed by several persons is presumed joint and several",
+          "url": "https://law.onecle.com/california/civil/1660.html",
+          "quote": "A promise, made in the singular number, but executed by several persons, is presumed to be joint and several.",
+          "sourceClass": "mirror",
+          "state": "CA"
+        },
+        {
+          "case": "DKN Holdings LLC v. Faerber, 61 Cal.4th 813, 820 (2015) (opinion text via CourtListener)",
+          "cite": "California Supreme Court, parties to a joint and several contract are each liable for the entire obligation",
+          "url": "https://www.courtlistener.com/opinion/2816609/dkn-holdings-llc-v-faerber/",
+          "quote": "Parties to a joint and several contract are thus bound jointly, so that they are liable for the entire obligation, and severally, so that each may be sued separately for the entire loss.",
+          "sourceClass": "court-opinion",
+          "state": "CA"
+        }
+      ],
+      "state": "CA"
+    },
+    {
+      "id": "roommate_shared_private_spaces_and_house_rules",
+      "title": "Shared and Private Spaces; House Rules",
+      "kind": "drafting",
+      "body": "The Roommates designate the following as private space reserved for the Roommate occupying it: _______________________________________________. The following areas of the Unit are shared common space available to all Roommates: _______________________________________________. The Roommates acknowledge and agree to the house rules attached to this Agreement or listed below, covering matters such as guests, noise, cleaning responsibilities, shared chores, and use of common areas: _______________________________________________. A Roommate's violation of these house rules is a matter between the Roommates under this Agreement and does not, by itself, constitute a breach of the Master Lease unless the same conduct also violates the Master Lease's own terms.",
+      "state": "CA"
+    },
+    {
+      "id": "roommate_move_out_notice",
+      "title": "Move-Out Notice Between Roommates",
+      "kind": "drafting",
+      "body": "A Roommate who intends to move out of the Unit before the Master Lease ends will give the other Roommates at least {{moveOutNoticeDays}} days' written notice of the intended move-out date. This notice is between the Roommates only -- it is separate from, and does not substitute for, any notice a Roommate who is named as a tenant on the Master Lease may be required to give the landlord under the Master Lease or applicable law. The departing Roommate remains responsible to the other Roommates for their share of rent and shared costs described in this Agreement through the end of the notice period described above, unless the Roommates agree otherwise in writing.",
+      "state": "CA"
+    },
+    {
+      "id": "roommate_deposit_contribution",
+      "title": "Security Deposit Contributions and Reimbursement",
+      "kind": "drafting",
+      "body": "The Roommates have contributed toward the total security deposit of ${{securityDepositTotal}} paid to the landlord for the Unit, in the amounts described in a schedule attached to this Agreement or as follows: _______________________________________________. If a Roommate moves out before the Master Lease ends or before the security deposit is returned, the remaining Roommates and the departing Roommate agree to account for and reimburse each Roommate's contribution toward the deposit according to that schedule once the landlord returns the deposit (or any portion of it) and provides the accompanying itemized statement. A deduction the landlord makes from the deposit for damage or unpaid rent attributable to a specific Roommate's room, conduct, or guests will be allocated to that Roommate's share of the deposit before the remaining balance is divided among the other Roommates, unless the Roommates agree otherwise in writing.",
+      "state": "CA"
+    },
+    {
+      "id": "roommate_signatures",
+      "title": "Signatures",
+      "kind": "drafting",
+      "body": "Signed:\n\nRoommate: _______________________ Date: _______________\nRoommate: _______________________ Date: _______________\nAdditional Roommate(s): _______________________ Date: _______________\n\nThis Agreement is among the Roommates only. It is not signed by, and does not bind, the landlord.",
+      "state": "CA"
     }
   ]
 }
