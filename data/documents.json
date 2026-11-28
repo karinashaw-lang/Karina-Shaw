@@ -51637,5 +51637,93 @@
       }
     ],
     "state": "CA"
+  },
+  {
+    "id": "promissory_note_between_individuals",
+    "title": "Promissory Note (Loan Between Individuals)",
+    "description": "A fillable, unsecured promissory note for a personal loan between two individuals — for example, friends or family — covering the principal amount, any interest rate, the repayment schedule or due date, and what happens on default, plus an explanation of the statutory framework: the California Constitution's interest-rate ceiling on a non-exempt loan and the narrow scope of the Civil Code sections that implement related exemptions and variable-rate rules (Cal. Const. art. XV, § 1; Civ. Code §§ 1916.1-1916.9), the four-year statute of limitations for an action founded on a written instrument (Code Civ. Proc. §§ 337, 312), and what California statute does, and does not, require beyond the parties' own signatures for the note to be enforceable (Civ. Code § 1550; Com. Code § 3104). This is the plain, no-collateral counterpart to this corpus's Deed of Trust and Promissory Note document, which covers a note secured by real property; this document has no deed of trust, grant of a lien, trustee, or power of sale, and does not cover a loan secured by any collateral.",
+    "categories": [
+      "Consumer & Civil Court"
+    ],
+    "clauseOrder": [
+      "promnote_parties_and_principal",
+      "promnote_usury_rate_limit",
+      "promnote_usury_implementing_statutes",
+      "promnote_interest",
+      "promnote_repayment",
+      "promnote_default",
+      "promnote_statute_of_limitations",
+      "promnote_signature_requirements",
+      "promnote_signatures"
+    ],
+    "fields": [
+      {
+        "id": "lenderName",
+        "label": "Lender's name",
+        "type": "person-name",
+        "required": true,
+        "placeholder": "Pat Morgan",
+        "example": "Pat Morgan"
+      },
+      {
+        "id": "borrowerName",
+        "label": "Borrower's name",
+        "type": "person-name",
+        "required": true,
+        "placeholder": "Jordan Lee",
+        "example": "Jordan Lee"
+      },
+      {
+        "id": "principalAmount",
+        "label": "Principal loan amount",
+        "type": "money",
+        "required": true,
+        "placeholder": "$5,000",
+        "example": "$5,000"
+      },
+      {
+        "id": "interestRate",
+        "label": "Interest rate per year (enter 0% for an interest-free loan)",
+        "type": "percent",
+        "required": true,
+        "placeholder": "6%",
+        "example": "6%"
+      },
+      {
+        "id": "repaymentTerms",
+        "label": "Repayment schedule",
+        "type": "longtext",
+        "required": true,
+        "placeholder": "Repaid in 12 equal monthly installments of $433.34, beginning January 1, 2027",
+        "example": "Repaid in 12 equal monthly installments of $433.34, beginning January 1, 2027"
+      },
+      {
+        "id": "dueDate",
+        "label": "Final repayment due date",
+        "type": "date",
+        "required": true,
+        "placeholder": "December 1, 2027",
+        "example": "December 1, 2027"
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "type": "date",
+        "required": true,
+        "placeholder": "November 28, 2026",
+        "example": "November 28, 2026",
+        "sharedFieldId": "dateSigned"
+      },
+      {
+        "id": "cityState",
+        "label": "City, state",
+        "type": "text",
+        "required": true,
+        "placeholder": "Sacramento, California",
+        "example": "Sacramento, California",
+        "sharedFieldId": "cityState"
+      }
+    ],
+    "state": "CA"
   }
 ]
