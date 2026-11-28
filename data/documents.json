@@ -51725,5 +51725,80 @@
       }
     ],
     "state": "CA"
+  },
+  {
+    "id": "pet_agreement",
+    "title": "Pet Custody and Care Agreement",
+    "description": "A private agreement between two co-owners of a pet -- married or not, in litigation or not -- covering possession schedule, expense and veterinary-decision sharing, and a right of first refusal if one co-owner can no longer keep the pet; explains why this is an ordinary contract separate from Family Code section 2605's narrower court-order mechanism, and California's economic-value measure for a pet in a damages dispute.",
+    "categories": [
+      "Consumer & Civil Court"
+    ],
+    "clauseOrder": [
+      "petagreement_parties_and_pet",
+      "petagreement_possession_schedule",
+      "petagreement_expenses_and_veterinary_decisions",
+      "petagreement_private_contract_outside_family_code_2605",
+      "petagreement_pet_value_is_economic_not_sentimental",
+      "petagreement_writing_and_statute_of_frauds",
+      "petagreement_rehoming_right_of_first_refusal",
+      "petagreement_remedy_for_wrongful_retention",
+      "petagreement_signature"
+    ],
+    "fields": [
+      {
+        "id": "party1Name",
+        "label": "First Co-Owner's name",
+        "type": "person-name",
+        "required": true,
+        "placeholder": "e.g., Jane Doe",
+        "example": "Jane Doe",
+        "sharedFieldId": "party1Name"
+      },
+      {
+        "id": "party2Name",
+        "label": "Second Co-Owner's name",
+        "type": "person-name",
+        "required": true,
+        "placeholder": "e.g., John Smith",
+        "example": "John Smith",
+        "sharedFieldId": "party2Name"
+      },
+      {
+        "id": "animalDescription",
+        "label": "Description of the Pet",
+        "type": "longtext",
+        "required": true,
+        "placeholder": "e.g., a 4-year-old golden retriever named Max",
+        "example": "a 4-year-old golden retriever named Max"
+      },
+      {
+        "id": "effectiveDate",
+        "label": "Date this agreement takes effect",
+        "type": "date",
+        "required": true,
+        "placeholder": "e.g., January 1, 2026",
+        "example": "January 1, 2026",
+        "sharedFieldId": "effectiveDate"
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "type": "date",
+        "required": true,
+        "placeholder": "e.g., January 1, 2026",
+        "example": "January 1, 2026",
+        "sharedFieldId": "dateSigned"
+      },
+      {
+        "id": "cityState",
+        "label": "City, State",
+        "type": "text",
+        "required": true,
+        "placeholder": "e.g., San Diego, California",
+        "example": "San Diego, California",
+        "sharedFieldId": "cityState"
+      }
+    ],
+    "state": "CA"
   }
 ]

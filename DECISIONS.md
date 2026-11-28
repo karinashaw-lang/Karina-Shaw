@@ -7477,3 +7477,76 @@ since they're sequencing/scope decisions, not technical ones. No code
 changed by this entry; `MVP_BUILD_PLAN.md`'s own Steps 4 and 6 (launch
 set, pricing) are owner-gated WAIT steps anyway, same mechanism as the
 master plan's Steps 5/7.
+
+## 2026-11-28 — `pet_agreement` added: a custody/care agreement, not a sale/transfer document
+
+Scope choice (ambiguity resolved per this project's own rule --
+conservative option chosen, logged, work continued): read both
+existing pet documents in full first. `pet_trust_info_sheet` (Prob.
+Code § 15212) is a death/incapacity planning mechanism; unrelated to a
+living arrangement between co-owners. `pet_animal_custody_ownership_info_sheet`
+(Fam. Code § 2605) already explains, and has independently verified
+against leginfo (2026-09-06), that a court's § 2605 authority exists
+only *inside a pending marital dissolution or legal separation
+proceeding* -- and that document's own `petcustody_intro` clause
+explicitly names "or for {{party1Name}} and {{party2Name}} to resolve
+by their own written agreement" as a distinct alternative it does not
+itself provide. That is the clearest, most concrete gap actually found
+in the corpus, not merely inferred from the task's own framing: build
+the private agreement itself. A sale/transfer document (option (a))
+was considered and set aside -- no California pet-dealer-style
+statutory warranty distinct from general personal-property sale norms
+was found that would have made that document's authority content
+meaningfully different from what a generic bill-of-sale already
+covers in this corpus.
+
+Added `pet_agreement` ("Pet Custody and Care Agreement"), category
+Consumer & Civil Court: 9 clauses (5 drafting: parties/pet, possession
+schedule, expenses/veterinary decisions, right of first refusal if a
+co-owner can no longer keep the pet, signatures; 4 authority: why a
+private agreement between co-owners is not itself a Family Code
+§ 2605 order -- verified fresh against Fam. Code §§ 2000, 297(a)-(b),
+297.5(a) -- a pet's "peculiar value" for damages purposes is economic,
+not sentimental (*McMahon v. Craig* (2009) 176 Cal.App.4th 1502,
+1518-1519, quoting Civ. Code § 3355, fetched fresh via CourtListener
+opinion id 2255876 -- a primary court-opinion source, not a mirror);
+the statute-of-frauds reason this agreement is in writing (Civ. Code
+§§ 1549, 1550, 1624(a)(1)); and the general personal-property delivery
+remedy, with its own disclosed gap as to co-owned property (Civ. Code
+§§ 3380, 3384)).
+
+**leginfo.legislature.ca.gov was network-blocked for this entire
+session** -- every attempt (direct fetch, a different User-Agent, and
+this session's web-fetch tool) returned an HTTP 403 Cloudflare
+"Just a moment..." challenge page, never the statute. Fell back to
+`law.onecle.com` (disclosed as `sourceClass: "mirror"` throughout, per
+Global Rule 4) for every Civil Code/Family Code citation actually
+quoted in this document, and verified each quote against text
+genuinely fetched fresh this session. Fam. Code § 2605 itself is
+**not** quoted anywhere in this new document -- onecle's own page for
+it 404s (its snapshot predates § 2605's January 1, 2019 operative
+date), so rather than fabricate or silently borrow a quote this
+document didn't itself fetch, `petagreement_private_contract_outside_family_code_2605`'s
+`gap` says so plainly and points to this corpus's own already-verified
+`pet_animal_custody_ownership_info_sheet` clauses as the existing
+record of that statute's text. As one disclosed cross-check (not a
+guarantee): this session's fresh onecle fetch of the neighboring Fam.
+Code § 2550 matched this corpus's existing leginfo-verified quote of
+that same section word for word. Separately, `Juelfs v. Gough` --
+initially recalled from memory as a California pet-custody case -- was
+checked via CourtListener and turned out to be an **Alaska** Supreme
+Court decision; it was not used, exactly the kind of memory-
+reconstruction error the verbatim-quote rule exists to catch.
+
+Full per-citation fetch log, including sources checked but not
+ultimately cited (Civ. Code §§ 655, 657 -- the latter dropped for an
+apparent "l."-for-"1." OCR artifact in the mirror itself), is in
+`verification/pet_agreement.md`. Also added: a `search/lay_terms.json`
+entry for `pet_agreement` (required by `validate_corpus.py`'s existing
+coverage check for any document, now that one exists for this id).
+
+**Verification:** `python3 tools/validate_corpus.py` passes (742
+documents / 6630 clauses, 4993 authority / 1637 drafting, 11698
+citations). Golden fixture regenerated
+(`node tests/golden/golden.js --update`) and re-checked in check mode;
+both pass.
