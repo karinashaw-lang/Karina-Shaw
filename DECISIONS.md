@@ -7427,3 +7427,53 @@ tests/validate_corpus/test_drafting_clause_lint.py -v` (7/7), all 7
 pre-existing `tests/validate_corpus/test_*.py` files (unaffected), `python3
 tests/tools/test_corpus_snapshot.py` (5/5), and `python3
 tools/merge_guard.py origin/claude/new-session-palh5c` all pass.
+
+## 2026-11-28 — 7th planning document received: MVP_BUILD_PLAN.md, relationship to the master plan not yet reconciled
+
+Transcribed verbatim (`MVP_BUILD_PLAN.md`), same no-accompanying-text
+pattern as `GROUNDTRUTH_MASTER_BUILD_PLAN.md` (2026-11-25). This one
+opens "This is the complete build plan for Claude Code. It merges the
+original build plan with every agreed MVP decision" — a much more
+concrete, narrower 25-step/4-part plan than the master plan's 58-step/
+13-part one, with its own numbering and its own file names
+(MVP_BASELINE.md, LAUNCH_PLAN.md, PILOT_PLAN.md, USER_TEST_PLAN.md —
+some overlapping, some not, with the master plan's own file names).
+
+**Two real, unreconciled points found by checking the actual repo, not
+assumed:**
+
+1. **Launch-set scope.** This plan's "launch set" is a two-track
+   structure (Track A: business-lifecycle documents released in
+   verification waves, starting with "the 7 verified single-member CA
+   LLC formation documents"; Track B: 8 named everyday documents) —
+   not the already-approved 128-document `LAUNCH_SET_PROPOSAL.md`
+   (2026-11-18). Checked: Track A's "Wave 1" exactly matches
+   `LAUNCH_SET_PROPOSAL.md`'s existing 7-document wedge cluster
+   (`llc_articles_of_organization`, `llc_operating_agreement_single_member`,
+   `llc_default_operating_rules_info_sheet`, `statement_of_information`,
+   `ein_info_sheet`, `llc_annual_fee_info_sheet`,
+   `agent_for_service_of_process_info_sheet`) — so Wave 1 is not new
+   work, it's a staged-rollout framing on top of already-approved
+   content. Not yet confirmed with the owner that this staged-wave
+   rollout (ship Wave 1 + Track B first, bring in the rest of the
+   128-document set in later waves) is intended to replace "launch all
+   128 together," versus running alongside it.
+2. **Track B has real new-corpus-authoring work, not just selection.**
+   Checked `data/documents.json` for all 8 named Track B documents:
+   `sublease_agreement` and `nda` already exist; `roommate_agreement`,
+   a true "promissory note (loan between friends)" (the corpus's only
+   promissory-note document, `deed_of_trust_promissory_note`, is a
+   secured real-estate instrument, not a match), `bill_of_sale`,
+   `pet_agreement`, `demand_letter`, and `freelance_service_agreement`
+   (the corpus's `freelance_worker_protection_act_agreement` is an
+   AB 2257/SB 1162 compliance document, not a generic freelance
+   contract) **do not exist in the corpus at all**. 6 of 8 Track B
+   documents are net-new authoring work (new clauses, sourcing,
+   verification), not a relabeling exercise — a materially different
+   scope than this plan's framing ("launch list") suggests at a glance.
+
+Both points are flagged to the owner rather than silently resolved,
+since they're sequencing/scope decisions, not technical ones. No code
+changed by this entry; `MVP_BUILD_PLAN.md`'s own Steps 4 and 6 (launch
+set, pricing) are owner-gated WAIT steps anyway, same mechanism as the
+master plan's Steps 5/7.
