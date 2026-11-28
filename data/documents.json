@@ -51478,5 +51478,164 @@
       }
     ],
     "state": "CA"
+  },
+  {
+    "id": "demand_letter",
+    "title": "General Demand Letter (Informal)",
+    "description": "A general-purpose, informal demand letter format for stating your own facts and your own request to another party before pursuing other options — not tied to any one legal claim or legal theory — together with the actual scope of California's debt-collector statute (broader than the federal FDCPA, reaching a person collecting on their own behalf, not only third-party collectors) and the statutory line between a lawful demand asserting a legal claim and criminal extortion.",
+    "categories": [
+      "Consumer & Civil Court"
+    ],
+    "clauseOrder": [
+      "demandletter_intro",
+      "demandletter_rosenthal_scope",
+      "demandletter_extortion_boundary",
+      "demandletter_factual_narrative",
+      "demandletter_requested_action",
+      "demandletter_next_steps",
+      "demandletter_signature"
+    ],
+    "fields": [
+      {
+        "id": "senderName",
+        "label": "Your name (or your business's name)",
+        "type": "person-name",
+        "required": true,
+        "placeholder": "Jordan Alex Lee",
+        "example": "Jordan Alex Lee",
+        "sharedFieldId": "requestingPartyName"
+      },
+      {
+        "id": "recipientName",
+        "label": "Recipient's name",
+        "type": "person-name",
+        "required": true,
+        "placeholder": "Acme Inc.",
+        "example": "Acme Inc.",
+        "sharedFieldId": "recipientName"
+      },
+      {
+        "id": "factualNarrative",
+        "label": "Description of what happened, in your own words",
+        "type": "longtext",
+        "required": true,
+        "placeholder": "Describe, in your own words, what happened and when.",
+        "example": "On September 3, 2026, I paid a $500 deposit for event-planning services. The event was cancelled by the business on September 10, 2026, and no refund has been issued since.",
+        "sharedFieldId": "incidentDescription"
+      },
+      {
+        "id": "requestedAction",
+        "label": "What you are asking the recipient to do",
+        "type": "longtext",
+        "required": true,
+        "placeholder": "Describe the specific action you are requesting.",
+        "example": "Refund the $500 deposit in full."
+      },
+      {
+        "id": "requestedAmount",
+        "label": "Dollar amount requested, if any",
+        "type": "money",
+        "required": false,
+        "placeholder": "$500.00",
+        "example": "$500.00"
+      },
+      {
+        "id": "demandDate",
+        "label": "Deadline for response or payment",
+        "type": "date",
+        "required": true,
+        "placeholder": "December 15, 2026",
+        "example": "December 15, 2026",
+        "sharedFieldId": "demandDate"
+      }
+    ],
+    "state": "CA"
+  },
+  {
+    "id": "freelance_service_agreement",
+    "title": "Freelance Service Agreement",
+    "description": "A fuller freelance or independent-contractor services agreement — scope of work and deliverables, a negotiated payment schedule, ownership of work product, term and termination, and confidentiality — built around the written-contract terms California's Freelance Worker Protection Act requires (Business and Professions Code § 18100 et seq.), with a disclosure of the separate ABC test (Labor Code § 2775) that actually governs whether the relationship is an employment relationship, regardless of what this agreement itself calls it.",
+    "categories": [
+      "Hiring"
+    ],
+    "clauseOrder": [
+      "fwpa_purpose",
+      "fsa_scope_of_work",
+      "fwpa_coverage_definitions",
+      "fwpa_written_contract_required",
+      "fwpa_contract_contents",
+      "fwpa_timely_payment",
+      "fsa_payment_schedule",
+      "fwpa_antiretaliation",
+      "fwpa_enforcement_remedies",
+      "fsa_abc_test_classification",
+      "fsa_abc_test_exceptions_scope",
+      "fsa_work_product_ownership",
+      "fsa_term_termination",
+      "fsa_confidentiality",
+      "fwpa_ack"
+    ],
+    "fields": [
+      {
+        "id": "hiringPartyName",
+        "label": "Hiring party's name",
+        "type": "person-name",
+        "required": true,
+        "placeholder": "Acme Corp.",
+        "example": "Acme Corp."
+      },
+      {
+        "id": "contractorName",
+        "label": "Contractor's name",
+        "type": "person-name",
+        "required": true,
+        "placeholder": "Jordan Lee",
+        "example": "Jordan Lee",
+        "sharedFieldId": "contractorName"
+      },
+      {
+        "id": "workDescription",
+        "label": "Description of services",
+        "type": "longtext",
+        "required": true,
+        "placeholder": "Graphic design for the Q4 marketing campaign",
+        "example": "A bronze sculpture titled ‘Pacific Light,’ installed in the plaza in 2015.",
+        "sharedFieldId": "workDescription"
+      },
+      {
+        "id": "contractPrice",
+        "label": "Compensation for services",
+        "type": "money",
+        "required": true,
+        "placeholder": "$2,500",
+        "example": "$2,500"
+      },
+      {
+        "id": "paymentSchedule",
+        "label": "Payment schedule",
+        "type": "longtext",
+        "required": true,
+        "placeholder": "50% deposit on signing, 50% on delivery of final files",
+        "example": "50% deposit on signing, 50% on delivery of final files"
+      },
+      {
+        "id": "terminationNoticeDays",
+        "label": "Termination notice period (days)",
+        "type": "integer",
+        "required": true,
+        "placeholder": "14",
+        "example": "14"
+      },
+      {
+        "id": "dateSigned",
+        "label": "Date signed",
+        "type": "date",
+        "required": true,
+        "placeholder": "September 4, 2026",
+        "example": "September 4, 2026",
+        "sharedFieldId": "dateSigned"
+      }
+    ],
+    "state": "CA"
   }
 ]
