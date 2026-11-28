@@ -51318,5 +51318,70 @@
       }
     ],
     "state": "CA"
+  },
+  {
+    "id": "bill_of_sale",
+    "title": "Bill of Sale (General Personal Property)",
+    "description": "A general bill of sale for a private sale of personal property between two individuals -- furniture, electronics, appliances, or equipment, not a vehicle or real property -- covering item description, price and payment, and an as-is condition statement, and explaining when California's implied warranty of merchantability actually attaches to a sale like this one and why this document is not a substitute for a vehicle's DMV title-transfer paperwork.",
+    "categories": [
+      "Consumer & Civil Court"
+    ],
+    "clauseOrder": [
+      "bill_of_sale_parties_item",
+      "bill_of_sale_price_payment",
+      "bill_of_sale_merchant_warranty_scope",
+      "bill_of_sale_as_is",
+      "bill_of_sale_as_is_disclaimer_requirements",
+      "bill_of_sale_vehicle_real_estate_scope",
+      "bill_of_sale_signatures"
+    ],
+    "fields": [
+      {
+        "id": "sellerName",
+        "label": "Seller's name",
+        "type": "person-name",
+        "required": true,
+        "placeholder": "Jordan Alex Lee",
+        "example": "Jordan Alex Lee",
+        "sharedFieldId": "sellerName"
+      },
+      {
+        "id": "buyerName",
+        "label": "Buyer's name",
+        "type": "person-name",
+        "required": true,
+        "placeholder": "Morgan Lee",
+        "example": "Morgan Lee",
+        "sharedFieldId": "buyerName"
+      },
+      {
+        "id": "propertyDescription",
+        "label": "Description of the item(s) being sold",
+        "type": "longtext",
+        "required": true,
+        "placeholder": "One Samsung 55-inch QLED television, model QN55Q60C, with remote and original box",
+        "example": "One Samsung 55-inch QLED television, model QN55Q60C, with remote and original box",
+        "sharedFieldId": "propertyDescription"
+      },
+      {
+        "id": "purchasePrice",
+        "label": "Purchase price",
+        "type": "money",
+        "required": true,
+        "placeholder": "450",
+        "example": "450",
+        "sharedFieldId": "purchasePrice"
+      },
+      {
+        "id": "agreementDate",
+        "label": "Date of sale",
+        "type": "date",
+        "required": true,
+        "placeholder": "November 28, 2026",
+        "example": "November 28, 2026",
+        "sharedFieldId": "agreementDate"
+      }
+    ],
+    "state": "CA"
   }
 ]
